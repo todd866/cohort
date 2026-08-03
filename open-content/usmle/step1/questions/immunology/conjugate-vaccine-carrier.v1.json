@@ -1,0 +1,72 @@
+{
+  "id": "bank:usmle-step1:conjugate-vaccine-carrier:v1",
+  "rotation": "usmle-step1",
+  "moduleNodes": [
+    "usmle/step1",
+    "usmle/step1/immunology"
+  ],
+  "topics": [
+    "immunology",
+    "conjugate vaccines",
+    "polysaccharide antigens"
+  ],
+  "questionType": "mechanism",
+  "difficulty": "medium",
+  "stem": "A purified bacterial capsular polysaccharide vaccine produces an inadequate response in a target pediatric population. A redesigned vaccine chemically links the same polysaccharide to a protein carrier. Which of the following is the principal purpose of adding the carrier?",
+  "options": [
+    {
+      "label": "A",
+      "text": "Supply preformed pathogen-specific antibody",
+      "isCorrect": false,
+      "misconception": "Confuses an antigen-containing vaccine with passive immunoglobulin therapy.",
+      "explanation": "A conjugate vaccine stimulates the recipient's immune response rather than supplying ready-made antibody."
+    },
+    {
+      "label": "B",
+      "text": "Prevent antigen uptake by B lymphocytes",
+      "isCorrect": false,
+      "misconception": "Mistakes the carrier for a barrier to antigen recognition rather than a way to change the response.",
+      "explanation": "Protein conjugation does not work by preventing B lymphocytes from encountering the polysaccharide antigen."
+    },
+    {
+      "label": "C",
+      "text": "Establish durable T-cell-dependent immunity",
+      "isCorrect": true,
+      "misconception": "Correctly identifies the immune-response change produced by covalent protein conjugation.",
+      "explanation": "Adding the carrier changes polysaccharide immunity from a T-cell-independent pattern to a T-cell-dependent one, allowing more durable protection."
+    },
+    {
+      "label": "D",
+      "text": "Restrict antigen recognition to CD8 cells",
+      "isCorrect": false,
+      "misconception": "Confuses T-cell dependence with an isolated cytotoxic T-cell response.",
+      "explanation": "The purpose is not to restrict recognition to CD8 cells but to make the polysaccharide response T-cell dependent."
+    },
+    {
+      "label": "E",
+      "text": "Permit replication of the vaccine organism",
+      "isCorrect": false,
+      "misconception": "Mistakes a nonliving conjugate product for a live attenuated vaccine.",
+      "explanation": "Chemical linkage does not create a viable organism or confer the ability to reproduce in the recipient."
+    }
+  ],
+  "context": "Learning objective: distinguish T-cell-independent polysaccharide responses from T-cell-dependent conjugate vaccine responses.\n\nCovalently linking a bacterial polysaccharide to a carrier protein converts the response to T-cell dependence and thereby supports longer-term immunity.",
+  "cite": "fda-conjugate-vaccine-mechanism#conjugate-t-cell-dependent",
+  "publicUsmle": {
+    "schemaVersion": 1,
+    "origin": "generated",
+    "itemText": {
+      "licence": "CC-BY-4.0",
+      "attribution": "MD3 contributors"
+    },
+    "evidence": {
+      "kind": "passage",
+      "sourceId": "fda-conjugate-vaccine-mechanism",
+      "passageId": "conjugate-t-cell-dependent",
+      "licence": {
+        "cls": "foss",
+        "id": "us-gov"
+      }
+    }
+  }
+}

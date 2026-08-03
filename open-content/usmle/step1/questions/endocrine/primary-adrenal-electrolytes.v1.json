@@ -1,0 +1,62 @@
+{
+  "id": "bank:usmle-step1:endocrine-primary-adrenal-electrolytes:v1",
+  "rotation": "usmle-step1",
+  "topics": ["primary adrenal insufficiency", "mineralocorticoid physiology"],
+  "moduleNodes": ["usmle/step1", "usmle/step1/endocrine"],
+  "questionType": "mechanism",
+  "difficulty": "medium",
+  "stem": "A 34-year-old woman has progressive fatigue, weight loss, orthostatic hypotension, a serum sodium concentration of 128 mEq/L, and a serum potassium concentration of 5.9 mEq/L. Autoimmune destruction of both adrenal glands is suspected. Deficiency of which hormone most directly accounts for the paired electrolyte abnormalities?",
+  "options": [
+    {
+      "label": "A",
+      "text": "Reduced cortisol secretion",
+      "isCorrect": false,
+      "misconception": "Cortisol deficiency is central to adrenal insufficiency but does not directly explain both electrolyte changes.",
+      "explanation": "Low cortisol contributes to hypotension and impaired stress responses; aldosterone loss is the direct renal mechanism here."
+    },
+    {
+      "label": "B",
+      "text": "Reduced ACTH secretion",
+      "isCorrect": false,
+      "misconception": "Primary adrenal destruction removes negative feedback and usually raises, rather than lowers, ACTH.",
+      "explanation": "Low ACTH suggests central adrenal insufficiency, in which mineralocorticoid production is generally preserved."
+    },
+    {
+      "label": "C",
+      "text": "Reduced epinephrine secretion",
+      "isCorrect": false,
+      "misconception": "Adrenal medullary output is being confused with mineralocorticoid control of the distal nephron.",
+      "explanation": "Epinephrine does not directly maintain sodium retention or renal potassium excretion."
+    },
+    {
+      "label": "D",
+      "text": "Reduced adrenal androgen secretion",
+      "isCorrect": false,
+      "misconception": "Adrenal androgen loss may affect hair or libido but not this electrolyte pattern.",
+      "explanation": "Adrenal androgens are not the main regulators of renal sodium and potassium balance."
+    },
+    {
+      "label": "E",
+      "text": "Reduced aldosterone secretion",
+      "isCorrect": true,
+      "misconception": "None; this links mineralocorticoid loss to renal sodium and potassium handling.",
+      "explanation": "Aldosterone deficiency reduces renal return of sodium to blood and renal elimination of potassium, favoring hyponatremia and hyperkalemia."
+    }
+  ],
+  "context": "Learning objective: connect aldosterone deficiency to paired sodium and potassium abnormalities. Aldosterone signals the kidneys to return sodium to blood and eliminate potassium in urine, so reduced signaling favors hyponatremia and hyperkalemia.",
+  "cite": "medlineplus-aldosterone-test#aldosterone-renal-electrolytes",
+  "publicUsmle": {
+    "schemaVersion": 1,
+    "origin": "generated",
+    "itemText": {
+      "licence": "CC-BY-4.0",
+      "attribution": "MD3 contributors"
+    },
+    "evidence": {
+      "kind": "passage",
+      "sourceId": "medlineplus-aldosterone-test",
+      "passageId": "aldosterone-renal-electrolytes",
+      "licence": { "cls": "foss", "id": "us-gov" }
+    }
+  }
+}

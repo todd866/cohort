@@ -1,0 +1,958 @@
+@import "tailwindcss";
+
+/* Video subtitle cue styling */
+video::cue {
+  white-space: pre-wrap;
+  font-size: 0.85em;
+}
+
+/* MD3 Design Tokens */
+:root {
+  /* Primary colors */
+  --md-primary: #1c5888;
+  --md-on-primary: #ffffff;
+  --md-primary-container: #d9ecff;
+  --md-on-primary-container: #1c507b;
+
+  /* Secondary colors */
+  --md-secondary: #2c7191;
+  --md-on-secondary: #ffffff;
+  --md-secondary-container: #d1efff;
+  --md-on-secondary-container: #025473;
+
+  /* Tertiary/Accent */
+  --md-tertiary: #b0552f;
+  --md-on-tertiary: #ffffff;
+  --md-tertiary-container: #ffe3d8;
+  --md-on-tertiary-container: #773c24;
+
+  /* Surface colors */
+  --md-app-background: linear-gradient(180deg, #f8fbfc 0%, #f4f7f7 44%, #fafafa 100%);
+  --md-surface: #f8fafb;
+  --md-surface-dim: #d8dee2;
+  --md-surface-bright: #ffffff;
+  --md-surface-container-lowest: #ffffff;
+  --md-surface-container-low: #f2f6f7;
+  --md-surface-container: #eaf0f2;
+  --md-surface-container-high: #e1eaed;
+  --md-surface-container-highest: #d7e2e6;
+  --md-on-surface: #171d22;
+  --md-on-surface-variant: #4d5860;
+  --md-outline-soft: color-mix(in srgb, var(--md-outline-variant) 68%, transparent);
+  --md-review-surface: color-mix(in srgb, var(--md-surface-container-lowest) 92%, var(--md-primary-container) 8%);
+
+  /* Semantic colors */
+  --md-error: #bb3734;
+  --md-on-error: #ffffff;
+  --md-error-container: #ffe2de;
+  --md-on-error-container: #793a35;
+
+  --md-success: #007f54;
+  --md-on-success: #ffffff;
+  --md-success-container: #cdf5df;
+  --md-on-success-container: #055a3b;
+
+  --md-warning: #b85500;
+  --md-on-warning: #ffffff;
+  --md-warning-container: #ffe3d4;
+  --md-on-warning-container: #753e1c;
+
+  /* Outline */
+  --md-outline: #73777f;
+  --md-outline-variant: #c3c6cf;
+
+  /* Content box colors (matching existing study guides) */
+  /* Callouts ride the MD3 palette — navy/green/red/clay. Light fills are a
+     low % of the accent mixed into the page surface. */
+  --keypoint-bg: color-mix(in srgb, var(--md-primary) 9%, var(--md-surface));
+  --keypoint-border: var(--md-primary);
+  --pearl-bg: color-mix(in srgb, var(--md-success) 11%, var(--md-surface));
+  --pearl-border: var(--md-success);
+  --danger-bg: color-mix(in srgb, var(--md-error) 10%, var(--md-surface));
+  --danger-border: var(--md-error);
+  --mnemonic-bg: color-mix(in srgb, var(--md-tertiary) 10%, var(--md-surface));
+  --mnemonic-border: var(--md-tertiary);
+  --question-bg: #ffffff;
+  --answer-bg: #f8f9fa;
+
+  /* Shadows */
+  --md-shadow-1: 0 1px 2px rgba(21, 35, 46, 0.06), 0 8px 24px rgba(21, 35, 46, 0.06);
+  --md-shadow-2: 0 2px 4px rgba(21, 35, 46, 0.08), 0 14px 34px rgba(21, 35, 46, 0.09);
+  --md-shadow-3: 0 8px 18px rgba(21, 35, 46, 0.12), 0 24px 56px rgba(21, 35, 46, 0.12);
+
+  /* Border radius */
+  --md-radius-xs: 4px;
+  --md-radius-sm: 8px;
+  --md-radius-md: 12px;
+  --md-radius-lg: 16px;
+  --md-radius-xl: 28px;
+  --md-radius-full: 9999px;
+
+  /* Typography scale */
+  --md-display-large: 3.5625rem;
+  --md-display-medium: 2.8125rem;
+  --md-display-small: 2.25rem;
+  --md-headline-large: 2rem;
+  --md-headline-medium: 1.75rem;
+  --md-headline-small: 1.5rem;
+  --md-title-large: 1.375rem;
+  --md-title-medium: 1rem;
+  --md-title-small: 0.875rem;
+  --md-body-large: 1rem;
+  --md-body-medium: 0.875rem;
+  --md-body-small: 0.75rem;
+  --md-label-large: 0.875rem;
+  --md-label-medium: 0.75rem;
+  --md-label-small: 0.6875rem;
+}
+
+/* Dark mode */
+.dark {
+  --md-primary: #6e9fcc;
+  --md-on-primary: #00213b;
+  --md-primary-container: #1a4b73;
+  --md-on-primary-container: #d0e8ff;
+
+  --md-secondary: #68a2c0;
+  --md-on-secondary: #002332;
+  --md-secondary-container: #0f4e69;
+  --md-on-secondary-container: #c6ebff;
+
+  --md-tertiary: #d2886b;
+  --md-on-tertiary: #3a1000;
+  --md-tertiary-container: #733216;
+  --md-on-tertiary-container: #ffdccf;
+
+  --md-app-background: linear-gradient(180deg, #11161a 0%, #0f1215 48%, #121212 100%);
+  --md-surface: #12161a;
+  --md-surface-dim: #0d0d0d;
+  --md-surface-bright: #1e1e1e;
+  --md-surface-container-lowest: #0a0a0a;
+  --md-surface-container-low: #171d21;
+  --md-surface-container: #1d252a;
+  --md-surface-container-high: #273137;
+  --md-surface-container-highest: #313d44;
+  --md-on-surface: #e3e3e3;
+  --md-on-surface-variant: #c3c6cf;
+  --md-outline-soft: color-mix(in srgb, var(--md-outline-variant) 62%, transparent);
+  --md-review-surface: color-mix(in srgb, var(--md-surface-container-low) 88%, var(--md-primary-container) 12%);
+
+  --md-error: #e57d74;
+  --md-on-error: #430003;
+  --md-error-container: #7f201f;
+  --md-on-error-container: #ffdbd7;
+
+  --md-success: #59aa83;
+  --md-on-success: #002717;
+  --md-success-container: #005638;
+  --md-on-success-container: #bcf4d6;
+
+  --md-warning: #d98656;
+  --md-on-warning: #361400;
+  --md-warning-container: #733200;
+  --md-on-warning-container: #ffddca;
+
+  --md-outline: #8d9199;
+  --md-outline-variant: #43474e;
+
+  /* Dark fills mix the accent into surface-container-high, NOT --md-surface:
+     mixing into near-black flattens all four callouts into indistinguishable
+     dark boxes. The bright dark-palette borders carry the identity. */
+  --keypoint-bg: color-mix(in srgb, var(--md-primary) 16%, var(--md-surface-container-high));
+  --keypoint-border: var(--md-primary);
+  --pearl-bg: color-mix(in srgb, var(--md-success) 16%, var(--md-surface-container-high));
+  --pearl-border: var(--md-success);
+  --danger-bg: color-mix(in srgb, var(--md-error) 18%, var(--md-surface-container-high));
+  --danger-border: var(--md-error);
+  --mnemonic-bg: color-mix(in srgb, var(--md-tertiary) 16%, var(--md-surface-container-high));
+  --mnemonic-border: var(--md-tertiary);
+  --question-bg: #1e1e1e;
+  --answer-bg: #252525;
+}
+
+@theme inline {
+  --color-primary: var(--md-primary);
+  --color-on-primary: var(--md-on-primary);
+  --color-primary-container: var(--md-primary-container);
+  --color-secondary: var(--md-secondary);
+  --color-on-secondary: var(--md-on-secondary);
+  --color-tertiary: var(--md-tertiary);
+  --color-surface: var(--md-surface);
+  --color-on-surface: var(--md-on-surface);
+  --color-on-surface-variant: var(--md-on-surface-variant);
+  --color-surface-container: var(--md-surface-container);
+  --color-surface-container-low: var(--md-surface-container-low);
+  --color-surface-container-high: var(--md-surface-container-high);
+  --color-outline: var(--md-outline);
+  --color-outline-variant: var(--md-outline-variant);
+  --color-error: var(--md-error);
+  --color-success: var(--md-success);
+  --color-warning: var(--md-warning);
+  --font-sans: var(--font-geist-sans);
+  --font-mono: var(--font-geist-mono);
+}
+
+/* Base styles */
+body {
+  background: var(--md-app-background);
+  color: var(--md-on-surface);
+  font-family: var(--font-sans, system-ui, -apple-system, sans-serif);
+  line-height: 1.6;
+  /* Hard cap horizontal overflow — content components own their own
+     scroll containers (overflow-x-auto on tables, pre, etc.). Without
+     this the body propagates scrollWidth from children whose layout
+     box extends past the viewport even when they're visually clipped. */
+  overflow-x: clip;
+}
+
+/* Chemistry sub/sup — inherit font to avoid browser serif fallback */
+sub, sup {
+  font-family: inherit;
+}
+
+/* Native scrolling — keyboard (arrows/space/PageDn) and wheel stay instant and
+   snappy. Deliberate section jumps animate via JS (TopicTabBar's rAF scroll). A
+   global scroll-behavior: smooth makes every keypress animate sluggishly, so
+   it's intentionally NOT set here. */
+
+/* Selection */
+::selection {
+  background: var(--md-primary-container);
+  color: var(--md-on-primary-container);
+}
+
+/* Focus styles */
+:focus-visible {
+  outline: 2px solid var(--md-primary);
+  outline-offset: 2px;
+}
+
+/* The <main id="main-content" tabIndex={-1}> landmark is a *programmatic* focus
+   target for the skip link, not an interactive control. The global ring above
+   painted a 2px primary outline around it on keyboard focus (skip-link → Tab),
+   and because <main> has no explicit height and the review reveal bar is
+   position:fixed (out of flow), main's box ends just under a short card — so the
+   outline's bottom edge showed as a stray full-width horizontal bar below the
+   card. Suppress the ring on the landmark only; every real control keeps its. */
+main:focus,
+main:focus-visible {
+  outline: none;
+}
+
+/* Scrollbar styling */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--md-surface-container);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--md-outline-variant);
+  border-radius: var(--md-radius-full);
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--md-outline);
+}
+
+/* Transitions
+ * CLOSED RULE — keep transition-property limited to cheap paint properties.
+ * Never widen this global `*` rule to `all`, box-shadow, transform, or any
+ * layout/size property: a transition on every element on every theme/state
+ * change would animate layout + compositing across the whole tree and tank
+ * scroll/interaction performance. Animate those per-component instead. */
+* {
+  transition-property: background-color, border-color, color, fill, stroke;
+  transition-duration: 150ms;
+  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* Cloze answer reveal — opacity only (no transform/width), so the answer
+ * fades in over its fixed-width slot without baseline jitter or reflow. */
+@keyframes clozeReveal {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+.cloze-reveal {
+  animation: clozeReveal 180ms ease-out;
+}
+
+/* ─── Term tooltip — CSS-only, works on hover + focus (tap on mobile) ───
+   Only obscure glossary terms (decode:true) get .term-tooltip; the rarity is
+   what keeps it from reading as noise (the decode-everything style was retired
+   2026-06-11). */
+.term-tooltip {
+  position: relative;
+}
+
+.term-tooltip::after {
+  content: attr(data-tooltip);
+  position: absolute;
+  bottom: calc(100% + 6px);
+  left: 50%;
+  transform: translateX(-50%);
+  padding: 4px 10px;
+  border-radius: var(--md-radius-sm);
+  background: var(--md-on-surface);
+  color: var(--md-surface);
+  font-size: 0.75rem;
+  font-style: normal;
+  line-height: 1.4;
+  white-space: normal;
+  max-width: min(250px, 90vw);
+  width: max-content;
+  pointer-events: none;
+  opacity: 0;
+  transition: opacity 120ms ease-in;
+  z-index: 50;
+}
+
+.term-tooltip:hover::after,
+.term-tooltip:focus::after {
+  opacity: 1;
+}
+
+/* ─── Buttons ─── */
+
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 500;
+  transition: all 200ms ease-out;
+}
+
+.btn:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+  box-shadow: none;
+}
+
+.btn-filled {
+  background: var(--md-primary);
+  color: var(--md-on-primary);
+}
+.btn-filled:hover:not(:disabled) {
+  box-shadow: var(--md-shadow-1);
+  filter: brightness(1.1);
+}
+.btn-filled:active:not(:disabled) {
+  filter: brightness(0.95);
+  transform: scale(0.98);
+}
+
+.btn-outlined {
+  border: 1px solid var(--md-outline);
+  color: var(--md-primary);
+}
+.btn-outlined:hover:not(:disabled) {
+  background: color-mix(in srgb, var(--md-primary) 8%, transparent);
+}
+.btn-outlined:active:not(:disabled) {
+  background: color-mix(in srgb, var(--md-primary) 12%, transparent);
+  transform: scale(0.98);
+}
+
+.btn-text {
+  color: var(--md-primary);
+}
+.btn-text:hover:not(:disabled) {
+  background: color-mix(in srgb, var(--md-primary) 8%, transparent);
+}
+.btn-text:active:not(:disabled) {
+  background: color-mix(in srgb, var(--md-primary) 12%, transparent);
+  transform: scale(0.98);
+}
+
+.btn-tonal {
+  background: var(--md-secondary-container);
+  color: var(--md-on-secondary-container);
+}
+.btn-tonal:hover:not(:disabled) {
+  box-shadow: var(--md-shadow-1);
+  filter: brightness(1.05);
+}
+.btn-tonal:active:not(:disabled) {
+  filter: brightness(0.95);
+  transform: scale(0.98);
+}
+
+.btn-sm { height: 2rem; padding: 0 0.75rem; font-size: 0.875rem; gap: 0.375rem; border-radius: var(--md-radius-lg); }
+.btn-md { height: 2.5rem; padding: 0 1.5rem; font-size: 0.875rem; gap: 0.5rem; border-radius: var(--md-radius-xl); }
+.btn-lg { height: 3rem; padding: 0 2rem; font-size: 1rem; gap: 0.5rem; border-radius: var(--md-radius-xl); }
+
+
+/* ─── Cards ─── */
+
+.card {
+  border-radius: var(--md-radius-sm);
+  overflow: hidden;
+}
+
+.card-elevated {
+  background: var(--md-surface-container-low);
+  box-shadow: var(--md-shadow-1);
+  border: 1px solid var(--md-outline-soft);
+}
+
+.card-filled {
+  background: var(--md-surface-container-highest);
+  border: 1px solid var(--md-outline-soft);
+}
+
+.card-outlined {
+  background: var(--md-surface-container-lowest);
+  border: 1px solid var(--md-outline-soft);
+}
+
+.card-clickable {
+  cursor: pointer;
+  transition: box-shadow 150ms;
+}
+.card-clickable:hover {
+  box-shadow: var(--md-shadow-2);
+}
+
+
+/* ─── Content callouts ─── */
+
+.callout {
+  margin: 1rem 0;
+  border-left: 4px solid;
+  border-radius: 0 var(--md-radius-sm) var(--md-radius-sm) 0;
+  padding: 1rem;
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.45);
+}
+
+.dark .callout {
+  box-shadow: none;
+}
+
+/* ─── Review surface polish ─── */
+
+.review-card-shell {
+  background: var(--md-review-surface);
+  border: 1px solid var(--md-outline-soft);
+  border-radius: var(--md-radius-sm);
+  box-shadow: var(--md-shadow-1);
+  padding: clamp(1rem, 2vw, 1.35rem);
+}
+
+.review-choice {
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.55);
+}
+
+.dark .review-choice {
+  box-shadow: none;
+}
+
+/* Tactile press + clear keyboard focus on all review controls
+   (MCQ options, reveal button, confidence buttons share .review-choice). */
+.review-choice:active {
+  transform: translateY(1px);
+}
+
+.review-choice:focus-visible {
+  outline: 2px solid var(--md-primary);
+  outline-offset: 2px;
+}
+
+/* Quiet entrance for newly revealed answers / MCQ results — the one moment
+   the design doc calls out as "correct but not especially visible". */
+.review-reveal {
+  animation: md-reveal 260ms cubic-bezier(0.2, 0.7, 0.2, 1) both;
+}
+
+@keyframes md-reveal {
+  from {
+    opacity: 0;
+    transform: translateY(6px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Scene changes should feel spatial without turning the walkthrough into a
+   slide deck. Reduced-motion removes this entirely below. */
+.clinical-scene-enter {
+  animation: clinical-scene-enter 220ms cubic-bezier(0.2, 0.7, 0.2, 1) both;
+}
+
+@keyframes clinical-scene-enter {
+  from {
+    opacity: 0;
+    transform: translateY(5px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.review-skeleton-line {
+  position: relative;
+  overflow: hidden;
+  background: color-mix(in srgb, var(--md-surface-container-high) 82%, var(--md-primary-container) 18%);
+}
+
+.review-skeleton-line::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  transform: translateX(-100%);
+  background: linear-gradient(
+    90deg,
+    transparent,
+    color-mix(in srgb, var(--md-surface-bright) 58%, transparent),
+    transparent
+  );
+  animation: md-skeleton-shimmer 1.65s ease-in-out infinite;
+}
+
+@keyframes md-skeleton-shimmer {
+  100% {
+    transform: translateX(100%);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  /* No global scroll-behavior to override now that reading is native (see ~line
+     215); the only reduced-motion concern left here is the cloze-reveal fade. */
+  .cloze-reveal {
+    animation: none;
+  }
+  .review-skeleton-line::after {
+    animation: none;
+    display: none;
+  }
+  .review-reveal {
+    animation: none;
+  }
+  .clinical-scene-enter {
+    animation: none;
+  }
+  .review-choice:active {
+    transform: none;
+  }
+}
+
+@media (max-width: 640px) {
+  .review-card-shell {
+    background: transparent;
+    border: 0;
+    border-radius: 0;
+    box-shadow: none;
+    padding: 0;
+  }
+}
+
+.callout-keypoint { border-color: var(--keypoint-border); background: var(--keypoint-bg); }
+.callout-pearl    { border-color: var(--pearl-border);    background: var(--pearl-bg); }
+.callout-danger   { border-color: var(--danger-border);   background: var(--danger-bg); }
+.callout-mnemonic { border-color: var(--mnemonic-border); background: var(--mnemonic-bg); }
+
+/* Readable measure for long-form content pages. Text blocks sit in a centred
+ * ~68ch column so the eye doesn't lose its place across a full-width line;
+ * tables, figures, code and callouts are left unconstrained so wide data
+ * still breaks out to the container width. Applied via .content-measure on
+ * the prose wrapper (content pages only — never the review surface). */
+.content-measure > :where(p, ul, ol, h1, h2, h3, h4, h5, h6, blockquote) {
+  max-width: 68ch;
+}
+
+.callout > header {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  margin-bottom: 0.25rem;
+}
+
+.callout > header .title {
+  font-weight: 600;
+}
+
+.callout > header .actions {
+  margin-left: auto;
+  display: flex;
+  align-items: center;
+  gap: 0.25rem;
+}
+
+
+/* ─── Badges ─── */
+
+.badge {
+  display: inline-flex;
+  align-items: center;
+  padding: 0.25rem 0.75rem;
+  font-size: 0.75rem;
+  font-weight: 500;
+  border-radius: var(--md-radius-full);
+  white-space: nowrap;
+}
+
+.badge-primary {
+  background: var(--md-primary);
+  color: var(--md-on-primary);
+  font-weight: 700;
+}
+
+.badge-topic {
+  background: var(--md-secondary-container);
+  color: var(--md-on-secondary-container);
+}
+
+.badge-jurisdiction {
+  background: var(--md-tertiary-container);
+  color: var(--md-on-tertiary-container);
+}
+
+.badge-variant {
+  background: #ede9fe;
+  color: #6b21a8;
+}
+.dark .badge-variant {
+  background: rgba(139, 92, 246, 0.2);
+  color: #c4b5fd;
+}
+
+.badge-easy,
+.badge-beginner {
+  background: #dcfce7;
+  color: #166534;
+}
+.dark .badge-easy,
+.dark .badge-beginner {
+  background: rgba(34, 197, 94, 0.2);
+  color: #86efac;
+}
+
+.badge-medium,
+.badge-intermediate {
+  background: #fef3c7;
+  color: #92400e;
+}
+.dark .badge-medium,
+.dark .badge-intermediate {
+  background: rgba(245, 158, 11, 0.2);
+  color: #fcd34d;
+}
+
+.badge-hard,
+.badge-advanced {
+  background: #fee2e2;
+  color: #991b1b;
+}
+.dark .badge-hard,
+.dark .badge-advanced {
+  background: rgba(239, 68, 68, 0.2);
+  color: #fca5a5;
+}
+
+
+/* ─── MCQ ─── */
+
+.mcq {
+  margin: 2rem 0;
+  border-radius: 1rem;
+  background: var(--md-surface-container-low);
+  border: 1px solid var(--md-outline-variant);
+  overflow: hidden;
+}
+
+.mcq > header {
+  padding: 1rem 1.5rem;
+  background: var(--md-surface-container);
+  border-bottom: 1px solid var(--md-outline-variant);
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 0.75rem;
+}
+
+.mcq > header .tags {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.mcq > header .actions {
+  display: flex;
+  align-items: center;
+  gap: 0.25rem;
+  flex-shrink: 0;
+}
+
+.mcq .stem {
+  padding: 1.25rem 1.5rem;
+  color: var(--md-on-surface);
+  white-space: pre-wrap;
+}
+
+.mcq .stem img {
+  border-radius: var(--md-radius-sm);
+  width: 100%;
+  margin-top: 0.5rem;
+}
+
+.mcq .options {
+  list-style: none;
+  padding: 0 1.5rem 1.5rem;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+.mcq .option-btn {
+  width: 100%;
+  padding: 1rem;
+  border-radius: var(--md-radius-md);
+  border: 2px solid var(--md-outline-variant);
+  text-align: left;
+  transition: all 200ms;
+  display: flex;
+  align-items: flex-start;
+  gap: 0.75rem;
+  cursor: pointer;
+  background: transparent;
+}
+
+.mcq .option-btn:hover:not(:disabled) {
+  border-color: var(--md-outline);
+  background: var(--md-surface-container);
+}
+
+.mcq .option-btn.selected {
+  border-color: var(--md-primary);
+  background: var(--md-primary-container);
+}
+
+.mcq .option-btn.correct {
+  border-color: #22c55e;
+  background: #f0fdf4;
+}
+.dark .mcq .option-btn.correct {
+  background: rgba(34, 197, 94, 0.12);
+}
+
+.mcq .option-btn.incorrect {
+  border-color: #ef4444;
+  background: #fef2f2;
+}
+.dark .mcq .option-btn.incorrect {
+  background: rgba(239, 68, 68, 0.12);
+}
+
+.mcq .option-btn.dimmed {
+  opacity: 0.6;
+}
+
+.mcq .option-btn.has-detail {
+  cursor: pointer;
+}
+.mcq .option-btn.has-detail:hover {
+  filter: brightness(0.95);
+}
+
+.mcq .option-label {
+  width: 2rem;
+  height: 2rem;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.875rem;
+  font-weight: 700;
+  flex-shrink: 0;
+  background: var(--md-surface-container-high);
+  color: var(--md-on-surface);
+}
+
+.mcq .option-label.active {
+  background: var(--md-primary);
+  color: var(--md-on-primary);
+}
+
+.mcq .option-label.correct {
+  background: #22c55e;
+  color: #fff;
+}
+
+.mcq .option-label.incorrect {
+  background: #ef4444;
+  color: #fff;
+}
+
+.mcq .option-label.dimmed {
+  color: var(--md-on-surface-variant);
+}
+
+.mcq .option-detail {
+  margin: 0.25rem 0 0 2.75rem;
+  padding: 0.75rem;
+  font-size: 0.875rem;
+  color: var(--md-on-surface-variant);
+  background: var(--md-surface-container);
+  border-radius: var(--md-radius-sm);
+  line-height: 1.6;
+}
+
+.mcq .hint {
+  padding: 0 1.5rem 1rem;
+  font-size: 0.75rem;
+  color: var(--md-on-surface-variant);
+  text-align: center;
+}
+
+.mcq .result {
+  padding: 1.25rem 1.5rem;
+  border-top: 1px solid;
+}
+
+.mcq .result.correct {
+  background: #f0fdf4;
+  border-color: #bbf7d0;
+}
+.dark .mcq .result.correct {
+  background: rgba(34, 197, 94, 0.08);
+  border-color: rgba(34, 197, 94, 0.3);
+}
+
+.mcq .result.incorrect {
+  background: #fef2f2;
+  border-color: #fecaca;
+}
+.dark .mcq .result.incorrect {
+  background: rgba(239, 68, 68, 0.08);
+  border-color: rgba(239, 68, 68, 0.3);
+}
+
+.mcq .result .verdict {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  margin-bottom: 0.75rem;
+  font-weight: 700;
+}
+
+
+/* ─── Content flag ─── */
+
+.flag-btn {
+  padding: 0.375rem;
+  border-radius: var(--md-radius-sm);
+  transition: background 150ms, color 150ms;
+  color: var(--md-on-surface-variant);
+  background: transparent;
+  border: none;
+  cursor: pointer;
+}
+
+.flag-btn:hover {
+  background: var(--md-surface-container-high);
+}
+
+.flag-btn.flagged {
+  color: #d97706;
+  background: #fef3c7;
+}
+.dark .flag-btn.flagged {
+  background: rgba(217, 119, 6, 0.12);
+}
+
+.flag-menu {
+  position: absolute;
+  right: 0;
+  margin-top: 0.5rem;
+  width: 12rem;
+  border-radius: var(--md-radius-sm);
+  border: 1px solid var(--md-outline-variant);
+  background: var(--md-surface);
+  box-shadow: var(--md-shadow-2);
+  z-index: 20;
+  padding: 0.5rem;
+  list-style: none;
+}
+
+.flag-reason-btn {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 0.375rem 0.25rem;
+  border-radius: var(--md-radius-sm);
+  color: var(--md-on-surface);
+  background: transparent;
+  border: none;
+  cursor: pointer;
+}
+.flag-reason-btn:hover {
+  background: var(--md-surface-container-high);
+}
+
+.flag-reason-label {
+  font-size: 9px;
+  color: var(--md-on-surface-variant);
+  text-align: center;
+  line-height: 1.2;
+}
+
+.flag-hint {
+  font-size: 9px;
+  color: var(--md-on-surface-variant);
+  text-align: center;
+  padding-top: 0.25rem;
+}
+
+.flag-textarea {
+  width: 100%;
+  border-radius: var(--md-radius-sm);
+  border: 1px solid var(--md-outline-variant);
+  background: var(--md-surface-container-high);
+  padding: 0.5rem;
+  font-size: 0.875rem;
+  color: var(--md-on-surface);
+  resize: none;
+}
+
+/* ── Dataviz sequential ramp ────────────────────────────────────────────────
+   Single-hue, light→dark, for ORDERED MAGNITUDE only (calendar heatmap, card
+   maturity). Never use these for categorical identity — assign categorical
+   hues in fixed order from the primary/secondary tokens instead.
+   Dark steps are SELECTED against the dark surface, not an automatic flip. */
+:root {
+  --md-ramp-0: var(--md-surface-container-high);
+  --md-ramp-1: #cfe3f2;
+  --md-ramp-2: #8fbcdd;
+  --md-ramp-3: #4a86b5;
+  --md-ramp-4: #1c5888;
+}
+@media (prefers-color-scheme: dark) {
+  :root {
+    --md-ramp-0: #273137;
+    --md-ramp-1: #21455f;
+    --md-ramp-2: #326b95;
+    --md-ramp-3: #4e91c0;
+    --md-ramp-4: #7fb3dd;
+  }
+}
+:root[data-theme='dark'] {
+  --md-ramp-0: #273137;
+  --md-ramp-1: #21455f;
+  --md-ramp-2: #326b95;
+  --md-ramp-3: #4e91c0;
+  --md-ramp-4: #7fb3dd;
+}
+:root[data-theme='light'] {
+  --md-ramp-0: var(--md-surface-container-high);
+  --md-ramp-1: #cfe3f2;
+  --md-ramp-2: #8fbcdd;
+  --md-ramp-3: #4a86b5;
+  --md-ramp-4: #1c5888;
+}

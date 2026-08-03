@@ -1,0 +1,72 @@
+{
+  "id": "bank:usmle-step1:inactivated-vaccine-response:v1",
+  "rotation": "usmle-step1",
+  "moduleNodes": [
+    "usmle/step1",
+    "usmle/step1/immunology"
+  ],
+  "topics": [
+    "immunology",
+    "inactivated vaccines",
+    "humoral immunity"
+  ],
+  "questionType": "mechanism",
+  "difficulty": "easy",
+  "stem": "A vaccine is produced by killing the target organism while preserving antigens recognized by the immune system. Compared with a live preparation, which of the following patterns most characteristically describes the adaptive response to this inactivated vaccine?",
+  "options": [
+    {
+      "label": "A",
+      "text": "Cytotoxic T-cell activity with little antibody production",
+      "isCorrect": false,
+      "misconception": "Reverses the characteristic balance of the response to an inactivated product.",
+      "explanation": "A response dominated by cellular killing with minimal antibody does not match the usual immune profile elicited by an inactivated vaccine."
+    },
+    {
+      "label": "B",
+      "text": "Antibody production with little cellular immunity",
+      "isCorrect": true,
+      "misconception": "Correctly identifies the predominantly humoral pattern of an inactivated vaccine.",
+      "explanation": "Because the organism cannot reproduce, the adaptive response is weighted toward antibody production, with limited cellular immunity compared with live vaccination."
+    },
+    {
+      "label": "C",
+      "text": "Neutrophil activation without adaptive immune memory",
+      "isCorrect": false,
+      "misconception": "Substitutes an innate inflammatory response for the vaccine's adaptive effect.",
+      "explanation": "Innate cells may participate in early inflammation, but this option omits the antibody response central to an inactivated vaccine."
+    },
+    {
+      "label": "D",
+      "text": "Mucosal immunity without systemic antibody production",
+      "isCorrect": false,
+      "misconception": "Assumes an inactivated product produces an exclusively local mucosal response.",
+      "explanation": "The characteristic response is not confined to mucosal immunity and does include systemic antibody production."
+    },
+    {
+      "label": "E",
+      "text": "Memory T-cell formation without antibody-secreting cells",
+      "isCorrect": false,
+      "misconception": "Selects a purely cellular response despite the product's humoral emphasis.",
+      "explanation": "An inactivated vaccine is not characterized by isolated T-cell memory in the absence of antibody-secreting cells."
+    }
+  ],
+  "context": "Learning objective: Contrast the predominantly humoral response to an inactivated vaccine with the broader response to a live vaccine.\n\nInactivated organisms cannot reproduce in the recipient. Their immune effect is therefore driven mainly by antibody formation, while cellular immunity is relatively limited.",
+  "cite": "cdc-pink-book-vaccine-principles#inactivated-response",
+  "publicUsmle": {
+    "schemaVersion": 1,
+    "origin": "generated",
+    "itemText": {
+      "licence": "CC-BY-4.0",
+      "attribution": "MD3 contributors"
+    },
+    "evidence": {
+      "kind": "passage",
+      "sourceId": "cdc-pink-book-vaccine-principles",
+      "passageId": "inactivated-response",
+      "licence": {
+        "cls": "foss",
+        "id": "us-gov"
+      }
+    }
+  }
+}

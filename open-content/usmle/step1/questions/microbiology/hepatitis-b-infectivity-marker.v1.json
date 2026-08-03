@@ -1,0 +1,72 @@
+{
+  "id": "bank:usmle-step1:hepatitis-b-infectivity-marker:v1",
+  "rotation": "usmle-step1",
+  "moduleNodes": [
+    "usmle/step1",
+    "usmle/step1/microbiology"
+  ],
+  "topics": [
+    "microbiology",
+    "hepatitis B",
+    "infectivity markers"
+  ],
+  "questionType": "interpretation",
+  "difficulty": "easy",
+  "stem": "A 29-year-old pregnant patient tests positive for hepatitis B surface antigen. The care team evaluates additional markers while counseling her about transmission risk. Which of the following additional serologic findings is associated with a greater circulating burden of infectious hepatitis B particles?",
+  "options": [
+    {
+      "label": "A",
+      "text": "Anti-HBs detected in serum",
+      "isCorrect": false,
+      "misconception": "Equates an immunity marker with increased viral infectivity.",
+      "explanation": "Antibody to surface antigen indicates an immune response rather than a larger burden of infectious particles."
+    },
+    {
+      "label": "B",
+      "text": "HBeAg detected in serum",
+      "isCorrect": true,
+      "misconception": "Correctly identifies the serologic marker associated with higher infectivity.",
+      "explanation": "Detection of hepatitis B e antigen is associated with more infectious viral particles in serum and a greater likelihood of transmission."
+    },
+    {
+      "label": "C",
+      "text": "IgG anti-HBc detected in serum",
+      "isCorrect": false,
+      "misconception": "Uses evidence of core exposure as a direct measure of current infectivity.",
+      "explanation": "Core-specific IgG can persist after prior exposure and does not by itself identify the high-infectivity state asked about here."
+    },
+    {
+      "label": "D",
+      "text": "IgM anti-HBc detected in serum",
+      "isCorrect": false,
+      "misconception": "Confuses a marker of recent infection with the marker most closely tied to infectious-particle burden.",
+      "explanation": "Core-specific IgM supports recent infection, but the e antigen is the marker associated with increased infectivity."
+    },
+    {
+      "label": "E",
+      "text": "Anti-HBe detected in serum",
+      "isCorrect": false,
+      "misconception": "Selects antibody to the e antigen instead of the antigen itself.",
+      "explanation": "The association with a high concentration of infectious particles is made with detectable e antigen, not e antibody."
+    }
+  ],
+  "context": "Learning objective: Recognize hepatitis B e antigen as a marker associated with increased infectivity.\n\nHepatitis B e antigen correlates with a high concentration of infectious viral particles in serum. Its presence therefore signals a greater transmission risk than antibody markers alone.",
+  "cite": "cdc-pink-book-hepatitis-b#hbv-infectivity",
+  "publicUsmle": {
+    "schemaVersion": 1,
+    "origin": "generated",
+    "itemText": {
+      "licence": "CC-BY-4.0",
+      "attribution": "MD3 contributors"
+    },
+    "evidence": {
+      "kind": "passage",
+      "sourceId": "cdc-pink-book-hepatitis-b",
+      "passageId": "hbv-infectivity",
+      "licence": {
+        "cls": "foss",
+        "id": "us-gov"
+      }
+    }
+  }
+}

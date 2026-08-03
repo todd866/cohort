@@ -1,0 +1,72 @@
+{
+  "id": "bank:usmle-step1:influenza-antigenic-drift:v1",
+  "rotation": "usmle-step1",
+  "moduleNodes": [
+    "usmle/step1",
+    "usmle/step1/microbiology"
+  ],
+  "topics": [
+    "microbiology",
+    "influenza",
+    "antigenic drift"
+  ],
+  "questionType": "mechanism",
+  "difficulty": "easy",
+  "stem": "Influenza surveillance across several successive seasons shows gradual accumulation of minor viral gene changes. The resulting viruses have modest alterations in their surface proteins compared with strains from prior years. Which of the following processes best describes this pattern?",
+  "options": [
+    {
+      "label": "A",
+      "text": "Antigenic shift",
+      "isCorrect": false,
+      "misconception": "Uses the term for a sudden major antigenic change to describe gradual variation.",
+      "explanation": "Antigenic shift is an abrupt large change in influenza A surface antigens, not the stepwise accumulation described here."
+    },
+    {
+      "label": "B",
+      "text": "Lysogenic conversion",
+      "isCorrect": false,
+      "misconception": "Applies a bacteriophage-mediated bacterial mechanism to influenza evolution.",
+      "explanation": "Lysogenic conversion changes bacterial traits through an integrated phage and does not name this influenza pattern."
+    },
+    {
+      "label": "C",
+      "text": "Phenotypic mixing",
+      "isCorrect": false,
+      "misconception": "Confuses a transient packaging phenomenon with inherited gene changes.",
+      "explanation": "Phenotypic mixing does not describe the progressive, heritable alterations in influenza genes and surface proteins seen over seasons."
+    },
+    {
+      "label": "D",
+      "text": "Antigenic drift",
+      "isCorrect": true,
+      "misconception": "Correctly identifies gradual antigenic change caused by small viral mutations.",
+      "explanation": "Antigenic drift is the cumulative effect of small genetic changes that modestly alter influenza surface proteins over time."
+    },
+    {
+      "label": "E",
+      "text": "Viral complementation",
+      "isCorrect": false,
+      "misconception": "Mistakes temporary functional assistance between viruses for antigenic evolution.",
+      "explanation": "Complementation allows one virus to supply a missing function to another; it does not define gradual influenza surface-protein change."
+    }
+  ],
+  "context": "Learning objective: Identify antigenic drift from gradual genetic change in circulating influenza viruses.\n\nAntigenic drift reflects many small mutations accumulated over time. When those genetic changes alter influenza surface proteins, strains from one season can differ modestly from earlier strains.",
+  "cite": "cdc-influenza-drift-shift#influenza-drift",
+  "publicUsmle": {
+    "schemaVersion": 1,
+    "origin": "generated",
+    "itemText": {
+      "licence": "CC-BY-4.0",
+      "attribution": "MD3 contributors"
+    },
+    "evidence": {
+      "kind": "passage",
+      "sourceId": "cdc-influenza-drift-shift",
+      "passageId": "influenza-drift",
+      "licence": {
+        "cls": "foss",
+        "id": "us-gov"
+      }
+    }
+  }
+}

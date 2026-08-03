@@ -1,0 +1,72 @@
+{
+  "id": "bank:usmle-step1:live-attenuated-replication:v1",
+  "rotation": "usmle-step1",
+  "moduleNodes": [
+    "usmle/step1",
+    "usmle/step1/immunology"
+  ],
+  "topics": [
+    "immunology",
+    "live attenuated vaccines",
+    "vaccine classification"
+  ],
+  "questionType": "mechanism",
+  "difficulty": "easy",
+  "stem": "Investigators administer a live attenuated vaccine to healthy volunteers. Which of the following properties of the preparation is required for it to generate its intended immune response?",
+  "options": [
+    {
+      "label": "A",
+      "text": "Persistent replication in environmental reservoirs",
+      "isCorrect": false,
+      "misconception": "Places the relevant biological activity outside the vaccinated person.",
+      "explanation": "Environmental persistence is not the defining event needed to stimulate the recipient's response after vaccination."
+    },
+    {
+      "label": "B",
+      "text": "Direct neutralization by antibodies within the vial",
+      "isCorrect": false,
+      "misconception": "Treats the vaccine as a passive antibody preparation.",
+      "explanation": "A live attenuated vaccine contains a weakened organism, not preformed neutralizing antibody that acts before administration."
+    },
+    {
+      "label": "C",
+      "text": "Conversion into a nonliving toxoid after injection",
+      "isCorrect": false,
+      "misconception": "Confuses a live vaccine with a chemically inactivated toxin product.",
+      "explanation": "Toxoids and live attenuated organisms are distinct vaccine classes; conversion into a toxoid is not the required step here."
+    },
+    {
+      "label": "D",
+      "text": "Transient replication within the vaccinated host",
+      "isCorrect": true,
+      "misconception": "Correctly identifies host replication as the key property of a live attenuated vaccine.",
+      "explanation": "The weakened organism must reproduce in the recipient sufficiently to provide the antigenic stimulus expected from a live attenuated vaccine."
+    },
+    {
+      "label": "E",
+      "text": "Replication only inside the manufacturing culture",
+      "isCorrect": false,
+      "misconception": "Assumes growth during production substitutes for biological activity after vaccination.",
+      "explanation": "Manufacturing growth creates the vaccine supply, but the defining immune stimulus occurs when the attenuated organism reproduces after administration."
+    }
+  ],
+  "context": "Learning objective: Explain why limited replication in the recipient is integral to the action of a live attenuated vaccine.\n\nA live attenuated organism retains enough biological activity to reproduce after administration. Removing that ability changes the antigenic experience that distinguishes this class from nonliving preparations.",
+  "cite": "cdc-pink-book-vaccine-principles#live-vaccine-replication",
+  "publicUsmle": {
+    "schemaVersion": 1,
+    "origin": "generated",
+    "itemText": {
+      "licence": "CC-BY-4.0",
+      "attribution": "MD3 contributors"
+    },
+    "evidence": {
+      "kind": "passage",
+      "sourceId": "cdc-pink-book-vaccine-principles",
+      "passageId": "live-vaccine-replication",
+      "licence": {
+        "cls": "foss",
+        "id": "us-gov"
+      }
+    }
+  }
+}

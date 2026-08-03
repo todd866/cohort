@@ -1,0 +1,72 @@
+{
+  "id": "bank:usmle-step1:hepatitis-b-recovery-serology:v1",
+  "rotation": "usmle-step1",
+  "moduleNodes": [
+    "usmle/step1",
+    "usmle/step1/microbiology"
+  ],
+  "topics": [
+    "microbiology",
+    "hepatitis B",
+    "resolved infection serology"
+  ],
+  "questionType": "interpretation",
+  "difficulty": "medium",
+  "stem": "A 45-year-old woman had documented hepatitis B infection 12 years ago and recovered without antiviral treatment. She is now asymptomatic, and hepatitis B surface antigen is undetectable. Which of the following antibody combinations most strongly supports immunity after natural infection rather than vaccination alone?",
+  "options": [
+    {
+      "label": "A",
+      "text": "Anti-HBs positive; total anti-HBc positive",
+      "isCorrect": true,
+      "misconception": "Correctly combines surface antibody with evidence of prior core exposure.",
+      "explanation": "Recovery from natural infection commonly leaves both antibody to the surface antigen and antibody to the core antigen. Core antibody distinguishes this history from vaccination alone."
+    },
+    {
+      "label": "B",
+      "text": "Anti-HBs positive; total anti-HBc negative",
+      "isCorrect": false,
+      "misconception": "Chooses the pattern of vaccine-only immunity.",
+      "explanation": "Surface antibody without core antibody is expected after vaccination but does not document previous natural infection."
+    },
+    {
+      "label": "C",
+      "text": "Anti-HBs negative; total anti-HBc positive",
+      "isCorrect": false,
+      "misconception": "Recognizes prior core exposure but omits the surface antibody expected after recovery.",
+      "explanation": "Core antibody alone does not provide the typical combined antibody pattern described after recovery from natural hepatitis B infection."
+    },
+    {
+      "label": "D",
+      "text": "Anti-HBs negative; total anti-HBc negative",
+      "isCorrect": false,
+      "misconception": "Selects a pattern with no serologic evidence of immunity or prior infection.",
+      "explanation": "The absence of both antibodies would not support either recovered natural infection or a successful vaccine response."
+    },
+    {
+      "label": "E",
+      "text": "HBeAg positive; total anti-HBc negative",
+      "isCorrect": false,
+      "misconception": "Uses an antigen linked to infectivity while omitting evidence of core exposure.",
+      "explanation": "Hepatitis B e antigen does not establish the expected antibody pattern of remote, resolved natural infection."
+    }
+  ],
+  "context": "Learning objective: Differentiate resolved natural hepatitis B infection from vaccine-only immunity using core antibody.\n\nNatural infection exposes the immune system to both surface and core antigens. After recovery, anti-HBs and anti-HBc are typically both detectable; vaccination alone produces anti-HBs without anti-HBc.",
+  "cite": "cdc-pink-book-hepatitis-b#hbv-recovery-serology",
+  "publicUsmle": {
+    "schemaVersion": 1,
+    "origin": "generated",
+    "itemText": {
+      "licence": "CC-BY-4.0",
+      "attribution": "MD3 contributors"
+    },
+    "evidence": {
+      "kind": "passage",
+      "sourceId": "cdc-pink-book-hepatitis-b",
+      "passageId": "hbv-recovery-serology",
+      "licence": {
+        "cls": "foss",
+        "id": "us-gov"
+      }
+    }
+  }
+}

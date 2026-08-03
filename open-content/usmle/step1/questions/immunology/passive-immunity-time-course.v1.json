@@ -1,0 +1,72 @@
+{
+  "id": "bank:usmle-step1:passive-immunity-time-course:v1",
+  "rotation": "usmle-step1",
+  "moduleNodes": [
+    "usmle/step1",
+    "usmle/step1/immunology"
+  ],
+  "topics": [
+    "immunology",
+    "passive immunity",
+    "vaccination principles"
+  ],
+  "questionType": "mechanism",
+  "difficulty": "easy",
+  "stem": "A 24-year-old laboratory worker receives pathogen-specific immune globulin after an occupational exposure. Protective antibody is detectable soon after administration, but the concentration falls during follow-up despite no additional exposure. Which of the following features of passive immunity best explains this pattern?",
+  "options": [
+    {
+      "label": "A",
+      "text": "Recipient plasma cells generate progressively increasing antibody",
+      "isCorrect": false,
+      "misconception": "Confuses transferred antibody with an active primary immune response.",
+      "explanation": "An active response requires the recipient to generate antibody and therefore does not account for protection that is already present soon after immune globulin administration."
+    },
+    {
+      "label": "B",
+      "text": "Preformed donor antibody acts promptly and then declines",
+      "isCorrect": true,
+      "misconception": "Correctly identifies the rapid but limited duration of passive protection.",
+      "explanation": "Immune globulin supplies antibody that can function without waiting for the recipient to mount a response. Because the supplied antibody is finite, its protective effect diminishes over time."
+    },
+    {
+      "label": "C",
+      "text": "Recipient memory B cells maintain lifelong antibody production",
+      "isCorrect": false,
+      "misconception": "Assumes passive antibody transfer establishes durable host memory.",
+      "explanation": "Long-lived memory is a feature of successful active immunization or infection, not the direct transfer of an existing antibody preparation."
+    },
+    {
+      "label": "D",
+      "text": "Transferred T cells establish durable antigen-specific memory",
+      "isCorrect": false,
+      "misconception": "Mistakes an antibody product for adoptive transfer of memory lymphocytes.",
+      "explanation": "Immune globulin provides antibodies rather than a population of donor T cells capable of establishing cellular memory in the recipient."
+    },
+    {
+      "label": "E",
+      "text": "Exposure triggers a delayed primary response with no early effect",
+      "isCorrect": false,
+      "misconception": "Describes the delay of active priming rather than passive protection.",
+      "explanation": "The observed early protection is the key clue that an already formed immune product, rather than a delayed primary response, is responsible."
+    }
+  ],
+  "context": "Learning objective: Distinguish the time course of passive antibody protection from that of active immunization.\n\nPassive immunization supplies a ready-to-use antibody pool, so protection can begin before the recipient develops an adaptive response. That protection wanes as the transferred antibody is cleared.",
+  "cite": "cdc-pink-book-vaccine-principles#passive-immunity",
+  "publicUsmle": {
+    "schemaVersion": 1,
+    "origin": "generated",
+    "itemText": {
+      "licence": "CC-BY-4.0",
+      "attribution": "MD3 contributors"
+    },
+    "evidence": {
+      "kind": "passage",
+      "sourceId": "cdc-pink-book-vaccine-principles",
+      "passageId": "passive-immunity",
+      "licence": {
+        "cls": "foss",
+        "id": "us-gov"
+      }
+    }
+  }
+}

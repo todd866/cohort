@@ -1,0 +1,72 @@
+{
+  "id": "bank:usmle-step1:tetanus-inhibitory-signaling:v1",
+  "rotation": "usmle-step1",
+  "moduleNodes": [
+    "usmle/step1",
+    "usmle/step1/microbiology"
+  ],
+  "topics": [
+    "microbiology",
+    "tetanus",
+    "neurotransmission"
+  ],
+  "questionType": "mechanism",
+  "difficulty": "medium",
+  "stem": "An unvaccinated 63-year-old man develops trismus and painful generalized muscle spasms several days after a contaminated puncture wound. Light touch triggers another sustained contraction. Which of the following toxin effects most directly produces this motor pattern?",
+  "options": [
+    {
+      "label": "A",
+      "text": "Reduced release of inhibitory neurotransmitters in motor pathways",
+      "isCorrect": true,
+      "misconception": "Correctly links loss of inhibitory signaling to unchecked muscle contraction.",
+      "explanation": "The toxin prevents inhibitory neural signals from being released normally. Removing this restraint permits excessive motor activity and stimulus-triggered spasms."
+    },
+    {
+      "label": "B",
+      "text": "Increased release of inhibitory neurotransmitters in motor pathways",
+      "isCorrect": false,
+      "misconception": "Reverses the direction of the toxin's effect on inhibitory signaling.",
+      "explanation": "Increasing inhibition would suppress motor activity rather than produce the marked rigidity and spasms in this patient."
+    },
+    {
+      "label": "C",
+      "text": "Reduced acetylcholine release at the neuromuscular junction",
+      "isCorrect": false,
+      "misconception": "Confuses tetanus with a disorder causing flaccid neuromuscular weakness.",
+      "explanation": "Failure of acetylcholine release at the neuromuscular junction would impair contraction, which does not fit this patient's hyperactive motor state."
+    },
+    {
+      "label": "D",
+      "text": "Destruction of skeletal muscle contractile proteins",
+      "isCorrect": false,
+      "misconception": "Attributes the syndrome to direct structural muscle injury.",
+      "explanation": "Direct loss of contractile proteins would cause weakness and muscle damage rather than disinhibited, stimulus-sensitive contraction."
+    },
+    {
+      "label": "E",
+      "text": "Blockade of sensory transmission in peripheral nerves",
+      "isCorrect": false,
+      "misconception": "Focuses on sensory loss despite the dominant motor disinhibition.",
+      "explanation": "A peripheral sensory block would reduce afferent input and sensation; it does not explain sustained generalized spasms."
+    }
+  ],
+  "context": "Learning objective: Relate tetanus-associated muscle rigidity to toxin-mediated loss of inhibitory neural signaling.\n\nNormal motor output is restrained by inhibitory impulses. Tetanus toxin interrupts that restraint, leaving motor pathways disinhibited and capable of producing sustained contractions in response to minor stimuli.",
+  "cite": "cdc-pink-book-tetanus#tetanus-disinhibition",
+  "publicUsmle": {
+    "schemaVersion": 1,
+    "origin": "generated",
+    "itemText": {
+      "licence": "CC-BY-4.0",
+      "attribution": "MD3 contributors"
+    },
+    "evidence": {
+      "kind": "passage",
+      "sourceId": "cdc-pink-book-tetanus",
+      "passageId": "tetanus-disinhibition",
+      "licence": {
+        "cls": "foss",
+        "id": "us-gov"
+      }
+    }
+  }
+}

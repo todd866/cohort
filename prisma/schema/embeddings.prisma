@@ -1,0 +1,87 @@
+// =============================================================================
+// EMBEDDING MODELS (Managed via raw SQL scripts)
+// These models are ignored by Prisma Client and Migrations
+// but included here so 'prisma db push' doesn't try to drop the tables.
+// =============================================================================
+
+model CardEmbedding {
+  id        String                       @id
+  cardId    String                       @unique @map("card_id")
+  embedding Unsupported("halfvec(3072)")
+  createdAt DateTime                     @default(now()) @map("created_at") @db.Timestamptz(3)
+
+  @@map("card_embeddings")
+  @@ignore
+}
+
+model QuestionEmbedding {
+  id         String                       @id
+  questionId String                       @unique @map("question_id")
+  embedding  Unsupported("halfvec(3072)")
+  createdAt  DateTime                     @default(now()) @map("created_at") @db.Timestamptz(3)
+
+  @@map("question_embeddings")
+  @@ignore
+}
+
+model VideoEmbedding {
+  id        String                       @id
+  videoId   String                       @unique @map("video_id")
+  embedding Unsupported("halfvec(3072)")
+  createdAt DateTime                     @default(now()) @map("created_at") @db.Timestamptz(3)
+
+  @@map("video_embeddings")
+  @@ignore
+}
+
+model CitationEmbedding {
+  id         String                       @id
+  citationId String                       @unique @map("citation_id")
+  embedding  Unsupported("halfvec(3072)")
+  createdAt  DateTime                     @default(now()) @map("created_at") @db.Timestamptz(3)
+
+  @@map("citation_embeddings")
+  @@ignore
+}
+
+model ConceptEmbedding {
+  id        String                       @id
+  conceptId String                       @unique @map("concept_id")
+  embedding Unsupported("halfvec(3072)")
+  createdAt DateTime                     @default(now()) @map("created_at") @db.Timestamptz(3)
+
+  @@map("concept_embeddings")
+  @@ignore
+}
+
+model CoursewareEmbedding {
+  id         String                       @id
+  chunkId    String                       @unique @map("chunk_id")
+  sourceFile String                       @map("source_file")
+  sourceType String                       @default("lecture") @map("source_type")
+  rotation   String
+  week       Int?
+  chunkIndex Int                          @map("chunk_index")
+  chunkText  String                       @map("chunk_text")
+  embedding  Unsupported("halfvec(3072)")
+  createdAt  DateTime                     @default(now()) @map("created_at") @db.Timestamptz(3)
+
+  @@map("courseware_embeddings")
+  @@ignore
+}
+
+model ConceptSubspace {
+  id                     String   @id
+  conceptId              String   @unique @map("concept_id")
+  rotation               String
+  pcaMean                Json     @map("pca_mean")
+  pcaBasis               Json     @map("pca_basis")
+  explainedVariance      Json     @map("explained_variance")
+  totalVarianceExplained Float    @map("total_variance_explained")
+  localCentroid          Json     @map("local_centroid")
+  itemCount              Int      @map("item_count")
+  computedAt             DateTime @default(now()) @map("computed_at") @db.Timestamptz(3)
+
+  @@map("concept_subspaces")
+  @@ignore
+}

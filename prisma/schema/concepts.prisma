@@ -1,0 +1,204 @@
+// =============================================================================
+// CONCEPT-BASED LEARNING MODELS
+// Concept, ConceptState, UserStruggleRegion, StruggleIntervention, TeachingSignal
+// =============================================================================
+
+// Concept - A testable clinical competency (atomic unit of knowledge)
+model Concept {
+  id          String  @id @default(cuid())
+  name        String // "Differentiating shock types by clinical signs"
+  description String? @db.Text // Longer explanation
+
+  // Organization
+  rotation String // 'critical-care', 'cah', 'paam', 'pwh'
+  week     Int? // Week number if applicable
+  topics   String[] // ['shock', 'hemodynamics', 'assessment']
+
+  // Importance
+  examWeight Int     @default(1) // 1-5, how heavily weighted in exams
+  frequency  String? // 'common' | 'occasional' | 'rare'
+
+  // Prerequisites (DAG) - stored as array of concept IDs
+  prerequisiteIds String[]
+
+  // Relations
+  questions     QuestionConcept[]
+  conceptStates ConceptState[] // Unified learning state
+  facts         FactConcept[] // Facts related to this concept
+  contentGaps   ContentGap[]
+  videoConcepts VideoConcept[]
+
+  createdAt DateTime @default(now()) @db.Timestamptz(3)
+  updatedAt DateTime @updatedAt @db.Timestamptz(3)
+
+  @@index([rotation, week])
+  @@index([topics])
+}
+
+// DEPRECATED: ConceptMastery and ExposureEvent have been replaced by:
+// - LearningEvent (unified event log)
+// - ConceptState (derived knowledge state)
+// See docs/designs/2026-01-17-unified-learning-state.md
+
+// ConceptState - Derived knowledge state per user per concept
+// Computed from LearningEvent log, cached for fast access
+// Replaces the dual-write ConceptMastery model
+model ConceptState {
+  id        String @id @default(cuid())
+  userId    String
+  conceptId String
+
+  // Core knowledge estimate (high-D)
+  recallProbability Float @default(0) // P(recall | test now)
+  recallOnExamDay   Float @default(0) // P(recall | exam date)
+  confidence        Float @default(0) // How certain we are (0-1)
+
+  // Temporal dynamics
+  decayRate      Float     @default(0.1) // Personalized decay rate
+  lastProbeAt    DateTime? @db.Timestamptz(3) // Last active test
+  lastExposureAt DateTime? @db.Timestamptz(3) // Last any interaction
+
+  // Behavioral signals
+  avgResponseMs    Float? // Average response time
+  responseVariance Float? // High variance = inconsistent
+
+  // Struggle indicators (fed from Layer 4)
+  recentFailRate   Float   @default(0) // Fails / attempts in last 24h
+  inStruggleRegion Boolean @default(false)
+
+  // Counts
+  exposureCount Int @default(0)
+  probeCount    Int @default(0) // Active tests (cards + MCQs)
+
+  // Local subspace knowledge (32D PCA projection for fine-grained gap analysis)
+  localKnowledgeVector    Float[]   @default([])
+  localKnowledgeUpdatedAt DateTime? @db.Timestamptz(3)
+
+  // Metadata
+  lastComputed DateTime @default(now()) @db.Timestamptz(3)
+
+  concept Concept @relation(fields: [conceptId], references: [id], onDelete: Cascade)
+
+  @@unique([userId, conceptId])
+  @@index([userId, recallOnExamDay])
+  @@index([userId, confidence])
+  @@index([conceptId])
+}
+
+// =============================================================================
+// STRUGGLE REGION MODELS (Layer 4: Intervention State)
+// See docs/designs/2026-01-17-struggle-regions.md
+// =============================================================================
+
+// UserStruggleRegion - Aggregate struggle into regions for manifold-aware intervention
+// Tracks WHERE in embedding space the user is struggling, not just which cards
+model UserStruggleRegion {
+  id       String @id @default(cuid())
+  userId   String
+  rotation String
+
+  // Cards contributing to this struggle region
+  failedCardIds String[]
+
+  // Precomputed centroid embedding for fast similarity queries.
+  // pgvector halfvec(3072) — same dimensionality as card_embeddings.embedding so
+  // we can compute AVG inside Postgres and use the cosine operator directly.
+  // Was Bytes? (with broken vector::bytea casts on both read and write) until
+  // 2026-04-30 — that's what caused the silent-write outage.
+  centroidEmbedding Unsupported("halfvec(3072)")?
+
+  // Severity metrics
+  totalFailCount  Int    @default(0)
+  avgFailsPerCard Float  @default(0)
+  avgResponseMs   Float? // Avg response time on fails (slower = more confused)
+
+  // Lifecycle
+  activeSince DateTime  @default(now()) @db.Timestamptz(3)
+  lastUpdated DateTime  @updatedAt @db.Timestamptz(3)
+  resolvedAt  DateTime? @db.Timestamptz(3) // Null = still active
+
+  @@unique([userId, rotation])
+  @@index([userId])
+  @@index([userId, resolvedAt])
+}
+
+// StruggleIntervention - Log interventions for learning what works
+// Each time we intervene on a stuck card, log what we tried and whether it helped
+model StruggleIntervention {
+  id       String @id @default(cuid())
+  userId   String
+  rotation String
+
+  // What triggered it
+  triggerCardId  String // The card that triggered intervention
+  failCount      Int // How many fails on trigger card
+  regionSnapshot Json? // Snapshot of region state at trigger time
+
+  // What we tried
+  strategy        String // "continue" | "scaffold" | "context" | "retreat"
+  scaffoldCardIds String[] // If scaffold: which bridge cards we showed
+
+  // Outcome tracking
+  resolved               Boolean   @default(false)
+  resolvedAt             DateTime? @db.Timestamptz(3)
+  attemptsToResolve      Int? // How many attempts after intervention
+  triggerCardNextQuality Int? // Quality on eventual success (0-5)
+
+  // Brittle knowledge tracking
+  resolutionConfidence Float? // 0-1, based on attempts/speed/subsequent performance
+  stillFragile         Boolean @default(true) // Needs continued scaffolding
+
+  createdAt DateTime @default(now()) @db.Timestamptz(3)
+
+  @@index([userId, rotation])
+  @@index([triggerCardId])
+  @@index([strategy, resolved])
+  @@index([stillFragile])
+}
+
+// =============================================================================
+// TEACHING SIGNALS (Prediction/Outcome tracking)
+// Records predictions before showing items and outcomes after, enabling
+// the system to learn which interventions produce the largest mastery deltas.
+// =============================================================================
+
+model TeachingSignal {
+  id               String   @id @default(cuid())
+  userId           String
+  rotation         String
+  itemType         String // 'card' | 'question' | 'snippet'
+  itemId           String
+  interventionType String // 'probe' | 'remediate' | 'reinforce' | 'scaffold' | 'context' | 'retreat'
+  conceptIds       String[]
+  primaryConceptId String?
+
+  // Pre-intervention state
+  preRecallProbability Float
+  preConfidence        Float
+  preExposureCount     Int
+
+  // Prediction
+  predictedMasteryDelta Float
+  predictedOutcome      String? // 'correct' | 'incorrect' | null
+
+  // Post-outcome (filled by recordOutcome)
+  actualMasteryDelta    Float?
+  actualOutcome         String? // 'correct' | 'incorrect'
+  quality               Int?
+  isCorrect             Boolean?
+  responseTimeMs        Int?
+  predictionError       Float?
+  postRecallProbability Float?
+  postConfidence        Float?
+
+  // Context
+  sessionPosition Int?
+  daysToExam      Int?
+  resolvedAt      DateTime? @db.Timestamptz(3)
+
+  createdAt DateTime @default(now()) @db.Timestamptz(3)
+
+  @@index([userId, rotation])
+  @@index([userId, resolvedAt])
+  @@index([itemId])
+}

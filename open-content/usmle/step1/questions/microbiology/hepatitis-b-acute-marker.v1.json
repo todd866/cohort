@@ -1,0 +1,72 @@
+{
+  "id": "bank:usmle-step1:hepatitis-b-acute-marker:v1",
+  "rotation": "usmle-step1",
+  "moduleNodes": [
+    "usmle/step1",
+    "usmle/step1/microbiology"
+  ],
+  "topics": [
+    "microbiology",
+    "hepatitis B",
+    "acute infection serology"
+  ],
+  "questionType": "interpretation",
+  "difficulty": "medium",
+  "stem": "A 27-year-old man develops malaise, jaundice, and elevated aminotransferases 12 weeks after a needlestick exposure. Hepatitis B surface antigen is detected. Which of the following additional serologic markers most specifically supports recent acute hepatitis B infection?",
+  "options": [
+    {
+      "label": "A",
+      "text": "Antibody to hepatitis B surface antigen",
+      "isCorrect": false,
+      "misconception": "Uses surface antibody as the defining marker of a recent acute infection.",
+      "explanation": "Surface antibody is associated with immunity and does not identify the recent acute phase described in this patient."
+    },
+    {
+      "label": "B",
+      "text": "Hepatitis B e antigen",
+      "isCorrect": false,
+      "misconception": "Uses a marker of active viral replication and infectivity as the most specific marker of recent acute infection.",
+      "explanation": "HBeAg can accompany active replication, but it does not date the infection as specifically as core-specific IgM."
+    },
+    {
+      "label": "C",
+      "text": "Immunoglobulin M antibody to hepatitis B core antigen",
+      "isCorrect": true,
+      "misconception": "Correctly identifies the core-specific IgM response of recent infection.",
+      "explanation": "IgM directed against hepatitis B core antigen appears near clinical onset and supports a recent acute infection."
+    },
+    {
+      "label": "D",
+      "text": "Antibody to hepatitis B e antigen",
+      "isCorrect": false,
+      "misconception": "Uses a marker associated with declining replication rather than the standard recent-infection marker.",
+      "explanation": "Anti-HBe may appear as viral replication declines, but it is not the defining serologic evidence of recent acute infection."
+    },
+    {
+      "label": "E",
+      "text": "Immunoglobulin G antibody to hepatitis B core antigen",
+      "isCorrect": false,
+      "misconception": "Recognizes core antibody but selects an isotype that does not specifically date the infection as recent.",
+      "explanation": "Core-specific IgG may persist beyond the acute period; the IgM isotype is the more specific clue to recent infection."
+    }
+  ],
+  "context": "Learning objective: Use IgM antibody to hepatitis B core antigen as evidence of recent acute infection.\n\nNear the onset of acute hepatitis B illness, an IgM response to the viral core becomes detectable. Its timing makes it useful for distinguishing recent infection from remote exposure.",
+  "cite": "cdc-pink-book-hepatitis-b#hbv-acute-marker",
+  "publicUsmle": {
+    "schemaVersion": 1,
+    "origin": "generated",
+    "itemText": {
+      "licence": "CC-BY-4.0",
+      "attribution": "MD3 contributors"
+    },
+    "evidence": {
+      "kind": "passage",
+      "sourceId": "cdc-pink-book-hepatitis-b",
+      "passageId": "hbv-acute-marker",
+      "licence": {
+        "cls": "foss",
+        "id": "us-gov"
+      }
+    }
+  }
+}

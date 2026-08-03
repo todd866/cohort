@@ -1,0 +1,439 @@
+// =============================================================================
+// CONTENT MODELS
+// Card, Question, QuestionConcept, QuestionGroup, ContentVersion,
+// ModuleNode, Cluster, UserClusterState, ContentGap
+// =============================================================================
+
+// =============================================================================
+// MODULE TREE - Hierarchical module selection system
+// See docs/plans/2026-01-25-module-selection-ux.md
+// =============================================================================
+
+// ModuleNode - Represents a node in the module tree
+// Users activate nodes at any level: "cc" (all CC), "cc/icu" (just ICU), etc.
+model ModuleNode {
+  id   String @id @default(cuid())
+  slug String @unique // "cc", "cc/icu", "gsse", "gsse/anatomy"
+  name String // "ICU", "Anatomy"
+
+  // Tree structure
+  parentSlug String? // Parent node slug (null for root nodes)
+
+  // Classification
+  nodeType String // "institution" | "module" | "rotation" | "subrotation" | "trainer" | "section"
+
+  // Display
+  description String?
+  icon        String? // Emoji or icon name
+  color       String? // Hex color for UI theming
+  sortOrder   Int     @default(0)
+
+  // Visibility
+  isPublished Boolean @default(true)
+
+  createdAt DateTime @default(now()) @db.Timestamptz(3)
+  updatedAt DateTime @updatedAt @db.Timestamptz(3)
+
+  @@index([parentSlug])
+  @@index([nodeType])
+}
+
+// Concept clusters (auto-generated from embeddings)
+model Cluster {
+  id         String             @id @default(cuid())
+  name       String // Auto-labeled from common topics
+  rotations  String[] // Which rotations this cluster spans
+  cardCount  Int                @default(0)
+  videoCount Int                @default(0)
+  cards      Card[]
+  videos     Video[]
+  userStates UserClusterState[]
+  createdAt  DateTime           @default(now()) @db.Timestamptz(3)
+  updatedAt  DateTime           @updatedAt @db.Timestamptz(3)
+}
+
+// UserClusterState - Persisted mastery state per user per cluster
+// Aggregates CardProgress within each cluster for fast reads
+model UserClusterState {
+  id        String @id @default(cuid())
+  userId    String
+  clusterId String
+
+  // Mastery metrics (aggregated from CardProgress)
+  mastery       Float @default(0) // 0-1, combined strength * coverage
+  avgRetrieval  Float @default(0) // Average retrievalStrength of reviewed cards
+  coverage      Float @default(0) // Fraction of cluster cards reviewed
+  cardsReviewed Int   @default(0)
+  cardsTotal    Int   @default(0)
+
+  // Tracking
+  needsAttention Boolean   @default(false) // Low mastery, significant cluster
+  lastReviewedAt DateTime? @db.Timestamptz(3) // Last time user reviewed a card in this cluster
+  lastComputedAt DateTime  @default(now()) @db.Timestamptz(3)
+
+  user    User    @relation(fields: [userId], references: [id], onDelete: Cascade)
+  cluster Cluster @relation(fields: [clusterId], references: [id], onDelete: Cascade)
+
+  @@unique([userId, clusterId])
+  @@index([userId, needsAttention])
+  @@index([clusterId])
+}
+
+// IMPORTANT: All content verticals share Card/Question.
+// Use the `rotation` field to distinguish content (e.g. "gsse", "anatomy", "usmle-step1").
+// Do NOT create vertical-specific card/question/progress models.
+// Cards (auto-generated from MDX content)
+model Card {
+  id       String @id @default(cuid())
+  cardType String // 'cloze' | 'mcq' | 'pathway' | 'comparison' | 'decision' | 'timeline'
+  rotation String // Primary routing slug (page/URL/scheduler partition). 'critical-care' | 'cah' | 'paam' | 'pwh' | 'year1-kat1' | 'usmle' | …. See docs/designs/2026-05-09-rotation-vs-modulenodes.md
+  week     Int? // 1-7 for week-based content; 0/null for generic or non-week content
+
+  // Module tree - which modules this card belongs to
+  // e.g., ["cc", "cc/icu", "gsse/anatomy"] - shows if user has any of these active
+  moduleNodes     String[] @default([])
+  sourceFile      String? // 'week1-resuscitation'
+  sourceComponent String // 'Mnemonic' | 'KeyPoint' | 'MCQ' | 'Danger' | 'ClinicalPearl'
+  // Deterministic identifier for MDX-seeded cards (content hash).
+  // Used to upsert on seed so user progress isn't wiped on reseed.
+  stableId        String?  @unique
+  front           String   @db.Text // Question with [___] blanks
+  back            String   @db.Text // Answer (single answer for simple cloze)
+  backs           Json? // Array of answers for multi-cloze one-by-one cards
+  context         String?  @db.Text // Teaching context shown after answer reveal
+  topics          String[]
+  difficulty      String   @default("medium") // 'easy' | 'medium' | 'hard'
+  importance      Int      @default(1) // 1-3, higher = more exam-relevant
+  complexity      Int      @default(2) // 1=trivial, 2=moderate, 3=complex (for mastery/retirement)
+
+  // Cloze variant grouping (2026-05-08)
+  // Multi-blank MDX entries split into N single-blank sibling cards at seed time;
+  // siblings share variantGroupId. See docs/superpowers/specs/2026-05-08-cloze-variants-design.md
+  variantGroupId String?
+  variantIndex   Int?
+  variantType    String? // 'cloze-blank' | 'legacy-anchor'
+
+  // Jurisdiction - which health system's guidelines this follows
+  // null = universal (anatomy, physiology, etc.)
+  // 'nsw' | 'wa' | 'national' = jurisdiction-specific protocols
+  jurisdiction String?
+
+  // Jurisdiction variants - cards with same conceptId are the same concept
+  // but authored for different jurisdictions (e.g., NSW vs WA protocols)
+  // Details page shows all variants for comparison
+  conceptId String?
+
+  // Visual card system (2026-01-17)
+  visualData    Json? // Structured data for visual rendering (nodes, branches, rows, etc.)
+  annotations   Json? // {"HR 142": "↑ tachycardia", "Lactate 5.1": "↑↑ severe, nl <2"}
+  abbreviations Json? // {"RSI": "Rapid Sequence Intubation", "VF": "Ventricular Fibrillation"}
+  crosslinks    Json? // {primary: "/critical-care/week1", concepts: ["shock", "RSI"]}
+  imageUrl      String? // Path to associated image (e.g., "/figures/ecg/vf-real.jpg")
+  // Caption that names the finding and tells the student where to look.
+  // Required whenever imageUrl is set (enforced by detector, not yet schema)
+  // — without it, the image renders as decoration. See pedagogy_harness memory.
+  imageCaption  String? @db.Text
+  imageRole     String? // 'prompt' = image is the card stem (image-as-prompt, copyright-tier only); null = decoration
+
+  feedScore Int @default(0) // 0-10: how engaging for anonymous cold audience
+
+  // Cluster assignment
+  clusterId String?
+  cluster   Cluster? @relation(fields: [clusterId], references: [id])
+
+  // Cached similar cards (top 10, computed offline)
+  similarCards Json? // [{cardId: string, similarity: number}]
+
+  factId String?
+  fact   Fact?   @relation(fields: [factId], references: [id])
+
+  // Quality record — structured pedagogical metadata
+  // See docs/designs/2026-02-01-study-item-quality-model.md
+  // Uses ItemQualityRecord interface from src/lib/quality/types.ts
+  quality Json? @db.JsonB
+
+  // Pedagogy — clinical reasoning, misconceptions, source justification
+  // Uses CardPedagogy interface from src/lib/pedagogy/card-pedagogy.ts
+  pedagogy Json? @db.JsonB
+
+  createdAt DateTime  @default(now()) @db.Timestamptz(3)
+  deletedAt DateTime? @db.Timestamptz(3) // Soft-delete: set when card removed from MDX, preserves CardProgress history
+  shelvedAt DateTime? @db.Timestamptz(3) // Parked: card needs work (e.g. missing image) but shouldn't be deleted
+
+  // Empirical difficulty signals — populated nightly by /api/cron/empirical-aggregation.
+  // facilityIndex 0..1: fraction of grades with quality >= 3 across all users
+  //   (mirrors Question.facilityIndex). Populated from 2 unique users; downstream
+  //   complexity changes remain gated at sampleSize ≥ 10 plus uncertainty/age checks.
+  // avgResponseTimeMs: median across all CardProgress for this card.
+  //   Long times = high cognitive load; short times = trivial or guessable.
+  // sampleSize: count of unique-user reviews contributing to the metrics.
+  facilityIndex     Float?
+  avgResponseTimeMs Int?
+  sampleSize        Int?
+
+  // Exam-targeting signal — populated by the exam-relevance backfill/cron.
+  // examRelevance is the persisted scalar used for curation/sorting; meta keeps
+  // the source breakdown and top calibration domains so the number is auditable.
+  examRelevance          Float?
+  examRelevanceMeta      Json?     @db.JsonB
+  examRelevanceUpdatedAt DateTime? @db.Timestamptz(3)
+  // Per-domain exam model (exam-target engine, 2026-06-19). examDomain is the
+  // assigned official blueprint specialty area; examDomainSim its cosine to that
+  // area's centroid; examRelevancePct the within-rotation percentile of domain
+  // similarity (the DISCRIMINATING signal — a real low tail, unlike examRelevance).
+  examDomain             String?
+  examDomainSim          Float?
+  examRelevancePct       Float?
+
+  progress CardProgress[]
+  question Question? // Optional link to Question if this card is a question
+
+  // Direct citation links (hybrid model - can also link via Fact)
+  cardCitations CardCitation[]
+
+  @@index([rotation, week])
+  @@index([clusterId])
+  @@index([factId])
+  @@index([conceptId])
+  @@index([topics], type: Gin)
+  @@index([deletedAt])
+  @@index([feedScore])
+  @@index([examRelevance])
+  @@index([examRelevanceUpdatedAt])
+  @@index([examDomain])
+  @@index([variantGroupId])
+  @@index([variantGroupId, variantIndex])
+}
+
+// Note: pgvector tables (card_embeddings, question_embeddings, courseware_embeddings, concept_subspaces)
+// are managed via raw SQL in scripts/setup-manifold.ts. Not in Prisma schema (@@ignore was removed
+// during schema consolidation) but the DB tables persist.
+
+// Question - Individual assessment item (KAT, textbook, AI-generated)
+model Question {
+  id String @id @default(cuid())
+
+  // Content
+  stem    String  @db.Text // The question scenario/prompt
+  options Json // [{label: 'A', text: '...', isCorrect: boolean}]
+  context String? @map("explanation") @db.Text // Teaching context: why the answer is correct
+
+  // Organization
+  rotation String // Primary routing slug (page/URL/scheduler partition). See docs/designs/2026-05-09-rotation-vs-modulenodes.md
+  week     Int?
+  topics   String[]
+
+  // Module tree - hierarchical memberships for exam aggregation + multi-cohort scheduling. May span rotations.
+  moduleNodes String[] @default([])
+
+  // Metadata
+  source         String // 'kat-practice', 'textbook', 'ai-generated', 'user-submitted'
+  sourceFile     String? // 'CC_KAT_Practice.pdf' or source reference
+  questionNumber Int? // Original question number in source
+
+  // Question characteristics
+  questionType String // 'diagnosis', 'next-step', 'mechanism', 'calculation', 'image-interpretation', 'management'
+  difficulty   String @default("medium") // 'easy' | 'medium' | 'hard'
+
+  // Cognitive format axis — orthogonal to questionType. Captures the
+  // cognitive operation the student must perform: pattern recognition,
+  // mechanism reasoning, scenario application, etc. Used by the scheduler
+  // to prefer un-seen formats within a recently-served concept (variety
+  // in *how* a concept is probed, not just *which* concept).
+  // 'cloze' | 'recall' | 'mechanism' | 'interpretation' | 'trap' | 'comparison' | 'scenario' | 'unknown'
+  // Backfilled by format-tagger; nullable until backfill runs.
+  format String?
+
+  // Variant grouping - questions with same variantGroupId test the same concept
+  // Anchor is the original; variants are shuffled/rephrased/different-scenario versions
+  variantGroupId String? // UUID linking variant questions together
+  variantType    String? // 'anchor' | 'shuffled' | 'rephrased' | 'different-scenario' | 'near-duplicate'
+
+  // Analytics (computed from responses)
+  discriminationIndex Float? // How well question separates strong vs weak students
+  facilityIndex       Float? // % of students who get it right
+  totalAttempts       Int    @default(0)
+
+  // Option pools - for anti-pattern and deeper learning
+  // combinations: [[0,1,2,3,4], [0,1,2,3,5], ...] - which options to show together
+  // correctVariants: ["Paracetamol", "Acetaminophen"] - paraphrased correct answers
+  combinations    Json? // Array of 5-index arrays
+  correctVariants Json? // Array of strings
+
+  // Chaining - for multi-part questions about same scenario
+  chainId    String? // Groups related questions
+  chainOrder Int? // Order within chain (1, 2, 3...)
+
+  // Media
+  imageUrl      String? // Path to associated image (CT, ECG, etc.)
+  // Caption that names the finding and tells the student where to look.
+  // Required whenever imageUrl is set (enforced by detector). See
+  // pedagogy_harness memory: image without caption is decoration, not teaching.
+  imageCaption  String? @db.Text
+  crosslinks    Json? // {primary: "/deep-dive/cards/<slug>", related: [], concepts: []}
+  annotations   Json? // {"lactate 5.1": "↑↑ severe (normal <2)"}
+  abbreviations Json? // {"STEMI": "ST-Elevation MI"}
+
+  // Relations
+  concepts          QuestionConcept[]
+  responses         QuestionResponse[]
+  requiredFacts     QuestionFact[] // Facts needed to answer this question
+  questionCitations QuestionCitation[] // Direct MCQ → SourceCitation links (mirrors CardCitation)
+  // Link to existing Card if this is an MCQ card
+  cardId            String?            @unique
+  card              Card?              @relation(fields: [cardId], references: [id])
+
+  // Content pipeline state
+  contentState     String    @default("raw") // raw|validated|enhanced|cited|production|escalated|shelved
+  validatedAt      DateTime? @db.Timestamptz(3)
+  enhancedAt       DateTime? @db.Timestamptz(3)
+  citedAt          DateTime? @db.Timestamptz(3)
+  promotedAt       DateTime? @db.Timestamptz(3)
+  escalatedAt      DateTime? @db.Timestamptz(3)
+  escalationReason String?
+  citations        Json? // [{chunkId, relevanceScore, passage, connection}]
+
+  // Pedagogical analysis ("talk page" content)
+  pedagogy Json? @db.JsonB // QuestionAnalysis: primaryConcept, clinicalReasoning, misconceptions, etc.
+
+  feedScore Int @default(0) // 0-10: how engaging for anonymous cold audience
+
+  // Exclusion flag — replaced disk-based _exclusions/ JSON files
+  excluded Boolean @default(false)
+
+  // Exam-targeting signal — populated by the exam-relevance backfill/cron.
+  // examRelevance is the persisted scalar used for curation/sorting; meta keeps
+  // the source breakdown and top calibration domains so the number is auditable.
+  examRelevance          Float?
+  examRelevanceMeta      Json?     @db.JsonB
+  examRelevanceUpdatedAt DateTime? @db.Timestamptz(3)
+  // Per-domain exam model (exam-target engine, 2026-06-19) — see Card.
+  examDomain             String?
+  examDomainSim          Float?
+  examRelevancePct       Float?
+
+  createdAt DateTime @default(now()) @db.Timestamptz(3)
+  updatedAt DateTime @updatedAt @db.Timestamptz(3)
+
+  @@index([rotation, week])
+  @@index([source])
+  @@index([questionType])
+  @@index([chainId])
+  @@index([examDomain])
+  @@index([variantGroupId])
+  @@index([format])
+  @@index([contentState])
+  @@index([topics], type: Gin)
+  @@index([feedScore])
+  @@index([examRelevance])
+  @@index([examRelevanceUpdatedAt])
+}
+
+// QuestionConcept - Many-to-many: Question tests multiple Concepts
+model QuestionConcept {
+  id         String  @id @default(cuid())
+  questionId String
+  conceptId  String
+  isPrimary  Boolean @default(false) // Is this the main concept tested?
+
+  question Question @relation(fields: [questionId], references: [id], onDelete: Cascade)
+  concept  Concept  @relation(fields: [conceptId], references: [id], onDelete: Cascade)
+
+  @@unique([questionId, conceptId])
+  @@index([conceptId])
+}
+
+// =============================================================================
+// LINKED QUESTION GROUPS
+// Multi-step review items with shared context (ECG interpretation, ABG, CXR, etc.)
+// See docs/plans/2026-01-19-linked-question-groups-design.md
+// =============================================================================
+
+// QuestionGroup - Container for multi-step review with shared context
+model QuestionGroup {
+  id   String @id @default(cuid())
+  slug String @unique // "ecg-inferior-stemi-001"
+  type String // "ecg", "abg", "cxr"
+
+  // Shared context displayed throughout all steps
+  contextImageUrl String? // ECG/CXR image path
+  contextText     String? @db.Text // "65yo male, crushing chest pain"
+
+  // Steps stored as JSON array of QuestionGroupStep objects:
+  // [{id, phase, phaseName, stepNumber, type, front?, back?, stem?, options?, context?}]
+  steps Json
+
+  // Metadata
+  difficulty String   @default("medium") // 'easy' | 'medium' | 'hard'
+  topics     String[] // ["STEMI", "inferior MI", "heart block"]
+  rotation   String? // 'critical-care', etc.
+  week       Int?
+
+  // Summary shown at end
+  diagnosisSummary String? @db.Text // "Inferior STEMI with 2:1 AV block"
+
+  // Stats
+  totalAttempts Int    @default(0)
+  avgScore      Float? // Average % correct
+
+  createdAt DateTime @default(now()) @db.Timestamptz(3)
+  updatedAt DateTime @updatedAt @db.Timestamptz(3)
+
+  @@index([type])
+  @@index([rotation, week])
+  @@index([difficulty])
+}
+
+// =============================================================================
+// CARD VERSIONING (for audit trail reconstruction)
+// Enables: "What exact content did User X see on Date Y?"
+// =============================================================================
+
+// CardVersion - Immutable snapshot of card content at time of creation
+// NEVER delete these - they form the audit trail for safety investigations
+// ContentVersion - Immutable snapshot of card/question content at time of creation
+// NEVER delete these - they form the audit trail for safety investigations
+model ContentVersion {
+  id         String @id @default(cuid())
+  targetType String // 'card' | 'question'
+  targetId   String
+
+  versionNumber Int // 1, 2, 3... per target
+
+  // Content snapshot (immutable, stored as JSON)
+  snapshot Json @db.JsonB // Full content snapshot (card fields or question fields)
+
+  // Change tracking
+  contentHash String // SHA-256 of content
+
+  // Audit metadata
+  createdBy String // 'seed', 'admin', userId
+  createdAt DateTime @default(now()) @db.Timestamptz(3)
+
+  // Relations
+  learningEvents LearningEvent[]
+
+  @@unique([targetType, targetId, versionNumber])
+  @@index([targetType, targetId])
+  @@index([createdAt])
+  @@index([contentHash])
+}
+
+// ContentGap - Records sparse regions in the embedding space
+// Detected during scheduling when a weak concept has too few nearby content items.
+// Used to prioritize content creation.
+model ContentGap {
+  id                String    @id @default(cuid())
+  conceptId         String?
+  rotation          String
+  gapType           String // 'format_gap' | 'pedagogical_gap' | 'true_gap'
+  nearestSimilarity Float
+  candidateCount    Int
+  detectedAt        DateTime  @default(now()) @db.Timestamptz(3)
+  resolvedAt        DateTime? @db.Timestamptz(3)
+
+  concept Concept? @relation(fields: [conceptId], references: [id], onDelete: SetNull)
+
+  @@index([rotation, gapType])
+  @@index([detectedAt])
+}

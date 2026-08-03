@@ -1,0 +1,35 @@
+// =============================================================================
+// SANDBOX (agent/dev test harness)
+// A disposable, isolated review-attempt log. The real scheduler and feed read
+// CardProgress / QuestionResponse and NEVER read SandboxAttempt, so driving the
+// review UI in sandbox mode cannot perturb real study state. "Reset" is a single
+// scoped delete (deleteMany where userId). Models BOTH card grades and MCQ
+// answers so the sandbox can exercise CardItemView and McqItemView faithfully.
+//
+// Deliberately relationless (userId is a plain String, no FK to User): keeps the
+// change to one file, and the data is disposable so cascade integrity buys
+// nothing. See docs/superpowers/specs/2026-05-24-sandbox-review-harness-design.md
+// =============================================================================
+
+model SandboxAttempt {
+  id     String @id @default(cuid())
+  userId String
+  runId  String // groups all attempts from one sandbox session
+
+  itemType String // 'card' | 'question'
+  itemId   String // Card.id or Question.id
+
+  // Card grade (cloze): 0-5, mirrors CardProgress.lastQuality
+  quality        Int?
+  // MCQ outcome
+  isCorrect      Boolean?
+  selectedOption String? // 'A'..'E' (null = skipped)
+
+  responseMs Int?
+  metadata   Json? // display positions, stableId, caption, front snippet — for the perf readout
+
+  createdAt DateTime @default(now()) @db.Timestamptz(3)
+
+  @@index([userId, runId, createdAt])
+  @@index([userId, createdAt])
+}

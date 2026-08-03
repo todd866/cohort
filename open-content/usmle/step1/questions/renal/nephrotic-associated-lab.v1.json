@@ -1,0 +1,59 @@
+{
+  "id": "bank:usmle-step1:renal-nephrotic-associated-lab:v1",
+  "rotation": "usmle-step1",
+  "topics": ["nephrotic syndrome", "laboratory pattern"],
+  "moduleNodes": ["usmle/step1", "usmle/step1/renal"],
+  "questionType": "interpretation",
+  "difficulty": "easy",
+  "stem": "An adult has generalized edema, marked proteinuria, and hypoalbuminemia due to glomerular disease. Which of the following additional laboratory findings is characteristic of nephrotic syndrome?",
+  "options": [
+    {
+      "label": "A",
+      "text": "Elevated serum cholesterol",
+      "isCorrect": true,
+      "misconception": "None; hyperlipidemia is part of the characteristic nephrotic pattern.",
+      "explanation": "Nephrotic syndrome commonly includes elevated cholesterol and other circulating lipids."
+    },
+    {
+      "label": "B",
+      "text": "Reduced serum complement C3",
+      "isCorrect": false,
+      "misconception": "A complement-consuming nephritic process is being confused with the defining nephrotic laboratory pattern.",
+      "explanation": "Low complement can support selected immune-complex glomerulonephritides but is not a characteristic component of nephrotic syndrome."
+    },
+    {
+      "label": "C",
+      "text": "Urinary red blood cell casts",
+      "isCorrect": false,
+      "misconception": "A nephritic urine-sediment finding is being substituted for the nephrotic lipid abnormality.",
+      "explanation": "Red blood cell casts indicate glomerular inflammation and a nephritic sediment rather than the characteristic nephrotic laboratory constellation."
+    },
+    {
+      "label": "D",
+      "text": "Circulating anti-GBM antibodies",
+      "isCorrect": false,
+      "misconception": "A disease-specific marker of rapidly progressive nephritis is being mistaken for a general nephrotic finding.",
+      "explanation": "Anti-GBM antibodies support anti-glomerular-basement-membrane disease, not the characteristic nephrotic lipid pattern."
+    },
+    {
+      "label": "E",
+      "text": "Elevated serum creatine kinase",
+      "isCorrect": false,
+      "misconception": "A marker of skeletal muscle injury is being substituted for a glomerular syndrome finding.",
+      "explanation": "Creatine kinase elevation points toward muscle injury and is not part of the characteristic nephrotic laboratory constellation."
+    }
+  ],
+  "context": "Learning objective: recognize hyperlipidemia as part of the nephrotic laboratory constellation. Along with proteinuria, hypoalbuminemia, and edema, nephrotic syndrome includes high cholesterol and other blood lipids.",
+  "cite": "niddk-nephrotic-syndrome#nephrotic-hyperlipidemia",
+  "publicUsmle": {
+    "schemaVersion": 1,
+    "origin": "generated",
+    "itemText": { "licence": "CC-BY-4.0", "attribution": "MD3 contributors" },
+    "evidence": {
+      "kind": "passage",
+      "sourceId": "niddk-nephrotic-syndrome",
+      "passageId": "nephrotic-hyperlipidemia",
+      "licence": { "cls": "foss", "id": "us-gov" }
+    }
+  }
+}

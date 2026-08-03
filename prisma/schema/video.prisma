@@ -1,0 +1,119 @@
+// =============================================================================
+// VIDEO / REELS
+// Harvested Instagram reels uploaded to R2 and tagged to rotations
+// Video, VideoConcept, VideoProgress
+// =============================================================================
+
+// =============================================================================
+// CREATOR PERMISSION TRACKING
+// Tracks outreach and permission status for video creators
+// =============================================================================
+
+model VideoCreator {
+  id         String  @id @default(cuid())
+  handle     String  @unique // Instagram handle e.g. "@criticalcarenow"
+  name       String
+  url        String? // Instagram profile URL
+  videoCount Int     @default(0)
+
+  // Alternate contact
+  email        String?
+  website      String?
+  otherContact String? // YouTube, Twitter, etc.
+
+  // Permission tracking
+  permissionStatus String    @default("pending") // pending | asked | yes | no
+  contactMethod    String? // dm | email | website-form
+  askedAt          DateTime? @db.Timestamptz(3)
+  respondedAt      DateTime? @db.Timestamptz(3)
+  responseNotes    String?   @db.Text
+
+  // Content type for processing routing
+  contentType String? // visual-only | spoken | mixed
+
+  createdAt DateTime @default(now()) @db.Timestamptz(3)
+  updatedAt DateTime @updatedAt @db.Timestamptz(3)
+
+  @@index([permissionStatus])
+}
+
+model Video {
+  id             String   @id @default(cuid())
+  title          String
+  caption        String?  @db.Text
+  transcript     String?  @db.Text
+  r2Key          String   @unique
+  thumbnailR2Key String?
+  durationSecs   Int      @default(0)
+  tags           String[] @default([])
+  rotation       String?
+  week           Int?
+  creatorName    String   @default("Unknown")
+  creatorHandle  String?
+  creatorUrl     String?
+  sourceUrl      String   @unique
+  sourceMeta     Json?    @db.JsonB
+  complexity     Int?
+  published      Boolean  @default(false)
+  feedScore      Int      @default(0) // 0-10: how engaging for anonymous cold audience
+  tone           String   @default("educational") // educational | meme
+  seriousness    Float? // 0.0 (pure meme) → 1.0 (pure lecture), computed from embeddings
+  pedagogy       Json?    @db.JsonB
+
+  // Learner-facing delivery is fail-closed on rights clearance. Publishing is
+  // an editorial state; it is not evidence that the creator granted reuse.
+  rightsStatus String @default("restricted") // restricted | cleared | revoked
+
+  // Commitment tier required to view this video
+  requiredTier String @default("visitor") // visitor | browser | student | committed | superfan
+
+  // Cluster assignment
+  clusterId String?
+  cluster   Cluster? @relation(fields: [clusterId], references: [id])
+
+  createdAt DateTime @default(now()) @db.Timestamptz(3)
+  updatedAt DateTime @updatedAt @db.Timestamptz(3)
+
+  progress      VideoProgress[]
+  videoConcepts VideoConcept[]
+
+  @@index([rotation])
+  @@index([published])
+  @@index([rightsStatus, published])
+  @@index([createdAt])
+  @@index([feedScore])
+  @@index([clusterId])
+}
+
+model VideoConcept {
+  id         String  @id @default(cuid())
+  videoId    String
+  conceptId  String
+  similarity Float
+  isPrimary  Boolean @default(false)
+
+  video   Video   @relation(fields: [videoId], references: [id], onDelete: Cascade)
+  concept Concept @relation(fields: [conceptId], references: [id], onDelete: Cascade)
+
+  @@unique([videoId, conceptId])
+  @@index([conceptId])
+  @@index([videoId])
+}
+
+model VideoProgress {
+  id          String    @id @default(cuid())
+  userId      String
+  videoId     String
+  watched     Boolean   @default(false)
+  watchedAt   DateTime? @db.Timestamptz(3)
+  liked       Boolean   @default(false)
+  bookmarked  Boolean   @default(false)
+  watchedSecs Int       @default(0)
+
+  user  User  @relation(fields: [userId], references: [id], onDelete: Cascade)
+  video Video @relation(fields: [videoId], references: [id], onDelete: Cascade)
+
+  @@unique([userId, videoId])
+  @@index([userId])
+  @@index([videoId])
+}

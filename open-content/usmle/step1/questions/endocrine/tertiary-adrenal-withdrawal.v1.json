@@ -1,0 +1,59 @@
+{
+  "id": "bank:usmle-step1:endocrine-tertiary-adrenal-withdrawal:v1",
+  "rotation": "usmle-step1",
+  "topics": ["tertiary adrenal insufficiency", "glucocorticoid withdrawal"],
+  "moduleNodes": ["usmle/step1", "usmle/step1/endocrine"],
+  "questionType": "diagnosis",
+  "difficulty": "easy",
+  "stem": "A 58-year-old woman abruptly stops prednisone after taking a high daily dose for eight months. She subsequently develops weakness, nausea, and hypotension. Which diagnosis best explains this presentation?",
+  "options": [
+    {
+      "label": "A",
+      "text": "Primary adrenal insufficiency",
+      "isCorrect": false,
+      "misconception": "Primary disease reflects adrenal gland destruction rather than central suppression by therapy.",
+      "explanation": "The temporal link to stopping prolonged prednisone points to central axis suppression, not adrenal destruction."
+    },
+    {
+      "label": "B",
+      "text": "Primary hyperaldosteronism",
+      "isCorrect": false,
+      "misconception": "Hyperaldosteronism causes hypertension and hypokalemia rather than this withdrawal syndrome.",
+      "explanation": "The symptoms began after glucocorticoid withdrawal and fit cortisol deficiency, not aldosterone excess."
+    },
+    {
+      "label": "C",
+      "text": "Pheochromocytoma syndrome",
+      "isCorrect": false,
+      "misconception": "Catecholamine excess more often causes episodic hypertension, palpitations, and diaphoresis.",
+      "explanation": "Pheochromocytoma does not follow abrupt cessation of chronic glucocorticoid therapy."
+    },
+    {
+      "label": "D",
+      "text": "Syndrome of inappropriate ADH",
+      "isCorrect": false,
+      "misconception": "SIADH can cause nausea and hyponatremia but does not explain the steroid-withdrawal timing.",
+      "explanation": "The medication history directly identifies suppression of the hypothalamic-pituitary-adrenal axis."
+    },
+    {
+      "label": "E",
+      "text": "Tertiary adrenal insufficiency",
+      "isCorrect": true,
+      "misconception": "None; chronic exogenous glucocorticoids can suppress hypothalamic CRH output.",
+      "explanation": "Abrupt withdrawal after prolonged glucocorticoid exposure can reveal a suppressed hypothalamic-pituitary-adrenal axis."
+    }
+  ],
+  "context": "Learning objective: recognize tertiary adrenal insufficiency after abrupt withdrawal of chronic glucocorticoid therapy. Exogenous glucocorticoids suppress the hypothalamic-pituitary-adrenal axis; tapering allows endogenous signaling and adrenal responsiveness to recover.",
+  "cite": "niddk-adrenal-insufficiency#steroid-withdrawal",
+  "publicUsmle": {
+    "schemaVersion": 1,
+    "origin": "generated",
+    "itemText": { "licence": "CC-BY-4.0", "attribution": "MD3 contributors" },
+    "evidence": {
+      "kind": "passage",
+      "sourceId": "niddk-adrenal-insufficiency",
+      "passageId": "steroid-withdrawal",
+      "licence": { "cls": "foss", "id": "us-gov" }
+    }
+  }
+}

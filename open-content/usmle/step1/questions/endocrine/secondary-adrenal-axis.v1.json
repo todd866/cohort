@@ -1,0 +1,59 @@
+{
+  "id": "bank:usmle-step1:endocrine-secondary-adrenal-axis:v1",
+  "rotation": "usmle-step1",
+  "topics": ["secondary adrenal insufficiency", "hypothalamic-pituitary-adrenal axis"],
+  "moduleNodes": ["usmle/step1", "usmle/step1/endocrine"],
+  "questionType": "interpretation",
+  "difficulty": "medium",
+  "stem": "A 46-year-old man develops fatigue and fasting hypoglycemia several months after pituitary surgery. Secondary adrenal insufficiency is suspected. Which hormone pattern is most consistent with this diagnosis?",
+  "options": [
+    {
+      "label": "A",
+      "text": "Low ACTH with low cortisol",
+      "isCorrect": true,
+      "misconception": "None; pituitary ACTH deficiency reduces adrenal cortisol production.",
+      "explanation": "Damage to the pituitary can lower ACTH, so the adrenal cortex receives less stimulation to produce cortisol."
+    },
+    {
+      "label": "B",
+      "text": "High ACTH with low cortisol",
+      "isCorrect": false,
+      "misconception": "This is the loss-of-feedback pattern of primary adrenal failure.",
+      "explanation": "When the adrenal gland itself fails, low cortisol removes feedback and ACTH rises."
+    },
+    {
+      "label": "C",
+      "text": "Low ACTH with high cortisol",
+      "isCorrect": false,
+      "misconception": "This pattern implies cortisol excess suppressing ACTH, not adrenal insufficiency.",
+      "explanation": "High cortisol would be inconsistent with the suspected cortisol-deficient state."
+    },
+    {
+      "label": "D",
+      "text": "High ACTH with high cortisol",
+      "isCorrect": false,
+      "misconception": "Both hormones being high suggests persistent stimulation or loss of normal regulation.",
+      "explanation": "Secondary adrenal insufficiency is defined by inadequate pituitary stimulation, so ACTH should not be high."
+    },
+    {
+      "label": "E",
+      "text": "Normal ACTH with high cortisol",
+      "isCorrect": false,
+      "misconception": "A normal ACTH value can be inappropriate in context, but high cortisol rules out this deficiency pattern.",
+      "explanation": "The expected central-deficiency pattern is low ACTH accompanied by low cortisol."
+    }
+  ],
+  "context": "Learning objective: distinguish central from primary adrenal insufficiency using the direction of ACTH and cortisol changes. Pituitary failure causes inadequate ACTH secretion, which reduces adrenal cortisol synthesis; primary adrenal failure instead produces a compensatory ACTH rise.",
+  "cite": "niddk-adrenal-insufficiency#secondary-acth",
+  "publicUsmle": {
+    "schemaVersion": 1,
+    "origin": "generated",
+    "itemText": { "licence": "CC-BY-4.0", "attribution": "MD3 contributors" },
+    "evidence": {
+      "kind": "passage",
+      "sourceId": "niddk-adrenal-insufficiency",
+      "passageId": "secondary-acth",
+      "licence": { "cls": "foss", "id": "us-gov" }
+    }
+  }
+}

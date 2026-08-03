@@ -1,0 +1,139 @@
+# See https://help.github.com/articles/ignoring-files/ for more about ignoring files.
+
+# local db mirror
+.db-mirror-last-sync
+
+# dependencies
+/node_modules
+/.pnp
+.pnp.*
+.yarn/*
+!.yarn/patches
+!.yarn/plugins
+!.yarn/releases
+!.yarn/versions
+
+# testing
+/coverage/*
+!/coverage/management/
+!/coverage/management/*.json
+/playwright-report/
+/test-results/
+/e2e/**/*.png
+
+# next.js
+/.next/
+/out/
+
+# production
+/build
+
+# misc
+.DS_Store
+*.pem
+
+# debug
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+.pnpm-debug.log*
+
+# env files (can opt-in for committing if needed)
+.env*
+!.env.example
+
+# vercel
+.vercel
+
+# typescript
+*.tsbuildinfo
+next-env.d.ts
+
+/src/generated/prisma
+src/lib/generated/
+.env*.local
+
+# Generated audit reports — `npm run audit:images` writes these, and historical
+# rows could still surface signed-URL fragments. Curated audit outputs that are
+# intentionally tracked sit alongside this and override per-file.
+/audit/results/image-performance.json
+/audit/results/image-performance.md
+
+# generated content analysis artifacts
+content-gaps.json
+
+# local scratch / agent artifacts
+/.tmp/
+/.claude/worktrees/
+.superpowers/
+broken-content-audit.json
+/.playwright-mcp/
+scripts/*-results.json
+.flags-triage-state.json
+
+# Xcode / iOS
+**/xcuserdata/
+**/DerivedData/
+*.xcuserstate
+*.xccheckout
+
+# Large Anki media imports (use cloud storage instead)
+public/figures/anki/
+
+# Source data (raw downloads, not for production)
+data/
+content-sources/
+
+# ECG images hosted on Cloudflare R2
+public/figures/ecg-db/
+public/figures/anki/
+
+# Exam calibration data (confidential)
+../.private/
+
+# Codespace file uploads (drag-and-drop from Finder)
+uploads/
+
+# Python cache
+__pycache__/
+
+# Research projects (separate repos)
+research/
+
+# Reels inbox (downloaded videos, transcripts, tags — commit only metadata)
+reels-inbox/downloads/
+reels-inbox/tags/
+reels-inbox/transcripts/
+.claude/scheduled_tasks.lock
+
+# generated image library + ephemeral worklist outputs
+src/data/image-library.generated.ts
+src/data/image-library.generated.json
+/.tmp/
+
+
+# anki-import pipeline manifests (regenerable, contain machine-local paths)
+scripts/anki-import/manifest.json
+scripts/anki-import/manifest.*.json
+# anki-import scratch probes (underscore-prefixed) + bulk candidate dumps —
+# throwaway analysis artifacts; content belongs in medicine-data, not the app repo
+scripts/anki-import/_*.ts
+scripts/anki-import/candidates.*.json
+
+# Root-level agent scratch artifacts (search dumps, temp query outputs).
+# Keep these out of the index entirely — the shared multi-agent tree makes a
+# stray `git add -A` dangerous (see memory feedback_git_add_explicit). Anchored
+# to repo root so they never shadow a legitimately-named file in a subtree.
+/*_tmp.txt
+/.*_tmp.txt
+/.lastout.txt
+/.search_*.txt
+/.sr_*.txt
+/AGENT_SEARCH*
+/Q[0-9]*_*.txt
+/SANITY*.txt
+/WTEST.txt
+/outputs/
+
+# Grounded-audit judge chunks (large, regenerated from the ledger + LE)
+.grounded-chunks/

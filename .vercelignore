@@ -1,0 +1,28 @@
+# Ignore large folders during deployment
+# These are local development/data files not needed for production
+
+# Large data folders (leading / = root only)
+/data/
+/content-sources/
+/scripts/ecg-database/
+/research/
+/question-bank/
+
+# ECG images (hosted on Cloudflare R2)
+public/figures/ecg-db/
+public/figures/anki/
+
+# Retired iOS prototype (never part of the web deployment)
+ios/
+
+# Development artifacts
+# NOTE: do NOT ignore .git/ — the Vercel ignoreCommand (vercel.json) needs the
+# git repo present to diff HEAD against VERCEL_GIT_PREVIOUS_SHA. Stripping it here
+# made `git diff` fail ("Not a git repository") and errored the deploy (2026-06-17).
+# .git is build-time only; it is never part of the .next deploy artifact.
+node_modules/
+.next/
+coverage/
+playwright-report/
+test-results/
+.tmp/

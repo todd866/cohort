@@ -1,0 +1,329 @@
+{
+  "schemaVersion": 1,
+  "verifiedAt": "2026-08-01",
+  "quoteSetSha256": "4d310b8edd62e6bf6223c634e04e20c5253347d2e3f17600d55a3c6f7035b6ad",
+  "registrySha256": "23e56cafc9ea5658a0cced162220f5364806545f35930a88c827aab603616d16",
+  "sources": [
+    {
+      "id": "cdc-pink-book-vaccine-principles",
+      "title": "Pink Book, Chapter 1: Principles of Vaccination",
+      "publisher": "Centers for Disease Control and Prevention",
+      "canonicalUrl": "https://www.cdc.gov/pinkbook/hcp/table-of-contents/chapter-1-principles-of-vaccination.html",
+      "attribution": "Source: Centers for Disease Control and Prevention (CDC). This material is also available from CDC at no charge. No CDC or U.S. Government endorsement is implied.",
+      "licence": {
+        "cls": "foss",
+        "id": "us-gov",
+        "url": "https://www.cdc.gov/other/agencymaterials.html"
+      },
+      "passages": [
+        {
+          "id": "passive-immunity",
+          "locator": "Types of Immunity > Passive Immunity",
+          "quote": "Passive immunity provides immediate protection against infection, but that protection is temporary."
+        },
+        {
+          "id": "maternal-igg",
+          "locator": "Types of Immunity > Passive Immunity",
+          "quote": "Antibodies, specifically the class of antibody referred to as IgG, are transported across the placenta."
+        },
+        {
+          "id": "live-vaccine-replication",
+          "locator": "Classification of Vaccines > Live, Attenuated Vaccines",
+          "quote": "To produce an immune response, live, attenuated vaccines must replicate in the vaccinated person."
+        },
+        {
+          "id": "inactivated-response",
+          "locator": "Classification of Vaccines > Inactivated Vaccines",
+          "quote": "The immune response to an inactivated vaccine is mostly antibody production. Little or no cellular immunity results."
+        }
+      ]
+    },
+    {
+      "id": "cdc-pink-book-tetanus",
+      "title": "Pink Book, Chapter 21: Tetanus",
+      "publisher": "Centers for Disease Control and Prevention",
+      "canonicalUrl": "https://www.cdc.gov/pinkbook/hcp/table-of-contents/chapter-21-tetanus.html",
+      "attribution": "Source: Centers for Disease Control and Prevention (CDC). This material is also available from CDC at no charge. No CDC or U.S. Government endorsement is implied.",
+      "licence": {
+        "cls": "foss",
+        "id": "us-gov",
+        "url": "https://www.cdc.gov/other/agencymaterials.html"
+      },
+      "passages": [
+        {
+          "id": "tetanus-disinhibition",
+          "locator": "Pathogenesis",
+          "quote": "Tetanus toxin interferes with the release of neurotransmitters, blocking inhibitor impulses."
+        },
+        {
+          "id": "tetanus-anaerobic",
+          "locator": "Pathogenesis",
+          "quote": "In the presence of anaerobic conditions, the spores germinate."
+        }
+      ]
+    },
+    {
+      "id": "cdc-pink-book-hepatitis-b",
+      "title": "Pink Book, Chapter 10: Hepatitis B",
+      "publisher": "Centers for Disease Control and Prevention",
+      "canonicalUrl": "https://www.cdc.gov/pinkbook/hcp/table-of-contents/chapter-10-hepatitis-b.html",
+      "attribution": "Source: Centers for Disease Control and Prevention (CDC). This material is also available from CDC at no charge. No CDC or U.S. Government endorsement is implied.",
+      "licence": {
+        "cls": "foss",
+        "id": "us-gov",
+        "url": "https://www.cdc.gov/other/agencymaterials.html"
+      },
+      "passages": [
+        {
+          "id": "hbv-vaccine-serology",
+          "locator": "Laboratory Testing",
+          "quote": "Persons who respond to HepB vaccine are positive only for anti-HBs."
+        },
+        {
+          "id": "hbv-recovery-serology",
+          "locator": "Laboratory Testing",
+          "quote": "Persons who recover from natural HBV infection are typically positive for both anti-HBs and anti-HBc."
+        },
+        {
+          "id": "hbv-acute-marker",
+          "locator": "Laboratory Testing",
+          "quote": "IgM anti-HBc appears in persons with acute disease about the time of illness onset and indicates recent infection with HBV."
+        },
+        {
+          "id": "hbv-infectivity",
+          "locator": "Laboratory Testing",
+          "quote": "HBeAg is a marker that is associated with a high number of infective HBV particles in the serum and a higher risk of infectivity."
+        }
+      ]
+    },
+    {
+      "id": "cdc-influenza-drift-shift",
+      "title": "How Flu Viruses Can Change: Drift and Shift",
+      "publisher": "Centers for Disease Control and Prevention",
+      "canonicalUrl": "https://www.cdc.gov/flu/php/viruses/change.html",
+      "attribution": "Source: Centers for Disease Control and Prevention (CDC). This material is also available from CDC at no charge. No CDC or U.S. Government endorsement is implied.",
+      "licence": {
+        "cls": "foss",
+        "id": "us-gov",
+        "url": "https://www.cdc.gov/other/agencymaterials.html"
+      },
+      "passages": [
+        {
+          "id": "influenza-drift",
+          "locator": "Antigenic Drift",
+          "quote": "Drift consists of small changes (or mutations) in the genes of influenza viruses that can lead to changes in the surface proteins of the virus."
+        },
+        {
+          "id": "influenza-shift",
+          "locator": "Antigenic Shift",
+          "quote": "Shift is an abrupt, major change in a flu A virus, resulting in new HA and/or new HA and NA proteins."
+        }
+      ]
+    },
+    {
+      "id": "fda-conjugate-vaccine-mechanism",
+      "title": "Meningococcal and Pneumococcal Conjugate Vaccine and Method of Using Same",
+      "publisher": "U.S. Food and Drug Administration",
+      "canonicalUrl": "https://www.fda.gov/science-research/licensing-and-collaboration-opportunities/meningococcal-and-pneumococcal-conjugate-vaccine-and-method-using-same",
+      "attribution": "Source: U.S. Food and Drug Administration (FDA). No FDA or U.S. Government endorsement is implied.",
+      "licence": {
+        "cls": "foss",
+        "id": "us-gov",
+        "url": "https://www.fda.gov/about-fda/about-website/website-policies"
+      },
+      "passages": [
+        {
+          "id": "conjugate-t-cell-dependent",
+          "locator": "Technology Summary",
+          "quote": "The covalent linkage renders the otherwise T-cell independent polysaccharide antigen to become T-cell dependent thus inducing long term immunity."
+        }
+      ]
+    },
+    {
+      "id": "niddk-adrenal-insufficiency",
+      "title": "Definition and Facts of Adrenal Insufficiency and Addison's Disease",
+      "publisher": "National Institute of Diabetes and Digestive and Kidney Diseases",
+      "canonicalUrl": "https://www.niddk.nih.gov/health-information/endocrine-diseases/adrenal-insufficiency-addisons-disease/definition-facts",
+      "attribution": "Source: NIDDK, National Institutes of Health. No NIH or U.S. Government endorsement is implied.",
+      "licence": {
+        "cls": "foss",
+        "id": "us-gov",
+        "url": "https://www.nih.gov/about-nih/frequently-asked-questions#copyright"
+      },
+      "passages": [
+        {
+          "id": "secondary-acth",
+          "locator": "What is adrenal insufficiency? > Secondary adrenal insufficiency",
+          "quote": "If the pituitary doesn’t make enough ACTH, the adrenal glands don’t make enough cortisol."
+        },
+        {
+          "id": "steroid-withdrawal",
+          "locator": "Who is more likely to develop adrenal insufficiency?",
+          "quote": "People who take glucocorticoid medicines, such as prednisone, for a long time and then stop are most likely to develop tertiary adrenal insufficiency."
+        }
+      ]
+    },
+    {
+      "id": "niddk-adrenal-treatment",
+      "title": "Treatment for Adrenal Insufficiency and Addison's Disease",
+      "publisher": "National Institute of Diabetes and Digestive and Kidney Diseases",
+      "canonicalUrl": "https://www.niddk.nih.gov/health-information/endocrine-diseases/adrenal-insufficiency-addisons-disease/treatment",
+      "attribution": "Source: NIDDK, National Institutes of Health. No NIH or U.S. Government endorsement is implied.",
+      "licence": {
+        "cls": "foss",
+        "id": "us-gov",
+        "url": "https://www.nih.gov/about-nih/frequently-asked-questions#copyright"
+      },
+      "passages": [
+        {
+          "id": "adrenal-crisis-treatment",
+          "locator": "How do doctors treat adrenal insufficiency?",
+          "quote": "Treatment for adrenal crisis includes immediate IV injections of corticosteroids and large amounts of IV saline, a salt solution, with dextrose added."
+        }
+      ]
+    },
+    {
+      "id": "medlineplus-aldosterone-test",
+      "title": "Aldosterone Test",
+      "publisher": "MedlinePlus, U.S. National Library of Medicine",
+      "canonicalUrl": "https://medlineplus.gov/lab-tests/aldosterone-test/",
+      "attribution": "Source: MedlinePlus, U.S. National Library of Medicine. No NIH or U.S. Government endorsement is implied.",
+      "licence": {
+        "cls": "foss",
+        "id": "us-gov",
+        "url": "https://medlineplus.gov/about/using/usingcontent/"
+      },
+      "passages": [
+        {
+          "id": "aldosterone-renal-electrolytes",
+          "locator": "What is an aldosterone (ALD) test?",
+          "quote": "ALD signals your kidneys to release more sodium into your blood and to get rid of potassium through urine."
+        }
+      ]
+    },
+    {
+      "id": "niddk-nephrotic-syndrome",
+      "title": "Nephrotic Syndrome in Children",
+      "publisher": "National Institute of Diabetes and Digestive and Kidney Diseases",
+      "canonicalUrl": "https://www.niddk.nih.gov/health-information/kidney-disease/children/nephrotic-syndrome-children",
+      "attribution": "Source: NIDDK, National Institutes of Health. No NIH or U.S. Government endorsement is implied.",
+      "licence": {
+        "cls": "foss",
+        "id": "us-gov",
+        "url": "https://www.nih.gov/about-nih/frequently-asked-questions#copyright"
+      },
+      "passages": [
+        {
+          "id": "nephrotic-protein-leak",
+          "locator": "What is nephrotic syndrome?",
+          "quote": "Nephrotic syndrome usually happens when the glomeruli are damaged, allowing too much protein to leak from the blood into the urine."
+        },
+        {
+          "id": "nephrotic-hyperlipidemia",
+          "locator": "What is nephrotic syndrome? > symptoms",
+          "quote": "high levels of cholesterol and other lipids (fats) in your blood, called hyperlipidemia"
+        }
+      ]
+    },
+    {
+      "id": "niddk-type-1-diabetes",
+      "title": "Type 1 Diabetes",
+      "publisher": "National Institute of Diabetes and Digestive and Kidney Diseases",
+      "canonicalUrl": "https://www.niddk.nih.gov/health-information/diabetes/overview/what-is-diabetes/type-1-diabetes",
+      "attribution": "Source: NIDDK, National Institutes of Health. No NIH or U.S. Government endorsement is implied.",
+      "licence": {
+        "cls": "foss",
+        "id": "us-gov",
+        "url": "https://www.nih.gov/about-nih/frequently-asked-questions#copyright"
+      },
+      "passages": [
+        {
+          "id": "type1-beta-cells",
+          "locator": "What causes type 1 diabetes?",
+          "quote": "Type 1 diabetes develops when the body’s immune system destroys the cells in the pancreas that make insulin. These cells are called beta cells."
+        },
+        {
+          "id": "dka-ketones",
+          "locator": "What health problems can people with type 1 diabetes develop? > Diabetic ketoacidosis",
+          "quote": "Your body will begin to use fat as a source of energy instead. This process produces substances called ketones."
+        }
+      ]
+    },
+    {
+      "id": "niddk-a1c-test",
+      "title": "The A1C Test and Diabetes",
+      "publisher": "National Institute of Diabetes and Digestive and Kidney Diseases",
+      "canonicalUrl": "https://www.niddk.nih.gov/health-information/diagnostic-tests/a1c-test",
+      "attribution": "Source: NIDDK, National Institutes of Health. No NIH or U.S. Government endorsement is implied.",
+      "licence": {
+        "cls": "foss",
+        "id": "us-gov",
+        "url": "https://www.nih.gov/about-nih/frequently-asked-questions#copyright"
+      },
+      "passages": [
+        {
+          "id": "a1c-glycation",
+          "locator": "What is the A1C test?",
+          "quote": "The A1C test measures the amount of hemoglobin with attached glucose and reflects your average blood glucose levels over the past 3 months."
+        }
+      ]
+    },
+    {
+      "id": "nhlbi-sickle-cell-disease",
+      "title": "What Is Sickle Cell Disease?",
+      "publisher": "National Heart, Lung, and Blood Institute",
+      "canonicalUrl": "https://www.nhlbi.nih.gov/health/sickle-cell-disease",
+      "attribution": "Source: NHLBI, National Institutes of Health. No NIH or U.S. Government endorsement is implied.",
+      "licence": {
+        "cls": "foss",
+        "id": "us-gov",
+        "url": "https://www.nih.gov/about-nih/frequently-asked-questions#copyright"
+      },
+      "passages": [
+        {
+          "id": "sickle-occlusion",
+          "locator": "What Is Sickle Cell Disease?",
+          "quote": "When red blood cells sickle, they do not bend or move easily and can block blood flow to the rest of the body."
+        }
+      ]
+    },
+    {
+      "id": "nhgri-autosomal-recessive",
+      "title": "Autosomal Recessive Disorder",
+      "publisher": "National Human Genome Research Institute",
+      "canonicalUrl": "https://www.genome.gov/genetics-glossary/Autosomal-Recessive-Disorder",
+      "attribution": "Source: National Human Genome Research Institute, National Institutes of Health. No NIH or U.S. Government endorsement is implied.",
+      "licence": {
+        "cls": "foss",
+        "id": "us-gov",
+        "url": "https://www.nih.gov/about-nih/frequently-asked-questions#copyright"
+      },
+      "passages": [
+        {
+          "id": "autosomal-recessive-risk",
+          "locator": "Definition",
+          "quote": "In a family where both parents are carriers and do not have the disease, roughly a quarter of their children will inherit two disease-causing alleles and have the disease."
+        }
+      ]
+    },
+    {
+      "id": "nhgri-mitochondrial-dna",
+      "title": "Mitochondrial DNA",
+      "publisher": "National Human Genome Research Institute",
+      "canonicalUrl": "https://www.genome.gov/genetics-glossary/Mitochondrial-DNA",
+      "attribution": "Source: National Human Genome Research Institute, National Institutes of Health. No NIH or U.S. Government endorsement is implied.",
+      "licence": {
+        "cls": "foss",
+        "id": "us-gov",
+        "url": "https://www.nih.gov/about-nih/frequently-asked-questions#copyright"
+      },
+      "passages": [
+        {
+          "id": "mitochondrial-maternal",
+          "locator": "Definition",
+          "quote": "Offspring inherit mitochondria — and as a result mitochondrial DNA — from their mother."
+        }
+      ]
+    }
+  ]
+}

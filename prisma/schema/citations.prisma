@@ -1,0 +1,309 @@
+// =============================================================================
+// SOURCE CITATION MODELS
+// Source, SourceCitation, CardCitation, Fact, FactConcept, QuestionFact,
+// CitationSnapshot, CitationAuditLog, CitationCheck
+// =============================================================================
+
+// Source - Authority registry for normalized citation tracking
+model Source {
+  id   String @id @default(cuid())
+  slug String @unique // 'cc-bible', 'etg-anaphylaxis', 'arc-guidelines'
+
+  // Display
+  name      String // "Critical Care Bible"
+  shortName String // "CC Bible"
+
+  // Classification
+  sourceType   String // 'textbook', 'guidelines', 'lecture', 'uptodate', 'peer-reviewed'
+  reliability  Int     @default(3) // 1-5 tier (5 = gold standard guidelines)
+  jurisdiction String? // 'nsw' | 'wa' | 'national' | 'international' | null (null = universal)
+
+  // Reference info
+  publisher   String?
+  url         String? // External link if available
+  lastUpdated DateTime? @db.Timestamptz(3) // When the source was last updated
+
+  // Aliases for normalization ("Bible p.131" → slug: "cc-bible")
+  aliases String[]
+
+  // Relations
+  sourceCitations SourceCitation[]
+  createdAt       DateTime         @default(now()) @db.Timestamptz(3)
+  updatedAt       DateTime         @updatedAt @db.Timestamptz(3)
+
+  @@index([sourceType])
+  @@index([reliability])
+}
+
+// SourceCitation - Detailed citation with progressive disclosure levels
+model SourceCitation {
+  id       String @id @default(cuid())
+  sourceId String
+
+  // Location within source
+  page    String? // "p.131-136" or "Chapter 12"
+  section String? // "Shock Classification"
+
+  // Progressive disclosure content
+  level1Text    String // "CC Bible p.131" - always visible
+  level2Quote   String? @db.Text // Exact quote - click to reveal
+  level2Context String? @db.Text // Surrounding context
+
+  // Verification
+  verified   Boolean   @default(false)
+  verifiedBy String? // User ID who verified
+  verifiedAt DateTime? @db.Timestamptz(3)
+
+  // Relations
+  source Source @relation(fields: [sourceId], references: [id])
+  facts  Fact[] // Many-to-many via implicit relation
+
+  // Versioned snapshots (for audit trail)
+  snapshots         CitationSnapshot[]
+  currentSnapshotId String? // Points to the active snapshot
+
+  // Stability and audit scheduling
+  // Different knowledge types change at different rates
+  stabilityTier     String @default("procedural") // 'procedural' | 'research' | 'foundational'
+  auditIntervalDays Int? // Override default for tier (procedural=90, research=180, foundational=365)
+
+  // Direct card links (hybrid model - cards can link via Fact OR directly)
+  cardCitations     CardCitation[]
+  questionCitations QuestionCitation[]
+
+  createdAt DateTime @default(now()) @db.Timestamptz(3)
+
+  @@index([sourceId])
+  @@index([stabilityTier])
+}
+
+// CardCitation - Join table for direct Card → Citation links
+// Hybrid model: cards can link to citations directly OR via Fact
+model CardCitation {
+  id         String @id @default(cuid())
+  cardId     String
+  citationId String
+
+  // Relationship metadata
+  isPrimary    Boolean @default(false) // Main supporting citation for this card
+  relationship String  @default("supports") // 'supports' | 'contradicts' | 'contextualizes'
+
+  // Jurisdiction notes for comparative display
+  // e.g., "WA protocol uses 0.5mg instead of 1mg"
+  jurisdictionNote String? @db.Text
+
+  // Provenance - how this link was created
+  addedBy    String // 'authoring' | 'curation' | 'suggestion' | userId
+  addedAt    DateTime  @default(now()) @db.Timestamptz(3)
+  verifiedBy String? // User who confirmed this link is correct
+  verifiedAt DateTime? @db.Timestamptz(3)
+
+  // Relations
+  card     Card           @relation(fields: [cardId], references: [id], onDelete: Cascade)
+  citation SourceCitation @relation(fields: [citationId], references: [id], onDelete: Cascade)
+
+  @@unique([cardId, citationId])
+  @@index([citationId])
+  @@index([addedBy])
+  @@index([isPrimary])
+}
+
+// QuestionCitation - Join table for direct Question → Citation links.
+// Mirrors CardCitation so MCQs are queryable in the same citation graph.
+// Backfilled from Question.citations.cite slug strings during seed.
+model QuestionCitation {
+  id         String @id @default(cuid())
+  questionId String
+  citationId String
+
+  // Relationship metadata
+  isPrimary    Boolean @default(false)
+  relationship String  @default("supports") // 'supports' | 'contradicts' | 'contextualizes'
+
+  // Jurisdiction notes for comparative display
+  jurisdictionNote String? @db.Text
+
+  // Provenance
+  addedBy    String // 'authoring' | 'seed-backfill' | 'curation' | userId
+  addedAt    DateTime  @default(now()) @db.Timestamptz(3)
+  verifiedBy String?
+  verifiedAt DateTime? @db.Timestamptz(3)
+
+  // Relations
+  question Question       @relation(fields: [questionId], references: [id], onDelete: Cascade)
+  citation SourceCitation @relation(fields: [citationId], references: [id], onDelete: Cascade)
+
+  @@unique([questionId, citationId])
+  @@index([citationId])
+  @@index([addedBy])
+  @@index([isPrimary])
+}
+
+// =============================================================================
+// CITATION VERSIONING & AUDIT TRAIL
+// Safety-critical: Full history preserved for regulatory investigations
+// =============================================================================
+
+// CitationSnapshot - Immutable snapshot of source content at time of access
+// NEVER delete these - they form the audit trail for safety investigations
+model CitationSnapshot {
+  id         String         @id @default(cuid())
+  citationId String
+  citation   SourceCitation @relation(fields: [citationId], references: [id])
+
+  // What we accessed
+  url           String? // URL at time of access (may change/break later)
+  urlAccessedAt DateTime @db.Timestamptz(3) // When we fetched this URL
+
+  // The actual content (immutable once created)
+  contentRaw  String  @db.Text // Full text/HTML we retrieved
+  contentHash String // SHA-256 for change detection
+  contentType String? // 'text/html', 'application/pdf', etc.
+
+  // Extracted data
+  extractedText  String? @db.Text // Clean text extracted from HTML/PDF
+  extractedQuote String? @db.Text // The specific quote supporting our claim
+
+  // Metadata at time of access
+  pageTitle    String?
+  lastModified DateTime? @db.Timestamptz(3) // From HTTP headers if available
+  httpStatus   Int? // 200, 404, etc.
+
+  // Who/what created this snapshot
+  createdBy String // 'system', 'agent', or userId
+  createdAt DateTime @default(now()) @db.Timestamptz(3)
+
+  // Link to audit log entries
+  auditLogs CitationAuditLog[]
+
+  @@index([citationId])
+  @@index([contentHash])
+  @@index([createdAt])
+}
+
+// CitationAuditLog - Immutable audit trail for citation changes
+// Records every access, verification, update, or investigation touch
+model CitationAuditLog {
+  id         String            @id @default(cuid())
+  snapshotId String?
+  snapshot   CitationSnapshot? @relation(fields: [snapshotId], references: [id])
+
+  // What happened
+  action String // 'created', 'verified', 'url_changed', 'content_changed', 'broken_link', 'investigated'
+  actor  String // 'system', 'agent', userId, or 'safety_investigation'
+
+  // Context
+  reason   String? @db.Text // Why this action was taken
+  metadata Json? // Additional structured data (e.g., investigation reference number)
+
+  // Before/after for changes
+  previousUrl  String?
+  newUrl       String?
+  previousHash String?
+  newHash      String?
+
+  // Timestamps (immutable)
+  occurredAt DateTime @default(now()) @db.Timestamptz(3)
+
+  @@index([snapshotId])
+  @@index([action])
+  @@index([occurredAt])
+  @@index([actor])
+}
+
+// CitationCheck - Scheduled URL health checks
+// Detects when sources change or go offline
+model CitationCheck {
+  id         String @id @default(cuid())
+  snapshotId String
+
+  // Check results
+  checkedAt   DateTime @default(now()) @db.Timestamptz(3)
+  httpStatus  Int? // null if network error
+  contentHash String? // null if couldn't fetch
+
+  // Change detection
+  urlChanged     Boolean @default(false) // Redirect detected
+  contentChanged Boolean @default(false) // Hash differs from snapshot
+  isAccessible   Boolean @default(true) // Could we reach it?
+
+  // If changed, reference to new snapshot
+  newSnapshotId String?
+
+  @@index([snapshotId])
+  @@index([checkedAt])
+  @@index([contentChanged])
+}
+
+// Fact - Atomic facts extracted from sources, used to generate cards
+model Fact {
+  id        String @id @default(cuid())
+  statement String @db.Text // The atomic fact (canonical form)
+
+  // Source attribution (can have multiple sources citing same fact)
+  citations String[] // ["CC Bible p.131", "Week 1 lecture", "eTG Anaphylaxis"]
+
+  // Validation (gradual, through use)
+  verified Boolean @default(false) // Human confirmed correct
+  flagged  Boolean @default(false) // Someone said it's wrong
+
+  // Curriculum mapping
+  rotation String // 'critical-care', 'cah', 'paam', 'pwh'
+  week     Int
+  topics   String[]
+
+  // Importance
+  examWeight Float @default(1.0) // How exam-relevant (1.0 = normal, 2.0 = high yield)
+
+  // Graph: Dependencies (fact IDs this fact requires understanding of)
+  prerequisiteIds String[]
+
+  // Embedding for similarity search (256 dimensions)
+  embedding Unsupported("vector(256)")?
+
+  // Relations
+  cards    Card[] // Cards generated from this fact
+  concepts FactConcept[] // Many-to-many with Concept
+
+  // Structured citations (replaces legacy citations[] string array)
+  sourceCitations SourceCitation[]
+
+  // MCQ dependencies (which MCQs require this fact)
+  requiredByMCQs QuestionFact[]
+
+  createdAt DateTime @default(now()) @db.Timestamptz(3)
+  updatedAt DateTime @updatedAt @db.Timestamptz(3)
+
+  @@index([rotation, week])
+  @@index([topics])
+  @@index([verified])
+  @@index([flagged])
+}
+
+// FactConcept - Many-to-many: Facts relate to Concepts
+model FactConcept {
+  id        String  @id @default(cuid())
+  factId    String
+  conceptId String
+  isPrimary Boolean @default(false) // Is this the main concept for this fact?
+
+  fact    Fact    @relation(fields: [factId], references: [id], onDelete: Cascade)
+  concept Concept @relation(fields: [conceptId], references: [id], onDelete: Cascade)
+
+  @@unique([factId, conceptId])
+  @@index([conceptId])
+}
+
+// QuestionFact - Many-to-many: Questions require Facts to answer
+model QuestionFact {
+  id         String  @id @default(cuid())
+  questionId String
+  factId     String
+  isRequired Boolean @default(true) // Must know this fact to answer correctly
+
+  question Question @relation(fields: [questionId], references: [id], onDelete: Cascade)
+  fact     Fact     @relation(fields: [factId], references: [id], onDelete: Cascade)
+
+  @@unique([questionId, factId])
+  @@index([factId])
+}

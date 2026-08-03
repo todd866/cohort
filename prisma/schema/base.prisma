@@ -1,0 +1,266 @@
+generator client {
+  provider        = "prisma-client-js"
+  previewFeatures = ["postgresqlExtensions"]
+}
+
+datasource db {
+  provider   = "postgresql"
+  extensions = [pgvector(map: "vector")]
+}
+
+// NextAuth.js required models
+model Account {
+  id                String  @id @default(cuid())
+  userId            String
+  type              String
+  provider          String
+  providerAccountId String
+  refresh_token     String? @db.Text
+  access_token      String? @db.Text
+  expires_at        Int?
+  token_type        String?
+  scope             String?
+  id_token          String? @db.Text
+  session_state     String?
+  user              User    @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@unique([provider, providerAccountId])
+  @@index([userId])
+}
+
+model Session {
+  id           String   @id @default(cuid())
+  sessionToken String   @unique
+  userId       String
+  expires      DateTime @db.Timestamptz(3)
+  user         User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@index([userId])
+}
+
+model User {
+  id            String    @id @default(cuid())
+  name          String?
+  email         String?   @unique
+  emailVerified DateTime? @db.Timestamptz(3)
+  image         String?
+
+  // Email aliases (for login with multiple emails)
+  emailAliases UserEmail[]
+
+  // Profile
+  cohort        Int? // Graduation year cohort
+  medSchool     String? // University
+  studyGoal     Int? // Daily card target
+  track         Int? // Optional institution-defined stream number
+  ccSubrotation String? // Current CC sub-rotation: 'icu' | 'anaesthetics' | 'em'
+
+  // Institution
+  institution    String? // 'usyd' | 'usmle' | 'other'
+  enabledModules String[] @default(["ecg", "cxr", "abg"]) // Universal modules enabled for mixing
+
+  // Active modules - hierarchical module tree selection
+  // Slugs like "cc/icu", "gsse/anatomy" - see ModuleNode
+  activeModules String[] @default([])
+
+  // Jurisdiction - determines which guidelines/protocols to show
+  // 'nsw' | 'wa' | 'national' | null (null = show all/infer from institution)
+  jurisdiction String?
+
+  // Feature access
+  betaAccess Boolean @default(false) // Enables video/reels section
+  imageTier  String  @default("standard") // 'standard' | 'copyright' — gates copyright-required images
+
+  // Feed profile — accumulated from inline polls and profiling cards
+  // Structure: { explicit: {studying, year, school}, implicit: {pollAnswers, ...}, feedBias: {} }
+  feedProfile Json?
+
+  // Preferences
+  darkMode            Boolean @default(false)
+  emailDigest         Boolean @default(true) // Weekly progress emails
+  preferAbbreviations Boolean @default(false) // Display "MI" vs "myocardial infarction"
+
+  // Stats (denormalized for quick access)
+  totalStudyTime Int       @default(0) // Minutes
+  currentStreak  Int       @default(0) // Days
+  longestStreak  Int       @default(0)
+  lastActiveAt   DateTime? @db.Timestamptz(3)
+
+  // Durable privacy-deletion tombstone. UserDocument presign creation locks
+  // this row and fails closed once requestedAt is set. notBefore is the latest
+  // issued PUT expiry plus a safety margin; account cleanup cannot finalise
+  // before it.
+  privacyDeletionRequestedAt DateTime? @db.Timestamptz(3)
+  privacyDeletionNotBefore   DateTime? @db.Timestamptz(3)
+
+  createdAt DateTime @default(now()) @db.Timestamptz(3)
+
+  // Relations
+  accounts             Account[]
+  sessions             Session[]
+  cardProgress         CardProgress[]
+  rotations            UserRotation[]
+  pageViews            PageView[]
+  questionResponses    QuestionResponse[]
+  anonymousSessions    AnonymousSession[]
+  termStates           UserTermState[]
+  deepDiveChatSessions DeepDiveChatSession[]
+  clusterStates        UserClusterState[]
+  ContentExposure      ContentExposure[]
+  videoProgress        VideoProgress[]
+  documents            UserDocument[]
+  serveDecisions       ServeDecision[]
+  syncOperations       SyncOperation[]
+  examResults          ExamResult[]
+}
+
+// User-uploaded documents (PDFs, zips, etc.) — targeting system for profile
+model UserDocument {
+  id     String @id @default(cuid())
+  userId String
+  user   User   @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  filename  String // Original filename
+  r2Key     String // R2 object key
+  mimeType  String // MIME type
+  sizeBytes Int // File size in bytes
+  status    String @default("pending") // pending | quarantined | pending-deletion | error; legacy ready rows may exist but no automatic processing path
+
+  // Every direct-upload URL is valid for a bounded window. Deletion first
+  // persists a tombstone and waits through that window so a stale PUT cannot
+  // recreate an object after R2 cleanup.
+  uploadUrlExpiresAt  DateTime  @default(dbgenerated("(CURRENT_TIMESTAMP + '00:10:00'::interval)")) @db.Timestamptz(3)
+  deletionRequestedAt DateTime? @db.Timestamptz(3)
+  deleteAfter         DateTime? @db.Timestamptz(3)
+
+  metadata Json? // Future: extracted topics, concepts, etc.
+
+  createdAt DateTime @default(now()) @db.Timestamptz(3)
+  updatedAt DateTime @updatedAt @db.Timestamptz(3)
+
+  @@index([userId])
+  @@index([status, deleteAfter])
+}
+
+// Email aliases - allows users to log in with multiple email addresses
+// All aliases point to the same User account
+model UserEmail {
+  id     String @id @default(cuid())
+  email  String @unique // The alias email address (case-insensitive lookup)
+  userId String
+  user   User   @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  // Verification
+  verified   Boolean   @default(false)
+  verifiedAt DateTime? @db.Timestamptz(3)
+
+  // Metadata
+  createdAt DateTime @default(now()) @db.Timestamptz(3)
+  label     String? // Optional label like "Work", "Personal", "University"
+
+  @@index([userId])
+}
+
+// Track anonymous users before they log in
+model AnonymousSession {
+  id String @id @default(cuid())
+
+  // Browser fingerprint (privacy-respecting hash)
+  fingerprint String // hash of: userAgent + screenSize + timezone
+
+  // Optional link to user (if they log in later)
+  userId String?
+  user   User?   @relation(fields: [userId], references: [id])
+
+  // Session timestamps
+  startedAt    DateTime @default(now()) @db.Timestamptz(3)
+  lastActiveAt DateTime @default(now()) @db.Timestamptz(3)
+
+  // Aggregated activity (for login nudge thresholds)
+  cardsViewed   Int @default(0)
+  mcqsAttempted Int @default(0)
+  pagesRead     Int @default(0)
+
+  // Progressive profile — accumulated from feed interactions
+  profile Json? // { explicit: {studying, year, school}, implicit: {topTopics, avgDwellMs, ...}, feedBias: {} }
+
+  feedEvents FeedEvent[]
+
+  @@index([fingerprint])
+  @@index([userId])
+}
+
+// Append-only event log for anonymous feed interactions
+model FeedEvent {
+  id                 String   @id @default(cuid())
+  sessionFingerprint String? // Nullable since 2026-05-09 — authenticated users can record events directly via userId without an AnonymousSession.
+  userId             String? // Populated on signup via linkSessionToUser
+  eventType          String // impression, interact, scroll, profile_answer, signup_click
+  itemId             String? // Content item ID or inline card slug
+  itemType           String? // video, mcq, cloze, teach, poll, profiling, cta
+  feedPosition       Int? // Position in the feed (0-indexed)
+  action             String? // play, pause, complete, answer, reveal, vote_up, vote_down, bookmark
+  result             String? // correct/incorrect, poll answer text, profiling answer
+  dwellMs            Int? // Time spent on this item
+  metadata           Json? // Overflow bag (video watch %, scroll depth, etc.)
+  timestamp          DateTime @default(now()) @db.Timestamptz(3)
+
+  session AnonymousSession? @relation(fields: [sessionFingerprint], references: [id])
+
+  @@index([sessionFingerprint, timestamp])
+  @@index([itemId, eventType])
+  @@index([userId, timestamp])
+  @@index([eventType, timestamp])
+}
+
+// Atomic cross-instance request-throttling bucket. Keys are SHA-256 hashes of
+// their route/user-or-IP namespace, so the table never stores raw identifiers.
+model RateLimitBucket {
+  key             String   @id @db.VarChar(71)
+  count           Int
+  windowStartedAt DateTime @db.Timestamptz(3)
+  expiresAt       DateTime @db.Timestamptz(3)
+  updatedAt       DateTime @updatedAt @db.Timestamptz(3)
+
+  @@index([expiresAt])
+}
+
+// Track agent work for content improvement
+model AgentJob {
+  id String @id @default(cuid())
+
+  // Job classification
+  type     String // 'create_mcq_variant', 'fix_flagged_card', etc.
+  priority Int    @default(2) // 1=urgent, 2=normal, 3=low
+
+  // What it relates to
+  rotation   String?
+  conceptId  String?
+  cardId     String?
+  questionId String?
+
+  // Why it was created
+  trigger  String // 'repetition_detected', 'flag_threshold', etc.
+  metadata Json? // Context for the agent
+
+  // Workflow state
+  status      String    @default("pending") // pending, claimed, completed, dismissed
+  claimedBy   String? // Agent session identifier
+  claimedAt   DateTime? @db.Timestamptz(3)
+  completedAt DateTime? @db.Timestamptz(3)
+  result      Json? // What the agent produced
+
+  createdAt DateTime @default(now()) @db.Timestamptz(3)
+
+  @@index([status, priority])
+  @@index([type])
+  @@index([rotation])
+}
+
+model VerificationToken {
+  identifier String
+  token      String   @unique
+  expires    DateTime @db.Timestamptz(3)
+
+  @@unique([identifier, token])
+}

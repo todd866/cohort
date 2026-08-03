@@ -1,0 +1,72 @@
+{
+  "id": "bank:usmle-step1:influenza-antigenic-shift:v1",
+  "rotation": "usmle-step1",
+  "moduleNodes": [
+    "usmle/step1",
+    "usmle/step1/microbiology"
+  ],
+  "topics": [
+    "microbiology",
+    "influenza A",
+    "antigenic shift"
+  ],
+  "questionType": "mechanism",
+  "difficulty": "easy",
+  "stem": "Public health laboratories identify an influenza A virus whose hemagglutinin profile differs substantially from previously circulating strains. The new profile appeared abruptly rather than through a series of minor seasonal changes. Which of the following processes best describes this event?",
+  "options": [
+    {
+      "label": "A",
+      "text": "Antigenic drift",
+      "isCorrect": false,
+      "misconception": "Applies the term for small cumulative changes to a sudden major change.",
+      "explanation": "Antigenic drift produces gradual variation through minor mutations and does not fit the abrupt new surface-antigen profile described."
+    },
+    {
+      "label": "B",
+      "text": "Antigenic shift",
+      "isCorrect": true,
+      "misconception": "Correctly identifies an abrupt major alteration in influenza A surface antigens.",
+      "explanation": "Antigenic shift is a sudden major change in influenza A that yields a new hemagglutinin, with or without a new neuraminidase."
+    },
+    {
+      "label": "C",
+      "text": "Lysogenic conversion",
+      "isCorrect": false,
+      "misconception": "Transfers a bacteriophage concept to an influenza A antigenic event.",
+      "explanation": "Lysogenic conversion concerns bacterial characteristics encoded by an integrated phage and does not describe influenza surface-antigen change."
+    },
+    {
+      "label": "D",
+      "text": "Phenotypic mixing",
+      "isCorrect": false,
+      "misconception": "Confuses a temporary virion phenotype with a stable major antigenic change.",
+      "explanation": "Phenotypic mixing does not name the abrupt emergence of new influenza A hemagglutinin or neuraminidase antigens."
+    },
+    {
+      "label": "E",
+      "text": "Viral complementation",
+      "isCorrect": false,
+      "misconception": "Mistakes functional rescue during coinfection for a population-level antigenic change.",
+      "explanation": "Complementation supplies a missing viral function during coinfection but does not define this major change in influenza A surface proteins."
+    }
+  ],
+  "context": "Learning objective: Distinguish antigenic shift from antigenic drift by the magnitude and timing of influenza A surface-antigen change.\n\nAntigenic shift occurs abruptly and produces a major change in influenza A hemagglutinin, sometimes accompanied by a new neuraminidase. This contrasts with the incremental variation of drift.",
+  "cite": "cdc-influenza-drift-shift#influenza-shift",
+  "publicUsmle": {
+    "schemaVersion": 1,
+    "origin": "generated",
+    "itemText": {
+      "licence": "CC-BY-4.0",
+      "attribution": "MD3 contributors"
+    },
+    "evidence": {
+      "kind": "passage",
+      "sourceId": "cdc-influenza-drift-shift",
+      "passageId": "influenza-shift",
+      "licence": {
+        "cls": "foss",
+        "id": "us-gov"
+      }
+    }
+  }
+}

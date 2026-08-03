@@ -1,0 +1,59 @@
+{
+  "id": "bank:usmle-step1:genetics-mitochondrial-inheritance:v1",
+  "rotation": "usmle-step1",
+  "topics": ["mitochondrial inheritance", "maternal transmission"],
+  "moduleNodes": ["usmle/step1", "usmle/step1/genetics"],
+  "questionType": "interpretation",
+  "difficulty": "easy",
+  "stem": "A pathogenic mitochondrial DNA variant is present in a woman and in each of her children. Her affected brother has children, but none inherited the variant from him. Which inheritance pattern best explains this pedigree?",
+  "options": [
+    {
+      "label": "A",
+      "text": "Maternal cytoplasmic transmission",
+      "isCorrect": true,
+      "misconception": "None; offspring receive their mitochondria from the oocyte.",
+      "explanation": "Affected mothers can transmit mitochondrial DNA variants, whereas affected fathers do not transmit their mitochondria to offspring."
+    },
+    {
+      "label": "B",
+      "text": "Autosomal dominant transmission",
+      "isCorrect": false,
+      "misconception": "Vertical transmission is being recognized without accounting for the parent-of-origin restriction.",
+      "explanation": "Autosomal dominant alleles can be transmitted by either an affected mother or an affected father."
+    },
+    {
+      "label": "C",
+      "text": "Autosomal recessive transmission",
+      "isCorrect": false,
+      "misconception": "A carrier-pair pattern is being substituted for uniparental organelle inheritance.",
+      "explanation": "Autosomal recessive transmission does not predict that only mothers pass the variant onward."
+    },
+    {
+      "label": "D",
+      "text": "X-linked dominant transmission",
+      "isCorrect": false,
+      "misconception": "Sex-linked inheritance is being confused with mitochondrial parent-of-origin inheritance.",
+      "explanation": "An affected father with an X-linked dominant allele would transmit it to all daughters."
+    },
+    {
+      "label": "E",
+      "text": "Y-linked paternal transmission",
+      "isCorrect": false,
+      "misconception": "The direction of transmission is reversed and female transmission would be impossible.",
+      "explanation": "Y-linked variants pass from fathers to sons, unlike the maternal pattern shown here."
+    }
+  ],
+  "context": "Learning objective: recognize maternal inheritance of mitochondrial DNA. The embryo's mitochondria are supplied by the oocyte, so mitochondrial variants can pass through affected mothers but are not transmitted by affected fathers.",
+  "cite": "nhgri-mitochondrial-dna#mitochondrial-maternal",
+  "publicUsmle": {
+    "schemaVersion": 1,
+    "origin": "generated",
+    "itemText": { "licence": "CC-BY-4.0", "attribution": "MD3 contributors" },
+    "evidence": {
+      "kind": "passage",
+      "sourceId": "nhgri-mitochondrial-dna",
+      "passageId": "mitochondrial-maternal",
+      "licence": { "cls": "foss", "id": "us-gov" }
+    }
+  }
+}

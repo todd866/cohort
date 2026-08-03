@@ -1,0 +1,59 @@
+{
+  "id": "bank:usmle-step1:endocrine-a1c-glycation:v1",
+  "rotation": "usmle-step1",
+  "topics": ["hemoglobin A1C", "protein glycation"],
+  "moduleNodes": ["usmle/step1", "usmle/step1/endocrine"],
+  "questionType": "mechanism",
+  "difficulty": "easy",
+  "stem": "A patient with diabetes has an A1C value measured during a routine visit. The laboratory value most directly quantifies which molecular event?",
+  "options": [
+    {
+      "label": "A",
+      "text": "Attachment of glucose to hemoglobin",
+      "isCorrect": true,
+      "misconception": "None; A1C is the fraction of hemoglobin carrying attached glucose.",
+      "explanation": "Sustained blood glucose exposure increases glycation of hemoglobin within circulating red cells."
+    },
+    {
+      "label": "B",
+      "text": "Attachment of insulin to albumin",
+      "isCorrect": false,
+      "misconception": "Hormone binding is being confused with nonenzymatic protein glycation.",
+      "explanation": "The assay measures glucose-associated hemoglobin, not insulin bound to albumin."
+    },
+    {
+      "label": "C",
+      "text": "Oxidation of heme within erythrocytes",
+      "isCorrect": false,
+      "misconception": "Hemoglobin oxidation states are being confused with glucose attachment.",
+      "explanation": "A1C is not a measure of methemoglobin formation or heme oxidation."
+    },
+    {
+      "label": "D",
+      "text": "Cleavage of glycogen into glucose",
+      "isCorrect": false,
+      "misconception": "A metabolic pathway is being substituted for the blood protein modification being assayed.",
+      "explanation": "Glycogenolysis affects glucose availability but is not directly measured by A1C."
+    },
+    {
+      "label": "E",
+      "text": "Binding of oxygen to heme iron",
+      "isCorrect": false,
+      "misconception": "Hemoglobin's oxygen transport function is being confused with its glycation state.",
+      "explanation": "Oxygen saturation and hemoglobin glycation are different laboratory measurements."
+    }
+  ],
+  "context": "Learning objective: identify the biochemical basis of hemoglobin A1C. Glucose attaches to hemoglobin during the red cell's circulation, so the glycated fraction integrates glycemic exposure over time rather than reflecting only the glucose concentration at the blood draw.",
+  "cite": "niddk-a1c-test#a1c-glycation",
+  "publicUsmle": {
+    "schemaVersion": 1,
+    "origin": "generated",
+    "itemText": { "licence": "CC-BY-4.0", "attribution": "MD3 contributors" },
+    "evidence": {
+      "kind": "passage",
+      "sourceId": "niddk-a1c-test",
+      "passageId": "a1c-glycation",
+      "licence": { "cls": "foss", "id": "us-gov" }
+    }
+  }
+}

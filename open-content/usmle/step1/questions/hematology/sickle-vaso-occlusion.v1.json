@@ -1,0 +1,59 @@
+{
+  "id": "bank:usmle-step1:hematology-sickle-vaso-occlusion:v1",
+  "rotation": "usmle-step1",
+  "topics": ["sickle cell disease", "vaso-occlusive pain"],
+  "moduleNodes": ["usmle/step1", "usmle/step1/hematology"],
+  "questionType": "mechanism",
+  "difficulty": "easy",
+  "stem": "A 16-year-old boy with sickle cell disease develops severe limb pain after dehydration during a sporting event. Which process most directly produces the acute pain?",
+  "options": [
+    {
+      "label": "A",
+      "text": "Acute splenic sequestration of circulating erythrocytes",
+      "isCorrect": false,
+      "misconception": "A different acute complication of sickle cell disease is being substituted for vaso-occlusion.",
+      "explanation": "Splenic sequestration primarily causes abrupt anemia and splenic enlargement; it does not directly explain this dehydration-triggered limb pain."
+    },
+    {
+      "label": "B",
+      "text": "Accelerated erythrocyte hemolysis with bilirubin production",
+      "isCorrect": false,
+      "misconception": "Chronic hemolysis is being selected instead of the vascular mechanism of an acute pain crisis.",
+      "explanation": "Hemolysis contributes to anemia and jaundice, but acute vaso-occlusive pain is produced most directly by impaired microvascular perfusion."
+    },
+    {
+      "label": "C",
+      "text": "Chronic marrow expansion from compensatory erythropoiesis",
+      "isCorrect": false,
+      "misconception": "A chronic adaptation to hemolytic anemia is being substituted for an acute vascular event.",
+      "explanation": "Marrow expansion develops from sustained erythropoietic demand and does not produce the abrupt dehydration-triggered pain described here."
+    },
+    {
+      "label": "D",
+      "text": "Focal bone infection by an enteric bacterium",
+      "isCorrect": false,
+      "misconception": "Osteomyelitis, another sickle cell complication, is being selected without infectious features.",
+      "explanation": "Osteomyelitis can cause focal bone pain, but the abrupt multifocal pain after dehydration without fever is more consistent with vaso-occlusion."
+    },
+    {
+      "label": "E",
+      "text": "Microvascular obstruction by poorly deformable sickled erythrocytes",
+      "isCorrect": true,
+      "misconception": "None; sickled cells lose deformability and impede tissue perfusion.",
+      "explanation": "Rigid sickled erythrocytes obstruct small vessels, producing ischemia and acute vaso-occlusive pain."
+    }
+  ],
+  "context": "Learning objective: explain vaso-occlusive pain in sickle cell disease. Sickling reduces erythrocyte flexibility, allowing cells to obstruct the microcirculation and cause tissue ischemia, especially during physiologic stress such as dehydration.",
+  "cite": "nhlbi-sickle-cell-disease#sickle-occlusion",
+  "publicUsmle": {
+    "schemaVersion": 1,
+    "origin": "generated",
+    "itemText": { "licence": "CC-BY-4.0", "attribution": "MD3 contributors" },
+    "evidence": {
+      "kind": "passage",
+      "sourceId": "nhlbi-sickle-cell-disease",
+      "passageId": "sickle-occlusion",
+      "licence": { "cls": "foss", "id": "us-gov" }
+    }
+  }
+}

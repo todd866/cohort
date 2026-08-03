@@ -1,0 +1,722 @@
+{
+  "schemaVersion": 1,
+  "pathManifest": "foss/distribution-paths.txt",
+  "includeRoots": [
+    "prisma/migrations",
+    "prisma/schema",
+    "scripts/foss",
+    "src"
+  ],
+  "includeFiles": [
+    ".env.example",
+    ".gitignore",
+    ".npmrc",
+    ".nvmrc",
+    ".prettierrc",
+    ".vercelignore",
+    "CONTRIBUTING.md",
+    "LICENSE",
+    "LICENSE-CONTENT.md",
+    "THIRD_PARTY_LICENSES/Geist-OFL-1.1.txt",
+    "docs/designs/2026-07-30-usmle-product-scope.md",
+    "docs/designs/2026-08-01-foss-distribution-boundary.md",
+    "docs/designs/2026-08-01-usmle-foundation-audit.md",
+    "docs/designs/2026-08-01-usmle-foss-vertical-slice.md",
+    "docs/ops/FOSS_DISTRIBUTION.md",
+    "docs/ops/GENERATED_CONTENT_BUILDS.md",
+    "docs/ops/USMLE_PUBLIC_CORPUS.md",
+    "eslint.config.mjs",
+    "foss/distribution-paths.txt",
+    "foss/distribution-policy.json",
+    "open-content/README.md",
+    "open-content/usmle/step1/baseline-v1.json",
+    "open-content/usmle/step1/questions/endocrine/a1c-glycation.v1.json",
+    "open-content/usmle/step1/questions/endocrine/adrenal-crisis-treatment.v1.json",
+    "open-content/usmle/step1/questions/endocrine/dka-ketogenesis.v1.json",
+    "open-content/usmle/step1/questions/endocrine/primary-adrenal-electrolytes.v1.json",
+    "open-content/usmle/step1/questions/endocrine/secondary-adrenal-axis.v1.json",
+    "open-content/usmle/step1/questions/endocrine/tertiary-adrenal-withdrawal.v1.json",
+    "open-content/usmle/step1/questions/endocrine/type-1-beta-cell.v1.json",
+    "open-content/usmle/step1/questions/genetics/autosomal-recessive-risk.v1.json",
+    "open-content/usmle/step1/questions/genetics/mitochondrial-inheritance.v1.json",
+    "open-content/usmle/step1/questions/hematology/sickle-vaso-occlusion.v1.json",
+    "open-content/usmle/step1/questions/immunology/conjugate-vaccine-carrier.v1.json",
+    "open-content/usmle/step1/questions/immunology/inactivated-vaccine-response.v1.json",
+    "open-content/usmle/step1/questions/immunology/live-attenuated-replication.v1.json",
+    "open-content/usmle/step1/questions/immunology/maternal-igg-transfer.v1.json",
+    "open-content/usmle/step1/questions/immunology/passive-immunity-time-course.v1.json",
+    "open-content/usmle/step1/questions/microbiology/hepatitis-b-acute-marker.v1.json",
+    "open-content/usmle/step1/questions/microbiology/hepatitis-b-infectivity-marker.v1.json",
+    "open-content/usmle/step1/questions/microbiology/hepatitis-b-recovery-serology.v1.json",
+    "open-content/usmle/step1/questions/microbiology/hepatitis-b-vaccine-serology.v1.json",
+    "open-content/usmle/step1/questions/microbiology/influenza-antigenic-drift.v1.json",
+    "open-content/usmle/step1/questions/microbiology/influenza-antigenic-shift.v1.json",
+    "open-content/usmle/step1/questions/microbiology/tetanus-inhibitory-signaling.v1.json",
+    "open-content/usmle/step1/questions/microbiology/tetanus-spore-germination.v1.json",
+    "open-content/usmle/step1/questions/renal/nephrotic-associated-lab.v1.json",
+    "open-content/usmle/step1/questions/renal/nephrotic-edema.v1.json",
+    "open-content/usmle/step1/release-v1.json",
+    "open-content/usmle/step1/sources.json",
+    "package-lock.json",
+    "playwright.config.ts",
+    "postcss.config.mjs",
+    "public/icons/cohort-192.png",
+    "public/icons/cohort-512.png",
+    "public/icons/cohort-apple-touch.png",
+    "public/icons/cohort-maskable-512.png",
+    "public/icons/md3-192.png",
+    "public/icons/md3-512.png",
+    "public/icons/md3-apple-touch.png",
+    "public/icons/md3-maskable-512.png",
+    "public/sw.js",
+    "scripts/audit/usmle-public-corpus.test.ts",
+    "scripts/audit/usmle-public-corpus.ts",
+    "scripts/content/generate-content-map.test.ts",
+    "scripts/content/generate-content-map.ts",
+    "scripts/content/generate-deep-dive-cards-manifest.mjs",
+    "scripts/content/generate-deep-dive-manifest.mjs",
+    "scripts/content/generate-starter-sessions.test.ts",
+    "scripts/content/generate-starter-sessions.ts",
+    "scripts/content/frontmatter.mjs",
+    "scripts/content-lake/storage.ts",
+    "scripts/content-lake/types.ts",
+    "scripts/db/destructive-guard.mjs",
+    "scripts/db/destructive-guard.test.ts",
+    "scripts/foss/distribution.test.ts",
+    "scripts/foss/public-navigation.test.ts",
+    "scripts/foss/test-surface.test.ts",
+    "scripts/lib/db.ts",
+    "scripts/db/prisma-with-env.mjs",
+    "scripts/images/build-index.ts",
+    "scripts/images/build-index.test.ts",
+    "scripts/ops/build-isolated.sh",
+    "scripts/ops/build-with-sw.sh",
+    "scripts/ops/restore-sw-stamp.sh",
+    "scripts/ops/sanitize-for-public.sh",
+    "scripts/ops/secret-scan.mjs",
+    "scripts/ops/stamp-sw.sh",
+    "scripts/ops/public-answer-artifacts.test.ts",
+    "scripts/ops/stamp-sw.test.ts",
+    "scripts/ops/sw-offline-navigation.test.ts",
+    "scripts/usmle/check-serving-db.ts",
+    "scripts/usmle/check-serving-db.test.ts",
+    "scripts/usmle/item-rubric.ts",
+    "scripts/usmle/repair-protected-reinforcement-cards.test.ts",
+    "scripts/usmle/repair-protected-reinforcement-cards.ts",
+    "scripts/usmle/seed-open-corpus.test.ts",
+    "scripts/usmle/seed-open-corpus.ts",
+    "src/app/about/page.test.tsx",
+    "src/app/api/usmle/step1/answer/route.test.ts",
+    "src/app/api/usmle/step1/progress/route.test.ts",
+    "src/app/api/usmle/step1/session/route.test.ts",
+    "src/app/api/user/email-aliases/route.test.ts",
+    "src/app/api/user/email-aliases/verify/route.test.ts",
+    "src/lib/auth-verification-email.test.ts",
+    "src/app/usmle/layout.test.tsx",
+    "src/app/usmle/page.test.tsx",
+    "src/app/usmle/step1/[chapter]/page.test.tsx",
+    "src/app/usmle/step1/page.test.tsx",
+    "src/app/usmle/step1/study/Step1StudyClient.test.tsx",
+    "src/components/AppShell.test.tsx",
+    "src/lib/analytics-config.test.ts",
+    "src/lib/database-target.test.ts",
+    "src/lib/outbound-email-config.test.ts",
+    "src/lib/question-bank/image-overlay.test.ts",
+    "src/lib/question-bank/load-seed-corpus.test.ts",
+    "src/lib/question-bank/load.test.ts",
+    "src/lib/question-bank/seed-projection.test.ts",
+    "src/lib/usmle/open-content-contract.test.ts",
+    "src/lib/usmle/open-source-registry.test.ts",
+    "src/lib/usmle/public-baseline.test.ts",
+    "src/lib/usmle/public-corpus-audit.test.ts",
+    "src/lib/usmle/public-corpus.test.ts",
+    "src/lib/usmle/public-question-corpus.server.test.ts",
+    "src/lib/usmle/public-release.test.ts",
+    "src/lib/usmle/public-serving-drift.test.ts",
+    "src/lib/usmle/raw-answer-key-quality.test.ts",
+    "src/lib/usmle/raw-question-boundary.test.ts",
+    "src/lib/usmle/raw-reinforcement-card-boundary.test.ts",
+    "src/lib/usmle/reinforcement-card-delivery.test.ts",
+    "src/lib/usmle/reinforcement-card-egress-contract.test.ts",
+    "src/lib/usmle/step1-session.server.test.ts",
+    "tsconfig.scripts.json",
+    "vitest.config.mjs",
+    "vitest.integration.config.mjs"
+  ],
+  "excludePrefixes": [
+    "src/app/(usyd-md1)",
+    "src/app/(usyd-md2)",
+    "src/app/__qa-wba4",
+    "src/app/admin",
+    "src/app/api/admin",
+    "src/app/api/analytics",
+    "src/app/api/audit",
+    "src/app/api/auth/magic-link",
+    "src/app/api/auth/verify",
+    "src/app/api/cards",
+    "src/app/api/citations",
+    "src/app/api/concepts",
+    "src/app/api/content-audit",
+    "src/app/api/content-lake",
+    "src/app/api/content-quality",
+    "src/app/api/cron",
+    "src/app/api/cron/user-document-cleanup",
+    "src/app/api/deck",
+    "src/app/api/deep-dive",
+    "src/app/api/ecg",
+    "src/app/api/exams",
+    "src/app/api/exams/[slug]/high-yield",
+    "src/app/api/figures",
+    "src/app/api/glossary",
+    "src/app/api/glossary/[domain]",
+    "src/app/api/integrations",
+    "src/app/api/knowledge",
+    "src/app/api/learn",
+    "src/app/api/manifold",
+    "src/app/api/map",
+    "src/app/api/mastery",
+    "src/app/api/mobile",
+    "src/app/api/modules",
+    "src/app/api/question-bank",
+    "src/app/api/question-bank/[id]",
+    "src/app/api/questions",
+    "src/app/api/quiz",
+    "src/app/api/sandbox",
+    "src/app/api/smp",
+    "src/app/api/study",
+    "src/app/api/study/offline-pack",
+    "src/app/api/sync",
+    "src/app/api/sync/content/cards",
+    "src/app/api/sync/content/glossary",
+    "src/app/api/sync/content/questions",
+    "src/app/api/terminology",
+    "src/app/api/user/context",
+    "src/app/api/user/documents",
+    "src/app/api/videos",
+    "src/app/auth/verify-email",
+    "src/app/cah",
+    "src/app/cards",
+    "src/app/content",
+    "src/app/critical-care",
+    "src/app/deep-dive",
+    "src/app/docs",
+    "src/app/download/harvester",
+    "src/app/exams",
+    "src/app/f",
+    "src/app/learn",
+    "src/app/paam",
+    "src/app/practice",
+    "src/app/profile/brief",
+    "src/app/profile/documents",
+    "src/app/pwh",
+    "src/app/questions",
+    "src/app/qa-wba4",
+    "src/app/qa-wba4-checklist",
+    "src/app/review",
+    "src/app/sandbox",
+    "src/app/study",
+    "src/app/wba",
+    "src/app/x",
+    "src/components/content/glossary-data.json",
+    "src/data",
+    "src/features/kidney-sim",
+    "src/lib/generated",
+    "src/lib/integrations",
+    "src/lib/wba"
+  ],
+  "excludeFiles": [
+    "src/app/api/figures/delivery/route.test.ts",
+    "src/app/api/mobile/content-pack/route.test.ts",
+    "src/app/api/questions/variant/route.test.ts",
+    "src/app/api/sync/progress/route.test.ts",
+    "src/app/brief/page.tsx",
+    "src/app/page.server.test.tsx",
+    "src/app/page.test.tsx",
+    "src/app/page.tsx",
+    "src/app/privacy/page.tsx",
+    "src/app/profile/profile-documents.tsx",
+    "src/app/profile/settings/PersonalDocumentsDestination.tsx",
+    "src/app/review-authenticated-bootstrap.tsx",
+    "src/app/review-page-client.tsx",
+    "src/app/review-session-boundary.tsx",
+    "src/app/terms/page.tsx",
+    "src/components/Navigation.test.tsx",
+    "src/components/Navigation.tsx",
+    "src/components/TermProvider.tsx",
+    "src/components/content/AlgorithmSteps.tsx",
+    "src/components/content/Citation.tsx",
+    "src/components/content/QuestionBankMCQ.tsx",
+    "src/components/content/glossary-autowrap.test.ts",
+    "src/components/ecg/ECGViewer.tsx",
+    "src/components/ecg/RhythmQuiz.tsx",
+    "src/components/ecg/index.ts",
+    "src/components/exams/ClinicalLesson.test.tsx",
+    "src/components/exams/ExamProtocol.test.tsx",
+    "src/components/exams/clinical-lesson-visuals.test.tsx",
+    "src/components/exams/clinical-lesson-visuals.tsx",
+    "src/components/offline/OfflineTabShell.tsx",
+    "src/components/review/ABGContextPanel.test.ts",
+    "src/hooks/useActiveModules.ts",
+    "src/lib/anking-scaffold-content.test.ts",
+    "src/lib/card-bank/stuanki-loader.ts",
+    "src/lib/card-extractors.test.ts",
+    "src/lib/card-generator.test.ts",
+    "src/lib/card-validators.test.ts",
+    "src/lib/clinical-exams.test.ts",
+    "src/lib/content-gen/liked-variants.test.ts",
+    "src/lib/content-index.ts",
+    "src/lib/content-quality/mdx-authoring.test.ts",
+    "src/lib/current-study.ts",
+    "src/lib/curriculum/curriculum.test.ts",
+    "src/lib/curriculum/index.ts",
+    "src/lib/curriculum/usyd-md1-2026.ts",
+    "src/lib/curriculum/usyd-md2-2026.ts",
+    "src/lib/deep-dive-cards-loaders.ts",
+    "src/lib/deep-dive-cards-lookup.ts",
+    "src/lib/deep-dive-cards-meta.ts",
+    "src/lib/deep-dives.ts",
+    "src/lib/flags/report-trust.screener.test.ts",
+    "src/lib/inline-markdown.test.tsx",
+    "src/lib/institution-rotations.ts",
+    "src/lib/institution.ts",
+    "src/lib/knowledge/preemptive-scaffold.test.ts",
+    "src/lib/legacy-api-quarantine.ts",
+    "src/lib/manifold/exam-blueprint.ts",
+    "src/lib/manifold/exam-calibration.test.ts",
+    "src/lib/manifold/question-complexity.test.ts",
+    "src/lib/manifold/question-complexity.ts",
+    "src/lib/mcq-to-cloze.test.ts",
+    "src/lib/offline/figures.ts",
+    "src/lib/offline/fill.ts",
+    "src/lib/personal-brief-data.server.ts",
+    "src/lib/personal-brief-data.test.ts",
+    "src/lib/personal-brief-data.ts",
+    "src/lib/personal-brief-harvest.ts",
+    "src/lib/personal-brief-offline.test.ts",
+    "src/lib/personal-brief.test.ts",
+    "src/lib/personal-decks.test.ts",
+    "src/lib/personal-decks.ts",
+    "src/lib/personal-rotation-access.test.ts",
+    "src/lib/question-bank/contrast-set.test.ts",
+    "src/lib/question-bank/validate.test.ts",
+    "src/lib/question-groups/abg-cases.ts",
+    "src/lib/question-groups/cxr-cases.ts",
+    "src/lib/question-groups/cxr-metadata.json",
+    "src/lib/question-groups/ecg-cases.ts",
+    "src/lib/question-groups/index.ts",
+    "src/lib/question-groups/seed.ts",
+    "src/lib/questions/private-access-session.ts",
+    "src/lib/questions/private-access.ts",
+    "src/lib/r2.ts",
+    "src/lib/retired-medkit-api.ts",
+    "src/lib/review/scheduler-config.ts",
+    "src/lib/review/study-blend.test.ts",
+    "src/lib/rotation-context.test.ts",
+    "src/lib/rotation-context.ts",
+    "src/lib/rotation-labels.ts",
+    "src/lib/rotation-metadata.json",
+    "src/lib/rotation-schedule.ts",
+    "src/lib/rotations.ts",
+    "src/lib/source-registry-data.json",
+    "src/lib/study/unified-session-service-feedmode.test.ts",
+    "src/lib/user-document-lifecycle.ts",
+    "src/lib/usmle/anki-parser.test.ts",
+    "src/lib/usmle/anki-parser.ts",
+    "src/lib/usmle/index.ts",
+    "src/lib/utils/split-sentences.test.ts",
+    "vitest.setup.ts"
+  ],
+  "forbiddenPrefixes": [
+    ".claude",
+    ".devcontainer",
+    ".env",
+    ".env.local",
+    ".git",
+    ".next",
+    ".playwright-mcp",
+    ".superpowers",
+    ".tmp",
+    ".vercel",
+    "audit",
+    "captions",
+    "content",
+    "content-meta",
+    "data",
+    "figure-sidecars",
+    "fixtures",
+    "kit",
+    "migrations",
+    "outputs",
+    "public/figures",
+    "quarantine",
+    "question-bank",
+    "reels-inbox",
+    "scripts/archive",
+    "scripts/anki-import",
+    "scripts/ecg-spike",
+    "scripts/export",
+    "scripts/output",
+    "scripts/personal",
+    "source-materials",
+    "test-results"
+  ],
+  "allowedTextExtensions": [
+    "",
+    ".css",
+    ".example",
+    ".js",
+    ".json",
+    ".md",
+    ".mjs",
+    ".prisma",
+    ".sh",
+    ".sql",
+    ".txt",
+    ".toml",
+    ".ts",
+    ".tsx",
+    ".yml"
+  ],
+  "allowedBinaryFiles": [
+    {
+      "path": "src/app/fonts/Geist-Variable.woff2",
+      "sha256": "a369fcf5628ea2aa4e1b9e2ec6a5b3624e365bda588e1f0f2f12b564f728fbb8",
+      "licence": "OFL-1.1",
+      "notice": "THIRD_PARTY_LICENSES/Geist-OFL-1.1.txt"
+    },
+    {
+      "path": "src/app/fonts/GeistMono-Variable.woff2",
+      "sha256": "fba8f577f38a2bbcbe818efa6348dd58f36303a10b8737c42fefad275be563ab",
+      "licence": "OFL-1.1",
+      "notice": "THIRD_PARTY_LICENSES/Geist-OFL-1.1.txt"
+    },
+    {
+      "path": "public/icons/cohort-192.png",
+      "sha256": "046b1b14781900a53c8a2db13e272e079f25f9c5eb30839f2f9bfecbed2ead8e",
+      "licence": "MIT",
+      "notice": "LICENSE"
+    },
+    {
+      "path": "public/icons/cohort-512.png",
+      "sha256": "32cf822b7c114e4fe4a5ac9d8f6ae518a2265d1de82b3cd24aca1d5b0615792f",
+      "licence": "MIT",
+      "notice": "LICENSE"
+    },
+    {
+      "path": "public/icons/cohort-apple-touch.png",
+      "sha256": "4c2cd03a86611ca55145a0a7809213437da917f7b5a3d9c7ff714850613f6ffa",
+      "licence": "MIT",
+      "notice": "LICENSE"
+    },
+    {
+      "path": "public/icons/cohort-maskable-512.png",
+      "sha256": "6af2fa16d1d42cecbcf690958a6300db525216fc9990e2e28bff392528e0bf5f",
+      "licence": "MIT",
+      "notice": "LICENSE"
+    },
+    {
+      "path": "public/icons/md3-192.png",
+      "sha256": "fbe16c8741ce457fbe6729164088bdec8d8c7f34ef2074cad609492d7b4f3cde",
+      "licence": "MIT",
+      "notice": "LICENSE"
+    },
+    {
+      "path": "public/icons/md3-512.png",
+      "sha256": "7f5cf3b13ea18f21d73b2206443b4376038c2ee8fd3df966995509e33b8ceaad",
+      "licence": "MIT",
+      "notice": "LICENSE"
+    },
+    {
+      "path": "public/icons/md3-apple-touch.png",
+      "sha256": "2c7fec39c9258fbfc320077511e23d72de5e15b4dd099742f824ce18c3a53ef6",
+      "licence": "MIT",
+      "notice": "LICENSE"
+    },
+    {
+      "path": "public/icons/md3-maskable-512.png",
+      "sha256": "d6fc8fa6a55d63a4fe3487a1c6742c9b53d7543ab1f92b62028a0f179145d94d",
+      "licence": "MIT",
+      "notice": "LICENSE"
+    }
+  ],
+  "licenceOverrides": [
+    {
+      "path": "CONTRIBUTING.md",
+      "licence": "CC-BY-4.0"
+    },
+    {
+      "path": "LICENSE-CONTENT.md",
+      "licence": "CC-BY-4.0"
+    },
+    {
+      "path": "docs/designs/2026-07-30-usmle-product-scope.md",
+      "licence": "CC-BY-4.0"
+    },
+    {
+      "path": "docs/designs/2026-08-01-foss-distribution-boundary.md",
+      "licence": "CC-BY-4.0"
+    },
+    {
+      "path": "docs/designs/2026-08-01-usmle-foundation-audit.md",
+      "licence": "CC-BY-4.0"
+    },
+    {
+      "path": "docs/designs/2026-08-01-usmle-foss-vertical-slice.md",
+      "licence": "CC-BY-4.0"
+    },
+    {
+      "path": "docs/ops/FOSS_DISTRIBUTION.md",
+      "licence": "CC-BY-4.0"
+    },
+    {
+      "path": "docs/ops/GENERATED_CONTENT_BUILDS.md",
+      "licence": "CC-BY-4.0"
+    },
+    {
+      "path": "docs/ops/USMLE_PUBLIC_CORPUS.md",
+      "licence": "CC-BY-4.0"
+    },
+    {
+      "path": "open-content/usmle/step1/sources.json",
+      "licence": "MIXED-PER-SOURCE"
+    }
+  ],
+  "generatedTextFiles": [
+    {
+      "path": ".github/workflows/ci.yml",
+      "text": "name: Public CI\n\non:\n  push:\n  pull_request:\n\npermissions:\n  contents: read\n\njobs:\n  verify:\n    runs-on: ubuntu-latest\n    env:\n      DATABASE_URL: postgresql://dummy:dummy@localhost:5432/dummy\n      NEXTAUTH_SECRET: dummy-secret-for-public-ci\n      NEXTAUTH_URL: http://localhost:3000\n      MD3_GENERATED_CONTENT_MODE: offline\n    steps:\n      - uses: actions/checkout@v4\n      - uses: actions/setup-node@v4\n        with:\n          node-version-file: .nvmrc\n          cache: npm\n      - name: Install source exporter dependencies\n        run: npm ci\n      - name: Audit current source boundary\n        run: npm run foss:boundary:audit\n      - name: Re-export current reviewed source\n        run: npm run foss:export -- \"${{ runner.temp }}/md3-foss-current\"\n      - name: Strictly audit fresh artifact\n        working-directory: ${{ runner.temp }}/md3-foss-current\n        run: |\n          \"$GITHUB_WORKSPACE/node_modules/.bin/tsx\" scripts/foss/distribution.ts\n      - name: Install fresh artifact dependencies\n        working-directory: ${{ runner.temp }}/md3-foss-current\n        run: npm ci\n      - name: Re-audit installed source boundary\n        working-directory: ${{ runner.temp }}/md3-foss-current\n        run: npm run foss:boundary:audit\n      - name: Typecheck public artifact\n        working-directory: ${{ runner.temp }}/md3-foss-current\n        run: npm run typecheck:scripts\n      - name: Lint public artifact\n        working-directory: ${{ runner.temp }}/md3-foss-current\n        run: npm run lint\n      - name: Run complete FOSS USMLE contract\n        working-directory: ${{ runner.temp }}/md3-foss-current\n        run: npm run foss:test\n      - name: Verify public corpus release gate\n        working-directory: ${{ runner.temp }}/md3-foss-current\n        run: npm run usmle:corpus:release-gate\n      - name: Verify public corpus dry seed\n        working-directory: ${{ runner.temp }}/md3-foss-current\n        run: npm run usmle:corpus:seed:dry\n      - name: Build fresh FOSS artifact\n        working-directory: ${{ runner.temp }}/md3-foss-current\n        run: npm run build\n",
+      "licence": "MIT"
+    },
+    {
+      "path": "next-env.d.ts",
+      "text": "/// <reference types=\"next\" />\n/// <reference types=\"next/image-types/global\" />\n\n// NOTE: This file should not be edited\n// see https://nextjs.org/docs/app/api-reference/config/typescript for more information.\n",
+      "licence": "MIT"
+    },
+    {
+      "path": "next.config.ts",
+      "text": "import type { NextConfig } from 'next';\nimport { vercelAnalyticsCspSources } from './src/lib/analytics-config';\n\nfunction configuredHttpsUrl(value: string | undefined): URL | null {\n  const candidate = value?.trim();\n  if (!candidate) return null;\n  try {\n    const url = new URL(candidate);\n    if (url.protocol !== 'https:' || url.username || url.password) return null;\n    return url;\n  } catch {\n    return null;\n  }\n}\n\nconst contentBlobBaseUrl = configuredHttpsUrl(process.env.CONTENT_BLOB_BASE_URL);\nconst publicMediaUrl = configuredHttpsUrl(process.env.CLOUDFLARE_R2_PUBLIC_URL);\nconst configuredMediaUrls = [contentBlobBaseUrl, publicMediaUrl]\n  .filter((url): url is URL => url !== null);\nconst configuredMediaOrigins = [...new Set(configuredMediaUrls.map((url) => url.origin))];\nconst mediaSourceList = configuredMediaOrigins.length > 0\n  ? ` ${configuredMediaOrigins.join(' ')}`\n  : '';\nconst analyticsCsp = vercelAnalyticsCspSources();\nconst analyticsScriptSourceList = analyticsCsp.script.length > 0\n  ? ` ${analyticsCsp.script.join(' ')}`\n  : '';\nconst analyticsConnectSourceList = analyticsCsp.connect.length > 0\n  ? ` ${analyticsCsp.connect.join(' ')}`\n  : '';\n\nconst nextConfig: NextConfig = {\n  distDir: process.env.NEXT_DIST_DIR?.trim() || '.next',\n  poweredByHeader: false,\n  compress: true,\n  serverExternalPackages: ['@prisma/client', '.prisma/client'],\n  outputFileTracingExcludes: {\n    '*': ['public/figures/**', 'public/icons/**', 'public/screenshots/**'],\n  },\n  experimental: {\n    optimizePackageImports: ['next-auth', 'katex', '@anthropic-ai/sdk', 'openai', 'zod'],\n    staleTimes: { dynamic: 30, static: 180 },\n  },\n  images: {\n    remotePatterns: configuredMediaUrls.map((url) => ({\n      protocol: 'https' as const,\n      hostname: url.hostname,\n      port: url.port,\n      pathname: '/**',\n    })),\n    formats: ['image/avif', 'image/webp'],\n  },\n  async headers() {\n    const scriptDevAllowance = process.env.NODE_ENV === 'development'\n      ? \" 'unsafe-eval'\"\n      : '';\n    const cspReportOnly = [\n      `default-src 'self'`,\n      `script-src 'self' 'unsafe-inline'${scriptDevAllowance}${analyticsScriptSourceList}`,\n      `style-src 'self' 'unsafe-inline'`,\n      `img-src 'self' data: blob:${mediaSourceList}`,\n      `media-src 'self'${mediaSourceList}`,\n      `font-src 'self' data:`,\n      `connect-src 'self'${analyticsConnectSourceList}${mediaSourceList}`,\n      `frame-ancestors 'none'`,\n      `object-src 'none'`,\n      `base-uri 'self'`,\n      `form-action 'self'`,\n      `report-uri /api/security/csp-report`,\n    ].join('; ');\n    const securityHeaders = [\n      { key: 'X-Content-Type-Options', value: 'nosniff' },\n      { key: 'X-Frame-Options', value: 'DENY' },\n      { key: 'Referrer-Policy', value: 'strict-origin-when-cross-origin' },\n      { key: 'Strict-Transport-Security', value: 'max-age=63072000; includeSubDomains; preload' },\n      { key: 'Permissions-Policy', value: 'camera=(), microphone=(), geolocation=()' },\n      { key: 'Content-Security-Policy-Report-Only', value: cspReportOnly },\n    ];\n    return [\n      { source: '/(.*)', headers: securityHeaders },\n    ];\n  },\n};\n\nexport default nextConfig;\n",
+      "licence": "MIT"
+    },
+    {
+      "path": "package.json",
+      "text": "{\n  \"name\": \"md3\",\n  \"version\": \"0.1.0\",\n  \"license\": \"MIT\",\n  \"private\": true,\n  \"engines\": {\n    \"node\": \"24.x\"\n  },\n  \"scripts\": {\n    \"prebuild\": \"MD3_GENERATED_CONTENT_MODE=offline npm run images:index\",\n    \"build\": \"prisma generate && node scripts/content/generate-deep-dive-manifest.mjs && node scripts/content/generate-deep-dive-cards-manifest.mjs && MD3_GENERATED_CONTENT_MODE=offline node --import tsx scripts/content/generate-content-map.ts && MD3_GENERATED_CONTENT_MODE=offline node --import tsx scripts/content/generate-starter-sessions.ts && MD3_GENERATED_CONTENT_MODE=offline node --import tsx scripts/images/build-index.ts && sh scripts/ops/build-with-sw.sh\",\n    \"build:release\": \"npm run usmle:corpus:release-gate && npm run usmle:serving-db:preflight && npm run usmle:reinforcement:audit && prisma generate && node scripts/content/generate-deep-dive-manifest.mjs && node scripts/content/generate-deep-dive-cards-manifest.mjs && MD3_GENERATED_CONTENT_MODE=release node --import tsx scripts/content/generate-content-map.ts && MD3_GENERATED_CONTENT_MODE=release node --import tsx scripts/content/generate-starter-sessions.ts && MD3_GENERATED_CONTENT_MODE=release node --import tsx scripts/images/build-index.ts && sh scripts/ops/build-with-sw.sh\",\n    \"build:isolated\": \"MD3_GENERATED_CONTENT_MODE=offline sh scripts/ops/build-isolated.sh\",\n    \"build:isolated:release\": \"npm run usmle:corpus:release-gate && npm run usmle:serving-db:preflight && npm run usmle:reinforcement:audit && MD3_GENERATED_CONTENT_MODE=release sh scripts/ops/build-isolated.sh\",\n    \"start\": \"next start\",\n    \"lint\": \"eslint\",\n    \"typecheck:scripts\": \"prisma generate && node scripts/content/generate-deep-dive-manifest.mjs && node scripts/content/generate-deep-dive-cards-manifest.mjs && MD3_GENERATED_CONTENT_MODE=offline node --import tsx scripts/content/generate-content-map.ts && MD3_GENERATED_CONTENT_MODE=offline node --import tsx scripts/content/generate-starter-sessions.ts && MD3_GENERATED_CONTENT_MODE=offline node --import tsx scripts/images/build-index.ts && tsc --noEmit -p tsconfig.scripts.json\",\n    \"foss:boundary:audit\": \"node --import tsx scripts/foss/distribution.ts --source-tree\",\n    \"foss:boundary:write\": \"node --import tsx scripts/foss/distribution.ts --write-paths\",\n    \"foss:export\": \"node --import tsx scripts/foss/distribution.ts --export\",\n    \"prefoss:test\": \"prisma generate && node scripts/content/generate-deep-dive-manifest.mjs && node scripts/content/generate-deep-dive-cards-manifest.mjs && MD3_GENERATED_CONTENT_MODE=offline node --import tsx scripts/content/generate-content-map.ts && MD3_GENERATED_CONTENT_MODE=offline node --import tsx scripts/content/generate-starter-sessions.ts && MD3_GENERATED_CONTENT_MODE=offline node --import tsx scripts/images/build-index.ts\",\n    \"foss:test\": \"MD3_GENERATED_CONTENT_MODE=offline vitest run scripts/foss/distribution.test.ts scripts/foss/public-navigation.test.ts scripts/foss/test-surface.test.ts scripts/db/destructive-guard.test.ts scripts/images/build-index.test.ts scripts/content/generate-content-map.test.ts scripts/content/generate-starter-sessions.test.ts scripts/ops/public-answer-artifacts.test.ts scripts/ops/stamp-sw.test.ts scripts/ops/sw-offline-navigation.test.ts scripts/audit/usmle-public-corpus.test.ts scripts/usmle/check-serving-db.test.ts scripts/usmle/seed-open-corpus.test.ts scripts/usmle/repair-protected-reinforcement-cards.test.ts src/app/about/page.test.tsx src/app/api/user/email-aliases/route.test.ts src/app/api/user/email-aliases/verify/route.test.ts src/components/AppShell.test.tsx src/lib/analytics-config.test.ts src/lib/auth-verification-email.test.ts src/lib/outbound-email-config.test.ts src/lib/database-target.test.ts src/lib/question-bank/image-overlay.test.ts src/lib/question-bank/load-seed-corpus.test.ts src/lib/question-bank/load.test.ts src/lib/question-bank/seed-projection.test.ts src/lib/usmle/open-content-contract.test.ts src/lib/usmle/open-source-registry.test.ts src/lib/usmle/public-baseline.test.ts src/lib/usmle/public-corpus-audit.test.ts src/lib/usmle/public-corpus.test.ts src/lib/usmle/public-question-corpus.server.test.ts src/lib/usmle/public-release.test.ts src/lib/usmle/public-serving-drift.test.ts src/lib/usmle/raw-answer-key-quality.test.ts src/lib/usmle/raw-question-boundary.test.ts src/lib/usmle/raw-reinforcement-card-boundary.test.ts src/lib/usmle/reinforcement-card-delivery.test.ts src/lib/usmle/reinforcement-card-egress-contract.test.ts src/lib/usmle/step1-session.server.test.ts src/app/api/usmle/step1/answer/route.test.ts src/app/api/usmle/step1/progress/route.test.ts src/app/api/usmle/step1/session/route.test.ts src/app/usmle/layout.test.tsx src/app/usmle/page.test.tsx 'src/app/usmle/step1/[chapter]/page.test.tsx' src/app/usmle/step1/page.test.tsx src/app/usmle/step1/study/Step1StudyClient.test.tsx\",\n    \"usmle:corpus:audit\": \"node --import tsx scripts/audit/usmle-public-corpus.ts\",\n    \"usmle:corpus:release-gate\": \"node --import tsx scripts/audit/usmle-public-corpus.ts --release-gate --min-eligible 25\",\n    \"usmle:corpus:seed:dry\": \"node --import tsx scripts/usmle/seed-open-corpus.ts --dry-run\",\n    \"usmle:release:fingerprints:write\": \"node --import tsx scripts/audit/usmle-public-corpus.ts --release-gate --min-eligible 25 --write-release-fingerprints\",\n    \"usmle:serving-db:preflight\": \"node --import tsx scripts/usmle/check-serving-db.ts\",\n    \"usmle:reinforcement:audit\": \"node --import tsx scripts/usmle/repair-protected-reinforcement-cards.ts\",\n    \"usmle:reinforcement:repair:apply\": \"node --import tsx scripts/usmle/repair-protected-reinforcement-cards.ts --apply\",\n    \"usmle:reinforcement:test\": \"vitest run scripts/usmle/repair-protected-reinforcement-cards.test.ts src/lib/usmle/raw-reinforcement-card-boundary.test.ts src/lib/usmle/reinforcement-card-delivery.test.ts src/lib/usmle/reinforcement-card-egress-contract.test.ts\",\n    \"db:push\": \"node scripts/db/prisma-with-env.mjs db push\",\n    \"db:migrate:deploy\": \"node scripts/db/prisma-with-env.mjs migrate deploy\",\n    \"db:migrate:status\": \"node scripts/db/prisma-with-env.mjs migrate status\",\n    \"db:seed\": \"node scripts/db/prisma-with-env.mjs db seed\",\n    \"db:seed:usmle-open\": \"node --import tsx scripts/usmle/seed-open-corpus.ts\",\n    \"db:studio\": \"node scripts/db/prisma-with-env.mjs studio\",\n    \"images:index\": \"node --import tsx scripts/images/build-index.ts\",\n    \"images:index:offline\": \"MD3_GENERATED_CONTENT_MODE=offline node --import tsx scripts/images/build-index.ts\",\n    \"images:index:release\": \"MD3_GENERATED_CONTENT_MODE=release node --import tsx scripts/images/build-index.ts\",\n    \"predev\": \"MD3_GENERATED_CONTENT_MODE=offline npm run images:index\",\n    \"dev\": \"node scripts/content/generate-deep-dive-manifest.mjs && node scripts/content/generate-deep-dive-cards-manifest.mjs && MD3_GENERATED_CONTENT_MODE=offline node --import tsx scripts/content/generate-content-map.ts && MD3_GENERATED_CONTENT_MODE=offline node --import tsx scripts/content/generate-starter-sessions.ts && MD3_GENERATED_CONTENT_MODE=offline node --import tsx scripts/images/build-index.ts && next dev --webpack\",\n    \"test\": \"npm run foss:test\",\n    \"test:run\": \"npm run foss:test\"\n  },\n  \"dependencies\": {\n    \"@anthropic-ai/sdk\": \"^0.71.2\",\n    \"@auth/prisma-adapter\": \"^2.11.3\",\n    \"@aws-sdk/s3-request-presigner\": \"^3.1007.0\",\n    \"@google/generative-ai\": \"^0.24.1\",\n    \"@mdx-js/loader\": \"^3.1.1\",\n    \"@mdx-js/react\": \"^3.1.1\",\n    \"@neondatabase/serverless\": \"^1.0.2\",\n    \"@next/mdx\": \"^16.2.12\",\n    \"@paralleldrive/cuid2\": \"^3.3.0\",\n    \"@prisma/adapter-neon\": \"7.9.1\",\n    \"@prisma/adapter-pg\": \"7.9.1\",\n    \"@prisma/client\": \"7.9.1\",\n    \"@vercel/analytics\": \"^1.6.1\",\n    \"better-sqlite3\": \"^12.6.2\",\n    \"dompurify\": \"^3.4.12\",\n    \"geist\": \"^1.7.2\",\n    \"katex\": \"^0.16.27\",\n    \"mdast-util-mdx-jsx\": \"^3.2.0\",\n    \"next\": \"^16.2.12\",\n    \"next-auth\": \"^5.0.0-beta.32\",\n    \"openai\": \"^6.27.0\",\n    \"pg\": \"^8.18.0\",\n    \"react\": \"19.2.3\",\n    \"react-dom\": \"19.2.3\",\n    \"react-markdown\": \"^10.1.0\",\n    \"rehype-katex\": \"^7.0.1\",\n    \"remark-frontmatter\": \"^5.0.0\",\n    \"remark-gfm\": \"^4.0.1\",\n    \"remark-math\": \"^6.0.0\",\n    \"resend\": \"^6.7.0\",\n    \"server-only\": \"^0.0.1\",\n    \"sharp\": \"^0.35.3\",\n    \"swr\": \"^2.3.8\",\n    \"unist-util-visit\": \"^5.1.0\",\n    \"unzipper\": \"^0.12.3\",\n    \"use-debounce\": \"^10.1.0\",\n    \"zod\": \"^3.25.76\"\n  },\n  \"devDependencies\": {\n    \"@aws-sdk/client-s3\": \"^3.1007.0\",\n    \"@next/bundle-analyzer\": \"^16.2.12\",\n    \"@playwright/test\": \"^1.57.0\",\n    \"@tailwindcss/postcss\": \"^4\",\n    \"@testing-library/dom\": \"^10.4.1\",\n    \"@testing-library/jest-dom\": \"^6.9.1\",\n    \"@testing-library/react\": \"^16.3.1\",\n    \"@testing-library/user-event\": \"^14.6.1\",\n    \"@types/better-sqlite3\": \"^7.6.13\",\n    \"@types/dompurify\": \"^3.0.5\",\n    \"@types/glob\": \"^8.1.0\",\n    \"@types/node\": \"^24.13.3\",\n    \"@types/pg\": \"^8.16.0\",\n    \"@types/react\": \"^19\",\n    \"@types/react-dom\": \"^19\",\n    \"@types/turndown\": \"^5.0.6\",\n    \"@types/unzipper\": \"^0.10.10\",\n    \"@types/ws\": \"^8.18.1\",\n    \"@vitest/coverage-v8\": \"^4.0.16\",\n    \"cheerio\": \"^1.2.0\",\n    \"dotenv\": \"^17.2.3\",\n    \"eslint\": \"~9.38.0\",\n    \"eslint-config-next\": \"16.2.12\",\n    \"exceljs\": \"^4.4.0\",\n    \"jsdom\": \"^27.4.0\",\n    \"pdf-parse\": \"^2.4.5\",\n    \"prisma\": \"7.9.1\",\n    \"puppeteer\": \"^24.36.0\",\n    \"tailwindcss\": \"^4\",\n    \"tsx\": \"^4.19.0\",\n    \"turndown\": \"^7.2.2\",\n    \"turndown-plugin-gfm\": \"^1.0.2\",\n    \"typescript\": \"^5\",\n    \"vite\": \"^7.3.1\",\n    \"vitest\": \"^4.0.16\",\n    \"ws\": \"^8.19.0\",\n    \"yaml\": \"^2.8.2\"\n  },\n  \"overrides\": {\n    \"brace-expansion@>=1 <2\": \"1.1.17\",\n    \"brace-expansion@>=2 <3\": \"2.1.3\",\n    \"exceljs\": {\n      \"uuid\": \"11.1.1\"\n    },\n    \"js-yaml@>=4 <5\": \"4.3.0\",\n    \"postcss\": \"8.5.25\",\n    \"sharp\": \"$sharp\"\n  }\n}\n",
+      "licence": "MIT"
+    },
+    {
+      "path": "prisma.config.ts",
+      "text": "import 'dotenv/config';\nimport path from 'node:path';\nimport { defineConfig } from 'prisma/config';\n\n// Generation and offline builds need a syntactically valid URL but never connect.\n// Port 1 makes accidental database commands fail closed unless DATABASE_URL is set.\nconst databaseUrl = process.env.DATABASE_URL\n  ?? 'postgresql://foss:foss@127.0.0.1:1/foss';\n\nexport default defineConfig({\n  schema: path.join(__dirname, 'prisma', 'schema'),\n  migrations: {\n    path: path.join(__dirname, 'prisma', 'migrations'),\n    seed: 'node --import tsx scripts/usmle/seed-open-corpus.ts',\n  },\n  datasource: {\n    url: databaseUrl,\n  },\n  // Prisma's current config types lag the runtime support for migrate adapters.\n  // @ts-expect-error runtime-supported, but missing from PrismaConfig typing\n  migrate: {\n    adapter: async () => {\n      const pg = await import('pg');\n      return new pg.default.Pool({ connectionString: databaseUrl });\n    },\n  },\n});\n",
+      "licence": "MIT"
+    },
+    {
+      "path": "README.md",
+      "text": "# MD3\n\nMD3 is a free and open-source spaced-repetition learning platform. This source distribution contains the reusable Next.js/React learning engine and an initial citation-backed USMLE Step 1 question corpus.\n\nThe public product is deliberately fail-closed: only explicitly selected source files and educational items with machine-verifiable rights metadata enter an export. Software is MIT licensed; original MD3 educational content is CC BY 4.0. Exact evidence passages keep the source-level terms recorded beside them.\n\n## Quick start\n\nNode.js 24 and PostgreSQL are required.\n\n```bash\nnpm ci\ncp .env.example .env.local\n# Set DATABASE_URL and NEXTAUTH_SECRET.\n# /usmle is a public early product: guests and signed-in users can study.\n# Configure at least one provider: GOOGLE_CLIENT_ID + GOOGLE_CLIENT_SECRET,\n# GITHUB_ID + GITHUB_SECRET, or RESEND_API_KEY + EMAIL_FROM.\n# For canonical dual-host MD3/Cohort, set AUTH_TRUST_MD3_COHORT_HOSTS=true and\n# leave AUTH_URL and NEXTAUTH_URL unset.\nnpm run db:push\nnpm run db:seed:usmle-open\nnpm run dev\n```\n\nFor the canonical dual-host deployment, set `AUTH_TRUST_MD3_COHORT_HOSTS=true`, then register both `https://md3.info/api/auth/callback/google` and `https://cohort.md/api/auth/callback/google` with the Google OAuth client. Register the equivalent `/api/auth/callback/github` URI on both hosts when GitHub login is enabled. Leave `AUTH_URL` and `NEXTAUTH_URL` unset so Auth.js derives the correct first-party origin from each trusted request.\n\nMD3 and Cohort are independent educational projects and are not affiliated with or endorsed by the USMLE program, FSMB, or NBME. All question text is original; recalled or reconstructed live-exam content is prohibited. See the official [About the USMLE](https://www.usmle.org/about-usmle) and [Exam Security & Fairness](https://www.usmle.org/what-to-know/exam-security-fairness) pages.\n\nThe application is educational software, not medical advice. Operators must configure their own privacy, authentication, email, analytics, and retention practices.\n\n## Verify the public product\n\n```bash\nnpm run foss:boundary:audit\nnpm run foss:test\nnpm run usmle:corpus:release-gate\nnpm run usmle:corpus:seed:dry\nnpm run build\n```\n\nThe ordinary build is deterministic and database-free. A deployable build is stricter:\n\n```bash\nnpm run usmle:serving-db:preflight\nnpm run usmle:reinforcement:audit\nnpm run build:release\n```\n\nThe release path requires the configured serving database to match the checked-in corpus and refuses active answer-bearing reinforcement cards. It never seeds or repairs data implicitly.\n\n## Repository map\n\n- `open-content/usmle/step1/` — explicitly licensed questions, release manifests, and evidence registry.\n- `src/app/usmle/` — Step 1 learner UI.\n- `src/lib/usmle/` — corpus, session, provenance, drift, and delivery contracts.\n- `scripts/foss/` — exact source-distribution audit and exporter.\n- `docs/ops/FOSS_DISTRIBUTION.md` — distribution and clean-build runbook.\n- `docs/ops/USMLE_PUBLIC_CORPUS.md` — corpus, seed, preflight, and release runbook.\n- `CONTRIBUTING.md` — contribution and provenance rules.\n\n## Reuse and contribution\n\nCode is available under the MIT License in `LICENSE`. Original MD3 educational content and documentation are available under CC BY 4.0 as described in `LICENSE-CONTENT.md`. Compatible third-party works retain their own terms and attribution. Contributions are welcome; do not submit commercial-bank, textbook, lecture, private-deck, or uncleared media content.\n",
+      "licence": "CC-BY-4.0"
+    },
+    {
+      "path": "src/app/brief/page.tsx",
+      "text": "import { redirect } from 'next/navigation';\n\n/** Compatibility route for public builds that do not ship a personal dossier. */\nexport default function BriefRedirect() {\n  redirect('/profile');\n}\n",
+      "licence": "MIT"
+    },
+    {
+      "path": "src/app/content/page.tsx",
+      "text": "import { redirect } from 'next/navigation';\n\nexport default function ContentPage() {\n  redirect('/usmle/step1');\n}\n",
+      "licence": "MIT"
+    },
+    {
+      "path": "src/app/page.tsx",
+      "text": "import { redirect } from 'next/navigation';\n\nexport default function HomePage() {\n  redirect('/usmle');\n}\n",
+      "licence": "MIT"
+    },
+    {
+      "path": "src/app/privacy/page.tsx",
+      "text": "import type { Metadata } from 'next';\nimport Link from 'next/link';\n\nexport const metadata: Metadata = {\n  title: 'Privacy - MD3',\n  description: 'Privacy requirements for operators of the MD3 source distribution.',\n};\n\nexport default function PrivacyPage() {\n  return (\n    <main className=\"mx-auto min-h-screen max-w-3xl px-6 py-12\">\n      <Link href=\"/\" className=\"text-sm text-[var(--md-primary)] hover:underline\">\n        &larr; Back to home\n      </Link>\n      <h1 className=\"mt-8 text-4xl font-bold text-[var(--md-on-surface)]\">\n        Privacy notice for operators\n      </h1>\n      <div className=\"mt-8 space-y-5 text-[var(--md-on-surface-variant)]\">\n        <p>\n          This source artifact does not publish a privacy policy for any hosted service.\n          Each operator is responsible for documenting the data, cookies, processors,\n          retention periods, security practices, and contact route used by their deployment.\n        </p>\n        <p>\n          The artifact itself provides no self-service account-data export or account deletion.\n          Before onboarding learners, an operator must implement and publish a verified process\n          for access, correction, export, deletion, and incomplete-cleanup handling that matches\n          the deployed system and applicable law.\n        </p>\n        <p>\n          Do not submit patient-identifiable information or clinical records. MD3 is educational\n          software, not a clinical-record system or medical advice service.\n        </p>\n        <p>\n          See the <Link href=\"/terms\" className=\"text-[var(--md-primary)] hover:underline\">\n            operator terms notice\n          </Link> before offering a hosted service.\n        </p>\n      </div>\n    </main>\n  );\n}\n",
+      "licence": "MIT"
+    },
+    {
+      "path": "src/app/profile/settings/PersonalDocumentsDestination.tsx",
+      "text": "export function PersonalDocumentsDestination() {\n  return null;\n}\n",
+      "licence": "MIT"
+    },
+    {
+      "path": "src/app/terms/page.tsx",
+      "text": "import type { Metadata } from 'next';\nimport Link from 'next/link';\n\nexport const metadata: Metadata = {\n  title: 'Terms - MD3',\n  description: 'Terms requirements for operators of the MD3 source distribution.',\n};\n\nexport default function TermsPage() {\n  return (\n    <main className=\"mx-auto min-h-screen max-w-3xl px-6 py-12\">\n      <Link href=\"/\" className=\"text-sm text-[var(--md-primary)] hover:underline\">\n        &larr; Back to home\n      </Link>\n      <h1 className=\"mt-8 text-4xl font-bold text-[var(--md-on-surface)]\">\n        Terms notice for operators\n      </h1>\n      <div className=\"mt-8 space-y-5 text-[var(--md-on-surface-variant)]\">\n        <p>\n          This source artifact does not define terms for any hosted service. Before onboarding\n          learners, each operator must publish terms that identify the service operator and\n          accurately describe eligibility, acceptable use, support, privacy, and applicable law.\n        </p>\n        <p>\n          Reuse of the software and educational materials is governed by the checked-in\n          <code className=\"mx-1\">LICENSE</code>, <code className=\"mx-1\">LICENSE-CONTENT.md</code>,\n          and source-level attribution records. A hosted service&apos;s terms must not contradict\n          those reuse rights.\n        </p>\n        <p>\n          MD3 is educational software, not medical advice, diagnosis, or treatment. Learners and\n          operators must verify medical information against current authoritative sources.\n        </p>\n        <p>\n          See the <Link href=\"/privacy\" className=\"text-[var(--md-primary)] hover:underline\">\n            operator privacy notice\n          </Link> for minimum deployment requirements.\n        </p>\n      </div>\n    </main>\n  );\n}\n",
+      "licence": "MIT"
+    },
+    {
+      "path": "src/components/content/AlgorithmSteps.tsx",
+      "text": "'use client';\n\nimport { useState } from 'react';\n\ninterface Step {\n  letter: string;\n  title: string;\n  description: string;\n  color: string;\n  details?: string[];\n}\n\ninterface AlgorithmStepsProps {\n  title: string;\n  subtitle?: string;\n  steps: Step[];\n  columns?: 1 | 2;\n}\n\nexport function AlgorithmSteps({\n  title,\n  subtitle,\n  steps,\n  columns = 2,\n}: AlgorithmStepsProps) {\n  const [expandedIndex, setExpandedIndex] = useState<number | null>(null);\n\n  return (\n    <div className=\"my-6 overflow-hidden rounded-xl border\">\n      <div className=\"border-b px-4 py-3\">\n        <h3 className=\"text-xl font-bold\">{title}</h3>\n        {subtitle ? <p className=\"mt-1 text-sm\">{subtitle}</p> : null}\n      </div>\n      <div className={`grid grid-cols-1 gap-3 p-4 ${columns === 2 ? 'md:grid-cols-2' : ''}`}>\n        {steps.map((step, index) => (\n          <button\n            className=\"flex items-start gap-3 rounded-lg border p-4 text-left\"\n            key={`${step.letter}-${index}`}\n            onClick={() => setExpandedIndex(expandedIndex === index ? null : index)}\n            type=\"button\"\n          >\n            <span\n              className=\"flex h-12 w-12 shrink-0 items-center justify-center rounded-full text-xl font-bold text-white\"\n              style={{ backgroundColor: step.color }}\n            >\n              {step.letter}\n            </span>\n            <span className=\"min-w-0 flex-1\">\n              <span className=\"block font-semibold\">{step.title}</span>\n              <span className=\"mt-1 block text-sm\">{step.description}</span>\n              {expandedIndex === index && step.details ? (\n                <ul className=\"mt-3 space-y-1 text-sm\">\n                  {step.details.map((detail) => <li key={detail}>{detail}</li>)}\n                </ul>\n              ) : null}\n            </span>\n          </button>\n        ))}\n      </div>\n    </div>\n  );\n}\n\nexport function DRSABCD() { return null; }\nexport function ABCDE() { return null; }\nexport function ISBAR() { return null; }\nexport function ShockQuadrants() { return null; }\nexport function ChestPainKillers() { return null; }\n",
+      "licence": "MIT"
+    },
+    {
+      "path": "src/components/content/Citation.tsx",
+      "text": "export interface CitationProps {\n  title?: string;\n  href?: string;\n  note?: string;\n  id?: string;\n  slug?: string;\n  showReliability?: boolean;\n  expandable?: boolean;\n}\n\nexport function Citation({ title, href, note, id, slug }: CitationProps) {\n  const label = title ?? slug ?? 'Citation';\n  const content = (\n    <>\n      <span className=\"font-medium\">{label}</span>\n      {note ? <span className=\"opacity-70\"> ({note})</span> : null}\n    </>\n  );\n  const className = \"inline-flex rounded-full bg-[var(--md-surface-container-high)] px-1.5 py-0.5 text-[11px] text-[var(--md-on-surface-variant)]\";\n  return href ? (\n    <a id={id} className={className} href={href} target=\"_blank\" rel=\"noopener noreferrer\">\n      {content}\n    </a>\n  ) : (\n    <span id={id} className={className}>{content}</span>\n  );\n}\n",
+      "licence": "MIT"
+    },
+    {
+      "path": "src/components/content/glossary-data.json",
+      "text": "{}\n",
+      "licence": "CC-BY-4.0"
+    },
+    {
+      "path": "src/components/content/QuestionBankMCQ.tsx",
+      "text": "export interface QuestionBankMCQProps {\n  questionId: string;\n  type?: string;\n  maxTopicsToShow?: number;\n}\n\nexport function QuestionBankMCQ(_props: QuestionBankMCQProps) {\n  void _props;\n  return null;\n}\n",
+      "licence": "MIT"
+    },
+    {
+      "path": "src/components/ecg/index.ts",
+      "text": "export { ECGCanvas, type ECGSegment } from './ECGCanvas';\n",
+      "licence": "MIT"
+    },
+    {
+      "path": "src/components/exams/clinical-lesson-visuals.tsx",
+      "text": "export interface ClinicalLessonVisualProps {\n  visualId?: string;\n  className?: string;\n  alt?: string;\n  caption?: string;\n}\n\nexport function ClinicalLessonVisual({ className }: ClinicalLessonVisualProps) {\n  return (\n    <div\n      className={`rounded-2xl border border-dashed p-5 text-center ${className ?? ''}`}\n      role=\"note\"\n    >\n      <p className=\"text-sm font-semibold\">Visual unavailable in this distribution</p>\n    </div>\n  );\n}\n",
+      "licence": "MIT"
+    },
+    {
+      "path": "src/components/Navigation.tsx",
+      "text": "'use client';\n\nimport Link from 'next/link';\nimport { usePathname } from 'next/navigation';\nimport { useSession } from 'next-auth/react';\n\nconst PUBLIC_NAV_ITEMS = [\n  { href: '/usmle/step1', label: 'Study' },\n];\n\nfunction NavLink({ href, label }: { href: string; label: string }) {\n  const pathname = usePathname();\n  const active = pathname === href || pathname.startsWith(`${href}/`);\n  return (\n    <Link\n      href={href}\n      aria-current={active ? 'page' : undefined}\n      className={active\n        ? 'rounded-xl bg-[var(--md-primary-container)] px-3 py-2 font-medium text-[var(--md-on-primary-container)]'\n        : 'rounded-xl px-3 py-2 text-[var(--md-on-surface-variant)] hover:bg-[var(--md-surface-container-high)]'}\n    >\n      {label}\n    </Link>\n  );\n}\n\nexport function Navigation() {\n  const { data: session } = useSession();\n  const profileHref = session?.user ? '/profile' : '/auth/signin';\n  return (\n    <>\n      <nav aria-label=\"Main navigation\" className=\"fixed left-0 top-0 z-50 hidden h-full w-24 flex-col gap-2 border-r border-[var(--md-outline-soft)] bg-[var(--md-surface-container-low)] p-3 md:flex\">\n        <Link href=\"/usmle/step1\" aria-label=\"Home\" className=\"mb-4 rounded-xl bg-[var(--md-primary)] px-3 py-2 text-center font-bold text-[var(--md-on-primary)]\">\n          cohort.md\n        </Link>\n        {PUBLIC_NAV_ITEMS.map((item) => <NavLink key={item.href} {...item} />)}\n        <div className=\"mt-auto\"><NavLink href={profileHref} label=\"Profile\" /></div>\n      </nav>\n      <nav aria-label=\"Mobile navigation\" className=\"fixed inset-x-0 bottom-0 z-50 flex justify-around border-t border-[var(--md-outline-soft)] bg-[var(--md-surface-container-low)] p-2 md:hidden\">\n        {PUBLIC_NAV_ITEMS.map((item) => <NavLink key={item.href} {...item} />)}\n        <NavLink href={profileHref} label=\"Profile\" />\n      </nav>\n    </>\n  );\n}\n",
+      "licence": "MIT"
+    },
+    {
+      "path": "src/components/offline/OfflineTabShell.tsx",
+      "text": "'use client';\n\nimport Link from 'next/link';\n\nexport function OfflineTabShell() {\n  return (\n    <section className=\"mx-auto flex min-h-[70svh] max-w-xl flex-col justify-center px-6 py-12 text-center\">\n      <p className=\"text-sm font-semibold uppercase tracking-wide text-[var(--md-primary)]\">\n        Offline\n      </p>\n      <h1 className=\"mt-3 text-3xl font-bold text-[var(--md-on-surface)]\">\n        Reconnect to continue Step 1\n      </h1>\n      <p className=\"mt-4 text-[var(--md-on-surface-variant)]\">\n        This application shell can be cached for a clearer offline failure state, but the current\n        public alpha does not download answer-bearing study sessions for offline use.\n      </p>\n      <Link\n        href=\"/usmle/step1\"\n        className=\"mx-auto mt-7 rounded-full bg-[var(--md-primary)] px-5 py-2.5 font-medium text-[var(--md-on-primary)]\"\n      >\n        Return to Step 1\n      </Link>\n    </section>\n  );\n}\n",
+      "licence": "MIT"
+    },
+    {
+      "path": "src/components/TermProvider.tsx",
+      "text": "'use client';\n\nimport type { ReactNode } from 'react';\n\nexport function TermProvider({ children }: { domain: string; children: ReactNode }) {\n  return children;\n}\n\nexport function useTermContext() {\n  return null;\n}\n\nexport function useRequiredTermContext(): never {\n  throw new Error('Glossary context is unavailable in this distribution');\n}\n",
+      "licence": "MIT"
+    },
+    {
+      "path": "src/hooks/useActiveModules.ts",
+      "text": "'use client';\n\nimport { useCallback, useState } from 'react';\n\nconst LOCAL_STORAGE_KEY = 'md3-active-modules';\n\ninterface ModuleNode {\n  slug: string;\n  children: ModuleNode[];\n}\n\ninterface UseActiveModulesReturn {\n  activeModules: string[];\n  loading: boolean;\n  toggle: (slug: string) => Promise<void>;\n  setAll: (slugs: string[]) => Promise<void>;\n  isActive: (slug: string) => boolean;\n  isPartiallyActive: (slug: string, tree?: ModuleNode[]) => boolean;\n}\n\nfunction readLocalModules(): string[] {\n  if (typeof window === 'undefined') return [];\n  try {\n    const parsed: unknown = JSON.parse(localStorage.getItem(LOCAL_STORAGE_KEY) ?? '[]');\n    return Array.isArray(parsed) && parsed.every((value) => typeof value === 'string')\n      ? parsed\n      : [];\n  } catch {\n    return [];\n  }\n}\n\nfunction writeLocalModules(slugs: string[]): void {\n  try {\n    localStorage.setItem(LOCAL_STORAGE_KEY, JSON.stringify(slugs));\n  } catch {\n    // Storage-denied browsers still retain this choice in component state.\n  }\n}\n\nexport function useActiveModules(): UseActiveModulesReturn {\n  const [activeModules, setActiveModules] = useState<string[]>(readLocalModules);\n  const setAll = useCallback(async (slugs: string[]) => {\n    const next = [...new Set(slugs)];\n    setActiveModules(next);\n    writeLocalModules(next);\n  }, []);\n  const toggle = useCallback(async (slug: string) => {\n    setActiveModules((current) => {\n      const next = current.includes(slug)\n        ? current.filter((value) => value !== slug && !value.startsWith(`${slug}/`))\n        : [...current, slug];\n      writeLocalModules(next);\n      return next;\n    });\n  }, []);\n  const isActive = useCallback((slug: string) => {\n    if (activeModules.includes(slug)) return true;\n    const parts = slug.split('/');\n    for (let index = 1; index < parts.length; index += 1) {\n      if (activeModules.includes(parts.slice(0, index).join('/'))) return true;\n    }\n    return false;\n  }, [activeModules]);\n  const isPartiallyActive = useCallback((slug: string, tree?: ModuleNode[]) => {\n    const descendants = activeModules.filter((value) => value.startsWith(`${slug}/`));\n    if (descendants.length === 0) return false;\n    if (!tree) return !activeModules.includes(slug);\n    const findNode = (nodes: ModuleNode[]): ModuleNode | null => {\n      for (const node of nodes) {\n        if (node.slug === slug) return node;\n        const nested = findNode(node.children);\n        if (nested) return nested;\n      }\n      return null;\n    };\n    const node = findNode(tree);\n    return node?.children.length\n      ? !node.children.every((child) => activeModules.includes(child.slug))\n      : !activeModules.includes(slug);\n  }, [activeModules]);\n  return { activeModules, loading: false, toggle, setAll, isActive, isPartiallyActive };\n}\n\nexport function expandModuleFilter(activeModules: string[]): string[] {\n  const expanded = new Set<string>();\n  for (const slug of activeModules) {\n    expanded.add(slug);\n    const parts = slug.split('/');\n    for (let index = 1; index < parts.length; index += 1) {\n      expanded.add(parts.slice(0, index).join('/'));\n    }\n  }\n  return [...expanded];\n}\n",
+      "licence": "MIT"
+    },
+    {
+      "path": "src/lib/content-index.ts",
+      "text": "export const CONTENT_ROTATIONS = [\n  { id: 'open-learning' as const, name: 'Open learning', short: 'Open', weeks: 0 },\n];\n\nexport type ContentRotationId = (typeof CONTENT_ROTATIONS)[number]['id'];\n\nexport const CONTENT_WEEK_DATA: Record<\n  ContentRotationId,\n  Array<{ title: string; desc: string }>\n> = {\n  'open-learning': [],\n};\n\nexport const USMLE_SUBJECTS = [\n  { slug: 'psychiatry', name: 'Psychiatry', desc: 'Behavioral science and psychopharmacology' },\n  { slug: 'pharmacology', name: 'Pharmacology', desc: 'Drug mechanisms and toxicology' },\n  { slug: 'cardiovascular', name: 'Cardiovascular', desc: 'Physiology and cardiovascular disease' },\n  { slug: 'neurology', name: 'Neurology', desc: 'Neuroanatomy and neurologic disease' },\n  { slug: 'renal', name: 'Renal', desc: 'Renal physiology and disease' },\n  { slug: 'gastrointestinal', name: 'Gastrointestinal', desc: 'Gastrointestinal physiology and disease' },\n  { slug: 'respiratory', name: 'Respiratory', desc: 'Respiratory physiology and disease' },\n  { slug: 'heme-onc', name: 'Hematology and oncology', desc: 'Blood disorders and neoplasia' },\n  { slug: 'immunology', name: 'Immunology', desc: 'Innate and adaptive immunity' },\n  { slug: 'microbiology', name: 'Microbiology', desc: 'Bacteria, viruses, fungi, and parasites' },\n  { slug: 'biochemistry', name: 'Biochemistry', desc: 'Molecular biology, metabolism, and genetics' },\n  { slug: 'endocrine', name: 'Endocrine', desc: 'Endocrine physiology and disease' },\n  { slug: 'pathology', name: 'Pathology', desc: 'Cell injury, inflammation, and neoplasia' },\n  { slug: 'reproductive', name: 'Reproductive', desc: 'Reproductive physiology and disease' },\n  { slug: 'msk', name: 'Musculoskeletal and skin', desc: 'Musculoskeletal and dermatologic disease' },\n];\n",
+      "licence": "CC-BY-4.0"
+    },
+    {
+      "path": "src/lib/current-study.ts",
+      "text": "import type { RotationConfig } from './rotations';\n\nexport interface CurrentStudyContext {\n  rotation: RotationConfig;\n  rotationId: string;\n  week: number;\n  daysUntilExam: number;\n  isExamWeek: boolean;\n  blockNumber: number;\n  blockName: string;\n}\n\nexport function getCurrentStudyContext(\n  _date: Date = new Date(),\n  _track: number = 1,\n): CurrentStudyContext | null {\n  void _date;\n  void _track;\n  return null;\n}\n",
+      "licence": "MIT"
+    },
+    {
+      "path": "src/lib/curriculum/index.ts",
+      "text": "import type {\n  AssessmentPeriod,\n  Block,\n  CurriculumDefinition,\n  CurriculumPosition,\n  UpcomingExam,\n  WeekDefinition,\n} from './types';\n\nexport * from './types';\n\nexport function getCurriculum(_program: string): CurriculumDefinition | null {\n  void _program;\n  return null;\n}\n\nexport function getCurriculumWeek(\n  _program: string,\n  _weekNumber: number,\n): WeekDefinition | null {\n  void _program;\n  void _weekNumber;\n  return null;\n}\n\nexport function getAssessmentPeriod(\n  _program: string,\n  _date: Date,\n): AssessmentPeriod | null {\n  void _program;\n  void _date;\n  return null;\n}\n\nexport function getUpcomingAssessments(\n  _program: string,\n  _date: Date,\n): UpcomingExam[] {\n  void _program;\n  void _date;\n  return [];\n}\n\nexport function getBlockForWeek(\n  _program: string,\n  _weekNumber: number,\n): Block | null {\n  void _program;\n  void _weekNumber;\n  return null;\n}\n\nexport function getCurriculumPosition(\n  _program: string,\n  _date: Date,\n): CurriculumPosition | null {\n  void _program;\n  void _date;\n  return null;\n}\n\nexport function getWeekTopics(_program: string, _weekNumber: number): string[] {\n  void _program;\n  void _weekNumber;\n  return [];\n}\n\nexport function parseAnkiTagToCurriculum(_tag: string): {\n  program: 'md1' | 'md2' | null;\n  kat: number | null;\n  block: string | null;\n  type: string | null;\n} {\n  void _tag;\n  return { program: null, kat: null, block: null, type: null };\n}\n\nexport function getCurriculumModuleNodes(\n  _program: 'md1' | 'md2',\n  _kat: number | null,\n  _block: string | null,\n  _type: string | null,\n): string[] {\n  void _program;\n  void _kat;\n  void _block;\n  void _type;\n  return [];\n}\n",
+      "licence": "MIT"
+    },
+    {
+      "path": "src/lib/deep-dive-cards-loaders.ts",
+      "text": "/*\n * AUTO-GENERATED FILE - DO NOT EDIT\n *\n * Generated by: scripts/generate-deep-dive-cards-manifest.mjs\n */\n\nimport type { ComponentType } from 'react';\n\nexport const deepDiveCardLoaderBySlug: Record<string, () => Promise<{ default: ComponentType }>> = {\n};\n",
+      "licence": "MIT"
+    },
+    {
+      "path": "src/lib/deep-dive-cards-lookup.ts",
+      "text": "/*\n * AUTO-GENERATED FILE - DO NOT EDIT\n *\n * Generated by: scripts/generate-deep-dive-cards-manifest.mjs\n */\n\nexport interface DeepDiveCardLookup {\n  slug: string;\n  title: string;\n  description: string;\n}\n\nexport const deepDiveCardByQuestionId: Record<string, DeepDiveCardLookup> = {\n};\n",
+      "licence": "MIT"
+    },
+    {
+      "path": "src/lib/deep-dive-cards-meta.ts",
+      "text": "/*\n * AUTO-GENERATED FILE - DO NOT EDIT\n *\n * Generated by: scripts/generate-deep-dive-cards-manifest.mjs\n */\n\nexport interface DeepDiveCardMeta {\n  slug: string;\n  file: string;\n  title: string;\n  description: string;\n  cardStableId?: string;\n  questionId?: string;\n  rotation?: string;\n  week?: number;\n  tags?: string[];\n}\n\nexport const deepDiveCardMetaBySlug: Record<string, DeepDiveCardMeta> = {\n};\n\nexport const allDeepDiveCardSlugs = Object.keys(deepDiveCardMetaBySlug);\n",
+      "licence": "MIT"
+    },
+    {
+      "path": "src/lib/deep-dives.ts",
+      "text": "/*\n * AUTO-GENERATED FILE - DO NOT EDIT\n *\n * Generated by: scripts/generate-deep-dive-manifest.mjs\n */\n\nimport type { ComponentType } from 'react';\n\nexport interface DeepDiveMeta {\n  slug: string;\n  file: string;\n  title: string;\n  description: string;\n  duration?: string;\n  backLink?: string;\n  rotation?: string;\n  week?: number;\n  tags?: string[];\n  hasVideo?: boolean;\n}\n\nexport const deepDiveMetaBySlug: Record<string, DeepDiveMeta> = {\n};\n\nexport const deepDiveLoaderBySlug: Record<string, () => Promise<{ default: ComponentType }>> = {\n};\n\nexport const allDeepDiveSlugs = Object.keys(deepDiveMetaBySlug);\n",
+      "licence": "MIT"
+    },
+    {
+      "path": "src/lib/institution-rotations.ts",
+      "text": "import type { Institution } from '@/lib/institution';\nimport { personalDeckSlugs } from '@/lib/personal-decks';\n\nconst PERSONAL = personalDeckSlugs();\n\nexport const SCHEDULED_ROTATIONS: Record<Institution, string[]> = {\n  usyd: [],\n  'usyd-md1': [],\n  'usyd-md2': [],\n  usmle: ['usmle-step1'],\n  other: [],\n};\n\nexport const ALL_ROTATIONS: Record<Institution, string[]> = {\n  ...SCHEDULED_ROTATIONS,\n  usyd: [...PERSONAL],\n  other: [...PERSONAL],\n};\n\nexport function unreachableRotations(\n  available: readonly string[],\n  byInstitution: Record<string, string[]> = ALL_ROTATIONS,\n): string[] {\n  const reachable = new Set(Object.values(byInstitution).flat());\n  return available.filter((rotation) => !reachable.has(rotation));\n}\n",
+      "licence": "MIT"
+    },
+    {
+      "path": "src/lib/institution.ts",
+      "text": "export type Institution = 'usyd' | 'usyd-md1' | 'usyd-md2' | 'usmle' | 'other';\n\nexport interface InstitutionConfig {\n  name: string;\n  shortName: string;\n  rotationPrefix: string;\n  hasTrackSystem: boolean;\n  years: number[];\n  entryPath: string;\n  description?: string;\n}\n\nexport const INSTITUTIONS = {\n  usmle: {\n    name: 'USMLE Step 1',\n    shortName: 'USMLE',\n    rotationPrefix: 'usmle-',\n    hasTrackSystem: false,\n    years: [],\n    entryPath: '/usmle',\n    description: 'USMLE Step 1 prep',\n  },\n  other: {\n    name: 'Other / Just Learning',\n    shortName: 'Other',\n    rotationPrefix: '',\n    hasTrackSystem: false,\n    years: [],\n    entryPath: '/',\n    description: 'Use the open learning engine without a course preset',\n  },\n} satisfies Partial<Record<Institution, InstitutionConfig>>;\n\nexport type SupportedInstitution = keyof typeof INSTITUTIONS;\n\nexport const SUPPORTS_PERSONAL_BRIEF = false;\nexport const SUPPORTS_PERSONAL_DOCUMENTS = false;\nexport const SUPPORTS_CLINICAL_EXAMS = false;\n\nexport function isSupportedInstitution(value: unknown): value is SupportedInstitution {\n  return typeof value === 'string'\n    && Object.prototype.hasOwnProperty.call(INSTITUTIONS, value);\n}\n\nexport interface UniversalModule {\n  id: string;\n  name: string;\n  description: string;\n  groupTypes: string[];\n  contentRotations?: string[];\n  maxIntervalDays?: number;\n  defaultEnabled: boolean;\n}\n\nexport const UNIVERSAL_MODULES: UniversalModule[] = [];\nexport const DEFAULT_ENABLED_MODULES: string[] = [];\n\nexport function getInstitutionConfig(institution: Institution): InstitutionConfig {\n  return isSupportedInstitution(institution)\n    ? INSTITUTIONS[institution]\n    : INSTITUTIONS.other;\n}\n\nexport function isRotationForInstitution(\n  rotation: string,\n  institution: Institution,\n): boolean {\n  if (!isSupportedInstitution(institution)) return false;\n  const prefix = INSTITUTIONS[institution].rotationPrefix;\n  return prefix ? rotation.startsWith(prefix) : institution === 'other';\n}\n\nexport function detectInstitutionFromHostname(hostname: string): Institution | null {\n  const host = hostname.toLowerCase().split(':')[0];\n  return host === 'cohort.md' || host === 'www.cohort.md' ? 'usmle' : null;\n}\n\nexport function detectInstitutionFromPath(path: string): Institution | null {\n  return path === '/usmle' || path.startsWith('/usmle/') ? 'usmle' : null;\n}\n\nexport function getEnabledGroupTypes(enabledModules: string[]): string[] {\n  return UNIVERSAL_MODULES\n    .filter((module) => enabledModules.includes(module.id))\n    .flatMap((module) => module.groupTypes);\n}\n\nexport const INSTITUTION_STORAGE_KEY = 'md3_institution';\nexport const MODULES_STORAGE_KEY = 'md3_enabled_modules';\n",
+      "licence": "MIT"
+    },
+    {
+      "path": "src/lib/manifold/question-complexity.ts",
+      "text": "export type CognitiveTask =\n  | 'diagnosis'\n  | 'next-step'\n  | 'management'\n  | 'mechanism'\n  | 'interpretation'\n  | 'identification'\n  | 'prognosis'\n  | 'risk-assessment'\n  | 'unknown';\n\nexport interface ComplexitySignals {\n  hasPatientAge: boolean;\n  hasPatientGender: boolean;\n  hasPastMedicalHistory: boolean;\n  hasMedications: boolean;\n  hasLabValues: boolean;\n  hasVitalSigns: boolean;\n  hasImagingFindings: boolean;\n  hasExamFindings: boolean;\n  hasTimeCourse: boolean;\n  domains: string[];\n  isDomainCrossover: boolean;\n  taskType: CognitiveTask;\n  requiresInterpretation: boolean;\n  requiresSynthesis: boolean;\n  requiresComparison: boolean;\n  stemWordCount: number;\n  optionCount: number;\n  avgOptionLength: number;\n  hasNegation: boolean;\n}\n\nexport interface ComplexityProfile {\n  vignetteComplexity: number;\n  domainIntegration: number;\n  cognitiveLoad: number;\n  informationDensity: number;\n  distractorPlausibility: number;\n  overallComplexity: number;\n  signals: ComplexitySignals;\n}\n\nconst clamp = (value: number) => Math.max(0, Math.min(1, value));\n\nfunction taskForStem(stem: string): CognitiveTask {\n  if (/next (?:best )?step|most appropriate (?:next|initial)/i.test(stem)) return 'next-step';\n  if (/management|treatment|therapy/i.test(stem)) return 'management';\n  if (/mechanism|pathophysiology/i.test(stem)) return 'mechanism';\n  if (/diagnosis|most likely condition/i.test(stem)) return 'diagnosis';\n  if (/interpret|suggests|indicates/i.test(stem)) return 'interpretation';\n  if (/prognosis|outcome/i.test(stem)) return 'prognosis';\n  if (/risk factor|risk of/i.test(stem)) return 'risk-assessment';\n  if (/which (?:finding|feature|parameter)/i.test(stem)) return 'identification';\n  return 'unknown';\n}\n\nexport function extractSignals(\n  stem: string,\n  options: Array<{ text: string; label?: string }>,\n): ComplexitySignals {\n  const optionLengths = options.map((option) => option.text.trim().split(/\\s+/).filter(Boolean).length);\n  const taskType = taskForStem(stem);\n  return {\n    hasPatientAge: /\\b\\d{1,3}[- ]year[- ]old\\b/i.test(stem),\n    hasPatientGender: /\\b(?:male|female|man|woman|boy|girl)\\b/i.test(stem),\n    hasPastMedicalHistory: /\\b(?:history of|known|diagnosed with)\\b/i.test(stem),\n    hasMedications: /\\b(?:taking|prescribed|medication|drug|therapy)\\b/i.test(stem),\n    hasLabValues: /\\b\\d+(?:\\.\\d+)?\\s*(?:mg|g|mmol|mEq|IU|U|mL|L)\\b/i.test(stem),\n    hasVitalSigns: /\\b(?:BP|HR|RR|SpO2|temperature|pulse|blood pressure)\\b/i.test(stem),\n    hasImagingFindings: /\\b(?:CT|MRI|X-ray|ultrasound|imaging|CXR|ECG)\\b/i.test(stem),\n    hasExamFindings: /\\b(?:examination|on exam|inspection|palpation|auscultation)\\b/i.test(stem),\n    hasTimeCourse: /\\b\\d+\\s*(?:hour|day|week|month|year)s?\\b/i.test(stem),\n    domains: [],\n    isDomainCrossover: false,\n    taskType,\n    requiresInterpretation: /interpret|suggest|indicat|imply/i.test(stem),\n    requiresSynthesis: /integrat|combin|together/i.test(stem),\n    requiresComparison: /rather than|versus|compare|differentiat/i.test(stem),\n    stemWordCount: stem.trim().split(/\\s+/).filter(Boolean).length,\n    optionCount: options.length,\n    avgOptionLength: optionLengths.length\n      ? optionLengths.reduce((sum, length) => sum + length, 0) / optionLengths.length\n      : 0,\n    hasNegation: /\\b(?:NOT|EXCEPT|LEAST|INCORRECT|FALSE|UNLIKELY)\\b/.test(stem),\n  };\n}\n\nexport function analyzeComplexity(\n  stem: string,\n  options: Array<{ text: string; label?: string }>,\n): ComplexityProfile {\n  const signals = extractSignals(stem, options);\n  const vignetteFeatures = [\n    signals.hasPatientAge,\n    signals.hasPatientGender,\n    signals.hasPastMedicalHistory,\n    signals.hasMedications,\n    signals.hasLabValues,\n    signals.hasVitalSigns,\n    signals.hasImagingFindings,\n    signals.hasExamFindings,\n    signals.hasTimeCourse,\n  ].filter(Boolean).length;\n  const vignetteComplexity = clamp(0.1 + vignetteFeatures / 10);\n  const domainIntegration = signals.isDomainCrossover ? 0.6 : 0.3;\n  const cognitiveLoad = clamp(\n    0.35\n      + (signals.requiresInterpretation ? 0.15 : 0)\n      + (signals.requiresSynthesis ? 0.2 : 0)\n      + (signals.requiresComparison ? 0.1 : 0),\n  );\n  const informationDensity = clamp(0.15 + vignetteFeatures * 0.08);\n  const distractorPlausibility = clamp(options.length / 5 * 0.7 + signals.avgOptionLength / 50);\n  const overallComplexity = clamp(\n    vignetteComplexity * 0.2\n      + domainIntegration * 0.2\n      + cognitiveLoad * 0.3\n      + informationDensity * 0.15\n      + distractorPlausibility * 0.15,\n  );\n  return {\n    vignetteComplexity,\n    domainIntegration,\n    cognitiveLoad,\n    informationDensity,\n    distractorPlausibility,\n    overallComplexity,\n    signals,\n  };\n}\n\nexport function complexityToTier(complexity: number): 'easy' | 'medium' | 'hard' {\n  if (complexity < 0.35) return 'easy';\n  if (complexity < 0.65) return 'medium';\n  return 'hard';\n}\n\ntype CalibrationReference = {\n  mean: number;\n  stdDev: number;\n  min: number;\n  max: number;\n  percentiles: { p25: number; p50: number; p75: number };\n  tierDistribution: { easy: number; medium: number; hard: number };\n};\n\nexport function getExamCalibrationReference(): CalibrationReference {\n  return {\n    mean: 0.5,\n    stdDev: 0.15,\n    min: 0,\n    max: 1,\n    percentiles: { p25: 0.35, p50: 0.5, p75: 0.65 },\n    tierDistribution: { easy: 0.25, medium: 0.5, hard: 0.25 },\n  };\n}\n\nexport function getUSMLECalibrationReference(_step: 1 | 2 = 1): {\n  mean: number;\n  stdDev: number;\n  percentiles: { p25: number; p50: number; p75: number };\n  tierDistribution: { easy: number; medium: number; hard: number };\n  characteristics: { avgStemLength: string; dominantTaskTypes: string[]; optionCount: number };\n} {\n  void _step;\n  const reference = getExamCalibrationReference();\n  return {\n    mean: reference.mean,\n    stdDev: reference.stdDev,\n    percentiles: reference.percentiles,\n    tierDistribution: reference.tierDistribution,\n    characteristics: {\n      avgStemLength: 'not calibrated',\n      dominantTaskTypes: [],\n      optionCount: 5,\n    },\n  };\n}\n\nexport function compareToExamLevel(complexity: number): {\n  percentile: number;\n  isExamLevel: boolean;\n  adjustment: string;\n  description: string;\n} {\n  const reference = getExamCalibrationReference();\n  const percentile = clamp((complexity - reference.min) / (reference.max - reference.min)) * 100;\n  const isExamLevel = complexity >= reference.percentiles.p25\n    && complexity <= reference.percentiles.p75;\n  if (complexity < reference.percentiles.p25) {\n    return {\n      percentile,\n      isExamLevel,\n      adjustment: 'increase-complexity',\n      description: 'Below the uncalibrated reference range',\n    };\n  }\n  if (complexity > reference.percentiles.p75) {\n    return {\n      percentile,\n      isExamLevel,\n      adjustment: 'decrease-complexity',\n      description: 'Above the uncalibrated reference range',\n    };\n  }\n  return { percentile, isExamLevel, adjustment: 'appropriate', description: 'Within the uncalibrated reference range' };\n}\n\nexport function getDomainComplexityBaseline(_domain: string): number {\n  void _domain;\n  return 0.5;\n}\n\nexport function suggestComplexityAdjustments(profile: ComplexityProfile): string[] {\n  if (profile.overallComplexity < 0.35) return ['Add relevant context or reasoning steps'];\n  if (profile.overallComplexity > 0.65) return ['Remove nonessential details'];\n  return [];\n}\n",
+      "licence": "MIT"
+    },
+    {
+      "path": "src/lib/offline/figures.ts",
+      "text": "export const FIGURE_CACHE = 'md3-public-no-figure-cache';\n\nexport function figureCacheKey(imageKey: string, ownerKey = 'unbound'): string {\n  return `/__offline-figure?owner=${encodeURIComponent(ownerKey)}&key=${encodeURIComponent(imageKey)}`;\n}\n\nexport async function cacheFigures(\n  _imageKeys: (string | null | undefined)[],\n  _expectedOwnerKey?: string | null,\n): Promise<number> {\n  void _imageKeys;\n  void _expectedOwnerKey;\n  return 0;\n}\n\nexport async function readCachedFigure(_imageKey: string): Promise<null> {\n  void _imageKey;\n  return null;\n}\n\nexport async function countCachedFigures(_expectedOwnerKey?: string): Promise<number> {\n  void _expectedOwnerKey;\n  return 0;\n}\n\nexport async function clearFigureCache(): Promise<void> {}\n",
+      "licence": "MIT"
+    },
+    {
+      "path": "src/lib/offline/fill.ts",
+      "text": "export const REFILL_BELOW = 0;\nexport const REFILL_AFTER_MS = 12 * 60 * 60 * 1000;\n\nexport interface FillResult {\n  filled: boolean;\n  itemCount: number;\n  figuresCached: number;\n  reason:\n    | 'ok'\n    | 'offline'\n    | 'fresh'\n    | 'pending-reviews'\n    | 'unauthenticated'\n    | 'owner-changed'\n    | 'failed';\n}\n\n/** Public builds omit the private bulk-pack route, so no refill is scheduled. */\nexport function needsRefill(\n  _pack: { items: unknown[]; savedAt: number } | null,\n  _now: number,\n): boolean {\n  void _pack;\n  void _now;\n  return false;\n}\n\n/** Keep the shared warm-up call safe and explicit without issuing network requests. */\nexport async function fillOfflinePack(\n  userKey: string | null,\n  opts: { force?: boolean; size?: number } = {},\n): Promise<FillResult> {\n  void opts;\n  return {\n    filled: false,\n    itemCount: 0,\n    figuresCached: 0,\n    reason: userKey ? 'fresh' : 'unauthenticated',\n  };\n}\n",
+      "licence": "MIT"
+    },
+    {
+      "path": "src/lib/personal-decks.ts",
+      "text": "export interface PersonalDeck {\n  slug: string;\n  name: string;\n  shortName: string;\n  label: string;\n  color: string;\n  weeks: number;\n  ownerEmail: string;\n  examDate: string | null;\n  blendShare: number;\n  floor?: number;\n  burst?: number;\n  windowDays?: number;\n  burstDays?: number;\n  retiredAt?: string;\n}\n\nexport const PERSONAL_DECKS: PersonalDeck[] = [];\n\nconst normalizeEmail = (email: string | null | undefined) =>\n  (email ?? '').trim().toLowerCase();\n\nexport function personalDeckSlugs(decks: PersonalDeck[] = PERSONAL_DECKS): string[] {\n  return decks.map((deck) => deck.slug);\n}\n\nexport function personalDeckLabels(\n  decks: PersonalDeck[] = PERSONAL_DECKS,\n): Record<string, string> {\n  return Object.fromEntries(decks.map((deck) => [deck.slug, deck.label]));\n}\n\nexport function personalDeckOwnerEmails(\n  decks: PersonalDeck[] = PERSONAL_DECKS,\n): Record<string, ReadonlySet<string>> {\n  return Object.fromEntries(\n    decks.map((deck) => [deck.slug, new Set([normalizeEmail(deck.ownerEmail)])]),\n  );\n}\n\nexport function deckForSlug(\n  slug: string,\n  decks: PersonalDeck[] = PERSONAL_DECKS,\n): PersonalDeck | undefined {\n  return decks.find((deck) => deck.slug === slug);\n}\n\nexport function ownedActiveDecks(\n  email: string | null | undefined,\n  today: Date,\n  decks: PersonalDeck[] = PERSONAL_DECKS,\n): PersonalDeck[] {\n  const normalizedEmail = normalizeEmail(email);\n  if (!normalizedEmail) return [];\n  const timestamp = today.getTime();\n  return decks.filter((deck) => {\n    if (normalizeEmail(deck.ownerEmail) !== normalizedEmail) return false;\n    if (deck.retiredAt && timestamp >= Date.parse(`${deck.retiredAt}T00:00:00Z`)) return false;\n    if (deck.examDate && timestamp >= Date.parse(`${deck.examDate}T00:00:00Z`)) return false;\n    return true;\n  });\n}\n",
+      "licence": "MIT"
+    },
+    {
+      "path": "src/lib/questions/private-access-session.ts",
+      "text": "export async function sessionCanAccessPrivateSources(): Promise<boolean> {\n  return false;\n}\n",
+      "licence": "MIT"
+    },
+    {
+      "path": "src/lib/questions/private-access.ts",
+      "text": "export function emailIsOnPrivateSourcesAllowlist(\n  _email: string | null | undefined,\n): boolean {\n  void _email;\n  return false;\n}\n\nexport async function userIdCanAccessPrivateSources(\n  _userId: string | null | undefined,\n): Promise<boolean> {\n  void _userId;\n  return false;\n}\n",
+      "licence": "MIT"
+    },
+    {
+      "path": "src/lib/review/scheduler-config.ts",
+      "text": "const MS_PER_DAY = 24 * 60 * 60 * 1000;\n\nexport type ExamDateInput = Date | string | null | undefined;\n\nexport function parseExamDate(value: ExamDateInput): Date | null {\n  if (!value) return null;\n  const parsed = value instanceof Date ? value : new Date(value);\n  return Number.isNaN(parsed.getTime()) ? null : parsed;\n}\n\nexport function getConfiguredExamDateForRotation(\n  _rotation: string | undefined,\n): Date | null {\n  void _rotation;\n  return null;\n}\n\nexport function startOfUtcDayMs(date: Date): number {\n  return Date.UTC(date.getUTCFullYear(), date.getUTCMonth(), date.getUTCDate());\n}\n\nexport function subtractUtcDays(dayMs: number, days: number): number {\n  return dayMs - days * MS_PER_DAY;\n}\n",
+      "licence": "MIT"
+    },
+    {
+      "path": "src/lib/rotation-context.ts",
+      "text": "export type RotationId = string;\nexport type TrackNumber = 1 | 2 | 3 | 4;\n\nexport const TRACKS: Record<TrackNumber, readonly RotationId[]> = {\n  1: [],\n  2: [],\n  3: [],\n  4: [],\n};\n\nexport const ROTATIONS: ReadonlyArray<{\n  id: RotationId;\n  name: string;\n  short: string;\n  color: string;\n}> = [];\n\nexport const BLOCKS: ReadonlyArray<{\n  num: number;\n  start: Date;\n  exam: Date;\n  examStr: string;\n}> = [];\n\nexport const TRACK_SCHEDULES: Record<TrackNumber, {\n  rotations: readonly string[];\n  description: string;\n}> = {\n  1: { rotations: [], description: 'Not configured' },\n  2: { rotations: [], description: 'Not configured' },\n  3: { rotations: [], description: 'Not configured' },\n  4: { rotations: [], description: 'Not configured' },\n};\n\nconst STORAGE_KEY = 'md3_current_rotation';\nconst STORAGE_EVENT = 'md3_rotation_changed';\n\nexport function getStoredRotation(): RotationId | null {\n  if (typeof window === 'undefined') return null;\n  const stored = localStorage.getItem(STORAGE_KEY);\n  return ROTATIONS.some((rotation) => rotation.id === stored)\n    ? stored as RotationId\n    : null;\n}\n\nexport function setStoredRotation(rotationId: RotationId): void {\n  if (typeof window === 'undefined') return;\n  localStorage.setItem(STORAGE_KEY, rotationId);\n  window.dispatchEvent(new Event(STORAGE_EVENT));\n}\n\nexport function subscribeToRotationChanges(callback: () => void): () => void {\n  if (typeof window === 'undefined') return () => undefined;\n  const handleStorage = (event: StorageEvent) => {\n    if (event.key === STORAGE_KEY) callback();\n  };\n  window.addEventListener('storage', handleStorage);\n  window.addEventListener(STORAGE_EVENT, callback);\n  return () => {\n    window.removeEventListener('storage', handleStorage);\n    window.removeEventListener(STORAGE_EVENT, callback);\n  };\n}\n\nexport function getBlockExamDate(_rotationId: string, _track: TrackNumber = 1): Date | null {\n  void _rotationId;\n  void _track;\n  return null;\n}\n\nexport function getBlockStartDate(_rotationId: string, _track: TrackNumber = 1): Date | null {\n  void _rotationId;\n  void _track;\n  return null;\n}\n\nexport function getCurrentWeek(): number {\n  return 1;\n}\n\nexport function getCurrentBlockIndex(): number {\n  return 0;\n}\n\nexport function inferTrackFromRotation(_rotationId: RotationId): TrackNumber {\n  void _rotationId;\n  return 1;\n}\n\nexport function getRotationForTrack(_track: TrackNumber, _blockIndex: number): RotationId {\n  void _track;\n  void _blockIndex;\n  return 'open-learning';\n}\n\nexport function getActiveRotations(_track: TrackNumber): RotationId[] {\n  void _track;\n  return [];\n}\n",
+      "licence": "MIT"
+    },
+    {
+      "path": "src/lib/rotation-labels.ts",
+      "text": "import { personalDeckLabels } from '@/lib/personal-decks';\n\nexport const ROTATION_LABELS: Record<string, string> = {\n  'usmle-step1': 'USMLE',\n  ...personalDeckLabels(),\n};\n\nexport function rotationLabel(slug: string): string {\n  return ROTATION_LABELS[slug] ?? slug.toUpperCase();\n}\n",
+      "licence": "MIT"
+    },
+    {
+      "path": "src/lib/rotation-metadata.json",
+      "text": "{}\n",
+      "licence": "MIT"
+    },
+    {
+      "path": "src/lib/rotations.ts",
+      "text": "import { prisma } from '@/lib/prisma';\nimport { PERSONAL_DECKS, personalDeckSlugs } from '@/lib/personal-decks';\n\nexport interface RotationConfig {\n  id: string;\n  name: string;\n  shortName: string;\n  weeks: number;\n  defaultExamDate: Date;\n  color: string;\n}\n\nexport const ROTATIONS: RotationConfig[] = [];\nexport const USYD_ROTATION_IDS: string[] = [];\nexport const USMLE_ROTATION_IDS = ['usmle-step1'] as const;\nexport const YEAR3_COMMON_ROTATION_IDS: string[] = [];\nexport const PERSONAL_ROTATION_IDS: string[] = personalDeckSlugs();\nexport const SELF_PACED_EXAM_SENTINEL = new Date('2099-12-31T00:00:00Z');\n\nexport function isSelfPacedExamDate(date: Date | null | undefined): boolean {\n  return date != null && date.getTime() >= SELF_PACED_EXAM_SENTINEL.getTime();\n}\n\nconst PERSONAL_ROTATION_CONFIG: Record<string, RotationConfig> = Object.fromEntries(\n  PERSONAL_DECKS.map((deck) => [deck.slug, {\n    id: deck.slug,\n    name: deck.name,\n    shortName: deck.shortName,\n    weeks: deck.weeks,\n    defaultExamDate: deck.examDate\n      ? new Date(`${deck.examDate}T00:00:00Z`)\n      : SELF_PACED_EXAM_SENTINEL,\n    color: deck.color,\n  }]),\n);\n\nexport const CONTENT_ROTATION_IDS = [\n  ...USMLE_ROTATION_IDS,\n  ...PERSONAL_ROTATION_IDS,\n];\nexport const EXAM_PREP_ROTATION_IDS: string[] = [];\n\nexport function resolveModuleRotation(_year: string, _discipline: string): string {\n  void _year;\n  void _discipline;\n  return 'usmle-step1';\n}\n\nexport function getRotation(id: string): RotationConfig | undefined {\n  return PERSONAL_ROTATION_CONFIG[id] ?? ROTATIONS.find((rotation) => rotation.id === id);\n}\n\nexport async function getExamDateForUser(\n  rotationId: string,\n  userId?: string,\n): Promise<Date | null> {\n  if (userId) {\n    try {\n      const userRotation = await prisma.userRotation.findUnique({\n        where: { userId_rotation: { userId, rotation: rotationId } },\n      });\n      if (userRotation?.examDate) return userRotation.examDate;\n    } catch {\n      // Fall through to explicit public configuration.\n    }\n  }\n  return getRotation(rotationId)?.defaultExamDate ?? null;\n}\n\nexport function getExamDate(rotationId: string): Date | null {\n  return getRotation(rotationId)?.defaultExamDate ?? null;\n}\n\nexport function getDaysUntilExam(rotationId: string): number | null {\n  const examDate = getExamDate(rotationId);\n  if (!examDate) return null;\n  return Math.ceil((examDate.getTime() - Date.now()) / 86_400_000);\n}\n\nexport async function getDaysUntilExamForUser(\n  rotationId: string,\n  userId?: string,\n): Promise<number | null> {\n  const examDate = await getExamDateForUser(rotationId, userId);\n  if (!examDate) return null;\n  return Math.ceil((examDate.getTime() - Date.now()) / 86_400_000);\n}\n\nexport async function getUserRotations(userId: string): Promise<string[]> {\n  try {\n    const rows = await prisma.userRotation.findMany({\n      where: { userId },\n      select: { rotation: true },\n    });\n    return rows.map((row) => row.rotation);\n  } catch {\n    return [];\n  }\n}\n\nexport async function getCurrentRotation(_userId: string): Promise<string | null> {\n  void _userId;\n  return null;\n}\n\nexport async function getCurrentRotationWithDetails(_userId: string): Promise<{\n  rotation: string;\n  startDate: Date;\n  examDate: Date;\n  weekNumber: number;\n  daysUntilExam: number;\n} | null> {\n  void _userId;\n  return null;\n}\n",
+      "licence": "MIT"
+    },
+    {
+      "path": "src/lib/source-registry-data.json",
+      "text": "[]\n",
+      "licence": "CC-BY-4.0"
+    },
+    {
+      "path": "src/lib/usmle/index.ts",
+      "text": "export * from './public-corpus';\nexport * from './public-baseline';\nexport * from './public-release';\nexport * from './step1-contract';\n",
+      "licence": "MIT"
+    },
+    {
+      "path": "tsconfig.json",
+      "text": "{\n  \"compilerOptions\": {\n    \"target\": \"ES2020\",\n    \"lib\": [\"dom\", \"dom.iterable\", \"esnext\"],\n    \"allowJs\": true,\n    \"skipLibCheck\": true,\n    \"strict\": true,\n    \"noEmit\": true,\n    \"esModuleInterop\": true,\n    \"forceConsistentCasingInFileNames\": true,\n    \"module\": \"esnext\",\n    \"moduleResolution\": \"bundler\",\n    \"resolveJsonModule\": true,\n    \"isolatedModules\": true,\n    \"jsx\": \"react-jsx\",\n    \"incremental\": true,\n    \"plugins\": [{ \"name\": \"next\" }],\n    \"paths\": { \"@/*\": [\"./src/*\"] }\n  },\n  \"include\": [\n    \"next-env.d.ts\",\n    \"**/*.ts\",\n    \"**/*.tsx\",\n    \".next/types/**/*.ts\",\n    \"**/*.mts\"\n  ],\n  \"exclude\": [\n    \"node_modules\",\n    \"prisma\",\n    \"prisma.config.ts\",\n    \"scripts\",\n    \"tests\",\n    \"**/*.test.ts\",\n    \"**/*.test.tsx\",\n    \"**/__tests__/**\"\n  ]\n}\n",
+      "licence": "MIT"
+    },
+    {
+      "path": "vercel.json",
+      "text": "{\n  \"framework\": \"nextjs\",\n  \"buildCommand\": \"npm run build:release\"\n}\n",
+      "licence": "MIT"
+    },
+    {
+      "path": "vitest.setup.ts",
+      "text": "import '@testing-library/jest-dom/vitest';\nimport { vi } from 'vitest';\nimport { existsSync } from 'node:fs';\nimport { join } from 'node:path';\nimport { execFileSync } from 'node:child_process';\n\nprocess.env.DOTENV_CONFIG_QUIET = 'true';\n\nfor (const key of [\n  'PRIVATE_SOURCE_ACCESS_EMAILS',\n  'ADMIN_EMAILS',\n  'VIDEO_ACCESS_EMAILS',\n  'DATABASE_URL_LOCAL',\n]) {\n  delete process.env[key];\n}\n\nconst runtime = globalThis as {\n  DOMMatrix?: unknown;\n  ImageData?: unknown;\n  Path2D?: unknown;\n};\nif (typeof runtime.DOMMatrix === 'undefined') runtime.DOMMatrix = class {};\nif (typeof runtime.ImageData === 'undefined') runtime.ImageData = class {};\nif (typeof runtime.Path2D === 'undefined') runtime.Path2D = class {};\n\nvi.mock('server-only', () => ({}));\nvi.mock('@/lib/logger', () => {\n  const logger = {\n    debug: vi.fn(),\n    info: vi.fn(),\n    warn: vi.fn(),\n    error: vi.fn(),\n  };\n  return { logger, default: logger };\n});\n\nconst generated = join(process.cwd(), 'src/data/image-library.generated.json');\nif (!existsSync(generated)) {\n  execFileSync('npm', ['run', 'images:index'], { stdio: 'inherit' });\n}\n",
+      "licence": "MIT"
+    }
+  ],
+  "maximumFileBytes": 2097152
+}

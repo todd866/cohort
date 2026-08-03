@@ -1,0 +1,72 @@
+{
+  "id": "bank:usmle-step1:tetanus-spore-germination:v1",
+  "rotation": "usmle-step1",
+  "moduleNodes": [
+    "usmle/step1",
+    "usmle/step1/microbiology"
+  ],
+  "topics": [
+    "microbiology",
+    "tetanus",
+    "spore germination"
+  ],
+  "questionType": "mechanism",
+  "difficulty": "easy",
+  "stem": "A 52-year-old gardener sustains a deep puncture wound contaminated with soil. The narrow wound contains devitalized tissue and receives little blood flow. Which of the following local features most strongly favors conversion of dormant tetanus spores into metabolically active bacteria?",
+  "options": [
+    {
+      "label": "A",
+      "text": "High oxygen tension within intact tissue",
+      "isCorrect": false,
+      "misconception": "Assumes abundant oxygen promotes germination of an anaerobic organism.",
+      "explanation": "Well-oxygenated intact tissue does not provide the low-oxygen setting that favors tetanus spore germination."
+    },
+    {
+      "label": "B",
+      "text": "Continuous ultraviolet exposure of the wound",
+      "isCorrect": false,
+      "misconception": "Treats environmental light exposure as the key wound condition.",
+      "explanation": "Ultraviolet exposure is not the local physiologic condition that permits spores in a deep wound to become active bacteria."
+    },
+    {
+      "label": "C",
+      "text": "Low oxygen tension within damaged tissue",
+      "isCorrect": true,
+      "misconception": "Correctly recognizes the anaerobic environment that supports germination.",
+      "explanation": "Poor perfusion and devitalized tissue create a low-oxygen niche. That anaerobic setting permits tetanus spores deposited in the wound to germinate."
+    },
+    {
+      "label": "D",
+      "text": "Rapid clearance of all devitalized tissue",
+      "isCorrect": false,
+      "misconception": "Selects removal of the very tissue conditions that support bacterial growth.",
+      "explanation": "Clearing devitalized material improves the wound environment and would reduce, rather than promote, the conditions favorable to germination."
+    },
+    {
+      "label": "E",
+      "text": "Neutralization by circulating antitoxin",
+      "isCorrect": false,
+      "misconception": "Confuses toxin neutralization with the environmental trigger for spore activation.",
+      "explanation": "Antitoxin acts on accessible toxin; it does not create the wound conditions that initiate bacterial germination."
+    }
+  ],
+  "context": "Learning objective: Identify anaerobic wound conditions as the setting that permits tetanus spore germination.\n\nA deep wound with devitalized, poorly perfused tissue can become oxygen-poor. This local environment allows dormant tetanus spores to become active organisms.",
+  "cite": "cdc-pink-book-tetanus#tetanus-anaerobic",
+  "publicUsmle": {
+    "schemaVersion": 1,
+    "origin": "generated",
+    "itemText": {
+      "licence": "CC-BY-4.0",
+      "attribution": "MD3 contributors"
+    },
+    "evidence": {
+      "kind": "passage",
+      "sourceId": "cdc-pink-book-tetanus",
+      "passageId": "tetanus-anaerobic",
+      "licence": {
+        "cls": "foss",
+        "id": "us-gov"
+      }
+    }
+  }
+}

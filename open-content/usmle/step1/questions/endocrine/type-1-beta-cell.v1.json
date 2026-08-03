@@ -1,0 +1,59 @@
+{
+  "id": "bank:usmle-step1:endocrine-type-1-beta-cell:v1",
+  "rotation": "usmle-step1",
+  "topics": ["type 1 diabetes", "pancreatic islet cells"],
+  "moduleNodes": ["usmle/step1", "usmle/step1/endocrine"],
+  "questionType": "mechanism",
+  "difficulty": "easy",
+  "stem": "A 13-year-old boy has polyuria, polydipsia, weight loss, hyperglycemia, and circulating islet autoantibodies. Immune destruction of which pancreatic cell type is central to this disease?",
+  "options": [
+    {
+      "label": "A",
+      "text": "Alpha cells that secrete glucagon",
+      "isCorrect": false,
+      "misconception": "Glucagon-producing alpha cells are being confused with insulin-producing beta cells.",
+      "explanation": "Alpha cells produce glucagon; they are not the principal autoimmune target in type 1 diabetes."
+    },
+    {
+      "label": "B",
+      "text": "Delta cells that secrete somatostatin",
+      "isCorrect": false,
+      "misconception": "A regulatory islet cell is being mistaken for the source of insulin.",
+      "explanation": "Delta cells produce somatostatin, whereas beta cells provide insulin."
+    },
+    {
+      "label": "C",
+      "text": "Acinar cells that secrete enzymes",
+      "isCorrect": false,
+      "misconception": "Exocrine pancreatic cells are being confused with endocrine islet cells.",
+      "explanation": "Acinar cells make digestive enzymes and do not account for absolute insulin deficiency."
+    },
+    {
+      "label": "D",
+      "text": "Beta cells that secrete insulin",
+      "isCorrect": true,
+      "misconception": "None; autoimmune beta-cell destruction produces absolute insulin deficiency.",
+      "explanation": "Pancreatic beta cells synthesize insulin, and their immune-mediated loss causes type 1 diabetes."
+    },
+    {
+      "label": "E",
+      "text": "Ductal cells that secrete bicarbonate",
+      "isCorrect": false,
+      "misconception": "Pancreatic duct physiology is being confused with islet endocrine function.",
+      "explanation": "Ductal cells contribute bicarbonate-rich fluid, not insulin."
+    }
+  ],
+  "context": "Learning objective: identify the cellular target in type 1 diabetes. Autoimmune destruction of insulin-producing pancreatic beta cells causes progressive absolute insulin deficiency and hyperglycemia.",
+  "cite": "niddk-type-1-diabetes#type1-beta-cells",
+  "publicUsmle": {
+    "schemaVersion": 1,
+    "origin": "generated",
+    "itemText": { "licence": "CC-BY-4.0", "attribution": "MD3 contributors" },
+    "evidence": {
+      "kind": "passage",
+      "sourceId": "niddk-type-1-diabetes",
+      "passageId": "type1-beta-cells",
+      "licence": { "cls": "foss", "id": "us-gov" }
+    }
+  }
+}

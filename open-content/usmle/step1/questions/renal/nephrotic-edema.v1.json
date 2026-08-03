@@ -1,0 +1,59 @@
+{
+  "id": "bank:usmle-step1:renal-nephrotic-edema:v1",
+  "rotation": "usmle-step1",
+  "topics": ["nephrotic syndrome", "glomerular protein loss"],
+  "moduleNodes": ["usmle/step1", "usmle/step1/renal"],
+  "questionType": "mechanism",
+  "difficulty": "medium",
+  "stem": "A 7-year-old child has periorbital edema, 4+ protein on urine dipstick, and a serum albumin concentration of 2.0 g/dL. Which of the following mechanisms most directly accounts for the hypoalbuminemia?",
+  "options": [
+    {
+      "label": "A",
+      "text": "Urinary albumin loss through a damaged glomerular filtration barrier",
+      "isCorrect": true,
+      "misconception": "None; glomerular barrier damage permits excessive urinary loss of circulating albumin.",
+      "explanation": "Damage to the glomerular filtration barrier permits albumin and other plasma proteins to pass from blood into urine, producing heavy proteinuria and lowering the serum albumin concentration."
+    },
+    {
+      "label": "B",
+      "text": "Reduced albumin synthesis by hepatocytes without urinary protein loss",
+      "isCorrect": false,
+      "misconception": "A hepatic cause of hypoalbuminemia is being selected despite direct evidence of renal protein loss.",
+      "explanation": "Severe liver dysfunction can reduce albumin synthesis, but the marked proteinuria here identifies urinary protein loss."
+    },
+    {
+      "label": "C",
+      "text": "Accelerated systemic albumin catabolism without urinary protein loss",
+      "isCorrect": false,
+      "misconception": "General protein catabolism is being substituted for the glomerular leak demonstrated by the urinalysis.",
+      "explanation": "The renal findings directly support urinary protein loss rather than accelerated albumin breakdown elsewhere in the body."
+    },
+    {
+      "label": "D",
+      "text": "Gastrointestinal albumin loss from protein-losing enteropathy",
+      "isCorrect": false,
+      "misconception": "Protein-losing enteropathy is being selected even though the vignette localizes protein loss to the kidney.",
+      "explanation": "Intestinal protein loss can lower albumin, but it does not explain this child's marked urinary protein finding."
+    },
+    {
+      "label": "E",
+      "text": "Dilution from water retention without a net loss of albumin",
+      "isCorrect": false,
+      "misconception": "A dilutional explanation is being used for a low albumin value accompanied by substantial proteinuria.",
+      "explanation": "Dilution can lower a measured concentration, but it does not account for 4+ urinary protein in this child."
+    }
+  ],
+  "context": "Learning objective: connect glomerular filtration-barrier damage to nephrotic protein loss. A damaged glomerular barrier permits excessive plasma protein to leak from blood into urine, causing heavy proteinuria and contributing directly to hypoalbuminemia.",
+  "cite": "niddk-nephrotic-syndrome#nephrotic-protein-leak",
+  "publicUsmle": {
+    "schemaVersion": 1,
+    "origin": "generated",
+    "itemText": { "licence": "CC-BY-4.0", "attribution": "MD3 contributors" },
+    "evidence": {
+      "kind": "passage",
+      "sourceId": "niddk-nephrotic-syndrome",
+      "passageId": "nephrotic-protein-leak",
+      "licence": { "cls": "foss", "id": "us-gov" }
+    }
+  }
+}

@@ -1,0 +1,59 @@
+{
+  "id": "bank:usmle-step1:genetics-autosomal-recessive-risk:v1",
+  "rotation": "usmle-step1",
+  "topics": ["autosomal recessive inheritance", "recurrence risk"],
+  "moduleNodes": ["usmle/step1", "usmle/step1/genetics"],
+  "questionType": "calculation",
+  "difficulty": "easy",
+  "stem": "Two unaffected parents are each known carriers of the same pathogenic variant for an autosomal recessive disorder. What is the probability that their next child will inherit the disorder?",
+  "options": [
+    {
+      "label": "A",
+      "text": "50% for each pregnancy",
+      "isCorrect": false,
+      "misconception": "Carrier probability is being confused with affected-child probability.",
+      "explanation": "Half of children are expected to be carriers, while one quarter are expected to be affected."
+    },
+    {
+      "label": "B",
+      "text": "75% for each pregnancy",
+      "isCorrect": false,
+      "misconception": "All children inheriting at least one variant are being counted as affected.",
+      "explanation": "Carriers have one functional allele and are not affected in a fully penetrant recessive model."
+    },
+    {
+      "label": "C",
+      "text": "100% for each pregnancy",
+      "isCorrect": false,
+      "misconception": "Carrier parents are being treated as if both always transmit the pathogenic allele.",
+      "explanation": "Each parent transmits either allele independently, so affected inheritance is not certain."
+    },
+    {
+      "label": "D",
+      "text": "0% for each pregnancy",
+      "isCorrect": false,
+      "misconception": "The parents' unaffected status is being mistaken for absence of transmissible variants.",
+      "explanation": "Unaffected carriers can each transmit the pathogenic allele, creating a one-in-four affected risk."
+    },
+    {
+      "label": "E",
+      "text": "25% for each pregnancy",
+      "isCorrect": true,
+      "misconception": "None; two heterozygous parents produce an affected homozygous genotype in one quarter of conceptions.",
+      "explanation": "An Aa by Aa cross yields AA, Aa, Aa, and aa in equal quarter-probabilities; only aa is affected."
+    }
+  ],
+  "context": "Learning objective: calculate recurrence risk for an autosomal recessive condition. Each carrier has a one-half chance of transmitting the pathogenic allele; the independent joint probability is one-half multiplied by one-half, or one quarter, for every pregnancy.",
+  "cite": "nhgri-autosomal-recessive#autosomal-recessive-risk",
+  "publicUsmle": {
+    "schemaVersion": 1,
+    "origin": "generated",
+    "itemText": { "licence": "CC-BY-4.0", "attribution": "MD3 contributors" },
+    "evidence": {
+      "kind": "passage",
+      "sourceId": "nhgri-autosomal-recessive",
+      "passageId": "autosomal-recessive-risk",
+      "licence": { "cls": "foss", "id": "us-gov" }
+    }
+  }
+}

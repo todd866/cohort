@@ -1,0 +1,176 @@
+// =============================================================================
+// QUALITY / FEEDBACK MODELS
+// ContentIssue, ContentAuditItem, ContentAudit, UserFeedback
+// =============================================================================
+
+// =============================================================================
+// CONTENT ISSUE TRACKING SYSTEM
+// Aggregated issue tracking with full lifecycle and history
+// See docs/designs/2026-01-19-content-issue-tracking.md
+// =============================================================================
+
+// ContentIssue - Aggregated issue ticket (many reports → one issue)
+model ContentIssue {
+  id              String  @id @default(cuid())
+  clientRequestId String? @unique // Idempotency key from the client outbox (dedupes replays; NULLs are distinct in Postgres)
+
+  // What's broken
+  targetType String // 'question' | 'card' | 'component' | 'page'
+  targetId   String // Question.id, Card.id, component hash, or page path
+  issueType  String // 'needs-image' | 'incomplete-data' | 'incorrect' | 'confusing' | 'outdated' | 'duplicate' | 'other'
+
+  // Lifecycle
+  status   String @default("open") // 'open' | 'resolved' | 'wont-fix'
+  priority String @default("normal") // 'low' | 'normal' | 'high' | 'critical'
+
+  // Aggregation
+  reportCount Int @default(1)
+
+  // Timestamps
+  createdAt  DateTime  @default(now()) @db.Timestamptz(3)
+  updatedAt  DateTime  @updatedAt @db.Timestamptz(3)
+  resolvedAt DateTime? @db.Timestamptz(3)
+  triagedAt  DateTime? @db.Timestamptz(3) // Set when `npm run flags:triage` displays this issue
+
+  // Resolution
+  resolvedBy         String? // userId or 'agent'
+  resolution         String? @db.Text // What was done to fix it
+  resolutionEvidence Json?   @db.JsonB // { beforeSnapshot, afterSnapshot, contentChanged }
+  metadata           Json? // Arbitrary context (e.g., disagreement targets)
+
+  // Human/external report trust boundary. Raw reporter prose is quarantined
+  // here and must never be copied into metadata or agent-operated triage.
+  reportTrustState   String    @default("quarantined") // trusted | structured | quarantined | approved | rejected
+  quarantinedMessage String?   @db.Text
+  quarantinedContext Json?     @db.JsonB
+  approvedSummary    String?   @db.Text // Separately authored by an authenticated admin
+  trustReviewedAt    DateTime? @db.Timestamptz(3)
+  trustReviewedBy    String?
+
+  // Context for locating content
+  contentSnapshot String? @db.Text // First 200 chars of flagged content
+  path            String? // Page path where issue was reported
+  rotation        String? // Module/rotation context
+
+  @@index([status])
+  @@index([targetType, targetId])
+  @@index([issueType])
+  @@index([createdAt])
+  @@index([priority])
+  @@index([reportCount])
+  @@index([reportTrustState])
+}
+
+// =============================================================================
+// CONTENT AUDIT SYSTEM
+// Safety audit coverage + evidence storage
+// =============================================================================
+
+model ContentAuditItem {
+  id String @id @default(cuid())
+
+  // What is audited
+  targetType String // 'card' | 'question' | 'page' | 'deep-dive' | 'question-group'
+  targetId   String // Card.id, Question.id, path, etc.
+
+  // Context
+  rotation     String?
+  week         Int?
+  sourceFile   String?
+  institution  String? // 'usyd' | 'usmle' | 'other' (if known)
+  jurisdiction String // 'nsw' | 'wa' | 'national' | 'international'
+
+  // Safety classification
+  safetyCritical Boolean  @default(true)
+  harmDomains    String[] @default([]) // ['dosing', 'contraindication', 'triage', 'diagnosis', 'procedure']
+  harmSeverity   String? // 'low' | 'moderate' | 'high' | 'critical'
+
+  // Risk + scheduling
+  riskTier          String @default("medium") // 'low' | 'medium' | 'high' | 'critical'
+  riskScore         Float? // 0-1, optional numeric score
+  riskSignals       Json?
+  auditIntervalDays Int?
+
+  // Status
+  status        String    @default("needs-audit") // 'up-to-date' | 'due' | 'overdue' | 'needs-audit' | 'blocked' | 'retired'
+  lastAuditedAt DateTime? @db.Timestamptz(3)
+  nextAuditAt   DateTime? @db.Timestamptz(3)
+  lastOutcome   String? // 'pass' | 'needs-update' | 'out-of-scope' | 'blocked'
+
+  // Drift detection
+  lastAuditedHash String?
+  currentHash     String?
+  hashChangedAt   DateTime? @db.Timestamptz(3)
+
+  // Admin notes
+  notes String? @db.Text
+
+  audits ContentAudit[]
+
+  createdAt DateTime @default(now()) @db.Timestamptz(3)
+  updatedAt DateTime @updatedAt @db.Timestamptz(3)
+
+  @@unique([targetType, targetId, jurisdiction])
+  @@index([status])
+  @@index([riskTier])
+  @@index([rotation, week])
+  @@index([nextAuditAt])
+}
+
+model ContentAudit {
+  id          String           @id @default(cuid())
+  auditItemId String
+  auditItem   ContentAuditItem @relation(fields: [auditItemId], references: [id], onDelete: Cascade)
+
+  auditedAt    DateTime @default(now()) @db.Timestamptz(3)
+  auditedBy    String? // userId or 'agent'
+  jurisdiction String // 'nsw' | 'wa' | 'national' | 'international'
+
+  outcome String // 'pass' | 'needs-update' | 'out-of-scope' | 'blocked'
+  notes   String? @db.Text
+
+  // Evidence / sources
+  sourceIds   String[] @default([])
+  citationIds String[] @default([])
+  artifactIds String[] @default([])
+
+  // Snapshot for audit traceability
+  contentHash    String
+  contentSnippet String? @db.Text
+
+  createdAt DateTime @default(now()) @db.Timestamptz(3)
+
+  @@index([auditItemId])
+  @@index([auditedAt])
+  @@index([jurisdiction])
+}
+
+// =============================================================================
+// USER FEEDBACK (human support/moderation queue; never direct agent input)
+// =============================================================================
+
+// UserFeedback - Messages handled by the human support/moderation queue
+model UserFeedback {
+  id     String  @id @default(cuid())
+  userId String? // Null for anonymous users
+  email  String? // User's email if they want a response
+
+  // Feedback content
+  message  String @db.Text
+  category String @default("general") // 'bug', 'institution', 'content', 'feature', 'general'
+
+  // Context
+  path      String? // Page they were on when submitting
+  userAgent String? // Browser info
+
+  // Human support processing status
+  status     String    @default("pending") // 'pending', 'reviewed', 'resolved', 'wontfix'
+  notes      String?   @db.Text // Human moderator/admin notes
+  resolvedAt DateTime? @db.Timestamptz(3)
+
+  createdAt DateTime @default(now()) @db.Timestamptz(3)
+
+  @@index([status])
+  @@index([createdAt])
+  @@index([userId])
+}

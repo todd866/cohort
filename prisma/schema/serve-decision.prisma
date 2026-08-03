@@ -1,0 +1,56 @@
+// =============================================================================
+// SERVE DECISION TRACE
+// Per-item "why this item?" record. Each live pathway (manifold, starter,
+// rereview, instant, focused) writes a ServeDecision row when an item is
+// returned. Background cache builds write rows with deliveryPath = null;
+// cache delivery either UPDATEs the matching row in-session or INSERTs a
+// child row cross-session (parentDecisionId).
+// See docs/superpowers/specs/2026-05-08-serve-decision-trace-design.md
+// =============================================================================
+
+model ServeDecision {
+  id        String  @id @default(cuid())
+  userId    String
+  user      User    @relation(fields: [userId], references: [id], onDelete: Cascade)
+  sessionId String
+  batchId   String?
+  itemType  String // card | question | video | group
+  itemId    String
+  rotation  String?
+  week      Int?
+
+  decidedAt  DateTime  @default(now()) @db.Timestamptz(3)
+  exposedAt  DateTime? @db.Timestamptz(3)
+  answeredAt DateTime? @db.Timestamptz(3)
+
+  decisionPath String? // manifold-walk | starter | rereview | instant | focused | scaffold | cache-refresh
+  deliveryPath String? // null | 'live' | 'cached'
+
+  queueReason     String?
+  position        Int?
+  rankInPool      Int?
+  poolSize        Int?
+  priority        Float?
+  predictedRecall Float? // Pre-serve item outcome proxy; calibration must be checked against observed grades
+  difficultyTier  String?
+  conceptId       String?
+  clusterId       String?
+  variantGroupId  String?
+  variantIndex    Int?
+  variantType     String?
+
+  isCorrect      Boolean?
+  quality        Int?
+  responseTimeMs Int?
+
+  parentDecisionId String?
+  summary          String
+  payload          Json?   @db.JsonB
+
+  @@index([userId, itemType, itemId, decidedAt])
+  @@index([userId, sessionId, position])
+  @@index([sessionId])
+  @@index([parentDecisionId])
+  // Supports the nightly retention prune (DELETE WHERE decidedAt < cutoff).
+  @@index([decidedAt])
+}

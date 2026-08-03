@@ -1,0 +1,72 @@
+{
+  "id": "bank:usmle-step1:hepatitis-b-vaccine-serology:v1",
+  "rotation": "usmle-step1",
+  "moduleNodes": [
+    "usmle/step1",
+    "usmle/step1/microbiology"
+  ],
+  "topics": [
+    "microbiology",
+    "hepatitis B",
+    "vaccine serology"
+  ],
+  "questionType": "interpretation",
+  "difficulty": "medium",
+  "stem": "A 31-year-old health care worker completed hepatitis B vaccination and has no history of hepatitis or known exposure. Postvaccination testing confirms an immune response. Which of the following serologic profiles is most consistent with immunity produced by vaccination alone?",
+  "options": [
+    {
+      "label": "A",
+      "text": "HBsAg positive; anti-HBc negative; anti-HBs negative",
+      "isCorrect": false,
+      "misconception": "Treats circulating surface antigen as evidence of successful vaccine immunity.",
+      "explanation": "The expected response to vaccination is antibody to surface antigen, not persistent detection of surface antigen itself."
+    },
+    {
+      "label": "B",
+      "text": "HBsAg negative; anti-HBc positive; anti-HBs positive",
+      "isCorrect": false,
+      "misconception": "Confuses vaccine-only immunity with immunity after natural infection.",
+      "explanation": "Core antibody indicates exposure to viral core antigen and therefore does not fit a response generated solely by vaccination."
+    },
+    {
+      "label": "C",
+      "text": "HBsAg negative; anti-HBc positive; anti-HBs negative",
+      "isCorrect": false,
+      "misconception": "Selects an isolated core-antibody pattern instead of a vaccine response.",
+      "explanation": "A successful vaccine response should include surface antibody and should not create antibody to the viral core."
+    },
+    {
+      "label": "D",
+      "text": "HBsAg negative; anti-HBc negative; anti-HBs positive",
+      "isCorrect": true,
+      "misconception": "Correctly identifies isolated surface antibody as the vaccine-response pattern.",
+      "explanation": "A person who responds to hepatitis B vaccination has antibody to the surface antigen without core antibody, because vaccination does not represent natural viral infection."
+    },
+    {
+      "label": "E",
+      "text": "HBsAg positive; anti-HBc positive; anti-HBs negative",
+      "isCorrect": false,
+      "misconception": "Mistakes an infection-associated pattern for vaccine-induced immunity.",
+      "explanation": "Surface antigen together with core antibody indicates viral exposure rather than the isolated surface-antibody response expected after vaccination."
+    }
+  ],
+  "context": "Learning objective: Recognize the hepatitis B serologic pattern produced by vaccination.\n\nVaccination exposes the immune system to surface antigen without presenting the viral core. A vaccine responder therefore develops anti-HBs while remaining negative for anti-HBc; HBsAg is also absent.",
+  "cite": "cdc-pink-book-hepatitis-b#hbv-vaccine-serology",
+  "publicUsmle": {
+    "schemaVersion": 1,
+    "origin": "generated",
+    "itemText": {
+      "licence": "CC-BY-4.0",
+      "attribution": "MD3 contributors"
+    },
+    "evidence": {
+      "kind": "passage",
+      "sourceId": "cdc-pink-book-hepatitis-b",
+      "passageId": "hbv-vaccine-serology",
+      "licence": {
+        "cls": "foss",
+        "id": "us-gov"
+      }
+    }
+  }
+}

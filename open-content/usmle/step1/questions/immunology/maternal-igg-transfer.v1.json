@@ -1,0 +1,72 @@
+{
+  "id": "bank:usmle-step1:maternal-igg-transfer:v1",
+  "rotation": "usmle-step1",
+  "moduleNodes": [
+    "usmle/step1",
+    "usmle/step1/immunology"
+  ],
+  "topics": [
+    "immunology",
+    "maternal antibodies",
+    "immunoglobulin isotypes"
+  ],
+  "questionType": "interpretation",
+  "difficulty": "easy",
+  "stem": "A healthy term newborn has circulating antibody against an infection the mother recovered from several years earlier. The blood sample was obtained before the infant's first feeding. Which of the following immunoglobulin classes most likely accounts for this prenatal passive immunity?",
+  "options": [
+    {
+      "label": "A",
+      "text": "Immunoglobulin A",
+      "isCorrect": false,
+      "misconception": "Associates all maternal antibody protection with secretory antibody in milk.",
+      "explanation": "Maternal immunoglobulin A is important at mucosal surfaces after feeding, but it is not the principal antibody class transferred into fetal blood before birth."
+    },
+    {
+      "label": "B",
+      "text": "Immunoglobulin M",
+      "isCorrect": false,
+      "misconception": "Selects the first isotype made in a primary response without considering placental transfer.",
+      "explanation": "Immunoglobulin M does not explain circulating maternal antibody already present in the newborn before feeding."
+    },
+    {
+      "label": "C",
+      "text": "Immunoglobulin G",
+      "isCorrect": true,
+      "misconception": "Correctly identifies the maternal isotype that reaches fetal blood prenatally.",
+      "explanation": "Maternal immunoglobulin G enters the fetal circulation across the placenta and can provide antibody-mediated protection at birth."
+    },
+    {
+      "label": "D",
+      "text": "Immunoglobulin E",
+      "isCorrect": false,
+      "misconception": "Links antibody transfer to the isotype involved in immediate hypersensitivity.",
+      "explanation": "Immunoglobulin E participates in allergic and antiparasitic responses but is not the class responsible for prenatal maternal antibody in fetal blood."
+    },
+    {
+      "label": "E",
+      "text": "Immunoglobulin D",
+      "isCorrect": false,
+      "misconception": "Confuses a B-cell surface isotype with the major placentally transferred antibody.",
+      "explanation": "Immunoglobulin D is primarily expressed on naive B cells and does not account for this newborn's circulating maternal antibody."
+    }
+  ],
+  "context": "Learning objective: Identify immunoglobulin G as the class responsible for prenatal maternal antibody transfer.\n\nA newborn can begin life with maternal immunoglobulin G already in the circulation. The timing before feeding separates this placental route from antibody delivered in breast milk.",
+  "cite": "cdc-pink-book-vaccine-principles#maternal-igg",
+  "publicUsmle": {
+    "schemaVersion": 1,
+    "origin": "generated",
+    "itemText": {
+      "licence": "CC-BY-4.0",
+      "attribution": "MD3 contributors"
+    },
+    "evidence": {
+      "kind": "passage",
+      "sourceId": "cdc-pink-book-vaccine-principles",
+      "passageId": "maternal-igg",
+      "licence": {
+        "cls": "foss",
+        "id": "us-gov"
+      }
+    }
+  }
+}

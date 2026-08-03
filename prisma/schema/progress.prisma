@@ -1,0 +1,370 @@
+// =============================================================================
+// PROGRESS / LEARNING MODELS
+// CardProgress, QuestionResponse, ReviewSession, AssessmentAttempt,
+// LearningEvent, ContentExposure, DailyStats, UserStudyQueue, PageView
+// =============================================================================
+
+// User progress per card (stability-based scheduling + manifold tracking)
+model CardProgress {
+  id     String @id @default(cuid())
+  cardId String
+  userId String
+
+  // Scheduling (stability-based)
+  stabilityDays Float    @default(3) // Higher = slower decay
+  nextDueAt     DateTime @default(now()) @db.Timestamptz(3)
+
+  // History
+  lastReview   DateTime? @db.Timestamptz(3)
+  lastQuality  Int? // 0-5 (Again=0, Hard=1, Good=3, Easy=5)
+  totalReviews Int       @default(0)
+  correctCount Int       @default(0) // Count of correct reviews (quality >= 3)
+
+  // User feedback
+  liked       Boolean   @default(false) // User explicitly liked this card
+  suppressed  Boolean   @default(false) // User doesn't want to see this card
+  flagged     Boolean   @default(false) // User flagged for improvement
+  flaggedAt   DateTime? @db.Timestamptz(3) // When flagged
+  flagReason  String? // Why: Irrelevant, Incorrect, Confusing, Too Long, Other
+  flagContext Json? // Learning context: { sessionItemCount, contentVisitedBefore, message }
+  feedbackAt  DateTime? @db.Timestamptz(3) // When feedback was last given
+
+  // Mastery tracking
+  status                 String    @default("learning") // learning | reviewing | mastered | retired
+  avgResponseTimeMs      Int? // Rolling average of response times
+  consecutiveCorrectFast Int       @default(0) // Correct AND fast (under threshold)
+  masteredAt             DateTime? @db.Timestamptz(3)
+
+  // Manifold: Enhanced tracking
+  retrievalStrength Float    @default(0) // Computed from review history (0-1)
+  confusedWith      String[] // Card IDs this was confused with
+  reviewContext     Json? // What cards were reviewed in same session
+
+  // Struggle tracking (symmetric to consecutiveCorrectFast)
+  recentFailCount       Int       @default(0) // Fails in current 24h window
+  recentFailWindowStart DateTime? @db.Timestamptz(3) // When the fail window started
+  lastFailedAt          DateTime? @db.Timestamptz(3) // Last time user failed this card
+
+  // Leech suppression (cumulative failure detection)
+  leechSuppressedUntil   DateTime? @db.Timestamptz(3) // When suppression expires (null = not suppressed)
+  leechSuppressionCount  Int       @default(0) // Times leech-suppressed (drives backoff)
+  leechReplacementCardId String? // ID of regenerated replacement card
+
+  // Daily view cap (max 2x per day per card)
+  viewsToday     Int       @default(0) // How many times seen today
+  viewsTodayDate DateTime? @db.Timestamptz(3) // What day viewsToday is counting
+
+  card Card @relation(fields: [cardId], references: [id], onDelete: Cascade)
+  user User @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@unique([cardId, userId])
+  @@index([userId, nextDueAt])
+  @@index([userId, suppressed])
+  @@index([userId, flagged])
+  @@index([userId]) // For cluster mastery queries (joins to Card.clusterId)
+  @@index([userId, status])
+}
+
+// QuestionResponse - Records every user answer for analytics
+model QuestionResponse {
+  id         String @id @default(cuid())
+  userId     String
+  questionId String
+
+  // Response data
+  selectedOption String // 'A', 'B', 'C', 'D', 'E'
+  isCorrect      Boolean
+  responseTimeMs Int? // How long they took
+
+  // Context
+  sessionType   String? // 'practice', 'quiz', 'review', 'exam-sim'
+  attemptNumber Int     @default(1) // 1st, 2nd, 3rd attempt at this question
+
+  // Display order logging (shuffle bias detection)
+  correctDisplayPosition  Int? // 0-indexed position correct answer was shown (0=A, 1=B, etc.)
+  selectedDisplayPosition Int? // 0-indexed position user clicked (null for skip)
+
+  // User feedback
+  flagged    Boolean @default(false) // User flagged for review
+  notes      String? @db.Text // User's notes on this question
+  confidence Int? // Self-reported: 1=guessing, 2=uncertain, 3=pretty sure, 4=obviously
+
+  question Question @relation(fields: [questionId], references: [id], onDelete: Cascade)
+  user     User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  createdAt DateTime @default(now()) @db.Timestamptz(3)
+
+  @@unique([userId, questionId, attemptNumber])
+  @@index([userId, questionId])
+  @@index([userId, createdAt])
+  @@index([questionId, isCorrect])
+}
+
+// Review sessions (for tracking interference patterns)
+model ReviewSession {
+  id            String    @id @default(cuid())
+  userId        String
+  rotation      String
+  startedAt     DateTime  @default(now()) @db.Timestamptz(3)
+  completedAt   DateTime? @db.Timestamptz(3)
+  cardsReviewed Json // [{cardId, quality, responseTimeMs}]
+  clustersHit   String[] // Which clusters were reviewed
+
+  @@index([userId])
+}
+
+// Unified assessment attempt model (covers table quizzes, image occlusion, question groups)
+model AssessmentAttempt {
+  id          String   @id @default(cuid())
+  userId      String
+  attemptType String // 'table' | 'image-occlusion' | 'question-group'
+  targetId    String // tableId, imageId, or groupId
+  rotation    String?
+  topics      String[]
+  score       Int
+  data        Json     @db.JsonB // Type-specific payload
+  completedAt DateTime @default(now()) @db.Timestamptz(3)
+
+  @@index([userId, attemptType])
+  @@index([userId, rotation])
+  @@index([targetId])
+}
+
+// Page view tracking - what content users are looking at
+model PageView {
+  id          String   @id @default(cuid())
+  userId      String
+  path        String // '/critical-care/week/1'
+  rotation    String? // Extracted from path
+  week        Int? // Extracted from path
+  duration    Int? // Seconds on page (updated on leave)
+  scrollDepth Float? // 0-1, how far they scrolled
+  viewedAt    DateTime @default(now()) @db.Timestamptz(3)
+
+  user User @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@index([userId, rotation])
+  @@index([path])
+  @@index([viewedAt])
+}
+
+// Daily study stats (aggregated for quick dashboard access)
+model DailyStats {
+  id            String   @id @default(cuid())
+  userId        String
+  date          DateTime @db.Date
+  cardsReviewed Int      @default(0)
+  cardsCorrect  Int      @default(0)
+  newCardsSeen  Int      @default(0)
+  studyTimeMin  Int      @default(0) // Computed from studyTimeMs for display
+  studyTimeMs   Int      @default(0) // Accurate accumulation of response times
+  pagesViewed   Int      @default(0)
+  quizzesTaken  Int      @default(0)
+
+  @@unique([userId, date])
+}
+
+// =============================================================================
+// UNIFIED LEARNING STATE (Layer 1: Event Log)
+// See docs/designs/2026-01-17-unified-learning-state.md
+// =============================================================================
+
+enum ReviewDeviceBucket {
+  mobile
+  tablet
+  desktop
+  unknown
+}
+
+enum ReviewWriteTransport {
+  web_review
+  mobile_sync
+  server
+}
+
+enum ReviewTimestampSource {
+  client_action
+  server_received
+}
+
+// LearningEvent - Append-only log of all learning interactions
+// This is the ground truth. All derived state is computed from this.
+model LearningEvent {
+  id     String @id @default(cuid())
+  userId String
+
+  // What happened
+  eventType  String // 'card_reviewed', 'mcq_attempted', 'page_read', 'content_expanded'
+  sourceType String // 'card', 'question', 'page'
+  sourceId   String
+
+  // Audit traceability
+  auditItemId String?
+  contentHash String?
+
+  // Version tracking (for full audit trail reconstruction)
+  contentVersionId String?
+  contentVersion   ContentVersion? @relation(fields: [contentVersionId], references: [id])
+
+  // Event data (varies by eventType)
+  quality    Int? // 0-5 for card reviews
+  isCorrect  Boolean? // for MCQs
+  responseMs Int? // response time
+  metadata   Json? // additional event-specific data
+
+  // Review-write continuity. Nullable for historical and non-review events.
+  clientOperationId String?
+  deviceBucket      ReviewDeviceBucket?
+  writeTransport    ReviewWriteTransport?
+  receivedAt        DateTime?             @db.Timestamptz(3)
+  timestampSource   ReviewTimestampSource?
+
+  // Context
+  conceptIds String[] // which concepts this touched
+  rotation   String?
+  week       Int?
+
+  timestamp DateTime @default(now()) @db.Timestamptz(3)
+
+  @@index([userId, timestamp])
+  @@index([userId, sourceType, sourceId])
+  @@index([userId, eventType])
+  @@unique([userId, clientOperationId])
+  @@index([userId, deviceBucket, timestamp])
+  @@index([conceptIds])
+  @@index([auditItemId])
+  @@index([contentVersionId])
+}
+
+// =============================================================================
+// PRE-COMPUTED STUDY QUEUE
+// Background-computed queue of items to study, served instantly at request time
+// =============================================================================
+
+model UserStudyQueue {
+  id       String @id @default(cuid())
+  userId   String
+  rotation String
+
+  // Pre-computed queue of items to study
+  // Array of { type: 'card'|'question', id: string, priority: number, reason: string }
+  items Json
+
+  // Queue metadata
+  computedAt DateTime @default(now()) @db.Timestamptz(3)
+  validUntil DateTime @db.Timestamptz(3) // When queue becomes stale
+  itemCount  Int
+
+  // Stats from last computation
+  dueCards  Int @default(0)
+  weakCards Int @default(0)
+  newCards  Int @default(0)
+  questions Int @default(0)
+
+  @@unique([userId, rotation])
+  @@index([userId])
+  @@index([validUntil])
+}
+
+// =============================================================================
+// LEARNING ANALYTICS: HIGH-DIMENSIONAL INTERACTION CAPTURE
+// Empirical transfer graph, behavioral fingerprints, outcome-linked exposure
+// See implementation plan: Learning Analytics System
+// =============================================================================
+
+// ContentExposure - Track when related/adjacent content is shown alongside primary content
+// "What did we show them, why did we show it, and did they engage?"
+model ContentExposure {
+  id        String  @id @default(cuid())
+  userId    String
+  sessionId String?
+
+  // What they were primarily engaging with
+  primaryType String // 'card', 'question', 'page', 'deep_dive'
+  primaryId   String // The card/question/page ID
+
+  // What related content we showed them
+  exposedType String // 'lake_chunk', 'related_card', 'citation', 'recommendation'
+  exposedId   String // The chunk/card ID
+
+  // Why we showed it
+  exposureReason  String // 'semantic_similarity', 'same_topic', 'remediation', 'random'
+  similarityScore Float? // Cosine similarity if applicable
+
+  // Did they engage?
+  displayed    Boolean @default(true) // Was it visible (not just available)
+  engaged      Boolean @default(false) // Did they click/expand
+  engagementMs Int? // How long did they engage
+
+  // Context
+  positionInSession Int? // Nth item in session
+  daysUntilExam     Int?
+  timestamp         DateTime @default(now()) @db.Timestamptz(3)
+
+  user User @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@index([userId, timestamp])
+  @@index([exposedId])
+  @@index([primaryId])
+}
+
+// =============================================================================
+// EXAM RESULTS
+// Real exam scores for the rotation exams (block 1-4) — the outcome signal
+// the rest of the analytics layer correlates against. Recorded manually
+// after each exam via scripts/record-exam-result.ts. One row per (user,
+// rotation, block).
+//
+// Why a dedicated model rather than AssessmentAttempt: those are in-app
+// quiz attempts (table quizzes, image occlusion, question groups).
+// ExamResult is the actual block exam — a single number that tells
+// us whether the prep worked. We need it joinable to LearningEvent/
+// CardProgress activity in the 6 weeks preceding the exam.
+// =============================================================================
+
+model ExamResult {
+  id         String   @id @default(cuid())
+  userId     String
+  rotation   String // 'critical-care' | 'paam' | 'cah' | 'pwh'
+  block      Int // 1-4 — academic block number this exam closed
+  examDate   DateTime @db.Date
+  /// 0-100, percentage. Use Float (not Int) so we can record decimals if
+  /// the exam board ever issues them (currently they round, but no reason to lose
+  /// precision at the model level).
+  score      Float
+  /// Free-text — what was easy, what was hard, what we'd change. Optional.
+  notes      String?
+  recordedAt DateTime @default(now()) @db.Timestamptz(3)
+
+  user User @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@unique([userId, rotation, block])
+  @@index([rotation, block])
+  @@index([userId])
+}
+
+// =============================================================================
+// SYNC IDEMPOTENCY
+// Dedupe retries from every canonical review-write route so a flaky connection
+// cannot double-count a card review or MCQ response. Web clients send a
+// clientRequestId and mobile sync sends operationId; both become an atomic
+// completed receipt here.
+// =============================================================================
+
+model SyncOperation {
+  id                 String   @id @default(cuid())
+  userId             String
+  clientOperationId  String
+  operationType      String // review: card_review | mcq_response | group_attempt | assessment_attempt | video_watch; mobile sync retains its operation label
+  status             String   @default("completed") // pending | completed; pending is transaction-local for review writes
+  requestFingerprint String?
+  result             Json?    @db.JsonB // Immutable response receipt returned to lost-ack replays
+  processedAt        DateTime @default(now()) @db.Timestamptz(3)
+  updatedAt          DateTime @default(now()) @updatedAt @db.Timestamptz(3)
+
+  user User @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@unique([userId, clientOperationId])
+  @@index([processedAt])
+  @@index([status, updatedAt])
+}
