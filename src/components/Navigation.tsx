@@ -26,7 +26,8 @@ function NavLink({ href, label }: { href: string; label: string }) {
 }
 
 /** isCohortHost is accepted for AppShell compatibility; this shell is always Cohort. */
-export function Navigation(_props: { isCohortHost?: boolean } = {}) {
+export function Navigation(props: { isCohortHost?: boolean } = {}) {
+  void props.isCohortHost;
   const { data: session } = useSession();
   const profileHref = session?.user ? '/profile' : '/auth/signin';
   return (

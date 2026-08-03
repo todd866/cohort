@@ -304,7 +304,7 @@ export const PROTECTED_PUBLIC_FALLBACKS: ReadonlyArray<Readonly<{
   {
     path: 'src/components/Navigation.tsx',
     licence: 'MIT',
-    sha256: 'fada917b6dfd4aec119437b723dbf123b38984f23f6717757e94b9e75ce6cfe7',
+    sha256: 'dae6e91fae8540c946cfe7330d38e5bbf9d4c1df3d305046b13e77a81a735b90',
   },
   {
     path: 'src/components/content/AlgorithmSteps.tsx',

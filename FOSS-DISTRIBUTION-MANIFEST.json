@@ -1,10 +1,10 @@
 {
   "schemaVersion": 1,
   "boundaryPolicy": "foss/distribution-policy.json",
-  "boundaryPolicySha256": "267c765f3753d8d097e86bea36d4546812d300c0068f3efbb8cd57b27ccdb24e",
+  "boundaryPolicySha256": "0dd749767372bef6659fc3cced280765beb3ab56237412e6a494fc0c43b5c0cc",
   "reviewedPathsSha256": "93208a434699a873747d60f186a963ab44197f767144e834cfef49760a04197b",
   "fileCount": 775,
-  "totalBytes": 5119745,
+  "totalBytes": 5119798,
   "files": [
     {
       "path": ".env.example",
@@ -127,8 +127,8 @@
     },
     {
       "path": "foss/distribution-policy.json",
-      "bytes": 86111,
-      "sha256": "267c765f3753d8d097e86bea36d4546812d300c0068f3efbb8cd57b27ccdb24e",
+      "bytes": 86138,
+      "sha256": "0dd749767372bef6659fc3cced280765beb3ab56237412e6a494fc0c43b5c0cc",
       "mode": "0644",
       "licence": "MIT"
     },
@@ -807,7 +807,7 @@
     {
       "path": "scripts/foss/distribution.ts",
       "bytes": 86406,
-      "sha256": "8ac2960a6a0630cbbbcb9f197f0542aaf1708274a31ac91fd2b4637b2ce5a799",
+      "sha256": "56ce3d2b46dd9ffeebfdc5925123daa15ebc74ed7f9c6a7142a27b7eb7fdd7c1",
       "mode": "0644",
       "licence": "MIT"
     },
@@ -1968,8 +1968,8 @@
     },
     {
       "path": "src/components/Navigation.tsx",
-      "bytes": 2034,
-      "sha256": "fada917b6dfd4aec119437b723dbf123b38984f23f6717757e94b9e75ce6cfe7",
+      "bytes": 2060,
+      "sha256": "dae6e91fae8540c946cfe7330d38e5bbf9d4c1df3d305046b13e77a81a735b90",
       "mode": "0644",
       "licence": "MIT"
     },
