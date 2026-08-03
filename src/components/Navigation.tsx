@@ -6,6 +6,7 @@ import { useSession } from 'next-auth/react';
 
 const PUBLIC_NAV_ITEMS = [
   { href: '/usmle/step1', label: 'Study' },
+  { href: '/about', label: 'About' },
 ];
 
 function NavLink({ href, label }: { href: string; label: string }) {
@@ -24,7 +25,8 @@ function NavLink({ href, label }: { href: string; label: string }) {
   );
 }
 
-export function Navigation() {
+/** isCohortHost is accepted for AppShell compatibility; this shell is always Cohort. */
+export function Navigation(_props: { isCohortHost?: boolean } = {}) {
   const { data: session } = useSession();
   const profileHref = session?.user ? '/profile' : '/auth/signin';
   return (

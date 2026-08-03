@@ -1,10 +1,10 @@
 {
   "schemaVersion": 1,
   "boundaryPolicy": "foss/distribution-policy.json",
-  "boundaryPolicySha256": "7c83c5e178304b8bff88dbc85537794a8cf217d30f6d43d16ef9fc2dbcf3e11e",
+  "boundaryPolicySha256": "267c765f3753d8d097e86bea36d4546812d300c0068f3efbb8cd57b27ccdb24e",
   "reviewedPathsSha256": "93208a434699a873747d60f186a963ab44197f767144e834cfef49760a04197b",
   "fileCount": 775,
-  "totalBytes": 5121859,
+  "totalBytes": 5119745,
   "files": [
     {
       "path": ".env.example",
@@ -127,8 +127,8 @@
     },
     {
       "path": "foss/distribution-policy.json",
-      "bytes": 87316,
-      "sha256": "7c83c5e178304b8bff88dbc85537794a8cf217d30f6d43d16ef9fc2dbcf3e11e",
+      "bytes": 86111,
+      "sha256": "267c765f3753d8d097e86bea36d4546812d300c0068f3efbb8cd57b27ccdb24e",
       "mode": "0644",
       "licence": "MIT"
     },
@@ -694,8 +694,8 @@
     },
     {
       "path": "README.md",
-      "bytes": 3526,
-      "sha256": "4f03a51f7491a9324fb0b81096f3d0a98406579266f88fc0142ee00a1bc08358",
+      "bytes": 2154,
+      "sha256": "9109ced81eec35fdbc2de90c67ade41fdb619a96b842ed7acf6d570556b21188",
       "mode": "0644",
       "licence": "CC-BY-4.0"
     },
@@ -807,14 +807,14 @@
     {
       "path": "scripts/foss/distribution.ts",
       "bytes": 86406,
-      "sha256": "16ae4553a5245397b748d1401ef8768d5b7fb7c3546967bedd5fe394dd317172",
+      "sha256": "8ac2960a6a0630cbbbcb9f197f0542aaf1708274a31ac91fd2b4637b2ce5a799",
       "mode": "0644",
       "licence": "MIT"
     },
     {
       "path": "scripts/foss/public-navigation.test.ts",
-      "bytes": 22773,
-      "sha256": "0377b2ab4e20f0198474bb0fdbea1dde92ad9b9071320e2c1b1c5a46debb727b",
+      "bytes": 23113,
+      "sha256": "89afeb645093b4cbac0a0e62f8414bcd3782f69c3ce0449c9f9f560f822f7ca0",
       "mode": "0644",
       "licence": "MIT"
     },
@@ -1968,8 +1968,8 @@
     },
     {
       "path": "src/components/Navigation.tsx",
-      "bytes": 1868,
-      "sha256": "b6fb2fb4d7bc2f470fb7722b4c4b5fa0664f4cc765900f316e23716c5607b9c9",
+      "bytes": 2034,
+      "sha256": "fada917b6dfd4aec119437b723dbf123b38984f23f6717757e94b9e75ce6cfe7",
       "mode": "0644",
       "licence": "MIT"
     },
@@ -4383,8 +4383,8 @@
     },
     {
       "path": "src/lib/question-groups/types.ts",
-      "bytes": 6666,
-      "sha256": "cb4b39588938c5e7d53eb17d39e7bfd40e3da1f682c6611e3511cfd016ee46bf",
+      "bytes": 6623,
+      "sha256": "c5c63975af932523c68973e0ac77d3ed7894cd372d5ec300a4d5d04644b2a802",
       "mode": "0644",
       "licence": "MIT"
     },

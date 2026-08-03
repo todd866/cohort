@@ -148,8 +148,10 @@ describe('public navigation and static assets', () => {
     const navigation = artifactText(repoRoot, 'src/components/Navigation.tsx');
     expect(navigation).toContain("href: '/usmle/step1'");
     expect(navigation).toContain("label: 'Study'");
+    expect(navigation).toContain("href: '/about'");
+    expect(navigation).toContain('isCohortHost?: boolean');
     expect(navigation).toContain("session?.user ? '/profile' : '/auth/signin'");
-    expect(navigation).not.toMatch(/\/content|\/exams|\/review|label: 'About'/);
+    expect(navigation).not.toMatch(/\/content|\/exams|\/review/);
     const content = artifactText(repoRoot, 'src/app/content/page.tsx');
     expect(content).toContain("redirect('/usmle/step1')");
     const settings = artifactText(
@@ -439,11 +441,16 @@ describe('public navigation and static assets', () => {
     expect(readme).toContain(
       '/usmle is a public early product: guests and signed-in users can study',
     );
+    expect(readme).toMatch(/25 original, citation-backed Step 1/i);
+    expect(readme).toContain('https://cohort.md');
     expect(readme).not.toContain(
       'Current /usmle routes are administrator-gated: set ADMIN_EMAILS',
     );
     expect(readme).toContain('AUTH_TRUST_MD3_COHORT_HOSTS=true');
     expect(readme).toContain('leave AUTH_URL and NEXTAUTH_URL unset');
+    expect(artifactText(repoRoot, 'src/lib/question-groups/types.ts')).not.toMatch(
+      /pub-[a-f0-9]+\.r2\.dev/i,
+    );
 
     const sourceRepository = artifactText(repoRoot, 'src/lib/source-repository.ts');
     expect(sourceRepository).toContain("url.protocol !== 'https:'");

@@ -193,7 +193,7 @@ export function createMCQStep(params: {
  * For ECG steps with view or leads specified, returns the cropped image URL.
  * Otherwise returns the full context image URL.
  *
- * @param contextImageUrl Base image URL (e.g., 'https://pub-c376f836c4cc4ecfae4c8b545e006a47.r2.dev/ptbxl/ptbxl_00001.png')
+ * @param contextImageUrl Base image URL (e.g., '/figures/ptbxl/ptbxl_00001.png')
  * @param step The question group step
  * @returns Image URL to display for this step
  */

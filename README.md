@@ -1,8 +1,17 @@
 # MD3
 
-MD3 is a free and open-source spaced-repetition learning platform. This source distribution contains the reusable Next.js/React learning engine and an initial citation-backed USMLE Step 1 question corpus.
+MD3 is a free and open-source learning engine with an early public USMLE Step 1
+MCQ surface. This source distribution contains the reusable Next.js/React
+application and a pinned open corpus of **25 original, citation-backed Step 1
+questions** (incomplete blueprint coverage; descriptive progress only — not a
+score or pass prediction).
 
-The public product is deliberately fail-closed: only explicitly selected source files and educational items with machine-verifiable rights metadata enter an export. Software is MIT licensed; original MD3 educational content is CC BY 4.0. Exact evidence passages keep the source-level terms recorded beside them.
+The public product is deliberately fail-closed: only explicitly selected source
+files and educational items with machine-verifiable rights metadata enter an
+export. Software is MIT licensed; original MD3 educational content is CC BY 4.0.
+Exact evidence passages keep the source-level terms recorded beside them.
+
+Live product: [cohort.md](https://cohort.md). Source: this repository.
 
 ## Quick start
 
@@ -22,13 +31,12 @@ npm run db:seed:usmle-open
 npm run dev
 ```
 
-For the canonical dual-host deployment, set `AUTH_TRUST_MD3_COHORT_HOSTS=true`, then register both `https://md3.info/api/auth/callback/google` and `https://cohort.md/api/auth/callback/google` with the Google OAuth client. Register the equivalent `/api/auth/callback/github` URI on both hosts when GitHub login is enabled. Leave `AUTH_URL` and `NEXTAUTH_URL` unset so Auth.js derives the correct first-party origin from each trusted request.
+For the canonical dual-host deployment, set `AUTH_TRUST_MD3_COHORT_HOSTS=true`,
+then register both `https://md3.info/api/auth/callback/google` and
+`https://cohort.md/api/auth/callback/google` (and GitHub equivalents if used).
+Self-hosted forks leave that flag false and set their own HTTPS `AUTH_URL`.
 
-MD3 and Cohort are independent educational projects and are not affiliated with or endorsed by the USMLE program, FSMB, or NBME. All question text is original; recalled or reconstructed live-exam content is prohibited. See the official [About the USMLE](https://www.usmle.org/about-usmle) and [Exam Security & Fairness](https://www.usmle.org/what-to-know/exam-security-fairness) pages.
-
-The application is educational software, not medical advice. Operators must configure their own privacy, authentication, email, analytics, and retention practices.
-
-## Verify the public product
+Verify a clean checkout:
 
 ```bash
 npm run foss:boundary:audit
@@ -38,26 +46,10 @@ npm run usmle:corpus:seed:dry
 npm run build
 ```
 
-The ordinary build is deterministic and database-free. A deployable build is stricter:
+## Trademark
 
-```bash
-npm run usmle:serving-db:preflight
-npm run usmle:reinforcement:audit
-npm run build:release
-```
-
-The release path requires the configured serving database to match the checked-in corpus and refuses active answer-bearing reinforcement cards. It never seeds or repairs data implicitly.
-
-## Repository map
-
-- `open-content/usmle/step1/` — explicitly licensed questions, release manifests, and evidence registry.
-- `src/app/usmle/` — Step 1 learner UI.
-- `src/lib/usmle/` — corpus, session, provenance, drift, and delivery contracts.
-- `scripts/foss/` — exact source-distribution audit and exporter.
-- `docs/ops/FOSS_DISTRIBUTION.md` — distribution and clean-build runbook.
-- `docs/ops/USMLE_PUBLIC_CORPUS.md` — corpus, seed, preflight, and release runbook.
-- `CONTRIBUTING.md` — contribution and provenance rules.
-
-## Reuse and contribution
-
-Code is available under the MIT License in `LICENSE`. Original MD3 educational content and documentation are available under CC BY 4.0 as described in `LICENSE-CONTENT.md`. Compatible third-party works retain their own terms and attribution. Contributions are welcome; do not submit commercial-bank, textbook, lecture, private-deck, or uncleared media content.
+USMLE® is a registered trademark of the Federation of State Medical Boards and
+the National Board of Medical Examiners. MD3/Cohort is independent and is not affiliated with or endorsed by the USMLE program. See
+[About USMLE](https://www.usmle.org/about-usmle) and
+[exam security guidance](https://www.usmle.org/what-to-know/exam-security-fairness).
+This corpus uses original questions, not recalled exam items.

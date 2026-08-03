@@ -264,7 +264,7 @@ export const PROTECTED_PUBLIC_FALLBACKS: ReadonlyArray<Readonly<{
   {
     path: 'README.md',
     licence: 'CC-BY-4.0',
-    sha256: '4f03a51f7491a9324fb0b81096f3d0a98406579266f88fc0142ee00a1bc08358',
+    sha256: '9109ced81eec35fdbc2de90c67ade41fdb619a96b842ed7acf6d570556b21188',
   },
   {
     path: 'src/app/brief/page.tsx',
@@ -304,7 +304,7 @@ export const PROTECTED_PUBLIC_FALLBACKS: ReadonlyArray<Readonly<{
   {
     path: 'src/components/Navigation.tsx',
     licence: 'MIT',
-    sha256: 'b6fb2fb4d7bc2f470fb7722b4c4b5fa0664f4cc765900f316e23716c5607b9c9',
+    sha256: 'fada917b6dfd4aec119437b723dbf123b38984f23f6717757e94b9e75ce6cfe7',
   },
   {
     path: 'src/components/content/AlgorithmSteps.tsx',
