@@ -1,0 +1,21 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 280" role="img" aria-labelledby="t d">
+  <title id="t">Frank-Starling relationship</title>
+  <desc id="d">Stroke volume rises with end-diastolic volume along the Frank-Starling curve; sympathetic stimulation shifts the curve up.</desc>
+  <rect width="640" height="280" fill="#fafafa"/>
+  <text x="320" y="28" text-anchor="middle" font-family="system-ui,sans-serif" font-size="16" fill="#222">Frank-Starling: preload -> stroke volume</text>
+  <!-- axes -->
+  <line x1="80" y1="230" x2="560" y2="230" stroke="#333" stroke-width="2"/>
+  <line x1="80" y1="230" x2="80" y2="50" stroke="#333" stroke-width="2"/>
+  <text x="320" y="260" text-anchor="middle" font-family="system-ui,sans-serif" font-size="13" fill="#333">End-diastolic volume (preload)</text>
+  <text x="30" y="150" transform="rotate(-90 30,150)" text-anchor="middle" font-family="system-ui,sans-serif" font-size="13" fill="#333">Stroke volume</text>
+  <!-- normal curve -->
+  <path d="M100,210 Q220,180 320,120 T520,70" fill="none" stroke="#2c6e49" stroke-width="3"/>
+  <text x="480" y="65" font-family="system-ui,sans-serif" font-size="12" fill="#2c6e49">+ sympathetic / inotropy</text>
+  <!-- depressed curve -->
+  <path d="M100,220 Q240,200 360,160 T520,130" fill="none" stroke="#9b2226" stroke-width="3" stroke-dasharray="6 4"/>
+  <text x="430" y="145" font-family="system-ui,sans-serif" font-size="12" fill="#9b2226">heart failure (down/right)</text>
+  <!-- baseline curve mid -->
+  <path d="M100,215 Q230,190 340,140 T520,95" fill="none" stroke="#1d3557" stroke-width="3"/>
+  <text x="200" y="175" font-family="system-ui,sans-serif" font-size="12" fill="#1d3557">normal</text>
+  <text x="320" y="50" text-anchor="middle" font-family="system-ui,sans-serif" font-size="11" fill="#555">' EDV stretches sarcomeres -> stronger contraction -> ' SV (within physiologic range)</text>
+</svg>

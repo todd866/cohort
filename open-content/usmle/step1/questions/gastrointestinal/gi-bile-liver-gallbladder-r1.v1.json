@@ -1,0 +1,73 @@
+{
+  "id": "bank:usmle-step1:gi-bile-liver-gallbladder-r1:v1",
+  "rotation": "usmle-step1-open",
+  "ladderId": "bile-production",
+  "topics": [
+    "bile",
+    "liver",
+    "ladder:bile-production"
+  ],
+  "moduleNodes": [
+    "usmle/step1",
+    "usmle/step1/gastrointestinal"
+  ],
+  "questionType": "mechanism",
+  "difficulty": "easy",
+  "stem": "Bile, an alkaline fluid that emulsifies dietary lipids, is produced by which of the following cell types?",
+  "options": [
+    {
+      "label": "A",
+      "text": "Hepatocytes in the liver",
+      "isCorrect": true,
+      "misconception": "None; hepatocytes synthesize and export bile to the duodenum.",
+      "explanation": "The digestive role of the liver is to produce bile and export it to the duodenum; hepatocytes in the liver lobules are the source."
+    },
+    {
+      "label": "B",
+      "text": "Epithelial cells of the gallbladder",
+      "isCorrect": false,
+      "misconception": "The storage organ is being cast as the producer.",
+      "explanation": "The gallbladder stores, concentrates, and releases bile made by the liver; it does not synthesize bile."
+    },
+    {
+      "label": "C",
+      "text": "Acinar cells of the pancreas",
+      "isCorrect": false,
+      "misconception": "A digestive enzyme source is being confused with bile production.",
+      "explanation": "Pancreatic acini secrete enzyme-rich juice; bile is a hepatic product."
+    },
+    {
+      "label": "D",
+      "text": "Goblet cells of the duodenal mucosa",
+      "isCorrect": false,
+      "misconception": "A mucus-secreting cell is being assigned bile synthesis.",
+      "explanation": "Goblet cells secrete protective mucus; bile arrives from the liver via the biliary tree."
+    },
+    {
+      "label": "E",
+      "text": "Chief cells of the gastric mucosa",
+      "isCorrect": false,
+      "misconception": "A gastric protease source is being confused with hepatic bile.",
+      "explanation": "Chief cells secrete pepsinogen; bile is produced only by hepatocytes."
+    }
+  ],
+  "context": "Learning objective: identify the bile source. Hepatocytes produce bile — an alkaline lipid-emulsifying solution — and export it to the duodenum; the gallbladder only stores and concentrates it.",
+  "cite": "openstax-anatomy-physiology#gi-bile-liver-gallbladder",
+  "publicUsmle": {
+    "schemaVersion": 1,
+    "origin": "generated",
+    "itemText": {
+      "licence": "CC-BY-4.0",
+      "attribution": "MD3 contributors"
+    },
+    "evidence": {
+      "kind": "passage",
+      "sourceId": "openstax-anatomy-physiology",
+      "passageId": "gi-bile-liver-gallbladder",
+      "licence": {
+        "cls": "foss",
+        "id": "cc-by-4.0"
+      }
+    }
+  }
+}

@@ -1,0 +1,86 @@
+{
+  "id": "bank:usmle-step1:ms-twitch-summation-tetanus:v1",
+  "rotation": "usmle-step1-open",
+  "topics": [
+    "muscle twitch",
+    "wave summation",
+    "tetanus"
+  ],
+  "moduleNodes": [
+    "usmle/step1",
+    "usmle/step1/musculoskeletal"
+  ],
+  "questionType": "mechanism",
+  "difficulty": "medium",
+  "stem": "In a muscle-physiology experiment, a 23-year-old student stimulates an isolated muscle at increasing frequencies until the relaxation phase between contractions disappears completely.\n\nThe resulting continuous maximal contraction is called which of the following?",
+  "options": [
+    {
+      "label": "A",
+      "text": "Wave summation",
+      "isCorrect": false,
+      "misconception": "The additive process is being named where its endpoint belongs.",
+      "explanation": "Wave summation is the adding together of successive stimuli to produce stronger contraction; when summation proceeds until relaxation vanishes, the result is complete tetanus."
+    },
+    {
+      "label": "B",
+      "text": "A single muscle twitch",
+      "isCorrect": false,
+      "misconception": "The unit response is being applied to a fused train.",
+      "explanation": "A twitch is the isolated contraction from a single action potential, with latent, contraction, and relaxation phases; repeated high-frequency stimulation fuses twitches into tetanus."
+    },
+    {
+      "label": "C",
+      "text": "Incomplete tetanus",
+      "isCorrect": false,
+      "misconception": "The partially fused state is being applied to a fully fused one.",
+      "explanation": "Incomplete tetanus still shows quick cycles of contraction with short relaxation phases; here the relaxation phase has DISAPPEARED, defining complete tetanus."
+    },
+    {
+      "label": "D",
+      "text": "Complete tetanus",
+      "isCorrect": true,
+      "misconception": "None; when relaxation vanishes, contractions fuse into complete tetanus.",
+      "explanation": "When stimulus frequency is so high that the relaxation phase disappears completely, contractions become continuous — complete tetanus — because sustained sarcoplasmic calcium lets nearly all sarcomeres keep cross-bridging."
+    },
+    {
+      "label": "E",
+      "text": "The latent period",
+      "isCorrect": false,
+      "misconception": "A phase of the twitch is being named as the contraction state.",
+      "explanation": "The latent period is the pre-contraction interval during which the action potential propagates and calcium is released; it is not a contraction state."
+    }
+  ],
+  "context": "Learning objective: frequency grading of contraction. One action potential → one twitch (latent → contraction → relaxation phases). Rising frequency → wave summation (tension rises 3-4x) → incomplete tetanus (short relaxation remains) → complete tetanus (relaxation disappears, continuous maximal contraction).",
+  "cite": "openstax-anatomy-physiology#ms-twitch-summation-tetanus",
+  "publicUsmle": {
+    "schemaVersion": 1,
+    "origin": "generated",
+    "itemText": {
+      "licence": "CC-BY-4.0",
+      "attribution": "MD3 contributors"
+    },
+    "evidence": {
+      "kind": "passage",
+      "sourceId": "openstax-anatomy-physiology",
+      "passageId": "ms-twitch-summation-tetanus",
+      "licence": {
+        "cls": "foss",
+        "id": "cc-by-4.0"
+      }
+    },
+    "media": {
+      "kind": "asset",
+      "assetId": "ec-coupling-v1",
+      "job": "mechanism",
+      "showWhen": "after-reveal",
+      "licence": {
+        "cls": "foss",
+        "id": "cc-by-4.0"
+      },
+      "attribution": "MD3 contributors",
+      "contentHash": "sha256:1e10a90aa480101d834aa52b19989daed4c0ef1e215bc584b5320cecb423e2f7"
+    }
+  },
+  "imageUrl": "/figures/usmle/step1/ec-coupling-v1.svg",
+  "imageCaption": "EC coupling: T-tubule AP -> SR Ca2+ -> troponin -> cross-bridge; ATP for detach and Ca2+ pump."
+}

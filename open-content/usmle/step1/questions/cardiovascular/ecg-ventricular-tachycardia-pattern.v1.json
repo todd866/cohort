@@ -1,0 +1,89 @@
+{
+  "id": "bank:usmle-step1:ecg-ventricular-tachycardia-pattern:v1",
+  "rotation": "usmle-step1-open",
+  "topics": [
+    "electrocardiogram",
+    "ECG interpretation",
+    "ventricular tachycardia",
+    "broad complex tachycardia"
+  ],
+  "moduleNodes": [
+    "usmle/step1",
+    "usmle/step1/cardiovascular"
+  ],
+  "questionType": "interpretation",
+  "difficulty": "medium",
+  "stem": "In an adult, which rhythm diagnosis should be presumed for this recorded tracing?",
+  "options": [
+    {
+      "label": "A",
+      "text": "Atrial fibrillation with aberrancy",
+      "isCorrect": false,
+      "misconception": "A wide-complex atrial rhythm is being substituted despite the regular ventricular timing.",
+      "explanation": "Atrial fibrillation with aberrancy can produce broad complexes, but its ventricular timing is irregularly irregular; this strip is regular."
+    },
+    {
+      "label": "B",
+      "text": "Sinus tachycardia with aberrancy",
+      "isCorrect": false,
+      "misconception": "A regular rate is being interpreted as sinus rhythm without identifying consistent preceding P waves.",
+      "explanation": "Sinus tachycardia with aberrancy should retain a consistent P-to-QRS relationship; no consistent preceding P waves are apparent here."
+    },
+    {
+      "label": "C",
+      "text": "Supraventricular tachycardia with aberrancy",
+      "isCorrect": false,
+      "misconception": "A genuine differential for regular wide-complex tachycardia is being treated as the default diagnosis.",
+      "explanation": "Supraventricular tachycardia with aberrancy is an important differential, but a regular wide-complex tachycardia in an adult should be presumed ventricular tachycardia unless demonstrated otherwise."
+    },
+    {
+      "label": "D",
+      "text": "Wide-complex ventricular tachycardia",
+      "isCorrect": true,
+      "misconception": "None; the repeated abnormal QRS morphology is ventricular tachycardia.",
+      "explanation": "The fast regular rhythm, broad complexes, and lack of consistent preceding P waves make ventricular tachycardia the diagnosis to presume."
+    },
+    {
+      "label": "E",
+      "text": "Complete AV block with an escape rhythm",
+      "isCorrect": false,
+      "misconception": "A slow escape rhythm is being confused with a rapid ventricular rhythm.",
+      "explanation": "Complete block produces independent atrial and slower ventricular activity rather than this rapid repeated ventricular pattern."
+    }
+  ],
+  "context": "Learning objective: identify the high-risk pattern that should be presumed ventricular tachycardia. Read a wide-complex tachycardia by checking rate, regularity, QRS width, morphology, and atrial activity. This recorded event received a final true-VT label after independent expert review in the source dataset. Its fast regular broad-complex pattern supports that diagnosis; supraventricular tachycardia with aberrancy remains an important real-world differential.",
+  "cite": "open-rn-nursing-advanced-skills#ecg-ventricular-tachycardia-features",
+  "publicUsmle": {
+    "schemaVersion": 1,
+    "origin": "generated",
+    "itemText": {
+      "licence": "CC-BY-4.0",
+      "attribution": "MD3 contributors"
+    },
+    "evidence": {
+      "kind": "passage",
+      "sourceId": "open-rn-nursing-advanced-skills",
+      "passageId": "ecg-ventricular-tachycardia-features",
+      "licence": {
+        "cls": "foss",
+        "id": "cc-by-4.0"
+      }
+    },
+    "media": {
+      "kind": "asset",
+      "assetId": "ecg-case-8v5c2h",
+      "job": "trace",
+      "showWhen": "always",
+      "licence": {
+        "cls": "foss",
+        "id": "cc-by-sa-4.0"
+      },
+      "attribution": "VTaC v1.0 via PhysioNet; rendered by MD3 contributors",
+      "contentHash": "sha256:2b61a8af5877eb34309dd813509b52f0729e4c67eb4c6fc51e1aea6103cce579",
+      "clinicalConditionIds": ["ventricular-tachycardia"],
+      "clinicalKeyFindings": ["Expert-reviewed true VT event with a regular wide-complex rhythm above 100 beats per minute"]
+    }
+  },
+  "imageUrl": "/figures/usmle/step1/ecg-case-8v5c2h.svg",
+  "imageCaption": "Recorded Lead II strip with eleven similar broad complexes repeating rapidly and regularly."
+}

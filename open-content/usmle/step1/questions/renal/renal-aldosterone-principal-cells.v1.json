@@ -1,0 +1,88 @@
+{
+  "id": "bank:usmle-step1:renal-aldosterone-principal-cells:v1",
+  "rotation": "usmle-step1-open",
+  "ladderId": "raas-aldosterone",
+  "topics": [
+    "aldosterone",
+    "principal cells",
+    "potassium secretion",
+    "ladder:raas-aldosterone"
+  ],
+  "moduleNodes": [
+    "usmle/step1",
+    "usmle/step1/renal"
+  ],
+  "questionType": "mechanism",
+  "difficulty": "medium",
+  "stem": "A 45-year-old man with primary hyperaldosteronism has hypertension and a low serum potassium concentration.\n\nHis elevated aldosterone acts on principal cells of the collecting duct to produce which of the following changes?",
+  "options": [
+    {
+      "label": "A",
+      "text": "Fewer sodium channels, so less sodium and water are recovered",
+      "isCorrect": false,
+      "misconception": "The hormone's effect on sodium handling is being stated backward.",
+      "explanation": "Aldosterone increases, not decreases, sodium-channel production; excess aldosterone therefore expands volume (hypertension) rather than shrinking it."
+    },
+    {
+      "label": "B",
+      "text": "Insertion of aquaporin water channels into the apical membrane",
+      "isCorrect": false,
+      "misconception": "ADH's signature action is being attributed to aldosterone.",
+      "explanation": "Aquaporin insertion is controlled by ADH; aldosterone builds sodium/potassium channels and pumps, and water then follows the recovered sodium passively."
+    },
+    {
+      "label": "C",
+      "text": "Suppression of potassium secretion, conserving serum potassium",
+      "isCorrect": false,
+      "misconception": "The direction of potassium handling is being reversed.",
+      "explanation": "Aldosterone promotes potassium loss: as the Na+/K+ pump recovers Na+, K+ moves the opposite way into the forming urine, which is why hyperaldosteronism causes hypokalemia."
+    },
+    {
+      "label": "D",
+      "text": "Conversion of angiotensin I into active angiotensin II",
+      "isCorrect": false,
+      "misconception": "An upstream enzyme's role is being assigned to the steroid's target cells.",
+      "explanation": "Angiotensin-converting enzyme from the lungs activates angiotensin II; principal cells respond to aldosterone by manufacturing channels and pumps."
+    },
+    {
+      "label": "E",
+      "text": "More sodium and potassium channels plus more Na+/K+ ATPase pumps",
+      "isCorrect": true,
+      "misconception": "None; aldosterone upregulates the whole sodium-recovery/potassium-secretion machinery.",
+      "explanation": "Aldosterone stimulates principal cells to manufacture luminal Na+ and K+ channels and basal Na+/K+ ATPase pumps; more Na+ is recovered (with water following) while more K+ is pumped into the forming urine, explaining his hypertension and hypokalemia."
+    }
+  ],
+  "context": "Learning objective: state aldosterone's principal-cell program. Aldosterone induces luminal Na+/K+ channels and basal Na+/K+ ATPase, increasing Na+ (and water) recovery and K+ secretion.",
+  "cite": "openstax-anatomy-physiology#renal-aldosterone-principal-cells",
+  "publicUsmle": {
+    "schemaVersion": 1,
+    "origin": "generated",
+    "itemText": {
+      "licence": "CC-BY-4.0",
+      "attribution": "MD3 contributors"
+    },
+    "evidence": {
+      "kind": "passage",
+      "sourceId": "openstax-anatomy-physiology",
+      "passageId": "renal-aldosterone-principal-cells",
+      "licence": {
+        "cls": "foss",
+        "id": "cc-by-4.0"
+      }
+    },
+    "media": {
+      "kind": "asset",
+      "assetId": "nephron-overview-v1",
+      "job": "anatomy",
+      "showWhen": "after-reveal",
+      "licence": {
+        "cls": "foss",
+        "id": "cc-by-4.0"
+      },
+      "attribution": "MD3 contributors",
+      "contentHash": "sha256:594f7ddfca37a265ea925ffa5348bce222990740b857a75cf8669f0ba5f715fa"
+    }
+  },
+  "imageUrl": "/figures/usmle/step1/nephron-overview-v1.svg",
+  "imageCaption": "Nephron segments: filtration, PCT, loop, DCT, collecting duct (ADH aquaporins)."
+}

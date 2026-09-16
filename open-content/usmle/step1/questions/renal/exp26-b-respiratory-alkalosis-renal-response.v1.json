@@ -1,0 +1,71 @@
+{
+  "id": "bank:usmle-step1:exp26-b-respiratory-alkalosis-renal-response:v1",
+  "rotation": "usmle-step1-open",
+  "topics": [
+    "renal",
+    "respiratory-alkalosis-renal-response"
+  ],
+  "moduleNodes": [
+    "usmle/step1",
+    "usmle/step1/renal"
+  ],
+  "questionType": "interpretation",
+  "difficulty": "medium",
+  "stem": "A participant maintains increased ventilation long enough for renal compensation to a primary respiratory alkalosis to develop. The initial disturbance was a fall in blood carbon dioxide. Which of the following renal responses best opposes the resulting increase in blood pH?",
+  "options": [
+    {
+      "text": "Increased bicarbonate conservation; stable hydrogen-ion handling",
+      "explanation": "Increased bicarbonate conservation fits the compensatory direction for respiratory acidosis rather than alkalosis. Stable hydrogen-ion handling also omits the expected acid-retaining response in this model.",
+      "isCorrect": false,
+      "label": "A",
+      "misconception": "Applies bicarbonate conservation to alkalosis and omits the expected acid-retaining response."
+    },
+    {
+      "text": "Reduced bicarbonate production; increased hydrogen-ion retention",
+      "explanation": "The compensatory renal response to respiratory alkalosis reduces bicarbonate production and increases net hydrogen-ion retention. Both changes oppose the rise in pH caused by excessive carbon dioxide elimination.",
+      "isCorrect": true,
+      "label": "B",
+      "misconception": "No misconception: reduced bicarbonate production and increased net hydrogen-ion retention oppose respiratory alkalosis."
+    },
+    {
+      "text": "Increased bicarbonate conservation; increased hydrogen-ion secretion",
+      "explanation": "These changes are characteristic of compensation for respiratory acidosis. Applying them to respiratory alkalosis would move in the wrong direction for the initial elevated pH.",
+      "isCorrect": false,
+      "label": "C",
+      "misconception": "Applies the renal compensatory pattern for respiratory acidosis to a primary respiratory alkalosis."
+    },
+    {
+      "text": "Reduced bicarbonate production; increased hydrogen-ion secretion",
+      "explanation": "Reduced bicarbonate production fits the response, but increased hydrogen-ion secretion is the opposite hydrogen-handling direction. The paired change therefore fails to match compensation for respiratory alkalosis.",
+      "isCorrect": false,
+      "label": "D",
+      "misconception": "Pairs reduced bicarbonate production with hydrogen-ion secretion instead of the expected net retention."
+    },
+    {
+      "text": "Increased bicarbonate production; increased hydrogen-ion retention",
+      "explanation": "The hydrogen-ion response matches the described mechanism, but increased bicarbonate production reverses the other component. Both parts must oppose the initial alkalotic disturbance.",
+      "isCorrect": false,
+      "label": "E",
+      "misconception": "Pairs appropriate hydrogen-ion retention with increased bicarbonate production that reverses the other compensatory component."
+    }
+  ],
+  "context": "Learning objective: Distinguish renal compensation for respiratory alkalosis from the opposite response to respiratory acidosis. The compensatory renal response to respiratory alkalosis reduces bicarbonate production and increases net hydrogen-ion retention. Both changes oppose the rise in pH caused by excessive carbon dioxide elimination.",
+  "cite": "openstax-ap1-acid-base-disorders#alkalosis-renal-compensation",
+  "publicUsmle": {
+    "schemaVersion": 1,
+    "origin": "generated",
+    "itemText": {
+      "licence": "CC-BY-4.0",
+      "attribution": "MD3 contributors"
+    },
+    "evidence": {
+      "kind": "passage",
+      "sourceId": "openstax-ap1-acid-base-disorders",
+      "passageId": "alkalosis-renal-compensation",
+      "licence": {
+        "cls": "foss",
+        "id": "cc-by-4.0"
+      }
+    }
+  }
+}

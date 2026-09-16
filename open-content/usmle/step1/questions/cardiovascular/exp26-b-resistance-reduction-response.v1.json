@@ -1,0 +1,71 @@
+{
+  "id": "bank:usmle-step1:exp26-b-resistance-reduction-response:v1",
+  "rotation": "usmle-step1-open",
+  "topics": [
+    "cardiovascular",
+    "resistance-reduction-response"
+  ],
+  "moduleNodes": [
+    "usmle/step1",
+    "usmle/step1/cardiovascular"
+  ],
+  "questionType": "interpretation",
+  "difficulty": "hard",
+  "stem": "Two matched ventricular preparations have identical preload and contractility. The resistance of the vascular circuit is reduced in preparation X and left unchanged in preparation Y. The investigator measures the volume expelled per beat. Which of the following comparisons is expected?",
+  "options": [
+    {
+      "text": "Greater in X because the opposing load is higher",
+      "explanation": "Greater ejection is expected, but not for the proposed reason. Reducing vascular resistance lowers the opposing load instead of making ejection mechanically more demanding.",
+      "isCorrect": false,
+      "label": "A",
+      "misconception": "Correctly predicts greater ejection but attributes it to higher opposition after resistance was reduced."
+    },
+    {
+      "text": "Lower in X because the opposing load is higher",
+      "explanation": "Both the load and output predictions contradict the intervention. Reduced vascular resistance lowers afterload and supports a greater stroke volume at fixed contraction strength.",
+      "isCorrect": false,
+      "label": "B",
+      "misconception": "Reverses both the afterload change and its effect on ejection after circuit resistance falls."
+    },
+    {
+      "text": "Equal in X because the initial filling is equal",
+      "explanation": "Equal preload does not guarantee equal stroke volume. Ejection also depends on afterload, which differs between the two circuits despite their matched starting conditions.",
+      "isCorrect": false,
+      "label": "C",
+      "misconception": "Assumes that equal preload guarantees equal stroke volume despite different afterloads."
+    },
+    {
+      "text": "Greater in X because the opposing load is lower",
+      "explanation": "Lower circuit resistance reduces afterload. With the same preload and contractility, less opposition to ejection permits a larger stroke volume in preparation X.",
+      "isCorrect": true,
+      "label": "D",
+      "misconception": "No misconception: reducing afterload permits greater ejection at matched preload and contractility."
+    },
+    {
+      "text": "Lower in X because the opposing load is lower",
+      "explanation": "The load change is described correctly, but its consequence is reversed. Lower afterload facilitates emptying rather than reducing the amount expelled under matched conditions.",
+      "isCorrect": false,
+      "label": "E",
+      "misconception": "Assumes that lower afterload reduces rather than facilitates ejection under matched conditions."
+    }
+  ],
+  "context": "Learning objective: Predict a stroke-volume difference produced by altered resistance independently of preload or contractility. Lower circuit resistance reduces afterload. With the same preload and contractility, less opposition to ejection permits a larger stroke volume in preparation X.",
+  "cite": "openstax-ap1-cardiac-physiology#afterload-volume",
+  "publicUsmle": {
+    "schemaVersion": 1,
+    "origin": "generated",
+    "itemText": {
+      "licence": "CC-BY-4.0",
+      "attribution": "MD3 contributors"
+    },
+    "evidence": {
+      "kind": "passage",
+      "sourceId": "openstax-ap1-cardiac-physiology",
+      "passageId": "afterload-volume",
+      "licence": {
+        "cls": "foss",
+        "id": "cc-by-4.0"
+      }
+    }
+  }
+}

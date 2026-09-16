@@ -1,0 +1,85 @@
+{
+  "id": "bank:usmle-step1:micro-rota-fecal-oral:v1",
+  "rotation": "usmle-step1-open",
+  "topics": [
+    "rotavirus",
+    "transmission"
+  ],
+  "moduleNodes": [
+    "usmle/step1",
+    "usmle/step1/microbiology"
+  ],
+  "questionType": "mechanism",
+  "difficulty": "easy",
+  "stem": "Rotavirus spread is described as fecal-oral plus which other modes?",
+  "options": [
+    {
+      "label": "A",
+      "text": "Only airborne lingering inside rooms for two hours",
+      "isCorrect": false,
+      "misconception": "Measles. (does not match the cited teaching point).",
+      "explanation": "This option does not match the cited source passage for the stem."
+    },
+    {
+      "label": "B",
+      "text": "Person-to-person contact and fomite spread routes",
+      "isCorrect": true,
+      "misconception": "None; fecal-oral, person-to-person, fomites.",
+      "explanation": "CDC: fecal-oral, person-to-person and fomites."
+    },
+    {
+      "label": "C",
+      "text": "Only sexual contact spread of oncogenic HPV genotypes",
+      "isCorrect": false,
+      "misconception": "HPV. (does not match the cited teaching point).",
+      "explanation": "This option does not match the cited source passage for the stem."
+    },
+    {
+      "label": "D",
+      "text": "Only latent zoster reactivation in a single dermatome",
+      "isCorrect": false,
+      "misconception": "VZV. (does not match the cited teaching point).",
+      "explanation": "This option does not match the cited source passage for the stem."
+    },
+    {
+      "label": "E",
+      "text": "Only transfusion of packed red blood cell units",
+      "isCorrect": false,
+      "misconception": "Blood-borne. (does not match the cited teaching point).",
+      "explanation": "This option does not match the cited source passage for the stem."
+    }
+  ],
+  "context": "Learning objective: recall rotavirus, transmission from the cited FOSS source.",
+  "cite": "cdc-pink-book-rotavirus#rota-fecal-oral",
+  "publicUsmle": {
+    "schemaVersion": 1,
+    "origin": "generated",
+    "itemText": {
+      "licence": "CC-BY-4.0",
+      "attribution": "MD3 contributors"
+    },
+    "evidence": {
+      "kind": "passage",
+      "sourceId": "cdc-pink-book-rotavirus",
+      "passageId": "rota-fecal-oral",
+      "licence": {
+        "cls": "foss",
+        "id": "us-gov"
+      }
+    },
+    "media": {
+      "kind": "asset",
+      "assetId": "micro-pathogen-virulence-v1",
+      "job": "compare-table",
+      "showWhen": "after-reveal",
+      "licence": {
+        "cls": "foss",
+        "id": "cc-by-4.0"
+      },
+      "attribution": "MD3 contributors",
+      "contentHash": "sha256:e0ca8dcce5538b15d4a9973d8a6934fc8199d41e7059a4d8f0059cc1ec78a22e"
+    }
+  },
+  "imageUrl": "/figures/usmle/step1/micro-pathogen-virulence-v1.svg",
+  "imageCaption": "Pathogen/virulence and Pink Book organism map (FOSS draft)."
+}

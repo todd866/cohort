@@ -1,0 +1,85 @@
+{
+  "id": "bank:usmle-step1:endo-hormone-receptor-classes:v1",
+  "rotation": "usmle-step1-open",
+  "topics": [
+    "hormone receptor classes",
+    "signal transduction"
+  ],
+  "moduleNodes": [
+    "usmle/step1",
+    "usmle/step1/endocrine"
+  ],
+  "questionType": "mechanism",
+  "difficulty": "easy",
+  "stem": "A 29-year-old woman receives an injection of a water-soluble peptide hormone as part of a fertility workup. Because this hormone cannot cross the lipid bilayer of her target cells, its message must be received and relayed in a particular way.\n\nWhich of the following best describes where the receptor for this hormone is found and how it signals?",
+  "options": [
+    {
+      "label": "A",
+      "text": "Inside the nucleus, bound directly to the target gene",
+      "isCorrect": false,
+      "misconception": "A receptor location used by lipid-soluble hormones is being assigned to one that cannot enter the cell.",
+      "explanation": "Nuclear receptors mediate lipid-soluble steroid and thyroid hormone signaling; a water-soluble hormone never enters the cell, so its receptor sits at the surface."
+    },
+    {
+      "label": "B",
+      "text": "In the cytosol, then moving to the nucleus to bind DNA",
+      "isCorrect": false,
+      "misconception": "The steroid hormone pathway is being applied to a water-soluble hormone.",
+      "explanation": "Cytosolic receptors that migrate to the nucleus belong to lipid-soluble steroid hormones, which diffuse through the membrane unaided; peptide hormones cannot reach them."
+    },
+    {
+      "label": "C",
+      "text": "On the mitochondrial membrane, directly stimulating ATP production",
+      "isCorrect": false,
+      "misconception": "A metabolic organelle is being given a receptor function it does not have.",
+      "explanation": "Thyroid hormone receptors on mitochondria influence metabolism, but a water-soluble peptide hormone signals from the plasma membrane surface through a second messenger."
+    },
+    {
+      "label": "D",
+      "text": "Within the lysosome, where the hormone is degraded after signaling",
+      "isCorrect": false,
+      "misconception": "A degradative compartment is being confused with a signaling receptor.",
+      "explanation": "Lysosomes degrade material but are not hormone receptors; the peptide hormone binds a surface membrane receptor and relays its message via a second messenger."
+    },
+    {
+      "label": "E",
+      "text": "On the cell surface, activating an intracellular second messenger",
+      "isCorrect": true,
+      "misconception": "None; water-soluble hormones bind membrane receptors and signal through second messengers such as cAMP.",
+      "explanation": "Hydrophilic hormones cannot diffuse through the lipid bilayer, so they bind receptors on the extracellular surface and initiate a signaling cascade carried by a second messenger."
+    }
+  ],
+  "context": "Learning objective: match hormone solubility to receptor location. Water-soluble (peptide, amine) hormones bind surface membrane receptors and signal via second messengers; lipid-soluble (steroid, thyroid) hormones diffuse in and bind intracellular receptors.",
+  "cite": "openstax-anatomy-physiology#endo-hormone-receptor-classes",
+  "publicUsmle": {
+    "schemaVersion": 1,
+    "origin": "generated",
+    "itemText": {
+      "licence": "CC-BY-4.0",
+      "attribution": "MD3 contributors"
+    },
+    "evidence": {
+      "kind": "passage",
+      "sourceId": "openstax-anatomy-physiology",
+      "passageId": "endo-hormone-receptor-classes",
+      "licence": {
+        "cls": "foss",
+        "id": "cc-by-4.0"
+      }
+    },
+    "media": {
+      "kind": "asset",
+      "assetId": "hormone-signaling-v1",
+      "job": "compare-table",
+      "showWhen": "after-reveal",
+      "licence": {
+        "cls": "foss",
+        "id": "cc-by-4.0"
+      },
+      "attribution": "MD3 contributors",
+      "contentHash": "sha256:7103e388460fdee9ff97527a007236e8019b20111115d833c096f4e03c810045"
+    }
+  },
+  "imageUrl": "/figures/usmle/step1/hormone-signaling-v1.svg",
+  "imageCaption": "Membrane vs nuclear receptors; cAMP; steroid transcription; melatonin/SCN."
+}

@@ -1,0 +1,21 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 280" role="img" aria-labelledby="t d">
+  <title id="t">Thyroid hormone synthesis</title>
+  <desc id="d">Follicle cell and colloid: iodine uptake, thyroglobulin iodination, coupling to T3/T4, TSH-stimulated release.</desc>
+  <rect width="640" height="280" fill="#fafafa"/>
+  <text x="320" y="26" text-anchor="middle" font-family="system-ui,sans-serif" font-size="16" fill="#222">Thyroid hormone synthesis</text>
+  <!-- follicle cell -->
+  <rect x="40" y="60" width="200" height="160" rx="10" fill="#edf6f9" stroke="#01497c"/>
+  <text x="140" y="55" text-anchor="middle" font-family="system-ui,sans-serif" font-size="12" fill="#01497c">Follicle cell</text>
+  <text x="55" y="95" font-family="system-ui,sans-serif" font-size="12" fill="#333">1. NIS: I- in (TSH+)</text>
+  <text x="55" y="120" font-family="system-ui,sans-serif" font-size="12" fill="#333">2. Make thyroglobulin</text>
+  <text x="55" y="145" font-family="system-ui,sans-serif" font-size="12" fill="#333">5. Endocytose colloid</text>
+  <text x="55" y="170" font-family="system-ui,sans-serif" font-size="12" fill="#333">6. Lysosome -> T3/T4</text>
+  <text x="55" y="195" font-family="system-ui,sans-serif" font-size="12" fill="#333">7. Release to blood</text>
+  <!-- colloid -->
+  <rect x="280" y="60" width="320" height="160" rx="10" fill="#fff3b0" stroke="#e09f3e"/>
+  <text x="440" y="55" text-anchor="middle" font-family="system-ui,sans-serif" font-size="12" fill="#9c6644">Colloid lumen</text>
+  <text x="300" y="110" font-family="system-ui,sans-serif" font-size="13" fill="#333">3. TPO iodinates Tyr on TG -> MIT/DIT</text>
+  <text x="300" y="140" font-family="system-ui,sans-serif" font-size="13" fill="#333">4. Coupling: DIT+DIT -> T4; MIT+DIT -> T3</text>
+  <text x="300" y="175" font-family="system-ui,sans-serif" font-size="12" fill="#555">Iodine deficiency -> low hormone, high TSH -> goiter</text>
+  <text x="320" y="250" text-anchor="middle" font-family="system-ui,sans-serif" font-size="12" fill="#333">Storage protein = thyroglobulin; iodine attaches to its tyrosine residues</text>
+</svg>

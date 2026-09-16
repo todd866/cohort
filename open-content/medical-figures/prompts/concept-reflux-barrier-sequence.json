@@ -1,0 +1,32 @@
+{
+  "id": "concept-reflux-barrier-sequence",
+  "title": "Why infant reflux is common",
+  "prompt": "Create an original polished 1536x1024 landscape conceptual medical teaching diagram for after-answer study. Warm hand-painted gouache and watercolour on ivory paper; a gentle storybook warmth with precise dark navy type. Matte teal, ochre, coral and blue accents. Simple neutral tokens, paper tiles, arrows and visibly abstract compartments only. Make the visual relationships legible at small size. No body parts, organs, cells, tissues, lumens, tubules, membranes, vessels, anatomical cutaways, clinical photos, diagnostic scans, babies, realistic flesh or decorative scenery. Do not turn abstract boxes or routes into organs or anatomy. Do not invent extra arrows or medical claims. Edge meanings below are metadata, not visible text: draw the arrows but do not print their meaning strings. Footer exactly: Conceptual schematic • Not anatomy. Title exactly: Why infant reflux is common. Three parallel contributor cards across top, with unfinished puzzle, water droplet, and horizontal direction arrow respectively. All three arrows converge on central Contents return upwards card with an upward direction symbol, followed by one arrow down to Regurgitation. Exactly five cards and four connecting arrows. Bottom note: Usually improves as infants grow and develop. NO numbers, numbered badges, sequence counts, numerals or node identifiers anywhere in the image. Top three factors are parallel, not sequential. No infants, organs, oesophagus, valve or anatomical route. Exact node labels (ids are metadata only, never print ids): [{\"id\": \"1\", \"label\": \"Developing reflux barrier\"}, {\"id\": \"2\", \"label\": \"Mostly liquid meals\"}, {\"id\": \"3\", \"label\": \"Much time lying down\"}, {\"id\": \"4\", \"label\": \"Contents return upwards\"}, {\"id\": \"5\", \"label\": \"Regurgitation\"}]. Exact directed connections: [{\"from\": \"1\", \"to\": \"4\", \"meaning\": \"contributor\"}, {\"from\": \"2\", \"to\": \"4\", \"meaning\": \"contributor\"}, {\"from\": \"3\", \"to\": \"4\", \"meaning\": \"contributor\"}, {\"from\": \"4\", \"to\": \"5\", \"meaning\": \"manifestation\"}]. Required checks: Three distinct contributors converge on return of contents; Five nodes and four connectors; Upward token means return direction, not a drawn anatomical route; No claim that all infant reflux is disease; No numeric badge or printed node identifier anywhere.",
+  "clinicalSources": [
+    {
+      "title": "NIDDK — Symptoms and causes of reflux in infants",
+      "url": "https://www.niddk.nih.gov/health-information/digestive-diseases/acid-reflux-ger-gerd-infants/symptoms-causes"
+    }
+  ],
+  "caption": "A contributor map explains frequent infant reflux without drawing an anatomical valve.",
+  "question": "Why is gastro-oesophageal reflux common in young infants?",
+  "answer": "Developing reflux barriers, liquid meals and time lying down make upward return of gastric contents more likely.",
+  "structureSpecification": "scaffolds/concept-reflux-barrier-sequence.json",
+  "generationInputs": {
+    "referenceImages": [],
+    "style": "written-only"
+  },
+  "qa": {
+    "status": "pending-independent-qa",
+    "method": "agent-visual-and-source-review",
+    "notes": "Corrected pixel review: five nodes and four connectors, three parallel contributors converge on upward return then regurgitation. All numeric badges removed, no implied sequence between contributors. Puzzle, drop and direction arrows remain abstract. No organs or body. Independent and clinical review pending.",
+    "clinicalReviewStatus": "pending"
+  },
+  "attempts": [
+    {
+      "prompt": "Create an original polished 1536x1024 landscape conceptual medical teaching diagram for after-answer study. Warm hand-painted gouache and watercolour on ivory paper; a gentle storybook warmth with precise dark navy type. Matte teal, ochre, coral and blue accents. Simple neutral tokens, paper tiles, arrows and visibly abstract compartments only. Make the visual relationships legible at small size. No body parts, organs, cells, tissues, lumens, tubules, membranes, vessels, anatomical cutaways, clinical photos, diagnostic scans, babies, realistic flesh or decorative scenery. Do not turn abstract boxes or routes into organs or anatomy. Do not invent extra arrows or medical claims. Edge meanings below are metadata, not visible text: draw the arrows but do not print their meaning strings. Footer exactly: Conceptual schematic • Not anatomy. Title exactly: Why infant reflux is common. Three small separate contributor cards along top, numbered1,2,3, with neutral symbols an unfinished puzzle, a water droplet, and a horizontal orientation arrow. All three point to one large central node4 with a broad upward arrow as a direction metaphor ONLY, then one downward page-flow arrow to outcome5. Exactly five nodes and four connectors. Bottom note: Usually improves as infants grow and develop. Keep upward return arrow inside node4, not an organ route. Do not draw infants, stomach, oesophagus or a sphincter. Exact node labels: [{\"id\": \"1\", \"label\": \"Developing reflux barrier\"}, {\"id\": \"2\", \"label\": \"Mostly liquid meals\"}, {\"id\": \"3\", \"label\": \"Much time lying down\"}, {\"id\": \"4\", \"label\": \"Contents return upwards\"}, {\"id\": \"5\", \"label\": \"Regurgitation\"}]. Exact directed connections: [{\"from\": \"1\", \"to\": \"4\", \"meaning\": \"contributor\"}, {\"from\": \"2\", \"to\": \"4\", \"meaning\": \"contributor\"}, {\"from\": \"3\", \"to\": \"4\", \"meaning\": \"contributor\"}, {\"from\": \"4\", \"to\": \"5\", \"meaning\": \"manifestation\"}]. Required checks: Three distinct contributors converge on return of contents; Five nodes and four connectors; Upward token means return direction, not a drawn anatomical route; No claim that all infant reflux is disease.",
+      "status": "rejected-independent-qa",
+      "reason": "Parallel contributors have inconsistent numerical badges; remove all badges."
+    }
+  ]
+}

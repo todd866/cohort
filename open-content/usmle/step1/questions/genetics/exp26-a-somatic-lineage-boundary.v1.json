@@ -1,0 +1,71 @@
+{
+  "id": "bank:usmle-step1:exp26-a-somatic-lineage-boundary:v1",
+  "rotation": "usmle-step1-open",
+  "topics": [
+    "genetics",
+    "mutation-lineages"
+  ],
+  "moduleNodes": [
+    "usmle/step1",
+    "usmle/step1/genetics"
+  ],
+  "questionType": "interpretation",
+  "difficulty": "easy",
+  "stem": "In a hypothetical lineage-tracing study, a DNA sequence change first appears in one skin cell after birth. It is subsequently found in that cell's descendants. The reproductive-cell lineage does not contain the change. Which of the following best describes its distribution?",
+  "options": [
+    {
+      "label": "A",
+      "text": "Restricted to descendants of the altered body cell",
+      "isCorrect": true,
+      "explanation": "The alteration arose in a body cell and follows that cell's descendants. The explicitly unaffected reproductive lineage supports somatic distribution rather than transmission through gametes.",
+      "misconception": "No misconception: The observed change follows the altered body-cell lineage without a gametic route."
+    },
+    {
+      "label": "B",
+      "text": "Distributed through offspring by the unaltered gametes",
+      "isCorrect": false,
+      "explanation": "The gametes are stated to lack this change. Its expansion within skin-cell descendants therefore does not supply a route for transmission through those reproductive cells.",
+      "misconception": "Assumes a skin-cell alteration can be transmitted through gametes that do not contain it."
+    },
+    {
+      "label": "C",
+      "text": "Present in the parental gamete before fertilization",
+      "isCorrect": false,
+      "explanation": "The study locates the change after birth in a skin cell. An origin before fertilization contradicts the observed timing and lineage of the event.",
+      "misconception": "Moves an observed postnatal skin-cell event back to a parental gamete before fertilization."
+    },
+    {
+      "label": "D",
+      "text": "Restricted to reproductive cells rather than skin cells",
+      "isCorrect": false,
+      "explanation": "This reverses the directly measured distribution. The changed sequence is present in the skin-cell lineage and absent from the reproductive lineage in the study.",
+      "misconception": "Reverses the measured presence in skin descendants and absence from reproductive cells."
+    },
+    {
+      "label": "E",
+      "text": "Absent from descendants after the altered cell divides",
+      "isCorrect": false,
+      "explanation": "The descendants are specifically reported to contain the change. Cell division therefore does not explain its disappearance in this observed lineage-tracing result here.",
+      "misconception": "Assumes division removes a sequence change despite its measured persistence in descendants."
+    }
+  ],
+  "context": "Learning objective: follow a somatic mutation through the descendants of the cell in which it arose. Expansion within a tissue is different from entry into the reproductive lineage.",
+  "cite": "nhgri-mutation#mutation-inheritance",
+  "publicUsmle": {
+    "schemaVersion": 1,
+    "origin": "generated",
+    "itemText": {
+      "licence": "CC-BY-4.0",
+      "attribution": "MD3 contributors"
+    },
+    "evidence": {
+      "kind": "passage",
+      "sourceId": "nhgri-mutation",
+      "passageId": "mutation-inheritance",
+      "licence": {
+        "cls": "foss",
+        "id": "us-gov"
+      }
+    }
+  }
+}

@@ -1,0 +1,27 @@
+{
+  "schemaVersion": 1,
+  "figureId": "orbital-cellulitis-red-flag-escalation",
+  "sourceFacts": [
+    "Painful or restricted eye movement, proptosis and visual impairment are red flags for orbital cellulitis.",
+    "Suspected orbital cellulitis is an emergency requiring urgent assessment, ENT and ophthalmology input and treatment."
+  ],
+  "clinicalSources": [
+    {
+      "title": "RCH: Periorbital and orbital cellulitis",
+      "url": "https://www.rch.org.au/clinicalguide/guideline_index/Periorbital_and_orbital_cellulitis/"
+    }
+  ],
+  "specificationFiles": [
+    "scaffolds/orbital-cellulitis-red-flag-escalation.json"
+  ],
+  "prompt": "Create an entirely original medical teaching concept illustration, landscape 3:2, warm hand-painted watercolour and gouache on ivory paper, fine ink contours, restrained navy labels, muted teal, ochre and peach accents, generous whitespace. Gentle storybook warmth with the precision and legibility of an educational atlas. Use written instructions only; no image reference. Meaningful visual relationships and sparse short labels, not paragraphs in boxes. NO internal anatomy, organ/eye/ear/brain/tissue cutaways, anatomical pathways, bones, diagnostic images, fake scans, realistic lesions, photorealistic skin, glossy wet flesh or 3D tissue. Neutral symbols or fully clothed surface poses only where specified. Preserve every direction, relationship and count in the explicit structure. Title and labels exactly as requested, no additional prose. Footer 'Educational schematic'. No logo or watermark.\n\nTitle 'Orbital cellulitis: act on red flags'. A converging then splitting action diagram. LEFT top: two short directional arrows pushing against an ochre stop-bar beside a small pain-star icon, label 'Painful or limited eye movement'. LEFT bottom: a blurred geometric star and warning flag, label 'Vision change or proptosis'. No eye or face illustration. Two distinct arrows converge at centre: a large hospital-door icon with a simple clock beside it, labelled 'Urgent hospital assessment'. Two arrows leave that hospital to two equal specialist name badges on the RIGHT, top 'ENT', bottom 'Ophthalmology'. These are parallel team inputs, neither must be completed before the other. Keep words short and icons dominant. No wait/watch branch, no doses or scan simulation.",
+  "generation": {
+    "tool": "built-in image_gen",
+    "model": null,
+    "referenceAssetIds": [],
+    "externalReferenceImages": [],
+    "specificationFiles": [
+      "scaffolds/orbital-cellulitis-red-flag-escalation.json"
+    ]
+  }
+}

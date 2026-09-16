@@ -1,0 +1,71 @@
+{
+  "id": "bank:usmle-step1:exp26-c-mixing-loss-absorption-contact:v1",
+  "rotation": "usmle-step1-open",
+  "topics": [
+    "gastrointestinal",
+    "mixing-loss-absorption-contact"
+  ],
+  "moduleNodes": [
+    "usmle/step1",
+    "usmle/step1/gastrointestinal"
+  ],
+  "questionType": "mechanism",
+  "difficulty": "medium",
+  "stem": "A preparation of small intestine preserves forward-moving waves but loses its alternating local contractions. Luminal nutrients move onward with less repeated exposure to nearby mucosal surfaces. Which of the following functions has been selectively impaired?",
+  "options": [
+    {
+      "label": "A",
+      "text": "Propulsion of food along the length of the intestinal lumen",
+      "isCorrect": false,
+      "explanation": "Forward-moving waves and onward movement are preserved. The abnormality is local mixing rather than the movement of food along the tract.",
+      "misconception": "Confuses preserved forward propulsion with the lost local mixing function."
+    },
+    {
+      "label": "B",
+      "text": "Entry of glucose across the luminal intestinal epithelial membrane",
+      "isCorrect": false,
+      "explanation": "Glucose entry uses a membrane transport mechanism. The direct observation of lost alternating contractions localizes the deficit to motility before epithelial uptake.",
+      "misconception": "Places an observed motility defect at the epithelial glucose transporter."
+    },
+    {
+      "label": "C",
+      "text": "Mixing of chyme against the surface of the intestinal mucosa",
+      "isCorrect": true,
+      "explanation": "Segmentation mixes chyme with digestive juices and repeatedly brings particles to the mucosa. Its loss reduces local contact even when peristalsis continues.",
+      "misconception": "No misconception: segmentation brings chyme into contact with the mucosa."
+    },
+    {
+      "label": "D",
+      "text": "Export of triglyceride-rich particles into the intestinal villus lacteals",
+      "isCorrect": false,
+      "explanation": "Lacteal export follows lipid uptake and packaging in enterocytes. The observed loss of local luminal contractions does not demonstrate a defect in that later export route.",
+      "misconception": "Attributes lost luminal contractions to a later lymphatic export step."
+    },
+    {
+      "label": "E",
+      "text": "Transfer of absorbed fructose into the intestinal villus capillaries",
+      "isCorrect": false,
+      "explanation": "Fructose reaches capillary blood after epithelial uptake. The experiment identifies impaired luminal contact, not impaired export of material already absorbed.",
+      "misconception": "Confuses impaired pre-uptake mixing with blood transfer after absorption."
+    }
+  ],
+  "context": "Learning objective: Separate propulsion from mixing when interpreting intestinal motility. Effective forward movement does not establish that nutrients repeatedly contact the absorptive surface.\n\nSegmentation mixes chyme with digestive juices and repeatedly brings particles to the mucosa. Its loss reduces local contact even when peristalsis continues.",
+  "cite": "openstax-anatomy-physiology#gi-segmentation-peristalsis",
+  "publicUsmle": {
+    "schemaVersion": 1,
+    "origin": "generated",
+    "itemText": {
+      "licence": "CC-BY-4.0",
+      "attribution": "MD3 contributors"
+    },
+    "evidence": {
+      "kind": "passage",
+      "sourceId": "openstax-anatomy-physiology",
+      "passageId": "gi-segmentation-peristalsis",
+      "licence": {
+        "cls": "foss",
+        "id": "cc-by-4.0"
+      }
+    }
+  }
+}

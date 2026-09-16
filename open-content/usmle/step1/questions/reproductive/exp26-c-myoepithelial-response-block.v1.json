@@ -1,0 +1,71 @@
+{
+  "id": "bank:usmle-step1:exp26-c-myoepithelial-response-block:v1",
+  "rotation": "usmle-step1-open",
+  "topics": [
+    "reproductive",
+    "myoepithelial-response-block"
+  ],
+  "moduleNodes": [
+    "usmle/step1",
+    "usmle/step1/reproductive"
+  ],
+  "questionType": "interpretation",
+  "difficulty": "hard",
+  "stem": "A postpartum patient has milk within the mammary alveoli. Suckling produces an appropriate rise in circulating oxytocin, but the surrounding myoepithelial cells fail to contract. Which of the following steps is most directly impaired?",
+  "options": [
+    {
+      "label": "A",
+      "text": "Production of oxytocin within hypothalamic neurons",
+      "isCorrect": false,
+      "explanation": "The observed oxytocin rise argues against deficient hormone production as the most direct explanation.",
+      "misconception": "Attributes a target-cell defect to synthesis despite the measured oxytocin rise."
+    },
+    {
+      "label": "B",
+      "text": "Storage of oxytocin within posterior-pituitary terminals",
+      "isCorrect": false,
+      "explanation": "An appropriate stimulated circulating response makes terminal storage failure a less direct explanation than the observed target-cell defect.",
+      "misconception": "Places the failure in terminal storage despite an appropriate circulating response."
+    },
+    {
+      "label": "C",
+      "text": "Expulsion of milk from glandular storage spaces",
+      "isCorrect": true,
+      "explanation": "Oxytocin normally drives myoepithelial contraction, which ejects milk from alveoli. The reported lack of contraction localizes the failure to that response.",
+      "misconception": "No misconception: failed myoepithelial contraction impairs milk ejection."
+    },
+    {
+      "label": "D",
+      "text": "Release of oxytocin after the suckling stimulus",
+      "isCorrect": false,
+      "explanation": "The hormone concentration rises after suckling, so the release step occurred. The abnormal observation follows it.",
+      "misconception": "Attributes the defect to release even though stimulated oxytocin rises."
+    },
+    {
+      "label": "E",
+      "text": "Delivery of circulating oxytocin to the breast",
+      "isCorrect": false,
+      "explanation": "The stem identifies a target-cell contraction defect rather than impaired vascular delivery. Circulating hormone alone does not ensure an effective cellular response.",
+      "misconception": "Substitutes an unreported delivery defect for the observed contraction failure."
+    }
+  ],
+  "context": "Learning objective: Localize a failed endocrine reflex from preserved upstream measurements. Oxytocin release and milk availability can be intact while myoepithelial contraction, and therefore milk ejection, fails.\n\nOxytocin normally drives myoepithelial contraction, which ejects milk from alveoli. The reported lack of contraction localizes the failure to that response.",
+  "cite": "openstax-anatomy-physiology#re-oxytocin-milk-ejection",
+  "publicUsmle": {
+    "schemaVersion": 1,
+    "origin": "generated",
+    "itemText": {
+      "licence": "CC-BY-4.0",
+      "attribution": "MD3 contributors"
+    },
+    "evidence": {
+      "kind": "passage",
+      "sourceId": "openstax-anatomy-physiology",
+      "passageId": "re-oxytocin-milk-ejection",
+      "licence": {
+        "cls": "foss",
+        "id": "cc-by-4.0"
+      }
+    }
+  }
+}

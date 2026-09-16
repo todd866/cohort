@@ -1,0 +1,267 @@
+{
+  "schemaVersion": 1,
+  "id": "gamsat:s3:genetics-pedigree",
+  "section": "s3",
+  "title": "Genetics and Pedigree Analysis",
+  "domain": "genetics-pedigree",
+  "passage": "A genetic counselor is investigating the inheritance pattern of a rare autosomal trait in a three-generation family. The pedigree below shows affected individuals (shaded symbols) and unaffected individuals (unshaded symbols). Squares represent males, circles represent females.\n\n```\nGeneration I:     ○ ━━━ ■\n                  1       2\n\nGeneration II:    ■   ○   ○━━━○   ■━━━○\n                  1   2   3   4   5   6\n\nGeneration III:   ○  ■  ○  ■  ○  ○  ■\n                  1  2  3  4  5  6  7\n```\n\nLegend:\n- Individual I-2 is affected (shaded square)\n- Individuals II-1, II-4, II-5 are affected\n- Individuals III-2, III-4, III-7 are affected\n- All other individuals are unaffected\n\nThe genetic counselor collects DNA samples and identifies a single-nucleotide polymorphism (SNP) that perfectly co-segregates with the trait. The SNP has two alleles: A and T. Genotyping reveals:\n\n- Individual I-1: TT\n- Individual I-2: AT\n- Individual II-1: AT\n- Individual II-2: TT\n- Individual II-3: TT\n- Individual II-4: AT\n- Individual II-5: AT\n- Individual II-6: TT\n- Individual III-1: TT\n- Individual III-2: AT\n- Individual III-3: TT\n- Individual III-4: AT\n- Individual III-5: TT\n- Individual III-6: TT\n- Individual III-7: AT\n\nFurther investigation reveals that the trait shows complete penetrance but variable expressivity. Affected individuals display symptoms ranging from mild (slight developmental delay) to severe (significant intellectual disability and seizures). Individual II-4 has mild symptoms, while Individual II-5 has severe symptoms, despite both being affected.\n\nA subsequent biochemical analysis reveals that the A allele produces a non-functional enzyme involved in neurotransmitter metabolism. Individuals with the AT genotype have approximately 50% normal enzyme activity.",
+  "questions": [
+    {
+      "id": "gamsat:s3:genetics-pedigree:q1",
+      "moves": [
+        "s3-pedigree-inheritance"
+      ],
+      "stem": "What is the most likely mode of inheritance for this trait?",
+      "options": [
+        {
+          "label": "A",
+          "text": "Autosomal recessive",
+          "isCorrect": false
+        },
+        {
+          "label": "B",
+          "text": "Autosomal dominant",
+          "isCorrect": true
+        },
+        {
+          "label": "C",
+          "text": "X-linked recessive",
+          "isCorrect": false
+        },
+        {
+          "label": "D",
+          "text": "X-linked dominant",
+          "isCorrect": false
+        }
+      ],
+      "explanation": "Affected individuals appear in every generation without skipping, and heterozygotes (AT) are affected — both hallmarks of dominant inheritance. Males and females are equally affected, ruling out X-linked patterns. Autosomal recessive would require homozygosity for affected status, contradicting the AT genotype of affected individuals. The two quickest pedigree checks: affected in every generation suggests dominant, and male-to-male transmission rules out X-linkage.",
+      "difficulty": "medium"
+    },
+    {
+      "id": "gamsat:s3:genetics-pedigree:q2",
+      "moves": [
+        "s3-genetic-probability"
+      ],
+      "stem": "If Individual III-1 (unaffected female, TT) has children with an affected male (AT genotype), what is the probability that their first child will be affected?",
+      "options": [
+        {
+          "label": "A",
+          "text": "0%, given the stated parental genotypes",
+          "isCorrect": false
+        },
+        {
+          "label": "B",
+          "text": "25%, or a one-in-four risk per child",
+          "isCorrect": false
+        },
+        {
+          "label": "C",
+          "text": "50%, or a one-in-two risk per child",
+          "isCorrect": true
+        },
+        {
+          "label": "D",
+          "text": "100%, all of their children affected",
+          "isCorrect": false
+        }
+      ],
+      "explanation": "TT x AT gives 50% AT (affected) and 50% TT (unaffected) offspring. The unaffected mother can only contribute T, while the affected father contributes A or T with equal probability, making each child's risk exactly 50%. In autosomal dominant conditions, an affected heterozygote crossed with an unaffected homozygote always gives 50% affected offspring — this is the most common cross in genetic counselling.",
+      "difficulty": "medium"
+    },
+    {
+      "id": "gamsat:s3:genetics-pedigree:q3",
+      "moves": [
+        "s3-mechanism-inference"
+      ],
+      "stem": "The observation that Individual II-4 has mild symptoms while Individual II-5 has severe symptoms, despite both being AT genotype, demonstrates:",
+      "options": [
+        {
+          "label": "A",
+          "text": "Incomplete penetrance",
+          "isCorrect": false
+        },
+        {
+          "label": "B",
+          "text": "Variable expressivity",
+          "isCorrect": true
+        },
+        {
+          "label": "C",
+          "text": "Genetic heterogeneity",
+          "isCorrect": false
+        },
+        {
+          "label": "D",
+          "text": "Genomic imprinting",
+          "isCorrect": false
+        }
+      ],
+      "explanation": "Both individuals are AT and both show symptoms (complete penetrance), but severity ranges from mild to severe — this is variable expressivity by definition. Incomplete penetrance would mean some AT individuals show no symptoms at all, which contradicts the passage stating complete penetrance. Penetrance is all-or-nothing (affected or not), while expressivity is a spectrum (how severely affected). The same disease can have complete penetrance but highly variable expressivity.",
+      "difficulty": "medium"
+    },
+    {
+      "id": "gamsat:s3:genetics-pedigree:q4",
+      "moves": [
+        "s3-mechanism-inference",
+        "shared-data-vs-claim"
+      ],
+      "stem": "Based on the enzyme activity data, why do AT heterozygotes display symptoms despite having 50% enzyme activity?",
+      "options": [
+        {
+          "label": "A",
+          "text": "The T allele produces no functional enzyme at all (null allele)",
+          "isCorrect": false
+        },
+        {
+          "label": "B",
+          "text": "50% enzyme activity is insufficient for normal function (haploinsufficiency)",
+          "isCorrect": true
+        },
+        {
+          "label": "C",
+          "text": "The A allele actively blocks the normal gene product (dominant-negative)",
+          "isCorrect": false
+        },
+        {
+          "label": "D",
+          "text": "The enzyme assay is systematically inaccurate (measurement error)",
+          "isCorrect": false
+        }
+      ],
+      "explanation": "Haploinsufficiency occurs when one functional gene copy cannot meet the cell's metabolic demand — here, 50% enzyme activity is insufficient for normal neurotransmitter metabolism. The T allele produces functional enzyme (so it is not non-functional), and a dominant-negative protein would actively interfere with the normal allele's product, which is not described here. Haploinsufficiency explains why many autosomal dominant diseases involve enzymes or structural proteins where dosage matters — 50% activity is enough for some pathways but not others.",
+      "difficulty": "medium"
+    },
+    {
+      "id": "gamsat:s3:genetics-pedigree:q5",
+      "moves": [
+        "s3-genetic-probability"
+      ],
+      "stem": "If Individual II-4 (AT, affected) and Individual II-6 (TT, unaffected) have another child, what is the probability the child will be AT?",
+      "options": [
+        {
+          "label": "A",
+          "text": "0%, given the stated parental genotypes",
+          "isCorrect": false
+        },
+        {
+          "label": "B",
+          "text": "25%, or a one-in-four risk per child",
+          "isCorrect": false
+        },
+        {
+          "label": "C",
+          "text": "50%, or a one-in-two risk per child",
+          "isCorrect": true
+        },
+        {
+          "label": "D",
+          "text": "100%, all of their children affected",
+          "isCorrect": false
+        }
+      ],
+      "explanation": "AT x TT produces 50% AT and 50% TT regardless of how many children have already been born. The affected parent passes A or T with equal probability, and the unaffected parent can only pass T, giving each pregnancy an independent 50% chance. Previous children's outcomes do not change future probabilities — each conception is independent, like flipping a coin.",
+      "difficulty": "medium"
+    },
+    {
+      "id": "gamsat:s3:genetics-pedigree:q6",
+      "moves": [
+        "shared-data-vs-claim",
+        "s3-pedigree-inheritance"
+      ],
+      "stem": "Individual I-1 is unaffected and has genotype TT. Individual I-2 is affected with genotype AT. Their children include both affected (AT) and unaffected (TT) individuals. What can be concluded about the A allele?",
+      "options": [
+        {
+          "label": "A",
+          "text": "It arose as a de novo mutation in I-2",
+          "isCorrect": false
+        },
+        {
+          "label": "B",
+          "text": "It must have been inherited from one of Individual I-2's parents",
+          "isCorrect": false
+        },
+        {
+          "label": "C",
+          "text": "It demonstrates incomplete dominance",
+          "isCorrect": false
+        },
+        {
+          "label": "D",
+          "text": "Either A or B could be true based on available information",
+          "isCorrect": true
+        }
+      ],
+      "explanation": "Without data on I-2's parents, the A allele could be inherited from a previous generation or could be a de novo mutation — both are genetically plausible and indistinguishable from the available pedigree. Incomplete dominance is incorrect because AT individuals are fully affected (not intermediate), showing complete dominance. De novo mutations are an important consideration in autosomal dominant conditions — approximately 50% of cases of conditions like achondroplasia arise from new mutations rather than inheritance.",
+      "difficulty": "medium"
+    },
+    {
+      "id": "gamsat:s3:genetics-pedigree:q7",
+      "moves": [
+        "s3-genetic-probability",
+        "s3-pedigree-inheritance"
+      ],
+      "stem": "If a genetic test becomes available for prenatal screening, which individuals in Generation III would be candidates for testing their offspring?",
+      "options": [
+        {
+          "label": "A",
+          "text": "Only the affected individuals (III-2, III-4, III-7)",
+          "isCorrect": false
+        },
+        {
+          "label": "B",
+          "text": "Only unaffected individuals who have affected parents",
+          "isCorrect": false
+        },
+        {
+          "label": "C",
+          "text": "Generation III individuals, whether affected or not",
+          "isCorrect": true
+        },
+        {
+          "label": "D",
+          "text": "No testing is required, as the trait is fully penetrant",
+          "isCorrect": false
+        }
+      ],
+      "explanation": "All Generation III individuals are candidates because affected members have a 50% transmission risk, and unaffected members could partner with unknown carriers or encounter de novo mutations. Testing only affected individuals ignores partner risk, and complete penetrance does not eliminate the need for counselling about transmission and variable severity. In autosomal dominant conditions, genetic counselling extends to the entire family — even unaffected members carry important information for reproductive planning.",
+      "difficulty": "medium"
+    },
+    {
+      "id": "gamsat:s3:genetics-pedigree:q8",
+      "moves": [
+        "s3-genetic-probability",
+        "s3-pedigree-inheritance"
+      ],
+      "stem": "Based on the pedigree and genotyping data, what is the probability that Individual III-5 (unaffected female, TT genotype) is a carrier?",
+      "options": [
+        {
+          "label": "A",
+          "text": "0%, given the stated parental genotypes",
+          "isCorrect": true
+        },
+        {
+          "label": "B",
+          "text": "25%, or a one-in-four risk per child",
+          "isCorrect": false
+        },
+        {
+          "label": "C",
+          "text": "50%, or a one-in-two risk per child",
+          "isCorrect": false
+        },
+        {
+          "label": "D",
+          "text": "Cannot be determined from what is given",
+          "isCorrect": false
+        }
+      ],
+      "explanation": "III-5 has genotype TT (confirmed by testing), meaning she has zero copies of the A allele and 0% chance of being a carrier. In autosomal dominant inheritance with complete penetrance, any individual with the A allele (AT) is affected — there are no unaffected carriers, unlike autosomal recessive conditions where heterozygotes are phenotypically normal. The carrier concept applies primarily to recessive conditions; in dominant conditions with complete penetrance, genotype directly determines phenotype.",
+      "difficulty": "medium"
+    }
+  ],
+  "licence": {
+    "id": "CC-BY-4.0",
+    "attribution": "MD3 contributors"
+  },
+  "origin": "authored"
+}

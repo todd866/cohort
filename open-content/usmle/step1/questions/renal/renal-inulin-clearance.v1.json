@@ -1,0 +1,86 @@
+{
+  "id": "bank:usmle-step1:renal-inulin-clearance:v1",
+  "rotation": "usmle-step1-open",
+  "topics": [
+    "inulin",
+    "creatinine",
+    "GFR measurement"
+  ],
+  "moduleNodes": [
+    "usmle/step1",
+    "usmle/step1/renal"
+  ],
+  "questionType": "mechanism",
+  "difficulty": "medium",
+  "stem": "A researcher measures glomerular filtration rate in a healthy 27-year-old volunteer by infusing inulin and tracking its urinary appearance.\n\nInulin is the reference marker for this measurement because it has which of the following properties?",
+  "options": [
+    {
+      "label": "A",
+      "text": "It binds plasma proteins, restricting it to the vascular compartment",
+      "isCorrect": false,
+      "misconception": "Protein binding would prevent filtration entirely, the opposite of the required behavior.",
+      "explanation": "A GFR marker must be freely filtered, so it cannot be protein-bound; inulin filters freely and then undergoes no tubular handling."
+    },
+    {
+      "label": "B",
+      "text": "It is filtered and then fully reabsorbed in the proximal tubule",
+      "isCorrect": false,
+      "misconception": "A substance returned to the blood cannot report filtration in the urine.",
+      "explanation": "Full reabsorption (as with glucose) removes the marker from the urine; inulin works precisely because none of its filtered load is recovered or added to."
+    },
+    {
+      "label": "C",
+      "text": "It is secreted by the tubules in proportion to renal blood flow",
+      "isCorrect": false,
+      "misconception": "A secretion-based flow marker is being confused with a filtration marker.",
+      "explanation": "Tubular secretion would add marker beyond the filtered amount, breaking the proportionality with GFR; inulin is not secreted."
+    },
+    {
+      "label": "D",
+      "text": "It is produced by muscle metabolism at a constant daily rate",
+      "isCorrect": false,
+      "misconception": "Creatinine's origin is being attributed to inulin.",
+      "explanation": "Inulin is an infused plant polysaccharide; the muscle-derived molecule is creatinine, the convenient clinical estimate, which unlike inulin is slightly secreted."
+    },
+    {
+      "label": "E",
+      "text": "It is filtered freely but neither reabsorbed nor secreted by the nephron",
+      "isCorrect": true,
+      "misconception": "None; zero tubular handling makes urinary appearance directly proportional to filtration.",
+      "explanation": "Inulin is a plant polysaccharide that is neither reabsorbed nor secreted by the kidney, so its appearance in the urine is directly proportional to the rate at which it is filtered by the renal corpuscle."
+    }
+  ],
+  "context": "Learning objective: choose a GFR marker. Inulin is freely filtered and neither reabsorbed nor secreted, so urinary appearance ∝ filtration; creatinine (muscle-derived) is the practical estimate but is slightly secreted.",
+  "cite": "openstax-anatomy-physiology#renal-inulin-clearance",
+  "publicUsmle": {
+    "schemaVersion": 1,
+    "origin": "generated",
+    "itemText": {
+      "licence": "CC-BY-4.0",
+      "attribution": "MD3 contributors"
+    },
+    "evidence": {
+      "kind": "passage",
+      "sourceId": "openstax-anatomy-physiology",
+      "passageId": "renal-inulin-clearance",
+      "licence": {
+        "cls": "foss",
+        "id": "cc-by-4.0"
+      }
+    },
+    "media": {
+      "kind": "asset",
+      "assetId": "renal-countercurrent-v1",
+      "job": "pathway",
+      "showWhen": "after-reveal",
+      "licence": {
+        "cls": "foss",
+        "id": "cc-by-4.0"
+      },
+      "attribution": "MD3 contributors",
+      "contentHash": "sha256:9892ba542b07c7ed1808ccee22a74ddedbe3118c68fd4352cad327a23e19a13b"
+    }
+  },
+  "imageUrl": "/figures/usmle/step1/renal-countercurrent-v1.svg",
+  "imageCaption": "Countercurrent multiplier, inulin=GFR, fluid compartments, EPO, micturition."
+}

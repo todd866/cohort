@@ -1,0 +1,73 @@
+{
+  "id": "bank:usmle-step1:cardiovascular-poiseuille-r1:v1",
+  "rotation": "usmle-step1-open",
+  "ladderId": "poiseuille-radius",
+  "topics": [
+    "Poiseuille's law",
+    "vascular resistance",
+    "ladder:poiseuille-radius"
+  ],
+  "moduleNodes": [
+    "usmle/step1",
+    "usmle/step1/cardiovascular"
+  ],
+  "questionType": "calculation",
+  "difficulty": "easy",
+  "stem": "According to Poiseuille's law, blood flow through a vessel is proportional to the vessel radius raised to which power?",
+  "options": [
+    {
+      "label": "A",
+      "text": "First power (linear)",
+      "isCorrect": false,
+      "misconception": "Flow is being assumed to vary directly with radius.",
+      "explanation": "A linear dependence would mean halving radius halves flow; Poiseuille's law uses a much stronger radius dependence."
+    },
+    {
+      "label": "B",
+      "text": "Second power (squared)",
+      "isCorrect": false,
+      "misconception": "A squared relationship is being applied instead of the fourth-power term.",
+      "explanation": "Radius squared appears in cross-sectional area, but Poiseuille's law raises radius to the fourth power in the full flow equation."
+    },
+    {
+      "label": "C",
+      "text": "Third power (cubed)",
+      "isCorrect": false,
+      "misconception": "A cubic exponent is being chosen.",
+      "explanation": "The radius term in Poiseuille's law is r⁴, not r³; small radius changes therefore have outsized effects on flow."
+    },
+    {
+      "label": "D",
+      "text": "Fourth power",
+      "isCorrect": true,
+      "misconception": "None; flow ∝ r⁴ in Poiseuille's law.",
+      "explanation": "Poiseuille's equation includes r⁴ in the numerator, so even modest arteriolar constriction dramatically reduces flow."
+    },
+    {
+      "label": "E",
+      "text": "Fifth power",
+      "isCorrect": false,
+      "misconception": "An exponent one higher than the law specifies is being used.",
+      "explanation": "The standard Poiseuille relationship uses r⁴; a fifth power would overstate the effect of radius on flow."
+    }
+  ],
+  "context": "Learning objective: recall the radius exponent in Poiseuille's law. Flow is proportional to r⁴ when viscosity, length, and pressure gradient are held constant.",
+  "cite": "openstax-anatomy-physiology#vessels-poiseuille-radius",
+  "publicUsmle": {
+    "schemaVersion": 1,
+    "origin": "generated",
+    "itemText": {
+      "licence": "CC-BY-4.0",
+      "attribution": "MD3 contributors"
+    },
+    "evidence": {
+      "kind": "passage",
+      "sourceId": "openstax-anatomy-physiology",
+      "passageId": "vessels-poiseuille-radius",
+      "licence": {
+        "cls": "foss",
+        "id": "cc-by-4.0"
+      }
+    }
+  }
+}

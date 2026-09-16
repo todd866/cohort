@@ -1,0 +1,36 @@
+{
+  "schemaVersion": 1,
+  "figureId": "developmental-delay-versus-regression",
+  "sourceFacts": [
+    "Developmental delay concerns later acquisition of expected skills.",
+    "Regression is loss of a previously acquired skill and is distinguished by the child's prior abilities."
+  ],
+  "clinicalSources": [
+    {
+      "title": "CDC: Developmental Monitoring and Screening",
+      "url": "https://www.cdc.gov/act-early/about/developmental-monitoring-and-screening.html"
+    },
+    {
+      "title": "CDC: Social and language regression study",
+      "url": "https://stacks.cdc.gov/view/cdc/170645"
+    }
+  ],
+  "prompt": "Create a polished original medical teaching illustration in landscape 3:2 format. Use the attached MD3 original solely as a style reference: warm watercolour/gouache on an ivory paper background, delicate ink contours, calm navy labels, muted ochre/peach/teal colours, generous whitespace and clear flat anatomical shapes. Anatomical clarity before decoration. Never photorealistic skin, glossy blood, wet flesh, fat lobules, scary faces, chunky 3D tissue blocks, or a fake scan. Only exact requested labels, clean legible short text. Footer 'Educational schematic'. No watermark, logos or attribution in the pixels. Compose an entirely new subject from the clinical specification, not the scalp content in the reference.\n\nTwo rows of a simple conceptual skill trajectory with warm hand-painted child motif, no medical device. Title 'Delay or loss of a skill?'. Upper row heading 'Delay': three small speech bubbles progressing left to right from empty, empty, to the word 'ball'; small time arrow below; sentence 'A skill is acquired later'. Lower row 'Regression': three small speech bubbles from 'ball', 'ball', to empty fading outline; sentence 'A previously acquired skill is lost'. Use same neutral child icon beside each row; no distressed face. Bottom 'Ask what the child could do before'. No ages, test scores, normal-range claim, autism label or predicted outcome. The empty bubble means example of absent word, not inability to communicate by other means.",
+  "generation": {
+    "tool": "built-in image_gen",
+    "model": null,
+    "referenceAssetIds": [],
+    "externalReferenceImages": [],
+    "archivedReferenceAssets": [
+      {
+        "id": "neonatal-scalp-comparison",
+        "sha256": "96be407e6f065a3a53d1302050758c029a49cf875ae39f2245c87d0cae34e478",
+        "role": "style-only",
+        "reason": "Withheld pending anatomical scaffold review"
+      }
+    ]
+  },
+  "specificationFiles": [
+    "scaffolds/developmental-delay-versus-regression.json"
+  ]
+}

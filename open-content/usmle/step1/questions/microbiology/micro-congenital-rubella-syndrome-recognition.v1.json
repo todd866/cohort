@@ -1,0 +1,72 @@
+{
+  "id": "bank:usmle-step1:micro-congenital-rubella-syndrome-recognition:v1",
+  "rotation": "usmle-step1-open",
+  "topics": [
+    "rubella",
+    "congenital rubella syndrome",
+    "clinical recognition"
+  ],
+  "moduleNodes": [
+    "usmle/step1",
+    "usmle/step1/microbiology"
+  ],
+  "questionType": "diagnosis",
+  "difficulty": "medium",
+  "stem": "A newborn has deafness, an eye abnormality, and congenital heart disease. Which of the following diagnoses best unifies this combination?",
+  "options": [
+    {
+      "label": "A",
+      "text": "Congenital cytomegalovirus infection",
+      "isCorrect": false,
+      "misconception": "Congenital infection is recognized broadly, but the exact CDC feature cluster is not mapped to its named syndrome.",
+      "explanation": "The cited passage groups deafness, eye abnormalities, and congenital heart disease under congenital rubella syndrome, not cytomegalovirus infection."
+    },
+    {
+      "label": "B",
+      "text": "Congenital toxoplasmosis",
+      "isCorrect": false,
+      "misconception": "The congenital presentation is noticed without using all three source-defined features together.",
+      "explanation": "The evidence specifically identifies the combined hearing, eye, and congenital heart findings as features of congenital rubella syndrome."
+    },
+    {
+      "label": "C",
+      "text": "Congenital syphilis",
+      "isCorrect": false,
+      "misconception": "A congenital infection label is selected while the passage's full syndrome pattern is underweighted.",
+      "explanation": "The source-bounded triad in this stem is attached to congenital rubella syndrome rather than congenital syphilis."
+    },
+    {
+      "label": "D",
+      "text": "Neonatal herpes simplex infection",
+      "isCorrect": false,
+      "misconception": "A neonatal infection is chosen without matching the citation's linked auditory, ocular, and cardiac findings.",
+      "explanation": "The CDC passage links this three-system combination to congenital rubella syndrome, not neonatal herpes simplex infection."
+    },
+    {
+      "label": "E",
+      "text": "Congenital rubella syndrome",
+      "isCorrect": true,
+      "misconception": "None; the auditory, ocular, and cardiac findings are integrated into the cited syndrome.",
+      "explanation": "CDC lists deafness, eye abnormalities, and congenital heart disease as features of congenital rubella syndrome. The three findings together provide the recognition pattern."
+    }
+  ],
+  "context": "Learning objective: recognize congenital rubella syndrome from a three-system pattern. Deafness plus an eye abnormality plus congenital heart disease is the CDC feature cluster; the payoff is integrating the findings instead of treating each defect separately.",
+  "cite": "cdc-pink-book-rubella#rubella-crs-features",
+  "publicUsmle": {
+    "schemaVersion": 1,
+    "origin": "generated",
+    "itemText": {
+      "licence": "CC-BY-4.0",
+      "attribution": "MD3 contributors"
+    },
+    "evidence": {
+      "kind": "passage",
+      "sourceId": "cdc-pink-book-rubella",
+      "passageId": "rubella-crs-features",
+      "licence": {
+        "cls": "foss",
+        "id": "us-gov"
+      }
+    }
+  }
+}

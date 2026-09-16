@@ -1,0 +1,32 @@
+{
+  "schemaVersion": 1,
+  "figureId": "x-linked-recessive-carrier-cross",
+  "sourceFacts": [
+    "An XY child inherits their X chromosome from their mother.",
+    "With a carrier mother and unaffected father, an X-linked recessive allele may produce an affected son or a carrier daughter."
+  ],
+  "clinicalSources": [
+    {
+      "title": "MedlinePlus Genetics: Inheritance patterns",
+      "url": "https://medlineplus.gov/genetics/understanding/inheritance/inheritancepatterns/"
+    }
+  ],
+  "prompt": "Create a polished original medical teaching illustration in landscape 3:2 format. Use the attached MD3 original solely as a style reference: warm watercolour/gouache on an ivory paper background, delicate ink contours, calm navy labels, muted ochre/peach/teal colours, generous whitespace and clear flat anatomical shapes. Anatomical clarity before decoration. Never photorealistic skin, glossy blood, wet flesh, fat lobules, scary faces, chunky 3D tissue blocks, or a fake scan. Only exact requested labels, clean legible short text. Footer 'Educational schematic'. No watermark, logos or attribution in the pixels. Compose an entirely new subject from the clinical specification, not the scalp content in the reference.\n\nPrecise hand-painted 2x2 Punnett square. Title 'X-linked recessive inheritance'. Subtitle 'Carrier mother \u00d7 unaffected father'. Use genotype notation X\u1d2c and X\u1d43 (superscript A,a) and Y consistently. Column headers paternal gametes 'X\u1d2c' and 'Y'. Row headers maternal gametes 'X\u1d2c' and 'X\u1d43'. Upper-left cell 'X\u1d2cX\u1d2c' caption 'Non-carrier daughter'. Upper-right 'X\u1d2cY' caption 'Unaffected son'. Lower-left 'X\u1d2cX\u1d43' caption 'Carrier daughter'. Lower-right 'X\u1d43Y' caption 'Affected son'. Tint only carrier cell pale teal and affected cell pale ochre. Legend 'X\u1d43 carries the recessive variant'. Bottom 'Each child inherits one maternal X'. No claim carriers can never have symptoms, no additional chromosome copies, no gender stereotypes.",
+  "generation": {
+    "tool": "built-in image_gen",
+    "model": null,
+    "referenceAssetIds": [],
+    "externalReferenceImages": [],
+    "archivedReferenceAssets": [
+      {
+        "id": "neonatal-scalp-comparison",
+        "sha256": "96be407e6f065a3a53d1302050758c029a49cf875ae39f2245c87d0cae34e478",
+        "role": "style-only",
+        "reason": "Withheld pending anatomical scaffold review"
+      }
+    ]
+  },
+  "specificationFiles": [
+    "scaffolds/x-linked-recessive-carrier-cross.json"
+  ]
+}

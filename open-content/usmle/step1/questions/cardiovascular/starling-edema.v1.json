@@ -1,0 +1,87 @@
+{
+  "id": "bank:usmle-step1:cardiovascular-starling-edema:v1",
+  "rotation": "usmle-step1-open",
+  "ladderId": "nephrotic-syndrome",
+  "topics": [
+    "capillary exchange",
+    "edema",
+    "ladder:nephrotic-syndrome"
+  ],
+  "moduleNodes": [
+    "usmle/step1",
+    "usmle/step1/cardiovascular"
+  ],
+  "questionType": "interpretation",
+  "difficulty": "hard",
+  "stem": "A 45-year-old man with nephrotic syndrome has a markedly decreased plasma albumin concentration and develops generalized edema.\n\nWhich of the following changes in capillary exchange forces most directly explains the accumulation of interstitial fluid in this patient?",
+  "options": [
+    {
+      "label": "A",
+      "text": "Decreased blood colloid osmotic pressure reduces venous-end reabsorption",
+      "isCorrect": true,
+      "misconception": "None; albumin loss lowers the osmotic force that pulls fluid back into capillaries.",
+      "explanation": "Net reabsorption occurs near the venous end because blood colloid osmotic pressure (BCOP) exceeds capillary hydrostatic pressure there; hypoalbuminemia lowers BCOP, so reabsorption fails and fluid accumulates."
+    },
+    {
+      "label": "B",
+      "text": "Increased interstitial hydrostatic pressure opposes filtration",
+      "isCorrect": false,
+      "misconception": "A force that limits edema is being named as its cause.",
+      "explanation": "Rising interstitial hydrostatic pressure opposes further filtration and would limit, not cause, fluid accumulation."
+    },
+    {
+      "label": "C",
+      "text": "Increased capillary hydrostatic pressure increases filtration at the arterial end",
+      "isCorrect": false,
+      "misconception": "The hydrostatic limb is being blamed in a disorder of the osmotic limb.",
+      "explanation": "Nephrotic albumin loss does not raise capillary hydrostatic pressure; the driving change is the fall in colloid osmotic pressure."
+    },
+    {
+      "label": "D",
+      "text": "Decreased capillary permeability limits protein return",
+      "isCorrect": false,
+      "misconception": "The renal protein loss is being attributed to capillary walls.",
+      "explanation": "The protein is lost through the kidney, not the peripheral capillaries; capillary permeability is not decreased, and the edema reflects low plasma oncotic pressure."
+    },
+    {
+      "label": "E",
+      "text": "Increased lymphatic drainage removes excess fluid",
+      "isCorrect": false,
+      "misconception": "A compensatory drainage pathway is being mistaken for the cause of accumulation.",
+      "explanation": "Lymphatic drainage removes unreabsorbed fluid and would mitigate edema; the accumulation occurs because reduced oncotic pressure overwhelms that drainage."
+    }
+  ],
+  "context": "Learning objective: apply Starling forces to edema. Filtration occurs where hydrostatic pressure exceeds colloid osmotic pressure; reabsorption occurs where osmotic pressure dominates, so hypoalbuminemia causes edema.",
+  "cite": "openstax-anatomy-physiology#vessels-bcop-reabsorption",
+  "publicUsmle": {
+    "schemaVersion": 1,
+    "origin": "generated",
+    "itemText": {
+      "licence": "CC-BY-4.0",
+      "attribution": "MD3 contributors"
+    },
+    "evidence": {
+      "kind": "passage",
+      "sourceId": "openstax-anatomy-physiology",
+      "passageId": "vessels-bcop-reabsorption",
+      "licence": {
+        "cls": "foss",
+        "id": "cc-by-4.0"
+      }
+    },
+    "media": {
+      "kind": "asset",
+      "assetId": "hemodynamics-v1",
+      "job": "pathway",
+      "showWhen": "after-reveal",
+      "licence": {
+        "cls": "foss",
+        "id": "cc-by-4.0"
+      },
+      "attribution": "MD3 contributors",
+      "contentHash": "sha256:bcd08bd5837d7c8b145ebd1e66511a58c8d05bca8c05a923bc2bebccc478de08"
+    }
+  },
+  "imageUrl": "/figures/usmle/step1/hemodynamics-v1.svg",
+  "imageCaption": "Poiseuille r^4, MAP, venous capacitance, Starling edema, coronary origins."
+}

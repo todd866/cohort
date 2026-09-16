@@ -1,0 +1,72 @@
+{
+  "id": "bank:usmle-step1:micro-vaccine-inactivated-response-profile:v1",
+  "rotation": "usmle-step1-open",
+  "topics": [
+    "vaccines",
+    "inactivated vaccines",
+    "humoral immunity"
+  ],
+  "moduleNodes": [
+    "usmle/step1",
+    "usmle/step1/microbiology"
+  ],
+  "questionType": "mechanism",
+  "difficulty": "easy",
+  "stem": "A vaccine contains an inactivated organism. Which of the following immune-response profiles is most characteristic of this vaccine class?",
+  "options": [
+    {
+      "label": "A",
+      "text": "Sustained organism replication with persistent antigen production",
+      "isCorrect": false,
+      "misconception": "Assigns a replicating-organism mechanism to a preparation defined here as inactivated.",
+      "explanation": "An inactivated preparation does not match a profile based on sustained organism replication; its cited adaptive response is predominantly antibody production."
+    },
+    {
+      "label": "B",
+      "text": "Mostly cellular immunity with little antibody production",
+      "isCorrect": false,
+      "misconception": "Reverses the relative humoral and cellular emphasis described for an inactivated vaccine.",
+      "explanation": "The CDC passage places antibody production, rather than cellular immunity, at the center of the inactivated-vaccine response."
+    },
+    {
+      "label": "C",
+      "text": "Immediate protection from transferred donor antibodies",
+      "isCorrect": false,
+      "misconception": "Confuses an antigen-containing vaccine with direct transfer of an existing antibody pool.",
+      "explanation": "The passage describes the recipient producing a predominantly antibody response to inactivated antigen; it does not describe transferred donor antibody."
+    },
+    {
+      "label": "D",
+      "text": "Mostly antibody production with little cellular immunity",
+      "isCorrect": true,
+      "misconception": "None; this is the response profile the CDC assigns to an inactivated vaccine.",
+      "explanation": "The cited passage describes the inactivated-vaccine response as mostly antibody production with little or no cellular immunity."
+    },
+    {
+      "label": "E",
+      "text": "Innate inflammation without an adaptive antibody response",
+      "isCorrect": false,
+      "misconception": "Overlooks the antibody response explicitly described in the source passage.",
+      "explanation": "The CDC passage specifically states that antibody production makes up most of the response, so absence of an adaptive antibody response is incompatible."
+    }
+  ],
+  "context": "Learning objective: recognize the predominantly humoral profile of an inactivated vaccine. The high-yield contrast is not simply living versus nonliving antigen; it is that the cited inactivated-vaccine response is mostly antibody production, with little or no cellular immunity.",
+  "cite": "cdc-pink-book-vaccine-principles#inactivated-response",
+  "publicUsmle": {
+    "schemaVersion": 1,
+    "origin": "generated",
+    "itemText": {
+      "licence": "CC-BY-4.0",
+      "attribution": "MD3 contributors"
+    },
+    "evidence": {
+      "kind": "passage",
+      "sourceId": "cdc-pink-book-vaccine-principles",
+      "passageId": "inactivated-response",
+      "licence": {
+        "cls": "foss",
+        "id": "us-gov"
+      }
+    }
+  }
+}

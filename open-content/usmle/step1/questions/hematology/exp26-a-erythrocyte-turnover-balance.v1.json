@@ -1,0 +1,71 @@
+{
+  "id": "bank:usmle-step1:exp26-a-erythrocyte-turnover-balance:v1",
+  "rotation": "usmle-step1-open",
+  "topics": [
+    "hematology",
+    "hemolytic-anemia"
+  ],
+  "moduleNodes": [
+    "usmle/step1",
+    "usmle/step1/hematology"
+  ],
+  "questionType": "calculation",
+  "difficulty": "medium",
+  "stem": "A hypothetical erythrocyte pool initially contains 100 units. During a fixed observation interval, 14 units are destroyed and 9 units are replaced. Assume no bleeding, transfer, or other source of change. Which of the following interpretations best describes the pool at the end of the interval?",
+  "options": [
+    {
+      "label": "A",
+      "text": "109 units remain because destruction cannot change the pool",
+      "isCorrect": false,
+      "explanation": "This adds replacement while discarding the measured destruction. The final count requires both the gain and the loss, not the production-side contribution alone.",
+      "misconception": "Adds replacement to the starting pool while ignoring the measured destruction."
+    },
+    {
+      "label": "B",
+      "text": "95 units remain because destruction exceeds replacement",
+      "isCorrect": true,
+      "explanation": "The pool loses 14 units and gains 9, leaving a net loss of 5. Destruction exceeds replacement even though production continues during the interval.",
+      "misconception": "No misconception: The final pool includes both losses and replacement, leaving a net five-unit decrease."
+    },
+    {
+      "label": "C",
+      "text": "105 units remain because replacement exceeds destruction",
+      "isCorrect": false,
+      "explanation": "This reverses the two measured flows. Replacement is 9 units, below destruction at 14, so the pool contracts rather than growing by five units.",
+      "misconception": "Reverses the measured destruction and replacement quantities and therefore the direction of net change."
+    },
+    {
+      "label": "D",
+      "text": "100 units remain because some replacement is maintained",
+      "isCorrect": false,
+      "explanation": "Continued replacement does not guarantee balance. Its rate must equal destruction to preserve the pool, and the given replacement is insufficient in this interval.",
+      "misconception": "Assumes any continued replacement is sufficient to maintain the pool regardless of the greater loss."
+    },
+    {
+      "label": "E",
+      "text": "86 units remain because replacement cannot change the pool",
+      "isCorrect": false,
+      "explanation": "This subtracts the destroyed units but ignores the nine units replaced. Both flows contribute to the final pool under the experiment's stated accounting conditions.",
+      "misconception": "Subtracts destruction from the starting pool while ignoring the measured replacement."
+    }
+  ],
+  "context": "Learning objective: recognize hemolytic imbalance as destruction exceeding replacement. A preserved replacement process can still be inadequate when destruction is greater, producing a net loss from the pool.",
+  "cite": "nhlbi-hemolytic-anemia#hemolysis-definition",
+  "publicUsmle": {
+    "schemaVersion": 1,
+    "origin": "generated",
+    "itemText": {
+      "licence": "CC-BY-4.0",
+      "attribution": "MD3 contributors"
+    },
+    "evidence": {
+      "kind": "passage",
+      "sourceId": "nhlbi-hemolytic-anemia",
+      "passageId": "hemolysis-definition",
+      "licence": {
+        "cls": "foss",
+        "id": "us-gov"
+      }
+    }
+  }
+}

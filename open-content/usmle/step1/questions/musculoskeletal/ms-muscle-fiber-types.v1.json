@@ -1,0 +1,86 @@
+{
+  "id": "bank:usmle-step1:ms-muscle-fiber-types:v1",
+  "rotation": "usmle-step1-open",
+  "topics": [
+    "muscle fiber types",
+    "slow oxidative",
+    "fast glycolytic"
+  ],
+  "moduleNodes": [
+    "usmle/step1",
+    "usmle/step1/musculoskeletal"
+  ],
+  "questionType": "mechanism",
+  "difficulty": "medium",
+  "stem": "A 24-year-old marathon runner has leg muscles dominated by fibers that resist fatigue over hours of continuous running. These fibers produce ATP mainly by which of the following?",
+  "options": [
+    {
+      "label": "A",
+      "text": "Anaerobic glycolysis in the cytosol",
+      "isCorrect": false,
+      "misconception": "The fast glycolytic strategy is being assigned to endurance fibers.",
+      "explanation": "Fast glycolytic fibers rely on anaerobic glycolysis, which yields small amounts of ATP quickly but fatigues rapidly — the opposite of a marathoner's fibers."
+    },
+    {
+      "label": "B",
+      "text": "Aerobic respiration in mitochondria",
+      "isCorrect": true,
+      "misconception": "None; fatigue-resistant slow oxidative fibers run on aerobic respiration.",
+      "explanation": "Slow oxidative fibers contract relatively slowly and use aerobic respiration of oxygen and glucose to produce ATP, sustaining low-power contractions over long periods without fatiguing."
+    },
+    {
+      "label": "C",
+      "text": "Creatine phosphate transfer reactions",
+      "isCorrect": false,
+      "misconception": "A seconds-long reserve is being cast as an hours-long supply.",
+      "explanation": "Creatine phosphate supplies roughly the first 15 seconds of contraction; it cannot sustain hours of endurance work."
+    },
+    {
+      "label": "D",
+      "text": "Lactic acid fermentation alone",
+      "isCorrect": false,
+      "misconception": "A fatigue-promoting pathway is being assigned to fatigue-resistant fibers.",
+      "explanation": "Lactic acid production marks anaerobic metabolism during strenuous effort; endurance fibers minimize it by using oxygen."
+    },
+    {
+      "label": "E",
+      "text": "Anaerobic breakdown of phosphocreatine",
+      "isCorrect": false,
+      "misconception": "A short-burst phosphagen is being cast as the endurance source.",
+      "explanation": "Phosphocreatine is a buffer for brief high-power effort; sustained endurance ATP comes from mitochondrial aerobic respiration."
+    }
+  ],
+  "context": "Learning objective: match fiber type to metabolism. Slow oxidative (SO): slow contraction, aerobic respiration, fatigue-resistant — endurance. Fast oxidative (FO): fast, aerobic but can switch to glycolysis. Fast glycolytic (FG): fast, powerful, anaerobic, fatigue quickly — sprinting.",
+  "cite": "openstax-anatomy-physiology#ms-muscle-fiber-types",
+  "publicUsmle": {
+    "schemaVersion": 1,
+    "origin": "generated",
+    "itemText": {
+      "licence": "CC-BY-4.0",
+      "attribution": "MD3 contributors"
+    },
+    "evidence": {
+      "kind": "passage",
+      "sourceId": "openstax-anatomy-physiology",
+      "passageId": "ms-muscle-fiber-types",
+      "licence": {
+        "cls": "foss",
+        "id": "cc-by-4.0"
+      }
+    },
+    "media": {
+      "kind": "asset",
+      "assetId": "muscle-types-v1",
+      "job": "compare-table",
+      "showWhen": "after-reveal",
+      "licence": {
+        "cls": "foss",
+        "id": "cc-by-4.0"
+      },
+      "attribution": "MD3 contributors",
+      "contentHash": "sha256:c3a6a12951e251f90e3eada0058d41416355009401af4ad75b0ecd5dbf287558"
+    }
+  },
+  "imageUrl": "/figures/usmle/step1/muscle-types-v1.svg",
+  "imageCaption": "Skeletal/cardiac/smooth; fiber types; ATP sources; motor unit recruitment."
+}

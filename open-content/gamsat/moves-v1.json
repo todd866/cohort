@@ -1,0 +1,615 @@
+{
+  "schemaVersion": 1,
+  "taxonomyVersion": "v1-source-grounded",
+  "grounding": {
+    "state": "construct-mapped-pending-validation",
+    "note": "Every move maps to a skill ACER publishes, but that is a mapping to the DECLARED construct, not evidence the move discriminates on the real exam. ACER's skill list is deliberately generic (\"make comparisons\", \"analyse and interpret data\") and its free practice material is widely reported to be easier than and unrepresentative of the current exam. Practitioners who sit and teach it are better evidence of what actually separates a strong candidate from a weak one. Treat acerBasis as provenance for the CATEGORY, never as validation of the DEFINITION.",
+    "authoritativeFor": {
+      "acerBooklet": "structure only — question counts, timings, section weighting, discipline proportions, test windows. ACER administers these, so they are not contestable.",
+      "practitioners": "what actually discriminates — which moves carry the marks, how an expert executes them, which traps recur. This is where move DEFINITIONS should come from.",
+      "responseData": "the only real validator. A move that does not separate strong from weak performers is not a move, whatever any document says."
+    },
+    "validationPath": [
+      "1. inter-tagger agreement (kappa >= 0.7) — is the definition unambiguous?",
+      "2. practitioner corroboration — do people who teach the exam recognise this as a real, load-bearing move?",
+      "3. empirical discrimination — does per-move accuracy separate strong from weak candidates, and does it transfer across domains?"
+    ],
+    "source": "open-content/gamsat/exam-structure-v1.json",
+    "design": "docs/superpowers/specs/2026-08-06-gamsat-move-taxonomy-design.md"
+  },
+  "licence": {
+    "id": "CC-BY-4.0",
+    "attribution": "MD3 contributors"
+  },
+  "moves": [
+    {
+      "id": "s1-main-idea",
+      "name": "Identify the controlling claim",
+      "section": "s1",
+      "definition": "Distinguish the passage's central argument from a supporting detail, an illustrative example, or a view the author reports without endorsing.",
+      "exemplar": "A passage spends three paragraphs on Gettier's counterexample but is actually about the inadequacy of justified true belief; the counterexample is evidence, not thesis.",
+      "cues": [
+        "main idea",
+        "primarily concerned",
+        "best title",
+        "central argument"
+      ],
+      "acerBasis": {
+        "family": "understanding",
+        "skill": "global interpretations of texts"
+      }
+    },
+    {
+      "id": "s1-except-elimination",
+      "name": "Exhaustive elimination on EXCEPT",
+      "section": "s1",
+      "definition": "On EXCEPT/NOT/LEAST questions, verify each option against the text individually rather than searching for the answer. The outlier is often present in the passage but attributed elsewhere.",
+      "exemplar": "All of the following are required by Plato's definition EXCEPT — the causal condition appears in the passage, but as a later proposal, not Plato's.",
+      "cues": [
+        "EXCEPT",
+        "NOT",
+        "LEAST likely"
+      ],
+      "acerBasis": {
+        "family": "critical-thinking",
+        "skill": "make discriminations and judgments"
+      }
+    },
+    {
+      "id": "s1-necessary-vs-sufficient",
+      "name": "Necessary versus sufficient",
+      "section": "s1",
+      "definition": "Determine precisely which logical claim a counterexample defeats. A case meeting all stated conditions without the conclusion refutes sufficiency, never necessity.",
+      "exemplar": "Gettier cases satisfy justified, true, and belief yet lack knowledge — so the three conditions are necessary but not sufficient.",
+      "cues": [
+        "demonstrates that",
+        "shows that",
+        "refutes"
+      ],
+      "acerBasis": {
+        "family": "critical-thinking",
+        "skill": "make discriminations and judgments"
+      }
+    },
+    {
+      "id": "s1-unstated-assumption",
+      "name": "Surface the unstated assumption",
+      "section": "s1",
+      "definition": "Name the premise an argument requires but never states, such that denying it collapses the inference.",
+      "exemplar": "Arguing that rising literacy caused industrial growth assumes literacy preceded the growth rather than followed it.",
+      "cues": [
+        "assumes",
+        "depends on",
+        "presupposes",
+        "taken for granted"
+      ],
+      "acerBasis": {
+        "family": "plausible-reasoning",
+        "skill": "interrelating, elaborating and extending concepts and ideas"
+      }
+    },
+    {
+      "id": "s1-author-stance",
+      "name": "Locate the author's stance",
+      "section": "s1",
+      "definition": "Separate the author's own attitude from positions they merely report, and calibrate its strength — sympathetic is not the same as endorsing.",
+      "exemplar": "An author who calls a theory 'ingenious but ultimately unpersuasive' is critical, not neutral and not hostile.",
+      "cues": [
+        "attitude",
+        "tone",
+        "the author would most likely agree"
+      ],
+      "acerBasis": {
+        "family": "understanding",
+        "skill": "recognition of explicit and implicit meanings"
+      }
+    },
+    {
+      "id": "s1-register-shift",
+      "name": "Detect the register shift",
+      "section": "s1",
+      "definition": "Notice a change in diction, formality, or grandiosity that signals irony, satire, or distancing rather than literal assertion.",
+      "exemplar": "An abrupt lurch into bureaucratic euphemism inside plain prose marks the author mocking the euphemism, not adopting it.",
+      "cues": [
+        "ironic",
+        "satirical",
+        "the phrase suggests"
+      ],
+      "acerBasis": {
+        "family": "understanding",
+        "skill": "close reading of words and phrases"
+      }
+    },
+    {
+      "id": "s1-attribution-tracking",
+      "name": "Track who holds which view",
+      "section": "s1",
+      "definition": "Maintain the mapping between named positions and their holders across a passage that presents several competing views.",
+      "exemplar": "Contextualists deny fixed standards; reliabilists replace justification with process reliability. Swapping the two is the trap.",
+      "cues": [
+        "according to",
+        "which position",
+        "proponents of"
+      ],
+      "acerBasis": {
+        "family": "understanding",
+        "skill": "recognition of explicit and implicit meanings"
+      }
+    },
+    {
+      "id": "s1-scope-limit",
+      "name": "Police the scope of a claim",
+      "section": "s1",
+      "definition": "Reject options that overreach what the text supports — universal quantifiers, causal claims from correlational evidence, or predictions beyond the stated domain.",
+      "exemplar": "'Knowledge is impossible to attain' is far stronger than a passage showing one definition is incomplete.",
+      "cues": [
+        "all",
+        "never",
+        "proves",
+        "impossible"
+      ],
+      "acerBasis": {
+        "family": "critical-thinking",
+        "skill": "make discriminations and judgments"
+      }
+    },
+    {
+      "id": "s1-analogy-mapping",
+      "name": "Map an analogy's structure",
+      "section": "s1",
+      "definition": "Identify the relation an analogy transfers, and test a candidate parallel on that relation rather than on surface similarity of subject matter.",
+      "exemplar": "If capital is analogised to trust because both accumulate through repeated exchange, the parallel must share accumulation-through-exchange, not merely be economic.",
+      "cues": [
+        "analogous to",
+        "most similar to",
+        "parallel"
+      ],
+      "acerBasis": {
+        "family": "plausible-reasoning",
+        "skill": "interrelating, elaborating and extending concepts and ideas"
+      }
+    },
+    {
+      "id": "s1-strengthen-weaken",
+      "name": "Strengthen or weaken an argument",
+      "section": "s1",
+      "definition": "Select the fact that most changes an argument's force, by targeting its weakest link rather than adding agreeable but inert detail.",
+      "exemplar": "Against 'social capital causes civic health', evidence that healthy civics precede associational density is far more damaging than another correlational study.",
+      "cues": [
+        "most weakens",
+        "most strengthens",
+        "casts doubt"
+      ],
+      "acerBasis": {
+        "family": "critical-thinking",
+        "skill": "make discriminations and judgments"
+      }
+    },
+    {
+      "id": "s1-inference-minimal",
+      "name": "Take the minimal supported step",
+      "section": "s1",
+      "definition": "Choose the inference that follows with least addition. Prefer the modest, fully-supported reading over the interesting one requiring outside premises.",
+      "exemplar": "From 'standards shift with practical needs' infer that context affects attribution, not that truth itself is relative.",
+      "cues": [
+        "can be inferred",
+        "implies",
+        "it follows that"
+      ],
+      "acerBasis": {
+        "family": "plausible-reasoning",
+        "skill": "drawing conclusions"
+      }
+    },
+    {
+      "id": "s1-word-in-context",
+      "name": "Fix a word's contextual sense",
+      "section": "s1",
+      "definition": "Determine which sense of a polysemous or figurative term the surrounding text activates, ignoring the most common dictionary meaning when context overrides it.",
+      "exemplar": "'Economy' in a passage on poetic style means compression, not the financial system.",
+      "cues": [
+        "as used in",
+        "in context",
+        "most nearly means"
+      ],
+      "acerBasis": {
+        "family": "understanding",
+        "skill": "close reading of words and phrases"
+      }
+    },
+    {
+      "id": "s1-comparative-ranking",
+      "name": "Rank positions on a stated spectrum",
+      "section": "s1",
+      "definition": "Order several presented views by an explicit criterion, holding the criterion fixed across all of them.",
+      "exemplar": "Ranking by scepticism about fixed definitions puts contextualism furthest, since it alone denies stable criteria.",
+      "cues": [
+        "MOST",
+        "LEAST",
+        "which of the following best"
+      ],
+      "acerBasis": {
+        "family": "critical-thinking",
+        "skill": "make discriminations and judgments"
+      }
+    },
+    {
+      "id": "s1-counterexample-function",
+      "name": "Determine what work an example does",
+      "section": "s1",
+      "definition": "Identify an example's argumentative role — illustrating, refuting, qualifying, or conceding — rather than merely restating its content.",
+      "exemplar": "The Ford anecdote does not illustrate justified true belief; it refutes its sufficiency.",
+      "cues": [
+        "serves to",
+        "function of",
+        "in order to"
+      ],
+      "acerBasis": {
+        "family": "plausible-reasoning",
+        "skill": "interrelating, elaborating and extending concepts and ideas"
+      }
+    },
+    {
+      "id": "s1-figurative-image",
+      "name": "Read a figurative image",
+      "section": "s1",
+      "definition": "Interpret metaphor, personification, or imagery by what the comparison does in the poem's argument, not by decoding it into a single paraphrase.",
+      "exemplar": "Death figured as a courteous carriage driver makes the approach civil and unhurried — the tone is the point.",
+      "cues": [
+        "the image of",
+        "metaphor",
+        "suggests",
+        "symbolises"
+      ],
+      "acerBasis": {
+        "family": "understanding",
+        "skill": "recognition of explicit and implicit meanings"
+      }
+    },
+    {
+      "id": "s1-structure-function",
+      "name": "Identify structural role",
+      "section": "s1",
+      "definition": "State what a paragraph, stanza, or sentence contributes to the whole — pivot, concession, escalation, resolution.",
+      "exemplar": "A final stanza reversing the poem's earlier confidence functions as a turn, not a summary.",
+      "cues": [
+        "the second paragraph",
+        "the final stanza",
+        "shift",
+        "turn"
+      ],
+      "acerBasis": {
+        "family": "understanding",
+        "skill": "global interpretations of texts"
+      }
+    },
+    {
+      "id": "s3-graph-gradient",
+      "name": "Extract a rate from a gradient",
+      "section": "s3",
+      "definition": "Read a rate, constant, or slope-derived quantity off a plotted line, attending to axis units and to whether the slope is the quantity or its reciprocal.",
+      "exemplar": "On a Lineweaver-Burk plot the slope is Km/Vmax, not Km.",
+      "cues": [
+        "slope",
+        "gradient",
+        "rate of change",
+        "per unit"
+      ],
+      "acerBasis": {
+        "family": "s3-skill",
+        "skill": "analyse and interpret data"
+      }
+    },
+    {
+      "id": "s3-intercept-extraction",
+      "name": "Extract a parameter from an intercept",
+      "section": "s3",
+      "definition": "Recover a constant from an axis intercept, including the sign convention and the reciprocal relationship where the plot is a transformation.",
+      "exemplar": "x-intercept = -1/Km, so an intercept of -10 mM^-1 gives Km = 0.10 mM. The sign flip is the whole question.",
+      "cues": [
+        "intercept",
+        "y-intercept",
+        "x-intercept",
+        "extrapolated to"
+      ],
+      "acerBasis": {
+        "family": "s3-skill",
+        "skill": "translate knowledge from one form to another"
+      }
+    },
+    {
+      "id": "s3-trend-extrapolation",
+      "name": "Extrapolate beyond the data",
+      "section": "s3",
+      "definition": "Project a trend past the measured range while respecting saturation, asymptotes, and the limits of the underlying model.",
+      "exemplar": "Velocity approaching 9.8 at 10 mM is nearing Vmax, so doubling substrate again gains almost nothing.",
+      "cues": [
+        "if the concentration were increased",
+        "beyond",
+        "would be expected to"
+      ],
+      "acerBasis": {
+        "family": "s3-skill",
+        "skill": "extrapolate"
+      }
+    },
+    {
+      "id": "s3-table-comparison",
+      "name": "Compare conditions across a table",
+      "section": "s3",
+      "definition": "Contrast paired measurements to isolate what a treatment changed, distinguishing a proportional shift from a constant offset.",
+      "exemplar": "Compound Q halves velocity at low substrate but barely affects it at high substrate — that pattern names the inhibition type.",
+      "cues": [
+        "compared with",
+        "with and without",
+        "the data show"
+      ],
+      "acerBasis": {
+        "family": "s3-skill",
+        "skill": "make comparisons"
+      }
+    },
+    {
+      "id": "s3-control-vs-confounder",
+      "name": "Distinguish control from confounder",
+      "section": "s3",
+      "definition": "Determine which comparison a control licenses and which alternative explanation remains open despite it.",
+      "exemplar": "Holding enzyme concentration constant controls for enzyme amount; it says nothing about pH drift.",
+      "cues": [
+        "control",
+        "controlled for",
+        "alternative explanation",
+        "confound"
+      ],
+      "acerBasis": {
+        "family": "s3-skill",
+        "skill": "evaluate evidence"
+      }
+    },
+    {
+      "id": "s3-variable-isolation",
+      "name": "Isolate the manipulated variable",
+      "section": "s3",
+      "definition": "Identify precisely what was varied, what was held fixed, and therefore what the experiment can and cannot conclude.",
+      "exemplar": "Varying substrate at fixed enzyme yields Km and Vmax, but cannot speak to enzyme induction.",
+      "cues": [
+        "independent variable",
+        "was varied",
+        "kept constant"
+      ],
+      "acerBasis": {
+        "family": "s3-skill",
+        "skill": "categorise and select information relevant to problems"
+      }
+    },
+    {
+      "id": "s3-proportional-reasoning",
+      "name": "Scale a quantity proportionally",
+      "section": "s3",
+      "definition": "Apply direct, inverse, or square relationships to rescale a result, without recomputing from first principles.",
+      "exemplar": "Doubling launch speed quadruples range, because range scales with the square of velocity.",
+      "cues": [
+        "twice",
+        "doubled",
+        "halved",
+        "by what factor"
+      ],
+      "acerBasis": {
+        "family": "s3-skill",
+        "skill": "discover relationships"
+      }
+    },
+    {
+      "id": "s3-unit-dimension",
+      "name": "Check units and dimensions",
+      "section": "s3",
+      "definition": "Use dimensional consistency to select or eliminate an answer, and convert between units before comparing magnitudes.",
+      "exemplar": "A y-intercept in min/uM must be 1/Vmax, since Vmax carries uM/min.",
+      "cues": [
+        "units",
+        "mM",
+        "per minute",
+        "expressed in"
+      ],
+      "acerBasis": {
+        "family": "s3-skill",
+        "skill": "recognise limits in accuracy"
+      }
+    },
+    {
+      "id": "s3-equilibrium-shift",
+      "name": "Predict an equilibrium shift",
+      "section": "s3",
+      "definition": "Predict the direction a perturbed system moves, and distinguish a shift in position from a change in the constant itself.",
+      "exemplar": "Adding acid shifts the buffer equilibrium but does not change Ka.",
+      "cues": [
+        "added",
+        "shift",
+        "increase in",
+        "will the equilibrium"
+      ],
+      "acerBasis": {
+        "family": "s3-skill",
+        "skill": "deduce consequences from models"
+      }
+    },
+    {
+      "id": "s3-stoichiometric-ratio",
+      "name": "Apply a stoichiometric ratio",
+      "section": "s3",
+      "definition": "Use mole ratios to relate quantities across a reaction, including at an equivalence point.",
+      "exemplar": "At equivalence, moles of titrant equal moles of analyte scaled by the balanced ratio, not simply equal volumes.",
+      "cues": [
+        "equivalence point",
+        "moles",
+        "ratio",
+        "required to neutralise"
+      ],
+      "acerBasis": {
+        "family": "s3-skill",
+        "skill": "generate and apply strategies to solve problems"
+      }
+    },
+    {
+      "id": "s3-pedigree-inheritance",
+      "name": "Deduce a mode of inheritance",
+      "section": "s3",
+      "definition": "Eliminate inheritance patterns using decisive pedigree features — affected daughters of unaffected fathers, skipped generations, male-only transmission.",
+      "exemplar": "An affected daughter with an unaffected father rules out X-linked recessive.",
+      "cues": [
+        "pedigree",
+        "mode of inheritance",
+        "consistent with",
+        "generation"
+      ],
+      "acerBasis": {
+        "family": "s3-skill",
+        "skill": "formulate and apply hypotheses and make generalisations"
+      }
+    },
+    {
+      "id": "s3-genetic-probability",
+      "name": "Compute a genetic probability",
+      "section": "s3",
+      "definition": "Combine independent probabilities across a cross or pedigree, conditioning correctly on what is already known about a person's phenotype.",
+      "exemplar": "An unaffected sibling of an autosomal recessive proband is 2/3 carrier, not 1/2 — the affected genotype is already excluded.",
+      "cues": [
+        "probability",
+        "chance that",
+        "carrier",
+        "offspring"
+      ],
+      "acerBasis": {
+        "family": "s3-skill",
+        "skill": "generate and apply strategies to solve problems"
+      }
+    },
+    {
+      "id": "s3-mechanism-inference",
+      "name": "Infer mechanism from a result",
+      "section": "s3",
+      "definition": "Reason from an observed pattern back to the physical or chemical mechanism that would produce it, and rule out mechanisms inconsistent with the data.",
+      "exemplar": "Parallel Lineweaver-Burk lines indicate uncompetitive inhibition, since both Km and Vmax fall proportionally.",
+      "cues": [
+        "best explains",
+        "most likely mechanism",
+        "consistent with the observation"
+      ],
+      "acerBasis": {
+        "family": "s3-skill",
+        "skill": "discover relationships"
+      }
+    },
+    {
+      "id": "s3-prediction-from-model",
+      "name": "Apply a stated model to a new case",
+      "section": "s3",
+      "definition": "Take a model supplied in the stimulus and apply it to a case not shown, using only the stated relationships rather than remembered facts.",
+      "exemplar": "Given that activity falls below pH 6, predict the effect of pH 5.5 from the stated profile, not from general enzyme knowledge.",
+      "cues": [
+        "would be expected",
+        "predict",
+        "if instead"
+      ],
+      "acerBasis": {
+        "family": "s3-skill",
+        "skill": "deduce consequences from models"
+      }
+    },
+    {
+      "id": "s3-anomaly-explanation",
+      "name": "Account for the anomaly",
+      "section": "s3",
+      "definition": "Explain the point that departs from an otherwise regular trend, distinguishing measurement artefact from a real change in regime.",
+      "exemplar": "A single low reading at the highest concentration may be substrate inhibition rather than error.",
+      "cues": [
+        "unexpected",
+        "does not fit",
+        "anomalous",
+        "deviates"
+      ],
+      "acerBasis": {
+        "family": "s3-skill",
+        "skill": "recognise limits in accuracy"
+      }
+    },
+    {
+      "id": "s3-vector-decomposition",
+      "name": "Decompose a vector",
+      "section": "s3",
+      "definition": "Split a quantity into independent components and treat each separately, recognising which component a given constraint acts on.",
+      "exemplar": "Projectile flight time depends only on the vertical component; horizontal velocity never affects it.",
+      "cues": [
+        "component",
+        "horizontal",
+        "vertical",
+        "at an angle"
+      ],
+      "acerBasis": {
+        "family": "s3-skill",
+        "skill": "identify knowledge in new contexts"
+      }
+    },
+    {
+      "id": "shared-data-vs-claim",
+      "name": "Test whether evidence supports the claim",
+      "section": "shared",
+      "definition": "Judge whether presented data actually license a stated conclusion, or whether the conclusion outruns, reverses, or sidesteps the evidence.",
+      "exemplar": "A correlation between association membership and civic health does not establish that the former causes the latter.",
+      "cues": [
+        "supports the conclusion",
+        "justified by the data",
+        "the researchers conclude"
+      ],
+      "acerBasis": {
+        "family": "s3-skill",
+        "skill": "follow and evaluate a line of reasoning"
+      }
+    },
+    {
+      "id": "s2-thesis-strength",
+      "name": "Judge thesis strength",
+      "section": "s2",
+      "definition": "Rank candidate theses by arguability, specificity, and whether they commit to a defensible position rather than restating the prompt.",
+      "exemplar": "'Technology changes society' is not a thesis; 'technology erodes the friction that made deliberation possible' is.",
+      "cues": [
+        "strongest thesis",
+        "best states"
+      ],
+      "acerBasis": {
+        "family": "thought-and-content",
+        "skill": "what is made of and developed from the task"
+      }
+    },
+    {
+      "id": "s2-counterargument-force",
+      "name": "Weigh counterargument force",
+      "section": "s2",
+      "definition": "Identify the objection that genuinely threatens a position, as against one that is merely contrary or attacks an unheld view.",
+      "exemplar": "Against a claim about deliberation, the damaging objection concedes the mechanism and disputes its consequence.",
+      "cues": [
+        "strongest objection",
+        "most damaging"
+      ],
+      "acerBasis": {
+        "family": "thought-and-content",
+        "skill": "the kinds of thoughts offered in response to the task"
+      }
+    },
+    {
+      "id": "s2-example-fit",
+      "name": "Select the carrying example",
+      "section": "s2",
+      "definition": "Choose the concrete instance that actually bears the abstraction's weight, rather than one adjacent in topic.",
+      "exemplar": "For a claim about friction enabling deliberation, a case where removing delay degraded a decision fits; a case about speed alone does not.",
+      "cues": [
+        "best supports",
+        "most effective example"
+      ],
+      "acerBasis": {
+        "family": "thought-and-content",
+        "skill": "what is made of and developed from the task"
+      }
+    }
+  ]
+}

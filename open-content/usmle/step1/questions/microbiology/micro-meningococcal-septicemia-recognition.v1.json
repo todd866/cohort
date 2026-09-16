@@ -1,0 +1,71 @@
+{
+  "id": "bank:usmle-step1:micro-meningococcal-septicemia-recognition:v1",
+  "rotation": "usmle-step1-open",
+  "topics": [
+    "meningococcal septicemia",
+    "clinical recognition"
+  ],
+  "moduleNodes": [
+    "usmle/step1",
+    "usmle/step1/microbiology"
+  ],
+  "questionType": "diagnosis",
+  "difficulty": "medium",
+  "stem": "A 19-year-old develops abrupt fever and chills, cold hands and feet, severe body pain, vomiting, diarrhea, and a rash. Which of the following is the most likely diagnosis?",
+  "options": [
+    {
+      "label": "A",
+      "text": "Meningococcal septicemia",
+      "isCorrect": true,
+      "misconception": "None; the presentation reproduces the CDC septicemia feature cluster.",
+      "explanation": "Abrupt fever, chills, cold hands and feet, severe pain, vomiting, diarrhea, and rash are the cited features of meningococcal septicemia."
+    },
+    {
+      "label": "B",
+      "text": "Bacteremic pneumonia",
+      "isCorrect": false,
+      "misconception": "A separate meningococcal presentation is chosen instead of matching the listed septicemia findings.",
+      "explanation": "The CDC passage lists bacteremic pneumonia separately; the full symptom cluster in the stem is its description of meningococcal septicemia."
+    },
+    {
+      "label": "C",
+      "text": "Viral gastroenteritis",
+      "isCorrect": false,
+      "misconception": "Vomiting and diarrhea are isolated from the abrupt systemic illness, cold extremities, severe pain, and rash.",
+      "explanation": "The gastrointestinal symptoms occur within the broader passage-grounded cluster for meningococcal septicemia."
+    },
+    {
+      "label": "D",
+      "text": "Uncomplicated influenza",
+      "isCorrect": false,
+      "misconception": "Fever, chills, and aches are over-weighted while cold extremities, vomiting, diarrhea, and rash are ignored.",
+      "explanation": "Taken together, the findings match the CDC meningococcal septicemia description rather than an isolated influenza-like syndrome."
+    },
+    {
+      "label": "E",
+      "text": "Allergic urticaria",
+      "isCorrect": false,
+      "misconception": "The rash is considered alone without integrating the abrupt fever, chills, severe pain, and gastrointestinal findings.",
+      "explanation": "The cited septicemia pattern is a multisystem acute illness, not a rash finding in isolation."
+    }
+  ],
+  "context": "Learning objective: recognize meningococcal septicemia. The CDC pattern combines abrupt fever and chills with cold hands and feet, severe aches or pain, vomiting, diarrhea, and rash.",
+  "cite": "cdc-pink-book-meningococcal#mening-septicemia",
+  "publicUsmle": {
+    "schemaVersion": 1,
+    "origin": "generated",
+    "itemText": {
+      "licence": "CC-BY-4.0",
+      "attribution": "MD3 contributors"
+    },
+    "evidence": {
+      "kind": "passage",
+      "sourceId": "cdc-pink-book-meningococcal",
+      "passageId": "mening-septicemia",
+      "licence": {
+        "cls": "foss",
+        "id": "us-gov"
+      }
+    }
+  }
+}

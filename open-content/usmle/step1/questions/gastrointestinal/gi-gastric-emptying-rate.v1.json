@@ -1,0 +1,86 @@
+{
+  "id": "bank:usmle-step1:gi-gastric-emptying-rate:v1",
+  "rotation": "usmle-step1-open",
+  "topics": [
+    "gastric emptying",
+    "chyme",
+    "meal composition"
+  ],
+  "moduleNodes": [
+    "usmle/step1",
+    "usmle/step1/gastrointestinal"
+  ],
+  "questionType": "mechanism",
+  "difficulty": "easy",
+  "stem": "In a gastric-emptying study, a healthy 32-year-old volunteer eats three different solid test meals on separate days, and the time to empty the stomach is measured.\n\nWhich of the following meals would be expected to remain in the stomach the longest?",
+  "options": [
+    {
+      "label": "A",
+      "text": "A meal high in carbohydrates",
+      "isCorrect": false,
+      "misconception": "The fastest-emptying meal is being cast as the slowest.",
+      "explanation": "Foods heavy in carbohydrates empty fastest from the stomach; triglyceride-rich meals empty most slowly."
+    },
+    {
+      "label": "B",
+      "text": "A meal high in protein",
+      "isCorrect": false,
+      "misconception": "The intermediate meal is being cast as the slowest.",
+      "explanation": "High-protein foods empty after carbohydrates but before fatty meals; triglyceride content keeps chyme in the stomach longest."
+    },
+    {
+      "label": "C",
+      "text": "A mixed meal low in fat",
+      "isCorrect": false,
+      "misconception": "Removing the delaying nutrient is being cast as prolonging emptying.",
+      "explanation": "A low-fat meal lacks the triglyceride content that most delays emptying, so it would leave the stomach sooner than a fatty meal."
+    },
+    {
+      "label": "D",
+      "text": "A meal high in triglycerides",
+      "isCorrect": true,
+      "misconception": "None; fat slows gastric emptying the most.",
+      "explanation": "Stomach contents normally empty within 2 to 4 hours; carbohydrate-heavy meals empty fastest, protein-rich meals next, and meals with high triglyceride content remain in the stomach the longest."
+    },
+    {
+      "label": "E",
+      "text": "A liquid meal of glucose",
+      "isCorrect": false,
+      "misconception": "The most rapidly handled form is being cast as the slowest.",
+      "explanation": "A carbohydrate liquid combines the fastest-emptying nutrient with the fastest-emptying consistency; it clears well ahead of a fatty solid meal."
+    }
+  ],
+  "context": "Learning objective: meal composition sets emptying rate. The stomach empties within 2-4 hours of eating; carbohydrate-heavy foods empty fastest, high-protein foods next, and high-triglyceride meals slowest. This ordering explains early satiety after fatty meals and informs gastroparesis diets.",
+  "cite": "openstax-anatomy-physiology#gi-gastric-emptying-rate",
+  "publicUsmle": {
+    "schemaVersion": 1,
+    "origin": "generated",
+    "itemText": {
+      "licence": "CC-BY-4.0",
+      "attribution": "MD3 contributors"
+    },
+    "evidence": {
+      "kind": "passage",
+      "sourceId": "openstax-anatomy-physiology",
+      "passageId": "gi-gastric-emptying-rate",
+      "licence": {
+        "cls": "foss",
+        "id": "cc-by-4.0"
+      }
+    },
+    "media": {
+      "kind": "asset",
+      "assetId": "gastric-secretion-v1",
+      "job": "pathway",
+      "showWhen": "after-reveal",
+      "licence": {
+        "cls": "foss",
+        "id": "cc-by-4.0"
+      },
+      "attribution": "MD3 contributors",
+      "contentHash": "sha256:8be13d0847ecfd181d68d963b3aec9c7011d75060c7d97b6c23225cc47f84e58"
+    }
+  },
+  "imageUrl": "/figures/usmle/step1/gastric-secretion-v1.svg",
+  "imageCaption": "Gastric phases cephalic/gastric/intestinal; parietal (HCl+IF), chief (pepsinogen), G cell (gastrin)."
+}

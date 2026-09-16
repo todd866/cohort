@@ -1,0 +1,71 @@
+{
+  "id": "bank:usmle-step1:exp26-b-urine-output-filtration-discordance:v1",
+  "rotation": "usmle-step1-open",
+  "topics": [
+    "renal",
+    "urine-output-filtration-discordance"
+  ],
+  "moduleNodes": [
+    "usmle/step1",
+    "usmle/step1/renal"
+  ],
+  "questionType": "interpretation",
+  "difficulty": "medium",
+  "stem": "In two equal-duration study periods, a kidney’s filtration rate is measured at the same value. Urine volume is higher in the second period. The experiment excludes any new source of water entering the tubule after filtration. Which of the following changes best explains the difference?",
+  "options": [
+    {
+      "text": "A smaller fraction of filtered water was reabsorbed",
+      "explanation": "At fixed filtration, urine volume reflects the portion of filtered water that escapes recovery. A smaller reabsorbed fraction leaves more water to appear in urine.",
+      "isCorrect": true,
+      "label": "A",
+      "misconception": "No misconception: with filtered volume fixed, reduced water recovery leaves more water for urine."
+    },
+    {
+      "text": "A larger fraction of filtered water was reabsorbed",
+      "explanation": "Greater recovery would leave less water for urine, not more. It would explain reduced output at constant filtration rather than the measured increase.",
+      "isCorrect": false,
+      "label": "B",
+      "misconception": "Assumes that greater recovery leaves more rather than less water available for urine."
+    },
+    {
+      "text": "The filtered water volume rose despite the fixed rate",
+      "explanation": "The study measures an unchanged filtration rate over comparable periods. Invoking an increased filtered volume disregards the condition specifically controlled in the experiment.",
+      "isCorrect": false,
+      "label": "C",
+      "misconception": "Invokes increased filtered volume despite equal filtration rates over equal-duration periods."
+    },
+    {
+      "text": "The fraction of filtered water escaping recovery fell",
+      "explanation": "A lower escaping fraction means less water remains for excretion. The higher urine output instead requires a larger fraction to remain unreabsorbed in this model.",
+      "isCorrect": false,
+      "label": "D",
+      "misconception": "Assumes that a smaller fraction escaping recovery produces greater urinary water output."
+    },
+    {
+      "text": "The recovered and excreted water fractions both rose",
+      "explanation": "The simplified model partitions a fixed filtered volume into recovered and excreted portions. Their fractions sum to one, so an increase in one requires a decrease in the other.",
+      "isCorrect": false,
+      "label": "E",
+      "misconception": "Allows recovered and excreted fractions of the same fixed filtered volume to increase together."
+    }
+  ],
+  "context": "Learning objective: Interpret urine-output changes independently of GFR by applying tubular water balance. At fixed filtration, urine volume reflects the portion of filtered water that escapes recovery. A smaller reabsorbed fraction leaves more water to appear in urine.",
+  "cite": "openstax-ap1-urine-formation#urine-mass-balance",
+  "publicUsmle": {
+    "schemaVersion": 1,
+    "origin": "generated",
+    "itemText": {
+      "licence": "CC-BY-4.0",
+      "attribution": "MD3 contributors"
+    },
+    "evidence": {
+      "kind": "passage",
+      "sourceId": "openstax-ap1-urine-formation",
+      "passageId": "urine-mass-balance",
+      "licence": {
+        "cls": "foss",
+        "id": "cc-by-4.0"
+      }
+    }
+  }
+}

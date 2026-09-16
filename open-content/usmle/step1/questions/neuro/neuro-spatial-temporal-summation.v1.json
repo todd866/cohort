@@ -1,0 +1,85 @@
+{
+  "id": "bank:usmle-step1:neuro-spatial-temporal-summation:v1",
+  "rotation": "usmle-step1-open",
+  "topics": [
+    "spatial summation",
+    "graded potentials"
+  ],
+  "moduleNodes": [
+    "usmle/step1",
+    "usmle/step1/neuroscience"
+  ],
+  "questionType": "mechanism",
+  "difficulty": "medium",
+  "stem": "A 23-year-old graduate student records from a postsynaptic cell contacted by three presynaptic neurons, each synapsing at a different site and each alone producing a depolarization too small to reach threshold.\n\nWhen all three fire simultaneously, their combined input brings the axon hillock to threshold and an action potential fires. This integration is best described as which of the following?",
+  "options": [
+    {
+      "label": "A",
+      "text": "Temporal summation of graded potentials from one repeated input",
+      "isCorrect": false,
+      "misconception": "The single-site, time-separated pattern is being applied to a multi-site event.",
+      "explanation": "Temporal summation is the adding of successive signals from the same input separated in time; three different presynaptic cells firing at three sites is spatial summation."
+    },
+    {
+      "label": "B",
+      "text": "Frequency coding of signal intensity by the presynaptic cells",
+      "isCorrect": false,
+      "misconception": "The rate code for stimulus strength is being confused with input integration.",
+      "explanation": "Frequency coding describes how a stronger stimulus raises firing rate in one neuron; threshold here was reached because several simultaneous, spatially separated inputs summed."
+    },
+    {
+      "label": "C",
+      "text": "Saltatory propagation of the graded potentials between the sites",
+      "isCorrect": false,
+      "misconception": "A conduction mode of myelinated axons is being invoked at the dendrites.",
+      "explanation": "Saltatory conduction describes action potentials jumping between nodes of Ranvier; graded potentials simply spread and add, and their combination across sites is spatial summation."
+    },
+    {
+      "label": "D",
+      "text": "An all-or-none response of each individual presynaptic terminal",
+      "isCorrect": false,
+      "misconception": "The firing rule of action potentials is being applied to subthreshold graded events.",
+      "explanation": "All-or-none applies to the action potential itself, not to the graded inputs; the three subthreshold depolarizations combined by spatial summation to cross threshold once."
+    },
+    {
+      "label": "E",
+      "text": "Spatial summation of graded potentials arriving from separate locations",
+      "isCorrect": true,
+      "misconception": "None; simultaneous inputs from different sites sum spatially.",
+      "explanation": "Spatial summation combines graded potentials generated at different locations on the neuron at the same time; their voltages add at the axon hillock and can reach threshold."
+    }
+  ],
+  "context": "Learning objective: distinguish summation types. Spatial summation adds graded potentials from different locations arriving together; temporal summation adds repeated signals from one location over time.",
+  "cite": "openstax-anatomy-physiology#neuro-spatial-temporal-summation",
+  "publicUsmle": {
+    "schemaVersion": 1,
+    "origin": "generated",
+    "itemText": {
+      "licence": "CC-BY-4.0",
+      "attribution": "MD3 contributors"
+    },
+    "evidence": {
+      "kind": "passage",
+      "sourceId": "openstax-anatomy-physiology",
+      "passageId": "neuro-spatial-temporal-summation",
+      "licence": {
+        "cls": "foss",
+        "id": "cc-by-4.0"
+      }
+    },
+    "media": {
+      "kind": "asset",
+      "assetId": "neuron-ap-v1",
+      "job": "trace",
+      "showWhen": "after-reveal",
+      "licence": {
+        "cls": "foss",
+        "id": "cc-by-4.0"
+      },
+      "attribution": "MD3 contributors",
+      "contentHash": "sha256:41648c5b0091329b481398598463e273058e8121c5de902621e265d09794a292"
+    }
+  },
+  "imageUrl": "/figures/usmle/step1/neuron-ap-v1.svg",
+  "imageCaption": "Neuron RMP, threshold AP, refractory period, saltatory conduction, EPSP/IPSP summation."
+}

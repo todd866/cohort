@@ -1,0 +1,29 @@
+{
+  "id": "concept-lactase-lactose-water",
+  "title": "Low lactase leaves lactose undigested",
+  "prompt": "Create an original polished 1536x1024 landscape conceptual medical teaching diagram for after-answer study. Warm hand-painted gouache and watercolour on ivory paper; a gentle storybook warmth with precise dark navy type. Matte teal, ochre, coral and blue accents. Simple neutral tokens, paper tiles, arrows and visibly abstract compartments only. Make the visual relationships legible at small size. No body parts, organs, cells, tissues, lumens, tubules, membranes, vessels, anatomical cutaways, clinical photos, diagnostic scans, babies, realistic flesh or decorative scenery. Do not turn abstract boxes or routes into organs or anatomy. Do not invent extra arrows or medical claims. Edge meanings below are metadata, not visible text: draw the arrows but do not print their meaning strings. Footer exactly: Conceptual schematic • Not anatomy. Title exactly: Low lactase leaves lactose undigested. Four large cards positioned clockwise around an OPEN arc, starting top left1 then top right2 then bottom right3 then bottom left4. Exactly three arrows, no arrow from4 back1. Card1 has a few small enzyme-label paper squares, card2 paired connected sugar tokens labelled Lactose staying intact, card3 loose water drops and unfilled gas circles, card4 simple wave lines. Caption: Malabsorption can cause symptoms; tolerance varies. Do not depict gut walls, bacterial cells, villi or any organ. No treatment dose. Exact node labels: [{\"id\": \"1\", \"label\": \"Lactase activity low\"}, {\"id\": \"2\", \"label\": \"Lactose remains undigested\"}, {\"id\": \"3\", \"label\": \"Extra fluid and gas\"}, {\"id\": \"4\", \"label\": \"Diarrhoea and bloating\"}]. Exact directed connections: [{\"from\": \"1\", \"to\": \"2\", \"meaning\": \"reduced digestion\"}, {\"from\": \"2\", \"to\": \"3\", \"meaning\": \"osmotic and fermentation effects\"}, {\"from\": \"3\", \"to\": \"4\", \"meaning\": \"symptoms\"}]. Required checks: Four nodes and three forward arrows on an open arc; No feedback loop; Lactose token remains intact at low lactase step; No gut wall, cells or villi.",
+  "clinicalSources": [
+    {
+      "title": "NIDDK — Lactose intolerance symptoms and causes",
+      "url": "https://www.niddk.nih.gov/health-information/digestive-diseases/lactose-intolerance/symptoms-causes"
+    },
+    {
+      "title": "NIDDK — Lactose intolerance",
+      "url": "https://www.niddk.nih.gov/-/media/Files/Digestive-Diseases/Lactose_Intolerance_508.pdf"
+    }
+  ],
+  "caption": "A conceptual sequence links low lactase activity to undigested lactose, extra fluid and gas, and symptoms.",
+  "question": "How does reduced lactase activity lead to diarrhoea and bloating?",
+  "answer": "Undigested lactose contributes an osmotic load and bacterial fermentation, producing extra fluid and gas.",
+  "structureSpecification": "scaffolds/concept-lactase-lactose-water.json",
+  "generationInputs": {
+    "referenceImages": [],
+    "style": "written-only"
+  },
+  "qa": {
+    "status": "pending-independent-qa",
+    "method": "agent-visual-and-source-review",
+    "notes": "Pixel review: four nodes and three clockwise arrows form an open sequence, no feedback loop. Lactose remains a joined abstract sugar token; extra fluid/gas precedes symptoms. Tolerance qualifier present. No gut tissue. Independent and clinical review pending.",
+    "clinicalReviewStatus": "pending"
+  }
+}

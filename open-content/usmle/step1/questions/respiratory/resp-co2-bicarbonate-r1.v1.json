@@ -1,0 +1,73 @@
+{
+  "id": "bank:usmle-step1:resp-co2-bicarbonate-r1:v1",
+  "rotation": "usmle-step1-open",
+  "ladderId": "co2-transport",
+  "topics": [
+    "carbon dioxide transport",
+    "bicarbonate",
+    "ladder:co2-transport"
+  ],
+  "moduleNodes": [
+    "usmle/step1",
+    "usmle/step1/respiratory"
+  ],
+  "questionType": "mechanism",
+  "difficulty": "easy",
+  "stem": "Which of the following forms accounts for most carbon dioxide transport in human blood?",
+  "options": [
+    {
+      "label": "A",
+      "text": "Dissolved CO2 gas in plasma alone",
+      "isCorrect": false,
+      "misconception": "The small dissolved fraction is being treated as the majority.",
+      "explanation": "Only a small fraction of CO2 travels as dissolved gas; about 70% is carried as bicarbonate."
+    },
+    {
+      "label": "B",
+      "text": "Bicarbonate ion in plasma",
+      "isCorrect": true,
+      "misconception": "None; roughly 70% of CO2 is transported as bicarbonate.",
+      "explanation": "Most carbon dioxide is converted in red cells to bicarbonate, which then travels in plasma as the main transport form."
+    },
+    {
+      "label": "C",
+      "text": "Carbamino compounds on plasma albumin only",
+      "isCorrect": false,
+      "misconception": "A minority carbamino route is being overstated.",
+      "explanation": "Some CO2 binds proteins as carbamino compounds, but bicarbonate is the predominant transport form."
+    },
+    {
+      "label": "D",
+      "text": "Bound CO2 inside platelets",
+      "isCorrect": false,
+      "misconception": "Platelets are being invented as a CO2 carrier.",
+      "explanation": "CO2 transport is a red-cell/plasma process (dissolved, carbamino, bicarbonate), not a platelet function."
+    },
+    {
+      "label": "E",
+      "text": "Unmodified CO2 trapped in alveolar surfactant",
+      "isCorrect": false,
+      "misconception": "Lung lining fluid is being confused with blood transport.",
+      "explanation": "Surfactant reduces alveolar surface tension; it does not carry systemic CO2 in blood."
+    }
+  ],
+  "context": "Learning objective: name the dominant CO2 transport form. About 70% of CO2 travels as bicarbonate after red-cell carbonic anhydrase conversion.",
+  "cite": "openstax-anatomy-physiology#resp-bicarbonate-70",
+  "publicUsmle": {
+    "schemaVersion": 1,
+    "origin": "generated",
+    "itemText": {
+      "licence": "CC-BY-4.0",
+      "attribution": "MD3 contributors"
+    },
+    "evidence": {
+      "kind": "passage",
+      "sourceId": "openstax-anatomy-physiology",
+      "passageId": "resp-bicarbonate-70",
+      "licence": {
+        "cls": "foss",
+        "id": "cc-by-4.0"
+      }
+    }
+  }
+}

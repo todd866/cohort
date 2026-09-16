@@ -1,0 +1,86 @@
+{
+  "id": "bank:usmle-step1:gi-micelles-chylomicrons:v1",
+  "rotation": "usmle-step1-open",
+  "topics": [
+    "micelles",
+    "chylomicrons",
+    "lipid absorption"
+  ],
+  "moduleNodes": [
+    "usmle/step1",
+    "usmle/step1/gastrointestinal"
+  ],
+  "questionType": "mechanism",
+  "difficulty": "medium",
+  "stem": "After a fatty meal, long-chain fatty acids are absorbed into enterocytes, reassembled into triglycerides, and packaged for export.\n\nIn a healthy 26-year-old woman, these packages leave the enterocyte and first enter which of the following?",
+  "options": [
+    {
+      "label": "A",
+      "text": "Intestinal lacteals draining into the lymphatics",
+      "isCorrect": true,
+      "misconception": "None; chylomicrons are too large for blood capillaries and enter the lymph.",
+      "explanation": "Absorbed fatty acids are re-esterified to triglycerides, coated with phospholipid, cholesterol, and protein to form chylomicrons, which exit the cell and enter the lacteals of the villi for transport by lymphatic vessels to the systemic circulation via the thoracic duct."
+    },
+    {
+      "label": "B",
+      "text": "Bile canaliculi lying between adjacent hepatocytes",
+      "isCorrect": false,
+      "misconception": "The bile-excretion route is being reversed into an absorption route.",
+      "explanation": "Bile canaliculi carry bile out of hepatocytes toward the duodenum; absorbed lipids reach the liver secondhand through the circulation, never through canaliculi."
+    },
+    {
+      "label": "C",
+      "text": "Mucosal capillaries draining into the thoracic duct",
+      "isCorrect": false,
+      "misconception": "Blood and lymph vessels are being conflated.",
+      "explanation": "The thoracic duct is a lymphatic vessel fed by the lacteals; mucosal blood capillaries drain into the portal venous system, not the lymph."
+    },
+    {
+      "label": "D",
+      "text": "Capillaries draining into the hepatic portal vein",
+      "isCorrect": false,
+      "misconception": "The water-soluble nutrient route is being applied to large lipid packages.",
+      "explanation": "Monosaccharides and amino acids enter villus capillary blood for the hepatic portal vein; bulky chylomicrons cannot enter these capillaries and use the lymphatics instead."
+    },
+    {
+      "label": "E",
+      "text": "Lacteals draining directly into the portal vein",
+      "isCorrect": false,
+      "misconception": "The lymphatic drainage is being rerouted into the venous drainage.",
+      "explanation": "Lacteals are lymphatic capillaries that drain to lymphatic vessels and ultimately the thoracic duct; they have no direct connection to the portal vein."
+    }
+  ],
+  "context": "Learning objective: trace absorbed lipid. Micelles (bile salts + lecithin) ferry fatty acids and monoglycerides to the brush border; inside the enterocyte they are re-esterified to triglycerides and packaged as chylomicrons (triglyceride + phospholipid + cholesterol + protein coat), which enter the lacteals and reach the blood via lymphatics and the thoracic duct.",
+  "cite": "openstax-anatomy-physiology#gi-micelles-chylomicrons",
+  "publicUsmle": {
+    "schemaVersion": 1,
+    "origin": "generated",
+    "itemText": {
+      "licence": "CC-BY-4.0",
+      "attribution": "MD3 contributors"
+    },
+    "evidence": {
+      "kind": "passage",
+      "sourceId": "openstax-anatomy-physiology",
+      "passageId": "gi-micelles-chylomicrons",
+      "licence": {
+        "cls": "foss",
+        "id": "cc-by-4.0"
+      }
+    },
+    "media": {
+      "kind": "asset",
+      "assetId": "gi-absorption-v1",
+      "job": "pathway",
+      "showWhen": "after-reveal",
+      "licence": {
+        "cls": "foss",
+        "id": "cc-by-4.0"
+      },
+      "attribution": "MD3 contributors",
+      "contentHash": "sha256:7fa3cf7c6deede7943579ae81371661588ab4f96bae794c6f6acea588dd08d5e"
+    }
+  },
+  "imageUrl": "/figures/usmle/step1/gi-absorption-v1.svg",
+  "imageCaption": "Villi, SGLT1, mucosal barrier, pancreatic enzymes, micelles/chylomicrons, colonic water."
+}

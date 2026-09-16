@@ -1,0 +1,35 @@
+{
+  "figureId": "newborn-epo-feedback",
+  "tool": "built-in image_gen",
+  "model": null,
+  "referenceAssetIds": [],
+  "externalReferenceImages": [],
+  "prompt": "Original educational conceptual illustration, landscape 3:2. Warm ivory paper, sophisticated hand-painted gouache/watercolour, confident fine brown outlines, navy lettering, restrained teal, coral and amber. Editorial science illustration with spacious composition and large legible labels. The explanatory structure must carry the meaning visually: molecules, objects, geometry or flow; never paragraphs in boxes. No organs, regional anatomy, teeth or joint cutaways, tissue layers, invented histology, diagnostic photographs, radiographs or patient data. All symbols are explicitly conceptual. Footer: 'Conceptual teaching model • Not to scale'. Title 'After birth: oxygen feeds back on red-cell production'. An elegant four-object left-to-right causal sequence occupying the whole page. FIRST a cluster of teal bubbles marked 'O₂' with a clear UP arrow: 'Oxygenation rises'. SECOND a small radio-beacon icon with SHORT DIM signal arcs and DOWN arrow: 'EPO signal falls'. THIRD a tiny mechanical conveyor releasing only a few red circular tokens, no organs or cells inside machines: 'Red-cell production slows'. FOURTH a broad shallow U-shaped ribbon path dipping and recovering, without axes or numbers, labelled 'Physiological Hb trough'. Navy arrows connect these four stages; arrow from oxygen to EPO carries small text 'Negative feedback'. Below stage four a small hourglass with a red disc has the short note 'Shorter neonatal red-cell lifespan also contributes'. No kidney, marrow, vessels, lungs, tissue or medical scanner. The U-shaped ribbon is an abstract temporal trajectory, not patient data.",
+  "clinicalSources": [
+    {
+      "title": "Merck Manual Professional — Perinatal anaemia",
+      "url": "https://www.merckmanuals.com/professional/pediatrics/perinatal-hematologic-disorders/perinatal-anemia"
+    }
+  ],
+  "teaching": {
+    "question": "How does improved oxygenation after birth contribute to the normal infant haemoglobin trough?",
+    "answer": "Higher oxygenation suppresses EPO and temporarily slows red-cell production. The shorter neonatal red-cell lifespan also contributes; production later increases again.",
+    "imageRole": "after-reveal"
+  },
+  "title": "Why haemoglobin falls after birth",
+  "caption": "After birth, increased oxygenation suppresses erythropoietin and slows red-cell production. Together with the shorter neonatal red-cell lifespan, this contributes to the physiological haemoglobin nadir.",
+  "alt": "A causal sequence links increased postnatal oxygenation to a lower EPO signal, fewer red-cell tokens produced and a later physiological haemoglobin trough.",
+  "review": {
+    "status": "pending-independent-qa",
+    "method": "agent-visual-and-source-review",
+    "notes": "Pixel-to-specification review confirms oxygen up leads through negative feedback to EPO down, then slower production and a qualitative Hb trough. EPO is a radio signal, production a mechanical conveyor, and lifespan an hourglass; no organs or marrow. Ribbon has no axes or values and conveys timing qualitatively. Short neonatal red-cell lifespan is explicitly an additional contributor.",
+    "structure": {
+      "kind": "conceptual",
+      "status": "verified",
+      "specificationFiles": [
+        "scaffolds/newborn-epo-feedback.json"
+      ],
+      "notes": "Pixel-to-specification review confirms oxygen up leads through negative feedback to EPO down, then slower production and a qualitative Hb trough. EPO is a radio signal, production a mechanical conveyor, and lifespan an hourglass; no organs or marrow. Ribbon has no axes or values and conveys timing qualitatively. Short neonatal red-cell lifespan is explicitly an additional contributor."
+    }
+  }
+}

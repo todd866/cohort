@@ -1,0 +1,85 @@
+{
+  "id": "bank:usmle-step1:psych-mnemonic-devices:v1",
+  "rotation": "usmle-step1-open",
+  "topics": [
+    "mnemonics",
+    "encoding"
+  ],
+  "moduleNodes": [
+    "usmle/step1",
+    "usmle/step1/psych"
+  ],
+  "questionType": "mechanism",
+  "difficulty": "easy",
+  "stem": "Mnemonic devices help memory primarily by doing what?",
+  "options": [
+    {
+      "label": "A",
+      "text": "Accepting electrons from complex IV",
+      "isCorrect": false,
+      "misconception": "Biochem — does not match the cited teaching point.",
+      "explanation": "This option does not match the cited source passage for the stem."
+    },
+    {
+      "label": "B",
+      "text": "Phosphorylating glucose",
+      "isCorrect": false,
+      "misconception": "Biochem — does not match the cited teaching point.",
+      "explanation": "This option does not match the cited source passage for the stem."
+    },
+    {
+      "label": "C",
+      "text": "Cleaving homologous chromosomes",
+      "isCorrect": false,
+      "misconception": "Genetics — does not match the cited teaching point.",
+      "explanation": "This option does not match the cited source passage for the stem."
+    },
+    {
+      "label": "D",
+      "text": "Inhibiting ATP synthase",
+      "isCorrect": false,
+      "misconception": "Biochem — does not match the cited teaching point.",
+      "explanation": "This option does not match the cited source passage for the stem."
+    },
+    {
+      "label": "E",
+      "text": "Organizing information for encoding",
+      "isCorrect": true,
+      "misconception": "None; mnemonics organize information for encoding.",
+      "explanation": "OpenStax: mnemonic devices help organize information for encoding."
+    }
+  ],
+  "context": "Learning objective: mnemonics aid encoding organization.",
+  "cite": "openstax-psychology-2e#mnemonic-devices",
+  "publicUsmle": {
+    "schemaVersion": 1,
+    "origin": "generated",
+    "itemText": {
+      "licence": "CC-BY-4.0",
+      "attribution": "MD3 contributors"
+    },
+    "evidence": {
+      "kind": "passage",
+      "sourceId": "openstax-psychology-2e",
+      "passageId": "mnemonic-devices",
+      "licence": {
+        "cls": "foss",
+        "id": "cc-by-4.0"
+      }
+    },
+    "media": {
+      "kind": "asset",
+      "assetId": "memory-systems-v1",
+      "job": "anatomy",
+      "showWhen": "after-reveal",
+      "licence": {
+        "cls": "foss",
+        "id": "cc-by-4.0"
+      },
+      "attribution": "MD3 contributors",
+      "contentHash": "sha256:123ce110b77ca50bbdc419ca19930e3b0667db9e96b2dea198e9a377ec837ed5"
+    }
+  },
+  "imageUrl": "/figures/usmle/step1/memory-systems-v1.svg",
+  "imageCaption": "Encoding/STM; hippocampus declarative memory; amygdala fear memories; mnemonics and rehearsal."
+}

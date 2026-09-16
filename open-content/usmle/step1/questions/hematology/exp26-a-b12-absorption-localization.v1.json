@@ -1,0 +1,71 @@
+{
+  "id": "bank:usmle-step1:exp26-a-b12-absorption-localization:v1",
+  "rotation": "usmle-step1-open",
+  "topics": [
+    "hematology",
+    "b12-anemia"
+  ],
+  "moduleNodes": [
+    "usmle/step1",
+    "usmle/step1/hematology"
+  ],
+  "questionType": "interpretation",
+  "difficulty": "medium",
+  "stem": "A hypothetical intestinal transport experiment supplies adequate vitamin B12 and functional intrinsic factor directly to the intestinal contents. Uptake remains markedly reduced after a specific distal small-intestinal segment is removed. There is no vitamin breakdown or alternative transport defect. Which of the following localizations best explains the persistent uptake failure?",
+  "options": [
+    {
+      "label": "A",
+      "text": "Failure to supply the vitamin to the intestinal contents",
+      "isCorrect": false,
+      "explanation": "Adequate B12 is directly provided. The persistent failure must therefore be interpreted despite substrate availability rather than attributed to a deficiency of vitamin input.",
+      "misconception": "Attributes failed uptake to inadequate vitamin supply even though the experiment directly supplies it."
+    },
+    {
+      "label": "B",
+      "text": "Accelerated destruction of the vitamin before absorption",
+      "isCorrect": false,
+      "explanation": "The experimental conditions exclude vitamin breakdown. Introducing that mechanism would contradict the control intended to isolate the effect of losing a specific intestinal segment.",
+      "misconception": "Introduces vitamin destruction despite an experimental condition that explicitly excludes it."
+    },
+    {
+      "label": "C",
+      "text": "Replacement of the absent segment by an intact gastric factor",
+      "isCorrect": false,
+      "explanation": "Intrinsic factor supports absorption but is not a substitute for the absorbing tissue. Supplying it does not recreate the removed terminal ileal compartment in this experiment.",
+      "misconception": "Assumes a soluble absorption factor can replace the removed tissue where uptake occurs."
+    },
+    {
+      "label": "D",
+      "text": "Loss of the terminal ileal absorption compartment",
+      "isCorrect": true,
+      "explanation": "B12 absorption occurs in the terminal ileum. Adequate vitamin and functional intrinsic factor cannot restore uptake when the relevant intestinal compartment itself has been removed.",
+      "misconception": "No misconception: Supplying vitamin and intrinsic factor cannot replace the missing terminal ileal compartment."
+    },
+    {
+      "label": "E",
+      "text": "Failure to supply the gastric factor to the contents",
+      "isCorrect": false,
+      "explanation": "The experiment explicitly supplies functional intrinsic factor to the intestinal contents. Its absence therefore cannot explain the continued uptake defect under the stated controlled conditions.",
+      "misconception": "Attributes failed uptake to absence of intrinsic factor even though functional factor is directly supplied."
+    }
+  ],
+  "context": "Learning objective: separate provision of intrinsic factor from the intestinal site that absorbs B12. Supplying the gastric factor cannot replace the terminal ileal absorption compartment if that compartment is absent.",
+  "cite": "openstax-anatomy-physiology#gi-intrinsic-factor-b12",
+  "publicUsmle": {
+    "schemaVersion": 1,
+    "origin": "generated",
+    "itemText": {
+      "licence": "CC-BY-4.0",
+      "attribution": "MD3 contributors"
+    },
+    "evidence": {
+      "kind": "passage",
+      "sourceId": "openstax-anatomy-physiology",
+      "passageId": "gi-intrinsic-factor-b12",
+      "licence": {
+        "cls": "foss",
+        "id": "cc-by-4.0"
+      }
+    }
+  }
+}

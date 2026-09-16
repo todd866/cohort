@@ -1,0 +1,71 @@
+{
+  "id": "bank:usmle-step1:exp26-a-botulism-functional-localization:v1",
+  "rotation": "usmle-step1-open",
+  "topics": [
+    "microbiology",
+    "botulism-neurology"
+  ],
+  "moduleNodes": [
+    "usmle/step1",
+    "usmle/step1/microbiology"
+  ],
+  "questionType": "mechanism",
+  "difficulty": "medium",
+  "stem": "A 46-year-old patient remains conscious while developing symmetric flaccid weakness that begins with cranial-nerve findings and progresses downward. Which of the following cellular changes best connects the toxin's action with this pattern of impaired motor function?",
+  "options": [
+    {
+      "label": "A",
+      "text": "Preservation of acetylcholine release after terminal injury",
+      "isCorrect": false,
+      "explanation": "Preserved release would not explain the functional consequence of damaged release machinery. The supported link requires reduced transmitter output following cleavage of the relevant proteins.",
+      "misconception": "Assumes transmitter release remains functional despite damage to the machinery required for release."
+    },
+    {
+      "label": "B",
+      "text": "Cleavage of terminal proteins needed for acetylcholine release",
+      "isCorrect": true,
+      "explanation": "Botulinum neurotoxin disrupts release-associated proteins at cholinergic terminals. The resulting reduction in acetylcholine output links the cellular lesion to descending flaccid motor impairment.",
+      "misconception": "No misconception: Damage to terminal release proteins links toxin action to impaired acetylcholine output."
+    },
+    {
+      "label": "C",
+      "text": "Blockade of inhibitory impulses controlling skeletal muscle",
+      "isCorrect": false,
+      "explanation": "Loss of inhibitory signaling fits tetanus-associated rigidity and spasms. The confirmed botulism and flaccid descending pattern instead point to impaired transmitter release at cholinergic terminals.",
+      "misconception": "Confuses loss of inhibitory signaling associated with tetanus with the flaccid botulism pattern."
+    },
+    {
+      "label": "D",
+      "text": "Increased acetylcholine release from intact nerve terminals",
+      "isCorrect": false,
+      "explanation": "An increase in transmitter output reverses the established toxin action. Botulism impairs the machinery needed for acetylcholine release rather than enhancing secretion from the terminal.",
+      "misconception": "Reverses toxin action by predicting increased rather than impaired acetylcholine release."
+    },
+    {
+      "label": "E",
+      "text": "Intestinal production of toxin without terminal protein injury",
+      "isCorrect": false,
+      "explanation": "Intestinal production explains a possible toxin source but not the cellular release defect. The question asks how toxin action connects exposure to impaired motor function.",
+      "misconception": "Confuses the location of toxin production with the terminal mechanism that impairs motor function."
+    }
+  ],
+  "context": "Learning objective: link the botulism phenotype to impaired acetylcholine release. The relevant lesion is disruption of release-associated proteins at cholinergic nerve terminals, rather than loss of consciousness or motor disinhibition.",
+  "cite": "cdc-botulism-clinical#botulism-pattern",
+  "publicUsmle": {
+    "schemaVersion": 1,
+    "origin": "generated",
+    "itemText": {
+      "licence": "CC-BY-4.0",
+      "attribution": "MD3 contributors"
+    },
+    "evidence": {
+      "kind": "passage",
+      "sourceId": "cdc-botulism-clinical",
+      "passageId": "botulism-pattern",
+      "licence": {
+        "cls": "foss",
+        "id": "us-gov"
+      }
+    }
+  }
+}

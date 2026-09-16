@@ -1,0 +1,71 @@
+{
+  "id": "bank:usmle-step1:exp26-a-reading-frame-restoration:v1",
+  "rotation": "usmle-step1-open",
+  "topics": [
+    "genetics",
+    "reading-frame"
+  ],
+  "moduleNodes": [
+    "usmle/step1",
+    "usmle/step1/genetics"
+  ],
+  "questionType": "interpretation",
+  "difficulty": "hard",
+  "stem": "A hypothetical coding sequence undergoes a one-nucleotide insertion followed farther downstream by a one-nucleotide deletion. Both changes occur within the translated region. Assume no premature stop is encountered between them. Which of the following best describes the reading frame across the three regions?",
+  "options": [
+    {
+      "label": "A",
+      "text": "Shifted before insertion, shifted between sites, restored after deletion",
+      "isCorrect": false,
+      "explanation": "Translation begins upstream in the original frame. A downstream insertion cannot alter the already specified grouping of nucleotides before its own position in the sequence.",
+      "misconception": "Assumes a downstream sequence alteration changes codon grouping before its own position."
+    },
+    {
+      "label": "B",
+      "text": "Original before insertion, restored between sites, shifted after deletion",
+      "isCorrect": false,
+      "explanation": "The first alteration creates an offset rather than restoring one. Restoration occurs after the later compensating deletion, not within the interval separating the two changes.",
+      "misconception": "Places frame restoration between the changes rather than after the compensating deletion."
+    },
+    {
+      "label": "C",
+      "text": "Original before insertion, shifted between sites, restored after deletion",
+      "isCorrect": true,
+      "explanation": "The insertion offsets triplet grouping by one nucleotide. The later deletion removes that offset, restoring the downstream frame while leaving the intervening region read differently.",
+      "misconception": "No misconception: Opposite one-base changes restore the downstream frame while disrupting the intervening region."
+    },
+    {
+      "label": "D",
+      "text": "Original before insertion, original between sites, original after deletion",
+      "isCorrect": false,
+      "explanation": "The net length change is zero, but the changes occur at different positions. Codon grouping is disrupted between them before the compensating deletion is reached.",
+      "misconception": "Uses zero net length change to conclude that the interval between the two changes is unaffected."
+    },
+    {
+      "label": "E",
+      "text": "Original before insertion, shifted between sites, shifted after deletion",
+      "isCorrect": false,
+      "explanation": "This recognizes the first offset but ignores its later compensation. Removing one nucleotide after adding one restores the original grouping beyond the second site.",
+      "misconception": "Treats the initial offset as permanent and ignores the later compensating one-base deletion."
+    }
+  ],
+  "context": "Learning objective: track net nucleotide displacement through sequential sequence changes. The first nontriplet change disrupts alignment, while a compensating downstream change restores the original frame beyond the second site.",
+  "cite": "nhgri-frameshift#frameshift-definition",
+  "publicUsmle": {
+    "schemaVersion": 1,
+    "origin": "generated",
+    "itemText": {
+      "licence": "CC-BY-4.0",
+      "attribution": "MD3 contributors"
+    },
+    "evidence": {
+      "kind": "passage",
+      "sourceId": "nhgri-frameshift",
+      "passageId": "frameshift-definition",
+      "licence": {
+        "cls": "foss",
+        "id": "us-gov"
+      }
+    }
+  }
+}

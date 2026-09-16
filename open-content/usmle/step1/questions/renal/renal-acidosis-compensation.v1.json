@@ -1,0 +1,85 @@
+{
+  "id": "bank:usmle-step1:renal-acidosis-compensation:v1",
+  "rotation": "usmle-step1-open",
+  "topics": [
+    "respiratory acidosis",
+    "renal compensation"
+  ],
+  "moduleNodes": [
+    "usmle/step1",
+    "usmle/step1/renal"
+  ],
+  "questionType": "interpretation",
+  "difficulty": "medium",
+  "stem": "A 64-year-old man with severe chronic obstructive pulmonary disease has chronic CO2 retention. Arterial blood shows pH 7.34, elevated pCO2, and a bicarbonate concentration above the normal range.\n\nHis elevated bicarbonate most directly reflects which of the following?",
+  "options": [
+    {
+      "label": "A",
+      "text": "Hyperventilation that converts carbonic acid into bicarbonate",
+      "isCorrect": false,
+      "misconception": "A ventilatory fix is being proposed for a patient whose defect is ventilatory.",
+      "explanation": "His lungs cannot blow off the CO2 load — that is the primary problem; the compensation comes from the kidneys raising bicarbonate, not from breathing."
+    },
+    {
+      "label": "B",
+      "text": "Bone buffering that releases bicarbonate within seconds",
+      "isCorrect": false,
+      "misconception": "A rapid buffer is being credited with a sustained compensatory change.",
+      "explanation": "Chemical buffers act within fractions of a second but with limited capacity; the sustained rise in bicarbonate with chronic CO2 retention is renal compensation."
+    },
+    {
+      "label": "C",
+      "text": "Renal compensation raising bicarbonate to offset carbonic acid",
+      "isCorrect": true,
+      "misconception": "None; in compensated respiratory acidosis the kidneys increase bicarbonate over hours.",
+      "explanation": "In respiratory acidosis, excess CO2 is present; bicarbonate is normal at first, but with renal compensation it increases to reestablish the proper bicarbonate-to-carbonic-acid ratio — a large-capacity response that takes minutes to hours."
+    },
+    {
+      "label": "D",
+      "text": "Increased aldosterone causing bicarbonate loss in the urine",
+      "isCorrect": false,
+      "misconception": "Bicarbonate loss could not explain an elevated blood level, and aldosterone is not the compensatory driver.",
+      "explanation": "Compensation requires gaining, not losing, bicarbonate; the kidneys increase bicarbonate generation and hydrogen-ion secretion during respiratory acidosis."
+    },
+    {
+      "label": "E",
+      "text": "Hemoglobin synthesis of bicarbonate inside erythrocytes",
+      "isCorrect": false,
+      "misconception": "A transport buffer is being assigned a hormone-like regulatory role.",
+      "explanation": "Hemoglobin buffers hydrogen ions but does not raise plasma bicarbonate as compensation; the kidney's slow, high-capacity response does."
+    }
+  ],
+  "context": "Learning objective: interpret compensated respiratory acidosis. Elevated pCO2 with rising bicarbonate = renal compensation, a large but slow (minutes-to-hours) response restoring the 20:1 ratio.",
+  "cite": "openstax-anatomy-physiology#renal-acidosis-compensation",
+  "publicUsmle": {
+    "schemaVersion": 1,
+    "origin": "generated",
+    "itemText": {
+      "licence": "CC-BY-4.0",
+      "attribution": "MD3 contributors"
+    },
+    "evidence": {
+      "kind": "passage",
+      "sourceId": "openstax-anatomy-physiology",
+      "passageId": "renal-acidosis-compensation",
+      "licence": {
+        "cls": "foss",
+        "id": "cc-by-4.0"
+      }
+    },
+    "media": {
+      "kind": "asset",
+      "assetId": "renal-acid-base-v1",
+      "job": "pathway",
+      "showWhen": "after-reveal",
+      "licence": {
+        "cls": "foss",
+        "id": "cc-by-4.0"
+      },
+      "attribution": "MD3 contributors",
+      "contentHash": "sha256:06efd2b65727d2836000f8e4a36b7a4fd1df4311273cc39baf8e0d03ae90f3be"
+    }
+  },
+  "imageUrl": "/figures/usmle/step1/renal-acid-base-v1.svg",
+  "imageCaption": "HCO3 conservation, acidosis compensation, K+/H+ competition."
+}

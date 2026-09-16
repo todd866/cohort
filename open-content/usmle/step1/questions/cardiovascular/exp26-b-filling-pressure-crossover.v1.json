@@ -1,0 +1,71 @@
+{
+  "id": "bank:usmle-step1:exp26-b-filling-pressure-crossover:v1",
+  "rotation": "usmle-step1-open",
+  "topics": [
+    "cardiovascular",
+    "filling-pressure-crossover"
+  ],
+  "moduleNodes": [
+    "usmle/step1",
+    "usmle/step1/cardiovascular"
+  ],
+  "questionType": "interpretation",
+  "difficulty": "medium",
+  "stem": "A recording shows an atrial pressure of 9 mmHg while a relaxing ventricle falls from 13 mmHg to 6 mmHg. Valve leaflets are freely mobile. The investigator marks the point at which the ventricular pressure drops below the atrial pressure. Which of the following events should begin at that point?",
+  "options": [
+    {
+      "text": "Atrioventricular closure with passive ventricular entry",
+      "explanation": "Closing the atrioventricular valve would interrupt the route for passive entry. The pressure crossover instead favors opening and filling of the relaxing chamber.",
+      "isCorrect": false,
+      "label": "A",
+      "misconception": "Assumes that passive ventricular entry begins through a closed atrioventricular valve."
+    },
+    {
+      "text": "Atrioventricular opening with ventricular outflow",
+      "explanation": "The valve opening is appropriate, but the flow direction is reversed. Higher atrial pressure favors movement into the ventricle rather than out of it.",
+      "isCorrect": false,
+      "label": "B",
+      "misconception": "Reverses flow direction despite an atrial pressure greater than the relaxing ventricular pressure."
+    },
+    {
+      "text": "Atrioventricular closure with ventricular outflow",
+      "explanation": "The measured gradient favors atrial-to-ventricular movement through an open valve. Closure with ventricular outflow does not fit the stated pressure relationship during relaxation.",
+      "isCorrect": false,
+      "label": "C",
+      "misconception": "Applies valve closure and ventricular outflow to a gradient favoring atrial-to-ventricular filling."
+    },
+    {
+      "text": "Atrioventricular stability with absent ventricular flow",
+      "explanation": "Freely mobile leaflets respond to the pressure gradient. When ventricular pressure becomes lower, maintaining the previous closed state would conflict with the expected filling transition.",
+      "isCorrect": false,
+      "label": "D",
+      "misconception": "Assumes that freely mobile valve leaflets remain unchanged after the filling pressure gradient reverses."
+    },
+    {
+      "text": "Atrioventricular opening with passive ventricular entry",
+      "explanation": "Once ventricular pressure falls below atrial pressure, the atrioventricular valve opens. This permits passive movement into the relaxing ventricle before its next contraction.",
+      "isCorrect": true,
+      "label": "E",
+      "misconception": "No misconception: atrial pressure above relaxing ventricular pressure opens the atrioventricular route for passive entry."
+    }
+  ],
+  "context": "Learning objective: Interpret a pressure crossover as the trigger for atrioventricular opening and passive filling. Once ventricular pressure falls below atrial pressure, the atrioventricular valve opens. This permits passive movement into the relaxing ventricle before its next contraction.",
+  "cite": "openstax-ap1-cardiac-cycle#filling-pressure",
+  "publicUsmle": {
+    "schemaVersion": 1,
+    "origin": "generated",
+    "itemText": {
+      "licence": "CC-BY-4.0",
+      "attribution": "MD3 contributors"
+    },
+    "evidence": {
+      "kind": "passage",
+      "sourceId": "openstax-ap1-cardiac-cycle",
+      "passageId": "filling-pressure",
+      "licence": {
+        "cls": "foss",
+        "id": "cc-by-4.0"
+      }
+    }
+  }
+}

@@ -1,0 +1,71 @@
+{
+  "id": "bank:usmle-step1:exp26-a-germline-transmission-route:v1",
+  "rotation": "usmle-step1-open",
+  "topics": [
+    "genetics",
+    "mutation-lineages"
+  ],
+  "moduleNodes": [
+    "usmle/step1",
+    "usmle/step1/genetics"
+  ],
+  "questionType": "interpretation",
+  "difficulty": "medium",
+  "stem": "In a hypothetical lineage study, a sperm carrying variant X fertilizes an egg. A different variant Y is confined to the father’s skin cells and is absent from both gametes. Assume no later mutation or loss of either sequence. Which of the following distributions is expected in the resulting child?",
+  "options": [
+    {
+      "label": "A",
+      "text": "Variant X and variant Y absent from the child",
+      "isCorrect": false,
+      "explanation": "The fertilizing sperm is specifically stated to contain X. Under the assumption of no subsequent sequence loss, excluding both variants discards that direct transmission route.",
+      "misconception": "Ignores the variant carried by the fertilizing sperm despite the stated absence of later sequence loss."
+    },
+    {
+      "label": "B",
+      "text": "Variant X throughout the child; variant Y absent",
+      "isCorrect": true,
+      "explanation": "Variant X enters the founding cell through the sperm and follows the resulting cellular lineage. The skin-confined variant Y lacks a route through either gamete.",
+      "misconception": "No misconception: The gametic variant enters the child’s founding lineage; the skin-confined variant does not."
+    },
+    {
+      "label": "C",
+      "text": "Variant X confined to skin; variant Y absent",
+      "isCorrect": false,
+      "explanation": "The transmitted variant entered through a gamete rather than arising later in a skin cell. Restricting it to skin misapplies the parental somatic-lineage example.",
+      "misconception": "Applies a skin-cell lineage restriction to a variant introduced through the fertilizing gamete."
+    },
+    {
+      "label": "D",
+      "text": "Variant X absent throughout; variant Y present",
+      "isCorrect": false,
+      "explanation": "This reverses the supplied routes. The fertilizing sperm carries X, while neither gamete carries Y, so the proposed inheritance pattern contradicts the lineage observations.",
+      "misconception": "Reverses the inheritance routes of the gametic variant and the skin-confined variant."
+    },
+    {
+      "label": "E",
+      "text": "Variant X and variant Y throughout the child",
+      "isCorrect": false,
+      "explanation": "Variant X has a direct gametic route, but variant Y does not. Extending both paternal variants throughout the child ignores the distinction between reproductive and somatic lineages.",
+      "misconception": "Assumes every parental variant is inherited regardless of whether either gamete contains it."
+    }
+  ],
+  "context": "Learning objective: Predict distribution from the cell lineage through which a variant enters development. A fertilizing gamete transmits its variant; a change restricted to an unrelated parental somatic lineage does not.",
+  "cite": "nhgri-mutation#mutation-inheritance",
+  "publicUsmle": {
+    "schemaVersion": 1,
+    "origin": "generated",
+    "itemText": {
+      "licence": "CC-BY-4.0",
+      "attribution": "MD3 contributors"
+    },
+    "evidence": {
+      "kind": "passage",
+      "sourceId": "nhgri-mutation",
+      "passageId": "mutation-inheritance",
+      "licence": {
+        "cls": "foss",
+        "id": "us-gov"
+      }
+    }
+  }
+}

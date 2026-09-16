@@ -1,0 +1,88 @@
+{
+  "id": "bank:usmle-step1:re-lh-surge-positive-feedback-r1:v1",
+  "rotation": "usmle-step1-open",
+  "ladderId": "lh-surge-positive-feedback",
+  "topics": [
+    "LH surge",
+    "positive feedback",
+    "ovulation",
+    "ladder:lh-surge-positive-feedback"
+  ],
+  "moduleNodes": [
+    "usmle/step1",
+    "usmle/step1/reproductive"
+  ],
+  "questionType": "mechanism",
+  "difficulty": "easy",
+  "stem": "Which hormone signal triggers the anterior-pituitary switch that produces the preovulatory LH surge?",
+  "options": [
+    {
+      "label": "A",
+      "text": "Extremely high systemic estrogen",
+      "isCorrect": true,
+      "misconception": "Recognizes the source-defined trigger of pituitary positive feedback.",
+      "explanation": "Extremely high plasma estrogen switches anterior-pituitary regulation to positive feedback, producing the LH surge."
+    },
+    {
+      "label": "B",
+      "text": "Very low systemic estrogen",
+      "isCorrect": false,
+      "misconception": "Reverses the direction of the estrogen signal required for the switch.",
+      "explanation": "The checked passage identifies extremely high, not very low, systemic estrogen as the surge trigger."
+    },
+    {
+      "label": "C",
+      "text": "Sustained high systemic progesterone",
+      "isCorrect": false,
+      "misconception": "Substitutes progesterone for the estrogen signal named by the source.",
+      "explanation": "The regulatory switch described in the passage is triggered by extremely high estrogen."
+    },
+    {
+      "label": "D",
+      "text": "Sudden low systemic progesterone",
+      "isCorrect": false,
+      "misconception": "Substitutes progesterone withdrawal for the preovulatory estrogen signal.",
+      "explanation": "The source links the LH surge to extremely high systemic estrogen rather than low progesterone."
+    },
+    {
+      "label": "E",
+      "text": "Sustained high systemic inhibin",
+      "isCorrect": false,
+      "misconception": "Substitutes another ovarian signal for the estrogen trigger.",
+      "explanation": "The cited pituitary switch is driven by extremely high estrogen, not inhibin."
+    }
+  ],
+  "context": "Learning objective: identify the LH-surge trigger. Immediately before ovulation, extremely high systemic estrogen reverses the usual feedback relationship: the anterior pituitary switches to positive feedback and releases a large burst of LH and FSH.",
+  "cite": "openstax-anatomy-physiology#re-lh-surge-positive-feedback",
+  "publicUsmle": {
+    "schemaVersion": 1,
+    "origin": "generated",
+    "itemText": {
+      "licence": "CC-BY-4.0",
+      "attribution": "MD3 contributors"
+    },
+    "evidence": {
+      "kind": "passage",
+      "sourceId": "openstax-anatomy-physiology",
+      "passageId": "re-lh-surge-positive-feedback",
+      "licence": {
+        "cls": "foss",
+        "id": "cc-by-4.0"
+      }
+    },
+    "media": {
+      "kind": "asset",
+      "assetId": "menstrual-cycle-v1",
+      "job": "pathway",
+      "showWhen": "after-reveal",
+      "licence": {
+        "cls": "foss",
+        "id": "cc-by-4.0"
+      },
+      "attribution": "MD3 contributors",
+      "contentHash": "sha256:1f2f31e3cc6b7d1aae996adcda7ba376144dd75d88f4ce4b587f3d815b83a12e"
+    }
+  },
+  "imageUrl": "/figures/usmle/step1/menstrual-cycle-v1.svg",
+  "imageCaption": "Menstrual cycle: rising follicular estrogen triggers the LH surge, which precedes ovulation."
+}

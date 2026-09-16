@@ -1,0 +1,85 @@
+{
+  "id": "bank:usmle-step1:immuno-hypersensitivity-minutes:v1",
+  "rotation": "usmle-step1-open",
+  "topics": [
+    "hypersensitivity",
+    "IgE"
+  ],
+  "moduleNodes": [
+    "usmle/step1",
+    "usmle/step1/immunology"
+  ],
+  "questionType": "mechanism",
+  "difficulty": "medium",
+  "stem": "A classic immediate hypersensitivity pattern to a harmless trigger happens on what timescale?",
+  "options": [
+    {
+      "label": "A",
+      "text": "Only during intracellular glycogen polymer storage",
+      "isCorrect": false,
+      "misconception": "Biochem distractor — does not match the cited teaching point.",
+      "explanation": "Wrong domain; see the cited source passage for detail."
+    },
+    {
+      "label": "B",
+      "text": "Only after decades of continuous statin drug therapy",
+      "isCorrect": false,
+      "misconception": "Pharm distractor — does not match the cited teaching point.",
+      "explanation": "Wrong domain; see the cited source passage for detail."
+    },
+    {
+      "label": "C",
+      "text": "Within minutes after allergen rechallenge begins",
+      "isCorrect": true,
+      "misconception": "None; immediate hypersensitivity is minutes.",
+      "explanation": "OpenStax: minutes after exposure."
+    },
+    {
+      "label": "D",
+      "text": "Only during formal null-hypothesis statistical testing",
+      "isCorrect": false,
+      "misconception": "Stats distractor — does not match the cited teaching point.",
+      "explanation": "Wrong domain; see the cited source passage for detail."
+    },
+    {
+      "label": "E",
+      "text": "Only after ACE-inhibitor bradykinin pathway calculations",
+      "isCorrect": false,
+      "misconception": "Pharm distractor — does not match the cited teaching point.",
+      "explanation": "Wrong domain; see the cited source passage for detail."
+    }
+  ],
+  "context": "Learning objective: immediate hypersensitivity timing.",
+  "cite": "openstax-biology-2e#hypersensitivity-ige",
+  "publicUsmle": {
+    "schemaVersion": 1,
+    "origin": "generated",
+    "itemText": {
+      "licence": "CC-BY-4.0",
+      "attribution": "MD3 contributors"
+    },
+    "evidence": {
+      "kind": "passage",
+      "sourceId": "openstax-biology-2e",
+      "passageId": "hypersensitivity-ige",
+      "licence": {
+        "cls": "foss",
+        "id": "cc-by-4.0"
+      }
+    },
+    "media": {
+      "kind": "asset",
+      "assetId": "immuno-defense-layers-v1",
+      "job": "compare-table",
+      "showWhen": "after-reveal",
+      "licence": {
+        "cls": "foss",
+        "id": "cc-by-4.0"
+      },
+      "attribution": "MD3 contributors",
+      "contentHash": "sha256:af2d1ce40a5a219b0a5c640aed56b4f0f0d54aaad2288a428d9e452ddccaad86"
+    }
+  },
+  "imageUrl": "/figures/usmle/step1/immuno-defense-layers-v1.svg",
+  "imageCaption": "Innate vs adaptive layers, IgE hypersensitivity timing, autoimmunity."
+}

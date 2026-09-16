@@ -1,0 +1,73 @@
+{
+  "id": "bank:usmle-step1:he-abo-recipient-r2:v1",
+  "rotation": "usmle-step1-open",
+  "ladderId": "abo-transfusion",
+  "topics": [
+    "ABO",
+    "universal recipient",
+    "ladder:abo-transfusion"
+  ],
+  "moduleNodes": [
+    "usmle/step1",
+    "usmle/step1/hematology"
+  ],
+  "questionType": "mechanism",
+  "difficulty": "medium",
+  "stem": "A 30-year-old woman with blood group AB is scheduled for elective surgery. Which of the following best explains why she can receive packed red cells from donors of any ABO group?",
+  "options": [
+    {
+      "label": "A",
+      "text": "Her erythrocytes lack A and B antigens entirely",
+      "isCorrect": false,
+      "misconception": "Group O red-cell phenotype is being ascribed to group AB.",
+      "explanation": "Group AB erythrocytes express both A and B antigens; what she lacks are anti-A and anti-B antibodies in plasma."
+    },
+    {
+      "label": "B",
+      "text": "Her plasma lacks preformed anti-A and anti-B antibodies",
+      "isCorrect": true,
+      "misconception": "None; without anti-A/B she does not agglutinate donor A, B, or O red cells.",
+      "explanation": "AB recipients have A and B antigens on their own red cells and therefore do not make anti-A or anti-B; donor red cells of any ABO group are not attacked by her plasma."
+    },
+    {
+      "label": "C",
+      "text": "Her plasma contains both anti-A and anti-B antibodies",
+      "isCorrect": false,
+      "misconception": "The group O plasma pattern is being applied to group AB.",
+      "explanation": "Anti-A and anti-B define group O plasma (universal plasma donor risk to recipients); AB plasma lacks those antibodies."
+    },
+    {
+      "label": "D",
+      "text": "Her Rh status alone determines ABO compatibility",
+      "isCorrect": false,
+      "misconception": "Rh and ABO systems are being conflated.",
+      "explanation": "Rh compatibility is separate; ABO compatibility for red cells depends on whether recipient plasma has anti-A/B against donor antigens."
+    },
+    {
+      "label": "E",
+      "text": "Her hepatocytes clear incompatible antigen before agglutination",
+      "isCorrect": false,
+      "misconception": "A clearance mechanism is being invented to replace antibody absence.",
+      "explanation": "ABO incompatibility is antibody-mediated agglutination/hemolysis; AB recipients are safe for any ABO red cells because they lack anti-A/B."
+    }
+  ],
+  "context": "Learning objective: distinguish universal red-cell donor (O) from universal red-cell recipient (AB). AB plasma lacks anti-A and anti-B, so any ABO donor red cells are accepted.",
+  "cite": "openstax-anatomy-physiology#blood-abo-preformed-antibodies",
+  "publicUsmle": {
+    "schemaVersion": 1,
+    "origin": "generated",
+    "itemText": {
+      "licence": "CC-BY-4.0",
+      "attribution": "MD3 contributors"
+    },
+    "evidence": {
+      "kind": "passage",
+      "sourceId": "openstax-anatomy-physiology",
+      "passageId": "blood-abo-preformed-antibodies",
+      "licence": {
+        "cls": "foss",
+        "id": "cc-by-4.0"
+      }
+    }
+  }
+}

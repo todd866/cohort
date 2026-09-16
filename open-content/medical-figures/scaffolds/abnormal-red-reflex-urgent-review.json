@@ -1,0 +1,76 @@
+{
+  "schemaVersion": 1,
+  "figureId": "abnormal-red-reflex-urgent-review",
+  "kind": "conceptual",
+  "created": "2026-09-10",
+  "timing": "authored before generation",
+  "sourceFacts": [
+    {
+      "fact": "A white or absent expected red reflex may reflect serious ocular disease, including retinoblastoma or cataract.",
+      "sourceUrls": [
+        "https://www.aapos.org/glossary/leukocoria"
+      ]
+    },
+    {
+      "fact": "Leukocoria needs prompt ophthalmologist assessment; its appearance alone does not identify the cause.",
+      "sourceUrls": [
+        "https://www.aapos.org/glossary/leukocoria"
+      ]
+    }
+  ],
+  "clinicalSources": [
+    {
+      "title": "AAPOS: Leukocoria",
+      "url": "https://www.aapos.org/glossary/leukocoria"
+    }
+  ],
+  "nodes": [
+    "white reflection",
+    "absent reflection",
+    "unequal reflection",
+    "urgent ophthalmology",
+    "identify cause"
+  ],
+  "edges": [
+    [
+      "white reflection",
+      "urgent ophthalmology",
+      "warning signal"
+    ],
+    [
+      "absent reflection",
+      "urgent ophthalmology",
+      "warning signal"
+    ],
+    [
+      "unequal reflection",
+      "urgent ophthalmology",
+      "warning signal"
+    ],
+    [
+      "urgent ophthalmology",
+      "identify cause",
+      "evaluate"
+    ]
+  ],
+  "expectedLabels": [
+    "Abnormal red reflex: a signal to act",
+    "White",
+    "Absent",
+    "Unequal",
+    "Urgent ophthalmology",
+    "Find the cause",
+    "Including retinoblastoma",
+    "Symbols only \u2022 not diagnostic images"
+  ],
+  "layoutSpecification": "Title 'Abnormal red reflex: a signal to act'. LEFT three small abstract indicator tiles stacked vertically, no eye shapes: top tile a white circle with navy outline labelled 'White'; middle tile an empty dark-grey circle labelled 'Absent'; bottom tile TWO circles of unequal warm-red brightness labelled 'Unequal'. Do not use clinical photograph lighting, pupil or iris texture. Three clear arrows merge into one large arrow at centre pointing RIGHT to an urgent appointment card labelled 'Urgent ophthalmology'. To its right a magnifying glass over a plain question-mark token, labelled 'Find the cause'; beneath 'Including retinoblastoma'. Very small bottom 'Symbols only \u2022 not diagnostic images'. Diagram must not imply every warning sign equals retinoblastoma; it leads to evaluation of possible causes.",
+  "forbiddenAnatomy": [
+    "No internal organ, eye, ear, brain, tissue or bone anatomy",
+    "No diagnostic image, patient-specific lesion appearance or literal anatomical pathway"
+  ],
+  "validation": {
+    "sourceFacts": "Checked against listed primary clinical sources on 2026-09-10",
+    "status": "self-reviewed; independent review pending",
+    "pixelChecks": "Pixel/structure check: white, absent and unequal abstract indicator groups merge toward urgent ophthalmology; a separate question-mark investigation icon follows, with retinoblastoma explicitly among possible causes. No direct sign-equals-tumour arrow or clinical eye rendering. Unequal indicators differ in colour and size but are explicitly symbols, not diagnostic images."
+  }
+}

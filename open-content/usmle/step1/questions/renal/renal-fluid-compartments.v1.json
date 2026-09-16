@@ -1,0 +1,85 @@
+{
+  "id": "bank:usmle-step1:renal-fluid-compartments:v1",
+  "rotation": "usmle-step1-open",
+  "topics": [
+    "fluid compartments",
+    "body water"
+  ],
+  "moduleNodes": [
+    "usmle/step1",
+    "usmle/step1/renal"
+  ],
+  "questionType": "recall",
+  "difficulty": "easy",
+  "stem": "A 70-kg healthy 25-year-old man has about 42 liters of total body water. Which of the following best estimates the distribution of this water between his intracellular fluid and his plasma?",
+  "options": [
+    {
+      "label": "A",
+      "text": "About 17 liters intracellular and about 8 liters as plasma",
+      "isCorrect": false,
+      "misconception": "The two compartments' shares are being swapped and plasma overestimated.",
+      "explanation": "The larger share is intracellular (about 60 percent), and plasma is only a fifth of the extracellular third — far less than 8 liters."
+    },
+    {
+      "label": "B",
+      "text": "About 25 liters intracellular and about 17 liters as plasma",
+      "isCorrect": false,
+      "misconception": "The whole extracellular compartment is being counted as plasma.",
+      "explanation": "The 17-liter extracellular volume is mostly interstitial fluid; plasma is only about 20 percent of the ECF, roughly 3 liters."
+    },
+    {
+      "label": "C",
+      "text": "About 25 liters intracellular and about 3 liters as plasma",
+      "isCorrect": true,
+      "misconception": "None; ICF is ~60% of body water and plasma ~20% of the ECF.",
+      "explanation": "The ICF holds about 60 percent of total body water (~25 L here). The ECF holds the remaining third (~17 L), and only about 20 percent of the ECF is plasma (~3 L), the rest being interstitial fluid."
+    },
+    {
+      "label": "D",
+      "text": "About 10 liters intracellular and about 10 liters as plasma",
+      "isCorrect": false,
+      "misconception": "The compartments are being split evenly, contrary to their measured proportions.",
+      "explanation": "Body water is not evenly divided: the ICF predominates at about 60 percent, while plasma is a small fraction (about 20 percent) of the extracellular third."
+    },
+    {
+      "label": "E",
+      "text": "About 42 liters intracellular and about 1 liter as plasma",
+      "isCorrect": false,
+      "misconception": "Total body water is being equated with the intracellular compartment.",
+      "explanation": "Total body water splits roughly 60/40 between intracellular and extracellular fluid; the intracellular share is about 25 liters, not the entire 42."
+    }
+  ],
+  "context": "Learning objective: partition body water. ICF ≈ 60% of total body water; ECF ≈ one-third; plasma ≈ 20% of ECF (the rest interstitial).",
+  "cite": "openstax-anatomy-physiology#renal-fluid-compartments",
+  "publicUsmle": {
+    "schemaVersion": 1,
+    "origin": "generated",
+    "itemText": {
+      "licence": "CC-BY-4.0",
+      "attribution": "MD3 contributors"
+    },
+    "evidence": {
+      "kind": "passage",
+      "sourceId": "openstax-anatomy-physiology",
+      "passageId": "renal-fluid-compartments",
+      "licence": {
+        "cls": "foss",
+        "id": "cc-by-4.0"
+      }
+    },
+    "media": {
+      "kind": "asset",
+      "assetId": "renal-countercurrent-v1",
+      "job": "pathway",
+      "showWhen": "after-reveal",
+      "licence": {
+        "cls": "foss",
+        "id": "cc-by-4.0"
+      },
+      "attribution": "MD3 contributors",
+      "contentHash": "sha256:9892ba542b07c7ed1808ccee22a74ddedbe3118c68fd4352cad327a23e19a13b"
+    }
+  },
+  "imageUrl": "/figures/usmle/step1/renal-countercurrent-v1.svg",
+  "imageCaption": "Countercurrent multiplier, inulin=GFR, fluid compartments, EPO, micturition."
+}

@@ -1,0 +1,94 @@
+{
+  "schemaVersion": 1,
+  "id": "concept-uti-ascending-infection",
+  "kind": "conceptual",
+  "sourceFacts": [
+    {
+      "fact": "Bacteria can enter via the urethra and infect the bladder.",
+      "sourceUrls": [
+        "https://www.nichd.nih.gov/health/topics/urinary/conditioninfo/uti",
+        "https://www.niddk.nih.gov/health-information/urologic-diseases/kidney-infection-pyelonephritis/definition-facts"
+      ]
+    },
+    {
+      "fact": "Infection can spread upwards via ureters to one or both kidneys.",
+      "sourceUrls": [
+        "https://www.nichd.nih.gov/health/topics/urinary/conditioninfo/uti",
+        "https://www.niddk.nih.gov/health-information/urologic-diseases/kidney-infection-pyelonephritis/definition-facts"
+      ]
+    },
+    {
+      "fact": "Ascending spread is possible rather than inevitable.",
+      "sourceUrls": [
+        "https://www.nichd.nih.gov/health/topics/urinary/conditioninfo/uti",
+        "https://www.niddk.nih.gov/health-information/urologic-diseases/kidney-infection-pyelonephritis/definition-facts"
+      ]
+    }
+  ],
+  "nodes": [
+    {
+      "id": "1",
+      "label": "Bacteria enter via urethra"
+    },
+    {
+      "id": "2",
+      "label": "Bladder infection"
+    },
+    {
+      "id": "3",
+      "label": "Spread via ureters"
+    },
+    {
+      "id": "4",
+      "label": "Kidney infection"
+    }
+  ],
+  "edges": [
+    {
+      "from": "1",
+      "to": "2",
+      "meaning": "entry"
+    },
+    {
+      "from": "2",
+      "to": "3",
+      "meaning": "possible ascent"
+    },
+    {
+      "from": "3",
+      "to": "4",
+      "meaning": "possible upper infection"
+    }
+  ],
+  "labels": [
+    "A common route of urinary infection",
+    "Bacteria enter via urethra",
+    "Bladder infection",
+    "Spread via ureters",
+    "Kidney infection",
+    "Conceptual schematic • Not anatomy"
+  ],
+  "layout": "A vertical staircase of FOUR disconnected paper labels, beginning at lower left node1 and ascending diagonally to upper right node4. Three broad arrows point UP the staircase. Show neutral purple bead tokens traveling along these PAGE arrows, no bacterial morphology. Use small sublabel Cystitis under2 and Pyelonephritis under4. Caption: Infection may ascend; progression is not inevitable. Absolutely no urethral tube, bladder outline, ureters, kidneys or human body; this is a logical sequence with site names only.",
+  "forbiddenAnatomy": [
+    "organs",
+    "body silhouettes",
+    "tissue cross-sections",
+    "cells",
+    "tubules",
+    "vessels",
+    "clinical photographs",
+    "diagnostic scans"
+  ],
+  "validation": {
+    "sourceStatus": "checked",
+    "structureStatus": "verified",
+    "requiredChecks": [
+      "Four nodes and three upward arrows in correct sequence",
+      "Cystitis matches bladder and pyelonephritis kidney",
+      "Possible rather than inevitable progression",
+      "Site names only, no actual urinary anatomy"
+    ],
+    "clinicalReviewStatus": "pending",
+    "pixelChecks": "Corrected pixels: title, progression qualifier and footer are now dark on ivory and legible. Four logical site labels and three upward connectors correctly order urethral entry, bladder infection, ureteric spread, kidney infection. No organs or anatomy. Independent and clinical review pending."
+  }
+}

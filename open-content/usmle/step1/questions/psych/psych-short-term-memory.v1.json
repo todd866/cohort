@@ -1,0 +1,84 @@
+{
+  "id": "bank:usmle-step1:psych-short-term-memory:v1",
+  "rotation": "usmle-step1-open",
+  "topics": [
+    "short-term memory"
+  ],
+  "moduleNodes": [
+    "usmle/step1",
+    "usmle/step1/psych"
+  ],
+  "questionType": "mechanism",
+  "difficulty": "easy",
+  "stem": "Short-term memory (STM) is best described as which of the following?",
+  "options": [
+    {
+      "label": "A",
+      "text": "A hepatic glycogen buffer pool",
+      "isCorrect": false,
+      "misconception": "Biochem — does not match the cited teaching point.",
+      "explanation": "This option does not match the cited source passage for the stem."
+    },
+    {
+      "label": "B",
+      "text": "An allosteric pocket on an enzyme",
+      "isCorrect": false,
+      "misconception": "Biochem — does not match the cited teaching point.",
+      "explanation": "This option does not match the cited source passage for the stem."
+    },
+    {
+      "label": "C",
+      "text": "Permanent archival store of childhood episodes",
+      "isCorrect": false,
+      "misconception": "That is long-term territory.",
+      "explanation": "STM is temporary; see the cited source passage for detail."
+    },
+    {
+      "label": "D",
+      "text": "A brief store that works on sensory input",
+      "isCorrect": true,
+      "misconception": "None; STM temporarily processes sensory input.",
+      "explanation": "OpenStax: STM is a temporary storage system processing incoming sensory memory."
+    },
+    {
+      "label": "E",
+      "text": "The spinal stretch reflex circuitry",
+      "isCorrect": false,
+      "misconception": "Neurophysiology, not STM.",
+      "explanation": "This option does not match the cited source passage for the stem."
+    }
+  ],
+  "context": "Learning objective: STM is temporary processing storage.",
+  "cite": "openstax-psychology-2e#short-term-memory",
+  "publicUsmle": {
+    "schemaVersion": 1,
+    "origin": "generated",
+    "itemText": {
+      "licence": "CC-BY-4.0",
+      "attribution": "MD3 contributors"
+    },
+    "evidence": {
+      "kind": "passage",
+      "sourceId": "openstax-psychology-2e",
+      "passageId": "short-term-memory",
+      "licence": {
+        "cls": "foss",
+        "id": "cc-by-4.0"
+      }
+    },
+    "media": {
+      "kind": "asset",
+      "assetId": "memory-systems-v1",
+      "job": "anatomy",
+      "showWhen": "after-reveal",
+      "licence": {
+        "cls": "foss",
+        "id": "cc-by-4.0"
+      },
+      "attribution": "MD3 contributors",
+      "contentHash": "sha256:123ce110b77ca50bbdc419ca19930e3b0667db9e96b2dea198e9a377ec837ed5"
+    }
+  },
+  "imageUrl": "/figures/usmle/step1/memory-systems-v1.svg",
+  "imageCaption": "Encoding/STM; hippocampus declarative memory; amygdala fear memories; mnemonics and rehearsal."
+}

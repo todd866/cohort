@@ -1,0 +1,87 @@
+{
+  "id": "bank:usmle-step1:renal-glomerular-charge-barrier:v1",
+  "rotation": "usmle-step1-open",
+  "topics": [
+    "glomerular filtration barrier",
+    "charge selectivity",
+    "ladder:glomerular-filtration"
+  ],
+  "moduleNodes": [
+    "usmle/step1",
+    "usmle/step1/renal"
+  ],
+  "questionType": "mechanism",
+  "difficulty": "medium",
+  "stem": "A 34-year-old man with nephrotic syndrome loses large amounts of albumin in his urine. In a healthy kidney, albumin is nearly excluded from the filtrate even though its molecular size is close to the filtration limit.\n\nWhich of the following properties of the filtration membrane most contributes to this selective exclusion of albumin?",
+  "options": [
+    {
+      "label": "A",
+      "text": "Mesangial cells actively phagocytose albumin from the passing filtrate",
+      "isCorrect": false,
+      "misconception": "A contractile regulatory cell is being assigned a scavenging role.",
+      "explanation": "Mesangial cells contract to regulate the rate of filtration; the charge-based repulsion of anionic proteins is what excludes albumin."
+    },
+    {
+      "label": "B",
+      "text": "Fenestrations bind albumin with high-affinity transmembrane receptors",
+      "isCorrect": false,
+      "misconception": "Passive pores are being given a receptor-mediated uptake function.",
+      "explanation": "Fenestrations filter primarily by size and do not bind specific solutes; albumin exclusion additionally depends on electrostatic repulsion by negatively charged pore proteins."
+    },
+    {
+      "label": "C",
+      "text": "Podocyte foot processes fuse into an impermeable lipid sheet over each capillary",
+      "isCorrect": false,
+      "misconception": "The slit architecture is being described as sealed.",
+      "explanation": "Podocyte pedicels interdigitate to form filtration slits, not a sealed sheet; molecules cross by size and charge, with charge repelling anions such as albumin."
+    },
+    {
+      "label": "D",
+      "text": "Pore-associated proteins carry a negative charge that repels anionic molecules",
+      "isCorrect": true,
+      "misconception": "None; the membrane's negatively charged proteins repel negatively charged substances such as albumin.",
+      "explanation": "The proteins associated with the filtration pores are negatively charged, so they tend to repel negatively charged substances and allow positively charged substances to pass more readily; albumin carries a negative charge and is repelled."
+    },
+    {
+      "label": "E",
+      "text": "The basement membrane actively pumps albumin back into the capillary lumen",
+      "isCorrect": false,
+      "misconception": "A passive structural layer is being described as a transporter.",
+      "explanation": "The fused basement membranes block medium-to-large proteins passively; no pumping occurs there. Charge repulsion by pore proteins is the additional albumin-selective factor."
+    }
+  ],
+  "context": "Learning objective: explain charge selectivity of the filtration membrane. Negatively charged pore proteins repel negatively charged substances and let positively charged ones pass more readily.",
+  "cite": "openstax-anatomy-physiology#renal-glomerular-charge-barrier",
+  "publicUsmle": {
+    "schemaVersion": 1,
+    "origin": "generated",
+    "itemText": {
+      "licence": "CC-BY-4.0",
+      "attribution": "MD3 contributors"
+    },
+    "evidence": {
+      "kind": "passage",
+      "sourceId": "openstax-anatomy-physiology",
+      "passageId": "renal-glomerular-charge-barrier",
+      "licence": {
+        "cls": "foss",
+        "id": "cc-by-4.0"
+      }
+    },
+    "media": {
+      "kind": "asset",
+      "assetId": "nephron-overview-v1",
+      "job": "anatomy",
+      "showWhen": "after-reveal",
+      "licence": {
+        "cls": "foss",
+        "id": "cc-by-4.0"
+      },
+      "attribution": "MD3 contributors",
+      "contentHash": "sha256:594f7ddfca37a265ea925ffa5348bce222990740b857a75cf8669f0ba5f715fa"
+    }
+  },
+  "imageUrl": "/figures/usmle/step1/nephron-overview-v1.svg",
+  "imageCaption": "Nephron segments: filtration, PCT, loop, DCT, collecting duct (ADH aquaporins).",
+  "ladderId": "glomerular-filtration"
+}

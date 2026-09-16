@@ -1,0 +1,87 @@
+{
+  "id": "bank:usmle-step1:cardiovascular-abo-preformed-antibodies:v1",
+  "rotation": "usmle-step1-open",
+  "topics": [
+    "ABO blood group",
+    "transfusion reaction",
+    "ladder:abo-transfusion"
+  ],
+  "moduleNodes": [
+    "usmle/step1",
+    "usmle/step1/cardiovascular"
+  ],
+  "questionType": "mechanism",
+  "difficulty": "hard",
+  "stem": "A 50-year-old woman with type A blood inadvertently receives type B blood during surgery. Within minutes she develops fever, flank pain, and hypotension, and the transfusion is stopped immediately.\n\nWhich of the following best explains why this reaction began immediately, without any prior sensitization to type B cells?",
+  "options": [
+    {
+      "label": "A",
+      "text": "Donor T lymphocytes attacked her tissues",
+      "isCorrect": false,
+      "misconception": "A delayed cellular reaction is being used to explain an immediate hemolytic one.",
+      "explanation": "Graft-versus-host reactions mediated by donor lymphocytes develop over days to weeks and cannot explain a reaction within minutes."
+    },
+    {
+      "label": "B",
+      "text": "Her preformed anti-B antibodies bound the transfused cells",
+      "isCorrect": true,
+      "misconception": "None; ABO isoagglutinins exist without prior exposure.",
+      "explanation": "In contrast to antibodies against the Rh antigen, which are produced only after exposure, ABO group antibodies are preformed, so a type A recipient already carries anti-B antibodies that react immediately with donor B cells."
+    },
+    {
+      "label": "C",
+      "text": "The donor blood contained high-titer anti-A antibodies",
+      "isCorrect": false,
+      "misconception": "The direction of antigen-antibody reactivity is being reversed.",
+      "explanation": "The dominant reaction is the recipient's preformed anti-B antibodies attacking transfused B cells; donor plasma antibodies are diluted and are not the principal driver."
+    },
+    {
+      "label": "D",
+      "text": "Her plasma cells rapidly produced new anti-B antibodies",
+      "isCorrect": false,
+      "misconception": "A primary adaptive response is being credited with minute-level kinetics.",
+      "explanation": "New antibody production after first exposure takes days; the immediate reaction implies antibodies that already existed."
+    },
+    {
+      "label": "E",
+      "text": "Complement was activated by transfused platelet antigens",
+      "isCorrect": false,
+      "misconception": "The wrong cellular target is being implicated in an ABO reaction.",
+      "explanation": "ABO incompatibility targets erythrocyte antigens via preformed isoagglutinins; platelet antigens are not the basis of this immediate reaction."
+    }
+  ],
+  "context": "Learning objective: contrast ABO and Rh antibody kinetics. ABO antibodies are preformed, so incompatible transfusion reacts immediately; anti-Rh antibodies form only after exposure.",
+  "cite": "openstax-anatomy-physiology#blood-abo-preformed-antibodies",
+  "publicUsmle": {
+    "schemaVersion": 1,
+    "origin": "generated",
+    "itemText": {
+      "licence": "CC-BY-4.0",
+      "attribution": "MD3 contributors"
+    },
+    "evidence": {
+      "kind": "passage",
+      "sourceId": "openstax-anatomy-physiology",
+      "passageId": "blood-abo-preformed-antibodies",
+      "licence": {
+        "cls": "foss",
+        "id": "cc-by-4.0"
+      }
+    },
+    "media": {
+      "kind": "asset",
+      "assetId": "blood-components-v1",
+      "job": "anatomy",
+      "showWhen": "after-reveal",
+      "licence": {
+        "cls": "foss",
+        "id": "cc-by-4.0"
+      },
+      "attribution": "MD3 contributors",
+      "contentHash": "sha256:3856cf48a8b6b7e73474650774b40f575f9ee1219bc0ebdd14e3df08c05e55b9"
+    }
+  },
+  "imageUrl": "/figures/usmle/step1/blood-components-v1.svg",
+  "imageCaption": "Hematocrit, buffy coat, albumin, platelets, monocyte-macrophage, T cells, EPO, iron deficiency, ABO.",
+  "ladderId": "abo-transfusion"
+}

@@ -1,0 +1,84 @@
+{
+  "id": "bank:usmle-step1:micro-pertussis-organism:v1",
+  "rotation": "usmle-step1-open",
+  "topics": [
+    "pertussis"
+  ],
+  "moduleNodes": [
+    "usmle/step1",
+    "usmle/step1/microbiology"
+  ],
+  "questionType": "mechanism",
+  "difficulty": "easy",
+  "stem": "Whooping cough is an acute infectious disease caused by which bacterium?",
+  "options": [
+    {
+      "label": "A",
+      "text": "Bordetella pertussis",
+      "isCorrect": true,
+      "misconception": "None — this option matches the cited source passage.",
+      "explanation": "CDC: Bordetella pertussis."
+    },
+    {
+      "label": "B",
+      "text": "Neisseria meningitidis only",
+      "isCorrect": false,
+      "misconception": "Meningococcus — does not match the cited teaching point.",
+      "explanation": "Wrong organism; see the cited source passage for detail."
+    },
+    {
+      "label": "C",
+      "text": "Streptococcus pneumoniae only",
+      "isCorrect": false,
+      "misconception": "Pneumococcus — does not match the cited teaching point.",
+      "explanation": "Wrong organism; see the cited source passage for detail."
+    },
+    {
+      "label": "D",
+      "text": "Varicella-zoster virus only",
+      "isCorrect": false,
+      "misconception": "Viral distractor — does not match the cited teaching point.",
+      "explanation": "Wrong organism; see the cited source passage for detail."
+    },
+    {
+      "label": "E",
+      "text": "Clostridium tetani only",
+      "isCorrect": false,
+      "misconception": "Tetanus — does not match the cited teaching point.",
+      "explanation": "Wrong organism; see the cited source passage for detail."
+    }
+  ],
+  "context": "Learning objective: recall pertussis from the cited FOSS source.",
+  "cite": "cdc-pink-book-pertussis#pertussis-organism",
+  "publicUsmle": {
+    "schemaVersion": 1,
+    "origin": "generated",
+    "itemText": {
+      "licence": "CC-BY-4.0",
+      "attribution": "MD3 contributors"
+    },
+    "evidence": {
+      "kind": "passage",
+      "sourceId": "cdc-pink-book-pertussis",
+      "passageId": "pertussis-organism",
+      "licence": {
+        "cls": "foss",
+        "id": "us-gov"
+      }
+    },
+    "media": {
+      "kind": "asset",
+      "assetId": "micro-pathogen-virulence-v1",
+      "job": "compare-table",
+      "showWhen": "after-reveal",
+      "licence": {
+        "cls": "foss",
+        "id": "cc-by-4.0"
+      },
+      "attribution": "MD3 contributors",
+      "contentHash": "sha256:e0ca8dcce5538b15d4a9973d8a6934fc8199d41e7059a4d8f0059cc1ec78a22e"
+    }
+  },
+  "imageUrl": "/figures/usmle/step1/micro-pathogen-virulence-v1.svg",
+  "imageCaption": "Pathogen virulence and Pink Book organism map (FOSS draft)."
+}

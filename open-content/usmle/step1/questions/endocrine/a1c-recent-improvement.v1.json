@@ -1,0 +1,71 @@
+{
+  "id": "bank:usmle-step1:endocrine-a1c-recent-improvement:v1",
+  "rotation": "usmle-step1-open",
+  "topics": [
+    "hemoglobin A1C",
+    "glycemic interpretation"
+  ],
+  "moduleNodes": [
+    "usmle/step1",
+    "usmle/step1/endocrine"
+  ],
+  "questionType": "interpretation",
+  "difficulty": "medium",
+  "stem": "A 52-year-old's daily glucose readings improved during the past week, but today's A1C remains elevated. Which of the following interpretations best reflects what this test measures?",
+  "options": [
+    {
+      "label": "A",
+      "text": "It reflects average blood glucose over approximately three months",
+      "isCorrect": true,
+      "misconception": "None; A1C integrates glucose exposure across the preceding three months.",
+      "explanation": "The cited passage states that A1C measures glucose-attached hemoglobin and reflects average blood glucose over the past three months."
+    },
+    {
+      "label": "B",
+      "text": "It reflects only the glucose concentration measured today",
+      "isCorrect": false,
+      "misconception": "A three-month average is being mistaken for a single contemporaneous glucose measurement.",
+      "explanation": "A1C reflects average glucose over three months rather than only the concentration at today's blood draw."
+    },
+    {
+      "label": "C",
+      "text": "It reflects only glucose readings from the past week",
+      "isCorrect": false,
+      "misconception": "The recent improvement is assumed to replace the earlier weeks represented in the result.",
+      "explanation": "One improved week contributes to, but does not replace, the cited three-month averaging window."
+    },
+    {
+      "label": "D",
+      "text": "It measures circulating insulin across approximately three months",
+      "isCorrect": false,
+      "misconception": "Insulin concentration is being substituted for glucose attached to hemoglobin.",
+      "explanation": "The passage defines A1C by glucose-attached hemoglobin, not by the amount of circulating insulin."
+    },
+    {
+      "label": "E",
+      "text": "It measures glucose attached to albumin during the past week",
+      "isCorrect": false,
+      "misconception": "The wrong blood protein and a shortened time window are assigned to the assay.",
+      "explanation": "The cited test measures glucose attached to hemoglobin and represents an average across three months."
+    }
+  ],
+  "context": "Learning objective: interpret A1C after a recent glucose change. A1C measures hemoglobin with attached glucose and summarizes average blood glucose over the past three months, so earlier weeks still affect today's value.",
+  "cite": "niddk-a1c-test#a1c-glycation",
+  "publicUsmle": {
+    "schemaVersion": 1,
+    "origin": "generated",
+    "itemText": {
+      "licence": "CC-BY-4.0",
+      "attribution": "MD3 contributors"
+    },
+    "evidence": {
+      "kind": "passage",
+      "sourceId": "niddk-a1c-test",
+      "passageId": "a1c-glycation",
+      "licence": {
+        "cls": "foss",
+        "id": "us-gov"
+      }
+    }
+  }
+}

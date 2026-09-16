@@ -1,0 +1,114 @@
+{
+  "schemaVersion": 1,
+  "figureId": "haemophilia-inheritance-model",
+  "kind": "conceptual",
+  "sourceFacts": [
+    {
+      "id": "fact-1",
+      "fact": "The haemophilia genes are located on the X chromosome.",
+      "sources": [
+        {
+          "title": "CDC: About Hemophilia",
+          "url": "https://www.cdc.gov/hemophilia/about/index.html"
+        }
+      ]
+    },
+    {
+      "id": "fact-2",
+      "fact": "A male inherits his X chromosome from his mother and Y chromosome from his father.",
+      "sources": [
+        {
+          "title": "CDC: About Hemophilia",
+          "url": "https://www.cdc.gov/hemophilia/about/index.html"
+        }
+      ]
+    },
+    {
+      "id": "fact-3",
+      "fact": "A female with one altered copy is a carrier and can have bleeding symptoms.",
+      "sources": [
+        {
+          "title": "CDC: About Hemophilia",
+          "url": "https://www.cdc.gov/hemophilia/about/index.html"
+        }
+      ]
+    }
+  ],
+  "nodes": [
+    {
+      "id": "mother",
+      "shape": "two tiles",
+      "label": "Mother: X Xh"
+    },
+    {
+      "id": "father",
+      "shape": "two tiles",
+      "label": "Father: X Y"
+    },
+    {
+      "id": "xx",
+      "shape": "grid cell",
+      "label": "XX: daughter, no variant"
+    },
+    {
+      "id": "xxh",
+      "shape": "grid cell",
+      "label": "XhX: carrier daughter"
+    },
+    {
+      "id": "xy",
+      "shape": "grid cell",
+      "label": "XY: son, no variant"
+    },
+    {
+      "id": "xhy",
+      "shape": "grid cell",
+      "label": "XhY: son with haemophilia"
+    }
+  ],
+  "edges": [
+    {
+      "from": "mother",
+      "to": "xxh",
+      "meaning": "one maternal X variant"
+    },
+    {
+      "from": "father",
+      "to": "xy",
+      "meaning": "paternal Y to sons"
+    }
+  ],
+  "labels": [
+    "X-linked haemophilia",
+    "Mother: carrier",
+    "Father: no variant",
+    "X",
+    "Xh",
+    "Y",
+    "XX",
+    "XhX",
+    "XY",
+    "XhY",
+    "Daughter: no variant",
+    "Carrier daughter",
+    "Son: no variant",
+    "Son: haemophilia",
+    "Xh = X with the haemophilia variant",
+    "Carrier females may bleed",
+    "Each cell: 1 in 4 per pregnancy"
+  ],
+  "forbiddenAnatomy": [
+    "Organs, tissue layers, anatomical cutaways, histology, diagnostic scans, clinical photos"
+  ],
+  "validation": {
+    "status": "verified",
+    "method": "source-and-conceptual-structure-review",
+    "checks": [
+      "Column maternal X and Xh; row paternal X and Y; all four cells combine correctly.",
+      "Female carrier is not called unaffected.",
+      "Probabilities refer to each pregnancy, not a guaranteed family of four."
+    ],
+    "pixelReviewStatus": "verified",
+    "pixelReviewNotes": "Checked all four cells against the headers: maternal X/Xh columns and paternal X/Y rows produce XX, XhX, XY, XhY respectively. Female carrier outcome is labelled carrier and the qualifier explicitly allows bleeding. The one-quarter statement is per pregnancy. Letter colours consistently distinguish variant Xh, ordinary X and Y. No anatomical imagery."
+  }
+}

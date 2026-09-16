@@ -1,0 +1,85 @@
+{
+  "id": "bank:usmle-step1:pharm-prednisone-uses:v1",
+  "rotation": "usmle-step1-open",
+  "topics": [
+    "prednisone",
+    "corticosteroid"
+  ],
+  "moduleNodes": [
+    "usmle/step1",
+    "usmle/step1/pharmacology"
+  ],
+  "questionType": "mechanism",
+  "difficulty": "easy",
+  "stem": "Prednisone is used alone or with other medications to treat symptoms of which endocrine deficit state?",
+  "options": [
+    {
+      "label": "A",
+      "text": "Only albuterol nebulizer device cleaning protocols",
+      "isCorrect": false,
+      "misconception": "Device distractor — does not match the cited teaching point.",
+      "explanation": "Wrong indication; see the cited source passage for detail."
+    },
+    {
+      "label": "B",
+      "text": "Only pneumococcal capsule typing kit calibration",
+      "isCorrect": false,
+      "misconception": "Micro distractor — does not match the cited teaching point.",
+      "explanation": "Wrong indication; see the cited source passage for detail."
+    },
+    {
+      "label": "C",
+      "text": "Only relative-risk spreadsheet cell calculations",
+      "isCorrect": false,
+      "misconception": "Epi distractor — does not match the cited teaching point.",
+      "explanation": "Wrong indication; see the cited source passage for detail."
+    },
+    {
+      "label": "D",
+      "text": "Only digoxin loading-dose arithmetic worksheets",
+      "isCorrect": false,
+      "misconception": "Cardio distractor — does not match the cited teaching point.",
+      "explanation": "Wrong indication; see the cited source passage for detail."
+    },
+    {
+      "label": "E",
+      "text": "Low corticosteroid levels needing hormone replacement",
+      "isCorrect": true,
+      "misconception": "None; replacement and anti-inflammatory uses.",
+      "explanation": "MedlinePlus: treat symptoms of low corticosteroid levels."
+    }
+  ],
+  "context": "Learning objective: prednisone corticosteroid uses.",
+  "cite": "medlineplus-prednisone#prednisone-uses",
+  "publicUsmle": {
+    "schemaVersion": 1,
+    "origin": "generated",
+    "itemText": {
+      "licence": "CC-BY-4.0",
+      "attribution": "MD3 contributors"
+    },
+    "evidence": {
+      "kind": "passage",
+      "sourceId": "medlineplus-prednisone",
+      "passageId": "prednisone-uses",
+      "licence": {
+        "cls": "foss",
+        "id": "us-gov"
+      }
+    },
+    "media": {
+      "kind": "asset",
+      "assetId": "pharm-drug-classes-v1",
+      "job": "compare-table",
+      "showWhen": "after-reveal",
+      "licence": {
+        "cls": "foss",
+        "id": "cc-by-4.0"
+      },
+      "attribution": "MD3 contributors",
+      "contentHash": "sha256:0660ff11235451eff9a2718dd975d64fa61483b220682b17bd82c8050fd4bceb"
+    }
+  },
+  "imageUrl": "/figures/usmle/step1/pharm-drug-classes-v1.svg",
+  "imageCaption": "High-yield FOSS drug-class map from MedlinePlus labels."
+}

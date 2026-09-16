@@ -1,0 +1,61 @@
+{
+  "schemaVersion": 1,
+  "figureId": "gowers-sign-standing-sequence",
+  "kind": "conceptual",
+  "created": "2026-09-10",
+  "timing": "retrospective specification of previously generated candidate",
+  "sourceFacts": [
+    {
+      "fact": "Children with proximal pelvic-girdle weakness may use their arms to assist rising.",
+      "sourceUrls": [
+        "https://www.ncbi.nlm.nih.gov/books/NBK1119/"
+      ]
+    },
+    {
+      "fact": "The Gowers manoeuvre includes pushing on the thighs to raise the trunk.",
+      "sourceUrls": [
+        "https://www.ncbi.nlm.nih.gov/books/NBK1119/"
+      ]
+    }
+  ],
+  "clinicalSources": [
+    {
+      "title": "GeneReviews: Dystrophinopathies",
+      "url": "https://www.ncbi.nlm.nih.gov/books/NBK1119/"
+    }
+  ],
+  "nodes": [
+    "hands and knees",
+    "hands and feet with hips raised",
+    "hands pressing thighs",
+    "upright with hand assistance"
+  ],
+  "sequence": [
+    "hands and knees",
+    "hands and feet with hips raised",
+    "hands pressing thighs",
+    "upright with hand assistance"
+  ],
+  "invariants": [
+    "Same clothed child and plausible four-limb pose at every step.",
+    "Movement explains proximal weakness compensation; it is not unique to Duchenne."
+  ],
+  "expectedLabels": [
+    "1",
+    "2",
+    "3",
+    "4",
+    "Gowers manoeuvre",
+    "The hands help lift the trunk when hip-girdle muscles are weak"
+  ],
+  "layoutSpecification": "A four-step left-to-right movement sequence of the SAME clothed young child in teal t-shirt and ochre shorts. Profile/three-quarter views keep body mechanics clear. Step1 child on hands and knees. Step2 feet planted with hips high, both hands on floor in bear stance. Step3 trunk partly raised, knees mostly extended, both hands pressing onto own thighs just above knees. Step4 child nearly standing, hands higher on own thighs near hips to push torso upright. No hands pressing shins in final step, no extra limbs, no furniture support. Numbered small labels '1', '2', '3', '4'. Gentle arrows between steps. Title 'Gowers manoeuvre'. Bottom 'The hands help lift the trunk when hip-girdle muscles are weak'. No claim unique to Duchenne.",
+  "forbiddenAnatomy": [
+    "No claimed anatomical reconstruction, diagnostic image, histology or literal neuroanatomical pathway",
+    "No organ cutaways or invented internal spatial relationships"
+  ],
+  "validation": {
+    "sourceFacts": "Checked against listed primary clinical sources during original topic review",
+    "pixelChecks": "Visually inspected: coherent four-step sequence moves from quadruped to feet/hands support, then hands at knees/thighs and higher thighs while extending trunk. No extra limbs, no external furniture support; captions correctly explain proximal weakness compensation.",
+    "status": "self-reviewed; independent review pending"
+  }
+}

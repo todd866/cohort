@@ -1,0 +1,30 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 400" role="img" aria-labelledby="t d">
+  <title id="t">Lung mechanics volumes and surfactant</title>
+  <desc id="d">Diaphragm inspiration, Boyle law, vital capacity components, compliance, surfactant and NRDS.</desc>
+  <rect width="720" height="400" fill="#ffffff"/>
+  <text x="360" y="26" text-anchor="middle" font-family="Helvetica,Arial,sans-serif" font-size="15" font-weight="700" fill="#111">Lung mechanics volumes and surfactant</text>
+  <defs>
+    <marker id="arr" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto">
+      <path d="M0,0 L10,5 L0,10 z" fill="#1d4ed8"/>
+    </marker>
+  </defs>
+  <rect x="40" y="55" width="200" height="90" rx="6" fill="#dbeafe" stroke="#111" stroke-width="1.5"/>
+  <text x="140.0" y="98" text-anchor="middle" font-family="Helvetica,Arial,sans-serif" font-size="11" font-weight="700" fill="#111">Diaphragm down</text>
+  <text x="140.0" y="112" text-anchor="middle" font-family="Helvetica,Arial,sans-serif" font-size="10" fill="#333">inspiration; V up</text>  <rect x="280" y="55" width="200" height="90" rx="6" fill="#fef3c7" stroke="#111" stroke-width="1.5"/>
+  <text x="380.0" y="98" text-anchor="middle" font-family="Helvetica,Arial,sans-serif" font-size="11" font-weight="700" fill="#111">Boyle law</text>
+  <text x="380.0" y="112" text-anchor="middle" font-family="Helvetica,Arial,sans-serif" font-size="10" fill="#333">P x V constant</text>  <rect x="520" y="55" width="160" height="90" rx="6" fill="#d1fae5" stroke="#111" stroke-width="1.5"/>
+  <text x="600.0" y="98" text-anchor="middle" font-family="Helvetica,Arial,sans-serif" font-size="11" font-weight="700" fill="#111">Air in</text>
+  <text x="600.0" y="112" text-anchor="middle" font-family="Helvetica,Arial,sans-serif" font-size="10" fill="#333">P_alv &lt; P_atm</text>  <line x1="240" y1="100" x2="280" y2="100" stroke="#1d4ed8" stroke-width="2" marker-end="url(#arr)"/>  <line x1="480" y1="100" x2="520" y2="100" stroke="#1d4ed8" stroke-width="2" marker-end="url(#arr)"/>  <rect x="40" y="180" width="160" height="80" rx="6" fill="#e5e7eb" stroke="#111" stroke-width="1.5"/>
+  <text x="120.0" y="218" text-anchor="middle" font-family="Helvetica,Arial,sans-serif" font-size="11" font-weight="700" fill="#111">TV</text>
+  <text x="120.0" y="232" text-anchor="middle" font-family="Helvetica,Arial,sans-serif" font-size="10" fill="#333">tidal</text>  <rect x="220" y="180" width="160" height="80" rx="6" fill="#e5e7eb" stroke="#111" stroke-width="1.5"/>
+  <text x="300.0" y="218" text-anchor="middle" font-family="Helvetica,Arial,sans-serif" font-size="11" font-weight="700" fill="#111">IRV+ERV</text>
+  <text x="300.0" y="232" text-anchor="middle" font-family="Helvetica,Arial,sans-serif" font-size="10" fill="#333">reserves</text>  <rect x="400" y="180" width="160" height="80" rx="6" fill="#dbeafe" stroke="#111" stroke-width="1.5"/>
+  <text x="480.0" y="218" text-anchor="middle" font-family="Helvetica,Arial,sans-serif" font-size="11" font-weight="700" fill="#111">VC</text>
+  <text x="480.0" y="232" text-anchor="middle" font-family="Helvetica,Arial,sans-serif" font-size="10" fill="#333">TV+IRV+ERV</text>  <rect x="580" y="180" width="100" height="80" rx="6" fill="#fee2e2" stroke="#111" stroke-width="1.5"/>
+  <text x="630.0" y="218" text-anchor="middle" font-family="Helvetica,Arial,sans-serif" font-size="11" font-weight="700" fill="#111">RV</text>
+  <text x="630.0" y="232" text-anchor="middle" font-family="Helvetica,Arial,sans-serif" font-size="10" fill="#333">residual</text>  <rect x="40" y="290" width="320" height="80" rx="6" fill="#fef3c7" stroke="#111" stroke-width="1.5"/>
+  <text x="200.0" y="328" text-anchor="middle" font-family="Helvetica,Arial,sans-serif" font-size="11" font-weight="700" fill="#111">Compliance</text>
+  <text x="200.0" y="342" text-anchor="middle" font-family="Helvetica,Arial,sans-serif" font-size="10" fill="#333">dV/dP; high = easy expand</text>  <rect x="400" y="290" width="280" height="80" rx="6" fill="#fee2e2" stroke="#111" stroke-width="1.5"/>
+  <text x="540.0" y="328" text-anchor="middle" font-family="Helvetica,Arial,sans-serif" font-size="11" font-weight="700" fill="#111">Surfactant</text>
+  <text x="540.0" y="342" text-anchor="middle" font-family="Helvetica,Arial,sans-serif" font-size="10" fill="#333">lowers surface tension; NRDS if low</text>
+</svg>

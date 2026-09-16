@@ -1,0 +1,87 @@
+{
+  "id": "bank:usmle-step1:neuro-resting-membrane-potential:v1",
+  "rotation": "usmle-step1-open",
+  "ladderId": "resting-membrane-potential",
+  "topics": [
+    "resting membrane potential",
+    "ion distributions",
+    "ladder:resting-membrane-potential"
+  ],
+  "moduleNodes": [
+    "usmle/step1",
+    "usmle/step1/neuroscience"
+  ],
+  "questionType": "mechanism",
+  "difficulty": "medium",
+  "stem": "A 52-year-old woman with persistent vomiting presents with muscle weakness, and her serum potassium is low. The resting electrical state of her neurons depends on a predictable distribution of ions across the cell membrane.\n\nWhich of the following distributions most directly establishes the negative resting membrane potential of a neuron?",
+  "options": [
+    {
+      "label": "A",
+      "text": "Equal ion concentrations on both sides, with the membrane selecting charge",
+      "isCorrect": false,
+      "misconception": "The resting voltage arises from gradients, not from uniform concentrations.",
+      "explanation": "Bulk fluids are nearly neutral, but unequal Na+ and K+ gradients plus trapped intracellular anions produce the charge difference at the membrane surface."
+    },
+    {
+      "label": "B",
+      "text": "Sodium concentrated inside the cell, with chloride balancing the charge",
+      "isCorrect": false,
+      "misconception": "The dominant extracellular cation is being placed on the wrong side of the membrane.",
+      "explanation": "Na+ is about ten times more concentrated outside the cell than inside; reversing this gradient would depolarize, not establish, the resting state."
+    },
+    {
+      "label": "C",
+      "text": "Potassium concentrated inside the cell, with large anions trapped in the cytosol",
+      "isCorrect": true,
+      "misconception": "None; intracellular potassium plus trapped phosphate and protein anions set the roughly -70 mV interior.",
+      "explanation": "K+ is more concentrated inside the cell, Na+ outside, and the cytosol holds negatively charged proteins and phosphates that cannot leave, so the interior measures about -70 mV relative to the outside."
+    },
+    {
+      "label": "D",
+      "text": "Calcium pumped into the cytosol until the interior turns negative",
+      "isCorrect": false,
+      "misconception": "A signaling cation kept very low in the cytosol is being given a voltage-setting role.",
+      "explanation": "Cytosolic Ca2+ is kept extremely low by extrusion; the resting potential reflects K+ and Na+ gradients with fixed intracellular anions, not calcium accumulation."
+    },
+    {
+      "label": "E",
+      "text": "Potassium concentrated outside the cell, drawing negative charge outward",
+      "isCorrect": false,
+      "misconception": "The potassium gradient is being inverted.",
+      "explanation": "K+ is concentrated inside, not outside; its leak outward leaves the trapped anions behind, which is why the interior sits near -70 mV."
+    }
+  ],
+  "context": "Learning objective: relate ion distributions to the resting membrane potential. Na+ is ~10x more concentrated outside, K+ inside, and cytosolic anions (phosphates, proteins) keep the interior negative at about -70 mV.",
+  "cite": "openstax-anatomy-physiology#neuro-resting-membrane-potential",
+  "publicUsmle": {
+    "schemaVersion": 1,
+    "origin": "generated",
+    "itemText": {
+      "licence": "CC-BY-4.0",
+      "attribution": "MD3 contributors"
+    },
+    "evidence": {
+      "kind": "passage",
+      "sourceId": "openstax-anatomy-physiology",
+      "passageId": "neuro-resting-membrane-potential",
+      "licence": {
+        "cls": "foss",
+        "id": "cc-by-4.0"
+      }
+    },
+    "media": {
+      "kind": "asset",
+      "assetId": "neuron-ap-v1",
+      "job": "trace",
+      "showWhen": "after-reveal",
+      "licence": {
+        "cls": "foss",
+        "id": "cc-by-4.0"
+      },
+      "attribution": "MD3 contributors",
+      "contentHash": "sha256:41648c5b0091329b481398598463e273058e8121c5de902621e265d09794a292"
+    }
+  },
+  "imageUrl": "/figures/usmle/step1/neuron-ap-v1.svg",
+  "imageCaption": "Neuron RMP, threshold AP, refractory period, saltatory conduction, EPSP/IPSP summation."
+}

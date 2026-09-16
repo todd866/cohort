@@ -1,0 +1,71 @@
+{
+  "id": "bank:usmle-step1:exp26-b-frc-volume-calculation:v1",
+  "rotation": "usmle-step1-open",
+  "topics": [
+    "respiratory",
+    "frc-volume-calculation"
+  ],
+  "moduleNodes": [
+    "usmle/step1",
+    "usmle/step1/respiratory"
+  ],
+  "questionType": "calculation",
+  "difficulty": "easy",
+  "stem": "During lung-volume testing, a 29-year-old patient exhales normally and then forcefully expels another 1.2 L. A separate measurement shows that 1.4 L remains after maximal expiration. Which of the following was the lung volume immediately after the normal exhalation?",
+  "options": [
+    {
+      "text": "2.6 L",
+      "explanation": "At the end of normal expiration, the lungs contain the additional expiratory reserve plus the residual. Adding 1.2 L and 1.4 L gives 2.6 L.",
+      "isCorrect": true,
+      "label": "A",
+      "misconception": "No misconception: volume after normal expiration includes both expiratory reserve and residual volume."
+    },
+    {
+      "text": "1.2 L",
+      "explanation": "This is the extra volume expelled after normal expiration. It excludes the 1.4 L that remains even after the patient completes maximal expiration.",
+      "isCorrect": false,
+      "label": "B",
+      "misconception": "Counts the extra expiratory reserve but omits the volume remaining after maximal expiration."
+    },
+    {
+      "text": "1.4 L",
+      "explanation": "This measures the volume remaining after maximal expiration. At the earlier end of normal expiration, the additional expiratory reserve was still present in the lungs.",
+      "isCorrect": false,
+      "label": "C",
+      "misconception": "Uses the volume after maximal expiration for the earlier volume after normal expiration."
+    },
+    {
+      "text": "0.2 L",
+      "explanation": "Subtracting the reserve from the residual does not produce functional residual capacity. The two volumes occupy complementary portions of the lung volume after normal expiration.",
+      "isCorrect": false,
+      "label": "D",
+      "misconception": "Subtracts complementary reserve and residual compartments instead of adding them."
+    },
+    {
+      "text": "3.8 L",
+      "explanation": "This counts the additional expiratory reserve twice. Functional residual capacity contains one expiratory reserve volume plus one residual volume, which total 2.6 L here.",
+      "isCorrect": false,
+      "label": "E",
+      "misconception": "Counts the expiratory reserve twice when reconstructing the volume after normal expiration."
+    }
+  ],
+  "context": "Learning objective: Identify functional residual capacity from the expiratory reserve and residual volumes. At the end of normal expiration, the lungs contain the additional expiratory reserve plus the residual. Adding 1.2 L and 1.4 L gives 2.6 L.",
+  "cite": "openstax-ap1-breathing#frc",
+  "publicUsmle": {
+    "schemaVersion": 1,
+    "origin": "generated",
+    "itemText": {
+      "licence": "CC-BY-4.0",
+      "attribution": "MD3 contributors"
+    },
+    "evidence": {
+      "kind": "passage",
+      "sourceId": "openstax-ap1-breathing",
+      "passageId": "frc",
+      "licence": {
+        "cls": "foss",
+        "id": "cc-by-4.0"
+      }
+    }
+  }
+}

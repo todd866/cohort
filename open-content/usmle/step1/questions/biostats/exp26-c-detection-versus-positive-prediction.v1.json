@@ -1,0 +1,71 @@
+{
+  "id": "bank:usmle-step1:exp26-c-detection-versus-positive-prediction:v1",
+  "rotation": "usmle-step1-open",
+  "topics": [
+    "biostats",
+    "detection-versus-positive-prediction"
+  ],
+  "moduleNodes": [
+    "usmle/step1",
+    "usmle/step1/biostats"
+  ],
+  "questionType": "calculation",
+  "difficulty": "medium",
+  "stem": "A screening test is evaluated in 1,000 people whose disease status is established independently. Of 100 people with disease, 90 test positive. Of 900 people without disease, 90 test positive. Which of the following pairs gives the test sensitivity and the probability of disease among those testing positive?",
+  "options": [
+    {
+      "label": "A",
+      "text": "Sensitivity 50%; probability of disease after a positive test 90%",
+      "isCorrect": false,
+      "explanation": "Sensitivity uses all actual cases as its denominator, giving 90/100 rather than 90/180. The probability of disease among positive results uses all positive tests, giving 90/180 rather than 90/100.",
+      "misconception": "Swaps the actual-case and positive-result denominators."
+    },
+    {
+      "label": "B",
+      "text": "Sensitivity 90%; probability of disease after a positive test 50%",
+      "isCorrect": true,
+      "explanation": "Sensitivity is 90 true positives divided by 100 people with disease, or 90%. Positive predictive value is 90 true positives divided by 180 positive results, or 50%.",
+      "misconception": "No misconception: sensitivity and PPV condition on different groups."
+    },
+    {
+      "label": "C",
+      "text": "Sensitivity 90%; probability of disease after a positive test 90%",
+      "isCorrect": false,
+      "explanation": "The 90% sensitivity is correct, but it does not give the probability that a positive result represents disease. The positive group includes 90 people without disease, reducing that probability to 50%.",
+      "misconception": "Treats sensitivity as the probability of disease after a positive result."
+    },
+    {
+      "label": "D",
+      "text": "Sensitivity 10%; probability of disease after a positive test 50%",
+      "isCorrect": false,
+      "explanation": "Ten percent is the proportion of actual cases missed, since 10 of 100 people with disease test negative. Sensitivity measures detected cases instead; the stated positive predictive value is correct.",
+      "misconception": "Substitutes the missed-case fraction for the detected-case fraction."
+    },
+    {
+      "label": "E",
+      "text": "Sensitivity 50%; probability of disease after a positive test 10%",
+      "isCorrect": false,
+      "explanation": "Fifty percent is the positive predictive value, not sensitivity. Ten percent describes missed cases among people with disease, not the fraction of positive results that represent disease.",
+      "misconception": "Confuses PPV and missed-case frequency with the requested measures."
+    }
+  ],
+  "context": "Learning objective: Use separate denominators for sensitivity and positive predictive value.\n\nSensitivity is 90 true positives divided by 100 people with disease, or 90%. Positive predictive value is 90 true positives divided by 180 positive results, or 50%.",
+  "cite": "cdc-epi-sensitivity-specificity#sens-spec-formulas",
+  "publicUsmle": {
+    "schemaVersion": 1,
+    "origin": "generated",
+    "itemText": {
+      "licence": "CC-BY-4.0",
+      "attribution": "MD3 contributors"
+    },
+    "evidence": {
+      "kind": "passage",
+      "sourceId": "cdc-epi-sensitivity-specificity",
+      "passageId": "sens-spec-formulas",
+      "licence": {
+        "cls": "foss",
+        "id": "us-gov"
+      }
+    }
+  }
+}

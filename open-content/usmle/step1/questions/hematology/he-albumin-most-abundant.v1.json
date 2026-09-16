@@ -1,0 +1,86 @@
+{
+  "id": "bank:usmle-step1:he-albumin-most-abundant:v1",
+  "rotation": "usmle-step1-open",
+  "topics": [
+    "albumin",
+    "plasma proteins",
+    "liver"
+  ],
+  "moduleNodes": [
+    "usmle/step1",
+    "usmle/step1/hematology"
+  ],
+  "questionType": "mechanism",
+  "difficulty": "easy",
+  "stem": "A 60-year-old man with advanced cirrhosis develops generalized edema and a low plasma oncotic pressure.\n\nSynthesis of which of the following plasma proteins — the most abundant in plasma — is most impaired by his failing liver?",
+  "options": [
+    {
+      "label": "A",
+      "text": "Immunoglobulins (antibodies)",
+      "isCorrect": false,
+      "misconception": "Antibodies are being treated as the dominant liver-made protein.",
+      "explanation": "Immunoglobulins are secreted by plasma cells (differentiated B lymphocytes), not by hepatocytes, and are far less abundant than albumin."
+    },
+    {
+      "label": "B",
+      "text": "Albumin from hepatocytes",
+      "isCorrect": true,
+      "misconception": "None; albumin is the liver-made protein that dominates plasma.",
+      "explanation": "Albumin is the most abundant of the plasma proteins and is manufactured by the liver; failing hepatic synthesis lowers plasma oncotic pressure and produces edema."
+    },
+    {
+      "label": "C",
+      "text": "Fibrinogen",
+      "isCorrect": false,
+      "misconception": "A clotting protein is being confused with the oncotic protein.",
+      "explanation": "Fibrinogen is indeed liver-made, but its deficiency causes bleeding rather than edema; the most abundant plasma protein, which maintains oncotic pressure, is albumin."
+    },
+    {
+      "label": "D",
+      "text": "Hemoglobin",
+      "isCorrect": false,
+      "misconception": "An intracellular red-cell protein is being counted as a plasma protein.",
+      "explanation": "Hemoglobin is packaged inside erythrocytes and is not a plasma protein at all; the dominant dissolved plasma protein is albumin."
+    },
+    {
+      "label": "E",
+      "text": "Transferrin",
+      "isCorrect": false,
+      "misconception": "A trace transport protein is being elevated to the most abundant.",
+      "explanation": "Transferrin carries iron in small quantities; albumin far outweighs it in plasma and supplies most of the oncotic pressure lost in liver failure."
+    }
+  ],
+  "context": "Learning objective: rank the plasma proteins. About 7 percent of plasma volume is protein, dominated by three liver-made groups — albumin, globulins, and fibrinogen. Albumin is the most abundant and is the principal determinant of plasma oncotic pressure, which is why cirrhosis causes edema.",
+  "cite": "openstax-anatomy-physiology#he-albumin-most-abundant",
+  "publicUsmle": {
+    "schemaVersion": 1,
+    "origin": "generated",
+    "itemText": {
+      "licence": "CC-BY-4.0",
+      "attribution": "MD3 contributors"
+    },
+    "evidence": {
+      "kind": "passage",
+      "sourceId": "openstax-anatomy-physiology",
+      "passageId": "he-albumin-most-abundant",
+      "licence": {
+        "cls": "foss",
+        "id": "cc-by-4.0"
+      }
+    },
+    "media": {
+      "kind": "asset",
+      "assetId": "blood-components-v1",
+      "job": "anatomy",
+      "showWhen": "after-reveal",
+      "licence": {
+        "cls": "foss",
+        "id": "cc-by-4.0"
+      },
+      "attribution": "MD3 contributors",
+      "contentHash": "sha256:3856cf48a8b6b7e73474650774b40f575f9ee1219bc0ebdd14e3df08c05e55b9"
+    }
+  },
+  "imageUrl": "/figures/usmle/step1/blood-components-v1.svg",
+  "imageCaption": "Hematocrit, buffy coat, albumin, platelets, monocyte-macrophage, T cells, EPO, iron deficiency, ABO."
+}

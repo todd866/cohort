@@ -1,0 +1,74 @@
+{
+  "id": "bank:usmle-step1:endo-pth-calcium-r3:v1",
+  "rotation": "usmle-step1-open",
+  "ladderId": "pth-calcium",
+  "difficulty": "hard",
+  "topics": [
+    "hyperparathyroidism",
+    "hypercalcemia",
+    "osteoclasts",
+    "ladder:pth-calcium"
+  ],
+  "moduleNodes": [
+    "usmle/step1",
+    "usmle/step1/endocrine"
+  ],
+  "questionType": "mechanism",
+  "stem": "A 58-year-old woman reports several months of fatigue, constipation, and increased thirst with polyuria. Laboratory evaluation shows an elevated serum calcium concentration and a low serum phosphate concentration. Dual-energy X-ray absorptiometry demonstrates reduced bone mineral density at the lumbar spine and femoral neck.\n\nExcess activity of which of the following hormones most directly accounts for both the electrolyte pattern and the densitometric findings?",
+  "options": [
+    {
+      "label": "A",
+      "text": "The hormone secreted by thyroid C cells",
+      "isCorrect": false,
+      "misconception": "A calcium-lowering hormone is being blamed for hypercalcemia and bone loss.",
+      "explanation": "Calcitonin inhibits osteoclasts and lowers calcium; excess calcitonin would not cause this picture."
+    },
+    {
+      "label": "B",
+      "text": "The hormone secreted by pancreatic beta cells",
+      "isCorrect": false,
+      "misconception": "Glucose metabolism is being confused with calcium-bone pathology.",
+      "explanation": "Insulin does not drive osteoclast-mediated bone resorption or this electrolyte pattern."
+    },
+    {
+      "label": "C",
+      "text": "The hormone secreted by the zona glomerulosa",
+      "isCorrect": false,
+      "misconception": "Mineralocorticoid excess is being confused with PTH-driven bone resorption.",
+      "explanation": "Aldosterone affects sodium and potassium handling, not osteoclast-driven hypercalcemia."
+    },
+    {
+      "label": "D",
+      "text": "The hormone secreted by the parathyroid glands",
+      "isCorrect": true,
+      "misconception": "None; excess PTH activates osteoclasts, raises blood calcium, and depletes bone mineral.",
+      "explanation": "Excess PTH stimulates osteoclast activity, releasing calcium from bone into blood and producing hypercalcemia with reduced bone density."
+    },
+    {
+      "label": "E",
+      "text": "The hormone secreted by atrial myocytes",
+      "isCorrect": false,
+      "misconception": "A natriuretic peptide is being credited with osteoclast activation.",
+      "explanation": "ANP regulates volume via natriuresis and does not produce PTH-pattern hypercalcemia and bone loss."
+    }
+  ],
+  "context": "Learning objective: link excess PTH to hypercalcemia plus bone mineral loss via osteoclast activation (hyperparathyroidism pattern).",
+  "cite": "openstax-anatomy-physiology#endo-pth-calcitonin-calcium",
+  "publicUsmle": {
+    "schemaVersion": 1,
+    "origin": "generated",
+    "itemText": {
+      "licence": "CC-BY-4.0",
+      "attribution": "MD3 contributors"
+    },
+    "evidence": {
+      "kind": "passage",
+      "sourceId": "openstax-anatomy-physiology",
+      "passageId": "endo-pth-calcitonin-calcium",
+      "licence": {
+        "cls": "foss",
+        "id": "cc-by-4.0"
+      }
+    }
+  }
+}

@@ -1,0 +1,87 @@
+{
+  "id": "bank:usmle-step1:neuro-nicotinic-muscarinic:v1",
+  "rotation": "usmle-step1-open",
+  "ladderId": "nicotinic-nmj",
+  "topics": [
+    "nicotinic receptor",
+    "muscarinic receptor",
+    "ladder:nicotinic-nmj"
+  ],
+  "moduleNodes": [
+    "usmle/step1",
+    "usmle/step1/neuroscience"
+  ],
+  "questionType": "mechanism",
+  "difficulty": "medium",
+  "stem": "A 31-year-old researcher applies acetylcholine to an autonomic ganglion and records an immediate, rapid depolarization of the ganglionic neuron caused by cations flowing directly through the receptor protein itself.\n\nThe receptor mediating this fast response has which of the following structures?",
+  "options": [
+    {
+      "label": "A",
+      "text": "A ligand-gated cation channel of the nicotinic type",
+      "isCorrect": true,
+      "misconception": "None; ganglionic fast depolarization is mediated by ionotropic nicotinic receptors.",
+      "explanation": "The nicotinic receptor is a ligand-gated cation channel: acetylcholine binding opens the pore and Na+ influx depolarizes the postsynaptic membrane within milliseconds, as at autonomic ganglia and the neuromuscular junction."
+    },
+    {
+      "label": "B",
+      "text": "A G protein-coupled receptor of the muscarinic type",
+      "isCorrect": false,
+      "misconception": "The slower metabotropic acetylcholine receptor is being matched to an immediate ion-flux recording.",
+      "explanation": "Muscarinic receptors act through G proteins and second messengers, producing slower, longer effects at postganglionic targets; a direct cation pore is the nicotinic channel."
+    },
+    {
+      "label": "C",
+      "text": "An alpha-adrenergic receptor coupled to a G protein",
+      "isCorrect": false,
+      "misconception": "A catecholamine receptor is being proposed for an acetylcholine response.",
+      "explanation": "Adrenergic receptors bind norepinephrine and epinephrine, not acetylcholine; the fast cholinergic ganglionic receptor is the nicotinic cation channel."
+    },
+    {
+      "label": "D",
+      "text": "A beta-adrenergic receptor coupled to a G protein",
+      "isCorrect": false,
+      "misconception": "A catecholamine receptor is being proposed for an acetylcholine response.",
+      "explanation": "Beta receptors respond to epinephrine and norepinephrine via G proteins; acetylcholine's direct channel action is mediated by the nicotinic receptor."
+    },
+    {
+      "label": "E",
+      "text": "A voltage-gated sodium channel activated by the transmitter",
+      "isCorrect": false,
+      "misconception": "The regenerative axon channel is being confused with the receptor protein itself.",
+      "explanation": "Voltage-gated Na+ channels respond to voltage changes, not ligands; the receptor here opens because acetylcholine binds it, which is the definition of the ligand-gated nicotinic channel."
+    }
+  ],
+  "context": "Learning objective: contrast cholinergic receptor classes. Nicotinic receptors are ligand-gated cation channels producing fast depolarization; muscarinic receptors are G protein-coupled and slower, and the two show no cross-reactivity.",
+  "cite": "openstax-anatomy-physiology#neuro-nicotinic-muscarinic",
+  "publicUsmle": {
+    "schemaVersion": 1,
+    "origin": "generated",
+    "itemText": {
+      "licence": "CC-BY-4.0",
+      "attribution": "MD3 contributors"
+    },
+    "evidence": {
+      "kind": "passage",
+      "sourceId": "openstax-anatomy-physiology",
+      "passageId": "neuro-nicotinic-muscarinic",
+      "licence": {
+        "cls": "foss",
+        "id": "cc-by-4.0"
+      }
+    },
+    "media": {
+      "kind": "asset",
+      "assetId": "nmj-v1",
+      "job": "anatomy",
+      "showWhen": "after-reveal",
+      "licence": {
+        "cls": "foss",
+        "id": "cc-by-4.0"
+      },
+      "attribution": "MD3 contributors",
+      "contentHash": "sha256:5d5ef2fac1990f38c3308366def619ba7a6130b0758221648acd0d06510e15a4"
+    }
+  },
+  "imageUrl": "/figures/usmle/step1/nmj-v1.svg",
+  "imageCaption": "NMJ: ACh vesicles -> nicotinic receptors -> EPP; AChE clears the cleft."
+}

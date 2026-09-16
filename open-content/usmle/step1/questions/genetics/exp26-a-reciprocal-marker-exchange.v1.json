@@ -1,0 +1,71 @@
+{
+  "id": "bank:usmle-step1:exp26-a-reciprocal-marker-exchange:v1",
+  "rotation": "usmle-step1-open",
+  "topics": [
+    "genetics",
+    "linkage-recombination"
+  ],
+  "moduleNodes": [
+    "usmle/step1",
+    "usmle/step1/genetics"
+  ],
+  "questionType": "interpretation",
+  "difficulty": "hard",
+  "stem": "A hypothetical pair of homologous chromosomes has markers arranged A-B-C and a-b-c at matching gene locations. A single reciprocal exchange produces A-b-c and a-B-C. Marker order is preserved, and no sequence change occurs outside the exchanged segments. Which of the following best locates the exchange?",
+  "options": [
+    {
+      "label": "A",
+      "text": "Before the first of the three marker loci",
+      "isCorrect": false,
+      "explanation": "Exchanging the entire marked segment would preserve the three markers together as a block. It would not create the observed separation of the first marker from the others.",
+      "misconception": "Places the exchange before the entire marker block even though the first marker separates from the others."
+    },
+    {
+      "label": "B",
+      "text": "After the third of the three marker loci",
+      "isCorrect": false,
+      "explanation": "An exchange beyond the marked region would leave these three-marker combinations intact. It cannot explain the observed mixing of parental origin within the displayed segment.",
+      "misconception": "Places the exchange outside the marker block despite the observed change within it."
+    },
+    {
+      "label": "C",
+      "text": "Within another chromosome lacking these loci",
+      "isCorrect": false,
+      "explanation": "The altered combinations occur at the displayed matched loci. Exchanging a different chromosome would not account for the reciprocal change within this specified marker series.",
+      "misconception": "Attributes a change in these marker combinations to an exchange on a different chromosome."
+    },
+    {
+      "label": "D",
+      "text": "Between the first and second marker loci",
+      "isCorrect": true,
+      "explanation": "The first marker retains its original association, while the second and third come from the other chromosome. That transition places the exchange between the first two loci.",
+      "misconception": "No misconception: The switch in parental origin after the first marker locates the exchange boundary."
+    },
+    {
+      "label": "E",
+      "text": "Between the second and third marker loci",
+      "isCorrect": false,
+      "explanation": "An exchange here would change the association of the third marker while preserving the first two together. The observed second marker has also switched origin.",
+      "misconception": "Keeps the first two markers together despite the observed change in the second marker’s parental origin."
+    }
+  ],
+  "context": "Learning objective: infer a recombination interval from the transition in parental marker origin. The segment beyond the first marker has changed origin, placing the crossover between the first and second loci.",
+  "cite": "nhgri-linkage#linkage-recombination",
+  "publicUsmle": {
+    "schemaVersion": 1,
+    "origin": "generated",
+    "itemText": {
+      "licence": "CC-BY-4.0",
+      "attribution": "MD3 contributors"
+    },
+    "evidence": {
+      "kind": "passage",
+      "sourceId": "nhgri-linkage",
+      "passageId": "linkage-recombination",
+      "licence": {
+        "cls": "foss",
+        "id": "us-gov"
+      }
+    }
+  }
+}

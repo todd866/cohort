@@ -1,0 +1,71 @@
+{
+  "id": "bank:usmle-step1:exp26-a-compound-heterozygote-phase:v1",
+  "rotation": "usmle-step1-open",
+  "topics": [
+    "genetics",
+    "recessive-segregation"
+  ],
+  "moduleNodes": [
+    "usmle/step1",
+    "usmle/step1/genetics"
+  ],
+  "questionType": "interpretation",
+  "difficulty": "medium",
+  "stem": "A child has a completely penetrant autosomal recessive disorder. Sequencing identifies two distinct pathogenic variants in the same gene. One was inherited from the mother and one from the father. Neither parent is affected. Which of the following best describes the child's genotype?",
+  "options": [
+    {
+      "label": "A",
+      "text": "The same pathogenic allele in the two gene copies",
+      "isCorrect": false,
+      "explanation": "Two identical pathogenic alleles would describe homozygosity. Sequencing explicitly distinguishes the maternal variant from the paternal variant, favoring compound heterozygosity in this child.",
+      "misconception": "Treats two distinct pathogenic variants as the same allele and confuses compound heterozygosity with homozygosity."
+    },
+    {
+      "label": "B",
+      "text": "Two normal alleles despite the clinical phenotype",
+      "isCorrect": false,
+      "explanation": "Both gene copies are reported to contain pathogenic variants. Reclassifying them as normal would contradict the supplied sequence results rather than explain the disease.",
+      "misconception": "Discards the pathogenic sequence findings by assuming both gene copies are normal."
+    },
+    {
+      "label": "C",
+      "text": "Two pathogenic variants confined to one gene copy",
+      "isCorrect": false,
+      "explanation": "The variants were inherited from different parents and occupy the two copies at one locus. Placing both on one copy discards the parental-origin information.",
+      "misconception": "Places both variants on one copy despite evidence that different parents contributed them."
+    },
+    {
+      "label": "D",
+      "text": "Different pathogenic alleles in the two gene copies",
+      "isCorrect": true,
+      "explanation": "Each parent contributed a different pathogenic allele at the same locus. Both copies are affected, satisfying the recessive model through compound heterozygosity rather than identical variants.",
+      "misconception": "No misconception: Different pathogenic alleles on the two parental copies satisfy the recessive model."
+    },
+    {
+      "label": "E",
+      "text": "One pathogenic allele and one normal gene copy",
+      "isCorrect": false,
+      "explanation": "This describes a carrier genotype. The child instead received a pathogenic allele from each parent, so the normal-copy requirement of this option is absent.",
+      "misconception": "Assumes a normal second copy despite a pathogenic allele inherited from each parent."
+    }
+  ],
+  "context": "Learning objective: recognize two different pathogenic alleles at one locus as compound heterozygosity. Recessive disease does not require the maternal and paternal pathogenic variants to have identical sequences.",
+  "cite": "nhgri-genetic-testing-glossary#recessive-compound",
+  "publicUsmle": {
+    "schemaVersion": 1,
+    "origin": "generated",
+    "itemText": {
+      "licence": "CC-BY-4.0",
+      "attribution": "MD3 contributors"
+    },
+    "evidence": {
+      "kind": "passage",
+      "sourceId": "nhgri-genetic-testing-glossary",
+      "passageId": "recessive-compound",
+      "licence": {
+        "cls": "foss",
+        "id": "us-gov"
+      }
+    }
+  }
+}

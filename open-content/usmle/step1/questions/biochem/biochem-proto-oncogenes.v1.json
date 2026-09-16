@@ -1,0 +1,85 @@
+{
+  "id": "bank:usmle-step1:biochem-proto-oncogenes:v1",
+  "rotation": "usmle-step1-open",
+  "topics": [
+    "oncogenes",
+    "cell cycle"
+  ],
+  "moduleNodes": [
+    "usmle/step1",
+    "usmle/step1/biochem"
+  ],
+  "questionType": "mechanism",
+  "difficulty": "medium",
+  "stem": "What are proto-oncogenes?",
+  "options": [
+    {
+      "label": "A",
+      "text": "Genes that only trigger apoptosis programs",
+      "isCorrect": false,
+      "misconception": "Overlaps tumor-suppressor roles like p53.",
+      "explanation": "Opposite class; see the cited source passage for detail."
+    },
+    {
+      "label": "B",
+      "text": "Ribosomal RNA molecules with no protein product",
+      "isCorrect": false,
+      "misconception": "Wrong molecule class.",
+      "explanation": "They are typically protein-coding genes."
+    },
+    {
+      "label": "C",
+      "text": "Dietary antioxidants stored in adipocytes",
+      "isCorrect": false,
+      "misconception": "Nonsense — does not match the cited teaching point.",
+      "explanation": "Genes, not nutrients."
+    },
+    {
+      "label": "D",
+      "text": "Genes for positive cell-cycle regulators",
+      "isCorrect": true,
+      "misconception": "None; they encode positive regulators.",
+      "explanation": "OpenStax: genes for positive cell-cycle regulators are called proto-oncogenes."
+    },
+    {
+      "label": "E",
+      "text": "Viral capsids that digest chromosomal DNA",
+      "isCorrect": false,
+      "misconception": "Wrong concept for this stem; does not match the cited passage.",
+      "explanation": "Proto-oncogenes are cellular genes."
+    }
+  ],
+  "context": "Learning objective: proto-oncogenes are positive cell-cycle regulator genes.",
+  "cite": "openstax-biology-2e#proto-oncogenes",
+  "publicUsmle": {
+    "schemaVersion": 1,
+    "origin": "generated",
+    "itemText": {
+      "licence": "CC-BY-4.0",
+      "attribution": "MD3 contributors"
+    },
+    "evidence": {
+      "kind": "passage",
+      "sourceId": "openstax-biology-2e",
+      "passageId": "proto-oncogenes",
+      "licence": {
+        "cls": "foss",
+        "id": "cc-by-4.0"
+      }
+    },
+    "media": {
+      "kind": "asset",
+      "assetId": "cell-cycle-genes-v1",
+      "job": "pathway",
+      "showWhen": "after-reveal",
+      "licence": {
+        "cls": "foss",
+        "id": "cc-by-4.0"
+      },
+      "attribution": "MD3 contributors",
+      "contentHash": "sha256:0e96190a2433d69036adb4d7d917292c4133a918ef3e5fb07062a1d4bc160053"
+    }
+  },
+  "imageUrl": "/figures/usmle/step1/cell-cycle-genes-v1.svg",
+  "imageCaption": "Proto-oncogenes = positive cell-cycle regulators; p53 triggers repair; homologous chromosomes match loci."
+}

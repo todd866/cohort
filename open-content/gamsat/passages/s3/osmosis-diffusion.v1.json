@@ -1,0 +1,264 @@
+{
+  "schemaVersion": 1,
+  "id": "gamsat:s3:osmosis-diffusion",
+  "section": "s3",
+  "title": "Osmosis and Diffusion in Biological Systems",
+  "domain": "osmosis-diffusion",
+  "passage": "Biological membranes regulate the movement of substances between cellular compartments through selective permeability. Researchers investigated the principles of osmosis and diffusion using artificial membrane systems to model biological processes.\n\n**Experiment 1: Simple Diffusion**\n\nA researcher prepared a U-tube apparatus with a semi-permeable membrane separating two chambers. The membrane allows water and small solutes to pass but blocks large proteins. Chamber A contained 1.0 M glucose solution, and Chamber B contained 0.2 M glucose solution. After 2 hours at 25°C, the glucose concentration in both chambers was measured.\n\nResults:\n- Chamber A: 0.7 M glucose\n- Chamber B: 0.5 M glucose\n- Net movement: Chamber A → Chamber B\n\nThe rate of glucose diffusion was measured at different concentration gradients:\n\n| Concentration Gradient (M) | Rate (μmol/min) |\n|---------------------------|-----------------|\n| 0.2 | 8 |\n| 0.4 | 16 |\n| 0.6 | 24 |\n| 0.8 | 32 |\n\n**Experiment 2: Osmosis**\n\nThe same U-tube apparatus was prepared with a membrane permeable to water but impermeable to glucose. Chamber A contained 0.5 M glucose, and Chamber B contained 0.1 M glucose. Water level changes were monitored over time.\n\nObservations:\n- Water moved from Chamber B → Chamber A\n- Water level in Chamber A rose 3.2 cm after equilibrium\n- No glucose crossed the membrane (confirmed by analysis)\n\nThe osmotic pressure (π) was calculated using: π = iMRT\nWhere i = van't Hoff factor (1 for glucose), M = molarity, R = 0.0821 L·atm/(mol·K), T = temperature in Kelvin\n\nFor Chamber A (0.5 M): π = 1 × 0.5 × 0.0821 × 298 = 12.2 atm\nFor Chamber B (0.1 M): π = 1 × 0.1 × 0.0821 × 298 = 2.4 atm\n\n**Experiment 3: Red Blood Cell Osmotic Response**\n\nHuman red blood cells (RBCs) were placed in solutions of different tonicities:\n\n| Solution Type | [NaCl] (mM) | RBC Appearance |\n|--------------|------------|----------------|\n| Hypotonic | 50 | Swollen, lysed (hemolysis) |\n| Isotonic | 150 | Normal, biconcave disc |\n| Hypertonic | 300 | Shrunken, crenated |\n\nThe researcher noted that RBC membranes are freely permeable to water but relatively impermeable to ions. Normal RBC cytoplasm has an osmolarity of approximately 300 mOsm/L (equivalent to 150 mM NaCl, since NaCl dissociates into 2 ions).\n\n**Experiment 4: Facilitated Diffusion**\n\nTo investigate glucose transport into cells, researchers measured uptake rates with and without insulin (a hormone that increases glucose transporter expression):\n\n| [Glucose] (mM) | Uptake without insulin (nmol/min) | Uptake with insulin (nmol/min) |\n|----------------|-----------------------------------|-------------------------------|\n| 1 | 2.5 | 8.0 |\n| 2 | 4.5 | 15.0 |\n| 5 | 8.5 | 28.0 |\n| 10 | 11.0 | 35.0 |\n| 20 | 12.5 | 38.0 |\n| 50 | 13.0 | 40.0 |\n\nA double-reciprocal plot (1/uptake vs 1/[glucose]) showed:\n- Without insulin: Vmax = 14 nmol/min, Km = 6 mM\n- With insulin: Vmax = 42 nmol/min, Km = 6 mM\n\nThe researchers concluded that insulin increases the number of glucose transporters but does not change their affinity for glucose.",
+  "questions": [
+    {
+      "id": "gamsat:s3:osmosis-diffusion:q1",
+      "moves": [
+        "s3-mechanism-inference"
+      ],
+      "stem": "In Experiment 1, glucose moved from Chamber A to Chamber B because:",
+      "options": [
+        {
+          "label": "A",
+          "text": "Chamber A had higher osmotic pressure (osmotic gradient)",
+          "isCorrect": false
+        },
+        {
+          "label": "B",
+          "text": "Chamber A had higher glucose concentration (concentration gradient)",
+          "isCorrect": true
+        },
+        {
+          "label": "C",
+          "text": "The membrane actively transported glucose against its gradient (active transport)",
+          "isCorrect": false
+        },
+        {
+          "label": "D",
+          "text": "Water moved from B to A, carrying glucose with it (solvent drag)",
+          "isCorrect": false
+        }
+      ],
+      "explanation": "Glucose moved from Chamber A (1.0 M) to Chamber B (0.2 M) down the concentration gradient via simple diffusion. Higher osmotic pressure explains water movement, not solute diffusion, and active transport requires energy input which this system lacks. Simple diffusion requires no membrane proteins and no energy — it is driven solely by the concentration gradient and described by Fick's law.",
+      "difficulty": "medium"
+    },
+    {
+      "id": "gamsat:s3:osmosis-diffusion:q2",
+      "moves": [
+        "s3-graph-gradient"
+      ],
+      "stem": "The relationship between concentration gradient and diffusion rate in Experiment 1 suggests:",
+      "options": [
+        {
+          "label": "A",
+          "text": "Diffusion rate is entirely independent of the concentration gradient",
+          "isCorrect": false
+        },
+        {
+          "label": "B",
+          "text": "Diffusion rate is directly proportional to concentration gradient",
+          "isCorrect": true
+        },
+        {
+          "label": "C",
+          "text": "Diffusion rate decreases as gradient increases",
+          "isCorrect": false
+        },
+        {
+          "label": "D",
+          "text": "Diffusion follows saturation kinetics",
+          "isCorrect": false
+        }
+      ],
+      "explanation": "Doubling the gradient from 0.2 to 0.4 M doubles the rate from 8 to 16 umol/min, and this pattern holds throughout the dataset, confirming direct proportionality as described by Fick's law. Saturation kinetics would show a plateau at high concentrations, which is characteristic of facilitated (carrier-mediated) diffusion. The key distinction: simple diffusion is linear with no plateau, while facilitated diffusion saturates with Michaelis-Menten-like kinetics.",
+      "difficulty": "medium"
+    },
+    {
+      "id": "gamsat:s3:osmosis-diffusion:q3",
+      "moves": [
+        "s3-mechanism-inference"
+      ],
+      "stem": "In Experiment 2, water moved from Chamber B to Chamber A because:",
+      "options": [
+        {
+          "label": "A",
+          "text": "Chamber A had lower osmotic pressure (weaker osmotic pull)",
+          "isCorrect": false
+        },
+        {
+          "label": "B",
+          "text": "Chamber A had higher osmotic pressure (lower water concentration)",
+          "isCorrect": true
+        },
+        {
+          "label": "C",
+          "text": "Glucose pulled water across the membrane (active transport)",
+          "isCorrect": false
+        },
+        {
+          "label": "D",
+          "text": "The membrane was impermeable to water (no osmosis possible)",
+          "isCorrect": false
+        }
+      ],
+      "explanation": "Chamber A (0.5 M glucose, pi = 12.2 atm) has higher osmotic pressure than Chamber B (0.1 M glucose, pi = 2.4 atm), so water moves from B to A to dilute the more concentrated solution. Water always moves toward higher solute concentration (lower water concentration), which is the higher osmotic pressure side. Glucose pulling water through active transport incorrectly invokes energy-dependent transport, and the membrane being impermeable to water contradicts the experimental design.",
+      "difficulty": "medium"
+    },
+    {
+      "id": "gamsat:s3:osmosis-diffusion:q4",
+      "moves": [
+        "s3-mechanism-inference"
+      ],
+      "stem": "When RBCs are placed in hypotonic solution (Experiment 3), they lyse because:",
+      "options": [
+        {
+          "label": "A",
+          "text": "Salt diffuses out of cells rapidly",
+          "isCorrect": false
+        },
+        {
+          "label": "B",
+          "text": "Water enters cells, causing them to swell and burst",
+          "isCorrect": true
+        },
+        {
+          "label": "C",
+          "text": "Glucose cannot enter the cells",
+          "isCorrect": false
+        },
+        {
+          "label": "D",
+          "text": "The membrane becomes completely permeable to all solutes",
+          "isCorrect": false
+        }
+      ],
+      "explanation": "The hypotonic solution (~100 mOsm/L) has lower osmolarity than RBC cytoplasm (300 mOsm/L), so water enters by osmosis. RBCs lack rigid cell walls and swell until they burst (hemolysis). Salt diffusing out is incorrect because the membrane is relatively impermeable to ions. RBCs are the classic osmotic demonstration because they lack a cell wall — plant cells in hypotonic solution become turgid but do not burst because the rigid cell wall resists expansion.",
+      "difficulty": "medium"
+    },
+    {
+      "id": "gamsat:s3:osmosis-diffusion:q5",
+      "moves": [
+        "s3-unit-dimension"
+      ],
+      "stem": "An isotonic solution for RBCs has osmolarity of:",
+      "options": [
+        {
+          "label": "A",
+          "text": "50 mOsm/L",
+          "isCorrect": false
+        },
+        {
+          "label": "B",
+          "text": "150 mOsm/L",
+          "isCorrect": false
+        },
+        {
+          "label": "C",
+          "text": "300 mOsm/L",
+          "isCorrect": true
+        },
+        {
+          "label": "D",
+          "text": "600 mOsm/L",
+          "isCorrect": false
+        }
+      ],
+      "explanation": "RBC cytoplasm is approximately 300 mOsm/L, and 150 mM NaCl produces 300 mOsm/L because NaCl dissociates into two ions (150 x 2 = 300). Below 300 mOsm/L is hypotonic (causing swelling), above is hypertonic (causing crenation), and only 300 mOsm/L is isotonic with no net water movement. Normal saline (0.9% NaCl = 154 mM) is isotonic with blood at approximately 308 mOsm/L, which is why it is used as an IV fluid without causing haemolysis.",
+      "difficulty": "medium"
+    },
+    {
+      "id": "gamsat:s3:osmosis-diffusion:q6",
+      "moves": [
+        "s3-mechanism-inference"
+      ],
+      "stem": "In Experiment 4, insulin increases glucose uptake primarily by:",
+      "options": [
+        {
+          "label": "A",
+          "text": "Increasing Km (transporter affinity)",
+          "isCorrect": false
+        },
+        {
+          "label": "B",
+          "text": "Decreasing Km (transporter affinity)",
+          "isCorrect": false
+        },
+        {
+          "label": "C",
+          "text": "Increasing Vmax (number of transporters)",
+          "isCorrect": true
+        },
+        {
+          "label": "D",
+          "text": "Converting facilitated diffusion to active transport",
+          "isCorrect": false
+        }
+      ],
+      "explanation": "Insulin increases Vmax from 14 to 42 nmol/min while Km remains 6 mM, meaning more glucose transporters are present on the membrane but each transporter's affinity for glucose is unchanged. Insulin recruits GLUT4 transporters from intracellular vesicles to the cell surface — this increases Vmax (more channels) without changing Km (same channel structure). Changing Km would indicate altered transporter affinity, and GLUT transporters remain passive carriers, not active transport.",
+      "difficulty": "medium"
+    },
+    {
+      "id": "gamsat:s3:osmosis-diffusion:q7",
+      "moves": [
+        "s3-unit-dimension"
+      ],
+      "stem": "At high glucose concentrations ([glucose] = 50 mM), uptake rate plateaus in Experiment 4. This indicates:",
+      "options": [
+        {
+          "label": "A",
+          "text": "Simple diffusion is occurring (passive, unmediated)",
+          "isCorrect": false
+        },
+        {
+          "label": "B",
+          "text": "Transporters are saturated (facilitated diffusion)",
+          "isCorrect": true
+        },
+        {
+          "label": "C",
+          "text": "Active transport is at maximum (ATP-limited)",
+          "isCorrect": false
+        },
+        {
+          "label": "D",
+          "text": "The membrane has become impermeable (transport blocked)",
+          "isCorrect": false
+        }
+      ],
+      "explanation": "All transporter binding sites are occupied at high glucose concentrations, so adding more substrate cannot increase the rate — this saturation is the hallmark of facilitated (carrier-mediated) diffusion. Simple diffusion would show a linear increase with no plateau. The saturation test distinguishes simple from facilitated diffusion: if doubling [S] at high concentrations does not double the rate, carriers are involved.",
+      "difficulty": "medium"
+    },
+    {
+      "id": "gamsat:s3:osmosis-diffusion:q8",
+      "moves": [
+        "s3-prediction-from-model",
+        "s3-equilibrium-shift"
+      ],
+      "stem": "If the membrane in Experiment 2 were permeable to both glucose and water, what would occur at equilibrium?",
+      "options": [
+        {
+          "label": "A",
+          "text": "Water levels would remain permanently unequal",
+          "isCorrect": false
+        },
+        {
+          "label": "B",
+          "text": "Glucose concentrations would equalize, water levels would equalize",
+          "isCorrect": true
+        },
+        {
+          "label": "C",
+          "text": "No net movement of either substance would occur",
+          "isCorrect": false
+        },
+        {
+          "label": "D",
+          "text": "Osmotic pressure would increase in both chambers at the same rate",
+          "isCorrect": false
+        }
+      ],
+      "explanation": "Both glucose and water diffuse until concentrations equalise in both chambers, eliminating all gradients and producing equal water levels. Unequal water levels would only persist if the solute could not cross the membrane, creating sustained osmotic pressure. Osmotic pressure only exists across a membrane impermeable to the solute — if the solute can cross freely, concentrations equalise and there is no osmotic gradient.",
+      "difficulty": "medium"
+    }
+  ],
+  "licence": {
+    "id": "CC-BY-4.0",
+    "attribution": "MD3 contributors"
+  },
+  "origin": "authored"
+}

@@ -1,0 +1,86 @@
+{
+  "id": "bank:usmle-step1:re-spermatogenesis-four-haploid:v1",
+  "rotation": "usmle-step1-open",
+  "topics": [
+    "spermatogenesis",
+    "meiosis",
+    "spermatids"
+  ],
+  "moduleNodes": [
+    "usmle/step1",
+    "usmle/step1/reproductive"
+  ],
+  "questionType": "mechanism",
+  "difficulty": "easy",
+  "stem": "A 27-year-old man undergoes fertility testing, and a testicular biopsy shows active spermatogenesis in the seminiferous tubules.\n\nStarting from one primary spermatocyte, which of the following is the number of haploid spermatids that will ultimately be produced?",
+  "options": [
+    {
+      "label": "A",
+      "text": "Two haploid spermatids",
+      "isCorrect": false,
+      "misconception": "Only the first meiotic division is being counted.",
+      "explanation": "Meiosis I alone yields two secondary spermatocytes, but each then completes meiosis II, doubling the final yield to four haploid spermatids."
+    },
+    {
+      "label": "B",
+      "text": "One haploid spermatid",
+      "isCorrect": false,
+      "misconception": "The oogenesis pattern of one ovum is being applied to sperm.",
+      "explanation": "Female meiosis yields one ovum plus polar bodies; male meiosis conserves all four products as functional spermatids."
+    },
+    {
+      "label": "C",
+      "text": "Four haploid spermatids",
+      "isCorrect": true,
+      "misconception": "None; two meiotic divisions yield four haploid cells.",
+      "explanation": "Meiosis has two rounds of cell division — primary spermatocyte to secondary spermatocyte, then secondary spermatocyte to spermatid — producing four haploid daughter cells from each primary spermatocyte."
+    },
+    {
+      "label": "D",
+      "text": "Eight haploid spermatids",
+      "isCorrect": false,
+      "misconception": "An extra division round is being inserted into meiosis.",
+      "explanation": "Meiosis comprises exactly two divisions after the single mitotic amplification; 2 × 2 gives four, not eight, spermatids per primary spermatocyte."
+    },
+    {
+      "label": "E",
+      "text": "Two diploid spermatids",
+      "isCorrect": false,
+      "misconception": "The chromosome number of the products is being mistaken.",
+      "explanation": "Spermatids are haploid (23 chromosomes); diploid cells at this stage would indicate failed meiosis, and the count of products is four."
+    }
+  ],
+  "context": "Learning objective: trace male gametogenesis. Spermatogenesis begins with mitosis of diploid spermatogonia; each primary spermatocyte then undergoes two meiotic divisions, yielding four haploid spermatids that mature into spermatozoa during spermiogenesis.",
+  "cite": "openstax-anatomy-physiology#re-spermatogenesis-four-haploid",
+  "publicUsmle": {
+    "schemaVersion": 1,
+    "origin": "generated",
+    "itemText": {
+      "licence": "CC-BY-4.0",
+      "attribution": "MD3 contributors"
+    },
+    "evidence": {
+      "kind": "passage",
+      "sourceId": "openstax-anatomy-physiology",
+      "passageId": "re-spermatogenesis-four-haploid",
+      "licence": {
+        "cls": "foss",
+        "id": "cc-by-4.0"
+      }
+    },
+    "media": {
+      "kind": "asset",
+      "assetId": "male-reproduction-v1",
+      "job": "pathway",
+      "showWhen": "after-reveal",
+      "licence": {
+        "cls": "foss",
+        "id": "cc-by-4.0"
+      },
+      "attribution": "MD3 contributors",
+      "contentHash": "sha256:97c8c6b84c0aa26f1cefdaef639c671072c487a9a21f511e950d2aad23232b03"
+    }
+  },
+  "imageUrl": "/figures/usmle/step1/male-reproduction-v1.svg",
+  "imageCaption": "Male path: spermatogenesis (4 haploid), epididymis, Leydig testosterone, midpiece mitochondria, seminal fructose."
+}

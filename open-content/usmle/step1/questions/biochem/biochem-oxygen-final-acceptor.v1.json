@@ -1,0 +1,85 @@
+{
+  "id": "bank:usmle-step1:biochem-oxygen-final-acceptor:v1",
+  "rotation": "usmle-step1-open",
+  "topics": [
+    "ETC",
+    "oxygen"
+  ],
+  "moduleNodes": [
+    "usmle/step1",
+    "usmle/step1/biochem"
+  ],
+  "questionType": "mechanism",
+  "difficulty": "easy",
+  "stem": "In aerobic mitochondrial electron transport, what is the final electron acceptor?",
+  "options": [
+    {
+      "label": "A",
+      "text": "Oxygen",
+      "isCorrect": true,
+      "misconception": "None; oxygen is the final electron acceptor.",
+      "explanation": "OpenStax: oxygen is the final electron acceptor in the electron transport chain."
+    },
+    {
+      "label": "B",
+      "text": "Cytochrome c only",
+      "isCorrect": false,
+      "misconception": "Cytochrome c is an intermediate carrier.",
+      "explanation": "Electrons continue to complex IV and O2."
+    },
+    {
+      "label": "C",
+      "text": "Water-splitting photosystem II",
+      "isCorrect": false,
+      "misconception": "That is photosynthetic O2 production, opposite direction.",
+      "explanation": "Respiration consumes O2."
+    },
+    {
+      "label": "D",
+      "text": "Carbon dioxide",
+      "isCorrect": false,
+      "misconception": "CO2 is a carbon waste of decarboxylation, not an ETC acceptor.",
+      "explanation": "O2 becomes water after accepting electrons."
+    },
+    {
+      "label": "E",
+      "text": "NAD+",
+      "isCorrect": false,
+      "misconception": "NAD+ accepts electrons in dehydrogenases earlier, not at complex IV terminus.",
+      "explanation": "Terminal acceptor is O2."
+    }
+  ],
+  "context": "Learning objective: O2 is the terminal ETC acceptor.",
+  "cite": "openstax-biology-2e#oxygen-final-acceptor",
+  "publicUsmle": {
+    "schemaVersion": 1,
+    "origin": "generated",
+    "itemText": {
+      "licence": "CC-BY-4.0",
+      "attribution": "MD3 contributors"
+    },
+    "evidence": {
+      "kind": "passage",
+      "sourceId": "openstax-biology-2e",
+      "passageId": "oxygen-final-acceptor",
+      "licence": {
+        "cls": "foss",
+        "id": "cc-by-4.0"
+      }
+    },
+    "media": {
+      "kind": "asset",
+      "assetId": "cellular-respiration-v1",
+      "job": "pathway",
+      "showWhen": "after-reveal",
+      "licence": {
+        "cls": "foss",
+        "id": "cc-by-4.0"
+      },
+      "attribution": "MD3 contributors",
+      "contentHash": "sha256:28ae7f955e1024135e9335f39b761f79292b1cc679baed71478eb3efc31f99e5"
+    }
+  },
+  "imageUrl": "/figures/usmle/step1/cellular-respiration-v1.svg",
+  "imageCaption": "Cellular respiration: glycolysis -> pyruvate -> acetyl-CoA -> citric cycle carriers -> ETC/ATP synthase; O2 terminal acceptor; fermentation regenerates NAD+."
+}

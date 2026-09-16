@@ -1,0 +1,85 @@
+{
+  "id": "bank:usmle-step1:pharm-rifampin-uses:v1",
+  "rotation": "usmle-step1-open",
+  "topics": [
+    "rifampin",
+    "tuberculosis"
+  ],
+  "moduleNodes": [
+    "usmle/step1",
+    "usmle/step1/pharmacology"
+  ],
+  "questionType": "mechanism",
+  "difficulty": "easy",
+  "stem": "Rifampin is used with other medications to treat which serious infection?",
+  "options": [
+    {
+      "label": "A",
+      "text": "Only migraine headaches without antimycobacterial labeling",
+      "isCorrect": false,
+      "misconception": "Wrong concept for this stem; does not match the cited passage.",
+      "explanation": "This option does not match the cited source passage for the stem."
+    },
+    {
+      "label": "B",
+      "text": "Tuberculosis (TB) affecting lungs and sometimes other body sites",
+      "isCorrect": true,
+      "misconception": "None — this option matches the cited source passage for the stem.",
+      "explanation": "This correct choice is supported by the cited FOSS passage."
+    },
+    {
+      "label": "C",
+      "text": "Only schizophrenia without tuberculosis treatment roles",
+      "isCorrect": false,
+      "misconception": "Wrong concept for this stem; does not match the cited passage.",
+      "explanation": "This option does not match the cited source passage for the stem."
+    },
+    {
+      "label": "D",
+      "text": "Only gout flares without TB combination therapy uses",
+      "isCorrect": false,
+      "misconception": "Wrong concept for this stem; does not match the cited passage.",
+      "explanation": "This option does not match the cited source passage for the stem."
+    },
+    {
+      "label": "E",
+      "text": "Only latent VZV reactivation without rifampin TB labeling",
+      "isCorrect": false,
+      "misconception": "Wrong concept for this stem; does not match the cited passage.",
+      "explanation": "This option does not match the cited source passage for the stem."
+    }
+  ],
+  "context": "Learning objective: recall rifampin tuberculosis use from the cited FOSS source.",
+  "cite": "medlineplus-rifampin#rifampin-uses",
+  "publicUsmle": {
+    "schemaVersion": 1,
+    "origin": "generated",
+    "itemText": {
+      "licence": "CC-BY-4.0",
+      "attribution": "MD3 contributors"
+    },
+    "evidence": {
+      "kind": "passage",
+      "sourceId": "medlineplus-rifampin",
+      "passageId": "rifampin-uses",
+      "licence": {
+        "cls": "foss",
+        "id": "us-gov"
+      }
+    },
+    "media": {
+      "kind": "asset",
+      "assetId": "pharm-drug-classes-v1",
+      "job": "compare-table",
+      "showWhen": "after-reveal",
+      "licence": {
+        "cls": "foss",
+        "id": "cc-by-4.0"
+      },
+      "attribution": "MD3 contributors",
+      "contentHash": "sha256:0660ff11235451eff9a2718dd975d64fa61483b220682b17bd82c8050fd4bceb"
+    }
+  },
+  "imageUrl": "/figures/usmle/step1/pharm-drug-classes-v1.svg",
+  "imageCaption": "High-yield FOSS drug-class map from MedlinePlus labels."
+}

@@ -1,0 +1,86 @@
+{
+  "id": "bank:usmle-step1:biochem-citric-cycle-carriers:v1",
+  "rotation": "usmle-step1-open",
+  "topics": [
+    "citric acid cycle",
+    "NADH",
+    "FADH2"
+  ],
+  "moduleNodes": [
+    "usmle/step1",
+    "usmle/step1/biochem"
+  ],
+  "questionType": "mechanism",
+  "difficulty": "medium",
+  "stem": "Per turn of the citric acid cycle, which reduced electron carriers are formed according to the standard textbook accounting?",
+  "options": [
+    {
+      "label": "A",
+      "text": "Six NADPH molecules",
+      "isCorrect": false,
+      "misconception": "Mixes PPP carriers with TCA.",
+      "explanation": "Citric cycle uses NAD+/FAD."
+    },
+    {
+      "label": "B",
+      "text": "One NADH molecule only",
+      "isCorrect": false,
+      "misconception": "Under-counts NADH and omits FADH2.",
+      "explanation": "Each turn forms multiple NADH plus FADH2."
+    },
+    {
+      "label": "C",
+      "text": "Four FADH2 molecules",
+      "isCorrect": false,
+      "misconception": "Swaps NADH/FADH2 counts.",
+      "explanation": "FADH2 yield is one per turn."
+    },
+    {
+      "label": "D",
+      "text": "No reduced carriers at all",
+      "isCorrect": false,
+      "misconception": "Ignores dehydrogenase steps.",
+      "explanation": "Dehydrogenases generate NADH/FADH2."
+    },
+    {
+      "label": "E",
+      "text": "Three NADH and one FADH2",
+      "isCorrect": true,
+      "misconception": "None; that is the per-turn yield.",
+      "explanation": "OpenStax: each turn forms three NADH and one FADH2."
+    }
+  ],
+  "context": "Learning objective: recall citric-cycle reduced-carrier yield per turn.",
+  "cite": "openstax-biology-2e#citric-cycle-carriers",
+  "publicUsmle": {
+    "schemaVersion": 1,
+    "origin": "generated",
+    "itemText": {
+      "licence": "CC-BY-4.0",
+      "attribution": "MD3 contributors"
+    },
+    "evidence": {
+      "kind": "passage",
+      "sourceId": "openstax-biology-2e",
+      "passageId": "citric-cycle-carriers",
+      "licence": {
+        "cls": "foss",
+        "id": "cc-by-4.0"
+      }
+    },
+    "media": {
+      "kind": "asset",
+      "assetId": "cellular-respiration-v1",
+      "job": "pathway",
+      "showWhen": "after-reveal",
+      "licence": {
+        "cls": "foss",
+        "id": "cc-by-4.0"
+      },
+      "attribution": "MD3 contributors",
+      "contentHash": "sha256:28ae7f955e1024135e9335f39b761f79292b1cc679baed71478eb3efc31f99e5"
+    }
+  },
+  "imageUrl": "/figures/usmle/step1/cellular-respiration-v1.svg",
+  "imageCaption": "Cellular respiration: glycolysis -> pyruvate -> acetyl-CoA -> citric cycle carriers -> ETC/ATP synthase; O2 terminal acceptor; fermentation regenerates NAD+."
+}

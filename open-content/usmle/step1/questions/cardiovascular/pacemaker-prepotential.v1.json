@@ -1,0 +1,85 @@
+{
+  "id": "bank:usmle-step1:cardiovascular-pacemaker-prepotential:v1",
+  "rotation": "usmle-step1-open",
+  "topics": [
+    "pacemaker cells",
+    "autorhythmicity"
+  ],
+  "moduleNodes": [
+    "usmle/step1",
+    "usmle/step1/cardiovascular"
+  ],
+  "questionType": "mechanism",
+  "difficulty": "hard",
+  "stem": "A researcher records intracellular potentials from sinoatrial nodal cells obtained from a 55-year-old donor heart. Unlike ventricular myocytes, which maintain a stable resting potential, these cells depolarize spontaneously at regular intervals without any external stimulus, and the membrane potential slowly drifts toward threshold between action potentials.\n\nWhich of the following ion movements most directly initiates this spontaneous drift?",
+  "options": [
+    {
+      "label": "A",
+      "text": "Rapid influx of Na+ through fast voltage-gated channels",
+      "isCorrect": false,
+      "misconception": "The contractile-cell upstroke mechanism is being assigned to pacemaker cells.",
+      "explanation": "A rapid Na+ influx through fast channels produces the upstroke of contractile cells; the conductive-cell prepotential is a slow Na+ influx that precedes the upstroke."
+    },
+    {
+      "label": "B",
+      "text": "Influx of Ca2+ through slow channels",
+      "isCorrect": false,
+      "misconception": "The upstroke of the nodal action potential is being confused with the drift that precedes it.",
+      "explanation": "A rapid influx of Ca2+ follows the prepotential and forms the upstroke in conductive cells; it is not the slow drift that brings the membrane to threshold."
+    },
+    {
+      "label": "C",
+      "text": "Efflux of K+ through open leak channels",
+      "isCorrect": false,
+      "misconception": "A resting-potential mechanism is being invoked for a cell that has no stable resting potential.",
+      "explanation": "Potassium leak efflux stabilizes a negative resting potential, the opposite of the spontaneous depolarizing drift seen in autorhythmic cells."
+    },
+    {
+      "label": "D",
+      "text": "Slow influx of Na+ through the pacemaker current",
+      "isCorrect": true,
+      "misconception": "None; the prepotential phase of conductive cells is produced by a slow sodium influx.",
+      "explanation": "Conductive cells display a prepotential phase with a slow influx of Na+, which carries the membrane gradually toward threshold and underlies autorhythmicity."
+    },
+    {
+      "label": "E",
+      "text": "Efflux of Cl- through ligand-gated channels",
+      "isCorrect": false,
+      "misconception": "An inhibitory anion current is being proposed for an excitatory pacemaker current.",
+      "explanation": "Chloride efflux would depolarize only if chloride were concentrated intracellularly, and ligand-gated chloride channels are not the basis of the sinoatrial prepotential."
+    }
+  ],
+  "context": "Learning objective: distinguish pacemaker from contractile action potentials. The pacemaker prepotential is a slow Na+ influx; the subsequent upstroke is Ca2+-mediated.",
+  "cite": "openstax-anatomy-physiology#heart-conductive-prepotential",
+  "publicUsmle": {
+    "schemaVersion": 1,
+    "origin": "generated",
+    "itemText": {
+      "licence": "CC-BY-4.0",
+      "attribution": "MD3 contributors"
+    },
+    "evidence": {
+      "kind": "passage",
+      "sourceId": "openstax-anatomy-physiology",
+      "passageId": "heart-conductive-prepotential",
+      "licence": {
+        "cls": "foss",
+        "id": "cc-by-4.0"
+      }
+    },
+    "media": {
+      "kind": "asset",
+      "assetId": "pacemaker-ap-v1",
+      "job": "trace",
+      "showWhen": "after-reveal",
+      "licence": {
+        "cls": "foss",
+        "id": "cc-by-4.0"
+      },
+      "attribution": "MD3 contributors",
+      "contentHash": "sha256:9a79b39976a30b55920fe71f970e3c0a3a075e541ca749c033d042efda07d4cd"
+    }
+  },
+  "imageUrl": "/figures/usmle/step1/pacemaker-ap-v1.svg",
+  "imageCaption": "SA-node pacemaker AP: phase 4 funny current, Ca upstroke, K repolarization; rate = phase-4 slope."
+}

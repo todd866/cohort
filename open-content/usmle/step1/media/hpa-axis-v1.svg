@@ -1,0 +1,25 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 300" role="img" aria-labelledby="t d">
+  <title id="t">Hypothalamic-pituitary axis</title>
+  <desc id="desc">Hypothalamus releases releasing/inhibiting hormones to anterior pituitary; posterior pituitary releases ADH and oxytocin from hypothalamic neurons; peripheral glands feed back.</desc>
+  <rect width="720" height="300" fill="#fff"/>
+  <text x="360" y="28" text-anchor="middle" font-family="Helvetica,Arial,sans-serif" font-size="16" font-weight="700" fill="#111">Hypothalamic-pituitary axis</text>
+  <rect x="260" y="50" width="200" height="50" rx="6" fill="#edf2ff" stroke="#111"/>
+  <text x="360" y="80" text-anchor="middle" font-family="Helvetica,Arial,sans-serif" font-size="13" font-weight="700" fill="#111">HYPOTHALAMUS</text>
+  <path d="M300,100 L300,130" fill="none" stroke="#1d4ed8" stroke-width="2.5"/>
+  <path d="M420,100 L420,130" fill="none" stroke="#1d4ed8" stroke-width="2.5"/>
+  <text x="250" y="120" font-family="Helvetica,Arial,sans-serif" font-size="10" fill="#1d4ed8">releasing / inhibiting</text>
+  <text x="440" y="120" font-family="Helvetica,Arial,sans-serif" font-size="10" fill="#1d4ed8">axons (ADH, OT)</text>
+  <rect x="200" y="130" width="180" height="55" rx="6" fill="#f3f4f6" stroke="#111"/>
+  <text x="290" y="155" text-anchor="middle" font-family="Helvetica,Arial,sans-serif" font-size="12" font-weight="700" fill="#111">ANTERIOR pituitary</text>
+  <text x="290" y="172" text-anchor="middle" font-family="Helvetica,Arial,sans-serif" font-size="10" fill="#333">portal blood - tropic hormones</text>
+  <rect x="400" y="130" width="180" height="55" rx="6" fill="#f3f4f6" stroke="#111"/>
+  <text x="490" y="155" text-anchor="middle" font-family="Helvetica,Arial,sans-serif" font-size="12" font-weight="700" fill="#111">POSTERIOR pituitary</text>
+  <text x="490" y="172" text-anchor="middle" font-family="Helvetica,Arial,sans-serif" font-size="10" fill="#333">stores/releases ADH, oxytocin</text>
+  <path d="M290,185 L290,215" fill="none" stroke="#1d4ed8" stroke-width="2.5"/>
+  <path d="M490,185 L490,215" fill="none" stroke="#1d4ed8" stroke-width="2.5"/>
+  <rect x="120" y="215" width="340" height="50" rx="6" fill="#ecfdf5" stroke="#111"/>
+  <text x="290" y="245" text-anchor="middle" font-family="Helvetica,Arial,sans-serif" font-size="12" fill="#111">Thyroid / adrenal cortex / gonads / liver (IGF) / ...</text>
+  <rect x="480" y="215" width="160" height="50" rx="6" fill="#fff7ed" stroke="#111"/>
+  <text x="560" y="245" text-anchor="middle" font-family="Helvetica,Arial,sans-serif" font-size="12" fill="#111">Kidney / uterus / breast</text>
+  <text x="360" y="290" text-anchor="middle" font-family="Helvetica,Arial,sans-serif" font-size="11" fill="#444">Negative feedback from peripheral hormones closes the loop</text>
+</svg>

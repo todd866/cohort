@@ -1,0 +1,91 @@
+{
+  "schemaVersion": 1,
+  "id": "concept-nsaid-dehydration-perfusion",
+  "kind": "conceptual",
+  "sourceFacts": [
+    {
+      "fact": "NSAIDs inhibit renal prostaglandin production.",
+      "sourceUrls": [
+        "https://www.medsafe.govt.nz/Profs/PUArticles/June2013NSAIDS.htm"
+      ]
+    },
+    {
+      "fact": "Prostaglandins help maintain afferent arteriolar dilation, particularly when renal perfusion is reduced.",
+      "sourceUrls": [
+        "https://www.medsafe.govt.nz/Profs/PUArticles/June2013NSAIDS.htm"
+      ]
+    },
+    {
+      "fact": "Loss of this support can reduce filtration in a volume-depleted patient.",
+      "sourceUrls": [
+        "https://www.medsafe.govt.nz/Profs/PUArticles/June2013NSAIDS.htm"
+      ]
+    }
+  ],
+  "nodes": [
+    {
+      "id": "1",
+      "label": "NSAID use"
+    },
+    {
+      "id": "2",
+      "label": "Prostaglandin production falls"
+    },
+    {
+      "id": "3",
+      "label": "Afferent dilation is reduced"
+    },
+    {
+      "id": "4",
+      "label": "Filtration can fall"
+    }
+  ],
+  "edges": [
+    {
+      "from": "1",
+      "to": "2",
+      "meaning": "COX inhibition"
+    },
+    {
+      "from": "2",
+      "to": "3",
+      "meaning": "less vasodilatory support"
+    },
+    {
+      "from": "3",
+      "to": "4",
+      "meaning": "haemodynamic consequence"
+    }
+  ],
+  "labels": [
+    "Why dehydration makes NSAIDs riskier",
+    "NSAID use",
+    "Prostaglandin production falls",
+    "Afferent dilation is reduced",
+    "Filtration can fall",
+    "Conceptual schematic • Not anatomy"
+  ],
+  "layout": "Place four big concept tiles left-to-right on a single broad abstract ribbon, exactly three connecting arrows. Above all four put a coral context banner: Dehydration: lower circulating volume. Tile1 shows a plain medication token marked NSAID, no branded drug. Tile2 shows fewer small PG paper coins. Tile3 a down arrow beside the label only; do not draw a narrowing vessel. Tile4 a neutral falling gauge, no kidney. Below the row print: Less prostaglandin support when perfusion is vulnerable.",
+  "forbiddenAnatomy": [
+    "organs",
+    "body silhouettes",
+    "tissue cross-sections",
+    "cells",
+    "tubules",
+    "vessels",
+    "clinical photographs",
+    "diagnostic scans"
+  ],
+  "validation": {
+    "sourceStatus": "checked",
+    "structureStatus": "verified",
+    "requiredChecks": [
+      "Four labelled nodes in order with three arrows",
+      "Dehydration is context, not a consequence of the pictured NSAID chain",
+      "Final outcome is can fall, not inevitable injury",
+      "No afferent/efferent vessel anatomy or glomerulus"
+    ],
+    "clinicalReviewStatus": "pending",
+    "pixelChecks": "Pixel review: four labels and three links follow NSAID to lower prostaglandin production to reduced afferent dilation to possible lower filtration. Dehydration remains an above-row context banner. Neutral tablet, PG coins, down arrow and gauge; no vessel or glomerulus. Clinical and independent review pending."
+  }
+}

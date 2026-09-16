@@ -1,0 +1,85 @@
+{
+  "schemaVersion": 1,
+  "id": "concept-nephrotic-protein-loss",
+  "kind": "conceptual",
+  "sourceFacts": [
+    {
+      "fact": "Nephrotic syndrome combines urinary protein loss, low blood albumin and oedema.",
+      "sourceUrls": [
+        "https://www.niddk.nih.gov/health-information/kidney-disease/children/nephrotic-syndrome-children"
+      ]
+    },
+    {
+      "fact": "Albumin loss reduces plasma oncotic pressure and can contribute to tissue fluid accumulation; sodium retention is another contributor.",
+      "sourceUrls": [
+        "https://www.niddk.nih.gov/health-information/kidney-disease/children/nephrotic-syndrome-children"
+      ]
+    }
+  ],
+  "nodes": [
+    {
+      "id": "1",
+      "label": "Albumin lost in urine"
+    },
+    {
+      "id": "2",
+      "label": "Blood albumin falls"
+    },
+    {
+      "id": "3",
+      "label": "Plasma oncotic pressure falls"
+    },
+    {
+      "id": "4",
+      "label": "Fluid accumulates in tissues"
+    }
+  ],
+  "edges": [
+    {
+      "from": "1",
+      "to": "2",
+      "meaning": "causal"
+    },
+    {
+      "from": "2",
+      "to": "3",
+      "meaning": "causal"
+    },
+    {
+      "from": "3",
+      "to": "4",
+      "meaning": "contributes"
+    }
+  ],
+  "labels": [
+    "How protein loss contributes to oedema",
+    "Albumin lost in urine",
+    "Blood albumin falls",
+    "Plasma oncotic pressure falls",
+    "Fluid accumulates in tissues",
+    "Conceptual schematic • Not anatomy"
+  ],
+  "layout": "Exactly four linked concept tiles in a left-to-right chain, with no text on the three connecting arrows. Tile1 uses several ochre albumin coin tokens leaving a plain rectangular inventory box labelled Albumin. Tile2 shows fewer same-sized coins in a second plain inventory box. Tile3 uses a downward pressure-arrow icon only, no tubes or blood vessel. Tile4 contains clustered blue droplet tokens outside a small abstract boundary, not tissue. Below tile4 write: Oedema. Below the whole row write: One contributor; sodium retention also matters. Do not draw human cells, tissue, organs or vessels.",
+  "forbiddenAnatomy": [
+    "organs",
+    "body silhouettes",
+    "tissue cross-sections",
+    "cells",
+    "tubules",
+    "vessels",
+    "clinical photographs",
+    "diagnostic scans"
+  ],
+  "validation": {
+    "sourceStatus": "checked",
+    "structureStatus": "verified",
+    "requiredChecks": [
+      "Four tiles and three forward arrows only",
+      "Albumin loss precedes lower blood albumin and lower oncotic pressure",
+      "Use the qualified word contributes for oedema",
+      "No glomerulus, vessels, tissue or anatomy"
+    ],
+    "clinicalReviewStatus": "pending",
+    "pixelChecks": "Pixel structure check: four tiles link urinary albumin loss to lower blood albumin, lower oncotic pressure and tissue fluid; same-size neutral tokens and droplets, no anatomy. Footer qualifies this as one contributor and names sodium retention. All node labels and three causal edges match scaffold. Independent and clinical review pending."
+  }
+}

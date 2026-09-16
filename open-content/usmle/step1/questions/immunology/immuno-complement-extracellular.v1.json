@@ -1,0 +1,84 @@
+{
+  "id": "bank:usmle-step1:immuno-complement-extracellular:v1",
+  "rotation": "usmle-step1-open",
+  "topics": [
+    "complement"
+  ],
+  "moduleNodes": [
+    "usmle/step1",
+    "usmle/step1/immunology"
+  ],
+  "questionType": "mechanism",
+  "difficulty": "medium",
+  "stem": "The complement system functions especially to destroy which microbial targets?",
+  "options": [
+    {
+      "label": "A",
+      "text": "Only triglyceride stores inside adipocyte lipid droplets",
+      "isCorrect": false,
+      "misconception": "Energy storage distractor.",
+      "explanation": "Wrong domain; see the cited source passage for detail."
+    },
+    {
+      "label": "B",
+      "text": "Extracellular pathogens outside host cell cytoplasm",
+      "isCorrect": true,
+      "misconception": "None; complement targets extracellular pathogens.",
+      "explanation": "OpenStax: complement destroys extracellular pathogens."
+    },
+    {
+      "label": "C",
+      "text": "Only null-hypothesis claims inside a sample space",
+      "isCorrect": false,
+      "misconception": "Stats distractor — does not match the cited teaching point.",
+      "explanation": "Wrong domain; see the cited source passage for detail."
+    },
+    {
+      "label": "D",
+      "text": "Only ACE substrate peptides circulating in plasma",
+      "isCorrect": false,
+      "misconception": "Pharm distractor — does not match the cited teaching point.",
+      "explanation": "Wrong domain; see the cited source passage for detail."
+    },
+    {
+      "label": "E",
+      "text": "Only nuclear DNA viruses replicating inside nuclei",
+      "isCorrect": false,
+      "misconception": "Intracellular niche distractor.",
+      "explanation": "Complement is especially extracellular."
+    }
+  ],
+  "context": "Learning objective: complement vs extracellular pathogens.",
+  "cite": "openstax-biology-2e#complement-extracellular",
+  "publicUsmle": {
+    "schemaVersion": 1,
+    "origin": "generated",
+    "itemText": {
+      "licence": "CC-BY-4.0",
+      "attribution": "MD3 contributors"
+    },
+    "evidence": {
+      "kind": "passage",
+      "sourceId": "openstax-biology-2e",
+      "passageId": "complement-extracellular",
+      "licence": {
+        "cls": "foss",
+        "id": "cc-by-4.0"
+      }
+    },
+    "media": {
+      "kind": "asset",
+      "assetId": "immuno-defense-layers-v1",
+      "job": "compare-table",
+      "showWhen": "after-reveal",
+      "licence": {
+        "cls": "foss",
+        "id": "cc-by-4.0"
+      },
+      "attribution": "MD3 contributors",
+      "contentHash": "sha256:af2d1ce40a5a219b0a5c640aed56b4f0f0d54aaad2288a428d9e452ddccaad86"
+    }
+  },
+  "imageUrl": "/figures/usmle/step1/immuno-defense-layers-v1.svg",
+  "imageCaption": "Innate vs adaptive layers, IgE hypersensitivity timing, autoimmunity."
+}

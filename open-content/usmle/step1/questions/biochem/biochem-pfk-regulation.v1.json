@@ -1,0 +1,85 @@
+{
+  "id": "bank:usmle-step1:biochem-pfk-regulation:v1",
+  "rotation": "usmle-step1-open",
+  "topics": [
+    "phosphofructokinase",
+    "glycolysis regulation"
+  ],
+  "moduleNodes": [
+    "usmle/step1",
+    "usmle/step1/biochem"
+  ],
+  "questionType": "mechanism",
+  "difficulty": "medium",
+  "stem": "Which statement about glycolytic regulation matches the OpenStax account?",
+  "options": [
+    {
+      "label": "A",
+      "text": "Oxygen level is the sole metabolic input",
+      "isCorrect": false,
+      "misconception": "Oxygen affects aerobic fate, but nucleotide regulators also act.",
+      "explanation": "Multiple inputs exist."
+    },
+    {
+      "label": "B",
+      "text": "There are no regulated enzymatic steps",
+      "isCorrect": false,
+      "misconception": "False; key steps are control points.",
+      "explanation": "Regulation concentrates at committed steps."
+    },
+    {
+      "label": "C",
+      "text": "A few key enzymatic steps set the pace",
+      "isCorrect": true,
+      "misconception": "None; regulation focuses on key steps.",
+      "explanation": "OpenStax: glycolysis is primarily regulated at three key enzymatic steps."
+    },
+    {
+      "label": "D",
+      "text": "Only ATP synthase sets the sugar-breakdown rate",
+      "isCorrect": false,
+      "misconception": "ATP synthase is mitochondrial oxphos.",
+      "explanation": "Glycolysis has its own control enzymes."
+    },
+    {
+      "label": "E",
+      "text": "DNA sequence is rewritten after every meal",
+      "isCorrect": false,
+      "misconception": "Gene sequence does not flip each meal.",
+      "explanation": "Allosteric/hormonal control is faster."
+    }
+  ],
+  "context": "Learning objective: glycolysis is regulated at key enzymatic steps.",
+  "cite": "openstax-biology-2e#pfk-glycolysis-control",
+  "publicUsmle": {
+    "schemaVersion": 1,
+    "origin": "generated",
+    "itemText": {
+      "licence": "CC-BY-4.0",
+      "attribution": "MD3 contributors"
+    },
+    "evidence": {
+      "kind": "passage",
+      "sourceId": "openstax-biology-2e",
+      "passageId": "pfk-glycolysis-control",
+      "licence": {
+        "cls": "foss",
+        "id": "cc-by-4.0"
+      }
+    },
+    "media": {
+      "kind": "asset",
+      "assetId": "enzyme-regulation-v1",
+      "job": "mechanism",
+      "showWhen": "after-reveal",
+      "licence": {
+        "cls": "foss",
+        "id": "cc-by-4.0"
+      },
+      "attribution": "MD3 contributors",
+      "contentHash": "sha256:b1848114d452e9edfee39c5878e82f6d47f23fd7d156e0078ec8a3c594308ff4"
+    }
+  },
+  "imageUrl": "/figures/usmle/step1/enzyme-regulation-v1.svg",
+  "imageCaption": "Enzymes lower Ea; competitive inhibitors bind active site; allosteric ligands bind elsewhere; glycolysis regulated at key steps."
+}

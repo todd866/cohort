@@ -1,0 +1,71 @@
+{
+  "id": "bank:usmle-step1:exp26-a-dominant-transmission-penetrance:v1",
+  "rotation": "usmle-step1-open",
+  "topics": [
+    "genetics",
+    "dominant-segregation"
+  ],
+  "moduleNodes": [
+    "usmle/step1",
+    "usmle/step1/genetics"
+  ],
+  "questionType": "calculation",
+  "difficulty": "hard",
+  "stem": "A hypothetical autosomal dominant condition has 80% penetrance among people who inherit its pathogenic allele. A 27-year-old man is heterozygous; his partner has no copy of that allele. Assume penetrance is independent of which parent transmits it. Which of the following is the probability that their next child will inherit the allele and express the condition?",
+  "options": [
+    {
+      "label": "A",
+      "text": "90% for the next child",
+      "isCorrect": false,
+      "explanation": "Adding event probabilities does not calculate the chance that both occur. The child must pass the inheritance and expression steps, requiring multiplication here.",
+      "misconception": "Combines inheritance and expression by addition instead of calculating their joint probability."
+    },
+    {
+      "label": "B",
+      "text": "40% for the next child",
+      "isCorrect": true,
+      "explanation": "The child must first inherit the allele and then express it. Multiplying the one-half transmission probability by the stated 80% penetrance gives 40%.",
+      "misconception": "No misconception: Joint risk combines one-half transmission with the stated conditional penetrance."
+    },
+    {
+      "label": "C",
+      "text": "20% for the next child",
+      "isCorrect": false,
+      "explanation": "This treats transmission as a one-quarter event, as in a carrier-pair recessive calculation. A heterozygous parent transmits a dominant allele with probability one half.",
+      "misconception": "Uses a one-quarter recessive affected-child probability for transmission from one heterozygous parent."
+    },
+    {
+      "label": "D",
+      "text": "50% for the next child",
+      "isCorrect": false,
+      "explanation": "This is the probability of inheriting the allele. It does not incorporate the additional requirement that an inheriting child express this incompletely penetrant condition.",
+      "misconception": "Equates inheriting the allele with expressing it and omits incomplete penetrance."
+    },
+    {
+      "label": "E",
+      "text": "80% for the next child",
+      "isCorrect": false,
+      "explanation": "This is the conditional probability of expression after inheritance. Applying it to every child overlooks the one-half probability that the allele is not transmitted.",
+      "misconception": "Applies penetrance to all offspring without first accounting for whether they inherit the allele."
+    }
+  ],
+  "context": "Learning objective: combine transmission and penetrance as separate probabilities. The allele is transmitted with probability one half; multiplying by the stated expression probability gives the chance of both events.",
+  "cite": "nhgri-autosomal-dominant#ad-definition",
+  "publicUsmle": {
+    "schemaVersion": 1,
+    "origin": "generated",
+    "itemText": {
+      "licence": "CC-BY-4.0",
+      "attribution": "MD3 contributors"
+    },
+    "evidence": {
+      "kind": "passage",
+      "sourceId": "nhgri-autosomal-dominant",
+      "passageId": "ad-definition",
+      "licence": {
+        "cls": "foss",
+        "id": "us-gov"
+      }
+    }
+  }
+}

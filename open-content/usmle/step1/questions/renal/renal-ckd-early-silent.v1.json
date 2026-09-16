@@ -1,0 +1,72 @@
+{
+  "id": "bank:usmle-step1:renal-ckd-early-silent:v1",
+  "rotation": "usmle-step1-open",
+  "topics": [
+    "kidneys",
+    "chronic kidney disease",
+    "early disease"
+  ],
+  "moduleNodes": [
+    "usmle/step1",
+    "usmle/step1/renal"
+  ],
+  "questionType": "interpretation",
+  "difficulty": "easy",
+  "stem": "Which of the following best describes symptoms during the early stages of chronic kidney disease (CKD)?",
+  "options": [
+    {
+      "label": "A",
+      "text": "Symptoms begin with severe pain over both kidneys",
+      "isCorrect": false,
+      "misconception": "Kidney disease is being treated as a condition that must announce itself with pain.",
+      "explanation": "The cited NIDDK passage emphasizes that early CKD can be clinically quiet rather than beginning with severe kidney pain."
+    },
+    {
+      "label": "B",
+      "text": "Symptoms first appear as sudden loss of vision",
+      "isCorrect": false,
+      "misconception": "An unrelated acute symptom is being substituted for the often-silent early course of CKD.",
+      "explanation": "Sudden visual loss is not the early pattern described in the cited CKD passage; many people have no early symptoms."
+    },
+    {
+      "label": "C",
+      "text": "Symptoms reliably identify disease before filtration changes",
+      "isCorrect": false,
+      "misconception": "Symptoms are being assumed to provide an early warning before kidney dysfunction develops.",
+      "explanation": "Early CKD may produce no symptoms, so symptoms do not reliably announce the disease before it becomes advanced."
+    },
+    {
+      "label": "D",
+      "text": "Symptoms begin with persistent coughing and wheezing",
+      "isCorrect": false,
+      "misconception": "A respiratory symptom pattern is being assigned to early kidney disease.",
+      "explanation": "The NIDDK passage describes early CKD as commonly asymptomatic, not as a respiratory syndrome."
+    },
+    {
+      "label": "E",
+      "text": "Symptoms can remain absent until the condition is advanced",
+      "isCorrect": true,
+      "misconception": "None; the absence of symptoms is common in early CKD.",
+      "explanation": "Many people have no symptoms during early CKD and may remain unaware of symptoms until the disease is advanced."
+    }
+  ],
+  "context": "Learning objective: recognize that early chronic kidney disease can be silent. Feeling well does not establish that kidney filtration is normal; many people have no symptoms until CKD is advanced.",
+  "cite": "niddk-ckd#ckd-early-silent",
+  "publicUsmle": {
+    "schemaVersion": 1,
+    "origin": "generated",
+    "itemText": {
+      "licence": "CC-BY-4.0",
+      "attribution": "MD3 contributors"
+    },
+    "evidence": {
+      "kind": "passage",
+      "sourceId": "niddk-ckd",
+      "passageId": "ckd-early-silent",
+      "licence": {
+        "cls": "foss",
+        "id": "us-gov"
+      }
+    }
+  }
+}

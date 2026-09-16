@@ -1,0 +1,71 @@
+{
+  "id": "bank:usmle-step1:micro-hav-clinical-recognition:v1",
+  "rotation": "usmle-step1-open",
+  "topics": [
+    "hepatitis A",
+    "clinical recognition"
+  ],
+  "moduleNodes": [
+    "usmle/step1",
+    "usmle/step1/microbiology"
+  ],
+  "questionType": "diagnosis",
+  "difficulty": "medium",
+  "stem": "A 24-year-old develops an abrupt illness with fever, malaise, anorexia, nausea, abdominal discomfort, dark urine, and jaundice. Which of the following is the most likely diagnosis?",
+  "options": [
+    {
+      "label": "A",
+      "text": "Acute hepatitis A",
+      "isCorrect": true,
+      "misconception": "None; the presentation reproduces the CDC acute hepatitis A feature cluster.",
+      "explanation": "The cited passage describes hepatitis A as an abrupt illness with fever, malaise, anorexia, nausea, abdominal discomfort, dark urine, and jaundice."
+    },
+    {
+      "label": "B",
+      "text": "Viral gastroenteritis",
+      "isCorrect": false,
+      "misconception": "Nausea and abdominal discomfort are over-weighted while dark urine and jaundice are ignored.",
+      "explanation": "The complete pattern, including dark urine and jaundice, is the passage-grounded presentation of acute hepatitis A."
+    },
+    {
+      "label": "C",
+      "text": "Acute appendicitis",
+      "isCorrect": false,
+      "misconception": "Abdominal discomfort and nausea are considered without integrating anorexia, dark urine, and jaundice.",
+      "explanation": "The cited feature set is broader than isolated abdominal symptoms and specifically describes acute hepatitis A."
+    },
+    {
+      "label": "D",
+      "text": "Meningococcal septicemia",
+      "isCorrect": false,
+      "misconception": "Abrupt fever is over-weighted while the paired dark urine and jaundice are not incorporated.",
+      "explanation": "Fever occurs within the cited hepatitis A cluster of malaise, anorexia, nausea, abdominal discomfort, dark urine, and jaundice."
+    },
+    {
+      "label": "E",
+      "text": "Measles",
+      "isCorrect": false,
+      "misconception": "Fever and malaise are considered without matching the gastrointestinal and jaundice pattern in the passage.",
+      "explanation": "The stem follows the CDC acute hepatitis A description, particularly its combination of abdominal symptoms, dark urine, and jaundice."
+    }
+  ],
+  "context": "Learning objective: recognize acute hepatitis A. The useful pattern is abrupt fever, malaise, anorexia, nausea, and abdominal discomfort together with dark urine and jaundice.",
+  "cite": "cdc-pink-book-hepatitis-a#hav-acute-onset",
+  "publicUsmle": {
+    "schemaVersion": 1,
+    "origin": "generated",
+    "itemText": {
+      "licence": "CC-BY-4.0",
+      "attribution": "MD3 contributors"
+    },
+    "evidence": {
+      "kind": "passage",
+      "sourceId": "cdc-pink-book-hepatitis-a",
+      "passageId": "hav-acute-onset",
+      "licence": {
+        "cls": "foss",
+        "id": "us-gov"
+      }
+    }
+  }
+}

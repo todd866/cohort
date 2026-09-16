@@ -1,0 +1,259 @@
+// =============================================================================
+// EXAM TARGET SCHEDULER V2
+// Immutable, versioned exam-target artifacts and decision telemetry.
+//
+// ItemExamTargetScore deliberately uses a polymorphic item identity rather than
+// foreign keys to Card/Question. Activation preflight must verify that every
+// scored item still exists and that its embeddingHash is current before a
+// snapshot can be served.
+// =============================================================================
+
+enum ExamTargetItemType {
+  card
+  question
+}
+
+enum ExamTargetAssignmentMethod {
+  curated
+  centroid
+}
+
+model ExamTargetSnapshot {
+  id            String @id @default(cuid())
+  targetId      String
+  revision      Int
+  schemaVersion String
+  rotation      String
+  status        String @default("built") // built | validated | active | retired
+  targetBasis   String // official | hybrid | proxy
+
+  validFrom    DateTime?            @db.Timestamptz(3)
+  supersedesId String?
+  supersedes   ExamTargetSnapshot?  @relation("ExamTargetSupersession", fields: [supersedesId], references: [id], onDelete: Restrict)
+  successors   ExamTargetSnapshot[] @relation("ExamTargetSupersession")
+
+  weightPolicy        Json    @db.JsonB
+  scorerVersion       String
+  embeddingModel      String?
+  embeddingDimensions Int?
+  sourceManifestHash  String
+  anchorCorpusHash    String?
+  artifactHash        String
+  itemRowsHash        String
+  conceptRowsHash     String
+  manifestHash        String
+  buildManifest       Json    @db.JsonB
+  runtimeProjection   Json    @db.JsonB
+  privacyValidated    Boolean @default(false)
+
+  createdAt   DateTime  @default(now()) @db.Timestamptz(3)
+  generatedBy String?
+  validatedAt DateTime? @db.Timestamptz(3)
+  reviewedBy  String?
+  activatedAt DateTime? @db.Timestamptz(3)
+  activatedBy String?
+
+  itemScores     ItemExamTargetScore[]
+  conceptScores  ConceptExamTargetScore[]
+  activations    ExamTargetActivation[]
+  attempts       ExamTargetDecisionAttempt[]
+  decisionSets   SchedulerDecisionSet[]
+  serveDecisions ServeDecision[]
+
+  @@unique([targetId, revision])
+  // Enables rotation-consistent composite foreign keys from mutable activation
+  // pointers and immutable decision/serve traces.
+  @@unique([id, rotation])
+  @@unique([targetId, artifactHash])
+  @@index([rotation, status, validFrom])
+  @@index([supersedesId])
+}
+
+model ItemExamTargetScore {
+  id               String             @id @default(cuid())
+  targetSnapshotId String
+  targetSnapshot   ExamTargetSnapshot @relation(fields: [targetSnapshotId], references: [id], onDelete: Cascade)
+
+  itemType       ExamTargetItemType
+  itemId         String
+  sourceRotation String
+  embeddingHash  String
+
+  domainCode            String
+  assignmentMethod      ExamTargetAssignmentMethod
+  rawSimilarity         Float?
+  zSimilarity           Float?
+  runnerUpDomainCode    String?
+  assignmentMargin      Float?
+  assignmentConfidence  Float
+  geometryConfidence    Float
+  fitPercentile         Float?
+  effectiveDomainWeight Float
+  weightProvenance      String
+  domainPriorityIndex   Float
+  itemTargetIndex       Float
+  scoredAt              DateTime                   @default(now()) @db.Timestamptz(3)
+
+  @@unique([targetSnapshotId, itemType, itemId, embeddingHash], map: "ItemExamTargetScore_snapshot_item_embedding_key")
+  @@index([targetSnapshotId, itemType, itemId], map: "ItemExamTargetScore_snapshot_item_idx")
+  @@index([targetSnapshotId, domainCode, itemTargetIndex], map: "ItemExamTargetScore_snapshot_domain_target_idx")
+  @@index([sourceRotation, itemType])
+}
+
+model ConceptExamTargetScore {
+  id               String             @id @default(cuid())
+  targetSnapshotId String
+  targetSnapshot   ExamTargetSnapshot @relation(fields: [targetSnapshotId], references: [id], onDelete: Cascade)
+  conceptId        String
+  // Preserve historical target provenance; concepts referenced by an immutable
+  // snapshot must be retired/soft-deleted rather than hard-deleted.
+  concept          Concept            @relation(fields: [conceptId], references: [id], onDelete: Restrict)
+
+  primaryDomainCode String
+  domainMix         Json     @db.JsonB
+  mappingMethod     String
+  targetIndex       Float
+  mappingConfidence Float
+  mappingHash       String
+  artifactHash      String
+  scoredAt          DateTime @default(now()) @db.Timestamptz(3)
+
+  @@unique([targetSnapshotId, conceptId], map: "ConceptExamTargetScore_snapshot_concept_key")
+  @@index([targetSnapshotId, primaryDomainCode, targetIndex], map: "ConceptExamTargetScore_snapshot_domain_target_idx")
+  @@index([conceptId, scoredAt])
+}
+
+model ExamTargetActivation {
+  id               String             @id @default(cuid())
+  rotation         String             @unique
+  targetSnapshotId String
+  targetSnapshot   ExamTargetSnapshot @relation(fields: [targetSnapshotId, rotation], references: [id, rotation], onDelete: Restrict)
+
+  mode               String   @default("shadow") // off | shadow | active
+  rolloutBasisPoints Int      @default(0)
+  activationRevision Int      @default(1)
+  schedulerVersion   String
+  policyFingerprint  String
+  policyConfig       Json     @db.JsonB
+  activatedAt        DateTime @default(now()) @db.Timestamptz(3)
+  activatedBy        String
+  reason             String?  @db.Text
+  createdAt          DateTime @default(now()) @db.Timestamptz(3)
+  updatedAt          DateTime @updatedAt @db.Timestamptz(3)
+
+  @@index([targetSnapshotId])
+}
+
+model ExamTargetDecisionAttempt {
+  id String @id @default(cuid())
+
+  userId String
+  user   User   @relation(fields: [userId], references: [id], onDelete: Cascade, map: "ExamTargetDecisionAttempt_user_fkey")
+
+  sessionId    String @db.Uuid
+  batchId      String @db.Uuid
+  rotation     String
+  decisionPath String
+
+  targetSnapshotId String
+  targetSnapshot   ExamTargetSnapshot @relation(fields: [targetSnapshotId, rotation], references: [id, rotation], onDelete: Restrict, map: "ExamTargetDecisionAttempt_target_snapshot_rotation_fkey")
+
+  activationRevision Int
+  schedulerVersion   String @db.VarChar(200)
+  policyDigest       String @db.VarChar(64)
+  mode               String
+  assignment         String
+  requestedSize      Int
+
+  outcome                String   @default("started")
+  failureClass           String?
+  servedDisposition      String?
+  servedItemCount        Int?
+  fallbackTracePersisted Boolean?
+
+  startedAt   DateTime  @default(now()) @db.Timestamptz(3)
+  completedAt DateTime? @db.Timestamptz(3)
+  expiresAt   DateTime  @db.Timestamptz(3)
+
+  decisionSet SchedulerDecisionSet?
+
+  @@unique([userId, sessionId, batchId, targetSnapshotId, decisionPath], map: "ExamTargetDecisionAttempt_admission_key")
+  @@index([targetSnapshotId, startedAt])
+  @@index([userId, startedAt])
+  @@index([rotation, mode, startedAt])
+  @@index([expiresAt])
+}
+
+model SchedulerDecisionSet {
+  id          String @id @default(cuid())
+  decisionKey String @unique
+
+  userId       String
+  user         User                       @relation(fields: [userId], references: [id], onDelete: Cascade)
+  sessionId    String
+  batchId      String?
+  attemptId    String?                    @unique
+  attempt      ExamTargetDecisionAttempt? @relation(fields: [attemptId], references: [id], onDelete: SetNull)
+  rotation     String
+  decisionPath String
+  decidedAt    DateTime                   @default(now()) @db.Timestamptz(3)
+
+  schedulerVersion    String
+  mode                String // off | shadow | active | fallback
+  assignment          String // control | treatment | unassigned
+  targetPolicyVersion String
+  policyDigest        String
+  activationRevision  Int?
+
+  targetSnapshotId    String?
+  targetSnapshot      ExamTargetSnapshot? @relation(fields: [targetSnapshotId, rotation], references: [id, rotation], onDelete: Restrict)
+  targetId            String?
+  targetRevision      Int?
+  targetBasis         String? // official | hybrid | proxy
+  targetScorerVersion String?
+
+  daysToExam          Int?
+  pressureBucket      String?
+  learnerStateVersion String?
+  sourcePolicy        Json?   @db.JsonB
+  // Privacy-safe quota/coverage summary. Raw content, item IDs, paths and
+  // embeddings are prohibited by the persistence validator.
+  masteryTelemetry    Json?   @db.JsonB
+
+  candidateSetDigest   String?
+  tieBreakSeed         String?
+  requestedSize        Int
+  candidateCount       Int
+  eligibleCount        Int
+  targetEligibleCount  Int
+  controlSelectedCount Int
+  targetSelectedCount  Int
+
+  controlSelectionDigest String?
+  targetSelectionDigest  String?
+
+  selectedSetOverlap     Float?
+  changedMembershipCount Int?
+  controlMeanTargetScore Float?
+  targetMeanTargetScore  Float?
+  pairedTargetLift       Float?
+  controlAllocationError Float?
+  targetAllocationError  Float?
+  targetComputeMs        Int?
+  fallbackReason         String?
+
+  traceVersion     Int       @default(1)
+  replaySnapshot   Json?     @db.JsonB
+  replayCapturedAt DateTime? @db.Timestamptz(3)
+  replayExpiresAt  DateTime? @db.Timestamptz(3)
+
+  serveDecisions ServeDecision[]
+
+  @@index([userId, sessionId, batchId])
+  @@index([userId, decidedAt])
+  @@index([sessionId])
+  @@index([rotation, mode, decidedAt])
+  @@index([targetSnapshotId, decidedAt])
+  @@index([decidedAt])
+  @@index([replayExpiresAt])
+}

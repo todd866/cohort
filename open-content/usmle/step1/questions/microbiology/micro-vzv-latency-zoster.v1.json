@@ -1,0 +1,85 @@
+{
+  "id": "bank:usmle-step1:micro-vzv-latency-zoster:v1",
+  "rotation": "usmle-step1-open",
+  "topics": [
+    "vzv",
+    "zoster"
+  ],
+  "moduleNodes": [
+    "usmle/step1",
+    "usmle/step1/microbiology"
+  ],
+  "questionType": "mechanism",
+  "difficulty": "easy",
+  "stem": "After primary varicella, latent VZV infection later results in which clinical syndrome?",
+  "options": [
+    {
+      "label": "A",
+      "text": "Only Hib epiglottitis presenting in toddler airways",
+      "isCorrect": false,
+      "misconception": "Hib — does not match the cited teaching point.",
+      "explanation": "This option does not match the cited source passage for the stem."
+    },
+    {
+      "label": "B",
+      "text": "Only whooping-cough paroxysms during pertussis illness",
+      "isCorrect": false,
+      "misconception": "Pertussis — does not match the cited teaching point.",
+      "explanation": "This option does not match the cited source passage for the stem."
+    },
+    {
+      "label": "C",
+      "text": "Only pneumococcal lobar pneumonia in older adults",
+      "isCorrect": false,
+      "misconception": "Pneumococcus — does not match the cited teaching point.",
+      "explanation": "This option does not match the cited source passage for the stem."
+    },
+    {
+      "label": "D",
+      "text": "Herpes zoster, also called shingles later in life",
+      "isCorrect": true,
+      "misconception": "None; latency to zoster.",
+      "explanation": "CDC: latent infection results in herpes zoster."
+    },
+    {
+      "label": "E",
+      "text": "Only digoxin toxicity presenting as cardiac arrhythmias",
+      "isCorrect": false,
+      "misconception": "Pharm — does not match the cited teaching point.",
+      "explanation": "This option does not match the cited source passage for the stem."
+    }
+  ],
+  "context": "Learning objective: recall vzv, zoster from the cited FOSS source.",
+  "cite": "cdc-pink-book-varicella#vzv-latent-zoster",
+  "publicUsmle": {
+    "schemaVersion": 1,
+    "origin": "generated",
+    "itemText": {
+      "licence": "CC-BY-4.0",
+      "attribution": "MD3 contributors"
+    },
+    "evidence": {
+      "kind": "passage",
+      "sourceId": "cdc-pink-book-varicella",
+      "passageId": "vzv-latent-zoster",
+      "licence": {
+        "cls": "foss",
+        "id": "us-gov"
+      }
+    },
+    "media": {
+      "kind": "asset",
+      "assetId": "micro-pathogen-virulence-v1",
+      "job": "compare-table",
+      "showWhen": "after-reveal",
+      "licence": {
+        "cls": "foss",
+        "id": "cc-by-4.0"
+      },
+      "attribution": "MD3 contributors",
+      "contentHash": "sha256:e0ca8dcce5538b15d4a9973d8a6934fc8199d41e7059a4d8f0059cc1ec78a22e"
+    }
+  },
+  "imageUrl": "/figures/usmle/step1/micro-pathogen-virulence-v1.svg",
+  "imageCaption": "Pathogen virulence and Pink Book organism map (FOSS draft)."
+}

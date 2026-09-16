@@ -1,0 +1,86 @@
+{
+  "id": "bank:usmle-step1:gi-liver-functions:v1",
+  "rotation": "usmle-step1-open",
+  "topics": [
+    "liver",
+    "bilirubin",
+    "hepatocytes"
+  ],
+  "moduleNodes": [
+    "usmle/step1",
+    "usmle/step1/gastrointestinal"
+  ],
+  "questionType": "mechanism",
+  "difficulty": "medium",
+  "stem": "A 58-year-old woman with cirrhosis develops yellowing of her skin and eyes. In the healthy liver, bilirubin is processed by hepatocytes and excreted into which of the following structures?",
+  "options": [
+    {
+      "label": "A",
+      "text": "The hepatic sinusoids",
+      "isCorrect": false,
+      "misconception": "The blood-supply channel is being cast as the excretion route.",
+      "explanation": "Sinusoids deliver blood to the hepatocytes and contain phagocytic Kupffer cells; excretion of bilirubin runs in the opposite direction, into the bile canaliculi."
+    },
+    {
+      "label": "B",
+      "text": "Branches of the portal vein",
+      "isCorrect": false,
+      "misconception": "The inflow vessel is being cast as the excretion route.",
+      "explanation": "The portal vein brings nutrient-rich blood to the liver; bilirubin leaves the hepatocyte through the biliary tree, not back into the venous inflow."
+    },
+    {
+      "label": "C",
+      "text": "The spaces of Disse",
+      "isCorrect": false,
+      "misconception": "The exchange space is being cast as the excretion route.",
+      "explanation": "The spaces of Disse lie between sinusoid lining and hepatocytes and mediate exchange with blood; bile, carrying bilirubin, drains into canaliculi on the opposite pole of the cell."
+    },
+    {
+      "label": "D",
+      "text": "The central veins",
+      "isCorrect": false,
+      "misconception": "The blood outflow is being cast as the bile outflow.",
+      "explanation": "Central veins collect processed blood from the sinusoids; bilirubin destined for elimination travels with bile through the canaliculi to the gut."
+    },
+    {
+      "label": "E",
+      "text": "The bile canaliculi",
+      "isCorrect": true,
+      "misconception": "None; hepatocytes excrete bilirubin into the bile canaliculi.",
+      "explanation": "Hepatocytes process nutrients, toxins, and waste materials carried by the blood, and materials such as bilirubin are processed and excreted into the bile canaliculi."
+    }
+  ],
+  "context": "Learning objective: hepatocyte polarity. Blood flows through sinusoids (with phagocytic Kupffer cells) past hepatocytes to central veins; hepatocytes process nutrients, toxins, and waste, excreting bilirubin into bile canaliculi that feed the biliary tree. Failed excretion produces jaundice.",
+  "cite": "openstax-anatomy-physiology#gi-liver-functions",
+  "publicUsmle": {
+    "schemaVersion": 1,
+    "origin": "generated",
+    "itemText": {
+      "licence": "CC-BY-4.0",
+      "attribution": "MD3 contributors"
+    },
+    "evidence": {
+      "kind": "passage",
+      "sourceId": "openstax-anatomy-physiology",
+      "passageId": "gi-liver-functions",
+      "licence": {
+        "cls": "foss",
+        "id": "cc-by-4.0"
+      }
+    },
+    "media": {
+      "kind": "asset",
+      "assetId": "bilirubin-metabolism-v1",
+      "job": "pathway",
+      "showWhen": "after-reveal",
+      "licence": {
+        "cls": "foss",
+        "id": "cc-by-4.0"
+      },
+      "attribution": "MD3 contributors",
+      "contentHash": "sha256:19bd6c3f8772b9bf302595c185091350d04ed1d0e493bad6de2ca3ac46141e34"
+    }
+  },
+  "imageUrl": "/figures/usmle/step1/bilirubin-metabolism-v1.svg",
+  "imageCaption": "Bilirubin: spleen Hb breakdown -> unconjugated (albumin) -> hepatic conjugation -> bile -> gut bacteria -> urobilinogen/stercobilin; some urobilinogen -> urine."
+}

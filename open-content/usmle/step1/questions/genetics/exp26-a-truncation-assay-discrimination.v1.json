@@ -1,0 +1,71 @@
+{
+  "id": "bank:usmle-step1:exp26-a-truncation-assay-discrimination:v1",
+  "rotation": "usmle-step1-open",
+  "topics": [
+    "genetics",
+    "coding-substitutions"
+  ],
+  "moduleNodes": [
+    "usmle/step1",
+    "usmle/step1/genetics"
+  ],
+  "questionType": "interpretation",
+  "difficulty": "medium",
+  "stem": "Two hypothetical variants are studied. Variant X produces a shortened protein ending at a newly introduced stop signal. Variant Y produces a full-length protein with one changed amino acid. Both proteins have reduced activity in the same assay. Which of the following best explains why the variants receive different sequence classifications?",
+  "options": [
+    {
+      "label": "A",
+      "text": "X replaces an amino acid; Y terminates translation early",
+      "isCorrect": false,
+      "explanation": "This reverses the observations. X is shortened at a new stop, whereas Y retains its length and contains an amino-acid substitution in the protein.",
+      "misconception": "Reverses which variant creates a stop signal and which substitutes an amino acid."
+    },
+    {
+      "label": "B",
+      "text": "X and Y terminate translation at an earlier stop signal",
+      "isCorrect": false,
+      "explanation": "Only X is reported to end at a new stop. Y remains full length, so its reduced activity should not be attributed to premature termination.",
+      "misconception": "Attributes both activity defects to premature termination even though one protein remains full length."
+    },
+    {
+      "label": "C",
+      "text": "X and Y replace a residue without changing protein length",
+      "isCorrect": false,
+      "explanation": "X is explicitly shortened, so a preserved-length substitution cannot explain its result. Y alone has the stated full-length protein with one altered amino acid.",
+      "misconception": "Treats both changes as full-length substitutions despite the measured truncation of one protein."
+    },
+    {
+      "label": "D",
+      "text": "X and Y shift the reading frame through a base deletion",
+      "isCorrect": false,
+      "explanation": "Neither result reports a nontriplet deletion. Inferring a frameshift from reduced activity alone ignores the distinct sequence consequences that the experiment directly measured.",
+      "misconception": "Infers a frameshift from reduced activity without evidence of a frame-changing insertion or deletion."
+    },
+    {
+      "label": "E",
+      "text": "X terminates translation early; Y replaces an amino acid",
+      "isCorrect": true,
+      "explanation": "Premature termination classifies X as nonsense, while residue substitution classifies Y as missense. Their shared reduction in measured activity does not erase that sequence-level distinction.",
+      "misconception": "No misconception: Different sequence consequences remain distinct even when both variants reduce activity."
+    }
+  ],
+  "context": "Learning objective: use the sequence consequence to classify a mutation, then assess function separately. Similar activity measurements can result from different changes in protein sequence and length.",
+  "cite": "nhgri-missense#missense-definition",
+  "publicUsmle": {
+    "schemaVersion": 1,
+    "origin": "generated",
+    "itemText": {
+      "licence": "CC-BY-4.0",
+      "attribution": "MD3 contributors"
+    },
+    "evidence": {
+      "kind": "passage",
+      "sourceId": "nhgri-missense",
+      "passageId": "missense-definition",
+      "licence": {
+        "cls": "foss",
+        "id": "us-gov"
+      }
+    }
+  }
+}

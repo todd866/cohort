@@ -1,0 +1,71 @@
+{
+  "id": "bank:usmle-step1:exp26-b-oncotic-pressure-perturbation:v1",
+  "rotation": "usmle-step1-open",
+  "topics": [
+    "renal",
+    "oncotic-pressure-perturbation"
+  ],
+  "moduleNodes": [
+    "usmle/step1",
+    "usmle/step1/renal"
+  ],
+  "questionType": "interpretation",
+  "difficulty": "hard",
+  "stem": "In a glomerular model, blood colloid-osmotic pressure is lowered while glomerular and capsular hydrostatic pressures remain fixed. A second investigator wants to restore the original net filtration pressure without changing the filtration coefficient. Which of the following paired observations and adjustments is appropriate?",
+  "options": [
+    {
+      "text": "GFR stays stable; maintain capsular pressure to preserve it",
+      "explanation": "Net filtration pressure changes when one opposing pressure changes and the others remain fixed. Stable filtration cannot be assumed under the stated controlled conditions.",
+      "isCorrect": false,
+      "label": "A",
+      "misconception": "Assumes unchanged filtration when an opposing pressure changes and the other conditions remain fixed."
+    },
+    {
+      "text": "GFR initially rises; increase capsular pressure to offset it",
+      "explanation": "Lower blood colloid-osmotic pressure removes opposition to filtration. Raising capsular pressure adds opposition back, permitting restoration of the original net driving pressure in this controlled model.",
+      "isCorrect": true,
+      "label": "B",
+      "misconception": "No misconception: reduced colloid-osmotic opposition raises filtration, and added capsular opposition can offset it."
+    },
+    {
+      "text": "GFR initially falls; increase capsular pressure to offset it",
+      "explanation": "Lowering colloid-osmotic opposition initially increases rather than decreases filtration. Increasing capsular pressure would oppose the true change, but the stated initial response is incorrect.",
+      "isCorrect": false,
+      "label": "C",
+      "misconception": "Reverses the initial filtration response to a reduction in blood colloid-osmotic opposition."
+    },
+    {
+      "text": "GFR initially rises; decrease capsular pressure to offset it",
+      "explanation": "The initial response is correct, but lowering another opposing pressure would increase the driving pressure further. Restoring the baseline requires adding opposition instead.",
+      "isCorrect": false,
+      "label": "D",
+      "misconception": "Attempts to offset reduced opposition by lowering another opposing pressure, which reinforces the initial change."
+    },
+    {
+      "text": "GFR initially falls; decrease capsular pressure to offset it",
+      "explanation": "This starts with the wrong GFR direction. Lower blood colloid-osmotic pressure favors filtration, and reducing capsular pressure would reinforce rather than cancel that effect.",
+      "isCorrect": false,
+      "label": "E",
+      "misconception": "Reverses the initial filtration response and chooses a capsular adjustment that reinforces the true change."
+    }
+  ],
+  "context": "Learning objective: Use opposing filtration forces to predict a response and identify a compensating experimental adjustment. Lower blood colloid-osmotic pressure removes opposition to filtration. Raising capsular pressure adds opposition back, permitting restoration of the original net driving pressure in this controlled model.",
+  "cite": "openstax-ap1-urine-formation#filtration-forces",
+  "publicUsmle": {
+    "schemaVersion": 1,
+    "origin": "generated",
+    "itemText": {
+      "licence": "CC-BY-4.0",
+      "attribution": "MD3 contributors"
+    },
+    "evidence": {
+      "kind": "passage",
+      "sourceId": "openstax-ap1-urine-formation",
+      "passageId": "filtration-forces",
+      "licence": {
+        "cls": "foss",
+        "id": "cc-by-4.0"
+      }
+    }
+  }
+}

@@ -1,0 +1,87 @@
+{
+  "id": "bank:usmle-step1:renal-pct-reabsorption:v1",
+  "rotation": "usmle-step1-open",
+  "ladderId": "pct-reabsorption",
+  "topics": [
+    "proximal tubule",
+    "sodium-glucose cotransport",
+    "ladder:pct-reabsorption"
+  ],
+  "moduleNodes": [
+    "usmle/step1",
+    "usmle/step1/renal"
+  ],
+  "questionType": "mechanism",
+  "difficulty": "medium",
+  "stem": "A 52-year-old woman with poorly controlled diabetes mellitus has glucose in her urine despite a normal filtration rate. In her proximal convoluted tubule cells, the transporters that normally recover filtered glucose have reached their maximum capacity.\n\nGlucose uptake at the apical membrane of these cells is powered directly by which of the following?",
+  "options": [
+    {
+      "label": "A",
+      "text": "Hydrolysis of ATP by the apical glucose carrier itself",
+      "isCorrect": false,
+      "misconception": "A secondary active transporter is being described as a primary ATP-driven pump.",
+      "explanation": "The apical symporter does not hydrolyze ATP; it harvests the sodium gradient that the basolateral Na+/K+ ATPase maintains."
+    },
+    {
+      "label": "B",
+      "text": "Facilitated diffusion of glucose down its own concentration gradient",
+      "isCorrect": false,
+      "misconception": "The basolateral exit mechanism is being confused with the apical entry step.",
+      "explanation": "Facilitated diffusion moves glucose out of the cell at the basal surface; apical entry against the glucose gradient requires cotransport with sodium."
+    },
+    {
+      "label": "C",
+      "text": "Pinocytosis of glucose-containing tubular fluid at the brush border",
+      "isCorrect": false,
+      "misconception": "A bulk-uptake route is being proposed for a carrier-mediated solute.",
+      "explanation": "Glucose is recovered by the Na+/glucose symport across the apical membrane, not by vesicular uptake; saturation of that carrier is what produces glycosuria."
+    },
+    {
+      "label": "D",
+      "text": "A hydrogen-ion antiport coupled to bicarbonate reabsorption",
+      "isCorrect": false,
+      "misconception": "The acid-base transporter is being assigned to glucose handling.",
+      "explanation": "The Na+/H+ antiport reclaims bicarbonate, not glucose; glucose enters through the Na+/glucose symport."
+    },
+    {
+      "label": "E",
+      "text": "The sodium electrochemical gradient via a shared symport protein",
+      "isCorrect": true,
+      "misconception": "None; apical Na+/glucose symporters couple glucose entry to sodium moving down its gradient.",
+      "explanation": "Glucose and Na+ bind simultaneously to the same apical symport proteins; sodium moves down its electrochemical gradient into the cell and carries glucose with it, a secondary active transport driven ultimately by the basolateral Na+/K+ ATPase."
+    }
+  ],
+  "context": "Learning objective: explain PCT glucose reabsorption. Apical Na+/glucose symporters use the sodium gradient (secondary active transport); about 67 percent of filtered water, Na+, and K+ is reabsorbed in the PCT.",
+  "cite": "openstax-anatomy-physiology#renal-pct-reabsorption",
+  "publicUsmle": {
+    "schemaVersion": 1,
+    "origin": "generated",
+    "itemText": {
+      "licence": "CC-BY-4.0",
+      "attribution": "MD3 contributors"
+    },
+    "evidence": {
+      "kind": "passage",
+      "sourceId": "openstax-anatomy-physiology",
+      "passageId": "renal-pct-reabsorption",
+      "licence": {
+        "cls": "foss",
+        "id": "cc-by-4.0"
+      }
+    },
+    "media": {
+      "kind": "asset",
+      "assetId": "nephron-overview-v1",
+      "job": "anatomy",
+      "showWhen": "after-reveal",
+      "licence": {
+        "cls": "foss",
+        "id": "cc-by-4.0"
+      },
+      "attribution": "MD3 contributors",
+      "contentHash": "sha256:594f7ddfca37a265ea925ffa5348bce222990740b857a75cf8669f0ba5f715fa"
+    }
+  },
+  "imageUrl": "/figures/usmle/step1/nephron-overview-v1.svg",
+  "imageCaption": "Nephron segments: filtration, PCT, loop, DCT, collecting duct (ADH aquaporins)."
+}

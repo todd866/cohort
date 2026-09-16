@@ -1,0 +1,71 @@
+{
+  "id": "bank:usmle-step1:exp26-c-unequal-group-risk-calculation:v1",
+  "rotation": "usmle-step1-open",
+  "topics": [
+    "epidemiology",
+    "unequal-group-risk-calculation"
+  ],
+  "moduleNodes": [
+    "usmle/step1",
+    "usmle/step1/epidemiology"
+  ],
+  "questionType": "calculation",
+  "difficulty": "medium",
+  "stem": "A closed cohort includes 300 exposed and 600 unexposed participants, all initially free of a condition. Complete follow-up over one year identifies 60 new cases in the exposed group and 60 in the unexposed group. Which of the following is the risk ratio for exposed compared with unexposed participants?",
+  "options": [
+    {
+      "label": "A",
+      "text": "0.50",
+      "isCorrect": false,
+      "explanation": "This reverses the comparison, dividing the unexposed risk of 10% by the exposed risk of 20%. The requested numerator is the exposed risk.",
+      "misconception": "Reverses the exposed-to-unexposed risk ratio."
+    },
+    {
+      "label": "B",
+      "text": "1.00",
+      "isCorrect": false,
+      "explanation": "Equal case counts do not imply equal risks with unequal group sizes. Sixty of 300 is a larger risk than sixty of 600.",
+      "misconception": "Assumes equal case counts imply equal risks despite unequal group sizes."
+    },
+    {
+      "label": "C",
+      "text": "2.00",
+      "isCorrect": true,
+      "explanation": "The exposed risk is 60/300 = 20%, and the unexposed risk is 60/600 = 10%. Dividing 0.20 by 0.10 gives 2.0.",
+      "misconception": "No misconception: dividing the two group risks gives a ratio of two."
+    },
+    {
+      "label": "D",
+      "text": "0.20",
+      "isCorrect": false,
+      "explanation": "This is the exposed group risk alone. A risk ratio requires dividing that risk by the unexposed group risk.",
+      "misconception": "Reports the exposed-group risk without forming a comparison."
+    },
+    {
+      "label": "E",
+      "text": "0.10",
+      "isCorrect": false,
+      "explanation": "This is the unexposed group risk alone. It is the denominator of the requested comparison rather than the ratio.",
+      "misconception": "Reports the unexposed-group risk instead of the ratio of risks."
+    }
+  ],
+  "context": "Learning objective: Compare group-specific risks rather than raw case counts when calculating a risk ratio.\n\nThe exposed risk is 60/300 = 20%, and the unexposed risk is 60/600 = 10%. Dividing 0.20 by 0.10 gives 2.0.",
+  "cite": "cdc-epi-measures-of-association#risk-ratio-definition",
+  "publicUsmle": {
+    "schemaVersion": 1,
+    "origin": "generated",
+    "itemText": {
+      "licence": "CC-BY-4.0",
+      "attribution": "MD3 contributors"
+    },
+    "evidence": {
+      "kind": "passage",
+      "sourceId": "cdc-epi-measures-of-association",
+      "passageId": "risk-ratio-definition",
+      "licence": {
+        "cls": "foss",
+        "id": "us-gov"
+      }
+    }
+  }
+}

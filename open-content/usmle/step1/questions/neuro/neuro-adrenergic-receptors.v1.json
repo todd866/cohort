@@ -1,0 +1,85 @@
+{
+  "id": "bank:usmle-step1:neuro-adrenergic-receptors:v1",
+  "rotation": "usmle-step1-open",
+  "topics": [
+    "adrenergic receptors",
+    "G protein-coupled receptors"
+  ],
+  "moduleNodes": [
+    "usmle/step1",
+    "usmle/step1/neuroscience"
+  ],
+  "questionType": "mechanism",
+  "difficulty": "medium",
+  "stem": "A 66-year-old man begins a medication that blocks beta-adrenergic receptors, slowing his heart rate.\n\nWhich of the following correctly characterizes the receptors bound by norepinephrine and epinephrine at sympathetic targets?",
+  "options": [
+    {
+      "label": "A",
+      "text": "Alpha and beta classes, both of which are G protein-coupled receptors",
+      "isCorrect": true,
+      "misconception": "None; both adrenergic classes signal through G proteins.",
+      "explanation": "Norepinephrine and epinephrine share the alpha- and beta-adrenergic receptors, and unlike the cholinergic nicotinic channel, every adrenergic receptor is a G protein-coupled receptor acting through second messengers."
+    },
+    {
+      "label": "B",
+      "text": "Alpha and beta classes, both of which are ligand-gated cation channels",
+      "isCorrect": false,
+      "misconception": "The nicotinic receptor's structure is being attributed to adrenergic receptors.",
+      "explanation": "Ligand-gated channels describe the nicotinic acetylcholine receptor; all alpha- and beta-adrenergic receptors are G protein-coupled, hence slower second-messenger effects."
+    },
+    {
+      "label": "C",
+      "text": "Nicotinic and muscarinic classes with no cross-reactivity between them",
+      "isCorrect": false,
+      "misconception": "The cholinergic classification is being applied to catecholamines.",
+      "explanation": "Nicotinic and muscarinic receptors bind acetylcholine; adrenergic targets express alpha and beta receptors, which are G protein-coupled."
+    },
+    {
+      "label": "D",
+      "text": "Intracellular receptors that migrate to the nucleus when bound",
+      "isCorrect": false,
+      "misconception": "Steroid-hormone signaling is being attributed to catecholamines.",
+      "explanation": "Epinephrine and norepinephrine are ligands for surface G protein-coupled receptors and never enter the cell to bind nuclear receptors; that pattern fits lipophilic steroid hormones."
+    },
+    {
+      "label": "E",
+      "text": "Enzyme-linked receptors that phosphorylate their own cytoplasmic tails",
+      "isCorrect": false,
+      "misconception": "Receptor-kinase signaling is being attributed to catecholamines.",
+      "explanation": "Adrenergic receptors are not catalytic; they activate separate G proteins, which move to effector enzymes that generate second messengers such as cAMP."
+    }
+  ],
+  "context": "Learning objective: classify adrenergic receptors. Norepinephrine and epinephrine bind alpha and beta receptors; all adrenergic receptors are G protein-coupled, in contrast to the ionotropic nicotinic receptor.",
+  "cite": "openstax-anatomy-physiology#neuro-adrenergic-receptors",
+  "publicUsmle": {
+    "schemaVersion": 1,
+    "origin": "generated",
+    "itemText": {
+      "licence": "CC-BY-4.0",
+      "attribution": "MD3 contributors"
+    },
+    "evidence": {
+      "kind": "passage",
+      "sourceId": "openstax-anatomy-physiology",
+      "passageId": "neuro-adrenergic-receptors",
+      "licence": {
+        "cls": "foss",
+        "id": "cc-by-4.0"
+      }
+    },
+    "media": {
+      "kind": "asset",
+      "assetId": "ans-divisions-v1",
+      "job": "compare-table",
+      "showWhen": "after-reveal",
+      "licence": {
+        "cls": "foss",
+        "id": "cc-by-4.0"
+      },
+      "attribution": "MD3 contributors",
+      "contentHash": "sha256:d7b237205a1b7222585235058b4bd266322507dd3a48dca302eb55578983948d"
+    }
+  },
+  "imageUrl": "/figures/usmle/step1/ans-divisions-v1.svg",
+  "imageCaption": "Sympathetic thoracolumbar vs parasympathetic craniosacral; adrenergic receptor subtypes."
+}

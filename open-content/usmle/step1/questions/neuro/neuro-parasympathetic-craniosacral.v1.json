@@ -1,0 +1,87 @@
+{
+  "id": "bank:usmle-step1:neuro-parasympathetic-craniosacral:v1",
+  "rotation": "usmle-step1-open",
+  "topics": [
+    "parasympathetic division",
+    "craniosacral outflow",
+    "ladder:autonomic-ans"
+  ],
+  "moduleNodes": [
+    "usmle/step1",
+    "usmle/step1/neuroscience"
+  ],
+  "questionType": "mechanism",
+  "difficulty": "medium",
+  "stem": "A 55-year-old man has just finished a large meal, and vagal activity increases his gastric motility and secretion while slowing his heart.\n\nCompared with the sympathetic wiring, the parasympathetic circuits mediating these effects are characterized by which of the following arrangements?",
+  "options": [
+    {
+      "label": "A",
+      "text": "Short preganglionic fibers and long postganglionic fibers, with ganglia beside the spine",
+      "isCorrect": false,
+      "misconception": "The sympathetic layout is being ascribed to the parasympathetic division.",
+      "explanation": "Short myelinated preganglionics synapsing in paravertebral chain ganglia with long postganglionics describes the sympathetic system; parasympathetic ganglia sit near or inside the target."
+    },
+    {
+      "label": "B",
+      "text": "Long preganglionic fibers and short postganglionic fibers, with ganglia near or within the target",
+      "isCorrect": true,
+      "misconception": "None; parasympathetic ganglia are terminal or intramural, close to the effector.",
+      "explanation": "Parasympathetic preganglionic neurons in brain stem nuclei or the sacral cord project long fibers to terminal ganglia near or within the target organ, so the postganglionic fibers are short — the mirror image of the sympathetic layout."
+    },
+    {
+      "label": "C",
+      "text": "Preganglionic neurons located in the thoracic and upper lumbar lateral horn",
+      "isCorrect": false,
+      "misconception": "The thoracolumbar origin of the opposing division is being claimed here.",
+      "explanation": "The thoracolumbar lateral horn houses sympathetic preganglionics; parasympathetic preganglionic neurons occupy brain stem nuclei and the sacral lateral horn (craniosacral)."
+    },
+    {
+      "label": "D",
+      "text": "Direct projection from the spinal cord to the adrenal medulla",
+      "isCorrect": false,
+      "misconception": "A specialized sympathetic connection is being extended to the parasympathetic side.",
+      "explanation": "Only the sympathetic division has the preganglionic projection to the adrenal medulla, which releases catecholamines into blood; the parasympathetic division has no adrenal connection."
+    },
+    {
+      "label": "E",
+      "text": "Divergence of one preganglionic fiber onto dozens of widely spread targets",
+      "isCorrect": false,
+      "misconception": "The mass-activation design of the sympathetic system is being generalized.",
+      "explanation": "Sympathetic preganglionics diverge to 10-20 targets for system-wide responses; parasympathetic circuits are comparatively discrete, with ganglia embedded near each specific organ."
+    }
+  ],
+  "context": "Learning objective: contrast autonomic wiring. Parasympathetic (craniosacral) preganglionic fibers are long and synapse in terminal or intramural ganglia near the target, leaving short postganglionic fibers.",
+  "cite": "openstax-anatomy-physiology#neuro-parasympathetic-craniosacral",
+  "publicUsmle": {
+    "schemaVersion": 1,
+    "origin": "generated",
+    "itemText": {
+      "licence": "CC-BY-4.0",
+      "attribution": "MD3 contributors"
+    },
+    "evidence": {
+      "kind": "passage",
+      "sourceId": "openstax-anatomy-physiology",
+      "passageId": "neuro-parasympathetic-craniosacral",
+      "licence": {
+        "cls": "foss",
+        "id": "cc-by-4.0"
+      }
+    },
+    "media": {
+      "kind": "asset",
+      "assetId": "ans-divisions-v1",
+      "job": "compare-table",
+      "showWhen": "after-reveal",
+      "licence": {
+        "cls": "foss",
+        "id": "cc-by-4.0"
+      },
+      "attribution": "MD3 contributors",
+      "contentHash": "sha256:d7b237205a1b7222585235058b4bd266322507dd3a48dca302eb55578983948d"
+    }
+  },
+  "imageUrl": "/figures/usmle/step1/ans-divisions-v1.svg",
+  "imageCaption": "Sympathetic thoracolumbar vs parasympathetic craniosacral; adrenergic receptor subtypes.",
+  "ladderId": "autonomic-ans"
+}

@@ -1,0 +1,265 @@
+{
+  "schemaVersion": 1,
+  "id": "gamsat:s3:enzyme-kinetics",
+  "section": "s3",
+  "title": "Enzyme Kinetics and Inhibition",
+  "domain": "enzyme-kinetics",
+  "passage": "Researchers investigated the kinetics of enzyme X, which catalyzes the conversion of substrate S to product P. Initial velocity measurements were taken at various substrate concentrations while keeping enzyme concentration constant at 2 nM.\n\nThe following data were obtained:\n\n| [S] (mM) | v₀ (μM/min) |\n|----------|-------------|\n| 0.1 | 1.7 |\n| 0.2 | 2.9 |\n| 0.5 | 5.0 |\n| 1.0 | 6.7 |\n| 2.0 | 8.3 |\n| 5.0 | 9.5 |\n| 10.0 | 9.8 |\n\nWhen these data were plotted according to the Lineweaver-Burk transformation (1/v₀ vs. 1/[S]), a linear relationship was observed with a y-intercept of 0.10 min/μM and an x-intercept of -10 mM⁻¹.\n\nThe researchers then investigated the effect of compound Q on enzyme activity. When 5 μM of compound Q was added to the reaction mixture, the following results were obtained:\n\n| [S] (mM) | v₀ without Q (μM/min) | v₀ with Q (μM/min) |\n|----------|----------------------|-------------------|\n| 0.5 | 5.0 | 2.5 |\n| 1.0 | 6.7 | 4.0 |\n| 2.0 | 8.3 | 5.7 |\n| 5.0 | 9.5 | 8.0 |\n| 10.0 | 9.8 | 9.0 |\n\nA Lineweaver-Burk plot of the data with compound Q showed parallel lines compared to the control (without Q).\n\nThe enzyme was then studied under different pH conditions. Maximum activity was observed at pH 7.0, with activity declining sharply at pH values below 6.0 and above 8.0. Analysis of the enzyme's primary structure revealed the presence of histidine residues in the active site.",
+  "questions": [
+    {
+      "id": "gamsat:s3:enzyme-kinetics:q1",
+      "moves": [
+        "s3-intercept-extraction",
+        "s3-unit-dimension"
+      ],
+      "stem": "Based on the Lineweaver-Burk plot parameters, what is the K_m of enzyme X?",
+      "options": [
+        {
+          "label": "A",
+          "text": "0.05 mM",
+          "isCorrect": false
+        },
+        {
+          "label": "B",
+          "text": "0.10 mM",
+          "isCorrect": true
+        },
+        {
+          "label": "C",
+          "text": "1.0 mM",
+          "isCorrect": false
+        },
+        {
+          "label": "D",
+          "text": "10 mM",
+          "isCorrect": false
+        }
+      ],
+      "explanation": "The x-intercept = -1/Km = -10 mM-1, so Km = 1/10 = 0.10 mM. The y-intercept (0.10 min/uM) gives 1/Vmax, not Km, which is why 10 mM is wrong. The x-intercept on a Lineweaver-Burk plot is always negative (-1/Km), so always flip the sign when extracting Km.",
+      "difficulty": "medium"
+    },
+    {
+      "id": "gamsat:s3:enzyme-kinetics:q2",
+      "moves": [
+        "s3-pedigree-inheritance"
+      ],
+      "stem": "What is the V_max of enzyme X?",
+      "options": [
+        {
+          "label": "A",
+          "text": "0.10 μM/min",
+          "isCorrect": false
+        },
+        {
+          "label": "B",
+          "text": "5.0 μM/min",
+          "isCorrect": false
+        },
+        {
+          "label": "C",
+          "text": "10 μM/min",
+          "isCorrect": true
+        },
+        {
+          "label": "D",
+          "text": "20 μM/min",
+          "isCorrect": false
+        }
+      ],
+      "explanation": "The y-intercept = 1/Vmax = 0.10 min/uM, so Vmax = 1/0.10 = 10 uM/min. This is consistent with the raw data showing velocity approaching approximately 10 uM/min at high substrate concentrations (9.8 uM/min at 10 mM). Always sanity-check Lineweaver-Burk results against the raw data — Vmax should match the plateau value at high [S].",
+      "difficulty": "medium"
+    },
+    {
+      "id": "gamsat:s3:enzyme-kinetics:q3",
+      "moves": [
+        "s3-table-comparison"
+      ],
+      "stem": "Based on the Lineweaver-Burk plot showing parallel lines with and without compound Q, compound Q is most likely a:",
+      "options": [
+        {
+          "label": "A",
+          "text": "Competitive inhibitor",
+          "isCorrect": false
+        },
+        {
+          "label": "B",
+          "text": "Non-competitive inhibitor",
+          "isCorrect": true
+        },
+        {
+          "label": "C",
+          "text": "Uncompetitive inhibitor",
+          "isCorrect": false
+        },
+        {
+          "label": "D",
+          "text": "Mixed inhibitor",
+          "isCorrect": false
+        }
+      ],
+      "explanation": "Parallel lines on a Lineweaver-Burk plot (same slope, different y-intercepts) indicate non-competitive inhibition — Km is unchanged but Vmax is decreased. Competitive inhibitors show lines intersecting on the y-axis, while uncompetitive inhibitors show parallel lines with the same x-intercept.",
+      "difficulty": "medium"
+    },
+    {
+      "id": "gamsat:s3:enzyme-kinetics:q4",
+      "moves": [
+        "s3-mechanism-inference",
+        "s3-table-comparison"
+      ],
+      "stem": "What effect does compound Q have on the K_m of enzyme X?",
+      "options": [
+        {
+          "label": "A",
+          "text": "K_m increases in the presence of Q",
+          "isCorrect": false
+        },
+        {
+          "label": "B",
+          "text": "K_m decreases in the presence of Q",
+          "isCorrect": false
+        },
+        {
+          "label": "C",
+          "text": "K_m is unchanged in the presence of Q",
+          "isCorrect": true
+        },
+        {
+          "label": "D",
+          "text": "The effect depends on substrate concentration",
+          "isCorrect": false
+        }
+      ],
+      "explanation": "Non-competitive inhibitors bind to a site other than the active site, leaving substrate affinity (Km) unchanged while reducing Vmax. Increasing Km would indicate competitive inhibition where substrate and inhibitor compete for the active site, while decreasing Km would indicate uncompetitive inhibition. The three inhibitor types and their Km effects: competitive increases apparent Km, uncompetitive decreases apparent Km, non-competitive leaves Km unchanged.",
+      "difficulty": "medium"
+    },
+    {
+      "id": "gamsat:s3:enzyme-kinetics:q5",
+      "moves": [
+        "s3-unit-dimension"
+      ],
+      "stem": "At pH 7.0 and [S] = 0.10 mM, what is the reaction velocity as a percentage of V_max?",
+      "options": [
+        {
+          "label": "A",
+          "text": "17% of V_max",
+          "isCorrect": false
+        },
+        {
+          "label": "B",
+          "text": "33% of V_max",
+          "isCorrect": false
+        },
+        {
+          "label": "C",
+          "text": "50% of V_max",
+          "isCorrect": true
+        },
+        {
+          "label": "D",
+          "text": "67% of V_max",
+          "isCorrect": false
+        }
+      ],
+      "explanation": "Since [S] = 0.10 mM = Km, velocity is exactly 50% of Vmax by the Michaelis-Menten relationship. The raw data confirm this: v = 1.7 uM/min at [S] = 0.1 mM is approximately half of Vmax (10 uM/min). Km = [S] at half-Vmax is the single most important definition in enzyme kinetics.",
+      "difficulty": "medium"
+    },
+    {
+      "id": "gamsat:s3:enzyme-kinetics:q6",
+      "moves": [
+        "s3-mechanism-inference"
+      ],
+      "stem": "The sharp decline in enzyme activity below pH 6.0 and above pH 8.0 is most likely due to:",
+      "options": [
+        {
+          "label": "A",
+          "text": "Irreversible denaturation of the enzyme at extreme pH",
+          "isCorrect": false
+        },
+        {
+          "label": "B",
+          "text": "Changes in ionization state of histidine residues",
+          "isCorrect": true
+        },
+        {
+          "label": "C",
+          "text": "Decreased substrate solubility",
+          "isCorrect": false
+        },
+        {
+          "label": "D",
+          "text": "Increased product inhibition",
+          "isCorrect": false
+        }
+      ],
+      "explanation": "Histidine (pKa ~6) changes ionisation state outside pH 6-8, disrupting catalysis that depends on its protonated or deprotonated form. Enzyme denaturation typically occurs at more extreme pH values than 6-8, so ionisation is the more likely mechanism here. Match active site amino acids to pH sensitivity: histidine (pKa ~6) explains optima near 6-7, cysteine (pKa ~8) near 8-9, and aspartate/glutamate (pKa ~4) near 4-5.",
+      "difficulty": "medium"
+    },
+    {
+      "id": "gamsat:s3:enzyme-kinetics:q7",
+      "moves": [
+        "s3-prediction-from-model"
+      ],
+      "stem": "If the experiment were repeated with compound Q and [Q] increased from 5 μM to 10 μM, which parameter would be affected?",
+      "options": [
+        {
+          "label": "A",
+          "text": "K_m would increase",
+          "isCorrect": false
+        },
+        {
+          "label": "B",
+          "text": "K_m would decrease",
+          "isCorrect": false
+        },
+        {
+          "label": "C",
+          "text": "V_max would decrease further",
+          "isCorrect": true
+        },
+        {
+          "label": "D",
+          "text": "Neither K_m nor V_max would change",
+          "isCorrect": false
+        }
+      ],
+      "explanation": "Non-competitive inhibitors reduce Vmax in a concentration-dependent manner, so doubling inhibitor concentration would decrease Vmax further while Km remains unchanged. For all reversible inhibitors, increasing inhibitor concentration amplifies the effect on the affected parameter — more competitive inhibitor means higher apparent Km, more non-competitive means lower Vmax.",
+      "difficulty": "medium"
+    },
+    {
+      "id": "gamsat:s3:enzyme-kinetics:q8",
+      "moves": [
+        "s3-trend-extrapolation"
+      ],
+      "stem": "At very high substrate concentrations ([S] >> K_m), the enzyme approaches which kinetic order?",
+      "options": [
+        {
+          "label": "A",
+          "text": "Zero order with respect to substrate",
+          "isCorrect": true
+        },
+        {
+          "label": "B",
+          "text": "First order with respect to substrate",
+          "isCorrect": false
+        },
+        {
+          "label": "C",
+          "text": "Second order with respect to substrate",
+          "isCorrect": false
+        },
+        {
+          "label": "D",
+          "text": "Mixed order kinetics",
+          "isCorrect": false
+        }
+      ],
+      "explanation": "When [S] >> Km, all enzyme active sites are occupied and adding more substrate cannot increase the rate, giving zero-order kinetics (rate = Vmax, a constant). First-order kinetics occurs at low [S] where rate is proportional to [S]. The Michaelis-Menten curve is a smooth transition from first-order (linear region) to zero-order (plateau), with Km marking the midpoint of this transition.",
+      "difficulty": "medium"
+    }
+  ],
+  "licence": {
+    "id": "CC-BY-4.0",
+    "attribution": "MD3 contributors"
+  },
+  "origin": "authored"
+}

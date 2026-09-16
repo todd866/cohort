@@ -1,0 +1,71 @@
+{
+  "id": "bank:usmle-step1:exp26-a-anemia-mechanism-contrast:v1",
+  "rotation": "usmle-step1-open",
+  "topics": [
+    "hematology",
+    "hemolytic-anemia"
+  ],
+  "moduleNodes": [
+    "usmle/step1",
+    "usmle/step1/hematology"
+  ],
+  "questionType": "interpretation",
+  "difficulty": "medium",
+  "stem": "Two hypothetical anemia models are compared. In model X, erythrocyte destruction is measured to exceed replacement. In model Y, the marrow fails to produce adequate blood cells. Which of the following best distinguishes the primary mechanisms?",
+  "options": [
+    {
+      "label": "A",
+      "text": "Both models have marrow failure without increased erythrocyte destruction",
+      "isCorrect": false,
+      "explanation": "The first model directly measures destruction exceeding replacement. A uniform production-failure explanation therefore omits its defining loss-side abnormality in the stated experiment.",
+      "misconception": "Assigns production failure to both models despite direct evidence of a destruction imbalance in the first."
+    },
+    {
+      "label": "B",
+      "text": "Neither model changes the balance of circulating blood-cell numbers",
+      "isCorrect": false,
+      "explanation": "Both models identify a process that can lower circulating cells. Excess destruction and deficient production are different ways of shifting the balance away from maintenance.",
+      "misconception": "Assumes excess destruction and inadequate production cannot alter circulating cell numbers."
+    },
+    {
+      "label": "C",
+      "text": "X has a destruction imbalance; Y has marrow production failure",
+      "isCorrect": true,
+      "explanation": "X matches the definition of hemolytic anemia: destruction exceeds replacement. Y identifies the production failure described by aplastic anemia, separating the two mechanisms despite their shared outcome.",
+      "misconception": "No misconception: Similar low-cell outcomes can arise from excess destruction or inadequate production."
+    },
+    {
+      "label": "D",
+      "text": "X has marrow production failure; Y has a destruction imbalance",
+      "isCorrect": false,
+      "explanation": "This reverses the measured mechanisms. X is defined by excess destruction, whereas Y directly identifies failure of the marrow production compartment in the comparison.",
+      "misconception": "Reverses which model directly measures excess destruction and which identifies inadequate production."
+    },
+    {
+      "label": "E",
+      "text": "Both models have increased destruction with preserved marrow production",
+      "isCorrect": false,
+      "explanation": "The second model explicitly reports marrow production failure. Assigning preserved production to both models ignores the finding that distinguishes Y from the destruction-side process.",
+      "misconception": "Assigns preserved production to both models despite explicit marrow production failure in the second."
+    }
+  ],
+  "context": "Learning objective: separate excess loss of erythrocytes from inadequate marrow production. Both can reduce circulating cells, but the mechanistic labels depend on which process the observations identify.",
+  "cite": "nhlbi-hemolytic-anemia#hemolysis-definition",
+  "publicUsmle": {
+    "schemaVersion": 1,
+    "origin": "generated",
+    "itemText": {
+      "licence": "CC-BY-4.0",
+      "attribution": "MD3 contributors"
+    },
+    "evidence": {
+      "kind": "passage",
+      "sourceId": "nhlbi-hemolytic-anemia",
+      "passageId": "hemolysis-definition",
+      "licence": {
+        "cls": "foss",
+        "id": "us-gov"
+      }
+    }
+  }
+}

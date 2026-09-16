@@ -1,0 +1,86 @@
+{
+  "schemaVersion": 1,
+  "figureId": "avulsed-tooth-crown-root",
+  "kind": "conceptual",
+  "retrospectiveReview": true,
+  "sourceFacts": [
+    {
+      "id": "fact-1",
+      "fact": "Hold an avulsed permanent tooth by its crown, not the root.",
+      "sources": [
+        {
+          "title": "RCH: Dental trauma",
+          "url": "https://www.rch.org.au/clinicalguide/guideline_index/Dental_injuries/"
+        },
+        {
+          "title": "RCH: Mouth injuries and dislodged teeth",
+          "url": "https://www.rch.org.au/kidsinfo/fact_sheets/Broken_or_dislodged_tooth/"
+        }
+      ]
+    },
+    {
+      "id": "fact-2",
+      "fact": "Do not scrub its root; preservation of the living root surface supports healing.",
+      "sources": [
+        {
+          "title": "RCH: Dental trauma",
+          "url": "https://www.rch.org.au/clinicalguide/guideline_index/Dental_injuries/"
+        },
+        {
+          "title": "RCH: Mouth injuries and dislodged teeth",
+          "url": "https://www.rch.org.au/kidsinfo/fact_sheets/Broken_or_dislodged_tooth/"
+        }
+      ]
+    }
+  ],
+  "nodes": [
+    {
+      "id": "crown",
+      "shape": "external white crown",
+      "label": "Crown — hold here"
+    },
+    {
+      "id": "fingers",
+      "shape": "two gloved fingertips",
+      "label": "handling pose"
+    },
+    {
+      "id": "root",
+      "shape": "external tapered root surface only",
+      "label": "Root — avoid touching or scrubbing"
+    }
+  ],
+  "edges": [
+    {
+      "from": "fingers",
+      "to": "crown",
+      "meaning": "contact only white crown"
+    },
+    {
+      "from": "fingers",
+      "to": "root",
+      "meaning": "no contact"
+    }
+  ],
+  "labels": [
+    "Crown",
+    "Root",
+    "Periodontal ligament cells"
+  ],
+  "forbiddenAnatomy": [
+    "Regional anatomy",
+    "Organ and tissue cutaways",
+    "Diagnostic or histological representations"
+  ],
+  "validation": {
+    "status": "verified",
+    "method": "source-and-conceptual-structure-review",
+    "checks": [
+      "Both fingertips contact only crown.",
+      "Root is untouched and no socket, jaw, root canal, pulp or tooth section is shown.",
+      "Root-surface overlay is a conceptual highlighting convention, not a microscopy claim."
+    ],
+    "pixelReviewStatus": "verified",
+    "pixelReviewNotes": "Retrospective full-pixel comparison with a checked handling specification: fingertips touch only the external crown; all root surface is untouched. No tooth section, jaw, socket or pulp anatomy is present. The labelled surface highlight explains preservation of living root-surface cells. External handling demonstration only; pending independent QA."
+  }
+}

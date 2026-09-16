@@ -1,0 +1,85 @@
+{
+  "id": "bank:usmle-step1:pharm-atorvastatin-statin:v1",
+  "rotation": "usmle-step1-open",
+  "topics": [
+    "atorvastatin",
+    "statin"
+  ],
+  "moduleNodes": [
+    "usmle/step1",
+    "usmle/step1/pharmacology"
+  ],
+  "questionType": "mechanism",
+  "difficulty": "easy",
+  "stem": "Atorvastatin is in which class, and how does it lower circulating lipids?",
+  "options": [
+    {
+      "label": "A",
+      "text": "Loop diuretic; increases urine sodium and lipid clearance only",
+      "isCorrect": false,
+      "misconception": "Wrong class; diuretics are not statins.",
+      "explanation": "Not HMG-CoA reductase inhibition."
+    },
+    {
+      "label": "B",
+      "text": "Salicylate; blocks platelet aggregation pathways only",
+      "isCorrect": false,
+      "misconception": "Aspirin class — does not match the cited teaching point.",
+      "explanation": "Wrong class; see the cited source passage for detail."
+    },
+    {
+      "label": "C",
+      "text": "Beta-lactam; blocks bacterial cell-wall synthesis only",
+      "isCorrect": false,
+      "misconception": "Antibiotic class — does not match the cited teaching point.",
+      "explanation": "Wrong class; see the cited source passage for detail."
+    },
+    {
+      "label": "D",
+      "text": "HMG-CoA reductase inhibitor statin; slows cholesterol production",
+      "isCorrect": true,
+      "misconception": "None; statin slows cholesterol production.",
+      "explanation": "MedlinePlus: statin that slows cholesterol production."
+    },
+    {
+      "label": "E",
+      "text": "ACE inhibitor; blocks angiotensin II formation pathways only",
+      "isCorrect": false,
+      "misconception": "Lisinopril class — does not match the cited teaching point.",
+      "explanation": "Wrong class; see the cited source passage for detail."
+    }
+  ],
+  "context": "Learning objective: atorvastatin statin mechanism.",
+  "cite": "medlineplus-atorvastatin#atorvastatin-statin",
+  "publicUsmle": {
+    "schemaVersion": 1,
+    "origin": "generated",
+    "itemText": {
+      "licence": "CC-BY-4.0",
+      "attribution": "MD3 contributors"
+    },
+    "evidence": {
+      "kind": "passage",
+      "sourceId": "medlineplus-atorvastatin",
+      "passageId": "atorvastatin-statin",
+      "licence": {
+        "cls": "foss",
+        "id": "us-gov"
+      }
+    },
+    "media": {
+      "kind": "asset",
+      "assetId": "pharm-drug-classes-v1",
+      "job": "compare-table",
+      "showWhen": "after-reveal",
+      "licence": {
+        "cls": "foss",
+        "id": "cc-by-4.0"
+      },
+      "attribution": "MD3 contributors",
+      "contentHash": "sha256:0660ff11235451eff9a2718dd975d64fa61483b220682b17bd82c8050fd4bceb"
+    }
+  },
+  "imageUrl": "/figures/usmle/step1/pharm-drug-classes-v1.svg",
+  "imageCaption": "High-yield FOSS drug-class map from MedlinePlus labels."
+}

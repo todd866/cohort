@@ -1,0 +1,71 @@
+{
+  "id": "bank:usmle-step1:exp26-c-medullary-crossing-localization:v1",
+  "rotation": "usmle-step1-open",
+  "topics": [
+    "neuro",
+    "medullary-crossing-localization"
+  ],
+  "moduleNodes": [
+    "usmle/step1",
+    "usmle/step1/neuro"
+  ],
+  "questionType": "interpretation",
+  "difficulty": "hard",
+  "stem": "A small lesion interrupts the left dorsal column in the thoracic spinal cord. Ascending fibers above and below the lesion are otherwise intact. Which of the following sensory findings below the lesion is most consistent with the crossing pattern of this pathway?",
+  "options": [
+    {
+      "label": "A",
+      "text": "Reduced proprioception on the left side of the body",
+      "isCorrect": true,
+      "explanation": "Dorsal column fibers carry proprioceptive information and cross in the medulla. A left spinal cord lesion therefore interrupts information from the left side before the crossing.",
+      "misconception": "No misconception: a left dorsal-column lesion precedes medullary crossing."
+    },
+    {
+      "label": "B",
+      "text": "Reduced proprioception on the right side of the body",
+      "isCorrect": false,
+      "explanation": "Right-sided proprioceptive information travels in the right dorsal column before crossing in the medulla. A lesion confined to the left thoracic dorsal column would spare those fibers.",
+      "misconception": "Assumes proprioceptive fibers have already crossed within the spinal cord."
+    },
+    {
+      "label": "C",
+      "text": "Reduced pain sensation on the left side of the body",
+      "isCorrect": false,
+      "explanation": "Pain travels in the spinothalamic pathway, whose fibers cross near their spinal entry level. This lesion is restricted to a pathway carrying touch and proprioception.",
+      "misconception": "Assigns pain transmission to the lesioned dorsal-column pathway."
+    },
+    {
+      "label": "D",
+      "text": "Reduced pain sensation on the right side of the body",
+      "isCorrect": false,
+      "explanation": "A left spinothalamic lesion can affect pain information from the opposite side after crossing. The specified lesion instead interrupts the dorsal column, which carries different sensory modalities.",
+      "misconception": "Applies contralateral spinothalamic pain loss to a dorsal-column lesion."
+    },
+    {
+      "label": "E",
+      "text": "Reduced temperature sensation on both sides of the body",
+      "isCorrect": false,
+      "explanation": "Temperature information ascends through the spinothalamic pathways after a spinal crossing. A unilateral dorsal column lesion does not interrupt both pathways and would primarily affect proprioceptive information.",
+      "misconception": "Extends one dorsal-column lesion to bilateral spinothalamic temperature pathways."
+    }
+  ],
+  "context": "Learning objective: Track both the sensory modality and the site of decussation when localizing a spinal cord lesion.\n\nDorsal column fibers carry proprioceptive information and cross in the medulla. A left spinal cord lesion therefore interrupts information from the left side before the crossing.",
+  "cite": "openstax-anatomy-physiology#neuro-ascending-tracts",
+  "publicUsmle": {
+    "schemaVersion": 1,
+    "origin": "generated",
+    "itemText": {
+      "licence": "CC-BY-4.0",
+      "attribution": "MD3 contributors"
+    },
+    "evidence": {
+      "kind": "passage",
+      "sourceId": "openstax-anatomy-physiology",
+      "passageId": "neuro-ascending-tracts",
+      "licence": {
+        "cls": "foss",
+        "id": "cc-by-4.0"
+      }
+    }
+  }
+}

@@ -1,0 +1,85 @@
+{
+  "id": "bank:usmle-step1:micro-hib-capsule-serotypes:v1",
+  "rotation": "usmle-step1-open",
+  "topics": [
+    "hib",
+    "capsule"
+  ],
+  "moduleNodes": [
+    "usmle/step1",
+    "usmle/step1/microbiology"
+  ],
+  "questionType": "mechanism",
+  "difficulty": "easy",
+  "stem": "Haemophilus influenzae polysaccharide covering is described as having how many serotypes labeled a-f?",
+  "options": [
+    {
+      "label": "A",
+      "text": "Exactly zero capsules across every bacterial strain typed",
+      "isCorrect": false,
+      "misconception": "Contradicts capsule biology.",
+      "explanation": "This option does not match the cited source passage for the stem."
+    },
+    {
+      "label": "B",
+      "text": "Exactly two capsule serotypes labeled X and Y only",
+      "isCorrect": false,
+      "misconception": "Wrong count — does not match the cited teaching point.",
+      "explanation": "Not Hib framing; see the cited source passage for detail."
+    },
+    {
+      "label": "C",
+      "text": "Exactly one serotype labeled measles virus on panels",
+      "isCorrect": false,
+      "misconception": "Viral distractor — does not match the cited teaching point.",
+      "explanation": "This option does not match the cited source passage for the stem."
+    },
+    {
+      "label": "D",
+      "text": "Exactly twelve sarcomere bands in adult skeletal muscle",
+      "isCorrect": false,
+      "misconception": "Anatomy distractor — does not match the cited teaching point.",
+      "explanation": "This option does not match the cited source passage for the stem."
+    },
+    {
+      "label": "E",
+      "text": "Six different serotypes labeled a-f on typing panels",
+      "isCorrect": true,
+      "misconception": "None; six capsule serotypes.",
+      "explanation": "CDC: six serotypes a-f."
+    }
+  ],
+  "context": "Learning objective: recall hib, capsule from the cited FOSS source.",
+  "cite": "cdc-pink-book-hib#hib-capsule-serotypes",
+  "publicUsmle": {
+    "schemaVersion": 1,
+    "origin": "generated",
+    "itemText": {
+      "licence": "CC-BY-4.0",
+      "attribution": "MD3 contributors"
+    },
+    "evidence": {
+      "kind": "passage",
+      "sourceId": "cdc-pink-book-hib",
+      "passageId": "hib-capsule-serotypes",
+      "licence": {
+        "cls": "foss",
+        "id": "us-gov"
+      }
+    },
+    "media": {
+      "kind": "asset",
+      "assetId": "micro-pathogen-virulence-v1",
+      "job": "compare-table",
+      "showWhen": "after-reveal",
+      "licence": {
+        "cls": "foss",
+        "id": "cc-by-4.0"
+      },
+      "attribution": "MD3 contributors",
+      "contentHash": "sha256:e0ca8dcce5538b15d4a9973d8a6934fc8199d41e7059a4d8f0059cc1ec78a22e"
+    }
+  },
+  "imageUrl": "/figures/usmle/step1/micro-pathogen-virulence-v1.svg",
+  "imageCaption": "Pathogen virulence and Pink Book organism map (FOSS draft)."
+}

@@ -1,0 +1,87 @@
+{
+  "id": "bank:usmle-step1:neuro-resting-membrane-r3:v1",
+  "rotation": "usmle-step1-open",
+  "ladderId": "resting-membrane-potential",
+  "topics": [
+    "resting membrane potential",
+    "ion distributions",
+    "ladder:resting-membrane-potential"
+  ],
+  "moduleNodes": [
+    "usmle/step1",
+    "usmle/step1/neuroscience"
+  ],
+  "questionType": "mechanism",
+  "difficulty": "hard",
+  "stem": "A 61-year-old researcher records a stable −70 mV resting potential from a neuron. Chemical analysis shows abundant phosphate ions and negatively charged proteins in the cytosol, but the labels identifying sodium and potassium samples from each side of the membrane are lost. The investigator must reconstruct the ion map associated with this voltage.\n\nWhich of the following distributions is most consistent with the recorded resting state?",
+  "options": [
+    {
+      "label": "A",
+      "text": "Intracellular Na+ tenfold higher; intracellular K+ higher",
+      "isCorrect": false,
+      "misconception": "Places sodium on the wrong side while preserving the potassium distribution.",
+      "explanation": "The source places sodium at a tenfold higher concentration outside, not inside, the cell."
+    },
+    {
+      "label": "B",
+      "text": "Extracellular Na+ tenfold higher; extracellular K+ higher",
+      "isCorrect": false,
+      "misconception": "Places potassium on the wrong side while preserving the sodium distribution.",
+      "explanation": "The source places potassium at a higher concentration inside, not outside, the cell."
+    },
+    {
+      "label": "C",
+      "text": "Extracellular Na+ tenfold higher; intracellular K+ higher",
+      "isCorrect": true,
+      "misconception": "Reconstructs both source-described ion distributions associated with −70 mV.",
+      "explanation": "At the resting potential, extracellular sodium is about tenfold higher than intracellular sodium, while potassium is more concentrated inside."
+    },
+    {
+      "label": "D",
+      "text": "Equal Na+ across the membrane; intracellular K+ higher",
+      "isCorrect": false,
+      "misconception": "Removes the sodium asymmetry while preserving the potassium distribution.",
+      "explanation": "The source describes sodium outside the cell as ten times more concentrated than sodium inside, not equal across the membrane."
+    },
+    {
+      "label": "E",
+      "text": "Extracellular Na+ tenfold higher; equal K+ across the membrane",
+      "isCorrect": false,
+      "misconception": "Removes the potassium asymmetry while preserving the sodium distribution.",
+      "explanation": "The source describes potassium as more concentrated inside than outside, not equal across the membrane."
+    }
+  ],
+  "context": "Learning objective: reconstruct the resting ion map. At −70 mV, sodium is about tenfold more concentrated outside, potassium is more concentrated inside, and phosphate ions plus negatively charged proteins are concentrated in the cytosol.",
+  "cite": "openstax-anatomy-physiology#neuro-resting-membrane-potential",
+  "publicUsmle": {
+    "schemaVersion": 1,
+    "origin": "generated",
+    "itemText": {
+      "licence": "CC-BY-4.0",
+      "attribution": "MD3 contributors"
+    },
+    "evidence": {
+      "kind": "passage",
+      "sourceId": "openstax-anatomy-physiology",
+      "passageId": "neuro-resting-membrane-potential",
+      "licence": {
+        "cls": "foss",
+        "id": "cc-by-4.0"
+      }
+    },
+    "media": {
+      "kind": "asset",
+      "assetId": "neuron-ap-v1",
+      "job": "trace",
+      "showWhen": "after-reveal",
+      "licence": {
+        "cls": "foss",
+        "id": "cc-by-4.0"
+      },
+      "attribution": "MD3 contributors",
+      "contentHash": "sha256:41648c5b0091329b481398598463e273058e8121c5de902621e265d09794a292"
+    }
+  },
+  "imageUrl": "/figures/usmle/step1/neuron-ap-v1.svg",
+  "imageCaption": "Neuron RMP, threshold AP, refractory period, saltatory conduction, EPSP/IPSP summation."
+}

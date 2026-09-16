@@ -1,0 +1,84 @@
+{
+  "id": "bank:usmle-step1:phys-diabetes-high-glucose:v1",
+  "rotation": "usmle-step1-open",
+  "topics": [
+    "diabetes"
+  ],
+  "moduleNodes": [
+    "usmle/step1",
+    "usmle/step1/physiology"
+  ],
+  "questionType": "interpretation",
+  "difficulty": "easy",
+  "stem": "Diabetes mellitus occurs when which measured quantity is too high?",
+  "options": [
+    {
+      "label": "A",
+      "text": "Blood glucose concentration above the healthy range",
+      "isCorrect": true,
+      "misconception": "Recognizes the source-defined abnormality: excessive blood glucose.",
+      "explanation": "The source defines diabetes as occurring when blood glucose, also called blood sugar, is too high."
+    },
+    {
+      "label": "B",
+      "text": "Arterial blood pressure above the healthy range",
+      "isCorrect": false,
+      "misconception": "Confuses diabetes with a disorder defined by arterial pressure.",
+      "explanation": "Arterial pressure is a different measurement; it is not the high blood glucose stated in the definition."
+    },
+    {
+      "label": "C",
+      "text": "Blood oxygen concentration above the healthy range",
+      "isCorrect": false,
+      "misconception": "Confuses glucose metabolism with oxygen transport.",
+      "explanation": "Blood oxygen describes gas transport rather than the blood glucose abnormality named by the source."
+    },
+    {
+      "label": "D",
+      "text": "Urinary protein excretion above the healthy range",
+      "isCorrect": false,
+      "misconception": "Confuses the defining abnormality with a renal measurement.",
+      "explanation": "Protein excretion is a different measurement; it is not the high blood glucose that defines diabetes here."
+    },
+    {
+      "label": "E",
+      "text": "Blood sodium concentration above the healthy range",
+      "isCorrect": false,
+      "misconception": "Confuses blood sugar with an unrelated serum electrolyte.",
+      "explanation": "Sodium is an electrolyte measurement, whereas the cited definition identifies excessive blood glucose."
+    }
+  ],
+  "context": "Learning objective: distinguish the defining diabetes measurement. Glucose circulates as blood sugar and is a major energy source; diabetes mellitus is the condition in which blood glucose becomes too high.",
+  "cite": "niddk-diabetes-overview#diabetes-high-glucose",
+  "publicUsmle": {
+    "schemaVersion": 1,
+    "origin": "generated",
+    "itemText": {
+      "licence": "CC-BY-4.0",
+      "attribution": "MD3 contributors"
+    },
+    "evidence": {
+      "kind": "passage",
+      "sourceId": "niddk-diabetes-overview",
+      "passageId": "diabetes-high-glucose",
+      "licence": {
+        "cls": "foss",
+        "id": "us-gov"
+      }
+    },
+    "media": {
+      "kind": "asset",
+      "assetId": "insulin-glucagon-v1",
+      "job": "compare-table",
+      "showWhen": "after-reveal",
+      "licence": {
+        "cls": "foss",
+        "id": "cc-by-4.0"
+      },
+      "attribution": "MD3 contributors",
+      "contentHash": "sha256:73759183f197f8f4dbf37c4a28354dcf082c0932b871af89cf99e429e9445d71"
+    }
+  },
+  "imageUrl": "/figures/usmle/step1/insulin-glucagon-v1.svg",
+  "imageCaption": "Insulin lowers circulating glucose by promoting storage; glucagon mobilizes fuel during fasting."
+}

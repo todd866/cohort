@@ -1,0 +1,69 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 520" role="img" aria-labelledby="title desc">
+  <title id="title">Bilirubin metabolism and excretion</title>
+  <desc id="desc">Pathway from hemoglobin breakdown in spleen through unconjugated then conjugated bilirubin, biliary excretion, intestinal conversion to urobilinogen and stercobilin, enterohepatic return, and urinary urobilinogen.</desc>
+  <defs>
+    <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M0,0 L10,5 L0,10 z" fill="#1d4ed8"/>
+    </marker>
+  </defs>
+
+  <rect width="720" height="520" fill="#ffffff"/>
+  <text x="360" y="28" text-anchor="middle" font-family="Helvetica,Arial,sans-serif" font-size="16" font-weight="700" fill="#111">Bilirubin metabolism and excretion</text>
+  <text x="360" y="48" text-anchor="middle" font-family="Helvetica,Arial,sans-serif" font-size="11" fill="#444">Hepatic conjugation makes bilirubin water-soluble for biliary and fecal excretion</text>
+
+  <!-- Systemic circulation -->
+  <rect x="40" y="70" width="640" height="44" rx="6" fill="none" stroke="#111" stroke-width="1.5"/>
+  <text x="360" y="88" text-anchor="middle" font-family="Helvetica,Arial,sans-serif" font-size="12" font-weight="700" fill="#111">SYSTEMIC CIRCULATION</text>
+  <text x="360" y="104" text-anchor="middle" font-family="Helvetica,Arial,sans-serif" font-size="11" fill="#1d4ed8">(3) Unconjugated bilirubin bound to albumin</text>
+
+  <!-- Spleen -->
+  <ellipse cx="600" cy="175" rx="78" ry="52" fill="#f3f4f6" stroke="#111" stroke-width="1.5"/>
+  <text x="600" y="158" text-anchor="middle" font-family="Helvetica,Arial,sans-serif" font-size="12" font-weight="700" fill="#111">SPLEEN</text>
+  <text x="600" y="176" text-anchor="middle" font-family="Helvetica,Arial,sans-serif" font-size="10" fill="#111">(1) Hb to globin + Fe + porphyrin</text>
+  <text x="600" y="192" text-anchor="middle" font-family="Helvetica,Arial,sans-serif" font-size="10" fill="#111">to biliverdin to (2) bilirubin</text>
+
+  <!-- Liver -->
+  <path d="M60,150 C90,130 160,125 210,140 C250,155 270,190 250,230 C220,270 120,275 80,250 C50,230 40,180 60,150 Z" fill="#f3f4f6" stroke="#111" stroke-width="1.5"/>
+  <text x="145" y="175" text-anchor="middle" font-family="Helvetica,Arial,sans-serif" font-size="12" font-weight="700" fill="#111">LIVER</text>
+  <text x="145" y="195" text-anchor="middle" font-family="Helvetica,Arial,sans-serif" font-size="10" fill="#111">(4) Conjugation</text>
+  <text x="145" y="210" text-anchor="middle" font-family="Helvetica,Arial,sans-serif" font-size="10" fill="#111">+ glucuronic acid</text>
+  <text x="145" y="228" text-anchor="middle" font-family="Helvetica,Arial,sans-serif" font-size="10" fill="#1d4ed8">conjugated bilirubin</text>
+
+  <!-- Kidney -->
+  <ellipse cx="500" cy="255" rx="52" ry="34" fill="#f3f4f6" stroke="#111" stroke-width="1.5"/>
+  <text x="500" y="252" text-anchor="middle" font-family="Helvetica,Arial,sans-serif" font-size="12" font-weight="700" fill="#111">KIDNEY</text>
+  <text x="500" y="268" text-anchor="middle" font-family="Helvetica,Arial,sans-serif" font-size="10" fill="#111">(11) urobilinogen in urine</text>
+
+  <!-- Biliary duct -->
+  <rect x="130" y="250" width="28" height="110" fill="#f3f4f6" stroke="#111" stroke-width="1.5"/>
+  <text x="144" y="310" text-anchor="middle" transform="rotate(-90 144,310)" font-family="Helvetica,Arial,sans-serif" font-size="10" fill="#111">BILIARY SYSTEM</text>
+
+  <!-- Intestines -->
+  <rect x="80" y="370" width="260" height="70" rx="4" fill="#f3f4f6" stroke="#111" stroke-width="1.5"/>
+  <text x="210" y="395" text-anchor="middle" font-family="Helvetica,Arial,sans-serif" font-size="12" font-weight="700" fill="#111">SMALL INTESTINE</text>
+  <text x="210" y="415" text-anchor="middle" font-family="Helvetica,Arial,sans-serif" font-size="10" fill="#111">(5-6) conjugated bilirubin in bile</text>
+
+  <rect x="360" y="370" width="280" height="70" rx="4" fill="#f3f4f6" stroke="#111" stroke-width="1.5"/>
+  <text x="500" y="392" text-anchor="middle" font-family="Helvetica,Arial,sans-serif" font-size="12" font-weight="700" fill="#111">LARGE INTESTINE</text>
+  <text x="500" y="410" text-anchor="middle" font-family="Helvetica,Arial,sans-serif" font-size="10" fill="#111">(7) bacteria to (9) urobilinogen</text>
+  <text x="500" y="426" text-anchor="middle" font-family="Helvetica,Arial,sans-serif" font-size="10" fill="#111">(8) urobilin + stercobilin to faeces</text>
+
+  <!-- Portal vein arc -->
+  <path d="M500,370 C520,320 400,280 250,240" fill="none" stroke="#111" stroke-width="1.5"/>
+  <text x="400" y="305" font-family="Helvetica,Arial,sans-serif" font-size="10" fill="#111">PORTAL VEIN</text>
+  <text x="380" y="320" font-family="Helvetica,Arial,sans-serif" font-size="10" fill="#111">urobilinogen (enterohepatic)</text>
+
+  <!-- Flow arrows -->
+  <path d="M560,140 L560,114" fill="none" stroke="#1d4ed8" stroke-width="2.5" marker-end="url(#arrow)"/>
+  <path d="M200,114 L170,150" fill="none" stroke="#1d4ed8" stroke-width="2.5" marker-end="url(#arrow)"/>
+  <path d="M144,235 L144,250" fill="none" stroke="#1d4ed8" stroke-width="2.5" marker-end="url(#arrow)"/>
+  <path d="M144,360 L180,370" fill="none" stroke="#1d4ed8" stroke-width="2.5" marker-end="url(#arrow)"/>
+  <path d="M340,405 L360,405" fill="none" stroke="#1d4ed8" stroke-width="2.5" marker-end="url(#arrow)"/>
+  <path d="M520,370 L520,340" fill="none" stroke="#1d4ed8" stroke-width="2.5" marker-end="url(#arrow)"/>
+  <path d="M280,250 L230,230" fill="none" stroke="#1d4ed8" stroke-width="2.5" marker-end="url(#arrow)"/>
+  <path d="M420,280 L420,114" fill="none" stroke="#1d4ed8" stroke-width="2.5" marker-end="url(#arrow)"/>
+  <text x="430" y="200" font-family="Helvetica,Arial,sans-serif" font-size="10" fill="#1d4ed8">(10) urobilinogen escapes hepatic uptake</text>
+  <path d="M500,114 L500,221" fill="none" stroke="#1d4ed8" stroke-width="2.5" marker-end="url(#arrow)"/>
+
+  <text x="360" y="500" text-anchor="middle" font-family="Helvetica,Arial,sans-serif" font-size="10" fill="#666">MD3 open Step 1 media - CC BY 4.0 - teaching schematic</text>
+</svg>

@@ -1,0 +1,71 @@
+{
+  "id": "bank:usmle-step1:exp26-c-follicular-output-rebuilding-loss:v1",
+  "rotation": "usmle-step1-open",
+  "topics": [
+    "reproductive",
+    "follicular-output-rebuilding-loss"
+  ],
+  "moduleNodes": [
+    "usmle/step1",
+    "usmle/step1/reproductive"
+  ],
+  "questionType": "mechanism",
+  "difficulty": "medium",
+  "stem": "A 26-year-old patient is studied during the preovulatory portion of a menstrual cycle. Follicular estrogen production is lower than in the comparison cycle. Which of the following endometrial changes would most directly reflect loss of this hormonal stimulus?",
+  "options": [
+    {
+      "label": "A",
+      "text": "Increased proliferative growth with unchanged postovulatory gland secretion",
+      "isCorrect": false,
+      "explanation": "Estrogen supports proliferative rebuilding. Less follicular estrogen does not directly predict greater rebuilding; the later secretory state is a separate phase.",
+      "misconception": "Reverses the proliferative effect of reducing follicular estrogen."
+    },
+    {
+      "label": "B",
+      "text": "Preserved proliferative growth with reduced postovulatory gland secretion",
+      "isCorrect": false,
+      "explanation": "This assigns the change to a later secretory state while leaving the directly estrogen-dependent proliferative response unchanged.",
+      "misconception": "Moves the effect to a later secretory phase while preserving estrogen-driven growth."
+    },
+    {
+      "label": "C",
+      "text": "Preserved proliferative growth with increased preovulatory gland secretion",
+      "isCorrect": false,
+      "explanation": "The measured reduction is in a stimulus for preovulatory rebuilding. Neither preserved growth nor increased glandular secretion follows directly from that loss.",
+      "misconception": "Preserves estrogen-dependent growth and assumes unsupported increased secretion."
+    },
+    {
+      "label": "D",
+      "text": "Increased proliferative growth with earlier postovulatory gland secretion",
+      "isCorrect": false,
+      "explanation": "This reverses the predicted proliferative response and additionally assumes a change in timing that the data do not establish.",
+      "misconception": "Reverses the growth response and invents an earlier secretory transition."
+    },
+    {
+      "label": "E",
+      "text": "Reduced proliferative growth before the postovulatory secretory phase",
+      "isCorrect": true,
+      "explanation": "Follicular estrogen stimulates endometrial rebuilding. Reducing that stimulus most directly reduces preovulatory proliferation rather than advancing the postovulatory secretory phase.",
+      "misconception": "No misconception: less follicular estrogen directly reduces preovulatory proliferation."
+    }
+  ],
+  "context": "Learning objective: Connect the ovarian hormone environment with the endometrial response. Follicular estrogen supports proliferative rebuilding; the postovulatory secretory state is a different phase.\n\nFollicular estrogen stimulates endometrial rebuilding. Reducing that stimulus most directly reduces preovulatory proliferation rather than advancing the postovulatory secretory phase.",
+  "cite": "openstax-anatomy-physiology#re-proliferative-estrogen-endometrium",
+  "publicUsmle": {
+    "schemaVersion": 1,
+    "origin": "generated",
+    "itemText": {
+      "licence": "CC-BY-4.0",
+      "attribution": "MD3 contributors"
+    },
+    "evidence": {
+      "kind": "passage",
+      "sourceId": "openstax-anatomy-physiology",
+      "passageId": "re-proliferative-estrogen-endometrium",
+      "licence": {
+        "cls": "foss",
+        "id": "cc-by-4.0"
+      }
+    }
+  }
+}

@@ -1,0 +1,86 @@
+{
+  "id": "bank:usmle-step1:gi-segmentation-peristalsis:v1",
+  "rotation": "usmle-step1-open",
+  "topics": [
+    "segmentation",
+    "peristalsis",
+    "intestinal motility"
+  ],
+  "moduleNodes": [
+    "usmle/step1",
+    "usmle/step1/gastrointestinal"
+  ],
+  "questionType": "mechanism",
+  "difficulty": "easy",
+  "stem": "During a physiology demonstration, a healthy 22-year-old volunteer's small intestine shows contractions that churn and mix chyme with digestive juices but produce no net forward movement of the contents.\n\nWhich of the following terms describes this motility pattern?",
+  "options": [
+    {
+      "label": "A",
+      "text": "Peristalsis",
+      "isCorrect": false,
+      "misconception": "The propulsive pattern is being chosen for a non-propulsive one.",
+      "explanation": "Peristalsis consists of sequential, alternating waves of contraction and relaxation that propel food along the tract, the opposite of the stationary mixing described."
+    },
+    {
+      "label": "B",
+      "text": "Mass movement",
+      "isCorrect": false,
+      "misconception": "A colonic pattern is being assigned to the small intestine.",
+      "explanation": "Mass movements are strong waves that start midway through the transverse colon and force contents toward the rectum; they do not occur in the small intestine."
+    },
+    {
+      "label": "C",
+      "text": "Haustration",
+      "isCorrect": false,
+      "misconception": "A large-intestinal pattern is being assigned to the small intestine.",
+      "explanation": "Haustra are the pouches of the colon, whose slow churning aids water absorption; the pattern described is small-intestinal segmentation."
+    },
+    {
+      "label": "D",
+      "text": "Migrating motility complex",
+      "isCorrect": false,
+      "misconception": "The fasting housekeeping pattern is being applied to digesting chyme.",
+      "explanation": "The migrating motility complex is a motilin-initiated peristaltic sweep of the empty gut between meals, not the mixing of chyme during digestion."
+    },
+    {
+      "label": "E",
+      "text": "Segmentation",
+      "isCorrect": true,
+      "misconception": "None; segmentation mixes without propelling.",
+      "explanation": "Segmentation does not force chyme through the tract; it combines chyme with digestive juices and pushes food particles against the mucosa to be absorbed."
+    }
+  ],
+  "context": "Learning objective: distinguish gut motility patterns. Segmentation = small-intestinal mixing of chyme with juices, no net propulsion. Peristalsis = sequential contraction/relaxation waves that propel contents. Migrating motility complex = motilin-driven inter-meal sweep. Mass movements = strong colonic waves pushing residue to the rectum.",
+  "cite": "openstax-anatomy-physiology#gi-segmentation-peristalsis",
+  "publicUsmle": {
+    "schemaVersion": 1,
+    "origin": "generated",
+    "itemText": {
+      "licence": "CC-BY-4.0",
+      "attribution": "MD3 contributors"
+    },
+    "evidence": {
+      "kind": "passage",
+      "sourceId": "openstax-anatomy-physiology",
+      "passageId": "gi-segmentation-peristalsis",
+      "licence": {
+        "cls": "foss",
+        "id": "cc-by-4.0"
+      }
+    },
+    "media": {
+      "kind": "asset",
+      "assetId": "gi-motility-v1",
+      "job": "pathway",
+      "showWhen": "after-reveal",
+      "licence": {
+        "cls": "foss",
+        "id": "cc-by-4.0"
+      },
+      "attribution": "MD3 contributors",
+      "contentHash": "sha256:fb55199aa2965d2a5781dbd2194391ccbecaa2fb0de3cf2d8b9f20112901656d"
+    }
+  },
+  "imageUrl": "/figures/usmle/step1/gi-motility-v1.svg",
+  "imageCaption": "Deglutition phases; segmentation vs peristalsis."
+}

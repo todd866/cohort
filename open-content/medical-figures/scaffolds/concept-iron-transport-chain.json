@@ -1,0 +1,97 @@
+{
+  "schemaVersion": 1,
+  "id": "concept-iron-transport-chain",
+  "kind": "conceptual",
+  "sourceFacts": [
+    {
+      "fact": "Iron deficiency can result from inadequate intake, impaired absorption or blood loss.",
+      "sourceUrls": [
+        "https://www.nhlbi.nih.gov/health/anemia/iron-deficiency-anemia",
+        "https://ods.od.nih.gov/factsheets/Iron-HealthProfessional/"
+      ]
+    },
+    {
+      "fact": "Iron is required for haemoglobin synthesis, so inadequate availability can cause anaemia.",
+      "sourceUrls": [
+        "https://www.nhlbi.nih.gov/health/anemia/iron-deficiency-anemia",
+        "https://ods.od.nih.gov/factsheets/Iron-HealthProfessional/"
+      ]
+    }
+  ],
+  "nodes": [
+    {
+      "id": "1",
+      "label": "Low iron intake"
+    },
+    {
+      "id": "2",
+      "label": "Reduced absorption"
+    },
+    {
+      "id": "3",
+      "label": "Blood loss"
+    },
+    {
+      "id": "4",
+      "label": "Less iron available"
+    },
+    {
+      "id": "5",
+      "label": "Haemoglobin production limited"
+    }
+  ],
+  "edges": [
+    {
+      "from": "1",
+      "to": "4",
+      "meaning": "supply reduction"
+    },
+    {
+      "from": "2",
+      "to": "4",
+      "meaning": "absorption reduction"
+    },
+    {
+      "from": "3",
+      "to": "4",
+      "meaning": "loss"
+    },
+    {
+      "from": "4",
+      "to": "5",
+      "meaning": "haemoglobin consequence"
+    }
+  ],
+  "labels": [
+    "Iron deficiency has several routes",
+    "Low iron intake",
+    "Reduced absorption",
+    "Blood loss",
+    "Less iron available",
+    "Haemoglobin production limited",
+    "Conceptual schematic • Not anatomy"
+  ],
+  "layout": "Three upper evidence cards show1 with a sparse inventory,2 with an abstract transfer arrow bearing a small stop mark,3 with Fe coins leaving a plain tray. Three arrows converge into large middle4 with sparse Fe tokens, then one arrow down to5 with a partly completed row of plain blocks labelled Hb. Exactly five nodes and four main arrows. Bottom note: Think about intake, absorption and losses. Avoid gut, blood cells, bone marrow, bleeding wounds or foods. Inventories are only a supply metaphor.",
+  "forbiddenAnatomy": [
+    "organs",
+    "body silhouettes",
+    "tissue cross-sections",
+    "cells",
+    "tubules",
+    "vessels",
+    "clinical photographs",
+    "diagnostic scans"
+  ],
+  "validation": {
+    "sourceStatus": "checked",
+    "structureStatus": "verified",
+    "requiredChecks": [
+      "Three causes converge, none portrayed as consequence of anaemia",
+      "Five nodes/four main arrows",
+      "Only iron-availability step leads to limited haemoglobin production",
+      "No blood cells, marrow or intestine"
+    ],
+    "clinicalReviewStatus": "pending",
+    "pixelChecks": "Pixel check: five nodes/four main arrows; intake, absorption and loss converge on availability then haemoglobin production. Transfer stop mark shows reduced absorption, tray escape shows loss, incomplete Hb inventory shows limited synthesis. Introductory title omitted, but all teaching labels and footer retained. No tissues. Independent and clinical review pending."
+  }
+}

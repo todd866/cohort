@@ -1,0 +1,86 @@
+{
+  "id": "bank:usmle-step1:ms-bone-cells:v1",
+  "rotation": "usmle-step1-open",
+  "topics": [
+    "bone cells",
+    "osteocytes",
+    "osteoblasts"
+  ],
+  "moduleNodes": [
+    "usmle/step1",
+    "usmle/step1/musculoskeletal"
+  ],
+  "questionType": "mechanism",
+  "difficulty": "medium",
+  "stem": "A bone biopsy from a 45-year-old man shows cells trapped within small spaces in the calcified matrix, connected to one another by tiny channels.\n\nThese cells, the most common cell type in mature bone, are which of the following?",
+  "options": [
+    {
+      "label": "A",
+      "text": "Osteoblasts",
+      "isCorrect": false,
+      "misconception": "The bone-forming cell is being cast as the trapped mature cell.",
+      "explanation": "Osteoblasts synthesize and secrete collagen matrix and calcium salts at growing surfaces; once trapped in calcified matrix they CHANGE INTO osteocytes."
+    },
+    {
+      "label": "B",
+      "text": "Osteogenic cells",
+      "isCorrect": false,
+      "misconception": "The stem-cell precursor is being cast as the mature matrix cell.",
+      "explanation": "Osteogenic cells are undifferentiated, mitotically active precursors in the periosteum and endosteum that develop into osteoblasts; they are not embedded in lacunae."
+    },
+    {
+      "label": "C",
+      "text": "Osteoclasts",
+      "isCorrect": false,
+      "misconception": "The resorbing cell is being cast as the matrix-embedded cell.",
+      "explanation": "Osteoclasts develop from monocytes and macrophages and resorb bone at its surfaces; they do not sit trapped within the matrix in lacunae."
+    },
+    {
+      "label": "D",
+      "text": "Osteocytes",
+      "isCorrect": true,
+      "misconception": "None; osteocytes sit in lacunae and communicate through canaliculi.",
+      "explanation": "Osteocytes are the primary cells of mature bone and its most common type; each sits in a lacuna and exchanges nutrients and signals through long cytoplasmic processes in canaliculi."
+    },
+    {
+      "label": "E",
+      "text": "Chondrocytes",
+      "isCorrect": false,
+      "misconception": "The cartilage cell is being cast as the bone cell.",
+      "explanation": "Chondrocytes occupy lacunae in cartilage, not in calcified bone matrix; the biopsy is of bone."
+    }
+  ],
+  "context": "Learning objective: the four bone cells. Osteogenic cells (divide, become osteoblasts) → osteoblasts (secrete matrix and calcium salts, become trapped) → osteocytes (in lacunae, linked by canaliculi, maintain matrix; the commonest bone cell). Osteoclasts derive from monocytes/macrophages and resorb bone.",
+  "cite": "openstax-anatomy-physiology#ms-bone-cells",
+  "publicUsmle": {
+    "schemaVersion": 1,
+    "origin": "generated",
+    "itemText": {
+      "licence": "CC-BY-4.0",
+      "attribution": "MD3 contributors"
+    },
+    "evidence": {
+      "kind": "passage",
+      "sourceId": "openstax-anatomy-physiology",
+      "passageId": "ms-bone-cells",
+      "licence": {
+        "cls": "foss",
+        "id": "cc-by-4.0"
+      }
+    },
+    "media": {
+      "kind": "asset",
+      "assetId": "bone-remodeling-v1",
+      "job": "anatomy",
+      "showWhen": "after-reveal",
+      "licence": {
+        "cls": "foss",
+        "id": "cc-by-4.0"
+      },
+      "attribution": "MD3 contributors",
+      "contentHash": "sha256:cdbd5592d44ecfda732d8bc7b51a9d61044e0fdcb5b989cc2fc2842ccd451a30"
+    }
+  },
+  "imageUrl": "/figures/usmle/step1/bone-remodeling-v1.svg",
+  "imageCaption": "Osteoblast / osteoclast / osteocyte roles; PTH raises Ca2+ via RANKL and kidney."
+}

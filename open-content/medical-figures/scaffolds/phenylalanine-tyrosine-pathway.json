@@ -1,0 +1,81 @@
+{
+  "schemaVersion": 1,
+  "figureId": "phenylalanine-tyrosine-pathway",
+  "kind": "conceptual",
+  "created": "2026-09-10",
+  "timing": "retrospective specification of previously generated candidate",
+  "sourceFacts": [
+    {
+      "fact": "PAH catalyses conversion of phenylalanine to tyrosine.",
+      "sourceUrls": [
+        "https://www.ncbi.nlm.nih.gov/books/NBK55827/bin/Phenylalanine.pdf",
+        "https://medlineplus.gov/genetics/condition/phenylketonuria/"
+      ]
+    },
+    {
+      "fact": "Reduced PAH activity impairs this conversion and allows phenylalanine to accumulate.",
+      "sourceUrls": [
+        "https://www.ncbi.nlm.nih.gov/books/NBK55827/bin/Phenylalanine.pdf",
+        "https://medlineplus.gov/genetics/condition/phenylketonuria/"
+      ]
+    }
+  ],
+  "clinicalSources": [
+    {
+      "title": "ACMG: Elevated phenylalanine newborn-screening ACT sheet",
+      "url": "https://www.ncbi.nlm.nih.gov/books/NBK55827/bin/Phenylalanine.pdf"
+    },
+    {
+      "title": "MedlinePlus Genetics: Phenylketonuria",
+      "url": "https://medlineplus.gov/genetics/condition/phenylketonuria/"
+    }
+  ],
+  "nodes": [
+    "phenylalanine",
+    "PAH conversion",
+    "tyrosine",
+    "PAH deficiency",
+    "phenylalanine accumulation"
+  ],
+  "edges": [
+    [
+      "phenylalanine",
+      "tyrosine",
+      "PAH-catalysed rightward conversion"
+    ],
+    [
+      "PAH deficiency",
+      "PAH conversion",
+      "reduces"
+    ],
+    [
+      "PAH deficiency",
+      "phenylalanine accumulation",
+      "causes"
+    ]
+  ],
+  "invariants": [
+    "Both rows point phenylalanine to tyrosine.",
+    "Deficiency means reduced conversion, not universal total enzyme absence."
+  ],
+  "expectedLabels": [
+    "Phenylalanine \u2192 tyrosine",
+    "Usual conversion",
+    "Phenylalanine",
+    "Tyrosine",
+    "Phenylalanine hydroxylase (PAH)",
+    "PAH deficiency",
+    "Reduced conversion",
+    "Phenylalanine accumulates"
+  ],
+  "layoutSpecification": "Two horizontal pathways, very clear hand-painted biochemistry diagram. Title 'Phenylalanine \u2192 tyrosine'. Upper heading 'Usual conversion': large teal rounded box 'Phenylalanine' on LEFT and ochre box 'Tyrosine' on RIGHT connected by a broad arrow pointing RIGHT, label ABOVE arrow 'Phenylalanine hydroxylase (PAH)'. Lower heading 'PAH deficiency': same phenylalanine box with three small circles collecting underneath, same tyrosine box slightly faded; connecting rightward arrow has a small perpendicular bar interrupting it, label 'Reduced conversion'. Small bottom text 'Phenylalanine accumulates'. No molecular structures, no treatment doses, no implication of complete enzyme absence in every phenotype.",
+  "forbiddenAnatomy": [
+    "No claimed anatomical reconstruction, diagnostic image, histology or literal neuroanatomical pathway",
+    "No organ cutaways or invented internal spatial relationships"
+  ],
+  "validation": {
+    "sourceFacts": "Checked against listed primary clinical sources during original topic review",
+    "pixelChecks": "Visually inspected: both reaction arrows point from phenylalanine to tyrosine; PAH label identifies enzyme; deficiency row shows reduced conversion and phenylalanine accumulation. No reversed reaction, dosage or complete-deficiency claim.",
+    "status": "self-reviewed; independent review pending"
+  }
+}

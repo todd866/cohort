@@ -1,0 +1,73 @@
+{
+  "id": "bank:usmle-step1:renal-pct-reabsorption-r1:v1",
+  "rotation": "usmle-step1-open",
+  "ladderId": "pct-reabsorption",
+  "topics": [
+    "proximal tubule",
+    "reabsorption",
+    "ladder:pct-reabsorption"
+  ],
+  "moduleNodes": [
+    "usmle/step1",
+    "usmle/step1/renal"
+  ],
+  "questionType": "mechanism",
+  "difficulty": "easy",
+  "stem": "Approximately what fraction of filtered water, sodium, and potassium is reabsorbed in the proximal convoluted tubule under normal conditions?",
+  "options": [
+    {
+      "label": "A",
+      "text": "About 10 percent",
+      "isCorrect": false,
+      "misconception": "The PCT share is being grossly underestimated.",
+      "explanation": "The proximal tubule reclaims the majority of filtered solutes and water; about two-thirds, not one-tenth, is reabsorbed here."
+    },
+    {
+      "label": "B",
+      "text": "About 25 percent",
+      "isCorrect": false,
+      "misconception": "A minority fraction is being assigned to the major reabsorptive segment.",
+      "explanation": "Only about one-quarter would leave most filtrate downstream; the PCT handles roughly 67 percent of filtered Na+, K+, and water."
+    },
+    {
+      "label": "C",
+      "text": "About 67 percent",
+      "isCorrect": true,
+      "misconception": "None; roughly two-thirds of filtered water and monovalent ions are reabsorbed in the PCT.",
+      "explanation": "The proximal convoluted tubule reabsorbs about 67 percent of filtered water, sodium, and potassium, making it the dominant reclamation site."
+    },
+    {
+      "label": "D",
+      "text": "About 90 percent",
+      "isCorrect": false,
+      "misconception": "Nearly complete reabsorption is being assigned to the PCT alone.",
+      "explanation": "Fine-tuning continues in the loop, distal tubule, and collecting duct; the PCT handles about two-thirds, not almost all, of filtration."
+    },
+    {
+      "label": "E",
+      "text": "None; the PCT secretes rather than reabsorbs these solutes",
+      "isCorrect": false,
+      "misconception": "The segment's primary transport direction is reversed.",
+      "explanation": "The PCT is the main reabsorptive site early in the nephron, recovering most filtered Na+, K+, and water."
+    }
+  ],
+  "context": "Learning objective: recall PCT reabsorption magnitude. About 67 percent of filtered water, Na+, and K+ is reabsorbed in the proximal convoluted tubule.",
+  "cite": "openstax-anatomy-physiology#renal-pct-reabsorption",
+  "publicUsmle": {
+    "schemaVersion": 1,
+    "origin": "generated",
+    "itemText": {
+      "licence": "CC-BY-4.0",
+      "attribution": "MD3 contributors"
+    },
+    "evidence": {
+      "kind": "passage",
+      "sourceId": "openstax-anatomy-physiology",
+      "passageId": "renal-pct-reabsorption",
+      "licence": {
+        "cls": "foss",
+        "id": "cc-by-4.0"
+      }
+    }
+  }
+}

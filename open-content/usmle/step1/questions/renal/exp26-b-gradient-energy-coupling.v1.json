@@ -1,0 +1,71 @@
+{
+  "id": "bank:usmle-step1:exp26-b-gradient-energy-coupling:v1",
+  "rotation": "usmle-step1-open",
+  "topics": [
+    "renal",
+    "gradient-energy-coupling"
+  ],
+  "moduleNodes": [
+    "usmle/step1",
+    "usmle/step1/renal"
+  ],
+  "questionType": "interpretation",
+  "difficulty": "hard",
+  "stem": "A renal epithelial-cell model initially has low intracellular sodium and sodium-coupled glucose uptake from the lumen. Investigators increase intracellular sodium until the entry gradient disappears, without removing the apical transport protein. They then reestablish low intracellular sodium using the basal pump. Which of the following responses most strongly supports secondary active glucose transport?",
+  "options": [
+    {
+      "text": "Uptake falls with gradient loss and falls after restoration",
+      "explanation": "The first response fits gradient-dependent entry, but a further fall after restoring the driving force would require another explanation beyond the proposed coupling mechanism.",
+      "isCorrect": false,
+      "label": "A",
+      "misconception": "Predicts further uptake loss after restoring the driving gradient instead of recovery of coupled entry."
+    },
+    {
+      "text": "Uptake rises with gradient loss and recovers after restoration",
+      "explanation": "An initial rise during loss of the driving gradient conflicts with the proposed mechanism. Secondary active entry should weaken when the sodium gradient dissipates.",
+      "isCorrect": false,
+      "label": "B",
+      "misconception": "Predicts greater glucose uptake when the driving sodium gradient is removed."
+    },
+    {
+      "text": "Uptake falls with gradient loss and recovers after restoration",
+      "explanation": "The same apical protein functions differently as its driving gradient changes. Loss and recovery of glucose entry with the sodium gradient support secondary active coupling.",
+      "isCorrect": true,
+      "label": "C",
+      "misconception": "No misconception: loss and restoration of the sodium gradient should reduce and restore coupled glucose entry."
+    },
+    {
+      "text": "Uptake rises with gradient loss and falls after restoration",
+      "explanation": "This reverses the predicted dependence on the sodium gradient. Dissipating the driving force should reduce coupled entry, while reestablishing it should restore uptake.",
+      "isCorrect": false,
+      "label": "D",
+      "misconception": "Reverses both uptake responses to loss and restoration of the driving sodium gradient."
+    },
+    {
+      "text": "Uptake stays stable during gradient loss and restoration",
+      "explanation": "Stable uptake despite these changes would fail to support dependence on the sodium gradient. The model specifically predicts altered glucose entry as that driving force changes.",
+      "isCorrect": false,
+      "label": "E",
+      "misconception": "Assumes glucose uptake remains independent of the sodium gradient despite the proposed secondary active coupling."
+    }
+  ],
+  "context": "Learning objective: Use reversible manipulation of a sodium gradient to establish the energy dependence of coupled glucose transport. The same apical protein functions differently as its driving gradient changes. Loss and recovery of glucose entry with the sodium gradient support secondary active coupling.",
+  "cite": "openstax-ap1-tubular-reabsorption#glucose-sodium-gradient",
+  "publicUsmle": {
+    "schemaVersion": 1,
+    "origin": "generated",
+    "itemText": {
+      "licence": "CC-BY-4.0",
+      "attribution": "MD3 contributors"
+    },
+    "evidence": {
+      "kind": "passage",
+      "sourceId": "openstax-ap1-tubular-reabsorption",
+      "passageId": "glucose-sodium-gradient",
+      "licence": {
+        "cls": "foss",
+        "id": "cc-by-4.0"
+      }
+    }
+  }
+}

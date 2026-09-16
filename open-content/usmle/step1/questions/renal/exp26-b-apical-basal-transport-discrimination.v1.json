@@ -1,0 +1,71 @@
+{
+  "id": "bank:usmle-step1:exp26-b-apical-basal-transport-discrimination:v1",
+  "rotation": "usmle-step1-open",
+  "topics": [
+    "renal",
+    "apical-basal-transport-discrimination"
+  ],
+  "moduleNodes": [
+    "usmle/step1",
+    "usmle/step1/renal"
+  ],
+  "questionType": "interpretation",
+  "difficulty": "medium",
+  "stem": "Investigators follow glucose from tubular fluid through a renal epithelial cell into the interstitium. At the luminal membrane, glucose entry is coupled to sodium entry. At the opposite membrane, glucose exits by facilitated diffusion. Which of the following correctly classifies the two glucose-transport steps?",
+  "options": [
+    {
+      "text": "Apical primary active entry; basal facilitated exit",
+      "explanation": "The exit mechanism is correct, but the entry step uses an ion gradient rather than being identified as direct primary pumping of glucose at that membrane.",
+      "isCorrect": false,
+      "label": "A",
+      "misconception": "Classifies sodium-gradient-driven apical glucose entry as direct primary active transport."
+    },
+    {
+      "text": "Apical secondary active entry; basal primary active exit",
+      "explanation": "The entry mechanism is correct, but the observed exit mechanism is facilitated diffusion. Replacing it with primary active transport adds an unsupported energy-consuming step.",
+      "isCorrect": false,
+      "label": "B",
+      "misconception": "Replaces the explicitly observed facilitated glucose exit with a primary active basal step."
+    },
+    {
+      "text": "Apical facilitated entry; basal facilitated glucose exit",
+      "explanation": "Facilitated exit is described correctly, but the apical step is not simple facilitated movement. Coupling glucose to sodium entry identifies secondary active transport.",
+      "isCorrect": false,
+      "label": "C",
+      "misconception": "Treats sodium-coupled apical uptake as simple facilitated glucose movement."
+    },
+    {
+      "text": "Apical secondary active entry; basal facilitated exit",
+      "explanation": "Sodium-coupled glucose entry uses the sodium gradient at the apical membrane. Glucose then leaves across the basal membrane by facilitated diffusion into the interstitium.",
+      "isCorrect": true,
+      "label": "D",
+      "misconception": "No misconception: apical sodium-coupled glucose entry is secondary active, whereas basal exit is facilitated diffusion."
+    },
+    {
+      "text": "Apical facilitated entry; basal secondary active exit",
+      "explanation": "This reverses the observed transport mechanisms. The luminal step is sodium-coupled secondary active transport, whereas the opposite membrane provides facilitated glucose movement out of the cell.",
+      "isCorrect": false,
+      "label": "E",
+      "misconception": "Reverses the observed sodium-coupled apical entry and facilitated basal exit mechanisms."
+    }
+  ],
+  "context": "Learning objective: Distinguish the energy coupling and membrane location of renal glucose entry and exit. Sodium-coupled glucose entry uses the sodium gradient at the apical membrane. Glucose then leaves across the basal membrane by facilitated diffusion into the interstitium.",
+  "cite": "openstax-ap1-tubular-reabsorption#secondary-active-transport",
+  "publicUsmle": {
+    "schemaVersion": 1,
+    "origin": "generated",
+    "itemText": {
+      "licence": "CC-BY-4.0",
+      "attribution": "MD3 contributors"
+    },
+    "evidence": {
+      "kind": "passage",
+      "sourceId": "openstax-ap1-tubular-reabsorption",
+      "passageId": "secondary-active-transport",
+      "licence": {
+        "cls": "foss",
+        "id": "cc-by-4.0"
+      }
+    }
+  }
+}

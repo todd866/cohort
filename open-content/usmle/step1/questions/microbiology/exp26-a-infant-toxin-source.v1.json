@@ -1,0 +1,71 @@
+{
+  "id": "bank:usmle-step1:exp26-a-infant-toxin-source:v1",
+  "rotation": "usmle-step1-open",
+  "topics": [
+    "microbiology",
+    "infant-botulism"
+  ],
+  "moduleNodes": [
+    "usmle/step1",
+    "usmle/step1/microbiology"
+  ],
+  "questionType": "mechanism",
+  "difficulty": "easy",
+  "stem": "A 4-month-old infant has constipation, poor feeding, a weak cry, and diminished suck. Infant botulism is confirmed. The parents ask why toxin exposure can continue after the original spores were ingested. Which of the following best explains ongoing toxin production?",
+  "options": [
+    {
+      "label": "A",
+      "text": "Colonization followed by toxin production within skeletal muscle fibers",
+      "isCorrect": false,
+      "explanation": "In infant botulism, toxin production occurs in the large intestine. Muscle weakness does not establish that the organism colonizes muscle or produces its toxin inside those fibers.",
+      "misconception": "Infers that muscle weakness identifies muscle fibers as the site of organism colonization."
+    },
+    {
+      "label": "B",
+      "text": "Colonization followed by toxin production within circulating blood cells",
+      "isCorrect": false,
+      "explanation": "This assigns production to a different compartment without explaining intestinal spore colonization. The ongoing toxin source specified for infant botulism is the colonized large intestine.",
+      "misconception": "Relocates ongoing toxin production from the colonized intestine to circulating blood cells."
+    },
+    {
+      "label": "C",
+      "text": "Colonization followed by toxin production within the cerebral cortex",
+      "isCorrect": false,
+      "explanation": "The illness's motor manifestations do not relocate toxin production to the brain. Intestinal colonization, followed by toxin action at cholinergic terminals, explains the sustained exposure.",
+      "misconception": "Infers a brain production site from motor manifestations rather than the known intestinal colonization."
+    },
+    {
+      "label": "D",
+      "text": "Colonization followed by toxin production in the large intestine",
+      "isCorrect": true,
+      "explanation": "Ingested spores can colonize the infant's intestine and support ongoing toxin production. This separates the site of production from the cholinergic terminals where the toxin acts.",
+      "misconception": "No misconception: Intestinal colonization provides continuing toxin production after spores are ingested."
+    },
+    {
+      "label": "E",
+      "text": "Colonization followed by toxin production in peripheral nerve terminals",
+      "isCorrect": false,
+      "explanation": "The terminals are the functional toxin target, not the stated intestinal production site. Conflating site of action with site of production obscures the colonization mechanism.",
+      "misconception": "Confuses the nerve-terminal site of toxin action with the intestinal site of toxin production."
+    }
+  ],
+  "context": "Learning objective: connect infant botulism with intestinal colonization. The ongoing source is toxin production following spore colonization in the large intestine, rather than replication within the motor target.",
+  "cite": "cdc-infant-botulism-clinical#infant-colonization",
+  "publicUsmle": {
+    "schemaVersion": 1,
+    "origin": "generated",
+    "itemText": {
+      "licence": "CC-BY-4.0",
+      "attribution": "MD3 contributors"
+    },
+    "evidence": {
+      "kind": "passage",
+      "sourceId": "cdc-infant-botulism-clinical",
+      "passageId": "infant-colonization",
+      "licence": {
+        "cls": "foss",
+        "id": "us-gov"
+      }
+    }
+  }
+}

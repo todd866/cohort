@@ -1,0 +1,87 @@
+{
+  "id": "bank:usmle-step1:neuro-sympathetic-thoracolumbar:v1",
+  "rotation": "usmle-step1-open",
+  "topics": [
+    "sympathetic division",
+    "thoracolumbar outflow",
+    "ladder:autonomic-ans"
+  ],
+  "moduleNodes": [
+    "usmle/step1",
+    "usmle/step1/neuroscience"
+  ],
+  "questionType": "mechanism",
+  "difficulty": "easy",
+  "stem": "A 24-year-old man is startled by a near collision while driving; his heart rate rises, his pupils dilate, and blood is redirected toward his skeletal muscles.\n\nThe preganglionic neurons driving this coordinated response have their cell bodies in which of the following locations?",
+  "options": [
+    {
+      "label": "A",
+      "text": "The dorsal horn at every level of the spinal cord",
+      "isCorrect": false,
+      "misconception": "A sensory processing region is being named as an autonomic motor origin.",
+      "explanation": "The dorsal horn receives and processes sensory input; autonomic output neurons sit in the lateral horn, and only at thoracolumbar levels for the sympathetic division."
+    },
+    {
+      "label": "B",
+      "text": "Brain stem nuclei and the lateral horn of the sacral spinal cord",
+      "isCorrect": false,
+      "misconception": "The craniosacral arrangement of the opposing division is being substituted.",
+      "explanation": "Brain stem nuclei plus the sacral lateral horn define the craniosacral (parasympathetic) outflow; the fight-or-flight response described is sympathetic and thoracolumbar."
+    },
+    {
+      "label": "C",
+      "text": "The lateral horn of the thoracic and upper lumbar spinal cord",
+      "isCorrect": true,
+      "misconception": "None; sympathetic outflow is thoracolumbar.",
+      "explanation": "Sympathetic preganglionic neurons reside in the lateral horn of the thoracic and upper lumbar cord, which is why the division is called the thoracolumbar system; they project to chain or collateral ganglia and to the adrenal medulla."
+    },
+    {
+      "label": "D",
+      "text": "The prefrontal cortex, which commands the response directly",
+      "isCorrect": false,
+      "misconception": "Higher centers that modulate the response are being treated as the preganglionic neurons themselves.",
+      "explanation": "Forebrain centers influence autonomic tone through the hypothalamus and brain stem, but the preganglionic sympathetic cell bodies are in the thoracolumbar lateral horn."
+    },
+    {
+      "label": "E",
+      "text": "The cervical enlargement, which supplies the upper limbs",
+      "isCorrect": false,
+      "misconception": "A somatic motor expansion is being named as the sympathetic origin.",
+      "explanation": "The cervical enlargement contains lower motor neurons for arm muscles; sympathetic preganglionic neurons lie in the lateral horn of thoracic and upper lumbar segments."
+    }
+  ],
+  "context": "Learning objective: locate sympathetic outflow. The sympathetic (thoracolumbar) division's central neurons sit in the lateral horn of the thoracic and upper lumbar cord and diverge widely to ganglia and the adrenal medulla.",
+  "cite": "openstax-anatomy-physiology#neuro-sympathetic-thoracolumbar",
+  "publicUsmle": {
+    "schemaVersion": 1,
+    "origin": "generated",
+    "itemText": {
+      "licence": "CC-BY-4.0",
+      "attribution": "MD3 contributors"
+    },
+    "evidence": {
+      "kind": "passage",
+      "sourceId": "openstax-anatomy-physiology",
+      "passageId": "neuro-sympathetic-thoracolumbar",
+      "licence": {
+        "cls": "foss",
+        "id": "cc-by-4.0"
+      }
+    },
+    "media": {
+      "kind": "asset",
+      "assetId": "ans-divisions-v1",
+      "job": "compare-table",
+      "showWhen": "after-reveal",
+      "licence": {
+        "cls": "foss",
+        "id": "cc-by-4.0"
+      },
+      "attribution": "MD3 contributors",
+      "contentHash": "sha256:d7b237205a1b7222585235058b4bd266322507dd3a48dca302eb55578983948d"
+    }
+  },
+  "imageUrl": "/figures/usmle/step1/ans-divisions-v1.svg",
+  "imageCaption": "Sympathetic thoracolumbar vs parasympathetic craniosacral; adrenergic receptor subtypes.",
+  "ladderId": "autonomic-ans"
+}

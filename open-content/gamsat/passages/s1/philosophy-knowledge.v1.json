@@ -1,0 +1,173 @@
+{
+  "schemaVersion": 1,
+  "id": "gamsat:s1:philosophy-knowledge",
+  "section": "s1",
+  "title": "The Nature of Knowledge",
+  "domain": "philosophy-knowledge",
+  "passage": "The distinction between knowledge and mere belief has occupied philosophers since ancient Greece. Plato, in his dialogue *Theaetetus*, proposed that knowledge is \"justified true belief\"—a formulation that dominated epistemology for over two millennia. According to this view, for someone to know that *p*, three conditions must be satisfied: (1) *p* must be true, (2) the person must believe that *p*, and (3) the person must be justified in believing that *p*.\n\nThis tripartite definition seemed unassailable until 1963, when Edmund Gettier published a brief paper demonstrating cases where all three conditions are met, yet intuitively, we would not say the person has knowledge. Consider Gettier's example: Smith has strong evidence that Jones owns a Ford, having seen him driving one for years and possessing a valid registration. Smith forms the belief \"Jones owns a Ford,\" which happens to be true. However, unbeknownst to Smith, Jones sold his Ford yesterday but coincidentally purchased an identical one this morning. Does Smith *know* Jones owns a Ford, or does he merely have a lucky guess?\n\nThe Gettier problem reveals the inadequacy of justified true belief as a complete account of knowledge. Philosophers have proposed various fourth conditions—such as the requirement that the justification not depend on any falsehood, or that there be an appropriate causal connection between the belief and the fact—but each proposal faces its own counterexamples. Some philosophers, abandoning the project entirely, have turned to reliabilist theories, which define knowledge not by justification but by the reliability of the process that produces the belief.\n\nYet perhaps the most radical response comes from contextualists, who argue that whether someone \"knows\" depends on the context of the conversation. In everyday contexts, saying Smith knows Jones owns a Ford might be perfectly appropriate; in more demanding epistemic contexts (such as a courtroom or philosophical seminar), we might deny he knows. The standards for knowledge, according to contextualists, are not fixed but shift with our practical needs and purposes.\n\nThis philosophical puzzle is not merely academic. In an age of misinformation and \"fake news,\" understanding what constitutes genuine knowledge—and distinguishing it from mere opinion or lucky guesses—has urgent practical implications. The Gettier problem reminds us that knowledge is more elusive than we might suppose and that the justifications we rely on may not be as secure as they appear.",
+  "questions": [
+    {
+      "id": "gamsat:s1:philosophy-knowledge:q1",
+      "moves": [
+        "s1-except-elimination",
+        "s1-attribution-tracking"
+      ],
+      "stem": "According to the passage, Plato's definition of knowledge requires all of the following EXCEPT:",
+      "options": [
+        {
+          "label": "A",
+          "text": "The belief must be true",
+          "isCorrect": false
+        },
+        {
+          "label": "B",
+          "text": "The person must have evidence for the belief",
+          "isCorrect": false
+        },
+        {
+          "label": "C",
+          "text": "The belief must be caused by the fact",
+          "isCorrect": true
+        },
+        {
+          "label": "D",
+          "text": "The person must hold the belief",
+          "isCorrect": false
+        }
+      ],
+      "explanation": "For EXCEPT questions, match each option to the passage text — the outlier is often something mentioned elsewhere but attributed to a different source. Plato's definition requires truth, belief, and justification. The causal connection requirement was proposed later as a potential fourth condition in response to Gettier problems, not as part of the original tripartite definition. A concept mentioned in the passage is not necessarily attributed to the figure named in the stem.",
+      "difficulty": "medium"
+    },
+    {
+      "id": "gamsat:s1:philosophy-knowledge:q2",
+      "moves": [
+        "s1-necessary-vs-sufficient",
+        "s1-counterexample-function"
+      ],
+      "stem": "The Gettier problem demonstrates that:",
+      "options": [
+        {
+          "label": "A",
+          "text": "Knowledge is impossible to attain",
+          "isCorrect": false
+        },
+        {
+          "label": "B",
+          "text": "Justified true belief is not sufficient for knowledge",
+          "isCorrect": true
+        },
+        {
+          "label": "C",
+          "text": "Truth is relative to context",
+          "isCorrect": false
+        },
+        {
+          "label": "D",
+          "text": "Smith lacks justification for his belief about Jones",
+          "isCorrect": false
+        }
+      ],
+      "explanation": "When a passage describes a counterexample to a definition, identify exactly which claim it disproves — usually sufficiency, not necessity. Gettier shows cases where all three conditions (justified, true, belief) are met yet knowledge is intuitively absent, proving the conditions are necessary but not sufficient. Knowledge being impossible to attain is far stronger than the passage claims, and Smith lacking justification directly contradicts the passage's setup. The distinction between necessary and sufficient conditions is a recurring reasoning pattern.",
+      "difficulty": "medium"
+    },
+    {
+      "id": "gamsat:s1:philosophy-knowledge:q3",
+      "moves": [
+        "s1-comparative-ranking",
+        "s1-attribution-tracking"
+      ],
+      "stem": "Which philosophical position is MOST skeptical about there being a fixed definition of knowledge?",
+      "options": [
+        {
+          "label": "A",
+          "text": "Plato's justified true belief account",
+          "isCorrect": false
+        },
+        {
+          "label": "B",
+          "text": "Reliabilist theories",
+          "isCorrect": false
+        },
+        {
+          "label": "C",
+          "text": "Contextualist theories",
+          "isCorrect": true
+        },
+        {
+          "label": "D",
+          "text": "Gettier's counterexamples",
+          "isCorrect": false
+        }
+      ],
+      "explanation": "When comparing positions on a spectrum, rank by how much each commits to a fixed, universal definition. Contextualists argue that whether someone 'knows' depends on the conversational context, explicitly rejecting fixed criteria. Plato proposes universal conditions, reliabilism offers an alternative fixed definition, and Gettier critiques a definition without proposing that standards should vary. Contextualism parallels relativism — both deny universal standards, but contextualism ties variation to practical needs rather than cultural differences.",
+      "difficulty": "medium"
+    },
+    {
+      "id": "gamsat:s1:philosophy-knowledge:q4",
+      "moves": [
+        "s1-figurative-image"
+      ],
+      "stem": "The passage suggests that the Gettier problem has practical importance because:",
+      "options": [
+        {
+          "label": "A",
+          "text": "It helps us identify fake news",
+          "isCorrect": false
+        },
+        {
+          "label": "B",
+          "text": "It shows justifications may be unreliable",
+          "isCorrect": true
+        },
+        {
+          "label": "C",
+          "text": "It proves courts use different knowledge standards",
+          "isCorrect": false
+        },
+        {
+          "label": "D",
+          "text": "It demonstrates beliefs should be causally connected to facts",
+          "isCorrect": false
+        }
+      ],
+      "explanation": "When a passage claims practical relevance for an abstract idea, identify the specific mechanism linking theory to practice. The Gettier problem matters practically because it reveals that justifications we rely on may be less reliable than they appear, which is relevant in an era of misinformation. Helping identify fake news overstates a general insight into a specific tool, and proving courts use different standards misattributes the contextualist argument. Philosophical insights typically have practical relevance by changing how we think about a problem, not by providing direct solutions.",
+      "difficulty": "medium"
+    },
+    {
+      "id": "gamsat:s1:philosophy-knowledge:q5",
+      "moves": [
+        "s1-author-stance"
+      ],
+      "stem": "The author's attitude toward the question 'What is knowledge?' can best be described as:",
+      "options": [
+        {
+          "label": "A",
+          "text": "Dismissive of its philosophical significance",
+          "isCorrect": false
+        },
+        {
+          "label": "B",
+          "text": "Confident that a solution will be found",
+          "isCorrect": false
+        },
+        {
+          "label": "C",
+          "text": "Skeptical that a simple answer exists",
+          "isCorrect": true
+        },
+        {
+          "label": "D",
+          "text": "Hostile toward contextualist approaches",
+          "isCorrect": false
+        }
+      ],
+      "explanation": "For author attitude questions, look for cumulative language signals — hedging, unresolved debates, and open questions all point toward intellectual humility. The author describes knowledge as 'more elusive than we might suppose,' notes each proposal 'faces its own counterexamples,' and leaves the question unresolved. Dismissing the question's significance contradicts the passage's engagement, and confidence in a solution contradicts the unresolved framing. Authors who present multiple positions and conclude without resolution are almost always skeptical that a simple answer exists.",
+      "difficulty": "medium"
+    }
+  ],
+  "licence": {
+    "id": "CC-BY-4.0",
+    "attribution": "MD3 contributors"
+  },
+  "origin": "authored"
+}

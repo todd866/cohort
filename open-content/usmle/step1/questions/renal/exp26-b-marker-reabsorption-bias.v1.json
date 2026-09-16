@@ -1,0 +1,71 @@
+{
+  "id": "bank:usmle-step1:exp26-b-marker-reabsorption-bias:v1",
+  "rotation": "usmle-step1-open",
+  "topics": [
+    "renal",
+    "marker-reabsorption-bias"
+  ],
+  "moduleNodes": [
+    "usmle/step1",
+    "usmle/step1/renal"
+  ],
+  "questionType": "interpretation",
+  "difficulty": "medium",
+  "stem": "A freely filtered experimental marker initially appears in urine at exactly its filtered rate. A transporter is then activated that returns some filtered marker from the tubule to the body. Its plasma concentration and true filtration remain constant. Which of the following best describes a filtration estimate based on urinary marker appearance?",
+  "options": [
+    {
+      "text": "It becomes too high because tubular recovery adds marker",
+      "explanation": "Recovery from the tubular fluid reduces rather than adds to the urinary marker amount. An upward bias would instead require an additional route into urine.",
+      "isCorrect": false,
+      "label": "A",
+      "misconception": "Treats recovery from the tubule as addition to urinary marker appearance."
+    },
+    {
+      "text": "It remains accurate because plasma concentration is constant",
+      "explanation": "A constant plasma concentration does not correct altered tubular handling. The urinary numerator now excludes recovered marker, so it no longer represents the full filtered amount.",
+      "isCorrect": false,
+      "label": "B",
+      "misconception": "Assumes a constant plasma denominator corrects a urinary numerator altered by tubular recovery."
+    },
+    {
+      "text": "It becomes too high because secretion raises urinary appearance",
+      "explanation": "Secretion would add marker to urine, but the intervention moves marker in the opposite direction. The described transporter produces urinary subtraction and a lower estimate.",
+      "isCorrect": false,
+      "label": "C",
+      "misconception": "Confuses return of filtered marker to the body with secretion of additional marker into urine."
+    },
+    {
+      "text": "It remains accurate because secretion has not been introduced",
+      "explanation": "Avoiding secretion is insufficient if reabsorption occurs. Both processes must be absent for urinary marker appearance to equal the filtered amount in this measurement design.",
+      "isCorrect": false,
+      "label": "D",
+      "misconception": "Assumes absence of secretion is sufficient for an accurate estimate even when reabsorption occurs."
+    },
+    {
+      "text": "It becomes too low because tubular recovery removes marker",
+      "explanation": "Returning filtered marker to the body subtracts from its urinary appearance. The resulting estimate undercounts the filtered amount despite unchanged plasma concentration and true filtration.",
+      "isCorrect": true,
+      "label": "E",
+      "misconception": "No misconception: tubular recovery subtracts from urinary marker appearance and underestimates filtration."
+    }
+  ],
+  "context": "Learning objective: Explain downward bias introduced when a filtration marker is reabsorbed. Returning filtered marker to the body subtracts from its urinary appearance. The resulting estimate undercounts the filtered amount despite unchanged plasma concentration and true filtration.",
+  "cite": "openstax-ap1-tubular-reabsorption#secondary-active-transport",
+  "publicUsmle": {
+    "schemaVersion": 1,
+    "origin": "generated",
+    "itemText": {
+      "licence": "CC-BY-4.0",
+      "attribution": "MD3 contributors"
+    },
+    "evidence": {
+      "kind": "passage",
+      "sourceId": "openstax-ap1-tubular-reabsorption",
+      "passageId": "secondary-active-transport",
+      "licence": {
+        "cls": "foss",
+        "id": "cc-by-4.0"
+      }
+    }
+  }
+}

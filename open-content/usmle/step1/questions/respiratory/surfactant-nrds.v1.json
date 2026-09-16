@@ -1,0 +1,87 @@
+{
+  "id": "bank:usmle-step1:respiratory-surfactant-nrds:v1",
+  "rotation": "usmle-step1-open",
+  "topics": [
+    "pulmonary surfactant",
+    "neonatal respiratory distress",
+    "ladder:surfactant-nrds"
+  ],
+  "moduleNodes": [
+    "usmle/step1",
+    "usmle/step1/respiratory"
+  ],
+  "questionType": "mechanism",
+  "difficulty": "hard",
+  "stem": "A male neonate born at 28 weeks of gestation develops increasing work of breathing, expiratory grunting, and cyanosis within hours of delivery. His alveoli tend to collapse at the end of each expiration.\n\nDeficient secretion by which of the following cells is most directly responsible for this condition?",
+  "options": [
+    {
+      "label": "A",
+      "text": "Type I alveolar cells",
+      "isCorrect": false,
+      "misconception": "The gas-exchange lining cell is being credited with surfactant secretion.",
+      "explanation": "Type I alveolar cells are squamous epithelial cells forming most of the alveolar surface for gas exchange; they do not secrete surfactant."
+    },
+    {
+      "label": "B",
+      "text": "Alveolar macrophages",
+      "isCorrect": false,
+      "misconception": "An immune phagocyte is being assigned a secretory surfactant role.",
+      "explanation": "Alveolar macrophages remove pathogens and debris from the alveolus; they do not produce surfactant."
+    },
+    {
+      "label": "C",
+      "text": "Type II alveolar cells",
+      "isCorrect": true,
+      "misconception": "None; type II cells secrete the surfactant that prevents end-expiratory collapse.",
+      "explanation": "Type II alveolar cells secrete pulmonary surfactant, which reduces the surface tension of the alveoli; surfactant levels are not generally adequate until about the eighth month of pregnancy, so a 28-week neonate's alveoli collapse."
+    },
+    {
+      "label": "D",
+      "text": "Bronchiolar secretory cells",
+      "isCorrect": false,
+      "misconception": "A conducting-zone secretory cell is being confused with the alveolar surfactant source.",
+      "explanation": "Bronchiolar secretory cells act in the small airways, not the alveoli; alveolar surface tension is controlled by type II alveolar cell surfactant."
+    },
+    {
+      "label": "E",
+      "text": "Pulmonary capillary endothelial cells",
+      "isCorrect": false,
+      "misconception": "The vascular side of the respiratory membrane is being implicated in surfactant production.",
+      "explanation": "Endothelial cells line the pulmonary capillaries and participate in exchange; surfactant is secreted into the alveolus by type II cells."
+    }
+  ],
+  "context": "Learning objective: link surfactant deficiency to prematurity. Type II alveolar cells secrete surfactant, which reduces alveolar surface tension; surfactant is not adequate until about the eighth month of gestation.",
+  "cite": "openstax-anatomy-physiology#resp-type-ii-surfactant",
+  "publicUsmle": {
+    "schemaVersion": 1,
+    "origin": "generated",
+    "itemText": {
+      "licence": "CC-BY-4.0",
+      "attribution": "MD3 contributors"
+    },
+    "evidence": {
+      "kind": "passage",
+      "sourceId": "openstax-anatomy-physiology",
+      "passageId": "resp-type-ii-surfactant",
+      "licence": {
+        "cls": "foss",
+        "id": "cc-by-4.0"
+      }
+    },
+    "media": {
+      "kind": "asset",
+      "assetId": "lung-mechanics-v1",
+      "job": "pathway",
+      "showWhen": "after-reveal",
+      "licence": {
+        "cls": "foss",
+        "id": "cc-by-4.0"
+      },
+      "attribution": "MD3 contributors",
+      "contentHash": "sha256:2eaec9c60db53463223535515210fe6ff2a06557ce339beb1804de9350056fb2"
+    }
+  },
+  "imageUrl": "/figures/usmle/step1/lung-mechanics-v1.svg",
+  "imageCaption": "Inspiration/Boyle, vital capacity, compliance, surfactant/NRDS.",
+  "ladderId": "surfactant-nrds"
+}

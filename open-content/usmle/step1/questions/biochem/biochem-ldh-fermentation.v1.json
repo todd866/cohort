@@ -1,0 +1,85 @@
+{
+  "id": "bank:usmle-step1:biochem-ldh-fermentation:v1",
+  "rotation": "usmle-step1-open",
+  "topics": [
+    "lactate dehydrogenase",
+    "fermentation"
+  ],
+  "moduleNodes": [
+    "usmle/step1",
+    "usmle/step1/biochem"
+  ],
+  "questionType": "mechanism",
+  "difficulty": "easy",
+  "stem": "Which enzyme regenerates NAD+ by reducing pyruvate under anaerobic conditions?",
+  "options": [
+    {
+      "label": "A",
+      "text": "Citrate synthase",
+      "isCorrect": false,
+      "misconception": "Condenses acetyl-CoA with OAA.",
+      "explanation": "Citric-cycle entry, not lactate."
+    },
+    {
+      "label": "B",
+      "text": "Pyruvate dehydrogenase complex",
+      "isCorrect": false,
+      "misconception": "Makes acetyl-CoA aerobically.",
+      "explanation": "Not the fermentation enzyme."
+    },
+    {
+      "label": "C",
+      "text": "Hexokinase",
+      "isCorrect": false,
+      "misconception": "Phosphorylates glucose.",
+      "explanation": "Upstream of pyruvate."
+    },
+    {
+      "label": "D",
+      "text": "ATP synthase",
+      "isCorrect": false,
+      "misconception": "Makes ATP from proton flow.",
+      "explanation": "Not a fermentation NAD+ salvage enzyme."
+    },
+    {
+      "label": "E",
+      "text": "Lactate dehydrogenase , LDH",
+      "isCorrect": true,
+      "misconception": "None; LDH reduces pyruvate with NADH.",
+      "explanation": "OpenStax identifies lactate dehydrogenase (LDH) for this reaction."
+    }
+  ],
+  "context": "Learning objective: LDH performs lactic fermentation.",
+  "cite": "openstax-biology-2e#lactic-acid-fermentation",
+  "publicUsmle": {
+    "schemaVersion": 1,
+    "origin": "generated",
+    "itemText": {
+      "licence": "CC-BY-4.0",
+      "attribution": "MD3 contributors"
+    },
+    "evidence": {
+      "kind": "passage",
+      "sourceId": "openstax-biology-2e",
+      "passageId": "lactic-acid-fermentation",
+      "licence": {
+        "cls": "foss",
+        "id": "cc-by-4.0"
+      }
+    },
+    "media": {
+      "kind": "asset",
+      "assetId": "cellular-respiration-v1",
+      "job": "pathway",
+      "showWhen": "after-reveal",
+      "licence": {
+        "cls": "foss",
+        "id": "cc-by-4.0"
+      },
+      "attribution": "MD3 contributors",
+      "contentHash": "sha256:28ae7f955e1024135e9335f39b761f79292b1cc679baed71478eb3efc31f99e5"
+    }
+  },
+  "imageUrl": "/figures/usmle/step1/cellular-respiration-v1.svg",
+  "imageCaption": "Cellular respiration: glycolysis -> pyruvate -> acetyl-CoA -> citric cycle carriers -> ETC/ATP synthase; O2 terminal acceptor; fermentation regenerates NAD+."
+}

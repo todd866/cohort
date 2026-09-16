@@ -1,0 +1,85 @@
+{
+  "id": "bank:usmle-step1:respiratory-fetal-hemoglobin:v1",
+  "rotation": "usmle-step1-open",
+  "topics": [
+    "fetal hemoglobin",
+    "placental gas exchange"
+  ],
+  "moduleNodes": [
+    "usmle/step1",
+    "usmle/step1/respiratory"
+  ],
+  "questionType": "mechanism",
+  "difficulty": "medium",
+  "stem": "At the placenta of a healthy 24-year-old woman at 36 weeks of gestation, the partial pressure of oxygen in the fetal blood is only about 20 mm Hg, far below the maternal arterial partial pressure. Despite this shallow gradient, the fetus loads adequate oxygen.\n\nWhich of the following properties most directly enables this uptake?",
+  "options": [
+    {
+      "label": "A",
+      "text": "Fetal blood has a lower hemoglobin concentration than maternal blood",
+      "isCorrect": false,
+      "misconception": "A reduced carrying capacity is being offered as an uptake advantage.",
+      "explanation": "A lower concentration would reduce oxygen carriage; the fetus compensates for the gradient through higher hemoglobin affinity, not lower content."
+    },
+    {
+      "label": "B",
+      "text": "Fetal hemoglobin releases oxygen more readily at low pH",
+      "isCorrect": false,
+      "misconception": "A tissue-unloading property is being applied to placental loading.",
+      "explanation": "Enhanced release would impair uptake at the placenta; the fetus loads oxygen because its hemoglobin binds oxygen more avidly."
+    },
+    {
+      "label": "C",
+      "text": "Fetal hemoglobin has a greater affinity for oxygen than adult hemoglobin",
+      "isCorrect": true,
+      "misconception": "None; the structural difference in fetal subunits raises oxygen affinity.",
+      "explanation": "Two of the subunits of fetal hemoglobin have a different structure that causes fetal hemoglobin to have a greater affinity for oxygen than adult hemoglobin, overcoming the shallow placental gradient."
+    },
+    {
+      "label": "D",
+      "text": "The placenta actively transports oxygen using ATP",
+      "isCorrect": false,
+      "misconception": "An energy-requiring pump is being proposed for a diffusive process.",
+      "explanation": "Oxygen crosses the placental barrier by diffusion down its partial-pressure gradient; fetal hemoglobin's affinity captures it."
+    },
+    {
+      "label": "E",
+      "text": "Fetal erythrocytes lack carbonic anhydrase, preserving oxygen binding",
+      "isCorrect": false,
+      "misconception": "An enzyme irrelevant to oxygen affinity is being assigned a protective role.",
+      "explanation": "Carbonic anhydrase handles carbon dioxide carriage; placental oxygen uptake depends on fetal hemoglobin's greater oxygen affinity."
+    }
+  ],
+  "context": "Learning objective: explain fetal oxygen loading. Fetal blood PO2 at the placenta is about 20 mm Hg; fetal hemoglobin's greater oxygen affinity (from its distinct subunits) overcomes the shallow gradient.",
+  "cite": "openstax-anatomy-physiology#resp-fetal-hemoglobin",
+  "publicUsmle": {
+    "schemaVersion": 1,
+    "origin": "generated",
+    "itemText": {
+      "licence": "CC-BY-4.0",
+      "attribution": "MD3 contributors"
+    },
+    "evidence": {
+      "kind": "passage",
+      "sourceId": "openstax-anatomy-physiology",
+      "passageId": "resp-fetal-hemoglobin",
+      "licence": {
+        "cls": "foss",
+        "id": "cc-by-4.0"
+      }
+    },
+    "media": {
+      "kind": "asset",
+      "assetId": "hb-o2-curve-v1",
+      "job": "pathway",
+      "showWhen": "after-reveal",
+      "licence": {
+        "cls": "foss",
+        "id": "cc-by-4.0"
+      },
+      "attribution": "MD3 contributors",
+      "contentHash": "sha256:e14fdbba9016f547cb21cefdfc45f7b964c0550f0932e60dbff9d77cdef255a8"
+    }
+  },
+  "imageUrl": "/figures/usmle/step1/hb-o2-curve-v1.svg",
+  "imageCaption": "Sigmoid Hb-O2 curve: cooperativity; right shift unloads O2 (Bohr / 2,3-BPG / temp)."
+}

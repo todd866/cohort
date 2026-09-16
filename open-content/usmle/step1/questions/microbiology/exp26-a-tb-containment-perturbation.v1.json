@@ -1,0 +1,71 @@
+{
+  "id": "bank:usmle-step1:exp26-a-tb-containment-perturbation:v1",
+  "rotation": "usmle-step1-open",
+  "topics": [
+    "microbiology",
+    "tb-containment"
+  ],
+  "moduleNodes": [
+    "usmle/step1",
+    "usmle/step1/microbiology"
+  ],
+  "questionType": "interpretation",
+  "difficulty": "medium",
+  "stem": "A 41-year-old patient has latent TB infection with macrophage containment in granulomas. TNF-antagonist therapy is being considered for another condition. Which of the following consequences is most relevant when reviewing the infection before treatment?",
+  "options": [
+    {
+      "label": "A",
+      "text": "Greater risk of active disease from the existing infection",
+      "explanation": "TNF-antagonist therapy increases the risk of active TB in a person already infected. The relevant concern is progression from the contained state rather than proof of a new exposure.",
+      "isCorrect": true,
+      "misconception": "No misconception: TNF-antagonist therapy raises concern for progression of an existing latent infection."
+    },
+    {
+      "label": "B",
+      "text": "Greater risk of transmission while the infection stays latent",
+      "explanation": "Latent infection is not the transmitting state. The treatment-associated concern is progression to active disease, not a change in contagiousness while the patient remains in the same latent state.",
+      "isCorrect": false,
+      "misconception": "Treats latent infection itself as a transmitting state instead of distinguishing progression to active disease."
+    },
+    {
+      "label": "C",
+      "text": "Lower risk of active disease despite the immune intervention",
+      "explanation": "This reverses the stated risk association. TNF-antagonist therapy is identified as a factor increasing progression risk in infected patients rather than as protection from active disease.",
+      "isCorrect": false,
+      "misconception": "Reverses the association between TNF-antagonist therapy and risk of active TB."
+    },
+    {
+      "label": "D",
+      "text": "Unchanged risk of disease because the bacilli are contained",
+      "explanation": "Current containment does not eliminate future progression risk. The proposed therapy changes the risk assessment even though the patient’s infection is presently classified as latent.",
+      "isCorrect": false,
+      "misconception": "Assumes present containment guarantees unchanged future risk despite the proposed immune intervention."
+    },
+    {
+      "label": "E",
+      "text": "Evidence of a new exposure before progression can occur",
+      "explanation": "The patient already has TB infection. Progression can concern that existing state, so a separate newly documented exposure is not required to explain the increased risk.",
+      "isCorrect": false,
+      "misconception": "Requires a new exposure before an already present infection can progress."
+    }
+  ],
+  "context": "Learning objective: connect immune containment of latent infection to the risk associated with TNF antagonism. The clinically important transition is loss of control over an existing infection, not acquisition inferred from a positive test alone.",
+  "cite": "cdc-latent-tb-clinical#latent-granuloma",
+  "publicUsmle": {
+    "schemaVersion": 1,
+    "origin": "generated",
+    "itemText": {
+      "licence": "CC-BY-4.0",
+      "attribution": "MD3 contributors"
+    },
+    "evidence": {
+      "kind": "passage",
+      "sourceId": "cdc-latent-tb-clinical",
+      "passageId": "latent-granuloma",
+      "licence": {
+        "cls": "foss",
+        "id": "us-gov"
+      }
+    }
+  }
+}

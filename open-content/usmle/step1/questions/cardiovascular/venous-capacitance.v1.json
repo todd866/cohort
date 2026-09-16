@@ -1,0 +1,85 @@
+{
+  "id": "bank:usmle-step1:cardiovascular-venous-capacitance:v1",
+  "rotation": "usmle-step1-open",
+  "topics": [
+    "vascular compliance",
+    "venous system"
+  ],
+  "moduleNodes": [
+    "usmle/step1",
+    "usmle/step1/cardiovascular"
+  ],
+  "questionType": "mechanism",
+  "difficulty": "medium",
+  "stem": "A 70-year-old man with long-standing hypertension has stiffened arteries on evaluation. During the same visit, the physician notes that his systemic veins, in contrast, normally accommodate approximately 64 percent of the total blood volume at any given time.\n\nWhich of the following properties most directly accounts for this reservoir function of the veins?",
+  "options": [
+    {
+      "label": "A",
+      "text": "Thick smooth muscle layers in the tunica media",
+      "isCorrect": false,
+      "misconception": "An arterial wall feature is being credited for venous storage.",
+      "explanation": "Thick muscular walls characterize arteries; veins are thin-walled and distensible, which is what permits them to act as reservoirs."
+    },
+    {
+      "label": "B",
+      "text": "One-way valves that prevent retrograde flow",
+      "isCorrect": false,
+      "misconception": "A flow-direction device is being confused with a storage property.",
+      "explanation": "Valves assist venous return toward the heart but do not determine how much blood the venous system can hold."
+    },
+    {
+      "label": "C",
+      "text": "Low hydrostatic pressure within the venous system",
+      "isCorrect": false,
+      "misconception": "A consequence of venous anatomy is being cited as the storage mechanism.",
+      "explanation": "Low pressure results from, rather than causes, the veins' distensibility; the storage property itself is high capacitance."
+    },
+    {
+      "label": "D",
+      "text": "High capacitance from readily distensible walls",
+      "isCorrect": true,
+      "misconception": "None; venous distensibility is what permits volume storage.",
+      "explanation": "The veins' ability to hold most of the blood volume is due to their high capacitance, the capacity to distend readily and store blood at low pressure."
+    },
+    {
+      "label": "E",
+      "text": "Small total cross-sectional area relative to arteries",
+      "isCorrect": false,
+      "misconception": "The geometry of the venous system is being described backward.",
+      "explanation": "The venous system offers a large, expandable volume, not a small one; this is why it accommodates the majority of blood volume."
+    }
+  ],
+  "context": "Learning objective: contrast arterial and venous wall properties. Systemic veins hold about 64 percent of blood volume because of their high capacitance; arteriosclerosis reduces arterial compliance.",
+  "cite": "openstax-anatomy-physiology#vessels-venous-capacitance",
+  "publicUsmle": {
+    "schemaVersion": 1,
+    "origin": "generated",
+    "itemText": {
+      "licence": "CC-BY-4.0",
+      "attribution": "MD3 contributors"
+    },
+    "evidence": {
+      "kind": "passage",
+      "sourceId": "openstax-anatomy-physiology",
+      "passageId": "vessels-venous-capacitance",
+      "licence": {
+        "cls": "foss",
+        "id": "cc-by-4.0"
+      }
+    },
+    "media": {
+      "kind": "asset",
+      "assetId": "hemodynamics-v1",
+      "job": "pathway",
+      "showWhen": "after-reveal",
+      "licence": {
+        "cls": "foss",
+        "id": "cc-by-4.0"
+      },
+      "attribution": "MD3 contributors",
+      "contentHash": "sha256:bcd08bd5837d7c8b145ebd1e66511a58c8d05bca8c05a923bc2bebccc478de08"
+    }
+  },
+  "imageUrl": "/figures/usmle/step1/hemodynamics-v1.svg",
+  "imageCaption": "Poiseuille r^4, MAP, venous capacitance, Starling edema, coronary origins."
+}

@@ -1,0 +1,25 @@
+{
+  "id": "concept-insulin-deficiency-ketone-cascade",
+  "title": "Insulin deficiency can drive ketoacidosis",
+  "prompt": "Create an original polished 1536x1024 landscape conceptual medical teaching diagram for after-answer study. Warm hand-painted gouache and watercolour on ivory paper; a gentle storybook warmth with precise dark navy type. Matte teal, ochre, coral and blue accents. Simple neutral tokens, paper tiles, arrows and visibly abstract compartments only. Make the visual relationships legible at small size. No body parts, organs, cells, tissues, lumens, tubules, membranes, vessels, anatomical cutaways, clinical photos, diagnostic scans, babies, realistic flesh or decorative scenery. Do not turn abstract boxes or routes into organs or anatomy. Do not invent extra arrows or medical claims. Edge meanings below are metadata, not visible text: draw the arrows but do not print their meaning strings. Footer exactly: Conceptual schematic • Not anatomy. Title exactly: Insulin deficiency can drive ketoacidosis. Four wide stepping-stone tiles diagonally from upper left1 to lower right4 with three arrows. First contains sparse insulin coins. Second contains a simple stack of neutral lipid squares splitting into smaller squares, not fat tissue. Third contains increasing plain purple triangles labelled Ketones. Fourth has a qualitative dial with an arrow toward Acidic, no numbers. Small bottom note: A simplified mechanism of diabetic ketoacidosis. No body, liver, adipocytes, pancreas or cell membrane. Exact node labels: [{\"id\": \"1\", \"label\": \"Insulin deficiency\"}, {\"id\": \"2\", \"label\": \"Fat breakdown increases\"}, {\"id\": \"3\", \"label\": \"Ketones accumulate\"}, {\"id\": \"4\", \"label\": \"Metabolic acidosis\"}]. Exact directed connections: [{\"from\": \"1\", \"to\": \"2\", \"meaning\": \"fuel mobilisation\"}, {\"from\": \"2\", \"to\": \"3\", \"meaning\": \"ketone production\"}, {\"from\": \"3\", \"to\": \"4\", \"meaning\": \"acid accumulation\"}]. Required checks: Four labels and three forward arrows; Ketone accumulation precedes acidosis; No exact diagnostic threshold or inevitability claim; Neutral squares and triangles, no tissues.",
+  "clinicalSources": [
+    {
+      "title": "CDC — Diabetic ketoacidosis",
+      "url": "https://www.cdc.gov/diabetes/about/diabetic-ketoacidosis.html"
+    }
+  ],
+  "caption": "A fuel-change sequence links insulin deficiency to ketone accumulation and metabolic acidosis.",
+  "question": "Why can severe insulin deficiency produce ketoacidosis?",
+  "answer": "It promotes fat breakdown and ketone production; accumulated ketoacids lower blood pH.",
+  "structureSpecification": "scaffolds/concept-insulin-deficiency-ketone-cascade.json",
+  "generationInputs": {
+    "referenceImages": [],
+    "style": "written-only"
+  },
+  "qa": {
+    "status": "pending-independent-qa",
+    "method": "agent-visual-and-source-review",
+    "notes": "Pixel check: four steps and three connectors correctly order insulin deficiency, fat breakdown, ketones and acidosis. Square fragmentation and triangle inventories are abstract. Qualitative dial explicitly points toward Acidic, no pH threshold. Independent and clinical review pending.",
+    "clinicalReviewStatus": "pending"
+  }
+}

@@ -1,0 +1,71 @@
+{
+  "id": "bank:usmle-step1:exp26-c-oxygen-restriction-fiber-contrast:v1",
+  "rotation": "usmle-step1-open",
+  "topics": [
+    "musculoskeletal",
+    "oxygen-restriction-fiber-contrast"
+  ],
+  "moduleNodes": [
+    "usmle/step1",
+    "usmle/step1/musculoskeletal"
+  ],
+  "questionType": "interpretation",
+  "difficulty": "medium",
+  "stem": "Two muscle fiber populations are studied. Population X contracts slowly and relies heavily on aerobic ATP production. Population Y produces rapid, powerful contractions using substantial anaerobic glycolysis. During a brief reduction in oxygen delivery, which of the following predictions best follows from their different energy pathways?",
+  "options": [
+    {
+      "label": "A",
+      "text": "Y briefly maintains anaerobic ATP production but fatigues quickly",
+      "isCorrect": true,
+      "explanation": "Fast glycolytic fibers can obtain ATP through anaerobic glycolysis for brief activity. That route is compatible with low oxygen but with rapid fatigue.",
+      "misconception": "No misconception: fast glycolytic fibers briefly produce ATP without oxygen."
+    },
+    {
+      "label": "B",
+      "text": "Y loses anaerobic ATP production because it requires oxygen",
+      "isCorrect": false,
+      "explanation": "Anaerobic glycolysis can produce ATP without oxygen. This option assigns the oxygen dependence of aerobic metabolism to the wrong pathway.",
+      "misconception": "Incorrectly makes anaerobic glycolysis dependent on oxygen."
+    },
+    {
+      "label": "C",
+      "text": "X increases aerobic ATP production as oxygen delivery falls",
+      "isCorrect": false,
+      "explanation": "Aerobic production uses oxygen. Reduced delivery does not directly increase the pathway on which the slow oxidative population relies.",
+      "misconception": "Assumes reduced oxygen directly increases oxygen-dependent ATP production."
+    },
+    {
+      "label": "D",
+      "text": "X sustains aerobic ATP production independently of oxygen delivery",
+      "isCorrect": false,
+      "explanation": "The oxidative pathway uses oxygen; its ATP production is not independent of oxygen availability. That distinguishes it from anaerobic glycolysis.",
+      "misconception": "Treats oxidative ATP production as independent of oxygen availability."
+    },
+    {
+      "label": "E",
+      "text": "Y acquires slow contractions and prolonged endurance during hypoxia",
+      "isCorrect": false,
+      "explanation": "The experiment changes oxygen delivery, not the established fiber type. Fast glycolytic fibers remain characterized by rapid contractions and relatively rapid fatigue.",
+      "misconception": "Assumes brief hypoxia immediately converts established muscle fiber identity."
+    }
+  ],
+  "context": "Learning objective: Relate fiber type to contraction speed, ATP pathway and susceptibility to fatigue.\n\nFast glycolytic fibers can obtain ATP through anaerobic glycolysis for brief activity. That route is compatible with low oxygen but with rapid fatigue.",
+  "cite": "openstax-anatomy-physiology#ms-muscle-fiber-types",
+  "publicUsmle": {
+    "schemaVersion": 1,
+    "origin": "generated",
+    "itemText": {
+      "licence": "CC-BY-4.0",
+      "attribution": "MD3 contributors"
+    },
+    "evidence": {
+      "kind": "passage",
+      "sourceId": "openstax-anatomy-physiology",
+      "passageId": "ms-muscle-fiber-types",
+      "licence": {
+        "cls": "foss",
+        "id": "cc-by-4.0"
+      }
+    }
+  }
+}

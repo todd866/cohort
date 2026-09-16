@@ -1,0 +1,71 @@
+{
+  "id": "bank:usmle-step1:exp26-b-gas-solubility-comparison:v1",
+  "rotation": "usmle-step1-open",
+  "topics": [
+    "respiratory",
+    "gas-solubility-comparison"
+  ],
+  "moduleNodes": [
+    "usmle/step1",
+    "usmle/step1/respiratory"
+  ],
+  "questionType": "calculation",
+  "difficulty": "hard",
+  "stem": "Two identical fluid samples are equilibrated separately with oxygen and carbon dioxide. The oxygen partial pressure is 100 units and the carbon dioxide partial pressure is 10 units. Assume the carbon dioxide solubility coefficient is 20 times the oxygen coefficient in this model. Which of the following is the dissolved carbon dioxide-to-oxygen concentration ratio?",
+  "options": [
+    {
+      "text": "0.1 to 1",
+      "explanation": "This uses the partial-pressure ratio without accounting for different solubilities. The twentyfold solubility advantage more than offsets the tenfold lower carbon dioxide pressure.",
+      "isCorrect": false,
+      "label": "A",
+      "misconception": "Uses the partial-pressure ratio alone and ignores the gases' different solubility coefficients."
+    },
+    {
+      "text": "0.5 to 1",
+      "explanation": "This is the reciprocal of the requested concentration ratio. The question asks for carbon dioxide relative to oxygen, so the product comparison gives two rather than one-half.",
+      "isCorrect": false,
+      "label": "B",
+      "misconception": "Inverts the requested carbon dioxide-to-oxygen dissolved-concentration ratio."
+    },
+    {
+      "text": "20.0 to 1",
+      "explanation": "This treats the gases as if their partial pressures were equal. The solubility advantage must be multiplied by the stated pressure ratio of one-tenth.",
+      "isCorrect": false,
+      "label": "C",
+      "misconception": "Uses the solubility ratio alone as though the two gas partial pressures were equal."
+    },
+    {
+      "text": "200.0 to 1",
+      "explanation": "This multiplies the solubility ratio by the inverse pressure ratio. Carbon dioxide has the lower pressure, so the pressure term reduces rather than amplifies the solubility ratio.",
+      "isCorrect": false,
+      "label": "D",
+      "misconception": "Multiplies by the inverse pressure ratio despite carbon dioxide having the lower partial pressure."
+    },
+    {
+      "text": "2.0 to 1",
+      "explanation": "Dissolved concentration equals solubility times partial pressure. The ratio is therefore 20 times 10 divided by 100, so dissolved carbon dioxide is twice dissolved oxygen.",
+      "isCorrect": true,
+      "label": "E",
+      "misconception": "No misconception: the dissolved-concentration ratio combines the solubility ratio and partial-pressure ratio."
+    }
+  ],
+  "context": "Learning objective: Combine partial pressure with solubility to compare dissolved gas concentrations. Dissolved concentration equals solubility times partial pressure. The ratio is therefore 20 times 10 divided by 100, so dissolved carbon dioxide is twice dissolved oxygen.",
+  "cite": "openstax-ap1-gas-exchange#gas-solubility",
+  "publicUsmle": {
+    "schemaVersion": 1,
+    "origin": "generated",
+    "itemText": {
+      "licence": "CC-BY-4.0",
+      "attribution": "MD3 contributors"
+    },
+    "evidence": {
+      "kind": "passage",
+      "sourceId": "openstax-ap1-gas-exchange",
+      "passageId": "gas-solubility",
+      "licence": {
+        "cls": "foss",
+        "id": "cc-by-4.0"
+      }
+    }
+  }
+}

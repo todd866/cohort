@@ -1,0 +1,71 @@
+{
+  "id": "bank:usmle-step1:exp26-c-terminal-release-synthesis-dissociation:v1",
+  "rotation": "usmle-step1-open",
+  "topics": [
+    "reproductive",
+    "terminal-release-synthesis-dissociation"
+  ],
+  "moduleNodes": [
+    "usmle/step1",
+    "usmle/step1/reproductive"
+  ],
+  "questionType": "mechanism",
+  "difficulty": "medium",
+  "stem": "An experimental lesion interrupts axons reaching the posterior pituitary while sparing the hypothalamic neurons that produce oxytocin. After hormone already stored in the disconnected terminals has been depleted, which of the following patterns best distinguishes the roles of these two structures?",
+  "options": [
+    {
+      "label": "A",
+      "text": "Oxytocin synthesis stops, but release from damaged terminals increases",
+      "isCorrect": false,
+      "explanation": "The hormone-producing hypothalamic neurons are spared. Damaging their axonal output does not imply increased terminal release.",
+      "misconception": "Confuses terminal injury with loss of spared hypothalamic synthesis."
+    },
+    {
+      "label": "B",
+      "text": "Oxytocin synthesis can persist, while terminal storage and release are impaired",
+      "isCorrect": true,
+      "explanation": "The hypothalamus synthesizes oxytocin, while posterior-pituitary axon terminals provide storage and release. Disrupting terminals can therefore separate synthesis from secretion.",
+      "misconception": "No misconception: hypothalamic synthesis can persist despite terminal release failure."
+    },
+    {
+      "label": "C",
+      "text": "Both oxytocin synthesis and release shift into the anterior pituitary",
+      "isCorrect": false,
+      "explanation": "The intervention does not create a new synthesis or release pathway in the anterior pituitary.",
+      "misconception": "Assumes injury transfers oxytocin production and release to the anterior pituitary."
+    },
+    {
+      "label": "D",
+      "text": "Oxytocin synthesis begins in the posterior pituitary after axonal injury",
+      "isCorrect": false,
+      "explanation": "The posterior pituitary is a storage-and-release site; it does not replace the hypothalamus as the synthesis site after injury.",
+      "misconception": "Treats the posterior storage-and-release site as a replacement synthesis site."
+    },
+    {
+      "label": "E",
+      "text": "Oxytocin is synthesized in the terminals and stored in the hypothalamus",
+      "isCorrect": false,
+      "explanation": "This reverses the normal division of labor. Hormone synthesis occurs in hypothalamic neurons before transport to posterior-pituitary terminals.",
+      "misconception": "Reverses hypothalamic synthesis and posterior-terminal storage roles."
+    }
+  ],
+  "context": "Learning objective: Distinguish hormone synthesis from release along the hypothalamic–posterior pituitary pathway. Preserved hormone-producing neurons do not guarantee intact terminal secretion.\n\nThe hypothalamus synthesizes oxytocin, while posterior-pituitary axon terminals provide storage and release. Disrupting terminals can therefore separate synthesis from secretion.",
+  "cite": "openstax-anatomy-physiology#endo-posterior-pituitary-origins",
+  "publicUsmle": {
+    "schemaVersion": 1,
+    "origin": "generated",
+    "itemText": {
+      "licence": "CC-BY-4.0",
+      "attribution": "MD3 contributors"
+    },
+    "evidence": {
+      "kind": "passage",
+      "sourceId": "openstax-anatomy-physiology",
+      "passageId": "endo-posterior-pituitary-origins",
+      "licence": {
+        "cls": "foss",
+        "id": "cc-by-4.0"
+      }
+    }
+  }
+}

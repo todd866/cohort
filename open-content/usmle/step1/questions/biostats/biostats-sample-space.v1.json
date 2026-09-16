@@ -1,0 +1,84 @@
+{
+  "id": "bank:usmle-step1:biostats-sample-space:v1",
+  "rotation": "usmle-step1-open",
+  "topics": [
+    "probability"
+  ],
+  "moduleNodes": [
+    "usmle/step1",
+    "usmle/step1/biostats"
+  ],
+  "questionType": "interpretation",
+  "difficulty": "easy",
+  "stem": "A study records two binary results for each participant: whether an exposure is present and whether an outcome occurs. Each combination is possible. Which of the following sets is the sample space for one participant’s paired record?",
+  "options": [
+    {
+      "label": "A",
+      "text": "Exposure present with outcome; exposure absent without outcome",
+      "isCorrect": false,
+      "explanation": "This set contains the two matching combinations but omits the discordant combinations. A sample space must include every possible paired record, not only selected patterns.",
+      "misconception": "Omits discordant exposure-outcome combinations from the possible outcomes."
+    },
+    {
+      "label": "B",
+      "text": "Exposure and outcome; exposure only; outcome only; neither",
+      "isCorrect": true,
+      "explanation": "There are four possible combinations of two binary results: both present, exposure alone, outcome alone and neither. This set includes every possible record described by the study.",
+      "misconception": "No misconception: four joint combinations exhaust two binary observations."
+    },
+    {
+      "label": "C",
+      "text": "Exposure present with outcome; exposure present without outcome",
+      "isCorrect": false,
+      "explanation": "This set restricts attention to exposed participants and omits both possibilities for unexposed participants. It is a subset of the full sample space for one paired record.",
+      "misconception": "Restricts the sample space to exposed participants."
+    },
+    {
+      "label": "D",
+      "text": "Exposure absent with outcome; exposure absent without outcome",
+      "isCorrect": false,
+      "explanation": "This set restricts attention to unexposed participants and omits both possibilities for exposed participants. The sample space must include all four combinations allowed by the study.",
+      "misconception": "Restricts the sample space to unexposed participants."
+    },
+    {
+      "label": "E",
+      "text": "Exposure present with outcome; exposure absent with outcome",
+      "isCorrect": false,
+      "explanation": "This set restricts attention to participants with the outcome and omits those without it. The full sample space must also include both exposure states when the outcome is absent.",
+      "misconception": "Omits both exposure states when the outcome is absent."
+    }
+  ],
+  "context": "Learning objective: Enumerate the sample space before assigning probabilities to joint exposure and outcome categories.\n\nThere are four possible combinations of two binary results: both present, exposure alone, outcome alone and neither. This set includes every possible record described by the study.",
+  "cite": "openstax-introductory-statistics#sample-space",
+  "publicUsmle": {
+    "schemaVersion": 1,
+    "origin": "generated",
+    "itemText": {
+      "licence": "CC-BY-4.0",
+      "attribution": "MD3 contributors"
+    },
+    "evidence": {
+      "kind": "passage",
+      "sourceId": "openstax-introductory-statistics",
+      "passageId": "sample-space",
+      "licence": {
+        "cls": "foss",
+        "id": "cc-by-4.0"
+      }
+    },
+    "media": {
+      "kind": "asset",
+      "assetId": "biostats-hypothesis-v1",
+      "job": "compare-table",
+      "showWhen": "after-reveal",
+      "licence": {
+        "cls": "foss",
+        "id": "cc-by-4.0"
+      },
+      "attribution": "MD3 contributors",
+      "contentHash": "sha256:23d629719dcff3486c0ec87a423d50118fe08ee981674117d9ac939c075c97b9"
+    }
+  },
+  "imageUrl": "/figures/usmle/step1/biostats-hypothesis-v1.svg",
+  "imageCaption": "Null hypothesis, independence, and sample space on one board."
+}

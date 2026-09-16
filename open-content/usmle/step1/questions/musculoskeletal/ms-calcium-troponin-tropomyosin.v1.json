@@ -1,0 +1,88 @@
+{
+  "id": "bank:usmle-step1:ms-calcium-troponin-tropomyosin:v1",
+  "rotation": "usmle-step1-open",
+  "ladderId": "excitation-contraction-coupling",
+  "topics": [
+    "calcium",
+    "troponin",
+    "tropomyosin",
+    "ladder:excitation-contraction-coupling"
+  ],
+  "moduleNodes": [
+    "usmle/step1",
+    "usmle/step1/musculoskeletal"
+  ],
+  "questionType": "mechanism",
+  "difficulty": "medium",
+  "stem": "In an experiment, an isolated muscle fiber from a 26-year-old volunteer is exposed to a drug that prevents calcium release from the sarcoplasmic reticulum.\n\nStimulation now fails to produce contraction because calcium normally does which of the following?",
+  "options": [
+    {
+      "label": "A",
+      "text": "Binds troponin so tropomyosin shifts off the actin sites",
+      "isCorrect": true,
+      "misconception": "None; calcium's job is to unmask the myosin-binding sites on actin.",
+      "explanation": "Calcium released from the sarcoplasmic reticulum activates the troponin-tropomyosin complex so that tropomyosin shifts away from actin's myosin-binding sites, allowing cross-bridges to form."
+    },
+    {
+      "label": "B",
+      "text": "Binds actin so myosin heads detach from the filament",
+      "isCorrect": false,
+      "misconception": "Calcium is being cast as the cross-bridge release factor.",
+      "explanation": "Detachment requires ATP binding to the myosin head; calcium's role is upstream, exposing the binding sites through troponin and tropomyosin."
+    },
+    {
+      "label": "C",
+      "text": "Opens sodium channels along the sarcolemma",
+      "isCorrect": false,
+      "misconception": "The excitation step is being attributed to calcium.",
+      "explanation": "Depolarization of the sarcolemma is driven by sodium entry after acetylcholine acts at the junction; calcium enters the sarcoplasm afterward, from the SR."
+    },
+    {
+      "label": "D",
+      "text": "Splits ATP to cock the myosin head",
+      "isCorrect": false,
+      "misconception": "The energy supply step is being attributed to calcium.",
+      "explanation": "ATP is hydrolyzed by the myosin head's own intrinsic ATPase activity; calcium does not participate in the cocking step."
+    },
+    {
+      "label": "E",
+      "text": "Pulls tropomyosin onto the myosin-binding sites",
+      "isCorrect": false,
+      "misconception": "The direction of the tropomyosin shift is being reversed.",
+      "explanation": "In relaxed muscle, tropomyosin already covers the myosin-binding sites; calcium moves it AWAY from those sites to permit contraction."
+    }
+  ],
+  "context": "Learning objective: excitation-contraction coupling. In relaxed muscle, tropomyosin covers actin's myosin-binding sites. Depolarization triggers SR calcium release; calcium activates troponin, which shifts tropomyosin aside, exposing the sites so cross-bridges can form and the thin filaments slide.",
+  "cite": "openstax-anatomy-physiology#ms-calcium-troponin-tropomyosin",
+  "publicUsmle": {
+    "schemaVersion": 1,
+    "origin": "generated",
+    "itemText": {
+      "licence": "CC-BY-4.0",
+      "attribution": "MD3 contributors"
+    },
+    "evidence": {
+      "kind": "passage",
+      "sourceId": "openstax-anatomy-physiology",
+      "passageId": "ms-calcium-troponin-tropomyosin",
+      "licence": {
+        "cls": "foss",
+        "id": "cc-by-4.0"
+      }
+    },
+    "media": {
+      "kind": "asset",
+      "assetId": "ec-coupling-v1",
+      "job": "mechanism",
+      "showWhen": "after-reveal",
+      "licence": {
+        "cls": "foss",
+        "id": "cc-by-4.0"
+      },
+      "attribution": "MD3 contributors",
+      "contentHash": "sha256:1e10a90aa480101d834aa52b19989daed4c0ef1e215bc584b5320cecb423e2f7"
+    }
+  },
+  "imageUrl": "/figures/usmle/step1/ec-coupling-v1.svg",
+  "imageCaption": "EC coupling: T-tubule AP -> SR Ca2+ -> troponin -> cross-bridge; ATP for detach and Ca2+ pump."
+}

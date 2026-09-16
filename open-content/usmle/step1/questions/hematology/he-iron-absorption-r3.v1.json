@@ -1,0 +1,73 @@
+{
+  "id": "bank:usmle-step1:he-iron-absorption-r3:v1",
+  "rotation": "usmle-step1-open",
+  "ladderId": "iron-absorption",
+  "difficulty": "hard",
+  "topics": [
+    "iron deficiency anemia",
+    "heme synthesis",
+    "ladder:iron-absorption"
+  ],
+  "moduleNodes": [
+    "usmle/step1",
+    "usmle/step1/hematology"
+  ],
+  "questionType": "mechanism",
+  "stem": "A 17-year-old girl who follows a strict vegan diet for three years reports progressive fatigue, poor exercise tolerance, and shortness of breath when climbing stairs. Examination shows pale conjunctivae and brittle nails. Laboratory studies reveal anemia with smaller-than-normal erythrocytes and a reduced mean corpuscular volume.\n\nWhich mechanism most directly explains her findings?",
+  "options": [
+    {
+      "label": "A",
+      "text": "Marrow stem-cell failure limiting all blood lineages",
+      "isCorrect": false,
+      "misconception": "Aplastic failure is being inferred from fatigue alone.",
+      "explanation": "Pancytopenic marrow failure is not the typical mechanism of dietary iron-limited microcytic anemia."
+    },
+    {
+      "label": "B",
+      "text": "Autoimmune loss of gastric intrinsic factor for B12",
+      "isCorrect": false,
+      "misconception": "Pernicious anemia is being confused with iron-limited heme synthesis.",
+      "explanation": "Intrinsic-factor loss causes B12 deficiency and typically macrocytic anemia, not iron-limited microcytosis."
+    },
+    {
+      "label": "C",
+      "text": "Folate lack blocking DNA synthesis in marrow precursors",
+      "isCorrect": false,
+      "misconception": "Megaloblastic anemia is being confused with microcytic iron deficiency.",
+      "explanation": "Folate deficiency impairs DNA synthesis and yields macrocytic anemia, not iron-limited microcytosis."
+    },
+    {
+      "label": "D",
+      "text": "Acute arterial hemorrhage exhausting circulating volume",
+      "isCorrect": false,
+      "misconception": "Sudden blood loss is being assumed without a bleeding history.",
+      "explanation": "Acute hemorrhage can cause anemia but does not specifically explain chronic dietary iron-limited microcytosis."
+    },
+    {
+      "label": "E",
+      "text": "Insufficient available iron to produce adequate heme",
+      "isCorrect": true,
+      "misconception": "None; iron deficiency limits heme production and yields microcytic anemia.",
+      "explanation": "When available iron is insufficient for adequate heme production, erythrocytes are under-hemoglobinized and often microcytic."
+    }
+  ],
+  "context": "Learning objective: infer iron-limited heme production as the mechanism of dietary microcytic anemia.",
+  "cite": "openstax-anatomy-physiology#he-iron-deficiency-microcytic",
+  "publicUsmle": {
+    "schemaVersion": 1,
+    "origin": "generated",
+    "itemText": {
+      "licence": "CC-BY-4.0",
+      "attribution": "MD3 contributors"
+    },
+    "evidence": {
+      "kind": "passage",
+      "sourceId": "openstax-anatomy-physiology",
+      "passageId": "he-iron-deficiency-microcytic",
+      "licence": {
+        "cls": "foss",
+        "id": "cc-by-4.0"
+      }
+    }
+  }
+}

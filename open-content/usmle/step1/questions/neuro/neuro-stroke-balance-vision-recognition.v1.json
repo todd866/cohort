@@ -1,0 +1,72 @@
+{
+  "id": "bank:usmle-step1:neuro-stroke-balance-vision-recognition:v1",
+  "rotation": "usmle-step1-open",
+  "topics": [
+    "stroke",
+    "clinical recognition",
+    "neurologic emergency"
+  ],
+  "moduleNodes": [
+    "usmle/step1",
+    "usmle/step1/neuro"
+  ],
+  "questionType": "diagnosis",
+  "difficulty": "easy",
+  "stem": "Which of the following sudden symptom pairs should make a bystander suspect a stroke?",
+  "options": [
+    {
+      "label": "A",
+      "text": "Trouble walking with loss of balance",
+      "isCorrect": true,
+      "misconception": "None; sudden gait and balance problems are recognized stroke warning signs.",
+      "explanation": "The CDC lists sudden trouble walking and sudden loss of balance or coordination among the warning signs of stroke."
+    },
+    {
+      "label": "B",
+      "text": "Sneezing with itchy eyes",
+      "isCorrect": false,
+      "misconception": "An allergic symptom pair is being mistaken for an abrupt neurologic deficit.",
+      "explanation": "Sneezing and itchy eyes do not match the CDC warning signs of sudden trouble walking, balance loss, or trouble seeing."
+    },
+    {
+      "label": "C",
+      "text": "Heartburn with belching",
+      "isCorrect": false,
+      "misconception": "A gastrointestinal symptom pair is being substituted for a neurologic warning pattern.",
+      "explanation": "The cited stroke warning signs concern sudden walking, balance, coordination, or vision problems rather than heartburn and belching."
+    },
+    {
+      "label": "D",
+      "text": "Knee soreness with stair climbing",
+      "isCorrect": false,
+      "misconception": "Activity-related joint discomfort is being confused with sudden neurologic dysfunction.",
+      "explanation": "The CDC describes sudden trouble walking and balance loss, not predictable knee soreness during stair climbing."
+    },
+    {
+      "label": "E",
+      "text": "Nasal congestion with sore throat",
+      "isCorrect": false,
+      "misconception": "An upper-respiratory symptom pair is being mistaken for a stroke warning pattern.",
+      "explanation": "Congestion and sore throat are not the cited sudden balance, walking, coordination, or vision warning signs."
+    }
+  ],
+  "context": "Learning objective: recognize less stereotyped stroke warning signs. Sudden trouble walking, dizziness, loss of balance or coordination, and sudden trouble seeing all warrant urgent concern for stroke.",
+  "cite": "cdc-stroke-signs#stroke-balance-vision-signs",
+  "publicUsmle": {
+    "schemaVersion": 1,
+    "origin": "generated",
+    "itemText": {
+      "licence": "CC-BY-4.0",
+      "attribution": "MD3 contributors"
+    },
+    "evidence": {
+      "kind": "passage",
+      "sourceId": "cdc-stroke-signs",
+      "passageId": "stroke-balance-vision-signs",
+      "licence": {
+        "cls": "foss",
+        "id": "us-gov"
+      }
+    }
+  }
+}

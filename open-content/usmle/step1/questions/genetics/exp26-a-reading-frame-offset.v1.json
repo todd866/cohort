@@ -1,0 +1,71 @@
+{
+  "id": "bank:usmle-step1:exp26-a-reading-frame-offset:v1",
+  "rotation": "usmle-step1-open",
+  "topics": [
+    "genetics",
+    "reading-frame"
+  ],
+  "moduleNodes": [
+    "usmle/step1",
+    "usmle/step1/genetics"
+  ],
+  "questionType": "interpretation",
+  "difficulty": "medium",
+  "stem": "In a hypothetical coding-sequence experiment, investigators remove two nucleotides from the middle of a gene. A second construct instead removes three nucleotides at that position. Translation begins upstream of either deletion. Which of the following best compares the downstream grouping of nucleotides?",
+  "options": [
+    {
+      "label": "A",
+      "text": "Unchanged before either deletion; undetermined after either deletion",
+      "isCorrect": false,
+      "explanation": "The position of each deletion is known, and codon length is specified by the genetic code. Those facts determine whether downstream triplet grouping changes.",
+      "misconception": "Treats downstream triplet grouping as indeterminate despite knowing both deletion lengths."
+    },
+    {
+      "label": "B",
+      "text": "Changed after the two-base deletion; preserved after the three-base deletion",
+      "isCorrect": true,
+      "explanation": "Codons use three nucleotides. Removing two changes the alignment of downstream triplets, whereas removing a complete triplet preserves the reading frame after the deletion.",
+      "misconception": "No misconception: A two-base deletion shifts downstream grouping; a complete-triplet deletion preserves the frame."
+    },
+    {
+      "label": "C",
+      "text": "Preserved after the two-base deletion; changed after the three-base deletion",
+      "isCorrect": false,
+      "explanation": "This reverses the effect of deletion size. The nontriplet deletion changes downstream grouping, while deletion of three nucleotides leaves subsequent triplets in the original frame.",
+      "misconception": "Reverses the distinction between deletion lengths divisible and not divisible by three."
+    },
+    {
+      "label": "D",
+      "text": "Changed after the two-base deletion; changed after the three-base deletion",
+      "isCorrect": false,
+      "explanation": "Both constructs lose sequence, but sequence loss is distinct from a frame shift. Removing an entire triplet does not change the downstream reading frame.",
+      "misconception": "Assumes every deletion shifts the reading frame, including loss of a complete triplet."
+    },
+    {
+      "label": "E",
+      "text": "Preserved after the two-base deletion; preserved after the three-base deletion",
+      "isCorrect": false,
+      "explanation": "The two-base deletion is not divisible by the codon length. Translation continuing across that site therefore groups the downstream bases differently from the original sequence.",
+      "misconception": "Assumes translation retains its original grouping after a deletion shorter than one complete triplet."
+    }
+  ],
+  "context": "Learning objective: distinguish a change in codon grouping from loss of sequence within a preserved frame. A nontriplet deletion shifts the downstream reading frame; a triplet-sized deletion preserves the grouping.",
+  "cite": "nhgri-frameshift#frameshift-definition",
+  "publicUsmle": {
+    "schemaVersion": 1,
+    "origin": "generated",
+    "itemText": {
+      "licence": "CC-BY-4.0",
+      "attribution": "MD3 contributors"
+    },
+    "evidence": {
+      "kind": "passage",
+      "sourceId": "nhgri-frameshift",
+      "passageId": "frameshift-definition",
+      "licence": {
+        "cls": "foss",
+        "id": "us-gov"
+      }
+    }
+  }
+}

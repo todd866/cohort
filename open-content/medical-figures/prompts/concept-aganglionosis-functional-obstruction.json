@@ -1,0 +1,29 @@
+{
+  "id": "concept-aganglionosis-functional-obstruction",
+  "title": "Hirschsprung disease: a failure of bowel propulsion",
+  "prompt": "Create an original polished 1536x1024 landscape conceptual medical teaching diagram for after-answer study. Warm hand-painted gouache and watercolour on ivory paper; a gentle storybook warmth with precise dark navy type. Matte teal, ochre, coral and blue accents. Simple neutral tokens, paper tiles, arrows and visibly abstract compartments only. Make the visual relationships legible at small size. No body parts, organs, cells, tissues, lumens, tubules, membranes, vessels, anatomical cutaways, clinical photos, diagnostic scans, babies, realistic flesh or decorative scenery. Do not turn abstract boxes or routes into organs or anatomy. Do not invent extra arrows or medical claims. Edge meanings below are metadata, not visible text: draw the arrows but do not print their meaning strings. Footer exactly: Conceptual schematic • Not anatomy. Title exactly: Hirschsprung disease: a failure of bowel propulsion. Four large numbered tiles in a horizontal sequence. Tile1 uses three signal-dot positions with two as empty dashed circles; do not draw a neuron or nerve. Tile2 uses an interrupted abstract signal arrow ending at a stop mark. Tile3 uses neutral ochre square tokens backed up at an abstract stop line, not a bowel tube. Tile4 uses a clock and outward arrows as symptom tokens, no person or abdomen. Draw exactly three connectors between the four tiles. Under the row print: Functional blockage from missing nerve control. Exact node labels: [{\"id\": \"1\", \"label\": \"Distal enteric ganglia absent\"}, {\"id\": \"2\", \"label\": \"Coordinated propulsion fails\"}, {\"id\": \"3\", \"label\": \"Functional obstruction\"}, {\"id\": \"4\", \"label\": \"Delayed meconium and distension\"}]. Exact directed connections: [{\"from\": \"1\", \"to\": \"2\", \"meaning\": \"loss of neural control\"}, {\"from\": \"2\", \"to\": \"3\", \"meaning\": \"causes\"}, {\"from\": \"3\", \"to\": \"4\", \"meaning\": \"can present with\"}]. Required checks: Four ordered concept nodes and three forward connections; No drawn nerve, ganglia, bowel or tissue layers; Abstract obstruction marker must not be described as a physical plug; No diagnostic time cutoff or claimed universal symptom.",
+  "clinicalSources": [
+    {
+      "title": "NIDDK — Hirschsprung disease definition and facts",
+      "url": "https://www.niddk.nih.gov/health-information/digestive-diseases/hirschsprung-disease/definition-facts"
+    },
+    {
+      "title": "MedlinePlus Genetics — Hirschsprung disease",
+      "url": "https://medlineplus.gov/genetics/condition/hirschsprung-disease/"
+    }
+  ],
+  "caption": "Missing enteric nerve control impairs propulsion and can produce functional obstruction in Hirschsprung disease.",
+  "question": "How can absent distal enteric ganglia cause obstruction without a physical plug?",
+  "answer": "Loss of enteric nerve control prevents normal coordinated propulsion through the affected distal segment, producing functional obstruction.",
+  "structureSpecification": "scaffolds/concept-aganglionosis-functional-obstruction.json",
+  "generationInputs": {
+    "referenceImages": [],
+    "style": "written-only"
+  },
+  "qa": {
+    "status": "pending-independent-qa",
+    "method": "agent-visual-and-source-review",
+    "notes": "Pixel structure check: all four specified causal nodes with three forward connections. Missing-signal dots, failed arrow, stopped tokens and clock are explicitly abstract; token counts are not anatomical cell counts. Functional blockage from missing nerve control is labelled, with no nerve, tissue or bowel rendering. No time cutoff. Independent and clinical review pending.",
+    "clinicalReviewStatus": "pending"
+  }
+}

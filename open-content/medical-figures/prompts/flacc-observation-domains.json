@@ -1,0 +1,35 @@
+{
+  "figureId": "flacc-observation-domains",
+  "tool": "built-in image_gen",
+  "model": null,
+  "referenceAssetIds": [],
+  "externalReferenceImages": [],
+  "prompt": "Original educational conceptual illustration, landscape 3:2. Warm ivory paper, sophisticated hand-painted gouache/watercolour, confident fine brown outlines, navy lettering, restrained teal, coral and amber. Editorial science illustration with spacious composition and large legible labels. The explanatory structure must carry the meaning visually: molecules, objects, geometry or flow; never paragraphs in boxes. No organs, regional anatomy, teeth or joint cutaways, tissue layers, invented histology, diagnostic photographs, radiographs or patient data. All symbols are explicitly conceptual. Footer: 'Conceptual teaching model • Not to scale'. Title 'Five domains to observe'. Five large evenly spaced wooden alphabet blocks spell F L A C C across the page. Under F a simple round wooden face token with neutral cartoon eyes and mouth, label 'Face'. Under L a pair of empty toy trousers with two legs, label 'Legs'. Under A a small rocking horse with motion marks, label 'Activity'. Under first C a sound-ripple symbol, label 'Cry'. Under last C two teddy bears leaning together for comfort, label 'Consolability'. Short prominent phrase 'Observe behaviour'. Bottom note 'Domain reminder; use the validated scoring tool'. Five icons visually distinct and entirely original; NO standard faces pain scale, scores, numeric ranges or copied rubric descriptors. No anatomy or photorealistic child.",
+  "clinicalSources": [
+    {
+      "title": "RCH: Pain assessment and measurement",
+      "url": "https://www.rch.org.au/rchcpg/hospital_clinical_guideline_index/Pain_Assessment_and_Measurement/"
+    }
+  ],
+  "teaching": {
+    "question": "Which five behavioural observations make up FLACC?",
+    "answer": "Face, Legs, Activity, Cry and Consolability. Each is observed using the validated scoring tool; this mnemonic alone is not a scoring form.",
+    "imageRole": "after-reveal"
+  },
+  "title": "Five domains to observe",
+  "caption": "FLACC combines observations of face, legs, activity, cry and consolability. This original mnemonic illustrates the domains; it does not reproduce or replace the validated scoring form.",
+  "alt": "Five letter tiles F L A C C pair with generic face, trouser legs, moving toy, sound ripple and comfort icons.",
+  "review": {
+    "status": "pending-independent-qa",
+    "method": "agent-visual-and-source-review",
+    "notes": "Verified F-L-A-C-C order and Face/Legs/Activity/Cry/Consolability mapping. Each object serves the intended behavioural mnemonic. No copied faces scale, scoring table, patient score or internal anatomy. The validated-scoring-tool note makes the mnemonic boundary clear.",
+    "structure": {
+      "kind": "conceptual",
+      "status": "verified",
+      "specificationFiles": [
+        "scaffolds/flacc-observation-domains.json"
+      ],
+      "notes": "Verified F-L-A-C-C order and Face/Legs/Activity/Cry/Consolability mapping. Each object serves the intended behavioural mnemonic. No copied faces scale, scoring table, patient score or internal anatomy. The validated-scoring-tool note makes the mnemonic boundary clear."
+    }
+  }
+}

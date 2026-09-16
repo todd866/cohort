@@ -1,0 +1,71 @@
+{
+  "id": "bank:usmle-step1:exp26-c-case-denominator-versus-population:v1",
+  "rotation": "usmle-step1-open",
+  "topics": [
+    "epidemiology",
+    "case-denominator-versus-population"
+  ],
+  "moduleNodes": [
+    "usmle/step1",
+    "usmle/step1/epidemiology"
+  ],
+  "questionType": "calculation",
+  "difficulty": "medium",
+  "stem": "An outbreak affects 200 residents in a closed population of 10,000. By the end of complete follow-up, 10 affected residents have died from the disease and the remaining cases have recovered. Which of the following is the case-fatality proportion for this outbreak?",
+  "options": [
+    {
+      "label": "A",
+      "text": "10/10,000, corresponding to 0.1%",
+      "isCorrect": false,
+      "explanation": "This calculation relates disease deaths to the entire population and describes disease-specific mortality over the observation period. Case fatality instead uses the people with the disease as its denominator.",
+      "misconception": "Uses the population mortality denominator for case fatality."
+    },
+    {
+      "label": "B",
+      "text": "200/10,000, corresponding to 2%",
+      "isCorrect": false,
+      "explanation": "This calculation describes the fraction of residents affected during the outbreak. It counts cases rather than deaths and therefore does not measure fatal outcomes among affected people.",
+      "misconception": "Counts outbreak cases rather than fatal outcomes among cases."
+    },
+    {
+      "label": "C",
+      "text": "190/200, corresponding to 95%",
+      "isCorrect": false,
+      "explanation": "This calculation gives the proportion of cases that survived and recovered. Case fatality uses the ten deaths, rather than the 190 survivors, in the numerator.",
+      "misconception": "Uses recovered survivors rather than deaths in the fatality numerator."
+    },
+    {
+      "label": "D",
+      "text": "10/200, corresponding to 5%",
+      "isCorrect": true,
+      "explanation": "Case fatality is the proportion of people with the condition who die from it. Ten deaths among 200 cases gives 10/200, or 5%, with complete outcome follow-up.",
+      "misconception": "No misconception: case fatality divides disease deaths by all cases."
+    },
+    {
+      "label": "E",
+      "text": "10/190, corresponding to 5.3%",
+      "isCorrect": false,
+      "explanation": "The denominator must include all cases, including those who died. Dividing deaths by survivors alone changes the measure and overstates the fatality proportion among all affected residents.",
+      "misconception": "Excludes deaths from the case denominator by counting survivors alone."
+    }
+  ],
+  "context": "Learning objective: Distinguish fatality among cases from mortality in the full population.\n\nCase fatality is the proportion of people with the condition who die from it. Ten deaths among 200 cases gives 10/200, or 5%, with complete outcome follow-up.",
+  "cite": "cdc-epi-mortality-measures#case-fatality-rate",
+  "publicUsmle": {
+    "schemaVersion": 1,
+    "origin": "generated",
+    "itemText": {
+      "licence": "CC-BY-4.0",
+      "attribution": "MD3 contributors"
+    },
+    "evidence": {
+      "kind": "passage",
+      "sourceId": "cdc-epi-mortality-measures",
+      "passageId": "case-fatality-rate",
+      "licence": {
+        "cls": "foss",
+        "id": "us-gov"
+      }
+    }
+  }
+}

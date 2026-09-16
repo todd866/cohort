@@ -1,0 +1,86 @@
+{
+  "id": "bank:usmle-step1:he-hematocrit-definition:v1",
+  "rotation": "usmle-step1-open",
+  "topics": [
+    "hematocrit",
+    "packed cell volume",
+    "anemia"
+  ],
+  "moduleNodes": [
+    "usmle/step1",
+    "usmle/step1/hematology"
+  ],
+  "questionType": "diagnosis",
+  "difficulty": "easy",
+  "stem": "A 62-year-old woman is evaluated for fatigue. A sample of her blood is spun in a centrifuge, and the red blood cell layer occupies 32 percent of the sample's volume, well below the expected 45 percent.\n\nWhich of the following tests produced this measurement?",
+  "options": [
+    {
+      "label": "A",
+      "text": "Complete blood count with differential",
+      "isCorrect": false,
+      "misconception": "A cell-counting panel is being confused with a volume-fraction measurement.",
+      "explanation": "A differential enumerates leukocyte types rather than measuring the spun red-cell volume fraction; the percentage described is the hematocrit."
+    },
+    {
+      "label": "B",
+      "text": "Hematocrit, the spun red-cell fraction",
+      "isCorrect": true,
+      "misconception": "None; the spun red-cell percentage defines the hematocrit.",
+      "explanation": "A hematocrit measures the percentage of erythrocytes in a blood sample after centrifugation; normal blood is about 45 percent red cells, so 32 percent indicates anemia."
+    },
+    {
+      "label": "C",
+      "text": "Reticulocyte production index",
+      "isCorrect": false,
+      "misconception": "A marrow-output measure is being confused with a standing red-cell volume.",
+      "explanation": "The reticulocyte index estimates new red-cell production from immature cells; the spun volume percentage itself is the hematocrit."
+    },
+    {
+      "label": "D",
+      "text": "Peripheral blood smear",
+      "isCorrect": false,
+      "misconception": "Morphology review is being equated with a volumetric measurement.",
+      "explanation": "A smear shows red-cell shape and size under the microscope but yields no percentage of total blood volume; that fraction is the hematocrit."
+    },
+    {
+      "label": "E",
+      "text": "Hemoglobin electrophoresis",
+      "isCorrect": false,
+      "misconception": "A qualitative protein separation is being credited with a volume fraction.",
+      "explanation": "Electrophoresis separates hemoglobin variants by charge; it does not measure the proportion of blood volume occupied by red cells."
+    }
+  ],
+  "context": "Learning objective: define the hematocrit. After centrifugation, erythrocytes settle at the bottom of the tube; their fraction of the sample is the hematocrit (packed cell volume), normally about 45 percent, with a thin buffy coat of leukocytes and platelets above.",
+  "cite": "openstax-anatomy-physiology#he-hematocrit-definition",
+  "publicUsmle": {
+    "schemaVersion": 1,
+    "origin": "generated",
+    "itemText": {
+      "licence": "CC-BY-4.0",
+      "attribution": "MD3 contributors"
+    },
+    "evidence": {
+      "kind": "passage",
+      "sourceId": "openstax-anatomy-physiology",
+      "passageId": "he-hematocrit-definition",
+      "licence": {
+        "cls": "foss",
+        "id": "cc-by-4.0"
+      }
+    },
+    "media": {
+      "kind": "asset",
+      "assetId": "blood-components-v1",
+      "job": "anatomy",
+      "showWhen": "after-reveal",
+      "licence": {
+        "cls": "foss",
+        "id": "cc-by-4.0"
+      },
+      "attribution": "MD3 contributors",
+      "contentHash": "sha256:3856cf48a8b6b7e73474650774b40f575f9ee1219bc0ebdd14e3df08c05e55b9"
+    }
+  },
+  "imageUrl": "/figures/usmle/step1/blood-components-v1.svg",
+  "imageCaption": "Hematocrit, buffy coat, albumin, platelets, monocyte-macrophage, T cells, EPO, iron deficiency, ABO."
+}

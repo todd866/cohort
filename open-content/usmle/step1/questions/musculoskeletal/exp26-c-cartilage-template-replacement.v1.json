@@ -1,0 +1,71 @@
+{
+  "id": "bank:usmle-step1:exp26-c-cartilage-template-replacement:v1",
+  "rotation": "usmle-step1-open",
+  "topics": [
+    "musculoskeletal",
+    "cartilage-template-replacement"
+  ],
+  "moduleNodes": [
+    "usmle/step1",
+    "usmle/step1/musculoskeletal"
+  ],
+  "questionType": "interpretation",
+  "difficulty": "medium",
+  "stem": "Developing skeletal tissue initially contains a hyaline cartilage model. Follow-up sections show removal of that template and deposition of bone in its place. Which of the following interpretations best describes the process observed?",
+  "options": [
+    {
+      "label": "A",
+      "text": "Intramembranous ossification through a required cartilage template",
+      "isCorrect": false,
+      "explanation": "Intramembranous ossification forms bone directly from mesenchymal tissue. A required hyaline cartilage template instead identifies the endochondral pathway described by these sequential observations.",
+      "misconception": "Assigns a required cartilage template to intramembranous ossification."
+    },
+    {
+      "label": "B",
+      "text": "Endochondral ossification with direct conversion of cartilage matrix",
+      "isCorrect": false,
+      "explanation": "The cartilage model provides a template that is removed and replaced by bone. It is not simply converted into bone matrix, as the separate removal and deposition observations demonstrate.",
+      "misconception": "Mistakes cartilage removal and replacement for direct matrix conversion."
+    },
+    {
+      "label": "C",
+      "text": "Endochondral ossification with replacement of a cartilage template",
+      "isCorrect": true,
+      "explanation": "Endochondral ossification replaces a pre-existing hyaline cartilage model with bone. Removal of the template followed by bone deposition is the defining sequence in this preparation.",
+      "misconception": "No misconception: endochondral ossification replaces a hyaline cartilage model."
+    },
+    {
+      "label": "D",
+      "text": "Intramembranous ossification through osteoclast matrix deposition",
+      "isCorrect": false,
+      "explanation": "Osteoclasts resorb bone rather than deposit its matrix. In addition, the observed cartilage template distinguishes this developmental process from direct intramembranous formation of bone.",
+      "misconception": "Assigns matrix deposition to osteoclasts and ignores the cartilage template."
+    },
+    {
+      "label": "E",
+      "text": "Endochondral ossification through resorption without bone deposition",
+      "isCorrect": false,
+      "explanation": "Removal of cartilage alone would not account for the bone seen on follow-up sections. Endochondral ossification includes replacement with newly deposited bone, not resorption without formation.",
+      "misconception": "Counts template removal as ossification without the observed bone deposition."
+    }
+  ],
+  "context": "Learning objective: Distinguish replacement of a cartilage template in endochondral ossification from direct intramembranous bone formation.\n\nEndochondral ossification replaces a pre-existing hyaline cartilage model with bone. Removal of the template followed by bone deposition is the defining sequence in this preparation.",
+  "cite": "openstax-anatomy-physiology#ms-ossification-pathways",
+  "publicUsmle": {
+    "schemaVersion": 1,
+    "origin": "generated",
+    "itemText": {
+      "licence": "CC-BY-4.0",
+      "attribution": "MD3 contributors"
+    },
+    "evidence": {
+      "kind": "passage",
+      "sourceId": "openstax-anatomy-physiology",
+      "passageId": "ms-ossification-pathways",
+      "licence": {
+        "cls": "foss",
+        "id": "cc-by-4.0"
+      }
+    }
+  }
+}

@@ -1,0 +1,71 @@
+{
+  "id": "bank:usmle-step1:exp26-c-duration-energy-source-shift:v1",
+  "rotation": "usmle-step1-open",
+  "topics": [
+    "musculoskeletal",
+    "duration-energy-source-shift"
+  ],
+  "moduleNodes": [
+    "usmle/step1",
+    "usmle/step1/musculoskeletal"
+  ],
+  "questionType": "interpretation",
+  "difficulty": "medium",
+  "stem": "A volunteer changes from a short maximal effort to prolonged activity at a sustainable intensity. Oxygen delivery remains adequate during the prolonged phase. Which of the following changes in the relative contribution of energy sources is most consistent with maintaining ATP supply?",
+  "options": [
+    {
+      "label": "A",
+      "text": "Creatine phosphate contribution rises while aerobic contribution falls",
+      "isCorrect": false,
+      "explanation": "Creatine phosphate supplies the early period of contraction. Its finite initial reserve cannot take over from aerobic regeneration during sustained activity.",
+      "misconception": "Assumes finite creatine phosphate reserves take over during sustained activity."
+    },
+    {
+      "label": "B",
+      "text": "Anaerobic glycolysis contribution rises while aerobic contribution falls",
+      "isCorrect": false,
+      "explanation": "Brief intense activity can rely heavily on anaerobic production. Prolonged sustainable work with adequate oxygen instead favors a larger aerobic contribution.",
+      "misconception": "Extends a brief anaerobic energy pattern to prolonged oxygen-supported work."
+    },
+    {
+      "label": "C",
+      "text": "Aerobic contribution rises while initial-store contribution falls",
+      "isCorrect": true,
+      "explanation": "Aerobic metabolism sustains ATP production when oxygen is available. Its relative contribution grows as the initial rapid energy stores cannot sustain the activity alone.",
+      "misconception": "No misconception: sustained work increases reliance on aerobic ATP regeneration."
+    },
+    {
+      "label": "D",
+      "text": "Stored ATP contribution rises while metabolic regeneration falls",
+      "isCorrect": false,
+      "explanation": "Stored ATP requires replenishment during continuing contraction. Sustained activity cannot rely increasingly on the initial pool while regeneration declines.",
+      "misconception": "Treats stored ATP as a growing supply that needs progressively less replenishment."
+    },
+    {
+      "label": "E",
+      "text": "Both aerobic and anaerobic contributions fall as exercise continues",
+      "isCorrect": false,
+      "explanation": "Continuing muscle work requires ATP regeneration. Adequate oxygen allows aerobic production to sustain supply rather than requiring both metabolic contributions to diminish.",
+      "misconception": "Assumes continued contraction can proceed while both regeneration routes decline."
+    }
+  ],
+  "context": "Learning objective: Compare the relative roles of immediate energy stores, anaerobic glycolysis and aerobic metabolism as activity continues.\n\nAerobic metabolism sustains ATP production when oxygen is available. Its relative contribution grows as the initial rapid energy stores cannot sustain the activity alone.",
+  "cite": "openstax-anatomy-physiology#ms-muscle-atp-sources",
+  "publicUsmle": {
+    "schemaVersion": 1,
+    "origin": "generated",
+    "itemText": {
+      "licence": "CC-BY-4.0",
+      "attribution": "MD3 contributors"
+    },
+    "evidence": {
+      "kind": "passage",
+      "sourceId": "openstax-anatomy-physiology",
+      "passageId": "ms-muscle-atp-sources",
+      "licence": {
+        "cls": "foss",
+        "id": "cc-by-4.0"
+      }
+    }
+  }
+}

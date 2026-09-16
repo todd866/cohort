@@ -1,0 +1,84 @@
+{
+  "id": "bank:usmle-step1:immuno-autoimmunity:v1",
+  "rotation": "usmle-step1-open",
+  "topics": [
+    "autoimmunity"
+  ],
+  "moduleNodes": [
+    "usmle/step1",
+    "usmle/step1/immunology"
+  ],
+  "questionType": "mechanism",
+  "difficulty": "medium",
+  "stem": "An autoimmune response is best described as which inappropriate reaction?",
+  "options": [
+    {
+      "label": "A",
+      "text": "Only defense against extracellular bacteria via complement",
+      "isCorrect": false,
+      "misconception": "Normal host defense, not autoimmunity.",
+      "explanation": "This option does not match the cited source passage for the stem."
+    },
+    {
+      "label": "B",
+      "text": "Only warfarin–vitamin K dietary counseling",
+      "isCorrect": false,
+      "misconception": "Pharm — does not match the cited teaching point.",
+      "explanation": "This option does not match the cited source passage for the stem."
+    },
+    {
+      "label": "C",
+      "text": "Only independent events multiplying probabilities",
+      "isCorrect": false,
+      "misconception": "Stats — does not match the cited teaching point.",
+      "explanation": "This option does not match the cited source passage for the stem."
+    },
+    {
+      "label": "D",
+      "text": "Only statin blockade of HMG-CoA reductase",
+      "isCorrect": false,
+      "misconception": "Pharm — does not match the cited teaching point.",
+      "explanation": "This option does not match the cited source passage for the stem."
+    },
+    {
+      "label": "E",
+      "text": "Immune attack on host cells or self-antigens",
+      "isCorrect": true,
+      "misconception": "None; autoimmunity targets self.",
+      "explanation": "OpenStax: autoimmune response is inappropriate response to host cells or self-antigens."
+    }
+  ],
+  "context": "Learning objective: define autoimmunity.",
+  "cite": "openstax-biology-2e#autoimmune-response",
+  "publicUsmle": {
+    "schemaVersion": 1,
+    "origin": "generated",
+    "itemText": {
+      "licence": "CC-BY-4.0",
+      "attribution": "MD3 contributors"
+    },
+    "evidence": {
+      "kind": "passage",
+      "sourceId": "openstax-biology-2e",
+      "passageId": "autoimmune-response",
+      "licence": {
+        "cls": "foss",
+        "id": "cc-by-4.0"
+      }
+    },
+    "media": {
+      "kind": "asset",
+      "assetId": "immuno-defense-layers-v1",
+      "job": "compare-table",
+      "showWhen": "after-reveal",
+      "licence": {
+        "cls": "foss",
+        "id": "cc-by-4.0"
+      },
+      "attribution": "MD3 contributors",
+      "contentHash": "sha256:af2d1ce40a5a219b0a5c640aed56b4f0f0d54aaad2288a428d9e452ddccaad86"
+    }
+  },
+  "imageUrl": "/figures/usmle/step1/immuno-defense-layers-v1.svg",
+  "imageCaption": "Innate vs adaptive layers, IgE hypersensitivity timing, autoimmunity."
+}

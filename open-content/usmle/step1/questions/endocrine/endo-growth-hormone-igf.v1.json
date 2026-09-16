@@ -1,0 +1,86 @@
+{
+  "id": "bank:usmle-step1:endo-growth-hormone-igf:v1",
+  "rotation": "usmle-step1-open",
+  "topics": [
+    "growth hormone",
+    "IGF",
+    "acromegaly"
+  ],
+  "moduleNodes": [
+    "usmle/step1",
+    "usmle/step1/endocrine"
+  ],
+  "questionType": "mechanism",
+  "difficulty": "medium",
+  "stem": "A 47-year-old man notices his rings and shoes no longer fit, and his jaw has become more prominent over several years. Testing confirms excess growth hormone (GH) from a pituitary adenoma, and his fasting glucose is high.\n\nMuch of GH's growth-promoting effect on his bone and soft tissue is actually carried out by which of the following?",
+  "options": [
+    {
+      "label": "A",
+      "text": "Prolactin co-secreted by the same pituitary adenoma",
+      "isCorrect": false,
+      "misconception": "An unrelated anterior pituitary hormone is being named as GH's effector.",
+      "explanation": "Prolactin governs lactation; GH's indirect growth and protein-synthesis effects are mediated by insulin-like growth factors produced by the liver and other tissues."
+    },
+    {
+      "label": "B",
+      "text": "Thyroid hormone potentiating GH receptors throughout the body",
+      "isCorrect": false,
+      "misconception": "A permissive metabolic hormone is being credited as GH's effector.",
+      "explanation": "Thyroid hormones support normal growth and development but are not GH's downstream mediator; GH acts through hepatic and tissue IGF production."
+    },
+    {
+      "label": "C",
+      "text": "Calcitonin depositing new calcium into enlarging bone",
+      "isCorrect": false,
+      "misconception": "A calcium-regulating hormone is being assigned a growth role.",
+      "explanation": "Calcitonin lowers blood calcium via bone uptake; the tissue growth of GH excess is mediated by insulin-like growth factors from the liver and other tissues."
+    },
+    {
+      "label": "D",
+      "text": "Insulin-like growth factors released by the liver and other tissues",
+      "isCorrect": true,
+      "misconception": "None; GH triggers the liver and other tissues to produce IGFs, which mediate much of growth and protein synthesis.",
+      "explanation": "GH promotes protein synthesis directly, but indirectly mediates growth by triggering the liver and other tissues to produce insulin-like growth factors (IGFs), which support new protein formation in muscle and bone."
+    },
+    {
+      "label": "E",
+      "text": "Insulin released in compensation for his growth-hormone-driven hyperglycemia",
+      "isCorrect": false,
+      "misconception": "A glucose-regulating hormone elevated by GH's diabetogenic effect is being confused with GH's growth mediator.",
+      "explanation": "GH raises blood glucose through glucose-sparing and diabetogenic effects, which may raise insulin, but insulin is not the growth effector — IGFs mediate GH-driven growth."
+    }
+  ],
+  "context": "Learning objective: distinguish GH's direct and indirect actions. GH (anterior pituitary somatotropin) is anabolic, directly accelerating protein synthesis and indirectly driving growth via hepatic and tissue IGFs; it also raises blood glucose via glucose-sparing (lipolysis) and diabetogenic (hepatic glycogen breakdown) effects, explaining hyperglycemia in acromegaly.",
+  "cite": "openstax-anatomy-physiology#endo-growth-hormone-igf",
+  "publicUsmle": {
+    "schemaVersion": 1,
+    "origin": "generated",
+    "itemText": {
+      "licence": "CC-BY-4.0",
+      "attribution": "MD3 contributors"
+    },
+    "evidence": {
+      "kind": "passage",
+      "sourceId": "openstax-anatomy-physiology",
+      "passageId": "endo-growth-hormone-igf",
+      "licence": {
+        "cls": "foss",
+        "id": "cc-by-4.0"
+      }
+    },
+    "media": {
+      "kind": "asset",
+      "assetId": "hpa-axis-v1",
+      "job": "pathway",
+      "showWhen": "after-reveal",
+      "licence": {
+        "cls": "foss",
+        "id": "cc-by-4.0"
+      },
+      "attribution": "MD3 contributors",
+      "contentHash": "sha256:07ce876fc9b8e4bd8c634b01e83f6a7fffa501eaa640ec190e29ddcbd24ca1e5"
+    }
+  },
+  "imageUrl": "/figures/usmle/step1/hpa-axis-v1.svg",
+  "imageCaption": "HPA: hypothalamus to anterior (portal tropic hormones) and posterior (ADH/OT axons); peripheral feedback."
+}

@@ -1,0 +1,85 @@
+{
+  "id": "bank:usmle-step1:biostats-spec-formula:v1",
+  "rotation": "usmle-step1-open",
+  "topics": [
+    "specificity",
+    "2x2 table"
+  ],
+  "moduleNodes": [
+    "usmle/step1",
+    "usmle/step1/biostats"
+  ],
+  "questionType": "calculation",
+  "difficulty": "easy",
+  "stem": "A test evaluation labels the four groups as A = true positive, B = false positive, C = false negative and D = true negative. Which of the following ratios measures correct negative classification among people without disease?",
+  "options": [
+    {
+      "label": "A",
+      "text": "A / (A + C)",
+      "isCorrect": false,
+      "explanation": "This ratio is sensitivity, since A and C together represent all actual cases. Specificity instead evaluates correct negative classification among the group without disease.",
+      "misconception": "Uses the diseased-group sensitivity formula to assess disease-free classification."
+    },
+    {
+      "label": "B",
+      "text": "A / (A + B)",
+      "isCorrect": false,
+      "explanation": "This ratio is positive predictive value, since A and B together represent all positive results. The requested measure instead begins with people independently known to be disease-free.",
+      "misconception": "Substitutes PPV for specificity by conditioning on positive results."
+    },
+    {
+      "label": "C",
+      "text": "B / (B + D)",
+      "isCorrect": false,
+      "explanation": "This ratio is the false-positive fraction among people without disease. It uses the right denominator but counts incorrect positive results rather than correct negative classifications.",
+      "misconception": "Uses the correct noncase denominator but counts false positives as successes."
+    },
+    {
+      "label": "D",
+      "text": "C / (A + C)",
+      "isCorrect": false,
+      "explanation": "This ratio is the proportion of actual cases missed by the test. The question asks about correct exclusions among disease-free people, not missed detection among cases.",
+      "misconception": "Counts missed actual cases instead of correctly excluded noncases."
+    },
+    {
+      "label": "E",
+      "text": "D / (B + D)",
+      "isCorrect": true,
+      "explanation": "Disease-free people consist of false positives and true negatives, B + D. Correct exclusions are D, so specificity is D divided by B + D.",
+      "misconception": "No misconception: D counts true negatives within the disease-free group B plus D."
+    }
+  ],
+  "context": "Learning objective: Build the specificity denominator from false positives plus true negatives before evaluating screening errors.\n\nDisease-free people consist of false positives and true negatives, B + D. Correct exclusions are D, so specificity is D divided by B + D.",
+  "cite": "cdc-epi-sensitivity-specificity#sens-spec-formulas",
+  "publicUsmle": {
+    "schemaVersion": 1,
+    "origin": "generated",
+    "itemText": {
+      "licence": "CC-BY-4.0",
+      "attribution": "MD3 contributors"
+    },
+    "evidence": {
+      "kind": "passage",
+      "sourceId": "cdc-epi-sensitivity-specificity",
+      "passageId": "sens-spec-formulas",
+      "licence": {
+        "cls": "foss",
+        "id": "us-gov"
+      }
+    },
+    "media": {
+      "kind": "asset",
+      "assetId": "biostats-contingency-v1",
+      "job": "compare-table",
+      "showWhen": "after-reveal",
+      "licence": {
+        "cls": "foss",
+        "id": "cc-by-4.0"
+      },
+      "attribution": "MD3 contributors",
+      "contentHash": "sha256:e9e377884f40d7113cfb4687b3f409ee67b22c830b3bd79ec91510cbac159682"
+    }
+  },
+  "imageUrl": "/figures/usmle/step1/biostats-contingency-v1.svg",
+  "imageCaption": "2x2 contingency: TP/FP/FN/TN with sensitivity, specificity, and PPV formulas."
+}

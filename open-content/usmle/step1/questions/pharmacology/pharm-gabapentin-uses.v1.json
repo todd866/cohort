@@ -1,0 +1,86 @@
+{
+  "id": "bank:usmle-step1:pharm-gabapentin-uses:v1",
+  "rotation": "usmle-step1-open",
+  "topics": [
+    "gabapentin",
+    "seizure",
+    "PHN"
+  ],
+  "moduleNodes": [
+    "usmle/step1",
+    "usmle/step1/pharmacology"
+  ],
+  "questionType": "mechanism",
+  "difficulty": "easy",
+  "stem": "Gabapentin capsules/tablets/solution are used with other medications to help control which problem, and also for which post-shingles pain?",
+  "options": [
+    {
+      "label": "A",
+      "text": "Certain epileptic seizures and postherpetic neuralgia",
+      "isCorrect": true,
+      "misconception": "None; seizures + PHN.",
+      "explanation": "MedlinePlus: seizures in epilepsy; PHN pain."
+    },
+    {
+      "label": "B",
+      "text": "Only fecal-oral hepatitis A exposure prophylaxis",
+      "isCorrect": false,
+      "misconception": "Micro. (does not match the cited teaching point).",
+      "explanation": "This option does not match the cited source passage for the stem."
+    },
+    {
+      "label": "C",
+      "text": "Only laboratory typing of poliovirus serotype panels",
+      "isCorrect": false,
+      "misconception": "Micro. (does not match the cited teaching point).",
+      "explanation": "This option does not match the cited source passage for the stem."
+    },
+    {
+      "label": "D",
+      "text": "Only HPV 6/11 wart eradication marketed as sole cure",
+      "isCorrect": false,
+      "misconception": "Wrong concept for this stem; does not match the cited passage.",
+      "explanation": "This option does not match the cited source passage for the stem."
+    },
+    {
+      "label": "E",
+      "text": "Only prevalence sampling frames in survey fieldwork",
+      "isCorrect": false,
+      "misconception": "Epi. (does not match the cited teaching point).",
+      "explanation": "This option does not match the cited source passage for the stem."
+    }
+  ],
+  "context": "Learning objective: recall gabapentin, seizure, PHN from the cited FOSS source.",
+  "cite": "medlineplus-gabapentin#gabapentin-uses",
+  "publicUsmle": {
+    "schemaVersion": 1,
+    "origin": "generated",
+    "itemText": {
+      "licence": "CC-BY-4.0",
+      "attribution": "MD3 contributors"
+    },
+    "evidence": {
+      "kind": "passage",
+      "sourceId": "medlineplus-gabapentin",
+      "passageId": "gabapentin-uses",
+      "licence": {
+        "cls": "foss",
+        "id": "us-gov"
+      }
+    },
+    "media": {
+      "kind": "asset",
+      "assetId": "pharm-drug-classes-v1",
+      "job": "compare-table",
+      "showWhen": "after-reveal",
+      "licence": {
+        "cls": "foss",
+        "id": "cc-by-4.0"
+      },
+      "attribution": "MD3 contributors",
+      "contentHash": "sha256:0660ff11235451eff9a2718dd975d64fa61483b220682b17bd82c8050fd4bceb"
+    }
+  },
+  "imageUrl": "/figures/usmle/step1/pharm-drug-classes-v1.svg",
+  "imageCaption": "High-yield FOSS drug-class map from MedlinePlus labels."
+}

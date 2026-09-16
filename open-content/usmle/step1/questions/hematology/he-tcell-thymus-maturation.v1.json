@@ -1,0 +1,87 @@
+{
+  "id": "bank:usmle-step1:he-tcell-thymus-maturation:v1",
+  "rotation": "usmle-step1-open",
+  "topics": [
+    "T cells",
+    "thymus",
+    "B cells",
+    "lymphocyte maturation"
+  ],
+  "moduleNodes": [
+    "usmle/step1",
+    "usmle/step1/hematology"
+  ],
+  "questionType": "mechanism",
+  "difficulty": "easy",
+  "stem": "A 1-month-old boy is found to have a congenital absence of the thymus.\n\nWhich of the following cell populations would be most directly depleted by this defect, given where it normally completes its maturation?",
+  "options": [
+    {
+      "label": "A",
+      "text": "T lymphocytes",
+      "isCorrect": true,
+      "misconception": "None; T cells mature in the thymus.",
+      "explanation": "Although both B and T cells initially develop from bone marrow, T cells migrate to the thymus gland where they further mature; without a thymus this maturation cannot occur."
+    },
+    {
+      "label": "B",
+      "text": "Neutrophils",
+      "isCorrect": false,
+      "misconception": "A myeloid granulocyte is being tied to a lymphoid organ.",
+      "explanation": "Neutrophils mature entirely within the myeloid lineage in bone marrow; thymic absence affects the T-lymphocyte line."
+    },
+    {
+      "label": "C",
+      "text": "B lymphocytes",
+      "isCorrect": false,
+      "misconception": "The two lymphocyte maturation sites are being interchanged.",
+      "explanation": "B cells mature in red bone marrow, not the thymus, so a thymic defect spares their maturation while crippling T-cell production."
+    },
+    {
+      "label": "D",
+      "text": "Megakaryocytes",
+      "isCorrect": false,
+      "misconception": "The platelet precursor is being assigned thymic maturation.",
+      "explanation": "Megakaryocytes develop and remain in bone marrow; the thymus is the maturation site for T cells only."
+    },
+    {
+      "label": "E",
+      "text": "Monocytes",
+      "isCorrect": false,
+      "misconception": "A myeloid phagocyte precursor is being linked to the thymus.",
+      "explanation": "Monocytes arise from myeloid stem cells in marrow and mature into macrophages in tissues; they do not depend on the thymus."
+    }
+  ],
+  "context": "Learning objective: map lymphocyte maturation sites. All lymphocytes arise from lymphoid stem cells in bone marrow, but maturation splits: B cells mature in red bone marrow while T cells migrate to the thymus — the anatomical basis for the cellular-immunity defect of thymic aplasia (DiGeorge).",
+  "cite": "openstax-anatomy-physiology#he-tcell-thymus-maturation",
+  "publicUsmle": {
+    "schemaVersion": 1,
+    "origin": "generated",
+    "itemText": {
+      "licence": "CC-BY-4.0",
+      "attribution": "MD3 contributors"
+    },
+    "evidence": {
+      "kind": "passage",
+      "sourceId": "openstax-anatomy-physiology",
+      "passageId": "he-tcell-thymus-maturation",
+      "licence": {
+        "cls": "foss",
+        "id": "cc-by-4.0"
+      }
+    },
+    "media": {
+      "kind": "asset",
+      "assetId": "blood-components-v1",
+      "job": "anatomy",
+      "showWhen": "after-reveal",
+      "licence": {
+        "cls": "foss",
+        "id": "cc-by-4.0"
+      },
+      "attribution": "MD3 contributors",
+      "contentHash": "sha256:3856cf48a8b6b7e73474650774b40f575f9ee1219bc0ebdd14e3df08c05e55b9"
+    }
+  },
+  "imageUrl": "/figures/usmle/step1/blood-components-v1.svg",
+  "imageCaption": "Hematocrit, buffy coat, albumin, platelets, monocyte-macrophage, T cells, EPO, iron deficiency, ABO."
+}

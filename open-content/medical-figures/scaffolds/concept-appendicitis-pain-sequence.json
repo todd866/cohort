@@ -1,0 +1,77 @@
+{
+  "schemaVersion": 1,
+  "id": "concept-appendicitis-pain-sequence",
+  "kind": "conceptual",
+  "sourceFacts": [
+    {
+      "fact": "Pain may begin near the umbilicus and later localise in the right lower abdomen.",
+      "sourceUrls": [
+        "https://www.niddk.nih.gov/health-information/digestive-diseases/appendicitis/symptoms-causes",
+        "https://newsinhealth.nih.gov/2024/04/appendix-pain"
+      ]
+    },
+    {
+      "fact": "Children may have atypical presentations, so this pattern is not universal.",
+      "sourceUrls": [
+        "https://www.niddk.nih.gov/health-information/digestive-diseases/appendicitis/symptoms-causes",
+        "https://newsinhealth.nih.gov/2024/04/appendix-pain"
+      ]
+    }
+  ],
+  "nodes": [
+    {
+      "id": "1",
+      "label": "Pain near the umbilicus"
+    },
+    {
+      "id": "2",
+      "label": "Over the next hours"
+    },
+    {
+      "id": "3",
+      "label": "Pain in the right lower abdomen"
+    }
+  ],
+  "edges": [
+    {
+      "from": "1",
+      "to": "2",
+      "meaning": "time progression"
+    },
+    {
+      "from": "2",
+      "to": "3",
+      "meaning": "later localisation"
+    }
+  ],
+  "labels": [
+    "Appendicitis: a classic pain sequence",
+    "Pain near the umbilicus",
+    "Over the next hours",
+    "Pain in the right lower abdomen",
+    "Conceptual schematic • Not anatomy"
+  ],
+  "layout": "Three broad cards across a single time arrow. Card1 shows a diffuse circular coral watercolour glow around a dot, card2 a clock, card3 a sharp coral star within a small circle. These are neutral precision metaphors, not a body or anatomical location map. Labels carry location information. Below1 write Often poorly localised; below3 write More localised. Bottom note: A classic pattern; presentations vary in children. No appendix, organ, abdomen silhouette, dermatome or skin. Exactly two sequence arrows.",
+  "forbiddenAnatomy": [
+    "organs",
+    "body silhouettes",
+    "tissue cross-sections",
+    "cells",
+    "tubules",
+    "vessels",
+    "clinical photographs",
+    "diagnostic scans"
+  ],
+  "validation": {
+    "sourceStatus": "checked",
+    "structureStatus": "verified",
+    "requiredChecks": [
+      "Three nodes and two time arrows",
+      "Umbilical precedes right-lower location",
+      "Variable presentations qualification clear",
+      "No anatomical map or claim that appendix physically moves"
+    ],
+    "clinicalReviewStatus": "pending",
+    "pixelChecks": "Pixel check: three cards/two arrows show central pain then hours then right-lower pain. Diffuse and focused symbols are abstract and labels carry localisation. Variable-child-presentation qualifier visible. No body map or moving appendix. Independent and clinical review pending."
+  }
+}

@@ -1,0 +1,86 @@
+{
+  "id": "bank:usmle-step1:gi-chief-cells-pepsinogen:v1",
+  "rotation": "usmle-step1-open",
+  "topics": [
+    "chief cells",
+    "pepsinogen",
+    "protein digestion"
+  ],
+  "moduleNodes": [
+    "usmle/step1",
+    "usmle/step1/gastrointestinal"
+  ],
+  "questionType": "mechanism",
+  "difficulty": "easy",
+  "stem": "A 40-year-old man has autoimmune gastritis that destroys the glands of his gastric body. Loss of his chief-cell secretion most directly reduces the initial digestion of which of the following?",
+  "options": [
+    {
+      "label": "A",
+      "text": "Starches",
+      "isCorrect": false,
+      "misconception": "Starch digestion is being assigned to the stomach.",
+      "explanation": "Starch digestion begins in the mouth with salivary amylase and is completed by pancreatic amylase and brush-border enzymes, not by pepsin."
+    },
+    {
+      "label": "B",
+      "text": "Proteins",
+      "isCorrect": true,
+      "misconception": "None; pepsin begins protein digestion in the stomach.",
+      "explanation": "Chief cells secrete pepsinogen, which acid converts to pepsin; pepsin starts the enzymatic digestion of proteins, so losing chief cells removes this first step."
+    },
+    {
+      "label": "C",
+      "text": "Nucleic acids",
+      "isCorrect": false,
+      "misconception": "Nucleic-acid breakdown is being assigned to the stomach.",
+      "explanation": "Nucleic acids are digested by pancreatic nucleases and brush-border enzymes in the small intestine, well downstream of pepsin's action."
+    },
+    {
+      "label": "D",
+      "text": "Triglycerides",
+      "isCorrect": false,
+      "misconception": "Fat digestion is being assigned to a gastric protease.",
+      "explanation": "Triglyceride digestion depends mainly on pancreatic lipase with bile-salt emulsification in the small intestine; pepsin does not act on lipids."
+    },
+    {
+      "label": "E",
+      "text": "Disaccharides",
+      "isCorrect": false,
+      "misconception": "Sugar digestion is being assigned to a protease.",
+      "explanation": "Disaccharides are split by brush-border enzymes such as lactase and sucrase on the microvilli of the small intestine, not by pepsinogen or pepsin."
+    }
+  ],
+  "context": "Learning objective: link chief cells to protein digestion. Chief cells of the gastric glands secrete pepsinogen; HCl from parietal cells converts it to active pepsin, which begins protein digestion. Carbohydrate, lipid, nucleic-acid, and disaccharide digestion are handled downstream by pancreatic and brush-border enzymes.",
+  "cite": "openstax-anatomy-physiology#gi-chief-cells-pepsinogen",
+  "publicUsmle": {
+    "schemaVersion": 1,
+    "origin": "generated",
+    "itemText": {
+      "licence": "CC-BY-4.0",
+      "attribution": "MD3 contributors"
+    },
+    "evidence": {
+      "kind": "passage",
+      "sourceId": "openstax-anatomy-physiology",
+      "passageId": "gi-chief-cells-pepsinogen",
+      "licence": {
+        "cls": "foss",
+        "id": "cc-by-4.0"
+      }
+    },
+    "media": {
+      "kind": "asset",
+      "assetId": "gastric-secretion-v1",
+      "job": "pathway",
+      "showWhen": "after-reveal",
+      "licence": {
+        "cls": "foss",
+        "id": "cc-by-4.0"
+      },
+      "attribution": "MD3 contributors",
+      "contentHash": "sha256:8be13d0847ecfd181d68d963b3aec9c7011d75060c7d97b6c23225cc47f84e58"
+    }
+  },
+  "imageUrl": "/figures/usmle/step1/gastric-secretion-v1.svg",
+  "imageCaption": "Gastric phases cephalic/gastric/intestinal; parietal (HCl+IF), chief (pepsinogen), G cell (gastrin)."
+}

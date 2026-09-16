@@ -1,0 +1,84 @@
+{
+  "id": "bank:usmle-step1:phys-asthma-airway-narrowing:v1",
+  "rotation": "usmle-step1-open",
+  "topics": [
+    "asthma"
+  ],
+  "moduleNodes": [
+    "usmle/step1",
+    "usmle/step1/physiology"
+  ],
+  "questionType": "mechanism",
+  "difficulty": "easy",
+  "stem": "In asthma, what happens to the breathing tubes at times according to NHLBI?",
+  "options": [
+    {
+      "label": "A",
+      "text": "Only pleural fibrosis of airways alone without narrowing labels",
+      "isCorrect": false,
+      "misconception": "Wrong concept for this stem; does not match the cited passage.",
+      "explanation": "This option does not match the cited source passage for the stem."
+    },
+    {
+      "label": "B",
+      "text": "Only permanent bronchial dilation of airways without narrowing episodes",
+      "isCorrect": false,
+      "misconception": "Wrong concept for this stem; does not match the cited passage.",
+      "explanation": "This option does not match the cited source passage for the stem."
+    },
+    {
+      "label": "C",
+      "text": "Only complete tracheal agenesis of airways without inflammatory narrowing",
+      "isCorrect": false,
+      "misconception": "Wrong concept for this stem; does not match the cited passage.",
+      "explanation": "This option does not match the cited source passage for the stem."
+    },
+    {
+      "label": "D",
+      "text": "Only pure alveolar collapse of airways without inflammation roles",
+      "isCorrect": false,
+      "misconception": "Wrong concept for this stem; does not match the cited passage.",
+      "explanation": "This option does not match the cited source passage for the stem."
+    },
+    {
+      "label": "E",
+      "text": "Airways can become inflamed and narrowed, impairing airflow out",
+      "isCorrect": true,
+      "misconception": "None — this option matches the cited source passage for the stem.",
+      "explanation": "This correct choice is supported by the cited FOSS passage."
+    }
+  ],
+  "context": "Learning objective: recall asthma airway inflammation and narrowing from the cited FOSS source.",
+  "cite": "nhlbi-asthma#asthma-airways",
+  "publicUsmle": {
+    "schemaVersion": 1,
+    "origin": "generated",
+    "itemText": {
+      "licence": "CC-BY-4.0",
+      "attribution": "MD3 contributors"
+    },
+    "evidence": {
+      "kind": "passage",
+      "sourceId": "nhlbi-asthma",
+      "passageId": "asthma-airways",
+      "licence": {
+        "cls": "foss",
+        "id": "us-gov"
+      }
+    },
+    "media": {
+      "kind": "asset",
+      "assetId": "lung-mechanics-v1",
+      "job": "pathway",
+      "showWhen": "after-reveal",
+      "licence": {
+        "cls": "foss",
+        "id": "cc-by-4.0"
+      },
+      "attribution": "MD3 contributors",
+      "contentHash": "sha256:2eaec9c60db53463223535515210fe6ff2a06557ce339beb1804de9350056fb2"
+    }
+  },
+  "imageUrl": "/figures/usmle/step1/lung-mechanics-v1.svg",
+  "imageCaption": "Lung/airway mechanics board for asthma teaching (FOSS draft)."
+}

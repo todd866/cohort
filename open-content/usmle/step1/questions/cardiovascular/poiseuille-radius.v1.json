@@ -1,0 +1,87 @@
+{
+  "id": "bank:usmle-step1:cardiovascular-poiseuille-radius:v1",
+  "rotation": "usmle-step1-open",
+  "ladderId": "poiseuille-radius",
+  "topics": [
+    "Poiseuille's law",
+    "vascular resistance",
+    "ladder:poiseuille-radius"
+  ],
+  "moduleNodes": [
+    "usmle/step1",
+    "usmle/step1/cardiovascular"
+  ],
+  "questionType": "calculation",
+  "difficulty": "medium",
+  "stem": "During an experiment, an isolated perfused arteriole from a 40-year-old donor is exposed to a vasoconstrictor that reduces the vessel's radius to one-half of its baseline value, while the pressure gradient, blood viscosity, and vessel length are held constant.\n\nAccording to Poiseuille's law, flow through the vessel will decrease to which of the following fractions of baseline?",
+  "options": [
+    {
+      "label": "A",
+      "text": "1/2",
+      "isCorrect": false,
+      "misconception": "Flow is being assumed to vary linearly with radius.",
+      "explanation": "Flow depends on the fourth power of the radius, so halving the radius reduces flow far more than a simple one-half."
+    },
+    {
+      "label": "B",
+      "text": "1/4",
+      "isCorrect": false,
+      "misconception": "A squared rather than fourth-power relationship is being applied.",
+      "explanation": "A radius-squared relationship would give 1/4; Poiseuille's law raises radius to the fourth power, giving a much larger reduction."
+    },
+    {
+      "label": "C",
+      "text": "1/8",
+      "isCorrect": false,
+      "misconception": "A cubic relationship is being applied to the radius term.",
+      "explanation": "Radius cubed would give 1/8; the fourth-power dependence gives (1/2)^4 = 1/16."
+    },
+    {
+      "label": "D",
+      "text": "1/32",
+      "isCorrect": false,
+      "misconception": "A fifth-power exponent is being used.",
+      "explanation": "The exponent on radius in Poiseuille's law is four, not five; the correct fraction is 1/16."
+    },
+    {
+      "label": "E",
+      "text": "1/16",
+      "isCorrect": true,
+      "misconception": "None; (1/2)^4 = 1/16.",
+      "explanation": "In Poiseuille's equation, flow is proportional to the radius raised to the fourth power; halving the radius therefore reduces flow to one-sixteenth, which is why small changes in radius dramatically affect flow."
+    }
+  ],
+  "context": "Learning objective: apply Poiseuille's law. Flow is proportional to radius to the fourth power, so small changes in radius dramatically affect resistance and flow.",
+  "cite": "openstax-anatomy-physiology#vessels-poiseuille-radius",
+  "publicUsmle": {
+    "schemaVersion": 1,
+    "origin": "generated",
+    "itemText": {
+      "licence": "CC-BY-4.0",
+      "attribution": "MD3 contributors"
+    },
+    "evidence": {
+      "kind": "passage",
+      "sourceId": "openstax-anatomy-physiology",
+      "passageId": "vessels-poiseuille-radius",
+      "licence": {
+        "cls": "foss",
+        "id": "cc-by-4.0"
+      }
+    },
+    "media": {
+      "kind": "asset",
+      "assetId": "hemodynamics-v1",
+      "job": "pathway",
+      "showWhen": "after-reveal",
+      "licence": {
+        "cls": "foss",
+        "id": "cc-by-4.0"
+      },
+      "attribution": "MD3 contributors",
+      "contentHash": "sha256:bcd08bd5837d7c8b145ebd1e66511a58c8d05bca8c05a923bc2bebccc478de08"
+    }
+  },
+  "imageUrl": "/figures/usmle/step1/hemodynamics-v1.svg",
+  "imageCaption": "Poiseuille r^4, MAP, venous capacitance, Starling edema, coronary origins."
+}

@@ -1,0 +1,88 @@
+{
+  "id": "bank:usmle-step1:renal-adh-aquaporins:v1",
+  "rotation": "usmle-step1-open",
+  "ladderId": "adh-water-balance",
+  "topics": [
+    "ADH",
+    "aquaporins",
+    "collecting duct",
+    "ladder:adh-water-balance"
+  ],
+  "moduleNodes": [
+    "usmle/step1",
+    "usmle/step1/renal"
+  ],
+  "questionType": "mechanism",
+  "difficulty": "hard",
+  "stem": "A 22-year-old woman with central diabetes insipidus produces large volumes of dilute urine because her posterior pituitary fails to release antidiuretic hormone (ADH).\n\nAt the cellular level, her collecting duct principal cells fail to perform which of the following actions?",
+  "options": [
+    {
+      "label": "A",
+      "text": "Synthesize Na+/K+ ATPase pumps for their basal membranes",
+      "isCorrect": false,
+      "misconception": "Aldosterone's action is being attributed to ADH.",
+      "explanation": "Aldosterone drives principal cells to manufacture sodium channels, potassium channels, and Na+/K+ ATPase pumps; ADH controls aquaporin insertion instead."
+    },
+    {
+      "label": "B",
+      "text": "Secrete hydrogen ions through apical proton pumps",
+      "isCorrect": false,
+      "misconception": "Intercalated-cell acid handling is being attributed to principal cells.",
+      "explanation": "Proton secretion is the work of intercalated cells regulating blood pH; principal cells respond to ADH by inserting aquaporin channels for water recovery."
+    },
+    {
+      "label": "C",
+      "text": "Actively pump sodium from the tubular fluid into the medullary interstitium",
+      "isCorrect": false,
+      "misconception": "The ascending limb's salt extrusion is being assigned to the collecting duct.",
+      "explanation": "Collecting duct water recovery is osmotic and passive through aquaporins; ADH does not switch on salt pumps — it inserts water channels."
+    },
+    {
+      "label": "D",
+      "text": "Insert aquaporin water channels into their apical membranes",
+      "isCorrect": true,
+      "misconception": "None; ADH's principal action is apical aquaporin insertion, which her cells cannot mount.",
+      "explanation": "Stimulated by ADH, aquaporin channels are inserted into the apical membrane of principal cells lining the collecting ducts; with less ADH, fewer channels are inserted and less water is recovered, producing dilute urine."
+    },
+    {
+      "label": "E",
+      "text": "Release renin into the peritubular capillaries",
+      "isCorrect": false,
+      "misconception": "A juxtaglomerular-cell hormone is being assigned to the collecting duct.",
+      "explanation": "Renin comes from the juxtaglomerular cells of the afferent arteriole; the ADH-dependent step in water balance is apical aquaporin insertion by principal cells."
+    }
+  ],
+  "context": "Learning objective: state ADH's collecting-duct mechanism. ADH inserts aquaporins into principal-cell apical membranes, increasing water permeability; without ADH, urine stays dilute.",
+  "cite": "openstax-anatomy-physiology#renal-adh-aquaporins",
+  "publicUsmle": {
+    "schemaVersion": 1,
+    "origin": "generated",
+    "itemText": {
+      "licence": "CC-BY-4.0",
+      "attribution": "MD3 contributors"
+    },
+    "evidence": {
+      "kind": "passage",
+      "sourceId": "openstax-anatomy-physiology",
+      "passageId": "renal-adh-aquaporins",
+      "licence": {
+        "cls": "foss",
+        "id": "cc-by-4.0"
+      }
+    },
+    "media": {
+      "kind": "asset",
+      "assetId": "nephron-overview-v1",
+      "job": "anatomy",
+      "showWhen": "after-reveal",
+      "licence": {
+        "cls": "foss",
+        "id": "cc-by-4.0"
+      },
+      "attribution": "MD3 contributors",
+      "contentHash": "sha256:594f7ddfca37a265ea925ffa5348bce222990740b857a75cf8669f0ba5f715fa"
+    }
+  },
+  "imageUrl": "/figures/usmle/step1/nephron-overview-v1.svg",
+  "imageCaption": "Nephron segments: filtration, PCT, loop, DCT, collecting duct (ADH aquaporins)."
+}

@@ -1,0 +1,88 @@
+{
+  "id": "bank:usmle-step1:he-hemoglobin-cooperative-binding:v1",
+  "rotation": "usmle-step1-open",
+  "ladderId": "oxygen-hemoglobin-delivery",
+  "topics": [
+    "hemoglobin",
+    "cooperative binding",
+    "oxygen transport",
+    "ladder:oxygen-hemoglobin-delivery"
+  ],
+  "moduleNodes": [
+    "usmle/step1",
+    "usmle/step1/hematology"
+  ],
+  "questionType": "mechanism",
+  "difficulty": "medium",
+  "stem": "A 22-year-old medical student is studying oxygen uptake by purified hemoglobin in a biochemistry laboratory. As oxygen is added stepwise and binding is measured, the first oxygen molecule binds and each subsequent molecule binds more readily.\n\nThis pattern is best explained by which of the following?",
+  "options": [
+    {
+      "label": "A",
+      "text": "Progressive oxidation of iron at each heme center",
+      "isCorrect": false,
+      "misconception": "Oxygen binding is being treated as iron oxidation.",
+      "explanation": "The iron in heme remains ferrous during oxygen binding; the cooperative pattern reflects subunit conformational change, not a change in iron's oxidation state."
+    },
+    {
+      "label": "B",
+      "text": "Addition of extra globin subunits to the molecule",
+      "isCorrect": false,
+      "misconception": "Subunit count is being treated as variable.",
+      "explanation": "Hemoglobin always contains four subunits; cooperativity comes from conformational change among fixed subunits, not recruitment of new ones."
+    },
+    {
+      "label": "C",
+      "text": "A conformational change among the hemoglobin subunits",
+      "isCorrect": true,
+      "misconception": "None; cooperativity arises from subunit conformational shifts.",
+      "explanation": "Binding of the first oxygen molecule causes a conformational change in hemoglobin that allows the second molecule to bind more readily, and each successive binding further facilitates the next."
+    },
+    {
+      "label": "D",
+      "text": "Conversion of hemoglobin into myoglobin in solution",
+      "isCorrect": false,
+      "misconception": "Two distinct oxygen-binding proteins are being conflated.",
+      "explanation": "Myoglobin is a separate single-subunit muscle protein with hyperbolic, not cooperative, binding; hemoglobin does not convert into it."
+    },
+    {
+      "label": "E",
+      "text": "Saturation of bicarbonate buffer in the solution",
+      "isCorrect": false,
+      "misconception": "Carbon dioxide carriage is being linked to oxygen cooperativity.",
+      "explanation": "Bicarbonate carries carbon dioxide and does not govern oxygen binding; the sigmoid pattern comes from hemoglobin's conformational response to bound oxygen."
+    }
+  ],
+  "context": "Learning objective: explain cooperative binding. Hemoglobin has four subunits, each with an iron-bearing heme. The first bound oxygen triggers a conformational change that raises the affinity of the remaining sites, producing the sigmoid oxygen-hemoglobin dissociation curve.",
+  "cite": "openstax-anatomy-physiology#he-hemoglobin-cooperative-binding",
+  "publicUsmle": {
+    "schemaVersion": 1,
+    "origin": "generated",
+    "itemText": {
+      "licence": "CC-BY-4.0",
+      "attribution": "MD3 contributors"
+    },
+    "evidence": {
+      "kind": "passage",
+      "sourceId": "openstax-anatomy-physiology",
+      "passageId": "he-hemoglobin-cooperative-binding",
+      "licence": {
+        "cls": "foss",
+        "id": "cc-by-4.0"
+      }
+    },
+    "media": {
+      "kind": "asset",
+      "assetId": "hb-o2-curve-v1",
+      "job": "pathway",
+      "showWhen": "after-reveal",
+      "licence": {
+        "cls": "foss",
+        "id": "cc-by-4.0"
+      },
+      "attribution": "MD3 contributors",
+      "contentHash": "sha256:e14fdbba9016f547cb21cefdfc45f7b964c0550f0932e60dbff9d77cdef255a8"
+    }
+  },
+  "imageUrl": "/figures/usmle/step1/hb-o2-curve-v1.svg",
+  "imageCaption": "Sigmoid Hb-O2 curve: cooperativity; right shift unloads O2 (Bohr / 2,3-BPG / temp)."
+}

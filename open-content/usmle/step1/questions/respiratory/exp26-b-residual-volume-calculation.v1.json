@@ -1,0 +1,71 @@
+{
+  "id": "bank:usmle-step1:exp26-b-residual-volume-calculation:v1",
+  "rotation": "usmle-step1-open",
+  "topics": [
+    "respiratory",
+    "residual-volume-calculation"
+  ],
+  "moduleNodes": [
+    "usmle/step1",
+    "usmle/step1/respiratory"
+  ],
+  "questionType": "calculation",
+  "difficulty": "easy",
+  "stem": "A 45-year-old patient completes lung-volume testing. The volume present after maximal inspiration is 6.0 L. The patient can then expel 4.5 L during a maximal expiration. Which of the following volumes remains in the lungs at the end of that effort?",
+  "options": [
+    {
+      "text": "0.5 L",
+      "explanation": "This would require an expelled volume of 5.5 L from the stated starting volume. The measured maximal expiration removes 4.5 L, leaving a larger residual.",
+      "isCorrect": false,
+      "label": "A",
+      "misconception": "Assumes a larger maximally expelled volume than the lung-volume test actually measured."
+    },
+    {
+      "text": "1.5 L",
+      "explanation": "The difference between total lung capacity and vital capacity is residual volume. Subtracting the maximally expelled 4.5 L from the initial 6.0 L leaves 1.5 L.",
+      "isCorrect": true,
+      "label": "B",
+      "misconception": "No misconception: residual volume is the starting maximal lung volume minus the maximally expelled volume."
+    },
+    {
+      "text": "4.5 L",
+      "explanation": "This is the volume expelled between maximal inspiration and maximal expiration. The question asks for the volume that remains after that maximal expiratory effort.",
+      "isCorrect": false,
+      "label": "C",
+      "misconception": "Confuses the volume expelled during maximal expiration with the volume left in the lungs."
+    },
+    {
+      "text": "6.0 L",
+      "explanation": "This is the total volume present at maximal inspiration. Using it as the residual ignores the 4.5 L removed during the subsequent maximal expiration.",
+      "isCorrect": false,
+      "label": "D",
+      "misconception": "Uses the maximal inspiratory volume as the residual and ignores the subsequent measured expiration."
+    },
+    {
+      "text": "3.0 L",
+      "explanation": "This assumes that half of the starting lung volume remains. The supplied measurement instead specifies 4.5 L expelled, allowing the residual to be calculated directly.",
+      "isCorrect": false,
+      "label": "E",
+      "misconception": "Assumes that half the starting volume remains instead of subtracting the measured expelled volume."
+    }
+  ],
+  "context": "Learning objective: Calculate residual volume as the portion of total lung capacity remaining after a maximal vital-capacity maneuver. The difference between total lung capacity and vital capacity is residual volume. Subtracting the maximally expelled 4.5 L from the initial 6.0 L leaves 1.5 L.",
+  "cite": "openstax-ap1-breathing#residual-volume",
+  "publicUsmle": {
+    "schemaVersion": 1,
+    "origin": "generated",
+    "itemText": {
+      "licence": "CC-BY-4.0",
+      "attribution": "MD3 contributors"
+    },
+    "evidence": {
+      "kind": "passage",
+      "sourceId": "openstax-ap1-breathing",
+      "passageId": "residual-volume",
+      "licence": {
+        "cls": "foss",
+        "id": "cc-by-4.0"
+      }
+    }
+  }
+}

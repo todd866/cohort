@@ -1,0 +1,86 @@
+{
+  "id": "bank:usmle-step1:ms-cross-bridge-power-stroke:v1",
+  "rotation": "usmle-step1-open",
+  "topics": [
+    "cross-bridge cycle",
+    "ATP",
+    "rigor mortis"
+  ],
+  "moduleNodes": [
+    "usmle/step1",
+    "usmle/step1/musculoskeletal"
+  ],
+  "questionType": "mechanism",
+  "difficulty": "medium",
+  "stem": "Several hours after death, a 55-year-old man's muscles become stiff and resist passive movement.\n\nAt the molecular level, this stiffness results from the absence of ATP preventing which of the following steps?",
+  "options": [
+    {
+      "label": "A",
+      "text": "Hydrolysis of ATP by the myosin head",
+      "isCorrect": false,
+      "misconception": "The step that cocks the head is being cast as the step that releases it.",
+      "explanation": "Hydrolysis returns the myosin head to its cocked, high-energy position; it requires ATP as substrate but is not the step whose loss locks the cross-bridge in place."
+    },
+    {
+      "label": "B",
+      "text": "Release of calcium from the sarcoplasmic reticulum",
+      "isCorrect": false,
+      "misconception": "The trigger for contraction is being cast as the cause of the persistent stiffness.",
+      "explanation": "Calcium release initiates contraction by exposing actin's binding sites; the rigidity after death comes from cross-bridges that cannot detach without ATP."
+    },
+    {
+      "label": "C",
+      "text": "Detachment of myosin heads from the actin filaments",
+      "isCorrect": true,
+      "misconception": "None; ATP binding is what releases the cross-bridge.",
+      "explanation": "A new molecule of ATP attaching to the myosin head causes the cross-bridge to detach; without ATP, actin and myosin remain locked together and the muscle stays rigid."
+    },
+    {
+      "label": "D",
+      "text": "Pivoting of the myosin head during the power stroke",
+      "isCorrect": false,
+      "misconception": "The force-generating step is being cast as the ATP-dependent release.",
+      "explanation": "The power stroke is driven by phosphate release from the cocked head, pulling actin toward the M-line; it precedes and does not require the ATP binding that frees the cross-bridge."
+    },
+    {
+      "label": "E",
+      "text": "Exposure of binding sites by troponin and tropomyosin",
+      "isCorrect": false,
+      "misconception": "The unblocking of actin is being cast as the ATP-dependent step.",
+      "explanation": "Troponin and tropomyosin shift off actin's sites in response to calcium, not ATP; loss of this step would prevent contraction, not lock an existing one."
+    }
+  ],
+  "context": "Learning objective: ATP's role in cross-bridge release. The power stroke pulls actin toward the M-line after Pi release; a NEW ATP then binds the myosin head to detach the cross-bridge, and hydrolysis re-cocks it. Without ATP (rigor mortis), bridges stay locked and the muscle is stiff.",
+  "cite": "openstax-anatomy-physiology#ms-cross-bridge-power-stroke",
+  "publicUsmle": {
+    "schemaVersion": 1,
+    "origin": "generated",
+    "itemText": {
+      "licence": "CC-BY-4.0",
+      "attribution": "MD3 contributors"
+    },
+    "evidence": {
+      "kind": "passage",
+      "sourceId": "openstax-anatomy-physiology",
+      "passageId": "ms-cross-bridge-power-stroke",
+      "licence": {
+        "cls": "foss",
+        "id": "cc-by-4.0"
+      }
+    },
+    "media": {
+      "kind": "asset",
+      "assetId": "ec-coupling-v1",
+      "job": "mechanism",
+      "showWhen": "after-reveal",
+      "licence": {
+        "cls": "foss",
+        "id": "cc-by-4.0"
+      },
+      "attribution": "MD3 contributors",
+      "contentHash": "sha256:1e10a90aa480101d834aa52b19989daed4c0ef1e215bc584b5320cecb423e2f7"
+    }
+  },
+  "imageUrl": "/figures/usmle/step1/ec-coupling-v1.svg",
+  "imageCaption": "EC coupling: T-tubule AP -> SR Ca2+ -> troponin -> cross-bridge; ATP for detach and Ca2+ pump."
+}

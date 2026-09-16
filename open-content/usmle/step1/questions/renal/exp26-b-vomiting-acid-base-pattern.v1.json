@@ -1,0 +1,71 @@
+{
+  "id": "bank:usmle-step1:exp26-b-vomiting-acid-base-pattern:v1",
+  "rotation": "usmle-step1-open",
+  "topics": [
+    "renal",
+    "vomiting-acid-base-pattern"
+  ],
+  "moduleNodes": [
+    "usmle/step1",
+    "usmle/step1/renal"
+  ],
+  "questionType": "diagnosis",
+  "difficulty": "easy",
+  "stem": "A 33-year-old patient has repeated vomiting. Testing shows a blood pH of 7.51 and an elevated bicarbonate concentration. The gastric losses precede the laboratory changes. Which of the following best identifies the primary disturbance in this sequence?",
+  "options": [
+    {
+      "text": "Metabolic acidosis following intestinal bicarbonate loss",
+      "explanation": "Intestinal bicarbonate loss produces an acidic pattern with lower bicarbonate. This patient instead has gastric losses, elevated pH, and a higher bicarbonate concentration.",
+      "isCorrect": false,
+      "label": "A",
+      "misconception": "Applies intestinal bicarbonate-loss acidosis to gastric losses with elevated pH and bicarbonate."
+    },
+    {
+      "text": "Respiratory alkalosis following carbon dioxide loss",
+      "explanation": "A primary fall in carbon dioxide would establish a respiratory process. The history identifies gastric acid loss before the alkalotic pattern, supporting a metabolic origin.",
+      "isCorrect": false,
+      "label": "B",
+      "misconception": "Assumes a primary respiratory origin despite gastric acid loss preceding the alkalotic findings."
+    },
+    {
+      "text": "Respiratory acidosis following carbon dioxide retention",
+      "explanation": "Carbon dioxide retention shifts the blood toward acidosis. It cannot explain the primary high-pH, high-bicarbonate disturbance following loss of gastric hydrochloric acid.",
+      "isCorrect": false,
+      "label": "C",
+      "misconception": "Uses carbon dioxide retention and respiratory acidosis to explain a primary high-pH disturbance."
+    },
+    {
+      "text": "Metabolic acidosis following increased gastric acid stores",
+      "explanation": "The patient is losing gastric acid rather than accumulating it. The measured pH is alkaline, which also contradicts the proposed primary metabolic acidosis.",
+      "isCorrect": false,
+      "label": "D",
+      "misconception": "Assumes gastric acid accumulation and metabolic acidosis despite measured acid loss and an alkaline pH."
+    },
+    {
+      "text": "Metabolic alkalosis following gastric acid loss",
+      "explanation": "Vomiting removes gastric hydrochloric acid. The elevated blood pH and bicarbonate concentration fit the resulting primary metabolic alkalosis rather than a primary respiratory disturbance.",
+      "isCorrect": true,
+      "label": "E",
+      "misconception": "No misconception: gastric acid loss followed by elevated pH and bicarbonate supports metabolic alkalosis."
+    }
+  ],
+  "context": "Learning objective: Identify the metabolic alkalosis produced by gastric hydrochloric-acid loss. Vomiting removes gastric hydrochloric acid. The elevated blood pH and bicarbonate concentration fit the resulting primary metabolic alkalosis rather than a primary respiratory disturbance.",
+  "cite": "openstax-ap1-acid-base-disorders#vomiting-alkalosis",
+  "publicUsmle": {
+    "schemaVersion": 1,
+    "origin": "generated",
+    "itemText": {
+      "licence": "CC-BY-4.0",
+      "attribution": "MD3 contributors"
+    },
+    "evidence": {
+      "kind": "passage",
+      "sourceId": "openstax-ap1-acid-base-disorders",
+      "passageId": "vomiting-alkalosis",
+      "licence": {
+        "cls": "foss",
+        "id": "cc-by-4.0"
+      }
+    }
+  }
+}

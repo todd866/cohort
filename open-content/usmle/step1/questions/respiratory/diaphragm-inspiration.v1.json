@@ -1,0 +1,87 @@
+{
+  "id": "bank:usmle-step1:respiratory-diaphragm-inspiration:v1",
+  "rotation": "usmle-step1-open",
+  "ladderId": "respiratory-mechanics",
+  "topics": [
+    "ventilation mechanics",
+    "diaphragm",
+    "ladder:respiratory-mechanics"
+  ],
+  "moduleNodes": [
+    "usmle/step1",
+    "usmle/step1/respiratory"
+  ],
+  "questionType": "mechanism",
+  "difficulty": "medium",
+  "stem": "A 45-year-old man develops shortness of breath after neck surgery during which the phrenic nerve was injured. Examination shows paradoxical upward movement of the affected hemidiaphragm during inspiration, and air entry into the ipsilateral lung is markedly reduced.\n\nLoss of which of the following events most directly accounts for this reduction in ventilation?",
+  "options": [
+    {
+      "label": "A",
+      "text": "Contraction of the abdominal wall muscles forcing the diaphragm upward",
+      "isCorrect": false,
+      "misconception": "A forced-expiration mechanism is being credited with moving air inward.",
+      "explanation": "Abdominal muscle contraction pushes the diaphragm upward and drives air out during forced expiration; it opposes rather than supports inspiration."
+    },
+    {
+      "label": "B",
+      "text": "Expansion of the pleural cavities with a fall in their internal pressure",
+      "isCorrect": true,
+      "misconception": "None; diaphragmatic contraction enlarges the pleural cavities and lowers their pressure, drawing air in.",
+      "explanation": "When the diaphragm contracts and flattens, the volume inside the pleural cavities increases, which decreases the pressure within them; as a result, air flows into the lungs."
+    },
+    {
+      "label": "C",
+      "text": "Relaxation of the external intercostal muscles narrowing the rib cage",
+      "isCorrect": false,
+      "misconception": "A passive-expiration event is being assigned to the inspiratory phase.",
+      "explanation": "Relaxation of the inspiratory muscles allows recoil during expiration; reduced air entry reflects loss of active expansion, not of a relaxation step."
+    },
+    {
+      "label": "D",
+      "text": "An increase in intra-alveolar pressure above atmospheric pressure",
+      "isCorrect": false,
+      "misconception": "The pressure gradient is being described in the expiratory direction.",
+      "explanation": "Air flows from higher to lower pressure; inspiration requires intra-alveolar pressure to fall below atmospheric pressure, not rise above it."
+    },
+    {
+      "label": "E",
+      "text": "Active recoil of the elastic fibers of the lung parenchyma",
+      "isCorrect": false,
+      "misconception": "Elastic recoil, which assists expiration, is being proposed as an inspiratory driver.",
+      "explanation": "Elastic recoil returns the lung toward its resting volume during expiration; inspiration is powered by muscular expansion of the thorax."
+    }
+  ],
+  "context": "Learning objective: explain inspiration mechanically. Diaphragmatic contraction enlarges the pleural cavities and lowers their pressure, and air flows from higher to lower pressure into the lungs.",
+  "cite": "openstax-anatomy-physiology#resp-diaphragm-inspiration",
+  "publicUsmle": {
+    "schemaVersion": 1,
+    "origin": "generated",
+    "itemText": {
+      "licence": "CC-BY-4.0",
+      "attribution": "MD3 contributors"
+    },
+    "evidence": {
+      "kind": "passage",
+      "sourceId": "openstax-anatomy-physiology",
+      "passageId": "resp-diaphragm-inspiration",
+      "licence": {
+        "cls": "foss",
+        "id": "cc-by-4.0"
+      }
+    },
+    "media": {
+      "kind": "asset",
+      "assetId": "lung-mechanics-v1",
+      "job": "pathway",
+      "showWhen": "after-reveal",
+      "licence": {
+        "cls": "foss",
+        "id": "cc-by-4.0"
+      },
+      "attribution": "MD3 contributors",
+      "contentHash": "sha256:2eaec9c60db53463223535515210fe6ff2a06557ce339beb1804de9350056fb2"
+    }
+  },
+  "imageUrl": "/figures/usmle/step1/lung-mechanics-v1.svg",
+  "imageCaption": "Inspiration/Boyle, vital capacity, compliance, surfactant/NRDS."
+}

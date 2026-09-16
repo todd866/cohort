@@ -1,0 +1,35 @@
+{
+  "figureId": "vwf-bridge-carrier-model",
+  "tool": "built-in image_gen",
+  "model": null,
+  "referenceAssetIds": [],
+  "externalReferenceImages": [],
+  "prompt": "Original educational conceptual illustration, landscape 3:2. Warm ivory paper, sophisticated hand-painted gouache/watercolour, confident fine brown outlines, navy lettering, restrained teal, coral and amber. Editorial science illustration with spacious composition and large legible labels. The explanatory structure must carry the meaning visually: molecules, objects, geometry or flow; never paragraphs in boxes. No organs, regional anatomy, teeth or joint cutaways, tissue layers, invented histology, diagnostic photographs, radiographs or patient data. All symbols are explicitly conceptual. Footer: 'Conceptual teaching model • Not to scale'. Title 'von Willebrand factor: bridge and carrier'. Exactly two spacious molecular compositions on bare ivory paper. LEFT titled 'Adhesion': one gold braided collagen strand FLOATS freely near bottom, with no tissue underneath. Two long teal vWF bead chains rise from and physically TOUCH that gold strand, then physically TOUCH the bottom of a purple platelet symbol floating above. Label gold 'Exposed collagen', teal 'vWF', purple 'Platelet'. RIGHT titled 'Carrier': one teal vWF chain cradles a small distinctly coral round molecule attached to it. Labels 'vWF' and 'Factor VIII'; short line 'Binds and stabilises'. No blood vessel, wall, endothelium, tissue layers or organelles. The attachment relationships themselves are the visual lesson. Bottom note 'Molecular shapes simplified'.",
+  "clinicalSources": [
+    {
+      "title": "NHLBI — Full report on von Willebrand disease",
+      "url": "https://www.nhlbi.nih.gov/health-topics/diagnosis-evaluation-and-management-of-von-willebrand-disease/von-willebrand-disease-full-report"
+    }
+  ],
+  "teaching": {
+    "question": "Which two haemostatic roles explain why von Willebrand factor deficiency can cause bleeding?",
+    "answer": "vWF supports platelet adhesion to exposed collagen and binds factor VIII, protecting it from clearance.",
+    "imageRole": "after-reveal"
+  },
+  "title": "von Willebrand factor: bridge and carrier",
+  "caption": "von Willebrand factor links platelets to exposed collagen at injury and binds factor VIII, protecting it in the circulation.",
+  "alt": "Two tissue-free molecular arrangements show vWF bridging collagen to a platelet and carrying a distinct factor VIII molecule.",
+  "review": {
+    "status": "pending-independent-qa",
+    "method": "agent-visual-and-source-review",
+    "notes": "Pixel-to-specification review: gold collagen is an isolated floating strand without any tissue or endothelial layer. Two teal vWF chains physically bridge it to the purple platelet. In the separate carrier panel, coral factor VIII contacts the teal chain. Labels terminate on the correct objects and molecular simplification is explicit.",
+    "structure": {
+      "kind": "conceptual",
+      "status": "verified",
+      "specificationFiles": [
+        "scaffolds/vwf-bridge-carrier-model.json"
+      ],
+      "notes": "Pixel-to-specification review: gold collagen is an isolated floating strand without any tissue or endothelial layer. Two teal vWF chains physically bridge it to the purple platelet. In the separate carrier panel, coral factor VIII contacts the teal chain. Labels terminate on the correct objects and molecular simplification is explicit."
+    }
+  }
+}

@@ -1,0 +1,84 @@
+{
+  "id": "bank:usmle-step1:micro-disease-definition:v1",
+  "rotation": "usmle-step1-open",
+  "topics": [
+    "disease"
+  ],
+  "moduleNodes": [
+    "usmle/step1",
+    "usmle/step1/microbiology"
+  ],
+  "questionType": "mechanism",
+  "difficulty": "easy",
+  "stem": "OpenStax Microbiology defines disease as which general state of the body?",
+  "options": [
+    {
+      "label": "A",
+      "text": "Only an absolute risk reduction of zero",
+      "isCorrect": false,
+      "misconception": "Epi distractor — does not match the cited teaching point.",
+      "explanation": "Wrong domain; see the cited source passage for detail."
+    },
+    {
+      "label": "B",
+      "text": "Only a positive screening test without symptoms",
+      "isCorrect": false,
+      "misconception": "Test positivity alone is not the definition.",
+      "explanation": "Too narrow; see the cited source passage for detail."
+    },
+    {
+      "label": "C",
+      "text": "Only a null hypothesis that was rejected",
+      "isCorrect": false,
+      "misconception": "Stats distractor — does not match the cited teaching point.",
+      "explanation": "Wrong domain; see the cited source passage for detail."
+    },
+    {
+      "label": "D",
+      "text": "Damage or impairment of normal structure or function",
+      "isCorrect": true,
+      "misconception": "None; disease = damaged/impaired structure or function.",
+      "explanation": "OpenStax: disease damages/impairs normal structure or functions."
+    },
+    {
+      "label": "E",
+      "text": "Only a prescription refill interval",
+      "isCorrect": false,
+      "misconception": "Admin distractor — does not match the cited teaching point.",
+      "explanation": "Wrong domain; see the cited source passage for detail."
+    }
+  ],
+  "context": "Learning objective: disease definition.",
+  "cite": "openstax-microbiology#disease-definition",
+  "publicUsmle": {
+    "schemaVersion": 1,
+    "origin": "generated",
+    "itemText": {
+      "licence": "CC-BY-4.0",
+      "attribution": "MD3 contributors"
+    },
+    "evidence": {
+      "kind": "passage",
+      "sourceId": "openstax-microbiology",
+      "passageId": "disease-definition",
+      "licence": {
+        "cls": "foss",
+        "id": "cc-by-4.0"
+      }
+    },
+    "media": {
+      "kind": "asset",
+      "assetId": "micro-pathogen-virulence-v1",
+      "job": "compare-table",
+      "showWhen": "after-reveal",
+      "licence": {
+        "cls": "foss",
+        "id": "cc-by-4.0"
+      },
+      "attribution": "MD3 contributors",
+      "contentHash": "sha256:e0ca8dcce5538b15d4a9973d8a6934fc8199d41e7059a4d8f0059cc1ec78a22e"
+    }
+  },
+  "imageUrl": "/figures/usmle/step1/micro-pathogen-virulence-v1.svg",
+  "imageCaption": "Pathogenicity vs virulence, primary vs opportunistic, lipid A, capsule, measles/meningococcus/pneumococcus."
+}

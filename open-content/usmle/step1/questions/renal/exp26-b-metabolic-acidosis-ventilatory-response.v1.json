@@ -1,0 +1,71 @@
+{
+  "id": "bank:usmle-step1:exp26-b-metabolic-acidosis-ventilatory-response:v1",
+  "rotation": "usmle-step1-open",
+  "topics": [
+    "renal",
+    "metabolic-acidosis-ventilatory-response"
+  ],
+  "moduleNodes": [
+    "usmle/step1",
+    "usmle/step1/renal"
+  ],
+  "questionType": "interpretation",
+  "difficulty": "medium",
+  "stem": "A patient develops a primary fall in bicarbonate after gastrointestinal losses. During the next several minutes, respiratory compensation begins. The investigators want to distinguish the compensatory response from the initiating disturbance. Which of the following paired changes is expected?",
+  "options": [
+    {
+      "text": "Respiratory rate increases; carbon dioxide elimination increases",
+      "explanation": "The primary abnormality is bicarbonate loss. Respiratory compensation increases breathing and carbon dioxide elimination, countering the acidic shift rather than producing the initial metabolic disturbance.",
+      "isCorrect": true,
+      "label": "A",
+      "misconception": "No misconception: the compensatory respiratory response increases breathing and carbon dioxide removal after bicarbonate loss."
+    },
+    {
+      "text": "Respiratory rate decreases; carbon dioxide elimination decreases",
+      "explanation": "This pattern conserves carbon dioxide and fits the direction of compensation for metabolic alkalosis. It would oppose the required response to the stated bicarbonate-loss acidosis.",
+      "isCorrect": false,
+      "label": "B",
+      "misconception": "Applies carbon dioxide conservation, a compensatory direction for alkalosis, to bicarbonate-loss acidosis."
+    },
+    {
+      "text": "Respiratory rate increases; carbon dioxide elimination decreases",
+      "explanation": "The breathing-rate change is appropriate, but the elimination direction is reversed. The compensatory increase in respiratory rate is linked to increased carbon dioxide removal.",
+      "isCorrect": false,
+      "label": "C",
+      "misconception": "Pairs the compensatory increase in breathing with a reversed carbon dioxide elimination response."
+    },
+    {
+      "text": "Respiratory rate decreases; carbon dioxide elimination increases",
+      "explanation": "This combines opposite directions from the compensatory pathway provided. The expected response increases respiratory rate to increase carbon dioxide elimination during metabolic acidosis.",
+      "isCorrect": false,
+      "label": "D",
+      "misconception": "Pairs increased carbon dioxide removal with reduced rather than increased compensatory breathing."
+    },
+    {
+      "text": "Respiratory rate stays stable; carbon dioxide elimination stays stable",
+      "explanation": "An unchanged respiratory pattern does not describe the compensation that the stem says has begun. The expected early response increases breathing and carbon dioxide elimination.",
+      "isCorrect": false,
+      "label": "E",
+      "misconception": "Describes no respiratory response despite the stem specifying that respiratory compensation has begun."
+    }
+  ],
+  "context": "Learning objective: Distinguish early respiratory compensation from the primary gastrointestinal cause of metabolic acidosis. The primary abnormality is bicarbonate loss. Respiratory compensation increases breathing and carbon dioxide elimination, countering the acidic shift rather than producing the initial metabolic disturbance.",
+  "cite": "openstax-ap1-acid-base-disorders#respiratory-compensation",
+  "publicUsmle": {
+    "schemaVersion": 1,
+    "origin": "generated",
+    "itemText": {
+      "licence": "CC-BY-4.0",
+      "attribution": "MD3 contributors"
+    },
+    "evidence": {
+      "kind": "passage",
+      "sourceId": "openstax-ap1-acid-base-disorders",
+      "passageId": "respiratory-compensation",
+      "licence": {
+        "cls": "foss",
+        "id": "cc-by-4.0"
+      }
+    }
+  }
+}

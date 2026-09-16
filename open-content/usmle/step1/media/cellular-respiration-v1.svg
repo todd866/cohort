@@ -1,0 +1,30 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 400" role="img" aria-labelledby="t d">
+  <title id="t">Cellular respiration overview</title>
+  <desc id="d">Glycolysis to pyruvate, mitochondrial acetyl-CoA, citric cycle carriers, ETC proton pumping, ATP synthase, oxygen as final acceptor, fermentation NAD regeneration.</desc>
+  <rect width="720" height="400" fill="#ffffff"/>
+  <text x="360" y="26" text-anchor="middle" font-family="Helvetica,Arial,sans-serif" font-size="15" font-weight="700" fill="#111">Cellular respiration overview</text>
+  <defs>
+    <marker id="arr" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto">
+      <path d="M0,0 L10,5 L0,10 z" fill="#1d4ed8"/>
+    </marker>
+  </defs>
+  <rect x="40" y="55" width="140" height="70" rx="6" fill="#dbeafe" stroke="#111" stroke-width="1.5"/>
+  <text x="110.0" y="88" text-anchor="middle" font-family="Helvetica,Arial,sans-serif" font-size="11" font-weight="700" fill="#111">Glucose</text>
+  <text x="110.0" y="102" text-anchor="middle" font-family="Helvetica,Arial,sans-serif" font-size="10" fill="#333">cytosol</text>  <rect x="220" y="55" width="140" height="70" rx="6" fill="#fef3c7" stroke="#111" stroke-width="1.5"/>
+  <text x="290.0" y="88" text-anchor="middle" font-family="Helvetica,Arial,sans-serif" font-size="11" font-weight="700" fill="#111">Glycolysis</text>
+  <text x="290.0" y="102" text-anchor="middle" font-family="Helvetica,Arial,sans-serif" font-size="10" fill="#333">2 pyruvate; ATP/NADH</text>  <rect x="400" y="55" width="140" height="70" rx="6" fill="#d1fae5" stroke="#111" stroke-width="1.5"/>
+  <text x="470.0" y="88" text-anchor="middle" font-family="Helvetica,Arial,sans-serif" font-size="11" font-weight="700" fill="#111">Mitochondria</text>
+  <text x="470.0" y="102" text-anchor="middle" font-family="Helvetica,Arial,sans-serif" font-size="10" fill="#333">pyruvate in</text>  <rect x="560" y="55" width="120" height="70" rx="6" fill="#fce7f3" stroke="#111" stroke-width="1.5"/>
+  <text x="620.0" y="88" text-anchor="middle" font-family="Helvetica,Arial,sans-serif" font-size="11" font-weight="700" fill="#111">Acetyl-CoA</text>
+  <text x="620.0" y="102" text-anchor="middle" font-family="Helvetica,Arial,sans-serif" font-size="10" fill="#333">PDH</text>  <line x1="180" y1="90" x2="220" y2="90" stroke="#1d4ed8" stroke-width="2" marker-end="url(#arr)"/>  <line x1="360" y1="90" x2="400" y2="90" stroke="#1d4ed8" stroke-width="2" marker-end="url(#arr)"/>  <line x1="540" y1="90" x2="560" y2="90" stroke="#1d4ed8" stroke-width="2" marker-end="url(#arr)"/>  <rect x="40" y="160" width="200" height="80" rx="6" fill="#fee2e2" stroke="#111" stroke-width="1.5"/>
+  <text x="140.0" y="198" text-anchor="middle" font-family="Helvetica,Arial,sans-serif" font-size="11" font-weight="700" fill="#111">Citric acid cycle</text>
+  <text x="140.0" y="212" text-anchor="middle" font-family="Helvetica,Arial,sans-serif" font-size="10" fill="#333">3 NADH + 1 FADH2 / turn</text>  <rect x="280" y="160" width="200" height="80" rx="6" fill="#dbeafe" stroke="#111" stroke-width="1.5"/>
+  <text x="380.0" y="198" text-anchor="middle" font-family="Helvetica,Arial,sans-serif" font-size="11" font-weight="700" fill="#111">ETC pumps H+</text>
+  <text x="380.0" y="212" text-anchor="middle" font-family="Helvetica,Arial,sans-serif" font-size="10" fill="#333">matrix -> IMS</text>  <rect x="520" y="160" width="160" height="80" rx="6" fill="#fef3c7" stroke="#111" stroke-width="1.5"/>
+  <text x="600.0" y="198" text-anchor="middle" font-family="Helvetica,Arial,sans-serif" font-size="11" font-weight="700" fill="#111">ATP synthase</text>
+  <text x="600.0" y="212" text-anchor="middle" font-family="Helvetica,Arial,sans-serif" font-size="10" fill="#333">H+ current -> ATP</text>  <line x1="240" y1="200" x2="280" y2="200" stroke="#1d4ed8" stroke-width="2" marker-end="url(#arr)"/>  <line x1="480" y1="200" x2="520" y2="200" stroke="#1d4ed8" stroke-width="2" marker-end="url(#arr)"/>  <rect x="40" y="280" width="300" height="80" rx="6" fill="#d1fae5" stroke="#111" stroke-width="1.5"/>
+  <text x="190.0" y="318" text-anchor="middle" font-family="Helvetica,Arial,sans-serif" font-size="11" font-weight="700" fill="#111">O2 final e- acceptor</text>
+  <text x="190.0" y="332" text-anchor="middle" font-family="Helvetica,Arial,sans-serif" font-size="10" fill="#333">aerobic</text>  <rect x="380" y="280" width="300" height="80" rx="6" fill="#e5e7eb" stroke="#111" stroke-width="1.5"/>
+  <text x="530.0" y="318" text-anchor="middle" font-family="Helvetica,Arial,sans-serif" font-size="11" font-weight="700" fill="#111">No O2: ferment</text>
+  <text x="530.0" y="332" text-anchor="middle" font-family="Helvetica,Arial,sans-serif" font-size="10" fill="#333">NADH -> NAD+ (LDH)</text>
+</svg>

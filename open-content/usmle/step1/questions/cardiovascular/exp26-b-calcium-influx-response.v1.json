@@ -1,0 +1,72 @@
+{
+  "id": "bank:usmle-step1:exp26-b-calcium-influx-response:v1",
+  "rotation": "usmle-step1-open",
+  "topics": [
+    "cardiovascular",
+    "calcium-influx-response",
+    "pharmacology"
+  ],
+  "moduleNodes": [
+    "usmle/step1",
+    "usmle/step1/cardiovascular"
+  ],
+  "questionType": "mechanism",
+  "difficulty": "medium",
+  "stem": "Investigators expose cardiac myocytes to isoproterenol and observe greater contraction strength. In a second preparation, they prevent the drug-induced rise in calcium entry while matching the other experimental conditions. Which of the following best predicts the second preparation’s response?",
+  "options": [
+    {
+      "text": "Larger gain in force because calcium entry is increased",
+      "explanation": "The proposed increase in entry contradicts the experimental condition. The second preparation restricts the calcium response, so it should not acquire additional force through that pathway.",
+      "isCorrect": false,
+      "label": "A",
+      "misconception": "Assumes that the intervention increases calcium entry even though it specifically prevents that increase."
+    },
+    {
+      "text": "Smaller gain in force because calcium entry is limited",
+      "explanation": "The drug-associated rise in intracellular calcium supports stronger myocyte contraction. Preventing that rise removes the proposed link between drug exposure and the observed increase in force.",
+      "isCorrect": true,
+      "label": "B",
+      "misconception": "No misconception: limiting the calcium-entry response reduces the associated gain in contraction force."
+    },
+    {
+      "text": "Larger gain in force because calcium entry is limited",
+      "explanation": "This reverses the relationship between intracellular calcium and contraction strength. Restricting the calcium response should weaken, rather than amplify, the positive inotropic effect.",
+      "isCorrect": false,
+      "label": "C",
+      "misconception": "Reverses the relationship between the calcium-entry response and the gain in contraction force."
+    },
+    {
+      "text": "Similar gain in force because calcium entry is irrelevant",
+      "explanation": "The observed calcium response is relevant to force production. Treating it as unrelated overlooks the causal link being tested by selectively preventing its increase.",
+      "isCorrect": false,
+      "label": "D",
+      "misconception": "Treats the calcium-entry response as irrelevant to the experimentally increased contraction force."
+    },
+    {
+      "text": "Smaller gain in force because calcium entry is increased",
+      "explanation": "A smaller force response fits the intervention, but its stated cause does not. The second preparation prevents additional entry rather than increasing calcium delivery.",
+      "isCorrect": false,
+      "label": "E",
+      "misconception": "Attributes reduced force to increased calcium entry despite the experiment limiting that entry."
+    }
+  ],
+  "context": "Learning objective: Use a selective intervention to test calcium entry as the link between an inotropic drug and greater myocyte force. The drug-associated rise in intracellular calcium supports stronger myocyte contraction. Preventing that rise removes the proposed link between drug exposure and the observed increase in force.",
+  "cite": "openstax-ap1-cardiac-physiology#calcium-inotropes",
+  "publicUsmle": {
+    "schemaVersion": 1,
+    "origin": "generated",
+    "itemText": {
+      "licence": "CC-BY-4.0",
+      "attribution": "MD3 contributors"
+    },
+    "evidence": {
+      "kind": "passage",
+      "sourceId": "openstax-ap1-cardiac-physiology",
+      "passageId": "calcium-inotropes",
+      "licence": {
+        "cls": "foss",
+        "id": "cc-by-4.0"
+      }
+    }
+  }
+}

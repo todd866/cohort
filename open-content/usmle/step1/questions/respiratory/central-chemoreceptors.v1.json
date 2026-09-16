@@ -1,0 +1,85 @@
+{
+  "id": "bank:usmle-step1:respiratory-central-chemoreceptors:v1",
+  "rotation": "usmle-step1-open",
+  "topics": [
+    "central chemoreceptors",
+    "control of breathing"
+  ],
+  "moduleNodes": [
+    "usmle/step1",
+    "usmle/step1/respiratory"
+  ],
+  "questionType": "mechanism",
+  "difficulty": "medium",
+  "stem": "A 60-year-old man with severe hypoventilation has a steadily rising arterial partial pressure of carbon dioxide, and his ventilatory drive increases in response.\n\nWhich of the following sequences most directly links his hypercapnia to the increased drive?",
+  "options": [
+    {
+      "label": "A",
+      "text": "Hydrogen ions from the blood cross the blood-brain barrier and directly stimulate the central chemoreceptors",
+      "isCorrect": false,
+      "misconception": "The crossing species is being misidentified.",
+      "explanation": "It is carbon dioxide that readily diffuses across the blood-brain barrier; the hydrogen ions that trigger the chemoreceptors are generated within the brain's extracellular fluid."
+    },
+    {
+      "label": "B",
+      "text": "Oxygen sensors in the carotid bodies activate the phrenic nerve directly",
+      "isCorrect": false,
+      "misconception": "A peripheral reflex arc is being substituted for the central CO2 pathway, and the wiring is wrong.",
+      "explanation": "Peripheral chemoreceptors signal the respiratory centers rather than the phrenic nerve directly, and the stimulus here is carbon dioxide, not oxygen."
+    },
+    {
+      "label": "C",
+      "text": "Carbon dioxide diffuses into the brain's extracellular fluid, generating hydrogen ions that stimulate central chemoreceptors",
+      "isCorrect": true,
+      "misconception": "None; CO2 crosses the blood-brain barrier and the resulting hydrogen ions activate central chemoreceptors.",
+      "explanation": "As blood CO2 rises, it readily diffuses across the blood-brain barrier into the extracellular fluid; increased carbon dioxide generates hydrogen ions, and the increase in hydrogen ions in the brain triggers the central chemoreceptors."
+    },
+    {
+      "label": "D",
+      "text": "Lung stretch receptors signal the pons to accelerate the inspiratory rate",
+      "isCorrect": false,
+      "misconception": "The inflation reflex is being described with the opposite effect.",
+      "explanation": "The inflation reflex protects the lungs from over-inflating by limiting inspiration; it does not accelerate ventilation in response to carbon dioxide."
+    },
+    {
+      "label": "E",
+      "text": "Carbon dioxide binds hemoglobin, which signals the medulla through the vagus nerve",
+      "isCorrect": false,
+      "misconception": "A humoral-vagal signaling loop that does not exist is being proposed.",
+      "explanation": "Carbaminohemoglobin formation carries CO2 in blood but plays no signaling role; central chemoreception uses CO2 diffusion into brain extracellular fluid."
+    }
+  ],
+  "context": "Learning objective: trace the central chemoreflex. Blood CO2 diffuses across the blood-brain barrier, generates hydrogen ions in brain extracellular fluid, and those hydrogen ions trigger the central chemoreceptors.",
+  "cite": "openstax-anatomy-physiology#resp-central-chemoreceptors",
+  "publicUsmle": {
+    "schemaVersion": 1,
+    "origin": "generated",
+    "itemText": {
+      "licence": "CC-BY-4.0",
+      "attribution": "MD3 contributors"
+    },
+    "evidence": {
+      "kind": "passage",
+      "sourceId": "openstax-anatomy-physiology",
+      "passageId": "resp-central-chemoreceptors",
+      "licence": {
+        "cls": "foss",
+        "id": "cc-by-4.0"
+      }
+    },
+    "media": {
+      "kind": "asset",
+      "assetId": "gas-exchange-v1",
+      "job": "pathway",
+      "showWhen": "after-reveal",
+      "licence": {
+        "cls": "foss",
+        "id": "cc-by-4.0"
+      },
+      "attribution": "MD3 contributors",
+      "contentHash": "sha256:02374e7f286a7b66af9927c260658597c2328e958625e418f71e7885225080b8"
+    }
+  },
+  "imageUrl": "/figures/usmle/step1/gas-exchange-v1.svg",
+  "imageCaption": "V/Q, PO2 gradient, CO2 transport + chloride shift, chemoreceptors, brainstem, Dalton/Henry."
+}

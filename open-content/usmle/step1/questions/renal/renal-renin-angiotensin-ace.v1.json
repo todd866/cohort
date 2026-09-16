@@ -1,0 +1,87 @@
+{
+  "id": "bank:usmle-step1:renal-renin-angiotensin-ace:v1",
+  "rotation": "usmle-step1-open",
+  "ladderId": "raas-aldosterone",
+  "topics": [
+    "renin-angiotensin system",
+    "ACE",
+    "ladder:raas-aldosterone"
+  ],
+  "moduleNodes": [
+    "usmle/step1",
+    "usmle/step1/renal"
+  ],
+  "questionType": "mechanism",
+  "difficulty": "easy",
+  "stem": "A 60-year-old man with hypertension is prescribed an angiotensin-converting enzyme (ACE) inhibitor.\n\nThe blocked enzyme normally catalyzes which of the following conversions, and in which organ is it chiefly produced?",
+  "options": [
+    {
+      "label": "A",
+      "text": "Angiotensinogen to angiotensin I, produced in the kidneys",
+      "isCorrect": false,
+      "misconception": "Renin's reaction and source are being attributed to ACE.",
+      "explanation": "Renin, secreted by juxtaglomerular cells of the afferent arteriole, cleaves angiotensinogen into angiotensin I; ACE performs the next step and comes from the lungs."
+    },
+    {
+      "label": "B",
+      "text": "Angiotensin I to angiotensin II, produced in the lungs",
+      "isCorrect": true,
+      "misconception": "None; pulmonary ACE activates angiotensin II.",
+      "explanation": "Angiotensin I is not biologically active until converted to angiotensin II by angiotensin-converting enzyme from the lungs; inhibiting ACE reduces the vasoconstrictor and aldosterone drive."
+    },
+    {
+      "label": "C",
+      "text": "Angiotensinogen to angiotensin I, produced in the liver",
+      "isCorrect": false,
+      "misconception": "The substrate's origin is being confused with the enzyme that converts it.",
+      "explanation": "The liver makes angiotensinogen, the circulating substrate; converting it to angiotensin I is renin's job, and ACE converts angiotensin I to II in the lungs."
+    },
+    {
+      "label": "D",
+      "text": "Angiotensin II to angiotensin III, produced in the adrenal cortex",
+      "isCorrect": false,
+      "misconception": "A downstream degradation step is being offered as the blocked reaction.",
+      "explanation": "ACE activates rather than degrades: it converts inactive angiotensin I into the potent vasoconstrictor angiotensin II, and it is produced in the lungs."
+    },
+    {
+      "label": "E",
+      "text": "Vasopressin to its active metabolite, produced in the hypothalamus",
+      "isCorrect": false,
+      "misconception": "An unrelated peptide hormone is being inserted into the cascade.",
+      "explanation": "ADH is synthesized in the hypothalamus and released by the posterior pituitary without an activation step; ACE's substrate is angiotensin I, converted in the lungs."
+    }
+  ],
+  "context": "Learning objective: map the renin-angiotensin cascade. Renin converts angiotensinogen to angiotensin I; lung-derived ACE converts angiotensin I to active angiotensin II.",
+  "cite": "openstax-anatomy-physiology#renal-renin-angiotensin-ace",
+  "publicUsmle": {
+    "schemaVersion": 1,
+    "origin": "generated",
+    "itemText": {
+      "licence": "CC-BY-4.0",
+      "attribution": "MD3 contributors"
+    },
+    "evidence": {
+      "kind": "passage",
+      "sourceId": "openstax-anatomy-physiology",
+      "passageId": "renal-renin-angiotensin-ace",
+      "licence": {
+        "cls": "foss",
+        "id": "cc-by-4.0"
+      }
+    },
+    "media": {
+      "kind": "asset",
+      "assetId": "nephron-overview-v1",
+      "job": "anatomy",
+      "showWhen": "after-reveal",
+      "licence": {
+        "cls": "foss",
+        "id": "cc-by-4.0"
+      },
+      "attribution": "MD3 contributors",
+      "contentHash": "sha256:594f7ddfca37a265ea925ffa5348bce222990740b857a75cf8669f0ba5f715fa"
+    }
+  },
+  "imageUrl": "/figures/usmle/step1/nephron-overview-v1.svg",
+  "imageCaption": "Nephron segments: filtration, PCT, loop, DCT, collecting duct (ADH aquaporins)."
+}

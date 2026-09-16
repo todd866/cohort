@@ -1,0 +1,71 @@
+{
+  "id": "bank:usmle-step1:exp26-a-vaccine-platform-interaction:v1",
+  "rotation": "usmle-step1-open",
+  "topics": [
+    "immunology",
+    "vaccine-interference"
+  ],
+  "moduleNodes": [
+    "usmle/step1",
+    "usmle/step1/immunology"
+  ],
+  "questionType": "interpretation",
+  "difficulty": "hard",
+  "stem": "A hypothetical study compares live attenuated and inactivated vaccines in recipients with and without antigen-matched circulating antibodies shown to interfere with the live vaccine. The experiment isolates the effect on organism replication; other factors are held constant. Which of the following patterns best follows from the difference between the two platforms?",
+  "options": [
+    {
+      "label": "A",
+      "text": "A larger antibody-associated reduction for the inactivated platform",
+      "isCorrect": false,
+      "explanation": "The proposed mechanism acts on replication. Assigning its larger effect to a nonreplicating platform reverses the difference that the controlled comparison is intended to test.",
+      "misconception": "Assigns the larger replication-blocking effect to the platform that does not replicate."
+    },
+    {
+      "label": "B",
+      "text": "Equal enhancement of both platforms through blocked replication",
+      "isCorrect": false,
+      "explanation": "Blocking replication is not the specified route to enhanced immunity. The live platform requires that step, while the inactivated platform does not undergo organism replication.",
+      "misconception": "Assumes blocking replication enhances both vaccine platforms despite their different dependence on that step."
+    },
+    {
+      "label": "C",
+      "text": "Equivalent replication of both platforms despite their preparation",
+      "isCorrect": false,
+      "explanation": "The platforms are explicitly distinguished by whether organisms replicate. Treating their replication as equivalent removes the relevant biological difference stated in the experimental design.",
+      "misconception": "Ignores the defining replication difference between the live and inactivated platforms."
+    },
+    {
+      "label": "D",
+      "text": "Greater replication of the inactivated platform after antibody exposure",
+      "isCorrect": false,
+      "explanation": "Inactivated organisms do not replicate. Circulating antibody interference does not supply evidence that this platform gains replication capability after exposure in the comparison here.",
+      "misconception": "Assumes antibody exposure gives an inactivated platform the ability to replicate."
+    },
+    {
+      "label": "E",
+      "text": "A larger antibody-associated reduction for the live platform",
+      "isCorrect": true,
+      "explanation": "The live platform depends on replication, which the antibodies can disrupt. The inactivated platform does not replicate, so this particular interference mechanism has less effect on it.",
+      "misconception": "No misconception: A replication-specific interference mechanism has greater effect on the live platform."
+    }
+  ],
+  "context": "Learning objective: predict an interaction between circulating antibody and vaccine platform. A nonreplicating platform avoids the replication step through which the specified antibodies reduce a live-virus response. The prediction concerns the specified interfering antibodies, not every circulating antibody or every vaccine antigen.",
+  "cite": "cdc-vaccine-principles-expanded#antibody-interference",
+  "publicUsmle": {
+    "schemaVersion": 1,
+    "origin": "generated",
+    "itemText": {
+      "licence": "CC-BY-4.0",
+      "attribution": "MD3 contributors"
+    },
+    "evidence": {
+      "kind": "passage",
+      "sourceId": "cdc-vaccine-principles-expanded",
+      "passageId": "antibody-interference",
+      "licence": {
+        "cls": "foss",
+        "id": "us-gov"
+      }
+    }
+  }
+}

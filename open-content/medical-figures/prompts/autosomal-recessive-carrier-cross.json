@@ -1,0 +1,32 @@
+{
+  "schemaVersion": 1,
+  "figureId": "autosomal-recessive-carrier-cross",
+  "sourceFacts": [
+    "For a recessive disorder, an affected child inherits the disease-associated allele from both parents.",
+    "An Aa by Aa cross yields AA, Aa, Aa and aa possibilities."
+  ],
+  "clinicalSources": [
+    {
+      "title": "MedlinePlus Genetics: Inheritance patterns",
+      "url": "https://medlineplus.gov/genetics/understanding/inheritance/inheritancepatterns/"
+    }
+  ],
+  "prompt": "Create a polished original medical teaching illustration in landscape 3:2 format. Use the attached MD3 original solely as a style reference: warm watercolour/gouache on an ivory paper background, delicate ink contours, calm navy labels, muted ochre/peach/teal colours, generous whitespace and clear flat anatomical shapes. Anatomical clarity before decoration. Never photorealistic skin, glossy blood, wet flesh, fat lobules, scary faces, chunky 3D tissue blocks, or a fake scan. Only exact requested labels, clean legible short text. Footer 'Educational schematic'. No watermark, logos or attribution in the pixels. Compose an entirely new subject from the clinical specification, not the scalp content in the reference.\n\nVery clear original hand-painted PUNNETT SQUARE. Title 'Two carriers: autosomal recessive inheritance'. Subheading 'Aa \u00d7 Aa'. Central exactly2x2grid. Column gamete headers ABOVE are 'A' over leftcolumn and 'a' over rightcolumn. Row gamete headers LEFT are 'A' top and 'a' bottom. Upper-left cell 'AA' with text 'Not a carrier'; upper-right 'Aa' with 'Carrier'; lower-left 'Aa' with 'Carrier'; lower-right 'aa' with 'Affected'. Use ivory AAcell, teal carrier cells, ochre aacell; samelettercase precisely. Small legend 'a = recessive disease-associated allele'. Bottom 'Each pregnancy is a new event'. No four realistic babies, no claim that exactly four births have these outcomes, no extra squares or impossible genotype.",
+  "generation": {
+    "tool": "built-in image_gen",
+    "model": null,
+    "referenceAssetIds": [],
+    "externalReferenceImages": [],
+    "archivedReferenceAssets": [
+      {
+        "id": "neonatal-scalp-comparison",
+        "sha256": "96be407e6f065a3a53d1302050758c029a49cf875ae39f2245c87d0cae34e478",
+        "role": "style-only",
+        "reason": "Withheld pending anatomical scaffold review"
+      }
+    ]
+  },
+  "specificationFiles": [
+    "scaffolds/autosomal-recessive-carrier-cross.json"
+  ]
+}

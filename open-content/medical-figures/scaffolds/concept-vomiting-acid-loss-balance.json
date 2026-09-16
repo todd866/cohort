@@ -1,0 +1,85 @@
+{
+  "schemaVersion": 1,
+  "id": "concept-vomiting-acid-loss-balance",
+  "kind": "conceptual",
+  "sourceFacts": [
+    {
+      "fact": "Prolonged vomiting can cause hypochloraemic hypokalaemic metabolic alkalosis.",
+      "sourceUrls": [
+        "https://www.rch.org.au/clinicalguide/guideline_index/Pyloric_Stenosis/"
+      ]
+    },
+    {
+      "fact": "Loss of gastric hydrochloric acid removes hydrogen and chloride; associated volume depletion contributes to maintenance of the disturbance.",
+      "sourceUrls": [
+        "https://www.rch.org.au/clinicalguide/guideline_index/Pyloric_Stenosis/"
+      ]
+    }
+  ],
+  "nodes": [
+    {
+      "id": "1",
+      "label": "Prolonged gastric vomiting"
+    },
+    {
+      "id": "2",
+      "label": "Hydrogen and chloride lost"
+    },
+    {
+      "id": "3",
+      "label": "Metabolic alkalosis"
+    },
+    {
+      "id": "4",
+      "label": "Volume and potassium depletion"
+    }
+  ],
+  "edges": [
+    {
+      "from": "1",
+      "to": "2",
+      "meaning": "gastric losses"
+    },
+    {
+      "from": "2",
+      "to": "3",
+      "meaning": "acid-base effect"
+    },
+    {
+      "from": "1",
+      "to": "4",
+      "meaning": "associated depletion"
+    }
+  ],
+  "labels": [
+    "Prolonged vomiting changes the balance",
+    "Prolonged gastric vomiting",
+    "Hydrogen and chloride lost",
+    "Metabolic alkalosis",
+    "Volume and potassium depletion",
+    "Conceptual schematic • Not anatomy"
+  ],
+  "layout": "Four labelled concepts. Node1 at upper left branches right to node2 then right to node3 across the top row. A separate arrow from node1 travels down to wide bottom node4. Node2 is a plain rectangular inventory with H+ and Cl− paper tokens leaving it on small arrows. Node3 shows a qualitative dial titled Alkaline shift, without numerical scale. Node4 shows fewer water-drop and K+ tokens. Keep all shapes abstract and avoid stomach or kidney. Bottom note: The pattern may be absent early.",
+  "forbiddenAnatomy": [
+    "organs",
+    "body silhouettes",
+    "tissue cross-sections",
+    "cells",
+    "tubules",
+    "vessels",
+    "clinical photographs",
+    "diagnostic scans"
+  ],
+  "validation": {
+    "sourceStatus": "checked",
+    "structureStatus": "verified",
+    "requiredChecks": [
+      "Hydrogen/chloride loss precedes alkalosis",
+      "Volume/potassium depletion separate associated branch",
+      "Four nodes and three main connectors",
+      "No numerical pH scale or anatomical inventories"
+    ],
+    "clinicalReviewStatus": "pending",
+    "pixelChecks": "Pixel check: four nodes and three main arrows; H+ and Cl− exit tokens accompany acid loss before alkalosis, separate lower branch shows volume/potassium depletion. Qualitative dial only and early-presentation qualification clear. No organs. Independent and clinical review pending."
+  }
+}

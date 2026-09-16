@@ -1,0 +1,74 @@
+{
+  "id": "bank:usmle-step1:gi-gastric-acid-r3:v1",
+  "rotation": "usmle-step1-open",
+  "ladderId": "gastric-acid",
+  "topics": [
+    "gastrinoma",
+    "Zollinger-Ellison syndrome",
+    "peptic ulcer disease",
+    "ladder:gastric-acid"
+  ],
+  "moduleNodes": [
+    "usmle/step1",
+    "usmle/step1/gastrointestinal"
+  ],
+  "questionType": "mechanism",
+  "difficulty": "hard",
+  "stem": "A 48-year-old man presents with recurrent duodenal ulcers refractory to proton-pump inhibitor therapy. He reports daily watery diarrhea and epigastric pain. Fasting serum gastrin is markedly elevated, and secretin administration fails to suppress gastrin levels. Abdominal imaging shows a 2-cm mass in the wall of the duodenum.\n\nWhich of the following mechanisms best explains his hypersecretory gastric acid state?",
+  "options": [
+    {
+      "label": "A",
+      "text": "Excess hormone from the tumor directly stimulates parietal cells to secrete hydrochloric acid",
+      "isCorrect": true,
+      "misconception": "None; autonomous gastrin drives parietal-cell acid secretion.",
+      "explanation": "Gastrin is the principal stimulatory hormone for parietal cells; a gastrin-secreting tumor causes excess HCl production, recurrent ulcers, and often diarrhea."
+    },
+    {
+      "label": "B",
+      "text": "Chief-cell hyperplasia alone increases acid without parietal-cell stimulation",
+      "isCorrect": false,
+      "misconception": "The enzyme-secreting cell is being cast as the acid source.",
+      "explanation": "Chief cells secrete pepsinogen, not acid; hyperacidity in gastrinoma reflects gastrin-driven parietal-cell stimulation."
+    },
+    {
+      "label": "C",
+      "text": "Antral G cells secrete excess gastrin that is blocked from reaching parietal cells",
+      "isCorrect": false,
+      "misconception": "Antral mucus cells are being mistaken for acid-secreting cells.",
+      "explanation": "Antral cells secrete mucus and gastrin; they do not produce hydrochloric acid, which comes from parietal cells in the gastric body."
+    },
+    {
+      "label": "D",
+      "text": "Pancreatic duct cells secrete acid to compensate for bicarbonate loss",
+      "isCorrect": false,
+      "misconception": "A bicarbonate-secreting cell is being inverted to an acid source.",
+      "explanation": "Pancreatic duct cells secrete bicarbonate-rich fluid to neutralize gastric acid in the duodenum; they do not cause gastric hypersecretion."
+    },
+    {
+      "label": "E",
+      "text": "Jejunal enterocytes absorb acid, lowering luminal pH in the stomach",
+      "isCorrect": false,
+      "misconception": "Absorptive cells are being treated as gastric acid secretors.",
+      "explanation": "Enterocytes absorb nutrients in the jejunum; gastric acid hypersecretion in this syndrome reflects autonomous gastrin stimulation of parietal cells."
+    }
+  ],
+  "context": "Learning objective: link gastrinoma to parietal-cell hypersecretion. Gastrin stimulates parietal cells to produce HCl; excess gastrin causes refractory PUD and diarrhea (Zollinger-Ellison syndrome).",
+  "cite": "openstax-anatomy-physiology#gi-gastrin-parietal-cells",
+  "publicUsmle": {
+    "schemaVersion": 1,
+    "origin": "generated",
+    "itemText": {
+      "licence": "CC-BY-4.0",
+      "attribution": "MD3 contributors"
+    },
+    "evidence": {
+      "kind": "passage",
+      "sourceId": "openstax-anatomy-physiology",
+      "passageId": "gi-gastrin-parietal-cells",
+      "licence": {
+        "cls": "foss",
+        "id": "cc-by-4.0"
+      }
+    }
+  }
+}

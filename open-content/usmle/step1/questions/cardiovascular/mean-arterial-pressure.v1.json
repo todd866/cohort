@@ -1,0 +1,87 @@
+{
+  "id": "bank:usmle-step1:cardiovascular-mean-arterial-pressure:v1",
+  "rotation": "usmle-step1-open",
+  "ladderId": "mean-arterial-pressure",
+  "topics": [
+    "mean arterial pressure",
+    "blood pressure",
+    "ladder:mean-arterial-pressure"
+  ],
+  "moduleNodes": [
+    "usmle/step1",
+    "usmle/step1/cardiovascular"
+  ],
+  "questionType": "calculation",
+  "difficulty": "medium",
+  "stem": "A 60-year-old man's blood pressure is measured as 140/90 mm Hg during a routine clinic examination. He has no symptoms and his heart rate is regular.\n\nWhich of the following values is closest to his mean arterial pressure?",
+  "options": [
+    {
+      "label": "A",
+      "text": "90 mm Hg",
+      "isCorrect": false,
+      "misconception": "The diastolic pressure alone is being reported as the mean.",
+      "explanation": "Mean pressure adds one-third of the pulse pressure to diastolic pressure; diastolic alone underestimates the time-averaged pressure."
+    },
+    {
+      "label": "B",
+      "text": "115 mm Hg",
+      "isCorrect": false,
+      "misconception": "The arithmetic midpoint of systolic and diastolic is being used.",
+      "explanation": "Because diastole lasts longer than systole, mean pressure is weighted toward diastolic (one-third of pulse pressure above it), not the 115 mm Hg midpoint."
+    },
+    {
+      "label": "C",
+      "text": "107 mm Hg",
+      "isCorrect": true,
+      "misconception": "None; diastolic plus one-third of the pulse pressure gives 90 + 50/3 ≈ 107 mm Hg.",
+      "explanation": "Mean arterial pressure equals diastolic pressure plus one-third of the difference between systolic and diastolic pressures: 90 + (140-90)/3 ≈ 107 mm Hg."
+    },
+    {
+      "label": "D",
+      "text": "123 mm Hg",
+      "isCorrect": false,
+      "misconception": "Two-thirds rather than one-third of the pulse pressure is being added.",
+      "explanation": "Adding two-thirds of the pulse pressure overweights systole; the correct weighting gives about 107 mm Hg."
+    },
+    {
+      "label": "E",
+      "text": "140 mm Hg",
+      "isCorrect": false,
+      "misconception": "The systolic peak is being reported as the mean.",
+      "explanation": "Systolic pressure is the maximum, not the time-averaged, pressure; the mean is much closer to the diastolic value."
+    }
+  ],
+  "context": "Learning objective: compute mean arterial pressure. MAP equals diastolic pressure plus one-third of the pulse pressure (systolic minus diastolic).",
+  "cite": "openstax-anatomy-physiology#vessels-map-calculation",
+  "publicUsmle": {
+    "schemaVersion": 1,
+    "origin": "generated",
+    "itemText": {
+      "licence": "CC-BY-4.0",
+      "attribution": "MD3 contributors"
+    },
+    "evidence": {
+      "kind": "passage",
+      "sourceId": "openstax-anatomy-physiology",
+      "passageId": "vessels-map-calculation",
+      "licence": {
+        "cls": "foss",
+        "id": "cc-by-4.0"
+      }
+    },
+    "media": {
+      "kind": "asset",
+      "assetId": "hemodynamics-v1",
+      "job": "pathway",
+      "showWhen": "after-reveal",
+      "licence": {
+        "cls": "foss",
+        "id": "cc-by-4.0"
+      },
+      "attribution": "MD3 contributors",
+      "contentHash": "sha256:bcd08bd5837d7c8b145ebd1e66511a58c8d05bca8c05a923bc2bebccc478de08"
+    }
+  },
+  "imageUrl": "/figures/usmle/step1/hemodynamics-v1.svg",
+  "imageCaption": "Poiseuille r^4, MAP, venous capacitance, Starling edema, coronary origins."
+}

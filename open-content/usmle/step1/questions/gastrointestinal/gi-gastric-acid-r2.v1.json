@@ -1,0 +1,74 @@
+{
+  "id": "bank:usmle-step1:gi-gastric-acid-r2:v1",
+  "rotation": "usmle-step1-open",
+  "ladderId": "gastric-acid",
+  "topics": [
+    "gastric acid",
+    "pepsinogen",
+    "chief cells",
+    "ladder:gastric-acid"
+  ],
+  "moduleNodes": [
+    "usmle/step1",
+    "usmle/step1/gastrointestinal"
+  ],
+  "questionType": "mechanism",
+  "difficulty": "medium",
+  "stem": "After a meal, parietal cells secrete hydrochloric acid into the gastric lumen. This low pH is required for which of the following enzymatic conversions?",
+  "options": [
+    {
+      "label": "A",
+      "text": "Conversion of trypsinogen to trypsin in the duodenum",
+      "isCorrect": false,
+      "misconception": "A pancreatic protease activation step is being placed in the stomach.",
+      "explanation": "Trypsinogen activation occurs in the duodenum via enterokinase; it is not an HCl-dependent gastric conversion."
+    },
+    {
+      "label": "B",
+      "text": "Conversion of pepsinogen to active pepsin",
+      "isCorrect": true,
+      "misconception": "None; gastric HCl activates pepsinogen to pepsin.",
+      "explanation": "Chief cells secrete pepsinogen; HCl from parietal cells is necessary for the conversion of pepsinogen to pepsin, which begins protein digestion."
+    },
+    {
+      "label": "C",
+      "text": "Conversion of chymotrypsinogen to chymotrypsin",
+      "isCorrect": false,
+      "misconception": "A downstream pancreatic protease is being assigned to gastric acid.",
+      "explanation": "Chymotrypsinogen is activated by trypsin in the small intestine, not by gastric HCl."
+    },
+    {
+      "label": "D",
+      "text": "Emulsification of dietary triglycerides by bile salts",
+      "isCorrect": false,
+      "misconception": "A lipid-digestion step in the duodenum is being confused with gastric protease activation.",
+      "explanation": "Triglyceride emulsification depends on bile salts in the duodenum; gastric HCl does not activate lipases this way."
+    },
+    {
+      "label": "E",
+      "text": "Activation of salivary amylase to digest starch",
+      "isCorrect": false,
+      "misconception": "Carbohydrate digestion is being assigned to a gastric protease pathway.",
+      "explanation": "Salivary amylase acts in the mouth and is inactivated by gastric acid; HCl activates pepsinogen, not amylase."
+    }
+  ],
+  "context": "Learning objective: link gastric HCl to pepsin activation. Parietal cells secrete HCl; chief cells secrete pepsinogen; low pH converts pepsinogen to pepsin for initial protein digestion.",
+  "cite": "openstax-anatomy-physiology#gi-chief-cells-pepsinogen",
+  "publicUsmle": {
+    "schemaVersion": 1,
+    "origin": "generated",
+    "itemText": {
+      "licence": "CC-BY-4.0",
+      "attribution": "MD3 contributors"
+    },
+    "evidence": {
+      "kind": "passage",
+      "sourceId": "openstax-anatomy-physiology",
+      "passageId": "gi-chief-cells-pepsinogen",
+      "licence": {
+        "cls": "foss",
+        "id": "cc-by-4.0"
+      }
+    }
+  }
+}

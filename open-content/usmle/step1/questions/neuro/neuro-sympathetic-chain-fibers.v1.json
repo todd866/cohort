@@ -1,0 +1,87 @@
+{
+  "id": "bank:usmle-step1:neuro-sympathetic-chain-fibers:v1",
+  "rotation": "usmle-step1-open",
+  "topics": [
+    "sympathetic chain ganglia",
+    "preganglionic fibers",
+    "ladder:autonomic-ans"
+  ],
+  "moduleNodes": [
+    "usmle/step1",
+    "usmle/step1/neuroscience"
+  ],
+  "questionType": "mechanism",
+  "difficulty": "hard",
+  "stem": "During dissection, a 24-year-old medical student traces a sympathetic pathway from the spinal cord to the heart and notes the fibers change appearance at the chain ganglion beside the vertebral column.\n\nWhich of the following correctly describes the two segments of this pathway?",
+  "options": [
+    {
+      "label": "A",
+      "text": "Two short myelinated segments joined within the chain ganglion",
+      "isCorrect": false,
+      "misconception": "The distance from ganglion to target is being ignored.",
+      "explanation": "Targets such as the heart lie far from the chain, so the postganglionic segment must be long; it is also unmyelinated, giving the gray rami their appearance."
+    },
+    {
+      "label": "B",
+      "text": "Short myelinated preganglionic fiber, then a long unmyelinated postganglionic fiber",
+      "isCorrect": true,
+      "misconception": "None; chain ganglia lie near the cord, so the pre-ganglionic segment is short and myelinated.",
+      "explanation": "Because the sympathetic chain sits adjacent to the vertebral column, preganglionic fibers are short and myelinated (the white rami), while postganglionic fibers travel the longer distance to the target unmyelinated (the gray rami)."
+    },
+    {
+      "label": "C",
+      "text": "Long myelinated preganglionic fiber, then a short unmyelinated postganglionic fiber",
+      "isCorrect": false,
+      "misconception": "The parasympathetic fiber lengths are being mapped onto sympathetic myelination.",
+      "explanation": "Parasympathetic preganglionics are indeed long, but the sympathetic chain's paravertebral position keeps sympathetic preganglionics short; their postganglionics are the long, unmyelinated segment."
+    },
+    {
+      "label": "D",
+      "text": "Long unmyelinated preganglionic fiber, then a short myelinated postganglionic fiber",
+      "isCorrect": false,
+      "misconception": "The lengths and myelination of the two segments are both reversed.",
+      "explanation": "The pattern is the opposite: preganglionics are short and myelinated because chain ganglia sit beside the cord; postganglionics are long and unmyelinated."
+    },
+    {
+      "label": "E",
+      "text": "A single fiber that passes through the chain without synapsing",
+      "isCorrect": false,
+      "misconception": "The two-neuron autonomic plan is being collapsed into one fiber.",
+      "explanation": "The sympathetic pathway to an organ is always two neurons with a ganglionic synapse (the adrenal medulla is the exception); the student's pathway changes appearance precisely because a new, unmyelinated fiber begins at the ganglion."
+    }
+  ],
+  "context": "Learning objective: describe sympathetic fiber segments. Chain ganglia sit beside the vertebrae, so sympathetic preganglionic fibers are short and myelinated (white rami) and postganglionic fibers are long and unmyelinated (gray rami).",
+  "cite": "openstax-anatomy-physiology#neuro-sympathetic-chain-fibers",
+  "publicUsmle": {
+    "schemaVersion": 1,
+    "origin": "generated",
+    "itemText": {
+      "licence": "CC-BY-4.0",
+      "attribution": "MD3 contributors"
+    },
+    "evidence": {
+      "kind": "passage",
+      "sourceId": "openstax-anatomy-physiology",
+      "passageId": "neuro-sympathetic-chain-fibers",
+      "licence": {
+        "cls": "foss",
+        "id": "cc-by-4.0"
+      }
+    },
+    "media": {
+      "kind": "asset",
+      "assetId": "ans-divisions-v1",
+      "job": "compare-table",
+      "showWhen": "after-reveal",
+      "licence": {
+        "cls": "foss",
+        "id": "cc-by-4.0"
+      },
+      "attribution": "MD3 contributors",
+      "contentHash": "sha256:d7b237205a1b7222585235058b4bd266322507dd3a48dca302eb55578983948d"
+    }
+  },
+  "imageUrl": "/figures/usmle/step1/ans-divisions-v1.svg",
+  "imageCaption": "Sympathetic thoracolumbar vs parasympathetic craniosacral; adrenergic receptor subtypes.",
+  "ladderId": "autonomic-ans"
+}

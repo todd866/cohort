@@ -1,0 +1,74 @@
+// =============================================================================
+// PRIVATE ANKI EXPORT JOBS
+// Durable, owner-scoped build-state contract. The intended runtime has web
+// requests enqueue only and a separate official-Anki worker verify artifacts;
+// those routes and workers are not implemented by this schema slice.
+// =============================================================================
+
+enum AnkiExportMode {
+  continue_in_anki
+  share_clean
+}
+
+enum AnkiExportStatus {
+  queued
+  building
+  released
+  blocked
+  expired
+  cancelled
+}
+
+model AnkiExportJob {
+  id          String @id @default(cuid())
+  ownerUserId String
+  owner       User   @relation(fields: [ownerUserId], references: [id], onDelete: Cascade, onUpdate: Restrict, map: "AnkiExportJob_owner_fkey")
+
+  collectionId String
+  collection   AnkiCollection @relation(fields: [collectionId, ownerUserId], references: [id, ownerUserId], onDelete: Cascade, onUpdate: Restrict, map: "AnkiExportJob_collection_owner_fkey")
+
+  mode             AnkiExportMode
+  idempotencyKey   String
+  requestSha256    String
+  status           AnkiExportStatus @default(queued)
+  attempt          Int              @default(0)
+  // A random token fences an abandoned worker from publishing after another
+  // supervisor has reclaimed its stale lease. Heartbeats make long official
+  // Anki builds reclaimable without tying them to an HTTP request lifetime.
+  leaseToken       String?
+  leaseAcquiredAt  DateTime?        @db.Timestamptz(3)
+  leaseHeartbeatAt DateTime?        @db.Timestamptz(3)
+
+  // Retry plans are rebuilt deterministically from the retained source
+  // snapshot and LearningEvents no later than cutoffAt. This avoids storing a
+  // multi-gigabyte duplicate of a large deck/revlog plan in one JSONB row.
+  cutoffAt DateTime @db.Timestamptz(3)
+  planId   String?
+
+  artifactObjectKey      String?
+  artifactSizeBytes      BigInt?
+  artifactArchiveSha256  String?
+  artifactManifestSha256 String?
+  // SQL constrains released artifacts to <= 7 days after completion and grant
+  // pairs to <= 5 minutes without outliving the artifact.
+  artifactExpiresAt      DateTime? @db.Timestamptz(3)
+  downloadGrantIssuedAt  DateTime? @db.Timestamptz(3)
+  downloadGrantExpiresAt DateTime? @db.Timestamptz(3)
+
+  fidelityReport    Json?   @db.JsonB
+  roundTripEvidence Json?   @db.JsonB
+  blockedCode       String?
+  blockedMessage    String? @db.Text
+
+  createdAt    DateTime  @default(now()) @db.Timestamptz(3)
+  updatedAt    DateTime  @updatedAt @db.Timestamptz(3)
+  completedAt  DateTime? @db.Timestamptz(3)
+  downloadedAt DateTime? @db.Timestamptz(3)
+
+  @@unique([id, ownerUserId], map: "AnkiExportJob_id_owner_key")
+  @@unique([ownerUserId, idempotencyKey], map: "AnkiExportJob_owner_idempotency_key")
+  @@index([ownerUserId, status, createdAt], map: "AnkiExportJob_owner_status_created_idx")
+  @@index([collectionId, status], map: "AnkiExportJob_collection_status_idx")
+  @@index([status, leaseHeartbeatAt, leaseAcquiredAt], map: "AnkiExportJob_status_lease_idx")
+  @@index([artifactExpiresAt], map: "AnkiExportJob_artifact_expiry_idx")
+}

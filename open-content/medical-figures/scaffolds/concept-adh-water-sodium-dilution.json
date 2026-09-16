@@ -1,0 +1,81 @@
+{
+  "schemaVersion": 1,
+  "id": "concept-adh-water-sodium-dilution",
+  "kind": "conceptual",
+  "sourceFacts": [
+    {
+      "fact": "Increased ADH reduces free-water excretion and promotes water retention.",
+      "sourceUrls": [
+        "https://www.rch.org.au/clinicalguide/guideline_index/hyponatraemia/"
+      ]
+    },
+    {
+      "fact": "Excess retained water relative to sodium can lower serum sodium concentration.",
+      "sourceUrls": [
+        "https://www.rch.org.au/clinicalguide/guideline_index/hyponatraemia/"
+      ]
+    },
+    {
+      "fact": "Pulmonary illness can be associated with increased ADH secretion.",
+      "sourceUrls": [
+        "https://www.rch.org.au/clinicalguide/guideline_index/hyponatraemia/"
+      ]
+    }
+  ],
+  "nodes": [
+    {
+      "id": "1",
+      "label": "ADH secretion increases"
+    },
+    {
+      "id": "2",
+      "label": "More water retained"
+    },
+    {
+      "id": "3",
+      "label": "Sodium concentration can fall"
+    }
+  ],
+  "edges": [
+    {
+      "from": "1",
+      "to": "2",
+      "meaning": "antidiuresis"
+    },
+    {
+      "from": "2",
+      "to": "3",
+      "meaning": "dilution"
+    }
+  ],
+  "labels": [
+    "Retained water can dilute sodium",
+    "ADH secretion increases",
+    "More water retained",
+    "Sodium concentration can fall",
+    "Conceptual schematic • Not anatomy"
+  ],
+  "layout": "Three large cards across with two arrows. First contains ADH paper tokens, second blue water droplets, third shows TWO miniature rectangular inventory trays side by side. Each tray contains EXACTLY FOUR ochre Na tokens. Left tray has exactly FOUR blue water drops, right has exactly EIGHT blue water drops, to show more water relative to the same sodium amount. Caption within card3: Same sodium, more water: an abstract dilution example. Small top context tag: Can occur during pulmonary illness. Bottom note: Token counts are illustrative, not physiological ratios. No kidney, tubule, nephron, cells or vessel. No doses, treatment rate or laboratory threshold.",
+  "forbiddenAnatomy": [
+    "organs",
+    "body silhouettes",
+    "tissue cross-sections",
+    "cells",
+    "tubules",
+    "vessels",
+    "clinical photographs",
+    "diagnostic scans"
+  ],
+  "validation": {
+    "sourceStatus": "checked",
+    "structureStatus": "verified",
+    "requiredChecks": [
+      "Three nodes and two arrows",
+      "Both inventory trays contain exactly four Na tokens",
+      "Second tray contains eight water drops versus four in first",
+      "Illustrative ratio qualification, no anatomy or dose"
+    ],
+    "clinicalReviewStatus": "pending",
+    "pixelChecks": "Pixel count check: each small tray has exactly four Na tokens; left has four water drops and right eight. Three main nodes and two arrows preserve ADH to water retention to possible dilution. Ratios explicitly illustrative. No renal anatomy. Independent and clinical review pending."
+  }
+}

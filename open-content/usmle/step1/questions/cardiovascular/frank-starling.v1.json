@@ -1,0 +1,87 @@
+{
+  "id": "bank:usmle-step1:cardiovascular-frank-starling:v1",
+  "rotation": "usmle-step1-open",
+  "ladderId": "frank-starling",
+  "topics": [
+    "Frank-Starling mechanism",
+    "preload",
+    "ladder:frank-starling"
+  ],
+  "moduleNodes": [
+    "usmle/step1",
+    "usmle/step1/cardiovascular"
+  ],
+  "questionType": "mechanism",
+  "difficulty": "easy",
+  "stem": "A healthy 24-year-old man lies supine during a physiology demonstration. When his legs are passively elevated, venous return to his heart transiently increases, and within a few beats his stroke volume rises.\n\nWhich of the following mechanisms most directly accounts for the increase in stroke volume?",
+  "options": [
+    {
+      "label": "A",
+      "text": "Sympathetic activation increases myocardial contractility",
+      "isCorrect": false,
+      "misconception": "An intrinsic beat-to-beat response is being attributed to autonomic reflexes.",
+      "explanation": "The response occurs within a few beats of the volume shift, matching the intrinsic length-tension mechanism rather than a neutrally mediated change in contractility."
+    },
+    {
+      "label": "B",
+      "text": "Decreased afterload permits more complete ejection",
+      "isCorrect": false,
+      "misconception": "A change in ejection resistance is being invoked where filling has changed.",
+      "explanation": "Passive leg elevation changes venous return and preload, not the arterial resistance against which the ventricle ejects."
+    },
+    {
+      "label": "C",
+      "text": "Increased heart rate raises the number of ejections per minute",
+      "isCorrect": false,
+      "misconception": "A rate change is being used to explain a change in volume per beat.",
+      "explanation": "The observation is a rise in stroke volume, the volume ejected per beat; heart rate is a separate determinant of cardiac output."
+    },
+    {
+      "label": "D",
+      "text": "Reduced ventricular compliance raises filling pressure",
+      "isCorrect": false,
+      "misconception": "A stiffness change is being proposed for a normal, acutely distended ventricle.",
+      "explanation": "The ventricle is healthy and acutely stretched by the extra volume; its compliance is unchanged, and increased stretch raises contraction force directly."
+    },
+    {
+      "label": "E",
+      "text": "Greater stretch of ventricular muscle strengthens the contraction",
+      "isCorrect": true,
+      "misconception": "None; this is the Frank-Starling relationship between fiber length and contraction strength.",
+      "explanation": "Increased venous return raises preload, and the greater the stretch of the ventricular muscle (within limits), the more powerful the contraction, which increases stroke volume."
+    }
+  ],
+  "context": "Learning objective: apply the Frank-Starling mechanism. Increased venous return raises preload; greater ventricular stretch produces a more powerful contraction and increases stroke volume.",
+  "cite": "openstax-anatomy-physiology#heart-frank-starling-preload",
+  "publicUsmle": {
+    "schemaVersion": 1,
+    "origin": "generated",
+    "itemText": {
+      "licence": "CC-BY-4.0",
+      "attribution": "MD3 contributors"
+    },
+    "evidence": {
+      "kind": "passage",
+      "sourceId": "openstax-anatomy-physiology",
+      "passageId": "heart-frank-starling-preload",
+      "licence": {
+        "cls": "foss",
+        "id": "cc-by-4.0"
+      }
+    },
+    "media": {
+      "kind": "asset",
+      "assetId": "frank-starling-v1",
+      "job": "pathway",
+      "showWhen": "after-reveal",
+      "licence": {
+        "cls": "foss",
+        "id": "cc-by-4.0"
+      },
+      "attribution": "MD3 contributors",
+      "contentHash": "sha256:9125158aaffdd7d471bd2ab6b582fbdcd12b18226b6d4f5ca6363eb4b8cd4700"
+    }
+  },
+  "imageUrl": "/figures/usmle/step1/frank-starling-v1.svg",
+  "imageCaption": "Frank-Starling: stroke volume rises with end-diastolic volume; failure shifts the curve."
+}

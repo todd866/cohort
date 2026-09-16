@@ -1,0 +1,54 @@
+{
+  "schemaVersion": 1,
+  "figureId": "trisomy-21-chromosome-copies",
+  "kind": "conceptual",
+  "created": "2026-09-10",
+  "timing": "retrospective specification of previously generated candidate",
+  "sourceFacts": [
+    {
+      "fact": "Most Down syndrome results from three copies of chromosome21.",
+      "sourceUrls": [
+        "https://medlineplus.gov/genetics/condition/down-syndrome/"
+      ]
+    },
+    {
+      "fact": "Other forms involve translocation or mosaicism, so this diagram specifically depicts free trisomy.",
+      "sourceUrls": [
+        "https://medlineplus.gov/genetics/condition/down-syndrome/"
+      ]
+    }
+  ],
+  "clinicalSources": [
+    {
+      "title": "MedlinePlus Genetics: Down syndrome",
+      "url": "https://medlineplus.gov/genetics/condition/down-syndrome/"
+    }
+  ],
+  "nodes": [
+    "two copy icons",
+    "three copy icons"
+  ],
+  "edges": [],
+  "invariants": [
+    "Exactly two versus three separated matching chromosome icons.",
+    "Only common free-trisomy form; not diagnostic karyotype morphology."
+  ],
+  "expectedLabels": [
+    "Trisomy 21: an extra copy",
+    "Two copies",
+    "Three copies",
+    "Chromosome 21",
+    "The common free-trisomy form of Down syndrome",
+    "Copy-number schematic"
+  ],
+  "layoutSpecification": "Two clear chromosome-count groups on warm ivory background. Title 'Trisomy 21: an extra copy'. Left heading 'Two copies': EXACTLY TWO small matching acrocentric chromosome21 symbols, each with a tiny short arm above high centromere and long arms below; both muted teal. Right heading 'Three copies': EXACTLY THREE matching chromosome21 symbols; two muted teal and third pale ochre. Label below each group 'Chromosome 21'. Bottom 'The common free-trisomy form of Down syndrome'. No full karyotype, no infant faces, no physically different third chromosome, no duplicated chromosome arms miscounted as chromosomes. Small subtitle 'Copy-number schematic'. All chromosome symbols same size and shape, distinct separated silhouettes.",
+  "forbiddenAnatomy": [
+    "No claimed anatomical reconstruction, diagnostic image, histology or literal neuroanatomical pathway",
+    "No organ cutaways or invented internal spatial relationships"
+  ],
+  "validation": {
+    "sourceFacts": "Checked against listed primary clinical sources during original topic review",
+    "pixelChecks": "Explicit structure check: exactly two chromosome21 symbols in comparison group and three in trisomy group, same shapes with one additional highlighted copy; caption limits claim to common free trisomy. This verifies copy-count logic only, not a diagnostic karyotype.",
+    "status": "self-reviewed; independent review pending"
+  }
+}

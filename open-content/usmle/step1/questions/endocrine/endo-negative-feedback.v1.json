@@ -1,0 +1,85 @@
+{
+  "id": "bank:usmle-step1:endo-negative-feedback:v1",
+  "rotation": "usmle-step1-open",
+  "topics": [
+    "negative feedback",
+    "hormone regulation"
+  ],
+  "moduleNodes": [
+    "usmle/step1",
+    "usmle/step1/endocrine"
+  ],
+  "questionType": "mechanism",
+  "difficulty": "easy",
+  "stem": "A 48-year-old man becomes dehydrated on a long hike, and his blood osmolarity climbs. Hypothalamic osmoreceptors trigger ADH release, his kidneys reabsorb more water, his osmolarity falls back toward normal, and ADH secretion then declines.\n\nThis pattern of endocrine control is best described as which of the following?",
+  "options": [
+    {
+      "label": "A",
+      "text": "Upregulation of renal ADH receptors from chronic stimulation",
+      "isCorrect": false,
+      "misconception": "A receptor-sensitivity change is being confused with the feedback pattern itself.",
+      "explanation": "Upregulation raises receptor numbers when hormone is chronically low; the vignette describes the stimulus being reversed by the response, which defines negative feedback."
+    },
+    {
+      "label": "B",
+      "text": "Positive feedback amplifying the original osmolar signal",
+      "isCorrect": false,
+      "misconception": "A self-amplifying loop is being attributed to a response that shuts itself down.",
+      "explanation": "Positive feedback would drive osmolarity further from normal; here the output (water retention) corrects the stimulus and ADH secretion falls, which is negative feedback."
+    },
+    {
+      "label": "C",
+      "text": "A permissive interaction between two pituitary hormones",
+      "isCorrect": false,
+      "misconception": "A hormone-hormone interaction is being confused with stimulus-response regulation.",
+      "explanation": "Permissiveness means one hormone enables another's action; this vignette shows a hormone response that reverses its own triggering stimulus — negative feedback."
+    },
+    {
+      "label": "D",
+      "text": "Negative feedback reversing a deviation from the set point",
+      "isCorrect": true,
+      "misconception": "None; the response counteracts the initial disturbance and then switches itself off.",
+      "explanation": "Negative feedback reverses a deviation from the set point: high osmolarity provokes ADH, water retention lowers osmolarity, and the corrected signal then reduces ADH secretion — the primary mode of hormone regulation."
+    },
+    {
+      "label": "E",
+      "text": "A neural stimulus bypassing hormonal control entirely",
+      "isCorrect": false,
+      "misconception": "The origin of the stimulus is being confused with the regulatory structure.",
+      "explanation": "Whatever the stimulus type, the loop shown — output correcting input and then subsiding — is negative feedback, the principal way hormone release is regulated."
+    }
+  ],
+  "context": "Learning objective: recognize negative feedback. Hormone release is regulated primarily by negative feedback: a deviation from the set point triggers a response that reverses the deviation, then the response subsides (osmolarity → ADH → water reabsorption → ADH falls).",
+  "cite": "openstax-anatomy-physiology#endo-negative-feedback",
+  "publicUsmle": {
+    "schemaVersion": 1,
+    "origin": "generated",
+    "itemText": {
+      "licence": "CC-BY-4.0",
+      "attribution": "MD3 contributors"
+    },
+    "evidence": {
+      "kind": "passage",
+      "sourceId": "openstax-anatomy-physiology",
+      "passageId": "endo-negative-feedback",
+      "licence": {
+        "cls": "foss",
+        "id": "cc-by-4.0"
+      }
+    },
+    "media": {
+      "kind": "asset",
+      "assetId": "hpa-axis-v1",
+      "job": "pathway",
+      "showWhen": "after-reveal",
+      "licence": {
+        "cls": "foss",
+        "id": "cc-by-4.0"
+      },
+      "attribution": "MD3 contributors",
+      "contentHash": "sha256:07ce876fc9b8e4bd8c634b01e83f6a7fffa501eaa640ec190e29ddcbd24ca1e5"
+    }
+  },
+  "imageUrl": "/figures/usmle/step1/hpa-axis-v1.svg",
+  "imageCaption": "HPA: hypothalamus to anterior (portal tropic hormones) and posterior (ADH/OT axons); peripheral feedback."
+}

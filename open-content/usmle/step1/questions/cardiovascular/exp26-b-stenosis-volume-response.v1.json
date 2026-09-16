@@ -1,0 +1,71 @@
+{
+  "id": "bank:usmle-step1:exp26-b-stenosis-volume-response:v1",
+  "rotation": "usmle-step1-open",
+  "topics": [
+    "cardiovascular",
+    "stenosis-volume-response"
+  ],
+  "moduleNodes": [
+    "usmle/step1",
+    "usmle/step1/cardiovascular"
+  ],
+  "questionType": "interpretation",
+  "difficulty": "medium",
+  "stem": "A mechanical model reproduces a ventricle ejecting through a semilunar valve. Investigators narrow the valve opening while keeping the initial filling load and contraction strength fixed. Which of the following changes should the model show?",
+  "options": [
+    {
+      "text": "Higher ejection load; smaller residual volume",
+      "explanation": "The outlet narrowing does increase ejection load, but the residual-volume prediction is reversed. Greater resistance to emptying leaves more blood behind at constant contractility.",
+      "isCorrect": false,
+      "label": "A",
+      "misconception": "Assumes that increasing the opposing ejection load leaves less residual blood at fixed contractility."
+    },
+    {
+      "text": "Lower ejection load; greater residual volume",
+      "explanation": "The residual-volume direction matches impaired emptying, but narrowing the outlet raises rather than lowers the opposing load. Both parts must fit the mechanical intervention.",
+      "isCorrect": false,
+      "label": "B",
+      "misconception": "Treats narrowing the outflow opening as a reduction in the load opposing ejection."
+    },
+    {
+      "text": "Lower ejection load; smaller residual volume",
+      "explanation": "This pattern would fit easier ejection through a less restrictive outlet. The model instead narrows the semilunar opening while holding contraction strength fixed.",
+      "isCorrect": false,
+      "label": "C",
+      "misconception": "Applies the emptying pattern of a less restrictive outlet to an experimentally narrowed outlet."
+    },
+    {
+      "text": "Stable ejection load; stable residual volume",
+      "explanation": "Maintaining filling and contraction strength does not neutralize outlet narrowing. The intervention independently raises the opposing load and thereby changes the volume left after ejection.",
+      "isCorrect": false,
+      "label": "D",
+      "misconception": "Assumes that matched filling and contraction strength prevent outlet narrowing from changing afterload."
+    },
+    {
+      "text": "Higher ejection load; greater residual volume",
+      "explanation": "A narrower semilunar outlet raises the load against which the ventricle ejects. At unchanged filling and contractility, emptying falls and more volume remains after contraction.",
+      "isCorrect": true,
+      "label": "E",
+      "misconception": "No misconception: a narrower outlet raises ejection load and increases residual volume at fixed contraction strength."
+    }
+  ],
+  "context": "Learning objective: Infer the effect of semilunar stenosis on afterload and residual ventricular volume. A narrower semilunar outlet raises the load against which the ventricle ejects. At unchanged filling and contractility, emptying falls and more volume remains after contraction.",
+  "cite": "openstax-ap1-cardiac-physiology#afterload-volume",
+  "publicUsmle": {
+    "schemaVersion": 1,
+    "origin": "generated",
+    "itemText": {
+      "licence": "CC-BY-4.0",
+      "attribution": "MD3 contributors"
+    },
+    "evidence": {
+      "kind": "passage",
+      "sourceId": "openstax-ap1-cardiac-physiology",
+      "passageId": "afterload-volume",
+      "licence": {
+        "cls": "foss",
+        "id": "cc-by-4.0"
+      }
+    }
+  }
+}

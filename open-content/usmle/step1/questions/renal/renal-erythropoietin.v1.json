@@ -1,0 +1,85 @@
+{
+  "id": "bank:usmle-step1:renal-erythropoietin:v1",
+  "rotation": "usmle-step1-open",
+  "topics": [
+    "erythropoietin",
+    "renal endocrine function"
+  ],
+  "moduleNodes": [
+    "usmle/step1",
+    "usmle/step1/renal"
+  ],
+  "questionType": "mechanism",
+  "difficulty": "easy",
+  "stem": "A 70-year-old woman with advanced chronic kidney disease develops a normocytic anemia that improves with injections of recombinant erythropoietin.\n\nHer native deficiency arose because the failing kidneys are normally responsible for which of the following?",
+  "options": [
+    {
+      "label": "A",
+      "text": "Synthesizing the heme moiety incorporated into hemoglobin",
+      "isCorrect": false,
+      "misconception": "A bone-marrow/liver biosynthetic pathway is being assigned to the kidney.",
+      "explanation": "Heme synthesis occurs in developing erythroid cells and the liver; the kidney's contribution to red-cell production is the hormone erythropoietin."
+    },
+    {
+      "label": "B",
+      "text": "Producing the majority of the body's erythropoietin",
+      "isCorrect": true,
+      "misconception": "None; about 85% of erythropoietin is made in the kidneys.",
+      "explanation": "Eighty-five percent of the erythropoietin produced to stimulate red blood cell production is made in the kidneys; failing kidneys therefore cause an anemia that exogenous erythropoietin can replace."
+    },
+    {
+      "label": "C",
+      "text": "Secreting thrombopoietin, the marrow hormone parallel to erythropoietin",
+      "isCorrect": false,
+      "misconception": "The platelet lineage hormone, made by the liver, is being confused with the red-cell hormone.",
+      "explanation": "Thrombopoietin comes mainly from the liver and acts on platelets; the kidney supplies erythropoietin for the erythroid line."
+    },
+    {
+      "label": "D",
+      "text": "Storing iron as ferritin for later release to the marrow",
+      "isCorrect": false,
+      "misconception": "The liver's iron-storage role is being moved to the kidney.",
+      "explanation": "Iron stores reside mainly in the liver and macrophages; renal anemia of chronic kidney disease reflects lost erythropoietin production, not iron storage."
+    },
+    {
+      "label": "E",
+      "text": "Converting calcidiol into active calcitriol for marrow calcium signaling",
+      "isCorrect": false,
+      "misconception": "Another genuine renal endocrine function is being offered, but it does not drive erythropoiesis.",
+      "explanation": "The kidney does perform the final vitamin D activation step, but the hormone whose deficiency causes this anemia is erythropoietin."
+    }
+  ],
+  "context": "Learning objective: identify the kidney's erythropoietic role. About 85% of erythropoietin, which stimulates red blood cell formation, is produced in the kidneys.",
+  "cite": "openstax-anatomy-physiology#renal-erythropoietin",
+  "publicUsmle": {
+    "schemaVersion": 1,
+    "origin": "generated",
+    "itemText": {
+      "licence": "CC-BY-4.0",
+      "attribution": "MD3 contributors"
+    },
+    "evidence": {
+      "kind": "passage",
+      "sourceId": "openstax-anatomy-physiology",
+      "passageId": "renal-erythropoietin",
+      "licence": {
+        "cls": "foss",
+        "id": "cc-by-4.0"
+      }
+    },
+    "media": {
+      "kind": "asset",
+      "assetId": "renal-countercurrent-v1",
+      "job": "pathway",
+      "showWhen": "after-reveal",
+      "licence": {
+        "cls": "foss",
+        "id": "cc-by-4.0"
+      },
+      "attribution": "MD3 contributors",
+      "contentHash": "sha256:9892ba542b07c7ed1808ccee22a74ddedbe3118c68fd4352cad327a23e19a13b"
+    }
+  },
+  "imageUrl": "/figures/usmle/step1/renal-countercurrent-v1.svg",
+  "imageCaption": "Countercurrent multiplier, inulin=GFR, fluid compartments, EPO, micturition."
+}

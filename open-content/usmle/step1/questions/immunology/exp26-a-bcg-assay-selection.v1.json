@@ -1,0 +1,71 @@
+{
+  "id": "bank:usmle-step1:exp26-a-bcg-assay-selection:v1",
+  "rotation": "usmle-step1-open",
+  "topics": [
+    "immunology",
+    "tb-immune-testing"
+  ],
+  "moduleNodes": [
+    "usmle/step1",
+    "usmle/step1/immunology"
+  ],
+  "questionType": "interpretation",
+  "difficulty": "medium",
+  "stem": "A 24-year-old adult previously received BCG vaccination. A clinician chooses an interferon-gamma release assay when evaluating TB infection because of a possible vaccination-related effect on another available test. Which of the following comparisons best explains that choice?",
+  "options": [
+    {
+      "label": "A",
+      "text": "Prior vaccination makes chest imaging measure the same immune response",
+      "isCorrect": false,
+      "explanation": "Chest radiography evaluates disease rather than the antigen-stimulated white-cell response measured by IGRA. Prior BCG does not make these tests interchangeable measurements here.",
+      "misconception": "Treats chest imaging and an antigen-stimulated white-cell response as interchangeable measurements."
+    },
+    {
+      "label": "B",
+      "text": "Prior vaccination can affect skin testing but not the blood assay",
+      "isCorrect": true,
+      "explanation": "BCG can produce a false-positive tuberculin skin test but does not cause a false-positive IGRA. This difference explains the choice when vaccination-related confounding is the concern.",
+      "misconception": "No misconception: BCG-related false-positive effects differ between the skin test and IGRA."
+    },
+    {
+      "label": "C",
+      "text": "Prior vaccination can affect the blood assay but not skin testing",
+      "isCorrect": false,
+      "explanation": "This reverses the stated comparison. The recognized BCG-related false-positive effect concerns the skin test, not the interferon-gamma release assay selected for this evaluation.",
+      "misconception": "Reverses which infection assay is subject to the specified BCG-related false-positive effect."
+    },
+    {
+      "label": "D",
+      "text": "Prior vaccination causes equal false-positive effects in both assays",
+      "isCorrect": false,
+      "explanation": "The tests differ in their susceptibility to the specified BCG-related effect. Treating them as equally confounded removes the reason for choosing the blood assay here.",
+      "misconception": "Assumes BCG confounds both assays equally and overlooks the reason for selecting IGRA."
+    },
+    {
+      "label": "E",
+      "text": "Prior vaccination makes either result sufficient to diagnose active disease",
+      "isCorrect": false,
+      "explanation": "Neither infection-test result alone establishes active TB. Selecting an assay less affected by BCG does not eliminate the need for a separate disease evaluation.",
+      "misconception": "Confuses reduced vaccination-related confounding with proof of active TB from either infection test."
+    }
+  ],
+  "context": "Learning objective: distinguish the effect of prior BCG on TB testing methods. BCG can cause a false-positive skin test, whereas the supplied IGRA interpretation is not confounded in that way.",
+  "cite": "cdc-latent-tb-clinical#bcg-assay",
+  "publicUsmle": {
+    "schemaVersion": 1,
+    "origin": "generated",
+    "itemText": {
+      "licence": "CC-BY-4.0",
+      "attribution": "MD3 contributors"
+    },
+    "evidence": {
+      "kind": "passage",
+      "sourceId": "cdc-latent-tb-clinical",
+      "passageId": "bcg-assay",
+      "licence": {
+        "cls": "foss",
+        "id": "us-gov"
+      }
+    }
+  }
+}

@@ -1,0 +1,85 @@
+{
+  "id": "bank:usmle-step1:micro-vzv-entry-sites:v1",
+  "rotation": "usmle-step1-open",
+  "topics": [
+    "vzv",
+    "entry"
+  ],
+  "moduleNodes": [
+    "usmle/step1",
+    "usmle/step1/microbiology"
+  ],
+  "questionType": "mechanism",
+  "difficulty": "easy",
+  "stem": "Varicella-zoster virus entry is classically described via which portals?",
+  "options": [
+    {
+      "label": "A",
+      "text": "Only mosquito bite inoculation",
+      "isCorrect": false,
+      "misconception": "Vector distractor — does not match the cited teaching point.",
+      "explanation": "Wrong portal; see the cited source passage for detail."
+    },
+    {
+      "label": "B",
+      "text": "Only the colonic lumen via fecal route",
+      "isCorrect": false,
+      "misconception": "Enteric distractor — does not match the cited teaching point.",
+      "explanation": "Wrong portal; see the cited source passage for detail."
+    },
+    {
+      "label": "C",
+      "text": "Respiratory tract and conjunctiva",
+      "isCorrect": true,
+      "misconception": "None; respiratory + conjunctival entry.",
+      "explanation": "CDC lists respiratory tract and conjunctiva."
+    },
+    {
+      "label": "D",
+      "text": "Only percutaneous needlestick of spores",
+      "isCorrect": false,
+      "misconception": "Anthrax-ish distractor.",
+      "explanation": "Wrong portal; see the cited source passage for detail."
+    },
+    {
+      "label": "E",
+      "text": "Only urinary tract mucosal scrapes",
+      "isCorrect": false,
+      "misconception": "GU distractor — does not match the cited teaching point.",
+      "explanation": "Wrong portal; see the cited source passage for detail."
+    }
+  ],
+  "context": "Learning objective: recall vzv, entry from the cited FOSS source.",
+  "cite": "cdc-pink-book-varicella#vzv-entry",
+  "publicUsmle": {
+    "schemaVersion": 1,
+    "origin": "generated",
+    "itemText": {
+      "licence": "CC-BY-4.0",
+      "attribution": "MD3 contributors"
+    },
+    "evidence": {
+      "kind": "passage",
+      "sourceId": "cdc-pink-book-varicella",
+      "passageId": "vzv-entry",
+      "licence": {
+        "cls": "foss",
+        "id": "us-gov"
+      }
+    },
+    "media": {
+      "kind": "asset",
+      "assetId": "micro-pathogen-virulence-v1",
+      "job": "compare-table",
+      "showWhen": "after-reveal",
+      "licence": {
+        "cls": "foss",
+        "id": "cc-by-4.0"
+      },
+      "attribution": "MD3 contributors",
+      "contentHash": "sha256:e0ca8dcce5538b15d4a9973d8a6934fc8199d41e7059a4d8f0059cc1ec78a22e"
+    }
+  },
+  "imageUrl": "/figures/usmle/step1/micro-pathogen-virulence-v1.svg",
+  "imageCaption": "Pathogen virulence and Pink Book organism map (FOSS draft)."
+}

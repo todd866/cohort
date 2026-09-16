@@ -1,0 +1,74 @@
+{
+  "id": "bank:usmle-step1:respiratory-respiratory-mechanics-r3:v1",
+  "rotation": "usmle-step1-open",
+  "ladderId": "respiratory-mechanics",
+  "topics": [
+    "Boyle's law",
+    "pneumothorax",
+    "ventilation mechanics",
+    "ladder:respiratory-mechanics"
+  ],
+  "moduleNodes": [
+    "usmle/step1",
+    "usmle/step1/respiratory"
+  ],
+  "questionType": "mechanism",
+  "difficulty": "hard",
+  "stem": "A 19-year-old man who is 193 cm tall presents to the emergency department with sudden right-sided pleuritic chest pain and shortness of breath after bench-pressing. Vital signs are stable. Examination shows diminished breath sounds, hyperresonance, and reduced chest expansion on the right. Chest radiography shows complete collapse of the right lung with a visible pleural line and no mediastinal shift.\n\nWhich of the following best explains why voluntary inspiration fails to reinflate the affected lung?",
+  "options": [
+    {
+      "label": "A",
+      "text": "Paralysis of the diaphragm prevents any change in thoracic volume",
+      "isCorrect": false,
+      "misconception": "Phrenic nerve injury is being invoked despite an intact inspiratory pump.",
+      "explanation": "Diaphragmatic paralysis reduces ventilation by preventing thoracic expansion; this patient can inspire, but air cannot enter the collapsed lung because the pleural pressure gradient is lost."
+    },
+    {
+      "label": "B",
+      "text": "Loss of the subatmospheric pressure gradient required for lung inflation",
+      "isCorrect": true,
+      "misconception": "None; pneumothorax abolishes the pressure gradient that Boyle's law depends on for inflation.",
+      "explanation": "Normally diaphragm contraction enlarges the pleural cavities and lowers their pressure, drawing air in; when air enters the pleural space the lung collapses and that subatmospheric gradient vanishes, so increasing thoracic volume no longer creates the pressure fall needed for inspiration."
+    },
+    {
+      "label": "C",
+      "text": "Surfactant deficiency raises alveolar surface tension and prevents expansion",
+      "isCorrect": false,
+      "misconception": "Neonatal respiratory distress mechanism is being applied to traumatic pneumothorax.",
+      "explanation": "Surfactant reduces alveolar surface tension in immature lungs; pneumothorax fails because pleural air eliminates the negative intrapleural pressure that drives inflation, not because of surfactant loss."
+    },
+    {
+      "label": "D",
+      "text": "Bronchospasm raises airway resistance above the driving pressure gradient",
+      "isCorrect": false,
+      "misconception": "Obstructive airflow limitation is being substituted for a pleural-space defect.",
+      "explanation": "Bronchospasm impedes airflow through patent airways; complete lung collapse from pneumothorax reflects loss of the pleural pressure gradient, not increased airway resistance alone."
+    },
+    {
+      "label": "E",
+      "text": "Alveolar consolidation eliminates compliant tissue on the affected side",
+      "isCorrect": false,
+      "misconception": "Pneumonia-style filling defect is being confused with pleural air.",
+      "explanation": "Consolidation stiffens lung parenchyma but leaves the pleural cavity intact; radiographic pleural line and hyperresonance indicate air in the pleural space, not parenchymal consolidation."
+    }
+  ],
+  "context": "Learning objective: apply Boyle's law to pneumothorax. Inspiration requires diaphragmatic expansion to lower pleural and alveolar pressure; pneumothorax equalizes pleural pressure with atmosphere and abolishes the gradient that draws air in.",
+  "cite": "openstax-anatomy-physiology#resp-boyle-law",
+  "publicUsmle": {
+    "schemaVersion": 1,
+    "origin": "generated",
+    "itemText": {
+      "licence": "CC-BY-4.0",
+      "attribution": "MD3 contributors"
+    },
+    "evidence": {
+      "kind": "passage",
+      "sourceId": "openstax-anatomy-physiology",
+      "passageId": "resp-boyle-law",
+      "licence": {
+        "cls": "foss",
+        "id": "cc-by-4.0"
+      }
+    }
+  }
+}

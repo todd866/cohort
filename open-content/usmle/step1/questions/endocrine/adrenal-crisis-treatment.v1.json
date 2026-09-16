@@ -1,0 +1,85 @@
+{
+  "id": "bank:usmle-step1:endocrine-adrenal-crisis-treatment:v1",
+  "rotation": "usmle-step1-open",
+  "topics": [
+    "adrenal crisis",
+    "emergency glucocorticoid replacement"
+  ],
+  "moduleNodes": [
+    "usmle/step1",
+    "usmle/step1/endocrine"
+  ],
+  "questionType": "management",
+  "difficulty": "medium",
+  "stem": "A 41-year-old man with known adrenal insufficiency presents with vomiting, confusion, blood pressure 78/44 mm Hg, glucose 48 mg/dL, and sodium 124 mEq/L after a febrile illness.\n\nWhich immediate treatment is most appropriate?",
+  "options": [
+    {
+      "label": "A",
+      "text": "IV hydrocortisone plus saline and dextrose",
+      "isCorrect": true,
+      "misconception": "None; this replaces cortisol while correcting volume and glucose deficits.",
+      "explanation": "Suspected adrenal crisis requires immediate parenteral glucocorticoid therapy with aggressive isotonic fluid and glucose support."
+    },
+    {
+      "label": "B",
+      "text": "IV insulin plus dextrose and observation",
+      "isCorrect": false,
+      "misconception": "Insulin-dextrose may temporarily shift potassium but does not treat cortisol deficiency or shock.",
+      "explanation": "The full syndrome is adrenal crisis, so endocrine replacement and volume resuscitation cannot be delayed."
+    },
+    {
+      "label": "C",
+      "text": "Oral prednisone after an ACTH stimulation test",
+      "isCorrect": false,
+      "misconception": "Diagnostic confirmation is being prioritized over treatment of a life-threatening emergency.",
+      "explanation": "Treatment should begin immediately when adrenal crisis is suspected; vomiting also makes oral therapy unreliable."
+    },
+    {
+      "label": "D",
+      "text": "IV levothyroxine plus hypotonic saline",
+      "isCorrect": false,
+      "misconception": "Myxedema coma is being confused with an adrenal crisis in a patient with known adrenal insufficiency.",
+      "explanation": "Hypotonic fluid would not address shock, and thyroid hormone does not replace the missing glucocorticoid."
+    },
+    {
+      "label": "E",
+      "text": "Oral fludrocortisone plus fluid restriction",
+      "isCorrect": false,
+      "misconception": "Chronic mineralocorticoid replacement is being substituted for emergency resuscitation.",
+      "explanation": "An unstable, vomiting patient needs IV therapy; fluid restriction would worsen severe volume depletion."
+    }
+  ],
+  "context": "Learning objective: treat adrenal crisis before waiting for confirmatory testing. The immediate priorities are parenteral glucocorticoid replacement, isotonic volume resuscitation, and dextrose when hypoglycemia is present.",
+  "cite": "niddk-adrenal-treatment#adrenal-crisis-treatment",
+  "publicUsmle": {
+    "schemaVersion": 1,
+    "origin": "generated",
+    "itemText": {
+      "licence": "CC-BY-4.0",
+      "attribution": "MD3 contributors"
+    },
+    "evidence": {
+      "kind": "passage",
+      "sourceId": "niddk-adrenal-treatment",
+      "passageId": "adrenal-crisis-treatment",
+      "licence": {
+        "cls": "foss",
+        "id": "us-gov"
+      }
+    },
+    "media": {
+      "kind": "asset",
+      "assetId": "adrenal-zones-v1",
+      "job": "anatomy",
+      "showWhen": "after-reveal",
+      "licence": {
+        "cls": "foss",
+        "id": "cc-by-4.0"
+      },
+      "attribution": "MD3 contributors",
+      "contentHash": "sha256:8e0c946bc37a2ccf13aae4036f026b33c9b4fa9c73fa61ab18649158ba41021c"
+    }
+  },
+  "imageUrl": "/figures/usmle/step1/adrenal-zones-v1.svg",
+  "imageCaption": "Adrenal cortex GFR zones + medulla; aldosterone / cortisol / androgens / catecholamines."
+}

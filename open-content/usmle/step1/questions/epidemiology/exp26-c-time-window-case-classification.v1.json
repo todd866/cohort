@@ -1,0 +1,71 @@
+{
+  "id": "bank:usmle-step1:exp26-c-time-window-case-classification:v1",
+  "rotation": "usmle-step1-open",
+  "topics": [
+    "epidemiology",
+    "time-window-case-classification"
+  ],
+  "moduleNodes": [
+    "usmle/step1",
+    "usmle/step1/epidemiology"
+  ],
+  "questionType": "interpretation",
+  "difficulty": "easy",
+  "stem": "A clinic reviews a closed cohort at the end of June. Person X developed a condition in April and recovered in May. Person Y developed it in the previous December and still has it. Person Z developed it in May and still has it. Which of the following classifications identifies the people contributing to incident cases from January through June and to point prevalence on June 30?",
+  "options": [
+    {
+      "label": "A",
+      "text": "Incident cases: Y and Z; point prevalence: X and Z",
+      "isCorrect": false,
+      "explanation": "Person Y already had the condition before January, so does not contribute to new cases in this interval. Person X recovered before June 30 and is excluded from point prevalence on that date.",
+      "misconception": "Counts a pre-existing case as incident and a recovered case as prevalent."
+    },
+    {
+      "label": "B",
+      "text": "Incident cases: X and Y; point prevalence: X and Z",
+      "isCorrect": false,
+      "explanation": "Person X is incident, but person Y developed the condition before the interval. The June 30 point-prevalence set includes ongoing cases Y and Z, excluding X after recovery.",
+      "misconception": "Includes an old onset in incidence and a recovered person in current prevalence."
+    },
+    {
+      "label": "C",
+      "text": "Incident cases: X and Z; point prevalence: X and Y",
+      "isCorrect": false,
+      "explanation": "The incident-case set is correct because X and Z developed the condition during the interval. Point prevalence on June 30 excludes recovered person X and includes ongoing case Z.",
+      "misconception": "Includes recovered X and omits ongoing Z from point prevalence."
+    },
+    {
+      "label": "D",
+      "text": "Incident cases: Y and Z; point prevalence: Y and Z",
+      "isCorrect": false,
+      "explanation": "The point-prevalence set is correct, but person Y is a pre-existing case. Person X developed the condition during the interval and contributes to incidence despite subsequently recovering.",
+      "misconception": "Omission of recovered X from incidence confuses onset with persistence."
+    },
+    {
+      "label": "E",
+      "text": "Incident cases: X and Z; point prevalence: Y and Z",
+      "isCorrect": true,
+      "explanation": "X and Z developed the condition during January through June, so both are incident cases. Y and Z still have the condition on June 30, so they contribute to point prevalence.",
+      "misconception": "No misconception: onset defines incidence; ongoing disease defines point prevalence."
+    }
+  ],
+  "context": "Learning objective: Classify cases using the measure’s specified time window and whether disease is present at the observation date.\n\nX and Z developed the condition during January through June, so both are incident cases. Y and Z still have the condition on June 30, so they contribute to point prevalence.",
+  "cite": "cdc-epi-incidence-prevalence#incidence-definition",
+  "publicUsmle": {
+    "schemaVersion": 1,
+    "origin": "generated",
+    "itemText": {
+      "licence": "CC-BY-4.0",
+      "attribution": "MD3 contributors"
+    },
+    "evidence": {
+      "kind": "passage",
+      "sourceId": "cdc-epi-incidence-prevalence",
+      "passageId": "incidence-definition",
+      "licence": {
+        "cls": "foss",
+        "id": "us-gov"
+      }
+    }
+  }
+}

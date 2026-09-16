@@ -1,0 +1,85 @@
+{
+  "id": "bank:usmle-step1:pharm-olanzapine-uses:v1",
+  "rotation": "usmle-step1-open",
+  "topics": [
+    "olanzapine",
+    "schizophrenia"
+  ],
+  "moduleNodes": [
+    "usmle/step1",
+    "usmle/step1/pharmacology"
+  ],
+  "questionType": "mechanism",
+  "difficulty": "easy",
+  "stem": "Olanzapine is used to treat which mental illness named first by MedlinePlus?",
+  "options": [
+    {
+      "label": "A",
+      "text": "Only angina prevention without antipsychotic labeling for this drug",
+      "isCorrect": false,
+      "misconception": "Wrong concept for this stem; does not match the cited passage.",
+      "explanation": "This option does not match the cited source passage for the stem."
+    },
+    {
+      "label": "B",
+      "text": "Only tuberculosis regimens without antipsychotic indications listed",
+      "isCorrect": false,
+      "misconception": "Wrong concept for this stem; does not match the cited passage.",
+      "explanation": "This option does not match the cited source passage for the stem."
+    },
+    {
+      "label": "C",
+      "text": "Only influenza prophylaxis without schizophrenia labeling present",
+      "isCorrect": false,
+      "misconception": "Wrong concept for this stem; does not match the cited passage.",
+      "explanation": "This option does not match the cited source passage for the stem."
+    },
+    {
+      "label": "D",
+      "text": "Only gout flare therapy without olanzapine psychiatric uses listed",
+      "isCorrect": false,
+      "misconception": "Wrong concept for this stem; does not match the cited passage.",
+      "explanation": "This option does not match the cited source passage for the stem."
+    },
+    {
+      "label": "E",
+      "text": "Schizophrenia affecting thinking, feeling, and behavior over time",
+      "isCorrect": true,
+      "misconception": "None — this option matches the cited source passage for the stem.",
+      "explanation": "This correct choice is supported by the cited FOSS passage."
+    }
+  ],
+  "context": "Learning objective: recall olanzapine schizophrenia use from the cited FOSS source.",
+  "cite": "medlineplus-olanzapine#olanzapine-uses",
+  "publicUsmle": {
+    "schemaVersion": 1,
+    "origin": "generated",
+    "itemText": {
+      "licence": "CC-BY-4.0",
+      "attribution": "MD3 contributors"
+    },
+    "evidence": {
+      "kind": "passage",
+      "sourceId": "medlineplus-olanzapine",
+      "passageId": "olanzapine-uses",
+      "licence": {
+        "cls": "foss",
+        "id": "us-gov"
+      }
+    },
+    "media": {
+      "kind": "asset",
+      "assetId": "pharm-drug-classes-v1",
+      "job": "compare-table",
+      "showWhen": "after-reveal",
+      "licence": {
+        "cls": "foss",
+        "id": "cc-by-4.0"
+      },
+      "attribution": "MD3 contributors",
+      "contentHash": "sha256:0660ff11235451eff9a2718dd975d64fa61483b220682b17bd82c8050fd4bceb"
+    }
+  },
+  "imageUrl": "/figures/usmle/step1/pharm-drug-classes-v1.svg",
+  "imageCaption": "High-yield FOSS drug-class map from MedlinePlus labels."
+}

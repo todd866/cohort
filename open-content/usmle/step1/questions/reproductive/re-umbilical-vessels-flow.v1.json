@@ -1,0 +1,86 @@
+{
+  "id": "bank:usmle-step1:re-umbilical-vessels-flow:v1",
+  "rotation": "usmle-step1-open",
+  "topics": [
+    "umbilical cord",
+    "placenta",
+    "fetal circulation"
+  ],
+  "moduleNodes": [
+    "usmle/step1",
+    "usmle/step1/reproductive"
+  ],
+  "questionType": "mechanism",
+  "difficulty": "medium",
+  "stem": "A 25-year-old woman at 20 weeks of gestation undergoes ultrasound examination of the umbilical cord, which shows two arteries and one vein.\n\nWhich of the following correctly describes the direction of oxygenated blood flow in these vessels?",
+  "options": [
+    {
+      "label": "A",
+      "text": "The two umbilical arteries carry oxygenated blood toward the fetus",
+      "isCorrect": false,
+      "misconception": "The fetal arteries are being assigned the vein's cargo.",
+      "explanation": "The umbilical arteries carry deoxygenated blood away from the fetus to the placenta — the reverse of the postnatal pattern; oxygenated blood arrives via the vein."
+    },
+    {
+      "label": "B",
+      "text": "All three vessels carry oxygenated blood toward the fetus",
+      "isCorrect": false,
+      "misconception": "The fetal waste-removal limb is being overlooked.",
+      "explanation": "Only the vein delivers oxygenated blood; the two arteries remove deoxygenated blood and metabolic wastes from the fetus to the placenta."
+    },
+    {
+      "label": "C",
+      "text": "The single umbilical vein carries deoxygenated blood to the placenta",
+      "isCorrect": false,
+      "misconception": "The vein's contents and direction are both being reversed.",
+      "explanation": "The umbilical vein flows toward the fetus carrying oxygen and nutrients; deoxygenated blood leaves the fetus through the two arteries."
+    },
+    {
+      "label": "D",
+      "text": "The single umbilical vein carries oxygenated blood toward the fetus",
+      "isCorrect": true,
+      "misconception": "None; the placental vein reverses the usual rule.",
+      "explanation": "The umbilical cord carries deoxygenated blood and wastes from the fetus through two umbilical arteries, while nutrients and oxygen are carried from the mother to the fetus through the single umbilical vein."
+    },
+    {
+      "label": "E",
+      "text": "All three vessels carry deoxygenated blood toward the placenta",
+      "isCorrect": false,
+      "misconception": "The nutrient-delivery limb is being overlooked.",
+      "explanation": "Fetal oxygen and nutrients arrive from the mother through the single umbilical vein; only the two arteries carry deoxygenated blood away."
+    }
+  ],
+  "context": "Learning objective: read the umbilical circulation. The cord has two arteries and one vein with reversed postnatal roles: the umbilical vein carries oxygenated, nutrient-rich blood from the placenta to the fetus, and the two umbilical arteries carry deoxygenated blood and wastes from the fetus to the placenta. The cord is cushioned by Wharton's jelly.",
+  "cite": "openstax-anatomy-physiology#re-umbilical-vessels-flow",
+  "publicUsmle": {
+    "schemaVersion": 1,
+    "origin": "generated",
+    "itemText": {
+      "licence": "CC-BY-4.0",
+      "attribution": "MD3 contributors"
+    },
+    "evidence": {
+      "kind": "passage",
+      "sourceId": "openstax-anatomy-physiology",
+      "passageId": "re-umbilical-vessels-flow",
+      "licence": {
+        "cls": "foss",
+        "id": "cc-by-4.0"
+      }
+    },
+    "media": {
+      "kind": "asset",
+      "assetId": "fertilization-implantation-v1",
+      "job": "pathway",
+      "showWhen": "after-reveal",
+      "licence": {
+        "cls": "foss",
+        "id": "cc-by-4.0"
+      },
+      "attribution": "MD3 contributors",
+      "contentHash": "sha256:b5ebb74360e8db4d6a3783533894c0d3d0916c7900359f2029362fcab1e33982"
+    }
+  },
+  "imageUrl": "/figures/usmle/step1/fertilization-implantation-v1.svg",
+  "imageCaption": "Fertilization in tube ampulla; cortical reaction; implantation; umbilical vessel polarity."
+}

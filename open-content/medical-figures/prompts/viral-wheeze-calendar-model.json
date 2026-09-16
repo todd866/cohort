@@ -1,0 +1,35 @@
+{
+  "figureId": "viral-wheeze-calendar-model",
+  "tool": "built-in image_gen",
+  "model": null,
+  "referenceAssetIds": [],
+  "externalReferenceImages": [],
+  "prompt": "Original educational conceptual illustration, landscape 3:2. Warm ivory paper, sophisticated hand-painted gouache/watercolour, confident fine brown outlines, navy lettering, restrained teal, coral and amber. Editorial science illustration with spacious composition and large legible labels. The explanatory structure must carry the meaning visually: molecules, objects, geometry or flow; never paragraphs in boxes. No organs, regional anatomy, teeth or joint cutaways, tissue layers, invented histology, diagnostic photographs, radiographs or patient data. All symbols are explicitly conceptual. Footer: 'Conceptual teaching model • Not to scale'. Title 'Episodes and intervals'. A long horizontal ribbon of unnumbered calendar tiles, softly perspective-painted. Toward the left a short cluster of coral tiles under a simple geometric VIRUS SYMBOL and a tissue box; a curved sound-ripple symbol beside them; label 'Viral infection + wheeze'. Then a longer clear ivory and teal stretch with small play blocks, labelled 'Well between episodes'. Toward the right a second separate coral cluster with the same simple virus symbol, tissue box and sound ripple; again label 'Viral infection + wheeze'. Gentle time arrow below, no dates or day numbers. Main takeaway 'Ask about interval symptoms'. Bottom qualifier 'Illustrative pattern, not a diagnosis'. Virus symbols are abstract badges, not electron microscopy. Absolutely NO clouds, rain, snow, weather, cold-temperature symbol or chilly blue child. No lungs, airways, inhaler technique or clinical chest sounds recording.",
+  "clinicalSources": [
+    {
+      "title": "Royal United Hospitals Bath: Preschool wheeze",
+      "url": "https://www.ruh.nhs.uk/patients/patient_information/PAE007_Preschool_wheeze.pdf"
+    }
+  ],
+  "teaching": {
+    "question": "Why ask how a preschool child breathes between wheezing illnesses?",
+    "answer": "A common pattern is viral-triggered wheeze with well intervals. Symptoms between infections help characterise the illness and guide assessment; the episodic pattern alone does not exclude asthma.",
+    "imageRole": "after-reveal"
+  },
+  "title": "Episodes and the intervals between them",
+  "caption": "In a common preschool wheeze pattern, viral infections trigger episodes and the child is well between infections. The interval history matters; this pattern alone does not rule out asthma.",
+  "alt": "An unnumbered calendar ribbon shows two viral-infection-and-wheeze clusters with virus badges, separated by a clear well interval.",
+  "review": {
+    "status": "pending-independent-qa",
+    "method": "agent-visual-and-source-review",
+    "notes": "Revised after independent QA. Both episode clusters now use explicit virus badges and text Viral infection + wheeze; there are no clouds, rain or weather cues. Clear well interval and rightward unnumbered time arrow preserved. Pattern-not-diagnosis qualifier remains. Previous weather-ambiguous hash archived as superseded.",
+    "structure": {
+      "kind": "conceptual",
+      "status": "verified",
+      "specificationFiles": [
+        "scaffolds/viral-wheeze-calendar-model.json"
+      ],
+      "notes": "Revised after independent QA. Both episode clusters now use explicit virus badges and text Viral infection + wheeze; there are no clouds, rain or weather cues. Clear well interval and rightward unnumbered time arrow preserved. Pattern-not-diagnosis qualifier remains. Previous weather-ambiguous hash archived as superseded."
+    }
+  }
+}

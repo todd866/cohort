@@ -1,0 +1,85 @@
+{
+  "id": "bank:usmle-step1:cardiovascular-ec-coupling:v1",
+  "rotation": "usmle-step1-open",
+  "topics": [
+    "excitation-contraction coupling",
+    "muscle physiology"
+  ],
+  "moduleNodes": [
+    "usmle/step1",
+    "usmle/step1/cardiovascular"
+  ],
+  "questionType": "mechanism",
+  "difficulty": "medium",
+  "stem": "In an experiment, an isolated skeletal muscle fiber from a 30-year-old donor is stimulated electrically, generating an action potential that propagates along the sarcolemma and into the T-tubules. The fiber is then bathed in a solution that chelates calcium ions, and contraction fails to occur despite a normal action potential.\n\nWhich of the following steps in excitation-contraction coupling is most directly interrupted by the chelator?",
+  "options": [
+    {
+      "label": "A",
+      "text": "Propagation of the action potential along the sarcolemma",
+      "isCorrect": false,
+      "misconception": "The electrical step is being treated as calcium-dependent.",
+      "explanation": "The action potential propagates normally in the chelating solution; the failure is downstream of the electrical signal, at the calcium-dependent regulatory step."
+    },
+    {
+      "label": "B",
+      "text": "Binding of acetylcholine at the neuromuscular junction",
+      "isCorrect": false,
+      "misconception": "An upstream synaptic event is being blamed for a failure inside the fiber.",
+      "explanation": "The fiber is stimulated electrically, bypassing the neuromuscular junction; acetylcholine binding is not the step interrupted by calcium chelation."
+    },
+    {
+      "label": "C",
+      "text": "Exposure of myosin-binding sites on actin",
+      "isCorrect": true,
+      "misconception": "None; calcium binding to troponin moves tropomyosin away from the myosin-binding sites.",
+      "explanation": "The action potential triggers calcium release from the sarcoplasmic reticulum, and in relaxed muscle the myosin-binding site on actin is blocked by tropomyosin; without calcium, that blockade is not lifted."
+    },
+    {
+      "label": "D",
+      "text": "Hydrolysis of ATP by the myosin head",
+      "isCorrect": false,
+      "misconception": "The energy-supplying step is being confused with the regulatory trigger.",
+      "explanation": "ATP hydrolysis powers the cross-bridge cycle but is not the calcium-dependent switch; the chelator blocks site exposure, not ATP use."
+    },
+    {
+      "label": "E",
+      "text": "Reuptake of calcium into the sarcoplasmic reticulum",
+      "isCorrect": false,
+      "misconception": "The relaxation step is being confused with the activation step.",
+      "explanation": "Reuptake restores the relaxed state after contraction; chelation prevents contraction from starting by keeping binding sites covered, not by accelerating reuptake."
+    }
+  ],
+  "context": "Learning objective: sequence excitation-contraction coupling. The action potential triggers SR calcium release; in relaxed muscle, tropomyosin blocks the myosin-binding site on actin.",
+  "cite": "openstax-anatomy-physiology#muscle-sr-calcium-release",
+  "publicUsmle": {
+    "schemaVersion": 1,
+    "origin": "generated",
+    "itemText": {
+      "licence": "CC-BY-4.0",
+      "attribution": "MD3 contributors"
+    },
+    "evidence": {
+      "kind": "passage",
+      "sourceId": "openstax-anatomy-physiology",
+      "passageId": "muscle-sr-calcium-release",
+      "licence": {
+        "cls": "foss",
+        "id": "cc-by-4.0"
+      }
+    },
+    "media": {
+      "kind": "asset",
+      "assetId": "ec-coupling-v1",
+      "job": "mechanism",
+      "showWhen": "after-reveal",
+      "licence": {
+        "cls": "foss",
+        "id": "cc-by-4.0"
+      },
+      "attribution": "MD3 contributors",
+      "contentHash": "sha256:1e10a90aa480101d834aa52b19989daed4c0ef1e215bc584b5320cecb423e2f7"
+    }
+  },
+  "imageUrl": "/figures/usmle/step1/ec-coupling-v1.svg",
+  "imageCaption": "EC coupling: T-tubule AP -> SR Ca2+ -> troponin -> cross-bridge; ATP for detach and Ca2+ pump."
+}

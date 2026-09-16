@@ -1,0 +1,35 @@
+{
+  "figureId": "haemostasis-reinforcement-model",
+  "tool": "built-in image_gen",
+  "model": null,
+  "referenceAssetIds": [],
+  "externalReferenceImages": [],
+  "prompt": "Original educational conceptual illustration, landscape 3:2. Warm ivory paper, sophisticated hand-painted gouache/watercolour, confident fine brown outlines, navy lettering, restrained teal, coral and amber. Editorial science illustration with spacious composition and large legible labels. The explanatory structure must carry the meaning visually: molecules, objects, geometry or flow; never paragraphs in boxes. No organs, regional anatomy, teeth or joint cutaways, tissue layers, invented histology, diagnostic photographs, radiographs or patient data. All symbols are explicitly conceptual. Footer: 'Conceptual teaching model • Not to scale'. Title 'Haemostasis: gather, then reinforce'. Two large side-by-side sculptures made from symbolic objects. Each has TWO neutral GREY RECTANGULAR WOODEN BLOCKS on the paper, separated by a small gap, explicitly labelled in tiny text 'Abstract injury model'. These are NOT tissue or a vessel. In left composition a tightly packed group of small purple beads bridges the gap, labelled 'Platelet plug'. In right composition reproduce the same grey blocks and same purple bead arrangement, but add a clearly interlacing TEAL fibre mesh through and around the bead cluster and anchored on both blocks, labelled 'Fibrin reinforcement'. A large horizontal arrow between the compositions says 'Coagulation adds fibrin'. Short text below left 'Platelets gather'; right 'Fibrin strengthens the plug'. No red cells, no blood vessel, no skin, no layers, no anatomy. The beads stay purple in both panels and do not transform into teal fibres.",
+  "clinicalSources": [
+    {
+      "title": "NHLBI — How does blood clot?",
+      "url": "https://www.nhlbi.nih.gov/health/clotting-disorders/how-blood-clots"
+    }
+  ],
+  "teaching": {
+    "question": "What does fibrin add after a platelet plug has formed?",
+    "answer": "Fibrin provides an interlacing mesh that reinforces and stabilises the platelet plug.",
+    "imageRole": "after-reveal"
+  },
+  "title": "Platelet plug and fibrin reinforcement",
+  "caption": "Platelets form an initial plug. Coagulation generates a fibrin mesh that reinforces the platelet plug into a more stable clot.",
+  "alt": "Purple platelet beads bridge a gap in an abstract frame, followed by the same bead plug reinforced with an interlacing teal fibrin mesh.",
+  "review": {
+    "status": "pending-independent-qa",
+    "method": "agent-visual-and-source-review",
+    "notes": "Pixel-to-specification review: two pairs of clearly artificial grey blocks contain purple bead plugs; only the second has a teal interlacing mesh anchored across both blocks. Coagulation adds fibrin arrow preserves platelets as distinct purple objects. No tissue layers or vessel wall; abstract injury model is explicit.",
+    "structure": {
+      "kind": "conceptual",
+      "status": "verified",
+      "specificationFiles": [
+        "scaffolds/haemostasis-reinforcement-model.json"
+      ],
+      "notes": "Pixel-to-specification review: two pairs of clearly artificial grey blocks contain purple bead plugs; only the second has a teal interlacing mesh anchored across both blocks. Coagulation adds fibrin arrow preserves platelets as distinct purple objects. No tissue layers or vessel wall; abstract injury model is explicit."
+    }
+  }
+}

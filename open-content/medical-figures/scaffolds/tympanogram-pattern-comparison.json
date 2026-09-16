@@ -1,0 +1,128 @@
+{
+  "schemaVersion": 1,
+  "figureId": "tympanogram-pattern-comparison",
+  "kind": "conceptual",
+  "sourceFacts": [
+    {
+      "id": "fact-1",
+      "fact": "Type A peaks at approximately ambient middle-ear pressure.",
+      "sources": [
+        {
+          "title": "AAO-HNS: Clinical practice guideline—otitis media with effusion",
+          "url": "https://aao-hnsfjournals.onlinelibrary.wiley.com/doi/10.1177/0194599815623467"
+        },
+        {
+          "title": "ASHA: Tympanometry",
+          "url": "https://doi.org/10.1044/policy.RP1988-00027"
+        }
+      ]
+    },
+    {
+      "id": "fact-2",
+      "fact": "Type B is flat with no discernible peak; ear-canal volume helps distinguish possible causes.",
+      "sources": [
+        {
+          "title": "AAO-HNS: Clinical practice guideline—otitis media with effusion",
+          "url": "https://aao-hnsfjournals.onlinelibrary.wiley.com/doi/10.1177/0194599815623467"
+        },
+        {
+          "title": "ASHA: Tympanometry",
+          "url": "https://doi.org/10.1044/policy.RP1988-00027"
+        }
+      ]
+    },
+    {
+      "id": "fact-3",
+      "fact": "Type C has a discernible peak at negative middle-ear pressure.",
+      "sources": [
+        {
+          "title": "AAO-HNS: Clinical practice guideline—otitis media with effusion",
+          "url": "https://aao-hnsfjournals.onlinelibrary.wiley.com/doi/10.1177/0194599815623467"
+        },
+        {
+          "title": "ASHA: Tympanometry",
+          "url": "https://doi.org/10.1044/policy.RP1988-00027"
+        }
+      ]
+    },
+    {
+      "id": "fact-4",
+      "fact": "A type B tracing with normal equivalent ear-canal volume usually supports effusion; other volumes change interpretation.",
+      "sources": [
+        {
+          "title": "AAO-HNS: Clinical practice guideline—otitis media with effusion",
+          "url": "https://aao-hnsfjournals.onlinelibrary.wiley.com/doi/10.1177/0194599815623467"
+        },
+        {
+          "title": "ASHA: Tympanometry",
+          "url": "https://doi.org/10.1044/policy.RP1988-00027"
+        }
+      ]
+    }
+  ],
+  "nodes": [
+    {
+      "id": "a",
+      "shape": "single peak centred at zero",
+      "label": "A: near ambient"
+    },
+    {
+      "id": "b",
+      "shape": "low flat line",
+      "label": "B: flat"
+    },
+    {
+      "id": "c",
+      "shape": "single peak left of zero",
+      "label": "C: negative pressure"
+    },
+    {
+      "id": "volume",
+      "shape": "qualifier beneath flat graph",
+      "label": "Check ear-canal volume"
+    }
+  ],
+  "edges": [
+    {
+      "from": "a",
+      "to": "c",
+      "meaning": "same pressure axis; C peak shifted left, not downward"
+    },
+    {
+      "from": "b",
+      "to": "volume",
+      "meaning": "flat interpretation requires canal volume"
+    }
+  ],
+  "labels": [
+    "Shape and peak position",
+    "Type A",
+    "Type B",
+    "Type C",
+    "Near ambient",
+    "Flat",
+    "Negative pressure",
+    "Compliance",
+    "Pressure",
+    "−",
+    "0",
+    "+",
+    "For B, check ear-canal volume",
+    "Schematic patterns, not patient measurements"
+  ],
+  "forbiddenAnatomy": [
+    "Organs, ear/airway anatomy, actual or simulated patient recordings"
+  ],
+  "validation": {
+    "status": "verified",
+    "method": "source-and-conceptual-structure-review",
+    "checks": [
+      "All x axes increase from negative left through zero midpoint to positive right; y compliance rises upward.",
+      "A peak aligned zero; C peak clearly left of zero; B no peak.",
+      "No plot interpreted as actual patient data.",
+      "Canal-volume qualifier present for flat trace."
+    ],
+    "pixelReviewStatus": "verified",
+    "pixelReviewNotes": "Three x axes consistently run negative→zero→positive. A peak is centred on zero, B line is flat, C peak is clearly left of zero while compliance remains upward. Ear-canal-volume qualifier present. No ear anatomy, cutoff values or patient measurement claim."
+  }
+}

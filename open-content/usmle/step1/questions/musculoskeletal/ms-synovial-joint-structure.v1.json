@@ -1,0 +1,86 @@
+{
+  "id": "bank:usmle-step1:ms-synovial-joint-structure:v1",
+  "rotation": "usmle-step1-open",
+  "topics": [
+    "synovial joint",
+    "articular cartilage",
+    "synovial fluid"
+  ],
+  "moduleNodes": [
+    "usmle/step1",
+    "usmle/step1/musculoskeletal"
+  ],
+  "questionType": "mechanism",
+  "difficulty": "easy",
+  "stem": "During arthroscopy of a 27-year-old athlete's injured knee, the surgeon notes that the bone ends glide smoothly within a fluid-filled space.\n\nFriction between these bone ends is normally minimized by which of the following?",
+  "options": [
+    {
+      "label": "A",
+      "text": "Intracapsular ligaments and the meniscus",
+      "isCorrect": false,
+      "misconception": "Stabilizing structures are being cast as the friction reducers.",
+      "explanation": "Ligaments hold the bones together and resist abnormal motion, and a meniscus pads or smooths movement; neither coats the bone ends or lubricates the cavity."
+    },
+    {
+      "label": "B",
+      "text": "Articular cartilage and the synovial fluid",
+      "isCorrect": true,
+      "misconception": "None; cartilage coating plus lubricating fluid make the joint nearly frictionless.",
+      "explanation": "A thin layer of articular cartilage covers the articulating surfaces, and synovial fluid secreted by the synovial membrane lubricates the joint cavity, so the bone ends glide without grinding."
+    },
+    {
+      "label": "C",
+      "text": "The fibrous layer of the articular capsule",
+      "isCorrect": false,
+      "misconception": "The joint's outer wall is being cast as the anti-friction element.",
+      "explanation": "The fibrous capsule forms the walls of the joint cavity and provides strength; friction at the bone surfaces is handled by cartilage and synovial fluid."
+    },
+    {
+      "label": "D",
+      "text": "Bursae interposed between skin and bone",
+      "isCorrect": false,
+      "misconception": "Extra-articular cushions are being cast as intra-articular lubrication.",
+      "explanation": "Bursae reduce friction OUTSIDE the joint (between skin, tendons, and bone); they do not lie between the articulating bone ends."
+    },
+    {
+      "label": "E",
+      "text": "Tendons that cross the joint to insert",
+      "isCorrect": false,
+      "misconception": "Force-transmitting structures are being cast as friction reducers.",
+      "explanation": "Tendons transmit muscle force across the joint; they do not coat the articulating surfaces or lubricate the cavity."
+    }
+  ],
+  "context": "Learning objective: synovial joint anatomy. Joint cavity (its presence defines a synovial joint) walled by the articular capsule; articulating bone surfaces covered by articular cartilage; synovial membrane secretes lubricating synovial fluid; ligaments strengthen; some joints add a meniscus.",
+  "cite": "openstax-anatomy-physiology#ms-synovial-joint-structure",
+  "publicUsmle": {
+    "schemaVersion": 1,
+    "origin": "generated",
+    "itemText": {
+      "licence": "CC-BY-4.0",
+      "attribution": "MD3 contributors"
+    },
+    "evidence": {
+      "kind": "passage",
+      "sourceId": "openstax-anatomy-physiology",
+      "passageId": "ms-synovial-joint-structure",
+      "licence": {
+        "cls": "foss",
+        "id": "cc-by-4.0"
+      }
+    },
+    "media": {
+      "kind": "asset",
+      "assetId": "bone-joint-v1",
+      "job": "anatomy",
+      "showWhen": "after-reveal",
+      "licence": {
+        "cls": "foss",
+        "id": "cc-by-4.0"
+      },
+      "attribution": "MD3 contributors",
+      "contentHash": "sha256:d6bdaa1be77da2de4584d0fd35531bbdae7c99a6de0aba2fdcef378c04efb218"
+    }
+  },
+  "imageUrl": "/figures/usmle/step1/bone-joint-v1.svg",
+  "imageCaption": "Compact vs spongy bone, epiphyseal plate, synovial joint structure/types."
+}

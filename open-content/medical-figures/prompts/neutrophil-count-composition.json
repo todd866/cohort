@@ -1,0 +1,35 @@
+{
+  "figureId": "neutrophil-count-composition",
+  "tool": "built-in image_gen",
+  "model": null,
+  "referenceAssetIds": [],
+  "externalReferenceImages": [],
+  "prompt": "Original educational conceptual illustration, landscape 3:2. Warm ivory paper, sophisticated hand-painted gouache/watercolour, confident fine brown outlines, navy lettering, restrained teal, coral and amber. Editorial science illustration with spacious composition and large legible labels. The explanatory structure must carry the meaning visually: molecules, objects, geometry or flow; never paragraphs in boxes. No organs, regional anatomy, teeth or joint cutaways, tissue layers, invented histology, diagnostic photographs, radiographs or patient data. All symbols are explicitly conceptual. Footer: 'Conceptual teaching model • Not to scale'. Title 'Same total. Different neutrophils.' Two equal wooden counting frames, each holding EXACTLY TEN solid round counters in two horizontal rows of five. Left frame: top row FIVE teal counters; bottom row THREE teal then TWO amber counters. Label above '10 total', below '8 neutrophils'. Right frame: top row ONE teal then FOUR amber; bottom row FIVE amber. Label above '10 total', below '1 neutrophil'. At bottom a simple key: one teal circle 'Neutrophil', one amber circle 'Other white cell'. Short note 'Look at the differential'. Tiny qualifier 'Illustrative tokens, not clinical thresholds'. Do not make these realistic cells: use flat wooden counters with no nuclei. The exact counts and colours are essential.",
+  "clinicalSources": [
+    {
+      "title": "St. Jude: Absolute neutrophil count and neutropenia",
+      "url": "https://together.stjude.org/en-us/treatment-tests-procedures/symptoms-side-effects/absolute-neutrophil-count-anc-neutropenia.html"
+    }
+  ],
+  "teaching": {
+    "question": "Why can a total white-cell count conceal a low neutrophil count?",
+    "answer": "It sums all white-cell types. The differential reveals how many are neutrophils, so the same total can contain very different absolute neutrophil counts.",
+    "imageRole": "after-reveal"
+  },
+  "title": "The differential changes the count",
+  "caption": "The total white-cell count alone does not specify the absolute neutrophil count. These equal-size token groups have different neutrophil fractions.",
+  "alt": "Two groups each contain ten tokens: one group has eight teal neutrophil tokens and two amber other white-cell tokens, the other one teal and nine amber.",
+  "review": {
+    "status": "pending-independent-qa",
+    "method": "agent-visual-and-source-review",
+    "notes": "Counted left grid: five teal above, three teal plus two amber below, total ten and eight neutrophils. Counted right grid: one teal/four amber above, five amber below, total ten and one neutrophil. Legend colours match; qualifier explicitly excludes clinical thresholds. No invented cellular morphology.",
+    "structure": {
+      "kind": "conceptual",
+      "status": "verified",
+      "specificationFiles": [
+        "scaffolds/neutrophil-count-composition.json"
+      ],
+      "notes": "Counted left grid: five teal above, three teal plus two amber below, total ten and eight neutrophils. Counted right grid: one teal/four amber above, five amber below, total ten and one neutrophil. Legend colours match; qualifier explicitly excludes clinical thresholds. No invented cellular morphology."
+    }
+  }
+}

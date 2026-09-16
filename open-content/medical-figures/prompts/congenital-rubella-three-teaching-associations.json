@@ -1,0 +1,27 @@
+{
+  "schemaVersion": 1,
+  "figureId": "congenital-rubella-three-teaching-associations",
+  "sourceFacts": [
+    "Congenital rubella syndrome can cause cataracts, hearing loss and congenital heart defects.",
+    "These are classic associations, not an exhaustive list or a requirement that all occur together."
+  ],
+  "clinicalSources": [
+    {
+      "title": "CDC: Pregnancy and Rubella",
+      "url": "https://www.cdc.gov/rubella/pregnancy/index.html"
+    }
+  ],
+  "specificationFiles": [
+    "scaffolds/congenital-rubella-three-teaching-associations.json"
+  ],
+  "prompt": "Create an entirely original medical teaching concept illustration, landscape 3:2, warm hand-painted watercolour and gouache on ivory paper, fine ink contours, restrained navy labels, muted teal, ochre and peach accents, generous whitespace. Gentle storybook warmth with the precision and legibility of an educational atlas. Use written instructions only; no image reference. Meaningful visual relationships and sparse short labels, not paragraphs in boxes. NO internal anatomy, organ/eye/ear/brain/tissue cutaways, anatomical pathways, bones, diagnostic images, fake scans, realistic lesions, photorealistic skin, glossy wet flesh or 3D tissue. Neutral symbols or fully clothed surface poses only where specified. Preserve every direction, relationship and count in the explicit structure. Title and labels exactly as requested, no additional prose. Footer 'Educational schematic'. No logo or watermark.\n\nTitle 'Congenital rubella'. Build a large balanced triangular association map: a small central ochre circle with a generic dotted virus SYMBOL, not microbiology detail, branches with three equal arrows to three widely spaced large mnemonic icons. TOP vertex: a cloudy rectangular window pane labelled 'Cataracts'. LOWER LEFT vertex: a bell with fading sound-wave marks labelled 'Hearing loss'. LOWER RIGHT vertex: a flat Valentine-heart symbol with a small warning dot beside it, label 'Heart defects'. No anatomical eye, lens cross-section, ear, cardiac chambers or vessel connections. Each icon is a metaphor. At bottom 'Classic associations \u2022 not all are present'. Do not suggest the triangle diagnoses rubella by itself.",
+  "generation": {
+    "tool": "built-in image_gen",
+    "model": null,
+    "referenceAssetIds": [],
+    "externalReferenceImages": [],
+    "specificationFiles": [
+      "scaffolds/congenital-rubella-three-teaching-associations.json"
+    ]
+  }
+}

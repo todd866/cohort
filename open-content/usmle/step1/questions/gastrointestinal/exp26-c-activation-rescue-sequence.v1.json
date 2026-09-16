@@ -1,0 +1,71 @@
+{
+  "id": "bank:usmle-step1:exp26-c-activation-rescue-sequence:v1",
+  "rotation": "usmle-step1-open",
+  "topics": [
+    "gastrointestinal",
+    "activation-rescue-sequence"
+  ],
+  "moduleNodes": [
+    "usmle/step1",
+    "usmle/step1/gastrointestinal"
+  ],
+  "questionType": "interpretation",
+  "difficulty": "hard",
+  "stem": "An investigator collects a chief-cell secretion containing an inactive protein-digesting precursor. Adding a second aliquot of the same secretion does not restore digestion. Acidification permits activation, after which protein cleavage is detected. Which of the following steps was limiting before acidification?",
+  "options": [
+    {
+      "label": "A",
+      "text": "Loss of the precursor during collection of the secretion",
+      "isCorrect": false,
+      "explanation": "The experiment establishes that inactive precursor remains in the sample. A loss during collection does not explain why acidification rescues that stored material.",
+      "misconception": "Assumes precursor loss despite its demonstrated presence in the sample."
+    },
+    {
+      "label": "B",
+      "text": "Insufficient precursor abundance in the collected gastric secretion",
+      "isCorrect": false,
+      "explanation": "Adding another aliquot does not restore digestion. The successful acidification step identifies an activation condition rather than inadequate precursor abundance.",
+      "misconception": "Mistakes a missing activation condition for insufficient precursor quantity."
+    },
+    {
+      "label": "C",
+      "text": "Failure to release the precursor from the gastric cells",
+      "isCorrect": false,
+      "explanation": "The secretion contains the precursor, so release has already occurred. The defect lies between the presence of precursor and detectable digestive activity.",
+      "misconception": "Places the defect at secretion even though precursor was collected."
+    },
+    {
+      "label": "D",
+      "text": "Failure to activate the precursor already present in secretion",
+      "isCorrect": true,
+      "explanation": "The available precursor becomes functional when acidification permits activation. This distinguishes an activation defect from failed secretion or insufficient precursor.",
+      "misconception": "No misconception: acid rescue distinguishes activation failure from absent precursor."
+    },
+    {
+      "label": "E",
+      "text": "Loss of digestive activity after complete precursor activation",
+      "isCorrect": false,
+      "explanation": "The sample initially contains inactive precursor, and activation is followed by digestion. The data therefore place the original limitation before active enzyme is available.",
+      "misconception": "Places the failure after activation despite initial precursor inactivity."
+    }
+  ],
+  "context": "Learning objective: Use a rescue experiment to distinguish a missing substrate from a missing activation condition. The response to acidification identifies the pepsinogen-to-pepsin step without assuming chief-cell failure.\n\nThe available precursor becomes functional when acidification permits activation. This distinguishes an activation defect from failed secretion or insufficient precursor.",
+  "cite": "openstax-anatomy-physiology#gi-chief-cells-pepsinogen",
+  "publicUsmle": {
+    "schemaVersion": 1,
+    "origin": "generated",
+    "itemText": {
+      "licence": "CC-BY-4.0",
+      "attribution": "MD3 contributors"
+    },
+    "evidence": {
+      "kind": "passage",
+      "sourceId": "openstax-anatomy-physiology",
+      "passageId": "gi-chief-cells-pepsinogen",
+      "licence": {
+        "cls": "foss",
+        "id": "cc-by-4.0"
+      }
+    }
+  }
+}

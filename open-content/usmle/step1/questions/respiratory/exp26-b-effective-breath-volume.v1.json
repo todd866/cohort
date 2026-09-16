@@ -1,0 +1,71 @@
+{
+  "id": "bank:usmle-step1:exp26-b-effective-breath-volume:v1",
+  "rotation": "usmle-step1-open",
+  "topics": [
+    "respiratory",
+    "effective-breath-volume"
+  ],
+  "moduleNodes": [
+    "usmle/step1",
+    "usmle/step1/respiratory"
+  ],
+  "questionType": "calculation",
+  "difficulty": "hard",
+  "stem": "A ventilation model compares two breathing patterns at the same total inspired volume per minute. Pattern X uses 12 breaths/min of 500 mL each; pattern Y uses 20 breaths/min of 300 mL each. Dead space is 150 mL per breath in both. Which of the following correctly compares gas-exchanging inspired volume per minute?",
+  "options": [
+    {
+      "text": "3.0 L/min for X; 4.2 L/min for Y",
+      "explanation": "This reverses the calculated effective volumes. Larger individual breaths devote a smaller fraction to the same dead-space volume, favoring pattern X in this comparison.",
+      "isCorrect": false,
+      "label": "A",
+      "misconception": "Reverses the two effective minute volumes despite the larger breaths losing a smaller fraction to dead space."
+    },
+    {
+      "text": "5.8 L/min for X; 5.8 L/min for Y",
+      "explanation": "This approximates subtracting dead space just once from the minute total. Dead space must instead be subtracted from every breath before multiplying by breathing rate.",
+      "isCorrect": false,
+      "label": "B",
+      "misconception": "Subtracts dead space only once per minute instead of subtracting it from every breath."
+    },
+    {
+      "text": "1.8 L/min for X; 3.0 L/min for Y",
+      "explanation": "The first value is the nonexchanging minute volume for pattern X, while the second is the exchanging volume for Y. The comparison must use the same quantity.",
+      "isCorrect": false,
+      "label": "C",
+      "misconception": "Compares nonexchanging volume for one pattern with gas-exchanging volume for the other."
+    },
+    {
+      "text": "4.2 L/min for X; 3.0 L/min for Y",
+      "explanation": "Subtract dead space before multiplying by rate. Pattern X supplies 12 times 350 mL, while pattern Y supplies 20 times 150 mL, yielding different effective volumes.",
+      "isCorrect": true,
+      "label": "D",
+      "misconception": "No misconception: effective minute volume is rate multiplied by the volume per breath remaining after dead space."
+    },
+    {
+      "text": "6.0 L/min for X; 6.0 L/min for Y",
+      "explanation": "These products measure total inspired volume without subtracting dead space. Each breath spends 150 mL in a nonexchanging compartment, which affects the faster pattern more.",
+      "isCorrect": false,
+      "label": "E",
+      "misconception": "Equates total inspired minute volume with gas-exchanging volume by omitting dead space."
+    }
+  ],
+  "context": "Learning objective: Apply per-breath dead-space subtraction before comparing patterns with identical total minute volume. Subtract dead space before multiplying by rate. Pattern X supplies 12 times 350 mL, while pattern Y supplies 20 times 150 mL, yielding different effective volumes.",
+  "cite": "openstax-ap1-breathing#dead-space",
+  "publicUsmle": {
+    "schemaVersion": 1,
+    "origin": "generated",
+    "itemText": {
+      "licence": "CC-BY-4.0",
+      "attribution": "MD3 contributors"
+    },
+    "evidence": {
+      "kind": "passage",
+      "sourceId": "openstax-ap1-breathing",
+      "passageId": "dead-space",
+      "licence": {
+        "cls": "foss",
+        "id": "cc-by-4.0"
+      }
+    }
+  }
+}

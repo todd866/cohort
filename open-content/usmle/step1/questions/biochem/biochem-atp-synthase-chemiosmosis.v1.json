@@ -1,0 +1,85 @@
+{
+  "id": "bank:usmle-step1:biochem-atp-synthase-chemiosmosis:v1",
+  "rotation": "usmle-step1-open",
+  "topics": [
+    "ATP synthase",
+    "chemiosmosis"
+  ],
+  "moduleNodes": [
+    "usmle/step1",
+    "usmle/step1/biochem"
+  ],
+  "questionType": "mechanism",
+  "difficulty": "medium",
+  "stem": "What directly powers ATP formation during oxidative phosphorylation?",
+  "options": [
+    {
+      "label": "A",
+      "text": "Spontaneous ADP joining without a gradient",
+      "isCorrect": false,
+      "misconception": "Without proton-motive force, synthesis stalls.",
+      "explanation": "The gradient is required."
+    },
+    {
+      "label": "B",
+      "text": "Direct phosphate transfer from NADH to ADP",
+      "isCorrect": false,
+      "misconception": "NADH does not substrate-level phosphorylate ADP here.",
+      "explanation": "NADH donates electrons; the proton current drives synthesis."
+    },
+    {
+      "label": "C",
+      "text": "Hydrogen-ion flow through the F0-F1 complex",
+      "isCorrect": true,
+      "misconception": "None; proton flux drives the synthase.",
+      "explanation": "OpenStax: hydrogen-ion current powers ATP synthase phosphorylation of ADP."
+    },
+    {
+      "label": "D",
+      "text": "Photon capture by mitochondrial chlorophyll",
+      "isCorrect": false,
+      "misconception": "Animal mitochondria are not photosynthetic.",
+      "explanation": "Chemiosmosis here is redox-driven."
+    },
+    {
+      "label": "E",
+      "text": "Only cytosolic substrate-level reactions",
+      "isCorrect": false,
+      "misconception": "That is glycolysis/TCA substrate-level ATP.",
+      "explanation": "Most aerobic ATP is chemiosmotic."
+    }
+  ],
+  "context": "Learning objective: chemiosmotic proton flow drives ATP synthase.",
+  "cite": "openstax-biology-2e#atp-synthase-chemiosmosis",
+  "publicUsmle": {
+    "schemaVersion": 1,
+    "origin": "generated",
+    "itemText": {
+      "licence": "CC-BY-4.0",
+      "attribution": "MD3 contributors"
+    },
+    "evidence": {
+      "kind": "passage",
+      "sourceId": "openstax-biology-2e",
+      "passageId": "atp-synthase-chemiosmosis",
+      "licence": {
+        "cls": "foss",
+        "id": "cc-by-4.0"
+      }
+    },
+    "media": {
+      "kind": "asset",
+      "assetId": "cellular-respiration-v1",
+      "job": "pathway",
+      "showWhen": "after-reveal",
+      "licence": {
+        "cls": "foss",
+        "id": "cc-by-4.0"
+      },
+      "attribution": "MD3 contributors",
+      "contentHash": "sha256:28ae7f955e1024135e9335f39b761f79292b1cc679baed71478eb3efc31f99e5"
+    }
+  },
+  "imageUrl": "/figures/usmle/step1/cellular-respiration-v1.svg",
+  "imageCaption": "Cellular respiration: glycolysis -> pyruvate -> acetyl-CoA -> citric cycle carriers -> ETC/ATP synthase; O2 terminal acceptor; fermentation regenerates NAD+."
+}

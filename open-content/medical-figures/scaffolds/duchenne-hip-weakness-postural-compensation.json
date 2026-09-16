@@ -1,0 +1,67 @@
+{
+  "schemaVersion": 1,
+  "figureId": "duchenne-hip-weakness-postural-compensation",
+  "kind": "conceptual",
+  "created": "2026-09-10",
+  "timing": "authored before generation",
+  "sourceFacts": [
+    {
+      "fact": "In Duchenne muscular dystrophy, hip extensor weakness contributes to increased lumbar lordosis and posterior trunk compensation.",
+      "sourceUrls": [
+        "https://pubmed.ncbi.nlm.nih.gov/7202868/",
+        "https://www.genomicseducation.hee.nhs.uk/documents/duchenne-muscular-dystrophy/"
+      ]
+    },
+    {
+      "fact": "This is a compensatory movement association; the diagram should not claim a measured force model or specify internal muscle anatomy.",
+      "sourceUrls": [
+        "https://pubmed.ncbi.nlm.nih.gov/7202868/",
+        "https://www.genomicseducation.hee.nhs.uk/documents/duchenne-muscular-dystrophy/"
+      ]
+    }
+  ],
+  "clinicalSources": [
+    {
+      "title": "Sutherland et al: The pathomechanics of gait in Duchenne muscular dystrophy",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/7202868/"
+    },
+    {
+      "title": "NHS Genomics Education: Duchenne muscular dystrophy",
+      "url": "https://www.genomicseducation.hee.nhs.uk/documents/duchenne-muscular-dystrophy/"
+    }
+  ],
+  "nodes": [
+    "hip extensor weakness",
+    "posterior trunk compensation",
+    "increased lumbar lordosis"
+  ],
+  "edges": [
+    [
+      "hip extensor weakness",
+      "posterior trunk compensation",
+      "compensatory association"
+    ],
+    [
+      "posterior trunk compensation",
+      "increased lumbar lordosis",
+      "postural association"
+    ]
+  ],
+  "expectedLabels": [
+    "A compensation for hip weakness",
+    "Hip extensors weak",
+    "Trunk leans back",
+    "Lumbar lordosis increases",
+    "Movement concept \u2022 no force measurements"
+  ],
+  "layoutSpecification": "Title 'A compensation for hip weakness'. Three-stage left-to-right conceptual movement diagram. LEFT: a simple low-strength gauge labelled 'Hip extensors weak'. CENTRE: one fully clothed neutral child seen in simple side profile, facing RIGHT, feet on floor, knees gently straight, torso modestly leaning backward; a small curved arrow beside shoulders points BACK toward viewer's LEFT, label 'Trunk leans back'. RIGHT: an isolated abstract CURVED RIBBON shaped like a gentle inward lumbar curve, clearly disconnected from any body and labelled 'Lumbar lordosis increases'. It is a shape mnemonic, not a spine drawing. Connect stages with teal rightward cause-association arrows. No exposed muscles, pelvis, vertebrae, gravity line, force vectors through joints or mathematical angles. Do not exaggerate child pose into a fall. Small bottom 'Movement concept \u2022 no force measurements'.",
+  "forbiddenAnatomy": [
+    "No internal organ, eye, ear, brain, tissue or bone anatomy",
+    "No diagnostic image, patient-specific lesion appearance or literal anatomical pathway"
+  ],
+  "validation": {
+    "sourceFacts": "Checked against listed primary clinical sources on 2026-09-10",
+    "status": "self-reviewed; independent review pending",
+    "pixelChecks": "Pixel/structure check: low-strength gauge leads to a clothed side-profile child whose upper trunk is posterior to the hips, with backward direction arrow. Final detached curve is a mnemonic for increased lordosis, not a vertebral drawing. No internal muscle map, joint force vectors or numerical angles. Labels connect hip extensor weakness and compensatory posture."
+  }
+}

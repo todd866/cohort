@@ -1,0 +1,85 @@
+{
+  "id": "bank:usmle-step1:endo-adrenal-cortex-zones:v1",
+  "rotation": "usmle-step1-open",
+  "topics": [
+    "adrenal cortex zones",
+    "aldosterone"
+  ],
+  "moduleNodes": [
+    "usmle/step1",
+    "usmle/step1/endocrine"
+  ],
+  "questionType": "mechanism",
+  "difficulty": "medium",
+  "stem": "A 38-year-old man has hypertension, low potassium, and an autonomous aldosterone-producing adrenal adenoma. Aldosterone is a mineralocorticoid that drives sodium and fluid retention.\n\nThe tumor arose from the cortical zone whose normal secretory product is which of the following?",
+  "options": [
+    {
+      "label": "A",
+      "text": "Catecholamines from the adrenal medulla",
+      "isCorrect": false,
+      "misconception": "The medulla's products are being attributed to a cortical tumor.",
+      "explanation": "The medulla produces epinephrine and norepinephrine; aldosterone is a cortical mineralocorticoid from the zona glomerulosa."
+    },
+    {
+      "label": "B",
+      "text": "Glucocorticoids from the middle zona fasciculata",
+      "isCorrect": false,
+      "misconception": "The cortisol-producing zone is being assigned aldosterone.",
+      "explanation": "The zona fasciculata produces glucocorticoids such as cortisol for glucose metabolism and stress; mineralocorticoids like aldosterone come from the zona glomerulosa."
+    },
+    {
+      "label": "C",
+      "text": "Mineralocorticoids from the outer zona glomerulosa",
+      "isCorrect": true,
+      "misconception": "None; the outermost cortical layer produces mineralocorticoids such as aldosterone.",
+      "explanation": "The adrenal cortex produces mineralocorticoids, glucocorticoids, and androgens in distinct zones; the zona glomerulosa's mineralocorticoid output, chiefly aldosterone, causes sodium and fluid retention."
+    },
+    {
+      "label": "D",
+      "text": "Androgens from the inner zona reticularis",
+      "isCorrect": false,
+      "misconception": "The sex-steroid zone is being assigned a salt-regulating hormone.",
+      "explanation": "The zona reticularis produces androgens; aldosterone is a mineralocorticoid of the zona glomerulosa."
+    },
+    {
+      "label": "E",
+      "text": "Tropic hormones from the anterior pituitary",
+      "isCorrect": false,
+      "misconception": "A pituitary regulator is being confused with the adrenal secretory cell.",
+      "explanation": "ACTH from the anterior pituitary stimulates the cortex but is not an adrenal product; the adenoma secretes aldosterone, a zona glomerulosa mineralocorticoid."
+    }
+  ],
+  "context": "Learning objective: map adrenal zones to products. Cortex: zona glomerulosa → mineralocorticoids (aldosterone, sodium/fluid retention), zona fasciculata → glucocorticoids (cortisol), zona reticularis → androgens; medulla → epinephrine and norepinephrine.",
+  "cite": "openstax-anatomy-physiology#endo-adrenal-cortex-zones",
+  "publicUsmle": {
+    "schemaVersion": 1,
+    "origin": "generated",
+    "itemText": {
+      "licence": "CC-BY-4.0",
+      "attribution": "MD3 contributors"
+    },
+    "evidence": {
+      "kind": "passage",
+      "sourceId": "openstax-anatomy-physiology",
+      "passageId": "endo-adrenal-cortex-zones",
+      "licence": {
+        "cls": "foss",
+        "id": "cc-by-4.0"
+      }
+    },
+    "media": {
+      "kind": "asset",
+      "assetId": "adrenal-zones-v1",
+      "job": "anatomy",
+      "showWhen": "after-reveal",
+      "licence": {
+        "cls": "foss",
+        "id": "cc-by-4.0"
+      },
+      "attribution": "MD3 contributors",
+      "contentHash": "sha256:8e0c946bc37a2ccf13aae4036f026b33c9b4fa9c73fa61ab18649158ba41021c"
+    }
+  },
+  "imageUrl": "/figures/usmle/step1/adrenal-zones-v1.svg",
+  "imageCaption": "Adrenal cortex GFR zones + medulla; aldosterone / cortisol / androgens / catecholamines."
+}

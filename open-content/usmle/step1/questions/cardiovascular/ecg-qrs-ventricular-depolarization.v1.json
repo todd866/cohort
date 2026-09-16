@@ -1,0 +1,89 @@
+{
+  "id": "bank:usmle-step1:ecg-qrs-ventricular-depolarization:v1",
+  "rotation": "usmle-step1-open",
+  "topics": [
+    "electrocardiogram",
+    "ECG interpretation",
+    "QRS complex",
+    "ventricular depolarization"
+  ],
+  "moduleNodes": [
+    "usmle/step1",
+    "usmle/step1/cardiovascular"
+  ],
+  "questionType": "interpretation",
+  "difficulty": "easy",
+  "stem": "The waveform marked X on this recorded rhythm strip corresponds most directly to which electrical event?",
+  "options": [
+    {
+      "label": "A",
+      "text": "Atrial depolarization",
+      "isCorrect": false,
+      "misconception": "The P wave is being confused with the larger ventricular complex.",
+      "explanation": "Atrial depolarization produces the smaller P wave that precedes the highlighted complex."
+    },
+    {
+      "label": "B",
+      "text": "Atrial repolarization",
+      "isCorrect": false,
+      "misconception": "A hidden atrial event is being assigned to the visible QRS complex.",
+      "explanation": "Atrial repolarization is normally obscured by ventricular depolarization rather than forming this prominent complex."
+    },
+    {
+      "label": "C",
+      "text": "Ventricular depolarization",
+      "isCorrect": true,
+      "misconception": "None; the QRS complex represents ventricular depolarization.",
+      "explanation": "The highlighted sharp QRS complex represents depolarization spreading through the ventricles."
+    },
+    {
+      "label": "D",
+      "text": "Ventricular repolarization",
+      "isCorrect": false,
+      "misconception": "The QRS complex is being confused with the later T wave.",
+      "explanation": "Ventricular repolarization is represented by the broader T wave after the QRS complex."
+    },
+    {
+      "label": "E",
+      "text": "AV nodal conduction delay",
+      "isCorrect": false,
+      "misconception": "An interval is being confused with a waveform complex.",
+      "explanation": "Atrioventricular nodal delay contributes to the PR interval before the QRS rather than generating the highlighted complex."
+    }
+  ],
+  "context": "Learning objective: connect the main ECG deflections to their electrical events. Read the main ECG deflections from left to right: the P wave represents atrial depolarization, the QRS complex represents ventricular depolarization, and the T wave represents ventricular repolarization. X lies over the sharp QRS complex, so it marks ventricular depolarization.",
+  "cite": "openstax-anatomy-physiology#heart-ecg-wave-components",
+  "publicUsmle": {
+    "schemaVersion": 1,
+    "origin": "generated",
+    "itemText": {
+      "licence": "CC-BY-4.0",
+      "attribution": "MD3 contributors"
+    },
+    "evidence": {
+      "kind": "passage",
+      "sourceId": "openstax-anatomy-physiology",
+      "passageId": "heart-ecg-wave-components",
+      "licence": {
+        "cls": "foss",
+        "id": "cc-by-4.0"
+      }
+    },
+    "media": {
+      "kind": "asset",
+      "assetId": "ecg-case-2w7m4q",
+      "job": "trace",
+      "showWhen": "always",
+      "licence": {
+        "cls": "foss",
+        "id": "cc-by-4.0"
+      },
+      "attribution": "PTB-XL v1.0.3 via PhysioNet; rendered by MD3 contributors",
+      "contentHash": "sha256:b70aaf0788dd72465aa908bddd7c3b72b9e3aa8c6c2b2419db8d125e7ef4a82e",
+      "clinicalConditionIds": ["ventricular-depolarization"],
+      "clinicalKeyFindings": ["The recorded waveform framed by X is the QRS complex"]
+    }
+  },
+  "imageUrl": "/figures/usmle/step1/ecg-case-2w7m4q.svg",
+  "imageCaption": "Recorded Lead II strip with five regular cycles. X frames the central sharp complex."
+}

@@ -1,0 +1,92 @@
+{
+  "schemaVersion": 1,
+  "figureId": "emollient-barrier-brick-model",
+  "kind": "conceptual",
+  "sourceFacts": [
+    {
+      "id": "fact-1",
+      "fact": "Barrier dysfunction allows moisture to escape.",
+      "sources": [
+        {
+          "title": "NIAMS: Atopic dermatitis treatment",
+          "url": "https://www.niams.nih.gov/health-topics/atopic-dermatitis/diagnosis-treatment-and-steps-to-take"
+        },
+        {
+          "title": "NIAMS: Atopic dermatitis overview",
+          "url": "https://www.niams.nih.gov/health-topics/atopic-dermatitis"
+        }
+      ]
+    },
+    {
+      "id": "fact-2",
+      "fact": "Moisturising creams help restore the skin barrier.",
+      "sources": [
+        {
+          "title": "NIAMS: Atopic dermatitis treatment",
+          "url": "https://www.niams.nih.gov/health-topics/atopic-dermatitis/diagnosis-treatment-and-steps-to-take"
+        },
+        {
+          "title": "NIAMS: Atopic dermatitis overview",
+          "url": "https://www.niams.nih.gov/health-topics/atopic-dermatitis"
+        }
+      ]
+    }
+  ],
+  "nodes": [
+    {
+      "id": "gapped",
+      "shape": "brick wall with gaps",
+      "label": "Weakened barrier"
+    },
+    {
+      "id": "escape",
+      "shape": "outward water arrows",
+      "label": "Moisture escapes"
+    },
+    {
+      "id": "supported",
+      "shape": "same bricks with mortar",
+      "label": "Barrier support"
+    },
+    {
+      "id": "retain",
+      "shape": "retained droplets",
+      "label": "Moisture retained"
+    }
+  ],
+  "edges": [
+    {
+      "from": "gapped",
+      "to": "escape",
+      "meaning": "open barrier permits moisture loss"
+    },
+    {
+      "from": "supported",
+      "to": "retain",
+      "meaning": "moisturiser-supported barrier reduces loss"
+    }
+  ],
+  "labels": [
+    "Supporting the moisture barrier",
+    "Weakened barrier",
+    "Moisture escapes",
+    "Moisturiser",
+    "Barrier support",
+    "Less moisture loss",
+    "Masonry analogy, not skin anatomy"
+  ],
+  "forbiddenAnatomy": [
+    "Organs, skin anatomy, tissue layers, cutaways, histology, clinical photos"
+  ],
+  "validation": {
+    "status": "verified",
+    "method": "source-and-conceptual-structure-review",
+    "checks": [
+      "Paired wall comparison shows a change in leakiness, not a claim of perfect cure.",
+      "Moisture direction is inside to outside through gaps in weak barrier.",
+      "No cell layers, follicles, dermis or epidermis labels."
+    ],
+    "pixelReviewStatus": "verified",
+    "pixelReviewNotes": "Matched paired masonry walls; left has open mortar gaps with multiple outward moisture arrows, right filled joints and a single small dotted outward arrow. Labels correctly state less moisture loss rather than complete impermeability. The explicit masonry-not-skin qualifier is legible. No epidermal layers, cells or follicles drawn."
+  }
+}

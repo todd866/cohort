@@ -1,0 +1,71 @@
+{
+  "id": "bank:usmle-step1:exp26-a-vivax-recurrence-reservoir:v1",
+  "rotation": "usmle-step1-open",
+  "topics": [
+    "microbiology",
+    "malaria-relapse"
+  ],
+  "moduleNodes": [
+    "usmle/step1",
+    "usmle/step1/microbiology"
+  ],
+  "questionType": "mechanism",
+  "difficulty": "easy",
+  "stem": "A 38-year-old patient previously recovered from Plasmodium vivax malaria. Many months later, malaria recurs. For this case, new infection is excluded and dormant forms from the earlier episode are demonstrated. Which of the following compartments contains the forms responsible for this recurrence?",
+  "options": [
+    {
+      "label": "A",
+      "text": "Dormant parasites retained in neutrophils",
+      "isCorrect": false,
+      "explanation": "This assigns persistence to an unsupported circulating-cell compartment. The relapse sequence begins with hepatic hypnozoites before the parasite reestablishes activity in erythrocytes.",
+      "misconception": "Places the dormant relapse reservoir in circulating neutrophils rather than the hepatic compartment."
+    },
+    {
+      "label": "B",
+      "text": "Dormant parasites retained in the intestine",
+      "isCorrect": false,
+      "explanation": "Intestinal persistence does not match the established vivax hypnozoite reservoir. The case excludes new infection and identifies reactivation of forms retained in the liver.",
+      "misconception": "Assigns the dormant relapse reservoir to the intestine instead of the liver."
+    },
+    {
+      "label": "C",
+      "text": "Dormant parasites retained in the liver",
+      "isCorrect": true,
+      "explanation": "Vivax hypnozoites persist in the liver and can reactivate after a long symptom-free interval. Reactivation can then establish renewed infection of circulating erythrocytes.",
+      "misconception": "No misconception: Dormant hepatic forms can persist and later reestablish the blood stage."
+    },
+    {
+      "label": "D",
+      "text": "Dormant parasites retained in erythrocytes",
+      "isCorrect": false,
+      "explanation": "Erythrocytic parasites account for the symptomatic blood stage. The persistent dormant reservoir responsible for the stipulated vivax relapse is hepatic rather than erythrocytic.",
+      "misconception": "Confuses the symptomatic erythrocyte stage with the dormant hepatic reservoir for relapse."
+    },
+    {
+      "label": "E",
+      "text": "Dormant parasites retained in platelets",
+      "isCorrect": false,
+      "explanation": "Platelet reduction can accompany malaria, but it does not identify platelets as the relapse reservoir. The demonstrated dormant vivax forms are localized to the liver.",
+      "misconception": "Treats a reduced platelet count as evidence that platelets contain the dormant relapse reservoir."
+    }
+  ],
+  "context": "Learning objective: localize the reservoir responsible for vivax or ovale relapse. Dormant hepatic forms can reactivate long after recovery and subsequently re-establish erythrocyte infection.",
+  "cite": "cdc-malaria-clinical#malaria-relapse",
+  "publicUsmle": {
+    "schemaVersion": 1,
+    "origin": "generated",
+    "itemText": {
+      "licence": "CC-BY-4.0",
+      "attribution": "MD3 contributors"
+    },
+    "evidence": {
+      "kind": "passage",
+      "sourceId": "cdc-malaria-clinical",
+      "passageId": "malaria-relapse",
+      "licence": {
+        "cls": "foss",
+        "id": "us-gov"
+      }
+    }
+  }
+}

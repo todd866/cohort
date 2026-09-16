@@ -1,0 +1,87 @@
+{
+  "id": "bank:usmle-step1:cardiovascular-first-heart-sound:v1",
+  "rotation": "usmle-step1-open",
+  "ladderId": "cardiac-cycle",
+  "topics": [
+    "heart sounds",
+    "cardiac cycle",
+    "ladder:cardiac-cycle"
+  ],
+  "moduleNodes": [
+    "usmle/step1",
+    "usmle/step1/cardiovascular"
+  ],
+  "questionType": "mechanism",
+  "difficulty": "easy",
+  "stem": "A 30-year-old woman undergoes phonocardiography during a cardiology teaching session. A distinct sound is recorded at the onset of ventricular systole, immediately after the QRS complex on her simultaneously recorded ECG.\n\nClosure of which of the following valves produces this sound?",
+  "options": [
+    {
+      "label": "A",
+      "text": "Aortic and pulmonary valves",
+      "isCorrect": false,
+      "misconception": "The semilunar valves are being credited with the first rather than the second sound.",
+      "explanation": "Closure of the semilunar valves produces the second heart sound, S2, which occurs when ventricular pressure falls at the end of systole, not at its onset."
+    },
+    {
+      "label": "B",
+      "text": "Mitral and aortic valves",
+      "isCorrect": false,
+      "misconception": "Valves from opposite sides and opposite phases are being paired.",
+      "explanation": "The mitral valve closes at the onset of systole, but the aortic valve closes at its end; they do not close together to form one sound."
+    },
+    {
+      "label": "C",
+      "text": "Tricuspid and pulmonary valves",
+      "isCorrect": false,
+      "misconception": "An atrioventricular and a semilunar valve are being paired as one closing event.",
+      "explanation": "The tricuspid valve closes for S1 while the pulmonary valve closes for S2; a sound at the onset of systole reflects atrioventricular closure only."
+    },
+    {
+      "label": "D",
+      "text": "Mitral and tricuspid valves",
+      "isCorrect": true,
+      "misconception": "None; closure of the atrioventricular valves produces the first heart sound.",
+      "explanation": "When ventricular pressure rises above atrial pressure at the start of systole, blood is pushed toward the atria and the atrioventricular valves close, producing the first heart sound, S1."
+    },
+    {
+      "label": "E",
+      "text": "Aortic valve alone",
+      "isCorrect": false,
+      "misconception": "A single semilunar valve is being credited with the onset-of-systole sound.",
+      "explanation": "The aortic valve closes at the end of systole as a component of S2; the sound recorded at systole's onset is produced by atrioventricular valve closure."
+    }
+  ],
+  "context": "Learning objective: localize the heart sounds in the cardiac cycle. S1 is produced by atrioventricular valve closure at the onset of ventricular systole.",
+  "cite": "openstax-anatomy-physiology#heart-s1-av-closure",
+  "publicUsmle": {
+    "schemaVersion": 1,
+    "origin": "generated",
+    "itemText": {
+      "licence": "CC-BY-4.0",
+      "attribution": "MD3 contributors"
+    },
+    "evidence": {
+      "kind": "passage",
+      "sourceId": "openstax-anatomy-physiology",
+      "passageId": "heart-s1-av-closure",
+      "licence": {
+        "cls": "foss",
+        "id": "cc-by-4.0"
+      }
+    },
+    "media": {
+      "kind": "asset",
+      "assetId": "cardiac-cycle-v1",
+      "job": "pathway",
+      "showWhen": "after-reveal",
+      "licence": {
+        "cls": "foss",
+        "id": "cc-by-4.0"
+      },
+      "attribution": "MD3 contributors",
+      "contentHash": "sha256:43f8496970b38f19698023b0a614a4fe08f56ce807aadeebe0c60c1d0dd9d921"
+    }
+  },
+  "imageUrl": "/figures/usmle/step1/cardiac-cycle-v1.svg",
+  "imageCaption": "Cardiac cycle: isovolumic contraction (S1), ejection, isovolumic relaxation (S2), filling."
+}

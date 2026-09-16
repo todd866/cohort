@@ -1,0 +1,88 @@
+{
+  "id": "bank:usmle-step1:ms-neuromuscular-junction:v1",
+  "rotation": "usmle-step1-open",
+  "ladderId": "nicotinic-nmj",
+  "topics": [
+    "neuromuscular junction",
+    "acetylcholine",
+    "nicotinic receptor",
+    "ladder:nicotinic-nmj"
+  ],
+  "moduleNodes": [
+    "usmle/step1",
+    "usmle/step1/musculoskeletal"
+  ],
+  "questionType": "mechanism",
+  "difficulty": "easy",
+  "stem": "A 34-year-old woman has double vision and fluctuating weakness that improves after she is given a drug that inhibits acetylcholinesterase.\n\nAt her neuromuscular junction, the chemical signal that acts directly on the muscle fiber is which of the following?",
+  "options": [
+    {
+      "label": "A",
+      "text": "Dopamine acting on D2 receptors",
+      "isCorrect": false,
+      "misconception": "A basal-ganglia transmitter is being placed at the muscle junction.",
+      "explanation": "Dopamine acts in central pathways such as the basal nuclei; the neuromuscular junction uses acetylcholine."
+    },
+    {
+      "label": "B",
+      "text": "Glutamate acting on NMDA receptors",
+      "isCorrect": false,
+      "misconception": "The main central excitatory transmitter is being placed at the muscle junction.",
+      "explanation": "Glutamate is excitatory within the central nervous system; skeletal muscle fibers are activated by acetylcholine at nicotinic receptors."
+    },
+    {
+      "label": "C",
+      "text": "GABA acting on ligand-gated chloride channels",
+      "isCorrect": false,
+      "misconception": "An inhibitory central transmitter is being placed at the muscle junction.",
+      "explanation": "GABA inhibits neurons in the brain and spinal cord; the junction on the muscle fiber is excitatory and cholinergic."
+    },
+    {
+      "label": "D",
+      "text": "Acetylcholine acting on nicotinic receptors",
+      "isCorrect": true,
+      "misconception": "None; the NMJ transmitter is ACh on the nicotinic receptor of the sarcolemma.",
+      "explanation": "At the neuromuscular junction, the motor neuron's terminals release acetylcholine, which acts on the nicotinic acetylcholine receptor of the sarcolemma; acetylcholinesterase then eliminates it, so inhibiting that enzyme strengthens a weak signal."
+    },
+    {
+      "label": "E",
+      "text": "Norepinephrine acting on beta-1 receptors",
+      "isCorrect": false,
+      "misconception": "A sympathetic transmitter is being placed at the skeletal-muscle junction.",
+      "explanation": "Norepinephrine drives sympathetic effects on the heart and smooth muscle; skeletal muscle is activated by acetylcholine from somatic motor neurons."
+    }
+  ],
+  "context": "Learning objective: the NMJ synapse. Presynaptic element: motor neuron terminals; transmitter: acetylcholine; receptor: nicotinic acetylcholine receptor on the sarcolemma; elimination: acetylcholinesterase. Every skeletal muscle fiber is innervated at an NMJ, so drugs that block the esterase boost weak transmission (e.g. myasthenia gravis).",
+  "cite": "openstax-anatomy-physiology#ms-neuromuscular-junction",
+  "publicUsmle": {
+    "schemaVersion": 1,
+    "origin": "generated",
+    "itemText": {
+      "licence": "CC-BY-4.0",
+      "attribution": "MD3 contributors"
+    },
+    "evidence": {
+      "kind": "passage",
+      "sourceId": "openstax-anatomy-physiology",
+      "passageId": "ms-neuromuscular-junction",
+      "licence": {
+        "cls": "foss",
+        "id": "cc-by-4.0"
+      }
+    },
+    "media": {
+      "kind": "asset",
+      "assetId": "nmj-v1",
+      "job": "anatomy",
+      "showWhen": "after-reveal",
+      "licence": {
+        "cls": "foss",
+        "id": "cc-by-4.0"
+      },
+      "attribution": "MD3 contributors",
+      "contentHash": "sha256:5d5ef2fac1990f38c3308366def619ba7a6130b0758221648acd0d06510e15a4"
+    }
+  },
+  "imageUrl": "/figures/usmle/step1/nmj-v1.svg",
+  "imageCaption": "NMJ: ACh vesicles -> nicotinic receptors -> EPP; AChE clears the cleft."
+}

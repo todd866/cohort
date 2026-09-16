@@ -1,0 +1,263 @@
+{
+  "schemaVersion": 1,
+  "id": "gamsat:s3:projectile-motion",
+  "section": "s3",
+  "title": "Projectile Motion and Energy Conservation",
+  "domain": "projectile-motion",
+  "passage": "A physics class investigates projectile motion by launching a ball from a platform at various angles. The platform is 15.0 m above ground level. The ball is launched with an initial velocity of 20.0 m/s at different angles θ above the horizontal.\n\nFor a launch angle of 30.0° above horizontal:\n\n**Experimental measurements:**\n- Time to reach maximum height: 1.02 s\n- Maximum height above launch point: 5.1 m\n- Horizontal distance traveled: 40.8 m\n- Final velocity just before impact: 26.9 m/s\n\n**Theoretical calculations** (assuming no air resistance, g = 9.8 m/s²):\n\nThe initial velocity components are:\n- Horizontal (vₓ): v₀ cos(θ) = 20.0 cos(30°) = 17.3 m/s\n- Vertical (vᵧ): v₀ sin(θ) = 20.0 sin(30°) = 10.0 m/s\n\nAt maximum height, vertical velocity = 0. Time to maximum height:\nt = vᵧ/g = 10.0/9.8 = 1.02 s\n\nMaximum height above launch point:\nh = vᵧ²/(2g) = (10.0)²/(2 × 9.8) = 5.10 m\n\nTotal height above ground: 15.0 + 5.1 = 20.1 m\n\nThe class then investigates energy conservation. At launch (taking ground as zero potential energy):\n- Kinetic energy: ½mv₀² = ½m(20.0)² = 200m Joules\n- Gravitational potential energy: mgh = m(9.8)(15.0) = 147m Joules\n- Total mechanical energy: 347m Joules\n\nAt maximum height:\n- Kinetic energy: ½mvₓ² = ½m(17.3)² = 150m Joules (only horizontal component)\n- Gravitational potential energy: mgh = m(9.8)(20.1) = 197m Joules\n- Total mechanical energy: 347m Joules\n\nJust before impact:\n- Kinetic energy: ½mv² = ½m(26.9)² = 362m Joules (measured)\n- Gravitational potential energy: 0 Joules (at ground level)\n- Total mechanical energy: 362m Joules\n\nThe student notes that the final mechanical energy (362m J) exceeds the initial mechanical energy (347m J), which appears to violate energy conservation.\n\nTo investigate air resistance effects, the class repeats the experiment with balls of different masses while keeping initial velocity and angle constant. They find that lighter balls have:\n- Shorter flight times\n- Shorter horizontal distances\n- Lower final velocities",
+  "questions": [
+    {
+      "id": "gamsat:s3:projectile-motion:q1",
+      "moves": [
+        "s3-equilibrium-shift"
+      ],
+      "stem": "Why does the measured final velocity (26.9 m/s) result in mechanical energy greater than the initial mechanical energy?",
+      "options": [
+        {
+          "label": "A",
+          "text": "Air resistance added energy",
+          "isCorrect": false
+        },
+        {
+          "label": "B",
+          "text": "Measurement error in final velocity",
+          "isCorrect": true
+        },
+        {
+          "label": "C",
+          "text": "Gravitational potential energy was incorrectly calculated",
+          "isCorrect": false
+        },
+        {
+          "label": "D",
+          "text": "Energy is not conserved in projectile motion",
+          "isCorrect": false
+        }
+      ],
+      "explanation": "The theoretical final velocity from energy conservation is v = sqrt(694) = 26.3 m/s, making the measured 26.9 m/s about 2% too high due to measurement error. Air resistance cannot add energy (violates thermodynamics), gravitational PE was calculated correctly, and energy is always conserved. When calculated energy appears to increase in an experiment, always suspect measurement error before questioning fundamental conservation laws.",
+      "difficulty": "medium"
+    },
+    {
+      "id": "gamsat:s3:projectile-motion:q2",
+      "moves": [
+        "s3-vector-decomposition"
+      ],
+      "stem": "What is the theoretical horizontal distance traveled (range) assuming no air resistance?",
+      "options": [
+        {
+          "label": "A",
+          "text": "34.6 m",
+          "isCorrect": false
+        },
+        {
+          "label": "B",
+          "text": "40.8 m",
+          "isCorrect": false
+        },
+        {
+          "label": "C",
+          "text": "44.2 m",
+          "isCorrect": true
+        },
+        {
+          "label": "D",
+          "text": "50.0 m",
+          "isCorrect": false
+        }
+      ],
+      "explanation": "Setting delta-y = -15 m: -15 = 10.0t - 4.9t^2, rearranging to 4.9t^2 - 10.0t - 15 = 0 gives t = 2.56 s. Range = 17.3 x 2.56 = 44.3 m. The measured range of 40.8 m is shorter due to air resistance. When launch height differs from landing height, you must use the full quadratic equation for flight time — the simple formula (range = v^2 sin2theta / g) only works for same-level launches.",
+      "difficulty": "medium"
+    },
+    {
+      "id": "gamsat:s3:projectile-motion:q3",
+      "moves": [
+        "s3-vector-decomposition"
+      ],
+      "stem": "At what point in the trajectory is the speed of the ball minimum?",
+      "options": [
+        {
+          "label": "A",
+          "text": "At the launch point",
+          "isCorrect": false
+        },
+        {
+          "label": "B",
+          "text": "At maximum height",
+          "isCorrect": true
+        },
+        {
+          "label": "C",
+          "text": "At the impact point",
+          "isCorrect": false
+        },
+        {
+          "label": "D",
+          "text": "Halfway to maximum height",
+          "isCorrect": false
+        }
+      ],
+      "explanation": "At maximum height, vertical velocity = 0 and only the horizontal component (17.3 m/s) remains, giving minimum speed. At launch the speed is 20.0 m/s (both components present), and at impact approximately 26.3 m/s (gravity adds kinetic energy from the height drop). In projectile motion without air resistance, horizontal velocity is constant throughout — speed variations come entirely from the vertical component changing under gravity.",
+      "difficulty": "medium"
+    },
+    {
+      "id": "gamsat:s3:projectile-motion:q4",
+      "moves": [
+        "s3-prediction-from-model"
+      ],
+      "stem": "How does air resistance affect the trajectory compared to the theoretical (no air resistance) case?",
+      "options": [
+        {
+          "label": "A",
+          "text": "Trajectory is symmetric; maximum height occurs at midpoint of horizontal distance",
+          "isCorrect": false
+        },
+        {
+          "label": "B",
+          "text": "Trajectory is asymmetric; ball descends more steeply than it ascends",
+          "isCorrect": true
+        },
+        {
+          "label": "C",
+          "text": "Trajectory is asymmetric; ball descends less steeply than it ascends",
+          "isCorrect": false
+        },
+        {
+          "label": "D",
+          "text": "Air resistance has no effect on trajectory shape, only on range",
+          "isCorrect": false
+        }
+      ],
+      "explanation": "Air resistance always opposes the direction of motion, reducing speed continuously. By descent, horizontal velocity has been reduced throughout flight, so the ball drops more steeply than it ascended — making the trajectory asymmetric. A symmetric trajectory only describes the idealised no-air-resistance case. A real projectile's trajectory always falls inside (shorter and lower than) the ideal parabola — the measured range of 40.8 m versus the theoretical 44.3 m is direct evidence of this effect.",
+      "difficulty": "medium"
+    },
+    {
+      "id": "gamsat:s3:projectile-motion:q5",
+      "moves": [
+        "s3-proportional-reasoning"
+      ],
+      "stem": "Why do lighter balls experience greater effects from air resistance?",
+      "options": [
+        {
+          "label": "A",
+          "text": "Lighter balls have larger surface area",
+          "isCorrect": false
+        },
+        {
+          "label": "B",
+          "text": "The ratio of air resistance force to weight is larger for lighter balls",
+          "isCorrect": true
+        },
+        {
+          "label": "C",
+          "text": "Lighter balls travel faster",
+          "isCorrect": false
+        },
+        {
+          "label": "D",
+          "text": "The air resistance force itself is greater on lighter balls than on heavier ones",
+          "isCorrect": false
+        }
+      ],
+      "explanation": "For balls of the same size launched at the same velocity, drag force is identical, but deceleration = F_drag/m is larger for lighter balls because mass is in the denominator. Air resistance force depends on velocity, area, and air density but not on mass — however the resulting deceleration depends inversely on mass. The ratio F_drag/mg determines how much air resistance matters, which is why a feather is more affected than a bowling ball despite experiencing less absolute drag force.",
+      "difficulty": "medium"
+    },
+    {
+      "id": "gamsat:s3:projectile-motion:q6",
+      "moves": [
+        "s3-vector-decomposition"
+      ],
+      "stem": "What angle of launch would give maximum horizontal range (assuming no air resistance)?",
+      "options": [
+        {
+          "label": "A",
+          "text": "Always 30°, maximising horizontal velocity",
+          "isCorrect": false
+        },
+        {
+          "label": "B",
+          "text": "Always 45°, as from ground level",
+          "isCorrect": false
+        },
+        {
+          "label": "C",
+          "text": "Always 60°, maximising time of flight",
+          "isCorrect": false
+        },
+        {
+          "label": "D",
+          "text": "Depends on the platform height",
+          "isCorrect": true
+        }
+      ],
+      "explanation": "From an elevated platform, the optimal angle depends on platform height and is less than 45 degrees. The extra height provides additional flight time, making it advantageous to increase the horizontal velocity component with a flatter trajectory. The 45-degree rule for maximum range only applies when launch and landing heights are equal — always check whether these heights match before applying it.",
+      "difficulty": "medium"
+    },
+    {
+      "id": "gamsat:s3:projectile-motion:q7",
+      "moves": [
+        "s3-proportional-reasoning"
+      ],
+      "stem": "If the experiment were performed on the Moon (g_moon = 1.6 m/s²), how would the range compare to Earth?",
+      "options": [
+        {
+          "label": "A",
+          "text": "Range would be approximately 6 times greater",
+          "isCorrect": true
+        },
+        {
+          "label": "B",
+          "text": "Range would be approximately 2.5 times greater",
+          "isCorrect": false
+        },
+        {
+          "label": "C",
+          "text": "Range would be approximately equal",
+          "isCorrect": false
+        },
+        {
+          "label": "D",
+          "text": "Range would be less than on Earth",
+          "isCorrect": false
+        }
+      ],
+      "explanation": "With g_Moon = 1.6 m/s^2 (about 1/6 of Earth's 9.8), flight time increases substantially and range increases by approximately a factor of 6. The ball stays airborne longer because vertical deceleration and acceleration are both reduced. On the Moon, the range factor is not simply g_Earth/g_Moon = 6.1 for elevated launches — the platform height contribution also scales with 1/g, making the total effect close to but not exactly 6x.",
+      "difficulty": "medium"
+    },
+    {
+      "id": "gamsat:s3:projectile-motion:q8",
+      "moves": [
+        "s3-vector-decomposition"
+      ],
+      "stem": "What is the velocity vector direction at maximum height?",
+      "options": [
+        {
+          "label": "A",
+          "text": "Straight up (90° above horizontal)",
+          "isCorrect": false
+        },
+        {
+          "label": "B",
+          "text": "At launch angle (30° above horizontal)",
+          "isCorrect": false
+        },
+        {
+          "label": "C",
+          "text": "Horizontal (0° above horizontal)",
+          "isCorrect": true
+        },
+        {
+          "label": "D",
+          "text": "Downward (below horizontal)",
+          "isCorrect": false
+        }
+      ],
+      "explanation": "At maximum height, vertical velocity = 0 and only horizontal velocity (17.3 m/s) remains, making the velocity vector purely horizontal. The velocity vector at maximum height is always horizontal regardless of launch angle — this follows directly from the definition of maximum height as the point where vertical velocity reaches zero. Straight up describes the initial vertical component, launch angle applies only at the moment of launch, and downward applies only after the peak.",
+      "difficulty": "medium"
+    }
+  ],
+  "licence": {
+    "id": "CC-BY-4.0",
+    "attribution": "MD3 contributors"
+  },
+  "origin": "authored"
+}

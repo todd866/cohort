@@ -1,0 +1,47 @@
+{
+  "figureId": "sickle-haemoglobin-polymer",
+  "tool": "built-in image_gen",
+  "model": null,
+  "referenceAssetIds": [],
+  "externalReferenceImages": [],
+  "prompt": "Create an original educational medical schematic, landscape 3:2, large legible navy labels, warm ivory paper, hand-painted watercolour/gouache textures, fine confident brown contours, muted amber bone, soft teal cartilage and restrained coral accents. Use the supplied original MD3 scalp illustration ONLY as a palette, typography and brushwork reference; do not depict scalp anatomy. Clean spacious medical-atlas composition. Flat painted cutaways, precise tissue boundaries, no shiny 3D rendering, no uncanny flesh, no photograph, no radiograph or scan. Small footer: 'Educational schematic • Not to scale'. Title 'HbS polymerisation and HbF'. Two enlarged conceptual red-cell cutaways, not blood-smear images. LEFT label 'Deoxygenated HbS': elongated crescent red cell containing several long parallel purple fibre bundles labelled 'HbS polymers'; fibre bundles stretch along long axis INSIDE intact membrane. RIGHT label 'More fetal haemoglobin (HbF)': rounder flexible coral disc cutaway containing dispersed purple HbS dots mixed with distinct teal HbF dots, at most one very short incomplete fibre. Leader 'HbF inhibits HbS polymerisation'. Small key purple dot 'HbS', teal dot 'HbF'. Below right a modest text link 'Hydroxyurea increases HbF'. Bottom 'Less polymerisation helps reduce sickling'. Do not imply full cure or that every cell is permanently normal; small footer 'Mechanism simplified'. Preserve roomy painted medical atlas design.",
+  "clinicalSources": [
+    {
+      "title": "NHLBI: Sickle cell disease causes",
+      "url": "https://www.nhlbi.nih.gov/health/sickle-cell-disease/causes"
+    },
+    {
+      "title": "NHLBI: Evidence-based management of sickle cell disease, 2014 expert panel report",
+      "url": "https://www.nhlbi.nih.gov/sites/default/files/publications/56-364NFULL.pdf"
+    }
+  ],
+  "teaching": {
+    "question": "Why does increasing fetal haemoglobin help reduce sickling?",
+    "answer": "HbF inhibits HbS polymerisation, reducing formation of rigid fibres that distort red cells. Hydroxyurea increases HbF.",
+    "imageRole": "after-reveal"
+  },
+  "title": "HbS polymerisation and fetal haemoglobin",
+  "caption": "Under low oxygen, HbS can polymerise into rigid fibres that deform red cells. Higher fetal haemoglobin inhibits this process; increasing HbF is an important effect of hydroxyurea.",
+  "alt": "Conceptual red-cell cutaways compare long HbS polymers in a distorted cell with reduced polymerisation when more HbF is present.",
+  "review": {
+    "status": "pending-independent-qa",
+    "method": "agent-visual-and-source-review",
+    "notes": "Retrospective full-pixel comparison with molecular specification: bead polymers are within the crescent cell symbol; the rounder comparator contains distinct HbF and HbS beads with far less polymer. Colours and legends agree, hydroxyurea increases HbF is correctly labelled, and helps reduce avoids a guarantee. This is a symbolic cell-and-molecule mechanism, not an anatomical or blood-film specimen; pending independent QA.",
+    "structure": {
+      "kind": "conceptual",
+      "status": "verified",
+      "specificationFiles": [
+        "scaffolds/sickle-haemoglobin-polymer.json"
+      ],
+      "notes": "Retrospective full-pixel comparison with molecular specification: bead polymers are within the crescent cell symbol; the rounder comparator contains distinct HbF and HbS beads with far less polymer. Colours and legends agree, hydroxyurea increases HbF is correctly labelled, and helps reduce avoids a guarantee. This is a symbolic cell-and-molecule mechanism, not an anatomical or blood-film specimen; pending independent QA."
+    }
+  },
+  "archivedReferenceAssets": [
+    {
+      "id": "neonatal-scalp-comparison",
+      "sha256": "96be407e6f065a3a53d1302050758c029a49cf875ae39f2245c87d0cae34e478",
+      "role": "style-only",
+      "reason": "Withheld pending anatomical scaffold review"
+    }
+  ]
+}

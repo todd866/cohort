@@ -1,0 +1,87 @@
+{
+  "id": "bank:usmle-step1:cardiovascular-stroke-volume-determinants:v1",
+  "rotation": "usmle-step1-open",
+  "ladderId": "frank-starling",
+  "topics": [
+    "stroke volume",
+    "cardiac function",
+    "ladder:frank-starling"
+  ],
+  "moduleNodes": [
+    "usmle/step1",
+    "usmle/step1/cardiovascular"
+  ],
+  "questionType": "mechanism",
+  "difficulty": "medium",
+  "stem": "A 55-year-old man with long-standing hypertension is evaluated in the cardiology clinic. Echocardiography shows a reduced ejection fraction, and the physician explains that the volume of blood ejected per beat is governed by three principal factors.\n\nWhich of the following sets correctly identifies the determinants of stroke volume?",
+  "options": [
+    {
+      "label": "A",
+      "text": "Heart rate, preload, and compliance",
+      "isCorrect": false,
+      "misconception": "A rate variable is being substituted for a contraction-strength variable.",
+      "explanation": "Heart rate multiplies stroke volume to give cardiac output but is not itself a determinant of the volume ejected per beat."
+    },
+    {
+      "label": "B",
+      "text": "Preload, contractility, and afterload",
+      "isCorrect": true,
+      "misconception": "None; these are the three primary factors controlling stroke volume.",
+      "explanation": "The primary factors controlling stroke volume are preload (end-diastolic volume), contractility, and afterload (the resistance the ventricle ejects against)."
+    },
+    {
+      "label": "C",
+      "text": "Contractility, heart rate, and vascular resistance",
+      "isCorrect": false,
+      "misconception": "Rate is again being counted as a stroke-volume determinant.",
+      "explanation": "Vascular resistance corresponds to afterload, but heart rate is not a determinant of stroke volume; the third factor is preload."
+    },
+    {
+      "label": "D",
+      "text": "Afterload, venous capacitance, and heart rate",
+      "isCorrect": false,
+      "misconception": "A venous storage property is being substituted for preload and contractility.",
+      "explanation": "Venous capacitance influences return indirectly, but the direct determinants of stroke volume are preload, contractility, and afterload."
+    },
+    {
+      "label": "E",
+      "text": "Preload, blood viscosity, and heart rate",
+      "isCorrect": false,
+      "misconception": "A flow-resistance variable and a rate variable are displacing contractility and afterload.",
+      "explanation": "Viscosity affects resistance to flow, not the volume ejected per beat; stroke volume is set by preload, contractility, and afterload."
+    }
+  ],
+  "context": "Learning objective: name the determinants of stroke volume. Stroke volume is controlled by preload, contractility, and afterload.",
+  "cite": "openstax-anatomy-physiology#heart-sv-factors",
+  "publicUsmle": {
+    "schemaVersion": 1,
+    "origin": "generated",
+    "itemText": {
+      "licence": "CC-BY-4.0",
+      "attribution": "MD3 contributors"
+    },
+    "evidence": {
+      "kind": "passage",
+      "sourceId": "openstax-anatomy-physiology",
+      "passageId": "heart-sv-factors",
+      "licence": {
+        "cls": "foss",
+        "id": "cc-by-4.0"
+      }
+    },
+    "media": {
+      "kind": "asset",
+      "assetId": "frank-starling-v1",
+      "job": "pathway",
+      "showWhen": "after-reveal",
+      "licence": {
+        "cls": "foss",
+        "id": "cc-by-4.0"
+      },
+      "attribution": "MD3 contributors",
+      "contentHash": "sha256:9125158aaffdd7d471bd2ab6b582fbdcd12b18226b6d4f5ca6363eb4b8cd4700"
+    }
+  },
+  "imageUrl": "/figures/usmle/step1/frank-starling-v1.svg",
+  "imageCaption": "Frank-Starling: stroke volume rises with end-diastolic volume; failure shifts the curve."
+}

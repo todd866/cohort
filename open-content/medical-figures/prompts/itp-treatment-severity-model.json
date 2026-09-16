@@ -1,0 +1,35 @@
+{
+  "figureId": "itp-treatment-severity-model",
+  "tool": "built-in image_gen",
+  "model": null,
+  "referenceAssetIds": [],
+  "externalReferenceImages": [],
+  "prompt": "Original educational conceptual illustration, landscape 3:2. Warm ivory paper, sophisticated hand-painted gouache/watercolour, confident fine brown outlines, navy lettering, restrained teal, coral and amber. Editorial science illustration with spacious composition and large legible labels. The explanatory structure must carry the meaning visually: molecules, objects, geometry or flow; never paragraphs in boxes. No organs, regional anatomy, teeth or joint cutaways, tissue layers, invented histology, diagnostic photographs, radiographs or patient data. All symbols are explicitly conceptual. Footer: 'Conceptual teaching model • Not to scale'. Title 'Clinical bleeding guides ITP decisions'. An elegant old brass balance dominates the composition. Left pan has a light paper laboratory card labelled 'Platelet count', with abstract dots but NO numbers. Right pan sits clearly lower, carrying a coral droplet-shaped weight labelled 'Bleeding' and a small shield-plus-calendar wooden weight labelled 'Risk + context'. Base of balance labelled 'Treatment decision'. These are tabletop symbols, no patient or actual bleeding. Large takeaway below 'Aim: control bleeding'. Small qualifier 'Clinical judgement, not a numeric trigger'. Do not add drugs, thresholds, doses, or imply that platelet count has no clinical use at all.",
+  "clinicalSources": [
+    {
+      "title": "RCH: Immune thrombocytopenic purpura guideline",
+      "url": "https://www.rch.org.au/clinicalguide/guideline_index/Immune_thrombocytopenic_purpura/"
+    }
+  ],
+  "teaching": {
+    "question": "Why is a low platelet count alone insufficient to choose treatment for childhood ITP?",
+    "answer": "Bleeding severity and the clinical context guide treatment. Future bleeding risk and safety also matter; the aim is to control bleeding rather than simply restore a normal platelet number.",
+    "imageRole": "after-reveal"
+  },
+  "title": "Clinical bleeding guides ITP decisions",
+  "caption": "In childhood ITP, treatment decisions depend on bleeding and the clinical context, including future bleeding risk and safety. The aim is to control bleeding, rather than merely normalise a platelet number.",
+  "alt": "A balance weighs a small platelet-count card against larger clinical bleeding and risk-context symbols, showing which considerations guide treatment.",
+  "review": {
+    "status": "pending-independent-qa",
+    "method": "agent-visual-and-source-review",
+    "notes": "The scale beam and lower right pan correctly give greater weight to bleeding and risk/context than a platelet-count card. Goal is control bleeding; no numeric trigger, drug or dose appears. Additional decorative phrases are nonspecific and do not add clinical claims. Objects represent judgement rather than actual haemorrhage or organ anatomy.",
+    "structure": {
+      "kind": "conceptual",
+      "status": "verified",
+      "specificationFiles": [
+        "scaffolds/itp-treatment-severity-model.json"
+      ],
+      "notes": "The scale beam and lower right pan correctly give greater weight to bleeding and risk/context than a platelet-count card. Goal is control bleeding; no numeric trigger, drug or dose appears. Additional decorative phrases are nonspecific and do not add clinical claims. Objects represent judgement rather than actual haemorrhage or organ anatomy."
+    }
+  }
+}

@@ -1,0 +1,87 @@
+{
+  "id": "bank:usmle-step1:neuro-absolute-refractory:v1",
+  "rotation": "usmle-step1-open",
+  "ladderId": "absolute-refractory-period",
+  "topics": [
+    "refractory period",
+    "sodium channel inactivation",
+    "ladder:absolute-refractory-period"
+  ],
+  "moduleNodes": [
+    "usmle/step1",
+    "usmle/step1/neuroscience"
+  ],
+  "questionType": "mechanism",
+  "difficulty": "medium",
+  "stem": "While recording from an axon during a neurophysiology practical, a 26-year-old student delivers a second suprathreshold stimulus 1 millisecond after an action potential begins, yet no second action potential can be elicited no matter how strong the stimulus.\n\nWhich of the following best explains this absolute refractory period?",
+  "options": [
+    {
+      "label": "A",
+      "text": "The axon hillock is busy integrating the first depolarizing signal",
+      "isCorrect": false,
+      "misconception": "Summation at the initial segment is being confused with channel-level refractoriness.",
+      "explanation": "Integration determines whether threshold is reached; refractoriness persists even when a threshold-level stimulus is delivered directly, because inactivated Na+ channels cannot open."
+    },
+    {
+      "label": "B",
+      "text": "The sodium-potassium pump has not yet restored the ionic gradients",
+      "isCorrect": false,
+      "misconception": "Gradient depletion is being blamed for a gating phenomenon.",
+      "explanation": "A single action potential moves far too few ions to exhaust the gradients, and the pump works continuously; the block is the closed inactivation gate, not a lack of Na+ gradient."
+    },
+    {
+      "label": "C",
+      "text": "Potassium efflux is opposing any further depolarization of the membrane",
+      "isCorrect": false,
+      "misconception": "The mechanism of the relative refractory period is being applied to the absolute one.",
+      "explanation": "K+ leaving the cell explains the later relative refractory period, when a stronger-than-usual stimulus can fire the cell; during the absolute period no stimulus can work because the Na+ inactivation gates are shut."
+    },
+    {
+      "label": "D",
+      "text": "Myelin insulates the segment and prevents new channels from opening",
+      "isCorrect": false,
+      "misconception": "Passive insulation is being treated as an active gating block.",
+      "explanation": "Myelin shapes where channels are located but does not silence them; the absolute refractory period exists in unmyelinated axons too, because it is a property of the Na+ channel itself."
+    },
+    {
+      "label": "E",
+      "text": "The inactivation gates of the voltage-gated sodium channels are closed",
+      "isCorrect": true,
+      "misconception": "None; absolute refractoriness reflects Na+ channel inactivation.",
+      "explanation": "Timed with the peak, the inactivation gate of each voltage-gated Na+ channel closes and cannot reopen until the membrane returns below about -55 mV, so no new action potential can start regardless of stimulus strength."
+    }
+  ],
+  "context": "Learning objective: explain the absolute refractory period. During it, the inactivation gate of the voltage-gated Na+ channel is closed, so no stimulus can trigger another action potential until the channel resets below about -55 mV.",
+  "cite": "openstax-anatomy-physiology#neuro-absolute-refractory",
+  "publicUsmle": {
+    "schemaVersion": 1,
+    "origin": "generated",
+    "itemText": {
+      "licence": "CC-BY-4.0",
+      "attribution": "MD3 contributors"
+    },
+    "evidence": {
+      "kind": "passage",
+      "sourceId": "openstax-anatomy-physiology",
+      "passageId": "neuro-absolute-refractory",
+      "licence": {
+        "cls": "foss",
+        "id": "cc-by-4.0"
+      }
+    },
+    "media": {
+      "kind": "asset",
+      "assetId": "neuron-ap-v1",
+      "job": "trace",
+      "showWhen": "after-reveal",
+      "licence": {
+        "cls": "foss",
+        "id": "cc-by-4.0"
+      },
+      "attribution": "MD3 contributors",
+      "contentHash": "sha256:41648c5b0091329b481398598463e273058e8121c5de902621e265d09794a292"
+    }
+  },
+  "imageUrl": "/figures/usmle/step1/neuron-ap-v1.svg",
+  "imageCaption": "Neuron RMP, threshold AP, refractory period, saltatory conduction, EPSP/IPSP summation."
+}

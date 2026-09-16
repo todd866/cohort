@@ -1,0 +1,47 @@
+{
+  "figureId": "avulsed-tooth-crown-root",
+  "tool": "built-in image_gen",
+  "model": null,
+  "referenceAssetIds": [],
+  "externalReferenceImages": [],
+  "prompt": "Create an original educational medical schematic, landscape 3:2, large legible navy labels, warm ivory paper, hand-painted watercolour/gouache textures, fine confident brown contours, muted amber bone, soft teal cartilage and restrained coral accents. Use the supplied original MD3 scalp illustration ONLY as a palette, typography and brushwork reference; do not depict scalp anatomy. Clean spacious medical-atlas composition. Flat painted cutaways, precise tissue boundaries, no shiny 3D rendering, no uncanny flesh, no photograph, no radiograph or scan. Small footer: 'Educational schematic • Not to scale'. Title 'Avulsed permanent tooth'. A single large intact permanent incisor entirely outside the mouth, crown TOP and long tapered root BELOW. Crown white with fine enamel edge, root pale warm yellow with very thin soft teal coating representing living periodontal-ligament cells. A simple clean gloved thumb and index finger gently pinch ONLY the sides of the white crown; neither finger touches root. Precise leader labels 'Crown — hold here' to enamel, 'Root — avoid touching or scrubbing' to root, 'Periodontal ligament cells' to thin root coating. Fingers anatomically simple, no uncanny flesh. No tools or sockets, no replantation drawing, no timing or storage recommendations. Bottom line 'Protect the living root surface'.",
+  "clinicalSources": [
+    {
+      "title": "RCH: Dental trauma",
+      "url": "https://www.rch.org.au/clinicalguide/guideline_index/Dental_injuries/"
+    },
+    {
+      "title": "RCH: Mouth injuries and dislodged teeth",
+      "url": "https://www.rch.org.au/kidsinfo/fact_sheets/Broken_or_dislodged_tooth/"
+    }
+  ],
+  "teaching": {
+    "question": "Which part of an avulsed permanent tooth should be held, and why?",
+    "answer": "Hold the crown. Avoid touching or scrubbing the root to preserve periodontal ligament cells on its surface.",
+    "imageRole": "after-reveal"
+  },
+  "title": "Handle an avulsed permanent tooth by the crown",
+  "caption": "Handle an avulsed permanent tooth by its crown and avoid touching or scrubbing the root, protecting the periodontal ligament cells needed for healing.",
+  "alt": "A gloved thumb and finger grip only the white crown of a permanent incisor; its root surface remains untouched.",
+  "review": {
+    "status": "pending-independent-qa",
+    "method": "agent-visual-and-source-review",
+    "notes": "Retrospective full-pixel comparison with a checked handling specification: fingertips touch only the external crown; all root surface is untouched. No tooth section, jaw, socket or pulp anatomy is present. The labelled surface highlight explains preservation of living root-surface cells. External handling demonstration only; pending independent QA.",
+    "structure": {
+      "kind": "conceptual",
+      "status": "verified",
+      "specificationFiles": [
+        "scaffolds/avulsed-tooth-crown-root.json"
+      ],
+      "notes": "Retrospective full-pixel comparison with a checked handling specification: fingertips touch only the external crown; all root surface is untouched. No tooth section, jaw, socket or pulp anatomy is present. The labelled surface highlight explains preservation of living root-surface cells. External handling demonstration only; pending independent QA."
+    }
+  },
+  "archivedReferenceAssets": [
+    {
+      "id": "neonatal-scalp-comparison",
+      "sha256": "96be407e6f065a3a53d1302050758c029a49cf875ae39f2245c87d0cae34e478",
+      "role": "style-only",
+      "reason": "Withheld pending anatomical scaffold review"
+    }
+  ]
+}

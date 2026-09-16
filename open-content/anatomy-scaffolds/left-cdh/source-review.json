@@ -1,0 +1,35 @@
+{
+  "status": "agent-reviewed-limited-schematic",
+  "projection": "simplified anterior cutaway; selected bowel-only pattern",
+  "reviewedBy": "root guide and final-pixel review; independent image_repetition source/pixel review",
+  "sources": [
+    {
+      "url": "https://www.chop.edu/conditions-diseases/congenital-diaphragmatic-hernia-cdh",
+      "figure": "Left-sided CDH",
+      "establishes": [
+        "recognisable frontal organ relationships",
+        "liver abuts right diaphragmatic dome",
+        "rightward mediastinal shift",
+        "small left lung separated from herniated bowel",
+        "bowel passes through a diaphragmatic opening"
+      ]
+    }
+  ],
+  "criticalChecks": [
+    "patient-left viewer-right",
+    "normal heart/apex toward patient left",
+    "liver under right dome",
+    "bowel continuity through localized defect",
+    "bowel outside lung",
+    "small left lung and rightward shift",
+    "intact right diaphragm",
+    "No posterior/anterior defect location, organ proportions or bowel segment course asserted"
+  ],
+  "externalReferencePixelsUsed": false,
+  "limitations": [
+    "Simplified illustrative anatomy; not a clinical image or a map of three-dimensional defect location.",
+    "CHOP depicts an example with additional liver and stomach herniation; this diagram deliberately shows a bowel-only pattern.",
+    "The old rectangle checks do not validate the revised organ contours or curved diaphragm.",
+    "Independent source and pixel review passed the stated relationships. Annotation placement is checked separately; no clinician signoff is asserted."
+  ]
+}

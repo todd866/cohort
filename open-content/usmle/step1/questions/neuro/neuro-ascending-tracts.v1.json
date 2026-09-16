@@ -1,0 +1,85 @@
+{
+  "id": "bank:usmle-step1:neuro-ascending-tracts:v1",
+  "rotation": "usmle-step1-open",
+  "topics": [
+    "dorsal column",
+    "spinothalamic tract"
+  ],
+  "moduleNodes": [
+    "usmle/step1",
+    "usmle/step1/neuroscience"
+  ],
+  "questionType": "mechanism",
+  "difficulty": "hard",
+  "stem": "A 35-year-old man suffers a right-sided spinal cord hemisection at T10. Below the lesion he loses fine touch and position sense on the right side but loses pain and temperature sensation on the left side.\n\nWhich of the following best explains this dissociated pattern?",
+  "options": [
+    {
+      "label": "A",
+      "text": "Both ascending systems cross immediately upon entering the spinal cord",
+      "isCorrect": false,
+      "misconception": "A single crossing rule is being applied to both systems.",
+      "explanation": "If both crossed at entry, a right hemisection would strip both modalities from the left side only; the preserved left-sided touch proves the dorsal columns ascend uncrossed until the medulla."
+    },
+    {
+      "label": "B",
+      "text": "Both ascending systems cross together in the medulla",
+      "isCorrect": false,
+      "misconception": "The spinothalamic crossing is being relocated upward.",
+      "explanation": "If both crossed in the medulla, the right lesion would remove both modalities on the right; the lost left-sided pain and temperature show that spinothalamic fibers already crossed in the cord."
+    },
+    {
+      "label": "C",
+      "text": "Dorsal columns ascend uncrossed while spinothalamic fibers cross at entry",
+      "isCorrect": true,
+      "misconception": "None; the two systems decussate at different levels, splitting the deficits.",
+      "explanation": "Dorsal column fibers carrying touch and proprioception ascend ipsilaterally and cross only in the medulla, so a right hemisection removes right-sided fine touch; spinothalamic fibers for pain and temperature cross within the cord at the level they enter, so the right lesion removes left-sided pain and temperature below it."
+    },
+    {
+      "label": "D",
+      "text": "Spinothalamic fibers ascend uncrossed while dorsal columns cross at entry",
+      "isCorrect": false,
+      "misconception": "The crossing rules of the two systems are being swapped.",
+      "explanation": "Swapping the rules would produce left-sided touch loss and right-sided pain loss — the mirror image of this patient's findings."
+    },
+    {
+      "label": "E",
+      "text": "Pain fibers ascend in the dorsal columns, and touch fibers in the anterolateral cord",
+      "isCorrect": false,
+      "misconception": "The modality content of the two tracts is being reversed.",
+      "explanation": "The dorsal columns carry fine touch and proprioception, and the spinothalamic (anterolateral) system carries pain and temperature; the dissociation arises from their different crossing levels, not swapped content."
+    }
+  ],
+  "context": "Learning objective: contrast the two ascending systems. Dorsal columns (touch, proprioception) ascend ipsilaterally and decussate in the medulla; the spinothalamic tract (pain, temperature) decussates at the cord level of entry, explaining dissociated sensory loss in hemisection.",
+  "cite": "openstax-anatomy-physiology#neuro-ascending-tracts",
+  "publicUsmle": {
+    "schemaVersion": 1,
+    "origin": "generated",
+    "itemText": {
+      "licence": "CC-BY-4.0",
+      "attribution": "MD3 contributors"
+    },
+    "evidence": {
+      "kind": "passage",
+      "sourceId": "openstax-anatomy-physiology",
+      "passageId": "neuro-ascending-tracts",
+      "licence": {
+        "cls": "foss",
+        "id": "cc-by-4.0"
+      }
+    },
+    "media": {
+      "kind": "asset",
+      "assetId": "cns-pathways-v1",
+      "job": "anatomy",
+      "showWhen": "after-reveal",
+      "licence": {
+        "cls": "foss",
+        "id": "cc-by-4.0"
+      },
+      "attribution": "MD3 contributors",
+      "contentHash": "sha256:7409718be4c8fcb54e2364ad668d3b69e0f19cb24ed4b12c3cb5ae0b88d5de51"
+    }
+  },
+  "imageUrl": "/figures/usmle/step1/cns-pathways-v1.svg",
+  "imageCaption": "UMN vs LMN, stretch reflex, ascending tracts, blood-brain barrier."
+}

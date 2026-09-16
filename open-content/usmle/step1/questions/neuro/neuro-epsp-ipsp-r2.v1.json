@@ -1,0 +1,74 @@
+{
+  "id": "bank:usmle-step1:neuro-epsp-ipsp-r2:v1",
+  "rotation": "usmle-step1-open",
+  "ladderId": "epsp-ipsp",
+  "topics": [
+    "EPSP",
+    "IPSP",
+    "postsynaptic potentials",
+    "ladder:epsp-ipsp"
+  ],
+  "moduleNodes": [
+    "usmle/step1",
+    "usmle/step1/neuroscience"
+  ],
+  "questionType": "mechanism",
+  "difficulty": "medium",
+  "stem": "A 34-year-old man receives a spinal anesthetic that blocks inhibitory interneurons synapsing on motor neurons. Recordings from an affected motor neuron now show repeated small graded potentials when several excitatory inputs fire together, and the cell reaches threshold more easily.\n\nEach of these synaptic events is best classified as which of the following?",
+  "options": [
+    {
+      "label": "A",
+      "text": "A depolarizing postsynaptic potential",
+      "isCorrect": true,
+      "misconception": "None; depolarizing graded potentials move the membrane toward threshold.",
+      "explanation": "Excitatory postsynaptic potentials are depolarizing changes, usually from Na+ or Ca2+ entry, that bring the membrane closer to threshold; removing inhibition lets summated excitatory potentials trigger firing more readily."
+    },
+    {
+      "label": "B",
+      "text": "An inhibitory postsynaptic potential",
+      "isCorrect": false,
+      "misconception": "A hyperpolarizing event is being chosen for a depolarizing recording.",
+      "explanation": "Inhibitory postsynaptic potentials hyperpolarize the cell away from threshold, typically via Cl− influx or K+ efflux; the described depolarizations are excitatory."
+    },
+    {
+      "label": "C",
+      "text": "An action potential",
+      "isCorrect": false,
+      "misconception": "A graded synaptic potential is being confused with the all-or-none spike.",
+      "explanation": "Action potentials are all-or-none overshoots; the small depolarizations described are subthreshold, graded EPSPs that can summate."
+    },
+    {
+      "label": "D",
+      "text": "A generator potential in a sensory dendrite",
+      "isCorrect": false,
+      "misconception": "A sensory receptor event is being applied to a motor neuron synapse.",
+      "explanation": "Generator potentials occur in sensory receptors; motor neuron synaptic depolarizations are EPSPs."
+    },
+    {
+      "label": "E",
+      "text": "A refractory-period block of sodium channels",
+      "isCorrect": false,
+      "misconception": "Channel inactivation is being classified as a postsynaptic potential type.",
+      "explanation": "Refractory periods follow action potentials; the depolarizations here are synaptic EPSPs before threshold is reached."
+    }
+  ],
+  "context": "Learning objective: classify depolarizing postsynaptic potentials as EPSPs. EPSPs move the membrane toward threshold and can summate; IPSPs hyperpolarize and oppose firing.",
+  "cite": "openstax-anatomy-physiology#neuro-epsp-ipsp",
+  "publicUsmle": {
+    "schemaVersion": 1,
+    "origin": "generated",
+    "itemText": {
+      "licence": "CC-BY-4.0",
+      "attribution": "MD3 contributors"
+    },
+    "evidence": {
+      "kind": "passage",
+      "sourceId": "openstax-anatomy-physiology",
+      "passageId": "neuro-epsp-ipsp",
+      "licence": {
+        "cls": "foss",
+        "id": "cc-by-4.0"
+      }
+    }
+  }
+}

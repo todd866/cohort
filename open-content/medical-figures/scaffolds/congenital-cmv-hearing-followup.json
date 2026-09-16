@@ -1,0 +1,73 @@
+{
+  "schemaVersion": 1,
+  "figureId": "congenital-cmv-hearing-followup",
+  "kind": "conceptual",
+  "created": "2026-09-10",
+  "timing": "authored before generation",
+  "sourceFacts": [
+    {
+      "fact": "Children with congenital CMV may develop hearing loss later despite passing their newborn hearing test.",
+      "sourceUrls": [
+        "https://www.cdc.gov/cytomegalovirus/congenital-infection/index.html"
+      ]
+    },
+    {
+      "fact": "Regular hearing checks are recommended for babies with congenital CMV.",
+      "sourceUrls": [
+        "https://www.cdc.gov/cytomegalovirus/congenital-infection/index.html"
+      ]
+    }
+  ],
+  "clinicalSources": [
+    {
+      "title": "CDC: CMV in Newborns",
+      "url": "https://www.cdc.gov/cytomegalovirus/congenital-infection/index.html"
+    }
+  ],
+  "nodes": [
+    "congenital CMV",
+    "newborn hearing screen pass",
+    "possible later hearing loss",
+    "repeat hearing checks"
+  ],
+  "edges": [
+    [
+      "newborn hearing screen pass",
+      "possible later hearing loss",
+      "does not exclude"
+    ],
+    [
+      "congenital CMV",
+      "repeat hearing checks",
+      "requires follow-up"
+    ],
+    [
+      "repeat hearing checks",
+      "possible later hearing loss",
+      "can detect"
+    ]
+  ],
+  "expectedLabels": [
+    "Congenital CMV: hearing can change",
+    "Newborn screen passed",
+    "Later hearing loss is possible",
+    "Keep checking hearing",
+    "A pass is a starting point"
+  ],
+  "layoutSpecification": "Title 'Congenital CMV: hearing can change'. A gently curving left-to-right time path with three large stations. LEFT: newborn screening card with a teal tick labelled 'Newborn screen passed'. CENTRE: a bell icon whose outgoing sound-wave marks become faint, labelled 'Later hearing loss is possible'. RIGHT: repeated small calendar pages beside a pair of headphones, labelled 'Keep checking hearing'. A continuous time arrow runs LEFT to RIGHT through all three stations, but the line through centre is dotted to convey possibility, not inevitability. Footer note 'A pass is a starting point'. No hearing thresholds, invented audiogram, fake ear anatomy, guaranteed loss or claim all newborns need the same CMV follow-up. Use calm neutral symbols, no distressed child. STRICT: calendars must have NO dates, NO ages, NO numbers, NO month labels and NO text other than 'Keep checking hearing'. Do not invent a follow-up timetable such as 3, 6, 12 or 24 months. Use exactly three blank calendar icons with magnifying-glass symbols. No baby portrait, landscape or extra decorative slogans.",
+  "forbiddenAnatomy": [
+    "No internal organ, eye, ear, brain, tissue or bone anatomy",
+    "No diagnostic image, patient-specific lesion appearance or literal anatomical pathway"
+  ],
+  "validation": {
+    "sourceFacts": "Checked against listed primary clinical sources on 2026-09-10",
+    "status": "self-reviewed; independent review pending",
+    "pixelChecks": "Pixel/structure check on revised image: a passed screening symbol precedes possible later hearing loss, then ongoing hearing checks. Three blank calendars carry only magnifier symbols, with no invented ages or intervals. Dotted timeline and possible wording avoid inevitable progression. No auditory anatomy or fabricated audiogram. Initial version rejected for invented follow-up ages."
+  },
+  "generationAttempts": [
+    {
+      "status": "rejected",
+      "reason": "First generation invented 3, 6, 12 and 24 month calendar ages not present in source or specification."
+    }
+  ]
+}

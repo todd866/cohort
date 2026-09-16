@@ -1,0 +1,71 @@
+{
+  "id": "bank:usmle-step1:exp26-c-bicarbonate-loss-compartment-effect:v1",
+  "rotation": "usmle-step1-open",
+  "topics": [
+    "gastrointestinal",
+    "bicarbonate-loss-compartment-effect"
+  ],
+  "moduleNodes": [
+    "usmle/step1",
+    "usmle/step1/gastrointestinal"
+  ],
+  "questionType": "mechanism",
+  "difficulty": "medium",
+  "stem": "A gastric mucosal preparation retains its mucus layer and intact epithelial tight junctions. A selective intervention removes bicarbonate from the mucus without changing acid secretion into the lumen. Which of the following protective functions is most directly reduced?",
+  "options": [
+    {
+      "label": "A",
+      "text": "Exclusion of gastric fluid by intact epithelial tight junctions",
+      "isCorrect": false,
+      "explanation": "Tight junctions provide an intercellular seal and remain intact in this preparation. The selective loss is in chemical buffering, not that seal.",
+      "misconception": "Confuses loss of chemical buffering with a junctional seal defect."
+    },
+    {
+      "label": "B",
+      "text": "Shielding of the epithelial surface by the physical mucus layer",
+      "isCorrect": false,
+      "explanation": "The physical mucus coating is preserved. Its presence does not replace the neutralizing action of the bicarbonate removed from it.",
+      "misconception": "Treats preserved physical mucus as equivalent to bicarbonate buffering."
+    },
+    {
+      "label": "C",
+      "text": "Reduction of acid delivery through decreased luminal acid secretion",
+      "isCorrect": false,
+      "explanation": "The stem fixes luminal acid secretion. Bicarbonate acts on acid locally within mucus rather than explaining the result by changing acid delivery.",
+      "misconception": "Attributes reduced local protection to an acid-secretion change excluded by the model."
+    },
+    {
+      "label": "D",
+      "text": "Protection through secretion of pepsin as an inactive precursor",
+      "isCorrect": false,
+      "explanation": "Chief cells release inactive pepsinogen before acid-dependent activation. Bicarbonate removal does not directly change that secretion step.",
+      "misconception": "Substitutes inactive precursor secretion for the selectively lost buffer."
+    },
+    {
+      "label": "E",
+      "text": "Neutralization of acid in the mucus near the epithelial surface",
+      "isCorrect": true,
+      "explanation": "Bicarbonate neutralizes acid within the mucus. Removing it reduces chemical protection even when mucus thickness and epithelial junctions are preserved.",
+      "misconception": "No misconception: mucus bicarbonate neutralizes acid near epithelial cells."
+    }
+  ],
+  "context": "Learning objective: Distinguish physical, chemical, and intercellular gastric defenses. Selective loss of mucus bicarbonate impairs local acid neutralization rather than proving that every protective barrier has failed.\n\nBicarbonate neutralizes acid within the mucus. Removing it reduces chemical protection even when mucus thickness and epithelial junctions are preserved.",
+  "cite": "openstax-anatomy-physiology#gi-mucosal-barrier",
+  "publicUsmle": {
+    "schemaVersion": 1,
+    "origin": "generated",
+    "itemText": {
+      "licence": "CC-BY-4.0",
+      "attribution": "MD3 contributors"
+    },
+    "evidence": {
+      "kind": "passage",
+      "sourceId": "openstax-anatomy-physiology",
+      "passageId": "gi-mucosal-barrier",
+      "licence": {
+        "cls": "foss",
+        "id": "cc-by-4.0"
+      }
+    }
+  }
+}

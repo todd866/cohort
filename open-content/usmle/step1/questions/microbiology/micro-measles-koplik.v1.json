@@ -1,0 +1,85 @@
+{
+  "id": "bank:usmle-step1:micro-measles-koplik:v1",
+  "rotation": "usmle-step1-open",
+  "topics": [
+    "measles",
+    "koplik"
+  ],
+  "moduleNodes": [
+    "usmle/step1",
+    "usmle/step1/microbiology"
+  ],
+  "questionType": "mechanism",
+  "difficulty": "easy",
+  "stem": "Which mucosal finding is classically listed with measles prodrome alongside cough, coryza, and conjunctivitis?",
+  "options": [
+    {
+      "label": "A",
+      "text": "Negri bodies in hippocampal neurons",
+      "isCorrect": false,
+      "misconception": "Rabies distractor — does not match the cited teaching point.",
+      "explanation": "Wrong disease; see the cited source passage for detail."
+    },
+    {
+      "label": "B",
+      "text": "Target lesions only on palms and soles",
+      "isCorrect": false,
+      "misconception": "EM/syphilis distractor.",
+      "explanation": "Not measles prodrome marker."
+    },
+    {
+      "label": "C",
+      "text": "Oral thrush from Candida overgrowth alone",
+      "isCorrect": false,
+      "misconception": "Fungal distractor — does not match the cited teaching point.",
+      "explanation": "Wrong finding; see the cited source passage for detail."
+    },
+    {
+      "label": "D",
+      "text": "Koplik spots on mucous membranes",
+      "isCorrect": true,
+      "misconception": "None — this option matches the cited source passage.",
+      "explanation": "CDC lists Koplik spots on mucous membranes."
+    },
+    {
+      "label": "E",
+      "text": "Aschoff bodies in myocardium only",
+      "isCorrect": false,
+      "misconception": "Rheumatic fever distractor.",
+      "explanation": "Wrong disease; see the cited source passage for detail."
+    }
+  ],
+  "context": "Learning objective: Koplik spots in measles.",
+  "cite": "cdc-pink-book-measles#measles-koplik",
+  "publicUsmle": {
+    "schemaVersion": 1,
+    "origin": "generated",
+    "itemText": {
+      "licence": "CC-BY-4.0",
+      "attribution": "MD3 contributors"
+    },
+    "evidence": {
+      "kind": "passage",
+      "sourceId": "cdc-pink-book-measles",
+      "passageId": "measles-koplik",
+      "licence": {
+        "cls": "foss",
+        "id": "us-gov"
+      }
+    },
+    "media": {
+      "kind": "asset",
+      "assetId": "micro-pathogen-virulence-v1",
+      "job": "compare-table",
+      "showWhen": "after-reveal",
+      "licence": {
+        "cls": "foss",
+        "id": "cc-by-4.0"
+      },
+      "attribution": "MD3 contributors",
+      "contentHash": "sha256:e0ca8dcce5538b15d4a9973d8a6934fc8199d41e7059a4d8f0059cc1ec78a22e"
+    }
+  },
+  "imageUrl": "/figures/usmle/step1/micro-pathogen-virulence-v1.svg",
+  "imageCaption": "Pathogenicity vs virulence, primary vs opportunistic, lipid A, capsule, measles/meningococcus/pneumococcus."
+}

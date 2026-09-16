@@ -1,0 +1,90 @@
+{
+  "schemaVersion": 1,
+  "figureId": "erythema-target-zones-model",
+  "kind": "conceptual",
+  "sourceFacts": [
+    {
+      "id": "fact-1",
+      "fact": "A classic target lesion has three concentric colour zones.",
+      "sources": [
+        {
+          "title": "DermNet: Erythema multiforme",
+          "url": "https://dermnetnz.org/topics/erythema-multiforme"
+        }
+      ]
+    },
+    {
+      "id": "fact-2",
+      "fact": "The centre is dusky, the middle zone paler and the peripheral margin erythematous.",
+      "sources": [
+        {
+          "title": "DermNet: Erythema multiforme",
+          "url": "https://dermnetnz.org/topics/erythema-multiforme"
+        }
+      ]
+    },
+    {
+      "id": "fact-3",
+      "fact": "Real lesions vary and target-like appearances can have different causes.",
+      "sources": [
+        {
+          "title": "DermNet: Erythema multiforme",
+          "url": "https://dermnetnz.org/topics/erythema-multiforme"
+        }
+      ]
+    }
+  ],
+  "nodes": [
+    {
+      "id": "centre",
+      "shape": "dusky circle",
+      "label": "Dusky centre"
+    },
+    {
+      "id": "middle",
+      "shape": "pale annulus",
+      "label": "Paler middle zone"
+    },
+    {
+      "id": "outer",
+      "shape": "coral annulus",
+      "label": "Red outer margin"
+    }
+  ],
+  "edges": [
+    {
+      "from": "centre",
+      "to": "middle",
+      "meaning": "middle surrounds centre"
+    },
+    {
+      "from": "middle",
+      "to": "outer",
+      "meaning": "outer surrounds middle"
+    }
+  ],
+  "labels": [
+    "Three concentric colour zones",
+    "Classic target pattern",
+    "Dusky centre",
+    "Paler middle zone",
+    "Red outer margin",
+    "Erythema multiforme",
+    "Colour model, not a diagnostic skin image"
+  ],
+  "forbiddenAnatomy": [
+    "Skin anatomy, tissue layers, clinical lesion images, histology, anatomical cutaways"
+  ],
+  "validation": {
+    "status": "verified",
+    "method": "source-and-conceptual-structure-review",
+    "checks": [
+      "Exactly three visible colour regions ordered dusky centre→pale middle→red outer.",
+      "Each label leader terminates within the correct zone.",
+      "Flat paper circle, no tissue layers, clinical skin or eye resemblance.",
+      "No claim any target-like lesion equals erythema multiforme."
+    ],
+    "pixelReviewStatus": "verified",
+    "pixelReviewNotes": "Exactly three concentric filled regions: dusky plum centre, pale middle annulus, coral-red outer annulus. Each of the three leader dots ends in its correctly named zone. Image is flat paper geometry and states that it is not a diagnostic skin image; no pupil, skin texture or anatomy."
+  }
+}

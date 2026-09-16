@@ -1,0 +1,86 @@
+{
+  "id": "bank:usmle-step1:re-fertilization-site-tube:v1",
+  "rotation": "usmle-step1-open",
+  "topics": [
+    "fertilization site",
+    "uterine tube",
+    "fallopian tube"
+  ],
+  "moduleNodes": [
+    "usmle/step1",
+    "usmle/step1/reproductive"
+  ],
+  "questionType": "mechanism",
+  "difficulty": "easy",
+  "stem": "A 27-year-old woman with a history of chlamydial pelvic inflammatory disease has tubal scarring and is now being evaluated for infertility.\n\nIn an unscarred reproductive tract, fertilization of an ovulated oocyte usually occurs in which of the following locations?",
+  "options": [
+    {
+      "label": "A",
+      "text": "The fundus of the uterine body",
+      "isCorrect": false,
+      "misconception": "The implantation region is being confused with the fertilization site.",
+      "explanation": "The blastocyst typically implants in the fundus, but fertilization happened days earlier in the distal uterine tube."
+    },
+    {
+      "label": "B",
+      "text": "The cervix at the uterine outlet",
+      "isCorrect": false,
+      "misconception": "A sperm barrier is being cast as the fertilization site.",
+      "explanation": "Cervical mucus filters and blocks many sperm; the surviving sperm meet the oocyte far upstream in the distal uterine tube."
+    },
+    {
+      "label": "C",
+      "text": "The distal portion of the uterine tube",
+      "isCorrect": true,
+      "misconception": "None; the distal tube is the usual meeting point.",
+      "explanation": "Sperm enter through the vagina, and fertilization of an ovulated oocyte usually occurs in the distal uterine tube — the reason tubal scarring from pelvic inflammatory disease causes infertility."
+    },
+    {
+      "label": "D",
+      "text": "The vaginal fornix around the cervix",
+      "isCorrect": false,
+      "misconception": "The deposition site is being confused with the fertilization site.",
+      "explanation": "Semen is deposited in the vagina, but the oocyte never descends there; sperm must ascend to the distal uterine tube to fertilize it."
+    },
+    {
+      "label": "E",
+      "text": "The ovarian surface within the follicle",
+      "isCorrect": false,
+      "misconception": "Ovulation and fertilization are being merged into one event.",
+      "explanation": "The oocyte is first ovulated out of the follicle and picked up by the tube; sperm fertilize it in the distal uterine tube, not on the ovary."
+    }
+  ],
+  "context": "Learning objective: locate fertilization. After ovulation the fimbriae sweep the oocyte into the uterine tube, where fertilization usually occurs in its distal portion. Tubal infections (gonorrhea, chlamydia) can scar the tubes, blocking the meeting of gametes and causing infertility or ectopic implantation.",
+  "cite": "openstax-anatomy-physiology#re-fertilization-site-tube",
+  "publicUsmle": {
+    "schemaVersion": 1,
+    "origin": "generated",
+    "itemText": {
+      "licence": "CC-BY-4.0",
+      "attribution": "MD3 contributors"
+    },
+    "evidence": {
+      "kind": "passage",
+      "sourceId": "openstax-anatomy-physiology",
+      "passageId": "re-fertilization-site-tube",
+      "licence": {
+        "cls": "foss",
+        "id": "cc-by-4.0"
+      }
+    },
+    "media": {
+      "kind": "asset",
+      "assetId": "fertilization-implantation-v1",
+      "job": "pathway",
+      "showWhen": "after-reveal",
+      "licence": {
+        "cls": "foss",
+        "id": "cc-by-4.0"
+      },
+      "attribution": "MD3 contributors",
+      "contentHash": "sha256:b5ebb74360e8db4d6a3783533894c0d3d0916c7900359f2029362fcab1e33982"
+    }
+  },
+  "imageUrl": "/figures/usmle/step1/fertilization-implantation-v1.svg",
+  "imageCaption": "Fertilization in tube ampulla; cortical reaction; implantation; umbilical vessel polarity."
+}

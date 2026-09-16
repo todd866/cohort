@@ -1,0 +1,71 @@
+{
+  "id": "bank:usmle-step1:exp26-b-ef-volume-calculation:v1",
+  "rotation": "usmle-step1-open",
+  "topics": [
+    "cardiovascular",
+    "ef-volume-calculation"
+  ],
+  "moduleNodes": [
+    "usmle/step1",
+    "usmle/step1/cardiovascular"
+  ],
+  "questionType": "calculation",
+  "difficulty": "easy",
+  "stem": "A 54-year-old patient undergoes ventricular imaging. The chamber contains 150 mL immediately before contraction and 60 mL immediately after contraction. The report distinguishes the fraction expelled from the volume remaining. Which of the following is the ejection fraction for this beat?",
+  "options": [
+    {
+      "text": "60%",
+      "explanation": "Subtracting the remaining 60 mL from the initial 150 mL gives a stroke volume of 90 mL. Dividing 90 by 150 gives an ejection fraction of 60%.",
+      "isCorrect": true,
+      "label": "A",
+      "misconception": "No misconception: fractional emptying is expelled volume divided by starting ventricular volume."
+    },
+    {
+      "text": "40%",
+      "explanation": "This is the fraction remaining after contraction: 60 divided by 150. Ejection fraction measures the proportion expelled, so the residual fraction must be subtracted from one.",
+      "isCorrect": false,
+      "label": "B",
+      "misconception": "Confuses the fraction remaining after contraction with the fraction expelled."
+    },
+    {
+      "text": "90%",
+      "explanation": "The expelled volume is 90 mL, but that number is a volume rather than a percentage. It must be divided by the initial ventricular volume.",
+      "isCorrect": false,
+      "label": "C",
+      "misconception": "Treats the numerical stroke volume in milliliters as an ejection percentage."
+    },
+    {
+      "text": "25%",
+      "explanation": "This result does not represent the ratio of expelled volume to initial volume. The calculation requires subtracting the final volume before dividing by 150 mL.",
+      "isCorrect": false,
+      "label": "D",
+      "misconception": "Uses a fraction that does not compare expelled volume with the measured starting volume."
+    },
+    {
+      "text": "75%",
+      "explanation": "This fraction would correspond to expelling 112.5 mL from an initial 150 mL. The measured volumes show that the ventricle instead expels 90 mL.",
+      "isCorrect": false,
+      "label": "E",
+      "misconception": "Assumes a larger expelled volume than the measured before-and-after volumes permit."
+    }
+  ],
+  "context": "Learning objective: Calculate the proportion of end-diastolic volume expelled by subtracting end-systolic volume before dividing by end-diastolic volume. Subtracting the remaining 60 mL from the initial 150 mL gives a stroke volume of 90 mL. Dividing 90 by 150 gives an ejection fraction of 60%.",
+  "cite": "openstax-ap1-cardiac-physiology#ejection-fraction",
+  "publicUsmle": {
+    "schemaVersion": 1,
+    "origin": "generated",
+    "itemText": {
+      "licence": "CC-BY-4.0",
+      "attribution": "MD3 contributors"
+    },
+    "evidence": {
+      "kind": "passage",
+      "sourceId": "openstax-ap1-cardiac-physiology",
+      "passageId": "ejection-fraction",
+      "licence": {
+        "cls": "foss",
+        "id": "cc-by-4.0"
+      }
+    }
+  }
+}

@@ -1,0 +1,71 @@
+{
+  "id": "bank:usmle-step1:exp26-c-phosphate-release-binding-step:v1",
+  "rotation": "usmle-step1-open",
+  "topics": [
+    "musculoskeletal",
+    "phosphate-release-binding-step"
+  ],
+  "moduleNodes": [
+    "usmle/step1",
+    "usmle/step1/musculoskeletal"
+  ],
+  "questionType": "mechanism",
+  "difficulty": "medium",
+  "stem": "In an isolated muscle preparation, myosin heads have hydrolyzed ATP but retain inorganic phosphate. An experimental reagent prevents phosphate release without preventing contact with actin. Which of the following transitions in the cross-bridge cycle is most directly impaired?",
+  "options": [
+    {
+      "label": "A",
+      "text": "Hydrolysis of newly bound ATP into ADP and phosphate",
+      "isCorrect": false,
+      "explanation": "The stem establishes that ATP has already been hydrolyzed. The reagent blocks release of retained phosphate at a later step.",
+      "misconception": "Confuses completed ATP hydrolysis with subsequent phosphate release."
+    },
+    {
+      "label": "B",
+      "text": "Strengthening of actin attachment followed by the power stroke",
+      "isCorrect": true,
+      "explanation": "Phosphate release strengthens the actin–myosin attachment and precedes the power stroke. Preventing that release blocks this transition while allowing initial contact.",
+      "misconception": "No misconception: phosphate release strengthens attachment before the power stroke."
+    },
+    {
+      "label": "C",
+      "text": "Binding of fresh ATP to a post-stroke myosin head",
+      "isCorrect": false,
+      "explanation": "The selective block concerns phosphate release before the force-generating stroke. It does not directly prevent the subsequent binding of another ATP molecule.",
+      "misconception": "Misplaces a pre-stroke phosphate block at later binding of fresh ATP."
+    },
+    {
+      "label": "D",
+      "text": "Detachment of myosin from actin after fresh ATP binding",
+      "isCorrect": false,
+      "explanation": "Fresh ATP binding promotes detachment. That is a different step from phosphate release, which strengthens attachment and precedes the stroke.",
+      "misconception": "Confuses phosphate-dependent attachment strengthening with ATP-dependent detachment."
+    },
+    {
+      "label": "E",
+      "text": "Initial contact of myosin with an available actin site",
+      "isCorrect": false,
+      "explanation": "The experiment explicitly preserves contact with actin. It separates that initial contact from the phosphate-dependent transition to stronger attachment.",
+      "misconception": "Mistakes the later strong-binding transition for explicitly preserved initial contact."
+    }
+  ],
+  "context": "Learning objective: Connect phosphate release to strong actin attachment and the power-stroke transition.\n\nPhosphate release strengthens the actin–myosin attachment and precedes the power stroke. Preventing that release blocks this transition while allowing initial contact.",
+  "cite": "openstax-anatomy-physiology#ms-cross-bridge-power-stroke",
+  "publicUsmle": {
+    "schemaVersion": 1,
+    "origin": "generated",
+    "itemText": {
+      "licence": "CC-BY-4.0",
+      "attribution": "MD3 contributors"
+    },
+    "evidence": {
+      "kind": "passage",
+      "sourceId": "openstax-anatomy-physiology",
+      "passageId": "ms-cross-bridge-power-stroke",
+      "licence": {
+        "cls": "foss",
+        "id": "cc-by-4.0"
+      }
+    }
+  }
+}

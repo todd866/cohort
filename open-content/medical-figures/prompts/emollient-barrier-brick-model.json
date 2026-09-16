@@ -1,0 +1,39 @@
+{
+  "figureId": "emollient-barrier-brick-model",
+  "tool": "built-in image_gen",
+  "model": null,
+  "referenceAssetIds": [],
+  "externalReferenceImages": [],
+  "prompt": "Original educational conceptual illustration, landscape 3:2. Warm ivory paper, sophisticated hand-painted gouache/watercolour, confident fine brown outlines, navy lettering, restrained teal, coral and amber. Editorial science illustration with spacious composition and large legible labels. The explanatory structure must carry the meaning visually: molecules, objects, geometry or flow; never paragraphs in boxes. No organs, regional anatomy, teeth or joint cutaways, tissue layers, invented histology, diagnostic photographs, radiographs or patient data. All symbols are explicitly conceptual. Footer: 'Conceptual teaching model • Not to scale'. Title 'Supporting the moisture barrier'. Two equally sized freestanding garden brick walls viewed slightly obliquely; ordinary large terracotta bricks, NOT cells. Left wall 'Weakened barrier' has visibly open gaps in mortar. Several teal water droplets and arrows move from a small symbolic water reservoir behind the wall outward through its gaps, label 'Moisture escapes'. Right wall 'Barrier support' has the gaps filled with smooth warm ivory mortar; a small unbranded pot labelled 'Moisturiser' stands beside it. Behind right wall droplets are retained; only one small outward dotted arrow, label 'Less moisture loss'. Same wall design makes leakiness the comparison. Bottom qualifier 'Masonry analogy, not skin anatomy'. Do not draw skin or perfect waterproof seal.",
+  "clinicalSources": [
+    {
+      "title": "NIAMS: Atopic dermatitis treatment",
+      "url": "https://www.niams.nih.gov/health-topics/atopic-dermatitis/diagnosis-treatment-and-steps-to-take"
+    },
+    {
+      "title": "NIAMS: Atopic dermatitis overview",
+      "url": "https://www.niams.nih.gov/health-topics/atopic-dermatitis"
+    }
+  ],
+  "teaching": {
+    "question": "What is the barrier-related purpose of an emollient in eczema?",
+    "answer": "It helps support the skin barrier and retain moisture, reducing dryness. The brick comparison shows this function without representing actual skin anatomy.",
+    "imageRole": "after-reveal"
+  },
+  "title": "Supporting the moisture barrier",
+  "caption": "Moisturisers help restore the skin barrier and reduce dryness. The masonry comparison is a functional analogy, not a skin cross-section.",
+  "alt": "Two brick barriers compare moisture escaping through open gaps with reduced escape after gaps are filled.",
+  "review": {
+    "status": "pending-independent-qa",
+    "method": "agent-visual-and-source-review",
+    "notes": "Matched paired masonry walls; left has open mortar gaps with multiple outward moisture arrows, right filled joints and a single small dotted outward arrow. Labels correctly state less moisture loss rather than complete impermeability. The explicit masonry-not-skin qualifier is legible. No epidermal layers, cells or follicles drawn.",
+    "structure": {
+      "kind": "conceptual",
+      "status": "verified",
+      "specificationFiles": [
+        "scaffolds/emollient-barrier-brick-model.json"
+      ],
+      "notes": "Matched paired masonry walls; left has open mortar gaps with multiple outward moisture arrows, right filled joints and a single small dotted outward arrow. Labels correctly state less moisture loss rather than complete impermeability. The explicit masonry-not-skin qualifier is legible. No epidermal layers, cells or follicles drawn."
+    }
+  }
+}

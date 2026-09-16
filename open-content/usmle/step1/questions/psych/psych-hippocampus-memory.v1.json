@@ -1,0 +1,85 @@
+{
+  "id": "bank:usmle-step1:psych-hippocampus-memory:v1",
+  "rotation": "usmle-step1-open",
+  "topics": [
+    "hippocampus",
+    "declarative memory"
+  ],
+  "moduleNodes": [
+    "usmle/step1",
+    "usmle/step1/psych"
+  ],
+  "questionType": "mechanism",
+  "difficulty": "medium",
+  "stem": "The hippocampus is particularly associated with which functions?",
+  "options": [
+    {
+      "label": "A",
+      "text": "Fear conditioning with no declarative role",
+      "isCorrect": false,
+      "misconception": "Fear is more amygdala-centered.",
+      "explanation": "Hippocampus is declarative-leaning."
+    },
+    {
+      "label": "B",
+      "text": "Bile salt emulsification in the gut lumen",
+      "isCorrect": false,
+      "misconception": "GI — does not match the cited teaching point.",
+      "explanation": "This option does not match the cited source passage for the stem."
+    },
+    {
+      "label": "C",
+      "text": "Declarative and episodic recognition roles",
+      "isCorrect": true,
+      "misconception": "None; hippocampus supports declarative/episodic/recognition.",
+      "explanation": "OpenStax links hippocampus to declarative, episodic, and recognition memory."
+    },
+    {
+      "label": "D",
+      "text": "Spinal motor pattern generation alone",
+      "isCorrect": false,
+      "misconception": "Wrong structure — does not match the cited teaching point.",
+      "explanation": "Hippocampus is medial temporal."
+    },
+    {
+      "label": "E",
+      "text": "Oxygen acceptance at complex IV",
+      "isCorrect": false,
+      "misconception": "Biochem — does not match the cited teaching point.",
+      "explanation": "This option does not match the cited source passage for the stem."
+    }
+  ],
+  "context": "Learning objective: hippocampus and declarative/episodic memory.",
+  "cite": "openstax-psychology-2e#hippocampus-declarative-memory",
+  "publicUsmle": {
+    "schemaVersion": 1,
+    "origin": "generated",
+    "itemText": {
+      "licence": "CC-BY-4.0",
+      "attribution": "MD3 contributors"
+    },
+    "evidence": {
+      "kind": "passage",
+      "sourceId": "openstax-psychology-2e",
+      "passageId": "hippocampus-declarative-memory",
+      "licence": {
+        "cls": "foss",
+        "id": "cc-by-4.0"
+      }
+    },
+    "media": {
+      "kind": "asset",
+      "assetId": "memory-systems-v1",
+      "job": "anatomy",
+      "showWhen": "after-reveal",
+      "licence": {
+        "cls": "foss",
+        "id": "cc-by-4.0"
+      },
+      "attribution": "MD3 contributors",
+      "contentHash": "sha256:123ce110b77ca50bbdc419ca19930e3b0667db9e96b2dea198e9a377ec837ed5"
+    }
+  },
+  "imageUrl": "/figures/usmle/step1/memory-systems-v1.svg",
+  "imageCaption": "Encoding/STM; hippocampus declarative memory; amygdala fear memories; mnemonics and rehearsal."
+}

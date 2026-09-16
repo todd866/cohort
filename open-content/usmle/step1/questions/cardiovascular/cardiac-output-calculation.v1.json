@@ -1,0 +1,87 @@
+{
+  "id": "bank:usmle-step1:cardiovascular-cardiac-output-calculation:v1",
+  "rotation": "usmle-step1-open",
+  "ladderId": "cardiac-output",
+  "topics": [
+    "cardiac output",
+    "stroke volume",
+    "ladder:cardiac-output"
+  ],
+  "moduleNodes": [
+    "usmle/step1",
+    "usmle/step1/cardiovascular"
+  ],
+  "questionType": "calculation",
+  "difficulty": "medium",
+  "stem": "A healthy 28-year-old medical student has a resting heart rate of 70 beats per minute and a stroke volume of 75 mL. During a treadmill study, his cardiac output rises with exertion, as expected in a nonathlete, toward a maximum of about 20 L/min.\n\nWhich of the following values best approximates his resting cardiac output?",
+  "options": [
+    {
+      "label": "A",
+      "text": "3.5 L/min",
+      "isCorrect": false,
+      "misconception": "The stroke volume is being halved before multiplying by heart rate.",
+      "explanation": "Cardiac output equals heart rate times stroke volume: 70 beats per minute times 75 mL gives 5,250 mL/min, not half that value."
+    },
+    {
+      "label": "B",
+      "text": "14.0 L/min",
+      "isCorrect": false,
+      "misconception": "An exertional output is being reported as the resting value.",
+      "explanation": "Outputs approaching 14-20 L/min occur during exercise, when rate and stroke volume both rise; the resting computation gives 5.25 L/min."
+    },
+    {
+      "label": "C",
+      "text": "7.0 L/min",
+      "isCorrect": false,
+      "misconception": "A stroke volume of 100 mL is being assumed rather than the measured 75 mL.",
+      "explanation": "At 70 beats per minute, 7.0 L/min would require a stroke volume of 100 mL; with the measured 75 mL, output is 5.25 L/min."
+    },
+    {
+      "label": "D",
+      "text": "10.5 L/min",
+      "isCorrect": false,
+      "misconception": "The resting rate is being doubled in the calculation.",
+      "explanation": "Doubling either factor overestimates resting output; 70 × 75 mL yields 5.25 L/min, and values near 10 L/min belong to moderate exertion."
+    },
+    {
+      "label": "E",
+      "text": "5.25 L/min",
+      "isCorrect": true,
+      "misconception": "None; the computation matches the measured mean resting value.",
+      "explanation": "Cardiac output equals heart rate times stroke volume: 70 × 75 mL = 5,250 mL/min, or 5.25 L/min, the mean resting value cited for adults."
+    }
+  ],
+  "context": "Learning objective: compute cardiac output as heart rate times stroke volume. Resting output averages about 5.25 L/min and can rise toward 20 L/min in a nonathlete during exercise.",
+  "cite": "openstax-anatomy-physiology#vessels-cardiac-output-exercise",
+  "publicUsmle": {
+    "schemaVersion": 1,
+    "origin": "generated",
+    "itemText": {
+      "licence": "CC-BY-4.0",
+      "attribution": "MD3 contributors"
+    },
+    "evidence": {
+      "kind": "passage",
+      "sourceId": "openstax-anatomy-physiology",
+      "passageId": "vessels-cardiac-output-exercise",
+      "licence": {
+        "cls": "foss",
+        "id": "cc-by-4.0"
+      }
+    },
+    "media": {
+      "kind": "asset",
+      "assetId": "frank-starling-v1",
+      "job": "pathway",
+      "showWhen": "after-reveal",
+      "licence": {
+        "cls": "foss",
+        "id": "cc-by-4.0"
+      },
+      "attribution": "MD3 contributors",
+      "contentHash": "sha256:9125158aaffdd7d471bd2ab6b582fbdcd12b18226b6d4f5ca6363eb4b8cd4700"
+    }
+  },
+  "imageUrl": "/figures/usmle/step1/frank-starling-v1.svg",
+  "imageCaption": "Frank-Starling: stroke volume rises with end-diastolic volume; failure shifts the curve."
+}

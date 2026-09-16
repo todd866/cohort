@@ -1,0 +1,71 @@
+{
+  "id": "bank:usmle-step1:exp26-b-atrial-contribution-loss:v1",
+  "rotation": "usmle-step1-open",
+  "topics": [
+    "cardiovascular",
+    "atrial-contribution-loss"
+  ],
+  "moduleNodes": [
+    "usmle/step1",
+    "usmle/step1/cardiovascular"
+  ],
+  "questionType": "interpretation",
+  "difficulty": "medium",
+  "stem": "A model of the resting cardiac cycle receives 100 mL of filling volume per beat. For this experiment, 75 mL enters during passive filling and 25 mL during atrial contraction. The active atrial contribution is then abolished while the passive contribution is held fixed. Which of the following filling volumes remains?",
+  "options": [
+    {
+      "text": "75 mL per beat",
+      "explanation": "The removed contribution is the 25 mL supplied by atrial contraction. Because passive filling is explicitly preserved, its 75 mL remains available each beat.",
+      "isCorrect": true,
+      "label": "A",
+      "misconception": "No misconception: removing the active atrial contribution leaves the explicitly preserved passive filling."
+    },
+    {
+      "text": "25 mL per beat",
+      "explanation": "This is the contribution that the intervention removes, not the contribution that remains. Passive ventricular filling provides the larger share in the stated model.",
+      "isCorrect": false,
+      "label": "B",
+      "misconception": "Reports the atrial volume removed by the intervention instead of the passive volume that remains."
+    },
+    {
+      "text": "50 mL per beat",
+      "explanation": "This would imply equal active and passive contributions or an additional loss of passive filling. Neither condition is part of the specified experiment.",
+      "isCorrect": false,
+      "label": "C",
+      "misconception": "Assumes equal filling contributions or an additional passive loss that the experiment does not specify."
+    },
+    {
+      "text": "90 mL per beat",
+      "explanation": "A remaining volume of 90 mL would mean that just 10 mL had been removed. The experimentally specified atrial contribution is 25 mL per beat.",
+      "isCorrect": false,
+      "label": "D",
+      "misconception": "Underestimates the explicitly measured atrial contribution removed from the total filling volume."
+    },
+    {
+      "text": "10 mL per beat",
+      "explanation": "Such a large reduction would require losing most passive filling as well. The intervention removes the active atrial component while preserving passive entry.",
+      "isCorrect": false,
+      "label": "E",
+      "misconception": "Assumes that abolishing atrial contraction also removes most of the explicitly preserved passive filling."
+    }
+  ],
+  "context": "Learning objective: Separate active atrial filling from the larger passive contribution using an explicitly controlled volume model. The removed contribution is the 25 mL supplied by atrial contraction. Because passive filling is explicitly preserved, its 75 mL remains available each beat.",
+  "cite": "openstax-ap1-cardiac-cycle#atrial-kick",
+  "publicUsmle": {
+    "schemaVersion": 1,
+    "origin": "generated",
+    "itemText": {
+      "licence": "CC-BY-4.0",
+      "attribution": "MD3 contributors"
+    },
+    "evidence": {
+      "kind": "passage",
+      "sourceId": "openstax-ap1-cardiac-cycle",
+      "passageId": "atrial-kick",
+      "licence": {
+        "cls": "foss",
+        "id": "cc-by-4.0"
+      }
+    }
+  }
+}

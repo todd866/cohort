@@ -1,0 +1,17 @@
+{
+  "extends": "./tsconfig.json",
+  "compilerOptions": {
+    "noEmit": true,
+    "incremental": false,
+    "jsx": "react-jsx",
+    "lib": ["esnext", "dom", "dom.iterable"],
+    "types": ["node", "vitest/globals"]
+  },
+  "include": [
+    "scripts/**/*.ts",
+    "scripts/**/*.mts",
+    "prisma/**/*.ts",
+    "prisma.config.ts"
+  ],
+  "exclude": ["node_modules", "scripts/archive"]
+}

@@ -1,0 +1,86 @@
+{
+  "id": "bank:usmle-step1:re-seminal-vesicle-fructose:v1",
+  "rotation": "usmle-step1-open",
+  "topics": [
+    "seminal vesicles",
+    "fructose",
+    "semen"
+  ],
+  "moduleNodes": [
+    "usmle/step1",
+    "usmle/step1/reproductive"
+  ],
+  "questionType": "mechanism",
+  "difficulty": "medium",
+  "stem": "A 32-year-old man has a semen analysis showing an abnormally low ejaculate volume with poorly motile sperm.\n\nThe fructose that sperm mitochondria use to generate ATP for movement is contributed primarily by which of the following accessory glands?",
+  "options": [
+    {
+      "label": "A",
+      "text": "The paired seminal vesicles",
+      "isCorrect": true,
+      "misconception": "None; seminal vesicle fluid carries the fructose.",
+      "explanation": "The paired seminal vesicles contribute approximately 60 percent of semen volume, and their fluid contains large amounts of fructose, which sperm mitochondria use to generate ATP for movement through the female reproductive tract."
+    },
+    {
+      "label": "B",
+      "text": "The bulbourethral glands of the perineum",
+      "isCorrect": false,
+      "misconception": "Lubricating glands are being cast as the energy supplier.",
+      "explanation": "Bulbourethral (Cowper's) glands secrete lubricating mucus before ejaculation; fructose for sperm ATP comes from the seminal vesicles."
+    },
+    {
+      "label": "C",
+      "text": "The epididymal duct lining",
+      "isCorrect": false,
+      "misconception": "The maturation duct is being credited with seminal fuel.",
+      "explanation": "The epididymis matures sperm but does not supply the ejaculate's fructose; that sugar arrives with seminal vesicle fluid at emission."
+    },
+    {
+      "label": "D",
+      "text": "The testicular interstitial cells",
+      "isCorrect": false,
+      "misconception": "Steroid-producing cells are being assigned a secretory-fluid role.",
+      "explanation": "Leydig cells secrete testosterone, not seminal fluid; fructose-rich fluid contributing most of semen volume comes from the seminal vesicles."
+    },
+    {
+      "label": "E",
+      "text": "The prostate gland below the bladder",
+      "isCorrect": false,
+      "misconception": "The second major fluid source is being assigned the sugar.",
+      "explanation": "Prostatic secretions add to semen downstream, but the fructose fuel and the bulk of the volume come from the seminal vesicles."
+    }
+  ],
+  "context": "Learning objective: source the seminal fuel. Sperm make up only about 5 percent of semen volume; three accessory glands supply the rest. The seminal vesicles contribute roughly 60 percent, including abundant fructose that sperm mitochondria convert to ATP for motility, while the prostate and bulbourethral glands add the remainder.",
+  "cite": "openstax-anatomy-physiology#re-seminal-vesicle-fructose",
+  "publicUsmle": {
+    "schemaVersion": 1,
+    "origin": "generated",
+    "itemText": {
+      "licence": "CC-BY-4.0",
+      "attribution": "MD3 contributors"
+    },
+    "evidence": {
+      "kind": "passage",
+      "sourceId": "openstax-anatomy-physiology",
+      "passageId": "re-seminal-vesicle-fructose",
+      "licence": {
+        "cls": "foss",
+        "id": "cc-by-4.0"
+      }
+    },
+    "media": {
+      "kind": "asset",
+      "assetId": "male-reproduction-v1",
+      "job": "pathway",
+      "showWhen": "after-reveal",
+      "licence": {
+        "cls": "foss",
+        "id": "cc-by-4.0"
+      },
+      "attribution": "MD3 contributors",
+      "contentHash": "sha256:97c8c6b84c0aa26f1cefdaef639c671072c487a9a21f511e950d2aad23232b03"
+    }
+  },
+  "imageUrl": "/figures/usmle/step1/male-reproduction-v1.svg",
+  "imageCaption": "Male path: spermatogenesis (4 haploid), epididymis, Leydig testosterone, midpiece mitochondria, seminal fructose."
+}

@@ -1,0 +1,29 @@
+{
+  "id": "concept-caries-demineralisation-balance",
+  "title": "Caries develops when mineral loss exceeds repair",
+  "prompt": "Create an original polished 1536x1024 landscape conceptual medical teaching diagram for after-answer study. Warm hand-painted gouache and watercolour on ivory paper; a gentle storybook warmth with precise dark navy type. Matte teal, ochre, coral and blue accents. Simple neutral tokens, paper tiles, arrows and visibly abstract compartments only. Make the visual relationships legible at small size. No body parts, organs, cells, tissues, lumens, tubules, membranes, vessels, anatomical cutaways, clinical photos, diagnostic scans, babies, realistic flesh or decorative scenery. Do not turn abstract boxes or routes into organs or anatomy. Do not invent extra arrows or medical claims. Edge meanings below are metadata, not visible text: draw the arrows but do not print their meaning strings. Footer exactly: Conceptual schematic • Not anatomy. Title exactly: Caries develops when mineral loss exceeds repair. Two separated horizontal lanes. TOP three cards1 to2 to3 linked by two coral arrows; BOTTOM two cards4 to5 linked by one teal arrow. Top shows sugar-square tokens, H+ coins, then mineral-square tokens leaving a plain rectangular inventory. Bottom shows water-drop and F tokens, then mineral squares added to a partially empty abstract inventory. Both inventories are tile racks, not enamel cross sections or tooth shapes. Large centre caption: Loss versus repair. Bottom note: Early mineral loss can be reversible; cavitation is later damage. No teeth, mouth, enamel layers, bacterial cells, acid dripping on a tooth, treatments or dose thresholds. Exact node labels: [{\"id\": \"1\", \"label\": \"Dietary sugars fermented\"}, {\"id\": \"2\", \"label\": \"Acid produced\"}, {\"id\": \"3\", \"label\": \"Demineralisation\"}, {\"id\": \"4\", \"label\": \"Saliva minerals and fluoride\"}, {\"id\": \"5\", \"label\": \"Remineralisation\"}]. Exact directed connections: [{\"from\": \"1\", \"to\": \"2\", \"meaning\": \"bacterial fermentation\"}, {\"from\": \"2\", \"to\": \"3\", \"meaning\": \"mineral loss\"}, {\"from\": \"4\", \"to\": \"5\", \"meaning\": \"repair support\"}]. Required checks: Five nodes and three main arrows across separate loss and repair lanes; Mineral tokens leave demineralisation rack and join remineralisation rack; Early reversibility distinct from later cavitation; No tooth or enamel anatomy.",
+  "clinicalSources": [
+    {
+      "title": "NIDCR — The tooth decay process",
+      "url": "https://www.nidcr.nih.gov/health-info/tooth-decay/more-info/tooth-decay-process"
+    },
+    {
+      "title": "NIDCR — Why fluoride is good for dental health",
+      "url": "https://www.nidcr.nih.gov/health-info/fluoride/ask-expert-why-fluoride-good-dental-health"
+    }
+  ],
+  "caption": "Two mechanisms compare acid-driven mineral loss with saliva- and fluoride-supported repair in early caries.",
+  "question": "What imbalance causes dental caries to progress?",
+  "answer": "Acid-driven demineralisation exceeds remineralisation; early noncavitated mineral loss can be repaired.",
+  "structureSpecification": "scaffolds/concept-caries-demineralisation-balance.json",
+  "generationInputs": {
+    "referenceImages": [],
+    "style": "written-only"
+  },
+  "qa": {
+    "status": "pending-independent-qa",
+    "method": "agent-visual-and-source-review",
+    "notes": "Pixel check: five nodes/three main arrows show fermentation to acid to loss above and saliva/fluoride to repair below. Mineral rack arrows point outward during loss and inward during repair. Early reversibility vs later cavitation clear. No tooth, enamel layers or bacteria. Independent and clinical review pending.",
+    "clinicalReviewStatus": "pending"
+  }
+}

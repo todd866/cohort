@@ -1,0 +1,71 @@
+{
+  "id": "bank:usmle-step1:exp26-b-ef-versus-sv-comparison:v1",
+  "rotation": "usmle-step1-open",
+  "topics": [
+    "cardiovascular",
+    "ef-versus-sv-comparison"
+  ],
+  "moduleNodes": [
+    "usmle/step1",
+    "usmle/step1/cardiovascular"
+  ],
+  "questionType": "interpretation",
+  "difficulty": "hard",
+  "stem": "Two ventricular studies are compared. Study X shows 200 mL before contraction and 120 mL afterward. Study Y shows 100 mL before contraction and 40 mL afterward. A reviewer wants to compare absolute output per beat with fractional emptying. Which of the following correctly compares study X with study Y?",
+  "options": [
+    {
+      "text": "Greater stroke volume; greater ejection fraction",
+      "explanation": "A greater expelled volume does not establish a greater ejection fraction. Study X starts with twice the volume and expels a smaller fraction of it.",
+      "isCorrect": false,
+      "label": "A",
+      "misconception": "Assumes that a larger absolute stroke volume also means greater fractional emptying."
+    },
+    {
+      "text": "Lower stroke volume; lower ejection fraction",
+      "explanation": "The fractional comparison is correct, but the absolute comparison is reversed. Subtracting final from initial volume gives 80 mL for X versus 60 mL for Y.",
+      "isCorrect": false,
+      "label": "B",
+      "misconception": "Reverses the absolute-volume comparison despite correctly comparing the ejected fractions."
+    },
+    {
+      "text": "Equal stroke volume; lower ejection fraction",
+      "explanation": "The ejection fractions differ as stated, but the stroke volumes are unequal. The two volume differences are 80 mL and 60 mL, respectively.",
+      "isCorrect": false,
+      "label": "C",
+      "misconception": "Assumes equal stroke volumes without subtracting each final volume from its own starting volume."
+    },
+    {
+      "text": "Greater stroke volume; lower ejection fraction",
+      "explanation": "Study X expels 80 mL and study Y expels 60 mL. Their ejection fractions are 40% and 60%, respectively, so greater absolute ejection accompanies lower fractional emptying.",
+      "isCorrect": true,
+      "label": "D",
+      "misconception": "No misconception: greater absolute ejection can accompany a smaller ejected fraction."
+    },
+    {
+      "text": "Lower stroke volume; greater ejection fraction",
+      "explanation": "This reverses both comparisons. The larger chamber expels more volume per beat, but that expelled volume represents a smaller fraction of its initial volume.",
+      "isCorrect": false,
+      "label": "E",
+      "misconception": "Reverses both the absolute ejected-volume comparison and the fractional-emptying comparison."
+    }
+  ],
+  "context": "Learning objective: Distinguish absolute stroke volume from the proportion of the initial ventricular volume ejected. Study X expels 80 mL and study Y expels 60 mL. Their ejection fractions are 40% and 60%, respectively, so greater absolute ejection accompanies lower fractional emptying.",
+  "cite": "openstax-ap1-cardiac-physiology#ejection-fraction",
+  "publicUsmle": {
+    "schemaVersion": 1,
+    "origin": "generated",
+    "itemText": {
+      "licence": "CC-BY-4.0",
+      "attribution": "MD3 contributors"
+    },
+    "evidence": {
+      "kind": "passage",
+      "sourceId": "openstax-ap1-cardiac-physiology",
+      "passageId": "ejection-fraction",
+      "licence": {
+        "cls": "foss",
+        "id": "cc-by-4.0"
+      }
+    }
+  }
+}

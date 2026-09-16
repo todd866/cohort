@@ -1,0 +1,71 @@
+{
+  "id": "bank:usmle-step1:pharm-topiramate-migraine-prevention:v1",
+  "rotation": "usmle-step1-open",
+  "topics": [
+    "topiramate",
+    "migraine prevention"
+  ],
+  "moduleNodes": [
+    "usmle/step1",
+    "usmle/step1/pharmacology"
+  ],
+  "questionType": "management",
+  "difficulty": "medium",
+  "stem": "A patient with an active migraine asks what a topiramate prescription is intended to accomplish. Which of the following plans best matches its cited uses?",
+  "options": [
+    {
+      "label": "A",
+      "text": "Use it now as rescue analgesia for the active attack",
+      "isCorrect": false,
+      "misconception": "Migraine prevention is being confused with rescue treatment after pain begins.",
+      "explanation": "The passage states that topiramate prevents migraine headaches but does not relieve migraine pain when it occurs, so rescue use during the active attack is unsupported."
+    },
+    {
+      "label": "B",
+      "text": "Exclude it from migraine care because it treats seizures",
+      "isCorrect": false,
+      "misconception": "The seizure indication is remembered, but the separate migraine-prevention indication is discarded.",
+      "explanation": "MedlinePlus identifies both seizure treatment and migraine prevention as uses of topiramate. Its seizure role does not exclude its preventive migraine role."
+    },
+    {
+      "label": "C",
+      "text": "Require a seizure diagnosis before using it for migraine prevention",
+      "isCorrect": false,
+      "misconception": "Two separate indications are incorrectly converted into a combined-diagnosis prerequisite.",
+      "explanation": "The passage lists seizure treatment and migraine prevention as distinct uses; it does not require a seizure diagnosis before topiramate is used to prevent migraines."
+    },
+    {
+      "label": "D",
+      "text": "Use it to prevent future migraines, not relieve current pain",
+      "isCorrect": true,
+      "misconception": "None; the preventive indication is separated from acute symptom relief.",
+      "explanation": "MedlinePlus identifies topiramate as a medication used to prevent migraine headaches and explicitly says it does not relieve migraine pain when headaches occur."
+    },
+    {
+      "label": "E",
+      "text": "Treat current pain because anticonvulsant class implies acute analgesia",
+      "isCorrect": false,
+      "misconception": "A medication class is used to infer an acute analgesic indication that the passage explicitly withholds.",
+      "explanation": "Topiramate is an anticonvulsant, but the cited passage still limits its migraine role to prevention and says it does not relieve pain during an attack."
+    }
+  ],
+  "context": "Learning objective: distinguish topiramate's separate indications from its migraine timing. It treats certain seizures and prevents migraine headaches, but neither its anticonvulsant class nor its seizure indication makes it an acute migraine analgesic. The passage does not specify which alternative acute treatment to use.",
+  "cite": "medlineplus-topiramate#topiramate-uses",
+  "publicUsmle": {
+    "schemaVersion": 1,
+    "origin": "generated",
+    "itemText": {
+      "licence": "CC-BY-4.0",
+      "attribution": "MD3 contributors"
+    },
+    "evidence": {
+      "kind": "passage",
+      "sourceId": "medlineplus-topiramate",
+      "passageId": "topiramate-uses",
+      "licence": {
+        "cls": "foss",
+        "id": "us-gov"
+      }
+    }
+  }
+}

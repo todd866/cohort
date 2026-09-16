@@ -1,0 +1,22 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 400" role="img" aria-labelledby="t d">
+  <title id="t">Hemodynamics resistance MAP Starling</title>
+  <desc id="d">Poiseuille radius, MAP estimate, venous capacitance, Starling edema forces, coronary origins.</desc>
+  <rect width="720" height="400" fill="#ffffff"/>
+  <text x="360" y="26" text-anchor="middle" font-family="Helvetica,Arial,sans-serif" font-size="15" font-weight="700" fill="#111">Hemodynamics resistance MAP Starling</text>
+  <defs>
+    <marker id="arr" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto">
+      <path d="M0,0 L10,5 L0,10 z" fill="#1d4ed8"/>
+    </marker>
+  </defs>
+  <rect x="40" y="50" width="300" height="90" rx="6" fill="#fee2e2" stroke="#111" stroke-width="1.5"/>
+  <text x="190.0" y="93" text-anchor="middle" font-family="Helvetica,Arial,sans-serif" font-size="11" font-weight="700" fill="#111">Poiseuille</text>
+  <text x="190.0" y="107" text-anchor="middle" font-family="Helvetica,Arial,sans-serif" font-size="10" fill="#333">flow ~ r^4; radius dominates resistance</text>  <rect x="380" y="50" width="300" height="90" rx="6" fill="#dbeafe" stroke="#111" stroke-width="1.5"/>
+  <text x="530.0" y="93" text-anchor="middle" font-family="Helvetica,Arial,sans-serif" font-size="11" font-weight="700" fill="#111">MAP</text>
+  <text x="530.0" y="107" text-anchor="middle" font-family="Helvetica,Arial,sans-serif" font-size="10" fill="#333">~ DBP + 1/3 (SBP-DBP)</text>  <rect x="40" y="170" width="300" height="90" rx="6" fill="#d1fae5" stroke="#111" stroke-width="1.5"/>
+  <text x="190.0" y="213" text-anchor="middle" font-family="Helvetica,Arial,sans-serif" font-size="11" font-weight="700" fill="#111">Venous capacitance</text>
+  <text x="190.0" y="227" text-anchor="middle" font-family="Helvetica,Arial,sans-serif" font-size="10" fill="#333">most blood volume reservoir</text>  <rect x="380" y="170" width="300" height="90" rx="6" fill="#fef3c7" stroke="#111" stroke-width="1.5"/>
+  <text x="530.0" y="213" text-anchor="middle" font-family="Helvetica,Arial,sans-serif" font-size="11" font-weight="700" fill="#111">Starling forces</text>
+  <text x="530.0" y="227" text-anchor="middle" font-family="Helvetica,Arial,sans-serif" font-size="10" fill="#333">Pc - Pi - (pic - pii) edema</text>  <rect x="160" y="290" width="400" height="70" rx="6" fill="#e5e7eb" stroke="#111" stroke-width="1.5"/>
+  <text x="360.0" y="323" text-anchor="middle" font-family="Helvetica,Arial,sans-serif" font-size="11" font-weight="700" fill="#111">Coronary arteries</text>
+  <text x="360.0" y="337" text-anchor="middle" font-family="Helvetica,Arial,sans-serif" font-size="10" fill="#333">arise from aortic sinuses</text>
+</svg>

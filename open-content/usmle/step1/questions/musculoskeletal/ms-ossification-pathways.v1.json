@@ -1,0 +1,86 @@
+{
+  "id": "bank:usmle-step1:ms-ossification-pathways:v1",
+  "rotation": "usmle-step1-open",
+  "topics": [
+    "intramembranous ossification",
+    "endochondral ossification",
+    "skull development"
+  ],
+  "moduleNodes": [
+    "usmle/step1",
+    "usmle/step1/musculoskeletal"
+  ],
+  "questionType": "mechanism",
+  "difficulty": "medium",
+  "stem": "At birth, a full-term newborn's skull bones remain incompletely ossified, allowing the head to deform during delivery.\n\nThese skull bones formed directly from mesenchymal sheets by which of the following processes?",
+  "options": [
+    {
+      "label": "A",
+      "text": "Endochondral ossification",
+      "isCorrect": false,
+      "misconception": "The cartilage-template pathway is being assigned to the skull vault.",
+      "explanation": "Endochondral ossification replaces a hyaline cartilage model and produces long bones and the skull base; the flat skull bones form intramembranously."
+    },
+    {
+      "label": "B",
+      "text": "Calcification of a cartilage template",
+      "isCorrect": false,
+      "misconception": "The endochondral pathway is being described under another name.",
+      "explanation": "Cartilage-template replacement defines endochondral ossification; the skull vault forms directly from mesenchymal membranes without a cartilage stage."
+    },
+    {
+      "label": "C",
+      "text": "Appositional growth at the periosteum",
+      "isCorrect": false,
+      "misconception": "A growth-in-width process is being cast as initial bone formation.",
+      "explanation": "Appositional growth widens existing bone after it has formed; it is not the developmental pathway that first creates the skull bones."
+    },
+    {
+      "label": "D",
+      "text": "Osteoclastic resorption and remodeling",
+      "isCorrect": false,
+      "misconception": "A maintenance process is being cast as initial bone formation.",
+      "explanation": "Remodeling reshapes existing bone by coupled resorption and deposition; it does not create bone from mesenchyme."
+    },
+    {
+      "label": "E",
+      "text": "Intramembranous ossification",
+      "isCorrect": true,
+      "misconception": "None; skull and clavicles ossify directly from mesenchyme.",
+      "explanation": "In intramembranous ossification, bone develops directly from sheets of mesenchymal connective tissue; the skull and clavicles form this way and are not fully ossified at birth, permitting deformation in the birth canal."
+    }
+  ],
+  "context": "Learning objective: the two osteogenic pathways. Intramembranous: mesenchymal sheets → bone directly (skull, clavicles; incomplete at birth so sutures stay open). Endochondral: hyaline cartilage template → replaced by bone (long bones, skull base; slower). Bone is the same tissue regardless of pathway.",
+  "cite": "openstax-anatomy-physiology#ms-ossification-pathways",
+  "publicUsmle": {
+    "schemaVersion": 1,
+    "origin": "generated",
+    "itemText": {
+      "licence": "CC-BY-4.0",
+      "attribution": "MD3 contributors"
+    },
+    "evidence": {
+      "kind": "passage",
+      "sourceId": "openstax-anatomy-physiology",
+      "passageId": "ms-ossification-pathways",
+      "licence": {
+        "cls": "foss",
+        "id": "cc-by-4.0"
+      }
+    },
+    "media": {
+      "kind": "asset",
+      "assetId": "bone-remodeling-v1",
+      "job": "anatomy",
+      "showWhen": "after-reveal",
+      "licence": {
+        "cls": "foss",
+        "id": "cc-by-4.0"
+      },
+      "attribution": "MD3 contributors",
+      "contentHash": "sha256:cdbd5592d44ecfda732d8bc7b51a9d61044e0fdcb5b989cc2fc2842ccd451a30"
+    }
+  },
+  "imageUrl": "/figures/usmle/step1/bone-remodeling-v1.svg",
+  "imageCaption": "Osteoblast / osteoclast / osteocyte roles; PTH raises Ca2+ via RANKL and kidney."
+}

@@ -1,0 +1,71 @@
+{
+  "id": "bank:usmle-step1:exp26-c-lymph-obstruction-nutrient-contrast:v1",
+  "rotation": "usmle-step1-open",
+  "topics": [
+    "gastrointestinal",
+    "lymph-obstruction-nutrient-contrast"
+  ],
+  "moduleNodes": [
+    "usmle/step1",
+    "usmle/step1/gastrointestinal"
+  ],
+  "questionType": "mechanism",
+  "difficulty": "medium",
+  "stem": "A 43-year-old patient has obstruction of intestinal lymphatic drainage. Intestinal epithelial cells still take up glucose and assemble absorbed fatty acids into triglycerides. Which of the following nutrient-transport findings best follows from the obstruction?",
+  "options": [
+    {
+      "label": "A",
+      "text": "Both nutrients are retained because both leave through lacteals",
+      "isCorrect": false,
+      "explanation": "Glucose normally enters villus capillary blood rather than lymph. A lymphatic obstruction does not block both routes equally.",
+      "misconception": "Incorrectly assigns glucose and triglycerides to the same lymphatic exit."
+    },
+    {
+      "label": "B",
+      "text": "Triglyceride export is impaired while glucose reaches portal blood",
+      "isCorrect": true,
+      "explanation": "Reassembled intestinal triglycerides leave through lacteals, while absorbed glucose enters capillary blood and the hepatic portal route. The routes explain the selective effect.",
+      "misconception": "No misconception: lymphatic lipid export and portal glucose transport are distinct."
+    },
+    {
+      "label": "C",
+      "text": "Glucose export is impaired while triglycerides reach portal blood",
+      "isCorrect": false,
+      "explanation": "This assigns the nutrients to the wrong exits. Glucose enters blood; intestinal triglyceride transport depends on lymphatic drainage.",
+      "misconception": "Reverses the blood and lymph exit routes of glucose and triglycerides."
+    },
+    {
+      "label": "D",
+      "text": "Both nutrients reach portal blood through the same capillary route",
+      "isCorrect": false,
+      "explanation": "The shared portal route applies to absorbed carbohydrates, not to the reassembled intestinal triglycerides described in this case.",
+      "misconception": "Extends the carbohydrate portal route to intestinal triglyceride packages."
+    },
+    {
+      "label": "E",
+      "text": "Glucose is redirected into lacteals while triglyceride export rises",
+      "isCorrect": false,
+      "explanation": "Obstruction does not establish a new glucose route through lacteals. It impedes lymphatic lipid export rather than increasing it.",
+      "misconception": "Assumes obstruction creates a new glucose route and increases lipid export."
+    }
+  ],
+  "context": "Learning objective: Distinguish intestinal blood and lymph transport. Entry into an enterocyte and export from it are separate steps; preserved uptake does not prove that lymph-dependent lipid export is intact.\n\nReassembled intestinal triglycerides leave through lacteals, while absorbed glucose enters capillary blood and the hepatic portal route. The routes explain the selective effect.",
+  "cite": "openstax-anatomy-physiology#gi-micelles-chylomicrons",
+  "publicUsmle": {
+    "schemaVersion": 1,
+    "origin": "generated",
+    "itemText": {
+      "licence": "CC-BY-4.0",
+      "attribution": "MD3 contributors"
+    },
+    "evidence": {
+      "kind": "passage",
+      "sourceId": "openstax-anatomy-physiology",
+      "passageId": "gi-micelles-chylomicrons",
+      "licence": {
+        "cls": "foss",
+        "id": "cc-by-4.0"
+      }
+    }
+  }
+}

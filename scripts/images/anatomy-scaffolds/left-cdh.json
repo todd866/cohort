@@ -1,0 +1,468 @@
+{
+  "schemaVersion": 1,
+  "id": "left-cdh",
+  "title": "Left congenital diaphragmatic hernia",
+  "license": "MIT",
+  "status": "construction-draft",
+  "teachingPoint": "Bowel can enter the left thorax through a diaphragmatic defect; lung development and mediastinal position may be affected.",
+  "sources": [
+    {
+      "id": "prayer-2019",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/30985045/",
+      "inspected": "Figure4b: caudal A/P/R/L orientation and selected posterolateral defect; root inspected 2026-09-10"
+    },
+    {
+      "id": "ackerman-2012",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/22257294/",
+      "inspected": "Figure4 and caption: variable defect extent and rim; independent agent inspected 2026-09-10"
+    }
+  ],
+  "views": [
+    {
+      "id": "baseline",
+      "x": 35,
+      "y": 195,
+      "width": 350,
+      "height": 450,
+      "title": "Baseline compartments",
+      "projection": "frontal-occupancy",
+      "patientRight": "viewer-left",
+      "superior": "up",
+      "midline": 175
+    },
+    {
+      "id": "cdh",
+      "x": 435,
+      "y": 195,
+      "width": 350,
+      "height": 450,
+      "title": "Selected left CDH example",
+      "projection": "frontal-occupancy",
+      "patientRight": "viewer-left",
+      "superior": "up",
+      "midline": 175
+    }
+  ],
+  "regions": [
+    {
+      "id": "baseline-right-lung",
+      "view": "baseline",
+      "kind": "lung",
+      "parts": [
+        {
+          "x": 25,
+          "y": 30,
+          "width": 110,
+          "height": 210
+        }
+      ]
+    },
+    {
+      "id": "baseline-left-lung",
+      "view": "baseline",
+      "kind": "lung",
+      "parts": [
+        {
+          "x": 215,
+          "y": 30,
+          "width": 110,
+          "height": 210
+        }
+      ]
+    },
+    {
+      "id": "baseline-mediastinum",
+      "view": "baseline",
+      "kind": "mediastinum",
+      "parts": [
+        {
+          "x": 145,
+          "y": 70,
+          "width": 60,
+          "height": 180
+        }
+      ]
+    },
+    {
+      "id": "baseline-liver",
+      "view": "baseline",
+      "kind": "liver",
+      "parts": [
+        {
+          "x": 25,
+          "y": 340,
+          "width": 120,
+          "height": 70
+        }
+      ]
+    },
+    {
+      "id": "baseline-bowel",
+      "view": "baseline",
+      "kind": "bowel",
+      "parts": [
+        {
+          "x": 185,
+          "y": 330,
+          "width": 140,
+          "height": 100
+        }
+      ]
+    },
+    {
+      "id": "cdh-right-lung",
+      "view": "cdh",
+      "kind": "lung",
+      "parts": [
+        {
+          "x": 25,
+          "y": 30,
+          "width": 60,
+          "height": 210
+        }
+      ]
+    },
+    {
+      "id": "cdh-left-lung",
+      "view": "cdh",
+      "kind": "lung",
+      "parts": [
+        {
+          "x": 235,
+          "y": 30,
+          "width": 90,
+          "height": 65
+        }
+      ]
+    },
+    {
+      "id": "cdh-mediastinum",
+      "view": "cdh",
+      "kind": "mediastinum",
+      "parts": [
+        {
+          "x": 95,
+          "y": 70,
+          "width": 60,
+          "height": 180
+        }
+      ]
+    },
+    {
+      "id": "cdh-liver",
+      "view": "cdh",
+      "kind": "liver",
+      "parts": [
+        {
+          "x": 25,
+          "y": 340,
+          "width": 120,
+          "height": 70
+        }
+      ]
+    },
+    {
+      "id": "cdh-bowel",
+      "view": "cdh",
+      "kind": "bowel",
+      "parts": [
+        {
+          "x": 215,
+          "y": 125,
+          "width": 110,
+          "height": 100
+        },
+        {
+          "x": 270,
+          "y": 220,
+          "width": 35,
+          "height": 125
+        },
+        {
+          "x": 185,
+          "y": 340,
+          "width": 140,
+          "height": 90
+        }
+      ]
+    }
+  ],
+  "boundaries": [
+    {
+      "id": "baseline-diaphragm",
+      "view": "baseline",
+      "y": 285,
+      "extent": [
+        10,
+        340
+      ],
+      "opening": null
+    },
+    {
+      "id": "cdh-diaphragm",
+      "view": "cdh",
+      "y": 285,
+      "extent": [
+        10,
+        340
+      ],
+      "opening": [
+        260,
+        315
+      ]
+    }
+  ],
+  "labels": [
+    {
+      "target": "baseline-right-lung",
+      "text": "Right lung",
+      "anchor": [
+        80.0,
+        135.0
+      ]
+    },
+    {
+      "target": "baseline-left-lung",
+      "text": "Left lung",
+      "anchor": [
+        270.0,
+        135.0
+      ]
+    },
+    {
+      "target": "baseline-mediastinum",
+      "text": "Mediastinum",
+      "anchor": [
+        175.0,
+        160.0
+      ]
+    },
+    {
+      "target": "baseline-liver",
+      "text": "Liver",
+      "anchor": [
+        85.0,
+        375.0
+      ]
+    },
+    {
+      "target": "baseline-bowel",
+      "text": "Bowel in abdomen",
+      "anchor": [
+        255.0,
+        380.0
+      ]
+    },
+    {
+      "target": "cdh-right-lung",
+      "text": "Right lung",
+      "anchor": [
+        55.0,
+        135.0
+      ]
+    },
+    {
+      "target": "cdh-left-lung",
+      "text": "Small left lung",
+      "anchor": [
+        280.0,
+        62.5
+      ]
+    },
+    {
+      "target": "cdh-mediastinum",
+      "text": "Mediastinum",
+      "anchor": [
+        125.0,
+        160.0
+      ]
+    },
+    {
+      "target": "cdh-liver",
+      "text": "Liver",
+      "anchor": [
+        85.0,
+        375.0
+      ]
+    },
+    {
+      "target": "cdh-bowel",
+      "text": "Bowel in left thorax",
+      "anchor": [
+        270.0,
+        175.0
+      ]
+    },
+    {
+      "target": "cdh-bowel",
+      "text": "Abdominal bowel",
+      "anchor": [
+        255,
+        390
+      ]
+    }
+  ],
+  "locationMap": {
+    "x": 850,
+    "y": 200,
+    "width": 310,
+    "height": 420,
+    "title": "Selected defect location",
+    "projection": "caudal",
+    "patientRight": "viewer-left",
+    "anterior": "up",
+    "midline": 155,
+    "center": [
+      155,
+      130
+    ],
+    "radii": [
+      125,
+      95
+    ],
+    "defect": {
+      "center": [
+        228,
+        171
+      ],
+      "radii": [
+        24,
+        25
+      ]
+    }
+  },
+  "constraints": [
+    {
+      "type": "disjoint",
+      "a": "cdh-left-lung",
+      "b": "cdh-bowel"
+    },
+    {
+      "type": "disjoint",
+      "a": "cdh-right-lung",
+      "b": "cdh-mediastinum"
+    },
+    {
+      "type": "disjoint",
+      "a": "cdh-mediastinum",
+      "b": "cdh-bowel"
+    },
+    {
+      "type": "side",
+      "region": "cdh-left-lung",
+      "side": "left"
+    },
+    {
+      "type": "side",
+      "region": "cdh-bowel",
+      "side": "left"
+    },
+    {
+      "type": "side",
+      "region": "cdh-right-lung",
+      "side": "right"
+    },
+    {
+      "type": "side",
+      "region": "cdh-liver",
+      "side": "right"
+    },
+    {
+      "type": "above",
+      "region": "cdh-left-lung",
+      "boundary": "cdh-diaphragm"
+    },
+    {
+      "type": "above",
+      "region": "cdh-right-lung",
+      "boundary": "cdh-diaphragm"
+    },
+    {
+      "type": "below",
+      "region": "cdh-liver",
+      "boundary": "cdh-diaphragm"
+    },
+    {
+      "type": "connected",
+      "region": "cdh-bowel"
+    },
+    {
+      "type": "through-opening",
+      "region": "cdh-bowel",
+      "boundary": "cdh-diaphragm"
+    },
+    {
+      "type": "shift",
+      "baseline": "baseline-mediastinum",
+      "shifted": "cdh-mediastinum",
+      "direction": "patient-right"
+    },
+    {
+      "type": "side",
+      "region": "baseline-right-lung",
+      "side": "right"
+    },
+    {
+      "type": "above",
+      "region": "baseline-right-lung",
+      "boundary": "baseline-diaphragm"
+    },
+    {
+      "type": "disjoint",
+      "a": "baseline-right-lung",
+      "b": "baseline-mediastinum"
+    },
+    {
+      "type": "side",
+      "region": "baseline-left-lung",
+      "side": "left"
+    },
+    {
+      "type": "above",
+      "region": "baseline-left-lung",
+      "boundary": "baseline-diaphragm"
+    },
+    {
+      "type": "disjoint",
+      "a": "baseline-left-lung",
+      "b": "baseline-mediastinum"
+    },
+    {
+      "type": "below",
+      "region": "baseline-liver",
+      "boundary": "baseline-diaphragm"
+    },
+    {
+      "type": "below",
+      "region": "baseline-bowel",
+      "boundary": "baseline-diaphragm"
+    },
+    {
+      "type": "side",
+      "region": "baseline-liver",
+      "side": "right"
+    },
+    {
+      "type": "disjoint",
+      "a": "baseline-liver",
+      "b": "baseline-bowel"
+    },
+    {
+      "type": "above",
+      "region": "baseline-mediastinum",
+      "boundary": "baseline-diaphragm"
+    },
+    {
+      "type": "above",
+      "region": "cdh-mediastinum",
+      "boundary": "cdh-diaphragm"
+    }
+  ],
+  "omissions": [
+    "Organ contours and proportions are schematic, not quantitative.",
+    "Frontal occupancy maps do not establish anterior/posterior depth.",
+    "No bowel loops, vessels, chambers, pleural membranes or defect grade.",
+    "Liver is below the diaphragm in this selected example; CDH patterns vary.",
+    "Structural construction checks do not imply human clinical validation."
+  ]
+}

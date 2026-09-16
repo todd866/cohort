@@ -1,0 +1,71 @@
+{
+  "id": "bank:usmle-step1:exp26-b-rate-output-discordance:v1",
+  "rotation": "usmle-step1-open",
+  "topics": [
+    "cardiovascular",
+    "rate-output-discordance"
+  ],
+  "moduleNodes": [
+    "usmle/step1",
+    "usmle/step1/cardiovascular"
+  ],
+  "questionType": "calculation",
+  "difficulty": "hard",
+  "stem": "A 37-year-old patient has a heart rate of 100/min and a stroke volume of 70 mL. During a rapid rhythm, the rate rises to 180/min while stroke volume falls to 30 mL. Which of the following best describes the change in cardiac output?",
+  "options": [
+    {
+      "text": "Decreases from 7.0 to 3.0 L/min",
+      "explanation": "This applies the original rate to the new stroke volume. Both measurements change during the rhythm, so the later output requires multiplying 180 by 30.",
+      "isCorrect": false,
+      "label": "A",
+      "misconception": "Combines the old heart rate with the new stroke volume when calculating the later cardiac output."
+    },
+    {
+      "text": "Increases from 5.4 to 7.0 L/min",
+      "explanation": "These are the two calculated outputs in reverse order. The initial values produce 7.0 L/min, and the measurements during the rapid rhythm produce 5.4 L/min.",
+      "isCorrect": false,
+      "label": "B",
+      "misconception": "Reverses the time order of the correctly calculated initial and later cardiac outputs."
+    },
+    {
+      "text": "Remains at approximately 7.0 L/min",
+      "explanation": "An increased rate does not automatically offset reduced stroke volume. The measured product is smaller during the rapid rhythm, demonstrating a net fall in output.",
+      "isCorrect": false,
+      "label": "C",
+      "misconception": "Assumes that a higher rate necessarily offsets the measured fall in stroke volume."
+    },
+    {
+      "text": "Decreases from 7.0 to 5.4 L/min",
+      "explanation": "Multiplying rate by stroke volume gives 7,000 mL/min initially and 5,400 mL/min later. The fall in volume per beat outweighs the higher number of beats.",
+      "isCorrect": true,
+      "label": "D",
+      "misconception": "No misconception: cardiac output depends on the contemporaneous product of rate and stroke volume."
+    },
+    {
+      "text": "Increases from 7.0 to 12.6 L/min",
+      "explanation": "This applies the new rate to the old stroke volume. It misses the measured decline in volume ejected per beat during the rapid rhythm.",
+      "isCorrect": false,
+      "label": "E",
+      "misconception": "Combines the new heart rate with the old stroke volume and misses the measured decline in ejection per beat."
+    }
+  ],
+  "context": "Learning objective: Calculate cardiac output when tachycardia and declining stroke volume pull the product in opposite directions. Multiplying rate by stroke volume gives 7,000 mL/min initially and 5,400 mL/min later. The fall in volume per beat outweighs the higher number of beats.",
+  "cite": "openstax-ap1-cardiac-physiology#tachycardia-output",
+  "publicUsmle": {
+    "schemaVersion": 1,
+    "origin": "generated",
+    "itemText": {
+      "licence": "CC-BY-4.0",
+      "attribution": "MD3 contributors"
+    },
+    "evidence": {
+      "kind": "passage",
+      "sourceId": "openstax-ap1-cardiac-physiology",
+      "passageId": "tachycardia-output",
+      "licence": {
+        "cls": "foss",
+        "id": "cc-by-4.0"
+      }
+    }
+  }
+}

@@ -1,0 +1,96 @@
+{
+  "schemaVersion": 1,
+  "id": "concept-reflux-barrier-sequence",
+  "kind": "conceptual",
+  "sourceFacts": [
+    {
+      "fact": "Infant reflux has several contributors, including developing oesophageal function and lower oesophageal sphincter, predominantly liquid meals and much time lying down.",
+      "sourceUrls": [
+        "https://www.niddk.nih.gov/health-information/digestive-diseases/acid-reflux-ger-gerd-infants/symptoms-causes"
+      ]
+    },
+    {
+      "fact": "These factors make return of gastric contents into the oesophagus more likely; reflux often decreases with maturation.",
+      "sourceUrls": [
+        "https://www.niddk.nih.gov/health-information/digestive-diseases/acid-reflux-ger-gerd-infants/symptoms-causes"
+      ]
+    }
+  ],
+  "nodes": [
+    {
+      "id": "1",
+      "label": "Developing reflux barrier"
+    },
+    {
+      "id": "2",
+      "label": "Mostly liquid meals"
+    },
+    {
+      "id": "3",
+      "label": "Much time lying down"
+    },
+    {
+      "id": "4",
+      "label": "Contents return upwards"
+    },
+    {
+      "id": "5",
+      "label": "Regurgitation"
+    }
+  ],
+  "edges": [
+    {
+      "from": "1",
+      "to": "4",
+      "meaning": "contributor"
+    },
+    {
+      "from": "2",
+      "to": "4",
+      "meaning": "contributor"
+    },
+    {
+      "from": "3",
+      "to": "4",
+      "meaning": "contributor"
+    },
+    {
+      "from": "4",
+      "to": "5",
+      "meaning": "manifestation"
+    }
+  ],
+  "labels": [
+    "Why infant reflux is common",
+    "Developing reflux barrier",
+    "Mostly liquid meals",
+    "Much time lying down",
+    "Contents return upwards",
+    "Regurgitation",
+    "Conceptual schematic • Not anatomy"
+  ],
+  "layout": "Three parallel contributor cards across top, with unfinished puzzle, water droplet, and horizontal direction arrow respectively. All three arrows converge on central Contents return upwards card with an upward direction symbol, followed by one arrow down to Regurgitation. Exactly five cards and four connecting arrows. Bottom note: Usually improves as infants grow and develop. NO numbers, numbered badges, sequence counts, numerals or node identifiers anywhere in the image. Top three factors are parallel, not sequential. No infants, organs, oesophagus, valve or anatomical route.",
+  "forbiddenAnatomy": [
+    "organs",
+    "body silhouettes",
+    "tissue cross-sections",
+    "cells",
+    "tubules",
+    "vessels",
+    "clinical photographs",
+    "diagnostic scans"
+  ],
+  "validation": {
+    "sourceStatus": "checked",
+    "structureStatus": "verified",
+    "requiredChecks": [
+      "Three distinct contributors converge on return of contents",
+      "Five nodes and four connectors",
+      "Upward token means return direction, not a drawn anatomical route",
+      "No claim that all infant reflux is disease",
+      "No numeric badge or printed node identifier anywhere"
+    ],
+    "clinicalReviewStatus": "pending",
+    "pixelChecks": "Corrected pixel review: five nodes and four connectors, three parallel contributors converge on upward return then regurgitation. All numeric badges removed, no implied sequence between contributors. Puzzle, drop and direction arrows remain abstract. No organs or body. Independent and clinical review pending."
+  }
+}

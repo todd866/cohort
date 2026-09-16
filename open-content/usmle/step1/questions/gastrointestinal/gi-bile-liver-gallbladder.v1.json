@@ -1,0 +1,88 @@
+{
+  "id": "bank:usmle-step1:gi-bile-liver-gallbladder:v1",
+  "rotation": "usmle-step1-open",
+  "ladderId": "bile-production",
+  "topics": [
+    "bile",
+    "liver",
+    "gallbladder",
+    "ladder:bile-production"
+  ],
+  "moduleNodes": [
+    "usmle/step1",
+    "usmle/step1/gastrointestinal"
+  ],
+  "questionType": "mechanism",
+  "difficulty": "medium",
+  "stem": "Three years after a cholecystectomy for gallstones, a 44-year-old woman digests fatty meals without difficulty. In this patient, bile is produced by which of the following structures?",
+  "options": [
+    {
+      "label": "A",
+      "text": "Hepatocytes in the liver lobules",
+      "isCorrect": true,
+      "misconception": "None; the liver makes bile regardless of the gallbladder.",
+      "explanation": "The digestive role of the liver is to produce bile and export it to the duodenum; bile emulsifies lipids, and its production is unaffected by gallbladder removal."
+    },
+    {
+      "label": "B",
+      "text": "Epithelial cells of the gallbladder",
+      "isCorrect": false,
+      "misconception": "The storage organ is being cast as the producer, and it is absent here.",
+      "explanation": "The gallbladder primarily stores, concentrates, and releases bile made by the liver; it does not synthesize bile, and this patient no longer has one."
+    },
+    {
+      "label": "C",
+      "text": "Acinar cells of the pancreas",
+      "isCorrect": false,
+      "misconception": "A digestive gland is being credited with a hepatic product.",
+      "explanation": "Pancreatic acini secrete enzyme-rich juice in response to CCK; bile is an alkaline, lipid-emulsifying solution produced by the liver."
+    },
+    {
+      "label": "D",
+      "text": "Mucosal cells of the duodenum",
+      "isCorrect": false,
+      "misconception": "The hormone-secreting mucosa is being cast as the bile source.",
+      "explanation": "The duodenal mucosa secretes hormones such as secretin, CCK, and motilin that regulate digestion; bile itself arrives from the liver."
+    },
+    {
+      "label": "E",
+      "text": "Duct cells of the common bile duct",
+      "isCorrect": false,
+      "misconception": "The conduit is being cast as the source.",
+      "explanation": "The bile duct is a passive conduit carrying bile from liver to duodenum; its lining cells do not synthesize bile."
+    }
+  ],
+  "context": "Learning objective: separate bile production from bile storage. Hepatocytes produce bile — an alkaline solution that emulsifies lipids — and export it to the duodenum; the gallbladder only stores and concentrates it. Fat digestion therefore persists after cholecystectomy.",
+  "cite": "openstax-anatomy-physiology#gi-bile-liver-gallbladder",
+  "publicUsmle": {
+    "schemaVersion": 1,
+    "origin": "generated",
+    "itemText": {
+      "licence": "CC-BY-4.0",
+      "attribution": "MD3 contributors"
+    },
+    "evidence": {
+      "kind": "passage",
+      "sourceId": "openstax-anatomy-physiology",
+      "passageId": "gi-bile-liver-gallbladder",
+      "licence": {
+        "cls": "foss",
+        "id": "cc-by-4.0"
+      }
+    },
+    "media": {
+      "kind": "asset",
+      "assetId": "bilirubin-metabolism-v1",
+      "job": "pathway",
+      "showWhen": "after-reveal",
+      "licence": {
+        "cls": "foss",
+        "id": "cc-by-4.0"
+      },
+      "attribution": "MD3 contributors",
+      "contentHash": "sha256:19bd6c3f8772b9bf302595c185091350d04ed1d0e493bad6de2ca3ac46141e34"
+    }
+  },
+  "imageUrl": "/figures/usmle/step1/bilirubin-metabolism-v1.svg",
+  "imageCaption": "Bilirubin: spleen Hb breakdown -> unconjugated (albumin) -> hepatic conjugation -> bile -> gut bacteria -> urobilinogen/stercobilin; some urobilinogen -> urine."
+}

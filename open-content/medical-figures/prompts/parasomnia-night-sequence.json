@@ -1,0 +1,39 @@
+{
+  "figureId": "parasomnia-night-sequence",
+  "tool": "built-in image_gen",
+  "model": null,
+  "referenceAssetIds": [],
+  "externalReferenceImages": [],
+  "prompt": "Original educational conceptual illustration, landscape 3:2. Warm ivory paper, sophisticated hand-painted gouache/watercolour, confident fine brown outlines, navy lettering, restrained teal, coral and amber. Editorial science illustration with spacious composition and large legible labels. The explanatory structure must carry the meaning visually: molecules, objects, geometry or flow; never paragraphs in boxes. No organs, regional anatomy, teeth or joint cutaways, tissue layers, invented histology, diagnostic photographs, radiographs or patient data. All symbols are explicitly conceptual. Footer: 'Conceptual teaching model • Not to scale'. Title 'Night terror or nightmare?' A broad illustrated night ribbon runs left to right from a crescent moon labelled 'Sleep onset' to sunrise labelled 'Morning'. This is not a sleep-stage trace. Above the early left third, a small ringing brass bell and a blank thought bubble, label 'Night terror', 'Usually early', 'Deep non-REM', 'Little or no recall'. Above the later right third, a dream cloud with a small imagined star and a postcard showing that same star to symbolise recall, label 'Nightmare', 'Often later', 'REM sleep', 'Dream remembered'. No people, brains or anatomical imagery. Clearly distinct two events positioned along time, no arrow from one disorder to the other. Bottom qualifier 'Typical timing, not a fixed schedule'.",
+  "clinicalSources": [
+    {
+      "title": "RCH: Night terrors",
+      "url": "https://www.rch.org.au/kidsinfo/fact_sheets/Night_terrors_night_time_wakings/"
+    },
+    {
+      "title": "NHS children’s health: Sleepwalking, nightmares and night terrors",
+      "url": "https://bedslutonchildrenshealth.nhs.uk/sleep/sleepwalking-nightmares-and-night-terrors/"
+    }
+  ],
+  "teaching": {
+    "question": "Which timing and recall pattern helps distinguish a night terror from a nightmare?",
+    "answer": "A night terror typically occurs early in deep non-REM sleep and leaves little recall. A nightmare occurs in REM, often later, with full waking and remembered dream content.",
+    "imageRole": "after-reveal"
+  },
+  "title": "Night terror or nightmare?",
+  "caption": "Night terrors typically arise early from deep non-REM sleep with little recall. Nightmares occur in REM sleep, often later, and the child can wake and recall the dream.",
+  "alt": "A night ribbon places night terrors near sleep onset and nightmares nearer morning, with contrasting blank and remembered dream icons.",
+  "review": {
+    "status": "pending-independent-qa",
+    "method": "agent-visual-and-source-review",
+    "notes": "Night terror is positioned early relative to sleep onset and explicitly labelled deep non-REM with little/no recall. Nightmare is later relative to morning and labelled REM with remembered star postcard. No arrow implies one disorder causes the other. Timing qualifier excludes fixed schedule; no invented sleep recording.",
+    "structure": {
+      "kind": "conceptual",
+      "status": "verified",
+      "specificationFiles": [
+        "scaffolds/parasomnia-night-sequence.json"
+      ],
+      "notes": "Night terror is positioned early relative to sleep onset and explicitly labelled deep non-REM with little/no recall. Nightmare is later relative to morning and labelled REM with remembered star postcard. No arrow implies one disorder causes the other. Timing qualifier excludes fixed schedule; no invented sleep recording."
+    }
+  }
+}

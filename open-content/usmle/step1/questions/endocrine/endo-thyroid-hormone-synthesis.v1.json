@@ -1,0 +1,87 @@
+{
+  "id": "bank:usmle-step1:endo-thyroid-hormone-synthesis:v1",
+  "rotation": "usmle-step1-open",
+  "ladderId": "thyroid-hormone-synthesis",
+  "topics": [
+    "thyroid hormone synthesis",
+    "TSH action",
+    "ladder:thyroid-hormone-synthesis"
+  ],
+  "moduleNodes": [
+    "usmle/step1",
+    "usmle/step1/endocrine"
+  ],
+  "questionType": "mechanism",
+  "difficulty": "medium",
+  "stem": "A 30-year-old woman from a region without iodized salt presents with an enlarged thyroid. Her follicle cells still produce their usual storage protein, but hormone output is low because a critical element is missing.\n\nIn the normal gland, thyroxine (T4) is assembled when iodine is first linked to which of the following?",
+  "options": [
+    {
+      "label": "A",
+      "text": "Tryptophan residues within the follicle cell cytosol",
+      "isCorrect": false,
+      "misconception": "The wrong amino acid substrate is being chosen for thyroid hormone.",
+      "explanation": "Amine hormones from tryptophan include melatonin; thyroid hormones are built by iodinating the tyrosines of thyroglobulin within the follicle colloid."
+    },
+    {
+      "label": "B",
+      "text": "Free thyroid hormone already circulating in the blood",
+      "isCorrect": false,
+      "misconception": "A downstream product is being named as the synthetic substrate.",
+      "explanation": "T3 and T4 are synthesized in the colloid by iodinating thyroglobulin tyrosines, then stored until TSH triggers their release; circulating hormone is the endpoint, not the substrate."
+    },
+    {
+      "label": "C",
+      "text": "Tyrosine residues within thyroglobulin in the colloid",
+      "isCorrect": true,
+      "misconception": "None; peroxidase enzymes iodinate thyroglobulin's tyrosines, and coupled intermediaries form T3 and T4.",
+      "explanation": "In the colloid, peroxidase links iodine to tyrosine amino acids in thyroglobulin; one- and two-iodine intermediaries then couple to form T3, and two two-iodine intermediaries form T4."
+    },
+    {
+      "label": "D",
+      "text": "Cholesterol side chains in the follicle cell membrane",
+      "isCorrect": false,
+      "misconception": "The steroid hormone precursor is being applied to an amino acid-derived hormone.",
+      "explanation": "Steroid hormones derive from cholesterol; T3 and T4 are amino acid-derived hormones assembled by iodinating tyrosine residues of thyroglobulin in the colloid."
+    },
+    {
+      "label": "E",
+      "text": "Calcitonin precursors in the parafollicular cells",
+      "isCorrect": false,
+      "misconception": "The thyroid's other secretory cell type is being confused with follicle cell synthesis.",
+      "explanation": "Parafollicular cells secrete calcitonin for calcium homeostasis; T3 and T4 come from iodinated thyroglobulin tyrosines within follicle colloid."
+    }
+  ],
+  "context": "Learning objective: outline T3/T4 synthesis and release. Peroxidase links iodine to thyroglobulin tyrosines in the colloid; coupled intermediaries yield T3/T4, stored in colloid until TSH stimulates endocytosis and lysosomal release into blood. Dietary iodine deficiency blocks synthesis and causes goiter.",
+  "cite": "openstax-anatomy-physiology#endo-thyroid-hormone-synthesis",
+  "publicUsmle": {
+    "schemaVersion": 1,
+    "origin": "generated",
+    "itemText": {
+      "licence": "CC-BY-4.0",
+      "attribution": "MD3 contributors"
+    },
+    "evidence": {
+      "kind": "passage",
+      "sourceId": "openstax-anatomy-physiology",
+      "passageId": "endo-thyroid-hormone-synthesis",
+      "licence": {
+        "cls": "foss",
+        "id": "cc-by-4.0"
+      }
+    },
+    "media": {
+      "kind": "asset",
+      "assetId": "thyroid-synthesis-v1",
+      "job": "pathway",
+      "showWhen": "after-reveal",
+      "licence": {
+        "cls": "foss",
+        "id": "cc-by-4.0"
+      },
+      "attribution": "MD3 contributors",
+      "contentHash": "sha256:71e26e40bf93851a51c89a9f8f8a1bae04c096c56a0d7436402d7a76aaec28b9"
+    }
+  },
+  "imageUrl": "/figures/usmle/step1/thyroid-synthesis-v1.svg",
+  "imageCaption": "Thyroid synthesis: NIS iodide uptake; TPO iodinates thyroglobulin tyrosines; couple to T3/T4."
+}

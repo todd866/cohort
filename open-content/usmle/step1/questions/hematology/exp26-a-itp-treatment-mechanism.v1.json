@@ -1,0 +1,71 @@
+{
+  "id": "bank:usmle-step1:exp26-a-itp-treatment-mechanism:v1",
+  "rotation": "usmle-step1-open",
+  "topics": [
+    "hematology",
+    "immune-thrombocytopenia"
+  ],
+  "moduleNodes": [
+    "usmle/step1",
+    "usmle/step1/hematology"
+  ],
+  "questionType": "interpretation",
+  "difficulty": "medium",
+  "stem": "A 31-year-old patient with immune thrombocytopenia receives corticosteroid treatment and the platelet count rises. In a hypothetical model, the treatment suppresses the platelet-directed immune process without directly changing platelet production. Which of the following paired changes best explains the response?",
+  "options": [
+    {
+      "label": "A",
+      "text": "Shorter platelet survival; unchanged platelet production",
+      "isCorrect": false,
+      "explanation": "Shortening survival would increase loss from the pool while production remains fixed. That combination would oppose, rather than explain, the observed increase in platelet count.",
+      "misconception": "Predicts count recovery from shorter platelet survival while holding production fixed."
+    },
+    {
+      "label": "B",
+      "text": "Longer platelet survival; reduced platelet production",
+      "isCorrect": false,
+      "explanation": "Longer survival fits reduced destruction, but lower production is not part of the stated selective effect. The model explicitly isolates immune suppression without changing platelet production.",
+      "misconception": "Adds reduced production to a model that changes immune destruction without changing platelet production."
+    },
+    {
+      "label": "C",
+      "text": "Shorter platelet survival; increased platelet production",
+      "isCorrect": false,
+      "explanation": "Increased production could introduce a separate explanation for count recovery, but it violates the controlled model. The specified intervention instead reduces immune-mediated platelet loss.",
+      "misconception": "Introduces increased production and shorter survival instead of the stated selective reduction in immune loss."
+    },
+    {
+      "label": "D",
+      "text": "Unchanged platelet survival; increased platelet production",
+      "isCorrect": false,
+      "explanation": "This attributes the response to a production change that the model excludes. The proposed corticosteroid pathway preserves the platelet pool by reducing immune destruction instead.",
+      "misconception": "Attributes count recovery to increased production even though the model explicitly holds production constant."
+    },
+    {
+      "label": "E",
+      "text": "Longer platelet survival; unchanged platelet production",
+      "isCorrect": true,
+      "explanation": "Suppressing immune-mediated platelet destruction allows platelets to remain available longer. With production fixed by the model, increased survival explains the rise in the circulating count.",
+      "misconception": "No misconception: Reduced immune destruction prolongs platelet survival and raises the pool with production fixed."
+    }
+  ],
+  "context": "Learning objective: Separate a fall in platelet destruction from increased production when interpreting immune treatment. With production held constant, longer survival can raise the circulating platelet pool.",
+  "cite": "nhlbi-itp#itp-steroid",
+  "publicUsmle": {
+    "schemaVersion": 1,
+    "origin": "generated",
+    "itemText": {
+      "licence": "CC-BY-4.0",
+      "attribution": "MD3 contributors"
+    },
+    "evidence": {
+      "kind": "passage",
+      "sourceId": "nhlbi-itp",
+      "passageId": "itp-steroid",
+      "licence": {
+        "cls": "foss",
+        "id": "us-gov"
+      }
+    }
+  }
+}

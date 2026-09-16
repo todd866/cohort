@@ -1,0 +1,71 @@
+{
+  "id": "bank:usmle-step1:exp26-a-infant-diagnostic-compartment:v1",
+  "rotation": "usmle-step1-open",
+  "topics": [
+    "microbiology",
+    "infant-botulism"
+  ],
+  "moduleNodes": [
+    "usmle/step1",
+    "usmle/step1/microbiology"
+  ],
+  "questionType": "interpretation",
+  "difficulty": "medium",
+  "stem": "A 3-month-old infant develops ptosis, a weak cry, poor feeding, and constipation. The clinician suspects intestinal colonization by toxin-producing Clostridium spores. Which of the following specimens is most directly linked to confirming the suspected process?",
+  "options": [
+    {
+      "label": "A",
+      "text": "A urine sample collected from the infant",
+      "isCorrect": false,
+      "explanation": "Urine samples a different compartment from the intestinal contents where the spores colonize. It does not replace the stool specimen required for definitive infant testing.",
+      "misconception": "Selects a urinary specimen for a process whose definitive infant testing samples intestinal contents."
+    },
+    {
+      "label": "B",
+      "text": "A saliva sample collected from the infant",
+      "isCorrect": false,
+      "explanation": "Poor feeding and a weak cry reflect toxin effects rather than an identified oral colonization site. Stool targets the intestinal process underlying the suspected infant illness.",
+      "misconception": "Treats feeding and cry abnormalities as evidence that oral sampling targets the toxin-producing compartment."
+    },
+    {
+      "label": "C",
+      "text": "A nasal sample collected from the infant",
+      "isCorrect": false,
+      "explanation": "The motor and feeding findings do not identify a nasal infection. The suspected toxin-producing organisms colonize the intestine, making stool the compartment-directed diagnostic specimen.",
+      "misconception": "Infers a nasal source from systemic motor findings instead of sampling the suspected intestinal process."
+    },
+    {
+      "label": "D",
+      "text": "A blood sample collected from the infant",
+      "isCorrect": false,
+      "explanation": "A blood sample does not directly sample the colonized intestinal contents. For definitive infant botulism testing, the specified stool specimen connects the diagnosis to that intestinal source.",
+      "misconception": "Substitutes a blood sample for the stool specimen specified for definitive infant botulism testing."
+    },
+    {
+      "label": "E",
+      "text": "A stool sample collected from the infant",
+      "isCorrect": true,
+      "explanation": "Infant botulism results from intestinal colonization and toxin production. Stool directly samples that compartment and is the required specimen type for definitive infant testing.",
+      "misconception": "No misconception: Stool samples the intestinal compartment responsible for the suspected infant process."
+    }
+  ],
+  "context": "Learning objective: match diagnostic sampling to the colonized compartment in infant botulism. A stool specimen investigates the intestinal process responsible for toxin production rather than sampling the distant site of motor impairment.",
+  "cite": "cdc-infant-botulism-clinical#infant-test",
+  "publicUsmle": {
+    "schemaVersion": 1,
+    "origin": "generated",
+    "itemText": {
+      "licence": "CC-BY-4.0",
+      "attribution": "MD3 contributors"
+    },
+    "evidence": {
+      "kind": "passage",
+      "sourceId": "cdc-infant-botulism-clinical",
+      "passageId": "infant-test",
+      "licence": {
+        "cls": "foss",
+        "id": "us-gov"
+      }
+    }
+  }
+}

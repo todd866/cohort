@@ -1,0 +1,138 @@
+{
+  "schemaVersion": 1,
+  "figureId": "respiratory-noise-phase-model",
+  "kind": "conceptual",
+  "sourceFacts": [
+    {
+      "id": "fact-1",
+      "fact": "Stridor phase can be inspiratory, expiratory or biphasic depending on the obstruction; it is often inspiratory.",
+      "sources": [
+        {
+          "title": "Nationwide Children’s: Noisy breathing",
+          "url": "https://www.nationwidechildrens.org/conditions/noisy-breathing-stridor"
+        },
+        {
+          "title": "WHO: Pocket Book—cough or difficulty breathing",
+          "url": "https://www.ncbi.nlm.nih.gov/books/NBK154448/"
+        },
+        {
+          "title": "UCSF neonatal manual: Respiratory distress syndrome",
+          "url": "https://www.ucsfbenioffchildrens.org/-/media/project/ucsf/ucsf-bch/pdf/manuals/25_rds.pdf?rev=841fef9fcf014d11bb606d3c22025887"
+        }
+      ]
+    },
+    {
+      "id": "fact-2",
+      "fact": "Wheezing is typically most evident during expiration.",
+      "sources": [
+        {
+          "title": "Nationwide Children’s: Noisy breathing",
+          "url": "https://www.nationwidechildrens.org/conditions/noisy-breathing-stridor"
+        },
+        {
+          "title": "WHO: Pocket Book—cough or difficulty breathing",
+          "url": "https://www.ncbi.nlm.nih.gov/books/NBK154448/"
+        },
+        {
+          "title": "UCSF neonatal manual: Respiratory distress syndrome",
+          "url": "https://www.ucsfbenioffchildrens.org/-/media/project/ucsf/ucsf-bch/pdf/manuals/25_rds.pdf?rev=841fef9fcf014d11bb606d3c22025887"
+        }
+      ]
+    },
+    {
+      "id": "fact-3",
+      "fact": "Grunting is an expiratory sound associated with respiratory distress and an effort to preserve lung volume.",
+      "sources": [
+        {
+          "title": "Nationwide Children’s: Noisy breathing",
+          "url": "https://www.nationwidechildrens.org/conditions/noisy-breathing-stridor"
+        },
+        {
+          "title": "WHO: Pocket Book—cough or difficulty breathing",
+          "url": "https://www.ncbi.nlm.nih.gov/books/NBK154448/"
+        },
+        {
+          "title": "UCSF neonatal manual: Respiratory distress syndrome",
+          "url": "https://www.ucsfbenioffchildrens.org/-/media/project/ucsf/ucsf-bch/pdf/manuals/25_rds.pdf?rev=841fef9fcf014d11bb606d3c22025887"
+        }
+      ]
+    }
+  ],
+  "nodes": [
+    {
+      "id": "in",
+      "shape": "teal time region",
+      "label": "Breathe in"
+    },
+    {
+      "id": "out",
+      "shape": "amber time region",
+      "label": "Breathe out"
+    },
+    {
+      "id": "stridor",
+      "shape": "thick band in inspiration",
+      "label": "Stridor: often in"
+    },
+    {
+      "id": "wheeze",
+      "shape": "thick band in expiration",
+      "label": "Wheeze: usually out"
+    },
+    {
+      "id": "grunt",
+      "shape": "short block in expiration",
+      "label": "Grunt: out"
+    }
+  ],
+  "edges": [
+    {
+      "from": "in",
+      "to": "out",
+      "meaning": "inspiration precedes expiration"
+    },
+    {
+      "from": "stridor",
+      "to": "in",
+      "meaning": "common inspiratory timing"
+    },
+    {
+      "from": "wheeze",
+      "to": "out",
+      "meaning": "typical expiratory timing"
+    },
+    {
+      "from": "grunt",
+      "to": "out",
+      "meaning": "expiratory grunt"
+    }
+  ],
+  "labels": [
+    "Place the sound within the breath",
+    "Breathe in",
+    "Breathe out",
+    "Stridor",
+    "Often inspiratory",
+    "Wheeze",
+    "Usually expiratory",
+    "Grunting",
+    "Expiratory",
+    "Stridor can also be biphasic",
+    "Timing is a clue, not a diagnosis"
+  ],
+  "forbiddenAnatomy": [
+    "Organs, tissue layers, microscopy or clinical-recording simulation"
+  ],
+  "validation": {
+    "status": "verified",
+    "method": "source-and-conceptual-structure-review",
+    "checks": [
+      "Three rows align with the same in/out boundary.",
+      "Stridor explicitly qualified often, with biphasic caveat.",
+      "Grunt placed within expiration without precise onset claim.",
+      "Bars are schematic timing markers, not invented audio recordings or waveforms."
+    ],
+    "pixelReviewStatus": "verified",
+    "pixelReviewNotes": "All rows share an aligned inspiration/expiration boundary. Stridor bar and often-inspiratory label lie in inspiration; wheeze and grunt markers are in expiration. Biphasic-stridor qualifier is legible. Solid timing bars have no waveform or clinical-recording claim. No anatomy or exclusive diagnostic rule."
+  }
+}

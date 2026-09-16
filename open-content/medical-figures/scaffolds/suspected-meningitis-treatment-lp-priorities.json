@@ -1,0 +1,68 @@
+{
+  "schemaVersion": 1,
+  "figureId": "suspected-meningitis-treatment-lp-priorities",
+  "kind": "conceptual",
+  "created": "2026-09-10",
+  "timing": "authored before generation",
+  "sourceFacts": [
+    {
+      "fact": "In a seriously unwell child with suspected meningitis or sepsis, urgent antibiotics take priority over performing LP.",
+      "sourceUrls": [
+        "https://www.rch.org.au/clinicalguide/guideline_index/Lumbar_puncture/"
+      ]
+    },
+    {
+      "fact": "LP requires a neurological examination and consideration of contraindications; obtain CSF when it is safe and appropriate.",
+      "sourceUrls": [
+        "https://www.rch.org.au/clinicalguide/guideline_index/Lumbar_puncture/"
+      ]
+    }
+  ],
+  "clinicalSources": [
+    {
+      "title": "RCH: Lumbar puncture",
+      "url": "https://www.rch.org.au/clinicalguide/guideline_index/Lumbar_puncture/"
+    }
+  ],
+  "nodes": [
+    "seriously unwell child",
+    "urgent antibiotics",
+    "LP safety assessment",
+    "CSF sampling when safe"
+  ],
+  "edges": [
+    [
+      "seriously unwell child",
+      "urgent antibiotics",
+      "priority"
+    ],
+    [
+      "seriously unwell child",
+      "LP safety assessment",
+      "parallel assessment"
+    ],
+    [
+      "LP safety assessment",
+      "CSF sampling when safe",
+      "only if safe and indicated"
+    ]
+  ],
+  "expectedLabels": [
+    "Suspected meningitis: protect treatment time",
+    "Seriously unwell child",
+    "Urgent antibiotics",
+    "Assess LP safety",
+    "CSF sample when safe",
+    "Do not delay antibiotics for LP"
+  ],
+  "layoutSpecification": "Title 'Suspected meningitis: protect treatment time'. LEFT one plain hospital assessment card labelled 'Seriously unwell child'. From it branch into TWO parallel lanes extending to RIGHT. UPPER lane a THICK uninterrupted teal arrow goes directly to an unmeasured plain medicine vial and clock labelled 'Urgent antibiotics'. LOWER lane a thinner ochre arrow leads first to a shield/checklist labelled 'Assess LP safety', then a small arrow labelled 'When safe' to a closed clear-fluid specimen tube labelled 'CSF sample when safe'. Absolutely no arrow from the LP/checklist lane into the antibiotics lane and no stopbar on antibiotics. Bottom 'Do not delay antibiotics for LP'. No needle, patient back, spine, brain, dose, fixed number of minutes or clinical LP instructions. This shows parallel priorities and a safety-dependent diagnostic step.",
+  "forbiddenAnatomy": [
+    "No internal organ, eye, ear, brain, tissue or bone anatomy",
+    "No diagnostic image, patient-specific lesion appearance or literal anatomical pathway"
+  ],
+  "validation": {
+    "sourceFacts": "Checked against listed primary clinical sources on 2026-09-10",
+    "status": "self-reviewed; independent review pending",
+    "pixelChecks": "Pixel/structure check: thick upper arrow goes directly from seriously unwell child to urgent antibiotics; independent lower lane reaches LP safety assessment before safety-qualified CSF sampling. No prerequisite connection from LP to antibiotics; no time/dose number. Renderer added clinical status, bleeding risk and other factors inside checklist; these broad domains are consistent with RCH safety assessment and are not presented as an exhaustive procedure checklist. No internal anatomy or needle placement."
+  }
+}

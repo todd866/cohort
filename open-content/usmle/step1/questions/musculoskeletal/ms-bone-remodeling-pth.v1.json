@@ -1,0 +1,86 @@
+{
+  "id": "bank:usmle-step1:ms-bone-remodeling-pth:v1",
+  "rotation": "usmle-step1-open",
+  "topics": [
+    "bone remodeling",
+    "osteoclasts",
+    "Paget disease"
+  ],
+  "moduleNodes": [
+    "usmle/step1",
+    "usmle/step1/musculoskeletal"
+  ],
+  "questionType": "mechanism",
+  "difficulty": "medium",
+  "stem": "A 68-year-old man has bone pain and an enlarging, deforming skull, and studies show markedly elevated osteoclast activity.\n\nHis weak, fracture-prone bones result from a remodeling imbalance in which his osteoclasts do which of the following?",
+  "options": [
+    {
+      "label": "A",
+      "text": "Deposit excess collagen matrix on the periosteum",
+      "isCorrect": false,
+      "misconception": "A formative action is being assigned to osteoclasts.",
+      "explanation": "Osteoclasts resorb bone; deposition of collagen matrix is the work of osteoblasts at the periosteum and endosteum."
+    },
+    {
+      "label": "B",
+      "text": "Trap osteoblasts inside the calcified matrix",
+      "isCorrect": false,
+      "misconception": "The osteocyte transition is being attributed to osteoclasts.",
+      "explanation": "Osteoblasts trap THEMSELVES as the matrix they secrete calcifies, becoming osteocytes; osteoclasts play no part in that transition."
+    },
+    {
+      "label": "C",
+      "text": "Convert compact bone into hyaline cartilage",
+      "isCorrect": false,
+      "misconception": "Resorption is being cast as a tissue conversion.",
+      "explanation": "Osteoclasts break down bone matrix; they do not convert bone into any other tissue."
+    },
+    {
+      "label": "D",
+      "text": "Stimulate osteoblasts to form extra lamellae",
+      "isCorrect": false,
+      "misconception": "The compensatory response is being cast as the primary defect.",
+      "explanation": "The primary defect is excessive osteoclast resorption; osteoblast compensation follows but produces weak, brittle bone, not healthy extra lamellae."
+    },
+    {
+      "label": "E",
+      "text": "Resorb more bone than the osteoblasts lay down",
+      "isCorrect": true,
+      "misconception": "None; overactive resorption outpaces formation, leaving weak bone.",
+      "explanation": "This is Paget's disease: a remodeling disorder beginning with overactive osteoclasts, so more bone is resorbed than laid down; the compensating osteoblasts lay down weak, brittle bone prone to fracture."
+    }
+  ],
+  "context": "Learning objective: remodeling balance. Osteoclasts resorb unneeded, damaged, or old bone while osteoblasts lay down new bone. Paget's disease begins with overactive osteoclasts — resorption outpaces formation, and compensatory osteoblast activity lays down weak, brittle bone (pelvis, skull, spine, legs).",
+  "cite": "openstax-anatomy-physiology#ms-bone-remodeling-pth",
+  "publicUsmle": {
+    "schemaVersion": 1,
+    "origin": "generated",
+    "itemText": {
+      "licence": "CC-BY-4.0",
+      "attribution": "MD3 contributors"
+    },
+    "evidence": {
+      "kind": "passage",
+      "sourceId": "openstax-anatomy-physiology",
+      "passageId": "ms-bone-remodeling-pth",
+      "licence": {
+        "cls": "foss",
+        "id": "cc-by-4.0"
+      }
+    },
+    "media": {
+      "kind": "asset",
+      "assetId": "bone-remodeling-v1",
+      "job": "anatomy",
+      "showWhen": "after-reveal",
+      "licence": {
+        "cls": "foss",
+        "id": "cc-by-4.0"
+      },
+      "attribution": "MD3 contributors",
+      "contentHash": "sha256:cdbd5592d44ecfda732d8bc7b51a9d61044e0fdcb5b989cc2fc2842ccd451a30"
+    }
+  },
+  "imageUrl": "/figures/usmle/step1/bone-remodeling-v1.svg",
+  "imageCaption": "Osteoblast / osteoclast / osteocyte roles; PTH raises Ca2+ via RANKL and kidney."
+}

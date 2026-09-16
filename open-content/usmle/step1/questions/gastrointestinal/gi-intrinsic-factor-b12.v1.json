@@ -1,0 +1,88 @@
+{
+  "id": "bank:usmle-step1:gi-intrinsic-factor-b12:v1",
+  "rotation": "usmle-step1-open",
+  "ladderId": "intrinsic-factor-b12",
+  "topics": [
+    "intrinsic factor",
+    "vitamin B12",
+    "macrocytic anemia",
+    "ladder:intrinsic-factor-b12"
+  ],
+  "moduleNodes": [
+    "usmle/step1",
+    "usmle/step1/gastrointestinal"
+  ],
+  "questionType": "mechanism",
+  "difficulty": "hard",
+  "stem": "A 60-year-old man develops progressive fatigue, glossitis, and a wide-based unsteady gait two years after total gastrectomy for gastric adenocarcinoma. Examination shows loss of vibration sense in the lower limbs. His blood smear shows macrocytic anemia and serum vitamin B12 is low.\n\nThe anemia developed because gastrectomy eliminated a gastric product required for which of the following?",
+  "options": [
+    {
+      "label": "A",
+      "text": "Iron uptake in the proximal duodenum",
+      "isCorrect": false,
+      "misconception": "An iron-deficiency mechanism is being applied to a macrocytic anemia.",
+      "explanation": "Iron deficiency produces a microcytic anemia and does not require intrinsic factor; the macrocytosis and gait findings point to B12 malabsorption."
+    },
+    {
+      "label": "B",
+      "text": "Folate uptake in the proximal jejunum",
+      "isCorrect": false,
+      "misconception": "Another macrocytic cause is being chosen, but its uptake does not need a gastric product.",
+      "explanation": "Folate deficiency also causes macrocytosis, but folate absorption does not depend on intrinsic factor; it lacks the neurological signs of B12 deficiency."
+    },
+    {
+      "label": "C",
+      "text": "Vitamin B12 uptake in the terminal ileum",
+      "isCorrect": true,
+      "misconception": "None; intrinsic factor is required for ileal B12 absorption.",
+      "explanation": "Parietal cells secrete intrinsic factor, without which vitamin B12 cannot be absorbed in the terminal ileum; B12 is needed for mature red-cell production and normal neurological function."
+    },
+    {
+      "label": "D",
+      "text": "Calcium uptake in the proximal duodenum",
+      "isCorrect": false,
+      "misconception": "A mineral is being cast as the cause of the anemia.",
+      "explanation": "Calcium absorption is vitamin-D dependent and unrelated to intrinsic factor; hypocalcemia does not produce macrocytic anemia."
+    },
+    {
+      "label": "E",
+      "text": "Vitamin D uptake in the terminal ileum",
+      "isCorrect": false,
+      "misconception": "A fat-soluble vitamin is being cast as the intrinsic-factor-dependent one.",
+      "explanation": "Vitamin D is absorbed with lipids and does not require intrinsic factor; its deficiency affects bone, not red-cell maturation or gait."
+    }
+  ],
+  "context": "Learning objective: intrinsic factor is the one indispensable gastric product. Made by parietal cells, it permits B12 absorption in the terminal ileum; B12 is required for mature red cells and neurological function. Gastrectomy (or autoimmune parietal-cell loss) therefore causes macrocytic anemia with neurological signs.",
+  "cite": "openstax-anatomy-physiology#gi-intrinsic-factor-b12",
+  "publicUsmle": {
+    "schemaVersion": 1,
+    "origin": "generated",
+    "itemText": {
+      "licence": "CC-BY-4.0",
+      "attribution": "MD3 contributors"
+    },
+    "evidence": {
+      "kind": "passage",
+      "sourceId": "openstax-anatomy-physiology",
+      "passageId": "gi-intrinsic-factor-b12",
+      "licence": {
+        "cls": "foss",
+        "id": "cc-by-4.0"
+      }
+    },
+    "media": {
+      "kind": "asset",
+      "assetId": "gastric-secretion-v1",
+      "job": "pathway",
+      "showWhen": "after-reveal",
+      "licence": {
+        "cls": "foss",
+        "id": "cc-by-4.0"
+      },
+      "attribution": "MD3 contributors",
+      "contentHash": "sha256:8be13d0847ecfd181d68d963b3aec9c7011d75060c7d97b6c23225cc47f84e58"
+    }
+  },
+  "imageUrl": "/figures/usmle/step1/gastric-secretion-v1.svg",
+  "imageCaption": "Gastric phases cephalic/gastric/intestinal; parietal (HCl+IF), chief (pepsinogen), G cell (gastrin)."
+}

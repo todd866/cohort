@@ -1,0 +1,71 @@
+{
+  "id": "bank:usmle-step1:exp26-a-recessive-unaffected-sibling:v1",
+  "rotation": "usmle-step1-open",
+  "topics": [
+    "genetics",
+    "recessive-segregation"
+  ],
+  "moduleNodes": [
+    "usmle/step1",
+    "usmle/step1/genetics"
+  ],
+  "questionType": "calculation",
+  "difficulty": "hard",
+  "stem": "Two unaffected parents each carry one normal allele and one pathogenic allele at the same autosomal locus. Their hypothetical disorder has complete penetrance when both copies are pathogenic. Their adult son is unaffected, and his genotype has not been measured. Which of the following is his probability of carrying one pathogenic allele?",
+  "options": [
+    {
+      "label": "A",
+      "text": "One half of the remaining outcomes",
+      "isCorrect": false,
+      "explanation": "One half is the unconditional carrier probability before considering the son's phenotype. Conditioning on his being unaffected removes the affected genotype from the denominator.",
+      "misconception": "Uses the unconditional carrier probability after the unaffected phenotype has excluded one outcome."
+    },
+    {
+      "label": "B",
+      "text": "Three quarters of the remaining outcomes",
+      "isCorrect": false,
+      "explanation": "Three quarters is the probability of an unaffected child before conditioning. It is not the fraction of unaffected offspring who retain one pathogenic allele.",
+      "misconception": "Confuses the probability of being unaffected with carrier probability among unaffected offspring."
+    },
+    {
+      "label": "C",
+      "text": "Two thirds of the remaining outcomes",
+      "isCorrect": true,
+      "explanation": "The four equally likely parental allele combinations include one affected genotype. Excluding it leaves two carrier combinations and one noncarrier combination, giving two thirds.",
+      "misconception": "No misconception: Excluding the affected genotype leaves two carrier outcomes among three possibilities."
+    },
+    {
+      "label": "D",
+      "text": "One quarter of the remaining outcomes",
+      "isCorrect": false,
+      "explanation": "One quarter is the unconditional affected-child probability for this parental cross. The question instead asks about carrier status after the affected outcome has been excluded.",
+      "misconception": "Substitutes the unconditional affected-child probability for conditional carrier probability."
+    },
+    {
+      "label": "E",
+      "text": "One third of the remaining outcomes",
+      "isCorrect": false,
+      "explanation": "One of the three remaining outcomes contains two normal alleles. That is the noncarrier probability, whereas two remaining outcomes contain one pathogenic allele.",
+      "misconception": "Counts the remaining noncarrier outcome instead of the two remaining carrier outcomes."
+    }
+  ],
+  "context": "Learning objective: condition a recessive carrier calculation on the observed phenotype. The affected genotype is excluded; among the remaining three equally likely outcomes, two are carriers.",
+  "cite": "nhgri-carrier#carrier-definition",
+  "publicUsmle": {
+    "schemaVersion": 1,
+    "origin": "generated",
+    "itemText": {
+      "licence": "CC-BY-4.0",
+      "attribution": "MD3 contributors"
+    },
+    "evidence": {
+      "kind": "passage",
+      "sourceId": "nhgri-carrier",
+      "passageId": "carrier-definition",
+      "licence": {
+        "cls": "foss",
+        "id": "us-gov"
+      }
+    }
+  }
+}

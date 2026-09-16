@@ -1,0 +1,86 @@
+{
+  "id": "bank:usmle-step1:he-iron-deficiency-microcytic:v1",
+  "rotation": "usmle-step1-open",
+  "topics": [
+    "iron deficiency",
+    "microcytic anemia",
+    "ferritin"
+  ],
+  "moduleNodes": [
+    "usmle/step1",
+    "usmle/step1/hematology"
+  ],
+  "questionType": "diagnosis",
+  "difficulty": "medium",
+  "stem": "A 30-year-old woman with heavy menstrual periods has fatigue and a hemoglobin of 9.8 g/dL. Her red blood cells are smaller than normal on smear.\n\nDeficiency of which of the following, absorbed in the duodenum and stored bound to ferritin, most likely explains her findings?",
+  "options": [
+    {
+      "label": "A",
+      "text": "Elemental iron",
+      "isCorrect": true,
+      "misconception": "None; iron lack yields microcytic anemia.",
+      "explanation": "Ionic iron needed for hemoglobin production is absorbed in the duodenum and stored as iron-ferritin complexes; deficiency produces smaller-than-normal (microcytic) red cells, as seen in chronic menstrual iron loss."
+    },
+    {
+      "label": "B",
+      "text": "Folate",
+      "isCorrect": false,
+      "misconception": "A macrocytic cause is being applied to a microcytic picture.",
+      "explanation": "Folate deficiency produces larger-than-normal (macrocytic) red cells through impaired DNA synthesis; microcytosis with menstrual loss points to iron."
+    },
+    {
+      "label": "C",
+      "text": "Vitamin B12",
+      "isCorrect": false,
+      "misconception": "Another macrocytic deficiency is being confused with the microcytic one.",
+      "explanation": "Vitamin B12 deficiency causes macrocytic (megaloblastic) anemia with neurologic features; small red cells with chronic bleeding indicate iron deficiency."
+    },
+    {
+      "label": "D",
+      "text": "Vitamin C",
+      "isCorrect": false,
+      "misconception": "A collagen cofactor is being treated as a hemoglobin raw material.",
+      "explanation": "Vitamin C deficiency causes scurvy with bleeding gums and poor wound healing, not microcytosis; the deficient mineral here is iron."
+    },
+    {
+      "label": "E",
+      "text": "Calcium",
+      "isCorrect": false,
+      "misconception": "A bone and clotting ion is being linked to red-cell size.",
+      "explanation": "Calcium supports bone and serves as clotting factor IV; it is not a hemoglobin component, and its deficiency does not produce microcytic anemia."
+    }
+  ],
+  "context": "Learning objective: match anemia morphology to deficiency. Mean corpuscular volume classifies red cells as normocytic, microcytic, or macrocytic. Iron — absorbed in the duodenum and stored on ferritin — is required for hemoglobin; its deficiency (classically from menstrual blood loss) produces microcytic cells.",
+  "cite": "openstax-anatomy-physiology#he-iron-deficiency-microcytic",
+  "publicUsmle": {
+    "schemaVersion": 1,
+    "origin": "generated",
+    "itemText": {
+      "licence": "CC-BY-4.0",
+      "attribution": "MD3 contributors"
+    },
+    "evidence": {
+      "kind": "passage",
+      "sourceId": "openstax-anatomy-physiology",
+      "passageId": "he-iron-deficiency-microcytic",
+      "licence": {
+        "cls": "foss",
+        "id": "cc-by-4.0"
+      }
+    },
+    "media": {
+      "kind": "asset",
+      "assetId": "blood-components-v1",
+      "job": "anatomy",
+      "showWhen": "after-reveal",
+      "licence": {
+        "cls": "foss",
+        "id": "cc-by-4.0"
+      },
+      "attribution": "MD3 contributors",
+      "contentHash": "sha256:3856cf48a8b6b7e73474650774b40f575f9ee1219bc0ebdd14e3df08c05e55b9"
+    }
+  },
+  "imageUrl": "/figures/usmle/step1/blood-components-v1.svg",
+  "imageCaption": "Hematocrit, buffy coat, albumin, platelets, monocyte-macrophage, T cells, EPO, iron deficiency, ABO."
+}

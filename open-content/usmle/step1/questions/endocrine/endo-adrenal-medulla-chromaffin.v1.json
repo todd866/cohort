@@ -1,0 +1,86 @@
+{
+  "id": "bank:usmle-step1:endo-adrenal-medulla-chromaffin:v1",
+  "rotation": "usmle-step1-open",
+  "topics": [
+    "adrenal medulla",
+    "chromaffin cells",
+    "catecholamines"
+  ],
+  "moduleNodes": [
+    "usmle/step1",
+    "usmle/step1/endocrine"
+  ],
+  "questionType": "mechanism",
+  "difficulty": "medium",
+  "stem": "A 40-year-old man has episodes of pounding headache, sweating, palpitations, and severe hypertension. Imaging shows an adrenal medullary tumor secreting epinephrine and norepinephrine.\n\nThe tumor's chromaffin cells are best understood developmentally and functionally as which of the following?",
+  "options": [
+    {
+      "label": "A",
+      "text": "Endocrine cells regulated by hypothalamic releasing hormones",
+      "isCorrect": false,
+      "misconception": "An anterior pituitary-style control mechanism is being applied to the medulla.",
+      "explanation": "The medulla is driven directly by sympathetic preganglionic neurons (the SAM pathway), not by hypothalamic releasing hormones; its cells are functionally sympathetic ganglion neurons."
+    },
+    {
+      "label": "B",
+      "text": "Steroid-secreting epithelial cells of mesodermal origin",
+      "isCorrect": false,
+      "misconception": "Cortical tissue is being attributed to the medulla.",
+      "explanation": "Steroid output (mineralocorticoids, glucocorticoids, androgens) is cortical; medullary chromaffin cells are neural crest-derived neurosecretory cells releasing catecholamines."
+    },
+    {
+      "label": "C",
+      "text": "Preganglionic cholinergic neurons arriving from the cord",
+      "isCorrect": false,
+      "misconception": "The input to the medulla is being confused with the medullary cell itself.",
+      "explanation": "Preganglionic sympathetic fibers innervate chromaffin cells, but the chromaffin cell is the modified postganglionic neuron that secretes epinephrine and norepinephrine into blood."
+    },
+    {
+      "label": "D",
+      "text": "Modified postganglionic sympathetic neurons of neural crest origin",
+      "isCorrect": true,
+      "misconception": "None; chromaffin cells are neurosecretory cells that develop with the sympathetic ganglia and act as a sympathetic ganglion.",
+      "explanation": "Chromaffin cells are neurosecretory cells that develop from the neural crest alongside the sympathetic ganglia; the medulla is functionally a sympathetic ganglion, releasing epinephrine and norepinephrine into the bloodstream."
+    },
+    {
+      "label": "E",
+      "text": "Parasympathetic ganglion cells secreting acetylcholine",
+      "isCorrect": false,
+      "misconception": "The wrong autonomic division and transmitter are being assigned.",
+      "explanation": "Chromaffin cells belong to the sympathetic division, developing with sympathetic ganglia and secreting epinephrine and norepinephrine, not acetylcholine."
+    }
+  ],
+  "context": "Learning objective: characterize the adrenal medulla. Chromaffin cells are neural crest-derived neurosecretory cells, functionally a sympathetic ganglion; preganglionic sympathetic stimulation (SAM pathway) makes them release epinephrine and norepinephrine into the bloodstream for the fight-or-flight response.",
+  "cite": "openstax-anatomy-physiology#endo-adrenal-medulla-chromaffin",
+  "publicUsmle": {
+    "schemaVersion": 1,
+    "origin": "generated",
+    "itemText": {
+      "licence": "CC-BY-4.0",
+      "attribution": "MD3 contributors"
+    },
+    "evidence": {
+      "kind": "passage",
+      "sourceId": "openstax-anatomy-physiology",
+      "passageId": "endo-adrenal-medulla-chromaffin",
+      "licence": {
+        "cls": "foss",
+        "id": "cc-by-4.0"
+      }
+    },
+    "media": {
+      "kind": "asset",
+      "assetId": "adrenal-zones-v1",
+      "job": "anatomy",
+      "showWhen": "after-reveal",
+      "licence": {
+        "cls": "foss",
+        "id": "cc-by-4.0"
+      },
+      "attribution": "MD3 contributors",
+      "contentHash": "sha256:8e0c946bc37a2ccf13aae4036f026b33c9b4fa9c73fa61ab18649158ba41021c"
+    }
+  },
+  "imageUrl": "/figures/usmle/step1/adrenal-zones-v1.svg",
+  "imageCaption": "Adrenal cortex GFR zones + medulla; aldosterone / cortisol / androgens / catecholamines."
+}

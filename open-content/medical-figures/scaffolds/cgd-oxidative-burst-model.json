@@ -1,0 +1,107 @@
+{
+  "schemaVersion": 1,
+  "figureId": "cgd-oxidative-burst-model",
+  "kind": "conceptual",
+  "sourceFacts": [
+    {
+      "id": "fact-1",
+      "fact": "Phagocyte NADPH oxidase generates superoxide, supporting antimicrobial oxidant production.",
+      "sources": [
+        {
+          "title": "MedlinePlus Genetics: Chronic granulomatous disease",
+          "url": "https://medlineplus.gov/genetics/condition/chronic-granulomatous-disease/"
+        }
+      ]
+    },
+    {
+      "id": "fact-2",
+      "fact": "CGD disrupts NADPH oxidase function and impairs killing of certain bacteria and fungi; this illustration isolates the oxidative killing step, not all antimicrobial pathways.",
+      "sources": [
+        {
+          "title": "MedlinePlus Genetics: Chronic granulomatous disease",
+          "url": "https://medlineplus.gov/genetics/condition/chronic-granulomatous-disease/"
+        }
+      ]
+    }
+  ],
+  "nodes": [
+    {
+      "id": "capture",
+      "shape": "tray with microbe tokens",
+      "label": "Capture"
+    },
+    {
+      "id": "oxidase",
+      "shape": "gear",
+      "label": "NADPH oxidase"
+    },
+    {
+      "id": "burst",
+      "shape": "spark symbols",
+      "label": "Oxidative burst"
+    },
+    {
+      "id": "kill",
+      "shape": "faded microbe tokens",
+      "label": "Killing supported"
+    },
+    {
+      "id": "defect",
+      "shape": "broken gear",
+      "label": "Impaired NADPH oxidase"
+    },
+    {
+      "id": "survive",
+      "shape": "intact microbe tokens",
+      "label": "Killing impaired"
+    }
+  ],
+  "edges": [
+    {
+      "from": "capture",
+      "to": "oxidase",
+      "meaning": "captured microbes encounter antimicrobial process"
+    },
+    {
+      "from": "oxidase",
+      "to": "burst",
+      "meaning": "supports oxidant generation"
+    },
+    {
+      "from": "burst",
+      "to": "kill",
+      "meaning": "oxidants contribute to killing"
+    },
+    {
+      "from": "defect",
+      "to": "survive",
+      "meaning": "oxidative killing impaired"
+    }
+  ],
+  "labels": [
+    "Oxidative killing",
+    "Usual pathway",
+    "CGD",
+    "Capture",
+    "NADPH oxidase",
+    "Oxidative burst",
+    "Killing supported",
+    "Impaired NADPH oxidase",
+    "Killing impaired",
+    "Certain bacteria and fungi"
+  ],
+  "forbiddenAnatomy": [
+    "Organs, tissue layers, anatomical cutaways, histology, diagnostic scans, clinical photos"
+  ],
+  "validation": {
+    "status": "verified",
+    "method": "source-and-conceptual-structure-review",
+    "checks": [
+      "No phagocyte membranes, organelles or histology invented.",
+      "Capture is present in both rows; the CGD break occurs at oxidative burst.",
+      "No claim that every antimicrobial mechanism is absent."
+    ],
+    "pixelReviewStatus": "verified",
+    "pixelReviewNotes": "Both rows retain captured microbe tokens. The upper row connects an intact NADPH oxidase gear to oxidant sparks and fragmented microbes; the lower row breaks the connection after the damaged enzyme and retains intact microbes. Qualifier limits the mechanism to certain bacteria and fungi. No cell interior or organ anatomy is drawn. CGD is identified in the accompanying caption and teaching note; the lower image row uses the mechanistic enzyme label."
+  }
+}

@@ -1,0 +1,86 @@
+{
+  "id": "bank:usmle-step1:re-epididymis-sperm-maturation:v1",
+  "rotation": "usmle-step1-open",
+  "topics": [
+    "epididymis",
+    "sperm maturation",
+    "ductus deferens"
+  ],
+  "moduleNodes": [
+    "usmle/step1",
+    "usmle/step1/reproductive"
+  ],
+  "questionType": "mechanism",
+  "difficulty": "easy",
+  "stem": "A 35-year-old man undergoes vasectomy, during which the ductus deferens is transected.\n\nSperm leaving the seminiferous tubules are still immotile and immature; They complete their maturation before entering the ductus deferens in which of the following structures?",
+  "options": [
+    {
+      "label": "A",
+      "text": "The seminiferous tubules themselves",
+      "isCorrect": false,
+      "misconception": "The production site is being credited with final maturation.",
+      "explanation": "Sperm leaving the seminiferous tubules are still immotile; functional maturation occurs downstream in the epididymis during transit."
+    },
+    {
+      "label": "B",
+      "text": "The epididymis on the posterior testis",
+      "isCorrect": true,
+      "misconception": "None; the epididymis is the maturation site.",
+      "explanation": "Upon release from the seminiferous tubules, sperm are moved to the epididymis where they continue to mature; during ejaculation they exit the epididymis through the ductus deferens."
+    },
+    {
+      "label": "C",
+      "text": "The rete testis within the mediastinum",
+      "isCorrect": false,
+      "misconception": "A transit meshwork is being elevated to a maturation organ.",
+      "explanation": "The rete testis merely channels sperm from the tubules toward the efferent ductules; maturation takes place in the epididymis."
+    },
+    {
+      "label": "D",
+      "text": "The seminal vesicles beside the bladder",
+      "isCorrect": false,
+      "misconception": "A secretory gland is being confused with a maturation duct.",
+      "explanation": "Seminal vesicles contribute fructose-rich fluid at ejaculation; sperm have already matured in the epididymis before reaching them."
+    },
+    {
+      "label": "E",
+      "text": "The ampulla of the ductus deferens",
+      "isCorrect": false,
+      "misconception": "A storage dilatation is being assigned the maturation role.",
+      "explanation": "The ampulla is the terminal widening of the ductus deferens where sperm mix with vesicle fluid; maturation was completed earlier in the epididymis."
+    }
+  ],
+  "context": "Learning objective: trace the male duct system. Sperm are produced in the seminiferous tubules, pass through the rete testis and efferent ductules, then mature in the tightly coiled epididymis (about 6 meters long if straightened); ejaculation propels mature sperm through the ductus deferens, ejaculatory duct, and urethra.",
+  "cite": "openstax-anatomy-physiology#re-epididymis-sperm-maturation",
+  "publicUsmle": {
+    "schemaVersion": 1,
+    "origin": "generated",
+    "itemText": {
+      "licence": "CC-BY-4.0",
+      "attribution": "MD3 contributors"
+    },
+    "evidence": {
+      "kind": "passage",
+      "sourceId": "openstax-anatomy-physiology",
+      "passageId": "re-epididymis-sperm-maturation",
+      "licence": {
+        "cls": "foss",
+        "id": "cc-by-4.0"
+      }
+    },
+    "media": {
+      "kind": "asset",
+      "assetId": "male-reproduction-v1",
+      "job": "pathway",
+      "showWhen": "after-reveal",
+      "licence": {
+        "cls": "foss",
+        "id": "cc-by-4.0"
+      },
+      "attribution": "MD3 contributors",
+      "contentHash": "sha256:97c8c6b84c0aa26f1cefdaef639c671072c487a9a21f511e950d2aad23232b03"
+    }
+  },
+  "imageUrl": "/figures/usmle/step1/male-reproduction-v1.svg",
+  "imageCaption": "Male path: spermatogenesis (4 haploid), epididymis, Leydig testosterone, midpiece mitochondria, seminal fructose."
+}

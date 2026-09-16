@@ -1,0 +1,87 @@
+{
+  "id": "bank:usmle-step1:neuro-epsp-ipsp:v1",
+  "rotation": "usmle-step1-open",
+  "ladderId": "epsp-ipsp",
+  "topics": [
+    "IPSP",
+    "postsynaptic potentials",
+    "ladder:epsp-ipsp"
+  ],
+  "moduleNodes": [
+    "usmle/step1",
+    "usmle/step1/neuroscience"
+  ],
+  "questionType": "mechanism",
+  "difficulty": "easy",
+  "stem": "An interneuron releases glycine onto a motor neuron, and chloride flows into the postsynaptic cell, making its interior transiently more negative and an action potential less likely.\n\nThis recorded change is best classified as which of the following?",
+  "options": [
+    {
+      "label": "A",
+      "text": "A generator potential arising at the dendrites of a sensory neuron",
+      "isCorrect": false,
+      "misconception": "A sensory-neuron depolarizing event is being applied to a synaptically inhibited motor cell.",
+      "explanation": "Generator potentials develop in the dendrites of unipolar sensory neurons to initiate afferent firing; the hyperpolarizing synaptic change in this motor neuron is an IPSP."
+    },
+    {
+      "label": "B",
+      "text": "An excitatory postsynaptic potential moving the cell toward threshold",
+      "isCorrect": false,
+      "misconception": "The excitatory category is being assigned to a hyperpolarizing event.",
+      "explanation": "An EPSP depolarizes the cell toward threshold, typically via Na+ or Ca2+ entry; the chloride-driven hyperpolarization here is an IPSP."
+    },
+    {
+      "label": "C",
+      "text": "A receptor potential generated in a specialized sensory cell",
+      "isCorrect": false,
+      "misconception": "A sensory transduction event is being confused with synaptic input to a neuron.",
+      "explanation": "Receptor potentials occur in specialized receptor cells such as photoreceptors; a postsynaptic response to neurotransmitter from another neuron is a postsynaptic potential — inhibitory here."
+    },
+    {
+      "label": "D",
+      "text": "An action potential truncated by the opening of chloride channels",
+      "isCorrect": false,
+      "misconception": "A graded, subthreshold change is being mistaken for a truncated spike.",
+      "explanation": "Action potentials are all-or-none depolarizing spikes; the small, graded hyperpolarization recorded here never crossed threshold and is by definition an IPSP."
+    },
+    {
+      "label": "E",
+      "text": "An inhibitory postsynaptic potential moving the cell away from threshold",
+      "isCorrect": true,
+      "misconception": "None; hyperpolarizing postsynaptic changes are inhibitory.",
+      "explanation": "A hyperpolarizing graded potential at a synapse is an inhibitory postsynaptic potential (IPSP) because it carries the membrane voltage farther from threshold; Cl- entry or K+ exit produces it."
+    }
+  ],
+  "context": "Learning objective: classify postsynaptic potentials. Depolarizing postsynaptic changes (EPSPs) move the membrane toward threshold; hyperpolarizing changes (IPSPs), from Cl- entry or K+ exit, move it away.",
+  "cite": "openstax-anatomy-physiology#neuro-epsp-ipsp",
+  "publicUsmle": {
+    "schemaVersion": 1,
+    "origin": "generated",
+    "itemText": {
+      "licence": "CC-BY-4.0",
+      "attribution": "MD3 contributors"
+    },
+    "evidence": {
+      "kind": "passage",
+      "sourceId": "openstax-anatomy-physiology",
+      "passageId": "neuro-epsp-ipsp",
+      "licence": {
+        "cls": "foss",
+        "id": "cc-by-4.0"
+      }
+    },
+    "media": {
+      "kind": "asset",
+      "assetId": "neuron-ap-v1",
+      "job": "trace",
+      "showWhen": "after-reveal",
+      "licence": {
+        "cls": "foss",
+        "id": "cc-by-4.0"
+      },
+      "attribution": "MD3 contributors",
+      "contentHash": "sha256:41648c5b0091329b481398598463e273058e8121c5de902621e265d09794a292"
+    }
+  },
+  "imageUrl": "/figures/usmle/step1/neuron-ap-v1.svg",
+  "imageCaption": "Neuron RMP, threshold AP, refractory period, saltatory conduction, EPSP/IPSP summation."
+}

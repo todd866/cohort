@@ -1,0 +1,86 @@
+{
+  "id": "bank:usmle-step1:pharm-furosemide-uses:v1",
+  "rotation": "usmle-step1-open",
+  "topics": [
+    "furosemide",
+    "diuretic",
+    "blood pressure"
+  ],
+  "moduleNodes": [
+    "usmle/step1",
+    "usmle/step1/pharmacology"
+  ],
+  "questionType": "interpretation",
+  "difficulty": "easy",
+  "stem": "A medication list is reviewed during treatment of high blood pressure. Which listed drug has this source-backed indication?",
+  "options": [
+    {
+      "label": "A",
+      "text": "Amoxicillin",
+      "isCorrect": false,
+      "misconception": "Selects an antibacterial drug rather than the cited antihypertensive medication.",
+      "explanation": "The cited passage names furosemide, not amoxicillin, as a medication used to treat high blood pressure."
+    },
+    {
+      "label": "B",
+      "text": "Oseltamivir",
+      "isCorrect": false,
+      "misconception": "Selects an antiviral drug rather than the cited antihypertensive medication.",
+      "explanation": "The source-backed high-blood-pressure indication in this item belongs to furosemide, not oseltamivir."
+    },
+    {
+      "label": "C",
+      "text": "Furosemide",
+      "isCorrect": true,
+      "misconception": "Recognizes the exact drug-indication pair stated by the source.",
+      "explanation": "MedlinePlus states that furosemide is used alone or with other medications to treat high blood pressure."
+    },
+    {
+      "label": "D",
+      "text": "Ondansetron",
+      "isCorrect": false,
+      "misconception": "Selects an antiemetic rather than the cited antihypertensive medication.",
+      "explanation": "The checked passage supports furosemide for high blood pressure; it does not identify ondansetron."
+    },
+    {
+      "label": "E",
+      "text": "Acetaminophen",
+      "isCorrect": false,
+      "misconception": "Selects an analgesic rather than the cited antihypertensive medication.",
+      "explanation": "The checked passage names furosemide for high blood pressure; it does not identify acetaminophen."
+    }
+  ],
+  "context": "Learning objective: identify the source-backed furosemide indication. MedlinePlus states that furosemide is used—alone or with other drugs—to treat high blood pressure; this excerpt does not establish an additional indication.",
+  "cite": "medlineplus-furosemide#furosemide-uses",
+  "publicUsmle": {
+    "schemaVersion": 1,
+    "origin": "generated",
+    "itemText": {
+      "licence": "CC-BY-4.0",
+      "attribution": "MD3 contributors"
+    },
+    "evidence": {
+      "kind": "passage",
+      "sourceId": "medlineplus-furosemide",
+      "passageId": "furosemide-uses",
+      "licence": {
+        "cls": "foss",
+        "id": "us-gov"
+      }
+    },
+    "media": {
+      "kind": "asset",
+      "assetId": "pharm-drug-classes-v1",
+      "job": "compare-table",
+      "showWhen": "after-reveal",
+      "licence": {
+        "cls": "foss",
+        "id": "cc-by-4.0"
+      },
+      "attribution": "MD3 contributors",
+      "contentHash": "sha256:0660ff11235451eff9a2718dd975d64fa61483b220682b17bd82c8050fd4bceb"
+    }
+  },
+  "imageUrl": "/figures/usmle/step1/pharm-drug-classes-v1.svg",
+  "imageCaption": "High-yield FOSS drug-class map from MedlinePlus labels."
+}

@@ -1,0 +1,87 @@
+{
+  "id": "bank:usmle-step1:he-buffy-coat-composition:v1",
+  "rotation": "usmle-step1-open",
+  "topics": [
+    "buffy coat",
+    "leukocytes",
+    "platelets",
+    "centrifugation"
+  ],
+  "moduleNodes": [
+    "usmle/step1",
+    "usmle/step1/hematology"
+  ],
+  "questionType": "mechanism",
+  "difficulty": "easy",
+  "stem": "A 29-year-old laboratory technician centrifuges a blood sample and observes three layers: a red layer at the bottom, a thin pale middle layer making up less than 1 percent of the volume, and straw-colored fluid on top.\n\nWhich of the following is the composition of the pale middle layer?",
+  "options": [
+    {
+      "label": "A",
+      "text": "Erythrocytes and reticulocytes",
+      "isCorrect": false,
+      "misconception": "The densest cells are being placed in the middle layer.",
+      "explanation": "Erythrocytes are the heaviest elements and settle at the very bottom of the tube; the pale middle buffy coat contains leukocytes and platelets."
+    },
+    {
+      "label": "B",
+      "text": "Plasma proteins and dissolved gases",
+      "isCorrect": false,
+      "misconception": "The top fluid layer is being confused with the middle cellular layer.",
+      "explanation": "Plasma — the straw-colored fluid with its proteins and solutes — forms the top layer above the buffy coat, not the pale middle band."
+    },
+    {
+      "label": "C",
+      "text": "Leukocytes and platelets",
+      "isCorrect": true,
+      "misconception": "None; the buffy coat holds white cells and platelets.",
+      "explanation": "Between the settled erythrocytes and the plasma sits the buffy coat, a pale thin layer of white blood cells (leukocytes) and platelets (thrombocytes) that normally constitutes less than 1 percent of a blood sample."
+    },
+    {
+      "label": "D",
+      "text": "Fibrinogen and clotting factors",
+      "isCorrect": false,
+      "misconception": "Soluble clotting proteins are being treated as a separate spun layer.",
+      "explanation": "Clotting factors remain dissolved in the plasma layer above; the visible pale band between red cells and plasma is the cellular buffy coat."
+    },
+    {
+      "label": "E",
+      "text": "Megakaryocytes and stem cells",
+      "isCorrect": false,
+      "misconception": "Marrow-resident precursors are being imagined in peripheral blood.",
+      "explanation": "Megakaryocytes remain in bone marrow; circulating blood's middle layer contains only leukocytes and the platelet fragments megakaryocytes release."
+    }
+  ],
+  "context": "Learning objective: read a spun blood sample. Centrifugation separates blood by density: erythrocytes at the bottom (about 45 percent, the hematocrit), a thin buffy coat of leukocytes and platelets (under 1 percent) in the middle, and straw-colored plasma on top.",
+  "cite": "openstax-anatomy-physiology#he-buffy-coat-composition",
+  "publicUsmle": {
+    "schemaVersion": 1,
+    "origin": "generated",
+    "itemText": {
+      "licence": "CC-BY-4.0",
+      "attribution": "MD3 contributors"
+    },
+    "evidence": {
+      "kind": "passage",
+      "sourceId": "openstax-anatomy-physiology",
+      "passageId": "he-buffy-coat-composition",
+      "licence": {
+        "cls": "foss",
+        "id": "cc-by-4.0"
+      }
+    },
+    "media": {
+      "kind": "asset",
+      "assetId": "blood-components-v1",
+      "job": "anatomy",
+      "showWhen": "after-reveal",
+      "licence": {
+        "cls": "foss",
+        "id": "cc-by-4.0"
+      },
+      "attribution": "MD3 contributors",
+      "contentHash": "sha256:3856cf48a8b6b7e73474650774b40f575f9ee1219bc0ebdd14e3df08c05e55b9"
+    }
+  },
+  "imageUrl": "/figures/usmle/step1/blood-components-v1.svg",
+  "imageCaption": "Hematocrit, buffy coat, albumin, platelets, monocyte-macrophage, T cells, EPO, iron deficiency, ABO."
+}

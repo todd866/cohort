@@ -1,0 +1,86 @@
+{
+  "id": "bank:usmle-step1:he-platelet-megakaryocyte:v1",
+  "rotation": "usmle-step1-open",
+  "topics": [
+    "platelet",
+    "megakaryocyte",
+    "thrombopoietin"
+  ],
+  "moduleNodes": [
+    "usmle/step1",
+    "usmle/step1/hematology"
+  ],
+  "questionType": "mechanism",
+  "difficulty": "easy",
+  "stem": "A 45-year-old man with bone marrow failure has a platelet count far below normal. His marrow biopsy shows a marked reduction in large cells with lobed nuclei measuring 50-100 micrometers.\n\nPlatelets are produced by fragmentation of which of the following cells?",
+  "options": [
+    {
+      "label": "A",
+      "text": "Reticulocytes",
+      "isCorrect": false,
+      "misconception": "An immature red cell is being treated as the platelet source.",
+      "explanation": "Reticulocytes are immature erythrocytes that mature into red blood cells; platelets bud off megakaryocyte cytoplasm instead."
+    },
+    {
+      "label": "B",
+      "text": "Monocytes",
+      "isCorrect": false,
+      "misconception": "The macrophage precursor is being confused with the platelet precursor.",
+      "explanation": "Monocytes differentiate into macrophages and dendritic cells in tissues; they do not fragment into platelets."
+    },
+    {
+      "label": "C",
+      "text": "Megakaryocytes",
+      "isCorrect": true,
+      "misconception": "None; platelets are megakaryocyte cytoplasmic fragments.",
+      "explanation": "A platelet is not a cell but a fragment of the cytoplasm of a megakaryocyte surrounded by plasma membrane; each megakaryocyte releases 2,000-3,000 platelets, and thrombopoietin from the kidneys and liver stimulates their production."
+    },
+    {
+      "label": "D",
+      "text": "Plasma cells",
+      "isCorrect": false,
+      "misconception": "An antibody-secreting cell is being cast as a platelet source.",
+      "explanation": "Plasma cells are differentiated B lymphocytes that secrete antibodies; platelets arise only from megakaryocyte cytoplasm."
+    },
+    {
+      "label": "E",
+      "text": "Endothelial cells",
+      "isCorrect": false,
+      "misconception": "Vessel-lining cells are being treated as a formed-element source.",
+      "explanation": "Endothelial cells line blood vessels and contribute von Willebrand factor, but platelets are fragments of marrow megakaryocytes."
+    }
+  ],
+  "context": "Learning objective: derive platelets. Platelets are membrane-bound cytoplasmic fragments of megakaryocytes — large (50-100 micrometer) marrow cells with lobed nuclei — released in thousands per cell. Thrombopoietin, secreted by the kidneys and liver, stimulates megakaryoblast proliferation.",
+  "cite": "openstax-anatomy-physiology#he-platelet-megakaryocyte",
+  "publicUsmle": {
+    "schemaVersion": 1,
+    "origin": "generated",
+    "itemText": {
+      "licence": "CC-BY-4.0",
+      "attribution": "MD3 contributors"
+    },
+    "evidence": {
+      "kind": "passage",
+      "sourceId": "openstax-anatomy-physiology",
+      "passageId": "he-platelet-megakaryocyte",
+      "licence": {
+        "cls": "foss",
+        "id": "cc-by-4.0"
+      }
+    },
+    "media": {
+      "kind": "asset",
+      "assetId": "blood-components-v1",
+      "job": "anatomy",
+      "showWhen": "after-reveal",
+      "licence": {
+        "cls": "foss",
+        "id": "cc-by-4.0"
+      },
+      "attribution": "MD3 contributors",
+      "contentHash": "sha256:3856cf48a8b6b7e73474650774b40f575f9ee1219bc0ebdd14e3df08c05e55b9"
+    }
+  },
+  "imageUrl": "/figures/usmle/step1/blood-components-v1.svg",
+  "imageCaption": "Hematocrit, buffy coat, albumin, platelets, monocyte-macrophage, T cells, EPO, iron deficiency, ABO."
+}

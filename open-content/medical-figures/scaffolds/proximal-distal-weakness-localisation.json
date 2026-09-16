@@ -1,0 +1,54 @@
+{
+  "schemaVersion": 1,
+  "figureId": "proximal-distal-weakness-localisation",
+  "kind": "conceptual",
+  "created": "2026-09-10",
+  "timing": "retrospective specification of previously generated candidate",
+  "sourceFacts": [
+    {
+      "fact": "Dystrophinopathies characteristically cause greater proximal than distal weakness.",
+      "sourceUrls": [
+        "https://www.ncbi.nlm.nih.gov/books/NBK1119/"
+      ]
+    },
+    {
+      "fact": "Describing anatomical weakness distribution helps clinical localisation.",
+      "sourceUrls": [
+        "https://www.ncbi.nlm.nih.gov/books/NBK1119/"
+      ]
+    }
+  ],
+  "clinicalSources": [
+    {
+      "title": "GeneReviews: Dystrophinopathies",
+      "url": "https://www.ncbi.nlm.nih.gov/books/NBK1119/"
+    }
+  ],
+  "nodes": [
+    "proximal body map",
+    "distal body map"
+  ],
+  "edges": [],
+  "invariants": [
+    "Both shoulder and hip regions highlighted on proximal map.",
+    "Both hands/forearms and feet/lower legs highlighted on distal map; no organs or muscles exposed."
+  ],
+  "expectedLabels": [
+    "Proximal pattern",
+    "Distal pattern",
+    "Shoulder and hip girdles",
+    "Hands and feet",
+    "Where is the weakness?",
+    "Distribution helps localise the problem"
+  ],
+  "layoutSpecification": "Two full-body front-view simple modest child silhouettes in fitted plain T-shirt and leggings, symmetrical neutral stance and flat colours. Do not show skin muscles or organs. Left labelled 'Proximal pattern': semi-transparent teal highlights on BOTH shoulder/upper-arm areas and BOTH hips/upper-thigh areas, hands and feet unhighlighted. Right labelled 'Distal pattern': ochre highlights on BOTH forearm/hand and lower-leg/foot areas, shoulder and hips unhighlighted. Fine callouts left 'Shoulder and hip girdles'; right 'Hands and feet'. Title 'Where is the weakness?'. Bottom 'Distribution helps localise the problem'. No claim that any pattern proves a diagnosis, no disability caricature, no naked children.",
+  "forbiddenAnatomy": [
+    "No claimed anatomical reconstruction, diagnostic image, histology or literal neuroanatomical pathway",
+    "No organ cutaways or invented internal spatial relationships"
+  ],
+  "validation": {
+    "sourceFacts": "Checked against listed primary clinical sources during original topic review",
+    "pixelChecks": "Visually inspected: proximal highlights cover bilateral shoulders and hip/thigh girdles, distal highlights bilateral forearms/hands and lower legs/feet. Labels match regions; modest clothing and neutral poses avoid misleading diagnostic appearance.",
+    "status": "self-reviewed; independent review pending"
+  }
+}

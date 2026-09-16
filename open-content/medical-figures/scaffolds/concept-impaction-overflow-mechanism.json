@@ -1,0 +1,84 @@
+{
+  "schemaVersion": 1,
+  "id": "concept-impaction-overflow-mechanism",
+  "kind": "conceptual",
+  "sourceFacts": [
+    {
+      "fact": "Chronic constipation may produce faecal impaction.",
+      "sourceUrls": [
+        "https://www.healthychildren.org/English/health-issues/conditions/emotional-problems/Pages/Soiling-Encopresis.aspx",
+        "https://www.nhs.uk/baby/health/constipation-in-children/"
+      ]
+    },
+    {
+      "fact": "Softer or liquid stool can leak around retained hard stool, causing overflow soiling.",
+      "sourceUrls": [
+        "https://www.healthychildren.org/English/health-issues/conditions/emotional-problems/Pages/Soiling-Encopresis.aspx",
+        "https://www.nhs.uk/baby/health/constipation-in-children/"
+      ]
+    },
+    {
+      "fact": "Children may be unaware of the leakage.",
+      "sourceUrls": [
+        "https://www.healthychildren.org/English/health-issues/conditions/emotional-problems/Pages/Soiling-Encopresis.aspx",
+        "https://www.nhs.uk/baby/health/constipation-in-children/"
+      ]
+    }
+  ],
+  "nodes": [
+    {
+      "id": "1",
+      "label": "Hard stool retained"
+    },
+    {
+      "id": "2",
+      "label": "Softer stool leaks around it"
+    },
+    {
+      "id": "3",
+      "label": "Overflow soiling"
+    }
+  ],
+  "edges": [
+    {
+      "from": "1",
+      "to": "2",
+      "meaning": "overflow mechanism"
+    },
+    {
+      "from": "2",
+      "to": "3",
+      "meaning": "clinical consequence"
+    }
+  ],
+  "labels": [
+    "Soiling can occur despite retained stool",
+    "Hard stool retained",
+    "Softer stool leaks around it",
+    "Overflow soiling",
+    "Conceptual schematic • Not anatomy"
+  ],
+  "layout": "Three wide cards linked left-to-right with two arrows. First has a stack of ochre cubes marked Retained. Second shows the same stack on an OPEN rectangular board with a thin blue PAGE arrow traveling around the cubes to illustrate bypass; no tube encloses the board. Label board Abstract bypass model. Third shows three blue drop tokens and a small label Often unnoticed. The board has square corners and is plainly a tabletop logic model, never a colon or rectum. Bottom note: Leakage does not exclude constipation. No children, underwear, anus, intestine, pelvis or realistic stool.",
+  "forbiddenAnatomy": [
+    "organs",
+    "body silhouettes",
+    "tissue cross-sections",
+    "cells",
+    "tubules",
+    "vessels",
+    "clinical photographs",
+    "diagnostic scans"
+  ],
+  "validation": {
+    "sourceStatus": "checked",
+    "structureStatus": "verified",
+    "requiredChecks": [
+      "Three nodes and two main arrows",
+      "Bypass travels around retained cubes, not through them",
+      "Bypass board open, rectangular and nonanatomical",
+      "No body, colon or realistic faeces"
+    ],
+    "clinicalReviewStatus": "pending",
+    "pixelChecks": "Pixel check: three cards and two main arrows; open rectangular tabletop board and blue route around retained cubes explain bypass. No enclosing bowel tube, pelvic anatomy or faecal photorealism. Often unnoticed and constipation qualification visible. Independent and clinical review pending."
+  }
+}

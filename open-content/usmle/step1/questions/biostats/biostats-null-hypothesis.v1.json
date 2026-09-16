@@ -1,0 +1,84 @@
+{
+  "id": "bank:usmle-step1:biostats-null-hypothesis:v1",
+  "rotation": "usmle-step1-open",
+  "topics": [
+    "hypothesis testing"
+  ],
+  "moduleNodes": [
+    "usmle/step1",
+    "usmle/step1/biostats"
+  ],
+  "questionType": "interpretation",
+  "difficulty": "easy",
+  "stem": "A trial compares the mean change in a measurement between a new intervention and a control. The planned statistical test evaluates whether the population means differ. Which of the following statements is the null hypothesis for this comparison?",
+  "options": [
+    {
+      "label": "A",
+      "text": "The intervention produces a larger population mean change",
+      "isCorrect": false,
+      "explanation": "A larger mean change is a directional difference, rather than the no-difference claim being tested. It describes one possible alternative to equal population mean changes.",
+      "misconception": "Substitutes a directional increase for the population no-difference claim."
+    },
+    {
+      "label": "B",
+      "text": "The intervention produces a smaller population mean change",
+      "isCorrect": false,
+      "explanation": "A smaller mean change is also a directional difference. The null hypothesis for the stated comparison specifies equal population mean changes rather than choosing either direction.",
+      "misconception": "Substitutes a directional decrease for equality of population means."
+    },
+    {
+      "label": "C",
+      "text": "The difference in population mean changes is nonzero",
+      "isCorrect": false,
+      "explanation": "A nonzero difference is the two-sided alternative hypothesis for this comparison. The null retains equality of the population mean changes, corresponding to a difference of zero.",
+      "misconception": "Confuses the two-sided alternative with the no-difference null."
+    },
+    {
+      "label": "D",
+      "text": "The difference in population mean changes is exactly zero",
+      "isCorrect": true,
+      "explanation": "For this comparison, the null hypothesis states that the two population mean changes are equal. A difference of zero expresses that no-difference claim on the measurement scale.",
+      "misconception": "No misconception: this comparison tests a zero population mean difference."
+    },
+    {
+      "label": "E",
+      "text": "The difference in sample mean changes is exactly zero",
+      "isCorrect": false,
+      "explanation": "This statement concerns the particular sample rather than the population claim being tested. The null hypothesis is equality of population means, not a requirement that observed sample means match.",
+      "misconception": "Confuses a population hypothesis with equality of observed sample means."
+    }
+  ],
+  "context": "Learning objective: Distinguish a population no-difference hypothesis from the observed difference in a trial sample.\n\nFor this comparison, the null hypothesis states that the two population mean changes are equal. A difference of zero expresses that no-difference claim on the measurement scale.",
+  "cite": "openstax-introductory-statistics#null-hypothesis",
+  "publicUsmle": {
+    "schemaVersion": 1,
+    "origin": "generated",
+    "itemText": {
+      "licence": "CC-BY-4.0",
+      "attribution": "MD3 contributors"
+    },
+    "evidence": {
+      "kind": "passage",
+      "sourceId": "openstax-introductory-statistics",
+      "passageId": "null-hypothesis",
+      "licence": {
+        "cls": "foss",
+        "id": "cc-by-4.0"
+      }
+    },
+    "media": {
+      "kind": "asset",
+      "assetId": "biostats-hypothesis-v1",
+      "job": "compare-table",
+      "showWhen": "after-reveal",
+      "licence": {
+        "cls": "foss",
+        "id": "cc-by-4.0"
+      },
+      "attribution": "MD3 contributors",
+      "contentHash": "sha256:23d629719dcff3486c0ec87a423d50118fe08ee981674117d9ac939c075c97b9"
+    }
+  },
+  "imageUrl": "/figures/usmle/step1/biostats-hypothesis-v1.svg",
+  "imageCaption": "Null hypothesis, independence, and sample space on one board."
+}

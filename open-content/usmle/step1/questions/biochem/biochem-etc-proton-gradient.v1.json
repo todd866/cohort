@@ -1,0 +1,85 @@
+{
+  "id": "bank:usmle-step1:biochem-etc-proton-gradient:v1",
+  "rotation": "usmle-step1-open",
+  "topics": [
+    "ETC",
+    "chemiosmosis"
+  ],
+  "moduleNodes": [
+    "usmle/step1",
+    "usmle/step1/biochem"
+  ],
+  "questionType": "mechanism",
+  "difficulty": "medium",
+  "stem": "During electron transport in mitochondria, what happens to protons that enables chemiosmotic ATP synthesis?",
+  "options": [
+    {
+      "label": "A",
+      "text": "They freely equilibrate across an unsealed outer membrane only",
+      "isCorrect": false,
+      "misconception": "Outer membrane is porous; the relevant barrier is the inner membrane.",
+      "explanation": "Complexes pump across the inner membrane."
+    },
+    {
+      "label": "B",
+      "text": "They diffuse into the nucleus to activate transcription",
+      "isCorrect": false,
+      "misconception": "No such ETC coupling.",
+      "explanation": "Nuclear signaling is separate."
+    },
+    {
+      "label": "C",
+      "text": "They are consumed as the carbon skeleton of glucose",
+      "isCorrect": false,
+      "misconception": "Protons are not incorporated into CO2 carbon.",
+      "explanation": "CO2 carbons come from substrate carbons."
+    },
+    {
+      "label": "D",
+      "text": "They are pumped from the matrix to the intermembrane space",
+      "isCorrect": true,
+      "misconception": "None; proton pumping creates the intermembrane gradient.",
+      "explanation": "OpenStax: protons are pumped from the mitochondrial matrix to the intermembrane space."
+    },
+    {
+      "label": "E",
+      "text": "They are stored inside ATP before hydrolysis",
+      "isCorrect": false,
+      "misconception": "ATP stores phosphoryl transfer energy, not a proton pool.",
+      "explanation": "The proton gradient is across the membrane."
+    }
+  ],
+  "context": "Learning objective: ETC pumps protons out of the matrix.",
+  "cite": "openstax-biology-2e#etc-protons-pumped",
+  "publicUsmle": {
+    "schemaVersion": 1,
+    "origin": "generated",
+    "itemText": {
+      "licence": "CC-BY-4.0",
+      "attribution": "MD3 contributors"
+    },
+    "evidence": {
+      "kind": "passage",
+      "sourceId": "openstax-biology-2e",
+      "passageId": "etc-protons-pumped",
+      "licence": {
+        "cls": "foss",
+        "id": "cc-by-4.0"
+      }
+    },
+    "media": {
+      "kind": "asset",
+      "assetId": "cellular-respiration-v1",
+      "job": "pathway",
+      "showWhen": "after-reveal",
+      "licence": {
+        "cls": "foss",
+        "id": "cc-by-4.0"
+      },
+      "attribution": "MD3 contributors",
+      "contentHash": "sha256:28ae7f955e1024135e9335f39b761f79292b1cc679baed71478eb3efc31f99e5"
+    }
+  },
+  "imageUrl": "/figures/usmle/step1/cellular-respiration-v1.svg",
+  "imageCaption": "Cellular respiration: glycolysis -> pyruvate -> acetyl-CoA -> citric cycle carriers -> ETC/ATP synthase; O2 terminal acceptor; fermentation regenerates NAD+."
+}

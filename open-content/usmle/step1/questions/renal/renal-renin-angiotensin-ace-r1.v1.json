@@ -1,0 +1,73 @@
+{
+  "id": "bank:usmle-step1:renal-renin-angiotensin-ace-r1:v1",
+  "rotation": "usmle-step1-open",
+  "ladderId": "renin-angiotensin-ace",
+  "difficulty": "easy",
+  "topics": [
+    "renin-angiotensin",
+    "ACE",
+    "ladder:renin-angiotensin-ace"
+  ],
+  "moduleNodes": [
+    "usmle/step1",
+    "usmle/step1/renal"
+  ],
+  "questionType": "mechanism",
+  "stem": "Angiotensin I becomes biologically active after cleavage by which enzyme?",
+  "options": [
+    {
+      "label": "A",
+      "text": "Renin enzyme acting on circulating angiotensinogen",
+      "isCorrect": false,
+      "misconception": "The angiotensinogen-cleaving enzyme is being confused with ACE.",
+      "explanation": "Renin produces angiotensin I from angiotensinogen; ACE converts angiotensin I to II."
+    },
+    {
+      "label": "B",
+      "text": "Pulmonary ACE turning angiotensin I into form II",
+      "isCorrect": true,
+      "misconception": "None; ACE from the lungs converts angiotensin I to active angiotensin II.",
+      "explanation": "Angiotensin I is converted to angiotensin II by ACE from the lungs."
+    },
+    {
+      "label": "C",
+      "text": "Adrenal enzyme synthesizing aldosterone steroid hormone",
+      "isCorrect": false,
+      "misconception": "A downstream steroid enzyme is being credited with I→II conversion.",
+      "explanation": "Aldosterone synthase makes aldosterone; ACE performs the I→II conversion."
+    },
+    {
+      "label": "D",
+      "text": "Kallikrein enzyme generating angiotensin-like kinins",
+      "isCorrect": false,
+      "misconception": "The kinin system is being confused with ACE conversion.",
+      "explanation": "Kallikrein is not the enzyme that converts angiotensin I to angiotensin II."
+    },
+    {
+      "label": "E",
+      "text": "Pepsin enzyme digesting dietary angiotensin peptides",
+      "isCorrect": false,
+      "misconception": "A digestive protease is being substituted for pulmonary ACE.",
+      "explanation": "Pepsin digests dietary protein; ACE in the lungs activates angiotensin II."
+    }
+  ],
+  "context": "Learning objective: identify ACE from the lungs as the enzyme converting angiotensin I to II.",
+  "cite": "openstax-anatomy-physiology#renal-renin-angiotensin-ace",
+  "publicUsmle": {
+    "schemaVersion": 1,
+    "origin": "generated",
+    "itemText": {
+      "licence": "CC-BY-4.0",
+      "attribution": "MD3 contributors"
+    },
+    "evidence": {
+      "kind": "passage",
+      "sourceId": "openstax-anatomy-physiology",
+      "passageId": "renal-renin-angiotensin-ace",
+      "licence": {
+        "cls": "foss",
+        "id": "cc-by-4.0"
+      }
+    }
+  }
+}

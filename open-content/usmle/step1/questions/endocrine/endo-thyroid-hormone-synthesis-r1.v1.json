@@ -1,0 +1,73 @@
+{
+  "id": "bank:usmle-step1:endo-thyroid-hormone-synthesis-r1:v1",
+  "rotation": "usmle-step1-open",
+  "ladderId": "thyroid-hormone-synthesis",
+  "topics": [
+    "thyroid hormone synthesis",
+    "thyroglobulin",
+    "ladder:thyroid-hormone-synthesis"
+  ],
+  "moduleNodes": [
+    "usmle/step1",
+    "usmle/step1/endocrine"
+  ],
+  "questionType": "mechanism",
+  "difficulty": "easy",
+  "stem": "During thyroid hormone synthesis in the follicle colloid, iodine is first linked to which of the following amino acid residues in thyroglobulin?",
+  "options": [
+    {
+      "label": "A",
+      "text": "Tryptophan residues",
+      "isCorrect": false,
+      "misconception": "An amine-hormone precursor amino acid is being substituted for the thyroid substrate.",
+      "explanation": "Tryptophan is a precursor for serotonin and melatonin; thyroid hormones are built from iodinated tyrosines in thyroglobulin."
+    },
+    {
+      "label": "B",
+      "text": "Tyrosine residues",
+      "isCorrect": true,
+      "misconception": "None; peroxidase iodinates tyrosines in thyroglobulin.",
+      "explanation": "In the colloid, peroxidase enzymes link iodine to tyrosine amino acids in thyroglobulin, forming intermediaries that couple to T3 and T4."
+    },
+    {
+      "label": "C",
+      "text": "Phenylalanine residues",
+      "isCorrect": false,
+      "misconception": "A catecholamine precursor is being confused with the thyroid substrate.",
+      "explanation": "Phenylalanine feeds catecholamine synthesis; thyroid hormones require iodinated tyrosines, not phenylalanines."
+    },
+    {
+      "label": "D",
+      "text": "Histidine residues",
+      "isCorrect": false,
+      "misconception": "An unrelated amino acid is being named as the iodination site.",
+      "explanation": "Histidine is not the substrate for thyroid peroxidase; iodination occurs on tyrosine residues of thyroglobulin."
+    },
+    {
+      "label": "E",
+      "text": "Glycine residues",
+      "isCorrect": false,
+      "misconception": "A structurally simple amino acid is being substituted for tyrosine.",
+      "explanation": "Glycine lacks the aromatic ring needed for iodinated thyroid hormone intermediaries; tyrosine is the iodination target."
+    }
+  ],
+  "context": "Learning objective: name the iodination substrate in thyroglobulin. Peroxidase links iodine to tyrosine residues in colloid thyroglobulin; coupled intermediaries form T3 and T4.",
+  "cite": "openstax-anatomy-physiology#endo-thyroid-hormone-synthesis",
+  "publicUsmle": {
+    "schemaVersion": 1,
+    "origin": "generated",
+    "itemText": {
+      "licence": "CC-BY-4.0",
+      "attribution": "MD3 contributors"
+    },
+    "evidence": {
+      "kind": "passage",
+      "sourceId": "openstax-anatomy-physiology",
+      "passageId": "endo-thyroid-hormone-synthesis",
+      "licence": {
+        "cls": "foss",
+        "id": "cc-by-4.0"
+      }
+    }
+  }
+}

@@ -1,0 +1,71 @@
+{
+  "id": "bank:usmle-step1:exp26-b-metabolic-alkalosis-compensation:v1",
+  "rotation": "usmle-step1-open",
+  "topics": [
+    "renal",
+    "metabolic-alkalosis-compensation"
+  ],
+  "moduleNodes": [
+    "usmle/step1",
+    "usmle/step1/renal"
+  ],
+  "questionType": "interpretation",
+  "difficulty": "medium",
+  "stem": "A patient has a primary metabolic alkalosis after losing gastric acid. The respiratory response is monitored while the primary loss is corrected. Which of the following responses represents the expected compensation for the initial metabolic disturbance?",
+  "options": [
+    {
+      "text": "Limited slowing of breathing with carbon dioxide elimination",
+      "explanation": "The rate direction is appropriate, but the carbon dioxide consequence is reversed. Slower breathing in this compensatory pathway conserves rather than promotes removal of carbon dioxide.",
+      "isCorrect": false,
+      "label": "A",
+      "misconception": "Pairs compensatory slowing of breathing with carbon dioxide loss instead of conservation."
+    },
+    {
+      "text": "Marked acceleration of breathing with carbon dioxide conservation",
+      "explanation": "The paired changes do not match the compensatory respiratory pathway. Conservation during metabolic compensation is linked to a decrease rather than an increase in respiratory rate.",
+      "isCorrect": false,
+      "label": "B",
+      "misconception": "Pairs carbon dioxide conservation with respiratory acceleration instead of the expected limited slowing."
+    },
+    {
+      "text": "Complete cessation of breathing with carbon dioxide conservation",
+      "explanation": "The compensation is limited hypoventilation, not complete cessation. Equating a compensatory reduction in rate with absent breathing substantially overstates the expected physiological response.",
+      "isCorrect": false,
+      "label": "C",
+      "misconception": "Equates limited compensatory hypoventilation with complete cessation of breathing."
+    },
+    {
+      "text": "Limited slowing of breathing with carbon dioxide conservation",
+      "explanation": "Respiratory compensation for metabolic alkalosis involves reduced rate and carbon dioxide conservation. The response is limited hypoventilation rather than unrestricted suppression of breathing.",
+      "isCorrect": true,
+      "label": "D",
+      "misconception": "No misconception: limited slowing of breathing conserves carbon dioxide during compensation for metabolic alkalosis."
+    },
+    {
+      "text": "Marked acceleration of breathing with carbon dioxide loss",
+      "explanation": "Increasing carbon dioxide elimination is the compensatory direction for metabolic acidosis. It does not oppose the initial alkalotic disturbance caused by gastric acid loss.",
+      "isCorrect": false,
+      "label": "E",
+      "misconception": "Applies the carbon dioxide-eliminating response to metabolic acidosis to an initial alkalotic disturbance."
+    }
+  ],
+  "context": "Learning objective: Predict the direction and limited extent of respiratory compensation for metabolic alkalosis. Respiratory compensation for metabolic alkalosis involves reduced rate and carbon dioxide conservation. The response is limited hypoventilation rather than unrestricted suppression of breathing.",
+  "cite": "openstax-ap1-acid-base-disorders#respiratory-compensation-limit",
+  "publicUsmle": {
+    "schemaVersion": 1,
+    "origin": "generated",
+    "itemText": {
+      "licence": "CC-BY-4.0",
+      "attribution": "MD3 contributors"
+    },
+    "evidence": {
+      "kind": "passage",
+      "sourceId": "openstax-ap1-acid-base-disorders",
+      "passageId": "respiratory-compensation-limit",
+      "licence": {
+        "cls": "foss",
+        "id": "cc-by-4.0"
+      }
+    }
+  }
+}

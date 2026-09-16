@@ -1,0 +1,88 @@
+{
+  "id": "bank:usmle-step1:re-lh-surge-positive-feedback-r3:v1",
+  "rotation": "usmle-step1-open",
+  "ladderId": "lh-surge-positive-feedback",
+  "topics": [
+    "LH surge",
+    "positive feedback",
+    "ovulation",
+    "ladder:lh-surge-positive-feedback"
+  ],
+  "moduleNodes": [
+    "usmle/step1",
+    "usmle/step1/reproductive"
+  ],
+  "questionType": "mechanism",
+  "difficulty": "hard",
+  "stem": "A 29-year-old woman undergoing evaluation of ovulatory timing has serial plasma hormone measurements. Estrogen rises gradually, then reaches an extremely high sustained concentration. An experimental antagonist now prevents the anterior pituitary from switching its response to that estrogen signal. No large burst of luteinizing hormone or follicle-stimulating hormone occurs.\n\nWhich of the following reproductive events is most directly prevented by this intervention?",
+  "options": [
+    {
+      "label": "A",
+      "text": "Growth of the dominant follicle before the estrogen peak",
+      "isCorrect": false,
+      "misconception": "Places an upstream follicular event downstream of the blocked pituitary switch.",
+      "explanation": "A dominant follicle and its extremely high estrogen signal already exist before the intervention; the blocked LH surge normally acts afterward to produce ovulation."
+    },
+    {
+      "label": "B",
+      "text": "Production of estrogen by the dominant follicle",
+      "isCorrect": false,
+      "misconception": "Places an upstream estrogen signal downstream of the blocked pituitary response.",
+      "explanation": "The extremely high estrogen concentration already exists before the pituitary switch is blocked; the source places ovulation after the LH surge."
+    },
+    {
+      "label": "C",
+      "text": "Release of the dominant follicle at ovulation",
+      "isCorrect": true,
+      "misconception": "Recognizes ovulation as the downstream event that normally follows the blocked LH surge.",
+      "explanation": "The source states that extremely high estrogen triggers a pituitary switch and large LH burst, and that this LH surge leads to ovulation of the dominant follicle."
+    },
+    {
+      "label": "D",
+      "text": "Entry of estrogen into the systemic circulation",
+      "isCorrect": false,
+      "misconception": "Places the already measured upstream signal after the pituitary blockade.",
+      "explanation": "Systemic estrogen is already extremely high in the stem; the blocked sequence is the pituitary burst followed by ovulation."
+    },
+    {
+      "label": "E",
+      "text": "Measurement of estrogen in the plasma sample",
+      "isCorrect": false,
+      "misconception": "Confuses observing the upstream signal with the reproductive event caused by the surge.",
+      "explanation": "The antagonist blocks a biological response, not laboratory measurement; the missing LH surge prevents its downstream event, ovulation."
+    }
+  ],
+  "context": "Learning objective: trace the LH-surge causal chain. Extremely high systemic estrogen triggers an anterior-pituitary switch and a large burst of LH and FSH. The LH surge then leads to ovulation, so blocking the switch prevents follicle release.",
+  "cite": "openstax-anatomy-physiology#re-lh-surge-positive-feedback",
+  "publicUsmle": {
+    "schemaVersion": 1,
+    "origin": "generated",
+    "itemText": {
+      "licence": "CC-BY-4.0",
+      "attribution": "MD3 contributors"
+    },
+    "evidence": {
+      "kind": "passage",
+      "sourceId": "openstax-anatomy-physiology",
+      "passageId": "re-lh-surge-positive-feedback",
+      "licence": {
+        "cls": "foss",
+        "id": "cc-by-4.0"
+      }
+    },
+    "media": {
+      "kind": "asset",
+      "assetId": "menstrual-cycle-v1",
+      "job": "pathway",
+      "showWhen": "after-reveal",
+      "licence": {
+        "cls": "foss",
+        "id": "cc-by-4.0"
+      },
+      "attribution": "MD3 contributors",
+      "contentHash": "sha256:1f2f31e3cc6b7d1aae996adcda7ba376144dd75d88f4ce4b587f3d815b83a12e"
+    }
+  },
+  "imageUrl": "/figures/usmle/step1/menstrual-cycle-v1.svg",
+  "imageCaption": "Menstrual cycle: follicular E, LH surge, luteal P; secretory endometrium; corpus luteum; menopause; oxytocin."
+}

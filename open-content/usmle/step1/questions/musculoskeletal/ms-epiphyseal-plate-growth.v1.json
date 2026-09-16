@@ -1,0 +1,86 @@
+{
+  "id": "bank:usmle-step1:ms-epiphyseal-plate-growth:v1",
+  "rotation": "usmle-step1-open",
+  "topics": [
+    "epiphyseal plate",
+    "bone growth",
+    "proliferative zone"
+  ],
+  "moduleNodes": [
+    "usmle/step1",
+    "usmle/step1/musculoskeletal"
+  ],
+  "questionType": "mechanism",
+  "difficulty": "medium",
+  "stem": "A 13-year-old boy grows 10 centimeters taller in one year. The lengthening of his femur during this period results mainly from cell division in which of the following zones?",
+  "options": [
+    {
+      "label": "A",
+      "text": "The calcified matrix nearest the diaphysis",
+      "isCorrect": false,
+      "misconception": "The zone where cells have died is being cast as the growth engine.",
+      "explanation": "In the zone of calcified matrix most chondrocytes are dead; capillaries and osteoblasts invade it to lay bone, but the divisions driving lengthening occur in the proliferative zone."
+    },
+    {
+      "label": "B",
+      "text": "The periosteal collar around the shaft",
+      "isCorrect": false,
+      "misconception": "A width-growth site is being cast as the length-growth site.",
+      "explanation": "The periosteum adds bone to the outer surface (appositional growth in diameter); length comes from the epiphyseal plate."
+    },
+    {
+      "label": "C",
+      "text": "The articular cartilage at the joint surface",
+      "isCorrect": false,
+      "misconception": "A friction-reducing surface is being cast as a growth plate.",
+      "explanation": "Articular cartilage covers the bone ends to reduce friction; it does not contribute to longitudinal growth."
+    },
+    {
+      "label": "D",
+      "text": "The proliferative zone of the epiphyseal plate",
+      "isCorrect": true,
+      "misconception": "None; chondrocyte division in the proliferative zone lengthens the bone.",
+      "explanation": "Longitudinal growth results from cellular division in the proliferative zone of the epiphyseal plate (plus maturation and hypertrophy of those cells); new bone is then added to the diaphysis."
+    },
+    {
+      "label": "E",
+      "text": "The red marrow of the epiphyseal cavity",
+      "isCorrect": false,
+      "misconception": "A blood-forming tissue is being cast as the growth engine.",
+      "explanation": "Red marrow produces blood cells; it plays no role in bone lengthening."
+    }
+  ],
+  "context": "Learning objective: how bones lengthen. The epiphyseal plate's proliferative zone divides, its cells mature and hypertrophy, the matrix calcifies, and osteoblasts add bone to the diaphysis. When chondrocyte proliferation ceases and bone replaces the plate (leaving the epiphyseal line), longitudinal growth stops.",
+  "cite": "openstax-anatomy-physiology#ms-epiphyseal-plate-growth",
+  "publicUsmle": {
+    "schemaVersion": 1,
+    "origin": "generated",
+    "itemText": {
+      "licence": "CC-BY-4.0",
+      "attribution": "MD3 contributors"
+    },
+    "evidence": {
+      "kind": "passage",
+      "sourceId": "openstax-anatomy-physiology",
+      "passageId": "ms-epiphyseal-plate-growth",
+      "licence": {
+        "cls": "foss",
+        "id": "cc-by-4.0"
+      }
+    },
+    "media": {
+      "kind": "asset",
+      "assetId": "bone-joint-v1",
+      "job": "anatomy",
+      "showWhen": "after-reveal",
+      "licence": {
+        "cls": "foss",
+        "id": "cc-by-4.0"
+      },
+      "attribution": "MD3 contributors",
+      "contentHash": "sha256:d6bdaa1be77da2de4584d0fd35531bbdae7c99a6de0aba2fdcef378c04efb218"
+    }
+  },
+  "imageUrl": "/figures/usmle/step1/bone-joint-v1.svg",
+  "imageCaption": "Compact vs spongy bone, epiphyseal plate, synovial joint structure/types."
+}

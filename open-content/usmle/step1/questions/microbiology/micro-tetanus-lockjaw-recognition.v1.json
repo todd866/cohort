@@ -1,0 +1,72 @@
+{
+  "id": "bank:usmle-step1:micro-tetanus-lockjaw-recognition:v1",
+  "rotation": "usmle-step1-open",
+  "topics": [
+    "tetanus",
+    "clinical recognition",
+    "skeletal muscle spasms"
+  ],
+  "moduleNodes": [
+    "usmle/step1",
+    "usmle/step1/microbiology"
+  ],
+  "questionType": "diagnosis",
+  "difficulty": "easy",
+  "stem": "Which of the following diagnoses is characterized by jaw and neck stiffness followed by rigidity and convulsive spasms of skeletal muscles?",
+  "options": [
+    {
+      "label": "A",
+      "text": "Generalized tetanus",
+      "isCorrect": true,
+      "misconception": "None; the passage describes the lockjaw-to-generalized-rigidity pattern of tetanus.",
+      "explanation": "The CDC passage characterizes tetanus by stiffness beginning in the jaw and neck, then becoming generalized with convulsive skeletal-muscle spasms."
+    },
+    {
+      "label": "B",
+      "text": "Respiratory diphtheria",
+      "isCorrect": false,
+      "misconception": "Another toxin-mediated bacterial illness is selected without matching the cited neuromuscular pattern.",
+      "explanation": "The jaw-first stiffness, generalized rigidity, and convulsive muscle spasms are the tetanus pattern described in the cited passage."
+    },
+    {
+      "label": "C",
+      "text": "Paroxysmal pertussis",
+      "isCorrect": false,
+      "misconception": "A bacterial syndrome with episodic symptoms is chosen, but the source's defining rigidity pattern is missed.",
+      "explanation": "The cited passage identifies this progression of muscle stiffness and spasms as tetanus."
+    },
+    {
+      "label": "D",
+      "text": "Paralytic poliomyelitis",
+      "isCorrect": false,
+      "misconception": "A neurologic infectious diagnosis is selected without following the jaw-to-generalized-rigidity sequence.",
+      "explanation": "The source directly characterizes tetanus by lockjaw, neck stiffness, generalized rigidity, and convulsive skeletal-muscle spasms."
+    },
+    {
+      "label": "E",
+      "text": "Meningococcal meningitis",
+      "isCorrect": false,
+      "misconception": "Neck involvement is over-weighted while the accompanying lockjaw, rigidity, and convulsive muscle spasms are not integrated.",
+      "explanation": "Neck stiffness alone is nonspecific; the complete source-grounded pattern in the stem identifies tetanus."
+    }
+  ],
+  "context": "Learning objective: recognize the characteristic tetanus syndrome. Muscle stiffness usually begins in the jaw and neck before becoming generalized, with rigidity and convulsive spasms of skeletal muscles.",
+  "cite": "cdc-pink-book-tetanus#tetanus-organism-exotoxin",
+  "publicUsmle": {
+    "schemaVersion": 1,
+    "origin": "generated",
+    "itemText": {
+      "licence": "CC-BY-4.0",
+      "attribution": "MD3 contributors"
+    },
+    "evidence": {
+      "kind": "passage",
+      "sourceId": "cdc-pink-book-tetanus",
+      "passageId": "tetanus-organism-exotoxin",
+      "licence": {
+        "cls": "foss",
+        "id": "us-gov"
+      }
+    }
+  }
+}

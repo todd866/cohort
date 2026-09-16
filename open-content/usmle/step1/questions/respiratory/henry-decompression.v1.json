@@ -1,0 +1,85 @@
+{
+  "id": "bank:usmle-step1:respiratory-henry-decompression:v1",
+  "rotation": "usmle-step1-open",
+  "topics": [
+    "Henry's law",
+    "gas solubility"
+  ],
+  "moduleNodes": [
+    "usmle/step1",
+    "usmle/step1/respiratory"
+  ],
+  "questionType": "mechanism",
+  "difficulty": "hard",
+  "stem": "A 29-year-old scuba diver ascends rapidly from a deep dive and develops joint pain and shortness of breath. During the dive, the elevated ambient pressure increased the amount of nitrogen dissolved in his blood and tissues; during the rapid ascent, that nitrogen came out of solution as bubbles.\n\nWhich of the following principles most directly explains why more nitrogen dissolved in his tissues at depth?",
+  "options": [
+    {
+      "label": "A",
+      "text": "The total pressure of a gas mixture equals the sum of the partial pressures of its components",
+      "isCorrect": false,
+      "misconception": "Dalton's law, which describes mixtures, is being used to explain dissolution.",
+      "explanation": "Dalton's law relates component pressures to total pressure in a gas mixture; it does not describe how much gas enters solution in a liquid."
+    },
+    {
+      "label": "B",
+      "text": "Gas pressure varies inversely with the volume of its container at constant temperature",
+      "isCorrect": false,
+      "misconception": "Boyle's law, which links gas pressure and volume, is being applied to solubility.",
+      "explanation": "Boyle's law describes the pressure-volume behavior of a trapped gas; the question concerns gas dissolving into blood and tissue, which is Henry's law."
+    },
+    {
+      "label": "C",
+      "text": "Once one oxygen molecule binds hemoglobin, additional molecules bind more readily",
+      "isCorrect": false,
+      "misconception": "Cooperative oxygen binding is being invoked for dissolved nitrogen.",
+      "explanation": "Hemoglobin cooperativity concerns oxygen carriage by erythrocytes, not the physical dissolution of nitrogen gas in body fluids."
+    },
+    {
+      "label": "D",
+      "text": "The quantity of gas that dissolves in a liquid rises with the partial pressure of that gas",
+      "isCorrect": true,
+      "misconception": "None; this is Henry's law, which governs gas solubility in liquids.",
+      "explanation": "Henry's law states that the amount of a specific gas that dissolves in a liquid is a function of its partial pressure; the greater the partial pressure, the more gas dissolves, as at depth."
+    },
+    {
+      "label": "E",
+      "text": "Surface tension at the air-liquid interface resists the expansion of the alveoli",
+      "isCorrect": false,
+      "misconception": "An alveolar mechanics principle is being applied to gas solubility.",
+      "explanation": "Surface tension affects alveolar inflation; nitrogen loading at depth follows the pressure-solubility relationship of Henry's law."
+    }
+  ],
+  "context": "Learning objective: distinguish Henry's law from Dalton's and Boyle's laws. The amount of gas dissolving in a liquid is a function of its partial pressure; greater partial pressure dissolves more gas.",
+  "cite": "openstax-anatomy-physiology#resp-henry-law",
+  "publicUsmle": {
+    "schemaVersion": 1,
+    "origin": "generated",
+    "itemText": {
+      "licence": "CC-BY-4.0",
+      "attribution": "MD3 contributors"
+    },
+    "evidence": {
+      "kind": "passage",
+      "sourceId": "openstax-anatomy-physiology",
+      "passageId": "resp-henry-law",
+      "licence": {
+        "cls": "foss",
+        "id": "cc-by-4.0"
+      }
+    },
+    "media": {
+      "kind": "asset",
+      "assetId": "gas-exchange-v1",
+      "job": "pathway",
+      "showWhen": "after-reveal",
+      "licence": {
+        "cls": "foss",
+        "id": "cc-by-4.0"
+      },
+      "attribution": "MD3 contributors",
+      "contentHash": "sha256:02374e7f286a7b66af9927c260658597c2328e958625e418f71e7885225080b8"
+    }
+  },
+  "imageUrl": "/figures/usmle/step1/gas-exchange-v1.svg",
+  "imageCaption": "V/Q, PO2 gradient, CO2 transport + chloride shift, chemoreceptors, brainstem, Dalton/Henry."
+}

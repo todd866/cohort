@@ -1,0 +1,85 @@
+{
+  "schemaVersion": 1,
+  "id": "concept-insulin-deficiency-ketone-cascade",
+  "kind": "conceptual",
+  "sourceFacts": [
+    {
+      "fact": "Insulin deficiency promotes fat breakdown and ketone production.",
+      "sourceUrls": [
+        "https://www.cdc.gov/diabetes/about/diabetic-ketoacidosis.html"
+      ]
+    },
+    {
+      "fact": "Excess ketone accumulation contributes to metabolic acidosis.",
+      "sourceUrls": [
+        "https://www.cdc.gov/diabetes/about/diabetic-ketoacidosis.html"
+      ]
+    }
+  ],
+  "nodes": [
+    {
+      "id": "1",
+      "label": "Insulin deficiency"
+    },
+    {
+      "id": "2",
+      "label": "Fat breakdown increases"
+    },
+    {
+      "id": "3",
+      "label": "Ketones accumulate"
+    },
+    {
+      "id": "4",
+      "label": "Metabolic acidosis"
+    }
+  ],
+  "edges": [
+    {
+      "from": "1",
+      "to": "2",
+      "meaning": "fuel mobilisation"
+    },
+    {
+      "from": "2",
+      "to": "3",
+      "meaning": "ketone production"
+    },
+    {
+      "from": "3",
+      "to": "4",
+      "meaning": "acid accumulation"
+    }
+  ],
+  "labels": [
+    "Insulin deficiency can drive ketoacidosis",
+    "Insulin deficiency",
+    "Fat breakdown increases",
+    "Ketones accumulate",
+    "Metabolic acidosis",
+    "Conceptual schematic • Not anatomy"
+  ],
+  "layout": "Four wide stepping-stone tiles diagonally from upper left1 to lower right4 with three arrows. First contains sparse insulin coins. Second contains a simple stack of neutral lipid squares splitting into smaller squares, not fat tissue. Third contains increasing plain purple triangles labelled Ketones. Fourth has a qualitative dial with an arrow toward Acidic, no numbers. Small bottom note: A simplified mechanism of diabetic ketoacidosis. No body, liver, adipocytes, pancreas or cell membrane.",
+  "forbiddenAnatomy": [
+    "organs",
+    "body silhouettes",
+    "tissue cross-sections",
+    "cells",
+    "tubules",
+    "vessels",
+    "clinical photographs",
+    "diagnostic scans"
+  ],
+  "validation": {
+    "sourceStatus": "checked",
+    "structureStatus": "verified",
+    "requiredChecks": [
+      "Four labels and three forward arrows",
+      "Ketone accumulation precedes acidosis",
+      "No exact diagnostic threshold or inevitability claim",
+      "Neutral squares and triangles, no tissues"
+    ],
+    "clinicalReviewStatus": "pending",
+    "pixelChecks": "Pixel check: four steps and three connectors correctly order insulin deficiency, fat breakdown, ketones and acidosis. Square fragmentation and triangle inventories are abstract. Qualitative dial explicitly points toward Acidic, no pH threshold. Independent and clinical review pending."
+  }
+}

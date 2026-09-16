@@ -1,0 +1,71 @@
+{
+  "id": "bank:usmle-step1:exp26-a-dominant-unaffected-carrier:v1",
+  "rotation": "usmle-step1-open",
+  "topics": [
+    "genetics",
+    "dominant-segregation"
+  ],
+  "moduleNodes": [
+    "usmle/step1",
+    "usmle/step1/genetics"
+  ],
+  "questionType": "interpretation",
+  "difficulty": "medium",
+  "stem": "A 32-year-old woman has a pathogenic allele associated with an autosomal dominant disorder but has no manifestations. Her father and daughter carry the same allele and are affected. Testing is reliable, and the family has the same disease-causing variant. In this hypothetical condition, anyone who expresses the phenotype would have developed manifestations by her age. Which of the following best explains the woman's findings?",
+  "options": [
+    {
+      "label": "A",
+      "text": "Incomplete expression of the pathogenic genotype",
+      "isCorrect": true,
+      "explanation": "The woman carries the familial allele despite lacking manifestations. Incomplete penetrance separates genotype from phenotype and permits an unaffected person within an affected pedigree.",
+      "misconception": "No misconception: A confirmed dominant genotype can remain unexpressed when penetrance is incomplete."
+    },
+    {
+      "label": "B",
+      "text": "Recessive expression requiring two altered alleles",
+      "isCorrect": false,
+      "explanation": "A recessive model requires two pathogenic alleles. This family is explicitly described as having a dominant disorder, so that requirement does not explain the observed pattern.",
+      "misconception": "Applies the two-pathogenic-copy requirement of recessive inheritance to a stated dominant disorder."
+    },
+    {
+      "label": "C",
+      "text": "Complete expression of the pathogenic genotype",
+      "isCorrect": false,
+      "explanation": "Complete penetrance means the disease-associated genotype is expressed in each carrier. Her confirmed genotype without manifestations directly conflicts with that proposed explanation.",
+      "misconception": "Assumes every carrier must express the phenotype despite the confirmed unaffected carrier."
+    },
+    {
+      "label": "D",
+      "text": "Failure to inherit the disease-associated allele",
+      "isCorrect": false,
+      "explanation": "The sequencing result establishes that she inherited the relevant allele. Interpreting her phenotype as proof of a normal genotype discards the decisive laboratory observation.",
+      "misconception": "Treats an unaffected phenotype as proof that the pathogenic allele was not inherited."
+    },
+    {
+      "label": "E",
+      "text": "Failure to transmit the disease-associated allele",
+      "isCorrect": false,
+      "explanation": "Her daughter carries the same familial allele and is affected. Transmission failure therefore cannot account for the mother's absence of manifestations despite her own genotype.",
+      "misconception": "Confuses transmission to a child with expression of the allele in the parent."
+    }
+  ],
+  "context": "Learning objective: distinguish allele transmission from clinical expression. A disease-associated genotype can be present without a phenotype when penetrance is incomplete; this does not convert the inheritance pattern to recessive.",
+  "cite": "nhgri-genetic-testing-glossary#penetrance",
+  "publicUsmle": {
+    "schemaVersion": 1,
+    "origin": "generated",
+    "itemText": {
+      "licence": "CC-BY-4.0",
+      "attribution": "MD3 contributors"
+    },
+    "evidence": {
+      "kind": "passage",
+      "sourceId": "nhgri-genetic-testing-glossary",
+      "passageId": "penetrance",
+      "licence": {
+        "cls": "foss",
+        "id": "us-gov"
+      }
+    }
+  }
+}

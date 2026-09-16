@@ -1,0 +1,85 @@
+{
+  "id": "bank:usmle-step1:epi-confounding-definition:v1",
+  "rotation": "usmle-step1-open",
+  "topics": [
+    "confounding",
+    "biostatistics"
+  ],
+  "moduleNodes": [
+    "usmle/step1",
+    "usmle/step1/epidemiology"
+  ],
+  "questionType": "mechanism",
+  "difficulty": "easy",
+  "stem": "In OpenStax Introductory Statistics, confounding means which problem for inference?",
+  "options": [
+    {
+      "label": "A",
+      "text": "Only case-fatality calculation without multi-factor confusion",
+      "isCorrect": false,
+      "misconception": "Wrong concept for this stem; does not match the cited passage.",
+      "explanation": "This option does not match the cited source passage for the stem."
+    },
+    {
+      "label": "B",
+      "text": "Only perfect randomization that removes every exposure difference",
+      "isCorrect": false,
+      "misconception": "Wrong concept for this stem; does not match the cited passage.",
+      "explanation": "This option does not match the cited source passage for the stem."
+    },
+    {
+      "label": "C",
+      "text": "Only laboratory assay error without any factor overlap",
+      "isCorrect": false,
+      "misconception": "Wrong concept for this stem; does not match the cited passage.",
+      "explanation": "This option does not match the cited source passage for the stem."
+    },
+    {
+      "label": "D",
+      "text": "Only vaccine cold-chain failure without analytic factor mixing",
+      "isCorrect": false,
+      "misconception": "Wrong concept for this stem; does not match the cited passage.",
+      "explanation": "This option does not match the cited source passage for the stem."
+    },
+    {
+      "label": "E",
+      "text": "Effects of multiple factors on a response cannot be separated",
+      "isCorrect": true,
+      "misconception": "None — this option matches the cited source passage for the stem.",
+      "explanation": "This correct choice is supported by the cited FOSS passage."
+    }
+  ],
+  "context": "Learning objective: recall confounding definition from the cited FOSS source.",
+  "cite": "openstax-introductory-statistics#confounding-definition",
+  "publicUsmle": {
+    "schemaVersion": 1,
+    "origin": "generated",
+    "itemText": {
+      "licence": "CC-BY-4.0",
+      "attribution": "MD3 contributors"
+    },
+    "evidence": {
+      "kind": "passage",
+      "sourceId": "openstax-introductory-statistics",
+      "passageId": "confounding-definition",
+      "licence": {
+        "cls": "foss",
+        "id": "cc-by-4.0"
+      }
+    },
+    "media": {
+      "kind": "asset",
+      "assetId": "epi-morbidity-measures-v1",
+      "job": "compare-table",
+      "showWhen": "after-reveal",
+      "licence": {
+        "cls": "foss",
+        "id": "cc-by-4.0"
+      },
+      "attribution": "MD3 contributors",
+      "contentHash": "sha256:3fc6d23afe6a78c9503d068754c2fb966c0973d978c71410c1db2c58d455430f"
+    }
+  },
+  "imageUrl": "/figures/usmle/step1/epi-morbidity-measures-v1.svg",
+  "imageCaption": "Epi measure map including confounding (FOSS draft)."
+}

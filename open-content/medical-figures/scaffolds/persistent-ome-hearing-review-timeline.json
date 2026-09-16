@@ -1,0 +1,68 @@
+{
+  "schemaVersion": 1,
+  "figureId": "persistent-ome-hearing-review-timeline",
+  "kind": "conceptual",
+  "created": "2026-09-10",
+  "timing": "authored before generation",
+  "sourceFacts": [
+    {
+      "fact": "Most otitis media with effusion resolves without intervention, but persistent effusion beyond three months should trigger hearing assessment and ENT involvement.",
+      "sourceUrls": [
+        "https://www.rch.org.au/clinicalguide/guideline_index/acute_otitis_media/"
+      ]
+    },
+    {
+      "fact": "Hearing difficulty matters even if speech development appears normal; management depends on the child's hearing and clinical context.",
+      "sourceUrls": [
+        "https://www.rch.org.au/clinicalguide/guideline_index/acute_otitis_media/"
+      ]
+    }
+  ],
+  "clinicalSources": [
+    {
+      "title": "RCH: Acute otitis media",
+      "url": "https://www.rch.org.au/clinicalguide/guideline_index/acute_otitis_media/"
+    }
+  ],
+  "nodes": [
+    "effusion",
+    "persistence beyond three months",
+    "hearing assessment",
+    "ENT review"
+  ],
+  "edges": [
+    [
+      "effusion",
+      "persistence beyond three months",
+      "duration"
+    ],
+    [
+      "persistence beyond three months",
+      "hearing assessment",
+      "trigger"
+    ],
+    [
+      "hearing assessment",
+      "ENT review",
+      "clinical management"
+    ]
+  ],
+  "expectedLabels": [
+    "Persistent fluid: check hearing",
+    "Effusion",
+    "Beyond 3 months",
+    "Hearing assessment",
+    "ENT review",
+    "Speech may still seem normal"
+  ],
+  "layoutSpecification": "Title 'Persistent fluid: check hearing'. A long horizontal calendar strip begins LEFT with a symbolic blue drop labelled 'Effusion'. Teal time arrow runs to a highlighted calendar milestone at centre labelled 'Beyond 3 months'; no dates, no fictional patient data. From milestone a broad rightward arrow reaches a large pair of headphones on a plain stand labelled 'Hearing assessment', then a short arrow to an 'ENT review' appointment card. Below timeline a small speech bubble containing a simple star sits beside text 'Speech may still seem normal'. No audiogram, hearing threshold number, ear anatomy or automatic surgery arrow. This is persistent effusion follow-up, not a rule to wait when urgent clinical concerns exist.",
+  "forbiddenAnatomy": [
+    "No internal organ, eye, ear, brain, tissue or bone anatomy",
+    "No diagnostic image, patient-specific lesion appearance or literal anatomical pathway"
+  ],
+  "validation": {
+    "sourceFacts": "Checked against listed primary clinical sources on 2026-09-10",
+    "status": "self-reviewed; independent review pending",
+    "pixelChecks": "Pixel/structure check: effusion leads across calendar duration to beyond three months, then hearing assessment and ENT review. Speech-may-seem-normal note remains separate from referral path, not a gate stopping action. No fake audiogram, numerical hearing result, ear anatomy or automatic operation claim. This depicts persistent effusion follow-up, not delay of urgent assessment."
+  }
+}

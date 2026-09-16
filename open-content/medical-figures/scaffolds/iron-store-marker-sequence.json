@@ -1,0 +1,87 @@
+{
+  "schemaVersion": 1,
+  "figureId": "iron-store-marker-sequence",
+  "kind": "conceptual",
+  "sourceFacts": [
+    {
+      "id": "fact-1",
+      "fact": "Ferritin decreases early in iron deficiency.",
+      "sources": [
+        {
+          "title": "RCH: Iron deficiency and anaemia",
+          "url": "https://www.rch.org.au/immigranthealth/clinical/Iron_deficiency_and_anaemia/"
+        }
+      ]
+    },
+    {
+      "id": "fact-2",
+      "fact": "Microcytosis and reduced haemoglobin occur later as deficiency progresses.",
+      "sources": [
+        {
+          "title": "RCH: Iron deficiency and anaemia",
+          "url": "https://www.rch.org.au/immigranthealth/clinical/Iron_deficiency_and_anaemia/"
+        }
+      ]
+    }
+  ],
+  "nodes": [
+    {
+      "id": "early",
+      "shape": "nearly empty Fe jar",
+      "label": "Stores depleted"
+    },
+    {
+      "id": "earlyHb",
+      "shape": "full Hb token tray",
+      "label": "Hb may still be normal"
+    },
+    {
+      "id": "later",
+      "shape": "empty Fe jar",
+      "label": "Deficiency progresses"
+    },
+    {
+      "id": "laterHb",
+      "shape": "sparse Hb token tray",
+      "label": "Hb falls; cells become smaller"
+    }
+  ],
+  "edges": [
+    {
+      "from": "early",
+      "to": "later",
+      "meaning": "untreated progressive deficiency over time"
+    },
+    {
+      "from": "later",
+      "to": "laterHb",
+      "meaning": "iron-limited haemoglobin production"
+    }
+  ],
+  "labels": [
+    "Iron depletion comes first",
+    "Earlier",
+    "Later",
+    "Stores depleted",
+    "Ferritin falls",
+    "Hb may still be normal",
+    "Deficiency progresses",
+    "Hb falls",
+    "Microcytosis may develop",
+    "If deficiency continues"
+  ],
+  "forbiddenAnatomy": [
+    "Organs, tissue layers, anatomical cutaways, histology, scans, clinical photographs"
+  ],
+  "validation": {
+    "status": "verified",
+    "method": "source-and-conceptual-structure-review",
+    "checks": [
+      "Time runs left to right; low stores precede low Hb.",
+      "Early panel does not show anaemia as mandatory.",
+      "Jars and Hb tiles are symbolic, not cells or anatomical tissue."
+    ],
+    "pixelReviewStatus": "verified",
+    "pixelReviewNotes": "Earlier low Fe stores and falling ferritin are shown beside preserved Hb tokens; rightward conditional arrow leads to empty stores and reduced Hb tokens later. Microcytosis is qualified as possible. All objects are symbolic jars and rectangular tiles, with no invented cellular anatomy or thresholds."
+  }
+}

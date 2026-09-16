@@ -1,0 +1,71 @@
+{
+  "id": "bank:usmle-step1:exp26-a-falciparum-vascular-retention:v1",
+  "rotation": "usmle-step1-open",
+  "topics": [
+    "microbiology",
+    "malaria-blood-stage"
+  ],
+  "moduleNodes": [
+    "usmle/step1",
+    "usmle/step1/microbiology"
+  ],
+  "questionType": "interpretation",
+  "difficulty": "medium",
+  "stem": "A model of Plasmodium falciparum sequestration uses erythrocytes containing mature trophozoites. Investigators pass equal numbers through two endothelial-lined chambers. A selective intervention prevents adherence in chamber X but leaves chamber Y untreated. The cells are otherwise unchanged. Which of the following paired results best supports adhesion as the retention mechanism?",
+  "options": [
+    {
+      "label": "A",
+      "text": "Equal cells retained in X; equal cells exiting X",
+      "isCorrect": false,
+      "explanation": "Equal distributions would fail to demonstrate an effect of blocking adherence. The proposed mechanism predicts that retention changes when the attachment step is selectively prevented.",
+      "misconception": "Assumes blocking the proposed attachment mechanism leaves retention and exit unchanged."
+    },
+    {
+      "label": "B",
+      "text": "Fewer cells retained in X; more cells exiting X",
+      "isCorrect": true,
+      "explanation": "Preventing endothelial adherence reduces sequestration on the chamber surface. With the same input and otherwise unchanged cells, more infected erythrocytes should leave rather than remain attached.",
+      "misconception": "No misconception: With fixed input, blocking adherence shifts cells from retention toward exit."
+    },
+    {
+      "label": "C",
+      "text": "More cells retained in X; fewer cells exiting X",
+      "isCorrect": false,
+      "explanation": "This reverses the effect of preventing adherence. Increased retention would indicate greater sequestration, whereas the intervention removes the binding process that holds cells on the surface.",
+      "misconception": "Reverses the effect of blocking adherence by predicting greater retention."
+    },
+    {
+      "label": "D",
+      "text": "Fewer cells retained in X; fewer cells exiting X",
+      "isCorrect": false,
+      "explanation": "Reduced retention fits the intervention, but reduced exit would require an additional unmeasured destination or cell loss. The experiment isolates attachment while preserving the cellular input.",
+      "misconception": "Allows both retention and exit to fall without identifying another destination for the fixed cell input."
+    },
+    {
+      "label": "E",
+      "text": "More cells retained in X; more cells exiting X",
+      "isCorrect": false,
+      "explanation": "With matched input and no other cellular change, increasing both retained and exiting cells violates the comparison’s accounting. Prevented adherence should shift cells from retention toward exit.",
+      "misconception": "Increases both retained and exiting cells despite equal input and no other cellular change."
+    }
+  ],
+  "context": "Learning objective: Connect endothelial adherence of mature falciparum-infected erythrocytes to sequestration. A selective block should redistribute a fixed cell input from the retained compartment toward the exiting compartment.",
+  "cite": "cdc-malaria-clinical#malaria-sequestration",
+  "publicUsmle": {
+    "schemaVersion": 1,
+    "origin": "generated",
+    "itemText": {
+      "licence": "CC-BY-4.0",
+      "attribution": "MD3 contributors"
+    },
+    "evidence": {
+      "kind": "passage",
+      "sourceId": "cdc-malaria-clinical",
+      "passageId": "malaria-sequestration",
+      "licence": {
+        "cls": "foss",
+        "id": "us-gov"
+      }
+    }
+  }
+}

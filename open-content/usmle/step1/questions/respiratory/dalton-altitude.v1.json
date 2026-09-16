@@ -1,0 +1,85 @@
+{
+  "id": "bank:usmle-step1:respiratory-dalton-altitude:v1",
+  "rotation": "usmle-step1-open",
+  "topics": [
+    "Dalton's law",
+    "partial pressures"
+  ],
+  "moduleNodes": [
+    "usmle/step1",
+    "usmle/step1/respiratory"
+  ],
+  "questionType": "calculation",
+  "difficulty": "medium",
+  "stem": "A 26-year-old mountaineer breathes ambient air at an altitude where the barometric pressure is 380 mm Hg. The composition of the air is unchanged from sea level, with oxygen making up about 21 percent of the gas mixture.\n\nAccording to Dalton's law, which of the following is the partial pressure of oxygen in the inspired air?",
+  "options": [
+    {
+      "label": "A",
+      "text": "80 mm Hg",
+      "isCorrect": true,
+      "misconception": "None; 21 percent of 380 mm Hg is approximately 80 mm Hg.",
+      "explanation": "Dalton's law states that each gas in a mixture exerts its own pressure, and the total is the sum of the partial pressures; oxygen's share is 0.21 × 380 ≈ 80 mm Hg."
+    },
+    {
+      "label": "B",
+      "text": "40 mm Hg",
+      "isCorrect": false,
+      "misconception": "The oxygen fraction is being applied twice, or to half the barometric pressure.",
+      "explanation": "The partial pressure of a gas in a mixture equals its fractional concentration times the total pressure: 0.21 × 380 mm Hg ≈ 80 mm Hg."
+    },
+    {
+      "label": "C",
+      "text": "160 mm Hg",
+      "isCorrect": false,
+      "misconception": "Sea-level oxygen partial pressure is being recalled instead of computed.",
+      "explanation": "About 160 mm Hg is oxygen's partial pressure at sea level (0.21 × 760); at 380 mm Hg barometric pressure the value halves to about 80 mm Hg."
+    },
+    {
+      "label": "D",
+      "text": "190 mm Hg",
+      "isCorrect": false,
+      "misconception": "Half the barometric pressure is being reported as the oxygen partial pressure.",
+      "explanation": "Dividing 380 by two ignores the oxygen fraction; only 21 percent of the mixture is oxygen."
+    },
+    {
+      "label": "E",
+      "text": "380 mm Hg",
+      "isCorrect": false,
+      "misconception": "The total barometric pressure is being attributed to oxygen alone.",
+      "explanation": "Each gas exerts only its own partial pressure; oxygen contributes 21 percent of the 380 mm Hg total."
+    }
+  ],
+  "context": "Learning objective: apply Dalton's law. Each gas in a mixture exerts its own partial pressure, and the total pressure is the sum of the partial pressures.",
+  "cite": "openstax-anatomy-physiology#resp-dalton-law",
+  "publicUsmle": {
+    "schemaVersion": 1,
+    "origin": "generated",
+    "itemText": {
+      "licence": "CC-BY-4.0",
+      "attribution": "MD3 contributors"
+    },
+    "evidence": {
+      "kind": "passage",
+      "sourceId": "openstax-anatomy-physiology",
+      "passageId": "resp-dalton-law",
+      "licence": {
+        "cls": "foss",
+        "id": "cc-by-4.0"
+      }
+    },
+    "media": {
+      "kind": "asset",
+      "assetId": "gas-exchange-v1",
+      "job": "pathway",
+      "showWhen": "after-reveal",
+      "licence": {
+        "cls": "foss",
+        "id": "cc-by-4.0"
+      },
+      "attribution": "MD3 contributors",
+      "contentHash": "sha256:02374e7f286a7b66af9927c260658597c2328e958625e418f71e7885225080b8"
+    }
+  },
+  "imageUrl": "/figures/usmle/step1/gas-exchange-v1.svg",
+  "imageCaption": "V/Q, PO2 gradient, CO2 transport + chloride shift, chemoreceptors, brainstem, Dalton/Henry."
+}

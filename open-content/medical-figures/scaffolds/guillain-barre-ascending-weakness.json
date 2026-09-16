@@ -1,0 +1,57 @@
+{
+  "schemaVersion": 1,
+  "figureId": "guillain-barre-ascending-weakness",
+  "kind": "conceptual",
+  "created": "2026-09-10",
+  "timing": "retrospective specification of previously generated candidate",
+  "sourceFacts": [
+    {
+      "fact": "Guillain\u2013Barr\u00e9 syndrome causes peripheral nerve dysfunction with often symmetric weakness.",
+      "sourceUrls": [
+        "https://www.ninds.nih.gov/health-information/disorders/guillain-barre-syndrome"
+      ]
+    },
+    {
+      "fact": "Weakness commonly begins in the legs and can progress upward.",
+      "sourceUrls": [
+        "https://www.ninds.nih.gov/health-information/disorders/guillain-barre-syndrome"
+      ]
+    }
+  ],
+  "clinicalSources": [
+    {
+      "title": "NINDS: Guillain-Barr\u00e9 Syndrome",
+      "url": "https://www.ninds.nih.gov/health-information/disorders/guillain-barre-syndrome"
+    }
+  ],
+  "nodes": [
+    "bilateral lower legs",
+    "bilateral thighs",
+    "possible upper-body extension"
+  ],
+  "sequence": [
+    "bilateral lower legs",
+    "bilateral thighs",
+    "possible upper-body extension"
+  ],
+  "invariants": [
+    "Body maps show a common possible pattern; timing and extent vary, no inevitable sequence.",
+    "Bilateral/symmetric distribution; no spinal or cerebral lesion depicted."
+  ],
+  "expectedLabels": [
+    "A common pattern",
+    "Guillain\u2013Barr\u00e9 syndrome",
+    "Weakness may ascend",
+    "Usually symmetric \u2022 pattern and progression vary"
+  ],
+  "layoutSpecification": "Three small simple front-view clothed child silhouettes from left to right, same scale, neutral stance, no distress. Heading 'A common pattern' under title 'Guillain\u2013Barr\u00e9 syndrome'. First silhouette bilateral feet/lower legs shaded teal; second shading extends to bilateral thighs; third both legs and lower trunk shaded with pale teal extending toward arms. Soft upward arrow BESIDE sequence labelled 'Weakness may ascend'. Small lower line 'Usually symmetric \u2022 pattern and progression vary'. No lesion in brain, no spinal cord compression, no reflex hammer or numerical timeline. Diagram conveys possible spread, not an inevitable stage sequence.",
+  "forbiddenAnatomy": [
+    "No claimed anatomical reconstruction, diagnostic image, histology or literal neuroanatomical pathway",
+    "No organ cutaways or invented internal spatial relationships"
+  ],
+  "validation": {
+    "sourceFacts": "Checked against listed primary clinical sources during original topic review",
+    "pixelChecks": "Visually inspected: bilateral shading progresses from lower legs to thighs and upper body, with an upward arrow; qualifying text states common pattern and variability. No central lesion, fixed progression deadline or inevitable outcome is implied.",
+    "status": "self-reviewed; independent review pending"
+  }
+}

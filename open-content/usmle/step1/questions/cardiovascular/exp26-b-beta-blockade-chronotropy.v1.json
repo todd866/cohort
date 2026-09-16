@@ -1,0 +1,72 @@
+{
+  "id": "bank:usmle-step1:exp26-b-beta-blockade-chronotropy:v1",
+  "rotation": "usmle-step1-open",
+  "topics": [
+    "cardiovascular",
+    "beta-blockade-chronotropy",
+    "pharmacology"
+  ],
+  "moduleNodes": [
+    "usmle/step1",
+    "usmle/step1/cardiovascular"
+  ],
+  "questionType": "mechanism",
+  "difficulty": "medium",
+  "stem": "A 66-year-old patient develops a markedly slow pulse after receiving excessive beta blockade. The clinical team considers the cardiac response to norepinephrine when reviewing the medication effect. Which of the following best explains the reduced rate?",
+  "options": [
+    {
+      "text": "Increased norepinephrine access to unblocked receptors",
+      "explanation": "The causal exposure is excessive receptor blockade. Greater access to functioning receptors would counter the proposed loss of signaling rather than account for it.",
+      "isCorrect": false,
+      "label": "A",
+      "misconception": "Explains receptor blockade by increased norepinephrine access to functioning receptors."
+    },
+    {
+      "text": "Faster spontaneous depolarization in pacemaker cells",
+      "explanation": "Faster spontaneous depolarization conflicts with the slow pulse. The relevant drug effect reduces rate through beta-1 blockade rather than accelerating pacemaker activation.",
+      "isCorrect": false,
+      "label": "B",
+      "misconception": "Treats faster pacemaker depolarization as an explanation for the observed slow pulse."
+    },
+    {
+      "text": "Reduced signaling through cardiac beta-1 receptors",
+      "explanation": "Cardiac norepinephrine signaling uses beta-1 receptors. Blocking this pathway decreases heart rate, and excessive blockade can produce the marked slowing described in the patient.",
+      "isCorrect": true,
+      "label": "C",
+      "misconception": "No misconception: cardiac beta-1 blockade reduces the rate-promoting norepinephrine signal."
+    },
+    {
+      "text": "Increased signaling through cardiac beta-1 receptors",
+      "explanation": "The exposure blocks rather than increases signaling through these receptors. Enhanced receptor signaling does not explain a slow pulse caused by excessive beta blockade.",
+      "isCorrect": false,
+      "label": "D",
+      "misconception": "Assumes that beta blockade increases signaling through the receptors it blocks."
+    },
+    {
+      "text": "Reduced acetylcholine action at cardiac target nodes",
+      "explanation": "Acetylcholine decreases heart rate at cardiac targets. Reducing that action would remove a rate-slowing influence rather than explain the effect of excessive beta blockade.",
+      "isCorrect": false,
+      "label": "E",
+      "misconception": "Explains slowing by removing acetylcholine action even though that action normally lowers cardiac rate."
+    }
+  ],
+  "context": "Learning objective: Identify beta-1 receptor blockade as the mechanism of medication-related bradycardia. Cardiac norepinephrine signaling uses beta-1 receptors. Blocking this pathway decreases heart rate, and excessive blockade can produce the marked slowing described in the patient.",
+  "cite": "openstax-ap1-cardiac-physiology#beta-one",
+  "publicUsmle": {
+    "schemaVersion": 1,
+    "origin": "generated",
+    "itemText": {
+      "licence": "CC-BY-4.0",
+      "attribution": "MD3 contributors"
+    },
+    "evidence": {
+      "kind": "passage",
+      "sourceId": "openstax-ap1-cardiac-physiology",
+      "passageId": "beta-one",
+      "licence": {
+        "cls": "foss",
+        "id": "cc-by-4.0"
+      }
+    }
+  }
+}

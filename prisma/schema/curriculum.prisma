@@ -1,0 +1,115 @@
+// =============================================================================
+// CURRICULUM MODELS
+// UserRotation, ExamDefinition, CardExamRelevance, AnatomyRegion, AnatomyStructure
+// =============================================================================
+
+// Rotation tracking (exam dates)
+model UserRotation {
+  id        String   @id @default(cuid())
+  userId    String
+  rotation  String // 'critical-care', 'cah', 'paam', 'pwh'
+  startDate DateTime @db.Timestamptz(3)
+  examDate  DateTime @db.Timestamptz(3) // When the exam is - scheduling works backward from this
+  user      User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@unique([userId, rotation])
+}
+
+// =============================================================================
+// EXAM MANIFOLD ESTIMATION
+// See docs/designs/embedding-design-principles.md - Principle #8
+// =============================================================================
+
+// Tracks exam relevance scores for cards based on source triangulation
+model CardExamRelevance {
+  id     String @id @default(cuid())
+  cardId String
+  examId String // e.g., "critical-care-block1-2026", "usmle-step1"
+
+  // Computed relevance score (higher = more likely on exam)
+  relevance Float // 0-10 scale (sum of weighted nearby sources)
+
+  // Breakdown of contributing signals
+  katSignal      Float @default(0) // From KAT practice questions (weight: 2.0)
+  peerNoteSignal Float @default(0) // From peer study notes (weight: 1.5)
+  lectureSignal  Float @default(0) // From lecture content (weight: 0.8)
+  textbookSignal Float @default(0) // From textbook references (weight: 0.3)
+
+  // Nearest high-signal source (for explainability)
+  nearestSource     String? // e.g., "KAT Q47: Shock management"
+  nearestSimilarity Float? // Cosine similarity to that source
+
+  computedAt DateTime @default(now()) @db.Timestamptz(3)
+
+  @@unique([cardId, examId])
+  @@index([examId, relevance])
+  @@index([cardId])
+}
+
+// Exam definitions (what constitutes an "exam" for relevance computation)
+model ExamDefinition {
+  id   String @id @default(cuid())
+  slug String @unique // "critical-care-block1-2026"
+  name String // "Critical Care Block 1 Exam"
+
+  // Scope
+  moduleNodes String[] // Which modules are in scope for this exam
+
+  // Date (for decay calculations)
+  examDate DateTime? @db.Timestamptz(3)
+
+  // Source weights (can override defaults per exam)
+  katWeight      Float @default(2.0)
+  peerNoteWeight Float @default(1.5)
+  lectureWeight  Float @default(0.8)
+  textbookWeight Float @default(0.3)
+
+  createdAt DateTime @default(now()) @db.Timestamptz(3)
+  updatedAt DateTime @updatedAt @db.Timestamptz(3)
+}
+
+// =============================================================================
+// ANATOMY TRAINER (BlueLink Atlas)
+// Visual anatomy identification training from UMich BlueLink
+// =============================================================================
+
+// AnatomyRegion - Body regions for organization
+model AnatomyRegion {
+  id        String @id @default(cuid())
+  slug      String @unique // "heart", "upper-limb"
+  name      String // "Heart", "Upper Limb"
+  cardCount Int    @default(0)
+
+  structures AnatomyStructure[]
+
+  createdAt DateTime @default(now()) @db.Timestamptz(3)
+}
+
+// AnatomyStructure - Individual anatomy identification cards
+model AnatomyStructure {
+  id       String        @id @default(cuid())
+  regionId String
+  region   AnatomyRegion @relation(fields: [regionId], references: [id], onDelete: Cascade)
+
+  name            String // "Crest of greater tubercle"
+  baseImage       String // R2 URL: "https://pub-xxx.r2.dev/anatomy/base/xxx.png"
+  questionOverlay String // R2 URL: "https://pub-xxx.r2.dev/anatomy/overlays/xxx-Q.svg"
+  answerOverlay   String // R2 URL: "https://pub-xxx.r2.dev/anatomy/overlays/xxx-A.svg"
+
+  originalId String @unique // Anki note ID for dedup
+
+  // Rich metadata for filtering by other modules
+  system       String? // "cardiovascular", "musculoskeletal", "nervous", etc.
+  curricula    String[] @default(["bluelink"]) // Which curricula include this
+  clinicalTags String[] @default([]) // ["cardiac-surgery", "ortho", etc.]
+  difficulty   String   @default("medium") // "easy", "medium", "hard"
+
+  createdAt DateTime @default(now()) @db.Timestamptz(3)
+
+  @@index([regionId])
+  @@index([name])
+  @@index([system])
+}
+
+// Legacy MD1 Anatomy cards have been migrated to core Card (rotation="usyd-md1-anatomy").
+// See scripts/migrations/migrate-usyd-md1-anatomy-to-core.ts

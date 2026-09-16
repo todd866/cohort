@@ -1,0 +1,87 @@
+{
+  "id": "bank:usmle-step1:respiratory-co2-transport:v1",
+  "rotation": "usmle-step1-open",
+  "topics": [
+    "carbon dioxide transport",
+    "bicarbonate",
+    "ladder:co2-transport"
+  ],
+  "moduleNodes": [
+    "usmle/step1",
+    "usmle/step1/respiratory"
+  ],
+  "questionType": "mechanism",
+  "difficulty": "medium",
+  "stem": "A researcher measures the forms in which carbon dioxide is carried in the venous blood of a healthy 30-year-old man.\n\nWhich of the following forms accounts for the largest fraction of the carbon dioxide transported to the lungs?",
+  "options": [
+    {
+      "label": "A",
+      "text": "Carboxyhemoglobin formed at the heme iron",
+      "isCorrect": false,
+      "misconception": "Carbon monoxide binding is being confused with carbon dioxide carriage.",
+      "explanation": "Carboxyhemoglobin is hemoglobin bound to carbon monoxide, a different molecule; carbon dioxide is carried mainly as bicarbonate."
+    },
+    {
+      "label": "B",
+      "text": "Carbon dioxide gas dissolved directly in the plasma",
+      "isCorrect": false,
+      "misconception": "The physically dissolved fraction is being overestimated.",
+      "explanation": "Only a small fraction of carbon dioxide travels dissolved; the great majority is converted to bicarbonate."
+    },
+    {
+      "label": "C",
+      "text": "Carbaminohemoglobin within the erythrocytes",
+      "isCorrect": false,
+      "misconception": "The hemoglobin-bound fraction is being confused with the dominant form.",
+      "explanation": "An intermediate amount of carbon dioxide binds hemoglobin as carbaminohemoglobin; bicarbonate remains the largest fraction."
+    },
+    {
+      "label": "D",
+      "text": "Carbonic acid carried free within the erythrocytes",
+      "isCorrect": false,
+      "misconception": "A transient reaction intermediate is being treated as a transport form.",
+      "explanation": "Carbonic acid rapidly dissociates into bicarbonate and hydrogen ions; it is an intermediate, not the principal transport species."
+    },
+    {
+      "label": "E",
+      "text": "Bicarbonate ions produced within erythrocytes",
+      "isCorrect": true,
+      "misconception": "None; about 70 percent of carbon dioxide is transported as bicarbonate.",
+      "explanation": "A large fraction — about 70 percent — of the carbon dioxide molecules that diffuse into the blood is transported to the lungs as bicarbonate, produced in erythrocytes by carbonic anhydrase."
+    }
+  ],
+  "context": "Learning objective: rank carbon dioxide transport forms. About 70 percent of blood carbon dioxide travels as bicarbonate, generated in erythrocytes by carbonic anhydrase.",
+  "cite": "openstax-anatomy-physiology#resp-bicarbonate-70",
+  "publicUsmle": {
+    "schemaVersion": 1,
+    "origin": "generated",
+    "itemText": {
+      "licence": "CC-BY-4.0",
+      "attribution": "MD3 contributors"
+    },
+    "evidence": {
+      "kind": "passage",
+      "sourceId": "openstax-anatomy-physiology",
+      "passageId": "resp-bicarbonate-70",
+      "licence": {
+        "cls": "foss",
+        "id": "cc-by-4.0"
+      }
+    },
+    "media": {
+      "kind": "asset",
+      "assetId": "gas-exchange-v1",
+      "job": "pathway",
+      "showWhen": "after-reveal",
+      "licence": {
+        "cls": "foss",
+        "id": "cc-by-4.0"
+      },
+      "attribution": "MD3 contributors",
+      "contentHash": "sha256:02374e7f286a7b66af9927c260658597c2328e958625e418f71e7885225080b8"
+    }
+  },
+  "imageUrl": "/figures/usmle/step1/gas-exchange-v1.svg",
+  "imageCaption": "V/Q, PO2 gradient, CO2 transport + chloride shift, chemoreceptors, brainstem, Dalton/Henry.",
+  "ladderId": "co2-transport"
+}

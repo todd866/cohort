@@ -1,0 +1,71 @@
+{
+  "id": "bank:usmle-step1:exp26-b-diarrhea-acid-base-pattern:v1",
+  "rotation": "usmle-step1-open",
+  "topics": [
+    "renal",
+    "diarrhea-acid-base-pattern"
+  ],
+  "moduleNodes": [
+    "usmle/step1",
+    "usmle/step1/renal"
+  ],
+  "questionType": "diagnosis",
+  "difficulty": "easy",
+  "stem": "A 24-year-old patient has several days of diarrhea. Blood testing shows a pH of 7.29 and a bicarbonate concentration below the laboratory reference interval. The clinician attributes the disturbance to loss through the gastrointestinal tract. Which of the following primary disorders best fits these findings?",
+  "options": [
+    {
+      "text": "Metabolic alkalosis from bicarbonate accumulation",
+      "explanation": "Accumulation of bicarbonate would raise rather than lower the measured bicarbonate concentration. It also conflicts with the acidic pH and the gastrointestinal loss described.",
+      "isCorrect": false,
+      "label": "A",
+      "misconception": "Assigns bicarbonate accumulation and alkalosis to measured bicarbonate depletion with an acidic pH."
+    },
+    {
+      "text": "Metabolic acidosis from bicarbonate loss",
+      "explanation": "Diarrhea can remove bicarbonate through the gastrointestinal tract. The resulting reduction in blood bicarbonate and pH below 7.35 identify the primary metabolic acidosis described here.",
+      "isCorrect": true,
+      "label": "B",
+      "misconception": "No misconception: gastrointestinal bicarbonate loss with a reduced pH supports metabolic acidosis."
+    },
+    {
+      "text": "Metabolic alkalosis from gastric acid loss",
+      "explanation": "Loss of gastric acid is associated with an alkalotic pattern rather than the observed low pH and bicarbonate. The history instead indicates intestinal bicarbonate loss.",
+      "isCorrect": false,
+      "label": "C",
+      "misconception": "Applies the alkalotic pattern of gastric acid loss to the observed diarrhea-associated bicarbonate depletion."
+    },
+    {
+      "text": "Respiratory acidosis from carbon dioxide retention",
+      "explanation": "Carbon dioxide retention defines a respiratory cause of acidosis. The case directly identifies gastrointestinal bicarbonate loss and a low bicarbonate concentration as the primary disturbance.",
+      "isCorrect": false,
+      "label": "D",
+      "misconception": "Assigns a primary respiratory cause despite the identified gastrointestinal bicarbonate loss."
+    },
+    {
+      "text": "Respiratory alkalosis from carbon dioxide loss",
+      "explanation": "Excess carbon dioxide elimination produces an alkalotic direction. The patient’s low pH and intestinal bicarbonate loss support a primary metabolic disturbance instead.",
+      "isCorrect": false,
+      "label": "E",
+      "misconception": "Applies the alkalotic direction of carbon dioxide loss to an acidic pH with intestinal bicarbonate loss."
+    }
+  ],
+  "context": "Learning objective: Identify metabolic acidosis from combined diarrheal losses, reduced bicarbonate, and acidemia. Diarrhea can remove bicarbonate through the gastrointestinal tract. The resulting reduction in blood bicarbonate and pH below 7.35 identify the primary metabolic acidosis described here.",
+  "cite": "openstax-ap1-acid-base-disorders#diarrhea-bicarbonate-loss",
+  "publicUsmle": {
+    "schemaVersion": 1,
+    "origin": "generated",
+    "itemText": {
+      "licence": "CC-BY-4.0",
+      "attribution": "MD3 contributors"
+    },
+    "evidence": {
+      "kind": "passage",
+      "sourceId": "openstax-ap1-acid-base-disorders",
+      "passageId": "diarrhea-bicarbonate-loss",
+      "licence": {
+        "cls": "foss",
+        "id": "cc-by-4.0"
+      }
+    }
+  }
+}

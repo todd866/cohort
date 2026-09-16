@@ -1,0 +1,75 @@
+{
+  "schemaVersion": 1,
+  "figureId": "accommodative-esotropia-glasses-mechanism",
+  "kind": "conceptual",
+  "created": "2026-09-10",
+  "timing": "authored before generation",
+  "sourceFacts": [
+    {
+      "fact": "Hyperopia can increase the effort needed to focus, and accommodation is linked to convergence.",
+      "sourceUrls": [
+        "https://www.aapos.org/glossary/accommodative-esotropia"
+      ]
+    },
+    {
+      "fact": "Correcting hyperopia with glasses reduces focusing effort and can improve accommodative inward turning; some children retain residual misalignment.",
+      "sourceUrls": [
+        "https://www.aapos.org/glossary/accommodative-esotropia"
+      ]
+    }
+  ],
+  "clinicalSources": [
+    {
+      "title": "AAPOS: Accommodative Esotropia",
+      "url": "https://www.aapos.org/glossary/accommodative-esotropia"
+    }
+  ],
+  "nodes": [
+    "hyperopia",
+    "extra focusing effort",
+    "extra inward turn",
+    "glasses",
+    "less focusing effort"
+  ],
+  "edges": [
+    [
+      "hyperopia",
+      "extra focusing effort",
+      "increases demand"
+    ],
+    [
+      "extra focusing effort",
+      "extra inward turn",
+      "can increase accommodative convergence"
+    ],
+    [
+      "glasses",
+      "less focusing effort",
+      "corrects hyperopic demand"
+    ],
+    [
+      "less focusing effort",
+      "extra inward turn",
+      "reduces accommodative component"
+    ]
+  ],
+  "expectedLabels": [
+    "Why glasses can straighten the eyes",
+    "Hyperopia",
+    "More focusing effort",
+    "More inward turn",
+    "Glasses",
+    "Less focusing effort",
+    "Less accommodative turning"
+  ],
+  "layoutSpecification": "Title 'Why glasses can straighten the eyes'. Two aligned left-to-right rows of ABSTRACT symbols, no eye shapes or anatomy. UPPER row begins a softly blurred small toy-star symbol labelled 'Hyperopia'; arrow leads to a simple effort gauge with needle tilted high labelled 'More focusing effort'; arrow then leads to TWO straight navy arrows angled inward toward one another labelled 'More inward turn'. LOWER row begins eyeglasses alone labelled 'Glasses'; arrow leads to same effort gauge with needle low labelled 'Less focusing effort'; arrow then leads to two nearly parallel navy arrows labelled 'Less accommodative turning'. Keep both rows equally composed, labelled states do not imply universal perfect alignment or permanent cure. No dioptres, no actual vision chart, no surgical recommendation.",
+  "forbiddenAnatomy": [
+    "No internal organ, eye, ear, brain, tissue or bone anatomy",
+    "No diagnostic image, patient-specific lesion appearance or literal anatomical pathway"
+  ],
+  "validation": {
+    "sourceFacts": "Checked against listed primary clinical sources on 2026-09-10",
+    "status": "self-reviewed; independent review pending",
+    "pixelChecks": "Pixel/structure check: upper row links hyperopia to a high effort gauge and inward-pointing convergent arrows; lower row links glasses to low effort and same-direction arrows with less accommodative turning. Gauge colours and directions agree. Labels describe reduced accommodative component and title says can; no organ anatomy or guaranteed cure."
+  }
+}

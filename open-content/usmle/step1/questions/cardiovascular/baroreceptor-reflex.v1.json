@@ -1,0 +1,87 @@
+{
+  "id": "bank:usmle-step1:cardiovascular-baroreceptor-reflex:v1",
+  "rotation": "usmle-step1-open",
+  "ladderId": "baroreceptor-reflex",
+  "topics": [
+    "baroreceptor reflex",
+    "blood pressure regulation",
+    "ladder:baroreceptor-reflex"
+  ],
+  "moduleNodes": [
+    "usmle/step1",
+    "usmle/step1/cardiovascular"
+  ],
+  "questionType": "mechanism",
+  "difficulty": "hard",
+  "stem": "A 22-year-old woman stands up quickly from a supine position and experiences a transient decrease in arterial blood pressure, which is corrected within seconds and she does not faint.\n\nWhich of the following sequences correctly describes the immediate baroreceptor reflex response to this decrease in pressure?",
+  "options": [
+    {
+      "label": "A",
+      "text": "Increased chemoreceptor firing, hyperventilation, increased pressure",
+      "isCorrect": false,
+      "misconception": "The chemoreceptor reflex is being substituted for the baroreceptor reflex.",
+      "explanation": "Chemoreceptors monitor oxygen, carbon dioxide, and pH; the acute response to a postural pressure drop is mediated by baroreceptors, not ventilatory chemoreflexes."
+    },
+    {
+      "label": "B",
+      "text": "Increased baroreceptor firing, increased parasympathetic outflow via the vagus nerve, decreased heart rate",
+      "isCorrect": false,
+      "misconception": "The reflex response to rising pressure is being applied to falling pressure.",
+      "explanation": "Increased firing with vagal slowing is the response to an increase in pressure; this patient's pressure fell, so firing decreases and sympathetic output rises instead."
+    },
+    {
+      "label": "C",
+      "text": "Decreased baroreceptor firing, increased vagal outflow, decreased heart rate",
+      "isCorrect": false,
+      "misconception": "The afferent limb is correct but the efferent limb is inverted.",
+      "explanation": "Although falling pressure does decrease firing, the reflex response to hypotension is sympathetic activation and vagal withdrawal, which raise rather than lower the heart rate."
+    },
+    {
+      "label": "D",
+      "text": "Decreased baroreceptor firing, increased sympathetic outflow, increased heart rate and vasoconstriction",
+      "isCorrect": true,
+      "misconception": "None; falling pressure slows baroreceptor firing, releasing sympathetic activation.",
+      "explanation": "Decreased blood pressure produces slower rates of baroreceptor firing; reduced afferent input increases sympathetic drive, raising heart rate and constricting peripheral vessels to restore pressure."
+    },
+    {
+      "label": "E",
+      "text": "Increased atrial receptor firing, increased sympathetic firing, increased cardiac output",
+      "isCorrect": false,
+      "misconception": "The atrial (volume) reflex is being applied to an arterial pressure problem.",
+      "explanation": "The atrial reflex responds to increased venous return and atrial stretch; standing reduces venous return transiently, and the correcting reflex is the arterial baroreceptor reflex."
+    }
+  ],
+  "context": "Learning objective: trace the baroreceptor reflex. Decreased pressure slows baroreceptor firing, increasing sympathetic output to raise heart rate and constrict vessels; the cardioinhibitor center acts via the vagus nerve when pressure rises.",
+  "cite": "openstax-anatomy-physiology#vessels-baroreceptor-firing",
+  "publicUsmle": {
+    "schemaVersion": 1,
+    "origin": "generated",
+    "itemText": {
+      "licence": "CC-BY-4.0",
+      "attribution": "MD3 contributors"
+    },
+    "evidence": {
+      "kind": "passage",
+      "sourceId": "openstax-anatomy-physiology",
+      "passageId": "vessels-baroreceptor-firing",
+      "licence": {
+        "cls": "foss",
+        "id": "cc-by-4.0"
+      }
+    },
+    "media": {
+      "kind": "asset",
+      "assetId": "baroreceptor-reflex-v1",
+      "job": "pathway",
+      "showWhen": "after-reveal",
+      "licence": {
+        "cls": "foss",
+        "id": "cc-by-4.0"
+      },
+      "attribution": "MD3 contributors",
+      "contentHash": "sha256:dd14e40e4593ba46c4cfa22e11172297c1ac9eb80dfe746c08782e2f9478d715"
+    }
+  },
+  "imageUrl": "/figures/usmle/step1/baroreceptor-reflex-v1.svg",
+  "imageCaption": "Baroreceptor reflex: stretch -> IX/X -> NTS -> autonomic adjustment of HR and SVR."
+}

@@ -1,0 +1,74 @@
+{
+  "id": "bank:usmle-step1:he-epo-hypoxia-r3:v1",
+  "rotation": "usmle-step1-open",
+  "ladderId": "epo-hypoxia",
+  "difficulty": "hard",
+  "topics": [
+    "erythropoietin",
+    "altitude",
+    "erythropoiesis",
+    "ladder:epo-hypoxia"
+  ],
+  "moduleNodes": [
+    "usmle/step1",
+    "usmle/step1/hematology"
+  ],
+  "questionType": "mechanism",
+  "stem": "A 34-year-old climber develops fatigue and shortness of breath during the first days after reaching a 4,000-meter base camp. Over the next week his resting dyspnea improves and laboratory studies show a rising erythrocyte count.\n\nIncreased secretion of which of the following substances most directly explains the rise in red blood cell mass?",
+  "options": [
+    {
+      "label": "A",
+      "text": "Thrombopoietin from the liver",
+      "isCorrect": false,
+      "misconception": "The platelet lineage growth factor is being confused with the red-cell response.",
+      "explanation": "Thrombopoietin expands megakaryocytes and platelets; altitude adaptation raises erythropoietin-driven erythrocyte production."
+    },
+    {
+      "label": "B",
+      "text": "Aldosterone from the zona glomerulosa",
+      "isCorrect": false,
+      "misconception": "Volume regulation is being conflated with marrow expansion at altitude.",
+      "explanation": "Aldosterone regulates sodium and water; it does not drive the hypoxia-triggered rise in erythrocyte count."
+    },
+    {
+      "label": "C",
+      "text": "Cortisol from the adrenal cortex",
+      "isCorrect": false,
+      "misconception": "A general stress steroid is being credited with specific erythropoiesis.",
+      "explanation": "Cortisol is a stress glucocorticoid; the marrow signal after hypoxemia is renal erythropoietin."
+    },
+    {
+      "label": "D",
+      "text": "Erythropoietin from the kidneys",
+      "isCorrect": true,
+      "misconception": "None; hypoxemia stimulates renal EPO, which increases erythrocyte production until oxygen delivery improves.",
+      "explanation": "After ascent, hypoxemia causes the kidneys to secrete EPO, which accelerates erythrocyte production and raises red-cell mass over days to a week."
+    },
+    {
+      "label": "E",
+      "text": "Atrial natriuretic peptide from the atria",
+      "isCorrect": false,
+      "misconception": "A natriuretic peptide is being treated as the altitude marrow signal.",
+      "explanation": "ANP promotes sodium excretion in response to atrial stretch and does not expand erythrocyte mass."
+    }
+  ],
+  "context": "Learning objective: connect altitude hypoxemia to renal EPO secretion and the delayed rise in erythrocyte count.",
+  "cite": "openstax-anatomy-physiology#he-erythropoietin-kidney",
+  "publicUsmle": {
+    "schemaVersion": 1,
+    "origin": "generated",
+    "itemText": {
+      "licence": "CC-BY-4.0",
+      "attribution": "MD3 contributors"
+    },
+    "evidence": {
+      "kind": "passage",
+      "sourceId": "openstax-anatomy-physiology",
+      "passageId": "he-erythropoietin-kidney",
+      "licence": {
+        "cls": "foss",
+        "id": "cc-by-4.0"
+      }
+    }
+  }
+}

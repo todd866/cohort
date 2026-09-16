@@ -1,0 +1,86 @@
+{
+  "id": "bank:usmle-step1:he-heparin-mast-cells:v1",
+  "rotation": "usmle-step1-open",
+  "topics": [
+    "heparin",
+    "anticoagulant",
+    "mast cells"
+  ],
+  "moduleNodes": [
+    "usmle/step1",
+    "usmle/step1/hematology"
+  ],
+  "questionType": "mechanism",
+  "difficulty": "medium",
+  "stem": "A 58-year-old woman receives an anticoagulant infusion to treat a pulmonary embolism. The drug is a short-acting agent that, in the body, is stored in mast cells and released when tissues are injured, where it opposes prothrombin.\n\nWhich of the following drugs is she receiving?",
+  "options": [
+    {
+      "label": "A",
+      "text": "Warfarin",
+      "isCorrect": false,
+      "misconception": "An oral vitamin K antagonist is being confused with the mast-cell agent.",
+      "explanation": "Warfarin interferes with vitamin K-dependent factor synthesis in the liver and is not stored in mast cells; the endogenous mast-cell anticoagulant is heparin."
+    },
+    {
+      "label": "B",
+      "text": "Aspirin",
+      "isCorrect": false,
+      "misconception": "An antiplatelet drug is being equated with an anticoagulant.",
+      "explanation": "Aspirin inhibits platelet aggregation rather than the coagulation cascade, and it is not a mast-cell product; the described agent is heparin."
+    },
+    {
+      "label": "C",
+      "text": "Tranexamic acid",
+      "isCorrect": false,
+      "misconception": "An antifibrinolytic is being presented as an anticoagulant.",
+      "explanation": "Tranexamic acid blocks fibrinolysis and thereby promotes clot stability — the opposite of anticoagulation; the mast-cell anticoagulant described is heparin."
+    },
+    {
+      "label": "D",
+      "text": "Streptokinase",
+      "isCorrect": false,
+      "misconception": "A clot-dissolving enzyme is being confused with a clot-preventing agent.",
+      "explanation": "Streptokinase is a bacterial kinase that activates plasminogen to dissolve existing clots; it neither stores in mast cells nor opposes prothrombin like heparin."
+    },
+    {
+      "label": "E",
+      "text": "Heparin",
+      "isCorrect": true,
+      "misconception": "None; heparin is the endogenous mast-cell anticoagulant.",
+      "explanation": "Heparin is a short-acting anticoagulant stored in mast cells and released when tissues are injured, where it opposes prothrombin; it is also used therapeutically and in laboratory samples to prevent clotting."
+    }
+  ],
+  "context": "Learning objective: identify endogenous anticoagulants. Heparin is a short-acting anticoagulant stored in mast cells, released upon tissue injury, and acting against prothrombin; it is also the standard anticoagulant for preserving plasma in blood samples, alongside agents such as EDTA.",
+  "cite": "openstax-anatomy-physiology#he-heparin-mast-cells",
+  "publicUsmle": {
+    "schemaVersion": 1,
+    "origin": "generated",
+    "itemText": {
+      "licence": "CC-BY-4.0",
+      "attribution": "MD3 contributors"
+    },
+    "evidence": {
+      "kind": "passage",
+      "sourceId": "openstax-anatomy-physiology",
+      "passageId": "he-heparin-mast-cells",
+      "licence": {
+        "cls": "foss",
+        "id": "cc-by-4.0"
+      }
+    },
+    "media": {
+      "kind": "asset",
+      "assetId": "hemostasis-cascade-v1",
+      "job": "pathway",
+      "showWhen": "after-reveal",
+      "licence": {
+        "cls": "foss",
+        "id": "cc-by-4.0"
+      },
+      "attribution": "MD3 contributors",
+      "contentHash": "sha256:c60ee72abea54034e1edf06eef9bba46971e7a7011610c9a55fe3767aa079a04"
+    }
+  },
+  "imageUrl": "/figures/usmle/step1/hemostasis-cascade-v1.svg",
+  "imageCaption": "Hemostasis steps, factor X convergence, fibrin, plasmin fibrinolysis, heparin."
+}

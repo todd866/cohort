@@ -1,0 +1,73 @@
+{
+  "id": "bank:usmle-step1:endo-pth-calcium-r2:v1",
+  "rotation": "usmle-step1-open",
+  "ladderId": "pth-calcium",
+  "difficulty": "medium",
+  "topics": [
+    "parathyroid hormone",
+    "hypocalcemia",
+    "ladder:pth-calcium"
+  ],
+  "moduleNodes": [
+    "usmle/step1",
+    "usmle/step1/endocrine"
+  ],
+  "questionType": "mechanism",
+  "stem": "Serum calcium falls after a prolonged fast without dairy intake. Which hormone response most directly restores calcium toward normal?",
+  "options": [
+    {
+      "label": "A",
+      "text": "Increased calcitonin release from thyroid C cells",
+      "isCorrect": false,
+      "misconception": "Further lowering calcium is being treated as the corrective response.",
+      "explanation": "Calcitonin lowers calcium; the corrective response to hypocalcemia is increased PTH."
+    },
+    {
+      "label": "B",
+      "text": "Decreased parathyroid hormone release",
+      "isCorrect": false,
+      "misconception": "PTH is being assumed to fall when calcium is already low.",
+      "explanation": "Low calcium stimulates PTH release; decreasing PTH would worsen hypocalcemia."
+    },
+    {
+      "label": "C",
+      "text": "Increased parathyroid hormone release",
+      "isCorrect": true,
+      "misconception": "None; hypocalcemia triggers PTH, which mobilizes bone calcium and retains renal calcium.",
+      "explanation": "Falling blood calcium stimulates PTH secretion, which raises calcium via bone resorption and renal reabsorption."
+    },
+    {
+      "label": "D",
+      "text": "Increased aldosterone release",
+      "isCorrect": false,
+      "misconception": "Mineralocorticoid volume signaling is being confused with calcium homeostasis.",
+      "explanation": "Aldosterone responds to volume/potassium signals, not to low serum calcium."
+    },
+    {
+      "label": "E",
+      "text": "Increased atrial natriuretic peptide release",
+      "isCorrect": false,
+      "misconception": "Cardiac stretch signaling is being confused with calcium restoration.",
+      "explanation": "ANP responds to atrial stretch and lowers volume; it does not restore serum calcium."
+    }
+  ],
+  "context": "Learning objective: connect hypocalcemia to increased PTH secretion as the corrective endocrine response.",
+  "cite": "openstax-anatomy-physiology#endo-pth-calcitonin-calcium",
+  "publicUsmle": {
+    "schemaVersion": 1,
+    "origin": "generated",
+    "itemText": {
+      "licence": "CC-BY-4.0",
+      "attribution": "MD3 contributors"
+    },
+    "evidence": {
+      "kind": "passage",
+      "sourceId": "openstax-anatomy-physiology",
+      "passageId": "endo-pth-calcitonin-calcium",
+      "licence": {
+        "cls": "foss",
+        "id": "cc-by-4.0"
+      }
+    }
+  }
+}

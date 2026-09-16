@@ -1,0 +1,71 @@
+{
+  "id": "bank:usmle-step1:exp26-a-marrow-injury-compartment:v1",
+  "rotation": "usmle-step1-open",
+  "topics": [
+    "hematology",
+    "aplastic-anemia"
+  ],
+  "moduleNodes": [
+    "usmle/step1",
+    "usmle/step1/hematology"
+  ],
+  "questionType": "mechanism",
+  "difficulty": "medium",
+  "stem": "A 39-year-old patient develops low blood-cell counts after chemotherapy. Marrow examination identifies stem-cell damage and low cellularity. Which of the following best explains why the resulting problem can involve several circulating cell groups?",
+  "options": [
+    {
+      "label": "A",
+      "text": "Damage to the compartment responsible for blood-cell production",
+      "isCorrect": true,
+      "explanation": "The observed stem-cell damage and low cellularity identify the marrow production compartment. Injury there explains low output across cell groups in the supplied aplastic-anemia model.",
+      "misconception": "No misconception: Injury to the marrow production compartment can lower output across several cell groups."
+    },
+    {
+      "label": "B",
+      "text": "Enhanced replacement of the injured marrow stem-cell population",
+      "isCorrect": false,
+      "explanation": "Successful replacement would oppose the measured low cellularity and production failure. It does not explain the continuing reduction in circulating cell counts after the documented injury.",
+      "misconception": "Treats successful stem-cell replacement as an explanation for persistent low cellularity and low output."
+    },
+    {
+      "label": "C",
+      "text": "Preserved marrow output despite the observed stem-cell damage",
+      "isCorrect": false,
+      "explanation": "This separates output from the production lesion without support. The supplied mechanism links marrow stem-cell damage to blood-cell failure and explains the measured low counts.",
+      "misconception": "Assumes output remains preserved despite the documented injury and reduced circulating counts."
+    },
+    {
+      "label": "D",
+      "text": "Increased destruction restricted to circulating platelets",
+      "isCorrect": false,
+      "explanation": "An isolated platelet process would not explain why several cell groups fall alongside demonstrated marrow stem-cell damage. It overlooks the directly examined site of the injury.",
+      "misconception": "Uses platelet-specific destruction to explain broad count reductions alongside directly observed marrow injury."
+    },
+    {
+      "label": "E",
+      "text": "Increased destruction restricted to circulating erythrocytes",
+      "isCorrect": false,
+      "explanation": "Selective red-cell destruction does not explain the broad production deficit implied by low marrow cellularity and stem-cell injury. The lesion is located upstream in the marrow.",
+      "misconception": "Uses red-cell-specific destruction to explain a broad production deficit located in the marrow."
+    }
+  ],
+  "context": "Learning objective: connect marrow stem-cell injury to reduced blood-cell output. A production-compartment injury can affect multiple groups, distinguishing it from a process selectively destroying a circulating cell type.",
+  "cite": "nhlbi-aplastic-anemia#aplasia-stem",
+  "publicUsmle": {
+    "schemaVersion": 1,
+    "origin": "generated",
+    "itemText": {
+      "licence": "CC-BY-4.0",
+      "attribution": "MD3 contributors"
+    },
+    "evidence": {
+      "kind": "passage",
+      "sourceId": "nhlbi-aplastic-anemia",
+      "passageId": "aplasia-stem",
+      "licence": {
+        "cls": "foss",
+        "id": "us-gov"
+      }
+    }
+  }
+}

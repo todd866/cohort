@@ -1,0 +1,73 @@
+{
+  "id": "bank:usmle-step1:endo-pth-calcium-r1:v1",
+  "rotation": "usmle-step1-open",
+  "ladderId": "pth-calcium",
+  "difficulty": "easy",
+  "topics": [
+    "parathyroid hormone",
+    "calcium homeostasis",
+    "ladder:pth-calcium"
+  ],
+  "moduleNodes": [
+    "usmle/step1",
+    "usmle/step1/endocrine"
+  ],
+  "questionType": "mechanism",
+  "stem": "Which of the following hormones raises blood calcium by stimulating osteoclast activity?",
+  "options": [
+    {
+      "label": "A",
+      "text": "Calcitonin from thyroid C cells",
+      "isCorrect": false,
+      "misconception": "The calcium-lowering hormone is being confused with the calcium-raising one.",
+      "explanation": "Calcitonin lowers blood calcium by inhibiting osteoclasts; PTH raises calcium."
+    },
+    {
+      "label": "B",
+      "text": "Parathyroid hormone from parathyroid glands",
+      "isCorrect": true,
+      "misconception": "None; PTH raises blood calcium via osteoclast activation and renal calcium retention.",
+      "explanation": "PTH stimulates osteoclast proliferation and activity, releasing calcium from bone into blood."
+    },
+    {
+      "label": "C",
+      "text": "Insulin from pancreatic beta cells",
+      "isCorrect": false,
+      "misconception": "Glucose regulation is being confused with calcium regulation.",
+      "explanation": "Insulin regulates glucose uptake; it does not raise blood calcium via osteoclasts."
+    },
+    {
+      "label": "D",
+      "text": "Aldosterone from the adrenal cortex",
+      "isCorrect": false,
+      "misconception": "Sodium/volume control is being confused with calcium control.",
+      "explanation": "Aldosterone regulates sodium and potassium balance, not osteoclast-driven calcium release."
+    },
+    {
+      "label": "E",
+      "text": "Atrial natriuretic peptide from cardiac atria",
+      "isCorrect": false,
+      "misconception": "A volume-lowering cardiac hormone is being credited with raising calcium.",
+      "explanation": "ANP promotes natriuresis and does not stimulate osteoclast-mediated calcium release."
+    }
+  ],
+  "context": "Learning objective: identify PTH as the hormone that raises blood calcium by activating osteoclasts. Calcitonin has the opposite effect.",
+  "cite": "openstax-anatomy-physiology#endo-pth-calcitonin-calcium",
+  "publicUsmle": {
+    "schemaVersion": 1,
+    "origin": "generated",
+    "itemText": {
+      "licence": "CC-BY-4.0",
+      "attribution": "MD3 contributors"
+    },
+    "evidence": {
+      "kind": "passage",
+      "sourceId": "openstax-anatomy-physiology",
+      "passageId": "endo-pth-calcitonin-calcium",
+      "licence": {
+        "cls": "foss",
+        "id": "cc-by-4.0"
+      }
+    }
+  }
+}

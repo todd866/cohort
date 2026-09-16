@@ -1,0 +1,71 @@
+{
+  "id": "bank:usmle-step1:exp26-c-existing-versus-new-case-comparison:v1",
+  "rotation": "usmle-step1-open",
+  "topics": [
+    "epidemiology",
+    "existing-versus-new-case-comparison"
+  ],
+  "moduleNodes": [
+    "usmle/step1",
+    "usmle/step1/epidemiology"
+  ],
+  "questionType": "calculation",
+  "difficulty": "medium",
+  "stem": "In a closed population of 1,000 people, 100 have a condition on January 1. During the year, 45 initially unaffected people develop the condition, and 20 of the original cases recover. These are the only recoveries; no one dies or leaves. Which of the following gives the year-end point-prevalence numerator and the number of incident cases during the year?",
+  "options": [
+    {
+      "label": "A",
+      "text": "Point-prevalence numerator 125; incident cases 45",
+      "isCorrect": true,
+      "explanation": "Year-end existing cases are 100 original cases minus 20 recoveries plus 45 new cases, giving 125. Incident cases count the 45 new occurrences during the specified year.",
+      "misconception": "No misconception: current cases account for recoveries; incidence counts new onset."
+    },
+    {
+      "label": "B",
+      "text": "Point-prevalence numerator 145; incident cases 45",
+      "isCorrect": false,
+      "explanation": "Adding the original and new cases gives 145 people who had the condition at some time during the year. Point prevalence at year end excludes the 20 who have recovered.",
+      "misconception": "Includes recovered people in the year-end point-prevalence count."
+    },
+    {
+      "label": "C",
+      "text": "Point-prevalence numerator 125; incident cases 125",
+      "isCorrect": false,
+      "explanation": "The point-prevalence numerator is correct, but incident cases exclude people who already had the condition at the start. Only the 45 newly affected people contribute to incidence.",
+      "misconception": "Treats all year-end existing cases as new cases during the year."
+    },
+    {
+      "label": "D",
+      "text": "Point-prevalence numerator 100; incident cases 25",
+      "isCorrect": false,
+      "explanation": "Year-end point prevalence must reflect both new cases and recoveries rather than retain the original count. Incident cases count new disease occurrences, so recoveries are not subtracted from the 45.",
+      "misconception": "Ignores prevalence changes and incorrectly subtracts recoveries from incidence."
+    },
+    {
+      "label": "E",
+      "text": "Point-prevalence numerator 45; incident cases 145",
+      "isCorrect": false,
+      "explanation": "The 45 new cases are only part of the year-end existing caseload. The 100 people already affected on January 1 are not new cases during the year.",
+      "misconception": "Excludes persisting old cases from prevalence while adding them to incidence."
+    }
+  ],
+  "context": "Learning objective: Distinguish new cases in an interval from all cases still present at a specified time.\n\nYear-end existing cases are 100 original cases minus 20 recoveries plus 45 new cases, giving 125. Incident cases count the 45 new occurrences during the specified year.",
+  "cite": "cdc-epi-incidence-prevalence#prevalence-definition",
+  "publicUsmle": {
+    "schemaVersion": 1,
+    "origin": "generated",
+    "itemText": {
+      "licence": "CC-BY-4.0",
+      "attribution": "MD3 contributors"
+    },
+    "evidence": {
+      "kind": "passage",
+      "sourceId": "cdc-epi-incidence-prevalence",
+      "passageId": "prevalence-definition",
+      "licence": {
+        "cls": "foss",
+        "id": "us-gov"
+      }
+    }
+  }
+}

@@ -1,0 +1,85 @@
+{
+  "id": "bank:usmle-step1:biochem-p53-dna-damage:v1",
+  "rotation": "usmle-step1-open",
+  "topics": [
+    "p53",
+    "tumor suppressor"
+  ],
+  "moduleNodes": [
+    "usmle/step1",
+    "usmle/step1/biochem"
+  ],
+  "questionType": "mechanism",
+  "difficulty": "medium",
+  "stem": "When DNA damage is detected, what does normal p53 do according to the OpenStax cancer chapter?",
+  "options": [
+    {
+      "label": "A",
+      "text": "Builds the mitochondrial proton gradient",
+      "isCorrect": false,
+      "misconception": "ETC, not p53 — does not match the cited teaching point.",
+      "explanation": "Unrelated; see the cited source passage for detail."
+    },
+    {
+      "label": "B",
+      "text": "Triggers repair mechanisms",
+      "isCorrect": true,
+      "misconception": "None; damaged DNA detection leads p53 to trigger repair.",
+      "explanation": "OpenStax: if damage is detected, p53 triggers repair mechanisms."
+    },
+    {
+      "label": "C",
+      "text": "Silences all classical conditioning memories",
+      "isCorrect": false,
+      "misconception": "Psychology confusion.",
+      "explanation": "Unrelated; see the cited source passage for detail."
+    },
+    {
+      "label": "D",
+      "text": "Immediately phosphorylates glucose via hexokinase",
+      "isCorrect": false,
+      "misconception": "Wrong pathway — does not match the cited teaching point.",
+      "explanation": "p53 is a checkpoint/tumor-suppressor response."
+    },
+    {
+      "label": "E",
+      "text": "Cleaves pyruvate to acetyl-CoA",
+      "isCorrect": false,
+      "misconception": "PDH, not p53 — does not match the cited teaching point.",
+      "explanation": "Unrelated; see the cited source passage for detail."
+    }
+  ],
+  "context": "Learning objective: p53 responds to damage by triggering repair.",
+  "cite": "openstax-biology-2e#p53-tumor-suppressor",
+  "publicUsmle": {
+    "schemaVersion": 1,
+    "origin": "generated",
+    "itemText": {
+      "licence": "CC-BY-4.0",
+      "attribution": "MD3 contributors"
+    },
+    "evidence": {
+      "kind": "passage",
+      "sourceId": "openstax-biology-2e",
+      "passageId": "p53-tumor-suppressor",
+      "licence": {
+        "cls": "foss",
+        "id": "cc-by-4.0"
+      }
+    },
+    "media": {
+      "kind": "asset",
+      "assetId": "cell-cycle-genes-v1",
+      "job": "pathway",
+      "showWhen": "after-reveal",
+      "licence": {
+        "cls": "foss",
+        "id": "cc-by-4.0"
+      },
+      "attribution": "MD3 contributors",
+      "contentHash": "sha256:0e96190a2433d69036adb4d7d917292c4133a918ef3e5fb07062a1d4bc160053"
+    }
+  },
+  "imageUrl": "/figures/usmle/step1/cell-cycle-genes-v1.svg",
+  "imageCaption": "Proto-oncogenes = positive cell-cycle regulators; p53 triggers repair; homologous chromosomes match loci."
+}

@@ -1,0 +1,88 @@
+{
+  "id": "bank:usmle-step1:re-lh-surge-positive-feedback:v1",
+  "rotation": "usmle-step1-open",
+  "ladderId": "lh-surge-positive-feedback",
+  "topics": [
+    "LH surge",
+    "positive feedback",
+    "ovulation",
+    "ladder:lh-surge-positive-feedback"
+  ],
+  "moduleNodes": [
+    "usmle/step1",
+    "usmle/step1/reproductive"
+  ],
+  "questionType": "mechanism",
+  "difficulty": "medium",
+  "stem": "A 31-year-old woman has an abrupt pituitary burst of LH and FSH followed by ovulation. Which circulating signal most directly triggered the pituitary regulatory switch?",
+  "options": [
+    {
+      "label": "A",
+      "text": "Extremely high systemic progesterone",
+      "isCorrect": false,
+      "misconception": "Substitutes progesterone for the source-defined estrogen signal.",
+      "explanation": "The checked passage identifies extremely high systemic estrogen, not progesterone, as the signal that triggers the pituitary switch."
+    },
+    {
+      "label": "B",
+      "text": "Very low systemic estrogen",
+      "isCorrect": false,
+      "misconception": "Reverses the direction of the source-defined estrogen signal.",
+      "explanation": "The cited regulatory switch occurs at extremely high rather than very low systemic estrogen concentrations."
+    },
+    {
+      "label": "C",
+      "text": "Extremely high systemic inhibin",
+      "isCorrect": false,
+      "misconception": "Substitutes another circulating signal for the estrogen named by the source.",
+      "explanation": "The checked passage identifies extremely high systemic estrogen, not inhibin, as the trigger."
+    },
+    {
+      "label": "D",
+      "text": "Very low systemic progesterone",
+      "isCorrect": false,
+      "misconception": "Substitutes a low progesterone signal for the source-defined high estrogen signal.",
+      "explanation": "The passage ties the pituitary switch to extremely high systemic estrogen rather than low progesterone."
+    },
+    {
+      "label": "E",
+      "text": "Extremely high systemic estrogen",
+      "isCorrect": true,
+      "misconception": "Recognizes the exact circulating trigger named in the checked passage.",
+      "explanation": "Extremely high systemic estrogen triggers the anterior-pituitary switch, producing the LH and FSH burst that precedes ovulation."
+    }
+  ],
+  "context": "Learning objective: explain the LH-surge trigger. Extremely high systemic estrogen activates a regulatory switch in the anterior pituitary, which releases large amounts of LH and FSH; the resulting LH surge leads to ovulation of the dominant follicle.",
+  "cite": "openstax-anatomy-physiology#re-lh-surge-positive-feedback",
+  "publicUsmle": {
+    "schemaVersion": 1,
+    "origin": "generated",
+    "itemText": {
+      "licence": "CC-BY-4.0",
+      "attribution": "MD3 contributors"
+    },
+    "evidence": {
+      "kind": "passage",
+      "sourceId": "openstax-anatomy-physiology",
+      "passageId": "re-lh-surge-positive-feedback",
+      "licence": {
+        "cls": "foss",
+        "id": "cc-by-4.0"
+      }
+    },
+    "media": {
+      "kind": "asset",
+      "assetId": "menstrual-cycle-v1",
+      "job": "pathway",
+      "showWhen": "after-reveal",
+      "licence": {
+        "cls": "foss",
+        "id": "cc-by-4.0"
+      },
+      "attribution": "MD3 contributors",
+      "contentHash": "sha256:1f2f31e3cc6b7d1aae996adcda7ba376144dd75d88f4ce4b587f3d815b83a12e"
+    }
+  },
+  "imageUrl": "/figures/usmle/step1/menstrual-cycle-v1.svg",
+  "imageCaption": "Menstrual cycle: follicular E, LH surge, luteal P; secretory endometrium; corpus luteum; menopause; oxytocin."
+}

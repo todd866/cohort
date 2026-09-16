@@ -1,0 +1,39 @@
+{
+  "figureId": "tympanogram-pattern-comparison",
+  "tool": "built-in image_gen",
+  "model": null,
+  "referenceAssetIds": [],
+  "externalReferenceImages": [],
+  "prompt": "Original educational conceptual illustration, landscape 3:2. Warm ivory paper, sophisticated hand-painted gouache/watercolour, confident fine brown outlines, navy lettering, restrained teal, coral and amber. Editorial science illustration with spacious composition and large legible labels. The explanatory structure must carry the meaning visually: molecules, objects, geometry or flow; never paragraphs in boxes. No organs, regional anatomy, teeth or joint cutaways, tissue layers, invented histology, diagnostic photographs, radiographs or patient data. All symbols are explicitly conceptual. Footer: 'Conceptual teaching model • Not to scale'. Title 'Shape and peak position'. Three equal-size schematic plots arranged horizontally, headings 'Type A', 'Type B', 'Type C'. Each has identical axes: vertical 'Compliance', horizontal 'Pressure'; x-axis marked ONLY minus sign at left, 0 at midpoint, plus sign at right, and a faint vertical dotted guide through 0. Type A teal line: a single bell-shaped peak centred EXACTLY on the 0 guide, label underneath 'Near ambient'. Type B coral line: low flat horizontal line across plot with absolutely NO peak, label 'Flat'. Type C amber line: single bell-shaped peak CLEARLY LEFT of its 0 guide, label 'Negative pressure'. Same y-axis direction and same x-axis conventions all plots. Below middle plot note 'For B, check ear-canal volume'. Bottom 'Schematic patterns, not patient measurements'. No ear anatomy, diagnostic device branding or numeric cutoffs. Crisp graph geometry, warm hand-painted paper and curves.",
+  "clinicalSources": [
+    {
+      "title": "AAO-HNS: Clinical practice guideline—otitis media with effusion",
+      "url": "https://aao-hnsfjournals.onlinelibrary.wiley.com/doi/10.1177/0194599815623467"
+    },
+    {
+      "title": "ASHA: Tympanometry",
+      "url": "https://doi.org/10.1044/policy.RP1988-00027"
+    }
+  ],
+  "teaching": {
+    "question": "How do type A, B and C tympanogram patterns differ?",
+    "answer": "A peaks near ambient pressure, B is flat, and C peaks at negative pressure. A flat trace must be interpreted with ear-canal volume and the clinical findings.",
+    "imageRole": "after-reveal"
+  },
+  "title": "Tympanogram shape and peak position",
+  "caption": "Type A has a peak near ambient pressure, type B is flat, and type C peaks at negative pressure. A flat trace needs ear-canal-volume and clinical context; normal canal volume supports an effusion interpretation.",
+  "alt": "Three schematic compliance-versus-pressure graphs show a central peak for A, a low flat line for B and a left-shifted peak for C.",
+  "review": {
+    "status": "pending-independent-qa",
+    "method": "agent-visual-and-source-review",
+    "notes": "Three x axes consistently run negative→zero→positive. A peak is centred on zero, B line is flat, C peak is clearly left of zero while compliance remains upward. Ear-canal-volume qualifier present. No ear anatomy, cutoff values or patient measurement claim.",
+    "structure": {
+      "kind": "conceptual",
+      "status": "verified",
+      "specificationFiles": [
+        "scaffolds/tympanogram-pattern-comparison.json"
+      ],
+      "notes": "Three x axes consistently run negative→zero→positive. A peak is centred on zero, B line is flat, C peak is clearly left of zero while compliance remains upward. Ear-canal-volume qualifier present. No ear anatomy, cutoff values or patient measurement claim."
+    }
+  }
+}

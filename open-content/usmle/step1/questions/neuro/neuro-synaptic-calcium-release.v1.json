@@ -1,0 +1,85 @@
+{
+  "id": "bank:usmle-step1:neuro-synaptic-calcium-release:v1",
+  "rotation": "usmle-step1-open",
+  "topics": [
+    "chemical synapse",
+    "neurotransmitter release"
+  ],
+  "moduleNodes": [
+    "usmle/step1",
+    "usmle/step1/neuroscience"
+  ],
+  "questionType": "mechanism",
+  "difficulty": "medium",
+  "stem": "A 58-year-old man has antibodies against presynaptic voltage-gated calcium channels and develops proximal muscle weakness that improves with repeated activity.\n\nIn a healthy motor axon terminal, the arriving action potential triggers acetylcholine release through which of the following sequences?",
+  "options": [
+    {
+      "label": "A",
+      "text": "Acetylcholine diffuses through the membrane without any vesicles",
+      "isCorrect": false,
+      "misconception": "A packaged, regulated release process is being treated as free diffusion.",
+      "explanation": "Neurotransmitter is stored in vesicles and released by Ca2+-triggered exocytosis across the presynaptic membrane; it does not leak through the lipid bilayer."
+    },
+    {
+      "label": "B",
+      "text": "Sodium entering the terminal pulls vesicles directly into the cleft",
+      "isCorrect": false,
+      "misconception": "The upstroke cation is being substituted for the release trigger.",
+      "explanation": "Na+ influx depolarizes the terminal but does not couple to the vesicle machinery; Ca2+ is the ion that associates with vesicle proteins to drive fusion."
+    },
+    {
+      "label": "C",
+      "text": "Calcium binds receptors on the postsynaptic membrane to release the transmitter",
+      "isCorrect": false,
+      "misconception": "The presynaptic trigger is being relocated to the wrong side of the synapse.",
+      "explanation": "Ca2+ acts inside the presynaptic end bulb to fuse vesicles; postsynaptic receptors bind the released neurotransmitter, not calcium."
+    },
+    {
+      "label": "D",
+      "text": "Calcium enters the end bulb and drives vesicle fusion with the membrane",
+      "isCorrect": true,
+      "misconception": "None; Ca2+ influx couples the terminal action potential to exocytosis.",
+      "explanation": "The action potential opens voltage-gated Ca2+ channels in the synaptic end bulb; Ca2+ binds proteins on the vesicle surface, merging the vesicle with the presynaptic membrane and releasing neurotransmitter by exocytosis."
+    },
+    {
+      "label": "E",
+      "text": "Vesicles are retrieved by endocytosis, which ejects their contents outward",
+      "isCorrect": false,
+      "misconception": "The recycling direction of the vesicle cycle is being reversed.",
+      "explanation": "Release is exocytosis — vesicle membrane merges with the cell membrane and empties into the cleft; endocytosis later recovers vesicle membrane for reuse."
+    }
+  ],
+  "context": "Learning objective: describe transmitter release. Terminal depolarization opens voltage-gated Ca2+ channels; entering Ca2+ binds vesicle-surface proteins, fusing vesicles with the membrane so transmitter empties into the synaptic cleft.",
+  "cite": "openstax-anatomy-physiology#neuro-synaptic-calcium-release",
+  "publicUsmle": {
+    "schemaVersion": 1,
+    "origin": "generated",
+    "itemText": {
+      "licence": "CC-BY-4.0",
+      "attribution": "MD3 contributors"
+    },
+    "evidence": {
+      "kind": "passage",
+      "sourceId": "openstax-anatomy-physiology",
+      "passageId": "neuro-synaptic-calcium-release",
+      "licence": {
+        "cls": "foss",
+        "id": "cc-by-4.0"
+      }
+    },
+    "media": {
+      "kind": "asset",
+      "assetId": "nmj-v1",
+      "job": "anatomy",
+      "showWhen": "after-reveal",
+      "licence": {
+        "cls": "foss",
+        "id": "cc-by-4.0"
+      },
+      "attribution": "MD3 contributors",
+      "contentHash": "sha256:5d5ef2fac1990f38c3308366def619ba7a6130b0758221648acd0d06510e15a4"
+    }
+  },
+  "imageUrl": "/figures/usmle/step1/nmj-v1.svg",
+  "imageCaption": "NMJ: ACh vesicles -> nicotinic receptors -> EPP; AChE clears the cleft."
+}

@@ -1,0 +1,71 @@
+{
+  "id": "bank:usmle-step1:exp26-a-antibody-vaccine-response:v1",
+  "rotation": "usmle-step1-open",
+  "topics": [
+    "immunology",
+    "vaccine-interference"
+  ],
+  "moduleNodes": [
+    "usmle/step1",
+    "usmle/step1/immunology"
+  ],
+  "questionType": "mechanism",
+  "difficulty": "medium",
+  "stem": "In a hypothetical experiment, two otherwise comparable samples receive a live attenuated viral vaccine. One sample contains antigen-matched circulating antibodies shown to interfere with the vaccine organism; the other does not. The antibody-containing sample develops a weaker active response. Which of the following best connects the exposure difference with the result?",
+  "options": [
+    {
+      "label": "A",
+      "text": "The active response increases because organism replication is absent",
+      "isCorrect": false,
+      "explanation": "The platform is explicitly live attenuated and depends on replication. Absence of that step does not explain an increased active response under the mechanism supplied here.",
+      "misconception": "Assumes loss of replication strengthens the response to a live vaccine that depends on replication."
+    },
+    {
+      "label": "B",
+      "text": "Temporary antibody protection proves a stronger newly generated response",
+      "isCorrect": false,
+      "explanation": "Passive antibody can provide immediate temporary protection, but that is different from the recipient's new active response. It does not prove enhanced vaccine-induced immunity here.",
+      "misconception": "Equates temporary passive antibody protection with a stronger newly generated active response."
+    },
+    {
+      "label": "C",
+      "text": "The vaccine becomes inactivated because antibodies change its platform",
+      "isCorrect": false,
+      "explanation": "Interference with a live organism's replication does not redefine the manufactured platform. The relevant effect is on replication and response, not a conversion to an inactivated vaccine.",
+      "misconception": "Treats interference with vaccine replication as conversion of a live platform into an inactivated one."
+    },
+    {
+      "label": "D",
+      "text": "Antibody interference reduces the replication needed for the active response",
+      "isCorrect": true,
+      "explanation": "Live attenuated organisms replicate to produce their vaccine response. Antibodies that interfere with this step can reduce the resulting active response in the exposed sample.",
+      "misconception": "No misconception: Matched antibody interference can weaken the active response by reducing live-vaccine replication."
+    },
+    {
+      "label": "E",
+      "text": "Antibody interference increases the replication needed for the active response",
+      "isCorrect": false,
+      "explanation": "This reverses the specified interference mechanism. A weaker response is explained by reduced vaccine replication, not by assuming the circulating antibodies enhance that same replication step.",
+      "misconception": "Reverses the interference mechanism by predicting increased replication despite the weaker active response."
+    }
+  ],
+  "context": "Learning objective: explain how passive antibody can diminish the response to a live viral vaccine. Interference with replication can reduce the active response without implying that the antibody lacks immediate protective effects. The prediction concerns the specified interfering antibodies, not every circulating antibody or every vaccine antigen.",
+  "cite": "cdc-vaccine-principles-expanded#antibody-interference",
+  "publicUsmle": {
+    "schemaVersion": 1,
+    "origin": "generated",
+    "itemText": {
+      "licence": "CC-BY-4.0",
+      "attribution": "MD3 contributors"
+    },
+    "evidence": {
+      "kind": "passage",
+      "sourceId": "cdc-vaccine-principles-expanded",
+      "passageId": "antibody-interference",
+      "licence": {
+        "cls": "foss",
+        "id": "us-gov"
+      }
+    }
+  }
+}

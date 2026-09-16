@@ -1,0 +1,43 @@
+{
+  "figureId": "bronchiolitis-asthma-obstruction-model",
+  "tool": "built-in image_gen",
+  "model": null,
+  "referenceAssetIds": [],
+  "externalReferenceImages": [],
+  "prompt": "Original educational conceptual illustration, landscape 3:2. Warm ivory paper, sophisticated hand-painted gouache/watercolour, confident fine brown outlines, navy lettering, restrained teal, coral and amber. Editorial science illustration with spacious composition and large legible labels. The explanatory structure must carry the meaning visually: molecules, objects, geometry or flow; never paragraphs in boxes. No organs, regional anatomy, teeth or joint cutaways, tissue layers, invented histology, diagnostic photographs, radiographs or patient data. All symbols are explicitly conceptual. Footer: 'Conceptual teaching model • Not to scale'. Title 'Different reasons for a narrow passage'. Two rows of tabletop mechanical models made from straight rectangular wooden tracks and fabric straps, absolutely no organic tubes or anatomical cross-sections. Top row heading 'Asthma: muscle component': left a tight belt compresses flexible padded sides of a track and narrows the opening, label 'Tight band'; arrow to right the belt loose and sides spread wider, a broad teal flow arrow through the open track, label 'Band relaxes' and 'More room for flow'. Bottom row heading 'Bronchiolitis: swelling + material': left the same track contains bulky soft padding and loose cork fragments blocking its passage; arrow to right the strap is loosened but padding and cork still occupy the passage, tiny flow arrow, label 'Blockage remains'. All structures clearly manufactured objects. Footer note 'Selective mechanical analogies'. No drugs or claim that asthma has no inflammation. No extra slogans.",
+  "clinicalSources": [
+    {
+      "title": "NHLBI: Asthma causes",
+      "url": "https://www.nhlbi.nih.gov/health/asthma/causes"
+    },
+    {
+      "title": "RCH: Bronchiolitis",
+      "url": "https://www.rch.org.au/clinicalguide/guideline_index/Bronchiolitis/"
+    },
+    {
+      "title": "RCH Kids Health: Bronchiolitis",
+      "url": "https://www.rch.org.au/kidsinfo/fact_sheets/bronchiolitis/"
+    }
+  ],
+  "teaching": {
+    "question": "Why does bronchodilator response differ between asthma and typical infant bronchiolitis?",
+    "answer": "Bronchodilators relax smooth muscle, an important reversible component in asthma. Swelling and obstructing material predominate in bronchiolitis, where routine bronchodilators do not improve important outcomes.",
+    "imageRole": "after-reveal"
+  },
+  "title": "Different reasons for a narrow passage",
+  "caption": "Bronchodilators relax airway smooth muscle in asthma. Bronchiolitis obstruction is dominated by swelling and obstructing material, so routine bronchodilators do not improve important outcomes. These are selective mechanical analogies.",
+  "alt": "Two mechanical tracks compare a loosened constricting band with persistent blockage by padding and debris despite release of a similar band.",
+  "review": {
+    "status": "pending-independent-qa",
+    "method": "agent-visual-and-source-review",
+    "notes": "Top manufactured track opens after strap relaxation with wider flow arrow; asthma heading expressly limits it to the muscle component. Bottom padding and cork remain after loosening with small residual flow arrow. All four panels show artificial wooden/fabric models, not airway cross-sections. Selective-analogy qualifier excludes a one-mechanism disease claim.",
+    "structure": {
+      "kind": "conceptual",
+      "status": "verified",
+      "specificationFiles": [
+        "scaffolds/bronchiolitis-asthma-obstruction-model.json"
+      ],
+      "notes": "Top manufactured track opens after strap relaxation with wider flow arrow; asthma heading expressly limits it to the muscle component. Bottom padding and cork remain after loosening with small residual flow arrow. All four panels show artificial wooden/fabric models, not airway cross-sections. Selective-analogy qualifier excludes a one-mechanism disease claim."
+    }
+  }
+}

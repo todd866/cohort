@@ -1,0 +1,71 @@
+{
+  "id": "bank:usmle-step1:exp26-b-dead-space-partition:v1",
+  "rotation": "usmle-step1-open",
+  "topics": [
+    "respiratory",
+    "dead-space-partition"
+  ],
+  "moduleNodes": [
+    "usmle/step1",
+    "usmle/step1/respiratory"
+  ],
+  "questionType": "interpretation",
+  "difficulty": "medium",
+  "stem": "A lung model contains 140 mL in conducting airways and 60 mL in ventilated alveoli that receive no effective blood flow. Investigators classify the inspired volume that does not participate in gas exchange. Which of the following correctly reports the anatomical, alveolar, and total dead spaces?",
+  "options": [
+    {
+      "text": "60 mL anatomical; 140 mL alveolar; 200 mL total",
+      "explanation": "The combined volume is correct, but the compartments are reversed. Conducting airways supply anatomical dead space; the ineffective alveoli supply the alveolar component.",
+      "isCorrect": false,
+      "label": "A",
+      "misconception": "Reverses the conducting-airway and ineffective-alveolar compartment labels while preserving their sum."
+    },
+    {
+      "text": "140 mL anatomical; 60 mL alveolar; 140 mL total",
+      "explanation": "Both compartments are classified correctly, but the total omits the alveolar contribution. Total dead space includes the conducting-airway and ineffective alveolar volumes together.",
+      "isCorrect": false,
+      "label": "B",
+      "misconception": "Omits the ineffective alveolar compartment when adding total dead space."
+    },
+    {
+      "text": "140 mL anatomical; 60 mL alveolar; 60 mL total",
+      "explanation": "The individual labels are correct, but the total excludes conducting-airway volume. Gas fails to exchange in both specified compartments, so both contribute to the total.",
+      "isCorrect": false,
+      "label": "C",
+      "misconception": "Omits conducting-airway volume when adding total dead space."
+    },
+    {
+      "text": "60 mL anatomical; 140 mL alveolar; 140 mL total",
+      "explanation": "This reverses the anatomical and alveolar labels and then excludes one component from the total. The conducting-airway volume is 140 mL, and both volumes must be added.",
+      "isCorrect": false,
+      "label": "D",
+      "misconception": "Reverses the anatomical and alveolar labels and leaves one compartment out of the total."
+    },
+    {
+      "text": "140 mL anatomical; 60 mL alveolar; 200 mL total",
+      "explanation": "Conducting-airway volume is anatomical dead space. The ventilated but ineffective alveolar compartment contributes additional dead space, and adding the two compartments gives 200 mL.",
+      "isCorrect": true,
+      "label": "E",
+      "misconception": "No misconception: total dead space combines conducting-airway volume with ineffective alveolar volume."
+    }
+  ],
+  "context": "Learning objective: Classify dead-space compartments and combine their volumes without omitting ineffective alveoli. Conducting-airway volume is anatomical dead space. The ventilated but ineffective alveolar compartment contributes additional dead space, and adding the two compartments gives 200 mL.",
+  "cite": "openstax-ap1-breathing#dead-space",
+  "publicUsmle": {
+    "schemaVersion": 1,
+    "origin": "generated",
+    "itemText": {
+      "licence": "CC-BY-4.0",
+      "attribution": "MD3 contributors"
+    },
+    "evidence": {
+      "kind": "passage",
+      "sourceId": "openstax-ap1-breathing",
+      "passageId": "dead-space",
+      "licence": {
+        "cls": "foss",
+        "id": "cc-by-4.0"
+      }
+    }
+  }
+}

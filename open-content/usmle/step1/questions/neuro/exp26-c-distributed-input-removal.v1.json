@@ -1,0 +1,71 @@
+{
+  "id": "bank:usmle-step1:exp26-c-distributed-input-removal:v1",
+  "rotation": "usmle-step1-open",
+  "topics": [
+    "neuro",
+    "distributed-input-removal"
+  ],
+  "moduleNodes": [
+    "usmle/step1",
+    "usmle/step1/neuro"
+  ],
+  "questionType": "interpretation",
+  "difficulty": "medium",
+  "stem": "Three separate excitatory inputs reach a neuron simultaneously. Together they produce a larger depolarization than any one input alone. The investigator silences two inputs while preserving the timing and strength of the remaining input. Which of the following changes best explains the smaller response?",
+  "options": [
+    {
+      "label": "A",
+      "text": "Reduced temporal overlap of signals from the remaining input",
+      "isCorrect": false,
+      "explanation": "Timing at the remaining input is preserved. The manipulated feature is the number of active locations, not the spacing of repeated signals.",
+      "misconception": "Attributes fewer active locations to a timing change excluded by the experiment."
+    },
+    {
+      "label": "B",
+      "text": "Reduced spatial combination of signals from multiple input locations",
+      "isCorrect": true,
+      "explanation": "Silencing two locations removes their contributions to spatial summation. The surviving input can have unchanged strength while the total response falls.",
+      "misconception": "No misconception: silencing input locations reduces spatial summation."
+    },
+    {
+      "label": "C",
+      "text": "Increased temporal overlap of repeated signals at one input",
+      "isCorrect": false,
+      "explanation": "No increase in repeated signaling is described. Increased temporal overlap would tend to augment rather than explain the smaller combined response.",
+      "misconception": "Invents increased temporal overlap to explain a smaller total response."
+    },
+    {
+      "label": "D",
+      "text": "Increased spatial combination of signals from newly recruited locations",
+      "isCorrect": false,
+      "explanation": "Inputs were silenced rather than newly recruited. The data support less spatial contribution, not more.",
+      "misconception": "Treats silenced input locations as newly recruited contributors."
+    },
+    {
+      "label": "E",
+      "text": "Unchanged spatial combination despite fewer contributing input locations",
+      "isCorrect": false,
+      "explanation": "Spatial summation depends on the contributing locations. Preserving the surviving input does not preserve the lost contributions from the other two sites.",
+      "misconception": "Assumes one preserved input replaces lost contributions from other sites."
+    }
+  ],
+  "context": "Learning objective: Identify spatial summation by the contribution of separate synaptic locations. Removing inputs changes the combined membrane response without requiring a change in the surviving synapse.\n\nSilencing two locations removes their contributions to spatial summation. The surviving input can have unchanged strength while the total response falls.",
+  "cite": "openstax-anatomy-physiology#neuro-spatial-temporal-summation",
+  "publicUsmle": {
+    "schemaVersion": 1,
+    "origin": "generated",
+    "itemText": {
+      "licence": "CC-BY-4.0",
+      "attribution": "MD3 contributors"
+    },
+    "evidence": {
+      "kind": "passage",
+      "sourceId": "openstax-anatomy-physiology",
+      "passageId": "neuro-spatial-temporal-summation",
+      "licence": {
+        "cls": "foss",
+        "id": "cc-by-4.0"
+      }
+    }
+  }
+}

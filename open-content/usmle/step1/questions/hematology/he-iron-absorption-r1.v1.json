@@ -1,0 +1,73 @@
+{
+  "id": "bank:usmle-step1:he-iron-absorption-r1:v1",
+  "rotation": "usmle-step1-open",
+  "ladderId": "iron-absorption",
+  "difficulty": "easy",
+  "topics": [
+    "iron absorption",
+    "ferritin",
+    "ladder:iron-absorption"
+  ],
+  "moduleNodes": [
+    "usmle/step1",
+    "usmle/step1/hematology"
+  ],
+  "questionType": "mechanism",
+  "stem": "Once inside intestinal mucosal cells, ionic iron primarily binds which protein?",
+  "options": [
+    {
+      "label": "A",
+      "text": "Ferritin forming an intracellular storage complex",
+      "isCorrect": true,
+      "misconception": "None; mucosal iron is stored bound to ferritin until needed.",
+      "explanation": "Ionic iron entering mucosal cells binds ferritin, forming iron–ferritin storage complexes."
+    },
+    {
+      "label": "B",
+      "text": "Albumin, the major circulating plasma protein",
+      "isCorrect": false,
+      "misconception": "A plasma protein is being credited with mucosal iron storage.",
+      "explanation": "Albumin is the major plasma protein; mucosal iron storage uses ferritin, not albumin."
+    },
+    {
+      "label": "C",
+      "text": "Hemoglobin packed inside mature erythrocytes",
+      "isCorrect": false,
+      "misconception": "The final oxygen-carrying protein is being confused with the mucosal store.",
+      "explanation": "Hemoglobin carries oxygen in red cells; the mucosal storage protein is ferritin."
+    },
+    {
+      "label": "D",
+      "text": "Transferrin delivering iron through blood",
+      "isCorrect": false,
+      "misconception": "Plasma iron transport is being confused with intracellular mucosal storage.",
+      "explanation": "Transferrin transports iron in blood; inside mucosal cells iron binds ferritin."
+    },
+    {
+      "label": "E",
+      "text": "Ceruloplasmin oxidizing copper in serum",
+      "isCorrect": false,
+      "misconception": "Copper transport/oxidation is being confused with iron storage.",
+      "explanation": "Ceruloplasmin is a copper-carrying oxidase; it is not the mucosal iron store."
+    }
+  ],
+  "context": "Learning objective: recall that ionic iron binds ferritin for storage inside intestinal mucosal cells.",
+  "cite": "openstax-anatomy-physiology#he-iron-deficiency-microcytic",
+  "publicUsmle": {
+    "schemaVersion": 1,
+    "origin": "generated",
+    "itemText": {
+      "licence": "CC-BY-4.0",
+      "attribution": "MD3 contributors"
+    },
+    "evidence": {
+      "kind": "passage",
+      "sourceId": "openstax-anatomy-physiology",
+      "passageId": "he-iron-deficiency-microcytic",
+      "licence": {
+        "cls": "foss",
+        "id": "cc-by-4.0"
+      }
+    }
+  }
+}

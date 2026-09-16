@@ -1,0 +1,57 @@
+{
+  "schemaVersion": 1,
+  "figureId": "pseudohypertrophy-bulk-composition-tokens",
+  "kind": "conceptual",
+  "created": "2026-09-10",
+  "timing": "authored before generation",
+  "sourceFacts": [
+    {
+      "fact": "Pseudohypertrophy in Duchenne reflects replacement of muscle by fat and connective tissue.",
+      "sourceUrls": [
+        "https://www.genomicseducation.hee.nhs.uk/genotes/knowledge-hub/duchenne-muscular-dystrophy/"
+      ]
+    },
+    {
+      "fact": "Increased external bulk does not imply increased contractile strength.",
+      "sourceUrls": [
+        "https://www.genomicseducation.hee.nhs.uk/genotes/knowledge-hub/duchenne-muscular-dystrophy/"
+      ]
+    }
+  ],
+  "clinicalSources": [
+    {
+      "title": "NHS Genomics Education: Duchenne muscular dystrophy",
+      "url": "https://www.genomicseducation.hee.nhs.uk/genotes/knowledge-hub/duchenne-muscular-dystrophy/"
+    }
+  ],
+  "nodes": [
+    "smaller bulk with more contractile tokens",
+    "larger bulk with fewer contractile tokens",
+    "replacement material tokens"
+  ],
+  "edges": [
+    [
+      "replacement material tokens",
+      "larger bulk with fewer contractile tokens",
+      "adds bulk without contractile strength"
+    ]
+  ],
+  "expectedLabels": [
+    "Pseudohypertrophy: bulk is not strength",
+    "More contractile material",
+    "More replacement material",
+    "Contractile muscle",
+    "Fat and fibrous replacement",
+    "Token quantities are illustrative"
+  ],
+  "layoutSpecification": "Title 'Pseudohypertrophy: bulk is not strength'. Two piles of ABSTRACT FLAT SQUARE TOKENS on a desk, not tissue and not contained within a muscle-shaped outline. LEFT smaller pile: exactly EIGHT teal square tokens arranged a clean 2x4 array, heading 'More contractile material'. RIGHT larger pile: exactly FOUR teal square tokens plus EIGHT ochre square tokens in a clean 3x4 array, heading 'More replacement material'. Keep all tokens same size with straight sides, no fibres, cell shapes, stripes or lobules. Below a legend with one teal swatch 'Contractile muscle' and one ochre swatch 'Fat and fibrous replacement'. Bottom 'Token quantities are illustrative'. No calf or muscle silhouette, anatomical cross-section, histology, percentages, microscopic texture, real diagnostic stain or strength measurement. The large pile must contain fewer teal tokens despite more total tokens.",
+  "forbiddenAnatomy": [
+    "No internal organ, eye, ear, brain, tissue or bone anatomy",
+    "No diagnostic image, patient-specific lesion appearance or literal anatomical pathway"
+  ],
+  "validation": {
+    "sourceFacts": "Checked against listed primary clinical sources on 2026-09-10",
+    "status": "self-reviewed; independent review pending",
+    "pixelChecks": "Pixel/structure check: left array has exactly eight teal tokens; right array has exactly four teal and eight ochre tokens, all comparable size. Thus larger total bulk contains fewer contractile tokens. Legend colours and labels agree, illustrative-quantities note prevents measured tissue-fraction interpretation. No calf, muscle outline, histological texture, fibres or tissue cross-section remains."
+  }
+}

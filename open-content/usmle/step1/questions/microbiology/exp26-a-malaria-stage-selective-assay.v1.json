@@ -1,0 +1,71 @@
+{
+  "id": "bank:usmle-step1:exp26-a-malaria-stage-selective-assay:v1",
+  "rotation": "usmle-step1-open",
+  "topics": [
+    "microbiology",
+    "malaria-relapse"
+  ],
+  "moduleNodes": [
+    "usmle/step1",
+    "usmle/step1/microbiology"
+  ],
+  "questionType": "interpretation",
+  "difficulty": "medium",
+  "stem": "A hypothetical intervention eliminates parasites from erythrocytes but has no effect on dormant hepatic forms. It is applied after Plasmodium ovale malaria, and the blood stage becomes undetectable. No new infection occurs. Which of the following later sequences remains compatible with the intervention's stated limits?",
+  "options": [
+    {
+      "label": "A",
+      "text": "Renewed blood infection without any residual parasite reservoir",
+      "isCorrect": false,
+      "explanation": "New infection is excluded, so recurrence requires persistence from the earlier episode. The surviving hepatic forms provide that reservoir rather than recurrence without retained parasites.",
+      "misconception": "Allows recurrence without either a persistent parasite reservoir or a new infection."
+    },
+    {
+      "label": "B",
+      "text": "Immediate disappearance of dormant forms from both compartments",
+      "isCorrect": false,
+      "explanation": "Dormant forms are localized to the liver in this pathway, and the intervention leaves them intact. Simultaneous disappearance is inconsistent with the stipulated stage selectivity.",
+      "misconception": "Assumes a blood-stage intervention also removes dormant forms it explicitly leaves intact."
+    },
+    {
+      "label": "C",
+      "text": "Continued symptoms without subsequent blood-stage parasite activity",
+      "isCorrect": false,
+      "explanation": "Malaria symptoms are linked to activity in the blood stage. It does not support symptomatic relapse while denying the subsequent erythrocyte infection in this scenario.",
+      "misconception": "Disconnects symptomatic malaria relapse from subsequent activity in the blood stage."
+    },
+    {
+      "label": "D",
+      "text": "Hepatic reactivation followed by renewed erythrocyte infection",
+      "isCorrect": true,
+      "explanation": "The intervention leaves hepatic hypnozoites intact. Their later reactivation can seed a new blood stage even after the original erythrocyte infection became undetectable.",
+      "misconception": "No misconception: Surviving hepatic forms can reactivate after an intervention clears only the blood stage."
+    },
+    {
+      "label": "E",
+      "text": "Permanent hepatic clearance caused by the blood-stage effect",
+      "isCorrect": false,
+      "explanation": "The intervention is explicitly ineffective against dormant hepatic forms. Inferring clearance of that reservoir extends the stated action beyond the compartment it actually affects.",
+      "misconception": "Extends clearance of erythrocytic parasites to a hepatic reservoir outside the intervention’s stated effect."
+    }
+  ],
+  "context": "Learning objective: distinguish immediate removal of a blood stage from elimination of a dormant reservoir. A stage-selective effect does not imply eradication of parasite forms in another compartment.",
+  "cite": "cdc-malaria-clinical#malaria-relapse",
+  "publicUsmle": {
+    "schemaVersion": 1,
+    "origin": "generated",
+    "itemText": {
+      "licence": "CC-BY-4.0",
+      "attribution": "MD3 contributors"
+    },
+    "evidence": {
+      "kind": "passage",
+      "sourceId": "cdc-malaria-clinical",
+      "passageId": "malaria-relapse",
+      "licence": {
+        "cls": "foss",
+        "id": "us-gov"
+      }
+    }
+  }
+}

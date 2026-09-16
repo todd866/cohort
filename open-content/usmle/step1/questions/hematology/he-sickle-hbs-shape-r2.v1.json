@@ -1,0 +1,73 @@
+{
+  "id": "bank:usmle-step1:he-sickle-hbs-shape-r2:v1",
+  "rotation": "usmle-step1-open",
+  "ladderId": "sickle-hbs-shape",
+  "difficulty": "medium",
+  "topics": [
+    "sickle cell disease",
+    "hypoxemia",
+    "ladder:sickle-hbs-shape"
+  ],
+  "moduleNodes": [
+    "usmle/step1",
+    "usmle/step1/hematology"
+  ],
+  "questionType": "mechanism",
+  "stem": "Erythrocytes containing hemoglobin S are most likely to assume a sickle shape under which condition?",
+  "options": [
+    {
+      "label": "A",
+      "text": "High arterial oxygen tension after oxygen therapy",
+      "isCorrect": false,
+      "misconception": "Oxygenation is being treated as the sickling trigger.",
+      "explanation": "Sickling is favored at low oxygen concentrations, not after raising oxygen tension."
+    },
+    {
+      "label": "B",
+      "text": "Alkalosis that shifts the oxygen curve leftward",
+      "isCorrect": false,
+      "misconception": "A left shift is being confused with the low-oxygen sickling trigger.",
+      "explanation": "The described shape change is especially linked to low oxygen concentrations, not alkalosis per se."
+    },
+    {
+      "label": "C",
+      "text": "Elevated plasma urea during dehydration alone",
+      "isCorrect": false,
+      "misconception": "A comorbid stressor is being treated as the primary shape trigger.",
+      "explanation": "Dehydration can worsen crises clinically, but the textbook trigger highlighted is low oxygen."
+    },
+    {
+      "label": "D",
+      "text": "Low oxygen concentrations in the tissues",
+      "isCorrect": true,
+      "misconception": "None; hemoglobin S promotes sickling especially at low oxygen concentrations.",
+      "explanation": "Hemoglobin S causes erythrocytes to assume a sickle shape especially at low oxygen concentrations."
+    },
+    {
+      "label": "E",
+      "text": "Excess circulating fetal hemoglobin only",
+      "isCorrect": false,
+      "misconception": "Fetal hemoglobin is being treated as a sickling promoter.",
+      "explanation": "Fetal hemoglobin tends to ameliorate sickling; the trigger is low oxygen with HbS."
+    }
+  ],
+  "context": "Learning objective: apply that HbS erythrocytes sickle especially at low oxygen concentrations.",
+  "cite": "openstax-anatomy-physiology#he-sickle-hbs-shape",
+  "publicUsmle": {
+    "schemaVersion": 1,
+    "origin": "generated",
+    "itemText": {
+      "licence": "CC-BY-4.0",
+      "attribution": "MD3 contributors"
+    },
+    "evidence": {
+      "kind": "passage",
+      "sourceId": "openstax-anatomy-physiology",
+      "passageId": "he-sickle-hbs-shape",
+      "licence": {
+        "cls": "foss",
+        "id": "cc-by-4.0"
+      }
+    }
+  }
+}

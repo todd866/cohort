@@ -1,0 +1,85 @@
+{
+  "id": "bank:usmle-step1:biostats-sensitivity-definition:v1",
+  "rotation": "usmle-step1-open",
+  "topics": [
+    "sensitivity",
+    "screening"
+  ],
+  "moduleNodes": [
+    "usmle/step1",
+    "usmle/step1/biostats"
+  ],
+  "questionType": "interpretation",
+  "difficulty": "easy",
+  "stem": "A surveillance team already knows which patients truly had a disease from an independent assessment. It asks how successfully a new case definition identifies those patients. Which of the following quantities directly evaluates this goal?",
+  "options": [
+    {
+      "label": "A",
+      "text": "False positive results divided by all positive results",
+      "isCorrect": false,
+      "explanation": "This asks how many positive results are false alarms. Sensitivity instead starts with all people known to have disease and measures how many the definition detects.",
+      "misconception": "Counts false alarms among positive results instead of detected actual cases."
+    },
+    {
+      "label": "B",
+      "text": "True negative results divided by all negative results",
+      "isCorrect": false,
+      "explanation": "This starts with negative results and measures how many are truly disease-free. The surveillance question instead concerns detection among the independently established group with disease.",
+      "misconception": "Uses the negative-result denominator rather than the actual-case group."
+    },
+    {
+      "label": "C",
+      "text": "True negative results divided by all disease-free patients",
+      "isCorrect": false,
+      "explanation": "This is specificity: correctly excluding disease among people without it. Sensitivity uses the group with disease as the denominator and counts the cases detected.",
+      "misconception": "Confuses exclusion among noncases with detection among cases."
+    },
+    {
+      "label": "D",
+      "text": "True positive results divided by all people with disease",
+      "isCorrect": true,
+      "explanation": "Sensitivity is the proportion of true cases identified by a test or case definition. Divide the detected true cases by all independently established cases to evaluate this goal.",
+      "misconception": "No misconception: sensitivity counts detected true cases among all actual cases."
+    },
+    {
+      "label": "E",
+      "text": "True positive results divided by all positive results",
+      "isCorrect": false,
+      "explanation": "This is positive predictive value, which evaluates whether positive results represent disease. Sensitivity evaluates how many actual cases are detected, so its denominator is all patients with disease.",
+      "misconception": "Substitutes the PPV positive-result denominator for all people with disease."
+    }
+  ],
+  "context": "Learning objective: Identify the actual-case denominator for sensitivity before calculating case detection.\n\nSensitivity is the proportion of true cases identified by a test or case definition. Divide the detected true cases by all independently established cases to evaluate this goal.",
+  "cite": "cdc-epi-sensitivity-specificity#sensitivity-definition",
+  "publicUsmle": {
+    "schemaVersion": 1,
+    "origin": "generated",
+    "itemText": {
+      "licence": "CC-BY-4.0",
+      "attribution": "MD3 contributors"
+    },
+    "evidence": {
+      "kind": "passage",
+      "sourceId": "cdc-epi-sensitivity-specificity",
+      "passageId": "sensitivity-definition",
+      "licence": {
+        "cls": "foss",
+        "id": "us-gov"
+      }
+    },
+    "media": {
+      "kind": "asset",
+      "assetId": "biostats-contingency-v1",
+      "job": "compare-table",
+      "showWhen": "after-reveal",
+      "licence": {
+        "cls": "foss",
+        "id": "cc-by-4.0"
+      },
+      "attribution": "MD3 contributors",
+      "contentHash": "sha256:e9e377884f40d7113cfb4687b3f409ee67b22c830b3bd79ec91510cbac159682"
+    }
+  },
+  "imageUrl": "/figures/usmle/step1/biostats-contingency-v1.svg",
+  "imageCaption": "2x2 contingency: TP/FP/FN/TN with sensitivity, specificity, and PPV formulas."
+}

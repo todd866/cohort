@@ -1,0 +1,27 @@
+{
+  "schemaVersion": 1,
+  "figureId": "external-angular-dermoid-surface-landmark",
+  "sourceFacts": [
+    "A common periocular dermoid location is the upper outer orbital region near the eyebrow end closest to the ear.",
+    "An orbital dermoid commonly presents as a smooth firm painless lump under normal-coloured skin."
+  ],
+  "clinicalSources": [
+    {
+      "title": "AAPOS: Dermoid Cyst",
+      "url": "https://www.aapos.org/glossary/dermoid-cyst"
+    }
+  ],
+  "specificationFiles": [
+    "scaffolds/external-angular-dermoid-surface-landmark.json"
+  ],
+  "prompt": "Create an entirely original medical teaching concept illustration, landscape 3:2, warm hand-painted watercolour and gouache on ivory paper, fine ink contours, restrained navy labels, muted teal, ochre and peach accents, generous whitespace. Gentle storybook warmth with the precision and legibility of an educational atlas. Use written instructions only; no image reference. Meaningful visual relationships and sparse short labels, not paragraphs in boxes. NO internal anatomy, organ/eye/ear/brain/tissue cutaways, anatomical pathways, bones, diagnostic images, fake scans, realistic lesions, photorealistic skin, glossy wet flesh or 3D tissue. Neutral symbols or fully clothed surface poses only where specified. Preserve every direction, relationship and count in the explicit structure. Title and labels exactly as requested, no additional prose. Footer 'Educational schematic'. No logo or watermark.\n\nTitle 'External angular dermoid'. A very simple FRONT-FACING surface-location memory map, like an abstract face pictogram. Only one thin oval head outline, two curved eyebrow strokes, a small vertical midline dash, and two tiny neutral ear notches on the oval edges; omit actual eyes, pupils, mouth, nose detail and all internal anatomy. Place exactly one small ochre location marker immediately beside the VIEWER'S RIGHT OUTER endpoint of the right eyebrow stroke, toward the ear notch, never near the middle. Leader label 'Outer end of eyebrow'. A short horizontal arrow starting at the midline and pointing OUTWARD toward this marker, labelled 'Lateral = away from midline'. Below the diagram three small tactile mnemonic symbols (smooth pebble, firm cube, calm circle) paired with the short text 'Firm \u2022 smooth \u2022 usually painless'. Small note 'Surface landmark only'. Marker is symbolic, not a realistic lesion or diagnostic portrait.",
+  "generation": {
+    "tool": "built-in image_gen",
+    "model": null,
+    "referenceAssetIds": [],
+    "externalReferenceImages": [],
+    "specificationFiles": [
+      "scaffolds/external-angular-dermoid-surface-landmark.json"
+    ]
+  }
+}

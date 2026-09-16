@@ -1,0 +1,86 @@
+{
+  "id": "bank:usmle-step1:endo-pth-calcitonin-calcium:v1",
+  "rotation": "usmle-step1-open",
+  "topics": [
+    "parathyroid hormone",
+    "calcitonin",
+    "calcium homeostasis"
+  ],
+  "moduleNodes": [
+    "usmle/step1",
+    "usmle/step1/endocrine"
+  ],
+  "questionType": "mechanism",
+  "difficulty": "easy",
+  "stem": "A 62-year-old woman has a parathyroid adenoma producing excess parathyroid hormone (PTH). Her serum calcium is elevated and a wrist fracture follows minimal trauma.\n\nThe rise in her blood calcium is driven most directly by PTH doing which of the following?",
+  "options": [
+    {
+      "label": "A",
+      "text": "Stimulating osteoclasts, which release calcium from bone into blood",
+      "isCorrect": true,
+      "misconception": "None; PTH activates osteoclasts to resorb bone, raising blood calcium, and also promotes renal calcium reabsorption.",
+      "explanation": "PTH stimulates osteoclast proliferation and activity, releasing calcium from bone into the circulation; it also promotes calcium reabsorption by kidney tubules, compounding the hypercalcemia."
+    },
+    {
+      "label": "B",
+      "text": "Stimulating osteoblasts to secrete excess calcium-rich matrix",
+      "isCorrect": false,
+      "misconception": "The bone-forming cell is being credited with raising blood calcium.",
+      "explanation": "Osteoblasts lay down new bone, which removes calcium from blood; PTH raises calcium by stimulating osteoclast-mediated resorption, not formation."
+    },
+    {
+      "label": "C",
+      "text": "Triggering calcitonin release from the thyroid gland",
+      "isCorrect": false,
+      "misconception": "The opposing hormone is being cast as PTH's effector.",
+      "explanation": "Calcitonin lowers blood calcium by inhibiting osteoclasts and driving calcium uptake into bone; PTH and calcitonin act in opposition and are generally not secreted together."
+    },
+    {
+      "label": "D",
+      "text": "Blocking renal calcium reabsorption to protect the kidneys",
+      "isCorrect": false,
+      "misconception": "One of PTH's renal actions is being inverted.",
+      "explanation": "PTH promotes calcium reabsorption by the kidney tubules, which raises blood calcium; blocking reabsorption would lower it."
+    },
+    {
+      "label": "E",
+      "text": "Suppressing vitamin D synthesis to limit gut absorption",
+      "isCorrect": false,
+      "misconception": "PTH's intestinal effect is being reversed.",
+      "explanation": "PTH stimulates vitamin D synthesis, indirectly increasing intestinal calcium absorption; suppression would reduce calcium entry, not raise blood calcium."
+    }
+  ],
+  "context": "Learning objective: oppose PTH and calcitonin. PTH (low calcium trigger) stimulates osteoclasts to release bone calcium and promotes renal reabsorption; calcitonin (high calcium trigger, thyroid) inhibits osteoclasts and drives calcium into bone. Hyperparathyroidism causes hypercalcemia and bone density loss.",
+  "cite": "openstax-anatomy-physiology#endo-pth-calcitonin-calcium",
+  "publicUsmle": {
+    "schemaVersion": 1,
+    "origin": "generated",
+    "itemText": {
+      "licence": "CC-BY-4.0",
+      "attribution": "MD3 contributors"
+    },
+    "evidence": {
+      "kind": "passage",
+      "sourceId": "openstax-anatomy-physiology",
+      "passageId": "endo-pth-calcitonin-calcium",
+      "licence": {
+        "cls": "foss",
+        "id": "cc-by-4.0"
+      }
+    },
+    "media": {
+      "kind": "asset",
+      "assetId": "bone-remodeling-v1",
+      "job": "anatomy",
+      "showWhen": "after-reveal",
+      "licence": {
+        "cls": "foss",
+        "id": "cc-by-4.0"
+      },
+      "attribution": "MD3 contributors",
+      "contentHash": "sha256:cdbd5592d44ecfda732d8bc7b51a9d61044e0fdcb5b989cc2fc2842ccd451a30"
+    }
+  },
+  "imageUrl": "/figures/usmle/step1/bone-remodeling-v1.svg",
+  "imageCaption": "Osteoblast / osteoclast / osteocyte roles; PTH raises Ca2+ via RANKL and kidney."
+}

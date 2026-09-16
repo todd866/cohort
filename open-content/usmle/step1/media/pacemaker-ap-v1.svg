@@ -1,0 +1,15 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 280" role="img" aria-labelledby="t d">
+  <title id="t">Pacemaker action potential</title>
+  <desc id="desc">SA-node pacemaker potential: funny current phase 4, Ca upstroke phase 0, K repolarization phase 3; no stable resting potential.</desc>
+  <rect width="720" height="280" fill="#fff"/>
+  <text x="360" y="26" text-anchor="middle" font-family="Helvetica,Arial,sans-serif" font-size="16" font-weight="700" fill="#111">Pacemaker (SA node) action potential</text>
+  <line x1="60" y1="220" x2="660" y2="220" stroke="#111" stroke-width="1.5"/>
+  <line x1="60" y1="220" x2="60" y2="50" stroke="#111" stroke-width="1.5"/>
+  <text x="360" y="250" text-anchor="middle" font-family="Helvetica,Arial,sans-serif" font-size="12" fill="#333">time</text>
+  <text x="30" y="140" transform="rotate(-90 30,140)" text-anchor="middle" font-family="Helvetica,Arial,sans-serif" font-size="12" fill="#333">mV</text>
+  <path d="M80,180 C140,170 180,140 220,110 C240,95 250,70 270,60 C300,50 320,80 350,140 C380,190 420,175 470,150 C510,130 540,90 560,70 C590,55 610,90 640,160" fill="none" stroke="#1d4ed8" stroke-width="3"/>
+  <text x="150" y="200" font-family="Helvetica,Arial,sans-serif" font-size="11" fill="#1d4ed8">4 If (funny Na)</text>
+  <text x="255" y="55" font-family="Helvetica,Arial,sans-serif" font-size="11" fill="#1d4ed8">0 Ca upstroke</text>
+  <text x="380" y="175" font-family="Helvetica,Arial,sans-serif" font-size="11" fill="#1d4ed8">3 K repolarize</text>
+  <text x="360" y="270" text-anchor="middle" font-family="Helvetica,Arial,sans-serif" font-size="11" fill="#555">No plateau like ventricular myocytes; rate set by phase-4 slope</text>
+</svg>

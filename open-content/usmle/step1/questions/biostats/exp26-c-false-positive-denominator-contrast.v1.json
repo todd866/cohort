@@ -1,0 +1,71 @@
+{
+  "id": "bank:usmle-step1:exp26-c-false-positive-denominator-contrast:v1",
+  "rotation": "usmle-step1-open",
+  "topics": [
+    "biostats",
+    "false-positive-denominator-contrast"
+  ],
+  "moduleNodes": [
+    "usmle/step1",
+    "usmle/step1/biostats"
+  ],
+  "questionType": "calculation",
+  "difficulty": "medium",
+  "stem": "An independently classified sample contains 200 people with disease and 800 without disease. A test is positive in 160 people with disease and 80 without disease. An analyst reports 160/240 as specificity. Which of the following calculations should replace that value?",
+  "options": [
+    {
+      "label": "A",
+      "text": "160 divided by 200, yielding 80%",
+      "isCorrect": false,
+      "explanation": "This ratio measures sensitivity: detected cases divided by all people with disease. Specificity instead concerns correctly negative results among the independently identified group without disease.",
+      "misconception": "Uses detection among diseased people to estimate specificity."
+    },
+    {
+      "label": "B",
+      "text": "160 divided by 240, yielding 67%",
+      "isCorrect": false,
+      "explanation": "This is positive predictive value, because it divides true positives by all positive results. Specificity requires the disease-free group as the denominator and true negatives as the numerator.",
+      "misconception": "Substitutes the positive-test denominator for the disease-free denominator."
+    },
+    {
+      "label": "C",
+      "text": "720 divided by 760, yielding 95%",
+      "isCorrect": false,
+      "explanation": "This ratio asks what fraction of negative results come from people without disease. Specificity instead divides true negatives by all people without disease, including those who tested positive.",
+      "misconception": "Confuses negative predictive value with specificity."
+    },
+    {
+      "label": "D",
+      "text": "720 divided by 800, yielding 90%",
+      "isCorrect": true,
+      "explanation": "Among the 800 people without disease, 80 test positive and 720 test negative. Specificity is therefore 720/800, or 90%, using the disease-free group as its denominator.",
+      "misconception": "No misconception: specificity counts true negatives among all noncases."
+    },
+    {
+      "label": "E",
+      "text": "800 divided by 1,000, yielding 80%",
+      "isCorrect": false,
+      "explanation": "This ratio describes the fraction of the sample without disease. It does not assess whether the test correctly classified those people and therefore is not a measure of specificity.",
+      "misconception": "Treats the proportion without disease as test classification accuracy."
+    }
+  ],
+  "context": "Learning objective: Calculate specificity from true negatives divided by all people without disease.\n\nAmong the 800 people without disease, 80 test positive and 720 test negative. Specificity is therefore 720/800, or 90%, using the disease-free group as its denominator.",
+  "cite": "cdc-epi-sensitivity-specificity#sens-spec-formulas",
+  "publicUsmle": {
+    "schemaVersion": 1,
+    "origin": "generated",
+    "itemText": {
+      "licence": "CC-BY-4.0",
+      "attribution": "MD3 contributors"
+    },
+    "evidence": {
+      "kind": "passage",
+      "sourceId": "cdc-epi-sensitivity-specificity",
+      "passageId": "sens-spec-formulas",
+      "licence": {
+        "cls": "foss",
+        "id": "us-gov"
+      }
+    }
+  }
+}

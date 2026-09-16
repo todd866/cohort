@@ -1,0 +1,87 @@
+{
+  "schemaVersion": 1,
+  "id": "concept-meckel-acid-bleeding-sequence",
+  "kind": "conceptual",
+  "sourceFacts": [
+    {
+      "fact": "A Meckel diverticulum can contain ectopic gastric tissue.",
+      "sourceUrls": [
+        "https://www.gosh.nhs.uk/conditions-and-treatments/conditions-we-treat/meckels-diverticulum/",
+        "https://www.chop.edu/conditions-diseases/meckels-diverticulum"
+      ]
+    },
+    {
+      "fact": "Acid produced by gastric tissue can ulcerate adjacent small intestine and cause bleeding, often painless.",
+      "sourceUrls": [
+        "https://www.gosh.nhs.uk/conditions-and-treatments/conditions-we-treat/meckels-diverticulum/",
+        "https://www.chop.edu/conditions-diseases/meckels-diverticulum"
+      ]
+    }
+  ],
+  "nodes": [
+    {
+      "id": "1",
+      "label": "Ectopic gastric tissue"
+    },
+    {
+      "id": "2",
+      "label": "Acid secretion"
+    },
+    {
+      "id": "3",
+      "label": "Adjacent intestinal ulceration"
+    },
+    {
+      "id": "4",
+      "label": "Often painless bleeding"
+    }
+  ],
+  "edges": [
+    {
+      "from": "1",
+      "to": "2",
+      "meaning": "secretion"
+    },
+    {
+      "from": "2",
+      "to": "3",
+      "meaning": "injury"
+    },
+    {
+      "from": "3",
+      "to": "4",
+      "meaning": "bleeding"
+    }
+  ],
+  "labels": [
+    "Meckel bleeding: an acid-injury sequence",
+    "Ectopic gastric tissue",
+    "Acid secretion",
+    "Adjacent intestinal ulceration",
+    "Often painless bleeding",
+    "Conceptual schematic • Not anatomy"
+  ],
+  "layout": "Four concept cards form a clean left-to-right sequence of three arrows. First label accompanied only by a neutral location pin marked Ectopic, no tissue sample. Second plain H+ paper coins. Third a cracked ivory tile as a damage metaphor, explicitly no bowel section or ulcer image. Fourth a red drop token next to the word Bleeding. Small note: A possible mechanism when gastric tissue is present. Title contains Meckel, but do not draw a diverticulum, intestine, pouch or organs.",
+  "forbiddenAnatomy": [
+    "organs",
+    "body silhouettes",
+    "tissue cross-sections",
+    "cells",
+    "tubules",
+    "vessels",
+    "clinical photographs",
+    "diagnostic scans"
+  ],
+  "validation": {
+    "sourceStatus": "checked",
+    "structureStatus": "verified",
+    "requiredChecks": [
+      "Ectopic gastric tissue before acid before ulceration before bleeding",
+      "Four nodes and three arrows",
+      "Possible and often qualifications visible",
+      "No intestinal organ or ulcer anatomy"
+    ],
+    "clinicalReviewStatus": "pending",
+    "pixelChecks": "Pixel check: four nodes and three forward arrows correctly link ectopic gastric tissue, acid, adjacent intestinal ulceration and often painless bleeding. Possible mechanism qualification clear. Cracked paper tile and drop remain metaphors, no bowel or lesion anatomy. Independent and clinical review pending."
+  }
+}

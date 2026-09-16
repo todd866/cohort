@@ -1,0 +1,86 @@
+{
+  "id": "bank:usmle-step1:re-oocyte-meiosis-arrest:v1",
+  "rotation": "usmle-step1-open",
+  "topics": [
+    "oogenesis",
+    "meiosis arrest",
+    "primary oocyte"
+  ],
+  "moduleNodes": [
+    "usmle/step1",
+    "usmle/step1/reproductive"
+  ],
+  "questionType": "mechanism",
+  "difficulty": "medium",
+  "stem": "A 24-year-old woman ovulates, releasing an oocyte that completes its first meiotic division.\n\nThe arrested meiotic process that resumes at this ovulation actually began in her ovaries during which of the following periods?",
+  "options": [
+    {
+      "label": "A",
+      "text": "At the onset of puberty, with menarche",
+      "isCorrect": false,
+      "misconception": "The resumption of meiosis is being confused with its initiation.",
+      "explanation": "Puberty marks when arrested oocytes resume meiosis at each cycle, not when they first entered meiosis; entry into meiosis I occurred during fetal life."
+    },
+    {
+      "label": "B",
+      "text": "During her fetal development, before birth",
+      "isCorrect": true,
+      "misconception": "None; oogonia form primary oocytes in the fetal ovary.",
+      "explanation": "Oogonia form primary oocytes in the fetal ovary prior to birth; these primary oocytes are then arrested in meiosis I, resuming only years later at each ovulation from puberty onward."
+    },
+    {
+      "label": "C",
+      "text": "At the moment of the LH surge",
+      "isCorrect": false,
+      "misconception": "The trigger for resumption is being mistaken for the start.",
+      "explanation": "The LH surge triggers resumption of a meiotic process that was initiated and arrested in the fetal ovary decades earlier."
+    },
+    {
+      "label": "D",
+      "text": "During the follicular phase of that cycle",
+      "isCorrect": false,
+      "misconception": "Meiosis is being treated as a per-cycle event.",
+      "explanation": "Follicular growth in a given cycle recruits an oocyte whose meiotic arrest began in fetal life; meiosis does not start anew each month."
+    },
+    {
+      "label": "E",
+      "text": "During her own embryonic implantation",
+      "isCorrect": false,
+      "misconception": "Two different developmental events are being conflated.",
+      "explanation": "Implantation embeds a conceptus in the endometrium; oogonia entered meiosis to form arrested primary oocytes later in fetal ovarian development."
+    }
+  ],
+  "context": "Learning objective: place oogenesis on the timeline. Unlike spermatogenesis, oogenesis begins in fetal life: primary oocytes form before birth and arrest in meiosis I until ovulation resumes the division. The oocyte pool declines from one to two million at birth to roughly 400,000 at puberty to zero by menopause.",
+  "cite": "openstax-anatomy-physiology#re-oocyte-meiosis-arrest",
+  "publicUsmle": {
+    "schemaVersion": 1,
+    "origin": "generated",
+    "itemText": {
+      "licence": "CC-BY-4.0",
+      "attribution": "MD3 contributors"
+    },
+    "evidence": {
+      "kind": "passage",
+      "sourceId": "openstax-anatomy-physiology",
+      "passageId": "re-oocyte-meiosis-arrest",
+      "licence": {
+        "cls": "foss",
+        "id": "cc-by-4.0"
+      }
+    },
+    "media": {
+      "kind": "asset",
+      "assetId": "fertilization-implantation-v1",
+      "job": "pathway",
+      "showWhen": "after-reveal",
+      "licence": {
+        "cls": "foss",
+        "id": "cc-by-4.0"
+      },
+      "attribution": "MD3 contributors",
+      "contentHash": "sha256:b5ebb74360e8db4d6a3783533894c0d3d0916c7900359f2029362fcab1e33982"
+    }
+  },
+  "imageUrl": "/figures/usmle/step1/fertilization-implantation-v1.svg",
+  "imageCaption": "Fertilization in tube ampulla; cortical reaction; implantation; umbilical vessel polarity."
+}

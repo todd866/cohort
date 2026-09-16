@@ -1,0 +1,85 @@
+{
+  "id": "bank:usmle-step1:biochem-enzyme-activation-energy:v1",
+  "rotation": "usmle-step1-open",
+  "topics": [
+    "enzymes",
+    "activation energy"
+  ],
+  "moduleNodes": [
+    "usmle/step1",
+    "usmle/step1/biochem"
+  ],
+  "questionType": "mechanism",
+  "difficulty": "easy",
+  "stem": "What critical catalytic task do almost all enzymes perform inside cells?",
+  "options": [
+    {
+      "label": "A",
+      "text": "Replace ATP as the universal energy currency",
+      "isCorrect": false,
+      "misconception": "ATP remains the phosphoryl currency.",
+      "explanation": "Enzymes catalyze its use."
+    },
+    {
+      "label": "B",
+      "text": "Change the equilibrium constant of reactions",
+      "isCorrect": false,
+      "misconception": "Enzymes speed rates; they do not alter delta-G equilibrium.",
+      "explanation": "Catalysis is kinetic."
+    },
+    {
+      "label": "C",
+      "text": "Lower the activation energies of chemical reactions",
+      "isCorrect": true,
+      "misconception": "None; enzymes lower activation energies.",
+      "explanation": "OpenStax: enzymes lower activation energies of cellular reactions."
+    },
+    {
+      "label": "D",
+      "text": "Supply the net free energy for endergonic processes without coupling",
+      "isCorrect": false,
+      "misconception": "Endergonic work still needs energetic coupling.",
+      "explanation": "Enzymes do not create energy."
+    },
+    {
+      "label": "E",
+      "text": "Convert all substrates into DNA",
+      "isCorrect": false,
+      "misconception": "Nonsense category error.",
+      "explanation": "Enzymes are reaction-specific."
+    }
+  ],
+  "context": "Learning objective: enzymes lower activation energy.",
+  "cite": "openstax-biology-2e#enzyme-lowers-ea",
+  "publicUsmle": {
+    "schemaVersion": 1,
+    "origin": "generated",
+    "itemText": {
+      "licence": "CC-BY-4.0",
+      "attribution": "MD3 contributors"
+    },
+    "evidence": {
+      "kind": "passage",
+      "sourceId": "openstax-biology-2e",
+      "passageId": "enzyme-lowers-ea",
+      "licence": {
+        "cls": "foss",
+        "id": "cc-by-4.0"
+      }
+    },
+    "media": {
+      "kind": "asset",
+      "assetId": "enzyme-regulation-v1",
+      "job": "mechanism",
+      "showWhen": "after-reveal",
+      "licence": {
+        "cls": "foss",
+        "id": "cc-by-4.0"
+      },
+      "attribution": "MD3 contributors",
+      "contentHash": "sha256:b1848114d452e9edfee39c5878e82f6d47f23fd7d156e0078ec8a3c594308ff4"
+    }
+  },
+  "imageUrl": "/figures/usmle/step1/enzyme-regulation-v1.svg",
+  "imageCaption": "Enzymes lower Ea; competitive inhibitors bind active site; allosteric ligands bind elsewhere; glycolysis regulated at key steps."
+}

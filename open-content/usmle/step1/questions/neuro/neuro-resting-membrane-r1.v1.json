@@ -1,0 +1,73 @@
+{
+  "id": "bank:usmle-step1:neuro-resting-membrane-r1:v1",
+  "rotation": "usmle-step1-open",
+  "ladderId": "resting-membrane-potential",
+  "topics": [
+    "resting membrane potential",
+    "ion distributions",
+    "ladder:resting-membrane-potential"
+  ],
+  "moduleNodes": [
+    "usmle/step1",
+    "usmle/step1/neuroscience"
+  ],
+  "questionType": "mechanism",
+  "difficulty": "easy",
+  "stem": "Which of the following best describes the typical resting membrane potential of a neuron relative to the extracellular fluid?",
+  "options": [
+    {
+      "label": "A",
+      "text": "About +30 mV, with the interior more positive",
+      "isCorrect": false,
+      "misconception": "The action-potential peak is being reported as the resting value.",
+      "explanation": "+30 mV is near the peak of an action potential; at rest the interior is negative, about −70 mV."
+    },
+    {
+      "label": "B",
+      "text": "About 0 mV, with no charge separation",
+      "isCorrect": false,
+      "misconception": "Bulk electroneutrality is being confused with the membrane potential.",
+      "explanation": "Fluids are macroscopically neutral, but unequal ion distributions create a voltage across the membrane near −70 mV at rest."
+    },
+    {
+      "label": "C",
+      "text": "About −70 mV, with the interior more negative",
+      "isCorrect": true,
+      "misconception": "None; resting neurons sit near −70 mV inside relative to outside.",
+      "explanation": "K+ is concentrated inside, Na+ outside, and trapped intracellular anions leave the cytosol negative — typically about −70 mV at rest."
+    },
+    {
+      "label": "D",
+      "text": "About −110 mV, matching the potassium equilibrium potential exactly",
+      "isCorrect": false,
+      "misconception": "The pure K+ equilibrium potential is being reported as the observed resting value.",
+      "explanation": "Resting potential is near but not exactly at E_K because some Na+ leak and other ions contribute; −70 mV is the usual resting value cited."
+    },
+    {
+      "label": "E",
+      "text": "About +55 mV, the threshold for sodium channel opening",
+      "isCorrect": false,
+      "misconception": "Threshold is being confused with resting potential.",
+      "explanation": "Threshold is near −55 mV, not +55 mV; resting potential is substantially more negative."
+    }
+  ],
+  "context": "Learning objective: recall the sign and magnitude of resting membrane potential. Neurons rest near −70 mV with the interior negative relative to the extracellular space.",
+  "cite": "openstax-anatomy-physiology#neuro-resting-membrane-potential",
+  "publicUsmle": {
+    "schemaVersion": 1,
+    "origin": "generated",
+    "itemText": {
+      "licence": "CC-BY-4.0",
+      "attribution": "MD3 contributors"
+    },
+    "evidence": {
+      "kind": "passage",
+      "sourceId": "openstax-anatomy-physiology",
+      "passageId": "neuro-resting-membrane-potential",
+      "licence": {
+        "cls": "foss",
+        "id": "cc-by-4.0"
+      }
+    }
+  }
+}

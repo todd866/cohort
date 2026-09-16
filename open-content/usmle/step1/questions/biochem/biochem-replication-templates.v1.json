@@ -1,0 +1,84 @@
+{
+  "id": "bank:usmle-step1:biochem-replication-templates:v1",
+  "rotation": "usmle-step1-open",
+  "topics": [
+    "DNA replication"
+  ],
+  "moduleNodes": [
+    "usmle/step1",
+    "usmle/step1/biochem"
+  ],
+  "questionType": "mechanism",
+  "difficulty": "easy",
+  "stem": "During DNA replication, what role does each parental chain play?",
+  "options": [
+    {
+      "label": "A",
+      "text": "It templates a new complementary chain",
+      "isCorrect": true,
+      "misconception": "None; each parental chain templates a complement.",
+      "explanation": "OpenStax: each strand serves as a template for a new complementary strand."
+    },
+    {
+      "label": "B",
+      "text": "It binds oxygen as the terminal acceptor",
+      "isCorrect": false,
+      "misconception": "ETC confusion — does not match the cited teaching point.",
+      "explanation": "Unrelated to replication."
+    },
+    {
+      "label": "C",
+      "text": "It is discarded and replaced by RNA only",
+      "isCorrect": false,
+      "misconception": "Parental chains remain as templates.",
+      "explanation": "Semiconservative copying uses each chain."
+    },
+    {
+      "label": "D",
+      "text": "It is converted into glycogen stores",
+      "isCorrect": false,
+      "misconception": "Category error — does not match the cited teaching point.",
+      "explanation": "Nucleic acid remains nucleic acid."
+    },
+    {
+      "label": "E",
+      "text": "It catalyzes peptide-bond formation",
+      "isCorrect": false,
+      "misconception": "That is ribosomal peptidyl transferase.",
+      "explanation": "Wrong process; see the cited source passage for detail."
+    }
+  ],
+  "context": "Learning objective: parental DNA strands are templates.",
+  "cite": "openstax-biology-2e#replication-template-strands",
+  "publicUsmle": {
+    "schemaVersion": 1,
+    "origin": "generated",
+    "itemText": {
+      "licence": "CC-BY-4.0",
+      "attribution": "MD3 contributors"
+    },
+    "evidence": {
+      "kind": "passage",
+      "sourceId": "openstax-biology-2e",
+      "passageId": "replication-template-strands",
+      "licence": {
+        "cls": "foss",
+        "id": "cc-by-4.0"
+      }
+    },
+    "media": {
+      "kind": "asset",
+      "assetId": "central-dogma-v1",
+      "job": "pathway",
+      "showWhen": "after-reveal",
+      "licence": {
+        "cls": "foss",
+        "id": "cc-by-4.0"
+      },
+      "attribution": "MD3 contributors",
+      "contentHash": "sha256:0ce810ddd023dc4e0622eef9d7e762ef9b14e827233e95fa24085b8e9c6aa32a"
+    }
+  },
+  "imageUrl": "/figures/usmle/step1/central-dogma-v1.svg",
+  "imageCaption": "DNA double helix; strands template replication; codon triplets; central dogma DNA to protein."
+}

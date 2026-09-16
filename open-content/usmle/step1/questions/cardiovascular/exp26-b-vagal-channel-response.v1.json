@@ -1,0 +1,71 @@
+{
+  "id": "bank:usmle-step1:exp26-b-vagal-channel-response:v1",
+  "rotation": "usmle-step1-open",
+  "topics": [
+    "cardiovascular",
+    "vagal-channel-response"
+  ],
+  "moduleNodes": [
+    "usmle/step1",
+    "usmle/step1/cardiovascular"
+  ],
+  "questionType": "mechanism",
+  "difficulty": "medium",
+  "stem": "In a preparation containing the sinoatrial node, stimulation of vagal fibers slows the spontaneous firing rate. Acetylcholine release is detected near the node. Which of the following paired cellular responses best explains the observed slowing?",
+  "options": [
+    {
+      "text": "Potassium channels stay stable; depolarization stays stable",
+      "explanation": "Stable channel behavior and spontaneous depolarization would not explain the measured nodal slowing. The detected acetylcholine supplies a specific mechanism connecting stimulation to reduced firing.",
+      "isCorrect": false,
+      "label": "A",
+      "misconception": "Assumes that unchanged channel behavior and depolarization explain a measured decrease in nodal firing."
+    },
+    {
+      "text": "Potassium channels open; spontaneous depolarization slows",
+      "explanation": "Acetylcholine opens potassium channels in cardiac pacemaker tissue. This slows spontaneous depolarization, linking vagal stimulation to the measured reduction in nodal firing rate.",
+      "isCorrect": true,
+      "label": "B",
+      "misconception": "No misconception: acetylcholine-associated potassium channel opening slows spontaneous nodal depolarization."
+    },
+    {
+      "text": "Potassium channels close; spontaneous depolarization slows",
+      "explanation": "The predicted rate direction matches the observation, but channel closure does not match the acetylcholine pathway. The relevant mechanism involves opening potassium channels.",
+      "isCorrect": false,
+      "label": "C",
+      "misconception": "Assigns potassium channel closure to the acetylcholine pathway despite its channel-opening action."
+    },
+    {
+      "text": "Potassium channels open; spontaneous depolarization speeds",
+      "explanation": "This identifies the channel response but reverses its effect in pacemaker cells. Acetylcholine-associated potassium channel opening slows spontaneous depolarization and decreases firing rate.",
+      "isCorrect": false,
+      "label": "D",
+      "misconception": "Reverses the effect of acetylcholine-associated potassium channel opening on pacemaker depolarization."
+    },
+    {
+      "text": "Potassium channels close; spontaneous depolarization speeds",
+      "explanation": "This combination neither describes the acetylcholine-mediated channel response nor explains slower firing. The experiment links vagal activity to channel opening and delayed spontaneous depolarization.",
+      "isCorrect": false,
+      "label": "E",
+      "misconception": "Assigns both channel closure and faster depolarization to the observed vagal slowing."
+    }
+  ],
+  "context": "Learning objective: Connect vagal acetylcholine release to potassium-channel opening and slower nodal depolarization. Acetylcholine opens potassium channels in cardiac pacemaker tissue. This slows spontaneous depolarization, linking vagal stimulation to the measured reduction in nodal firing rate.",
+  "cite": "openstax-ap1-cardiac-physiology#acetylcholine-potassium",
+  "publicUsmle": {
+    "schemaVersion": 1,
+    "origin": "generated",
+    "itemText": {
+      "licence": "CC-BY-4.0",
+      "attribution": "MD3 contributors"
+    },
+    "evidence": {
+      "kind": "passage",
+      "sourceId": "openstax-ap1-cardiac-physiology",
+      "passageId": "acetylcholine-potassium",
+      "licence": {
+        "cls": "foss",
+        "id": "cc-by-4.0"
+      }
+    }
+  }
+}

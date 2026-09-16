@@ -1,0 +1,85 @@
+{
+  "id": "bank:usmle-step1:neuro-umn-lmn:v1",
+  "rotation": "usmle-step1-open",
+  "topics": [
+    "upper motor neuron",
+    "corticospinal tract"
+  ],
+  "moduleNodes": [
+    "usmle/step1",
+    "usmle/step1/neuroscience"
+  ],
+  "questionType": "mechanism",
+  "difficulty": "medium",
+  "stem": "A 71-year-old man with a stroke has right-sided weakness, spasticity, and exaggerated reflexes.\n\nThe damaged neuron responsible for these findings normally has its cell body and synaptic target, respectively, in which of the following locations?",
+  "options": [
+    {
+      "label": "A",
+      "text": "Basal nuclei, synapsing directly on muscle through the pyramids",
+      "isCorrect": false,
+      "misconception": "An inhibitory movement-regulation circuit is being given a direct motor output.",
+      "explanation": "The basal nuclei gate movement through thalamocortical feedback and never project to muscle; the pyramids carry corticospinal fibers from the primary motor cortex."
+    },
+    {
+      "label": "B",
+      "text": "Ventral horn, where a lower motor neuron synapses on skeletal muscle fibers",
+      "isCorrect": false,
+      "misconception": "The lower motor neuron is being blamed for upper motor signs.",
+      "explanation": "The cell described is the LMN; its injury causes flaccid weakness with lost tone and reflexes, not the spasticity and hyperreflexia of this patient's UMN lesion."
+    },
+    {
+      "label": "C",
+      "text": "Dorsal horn, synapsing on ascending sensory tract neurons",
+      "isCorrect": false,
+      "misconception": "A sensory relay station is being named in the motor pathway.",
+      "explanation": "The dorsal horn processes incoming sensation; the voluntary motor command descends from the primary motor cortex to the ventral horn."
+    },
+    {
+      "label": "D",
+      "text": "Cerebellar cortex, synapsing on deep cerebellar nuclei",
+      "isCorrect": false,
+      "misconception": "A movement-coordination loop is being mistaken for the voluntary command line.",
+      "explanation": "The cerebellum compares motor commands with proprioceptive feedback to refine movement; it is not the two-neuron corticospinal pathway whose upper component is injured here."
+    },
+    {
+      "label": "E",
+      "text": "Primary motor cortex, synapsing on a neuron in the ventral horn",
+      "isCorrect": true,
+      "misconception": "None; the UMN runs from motor cortex to the ventral-horn LMN.",
+      "explanation": "The upper motor neuron's cell body lies in the primary motor cortex and its axon descends in the corticospinal tract to synapse on the lower motor neuron in the ventral horn, which projects to skeletal muscle; UMN lesions produce spasticity and hyperreflexia."
+    }
+  ],
+  "context": "Learning objective: map the corticospinal two-neuron plan. The UMN cell body sits in the primary motor cortex and synapses on the LMN in the ventral horn; UMN lesions cause spasticity and brisk reflexes, LMN lesions flaccidity.",
+  "cite": "openstax-anatomy-physiology#neuro-umn-lmn",
+  "publicUsmle": {
+    "schemaVersion": 1,
+    "origin": "generated",
+    "itemText": {
+      "licence": "CC-BY-4.0",
+      "attribution": "MD3 contributors"
+    },
+    "evidence": {
+      "kind": "passage",
+      "sourceId": "openstax-anatomy-physiology",
+      "passageId": "neuro-umn-lmn",
+      "licence": {
+        "cls": "foss",
+        "id": "cc-by-4.0"
+      }
+    },
+    "media": {
+      "kind": "asset",
+      "assetId": "cns-pathways-v1",
+      "job": "anatomy",
+      "showWhen": "after-reveal",
+      "licence": {
+        "cls": "foss",
+        "id": "cc-by-4.0"
+      },
+      "attribution": "MD3 contributors",
+      "contentHash": "sha256:7409718be4c8fcb54e2364ad668d3b69e0f19cb24ed4b12c3cb5ae0b88d5de51"
+    }
+  },
+  "imageUrl": "/figures/usmle/step1/cns-pathways-v1.svg",
+  "imageCaption": "UMN vs LMN, stretch reflex, ascending tracts, blood-brain barrier."
+}

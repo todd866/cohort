@@ -1,0 +1,85 @@
+{
+  "id": "bank:usmle-step1:biochem-fermentation-nad:v1",
+  "rotation": "usmle-step1-open",
+  "topics": [
+    "fermentation",
+    "NAD+"
+  ],
+  "moduleNodes": [
+    "usmle/step1",
+    "usmle/step1/biochem"
+  ],
+  "questionType": "mechanism",
+  "difficulty": "medium",
+  "stem": "If aerobic respiration does not occur, why must NADH be reoxidized to NAD+?",
+  "options": [
+    {
+      "label": "A",
+      "text": "ATP synthase consumes NADH as its substrate",
+      "isCorrect": false,
+      "misconception": "ATP synthase uses ADP+Pi and proton flow.",
+      "explanation": "NADH feeds the ETC when available."
+    },
+    {
+      "label": "B",
+      "text": "Oxygen can oxidize glucose without any carriers",
+      "isCorrect": false,
+      "misconception": "Oxygen is not a direct glycolytic oxidant.",
+      "explanation": "Carrier regeneration is the point."
+    },
+    {
+      "label": "C",
+      "text": "NADH must become NADPH for biosynthesis only",
+      "isCorrect": false,
+      "misconception": "Wrong cofactor story.",
+      "explanation": "The issue is NAD+ availability for GAPDH."
+    },
+    {
+      "label": "D",
+      "text": "NAD+ is needed only to build glycogen stores",
+      "isCorrect": false,
+      "misconception": "Not the described bottleneck.",
+      "explanation": "Fermentation sustains sugar breakdown."
+    },
+    {
+      "label": "E",
+      "text": "NAD+ must be regenerated as an electron carrier",
+      "isCorrect": true,
+      "misconception": "None; NAD+ is needed when the ETC is unavailable.",
+      "explanation": "OpenStax: NADH must be reoxidized to NAD+ for reuse as an electron carrier so glycolysis can continue."
+    }
+  ],
+  "context": "Learning objective: fermentation regenerates NAD+ for glycolysis.",
+  "cite": "openstax-biology-2e#fermentation-nad-regeneration",
+  "publicUsmle": {
+    "schemaVersion": 1,
+    "origin": "generated",
+    "itemText": {
+      "licence": "CC-BY-4.0",
+      "attribution": "MD3 contributors"
+    },
+    "evidence": {
+      "kind": "passage",
+      "sourceId": "openstax-biology-2e",
+      "passageId": "fermentation-nad-regeneration",
+      "licence": {
+        "cls": "foss",
+        "id": "cc-by-4.0"
+      }
+    },
+    "media": {
+      "kind": "asset",
+      "assetId": "cellular-respiration-v1",
+      "job": "pathway",
+      "showWhen": "after-reveal",
+      "licence": {
+        "cls": "foss",
+        "id": "cc-by-4.0"
+      },
+      "attribution": "MD3 contributors",
+      "contentHash": "sha256:28ae7f955e1024135e9335f39b761f79292b1cc679baed71478eb3efc31f99e5"
+    }
+  },
+  "imageUrl": "/figures/usmle/step1/cellular-respiration-v1.svg",
+  "imageCaption": "Cellular respiration: glycolysis -> pyruvate -> acetyl-CoA -> citric cycle carriers -> ETC/ATP synthase; O2 terminal acceptor; fermentation regenerates NAD+."
+}

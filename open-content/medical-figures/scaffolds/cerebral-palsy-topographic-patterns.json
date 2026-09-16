@@ -1,0 +1,57 @@
+{
+  "schemaVersion": 1,
+  "figureId": "cerebral-palsy-topographic-patterns",
+  "kind": "conceptual",
+  "created": "2026-09-10",
+  "timing": "retrospective specification of previously generated candidate",
+  "sourceFacts": [
+    {
+      "fact": "Spastic diplegia predominantly affects the legs.",
+      "sourceUrls": [
+        "https://www.cdc.gov/cerebral-palsy/about/index.html"
+      ]
+    },
+    {
+      "fact": "Hemiplegia affects one side; quadriplegia affects all four limbs and may include the trunk and face.",
+      "sourceUrls": [
+        "https://www.cdc.gov/cerebral-palsy/about/index.html"
+      ]
+    }
+  ],
+  "clinicalSources": [
+    {
+      "title": "CDC: About Cerebral Palsy",
+      "url": "https://www.cdc.gov/cerebral-palsy/about/index.html"
+    }
+  ],
+  "nodes": [
+    "diplegia map",
+    "hemiplegia map",
+    "quadriplegia map"
+  ],
+  "edges": [],
+  "invariants": [
+    "Diplegia legs emphasized; hemiplegia same-side arm and leg; quadriplegia all four limbs.",
+    "Distribution does not encode functional prognosis; maps have no internal anatomy."
+  ],
+  "expectedLabels": [
+    "Diplegia",
+    "Legs more affected",
+    "Hemiplegia",
+    "s RIGHT arm and RIGHT leg highlighted ochre, opposite side plain; bottom ",
+    ". Right ",
+    ": BOTH arms and BOTH legs highlighted muted teal, trunk a lighter wash; bottom ",
+    ". Title ",
+    ". Small bottom note "
+  ],
+  "layoutSpecification": "Three modest, flat front-facing CHILD BODY MAPS in plain t-shirt and leggings, neutral stance, no actual diagnostic posture. Same size. Left heading 'Diplegia': both legs strongly teal highlighted, arms plain; bottom 'Legs more affected'. Middle 'Hemiplegia': viewer's RIGHT arm and RIGHT leg highlighted ochre, opposite side plain; bottom 'One side affected'. Right 'Quadriplegia': BOTH arms and BOTH legs highlighted muted teal, trunk a lighter wash; bottom 'All four limbs affected'. Title 'Spastic cerebral palsy: distribution'. Small bottom note 'Body maps show distribution, not functional ability'. No chair or walking prediction, no smile/frown severity judgment, no spinal lesion.",
+  "forbiddenAnatomy": [
+    "No claimed anatomical reconstruction, diagnostic image, histology or literal neuroanatomical pathway",
+    "No organ cutaways or invented internal spatial relationships"
+  ],
+  "validation": {
+    "sourceFacts": "Checked against listed primary clinical sources during original topic review",
+    "pixelChecks": "Visually inspected: diplegia map highlights both legs, hemiplegia one ipsilateral arm/leg, quadriplegia all four limbs. Labels match distributions and explicitly distinguish body maps from functional ability; no diagnosis from pose or prognosis implied.",
+    "status": "self-reviewed; independent review pending"
+  }
+}

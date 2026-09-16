@@ -1,0 +1,85 @@
+{
+  "id": "bank:usmle-step1:endo-steroid-gene-transcription:v1",
+  "rotation": "usmle-step1-open",
+  "topics": [
+    "steroid hormones",
+    "gene transcription"
+  ],
+  "moduleNodes": [
+    "usmle/step1",
+    "usmle/step1/endocrine"
+  ],
+  "questionType": "mechanism",
+  "difficulty": "easy",
+  "stem": "A 60-year-old woman starts a corticosteroid for an inflammatory condition, and her physician explains that the drug's full cellular effects take hours to appear because it works by changing protein production.\n\nWhich of the following sequences correctly describes how a steroid hormone alters its target cell?",
+  "options": [
+    {
+      "label": "A",
+      "text": "Binds a surface receptor, generating cAMP that phosphorylates existing proteins",
+      "isCorrect": false,
+      "misconception": "The water-soluble hormone pathway is being applied to a lipid-soluble hormone.",
+      "explanation": "Surface receptors with cAMP second messengers serve water-soluble hormones and act in seconds; steroids cross the membrane and work through gene transcription, which is why effects take hours."
+    },
+    {
+      "label": "B",
+      "text": "Diffuses in, binds a cytosolic receptor, and the complex activates gene transcription",
+      "isCorrect": true,
+      "misconception": "None; the steroid-receptor complex binds DNA and initiates transcription, which must be translated before effects appear.",
+      "explanation": "Steroid hormones diffuse through the cell membrane and bind cytosolic receptors; the receptor-hormone complex enters the nucleus, binds the target gene, and transcription produces mRNA that is translated into protein — a process taking time."
+    },
+    {
+      "label": "C",
+      "text": "Opens a ligand-gated ion channel that depolarizes the cell",
+      "isCorrect": false,
+      "misconception": "A neurotransmitter mechanism is being assigned to a steroid.",
+      "explanation": "Ion channel effects are millisecond events at synapses; steroids diffuse into cells, bind cytosolic receptors, and alter gene transcription in the nucleus."
+    },
+    {
+      "label": "D",
+      "text": "Is endocytosed and degraded by lysosomes into active fragments",
+      "isCorrect": false,
+      "misconception": "A degradative pathway is being described as the signaling mechanism.",
+      "explanation": "Steroids are not activated by degradation; they diffuse through the membrane, bind intracellular receptors, and direct transcription of target genes."
+    },
+    {
+      "label": "E",
+      "text": "Binds mitochondrial receptors to accelerate ATP synthesis directly",
+      "isCorrect": false,
+      "misconception": "A thyroid hormone action site is being generalized to steroids.",
+      "explanation": "Thyroid hormones have mitochondrial receptor effects; steroid hormones act by binding cytosolic receptors whose complexes enter the nucleus and drive gene transcription."
+    }
+  ],
+  "context": "Learning objective: contrast steroid and peptide signaling. Steroid (lipid-soluble) hormones diffuse through the membrane, bind cytosolic receptors, and the complex enters the nucleus to bind target genes; transcription and translation of new protein explain their slow onset versus second-messenger cascades.",
+  "cite": "openstax-anatomy-physiology#endo-steroid-gene-transcription",
+  "publicUsmle": {
+    "schemaVersion": 1,
+    "origin": "generated",
+    "itemText": {
+      "licence": "CC-BY-4.0",
+      "attribution": "MD3 contributors"
+    },
+    "evidence": {
+      "kind": "passage",
+      "sourceId": "openstax-anatomy-physiology",
+      "passageId": "endo-steroid-gene-transcription",
+      "licence": {
+        "cls": "foss",
+        "id": "cc-by-4.0"
+      }
+    },
+    "media": {
+      "kind": "asset",
+      "assetId": "hormone-signaling-v1",
+      "job": "compare-table",
+      "showWhen": "after-reveal",
+      "licence": {
+        "cls": "foss",
+        "id": "cc-by-4.0"
+      },
+      "attribution": "MD3 contributors",
+      "contentHash": "sha256:7103e388460fdee9ff97527a007236e8019b20111115d833c096f4e03c810045"
+    }
+  },
+  "imageUrl": "/figures/usmle/step1/hormone-signaling-v1.svg",
+  "imageCaption": "Membrane vs nuclear receptors; cAMP; steroid transcription; melatonin/SCN."
+}

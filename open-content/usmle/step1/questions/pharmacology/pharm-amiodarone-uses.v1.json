@@ -1,0 +1,84 @@
+{
+  "id": "bank:usmle-step1:pharm-amiodarone-uses:v1",
+  "rotation": "usmle-step1-open",
+  "topics": [
+    "amiodarone"
+  ],
+  "moduleNodes": [
+    "usmle/step1",
+    "usmle/step1/pharmacology"
+  ],
+  "questionType": "mechanism",
+  "difficulty": "easy",
+  "stem": "Amiodarone is used to treat and prevent which cardiac rhythm problems?",
+  "options": [
+    {
+      "label": "A",
+      "text": "Certain ventricular arrhythmias and unstable tachycardia",
+      "isCorrect": true,
+      "misconception": "None — this option matches the cited source passage for the stem.",
+      "explanation": "This correct choice is supported by the cited FOSS passage."
+    },
+    {
+      "label": "B",
+      "text": "Only migraine abortive therapy without antiarrhythmic labeling",
+      "isCorrect": false,
+      "misconception": "Wrong concept for this stem; does not match the cited passage.",
+      "explanation": "This option does not match the cited source passage for the stem."
+    },
+    {
+      "label": "C",
+      "text": "Only gout flares without cardiac rhythm indications",
+      "isCorrect": false,
+      "misconception": "Wrong concept for this stem; does not match the cited passage.",
+      "explanation": "This option does not match the cited source passage for the stem."
+    },
+    {
+      "label": "D",
+      "text": "Only BPH urinary symptoms without amiodarone roles",
+      "isCorrect": false,
+      "misconception": "Wrong concept for this stem; does not match the cited passage.",
+      "explanation": "This option does not match the cited source passage for the stem."
+    },
+    {
+      "label": "E",
+      "text": "Only malaria prophylaxis without arrhythmia labeling",
+      "isCorrect": false,
+      "misconception": "Wrong concept for this stem; does not match the cited passage.",
+      "explanation": "This option does not match the cited source passage for the stem."
+    }
+  ],
+  "context": "Learning objective: recall amiodarone arrhythmia use from the cited FOSS source.",
+  "cite": "medlineplus-amiodarone#amiodarone-uses",
+  "publicUsmle": {
+    "schemaVersion": 1,
+    "origin": "generated",
+    "itemText": {
+      "licence": "CC-BY-4.0",
+      "attribution": "MD3 contributors"
+    },
+    "evidence": {
+      "kind": "passage",
+      "sourceId": "medlineplus-amiodarone",
+      "passageId": "amiodarone-uses",
+      "licence": {
+        "cls": "foss",
+        "id": "us-gov"
+      }
+    },
+    "media": {
+      "kind": "asset",
+      "assetId": "pharm-drug-classes-v1",
+      "job": "compare-table",
+      "showWhen": "after-reveal",
+      "licence": {
+        "cls": "foss",
+        "id": "cc-by-4.0"
+      },
+      "attribution": "MD3 contributors",
+      "contentHash": "sha256:0660ff11235451eff9a2718dd975d64fa61483b220682b17bd82c8050fd4bceb"
+    }
+  },
+  "imageUrl": "/figures/usmle/step1/pharm-drug-classes-v1.svg",
+  "imageCaption": "High-yield FOSS drug-class map from MedlinePlus labels."
+}

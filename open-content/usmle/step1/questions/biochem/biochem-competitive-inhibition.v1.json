@@ -1,0 +1,84 @@
+{
+  "id": "bank:usmle-step1:biochem-competitive-inhibition:v1",
+  "rotation": "usmle-step1-open",
+  "topics": [
+    "enzyme inhibition"
+  ],
+  "moduleNodes": [
+    "usmle/step1",
+    "usmle/step1/biochem"
+  ],
+  "questionType": "mechanism",
+  "difficulty": "medium",
+  "stem": "In competitive inhibition, how does the inhibitor reduce enzyme activity?",
+  "options": [
+    {
+      "label": "A",
+      "text": "It competes with substrate for active-site binding",
+      "isCorrect": true,
+      "misconception": "None; competitive inhibitors bind the active site.",
+      "explanation": "OpenStax: the inhibitor competes with substrate for active-site binding."
+    },
+    {
+      "label": "B",
+      "text": "It binds DNA enhancers and blocks transcription",
+      "isCorrect": false,
+      "misconception": "Transcriptional regulation, not catalytic inhibition.",
+      "explanation": "Different mechanism; see the cited source passage for detail."
+    },
+    {
+      "label": "C",
+      "text": "It digests the enzyme into free amino acids",
+      "isCorrect": false,
+      "misconception": "That would be proteolysis, not classic competition.",
+      "explanation": "Competitive inhibition is binding competition."
+    },
+    {
+      "label": "D",
+      "text": "It pumps protons to starve ATP synthesis",
+      "isCorrect": false,
+      "misconception": "Wrong physiologic system.",
+      "explanation": "Not enzyme active-site competition."
+    },
+    {
+      "label": "E",
+      "text": "It replaces mRNA so the enzyme is not produced",
+      "isCorrect": false,
+      "misconception": "Expression control, not catalytic inhibition.",
+      "explanation": "Different timescale; see the cited source passage for detail."
+    }
+  ],
+  "context": "Learning objective: competitive inhibitors vie for the active site.",
+  "cite": "openstax-biology-2e#competitive-inhibition",
+  "publicUsmle": {
+    "schemaVersion": 1,
+    "origin": "generated",
+    "itemText": {
+      "licence": "CC-BY-4.0",
+      "attribution": "MD3 contributors"
+    },
+    "evidence": {
+      "kind": "passage",
+      "sourceId": "openstax-biology-2e",
+      "passageId": "competitive-inhibition",
+      "licence": {
+        "cls": "foss",
+        "id": "cc-by-4.0"
+      }
+    },
+    "media": {
+      "kind": "asset",
+      "assetId": "enzyme-regulation-v1",
+      "job": "mechanism",
+      "showWhen": "after-reveal",
+      "licence": {
+        "cls": "foss",
+        "id": "cc-by-4.0"
+      },
+      "attribution": "MD3 contributors",
+      "contentHash": "sha256:b1848114d452e9edfee39c5878e82f6d47f23fd7d156e0078ec8a3c594308ff4"
+    }
+  },
+  "imageUrl": "/figures/usmle/step1/enzyme-regulation-v1.svg",
+  "imageCaption": "Enzymes lower Ea; competitive inhibitors bind active site; allosteric ligands bind elsewhere; glycolysis regulated at key steps."
+}

@@ -1,0 +1,74 @@
+{
+  "id": "bank:usmle-step1:endo-cortisol-hpa-r1:v1",
+  "rotation": "usmle-step1-open",
+  "ladderId": "cortisol-hpa",
+  "difficulty": "easy",
+  "topics": [
+    "ACTH",
+    "cortisol",
+    "adrenal cortex",
+    "ladder:cortisol-hpa"
+  ],
+  "moduleNodes": [
+    "usmle/step1",
+    "usmle/step1/endocrine"
+  ],
+  "questionType": "mechanism",
+  "stem": "Which pituitary hormone most directly stimulates the adrenal cortex to secrete cortisol?",
+  "options": [
+    {
+      "label": "A",
+      "text": "Thyroid-stimulating hormone",
+      "isCorrect": false,
+      "misconception": "The thyroid axis signal is being confused with the adrenal axis signal.",
+      "explanation": "TSH stimulates the thyroid gland; cortisol secretion is driven by ACTH acting on the adrenal cortex."
+    },
+    {
+      "label": "B",
+      "text": "Adrenocorticotropic hormone",
+      "isCorrect": true,
+      "misconception": "None; ACTH from the anterior pituitary stimulates cortisol release from the adrenal cortex.",
+      "explanation": "ACTH (corticotropin) acts on the adrenal cortex to secrete corticosteroid hormones such as cortisol."
+    },
+    {
+      "label": "C",
+      "text": "Follicle-stimulating hormone",
+      "isCorrect": false,
+      "misconception": "A gonadotropin is being confused with the adrenal cortex stimulus.",
+      "explanation": "FSH acts on the gonads; it does not stimulate adrenal cortisol secretion."
+    },
+    {
+      "label": "D",
+      "text": "Prolactin",
+      "isCorrect": false,
+      "misconception": "Lactation signaling is being confused with the HPA axis.",
+      "explanation": "Prolactin primarily supports lactation and does not drive adrenal cortisol output."
+    },
+    {
+      "label": "E",
+      "text": "Antidiuretic hormone",
+      "isCorrect": false,
+      "misconception": "A posterior pituitary hormone is being confused with ACTH.",
+      "explanation": "ADH regulates water balance via the kidney; cortisol secretion is stimulated by anterior-pituitary ACTH."
+    }
+  ],
+  "context": "Learning objective: identify ACTH as the pituitary stimulus for adrenal cortisol secretion.",
+  "cite": "openstax-anatomy-physiology#endo-cortisol-stress-axis",
+  "publicUsmle": {
+    "schemaVersion": 1,
+    "origin": "generated",
+    "itemText": {
+      "licence": "CC-BY-4.0",
+      "attribution": "MD3 contributors"
+    },
+    "evidence": {
+      "kind": "passage",
+      "sourceId": "openstax-anatomy-physiology",
+      "passageId": "endo-cortisol-stress-axis",
+      "licence": {
+        "cls": "foss",
+        "id": "cc-by-4.0"
+      }
+    }
+  }
+}

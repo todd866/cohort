@@ -1,0 +1,86 @@
+{
+  "id": "bank:usmle-step1:re-cortical-reaction-polyspermy:v1",
+  "rotation": "usmle-step1-open",
+  "topics": [
+    "cortical reaction",
+    "polyspermy",
+    "fertilization"
+  ],
+  "moduleNodes": [
+    "usmle/step1",
+    "usmle/step1/reproductive"
+  ],
+  "questionType": "mechanism",
+  "difficulty": "medium",
+  "stem": "During in vitro fertilization of a 34-year-old woman's oocyte, a single sperm fuses with the oocyte membrane. Within minutes, cortical granules beneath the oocyte membrane fuse with it and release their contents.\n\nWhich of the following is the direct purpose of this cortical reaction?",
+  "options": [
+    {
+      "label": "A",
+      "text": "Blocking entry of any additional sperm cells",
+      "isCorrect": true,
+      "misconception": "None; the cortical reaction is the slow block to polyspermy.",
+      "explanation": "In the cortical reaction, cortical granules sitting immediately below the oocyte plasma membrane fuse with it and release zonal inhibiting proteins, hardening the zona pellucida to prevent polyspermy — which would produce a nonviable triploid zygote."
+    },
+    {
+      "label": "B",
+      "text": "Digesting the oocyte's surrounding corona radiata",
+      "isCorrect": false,
+      "misconception": "Sperm-side enzymes are being attributed to the oocyte.",
+      "explanation": "Acrosomal enzymes from sperm digest the corona radiata and zona path; the oocyte's cortical granules modify the zona to exclude further sperm."
+    },
+    {
+      "label": "C",
+      "text": "Triggering the first cleavage division of the zygote",
+      "isCorrect": false,
+      "misconception": "A fertilization defense is being mistaken for a cell-cycle trigger.",
+      "explanation": "Cleavage begins later as the conceptus travels toward the uterus; the cortical reaction's immediate role is the slow block to polyspermy."
+    },
+    {
+      "label": "D",
+      "text": "Signaling the corpus luteum to secrete progesterone",
+      "isCorrect": false,
+      "misconception": "An endocrine rescue is being assigned to a membrane event.",
+      "explanation": "The corpus luteum is maintained by hCG from the implanting trophoblast days later; cortical granule release acts locally on the zona pellucida within minutes."
+    },
+    {
+      "label": "E",
+      "text": "Completing the oocyte's first meiotic division",
+      "isCorrect": false,
+      "misconception": "Fertilization events are being sequenced before meiotic ones.",
+      "explanation": "The first meiotic division completes at ovulation before fertilization; cortical granule exocytosis is a defense against multiple sperm entry, not a meiotic step."
+    }
+  ],
+  "context": "Learning objective: explain the blocks to polyspermy. The first sperm fusion triggers a fast block (near-instant sodium-driven depolarization of the oocyte membrane) and then the slow block: the cortical reaction, in which cortical granules release zonal inhibiting proteins that harden the zona pellucida against further sperm — preventing a lethal triploid zygote.",
+  "cite": "openstax-anatomy-physiology#re-cortical-reaction-polyspermy",
+  "publicUsmle": {
+    "schemaVersion": 1,
+    "origin": "generated",
+    "itemText": {
+      "licence": "CC-BY-4.0",
+      "attribution": "MD3 contributors"
+    },
+    "evidence": {
+      "kind": "passage",
+      "sourceId": "openstax-anatomy-physiology",
+      "passageId": "re-cortical-reaction-polyspermy",
+      "licence": {
+        "cls": "foss",
+        "id": "cc-by-4.0"
+      }
+    },
+    "media": {
+      "kind": "asset",
+      "assetId": "fertilization-implantation-v1",
+      "job": "pathway",
+      "showWhen": "after-reveal",
+      "licence": {
+        "cls": "foss",
+        "id": "cc-by-4.0"
+      },
+      "attribution": "MD3 contributors",
+      "contentHash": "sha256:b5ebb74360e8db4d6a3783533894c0d3d0916c7900359f2029362fcab1e33982"
+    }
+  },
+  "imageUrl": "/figures/usmle/step1/fertilization-implantation-v1.svg",
+  "imageCaption": "Fertilization in tube ampulla; cortical reaction; implantation; umbilical vessel polarity."
+}

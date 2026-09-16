@@ -1,0 +1,71 @@
+{
+  "id": "bank:usmle-step1:exp26-b-hyperventilation-acid-base-pattern:v1",
+  "rotation": "usmle-step1-open",
+  "topics": [
+    "renal",
+    "hyperventilation-acid-base-pattern"
+  ],
+  "moduleNodes": [
+    "usmle/step1",
+    "usmle/step1/renal"
+  ],
+  "questionType": "diagnosis",
+  "difficulty": "easy",
+  "stem": "In a monitored experiment, a participant increases ventilation above baseline. Measurements show greater carbon dioxide exhalation, a falling blood carbon dioxide concentration, and a rising blood pH. Which of the following best identifies the primary disturbance in this sequence?",
+  "options": [
+    {
+      "text": "Metabolic acidosis from primary bicarbonate depletion",
+      "explanation": "The observed pH rises rather than falls, and the experiment manipulates ventilation instead of bicarbonate loss. Both features argue against the proposed primary metabolic acidosis.",
+      "isCorrect": false,
+      "label": "A",
+      "misconception": "Assigns primary bicarbonate depletion and acidosis to a ventilation-driven change with rising pH."
+    },
+    {
+      "text": "Respiratory acidosis from excess carbon dioxide elimination",
+      "explanation": "Excess carbon dioxide elimination produces the opposite respiratory acid-base direction. The paired fall in carbon dioxide and rise in pH support alkalosis rather than acidosis.",
+      "isCorrect": false,
+      "label": "B",
+      "misconception": "Reverses the acid-base effect of excess carbon dioxide elimination by labeling it respiratory acidosis."
+    },
+    {
+      "text": "Respiratory alkalosis from excess carbon dioxide elimination",
+      "explanation": "The initiating change is increased carbon dioxide exhalation, followed by lower blood carbon dioxide and higher pH. That sequence identifies a primary respiratory alkalosis.",
+      "isCorrect": true,
+      "label": "C",
+      "misconception": "No misconception: increased carbon dioxide elimination preceding a rise in pH identifies respiratory alkalosis."
+    },
+    {
+      "text": "Respiratory acidosis from excess carbon dioxide retention",
+      "explanation": "This reverses both the carbon dioxide and pH directions. Retention is not occurring; the participant is exhaling more carbon dioxide and developing a higher blood pH.",
+      "isCorrect": false,
+      "label": "D",
+      "misconception": "Reverses both the measured carbon dioxide change and the observed pH direction."
+    },
+    {
+      "text": "Metabolic alkalosis from primary bicarbonate accumulation",
+      "explanation": "Metabolic alkalosis begins with a primary metabolic change such as increased bicarbonate. Here the initiating manipulation changes ventilation and carbon dioxide elimination directly.",
+      "isCorrect": false,
+      "label": "E",
+      "misconception": "Assumes a primary metabolic bicarbonate change despite ventilation and carbon dioxide elimination initiating the sequence."
+    }
+  ],
+  "context": "Learning objective: Classify an acid-base disturbance by the initiating ventilatory change and its measured carbon dioxide and pH effects. The initiating change is increased carbon dioxide exhalation, followed by lower blood carbon dioxide and higher pH. That sequence identifies a primary respiratory alkalosis.",
+  "cite": "openstax-ap1-acid-base-disorders#respiratory-alkalosis",
+  "publicUsmle": {
+    "schemaVersion": 1,
+    "origin": "generated",
+    "itemText": {
+      "licence": "CC-BY-4.0",
+      "attribution": "MD3 contributors"
+    },
+    "evidence": {
+      "kind": "passage",
+      "sourceId": "openstax-ap1-acid-base-disorders",
+      "passageId": "respiratory-alkalosis",
+      "licence": {
+        "cls": "foss",
+        "id": "cc-by-4.0"
+      }
+    }
+  }
+}

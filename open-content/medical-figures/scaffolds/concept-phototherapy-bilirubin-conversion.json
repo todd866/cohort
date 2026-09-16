@@ -1,0 +1,85 @@
+{
+  "schemaVersion": 1,
+  "id": "concept-phototherapy-bilirubin-conversion",
+  "kind": "conceptual",
+  "sourceFacts": [
+    {
+      "fact": "Phototherapy converts unconjugated bilirubin into photoisomers that can be excreted without the usual conjugation step.",
+      "sourceUrls": [
+        "https://www.rch.org.au/rchcpg/hospital_clinical_guideline_index/phototherapy_for_neonatal_jaundice/"
+      ]
+    },
+    {
+      "fact": "Blue light acts on bilirubin; it does not directly remove a drawn organ blockage.",
+      "sourceUrls": [
+        "https://www.rch.org.au/rchcpg/hospital_clinical_guideline_index/phototherapy_for_neonatal_jaundice/"
+      ]
+    }
+  ],
+  "nodes": [
+    {
+      "id": "1",
+      "label": "Blue light"
+    },
+    {
+      "id": "2",
+      "label": "Unconjugated bilirubin"
+    },
+    {
+      "id": "3",
+      "label": "Photoisomers"
+    },
+    {
+      "id": "4",
+      "label": "Easier excretion"
+    }
+  ],
+  "edges": [
+    {
+      "from": "1",
+      "to": "3",
+      "meaning": "photochemical input"
+    },
+    {
+      "from": "2",
+      "to": "3",
+      "meaning": "conversion"
+    },
+    {
+      "from": "3",
+      "to": "4",
+      "meaning": "excretion"
+    }
+  ],
+  "labels": [
+    "Phototherapy changes bilirubin into excretable forms",
+    "Blue light",
+    "Unconjugated bilirubin",
+    "Photoisomers",
+    "Easier excretion",
+    "Conceptual schematic • Not anatomy"
+  ],
+  "layout": "Three large concept cards left-to-right2,3,4 linked by two arrows. A smaller blue input card1 above middle3 points down to3 with a third arrow. Card2 has an ochre hexagon token labelled Bilirubin; card3 a differently shaped ochre diamond token labelled Photoisomer, a symbolic shape change NOT chemical structure. Card4 shows small tokens exiting a neutral rectangular tray with a water-drop marker. Footer: Bypasses the usual conjugation step. No baby, skin, eyes, lamp placement, liver, kidney or organ route. No wavelength or treatment threshold.",
+  "forbiddenAnatomy": [
+    "organs",
+    "body silhouettes",
+    "tissue cross-sections",
+    "cells",
+    "tubules",
+    "vessels",
+    "clinical photographs",
+    "diagnostic scans"
+  ],
+  "validation": {
+    "sourceStatus": "checked",
+    "structureStatus": "verified",
+    "requiredChecks": [
+      "Blue light and unconjugated bilirubin converge on photoisomers",
+      "Four nodes and three connectors",
+      "Excretion follows conversion; no claim of liver enzyme stimulation",
+      "No organs, baby or treatment setup"
+    ],
+    "clinicalReviewStatus": "pending",
+    "pixelChecks": "Pixel check: four nodes/three main connectors show blue light plus unconjugated bilirubin producing photoisomers before easier excretion. Symbolic hexagon-to-diamond change is not a chemical structural claim. Bypassing usual conjugation statement visible. No infant or organ setup. Independent and clinical review pending."
+  }
+}

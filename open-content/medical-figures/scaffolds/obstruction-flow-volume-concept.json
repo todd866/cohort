@@ -1,0 +1,117 @@
+{
+  "schemaVersion": 1,
+  "figureId": "obstruction-flow-volume-concept",
+  "kind": "conceptual",
+  "sourceFacts": [
+    {
+      "id": "fact-1",
+      "fact": "Obstruction can produce a scooped, concave descending expiratory limb.",
+      "sources": [
+        {
+          "title": "ATS/ERS: Standardization of spirometry 2019",
+          "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC6794117/"
+        },
+        {
+          "title": "Merck Manual: Airflow, lung volumes and flow-volume loop",
+          "url": "https://www.merckmanuals.com/professional/pulmonary-disorders/tests-of-pulmonary-function-pft/airflow-lung-volumes-and-flow-volume-loop"
+        }
+      ]
+    },
+    {
+      "id": "fact-2",
+      "fact": "Flow is plotted against exhaled volume; shape is not a substitute for validated spirometric indices.",
+      "sources": [
+        {
+          "title": "ATS/ERS: Standardization of spirometry 2019",
+          "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC6794117/"
+        },
+        {
+          "title": "Merck Manual: Airflow, lung volumes and flow-volume loop",
+          "url": "https://www.merckmanuals.com/professional/pulmonary-disorders/tests-of-pulmonary-function-pft/airflow-lung-volumes-and-flow-volume-loop"
+        }
+      ]
+    },
+    {
+      "id": "fact-3",
+      "fact": "The figure depicts only an expiratory limb, not a complete loop or patient result.",
+      "sources": [
+        {
+          "title": "ATS/ERS: Standardization of spirometry 2019",
+          "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC6794117/"
+        },
+        {
+          "title": "Merck Manual: Airflow, lung volumes and flow-volume loop",
+          "url": "https://www.merckmanuals.com/professional/pulmonary-disorders/tests-of-pulmonary-function-pft/airflow-lung-volumes-and-flow-volume-loop"
+        }
+      ]
+    }
+  ],
+  "nodes": [
+    {
+      "id": "origin",
+      "shape": "lower-left origin",
+      "label": "Start expiration"
+    },
+    {
+      "id": "peak",
+      "shape": "early high peak",
+      "label": "Peak"
+    },
+    {
+      "id": "reference",
+      "shape": "dashed near-linear descent",
+      "label": "Reference shape"
+    },
+    {
+      "id": "scoop",
+      "shape": "lower concave-up descent",
+      "label": "Scooped descent"
+    },
+    {
+      "id": "end",
+      "shape": "flow returns to baseline",
+      "label": "End expiration"
+    }
+  ],
+  "edges": [
+    {
+      "from": "origin",
+      "to": "peak",
+      "meaning": "rapid rise early in expiration"
+    },
+    {
+      "from": "peak",
+      "to": "scoop",
+      "meaning": "concave descending limb"
+    },
+    {
+      "from": "scoop",
+      "to": "end",
+      "meaning": "flow approaches zero as expired volume rises"
+    }
+  ],
+  "labels": [
+    "The scooped expiratory limb",
+    "Expiratory flow",
+    "Exhaled volume",
+    "Reference shape",
+    "Scooped descent",
+    "Expiratory limb only",
+    "Schematic, not patient data"
+  ],
+  "forbiddenAnatomy": [
+    "Organs, ear/airway anatomy, actual or simulated patient recordings"
+  ],
+  "validation": {
+    "status": "verified",
+    "method": "source-and-conceptual-structure-review",
+    "checks": [
+      "X-axis exhaled volume increases right; expiratory flow positive upward.",
+      "Both curves rise steeply near left then descend to baseline on right.",
+      "Obstructive descending segment below reference and concave upward, not convex or inspiratory.",
+      "Explicit expiratory-only and schematic labels; no fabricated measured values."
+    ],
+    "pixelReviewStatus": "verified",
+    "pixelReviewNotes": "Flow axis points upward, exhaled-volume axis right. Both curves rise near left then return to baseline. Solid coral descending segment lies below dashed reference and is concave upward after its early peak; direction arrow points down-right. Explicit expiratory-only and schematic-not-patient-data labels. No diagnostic recording invented."
+  }
+}

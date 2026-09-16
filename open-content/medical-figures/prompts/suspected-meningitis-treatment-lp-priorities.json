@@ -1,0 +1,27 @@
+{
+  "schemaVersion": 1,
+  "figureId": "suspected-meningitis-treatment-lp-priorities",
+  "sourceFacts": [
+    "In a seriously unwell child with suspected meningitis or sepsis, urgent antibiotics take priority over performing LP.",
+    "LP requires a neurological examination and consideration of contraindications; obtain CSF when it is safe and appropriate."
+  ],
+  "clinicalSources": [
+    {
+      "title": "RCH: Lumbar puncture",
+      "url": "https://www.rch.org.au/clinicalguide/guideline_index/Lumbar_puncture/"
+    }
+  ],
+  "specificationFiles": [
+    "scaffolds/suspected-meningitis-treatment-lp-priorities.json"
+  ],
+  "prompt": "Create an entirely original medical teaching concept illustration, landscape 3:2, warm hand-painted watercolour and gouache on ivory paper, fine ink contours, restrained navy labels, muted teal, ochre and peach accents, generous whitespace. Gentle storybook warmth with the precision and legibility of an educational atlas. Use written instructions only; no image reference. Meaningful visual relationships and sparse short labels, not paragraphs in boxes. NO internal anatomy, organ/eye/ear/brain/tissue cutaways, anatomical pathways, bones, diagnostic images, fake scans, realistic lesions, photorealistic skin, glossy wet flesh or 3D tissue. Neutral symbols or fully clothed surface poses only where specified. Preserve every direction, relationship and count in the explicit structure. Title and labels exactly as requested, no additional prose. Footer 'Educational schematic'. No logo or watermark.\n\nTitle 'Suspected meningitis: protect treatment time'. LEFT one plain hospital assessment card labelled 'Seriously unwell child'. From it branch into TWO parallel lanes extending to RIGHT. UPPER lane a THICK uninterrupted teal arrow goes directly to an unmeasured plain medicine vial and clock labelled 'Urgent antibiotics'. LOWER lane a thinner ochre arrow leads first to a shield/checklist labelled 'Assess LP safety', then a small arrow labelled 'When safe' to a closed clear-fluid specimen tube labelled 'CSF sample when safe'. Absolutely no arrow from the LP/checklist lane into the antibiotics lane and no stopbar on antibiotics. Bottom 'Do not delay antibiotics for LP'. No needle, patient back, spine, brain, dose, fixed number of minutes or clinical LP instructions. This shows parallel priorities and a safety-dependent diagnostic step.",
+  "generation": {
+    "tool": "built-in image_gen",
+    "model": null,
+    "referenceAssetIds": [],
+    "externalReferenceImages": [],
+    "specificationFiles": [
+      "scaffolds/suspected-meningitis-treatment-lp-priorities.json"
+    ]
+  }
+}

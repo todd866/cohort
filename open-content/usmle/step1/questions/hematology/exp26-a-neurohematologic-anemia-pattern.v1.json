@@ -1,0 +1,71 @@
+{
+  "id": "bank:usmle-step1:exp26-a-neurohematologic-anemia-pattern:v1",
+  "rotation": "usmle-step1-open",
+  "topics": [
+    "hematology",
+    "b12-anemia"
+  ],
+  "moduleNodes": [
+    "usmle/step1",
+    "usmle/step1/hematology"
+  ],
+  "questionType": "diagnosis",
+  "difficulty": "medium",
+  "stem": "A 55-year-old patient has anemia, tingling in the feet, and increasing difficulty walking. Investigation identifies deficiency of a stomach-derived factor needed for intestinal absorption of an essential nutrient. Which of the following diagnoses best integrates the hematologic and neurologic findings with that absorption defect?",
+  "options": [
+    {
+      "label": "A",
+      "text": "Bleeding from immune destruction of platelets",
+      "isCorrect": false,
+      "explanation": "Immune platelet destruction explains low platelets and bleeding manifestations. It does not explain the identified vitamin absorption mechanism linking anemia with paresthesias and difficulty walking.",
+      "misconception": "Explains the presentation through platelet loss while leaving the demonstrated nutrient-absorption defect unexplained."
+    },
+    {
+      "label": "B",
+      "text": "Anemia from malaria activity within erythrocytes",
+      "isCorrect": false,
+      "explanation": "Blood-stage malaria can produce anemia, but no parasite observation is supplied. More importantly, that explanation does not account for the demonstrated gastric-factor-dependent absorption defect.",
+      "misconception": "Attributes anemia to erythrocytic infection without accounting for the measured gastric-factor-dependent absorption defect."
+    },
+    {
+      "label": "C",
+      "text": "Anemia resulting from a lack of vitamin B12",
+      "isCorrect": true,
+      "explanation": "B12 deficiency can produce anemia together with paresthesias and walking difficulty. Deficiency of gastric intrinsic factor links the intestinal absorption defect to this combined pattern.",
+      "misconception": "No misconception: Impaired B12 absorption links the gastric-factor defect with the hematologic and neurologic findings."
+    },
+    {
+      "label": "D",
+      "text": "Anemia from marrow stem-cell production failure",
+      "isCorrect": false,
+      "explanation": "Aplastic marrow failure explains reduced blood-cell production, but it does not account for the specified intrinsic-factor-dependent vitamin absorption defect and accompanying B12-pattern neurologic findings.",
+      "misconception": "Uses marrow production failure without explaining the specific absorption defect that unifies this pattern."
+    },
+    {
+      "label": "E",
+      "text": "Anemia from excessive destruction of erythrocytes",
+      "isCorrect": false,
+      "explanation": "Hemolytic anemia reflects destruction exceeding replacement. That mechanism does not integrate the stated gastric-factor deficiency and neurologic findings as directly as impaired B12 absorption.",
+      "misconception": "Uses red-cell destruction to explain anemia while overlooking the nutrient-absorption and neurologic evidence."
+    }
+  ],
+  "context": "Learning objective: integrate B12-related neurologic findings with anemia and impaired intrinsic-factor-dependent absorption. The mechanism connects a gastric absorption factor to intestinal vitamin uptake and subsequent blood-cell abnormalities.",
+  "cite": "nhlbi-b12-deficiency#b12-blood",
+  "publicUsmle": {
+    "schemaVersion": 1,
+    "origin": "generated",
+    "itemText": {
+      "licence": "CC-BY-4.0",
+      "attribution": "MD3 contributors"
+    },
+    "evidence": {
+      "kind": "passage",
+      "sourceId": "nhlbi-b12-deficiency",
+      "passageId": "b12-blood",
+      "licence": {
+        "cls": "foss",
+        "id": "us-gov"
+      }
+    }
+  }
+}

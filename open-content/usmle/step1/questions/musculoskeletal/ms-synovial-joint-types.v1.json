@@ -1,0 +1,86 @@
+{
+  "id": "bank:usmle-step1:ms-synovial-joint-types:v1",
+  "rotation": "usmle-step1-open",
+  "topics": [
+    "pivot joint",
+    "synovial joint types",
+    "atlantoaxial joint"
+  ],
+  "moduleNodes": [
+    "usmle/step1",
+    "usmle/step1/musculoskeletal"
+  ],
+  "questionType": "mechanism",
+  "difficulty": "medium",
+  "stem": "A 41-year-old man shakes his head side-to-side to signal 'no'. The movement occurring at the joint between his first and second cervical vertebrae is provided by which of the following joint types?",
+  "options": [
+    {
+      "label": "A",
+      "text": "A hinge joint",
+      "isCorrect": false,
+      "misconception": "A uniaxial flexion-extension joint is being assigned to head rotation.",
+      "explanation": "Hinge joints (knee, elbow, ankle) allow flexion and extension, not rotation; shaking the head 'no' is rotation at a pivot."
+    },
+    {
+      "label": "B",
+      "text": "A saddle joint",
+      "isCorrect": false,
+      "misconception": "A biaxial thumb joint is being assigned to the neck.",
+      "explanation": "Saddle joints (first carpometacarpal joint of the thumb) are biaxial, allowing flexion/extension and abduction/adduction with circumduction."
+    },
+    {
+      "label": "C",
+      "text": "A pivot joint",
+      "isCorrect": true,
+      "misconception": "None; the atlantoaxial joint is the classic pivot joint.",
+      "explanation": "The atlantoaxial pivot joint (between C1 and C2) provides side-to-side rotation of the head around a single axis."
+    },
+    {
+      "label": "D",
+      "text": "A ball-and-socket joint",
+      "isCorrect": false,
+      "misconception": "A multiaxial joint is being assigned to a uniaxial movement.",
+      "explanation": "Ball-and-socket joints are found only at the shoulder and hip, where they permit multiaxial movement including rotation; the C1-C2 joint is a pivot."
+    },
+    {
+      "label": "E",
+      "text": "A condyloid joint",
+      "isCorrect": false,
+      "misconception": "A biaxial wrist-type joint is being assigned to the neck.",
+      "explanation": "Condyloid joints (radiocarpal joint of the wrist, knuckles) are biaxial; the atlantoaxial joint rotates around one axis as a pivot."
+    }
+  ],
+  "context": "Learning objective: the six synovial joint types. Pivot (atlantoaxial C1-C2 — head rotation), hinge (knee/elbow/ankle — flexion/extension only), condyloid (wrist/knuckles) and saddle (thumb) — biaxial, plane (intertarsal/vertebral facets — gliding), ball-and-socket (shoulder/hip — multiaxial, widest range).",
+  "cite": "openstax-anatomy-physiology#ms-synovial-joint-types",
+  "publicUsmle": {
+    "schemaVersion": 1,
+    "origin": "generated",
+    "itemText": {
+      "licence": "CC-BY-4.0",
+      "attribution": "MD3 contributors"
+    },
+    "evidence": {
+      "kind": "passage",
+      "sourceId": "openstax-anatomy-physiology",
+      "passageId": "ms-synovial-joint-types",
+      "licence": {
+        "cls": "foss",
+        "id": "cc-by-4.0"
+      }
+    },
+    "media": {
+      "kind": "asset",
+      "assetId": "bone-joint-v1",
+      "job": "anatomy",
+      "showWhen": "after-reveal",
+      "licence": {
+        "cls": "foss",
+        "id": "cc-by-4.0"
+      },
+      "attribution": "MD3 contributors",
+      "contentHash": "sha256:d6bdaa1be77da2de4584d0fd35531bbdae7c99a6de0aba2fdcef378c04efb218"
+    }
+  },
+  "imageUrl": "/figures/usmle/step1/bone-joint-v1.svg",
+  "imageCaption": "Compact vs spongy bone, epiphyseal plate, synovial joint structure/types."
+}

@@ -1,0 +1,87 @@
+{
+  "id": "bank:usmle-step1:respiratory-ventilation-perfusion:v1",
+  "rotation": "usmle-step1-open",
+  "ladderId": "ventilation-perfusion",
+  "topics": [
+    "ventilation-perfusion matching",
+    "gas exchange",
+    "ladder:ventilation-perfusion"
+  ],
+  "moduleNodes": [
+    "usmle/step1",
+    "usmle/step1/respiratory"
+  ],
+  "questionType": "interpretation",
+  "difficulty": "medium",
+  "stem": "A 71-year-old woman with lobar pneumonia has consolidation of the right lower lobe: the alveoli in that region are filled with fluid, but blood flow through its capillaries is preserved.\n\nWhich of the following best describes gas exchange in the affected region?",
+  "options": [
+    {
+      "label": "A",
+      "text": "Ventilation and perfusion are both increased, improving local oxygen uptake",
+      "isCorrect": false,
+      "misconception": "A compensatory improvement is being assumed where anatomy prevents it.",
+      "explanation": "Fluid-filled alveoli cannot ventilate, and perfusion is preserved rather than increased; exchange worsens, not improves."
+    },
+    {
+      "label": "B",
+      "text": "Perfusion ceases in the region, so no deoxygenated blood reaches it",
+      "isCorrect": false,
+      "misconception": "The stem states perfusion is preserved; complete shunting off of blood flow is being assumed.",
+      "explanation": "Blood flow through the consolidated region continues, which is precisely why the ventilation-perfusion imbalance impairs oxygenation."
+    },
+    {
+      "label": "C",
+      "text": "Oxygen diffuses normally because the alveolar partial pressure is unchanged",
+      "isCorrect": false,
+      "misconception": "Alveolar oxygen tension is being assumed normal in fluid-filled alveoli.",
+      "explanation": "Fluid blocking the alveoli prevents fresh air from maintaining alveolar oxygen pressure, so the diffusion gradient cannot be sustained."
+    },
+    {
+      "label": "D",
+      "text": "Ventilation and perfusion are mismatched, so regional blood is poorly oxygenated",
+      "isCorrect": true,
+      "misconception": "None; perfusion without ventilation creates an imbalance that impairs oxygenation.",
+      "explanation": "For gas exchange to be efficient, ventilation and perfusion must be compatible; fluid-blocked alveoli abolish local ventilation while perfusion continues, so the imbalance leaves the blood poorly oxygenated."
+    },
+    {
+      "label": "E",
+      "text": "Carbon dioxide exchange is impaired but oxygenation is unaffected",
+      "isCorrect": false,
+      "misconception": "The two gases are being dissociated in a blocked alveolus.",
+      "explanation": "An alveolus that cannot ventilate impairs uptake of oxygen and removal of carbon dioxide together; oxygenation is the clinically dominant casualty."
+    }
+  ],
+  "context": "Learning objective: apply ventilation-perfusion matching. Efficient gas exchange requires compatible ventilation and perfusion; blocked alveolar ventilation with preserved perfusion creates imbalance and poor oxygenation.",
+  "cite": "openstax-anatomy-physiology#resp-ventilation-perfusion",
+  "publicUsmle": {
+    "schemaVersion": 1,
+    "origin": "generated",
+    "itemText": {
+      "licence": "CC-BY-4.0",
+      "attribution": "MD3 contributors"
+    },
+    "evidence": {
+      "kind": "passage",
+      "sourceId": "openstax-anatomy-physiology",
+      "passageId": "resp-ventilation-perfusion",
+      "licence": {
+        "cls": "foss",
+        "id": "cc-by-4.0"
+      }
+    },
+    "media": {
+      "kind": "asset",
+      "assetId": "gas-exchange-v1",
+      "job": "pathway",
+      "showWhen": "after-reveal",
+      "licence": {
+        "cls": "foss",
+        "id": "cc-by-4.0"
+      },
+      "attribution": "MD3 contributors",
+      "contentHash": "sha256:02374e7f286a7b66af9927c260658597c2328e958625e418f71e7885225080b8"
+    }
+  },
+  "imageUrl": "/figures/usmle/step1/gas-exchange-v1.svg",
+  "imageCaption": "V/Q, PO2 gradient, CO2 transport + chloride shift, chemoreceptors, brainstem, Dalton/Henry."
+}

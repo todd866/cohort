@@ -1,0 +1,86 @@
+{
+  "id": "bank:usmle-step1:re-leydig-testosterone-source:v1",
+  "rotation": "usmle-step1-open",
+  "topics": [
+    "Leydig cells",
+    "testosterone",
+    "testis"
+  ],
+  "moduleNodes": [
+    "usmle/step1",
+    "usmle/step1/reproductive"
+  ],
+  "questionType": "mechanism",
+  "difficulty": "easy",
+  "stem": "A 19-year-old man is being evaluated for delayed puberty, and laboratory studies show a low serum testosterone. Within the testis, testosterone is produced by which of the following cell types?",
+  "options": [
+    {
+      "label": "A",
+      "text": "Sertoli cells lining the tubular walls",
+      "isCorrect": false,
+      "misconception": "The nurse cells are being assigned the steroid role.",
+      "explanation": "Sertoli (sustentacular) cells support and nourish developing sperm and respond to FSH; androgen synthesis belongs to the interstitial Leydig cells."
+    },
+    {
+      "label": "B",
+      "text": "Spermatogonia at the basement membrane",
+      "isCorrect": false,
+      "misconception": "The germ stem cells are being cast as hormone producers.",
+      "explanation": "Spermatogonia are the diploid stem cells that enter spermatogenesis; they do not secrete testosterone, which comes from Leydig cells."
+    },
+    {
+      "label": "C",
+      "text": "Epididymal epithelial cells of the duct",
+      "isCorrect": false,
+      "misconception": "A storage-site lining is being treated as an endocrine source.",
+      "explanation": "The epididymis matures and stores sperm; testicular testosterone is synthesized by Leydig cells lying between the seminiferous tubules."
+    },
+    {
+      "label": "D",
+      "text": "Leydig cells between the seminiferous tubules",
+      "isCorrect": true,
+      "misconception": "None; the interstitial Leydig cells make testosterone.",
+      "explanation": "Leydig cells are the cells between the seminiferous tubules of the testes that produce testosterone; this steroid drives the male reproductive system's development, sperm maturation, and secondary sex characteristics."
+    },
+    {
+      "label": "E",
+      "text": "Peritubular myoid cells of the tubules",
+      "isCorrect": false,
+      "misconception": "Contractile support cells are being confused with steroidogenic cells.",
+      "explanation": "Myoid cells contract to move sperm along the tubule; the interstitial Leydig cells are the testosterone-producing population."
+    }
+  ],
+  "context": "Learning objective: locate testicular endocrine function. Leydig (interstitial) cells lie between the seminiferous tubules and produce testosterone, which maintains spermatogenesis (intratesticular levels run about 100 times circulating levels) and drives male secondary sex characteristics. Sertoli cells, by contrast, nurse the germ cells and secrete inhibin.",
+  "cite": "openstax-anatomy-physiology#re-leydig-testosterone-source",
+  "publicUsmle": {
+    "schemaVersion": 1,
+    "origin": "generated",
+    "itemText": {
+      "licence": "CC-BY-4.0",
+      "attribution": "MD3 contributors"
+    },
+    "evidence": {
+      "kind": "passage",
+      "sourceId": "openstax-anatomy-physiology",
+      "passageId": "re-leydig-testosterone-source",
+      "licence": {
+        "cls": "foss",
+        "id": "cc-by-4.0"
+      }
+    },
+    "media": {
+      "kind": "asset",
+      "assetId": "male-reproduction-v1",
+      "job": "pathway",
+      "showWhen": "after-reveal",
+      "licence": {
+        "cls": "foss",
+        "id": "cc-by-4.0"
+      },
+      "attribution": "MD3 contributors",
+      "contentHash": "sha256:97c8c6b84c0aa26f1cefdaef639c671072c487a9a21f511e950d2aad23232b03"
+    }
+  },
+  "imageUrl": "/figures/usmle/step1/male-reproduction-v1.svg",
+  "imageCaption": "Male path: spermatogenesis (4 haploid), epididymis, Leydig testosterone, midpiece mitochondria, seminal fructose."
+}

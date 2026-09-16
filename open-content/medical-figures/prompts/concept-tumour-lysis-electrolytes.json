@@ -1,0 +1,25 @@
+{
+  "id": "concept-tumour-lysis-electrolytes",
+  "title": "Tumour lysis: the metabolic pattern",
+  "prompt": "Create an original polished 1536x1024 landscape conceptual medical teaching diagram for after-answer study. Warm hand-painted gouache and watercolour on ivory paper; a gentle storybook warmth with precise dark navy type. Matte teal, ochre, coral and blue accents. Simple neutral tokens, paper tiles, arrows and visibly abstract compartments only. Make the visual relationships legible at small size. No body parts, organs, cells, tissues, lumens, tubules, membranes, vessels, anatomical cutaways, clinical photos, diagnostic scans, babies, realistic flesh or decorative scenery. Do not turn abstract boxes or routes into organs or anatomy. Do not invent extra arrows or medical claims. Edge meanings below are metadata, not visible text: draw the arrows but do not print their meaning strings. Footer exactly: Conceptual schematic • Not anatomy. Title exactly: Tumour lysis: the metabolic pattern. Seven labelled paper tiles; node1 at top, branching to three columns below: left2, centre3 then6 then7, right4 then5. Exactly six arrows. Use plain geometric K, P and UA token inventories with upward trend marks for rising quantities; a smaller Ca inventory for calcium falls. No cell bursting, chemical formula claims or anatomical organ. A quiet bottom caption: Potassium, phosphate and uric acid rise; calcium may fall. Exact node labels: [{\"id\": \"1\", \"label\": \"Rapid tumour breakdown\"}, {\"id\": \"2\", \"label\": \"Potassium rises\"}, {\"id\": \"3\", \"label\": \"Phosphate rises\"}, {\"id\": \"4\", \"label\": \"Nucleic acids released\"}, {\"id\": \"5\", \"label\": \"Uric acid rises\"}, {\"id\": \"6\", \"label\": \"Calcium-phosphate formation\"}, {\"id\": \"7\", \"label\": \"Calcium falls\"}]. Exact directed connections: [{\"from\": \"1\", \"to\": \"2\", \"meaning\": \"release\"}, {\"from\": \"1\", \"to\": \"3\", \"meaning\": \"release\"}, {\"from\": \"1\", \"to\": \"4\", \"meaning\": \"release\"}, {\"from\": \"4\", \"to\": \"5\", \"meaning\": \"purine metabolism\"}, {\"from\": \"3\", \"to\": \"6\", \"meaning\": \"binding and precipitation\"}, {\"from\": \"6\", \"to\": \"7\", \"meaning\": \"secondary hypocalcaemia\"}]. Required checks: Seven nodes and six arrows; Uric acid follows nucleic acids; calcium falls follows calcium-phosphate formation; No direct release arrow to calcium falls; No cells or anatomical structures.",
+  "clinicalSources": [
+    {
+      "title": "eviQ — Prevention of tumour lysis syndrome",
+      "url": "https://www.eviq.org.au/clinical-resources/side-effect-and-toxicity-management/prophylaxis-and-treatment/108-prevention-of-tumour-lysis-syndrome"
+    }
+  ],
+  "caption": "A branching map explains the characteristic metabolic changes in tumour lysis syndrome.",
+  "question": "Why does calcium fall while potassium, phosphate and uric acid rise in tumour lysis?",
+  "answer": "Breakdown releases potassium, phosphate and nucleic acids; uric acid is produced from purine breakdown, and excess phosphate can bind calcium.",
+  "structureSpecification": "scaffolds/concept-tumour-lysis-electrolytes.json",
+  "generationInputs": {
+    "referenceImages": [],
+    "style": "written-only"
+  },
+  "qa": {
+    "status": "pending-independent-qa",
+    "method": "agent-visual-and-source-review",
+    "notes": "Pixel check confirms seven nodes, six arrows, three correctly separated release branches. Uric acid follows nucleic acids, calcium-phosphate formation follows phosphate and precedes calcium falls. Tokens and quantities are qualitative; no invented anatomy. Independent and clinical review pending.",
+    "clinicalReviewStatus": "pending"
+  }
+}

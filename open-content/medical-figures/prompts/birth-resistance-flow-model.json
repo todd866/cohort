@@ -1,0 +1,35 @@
+{
+  "figureId": "birth-resistance-flow-model",
+  "tool": "built-in image_gen",
+  "model": null,
+  "referenceAssetIds": [],
+  "externalReferenceImages": [],
+  "prompt": "Original educational conceptual illustration, landscape 3:2. Warm ivory paper, sophisticated hand-painted gouache/watercolour, confident fine brown outlines, navy lettering, restrained teal, coral and amber. Editorial science illustration with spacious composition and large legible labels. The explanatory structure must carry the meaning visually: molecules, objects, geometry or flow; never paragraphs in boxes. No organs, regional anatomy, teeth or joint cutaways, tissue layers, invented histology, diagnostic photographs, radiographs or patient data. All symbols are explicitly conceptual. Footer: 'Conceptual teaching model • Not to scale'. Title 'Birth lowers resistance to pulmonary flow'. Two side-by-side tabletop wooden flow tracks viewed from above, clearly manufactured objects. Left heading 'Before transition': narrow gate across track, only a small teal arrow and a few teal round counters passing it, label 'Higher resistance'. Right heading 'After transition': the same gate wide open, a visibly broader teal arrow and more teal counters passing, label 'Lower resistance' and 'More pulmonary blood flow'. Above between models a separate small breath-swirl icon and O2 letter tile, labelled 'Aeration + oxygen rise', with a curved causal arrow pointing to right gate opening. Teal counters represent blood-flow units, never airway gas. No lungs, heart, arteries, vessels, baby or anatomical map. Bottom 'Gate analogy, not vascular anatomy'. No numbers, extra slogans or scenic decorations.",
+  "clinicalSources": [
+    {
+      "title": "MSD Manual: Perinatal physiology",
+      "url": "https://www.msdmanuals.com/professional/pediatrics/perinatal-physiology/perinatal-physiology"
+    }
+  ],
+  "teaching": {
+    "question": "How do the first breaths affect pulmonary blood flow?",
+    "answer": "Aeration and rising oxygen help dilate the pulmonary circulation, lowering pulmonary vascular resistance and allowing blood flow through the lungs to increase.",
+    "imageRole": "after-reveal"
+  },
+  "title": "Birth lowers resistance to pulmonary flow",
+  "caption": "Aeration and rising oxygen after birth help lower pulmonary vascular resistance, allowing pulmonary blood flow to increase. The gate illustrates resistance, not vascular anatomy.",
+  "alt": "Two artificial flow channels compare a narrow gate with few blood-flow tokens before transition and an open gate with more tokens after aeration and oxygen rise.",
+  "review": {
+    "status": "pending-independent-qa",
+    "method": "agent-visual-and-source-review",
+    "notes": "Pixel check: two matched wooden tracks show a narrow gate and small flow arrow before transition, then an open gate and larger arrow with more teal blood-flow counters. Aeration and oxygen rise are a separate cause above the tracks. Labels distinguish pulmonary blood flow from inhaled air; no vascular anatomy is depicted.",
+    "structure": {
+      "kind": "conceptual",
+      "status": "verified",
+      "specificationFiles": [
+        "scaffolds/birth-resistance-flow-model.json"
+      ],
+      "notes": "Pixel check: two matched wooden tracks show a narrow gate and small flow arrow before transition, then an open gate and larger arrow with more teal blood-flow counters. Aeration and oxygen rise are a separate cause above the tracks. Labels distinguish pulmonary blood flow from inhaled air; no vascular anatomy is depicted."
+    }
+  }
+}

@@ -1,0 +1,71 @@
+{
+  "id": "bank:usmle-step1:exp26-a-botulinum-cleavage-rescue:v1",
+  "rotation": "usmle-step1-open",
+  "topics": [
+    "microbiology",
+    "botulism-neurology"
+  ],
+  "moduleNodes": [
+    "usmle/step1",
+    "usmle/step1/microbiology"
+  ],
+  "questionType": "interpretation",
+  "difficulty": "hard",
+  "stem": "A hypothetical cholinergic-terminal assay compares two otherwise identical preparations exposed to botulinum neurotoxin. In preparation X, a release-associated protein can be cleaved. In preparation Y, the same protein retains normal function but resists cleavage; toxin entry is unchanged. Which of the following paired results most directly supports the proposed toxin mechanism?",
+  "options": [
+    {
+      "label": "A",
+      "text": "Preserved output from X; preserved output from Y",
+      "isCorrect": false,
+      "explanation": "Preserved secretion from the susceptible preparation would not demonstrate the expected functional effect of protein cleavage. The proposed mechanism predicts impairment where its target can be disrupted.",
+      "misconception": "Assumes the susceptible terminal preserves output despite cleavage of its functional release protein."
+    },
+    {
+      "label": "B",
+      "text": "Increased output from X; increased output from Y",
+      "isCorrect": false,
+      "explanation": "The established action is impaired acetylcholine release rather than increased secretion. Equal enhancement would therefore fail to support the proposed cleavage-mediated loss of terminal output.",
+      "misconception": "Treats cleavage-mediated impairment as enhancement of transmitter secretion in both preparations."
+    },
+    {
+      "label": "C",
+      "text": "Reduced output from X; preserved output from Y",
+      "isCorrect": true,
+      "explanation": "The susceptible preparation loses function when its release protein is cleaved. Preserving that protein despite equal toxin entry should protect transmitter output in the resistant preparation.",
+      "misconception": "No misconception: Protecting the functional cleavage target should preserve output despite unchanged toxin entry."
+    },
+    {
+      "label": "D",
+      "text": "Preserved output from X; reduced output from Y",
+      "isCorrect": false,
+      "explanation": "This reverses the proposed protection. If cleavage disables the release protein, susceptibility should impair secretion while a normally functioning, cleavage-resistant version should preserve it.",
+      "misconception": "Reverses which preparation is protected by resistance to cleavage."
+    },
+    {
+      "label": "E",
+      "text": "Reduced output from X; reduced output from Y",
+      "isCorrect": false,
+      "explanation": "Equal impairment would not demonstrate rescue by protecting the specified target. It would require considering an additional lesion or a failure of the proposed experimental protection.",
+      "misconception": "Assumes both preparations lose output despite selective protection of the proposed causal target."
+    }
+  ],
+  "context": "Learning objective: test a causal release mechanism by protecting its protein target while leaving exposure unchanged. A selective rescue of secretion supports cleavage of release machinery as the relevant lesion.",
+  "cite": "cdc-infant-botulism-clinical#infant-toxin",
+  "publicUsmle": {
+    "schemaVersion": 1,
+    "origin": "generated",
+    "itemText": {
+      "licence": "CC-BY-4.0",
+      "attribution": "MD3 contributors"
+    },
+    "evidence": {
+      "kind": "passage",
+      "sourceId": "cdc-infant-botulism-clinical",
+      "passageId": "infant-toxin",
+      "licence": {
+        "cls": "foss",
+        "id": "us-gov"
+      }
+    }
+  }
+}

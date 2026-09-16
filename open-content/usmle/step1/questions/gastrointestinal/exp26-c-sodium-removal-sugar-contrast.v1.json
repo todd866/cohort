@@ -1,0 +1,71 @@
+{
+  "id": "bank:usmle-step1:exp26-c-sodium-removal-sugar-contrast:v1",
+  "rotation": "usmle-step1-open",
+  "topics": [
+    "gastrointestinal",
+    "sodium-removal-sugar-contrast"
+  ],
+  "moduleNodes": [
+    "usmle/step1",
+    "usmle/step1/gastrointestinal"
+  ],
+  "questionType": "interpretation",
+  "difficulty": "medium",
+  "stem": "A researcher measures sugar entry across the luminal membrane of intestinal epithelial cells. Sodium is then removed from the luminal solution, while sugar concentrations, cell viability, and the other transport conditions remain unchanged. Which of the following changes is expected?",
+  "options": [
+    {
+      "label": "A",
+      "text": "Glucose entry falls; fructose entry is preserved",
+      "isCorrect": true,
+      "explanation": "Glucose uptake depends on sodium cotransport, whereas fructose uses facilitated diffusion. Removing sodium therefore separates the two transport mechanisms.",
+      "misconception": "No misconception: glucose needs sodium cotransport; fructose uses facilitated diffusion."
+    },
+    {
+      "label": "B",
+      "text": "Glucose entry is preserved; fructose entry falls",
+      "isCorrect": false,
+      "explanation": "This reverses the dependence: glucose, rather than fructose, uses sodium cotransport at the luminal membrane.",
+      "misconception": "Assigns sodium dependence to fructose instead of glucose uptake."
+    },
+    {
+      "label": "C",
+      "text": "Entry of both sugars increases to a similar extent",
+      "isCorrect": false,
+      "explanation": "Removing a required cotransport ion cannot increase glucose entry. Fructose transport has no corresponding sodium requirement in this experiment.",
+      "misconception": "Assumes removal of a required cotransport ion improves glucose entry."
+    },
+    {
+      "label": "D",
+      "text": "Entry of both sugars stops to a similar extent",
+      "isCorrect": false,
+      "explanation": "Only glucose entry directly depends on sodium cotransport. Preserved fructose transport is the internal comparison that makes the experiment informative.",
+      "misconception": "Extends glucose sodium dependence to the separate fructose transporter."
+    },
+    {
+      "label": "E",
+      "text": "Glucose entry rises; fructose entry is preserved",
+      "isCorrect": false,
+      "explanation": "The glucose gradient alone does not replace the missing cotransport ion. Its uptake should decrease rather than increase.",
+      "misconception": "Assumes the glucose gradient can replace the missing cotransport ion."
+    }
+  ],
+  "context": "Learning objective: Predict the selective effect of removing a cotransported ion. Glucose and fructose can reach the same destination through different entry mechanisms: sodium cotransport and facilitated diffusion, respectively.\n\nGlucose uptake depends on sodium cotransport, whereas fructose uses facilitated diffusion. Removing sodium therefore separates the two transport mechanisms.",
+  "cite": "openstax-anatomy-physiology#gi-glucose-sodium-cotransport",
+  "publicUsmle": {
+    "schemaVersion": 1,
+    "origin": "generated",
+    "itemText": {
+      "licence": "CC-BY-4.0",
+      "attribution": "MD3 contributors"
+    },
+    "evidence": {
+      "kind": "passage",
+      "sourceId": "openstax-anatomy-physiology",
+      "passageId": "gi-glucose-sodium-cotransport",
+      "licence": {
+        "cls": "foss",
+        "id": "cc-by-4.0"
+      }
+    }
+  }
+}

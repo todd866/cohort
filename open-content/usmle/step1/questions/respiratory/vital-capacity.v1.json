@@ -1,0 +1,85 @@
+{
+  "id": "bank:usmle-step1:respiratory-vital-capacity:v1",
+  "rotation": "usmle-step1-open",
+  "topics": [
+    "lung volumes and capacities",
+    "spirometry"
+  ],
+  "moduleNodes": [
+    "usmle/step1",
+    "usmle/step1/respiratory"
+  ],
+  "questionType": "calculation",
+  "difficulty": "medium",
+  "stem": "During spirometry testing of a healthy 35-year-old woman, the following values are recorded: tidal volume 500 mL, inspiratory reserve volume 3,000 mL, expiratory reserve volume 1,100 mL, and residual volume 1,200 mL. Which of the following is her vital capacity?",
+  "options": [
+    {
+      "label": "A",
+      "text": "1,600 mL",
+      "isCorrect": false,
+      "misconception": "Only tidal and expiratory reserve volumes are being summed.",
+      "explanation": "Vital capacity is the sum of tidal volume, inspiratory reserve volume, and expiratory reserve volume; omitting the inspiratory reserve underestimates it."
+    },
+    {
+      "label": "B",
+      "text": "3,500 mL",
+      "isCorrect": false,
+      "misconception": "The expiratory reserve volume is being omitted from the sum.",
+      "explanation": "Tidal volume plus inspiratory reserve volume gives inspiratory capacity (3,500 mL), not vital capacity, which also includes the expiratory reserve."
+    },
+    {
+      "label": "C",
+      "text": "4,100 mL",
+      "isCorrect": false,
+      "misconception": "Tidal volume is being omitted from the sum.",
+      "explanation": "The two reserve volumes alone (4,100 mL) exclude the tidal volume; vital capacity includes all three."
+    },
+    {
+      "label": "D",
+      "text": "5,800 mL",
+      "isCorrect": false,
+      "misconception": "Residual volume is being incorrectly included.",
+      "explanation": "Adding the residual volume yields total lung capacity; vital capacity excludes residual volume because it cannot be exhaled."
+    },
+    {
+      "label": "E",
+      "text": "4,600 mL",
+      "isCorrect": true,
+      "misconception": "None; the sum of all volumes except residual volume is correct.",
+      "explanation": "Vital capacity is the sum of all volumes except residual volume (TV + ERV + IRV): 500 + 1,100 + 3,000 = 4,600 mL, within the normal 4,000-5,000 mL range."
+    }
+  ],
+  "context": "Learning objective: compute vital capacity. Vital capacity is the sum of tidal volume, inspiratory reserve volume, and expiratory reserve volume (everything except residual volume).",
+  "cite": "openstax-anatomy-physiology#resp-vital-capacity",
+  "publicUsmle": {
+    "schemaVersion": 1,
+    "origin": "generated",
+    "itemText": {
+      "licence": "CC-BY-4.0",
+      "attribution": "MD3 contributors"
+    },
+    "evidence": {
+      "kind": "passage",
+      "sourceId": "openstax-anatomy-physiology",
+      "passageId": "resp-vital-capacity",
+      "licence": {
+        "cls": "foss",
+        "id": "cc-by-4.0"
+      }
+    },
+    "media": {
+      "kind": "asset",
+      "assetId": "lung-mechanics-v1",
+      "job": "pathway",
+      "showWhen": "after-reveal",
+      "licence": {
+        "cls": "foss",
+        "id": "cc-by-4.0"
+      },
+      "attribution": "MD3 contributors",
+      "contentHash": "sha256:2eaec9c60db53463223535515210fe6ff2a06557ce339beb1804de9350056fb2"
+    }
+  },
+  "imageUrl": "/figures/usmle/step1/lung-mechanics-v1.svg",
+  "imageCaption": "Inspiration/Boyle, vital capacity, compliance, surfactant/NRDS."
+}

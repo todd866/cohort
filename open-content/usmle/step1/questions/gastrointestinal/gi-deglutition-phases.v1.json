@@ -1,0 +1,86 @@
+{
+  "id": "bank:usmle-step1:gi-deglutition-phases:v1",
+  "rotation": "usmle-step1-open",
+  "topics": [
+    "deglutition",
+    "swallowing phases",
+    "epiglottis"
+  ],
+  "moduleNodes": [
+    "usmle/step1",
+    "usmle/step1/gastrointestinal"
+  ],
+  "questionType": "mechanism",
+  "difficulty": "medium",
+  "stem": "A 70-year-old man has a brainstem stroke and food repeatedly enters his airway while eating. Failure of the epiglottis to fold over the glottis disrupts which of the following phases of swallowing?",
+  "options": [
+    {
+      "label": "A",
+      "text": "The esophageal phase",
+      "isCorrect": false,
+      "misconception": "A phase downstream of airway closure is being blamed for the aspiration.",
+      "explanation": "The esophageal phase moves the bolus down the esophagus by peristalsis after the airway has already been sealed; it cannot guard the glottis."
+    },
+    {
+      "label": "B",
+      "text": "The voluntary oral phase",
+      "isCorrect": false,
+      "misconception": "The conscious phase is being blamed for a reflex failure.",
+      "explanation": "The voluntary phase covers chewing and forming a bolus under conscious control; airway protection by the epiglottis occurs later, in the pharyngeal phase."
+    },
+    {
+      "label": "C",
+      "text": "The pharyngeal phase",
+      "isCorrect": true,
+      "misconception": "None; the epiglottis seals the airway during the pharyngeal phase.",
+      "explanation": "During the involuntary pharyngeal phase, the soft palate rises to close the nasopharynx, the larynx elevates, and the epiglottis folds over the glottis so the bolus enters the esophagus rather than the airway."
+    },
+    {
+      "label": "D",
+      "text": "The cephalic phase",
+      "isCorrect": false,
+      "misconception": "A gastric secretory phase is being conflated with swallowing.",
+      "explanation": "The cephalic phase describes gastric secretion triggered by the sight or smell of food; it is not a stage of deglutition."
+    },
+    {
+      "label": "E",
+      "text": "The gastric phase",
+      "isCorrect": false,
+      "misconception": "A gastric secretory phase is being conflated with swallowing.",
+      "explanation": "The gastric phase describes secretion once food reaches the stomach; it is unrelated to the mechanics of swallowing."
+    }
+  ],
+  "context": "Learning objective: the three stages of deglutition. Voluntary (bolus formation, conscious), pharyngeal (involuntary: soft palate closes nasopharynx, larynx elevates, epiglottis covers the glottis), esophageal (peristalsis to the stomach). Brainstem lesions break the pharyngeal reflex and cause aspiration.",
+  "cite": "openstax-anatomy-physiology#gi-deglutition-phases",
+  "publicUsmle": {
+    "schemaVersion": 1,
+    "origin": "generated",
+    "itemText": {
+      "licence": "CC-BY-4.0",
+      "attribution": "MD3 contributors"
+    },
+    "evidence": {
+      "kind": "passage",
+      "sourceId": "openstax-anatomy-physiology",
+      "passageId": "gi-deglutition-phases",
+      "licence": {
+        "cls": "foss",
+        "id": "cc-by-4.0"
+      }
+    },
+    "media": {
+      "kind": "asset",
+      "assetId": "gi-motility-v1",
+      "job": "pathway",
+      "showWhen": "after-reveal",
+      "licence": {
+        "cls": "foss",
+        "id": "cc-by-4.0"
+      },
+      "attribution": "MD3 contributors",
+      "contentHash": "sha256:fb55199aa2965d2a5781dbd2194391ccbecaa2fb0de3cf2d8b9f20112901656d"
+    }
+  },
+  "imageUrl": "/figures/usmle/step1/gi-motility-v1.svg",
+  "imageCaption": "Deglutition phases; segmentation vs peristalsis."
+}

@@ -1,0 +1,111 @@
+{
+  "schemaVersion": 1,
+  "figureId": "microcytosis-size-spread-model",
+  "kind": "conceptual",
+  "sourceFacts": [
+    {
+      "id": "fact-1",
+      "fact": "MCV classifies cells by mean volume; microcytosis means low average volume.",
+      "sources": [
+        {
+          "title": "MedlinePlus: RDW test",
+          "url": "https://medlineplus.gov/lab-tests/rdw-red-cell-distribution-width/"
+        },
+        {
+          "title": "RCH: Anaemia guideline",
+          "url": "https://www.rch.org.au/clinicalguide/guideline_index/Anaemia_Guideline/"
+        }
+      ]
+    },
+    {
+      "id": "fact-2",
+      "fact": "RDW reflects the variability of red-cell size and can be normal despite small average size.",
+      "sources": [
+        {
+          "title": "MedlinePlus: RDW test",
+          "url": "https://medlineplus.gov/lab-tests/rdw-red-cell-distribution-width/"
+        },
+        {
+          "title": "RCH: Anaemia guideline",
+          "url": "https://www.rch.org.au/clinicalguide/guideline_index/Anaemia_Guideline/"
+        }
+      ]
+    },
+    {
+      "id": "fact-3",
+      "fact": "Beta-thalassaemia trait commonly has microcytosis with an often normal RDW.",
+      "sources": [
+        {
+          "title": "MedlinePlus: RDW test",
+          "url": "https://medlineplus.gov/lab-tests/rdw-red-cell-distribution-width/"
+        },
+        {
+          "title": "RCH: Anaemia guideline",
+          "url": "https://www.rch.org.au/clinicalguide/guideline_index/Anaemia_Guideline/"
+        }
+      ]
+    }
+  ],
+  "nodes": [
+    {
+      "id": "uniform",
+      "shape": "equal small counters",
+      "label": "Small and fairly uniform"
+    },
+    {
+      "id": "varied",
+      "shape": "mixed small counters",
+      "label": "Small on average, more varied"
+    },
+    {
+      "id": "mean",
+      "shape": "caliper icon",
+      "label": "MCV: average volume"
+    },
+    {
+      "id": "spread",
+      "shape": "spreading arrows",
+      "label": "RDW: variation"
+    }
+  ],
+  "edges": [
+    {
+      "from": "uniform",
+      "to": "varied",
+      "meaning": "comparison separates average from variability"
+    },
+    {
+      "from": "mean",
+      "to": "uniform",
+      "meaning": "small size is distinct from variation"
+    },
+    {
+      "from": "spread",
+      "to": "varied",
+      "meaning": "more size variability"
+    }
+  ],
+  "labels": [
+    "Average size ≠ size variation",
+    "MCV: average volume",
+    "RDW: variation",
+    "Small and fairly uniform",
+    "Small on average, more varied",
+    "Small cells can have a normal RDW",
+    "Tokens, not a blood film"
+  ],
+  "forbiddenAnatomy": [
+    "Organs, tissue, blood film simulation, clinical photos"
+  ],
+  "validation": {
+    "status": "verified",
+    "method": "source-and-conceptual-structure-review",
+    "checks": [
+      "Uniform tokens differ little; comparison tokens show visible size variation.",
+      "Does not claim an exact identical calculated mean from two-dimensional diameters.",
+      "No fake red-cell microscopy or condition diagnosis from a pattern alone."
+    ],
+    "pixelReviewStatus": "verified",
+    "pixelReviewNotes": "Left tray contains six visually similar small counters; right has six counters with clear size variation. MCV and RDW labels distinguish average volume from variation, with no numerical equality claim. The key statement that small cells can have normal RDW is correct; counters explicitly not a blood film."
+  }
+}

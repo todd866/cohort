@@ -1,0 +1,73 @@
+{
+  "id": "bank:usmle-step1:respiratory-ventilation-perfusion-r1:v1",
+  "rotation": "usmle-step1-open",
+  "ladderId": "ventilation-perfusion",
+  "topics": [
+    "ventilation-perfusion matching",
+    "gas exchange",
+    "ladder:ventilation-perfusion"
+  ],
+  "moduleNodes": [
+    "usmle/step1",
+    "usmle/step1/respiratory"
+  ],
+  "questionType": "mechanism",
+  "difficulty": "easy",
+  "stem": "For alveolar gas exchange to be efficient, ventilation and perfusion in a given lung region must be which of the following?",
+  "options": [
+    {
+      "label": "A",
+      "text": "Matched in compatible volumes",
+      "isCorrect": true,
+      "misconception": "None; efficient exchange requires compatible ventilation and perfusion.",
+      "explanation": "For gas exchange to be efficient, the volumes involved in ventilation and perfusion should be compatible in each region."
+    },
+    {
+      "label": "B",
+      "text": "Maximized independently regardless of the other variable",
+      "isCorrect": false,
+      "misconception": "Each process is being optimized in isolation.",
+      "explanation": "High ventilation with no perfusion, or high perfusion with no ventilation, wastes one component; compatibility is required."
+    },
+    {
+      "label": "C",
+      "text": "Equal to dead-space ventilation only",
+      "isCorrect": false,
+      "misconception": "Dead space is being treated as the target for all regions.",
+      "explanation": "Dead-space ventilation does not participate in gas exchange; efficient regions require both ventilation and perfusion."
+    },
+    {
+      "label": "D",
+      "text": "Absent in the upper lobes at rest",
+      "isCorrect": false,
+      "misconception": "Anatomic regions are being excluded from exchange.",
+      "explanation": "Upper lobes receive both ventilation and perfusion at rest, though gravity and disease can create regional mismatch."
+    },
+    {
+      "label": "E",
+      "text": "Driven solely by the alveolar oxygen diffusion gradient",
+      "isCorrect": false,
+      "misconception": "Diffusion alone is being treated as sufficient without flow matching.",
+      "explanation": "A diffusion gradient exists only when fresh air ventilates an alveolus and blood perfuses its capillaries; both flows must be compatible."
+    }
+  ],
+  "context": "Learning objective: state the ventilation-perfusion requirement for efficient gas exchange. Compatible regional ventilation and perfusion volumes are needed; imbalance impairs oxygenation.",
+  "cite": "openstax-anatomy-physiology#resp-ventilation-perfusion",
+  "publicUsmle": {
+    "schemaVersion": 1,
+    "origin": "generated",
+    "itemText": {
+      "licence": "CC-BY-4.0",
+      "attribution": "MD3 contributors"
+    },
+    "evidence": {
+      "kind": "passage",
+      "sourceId": "openstax-anatomy-physiology",
+      "passageId": "resp-ventilation-perfusion",
+      "licence": {
+        "cls": "foss",
+        "id": "cc-by-4.0"
+      }
+    }
+  }
+}

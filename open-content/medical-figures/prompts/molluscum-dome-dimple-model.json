@@ -1,0 +1,35 @@
+{
+  "figureId": "molluscum-dome-dimple-model",
+  "tool": "built-in image_gen",
+  "model": null,
+  "referenceAssetIds": [],
+  "externalReferenceImages": [],
+  "prompt": "Original educational conceptual illustration, landscape 3:2. Warm ivory paper, sophisticated hand-painted gouache/watercolour, confident fine brown outlines, navy lettering, restrained teal, coral and amber. Editorial science illustration with spacious composition and large legible labels. The explanatory structure must carry the meaning visually: molecules, objects, geometry or flow; never paragraphs in boxes. No organs, regional anatomy, teeth or joint cutaways, tissue layers, invented histology, diagnostic photographs, radiographs or patient data. All symbols are explicitly conceptual. Footer: 'Conceptual teaching model • Not to scale'. Title 'Dome + central dimple', subtitle 'Shape vocabulary for molluscum'. Use pure sculpture geometry: two large warm cream clay domes sitting on separate wooden plinths against ivory paper. Left dome smooth convex hemisphere, labelled 'Dome'. Right dome equally sized but with a SMALL SHALLOW CENTRAL DEPRESSION, labelled 'Central dimple', a fine leader precisely ending in the depression. This is not a hole through the dome and not a crater destroying the dome. Under the right sculpture, draw a single navy exterior profile line: convex upward left shoulder, tiny down-dip at centre, convex right shoulder; label 'Umbilication'. This line is silhouette only with empty white space beneath, no layers or cutaway. Bottom text 'Clay model, not a diagnostic skin image'. No skin texture, body, pus, pores or clinical lesion.",
+  "clinicalSources": [
+    {
+      "title": "RCH: Molluscum contagiosum guideline",
+      "url": "https://www.rch.org.au/clinicalguide/guideline_index/molluscum_guideline/"
+    }
+  ],
+  "teaching": {
+    "question": "What does central umbilication mean when describing a molluscum papule?",
+    "answer": "It means a small central depression in an otherwise dome-shaped papule. This is a characteristic shape description, not a diagnosis by itself.",
+    "imageRole": "after-reveal"
+  },
+  "title": "Dome plus central dimple",
+  "caption": "A typical molluscum papule has a dome-like contour with central umbilication. This clay model teaches the shape term and is not a diagnostic skin image.",
+  "alt": "A clay dome is compared with an otherwise similar dome containing a shallow central dimple; top and side silhouettes clarify the contour.",
+  "review": {
+    "status": "pending-independent-qa",
+    "method": "agent-visual-and-source-review",
+    "notes": "Paired clay hemispheres differ by a small central depression on the right; leader terminates in the shallow dimple. Exterior profile line reproduces the central dip without layers or internal contents. Text explicitly calls this a clay shape model, not a diagnostic skin image. No clinical lesion simulation.",
+    "structure": {
+      "kind": "conceptual",
+      "status": "verified",
+      "specificationFiles": [
+        "scaffolds/molluscum-dome-dimple-model.json"
+      ],
+      "notes": "Paired clay hemispheres differ by a small central depression on the right; leader terminates in the shallow dimple. Exterior profile line reproduces the central dip without layers or internal contents. Text explicitly calls this a clay shape model, not a diagnostic skin image. No clinical lesion simulation."
+    }
+  }
+}

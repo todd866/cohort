@@ -1,0 +1,73 @@
+{
+  "id": "bank:usmle-step1:renal-loop-countercurrent-r3:v1",
+  "rotation": "usmle-step1-open",
+  "ladderId": "renal-loop-countercurrent",
+  "topics": [
+    "loop diuretics",
+    "nephrogenic diabetes insipidus",
+    "ladder:renal-loop-countercurrent"
+  ],
+  "moduleNodes": [
+    "usmle/step1",
+    "usmle/step1/renal"
+  ],
+  "questionType": "mechanism",
+  "difficulty": "hard",
+  "stem": "A 55-year-old man with heart failure is started on furosemide and later reports polyuria with urine that remains dilute despite dehydration. Laboratory studies show hyponatremia and hypokalemia.\n\nBlockade of which of the following transport processes most directly explains his inability to generate a concentrated medullary gradient?",
+  "options": [
+    {
+      "label": "A",
+      "text": "Na+/K+/2Cl− cotransport in the thick ascending limb",
+      "isCorrect": true,
+      "misconception": "None; loop diuretics inhibit ascending-limb salt extrusion that builds the medullary gradient.",
+      "explanation": "Furosemide blocks the Na+/K+/2Cl− cotransporter in the thick ascending limb, preventing Na+ extrusion into the interstitium and dissipating the hyperosmotic medulla needed for water reabsorption under ADH."
+    },
+    {
+      "label": "B",
+      "text": "Aquaporin-2 insertion in the collecting duct",
+      "isCorrect": false,
+      "misconception": "The downstream water channel is being blamed instead of the gradient generator.",
+      "explanation": "ADH regulates collecting-duct aquaporins, but without a medullary gradient even open channels cannot reclaim much water; loop diuretics act upstream on salt pumping."
+    },
+    {
+      "label": "C",
+      "text": "Na+/H+ exchange in the proximal tubule",
+      "isCorrect": false,
+      "misconception": "Proximal acid-base transport is being substituted for the countercurrent multiplier.",
+      "explanation": "Proximal Na+/H+ exchange reclaims filtered bicarbonate; it does not generate the medullary osmolar gradient blocked by loop diuretics."
+    },
+    {
+      "label": "D",
+      "text": "Epithelial sodium channels in principal cells",
+      "isCorrect": false,
+      "misconception": "Aldosterone-regulated distal reabsorption is being confused with the loop mechanism.",
+      "explanation": "Principal-cell ENaC reabsorbs sodium distally; loop diuretics act on the thick ascending limb, not the collecting duct."
+    },
+    {
+      "label": "E",
+      "text": "Urea recycling in the inner medullary collecting duct",
+      "isCorrect": false,
+      "misconception": "A secondary gradient contributor is being selected over the primary salt pump.",
+      "explanation": "Urea contributes to medullary tonicity, but loop diuretics directly inhibit NaCl extrusion in the thick ascending limb, the core countercurrent multiplier step."
+    }
+  ],
+  "context": "Learning objective: link loop diuretics to loss of medullary hyperosmolarity. Inhibiting thick ascending-limb Na+/K+/2Cl− transport prevents the countercurrent multiplier from maintaining the gradient ADH-dependent water reabsorption requires.",
+  "cite": "openstax-anatomy-physiology#renal-loop-countercurrent",
+  "publicUsmle": {
+    "schemaVersion": 1,
+    "origin": "generated",
+    "itemText": {
+      "licence": "CC-BY-4.0",
+      "attribution": "MD3 contributors"
+    },
+    "evidence": {
+      "kind": "passage",
+      "sourceId": "openstax-anatomy-physiology",
+      "passageId": "renal-loop-countercurrent",
+      "licence": {
+        "cls": "foss",
+        "id": "cc-by-4.0"
+      }
+    }
+  }
+}

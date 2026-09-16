@@ -1,0 +1,72 @@
+{
+  "id": "bank:usmle-step1:exp26-b-negative-inotrope-response:v1",
+  "rotation": "usmle-step1-open",
+  "topics": [
+    "cardiovascular",
+    "negative-inotrope-response",
+    "pharmacology"
+  ],
+  "moduleNodes": [
+    "usmle/step1",
+    "usmle/step1/cardiovascular"
+  ],
+  "questionType": "interpretation",
+  "difficulty": "medium",
+  "stem": "A ventricle is paced at a fixed rate in a laboratory preparation. Preload and afterload are held constant. After exposure to a beta blocker, contraction strength falls. Which of the following chamber findings best fits this isolated drug effect?",
+  "options": [
+    {
+      "text": "More blood remaining after each contraction",
+      "explanation": "Reduced contractility weakens ventricular emptying at the same preload and afterload. More blood therefore remains after contraction, corresponding to an increased end-systolic volume.",
+      "isCorrect": true,
+      "label": "A",
+      "misconception": "No misconception: weaker contraction at fixed preload and afterload leaves more blood after ejection."
+    },
+    {
+      "text": "Less blood remaining after each contraction",
+      "explanation": "Less residual blood would fit stronger emptying at unchanged loading conditions. The measured fall in contraction strength predicts the opposite change in residual volume.",
+      "isCorrect": false,
+      "label": "B",
+      "misconception": "Predicts improved ventricular emptying despite the measured decrease in contraction strength."
+    },
+    {
+      "text": "More blood expelled with each contraction",
+      "explanation": "An increase in expelled volume would fit increased contractility in this controlled preparation. The beta blocker produces negative inotropy, so greater ejection is not expected.",
+      "isCorrect": false,
+      "label": "C",
+      "misconception": "Applies the greater ejection expected with increased contractility to a negative inotropic effect."
+    },
+    {
+      "text": "Less blood present before each contraction",
+      "explanation": "The experiment holds preload constant, isolating the change in contraction strength. A reduced filling load cannot account for the specified effect under those conditions.",
+      "isCorrect": false,
+      "label": "D",
+      "misconception": "Explains the response through reduced filling even though the experiment holds preload constant."
+    },
+    {
+      "text": "Greater force needed to begin each ejection",
+      "explanation": "This describes a change in the load opposing ejection. Afterload is controlled here, so the observed response is attributable to diminished contraction strength.",
+      "isCorrect": false,
+      "label": "E",
+      "misconception": "Attributes the response to a change in opposing load even though afterload is held constant."
+    }
+  ],
+  "context": "Learning objective: Separate beta-blocker negative inotropy from rate or loading changes by interpreting residual ventricular volume. Reduced contractility weakens ventricular emptying at the same preload and afterload. More blood therefore remains after contraction, corresponding to an increased end-systolic volume.",
+  "cite": "openstax-ap1-cardiac-physiology#negative-inotropes",
+  "publicUsmle": {
+    "schemaVersion": 1,
+    "origin": "generated",
+    "itemText": {
+      "licence": "CC-BY-4.0",
+      "attribution": "MD3 contributors"
+    },
+    "evidence": {
+      "kind": "passage",
+      "sourceId": "openstax-ap1-cardiac-physiology",
+      "passageId": "negative-inotropes",
+      "licence": {
+        "cls": "foss",
+        "id": "cc-by-4.0"
+      }
+    }
+  }
+}

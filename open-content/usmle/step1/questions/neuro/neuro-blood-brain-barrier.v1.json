@@ -1,0 +1,85 @@
+{
+  "id": "bank:usmle-step1:neuro-blood-brain-barrier:v1",
+  "rotation": "usmle-step1-open",
+  "topics": [
+    "blood-brain barrier",
+    "tight junctions"
+  ],
+  "moduleNodes": [
+    "usmle/step1",
+    "usmle/step1/neuroscience"
+  ],
+  "questionType": "mechanism",
+  "difficulty": "medium",
+  "stem": "A pharmaceutical company finds that its new water-soluble antibiotic reaches high concentrations in most tissues but barely enters the cerebrospinal fluid of healthy 40-year-old volunteers.\n\nWhich of the following features of brain capillaries most accounts for this exclusion?",
+  "options": [
+    {
+      "label": "A",
+      "text": "Astrocytes actively importing the drug before it can diffuse",
+      "isCorrect": false,
+      "misconception": "Supporting glia are being cast as a sink that sequesters solutes.",
+      "explanation": "Astrocyte end feet help maintain the barrier but do not consume circulating drugs; exclusion is due to tight junctions and absent vesicular transport in the endothelium."
+    },
+    {
+      "label": "B",
+      "text": "Widely fenestrated endothelium that filters proteins into the tissue",
+      "isCorrect": false,
+      "misconception": "The leaky capillary design of other organs is being ascribed to the brain.",
+      "explanation": "Fenestrations characterize permeable capillaries such as those of the kidney; cranial capillaries specifically lack them, which is the basis of the barrier."
+    },
+    {
+      "label": "C",
+      "text": "Ependymal cells filtering the blood into cerebrospinal fluid selectively",
+      "isCorrect": false,
+      "misconception": "The CSF-producing epithelium is being treated as the vascular gatekeeper.",
+      "explanation": "Ependymal cells of the choroid plexus produce CSF, but the vascular barrier itself lies in the capillary endothelium's tight junctions; water-soluble drugs are blocked at the vessel wall."
+    },
+    {
+      "label": "D",
+      "text": "Tight junctions between endothelial cells, with few pores or transport vesicles",
+      "isCorrect": true,
+      "misconception": "None; the barrier is an anatomical sealing of the capillary wall.",
+      "explanation": "Brain capillary endothelial cells are joined by tight junctions and have far fewer fenestra and pinocytotic vesicles than other capillaries, so water-soluble compounds cannot slip between or through the cells; the barrier preferentially blocks non-lipid-soluble drugs."
+    },
+    {
+      "label": "E",
+      "text": "Abundant pinocytotic vesicles that return the drug to the plasma",
+      "isCorrect": false,
+      "misconception": "A transport mechanism that is actually scarce in brain capillaries is being invoked.",
+      "explanation": "Cranial capillaries have far fewer pinocytotic vesicles than other capillaries; their scarcity, together with tight junctions, prevents transcellular passage of polar compounds."
+    }
+  ],
+  "context": "Learning objective: explain the blood-brain barrier. Endothelial tight junctions plus scarce fenestra and pinocytotic vesicles seal brain capillaries, excluding water-soluble compounds and admitting lipid-soluble ones.",
+  "cite": "openstax-anatomy-physiology#neuro-blood-brain-barrier",
+  "publicUsmle": {
+    "schemaVersion": 1,
+    "origin": "generated",
+    "itemText": {
+      "licence": "CC-BY-4.0",
+      "attribution": "MD3 contributors"
+    },
+    "evidence": {
+      "kind": "passage",
+      "sourceId": "openstax-anatomy-physiology",
+      "passageId": "neuro-blood-brain-barrier",
+      "licence": {
+        "cls": "foss",
+        "id": "cc-by-4.0"
+      }
+    },
+    "media": {
+      "kind": "asset",
+      "assetId": "cns-pathways-v1",
+      "job": "anatomy",
+      "showWhen": "after-reveal",
+      "licence": {
+        "cls": "foss",
+        "id": "cc-by-4.0"
+      },
+      "attribution": "MD3 contributors",
+      "contentHash": "sha256:7409718be4c8fcb54e2364ad668d3b69e0f19cb24ed4b12c3cb5ae0b88d5de51"
+    }
+  },
+  "imageUrl": "/figures/usmle/step1/cns-pathways-v1.svg",
+  "imageCaption": "UMN vs LMN, stretch reflex, ascending tracts, blood-brain barrier."
+}

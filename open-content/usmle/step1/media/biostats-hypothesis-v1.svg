@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" width="880" height="420" viewBox="0 0 880 420" role="img" aria-labelledby="title desc">
+<title id="title">Hypothesis testing and independence board</title>
+<desc id="desc">Null hypothesis as no-effect claim; independent events multiply; sample space as all outcomes</desc>
+<rect width="880" height="420" fill="#f7f4ef"/>
+<text x="36" y="42" font-family="Helvetica, Arial, sans-serif" font-size="24" font-weight="700" fill="#1a1a1a">Stats language board</text>
+<rect x="36" y="70" width="250" height="300" rx="12" fill="#fff" stroke="#1e3a5f" stroke-width="2"/>
+<text x="56" y="110" font-family="Helvetica, Arial, sans-serif" font-size="17" font-weight="700" fill="#1e3a5f">Null hypothesis H0</text>
+<text x="56" y="150" font-family="Helvetica, Arial, sans-serif" font-size="14" fill="#333">Claim of no effect /</text>
+<text x="56" y="175" font-family="Helvetica, Arial, sans-serif" font-size="14" fill="#333">no difference</text>
+<text x="56" y="215" font-family="Helvetica, Arial, sans-serif" font-size="14" fill="#333">Test asks if data</text>
+<text x="56" y="240" font-family="Helvetica, Arial, sans-serif" font-size="14" fill="#333">are surprising under H0</text>
+<rect x="310" y="70" width="250" height="300" rx="12" fill="#fff" stroke="#14532d" stroke-width="2"/>
+<text x="330" y="110" font-family="Helvetica, Arial, sans-serif" font-size="17" font-weight="700" fill="#14532d">Independence</text>
+<text x="330" y="150" font-family="Helvetica, Arial, sans-serif" font-size="14" fill="#333">P(A and B) =</text>
+<text x="330" y="180" font-family="Helvetica, Arial, sans-serif" font-size="14" fill="#333">P(A) * P(B)</text>
+<text x="330" y="220" font-family="Helvetica, Arial, sans-serif" font-size="14" fill="#333">when A, B independent</text>
+<text x="330" y="260" font-family="Helvetica, Arial, sans-serif" font-size="14" fill="#333">Coin flips, separate trials</text>
+<rect x="584" y="70" width="260" height="300" rx="12" fill="#fff" stroke="#7c2d12" stroke-width="2"/>
+<text x="604" y="110" font-family="Helvetica, Arial, sans-serif" font-size="17" font-weight="700" fill="#7c2d12">Sample space</text>
+<text x="604" y="150" font-family="Helvetica, Arial, sans-serif" font-size="14" fill="#333">Set of all possible</text>
+<text x="604" y="175" font-family="Helvetica, Arial, sans-serif" font-size="14" fill="#333">outcomes of an experiment</text>
+<text x="604" y="220" font-family="Helvetica, Arial, sans-serif" font-size="14" fill="#333">Events are subsets</text>
+<text x="604" y="245" font-family="Helvetica, Arial, sans-serif" font-size="14" fill="#333">Probabilities sum to 1</text>
+</svg>

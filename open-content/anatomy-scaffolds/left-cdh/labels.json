@@ -1,0 +1,463 @@
+{
+  "schemaVersion": 1,
+  "id": "left-cdh-schematic-labels",
+  "baseImage": {
+    "file": "base.png",
+    "sha256": "846b40df7cc74b4adea45a26f013d0a5133d4ae8fb63c782a59706af5e6a3a4b",
+    "width": 1536,
+    "height": 1024,
+    "review": {
+      "status": "agent-reviewed",
+      "notes": "Root and independent image_repetition source/pixel review checked this simplified anterior cutaway: laterality, normal heart apex toward patient left, heart shift toward patient right, liver beneath right dome, smaller left lung separate from chest bowel, continuous bowel through a localized left diaphragm gap and intact right diaphragm. No posterior defect location, exact proportions or bowel segment course is asserted. No clinician signoff."
+    }
+  },
+  "regions": [
+    {
+      "id": "small-left-lung",
+      "name": "Small left lung",
+      "polygon": [
+        [
+          1209,
+          246
+        ],
+        [
+          1236,
+          249
+        ],
+        [
+          1275,
+          270
+        ],
+        [
+          1300,
+          316
+        ],
+        [
+          1308,
+          333
+        ],
+        [
+          1240,
+          320
+        ],
+        [
+          1215,
+          285
+        ]
+      ],
+      "sources": [
+        {
+          "url": "https://www.chop.edu/conditions-diseases/congenital-diaphragmatic-hernia-cdh",
+          "fact": "Left lung may be small with left CDH; exact surface outline here is schematic."
+        }
+      ],
+      "review": {
+        "status": "agent-reviewed",
+        "notes": "Root selected this interior patch for label placement, not full organ segmentation. Independent image_inventory inspected the base, rendered labels and enlarged defect: this anchor lands on the named visible structure. No clinician signoff."
+      }
+    },
+    {
+      "id": "thoracic-bowel",
+      "name": "Bowel in left chest",
+      "polygon": [
+        [
+          1215,
+          432
+        ],
+        [
+          1260,
+          420
+        ],
+        [
+          1309,
+          434
+        ],
+        [
+          1315,
+          470
+        ],
+        [
+          1290,
+          488
+        ],
+        [
+          1235,
+          482
+        ],
+        [
+          1205,
+          458
+        ]
+      ],
+      "sources": [
+        {
+          "url": "https://www.chop.edu/conditions-diseases/congenital-diaphragmatic-hernia-cdh",
+          "fact": "Herniated bowel occupies left chest separately from lung."
+        }
+      ],
+      "review": {
+        "status": "agent-reviewed",
+        "notes": "Root selected this interior patch for label placement, not full organ segmentation. Independent image_inventory inspected the base, rendered labels and enlarged defect: this anchor lands on the named visible structure. No clinician signoff."
+      }
+    },
+    {
+      "id": "shifted-heart",
+      "name": "Heart displaced toward patient right",
+      "polygon": [
+        [
+          1000,
+          434
+        ],
+        [
+          1030,
+          403
+        ],
+        [
+          1070,
+          426
+        ],
+        [
+          1088,
+          457
+        ],
+        [
+          1070,
+          495
+        ],
+        [
+          1035,
+          521
+        ],
+        [
+          995,
+          508
+        ],
+        [
+          982,
+          480
+        ]
+      ],
+      "sources": [
+        {
+          "url": "https://www.chop.edu/conditions-diseases/congenital-diaphragmatic-hernia-cdh",
+          "fact": "Left CDH can displace the mediastinum and heart toward patient right."
+        }
+      ],
+      "review": {
+        "status": "agent-reviewed",
+        "notes": "Root selected this interior patch for label placement, not full organ segmentation. Independent image_inventory inspected the base, rendered labels and enlarged defect: this anchor lands on the named visible structure. No clinician signoff."
+      }
+    },
+    {
+      "id": "defect-rim",
+      "name": "Visible diaphragm rim beside the defect",
+      "polygon": [
+        [
+          1306,
+          590
+        ],
+        [
+          1313,
+          590
+        ],
+        [
+          1314,
+          595
+        ],
+        [
+          1306,
+          595
+        ]
+      ],
+      "sources": [
+        {
+          "url": "https://www.chop.edu/conditions-diseases/congenital-diaphragmatic-hernia-cdh",
+          "fact": "Bowel passes through a diaphragmatic defect; this annotation identifies the visible rim without asserting posterior position."
+        }
+      ],
+      "review": {
+        "status": "agent-reviewed",
+        "notes": "Root selected this interior patch for label placement, not full organ segmentation. Independent image_inventory inspected the base, rendered labels and enlarged defect: this anchor lands on the named visible structure. No clinician signoff."
+      }
+    },
+    {
+      "id": "normal-diaphragm",
+      "name": "Intact diaphragm",
+      "polygon": [
+        [
+          185,
+          555
+        ],
+        [
+          202,
+          543
+        ],
+        [
+          217,
+          537
+        ],
+        [
+          220,
+          545
+        ],
+        [
+          202,
+          559
+        ],
+        [
+          190,
+          572
+        ]
+      ],
+      "sources": [
+        {
+          "url": "https://www.chop.edu/conditions-diseases/congenital-diaphragmatic-hernia-cdh",
+          "fact": "An intact diaphragm separates thoracic and abdominal compartments."
+        }
+      ],
+      "review": {
+        "status": "agent-reviewed",
+        "notes": "Root selected this interior patch for label placement, not full organ segmentation. Independent image_inventory inspected the base, rendered labels and enlarged defect: this anchor lands on the named visible structure. No clinician signoff."
+      }
+    },
+    {
+      "id": "normal-liver",
+      "name": "Liver beneath right diaphragm",
+      "polygon": [
+        [
+          230,
+          600
+        ],
+        [
+          310,
+          590
+        ],
+        [
+          335,
+          620
+        ],
+        [
+          325,
+          664
+        ],
+        [
+          280,
+          696
+        ],
+        [
+          222,
+          702
+        ]
+      ],
+      "sources": [
+        {
+          "url": "https://www.chop.edu/conditions-diseases/congenital-diaphragmatic-hernia-cdh",
+          "fact": "Liver lies immediately beneath the right diaphragmatic dome in the selected bowel-only pattern."
+        }
+      ],
+      "review": {
+        "status": "agent-reviewed",
+        "notes": "Root selected this interior patch for label placement, not full organ segmentation. Independent image_inventory inspected the base, rendered labels and enlarged defect: this anchor lands on the named visible structure. No clinician signoff."
+      }
+    }
+  ],
+  "labels": [
+    {
+      "id": "small-left-lung-label",
+      "text": "Small left lung",
+      "anchor": [
+        1270,
+        285
+      ],
+      "elbow": [
+        1340,
+        285
+      ],
+      "textPosition": [
+        1370,
+        292
+      ],
+      "targetRegion": "small-left-lung",
+      "align": "start",
+      "fontSize": 21
+    },
+    {
+      "id": "thoracic-bowel-label",
+      "text": "Bowel in chest",
+      "anchor": [
+        1280,
+        454
+      ],
+      "elbow": [
+        1340,
+        454
+      ],
+      "textPosition": [
+        1370,
+        461
+      ],
+      "targetRegion": "thoracic-bowel",
+      "align": "start",
+      "fontSize": 21
+    },
+    {
+      "id": "shifted-heart-label",
+      "text": "Heart shifted right",
+      "anchor": [
+        1020,
+        470
+      ],
+      "elbow": [
+        885,
+        470
+      ],
+      "textPosition": [
+        860,
+        477
+      ],
+      "targetRegion": "shifted-heart",
+      "align": "end",
+      "fontSize": 21
+    },
+    {
+      "id": "defect-rim-label",
+      "text": "Diaphragm defect",
+      "anchor": [
+        1310,
+        592
+      ],
+      "elbow": [
+        1345,
+        616
+      ],
+      "textPosition": [
+        1370,
+        623
+      ],
+      "targetRegion": "defect-rim",
+      "align": "start",
+      "fontSize": 20
+    },
+    {
+      "id": "normal-diaphragm-label",
+      "text": "Diaphragm",
+      "anchor": [
+        200,
+        552
+      ],
+      "elbow": [
+        150,
+        565
+      ],
+      "textPosition": [
+        138,
+        572
+      ],
+      "targetRegion": "normal-diaphragm",
+      "align": "end",
+      "fontSize": 21
+    },
+    {
+      "id": "normal-liver-label",
+      "text": "Liver",
+      "anchor": [
+        270,
+        640
+      ],
+      "elbow": [
+        252,
+        636
+      ],
+      "textPosition": [
+        240,
+        643
+      ],
+      "targetRegion": "normal-liver",
+      "align": "end",
+      "fontSize": 22
+    }
+  ],
+  "title": {
+    "text": "Left congenital diaphragmatic hernia",
+    "position": [
+      768,
+      52
+    ],
+    "align": "middle",
+    "fontSize": 45
+  },
+  "footer": {
+    "text": "Simplified cutaway \u00b7 One possible bowel-only pattern",
+    "position": [
+      768,
+      975
+    ],
+    "align": "middle",
+    "fontSize": 22
+  },
+  "textBlocks": [
+    {
+      "text": "Bowel in the chest leaves less room for the developing lung",
+      "position": [
+        768,
+        96
+      ],
+      "align": "middle",
+      "fontSize": 27
+    },
+    {
+      "text": "Typical arrangement",
+      "position": [
+        420,
+        153
+      ],
+      "align": "middle",
+      "fontSize": 32
+    },
+    {
+      "text": "Left-sided hernia",
+      "position": [
+        1100,
+        153
+      ],
+      "align": "middle",
+      "fontSize": 32
+    },
+    {
+      "text": "R",
+      "position": [
+        210,
+        195
+      ],
+      "align": "middle",
+      "fontSize": 24
+    },
+    {
+      "text": "L",
+      "position": [
+        605,
+        195
+      ],
+      "align": "middle",
+      "fontSize": 24
+    },
+    {
+      "text": "R",
+      "position": [
+        920,
+        195
+      ],
+      "align": "middle",
+      "fontSize": 24
+    },
+    {
+      "text": "L",
+      "position": [
+        1306,
+        195
+      ],
+      "align": "middle",
+      "fontSize": 24
+    }
+  ]
+}

@@ -1,0 +1,29 @@
+{
+  "id": "concept-bilirubin-bound-versus-unbound",
+  "title": "Bilirubin binding changes the risk",
+  "prompt": "Create an original polished 1536x1024 landscape conceptual medical teaching diagram for after-answer study. Warm hand-painted gouache and watercolour on ivory paper; a gentle storybook warmth with precise dark navy type. Matte teal, ochre, coral and blue accents. Simple neutral tokens, paper tiles, arrows and visibly abstract compartments only. Make the visual relationships legible at small size. No body parts, organs, cells, tissues, lumens, tubules, membranes, vessels, anatomical cutaways, clinical photos, diagnostic scans, babies, realistic flesh or decorative scenery. Do not turn abstract boxes or routes into organs or anatomy. Do not invent extra arrows or medical claims. Edge meanings below are metadata, not visible text: draw the arrows but do not print their meaning strings. Footer exactly: Conceptual schematic • Not anatomy. Title exactly: Bilirubin binding changes the risk. Two equal upper comparison cards. LEFT card1 shows a large teal rectangle labelled Albumin with a small ochre bilirubin coin visibly attached by a clasp. RIGHT card2 shows the same ochre bilirubin coin separate from any albumin. Under right card only, two arrows continue down through card3 then4. Left card has no downward route. Footer: The free fraction matters; this is not a brain-barrier drawing. Do not draw brain, membrane, cells, blood vessel or anatomical barrier. Do not show albumin crossing any line. Add a small label Unconjugated bilirubin above the pair. Exact node labels: [{\"id\": \"1\", \"label\": \"Albumin-bound bilirubin\"}, {\"id\": \"2\", \"label\": \"Unbound bilirubin\"}, {\"id\": \"3\", \"label\": \"Can enter the brain\"}, {\"id\": \"4\", \"label\": \"Neurotoxicity risk\"}]. Exact directed connections: [{\"from\": \"2\", \"to\": \"3\", \"meaning\": \"unbound fraction access\"}, {\"from\": \"3\", \"to\": \"4\", \"meaning\": \"risk\"}]. Required checks: Bound token attached to albumin, unbound token clearly separate; Only unbound card connects to brain entry and risk; No anatomical barrier or brain; Risk not inevitable toxicity.",
+  "clinicalSources": [
+    {
+      "title": "The significance of measurement of serum unbound bilirubin in high-risk infants — primary clinical study",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/19419529/"
+    },
+    {
+      "title": "Reassessment of unbound unconjugated bilirubin concentrations and neurotoxicity in vitro — primary study",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/12646712/"
+    }
+  ],
+  "caption": "An abstract bound-versus-unbound comparison identifies the bilirubin fraction associated with access to the brain and neurotoxicity.",
+  "question": "Which fraction of unconjugated bilirubin is most relevant to neurotoxicity?",
+  "answer": "Unbound bilirubin, which can enter the brain; albumin binding changes the available free fraction.",
+  "structureSpecification": "scaffolds/concept-bilirubin-bound-versus-unbound.json",
+  "generationInputs": {
+    "referenceImages": [],
+    "style": "written-only"
+  },
+  "qa": {
+    "status": "pending-independent-qa",
+    "method": "agent-visual-and-source-review",
+    "notes": "Pixel check: albumin token visibly clasps bound bilirubin; unbound token stands alone. Only unbound state has two downstream links to possible brain entry and neurotoxicity risk. Two extra upper classification arrows from the requested unconjugated bilirubin header identify its bound/unbound states and add no causal claim. No brain, barrier or anatomy. Independent and clinical review pending.",
+    "clinicalReviewStatus": "pending"
+  }
+}

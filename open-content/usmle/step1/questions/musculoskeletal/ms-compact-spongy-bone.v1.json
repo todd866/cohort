@@ -1,0 +1,86 @@
+{
+  "id": "bank:usmle-step1:ms-compact-spongy-bone:v1",
+  "rotation": "usmle-step1-open",
+  "topics": [
+    "compact bone",
+    "osteon",
+    "spongy bone"
+  ],
+  "moduleNodes": [
+    "usmle/step1",
+    "usmle/step1/musculoskeletal"
+  ],
+  "questionType": "mechanism",
+  "difficulty": "easy",
+  "stem": "A 32-year-old woman fractures the shaft of her femur. The dense bone forming the walls of the shaft, which resists compressive forces, is organized into which of the following structural units?",
+  "options": [
+    {
+      "label": "A",
+      "text": "Trabeculae with open marrow spaces",
+      "isCorrect": false,
+      "misconception": "The spongy architecture is being assigned to the dense shaft.",
+      "explanation": "Spongy (cancellous) bone has open spaces and supports shifts in weight distribution; it fills the epiphyses, not the dense diaphyseal walls."
+    },
+    {
+      "label": "B",
+      "text": "Osteons with concentric lamellae",
+      "isCorrect": true,
+      "misconception": "None; the osteon (Haversian system) is the unit of compact bone.",
+      "explanation": "Compact bone's microscopic structural unit is the osteon, or Haversian system: concentric rings of calcified matrix (lamellae) around a central canal; compact bone is dense and withstands compressive forces."
+    },
+    {
+      "label": "C",
+      "text": "Osteoid seams of uncalcified matrix",
+      "isCorrect": false,
+      "misconception": "A formative precursor is being cast as the load-bearing structure.",
+      "explanation": "Osteoid is freshly secreted, not-yet-calcified matrix; it provides no compressive strength until mineralized."
+    },
+    {
+      "label": "D",
+      "text": "Synchondroses of hyaline cartilage",
+      "isCorrect": false,
+      "misconception": "A cartilaginous joint is being cast as a bone tissue.",
+      "explanation": "A synchondrosis joins bones with hyaline cartilage (e.g. the epiphyseal plate); it is a joint, not a structural unit of compact bone."
+    },
+    {
+      "label": "E",
+      "text": "Periosteal collars of woven bone",
+      "isCorrect": false,
+      "misconception": "A developmental scaffold is being cast as the mature shaft unit.",
+      "explanation": "The periosteal collar is an early ossification structure around the fetal cartilage model; the mature diaphysis is built from osteons."
+    }
+  ],
+  "context": "Learning objective: compact vs spongy bone. Compact bone (diaphyseal walls, under the periosteum) is dense and resists compression; its unit is the osteon — concentric lamellae around a central (Haversian) canal. Spongy (cancellous) bone has open trabecular spaces and fills epiphyses and flat bones.",
+  "cite": "openstax-anatomy-physiology#ms-compact-spongy-bone",
+  "publicUsmle": {
+    "schemaVersion": 1,
+    "origin": "generated",
+    "itemText": {
+      "licence": "CC-BY-4.0",
+      "attribution": "MD3 contributors"
+    },
+    "evidence": {
+      "kind": "passage",
+      "sourceId": "openstax-anatomy-physiology",
+      "passageId": "ms-compact-spongy-bone",
+      "licence": {
+        "cls": "foss",
+        "id": "cc-by-4.0"
+      }
+    },
+    "media": {
+      "kind": "asset",
+      "assetId": "bone-joint-v1",
+      "job": "anatomy",
+      "showWhen": "after-reveal",
+      "licence": {
+        "cls": "foss",
+        "id": "cc-by-4.0"
+      },
+      "attribution": "MD3 contributors",
+      "contentHash": "sha256:d6bdaa1be77da2de4584d0fd35531bbdae7c99a6de0aba2fdcef378c04efb218"
+    }
+  },
+  "imageUrl": "/figures/usmle/step1/bone-joint-v1.svg",
+  "imageCaption": "Compact vs spongy bone, epiphyseal plate, synovial joint structure/types."
+}

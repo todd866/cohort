@@ -1,0 +1,71 @@
+{
+  "id": "bank:usmle-step1:exp26-a-x-linked-genotype-comparison:v1",
+  "rotation": "usmle-step1-open",
+  "topics": [
+    "genetics",
+    "x-linked-dose"
+  ],
+  "moduleNodes": [
+    "usmle/step1",
+    "usmle/step1/genetics"
+  ],
+  "questionType": "interpretation",
+  "difficulty": "medium",
+  "stem": "In a hypothetical cell model, an X-linked gene has one pathogenic copy and one normal copy. The normal copy contributes measurable protective function. Investigators selectively disable that copy while preserving the pathogenic copy and the remaining experimental conditions. Which of the following paired results best supports protection from the nonmutated copy?",
+  "options": [
+    {
+      "label": "A",
+      "text": "Greater phenotype severity; unchanged pathogenic-copy number",
+      "isCorrect": true,
+      "explanation": "Disabling the normal copy removes its protective contribution while leaving the pathogenic copy unchanged. Greater severity without additional pathogenic copies supports the proposed functional contribution.",
+      "misconception": "No misconception: Removing the protective copy can worsen the phenotype without adding pathogenic copies."
+    },
+    {
+      "label": "B",
+      "text": "Lower phenotype severity; unchanged pathogenic-copy number",
+      "isCorrect": false,
+      "explanation": "The copy number matches the controlled intervention, but the severity direction opposes the stated protective role. Removing protection would not explain an improvement through this mechanism.",
+      "misconception": "Predicts improvement from removing a contribution explicitly shown to be protective."
+    },
+    {
+      "label": "C",
+      "text": "Greater phenotype severity; increased pathogenic-copy number",
+      "isCorrect": false,
+      "explanation": "Greater severity could follow another change, but increased pathogenic-copy number violates the controlled design. The experiment isolates loss of normal-copy function rather than adding pathogenic copies.",
+      "misconception": "Attributes the outcome to extra pathogenic copies even though their number is held constant."
+    },
+    {
+      "label": "D",
+      "text": "Lower phenotype severity; increased pathogenic-copy number",
+      "isCorrect": false,
+      "explanation": "Both the additional pathogenic copies and improved severity fall outside the proposed controlled mechanism. The design changes normal-copy function while preserving the pathogenic-copy count.",
+      "misconception": "Combines an unperformed copy-number change with a severity direction opposite to loss of protection."
+    },
+    {
+      "label": "E",
+      "text": "Stable phenotype severity; reduced pathogenic-copy number",
+      "isCorrect": false,
+      "explanation": "Reducing pathogenic-copy number would introduce a separate intervention. The experiment preserves that copy and tests whether removing the normal contribution changes the measured phenotype.",
+      "misconception": "Introduces loss of a pathogenic copy into an experiment that selectively disables the normal copy."
+    }
+  ],
+  "context": "Learning objective: Assess a normal X-linked copy by selectively changing its function within the same gene-copy background. A controlled loss of protection can increase severity without adding a pathogenic allele.",
+  "cite": "nhgri-x-linked#x-linked-definition",
+  "publicUsmle": {
+    "schemaVersion": 1,
+    "origin": "generated",
+    "itemText": {
+      "licence": "CC-BY-4.0",
+      "attribution": "MD3 contributors"
+    },
+    "evidence": {
+      "kind": "passage",
+      "sourceId": "nhgri-x-linked",
+      "passageId": "x-linked-definition",
+      "licence": {
+        "cls": "foss",
+        "id": "us-gov"
+      }
+    }
+  }
+}

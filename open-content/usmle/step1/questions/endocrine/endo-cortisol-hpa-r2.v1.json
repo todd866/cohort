@@ -1,0 +1,74 @@
+{
+  "id": "bank:usmle-step1:endo-cortisol-hpa-r2:v1",
+  "rotation": "usmle-step1-open",
+  "ladderId": "cortisol-hpa",
+  "difficulty": "medium",
+  "topics": [
+    "CRH",
+    "ACTH",
+    "cortisol",
+    "ladder:cortisol-hpa"
+  ],
+  "moduleNodes": [
+    "usmle/step1",
+    "usmle/step1/endocrine"
+  ],
+  "questionType": "mechanism",
+  "stem": "During a prolonged stressful illness, hypothalamic CRH release rises. Which pituitary product increases next to raise adrenal cortisol output?",
+  "options": [
+    {
+      "label": "A",
+      "text": "Thyroid-stimulating hormone",
+      "isCorrect": false,
+      "misconception": "The thyroid axis is being activated instead of the HPA cascade.",
+      "explanation": "CRH selectively drives ACTH release; TSH is regulated by TRH, not by the CRH stress cascade."
+    },
+    {
+      "label": "B",
+      "text": "Growth hormone",
+      "isCorrect": false,
+      "misconception": "Somatotroph output is being confused with corticotroph output.",
+      "explanation": "Growth hormone is not the next step linking CRH to adrenal cortisol secretion."
+    },
+    {
+      "label": "C",
+      "text": "Adrenocorticotropic hormone",
+      "isCorrect": true,
+      "misconception": "None; CRH triggers anterior-pituitary ACTH, which then stimulates adrenal cortisol release.",
+      "explanation": "Rising CRH causes the anterior pituitary to release ACTH, which stimulates adrenal glucocorticoid secretion."
+    },
+    {
+      "label": "D",
+      "text": "Oxytocin",
+      "isCorrect": false,
+      "misconception": "A posterior pituitary peptide is being placed in the HPA cascade.",
+      "explanation": "Oxytocin is not the CRH-driven signal that increases cortisol during long-term stress."
+    },
+    {
+      "label": "E",
+      "text": "Prolactin",
+      "isCorrect": false,
+      "misconception": "Lactotroph signaling is being confused with corticotroph signaling.",
+      "explanation": "Prolactin is not the intermediary between CRH and adrenal cortisol secretion."
+    }
+  ],
+  "context": "Learning objective: place ACTH between CRH and adrenal cortisol in the long-term stress axis.",
+  "cite": "openstax-anatomy-physiology#endo-cortisol-stress-axis",
+  "publicUsmle": {
+    "schemaVersion": 1,
+    "origin": "generated",
+    "itemText": {
+      "licence": "CC-BY-4.0",
+      "attribution": "MD3 contributors"
+    },
+    "evidence": {
+      "kind": "passage",
+      "sourceId": "openstax-anatomy-physiology",
+      "passageId": "endo-cortisol-stress-axis",
+      "licence": {
+        "cls": "foss",
+        "id": "cc-by-4.0"
+      }
+    }
+  }
+}

@@ -1,0 +1,87 @@
+{
+  "id": "bank:usmle-step1:biochem-glycolysis-location-oxygen:v1",
+  "rotation": "usmle-step1-open",
+  "topics": [
+    "glycolysis",
+    "anaerobic",
+    "ladder:glycolysis"
+  ],
+  "moduleNodes": [
+    "usmle/step1",
+    "usmle/step1/biochem"
+  ],
+  "questionType": "mechanism",
+  "difficulty": "easy",
+  "stem": "Which statement best describes glycolysis with respect to oxygen requirement and cellular location in eukaryotes?",
+  "options": [
+    {
+      "label": "A",
+      "text": "It requires molecular oxygen in the mitochondrial matrix",
+      "isCorrect": false,
+      "misconception": "Confuses glycolysis with oxidative phosphorylation.",
+      "explanation": "Oxygen is the terminal acceptor of the electron transport chain, not a glycolytic substrate."
+    },
+    {
+      "label": "B",
+      "text": "It does not use oxygen directly and occurs in the cytoplasm",
+      "isCorrect": true,
+      "misconception": "None; glycolysis is anaerobic and cytosolic.",
+      "explanation": "OpenStax states glycolysis is termed anaerobic and takes place in the cytoplasm of eukaryotic cells."
+    },
+    {
+      "label": "C",
+      "text": "It occurs only on the inner mitochondrial membrane",
+      "isCorrect": false,
+      "misconception": "Misplaces the pathway on the ETC membrane.",
+      "explanation": "Inner-membrane complexes belong to oxidative phosphorylation."
+    },
+    {
+      "label": "D",
+      "text": "It is strictly aerobic and mitochondrial",
+      "isCorrect": false,
+      "misconception": "Opposite of the actual oxygen independence and location.",
+      "explanation": "Glycolysis proceeds without direct O2 use in the cytosol."
+    },
+    {
+      "label": "E",
+      "text": "It occurs in the nucleus during S phase",
+      "isCorrect": false,
+      "misconception": "Invented nuclear localization.",
+      "explanation": "Nucleotide metabolism is separate from glycolytic sugar cleavage."
+    }
+  ],
+  "context": "Learning objective: place glycolysis as anaerobic cytoplasmic metabolism.",
+  "cite": "openstax-biology-2e#glycolysis-anaerobic-cytoplasm",
+  "publicUsmle": {
+    "schemaVersion": 1,
+    "origin": "generated",
+    "itemText": {
+      "licence": "CC-BY-4.0",
+      "attribution": "MD3 contributors"
+    },
+    "evidence": {
+      "kind": "passage",
+      "sourceId": "openstax-biology-2e",
+      "passageId": "glycolysis-anaerobic-cytoplasm",
+      "licence": {
+        "cls": "foss",
+        "id": "cc-by-4.0"
+      }
+    },
+    "media": {
+      "kind": "asset",
+      "assetId": "cellular-respiration-v1",
+      "job": "pathway",
+      "showWhen": "after-reveal",
+      "licence": {
+        "cls": "foss",
+        "id": "cc-by-4.0"
+      },
+      "attribution": "MD3 contributors",
+      "contentHash": "sha256:28ae7f955e1024135e9335f39b761f79292b1cc679baed71478eb3efc31f99e5"
+    }
+  },
+  "imageUrl": "/figures/usmle/step1/cellular-respiration-v1.svg",
+  "imageCaption": "Cellular respiration: glycolysis -> pyruvate -> acetyl-CoA -> citric cycle carriers -> ETC/ATP synthase; O2 terminal acceptor; fermentation regenerates NAD+.",
+  "ladderId": "glycolysis"
+}

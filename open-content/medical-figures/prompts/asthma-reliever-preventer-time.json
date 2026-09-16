@@ -1,0 +1,39 @@
+{
+  "figureId": "asthma-reliever-preventer-time",
+  "tool": "built-in image_gen",
+  "model": null,
+  "referenceAssetIds": [],
+  "externalReferenceImages": [],
+  "prompt": "Original educational conceptual illustration, landscape 3:2. Warm ivory paper, sophisticated hand-painted gouache/watercolour, confident fine brown outlines, navy lettering, restrained teal, coral and amber. Editorial science illustration with spacious composition and large legible labels. The explanatory structure must carry the meaning visually: molecules, objects, geometry or flow; never paragraphs in boxes. No organs, regional anatomy, teeth or joint cutaways, tissue layers, invented histology, diagnostic photographs, radiographs or patient data. All symbols are explicitly conceptual. Footer: 'Conceptual teaching model • Not to scale'. Title: 'Asthma medicines: two different jobs'. Two horizontal lanes constructed from beautifully painted OBJECTS and paths, without prose boxes or biological anatomy. Top lane: a simple unbranded inhaler icon labelled 'Salbutamol' beside a stopwatch, followed by a SHORT teal path to an opening abstract coiled spring loop. Large lane heading 'RELIEVER'. Small labels 'Minutes' and 'Relaxes smooth muscle'. The spring is explicitly a mechanical metaphor, not an airway. Bottom lane: a DIFFERENT unbranded inhaler icon labelled 'Inhaled corticosteroid', then a LONG path alongside a paper calendar with repeated daily checkmarks, leading to a broad teal protective shield with a small coral inflammation-flame symbol becoming fainter beside it. Large heading 'PREVENTER'. Short labels 'Regular use' and 'Controls inflammation over time'. No curves with invented measurements, no numerical dose, no anatomy, no lungs, no comparisons of actual inhaler colours. Footer line 'Follow the prescribed asthma plan'. Plenty of white space; paths have clear arrowheads.",
+  "clinicalSources": [
+    {
+      "title": "NHLBI — Asthma treatment and action plan",
+      "url": "https://www.nhlbi.nih.gov/health/asthma/treatment-action-plan"
+    },
+    {
+      "title": "NHLBI — Inhaled corticosteroids fact sheet",
+      "url": "https://www.nhlbi.nih.gov/resources/changing-role-inhaled-corticosteroids-asthma-management-fact-sheet"
+    }
+  ],
+  "teaching": {
+    "question": "Why does a child's prescribed inhaled corticosteroid need regular use even when salbutamol relieves symptoms quickly?",
+    "answer": "Salbutamol rapidly relaxes airway smooth muscle. Inhaled corticosteroid controls the underlying inflammation over time, helping reduce future symptoms and attacks.",
+    "imageRole": "after-reveal"
+  },
+  "title": "Reliever and preventer have different jobs",
+  "caption": "Salbutamol gives rapid relief by relaxing airway smooth muscle. Regular inhaled corticosteroid controls inflammation over time and reduces future symptoms and attacks.",
+  "alt": "A short stopwatch path illustrates rapid salbutamol relief, while a longer calendar path illustrates ongoing inhaled-corticosteroid control.",
+  "review": {
+    "status": "pending-independent-qa",
+    "method": "agent-visual-and-source-review",
+    "notes": "Full pixel-to-specification review: the salbutamol lane connects a minutes stopwatch to a relaxed mechanical spring; the corticosteroid lane uses repeated calendar checks and a shield beside fading inflammation symbols. Clear named medicines prevent reliance on device colour. No airway, lung or tissue appears, no doses are given, and the prescribed-plan qualifier is present.",
+    "structure": {
+      "kind": "conceptual",
+      "status": "verified",
+      "specificationFiles": [
+        "scaffolds/asthma-reliever-preventer-time.json"
+      ],
+      "notes": "Full pixel-to-specification review: the salbutamol lane connects a minutes stopwatch to a relaxed mechanical spring; the corticosteroid lane uses repeated calendar checks and a shield beside fading inflammation symbols. Clear named medicines prevent reliance on device colour. No airway, lung or tissue appears, no doses are given, and the prescribed-plan qualifier is present."
+    }
+  }
+}

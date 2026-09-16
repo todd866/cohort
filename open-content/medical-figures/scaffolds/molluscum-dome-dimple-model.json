@@ -1,0 +1,78 @@
+{
+  "schemaVersion": 1,
+  "figureId": "molluscum-dome-dimple-model",
+  "kind": "conceptual",
+  "sourceFacts": [
+    {
+      "id": "fact-1",
+      "fact": "Typical molluscum papules are dome-shaped with a central pit termed umbilication.",
+      "sources": [
+        {
+          "title": "RCH: Molluscum contagiosum guideline",
+          "url": "https://www.rch.org.au/clinicalguide/guideline_index/molluscum_guideline/"
+        }
+      ]
+    },
+    {
+      "id": "fact-2",
+      "fact": "The illustration teaches surface geometry only; diagnosis is clinical.",
+      "sources": [
+        {
+          "title": "RCH: Molluscum contagiosum guideline",
+          "url": "https://www.rch.org.au/clinicalguide/guideline_index/molluscum_guideline/"
+        }
+      ]
+    }
+  ],
+  "nodes": [
+    {
+      "id": "dome",
+      "shape": "smooth clay hemisphere",
+      "label": "Dome"
+    },
+    {
+      "id": "dimple",
+      "shape": "clay dome with central depression",
+      "label": "Central dimple"
+    },
+    {
+      "id": "profile",
+      "shape": "external contour line",
+      "label": "Umbilication"
+    }
+  ],
+  "edges": [
+    {
+      "from": "dome",
+      "to": "dimple",
+      "meaning": "comparison of surface feature"
+    },
+    {
+      "from": "dimple",
+      "to": "profile",
+      "meaning": "same exterior contour in profile"
+    }
+  ],
+  "labels": [
+    "Dome + central dimple",
+    "Dome",
+    "Central dimple",
+    "Umbilication",
+    "Shape vocabulary for molluscum",
+    "Clay model, not a diagnostic skin image"
+  ],
+  "forbiddenAnatomy": [
+    "Skin anatomy, tissue layers, clinical lesion images, histology, anatomical cutaways"
+  ],
+  "validation": {
+    "status": "verified",
+    "method": "source-and-conceptual-structure-review",
+    "checks": [
+      "Dimple is a shallow central depression, not a through-hole, spike or a cutaway.",
+      "Profile shows only exterior contour, no tissue layers or internal contents.",
+      "No claim all umbilicated lesions diagnose molluscum."
+    ],
+    "pixelReviewStatus": "verified",
+    "pixelReviewNotes": "Paired clay hemispheres differ by a small central depression on the right; leader terminates in the shallow dimple. Exterior profile line reproduces the central dip without layers or internal contents. Text explicitly calls this a clay shape model, not a diagnostic skin image. No clinical lesion simulation."
+  }
+}

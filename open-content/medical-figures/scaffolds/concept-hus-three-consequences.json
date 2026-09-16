@@ -1,0 +1,116 @@
+{
+  "schemaVersion": 1,
+  "id": "concept-hus-three-consequences",
+  "kind": "conceptual",
+  "sourceFacts": [
+    {
+      "fact": "HUS involves red-cell destruction, low platelet count and acute kidney injury.",
+      "sourceUrls": [
+        "https://www.niddk.nih.gov/health-information/kidney-disease/children/hemolytic-uremic-syndrome"
+      ]
+    },
+    {
+      "fact": "Microvascular damage links red-cell fragmentation, platelet consumption and impaired kidney function.",
+      "sourceUrls": [
+        "https://www.niddk.nih.gov/health-information/kidney-disease/children/hemolytic-uremic-syndrome",
+        "https://pubmed.ncbi.nlm.nih.gov/940625/"
+      ]
+    }
+  ],
+  "nodes": [
+    {
+      "id": "1",
+      "label": "Microvascular injury"
+    },
+    {
+      "id": "2",
+      "label": "Red-cell fragmentation"
+    },
+    {
+      "id": "3",
+      "label": "Haemolytic anaemia"
+    },
+    {
+      "id": "4",
+      "label": "Platelet consumption"
+    },
+    {
+      "id": "5",
+      "label": "Thrombocytopenia"
+    },
+    {
+      "id": "6",
+      "label": "Reduced kidney function"
+    },
+    {
+      "id": "7",
+      "label": "Acute kidney injury"
+    }
+  ],
+  "edges": [
+    {
+      "from": "1",
+      "to": "2",
+      "meaning": "mechanism"
+    },
+    {
+      "from": "2",
+      "to": "3",
+      "meaning": "result"
+    },
+    {
+      "from": "1",
+      "to": "4",
+      "meaning": "mechanism"
+    },
+    {
+      "from": "4",
+      "to": "5",
+      "meaning": "result"
+    },
+    {
+      "from": "1",
+      "to": "6",
+      "meaning": "mechanism"
+    },
+    {
+      "from": "6",
+      "to": "7",
+      "meaning": "result"
+    }
+  ],
+  "labels": [
+    "One process, three HUS consequences",
+    "Microvascular injury",
+    "Red-cell fragmentation",
+    "Haemolytic anaemia",
+    "Platelet consumption",
+    "Thrombocytopenia",
+    "Reduced kidney function",
+    "Acute kidney injury",
+    "Conceptual schematic • Not anatomy"
+  ],
+  "layout": "A top-centre blue node1 branches into THREE equal, clearly separated vertical columns. Left column node2 then3, centre node4 then5, right node6 then7. Exactly six connectors and seven labelled nodes, no cross-links. Neutral metaphors: torn red paper discs for fragmentation, fewer ochre dot tokens for consumption, and an abstract declining gauge for function. No red-cell microscopy, platelets with anatomical detail, vessel or kidney icon. Below the columns print: The haemolytic uraemic syndrome triad.",
+  "forbiddenAnatomy": [
+    "organs",
+    "body silhouettes",
+    "tissue cross-sections",
+    "cells",
+    "tubules",
+    "vessels",
+    "clinical photographs",
+    "diagnostic scans"
+  ],
+  "validation": {
+    "sourceStatus": "checked",
+    "structureStatus": "verified",
+    "requiredChecks": [
+      "Exactly three branches from one central process",
+      "Each mechanism links only to its matched outcome",
+      "Low platelets follow consumption and anaemia follows red-cell fragmentation",
+      "No vessels, organs, cells or clinical smear"
+    ],
+    "clinicalReviewStatus": "pending",
+    "pixelChecks": "Pixel review: seven nodes and six directed links form three correctly matched HUS branches. Torn red paper tokens, ochre inventory tokens and gauges stay abstract; no vascular or organ anatomy. Top microvascular heading and bottom triad heading carry the intended teaching point although the requested introductory title was omitted. Clinical and independent review pending."
+  }
+}

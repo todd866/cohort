@@ -1,0 +1,72 @@
+{
+  "id": "bank:usmle-step1:neuro-stroke-sudden-signs:v1",
+  "rotation": "usmle-step1-open",
+  "topics": [
+    "stroke",
+    "clinical recognition",
+    "neurologic emergency"
+  ],
+  "moduleNodes": [
+    "usmle/step1",
+    "usmle/step1/neuro"
+  ],
+  "questionType": "diagnosis",
+  "difficulty": "easy",
+  "stem": "Which of the following sudden combinations should make a bystander suspect a stroke?",
+  "options": [
+    {
+      "label": "A",
+      "text": "Bilateral calf soreness after a long walk",
+      "isCorrect": false,
+      "misconception": "Expected exertional discomfort is being confused with an abrupt focal neurologic deficit.",
+      "explanation": "The CDC warning pattern is sudden one-sided weakness or numbness and trouble speaking, not bilateral soreness after exertion."
+    },
+    {
+      "label": "B",
+      "text": "One-sided face or arm weakness with trouble speaking",
+      "isCorrect": true,
+      "misconception": "None; sudden unilateral weakness and speech difficulty are stroke warning signs.",
+      "explanation": "Sudden weakness or numbness affecting one side of the face, arm, or leg together with trouble speaking should raise immediate concern for stroke."
+    },
+    {
+      "label": "C",
+      "text": "Gradual wrist stiffness after repetitive computer work",
+      "isCorrect": false,
+      "misconception": "A gradual local musculoskeletal complaint is being treated as an acute focal neurologic event.",
+      "explanation": "Stroke warning signs begin suddenly and include one-sided weakness or numbness and speech difficulty, unlike gradual wrist stiffness."
+    },
+    {
+      "label": "D",
+      "text": "Itchy eye redness with seasonal nasal congestion",
+      "isCorrect": false,
+      "misconception": "An allergic symptom cluster is being mistaken for focal neurologic dysfunction.",
+      "explanation": "Eye itch and nasal congestion do not match the cited sudden unilateral weakness and speech warning pattern."
+    },
+    {
+      "label": "E",
+      "text": "Brief finger tingling after leaning on an elbow",
+      "isCorrect": false,
+      "misconception": "Position-related tingling in one small nerve territory is being overgeneralized to a stroke pattern.",
+      "explanation": "The CDC pattern involves sudden face, arm, or leg weakness or numbness, especially on one side, often with trouble speaking."
+    }
+  ],
+  "context": "Learning objective: recognize a stroke warning pattern. Sudden one-sided face, arm, or leg weakness or numbness plus new difficulty speaking is an emergency signal, not something to watch casually.",
+  "cite": "cdc-stroke-signs#stroke-sudden-signs",
+  "publicUsmle": {
+    "schemaVersion": 1,
+    "origin": "generated",
+    "itemText": {
+      "licence": "CC-BY-4.0",
+      "attribution": "MD3 contributors"
+    },
+    "evidence": {
+      "kind": "passage",
+      "sourceId": "cdc-stroke-signs",
+      "passageId": "stroke-sudden-signs",
+      "licence": {
+        "cls": "foss",
+        "id": "us-gov"
+      }
+    }
+  }
+}

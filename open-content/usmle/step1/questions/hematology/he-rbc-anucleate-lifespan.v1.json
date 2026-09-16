@@ -1,0 +1,86 @@
+{
+  "id": "bank:usmle-step1:he-rbc-anucleate-lifespan:v1",
+  "rotation": "usmle-step1-open",
+  "topics": [
+    "erythrocyte",
+    "anaerobic respiration",
+    "bilirubin"
+  ],
+  "moduleNodes": [
+    "usmle/step1",
+    "usmle/step1/hematology"
+  ],
+  "questionType": "mechanism",
+  "difficulty": "easy",
+  "stem": "A 25-year-old medical student examines her own blood smear and notes that the red blood cells lack nuclei and other organelles.\n\nWhich of the following best explains how these cells generate the energy they need during their approximately 120-day lifespan?",
+  "options": [
+    {
+      "label": "A",
+      "text": "Protein synthesis coupled to ATP generation",
+      "isCorrect": false,
+      "misconception": "An anabolic, energy-consuming process is being cast as energy production.",
+      "explanation": "Red cells lack endoplasmic reticula and do not synthesize proteins; protein synthesis consumes ATP rather than generating it."
+    },
+    {
+      "label": "B",
+      "text": "Oxidative phosphorylation in abundant mitochondria",
+      "isCorrect": false,
+      "misconception": "Standard aerobic metabolism is being assumed for red cells.",
+      "explanation": "Mature erythrocytes have no mitochondria, so oxidative phosphorylation is impossible; they generate ATP by anaerobic glycolysis."
+    },
+    {
+      "label": "C",
+      "text": "Beta-oxidation of fatty acids in peroxisomes",
+      "isCorrect": false,
+      "misconception": "A lipid pathway is being assigned to organelle-free cells.",
+      "explanation": "Erythrocytes lack peroxisomes and mitochondria alike; their only ATP source is anaerobic respiration of glucose."
+    },
+    {
+      "label": "D",
+      "text": "Anaerobic respiration in the absence of mitochondria",
+      "isCorrect": true,
+      "misconception": "None; anucleate red cells rely on glycolysis.",
+      "explanation": "Mature erythrocytes extrude the nucleus and organelles and, lacking mitochondria, rely on anaerobic respiration — an adaptation ensuring they do not consume the oxygen they transport."
+    },
+    {
+      "label": "E",
+      "text": "Ketone body metabolism during circulation",
+      "isCorrect": false,
+      "misconception": "A mitochondrial fuel pathway is being proposed for cells without mitochondria.",
+      "explanation": "Ketone utilization requires mitochondria, which erythrocytes lack; they depend exclusively on anaerobic respiration throughout their 120-day lifespan."
+    }
+  ],
+  "context": "Learning objective: explain red-cell energy economy. Maturing erythrocytes extrude the nucleus and most organelles; lacking mitochondria they rely on anaerobic respiration, so they deliver 100 percent of their carried oxygen to tissues. They live about 120 days before macrophages recycle globin, iron, and heme (to bilirubin).",
+  "cite": "openstax-anatomy-physiology#he-rbc-anucleate-lifespan",
+  "publicUsmle": {
+    "schemaVersion": 1,
+    "origin": "generated",
+    "itemText": {
+      "licence": "CC-BY-4.0",
+      "attribution": "MD3 contributors"
+    },
+    "evidence": {
+      "kind": "passage",
+      "sourceId": "openstax-anatomy-physiology",
+      "passageId": "he-rbc-anucleate-lifespan",
+      "licence": {
+        "cls": "foss",
+        "id": "cc-by-4.0"
+      }
+    },
+    "media": {
+      "kind": "asset",
+      "assetId": "bilirubin-metabolism-v1",
+      "job": "pathway",
+      "showWhen": "after-reveal",
+      "licence": {
+        "cls": "foss",
+        "id": "cc-by-4.0"
+      },
+      "attribution": "MD3 contributors",
+      "contentHash": "sha256:19bd6c3f8772b9bf302595c185091350d04ed1d0e493bad6de2ca3ac46141e34"
+    }
+  },
+  "imageUrl": "/figures/usmle/step1/bilirubin-metabolism-v1.svg",
+  "imageCaption": "Bilirubin: spleen Hb breakdown -> unconjugated (albumin) -> hepatic conjugation -> bile -> gut bacteria -> urobilinogen/stercobilin; some urobilinogen -> urine."
+}

@@ -1,0 +1,87 @@
+{
+  "id": "bank:usmle-step1:respiratory-boyle-law:v1",
+  "rotation": "usmle-step1-open",
+  "ladderId": "respiratory-mechanics",
+  "topics": [
+    "Boyle's law",
+    "gas laws",
+    "ladder:respiratory-mechanics"
+  ],
+  "moduleNodes": [
+    "usmle/step1",
+    "usmle/step1/respiratory"
+  ],
+  "questionType": "calculation",
+  "difficulty": "easy",
+  "stem": "In a physiology laboratory, a 21-year-old student compresses a gas-filled syringe to one-half of its original volume while temperature is held constant and no gas escapes.\n\nAccording to Boyle's law, which of the following best describes the resulting change in the pressure of the trapped gas?",
+  "options": [
+    {
+      "label": "A",
+      "text": "It doubles",
+      "isCorrect": true,
+      "misconception": "None; inverse proportionality doubles pressure when volume halves.",
+      "explanation": "Boyle's law states that the pressure of a gas is inversely proportional to its volume at constant temperature: if volume decreases to one-half, pressure increases twofold."
+    },
+    {
+      "label": "B",
+      "text": "It remains unchanged",
+      "isCorrect": false,
+      "misconception": "Pressure is being treated as independent of volume.",
+      "explanation": "At constant temperature, changing the volume occupied by a gas changes its pressure; the two cannot remain independent."
+    },
+    {
+      "label": "C",
+      "text": "It increases by half",
+      "isCorrect": false,
+      "misconception": "A linear rather than inverse proportional relationship is being applied.",
+      "explanation": "The relationship is inverse and proportional: halving the volume doubles the pressure, not a one-half increase."
+    },
+    {
+      "label": "D",
+      "text": "It is halved",
+      "isCorrect": false,
+      "misconception": "Pressure is being treated as proportional to volume.",
+      "explanation": "Pressure and volume are inversely related; reducing volume raises rather than lowers pressure."
+    },
+    {
+      "label": "E",
+      "text": "It quadruples",
+      "isCorrect": false,
+      "misconception": "A squared relationship is being applied to the volume change.",
+      "explanation": "The inverse relationship is first-order, not squared; halving volume doubles pressure."
+    }
+  ],
+  "context": "Learning objective: apply Boyle's law. At constant temperature, the pressure of a gas is inversely proportional to its volume.",
+  "cite": "openstax-anatomy-physiology#resp-boyle-law",
+  "publicUsmle": {
+    "schemaVersion": 1,
+    "origin": "generated",
+    "itemText": {
+      "licence": "CC-BY-4.0",
+      "attribution": "MD3 contributors"
+    },
+    "evidence": {
+      "kind": "passage",
+      "sourceId": "openstax-anatomy-physiology",
+      "passageId": "resp-boyle-law",
+      "licence": {
+        "cls": "foss",
+        "id": "cc-by-4.0"
+      }
+    },
+    "media": {
+      "kind": "asset",
+      "assetId": "lung-mechanics-v1",
+      "job": "pathway",
+      "showWhen": "after-reveal",
+      "licence": {
+        "cls": "foss",
+        "id": "cc-by-4.0"
+      },
+      "attribution": "MD3 contributors",
+      "contentHash": "sha256:2eaec9c60db53463223535515210fe6ff2a06557ce339beb1804de9350056fb2"
+    }
+  },
+  "imageUrl": "/figures/usmle/step1/lung-mechanics-v1.svg",
+  "imageCaption": "Inspiration/Boyle, vital capacity, compliance, surfactant/NRDS."
+}

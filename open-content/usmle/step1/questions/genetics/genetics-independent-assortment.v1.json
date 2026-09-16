@@ -1,0 +1,85 @@
+{
+  "id": "bank:usmle-step1:genetics-independent-assortment:v1",
+  "rotation": "usmle-step1-open",
+  "topics": [
+    "Mendel",
+    "independent assortment"
+  ],
+  "moduleNodes": [
+    "usmle/step1",
+    "usmle/step1/genetics"
+  ],
+  "questionType": "mechanism",
+  "difficulty": "easy",
+  "stem": "Mendel's law of independent assortment concerns which genetic idea?",
+  "options": [
+    {
+      "label": "A",
+      "text": "Sensitivity equaling true positives over diseased only",
+      "isCorrect": false,
+      "misconception": "Biostats distractor — does not match the cited teaching point.",
+      "explanation": "Wrong domain; see the cited source passage for detail."
+    },
+    {
+      "label": "B",
+      "text": "Aspirin irreversibly activating ACE in vessels",
+      "isCorrect": false,
+      "misconception": "Pharm distractor — does not match the cited teaching point.",
+      "explanation": "Wrong domain; see the cited source passage for detail."
+    },
+    {
+      "label": "C",
+      "text": "Complement destroying only self antigens in blood",
+      "isCorrect": false,
+      "misconception": "Immuno distractor — does not match the cited teaching point.",
+      "explanation": "Wrong domain; see the cited source passage for detail."
+    },
+    {
+      "label": "D",
+      "text": "Different gene pairs segregating independently in gametes",
+      "isCorrect": true,
+      "misconception": "None; independent assortment of gene pairs.",
+      "explanation": "OpenStax Biology: independent assortment of different gene pairs."
+    },
+    {
+      "label": "E",
+      "text": "Warfarin raising vitamin K synthesis unboundedly",
+      "isCorrect": false,
+      "misconception": "Pharm distractor — does not match the cited teaching point.",
+      "explanation": "Wrong domain; see the cited source passage for detail."
+    }
+  ],
+  "context": "Learning objective: independent assortment.",
+  "cite": "openstax-biology-2e#mendel-independent-assortment",
+  "publicUsmle": {
+    "schemaVersion": 1,
+    "origin": "generated",
+    "itemText": {
+      "licence": "CC-BY-4.0",
+      "attribution": "MD3 contributors"
+    },
+    "evidence": {
+      "kind": "passage",
+      "sourceId": "openstax-biology-2e",
+      "passageId": "mendel-independent-assortment",
+      "licence": {
+        "cls": "foss",
+        "id": "cc-by-4.0"
+      }
+    },
+    "media": {
+      "kind": "asset",
+      "assetId": "inheritance-patterns-v1",
+      "job": "compare-table",
+      "showWhen": "after-reveal",
+      "licence": {
+        "cls": "foss",
+        "id": "cc-by-4.0"
+      },
+      "attribution": "MD3 contributors",
+      "contentHash": "sha256:bc0bae2b17161c7b8005c324f5f9f7d9fe3ad1d0b12896a32a271388e971eb06"
+    }
+  },
+  "imageUrl": "/figures/usmle/step1/inheritance-patterns-v1.svg",
+  "imageCaption": "Independent assortment as Mendelian inheritance pattern."
+}

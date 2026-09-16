@@ -1,0 +1,88 @@
+{
+  "id": "bank:usmle-step1:he-factor-x-convergence:v1",
+  "rotation": "usmle-step1-open",
+  "ladderId": "hemostasis-cascade",
+  "topics": [
+    "coagulation cascade",
+    "factor X",
+    "common pathway",
+    "ladder:hemostasis-cascade"
+  ],
+  "moduleNodes": [
+    "usmle/step1",
+    "usmle/step1/hematology"
+  ],
+  "questionType": "mechanism",
+  "difficulty": "medium",
+  "stem": "A 3-year-old boy has recurrent joint bleeding. Laboratory studies show that his intrinsic and extrinsic coagulation pathways are intact, but the step at which the two pathways merge fails.\n\nDeficiency of which of the following factors best explains this picture?",
+  "options": [
+    {
+      "label": "A",
+      "text": "Factor VIII (antihemolytic factor A)",
+      "isCorrect": false,
+      "misconception": "The hemophilia-A factor is being placed at the convergence.",
+      "explanation": "Factor VIII operates only within the intrinsic pathway, combining with factor IX to activate factor X; the extrinsic arm would still function, so the picture described requires factor X itself."
+    },
+    {
+      "label": "B",
+      "text": "Factor XII (contact factor)",
+      "isCorrect": false,
+      "misconception": "The contact-initiation factor is being confused with the merge point.",
+      "explanation": "Factor XII initiates only the intrinsic pathway upon contact with foreign surfaces; extrinsic activation bypasses it, so a pure convergence defect must lie downstream at factor X."
+    },
+    {
+      "label": "C",
+      "text": "Factor III (tissue factor)",
+      "isCorrect": false,
+      "misconception": "The extrinsic initiator is being cast as the shared step.",
+      "explanation": "Tissue factor from damaged cells triggers only the extrinsic pathway; with both arms described as intact, the failing shared step is factor X."
+    },
+    {
+      "label": "D",
+      "text": "Factor II (prothrombin)",
+      "isCorrect": false,
+      "misconception": "A downstream common-pathway substrate is being mistaken for the convergence point.",
+      "explanation": "Prothrombin is converted to thrombin after factor X activation; although downstream, the classic convergence of intrinsic and extrinsic pathways is the activation of factor X."
+    },
+    {
+      "label": "E",
+      "text": "Factor X (Stuart-Prower factor)",
+      "isCorrect": true,
+      "misconception": "None; factor X is the point of convergence.",
+      "explanation": "Both the intrinsic and extrinsic pathways lead to the common pathway once factor X has been activated; factor X sits at the merge point, so its deficiency cripples fibrin production from either arm."
+    }
+  ],
+  "context": "Learning objective: locate the cascade convergence. The intrinsic pathway (XII, XI, IX with VIII) and the extrinsic pathway (tissue factor) both activate factor X; activated factor X joins the common pathway in which prothrombinase converts prothrombin to thrombin and thrombin builds fibrin.",
+  "cite": "openstax-anatomy-physiology#he-factor-x-convergence",
+  "publicUsmle": {
+    "schemaVersion": 1,
+    "origin": "generated",
+    "itemText": {
+      "licence": "CC-BY-4.0",
+      "attribution": "MD3 contributors"
+    },
+    "evidence": {
+      "kind": "passage",
+      "sourceId": "openstax-anatomy-physiology",
+      "passageId": "he-factor-x-convergence",
+      "licence": {
+        "cls": "foss",
+        "id": "cc-by-4.0"
+      }
+    },
+    "media": {
+      "kind": "asset",
+      "assetId": "hemostasis-cascade-v1",
+      "job": "pathway",
+      "showWhen": "after-reveal",
+      "licence": {
+        "cls": "foss",
+        "id": "cc-by-4.0"
+      },
+      "attribution": "MD3 contributors",
+      "contentHash": "sha256:c60ee72abea54034e1edf06eef9bba46971e7a7011610c9a55fe3767aa079a04"
+    }
+  },
+  "imageUrl": "/figures/usmle/step1/hemostasis-cascade-v1.svg",
+  "imageCaption": "Hemostasis steps, factor X convergence, fibrin, plasmin fibrinolysis, heparin."
+}

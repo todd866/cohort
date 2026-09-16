@@ -1,0 +1,73 @@
+{
+  "id": "bank:usmle-step1:renal-bicarbonate-conservation-r2:v1",
+  "rotation": "usmle-step1-open",
+  "ladderId": "renal-bicarbonate-conservation",
+  "topics": [
+    "carbonic anhydrase",
+    "proximal tubule",
+    "ladder:renal-bicarbonate-conservation"
+  ],
+  "moduleNodes": [
+    "usmle/step1",
+    "usmle/step1/renal"
+  ],
+  "questionType": "mechanism",
+  "difficulty": "medium",
+  "stem": "In the proximal tubule, filtered bicarbonate cannot cross the apical membrane directly.\n\nAfter carbon dioxide enters the cell, carbonic anhydrase catalyzes which of the following paired ion movements that together return bicarbonate to the blood?",
+  "options": [
+    {
+      "label": "A",
+      "text": "Luminal hydrogen ion secretion with basolateral bicarbonate exit to blood",
+      "isCorrect": true,
+      "misconception": "None; intracellular carbonic anhydrase regenerates bicarbonate for the blood while hydrogen ions are secreted.",
+      "explanation": "After CO2 enters the cell, carbonic anhydrase forms carbonic acid, which dissociates; bicarbonate exits basolaterally to the blood and hydrogen ions are secreted apically, conserving filtered bicarbonate indirectly."
+    },
+    {
+      "label": "B",
+      "text": "Direct bicarbonate channel reabsorption without any hydrogen ion secretion",
+      "isCorrect": false,
+      "misconception": "A direct channel is being proposed despite tubule impermeability to bicarbonate.",
+      "explanation": "Tubule cells are not permeable to bicarbonate; recovery requires the carbonic anhydrase-coupled H+ secretion pathway."
+    },
+    {
+      "label": "C",
+      "text": "Luminal bicarbonate secretion with hydrogen ion absorption from filtrate",
+      "isCorrect": false,
+      "misconception": "The direction of ion movement is reversed.",
+      "explanation": "Bicarbonate is returned to the blood, not secreted; H+ moves into the lumen to titrate filtered bicarbonate."
+    },
+    {
+      "label": "D",
+      "text": "Luminal bicarbonate-for-chloride exchange without carbonic anhydrase activity",
+      "isCorrect": false,
+      "misconception": "A chloride-bicarbonate exchanger is being proposed without the required enzymatic step.",
+      "explanation": "The canonical proximal mechanism uses carbonic anhydrase to convert CO2 to bicarbonate inside the cell; direct bicarbonate exchange is not the primary route."
+    },
+    {
+      "label": "E",
+      "text": "Passive bicarbonate diffusion through aquaporin water channels in tubule",
+      "isCorrect": false,
+      "misconception": "Water channels are being assigned a bicarbonate transport role.",
+      "explanation": "Aquaporins transport water, not bicarbonate; bicarbonate conservation requires the carbonic anhydrase mechanism."
+    }
+  ],
+  "context": "Learning objective: apply the carbonic anhydrase bicarbonate recovery mechanism. Intracellular CA converts CO2 to HCO3− (returned to blood) and H+ (secreted), because the membrane cannot pass filtered bicarbonate directly.",
+  "cite": "openstax-anatomy-physiology#renal-bicarbonate-conservation",
+  "publicUsmle": {
+    "schemaVersion": 1,
+    "origin": "generated",
+    "itemText": {
+      "licence": "CC-BY-4.0",
+      "attribution": "MD3 contributors"
+    },
+    "evidence": {
+      "kind": "passage",
+      "sourceId": "openstax-anatomy-physiology",
+      "passageId": "renal-bicarbonate-conservation",
+      "licence": {
+        "cls": "foss",
+        "id": "cc-by-4.0"
+      }
+    }
+  }
+}

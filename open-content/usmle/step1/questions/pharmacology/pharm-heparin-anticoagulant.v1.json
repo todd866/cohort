@@ -1,0 +1,85 @@
+{
+  "id": "bank:usmle-step1:pharm-heparin-anticoagulant:v1",
+  "rotation": "usmle-step1-open",
+  "topics": [
+    "heparin",
+    "anticoagulation"
+  ],
+  "moduleNodes": [
+    "usmle/step1",
+    "usmle/step1/pharmacology"
+  ],
+  "questionType": "mechanism",
+  "difficulty": "easy",
+  "stem": "Heparin is described as which kind of agent, acting by decreasing which property of blood?",
+  "options": [
+    {
+      "label": "A",
+      "text": "NSAID; prostaglandin synthesis only",
+      "isCorrect": false,
+      "misconception": "Wrong concept for this stem; does not match the cited passage.",
+      "explanation": "This option does not match the cited source passage for the stem."
+    },
+    {
+      "label": "B",
+      "text": "Biguanide; hepatic gluconeogenesis only",
+      "isCorrect": false,
+      "misconception": "Wrong concept for this stem; does not match the cited passage.",
+      "explanation": "This option does not match the cited source passage for the stem."
+    },
+    {
+      "label": "C",
+      "text": "Corticosteroid; leukocyte trafficking only",
+      "isCorrect": false,
+      "misconception": "Wrong concept for this stem; does not match the cited passage.",
+      "explanation": "This option does not match the cited source passage for the stem."
+    },
+    {
+      "label": "D",
+      "text": "Anticoagulant; clotting ability of the blood",
+      "isCorrect": true,
+      "misconception": "None; heparin decreases clotting ability.",
+      "explanation": "MedlinePlus: anticoagulants (blood thinners); decreases clotting ability of the blood."
+    },
+    {
+      "label": "E",
+      "text": "Statin; HMG-CoA reductase activity only",
+      "isCorrect": false,
+      "misconception": "Wrong concept for this stem; does not match the cited passage.",
+      "explanation": "This option does not match the cited source passage for the stem."
+    }
+  ],
+  "context": "Learning objective: heparin anticoagulant action.",
+  "cite": "medlineplus-heparin#heparin-anticoagulant",
+  "publicUsmle": {
+    "schemaVersion": 1,
+    "origin": "generated",
+    "itemText": {
+      "licence": "CC-BY-4.0",
+      "attribution": "MD3 contributors"
+    },
+    "evidence": {
+      "kind": "passage",
+      "sourceId": "medlineplus-heparin",
+      "passageId": "heparin-anticoagulant",
+      "licence": {
+        "cls": "foss",
+        "id": "us-gov"
+      }
+    },
+    "media": {
+      "kind": "asset",
+      "assetId": "pharm-drug-classes-v1",
+      "job": "compare-table",
+      "showWhen": "after-reveal",
+      "licence": {
+        "cls": "foss",
+        "id": "cc-by-4.0"
+      },
+      "attribution": "MD3 contributors",
+      "contentHash": "sha256:0660ff11235451eff9a2718dd975d64fa61483b220682b17bd82c8050fd4bceb"
+    }
+  },
+  "imageUrl": "/figures/usmle/step1/pharm-drug-classes-v1.svg",
+  "imageCaption": "High-yield FOSS drug-class map from MedlinePlus labels."
+}

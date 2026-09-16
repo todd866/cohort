@@ -1,0 +1,85 @@
+{
+  "id": "bank:usmle-step1:neuro-stretch-reflex:v1",
+  "rotation": "usmle-step1-open",
+  "topics": [
+    "stretch reflex",
+    "muscle spindle"
+  ],
+  "moduleNodes": [
+    "usmle/step1",
+    "usmle/step1/neuroscience"
+  ],
+  "questionType": "mechanism",
+  "difficulty": "medium",
+  "stem": "During a physical examination of a 40-year-old woman, a tap on the patellar ligament produces an immediate kick of the lower leg.\n\nWithin this reflex, the afferent signal from the muscle spindle reaches the spinal cord and then does which of the following?",
+  "options": [
+    {
+      "label": "A",
+      "text": "Synapses directly on the ventral horn motor neuron supplying the same muscle",
+      "isCorrect": true,
+      "misconception": "None; the stretch reflex is monosynaptic onto the homonymous motor neuron.",
+      "explanation": "The muscle-spindle afferent enters through the dorsal root and synapses directly on the ventral horn motor neuron that activates the stretched muscle, causing contraction; a collateral branch also inhibits the antagonist's motor neuron via an interneuron."
+    },
+    {
+      "label": "B",
+      "text": "Ascends to the motor cortex, which then commands the muscle to extend the leg",
+      "isCorrect": false,
+      "misconception": "A spinal reflex is being routed through the cerebrum.",
+      "explanation": "The knee-jerk is a spinal reflex that does not require the brain; the afferent synapses on the motor neuron in the ventral horn, which is why the response is immediate."
+    },
+    {
+      "label": "C",
+      "text": "Relays through a chain of dorsal horn interneurons before reaching any motor neuron",
+      "isCorrect": false,
+      "misconception": "A polysynaptic withdrawal pattern is being substituted for the monosynaptic stretch reflex.",
+      "explanation": "Multi-interneuron arcs describe withdrawal reflexes; the stretch reflex's defining feature is the single synapse from spindle afferent to ventral horn motor neuron."
+    },
+    {
+      "label": "D",
+      "text": "Activates Golgi tendon organs, which drive the contraction instead",
+      "isCorrect": false,
+      "misconception": "A different receptor with the opposite protective action is being invoked.",
+      "explanation": "Golgi tendon organs sense tension and inhibit the homonymous muscle (the inverse stretch reflex); the tapped patellar ligament stretches the quadriceps spindle, which excites its own motor neuron."
+    },
+    {
+      "label": "E",
+      "text": "Loops through the cerebellum to calibrate the contraction strength",
+      "isCorrect": false,
+      "misconception": "A coordination center is being inserted into a hard-wired spinal arc.",
+      "explanation": "The cerebellum tunes movement using proprioceptive copies, but the tendon-tap contraction is generated entirely by the spinal monosynaptic connection."
+    }
+  ],
+  "context": "Learning objective: outline the stretch reflex. Spindle afferents synapse directly on the ventral horn motor neuron of the same muscle (monosynaptic) while a collateral inhibits the antagonist, keeping muscle length constant.",
+  "cite": "openstax-anatomy-physiology#neuro-stretch-reflex",
+  "publicUsmle": {
+    "schemaVersion": 1,
+    "origin": "generated",
+    "itemText": {
+      "licence": "CC-BY-4.0",
+      "attribution": "MD3 contributors"
+    },
+    "evidence": {
+      "kind": "passage",
+      "sourceId": "openstax-anatomy-physiology",
+      "passageId": "neuro-stretch-reflex",
+      "licence": {
+        "cls": "foss",
+        "id": "cc-by-4.0"
+      }
+    },
+    "media": {
+      "kind": "asset",
+      "assetId": "cns-pathways-v1",
+      "job": "anatomy",
+      "showWhen": "after-reveal",
+      "licence": {
+        "cls": "foss",
+        "id": "cc-by-4.0"
+      },
+      "attribution": "MD3 contributors",
+      "contentHash": "sha256:7409718be4c8fcb54e2364ad668d3b69e0f19cb24ed4b12c3cb5ae0b88d5de51"
+    }
+  },
+  "imageUrl": "/figures/usmle/step1/cns-pathways-v1.svg",
+  "imageCaption": "UMN vs LMN, stretch reflex, ascending tracts, blood-brain barrier."
+}

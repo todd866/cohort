@@ -1,0 +1,74 @@
+{
+  "id": "bank:usmle-step1:he-common-pathway-r3:v1",
+  "rotation": "usmle-step1-open",
+  "ladderId": "hemostasis-cascade",
+  "topics": [
+    "common pathway",
+    "factor X",
+    "fibrin",
+    "ladder:hemostasis-cascade"
+  ],
+  "moduleNodes": [
+    "usmle/step1",
+    "usmle/step1/hematology"
+  ],
+  "questionType": "mechanism",
+  "difficulty": "hard",
+  "stem": "A 4-year-old boy is evaluated for recurrent knee swelling after minor bumps. He has no family history of coagulopathy. Laboratory studies show a prolonged prothrombin time and activated partial thromboplastin time that both correct with a 1:1 mixing study; a specific factor assay shows absent factor X activity.\n\nFailure of which of the following downstream steps most directly explains his bleeding tendency?",
+  "options": [
+    {
+      "label": "A",
+      "text": "Initiation of vascular spasm in the injured vessel wall",
+      "isCorrect": false,
+      "misconception": "The first hemostatic step is being blamed for a coagulation-factor defect.",
+      "explanation": "Vascular spasm is intact in factor X deficiency; the defect is in the common pathway that produces fibrin after intrinsic and extrinsic activation."
+    },
+    {
+      "label": "B",
+      "text": "Formation of the primary platelet plug at the injury site",
+      "isCorrect": false,
+      "misconception": "Primary hemostasis is being confused with secondary coagulation.",
+      "explanation": "Platelet plug formation is primary hemostasis; factor X acts in the common pathway to generate fibrin that stabilizes the clot."
+    },
+    {
+      "label": "C",
+      "text": "Conversion of fibrinogen to a stabilizing fibrin clot",
+      "isCorrect": true,
+      "misconception": "None; without factor X the common pathway cannot generate fibrin.",
+      "explanation": "Intrinsic and extrinsic pathways converge on factor X; without it the common pathway cannot produce fibrin to seal the vessel, so clots fail despite intact spasm and platelets."
+    },
+    {
+      "label": "D",
+      "text": "Lysis of fibrin by plasmin after healing is complete",
+      "isCorrect": false,
+      "misconception": "Fibrinolysis is being treated as the missing step in a bleeding child.",
+      "explanation": "Excess fibrinolysis would dissolve clots, but this child’s problem is failure to form fibrin because factor X in the common pathway is absent."
+    },
+    {
+      "label": "E",
+      "text": "Synthesis of vitamin K–dependent factors in the liver alone",
+      "isCorrect": false,
+      "misconception": "A hepatic synthetic category is being substituted for the blocked enzymatic step.",
+      "explanation": "Factor X is vitamin K–dependent, but the proximate bleeding mechanism is failure of the common pathway to generate fibrin once factor X is absent."
+    }
+  ],
+  "context": "Learning objective: place factor X at the common-pathway gate to fibrin. Intrinsic and extrinsic paths converge on factor X; without it fibrin cannot form and secondary hemostasis fails.",
+  "cite": "openstax-anatomy-physiology#he-factor-x-convergence",
+  "publicUsmle": {
+    "schemaVersion": 1,
+    "origin": "generated",
+    "itemText": {
+      "licence": "CC-BY-4.0",
+      "attribution": "MD3 contributors"
+    },
+    "evidence": {
+      "kind": "passage",
+      "sourceId": "openstax-anatomy-physiology",
+      "passageId": "he-factor-x-convergence",
+      "licence": {
+        "cls": "foss",
+        "id": "cc-by-4.0"
+      }
+    }
+  }
+}

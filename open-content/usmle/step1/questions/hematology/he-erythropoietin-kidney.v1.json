@@ -1,0 +1,86 @@
+{
+  "id": "bank:usmle-step1:he-erythropoietin-kidney:v1",
+  "rotation": "usmle-step1-open",
+  "topics": [
+    "erythropoietin",
+    "erythropoiesis",
+    "hypoxia"
+  ],
+  "moduleNodes": [
+    "usmle/step1",
+    "usmle/step1/hematology"
+  ],
+  "questionType": "mechanism",
+  "difficulty": "easy",
+  "stem": "A 34-year-old mountaineer develops fatigue and shortness of breath during the first days after ascending to 4,000 meters. Over the following week his red blood cell count rises toward normal.\n\nThe rise is driven by increased secretion of which of the following substances?",
+  "options": [
+    {
+      "label": "A",
+      "text": "Thrombopoietin from the liver",
+      "isCorrect": false,
+      "misconception": "The platelet growth factor is being confused with the red-cell one.",
+      "explanation": "Thrombopoietin drives megakaryocyte and platelet production, not erythrocyte production; the altitude response is mediated by erythropoietin."
+    },
+    {
+      "label": "B",
+      "text": "Aldosterone from the zona glomerulosa",
+      "isCorrect": false,
+      "misconception": "Volume regulation is being conflated with red-cell regulation.",
+      "explanation": "Aldosterone regulates sodium and water balance; it has no role in driving erythrocyte production during hypoxia."
+    },
+    {
+      "label": "C",
+      "text": "Cortisol from the adrenal cortex",
+      "isCorrect": false,
+      "misconception": "A general stress hormone is being credited with a specific marrow effect.",
+      "explanation": "Cortisol does not stimulate erythrocyte production; the hypoxia-driven marrow signal is renal erythropoietin."
+    },
+    {
+      "label": "D",
+      "text": "Erythropoietin from the kidneys",
+      "isCorrect": true,
+      "misconception": "None; hypoxemia directly stimulates renal EPO release.",
+      "explanation": "In response to hypoxemia the kidneys secrete erythropoietin (EPO), a glycoprotein that triggers the bone marrow to produce red blood cells, restoring oxygen-carrying capacity."
+    },
+    {
+      "label": "E",
+      "text": "Calcitriol from renal tubular cells",
+      "isCorrect": false,
+      "misconception": "Another renal hormone is being substituted for the erythropoietic one.",
+      "explanation": "Calcitriol (activated vitamin D) promotes intestinal calcium absorption; the kidney's red-cell hormone is erythropoietin."
+    }
+  ],
+  "context": "Learning objective: trace the hypoxia-to-marrow loop. Hypoxemia stimulates the kidneys to secrete erythropoietin, which acts on bone marrow to increase erythrocyte production until oxygen delivery normalizes — the basis of altitude acclimatization.",
+  "cite": "openstax-anatomy-physiology#he-erythropoietin-kidney",
+  "publicUsmle": {
+    "schemaVersion": 1,
+    "origin": "generated",
+    "itemText": {
+      "licence": "CC-BY-4.0",
+      "attribution": "MD3 contributors"
+    },
+    "evidence": {
+      "kind": "passage",
+      "sourceId": "openstax-anatomy-physiology",
+      "passageId": "he-erythropoietin-kidney",
+      "licence": {
+        "cls": "foss",
+        "id": "cc-by-4.0"
+      }
+    },
+    "media": {
+      "kind": "asset",
+      "assetId": "blood-components-v1",
+      "job": "anatomy",
+      "showWhen": "after-reveal",
+      "licence": {
+        "cls": "foss",
+        "id": "cc-by-4.0"
+      },
+      "attribution": "MD3 contributors",
+      "contentHash": "sha256:3856cf48a8b6b7e73474650774b40f575f9ee1219bc0ebdd14e3df08c05e55b9"
+    }
+  },
+  "imageUrl": "/figures/usmle/step1/blood-components-v1.svg",
+  "imageCaption": "Hematocrit, buffy coat, albumin, platelets, monocyte-macrophage, T cells, EPO, iron deficiency, ABO."
+}

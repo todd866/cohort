@@ -1,0 +1,73 @@
+{
+  "id": "bank:usmle-step1:cardiovascular-baroreceptor-reflex-r2:v1",
+  "rotation": "usmle-step1-open",
+  "ladderId": "baroreceptor-reflex",
+  "topics": [
+    "baroreceptor reflex",
+    "orthostatic hypotension",
+    "ladder:baroreceptor-reflex"
+  ],
+  "moduleNodes": [
+    "usmle/step1",
+    "usmle/step1/cardiovascular"
+  ],
+  "questionType": "mechanism",
+  "difficulty": "medium",
+  "stem": "When a healthy person stands up quickly and arterial pressure falls transiently, baroreceptor afferent activity to the brainstem most likely does which of the following?",
+  "options": [
+    {
+      "label": "A",
+      "text": "Increases, triggering increased parasympathetic outflow and bradycardia",
+      "isCorrect": false,
+      "misconception": "The response to rising pressure is being applied to falling pressure.",
+      "explanation": "Increased firing with vagal slowing follows a rise in pressure; when pressure falls, firing decreases instead."
+    },
+    {
+      "label": "B",
+      "text": "Decreases, reducing inhibitory input and permitting increased sympathetic outflow",
+      "isCorrect": true,
+      "misconception": "None; slower firing releases sympathetic activation to restore pressure.",
+      "explanation": "Decreased blood pressure produces slower rates of baroreceptor firing; reduced afferent input permits increased sympathetic drive to raise heart rate and vascular tone."
+    },
+    {
+      "label": "C",
+      "text": "Remains unchanged because chemoreceptors compensate within seconds",
+      "isCorrect": false,
+      "misconception": "Chemoreceptor reflexes are being substituted for the acute baroreceptor response.",
+      "explanation": "The immediate correction to an orthostatic pressure drop is mediated by baroreceptors, not ventilatory chemoreflexes."
+    },
+    {
+      "label": "D",
+      "text": "Increases, causing reflex vasodilation in skeletal muscle beds",
+      "isCorrect": false,
+      "misconception": "Both the afferent direction and efferent limb are inverted.",
+      "explanation": "Falling pressure decreases, not increases, baroreceptor firing; the efferent response is sympathetic vasoconstriction, not vasodilation."
+    },
+    {
+      "label": "E",
+      "text": "Ceases entirely until venous return normalizes over several minutes",
+      "isCorrect": false,
+      "misconception": "Baroreceptors are being treated as silenced rather than firing more slowly.",
+      "explanation": "Baroreceptors continue firing at a reduced rate during hypotension; that reduced input triggers compensatory sympathetic activation within seconds."
+    }
+  ],
+  "context": "Learning objective: apply the baroreceptor reflex to orthostasis. Falling pressure slows baroreceptor firing, releasing sympathetic activation that raises heart rate and constricts vessels.",
+  "cite": "openstax-anatomy-physiology#vessels-baroreceptor-firing",
+  "publicUsmle": {
+    "schemaVersion": 1,
+    "origin": "generated",
+    "itemText": {
+      "licence": "CC-BY-4.0",
+      "attribution": "MD3 contributors"
+    },
+    "evidence": {
+      "kind": "passage",
+      "sourceId": "openstax-anatomy-physiology",
+      "passageId": "vessels-baroreceptor-firing",
+      "licence": {
+        "cls": "foss",
+        "id": "cc-by-4.0"
+      }
+    }
+  }
+}

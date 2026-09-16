@@ -1,0 +1,85 @@
+{
+  "id": "bank:usmle-step1:micro-primary-pathogen:v1",
+  "rotation": "usmle-step1-open",
+  "topics": [
+    "primary pathogen",
+    "opportunistic"
+  ],
+  "moduleNodes": [
+    "usmle/step1",
+    "usmle/step1/microbiology"
+  ],
+  "questionType": "mechanism",
+  "difficulty": "easy",
+  "stem": "A primary pathogen differs from an opportunistic pathogen how?",
+  "options": [
+    {
+      "label": "A",
+      "text": "Causes disease even when host defenses are intact",
+      "isCorrect": true,
+      "misconception": "None; primary pathogens can cause disease in intact hosts.",
+      "explanation": "OpenStax: primary pathogen causes disease regardless of microbiota/immune system."
+    },
+    {
+      "label": "B",
+      "text": "Causes disease only after ACE-inhibitor drug dosing",
+      "isCorrect": false,
+      "misconception": "Pharm distractor — does not match the cited teaching point.",
+      "explanation": "Wrong framing; see the cited source passage for detail."
+    },
+    {
+      "label": "C",
+      "text": "Exists only as a rejected null-hypothesis claim",
+      "isCorrect": false,
+      "misconception": "Stats distractor — does not match the cited teaching point.",
+      "explanation": "Wrong domain; see the cited source passage for detail."
+    },
+    {
+      "label": "D",
+      "text": "Infects only chloroplasts inside living plant cells",
+      "isCorrect": false,
+      "misconception": "Botany distractor — does not match the cited teaching point.",
+      "explanation": "Wrong domain; see the cited source passage for detail."
+    },
+    {
+      "label": "E",
+      "text": "Colonizes humans only after statin therapy begins",
+      "isCorrect": false,
+      "misconception": "Pharm distractor — does not match the cited teaching point.",
+      "explanation": "Contradicts definition."
+    }
+  ],
+  "context": "Learning objective: primary vs opportunistic pathogens.",
+  "cite": "openstax-microbiology#primary-vs-opportunistic",
+  "publicUsmle": {
+    "schemaVersion": 1,
+    "origin": "generated",
+    "itemText": {
+      "licence": "CC-BY-4.0",
+      "attribution": "MD3 contributors"
+    },
+    "evidence": {
+      "kind": "passage",
+      "sourceId": "openstax-microbiology",
+      "passageId": "primary-vs-opportunistic",
+      "licence": {
+        "cls": "foss",
+        "id": "cc-by-4.0"
+      }
+    },
+    "media": {
+      "kind": "asset",
+      "assetId": "micro-pathogen-virulence-v1",
+      "job": "compare-table",
+      "showWhen": "after-reveal",
+      "licence": {
+        "cls": "foss",
+        "id": "cc-by-4.0"
+      },
+      "attribution": "MD3 contributors",
+      "contentHash": "sha256:e0ca8dcce5538b15d4a9973d8a6934fc8199d41e7059a4d8f0059cc1ec78a22e"
+    }
+  },
+  "imageUrl": "/figures/usmle/step1/micro-pathogen-virulence-v1.svg",
+  "imageCaption": "Pathogenicity vs virulence, primary vs opportunistic, lipid A, capsule, measles/meningococcus/pneumococcus."
+}

@@ -1,0 +1,71 @@
+{
+  "id": "bank:usmle-step1:exp26-c-junction-loss-penetration-effect:v1",
+  "rotation": "usmle-step1-open",
+  "topics": [
+    "gastrointestinal",
+    "junction-loss-penetration-effect"
+  ],
+  "moduleNodes": [
+    "usmle/step1",
+    "usmle/step1/gastrointestinal"
+  ],
+  "questionType": "interpretation",
+  "difficulty": "hard",
+  "stem": "Two gastric epithelial preparations have comparable mucus and bicarbonate. In one, an intervention disrupts the seals between adjacent cells. A marker placed in the gastric fluid then appears between those cells and in underlying tissue. Which of the following best explains the new pathway?",
+  "options": [
+    {
+      "label": "A",
+      "text": "Failure of tight junctions permits passage along intercellular spaces",
+      "isCorrect": true,
+      "explanation": "The marker travels along the boundaries of adjacent cells after their seals are disrupted. That path localizes the defect to tight junctions rather than uptake through cell interiors.",
+      "misconception": "No misconception: intercellular tracer passage identifies disrupted junctional seals."
+    },
+    {
+      "label": "B",
+      "text": "Loss of surface mucus exposes the epithelial apical membranes",
+      "isCorrect": false,
+      "explanation": "The preparations have comparable mucus, and the marker follows intercellular borders. Loss of physical surface coating does not match either observation.",
+      "misconception": "Attributes an intercellular leak to mucus loss despite comparable coating."
+    },
+    {
+      "label": "C",
+      "text": "Loss of mucus bicarbonate removes local protection against acid",
+      "isCorrect": false,
+      "explanation": "Bicarbonate is comparable in both preparations. Loss of chemical buffering would not identify the observed pathway through disrupted intercellular seals.",
+      "misconception": "Confuses chemical buffering with the route through disrupted cell junctions."
+    },
+    {
+      "label": "D",
+      "text": "Enhanced cellular uptake carries the marker through epithelial cytoplasm",
+      "isCorrect": false,
+      "explanation": "This describes a route through cell interiors. The observed marker lies between cells, matching a failure of their junctional seal instead.",
+      "misconception": "Mistakes passage between cells for uptake through their cytoplasm."
+    },
+    {
+      "label": "E",
+      "text": "Enhanced basal export transfers marker out of epithelial cytoplasm",
+      "isCorrect": false,
+      "explanation": "Basal export would require the marker first to enter epithelial cytoplasm. The observed intercellular route does not require that transcellular sequence.",
+      "misconception": "Assumes a transcellular export sequence for a marker traveling between cells."
+    }
+  ],
+  "context": "Learning objective: Localize a barrier defect from the path of a tracer. Preserved mucus buffering does not compensate for a disrupted seal between neighboring gastric epithelial cells.\n\nThe marker travels along the boundaries of adjacent cells after their seals are disrupted. That path localizes the defect to tight junctions rather than uptake through cell interiors.",
+  "cite": "openstax-anatomy-physiology#gi-mucosal-barrier",
+  "publicUsmle": {
+    "schemaVersion": 1,
+    "origin": "generated",
+    "itemText": {
+      "licence": "CC-BY-4.0",
+      "attribution": "MD3 contributors"
+    },
+    "evidence": {
+      "kind": "passage",
+      "sourceId": "openstax-anatomy-physiology",
+      "passageId": "gi-mucosal-barrier",
+      "licence": {
+        "cls": "foss",
+        "id": "cc-by-4.0"
+      }
+    }
+  }
+}

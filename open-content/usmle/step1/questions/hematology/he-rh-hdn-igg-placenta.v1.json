@@ -1,0 +1,86 @@
+{
+  "id": "bank:usmle-step1:he-rh-hdn-igg-placenta:v1",
+  "rotation": "usmle-step1-open",
+  "topics": [
+    "Rh factor",
+    "hemolytic disease of the newborn",
+    "IgG"
+  ],
+  "moduleNodes": [
+    "usmle/step1",
+    "usmle/step1/hematology"
+  ],
+  "questionType": "mechanism",
+  "difficulty": "medium",
+  "stem": "A 26-year-old Rh-negative woman delivers an Rh-positive infant without incident. During her second pregnancy, again with an Rh-positive fetus, the fetus develops severe anemia.\n\nThe fetal hemolysis is caused by maternal antibody of which of the following classes crossing the placenta?",
+  "options": [
+    {
+      "label": "A",
+      "text": "IgM",
+      "isCorrect": false,
+      "misconception": "The isohemagglutinin class is being assumed to cross the placenta.",
+      "explanation": "IgM (the class of ABO isohemagglutinins) cannot cross the placenta; only IgG reaches the fetus, which is why ABO incompatibility is milder than Rh disease."
+    },
+    {
+      "label": "B",
+      "text": "IgA",
+      "isCorrect": false,
+      "misconception": "A mucosal antibody is being credited with placental transfer.",
+      "explanation": "IgA predominates at mucosal surfaces and in secretions; it does not cross the placenta and plays no role in hemolytic disease of the newborn."
+    },
+    {
+      "label": "C",
+      "text": "IgE",
+      "isCorrect": false,
+      "misconception": "The allergy antibody is being linked to fetal hemolysis.",
+      "explanation": "IgE mediates allergic and antiparasitic responses and does not cross the placenta; the transplacental hemolytic antibody is IgG."
+    },
+    {
+      "label": "D",
+      "text": "IgD",
+      "isCorrect": false,
+      "misconception": "A B-cell surface receptor is being treated as a secreted effector.",
+      "explanation": "IgD functions mainly as a B-cell receptor and is not transferred across the placenta; maternal anti-Rh IgG is the hemolytic agent."
+    },
+    {
+      "label": "E",
+      "text": "IgG",
+      "isCorrect": true,
+      "misconception": "None; IgG is the only antibody class that crosses the placenta.",
+      "explanation": "Anti-Rh IgG antibodies formed during the first pregnancy persist in the mother; IgG is the only class of antibody that can cross the placenta, so in a second Rh-positive pregnancy these antibodies attach to fetal Rh-positive erythrocytes and hemolyze them."
+    }
+  ],
+  "context": "Learning objective: explain hemolytic disease of the newborn. An Rh-negative mother exposed to Rh-positive fetal cells produces anti-Rh IgG. Because IgG is the only antibody class that crosses the placenta, a subsequent Rh-positive fetus is attacked in utero; Rho(D) immune globulin prevents the primary response.",
+  "cite": "openstax-microbiology#he-rh-hdn-igg-placenta",
+  "publicUsmle": {
+    "schemaVersion": 1,
+    "origin": "generated",
+    "itemText": {
+      "licence": "CC-BY-4.0",
+      "attribution": "MD3 contributors"
+    },
+    "evidence": {
+      "kind": "passage",
+      "sourceId": "openstax-microbiology",
+      "passageId": "he-rh-hdn-igg-placenta",
+      "licence": {
+        "cls": "foss",
+        "id": "cc-by-4.0"
+      }
+    },
+    "media": {
+      "kind": "asset",
+      "assetId": "bilirubin-metabolism-v1",
+      "job": "pathway",
+      "showWhen": "after-reveal",
+      "licence": {
+        "cls": "foss",
+        "id": "cc-by-4.0"
+      },
+      "attribution": "MD3 contributors",
+      "contentHash": "sha256:19bd6c3f8772b9bf302595c185091350d04ed1d0e493bad6de2ca3ac46141e34"
+    }
+  },
+  "imageUrl": "/figures/usmle/step1/bilirubin-metabolism-v1.svg",
+  "imageCaption": "Bilirubin: spleen Hb breakdown -> unconjugated (albumin) -> hepatic conjugation -> bile -> gut bacteria -> urobilinogen/stercobilin; some urobilinogen -> urine."
+}

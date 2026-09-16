@@ -1,0 +1,71 @@
+{
+  "id": "bank:usmle-step1:exp26-b-esv-inverse-calculation:v1",
+  "rotation": "usmle-step1-open",
+  "topics": [
+    "cardiovascular",
+    "esv-inverse-calculation"
+  ],
+  "moduleNodes": [
+    "usmle/step1",
+    "usmle/step1/cardiovascular"
+  ],
+  "questionType": "calculation",
+  "difficulty": "easy",
+  "stem": "A 61-year-old patient has an end-diastolic ventricular volume of 120 mL and an ejection fraction of 65%. A trainee must enter the volume remaining in the chamber after contraction. Which of the following values should be entered?",
+  "options": [
+    {
+      "text": "78 mL",
+      "explanation": "Multiplying 120 mL by 0.65 gives the ejected volume. The requested quantity is what remains after that volume has left the chamber.",
+      "isCorrect": false,
+      "label": "A",
+      "misconception": "Reports the ejected volume when the question asks for the volume remaining."
+    },
+    {
+      "text": "65 mL",
+      "explanation": "The ejection fraction is a dimensionless proportion, not an absolute chamber volume. Converting it into a remaining volume requires the measured end-diastolic volume.",
+      "isCorrect": false,
+      "label": "B",
+      "misconception": "Treats the dimensionless ejection percentage as an absolute volume in milliliters."
+    },
+    {
+      "text": "55 mL",
+      "explanation": "Subtracting the numerical percentage from the volume mixes unlike quantities. First convert 65% into a fraction, then calculate the portion of ventricular volume remaining.",
+      "isCorrect": false,
+      "label": "C",
+      "misconception": "Subtracts a percentage directly from a volume without converting the percentage to a fraction."
+    },
+    {
+      "text": "35 mL",
+      "explanation": "Although 35% of the initial volume remains, 35% does not mean 35 mL. The percentage must be applied to the measured starting volume of 120 mL.",
+      "isCorrect": false,
+      "label": "D",
+      "misconception": "Treats the remaining percentage as milliliters without applying it to the starting volume."
+    },
+    {
+      "text": "42 mL",
+      "explanation": "An ejection fraction of 65% means that 35% remains after contraction. Multiplying the initial 120 mL by 0.35 gives an end-systolic volume of 42 mL.",
+      "isCorrect": true,
+      "label": "E",
+      "misconception": "No misconception: the remaining volume is the starting volume multiplied by one minus ejection fraction."
+    }
+  ],
+  "context": "Learning objective: Recover end-systolic volume from end-diastolic volume and the complementary fraction to ejection fraction. An ejection fraction of 65% means that 35% remains after contraction. Multiplying the initial 120 mL by 0.35 gives an end-systolic volume of 42 mL.",
+  "cite": "openstax-ap1-cardiac-physiology#ejection-fraction",
+  "publicUsmle": {
+    "schemaVersion": 1,
+    "origin": "generated",
+    "itemText": {
+      "licence": "CC-BY-4.0",
+      "attribution": "MD3 contributors"
+    },
+    "evidence": {
+      "kind": "passage",
+      "sourceId": "openstax-ap1-cardiac-physiology",
+      "passageId": "ejection-fraction",
+      "licence": {
+        "cls": "foss",
+        "id": "cc-by-4.0"
+      }
+    }
+  }
+}

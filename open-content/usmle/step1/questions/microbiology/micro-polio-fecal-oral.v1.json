@@ -1,0 +1,85 @@
+{
+  "id": "bank:usmle-step1:micro-polio-fecal-oral:v1",
+  "rotation": "usmle-step1-open",
+  "topics": [
+    "polio",
+    "transmission"
+  ],
+  "moduleNodes": [
+    "usmle/step1",
+    "usmle/step1/microbiology"
+  ],
+  "questionType": "mechanism",
+  "difficulty": "easy",
+  "stem": "Poliovirus transmission is classically described by which route pair?",
+  "options": [
+    {
+      "label": "A",
+      "text": "Only mosquito-borne inoculation after an insect bite",
+      "isCorrect": false,
+      "misconception": "Vector. (does not match the cited teaching point).",
+      "explanation": "This option does not match the cited source passage for the stem."
+    },
+    {
+      "label": "B",
+      "text": "Only airborne measles-style lingering in closed rooms",
+      "isCorrect": false,
+      "misconception": "Measles route. (does not match the cited teaching point).",
+      "explanation": "This option does not match the cited source passage for the stem."
+    },
+    {
+      "label": "C",
+      "text": "Fecal-oral or oral-oral person-to-person spread",
+      "isCorrect": true,
+      "misconception": "None; fecal-oral/oral-oral.",
+      "explanation": "CDC: fecal-oral or oral-oral."
+    },
+    {
+      "label": "D",
+      "text": "Only percutaneous injection of environmental spores",
+      "isCorrect": false,
+      "misconception": "Anthrax-ish. (does not match the cited teaching point).",
+      "explanation": "This option does not match the cited source passage for the stem."
+    },
+    {
+      "label": "E",
+      "text": "Only blood-product transfusion as the sole pathway",
+      "isCorrect": false,
+      "misconception": "Blood-borne. (does not match the cited teaching point).",
+      "explanation": "This option does not match the cited source passage for the stem."
+    }
+  ],
+  "context": "Learning objective: recall polio, transmission from the cited FOSS source.",
+  "cite": "cdc-pink-book-polio#polio-fecal-oral",
+  "publicUsmle": {
+    "schemaVersion": 1,
+    "origin": "generated",
+    "itemText": {
+      "licence": "CC-BY-4.0",
+      "attribution": "MD3 contributors"
+    },
+    "evidence": {
+      "kind": "passage",
+      "sourceId": "cdc-pink-book-polio",
+      "passageId": "polio-fecal-oral",
+      "licence": {
+        "cls": "foss",
+        "id": "us-gov"
+      }
+    },
+    "media": {
+      "kind": "asset",
+      "assetId": "micro-pathogen-virulence-v1",
+      "job": "compare-table",
+      "showWhen": "after-reveal",
+      "licence": {
+        "cls": "foss",
+        "id": "cc-by-4.0"
+      },
+      "attribution": "MD3 contributors",
+      "contentHash": "sha256:e0ca8dcce5538b15d4a9973d8a6934fc8199d41e7059a4d8f0059cc1ec78a22e"
+    }
+  },
+  "imageUrl": "/figures/usmle/step1/micro-pathogen-virulence-v1.svg",
+  "imageCaption": "Pathogen/virulence and Pink Book organism map (FOSS draft)."
+}

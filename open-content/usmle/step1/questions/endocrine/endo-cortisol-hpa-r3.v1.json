@@ -1,0 +1,74 @@
+{
+  "id": "bank:usmle-step1:endo-cortisol-hpa-r3:v1",
+  "rotation": "usmle-step1-open",
+  "ladderId": "cortisol-hpa",
+  "difficulty": "hard",
+  "topics": [
+    "Cushing disease",
+    "ACTH",
+    "hypercortisolism",
+    "ladder:cortisol-hpa"
+  ],
+  "moduleNodes": [
+    "usmle/step1",
+    "usmle/step1/endocrine"
+  ],
+  "questionType": "mechanism",
+  "stem": "A 42-year-old woman has progressive central weight gain, easy bruising, and proximal muscle weakness. Examination shows a round face and wide purple abdominal striae. Laboratory studies reveal hyperglycemia and elevated late-night serum cortisol that fails to suppress after low-dose dexamethasone.\n\nExcess secretion of which anterior pituitary hormone most directly drives her adrenal overproduction of glucocorticoids?",
+  "options": [
+    {
+      "label": "A",
+      "text": "Thyroid-stimulating hormone",
+      "isCorrect": false,
+      "misconception": "Thyroid axis excess is being confused with glucocorticoid excess.",
+      "explanation": "TSH stimulates thyroid hormone release; adrenal glucocorticoid overproduction is driven by ACTH."
+    },
+    {
+      "label": "B",
+      "text": "Growth hormone",
+      "isCorrect": false,
+      "misconception": "Acromegaly physiology is being confused with Cushing physiology.",
+      "explanation": "Growth hormone excess causes acromegaly features, not ACTH-driven adrenal hypercortisolism."
+    },
+    {
+      "label": "C",
+      "text": "Prolactin",
+      "isCorrect": false,
+      "misconception": "A lactotroph hormone is being blamed for adrenal glucocorticoid excess.",
+      "explanation": "Prolactin does not stimulate the adrenal cortex to overproduce cortisol."
+    },
+    {
+      "label": "D",
+      "text": "Follicle-stimulating hormone",
+      "isCorrect": false,
+      "misconception": "A gonadotropin is being confused with the corticotroph signal.",
+      "explanation": "FSH acts on the gonads and does not drive adrenal glucocorticoid overproduction."
+    },
+    {
+      "label": "E",
+      "text": "Adrenocorticotropic hormone",
+      "isCorrect": true,
+      "misconception": "None; excess ACTH stimulates the adrenal cortex to overproduce cortisol (Cushing disease pattern).",
+      "explanation": "ACTH from the anterior pituitary stimulates adrenal glucocorticoid secretion; sustained ACTH excess produces the hypercortisolism syndrome described."
+    }
+  ],
+  "context": "Learning objective: identify excess ACTH as the pituitary driver of adrenal glucocorticoid overproduction in an ACTH-dependent Cushing pattern.",
+  "cite": "openstax-anatomy-physiology#endo-cortisol-stress-axis",
+  "publicUsmle": {
+    "schemaVersion": 1,
+    "origin": "generated",
+    "itemText": {
+      "licence": "CC-BY-4.0",
+      "attribution": "MD3 contributors"
+    },
+    "evidence": {
+      "kind": "passage",
+      "sourceId": "openstax-anatomy-physiology",
+      "passageId": "endo-cortisol-stress-axis",
+      "licence": {
+        "cls": "foss",
+        "id": "cc-by-4.0"
+      }
+    }
+  }
+}

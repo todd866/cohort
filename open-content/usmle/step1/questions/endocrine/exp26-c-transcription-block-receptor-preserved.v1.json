@@ -1,0 +1,71 @@
+{
+  "id": "bank:usmle-step1:exp26-c-transcription-block-receptor-preserved:v1",
+  "rotation": "usmle-step1-open",
+  "topics": [
+    "endocrine",
+    "transcription-block-receptor-preserved"
+  ],
+  "moduleNodes": [
+    "usmle/step1",
+    "usmle/step1/endocrine"
+  ],
+  "questionType": "interpretation",
+  "difficulty": "hard",
+  "stem": "A steroid enters a cell, binds its receptor, and the complex reaches the nucleus. An experimental inhibitor then prevents transcription of the target gene. Which of the following downstream outcomes is most directly expected?",
+  "options": [
+    {
+      "label": "A",
+      "text": "Reduced steroid entry with preserved target messenger RNA",
+      "isCorrect": false,
+      "explanation": "Entry already occurred and does not depend on the later transcription step described in the experiment.",
+      "misconception": "Moves a nuclear transcription defect backward to completed steroid entry."
+    },
+    {
+      "label": "B",
+      "text": "Reduced target messenger RNA with reduced new protein production",
+      "isCorrect": true,
+      "explanation": "The receptor complex normally promotes target-gene transcription. Blocking that step reduces the messenger RNA available for subsequent production of the target protein.",
+      "misconception": "No misconception: less target mRNA limits subsequent new protein synthesis."
+    },
+    {
+      "label": "C",
+      "text": "Increased target messenger RNA with reduced steroid entry",
+      "isCorrect": false,
+      "explanation": "The intervention prevents transcription rather than increasing it. Earlier steroid entry is not the limiting step.",
+      "misconception": "Reverses the effect of transcription blockade on target mRNA."
+    },
+    {
+      "label": "D",
+      "text": "Preserved new protein production despite absent target RNA",
+      "isCorrect": false,
+      "explanation": "New production of the target protein depends on the corresponding messenger RNA. Existing protein may remain, but that does not preserve new synthesis.",
+      "misconception": "Confuses persistence of existing protein with continued new synthesis."
+    },
+    {
+      "label": "E",
+      "text": "Increased receptor binding caused by blocked hormone diffusion",
+      "isCorrect": false,
+      "explanation": "The findings do not describe blocked diffusion or increased binding. The manipulated step is nuclear transcription after receptor binding.",
+      "misconception": "Substitutes unsupported diffusion and binding changes for the nuclear block."
+    }
+  ],
+  "context": "Learning objective: Follow steroid signaling from receptor binding to gene expression. Blocking transcription can prevent new target-protein production even when hormone entry and nuclear localization are intact.\n\nThe receptor complex normally promotes target-gene transcription. Blocking that step reduces the messenger RNA available for subsequent production of the target protein.",
+  "cite": "openstax-anatomy-physiology#endo-steroid-gene-transcription",
+  "publicUsmle": {
+    "schemaVersion": 1,
+    "origin": "generated",
+    "itemText": {
+      "licence": "CC-BY-4.0",
+      "attribution": "MD3 contributors"
+    },
+    "evidence": {
+      "kind": "passage",
+      "sourceId": "openstax-anatomy-physiology",
+      "passageId": "endo-steroid-gene-transcription",
+      "licence": {
+        "cls": "foss",
+        "id": "cc-by-4.0"
+      }
+    }
+  }
+}

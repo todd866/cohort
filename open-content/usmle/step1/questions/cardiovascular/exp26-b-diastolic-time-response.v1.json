@@ -1,0 +1,71 @@
+{
+  "id": "bank:usmle-step1:exp26-b-diastolic-time-response:v1",
+  "rotation": "usmle-step1-open",
+  "topics": [
+    "cardiovascular",
+    "diastolic-time-response"
+  ],
+  "moduleNodes": [
+    "usmle/step1",
+    "usmle/step1/cardiovascular"
+  ],
+  "questionType": "mechanism",
+  "difficulty": "medium",
+  "stem": "At very high pacing rates, an isolated heart shows a falling end-diastolic volume and reduced ejection per beat. Its contraction strength is maintained. Investigators find that the relaxation interval becomes progressively shorter. Which of the following best links the pacing change to the volume findings?",
+  "options": [
+    {
+      "text": "Stable diastole reduces the time available for filling",
+      "explanation": "The experiment directly documents a changing relaxation interval. Treating that interval as stable discards the observation that explains how rate can lower filling volume.",
+      "isCorrect": false,
+      "label": "A",
+      "misconception": "Treats the relaxation interval as unchanged despite its measured shortening at faster pacing rates."
+    },
+    {
+      "text": "Lengthened diastole increases the time available for filling",
+      "explanation": "Both changes would favor additional filling time, which conflicts with the recorded shortening and falling end-diastolic volume. The rate effect is mediated by reduced diastolic time.",
+      "isCorrect": false,
+      "label": "B",
+      "misconception": "Assumes that faster pacing lengthens filling time despite the recorded shorter relaxation interval."
+    },
+    {
+      "text": "Shortened diastole reduces the time available for filling",
+      "explanation": "Increasing rate shortens ventricular diastole. At very high rates, reduced filling time lowers end-diastolic volume and can reduce the volume expelled during each beat.",
+      "isCorrect": true,
+      "label": "C",
+      "misconception": "No misconception: shortening diastole reduces filling time and can lower volume ejected per beat."
+    },
+    {
+      "text": "Lengthened diastole reduces the time available for filling",
+      "explanation": "A lengthened relaxation interval would provide more, rather than less, time for filling. The recordings show shortening of that interval as pacing accelerates.",
+      "isCorrect": false,
+      "label": "D",
+      "misconception": "Assumes that a longer relaxation interval provides less time for filling."
+    },
+    {
+      "text": "Shortened diastole increases the time available for filling",
+      "explanation": "This reverses the timing relationship. A shorter diastolic interval provides less opportunity for ventricular filling and fits the decline in end-diastolic volume.",
+      "isCorrect": false,
+      "label": "E",
+      "misconception": "Assumes that a shorter diastolic interval provides more time for ventricular filling."
+    }
+  ],
+  "context": "Learning objective: Explain reduced filling during marked tachycardia without attributing it to an unmeasured loss of contractility. Increasing rate shortens ventricular diastole. At very high rates, reduced filling time lowers end-diastolic volume and can reduce the volume expelled during each beat.",
+  "cite": "openstax-ap1-cardiac-physiology#tachycardia-filling",
+  "publicUsmle": {
+    "schemaVersion": 1,
+    "origin": "generated",
+    "itemText": {
+      "licence": "CC-BY-4.0",
+      "attribution": "MD3 contributors"
+    },
+    "evidence": {
+      "kind": "passage",
+      "sourceId": "openstax-ap1-cardiac-physiology",
+      "passageId": "tachycardia-filling",
+      "licence": {
+        "cls": "foss",
+        "id": "cc-by-4.0"
+      }
+    }
+  }
+}

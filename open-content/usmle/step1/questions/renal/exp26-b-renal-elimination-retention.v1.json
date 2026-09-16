@@ -1,0 +1,72 @@
+{
+  "id": "bank:usmle-step1:exp26-b-renal-elimination-retention:v1",
+  "rotation": "usmle-step1-open",
+  "topics": [
+    "renal",
+    "renal-elimination-retention",
+    "pharmacology"
+  ],
+  "moduleNodes": [
+    "usmle/step1",
+    "usmle/step1/renal"
+  ],
+  "questionType": "mechanism",
+  "difficulty": "medium",
+  "stem": "A 72-year-old patient receives an unchanged regimen of a drug eliminated through the kidneys. Renal excretory function falls, and subsequent measurements show a rising drug concentration with toxicity. There has been no dosing or administration error. Which of the following most directly explains the new concentration pattern?",
+  "options": [
+    {
+      "text": "Reduced elimination requires a falling concentration of the drug",
+      "explanation": "This reverses the consequence of impaired removal. With continued administration, reduced elimination supports a higher concentration rather than forcing the concentration to fall.",
+      "isCorrect": false,
+      "label": "A",
+      "misconception": "Reverses the concentration consequence of reduced removal during continued drug administration."
+    },
+    {
+      "text": "Stable elimination explains the effect of declining renal function",
+      "explanation": "Stable elimination would not connect the known reduction in excretory function to the rising concentration. The drug’s dependence on the kidneys makes reduced removal relevant.",
+      "isCorrect": false,
+      "label": "B",
+      "misconception": "Assumes unchanged elimination explains accumulation following a decline in renal excretory function."
+    },
+    {
+      "text": "Increased elimination directly explains the observed drug toxicity",
+      "explanation": "The concentration rises despite unchanged administration, favoring reduced removal. Increased elimination would not explain the observed accumulation that accompanies the decline in renal function.",
+      "isCorrect": false,
+      "label": "C",
+      "misconception": "Attributes the rising drug concentration and toxicity to increased rather than reduced elimination."
+    },
+    {
+      "text": "Reduced elimination permits retention of the administered drug",
+      "explanation": "Reduced renal function can decrease elimination of a drug that depends on renal excretion. Continued administration then permits accumulation, explaining the rising concentration and toxicity.",
+      "isCorrect": true,
+      "label": "D",
+      "misconception": "No misconception: reduced renal elimination permits retention during an unchanged regimen of a renally cleared drug."
+    },
+    {
+      "text": "Increased elimination permits retention of the administered drug",
+      "explanation": "Increasing elimination would oppose retention rather than cause it. The observed loss of renal excretory function explains accumulation through a reduction in drug removal.",
+      "isCorrect": false,
+      "label": "E",
+      "misconception": "Treats increased drug elimination as a cause of retention instead of a process opposing it."
+    }
+  ],
+  "context": "Learning objective: Connect declining renal excretion to drug accumulation and toxicity under an unchanged regimen. Reduced renal function can decrease elimination of a drug that depends on renal excretion. Continued administration then permits accumulation, explaining the rising concentration and toxicity.",
+  "cite": "openstax-ap1-urine-formation#renal-drug-clearance",
+  "publicUsmle": {
+    "schemaVersion": 1,
+    "origin": "generated",
+    "itemText": {
+      "licence": "CC-BY-4.0",
+      "attribution": "MD3 contributors"
+    },
+    "evidence": {
+      "kind": "passage",
+      "sourceId": "openstax-ap1-urine-formation",
+      "passageId": "renal-drug-clearance",
+      "licence": {
+        "cls": "foss",
+        "id": "cc-by-4.0"
+      }
+    }
+  }
+}

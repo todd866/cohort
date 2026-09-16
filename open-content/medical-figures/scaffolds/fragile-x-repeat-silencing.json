@@ -1,0 +1,61 @@
+{
+  "schemaVersion": 1,
+  "figureId": "fragile-x-repeat-silencing",
+  "kind": "conceptual",
+  "created": "2026-09-10",
+  "timing": "retrospective specification of previously generated candidate",
+  "sourceFacts": [
+    {
+      "fact": "A large CGG repeat expansion can silence FMR1.",
+      "sourceUrls": [
+        "https://medlineplus.gov/genetics/gene/fmr1/"
+      ]
+    },
+    {
+      "fact": "Reduced production of FMRP disrupts its normal role in neuronal function.",
+      "sourceUrls": [
+        "https://medlineplus.gov/genetics/gene/fmr1/"
+      ]
+    }
+  ],
+  "clinicalSources": [
+    {
+      "title": "MedlinePlus Genetics: FMR1 gene",
+      "url": "https://medlineplus.gov/genetics/gene/fmr1/"
+    }
+  ],
+  "nodes": [
+    "CGG repeat expansion",
+    "FMR1 silencing",
+    "reduced FMRP"
+  ],
+  "sequence": [
+    "CGG repeat expansion",
+    "FMR1 silencing",
+    "reduced FMRP"
+  ],
+  "invariants": [
+    "CGG letters correct; FMR1 is gene, FMRP is protein.",
+    "Full-mutation mechanism simplified, no DNA break or exact repeat threshold."
+  ],
+  "expectedLabels": [
+    "Fragile X: repeat expansion and gene silencing",
+    "CGG expansion",
+    "CGG",
+    "FMR1 silencing",
+    "FMR1",
+    "Less FMRP",
+    "Reduced protein",
+    "Full-mutation mechanism, simplified"
+  ],
+  "layoutSpecification": "A clean three-panel molecular concept diagram, no realistic DNA structure needed. Title 'Fragile X: repeat expansion and gene silencing'. Panel1 heading 'CGG expansion': a short DNA strip with repeated boxes each exactly 'CGG', followed by an ellipsis to imply many additional repeats. Panel2 heading 'FMR1 silencing': a simple gene ribbon labelled 'FMR1' with a small closed padlock icon, no DNA break. Panel3 heading 'Less FMRP': a few faded teal protein-bead icons, label 'Reduced protein'. Two clear left-to-right arrows connect panels. Tiny bottom text 'Full-mutation mechanism, simplified'. No numeric repeat cutoff, no chromosome snapping, no X-inactivation mosaic explanation, no faces or stereotypes.",
+  "forbiddenAnatomy": [
+    "No claimed anatomical reconstruction, diagnostic image, histology or literal neuroanatomical pathway",
+    "No organ cutaways or invented internal spatial relationships"
+  ],
+  "validation": {
+    "sourceFacts": "Checked against listed primary clinical sources during original topic review",
+    "pixelChecks": "Visually inspected: repeated CGG units lead to FMR1 silencing and reduced FMRP with correct gene/protein distinction; ellipsis and full-mutation caption avoid literal repeat count or chromosome breakage. Labels are legible.",
+    "status": "self-reviewed; independent review pending"
+  }
+}

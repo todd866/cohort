@@ -1,0 +1,72 @@
+{
+  "id": "bank:usmle-step1:exp26-b-opioid-respiratory-response:v1",
+  "rotation": "usmle-step1-open",
+  "topics": [
+    "respiratory",
+    "opioid-respiratory-response",
+    "pharmacology"
+  ],
+  "moduleNodes": [
+    "usmle/step1",
+    "usmle/step1/respiratory"
+  ],
+  "questionType": "mechanism",
+  "difficulty": "medium",
+  "stem": "A 40-year-old patient receives morphine and develops a lower respiratory rate. The airway remains open. The team considers why increasing carbon dioxide has not restored the prior breathing rate. Which of the following drug effects best explains the observation?",
+  "options": [
+    {
+      "text": "Depression of respiratory-center activity controlling rate",
+      "explanation": "Morphine can decrease respiratory rate through its effect on respiratory centers. This explains reduced breathing despite a patent airway and an accumulating stimulus for ventilation.",
+      "isCorrect": true,
+      "label": "A",
+      "misconception": "No misconception: morphine-related depression of respiratory-center activity can lower respiratory rate."
+    },
+    {
+      "text": "Enhancement of respiratory-center activity controlling rate",
+      "explanation": "Enhanced respiratory-center activity would oppose the observed slowing. Morphine’s relevant action in this mechanism is a reduction in respiratory rate through these centers.",
+      "isCorrect": false,
+      "label": "B",
+      "misconception": "Explains a lower rate through enhanced rather than depressed respiratory-center activity."
+    },
+    {
+      "text": "Obstruction of the pharynx despite maintained airway patency",
+      "explanation": "The proposed mechanism conflicts with the directly observed patent airway. A central rate effect explains the respiratory change without requiring an unobserved mechanical obstruction.",
+      "isCorrect": false,
+      "label": "C",
+      "misconception": "Assumes pharyngeal obstruction despite the directly observed patent airway."
+    },
+    {
+      "text": "Enhanced carbon dioxide conversion into central hydrogen ions",
+      "explanation": "Increasing the hydrogen-ion stimulus would ordinarily activate central chemoreceptors. That direction does not explain why morphine exposure is followed by a lower breathing rate.",
+      "isCorrect": false,
+      "label": "D",
+      "misconception": "Explains reduced breathing through an increased hydrogen-ion stimulus that would activate central chemoreceptors."
+    },
+    {
+      "text": "Enhanced chemoreceptor response to increasing hydrogen ions",
+      "explanation": "A stronger chemoreceptor response would favor increased respiratory stimulation. The patient instead has a reduced rate after a drug known to act on respiratory centers.",
+      "isCorrect": false,
+      "label": "E",
+      "misconception": "Explains reduced respiratory rate through a stronger chemoreceptor response that would favor stimulation."
+    }
+  ],
+  "context": "Learning objective: Explain opioid-associated respiratory slowing through a central effect rather than airway obstruction. Morphine can decrease respiratory rate through its effect on respiratory centers. This explains reduced breathing despite a patent airway and an accumulating stimulus for ventilation.",
+  "cite": "openstax-ap1-breathing#morphine-respiration",
+  "publicUsmle": {
+    "schemaVersion": 1,
+    "origin": "generated",
+    "itemText": {
+      "licence": "CC-BY-4.0",
+      "attribution": "MD3 contributors"
+    },
+    "evidence": {
+      "kind": "passage",
+      "sourceId": "openstax-ap1-breathing",
+      "passageId": "morphine-respiration",
+      "licence": {
+        "cls": "foss",
+        "id": "cc-by-4.0"
+      }
+    }
+  }
+}

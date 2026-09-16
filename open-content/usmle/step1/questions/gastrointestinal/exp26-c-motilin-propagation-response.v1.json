@@ -1,0 +1,71 @@
+{
+  "id": "bank:usmle-step1:exp26-c-motilin-propagation-response:v1",
+  "rotation": "usmle-step1-open",
+  "topics": [
+    "gastrointestinal",
+    "motilin-propagation-response"
+  ],
+  "moduleNodes": [
+    "usmle/step1",
+    "usmle/step1/gastrointestinal"
+  ],
+  "questionType": "interpretation",
+  "difficulty": "medium",
+  "stem": "Pressure sensors along the small intestine record contractions during a fasting study. A motilin stimulus is followed by a coordinated sequence that travels along the intestine. Which of the following observations best identifies the resulting motility pattern?",
+  "options": [
+    {
+      "label": "A",
+      "text": "Repeated local mixing keeps the contents within one short segment",
+      "isCorrect": false,
+      "explanation": "Local mixing without net propulsion describes segmentation. It does not match the coordinated migrating response to motilin.",
+      "misconception": "Substitutes stationary segmentation for the migrating motility response."
+    },
+    {
+      "label": "B",
+      "text": "A migrating contraction complex moves contents along the intestine",
+      "isCorrect": true,
+      "explanation": "Motilin stimulates a migrating motility complex. A traveling sequence distinguishes this response from stationary mixing contractions.",
+      "misconception": "No misconception: motilin supports a propagating migrating contraction complex."
+    },
+    {
+      "label": "C",
+      "text": "A stationary contraction blocks movement throughout the intestine",
+      "isCorrect": false,
+      "explanation": "A persistent stationary block is not a migrating complex and would not explain the sequential pressure changes.",
+      "misconception": "Mistakes a traveling contraction sequence for a stationary obstruction."
+    },
+    {
+      "label": "D",
+      "text": "A fall in all contractions increases contact with the mucosal surface",
+      "isCorrect": false,
+      "explanation": "Reduced contractile activity is the opposite of the observed coordinated contraction sequence. It does not establish enhanced mixing.",
+      "misconception": "Reverses the observed contractile response and assumes improved mixing."
+    },
+    {
+      "label": "E",
+      "text": "Simultaneous opposing contractions prevent any forward movement",
+      "isCorrect": false,
+      "explanation": "Opposing local contractions can mix contents, but the recorded pattern propagates along the intestine rather than remaining stationary.",
+      "misconception": "Confuses local opposing contractions with a forward-propagating pattern."
+    }
+  ],
+  "context": "Learning objective: Identify intestinal motor patterns from their spatial sequence. Motilin is associated with a migrating complex; segmentation primarily mixes chyme without net propulsion.\n\nMotilin stimulates a migrating motility complex. A traveling sequence distinguishes this response from stationary mixing contractions.",
+  "cite": "openstax-anatomy-physiology#gi-segmentation-peristalsis",
+  "publicUsmle": {
+    "schemaVersion": 1,
+    "origin": "generated",
+    "itemText": {
+      "licence": "CC-BY-4.0",
+      "attribution": "MD3 contributors"
+    },
+    "evidence": {
+      "kind": "passage",
+      "sourceId": "openstax-anatomy-physiology",
+      "passageId": "gi-segmentation-peristalsis",
+      "licence": {
+        "cls": "foss",
+        "id": "cc-by-4.0"
+      }
+    }
+  }
+}

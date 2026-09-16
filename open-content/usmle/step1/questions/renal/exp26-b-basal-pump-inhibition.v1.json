@@ -1,0 +1,72 @@
+{
+  "id": "bank:usmle-step1:exp26-b-basal-pump-inhibition:v1",
+  "rotation": "usmle-step1-open",
+  "topics": [
+    "renal",
+    "basal-pump-inhibition",
+    "pharmacology"
+  ],
+  "moduleNodes": [
+    "usmle/step1",
+    "usmle/step1/renal"
+  ],
+  "questionType": "mechanism",
+  "difficulty": "medium",
+  "stem": "Cultured renal tubular cells have intact apical sodium-glucose symporters. An experimental inhibitor selectively blocks the basal Na+/K+ ATPase. As the intracellular sodium concentration rises, apical glucose uptake falls. Which of the following best explains this delayed response?",
+  "options": [
+    {
+      "text": "Gain of the sodium gradient weakens coupled glucose entry",
+      "explanation": "The intervention causes intracellular sodium to rise, weakening rather than strengthening the entry gradient. The fall in glucose uptake follows loss of the driving gradient.",
+      "isCorrect": false,
+      "label": "A",
+      "misconception": "Treats rising intracellular sodium after pump inhibition as a gain in the inward sodium gradient."
+    },
+    {
+      "text": "Loss of the sodium gradient accelerates coupled glucose entry",
+      "explanation": "A weakened sodium gradient provides less support for secondary active glucose uptake. Accelerated entry would contradict both the energy coupling and the observed experimental response.",
+      "isCorrect": false,
+      "label": "B",
+      "misconception": "Reverses the dependence of coupled glucose entry on the driving sodium gradient."
+    },
+    {
+      "text": "Direct inhibition of the intact apical symporter explains uptake",
+      "explanation": "The intervention selectively targets the basal pump, while the apical symporter is stated to remain intact. The delayed effect is explained by altered driving force.",
+      "isCorrect": false,
+      "label": "C",
+      "misconception": "Attributes the response to direct apical inhibition despite the selective basal intervention and intact symporter."
+    },
+    {
+      "text": "Enhanced basal glucose exit supplies the missing sodium gradient",
+      "explanation": "Basal glucose exit recovers glucose by facilitated diffusion. It does not replace the sodium-pumping process that maintains low intracellular sodium for apical coupled entry.",
+      "isCorrect": false,
+      "label": "D",
+      "misconception": "Assumes that facilitated basal glucose exit can replace the sodium pump's gradient-maintaining role."
+    },
+    {
+      "text": "Loss of the sodium gradient weakens coupled glucose entry",
+      "explanation": "The basal pump keeps intracellular sodium low, maintaining the gradient used for apical sodium entry. Its inhibition dissipates that gradient and indirectly reduces coupled glucose uptake.",
+      "isCorrect": true,
+      "label": "E",
+      "misconception": "No misconception: basal pump inhibition weakens the sodium gradient supporting apical coupled glucose uptake."
+    }
+  ],
+  "context": "Learning objective: Explain indirect inhibition of apical glucose uptake after disrupting the basal sodium pump. The basal pump keeps intracellular sodium low, maintaining the gradient used for apical sodium entry. Its inhibition dissipates that gradient and indirectly reduces coupled glucose uptake.",
+  "cite": "openstax-ap1-tubular-reabsorption#glucose-sodium-gradient",
+  "publicUsmle": {
+    "schemaVersion": 1,
+    "origin": "generated",
+    "itemText": {
+      "licence": "CC-BY-4.0",
+      "attribution": "MD3 contributors"
+    },
+    "evidence": {
+      "kind": "passage",
+      "sourceId": "openstax-ap1-tubular-reabsorption",
+      "passageId": "glucose-sodium-gradient",
+      "licence": {
+        "cls": "foss",
+        "id": "cc-by-4.0"
+      }
+    }
+  }
+}

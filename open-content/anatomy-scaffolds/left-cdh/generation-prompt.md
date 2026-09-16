@@ -1,0 +1,23 @@
+Redo the attached original MD3 shape guide as a polished, beautiful medical teaching illustration. The user rejected rectangles and crude vector icons. This should look like a skilled medical illustrator's simplified textbook diagram: recognisable organic organ silhouettes, confident thin contours, restrained warm gouache colours, slight soft paper shading, absolutely no realistic flesh, wet tissue, texture-heavy organs, bloody cut surfaces or 3D rendering. Editorial clarity and accurate anatomy first. Not a flowchart or block diagram.
+
+REFERENCE ROLES:
+Image 1 is our original rough arrangement guide. Preserve its teaching relationships and patient orientation, but improve the awkward crude organ shapes and unnatural regular serpentine bowel. It is scaffolding, not an aesthetic reference.
+Image 2 is our earlier original structural check drawing. Use ONLY its small caudal diaphragm inset to establish underside orientation and posterolateral defect location. Do not reproduce any blocks, technical validation text, check descriptions or dense disclaimer footer.
+
+LANDSCAPE COMPOSITION:
+Two large, elegant anterior torso cutaways side-by-side. Left heading "Typical arrangement". Right heading "Left-sided hernia". Soft off-white background; no boxes, cards or decorative UI. Title "Left congenital diaphragmatic hernia". One subtitle: "Bowel in the chest leaves less room for the developing lung".
+Patient RIGHT is viewer LEFT in both panels; place small "R" and "L" directly over the appropriate hemithoraces.
+
+SCIENTIFIC SCAFFOLD / INVARIANTS:
+1. Show lungs in blue, heart in muted coral, diaphragm in ochre, liver in warm brown, bowel in peach. No airways, great vessels, heart chambers, ribs, gallbladder, kidneys, mesentery, spleen or stomach are needed. This is deliberately one bowel-only CDH pattern.
+2. Normal: two recognisable lungs filling most of their hemithoraces. Right lung on viewer left, left lung on viewer right with a natural cardiac notch. Heart is chiefly to PATIENT LEFT (viewer right of midline), apex pointing patient-left/inferior. The liver is broad, immediately under the patient-right diaphragmatic dome, with its leftward taper crossing the midline slightly. Bowel remains entirely below the diaphragm.
+3. CDH: a smaller developing left lung remains a separate blue organ above/medial to bowel in the patient-left chest. Bowel loops occupy the patient-left thorax and pass through ONE localized left diaphragmatic defect, remaining continuously connected to abdominal bowel. Do not show bowel inside lung, crossing the heart, or changing into stomach. Coils should be loose and believable, without segment-specific claims or disconnected tubes. Keep a clear visible passage at the defect.
+4. The heart/mediastinum is displaced toward PATIENT RIGHT (viewer left); a simple leftward arrow indicates that displacement. The right lung is narrower but remains present. The right diaphragm is continuous and the liver stays below it in this selected pattern.
+5. Main view is explicitly a SIMPLIFIED ANTERIOR CUTAWAY. A true posterolateral diaphragm defect would be hidden by the anterior rim. Show the small anterior diaphragm portion cut away or translucent only where needed to reveal the bowel passage; do not accidentally depict a hole in an intact anterior dome as the real defect. Do not add complex folded tissue.
+6. Add ONE small clean underside diaphragm inset below/between the panels, titled "View from below". As in image 2, the oval has anterior at top, posterior at bottom, R viewer left, L viewer right; the selected defect is inside the posterior-left quadrant (bottom right of the inset). Keep the hole away from the midline. Use a gentle outline and a small highlighted opening. No other apertures are claimed. This inset, rather than the anterior panel, establishes posterior position.
+
+LABELS:
+Limit leaders to "Small left lung", "Bowel in chest", "Diaphragm defect", "Heart shifted right", plus normal "Diaphragm" and "Liver" if space. Thin precise leader endpoints must land on the correct visible structure. No leader through another organ. Labels outside the anatomy, generous clean whitespace, no overlaps.
+One discreet footer: "Simplified cutaway • One possible pattern".
+Omit provenance, licences, SHA hashes, construction terminology, validation notes, bullets and paragraphs from the visible teaching image. We retain those separately.
+Do not invent extra anatomy to make it look more sophisticated. No diagrams that resemble spreadsheets, beans and rubber hoses. The finished image should teach at a glance while remaining visually calm.

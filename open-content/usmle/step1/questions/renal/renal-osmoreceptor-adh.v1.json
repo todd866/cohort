@@ -1,0 +1,88 @@
+{
+  "id": "bank:usmle-step1:renal-osmoreceptor-adh:v1",
+  "rotation": "usmle-step1-open",
+  "ladderId": "adh-water-balance",
+  "topics": [
+    "osmoreceptors",
+    "ADH release",
+    "thirst",
+    "ladder:adh-water-balance"
+  ],
+  "moduleNodes": [
+    "usmle/step1",
+    "usmle/step1/renal"
+  ],
+  "questionType": "mechanism",
+  "difficulty": "medium",
+  "stem": "A 75-year-old woman with gastroenteritis becomes volume-depleted, and her plasma osmolality rises above its ideal value. Which of the following hypothalamic responses most directly follows this rise?",
+  "options": [
+    {
+      "label": "A",
+      "text": "Paraventricular neurons release oxytocin to constrict renal arterioles",
+      "isCorrect": false,
+      "misconception": "The neighboring posterior-pituitary peptide is being substituted for ADH.",
+      "explanation": "Oxytocin drives uterine contraction and milk ejection; the osmolality-response peptide released from the posterior pituitary is ADH, triggered by hypothalamic osmoreceptors."
+    },
+    {
+      "label": "B",
+      "text": "The anterior pituitary secretes ACTH, stimulating aldosterone release",
+      "isCorrect": false,
+      "misconception": "A cortisol axis is being recruited as the direct osmolality sensor.",
+      "explanation": "The immediate hypothalamic response to rising osmolality is osmoreceptor-driven thirst and ADH release; aldosterone responds to angiotensin II and plasma potassium, not directly to osmolality."
+    },
+    {
+      "label": "C",
+      "text": "Juxtaglomerular cells release renin in direct response to osmolality",
+      "isCorrect": false,
+      "misconception": "A renal pressure/flow sensor is being recast as the hypothalamic osmolality response.",
+      "explanation": "Renin release responds to decreased blood flow and pressure, and it is renal, not hypothalamic; osmolality is sensed by hypothalamic osmoreceptors that drive thirst and ADH."
+    },
+    {
+      "label": "D",
+      "text": "Osmoreceptors trigger thirst and ADH release from the posterior pituitary",
+      "isCorrect": true,
+      "misconception": "None; hypothalamic osmoreceptors drive both water intake and water conservation.",
+      "explanation": "Osmoreceptors in the hypothalamic thirst center monitor blood osmolality; when it rises, the hypothalamus generates conscious thirst and signals the release of ADH from the posterior pituitary to recover water in the collecting ducts."
+    },
+    {
+      "label": "E",
+      "text": "The hypothalamus suppresses ADH so that dilute urine can be excreted",
+      "isCorrect": false,
+      "misconception": "The appropriate response to a water excess is being applied to a water deficit.",
+      "explanation": "Rising osmolality signals water deficit, so ADH release increases to conserve water; suppression of ADH occurs when plasma is too dilute."
+    }
+  ],
+  "context": "Learning objective: trace the osmolality response. Hypothalamic osmoreceptors detect rising plasma osmolality and trigger thirst plus ADH release from the posterior pituitary.",
+  "cite": "openstax-anatomy-physiology#renal-osmoreceptor-adh",
+  "publicUsmle": {
+    "schemaVersion": 1,
+    "origin": "generated",
+    "itemText": {
+      "licence": "CC-BY-4.0",
+      "attribution": "MD3 contributors"
+    },
+    "evidence": {
+      "kind": "passage",
+      "sourceId": "openstax-anatomy-physiology",
+      "passageId": "renal-osmoreceptor-adh",
+      "licence": {
+        "cls": "foss",
+        "id": "cc-by-4.0"
+      }
+    },
+    "media": {
+      "kind": "asset",
+      "assetId": "nephron-overview-v1",
+      "job": "anatomy",
+      "showWhen": "after-reveal",
+      "licence": {
+        "cls": "foss",
+        "id": "cc-by-4.0"
+      },
+      "attribution": "MD3 contributors",
+      "contentHash": "sha256:594f7ddfca37a265ea925ffa5348bce222990740b857a75cf8669f0ba5f715fa"
+    }
+  },
+  "imageUrl": "/figures/usmle/step1/nephron-overview-v1.svg",
+  "imageCaption": "Nephron segments: filtration, PCT, loop, DCT, collecting duct (ADH aquaporins)."
+}

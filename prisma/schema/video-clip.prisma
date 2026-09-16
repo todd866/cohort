@@ -1,0 +1,119 @@
+// =============================================================================
+// OPERATIVE VIDEO CLIPS
+// A short (6-10s) window cut out of a long operative video and served as the
+// STEM of a card or question: "what step comes next?", "name the structure the
+// retractor just exposed?", "which instrument is in use?".
+//
+// This is deliberately NOT the `Video` model in video.prisma. That subsystem is
+// reel-shaped — one whole Instagram video per row, a creator-permission
+// lifecycle, watch-to-completion progress — and it is dormant but fail-closed
+// (see the project_video_dormant_not_dead memory). A clip has a different
+// shape (a parent source plus in/out points), a different rights story (source
+// licence, not creator DM), and no progress of its own: the CARD it is attached
+// to owns scheduling and grading. Folding the two together would put a second
+// lifecycle inside `Video.rightsStatus` and erode the guarantee that a
+// restricted reel serves to nobody.
+// =============================================================================
+
+/// The upstream video a clip was cut from. One row per source URL, holding the
+/// discovery metadata (chapters, most-replayed heatmap) so candidate windows can
+/// be recomputed without re-fetching, and the rights state that gates delivery.
+model VideoSource {
+  id           String  @id @default(cuid())
+  /// Canonical watch URL. Unique so a re-run of discovery updates rather than
+  /// duplicates.
+  url          String  @unique
+  /// Upstream id (e.g. the 11-char YouTube id) — kept separate from `url` so a
+  /// URL-format change upstream doesn't orphan the row.
+  externalId   String  @unique
+  platform     String  @default("youtube")
+  title        String
+  channelName  String?
+  channelUrl   String?
+  durationSecs Int     @default(0)
+
+  /// Upstream licence string as reported by the extractor, verbatim and
+  /// un-normalised ("Creative Commons Attribution", "Standard YouTube License",
+  /// null when unknown). Never inferred — an unknown licence must read as
+  /// unknown so the rights review has something honest to work from.
+  licence String?
+
+  /// Delivery gate, fail-closed exactly like `Video.rightsStatus`. Only
+  /// `cleared` sources have clips that reach a learner. A takedown, a licence
+  /// change or a revoked permission is therefore a single flag flip, not an
+  /// archaeology project across R2.
+  rightsStatus String  @default("restricted") // restricted | cleared | revoked
+  /// Free text for the rights decision — who was asked, what the licence said,
+  /// when a takedown arrived.
+  rightsNotes  String? @db.Text
+
+  /// Raw `chapters` from the extractor: [{start_time, end_time, title}].
+  chapters          Json?     @db.JsonB
+  /// Raw `heatmap` from the extractor: 100 buckets of {start_time, end_time,
+  /// value}. YouTube's "most replayed" graph — in an operative video the peaks
+  /// are the manoeuvre everyone scrubs back to, which is the single best free
+  /// signal for where a teachable window lives.
+  heatmap           Json?     @db.JsonB
+  /// When the metadata above was last pulled. Heatmaps drift as a video ages.
+  metadataFetchedAt DateTime? @db.Timestamptz(3)
+
+  createdAt DateTime @default(now()) @db.Timestamptz(3)
+  updatedAt DateTime @updatedAt @db.Timestamptz(3)
+
+  clips VideoClip[]
+
+  @@index([rightsStatus])
+  @@index([platform])
+}
+
+/// One cut window, transcoded and stored in the private video bucket.
+model VideoClip {
+  id       String      @id @default(cuid())
+  sourceId String
+  source   VideoSource @relation(fields: [sourceId], references: [id], onDelete: Restrict, onUpdate: Restrict)
+
+  /// Window in the SOURCE timeline, seconds. Kept even though the media is
+  /// already cut: it is the provenance that lets a human re-watch the original
+  /// in context, and it lets a clip be re-cut at a different length later.
+  startSecs Float
+  endSecs   Float
+
+  /// Object keys in the private video bucket. `posterR2Key` is the first frame,
+  /// used as the <video> poster so the pane doesn't flash empty on load.
+  r2Key       String  @unique
+  posterR2Key String?
+
+  /// Audio is stripped by default and this records that it was. The narration
+  /// in an operative video very often says the answer out loud
+  /// ("...and there's the recurrent laryngeal"), so a clip-as-prompt with sound
+  /// is an answer leak. A clip may only keep audio when the authoring step has
+  /// verified the window transcript does not contain the answer.
+  audioStripped    Boolean @default(true)
+  /// Transcript of the window, if the source had captions. Stored so the
+  /// answer-leak check is auditable after the fact.
+  windowTranscript String? @db.Text
+
+  /// What the learner is asked to do with it. Drives which question type the
+  /// authoring step writes and, downstream, how the renderer labels the pane.
+  clipKind String // next-step | anatomy-motion | instrument-id
+
+  /// Stable authoring handle, e.g. "appy-endoloop-base". MDX references a clip
+  /// by slug because the cuid above is minted at cut time and a content file
+  /// must be writable before — and independently of — the media existing. It is
+  /// also what makes a re-cut possible: replace the media, keep the slug, and
+  /// every card that points at it follows.
+  slug String @unique
+
+  /// Short human label ("dura opened, cortex exposed"). Not shown pre-reveal —
+  /// it would give the answer away — but used in authoring tools and audits.
+  label String?
+
+  createdAt DateTime  @default(now()) @db.Timestamptz(3)
+  deletedAt DateTime? @db.Timestamptz(3)
+
+  cards     Card[]
+  questions Question[]
+
+  @@index([sourceId])
+  @@index([clipKind])
+}

@@ -1,0 +1,71 @@
+{
+  "id": "bank:usmle-step1:exp26-c-reference-group-reversal:v1",
+  "rotation": "usmle-step1-open",
+  "topics": [
+    "epidemiology",
+    "reference-group-reversal"
+  ],
+  "moduleNodes": [
+    "usmle/step1",
+    "usmle/step1/epidemiology"
+  ],
+  "questionType": "calculation",
+  "difficulty": "medium",
+  "stem": "In a study with complete follow-up, 40 of 200 participants in group X and 20 of 400 participants in group Y develop the same outcome. A report originally compares X with Y, but the investigator now wants Y compared with X. Which of the following pairs uses the requested reference group?",
+  "options": [
+    {
+      "label": "A",
+      "text": "Risk ratio 0.5; Y has half the outcome risk of X",
+      "isCorrect": false,
+      "explanation": "Dividing the case counts alone gives 20/40 but ignores the different group sizes. The requested ratio compares risks of 20/400 and 40/200, rather than the numbers of cases.",
+      "misconception": "Compares raw case counts without adjusting for unequal group sizes."
+    },
+    {
+      "label": "B",
+      "text": "Risk ratio 0.25; Y has one-quarter the outcome risk of X",
+      "isCorrect": true,
+      "explanation": "Group Y has risk 20/400, or 5%, and group X has risk 40/200, or 20%. Comparing Y with X gives 0.05/0.20 = 0.25, one-quarter the risk.",
+      "misconception": "No misconception: the requested Y-to-X comparison divides 5% by 20%."
+    },
+    {
+      "label": "C",
+      "text": "Risk ratio 2.0; Y has twice the outcome risk of X",
+      "isCorrect": false,
+      "explanation": "Two is the ratio of the raw case counts in the opposite direction. Both the specified direction and the different group sizes must be reflected in the risk calculation.",
+      "misconception": "Reverses the requested direction and compares case counts instead of risks."
+    },
+    {
+      "label": "D",
+      "text": "Risk ratio 4.0; Y has four times the outcome risk of X",
+      "isCorrect": false,
+      "explanation": "Four is the risk ratio for X compared with Y. Reversing the comparison makes X the denominator, so the requested ratio is the reciprocal, 0.25.",
+      "misconception": "Reports the X-to-Y ratio when the requested numerator is group Y."
+    },
+    {
+      "label": "E",
+      "text": "Risk ratio 1.0; Y has the same outcome risk as X",
+      "isCorrect": false,
+      "explanation": "The group-specific risks differ: 5% in Y and 20% in X. A ratio of one would require equal risks, which these observed counts and denominators do not show.",
+      "misconception": "Assumes equal risks despite different group-specific case fractions."
+    }
+  ],
+  "context": "Learning objective: Match the numerator and reference group to the requested direction of a risk comparison.\n\nGroup Y has risk 20/400, or 5%, and group X has risk 40/200, or 20%. Comparing Y with X gives 0.05/0.20 = 0.25, one-quarter the risk.",
+  "cite": "cdc-epi-measures-of-association#risk-ratio-definition",
+  "publicUsmle": {
+    "schemaVersion": 1,
+    "origin": "generated",
+    "itemText": {
+      "licence": "CC-BY-4.0",
+      "attribution": "MD3 contributors"
+    },
+    "evidence": {
+      "kind": "passage",
+      "sourceId": "cdc-epi-measures-of-association",
+      "passageId": "risk-ratio-definition",
+      "licence": {
+        "cls": "foss",
+        "id": "us-gov"
+      }
+    }
+  }
+}

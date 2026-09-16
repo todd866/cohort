@@ -1,0 +1,25 @@
+{
+  "id": "concept-nsaid-dehydration-perfusion",
+  "title": "Why dehydration makes NSAIDs riskier",
+  "prompt": "Create an original polished 1536x1024 landscape conceptual medical teaching diagram for after-answer study. Warm hand-painted gouache and watercolour on ivory paper; a gentle storybook warmth with precise dark navy type. Matte teal, ochre, coral and blue accents. Simple neutral tokens, paper tiles, arrows and visibly abstract compartments only. Make the visual relationships legible at small size. No body parts, organs, cells, tissues, lumens, tubules, membranes, vessels, anatomical cutaways, clinical photos, diagnostic scans, babies, realistic flesh or decorative scenery. Do not turn abstract boxes or routes into organs or anatomy. Do not invent extra arrows or medical claims. Edge meanings below are metadata, not visible text: draw the arrows but do not print their meaning strings. Footer exactly: Conceptual schematic • Not anatomy. Title exactly: Why dehydration makes NSAIDs riskier. Place four big concept tiles left-to-right on a single broad abstract ribbon, exactly three connecting arrows. Above all four put a coral context banner: Dehydration: lower circulating volume. Tile1 shows a plain medication token marked NSAID, no branded drug. Tile2 shows fewer small PG paper coins. Tile3 a down arrow beside the label only; do not draw a narrowing vessel. Tile4 a neutral falling gauge, no kidney. Below the row print: Less prostaglandin support when perfusion is vulnerable. Exact node labels: [{\"id\": \"1\", \"label\": \"NSAID use\"}, {\"id\": \"2\", \"label\": \"Prostaglandin production falls\"}, {\"id\": \"3\", \"label\": \"Afferent dilation is reduced\"}, {\"id\": \"4\", \"label\": \"Filtration can fall\"}]. Exact directed connections: [{\"from\": \"1\", \"to\": \"2\", \"meaning\": \"COX inhibition\"}, {\"from\": \"2\", \"to\": \"3\", \"meaning\": \"less vasodilatory support\"}, {\"from\": \"3\", \"to\": \"4\", \"meaning\": \"haemodynamic consequence\"}]. Required checks: Four labelled nodes in order with three arrows; Dehydration is context, not a consequence of the pictured NSAID chain; Final outcome is can fall, not inevitable injury; No afferent/efferent vessel anatomy or glomerulus.",
+  "clinicalSources": [
+    {
+      "title": "Medsafe — NSAIDs and acute kidney injury",
+      "url": "https://www.medsafe.govt.nz/Profs/PUArticles/June2013NSAIDS.htm"
+    }
+  ],
+  "caption": "NSAID inhibition of prostaglandins can reduce support for filtration during dehydration.",
+  "question": "Why can an NSAID precipitate kidney dysfunction in a dehydrated patient?",
+  "answer": "Reduced prostaglandin synthesis weakens afferent vasodilatory support when perfusion is already vulnerable, so filtration can fall.",
+  "structureSpecification": "scaffolds/concept-nsaid-dehydration-perfusion.json",
+  "generationInputs": {
+    "referenceImages": [],
+    "style": "written-only"
+  },
+  "qa": {
+    "status": "pending-independent-qa",
+    "method": "agent-visual-and-source-review",
+    "notes": "Pixel review: four labels and three links follow NSAID to lower prostaglandin production to reduced afferent dilation to possible lower filtration. Dehydration remains an above-row context banner. Neutral tablet, PG coins, down arrow and gauge; no vessel or glomerulus. Clinical and independent review pending.",
+    "clinicalReviewStatus": "pending"
+  }
+}

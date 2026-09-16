@@ -1,0 +1,74 @@
+{
+  "id": "bank:usmle-step1:endo-insulin-source-r3:v1",
+  "rotation": "usmle-step1-open",
+  "ladderId": "insulin-source",
+  "topics": [
+    "type 1 diabetes",
+    "diabetic ketoacidosis",
+    "pancreatic beta cells",
+    "ladder:insulin-source"
+  ],
+  "moduleNodes": [
+    "usmle/step1",
+    "usmle/step1/endocrine"
+  ],
+  "questionType": "mechanism",
+  "difficulty": "hard",
+  "stem": "A 12-year-old boy is brought to the emergency department with 3 weeks of polyuria, polydipsia, and weight loss. Examination shows deep, rapid breathing and a fruity odor on the breath. Laboratory studies reveal hyperglycemia, ketonemia, and a low serum bicarbonate.\n\nImmune destruction of which of the following cell types most directly explains these findings?",
+  "options": [
+    {
+      "label": "A",
+      "text": "Alpha cells that secrete glucagon",
+      "isCorrect": false,
+      "misconception": "Loss of the glucose-raising hormone is being treated as the cause of ketoacidosis.",
+      "explanation": "Alpha-cell loss would reduce glucagon, which would not produce insulin-deficient ketoacidosis; the autoimmune target in type 1 diabetes is the beta cell."
+    },
+    {
+      "label": "B",
+      "text": "Delta cells that secrete somatostatin",
+      "isCorrect": false,
+      "misconception": "An inhibitory islet cell is being treated as the primary autoimmune target.",
+      "explanation": "Delta cells secrete somatostatin; type 1 diabetes is driven by immune destruction of insulin-producing beta cells, not delta cells."
+    },
+    {
+      "label": "C",
+      "text": "Acinar cells that secrete digestive enzymes",
+      "isCorrect": false,
+      "misconception": "Exocrine pancreatic injury is being confused with endocrine insulin deficiency.",
+      "explanation": "Acinar destruction causes exocrine insufficiency, not the absolute insulin deficiency that drives ketoacidosis in type 1 diabetes."
+    },
+    {
+      "label": "D",
+      "text": "Beta cells that secrete insulin",
+      "isCorrect": true,
+      "misconception": "None; autoimmune beta-cell loss causes absolute insulin deficiency and ketoacidosis.",
+      "explanation": "Type 1 diabetes develops when the immune system destroys pancreatic beta cells that make insulin; without insulin, cells use fat for fuel and produce acidic ketones, yielding ketoacidosis."
+    },
+    {
+      "label": "E",
+      "text": "PP cells that secrete pancreatic polypeptide",
+      "isCorrect": false,
+      "misconception": "A minor islet cell type is being treated as the source of insulin deficiency.",
+      "explanation": "PP cells secrete pancreatic polypeptide; they are not the cells whose destruction produces absolute insulin deficiency and ketoacidosis."
+    }
+  ],
+  "context": "Learning objective: link type 1 autoimmune beta-cell loss to ketoacidosis. Without insulin, tissues rely on fat; ketone production acidifies the blood. Deep rapid breathing and fruity acetone breath are early clinical signs of diabetic ketoacidosis.",
+  "cite": "niddk-type-1-diabetes#type1-beta-cells",
+  "publicUsmle": {
+    "schemaVersion": 1,
+    "origin": "generated",
+    "itemText": {
+      "licence": "CC-BY-4.0",
+      "attribution": "MD3 contributors"
+    },
+    "evidence": {
+      "kind": "passage",
+      "sourceId": "niddk-type-1-diabetes",
+      "passageId": "type1-beta-cells",
+      "licence": {
+        "cls": "foss",
+        "id": "us-gov"
+      }
+    }
+  }
+}

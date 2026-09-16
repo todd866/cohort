@@ -1,0 +1,25 @@
+{
+  "id": "concept-phototherapy-bilirubin-conversion",
+  "title": "Phototherapy changes bilirubin into excretable forms",
+  "prompt": "Create an original polished 1536x1024 landscape conceptual medical teaching diagram for after-answer study. Warm hand-painted gouache and watercolour on ivory paper; a gentle storybook warmth with precise dark navy type. Matte teal, ochre, coral and blue accents. Simple neutral tokens, paper tiles, arrows and visibly abstract compartments only. Make the visual relationships legible at small size. No body parts, organs, cells, tissues, lumens, tubules, membranes, vessels, anatomical cutaways, clinical photos, diagnostic scans, babies, realistic flesh or decorative scenery. Do not turn abstract boxes or routes into organs or anatomy. Do not invent extra arrows or medical claims. Edge meanings below are metadata, not visible text: draw the arrows but do not print their meaning strings. Footer exactly: Conceptual schematic • Not anatomy. Title exactly: Phototherapy changes bilirubin into excretable forms. Three large concept cards left-to-right2,3,4 linked by two arrows. A smaller blue input card1 above middle3 points down to3 with a third arrow. Card2 has an ochre hexagon token labelled Bilirubin; card3 a differently shaped ochre diamond token labelled Photoisomer, a symbolic shape change NOT chemical structure. Card4 shows small tokens exiting a neutral rectangular tray with a water-drop marker. Footer: Bypasses the usual conjugation step. No baby, skin, eyes, lamp placement, liver, kidney or organ route. No wavelength or treatment threshold. Exact node labels: [{\"id\": \"1\", \"label\": \"Blue light\"}, {\"id\": \"2\", \"label\": \"Unconjugated bilirubin\"}, {\"id\": \"3\", \"label\": \"Photoisomers\"}, {\"id\": \"4\", \"label\": \"Easier excretion\"}]. Exact directed connections: [{\"from\": \"1\", \"to\": \"3\", \"meaning\": \"photochemical input\"}, {\"from\": \"2\", \"to\": \"3\", \"meaning\": \"conversion\"}, {\"from\": \"3\", \"to\": \"4\", \"meaning\": \"excretion\"}]. Required checks: Blue light and unconjugated bilirubin converge on photoisomers; Four nodes and three connectors; Excretion follows conversion; no claim of liver enzyme stimulation; No organs, baby or treatment setup.",
+  "clinicalSources": [
+    {
+      "title": "RCH — Phototherapy for neonatal jaundice",
+      "url": "https://www.rch.org.au/rchcpg/hospital_clinical_guideline_index/phototherapy_for_neonatal_jaundice/"
+    }
+  ],
+  "caption": "A two-input conversion diagram shows how blue light creates more readily excreted bilirubin photoisomers.",
+  "question": "How does phototherapy help clear unconjugated bilirubin?",
+  "answer": "Light converts it into photoisomers that can be excreted without the usual hepatic conjugation step.",
+  "structureSpecification": "scaffolds/concept-phototherapy-bilirubin-conversion.json",
+  "generationInputs": {
+    "referenceImages": [],
+    "style": "written-only"
+  },
+  "qa": {
+    "status": "pending-independent-qa",
+    "method": "agent-visual-and-source-review",
+    "notes": "Pixel check: four nodes/three main connectors show blue light plus unconjugated bilirubin producing photoisomers before easier excretion. Symbolic hexagon-to-diamond change is not a chemical structural claim. Bypassing usual conjugation statement visible. No infant or organ setup. Independent and clinical review pending.",
+    "clinicalReviewStatus": "pending"
+  }
+}

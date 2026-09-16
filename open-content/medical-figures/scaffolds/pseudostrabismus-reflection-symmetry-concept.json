@@ -1,0 +1,63 @@
+{
+  "schemaVersion": 1,
+  "figureId": "pseudostrabismus-reflection-symmetry-concept",
+  "kind": "conceptual",
+  "created": "2026-09-10",
+  "timing": "authored before generation",
+  "sourceFacts": [
+    {
+      "fact": "In pseudostrabismus the eyes are aligned despite an apparent crossed appearance, often related to facial features.",
+      "sourceUrls": [
+        "https://www.aapos.org/glossary/pseudostrabismus"
+      ]
+    },
+    {
+      "fact": "Symmetric positions of corneal light reflections support alignment, while asymmetric positions prompt assessment for true misalignment.",
+      "sourceUrls": [
+        "https://www.aapos.org/glossary/pseudostrabismus"
+      ]
+    }
+  ],
+  "clinicalSources": [
+    {
+      "title": "AAPOS: Pseudostrabismus",
+      "url": "https://www.aapos.org/glossary/pseudostrabismus"
+    }
+  ],
+  "nodes": [
+    "apparent inward turn",
+    "symmetric reflection positions",
+    "asymmetric reflection positions",
+    "alignment assessment"
+  ],
+  "edges": [
+    [
+      "symmetric reflection positions",
+      "alignment assessment",
+      "supports alignment"
+    ],
+    [
+      "asymmetric reflection positions",
+      "alignment assessment",
+      "raises concern for misalignment"
+    ]
+  ],
+  "expectedLabels": [
+    "Compare reflection positions",
+    "Matched positions",
+    "Supports alignment",
+    "Different positions",
+    "Assess for misalignment",
+    "Abstract reflection-position model"
+  ],
+  "layoutSpecification": "Title 'Compare reflection positions'. Draw an abstract comparison of positional symmetry, NOT patient eyes or simulated diagnostic media. LEFT panel heading 'Matched positions': two identical large flat teal discs side by side, EACH with a tiny ivory dot exactly at its centre. Each disc has a very faint horizontal and vertical centre guide. Below 'Supports alignment'. RIGHT panel heading 'Different positions': two identical discs; the LEFT disc has an ivory dot exactly centred, the RIGHT disc has an ivory dot clearly shifted to the RIGHT of its centre guide. Below 'Assess for misalignment'. Use plain circles without eyelids, iris texture, pupils, lashes, sclera or face. Bottom 'Abstract reflection-position model'. Do not label these dots as a definitive diagnosis. Two discs in each group, four total.",
+  "forbiddenAnatomy": [
+    "No internal organ, eye, ear, brain, tissue or bone anatomy",
+    "No diagnostic image, patient-specific lesion appearance or literal anatomical pathway"
+  ],
+  "validation": {
+    "sourceFacts": "Checked against listed primary clinical sources on 2026-09-10",
+    "status": "self-reviewed; independent review pending",
+    "pixelChecks": "Pixel/structure check: four abstract discs total; both left-panel dots centred, right-panel first dot centred and second clearly offset right. Guide crosses make relative positions explicit. Supports alignment and assess for misalignment labels avoid claiming definitive diagnosis; no eyelids, pupils, clinical photograph or simulated ocular appearance."
+  }
+}

@@ -1,0 +1,91 @@
+{
+  "schemaVersion": 1,
+  "figureId": "immune-platelet-clearance-model",
+  "kind": "conceptual",
+  "sourceFacts": [
+    {
+      "id": "fact-1",
+      "fact": "ITP involves immune-mediated platelet destruction.",
+      "sources": [
+        {
+          "title": "NHLBI — Immune thrombocytopenia",
+          "url": "https://www.nhlbi.nih.gov/health/immune-thrombocytopenia"
+        }
+      ]
+    },
+    {
+      "id": "fact-2",
+      "fact": "Antibodies can bind platelets, promoting their clearance.",
+      "sources": [
+        {
+          "title": "NHLBI — Immune thrombocytopenia",
+          "url": "https://www.nhlbi.nih.gov/health/immune-thrombocytopenia"
+        }
+      ]
+    },
+    {
+      "id": "fact-3",
+      "fact": "Reduced platelet production can also contribute; immune clearance is not the only mechanism.",
+      "sources": [
+        {
+          "title": "NHLBI — Immune thrombocytopenia",
+          "url": "https://www.nhlbi.nih.gov/health/immune-thrombocytopenia"
+        }
+      ]
+    }
+  ],
+  "nodes": [
+    {
+      "id": "platelet",
+      "shape": "small purple oval",
+      "label": "Platelet"
+    },
+    {
+      "id": "tagged",
+      "shape": "same oval with six abstract teal rounded antibody-marker tabs attached; no Y orientation",
+      "label": "Antibody recognition"
+    },
+    {
+      "id": "clearance",
+      "shape": "large soft geometric C-shaped symbol enclosing the tagged oval",
+      "label": "Immune clearance"
+    }
+  ],
+  "edges": [
+    {
+      "from": "platelet",
+      "to": "tagged",
+      "meaning": "antibody binding"
+    },
+    {
+      "from": "tagged",
+      "to": "clearance",
+      "meaning": "recognition promotes clearance"
+    }
+  ],
+  "labels": [
+    "Platelet",
+    "Antibody recognition",
+    "Immune clearance",
+    "Fewer circulating platelets",
+    "Reduced production may also contribute"
+  ],
+  "forbiddenAnatomy": [
+    "Organs and regional anatomy",
+    "Anatomical cutaways and tissue layers",
+    "Diagnostic or histological images"
+  ],
+  "validation": {
+    "status": "verified",
+    "method": "source-and-conceptual-structure-review",
+    "checks": [
+      "Exactly three main stages in the correct left-to-right order.",
+      "Antibodies touch the platelet surface; the clearance symbol encloses the coated platelet.",
+      "No spleen, vessels, organ silhouettes or microscopic tissue.",
+      "The secondary contribution of impaired production is stated.",
+      "Markers use abstract tabs rather than incorrectly oriented antibody Y structures."
+    ],
+    "pixelReviewStatus": "verified",
+    "pixelReviewNotes": "Full pixel-to-specification review: three stages run left to right; abstract teal tabs mark the platelet surface and avoid incorrect antibody-domain orientation. A geometric C surrounds the marked platelet; no spleen, organ or tissue is drawn. Reduced production is explicitly acknowledged. The first Y-shaped attempt was rejected and is not used."
+  }
+}

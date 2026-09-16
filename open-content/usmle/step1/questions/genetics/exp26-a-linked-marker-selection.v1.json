@@ -1,0 +1,71 @@
+{
+  "id": "bank:usmle-step1:exp26-a-linked-marker-selection:v1",
+  "rotation": "usmle-step1-open",
+  "topics": [
+    "genetics",
+    "linkage-recombination"
+  ],
+  "moduleNodes": [
+    "usmle/step1",
+    "usmle/step1/genetics"
+  ],
+  "questionType": "interpretation",
+  "difficulty": "medium",
+  "stem": "A hypothetical pedigree study compares five markers on the same chromosome as a disease-associated allele. Their separations from that allele are 1, 8, 20, 35, and 50 arbitrary distance units. Assume the stated separations accurately rank physical proximity and no other factor differs. Which marker should most reliably remain associated with the allele through meiosis?",
+  "options": [
+    {
+      "label": "A",
+      "text": "The marker separated by 35 distance units",
+      "isCorrect": false,
+      "explanation": "This marker is farther from the allele than several alternatives. Greater separation provides less reliable tracking when the comparison depends on the chance of meiotic recombination.",
+      "misconception": "Chooses a relatively distant marker despite nearer alternatives in a proximity-controlled comparison."
+    },
+    {
+      "label": "B",
+      "text": "The marker separated by 50 distance units",
+      "isCorrect": false,
+      "explanation": "This is the largest stated separation. Choosing it reverses the relationship between chromosomal proximity and co-inheritance rather than selecting the most tightly linked marker.",
+      "misconception": "Assumes the greatest chromosomal separation produces the strongest co-inheritance."
+    },
+    {
+      "label": "C",
+      "text": "The marker separated by 1 distance unit",
+      "isCorrect": true,
+      "explanation": "This marker is the closest under the stated assumptions. Closely linked loci are less often separated by recombination and therefore more reliably travel together through meiosis.",
+      "misconception": "No misconception: The nearest marker has the strongest expected linkage under the stated controls."
+    },
+    {
+      "label": "D",
+      "text": "The marker separated by 8 distance units",
+      "isCorrect": false,
+      "explanation": "This marker is relatively close, but another marker has a smaller stated separation. The smallest separation provides the strongest expected co-inheritance in this controlled comparison.",
+      "misconception": "Treats a nearby marker as optimal without comparing it with the still closer alternative."
+    },
+    {
+      "label": "E",
+      "text": "The marker separated by 20 distance units",
+      "isCorrect": false,
+      "explanation": "An intermediate separation does not maximize co-inheritance. With the remaining factors held constant, a closer marker is less likely to be separated from the allele.",
+      "misconception": "Assumes an intermediate separation maximizes linkage rather than favoring the smallest separation."
+    }
+  ],
+  "context": "Learning objective: use chromosomal proximity to predict co-inheritance. Closely situated loci have less opportunity for a separating recombination event than loci farther apart on the same chromosome.",
+  "cite": "nhgri-linkage#linkage-distance",
+  "publicUsmle": {
+    "schemaVersion": 1,
+    "origin": "generated",
+    "itemText": {
+      "licence": "CC-BY-4.0",
+      "attribution": "MD3 contributors"
+    },
+    "evidence": {
+      "kind": "passage",
+      "sourceId": "nhgri-linkage",
+      "passageId": "linkage-distance",
+      "licence": {
+        "cls": "foss",
+        "id": "us-gov"
+      }
+    }
+  }
+}

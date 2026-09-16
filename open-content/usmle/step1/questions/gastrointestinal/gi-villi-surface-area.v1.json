@@ -1,0 +1,86 @@
+{
+  "id": "bank:usmle-step1:gi-villi-surface-area:v1",
+  "rotation": "usmle-step1-open",
+  "topics": [
+    "villi",
+    "microvilli",
+    "absorption surface area"
+  ],
+  "moduleNodes": [
+    "usmle/step1",
+    "usmle/step1/gastrointestinal"
+  ],
+  "questionType": "mechanism",
+  "difficulty": "medium",
+  "stem": "A 30-year-old woman with chronic diarrhea and weight loss has a duodenal biopsy showing complete loss of villi. Her malabsorption results mainly from loss of which of the following?",
+  "options": [
+    {
+      "label": "A",
+      "text": "A 600-fold amplification of absorptive surface area",
+      "isCorrect": true,
+      "misconception": "None; folds, villi, and microvilli multiply the absorbing surface.",
+      "explanation": "Circular folds, villi, and microvilli increase the small-intestinal mucosal surface area by 600-fold, with about 200 million microvilli per square millimeter; losing villi collapses this absorptive capacity."
+    },
+    {
+      "label": "B",
+      "text": "The mucosal cells that secrete the hormone secretin",
+      "isCorrect": false,
+      "misconception": "A hormone deficiency is being cast as the cause of generalized malabsorption.",
+      "explanation": "Secretin regulates pancreatic bicarbonate release; its loss would impair acid neutralization, not the absorptive surface needed for nutrients."
+    },
+    {
+      "label": "C",
+      "text": "Gut-associated lymphoid tissue within the mucosa",
+      "isCorrect": false,
+      "misconception": "Immune tissue is being cast as an absorptive structure.",
+      "explanation": "Mucosal lymphoid tissue defends against pathogens; it plays no direct role in absorbing nutrients from chyme."
+    },
+    {
+      "label": "D",
+      "text": "The pacemaker cells that set the intestinal rhythm",
+      "isCorrect": false,
+      "misconception": "A motility defect is being cast as the cause of the malabsorption.",
+      "explanation": "Pacemaker activity drives segmentation and peristalsis; disordered motility alters transit but does not remove the surface area across which absorption occurs."
+    },
+    {
+      "label": "E",
+      "text": "The colonic bacteria that synthesize key vitamins",
+      "isCorrect": false,
+      "misconception": "Hindgut flora are being cast as the main site of nutrient uptake.",
+      "explanation": "Colonic bacteria synthesize certain vitamins and ferment residue, but the bulk of nutrient absorption occurs across the small-intestinal villi."
+    }
+  ],
+  "context": "Learning objective: structure serves absorption. Circular folds, villi, and microvilli multiply small-intestinal surface area 600-fold (~200 million microvilli/mm2); brush-border enzymes on the microvilli finish carbohydrate and protein digestion. Villous atrophy (as in celiac disease) therefore causes malabsorption and weight loss.",
+  "cite": "openstax-anatomy-physiology#gi-villi-surface-area",
+  "publicUsmle": {
+    "schemaVersion": 1,
+    "origin": "generated",
+    "itemText": {
+      "licence": "CC-BY-4.0",
+      "attribution": "MD3 contributors"
+    },
+    "evidence": {
+      "kind": "passage",
+      "sourceId": "openstax-anatomy-physiology",
+      "passageId": "gi-villi-surface-area",
+      "licence": {
+        "cls": "foss",
+        "id": "cc-by-4.0"
+      }
+    },
+    "media": {
+      "kind": "asset",
+      "assetId": "gi-absorption-v1",
+      "job": "pathway",
+      "showWhen": "after-reveal",
+      "licence": {
+        "cls": "foss",
+        "id": "cc-by-4.0"
+      },
+      "attribution": "MD3 contributors",
+      "contentHash": "sha256:7fa3cf7c6deede7943579ae81371661588ab4f96bae794c6f6acea588dd08d5e"
+    }
+  },
+  "imageUrl": "/figures/usmle/step1/gi-absorption-v1.svg",
+  "imageCaption": "Villi, SGLT1, mucosal barrier, pancreatic enzymes, micelles/chylomicrons, colonic water."
+}

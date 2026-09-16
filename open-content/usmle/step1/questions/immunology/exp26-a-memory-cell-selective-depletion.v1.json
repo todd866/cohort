@@ -1,0 +1,71 @@
+{
+  "id": "bank:usmle-step1:exp26-a-memory-cell-selective-depletion:v1",
+  "rotation": "usmle-step1-open",
+  "topics": [
+    "immunology",
+    "conjugate-memory"
+  ],
+  "moduleNodes": [
+    "usmle/step1",
+    "usmle/step1/immunology"
+  ],
+  "questionType": "interpretation",
+  "difficulty": "medium",
+  "stem": "Two otherwise matched experimental groups establish an antibody response to the same antigen. Investigators then selectively remove memory B cells from group X before repeat exposure, leaving group Y unchanged. Which early recall-response pattern most directly supports a contribution from those cells?",
+  "options": [
+    {
+      "label": "A",
+      "text": "Unchanged cell expansion and antibody production between groups",
+      "isCorrect": false,
+      "explanation": "An unchanged early response would fail to show the contribution being tested. The proposed mechanism predicts a weaker accelerated recall component after selective memory-cell removal.",
+      "misconception": "Treats removal of the proposed recall population as producing no change in either early readout."
+    },
+    {
+      "label": "B",
+      "text": "Less rapid cell expansion and antibody production in X",
+      "isCorrect": true,
+      "explanation": "Memory B cells support rapid proliferation and antibody production after re-exposure. Selective removal predicts loss of that accelerated component compared with the otherwise matched group.",
+      "misconception": "No misconception: Removing memory B cells should reduce the accelerated expansion and antibody response."
+    },
+    {
+      "label": "C",
+      "text": "More rapid cell expansion and antibody production in X",
+      "isCorrect": false,
+      "explanation": "This reverses the proposed memory-cell contribution. Removing the population responsible for accelerated recall should not enhance the same early proliferation and antibody-production response.",
+      "misconception": "Predicts that removing the cells supporting rapid recall accelerates both recall readouts."
+    },
+    {
+      "label": "D",
+      "text": "Less rapid cell expansion but greater antibody production in X",
+      "isCorrect": false,
+      "explanation": "Reduced expansion fits removal of the memory population, but greater early antibody production does not follow from the same proposed loss of accelerated recall function.",
+      "misconception": "Combines reduced expansion with increased antibody output despite the proposed loss of accelerated recall."
+    },
+    {
+      "label": "E",
+      "text": "More rapid cell expansion but lower antibody production in X",
+      "isCorrect": false,
+      "explanation": "Lower antibody output fits an impaired recall response, but increased expansion reverses the expected effect on the depleted population. Both readouts should reflect reduced acceleration.",
+      "misconception": "Combines reduced antibody output with increased expansion despite depletion of the recall population."
+    }
+  ],
+  "context": "Learning objective: Test memory B-cell function using a matched repeat-exposure comparison. Removing those cells targets the accelerated proliferation and antibody production of the recall response.",
+  "cite": "cdc-vaccine-principles-expanded#memory-reexposure",
+  "publicUsmle": {
+    "schemaVersion": 1,
+    "origin": "generated",
+    "itemText": {
+      "licence": "CC-BY-4.0",
+      "attribution": "MD3 contributors"
+    },
+    "evidence": {
+      "kind": "passage",
+      "sourceId": "cdc-vaccine-principles-expanded",
+      "passageId": "memory-reexposure",
+      "licence": {
+        "cls": "foss",
+        "id": "us-gov"
+      }
+    }
+  }
+}

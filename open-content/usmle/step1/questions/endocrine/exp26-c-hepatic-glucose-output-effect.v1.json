@@ -1,0 +1,71 @@
+{
+  "id": "bank:usmle-step1:exp26-c-hepatic-glucose-output-effect:v1",
+  "rotation": "usmle-step1-open",
+  "topics": [
+    "endocrine",
+    "hepatic-glucose-output-effect"
+  ],
+  "moduleNodes": [
+    "usmle/step1",
+    "usmle/step1/endocrine"
+  ],
+  "questionType": "interpretation",
+  "difficulty": "medium",
+  "stem": "An isolated liver preparation exposed to growth hormone shows increased breakdown of stored glycogen. Uptake of glucose from the perfusion fluid and other sources of glucose are held constant. Which of the following findings would be most consistent with the measured glycogen change?",
+  "options": [
+    {
+      "label": "A",
+      "text": "Less glucose leaves the liver as glycogen breakdown increases",
+      "isCorrect": false,
+      "explanation": "Breaking down hepatic glycogen provides glucose for release. A lower output would require an additional change not supplied in this controlled experiment.",
+      "misconception": "Reverses the glucose-output consequence of hepatic glycogen breakdown."
+    },
+    {
+      "label": "B",
+      "text": "Glucose output is unrelated to breakdown of hepatic glycogen",
+      "isCorrect": false,
+      "explanation": "Hepatic glycogen breakdown supplies glucose for release. The controlled preparation therefore links the loss of stored glycogen with glucose output rather than treating them as unrelated measurements.",
+      "misconception": "Disconnects released glucose from its hepatic glycogen source."
+    },
+    {
+      "label": "C",
+      "text": "Hepatic glycogen increases while glucose release falls",
+      "isCorrect": false,
+      "explanation": "This reverses both the observed storage change and the expected direction of output from glycogen breakdown.",
+      "misconception": "Reverses both glycogen depletion and the predicted glucose output."
+    },
+    {
+      "label": "D",
+      "text": "More glucose leaves the liver as glycogen is broken down",
+      "isCorrect": true,
+      "explanation": "Hepatic glycogen breakdown supplies glucose for release. With competing inputs held constant, increased glucose output is consistent with the observed change.",
+      "misconception": "No misconception: hepatic glycogen breakdown supplies releasable glucose."
+    },
+    {
+      "label": "E",
+      "text": "The liver exports intact glycogen instead of releasing glucose",
+      "isCorrect": false,
+      "explanation": "The relevant product released into blood is glucose. Export of intact glycogen does not explain the response.",
+      "misconception": "Mistakes stored glycogen for the glucose product released into blood."
+    }
+  ],
+  "context": "Learning objective: Connect hepatic glycogen breakdown with glucose output. Infer the direction of substrate flow from the controlled observation rather than treating all actions of growth hormone as identical.\n\nHepatic glycogen breakdown supplies glucose for release. With competing inputs held constant, increased glucose output is consistent with the observed change.",
+  "cite": "openstax-anatomy-physiology#endo-growth-hormone-igf",
+  "publicUsmle": {
+    "schemaVersion": 1,
+    "origin": "generated",
+    "itemText": {
+      "licence": "CC-BY-4.0",
+      "attribution": "MD3 contributors"
+    },
+    "evidence": {
+      "kind": "passage",
+      "sourceId": "openstax-anatomy-physiology",
+      "passageId": "endo-growth-hormone-igf",
+      "licence": {
+        "cls": "foss",
+        "id": "cc-by-4.0"
+      }
+    }
+  }
+}

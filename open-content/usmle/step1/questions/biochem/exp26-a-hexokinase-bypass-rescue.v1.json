@@ -1,0 +1,71 @@
+{
+  "id": "bank:usmle-step1:exp26-a-hexokinase-bypass-rescue:v1",
+  "rotation": "usmle-step1-open",
+  "topics": [
+    "biochem",
+    "metabolic-blockade"
+  ],
+  "moduleNodes": [
+    "usmle/step1",
+    "usmle/step1/biochem"
+  ],
+  "questionType": "interpretation",
+  "difficulty": "medium",
+  "stem": "In a hypothetical cell system, glucose is converted to glucose-6-phosphate by hexokinase using ATP. A variant markedly reduces that enzyme's activity. Later reactions function normally, and investigators can introduce metabolites directly into the relevant compartment. Which of the following interventions most directly bypasses the defective conversion while supplying its downstream pathway?",
+  "options": [
+    {
+      "label": "A",
+      "text": "Supply glucose-6-phosphate directly to the cell system",
+      "isCorrect": true,
+      "explanation": "Glucose-6-phosphate is the product of the impaired reaction. Direct delivery supplies the next pathway step without requiring the defective hexokinase conversion to function first.",
+      "misconception": "No misconception: Directly supplying the reaction product bypasses the impaired conversion in this model."
+    },
+    {
+      "label": "B",
+      "text": "Supply additional glucose directly to the cell system",
+      "isCorrect": false,
+      "explanation": "Glucose is the substrate upstream of the impaired conversion. Increasing its availability does not bypass the requirement for hexokinase to form the downstream metabolite.",
+      "misconception": "Confuses adding more upstream substrate with bypassing the enzyme required to convert it."
+    },
+    {
+      "label": "C",
+      "text": "Supply a competing active-site ligand to hexokinase",
+      "isCorrect": false,
+      "explanation": "An active-site competitor opposes substrate access rather than supplying the missing product. It therefore does not provide a bypass around the impaired enzymatic conversion.",
+      "misconception": "Treats an active-site competitor as a source of the missing downstream product."
+    },
+    {
+      "label": "D",
+      "text": "Remove glucose-6-phosphate from the cell system",
+      "isCorrect": false,
+      "explanation": "Removing the product further reduces material available for the downstream reactions. It acts in the opposite direction from the requested restoration of pathway input.",
+      "misconception": "Removes the downstream input while attempting to restore supply to later pathway reactions."
+    },
+    {
+      "label": "E",
+      "text": "Remove the ATP available to the cell system",
+      "isCorrect": false,
+      "explanation": "The specified hexokinase reaction consumes ATP. Removing this reactant would add a limitation to conversion rather than bypass the existing defect with its product.",
+      "misconception": "Treats withdrawal of a required reactant as a bypass around the defective conversion."
+    }
+  ],
+  "context": "Learning objective: select a bypass at the product side of an enzymatic block. Supplying the immediate product avoids the impaired conversion; supplying substrate or an inhibitor does not achieve that bypass.",
+  "cite": "openstax-biology-2e#hexokinase-phosphorylates-glucose",
+  "publicUsmle": {
+    "schemaVersion": 1,
+    "origin": "generated",
+    "itemText": {
+      "licence": "CC-BY-4.0",
+      "attribution": "MD3 contributors"
+    },
+    "evidence": {
+      "kind": "passage",
+      "sourceId": "openstax-biology-2e",
+      "passageId": "hexokinase-phosphorylates-glucose",
+      "licence": {
+        "cls": "foss",
+        "id": "cc-by-4.0"
+      }
+    }
+  }
+}

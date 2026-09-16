@@ -1,0 +1,86 @@
+{
+  "id": "bank:usmle-step1:gi-pancreatic-enzymes:v1",
+  "rotation": "usmle-step1-open",
+  "topics": [
+    "pancreatic enzymes",
+    "trypsin",
+    "protein digestion"
+  ],
+  "moduleNodes": [
+    "usmle/step1",
+    "usmle/step1/gastrointestinal"
+  ],
+  "questionType": "mechanism",
+  "difficulty": "easy",
+  "stem": "A 19-year-old man with cystic fibrosis has pancreatic exocrine insufficiency and loses weight despite eating well.\n\nEnzyme replacement improves his protein digestion mainly by supplying which of the following?",
+  "options": [
+    {
+      "label": "A",
+      "text": "Pepsin, gastrin, and mucus",
+      "isCorrect": false,
+      "misconception": "Gastric products are being cast as pancreatic enzymes.",
+      "explanation": "Pepsin begins gastric protein digestion and gastrin is a hormone; neither is supplied by pancreatic extracts, and gastric protein digestion is intact in this patient."
+    },
+    {
+      "label": "B",
+      "text": "Amylase, lactase, and sucrase",
+      "isCorrect": false,
+      "misconception": "Carbohydrate-digesting enzymes are being used to fix protein digestion.",
+      "explanation": "Amylase digests starch and lactase and sucrase are brush-border disaccharidases; none of them acts on proteins."
+    },
+    {
+      "label": "C",
+      "text": "Trypsin, chymotrypsin, and elastase",
+      "isCorrect": true,
+      "misconception": "None; the pancreatic proteases digest protein in the small intestine.",
+      "explanation": "The pancreas releases most of the digestive enzymes, including the proteases trypsin, chymotrypsin, and elastase, which cleave specific bonds in amino-acid sequences."
+    },
+    {
+      "label": "D",
+      "text": "Bile salts, lecithin, and cholesterol",
+      "isCorrect": false,
+      "misconception": "Fat-emulsifying agents are being cast as proteases.",
+      "explanation": "Bile components emulsify lipids into micelles for absorption; they have no enzymatic activity and do not digest protein."
+    },
+    {
+      "label": "E",
+      "text": "Lipase, colipase, and phospholipase",
+      "isCorrect": false,
+      "misconception": "Lipid-digesting enzymes are being used to fix protein digestion.",
+      "explanation": "Pancreatic lipases digest triglycerides and phospholipids; replacing them helps fat absorption but leaves defective protein digestion uncorrected."
+    }
+  ],
+  "context": "Learning objective: the pancreas supplies most digestive enzymes. Proteases (trypsin, chymotrypsin, elastase) cleave proteins at specific peptide bonds; amylase digests starch; lipases digest fats. Exocrine insufficiency causes malabsorption treatable with enzyme replacement.",
+  "cite": "openstax-anatomy-physiology#gi-pancreatic-enzymes",
+  "publicUsmle": {
+    "schemaVersion": 1,
+    "origin": "generated",
+    "itemText": {
+      "licence": "CC-BY-4.0",
+      "attribution": "MD3 contributors"
+    },
+    "evidence": {
+      "kind": "passage",
+      "sourceId": "openstax-anatomy-physiology",
+      "passageId": "gi-pancreatic-enzymes",
+      "licence": {
+        "cls": "foss",
+        "id": "cc-by-4.0"
+      }
+    },
+    "media": {
+      "kind": "asset",
+      "assetId": "gi-absorption-v1",
+      "job": "pathway",
+      "showWhen": "after-reveal",
+      "licence": {
+        "cls": "foss",
+        "id": "cc-by-4.0"
+      },
+      "attribution": "MD3 contributors",
+      "contentHash": "sha256:7fa3cf7c6deede7943579ae81371661588ab4f96bae794c6f6acea588dd08d5e"
+    }
+  },
+  "imageUrl": "/figures/usmle/step1/gi-absorption-v1.svg",
+  "imageCaption": "Villi, SGLT1, mucosal barrier, pancreatic enzymes, micelles/chylomicrons, colonic water."
+}

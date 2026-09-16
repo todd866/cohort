@@ -1,0 +1,72 @@
+{
+  "id": "bank:usmle-step1:exp26-b-inotrope-esv-response:v1",
+  "rotation": "usmle-step1-open",
+  "topics": [
+    "cardiovascular",
+    "inotrope-esv-response",
+    "pharmacology"
+  ],
+  "moduleNodes": [
+    "usmle/step1",
+    "usmle/step1/cardiovascular"
+  ],
+  "questionType": "interpretation",
+  "difficulty": "medium",
+  "stem": "An isolated ventricular preparation is studied before and after a positive inotropic drug is added. Investigators hold preload and afterload constant and confirm a stronger contraction. Which of the following paired changes is expected after drug exposure?",
+  "options": [
+    {
+      "text": "Higher end-systolic volume; greater stroke volume",
+      "explanation": "At unchanged preload, retaining more blood after contraction reduces the volume expelled. This combination would require an additional change beyond the controlled experiment.",
+      "isCorrect": false,
+      "label": "A",
+      "misconception": "Assumes that more residual blood can accompany greater ejection at the same starting load."
+    },
+    {
+      "text": "Stable end-systolic volume; stable stroke volume",
+      "explanation": "Unchanged volumes would indicate no effective change in ventricular emptying. The confirmed increase in contraction strength at fixed loading conditions predicts greater emptying.",
+      "isCorrect": false,
+      "label": "B",
+      "misconception": "Assumes that a confirmed increase in contraction strength leaves emptying unchanged at fixed loads."
+    },
+    {
+      "text": "Lower end-systolic volume; greater stroke volume",
+      "explanation": "Stronger contraction at the same loading conditions leaves less blood in the ventricle. The resulting reduction in residual volume increases the amount expelled during each beat.",
+      "isCorrect": true,
+      "label": "C",
+      "misconception": "No misconception: stronger contraction at fixed loads reduces residual volume and increases stroke volume."
+    },
+    {
+      "text": "Higher end-systolic volume; lower stroke volume",
+      "explanation": "This pattern follows reduced contraction strength at unchanged loading conditions. It conflicts with the observed positive inotropic action and stronger contraction after exposure.",
+      "isCorrect": false,
+      "label": "D",
+      "misconception": "Applies the emptying pattern of weaker contraction to a positive inotropic intervention."
+    },
+    {
+      "text": "Lower end-systolic volume; lower stroke volume",
+      "explanation": "Less residual blood at the same starting load means more blood has been expelled. Pairing lower residual volume with lower stroke volume reverses that relationship.",
+      "isCorrect": false,
+      "label": "E",
+      "misconception": "Assumes that leaving less blood behind means ejecting less blood from the same starting load."
+    }
+  ],
+  "context": "Learning objective: Predict ventricular emptying when contractility changes while preload and afterload remain fixed. Stronger contraction at the same loading conditions leaves less blood in the ventricle. The resulting reduction in residual volume increases the amount expelled during each beat.",
+  "cite": "openstax-ap1-cardiac-physiology#contractility",
+  "publicUsmle": {
+    "schemaVersion": 1,
+    "origin": "generated",
+    "itemText": {
+      "licence": "CC-BY-4.0",
+      "attribution": "MD3 contributors"
+    },
+    "evidence": {
+      "kind": "passage",
+      "sourceId": "openstax-ap1-cardiac-physiology",
+      "passageId": "contractility",
+      "licence": {
+        "cls": "foss",
+        "id": "cc-by-4.0"
+      }
+    }
+  }
+}

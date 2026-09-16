@@ -1,0 +1,27 @@
+{
+  "schemaVersion": 1,
+  "figureId": "tear-production-drainage-balance",
+  "sourceFacts": [
+    "Nasolacrimal obstruction prevents normal tear drainage, causing tears to build up and overflow.",
+    "Watery eyes and discharge from obstruction do not require increased tear production; infection remains a clinical differential."
+  ],
+  "clinicalSources": [
+    {
+      "title": "AAPOS: Nasolacrimal Duct Obstruction",
+      "url": "https://www.aapos.org/glossary/nasolacrimal-duct-obstruction"
+    }
+  ],
+  "specificationFiles": [
+    "scaffolds/tear-production-drainage-balance.json"
+  ],
+  "prompt": "Create an entirely original medical teaching concept illustration, landscape 3:2, warm hand-painted watercolour and gouache on ivory paper, fine ink contours, restrained navy labels, muted teal, ochre and peach accents, generous whitespace. Gentle storybook warmth with the precision and legibility of an educational atlas. Use written instructions only; no image reference. Meaningful visual relationships and sparse short labels, not paragraphs in boxes. NO internal anatomy, organ/eye/ear/brain/tissue cutaways, anatomical pathways, bones, diagnostic images, fake scans, realistic lesions, photorealistic skin, glossy wet flesh or 3D tissue. Neutral symbols or fully clothed surface poses only where specified. Preserve every direction, relationship and count in the explicit structure. Title and labels exactly as requested, no additional prose. Footer 'Educational schematic'. No logo or watermark.\n\nTitle 'Tear production and drainage'. Side-by-side balance metaphor with two identical simple open ceramic bowls, no eyes or anatomical channels. In BOTH panels exactly three teal drops descend from above under a shared bracket 'Same tear input'. LEFT heading 'Usual drainage': bowl water low; open short abstract outlet on bowl's lower right lets blue drops leave into a small puddle, arrow points OUTWARD. RIGHT heading 'Poor drainage': same bowl outlet visibly capped with an ochre stop symbol; water rises to rim and drops spill OVER the outer rim, labelled 'Overflow'. No outward flow through the capped outlet. Bottom 'Abstract balance model'. Keep same incoming drop count and clear difference at outlets; this visual explains poor drainage, not a clinical test or increased tear production.",
+  "generation": {
+    "tool": "built-in image_gen",
+    "model": null,
+    "referenceAssetIds": [],
+    "externalReferenceImages": [],
+    "specificationFiles": [
+      "scaffolds/tear-production-drainage-balance.json"
+    ]
+  }
+}

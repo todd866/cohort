@@ -1,0 +1,85 @@
+{
+  "id": "bank:usmle-step1:endo-hypothalamic-pituitary-axis:v1",
+  "rotation": "usmle-step1-open",
+  "topics": [
+    "hypothalamic-pituitary axis",
+    "hypophyseal portal system"
+  ],
+  "moduleNodes": [
+    "usmle/step1",
+    "usmle/step1/endocrine"
+  ],
+  "questionType": "mechanism",
+  "difficulty": "easy",
+  "stem": "A 41-year-old man sustains a traumatic brain injury that damages the pituitary stalk. Months later, his anterior pituitary no longer responds to hypothalamic releasing hormones, while the axon terminals in his posterior lobe are also disrupted.\n\nBefore the injury, hypothalamic releasing and inhibiting hormones reached the anterior pituitary by traveling through which of the following?",
+  "options": [
+    {
+      "label": "A",
+      "text": "The hypophyseal portal system of the infundibulum",
+      "isCorrect": true,
+      "misconception": "None; hypothalamic hormones reach the anterior lobe through portal vasculature in the infundibulum.",
+      "explanation": "The anterior lobe is connected to the hypothalamus by vasculature in the infundibulum; releasing and inhibiting hormones travel this hypophyseal portal system to regulate the six anterior pituitary hormones."
+    },
+    {
+      "label": "B",
+      "text": "Axons projecting directly into the anterior lobe",
+      "isCorrect": false,
+      "misconception": "The posterior lobe's neural connection is being assigned to the anterior lobe.",
+      "explanation": "Axon terminals occupy the posterior lobe, which stores and releases hypothalamic hormones; the anterior lobe is governed hormonally through portal blood vessels, not neural axons."
+    },
+    {
+      "label": "C",
+      "text": "The systemic arterial circulation from the carotid arteries",
+      "isCorrect": false,
+      "misconception": "A general blood supply is being confused with the dedicated signaling route.",
+      "explanation": "Systemic delivery would dilute releasing hormones throughout the body; the infundibulum's portal vessels carry them straight from hypothalamus to anterior pituitary at high local concentration."
+    },
+    {
+      "label": "D",
+      "text": "Cerebrospinal fluid flowing down the third ventricle",
+      "isCorrect": false,
+      "misconception": "A nearby fluid compartment is being substituted for the vascular link.",
+      "explanation": "The hypothalamus-pituitary link is vascular, not ventricular: hypophyseal portal vessels in the infundibulum carry releasing hormones to the anterior lobe."
+    },
+    {
+      "label": "E",
+      "text": "Diffusion across the sella turcica's bony margins",
+      "isCorrect": false,
+      "misconception": "An anatomical barrier is being treated as a signaling channel.",
+      "explanation": "Bone does not transmit hormones; the infundibulum contains the vasculature and axons that connect hypothalamus to the two pituitary lobes."
+    }
+  ],
+  "context": "Learning objective: distinguish the two hypothalamic-pituitary links. The posterior lobe stores/releases hypothalamic hormones via axon terminals; the anterior lobe produces six hormones (GH, TSH, ACTH, FSH, LH, PRL) under control of hypothalamic releasing/inhibiting hormones delivered by the hypophyseal portal system.",
+  "cite": "openstax-anatomy-physiology#endo-hypothalamic-pituitary-axis",
+  "publicUsmle": {
+    "schemaVersion": 1,
+    "origin": "generated",
+    "itemText": {
+      "licence": "CC-BY-4.0",
+      "attribution": "MD3 contributors"
+    },
+    "evidence": {
+      "kind": "passage",
+      "sourceId": "openstax-anatomy-physiology",
+      "passageId": "endo-hypothalamic-pituitary-axis",
+      "licence": {
+        "cls": "foss",
+        "id": "cc-by-4.0"
+      }
+    },
+    "media": {
+      "kind": "asset",
+      "assetId": "hpa-axis-v1",
+      "job": "pathway",
+      "showWhen": "after-reveal",
+      "licence": {
+        "cls": "foss",
+        "id": "cc-by-4.0"
+      },
+      "attribution": "MD3 contributors",
+      "contentHash": "sha256:07ce876fc9b8e4bd8c634b01e83f6a7fffa501eaa640ec190e29ddcbd24ca1e5"
+    }
+  },
+  "imageUrl": "/figures/usmle/step1/hpa-axis-v1.svg",
+  "imageCaption": "HPA: hypothalamus to anterior (portal tropic hormones) and posterior (ADH/OT axons); peripheral feedback."
+}

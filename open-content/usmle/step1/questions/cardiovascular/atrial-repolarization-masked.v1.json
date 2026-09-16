@@ -1,0 +1,85 @@
+{
+  "id": "bank:usmle-step1:cardiovascular-atrial-repolarization-masked:v1",
+  "rotation": "usmle-step1-open",
+  "topics": [
+    "electrocardiogram",
+    "cardiac electrophysiology"
+  ],
+  "moduleNodes": [
+    "usmle/step1",
+    "usmle/step1/cardiovascular"
+  ],
+  "questionType": "mechanism",
+  "difficulty": "hard",
+  "stem": "A 24-year-old medical student reviewing a normal ECG tracing identifies distinct deflections corresponding to atrial depolarization, ventricular depolarization, and ventricular repolarization, but cannot find any deflection corresponding to atrial repolarization.\n\nWhich of the following best explains why this deflection is not seen?",
+  "options": [
+    {
+      "label": "A",
+      "text": "Atrial repolarization generates no measurable electrical current",
+      "isCorrect": false,
+      "misconception": "Absence of a deflection is being taken to mean absence of the electrical event.",
+      "explanation": "Repolarization is an electrical event and does generate current; the deflection exists but is buried in the contemporaneous QRS signal."
+    },
+    {
+      "label": "B",
+      "text": "It occurs after the T wave and is therefore not recorded",
+      "isCorrect": false,
+      "misconception": "The timing of atrial repolarization is being placed outside the recorded cycle.",
+      "explanation": "Atrial repolarization occurs during the QRS interval, well before the T wave (which reflects ventricular repolarization), and within the recorded tracing."
+    },
+    {
+      "label": "C",
+      "text": "It is masked by the larger QRS complex at that moment",
+      "isCorrect": true,
+      "misconception": "None; atrial repolarization coincides with ventricular depolarization and is hidden by it.",
+      "explanation": "Atrial repolarization occurs at about the same time as ventricular depolarization, and its small signal is masked by the much larger QRS complex."
+    },
+    {
+      "label": "D",
+      "text": "It is conducted too slowly through the atria to summate",
+      "isCorrect": false,
+      "misconception": "Conduction velocity is being blamed for a signal-amplitude problem.",
+      "explanation": "The issue is not slow conduction but timing: the small atrial repolarization signal coincides with the dominant ventricular depolarization signal."
+    },
+    {
+      "label": "E",
+      "text": "The atria repolarize through a non-electrical mechanism",
+      "isCorrect": false,
+      "misconception": "Repolarization is being described as a mechanical rather than electrical process.",
+      "explanation": "Repolarization of any myocardium is an electrical recovery process; it is hidden on the ECG rather than non-electrical."
+    }
+  ],
+  "context": "Learning objective: relate ECG deflections to electrical events. The P wave, QRS complex, and T wave correspond to atrial depolarization, ventricular depolarization, and ventricular repolarization; atrial repolarization is masked by the QRS.",
+  "cite": "openstax-anatomy-physiology#heart-atrial-repol-masked",
+  "publicUsmle": {
+    "schemaVersion": 1,
+    "origin": "generated",
+    "itemText": {
+      "licence": "CC-BY-4.0",
+      "attribution": "MD3 contributors"
+    },
+    "evidence": {
+      "kind": "passage",
+      "sourceId": "openstax-anatomy-physiology",
+      "passageId": "heart-atrial-repol-masked",
+      "licence": {
+        "cls": "foss",
+        "id": "cc-by-4.0"
+      }
+    },
+    "media": {
+      "kind": "asset",
+      "assetId": "pacemaker-ap-v1",
+      "job": "trace",
+      "showWhen": "after-reveal",
+      "licence": {
+        "cls": "foss",
+        "id": "cc-by-4.0"
+      },
+      "attribution": "MD3 contributors",
+      "contentHash": "sha256:9a79b39976a30b55920fe71f970e3c0a3a075e541ca749c033d042efda07d4cd"
+    }
+  },
+  "imageUrl": "/figures/usmle/step1/pacemaker-ap-v1.svg",
+  "imageCaption": "SA-node pacemaker AP: phase 4 funny current, Ca upstroke, K repolarization; rate = phase-4 slope."
+}

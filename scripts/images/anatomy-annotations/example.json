@@ -1,0 +1,94 @@
+{
+  "schemaVersion": 1,
+  "id": "abstract-annotation-draft",
+  "baseImage": {
+    "file": "output/anatomy-annotations/replace-with-reviewed-abstract-image.png",
+    "sha256": "0000000000000000000000000000000000000000000000000000000000000000",
+    "width": 800,
+    "height": 600,
+    "review": {
+      "status": "draft",
+      "notes": "No image is supplied. Replace the path, placeholder hash and dimensions; inspect the actual base image before recording agent review. This is an abstract geometry example, not anatomy."
+    }
+  },
+  "regions": [
+    {
+      "id": "abstract-left-region",
+      "name": "Example left rectangle",
+      "polygon": [[120, 160], [300, 160], [300, 380], [120, 380]],
+      "sources": [
+        {
+          "url": "https://example.org/replace-with-source",
+          "fact": "Placeholder only: replace this with a real source and a checked claim about the region. This example makes no anatomical claim."
+        }
+      ],
+      "review": {
+        "status": "draft",
+        "notes": "Coordinates illustrate a simple rectangle only. They have not been matched to any image; replace or review against the selected base image."
+      }
+    },
+    {
+      "id": "abstract-right-region",
+      "name": "Example right rectangle",
+      "polygon": [[480, 180], [650, 180], [650, 390], [480, 390]],
+      "sources": [
+        {
+          "url": "https://example.org/replace-with-source",
+          "fact": "Placeholder only: the right rectangle is a geometry demonstration, not an organ or a reviewed anatomical region."
+        }
+      ],
+      "review": {
+        "status": "draft",
+        "notes": "No anatomical mask has been reviewed. Replace the placeholder source and compare this region with the selected image before changing status."
+      }
+    }
+  ],
+  "labels": [
+    {
+      "id": "left-example-label",
+      "text": "Abstract region A",
+      "anchor": [210, 270],
+      "elbow": [210, 120],
+      "textPosition": [110, 100],
+      "targetRegion": "abstract-left-region",
+      "align": "start",
+      "fontSize": 22
+    },
+    {
+      "id": "right-example-label",
+      "text": "Abstract region B",
+      "anchor": [565, 285],
+      "elbow": [680, 285],
+      "textPosition": [690, 315],
+      "targetRegion": "abstract-right-region",
+      "align": "end",
+      "fontSize": 22
+    }
+  ],
+  "textBlocks": [
+    {
+      "text": "Abstract left panel",
+      "position": [210, 425],
+      "align": "middle",
+      "fontSize": 18
+    },
+    {
+      "text": "Abstract right panel",
+      "position": [565, 435],
+      "align": "middle",
+      "fontSize": 18
+    }
+  ],
+  "title": {
+    "text": "Draft geometry example — not anatomy",
+    "position": [400, 48],
+    "align": "middle",
+    "fontSize": 26
+  },
+  "footer": {
+    "text": "No reviewed image or medical claims supplied",
+    "position": [400, 565],
+    "align": "middle",
+    "fontSize": 18
+  }
+}

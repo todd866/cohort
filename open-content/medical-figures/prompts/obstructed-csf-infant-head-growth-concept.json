@@ -1,0 +1,27 @@
+{
+  "schemaVersion": 1,
+  "figureId": "obstructed-csf-infant-head-growth-concept",
+  "sourceFacts": [
+    "Obstruction of cerebrospinal fluid flow can cause hydrocephalus.",
+    "In infants, hydrocephalus can present with a rapid increase in head size because the skull can expand."
+  ],
+  "clinicalSources": [
+    {
+      "title": "NINDS: Hydrocephalus",
+      "url": "https://www.ninds.nih.gov/health-information/disorders/hydrocephalus"
+    }
+  ],
+  "specificationFiles": [
+    "scaffolds/obstructed-csf-infant-head-growth-concept.json"
+  ],
+  "prompt": "Create an entirely original medical teaching concept illustration, landscape 3:2, warm hand-painted watercolour and gouache on ivory paper, fine ink contours, restrained navy labels, muted teal, ochre and peach accents, generous whitespace. Gentle storybook warmth with the precision and legibility of an educational atlas. Use written instructions only; no image reference. Meaningful visual relationships and sparse short labels, not paragraphs in boxes. NO internal anatomy, organ/eye/ear/brain/tissue cutaways, anatomical pathways, bones, diagnostic images, fake scans, realistic lesions, photorealistic skin, glossy wet flesh or 3D tissue. Neutral symbols or fully clothed surface poses only where specified. Preserve every direction, relationship and count in the explicit structure. Title and labels exactly as requested, no additional prose. Footer 'Educational schematic'. No logo or watermark.\n\nTitle 'Obstructed flow can drive head growth'. Three large metaphor stages left-to-right. LEFT: abstract blue fluid ribbon blocked by an ochre gate, label 'CSF flow obstructed'. CENTRE: several blue drops collecting in a simple open bowl, label 'Fluid accumulates'. RIGHT: two nested OPEN measuring-tape loops lying flat on paper, small loop pale and larger loop teal, with a small outward arrow between loops; label 'Infant head circumference rises'. No actual baby head, skull, brain, ventricle, suture, spine or fluid tube within anatomy. No graph, centimetres, percentile, rate or universal outcome. Cause arrows left-to-right. Bottom 'Concept model \u2022 not anatomy'. Tapes are a symbolic measurement cue, not a measurement result.",
+  "generation": {
+    "tool": "built-in image_gen",
+    "model": null,
+    "referenceAssetIds": [],
+    "externalReferenceImages": [],
+    "specificationFiles": [
+      "scaffolds/obstructed-csf-infant-head-growth-concept.json"
+    ]
+  }
+}

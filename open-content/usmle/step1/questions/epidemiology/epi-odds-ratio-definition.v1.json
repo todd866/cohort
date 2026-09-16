@@ -1,0 +1,84 @@
+{
+  "id": "bank:usmle-step1:epi-odds-ratio-definition:v1",
+  "rotation": "usmle-step1-open",
+  "topics": [
+    "odds ratio"
+  ],
+  "moduleNodes": [
+    "usmle/step1",
+    "usmle/step1/epidemiology"
+  ],
+  "questionType": "mechanism",
+  "difficulty": "easy",
+  "stem": "An odds ratio is described by CDC as which kind of epidemiologic quantity?",
+  "options": [
+    {
+      "label": "A",
+      "text": "A synonym used only for median lethal dose values",
+      "isCorrect": false,
+      "misconception": "Virulence distractor.",
+      "explanation": "Wrong concept; see the cited source passage for detail."
+    },
+    {
+      "label": "B",
+      "text": "A formula for net ATP yield from glycolysis alone",
+      "isCorrect": false,
+      "misconception": "Biochem distractor — does not match the cited teaching point.",
+      "explanation": "Wrong domain; see the cited source passage for detail."
+    },
+    {
+      "label": "C",
+      "text": "Association of a binary exposure with an outcome",
+      "isCorrect": true,
+      "misconception": "None; OR quantifies exposure-outcome association.",
+      "explanation": "CDC: OR quantifies relationship between exposure and health outcome."
+    },
+    {
+      "label": "D",
+      "text": "A synonym used only for polysaccharide capsules",
+      "isCorrect": false,
+      "misconception": "Micro distractor — does not match the cited teaching point.",
+      "explanation": "Wrong concept; see the cited source passage for detail."
+    },
+    {
+      "label": "E",
+      "text": "A synonym used only for measles Koplik spots",
+      "isCorrect": false,
+      "misconception": "Measles distractor — does not match the cited teaching point.",
+      "explanation": "Wrong concept; see the cited source passage for detail."
+    }
+  ],
+  "context": "Learning objective: odds ratio definition.",
+  "cite": "cdc-epi-measures-of-association#odds-ratio-definition",
+  "publicUsmle": {
+    "schemaVersion": 1,
+    "origin": "generated",
+    "itemText": {
+      "licence": "CC-BY-4.0",
+      "attribution": "MD3 contributors"
+    },
+    "evidence": {
+      "kind": "passage",
+      "sourceId": "cdc-epi-measures-of-association",
+      "passageId": "odds-ratio-definition",
+      "licence": {
+        "cls": "foss",
+        "id": "us-gov"
+      }
+    },
+    "media": {
+      "kind": "asset",
+      "assetId": "epi-association-measures-v1",
+      "job": "compare-table",
+      "showWhen": "after-reveal",
+      "licence": {
+        "cls": "foss",
+        "id": "cc-by-4.0"
+      },
+      "attribution": "MD3 contributors",
+      "contentHash": "sha256:860c2356041c5e8e5c8bffa114f03b034636d6322d1011f6919cce1b5d0f36e9"
+    }
+  },
+  "imageUrl": "/figures/usmle/step1/epi-association-measures-v1.svg",
+  "imageCaption": "CDC risk ratio, odds ratio, and attributable proportion."
+}

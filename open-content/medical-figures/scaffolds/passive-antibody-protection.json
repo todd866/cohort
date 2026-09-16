@@ -1,0 +1,102 @@
+{
+  "schemaVersion": 1,
+  "figureId": "passive-antibody-protection",
+  "kind": "conceptual",
+  "sourceFacts": [
+    {
+      "id": "fact-1",
+      "fact": "Passive immunity transfers preformed antibodies and acts promptly but is temporary.",
+      "sources": [
+        {
+          "title": "CDC Pink Book: Principles of vaccination",
+          "url": "https://www.cdc.gov/pinkbook/hcp/table-of-contents/chapter-1-principles-of-vaccination.html"
+        },
+        {
+          "title": "CDC: Clinical guidance for people at risk for severe varicella",
+          "url": "https://www.cdc.gov/chickenpox/hcp/clinical-guidance/index.html"
+        }
+      ]
+    },
+    {
+      "id": "fact-2",
+      "fact": "Varicella-zoster immune globulin can prevent or attenuate disease after qualifying exposure in susceptible high-risk patients who cannot receive varicella vaccine.",
+      "sources": [
+        {
+          "title": "CDC Pink Book: Principles of vaccination",
+          "url": "https://www.cdc.gov/pinkbook/hcp/table-of-contents/chapter-1-principles-of-vaccination.html"
+        },
+        {
+          "title": "CDC: Clinical guidance for people at risk for severe varicella",
+          "url": "https://www.cdc.gov/chickenpox/hcp/clinical-guidance/index.html"
+        }
+      ]
+    },
+    {
+      "id": "fact-3",
+      "fact": "The figure teaches mechanism and does not specify an individual prophylaxis plan.",
+      "sources": [
+        {
+          "title": "CDC Pink Book: Principles of vaccination",
+          "url": "https://www.cdc.gov/pinkbook/hcp/table-of-contents/chapter-1-principles-of-vaccination.html"
+        },
+        {
+          "title": "CDC: Clinical guidance for people at risk for severe varicella",
+          "url": "https://www.cdc.gov/chickenpox/hcp/clinical-guidance/index.html"
+        }
+      ]
+    }
+  ],
+  "nodes": [
+    {
+      "id": "supply",
+      "shape": "vial with antibody tokens",
+      "label": "Preformed antibodies"
+    },
+    {
+      "id": "protect",
+      "shape": "shield",
+      "label": "Prompt protection"
+    },
+    {
+      "id": "wane",
+      "shape": "faded shield",
+      "label": "Protection wanes"
+    }
+  ],
+  "edges": [
+    {
+      "from": "supply",
+      "to": "protect",
+      "meaning": "antibodies supplied directly"
+    },
+    {
+      "from": "protect",
+      "to": "wane",
+      "meaning": "passively transferred protection is temporary"
+    }
+  ],
+  "labels": [
+    "Protection supplied as antibodies",
+    "Preformed antibodies",
+    "Prompt protection",
+    "Protection wanes",
+    "Time",
+    "Passive immunisation",
+    "VZIG: one selected post-exposure use"
+  ],
+  "forbiddenAnatomy": [
+    "Organs, tissue layers, microscopic diagnostic morphology, clinical photos, anatomical cutaways"
+  ],
+  "validation": {
+    "status": "verified",
+    "method": "source-and-conceptual-structure-review",
+    "checks": [
+      "Antibodies supplied directly, no host immune-memory production claim.",
+      "Protection wanes over unnumbered time, not guaranteed lifelong or complete.",
+      "No brand, dosage, injected body site or organ anatomy.",
+      "VZIG is contextual example and not universal exposure advice."
+    ],
+    "pixelReviewStatus": "verified",
+    "pixelReviewNotes": "Preformed free antibody tokens lead directly from vial to shield; no binding orientation or host antibody-production process is invented. A translucent later shield and hourglass show waning. VZIG is explicitly one selected use, with no dosing, universal prophylaxis rule or injection anatomy."
+  }
+}

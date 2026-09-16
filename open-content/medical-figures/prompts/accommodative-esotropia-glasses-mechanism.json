@@ -1,0 +1,27 @@
+{
+  "schemaVersion": 1,
+  "figureId": "accommodative-esotropia-glasses-mechanism",
+  "sourceFacts": [
+    "Hyperopia can increase the effort needed to focus, and accommodation is linked to convergence.",
+    "Correcting hyperopia with glasses reduces focusing effort and can improve accommodative inward turning; some children retain residual misalignment."
+  ],
+  "clinicalSources": [
+    {
+      "title": "AAPOS: Accommodative Esotropia",
+      "url": "https://www.aapos.org/glossary/accommodative-esotropia"
+    }
+  ],
+  "specificationFiles": [
+    "scaffolds/accommodative-esotropia-glasses-mechanism.json"
+  ],
+  "prompt": "Create an entirely original medical teaching concept illustration, landscape 3:2, warm hand-painted watercolour and gouache on ivory paper, fine ink contours, restrained navy labels, muted teal, ochre and peach accents, generous whitespace. Gentle storybook warmth with the precision and legibility of an educational atlas. Use written instructions only; no image reference. Meaningful visual relationships and sparse short labels, not paragraphs in boxes. NO internal anatomy, organ/eye/ear/brain/tissue cutaways, anatomical pathways, bones, diagnostic images, fake scans, realistic lesions, photorealistic skin, glossy wet flesh or 3D tissue. Neutral symbols or fully clothed surface poses only where specified. Preserve every direction, relationship and count in the explicit structure. Title and labels exactly as requested, no additional prose. Footer 'Educational schematic'. No logo or watermark.\n\nTitle 'Why glasses can straighten the eyes'. Two aligned left-to-right rows of ABSTRACT symbols, no eye shapes or anatomy. UPPER row begins a softly blurred small toy-star symbol labelled 'Hyperopia'; arrow leads to a simple effort gauge with needle tilted high labelled 'More focusing effort'; arrow then leads to TWO straight navy arrows angled inward toward one another labelled 'More inward turn'. LOWER row begins eyeglasses alone labelled 'Glasses'; arrow leads to same effort gauge with needle low labelled 'Less focusing effort'; arrow then leads to two nearly parallel navy arrows labelled 'Less accommodative turning'. Keep both rows equally composed, labelled states do not imply universal perfect alignment or permanent cure. No dioptres, no actual vision chart, no surgical recommendation.",
+  "generation": {
+    "tool": "built-in image_gen",
+    "model": null,
+    "referenceAssetIds": [],
+    "externalReferenceImages": [],
+    "specificationFiles": [
+      "scaffolds/accommodative-esotropia-glasses-mechanism.json"
+    ]
+  }
+}

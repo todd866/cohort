@@ -1,0 +1,35 @@
+{
+  "figureId": "cgd-oxidative-burst-model",
+  "tool": "built-in image_gen",
+  "model": null,
+  "referenceAssetIds": [],
+  "externalReferenceImages": [],
+  "prompt": "Original educational conceptual illustration, landscape 3:2. Warm ivory paper, sophisticated hand-painted gouache/watercolour, confident fine brown outlines, navy lettering, restrained teal, coral and amber. Editorial science illustration with spacious composition and large legible labels. The explanatory structure must carry the meaning visually: molecules, objects, geometry or flow; never paragraphs in boxes. No organs, regional anatomy, teeth or joint cutaways, tissue layers, invented histology, diagnostic photographs, radiographs or patient data. All symbols are explicitly conceptual. Footer: 'Conceptual teaching model • Not to scale'. Title 'Oxidative killing'. Two parallel left-to-right mechanical assembly lines. Top row 'Usual pathway': a shallow wooden tray containing a few simple teal microbe tokens, label 'Capture'; arrow to functioning amber gear labelled 'NADPH oxidase'; arrow to gold spark symbols labelled 'Oxidative burst'; arrow to faded broken microbe tokens labelled 'Killing supported'. Bottom row 'CGD': same tray and same captured microbes; arrow to broken grey gear labelled 'Impaired NADPH oxidase'; a clearly broken dotted connection where sparks would occur, no sparks; arrow to intact teal microbe tokens labelled 'Killing impaired'. Do not draw phagocytes or cell interiors. Small qualifier 'Certain bacteria and fungi'. This is a factory analogy for one antimicrobial mechanism, not an anatomical diagram. Restrict text to the specified labels and footer.",
+  "clinicalSources": [
+    {
+      "title": "MedlinePlus Genetics: Chronic granulomatous disease",
+      "url": "https://medlineplus.gov/genetics/condition/chronic-granulomatous-disease/"
+    }
+  ],
+  "teaching": {
+    "question": "Why can captured microbes persist in chronic granulomatous disease?",
+    "answer": "Defective NADPH oxidase impairs the oxidative burst, weakening phagocyte killing of certain bacteria and fungi.",
+    "imageRole": "after-reveal"
+  },
+  "title": "The oxidative killing step",
+  "caption": "In chronic granulomatous disease, impaired NADPH oxidase activity weakens oxidative killing of certain bacteria and fungi after phagocytosis.",
+  "alt": "Two abstract assembly lines compare an active oxidative burst with a broken NADPH oxidase step and persistent microbes.",
+  "review": {
+    "status": "pending-independent-qa",
+    "method": "agent-visual-and-source-review",
+    "notes": "Both rows retain captured microbe tokens. The upper row connects an intact NADPH oxidase gear to oxidant sparks and fragmented microbes; the lower row breaks the connection after the damaged enzyme and retains intact microbes. Qualifier limits the mechanism to certain bacteria and fungi. No cell interior or organ anatomy is drawn. CGD is identified in the accompanying caption and teaching note; the lower image row uses the mechanistic enzyme label.",
+    "structure": {
+      "kind": "conceptual",
+      "status": "verified",
+      "specificationFiles": [
+        "scaffolds/cgd-oxidative-burst-model.json"
+      ],
+      "notes": "Both rows retain captured microbe tokens. The upper row connects an intact NADPH oxidase gear to oxidant sparks and fragmented microbes; the lower row breaks the connection after the damaged enzyme and retains intact microbes. Qualifier limits the mechanism to certain bacteria and fungi. No cell interior or organ anatomy is drawn. CGD is identified in the accompanying caption and teaching note; the lower image row uses the mechanistic enzyme label."
+    }
+  }
+}

@@ -1,0 +1,86 @@
+{
+  "id": "bank:usmle-step1:re-blastocyst-implantation:v1",
+  "rotation": "usmle-step1-open",
+  "topics": [
+    "blastocyst",
+    "implantation",
+    "trophoblast"
+  ],
+  "moduleNodes": [
+    "usmle/step1",
+    "usmle/step1/reproductive"
+  ],
+  "questionType": "mechanism",
+  "difficulty": "easy",
+  "stem": "A 28-year-old woman conceives, and one week after fertilization her conceptus adheres to the uterine wall and embeds into the endometrial lining.\n\nWhich of the following developmental stages has her conceptus reached at the time of this implantation?",
+  "options": [
+    {
+      "label": "A",
+      "text": "The zygote stage of development",
+      "isCorrect": false,
+      "misconception": "The fertilized single cell is being placed at implantation.",
+      "explanation": "The zygote is the single diploid cell formed at fertilization; a week of cleavage produces the blastocyst before implantation can occur."
+    },
+    {
+      "label": "B",
+      "text": "The morula stage of development",
+      "isCorrect": false,
+      "misconception": "An earlier solid-ball stage is being sequenced at implantation.",
+      "explanation": "The morula is the tightly packed sphere present on reaching the uterus; it then forms the blastocyst, and it is the blastocyst that implants."
+    },
+    {
+      "label": "C",
+      "text": "The gastrula stage of development",
+      "isCorrect": false,
+      "misconception": "A post-implantation stage is being placed before it.",
+      "explanation": "Gastrulation establishes the three germ layers after implantation; the structure that embeds in the endometrium is the blastocyst."
+    },
+    {
+      "label": "D",
+      "text": "The blastocyst stage of development",
+      "isCorrect": true,
+      "misconception": "None; the blastocyst is the implanting stage.",
+      "explanation": "At the end of the first week, the blastocyst comes in contact with the uterine wall and adheres to it, embedding itself in the uterine lining via the trophoblast cells."
+    },
+    {
+      "label": "E",
+      "text": "The bilaminar embryonic disc stage",
+      "isCorrect": false,
+      "misconception": "A derivative of the inner cell mass is being confused with the whole implanting conceptus.",
+      "explanation": "The embryonic disc forms within the implanted conceptus from the inner cell mass; the implanting unit is the blastocyst with its trophoblast shell."
+    }
+  ],
+  "context": "Learning objective: sequence pre-embryonic development. The zygote cleaves into blastomeres, becomes the solid morula on reaching the uterus, then cavitates into the blastocyst — an inner cell mass in a fluid-filled cavity surrounded by trophoblast. At the end of week one the blastocyst hatches from the zona pellucida and implants via its trophoblast.",
+  "cite": "openstax-anatomy-physiology#re-blastocyst-implantation",
+  "publicUsmle": {
+    "schemaVersion": 1,
+    "origin": "generated",
+    "itemText": {
+      "licence": "CC-BY-4.0",
+      "attribution": "MD3 contributors"
+    },
+    "evidence": {
+      "kind": "passage",
+      "sourceId": "openstax-anatomy-physiology",
+      "passageId": "re-blastocyst-implantation",
+      "licence": {
+        "cls": "foss",
+        "id": "cc-by-4.0"
+      }
+    },
+    "media": {
+      "kind": "asset",
+      "assetId": "fertilization-implantation-v1",
+      "job": "pathway",
+      "showWhen": "after-reveal",
+      "licence": {
+        "cls": "foss",
+        "id": "cc-by-4.0"
+      },
+      "attribution": "MD3 contributors",
+      "contentHash": "sha256:b5ebb74360e8db4d6a3783533894c0d3d0916c7900359f2029362fcab1e33982"
+    }
+  },
+  "imageUrl": "/figures/usmle/step1/fertilization-implantation-v1.svg",
+  "imageCaption": "Fertilization in tube ampulla; cortical reaction; implantation; umbilical vessel polarity."
+}

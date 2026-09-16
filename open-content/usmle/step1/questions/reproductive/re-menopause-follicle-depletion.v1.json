@@ -1,0 +1,86 @@
+{
+  "id": "bank:usmle-step1:re-menopause-follicle-depletion:v1",
+  "rotation": "usmle-step1-open",
+  "topics": [
+    "menopause",
+    "oocyte pool",
+    "ovarian reserve"
+  ],
+  "moduleNodes": [
+    "usmle/step1",
+    "usmle/step1/reproductive"
+  ],
+  "questionType": "mechanism",
+  "difficulty": "easy",
+  "stem": "A 51-year-old woman has not had a menstrual period for 12 months and is experiencing hot flashes. Her transition to menopause is best explained by which of the following changes in her ovaries?",
+  "options": [
+    {
+      "label": "A",
+      "text": "Exhaustion of her remaining pool of primary oocytes",
+      "isCorrect": true,
+      "misconception": "None; menopause is the end of the oocyte supply.",
+      "explanation": "The number of primary oocytes in the ovaries declines from one to two million in an infant, to approximately 400,000 at puberty, to zero by the end of menopause; with no follicles left, cycles cease."
+    },
+    {
+      "label": "B",
+      "text": "Failure of the pituitary to secrete FSH and LH",
+      "isCorrect": false,
+      "misconception": "The axis is being inverted — the ovary fails, not the pituitary.",
+      "explanation": "In menopause the depleted ovary stops responding, and FSH and LH actually rise from lost negative feedback; the initiating event is oocyte-pool exhaustion."
+    },
+    {
+      "label": "C",
+      "text": "Atresia of the uterine endometrial lining",
+      "isCorrect": false,
+      "misconception": "A downstream target is being mistaken for the cause.",
+      "explanation": "Endometrial thinning follows the loss of ovarian estrogen; the primary change is depletion of the ovarian follicle pool."
+    },
+    {
+      "label": "D",
+      "text": "Autoimmune destruction of ovarian theca cells",
+      "isCorrect": false,
+      "misconception": "A rare pathological cause is being substituted for the physiological one.",
+      "explanation": "Ordinary menopause is the programmed exhaustion of the finite oocyte pool formed in fetal life, not an immune attack on the ovary."
+    },
+    {
+      "label": "E",
+      "text": "Conversion of remaining oocytes into corpus albicans",
+      "isCorrect": false,
+      "misconception": "A follicle remnant is being confused with the gametes themselves.",
+      "explanation": "The corpus albicans is the scar left by a degenerated corpus luteum; menopause occurs because the supply of primary oocytes themselves falls to zero."
+    }
+  ],
+  "context": "Learning objective: explain menopausal timing. Oogonia form a finite pool of primary oocytes before birth, declining from one to two million in infancy to about 400,000 at puberty to zero by menopause; fertility peaks in the twenties and falls more rapidly after age 35 as the pool runs out.",
+  "cite": "openstax-anatomy-physiology#re-menopause-follicle-depletion",
+  "publicUsmle": {
+    "schemaVersion": 1,
+    "origin": "generated",
+    "itemText": {
+      "licence": "CC-BY-4.0",
+      "attribution": "MD3 contributors"
+    },
+    "evidence": {
+      "kind": "passage",
+      "sourceId": "openstax-anatomy-physiology",
+      "passageId": "re-menopause-follicle-depletion",
+      "licence": {
+        "cls": "foss",
+        "id": "cc-by-4.0"
+      }
+    },
+    "media": {
+      "kind": "asset",
+      "assetId": "menstrual-cycle-v1",
+      "job": "pathway",
+      "showWhen": "after-reveal",
+      "licence": {
+        "cls": "foss",
+        "id": "cc-by-4.0"
+      },
+      "attribution": "MD3 contributors",
+      "contentHash": "sha256:1f2f31e3cc6b7d1aae996adcda7ba376144dd75d88f4ce4b587f3d815b83a12e"
+    }
+  },
+  "imageUrl": "/figures/usmle/step1/menstrual-cycle-v1.svg",
+  "imageCaption": "Menstrual cycle: follicular E, LH surge, luteal P; secretory endometrium; corpus luteum; menopause; oxytocin."
+}

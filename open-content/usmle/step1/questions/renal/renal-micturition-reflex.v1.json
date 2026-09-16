@@ -1,0 +1,86 @@
+{
+  "id": "bank:usmle-step1:renal-micturition-reflex:v1",
+  "rotation": "usmle-step1-open",
+  "topics": [
+    "micturition reflex",
+    "detrusor",
+    "sphincters"
+  ],
+  "moduleNodes": [
+    "usmle/step1",
+    "usmle/step1/renal"
+  ],
+  "questionType": "mechanism",
+  "difficulty": "medium",
+  "stem": "A 4-year-old boy is being toilet trained. His micturition reflex, triggered when bladder stretch receptors signal the sacral spinal cord, produces voiding through which of the following effector responses?",
+  "options": [
+    {
+      "label": "A",
+      "text": "Sympathetic outflow contracts the detrusor and closes the external sphincter",
+      "isCorrect": false,
+      "misconception": "The filling-phase autonomic pattern is being applied to voiding.",
+      "explanation": "Sympathetic activity via the hypogastric nerves suppresses detrusor contraction during filling; voiding is a parasympathetic event with sphincter relaxation."
+    },
+    {
+      "label": "B",
+      "text": "Parasympathetic outflow contracts the detrusor, relaxing the internal sphincter",
+      "isCorrect": true,
+      "misconception": "None; the sacral reflex pairs detrusor contraction with internal-sphincter relaxation.",
+      "explanation": "Bladder stretch receptors trigger a sacral spinal reflex whose parasympathetic outflow contracts the detrusor muscle and relaxes the involuntary internal urethral sphincter, while somatic motor neurons to the external sphincter are inhibited."
+    },
+    {
+      "label": "C",
+      "text": "Cortical inhibition of the sacral micturition center",
+      "isCorrect": false,
+      "misconception": "The learned override is being confused with the reflex itself.",
+      "explanation": "Higher centers delay voiding by holding the external sphincter; the reflex being trained away is the parasympathetic detrusor contraction with sphincter relaxation."
+    },
+    {
+      "label": "D",
+      "text": "Stretch-activated contraction of the abdominal wall muscles",
+      "isCorrect": false,
+      "misconception": "A voluntary assist maneuver is being named as the reflex mechanism.",
+      "explanation": "Abdominal contraction can raise intra-abdominal pressure to aid emptying, but the reflex arc itself runs through sacral parasympathetic outflow to the detrusor and internal sphincter."
+    },
+    {
+      "label": "E",
+      "text": "Somatic motor outflow contracts the external urethral sphincter",
+      "isCorrect": false,
+      "misconception": "The continence response is being described as the voiding response.",
+      "explanation": "During voiding the spinal cord inhibits the somatic (pudendal) motor neurons, relaxing the skeletal external sphincter; voluntary contraction of that sphincter maintains continence instead."
+    }
+  ],
+  "context": "Learning objective: describe the micturition reflex. Sacral stretch reflex → parasympathetic detrusor contraction + internal sphincter relaxation + somatic (pudendal) inhibition of the external sphincter; voluntary control overrides via the external sphincter.",
+  "cite": "openstax-anatomy-physiology#renal-micturition-reflex",
+  "publicUsmle": {
+    "schemaVersion": 1,
+    "origin": "generated",
+    "itemText": {
+      "licence": "CC-BY-4.0",
+      "attribution": "MD3 contributors"
+    },
+    "evidence": {
+      "kind": "passage",
+      "sourceId": "openstax-anatomy-physiology",
+      "passageId": "renal-micturition-reflex",
+      "licence": {
+        "cls": "foss",
+        "id": "cc-by-4.0"
+      }
+    },
+    "media": {
+      "kind": "asset",
+      "assetId": "renal-countercurrent-v1",
+      "job": "pathway",
+      "showWhen": "after-reveal",
+      "licence": {
+        "cls": "foss",
+        "id": "cc-by-4.0"
+      },
+      "attribution": "MD3 contributors",
+      "contentHash": "sha256:9892ba542b07c7ed1808ccee22a74ddedbe3118c68fd4352cad327a23e19a13b"
+    }
+  },
+  "imageUrl": "/figures/usmle/step1/renal-countercurrent-v1.svg",
+  "imageCaption": "Countercurrent multiplier, inulin=GFR, fluid compartments, EPO, micturition."
+}

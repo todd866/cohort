@@ -1,0 +1,84 @@
+{
+  "id": "bank:usmle-step1:phys-hf-inadequate-pump:v1",
+  "rotation": "usmle-step1-open",
+  "topics": [
+    "heart failure"
+  ],
+  "moduleNodes": [
+    "usmle/step1",
+    "usmle/step1/physiology"
+  ],
+  "questionType": "interpretation",
+  "difficulty": "easy",
+  "stem": "Heart failure can result from inadequate filling or weak contraction. What consequence do both problems share?",
+  "options": [
+    {
+      "label": "A",
+      "text": "Too little blood is pumped to meet the body’s needs",
+      "isCorrect": true,
+      "misconception": "Recognizes inadequate blood delivery as the shared endpoint.",
+      "explanation": "Whether the heart fills inadequately or contracts too weakly, the source identifies failure to pump enough blood for the body’s needs."
+    },
+    {
+      "label": "B",
+      "text": "Excess blood is pumped despite unchanged body needs",
+      "isCorrect": false,
+      "misconception": "Reverses the defining direction of the pumping abnormality.",
+      "explanation": "The cited definition describes insufficient rather than excessive delivery of blood."
+    },
+    {
+      "label": "C",
+      "text": "Blood is poorly oxygenated despite adequate heart output",
+      "isCorrect": false,
+      "misconception": "Substitutes a gas-exchange problem for inadequate cardiac pumping.",
+      "explanation": "Poor oxygenation concerns the lungs; the source defines heart failure by inadequate blood pumping."
+    },
+    {
+      "label": "D",
+      "text": "Blood is poorly filtered despite adequate heart output",
+      "isCorrect": false,
+      "misconception": "Substitutes a renal filtration problem for inadequate cardiac pumping.",
+      "explanation": "Filtration describes kidney function; the source-backed endpoint is failure to pump enough blood."
+    },
+    {
+      "label": "E",
+      "text": "Enough blood is pumped but with an irregular rhythm",
+      "isCorrect": false,
+      "misconception": "Treats rhythm alone as equivalent to inadequate blood delivery.",
+      "explanation": "An irregular rhythm does not by itself establish the source-defined failure to pump enough blood."
+    }
+  ],
+  "context": "Learning objective: connect two cardiac defects to one endpoint. Heart failure means the heart cannot pump enough blood for the body’s needs, whether because it fills inadequately or is too weak to pump properly.",
+  "cite": "nhlbi-heart-failure#hf-definition",
+  "publicUsmle": {
+    "schemaVersion": 1,
+    "origin": "generated",
+    "itemText": {
+      "licence": "CC-BY-4.0",
+      "attribution": "MD3 contributors"
+    },
+    "evidence": {
+      "kind": "passage",
+      "sourceId": "nhlbi-heart-failure",
+      "passageId": "hf-definition",
+      "licence": {
+        "cls": "foss",
+        "id": "us-gov"
+      }
+    },
+    "media": {
+      "kind": "asset",
+      "assetId": "cardiac-cycle-v1",
+      "job": "pathway",
+      "showWhen": "after-reveal",
+      "licence": {
+        "cls": "foss",
+        "id": "cc-by-4.0"
+      },
+      "attribution": "MD3 contributors",
+      "contentHash": "sha256:43f8496970b38f19698023b0a614a4fe08f56ce807aadeebe0c60c1d0dd9d921"
+    }
+  },
+  "imageUrl": "/figures/usmle/step1/cardiac-cycle-v1.svg",
+  "imageCaption": "The cardiac cycle links ventricular filling and contraction to forward blood flow."
+}

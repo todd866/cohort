@@ -1,0 +1,71 @@
+{
+  "id": "bank:usmle-step1:exp26-b-obstructive-apnea-mechanism:v1",
+  "rotation": "usmle-step1-open",
+  "topics": [
+    "respiratory",
+    "obstructive-apnea-mechanism"
+  ],
+  "moduleNodes": [
+    "usmle/step1",
+    "usmle/step1/respiratory"
+  ],
+  "questionType": "diagnosis",
+  "difficulty": "medium",
+  "stem": "A 52-year-old patient has recurrent pauses in airflow during sleep. A monitored episode shows marked loss of muscle tone around the pharynx and closure of the upper airway, while the study separately confirms continuing signals to the inspiratory apparatus. Which of the following best identifies the defect responsible for these episodes?",
+  "options": [
+    {
+      "text": "Obstructive apnea from sustained pharyngeal contraction",
+      "explanation": "The study identifies excessive relaxation, not sustained contraction. Reversing the observed muscle behavior fails to explain the specific airway obstruction demonstrated during sleep.",
+      "isCorrect": false,
+      "label": "A",
+      "misconception": "Attributes the airway closure to sustained contraction despite the observed loss of pharyngeal tone."
+    },
+    {
+      "text": "Central apnea from heightened chemoreceptor activation",
+      "explanation": "Heightened activation would not explain preserved inspiratory signaling interrupted by a closed airway. The discriminating observation is mechanical closure at the pharyngeal level.",
+      "isCorrect": false,
+      "label": "B",
+      "misconception": "Treats heightened central activation as the defect despite continuing drive and directly observed airway closure."
+    },
+    {
+      "text": "Obstructive apnea from excessive pharyngeal relaxation",
+      "explanation": "The study documents closure of the upper airway despite continuing inspiratory stimulation. Excessive pharyngeal relaxation therefore explains interruption of airflow through an obstructive mechanism.",
+      "isCorrect": true,
+      "label": "C",
+      "misconception": "No misconception: airflow interruption with pharyngeal closure despite continuing drive supports obstruction."
+    },
+    {
+      "text": "Central apnea from absent inspiratory stimulation",
+      "explanation": "This mechanism requires impaired stimulation of inspiration, whereas the study confirms continuing signals during the event. The directly observed airway closure better explains the pause.",
+      "isCorrect": false,
+      "label": "D",
+      "misconception": "Assumes absent inspiratory stimulation even though the study directly confirms continuing signals."
+    },
+    {
+      "text": "Central apnea from exaggerated carbon dioxide sensitivity",
+      "explanation": "Central apnea in this model involves impaired responsiveness and absent inspiratory stimulation. Exaggerated sensitivity does not account for the documented pharyngeal closure.",
+      "isCorrect": false,
+      "label": "E",
+      "misconception": "Attributes pharyngeal closure to exaggerated carbon dioxide sensitivity instead of the observed mechanical defect."
+    }
+  ],
+  "context": "Learning objective: Distinguish mechanical sleep-airway obstruction from loss of respiratory-center stimulation. The study documents closure of the upper airway despite continuing inspiratory stimulation. Excessive pharyngeal relaxation therefore explains interruption of airflow through an obstructive mechanism.",
+  "cite": "openstax-ap1-breathing#obstructive-apnea",
+  "publicUsmle": {
+    "schemaVersion": 1,
+    "origin": "generated",
+    "itemText": {
+      "licence": "CC-BY-4.0",
+      "attribution": "MD3 contributors"
+    },
+    "evidence": {
+      "kind": "passage",
+      "sourceId": "openstax-ap1-breathing",
+      "passageId": "obstructive-apnea",
+      "licence": {
+        "cls": "foss",
+        "id": "cc-by-4.0"
+      }
+    }
+  }
+}

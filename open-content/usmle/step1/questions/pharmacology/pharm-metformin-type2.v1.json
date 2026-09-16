@@ -1,0 +1,85 @@
+{
+  "id": "bank:usmle-step1:pharm-metformin-type2:v1",
+  "rotation": "usmle-step1-open",
+  "topics": [
+    "metformin",
+    "biguanide"
+  ],
+  "moduleNodes": [
+    "usmle/step1",
+    "usmle/step1/pharmacology"
+  ],
+  "questionType": "mechanism",
+  "difficulty": "easy",
+  "stem": "Metformin is used for which diabetes context according to MedlinePlus?",
+  "options": [
+    {
+      "label": "A",
+      "text": "Only bacterial cell-wall synthesis blockade therapy",
+      "isCorrect": false,
+      "misconception": "Antibiotic domain — does not match the cited teaching point.",
+      "explanation": "Wrong indication; see the cited source passage for detail."
+    },
+    {
+      "label": "B",
+      "text": "Only HMG-CoA reductase inhibition in hepatocytes",
+      "isCorrect": false,
+      "misconception": "Statin domain — does not match the cited teaching point.",
+      "explanation": "Wrong indication; see the cited source passage for detail."
+    },
+    {
+      "label": "C",
+      "text": "Type 1 diabetes as monotherapy replacing all insulin",
+      "isCorrect": false,
+      "misconception": "Not for type 1 — does not match the cited teaching point.",
+      "explanation": "Contradicts MedlinePlus."
+    },
+    {
+      "label": "D",
+      "text": "Type 2 diabetes, alone or with other agents",
+      "isCorrect": true,
+      "misconception": "None — this option matches the cited source passage.",
+      "explanation": "MedlinePlus: type 2 diabetes alone or with other medications."
+    },
+    {
+      "label": "E",
+      "text": "Only acute anaphylaxis in the prehospital field",
+      "isCorrect": false,
+      "misconception": "Epinephrine domain — does not match the cited teaching point.",
+      "explanation": "Wrong indication; see the cited source passage for detail."
+    }
+  ],
+  "context": "Learning objective: metformin for type 2 diabetes.",
+  "cite": "medlineplus-metformin#metformin-type2",
+  "publicUsmle": {
+    "schemaVersion": 1,
+    "origin": "generated",
+    "itemText": {
+      "licence": "CC-BY-4.0",
+      "attribution": "MD3 contributors"
+    },
+    "evidence": {
+      "kind": "passage",
+      "sourceId": "medlineplus-metformin",
+      "passageId": "metformin-type2",
+      "licence": {
+        "cls": "foss",
+        "id": "us-gov"
+      }
+    },
+    "media": {
+      "kind": "asset",
+      "assetId": "pharm-drug-classes-v1",
+      "job": "compare-table",
+      "showWhen": "after-reveal",
+      "licence": {
+        "cls": "foss",
+        "id": "cc-by-4.0"
+      },
+      "attribution": "MD3 contributors",
+      "contentHash": "sha256:0660ff11235451eff9a2718dd975d64fa61483b220682b17bd82c8050fd4bceb"
+    }
+  },
+  "imageUrl": "/figures/usmle/step1/pharm-drug-classes-v1.svg",
+  "imageCaption": "High-yield FOSS drug-class map from MedlinePlus labels."
+}

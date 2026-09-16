@@ -1,0 +1,86 @@
+{
+  "id": "bank:usmle-step1:ms-motor-unit-recruitment:v1",
+  "rotation": "usmle-step1-open",
+  "topics": [
+    "motor unit",
+    "recruitment",
+    "size principle"
+  ],
+  "moduleNodes": [
+    "usmle/step1",
+    "usmle/step1/musculoskeletal"
+  ],
+  "questionType": "mechanism",
+  "difficulty": "medium",
+  "stem": "A 28-year-old mover picks up first a pencil and then a heavy box using the same arm muscles. The greater force needed for the box is generated mainly by which of the following?",
+  "options": [
+    {
+      "label": "A",
+      "text": "Widening of the zone of filament overlap",
+      "isCorrect": false,
+      "misconception": "The length-tension relationship is being cast as the grading mechanism.",
+      "explanation": "Overlap affects the force each fiber can produce at a given length, but voluntary force grading in a working muscle comes from recruiting additional motor units."
+    },
+    {
+      "label": "B",
+      "text": "Shortening of every sarcomere by a greater distance",
+      "isCorrect": false,
+      "misconception": "A bigger per-sarcomere stroke is being cast as the grading mechanism.",
+      "explanation": "Each sarcomere shortens to an anatomical limit set by filament overlap; whole-muscle force is graded by how many motor units participate, not by extra sarcomere travel."
+    },
+    {
+      "label": "C",
+      "text": "Fusion of twitches into a continuous contraction",
+      "isCorrect": false,
+      "misconception": "Temporal summation is being cast as the main grading mechanism here.",
+      "explanation": "Tetanus (fused twitches) raises tension within an active unit, but picking up a heavier load engages MORE motor units through recruitment."
+    },
+    {
+      "label": "D",
+      "text": "Conversion of slow fibers into fast fibers",
+      "isCorrect": false,
+      "misconception": "A training adaptation is being cast as an acute force mechanism.",
+      "explanation": "Fiber-type conversion is a slow adaptation to training; it cannot supply extra force within the seconds it takes to lift a box."
+    },
+    {
+      "label": "E",
+      "text": "Recruitment of larger, higher-threshold motor units",
+      "isCorrect": true,
+      "misconception": "None; force is graded by calling in bigger motor units.",
+      "explanation": "Small, low-threshold motor units fire first; as more strength is needed, larger motor units with higher-threshold neurons are enlisted, and this recruitment makes the contraction progressively stronger."
+    }
+  ],
+  "context": "Learning objective: the size principle. A motor unit = one motor neuron plus all its fibers. Small, low-threshold units fire first for delicate force; larger, higher-threshold units are recruited as demand rises (the largest can produce 50x the tension of the smallest). Recruitment grades whole-muscle force.",
+  "cite": "openstax-anatomy-physiology#ms-motor-unit-recruitment",
+  "publicUsmle": {
+    "schemaVersion": 1,
+    "origin": "generated",
+    "itemText": {
+      "licence": "CC-BY-4.0",
+      "attribution": "MD3 contributors"
+    },
+    "evidence": {
+      "kind": "passage",
+      "sourceId": "openstax-anatomy-physiology",
+      "passageId": "ms-motor-unit-recruitment",
+      "licence": {
+        "cls": "foss",
+        "id": "cc-by-4.0"
+      }
+    },
+    "media": {
+      "kind": "asset",
+      "assetId": "muscle-types-v1",
+      "job": "compare-table",
+      "showWhen": "after-reveal",
+      "licence": {
+        "cls": "foss",
+        "id": "cc-by-4.0"
+      },
+      "attribution": "MD3 contributors",
+      "contentHash": "sha256:c3a6a12951e251f90e3eada0058d41416355009401af4ad75b0ecd5dbf287558"
+    }
+  },
+  "imageUrl": "/figures/usmle/step1/muscle-types-v1.svg",
+  "imageCaption": "Skeletal/cardiac/smooth; fiber types; ATP sources; motor unit recruitment."
+}

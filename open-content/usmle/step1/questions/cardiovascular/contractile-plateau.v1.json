@@ -1,0 +1,85 @@
+{
+  "id": "bank:usmle-step1:cardiovascular-contractile-plateau:v1",
+  "rotation": "usmle-step1-open",
+  "topics": [
+    "cardiac action potential",
+    "ion channels"
+  ],
+  "moduleNodes": [
+    "usmle/step1",
+    "usmle/step1/cardiovascular"
+  ],
+  "questionType": "mechanism",
+  "difficulty": "medium",
+  "stem": "During a physiology laboratory, a 23-year-old medical student records an action potential from an isolated ventricular myocyte obtained from a 50-year-old donor heart. After a drug that selectively blocks slow calcium channels is applied, the rapid upstroke of the action potential is preserved, but the waveform that follows is markedly shortened.\n\nWhich of the following phases of the myocyte action potential is most directly dependent on the blocked channels?",
+  "options": [
+    {
+      "label": "A",
+      "text": "Plateau phase (phase 2)",
+      "isCorrect": true,
+      "misconception": "None; the plateau is sustained by slow calcium channel influx in contractile cells.",
+      "explanation": "The plateau phase is maintained largely by the opening of slow Ca2+ channels, allowing Ca2+ to enter the cell, so blocking these channels shortens the plateau while sparing the sodium-driven upstroke."
+    },
+    {
+      "label": "B",
+      "text": "Rapid upstroke (phase 0)",
+      "isCorrect": false,
+      "misconception": "A pacemaker-cell feature is being assigned to a contractile myocyte.",
+      "explanation": "A prepotential phase with a slow influx of Na+ is a feature of conductive cells, not of the contractile myocyte being recorded here."
+    },
+    {
+      "label": "C",
+      "text": "Prepotential drift phase",
+      "isCorrect": false,
+      "misconception": "The upstroke is being attributed to calcium influx rather than sodium influx.",
+      "explanation": "The rapid upstroke is produced by a rapid influx of Na+, which raises the membrane potential to approximately +30 mV; it is preserved when slow calcium channels are blocked."
+    },
+    {
+      "label": "D",
+      "text": "Repolarization (phase 3)",
+      "isCorrect": false,
+      "misconception": "Repolarization is being attributed to calcium rather than potassium movement.",
+      "explanation": "Repolarization follows closure of Ca2+ channels with opening of K+ channels, allowing K+ to exit the cell; it is not driven by calcium influx."
+    },
+    {
+      "label": "E",
+      "text": "Resting membrane potential",
+      "isCorrect": false,
+      "misconception": "The resting potential is being linked to slow calcium channel activity.",
+      "explanation": "The resting potential is set by potassium leak conductance, not by the slow calcium channels that open during the plateau."
+    }
+  ],
+  "context": "Learning objective: relate the phases of the cardiac contractile-cell action potential to their underlying ion movements. The plateau phase depends on slow Ca2+ channel influx.",
+  "cite": "openstax-anatomy-physiology#heart-contractile-plateau",
+  "publicUsmle": {
+    "schemaVersion": 1,
+    "origin": "generated",
+    "itemText": {
+      "licence": "CC-BY-4.0",
+      "attribution": "MD3 contributors"
+    },
+    "evidence": {
+      "kind": "passage",
+      "sourceId": "openstax-anatomy-physiology",
+      "passageId": "heart-contractile-plateau",
+      "licence": {
+        "cls": "foss",
+        "id": "cc-by-4.0"
+      }
+    },
+    "media": {
+      "kind": "asset",
+      "assetId": "pacemaker-ap-v1",
+      "job": "trace",
+      "showWhen": "after-reveal",
+      "licence": {
+        "cls": "foss",
+        "id": "cc-by-4.0"
+      },
+      "attribution": "MD3 contributors",
+      "contentHash": "sha256:9a79b39976a30b55920fe71f970e3c0a3a075e541ca749c033d042efda07d4cd"
+    }
+  },
+  "imageUrl": "/figures/usmle/step1/pacemaker-ap-v1.svg",
+  "imageCaption": "SA-node pacemaker AP: phase 4 funny current, Ca upstroke, K repolarization; rate = phase-4 slope."
+}

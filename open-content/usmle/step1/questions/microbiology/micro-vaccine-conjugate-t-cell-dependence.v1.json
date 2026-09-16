@@ -1,0 +1,72 @@
+{
+  "id": "bank:usmle-step1:micro-vaccine-conjugate-t-cell-dependence:v1",
+  "rotation": "usmle-step1-open",
+  "topics": [
+    "vaccines",
+    "conjugate vaccines",
+    "polysaccharide antigens"
+  ],
+  "moduleNodes": [
+    "usmle/step1",
+    "usmle/step1/microbiology"
+  ],
+  "questionType": "mechanism",
+  "difficulty": "easy",
+  "stem": "A bacterial capsular polysaccharide undergoes covalent linkage in a conjugate vaccine. Which of the following immune changes is the main purpose of this linkage?",
+  "options": [
+    {
+      "label": "A",
+      "text": "Delivery of preformed pathogen-specific serum antibody",
+      "isCorrect": false,
+      "misconception": "Confuses antigen conjugation with passive delivery of an already formed antibody.",
+      "explanation": "Covalent linkage changes how the polysaccharide antigen elicits immunity; the cited mechanism is not delivery of preformed serum antibody."
+    },
+    {
+      "label": "B",
+      "text": "Preservation of a T-cell-independent immune response",
+      "isCorrect": false,
+      "misconception": "Keeps the original response type instead of recognizing the conversion produced by conjugation.",
+      "explanation": "The source describes the opposite change: covalent linkage converts the polysaccharide antigen from T-cell independent to T-cell dependent."
+    },
+    {
+      "label": "C",
+      "text": "Conversion to a T-cell-dependent immune response",
+      "isCorrect": true,
+      "misconception": "None; covalent linkage converts the polysaccharide response to T-cell dependence and supports long-term immunity.",
+      "explanation": "The FDA passage states that covalent linkage makes an otherwise T-cell-independent polysaccharide antigen T-cell dependent, inducing long-term immunity."
+    },
+    {
+      "label": "D",
+      "text": "Suppression of polysaccharide recognition by lymphocytes",
+      "isCorrect": false,
+      "misconception": "Treats covalent linkage as a way to mask the antigen rather than change the immune response.",
+      "explanation": "The FDA passage describes conversion to a durable T-cell-dependent response, not suppression of recognition of the polysaccharide antigen."
+    },
+    {
+      "label": "E",
+      "text": "Replication of a live organism after administration",
+      "isCorrect": false,
+      "misconception": "Imports the defining step of a live vaccine into a chemically linked antigen preparation.",
+      "explanation": "The cited mechanism is covalent linkage and conversion of response type; it does not require a live organism to replicate after administration."
+    }
+  ],
+  "context": "Learning objective: explain the immune effect of covalent linkage in a conjugate vaccine. The linkage turns an otherwise T-cell-independent polysaccharide response into a T-cell-dependent one, inducing long-term immunity.",
+  "cite": "fda-conjugate-vaccine-mechanism#conjugate-t-cell-dependent",
+  "publicUsmle": {
+    "schemaVersion": 1,
+    "origin": "generated",
+    "itemText": {
+      "licence": "CC-BY-4.0",
+      "attribution": "MD3 contributors"
+    },
+    "evidence": {
+      "kind": "passage",
+      "sourceId": "fda-conjugate-vaccine-mechanism",
+      "passageId": "conjugate-t-cell-dependent",
+      "licence": {
+        "cls": "foss",
+        "id": "us-gov"
+      }
+    }
+  }
+}

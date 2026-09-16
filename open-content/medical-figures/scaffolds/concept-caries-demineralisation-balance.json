@@ -1,0 +1,99 @@
+{
+  "schemaVersion": 1,
+  "id": "concept-caries-demineralisation-balance",
+  "kind": "conceptual",
+  "sourceFacts": [
+    {
+      "fact": "Bacteria ferment dietary sugars to acids that can remove enamel minerals.",
+      "sourceUrls": [
+        "https://www.nidcr.nih.gov/health-info/tooth-decay/more-info/tooth-decay-process",
+        "https://www.nidcr.nih.gov/health-info/fluoride/ask-expert-why-fluoride-good-dental-health"
+      ]
+    },
+    {
+      "fact": "Saliva minerals and fluoride support remineralisation of early noncavitated damage.",
+      "sourceUrls": [
+        "https://www.nidcr.nih.gov/health-info/tooth-decay/more-info/tooth-decay-process",
+        "https://www.nidcr.nih.gov/health-info/fluoride/ask-expert-why-fluoride-good-dental-health"
+      ]
+    },
+    {
+      "fact": "Net mineral loss over time can progress to a cavity.",
+      "sourceUrls": [
+        "https://www.nidcr.nih.gov/health-info/tooth-decay/more-info/tooth-decay-process",
+        "https://www.nidcr.nih.gov/health-info/fluoride/ask-expert-why-fluoride-good-dental-health"
+      ]
+    }
+  ],
+  "nodes": [
+    {
+      "id": "1",
+      "label": "Dietary sugars fermented"
+    },
+    {
+      "id": "2",
+      "label": "Acid produced"
+    },
+    {
+      "id": "3",
+      "label": "Demineralisation"
+    },
+    {
+      "id": "4",
+      "label": "Saliva minerals and fluoride"
+    },
+    {
+      "id": "5",
+      "label": "Remineralisation"
+    }
+  ],
+  "edges": [
+    {
+      "from": "1",
+      "to": "2",
+      "meaning": "bacterial fermentation"
+    },
+    {
+      "from": "2",
+      "to": "3",
+      "meaning": "mineral loss"
+    },
+    {
+      "from": "4",
+      "to": "5",
+      "meaning": "repair support"
+    }
+  ],
+  "labels": [
+    "Caries develops when mineral loss exceeds repair",
+    "Dietary sugars fermented",
+    "Acid produced",
+    "Demineralisation",
+    "Saliva minerals and fluoride",
+    "Remineralisation",
+    "Conceptual schematic • Not anatomy"
+  ],
+  "layout": "Two separated horizontal lanes. TOP three cards1 to2 to3 linked by two coral arrows; BOTTOM two cards4 to5 linked by one teal arrow. Top shows sugar-square tokens, H+ coins, then mineral-square tokens leaving a plain rectangular inventory. Bottom shows water-drop and F tokens, then mineral squares added to a partially empty abstract inventory. Both inventories are tile racks, not enamel cross sections or tooth shapes. Large centre caption: Loss versus repair. Bottom note: Early mineral loss can be reversible; cavitation is later damage. No teeth, mouth, enamel layers, bacterial cells, acid dripping on a tooth, treatments or dose thresholds.",
+  "forbiddenAnatomy": [
+    "organs",
+    "body silhouettes",
+    "tissue cross-sections",
+    "cells",
+    "tubules",
+    "vessels",
+    "clinical photographs",
+    "diagnostic scans"
+  ],
+  "validation": {
+    "sourceStatus": "checked",
+    "structureStatus": "verified",
+    "requiredChecks": [
+      "Five nodes and three main arrows across separate loss and repair lanes",
+      "Mineral tokens leave demineralisation rack and join remineralisation rack",
+      "Early reversibility distinct from later cavitation",
+      "No tooth or enamel anatomy"
+    ],
+    "clinicalReviewStatus": "pending",
+    "pixelChecks": "Pixel check: five nodes/three main arrows show fermentation to acid to loss above and saliva/fluoride to repair below. Mineral rack arrows point outward during loss and inward during repair. Early reversibility vs later cavitation clear. No tooth, enamel layers or bacteria. Independent and clinical review pending."
+  }
+}

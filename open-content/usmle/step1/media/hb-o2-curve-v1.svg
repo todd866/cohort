@@ -1,0 +1,27 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 280" role="img" aria-labelledby="t d">
+  <title id="t">Hemoglobin-oxygen dissociation curve</title>
+  <desc id="d">Sigmoid O?-Hb dissociation curve with right shift ('CO?, 'Hz, '2,3-BPG, 'temp) and left shift (fetal Hb, CO).</desc>
+  <rect width="640" height="280" fill="#fafafa"/>
+  <text x="320" y="26" text-anchor="middle" font-family="system-ui,sans-serif" font-size="16" fill="#222">Hb-O? dissociation (cooperative binding)</text>
+  <line x1="70" y1="230" x2="420" y2="230" stroke="#333" stroke-width="2"/>
+  <line x1="70" y1="230" x2="70" y2="40" stroke="#333" stroke-width="2"/>
+  <text x="245" y="255" text-anchor="middle" font-family="system-ui,sans-serif" font-size="12" fill="#333">PO?</text>
+  <text x="28" y="140" transform="rotate(-90 28,140)" text-anchor="middle" font-family="system-ui,sans-serif" font-size="12" fill="#333">% sat</text>
+  <!-- normal sigmoid -->
+  <path d="M70,220 C140,215 180,180 220,120 C260,60 320,45 400,40" fill="none" stroke="#1d3557" stroke-width="3"/>
+  <text x="300" y="55" font-family="system-ui,sans-serif" font-size="12" fill="#1d3557">normal</text>
+  <!-- right shift -->
+  <path d="M70,225 C150,222 200,200 250,150 C300,95 350,70 400,60" fill="none" stroke="#9b2226" stroke-width="2.5" stroke-dasharray="5 3"/>
+  <text x="360" y="85" font-family="system-ui,sans-serif" font-size="11" fill="#9b2226">right shift</text>
+  <!-- left shift -->
+  <path d="M70,210 C120,200 150,140 190,80 C240,35 300,28 400,25" fill="none" stroke="#2a9d8f" stroke-width="2.5" stroke-dasharray="5 3"/>
+  <text x="250" y="40" font-family="system-ui,sans-serif" font-size="11" fill="#2a9d8f">left shift</text>
+  <!-- legend box -->
+  <rect x="440" y="50" width="180" height="170" rx="6" fill="#fff" stroke="#ccc"/>
+  <text x="450" y="75" font-family="system-ui,sans-serif" font-size="12" fill="#9b2226">Right (unload O?)</text>
+  <text x="450" y="95" font-family="system-ui,sans-serif" font-size="11" fill="#333">' CO? ? ' Hz ? ' 2,3-BPG ? ' T</text>
+  <text x="450" y="125" font-family="system-ui,sans-serif" font-size="12" fill="#2a9d8f">Left (hold O?)</text>
+  <text x="450" y="145" font-family="system-ui,sans-serif" font-size="11" fill="#333">" CO? ? " Hz ? " 2,3-BPG ? " T</text>
+  <text x="450" y="165" font-family="system-ui,sans-serif" font-size="11" fill="#333">HbF ? CO (left-ish)</text>
+  <text x="450" y="195" font-family="system-ui,sans-serif" font-size="11" fill="#555">Sigmoid shape = cooperativity</text>
+</svg>

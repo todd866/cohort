@@ -1,0 +1,115 @@
+// =============================================================================
+// GLOSSARY / ACRONYM PEDAGOGY SYSTEM
+// Platform-level terminology learning across domains (medicine, aviation, etc.)
+// GlossaryTerm, MedicalTerm, UserTermState, TermEvent
+// =============================================================================
+
+// GlossaryTerm - Individual terms within a domain
+model GlossaryTerm {
+  id     String @id @default(cuid())
+  domain String @default("medicine") // "medicine", "aviation", "gamsat"
+
+  abbr       String // "GCS", "ILS"
+  full       String // "Glasgow Coma Scale", "Instrument Landing System"
+  definition String   @db.Text // Longer explanation
+  related    String[] // Related term abbrs
+
+  // Optional categorization within domain
+  category   String? // "resuscitation", "navigation", "instruments"
+  complexity Int     @default(1) // 1=basic, 2=intermediate, 3=advanced
+
+  // Usage tracking (aggregated)
+  totalLookups Int @default(0)
+
+  userStates UserTermState[]
+
+  createdAt DateTime @default(now()) @db.Timestamptz(3)
+  updatedAt DateTime @updatedAt @db.Timestamptz(3)
+
+  @@unique([domain, abbr]) // Unique abbr per domain
+  @@index([domain])
+  @@index([category])
+}
+
+// UserTermState - User's knowledge state per term (supports anonymous via session)
+model UserTermState {
+  id        String       @id @default(cuid())
+  userId    String? // null for anonymous
+  user      User?        @relation(fields: [userId], references: [id], onDelete: Cascade)
+  sessionId String? // AnonymousSession.id for pre-auth tracking
+  termId    String
+  term      GlossaryTerm @relation(fields: [termId], references: [id], onDelete: Cascade)
+
+  // Exposure tracking
+  exposureCount  Int       @default(0) // Times term appeared on screen
+  hoverCount     Int       @default(0) // Times user hovered for tooltip
+  lastExposureAt DateTime? @db.Timestamptz(3)
+  lastHoverAt    DateTime? @db.Timestamptz(3)
+
+  // Mastery estimation
+  disclosureLevel Int   @default(0) // 0=full, 1=full(abbr), 2=abbr-only
+  masteryScore    Float @default(0) // 0-1 confidence user knows this
+
+  // Quiz performance (if micro-quizzed)
+  quizAttempts Int       @default(0)
+  quizCorrect  Int       @default(0)
+  lastQuizAt   DateTime? @db.Timestamptz(3)
+
+  createdAt DateTime @default(now()) @db.Timestamptz(3)
+  updatedAt DateTime @updatedAt @db.Timestamptz(3)
+
+  // Unique per user OR per anonymous session
+  @@unique([userId, termId])
+  @@unique([sessionId, termId])
+  @@index([userId])
+  @@index([sessionId])
+  @@index([termId])
+}
+
+// TermEvent - Append-only log of term interactions (for analytics/debugging)
+model TermEvent {
+  id     String  @id @default(cuid())
+  userId String? // null for anonymous
+  termId String
+
+  eventType String // "exposure", "hover", "pin", "quiz_attempt"
+  path      String // Where it happened
+  metadata  Json? // Additional context
+
+  timestamp DateTime @default(now()) @db.Timestamptz(3)
+
+  @@index([userId, termId])
+  @@index([termId, eventType])
+  @@index([timestamp])
+}
+
+// =============================================================================
+// TERMINOLOGY NORMALIZATION
+// See docs/designs/embedding-design-principles.md - Principle #2
+// =============================================================================
+
+// Canonical medical terms with aliases for search expansion and display
+model MedicalTerm {
+  id String @id @default(cuid())
+
+  // The canonical, unambiguous form (stored in content)
+  canonical String @unique // "myocardial infarction"
+
+  // All acceptable aliases (for search expansion)
+  aliases String[] // ["MI", "heart attack", "STEMI", "NSTEMI", "AMI"]
+
+  // Classification
+  category  String // "cardiology", "pulmonology", "pharmacology", etc.
+  ambiguous Boolean @default(false) // true if any alias has multiple meanings
+
+  // The preferred abbreviation for display (if user prefers abbreviations)
+  preferredAbbreviation String? // "MI" (the most common/recognizable abbreviation)
+
+  // Optional definition for hover tooltips
+  definition String? @db.Text
+
+  createdAt DateTime @default(now()) @db.Timestamptz(3)
+  updatedAt DateTime @updatedAt @db.Timestamptz(3)
+
+  @@index([category])
+}

@@ -1,0 +1,86 @@
+{
+  "id": "bank:usmle-step1:gi-mucosal-barrier:v1",
+  "rotation": "usmle-step1-open",
+  "topics": [
+    "gastric mucosal barrier",
+    "mucus",
+    "bicarbonate"
+  ],
+  "moduleNodes": [
+    "usmle/step1",
+    "usmle/step1/gastrointestinal"
+  ],
+  "questionType": "mechanism",
+  "difficulty": "easy",
+  "stem": "A 28-year-old athlete takes ibuprofen daily for knee pain and develops a gastric ulcer. Which of the following normally prevents the acidic gastric contents from digesting the stomach wall itself?",
+  "options": [
+    {
+      "label": "A",
+      "text": "Neutralization of the luminal acid by secreted gastric lipase",
+      "isCorrect": false,
+      "misconception": "An enzyme is being cast as an acid buffer.",
+      "explanation": "Gastric lipase digests lipid; it does not neutralize acid. Neutralization at the wall is performed by bicarbonate secreted into the mucus layer."
+    },
+    {
+      "label": "B",
+      "text": "A bicarbonate-rich mucus layer over tight-junctioned epithelium",
+      "isCorrect": true,
+      "misconception": "None; mucus, bicarbonate, and tight junctions form the barrier.",
+      "explanation": "The stomach wall is coated by bicarbonate-rich mucus that physically shields it and neutralizes acid, while tight junctions between epithelial cells block gastric juice from reaching deeper tissue."
+    },
+    {
+      "label": "C",
+      "text": "Rapid emptying of the acid into the duodenum after meals",
+      "isCorrect": false,
+      "misconception": "Reduced exposure time is being cast as the protective mechanism.",
+      "explanation": "Chyme normally remains in the stomach for hours, so the wall needs a standing barrier; emptying speed does not protect the mucosa from acid."
+    },
+    {
+      "label": "D",
+      "text": "Dilution of the gastric juice by large volumes of saliva",
+      "isCorrect": false,
+      "misconception": "Dilution is being cast as meaningful protection against a pH of 1.5-3.5.",
+      "explanation": "Saliva contributes little volume to the stomach and cannot meaningfully dilute its strongly acidic contents; the mucus-bicarbonate barrier is the protective layer."
+    },
+    {
+      "label": "E",
+      "text": "Continuous inhibition of acid secretion by antral somatostatin",
+      "isCorrect": false,
+      "misconception": "Suppressed secretion is being cast as the normal state of the stomach.",
+      "explanation": "The healthy stomach secretes large amounts of acid with every meal; protection comes from the barrier at the wall, not from tonic suppression of secretion."
+    }
+  ],
+  "context": "Learning objective: the gastric mucosal barrier. A thick bicarbonate-rich mucus coat physically shields the wall and neutralizes acid, and tight junctions between surface epithelial cells stop gastric juice penetrating deeper layers. NSAIDs weaken these defenses, producing ulceration.",
+  "cite": "openstax-anatomy-physiology#gi-mucosal-barrier",
+  "publicUsmle": {
+    "schemaVersion": 1,
+    "origin": "generated",
+    "itemText": {
+      "licence": "CC-BY-4.0",
+      "attribution": "MD3 contributors"
+    },
+    "evidence": {
+      "kind": "passage",
+      "sourceId": "openstax-anatomy-physiology",
+      "passageId": "gi-mucosal-barrier",
+      "licence": {
+        "cls": "foss",
+        "id": "cc-by-4.0"
+      }
+    },
+    "media": {
+      "kind": "asset",
+      "assetId": "gi-absorption-v1",
+      "job": "pathway",
+      "showWhen": "after-reveal",
+      "licence": {
+        "cls": "foss",
+        "id": "cc-by-4.0"
+      },
+      "attribution": "MD3 contributors",
+      "contentHash": "sha256:7fa3cf7c6deede7943579ae81371661588ab4f96bae794c6f6acea588dd08d5e"
+    }
+  },
+  "imageUrl": "/figures/usmle/step1/gi-absorption-v1.svg",
+  "imageCaption": "Villi, SGLT1, mucosal barrier, pancreatic enzymes, micelles/chylomicrons, colonic water."
+}

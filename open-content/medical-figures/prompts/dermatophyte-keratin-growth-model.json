@@ -1,0 +1,35 @@
+{
+  "figureId": "dermatophyte-keratin-growth-model",
+  "tool": "built-in image_gen",
+  "model": null,
+  "referenceAssetIds": [],
+  "externalReferenceImages": [],
+  "prompt": "Original educational conceptual illustration, landscape 3:2. Warm ivory paper, sophisticated hand-painted gouache/watercolour, confident fine brown outlines, navy lettering, restrained teal, coral and amber. Editorial science illustration with spacious composition and large legible labels. The explanatory structure must carry the meaning visually: molecules, objects, geometry or flow; never paragraphs in boxes. No organs, regional anatomy, teeth or joint cutaways, tissue layers, invented histology, diagnostic photographs, radiographs or patient data. All symbols are explicitly conceptual. Footer: 'Conceptual teaching model • Not to scale'. Title 'Keratin feeds dermatophyte growth'. A clear left-to-right object sequence on ivory paper: stack of tan fibre-textured tiles labelled 'Keratin'; arrow to small brass scissors symbol labelled 'Keratinase' cutting ONE tile into small fragments; arrow to a small pile of fragments labelled 'Nutrients'; arrow to a simple teal branching thread with extending tip arrows labelled 'Fungal growth'. This thread is a graphic growth symbol, never a microscopy photo: no spores, species-specific reproductive structures or intracellular detail. Below the first tiles short words 'Skin • hair • nails', with no body parts drawn. Bottom qualifier 'Growth model, not microscopy'. No skin layers or cutaway.",
+  "clinicalSources": [
+    {
+      "title": "Adelaide University Mycology: Cutaneous mycoses",
+      "url": "https://mycology.adelaide.edu.au/mycoses/cutaneous-mycoses"
+    }
+  ],
+  "teaching": {
+    "question": "Why do dermatophytes preferentially colonise keratinised material?",
+    "answer": "They can enzymatically break down and use keratin as a nutrient source, supporting growth in keratinised skin, hair and nails.",
+    "imageRole": "after-reveal"
+  },
+  "title": "Keratin can feed dermatophyte growth",
+  "caption": "Dermatophytes can use keratin as a nutrient source. Enzymatic breakdown helps explain their affinity for keratinised material in skin, hair and nails.",
+  "alt": "Keratin-labelled tiles are broken into nutrient pieces by a scissor-shaped enzyme symbol, feeding a simple growing fungal filament.",
+  "review": {
+    "status": "pending-independent-qa",
+    "method": "agent-visual-and-source-review",
+    "notes": "Sequence correctly proceeds from separate keratin tiles through keratinase scissors to nutrient fragments and a branching growth symbol. Tip arrows indicate growth; no species-identifying spores or microscopic cellular detail. Skin/hair/nail words describe relevant substrates without anatomical imagery. Microscopy disclaimer legible.",
+    "structure": {
+      "kind": "conceptual",
+      "status": "verified",
+      "specificationFiles": [
+        "scaffolds/dermatophyte-keratin-growth-model.json"
+      ],
+      "notes": "Sequence correctly proceeds from separate keratin tiles through keratinase scissors to nutrient fragments and a branching growth symbol. Tip arrows indicate growth; no species-identifying spores or microscopic cellular detail. Skin/hair/nail words describe relevant substrates without anatomical imagery. Microscopy disclaimer legible."
+    }
+  }
+}

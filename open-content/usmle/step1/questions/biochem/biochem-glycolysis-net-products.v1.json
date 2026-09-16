@@ -1,0 +1,86 @@
+{
+  "id": "bank:usmle-step1:biochem-glycolysis-net-products:v1",
+  "rotation": "usmle-step1-open",
+  "topics": [
+    "glycolysis",
+    "ATP",
+    "NADH"
+  ],
+  "moduleNodes": [
+    "usmle/step1",
+    "usmle/step1/biochem"
+  ],
+  "questionType": "mechanism",
+  "difficulty": "easy",
+  "stem": "In eukaryotic cytoplasm, what are the net carbon products of glycolysis starting from one glucose before mitochondrial oxidation?",
+  "options": [
+    {
+      "label": "A",
+      "text": "Six CO2 molecules",
+      "isCorrect": false,
+      "misconception": "Jumps to complete aerobic oxidation of glucose.",
+      "explanation": "Full oxidation to six CO2 requires pyruvate processing plus citric acid cycle turns."
+    },
+    {
+      "label": "B",
+      "text": "Two acetyl-CoA molecules",
+      "isCorrect": false,
+      "misconception": "Skips the mitochondrial pyruvate-to-acetyl-CoA step.",
+      "explanation": "Acetyl-CoA forms after pyruvate enters mitochondria and is processed by the pyruvate dehydrogenase path."
+    },
+    {
+      "label": "C",
+      "text": "Two pyruvate molecules",
+      "isCorrect": true,
+      "misconception": "None; glycolysis cleaves glucose into two three-carbon pyruvates.",
+      "explanation": "OpenStax Biology notes glycolysis begins with glucose and produces two pyruvate molecules (plus ATP and NADH carriers)."
+    },
+    {
+      "label": "D",
+      "text": "One pyruvate and two CO2",
+      "isCorrect": false,
+      "misconception": "Confuses glycolysis with pyruvate dehydrogenase oxidative decarboxylation.",
+      "explanation": "CO2 release occurs during pyruvate oxidation and the citric acid cycle, not glycolysis itself."
+    },
+    {
+      "label": "E",
+      "text": "One lactate only",
+      "isCorrect": false,
+      "misconception": "Assumes obligatory lactic fermentation.",
+      "explanation": "Lactate appears only if NADH is reoxidized by fermentation rather than the electron transport chain."
+    }
+  ],
+  "context": "Learning objective: recall glycolysis carbon products. Glycolysis is anaerobic and cytosolic; it yields two pyruvates.",
+  "cite": "openstax-biology-2e#glycolysis-net-products",
+  "publicUsmle": {
+    "schemaVersion": 1,
+    "origin": "generated",
+    "itemText": {
+      "licence": "CC-BY-4.0",
+      "attribution": "MD3 contributors"
+    },
+    "evidence": {
+      "kind": "passage",
+      "sourceId": "openstax-biology-2e",
+      "passageId": "glycolysis-net-products",
+      "licence": {
+        "cls": "foss",
+        "id": "cc-by-4.0"
+      }
+    },
+    "media": {
+      "kind": "asset",
+      "assetId": "cellular-respiration-v1",
+      "job": "pathway",
+      "showWhen": "after-reveal",
+      "licence": {
+        "cls": "foss",
+        "id": "cc-by-4.0"
+      },
+      "attribution": "MD3 contributors",
+      "contentHash": "sha256:28ae7f955e1024135e9335f39b761f79292b1cc679baed71478eb3efc31f99e5"
+    }
+  },
+  "imageUrl": "/figures/usmle/step1/cellular-respiration-v1.svg",
+  "imageCaption": "Cellular respiration: glycolysis -> pyruvate -> acetyl-CoA -> citric cycle carriers -> ETC/ATP synthase; O2 terminal acceptor; fermentation regenerates NAD+."
+}

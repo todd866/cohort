@@ -1,0 +1,88 @@
+{
+  "id": "bank:usmle-step1:gi-gastrin-parietal-cells:v1",
+  "rotation": "usmle-step1-open",
+  "ladderId": "gastric-acid",
+  "topics": [
+    "gastrin",
+    "parietal cells",
+    "gastric acid",
+    "ladder:gastric-acid"
+  ],
+  "moduleNodes": [
+    "usmle/step1",
+    "usmle/step1/gastrointestinal"
+  ],
+  "questionType": "mechanism",
+  "difficulty": "easy",
+  "stem": "Gastrin stimulates hydrochloric acid secretion primarily from which of the following gastric cell types?",
+  "options": [
+    {
+      "label": "A",
+      "text": "Parietal cells of the gastric body",
+      "isCorrect": true,
+      "misconception": "None; gastrin drives acid secretion from parietal cells.",
+      "explanation": "Parietal cells produce both hydrochloric acid and intrinsic factor, and gastrin is their principal stimulatory hormone, so a gastrinoma drives excess acid production."
+    },
+    {
+      "label": "B",
+      "text": "Mucous cells of the pyloric antrum",
+      "isCorrect": false,
+      "misconception": "The antrum is being cast as the acid-producing region.",
+      "explanation": "Cells of the pyloric antrum secrete mucus and hormones, including most of the stomach's gastrin; the antrum is the source of the hormone, not its acid-producing target."
+    },
+    {
+      "label": "C",
+      "text": "Chief cells of the gastric fundus",
+      "isCorrect": false,
+      "misconception": "The enzyme-secreting cell is being cast as the acid source.",
+      "explanation": "Chief cells secrete pepsinogen, the inactive precursor of pepsin; they sit beside parietal cells but do not themselves secrete acid in response to gastrin."
+    },
+    {
+      "label": "D",
+      "text": "Duct cells of the pancreas",
+      "isCorrect": false,
+      "misconception": "A neighboring gland's cells are being cast as gastrin's target.",
+      "explanation": "Pancreatic duct cells secrete bicarbonate-rich juice in response to secretin; they neutralize acid entering the duodenum rather than produce it."
+    },
+    {
+      "label": "E",
+      "text": "Enterocytes of the proximal jejunum",
+      "isCorrect": false,
+      "misconception": "Absorptive cells are being cast as secretory targets of gastrin.",
+      "explanation": "Jejunal enterocytes absorb nutrients across their brush border; they neither secrete acid nor respond to gastrin with acid production."
+    }
+  ],
+  "context": "Learning objective: map gastrin to its acid-secreting target. Parietal cells (body/fundus) secrete HCl and intrinsic factor under gastrin stimulation; chief cells secrete pepsinogen; antral G cells secrete gastrin.",
+  "cite": "openstax-anatomy-physiology#gi-gastrin-parietal-cells",
+  "publicUsmle": {
+    "schemaVersion": 1,
+    "origin": "generated",
+    "itemText": {
+      "licence": "CC-BY-4.0",
+      "attribution": "MD3 contributors"
+    },
+    "evidence": {
+      "kind": "passage",
+      "sourceId": "openstax-anatomy-physiology",
+      "passageId": "gi-gastrin-parietal-cells",
+      "licence": {
+        "cls": "foss",
+        "id": "cc-by-4.0"
+      }
+    },
+    "media": {
+      "kind": "asset",
+      "assetId": "gastric-secretion-v1",
+      "job": "pathway",
+      "showWhen": "after-reveal",
+      "licence": {
+        "cls": "foss",
+        "id": "cc-by-4.0"
+      },
+      "attribution": "MD3 contributors",
+      "contentHash": "sha256:8be13d0847ecfd181d68d963b3aec9c7011d75060c7d97b6c23225cc47f84e58"
+    }
+  },
+  "imageUrl": "/figures/usmle/step1/gastric-secretion-v1.svg",
+  "imageCaption": "Gastric phases cephalic/gastric/intestinal; parietal (HCl+IF), chief (pepsinogen), G cell (gastrin)."
+}

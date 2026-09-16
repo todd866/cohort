@@ -1,0 +1,71 @@
+{
+  "id": "bank:usmle-step1:exp26-b-capsular-pressure-perturbation:v1",
+  "rotation": "usmle-step1-open",
+  "topics": [
+    "renal",
+    "capsular-pressure-perturbation"
+  ],
+  "moduleNodes": [
+    "usmle/step1",
+    "usmle/step1/renal"
+  ],
+  "questionType": "calculation",
+  "difficulty": "hard",
+  "stem": "An isolated glomerular preparation has a blood hydrostatic pressure of 55 mmHg, capsular hydrostatic pressure of 15 mmHg, and blood colloid-osmotic pressure of 30 mmHg. Capsular pressure then rises to 20 mmHg; the other pressures and filtration coefficient remain fixed. Which of the following best describes the resulting net filtration pressure and GFR change?",
+  "options": [
+    {
+      "text": "10 mmHg net pressure; stable GFR",
+      "explanation": "These values describe the original condition and ignore the capsular pressure increase. With other pressures fixed, the additional opposition reduces both net pressure and filtration.",
+      "isCorrect": false,
+      "label": "A",
+      "misconception": "Reuses the baseline net filtration pressure and ignores the increase in opposing capsular pressure."
+    },
+    {
+      "text": "45 mmHg net pressure; reduced GFR",
+      "explanation": "The direction of GFR change is appropriate, but the pressure calculation fails to subtract both opposing pressures. The new net pressure is 55 minus 20 minus 30.",
+      "isCorrect": false,
+      "label": "B",
+      "misconception": "Fails to subtract both capsular hydrostatic and blood colloid-osmotic pressures from the outward pressure."
+    },
+    {
+      "text": "5 mmHg net pressure; reduced GFR",
+      "explanation": "The opposing pressures are subtracted from glomerular blood hydrostatic pressure. Net pressure falls from 10 to 5 mmHg, so GFR decreases at the fixed filtration coefficient.",
+      "isCorrect": true,
+      "label": "C",
+      "misconception": "No misconception: greater opposing capsular pressure lowers net filtration pressure and GFR at a fixed coefficient."
+    },
+    {
+      "text": "5 mmHg net pressure; increased GFR",
+      "explanation": "The net-pressure calculation is correct, but the GFR direction is reversed. With the filtration coefficient fixed, a lower driving pressure produces less filtration.",
+      "isCorrect": false,
+      "label": "D",
+      "misconception": "Reverses the GFR response to lower net driving pressure while the filtration coefficient is fixed."
+    },
+    {
+      "text": "15 mmHg net pressure; increased GFR",
+      "explanation": "This treats the capsular pressure rise as promoting filtration. Capsular pressure opposes movement out of glomerular blood, so increasing it lowers the net driving pressure.",
+      "isCorrect": false,
+      "label": "E",
+      "misconception": "Treats higher capsular pressure as a force promoting rather than opposing glomerular filtration."
+    }
+  ],
+  "context": "Learning objective: Apply the filtration-pressure balance and predict filtration when capsular opposition increases. The opposing pressures are subtracted from glomerular blood hydrostatic pressure. Net pressure falls from 10 to 5 mmHg, so GFR decreases at the fixed filtration coefficient.",
+  "cite": "openstax-ap1-urine-formation#filtration-forces",
+  "publicUsmle": {
+    "schemaVersion": 1,
+    "origin": "generated",
+    "itemText": {
+      "licence": "CC-BY-4.0",
+      "attribution": "MD3 contributors"
+    },
+    "evidence": {
+      "kind": "passage",
+      "sourceId": "openstax-ap1-urine-formation",
+      "passageId": "filtration-forces",
+      "licence": {
+        "cls": "foss",
+        "id": "cc-by-4.0"
+      }
+    }
+  }
+}

@@ -1,0 +1,85 @@
+{
+  "id": "bank:usmle-step1:respiratory-oxygen-transport-anemia:v1",
+  "rotation": "usmle-step1-open",
+  "topics": [
+    "oxygen transport",
+    "hemoglobin"
+  ],
+  "moduleNodes": [
+    "usmle/step1",
+    "usmle/step1/respiratory"
+  ],
+  "questionType": "interpretation",
+  "difficulty": "hard",
+  "stem": "A 55-year-old woman with severe iron-deficiency anemia has a hemoglobin concentration half of normal, yet her measured arterial oxygen partial pressure is normal.\n\nWhich of the following best explains why oxygen delivery to her tissues is nevertheless substantially reduced?",
+  "options": [
+    {
+      "label": "A",
+      "text": "Most oxygen is carried bound to hemoglobin rather than dissolved in plasma",
+      "isCorrect": true,
+      "misconception": "None; partial pressure reflects dissolved oxygen only, which is a small fraction of the total.",
+      "explanation": "Only about 1.5% of oxygen is transported dissolved in the blood; the majority is bound to hemoglobin, so halving hemoglobin nearly halves oxygen content even though the partial pressure is unchanged."
+    },
+    {
+      "label": "B",
+      "text": "Anemia increases the partial-pressure gradient across the respiratory membrane",
+      "isCorrect": false,
+      "misconception": "The alveolar-to-blood gradient is being invoked where carriage is limiting.",
+      "explanation": "The gradient governs how fast oxygen loads; with normal arterial partial pressure, loading is intact and the limiting step is the reduced hemoglobin reservoir."
+    },
+    {
+      "label": "C",
+      "text": "Low hemoglobin prevents oxygen from diffusing into the blood",
+      "isCorrect": false,
+      "misconception": "Uptake across the respiratory membrane is being blamed for a carriage problem.",
+      "explanation": "Her arterial partial pressure is normal, proving oxygen enters the blood normally; the defect is in carriage capacity, not diffusion."
+    },
+    {
+      "label": "D",
+      "text": "Dissolved oxygen cannot leave the bloodstream without hemoglobin",
+      "isCorrect": false,
+      "misconception": "Dissolved oxygen is being described as trapped in the vasculature.",
+      "explanation": "Dissolved oxygen diffuses freely into tissues; the problem is that the dissolved pool is only about 1.5% of total oxygen content."
+    },
+    {
+      "label": "E",
+      "text": "The partial pressure of oxygen falls proportionally when hemoglobin falls",
+      "isCorrect": false,
+      "misconception": "Partial pressure and oxygen content are being treated as the same quantity.",
+      "explanation": "Partial pressure reflects the dissolved fraction and is normal in this patient; oxygen content, which depends on hemoglobin, is what falls."
+    }
+  ],
+  "context": "Learning objective: distinguish oxygen partial pressure from oxygen content. Only about 1.5% of oxygen is carried dissolved; the majority is hemoglobin-bound, so anemia reduces content without reducing partial pressure.",
+  "cite": "openstax-anatomy-physiology#resp-oxygen-transport",
+  "publicUsmle": {
+    "schemaVersion": 1,
+    "origin": "generated",
+    "itemText": {
+      "licence": "CC-BY-4.0",
+      "attribution": "MD3 contributors"
+    },
+    "evidence": {
+      "kind": "passage",
+      "sourceId": "openstax-anatomy-physiology",
+      "passageId": "resp-oxygen-transport",
+      "licence": {
+        "cls": "foss",
+        "id": "cc-by-4.0"
+      }
+    },
+    "media": {
+      "kind": "asset",
+      "assetId": "hb-o2-curve-v1",
+      "job": "pathway",
+      "showWhen": "after-reveal",
+      "licence": {
+        "cls": "foss",
+        "id": "cc-by-4.0"
+      },
+      "attribution": "MD3 contributors",
+      "contentHash": "sha256:e14fdbba9016f547cb21cefdfc45f7b964c0550f0932e60dbff9d77cdef255a8"
+    }
+  },
+  "imageUrl": "/figures/usmle/step1/hb-o2-curve-v1.svg",
+  "imageCaption": "Sigmoid Hb-O2 curve: cooperativity; right shift unloads O2 (Bohr / 2,3-BPG / temp)."
+}

@@ -1,0 +1,85 @@
+{
+  "id": "bank:usmle-step1:genetics-homologous-chromosomes:v1",
+  "rotation": "usmle-step1-open",
+  "topics": [
+    "meiosis",
+    "homologous chromosomes"
+  ],
+  "moduleNodes": [
+    "usmle/step1",
+    "usmle/step1/genetics"
+  ],
+  "questionType": "mechanism",
+  "difficulty": "easy",
+  "stem": "In meiosis, homologous chromosomes are best described as which of the following?",
+  "options": [
+    {
+      "label": "A",
+      "text": "Random DNA fragments absorbed from food",
+      "isCorrect": false,
+      "misconception": "Nonsense — does not match the cited teaching point.",
+      "explanation": "They are chromosomal pairs."
+    },
+    {
+      "label": "B",
+      "text": "Only mitochondrial plasmids in the matrix",
+      "isCorrect": false,
+      "misconception": "Mitochondria are separate.",
+      "explanation": "Nuclear homologs; see the cited source passage for detail."
+    },
+    {
+      "label": "C",
+      "text": "Matched pairs sharing the same gene loci",
+      "isCorrect": true,
+      "misconception": "None; homologs match gene loci.",
+      "explanation": "OpenStax: homologous chromosomes are matched pairs containing the same genes in identical locations."
+    },
+    {
+      "label": "D",
+      "text": "Extracellular matrix collagen fiber bundles",
+      "isCorrect": false,
+      "misconception": "Wrong polymer — does not match the cited teaching point.",
+      "explanation": "Chromosomes are DNA; see the cited source passage for detail."
+    },
+    {
+      "label": "E",
+      "text": "Sister chromatid replicas after G0 exit",
+      "isCorrect": false,
+      "misconception": "Sister chromatids are replicas of one chromosome.",
+      "explanation": "Homologs are maternal/paternal partners."
+    }
+  ],
+  "context": "Learning objective: define homologous chromosomes.",
+  "cite": "openstax-biology-2e#homologous-chromosomes-meiosis",
+  "publicUsmle": {
+    "schemaVersion": 1,
+    "origin": "generated",
+    "itemText": {
+      "licence": "CC-BY-4.0",
+      "attribution": "MD3 contributors"
+    },
+    "evidence": {
+      "kind": "passage",
+      "sourceId": "openstax-biology-2e",
+      "passageId": "homologous-chromosomes-meiosis",
+      "licence": {
+        "cls": "foss",
+        "id": "cc-by-4.0"
+      }
+    },
+    "media": {
+      "kind": "asset",
+      "assetId": "cell-cycle-genes-v1",
+      "job": "pathway",
+      "showWhen": "after-reveal",
+      "licence": {
+        "cls": "foss",
+        "id": "cc-by-4.0"
+      },
+      "attribution": "MD3 contributors",
+      "contentHash": "sha256:0e96190a2433d69036adb4d7d917292c4133a918ef3e5fb07062a1d4bc160053"
+    }
+  },
+  "imageUrl": "/figures/usmle/step1/cell-cycle-genes-v1.svg",
+  "imageCaption": "Proto-oncogenes = positive cell-cycle regulators; p53 triggers repair; homologous chromosomes match loci."
+}

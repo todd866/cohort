@@ -1,0 +1,112 @@
+{
+  "schemaVersion": 1,
+  "figureId": "atopic-march-possibilities",
+  "kind": "conceptual",
+  "sourceFacts": [
+    {
+      "id": "fact-1",
+      "fact": "Atopic dermatitis is associated with asthma and allergic disease.",
+      "sources": [
+        {
+          "title": "NIAMS: Atopic dermatitis",
+          "url": "https://www.niams.nih.gov/health-topics/atopic-dermatitis"
+        },
+        {
+          "title": "PLOS Medicine: Developmental profiles of eczema, wheeze, and rhinitis",
+          "url": "https://journals.plos.org/plosmedicine/article?id=10.1371/journal.pmed.1001748"
+        }
+      ]
+    },
+    {
+      "id": "fact-2",
+      "fact": "Birth cohort trajectories show diverse patterns; the classic atopic march does not describe most individual children.",
+      "sources": [
+        {
+          "title": "NIAMS: Atopic dermatitis",
+          "url": "https://www.niams.nih.gov/health-topics/atopic-dermatitis"
+        },
+        {
+          "title": "PLOS Medicine: Developmental profiles of eczema, wheeze, and rhinitis",
+          "url": "https://journals.plos.org/plosmedicine/article?id=10.1371/journal.pmed.1001748"
+        }
+      ]
+    },
+    {
+      "id": "fact-3",
+      "fact": "Branches represent possibilities, not mutually exclusive outcomes or probabilities.",
+      "sources": [
+        {
+          "title": "NIAMS: Atopic dermatitis",
+          "url": "https://www.niams.nih.gov/health-topics/atopic-dermatitis"
+        },
+        {
+          "title": "PLOS Medicine: Developmental profiles of eczema, wheeze, and rhinitis",
+          "url": "https://journals.plos.org/plosmedicine/article?id=10.1371/journal.pmed.1001748"
+        }
+      ]
+    }
+  ],
+  "nodes": [
+    {
+      "id": "eczema",
+      "shape": "textured patchwork flag",
+      "label": "Early eczema"
+    },
+    {
+      "id": "alone",
+      "shape": "single continuing path",
+      "label": "Eczema only"
+    },
+    {
+      "id": "asthma",
+      "shape": "wind chime",
+      "label": "Asthma may develop"
+    },
+    {
+      "id": "rhinitis",
+      "shape": "pollen and tissue box",
+      "label": "Allergic rhinitis may develop"
+    }
+  ],
+  "edges": [
+    {
+      "from": "eczema",
+      "to": "alone",
+      "meaning": "possible eczema-only trajectory"
+    },
+    {
+      "from": "eczema",
+      "to": "asthma",
+      "meaning": "possible later asthma"
+    },
+    {
+      "from": "eczema",
+      "to": "rhinitis",
+      "meaning": "possible later rhinitis"
+    }
+  ],
+  "labels": [
+    "Atopic trajectories can branch",
+    "Early eczema",
+    "Eczema only",
+    "Asthma may develop",
+    "Allergic rhinitis may develop",
+    "Possible paths can overlap",
+    "No fixed sequence"
+  ],
+  "forbiddenAnatomy": [
+    "Organs, airways, skin layers, histology, clinical photos"
+  ],
+  "validation": {
+    "status": "verified",
+    "method": "source-and-conceptual-structure-review",
+    "checks": [
+      "No inevitable linear eczema→asthma→rhinitis march.",
+      "Later disease arrows dashed and qualified may.",
+      "No branch weights/probabilities implied; overlapping possibilities explicit.",
+      "Only objects, paths and abstract flags; no organs."
+    ],
+    "pixelReviewStatus": "verified",
+    "pixelReviewNotes": "Early eczema forks into separate eczema-only, possible asthma and possible rhinitis branches. Later-disease paths are dashed and labelled may develop. Explicit overlap and no-fixed-sequence notes prevent mutually exclusive or inevitable interpretation. No serial disease chain, probabilities, body or tissue anatomy."
+  }
+}

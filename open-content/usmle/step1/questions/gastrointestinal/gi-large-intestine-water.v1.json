@@ -1,0 +1,86 @@
+{
+  "id": "bank:usmle-step1:gi-large-intestine-water:v1",
+  "rotation": "usmle-step1-open",
+  "topics": [
+    "large intestine",
+    "water absorption",
+    "colonic bacteria"
+  ],
+  "moduleNodes": [
+    "usmle/step1",
+    "usmle/step1/gastrointestinal"
+  ],
+  "questionType": "mechanism",
+  "difficulty": "easy",
+  "stem": "A 65-year-old man undergoes a total colectomy for ulcerative colitis, with his ileum connected to a stoma. Which of the following functions of the removed organ is most directly lost in this patient?",
+  "options": [
+    {
+      "label": "A",
+      "text": "Final digestion of dietary protein by enzymes",
+      "isCorrect": false,
+      "misconception": "A small-intestinal task is being assigned to the colon.",
+      "explanation": "Protein digestion is completed by pancreatic proteases and brush-border enzymes upstream in the small intestine; the colon has no significant enzymatic digestion."
+    },
+    {
+      "label": "B",
+      "text": "Absorption of glucose into the portal blood",
+      "isCorrect": false,
+      "misconception": "A small-intestinal absorptive task is being assigned to the colon.",
+      "explanation": "Glucose is absorbed by sodium cotransport into the capillary blood of small-intestinal villi, well before residue reaches the colon."
+    },
+    {
+      "label": "C",
+      "text": "Production of bile for delivery to the duodenum",
+      "isCorrect": false,
+      "misconception": "A hepatic product is being assigned to the colon.",
+      "explanation": "Bile is produced by hepatocytes and delivered to the duodenum; the colon neither makes nor handles bile production."
+    },
+    {
+      "label": "D",
+      "text": "Absorption of water and formation of the feces",
+      "isCorrect": true,
+      "misconception": "None; the colon's core job is reclaiming water and packaging residue.",
+      "explanation": "The large intestine absorbs water and forms feces, and houses bacterial flora that break down additional carbohydrate residue and synthesize certain vitamins."
+    },
+    {
+      "label": "E",
+      "text": "Secretion of intrinsic factor for later use",
+      "isCorrect": false,
+      "misconception": "A gastric secretion is being assigned to the colon.",
+      "explanation": "Intrinsic factor is secreted by gastric parietal cells and acts on B12 uptake in the ileum; the colon secretes no such factor."
+    }
+  ],
+  "context": "Learning objective: what the colon does. The large intestine absorbs water, forms feces, and hosts bacterial flora that ferment residual carbohydrate and synthesize certain vitamins. Colectomy therefore produces liquid ileal effluent rather than formed stool.",
+  "cite": "openstax-anatomy-physiology#gi-large-intestine-water",
+  "publicUsmle": {
+    "schemaVersion": 1,
+    "origin": "generated",
+    "itemText": {
+      "licence": "CC-BY-4.0",
+      "attribution": "MD3 contributors"
+    },
+    "evidence": {
+      "kind": "passage",
+      "sourceId": "openstax-anatomy-physiology",
+      "passageId": "gi-large-intestine-water",
+      "licence": {
+        "cls": "foss",
+        "id": "cc-by-4.0"
+      }
+    },
+    "media": {
+      "kind": "asset",
+      "assetId": "gi-absorption-v1",
+      "job": "pathway",
+      "showWhen": "after-reveal",
+      "licence": {
+        "cls": "foss",
+        "id": "cc-by-4.0"
+      },
+      "attribution": "MD3 contributors",
+      "contentHash": "sha256:7fa3cf7c6deede7943579ae81371661588ab4f96bae794c6f6acea588dd08d5e"
+    }
+  },
+  "imageUrl": "/figures/usmle/step1/gi-absorption-v1.svg",
+  "imageCaption": "Villi, SGLT1, mucosal barrier, pancreatic enzymes, micelles/chylomicrons, colonic water."
+}

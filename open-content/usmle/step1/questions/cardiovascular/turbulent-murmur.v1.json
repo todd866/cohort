@@ -1,0 +1,85 @@
+{
+  "id": "bank:usmle-step1:cardiovascular-turbulent-murmur:v1",
+  "rotation": "usmle-step1-open",
+  "topics": [
+    "heart murmur",
+    "turbulent flow"
+  ],
+  "moduleNodes": [
+    "usmle/step1",
+    "usmle/step1/cardiovascular"
+  ],
+  "questionType": "mechanism",
+  "difficulty": "medium",
+  "stem": "A 6-year-old girl is found to have a harsh systolic sound on cardiac auscultation, and echocardiography confirms a small ventricular septal defect.\n\nProduction of this abnormal sound is best explained by which of the following changes in blood flow?",
+  "options": [
+    {
+      "label": "A",
+      "text": "Increased viscosity of blood passing through the defect",
+      "isCorrect": false,
+      "misconception": "A fluid-property change is being invoked where flow geometry has changed.",
+      "explanation": "The defect alters the vessel geometry, not the blood's viscosity; viscosity changes do not produce anatomic murmurs."
+    },
+    {
+      "label": "B",
+      "text": "Reduced velocity of flow through the narrowed orifice",
+      "isCorrect": false,
+      "misconception": "Flow velocity through a constriction is being described backward.",
+      "explanation": "Flow accelerates through a narrow opening, and the resulting turbulence (not slowing) is what produces the sound."
+    },
+    {
+      "label": "C",
+      "text": "Transition from laminar to turbulent flow across the defect",
+      "isCorrect": true,
+      "misconception": "None; a murmur is the sound of turbulent flow.",
+      "explanation": "A murmur is an unusual heart sound caused by the turbulent flow of blood; septal and valve defects disturb laminar flow and generate that turbulence."
+    },
+    {
+      "label": "D",
+      "text": "Shortened diastolic filling time of the left ventricle",
+      "isCorrect": false,
+      "misconception": "A timing change is being proposed for a flow-pattern sound.",
+      "explanation": "The sound arises from disturbed flow across the defect during systole; filling time is unrelated to murmur production."
+    },
+    {
+      "label": "E",
+      "text": "Increased compliance of the ventricular walls",
+      "isCorrect": false,
+      "misconception": "A wall-property change is being confused with a flow disturbance.",
+      "explanation": "Murmurs reflect turbulent blood flow, not changes in myocardial distensibility."
+    }
+  ],
+  "context": "Learning objective: explain murmurs physically. A murmur is an unusual sound caused by turbulent flow, typically related to septal or valve defects.",
+  "cite": "openstax-anatomy-physiology#heart-murmur-turbulent-flow",
+  "publicUsmle": {
+    "schemaVersion": 1,
+    "origin": "generated",
+    "itemText": {
+      "licence": "CC-BY-4.0",
+      "attribution": "MD3 contributors"
+    },
+    "evidence": {
+      "kind": "passage",
+      "sourceId": "openstax-anatomy-physiology",
+      "passageId": "heart-murmur-turbulent-flow",
+      "licence": {
+        "cls": "foss",
+        "id": "cc-by-4.0"
+      }
+    },
+    "media": {
+      "kind": "asset",
+      "assetId": "cardiac-cycle-v1",
+      "job": "pathway",
+      "showWhen": "after-reveal",
+      "licence": {
+        "cls": "foss",
+        "id": "cc-by-4.0"
+      },
+      "attribution": "MD3 contributors",
+      "contentHash": "sha256:43f8496970b38f19698023b0a614a4fe08f56ce807aadeebe0c60c1d0dd9d921"
+    }
+  },
+  "imageUrl": "/figures/usmle/step1/cardiac-cycle-v1.svg",
+  "imageCaption": "Cardiac cycle: isovolumic contraction (S1), ejection, isovolumic relaxation (S2), filling."
+}

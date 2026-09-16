@@ -1,0 +1,84 @@
+{
+  "id": "bank:usmle-step1:epi-attributable-proportion:v1",
+  "rotation": "usmle-step1-open",
+  "topics": [
+    "attributable risk"
+  ],
+  "moduleNodes": [
+    "usmle/step1",
+    "usmle/step1/epidemiology"
+  ],
+  "questionType": "mechanism",
+  "difficulty": "easy",
+  "stem": "The attributable proportion (attributable risk percent) is primarily a measure of what?",
+  "options": [
+    {
+      "label": "A",
+      "text": "Only the plasma half-life of digoxin tablets",
+      "isCorrect": false,
+      "misconception": "Pharm distractor — does not match the cited teaching point.",
+      "explanation": "Wrong domain; see the cited source passage for detail."
+    },
+    {
+      "label": "B",
+      "text": "Only the molecular weight of endotoxin lipid A",
+      "isCorrect": false,
+      "misconception": "Micro distractor — does not match the cited teaching point.",
+      "explanation": "Wrong domain; see the cited source passage for detail."
+    },
+    {
+      "label": "C",
+      "text": "Public health impact of a causative exposure factor",
+      "isCorrect": true,
+      "misconception": "None; attributable proportion = public health impact.",
+      "explanation": "CDC: measure of the public health impact of a causative factor."
+    },
+    {
+      "label": "D",
+      "text": "Only the incubation day-range of measles virus",
+      "isCorrect": false,
+      "misconception": "Measles distractor — does not match the cited teaching point.",
+      "explanation": "Wrong domain; see the cited source passage for detail."
+    },
+    {
+      "label": "E",
+      "text": "Only the polysaccharide serogroup of meningococcus",
+      "isCorrect": false,
+      "misconception": "Micro distractor — does not match the cited teaching point.",
+      "explanation": "Wrong domain; see the cited source passage for detail."
+    }
+  ],
+  "context": "Learning objective: attributable proportion.",
+  "cite": "cdc-epi-measures-of-association#attributable-proportion",
+  "publicUsmle": {
+    "schemaVersion": 1,
+    "origin": "generated",
+    "itemText": {
+      "licence": "CC-BY-4.0",
+      "attribution": "MD3 contributors"
+    },
+    "evidence": {
+      "kind": "passage",
+      "sourceId": "cdc-epi-measures-of-association",
+      "passageId": "attributable-proportion",
+      "licence": {
+        "cls": "foss",
+        "id": "us-gov"
+      }
+    },
+    "media": {
+      "kind": "asset",
+      "assetId": "epi-association-measures-v1",
+      "job": "compare-table",
+      "showWhen": "after-reveal",
+      "licence": {
+        "cls": "foss",
+        "id": "cc-by-4.0"
+      },
+      "attribution": "MD3 contributors",
+      "contentHash": "sha256:860c2356041c5e8e5c8bffa114f03b034636d6322d1011f6919cce1b5d0f36e9"
+    }
+  },
+  "imageUrl": "/figures/usmle/step1/epi-association-measures-v1.svg",
+  "imageCaption": "CDC risk ratio, odds ratio, and attributable proportion."
+}

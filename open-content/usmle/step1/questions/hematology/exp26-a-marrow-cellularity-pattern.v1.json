@@ -1,0 +1,71 @@
+{
+  "id": "bank:usmle-step1:exp26-a-marrow-cellularity-pattern:v1",
+  "rotation": "usmle-step1-open",
+  "topics": [
+    "hematology",
+    "aplastic-anemia"
+  ],
+  "moduleNodes": [
+    "usmle/step1",
+    "usmle/step1/hematology"
+  ],
+  "questionType": "diagnosis",
+  "difficulty": "easy",
+  "stem": "A 47-year-old patient reports fatigue, infections that persist, and easy bruising. Blood testing shows reduced counts in multiple cell groups. A marrow specimen has markedly reduced cellularity. Which of the following best unifies these findings?",
+  "options": [
+    {
+      "label": "A",
+      "text": "Increased production of circulating blood cells",
+      "isCorrect": false,
+      "explanation": "Increased production does not account for the low marrow cellularity and reduced circulating counts. The observed pattern instead points toward failure of the production compartment.",
+      "misconception": "Uses increased production to explain both reduced circulating counts and low marrow cellularity."
+    },
+    {
+      "label": "B",
+      "text": "Preserved marrow production with isolated platelet loss",
+      "isCorrect": false,
+      "explanation": "The case describes reduced counts in multiple cell groups and a poorly cellular marrow. Restricting the problem to platelets misses both the broader blood findings and the tissue result.",
+      "misconception": "Reduces a multilineage production pattern to isolated platelet loss while assuming the marrow is preserved."
+    },
+    {
+      "label": "C",
+      "text": "Preserved marrow production with isolated red-cell loss",
+      "isCorrect": false,
+      "explanation": "An isolated red-cell process does not unify prolonged infections, bruising, multilineage count reductions and low marrow cellularity. The production-side abnormality is the more comprehensive explanation.",
+      "misconception": "Reduces a multilineage production pattern to isolated red-cell loss while overlooking the abnormal marrow."
+    },
+    {
+      "label": "D",
+      "text": "Normal production with unchanged circulating cell counts",
+      "isCorrect": false,
+      "explanation": "Both the blood counts and marrow specimen are abnormal in the stem. Assuming normal production and unchanged counts discards the central evidence instead of explaining the symptoms.",
+      "misconception": "Discards both the abnormal blood counts and marrow findings by assuming the measured compartments are normal."
+    },
+    {
+      "label": "E",
+      "text": "Failure of blood-cell production within the marrow",
+      "isCorrect": true,
+      "explanation": "Reduced marrow cellularity and low counts across cell groups support a production defect. Aplastic anemia connects that finding with fatigue, prolonged infections and easy bruising.",
+      "misconception": "No misconception: Low marrow cellularity together with reduced counts across cell groups supports production failure."
+    }
+  ],
+  "context": "Learning objective: recognize a production-side explanation for combined blood-cell deficits. Aplastic anemia involves marrow blood-cell failure, with low cellularity and clinical effects spanning fatigue, infection and bleeding.",
+  "cite": "nhlbi-aplastic-anemia#aplasia-definition",
+  "publicUsmle": {
+    "schemaVersion": 1,
+    "origin": "generated",
+    "itemText": {
+      "licence": "CC-BY-4.0",
+      "attribution": "MD3 contributors"
+    },
+    "evidence": {
+      "kind": "passage",
+      "sourceId": "nhlbi-aplastic-anemia",
+      "passageId": "aplasia-definition",
+      "licence": {
+        "cls": "foss",
+        "id": "us-gov"
+      }
+    }
+  }
+}

@@ -1,0 +1,73 @@
+{
+  "id": "bank:usmle-step1:gi-bile-liver-gallbladder-r3:v1",
+  "rotation": "usmle-step1-open",
+  "ladderId": "bile-production",
+  "topics": [
+    "bile",
+    "cholestasis",
+    "ladder:bile-production"
+  ],
+  "moduleNodes": [
+    "usmle/step1",
+    "usmle/step1/gastrointestinal"
+  ],
+  "questionType": "mechanism",
+  "difficulty": "hard",
+  "stem": "A 58-year-old woman with progressive pruritus and dark urine has scleral icterus and elevated direct bilirubin. Right-upper-quadrant ultrasound shows dilated intrahepatic bile ducts but a normal gallbladder.\n\nWhich of the following best explains why her hepatocytes continue to produce bile despite impaired delivery to the duodenum?",
+  "options": [
+    {
+      "label": "A",
+      "text": "Bile synthesis is a continuous hepatic function independent of downstream duct patency",
+      "isCorrect": true,
+      "misconception": "None; hepatocytes keep making bile even when outflow is obstructed, leading to conjugated hyperbilirubinemia.",
+      "explanation": "Hepatocytes continuously produce and conjugate bile; obstruction prevents delivery to the duodenum but not hepatic synthesis, so direct bilirubin rises and backs up into blood."
+    },
+    {
+      "label": "B",
+      "text": "The gallbladder compensates by synthesizing additional bile salts",
+      "isCorrect": false,
+      "misconception": "The storage organ is being credited with hepatic synthetic capacity.",
+      "explanation": "The gallbladder stores and concentrates bile made by the liver; it cannot synthesize bile salts de novo."
+    },
+    {
+      "label": "C",
+      "text": "Pancreatic acinar cells secrete bile when the common bile duct is blocked",
+      "isCorrect": false,
+      "misconception": "An alternate digestive gland is being assigned a hepatic function.",
+      "explanation": "The pancreas secretes enzymatic juice, not bile; continued bile production in cholestasis reflects ongoing hepatic synthesis."
+    },
+    {
+      "label": "D",
+      "text": "Duodenal CCK stimulation stops all hepatic bile production until ducts reopen",
+      "isCorrect": false,
+      "misconception": "Hormonal regulation is being cast as a complete shutoff of synthesis.",
+      "explanation": "CCK mainly stimulates gallbladder contraction and pancreatic secretion; hepatic bile production continues despite outflow obstruction."
+    },
+    {
+      "label": "E",
+      "text": "Obstruction converts hepatocytes into bile duct epithelium that stores rather than makes bile",
+      "isCorrect": false,
+      "misconception": "A cell-fate change is being proposed instead of continued hepatic synthesis.",
+      "explanation": "Hepatocytes remain the bile source; obstruction impairs excretion, not the synthetic role of the liver."
+    }
+  ],
+  "context": "Learning objective: separate bile production from bile delivery. Hepatocytes continuously produce bile; cholestasis blocks excretion, causing conjugated hyperbilirubinemia while synthesis continues.",
+  "cite": "openstax-anatomy-physiology#gi-bile-liver-gallbladder",
+  "publicUsmle": {
+    "schemaVersion": 1,
+    "origin": "generated",
+    "itemText": {
+      "licence": "CC-BY-4.0",
+      "attribution": "MD3 contributors"
+    },
+    "evidence": {
+      "kind": "passage",
+      "sourceId": "openstax-anatomy-physiology",
+      "passageId": "gi-bile-liver-gallbladder",
+      "licence": {
+        "cls": "foss",
+        "id": "cc-by-4.0"
+      }
+    }
+  }
+}

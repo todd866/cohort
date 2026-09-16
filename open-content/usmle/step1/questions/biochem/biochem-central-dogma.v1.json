@@ -1,0 +1,84 @@
+{
+  "id": "bank:usmle-step1:biochem-central-dogma:v1",
+  "rotation": "usmle-step1-open",
+  "topics": [
+    "central dogma"
+  ],
+  "moduleNodes": [
+    "usmle/step1",
+    "usmle/step1/biochem"
+  ],
+  "questionType": "mechanism",
+  "difficulty": "easy",
+  "stem": "The central dogma of molecular biology describes macromolecular information flow as which sequence?",
+  "options": [
+    {
+      "label": "A",
+      "text": "Glucose to glycogen as the usual forward path",
+      "isCorrect": false,
+      "misconception": "Metabolism, not genetic flow.",
+      "explanation": "Unrelated; see the cited source passage for detail."
+    },
+    {
+      "label": "B",
+      "text": "Protein to RNA to DNA as the usual forward path",
+      "isCorrect": false,
+      "misconception": "That reverses the dogma.",
+      "explanation": "Forward flow is DNA to RNA to protein."
+    },
+    {
+      "label": "C",
+      "text": "Lipid to carbohydrate as the usual forward path",
+      "isCorrect": false,
+      "misconception": "Wrong macromolecules.",
+      "explanation": "Not the dogma; see the cited source passage for detail."
+    },
+    {
+      "label": "D",
+      "text": "DNA to RNA to protein as the usual forward path",
+      "isCorrect": true,
+      "misconception": "None; that is the central dogma summary.",
+      "explanation": "OpenStax: central dogma of DNA-protein synthesis."
+    },
+    {
+      "label": "E",
+      "text": "ATP to heat as the usual forward path",
+      "isCorrect": false,
+      "misconception": "Energy story, not sequence flow.",
+      "explanation": "Unrelated; see the cited source passage for detail."
+    }
+  ],
+  "context": "Learning objective: central dogma links DNA to protein synthesis.",
+  "cite": "openstax-biology-2e#central-dogma",
+  "publicUsmle": {
+    "schemaVersion": 1,
+    "origin": "generated",
+    "itemText": {
+      "licence": "CC-BY-4.0",
+      "attribution": "MD3 contributors"
+    },
+    "evidence": {
+      "kind": "passage",
+      "sourceId": "openstax-biology-2e",
+      "passageId": "central-dogma",
+      "licence": {
+        "cls": "foss",
+        "id": "cc-by-4.0"
+      }
+    },
+    "media": {
+      "kind": "asset",
+      "assetId": "central-dogma-v1",
+      "job": "pathway",
+      "showWhen": "after-reveal",
+      "licence": {
+        "cls": "foss",
+        "id": "cc-by-4.0"
+      },
+      "attribution": "MD3 contributors",
+      "contentHash": "sha256:0ce810ddd023dc4e0622eef9d7e762ef9b14e827233e95fa24085b8e9c6aa32a"
+    }
+  },
+  "imageUrl": "/figures/usmle/step1/central-dogma-v1.svg",
+  "imageCaption": "DNA double helix; strands template replication; codon triplets; central dogma DNA to protein."
+}

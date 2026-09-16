@@ -1,0 +1,85 @@
+{
+  "id": "bank:usmle-step1:biochem-acetyl-coa-gate:v1",
+  "rotation": "usmle-step1-open",
+  "topics": [
+    "acetyl-CoA",
+    "pyruvate"
+  ],
+  "moduleNodes": [
+    "usmle/step1",
+    "usmle/step1/biochem"
+  ],
+  "questionType": "mechanism",
+  "difficulty": "easy",
+  "stem": "Pyruvate dehydrogenase processing yields a two-carbon unit that enters the citric acid cycle. What is that product called?",
+  "options": [
+    {
+      "label": "A",
+      "text": "Acetyl CoA",
+      "isCorrect": true,
+      "misconception": "None; the compound formed is acetyl CoA.",
+      "explanation": "OpenStax names the pyruvate-derived compound acetyl CoA."
+    },
+    {
+      "label": "B",
+      "text": "Oxaloacetate",
+      "isCorrect": false,
+      "misconception": "Oxaloacetate accepts the acetyl group.",
+      "explanation": "It is the cycle partner, not the pyruvate product."
+    },
+    {
+      "label": "C",
+      "text": "Succinyl CoA",
+      "isCorrect": false,
+      "misconception": "A later cycle intermediate.",
+      "explanation": "Not the immediate pyruvate dehydrogenase product."
+    },
+    {
+      "label": "D",
+      "text": "Phosphoenolpyruvate",
+      "isCorrect": false,
+      "misconception": "A glycolytic intermediate upstream of pyruvate.",
+      "explanation": "PEP precedes pyruvate in glycolysis."
+    },
+    {
+      "label": "E",
+      "text": "Citrate",
+      "isCorrect": false,
+      "misconception": "Citrate is the first condensation product after acetyl-CoA entry.",
+      "explanation": "Acetyl-CoA + oxaloacetate makes citrate."
+    }
+  ],
+  "context": "Learning objective: identify acetyl-CoA as the pyruvate-derived citric-cycle entry unit.",
+  "cite": "openstax-biology-2e#acetyl-coa-formation",
+  "publicUsmle": {
+    "schemaVersion": 1,
+    "origin": "generated",
+    "itemText": {
+      "licence": "CC-BY-4.0",
+      "attribution": "MD3 contributors"
+    },
+    "evidence": {
+      "kind": "passage",
+      "sourceId": "openstax-biology-2e",
+      "passageId": "acetyl-coa-formation",
+      "licence": {
+        "cls": "foss",
+        "id": "cc-by-4.0"
+      }
+    },
+    "media": {
+      "kind": "asset",
+      "assetId": "cellular-respiration-v1",
+      "job": "pathway",
+      "showWhen": "after-reveal",
+      "licence": {
+        "cls": "foss",
+        "id": "cc-by-4.0"
+      },
+      "attribution": "MD3 contributors",
+      "contentHash": "sha256:28ae7f955e1024135e9335f39b761f79292b1cc679baed71478eb3efc31f99e5"
+    }
+  },
+  "imageUrl": "/figures/usmle/step1/cellular-respiration-v1.svg",
+  "imageCaption": "Cellular respiration: glycolysis -> pyruvate -> acetyl-CoA -> citric cycle carriers -> ETC/ATP synthase; O2 terminal acceptor; fermentation regenerates NAD+."
+}

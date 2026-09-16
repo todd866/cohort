@@ -1,0 +1,89 @@
+{
+  "id": "bank:usmle-step1:he-hemostasis-three-steps:v1",
+  "rotation": "usmle-step1-open",
+  "ladderId": "hemostasis-cascade",
+  "topics": [
+    "hemostasis",
+    "vascular spasm",
+    "platelet plug",
+    "coagulation",
+    "ladder:hemostasis-cascade"
+  ],
+  "moduleNodes": [
+    "usmle/step1",
+    "usmle/step1/hematology"
+  ],
+  "questionType": "mechanism",
+  "difficulty": "easy",
+  "stem": "A 9-year-old boy cuts his finger while carving wood, and the bleeding stops within minutes without intervention.\n\nWhich of the following sequences correctly orders the steps of hemostasis that sealed this small vessel?",
+  "options": [
+    {
+      "label": "A",
+      "text": "Coagulation, vascular spasm, then platelet plug formation",
+      "isCorrect": false,
+      "misconception": "The fibrin cascade is being placed before the immediate responses.",
+      "explanation": "Fibrin coagulation is the final, slower step; the vessel first spasms and platelets then form a temporary plug that buys time for the clot."
+    },
+    {
+      "label": "B",
+      "text": "Platelet plug formation, fibrinolysis, then vascular spasm",
+      "isCorrect": false,
+      "misconception": "Clot breakdown is being inserted into clot formation.",
+      "explanation": "Fibrinolysis degrades the clot during later healing, not during initial hemostasis; the order is spasm, plug, then coagulation."
+    },
+    {
+      "label": "C",
+      "text": "Coagulation, fibrinolysis, then platelet plug formation",
+      "isCorrect": false,
+      "misconception": "The sequence is being reversed and dissolution misplaced.",
+      "explanation": "Hemostasis begins with vascular spasm, not with the enzymatic cascade, and fibrinolysis occurs days later as the vessel heals."
+    },
+    {
+      "label": "D",
+      "text": "Vascular spasm, platelet plug formation, then coagulation",
+      "isCorrect": true,
+      "misconception": "None; spasm precedes the plug, and the fibrin clot follows.",
+      "explanation": "Hemostasis proceeds in three steps: vascular spasm (dramatic smooth-muscle contraction of the vessel wall), formation of a platelet plug, and coagulation — failure of any step results in hemorrhage."
+    },
+    {
+      "label": "E",
+      "text": "Vascular spasm, fibrinolysis, then coagulation",
+      "isCorrect": false,
+      "misconception": "Clot degradation is being sequenced ahead of clot creation.",
+      "explanation": "Fibrinolysis dissolves an existing clot and cannot precede coagulation; after the spasm, platelets plug the gap and fibrin then stabilizes it."
+    }
+  ],
+  "context": "Learning objective: order the steps of hemostasis. A severed vessel first undergoes vascular spasm as its smooth muscle contracts; platelets then adhere to exposed collagen (stabilized by von Willebrand factor) to form a plug; finally the coagulation cascade lays down fibrin to seal the vessel durably.",
+  "cite": "openstax-anatomy-physiology#he-hemostasis-three-steps",
+  "publicUsmle": {
+    "schemaVersion": 1,
+    "origin": "generated",
+    "itemText": {
+      "licence": "CC-BY-4.0",
+      "attribution": "MD3 contributors"
+    },
+    "evidence": {
+      "kind": "passage",
+      "sourceId": "openstax-anatomy-physiology",
+      "passageId": "he-hemostasis-three-steps",
+      "licence": {
+        "cls": "foss",
+        "id": "cc-by-4.0"
+      }
+    },
+    "media": {
+      "kind": "asset",
+      "assetId": "hemostasis-cascade-v1",
+      "job": "pathway",
+      "showWhen": "after-reveal",
+      "licence": {
+        "cls": "foss",
+        "id": "cc-by-4.0"
+      },
+      "attribution": "MD3 contributors",
+      "contentHash": "sha256:c60ee72abea54034e1edf06eef9bba46971e7a7011610c9a55fe3767aa079a04"
+    }
+  },
+  "imageUrl": "/figures/usmle/step1/hemostasis-cascade-v1.svg",
+  "imageCaption": "Hemostasis steps, factor X convergence, fibrin, plasmin fibrinolysis, heparin."
+}

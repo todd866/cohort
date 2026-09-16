@@ -1,0 +1,71 @@
+{
+  "id": "bank:usmle-step1:exp26-c-matrix-output-cell-transition:v1",
+  "rotation": "usmle-step1-open",
+  "topics": [
+    "musculoskeletal",
+    "matrix-output-cell-transition"
+  ],
+  "moduleNodes": [
+    "usmle/step1",
+    "usmle/step1/musculoskeletal"
+  ],
+  "questionType": "interpretation",
+  "difficulty": "easy",
+  "stem": "A cell is observed depositing collagen-rich bone matrix and contributing to mineral deposition. Later, it becomes surrounded by that matrix and occupies a mature position within bone. Which of the following sequences of cell identities best explains these observations?",
+  "options": [
+    {
+      "label": "A",
+      "text": "Osteoclast followed by osteoblast",
+      "isCorrect": false,
+      "explanation": "Osteoclasts resorb bone rather than first depositing its collagen-rich matrix. The observed matrix-forming cell is an osteoblast, which becomes an osteocyte when enclosed by the matrix.",
+      "misconception": "Assigns initial matrix formation to bone-resorbing osteoclasts."
+    },
+    {
+      "label": "B",
+      "text": "Osteocyte followed by osteoclast",
+      "isCorrect": false,
+      "explanation": "The cell begins with the matrix-forming role of an osteoblast. Its later enclosure corresponds to an osteocyte, not conversion into the bone-resorbing osteoclast lineage.",
+      "misconception": "Misidentifies both the matrix-forming cell and its later enclosed state."
+    },
+    {
+      "label": "C",
+      "text": "Macrophage followed by osteocyte",
+      "isCorrect": false,
+      "explanation": "Macrophage-lineage cells give rise to osteoclasts involved in bone resorption. They do not explain the specified sequence of matrix deposition followed by enclosure as a mature bone cell.",
+      "misconception": "Assigns the osteoblast-to-osteocyte sequence to the macrophage lineage."
+    },
+    {
+      "label": "D",
+      "text": "Osteoblast followed by osteocyte",
+      "isCorrect": true,
+      "explanation": "Osteoblasts produce bone matrix and contribute to mineral deposition. When an osteoblast becomes enclosed in that matrix, it becomes an osteocyte, matching the observed sequence.",
+      "misconception": "No misconception: matrix-forming osteoblasts become osteocytes when enclosed."
+    },
+    {
+      "label": "E",
+      "text": "Osteoclast followed by macrophage",
+      "isCorrect": false,
+      "explanation": "Osteoclasts belong to the monocyte–macrophage lineage and resorb bone. This proposed sequence does not explain either the initial matrix-forming function or the later enclosed bone cell.",
+      "misconception": "Uses a resorptive lineage to explain matrix deposition and cell enclosure."
+    }
+  ],
+  "context": "Learning objective: Distinguish the matrix-forming osteoblast and its osteocyte transition from the bone-resorbing osteoclast lineage.\n\nOsteoblasts produce bone matrix and contribute to mineral deposition. When an osteoblast becomes enclosed in that matrix, it becomes an osteocyte, matching the observed sequence.",
+  "cite": "openstax-anatomy-physiology#ms-bone-cells",
+  "publicUsmle": {
+    "schemaVersion": 1,
+    "origin": "generated",
+    "itemText": {
+      "licence": "CC-BY-4.0",
+      "attribution": "MD3 contributors"
+    },
+    "evidence": {
+      "kind": "passage",
+      "sourceId": "openstax-anatomy-physiology",
+      "passageId": "ms-bone-cells",
+      "licence": {
+        "cls": "foss",
+        "id": "cc-by-4.0"
+      }
+    }
+  }
+}

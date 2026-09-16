@@ -1,0 +1,71 @@
+{
+  "id": "bank:usmle-step1:micro-measles-clinical-recognition:v1",
+  "rotation": "usmle-step1-open",
+  "topics": [
+    "measles",
+    "clinical recognition"
+  ],
+  "moduleNodes": [
+    "usmle/step1",
+    "usmle/step1/microbiology"
+  ],
+  "questionType": "diagnosis",
+  "difficulty": "medium",
+  "stem": "An 8-year-old develops fever to 104°F, cough, coryza, conjunctivitis, Koplik spots, and a rash that begins at the hairline and spreads downward. Which of the following is the most likely diagnosis?",
+  "options": [
+    {
+      "label": "A",
+      "text": "Measles",
+      "isCorrect": true,
+      "misconception": "None; this is the complete CDC measles clinical pattern.",
+      "explanation": "The cited passage describes measles with stepwise high fever, cough, coryza, conjunctivitis, Koplik spots, and a hairline-downward rash."
+    },
+    {
+      "label": "B",
+      "text": "Rubella",
+      "isCorrect": false,
+      "misconception": "A viral exanthem is recognized, but Koplik spots and the cited rash progression are not integrated.",
+      "explanation": "The complete feature cluster in the cited passage supports measles rather than this alternative."
+    },
+    {
+      "label": "C",
+      "text": "Varicella",
+      "isCorrect": false,
+      "misconception": "A childhood rash diagnosis is selected without matching the cited respiratory prodrome and rash direction.",
+      "explanation": "Cough, coryza, conjunctivitis, Koplik spots, and downward spread from the hairline form the passage-grounded measles pattern."
+    },
+    {
+      "label": "D",
+      "text": "Scarlet fever",
+      "isCorrect": false,
+      "misconception": "High fever and rash are over-weighted while the three respiratory findings and Koplik spots are ignored.",
+      "explanation": "The cited combination of cough, coryza, conjunctivitis, Koplik spots, and a descending rash identifies measles among these choices."
+    },
+    {
+      "label": "E",
+      "text": "Roseola",
+      "isCorrect": false,
+      "misconception": "Fever plus rash is treated as sufficient despite the passage's mucosal and respiratory findings.",
+      "explanation": "The stem reproduces the broader CDC measles cluster, including Koplik spots and hairline-to-downward rash progression."
+    }
+  ],
+  "context": "Learning objective: recognize the measles sequence. After its incubation and prodrome, measles combines stepwise high fever, cough, coryza, conjunctivitis, Koplik spots, and a rash that begins at the hairline and proceeds downward.",
+  "cite": "cdc-pink-book-measles#measles-incubation-rash",
+  "publicUsmle": {
+    "schemaVersion": 1,
+    "origin": "generated",
+    "itemText": {
+      "licence": "CC-BY-4.0",
+      "attribution": "MD3 contributors"
+    },
+    "evidence": {
+      "kind": "passage",
+      "sourceId": "cdc-pink-book-measles",
+      "passageId": "measles-incubation-rash",
+      "licence": {
+        "cls": "foss",
+        "id": "us-gov"
+      }
+    }
+  }
+}

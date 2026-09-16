@@ -1,0 +1,71 @@
+{
+  "id": "bank:usmle-step1:exp26-a-igra-positive-followthrough:v1",
+  "rotation": "usmle-step1-open",
+  "topics": [
+    "immunology",
+    "tb-immune-testing"
+  ],
+  "moduleNodes": [
+    "usmle/step1",
+    "usmle/step1/immunology"
+  ],
+  "questionType": "interpretation",
+  "difficulty": "medium",
+  "stem": "A 36-year-old patient has an IGRA reported as positive after white blood cells are exposed to the assay's antigens. The patient asks whether this means active TB has already been diagnosed. Which of the following best interprets the result?",
+  "options": [
+    {
+      "label": "A",
+      "text": "Antigen-responsive leukocytes establish activity; further evaluation is redundant",
+      "isCorrect": false,
+      "explanation": "The assay provides supportive evidence of infection but does not distinguish active disease by itself. This interpretation overstates the result by treating the remaining disease evaluation as unnecessary.",
+      "misconception": "Treats a positive immune response as sufficient to establish activity and dispense with disease evaluation."
+    },
+    {
+      "label": "B",
+      "text": "Prior BCG explains the result; the measured blood response lacks significance",
+      "isCorrect": false,
+      "explanation": "BCG is not the stated cause of a false-positive IGRA. Dismissing the result on that basis confuses the blood assay with the vaccination-related skin-test issue.",
+      "misconception": "Applies the BCG-related skin-test confounder to a positive IGRA."
+    },
+    {
+      "label": "C",
+      "text": "Antigen-responsive leukocytes support infection; disease activity needs evaluation",
+      "isCorrect": true,
+      "explanation": "IGRA measures an antigen-stimulated interferon-gamma response from white cells. A positive infection result does not itself establish active disease, so evaluation of activity remains necessary.",
+      "misconception": "No misconception: The measured leukocyte response supports infection evaluation without establishing disease activity."
+    },
+    {
+      "label": "D",
+      "text": "Measured chest abnormalities establish infection; the immune response is inferred",
+      "isCorrect": false,
+      "explanation": "The described assay measures a white-cell response, not a radiographic finding. Chest imaging belongs to the disease evaluation and cannot be substituted for this laboratory measurement.",
+      "misconception": "Substitutes a radiographic abnormality for the white-cell response actually measured by the assay."
+    },
+    {
+      "label": "E",
+      "text": "Measured skin induration establishes infection; the blood response is inferred",
+      "isCorrect": false,
+      "explanation": "Induration is the readout of the skin test. It is not what the blood assay measures after antigen stimulation of the patient's white blood cells.",
+      "misconception": "Confuses the skin-test induration readout with the antigen-stimulated blood-assay response."
+    }
+  ],
+  "context": "Learning objective: connect the IGRA readout to its biological measurement while preserving the infection-versus-disease distinction. Antigen-stimulated interferon-gamma release provides a supportive infection signal that requires further disease evaluation.",
+  "cite": "cdc-latent-tb-clinical#igra-response",
+  "publicUsmle": {
+    "schemaVersion": 1,
+    "origin": "generated",
+    "itemText": {
+      "licence": "CC-BY-4.0",
+      "attribution": "MD3 contributors"
+    },
+    "evidence": {
+      "kind": "passage",
+      "sourceId": "cdc-latent-tb-clinical",
+      "passageId": "igra-response",
+      "licence": {
+        "cls": "foss",
+        "id": "us-gov"
+      }
+    }
+  }
+}

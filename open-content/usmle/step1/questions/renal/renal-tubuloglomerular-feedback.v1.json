@@ -1,0 +1,88 @@
+{
+  "id": "bank:usmle-step1:renal-tubuloglomerular-feedback:v1",
+  "rotation": "usmle-step1-open",
+  "topics": [
+    "tubuloglomerular feedback",
+    "macula densa",
+    "autoregulation",
+    "ladder:glomerular-filtration"
+  ],
+  "moduleNodes": [
+    "usmle/step1",
+    "usmle/step1/renal"
+  ],
+  "questionType": "mechanism",
+  "difficulty": "hard",
+  "stem": "In an experiment on a healthy 26-year-old volunteer, a sustained rise in glomerular filtration rate increases the flow of tubular fluid past the macula densa.\n\nWhich of the following sequences most directly restores the filtration rate toward baseline?",
+  "options": [
+    {
+      "label": "A",
+      "text": "Juxtaglomerular cells increase renin secretion, raising systemic angiotensin II",
+      "isCorrect": false,
+      "misconception": "A slower endocrine pressor pathway is being substituted for the local feedback loop.",
+      "explanation": "Tubuloglomerular feedback acts locally through ATP and adenosine on the afferent arteriole; renin release responds to decreased perfusion, not to an acute rise in filtration."
+    },
+    {
+      "label": "B",
+      "text": "Macula densa cells release nitric oxide, dilating the efferent arteriole",
+      "isCorrect": false,
+      "misconception": "The fine-tuning vasodilator is being cast as the primary negative-feedback signal, and at the wrong arteriole.",
+      "explanation": "Nitric oxide relaxes the afferent arteriole and opposes the ATP/adenosine signal; the feedback that lowers an elevated GFR is adenosine-mediated constriction of the afferent vessel."
+    },
+    {
+      "label": "C",
+      "text": "Macula densa cells release ATP and adenosine, constricting the afferent arteriole",
+      "isCorrect": true,
+      "misconception": "None; increased distal NaCl and flow trigger paracrine constriction of the afferent arteriole.",
+      "explanation": "When filtration rises, more NaCl reaches the macula densa; the activated cells release ATP and adenosine, which act as paracrine factors that constrict the afferent arteriole, slowing blood flow and reducing GFR."
+    },
+    {
+      "label": "D",
+      "text": "Principal cells insert aquaporin channels, diverting water from the tubule",
+      "isCorrect": false,
+      "misconception": "A collecting-duct water mechanism is being credited with changing glomerular filtration.",
+      "explanation": "Aquaporin insertion alters water recovery downstream of the glomerulus; it does not feed back on the filtration rate, which is controlled at the afferent arteriole."
+    },
+    {
+      "label": "E",
+      "text": "Sympathetic nerve activity rises, dilating the afferent arteriole",
+      "isCorrect": false,
+      "misconception": "Both the direction of the vascular response and the neural mechanism are wrong.",
+      "explanation": "Increased sympathetic firing constricts, not dilates, renal arterioles; the moment-to-moment feedback to a high GFR is the local macula densa paracrine mechanism."
+    }
+  ],
+  "context": "Learning objective: trace tubuloglomerular feedback. High distal NaCl/flow activates macula densa cells to release ATP and adenosine, constricting the afferent arteriole and reducing GFR.",
+  "cite": "openstax-anatomy-physiology#renal-tubuloglomerular-feedback",
+  "publicUsmle": {
+    "schemaVersion": 1,
+    "origin": "generated",
+    "itemText": {
+      "licence": "CC-BY-4.0",
+      "attribution": "MD3 contributors"
+    },
+    "evidence": {
+      "kind": "passage",
+      "sourceId": "openstax-anatomy-physiology",
+      "passageId": "renal-tubuloglomerular-feedback",
+      "licence": {
+        "cls": "foss",
+        "id": "cc-by-4.0"
+      }
+    },
+    "media": {
+      "kind": "asset",
+      "assetId": "nephron-overview-v1",
+      "job": "anatomy",
+      "showWhen": "after-reveal",
+      "licence": {
+        "cls": "foss",
+        "id": "cc-by-4.0"
+      },
+      "attribution": "MD3 contributors",
+      "contentHash": "sha256:594f7ddfca37a265ea925ffa5348bce222990740b857a75cf8669f0ba5f715fa"
+    }
+  },
+  "imageUrl": "/figures/usmle/step1/nephron-overview-v1.svg",
+  "imageCaption": "Nephron segments: filtration, PCT, loop, DCT, collecting duct (ADH aquaporins).",
+  "ladderId": "glomerular-filtration"
+}

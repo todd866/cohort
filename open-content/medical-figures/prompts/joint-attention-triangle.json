@@ -1,0 +1,36 @@
+{
+  "schemaVersion": 1,
+  "figureId": "joint-attention-triangle",
+  "sourceFacts": [
+    "Joint attention means sharing focus on an object or event with another person.",
+    "Looking or gesturing between a person and an interesting object can communicate shared interest."
+  ],
+  "clinicalSources": [
+    {
+      "title": "NICHD: Joint Attention Therapy for Autism",
+      "url": "https://www.nichd.nih.gov/health/topics/autism/conditioninfo/treatments/joint-attention"
+    },
+    {
+      "title": "AAP HealthyChildren: Early Signs of Autism",
+      "url": "https://www.healthychildren.org/English/health-issues/conditions/Autism/Pages/Early-Signs-of-Autism-Spectrum-Disorders.aspx"
+    }
+  ],
+  "prompt": "Create a polished original medical teaching illustration in landscape 3:2 format. Use the attached MD3 original solely as a style reference: warm watercolour/gouache on an ivory paper background, delicate ink contours, calm navy labels, muted ochre/peach/teal colours, generous whitespace and clear flat anatomical shapes. Anatomical clarity before decoration. Never photorealistic skin, glossy blood, wet flesh, fat lobules, scary faces, chunky 3D tissue blocks, or a fake scan. Only exact requested labels, clean legible short text. Footer 'Educational schematic'. No watermark, logos or attribution in the pixels. Compose an entirely new subject from the clinical specification, not the scalp content in the reference.\n\nWarm hand-painted teaching scene. A fully clothed toddler at lower left points with one hand toward a small toy bird on a low table at top centre. Caregiver kneels at lower right looking toward the toy, gentle attentive expression. Toddler head turned partially toward caregiver, showing sharing interest rather than simply reaching to obtain toy. Three thin curved teal connectors form a triangle CHILD\u2194CAREGIVER\u2194TOY\u2194CHILD; no arrows from eyeballs. Small labels 'Child', 'Caregiver', 'Shared object'. Title 'Joint attention'. Bottom 'Sharing a focus with another person'. Plain cream background, restrained colour, no autism diagnosis, no rating score, no forcing eye contact or physical restraint.",
+  "generation": {
+    "tool": "built-in image_gen",
+    "model": null,
+    "referenceAssetIds": [],
+    "externalReferenceImages": [],
+    "archivedReferenceAssets": [
+      {
+        "id": "neonatal-scalp-comparison",
+        "sha256": "96be407e6f065a3a53d1302050758c029a49cf875ae39f2245c87d0cae34e478",
+        "role": "style-only",
+        "reason": "Withheld pending anatomical scaffold review"
+      }
+    ]
+  },
+  "specificationFiles": [
+    "scaffolds/joint-attention-triangle.json"
+  ]
+}

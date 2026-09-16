@@ -1,0 +1,71 @@
+{
+  "id": "bank:usmle-step1:exp26-a-missense-preserved-function:v1",
+  "rotation": "usmle-step1-open",
+  "topics": [
+    "genetics",
+    "coding-substitutions"
+  ],
+  "moduleNodes": [
+    "usmle/step1",
+    "usmle/step1/genetics"
+  ],
+  "questionType": "interpretation",
+  "difficulty": "easy",
+  "stem": "A laboratory changes one nucleotide in a hypothetical coding sequence. The resulting protein has one substituted amino acid, its original length, and unchanged activity in the specified assay. Which of the following best characterizes this result?",
+  "options": [
+    {
+      "label": "A",
+      "text": "Nonsense change with preserved measured protein activity",
+      "isCorrect": false,
+      "explanation": "A nonsense change introduces a premature stop. Here the protein retains its original length and has a substituted residue, supporting a missense classification instead.",
+      "misconception": "Classifies a residue substitution as premature termination despite preserved protein length."
+    },
+    {
+      "label": "B",
+      "text": "Frameshift change with demonstrated loss of protein activity",
+      "isCorrect": false,
+      "explanation": "The experiment reports a nucleotide substitution and one amino-acid replacement, not a nontriplet insertion or deletion. It also explicitly reports preserved measured activity.",
+      "misconception": "Infers both a frameshift and functional loss from observations showing a substitution with preserved activity."
+    },
+    {
+      "label": "C",
+      "text": "Nonsense change with demonstrated shortening of the protein",
+      "isCorrect": false,
+      "explanation": "The protein length is unchanged. A result involving premature termination and shortening would require different sequence and protein observations from those supplied here.",
+      "misconception": "Assumes premature termination and shortening even though the measured protein remains full length."
+    },
+    {
+      "label": "D",
+      "text": "Missense change with preserved measured protein activity",
+      "isCorrect": true,
+      "explanation": "An amino-acid substitution identifies a missense change. The unchanged assay result shows that classification alone does not establish functional impairment in the tested setting.",
+      "misconception": "No misconception: A missense classification describes the substitution without requiring measured functional loss."
+    },
+    {
+      "label": "E",
+      "text": "Missense change with demonstrated loss of protein activity",
+      "isCorrect": false,
+      "explanation": "The sequence change fits a missense category, but loss of function was not observed. This choice replaces the measured activity with an unsupported functional conclusion.",
+      "misconception": "Treats every missense change as functionally damaging despite the unchanged assay result."
+    }
+  ],
+  "context": "Learning objective: separate variant classification from measured functional impact. An amino-acid substitution is a missense change even when the tested protein activity is preserved.",
+  "cite": "nhgri-missense#missense-definition",
+  "publicUsmle": {
+    "schemaVersion": 1,
+    "origin": "generated",
+    "itemText": {
+      "licence": "CC-BY-4.0",
+      "attribution": "MD3 contributors"
+    },
+    "evidence": {
+      "kind": "passage",
+      "sourceId": "nhgri-missense",
+      "passageId": "missense-definition",
+      "licence": {
+        "cls": "foss",
+        "id": "us-gov"
+      }
+    }
+  }
+}

@@ -1,0 +1,74 @@
+{
+  "id": "bank:usmle-step1:cardiovascular-cardiac-cycle-r3:v1",
+  "rotation": "usmle-step1-open",
+  "ladderId": "cardiac-cycle",
+  "topics": [
+    "cardiac cycle",
+    "heart sounds",
+    "isovolumic relaxation",
+    "ladder:cardiac-cycle"
+  ],
+  "moduleNodes": [
+    "usmle/step1",
+    "usmle/step1/cardiovascular"
+  ],
+  "questionType": "mechanism",
+  "difficulty": "hard",
+  "stem": "A 67-year-old man with long-standing hypertension undergoes left heart catheterization with simultaneous phonocardiography and left ventricular pressure-volume recording. Immediately after the end of ejection, ventricular pressure falls rapidly while ventricular volume remains unchanged and no blood enters the ventricle. A sharp sound is recorded at the onset of this interval.\n\nWhich of the following valve events most directly produces this sound?",
+  "options": [
+    {
+      "label": "A",
+      "text": "Simultaneous opening of all four heart valves",
+      "isCorrect": false,
+      "misconception": "An impossible valve configuration is being proposed for a normal sound.",
+      "explanation": "All four valves never open together in the normal cycle; the second heart sound is produced specifically by closure of the semilunar valves."
+    },
+    {
+      "label": "B",
+      "text": "Closure of the mitral and tricuspid valves",
+      "isCorrect": false,
+      "misconception": "The onset-of-systole atrioventricular closure is being credited with the post-ejection sound.",
+      "explanation": "Mitral and tricuspid valve closure produces the first heart sound at the start of systole; the sound recorded after ejection ends reflects semilunar valve closure."
+    },
+    {
+      "label": "C",
+      "text": "Closure of the aortic and pulmonary valves",
+      "isCorrect": true,
+      "misconception": "None; semilunar valve closure marks the start of isovolumic relaxation and produces S2.",
+      "explanation": "When ventricular pressure falls below arterial pressure at the end of systole, the semilunar valves close, producing the second heart sound and beginning isovolumic relaxation with all valves shut."
+    },
+    {
+      "label": "D",
+      "text": "Opening of the atrioventricular valves during ventricular filling",
+      "isCorrect": false,
+      "misconception": "A silent diastolic opening event is being substituted for an audible closure.",
+      "explanation": "Atrioventricular valves open silently during diastole when atrial pressure exceeds ventricular pressure; the audible event after ejection is semilunar closure."
+    },
+    {
+      "label": "E",
+      "text": "Opening of the semilunar valves at the start of ejection",
+      "isCorrect": false,
+      "misconception": "The ejection-phase opening event is being placed at the post-ejection interval.",
+      "explanation": "Semilunar valves open when ventricular pressure exceeds arterial pressure to begin ejection; the interval described follows ejection and ends with their closure."
+    }
+  ],
+  "context": "Learning objective: link S2 to isovolumic relaxation. After ejection, falling ventricular pressure closes the semilunar valves (S2), then both valve sets remain shut during isovolumic relaxation before atrioventricular valves reopen for filling.",
+  "cite": "openstax-anatomy-physiology#heart-diastole-valve-states",
+  "publicUsmle": {
+    "schemaVersion": 1,
+    "origin": "generated",
+    "itemText": {
+      "licence": "CC-BY-4.0",
+      "attribution": "MD3 contributors"
+    },
+    "evidence": {
+      "kind": "passage",
+      "sourceId": "openstax-anatomy-physiology",
+      "passageId": "heart-diastole-valve-states",
+      "licence": {
+        "cls": "foss",
+        "id": "cc-by-4.0"
+      }
+    }
+  }
+}

@@ -1,0 +1,71 @@
+{
+  "id": "bank:usmle-step1:exp26-b-central-apnea-drive:v1",
+  "rotation": "usmle-step1-open",
+  "topics": [
+    "respiratory",
+    "central-apnea-drive"
+  ],
+  "moduleNodes": [
+    "usmle/step1",
+    "usmle/step1/respiratory"
+  ],
+  "questionType": "mechanism",
+  "difficulty": "medium",
+  "stem": "A sleep study shows intermittent pauses in breathing while the upper airway remains patent. During an episode, rising blood carbon dioxide produces little increase in inspiratory stimulation. Which of the following failures most directly accounts for this pattern?",
+  "options": [
+    {
+      "text": "Excessive inspiratory stimulation despite a patent airway",
+      "explanation": "The airway condition matches the study, but the stimulation direction is reversed. The observed episodes occur with inadequate inspiratory activation rather than excessive drive.",
+      "isCorrect": false,
+      "label": "A",
+      "misconception": "Reverses the measured drive abnormality by calling inadequate inspiratory stimulation excessive."
+    },
+    {
+      "text": "Reduced respiratory-center response to carbon dioxide",
+      "explanation": "The airway remains open, so a mechanical obstruction does not explain the pauses. An inadequate respiratory-center response to carbon dioxide accounts for absent inspiratory stimulation.",
+      "isCorrect": true,
+      "label": "B",
+      "misconception": "No misconception: poor respiratory-center response to carbon dioxide explains inadequate drive with a patent airway."
+    },
+    {
+      "text": "Excessive pharyngeal relaxation closing the upper airway",
+      "explanation": "This would produce an obstructive mechanism, but the study confirms a patent airway during the event. The measured defect instead concerns the response driving inspiration.",
+      "isCorrect": false,
+      "label": "C",
+      "misconception": "Assumes pharyngeal obstruction despite documented airway patency during the pause."
+    },
+    {
+      "text": "Increased respiratory-center response to carbon dioxide",
+      "explanation": "An increased response would strengthen the drive to breathe as carbon dioxide rises. It conflicts with the recorded failure to increase inspiratory stimulation.",
+      "isCorrect": false,
+      "label": "D",
+      "misconception": "Predicts an increased carbon dioxide response despite the recorded failure to increase inspiratory drive."
+    },
+    {
+      "text": "Increased hydrogen-ion stimulation of central receptors",
+      "explanation": "Hydrogen-ion stimulation supplies the normal central response to increased carbon dioxide. The case identifies failure of that drive rather than an increase in its effectiveness.",
+      "isCorrect": false,
+      "label": "E",
+      "misconception": "Treats increased hydrogen-ion stimulation as the explanation for a failure of central respiratory drive."
+    }
+  ],
+  "context": "Learning objective: Localize sleep-related respiratory pauses to deficient central drive when mechanical obstruction is excluded. The airway remains open, so a mechanical obstruction does not explain the pauses. An inadequate respiratory-center response to carbon dioxide accounts for absent inspiratory stimulation.",
+  "cite": "openstax-ap1-breathing#central-apnea",
+  "publicUsmle": {
+    "schemaVersion": 1,
+    "origin": "generated",
+    "itemText": {
+      "licence": "CC-BY-4.0",
+      "attribution": "MD3 contributors"
+    },
+    "evidence": {
+      "kind": "passage",
+      "sourceId": "openstax-ap1-breathing",
+      "passageId": "central-apnea",
+      "licence": {
+        "cls": "foss",
+        "id": "cc-by-4.0"
+      }
+    }
+  }
+}

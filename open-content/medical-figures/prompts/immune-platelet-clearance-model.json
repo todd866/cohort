@@ -1,0 +1,40 @@
+{
+  "figureId": "immune-platelet-clearance-model",
+  "tool": "built-in image_gen",
+  "model": null,
+  "referenceAssetIds": [],
+  "externalReferenceImages": [],
+  "prompt": "Original educational conceptual illustration, landscape 3:2. Warm ivory paper, sophisticated hand-painted gouache/watercolour, confident fine brown outlines, navy lettering, restrained teal, coral and amber. Editorial science illustration with spacious composition and large legible labels. The explanatory structure must carry the meaning visually: molecules, objects, geometry or flow; never paragraphs in boxes. No organs, regional anatomy, teeth or joint cutaways, tissue layers, invented histology, diagnostic photographs, radiographs or patient data. All symbols are explicitly conceptual. Footer: 'Conceptual teaching model • Not to scale'. Title: 'ITP: immune recognition and clearance'. A horizontal visual sequence of exactly three large stages without rectangular boxes: left one small purple oval platelet, centre the same platelet with six simple teal rounded antibody-marker tabs (not molecular Y shapes) attached to its OUTER SURFACE, right one much larger soft coral C-shaped abstract immune-clearance symbol gently enclosing that tagged platelet. Do not draw a realistic cell, nucleus, organ, spleen or blood vessel. The C shape is a conceptual engulfment icon only, with no cell organelles. Navy arrows connect left to centre to right. Labels below: 'Platelet', 'Antibody recognition', 'Immune clearance'. Under the last stage, a small group of three purple platelet dots instead of a larger faint group implies 'Fewer circulating platelets'. Bottom short sentence: 'Reduced production may also contribute'. Use graceful molecular-object composition; no extra claims.",
+  "clinicalSources": [
+    {
+      "title": "NHLBI — Immune thrombocytopenia",
+      "url": "https://www.nhlbi.nih.gov/health/immune-thrombocytopenia"
+    }
+  ],
+  "teaching": {
+    "question": "How can immune recognition reduce circulating platelet numbers in ITP?",
+    "answer": "Antibodies may coat platelets and promote their removal by immune cells. Reduced platelet production can also contribute.",
+    "imageRole": "after-reveal"
+  },
+  "title": "Immune recognition and platelet clearance",
+  "caption": "Antibodies can mark platelets for immune clearance in ITP. Reduced platelet production may also contribute to the low count.",
+  "alt": "Three-stage conceptual sequence of an uncoated platelet, antibody-coated platelet and engulfment by a simplified immune-clearance symbol.",
+  "rejectedAttempts": [
+    {
+      "reason": "Antibody Y stalks touched the platelet surface, implying reversed antigen-binding orientation. Replace Ys with explicitly abstract marker tabs."
+    }
+  ],
+  "review": {
+    "status": "pending-independent-qa",
+    "method": "agent-visual-and-source-review",
+    "notes": "Full pixel-to-specification review: three stages run left to right; abstract teal tabs mark the platelet surface and avoid incorrect antibody-domain orientation. A geometric C surrounds the marked platelet; no spleen, organ or tissue is drawn. Reduced production is explicitly acknowledged. The first Y-shaped attempt was rejected and is not used.",
+    "structure": {
+      "kind": "conceptual",
+      "status": "verified",
+      "specificationFiles": [
+        "scaffolds/immune-platelet-clearance-model.json"
+      ],
+      "notes": "Full pixel-to-specification review: three stages run left to right; abstract teal tabs mark the platelet surface and avoid incorrect antibody-domain orientation. A geometric C surrounds the marked platelet; no spleen, organ or tissue is drawn. Reduced production is explicitly acknowledged. The first Y-shaped attempt was rejected and is not used."
+    }
+  }
+}

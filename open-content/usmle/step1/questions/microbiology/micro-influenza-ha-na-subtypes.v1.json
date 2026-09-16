@@ -1,0 +1,72 @@
+{
+  "id": "bank:usmle-step1:micro-influenza-ha-na-subtypes:v1",
+  "rotation": "usmle-step1-open",
+  "topics": [
+    "influenza",
+    "hemagglutinin",
+    "neuraminidase"
+  ],
+  "moduleNodes": [
+    "usmle/step1",
+    "usmle/step1/microbiology"
+  ],
+  "questionType": "interpretation",
+  "difficulty": "medium",
+  "stem": "A laboratory report labels an influenza A isolate H3N2. Which pair of viral components is encoded by these two subtype designations?",
+  "options": [
+    {
+      "label": "A",
+      "text": "Matrix protein and nucleoprotein antigens",
+      "isCorrect": false,
+      "misconception": "Substitutes internal viral proteins for the two named surface antigens.",
+      "explanation": "The H and N subtype labels refer to hemagglutinin and neuraminidase, not matrix protein and nucleoprotein."
+    },
+    {
+      "label": "B",
+      "text": "Hemagglutinin and nucleoprotein antigens",
+      "isCorrect": false,
+      "misconception": "Identifies H correctly but expands N as nucleoprotein.",
+      "explanation": "H denotes hemagglutinin, but N denotes neuraminidase rather than nucleoprotein."
+    },
+    {
+      "label": "C",
+      "text": "Helicase and neuraminidase antigens",
+      "isCorrect": false,
+      "misconception": "Identifies N correctly but expands H as helicase.",
+      "explanation": "N denotes neuraminidase, but H denotes hemagglutinin rather than helicase."
+    },
+    {
+      "label": "D",
+      "text": "Polymerase and matrix protein antigens",
+      "isCorrect": false,
+      "misconception": "Substitutes replication and structural proteins for the subtype antigens.",
+      "explanation": "Neither polymerase nor matrix protein supplies the H or N surface-antigen designation."
+    },
+    {
+      "label": "E",
+      "text": "Hemagglutinin and neuraminidase antigens",
+      "isCorrect": true,
+      "misconception": "Correctly expands both subtype-designating surface antigens.",
+      "explanation": "Type A influenza subtypes are determined by hemagglutinin (H) and neuraminidase (N)."
+    }
+  ],
+  "context": "Learning objective: decode influenza A subtype names. Their two surface-antigen coordinates are hemagglutinin (H) and neuraminidase (N); the checked passage notes 18 H subtypes and 11 N subtypes.",
+  "cite": "cdc-pink-book-influenza#influenza-type-a-subtypes",
+  "publicUsmle": {
+    "schemaVersion": 1,
+    "origin": "generated",
+    "itemText": {
+      "licence": "CC-BY-4.0",
+      "attribution": "MD3 contributors"
+    },
+    "evidence": {
+      "kind": "passage",
+      "sourceId": "cdc-pink-book-influenza",
+      "passageId": "influenza-type-a-subtypes",
+      "licence": {
+        "cls": "foss",
+        "id": "us-gov"
+      }
+    }
+  }
+}

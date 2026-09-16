@@ -1,0 +1,71 @@
+{
+  "id": "bank:usmle-step1:exp26-a-tb-infection-versus-disease:v1",
+  "rotation": "usmle-step1-open",
+  "topics": [
+    "microbiology",
+    "tb-containment"
+  ],
+  "moduleNodes": [
+    "usmle/step1",
+    "usmle/step1/microbiology"
+  ],
+  "questionType": "interpretation",
+  "difficulty": "easy",
+  "stem": "A 29-year-old adult has a positive TB immune test. Evaluation finds no symptoms, a normal chest radiograph, and negative sputum smears and cultures obtained during the assessment. The clinician diagnoses latent infection after reviewing the combined evidence. Which of the following interpretations best explains the role of the initial result?",
+  "options": [
+    {
+      "label": "A",
+      "text": "It establishes active disease without clinical assessment",
+      "isCorrect": false,
+      "explanation": "An infection-directed immune assay does not independently establish active TB. This interpretation omits the disease evaluation needed to distinguish a contained infection from active disease.",
+      "misconception": "Equates a positive infection-directed immune result with an established diagnosis of active disease."
+    },
+    {
+      "label": "B",
+      "text": "It excludes infection when chest imaging appears normal",
+      "isCorrect": false,
+      "explanation": "Normal chest imaging is compatible with latent infection. Treating it as exclusion of infection confuses the role of structural disease assessment with an infection-directed immune response.",
+      "misconception": "Uses normal structural imaging to exclude an infection that may remain latent."
+    },
+    {
+      "label": "C",
+      "text": "It directly counts organisms in the sampled sputum",
+      "isCorrect": false,
+      "explanation": "The initial result comes from an immune test rather than sputum organism measurement. These are separate investigations with different readouts and roles in the combined assessment.",
+      "misconception": "Confuses an immune assay readout with direct organism measurement in a sputum specimen."
+    },
+    {
+      "label": "D",
+      "text": "It establishes contagiousness despite the disease assessment",
+      "isCorrect": false,
+      "explanation": "A positive immune test does not establish current transmission. The diagnosed latent state is nontransmitting, and the assay alone cannot override the assessment of disease activity.",
+      "misconception": "Infers current transmission from a positive immune result despite the separate latent-infection assessment."
+    },
+    {
+      "label": "E",
+      "text": "It supports infection but does not determine disease activity",
+      "isCorrect": true,
+      "explanation": "A positive immune result supports evaluation for TB infection, but false-positive results remain possible. It does not determine active disease; the combined clinical assessment establishes the classification.",
+      "misconception": "No misconception: An immune result supports infection assessment while disease activity requires combined evaluation."
+    }
+  ],
+  "context": "Learning objective: Interpret a positive TB immune test as supportive rather than infallible evidence of infection. Disease activity and the latent classification require the broader assessment; sputum smear/culture findings are specific tests, not a universal sputum-test rule.",
+  "cite": "cdc-latent-tb-clinical#latent-status",
+  "publicUsmle": {
+    "schemaVersion": 1,
+    "origin": "generated",
+    "itemText": {
+      "licence": "CC-BY-4.0",
+      "attribution": "MD3 contributors"
+    },
+    "evidence": {
+      "kind": "passage",
+      "sourceId": "cdc-latent-tb-clinical",
+      "passageId": "latent-status",
+      "licence": {
+        "cls": "foss",
+        "id": "us-gov"
+      }
+    }
+  }
+}

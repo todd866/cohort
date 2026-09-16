@@ -1,0 +1,85 @@
+{
+  "schemaVersion": 1,
+  "id": "concept-reflux-infection-risk",
+  "kind": "conceptual",
+  "sourceFacts": [
+    {
+      "fact": "Vesicoureteric reflux permits backward urine flow from the bladder toward ureters and sometimes kidneys.",
+      "sourceUrls": [
+        "https://www.niddk.nih.gov/health-information/urologic-diseases/hydronephrosis-newborns/vesicoureteral-reflux"
+      ]
+    },
+    {
+      "fact": "VUR increases UTI risk; some UTIs can cause renal scarring.",
+      "sourceUrls": [
+        "https://www.niddk.nih.gov/health-information/urologic-diseases/hydronephrosis-newborns/vesicoureteral-reflux"
+      ]
+    }
+  ],
+  "nodes": [
+    {
+      "id": "1",
+      "label": "Vesicoureteric reflux"
+    },
+    {
+      "id": "2",
+      "label": "Urine flows backward"
+    },
+    {
+      "id": "3",
+      "label": "Urinary infections are more likely"
+    },
+    {
+      "id": "4",
+      "label": "Some infections cause renal scarring"
+    }
+  ],
+  "edges": [
+    {
+      "from": "1",
+      "to": "2",
+      "meaning": "definition"
+    },
+    {
+      "from": "2",
+      "to": "3",
+      "meaning": "raises risk"
+    },
+    {
+      "from": "3",
+      "to": "4",
+      "meaning": "possible complication"
+    }
+  ],
+  "labels": [
+    "Why urinary reflux increases infection risk",
+    "Vesicoureteric reflux",
+    "Urine flows backward",
+    "Urinary infections are more likely",
+    "Some infections cause renal scarring",
+    "Conceptual schematic • Not anatomy"
+  ],
+  "layout": "A descending four-step staircase of large paper tiles from upper left to lower right, no anatomy. Node2 has two labelled abstract station dots Bladder and Upper tract with a single arrow from Bladder to Upper tract, a route-map symbol only, neither organs nor tubing. Other nodes use neutral warning/risk tokens. Use a SOLID arrow from1 to2, a SOLID arrow from2 to3 and a DASHED arrow from3 to4 to stress possible outcome. Under the staircase print: Increased risk does not mean inevitable damage.",
+  "forbiddenAnatomy": [
+    "organs",
+    "body silhouettes",
+    "tissue cross-sections",
+    "cells",
+    "tubules",
+    "vessels",
+    "clinical photographs",
+    "diagnostic scans"
+  ],
+  "validation": {
+    "sourceStatus": "checked",
+    "structureStatus": "verified",
+    "requiredChecks": [
+      "All four nodes visible in specified order",
+      "The inner route arrow points from Bladder to Upper tract",
+      "Final complication is qualified Some and uses dashed link",
+      "No organs, tubes or valves"
+    ],
+    "clinicalReviewStatus": "pending",
+    "pixelChecks": "Pixel structure check: four staircase nodes in specified causal order; inner abstract route runs Bladder to Upper tract; final scarring edge is dashed and Some explicitly qualifies outcome. Correct footer and no organ shapes, tubes or valves. Matches source-checked scaffold. Independent and clinical review pending."
+  }
+}

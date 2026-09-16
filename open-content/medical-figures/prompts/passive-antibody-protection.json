@@ -1,0 +1,39 @@
+{
+  "figureId": "passive-antibody-protection",
+  "tool": "built-in image_gen",
+  "model": null,
+  "referenceAssetIds": [],
+  "externalReferenceImages": [],
+  "prompt": "Original educational conceptual illustration, landscape 3:2. Warm ivory paper, sophisticated hand-painted gouache/watercolour, confident fine brown outlines, navy lettering, restrained teal, coral and amber. Editorial science illustration with spacious composition and large legible labels. The explanatory structure must carry the meaning visually: molecules, objects, geometry or flow; never paragraphs in boxes. No organs, regional anatomy, teeth or joint cutaways, tissue layers, invented histology, diagnostic photographs, radiographs or patient data. All symbols are explicitly conceptual. Footer: 'Conceptual teaching model • Not to scale'. Title 'Protection supplied as antibodies', subtitle 'Passive immunisation'. Left a small unbranded vial containing simple Y-shaped antibody tokens labelled 'Preformed antibodies'. Arrow from vial to a strong teal shield at centre labelled 'Prompt protection'; several Y tokens float around the shield without binding any objects, no molecular binding orientation needed. A long unnumbered time ribbon runs rightward from shield to a lighter translucent shield labelled 'Protection wanes', with a small hourglass. The centre shield is protective metaphor, not an absolute guarantee or patient. Short note 'VZIG: one selected post-exposure use'. No person, needle injection, organ, immune cell factory, memory cells, medicine doses or dates.",
+  "clinicalSources": [
+    {
+      "title": "CDC Pink Book: Principles of vaccination",
+      "url": "https://www.cdc.gov/pinkbook/hcp/table-of-contents/chapter-1-principles-of-vaccination.html"
+    },
+    {
+      "title": "CDC: Clinical guidance for people at risk for severe varicella",
+      "url": "https://www.cdc.gov/chickenpox/hcp/clinical-guidance/index.html"
+    }
+  ],
+  "teaching": {
+    "question": "What makes passive immunisation useful when protection is needed promptly?",
+    "answer": "It supplies antibodies that are already formed, so protection can start promptly. It is temporary; it does not create durable immune memory by itself.",
+    "imageRole": "after-reveal"
+  },
+  "title": "Protection supplied as antibodies",
+  "caption": "Passive immunisation supplies preformed antibodies for prompt but temporary protection. Varicella-zoster immunoglobulin is one example used after qualifying exposures in selected susceptible high-risk patients.",
+  "alt": "Preformed antibody tiles move from a supply vial to a shield; the shield becomes lighter along a time ribbon to show waning protection.",
+  "review": {
+    "status": "pending-independent-qa",
+    "method": "agent-visual-and-source-review",
+    "notes": "Preformed free antibody tokens lead directly from vial to shield; no binding orientation or host antibody-production process is invented. A translucent later shield and hourglass show waning. VZIG is explicitly one selected use, with no dosing, universal prophylaxis rule or injection anatomy.",
+    "structure": {
+      "kind": "conceptual",
+      "status": "verified",
+      "specificationFiles": [
+        "scaffolds/passive-antibody-protection.json"
+      ],
+      "notes": "Preformed free antibody tokens lead directly from vial to shield; no binding orientation or host antibody-production process is invented. A translucent later shield and hourglass show waning. VZIG is explicitly one selected use, with no dosing, universal prophylaxis rule or injection anatomy."
+    }
+  }
+}

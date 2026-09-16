@@ -1,0 +1,71 @@
+{
+  "id": "bank:usmle-step1:exp26-c-frequency-versus-case-severity:v1",
+  "rotation": "usmle-step1-open",
+  "topics": [
+    "epidemiology",
+    "frequency-versus-case-severity"
+  ],
+  "moduleNodes": [
+    "usmle/step1",
+    "usmle/step1/epidemiology"
+  ],
+  "questionType": "interpretation",
+  "difficulty": "hard",
+  "stem": "Two towns each have 10,000 residents and complete outcome follow-up for the same outbreak period. Town A has 100 cases and 10 disease-related deaths. Town B has 500 cases and 10 disease-related deaths. Which of the following comparisons is supported by these counts?",
+  "options": [
+    {
+      "label": "A",
+      "text": "A has higher case fatality and higher disease-specific mortality",
+      "isCorrect": false,
+      "explanation": "Case fatality is higher in A because ten deaths occur among fewer cases. Population mortality is equal, however, because both towns have ten disease deaths among 10,000 residents.",
+      "misconception": "Infers greater population mortality from greater fatality among cases."
+    },
+    {
+      "label": "B",
+      "text": "A has lower case fatality and equal disease-specific mortality",
+      "isCorrect": false,
+      "explanation": "The mortality comparison is correct, but case fatality is 10/100 in A and 10/500 in B. A therefore has the higher fatality proportion among affected people.",
+      "misconception": "Reverses the fatality comparison despite fewer cases per death in A."
+    },
+    {
+      "label": "C",
+      "text": "A has equal case fatality and lower disease-specific mortality",
+      "isCorrect": false,
+      "explanation": "Equal death counts do not imply equal case fatality when case counts differ. Both population size and disease deaths are equal, so the disease-specific mortality comparison is also incorrect.",
+      "misconception": "Ignores unequal case denominators and misreads equal population mortality."
+    },
+    {
+      "label": "D",
+      "text": "A has equal case fatality and higher disease-specific mortality",
+      "isCorrect": false,
+      "explanation": "Case fatality differs because the towns have different numbers of cases. Disease-specific mortality is equal because the disease death counts and population denominators are the same.",
+      "misconception": "Treats equal death counts as equal case fatality but unequal mortality."
+    },
+    {
+      "label": "E",
+      "text": "A has higher case fatality and equal disease-specific mortality",
+      "isCorrect": true,
+      "explanation": "Case fatality is 10% in A and 2% in B, so it is higher in A. Disease-specific mortality is 10/10,000 in each town over the same interval.",
+      "misconception": "No misconception: case fatality differs while population mortality is equal."
+    }
+  ],
+  "context": "Learning objective: Use case and population denominators separately when comparing fatality and mortality across outbreaks.\n\nCase fatality is 10% in A and 2% in B, so it is higher in A. Disease-specific mortality is 10/10,000 in each town over the same interval.",
+  "cite": "cdc-epi-mortality-measures#case-fatality-rate",
+  "publicUsmle": {
+    "schemaVersion": 1,
+    "origin": "generated",
+    "itemText": {
+      "licence": "CC-BY-4.0",
+      "attribution": "MD3 contributors"
+    },
+    "evidence": {
+      "kind": "passage",
+      "sourceId": "cdc-epi-mortality-measures",
+      "passageId": "case-fatality-rate",
+      "licence": {
+        "cls": "foss",
+        "id": "us-gov"
+      }
+    }
+  }
+}

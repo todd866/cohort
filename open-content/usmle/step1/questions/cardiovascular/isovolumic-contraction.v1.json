@@ -1,0 +1,87 @@
+{
+  "id": "bank:usmle-step1:cardiovascular-isovolumic-contraction:v1",
+  "rotation": "usmle-step1-open",
+  "ladderId": "cardiac-cycle",
+  "topics": [
+    "cardiac cycle",
+    "heart valves",
+    "ladder:cardiac-cycle"
+  ],
+  "moduleNodes": [
+    "usmle/step1",
+    "usmle/step1/cardiovascular"
+  ],
+  "questionType": "interpretation",
+  "difficulty": "medium",
+  "stem": "A 62-year-old patient undergoes cardiac catheterization with simultaneous left ventricular pressure and volume recordings. During one brief interval, ventricular pressure rises sharply while ventricular volume remains unchanged and no blood leaves the ventricle.\n\nWhich of the following best describes the state of the heart valves during this interval?",
+  "options": [
+    {
+      "label": "A",
+      "text": "Atrioventricular valves open and semilunar valves closed",
+      "isCorrect": false,
+      "misconception": "The filling-phase valve pattern is being assigned to a pressure-rise interval.",
+      "explanation": "In ventricular diastole the atrioventricular valves are open and the semilunar valves closed, but during filling the ventricular volume rises, which excludes this interval."
+    },
+    {
+      "label": "B",
+      "text": "Both atrioventricular and semilunar valves are closed",
+      "isCorrect": true,
+      "misconception": "None; with all valves closed the ventricle contracts isovolumically.",
+      "explanation": "During isovolumic contraction, ventricular pressure has risen above atrial pressure (closing the AV valves) but not yet above arterial pressure (so the semilunar valves remain shut), and no ejection occurs."
+    },
+    {
+      "label": "C",
+      "text": "Atrioventricular valves closed and semilunar valves open",
+      "isCorrect": false,
+      "misconception": "The ejection-phase pattern is being assigned to an interval without ejection.",
+      "explanation": "Open semilunar valves define the ejection phase, during which blood leaves the ventricle and volume falls; neither is observed here."
+    },
+    {
+      "label": "D",
+      "text": "Both atrioventricular and semilunar valves are open",
+      "isCorrect": false,
+      "misconception": "A valve configuration that never occurs in the normal cycle is being selected.",
+      "explanation": "No phase of the normal cardiac cycle has both valve sets open simultaneously; such a state would permit free regurgitation."
+    },
+    {
+      "label": "E",
+      "text": "Semilunar valves open during active atrial contraction",
+      "isCorrect": false,
+      "misconception": "Atrial systole is being assigned an arterial-outflow valve state.",
+      "explanation": "During atrial systole the atrioventricular valves are open to complete ventricular filling and the semilunar valves are closed; the semilunar valves open only during ventricular ejection."
+    }
+  ],
+  "context": "Learning objective: correlate valve states with phases of the cardiac cycle. Isovolumic contraction is ventricular contraction with all valves closed and no ejection.",
+  "cite": "openstax-anatomy-physiology#heart-diastole-valve-states",
+  "publicUsmle": {
+    "schemaVersion": 1,
+    "origin": "generated",
+    "itemText": {
+      "licence": "CC-BY-4.0",
+      "attribution": "MD3 contributors"
+    },
+    "evidence": {
+      "kind": "passage",
+      "sourceId": "openstax-anatomy-physiology",
+      "passageId": "heart-diastole-valve-states",
+      "licence": {
+        "cls": "foss",
+        "id": "cc-by-4.0"
+      }
+    },
+    "media": {
+      "kind": "asset",
+      "assetId": "cardiac-cycle-v1",
+      "job": "pathway",
+      "showWhen": "after-reveal",
+      "licence": {
+        "cls": "foss",
+        "id": "cc-by-4.0"
+      },
+      "attribution": "MD3 contributors",
+      "contentHash": "sha256:43f8496970b38f19698023b0a614a4fe08f56ce807aadeebe0c60c1d0dd9d921"
+    }
+  },
+  "imageUrl": "/figures/usmle/step1/cardiac-cycle-v1.svg",
+  "imageCaption": "Cardiac cycle: isovolumic contraction (S1), ejection, isovolumic relaxation (S2), filling."
+}

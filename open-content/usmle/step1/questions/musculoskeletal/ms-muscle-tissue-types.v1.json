@@ -1,0 +1,86 @@
+{
+  "id": "bank:usmle-step1:ms-muscle-tissue-types:v1",
+  "rotation": "usmle-step1-open",
+  "topics": [
+    "cardiac muscle",
+    "skeletal muscle",
+    "smooth muscle"
+  ],
+  "moduleNodes": [
+    "usmle/step1",
+    "usmle/step1/musculoskeletal"
+  ],
+  "questionType": "mechanism",
+  "difficulty": "easy",
+  "stem": "A 20-year-old student examines a histology slide of a muscle that is striated, contracts without voluntary input, and has cells joined end-to-end by specialized junctions.\n\nWhich of the following muscle types is she viewing?",
+  "options": [
+    {
+      "label": "A",
+      "text": "Skeletal muscle",
+      "isCorrect": false,
+      "misconception": "The other striated type is being chosen despite the involuntary control.",
+      "explanation": "Skeletal muscle is striated and multinucleated, but it requires signaling from the nervous system to trigger contraction (voluntary) and lacks intercalated discs."
+    },
+    {
+      "label": "B",
+      "text": "Smooth muscle",
+      "isCorrect": false,
+      "misconception": "The involuntary visceral type is being chosen despite the striations.",
+      "explanation": "Smooth muscle is involuntary but nonstriated and mononucleated; the striations on the slide exclude it."
+    },
+    {
+      "label": "C",
+      "text": "Cardiac muscle",
+      "isCorrect": true,
+      "misconception": "None; striated plus involuntary plus intercalated junctions is cardiac muscle.",
+      "explanation": "Cardiac muscle is striated, under involuntary control, and its cells are joined at intercalated discs containing gap junctions and desmosomes, contracting as one unit under pacemaker regulation."
+    },
+    {
+      "label": "D",
+      "text": "Visceral muscle",
+      "isCorrect": false,
+      "misconception": "A smooth-muscle subtype is being chosen despite the striations.",
+      "explanation": "Visceral (single-unit) smooth muscle contracts as a unit through gap junctions, but it is nonstriated; the slide shows a striated tissue."
+    },
+    {
+      "label": "E",
+      "text": "Multiunit smooth muscle",
+      "isCorrect": false,
+      "misconception": "A rare smooth-muscle subtype is being chosen despite the striations.",
+      "explanation": "Multiunit smooth muscle (e.g. in the skin at hair follicles) is nonstriated; it cannot account for the striated appearance."
+    }
+  ],
+  "context": "Learning objective: tell the three muscle types apart. Skeletal: striated, multinucleated, voluntary (needs motor-neuron signaling). Cardiac: striated, involuntary, intercalated discs, pacemaker-driven, contracts as one unit. Smooth: nonstriated, mononucleated, involuntary; single-unit (visceral) fibers joined by gap junctions.",
+  "cite": "openstax-anatomy-physiology#ms-muscle-tissue-types",
+  "publicUsmle": {
+    "schemaVersion": 1,
+    "origin": "generated",
+    "itemText": {
+      "licence": "CC-BY-4.0",
+      "attribution": "MD3 contributors"
+    },
+    "evidence": {
+      "kind": "passage",
+      "sourceId": "openstax-anatomy-physiology",
+      "passageId": "ms-muscle-tissue-types",
+      "licence": {
+        "cls": "foss",
+        "id": "cc-by-4.0"
+      }
+    },
+    "media": {
+      "kind": "asset",
+      "assetId": "muscle-types-v1",
+      "job": "compare-table",
+      "showWhen": "after-reveal",
+      "licence": {
+        "cls": "foss",
+        "id": "cc-by-4.0"
+      },
+      "attribution": "MD3 contributors",
+      "contentHash": "sha256:c3a6a12951e251f90e3eada0058d41416355009401af4ad75b0ecd5dbf287558"
+    }
+  },
+  "imageUrl": "/figures/usmle/step1/muscle-types-v1.svg",
+  "imageCaption": "Skeletal/cardiac/smooth; fiber types; ATP sources; motor unit recruitment."
+}

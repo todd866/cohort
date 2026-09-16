@@ -1,0 +1,85 @@
+{
+  "id": "bank:usmle-step1:pharm-metformin-not-type1:v1",
+  "rotation": "usmle-step1-open",
+  "topics": [
+    "metformin",
+    "type 1 diabetes"
+  ],
+  "moduleNodes": [
+    "usmle/step1",
+    "usmle/step1/pharmacology"
+  ],
+  "questionType": "mechanism",
+  "difficulty": "easy",
+  "stem": "Which statement about metformin and type 1 diabetes matches MedlinePlus?",
+  "options": [
+    {
+      "label": "A",
+      "text": "Metformin is an ACE inhibitor for type 1 diabetes only",
+      "isCorrect": false,
+      "misconception": "Wrong class — does not match the cited teaching point.",
+      "explanation": "Metformin is a biguanide, not ACEI."
+    },
+    {
+      "label": "B",
+      "text": "Metformin is a salicylate antiplatelet for type 1 diabetes only",
+      "isCorrect": false,
+      "misconception": "Wrong class — does not match the cited teaching point.",
+      "explanation": "Not salicylate therapy."
+    },
+    {
+      "label": "C",
+      "text": "Metformin is not used to treat type 1 diabetes",
+      "isCorrect": true,
+      "misconception": "None; not for type 1.",
+      "explanation": "MedlinePlus: not used to treat type 1 diabetes."
+    },
+    {
+      "label": "D",
+      "text": "Metformin is first-line rescue for type 1 DKA alone",
+      "isCorrect": false,
+      "misconception": "Insulin is required in DKA.",
+      "explanation": "False claim; see the cited source passage for detail."
+    },
+    {
+      "label": "E",
+      "text": "Metformin replaces insulin in all type 1 patients",
+      "isCorrect": false,
+      "misconception": "Insulin remains essential.",
+      "explanation": "False claim; see the cited source passage for detail."
+    }
+  ],
+  "context": "Learning objective: metformin not for type 1.",
+  "cite": "medlineplus-metformin#metformin-not-type1",
+  "publicUsmle": {
+    "schemaVersion": 1,
+    "origin": "generated",
+    "itemText": {
+      "licence": "CC-BY-4.0",
+      "attribution": "MD3 contributors"
+    },
+    "evidence": {
+      "kind": "passage",
+      "sourceId": "medlineplus-metformin",
+      "passageId": "metformin-not-type1",
+      "licence": {
+        "cls": "foss",
+        "id": "us-gov"
+      }
+    },
+    "media": {
+      "kind": "asset",
+      "assetId": "pharm-drug-classes-v1",
+      "job": "compare-table",
+      "showWhen": "after-reveal",
+      "licence": {
+        "cls": "foss",
+        "id": "cc-by-4.0"
+      },
+      "attribution": "MD3 contributors",
+      "contentHash": "sha256:0660ff11235451eff9a2718dd975d64fa61483b220682b17bd82c8050fd4bceb"
+    }
+  },
+  "imageUrl": "/figures/usmle/step1/pharm-drug-classes-v1.svg",
+  "imageCaption": "High-yield FOSS drug-class map from MedlinePlus labels."
+}

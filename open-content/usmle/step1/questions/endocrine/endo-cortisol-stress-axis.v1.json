@@ -1,0 +1,86 @@
+{
+  "id": "bank:usmle-step1:endo-cortisol-stress-axis:v1",
+  "rotation": "usmle-step1-open",
+  "topics": [
+    "cortisol",
+    "stress response",
+    "HPA axis"
+  ],
+  "moduleNodes": [
+    "usmle/step1",
+    "usmle/step1/endocrine"
+  ],
+  "questionType": "mechanism",
+  "difficulty": "easy",
+  "stem": "A 45-year-old woman with months of severe work stress has gained weight centrally and her fasting glucose is elevated. Her physician suspects sustained hypercortisolism.\n\nWhich of the following sequences drives the chronic rise in her cortisol?",
+  "options": [
+    {
+      "label": "A",
+      "text": "CRH stimulates pituitary ACTH, releasing cortical glucocorticoids",
+      "isCorrect": true,
+      "misconception": "None; the long-term stress response runs hypothalamus to pituitary to adrenal cortex.",
+      "explanation": "In response to long-term stressors the hypothalamus secretes CRH, triggering ACTH release from the anterior pituitary, which drives glucocorticoid (cortisol) secretion from the adrenal cortex."
+    },
+    {
+      "label": "B",
+      "text": "Preganglionic sympathetic fibers directly excite cortical chromaffin cells",
+      "isCorrect": false,
+      "misconception": "The medullary short-term pathway is being assigned to cortisol.",
+      "explanation": "Sympathetic stimulation of the medulla releases epinephrine and norepinephrine for the short-term fight-or-flight response; cortisol follows the hormonal CRH to ACTH to cortex sequence."
+    },
+    {
+      "label": "C",
+      "text": "Renin converts angiotensinogen directly into circulating cortisol",
+      "isCorrect": false,
+      "misconception": "The blood-pressure hormone cascade is being merged with the stress axis.",
+      "explanation": "The renin-angiotensin system regulates aldosterone and blood pressure; cortisol secretion is driven by hypothalamic CRH acting through pituitary ACTH on the adrenal cortex."
+    },
+    {
+      "label": "D",
+      "text": "Posterior pituitary ADH acts on the cortex to release steroids",
+      "isCorrect": false,
+      "misconception": "A water-balance hormone is being inserted into the stress cascade.",
+      "explanation": "ADH regulates water reabsorption; the long-term stress response uses CRH from the hypothalamus and ACTH from the anterior pituitary to drive cortical cortisol."
+    },
+    {
+      "label": "E",
+      "text": "Cortisol feeds forward to stimulate its own continued secretion",
+      "isCorrect": false,
+      "misconception": "The feedback polarity of the axis is being reversed.",
+      "explanation": "Glucocorticoids exert negative feedback on the hypothalamus and pituitary; sustained stress raises cortisol through continued CRH to ACTH drive, not self-amplification."
+    }
+  ],
+  "context": "Learning objective: trace the long-term stress axis and cortisol's metabolic role. Long-term stress: hypothalamic CRH → anterior pituitary ACTH → adrenal cortex glucocorticoids. Cortisol raises blood glucose through gluconeogenesis (breaking down fats and proteins).",
+  "cite": "openstax-anatomy-physiology#endo-cortisol-stress-axis",
+  "publicUsmle": {
+    "schemaVersion": 1,
+    "origin": "generated",
+    "itemText": {
+      "licence": "CC-BY-4.0",
+      "attribution": "MD3 contributors"
+    },
+    "evidence": {
+      "kind": "passage",
+      "sourceId": "openstax-anatomy-physiology",
+      "passageId": "endo-cortisol-stress-axis",
+      "licence": {
+        "cls": "foss",
+        "id": "cc-by-4.0"
+      }
+    },
+    "media": {
+      "kind": "asset",
+      "assetId": "hpa-axis-v1",
+      "job": "pathway",
+      "showWhen": "after-reveal",
+      "licence": {
+        "cls": "foss",
+        "id": "cc-by-4.0"
+      },
+      "attribution": "MD3 contributors",
+      "contentHash": "sha256:07ce876fc9b8e4bd8c634b01e83f6a7fffa501eaa640ec190e29ddcbd24ca1e5"
+    }
+  },
+  "imageUrl": "/figures/usmle/step1/hpa-axis-v1.svg",
+  "imageCaption": "HPA: hypothalamus to anterior (portal tropic hormones) and posterior (ADH/OT axons); peripheral feedback."
+}

@@ -1,0 +1,32 @@
+{
+  "schemaVersion": 1,
+  "figureId": "fragile-x-repeat-silencing",
+  "sourceFacts": [
+    "A large CGG repeat expansion can silence FMR1.",
+    "Reduced production of FMRP disrupts its normal role in neuronal function."
+  ],
+  "clinicalSources": [
+    {
+      "title": "MedlinePlus Genetics: FMR1 gene",
+      "url": "https://medlineplus.gov/genetics/gene/fmr1/"
+    }
+  ],
+  "prompt": "Create a polished original medical teaching illustration in landscape 3:2 format. Use the attached MD3 original solely as a style reference: warm watercolour/gouache on an ivory paper background, delicate ink contours, calm navy labels, muted ochre/peach/teal colours, generous whitespace and clear flat anatomical shapes. Anatomical clarity before decoration. Never photorealistic skin, glossy blood, wet flesh, fat lobules, scary faces, chunky 3D tissue blocks, or a fake scan. Only exact requested labels, clean legible short text. Footer 'Educational schematic'. No watermark, logos or attribution in the pixels. Compose an entirely new subject from the clinical specification, not the scalp content in the reference.\n\nA clean three-panel molecular concept diagram, no realistic DNA structure needed. Title 'Fragile X: repeat expansion and gene silencing'. Panel1 heading 'CGG expansion': a short DNA strip with repeated boxes each exactly 'CGG', followed by an ellipsis to imply many additional repeats. Panel2 heading 'FMR1 silencing': a simple gene ribbon labelled 'FMR1' with a small closed padlock icon, no DNA break. Panel3 heading 'Less FMRP': a few faded teal protein-bead icons, label 'Reduced protein'. Two clear left-to-right arrows connect panels. Tiny bottom text 'Full-mutation mechanism, simplified'. No numeric repeat cutoff, no chromosome snapping, no X-inactivation mosaic explanation, no faces or stereotypes.",
+  "generation": {
+    "tool": "built-in image_gen",
+    "model": null,
+    "referenceAssetIds": [],
+    "externalReferenceImages": [],
+    "archivedReferenceAssets": [
+      {
+        "id": "neonatal-scalp-comparison",
+        "sha256": "96be407e6f065a3a53d1302050758c029a49cf875ae39f2245c87d0cae34e478",
+        "role": "style-only",
+        "reason": "Withheld pending anatomical scaffold review"
+      }
+    ]
+  },
+  "specificationFiles": [
+    "scaffolds/fragile-x-repeat-silencing.json"
+  ]
+}

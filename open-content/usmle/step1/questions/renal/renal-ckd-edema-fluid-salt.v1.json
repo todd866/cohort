@@ -1,0 +1,72 @@
+{
+  "id": "bank:usmle-step1:renal-ckd-edema-fluid-salt:v1",
+  "rotation": "usmle-step1-open",
+  "topics": [
+    "kidneys",
+    "chronic kidney disease",
+    "edema"
+  ],
+  "moduleNodes": [
+    "usmle/step1",
+    "usmle/step1/renal"
+  ],
+  "questionType": "mechanism",
+  "difficulty": "easy",
+  "stem": "Which of the following retained pairs most directly contributes to edema in chronic kidney disease?",
+  "options": [
+    {
+      "label": "A",
+      "text": "Glucose and insulin",
+      "isCorrect": false,
+      "misconception": "Glucose regulation is being substituted for the kidney's role in volume and salt balance.",
+      "explanation": "The cited CKD passage links edema to impaired removal of fluid and salt, not retention of glucose and insulin."
+    },
+    {
+      "label": "B",
+      "text": "Calcium and vitamin D",
+      "isCorrect": false,
+      "misconception": "Mineral metabolism is being confused with the retained substances that directly expand body fluid.",
+      "explanation": "This pair does not match the passage's direct explanation for CKD-related edema: failure to remove extra fluid and salt."
+    },
+    {
+      "label": "C",
+      "text": "Oxygen and carbon dioxide",
+      "isCorrect": false,
+      "misconception": "Respiratory gas exchange is being substituted for renal fluid handling.",
+      "explanation": "Oxygen and carbon dioxide are respiratory gases; the cited renal explanation is retention of extra fluid and salt."
+    },
+    {
+      "label": "D",
+      "text": "Extra fluid and salt",
+      "isCorrect": true,
+      "misconception": "None; reduced renal removal of fluid and salt promotes swelling.",
+      "explanation": "When damaged kidneys cannot remove extra fluid and salt, those retained substances contribute directly to edema."
+    },
+    {
+      "label": "E",
+      "text": "Bile acids and bilirubin",
+      "isCorrect": false,
+      "misconception": "Hepatobiliary substances are being substituted for the renal retention described in CKD.",
+      "explanation": "The NIDDK passage identifies extra fluid and salt, rather than bile acids and bilirubin, as the retained pair linked to edema."
+    }
+  ],
+  "context": "Learning objective: connect impaired renal excretion to swelling. In CKD, failure to remove extra fluid and salt can expand body fluid and produce edema.",
+  "cite": "niddk-ckd#ckd-edema-fluid-salt",
+  "publicUsmle": {
+    "schemaVersion": 1,
+    "origin": "generated",
+    "itemText": {
+      "licence": "CC-BY-4.0",
+      "attribution": "MD3 contributors"
+    },
+    "evidence": {
+      "kind": "passage",
+      "sourceId": "niddk-ckd",
+      "passageId": "ckd-edema-fluid-salt",
+      "licence": {
+        "cls": "foss",
+        "id": "us-gov"
+      }
+    }
+  }
+}

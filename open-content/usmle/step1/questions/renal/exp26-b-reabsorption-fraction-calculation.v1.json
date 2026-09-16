@@ -1,0 +1,71 @@
+{
+  "id": "bank:usmle-step1:exp26-b-reabsorption-fraction-calculation:v1",
+  "rotation": "usmle-step1-open",
+  "topics": [
+    "renal",
+    "reabsorption-fraction-calculation"
+  ],
+  "moduleNodes": [
+    "usmle/step1",
+    "usmle/step1/renal"
+  ],
+  "questionType": "calculation",
+  "difficulty": "easy",
+  "stem": "In a simplified renal water-balance experiment, a kidney filters 150 L over 24 hours and excretes 1.5 L of urine. Assume there is no other addition to or loss from the tubular water compartment. Which of the following fractions of the filtered water was reabsorbed?",
+  "options": [
+    {
+      "text": "95.0% of filtered water",
+      "explanation": "A 95% reabsorbed fraction would leave 7.5 L in the stated experiment. The measured output of 1.5 L requires recovery of a larger fraction.",
+      "isCorrect": false,
+      "label": "A",
+      "misconception": "Assumes an excreted fraction larger than the measured urine-to-filtered-volume ratio."
+    },
+    {
+      "text": "99.0% of filtered water",
+      "explanation": "The kidney returns 148.5 L of the 150 L filtered. Dividing 148.5 by 150 gives 0.99, meaning 99% of filtered water was reabsorbed.",
+      "isCorrect": true,
+      "label": "B",
+      "misconception": "No misconception: the reabsorbed fraction is one minus the urine-volume fraction of the filtered water."
+    },
+    {
+      "text": "1.0% of filtered water",
+      "explanation": "This is the fraction excreted as urine, calculated as 1.5 divided by 150. The requested reabsorbed fraction is the complement of that fraction.",
+      "isCorrect": false,
+      "label": "C",
+      "misconception": "Reports the fraction excreted in urine when the question asks for its reabsorbed complement."
+    },
+    {
+      "text": "90.0% of filtered water",
+      "explanation": "Reabsorbing 90% would leave 15 L for excretion, ten times the measured urine volume. The small excreted fraction corresponds to substantially greater recovery.",
+      "isCorrect": false,
+      "label": "D",
+      "misconception": "Uses a reabsorbed fraction that would leave ten times the measured urine volume."
+    },
+    {
+      "text": "98.5% of filtered water",
+      "explanation": "Subtracting the urine volume from the number 100 mixes liters and percentages. First divide urine volume by filtered volume, then subtract that fraction from one.",
+      "isCorrect": false,
+      "label": "E",
+      "misconception": "Subtracts liters directly from a percentage instead of first calculating the urine-to-filtered-volume ratio."
+    }
+  ],
+  "context": "Learning objective: Calculate the reabsorbed fraction using filtered volume and urinary water output. The kidney returns 148.5 L of the 150 L filtered. Dividing 148.5 by 150 gives 0.99, meaning 99% of filtered water was reabsorbed.",
+  "cite": "openstax-ap1-urine-formation#urine-mass-balance",
+  "publicUsmle": {
+    "schemaVersion": 1,
+    "origin": "generated",
+    "itemText": {
+      "licence": "CC-BY-4.0",
+      "attribution": "MD3 contributors"
+    },
+    "evidence": {
+      "kind": "passage",
+      "sourceId": "openstax-ap1-urine-formation",
+      "passageId": "urine-mass-balance",
+      "licence": {
+        "cls": "foss",
+        "id": "cc-by-4.0"
+      }
+    }
+  }
+}

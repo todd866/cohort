@@ -1,0 +1,86 @@
+{
+  "id": "bank:usmle-step1:re-proliferative-estrogen-endometrium:v1",
+  "rotation": "usmle-step1-open",
+  "topics": [
+    "proliferative phase",
+    "estrogen",
+    "endometrium"
+  ],
+  "moduleNodes": [
+    "usmle/step1",
+    "usmle/step1/reproductive"
+  ],
+  "questionType": "mechanism",
+  "difficulty": "medium",
+  "stem": "A 29-year-old woman is on day 9 of a regular 28-day menstrual cycle, several days after her menstrual flow ceased. Her endometrium is actively rebuilding and thickening.\n\nWhich of the following hormones, secreted by the developing ovarian follicles, is driving this endometrial proliferation?",
+  "options": [
+    {
+      "label": "A",
+      "text": "Follicle-stimulating hormone from the pituitary",
+      "isCorrect": false,
+      "misconception": "The follicle recruiter is being confused with the endometrial effector.",
+      "explanation": "FSH stimulates follicular growth and thereby raises estrogen, but the endometrium responds to the estrogen itself, not to FSH."
+    },
+    {
+      "label": "B",
+      "text": "Progesterone from the corpus luteum",
+      "isCorrect": false,
+      "misconception": "The luteal-phase hormone is being applied to the pre-ovulatory phase.",
+      "explanation": "Progesterone dominates after ovulation and drives the secretory phase; on day 9 the follicles' estrogen, not luteal progesterone, is rebuilding the lining."
+    },
+    {
+      "label": "C",
+      "text": "Luteinizing hormone from the pituitary",
+      "isCorrect": false,
+      "misconception": "A gonadotropin is being credited with direct endometrial action.",
+      "explanation": "LH acts on the ovary to promote steroidogenesis and trigger ovulation; the hormone acting directly on the endometrium during proliferation is estrogen."
+    },
+    {
+      "label": "D",
+      "text": "Estrogen from granulosa and theca cells",
+      "isCorrect": true,
+      "misconception": "None; follicular estrogen rebuilds the endometrium.",
+      "explanation": "During the proliferative phase, granulosa and theca cells of the tertiary follicles produce increased amounts of estrogen, and these rising estrogen concentrations stimulate the endometrial lining to rebuild."
+    },
+    {
+      "label": "E",
+      "text": "Human chorionic gonadotropin from the trophoblast",
+      "isCorrect": false,
+      "misconception": "A pregnancy hormone is being invoked in a non-pregnant cycle.",
+      "explanation": "hCG appears only after implantation to sustain the corpus luteum; routine mid-cycle endometrial proliferation is driven by follicular estrogen."
+    }
+  ],
+  "context": "Learning objective: assign proliferative-phase drive. After menses, granulosa and theca cells of growing tertiary follicles secrete rising estrogen, which rebuilds the endometrial lining. Estrogen's negative feedback then prunes all but the dominant follicle, and its sustained peak later switches to positive feedback for the LH surge.",
+  "cite": "openstax-anatomy-physiology#re-proliferative-estrogen-endometrium",
+  "publicUsmle": {
+    "schemaVersion": 1,
+    "origin": "generated",
+    "itemText": {
+      "licence": "CC-BY-4.0",
+      "attribution": "MD3 contributors"
+    },
+    "evidence": {
+      "kind": "passage",
+      "sourceId": "openstax-anatomy-physiology",
+      "passageId": "re-proliferative-estrogen-endometrium",
+      "licence": {
+        "cls": "foss",
+        "id": "cc-by-4.0"
+      }
+    },
+    "media": {
+      "kind": "asset",
+      "assetId": "menstrual-cycle-v1",
+      "job": "pathway",
+      "showWhen": "after-reveal",
+      "licence": {
+        "cls": "foss",
+        "id": "cc-by-4.0"
+      },
+      "attribution": "MD3 contributors",
+      "contentHash": "sha256:1f2f31e3cc6b7d1aae996adcda7ba376144dd75d88f4ce4b587f3d815b83a12e"
+    }
+  },
+  "imageUrl": "/figures/usmle/step1/menstrual-cycle-v1.svg",
+  "imageCaption": "Menstrual cycle: follicular E, LH surge, luteal P; secretory endometrium; corpus luteum; menopause; oxytocin."
+}

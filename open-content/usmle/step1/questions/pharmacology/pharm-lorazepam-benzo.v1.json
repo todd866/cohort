@@ -1,0 +1,85 @@
+{
+  "id": "bank:usmle-step1:pharm-lorazepam-benzo:v1",
+  "rotation": "usmle-step1-open",
+  "topics": [
+    "lorazepam",
+    "benzodiazepine"
+  ],
+  "moduleNodes": [
+    "usmle/step1",
+    "usmle/step1/pharmacology"
+  ],
+  "questionType": "mechanism",
+  "difficulty": "easy",
+  "stem": "Lorazepam belongs to which medication class used to relieve anxiety and treat insomnia?",
+  "options": [
+    {
+      "label": "A",
+      "text": "Statins only",
+      "isCorrect": false,
+      "misconception": "Wrong class — does not match the cited teaching point.",
+      "explanation": "This option does not match the cited source passage for the stem."
+    },
+    {
+      "label": "B",
+      "text": "Benzodiazepines",
+      "isCorrect": true,
+      "misconception": "None; lorazepam is a benzodiazepine.",
+      "explanation": "MedlinePlus: benzodiazepines; anxiety and insomnia."
+    },
+    {
+      "label": "C",
+      "text": "Loop diuretics only",
+      "isCorrect": false,
+      "misconception": "Wrong class — does not match the cited teaching point.",
+      "explanation": "This option does not match the cited source passage for the stem."
+    },
+    {
+      "label": "D",
+      "text": "Beta-lactam antibiotics only",
+      "isCorrect": false,
+      "misconception": "Wrong class — does not match the cited teaching point.",
+      "explanation": "This option does not match the cited source passage for the stem."
+    },
+    {
+      "label": "E",
+      "text": "Biguanides only",
+      "isCorrect": false,
+      "misconception": "Wrong class — does not match the cited teaching point.",
+      "explanation": "This option does not match the cited source passage for the stem."
+    }
+  ],
+  "context": "Learning objective: recall lorazepam, benzodiazepine from the cited FOSS source.",
+  "cite": "medlineplus-lorazepam#lorazepam-class",
+  "publicUsmle": {
+    "schemaVersion": 1,
+    "origin": "generated",
+    "itemText": {
+      "licence": "CC-BY-4.0",
+      "attribution": "MD3 contributors"
+    },
+    "evidence": {
+      "kind": "passage",
+      "sourceId": "medlineplus-lorazepam",
+      "passageId": "lorazepam-class",
+      "licence": {
+        "cls": "foss",
+        "id": "us-gov"
+      }
+    },
+    "media": {
+      "kind": "asset",
+      "assetId": "pharm-drug-classes-v1",
+      "job": "compare-table",
+      "showWhen": "after-reveal",
+      "licence": {
+        "cls": "foss",
+        "id": "cc-by-4.0"
+      },
+      "attribution": "MD3 contributors",
+      "contentHash": "sha256:0660ff11235451eff9a2718dd975d64fa61483b220682b17bd82c8050fd4bceb"
+    }
+  },
+  "imageUrl": "/figures/usmle/step1/pharm-drug-classes-v1.svg",
+  "imageCaption": "High-yield FOSS drug-class map from MedlinePlus labels."
+}

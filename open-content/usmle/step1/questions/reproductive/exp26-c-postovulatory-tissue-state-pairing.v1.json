@@ -1,0 +1,71 @@
+{
+  "id": "bank:usmle-step1:exp26-c-postovulatory-tissue-state-pairing:v1",
+  "rotation": "usmle-step1-open",
+  "topics": [
+    "reproductive",
+    "postovulatory-tissue-state-pairing"
+  ],
+  "moduleNodes": [
+    "usmle/step1",
+    "usmle/step1/reproductive"
+  ],
+  "questionType": "interpretation",
+  "difficulty": "medium",
+  "stem": "An endometrial sample from a 29-year-old patient shows glands releasing nutrient-rich fluid that prepares the tissue for implantation. Which of the following ovarian and endometrial states best fits this finding?",
+  "options": [
+    {
+      "label": "A",
+      "text": "Ovarian luteal phase with a secretory endometrium",
+      "isCorrect": true,
+      "explanation": "The secretory endometrium prepares for implantation and corresponds to the postovulatory luteal phase with progesterone secretion.",
+      "misconception": "No misconception: the ovarian luteal phase aligns with a secretory endometrium."
+    },
+    {
+      "label": "B",
+      "text": "Ovarian follicular phase with a secretory endometrium",
+      "isCorrect": false,
+      "explanation": "This pairs the postovulatory secretory finding with the wrong ovarian phase. Follicular estrogen primarily supports proliferative rebuilding.",
+      "misconception": "Pairs a postovulatory endometrial finding with the follicular ovarian phase."
+    },
+    {
+      "label": "C",
+      "text": "Ovarian luteal phase with a proliferative endometrium",
+      "isCorrect": false,
+      "explanation": "The ovarian timing fits, but the endometrial label does not: nutrient-rich glandular secretion identifies a secretory state.",
+      "misconception": "Identifies ovarian timing correctly but mislabels glandular secretion as proliferation."
+    },
+    {
+      "label": "D",
+      "text": "Preovulatory follicular phase with endometrial shedding",
+      "isCorrect": false,
+      "explanation": "The observed glandular preparation for implantation is not endometrial shedding during a preovulatory state.",
+      "misconception": "Confuses implantation preparation with endometrial shedding."
+    },
+    {
+      "label": "E",
+      "text": "Early follicular phase with absent glandular secretion",
+      "isCorrect": false,
+      "explanation": "Absent secretion contradicts the defining observation in the sample. The tissue is actively secreting nutrient-rich fluid.",
+      "misconception": "Assumes absent secretion despite observed glandular fluid release."
+    }
+  ],
+  "context": "Learning objective: Pair ovarian timing with endometrial function. Secretory glandular activity after ovulation prepares the endometrium for implantation and corresponds to the luteal phase.\n\nThe secretory endometrium prepares for implantation and corresponds to the postovulatory luteal phase with progesterone secretion.",
+  "cite": "openstax-anatomy-physiology#re-secretory-phase-endometrium",
+  "publicUsmle": {
+    "schemaVersion": 1,
+    "origin": "generated",
+    "itemText": {
+      "licence": "CC-BY-4.0",
+      "attribution": "MD3 contributors"
+    },
+    "evidence": {
+      "kind": "passage",
+      "sourceId": "openstax-anatomy-physiology",
+      "passageId": "re-secretory-phase-endometrium",
+      "licence": {
+        "cls": "foss",
+        "id": "cc-by-4.0"
+      }
+    }
+  }
+}

@@ -1,0 +1,87 @@
+{
+  "id": "bank:usmle-step1:respiratory-bohr-effect:v1",
+  "rotation": "usmle-step1-open",
+  "ladderId": "oxygen-hemoglobin-delivery",
+  "topics": [
+    "Bohr effect",
+    "oxygen-hemoglobin dissociation",
+    "ladder:oxygen-hemoglobin-delivery"
+  ],
+  "moduleNodes": [
+    "usmle/step1",
+    "usmle/step1/respiratory"
+  ],
+  "questionType": "mechanism",
+  "difficulty": "hard",
+  "stem": "During vigorous exercise, a 25-year-old man's active skeletal muscle produces increased amounts of carbon dioxide and lactic acid. Compared with resting muscle, oxygen release from hemoglobin within the exercising muscle's capillaries is enhanced.\n\nWhich of the following mechanisms most directly accounts for this enhanced release?",
+  "options": [
+    {
+      "label": "A",
+      "text": "Increased tissue temperature raises hemoglobin's oxygen saturation",
+      "isCorrect": false,
+      "misconception": "Temperature's effect on saturation is being stated backward.",
+      "explanation": "Rising temperature shifts the dissociation curve to lower saturation at a given partial pressure; it does not raise saturation."
+    },
+    {
+      "label": "B",
+      "text": "Carbon monoxide produced by metabolism displaces oxygen from hemoglobin",
+      "isCorrect": false,
+      "misconception": "A pathologic competitor is being invoked for a physiologic response.",
+      "explanation": "Exercising muscle does not produce carbon monoxide; the physiologic driver of release is the fall in local pH from carbon dioxide and lactic acid."
+    },
+    {
+      "label": "C",
+      "text": "An increased partial pressure of oxygen in the tissue drives unloading",
+      "isCorrect": false,
+      "misconception": "Tissue oxygen tension is being described in the wrong direction.",
+      "explanation": "Active muscle consumes oxygen, so tissue partial pressure falls; release is enhanced by acidity, not by a rise in tissue oxygen tension."
+    },
+    {
+      "label": "D",
+      "text": "Sympathetic vasoconstriction slows capillary transit time in the muscle",
+      "isCorrect": false,
+      "misconception": "Exercising-muscle perfusion is being described backward.",
+      "explanation": "Active muscle vasodilates to increase flow; enhanced unloading reflects the Bohr effect, not a sympathetically driven slowing of transit."
+    },
+    {
+      "label": "E",
+      "text": "Local tissue acidosis reduces the affinity of hemoglobin for oxygen",
+      "isCorrect": true,
+      "misconception": "None; a lower, more acidic pH promotes oxygen dissociation (the Bohr effect).",
+      "explanation": "Carbon dioxide conversion and lactic acid lower local pH; a lower, more acidic pH promotes oxygen dissociation from hemoglobin, delivering more oxygen to the active tissue."
+    }
+  ],
+  "context": "Learning objective: apply the Bohr effect. A lower, more acidic pH promotes oxygen dissociation from hemoglobin; increased carbon dioxide generates hydrogen ions and lowers blood pH.",
+  "cite": "openstax-anatomy-physiology#resp-bohr-effect",
+  "publicUsmle": {
+    "schemaVersion": 1,
+    "origin": "generated",
+    "itemText": {
+      "licence": "CC-BY-4.0",
+      "attribution": "MD3 contributors"
+    },
+    "evidence": {
+      "kind": "passage",
+      "sourceId": "openstax-anatomy-physiology",
+      "passageId": "resp-bohr-effect",
+      "licence": {
+        "cls": "foss",
+        "id": "cc-by-4.0"
+      }
+    },
+    "media": {
+      "kind": "asset",
+      "assetId": "hb-o2-curve-v1",
+      "job": "pathway",
+      "showWhen": "after-reveal",
+      "licence": {
+        "cls": "foss",
+        "id": "cc-by-4.0"
+      },
+      "attribution": "MD3 contributors",
+      "contentHash": "sha256:e14fdbba9016f547cb21cefdfc45f7b964c0550f0932e60dbff9d77cdef255a8"
+    }
+  },
+  "imageUrl": "/figures/usmle/step1/hb-o2-curve-v1.svg",
+  "imageCaption": "Sigmoid Hb-O2 curve: cooperativity; right shift unloads O2 (Bohr / 2,3-BPG / temp)."
+}

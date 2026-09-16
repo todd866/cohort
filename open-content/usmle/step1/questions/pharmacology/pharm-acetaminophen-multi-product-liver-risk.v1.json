@@ -1,0 +1,72 @@
+{
+  "id": "bank:usmle-step1:pharm-acetaminophen-multi-product-liver-risk:v1",
+  "rotation": "usmle-step1-open",
+  "topics": [
+    "acetaminophen",
+    "drug toxicity",
+    "liver injury"
+  ],
+  "moduleNodes": [
+    "usmle/step1",
+    "usmle/step1/pharmacology"
+  ],
+  "questionType": "interpretation",
+  "difficulty": "easy",
+  "stem": "A patient combines extra-strength acetaminophen with a cold remedy whose label also lists acetaminophen and consequently takes too much of the drug. Which of the following injuries is directly identified by the cited warning?",
+  "options": [
+    {
+      "label": "A",
+      "text": "Serious damage to the kidney tissue",
+      "isCorrect": false,
+      "misconception": "The duplicate ingredient is recognized as dangerous, but the wrong target organ is selected.",
+      "explanation": "The cited warning names the liver, rather than kidney tissue, as the organ damaged by excessive acetaminophen."
+    },
+    {
+      "label": "B",
+      "text": "Serious damage to the heart muscle",
+      "isCorrect": false,
+      "misconception": "A severe toxicity is inferred correctly, but it is assigned to an organ not named in the passage.",
+      "explanation": "The passage directly identifies liver damage after excessive acetaminophen; it does not identify heart muscle as the target in this warning."
+    },
+    {
+      "label": "C",
+      "text": "Serious damage to the liver tissue",
+      "isCorrect": true,
+      "misconception": "None; taking too much acetaminophen can cause severe liver damage.",
+      "explanation": "The cited warning states that excessive acetaminophen can damage the liver severely enough to require transplantation or cause death."
+    },
+    {
+      "label": "D",
+      "text": "Serious damage to the lung tissue",
+      "isCorrect": false,
+      "misconception": "The exposure is interpreted as an overdose, but the passage's named organ is not followed.",
+      "explanation": "The cited warning identifies the liver, rather than lung tissue, as the organ at risk from taking too much acetaminophen."
+    },
+    {
+      "label": "E",
+      "text": "Serious damage to the corneal tissue",
+      "isCorrect": false,
+      "misconception": "A tissue injury is selected without matching the organ specified by the source.",
+      "explanation": "Corneal injury is not the toxicity identified in the cited warning; the stated consequence is liver damage."
+    }
+  ],
+  "context": "Learning objective: integrate acetaminophen exposure across products. Taking too much acetaminophen can seriously damage the liver, potentially culminating in transplantation or death.",
+  "cite": "medlineplus-acetaminophen#acetaminophen-liver",
+  "publicUsmle": {
+    "schemaVersion": 1,
+    "origin": "generated",
+    "itemText": {
+      "licence": "CC-BY-4.0",
+      "attribution": "MD3 contributors"
+    },
+    "evidence": {
+      "kind": "passage",
+      "sourceId": "medlineplus-acetaminophen",
+      "passageId": "acetaminophen-liver",
+      "licence": {
+        "cls": "foss",
+        "id": "us-gov"
+      }
+    }
+  }
+}

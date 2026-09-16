@@ -1,0 +1,71 @@
+{
+  "id": "bank:usmle-step1:exp26-a-x-linked-single-copy:v1",
+  "rotation": "usmle-step1-open",
+  "topics": [
+    "genetics",
+    "x-linked-dose"
+  ],
+  "moduleNodes": [
+    "usmle/step1",
+    "usmle/step1/genetics"
+  ],
+  "questionType": "interpretation",
+  "difficulty": "medium",
+  "stem": "A family carries a pathogenic variant in an X-linked gene. A boy with an XY chromosome complement has manifestations, while his XX sister has the variant on one X chromosome and a normal copy on the other. Her manifestations are milder. Which of the following best accounts for this difference?",
+  "options": [
+    {
+      "label": "A",
+      "text": "A second normal copy reduces expression in the brother",
+      "isCorrect": false,
+      "explanation": "The boy's stated chromosome complement contains one X chromosome. At this X-linked locus, the additional normal X copy belongs to his sister rather than him.",
+      "misconception": "Assigns the additional normal X-linked copy to the sibling who has only one X chromosome."
+    },
+    {
+      "label": "B",
+      "text": "Two pathogenic copies are required in the brother",
+      "isCorrect": false,
+      "explanation": "A boy with one X chromosome can express an X-linked pathogenic allele without a second X-linked copy. Requiring two copies misapplies a recessive autosomal model.",
+      "misconception": "Applies a two-copy autosomal requirement to a boy with one copy of the X-linked locus."
+    },
+    {
+      "label": "C",
+      "text": "The variant lies on a nonsex chromosome in the sister",
+      "isCorrect": false,
+      "explanation": "The gene is explicitly X-linked in both siblings. Moving it to an autosome in one sibling does not follow from their different levels of expression.",
+      "misconception": "Treats different phenotype severity as evidence that the gene changes chromosome location."
+    },
+    {
+      "label": "D",
+      "text": "The sister lacks the variant found in her brother",
+      "isCorrect": false,
+      "explanation": "The sister's variant is established in the stem. Her milder expression must therefore be interpreted despite carriage, not explained by assuming she lacks the allele.",
+      "misconception": "Equates milder expression with absence of a variant that testing has already established."
+    },
+    {
+      "label": "E",
+      "text": "A second normal copy reduces expression in the sister",
+      "isCorrect": true,
+      "explanation": "The sister has a nonmutated copy at the X-linked locus, whereas the brother has one X chromosome. This can reduce expression without guaranteeing an absent phenotype.",
+      "misconception": "No misconception: The sister has an additional normal copy that can lessen expression of the variant."
+    }
+  ],
+  "context": "Learning objective: use gene-copy context when interpreting X-linked disease expression. The sister has a second nonmutated copy, while the brother has one X-linked copy; the difference does not establish a universal rule for females.",
+  "cite": "nhgri-x-linked#x-linked-definition",
+  "publicUsmle": {
+    "schemaVersion": 1,
+    "origin": "generated",
+    "itemText": {
+      "licence": "CC-BY-4.0",
+      "attribution": "MD3 contributors"
+    },
+    "evidence": {
+      "kind": "passage",
+      "sourceId": "nhgri-x-linked",
+      "passageId": "x-linked-definition",
+      "licence": {
+        "cls": "foss",
+        "id": "us-gov"
+      }
+    }
+  }
+}

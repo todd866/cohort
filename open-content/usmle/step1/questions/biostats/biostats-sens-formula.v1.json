@@ -1,0 +1,85 @@
+{
+  "id": "bank:usmle-step1:biostats-sens-formula:v1",
+  "rotation": "usmle-step1-open",
+  "topics": [
+    "sensitivity",
+    "2x2 table"
+  ],
+  "moduleNodes": [
+    "usmle/step1",
+    "usmle/step1/biostats"
+  ],
+  "questionType": "calculation",
+  "difficulty": "easy",
+  "stem": "A test evaluation labels the four groups as A = true positive, B = false positive, C = false negative and D = true negative. Which of the following ratios measures the fraction of actual cases that the test detects?",
+  "options": [
+    {
+      "label": "A",
+      "text": "D / (B + D)",
+      "isCorrect": false,
+      "explanation": "This ratio is specificity, since it counts true negatives among all people without disease. The requested detection fraction instead starts with the actual cases, represented by A and C.",
+      "misconception": "Uses the specificity formula when detection among actual cases is requested."
+    },
+    {
+      "label": "B",
+      "text": "B / (A + B)",
+      "isCorrect": false,
+      "explanation": "This ratio counts false positives among all positive results. It measures errors within the positive-test group rather than the fraction of actual cases successfully detected.",
+      "misconception": "Counts false discoveries within positives instead of detected cases within disease."
+    },
+    {
+      "label": "C",
+      "text": "A / (A + C)",
+      "isCorrect": true,
+      "explanation": "Actual cases consist of true positives plus false negatives, A + C. The detected cases are A, so sensitivity is A divided by A + C.",
+      "misconception": "No misconception: A plus C includes both detected and missed actual cases."
+    },
+    {
+      "label": "D",
+      "text": "C / (C + D)",
+      "isCorrect": false,
+      "explanation": "This ratio counts missed cases among all negative results. Sensitivity instead asks how many actual cases are detected, using the case group rather than negative results as the denominator.",
+      "misconception": "Uses missed cases among negative results rather than detected cases among all cases."
+    },
+    {
+      "label": "E",
+      "text": "A / (A + B)",
+      "isCorrect": false,
+      "explanation": "This ratio is positive predictive value: true cases among all positive results. Sensitivity uses all actual cases, including missed cases, as its denominator instead.",
+      "misconception": "Confuses the positive-result denominator with the actual-case denominator."
+    }
+  ],
+  "context": "Learning objective: Build the sensitivity denominator from true positives plus false negatives before interpreting screening results.\n\nActual cases consist of true positives plus false negatives, A + C. The detected cases are A, so sensitivity is A divided by A + C.",
+  "cite": "cdc-epi-sensitivity-specificity#sens-spec-formulas",
+  "publicUsmle": {
+    "schemaVersion": 1,
+    "origin": "generated",
+    "itemText": {
+      "licence": "CC-BY-4.0",
+      "attribution": "MD3 contributors"
+    },
+    "evidence": {
+      "kind": "passage",
+      "sourceId": "cdc-epi-sensitivity-specificity",
+      "passageId": "sens-spec-formulas",
+      "licence": {
+        "cls": "foss",
+        "id": "us-gov"
+      }
+    },
+    "media": {
+      "kind": "asset",
+      "assetId": "biostats-contingency-v1",
+      "job": "compare-table",
+      "showWhen": "after-reveal",
+      "licence": {
+        "cls": "foss",
+        "id": "cc-by-4.0"
+      },
+      "attribution": "MD3 contributors",
+      "contentHash": "sha256:e9e377884f40d7113cfb4687b3f409ee67b22c830b3bd79ec91510cbac159682"
+    }
+  },
+  "imageUrl": "/figures/usmle/step1/biostats-contingency-v1.svg",
+  "imageCaption": "2x2 contingency: TP/FP/FN/TN with sensitivity, specificity, and PPV formulas."
+}

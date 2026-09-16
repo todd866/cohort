@@ -1,0 +1,73 @@
+{
+  "id": "bank:usmle-step1:cardiovascular-poiseuille-r3:v1",
+  "rotation": "usmle-step1-open",
+  "ladderId": "poiseuille-radius",
+  "topics": [
+    "Poiseuille's law",
+    "hypertension",
+    "ladder:poiseuille-radius"
+  ],
+  "moduleNodes": [
+    "usmle/step1",
+    "usmle/step1/cardiovascular"
+  ],
+  "questionType": "calculation",
+  "difficulty": "hard",
+  "stem": "A 55-year-old man with poorly controlled hypertension undergoes research imaging that shows his renal arterioles have an average lumen radius 10 percent smaller than age-matched normotensive controls, while blood viscosity, vessel length, and driving pressure are similar.\n\nAssuming Poiseuille's law applies, renal blood flow in his arterioles is expected to be which of the following fractions of normal?",
+  "options": [
+    {
+      "label": "A",
+      "text": "About 90 percent of baseline flow",
+      "isCorrect": false,
+      "misconception": "Flow is being assumed to track radius linearly.",
+      "explanation": "A 10 percent radius reduction is not a 10 percent flow reduction; Poiseuille's law raises radius to the fourth power."
+    },
+    {
+      "label": "B",
+      "text": "About 81 percent of baseline flow",
+      "isCorrect": false,
+      "misconception": "A squared relationship (0.9²) is being applied.",
+      "explanation": "Radius squared would give ~0.81, not 0.66; the correct exponent is four."
+    },
+    {
+      "label": "C",
+      "text": "About 73 percent of baseline flow",
+      "isCorrect": false,
+      "misconception": "A cubic approximation is being used.",
+      "explanation": "0.9³ ≈ 0.73; the Poiseuille exponent is four, giving (0.9)⁴ ≈ 0.66."
+    },
+    {
+      "label": "D",
+      "text": "About 66 percent of baseline flow",
+      "isCorrect": true,
+      "misconception": "None — (0.9)⁴ ≈ 0.66 of baseline flow.",
+      "explanation": "Flow ∝ r⁴, so a 10 percent radius reduction yields (0.9)⁴ ≈ 0.66 of baseline flow — a disproportionately large drop from a small anatomic change."
+    },
+    {
+      "label": "E",
+      "text": "About 50 percent of baseline flow",
+      "isCorrect": false,
+      "misconception": "The effect of a modest radius change is being overestimated.",
+      "explanation": "Halving flow would require a much larger radius reduction; (0.9)⁴ is about 0.66, not 0.5."
+    }
+  ],
+  "context": "Learning objective: apply Poiseuille's r⁴ dependence to small arteriolar narrowing in hypertension. Even a 10 percent radius decrease cuts flow to roughly two-thirds of normal.",
+  "cite": "openstax-anatomy-physiology#vessels-poiseuille-radius",
+  "publicUsmle": {
+    "schemaVersion": 1,
+    "origin": "generated",
+    "itemText": {
+      "licence": "CC-BY-4.0",
+      "attribution": "MD3 contributors"
+    },
+    "evidence": {
+      "kind": "passage",
+      "sourceId": "openstax-anatomy-physiology",
+      "passageId": "vessels-poiseuille-radius",
+      "licence": {
+        "cls": "foss",
+        "id": "cc-by-4.0"
+      }
+    }
+  }
+}

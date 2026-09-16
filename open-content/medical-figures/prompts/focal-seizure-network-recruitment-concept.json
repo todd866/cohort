@@ -1,0 +1,31 @@
+{
+  "schemaVersion": 1,
+  "figureId": "focal-seizure-network-recruitment-concept",
+  "sourceFacts": [
+    "A focal seizure begins in a network limited to one hemisphere and can spread to involve both sides.",
+    "Network recruitment is a functional concept; a simplified node diagram does not show cortical topography or actual pathways."
+  ],
+  "clinicalSources": [
+    {
+      "title": "NINDS: Epilepsy and Seizures",
+      "url": "https://www.ninds.nih.gov/health-information/disorders/epilepsy-and-seizures"
+    },
+    {
+      "title": "CDC: Types of Seizures",
+      "url": "https://www.cdc.gov/epilepsy/about/types-of-seizures.html"
+    }
+  ],
+  "specificationFiles": [
+    "scaffolds/focal-seizure-network-recruitment-concept.json"
+  ],
+  "prompt": "Create an entirely original medical teaching concept illustration, landscape 3:2, warm hand-painted watercolour and gouache on ivory paper, fine ink contours, restrained navy labels, muted teal, ochre and peach accents, generous whitespace. Gentle storybook warmth with the precision and legibility of an educational atlas. Use written instructions only; no image reference. Meaningful visual relationships and sparse short labels, not paragraphs in boxes. NO internal anatomy, organ/eye/ear/brain/tissue cutaways, anatomical pathways, bones, diagnostic images, fake scans, realistic lesions, photorealistic skin, glossy wet flesh or 3D tissue. Neutral symbols or fully clothed surface poses only where specified. Preserve every direction, relationship and count in the explicit structure. Title and labels exactly as requested, no additional prose. Footer 'Educational schematic'. No logo or watermark.\n\nTitle 'Focal seizure: possible network spread'. Two identical ABSTRACT networks side-by-side on plain ivory background, with no head, brain, organ outlines, hemispheres, cortical contours, neural tracts or body parts. Each network is exactly NINE equally spaced circular nodes in a simple 3-by-3 grid connected by faint straight horizontal and vertical grey lines. LEFT heading 'Limited onset': only the TOP-LEFT and TOP-CENTRE nodes are ochre; all other seven nodes are pale teal. RIGHT heading 'Wider recruitment': seven of the nine nodes are ochre, with the original two still ochre, and two bottom-corner nodes remain pale teal. A single broad arrow BETWEEN the two grids labelled 'May spread'. Bottom 'Abstract network \u2022 not brain anatomy'. This is a conceptual increase in recruited network, not a physical tract map or a claim that spread always happens. No EEG. CRITICAL readability: fully OPAQUE near-white/ivory background across the entire canvas. NO black, dark-blue or dark gradient background; NO transparency, vignette, neon glow, coloured halos, blur or shadow fields. ALL lettering solid deep navy, plainly readable at small size against near-white. Flat pastel nodes, thin grey connections and one rightward arrow only. Exact two 3x3 grids and the counts already specified.",
+  "generation": {
+    "tool": "built-in image_gen",
+    "model": null,
+    "referenceAssetIds": [],
+    "externalReferenceImages": [],
+    "specificationFiles": [
+      "scaffolds/focal-seizure-network-recruitment-concept.json"
+    ]
+  }
+}

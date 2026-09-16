@@ -1,0 +1,87 @@
+{
+  "schemaVersion": 1,
+  "id": "concept-lactase-lactose-water",
+  "kind": "conceptual",
+  "sourceFacts": [
+    {
+      "fact": "Low lactase causes incomplete lactose digestion.",
+      "sourceUrls": [
+        "https://www.niddk.nih.gov/health-information/digestive-diseases/lactose-intolerance/symptoms-causes",
+        "https://www.niddk.nih.gov/-/media/Files/Digestive-Diseases/Lactose_Intolerance_508.pdf"
+      ]
+    },
+    {
+      "fact": "Unabsorbed lactose and bacterial breakdown contribute extra fluid and gas, causing symptoms in susceptible individuals.",
+      "sourceUrls": [
+        "https://www.niddk.nih.gov/health-information/digestive-diseases/lactose-intolerance/symptoms-causes",
+        "https://www.niddk.nih.gov/-/media/Files/Digestive-Diseases/Lactose_Intolerance_508.pdf"
+      ]
+    }
+  ],
+  "nodes": [
+    {
+      "id": "1",
+      "label": "Lactase activity low"
+    },
+    {
+      "id": "2",
+      "label": "Lactose remains undigested"
+    },
+    {
+      "id": "3",
+      "label": "Extra fluid and gas"
+    },
+    {
+      "id": "4",
+      "label": "Diarrhoea and bloating"
+    }
+  ],
+  "edges": [
+    {
+      "from": "1",
+      "to": "2",
+      "meaning": "reduced digestion"
+    },
+    {
+      "from": "2",
+      "to": "3",
+      "meaning": "osmotic and fermentation effects"
+    },
+    {
+      "from": "3",
+      "to": "4",
+      "meaning": "symptoms"
+    }
+  ],
+  "labels": [
+    "Low lactase leaves lactose undigested",
+    "Lactase activity low",
+    "Lactose remains undigested",
+    "Extra fluid and gas",
+    "Diarrhoea and bloating",
+    "Conceptual schematic • Not anatomy"
+  ],
+  "layout": "Four large cards positioned clockwise around an OPEN arc, starting top left1 then top right2 then bottom right3 then bottom left4. Exactly three arrows, no arrow from4 back1. Card1 has a few small enzyme-label paper squares, card2 paired connected sugar tokens labelled Lactose staying intact, card3 loose water drops and unfilled gas circles, card4 simple wave lines. Caption: Malabsorption can cause symptoms; tolerance varies. Do not depict gut walls, bacterial cells, villi or any organ. No treatment dose.",
+  "forbiddenAnatomy": [
+    "organs",
+    "body silhouettes",
+    "tissue cross-sections",
+    "cells",
+    "tubules",
+    "vessels",
+    "clinical photographs",
+    "diagnostic scans"
+  ],
+  "validation": {
+    "sourceStatus": "checked",
+    "structureStatus": "verified",
+    "requiredChecks": [
+      "Four nodes and three forward arrows on an open arc",
+      "No feedback loop",
+      "Lactose token remains intact at low lactase step",
+      "No gut wall, cells or villi"
+    ],
+    "clinicalReviewStatus": "pending",
+    "pixelChecks": "Pixel review: four nodes and three clockwise arrows form an open sequence, no feedback loop. Lactose remains a joined abstract sugar token; extra fluid/gas precedes symptoms. Tolerance qualifier present. No gut tissue. Independent and clinical review pending."
+  }
+}

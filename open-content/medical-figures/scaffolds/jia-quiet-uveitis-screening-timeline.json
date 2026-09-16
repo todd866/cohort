@@ -1,0 +1,73 @@
+{
+  "schemaVersion": 1,
+  "figureId": "jia-quiet-uveitis-screening-timeline",
+  "kind": "conceptual",
+  "created": "2026-09-10",
+  "timing": "authored before generation",
+  "sourceFacts": [
+    {
+      "fact": "JIA-associated uveitis often causes no redness or pain yet can threaten vision.",
+      "sourceUrls": [
+        "https://www.aapos.org/glossary/juvenile-idiopathic-arthritis"
+      ]
+    },
+    {
+      "fact": "Children with JIA need regular ophthalmic screening; the specialist sets the screening interval.",
+      "sourceUrls": [
+        "https://www.aapos.org/glossary/juvenile-idiopathic-arthritis"
+      ]
+    }
+  ],
+  "clinicalSources": [
+    {
+      "title": "AAPOS: Juvenile Idiopathic Arthritis",
+      "url": "https://www.aapos.org/glossary/juvenile-idiopathic-arthritis"
+    }
+  ],
+  "nodes": [
+    "JIA",
+    "no obvious eye symptoms",
+    "ongoing screening visits",
+    "detect silent inflammation"
+  ],
+  "edges": [
+    [
+      "JIA",
+      "ongoing screening visits",
+      "risk-based follow-up"
+    ],
+    [
+      "no obvious eye symptoms",
+      "ongoing screening visits",
+      "does not remove need"
+    ],
+    [
+      "ongoing screening visits",
+      "detect silent inflammation",
+      "purpose"
+    ]
+  ],
+  "expectedLabels": [
+    "JIA: quiet symptoms still need eye checks",
+    "No redness or pain?",
+    "Uveitis can be silent",
+    "Regular eye screening",
+    "Interval set by the eye team"
+  ],
+  "layoutSpecification": "Title 'JIA: quiet symptoms still need eye checks'. Dominant horizontal timeline across lower two-thirds, with exactly three evenly spaced calendar-page icons, each containing a small magnifying-glass symbol. One continuous teal arrow runs through the calendar sequence left-to-right, labelled 'Regular eye screening'. Above timeline a small quiet bell icon with NO ringing marks carries question 'No redness or pain?'. Nearby an ochre warning dot partly hidden behind a pale translucent screen carries label 'Uveitis can be silent'. A single arrow from this hidden-risk metaphor points to the screening timeline, never to a stop symbol. Bottom 'Interval set by the eye team'. No eyes, joints, internal inflammation anatomy, fixed visit frequency, test result or universal disease claim. Three calendars are examples of continuing follow-up, not a mandated count. STRICT exclusion: no person, no child, no landscape, no room, no posters, no signs, no decorative plaques, no handwritten slogans or inspirational text. The entire image has ONLY the requested title, five stated labels, three calendar icons, one quiet bell, one hidden warning token and their arrows. Do not add 'same day' or any visit interval.",
+  "forbiddenAnatomy": [
+    "No internal organ, eye, ear, brain, tissue or bone anatomy",
+    "No diagnostic image, patient-specific lesion appearance or literal anatomical pathway"
+  ],
+  "validation": {
+    "sourceFacts": "Checked against listed primary clinical sources on 2026-09-10",
+    "status": "self-reviewed; independent review pending",
+    "pixelChecks": "Pixel/structure check on revised image: quiet bell and hidden warning token convey absent symptoms despite possible uveitis; arrow leads to a continuing three-calendar screening timeline. Labels place interval with eye team. No same-day slogan, fixed dates, diagnostic eye image, inflammation cutaway or automatic disease assumption. First candidate rejected for unsolicited scheduling-like decorative text."
+  },
+  "generationAttempts": [
+    {
+      "status": "rejected",
+      "reason": "First image added unsolicited decorative slogans including 'Same day', which could imply an unrequested screening interval."
+    }
+  ]
+}

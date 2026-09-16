@@ -1,0 +1,84 @@
+{
+  "id": "bank:usmle-step1:phys-ckd-filtration-failure:v1",
+  "rotation": "usmle-step1-open",
+  "topics": [
+    "chronic kidney disease"
+  ],
+  "moduleNodes": [
+    "usmle/step1",
+    "usmle/step1/physiology"
+  ],
+  "questionType": "mechanism",
+  "difficulty": "easy",
+  "stem": "Chronic kidney disease (CKD) is a condition in which the kidneys have which problem?",
+  "options": [
+    {
+      "label": "A",
+      "text": "Damage or structural problems that prevent proper blood filtering",
+      "isCorrect": true,
+      "misconception": "None — this option matches the cited source passage for the stem.",
+      "explanation": "This correct choice is supported by the cited FOSS passage."
+    },
+    {
+      "label": "B",
+      "text": "Only airway narrowing without kidney filtration roles named",
+      "isCorrect": false,
+      "misconception": "Wrong concept for this stem; does not match the cited passage.",
+      "explanation": "This option does not match the cited source passage for the stem."
+    },
+    {
+      "label": "C",
+      "text": "Only ventricular arrhythmias without CKD labeling present",
+      "isCorrect": false,
+      "misconception": "Wrong concept for this stem; does not match the cited passage.",
+      "explanation": "This option does not match the cited source passage for the stem."
+    },
+    {
+      "label": "D",
+      "text": "Only prostate enlargement without filtration failure text",
+      "isCorrect": false,
+      "misconception": "Wrong concept for this stem; does not match the cited passage.",
+      "explanation": "This option does not match the cited source passage for the stem."
+    },
+    {
+      "label": "E",
+      "text": "Only skin plaque psoriasis without kidney disease naming",
+      "isCorrect": false,
+      "misconception": "Wrong concept for this stem; does not match the cited passage.",
+      "explanation": "This option does not match the cited source passage for the stem."
+    }
+  ],
+  "context": "Learning objective: recall CKD filtration failure from the cited FOSS source.",
+  "cite": "niddk-ckd#ckd-definition",
+  "publicUsmle": {
+    "schemaVersion": 1,
+    "origin": "generated",
+    "itemText": {
+      "licence": "CC-BY-4.0",
+      "attribution": "MD3 contributors"
+    },
+    "evidence": {
+      "kind": "passage",
+      "sourceId": "niddk-ckd",
+      "passageId": "ckd-definition",
+      "licence": {
+        "cls": "foss",
+        "id": "us-gov"
+      }
+    },
+    "media": {
+      "kind": "asset",
+      "assetId": "blood-components-v1",
+      "job": "compare-table",
+      "showWhen": "after-reveal",
+      "licence": {
+        "cls": "foss",
+        "id": "cc-by-4.0"
+      },
+      "attribution": "MD3 contributors",
+      "contentHash": "sha256:3856cf48a8b6b7e73474650774b40f575f9ee1219bc0ebdd14e3df08c05e55b9"
+    }
+  },
+  "imageUrl": "/figures/usmle/step1/blood-components-v1.svg",
+  "imageCaption": "Filtration/blood composition teaching board (FOSS draft)."
+}

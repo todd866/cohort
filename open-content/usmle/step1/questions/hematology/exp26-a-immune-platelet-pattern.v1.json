@@ -1,0 +1,71 @@
+{
+  "id": "bank:usmle-step1:exp26-a-immune-platelet-pattern:v1",
+  "rotation": "usmle-step1-open",
+  "topics": [
+    "hematology",
+    "immune-thrombocytopenia"
+  ],
+  "moduleNodes": [
+    "usmle/step1",
+    "usmle/step1/hematology"
+  ],
+  "questionType": "diagnosis",
+  "difficulty": "medium",
+  "stem": "A 22-year-old patient develops petechiae, purpura, and mucosal bleeding after an infection. Platelet counts are low, while other circulating cell counts and marrow cellularity are preserved. In an experimental assay, the patient’s immune components accelerate platelet destruction. Which mechanism best integrates the findings?",
+  "options": [
+    {
+      "label": "A",
+      "text": "Immune destruction of circulating erythrocytes",
+      "isCorrect": false,
+      "explanation": "A red-cell destruction process does not explain the selective platelet reduction and platelet-directed assay. The observed bleeding manifestations are linked to the depleted platelet pool.",
+      "misconception": "Assigns immune destruction to red cells despite selective platelet loss and a platelet-directed assay."
+    },
+    {
+      "label": "B",
+      "text": "Impaired absorption of intestinal vitamin B12",
+      "isCorrect": false,
+      "explanation": "B12-related absorption failure affects blood-cell formation through a different pathway. It does not account for the directly measured immune acceleration of platelet destruction in this case.",
+      "misconception": "Substitutes nutrient malabsorption for the directly measured immune acceleration of platelet destruction."
+    },
+    {
+      "label": "C",
+      "text": "Malaria-associated infection of erythrocytes",
+      "isCorrect": false,
+      "explanation": "Malaria can accompany low platelets, but the case provides a platelet-directed immune assay and preserved other counts. No demonstrated erythrocytic infection explains the findings as directly.",
+      "misconception": "Uses a possible malaria-associated pattern instead of the demonstrated platelet-directed mechanism in this case."
+    },
+    {
+      "label": "D",
+      "text": "Immune destruction of circulating platelets",
+      "isCorrect": true,
+      "explanation": "The low platelet count and bleeding pattern fit platelet depletion. Preserved other counts and marrow cellularity, together with the immune assay, support selective immune platelet destruction.",
+      "misconception": "No misconception: Selective platelet depletion and the immune assay support immune destruction of platelets."
+    },
+    {
+      "label": "E",
+      "text": "Failure of several marrow blood-cell lineages",
+      "isCorrect": false,
+      "explanation": "A broad marrow production failure would not best fit preserved marrow cellularity and the other circulating counts. The assay instead demonstrates a platelet-directed immune process.",
+      "misconception": "Attributes selective platelet loss to broad marrow failure despite preserved marrow and other cell counts."
+    }
+  ],
+  "context": "Learning objective: Combine a bleeding pattern with selective platelet depletion and direct immune evidence. These findings support an immune platelet-loss mechanism over a general marrow or red-cell process.",
+  "cite": "nhlbi-itp#itp-platelet",
+  "publicUsmle": {
+    "schemaVersion": 1,
+    "origin": "generated",
+    "itemText": {
+      "licence": "CC-BY-4.0",
+      "attribution": "MD3 contributors"
+    },
+    "evidence": {
+      "kind": "passage",
+      "sourceId": "nhlbi-itp",
+      "passageId": "itp-platelet",
+      "licence": {
+        "cls": "foss",
+        "id": "us-gov"
+      }
+    }
+  }
+}

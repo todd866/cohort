@@ -1,0 +1,85 @@
+{
+  "id": "bank:usmle-step1:cardiovascular-coronary-origin:v1",
+  "rotation": "usmle-step1-open",
+  "topics": [
+    "coronary arteries",
+    "cardiac anatomy"
+  ],
+  "moduleNodes": [
+    "usmle/step1",
+    "usmle/step1/cardiovascular"
+  ],
+  "questionType": "mechanism",
+  "difficulty": "medium",
+  "stem": "During coronary angiography of a 58-year-old man with exertional chest pain, the interventional cardiologist engages the catheter tip in the anterior aortic sinus, just superior to the aortic valve cusps, and injects contrast medium.\n\nWhich of the following vessels is most directly opacified by this injection?",
+  "options": [
+    {
+      "label": "A",
+      "text": "Left anterior descending artery",
+      "isCorrect": false,
+      "misconception": "A branch of the left coronary system is being filled from the right-sided origin.",
+      "explanation": "The left anterior descending artery is a branch of the left coronary artery, which arises from a different aortic sinus than the anterior site described."
+    },
+    {
+      "label": "B",
+      "text": "Right coronary artery",
+      "isCorrect": true,
+      "misconception": "None; the right coronary artery arises from the anterior aortic sinus.",
+      "explanation": "The right coronary artery arises from the anterior aortic sinus, so contrast injected at that site fills the right coronary system first."
+    },
+    {
+      "label": "C",
+      "text": "Circumflex artery",
+      "isCorrect": false,
+      "misconception": "Another left-sided branch is being opacified from the anterior sinus.",
+      "explanation": "The circumflex artery branches from the left coronary artery; contrast in the anterior aortic sinus enters the right coronary artery instead."
+    },
+    {
+      "label": "D",
+      "text": "Left main coronary artery",
+      "isCorrect": false,
+      "misconception": "The left coronary origin is being placed in the anterior aortic sinus.",
+      "explanation": "The left main coronary artery does not arise from the anterior aortic sinus; the anterior sinus gives rise to the right coronary artery."
+    },
+    {
+      "label": "E",
+      "text": "Coronary sinus",
+      "isCorrect": false,
+      "misconception": "A venous structure is being opacified by an arterial injection.",
+      "explanation": "The coronary sinus drains venous blood into the right atrium and is not filled by contrast injected into an aortic sinus."
+    }
+  ],
+  "context": "Learning objective: localize coronary artery origins. The right coronary artery arises from the anterior aortic sinus; normally the right posterior aortic sinus gives rise to no vessel.",
+  "cite": "openstax-anatomy-physiology#vessels-rca-anterior-sinus",
+  "publicUsmle": {
+    "schemaVersion": 1,
+    "origin": "generated",
+    "itemText": {
+      "licence": "CC-BY-4.0",
+      "attribution": "MD3 contributors"
+    },
+    "evidence": {
+      "kind": "passage",
+      "sourceId": "openstax-anatomy-physiology",
+      "passageId": "vessels-rca-anterior-sinus",
+      "licence": {
+        "cls": "foss",
+        "id": "cc-by-4.0"
+      }
+    },
+    "media": {
+      "kind": "asset",
+      "assetId": "hemodynamics-v1",
+      "job": "pathway",
+      "showWhen": "after-reveal",
+      "licence": {
+        "cls": "foss",
+        "id": "cc-by-4.0"
+      },
+      "attribution": "MD3 contributors",
+      "contentHash": "sha256:bcd08bd5837d7c8b145ebd1e66511a58c8d05bca8c05a923bc2bebccc478de08"
+    }
+  },
+  "imageUrl": "/figures/usmle/step1/hemodynamics-v1.svg",
+  "imageCaption": "Poiseuille r^4, MAP, venous capacitance, Starling edema, coronary origins."
+}

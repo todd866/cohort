@@ -1,0 +1,26 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 260" role="img" aria-labelledby="t d">
+  <title id="t">Neuromuscular junction</title>
+  <desc id="d">Motor neuron terminal releases ACh onto nicotinic receptors of the motor end plate; AChE clears the cleft.</desc>
+  <rect width="640" height="260" fill="#fafafa"/>
+  <text x="320" y="26" text-anchor="middle" font-family="system-ui,sans-serif" font-size="16" fill="#222">Neuromuscular junction</text>
+  <!-- axon -->
+  <rect x="40" y="100" width="160" height="40" rx="8" fill="#caf0f8" stroke="#0077b6"/>
+  <text x="120" y="95" text-anchor="middle" font-family="system-ui,sans-serif" font-size="12" fill="#0077b6">Motor neuron terminal</text>
+  <!-- vesicles -->
+  <circle cx="150" cy="115" r="6" fill="#023e8a"/><circle cx="165" cy="125" r="6" fill="#023e8a"/><circle cx="155" cy="132" r="6" fill="#023e8a"/>
+  <text x="170" y="155" font-family="system-ui,sans-serif" font-size="11" fill="#023e8a">ACh vesicles</text>
+  <!-- cleft -->
+  <rect x="210" y="90" width="40" height="60" fill="#fff3b0" stroke="#e09f3e"/>
+  <text x="230" y="80" text-anchor="middle" font-family="system-ui,sans-serif" font-size="11" fill="#9c6644">cleft</text>
+  <text x="230" y="175" text-anchor="middle" font-family="system-ui,sans-serif" font-size="11" fill="#9c6644">AChE</text>
+  <!-- muscle -->
+  <rect x="260" y="70" width="320" height="100" rx="10" fill="#d8f3dc" stroke="#2d6a4f"/>
+  <text x="420" y="60" text-anchor="middle" font-family="system-ui,sans-serif" font-size="12" fill="#2d6a4f">Skeletal muscle (motor end plate)</text>
+  <!-- receptors -->
+  <rect x="270" y="110" width="18" height="28" fill="#40916c"/><rect x="300" y="110" width="18" height="28" fill="#40916c"/><rect x="330" y="110" width="18" height="28" fill="#40916c"/>
+  <text x="360" y="130" font-family="system-ui,sans-serif" font-size="12" fill="#1b4332">nAChR (nicotinic) -> Na+ influx -> EPP -> AP</text>
+  <!-- steps -->
+  <text x="40" y="210" font-family="system-ui,sans-serif" font-size="12" fill="#333">1. AP opens Ca2+ channels -> vesicle fusion</text>
+  <text x="40" y="230" font-family="system-ui,sans-serif" font-size="12" fill="#333">2. ACh binds nAChR -> end-plate potential</text>
+  <text x="40" y="250" font-family="system-ui,sans-serif" font-size="12" fill="#333">3. AChE hydrolyzes ACh -> signal stops</text>
+</svg>

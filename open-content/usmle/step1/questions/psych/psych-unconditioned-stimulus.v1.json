@@ -1,0 +1,85 @@
+{
+  "id": "bank:usmle-step1:psych-unconditioned-stimulus:v1",
+  "rotation": "usmle-step1-open",
+  "topics": [
+    "classical conditioning",
+    "UCS"
+  ],
+  "moduleNodes": [
+    "usmle/step1",
+    "usmle/step1/psych"
+  ],
+  "questionType": "mechanism",
+  "difficulty": "medium",
+  "stem": "In Pavlovian terms, an unconditioned stimulus (UCS) is which of the following?",
+  "options": [
+    {
+      "label": "A",
+      "text": "A GLUT family membrane transporter",
+      "isCorrect": false,
+      "misconception": "Biochem — does not match the cited teaching point.",
+      "explanation": "This option does not match the cited source passage for the stem."
+    },
+    {
+      "label": "B",
+      "text": "A tumor-suppressor protein such as p53",
+      "isCorrect": false,
+      "misconception": "Biochem — does not match the cited teaching point.",
+      "explanation": "This option does not match the cited source passage for the stem."
+    },
+    {
+      "label": "C",
+      "text": "A neutral cue with no biologic pull at first",
+      "isCorrect": false,
+      "misconception": "CS starts neutral; UCS is biologically evocative.",
+      "explanation": "Opposite; see the cited source passage for detail."
+    },
+    {
+      "label": "D",
+      "text": "A variable-ratio reinforcement schedule",
+      "isCorrect": false,
+      "misconception": "Operant terminology — does not match the cited teaching point.",
+      "explanation": "Wrong paradigm; see the cited source passage for detail."
+    },
+    {
+      "label": "E",
+      "text": "Something that elicits a reflexive response",
+      "isCorrect": true,
+      "misconception": "None; UCS elicits a reflexive response.",
+      "explanation": "OpenStax: UCS elicits a reflexive response in an organism."
+    }
+  ],
+  "context": "Learning objective: define UCS.",
+  "cite": "openstax-psychology-2e#unconditioned-stimulus",
+  "publicUsmle": {
+    "schemaVersion": 1,
+    "origin": "generated",
+    "itemText": {
+      "licence": "CC-BY-4.0",
+      "attribution": "MD3 contributors"
+    },
+    "evidence": {
+      "kind": "passage",
+      "sourceId": "openstax-psychology-2e",
+      "passageId": "unconditioned-stimulus",
+      "licence": {
+        "cls": "foss",
+        "id": "cc-by-4.0"
+      }
+    },
+    "media": {
+      "kind": "asset",
+      "assetId": "learning-types-v1",
+      "job": "compare-table",
+      "showWhen": "after-reveal",
+      "licence": {
+        "cls": "foss",
+        "id": "cc-by-4.0"
+      },
+      "attribution": "MD3 contributors",
+      "contentHash": "sha256:4c947de90159ba387390ff054d1af5e25fbae1c2a5c10f58cefdc90345d8b7a6"
+    }
+  },
+  "imageUrl": "/figures/usmle/step1/learning-types-v1.svg",
+  "imageCaption": "Classical associates stimuli; operant uses consequences; observational learning models others."
+}

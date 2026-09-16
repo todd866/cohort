@@ -1,0 +1,72 @@
+{
+  "id": "bank:usmle-step1:pharm-heparin-procedural-clot-prevention:v1",
+  "rotation": "usmle-step1-open",
+  "topics": [
+    "heparin",
+    "blood clots",
+    "medical procedures"
+  ],
+  "moduleNodes": [
+    "usmle/step1",
+    "usmle/step1/pharmacology"
+  ],
+  "questionType": "management",
+  "difficulty": "easy",
+  "stem": "Which of the following is the intended use of heparin during certain medical procedures?",
+  "options": [
+    {
+      "label": "A",
+      "text": "To increase clot formation during the procedure",
+      "isCorrect": false,
+      "misconception": "The direction of heparin's cited use is reversed.",
+      "explanation": "The passage says heparin is used to prevent blood clots from forming during certain procedures, rather than to increase clot formation."
+    },
+    {
+      "label": "B",
+      "text": "To reduce fever during the procedure",
+      "isCorrect": false,
+      "misconception": "A general treatment goal is selected instead of the procedure-related clot prevention named by the source.",
+      "explanation": "Fever reduction is not the procedural use identified in the cited passage; the listed purpose is prevention of blood-clot formation."
+    },
+    {
+      "label": "C",
+      "text": "To suppress pain during the procedure",
+      "isCorrect": false,
+      "misconception": "Heparin is mistaken for a procedural analgesic.",
+      "explanation": "The cited source identifies clot prevention, rather than pain suppression, as heparin's use during certain medical procedures."
+    },
+    {
+      "label": "D",
+      "text": "To replace blood lost during the procedure",
+      "isCorrect": false,
+      "misconception": "A medication used to prevent clot formation is confused with replacement of lost blood.",
+      "explanation": "The passage describes preventing blood clots from forming; it does not describe heparin as blood replacement."
+    },
+    {
+      "label": "E",
+      "text": "To prevent blood clots during the procedure",
+      "isCorrect": true,
+      "misconception": "None; heparin is used to prevent blood clots during certain medical procedures.",
+      "explanation": "The cited passage states that heparin is used to prevent blood clots from forming in people undergoing certain medical procedures."
+    }
+  ],
+  "context": "Learning objective: recall heparin's procedure-related purpose. During certain medical procedures, heparin is used to prevent blood clots from forming.",
+  "cite": "medlineplus-heparin#heparin-uses",
+  "publicUsmle": {
+    "schemaVersion": 1,
+    "origin": "generated",
+    "itemText": {
+      "licence": "CC-BY-4.0",
+      "attribution": "MD3 contributors"
+    },
+    "evidence": {
+      "kind": "passage",
+      "sourceId": "medlineplus-heparin",
+      "passageId": "heparin-uses",
+      "licence": {
+        "cls": "foss",
+        "id": "us-gov"
+      }
+    }
+  }
+}

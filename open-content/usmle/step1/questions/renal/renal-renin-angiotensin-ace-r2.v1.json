@@ -1,0 +1,73 @@
+{
+  "id": "bank:usmle-step1:renal-renin-angiotensin-ace-r2:v1",
+  "rotation": "usmle-step1-open",
+  "ladderId": "renin-angiotensin-ace",
+  "difficulty": "medium",
+  "topics": [
+    "renin-angiotensin",
+    "angiotensinogen",
+    "ladder:renin-angiotensin-ace"
+  ],
+  "moduleNodes": [
+    "usmle/step1",
+    "usmle/step1/renal"
+  ],
+  "questionType": "mechanism",
+  "stem": "Renin cleaves several amino acids from which circulating precursor to produce angiotensin I?",
+  "options": [
+    {
+      "label": "A",
+      "text": "Angiotensinogen in the plasma",
+      "isCorrect": true,
+      "misconception": "None; renin cleaves angiotensinogen to produce angiotensin I.",
+      "explanation": "Renin cleaves amino acids from angiotensinogen to produce angiotensin I."
+    },
+    {
+      "label": "B",
+      "text": "Angiotensin II already formed",
+      "isCorrect": false,
+      "misconception": "The active product is being treated as the renin substrate.",
+      "explanation": "Angiotensin II is produced from angiotensin I by ACE, not by renin from II."
+    },
+    {
+      "label": "C",
+      "text": "Bradykinin from kininogen",
+      "isCorrect": false,
+      "misconception": "A kinin peptide is being confused with angiotensinogen.",
+      "explanation": "Bradykinin is not the precursor cleaved by renin to make angiotensin I."
+    },
+    {
+      "label": "D",
+      "text": "Aldosterone from the cortex",
+      "isCorrect": false,
+      "misconception": "A steroid hormone is being treated as a peptide precursor.",
+      "explanation": "Aldosterone is a mineralocorticoid product, not the renin substrate."
+    },
+    {
+      "label": "E",
+      "text": "Vasopressin from the pituitary",
+      "isCorrect": false,
+      "misconception": "An unrelated posterior-pituitary peptide is being substituted.",
+      "explanation": "Vasopressin is not cleaved by renin to form angiotensin I."
+    }
+  ],
+  "context": "Learning objective: apply that renin acts on angiotensinogen to produce angiotensin I.",
+  "cite": "openstax-anatomy-physiology#renal-renin-angiotensin-ace",
+  "publicUsmle": {
+    "schemaVersion": 1,
+    "origin": "generated",
+    "itemText": {
+      "licence": "CC-BY-4.0",
+      "attribution": "MD3 contributors"
+    },
+    "evidence": {
+      "kind": "passage",
+      "sourceId": "openstax-anatomy-physiology",
+      "passageId": "renal-renin-angiotensin-ace",
+      "licence": {
+        "cls": "foss",
+        "id": "cc-by-4.0"
+      }
+    }
+  }
+}

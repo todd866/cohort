@@ -1,0 +1,87 @@
+{
+  "id": "bank:usmle-step1:respiratory-ventilation-perfusion-r3:v1",
+  "rotation": "usmle-step1-open",
+  "ladderId": "ventilation-perfusion",
+  "topics": [
+    "ventilation-perfusion matching",
+    "gas exchange",
+    "ladder:ventilation-perfusion"
+  ],
+  "moduleNodes": [
+    "usmle/step1",
+    "usmle/step1/respiratory"
+  ],
+  "questionType": "mechanism",
+  "difficulty": "hard",
+  "stem": "A 68-year-old researcher studies a lung preparation in which one small alveolar duct is blocked. Before obstruction, regional gas exchange is efficient and ventilation and perfusion volumes are compatible. After obstruction, gas exchange in the affected units falls even though total circuit flow remains stable, and microscopy shows intact capillaries surrounding those alveoli.\n\nWhich of the following regional relationships most directly explains the new inefficiency?",
+  "options": [
+    {
+      "label": "A",
+      "text": "Perfusion decreases while ventilation remains present",
+      "isCorrect": false,
+      "misconception": "The perfusion-limited pattern is being substituted for the airway obstruction described.",
+      "explanation": "The capillary bed is still perfused, while the blocked airway prevents fresh gas from reaching the affected alveoli. The primary change is reduced ventilation relative to perfusion."
+    },
+    {
+      "label": "B",
+      "text": "Ventilation decreases while perfusion remains present",
+      "isCorrect": true,
+      "misconception": "None; the blocked airway lowers regional ventilation despite continuing blood flow.",
+      "explanation": "Efficient exchange requires compatible ventilation and perfusion. Airway obstruction reduces ventilation while capillary flow persists, so blood crosses the region without matching exposure to fresh alveolar gas."
+    },
+    {
+      "label": "C",
+      "text": "Ventilation and perfusion increase in matched proportions",
+      "isCorrect": false,
+      "misconception": "A matched increase is being inferred despite the documented airway obstruction.",
+      "explanation": "A blocked airway cannot increase ventilation. Matching both flows would preserve their relationship rather than create the regional imbalance described."
+    },
+    {
+      "label": "D",
+      "text": "Ventilation and perfusion decrease in matched proportions",
+      "isCorrect": false,
+      "misconception": "A proportional reduction is being confused with selective loss of ventilation.",
+      "explanation": "The stem states that capillary blood flow continues. A matched fall in both flows would not describe perfused alveoli isolated from fresh gas."
+    },
+    {
+      "label": "E",
+      "text": "Ventilation increases while perfusion remains present",
+      "isCorrect": false,
+      "misconception": "Airway obstruction is being treated as if it increased distal airflow.",
+      "explanation": "Obstruction reduces gas delivery to the distal alveoli. With perfusion preserved, that reduction creates the ventilation-perfusion imbalance."
+    }
+  ],
+  "context": "Learning objective: explain regional V/Q mismatch. A blocked alveolar duct selectively reduces ventilation to its distal gas-exchange units. When capillary perfusion continues, the two volumes are no longer compatible, so gas exchange falls.",
+  "cite": "openstax-anatomy-physiology#resp-ventilation-perfusion",
+  "publicUsmle": {
+    "schemaVersion": 1,
+    "origin": "generated",
+    "itemText": {
+      "licence": "CC-BY-4.0",
+      "attribution": "MD3 contributors"
+    },
+    "evidence": {
+      "kind": "passage",
+      "sourceId": "openstax-anatomy-physiology",
+      "passageId": "resp-ventilation-perfusion",
+      "licence": {
+        "cls": "foss",
+        "id": "cc-by-4.0"
+      }
+    },
+    "media": {
+      "kind": "asset",
+      "assetId": "gas-exchange-v1",
+      "job": "pathway",
+      "showWhen": "after-reveal",
+      "licence": {
+        "cls": "foss",
+        "id": "cc-by-4.0"
+      },
+      "attribution": "MD3 contributors",
+      "contentHash": "sha256:02374e7f286a7b66af9927c260658597c2328e958625e418f71e7885225080b8"
+    }
+  },
+  "imageUrl": "/figures/usmle/step1/gas-exchange-v1.svg",
+  "imageCaption": "V/Q, PO2 gradient, CO2 transport + chloride shift, chemoreceptors, brainstem, Dalton/Henry."
+}

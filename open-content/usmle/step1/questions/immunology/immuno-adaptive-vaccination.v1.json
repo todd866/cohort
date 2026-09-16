@@ -1,0 +1,85 @@
+{
+  "id": "bank:usmle-step1:immuno-adaptive-vaccination:v1",
+  "rotation": "usmle-step1-open",
+  "topics": [
+    "adaptive immunity",
+    "vaccination"
+  ],
+  "moduleNodes": [
+    "usmle/step1",
+    "usmle/step1/immunology"
+  ],
+  "questionType": "mechanism",
+  "difficulty": "easy",
+  "stem": "Adaptive immunity can be activated by antigen from which sources?",
+  "options": [
+    {
+      "label": "A",
+      "text": "Only from random sampling without replacement",
+      "isCorrect": false,
+      "misconception": "Stats confusion — does not match the cited teaching point.",
+      "explanation": "This option does not match the cited source passage for the stem."
+    },
+    {
+      "label": "B",
+      "text": "Only from atorvastatin tablets",
+      "isCorrect": false,
+      "misconception": "Nonsense — does not match the cited teaching point.",
+      "explanation": "This option does not match the cited source passage for the stem."
+    },
+    {
+      "label": "C",
+      "text": "Only from loop diuretics",
+      "isCorrect": false,
+      "misconception": "Nonsense — does not match the cited teaching point.",
+      "explanation": "This option does not match the cited source passage for the stem."
+    },
+    {
+      "label": "D",
+      "text": "A pathogen or a vaccination",
+      "isCorrect": true,
+      "misconception": "None; pathogen or vaccine antigen can activate adaptive immunity.",
+      "explanation": "OpenStax: antigen either from a pathogen or a vaccination."
+    },
+    {
+      "label": "E",
+      "text": "Only from Reye syndrome lipids",
+      "isCorrect": false,
+      "misconception": "Nonsense — does not match the cited teaching point.",
+      "explanation": "This option does not match the cited source passage for the stem."
+    }
+  ],
+  "context": "Learning objective: vaccine antigen can drive adaptive immunity.",
+  "cite": "openstax-biology-2e#adaptive-activation",
+  "publicUsmle": {
+    "schemaVersion": 1,
+    "origin": "generated",
+    "itemText": {
+      "licence": "CC-BY-4.0",
+      "attribution": "MD3 contributors"
+    },
+    "evidence": {
+      "kind": "passage",
+      "sourceId": "openstax-biology-2e",
+      "passageId": "adaptive-activation",
+      "licence": {
+        "cls": "foss",
+        "id": "cc-by-4.0"
+      }
+    },
+    "media": {
+      "kind": "asset",
+      "assetId": "immuno-defense-layers-v1",
+      "job": "compare-table",
+      "showWhen": "after-reveal",
+      "licence": {
+        "cls": "foss",
+        "id": "cc-by-4.0"
+      },
+      "attribution": "MD3 contributors",
+      "contentHash": "sha256:af2d1ce40a5a219b0a5c640aed56b4f0f0d54aaad2288a428d9e452ddccaad86"
+    }
+  },
+  "imageUrl": "/figures/usmle/step1/immuno-defense-layers-v1.svg",
+  "imageCaption": "Innate vs adaptive layers, IgE hypersensitivity timing, autoimmunity."
+}

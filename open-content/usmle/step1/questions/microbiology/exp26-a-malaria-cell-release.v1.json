@@ -1,0 +1,71 @@
+{
+  "id": "bank:usmle-step1:exp26-a-malaria-cell-release:v1",
+  "rotation": "usmle-step1-open",
+  "topics": [
+    "microbiology",
+    "malaria-blood-stage"
+  ],
+  "moduleNodes": [
+    "usmle/step1",
+    "usmle/step1/microbiology"
+  ],
+  "questionType": "mechanism",
+  "difficulty": "medium",
+  "stem": "A 25-year-old patient has malaria confirmed by blood microscopy. Testing shows anemia, thrombocytopenia, and elevated bilirubin. In a hypothetical observation of infected red cells, investigators record a burst of merozoites and hemozoin into the surrounding fluid. Which of the following events most directly explains that burst?",
+  "options": [
+    {
+      "label": "A",
+      "text": "Rupture of infected erythrocytes into extracellular fluid",
+      "isCorrect": true,
+      "explanation": "Lysis of infected erythrocytes releases merozoites and hemozoin. This directly matches both the observed cellular compartment and the simultaneous appearance of these materials outside it.",
+      "misconception": "No misconception: Rupture of infected red cells explains the sudden extracellular appearance of their contents."
+    },
+    {
+      "label": "B",
+      "text": "Attachment of intact erythrocytes to vascular lining",
+      "isCorrect": false,
+      "explanation": "Endothelial adherence is relevant to falciparum sequestration, but attachment of intact cells does not itself explain the observed burst of material from within infected erythrocytes.",
+      "misconception": "Confuses adherence of an intact infected cell with release of material from inside it."
+    },
+    {
+      "label": "C",
+      "text": "Retention of parasite products within intact red cells",
+      "isCorrect": false,
+      "explanation": "Retention would keep the measured products inside the cell. The experiment instead observes their sudden appearance in surrounding fluid, requiring a release event.",
+      "misconception": "Uses intracellular retention to explain products observed outside the infected cells."
+    },
+    {
+      "label": "D",
+      "text": "Transfer of extracellular products into uninfected red cells",
+      "isCorrect": false,
+      "explanation": "This describes movement into cells rather than the observed movement out of infected cells. It therefore reverses the direction of the measured release event.",
+      "misconception": "Reverses the measured direction of movement by describing entry into cells rather than release."
+    },
+    {
+      "label": "E",
+      "text": "Continued parasite growth within infected erythrocytes",
+      "isCorrect": false,
+      "explanation": "Growth within an intact boundary does not account for the recorded burst into surrounding fluid. The defining event in this observation is infected-cell lysis.",
+      "misconception": "Equates parasite growth inside an intact cell with the observed burst of extracellular material."
+    }
+  ],
+  "context": "Learning objective: connect the symptomatic blood stage of malaria to rupture of infected erythrocytes. Release of parasite products from these cells links the intracellular stage to the observed extracellular material.",
+  "cite": "cdc-malaria-clinical#malaria-blood-stage",
+  "publicUsmle": {
+    "schemaVersion": 1,
+    "origin": "generated",
+    "itemText": {
+      "licence": "CC-BY-4.0",
+      "attribution": "MD3 contributors"
+    },
+    "evidence": {
+      "kind": "passage",
+      "sourceId": "cdc-malaria-clinical",
+      "passageId": "malaria-blood-stage",
+      "licence": {
+        "cls": "foss",
+        "id": "us-gov"
+      }
+    }
+  }
+}

@@ -1,0 +1,86 @@
+{
+  "id": "bank:usmle-step1:re-oxytocin-milk-ejection:v1",
+  "rotation": "usmle-step1-open",
+  "topics": [
+    "oxytocin",
+    "milk ejection",
+    "lactation"
+  ],
+  "moduleNodes": [
+    "usmle/step1",
+    "usmle/step1/reproductive"
+  ],
+  "questionType": "mechanism",
+  "difficulty": "medium",
+  "stem": "A 29-year-old woman is breastfeeding her 2-month-old infant. When the infant suckles, milk is ejected from the alveoli into the ducts toward the nipple.\n\nWhich of the following hormones, released in response to suckling, produces this milk ejection?",
+  "options": [
+    {
+      "label": "A",
+      "text": "Prolactin acting on the lactocytes",
+      "isCorrect": false,
+      "misconception": "The synthesis hormone is being assigned the ejection role.",
+      "explanation": "Prolactin drives milk synthesis by the alveolar lactocytes; the mechanical ejection of stored milk is triggered by oxytocin contracting myoepithelial cells."
+    },
+    {
+      "label": "B",
+      "text": "Estrogen acting on the duct epithelium",
+      "isCorrect": false,
+      "misconception": "A pregnancy growth signal is being cast as the let-down trigger.",
+      "explanation": "Estrogen promotes ductal growth during pregnancy but falls after childbirth; suckling-induced milk ejection is mediated by oxytocin."
+    },
+    {
+      "label": "C",
+      "text": "Oxytocin acting on myoepithelial cells",
+      "isCorrect": true,
+      "misconception": "None; oxytocin squeezes milk from the alveoli.",
+      "explanation": "Following childbirth, suckling triggers oxytocin release, which stimulates myoepithelial cells to squeeze milk from alveoli — the let-down reflex that drains milk toward the nipple."
+    },
+    {
+      "label": "D",
+      "text": "Progesterone acting on the alveoli",
+      "isCorrect": false,
+      "misconception": "A gestational hormone is being linked to postpartum ejection.",
+      "explanation": "Progesterone supports alveolar development in pregnancy and its withdrawal permits lactation; the ejection reflex itself runs on oxytocin."
+    },
+    {
+      "label": "E",
+      "text": "Growth hormone acting on the mammary gland",
+      "isCorrect": false,
+      "misconception": "A metabolic contributor is being substituted for the reflex hormone.",
+      "explanation": "Growth hormone assists nutrient transport into milk but does not trigger let-down; suckling releases oxytocin, which contracts myoepithelial cells."
+    }
+  ],
+  "context": "Learning objective: separate milk synthesis from ejection. Prolactin maintains milk production by the lactocytes, while suckling-triggered oxytocin contracts myoepithelial cells to squeeze milk from the alveoli — a positive-feedback let-down loop that continues as long as the infant nurses.",
+  "cite": "openstax-anatomy-physiology#re-oxytocin-milk-ejection",
+  "publicUsmle": {
+    "schemaVersion": 1,
+    "origin": "generated",
+    "itemText": {
+      "licence": "CC-BY-4.0",
+      "attribution": "MD3 contributors"
+    },
+    "evidence": {
+      "kind": "passage",
+      "sourceId": "openstax-anatomy-physiology",
+      "passageId": "re-oxytocin-milk-ejection",
+      "licence": {
+        "cls": "foss",
+        "id": "cc-by-4.0"
+      }
+    },
+    "media": {
+      "kind": "asset",
+      "assetId": "menstrual-cycle-v1",
+      "job": "pathway",
+      "showWhen": "after-reveal",
+      "licence": {
+        "cls": "foss",
+        "id": "cc-by-4.0"
+      },
+      "attribution": "MD3 contributors",
+      "contentHash": "sha256:1f2f31e3cc6b7d1aae996adcda7ba376144dd75d88f4ce4b587f3d815b83a12e"
+    }
+  },
+  "imageUrl": "/figures/usmle/step1/menstrual-cycle-v1.svg",
+  "imageCaption": "Menstrual cycle: follicular E, LH surge, luteal P; secretory endometrium; corpus luteum; menopause; oxytocin."
+}

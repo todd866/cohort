@@ -1,0 +1,71 @@
+{
+  "id": "bank:usmle-step1:exp26-c-cord-crossing-localization:v1",
+  "rotation": "usmle-step1-open",
+  "topics": [
+    "neuro",
+    "cord-crossing-localization"
+  ],
+  "moduleNodes": [
+    "usmle/step1",
+    "usmle/step1/neuro"
+  ],
+  "questionType": "interpretation",
+  "difficulty": "hard",
+  "stem": "Tracer is applied to sensory fibers entering the right side of the spinal cord. Fibers in one pathway cross near entry, whereas those in another remain on the right until reaching the medulla. Which of the following pairings correctly identifies the modalities conveyed by these pathways?",
+  "options": [
+    {
+      "label": "A",
+      "text": "Spinal crossing: proprioception; medullary crossing: pain",
+      "isCorrect": false,
+      "explanation": "Proprioceptive information follows the dorsal column pathway and crosses in the medulla. Pain information follows the spinothalamic pathway and crosses near spinal entry, reversing this proposed pairing.",
+      "misconception": "Reverses the medullary proprioception and spinal pain crossings."
+    },
+    {
+      "label": "B",
+      "text": "Spinal crossing: pain; medullary crossing: temperature",
+      "isCorrect": false,
+      "explanation": "Pain information does cross near spinal entry, but temperature follows the same general spinothalamic crossing pattern. Temperature therefore does not distinguish the pathway that remains ipsilateral until the medulla.",
+      "misconception": "Incorrectly separates pain and temperature into different crossing patterns."
+    },
+    {
+      "label": "C",
+      "text": "Spinal crossing: temperature; medullary crossing: pain",
+      "isCorrect": false,
+      "explanation": "Both pain and temperature use the spinothalamic crossing pattern described here. Pain therefore cannot identify the pathway remaining ipsilateral until the medulla.",
+      "misconception": "Assigns medullary crossing to pain despite its spinothalamic route."
+    },
+    {
+      "label": "D",
+      "text": "Spinal crossing: temperature; medullary crossing: proprioception",
+      "isCorrect": true,
+      "explanation": "Temperature fibers use the spinothalamic pathway and cross near spinal entry. Proprioceptive fibers ascend ipsilaterally in the dorsal column before crossing in the medulla, matching both observations.",
+      "misconception": "No misconception: temperature crosses in cord; proprioception crosses in medulla."
+    },
+    {
+      "label": "E",
+      "text": "Spinal crossing: proprioception; medullary crossing: temperature",
+      "isCorrect": false,
+      "explanation": "This reverses the specified pathway assignments. Proprioception follows the medullary crossing, whereas temperature fibers cross near spinal entry.",
+      "misconception": "Reverses the spinal temperature and medullary proprioception assignments."
+    }
+  ],
+  "context": "Learning objective: Distinguish spinal crossing of pain and temperature fibers from medullary crossing of dorsal column fibers.\n\nTemperature fibers use the spinothalamic pathway and cross near spinal entry. Proprioceptive fibers ascend ipsilaterally in the dorsal column before crossing in the medulla, matching both observations.",
+  "cite": "openstax-anatomy-physiology#neuro-ascending-tracts",
+  "publicUsmle": {
+    "schemaVersion": 1,
+    "origin": "generated",
+    "itemText": {
+      "licence": "CC-BY-4.0",
+      "attribution": "MD3 contributors"
+    },
+    "evidence": {
+      "kind": "passage",
+      "sourceId": "openstax-anatomy-physiology",
+      "passageId": "neuro-ascending-tracts",
+      "licence": {
+        "cls": "foss",
+        "id": "cc-by-4.0"
+      }
+    }
+  }
+}

@@ -1,0 +1,114 @@
+{
+  "schemaVersion": 1,
+  "id": "concept-paracetamol-detox-branches",
+  "kind": "conceptual",
+  "sourceFacts": [
+    {
+      "fact": "Most paracetamol is metabolised by glucuronidation and sulfation.",
+      "sourceUrls": [
+        "https://www.ncbi.nlm.nih.gov/books/NBK548162/",
+        "https://pubmed.ncbi.nlm.nih.gov/4033631/"
+      ]
+    },
+    {
+      "fact": "A smaller pathway produces reactive NAPQI, normally detoxified through glutathione.",
+      "sourceUrls": [
+        "https://www.ncbi.nlm.nih.gov/books/NBK548162/",
+        "https://pubmed.ncbi.nlm.nih.gov/4033631/"
+      ]
+    },
+    {
+      "fact": "Overdose can deplete glutathione and allow toxic injury.",
+      "sourceUrls": [
+        "https://www.ncbi.nlm.nih.gov/books/NBK548162/",
+        "https://pubmed.ncbi.nlm.nih.gov/4033631/"
+      ]
+    }
+  ],
+  "nodes": [
+    {
+      "id": "1",
+      "label": "Paracetamol"
+    },
+    {
+      "id": "2",
+      "label": "Glucuronide and sulfate conjugates"
+    },
+    {
+      "id": "3",
+      "label": "NAPQI"
+    },
+    {
+      "id": "4",
+      "label": "Glutathione detoxification"
+    },
+    {
+      "id": "5",
+      "label": "If glutathione is depleted"
+    },
+    {
+      "id": "6",
+      "label": "Liver injury risk"
+    }
+  ],
+  "edges": [
+    {
+      "from": "1",
+      "to": "2",
+      "meaning": "major conjugation routes"
+    },
+    {
+      "from": "1",
+      "to": "3",
+      "meaning": "minor reactive route"
+    },
+    {
+      "from": "3",
+      "to": "4",
+      "meaning": "adequate glutathione"
+    },
+    {
+      "from": "3",
+      "to": "5",
+      "meaning": "depleted glutathione scenario"
+    },
+    {
+      "from": "5",
+      "to": "6",
+      "meaning": "toxic consequence"
+    }
+  ],
+  "labels": [
+    "Paracetamol: detoxification can be overwhelmed",
+    "Paracetamol",
+    "Glucuronide and sulfate conjugates",
+    "NAPQI",
+    "Glutathione detoxification",
+    "If glutathione is depleted",
+    "Liver injury risk",
+    "Conceptual schematic • Not anatomy"
+  ],
+  "layout": "Six concept tiles in a branching map. Node1 top centre sends a wide blue arrow to left2 with small text Major routes; a thinner coral arrow to right3 with text Smaller route. Node3 splits into lower-left4 green, and lower-right5 coral followed downward by6. Between3 and4 write Glutathione available as a route label; node5 contains the exact depleted condition. Neutral NAPQI triangles and GSH coins, plain document labels, no chemical structural formula or liver organ. Bottom note: Simplified metabolism; no dose thresholds shown.",
+  "forbiddenAnatomy": [
+    "organs",
+    "body silhouettes",
+    "tissue cross-sections",
+    "cells",
+    "tubules",
+    "vessels",
+    "clinical photographs",
+    "diagnostic scans"
+  ],
+  "validation": {
+    "sourceStatus": "checked",
+    "structureStatus": "verified",
+    "requiredChecks": [
+      "Six nodes and five connectors",
+      "Major conjugation route separate from smaller NAPQI route",
+      "Adequate glutathione branch ends in detoxification; depletion branch leads to injury risk",
+      "No route suggesting NAPQI always causes injury, no organs"
+    ],
+    "clinicalReviewStatus": "pending",
+    "pixelChecks": "Pixel check: six nodes/five arrows correctly separate major conjugation from smaller NAPQI route, then adequate glutathione detoxification from depletion/injury risk. No dose claim, organs or structural chemistry. Independent and clinical review pending."
+  }
+}

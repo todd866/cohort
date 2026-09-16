@@ -1,0 +1,90 @@
+{
+  "schemaVersion": 1,
+  "figureId": "scabies-household-cycle",
+  "kind": "conceptual",
+  "sourceFacts": [
+    {
+      "id": "fact-1",
+      "fact": "Household members and close contacts should be treated at the same time as the infected person.",
+      "sources": [
+        {
+          "title": "CDC — Preventing scabies",
+          "url": "https://www.cdc.gov/scabies/prevention/index.html"
+        }
+      ]
+    },
+    {
+      "id": "fact-2",
+      "fact": "Close contact allows spread and reinfestation.",
+      "sources": [
+        {
+          "title": "CDC — Preventing scabies",
+          "url": "https://www.cdc.gov/scabies/prevention/index.html"
+        }
+      ]
+    },
+    {
+      "id": "fact-3",
+      "fact": "Used clothing and bedding also need appropriate cleaning.",
+      "sources": [
+        {
+          "title": "CDC — Preventing scabies",
+          "url": "https://www.cdc.gov/scabies/prevention/index.html"
+        }
+      ]
+    }
+  ],
+  "nodes": [
+    {
+      "id": "left-network",
+      "shape": "four simplified human bust icons in a ring, only one with a teal treatment check",
+      "label": "Only one person treated"
+    },
+    {
+      "id": "right-network",
+      "shape": "matching four bust icons each with teal treatment check",
+      "label": "Treat close contacts together"
+    },
+    {
+      "id": "laundry",
+      "shape": "folded fabric and a small washing symbol",
+      "label": "Clean used clothing and bedding"
+    }
+  ],
+  "edges": [
+    {
+      "from": "left-network",
+      "to": "left-network",
+      "meaning": "coral arrows form a closed reinfestation loop"
+    },
+    {
+      "from": "right-network",
+      "to": "right-network",
+      "meaning": "former contact arrows pale and interrupted to indicate reduced reinfestation risk"
+    }
+  ],
+  "labels": [
+    "Only one person treated",
+    "Reinfestation can continue",
+    "Treat close contacts together",
+    "Break the cycle",
+    "Clean used clothing and bedding"
+  ],
+  "forbiddenAnatomy": [
+    "Organs and regional anatomy",
+    "Anatomical cutaways and tissue layers",
+    "Diagnostic or histological images"
+  ],
+  "validation": {
+    "status": "verified",
+    "method": "source-and-conceptual-structure-review",
+    "checks": [
+      "Each network has four icons; left has only one check while right has four.",
+      "Left transmission loop closes and right transmission loop is visibly interrupted.",
+      "No mites, skin or tissue anatomy; no depiction of someone being unsafe by touching a treated person.",
+      "The cleaning reminder is supplementary; no unsupported time or dose instructions."
+    ],
+    "pixelReviewStatus": "verified",
+    "pixelReviewNotes": "Compared full pixels against specification: both networks have four people; left has one treatment check and a complete clockwise loop; right has four checks and visibly interrupted paths plus a broken ring. No internal anatomy or skin pathology. Cleaning reminder matches CDC. Simultaneous treatment coverage is the clear visual distinction."
+  }
+}

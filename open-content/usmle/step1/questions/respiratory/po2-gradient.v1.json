@@ -1,0 +1,87 @@
+{
+  "id": "bank:usmle-step1:respiratory-po2-gradient:v1",
+  "rotation": "usmle-step1-open",
+  "ladderId": "oxygen-hemoglobin-delivery",
+  "topics": [
+    "gas exchange",
+    "respiratory membrane",
+    "ladder:oxygen-hemoglobin-delivery"
+  ],
+  "moduleNodes": [
+    "usmle/step1",
+    "usmle/step1/respiratory"
+  ],
+  "questionType": "interpretation",
+  "difficulty": "easy",
+  "stem": "Blood entering a pulmonary capillary of a healthy 40-year-old man has a partial pressure of oxygen of 40 mm Hg, while the adjacent alveolar air has a partial pressure of oxygen of 104 mm Hg.\n\nWhich of the following best describes the resulting movement of oxygen across the respiratory membrane in this region?",
+  "options": [
+    {
+      "label": "A",
+      "text": "Diffusion from the capillary blood into the alveolus",
+      "isCorrect": false,
+      "misconception": "The direction of the partial-pressure gradient is being reversed.",
+      "explanation": "Gases move from higher to lower partial pressure; alveolar pressure (104) exceeds blood pressure (40), so oxygen moves into the blood, not out of it."
+    },
+    {
+      "label": "B",
+      "text": "Rapid diffusion from the alveolus into the capillary blood",
+      "isCorrect": true,
+      "misconception": "None; oxygen moves down its partial-pressure gradient into the blood.",
+      "explanation": "The roughly 64 mm Hg difference creates a very strong pressure gradient that causes oxygen to rapidly cross the respiratory membrane from the alveoli into the blood."
+    },
+    {
+      "label": "C",
+      "text": "Active transport of oxygen into the capillary blood",
+      "isCorrect": false,
+      "misconception": "An energy-requiring carrier process is being proposed for oxygen uptake.",
+      "explanation": "Oxygen crosses the respiratory membrane by simple diffusion down its partial-pressure gradient; no active transport is involved."
+    },
+    {
+      "label": "D",
+      "text": "Facilitated diffusion of oxygen through membrane carrier proteins",
+      "isCorrect": false,
+      "misconception": "A carrier-mediated mechanism is being assigned to a directly permeable gas.",
+      "explanation": "Oxygen diffuses directly through the membrane lipids without carriers; the rate is set by the partial-pressure gradient."
+    },
+    {
+      "label": "E",
+      "text": "No net movement, because the two compartments have equilibrated",
+      "isCorrect": false,
+      "misconception": "A 64 mm Hg difference is being mistaken for equilibrium.",
+      "explanation": "Equilibrium requires equal partial pressures; the large alveolar-to-blood difference drives continuous diffusion."
+    }
+  ],
+  "context": "Learning objective: predict gas movement from partial pressures. A roughly 64 mm Hg alveolar-to-blood PO2 gradient drives rapid oxygen diffusion across the respiratory membrane.",
+  "cite": "openstax-anatomy-physiology#resp-po2-gradient",
+  "publicUsmle": {
+    "schemaVersion": 1,
+    "origin": "generated",
+    "itemText": {
+      "licence": "CC-BY-4.0",
+      "attribution": "MD3 contributors"
+    },
+    "evidence": {
+      "kind": "passage",
+      "sourceId": "openstax-anatomy-physiology",
+      "passageId": "resp-po2-gradient",
+      "licence": {
+        "cls": "foss",
+        "id": "cc-by-4.0"
+      }
+    },
+    "media": {
+      "kind": "asset",
+      "assetId": "gas-exchange-v1",
+      "job": "pathway",
+      "showWhen": "after-reveal",
+      "licence": {
+        "cls": "foss",
+        "id": "cc-by-4.0"
+      },
+      "attribution": "MD3 contributors",
+      "contentHash": "sha256:02374e7f286a7b66af9927c260658597c2328e958625e418f71e7885225080b8"
+    }
+  },
+  "imageUrl": "/figures/usmle/step1/gas-exchange-v1.svg",
+  "imageCaption": "V/Q, PO2 gradient, CO2 transport + chloride shift, chemoreceptors, brainstem, Dalton/Henry."
+}

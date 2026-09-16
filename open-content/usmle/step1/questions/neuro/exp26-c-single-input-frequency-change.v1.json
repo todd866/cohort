@@ -1,0 +1,71 @@
+{
+  "id": "bank:usmle-step1:exp26-c-single-input-frequency-change:v1",
+  "rotation": "usmle-step1-open",
+  "topics": [
+    "neuro",
+    "single-input-frequency-change"
+  ],
+  "moduleNodes": [
+    "usmle/step1",
+    "usmle/step1/neuro"
+  ],
+  "questionType": "interpretation",
+  "difficulty": "medium",
+  "stem": "A neuron receives input through one excitatory synapse. Widely spaced stimuli produce separate small depolarizations. When the same input fires more rapidly, successive depolarizations overlap and their combined effect becomes larger. Which of the following mechanisms best explains this change?",
+  "options": [
+    {
+      "label": "A",
+      "text": "Temporal summation from closely timed inputs at one location",
+      "isCorrect": true,
+      "explanation": "More frequent signals at one synapse allow graded depolarizations to overlap. Their timing, rather than recruitment of other sites, accounts for temporal summation.",
+      "misconception": "No misconception: closer timing at one synapse increases temporal summation."
+    },
+    {
+      "label": "B",
+      "text": "Spatial summation as inputs combine at several different locations",
+      "isCorrect": false,
+      "explanation": "The preparation stimulates one synapse. Spatial summation would combine input from different locations, which were not recruited here.",
+      "misconception": "Confuses repeated input at one site with input from several locations."
+    },
+    {
+      "label": "C",
+      "text": "Temporal summation as repeated potentials become farther apart",
+      "isCorrect": false,
+      "explanation": "The stimuli become closer together, not farther apart. Wider spacing would reduce overlap and does not explain the larger combined effect.",
+      "misconception": "Reverses the timing change that allows successive potentials to add."
+    },
+    {
+      "label": "D",
+      "text": "Spatial summation as additional synaptic locations are recruited",
+      "isCorrect": false,
+      "explanation": "No new synaptic location becomes active. The same site fires more rapidly, so an increase in spatial recruitment is not the observed change.",
+      "misconception": "Infers recruitment of new synapses when only firing frequency changes."
+    },
+    {
+      "label": "E",
+      "text": "Temporal summation as earlier potentials end before later inputs",
+      "isCorrect": false,
+      "explanation": "If one graded effect ended before the next input, the effects would remain separate. The recorded overlap is the reason the combined depolarization increases.",
+      "misconception": "Assumes successive potentials can add after earlier effects have already ended."
+    }
+  ],
+  "context": "Learning objective: Distinguish temporal from spatial summation by what changes in the experiment: input timing versus input location. Overlapping graded potentials at one site demonstrate temporal summation.\n\nMore frequent signals at one synapse allow graded depolarizations to overlap. Their timing, rather than recruitment of other sites, accounts for temporal summation.",
+  "cite": "openstax-anatomy-physiology#neuro-spatial-temporal-summation",
+  "publicUsmle": {
+    "schemaVersion": 1,
+    "origin": "generated",
+    "itemText": {
+      "licence": "CC-BY-4.0",
+      "attribution": "MD3 contributors"
+    },
+    "evidence": {
+      "kind": "passage",
+      "sourceId": "openstax-anatomy-physiology",
+      "passageId": "neuro-spatial-temporal-summation",
+      "licence": {
+        "cls": "foss",
+        "id": "cc-by-4.0"
+      }
+    }
+  }
+}

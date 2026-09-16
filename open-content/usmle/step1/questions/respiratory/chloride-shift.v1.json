@@ -1,0 +1,87 @@
+{
+  "id": "bank:usmle-step1:respiratory-chloride-shift:v1",
+  "rotation": "usmle-step1-open",
+  "topics": [
+    "chloride shift",
+    "carbon dioxide transport",
+    "ladder:co2-transport"
+  ],
+  "moduleNodes": [
+    "usmle/step1",
+    "usmle/step1/respiratory"
+  ],
+  "questionType": "mechanism",
+  "difficulty": "hard",
+  "stem": "In the venous blood of a 33-year-old woman, carbon dioxide enters erythrocytes and is converted to bicarbonate, which then moves out of the cells into the plasma.\n\nWhich of the following ion movements accompanies this efflux of bicarbonate from the erythrocytes?",
+  "options": [
+    {
+      "label": "A",
+      "text": "Movement of chloride ions out of the erythrocytes",
+      "isCorrect": false,
+      "misconception": "The direction of the exchange is being reversed.",
+      "explanation": "In systemic capillaries, where bicarbonate is generated and exported, chloride enters the cell; chloride exits only in the pulmonary capillaries, where the cycle reverses."
+    },
+    {
+      "label": "B",
+      "text": "Movement of sodium ions into the erythrocytes",
+      "isCorrect": false,
+      "misconception": "The wrong counter-ion is being paired with bicarbonate efflux.",
+      "explanation": "The bicarbonate exchange partner across the erythrocyte membrane is chloride, not sodium."
+    },
+    {
+      "label": "C",
+      "text": "Movement of potassium ions out of the erythrocytes",
+      "isCorrect": false,
+      "misconception": "An unrelated cation movement is being proposed.",
+      "explanation": "Potassium is not the ion exchanged for bicarbonate in the chloride shift; the exchange is bicarbonate for chloride."
+    },
+    {
+      "label": "D",
+      "text": "Movement of chloride ions into the erythrocytes",
+      "isCorrect": true,
+      "misconception": "None; bicarbonate exits in exchange for chloride entering (the chloride shift).",
+      "explanation": "Bicarbonate is moved across the membrane into the plasma in exchange for chloride ions, a mechanism called the chloride shift; in the pulmonary capillaries the exchange reverses."
+    },
+    {
+      "label": "E",
+      "text": "Movement of hydrogen ions into the plasma",
+      "isCorrect": false,
+      "misconception": "The fate of the reaction's hydrogen ions is being misstated.",
+      "explanation": "Hydrogen ions generated with bicarbonate are buffered within the erythrocyte by hemoglobin; they are not exported in exchange for bicarbonate."
+    }
+  ],
+  "context": "Learning objective: describe the chloride shift. Bicarbonate moves out of erythrocytes into plasma in exchange for chloride ions; the exchange reverses in the pulmonary capillaries.",
+  "cite": "openstax-anatomy-physiology#resp-chloride-shift",
+  "publicUsmle": {
+    "schemaVersion": 1,
+    "origin": "generated",
+    "itemText": {
+      "licence": "CC-BY-4.0",
+      "attribution": "MD3 contributors"
+    },
+    "evidence": {
+      "kind": "passage",
+      "sourceId": "openstax-anatomy-physiology",
+      "passageId": "resp-chloride-shift",
+      "licence": {
+        "cls": "foss",
+        "id": "cc-by-4.0"
+      }
+    },
+    "media": {
+      "kind": "asset",
+      "assetId": "gas-exchange-v1",
+      "job": "pathway",
+      "showWhen": "after-reveal",
+      "licence": {
+        "cls": "foss",
+        "id": "cc-by-4.0"
+      },
+      "attribution": "MD3 contributors",
+      "contentHash": "sha256:02374e7f286a7b66af9927c260658597c2328e958625e418f71e7885225080b8"
+    }
+  },
+  "imageUrl": "/figures/usmle/step1/gas-exchange-v1.svg",
+  "imageCaption": "V/Q, PO2 gradient, CO2 transport + chloride shift, chemoreceptors, brainstem, Dalton/Henry.",
+  "ladderId": "co2-transport"
+}

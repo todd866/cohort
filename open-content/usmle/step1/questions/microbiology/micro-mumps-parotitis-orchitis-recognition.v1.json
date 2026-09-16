@@ -1,0 +1,73 @@
+{
+  "id": "bank:usmle-step1:micro-mumps-parotitis-orchitis-recognition:v1",
+  "rotation": "usmle-step1-open",
+  "topics": [
+    "mumps",
+    "parotitis",
+    "orchitis",
+    "clinical interpretation"
+  ],
+  "moduleNodes": [
+    "usmle/step1",
+    "usmle/step1/microbiology"
+  ],
+  "questionType": "interpretation",
+  "difficulty": "medium",
+  "stem": "During a mumps outbreak, a 17-year-old develops orchitis but has no parotid or other salivary-gland swelling. Which of the following interpretations is most accurate?",
+  "options": [
+    {
+      "label": "A",
+      "text": "Parotitis should be expected before the orchitis",
+      "isCorrect": false,
+      "misconception": "Imposes a required sequence even though the passage allows complications with or without parotitis.",
+      "explanation": "The CDC passage does not require parotitis to precede orchitis; it states that mumps complications can occur with or without salivary-gland swelling."
+    },
+    {
+      "label": "B",
+      "text": "Parotitis and orchitis represent separate viral syndromes",
+      "isCorrect": false,
+      "misconception": "Splits two manifestations that the CDC passage places within the same mumps illness.",
+      "explanation": "The passage describes parotitis as the typical mumps presentation and lists orchitis among mumps complications, so they belong to one clinical spectrum."
+    },
+    {
+      "label": "C",
+      "text": "Orchitis makes mumps implausible without salivary swelling",
+      "isCorrect": false,
+      "misconception": "Treats absence of parotitis as an exclusion criterion for a recognized mumps complication.",
+      "explanation": "The source explicitly states that complications occur with or without parotitis or other salivary-gland swelling and includes orchitis in that list."
+    },
+    {
+      "label": "D",
+      "text": "Parotitis is a complication rather than the usual presentation",
+      "isCorrect": false,
+      "misconception": "Reverses the relationship between the typical presentation and a recognized complication.",
+      "explanation": "The CDC passage identifies parotitis or other salivary-gland swelling as the typical presentation and lists orchitis among complications."
+    },
+    {
+      "label": "E",
+      "text": "Mumps remains plausible despite the absent parotitis",
+      "isCorrect": true,
+      "misconception": "None; orchitis can occur as a mumps complication even when parotitis is absent.",
+      "explanation": "The CDC passage states that mumps complications occur with or without parotitis or other salivary-gland swelling and specifically includes orchitis."
+    }
+  ],
+  "context": "Learning objective: avoid excluding mumps solely because parotitis is absent. Parotitis is the typical presentation, but the CDC passage states that complications can occur with or without salivary-gland swelling and includes orchitis among them.",
+  "cite": "cdc-pink-book-mumps#mumps-parotitis-orchitis",
+  "publicUsmle": {
+    "schemaVersion": 1,
+    "origin": "generated",
+    "itemText": {
+      "licence": "CC-BY-4.0",
+      "attribution": "MD3 contributors"
+    },
+    "evidence": {
+      "kind": "passage",
+      "sourceId": "cdc-pink-book-mumps",
+      "passageId": "mumps-parotitis-orchitis",
+      "licence": {
+        "cls": "foss",
+        "id": "us-gov"
+      }
+    }
+  }
+}

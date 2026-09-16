@@ -1,0 +1,87 @@
+{
+  "id": "bank:usmle-step1:biochem-hexokinase-trap:v1",
+  "rotation": "usmle-step1-open",
+  "topics": [
+    "hexokinase",
+    "glycolysis",
+    "ladder:glycolysis"
+  ],
+  "moduleNodes": [
+    "usmle/step1",
+    "usmle/step1/biochem"
+  ],
+  "questionType": "mechanism",
+  "difficulty": "medium",
+  "stem": "Hexokinase catalyzes the first committed trapping step of glycolysis. What does it do to glucose?",
+  "options": [
+    {
+      "label": "A",
+      "text": "Exports glucose via GLUT transporters",
+      "isCorrect": false,
+      "misconception": "Transport is not an enzymatic phosphorylation.",
+      "explanation": "GLUT facilitators move glucose; hexokinase modifies it."
+    },
+    {
+      "label": "B",
+      "text": "Cleaves glucose into two trioses",
+      "isCorrect": false,
+      "misconception": "That is later aldolase chemistry.",
+      "explanation": "Cleavage occurs after fructose-1,6-bisphosphate formation."
+    },
+    {
+      "label": "C",
+      "text": "Oxidizes glucose to gluconolactone",
+      "isCorrect": false,
+      "misconception": "Describes glucose-6-phosphate dehydrogenase in PPP.",
+      "explanation": "That oxidative step is not the hexokinase reaction."
+    },
+    {
+      "label": "D",
+      "text": "Phosphorylates glucose using ATP",
+      "isCorrect": true,
+      "misconception": "None; hexokinase transfers a phosphate from ATP to glucose.",
+      "explanation": "OpenStax: hexokinase phosphorylates glucose using ATP, producing glucose-6-phosphate."
+    },
+    {
+      "label": "E",
+      "text": "Polymerizes glucose into glycogen",
+      "isCorrect": false,
+      "misconception": "Glycogen synthase territory.",
+      "explanation": "Polymer storage is separate from glycolytic entry."
+    }
+  ],
+  "context": "Learning objective: hexokinase phosphorylates glucose with ATP.",
+  "cite": "openstax-biology-2e#hexokinase-phosphorylates-glucose",
+  "publicUsmle": {
+    "schemaVersion": 1,
+    "origin": "generated",
+    "itemText": {
+      "licence": "CC-BY-4.0",
+      "attribution": "MD3 contributors"
+    },
+    "evidence": {
+      "kind": "passage",
+      "sourceId": "openstax-biology-2e",
+      "passageId": "hexokinase-phosphorylates-glucose",
+      "licence": {
+        "cls": "foss",
+        "id": "cc-by-4.0"
+      }
+    },
+    "media": {
+      "kind": "asset",
+      "assetId": "cellular-respiration-v1",
+      "job": "pathway",
+      "showWhen": "after-reveal",
+      "licence": {
+        "cls": "foss",
+        "id": "cc-by-4.0"
+      },
+      "attribution": "MD3 contributors",
+      "contentHash": "sha256:28ae7f955e1024135e9335f39b761f79292b1cc679baed71478eb3efc31f99e5"
+    }
+  },
+  "imageUrl": "/figures/usmle/step1/cellular-respiration-v1.svg",
+  "imageCaption": "Cellular respiration: glycolysis -> pyruvate -> acetyl-CoA -> citric cycle carriers -> ETC/ATP synthase; O2 terminal acceptor; fermentation regenerates NAD+.",
+  "ladderId": "glycolysis"
+}

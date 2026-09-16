@@ -1,0 +1,85 @@
+{
+  "id": "bank:usmle-step1:endo-posterior-pituitary-origins:v1",
+  "rotation": "usmle-step1-open",
+  "topics": [
+    "posterior pituitary",
+    "ADH synthesis"
+  ],
+  "moduleNodes": [
+    "usmle/step1",
+    "usmle/step1/endocrine"
+  ],
+  "questionType": "mechanism",
+  "difficulty": "easy",
+  "stem": "A 55-year-old man develops persistent thirst and large volumes of dilute urine after a closed head injury, and he is diagnosed with central diabetes insipidus from deficient antidiuretic hormone (ADH). The posterior pituitary itself does not synthesize ADH.\n\nIn a healthy person, the ADH stored in the posterior pituitary is produced by which of the following?",
+  "options": [
+    {
+      "label": "A",
+      "text": "Juxtaglomerular cells of the kidney",
+      "isCorrect": false,
+      "misconception": "A renal secretory cell responding to the same system is being named as the source.",
+      "explanation": "Juxtaglomerular cells release renin, not ADH; ADH is made by hypothalamic supraoptic neurons and released from their posterior pituitary axon terminals."
+    },
+    {
+      "label": "B",
+      "text": "Paraventricular nuclei of the hypothalamus",
+      "isCorrect": false,
+      "misconception": "The two posterior-lobe hormones are being assigned to each other's nuclei.",
+      "explanation": "The paraventricular nuclei produce oxytocin; ADH comes from the supraoptic nuclei, both hormones then traveling down axons for storage in the posterior pituitary."
+    },
+    {
+      "label": "C",
+      "text": "Anterior pituitary endocrine cells",
+      "isCorrect": false,
+      "misconception": "The wrong pituitary lobe is being credited with ADH synthesis.",
+      "explanation": "The anterior lobe makes GH, TSH, ACTH, FSH, LH, and prolactin — not ADH, which is hypothalamic in origin and merely stored in the posterior lobe."
+    },
+    {
+      "label": "D",
+      "text": "Pinealocytes of the pineal gland",
+      "isCorrect": false,
+      "misconception": "Another diencephalic endocrine gland is being substituted for the hypothalamus.",
+      "explanation": "Pinealocytes secrete melatonin in response to light levels; ADH is synthesized in the supraoptic nuclei of the hypothalamus and stored in the posterior pituitary."
+    },
+    {
+      "label": "E",
+      "text": "Supraoptic nuclei of the hypothalamus",
+      "isCorrect": true,
+      "misconception": "None; the supraoptic nuclei synthesize ADH, which then travels down axons to posterior lobe terminals.",
+      "explanation": "The posterior pituitary only stores and secretes hypothalamic hormones; ADH is produced by the supraoptic nuclei and oxytocin by the paraventricular nuclei, both traveling along axons to the posterior lobe."
+    }
+  ],
+  "context": "Learning objective: locate ADH and oxytocin synthesis. The posterior pituitary produces no hormones; it stores and releases ADH (supraoptic nuclei) and oxytocin (paraventricular nuclei), which travel along hypothalamic axons to the posterior lobe terminals.",
+  "cite": "openstax-anatomy-physiology#endo-posterior-pituitary-origins",
+  "publicUsmle": {
+    "schemaVersion": 1,
+    "origin": "generated",
+    "itemText": {
+      "licence": "CC-BY-4.0",
+      "attribution": "MD3 contributors"
+    },
+    "evidence": {
+      "kind": "passage",
+      "sourceId": "openstax-anatomy-physiology",
+      "passageId": "endo-posterior-pituitary-origins",
+      "licence": {
+        "cls": "foss",
+        "id": "cc-by-4.0"
+      }
+    },
+    "media": {
+      "kind": "asset",
+      "assetId": "hpa-axis-v1",
+      "job": "pathway",
+      "showWhen": "after-reveal",
+      "licence": {
+        "cls": "foss",
+        "id": "cc-by-4.0"
+      },
+      "attribution": "MD3 contributors",
+      "contentHash": "sha256:07ce876fc9b8e4bd8c634b01e83f6a7fffa501eaa640ec190e29ddcbd24ca1e5"
+    }
+  },
+  "imageUrl": "/figures/usmle/step1/hpa-axis-v1.svg",
+  "imageCaption": "HPA: hypothalamus to anterior (portal tropic hormones) and posterior (ADH/OT axons); peripheral feedback."
+}

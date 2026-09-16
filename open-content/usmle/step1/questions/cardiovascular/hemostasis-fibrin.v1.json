@@ -1,0 +1,85 @@
+{
+  "id": "bank:usmle-step1:cardiovascular-hemostasis-fibrin:v1",
+  "rotation": "usmle-step1-open",
+  "topics": [
+    "hemostasis",
+    "coagulation"
+  ],
+  "moduleNodes": [
+    "usmle/step1",
+    "usmle/step1/cardiovascular"
+  ],
+  "questionType": "mechanism",
+  "difficulty": "easy",
+  "stem": "A 34-year-old man lacerates his forearm while cooking. Within seconds the injured vessel constricts, and platelets adhering to the exposed collagen form an initial plug that slows the bleeding.\n\nWhich of the following events most directly converts this temporary platelet plug into a stable, definitive clot?",
+  "options": [
+    {
+      "label": "A",
+      "text": "Clotting factors generate a fibrin mesh",
+      "isCorrect": true,
+      "misconception": "None; coagulation reinforces the platelet plug with fibrin.",
+      "explanation": "In the third step of hemostasis, clotting factors promote the formation of a fibrin clot, which stabilizes the platelet plug into a durable seal."
+    },
+    {
+      "label": "B",
+      "text": "Plasmin activity remodels the plug",
+      "isCorrect": false,
+      "misconception": "The clot-dissolving system is being described as clot-forming.",
+      "explanation": "Plasmin drives fibrinolysis, the later degradation of the clot during healing; it does not stabilize the plug."
+    },
+    {
+      "label": "C",
+      "text": "Sustained vascular spasm durably seals the vessel",
+      "isCorrect": false,
+      "misconception": "The transient first step is being credited with the final stabilization.",
+      "explanation": "Vascular spasm is a brief initial response that slows flow; durable sealing requires the fibrin clot formed by coagulation."
+    },
+    {
+      "label": "D",
+      "text": "Endothelial regrowth covers the injured surface",
+      "isCorrect": false,
+      "misconception": "A later healing event is being substituted for immediate stabilization.",
+      "explanation": "Endothelial repair occurs over days; the immediate stabilization of the platelet plug is fibrin formation."
+    },
+    {
+      "label": "E",
+      "text": "Platelet-derived enzymes dissolve the plug framework",
+      "isCorrect": false,
+      "misconception": "A degradative process is being proposed where consolidation is needed.",
+      "explanation": "Dissolution of the plug would restart bleeding; stabilization comes from clotting factors generating fibrin."
+    }
+  ],
+  "context": "Learning objective: sequence hemostasis. Vascular spasm and the platelet plug (platelets binding exposed collagen) precede coagulation, in which clotting factors form the fibrin clot.",
+  "cite": "openstax-anatomy-physiology#blood-fibrin-clot",
+  "publicUsmle": {
+    "schemaVersion": 1,
+    "origin": "generated",
+    "itemText": {
+      "licence": "CC-BY-4.0",
+      "attribution": "MD3 contributors"
+    },
+    "evidence": {
+      "kind": "passage",
+      "sourceId": "openstax-anatomy-physiology",
+      "passageId": "blood-fibrin-clot",
+      "licence": {
+        "cls": "foss",
+        "id": "cc-by-4.0"
+      }
+    },
+    "media": {
+      "kind": "asset",
+      "assetId": "hemostasis-cascade-v1",
+      "job": "pathway",
+      "showWhen": "after-reveal",
+      "licence": {
+        "cls": "foss",
+        "id": "cc-by-4.0"
+      },
+      "attribution": "MD3 contributors",
+      "contentHash": "sha256:c60ee72abea54034e1edf06eef9bba46971e7a7011610c9a55fe3767aa079a04"
+    }
+  },
+  "imageUrl": "/figures/usmle/step1/hemostasis-cascade-v1.svg",
+  "imageCaption": "Hemostasis steps, factor X convergence, fibrin, plasmin fibrinolysis, heparin."
+}

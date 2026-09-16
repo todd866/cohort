@@ -1,0 +1,71 @@
+{
+  "id": "bank:usmle-step1:exp26-c-fusion-block-calcium-preserved:v1",
+  "rotation": "usmle-step1-open",
+  "topics": [
+    "neuro",
+    "fusion-block-calcium-preserved"
+  ],
+  "moduleNodes": [
+    "usmle/step1",
+    "usmle/step1/neuro"
+  ],
+  "questionType": "interpretation",
+  "difficulty": "hard",
+  "stem": "A presynaptic terminal has a normal action potential and a normal stimulation-induced calcium rise. Neurotransmitter-containing vesicles remain within the terminal, and little transmitter appears in the synaptic cleft. Which of the following steps best localizes the defect?",
+  "options": [
+    {
+      "label": "A",
+      "text": "Propagation of the action potential toward the axon terminal",
+      "isCorrect": false,
+      "explanation": "The action potential is recorded at the terminal, so failure to arrive cannot explain vesicles being retained after a normal calcium signal.",
+      "misconception": "Attributes release failure to an action potential that demonstrably arrived."
+    },
+    {
+      "label": "B",
+      "text": "Opening of calcium channels in the presynaptic terminal membrane",
+      "isCorrect": false,
+      "explanation": "The stimulation-induced calcium rise is normal. A failure of the calcium-entry channels would not best match that preserved measurement.",
+      "misconception": "Places the defect at calcium-channel opening despite the normal calcium rise."
+    },
+    {
+      "label": "C",
+      "text": "Entry of calcium through the stimulated terminal membrane",
+      "isCorrect": false,
+      "explanation": "Calcium entry is upstream of fusion and its measured response is intact. The release failure occurs after that preserved event.",
+      "misconception": "Mistakes preserved calcium entry for the later failed release event."
+    },
+    {
+      "label": "D",
+      "text": "Fusion of vesicle membranes with the presynaptic membrane",
+      "isCorrect": true,
+      "explanation": "Normal calcium with retained transmitter-containing vesicles and little cleft transmitter identifies failure of the fusion/exocytosis step.",
+      "misconception": "No misconception: retained vesicles after normal calcium implicate fusion failure."
+    },
+    {
+      "label": "E",
+      "text": "Diffusion of released neurotransmitter across the synaptic cleft",
+      "isCorrect": false,
+      "explanation": "A diffusion defect after release would not explain transmitter vesicles remaining inside the terminal. The findings place the defect before normal entry into the cleft.",
+      "misconception": "Places the failure after release despite retention of vesicles inside the terminal."
+    }
+  ],
+  "context": "Learning objective: Use preserved presynaptic calcium to place a secretion defect downstream of channel opening. A normal upstream signal and stored transmitter do not establish successful vesicle fusion.\n\nNormal calcium with retained transmitter-containing vesicles and little cleft transmitter identifies failure of the fusion/exocytosis step.",
+  "cite": "openstax-anatomy-physiology#neuro-synaptic-calcium-release",
+  "publicUsmle": {
+    "schemaVersion": 1,
+    "origin": "generated",
+    "itemText": {
+      "licence": "CC-BY-4.0",
+      "attribution": "MD3 contributors"
+    },
+    "evidence": {
+      "kind": "passage",
+      "sourceId": "openstax-anatomy-physiology",
+      "passageId": "neuro-synaptic-calcium-release",
+      "licence": {
+        "cls": "foss",
+        "id": "cc-by-4.0"
+      }
+    }
+  }
+}

@@ -1,0 +1,72 @@
+{
+  "id": "bank:usmle-step1:neuro-stroke-call-emergency:v1",
+  "rotation": "usmle-step1-open",
+  "topics": [
+    "stroke",
+    "emergency response",
+    "neurologic emergency"
+  ],
+  "moduleNodes": [
+    "usmle/step1",
+    "usmle/step1/neuro"
+  ],
+  "questionType": "management",
+  "difficulty": "easy",
+  "stem": "A person suddenly develops one-sided facial weakness and trouble speaking. Which of the following actions should a nearby person take?",
+  "options": [
+    {
+      "label": "A",
+      "text": "Offer water and watch for improvement",
+      "isCorrect": false,
+      "misconception": "Observation is being chosen despite a time-sensitive stroke warning pattern.",
+      "explanation": "The CDC advises calling emergency services right away rather than waiting to see whether sudden stroke symptoms improve."
+    },
+    {
+      "label": "B",
+      "text": "Ask the person to sleep briefly",
+      "isCorrect": false,
+      "misconception": "Rest is being substituted for urgent assessment of sudden focal neurologic symptoms.",
+      "explanation": "Sleep delays emergency evaluation; the cited action for sudden one-sided weakness or speech trouble is an immediate emergency call."
+    },
+    {
+      "label": "C",
+      "text": "Call emergency services right away",
+      "isCorrect": true,
+      "misconception": "None; suspected stroke symptoms require an immediate emergency call.",
+      "explanation": "Sudden unilateral facial weakness and trouble speaking are stroke warning signs. The CDC directs bystanders to call emergency services right away."
+    },
+    {
+      "label": "D",
+      "text": "Arrange a routine clinic visit later",
+      "isCorrect": false,
+      "misconception": "A routine timeline is being applied to an acute neurologic emergency.",
+      "explanation": "A later appointment is inappropriate for this sudden pattern; the cited response is to call emergency services immediately."
+    },
+    {
+      "label": "E",
+      "text": "Let the person drive to hospital",
+      "isCorrect": false,
+      "misconception": "Self-transport is being chosen instead of activating emergency medical help.",
+      "explanation": "The CDC advises an immediate emergency call so medical personnel can begin care during transport rather than having the affected person drive."
+    }
+  ],
+  "context": "Learning objective: act on suspected stroke. New one-sided weakness or speech difficulty is time-sensitive; activate emergency medical services immediately.",
+  "cite": "cdc-stroke-signs#stroke-call-emergency",
+  "publicUsmle": {
+    "schemaVersion": 1,
+    "origin": "generated",
+    "itemText": {
+      "licence": "CC-BY-4.0",
+      "attribution": "MD3 contributors"
+    },
+    "evidence": {
+      "kind": "passage",
+      "sourceId": "cdc-stroke-signs",
+      "passageId": "stroke-call-emergency",
+      "licence": {
+        "cls": "foss",
+        "id": "us-gov"
+      }
+    }
+  }
+}

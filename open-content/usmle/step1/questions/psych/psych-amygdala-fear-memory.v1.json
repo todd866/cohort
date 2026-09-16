@@ -1,0 +1,85 @@
+{
+  "id": "bank:usmle-step1:psych-amygdala-fear-memory:v1",
+  "rotation": "usmle-step1-open",
+  "topics": [
+    "amygdala",
+    "fear"
+  ],
+  "moduleNodes": [
+    "usmle/step1",
+    "usmle/step1/psych"
+  ],
+  "questionType": "mechanism",
+  "difficulty": "easy",
+  "stem": "Which statement about the amygdala and memory is supported by OpenStax Psychology?",
+  "options": [
+    {
+      "label": "A",
+      "text": "It participates in fear-related memories",
+      "isCorrect": true,
+      "misconception": "None; amygdala participates in fear memories.",
+      "explanation": "OpenStax: the amygdala is involved in fear and fear memories."
+    },
+    {
+      "label": "B",
+      "text": "It digests dietary glycogen in hepatocytes",
+      "isCorrect": false,
+      "misconception": "Nonsense — does not match the cited teaching point.",
+      "explanation": "This option does not match the cited source passage for the stem."
+    },
+    {
+      "label": "C",
+      "text": "It is the final electron acceptor of the ETC",
+      "isCorrect": false,
+      "misconception": "Nonsense — does not match the cited teaching point.",
+      "explanation": "This option does not match the cited source passage for the stem."
+    },
+    {
+      "label": "D",
+      "text": "It stores all procedural motor skills alone",
+      "isCorrect": false,
+      "misconception": "Procedural memory is more cerebellar/basal ganglia.",
+      "explanation": "Fear is the cited role."
+    },
+    {
+      "label": "E",
+      "text": "It synthesizes acetyl-CoA for the citric cycle",
+      "isCorrect": false,
+      "misconception": "Biochem nonsense — does not match the cited teaching point.",
+      "explanation": "This option does not match the cited source passage for the stem."
+    }
+  ],
+  "context": "Learning objective: amygdala and fear memories.",
+  "cite": "openstax-psychology-2e#amygdala-fear-memory",
+  "publicUsmle": {
+    "schemaVersion": 1,
+    "origin": "generated",
+    "itemText": {
+      "licence": "CC-BY-4.0",
+      "attribution": "MD3 contributors"
+    },
+    "evidence": {
+      "kind": "passage",
+      "sourceId": "openstax-psychology-2e",
+      "passageId": "amygdala-fear-memory",
+      "licence": {
+        "cls": "foss",
+        "id": "cc-by-4.0"
+      }
+    },
+    "media": {
+      "kind": "asset",
+      "assetId": "memory-systems-v1",
+      "job": "anatomy",
+      "showWhen": "after-reveal",
+      "licence": {
+        "cls": "foss",
+        "id": "cc-by-4.0"
+      },
+      "attribution": "MD3 contributors",
+      "contentHash": "sha256:123ce110b77ca50bbdc419ca19930e3b0667db9e96b2dea198e9a377ec837ed5"
+    }
+  },
+  "imageUrl": "/figures/usmle/step1/memory-systems-v1.svg",
+  "imageCaption": "Encoding/STM; hippocampus declarative memory; amygdala fear memories; mnemonics and rehearsal."
+}

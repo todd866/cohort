@@ -1,0 +1,88 @@
+{
+  "id": "bank:usmle-step1:he-abo-universal-donor:v1",
+  "rotation": "usmle-step1-open",
+  "topics": [
+    "ABO blood group",
+    "transfusion",
+    "universal donor",
+    "ladder:abo-transfusion"
+  ],
+  "moduleNodes": [
+    "usmle/step1",
+    "usmle/step1/hematology"
+  ],
+  "questionType": "diagnosis",
+  "difficulty": "easy",
+  "stem": "A 28-year-old man arrives in hemorrhagic shock after a motor vehicle collision. There is no time to type and cross-match his blood before transfusion.\n\nWhich of the following donor blood types is most appropriate for this emergency transfusion?",
+  "options": [
+    {
+      "label": "A",
+      "text": "Type O negative",
+      "isCorrect": true,
+      "misconception": "None; O-negative cells carry neither A, B, nor Rh(D) antigens.",
+      "explanation": "In emergencies without time for cross-matching, blood from a universal donor — an individual with type O negative blood — may be transfused because its cells lack the antigens that trigger recipient antibody attack."
+    },
+    {
+      "label": "B",
+      "text": "Type A negative",
+      "isCorrect": false,
+      "misconception": "Absence of one antigen set is being mistaken for absence of all.",
+      "explanation": "Type A cells carry A antigens, which recipient anti-A antibodies (present in type B and type O patients) would agglutinate; only O-negative lacks both A and B antigens."
+    },
+    {
+      "label": "C",
+      "text": "Type AB positive",
+      "isCorrect": false,
+      "misconception": "The universal-recipient type is being confused with the universal-donor type.",
+      "explanation": "AB-positive blood carries A, B, and Rh(D) antigens on its cells and would be attacked by antibodies in most recipients; AB individuals are universal recipients, not donors."
+    },
+    {
+      "label": "D",
+      "text": "Type B negative",
+      "isCorrect": false,
+      "misconception": "Rh negativity alone is being treated as universal compatibility.",
+      "explanation": "Type B cells carry B antigens and would be agglutinated by anti-B antibodies in type A and type O recipients; Rh status is not the only compatibility issue."
+    },
+    {
+      "label": "E",
+      "text": "Type AB negative",
+      "isCorrect": false,
+      "misconception": "Dropping the Rh antigen is being treated as sufficient for universality.",
+      "explanation": "AB-negative cells still carry both A and B antigens, so recipients with either anti-A or anti-B antibodies would hemolyze them; only type O lacks both."
+    }
+  ],
+  "context": "Learning objective: choose emergency transfusion blood. Blood groups reflect antigen markers on erythrocyte membranes; recipient antibodies attack mismatched antigens. Type O-negative cells carry neither A nor B nor Rh(D) antigens, making O-negative the universal donor for uncrossmatched transfusion.",
+  "cite": "openstax-anatomy-physiology#he-abo-universal-donor",
+  "publicUsmle": {
+    "schemaVersion": 1,
+    "origin": "generated",
+    "itemText": {
+      "licence": "CC-BY-4.0",
+      "attribution": "MD3 contributors"
+    },
+    "evidence": {
+      "kind": "passage",
+      "sourceId": "openstax-anatomy-physiology",
+      "passageId": "he-abo-universal-donor",
+      "licence": {
+        "cls": "foss",
+        "id": "cc-by-4.0"
+      }
+    },
+    "media": {
+      "kind": "asset",
+      "assetId": "blood-components-v1",
+      "job": "anatomy",
+      "showWhen": "after-reveal",
+      "licence": {
+        "cls": "foss",
+        "id": "cc-by-4.0"
+      },
+      "attribution": "MD3 contributors",
+      "contentHash": "sha256:3856cf48a8b6b7e73474650774b40f575f9ee1219bc0ebdd14e3df08c05e55b9"
+    }
+  },
+  "imageUrl": "/figures/usmle/step1/blood-components-v1.svg",
+  "imageCaption": "Hematocrit, buffy coat, albumin, platelets, monocyte-macrophage, T cells, EPO, iron deficiency, ABO.",
+  "ladderId": "abo-transfusion"
+}

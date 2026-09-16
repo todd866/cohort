@@ -1,0 +1,71 @@
+{
+  "id": "bank:usmle-step1:exp26-c-calcium-entry-selective-block:v1",
+  "rotation": "usmle-step1-open",
+  "topics": [
+    "neuro",
+    "calcium-entry-selective-block"
+  ],
+  "moduleNodes": [
+    "usmle/step1",
+    "usmle/step1/neuro"
+  ],
+  "questionType": "mechanism",
+  "difficulty": "medium",
+  "stem": "An action potential reaches a presynaptic terminal normally. A selective blocker prevents opening of the terminal's voltage-gated calcium channels. Which of the following paired changes is most directly expected after stimulation?",
+  "options": [
+    {
+      "label": "A",
+      "text": "Increased terminal calcium with increased transmitter exocytosis",
+      "isCorrect": false,
+      "explanation": "The blocked channels cannot generate the usual stimulation-induced calcium entry. Both proposed increases contradict the intervention.",
+      "misconception": "Reverses both consequences of blocking presynaptic calcium entry."
+    },
+    {
+      "label": "B",
+      "text": "Preserved terminal calcium with increased transmitter exocytosis",
+      "isCorrect": false,
+      "explanation": "Preserved calcium entry is inconsistent with the selective channel block, and increased release lacks its normal calcium trigger.",
+      "misconception": "Preserves a blocked calcium signal while assuming increased transmitter release."
+    },
+    {
+      "label": "C",
+      "text": "Reduced terminal calcium entry with reduced transmitter exocytosis",
+      "isCorrect": true,
+      "explanation": "Presynaptic calcium entry triggers vesicle fusion. Preventing that entry reduces the calcium signal and therefore transmitter exocytosis despite arrival of the action potential.",
+      "misconception": "No misconception: reduced calcium entry reduces the trigger for exocytosis."
+    },
+    {
+      "label": "D",
+      "text": "Increased terminal calcium with reduced transmitter exocytosis",
+      "isCorrect": false,
+      "explanation": "This pattern would require a downstream release defect with preserved or elevated calcium, rather than the channel-entry defect described.",
+      "misconception": "Substitutes a downstream release defect for the stated calcium-channel block."
+    },
+    {
+      "label": "E",
+      "text": "Reduced terminal calcium entry with preserved vesicle fusion",
+      "isCorrect": false,
+      "explanation": "Vesicle fusion depends on the terminal calcium signal. A preserved fusion response is not the expected direct consequence of removing that trigger.",
+      "misconception": "Treats vesicle fusion as preserved despite loss of its calcium trigger."
+    }
+  ],
+  "context": "Learning objective: Follow chemical synaptic transmission from the arriving action potential to calcium entry, vesicle fusion and transmitter release. Arrival of the electrical signal does not prove that secretion occurred.\n\nPresynaptic calcium entry triggers vesicle fusion. Preventing that entry reduces the calcium signal and therefore transmitter exocytosis despite arrival of the action potential.",
+  "cite": "openstax-anatomy-physiology#neuro-synaptic-calcium-release",
+  "publicUsmle": {
+    "schemaVersion": 1,
+    "origin": "generated",
+    "itemText": {
+      "licence": "CC-BY-4.0",
+      "attribution": "MD3 contributors"
+    },
+    "evidence": {
+      "kind": "passage",
+      "sourceId": "openstax-anatomy-physiology",
+      "passageId": "neuro-synaptic-calcium-release",
+      "licence": {
+        "cls": "foss",
+        "id": "cc-by-4.0"
+      }
+    }
+  }
+}

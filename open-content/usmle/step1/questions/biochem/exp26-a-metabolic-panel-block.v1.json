@@ -1,0 +1,71 @@
+{
+  "id": "bank:usmle-step1:exp26-a-metabolic-panel-block:v1",
+  "rotation": "usmle-step1-open",
+  "topics": [
+    "biochem",
+    "metabolic-blockade"
+  ],
+  "moduleNodes": [
+    "usmle/step1",
+    "usmle/step1/biochem"
+  ],
+  "questionType": "interpretation",
+  "difficulty": "medium",
+  "stem": "A hypothetical isolated pathway is X → Y → Z. Enzyme 1 converts X to Y, and enzyme 2 converts Y to Z; there are no alternative routes. After a sequence variant reduces one enzyme's function, X accumulates while Y and Z fall. Which of the following best explains this pattern?",
+  "options": [
+    {
+      "label": "A",
+      "text": "Reduced activity of enzyme 2 converting Y to Z",
+      "isCorrect": false,
+      "explanation": "A block at the second conversion would restrict consumption of Y. That does not explain the stated combination of accumulating X with depletion of Y.",
+      "misconception": "Places the block after the depleted intermediate instead of before its impaired formation."
+    },
+    {
+      "label": "B",
+      "text": "Increased activity of enzyme 1 converting X to Y",
+      "isCorrect": false,
+      "explanation": "Increasing the first conversion would favor X consumption and Y formation. That direction conflicts with the measured accumulation of X and reduction of downstream products.",
+      "misconception": "Predicts substrate accumulation from increasing the reaction that consumes that substrate."
+    },
+    {
+      "label": "C",
+      "text": "Increased activity of enzyme 2 converting Y to Z",
+      "isCorrect": false,
+      "explanation": "Enhanced conversion of Y to Z does not explain why Z is depleted. It also does not directly account for accumulation before the first reaction.",
+      "misconception": "Uses increased conversion into the final product to explain depletion of that same product."
+    },
+    {
+      "label": "D",
+      "text": "Unchanged activity of both enzymes in the pathway",
+      "isCorrect": false,
+      "explanation": "The experiment attributes the concentration shift to reduced enzyme function and excludes alternative routes. Preserving both activities leaves the specified pathway interruption unexplained in this model.",
+      "misconception": "Preserves both enzyme activities despite the stated enzyme defect and exclusion of alternative routes."
+    },
+    {
+      "label": "E",
+      "text": "Reduced activity of enzyme 1 converting X to Y",
+      "isCorrect": true,
+      "explanation": "Blocking the first conversion permits X to accumulate while limiting Y formation. The shortage of Y then also restricts the downstream formation of Z.",
+      "misconception": "No misconception: Blocking the first reaction allows its substrate to accumulate and restricts both downstream products."
+    }
+  ],
+  "context": "Learning objective: localize a pathway interruption using both substrate accumulation and product depletion. The earliest blocked conversion determines which metabolite rises and which downstream metabolites become scarce.",
+  "cite": "nhgri-genetic-testing-glossary#metabolite-blockade",
+  "publicUsmle": {
+    "schemaVersion": 1,
+    "origin": "generated",
+    "itemText": {
+      "licence": "CC-BY-4.0",
+      "attribution": "MD3 contributors"
+    },
+    "evidence": {
+      "kind": "passage",
+      "sourceId": "nhgri-genetic-testing-glossary",
+      "passageId": "metabolite-blockade",
+      "licence": {
+        "cls": "foss",
+        "id": "us-gov"
+      }
+    }
+  }
+}

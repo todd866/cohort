@@ -1,0 +1,72 @@
+{
+  "id": "bank:usmle-step1:micro-pertussis-paroxysmal-stage:v1",
+  "rotation": "usmle-step1-open",
+  "topics": [
+    "pertussis",
+    "clinical stages",
+    "cough"
+  ],
+  "moduleNodes": [
+    "usmle/step1",
+    "usmle/step1/microbiology"
+  ],
+  "questionType": "interpretation",
+  "difficulty": "medium",
+  "stem": "A 6-year-old child has 10 days of coryza and mild cough followed by 3 weeks of numerous rapid coughing fits. Symptoms are now more severe than during the initial cold-like illness. Which of the following clinical stages best matches the child's current illness?",
+  "options": [
+    {
+      "label": "A",
+      "text": "Catarrhal stage",
+      "isCorrect": false,
+      "misconception": "Anchors on the initial cold-like symptoms instead of recognizing that this stage has already passed.",
+      "explanation": "The CDC passage describes the catarrhal stage as an insidious, common-cold-like period lasting about 1 to 2 weeks; that corresponds to the child's earlier symptoms."
+    },
+    {
+      "label": "B",
+      "text": "Incubation interval",
+      "isCorrect": false,
+      "misconception": "Confuses the preclinical interval after exposure with an established symptomatic phase.",
+      "explanation": "The source places incubation before the catarrhal and paroxysmal clinical stages; this child has already progressed through one symptomatic phase into another."
+    },
+    {
+      "label": "C",
+      "text": "Convalescent stage",
+      "isCorrect": false,
+      "misconception": "Uses elapsed time alone while ignoring that symptoms are worsening rather than gradually recovering.",
+      "explanation": "The CDC passage defines convalescence by gradual recovery over weeks to months; the child's current increase to severe coughing fits matches the preceding paroxysmal stage."
+    },
+    {
+      "label": "D",
+      "text": "Paroxysmal stage",
+      "isCorrect": true,
+      "misconception": "None; severe paroxysms of numerous rapid coughs after the catarrhal phase identify this stage.",
+      "explanation": "The cited sequence moves from a 1- to 2-week catarrhal illness to a 1- to 6-week paroxysmal stage with more severe, numerous rapid coughs."
+    },
+    {
+      "label": "E",
+      "text": "Asymptomatic carriage",
+      "isCorrect": false,
+      "misconception": "Ignores the prominent, worsening cough syndrome described in the stem.",
+      "explanation": "A child experiencing numerous rapid coughing fits is not in an asymptomatic state; the passage specifically associates those paroxysms with the paroxysmal stage."
+    }
+  ],
+  "context": "Learning objective: locate a patient within the clinical sequence of pertussis. The reveal is temporal: an initial 1- to 2-week cold-like catarrhal phase gives way to a 1- to 6-week paroxysmal phase of more severe, rapid coughing fits, followed by gradual convalescence.",
+  "cite": "cdc-pink-book-pertussis#pertussis-stages",
+  "publicUsmle": {
+    "schemaVersion": 1,
+    "origin": "generated",
+    "itemText": {
+      "licence": "CC-BY-4.0",
+      "attribution": "MD3 contributors"
+    },
+    "evidence": {
+      "kind": "passage",
+      "sourceId": "cdc-pink-book-pertussis",
+      "passageId": "pertussis-stages",
+      "licence": {
+        "cls": "foss",
+        "id": "us-gov"
+      }
+    }
+  }
+}

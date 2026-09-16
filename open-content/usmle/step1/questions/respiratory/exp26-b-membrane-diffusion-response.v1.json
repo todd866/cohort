@@ -1,0 +1,71 @@
+{
+  "id": "bank:usmle-step1:exp26-b-membrane-diffusion-response:v1",
+  "rotation": "usmle-step1-open",
+  "topics": [
+    "respiratory",
+    "membrane-diffusion-response"
+  ],
+  "moduleNodes": [
+    "usmle/step1",
+    "usmle/step1/respiratory"
+  ],
+  "questionType": "interpretation",
+  "difficulty": "hard",
+  "stem": "A respiratory-membrane model is tested under the same gas gradients before and after a change in geometry. The altered membrane has a smaller exchange surface and a longer diffusion path. Cellular ATP availability is maintained. Which of the following best predicts the effect on gas transfer?",
+  "options": [
+    {
+      "text": "Unchanged transfer because cellular ATP remains available",
+      "explanation": "Gas exchange occurs by passive diffusion rather than direct ATP consumption. Preserving ATP therefore does not cancel the effects of an unfavorable change in membrane geometry.",
+      "isCorrect": false,
+      "label": "A",
+      "misconception": "Assumes that preserved cellular ATP cancels unfavorable changes in a passive diffusion pathway."
+    },
+    {
+      "text": "Reduced transfer from greater direct ATP consumption",
+      "explanation": "Reduced transfer is expected, but the proposed energy explanation is incorrect. The specified exchange process is passive, and the intervention changes geometry rather than ATP-dependent transport.",
+      "isCorrect": false,
+      "label": "B",
+      "misconception": "Attributes reduced gas transfer to direct ATP consumption instead of the altered diffusion geometry."
+    },
+    {
+      "text": "Increased transfer from reduced direct ATP consumption",
+      "explanation": "Gas diffusion does not become more efficient by consuming less ATP because it does not directly require ATP. The geometric changes instead hinder the passive process.",
+      "isCorrect": false,
+      "label": "C",
+      "misconception": "Treats reduced ATP consumption as a way to improve a process that does not directly consume ATP."
+    },
+    {
+      "text": "Reduced transfer from less favorable passive diffusion",
+      "explanation": "A large surface area and thin membrane favor gas exchange. Reducing area and increasing path length make diffusion less efficient even when cellular ATP availability is unchanged.",
+      "isCorrect": true,
+      "label": "D",
+      "misconception": "No misconception: smaller exchange area and a longer diffusion path hinder passive gas transfer."
+    },
+    {
+      "text": "Increased transfer from more favorable passive diffusion",
+      "explanation": "Both geometric changes move away from the conditions that favor efficient exchange. Neither smaller surface area nor a longer path explains increased passive transfer.",
+      "isCorrect": false,
+      "label": "E",
+      "misconception": "Assumes that smaller surface area and a longer path make passive gas diffusion more favorable."
+    }
+  ],
+  "context": "Learning objective: Predict how exchange geometry alters passive diffusion independently of ATP availability. A large surface area and thin membrane favor gas exchange. Reducing area and increasing path length make diffusion less efficient even when cellular ATP availability is unchanged.",
+  "cite": "openstax-ap1-gas-exchange#diffusion",
+  "publicUsmle": {
+    "schemaVersion": 1,
+    "origin": "generated",
+    "itemText": {
+      "licence": "CC-BY-4.0",
+      "attribution": "MD3 contributors"
+    },
+    "evidence": {
+      "kind": "passage",
+      "sourceId": "openstax-ap1-gas-exchange",
+      "passageId": "diffusion",
+      "licence": {
+        "cls": "foss",
+        "id": "cc-by-4.0"
+      }
+    }
+  }
+}

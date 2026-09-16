@@ -1,0 +1,71 @@
+{
+  "id": "bank:usmle-step1:exp26-c-kinase-block-camp-preserved:v1",
+  "rotation": "usmle-step1-open",
+  "topics": [
+    "endocrine",
+    "kinase-block-camp-preserved"
+  ],
+  "moduleNodes": [
+    "usmle/step1",
+    "usmle/step1/endocrine"
+  ],
+  "questionType": "interpretation",
+  "difficulty": "hard",
+  "stem": "A hormone normally raises cellular cyclic AMP and increases phosphorylation of cytoplasmic proteins. After an inhibitor is added, receptor binding and the cyclic AMP rise are preserved, but protein phosphorylation falls. Which of the following sites best accounts for this pattern?",
+  "options": [
+    {
+      "label": "A",
+      "text": "A protein kinase acting downstream of cyclic AMP",
+      "isCorrect": true,
+      "explanation": "Preserved cyclic AMP with reduced phosphorylation places the defect after second-messenger production, at the kinase-dependent response.",
+      "misconception": "No misconception: preserved cAMP localizes the defect to its downstream response."
+    },
+    {
+      "label": "B",
+      "text": "The surface receptor that initially binds the hormone",
+      "isCorrect": false,
+      "explanation": "Blocking initial receptor binding would undermine the preserved upstream response. The stem explicitly reports that binding remains intact.",
+      "misconception": "Attributes the defect to receptor binding despite preserved binding."
+    },
+    {
+      "label": "C",
+      "text": "The G protein that activates adenylyl cyclase",
+      "isCorrect": false,
+      "explanation": "A failure before cyclase activation would not best explain a normal cyclic AMP increase followed by reduced phosphorylation.",
+      "misconception": "Places the block upstream of cyclase despite normal cAMP generation."
+    },
+    {
+      "label": "D",
+      "text": "The cyclase responsible for producing cyclic AMP",
+      "isCorrect": false,
+      "explanation": "Inhibiting cyclic AMP production contradicts the observed rise. The interruption is downstream of that measured intermediate.",
+      "misconception": "Attributes normal cAMP generation to failure of its producing enzyme."
+    },
+    {
+      "label": "E",
+      "text": "The extracellular delivery of hormone to the receptor",
+      "isCorrect": false,
+      "explanation": "The hormone reaches and binds its receptor, and cyclic AMP increases. Inadequate delivery does not explain the isolated downstream defect.",
+      "misconception": "Mistakes a downstream signaling defect for failed hormone delivery."
+    }
+  ],
+  "context": "Learning objective: Localize a signaling interruption using measured intermediates. In the receptor–G protein–cyclase–cyclic AMP–kinase sequence, a preserved intermediate places the likely defect after that step.\n\nPreserved cyclic AMP with reduced phosphorylation places the defect after second-messenger production, at the kinase-dependent response.",
+  "cite": "openstax-anatomy-physiology#endo-camp-second-messenger",
+  "publicUsmle": {
+    "schemaVersion": 1,
+    "origin": "generated",
+    "itemText": {
+      "licence": "CC-BY-4.0",
+      "attribution": "MD3 contributors"
+    },
+    "evidence": {
+      "kind": "passage",
+      "sourceId": "openstax-anatomy-physiology",
+      "passageId": "endo-camp-second-messenger",
+      "licence": {
+        "cls": "foss",
+        "id": "cc-by-4.0"
+      }
+    }
+  }
+}

@@ -1,0 +1,86 @@
+{
+  "id": "bank:usmle-step1:he-monocyte-macrophage:v1",
+  "rotation": "usmle-step1-open",
+  "topics": [
+    "monocyte",
+    "macrophage",
+    "dendritic cell"
+  ],
+  "moduleNodes": [
+    "usmle/step1",
+    "usmle/step1/hematology"
+  ],
+  "questionType": "mechanism",
+  "difficulty": "easy",
+  "stem": "A 40-year-old man develops a deep tissue infection. During the infection, circulating leukocytes leave the bloodstream and differentiate into long-lived phagocytes that reside in the affected tissue and release cytokines.\n\nWhich of the following blood cells is the source of these tissue phagocytes?",
+  "options": [
+    {
+      "label": "A",
+      "text": "Neutrophils",
+      "isCorrect": false,
+      "misconception": "The most abundant phagocyte is being assumed to seed tissue macrophages.",
+      "explanation": "Neutrophils are short-lived granular cells that act acutely at infection sites; they do not differentiate into the long-lived tissue macrophages derived from monocytes."
+    },
+    {
+      "label": "B",
+      "text": "Monocytes",
+      "isCorrect": true,
+      "misconception": "None; monocytes are the circulating precursors of macrophages.",
+      "explanation": "When monocytes leave the bloodstream and enter a specific body tissue, they differentiate into tissue-specific phagocytes called macrophages and dendritic cells, which can reside in tissues for significant lengths of time."
+    },
+    {
+      "label": "C",
+      "text": "Basophils",
+      "isCorrect": false,
+      "misconception": "A histamine-releasing granulocyte is being confused with a phagocyte precursor.",
+      "explanation": "Basophils intensify inflammatory and allergic responses; the circulating cell that becomes a tissue phagocyte is the monocyte."
+    },
+    {
+      "label": "D",
+      "text": "Lymphocytes",
+      "isCorrect": false,
+      "misconception": "Adaptive immune cells are being merged with innate phagocyte lineage.",
+      "explanation": "Lymphocytes mediate specific immunity and do not become macrophages; monocytes are the dedicated circulating precursor of tissue phagocytes."
+    },
+    {
+      "label": "E",
+      "text": "Eosinophils",
+      "isCorrect": false,
+      "misconception": "An antiparasitic granulocyte is being cast as the macrophage precursor.",
+      "explanation": "Eosinophils release antihistamines and act against parasitic worms; tissue macrophages and dendritic cells arise from monocytes."
+    }
+  ],
+  "context": "Learning objective: place monocytes in the phagocyte lineage. Monocytes circulate briefly, then enter tissues and differentiate into macrophages and dendritic cells — long-lived, highly phagocytic cells that protect tissue, support neighboring cells via cytokines, and bridge innate and adaptive immunity.",
+  "cite": "openstax-microbiology#he-monocyte-macrophage",
+  "publicUsmle": {
+    "schemaVersion": 1,
+    "origin": "generated",
+    "itemText": {
+      "licence": "CC-BY-4.0",
+      "attribution": "MD3 contributors"
+    },
+    "evidence": {
+      "kind": "passage",
+      "sourceId": "openstax-microbiology",
+      "passageId": "he-monocyte-macrophage",
+      "licence": {
+        "cls": "foss",
+        "id": "cc-by-4.0"
+      }
+    },
+    "media": {
+      "kind": "asset",
+      "assetId": "blood-components-v1",
+      "job": "anatomy",
+      "showWhen": "after-reveal",
+      "licence": {
+        "cls": "foss",
+        "id": "cc-by-4.0"
+      },
+      "attribution": "MD3 contributors",
+      "contentHash": "sha256:3856cf48a8b6b7e73474650774b40f575f9ee1219bc0ebdd14e3df08c05e55b9"
+    }
+  },
+  "imageUrl": "/figures/usmle/step1/blood-components-v1.svg",
+  "imageCaption": "Hematocrit, buffy coat, albumin, platelets, monocyte-macrophage, T cells, EPO, iron deficiency, ABO."
+}

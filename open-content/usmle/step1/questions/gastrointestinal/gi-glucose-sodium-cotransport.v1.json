@@ -1,0 +1,86 @@
+{
+  "id": "bank:usmle-step1:gi-glucose-sodium-cotransport:v1",
+  "rotation": "usmle-step1-open",
+  "topics": [
+    "glucose absorption",
+    "sodium cotransport",
+    "oral rehydration"
+  ],
+  "moduleNodes": [
+    "usmle/step1",
+    "usmle/step1/gastrointestinal"
+  ],
+  "questionType": "mechanism",
+  "difficulty": "medium",
+  "stem": "A 24-year-old man with cholera is given an oral rehydration solution containing glucose and sodium.\n\nIntestinal uptake of the glucose is enhanced because it crosses the apical enterocyte membrane by which of the following mechanisms?",
+  "options": [
+    {
+      "label": "A",
+      "text": "Facilitated diffusion independent of sodium",
+      "isCorrect": false,
+      "misconception": "Fructose's mechanism is being assigned to glucose.",
+      "explanation": "Fructose enters by facilitated diffusion, but glucose and galactose are absorbed by sodium cotransport; removing sodium abolishes their uptake."
+    },
+    {
+      "label": "B",
+      "text": "Cotransport of glucose with sodium ions",
+      "isCorrect": true,
+      "misconception": "None; glucose rides the sodium gradient into the enterocyte.",
+      "explanation": "Glucose is absorbed by cotransport with sodium ions across the apical membrane into the villus capillary blood, which is why rehydration solutions pair glucose with salt."
+    },
+    {
+      "label": "C",
+      "text": "Simple diffusion through the lipid bilayer",
+      "isCorrect": false,
+      "misconception": "A polar sugar is being treated as membrane-permeant.",
+      "explanation": "Glucose is hydrophilic and cannot cross the lipid bilayer unaided; it requires a carrier coupled to sodium."
+    },
+    {
+      "label": "D",
+      "text": "Primary active transport driven by ATP",
+      "isCorrect": false,
+      "misconception": "The apical step is being cast as directly ATP-driven.",
+      "explanation": "The apical carrier uses the sodium gradient (secondary active transport); ATP powers the basolateral sodium pump that maintains that gradient, not the apical entry step itself."
+    },
+    {
+      "label": "E",
+      "text": "Engulfment of glucose by apical pinocytosis",
+      "isCorrect": false,
+      "misconception": "A bulk-uptake process is being applied to monosaccharides.",
+      "explanation": "Monosaccharides are absorbed molecule by molecule through carriers; pinocytosis does not contribute to glucose uptake in the adult gut."
+    }
+  ],
+  "context": "Learning objective: monosaccharide uptake mechanisms. Glucose and galactose enter enterocytes by cotransport with sodium ions (secondary active transport) and pass to villus capillary blood; fructose uses facilitated diffusion. This pairing is the physiologic basis of oral rehydration therapy.",
+  "cite": "openstax-anatomy-physiology#gi-glucose-sodium-cotransport",
+  "publicUsmle": {
+    "schemaVersion": 1,
+    "origin": "generated",
+    "itemText": {
+      "licence": "CC-BY-4.0",
+      "attribution": "MD3 contributors"
+    },
+    "evidence": {
+      "kind": "passage",
+      "sourceId": "openstax-anatomy-physiology",
+      "passageId": "gi-glucose-sodium-cotransport",
+      "licence": {
+        "cls": "foss",
+        "id": "cc-by-4.0"
+      }
+    },
+    "media": {
+      "kind": "asset",
+      "assetId": "gi-absorption-v1",
+      "job": "pathway",
+      "showWhen": "after-reveal",
+      "licence": {
+        "cls": "foss",
+        "id": "cc-by-4.0"
+      },
+      "attribution": "MD3 contributors",
+      "contentHash": "sha256:7fa3cf7c6deede7943579ae81371661588ab4f96bae794c6f6acea588dd08d5e"
+    }
+  },
+  "imageUrl": "/figures/usmle/step1/gi-absorption-v1.svg",
+  "imageCaption": "Villi, SGLT1, mucosal barrier, pancreatic enzymes, micelles/chylomicrons, colonic water."
+}

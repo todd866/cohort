@@ -1,0 +1,88 @@
+{
+  "id": "bank:usmle-step1:ms-sarcomere-bands:v1",
+  "rotation": "usmle-step1-open",
+  "ladderId": "excitation-contraction-coupling",
+  "topics": [
+    "sarcomere",
+    "sliding filament",
+    "muscle contraction",
+    "ladder:excitation-contraction-coupling"
+  ],
+  "moduleNodes": [
+    "usmle/step1",
+    "usmle/step1/musculoskeletal"
+  ],
+  "questionType": "mechanism",
+  "difficulty": "easy",
+  "stem": "In a physiology laboratory, a 21-year-old student watches a stimulated skeletal muscle fiber contract under the microscope.\n\nWhich of the following describes the appearance of its sarcomeres during shortening?",
+  "options": [
+    {
+      "label": "A",
+      "text": "The I band narrows while the A band stays constant",
+      "isCorrect": true,
+      "misconception": "None; the thin filaments slide over the thick ones, narrowing the I band and H zone.",
+      "explanation": "When a sarcomere contracts, the Z lines move closer together and the I band becomes smaller, while the A band stays the same width because the thick filaments themselves do not change length."
+    },
+    {
+      "label": "B",
+      "text": "Both bands narrow to half of their resting width",
+      "isCorrect": false,
+      "misconception": "Shortening is being attributed to the filaments themselves.",
+      "explanation": "The sliding filament model moves filaments past each other rather than shortening them; only the I band (and H zone) narrow, while the A band is unchanged."
+    },
+    {
+      "label": "C",
+      "text": "The A band narrows while the I band stays constant",
+      "isCorrect": false,
+      "misconception": "The thick-filament band is being treated as the one that shortens.",
+      "explanation": "The A band reflects the length of the myosin thick filaments, which does not change; it is the I band (thin filament only) that shrinks as the Z lines approach."
+    },
+    {
+      "label": "D",
+      "text": "The Z discs move farther apart as the filaments slide",
+      "isCorrect": false,
+      "misconception": "The direction of Z-disc movement is being reversed.",
+      "explanation": "The Z lines move closer together during contraction, pulling the sarcomere's ends toward its center; moving apart would describe stretching."
+    },
+    {
+      "label": "E",
+      "text": "The A band widens as extra myosin is laid down",
+      "isCorrect": false,
+      "misconception": "New filament synthesis is being cast as an acute contraction event.",
+      "explanation": "Contraction uses existing filaments and adds nothing new; the A band stays the same width throughout the twitch."
+    }
+  ],
+  "context": "Learning objective: read a contracting sarcomere. The sarcomere runs Z-line to Z-line. During contraction the Z lines approach, the I band and H zone shrink, and the A band stays constant because filament length is unchanged — sliding, not shortening, of filaments.",
+  "cite": "openstax-anatomy-physiology#ms-sarcomere-bands",
+  "imageUrl": "/figures/usmle/step1/sarcomere-bands-v1.svg",
+  "imageCaption": "Resting sarcomere: I band narrows on shortening; A band width stays constant.",
+  "publicUsmle": {
+    "schemaVersion": 1,
+    "origin": "generated",
+    "itemText": {
+      "licence": "CC-BY-4.0",
+      "attribution": "MD3 contributors"
+    },
+    "evidence": {
+      "kind": "passage",
+      "sourceId": "openstax-anatomy-physiology",
+      "passageId": "ms-sarcomere-bands",
+      "licence": {
+        "cls": "foss",
+        "id": "cc-by-4.0"
+      }
+    },
+    "media": {
+      "kind": "asset",
+      "assetId": "sarcomere-bands-v1",
+      "job": "anatomy",
+      "showWhen": "after-reveal",
+      "licence": {
+        "cls": "foss",
+        "id": "cc-by-4.0"
+      },
+      "attribution": "MD3 contributors",
+      "contentHash": "sha256:cb4c9ab61e32ba9184c63ada578ecb307533c7a4bf3383037d3aa54ccdf4a845"
+    }
+  }
+}

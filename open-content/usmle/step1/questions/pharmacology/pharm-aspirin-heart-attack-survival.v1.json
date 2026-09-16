@@ -1,0 +1,72 @@
+{
+  "id": "bank:usmle-step1:pharm-aspirin-heart-attack-survival:v1",
+  "rotation": "usmle-step1-open",
+  "topics": [
+    "aspirin",
+    "heart",
+    "heart attack"
+  ],
+  "moduleNodes": [
+    "usmle/step1",
+    "usmle/step1/pharmacology"
+  ],
+  "questionType": "management",
+  "difficulty": "medium",
+  "stem": "A 64-year-old patient has a confirmed heart attack. The treatment team considers aspirin for the uses listed in the cited passage. Which of the following intended benefits is most directly applicable now?",
+  "options": [
+    {
+      "label": "A",
+      "text": "Reducing fever during the confirmed heart attack",
+      "isCorrect": false,
+      "misconception": "A general aspirin use is chosen instead of the passage's survival benefit for this specific setting.",
+      "explanation": "Although fever reduction appears among aspirin's listed uses, the passage specifically links an ongoing heart attack to reducing the risk of death."
+    },
+    {
+      "label": "B",
+      "text": "Relieving mild pain during the confirmed heart attack",
+      "isCorrect": false,
+      "misconception": "Symptom relief is prioritized over the outcome the source explicitly associates with a heart attack.",
+      "explanation": "The cited passage lists pain relief generally, but its directly applicable heart-attack benefit is reduction in the risk of death."
+    },
+    {
+      "label": "C",
+      "text": "Reducing inflammation during the confirmed heart attack",
+      "isCorrect": false,
+      "misconception": "Aspirin's general anti-inflammatory use is substituted for its stated benefit during a heart attack.",
+      "explanation": "Inflammation reduction is a listed general use, whereas the passage directly identifies reduced death risk for people experiencing a heart attack."
+    },
+    {
+      "label": "D",
+      "text": "Reducing death risk during the confirmed heart attack",
+      "isCorrect": true,
+      "misconception": "None; the source explicitly lists reduced death risk for a person experiencing a heart attack.",
+      "explanation": "The cited passage states that aspirin is used to reduce the risk of death in people who are experiencing or have experienced a heart attack."
+    },
+    {
+      "label": "E",
+      "text": "Preventing a mini-stroke during the confirmed heart attack",
+      "isCorrect": false,
+      "misconception": "A different listed vascular prevention use is selected instead of the outcome tied to the current heart attack.",
+      "explanation": "The passage lists prevention of strokes and mini-strokes separately; for a person currently experiencing a heart attack, it expressly names reduced death risk."
+    }
+  ],
+  "context": "Learning objective: select the aspirin benefit that matches an active heart attack. The cited passage identifies reduction in the risk of death for people experiencing or having experienced a heart attack.",
+  "cite": "medlineplus-aspirin#aspirin-uses",
+  "publicUsmle": {
+    "schemaVersion": 1,
+    "origin": "generated",
+    "itemText": {
+      "licence": "CC-BY-4.0",
+      "attribution": "MD3 contributors"
+    },
+    "evidence": {
+      "kind": "passage",
+      "sourceId": "medlineplus-aspirin",
+      "passageId": "aspirin-uses",
+      "licence": {
+        "cls": "foss",
+        "id": "us-gov"
+      }
+    }
+  }
+}

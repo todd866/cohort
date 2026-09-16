@@ -1,0 +1,85 @@
+{
+  "id": "bank:usmle-step1:renal-net-filtration-pressure:v1",
+  "rotation": "usmle-step1-open",
+  "topics": [
+    "net filtration pressure",
+    "GFR determinants"
+  ],
+  "moduleNodes": [
+    "usmle/step1",
+    "usmle/step1/renal"
+  ],
+  "questionType": "calculation",
+  "difficulty": "medium",
+  "stem": "A physiologist measures pressures across the glomerular capillaries of a healthy 28-year-old woman: glomerular blood hydrostatic pressure 55 mm Hg, capsular hydrostatic pressure 15 mm Hg, and blood colloid osmotic pressure 30 mm Hg.\n\nWhich of the following is her net filtration pressure?",
+  "options": [
+    {
+      "label": "A",
+      "text": "40 mm Hg favoring filtration",
+      "isCorrect": false,
+      "misconception": "Only the capsular pressure was subtracted; the osmotic force was ignored.",
+      "explanation": "Subtracting only the capsular hydrostatic pressure gives 40 mm Hg, but the blood colloid osmotic pressure also opposes filtration and must be subtracted as well."
+    },
+    {
+      "label": "B",
+      "text": "25 mm Hg favoring filtration",
+      "isCorrect": false,
+      "misconception": "Only the colloid osmotic pressure was subtracted; the capsular pressure was ignored.",
+      "explanation": "Subtracting only the osmotic pressure gives 25 mm Hg; both the capsular hydrostatic and the colloid osmotic pressures oppose filtration and must both be subtracted."
+    },
+    {
+      "label": "C",
+      "text": "10 mm Hg favoring filtration",
+      "isCorrect": true,
+      "misconception": "None; NFP = GBHP − (CHP + BCOP) = 55 − (15 + 30) = 10 mm Hg.",
+      "explanation": "Net filtration pressure equals glomerular blood hydrostatic pressure minus the sum of capsular hydrostatic pressure and blood colloid osmotic pressure: 55 − (15 + 30) = 10 mm Hg, driving fluid into Bowman's space."
+    },
+    {
+      "label": "D",
+      "text": "100 mm Hg favoring filtration",
+      "isCorrect": false,
+      "misconception": "The opposing pressures were added to, rather than subtracted from, the hydrostatic pressure.",
+      "explanation": "Adding all three pressures gives 100 mm Hg, but capsular hydrostatic and colloid osmotic pressures oppose the glomerular hydrostatic pressure and are subtracted."
+    },
+    {
+      "label": "E",
+      "text": "10 mm Hg favoring reabsorption",
+      "isCorrect": false,
+      "misconception": "The direction of the net force is being reversed.",
+      "explanation": "The glomerular hydrostatic pressure exceeds the combined opposing pressures, so the 10 mm Hg net pressure drives fluid out of the capillary — filtration, not reabsorption."
+    }
+  ],
+  "context": "Learning objective: compute net filtration pressure. NFP = GBHP − (CHP + BCOP), normally about 10 mm Hg favoring filtration.",
+  "cite": "openstax-anatomy-physiology#renal-net-filtration-pressure",
+  "publicUsmle": {
+    "schemaVersion": 1,
+    "origin": "generated",
+    "itemText": {
+      "licence": "CC-BY-4.0",
+      "attribution": "MD3 contributors"
+    },
+    "evidence": {
+      "kind": "passage",
+      "sourceId": "openstax-anatomy-physiology",
+      "passageId": "renal-net-filtration-pressure",
+      "licence": {
+        "cls": "foss",
+        "id": "cc-by-4.0"
+      }
+    },
+    "media": {
+      "kind": "asset",
+      "assetId": "nephron-overview-v1",
+      "job": "anatomy",
+      "showWhen": "after-reveal",
+      "licence": {
+        "cls": "foss",
+        "id": "cc-by-4.0"
+      },
+      "attribution": "MD3 contributors",
+      "contentHash": "sha256:594f7ddfca37a265ea925ffa5348bce222990740b857a75cf8669f0ba5f715fa"
+    }
+  },
+  "imageUrl": "/figures/usmle/step1/nephron-overview-v1.svg",
+  "imageCaption": "Nephron segments: filtration, PCT, loop, DCT, collecting duct (ADH aquaporins)."
+}
