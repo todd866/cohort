@@ -1028,6 +1028,8 @@ prisma/migrations/20260911180000_video_clip_slug/migration.sql
 prisma/migrations/20260914090614_serve_decision_served_option_arrangement/migration.sql
 prisma/migrations/20260916040000_user_curriculum_requested_at/migration.sql
 prisma/migrations/20260917040000_card_concept/migration.sql
+prisma/migrations/20260917080000_leaderboard_handle/migration.sql
+prisma/migrations/20260917090000_serve_decision_exposed_index/migration.sql
 prisma/migrations/migration_lock.toml
 prisma/schema/anki-bridge.prisma
 prisma/schema/anki-export.prisma
@@ -1169,6 +1171,7 @@ src/app/profile/loading.tsx
 src/app/profile/profile-deferred-sections.tsx
 src/app/profile/profile-exam-dates.tsx
 src/app/profile/profile-identity.ts
+src/app/profile/profile-leaderboard.tsx
 src/app/profile/profile-request-box.tsx
 src/app/profile/profile-sections.tsx
 src/app/profile/profile-settings-sections.tsx
@@ -1628,6 +1631,8 @@ src/lib/knowledge/unified-scheduler-shared-reads.ts
 src/lib/knowledge/unified-scheduler.ts
 src/lib/knowledge/variant-suppression.ts
 src/lib/knowledge/video-injection.ts
+src/lib/leaderboard/leaderboard-lib.ts
+src/lib/leaderboard/leaderboard.server.ts
 src/lib/learning/content-exposure.ts
 src/lib/learning/event-taxonomy.ts
 src/lib/learning/index.ts

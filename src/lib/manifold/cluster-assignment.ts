@@ -2,7 +2,7 @@ import { Prisma } from '@prisma/client';
 import { prisma } from '@/lib/prisma';
 import {
   clusterAssignmentPlanSql,
-  clusterAssignmentTopologyCtes,
+  clusterAvailabilityCtes,
 } from '@/lib/manifold/scoring';
 
 export type ClusterAssignmentFamily =
@@ -174,10 +174,13 @@ export async function assignMissingCardClusters(
 
   try {
     return await client.$transaction(async (tx) => {
-      const topology = clusterAssignmentTopologyCtes(rotation);
+      // Availability counts CLUSTERS, never centroid values — see
+      // clusterAvailabilityCtes. Using the topology CTEs here averaged every
+      // card embedding in the database to produce numbers it then only counted.
+      const availabilityCtes = clusterAvailabilityCtes(rotation);
       const availabilityRows = await tx.$queryRaw(Prisma.sql`
         WITH
-        ${topology},
+        ${availabilityCtes},
         eligible AS MATERIALIZED (
           SELECT c.id
           FROM "Card" c
@@ -202,7 +205,7 @@ export async function assignMissingCardClusters(
           )::bigint AS missing_embedding_count,
           (
             SELECT COUNT(*)
-            FROM centroids c
+            FROM member_clusters c
             WHERE c.cluster_id LIKE ${localPrefix}
               AND EXISTS (
                 SELECT 1 FROM represented r WHERE r.cluster_id LIKE ${localPrefix}
@@ -210,7 +213,7 @@ export async function assignMissingCardClusters(
           )::bigint AS local_centroid_count,
           (
             SELECT COUNT(*)
-            FROM centroids c
+            FROM member_clusters c
             WHERE c.cluster_id ~ ${CANONICAL_GLOBAL_PATTERN}
               AND EXISTS (
                 SELECT 1
@@ -220,7 +223,7 @@ export async function assignMissingCardClusters(
           )::bigint AS canonical_global_centroid_count,
           (
             SELECT COUNT(*)
-            FROM centroids c
+            FROM member_clusters c
             JOIN represented r ON r.cluster_id = c.cluster_id
             WHERE c.cluster_id NOT LIKE ${localPrefix}
               AND c.cluster_id !~ ${CANONICAL_GLOBAL_PATTERN}

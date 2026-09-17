@@ -70,14 +70,27 @@ async function loadEmbeddingsByIds(
   const tbl = Prisma.raw(table);
   const col = Prisma.raw(idColumn);
 
-  const rows = await prisma.$queryRaw<Array<{ id: string; embedding: string }>>`
-    SELECT ${col} AS id, embedding::text AS embedding
-    FROM ${tbl}
-    WHERE ${col} = ANY(${ids}::text[])
-  `;
+  // Slice to the runtime dimension INSIDE Postgres. `embedding::text` is
+  // about 39 KB per row at 3072 dims, and slicing after the fact meant every
+  // runtime-dim load still shipped the full vector — measured 2026-09-17 at
+  // roughly 10 GB/day across the scheduler's concept and item loads. The
+  // literal 1024 is RUNTIME_MANIFOLD_DIM; a test pins the two together.
+  const rows = truncate
+    ? await prisma.$queryRaw<Array<{ id: string; embedding: string }>>`
+        SELECT ${col} AS id, subvector(embedding, 1, 1024)::text AS embedding
+        FROM ${tbl}
+        WHERE ${col} = ANY(${ids}::text[])
+      `
+    : await prisma.$queryRaw<Array<{ id: string; embedding: string }>>`
+        SELECT ${col} AS id, embedding::text AS embedding
+        FROM ${tbl}
+        WHERE ${col} = ANY(${ids}::text[])
+      `;
 
   for (const row of rows) {
     const parsed = JSON.parse(row.embedding) as number[];
+    // Still applied: a no-op on a sliced row, and the guard if a table ever
+    // holds a vector narrower than the slice asks for.
     result.set(row.id, truncate ? toRuntimeVector(parsed) : parsed);
   }
 
@@ -512,12 +525,70 @@ export async function batchLoadConceptEmbeddings(
   conceptIds: string[],
   truncate: boolean = true,
 ): Promise<Map<string, number[]>> {
-  try {
-    return await loadEmbeddingsByIds('concept_embeddings', 'concept_id', conceptIds, truncate);
-  } catch {
-    // Table may not exist yet — return empty map (graceful degradation)
-    return new Map();
+  const now = Date.now();
+  const result = new Map<string, number[]>();
+  const missing: string[] = [];
+  for (const conceptId of conceptIds) {
+    const hit = conceptEmbeddingMemo.get(memoKey(conceptId, truncate));
+    if (hit && now - hit.loadedAt <= CONCEPT_EMBEDDING_MEMO_TTL_MS) {
+      result.set(conceptId, hit.vector);
+    } else {
+      missing.push(conceptId);
+    }
   }
+  if (missing.length === 0) return result;
+  try {
+    const loaded = await loadEmbeddingsByIds('concept_embeddings', 'concept_id', missing, truncate);
+    for (const [conceptId, vector] of loaded) {
+      result.set(conceptId, vector);
+      rememberConceptEmbedding(memoKey(conceptId, truncate), vector, now);
+    }
+    return result;
+  } catch {
+    // Table may not exist yet — return what the memo had (graceful degradation)
+    return result;
+  }
+}
+
+/**
+ * Per-isolate memo of concept vectors.
+ *
+ * The scheduler loads the same rotation's concept embeddings on every pass —
+ * on the order of 1,800 passes a day across cache warming, live sessions and
+ * offline-pack rotations, at ~116 vectors × 39 KB each — and a concept's
+ * embedding changes only when a script re-embeds it. Sourcing the vectors
+ * inside the top-K query instead was measured 40% slower on production
+ * (2026-09-17), so the vectors stay in Node and the cure is not to fetch them
+ * again. Vercel reuses a warm isolate across many requests; each fresh one
+ * pays the load once.
+ *
+ * Bounded two ways: entries expire after the TTL (so a re-embed is picked up
+ * within minutes without any cross-process invalidation), and the map is
+ * capped so a pathological caller cannot grow it past the concept catalogue.
+ * The values are shared by reference — callers already treat them as
+ * read-only (`truncateToManifoldDim` copies).
+ */
+export const CONCEPT_EMBEDDING_MEMO_TTL_MS = 10 * 60 * 1000;
+const CONCEPT_EMBEDDING_MEMO_MAX_ENTRIES = 4_000;
+const conceptEmbeddingMemo = new Map<string, { vector: number[]; loadedAt: number }>();
+
+function memoKey(conceptId: string, truncate: boolean): string {
+  return `${truncate ? 'r' : 'f'}:${conceptId}`;
+}
+
+function rememberConceptEmbedding(key: string, vector: number[], loadedAt: number): void {
+  if (conceptEmbeddingMemo.size >= CONCEPT_EMBEDDING_MEMO_MAX_ENTRIES) {
+    // Insertion order is oldest-first, so evicting the first key is an LRU-ish
+    // drop of the stalest load rather than a full flush.
+    const oldest = conceptEmbeddingMemo.keys().next().value;
+    if (oldest !== undefined) conceptEmbeddingMemo.delete(oldest);
+  }
+  conceptEmbeddingMemo.set(key, { vector, loadedAt });
+}
+
+/** Test seam; also the right call after an in-process re-embed. */
+export function resetConceptEmbeddingMemo(): void {
+  conceptEmbeddingMemo.clear();
 }
 
 /**

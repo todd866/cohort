@@ -376,11 +376,10 @@ export const CLUSTER_NAMES: Readonly<Record<string, ClusterNameEntry>> = {
   "cah-cluster-53": {
     name: null,
     needsSplit: true,
-    evidence: "31 cards, 68% from one source file and 6% sharing a subject. Contents are urticaria, Mongolian spot, cold sores, subconjunctival haemorrhage, scarlet fever and croup — unrelated diseases whose only common property is that each is diagnosed by LOOKING. It is a card TYPE, not a topic, and labelling it 'Visual Recognition' describes the question format rather than anything a learner studies.",
+    evidence: "Read in full, 31 cards: 21 from the visual-recognition file. Seventeen are skin diagnoses made by looking — urticaria, Mongolian spot, cradle cap, tinea capitis, cold sores, vitiligo, pityriasis rosea, lichen planus, cellulitis, zoster, milia, erythema nodosum, measles, port-wine stain — and the rest are three radiographs, intussusception three times, croup, scarlet fever and EBV. The shared property is the question FORMAT, spot diagnosis, not a subject. Remedy: dissolve and let backfill re-home each card by embedding; do not name.",
   },
   "cah-cluster-49": {
-    name: null,
-    needsSplit: true,
-    evidence: "39 cards holding two unrelated subjects: abusive head trauma (subdural and retinal haemorrhage, bruises of differing ages, mimics) and thrombotic microangiopathy (schistocytes, haptoglobin, Shiga-toxin, HUS), plus stray meningococcal and migraine cards. Each half would be a good square; together they are neither.",
+    name: "Purpura, bruising and bleeding",
+    evidence: "Refused a name on a six-front sample that read as abusive head trauma beside thrombotic microangiopathy. All forty fronts say otherwise: ITP, HSP/IgA vasculitis, HUS, meningococcal purpura and non-accidental bruising are one clinical question — a child with petechiae, purpura or bruises, what is it — and the geometry had it right. Strays: two migraine cards, the lethal triad, CMV retinitis.",
   },
 };

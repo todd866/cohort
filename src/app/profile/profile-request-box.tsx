@@ -99,8 +99,8 @@ export function ProfileRequestBox() {
           onChange={(event) => setMessage(event.target.value)}
           rows={3}
           maxLength={5000}
-          placeholder="e.g. I'm a GP registrar sitting the KFP in November — more prescribing and paediatrics, less obstetrics."
-          className="mt-3 w-full rounded-xl border border-[var(--md-outline-variant)] bg-[var(--md-surface-container)] px-4 py-3 text-base text-[var(--md-on-surface)] placeholder:text-[var(--md-on-surface-variant)]"
+          placeholder="e.g. GP registrar sitting the KFP in November: more prescribing and paediatrics, less obstetrics"
+          className="mt-3 w-full rounded-xl border border-[var(--md-outline-variant)] bg-[var(--md-surface-container)] px-4 py-3 text-base placeholder:text-sm text-[var(--md-on-surface)] placeholder:text-[var(--md-on-surface-variant)]"
         />
         {error && (
           <p role="alert" className="mt-2 text-sm text-[var(--md-error)]">

@@ -30,6 +30,98 @@ const CANONICAL_GLOBAL_CLUSTER_PATTERN = '^cluster-[0-9]+$';
  * All vector columns and aggregates stay in this canonical scoring module;
  * callers receive only counts or scalar assignment rows.
  */
+/**
+ * The cluster ID sets the AVAILABILITY query needs — and nothing else.
+ *
+ * That query asks three questions, all of the form "how many clusters of family X
+ * does this rotation have?", and it answered them by counting rows in `centroids`.
+ * `centroids` is `AS MATERIALIZED`, an optimisation fence, so Postgres genuinely
+ * computed AVG over a `subvector` of EVERY card embedding in the database —
+ * ~125,000 of them, across all rotations — then discarded every vector and counted
+ * the rows.
+ *
+ * Measured 2026-09-17: ~55 s per call, and identical for a rotation with 6
+ * unclustered cards and one with 12, because the cost sits in a preamble that does
+ * not depend on the request. One run pinned the instance's whole compute and the
+ * owner saw "No cards available"; the 02:00 UTC embedding batch runs it nightly.
+ *
+ * That the single run pinned the INSTANCE was true of a 1 CU ceiling, which is what
+ * was in place when this was measured. The ceiling moved to 4 CU later the same day,
+ * so a repeat of the experiment will look milder than this note — the query still
+ * costs a core for a minute, and the reason to remove it is unchanged.
+ *
+ * `COUNT(*) FROM centroids WHERE cluster_id LIKE x` and
+ * `COUNT(*) FROM member_clusters WHERE cluster_id LIKE x` are the same number —
+ * `centroids` is `member_vectors` GROUPed BY cluster_id, so one row per cluster
+ * either way. This is an identity, not an approximation. It simply never touches a
+ * vector.
+ *
+ * NOT filtered by rotation, deliberately: the counts are of clusters anywhere in
+ * the corpus, which is what the family choice downstream assumes.
+ */
+export function clusterAvailabilityCtes(rotation: string): Prisma.Sql {
+  return Prisma.sql`
+    represented AS MATERIALIZED (
+      SELECT c."clusterId" AS cluster_id
+      FROM "Card" c
+      JOIN card_embeddings ce ON ce.card_id = c.id
+      WHERE c.rotation = ${rotation}
+        AND c."deletedAt" IS NULL
+        AND c."shelvedAt" IS NULL
+        AND c."clusterId" IS NOT NULL
+
+      UNION
+
+      SELECT v."clusterId" AS cluster_id
+      FROM "Video" v
+      JOIN video_embeddings ve ON ve.video_id = v.id
+      WHERE v.rotation = ${rotation}
+        AND v.published = true
+        AND v."clusterId" IS NOT NULL
+    ),
+    member_clusters AS MATERIALIZED (
+      SELECT DISTINCT c."clusterId" AS cluster_id
+      FROM "Card" c
+      JOIN card_embeddings ce ON ce.card_id = c.id
+      WHERE c."deletedAt" IS NULL
+        AND c."shelvedAt" IS NULL
+        AND c."clusterId" IS NOT NULL
+
+      UNION
+
+      SELECT DISTINCT v."clusterId" AS cluster_id
+      FROM "Video" v
+      JOIN video_embeddings ve ON ve.video_id = v.id
+      WHERE v.published = true
+        AND v."clusterId" IS NOT NULL
+    )
+  `;
+}
+
+
+// NOT DONE HERE, deliberately — the PLAN query's own whole-corpus scan.
+//
+// `candidate_centroids` filters `centroids` by the family predicate immediately
+// after this CTE builds them, so averaging the other families' members is work
+// thrown away, and pushing that predicate down into `member_vectors` would remove
+// those rows before the subvector and the AVG.
+//
+// It is not a copy-paste, which is why it is not in this commit:
+// `clusterFamilyPredicate` is written against the `centroids` CTE's `cluster_id`
+// column, while inside `member_vectors` the column is `c."clusterId"` /
+// `v."clusterId"`. Reusing it verbatim produces invalid SQL, so the pushdown needs
+// a member-scoped variant of the predicate and its own test.
+//
+// And when it is done: filter on the cluster ID PATTERN, never on rotation.
+// Narrowing members by rotation looks like the same optimisation and is not —
+// `candidate_centroids` applies only an id-pattern predicate for the
+// rotation-local and canonical-global families, so a card may legitimately be
+// assigned to a global cluster with no member in its own rotation, and a global
+// cluster's centroid is meant to average its members across every rotation.
+// Filtering members by rotation would silently change centroids, and therefore
+// assignments, while looking like a pure speedup.
+
+
 export function clusterAssignmentTopologyCtes(rotation: string): Prisma.Sql {
   return Prisma.sql`
     represented AS MATERIALIZED (

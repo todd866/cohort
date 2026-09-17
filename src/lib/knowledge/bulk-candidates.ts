@@ -340,6 +340,11 @@ export async function bulkFetchCandidates(
           deletedAt: null,
           shelvedAt: null,
           ...(cardExcludeList ? { id: { notIn: cardExcludeList } } : {}),
+          // Scoped here as well as on the unseen query above. Without it a
+          // long-history account fills the batch from rotation-wide reviewed
+          // cards and the post-filter keeps only the few inside the square —
+          // a 47-card cluster served one card (2026-09-17).
+          ...(clusterId ? { clusterId } : {}),
           NOT: { topics: { hasSome: EXCLUDED_TOPICS } },
         },
       ),

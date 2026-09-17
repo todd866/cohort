@@ -310,7 +310,10 @@ export const PROTECTED_PUBLIC_FALLBACKS: ReadonlyArray<Readonly<{
     // already carries privacyDeletionRequestedAt in exactly that shape.
     path: 'prisma/schema/base.prisma',
     licence: 'MIT',
-    sha256: '8baa9fd6eb59e37af300dc658ee1b35da569346d45b57edf1efd36467a0fbac2',
+    // 2026-09-17: User gained the two leaderboard columns; a shipped route and
+    // lib query on them, so the public User model carries them too (CI
+    // foss-export, run 35220042427).
+    sha256: 'b4e98b81ee760eff4e12a2e6e219ee07ec3502c1c8a04890a33867e7ad17f069',
   },
   {
     path: 'prisma/schema/content.prisma',

@@ -59,6 +59,10 @@ model User {
   // on a human decision — their request is in the UserFeedback queue that the
   // morning check works. Nulled by hand if they should be asked afresh.
   curriculumRequestedAt DateTime? @db.Timestamptz(3)
+  // Opt-in leaderboard: joined means visible to other joined learners under
+  // the handle they chose; both null until the learner joins.
+  leaderboardHandle   String?   @unique
+  leaderboardJoinedAt DateTime? @db.Timestamptz(3)
   ccSubrotation String? // Current CC sub-rotation: 'icu' | 'anaesthetics' | 'em'
 
   // Institution
