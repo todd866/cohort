@@ -19,6 +19,7 @@ import { sessionCandidateItemWhere } from '@/lib/knowledge/session-candidate-sco
 import { MAX_CROSS_SOURCE_ITEMS_PER_SESSION } from '@/lib/knowledge/cross-source-cap';
 import type { prisma } from '@/lib/prisma';
 import { getStudyDayStart } from '@/lib/study-day';
+import { DAILY_FEED_RELEARN, type RelearnProfile } from './relearn-profile';
 import {
   ownerPrivateOrSharedCardScope,
   scopedCardProgressWhere,
@@ -65,12 +66,12 @@ export interface RelearnDelivery {
 export function capRelearnCardsByDelivery(
   relearnCardIds: string[],
   deliveries: readonly RelearnDelivery[],
-  options: { now: Date; studyDayStart: Date },
+  options: { now: Date; studyDayStart: Date; profile?: RelearnProfile },
 ): string[] {
   if (relearnCardIds.length === 0) return relearnCardIds;
 
-  const { now, studyDayStart } = options;
-  const cooldownCutoffMs = now.getTime() - RELEARN_SERVE_COOLDOWN_MS;
+  const { now, studyDayStart, profile = DAILY_FEED_RELEARN } = options;
+  const cooldownCutoffMs = now.getTime() - profile.serveCooldownMs;
   const dayStartMs = studyDayStart.getTime();
 
   const deliveredToday = new Map<string, { count: number; lastMs: number }>();
@@ -89,7 +90,7 @@ export function capRelearnCardsByDelivery(
   return relearnCardIds.filter((cardId) => {
     const seen = deliveredToday.get(cardId);
     if (!seen) return true;
-    if (seen.count >= RELEARN_DELIVERY_CAP) return false;
+    if (seen.count >= profile.deliveryCap) return false;
     return seen.lastMs <= cooldownCutoffMs;
   });
 }
@@ -106,6 +107,11 @@ export interface FetchRelearnOptions {
   weekFilter: number | null;
   limit: number;
   now: Date;
+  /**
+   * How hard this session drills. Defaults to the daily feed; a topic-scoped
+   * session passes the hammer profile. See relearn-profile.ts.
+   */
+  profile?: RelearnProfile;
 }
 
 /**
@@ -125,11 +131,12 @@ export async function fetchRelearnCards(
     weekFilter,
     limit,
     now,
+    profile = DAILY_FEED_RELEARN,
   } = options;
   if (limit <= 0) return [];
 
   const startOfDay = getStudyDayStart(now);
-  const cooldownCutoff = new Date(now.getTime() - RELEARN_COOLDOWN_MS);
+  const cooldownCutoff = new Date(now.getTime() - profile.cooldownMs);
   const sourceRotations = [...new Set(
     allowedCrossSourceRotations.filter(
       (sourceRotation) => sourceRotation !== rotation,
@@ -157,7 +164,7 @@ export async function fetchRelearnCards(
             OR: [
               { viewsTodayDate: null },
               { viewsTodayDate: { lt: startOfDay } },
-              { viewsToday: { lt: RELEARN_VIEW_CAP } },
+              { viewsToday: { lt: profile.viewCap } },
             ],
           },
         ],

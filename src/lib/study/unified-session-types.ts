@@ -94,6 +94,7 @@ export interface UnifiedItem {
     | 'chronic_stuck_mcq'
     | 'mcq_bridge_card'
     | 'preemptive_scaffold'
+    | 'topic_probe'
     // A mature prior correct answer on the same specific clinical topic is
     // being revisited through a different facet (for example cause ->
     // presentation). The policy provenance below makes this auditable.

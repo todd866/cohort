@@ -74,6 +74,17 @@ video::cue {
   --danger-border: var(--md-error);
   --mnemonic-bg: color-mix(in srgb, var(--md-tertiary) 10%, var(--md-surface));
   --mnemonic-border: var(--md-tertiary);
+  /* Focused (topic-scoped) review.
+     A scoped session is a place you deliberately went, and it has to LOOK like
+     one before you read anything — reported 2026-09-17 as a topic review being
+     indistinguishable from the daily feed. The GROUND changes, not the card:
+     tinting the reading surface would alter cloze and figure contrast on the
+     one surface that must stay stable, so the card keeps --md-surface and the
+     room around it carries the colour. Tertiary is the only accent far enough
+     from the neutral blue-grey app background to read instantly in peripheral
+     vision, and it is a token, so dark mode follows it. */
+  --md-focus-ground: color-mix(in srgb, var(--md-tertiary) 7%, var(--md-surface));
+  --md-focus-rail: var(--md-tertiary);
   --question-bg: #ffffff;
   --answer-bg: #f8f9fa;
 
@@ -1108,4 +1119,13 @@ main:focus-visible {
     --md-figure-height: max(120px, calc(100svh - 24rem));
   }
   .review-figure-side-pane.review-figure-compact { --md-figure-height: min(11rem, max(120px, calc(100svh - 24rem))); }
+}
+
+/* Focused review: the whole reading room takes the accent, so leaving the
+   daily feed is visible without reading a word. Static by design — the review
+   loop is a high-frequency surface and entrance motion on it is a defect. */
+[data-review-scope='topic'] {
+  background: var(--md-focus-ground);
+  border-left: 3px solid var(--md-focus-rail);
+  min-height: 100vh;
 }

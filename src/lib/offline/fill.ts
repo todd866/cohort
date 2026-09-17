@@ -13,6 +13,12 @@ export interface FillResult {
     | 'pending-reviews'
     | 'unauthenticated'
     | 'owner-changed'
+    // The private build distinguishes four ways a fill does not land; the
+    // shared refill coordinator switches on all of them, so the public stub
+    // must carry the same union even though it only ever returns 'offline'.
+    | 'unreachable'
+    | 'scope-changed'
+    | 'empty-build'
     | 'failed';
 }
 

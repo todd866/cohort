@@ -186,6 +186,14 @@ const ALLOWED_COLUMNS: ReadonlyArray<EmbeddingItemIdColumn> = [
  */
 export const TOP_K_QUERY_CONCURRENCY = 3;
 
+/**
+ * Concepts per top-K query. The old value was effectively 1 and it cost a
+ * session build tens of seconds; see the comment in
+ * scoreItemsAgainstConceptsTopK for the measurement. Kept well under the bind
+ * parameter ceiling, and small enough that one failed batch retries cheaply.
+ */
+export const TOP_K_CONCEPTS_PER_QUERY = 16;
+
 class AsyncSemaphore {
   private active = 0;
   private readonly waiters: Array<() => void> = [];
@@ -516,51 +524,112 @@ export async function scoreItemsAgainstConceptsTopK(
 
   const startedAt = Date.now();
   let maxInFlight = 0;
-  let failedConceptCount = 0;
   let emptyConceptCount = 0;
+  // A concept that failed returns no rows, but "failed" and "nothing matched"
+  // are different facts and the log has always reported them separately.
+  const failedConceptIds = new Set<string>();
 
-  // One query per concept, bounded across all overlapping calls in this
-  // isolate. Each gets the HNSW path because the search vector is a parameter
-  // literal, not a column reference.
-  const queries = [...conceptEmbeddings.entries()].map(async ([conceptId, vector]) => {
-    const vectorJson = JSON.stringify(vector);
+  // One query per CHUNK of concepts, bounded across all overlapping calls in
+  // this isolate. Each concept still gets the HNSW path: the search vector is
+  // a VALUES column, and the planner drives the index scan from it — measured
+  // on production, EXPLAIN shows `Index Scan using card_embeddings_hnsw_idx`
+  // with `Order By: (embedding <=> "*VALUES*".column2)`.
+  //
+  // It used to be one query per concept, and that was the session build's
+  // whole latency problem. A scheduler pass issues ~610 of these queries; at a
+  // concurrency of 3 that is tens of seconds, which is long enough to lose the
+  // connection, and a learner who opened a topic then saw a 503. Measured on
+  // 2026-09-17 against the real corpus: 32 concepts as 32 queries at
+  // concurrency 3 took 36,989ms, and as two batched queries took 1,875ms,
+  // returning an identical 6,400 rows.
+  const entries = [...conceptEmbeddings.entries()];
+  const chunks: Array<typeof entries> = [];
+  for (let i = 0; i < entries.length; i += TOP_K_CONCEPTS_PER_QUERY) {
+    chunks.push(entries.slice(i, i + TOP_K_CONCEPTS_PER_QUERY));
+  }
+
+  const lateralFor = (vec: Prisma.Sql) => {
     const minSimSql = minSim > 0
-      ? Prisma.sql`AND (1 - (ie.embedding <=> ${vectorJson}::halfvec)) >= ${minSim}::float`
+      ? Prisma.sql`AND (1 - (ie.embedding <=> ${vec})) >= ${minSim}::float`
       : Prisma.empty;
-    return topKQuerySemaphore.run(async () => {
-      try {
-        const rows = await withHnswRuntime((transaction) => transaction.$queryRaw<
-          Array<{ item_id: string; similarity: number }>
-        >`
-            SELECT
-              ie.${col} AS item_id,
-              (1 - (ie.embedding <=> ${vectorJson}::halfvec))::float AS similarity
-            FROM ${tbl} ie
-            ${parentJoin}
-            WHERE 1=1
-              ${parentRotationFilter}
-              ${extra}
-              ${minSimSql}
-            ORDER BY ie.embedding <=> ${vectorJson}::halfvec
-            LIMIT ${topK}::int
-          `);
-        if (rows.length === 0) emptyConceptCount += 1;
-        return [conceptId, rows] as const;
-      } catch (error) {
-        failedConceptCount += 1;
-        logger.warn('manifold.scoring topK query failed', {
-          conceptId,
-          table: itemTable,
-          error: String(error),
-        });
-        return [conceptId, [] as Array<{ item_id: string; similarity: number }>] as const;
-      }
-    }, (active) => {
-      maxInFlight = Math.max(maxInFlight, active);
-    });
-  });
+    return Prisma.sql`
+      SELECT
+        ie.${col} AS item_id,
+        (1 - (ie.embedding <=> ${vec}))::float AS similarity
+      FROM ${tbl} ie
+      ${parentJoin}
+      WHERE 1=1
+        ${parentRotationFilter}
+        ${extra}
+        ${minSimSql}
+      ORDER BY ie.embedding <=> ${vec}
+      LIMIT ${topK}::int
+    `;
+  };
 
-  const perConcept = await Promise.all(queries);
+  /** Today's shape, kept as the per-concept fallback when a batch fails. */
+  const runOneConcept = async (
+    conceptId: string,
+    vector: number[],
+  ): Promise<readonly [string, Array<{ item_id: string; similarity: number }>]> => {
+    const vec = Prisma.sql`${JSON.stringify(vector)}::halfvec`;
+    try {
+      const rows = await withHnswRuntime((transaction) =>
+        transaction.$queryRaw<Array<{ item_id: string; similarity: number }>>(
+          lateralFor(vec),
+        ));
+      return [conceptId, rows] as const;
+    } catch (error) {
+      failedConceptIds.add(conceptId);
+      logger.warn('manifold.scoring topK query failed', {
+        conceptId,
+        table: itemTable,
+        error: String(error),
+      });
+      return [conceptId, []] as const;
+    }
+  };
+
+  const queries = chunks.map(async (chunk) => topKQuerySemaphore.run(async () => {
+    const values = Prisma.join(
+      chunk.map(([conceptId, vector]) =>
+        Prisma.sql`(${conceptId}::text, ${JSON.stringify(vector)}::halfvec)`),
+      ', ',
+    );
+    try {
+      const rows = await withHnswRuntime((transaction) => transaction.$queryRaw<
+        Array<{ concept_id: string; item_id: string; similarity: number }>
+      >`
+          SELECT c.concept_id AS concept_id, k.item_id AS item_id, k.similarity AS similarity
+          FROM (VALUES ${values}) AS c(concept_id, vec)
+          CROSS JOIN LATERAL (${lateralFor(Prisma.sql`c.vec`)}) k
+        `);
+      const grouped = new Map<string, Array<{ item_id: string; similarity: number }>>(
+        chunk.map(([conceptId]) => [conceptId, []]),
+      );
+      for (const row of rows) {
+        grouped.get(row.concept_id)?.push({ item_id: row.item_id, similarity: row.similarity });
+      }
+      return [...grouped.entries()].map(([conceptId, rows]) => [conceptId, rows] as const);
+    } catch (error) {
+      // A batch is a bigger blast radius than a single query, so it must not
+      // be a worse failure mode. Degrade to exactly what this function did
+      // before and lose only the concepts that individually fail.
+      logger.warn('manifold.scoring topK batch failed; retrying per concept', {
+        table: itemTable,
+        conceptCount: chunk.length,
+        error: String(error),
+      });
+      return Promise.all(chunk.map(([conceptId, vector]) => runOneConcept(conceptId, vector)));
+    }
+  }, (active) => {
+    maxInFlight = Math.max(maxInFlight, active);
+  }));
+
+  const perConcept = (await Promise.all(queries)).flat();
+  for (const [conceptId, rows] of perConcept) {
+    if (rows.length === 0 && !failedConceptIds.has(conceptId)) emptyConceptCount += 1;
+  }
   const result = new Map<string, Map<string, number>>();
   let totalRows = 0;
   for (const [conceptId, rows] of perConcept) {
@@ -580,8 +649,9 @@ export async function scoreItemsAgainstConceptsTopK(
     rowCount: totalRows,
     durationMs: Date.now() - startedAt,
     queryConcurrencyLimit: TOP_K_QUERY_CONCURRENCY,
+    conceptsPerQuery: TOP_K_CONCEPTS_PER_QUERY,
     maxInFlight,
-    failedConceptCount,
+    failedConceptCount: failedConceptIds.size,
     emptyConceptCount,
   });
   return result;

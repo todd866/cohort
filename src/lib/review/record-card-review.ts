@@ -338,6 +338,7 @@ export async function recordCardReview(
 
       const transition = computeCardReviewTransition({
         existingProgress,
+        cardId,
         card,
         quality,
         responseTimeMs,
@@ -631,15 +632,55 @@ type CardReviewTransition = {
   } | null;
 };
 
+/** Share of a long interval a due date may be moved by, either way. */
+export const DUE_SPREAD_FRACTION = 0.15;
+
+/**
+ * Intervals shorter than this are left alone. The relearning floors live down
+ * here — tomorrowStart, and one to three days after a failure — and spreading
+ * a one-day interval would fight them for no benefit. The clumping this fixes
+ * happens weeks out, not tomorrow.
+ */
+export const DUE_SPREAD_MINIMUM_DAYS = 3;
+
+/**
+ * Spread a due date deterministically by card identity.
+ *
+ * Every card graded in one sitting shares a lastReview, and cards of equal
+ * strength and stability share an interval, so grinding a topic schedules the
+ * whole topic to return on a single future day. That was survivable while a
+ * topic-scoped session took tens of seconds to build. It stops being
+ * survivable now it does not, because working through a whole topic becomes
+ * the normal way to use the heatmap rather than a rarity.
+ *
+ * Keyed on the card id rather than anything random: a due date that moved on
+ * every recompute would be worse than the clump it replaces.
+ */
+export function spreadDueDate(dueAt: Date, cardId: string, now: Date): Date {
+  const intervalMs = dueAt.getTime() - now.getTime();
+  const minimumMs = DUE_SPREAD_MINIMUM_DAYS * 24 * 60 * 60 * 1000;
+  if (intervalMs < minimumMs) return dueAt;
+
+  let h = 2166136261;
+  for (let i = 0; i < cardId.length; i += 1) {
+    h ^= cardId.charCodeAt(i);
+    h = Math.imul(h, 16777619);
+  }
+  const unit = ((h >>> 0) % 100000) / 100000;
+  const shiftMs = intervalMs * DUE_SPREAD_FRACTION * (unit * 2 - 1);
+  return new Date(Math.max(dueAt.getTime() + shiftMs, now.getTime() + minimumMs));
+}
+
 function computeCardReviewTransition(input: {
   existingProgress: ExistingCardReviewProgress | null;
+  cardId: string;
   card: { complexity: number; rotation: string };
   quality: number;
   responseTimeMs?: number;
   confusedWith?: string;
   now: Date;
 }): CardReviewTransition {
-  const { existingProgress, card, quality, responseTimeMs, confusedWith, now } = input;
+  const { existingProgress, cardId, card, quality, responseTimeMs, confusedWith, now } = input;
   const daysSinceLastReview = existingProgress?.lastReview
     ? (now.getTime() - existingProgress.lastReview.getTime()) / (1000 * 60 * 60 * 24)
     : 0;
@@ -752,6 +793,7 @@ function computeCardReviewTransition(input: {
     finalNextDueAt = new Date(now.getTime() + intervalMs * 0.7);
     if (finalNextDueAt < tomorrowStart) finalNextDueAt = tomorrowStart;
   }
+  finalNextDueAt = spreadDueDate(finalNextDueAt, cardId, now);
 
   return {
     currentStrength,

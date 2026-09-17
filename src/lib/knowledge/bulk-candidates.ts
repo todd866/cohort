@@ -197,6 +197,11 @@ export interface BulkCandidates {
 /**
  * Bulk fetch all candidate cards and questions for a rotation.
  */
+/** A scope the caller has already promised; applied in the queries, not after. */
+export interface CandidateScope {
+  clusterId?: string | null;
+}
+
 export async function bulkFetchCandidates(
   userId: string,
   rotation: string,
@@ -217,7 +222,24 @@ export async function bulkFetchCandidates(
    * discarded whenever the session is not serving videos, which is the default.
    */
   includeVideos = false,
+  /**
+   * A narrowing the caller has already promised the learner — today only a
+   * manifold cluster, from a square on the profile heatmap.
+   *
+   * It is applied HERE, in the queries, rather than by filtering the result.
+   * A scoped request used to fetch the whole rotation and discard all but one
+   * cluster of it, which made the narrowest request in the app the most
+   * expensive: 33-50 seconds against production, then a connection timeout and
+   * a 503, so the square served nothing at all (2026-09-16).
+   */
+  scope: CandidateScope = {},
 ): Promise<BulkCandidates> {
+  // Questions carry no clusterId, so there is no such thing as a question
+  // scoped to a cluster. Serving unscoped ones beside scoped cards would
+  // widen exactly the promise the square made ("Review N cards"), so a
+  // cluster-scoped fetch is cards-only and says so.
+  const clusterId = scope.clusterId ?? null;
+  const cardsOnly = clusterId !== null;
   const hasFrozenNow = Number.isFinite(frozenNowMs);
   const leechEligibilityNow = hasFrozenNow ? new Date(frozenNowMs!) : new Date();
   const cardExcludeList = excludedCardIds.size > 0 ? [...excludedCardIds] : undefined;
@@ -229,6 +251,9 @@ export async function bulkFetchCandidates(
   const clipRoleWhere = clipPromptCardWhere(isCopyrightTier);
   const localeWhere = practiceLocaleWhere(practiceLocale);
   const localeSql = Prisma.sql`AND (p."practiceLocale" IS NULL OR p."practiceLocale" = ${practiceLocale})`;
+  const clusterSql = clusterId
+    ? Prisma.sql`AND p."clusterId" = ${clusterId}`
+    : Prisma.empty;
 
   const globallyExcludedQIds = await getExcludedQuestionIds();
   const allExcludedQIds = new Set(excludedQuestionIds);
@@ -290,6 +315,7 @@ export async function bulkFetchCandidates(
         deletedAt: null,
         shelvedAt: null,
         ...(cardExcludeList ? { id: { notIn: cardExcludeList } } : {}),
+        ...(clusterId ? { clusterId } : {}),
         progress: { none: { userId } },
         NOT: { topics: { hasSome: EXCLUDED_TOPICS } },
       },
@@ -335,7 +361,7 @@ export async function bulkFetchCandidates(
       where: { conceptId: { in: conceptIds } },
       select: { videoId: true, conceptId: true },
     }),
-    prisma.question.findMany({
+    cardsOnly ? [] : prisma.question.findMany({
       where: withDefaultQuestionServingPolicy(
         withoutRawPublicUsmleQuestions({
           AND: [rotationScope, localeWhere],
@@ -389,9 +415,12 @@ export async function bulkFetchCandidates(
       crossSourceMappingMode,
       cardReadScope: cardScope,
       topK: TOPK_CARDS_PER_CONCEPT,
-      extraWhere: Prisma.sql`AND p."deletedAt" IS NULL AND p."shelvedAt" IS NULL ${localeSql}`,
+      // The cluster goes into the top-K search too, not just the candidate
+      // list: scoring is scoped by ROTATION and runs once per concept, so it
+      // is where a scoped session actually spent its time.
+      extraWhere: Prisma.sql`AND p."deletedAt" IS NULL AND p."shelvedAt" IS NULL ${localeSql}${clusterSql}`,
     }),
-    scoreItemsAgainstConceptsTopK({
+    cardsOnly ? new Map<string, Map<string, number>>() : scoreItemsAgainstConceptsTopK({
       itemTable: 'question_embeddings',
       itemIdColumn: 'question_id',
       conceptEmbeddings,

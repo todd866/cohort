@@ -1026,6 +1026,8 @@ prisma/migrations/20260825230000_citation_grounding_provenance/migration.sql
 prisma/migrations/20260911100000_video_clip_prompts/migration.sql
 prisma/migrations/20260911180000_video_clip_slug/migration.sql
 prisma/migrations/20260914090614_serve_decision_served_option_arrangement/migration.sql
+prisma/migrations/20260916040000_user_curriculum_requested_at/migration.sql
+prisma/migrations/20260917040000_card_concept/migration.sql
 prisma/migrations/migration_lock.toml
 prisma/schema/anki-bridge.prisma
 prisma/schema/anki-export.prisma
@@ -1131,6 +1133,7 @@ src/app/api/security/csp-report/route.ts
 src/app/api/session/bootstrap/route.ts
 src/app/api/track/route.ts
 src/app/api/user/cc-subrotation/route.ts
+src/app/api/user/curriculum-request/route.ts
 src/app/api/user/email-aliases/route.test.ts
 src/app/api/user/email-aliases/route.ts
 src/app/api/user/email-aliases/verify/route.test.ts
@@ -1163,8 +1166,10 @@ src/app/profile/ProfilePageClient.tsx
 src/app/profile/ProfileSignOutButton.tsx
 src/app/profile/layout.tsx
 src/app/profile/loading.tsx
+src/app/profile/profile-deferred-sections.tsx
 src/app/profile/profile-exam-dates.tsx
 src/app/profile/profile-identity.ts
+src/app/profile/profile-request-box.tsx
 src/app/profile/profile-sections.tsx
 src/app/profile/profile-settings-sections.tsx
 src/app/profile/profile-support.tsx
@@ -1302,6 +1307,7 @@ src/components/review/RevealActionLabel.tsx
 src/components/review/ReviewKeyboardHints.tsx
 src/components/review/ReviewModeProvider.tsx
 src/components/review/ReviewModeSelector.tsx
+src/components/review/ReviewScopeBanner.tsx
 src/components/review/ReviewToolbar.tsx
 src/components/review/ReviewableTable.tsx
 src/components/review/RotationFocusSelector.tsx
@@ -1349,6 +1355,7 @@ src/components/study/ExamCountdown.tsx
 src/components/study/StudyFilters.tsx
 src/components/study/StudyReadinessPanel.tsx
 src/components/tech/TechDeck.tsx
+src/components/tutor/TutorCardLink.tsx
 src/components/ui/Accordion.tsx
 src/components/ui/Button.tsx
 src/components/ui/Card.tsx
@@ -1573,6 +1580,8 @@ src/lib/knowledge/candidate-ranking.ts
 src/lib/knowledge/card-due-eligibility.ts
 src/lib/knowledge/challenge-policy.ts
 src/lib/knowledge/cluster-label.ts
+src/lib/knowledge/cluster-name-overlay.ts
+src/lib/knowledge/cluster-names.data.ts
 src/lib/knowledge/concept-thread-history.ts
 src/lib/knowledge/concept-thread-policy.ts
 src/lib/knowledge/content-gaps.ts
@@ -1594,6 +1603,7 @@ src/lib/knowledge/leech-regeneration.ts
 src/lib/knowledge/manifold-walk.ts
 src/lib/knowledge/modality-guard.ts
 src/lib/knowledge/preemptive-scaffold.ts
+src/lib/knowledge/primary-topic.ts
 src/lib/knowledge/question-retirement.ts
 src/lib/knowledge/readiness-trend.ts
 src/lib/knowledge/recent-neighbor-penalty.ts
@@ -1810,6 +1820,8 @@ src/lib/study/jurisdiction-twin.ts
 src/lib/study/objective-core-gate.ts
 src/lib/study/practice-locale.ts
 src/lib/study/private-video-delivery.ts
+src/lib/study/probe-lane.ts
+src/lib/study/relearn-profile.ts
 src/lib/study/relearn.ts
 src/lib/study/review-attribution.ts
 src/lib/study/rotation-content-map.ts

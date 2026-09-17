@@ -209,6 +209,12 @@ export const PUBLIC_API_ROUTE_PATHS: ReadonlyArray<string> = Object.freeze([
   'src/app/api/session/bootstrap/route.ts',
   'src/app/api/track/route.ts',
   'src/app/api/user/cc-subrotation/route.ts',
+  // Files a learner's own description of a course the product does not cover
+  // into the UserFeedback moderation queue and stamps the asked/answered flag.
+  // Public by necessity: it is asked of a first-time visitor, guests included.
+  // Adds no read surface — it returns { success } and writes no setting, so a
+  // deployment that ships it exposes nothing a help message does not already.
+  'src/app/api/user/curriculum-request/route.ts',
   'src/app/api/user/email-aliases/route.ts',
   'src/app/api/user/email-aliases/verify/route.ts',
   'src/app/api/user/minimal/route.ts',
@@ -282,7 +288,7 @@ export const PROTECTED_PUBLIC_FALLBACKS: ReadonlyArray<Readonly<{
   {
     path: 'README.md',
     licence: 'CC-BY-4.0',
-    sha256: '562de6fbe2488d96b8a2e6ae8deb0c706c78ca77f825c7b65c7ee4c53ce5ce3d',
+    sha256: '33b9aff14434a5d2689a73b2e231117e28330415080a8801e01a02fa4e99bc27',
   },
   {
     // The exam-target ENGINE is public; the blueprint it aims at is not. The
@@ -296,14 +302,24 @@ export const PROTECTED_PUBLIC_FALLBACKS: ReadonlyArray<Readonly<{
     sha256: 'cfd8a70d9eb04466d04a6eb029f840fcea2f33f9299c71b22d565a6e90003121',
   },
   {
+    // Moved 2026-09-17 to add curriculumRequestedAt to the public User model.
+    // The routes that write and read it were already distributed, so the
+    // export could not compile without it; the alternative was degrading a
+    // live feature for no privacy gain. The field is a nullable timestamp
+    // marking that someone described their own course, and the public schema
+    // already carries privacyDeletionRequestedAt in exactly that shape.
     path: 'prisma/schema/base.prisma',
     licence: 'MIT',
-    sha256: '919f0fedeb9f36dadaee91d4286e2540e50ad3a14adbe31b44d023d8137e6313',
+    sha256: '8baa9fd6eb59e37af300dc658ee1b35da569346d45b57edf1efd36467a0fbac2',
   },
   {
     path: 'prisma/schema/content.prisma',
     licence: 'MIT',
-    sha256: '889658253e447004d445742c38799a1ee8813fb54dd0080983d07ceaa3a38188',
+    // 2026-09-17: the shipped concepts.prisma gained `cards CardConcept[]`
+    // (concept spine), so the public Card model now carries `cardConcepts`
+    // and the CardConcept model + enum ride along; without them the exported
+    // schema fails Prisma validation (CI foss-export, run 35187557296).
+    sha256: '3e2c79a2c33ba6657e99693b44586de0b4b05a502ac44e325aae9aa54e8ed20f',
   },
   {
     // The private deployment applies additional authoring metadata while
@@ -459,9 +475,15 @@ export const PROTECTED_PUBLIC_FALLBACKS: ReadonlyArray<Readonly<{
     sha256: '77ee2b1e788e4300b4ebe9b90fac0876b6e315adab4bff7dd5a5caa91e8c54ba',
   },
   {
+    // Moved 2026-09-17 to widen the stub's FillResult union. The private
+    // module gained unreachable, scope-changed and empty-build so its
+    // telemetry could tell a dead network from a benign scope race, and the
+    // refill coordinator that switches on those IS distributed, so the public
+    // stub has to declare the same union even though it only ever returns one
+    // member.
     path: 'src/lib/offline/fill.ts',
     licence: 'MIT',
-    sha256: 'f459dd267bcd52c3921681a89d093115ec0376ec4ad06c10827bfd7a1a54679d',
+    sha256: '200500199f05055b5e03e3d518513298020851a30160369c4f81dfaff1b128de',
   },
   {
     path: 'src/lib/offline/figures.ts',

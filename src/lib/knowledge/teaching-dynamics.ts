@@ -32,6 +32,7 @@ type InterventionReason =
   | 'chronic_stuck_mcq'
   | 'mcq_bridge_card'
   | 'preemptive_scaffold'
+    | 'topic_probe'
   // Concept-boost tags (added with D failure-escalation + E strong-pristine
   // analytics wiring). Kept in sync with UnifiedItem.interventionReason in
   // unified-session-types.ts — search both when adding new variants.

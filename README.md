@@ -22,10 +22,10 @@ Cosine scoring runs inside Postgres, so the vectors stay in the database. That
 engine is in this repository, under `src/lib/manifold/` and
 `src/lib/knowledge/unified-scheduler.ts`, and it is what runs md3.info.
 
-That is where the whole project is going, surface by surface. The public Step 1
-reviewer has not caught up yet: today it ranks on your answer history, the
-question's difficulty and the teaching ladders in the corpus, and is small
-enough to read in one sitting. Questions sit on three tiers. Two correct
+The public Step 1 reviewer does not use that concept-space scheduler yet; the
+surfaces are being moved onto it one at a time. Today the reviewer ranks on
+your answer history, the question's difficulty and the teaching ladders in the
+corpus, and is small enough to read in one sitting. Questions sit on three tiers. Two correct
 answers at a tier move you up; a single miss moves you down at once, and the questions that
 follow are drawn from the same ladder — the rungs that build toward the concept
 you just missed — before widening to its domain. The asymmetry is deliberate:

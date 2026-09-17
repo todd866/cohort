@@ -240,6 +240,9 @@ model Card {
   @@index([importEpochId])
   @@index([practiceLocale])
   @@index([clipId])
+
+  // Concept links (the concept spine); see CardConcept below.
+  cardConcepts CardConcept[]
 }
 
 // Note: pgvector tables (card_embeddings, question_embeddings, courseware_embeddings, concept_subspaces)
@@ -485,4 +488,43 @@ model ContentGap {
 
   @@index([rotation, gapType])
   @@index([detectedAt])
+}
+
+/**
+ * CardConcept - Many-to-many: Card teaches multiple Concepts.
+ *
+ * Cards were the ONLY content type with no concept relation: questions have
+ * QuestionConcept, facts have FactConcept, videos have VideoConcept, and cards
+ * had nothing. Card.conceptId is NOT this and never was — it groups
+ * jurisdiction variants of the same card, so writing concept ids into it would
+ * silently make unrelated cards into AU/US twins of each other.
+ *
+ * `source` is here because most of these links will be DERIVED from the
+ * manifold rather than authored, and the two must never be confused: a derived
+ * link can be recomputed and discarded, an authored one is a human's claim and
+ * has to survive a rebuild. `similarity` records what the geometry said at
+ * derivation time, so a later drift is visible rather than silent.
+ */
+model CardConcept {
+  id         String            @id @default(cuid())
+  cardId     String
+  conceptId  String
+  isPrimary  Boolean           @default(false) // Is this the main concept taught?
+  source     CardConceptSource @default(derived)
+  /// Cosine at derivation time. Null for an authored link, which asserts the
+  /// relationship regardless of where the vectors currently sit.
+  similarity Float?
+  createdAt  DateTime          @default(now()) @db.Timestamptz(3)
+
+  card    Card    @relation(fields: [cardId], references: [id], onDelete: Cascade)
+  concept Concept @relation(fields: [conceptId], references: [id], onDelete: Cascade)
+
+  @@unique([cardId, conceptId])
+  @@index([conceptId])
+  @@index([conceptId, source])
+}
+
+enum CardConceptSource {
+  authored
+  derived
 }

@@ -73,6 +73,11 @@ interface UseUserTrackReturn {
   activeRotations: RotationId[];
   /** Current week (1-7) */
   currentWeek: number;
+  /**
+   * True once this learner has described a course md3 does not cover, so the
+   * rotation chooser must not ask again. Undefined while loading.
+   */
+  curriculumRequested: boolean;
   /** Whether we're still loading user data */
   loading: boolean;
   /** Whether user is logged in */
@@ -143,6 +148,7 @@ export function useUserTrack(): UseUserTrackReturn {
   return {
     track,
     currentRotation,
+    curriculumRequested: serverData?.curriculumRequested === true,
     activeRotations,
     currentWeek,
     loading,

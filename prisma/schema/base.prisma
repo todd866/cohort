@@ -53,6 +53,12 @@ model User {
   medSchool     String? // University
   studyGoal     Int? // Daily card target
   track         Int? // Optional institution-defined stream number
+  // Set when someone whose course md3 does not cover describes it in their own
+  // words (the rotation chooser's "something else"). It stops the chooser
+  // re-asking a question they have already answered, and marks them as waiting
+  // on a human decision — their request is in the UserFeedback queue that the
+  // morning check works. Nulled by hand if they should be asked afresh.
+  curriculumRequestedAt DateTime? @db.Timestamptz(3)
   ccSubrotation String? // Current CC sub-rotation: 'icu' | 'anaesthetics' | 'em'
 
   // Institution

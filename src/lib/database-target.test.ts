@@ -123,6 +123,7 @@ describe('shared database target resolution', () => {
       'audit:teaching-alignment',
       'audit:concept-followup',
       'audit:exact-card-due',
+      'audit:tutor',
       'audit:serving-path',
       'audit:orphan-cards',
       'audit:diagnose',

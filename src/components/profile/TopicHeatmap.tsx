@@ -164,12 +164,17 @@ function DetailPanel({ square }: { square: TopicHeatmapSquare | null }) {
             </ul>
           )}
 
+          {/* Deliberately no card count. A session serves about fifteen items,
+              so "Review 166 cards" promised a sitting nobody has and made the
+              first pass feel like it achieved nothing — while the line above
+              already says "46/166 studied". Learners click a red square to turn
+              it green, and that takes a few sessions on a big topic. */}
           <Link
             href={reviewHref(square)}
             data-testid="topic-detail-review"
             className="mt-2 inline-block text-xs font-semibold text-[var(--md-primary)] hover:underline"
           >
-            Review {square.itemCount} card{square.itemCount === 1 ? '' : 's'} →
+            Review this topic →
           </Link>
         </>
       )}
@@ -221,7 +226,12 @@ export function TopicHeatmap({
                     data-testid={`topic-square-${square.id}`}
                     data-band={square.band}
                     aria-pressed={pinned?.id === square.id}
-                    title={squareTitle(square)}
+                    // No `title`. The browser's native tooltip rendered the
+                    // same sentence the panel below already shows, ~1s after
+                    // hover, unstyled, and floating over the grid — reported
+                    // 2026-09-17 as covering two rows of squares while reading
+                    // them. The panel is the hover affordance; this string stays
+                    // as the ACCESSIBLE name, which is not drawn.
                     aria-label={squareTitle(square)}
                     onMouseEnter={() => setHovered(square)}
                     onMouseLeave={() => setHovered(null)}

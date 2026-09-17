@@ -16,6 +16,7 @@ import { clipIsPrompt } from './clip-role';
 import { ClipPrompt } from './ClipPrompt';
 import { ClipContext } from './ClipContext';
 import { RevealActionLabel } from './RevealActionLabel';
+import { TutorCardLink } from '@/components/tutor/TutorCardLink';
 import {
   itemUsesSidePane,
   REVIEW_PANE_CELL_FLAT,
@@ -198,6 +199,7 @@ export function CardItemView({
         >
           Details ↗
         </Link>
+        <TutorCardLink cardId={item.id} />
       </div>
       <CardFeedback
         cardId={item.id}

@@ -41,6 +41,7 @@ export async function GET(request: NextRequest) {
       enabledModules: [],
       activeModules: [],
       reviewTopicRotations: {},
+      curriculumRequested: false,
     });
   }
   const userId = auth.userId;
@@ -55,6 +56,7 @@ export async function GET(request: NextRequest) {
         enabledModules: true,
         activeModules: true,
         imageTier: true,
+        curriculumRequestedAt: true,
       },
     });
 
@@ -77,6 +79,10 @@ export async function GET(request: NextRequest) {
       reviewTopicRotations: isMd3Hostname(request.headers.get('host') ?? '')
         ? authorizedReviewTopicRotations(activeModules)
         : {},
+      // A boolean, not the timestamp: the client only needs to know whether the
+      // rotation chooser has already been answered, and when they answered is
+      // nobody's business on the wire.
+      curriculumRequested: user.curriculumRequestedAt !== null,
     });
   } catch (error) {
     logger.error('Minimal user fetch error', { userId, error: String(error) });

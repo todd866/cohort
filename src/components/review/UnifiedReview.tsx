@@ -40,6 +40,7 @@ import type { CohortExperience } from '@/lib/cohort/experience-prior';
 import type { CohortSearchTopicV1 } from '@/lib/cohort/search-topic-contract';
 
 import { RotationFocusSelector } from './RotationFocusSelector';
+import { ReviewScopeBanner, type ReviewClusterScope } from './ReviewScopeBanner';
 import { RotationOnboarding } from './RotationOnboarding';
 import { FlagOverlay } from './FlagOverlay';
 import { CohortPrompt } from './CohortPrompt';
@@ -73,6 +74,8 @@ interface UnifiedReviewProps {
   topics?: readonly ReviewTopic[];
   /** One manifold cluster, from a square on the profile knowledge heatmap. */
   cluster?: string | null;
+  /** Display identity of that cluster, so the surface can say what it scoped to. */
+  clusterScope?: ReviewClusterScope | null;
   onFeedModeChange?: (next: ReviewFeedMode) => void;
   onReviewModeChange?: (next: ReviewMode) => void;
   /** Enrolled studyable rotations (drives the focus selector + its gating). */
@@ -332,7 +335,7 @@ export function UnifiedReview(props: UnifiedReviewProps) {
     : <UnifiedReviewBody {...props} />;
 }
 
-function UnifiedReviewBody({ rotations, week, rotationSizes, fetchSlots, feedMode = 'mixed', reviewFilter, itemType, topics, cluster = null, onFeedModeChange, onReviewModeChange, studyableRotations = [], enrollableRotations = [], focusRotation = null, onFocusRotationChange, allowUnverifiedPack = false, initialBatch = null, loadTimer = null, cohortSingleTurn = false, initialCohortSnapshot = null }: UnifiedReviewProps & { initialCohortSnapshot?: CohortProfileSnapshot | null }) {
+function UnifiedReviewBody({ rotations, week, rotationSizes, fetchSlots, feedMode = 'mixed', reviewFilter, itemType, topics, cluster = null, clusterScope = null, onFeedModeChange, onReviewModeChange, studyableRotations = [], enrollableRotations = [], focusRotation = null, onFocusRotationChange, allowUnverifiedPack = false, initialBatch = null, loadTimer = null, cohortSingleTurn = false, initialCohortSnapshot = null }: UnifiedReviewProps & { initialCohortSnapshot?: CohortProfileSnapshot | null }) {
   const { data: authSession, status: authStatus } = useSession();
   const isCohortHost = useCohortHost();
   const isGuest = authStatus === 'unauthenticated';
@@ -993,7 +996,7 @@ function UnifiedReviewBody({ rotations, week, rotationSizes, fetchSlots, feedMod
   }
 
   return (
-    <div ref={reviewTopRef}>
+    <div ref={reviewTopRef} data-review-scope={clusterScope ? 'topic' : undefined}>
       {/* Sticky toolbar: back, mode, rotation, pill, blur, flag.
           ONE row, FIXED height. The learner sees this bar 100+ times a day, so
           it must never grow: no `flex-wrap`, every leaf `whitespace-nowrap`,
@@ -1111,6 +1114,15 @@ function UnifiedReviewBody({ rotations, week, rotationSizes, fetchSlots, feedMod
         </button>
         </div>
       </div>
+
+      {/* A scoped session has to say so. Sits above the card rather than inside
+          the toolbar: the toolbar's controls all CHANGE the session, and this
+          reports what the session already is. */}
+      {clusterScope && (
+        <div className="px-4">
+          <ReviewScopeBanner scope={clusterScope} />
+        </div>
+      )}
 
       {/* Session expired — a flag (or other write) hit a 401. Persistent across
           cards until re-sign-in; the queued write replays automatically after. */}

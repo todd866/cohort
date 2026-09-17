@@ -14,6 +14,7 @@ import { getUnifiedSession } from '@/lib/study/unified-session-service';
 import { computeFetchSlots } from './compute-fetch-slots';
 import { resolvePrimaries } from './resolve-primaries';
 import { parseReviewIntent, type ReviewFilter } from './review-intent';
+import { tidyClusterLabel } from '@/lib/knowledge/cluster-label';
 import { buildUnifiedSessionParams } from '@/components/review/hooks/unified-session-params';
 import {
   reviewLocationKey,
@@ -128,14 +129,38 @@ export async function buildReviewServerBootstrap(args: {
   // parse is pure and only establishes which rotation to check against.
   const draft = parseReviewIntent(args.searchParams, studyable, reviewTopicRotations);
   const clusterParam = args.searchParams.get('cluster');
+  // One count instead of a findFirst: it answers the same "are there live
+  // cards here" question AND gives the banner its size, which is the part that
+  // distinguishes two squares sharing a label. Indexed on (clusterId, rotation)
+  // and only run when a cluster is actually in the URL, so the unscoped path
+  // pays nothing.
+  const clusterCardCount = clusterParam && draft.rotation && draft.cluster
+    ? await prisma.card.count({
+      where: { clusterId: clusterParam, rotation: draft.rotation, deletedAt: null },
+    })
+    : 0;
   const reviewClusterRotations = clusterParam && draft.rotation && draft.cluster
-    ? {
-        [clusterParam]: (await prisma.card.findFirst({
-          where: { clusterId: clusterParam, rotation: draft.rotation, deletedAt: null },
-          select: { id: true },
-        })) ? [draft.rotation] : [],
-      }
+    ? { [clusterParam]: clusterCardCount > 0 ? [draft.rotation] : [] }
     : {};
+  // The label is presentation only and the review surface has no other way to
+  // learn it: the URL carries an opaque cluster id. Read it here, next to the
+  // check that already had to happen, rather than adding a request-path lookup
+  // later. A cluster with no row still scopes correctly; it just shows the
+  // fallback name.
+  const reviewClusterScope = clusterParam && draft.rotation && clusterCardCount > 0
+    ? {
+      id: clusterParam,
+      label: tidyClusterLabel(
+        (await prisma.cluster.findUnique({
+          where: { id: clusterParam },
+          select: { name: true },
+        }))?.name ?? '',
+        draft.rotation,
+      ),
+      cardCount: clusterCardCount,
+      rotation: draft.rotation,
+    }
+    : null;
   const intent = parseReviewIntent(
     args.searchParams,
     studyable,
@@ -258,6 +283,7 @@ export async function buildReviewServerBootstrap(args: {
     activeModules,
     reviewTopicRotations,
     reviewClusterRotations,
+    reviewClusterScope,
     reviewed,
     feedMode,
     initialBatch,

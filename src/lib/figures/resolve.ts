@@ -99,3 +99,50 @@ export async function resolveImage(
   const imageMeta = pickClientMeta(sidecar, imageKey);
   return { imageKey, imageUrl, imageMeta };
 }
+
+/**
+ * Why `resolveImage` returned null, for LOGS ONLY.
+ *
+ * The route answers every one of these with an identical 404 body, on purpose:
+ * telling a requester whether a figure exists but is above their tier is
+ * itself a disclosure. But that means one string covers three different
+ * operational problems, and measured on production the delivery route fails
+ * about one request in seven — with no way to tell a missing sidecar (a build
+ * that shipped without its figure) from an under-tiered viewer (working as
+ * designed) from a malformed key.
+ *
+ * Diagnosing it has required probing signed in with a known-good control key
+ * in the same session, because an uncontrolled 404 says nothing. This puts the
+ * distinction in the server log instead, where it costs no disclosure and
+ * turns a rate into a worklist.
+ *
+ * Deliberately a separate function rather than a richer return type: the
+ * resolver's null is load-bearing at every call site, and widening it would
+ * invite a caller to branch on the reason and leak it.
+ */
+export type ResolveFailureReason =
+  | 'no-key'
+  | 'not-a-figure-key'
+  | 'missing-sidecar'
+  | 'insufficient-tier'
+  /**
+   * Every check passed, so the image should have resolved. Seeing this in a log
+   * means the resolver and this classifier disagreed — a signing failure, or
+   * the sidecar index changing between the two calls. Named rather than folded
+   * into another reason, because a wrong reason in a log is worse than none.
+   */
+  | 'resolved-after-all';
+
+export function resolveImageFailureReason(
+  imageKey: string | null,
+  session: Session | null,
+  trustOverride?: AccessTier,
+): ResolveFailureReason {
+  if (!imageKey) return 'no-key';
+  if (!imageKey.startsWith(FIGURES_PREFIX)) return 'not-a-figure-key';
+  const sidecar = sidecarForKey(imageKey);
+  if (!sidecar) return 'missing-sidecar';
+  const user = trustOverride ?? userTrust(session);
+  if (!canView(sidecar, user)) return 'insufficient-tier';
+  return 'resolved-after-all';
+}

@@ -80,8 +80,8 @@ export function classifyFlagLane(text: string | null | undefined): FlagLane {
   if (/\btla\b|\bdecode\b|\bacronym\b/.test(t)) return 'decode';
 
   // augment: the keep-but-scaffold directive owns too-easy / giveaway / answer-visible.
-  // The owner's own shorthand (2026-09-16): "easy cloze", "trivially easy",
-  // "seen it a lot", "the hint makes this c1", "quiz differently".
+  // Widened 2026-09-16 to cover the terse shorthand reporters actually use
+  // for this lane, not just the full phrasings the rubric names.
   if (
     /too.?easy|give.?away|answer is visible|answer.{0,12}(visible|obvious|given)|keep but augment|keep.{0,20}augment|supplement.{0,12}harder|harder (variant|card|version)|scaffold.{0,15}harder|what'?s the point|\beasy (cloze|question|guess)|trivially easy|very easy|seen (it|this).{0,20}a lot|makes this c1|quiz differently/.test(
       t,
@@ -111,6 +111,36 @@ export function classifyFlagLane(text: string | null | undefined): FlagLane {
 
   // judgment: explicit ambivalence
   if (/not really the vibe|not the vibe|\bvibe\b|i guess keep|\bdumb (card|question)|useless (card|question)|doesn'?t need to be a flashcard/.test(t)) return 'judgment';
+
+  // Terse reporter shorthand, mined 2026-09-16 from the approved flag-note
+  // corpus: over two fifths of notes were falling to `needs-read`, and six
+  // recurring families made up most of that residue. All six want the same
+  // treatment the lane above describes — fix the construction at source and
+  // re-seed — so they route there rather than growing the lane union. Real
+  // notes are a few words long, so these match fragments, not sentences.
+  //
+  // Placement is load-bearing, and it runs LAST of the content rules. After
+  // decode, augment, image and teach so "easy cloze" stays an augment and
+  // "needs context explaining the concept" stays a teach; and after judgment,
+  // because "this cloze doesn't need to be a flashcard" is a keep/wont-fix
+  // call, not a construction defect. Only leftover construction complaints
+  // land here.
+  if (
+    // context quality: bare "context", "context sucks", "needs more context"
+    /\bcontext\b/.test(t)
+    // presentation: "line breaks please", "paragraph break"
+    || /\b(line|paragraph)s?\s?breaks?\b/.test(t)
+    // cloze shape: "1-2 words per cloze", "should be two clozes", "multicloze"
+    || /\bclozes?\b|multicloze/.test(t)
+    // MCQ construction tell: the longest option being the correct one
+    || /longest (answer|option)/.test(t)
+    // answer length: "too-long answer", "answer too long"
+    || /too.?long answer|answer (is )?too.?long/.test(t)
+    // context or explanation referring to option letters, which shuffle
+    || /specific (letters|options)/.test(t)
+  ) {
+    return 'hand-fix';
+  }
 
   // The reporter wrote something real. Silent exclusion here is the recurring
   // defect (see detector-lane.test.ts): unmatched prose is UNREVIEWED work.

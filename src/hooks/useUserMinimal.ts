@@ -13,6 +13,8 @@ export interface MinimalUserData {
   enabledModules: string[];
   activeModules: string[];
   reviewTopicRotations?: Record<string, string>;
+  /** True once the learner has described a course md3 does not cover. */
+  curriculumRequested?: boolean;
 }
 
 const fetcher = async (url: string): Promise<MinimalUserData> => {

@@ -20,6 +20,18 @@ export interface ReviewUserContext {
    * one), so a rotation+cluster pair can contradict itself.
    */
   reviewClusterRotations?: Readonly<Record<string, readonly string[]>>;
+  /**
+   * Display identity of the cluster this session is scoped to, resolved beside
+   * the liveness check that already had to run. Null when unscoped. The review
+   * surface has no other route to it — the URL carries only an opaque id — and
+   * without it a scoped session is indistinguishable from an ordinary one.
+   */
+  reviewClusterScope?: {
+    id: string;
+    label: string;
+    cardCount: number;
+    rotation: string | null;
+  } | null;
 }
 
 export interface ReviewServerBootstrap {
@@ -40,6 +52,18 @@ export interface ReviewServerBootstrap {
    * one), so a rotation+cluster pair can contradict itself.
    */
   reviewClusterRotations?: Readonly<Record<string, readonly string[]>>;
+  /**
+   * Display identity of the cluster this session is scoped to, resolved beside
+   * the liveness check that already had to run. Null when unscoped. The review
+   * surface has no other route to it — the URL carries only an opaque id — and
+   * without it a scoped session is indistinguishable from an ordinary one.
+   */
+  reviewClusterScope?: {
+    id: string;
+    label: string;
+    cardCount: number;
+    rotation: string | null;
+  } | null;
   reviewed: number;
   feedMode: ReviewFeedMode;
   initialBatch: InitialReviewBatch;

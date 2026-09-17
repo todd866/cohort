@@ -800,8 +800,12 @@ export function useReviewSession({ rotations, week, rotationSizes, fetchSlots, f
     // receipt-bound offline format of its own.
     if (hasCohortTurn) return null;
     // The pack is a mixed queue: it can prove neither a typed filter nor an
-    // MCQ-only request, so it must not rescue either.
-    if (reviewFilter || itemType) return null;
+    // MCQ-only request, so it must not rescue either. A cluster is the third
+    // member of that list and the one a learner notices: a heatmap square asks
+    // for ONE topic, pack rows carry no clusterId, and rescuing a failed
+    // scoped request with rotation-wide cards looks exactly like the square
+    // doing nothing. Reported as that on 2026-09-16.
+    if (reviewFilter || itemType || cluster) return null;
 
     const isOffline =
       allowUnverifiedPackRef.current ||
@@ -844,7 +848,7 @@ export function useReviewSession({ rotations, week, rotationSizes, fetchSlots, f
       packUserKey: pack.userKey,
       items: dedupeReviewItems(packItems),
     };
-  }, [hasCohortTurn, requestedRotationsKey, requestedTopicsKey, reviewFilter, itemType, week]);
+  }, [hasCohortTurn, requestedRotationsKey, requestedTopicsKey, reviewFilter, itemType, cluster, week]);
 
   const servePackFallback = useCallback((): boolean => {
     const scoped = resolveScopedPackItems();

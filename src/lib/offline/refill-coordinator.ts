@@ -123,7 +123,15 @@ export function startOfflineRefillCoordinator(
     let lastError: string | undefined;
     try {
       result = await fillOnce(lease);
-      if (result.reason === 'failed') lastError = 'failed';
+      // Report WHICH outcome stopped the fill. One blanket 'failed' made the
+      // telemetry unreadable: 76% of snapshots over 30 hours said "failed"
+      // while the outbox was empty and every figure was cached (2026-09-16),
+      // and no one could tell a dead network from a benign scope race.
+      // `scope-changed` is deliberately not an error — the learner moved, the
+      // result was correctly discarded, and a rebuild follows.
+      if (result.reason === 'unreachable') lastError = 'unreachable';
+      else if (result.reason === 'empty-build') lastError = 'empty-build';
+      else if (result.reason === 'failed') lastError = 'failed';
     } catch {
       // Counts/state only: an exception message may contain a signed media URL.
       lastError = 'failed';
@@ -140,7 +148,11 @@ export function startOfflineRefillCoordinator(
     }
     try { onSettled(lastError); } catch { /* Diagnostics must not stop refills. */ }
 
-    const needsRetry = lastError === 'failed' || (result?.mediaMissing ?? 0) > 0;
+    // A scope change earns a rebuild as much as a failure does, even though it
+    // is not one — the pack on disk describes a selection the learner has left.
+    const needsRetry = lastError !== undefined
+      || result?.reason === 'scope-changed'
+      || (result?.mediaMissing ?? 0) > 0;
     if ((result?.mediaMissing ?? 0) > 0 && (result?.figuresCached ?? 0) > 0) {
       // A healthy large pack may take several bounded download passes. Keep
       // progressing instead of spending minutes between successful chunks.

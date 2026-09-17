@@ -53,9 +53,9 @@ import { fetchDueBacklogCards } from './due-backlog';
 import {
   capRelearnCardsByDelivery,
   fetchRelearnCards,
-  RELEARN_RESERVE_RATIO,
   selectRelearnReserve,
 } from './relearn';
+import { relearnProfileFor } from './relearn-profile';
 import { getStudyDayStart } from '@/lib/study-day';
 import {
   countCards,
@@ -322,6 +322,12 @@ export async function buildManifoldSession(ctx: SessionContext): Promise<NextRes
     for (const id of poolFilters.openIssueQuestionIds) exclusionState.excludedQuestionIds.add(id);
 
     const protectedLaneNow = new Date();
+    // A cluster in the request means the learner chose a subject, and choosing a
+    // subject is what licenses the drill: repeating what you just missed IS a
+    // topic session, where in the daily feed it would crowd out a rotation's
+    // worth of work. Everything else about the lane, including its anti-loop
+    // guards, is unchanged.
+    const relearnProfile = relearnProfileFor({ topicScoped: Boolean(ctx.clusterFilter) });
     let prefetchedRelearnCardIds: string[] = [];
     if (ctx.feedMode !== 'new-only') {
       try {
@@ -332,6 +338,7 @@ export async function buildManifoldSession(ctx: SessionContext): Promise<NextRes
           weekFilter: ctx.weekFilter,
           limit: ctx.batchSize,
           now: protectedLaneNow,
+          profile: relearnProfile,
         });
         // The lane's own cooldown/view cap advance only on a GRADE, so a
         // delivered-then-skipped card would otherwise lead every batch until
@@ -343,6 +350,7 @@ export async function buildManifoldSession(ctx: SessionContext): Promise<NextRes
           {
             now: protectedLaneNow,
             studyDayStart: getStudyDayStart(protectedLaneNow),
+            profile: relearnProfile,
           },
         );
       } catch (error) {
@@ -357,7 +365,7 @@ export async function buildManifoldSession(ctx: SessionContext): Promise<NextRes
       ? Math.min(
           prefetchedRelearnCardIds.length,
           ctx.batchSize,
-          Math.max(1, Math.floor(ctx.batchSize * RELEARN_RESERVE_RATIO)),
+          Math.max(1, Math.floor(ctx.batchSize * relearnProfile.reserveRatio)),
         )
       : 0;
     const commonRelearnIds = prefetchedRelearnCardIds.slice(0, protectedRelearnSeats);
@@ -474,12 +482,7 @@ export async function buildManifoldSession(ctx: SessionContext): Promise<NextRes
       maxCrossSourceItems: ctx.maxCrossSourceItems
         ?? MAX_CROSS_SOURCE_ITEMS_PER_SESSION,
       crossSourceMappingMode: ctx.crossSourceMappingMode ?? 'adjacent',
-      // new-only is an explicit user opt-in to surface unseen content. The
-      // scheduler's exam-pressure default would set maxNewCards=0 inside ~14
-      // days of an exam, silently zeroing the candidate pool (seen cards are
-      // already excluded by allTimeSeenCardIds). Override at the manifold
-      // layer — the only layer that knows about feedMode.
-      ...(ctx.feedMode === 'new-only' ? { maxNewCards: Number.POSITIVE_INFINITY } : {}),
+      clusterFilter: ctx.clusterFilter,
     };
     const pairedSelectionDeterminism = pairExamTarget && tieBreakSeed
       ? { nowMs: protectedLaneNow.getTime(), seed: tieBreakSeed }

@@ -208,6 +208,10 @@ export interface UnifiedSessionItem {
     // (complexity ≥ 2) so that an in-session miss is followed by a
     // teaching card. See @/lib/knowledge/preemptive-scaffold.
     | 'preemptive_scaffold'
+    // The probe lane: one card per topic per day at the rung that best locates
+    // the learner. Registered ahead of wiring so serve-concentration budgets it
+    // from day one (an unrecognised lane gets the default budget).
+    | 'topic_probe'
     // Concept-boost labels (D failure-escalation, E strong-pristine).
     // Resolved by resolveInterventionReason at picking time so analytics
     // can observe when these boosts drove a serve. Kept in sync with the
@@ -319,6 +323,13 @@ export interface UnifiedSessionOptions {
   maxCrossSourceItems?: number;
   /** Adjacent = target-mapped only; open = entitled source without mapping. */
   crossSourceMappingMode?: 'adjacent' | 'open';
+  /**
+   * One manifold cluster, from a square on the profile heatmap. A hard
+   * promise, not a preference: it narrows the candidate QUERIES rather than
+   * filtering their results, so a scoped session is cheaper than an unscoped
+   * one instead of far more expensive. Cards only — questions have no cluster.
+   */
+  clusterFilter?: string | null;
   week?: number;
   size?: number;
   /** Session mode. 'crunch' = MCQ-heavy, no new cards, high-yield only. Default 'normal'. */
@@ -570,6 +581,33 @@ const RECALL_RANKING_HORIZON_DAYS = 21;
  *
  * Key values: 42d→0.04, 30d→0.20, 21d→0.50, 19d→0.57, 14d→0.74, 7d→0.89, 0d→0.96
  */
+/**
+ * How many never-seen cards this session may introduce.
+ *
+ * NO AUTOMATIC TAPER. It used to stop new cards once exam pressure passed 0.8,
+ * which is 11 days out — inside every block's revision window. Two things were
+ * wrong with it. A topic reads red because it holds items never reviewed, so
+ * cutting new cards means opening a red topic serves everything EXCEPT the
+ * cards that would turn it green, and it stays red however much work goes in.
+ * And it fired on a date rather than on anything about the learner: someone
+ * who has covered a rotation and someone who has barely started get the same
+ * cutoff on the same day.
+ *
+ * Owner's call, 2026-09-17: new cards all the way through to the end.
+ *
+ * Two ways to still get zero, both deliberate rather than automatic. `crunch`
+ * is a mode the learner selects and its whole point is review-only. And an
+ * explicit budget from a caller outranks everything, including in crunch.
+ */
+export function resolveMaxNewCards(input: {
+  explicit?: number | null;
+  mode?: SessionMode;
+}): number {
+  if (input.explicit !== undefined && input.explicit !== null) return input.explicit;
+  if (input.mode === 'crunch') return 0;
+  return Infinity;
+}
+
 export function computeExamPressure(daysToExam: number): number {
   return 1 / (1 + Math.exp(-0.15 * (21 - daysToExam)));
 }
@@ -1132,11 +1170,25 @@ async function constructUnifiedSessionImpl(
 
   // Card ratio: 0.7 (70% cards) at low pressure → 0.4 (40% cards) at full pressure
   let cardRatio = options.cardRatio ?? (DEFAULTS.cardRatio - 0.3 * examPressure);
-  // New cards: taper off as exam approaches. At full pressure, no new cards.
-  const effectiveMaxNewCards = options.maxNewCards ?? (examPressure >= 0.8 ? 0 : Infinity);
+  // New cards run all the way to the exam; see resolveMaxNewCards.
+  const effectiveMaxNewCards = resolveMaxNewCards({
+    explicit: options.maxNewCards,
+    mode: options.mode,
+  });
   // Legacy-only hard filter. A validated v2 treatment disables it after its
   // immutable sidecars have passed the runtime checks below.
-  let minExamWeight = examPressure >= 0.5 ? 2 : 1;
+  // There was a low-yield filter here: from ~21 days out it dropped every
+  // concept whose Concept.examWeight was 1, which on CAH is 38 of 116.
+  //
+  // Removed 2026-09-17 (owner's call) because that weight does not mean what its
+  // name says. It is density-derived from the cluster extract — roughly, how
+  // many cards we happen to hold about a thing — and the ranking code says so
+  // itself, calling it "a legacy fallback, not an exam blueprint" and
+  // neutralising it whenever a real exam-target treatment applies. So the
+  // number was DISTRUSTED for scoring and TRUSTED for exclusion, which is
+  // backwards: it did its most consequential work in the one place the code
+  // did not believe it. It also excluded on a date rather than on anything
+  // about the learner.
 
   if (concepts.length === 0) {
     // No Concept rows for this rotation → cluster fallback. Logged so a seed/config
@@ -1211,6 +1263,7 @@ async function constructUnifiedSessionImpl(
         options.crossSourceMappingMode ?? 'adjacent',
         options.practiceLocale ?? 'au',
         includeVideos,
+        { clusterId: options.clusterFilter ?? null },
       )
     : bulkFetchCandidates(
         userId,
@@ -1227,6 +1280,7 @@ async function constructUnifiedSessionImpl(
         options.crossSourceMappingMode ?? 'adjacent',
         options.practiceLocale ?? 'au',
         includeVideos,
+        { clusterId: options.clusterFilter ?? null },
       ));
   const flowAxisPromise = readPreselection(
     'flow-axis',
@@ -1502,7 +1556,6 @@ async function constructUnifiedSessionImpl(
     && targetSidecarsValid
     && effectiveTargetInfluence?.allocator !== 'shadow',
   );
-  if (applyExamTarget) minExamWeight = 1;
 
   // Compute throughput and budget
   const dailyThroughput = estimateDailyThroughput(throughputStats);
@@ -1887,17 +1940,6 @@ async function constructUnifiedSessionImpl(
     (s) => s.recallOnExamDay < DEFAULTS.targetRecall || conceptHasPristine.has(s.conceptId)
   );
 
-  // Under exam pressure, skip low-yield concepts
-  if (minExamWeight > 1) {
-    const filtered = weakConcepts.filter((s) => {
-      const concept = conceptMap.get(s.conceptId);
-      return concept && (concept.examWeight || 1) >= minExamWeight;
-    });
-    // Fallback: if filtering removes everything, keep original list
-    if (filtered.length > 0) {
-      weakConcepts = filtered;
-    }
-  }
 
   // 6b. Budget-aware filtering: skip concepts already projected to pass on exam day.
   // Uses currentRecall (not recallOnExamDay) because computeExposuresNeeded
@@ -2885,10 +2927,6 @@ async function constructUnifiedSessionImpl(
   if (selectedItems.length < size) {
     const remainingConcepts = conceptStates.filter((s) => {
       if (selectedConceptIds.has(s.conceptId)) return false;
-      if (minExamWeight > 1) {
-        const c = conceptMap.get(s.conceptId);
-        if (!c || (c.examWeight || 1) < minExamWeight) return false;
-      }
       return true;
     });
 
@@ -2936,10 +2974,6 @@ async function constructUnifiedSessionImpl(
     if (selectedItems.length < size) {
       const stillRemaining = conceptStates.filter((s) => {
         if (selectedConceptIds.has(s.conceptId)) return false;
-        if (minExamWeight > 1) {
-          const c = conceptMap.get(s.conceptId);
-          if (!c || (c.examWeight || 1) < minExamWeight) return false;
-        }
         return true;
       });
       for (const concept of stillRemaining) {
@@ -2993,10 +3027,6 @@ async function constructUnifiedSessionImpl(
         if (s.recallOnExamDay < DEFAULTS.targetRecall) return false;
         if (s.daysSinceProbe <= DEFAULTS.daysSinceProbeThreshold) return false;
         if (selectedConceptIds.has(s.conceptId)) return false;
-        if (minExamWeight > 1) {
-          const c = conceptMap.get(s.conceptId);
-          if (!c || (c.examWeight || 1) < minExamWeight) return false;
-        }
         return true;
       })
       .sort((a, b) => b.daysSinceProbe - a.daysSinceProbe); // most stale first
@@ -3118,10 +3148,6 @@ async function constructUnifiedSessionImpl(
   if (selectedItems.length < size) {
     const stillRemaining = conceptStates.filter((s) => {
       if (selectedConceptIds.has(s.conceptId)) return false;
-      if (minExamWeight > 1) {
-        const c = conceptMap.get(s.conceptId);
-        if (!c || (c.examWeight || 1) < minExamWeight) return false;
-      }
       return true;
     });
     for (const concept of stillRemaining) {

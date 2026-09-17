@@ -38,6 +38,47 @@ interface RotationOnboardingProps {
 export function RotationOnboarding({ rotations, onDone, onSkip }: RotationOnboardingProps) {
   const [saving, setSaving] = useState<string | null>(null);
   const [error, setError] = useState<string | null>(null);
+  const [describing, setDescribing] = useState(false);
+  const [description, setDescription] = useState('');
+
+  // Whoever is not on the list still has to land somewhere, so "something else"
+  // ends where "skip" ends: the default feed. It must NOT call onDone, which
+  // reloads — with no rotation saved the reload would ask the same question
+  // again, which is what the free-text answer was meant to spare them.
+  const leaveWithoutARotation = onSkip ?? onDone;
+
+  // Name the deck they will actually get rather than calling it "the default".
+  // Somebody who has just explained that they are a GP registrar deserves to
+  // know they are about to be served paediatrics, and to decide for themselves
+  // whether that is worth their time today.
+  const meanwhileDeck = FULL_NAMES[rotations[0] ?? ''] ?? 'the default deck';
+
+  /**
+   * Their answer is a support message, not a setting.
+   *
+   * /api/user/curriculum-request files it in the human moderation queue under
+   * `onboarding-other`, where the morning check turns it into an actual feed,
+   * and stamps the user so this question is never asked of them again. Three
+   * things follow and none is incidental: no rotation is written, because
+   * guessing one is exactly the bug the chooser exists to prevent; the prose is
+   * untrusted and stays quarantined behind that queue's review boundary; and a
+   * failed send never strands the learner on a form.
+   */
+  const sendDescription = async () => {
+    const message = description.trim();
+    if (!message || saving) return;
+    setSaving('other');
+    try {
+      await fetchWithDeadline('/api/user/curriculum-request', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ description: message }),
+      }, CLIENT_FETCH_DEADLINE_MS);
+    } catch {
+      // Deliberately swallowed: see above.
+    }
+    leaveWithoutARotation();
+  };
 
   const pick = async (rotation: string) => {
     if (saving) return;
@@ -83,6 +124,52 @@ export function RotationOnboarding({ rotations, onDone, onSkip }: RotationOnboar
           </button>
         ))}
       </div>
+      {!describing && (
+        <button
+          type="button"
+          disabled={saving !== null}
+          onClick={() => setDescribing(true)}
+          className="mt-3 w-full rounded-xl border border-dashed border-[var(--md-outline-variant)] px-4 py-3.5 text-left text-base font-medium text-[var(--md-on-surface-variant)] transition-colors hover:bg-[var(--md-surface-container)] disabled:opacity-60"
+        >
+          Something else
+          <span className="ml-2 text-sm">
+            another university, rotation or job
+          </span>
+        </button>
+      )}
+      {describing && (
+        <div className="mt-4">
+          <label
+            htmlFor="onboarding-other"
+            className="block text-sm text-[var(--md-on-surface)]"
+          >
+            Tell us as much as you can about what you&rsquo;re trying to learn —
+            the exam and its date, and the university, rotation or job it is for.
+          </label>
+          <textarea
+            id="onboarding-other"
+            value={description}
+            onChange={(event) => setDescription(event.target.value)}
+            rows={5}
+            maxLength={5000}
+            placeholder="e.g. GP registrar sitting the RACGP KFP on 12 November; trained at Otago, working in rural ED."
+            className="mt-2 w-full rounded-xl border border-[var(--md-outline-variant)] bg-[var(--md-surface-container)] px-4 py-3 text-base text-[var(--md-on-surface)] placeholder:text-[var(--md-on-surface-variant)]"
+          />
+          <button
+            type="button"
+            disabled={saving !== null || description.trim().length === 0}
+            onClick={() => void sendDescription()}
+            className="mt-3 w-full rounded-xl bg-[var(--md-primary)] px-4 py-3.5 text-base font-medium text-[var(--md-on-primary)] transition-opacity disabled:opacity-60"
+          >
+            Send and start studying
+          </button>
+          <p className="mt-2 text-sm text-[var(--md-on-surface-variant)]">
+            A person reads these, usually within a day. Until your feed is set
+            up you&rsquo;ll study {meanwhileDeck}, and you won&rsquo;t be asked
+            this again.
+          </p>
+        </div>
+      )}
       {error && (
         <p className="mt-4 text-sm text-[var(--md-error)]" role="alert">
           {error}

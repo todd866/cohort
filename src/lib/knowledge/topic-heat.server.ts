@@ -31,6 +31,7 @@ import {
   isSelfPacedExamDate,
 } from '@/lib/rotations';
 import { tidyClusterLabel } from './cluster-label';
+import { authoredClusterName } from './cluster-name-overlay';
 import {
   projectReadiness,
   type ReadinessPoint,
@@ -318,7 +319,13 @@ export async function loadTopicHeatmap(
           now,
         }),
         id: row.cluster_id,
-        label: tidyClusterLabel(row.cluster_name ?? '', rotation),
+        // An authored name beats the generated one. The generator labels a
+        // region by its commonest topic tag, which cannot separate siblings —
+        // seven CAH regions came out as "Surgery". Regions we have explicitly
+        // declined to name return null here and keep the generated label,
+        // because inventing one would hide that they need splitting.
+        label: authoredClusterName(row.cluster_id)
+          ?? tidyClusterLabel(row.cluster_name ?? '', rotation),
         sampleFronts: (row.sample_fronts ?? []).filter((f): f is string => !!f),
         clusterId: row.cluster_id,
         rotation,

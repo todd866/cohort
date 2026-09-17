@@ -405,12 +405,49 @@ export function predictRetrievalStrengthOnDate(
  * Solve for t when R(t)=threshold:
  *   t = S * ((R0/threshold)^2 - 1)
  */
+/**
+ * Share of the interval a due date may be moved by, either way. Proportional
+ * on purpose: a two-day interval and a six-month one must not be spread by
+ * the same number of days.
+ */
+export const DUE_DATE_JITTER_FRACTION = 0.15;
+
+/**
+ * Deterministic unit value in [0, 1) from a string. A due date that moved
+ * every time it was recomputed would be worse than the clumping this exists
+ * to fix, so the same item must always land on the same day.
+ */
+function unitHash(seed: string): number {
+  let h = 2166136261;
+  for (let i = 0; i < seed.length; i += 1) {
+    h ^= seed.charCodeAt(i);
+    h = Math.imul(h, 16777619);
+  }
+  return ((h >>> 0) % 100000) / 100000;
+}
+
 export function computeNextDueAt(
   strength: number,
   lastReviewDate: Date,
   stabilityDays: number,
   threshold: number,
-  now: Date = new Date()
+  now: Date = new Date(),
+  /**
+   * Item identity — a card or question id. Given one, the interval is spread
+   * by up to DUE_DATE_JITTER_FRACTION either way.
+   *
+   * Without it the result is exactly what it has always been, so every stored
+   * due date and every existing caller keeps its meaning.
+   *
+   * Why it is needed: every card graded in one sitting shares a
+   * lastReviewDate, and cards of the same strength and stability share an
+   * interval, so a topic ground through in one session returns as a clump on
+   * a single future day. That was survivable while a topic-scoped session
+   * took tens of seconds to build. It stops being survivable now that it does
+   * not, because grinding a whole topic becomes the normal way to use the
+   * heatmap rather than a rarity.
+   */
+  seed?: string,
 ): Date {
   if (!Number.isFinite(strength) || strength <= 0) return now;
   if (!Number.isFinite(stabilityDays) || stabilityDays <= 0) return now;
@@ -421,7 +458,14 @@ export function computeNextDueAt(
   const daysUntilDue = stabilityDays * (ratio * ratio - 1);
   if (!Number.isFinite(daysUntilDue) || daysUntilDue <= 0) return now;
 
-  return new Date(lastReviewDate.getTime() + daysUntilDue * 24 * 60 * 60 * 1000);
+  const spreadDays = seed
+    ? daysUntilDue * DUE_DATE_JITTER_FRACTION * (unitHash(seed) * 2 - 1)
+    : 0;
+  const dueAt = lastReviewDate.getTime()
+    + (daysUntilDue + spreadDays) * 24 * 60 * 60 * 1000;
+
+  // Spreading may never pull an item back into the past.
+  return new Date(Math.max(dueAt, now.getTime()));
 }
 
 /**

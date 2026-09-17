@@ -22,6 +22,7 @@ model Concept {
   prerequisiteIds String[]
 
   // Relations
+  cards            CardConcept[]
   questions        QuestionConcept[]
   conceptStates    ConceptState[] // Unified learning state
   facts            FactConcept[] // Facts related to this concept
