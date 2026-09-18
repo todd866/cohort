@@ -13,26 +13,39 @@ import { HANDLE_MAX, LEADERBOARD_WINDOW_DAYS, type LeaderboardRow } from '@/lib/
  * sees any other learner. No animation anywhere: this is a tens-per-day
  * surface at most, and the motion rule's default is none.
  */
-interface Props {
-  joined: boolean;
-  handle: string | null;
-}
-
-interface BoardResponse {
+export interface BoardResponse {
   handle: string;
   rows: LeaderboardRow[];
   me: LeaderboardRow | null;
   joinedCount: number;
 }
 
+interface Props {
+  joined: boolean;
+  handle: string | null;
+  /**
+   * The board as the server rendered it, when the learner is already on it.
+   * Without this the joined state mounted, painted a headless box, then
+   * fetched /api/leaderboard — a post-hydration round trip (~350 ms measured
+   * 2026-09-18) whose only purpose was data the page already had access to.
+   * Join and leave still refetch through the API, so this is the first paint
+   * only.
+   */
+  initialBoard?: BoardResponse | null;
+}
+
 const box = 'mb-4 rounded-xl border border-[var(--md-outline-variant)] bg-[var(--md-surface-container)] px-4 py-3';
 const button = 'rounded-lg bg-[var(--md-primary)] px-3 py-1.5 text-sm font-medium text-[var(--md-on-primary)] disabled:opacity-50';
 const quiet = 'text-sm text-[var(--md-on-surface-variant)]';
 
-export function ProfileLeaderboard({ joined: initialJoined, handle: initialHandle }: Props) {
+export function ProfileLeaderboard({
+  joined: initialJoined,
+  handle: initialHandle,
+  initialBoard = null,
+}: Props) {
   const [joined, setJoined] = useState(initialJoined);
   const [handle, setHandle] = useState(initialHandle ?? '');
-  const [board, setBoard] = useState<BoardResponse | null>(null);
+  const [board, setBoard] = useState<BoardResponse | null>(initialBoard);
   const [busy, setBusy] = useState(false);
   const [error, setError] = useState<string | null>(null);
 
@@ -49,8 +62,9 @@ export function ProfileLeaderboard({ joined: initialJoined, handle: initialHandl
   }, []);
 
   useEffect(() => {
-    if (joined) void load();
-  }, [joined, load]);
+    // Only when the server did not already hand us the board.
+    if (joined && !initialBoard) void load();
+  }, [joined, load, initialBoard]);
 
   const join = async (event: React.FormEvent) => {
     event.preventDefault();

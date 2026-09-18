@@ -1,6 +1,6 @@
 'use client';
 
-import { useState } from 'react';
+import { useState, type ReactNode } from 'react';
 import Link from 'next/link';
 import { describeTopicHeat, type TopicBand, type TopicLevel } from '@/lib/knowledge/topic-heat';
 
@@ -22,6 +22,11 @@ import { describeTopicHeat, type TopicBand, type TopicLevel } from '@/lib/knowle
  *
  * The panel has a reserved minimum height so filling it in never reflows the
  * page (.claude/rules/web-vitals.md — CLS is a budgeted metric here).
+ *
+ * LAYOUT. On a phone everything stacks. From `lg` up the grid and its legend
+ * sit in a left column and the detail panel and the trend fill the right one,
+ * so on a laptop the whole section is one row instead of a scroll (owner,
+ * 2026-09-18: the page was spending a full viewport on ~250px of squares).
  */
 
 export interface TopicHeatmapSquare {
@@ -120,7 +125,7 @@ function DetailPanel({ square }: { square: TopicHeatmapSquare | null }) {
     <div
       data-testid="topic-detail"
       aria-live="polite"
-      className="mt-3 min-h-[7.5rem] rounded-xl border border-[var(--md-outline-soft)]
+      className="mt-3 min-h-[7.5rem] rounded-xl border border-[var(--md-outline-soft)] lg:mt-0
                  bg-[var(--md-surface-container-low)] px-3 py-2.5"
     >
       {!square ? (
@@ -186,10 +191,13 @@ export function TopicHeatmap({
   squares,
   rotationLabel,
   horizonDays,
+  aside,
 }: {
   squares: TopicHeatmapSquare[];
   rotationLabel: string;
   horizonDays: number;
+  /** Rendered under the detail panel — the readiness trend on the profile. */
+  aside?: ReactNode;
 }) {
   // `pinned` survives pointer-out so a tapped square stays readable; `hovered`
   // is the transient preview and wins while it is set.
@@ -203,61 +211,67 @@ export function TopicHeatmap({
   const days = Math.round(horizonDays);
 
   return (
-    <div>
-      <div className="mb-3 flex flex-wrap items-baseline justify-between gap-x-3 gap-y-1">
-        <h2 className="text-xs font-semibold uppercase tracking-wider text-[var(--md-on-surface-variant)]">
-          {rotationLabel}
-        </h2>
-        <p className="text-xs font-medium tabular-nums text-[var(--md-on-surface-variant)]">
-          {ready}/{squares.length} ready · {days}d
-        </p>
-      </div>
-
-      <div className="overflow-x-auto pb-1">
-        <div className="flex gap-[3px]" style={{ width: 'max-content' }}>
-          {toColumns(squares).map((column, i) => (
-            <div key={i} className="flex flex-col gap-[3px]">
-              {column.map((square) => {
-                const isActive = active?.id === square.id;
-                return (
-                  <button
-                    key={square.id}
-                    type="button"
-                    data-testid={`topic-square-${square.id}`}
-                    data-band={square.band}
-                    aria-pressed={pinned?.id === square.id}
-                    // No `title`. The browser's native tooltip rendered the
-                    // same sentence the panel below already shows, ~1s after
-                    // hover, unstyled, and floating over the grid — reported
-                    // 2026-09-17 as covering two rows of squares while reading
-                    // them. The panel is the hover affordance; this string stays
-                    // as the ACCESSIBLE name, which is not drawn.
-                    aria-label={squareTitle(square)}
-                    onMouseEnter={() => setHovered(square)}
-                    onMouseLeave={() => setHovered(null)}
-                    onFocus={() => setHovered(square)}
-                    onBlur={() => setHovered(null)}
-                    onClick={() => setPinned(square)}
-                    className="block rounded-[3px] focus-visible:outline focus-visible:outline-2
-                               focus-visible:outline-offset-1 focus-visible:outline-[var(--md-primary)]"
-                    style={{
-                      background: heatToken(square.band, square.level),
-                      width: CELL,
-                      height: CELL,
-                      // A ring rather than a scale: a transform makes a 13px
-                      // square jump out from under the pointer.
-                      boxShadow: isActive ? '0 0 0 2px var(--md-on-surface)' : undefined,
-                    }}
-                  />
-                );
-              })}
-            </div>
-          ))}
+    <div className="lg:grid lg:grid-cols-[auto_minmax(0,1fr)] lg:gap-x-8">
+      <div>
+        <div className="mb-3 flex flex-wrap items-baseline justify-between gap-x-3 gap-y-1">
+          <h2 className="text-xs font-semibold uppercase tracking-wider text-[var(--md-on-surface-variant)]">
+            {rotationLabel}
+          </h2>
+          <p className="text-xs font-medium tabular-nums text-[var(--md-on-surface-variant)]">
+            {ready}/{squares.length} ready · {days}d
+          </p>
         </div>
+
+        <div className="overflow-x-auto pb-1">
+          <div className="flex gap-[3px]" style={{ width: 'max-content' }}>
+            {toColumns(squares).map((column, i) => (
+              <div key={i} className="flex flex-col gap-[3px]">
+                {column.map((square) => {
+                  const isActive = active?.id === square.id;
+                  return (
+                    <button
+                      key={square.id}
+                      type="button"
+                      data-testid={`topic-square-${square.id}`}
+                      data-band={square.band}
+                      aria-pressed={pinned?.id === square.id}
+                      // No `title`. The browser's native tooltip rendered the
+                      // same sentence the panel below already shows, ~1s after
+                      // hover, unstyled, and floating over the grid — reported
+                      // 2026-09-17 as covering two rows of squares while reading
+                      // them. The panel is the hover affordance; this string stays
+                      // as the ACCESSIBLE name, which is not drawn.
+                      aria-label={squareTitle(square)}
+                      onMouseEnter={() => setHovered(square)}
+                      onMouseLeave={() => setHovered(null)}
+                      onFocus={() => setHovered(square)}
+                      onBlur={() => setHovered(null)}
+                      onClick={() => setPinned(square)}
+                      className="block rounded-[3px] focus-visible:outline focus-visible:outline-2
+                                 focus-visible:outline-offset-1 focus-visible:outline-[var(--md-primary)]"
+                      style={{
+                        background: heatToken(square.band, square.level),
+                        width: CELL,
+                        height: CELL,
+                        // A ring rather than a scale: a transform makes a 13px
+                        // square jump out from under the pointer.
+                        boxShadow: isActive ? '0 0 0 2px var(--md-on-surface)' : undefined,
+                      }}
+                    />
+                  );
+                })}
+              </div>
+            ))}
+          </div>
+        </div>
+
+        <Legend />
       </div>
 
-      <Legend />
-      <DetailPanel square={active} />
+      <div className="lg:flex lg:flex-col">
+        <DetailPanel square={active} />
+        {aside}
+      </div>
     </div>
   );
 }

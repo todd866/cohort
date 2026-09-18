@@ -1,6 +1,8 @@
 import { loadTopicHeatmap } from '@/lib/knowledge/topic-heat.server';
 import { loadReviewCalendar } from '@/lib/knowledge/review-calendar.server';
+import { loadLeaderboard } from '@/lib/leaderboard/leaderboard.server';
 import { TopicHeatmap } from '@/components/profile/TopicHeatmap';
+import { ProfileLeaderboard } from './profile-leaderboard';
 import { ReadinessTrend } from '@/components/profile/ReadinessTrend';
 import { ReviewHeatmap } from '@/components/profile/ReviewHeatmap';
 
@@ -52,15 +54,32 @@ export async function ProfileTopicHeatmapSection({ userId }: { userId: string })
         squares={topicHeat.squares}
         rotationLabel={topicHeat.rotationLabel}
         horizonDays={topicHeat.horizonDays}
-      />
-      <ReadinessTrend
-        points={topicHeat.trend}
-        projection={topicHeat.projection}
-        totalTopics={topicHeat.squares.length}
-        daysToExam={topicHeat.horizonDays}
+        aside={
+          <ReadinessTrend
+            points={topicHeat.trend}
+            projection={topicHeat.projection}
+            totalTopics={topicHeat.squares.length}
+            daysToExam={topicHeat.horizonDays}
+          />
+        }
       />
     </section>
   );
+}
+
+/**
+ * The leaderboard, with its board already loaded when the learner is on it.
+ * Streams like the heatmaps: it aggregates every joined learner's history,
+ * which is page-render work and not something the first byte should wait on.
+ * A failed read hands the client component no board, and it fetches as before.
+ */
+export async function ProfileLeaderboardSection(
+  { userId, joined, handle }: { userId: string; joined: boolean; handle: string | null },
+) {
+  const board = joined && handle
+    ? await loadLeaderboard(userId).then((b) => ({ handle, ...b })).catch(() => null)
+    : null;
+  return <ProfileLeaderboard joined={joined} handle={handle} initialBoard={board} />;
 }
 
 /**
@@ -70,7 +89,8 @@ export async function ProfileTopicHeatmapSection({ userId }: { userId: string })
  * (`.claude/rules/web-vitals.md`), and streaming a tall section into a page
  * that has already painted is precisely how a layout shift is earned. These
  * heights match the rendered sections — the review grid at roughly 7rem, the
- * topic grid plus its panel and trend at roughly 22rem.
+ * topic grid plus its panel and trend at roughly 22rem stacked on a phone and
+ * roughly 13rem once the panel sits beside the grid from `lg` up.
  */
 export function ProfileSectionPlaceholder(
   { label, className }: { label: string; className: string },

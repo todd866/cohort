@@ -1,6 +1,6 @@
 export default function ProfileLoading() {
   return (
-    <div className="mx-auto max-w-2xl animate-pulse space-y-6 px-4 py-8">
+    <div className="mx-auto max-w-2xl animate-pulse space-y-6 px-4 py-8 lg:max-w-4xl">
       <div className="flex items-center gap-4">
         <div className="h-16 w-16 rounded-full bg-[var(--md-surface-variant)]" />
         <div className="flex-1 space-y-2">

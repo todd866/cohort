@@ -50,6 +50,21 @@ const COMPANION_SOURCES: Readonly<Record<string, readonly string[]>> = Object.fr
   'surgical-sciences': Object.freeze(['anatomy', 'neurosurg']),
   anatomy: Object.freeze(['surgical-sciences', 'neurosurg']),
   neurosurg: Object.freeze(['surgical-sciences', 'anatomy']),
+  // Paeds-Surg owns no cards at all: the paediatric module seeds under
+  // surgical-sciences, and the anatomy it needs is the Rohen plate corpus that
+  // seeds there too. Without this entry the deck renders in the selector and
+  // serves an empty session — the exact NSx failure of 2026-09-14.
+  'paediatric-surgery': Object.freeze(['surgical-sciences', 'anatomy']),
+  // The Year 4 attachment decks. Each owns no cards; the material that serves
+  // them is already in the corpus and declares membership per card in
+  // moduleNodes. Measured 2026-09-18 by keyword over live cards: roughly 3,400
+  // neurology, 4,900 urology and 1,200 geriatrics candidates, concentrated in
+  // AnKing and Malleus with real contributions from the Year 3 rotations.
+  // Without an entry here each of these renders in the selector and serves an
+  // empty session forever — the 2026-09-14 NSx failure again.
+  geriatrics: Object.freeze(['anking', 'malleus', 'toc']),
+  neurology: Object.freeze(['anking', 'malleus', 'neurosurg', 'anatomy']),
+  urology: Object.freeze(['anking', 'malleus', 'surgical-sciences']),
 });
 
 function companionSources(input: ExamCrossSourceAccessInput): string[] {

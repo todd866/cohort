@@ -16,7 +16,7 @@
 import { prisma } from '@/lib/prisma';
 import { logger } from '@/lib/logger';
 import { buildHeatmap, isoDay, REVIEW_EVENT_TYPES, type DayCount, type HeatmapCell } from '@/lib/review-stats';
-import { getExamDateForUser, isSelfPacedExamDate, getRotation } from '@/lib/rotations';
+import { isSelfPacedExamDate, getRotation } from '@/lib/rotations';
 import type { ExamMarker } from '@/components/profile/ReviewHeatmap';
 
 const TZ = 'Australia/Sydney';
@@ -36,6 +36,12 @@ const DAY_MS = 86_400_000;
  * Exam markers for every rotation the learner has a date for, inside the grid
  * window. Self-paced sentinels (2099) are excluded — they are the absence of an
  * exam, not one very far away. A sat exam carries its score when recorded.
+ *
+ * ONE query for every override. This used to call `getExamDateForUser` per
+ * rotation in a loop: one sequential round trip per deck, tens of milliseconds
+ * each, so on an account with a dozen decks the calendar spent most of a
+ * second on lookups and a quarter of it on the event aggregate. Both reads
+ * now run together.
  */
 async function loadExamMarkers(
   userId: string,
@@ -43,15 +49,22 @@ async function loadExamMarkers(
   from: string,
   to: string,
 ): Promise<ExamMarker[]> {
-  const results = await prisma.examResult.findMany({
-    where: { userId },
-    select: { rotation: true, examDate: true, score: true },
-  });
+  const [results, overrides] = await Promise.all([
+    prisma.examResult.findMany({
+      where: { userId },
+      select: { rotation: true, examDate: true, score: true },
+    }),
+    prisma.userRotation.findMany({
+      where: { userId, rotation: { in: [...rotations] } },
+      select: { rotation: true, examDate: true },
+    }),
+  ]);
   const scoreByRotation = new Map(results.map((r) => [r.rotation, r.score]));
+  const overrideByRotation = new Map(overrides.map((r) => [r.rotation, r.examDate]));
 
   const markers: ExamMarker[] = [];
   for (const rotation of rotations) {
-    const examDate = await getExamDateForUser(rotation, userId);
+    const examDate = overrideByRotation.get(rotation) ?? getRotation(rotation)?.defaultExamDate ?? null;
     if (!examDate || isSelfPacedExamDate(examDate)) continue;
     const date = isoDay(examDate.getTime());
     if (date < from || date > to) continue;
@@ -77,7 +90,8 @@ export async function loadReviewCalendar(
     const today = isoDay(now.getTime());
     const from = isoDay(now.getTime() - PROFILE_WEEKS * 7 * DAY_MS);
 
-    const rows = await prisma.$queryRaw<{ day: Date; n: bigint }[]>`
+    const [rows, candidateExams] = await Promise.all([
+      prisma.$queryRaw<{ day: Date; n: bigint }[]>`
       SELECT date_trunc('day', "timestamp" AT TIME ZONE ${TZ})::date AS day,
              COUNT(*)::bigint AS n
       FROM "LearningEvent"
@@ -86,7 +100,9 @@ export async function loadReviewCalendar(
         AND "timestamp" >= ${new Date(now.getTime() - PROFILE_WEEKS * 7 * DAY_MS)}
       GROUP BY 1
       ORDER BY 1
-    `;
+    `,
+      loadExamMarkers(userId, rotations, from, '9999-12-31'),
+    ]);
     if (rows.length === 0) return null;
 
     const daily: DayCount[] = rows.map((r) => ({ date: isoDay(r.day.getTime()), count: Number(r.n) }));
@@ -94,7 +110,6 @@ export async function loadReviewCalendar(
     // Extend the grid to the NEXT exam, not the furthest one. Running out to a
     // date two blocks away buys ten weeks of blank squares and shrinks the
     // history that actually carries information.
-    const candidateExams = await loadExamMarkers(userId, rotations, from, '9999-12-31');
     const nextExam = candidateExams.find((e) => e.date > today)?.date;
     const to = nextExam ?? today;
 

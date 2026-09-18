@@ -149,6 +149,10 @@ export async function linkSessionToUser(sessionId: string, userId: string): Prom
     if (!session) return;
     // A copied/stale cookie must never reassign another account's attribution.
     if (session.userId && session.userId !== userId) return;
+    // Already this account's: nothing to write. This runs from the session
+    // callback on EVERY authenticated request while the guest cookie lives,
+    // so without this check each request paid an update plus an updateMany.
+    if (session.userId === userId) return;
 
     await tx.anonymousSession.update({
       where: { id: sessionId },

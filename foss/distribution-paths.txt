@@ -1417,6 +1417,7 @@ src/lib/audit/walk-types.ts
 src/lib/auth-alias.ts
 src/lib/auth-callback.ts
 src/lib/auth-session-config.ts
+src/lib/auth-session-payload.ts
 src/lib/auth-session-retry.ts
 src/lib/auth-verification-email.test.ts
 src/lib/auth-verification-email.ts
@@ -1763,6 +1764,7 @@ src/lib/review-stats-query.ts
 src/lib/review-stats.ts
 src/lib/review/bootstrap-safety.ts
 src/lib/review/bootstrap-types.ts
+src/lib/review/cluster-verdict.ts
 src/lib/review/compute-fetch-slots.ts
 src/lib/review/content-rating.ts
 src/lib/review/feed-mode.ts
@@ -1819,6 +1821,7 @@ src/lib/study/dessert-mix.ts
 src/lib/study/due-backlog.ts
 src/lib/study/due-summary.ts
 src/lib/study/effective-daily-target.ts
+src/lib/study/focus-option-order.ts
 src/lib/study/imported-rung-access.ts
 src/lib/study/in-play-rotations.ts
 src/lib/study/jurisdiction-twin.ts

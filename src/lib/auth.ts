@@ -9,10 +9,8 @@ import prisma from './prisma';
 import { logger } from './logger';
 import { AUTH_PAGES, SESSION_CONFIG } from './auth-session-config';
 import { createAliasAwareAdapter } from './auth-alias';
-import {
-  createSessionLookupRetryAdapter,
-  retryReadAfterConnectionAcquisitionTimeout,
-} from './auth-session-retry';
+import { createSessionLookupRetryAdapter } from './auth-session-retry';
+import { buildSessionPayload } from './auth-session-payload';
 import { claimGuestProgressAfterSignIn } from './guest-progress-claim';
 import { grantPendingCopyrightAfterSignIn } from './copyright-grant.server';
 import { recordAuthSuccessBestEffort } from './tracking/auth-funnel';
@@ -140,41 +138,26 @@ export const { auth, handlers, signIn, signOut } = NextAuth({
   },
   callbacks: {
     async session({ session, user }) {
-      if (session.user) {
-        session.user.id = user.id;
-        // Fetch betaAccess from DB (user object from adapter doesn't include custom fields)
-        const dbUser = await retryReadAfterConnectionAcquisitionTimeout(
-          () => prisma.user.findUnique({
-            where: { id: user.id },
-            select: { betaAccess: true, institution: true, imageTier: true },
-          }),
-          'auth-session-enrichment-retry',
+      // Attribute the pre-sign-in funnel using the HttpOnly guest cookie.
+      // Fail open for authentication, but never accept a client-provided id;
+      // linkSessionToUser also refuses cross-account reassignment and is a
+      // no-op once the cookie's session is already this account's.
+      try {
+        const { readAnonymousSessionCookie, linkSessionToUser } = await import(
+          './tracking/anonymous-session'
         );
-        session.user.betaAccess = dbUser?.betaAccess ?? false;
-        session.user.institution = dbUser?.institution ?? null;
-        session.user.imageTier =
-          dbUser?.imageTier === 'copyright' ? 'copyright' : 'standard';
-        // Attribute the pre-sign-in funnel using the HttpOnly guest cookie.
-        // Fail open for authentication, but never accept a client-provided id;
-        // linkSessionToUser also refuses cross-account reassignment.
-        try {
-          const { readAnonymousSessionCookie, linkSessionToUser } = await import(
-            './tracking/anonymous-session'
-          );
-          const anonymousSessionId = await readAnonymousSessionCookie();
-          if (anonymousSessionId) {
-            await linkSessionToUser(anonymousSessionId, user.id);
-          }
-        } catch (error) {
-          logger.warn('anonymous-session-link-failed', { userId: user.id, error: String(error) });
+        const anonymousSessionId = await readAnonymousSessionCookie();
+        if (anonymousSessionId) {
+          await linkSessionToUser(anonymousSessionId, user.id);
         }
-        // Access flags — avoids exposing email lists to client
-        const { isAdminEmail } = await import('./admin-shared');
-        const { hasVideoAccess } = await import('./video-access');
-        session.user.isAdmin = isAdminEmail(session.user.email);
-        session.user.hasVideoAccess = hasVideoAccess(session.user.email);
+      } catch (error) {
+        logger.warn('anonymous-session-link-failed', { userId: user.id, error: String(error) });
       }
-      return session;
+      // Access flags — avoids exposing email lists to client
+      const { isAdminEmail } = await import('./admin-shared');
+      const { hasVideoAccess } = await import('./video-access');
+      // A whitelisted object, never the mutated row: see auth-session-payload.ts.
+      return buildSessionPayload({ session, user, isAdminEmail, hasVideoAccess });
     },
   },
   events: {

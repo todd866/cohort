@@ -82,6 +82,8 @@ interface UnifiedReviewProps {
   studyableRotations?: string[];
   /** Full scheduled rotation list — enables the "Change rotation…" enrolment switcher. */
   enrollableRotations?: string[];
+  /** The scheduled block whose exam is booked — rendered first in the focus menu. */
+  examRotation?: string | null;
   /** Currently focused rotation (null = All / blended feed). */
   focusRotation?: string | null;
   onFocusRotationChange?: (next: string | null) => void;
@@ -335,7 +337,7 @@ export function UnifiedReview(props: UnifiedReviewProps) {
     : <UnifiedReviewBody {...props} />;
 }
 
-function UnifiedReviewBody({ rotations, week, rotationSizes, fetchSlots, feedMode = 'mixed', reviewFilter, itemType, topics, cluster = null, clusterScope = null, onFeedModeChange, onReviewModeChange, studyableRotations = [], enrollableRotations = [], focusRotation = null, onFocusRotationChange, allowUnverifiedPack = false, initialBatch = null, loadTimer = null, cohortSingleTurn = false, initialCohortSnapshot = null }: UnifiedReviewProps & { initialCohortSnapshot?: CohortProfileSnapshot | null }) {
+function UnifiedReviewBody({ rotations, week, rotationSizes, fetchSlots, feedMode = 'mixed', reviewFilter, itemType, topics, cluster = null, clusterScope = null, onFeedModeChange, onReviewModeChange, studyableRotations = [], enrollableRotations = [], examRotation = null, focusRotation = null, onFocusRotationChange, allowUnverifiedPack = false, initialBatch = null, loadTimer = null, cohortSingleTurn = false, initialCohortSnapshot = null }: UnifiedReviewProps & { initialCohortSnapshot?: CohortProfileSnapshot | null }) {
   const { data: authSession, status: authStatus } = useSession();
   const isCohortHost = useCohortHost();
   const isGuest = authStatus === 'unauthenticated';
@@ -1049,6 +1051,7 @@ function UnifiedReviewBody({ rotations, week, rotationSizes, fetchSlots, feedMod
             <RotationFocusSelector
               options={studyableRotations}
               value={focusRotation}
+              examRotation={examRotation}
               onChange={onFocusRotationChange}
               onChangeRotation={
                 enrollableRotations.length > 0

@@ -113,6 +113,7 @@ describe('shared database target resolution', () => {
     const productionDiagnostics = [
       'stats',
       'stats:today',
+      'db:pressure',
       'scaffold:needs',
       'audit:image-gaps',
       'audit:image-improvement',

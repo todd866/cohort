@@ -125,6 +125,11 @@ export const ROTATION_DIRS = new Set([
   // Personal licensed AnKing rotation. Bank items are original MD3 companions;
   // private source-deck wording never enters this loader.
   'anking',
+  // The GSSE basic-sciences corpus and the neurosurgery SET deck. Registered
+  // 2026-09-18 alongside migrating their inline MDX MCQs onto this pipeline;
+  // before that an unregistered dir here would have dropped them a second time.
+  'surgical-sciences',
+  'neurosurg',
 ]);
 
 /**

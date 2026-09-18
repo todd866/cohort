@@ -2,6 +2,7 @@
 
 import { useState, useRef, useEffect } from 'react';
 import { rotationLabel } from '@/lib/rotation-labels';
+import { orderFocusOptions } from '@/lib/study/focus-option-order';
 
 interface RotationFocusSelectorProps {
   /** Studyable rotation slugs the user is enrolled in. */
@@ -19,6 +20,14 @@ interface RotationFocusSelectorProps {
    * the desktop Content page (requested 2026-08-19).
    */
   onChangeRotation?: () => void;
+  /**
+   * The rotation whose exam is actually booked. It renders ABOVE "All",
+   * because "All" is not a peer of it: `evaluateObjectiveCoreGate` withholds
+   * cross-source content until the day's work in the exam rotation is done, so
+   * a blended session resolves to this rotation anyway until that is cleared.
+   * Putting it first says what the menu already does.
+   */
+  examRotation?: string | null;
 }
 
 /**
@@ -33,6 +42,7 @@ export function RotationFocusSelector({
   onChange,
   forceVisible = false,
   onChangeRotation,
+  examRotation = null,
 }: RotationFocusSelectorProps) {
   const [open, setOpen] = useState(false);
   const ref = useRef<HTMLDivElement>(null);
@@ -56,6 +66,11 @@ export function RotationFocusSelector({
   if (options.length === 0 || (!forceVisible && !onChangeRotation && options.length <= 1)) return null;
 
   const triggerLabel = value ? rotationLabel(value) : 'All';
+  // Ordered by the caller; the exam rotation is lifted out so it can sit above
+  // "All" rather than wherever the shared order happens to put it.
+  const ordered = orderFocusOptions(options);
+  const examFirst = examRotation && ordered.includes(examRotation) ? examRotation : null;
+  const rest = examFirst ? ordered.filter((slug) => slug !== examFirst) : ordered;
   const pick = (next: string | null) => {
     onChange(next);
     setOpen(false);
@@ -85,6 +100,18 @@ export function RotationFocusSelector({
           role="menu"
           className="absolute left-0 top-full z-20 mt-1 min-w-[8rem] overflow-hidden rounded-xl border border-[var(--md-outline-variant)] bg-[var(--md-surface)] py-1 text-xs shadow-lg"
         >
+          {examFirst && (
+            <button
+              key={examFirst}
+              type="button"
+              role="menuitemradio"
+              aria-checked={value === examFirst}
+              onClick={() => pick(examFirst)}
+              className={itemClass(value === examFirst)}
+            >
+              {rotationLabel(examFirst)}
+            </button>
+          )}
           <button
             type="button"
             role="menuitemradio"
@@ -94,7 +121,7 @@ export function RotationFocusSelector({
           >
             All
           </button>
-          {options.map((slug) => (
+          {rest.map((slug) => (
             <button
               key={slug}
               type="button"
