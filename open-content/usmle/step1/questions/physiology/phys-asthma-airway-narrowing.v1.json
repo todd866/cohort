@@ -10,45 +10,45 @@
   ],
   "questionType": "mechanism",
   "difficulty": "easy",
-  "stem": "In asthma, what happens to the breathing tubes at times according to NHLBI?",
+  "stem": "In asthma, what happens to the airways at times?",
   "options": [
     {
       "label": "A",
-      "text": "Only pleural fibrosis of airways alone without narrowing labels",
+      "text": "They become permanently dilated",
       "isCorrect": false,
-      "misconception": "Wrong concept for this stem; does not match the cited passage.",
-      "explanation": "This option does not match the cited source passage for the stem."
+      "misconception": "Confuses reversible airway narrowing with fixed dilation of damaged bronchi.",
+      "explanation": "Permanent airway dilation with scarring is bronchiectasis, usually after recurrent infection; asthma narrows the airways instead."
     },
     {
       "label": "B",
-      "text": "Only permanent bronchial dilation of airways without narrowing episodes",
+      "text": "They are compressed by enlarged hilar nodes",
       "isCorrect": false,
-      "misconception": "Wrong concept for this stem; does not match the cited passage.",
-      "explanation": "This option does not match the cited source passage for the stem."
+      "misconception": "Confuses external compression of a bronchus with inflammation of the airway wall.",
+      "explanation": "Enlarged hilar lymph nodes, as in sarcoidosis or tuberculosis, press on a bronchus from outside; asthma narrows airways through inflammation of the wall."
     },
     {
       "label": "C",
-      "text": "Only complete tracheal agenesis of airways without inflammatory narrowing",
+      "text": "They lose alveolar attachments",
       "isCorrect": false,
-      "misconception": "Wrong concept for this stem; does not match the cited passage.",
-      "explanation": "This option does not match the cited source passage for the stem."
+      "misconception": "Confuses asthma's airway narrowing with emphysema's alveolar destruction.",
+      "explanation": "Loss of alveolar attachments is emphysema, where destroyed alveolar walls stop tethering small airways open; asthma involves inflammation, not tissue destruction."
     },
     {
       "label": "D",
-      "text": "Only pure alveolar collapse of airways without inflammation roles",
+      "text": "They are blocked by an inhaled object",
       "isCorrect": false,
-      "misconception": "Wrong concept for this stem; does not match the cited passage.",
-      "explanation": "This option does not match the cited source passage for the stem."
+      "misconception": "Mistakes a focal mechanical obstruction for diffuse episodic narrowing.",
+      "explanation": "An inhaled foreign body blocks one airway mechanically, often with sudden one-sided wheeze; asthma is diffuse, episodic inflammation and narrowing."
     },
     {
       "label": "E",
-      "text": "Airways can become inflamed and narrowed, impairing airflow out",
+      "text": "They become inflamed and narrowed",
       "isCorrect": true,
-      "misconception": "None — this option matches the cited source passage for the stem.",
-      "explanation": "This correct choice is supported by the cited FOSS passage."
+      "misconception": "None — asthma airways become inflamed and narrowed at times.",
+      "explanation": "In asthma the airways can become inflamed and narrowed at times, which makes it harder for air to flow out when breathing out."
     }
   ],
-  "context": "Learning objective: recall asthma airway inflammation and narrowing from the cited FOSS source.",
+  "context": "Learning objective: In asthma, the airways become inflamed and narrowed at times, making it harder for air to flow out on exhalation.",
   "cite": "nhlbi-asthma#asthma-airways",
   "publicUsmle": {
     "schemaVersion": 1,
@@ -80,5 +80,5 @@
     }
   },
   "imageUrl": "/figures/usmle/step1/lung-mechanics-v1.svg",
-  "imageCaption": "Lung/airway mechanics board for asthma teaching (FOSS draft)."
+  "imageCaption": "Lung/airway mechanics board for asthma teaching."
 }

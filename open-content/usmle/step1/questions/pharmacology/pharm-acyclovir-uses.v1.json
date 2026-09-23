@@ -15,41 +15,41 @@
   "options": [
     {
       "label": "A",
-      "text": "Only tuberculosis without any antiviral herpes labeling",
+      "text": "Influenza, respiratory syncytial virus and COVID-19",
       "isCorrect": false,
-      "misconception": "Wrong concept for this stem; does not match the cited passage.",
-      "explanation": "This option does not match the cited source passage for the stem."
+      "misconception": "Assumes acyclovir is a broad-spectrum antiviral for respiratory viruses.",
+      "explanation": "Influenza, RSV and SARS-CoV-2 are RNA respiratory viruses; acyclovir needs activation by herpesvirus thymidine kinase and does not treat them."
     },
     {
       "label": "B",
-      "text": "Chickenpox, herpes zoster shingles, and genital herpes cases",
+      "text": "Chickenpox, shingles and genital herpes",
       "isCorrect": true,
-      "misconception": "None — this option matches the cited source passage for the stem.",
-      "explanation": "This correct choice is supported by the cited FOSS passage."
+      "misconception": "None — acyclovir treats chickenpox, shingles and genital herpes.",
+      "explanation": "MedlinePlus lists chickenpox, herpes zoster (shingles) and genital herpes as infections acyclovir treats; it is an antiviral that stops viral spread."
     },
     {
       "label": "C",
-      "text": "Only bacterial colitis without herpesvirus indications",
+      "text": "Hepatitis B, hepatitis C and HIV infection",
       "isCorrect": false,
-      "misconception": "Wrong concept for this stem; does not match the cited passage.",
-      "explanation": "This option does not match the cited source passage for the stem."
+      "misconception": "Assumes any nucleoside-analog antiviral also treats chronic hepatitis or HIV.",
+      "explanation": "Hepatitis B, hepatitis C and HIV need their own antiviral classes, such as nucleos(t)ide analogs, direct-acting antivirals and antiretrovirals."
     },
     {
       "label": "D",
-      "text": "Only migraine headaches without acyclovir antiviral roles",
+      "text": "Genital warts, common warts and molluscum contagiosum",
       "isCorrect": false,
-      "misconception": "Wrong concept for this stem; does not match the cited passage.",
-      "explanation": "This option does not match the cited source passage for the stem."
+      "misconception": "Links acyclovir to all genital and skin viral lesions, not just herpesvirus infections.",
+      "explanation": "Warts are caused by HPV and molluscum contagiosum by a poxvirus; neither is treated with acyclovir, which targets herpesviruses."
     },
     {
       "label": "E",
-      "text": "Only anemia from low red cells without antiviral labeling",
+      "text": "Measles, mumps and rubella",
       "isCorrect": false,
-      "misconception": "Wrong concept for this stem; does not match the cited passage.",
-      "explanation": "This option does not match the cited source passage for the stem."
+      "misconception": "Assumes acyclovir treats every childhood viral rash illness, not just varicella.",
+      "explanation": "Measles, mumps and rubella are prevented with MMR vaccine and managed supportively; acyclovir has no role against them."
     }
   ],
-  "context": "Learning objective: recall acyclovir herpesvirus uses from the cited FOSS source.",
+  "context": "Learning objective: Acyclovir is an antiviral used to treat chickenpox, herpes zoster (shingles) and genital herpes.",
   "cite": "medlineplus-acyclovir#acyclovir-uses",
   "publicUsmle": {
     "schemaVersion": 1,
@@ -66,20 +66,6 @@
         "cls": "foss",
         "id": "us-gov"
       }
-    },
-    "media": {
-      "kind": "asset",
-      "assetId": "pharm-drug-classes-v1",
-      "job": "compare-table",
-      "showWhen": "after-reveal",
-      "licence": {
-        "cls": "foss",
-        "id": "cc-by-4.0"
-      },
-      "attribution": "MD3 contributors",
-      "contentHash": "sha256:0660ff11235451eff9a2718dd975d64fa61483b220682b17bd82c8050fd4bceb"
     }
-  },
-  "imageUrl": "/figures/usmle/step1/pharm-drug-classes-v1.svg",
-  "imageCaption": "High-yield FOSS drug-class map from MedlinePlus labels."
+  }
 }

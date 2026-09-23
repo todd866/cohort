@@ -15,41 +15,41 @@
   "options": [
     {
       "label": "A",
-      "text": "Only poliovirus serotypes numbered one through three",
+      "text": "HPV types 1 or 2",
       "isCorrect": false,
-      "misconception": "Polio. (does not match the cited teaching point).",
-      "explanation": "This option does not match the cited source passage for the stem."
+      "misconception": "Confuses cutaneous wart types with anogenital wart types.",
+      "explanation": "HPV types 1 and 2 are cutaneous types that cause plantar and common warts on the hands and feet, not most anogenital warts."
     },
     {
       "label": "B",
-      "text": "Only high-risk HPV types 16 and 18 in wart lesions",
+      "text": "HPV types 16 or 18",
       "isCorrect": false,
-      "misconception": "High-risk types. (does not match the cited teaching point).",
-      "explanation": "Wrong class; see the cited source passage."
+      "misconception": "Swaps the high-risk oncogenic types for the low-risk wart types.",
+      "explanation": "HPV types 16 and 18 are high-risk oncogenic types linked to cervical and anogenital cancers rather than to most genital warts."
     },
     {
       "label": "C",
-      "text": "Low-risk HPV types 6 or 11 in most wart cases",
+      "text": "HPV types 6 or 11",
       "isCorrect": true,
-      "misconception": "None; low-risk 6/11 drive most warts.",
-      "explanation": "CDC: >90% anogenital warts from types 6 or 11."
+      "misconception": "None — HPV 6 and 11 cause more than 90% of anogenital warts.",
+      "explanation": "CDC: more than 90% of cases of anogenital warts are caused by low-risk HPV types 6 or 11."
     },
     {
       "label": "D",
-      "text": "Only Haemophilus capsule serotypes labeled a-f",
+      "text": "HPV types 31 or 33",
       "isCorrect": false,
-      "misconception": "Hib. (does not match the cited teaching point).",
-      "explanation": "This option does not match the cited source passage for the stem."
+      "misconception": "Assumes any common genital HPV genotype causes warts, ignoring risk class.",
+      "explanation": "HPV types 31 and 33 are additional high-risk types associated with cervical precancer and cancer, not the typical genital wart."
     },
     {
       "label": "E",
-      "text": "Only measles genotypes labeled A and B worldwide",
+      "text": "HPV types 5 or 8",
       "isCorrect": false,
-      "misconception": "Measles. (does not match the cited teaching point).",
-      "explanation": "This option does not match the cited source passage for the stem."
+      "misconception": "Confuses anogenital warts with epidermodysplasia verruciformis types.",
+      "explanation": "HPV types 5 and 8 are linked to epidermodysplasia verruciformis and cutaneous squamous cell carcinoma, not anogenital warts."
     }
   ],
-  "context": "Learning objective: recall hpv, warts from the cited FOSS source.",
+  "context": "Learning objective: Low-risk HPV types 6 or 11 cause more than 90% of cases of anogenital warts.",
   "cite": "cdc-pink-book-hpv#hpv-warts-6-11",
   "publicUsmle": {
     "schemaVersion": 1,
@@ -66,20 +66,6 @@
         "cls": "foss",
         "id": "us-gov"
       }
-    },
-    "media": {
-      "kind": "asset",
-      "assetId": "micro-pathogen-virulence-v1",
-      "job": "compare-table",
-      "showWhen": "after-reveal",
-      "licence": {
-        "cls": "foss",
-        "id": "cc-by-4.0"
-      },
-      "attribution": "MD3 contributors",
-      "contentHash": "sha256:e0ca8dcce5538b15d4a9973d8a6934fc8199d41e7059a4d8f0059cc1ec78a22e"
     }
-  },
-  "imageUrl": "/figures/usmle/step1/micro-pathogen-virulence-v1.svg",
-  "imageCaption": "Pathogen/virulence and Pink Book organism map (FOSS draft)."
+  }
 }

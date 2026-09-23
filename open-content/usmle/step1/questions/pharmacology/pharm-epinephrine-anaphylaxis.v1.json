@@ -15,41 +15,41 @@
   "options": [
     {
       "label": "A",
-      "text": "Only chronic type 2 diabetes hyperglycemia flares",
+      "text": "Opioid overdose with apnea",
       "isCorrect": false,
-      "misconception": "Metformin domain — does not match the cited teaching point.",
-      "explanation": "Wrong indication; see the cited source passage for detail."
+      "misconception": "Confuses epinephrine auto-injectors with naloxone rescue kits.",
+      "explanation": "Opioid overdose is reversed with naloxone, a mu-opioid receptor antagonist; epinephrine does not reverse opioid-induced respiratory depression."
     },
     {
       "label": "B",
-      "text": "Severe allergic reactions including anaphylaxis crises",
+      "text": "Anaphylaxis after an insect sting",
       "isCorrect": true,
-      "misconception": "None; epinephrine for severe allergy.",
-      "explanation": "MedlinePlus: severe allergic reactions; also septic shock use."
+      "misconception": "None — epinephrine is the injected rescue drug for anaphylaxis.",
+      "explanation": "The label says epinephrine injection, given with emergency care, treats life-threatening allergic reactions caused by insect stings, foods, medications, latex, and other causes."
     },
     {
       "label": "C",
-      "text": "Only HMG-CoA reductase inhibition inside hepatocytes",
+      "text": "Diabetic ketoacidosis with severe dehydration",
       "isCorrect": false,
-      "misconception": "Statin domain — does not match the cited teaching point.",
-      "explanation": "Wrong indication; see the cited source passage for detail."
+      "misconception": "Assumes any emergency injection helps a metabolic crisis.",
+      "explanation": "Diabetic ketoacidosis is treated with IV fluids, insulin and potassium; epinephrine would raise blood glucose further by promoting glycogenolysis."
     },
     {
       "label": "D",
-      "text": "Only screening specificity calculations on 2x2 tables",
+      "text": "Hypertensive emergency with acute end-organ damage",
       "isCorrect": false,
-      "misconception": "Biostats domain — does not match the cited teaching point.",
-      "explanation": "Wrong indication; see the cited source passage for detail."
+      "misconception": "Treats epinephrine as a general emergency drug and ignores its pressor effect.",
+      "explanation": "A hypertensive emergency needs a titratable IV antihypertensive such as nicardipine or labetalol; the alpha-1 effect of epinephrine would raise pressure further."
     },
     {
       "label": "E",
-      "text": "Only vitamin K and warfarin food-intake counseling",
+      "text": "Status epilepticus with continuous seizure activity",
       "isCorrect": false,
-      "misconception": "Warfarin counseling — does not match the cited teaching point.",
-      "explanation": "Wrong indication; see the cited source passage for detail."
+      "misconception": "Confuses the emergency injection for anaphylaxis with the one for seizures.",
+      "explanation": "Status epilepticus is treated first with a benzodiazepine such as IV lorazepam; epinephrine has no anticonvulsant action."
     }
   ],
-  "context": "Learning objective: epinephrine for anaphylaxis.",
+  "context": "Learning objective: Epinephrine injection, with emergency care, treats life-threatening allergic reactions to stings, foods, medications, latex, and other causes.",
   "cite": "medlineplus-epinephrine#epinephrine-anaphylaxis",
   "publicUsmle": {
     "schemaVersion": 1,

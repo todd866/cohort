@@ -14,41 +14,41 @@
   "options": [
     {
       "label": "A",
-      "text": "Seizures, and also to prevent migraine headaches",
+      "text": "Seizure episodes",
       "isCorrect": true,
-      "misconception": "None — this option matches the cited source passage for the stem.",
-      "explanation": "This correct choice is supported by the cited FOSS passage."
+      "misconception": "None — seizures are topiramate's listed anticonvulsant use.",
+      "explanation": "Topiramate, an anticonvulsant that decreases abnormal excitement in the brain, treats certain types of seizures and also prevents migraine headaches."
     },
     {
       "label": "B",
-      "text": "Only TB regimens without anticonvulsant labeling present",
+      "text": "Transient ischemic attacks",
       "isCorrect": false,
-      "misconception": "Wrong concept for this stem; does not match the cited passage.",
-      "explanation": "This option does not match the cited source passage for the stem."
+      "misconception": "Mistakes brief focal ischemia for an event an anticonvulsant controls.",
+      "explanation": "A transient ischemic attack is brief focal brain ischemia, treated with antiplatelet therapy and risk-factor control rather than an anticonvulsant."
     },
     {
       "label": "C",
-      "text": "Only CKD waste buildup without seizure indications listed",
+      "text": "Cataplexy attacks",
       "isCorrect": false,
-      "misconception": "Wrong concept for this stem; does not match the cited passage.",
-      "explanation": "This option does not match the cited source passage for the stem."
+      "misconception": "Mistakes a sudden loss of muscle tone for an epileptic event.",
+      "explanation": "Cataplexy is emotion-triggered loss of muscle tone in narcolepsy, treated with sodium oxybate or antidepressants rather than topiramate."
     },
     {
       "label": "D",
-      "text": "Only ventricular arrhythmias without topiramate roles",
+      "text": "Vasovagal syncopal episodes",
       "isCorrect": false,
-      "misconception": "Wrong concept for this stem; does not match the cited passage.",
-      "explanation": "This option does not match the cited source passage for the stem."
+      "misconception": "Confuses a brief faint from hypoperfusion with a seizure.",
+      "explanation": "Vasovagal syncope is a reflex fall in heart rate and blood pressure causing a brief faint; it is managed with counterpressure maneuvers and fluids."
     },
     {
       "label": "E",
-      "text": "Only BPH without migraine-prevention labeling present",
+      "text": "Myasthenic crises",
       "isCorrect": false,
-      "misconception": "Wrong concept for this stem; does not match the cited passage.",
-      "explanation": "This option does not match the cited source passage for the stem."
+      "misconception": "Confuses neuromuscular junction failure with abnormal brain excitability.",
+      "explanation": "Myasthenic crisis is autoimmune neuromuscular respiratory failure, treated with ventilatory support, IVIG or plasma exchange, not an anticonvulsant."
     }
   ],
-  "context": "Learning objective: recall topiramate seizure use from the cited FOSS source.",
+  "context": "Learning objective: Topiramate, an anticonvulsant, treats certain seizures and prevents, but does not relieve, migraine headaches.",
   "cite": "medlineplus-topiramate#topiramate-uses",
   "publicUsmle": {
     "schemaVersion": 1,
@@ -65,20 +65,6 @@
         "cls": "foss",
         "id": "us-gov"
       }
-    },
-    "media": {
-      "kind": "asset",
-      "assetId": "pharm-drug-classes-v1",
-      "job": "compare-table",
-      "showWhen": "after-reveal",
-      "licence": {
-        "cls": "foss",
-        "id": "cc-by-4.0"
-      },
-      "attribution": "MD3 contributors",
-      "contentHash": "sha256:0660ff11235451eff9a2718dd975d64fa61483b220682b17bd82c8050fd4bceb"
     }
-  },
-  "imageUrl": "/figures/usmle/step1/pharm-drug-classes-v1.svg",
-  "imageCaption": "High-yield FOSS drug-class map from MedlinePlus labels."
+  }
 }

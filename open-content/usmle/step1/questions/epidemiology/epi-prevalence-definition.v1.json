@@ -10,45 +10,45 @@
   ],
   "questionType": "mechanism",
   "difficulty": "easy",
-  "stem": "Prevalence differs from incidence how, in CDC terms?",
+  "stem": "For a given condition in a population, which of the following correctly distinguishes prevalence from incidence?",
   "options": [
     {
       "label": "A",
-      "text": "Only a titer cutoff for IgM anti-HAV positivity",
+      "text": "Prevalence: persons who develop it; incidence: persons who have it",
       "isCorrect": false,
-      "misconception": "HAV. (does not match the cited teaching point).",
-      "explanation": "This option does not match the cited source passage for the stem."
+      "misconception": "Reverses the definitions of prevalence and incidence.",
+      "explanation": "This reverses the two measures: incidence counts persons who develop a condition, and prevalence counts persons who have it."
     },
     {
       "label": "B",
-      "text": "Only a label for fecal-oral transmission routes",
+      "text": "Prevalence: persons who develop it; incidence: persons who die of it",
       "isCorrect": false,
-      "misconception": "Micro. (does not match the cited teaching point).",
-      "explanation": "This option does not match the cited source passage for the stem."
+      "misconception": "Assigns new cases to prevalence and deaths to incidence.",
+      "explanation": "Prevalence counts persons who have a condition, not those who develop it, and deaths are counted by mortality measures, not incidence."
     },
     {
       "label": "C",
-      "text": "Only a grading scale for flaccid paralysis severity",
+      "text": "Prevalence: persons who die of it; incidence: persons who have it",
       "isCorrect": false,
-      "misconception": "Polio. (does not match the cited teaching point).",
-      "explanation": "This option does not match the cited source passage for the stem."
+      "misconception": "Assigns deaths to prevalence and existing cases to incidence.",
+      "explanation": "Deaths are counted by mortality measures, not prevalence, and persons who have a condition are counted by prevalence, not incidence."
     },
     {
       "label": "D",
-      "text": "Who have a condition now, versus who newly develop it",
+      "text": "Prevalence: persons who have it; incidence: persons who develop it",
       "isCorrect": true,
-      "misconception": "None — this option matches the cited source passage.",
-      "explanation": "CDC: prevalence = have; incidence = develop."
+      "misconception": "None — prevalence counts who has the condition; incidence counts who develops it.",
+      "explanation": "CDC: prevalence is the proportion of persons who have a condition at or during a period; incidence is the proportion or rate who develop it."
     },
     {
       "label": "E",
-      "text": "Only a count of HPV type 6 anogenital wart cases",
+      "text": "Prevalence: persons who recover from it; incidence: persons who die of it",
       "isCorrect": false,
-      "misconception": "HPV. (does not match the cited teaching point).",
-      "explanation": "This option does not match the cited source passage for the stem."
+      "misconception": "Treats prevalence as recovery and incidence as death, confusing both with outcome measures.",
+      "explanation": "Prevalence counts persons who currently have a condition, not those who recovered, and incidence counts new cases, not deaths."
     }
   ],
-  "context": "Learning objective: recall prevalence from the cited FOSS source.",
+  "context": "Learning objective: Prevalence is the proportion of persons who have a condition; incidence is the proportion or rate who develop it.",
   "cite": "cdc-epi-incidence-prevalence#prevalence-definition",
   "publicUsmle": {
     "schemaVersion": 1,

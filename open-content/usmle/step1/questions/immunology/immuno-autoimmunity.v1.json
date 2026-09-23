@@ -14,41 +14,41 @@
   "options": [
     {
       "label": "A",
-      "text": "Only defense against extracellular bacteria via complement",
+      "text": "Immune reaction to a harmless environmental antigen",
       "isCorrect": false,
-      "misconception": "Normal host defense, not autoimmunity.",
-      "explanation": "This option does not match the cited source passage for the stem."
+      "misconception": "Confuses autoimmunity with allergy, which targets harmless foreign antigens.",
+      "explanation": "A reaction to a harmless environmental antigen is an allergy; its target is foreign, not the host's own cells."
     },
     {
       "label": "B",
-      "text": "Only warfarin–vitamin K dietary counseling",
+      "text": "Immune attack on cells of a transplanted donor organ",
       "isCorrect": false,
-      "misconception": "Pharm — does not match the cited teaching point.",
-      "explanation": "This option does not match the cited source passage for the stem."
+      "misconception": "Confuses autoimmunity with alloimmune rejection of donor tissue.",
+      "explanation": "Graft rejection is an alloimmune response to donor antigens, which are foreign to the recipient rather than self-antigens."
     },
     {
       "label": "C",
-      "text": "Only independent events multiplying probabilities",
+      "text": "Immune complex deposition after exposure to foreign serum proteins",
       "isCorrect": false,
-      "misconception": "Stats — does not match the cited teaching point.",
-      "explanation": "This option does not match the cited source passage for the stem."
+      "misconception": "Confuses autoimmunity with serum sickness, a reaction to foreign proteins.",
+      "explanation": "Serum sickness is an immune complex reaction to foreign proteins such as animal antiserum, not a response against self."
     },
     {
       "label": "D",
-      "text": "Only statin blockade of HMG-CoA reductase",
+      "text": "Excessive cytokine release during a systemic infection",
       "isCorrect": false,
-      "misconception": "Pharm — does not match the cited teaching point.",
-      "explanation": "This option does not match the cited source passage for the stem."
+      "misconception": "Confuses autoimmunity with dysregulated inflammation during infection.",
+      "explanation": "A cytokine storm is an excessive, dysregulated inflammatory response to infection; it is not directed at self-antigens."
     },
     {
       "label": "E",
-      "text": "Immune attack on host cells or self-antigens",
+      "text": "Immune attack on the host's own cells or self-antigens",
       "isCorrect": true,
-      "misconception": "None; autoimmunity targets self.",
-      "explanation": "OpenStax: autoimmune response is inappropriate response to host cells or self-antigens."
+      "misconception": "None — autoimmunity is an immune response against host cells or self-antigens.",
+      "explanation": "An autoimmune response is an inappropriate immune response to host cells or self-antigens."
     }
   ],
-  "context": "Learning objective: define autoimmunity.",
+  "context": "Learning objective: An autoimmune response is an inappropriate immune response directed at host cells or self-antigens.",
   "cite": "openstax-biology-2e#autoimmune-response",
   "publicUsmle": {
     "schemaVersion": 1,

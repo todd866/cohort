@@ -10,45 +10,45 @@
   ],
   "questionType": "mechanism",
   "difficulty": "easy",
-  "stem": "Lamotrigine extended-release tablets are used with other medications to treat which neurologic events?",
+  "stem": "Extended-release lamotrigine is used as add-on therapy for which neurologic condition?",
   "options": [
     {
       "label": "A",
-      "text": "Certain types of seizures in patients who have epilepsy",
+      "text": "Seizures in people with epilepsy",
       "isCorrect": true,
-      "misconception": "None — this option matches the cited source passage for the stem.",
-      "explanation": "This correct choice is supported by the cited FOSS passage."
+      "misconception": "None — lamotrigine is an add-on antiseizure drug for certain seizure types.",
+      "explanation": "The label says extended-release lamotrigine is used with other medications to treat certain types of seizures in patients who have epilepsy."
     },
     {
       "label": "B",
-      "text": "Only BPH urinary frequency without anticonvulsant labeling",
+      "text": "Transient ischemic attacks from carotid disease",
       "isCorrect": false,
-      "misconception": "Wrong concept for this stem; does not match the cited passage.",
-      "explanation": "This option does not match the cited source passage for the stem."
+      "misconception": "Mistakes transient focal deficits for focal seizures.",
+      "explanation": "Transient ischemic attacks are brief ischemic deficits prevented with antiplatelets and risk-factor control; lamotrigine does not prevent ischemia."
     },
     {
       "label": "C",
-      "text": "Only malaria prevention without seizure indications listed",
+      "text": "Myasthenic crises in myasthenia gravis",
       "isCorrect": false,
-      "misconception": "Wrong concept for this stem; does not match the cited passage.",
-      "explanation": "This option does not match the cited source passage for the stem."
+      "misconception": "Confuses neuromuscular junction weakness with a central seizure disorder.",
+      "explanation": "Myasthenic crisis is antibody-mediated respiratory muscle weakness treated with IVIG or plasmapheresis and ventilatory support, not lamotrigine."
     },
     {
       "label": "D",
-      "text": "Only erectile dysfunction without lamotrigine roles named",
+      "text": "Relapses of multiple sclerosis",
       "isCorrect": false,
-      "misconception": "Wrong concept for this stem; does not match the cited passage.",
-      "explanation": "This option does not match the cited source passage for the stem."
+      "misconception": "Assumes antiseizure drugs treat demyelinating attacks.",
+      "explanation": "Multiple sclerosis relapses are inflammatory demyelinating attacks treated with high-dose corticosteroids; lamotrigine is not a disease-modifying therapy."
     },
     {
       "label": "E",
-      "text": "Only psoriasis without antiseizure labeling in the text",
+      "text": "Cataplexy attacks in narcolepsy",
       "isCorrect": false,
-      "misconception": "Wrong concept for this stem; does not match the cited passage.",
-      "explanation": "This option does not match the cited source passage for the stem."
+      "misconception": "Mistakes sudden emotion-triggered loss of tone in narcolepsy for an atonic seizure.",
+      "explanation": "Cataplexy is sudden emotion-triggered loss of muscle tone in narcolepsy, treated with sodium oxybate or certain antidepressants, not lamotrigine."
     }
   ],
-  "context": "Learning objective: recall lamotrigine seizure use from the cited FOSS source.",
+  "context": "Learning objective: Extended-release lamotrigine is used with other medications to treat certain types of seizures in patients with epilepsy.",
   "cite": "medlineplus-lamotrigine#lamotrigine-uses",
   "publicUsmle": {
     "schemaVersion": 1,
@@ -65,20 +65,6 @@
         "cls": "foss",
         "id": "us-gov"
       }
-    },
-    "media": {
-      "kind": "asset",
-      "assetId": "pharm-drug-classes-v1",
-      "job": "compare-table",
-      "showWhen": "after-reveal",
-      "licence": {
-        "cls": "foss",
-        "id": "cc-by-4.0"
-      },
-      "attribution": "MD3 contributors",
-      "contentHash": "sha256:0660ff11235451eff9a2718dd975d64fa61483b220682b17bd82c8050fd4bceb"
     }
-  },
-  "imageUrl": "/figures/usmle/step1/pharm-drug-classes-v1.svg",
-  "imageCaption": "High-yield FOSS drug-class map from MedlinePlus labels."
+  }
 }

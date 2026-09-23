@@ -11,45 +11,45 @@
   ],
   "questionType": "mechanism",
   "difficulty": "easy",
-  "stem": "Montelukast is used to prevent which cluster of breathing symptoms in reactive airway disease?",
+  "stem": "Montelukast is used to prevent which group of breathing symptoms?",
   "options": [
     {
       "label": "A",
-      "text": "Only flaccid paralysis after wild poliovirus infection",
+      "text": "Stridor and barking cough caused by croup",
       "isCorrect": false,
-      "misconception": "Wrong concept for this stem; does not match the cited passage.",
-      "explanation": "This option does not match the cited source passage for the stem."
+      "misconception": "Equates upper-airway stridor with lower-airway wheezing.",
+      "explanation": "Croup is viral laryngotracheitis causing stridor and a barking cough; it is treated with dexamethasone and nebulized epinephrine, not montelukast."
     },
     {
       "label": "B",
-      "text": "Wheeze, dyspnea, chest tightness, and cough episodes",
+      "text": "Wheezing, chest tightness, and coughing caused by asthma",
       "isCorrect": true,
-      "misconception": "None — this option matches the cited source passage for the stem.",
-      "explanation": "This correct choice is supported by the cited FOSS passage."
+      "misconception": "None — montelukast is a controller that prevents asthma symptoms.",
+      "explanation": "The label says montelukast prevents wheezing, difficulty breathing, chest tightness, and coughing caused by asthma in adults and children 12 months and older."
     },
     {
       "label": "C",
-      "text": "Only diphtheria pseudomembrane formation in the throat",
+      "text": "Productive cough and fever caused by pneumonia",
       "isCorrect": false,
-      "misconception": "Wrong concept for this stem; does not match the cited passage.",
-      "explanation": "This option does not match the cited source passage for the stem."
+      "misconception": "Assumes any cough responds to an asthma controller.",
+      "explanation": "Productive cough and fever from pneumonia reflect alveolar infection needing antibiotics; blocking leukotriene receptors does not treat infection."
     },
     {
       "label": "D",
-      "text": "Only congenital cataracts after first-trimester rubella",
+      "text": "Pleuritic pain and breathlessness caused by pulmonary embolism",
       "isCorrect": false,
-      "misconception": "Wrong concept for this stem; does not match the cited passage.",
-      "explanation": "This option does not match the cited source passage for the stem."
+      "misconception": "Treats all sudden breathlessness as bronchospasm.",
+      "explanation": "Pleuritic pain and breathlessness from pulmonary embolism come from clot in the pulmonary arteries and need anticoagulation, not a leukotriene blocker."
     },
     {
       "label": "E",
-      "text": "Only case-fatality calculations in outbreak fieldwork",
+      "text": "Crackles and orthopnea caused by heart failure",
       "isCorrect": false,
-      "misconception": "Wrong concept for this stem; does not match the cited passage.",
-      "explanation": "This option does not match the cited source passage for the stem."
+      "misconception": "Confuses 'cardiac asthma' from pulmonary congestion with true asthma.",
+      "explanation": "Crackles and orthopnea in heart failure come from pulmonary venous congestion, treated with diuretics; montelukast does not relieve fluid overload."
     }
   ],
-  "context": "Learning objective: recall montelukast, asthma from the cited FOSS source.",
+  "context": "Learning objective: Montelukast prevents wheezing, difficulty breathing, chest tightness, and coughing caused by asthma in adults and children 12 months and older.",
   "cite": "medlineplus-montelukast#montelukast-uses",
   "publicUsmle": {
     "schemaVersion": 1,
@@ -66,20 +66,6 @@
         "cls": "foss",
         "id": "us-gov"
       }
-    },
-    "media": {
-      "kind": "asset",
-      "assetId": "pharm-drug-classes-v1",
-      "job": "compare-table",
-      "showWhen": "after-reveal",
-      "licence": {
-        "cls": "foss",
-        "id": "cc-by-4.0"
-      },
-      "attribution": "MD3 contributors",
-      "contentHash": "sha256:0660ff11235451eff9a2718dd975d64fa61483b220682b17bd82c8050fd4bceb"
     }
-  },
-  "imageUrl": "/figures/usmle/step1/pharm-drug-classes-v1.svg",
-  "imageCaption": "High-yield FOSS drug-class map from MedlinePlus labels."
+  }
 }

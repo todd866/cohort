@@ -11,45 +11,45 @@
   ],
   "questionType": "mechanism",
   "difficulty": "medium",
-  "stem": "A classic immediate hypersensitivity pattern to a harmless trigger happens on what timescale?",
+  "stem": "A person already sensitized to peanut is exposed to peanut again. How soon after this re-exposure does the antibody-mediated allergic reaction begin?",
   "options": [
     {
       "label": "A",
-      "text": "Only during intracellular glycogen polymer storage",
+      "text": "After 48 to 72 hours",
       "isCorrect": false,
-      "misconception": "Biochem distractor — does not match the cited teaching point.",
-      "explanation": "Wrong domain; see the cited source passage for detail."
+      "misconception": "Confuses allergy with delayed-type (type IV) hypersensitivity.",
+      "explanation": "A reaction appearing 48 to 72 hours after exposure is delayed-type hypersensitivity, which is T-cell mediated rather than antibody mediated."
     },
     {
       "label": "B",
-      "text": "Only after decades of continuous statin drug therapy",
+      "text": "After one to two weeks",
       "isCorrect": false,
-      "misconception": "Pharm distractor — does not match the cited teaching point.",
-      "explanation": "Wrong domain; see the cited source passage for detail."
+      "misconception": "Confuses an IgE-mediated allergy with serum sickness, an IgG immune-complex reaction.",
+      "explanation": "Onset one to two weeks after exposure fits serum sickness, an IgG immune-complex reaction to foreign protein, not an allergy in a sensitized person."
     },
     {
       "label": "C",
-      "text": "Within minutes after allergen rechallenge begins",
+      "text": "Within a few minutes",
       "isCorrect": true,
-      "misconception": "None; immediate hypersensitivity is minutes.",
-      "explanation": "OpenStax: minutes after exposure."
+      "misconception": "None — an allergy is an antibody-mediated response occurring within minutes.",
+      "explanation": "An antibody-mediated immune response that occurs within minutes of exposure to a harmless antigen is called an allergy."
     },
     {
       "label": "D",
-      "text": "Only during formal null-hypothesis statistical testing",
+      "text": "After several months",
       "isCorrect": false,
-      "misconception": "Stats distractor — does not match the cited teaching point.",
-      "explanation": "Wrong domain; see the cited source passage for detail."
+      "misconception": "Assumes an allergic reaction needs a prolonged period to develop.",
+      "explanation": "Months is far too slow; in a sensitized person an allergic reaction starts within minutes of exposure to the antigen."
     },
     {
       "label": "E",
-      "text": "Only after ACE-inhibitor bradykinin pathway calculations",
+      "text": "After several years",
       "isCorrect": false,
-      "misconception": "Pharm distractor — does not match the cited teaching point.",
-      "explanation": "Wrong domain; see the cited source passage for detail."
+      "misconception": "Confuses an immediate reaction with a disease process that has a long latency.",
+      "explanation": "A delay of years describes long-latency processes such as some cancers, not an allergy, which begins within minutes."
     }
   ],
-  "context": "Learning objective: immediate hypersensitivity timing.",
+  "context": "Learning objective: An allergy is an antibody-mediated response to a harmless antigen that occurs within minutes of exposure.",
   "cite": "openstax-biology-2e#hypersensitivity-ige",
   "publicUsmle": {
     "schemaVersion": 1,

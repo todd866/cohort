@@ -14,41 +14,41 @@
   "options": [
     {
       "label": "A",
-      "text": "Damage or structural problems that prevent proper blood filtering",
+      "text": "Damage or abnormal structure that impairs blood filtering",
       "isCorrect": true,
-      "misconception": "None — this option matches the cited source passage for the stem.",
-      "explanation": "This correct choice is supported by the cited FOSS passage."
+      "misconception": "None — CKD is damage or structural problems that impair filtration.",
+      "explanation": "In CKD the kidneys are damaged or structurally abnormal, so they cannot filter blood the way they should and waste and extra fluid build up."
     },
     {
       "label": "B",
-      "text": "Only airway narrowing without kidney filtration roles named",
+      "text": "A sudden, reversible drop in filtering over days",
       "isCorrect": false,
-      "misconception": "Wrong concept for this stem; does not match the cited passage.",
-      "explanation": "This option does not match the cited source passage for the stem."
+      "misconception": "Confuses the time course of acute kidney injury with chronic kidney disease.",
+      "explanation": "A sudden, often reversible fall in filtration over hours to days is acute kidney injury; CKD is lasting damage that impairs filtering."
     },
     {
       "label": "C",
-      "text": "Only ventricular arrhythmias without CKD labeling present",
+      "text": "Overproduction of erythropoietin by the renal cortex",
       "isCorrect": false,
-      "misconception": "Wrong concept for this stem; does not match the cited passage.",
-      "explanation": "This option does not match the cited source passage for the stem."
+      "misconception": "Reverses CKD's hormonal effect: failing kidneys make too little erythropoietin.",
+      "explanation": "Damaged kidneys make too little erythropoietin, which is why CKD causes anemia; excess erythropoietin points to a tumor or hypoxic drive instead."
     },
     {
       "label": "D",
-      "text": "Only prostate enlargement without filtration failure text",
+      "text": "Overproduction of active vitamin D by tubular cells",
       "isCorrect": false,
-      "misconception": "Wrong concept for this stem; does not match the cited passage.",
-      "explanation": "This option does not match the cited source passage for the stem."
+      "misconception": "Reverses CKD's effect on vitamin D activation.",
+      "explanation": "Diseased kidneys make too little active vitamin D, which contributes to secondary hyperparathyroidism; overproduction is not a feature of CKD."
     },
     {
       "label": "E",
-      "text": "Only skin plaque psoriasis without kidney disease naming",
+      "text": "Glucose loss in urine from an inherited transporter defect",
       "isCorrect": false,
-      "misconception": "Wrong concept for this stem; does not match the cited passage.",
-      "explanation": "This option does not match the cited source passage for the stem."
+      "misconception": "Equates an isolated tubular transport defect with loss of filtering function.",
+      "explanation": "Inherited glucose loss in urine is familial renal glucosuria, an isolated transporter defect with normal filtration, not CKD."
     }
   ],
-  "context": "Learning objective: recall CKD filtration failure from the cited FOSS source.",
+  "context": "Learning objective: CKD is kidney damage or a structural problem that prevents normal blood filtering, so waste and extra fluid build up.",
   "cite": "niddk-ckd#ckd-definition",
   "publicUsmle": {
     "schemaVersion": 1,
@@ -80,5 +80,5 @@
     }
   },
   "imageUrl": "/figures/usmle/step1/blood-components-v1.svg",
-  "imageCaption": "Filtration/blood composition teaching board (FOSS draft)."
+  "imageCaption": "Filtration/blood composition teaching board."
 }

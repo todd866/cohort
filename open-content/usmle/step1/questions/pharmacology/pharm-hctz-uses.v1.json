@@ -16,41 +16,41 @@
   "options": [
     {
       "label": "A",
-      "text": "Only rehabilitation after polio flaccid paralysis",
+      "text": "Orthostatic hypotension",
       "isCorrect": false,
-      "misconception": "Micro. (does not match the cited teaching point).",
-      "explanation": "This option does not match the cited source passage for the stem."
+      "misconception": "Reverses the effect: a diuretic lowers blood pressure rather than raising it.",
+      "explanation": "Orthostatic hypotension needs volume expansion, fludrocortisone or midodrine; the diuresis from a thiazide would lower pressure further and worsen it."
     },
     {
       "label": "B",
-      "text": "Only acute hepatitis A IgM confirmation testing",
+      "text": "Symptomatic bradycardia",
       "isCorrect": false,
-      "misconception": "Micro. (does not match the cited teaching point).",
-      "explanation": "This option does not match the cited source passage for the stem."
+      "misconception": "Assumes any cardiovascular drug adjusts heart rate.",
+      "explanation": "Symptomatic bradycardia is treated with atropine or pacing; hydrochlorothiazide has no effect on sinoatrial or atrioventricular nodal rate."
     },
     {
       "label": "C",
-      "text": "High blood pressure alone or with other agents",
+      "text": "Chronic hypertension",
       "isCorrect": true,
-      "misconception": "None — this option matches the cited source passage.",
-      "explanation": "MedlinePlus: treat high blood pressure."
+      "misconception": "None — hydrochlorothiazide is used alone or combined to treat hypertension.",
+      "explanation": "The label says hydrochlorothiazide is used alone or with other medications to treat high blood pressure."
     },
     {
       "label": "D",
-      "text": "Only cryotherapy sessions for HPV wart lesions",
+      "text": "Stable angina",
       "isCorrect": false,
-      "misconception": "Micro. (does not match the cited teaching point).",
-      "explanation": "This option does not match the cited source passage for the stem."
+      "misconception": "Confuses an antihypertensive diuretic with antianginal drugs.",
+      "explanation": "Stable angina is treated with nitrates, beta blockers or calcium channel blockers that reduce myocardial oxygen demand, not with a thiazide diuretic."
     },
     {
       "label": "E",
-      "text": "Only surgical repair of rotavirus intussusception",
+      "text": "Atrial fibrillation",
       "isCorrect": false,
-      "misconception": "Micro. (does not match the cited teaching point).",
-      "explanation": "This option does not match the cited source passage for the stem."
+      "misconception": "Assumes antihypertensives also control cardiac rhythm.",
+      "explanation": "Atrial fibrillation is managed with rate control, rhythm control and anticoagulation; hydrochlorothiazide does not treat it and can cause hypokalemia."
     }
   ],
-  "context": "Learning objective: recall hydrochlorothiazide, diuretic from the cited FOSS source.",
+  "context": "Learning objective: Hydrochlorothiazide is used alone or with other medications to treat high blood pressure.",
   "cite": "medlineplus-hctz#hctz-uses",
   "publicUsmle": {
     "schemaVersion": 1,

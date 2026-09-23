@@ -15,41 +15,41 @@
   "options": [
     {
       "label": "A",
-      "text": "NSAID; prostaglandin synthesis only",
+      "text": "Antiplatelet agent; platelet aggregation",
       "isCorrect": false,
-      "misconception": "Wrong concept for this stem; does not match the cited passage.",
-      "explanation": "This option does not match the cited source passage for the stem."
+      "misconception": "Confuses anticoagulants with antiplatelet drugs.",
+      "explanation": "Antiplatelet agents such as aspirin or clopidogrel block platelet aggregation; heparin acts on the coagulation cascade by potentiating antithrombin."
     },
     {
       "label": "B",
-      "text": "Biguanide; hepatic gluconeogenesis only",
+      "text": "Thrombolytic; stability of existing fibrin clots",
       "isCorrect": false,
-      "misconception": "Wrong concept for this stem; does not match the cited passage.",
-      "explanation": "This option does not match the cited source passage for the stem."
+      "misconception": "Believes heparin dissolves clots that have already formed.",
+      "explanation": "Thrombolytics such as alteplase convert plasminogen to plasmin to dissolve existing clots; heparin stops clots growing but does not lyse them."
     },
     {
       "label": "C",
-      "text": "Corticosteroid; leukocyte trafficking only",
+      "text": "Vitamin K antagonist; gamma-carboxylation of clotting factors",
       "isCorrect": false,
-      "misconception": "Wrong concept for this stem; does not match the cited passage.",
-      "explanation": "This option does not match the cited source passage for the stem."
+      "misconception": "Confuses heparin's mechanism with warfarin's.",
+      "explanation": "Warfarin, the vitamin K antagonist, blocks vitamin K epoxide reductase so nonfunctional factors II, VII, IX, X and proteins C and S are made; heparin potentiates antithrombin."
     },
     {
       "label": "D",
       "text": "Anticoagulant; clotting ability of the blood",
       "isCorrect": true,
-      "misconception": "None; heparin decreases clotting ability.",
-      "explanation": "MedlinePlus: anticoagulants (blood thinners); decreases clotting ability of the blood."
+      "misconception": "None — heparin is an anticoagulant that lowers the blood's clotting ability.",
+      "explanation": "The label classes heparin as an anticoagulant ('blood thinner') that works by decreasing the clotting ability of the blood."
     },
     {
       "label": "E",
-      "text": "Statin; HMG-CoA reductase activity only",
+      "text": "Plasma expander; viscosity of the blood",
       "isCorrect": false,
-      "misconception": "Wrong concept for this stem; does not match the cited passage.",
-      "explanation": "This option does not match the cited source passage for the stem."
+      "misconception": "Takes 'blood thinner' literally as lowering viscosity.",
+      "explanation": "Plasma expanders such as albumin add intravascular volume; 'blood thinner' is a figure of speech, and heparin does not lower blood viscosity."
     }
   ],
-  "context": "Learning objective: heparin anticoagulant action.",
+  "context": "Learning objective: Heparin is an anticoagulant ('blood thinner') that works by decreasing the clotting ability of the blood.",
   "cite": "medlineplus-heparin#heparin-anticoagulant",
   "publicUsmle": {
     "schemaVersion": 1,

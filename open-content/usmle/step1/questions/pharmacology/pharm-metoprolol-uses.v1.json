@@ -12,45 +12,45 @@
   ],
   "questionType": "mechanism",
   "difficulty": "easy",
-  "stem": "Metoprolol is used to treat which set of cardiac problems listed by MedlinePlus?",
+  "stem": "Metoprolol is used to treat which set of cardiovascular conditions?",
   "options": [
     {
       "label": "A",
-      "text": "Only lipid A detoxification baths",
+      "text": "Bradycardia, heart block, and hypotension",
       "isCorrect": false,
-      "misconception": "Micro — does not match the cited teaching point.",
-      "explanation": "This option does not match the cited source passage for the stem."
+      "misconception": "Reverses the effect: beta blockers cause, rather than treat, bradycardia and heart block.",
+      "explanation": "Beta blockade slows heart rate and AV conduction and lowers pressure, so bradycardia, heart block, and hypotension are contraindications, not uses."
     },
     {
       "label": "B",
-      "text": "Only measles airborne isolation rooms",
+      "text": "Infective endocarditis, Lyme carditis, and Kawasaki disease",
       "isCorrect": false,
-      "misconception": "Micro — does not match the cited teaching point.",
-      "explanation": "This option does not match the cited source passage for the stem."
+      "misconception": "Assumes a cardiac drug treats cardiac infection or inflammation.",
+      "explanation": "Endocarditis, Lyme carditis, and Kawasaki disease are infectious or inflammatory illnesses needing antibiotics or IVIG with aspirin, not metoprolol."
     },
     {
       "label": "C",
-      "text": "Only Hib meningitis percentage charts",
+      "text": "Atrial and ventricular septal defects and patent ductus arteriosus",
       "isCorrect": false,
-      "misconception": "Micro — does not match the cited teaching point.",
-      "explanation": "This option does not match the cited source passage for the stem."
+      "misconception": "Assumes a cardiac drug can correct structural congenital defects.",
+      "explanation": "Septal defects and a patent ductus are congenital structural lesions closed by device or surgery, or with indomethacin for a preterm ductus; metoprolol does not close them."
     },
     {
       "label": "D",
-      "text": "Only odds-ratio calculation worksheets",
+      "text": "Cardiac tamponade, pericardial effusion, and pericarditis",
       "isCorrect": false,
-      "misconception": "Epi — does not match the cited teaching point.",
-      "explanation": "This option does not match the cited source passage for the stem."
+      "misconception": "Misses that tamponade physiology depends on the tachycardia beta blockers suppress.",
+      "explanation": "Tamponade depends on compensatory tachycardia and needs drainage, so beta blockade could precipitate collapse; pericarditis is treated with NSAIDs and colchicine."
     },
     {
       "label": "E",
       "text": "Hypertension, angina, and heart failure",
       "isCorrect": true,
-      "misconception": "None — this option matches the cited source passage.",
-      "explanation": "MedlinePlus lists HTN, angina, heart failure."
+      "misconception": "None — metoprolol treats hypertension, angina, and heart failure.",
+      "explanation": "The label lists high blood pressure, angina (chest pain), and heart failure as the conditions metoprolol is used to treat."
     }
   ],
-  "context": "Learning objective: recall metoprolol, beta blocker from the cited FOSS source.",
+  "context": "Learning objective: Metoprolol is used to treat high blood pressure, angina (chest pain), and heart failure.",
   "cite": "medlineplus-metoprolol#metoprolol-uses",
   "publicUsmle": {
     "schemaVersion": 1,

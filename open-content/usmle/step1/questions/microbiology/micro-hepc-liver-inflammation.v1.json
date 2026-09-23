@@ -14,41 +14,41 @@
   "options": [
     {
       "label": "A",
-      "text": "Only prion disease infection without hepatitis virus naming",
+      "text": "Liver inflammation and damage caused by autoimmune attack on hepatocytes",
       "isCorrect": false,
-      "misconception": "Wrong concept for this stem; does not match the cited passage.",
-      "explanation": "This option does not match the cited source passage for the stem."
+      "misconception": "Confuses viral hepatitis with autoimmune hepatitis.",
+      "explanation": "Autoimmune hepatitis is inflammation from an immune attack on the body's own hepatocytes; hepatitis C is caused by a virus."
     },
     {
       "label": "B",
-      "text": "Only bacterial colitis infection without any hepatic viral roles",
+      "text": "Liver inflammation and damage caused by chronic heavy alcohol use",
       "isCorrect": false,
-      "misconception": "Wrong concept for this stem; does not match the cited passage.",
-      "explanation": "This option does not match the cited source passage for the stem."
+      "misconception": "Confuses viral hepatitis with alcoholic hepatitis.",
+      "explanation": "Alcoholic hepatitis results from heavy alcohol use; hepatitis C is an infection with a virus, not a toxic effect of ethanol."
     },
     {
       "label": "C",
-      "text": "Only fungal pneumonia infection without liver inflammation features",
+      "text": "Liver inflammation and damage caused by a toxic drug reaction",
       "isCorrect": false,
-      "misconception": "Wrong concept for this stem; does not match the cited passage.",
-      "explanation": "This option does not match the cited source passage for the stem."
+      "misconception": "Confuses viral hepatitis with drug-induced liver injury.",
+      "explanation": "Drug-induced hepatitis, such as from acetaminophen or isoniazid, is a toxic reaction; hepatitis C is a viral infection."
     },
     {
       "label": "D",
-      "text": "Viral infection that causes liver inflammation and damage",
+      "text": "Liver inflammation and damage caused by a viral infection",
       "isCorrect": true,
-      "misconception": "None — this option matches the cited source passage for the stem.",
-      "explanation": "This correct choice is supported by the cited FOSS passage."
+      "misconception": "None — hepatitis C is a viral infection causing liver inflammation and damage.",
+      "explanation": "NIDDK defines hepatitis C as a viral infection that causes liver inflammation and damage."
     },
     {
       "label": "E",
-      "text": "Only parasitic malaria infection without hepatic inflammation labels",
+      "text": "Liver inflammation and damage caused by reduced hepatic blood flow",
       "isCorrect": false,
-      "misconception": "Wrong concept for this stem; does not match the cited passage.",
-      "explanation": "This option does not match the cited source passage for the stem."
+      "misconception": "Confuses viral hepatitis with ischemic hepatitis (shock liver).",
+      "explanation": "Ischemic hepatitis follows reduced hepatic blood flow, as in shock or heart failure; hepatitis C is an infectious, viral process."
     }
   ],
-  "context": "Learning objective: recall hepatitis C liver inflammation from the cited FOSS source.",
+  "context": "Learning objective: Hepatitis C is a viral infection that causes liver inflammation and damage.",
   "cite": "niddk-hepatitis-c#hepc-definition",
   "publicUsmle": {
     "schemaVersion": 1,
@@ -65,20 +65,6 @@
         "cls": "foss",
         "id": "us-gov"
       }
-    },
-    "media": {
-      "kind": "asset",
-      "assetId": "micro-pathogen-virulence-v1",
-      "job": "compare-table",
-      "showWhen": "after-reveal",
-      "licence": {
-        "cls": "foss",
-        "id": "cc-by-4.0"
-      },
-      "attribution": "MD3 contributors",
-      "contentHash": "sha256:e0ca8dcce5538b15d4a9973d8a6934fc8199d41e7059a4d8f0059cc1ec78a22e"
     }
-  },
-  "imageUrl": "/figures/usmle/step1/micro-pathogen-virulence-v1.svg",
-  "imageCaption": "Pathogen/virulence and Pink Book organism map (FOSS draft)."
+  }
 }

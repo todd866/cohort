@@ -15,41 +15,41 @@
   "options": [
     {
       "label": "A",
-      "text": "Salicylate antiplatelet agents",
+      "text": "Angiotensin II type 1 receptor blockers",
       "isCorrect": false,
-      "misconception": "Aspirin class — does not match the cited teaching point.",
-      "explanation": "This option does not match the cited source passage for the stem."
+      "misconception": "Confuses ACE inhibitors (-pril) with angiotensin receptor blockers (-sartan).",
+      "explanation": "Angiotensin II receptor blockers such as losartan block the AT1 receptor; lisinopril instead blocks the formation of angiotensin II."
     },
     {
       "label": "B",
-      "text": "Alpha- and beta-adrenergic agonists only",
+      "text": "Beta-adrenergic receptor blockers",
       "isCorrect": false,
-      "misconception": "Epinephrine class — does not match the cited teaching point.",
-      "explanation": "This option does not match the cited source passage for the stem."
+      "misconception": "Groups every antihypertensive used in heart failure into the beta-blocker class.",
+      "explanation": "Beta blockers such as metoprolol block beta-adrenergic receptors; lisinopril acts on the renin-angiotensin system instead."
     },
     {
       "label": "C",
-      "text": "Penicillin-type antibiotics",
+      "text": "Thiazide diuretics",
       "isCorrect": false,
-      "misconception": "Amoxicillin class — does not match the cited teaching point.",
-      "explanation": "This option does not match the cited source passage for the stem."
+      "misconception": "Assumes first-line antihypertensives are all diuretics.",
+      "explanation": "Thiazide diuretics such as hydrochlorothiazide block the distal tubule Na-Cl cotransporter; lisinopril is not a diuretic."
     },
     {
       "label": "D",
-      "text": "HMG-CoA reductase inhibitors",
+      "text": "Direct renin inhibitors",
       "isCorrect": false,
-      "misconception": "Statins — does not match the cited teaching point.",
-      "explanation": "This option does not match the cited source passage for the stem."
+      "misconception": "Places the drug at the wrong step of the renin-angiotensin cascade.",
+      "explanation": "Direct renin inhibitors such as aliskiren block renin's conversion of angiotensinogen, one step upstream of where lisinopril acts."
     },
     {
       "label": "E",
-      "text": "Angiotensin-converting enzyme , ACE inhibitors",
+      "text": "Angiotensin-converting enzyme inhibitors",
       "isCorrect": true,
-      "misconception": "None; lisinopril is an ACE inhibitor.",
-      "explanation": "MedlinePlus: lisinopril is in the ACE inhibitor class."
+      "misconception": "None — lisinopril is an ACE inhibitor.",
+      "explanation": "The label states that lisinopril is an angiotensin-converting enzyme (ACE) inhibitor; drugs ending in '-pril' share this class."
     }
   ],
-  "context": "Learning objective: lisinopril ACE inhibitor.",
+  "context": "Learning objective: Lisinopril is in the angiotensin-converting enzyme (ACE) inhibitor class of medications.",
   "cite": "medlineplus-lisinopril#lisinopril-ace",
   "publicUsmle": {
     "schemaVersion": 1,

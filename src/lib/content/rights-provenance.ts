@@ -42,6 +42,17 @@ export interface ProvenanceInput {
    * files (`bones-joints`, `orbit`) and name their atlas only in the context.
    */
   context?: string | null;
+  /**
+   * Repo-relative path of the source file. A Card row stores only the basename,
+   * and an import directory (`content/cah/anki-imports-y3g/`) is often the only
+   * place the path says so. Supply it from `buildSourceScopeIndex`.
+   */
+  sourcePath?: string | null;
+  /**
+   * The source file's frontmatter `source:` value — where the author wrote down
+   * what the file was made from (`anki-cah`, `rch-neonatal-antimicrobial`).
+   */
+  frontmatterSource?: string | null;
 }
 
 /** stableId prefixes that are third-party decks by construction. */
@@ -88,6 +99,20 @@ export function classifyCardProvenance(input: ProvenanceInput): ProvenanceResult
     return { provenance: 'import', reason: `sourceFile matches import marker "${marker}"` };
   }
 
+  const frontmatterSource = (input.frontmatterSource ?? '').toLowerCase();
+  const fmMarker = frontmatterSource.startsWith('anki')
+    ? 'anki'
+    : IMPORT_SOURCE_MARKERS.find((m) => frontmatterSource.includes(m));
+  if (fmMarker) {
+    return { provenance: 'import', reason: `frontmatter source names import "${fmMarker}"` };
+  }
+
+  const sourcePath = (input.sourcePath ?? '').toLowerCase();
+  const pathMarker = IMPORT_SOURCE_MARKERS.find((m) => sourcePath.includes(m));
+  if (pathMarker) {
+    return { provenance: 'import', reason: `source path matches import marker "${pathMarker}"` };
+  }
+
   // Attribution often lives in the context rather than the path. Checked before
   // the rotation rule so the reason names the actual source.
   const context = (input.context ?? '').toLowerCase();
@@ -103,6 +128,48 @@ export function classifyCardProvenance(input: ProvenanceInput): ProvenanceResult
   // Everything else is UNREVIEWED, never authored. An ordinary authored-pipeline
   // card is a candidate for promotion, not a publishable item.
   return { provenance: 'unreviewed', reason: 'no import marker; awaiting evidenced promotion' };
+}
+
+export interface SourceScope {
+  sourcePath: string;
+  frontmatterSource: string | null;
+}
+
+function frontmatterValue(frontmatter: string, key: string): string | null {
+  const match = new RegExp(`^${key}:\\s*["']?([^"'\\n]+?)["']?\\s*$`, 'm').exec(frontmatter);
+  return match ? match[1].trim() : null;
+}
+
+/**
+ * Map each content MDX file to the `(rotation, basename)` scope its cards are
+ * seeded under — `${rotation}\t${basename}` — so a classifier handed a Card row
+ * can recover the path and frontmatter the row does not store.
+ *
+ * Rotation comes from frontmatter when set, otherwise the first directory under
+ * `content/`. Two files sharing a scope are indistinguishable to a Card row, so
+ * their paths and sources are JOINED: if either names an import, the card is
+ * treated as one. That is the fail-closed direction.
+ */
+export function buildSourceScopeIndex(
+  files: ReadonlyArray<{ path: string; text: string }>,
+): Map<string, SourceScope> {
+  const index = new Map<string, SourceScope>();
+  for (const { path, text } of files) {
+    if (!path.endsWith('.mdx')) continue;
+    const fm = text.startsWith('---') ? text.slice(3, Math.max(3, text.indexOf('\n---', 3))) : '';
+    const rotation = frontmatterValue(fm, 'rotation') ?? path.split('/')[1] ?? '';
+    const basename = path.slice(path.lastIndexOf('/') + 1, -'.mdx'.length);
+    const key = `${rotation}\t${basename}`;
+    const source = frontmatterValue(fm, 'source');
+    const prior = index.get(key);
+    index.set(key, prior
+      ? {
+          sourcePath: `${prior.sourcePath} | ${path}`,
+          frontmatterSource: [prior.frontmatterSource, source].filter(Boolean).join(' | ') || null,
+        }
+      : { sourcePath: path, frontmatterSource: source });
+  }
+  return index;
 }
 
 /** The only provenance permitted to leave the building. */

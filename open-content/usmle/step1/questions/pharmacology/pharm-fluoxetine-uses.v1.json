@@ -11,45 +11,45 @@
   ],
   "questionType": "mechanism",
   "difficulty": "easy",
-  "stem": "Fluoxetine is used to treat which mood condition among others listed by MedlinePlus?",
+  "stem": "Fluoxetine is used to treat depression and which other psychiatric condition?",
   "options": [
     {
       "label": "A",
-      "text": "Only congenital rubella without antidepressant roles",
+      "text": "Schizophrenia",
       "isCorrect": false,
-      "misconception": "Wrong concept for this stem; does not match the cited passage.",
-      "explanation": "This option does not match the cited source passage for the stem."
+      "misconception": "Assumes any psychotropic drug treats psychosis.",
+      "explanation": "Schizophrenia is treated with antipsychotics that block dopamine D2 receptors; fluoxetine does not treat psychosis."
     },
     {
       "label": "B",
-      "text": "Only diphtheria myocarditis without mood indications",
+      "text": "Acute mania",
       "isCorrect": false,
-      "misconception": "Wrong concept for this stem; does not match the cited passage.",
-      "explanation": "This option does not match the cited source passage for the stem."
+      "misconception": "Treats mania as the same target as depression.",
+      "explanation": "Acute mania is treated with lithium, valproate or antipsychotics; an antidepressant such as fluoxetine can precipitate or worsen mania."
     },
     {
       "label": "C",
-      "text": "Only mumps parotitis without any psychiatric labeling",
+      "text": "Attention-deficit/hyperactivity disorder",
       "isCorrect": false,
-      "misconception": "Wrong concept for this stem; does not match the cited passage.",
-      "explanation": "This option does not match the cited source passage for the stem."
+      "misconception": "Confuses serotonergic antidepressants with ADHD medications.",
+      "explanation": "ADHD is treated with stimulants such as methylphenidate or with atomoxetine; fluoxetine is not an ADHD treatment."
     },
     {
       "label": "D",
-      "text": "Depression among other labeled mood-disorder uses",
+      "text": "Obsessive-compulsive disorder",
       "isCorrect": true,
-      "misconception": "None — this option matches the cited source passage for the stem.",
-      "explanation": "This correct choice is supported by the cited FOSS passage."
+      "misconception": "None — OCD is a labeled fluoxetine use alongside depression.",
+      "explanation": "The label lists obsessive-compulsive disorder alongside depression, some eating disorders, and panic attacks as uses of fluoxetine."
     },
     {
       "label": "E",
-      "text": "Only mortality-rate worksheets without drug therapy",
+      "text": "Delirium",
       "isCorrect": false,
-      "misconception": "Wrong concept for this stem; does not match the cited passage.",
-      "explanation": "This option does not match the cited source passage for the stem."
+      "misconception": "Treats acute confusion from a medical cause as a mood disorder.",
+      "explanation": "Delirium is managed by finding and reversing its medical cause; fluoxetine does not treat it, and serotonergic excess can itself cause confusion."
     }
   ],
-  "context": "Learning objective: recall fluoxetine, SSRI from the cited FOSS source.",
+  "context": "Learning objective: Fluoxetine treats depression, obsessive-compulsive disorder, some eating disorders, and panic attacks.",
   "cite": "medlineplus-fluoxetine#fluoxetine-uses",
   "publicUsmle": {
     "schemaVersion": 1,
@@ -66,20 +66,6 @@
         "cls": "foss",
         "id": "us-gov"
       }
-    },
-    "media": {
-      "kind": "asset",
-      "assetId": "pharm-drug-classes-v1",
-      "job": "compare-table",
-      "showWhen": "after-reveal",
-      "licence": {
-        "cls": "foss",
-        "id": "cc-by-4.0"
-      },
-      "attribution": "MD3 contributors",
-      "contentHash": "sha256:0660ff11235451eff9a2718dd975d64fa61483b220682b17bd82c8050fd4bceb"
     }
-  },
-  "imageUrl": "/figures/usmle/step1/pharm-drug-classes-v1.svg",
-  "imageCaption": "High-yield FOSS drug-class map from MedlinePlus labels."
+  }
 }

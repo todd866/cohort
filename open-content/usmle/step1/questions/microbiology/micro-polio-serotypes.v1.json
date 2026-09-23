@@ -11,45 +11,45 @@
   ],
   "questionType": "mechanism",
   "difficulty": "easy",
-  "stem": "How many poliovirus serotypes are listed, and does immunity to one cover the others?",
+  "stem": "How many poliovirus serotypes are there, and does immunity to one protect against the others?",
   "options": [
     {
       "label": "A",
-      "text": "Zero serotypes because the agent is classified a prion",
+      "text": "One serotype; immunity to it protects against all strains",
       "isCorrect": false,
-      "misconception": "Wrong biology. (does not match the cited teaching point).",
-      "explanation": "This option does not match the cited source passage for the stem."
+      "misconception": "Assumes poliovirus, like measles virus, is antigenically uniform so one infection protects against all.",
+      "explanation": "Poliovirus is not a single serotype; CDC lists types 1, 2 and 3, so immunity to one strain cannot cover all polio."
     },
     {
       "label": "B",
-      "text": "One serotype that grants lifelong universal immunity cover",
+      "text": "Two serotypes; immunity to one protects against the other",
       "isCorrect": false,
-      "misconception": "Wrong count/cross. (does not match the cited teaching point).",
-      "explanation": "This option does not match the cited source passage for the stem."
+      "misconception": "Misremembers the serotype count and assumes cross-protection between them.",
+      "explanation": "Two is the wrong count; CDC lists three poliovirus serotypes, and immunity to one does not protect against the others."
     },
     {
       "label": "C",
-      "text": "Twelve capsule serotypes labeled only a through f",
+      "text": "Three serotypes; immunity to one protects against all three",
       "isCorrect": false,
-      "misconception": "Hib framing. (does not match the cited teaching point).",
-      "explanation": "This option does not match the cited source passage for the stem."
+      "misconception": "Knows the count but assumes antibodies to one serotype neutralize the other two.",
+      "explanation": "The count is right but the cross-protection is wrong: immunity to one poliovirus serotype gives no significant immunity to the others."
     },
     {
       "label": "D",
-      "text": "Exactly two measles genotypes recognized worldwide",
+      "text": "Four serotypes; immunity to one gives little cross-protection",
       "isCorrect": false,
-      "misconception": "Wrong virus. (does not match the cited teaching point).",
-      "explanation": "This option does not match the cited source passage for the stem."
+      "misconception": "Transfers the four-serotype pattern of dengue virus onto poliovirus.",
+      "explanation": "Dengue virus, not poliovirus, has four serotypes, and cross-protection between them is only short-lived; poliovirus has three serotypes."
     },
     {
       "label": "E",
-      "text": "Three serotypes with little meaningful cross-cover",
+      "text": "Three serotypes; immunity to one gives little cross-protection",
       "isCorrect": true,
-      "misconception": "None; 3 serotypes, limited cross-immunity.",
-      "explanation": "CDC: three serotypes; limited cross-immunity."
+      "misconception": "None — three serotypes with no significant cross-immunity.",
+      "explanation": "CDC lists three poliovirus serotypes (types 1, 2 and 3) and states that immunity to one does not produce significant immunity to the others."
     }
   ],
-  "context": "Learning objective: recall polio, serotypes from the cited FOSS source.",
+  "context": "Learning objective: Poliovirus has three serotypes (types 1, 2 and 3), and immunity to one gives no significant immunity to the others.",
   "cite": "cdc-pink-book-polio#polio-serotypes",
   "publicUsmle": {
     "schemaVersion": 1,
@@ -66,20 +66,6 @@
         "cls": "foss",
         "id": "us-gov"
       }
-    },
-    "media": {
-      "kind": "asset",
-      "assetId": "micro-pathogen-virulence-v1",
-      "job": "compare-table",
-      "showWhen": "after-reveal",
-      "licence": {
-        "cls": "foss",
-        "id": "cc-by-4.0"
-      },
-      "attribution": "MD3 contributors",
-      "contentHash": "sha256:e0ca8dcce5538b15d4a9973d8a6934fc8199d41e7059a4d8f0059cc1ec78a22e"
     }
-  },
-  "imageUrl": "/figures/usmle/step1/micro-pathogen-virulence-v1.svg",
-  "imageCaption": "Pathogen/virulence and Pink Book organism map (FOSS draft)."
+  }
 }

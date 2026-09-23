@@ -15,41 +15,41 @@
   "options": [
     {
       "label": "A",
-      "text": "Only tuberculosis regimens without psychiatric labeling",
+      "text": "Anxiety disorders",
       "isCorrect": false,
-      "misconception": "Wrong concept for this stem; does not match the cited passage.",
-      "explanation": "This option does not match the cited source passage for the stem."
+      "misconception": "Assumes an antipsychotic treats anxiety because it can calm agitation.",
+      "explanation": "Anxiety disorders are treated with SSRIs or SNRIs and psychotherapy; a D2-blocking antipsychotic such as haloperidol is not an anxiety treatment."
     },
     {
       "label": "B",
-      "text": "Psychotic disorders with disturbed thinking and related features",
+      "text": "Psychotic disorders",
       "isCorrect": true,
-      "misconception": "None — this option matches the cited source passage for the stem.",
-      "explanation": "This correct choice is supported by the cited FOSS passage."
+      "misconception": "None — haloperidol is an antipsychotic for psychotic disorders.",
+      "explanation": "The label says haloperidol manages psychotic disorders, which cause disturbed or unusual thinking, loss of interest in life, and strong or inappropriate emotions."
     },
     {
       "label": "C",
-      "text": "Only migraine abortive therapy without antipsychotic roles",
+      "text": "Eating disorders",
       "isCorrect": false,
-      "misconception": "Wrong concept for this stem; does not match the cited passage.",
-      "explanation": "This option does not match the cited source passage for the stem."
+      "misconception": "Groups eating disorders with psychosis because both involve distorted thinking.",
+      "explanation": "Eating disorders such as anorexia and bulimia are treated with nutritional rehabilitation, psychotherapy and sometimes fluoxetine, not haloperidol."
     },
     {
       "label": "D",
-      "text": "Only anemia correction without psychosis indications",
+      "text": "Dissociative disorders",
       "isCorrect": false,
-      "misconception": "Wrong concept for this stem; does not match the cited passage.",
-      "explanation": "This option does not match the cited source passage for the stem."
+      "misconception": "Confuses dissociation (detachment) with psychosis (loss of contact with reality).",
+      "explanation": "Dissociative disorders, such as dissociative identity disorder, are treated mainly with psychotherapy; haloperidol has no role."
     },
     {
       "label": "E",
-      "text": "Only asthma rescue therapy without haloperidol labeling",
+      "text": "Sleep-wake disorders",
       "isCorrect": false,
-      "misconception": "Wrong concept for this stem; does not match the cited passage.",
-      "explanation": "This option does not match the cited source passage for the stem."
+      "misconception": "Assumes any antipsychotic doubles as a sleep medication.",
+      "explanation": "Sleep-wake disorders such as insomnia or narcolepsy are treated with sleep hygiene, CBT, or specific hypnotics or stimulants, not haloperidol."
     }
   ],
-  "context": "Learning objective: recall haloperidol psychotic disorder use from the cited FOSS source.",
+  "context": "Learning objective: Haloperidol is used to manage psychotic disorders, marked by disturbed thinking and strong or inappropriate emotions.",
   "cite": "medlineplus-haloperidol#haloperidol-uses",
   "publicUsmle": {
     "schemaVersion": 1,
@@ -66,20 +66,6 @@
         "cls": "foss",
         "id": "us-gov"
       }
-    },
-    "media": {
-      "kind": "asset",
-      "assetId": "pharm-drug-classes-v1",
-      "job": "compare-table",
-      "showWhen": "after-reveal",
-      "licence": {
-        "cls": "foss",
-        "id": "cc-by-4.0"
-      },
-      "attribution": "MD3 contributors",
-      "contentHash": "sha256:0660ff11235451eff9a2718dd975d64fa61483b220682b17bd82c8050fd4bceb"
     }
-  },
-  "imageUrl": "/figures/usmle/step1/pharm-drug-classes-v1.svg",
-  "imageCaption": "High-yield FOSS drug-class map from MedlinePlus labels."
+  }
 }

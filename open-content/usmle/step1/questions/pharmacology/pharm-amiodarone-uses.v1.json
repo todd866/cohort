@@ -14,41 +14,41 @@
   "options": [
     {
       "label": "A",
-      "text": "Certain ventricular arrhythmias and unstable tachycardia",
+      "text": "Certain types of ventricular arrhythmias",
       "isCorrect": true,
-      "misconception": "None — this option matches the cited source passage for the stem.",
-      "explanation": "This correct choice is supported by the cited FOSS passage."
+      "misconception": "None — amiodarone treats and prevents certain types of ventricular arrhythmias.",
+      "explanation": "MedlinePlus lists amiodarone, an antiarrhythmic, to treat and prevent certain types of ventricular arrhythmias."
     },
     {
       "label": "B",
-      "text": "Only migraine abortive therapy without antiarrhythmic labeling",
+      "text": "Certain nonshockable arrest rhythms, such as asystole",
       "isCorrect": false,
-      "misconception": "Wrong concept for this stem; does not match the cited passage.",
-      "explanation": "This option does not match the cited source passage for the stem."
+      "misconception": "Assumes the arrest antiarrhythmic helps every cardiac arrest rhythm, including nonshockable ones.",
+      "explanation": "Asystole and PEA are nonshockable arrests managed with CPR and epinephrine; amiodarone is used in arrest only for VF or pulseless VT."
     },
     {
       "label": "C",
-      "text": "Only gout flares without cardiac rhythm indications",
+      "text": "Certain bradyarrhythmias, such as sick sinus syndrome",
       "isCorrect": false,
-      "misconception": "Wrong concept for this stem; does not match the cited passage.",
-      "explanation": "This option does not match the cited source passage for the stem."
+      "misconception": "Treats any rhythm disorder as an amiodarone indication, ignoring its rate-slowing effect.",
+      "explanation": "Sick sinus syndrome and symptomatic bradycardia need atropine or pacing; amiodarone slows the sinus rate and would worsen them."
     },
     {
       "label": "D",
-      "text": "Only BPH urinary symptoms without amiodarone roles",
+      "text": "Certain types of heart block, such as Mobitz II",
       "isCorrect": false,
-      "misconception": "Wrong concept for this stem; does not match the cited passage.",
-      "explanation": "This option does not match the cited source passage for the stem."
+      "misconception": "Forgets that amiodarone depresses AV nodal conduction, so it cannot treat heart block.",
+      "explanation": "High-grade AV block such as Mobitz II needs pacing; amiodarone slows AV nodal conduction and can precipitate or worsen block."
     },
     {
       "label": "E",
-      "text": "Only malaria prophylaxis without arrhythmia labeling",
+      "text": "Torsades de pointes from drug-induced long QT",
       "isCorrect": false,
-      "misconception": "Wrong concept for this stem; does not match the cited passage.",
-      "explanation": "This option does not match the cited source passage for the stem."
+      "misconception": "Forgets that amiodarone prolongs the QT interval, so it is not the treatment for torsades.",
+      "explanation": "Torsades is treated with IV magnesium and removal of QT-prolonging drugs; amiodarone itself prolongs the QT interval."
     }
   ],
-  "context": "Learning objective: recall amiodarone arrhythmia use from the cited FOSS source.",
+  "context": "Learning objective: Amiodarone is an antiarrhythmic used to treat and prevent certain types of ventricular arrhythmias.",
   "cite": "medlineplus-amiodarone#amiodarone-uses",
   "publicUsmle": {
     "schemaVersion": 1,
@@ -65,20 +65,6 @@
         "cls": "foss",
         "id": "us-gov"
       }
-    },
-    "media": {
-      "kind": "asset",
-      "assetId": "pharm-drug-classes-v1",
-      "job": "compare-table",
-      "showWhen": "after-reveal",
-      "licence": {
-        "cls": "foss",
-        "id": "cc-by-4.0"
-      },
-      "attribution": "MD3 contributors",
-      "contentHash": "sha256:0660ff11235451eff9a2718dd975d64fa61483b220682b17bd82c8050fd4bceb"
     }
-  },
-  "imageUrl": "/figures/usmle/step1/pharm-drug-classes-v1.svg",
-  "imageCaption": "High-yield FOSS drug-class map from MedlinePlus labels."
+  }
 }

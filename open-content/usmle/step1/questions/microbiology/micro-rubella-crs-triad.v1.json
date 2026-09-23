@@ -11,45 +11,45 @@
   ],
   "questionType": "mechanism",
   "difficulty": "easy",
-  "stem": "Congenital rubella syndrome features highlighted by CDC include deafness plus what?",
+  "stem": "Congenital rubella syndrome includes deafness together with which other features?",
   "options": [
     {
       "label": "A",
-      "text": "Only adult zoster dermatomes without congenital disease",
+      "text": "Neural tube defects and cleft palate",
       "isCorrect": false,
-      "misconception": "Wrong concept for this stem; does not match the cited passage.",
-      "explanation": "This option does not match the cited source passage for the stem."
+      "misconception": "Assumes every teratogen produces the same pattern of birth defects.",
+      "explanation": "Neural tube defects and cleft palate are linked to folate deficiency and teratogens such as valproate, not to congenital rubella."
     },
     {
       "label": "B",
-      "text": "Only whooping-cough catarrhal colds without birth defects",
+      "text": "Saddle nose and notched incisors",
       "isCorrect": false,
-      "misconception": "Wrong concept for this stem; does not match the cited passage.",
-      "explanation": "This option does not match the cited source passage for the stem."
+      "misconception": "Confuses congenital rubella with the late stigmata of congenital syphilis.",
+      "explanation": "Saddle nose and notched (Hutchinson) incisors are stigmata of congenital syphilis, not of congenital rubella syndrome."
     },
     {
       "label": "C",
-      "text": "Only polysaccharide capsule serotypes without fetal injury",
+      "text": "Limb hypoplasia and cicatricial skin scars",
       "isCorrect": false,
-      "misconception": "Wrong concept for this stem; does not match the cited passage.",
-      "explanation": "This option does not match the cited source passage for the stem."
+      "misconception": "Confuses congenital rubella with congenital varicella syndrome.",
+      "explanation": "Limb hypoplasia and cicatricial skin scarring are the hallmarks of congenital varicella syndrome after maternal chickenpox."
     },
     {
       "label": "D",
-      "text": "Only lipid A endotoxin assays without clinical defects",
+      "text": "Macroglossia and umbilical hernia",
       "isCorrect": false,
-      "misconception": "Wrong concept for this stem; does not match the cited passage.",
-      "explanation": "This option does not match the cited source passage for the stem."
+      "misconception": "Mistakes features of congenital hypothyroidism for those of a congenital infection.",
+      "explanation": "Macroglossia and umbilical hernia suggest congenital hypothyroidism, a non-infectious cause of neonatal findings."
     },
     {
       "label": "E",
-      "text": "Eye abnormalities and congenital heart disease findings",
+      "text": "Cataracts and heart defects",
       "isCorrect": true,
-      "misconception": "None — this option matches the cited source passage for the stem.",
-      "explanation": "This correct choice is supported by the cited FOSS passage."
+      "misconception": "None — CRS combines deafness, eye defects such as cataracts, and heart defects.",
+      "explanation": "CDC lists deafness, eye abnormalities (cataracts, glaucoma, retinopathy, microphthalmia) and congenital heart disease among CRS birth defects."
     }
   ],
-  "context": "Learning objective: recall rubella, CRS from the cited FOSS source.",
+  "context": "Learning objective: Congenital rubella syndrome includes deafness, eye abnormalities (cataracts, glaucoma, retinopathy, microphthalmia) and congenital heart disease.",
   "cite": "cdc-pink-book-rubella#rubella-crs-features",
   "publicUsmle": {
     "schemaVersion": 1,
@@ -66,20 +66,6 @@
         "cls": "foss",
         "id": "us-gov"
       }
-    },
-    "media": {
-      "kind": "asset",
-      "assetId": "micro-pathogen-virulence-v1",
-      "job": "compare-table",
-      "showWhen": "after-reveal",
-      "licence": {
-        "cls": "foss",
-        "id": "cc-by-4.0"
-      },
-      "attribution": "MD3 contributors",
-      "contentHash": "sha256:e0ca8dcce5538b15d4a9973d8a6934fc8199d41e7059a4d8f0059cc1ec78a22e"
     }
-  },
-  "imageUrl": "/figures/usmle/step1/micro-pathogen-virulence-v1.svg",
-  "imageCaption": "Pathogen/virulence and Pink Book organism map (FOSS draft)."
+  }
 }

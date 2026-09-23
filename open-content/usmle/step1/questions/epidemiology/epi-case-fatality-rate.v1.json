@@ -10,45 +10,45 @@
   ],
   "questionType": "mechanism",
   "difficulty": "easy",
-  "stem": "Case-fatality rate measures which relationship among people with a condition?",
+  "stem": "A health department reports the case-fatality rate for an infectious disease. Which of the following does this measure express?",
   "options": [
     {
       "label": "A",
-      "text": "Only risk ratios comparing exposed versus unexposed groups",
+      "text": "Deaths from the disease per total population at risk",
       "isCorrect": false,
-      "misconception": "Wrong concept for this stem; does not match the cited passage.",
-      "explanation": "This option does not match the cited source passage for the stem."
+      "misconception": "Uses the whole population as denominator, which gives the cause-specific mortality rate.",
+      "explanation": "Deaths from a disease divided by the whole population at risk is the cause-specific mortality rate; its denominator is the population, not the cases."
     },
     {
       "label": "B",
-      "text": "Only new cases arising in a whole population over time",
+      "text": "New cases of the disease per population over a period",
       "isCorrect": false,
-      "misconception": "Wrong concept for this stem; does not match the cited passage.",
-      "explanation": "This option does not match the cited source passage for the stem."
+      "misconception": "Confuses deaths among cases with incidence of new cases.",
+      "explanation": "New cases per population over a period is incidence, which counts disease occurrence rather than deaths among cases."
     },
     {
       "label": "C",
-      "text": "Only persons who currently have a condition at one time",
+      "text": "Proportion of the population that has the disease now",
       "isCorrect": false,
-      "misconception": "Wrong concept for this stem; does not match the cited passage.",
-      "explanation": "This option does not match the cited source passage for the stem."
+      "misconception": "Confuses a measure of fatality with prevalence of existing disease.",
+      "explanation": "The share of a population that currently has a disease is prevalence, which says nothing about how many cases die."
     },
     {
       "label": "D",
-      "text": "Proportion of cases who die from that same condition",
+      "text": "Proportion of people with the disease who die of it",
       "isCorrect": true,
-      "misconception": "None — this option matches the cited source passage for the stem.",
-      "explanation": "This correct choice is supported by the cited FOSS passage."
+      "misconception": "None — case-fatality divides deaths from the condition by the number of cases.",
+      "explanation": "CDC defines the case-fatality rate as the proportion of persons with a particular condition (cases) who die from that condition."
     },
     {
       "label": "E",
-      "text": "Only odds ratios from a two-by-two exposure table alone",
+      "text": "Deaths from all causes per total population per year",
       "isCorrect": false,
-      "misconception": "Wrong concept for this stem; does not match the cited passage.",
-      "explanation": "This option does not match the cited source passage for the stem."
+      "misconception": "Confuses case-fatality with the crude (all-cause) mortality rate.",
+      "explanation": "Deaths from all causes per total population per year is the crude mortality rate, which uses the whole population as its denominator."
     }
   ],
-  "context": "Learning objective: recall case-fatality from the cited FOSS source.",
+  "context": "Learning objective: The case-fatality rate is the proportion of persons with a condition who die from that condition.",
   "cite": "cdc-epi-mortality-measures#case-fatality-rate",
   "publicUsmle": {
     "schemaVersion": 1,
@@ -65,20 +65,6 @@
         "cls": "foss",
         "id": "us-gov"
       }
-    },
-    "media": {
-      "kind": "asset",
-      "assetId": "epi-morbidity-measures-v1",
-      "job": "compare-table",
-      "showWhen": "after-reveal",
-      "licence": {
-        "cls": "foss",
-        "id": "cc-by-4.0"
-      },
-      "attribution": "MD3 contributors",
-      "contentHash": "sha256:3fc6d23afe6a78c9503d068754c2fb966c0973d978c71410c1db2c58d455430f"
     }
-  },
-  "imageUrl": "/figures/usmle/step1/epi-morbidity-measures-v1.svg",
-  "imageCaption": "CDC morbidity and mortality frequency measures."
+  }
 }

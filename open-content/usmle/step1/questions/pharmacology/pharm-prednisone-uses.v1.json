@@ -15,41 +15,41 @@
   "options": [
     {
       "label": "A",
-      "text": "Only albuterol nebulizer device cleaning protocols",
+      "text": "Primary hypothyroidism",
       "isCorrect": false,
-      "misconception": "Device distractor — does not match the cited teaching point.",
-      "explanation": "Wrong indication; see the cited source passage for detail."
+      "misconception": "Assumes one steroid replaces any deficient hormone, thyroid hormone included.",
+      "explanation": "Primary hypothyroidism is treated with levothyroxine replacement; a glucocorticoid does not restore thyroid hormone."
     },
     {
       "label": "B",
-      "text": "Only pneumococcal capsule typing kit calibration",
+      "text": "Postsurgical hypoparathyroidism",
       "isCorrect": false,
-      "misconception": "Micro distractor — does not match the cited teaching point.",
-      "explanation": "Wrong indication; see the cited source passage for detail."
+      "misconception": "Confuses adrenal steroid replacement with replacement in the calcium axis.",
+      "explanation": "Postsurgical hypoparathyroidism causes hypocalcemia and is treated with calcium and calcitriol, not a glucocorticoid."
     },
     {
       "label": "C",
-      "text": "Only relative-risk spreadsheet cell calculations",
+      "text": "Central diabetes insipidus",
       "isCorrect": false,
-      "misconception": "Epi distractor — does not match the cited teaching point.",
-      "explanation": "Wrong indication; see the cited source passage for detail."
+      "misconception": "Confuses the adrenal cortex with the posterior pituitary as the deficient gland.",
+      "explanation": "Central diabetes insipidus reflects too little antidiuretic hormone and is treated with desmopressin; prednisone does not replace ADH."
     },
     {
       "label": "D",
-      "text": "Only digoxin loading-dose arithmetic worksheets",
+      "text": "Growth hormone deficiency",
       "isCorrect": false,
-      "misconception": "Cardio distractor — does not match the cited teaching point.",
-      "explanation": "Wrong indication; see the cited source passage for detail."
+      "misconception": "Assumes a glucocorticoid can stand in for anterior pituitary growth hormone.",
+      "explanation": "Growth hormone deficiency is treated with recombinant somatropin; glucocorticoids actually slow growth in children."
     },
     {
       "label": "E",
-      "text": "Low corticosteroid levels needing hormone replacement",
+      "text": "Adrenal insufficiency",
       "isCorrect": true,
-      "misconception": "None; replacement and anti-inflammatory uses.",
-      "explanation": "MedlinePlus: treat symptoms of low corticosteroid levels."
+      "misconception": "None — prednisone supplies glucocorticoid when corticosteroid levels are low.",
+      "explanation": "Prednisone treats symptoms of low corticosteroid levels, as in adrenal insufficiency; it supplies glucocorticoid only, so primary disease may also need fludrocortisone."
     }
   ],
-  "context": "Learning objective: prednisone corticosteroid uses.",
+  "context": "Learning objective: Prednisone treats symptoms of low corticosteroid levels, as in adrenal insufficiency, by supplying glucocorticoid.",
   "cite": "medlineplus-prednisone#prednisone-uses",
   "publicUsmle": {
     "schemaVersion": 1,

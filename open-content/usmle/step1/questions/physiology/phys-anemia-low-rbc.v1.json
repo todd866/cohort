@@ -10,45 +10,45 @@
   ],
   "questionType": "mechanism",
   "difficulty": "easy",
-  "stem": "Anemia develops when blood produces which change in red cells?",
+  "stem": "Anemia is best defined as which change in red blood cells?",
   "options": [
     {
       "label": "A",
-      "text": "Only excess plasma water without red-cell count change",
+      "text": "Red blood cells carrying carbon monoxide-bound hemoglobin",
       "isCorrect": false,
-      "misconception": "Wrong concept for this stem; does not match the cited passage.",
-      "explanation": "This option does not match the cited source passage for the stem."
+      "misconception": "Mistakes blocked oxygen binding in normal red cells for too few red cells.",
+      "explanation": "Carbon monoxide binds hemoglobin in normal numbers of red cells and blocks oxygen carriage; oxygen delivery falls, but red cell amount does not."
     },
     {
       "label": "B",
-      "text": "Only excess white cells without any red-cell deficit",
+      "text": "Red blood cells with high-oxygen-affinity hemoglobin",
       "isCorrect": false,
-      "misconception": "Wrong concept for this stem; does not match the cited passage.",
-      "explanation": "This option does not match the cited source passage for the stem."
+      "misconception": "Equates poor oxygen unloading with too few healthy red cells.",
+      "explanation": "High-affinity hemoglobin variants hold oxygen too tightly, and the resulting erythropoietin drive raises red cell numbers; this is erythrocytosis, not anemia."
     },
     {
       "label": "C",
-      "text": "Only excess platelets without red-cell production change",
+      "text": "Red blood cells with a raised methemoglobin fraction",
       "isCorrect": false,
-      "misconception": "Wrong concept for this stem; does not match the cited passage.",
-      "explanation": "This option does not match the cited source passage for the stem."
+      "misconception": "Equates dysfunctional hemoglobin with a low red cell amount.",
+      "explanation": "Methemoglobin carries oxidized heme iron that cannot bind oxygen; red cell numbers can be normal, so oxygen delivery falls but this is not anemia."
     },
     {
       "label": "D",
       "text": "A lower-than-normal amount of healthy red blood cells",
       "isCorrect": true,
-      "misconception": "None — this option matches the cited source passage for the stem.",
-      "explanation": "This correct choice is supported by the cited FOSS passage."
+      "misconception": "None — anemia is too few healthy red blood cells.",
+      "explanation": "Anemia is a lower-than-normal amount of healthy red blood cells, so the body gets too little oxygen-rich blood; low production, destruction or blood loss can cause it."
     },
     {
       "label": "E",
-      "text": "Only excess clotting factors without anemia definitions",
+      "text": "A higher-than-normal hematocrit from plasma volume loss",
       "isCorrect": false,
-      "misconception": "Wrong concept for this stem; does not match the cited passage.",
-      "explanation": "This option does not match the cited source passage for the stem."
+      "misconception": "Confuses a concentration change from lost plasma with a change in red cell production.",
+      "explanation": "Plasma volume loss concentrates a normal red cell mass, a relative polycythemia; red cell amount is unchanged, so this is not anemia."
     }
   ],
-  "context": "Learning objective: recall anemia low red blood cells from the cited FOSS source.",
+  "context": "Learning objective: Anemia is a lower-than-normal amount of healthy red blood cells, so the body gets too little oxygen-rich blood.",
   "cite": "nhlbi-anemia#anemia-definition",
   "publicUsmle": {
     "schemaVersion": 1,
@@ -80,5 +80,5 @@
     }
   },
   "imageUrl": "/figures/usmle/step1/blood-components-v1.svg",
-  "imageCaption": "Blood/oxygen delivery map for anemia teaching (FOSS draft)."
+  "imageCaption": "Blood/oxygen delivery map for anemia teaching."
 }

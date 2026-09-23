@@ -15,41 +15,41 @@
   "options": [
     {
       "label": "A",
-      "text": "Only mosquito-borne inoculation after an insect bite",
+      "text": "Mosquito bite or tick bite",
       "isCorrect": false,
-      "misconception": "Vector. (does not match the cited teaching point).",
-      "explanation": "This option does not match the cited source passage for the stem."
+      "misconception": "Assumes a paralytic neurologic virus must be arthropod-borne like the encephalitis arboviruses.",
+      "explanation": "Arthropod-borne spread fits arboviruses such as West Nile virus; poliovirus has a human reservoir and is not transmitted by insects or ticks."
     },
     {
       "label": "B",
-      "text": "Only airborne measles-style lingering in closed rooms",
+      "text": "Blood transfusion or needle sharing",
       "isCorrect": false,
-      "misconception": "Measles route. (does not match the cited teaching point).",
-      "explanation": "This option does not match the cited source passage for the stem."
+      "misconception": "Assumes a virus that reaches the CNS through viremia must be acquired by blood exposure.",
+      "explanation": "Bloodborne routes fit hepatitis B, hepatitis C and HIV; poliovirus spreads from the gut and throat, not through blood exposure."
     },
     {
       "label": "C",
-      "text": "Fecal-oral or oral-oral person-to-person spread",
+      "text": "Fecal-oral or oral-oral spread",
       "isCorrect": true,
-      "misconception": "None; fecal-oral/oral-oral.",
-      "explanation": "CDC: fecal-oral or oral-oral."
+      "misconception": "None — poliovirus spreads by the fecal-oral or oral-oral route.",
+      "explanation": "CDC lists poliovirus transmission as fecal-oral or oral-oral, with humans as the reservoir."
     },
     {
       "label": "D",
-      "text": "Only percutaneous injection of environmental spores",
+      "text": "Sexual contact or vertical transmission",
       "isCorrect": false,
-      "misconception": "Anthrax-ish. (does not match the cited teaching point).",
-      "explanation": "This option does not match the cited source passage for the stem."
+      "misconception": "Confuses poliovirus with viruses transmitted sexually or from mother to infant.",
+      "explanation": "Sexual and mother-to-child routes characterize infections such as HIV, syphilis and HSV; they are not how poliovirus spreads."
     },
     {
       "label": "E",
-      "text": "Only blood-product transfusion as the sole pathway",
+      "text": "Animal bites or scratches",
       "isCorrect": false,
-      "misconception": "Blood-borne. (does not match the cited teaching point).",
-      "explanation": "This option does not match the cited source passage for the stem."
+      "misconception": "Confuses polio with rabies because both are neurotropic viruses that can cause paralysis.",
+      "explanation": "Animal bites and scratches transmit rabies and Bartonella; poliovirus has a human reservoir with no animal source."
     }
   ],
-  "context": "Learning objective: recall polio, transmission from the cited FOSS source.",
+  "context": "Learning objective: Poliovirus has a human reservoir and spreads by the fecal-oral or oral-oral route.",
   "cite": "cdc-pink-book-polio#polio-fecal-oral",
   "publicUsmle": {
     "schemaVersion": 1,
@@ -66,20 +66,6 @@
         "cls": "foss",
         "id": "us-gov"
       }
-    },
-    "media": {
-      "kind": "asset",
-      "assetId": "micro-pathogen-virulence-v1",
-      "job": "compare-table",
-      "showWhen": "after-reveal",
-      "licence": {
-        "cls": "foss",
-        "id": "cc-by-4.0"
-      },
-      "attribution": "MD3 contributors",
-      "contentHash": "sha256:e0ca8dcce5538b15d4a9973d8a6934fc8199d41e7059a4d8f0059cc1ec78a22e"
     }
-  },
-  "imageUrl": "/figures/usmle/step1/micro-pathogen-virulence-v1.svg",
-  "imageCaption": "Pathogen/virulence and Pink Book organism map (FOSS draft)."
+  }
 }

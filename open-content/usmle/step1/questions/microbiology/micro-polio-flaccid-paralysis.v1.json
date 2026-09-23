@@ -11,45 +11,45 @@
   ],
   "questionType": "mechanism",
   "difficulty": "easy",
-  "stem": "Major poliomyelitis illness is associated with which motor finding?",
+  "stem": "Paralytic poliomyelitis, which follows fewer than 1% of childhood poliovirus infections, produces which motor finding?",
   "options": [
     {
       "label": "A",
-      "text": "Only acute epiglottitis from invasive Hib infection",
+      "text": "Spastic paralysis",
       "isCorrect": false,
-      "misconception": "Hib. (does not match the cited teaching point).",
-      "explanation": "This option does not match the cited source passage for the stem."
+      "misconception": "Treats all paralysis as alike, missing that upper motor neuron lesions cause spasticity.",
+      "explanation": "Spastic paralysis reflects upper motor neuron damage, as in stroke or spinal cord injury; poliovirus destroys lower motor neurons."
     },
     {
       "label": "B",
-      "text": "Only Koplik spots on oral mucous membranes in measles",
+      "text": "Cogwheel rigidity",
       "isCorrect": false,
-      "misconception": "Measles. (does not match the cited teaching point).",
-      "explanation": "This option does not match the cited source passage for the stem."
+      "misconception": "Confuses a basal ganglia sign with the lower motor neuron weakness of paralytic polio.",
+      "explanation": "Cogwheel rigidity is an extrapyramidal sign of parkinsonism from basal ganglia dysfunction, not a result of polio."
     },
     {
       "label": "C",
-      "text": "Only whooping-cough paroxysms during pertussis illness",
+      "text": "Intention tremor",
       "isCorrect": false,
-      "misconception": "Pertussis. (does not match the cited teaching point).",
-      "explanation": "This option does not match the cited source passage for the stem."
+      "misconception": "Confuses a cerebellar sign with the weakness of anterior horn cell disease.",
+      "explanation": "Intention tremor points to cerebellar disease; poliovirus causes weakness, not a tremor on reaching."
     },
     {
       "label": "D",
-      "text": "Flaccid paralysis of affected skeletal muscle groups",
+      "text": "Flaccid paralysis",
       "isCorrect": true,
-      "misconception": "None; flaccid paralysis.",
-      "explanation": "CDC describes flaccid paralysis in major illness."
+      "misconception": "None — paralytic polio causes flaccid paralysis, though in under 1% of childhood infections.",
+      "explanation": "CDC notes that fewer than 1% of polio infections in children result in flaccid paralysis, the motor outcome of paralytic polio."
     },
     {
       "label": "E",
-      "text": "Only anogenital warts from low-risk HPV type infection",
+      "text": "Choreiform movements",
       "isCorrect": false,
-      "misconception": "HPV. (does not match the cited teaching point).",
-      "explanation": "This option does not match the cited source passage for the stem."
+      "misconception": "Confuses a hyperkinetic movement disorder with the weakness caused by a neurotropic virus.",
+      "explanation": "Choreiform movements arise from basal ganglia disorders such as Huntington disease or Sydenham chorea, not from polio."
     }
   ],
-  "context": "Learning objective: recall polio, paralysis from the cited FOSS source.",
+  "context": "Learning objective: Paralytic polio causes flaccid paralysis, which follows fewer than 1% of poliovirus infections in children.",
   "cite": "cdc-pink-book-polio#polio-flaccid",
   "publicUsmle": {
     "schemaVersion": 1,
@@ -66,20 +66,6 @@
         "cls": "foss",
         "id": "us-gov"
       }
-    },
-    "media": {
-      "kind": "asset",
-      "assetId": "micro-pathogen-virulence-v1",
-      "job": "compare-table",
-      "showWhen": "after-reveal",
-      "licence": {
-        "cls": "foss",
-        "id": "cc-by-4.0"
-      },
-      "attribution": "MD3 contributors",
-      "contentHash": "sha256:e0ca8dcce5538b15d4a9973d8a6934fc8199d41e7059a4d8f0059cc1ec78a22e"
     }
-  },
-  "imageUrl": "/figures/usmle/step1/micro-pathogen-virulence-v1.svg",
-  "imageCaption": "Pathogen/virulence and Pink Book organism map (FOSS draft)."
+  }
 }

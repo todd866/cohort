@@ -14,41 +14,41 @@
   "options": [
     {
       "label": "A",
-      "text": "Only cervical cancer driven by high-risk HPV 16/18",
+      "text": "Acute bronchiolitis",
       "isCorrect": false,
-      "misconception": "HPV. (does not match the cited teaching point).",
-      "explanation": "This option does not match the cited source passage for the stem."
+      "misconception": "Confuses the leading infant respiratory virus with the leading infant diarrheal virus.",
+      "explanation": "Acute bronchiolitis in infants is most often caused by respiratory syncytial virus, a respiratory pathogen, not rotavirus."
     },
     {
       "label": "B",
-      "text": "Only flaccid paralysis caused by wild poliovirus strains",
+      "text": "Hemolytic uremic syndrome",
       "isCorrect": false,
-      "misconception": "Polio. (does not match the cited teaching point).",
-      "explanation": "This option does not match the cited source passage for the stem."
+      "misconception": "Links any severe pediatric diarrhea to HUS, which classically follows Shiga toxin-producing E. coli.",
+      "explanation": "Hemolytic uremic syndrome in children most often follows Shiga toxin-producing E. coli O157:H7 diarrhea, not rotavirus infection."
     },
     {
       "label": "C",
-      "text": "Severe gastroenteritis among infants and young children",
+      "text": "Severe gastroenteritis",
       "isCorrect": true,
-      "misconception": "None — this option matches the cited source passage.",
-      "explanation": "CDC: most common cause of severe gastroenteritis in infants/children."
+      "misconception": "None — rotavirus was the leading cause of severe pediatric gastroenteritis.",
+      "explanation": "CDC calls rotavirus the most common prevaccine-era cause of severe gastroenteritis in infants and children, with nearly universal infection by age 5."
     },
     {
       "label": "D",
-      "text": "Only whooping-cough catarrhal colds in early pertussis",
+      "text": "Aseptic meningitis",
       "isCorrect": false,
-      "misconception": "Pertussis. (does not match the cited teaching point).",
-      "explanation": "This option does not match the cited source passage for the stem."
+      "misconception": "Confuses rotavirus with the enteroviruses, which are acquired through the gut but cause aseptic meningitis.",
+      "explanation": "Aseptic meningitis in children is most often caused by non-polio enteroviruses; rotavirus is an enteric diarrheal pathogen."
     },
     {
       "label": "E",
-      "text": "Only meningitis percentages attributed to invasive Hib",
+      "text": "Viral croup",
       "isCorrect": false,
-      "misconception": "Hib. (does not match the cited teaching point).",
-      "explanation": "This option does not match the cited source passage for the stem."
+      "misconception": "Confuses rotavirus with parainfluenza virus, another common cold-season virus of young children.",
+      "explanation": "Croup is most often caused by parainfluenza virus and produces a barking cough and stridor, not diarrheal illness."
     }
   ],
-  "context": "Learning objective: recall rotavirus from the cited FOSS source.",
+  "context": "Learning objective: Before vaccination, rotavirus was the most common cause of severe gastroenteritis in infants and children, infecting nearly all by age 5.",
   "cite": "cdc-pink-book-rotavirus#rota-severe-ge",
   "publicUsmle": {
     "schemaVersion": 1,
@@ -65,20 +65,6 @@
         "cls": "foss",
         "id": "us-gov"
       }
-    },
-    "media": {
-      "kind": "asset",
-      "assetId": "micro-pathogen-virulence-v1",
-      "job": "compare-table",
-      "showWhen": "after-reveal",
-      "licence": {
-        "cls": "foss",
-        "id": "cc-by-4.0"
-      },
-      "attribution": "MD3 contributors",
-      "contentHash": "sha256:e0ca8dcce5538b15d4a9973d8a6934fc8199d41e7059a4d8f0059cc1ec78a22e"
     }
-  },
-  "imageUrl": "/figures/usmle/step1/micro-pathogen-virulence-v1.svg",
-  "imageCaption": "Pathogen/virulence and Pink Book organism map (FOSS draft)."
+  }
 }

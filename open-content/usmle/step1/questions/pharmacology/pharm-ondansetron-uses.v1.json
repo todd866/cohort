@@ -11,45 +11,45 @@
   ],
   "questionType": "mechanism",
   "difficulty": "easy",
-  "stem": "Ondansetron is used to prevent nausea and vomiting caused by which treatment settings?",
+  "stem": "Ondansetron is given to patients receiving cancer chemotherapy to prevent which problem?",
   "options": [
     {
       "label": "A",
-      "text": "Only measles Koplik-spot prophylaxis",
+      "text": "Febrile neutropenia",
       "isCorrect": false,
-      "misconception": "Micro — does not match the cited teaching point.",
-      "explanation": "This option does not match the cited source passage for the stem."
+      "misconception": "Confuses antiemetic prophylaxis with myeloid growth-factor support after chemotherapy.",
+      "explanation": "Febrile neutropenia follows myelosuppressive chemotherapy and is prevented with granulocyte colony-stimulating factors such as filgrastim, not an antiemetic."
     },
     {
       "label": "B",
-      "text": "Cancer chemotherapy, radiation therapy, and surgery",
+      "text": "Nausea and vomiting",
       "isCorrect": true,
-      "misconception": "None; chemo/radiation/surgery antiemetic.",
-      "explanation": "MedlinePlus: chemo, radiation, surgery."
+      "misconception": "None — ondansetron is an antiemetic for these settings.",
+      "explanation": "Ondansetron is used to prevent the nausea and vomiting caused by cancer chemotherapy, radiation therapy, and surgery."
     },
     {
       "label": "C",
-      "text": "Only secondary stroke prevention with clopidogrel",
+      "text": "Tumor lysis syndrome",
       "isCorrect": false,
-      "misconception": "Wrong drug — does not match the cited teaching point.",
-      "explanation": "This option does not match the cited source passage for the stem."
+      "misconception": "Confuses antiemetic prophylaxis with metabolic prophylaxis for rapid tumor cell breakdown.",
+      "explanation": "Tumor lysis syndrome releases potassium, phosphate and uric acid as tumor cells die; it is prevented with hydration plus allopurinol or rasburicase."
     },
     {
       "label": "D",
-      "text": "Only Hib capsule typing kits",
+      "text": "Hemorrhagic cystitis",
       "isCorrect": false,
-      "misconception": "Micro — does not match the cited teaching point.",
-      "explanation": "This option does not match the cited source passage for the stem."
+      "misconception": "Confuses antiemetic prophylaxis with mesna's protection of the bladder.",
+      "explanation": "Hemorrhagic cystitis from cyclophosphamide or ifosfamide is prevented with mesna and hydration; an antiemetic does not protect the bladder."
     },
     {
       "label": "E",
-      "text": "Only risk-ratio algebra drills",
+      "text": "Anthracycline cardiomyopathy",
       "isCorrect": false,
-      "misconception": "Epi — does not match the cited teaching point.",
-      "explanation": "This option does not match the cited source passage for the stem."
+      "misconception": "Confuses antiemetic prophylaxis with dexrazoxane's protection of the heart.",
+      "explanation": "Anthracycline cardiomyopathy is dose-related heart muscle injury from drugs such as doxorubicin, limited by capping the cumulative dose and giving dexrazoxane, not an antiemetic."
     }
   ],
-  "context": "Learning objective: recall ondansetron, antiemetic from the cited FOSS source.",
+  "context": "Learning objective: Ondansetron is used to prevent nausea and vomiting caused by cancer chemotherapy, radiation therapy, and surgery.",
   "cite": "medlineplus-ondansetron#ondansetron-uses",
   "publicUsmle": {
     "schemaVersion": 1,
@@ -66,20 +66,6 @@
         "cls": "foss",
         "id": "us-gov"
       }
-    },
-    "media": {
-      "kind": "asset",
-      "assetId": "pharm-drug-classes-v1",
-      "job": "compare-table",
-      "showWhen": "after-reveal",
-      "licence": {
-        "cls": "foss",
-        "id": "cc-by-4.0"
-      },
-      "attribution": "MD3 contributors",
-      "contentHash": "sha256:0660ff11235451eff9a2718dd975d64fa61483b220682b17bd82c8050fd4bceb"
     }
-  },
-  "imageUrl": "/figures/usmle/step1/pharm-drug-classes-v1.svg",
-  "imageCaption": "High-yield FOSS drug-class map from MedlinePlus labels."
+  }
 }

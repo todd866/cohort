@@ -10,45 +10,45 @@
   ],
   "questionType": "mechanism",
   "difficulty": "easy",
-  "stem": "Mumps virus is classified in which viral family/group in CDC materials?",
+  "stem": "Mumps virus belongs to which viral group?",
   "options": [
     {
       "label": "A",
-      "text": "Only a DNA herpesvirus identical to varicella-zoster virus",
+      "text": "Herpesvirus, grouped with varicella-zoster and herpes simplex viruses",
       "isCorrect": false,
-      "misconception": "Wrong concept for this stem; does not match the cited passage.",
-      "explanation": "This option does not match the cited source passage for the stem."
+      "misconception": "Links mumps with varicella-zoster virus because both are components of the MMRV vaccine.",
+      "explanation": "Herpesviruses such as varicella-zoster and herpes simplex are enveloped DNA viruses; mumps virus is an RNA paramyxovirus."
     },
     {
       "label": "B",
-      "text": "Paramyxovirus in the same broad group as related RNA viruses",
+      "text": "Paramyxovirus, grouped with parainfluenza and Newcastle disease viruses",
       "isCorrect": true,
-      "misconception": "None — this option matches the cited source passage for the stem.",
-      "explanation": "This correct choice is supported by the cited FOSS passage."
+      "misconception": "None — mumps is a paramyxovirus related to parainfluenza virus.",
+      "explanation": "CDC classifies mumps virus as a paramyxovirus in the same group as parainfluenza and Newcastle disease viruses, whose antibodies cross-react with mumps."
     },
     {
       "label": "C",
-      "text": "Only a picornavirus identical to poliovirus serotype panels",
+      "text": "Picornavirus, grouped with poliovirus and coxsackieviruses",
       "isCorrect": false,
-      "misconception": "Wrong concept for this stem; does not match the cited passage.",
-      "explanation": "This option does not match the cited source passage for the stem."
+      "misconception": "Groups mumps with the enteroviruses because both can cause aseptic meningitis.",
+      "explanation": "Picornaviruses such as poliovirus and coxsackievirus are small nonenveloped RNA viruses; mumps virus is an enveloped paramyxovirus."
     },
     {
       "label": "D",
-      "text": "Only a hepadnavirus identical to hepatitis B virus strains",
+      "text": "Orthomyxovirus, grouped with influenza A and B viruses",
       "isCorrect": false,
-      "misconception": "Wrong concept for this stem; does not match the cited passage.",
-      "explanation": "This option does not match the cited source passage for the stem."
+      "misconception": "Confuses orthomyxovirus (influenza) with paramyxovirus because the family names sound alike.",
+      "explanation": "Orthomyxoviruses are the influenza viruses, with segmented genomes; the similar name does not make mumps virus one of them."
     },
     {
       "label": "E",
-      "text": "Only a papillomavirus identical to high-risk HPV genotypes",
+      "text": "Hepadnavirus, grouped with hepatitis B virus",
       "isCorrect": false,
-      "misconception": "Wrong concept for this stem; does not match the cited passage.",
-      "explanation": "This option does not match the cited source passage for the stem."
+      "misconception": "Associates mumps with hepatitis B because both are viral infections covered by routine vaccines.",
+      "explanation": "Hepadnaviruses such as hepatitis B virus are partially double-stranded DNA viruses that infect the liver, unlike mumps virus."
     }
   ],
-  "context": "Learning objective: recall mumps from the cited FOSS source.",
+  "context": "Learning objective: Mumps virus is a paramyxovirus, grouped with parainfluenza and Newcastle disease viruses, whose antibodies cross-react with mumps.",
   "cite": "cdc-pink-book-mumps#mumps-paramyxovirus",
   "publicUsmle": {
     "schemaVersion": 1,
@@ -65,20 +65,6 @@
         "cls": "foss",
         "id": "us-gov"
       }
-    },
-    "media": {
-      "kind": "asset",
-      "assetId": "micro-pathogen-virulence-v1",
-      "job": "compare-table",
-      "showWhen": "after-reveal",
-      "licence": {
-        "cls": "foss",
-        "id": "cc-by-4.0"
-      },
-      "attribution": "MD3 contributors",
-      "contentHash": "sha256:e0ca8dcce5538b15d4a9973d8a6934fc8199d41e7059a4d8f0059cc1ec78a22e"
     }
-  },
-  "imageUrl": "/figures/usmle/step1/micro-pathogen-virulence-v1.svg",
-  "imageCaption": "Pathogen/virulence and Pink Book organism map (FOSS draft)."
+  }
 }

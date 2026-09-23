@@ -10,45 +10,45 @@
   ],
   "questionType": "mechanism",
   "difficulty": "easy",
-  "stem": "In operant conditioning, what does a pleasant consequence tend to do?",
+  "stem": "A boy is praised and given a sticker each time he tidies his room, and over the next weeks he tidies it more often. Which process accounts for the increase?",
   "options": [
     {
       "label": "A",
-      "text": "Convert NADH to NAD+ in skeletal muscle",
+      "text": "Positive punishment",
       "isCorrect": false,
-      "misconception": "Biochem — does not match the cited teaching point.",
-      "explanation": "This option does not match the cited source passage for the stem."
+      "misconception": "Confuses reinforcement, which strengthens behavior, with punishment.",
+      "explanation": "Positive punishment adds an unpleasant consequence to make a behavior less likely; the boy's tidying became more frequent, not less."
     },
     {
       "label": "B",
-      "text": "Raise the chance the act is repeated",
+      "text": "Positive reinforcement",
       "isCorrect": true,
-      "misconception": "None; pleasant consequences reinforce the act.",
-      "explanation": "OpenStax: a pleasant consequence makes behavior more likely to be repeated."
+      "misconception": "None — an added pleasant consequence reinforces the behavior.",
+      "explanation": "A pleasant consequence makes the behavior it follows more likely to be repeated; adding praise and a sticker after tidying is positive reinforcement."
     },
     {
       "label": "C",
-      "text": "Create homologous chromosome pairs in meiosis",
+      "text": "Negative reinforcement",
       "isCorrect": false,
-      "misconception": "Genetics — does not match the cited teaching point.",
-      "explanation": "This option does not match the cited source passage for the stem."
+      "misconception": "Reads \"negative\" as unpleasant rather than as removal of a stimulus.",
+      "explanation": "Negative reinforcement strengthens a behavior by removing something unpleasant; here something pleasant was added after tidying."
     },
     {
       "label": "D",
-      "text": "Inhibit hexokinase at its active site",
+      "text": "Negative punishment",
       "isCorrect": false,
-      "misconception": "Biochem — does not match the cited teaching point.",
-      "explanation": "This option does not match the cited source passage for the stem."
+      "misconception": "Confuses taking away a privilege with giving a reward.",
+      "explanation": "Negative punishment removes something pleasant to make a behavior less likely; nothing was taken away, and tidying increased."
     },
     {
       "label": "E",
-      "text": "Erase hippocampal declarative engrams at once",
+      "text": "Operant extinction",
       "isCorrect": false,
-      "misconception": "Unrelated mechanism — does not match the cited teaching point.",
-      "explanation": "This option does not match the cited source passage for the stem."
+      "misconception": "Confuses a continued reward with its withdrawal.",
+      "explanation": "Extinction is the fading of a behavior once its reinforcement stops; here the reward continued and the behavior grew."
     }
   ],
-  "context": "Learning objective: pleasant consequences increase behavior likelihood.",
+  "context": "Learning objective: In operant conditioning, a pleasant consequence makes a behavior more likely to be repeated in the future.",
   "cite": "openstax-psychology-2e#operant-consequence",
   "publicUsmle": {
     "schemaVersion": 1,

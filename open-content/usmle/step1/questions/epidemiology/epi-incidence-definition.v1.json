@@ -16,39 +16,39 @@
       "label": "A",
       "text": "New cases in a population over a defined period",
       "isCorrect": true,
-      "misconception": "None; incidence = new cases over time.",
-      "explanation": "CDC: incidence is new cases over a specified period."
+      "misconception": "None — incidence counts only new cases arising during a specified period.",
+      "explanation": "Incidence refers to the occurrence of new cases of disease or injury in a population over a specified period of time."
     },
     {
       "label": "B",
-      "text": "Only lipid A toxicity from gram-negative LPS endotoxin",
+      "text": "All existing cases in a population at one point in time",
       "isCorrect": false,
-      "misconception": "Micro. (does not match the cited teaching point).",
-      "explanation": "This option does not match the cited source passage for the stem."
+      "misconception": "Confuses incidence (new cases) with prevalence (all existing cases).",
+      "explanation": "Existing cases at one point in time define point prevalence, which counts long-standing and new cases alike rather than only new ones."
     },
     {
       "label": "C",
-      "text": "Only Koplik spots counted on illness day three exams",
+      "text": "Deaths in a population over a defined period",
       "isCorrect": false,
-      "misconception": "Measles. (does not match the cited teaching point).",
-      "explanation": "This option does not match the cited source passage for the stem."
+      "misconception": "Confuses the occurrence of new disease with the occurrence of death.",
+      "explanation": "Deaths in a population over a defined period give the mortality rate, which measures dying rather than developing disease."
     },
     {
       "label": "D",
-      "text": "Only capsule blockade of phagocyte ingestion events",
+      "text": "Deaths from the disease among all people who have it",
       "isCorrect": false,
-      "misconception": "Micro. (does not match the cited teaching point).",
-      "explanation": "This option does not match the cited source passage for the stem."
+      "misconception": "Confuses incidence with case-fatality, which uses cases as its denominator.",
+      "explanation": "Deaths from a disease among all people who have it is the case-fatality rate, a measure of disease severity."
     },
     {
       "label": "E",
-      "text": "Only benzodiazepine receptor binding in cortex tissue",
+      "text": "Risk among exposed people relative to risk among unexposed people",
       "isCorrect": false,
-      "misconception": "Pharm. (does not match the cited teaching point).",
-      "explanation": "This option does not match the cited source passage for the stem."
+      "misconception": "Confuses a measure of disease frequency with a measure of association.",
+      "explanation": "Risk in exposed relative to unexposed people is the risk ratio, a measure of association rather than of disease occurrence."
     }
   ],
-  "context": "Learning objective: recall incidence from the cited FOSS source.",
+  "context": "Learning objective: Incidence is the occurrence of new cases of disease or injury in a population over a specified period of time.",
   "cite": "cdc-epi-incidence-prevalence#incidence-definition",
   "publicUsmle": {
     "schemaVersion": 1,

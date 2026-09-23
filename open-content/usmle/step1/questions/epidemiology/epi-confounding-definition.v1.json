@@ -11,45 +11,45 @@
   ],
   "questionType": "mechanism",
   "difficulty": "easy",
-  "stem": "In OpenStax Introductory Statistics, confounding means which problem for inference?",
+  "stem": "Confounding describes which problem when interpreting a study?",
   "options": [
     {
       "label": "A",
-      "text": "Only case-fatality calculation without multi-factor confusion",
+      "text": "Systematic error in how participants are selected for the study",
       "isCorrect": false,
-      "misconception": "Wrong concept for this stem; does not match the cited passage.",
-      "explanation": "This option does not match the cited source passage for the stem."
+      "misconception": "Confuses confounding with selection bias from how participants are chosen.",
+      "explanation": "Selection bias is systematic error from how participants are chosen or retained, not a mixing of the effects of several factors."
     },
     {
       "label": "B",
-      "text": "Only perfect randomization that removes every exposure difference",
+      "text": "Random sampling variation between a sample estimate and the truth",
       "isCorrect": false,
-      "misconception": "Wrong concept for this stem; does not match the cited passage.",
-      "explanation": "This option does not match the cited source passage for the stem."
+      "misconception": "Confuses a systematic mixing of effects with random sampling error.",
+      "explanation": "Random sampling error is chance variation that shrinks with larger samples; confounding is a mixing of effects that sample size does not fix."
     },
     {
       "label": "C",
-      "text": "Only laboratory assay error without any factor overlap",
+      "text": "Systematic error in measuring the exposure or the outcome",
       "isCorrect": false,
-      "misconception": "Wrong concept for this stem; does not match the cited passage.",
-      "explanation": "This option does not match the cited source passage for the stem."
+      "misconception": "Confuses confounding with measurement (information) bias.",
+      "explanation": "Information bias comes from inaccurate measurement of exposure or outcome, not from factors whose effects are intertwined."
     },
     {
       "label": "D",
-      "text": "Only vaccine cold-chain failure without analytic factor mixing",
+      "text": "Limited generalizability of findings beyond the study population",
       "isCorrect": false,
-      "misconception": "Wrong concept for this stem; does not match the cited passage.",
-      "explanation": "This option does not match the cited source passage for the stem."
+      "misconception": "Confuses an internal-validity problem with limited generalizability.",
+      "explanation": "Limited generalizability is a threat to external validity; confounding threatens internal validity by entangling the effects of different factors."
     },
     {
       "label": "E",
-      "text": "Effects of multiple factors on a response cannot be separated",
+      "text": "Inability to separate the effects of multiple factors on a response",
       "isCorrect": true,
-      "misconception": "None — this option matches the cited source passage for the stem.",
-      "explanation": "This correct choice is supported by the cited FOSS passage."
+      "misconception": "None — confounding means the separate effects of factors cannot be distinguished.",
+      "explanation": "Confounding occurs when the effects of multiple factors on a response cannot be separated, making valid conclusions about each factor difficult or impossible."
     }
   ],
-  "context": "Learning objective: recall confounding definition from the cited FOSS source.",
+  "context": "Learning objective: Confounding means the effects of multiple factors on a response cannot be separated, blocking valid conclusions about each factor.",
   "cite": "openstax-introductory-statistics#confounding-definition",
   "publicUsmle": {
     "schemaVersion": 1,
@@ -66,20 +66,6 @@
         "cls": "foss",
         "id": "cc-by-4.0"
       }
-    },
-    "media": {
-      "kind": "asset",
-      "assetId": "epi-morbidity-measures-v1",
-      "job": "compare-table",
-      "showWhen": "after-reveal",
-      "licence": {
-        "cls": "foss",
-        "id": "cc-by-4.0"
-      },
-      "attribution": "MD3 contributors",
-      "contentHash": "sha256:3fc6d23afe6a78c9503d068754c2fb966c0973d978c71410c1db2c58d455430f"
     }
-  },
-  "imageUrl": "/figures/usmle/step1/epi-morbidity-measures-v1.svg",
-  "imageCaption": "Epi measure map including confounding (FOSS draft)."
+  }
 }

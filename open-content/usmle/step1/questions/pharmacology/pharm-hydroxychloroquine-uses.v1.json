@@ -14,41 +14,41 @@
   "options": [
     {
       "label": "A",
-      "text": "Malaria in adults and children above a weight threshold",
+      "text": "Malaria",
       "isCorrect": true,
-      "misconception": "None — this option matches the cited source passage for the stem.",
-      "explanation": "This correct choice is supported by the cited FOSS passage."
+      "misconception": "None — hydroxychloroquine is an antimalarial used for prevention and treatment.",
+      "explanation": "The label says hydroxychloroquine prevents and treats acute attacks of malaria in adults and in children weighing more than 31 kg (68 lb)."
     },
     {
       "label": "B",
-      "text": "Only BPH without antimalarial labeling in the source text",
+      "text": "Toxoplasmosis",
       "isCorrect": false,
-      "misconception": "Wrong concept for this stem; does not match the cited passage.",
-      "explanation": "This option does not match the cited source passage for the stem."
+      "misconception": "Assumes an antimalarial covers every protozoal infection.",
+      "explanation": "Toxoplasmosis, from Toxoplasma gondii, is treated with pyrimethamine plus sulfadiazine and leucovorin; hydroxychloroquine is not used."
     },
     {
       "label": "C",
-      "text": "Only heart failure without malaria indications listed here",
+      "text": "Leishmaniasis",
       "isCorrect": false,
-      "misconception": "Wrong concept for this stem; does not match the cited passage.",
-      "explanation": "This option does not match the cited source passage for the stem."
+      "misconception": "Confuses one insect-borne protozoal infection with another.",
+      "explanation": "Leishmaniasis, spread by sandflies, is treated with amphotericin B, antimonials or miltefosine; hydroxychloroquine has no role."
     },
     {
       "label": "D",
-      "text": "Only seizure clusters without hydroxychloroquine roles",
+      "text": "Giardiasis",
       "isCorrect": false,
-      "misconception": "Wrong concept for this stem; does not match the cited passage.",
-      "explanation": "This option does not match the cited source passage for the stem."
+      "misconception": "Treats all protozoa as responsive to quinoline antimalarials.",
+      "explanation": "Giardiasis, an intestinal protozoal infection from contaminated water, is treated with metronidazole or tinidazole, not hydroxychloroquine."
     },
     {
       "label": "E",
-      "text": "Only erectile dysfunction without malaria labeling present",
+      "text": "Trypanosomiasis",
       "isCorrect": false,
-      "misconception": "Wrong concept for this stem; does not match the cited passage.",
-      "explanation": "This option does not match the cited source passage for the stem."
+      "misconception": "Groups trypanosomes with Plasmodium because both are blood-borne protozoa.",
+      "explanation": "Trypanosomiasis, African sleeping sickness or American Chagas disease, is treated with drugs such as fexinidazole, benznidazole or nifurtimox, not hydroxychloroquine."
     }
   ],
-  "context": "Learning objective: recall hydroxychloroquine malaria use from the cited FOSS source.",
+  "context": "Learning objective: Hydroxychloroquine prevents and treats acute malaria attacks in adults and in children weighing more than 31 kg.",
   "cite": "medlineplus-hydroxychloroquine#hydroxychloroquine-uses",
   "publicUsmle": {
     "schemaVersion": 1,
@@ -65,20 +65,6 @@
         "cls": "foss",
         "id": "us-gov"
       }
-    },
-    "media": {
-      "kind": "asset",
-      "assetId": "pharm-drug-classes-v1",
-      "job": "compare-table",
-      "showWhen": "after-reveal",
-      "licence": {
-        "cls": "foss",
-        "id": "cc-by-4.0"
-      },
-      "attribution": "MD3 contributors",
-      "contentHash": "sha256:0660ff11235451eff9a2718dd975d64fa61483b220682b17bd82c8050fd4bceb"
     }
-  },
-  "imageUrl": "/figures/usmle/step1/pharm-drug-classes-v1.svg",
-  "imageCaption": "High-yield FOSS drug-class map from MedlinePlus labels."
+  }
 }

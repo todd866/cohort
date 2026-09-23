@@ -11,45 +11,45 @@
   ],
   "questionType": "mechanism",
   "difficulty": "easy",
-  "stem": "Amoxicillin is used to treat which pathogen class?",
+  "stem": "Amoxicillin is used to treat which of the following pairs of infections?",
   "options": [
     {
       "label": "A",
-      "text": "Certain infections caused by bacteria",
+      "text": "Bacterial pneumonia and urinary tract infections",
       "isCorrect": true,
-      "misconception": "None; antibacterial uses.",
-      "explanation": "MedlinePlus: treat certain bacterial infections."
+      "misconception": "None — amoxicillin treats certain bacterial infections, including pneumonia and urinary tract infections.",
+      "explanation": "MedlinePlus lists amoxicillin for certain infections caused by bacteria, such as pneumonia, skin infections and urinary tract infections."
     },
     {
       "label": "B",
-      "text": "Only viral measles prodrome syndromes",
+      "text": "Mycoplasma and Legionella pneumonias",
       "isCorrect": false,
-      "misconception": "Antivirals/supportive care, not amox.",
-      "explanation": "Wrong pathogen class."
+      "misconception": "Assumes a drug that treats typical bacterial pneumonia also covers atypical organisms.",
+      "explanation": "Mycoplasma lacks a cell wall and Legionella lives inside cells, so atypical pneumonia needs a macrolide, doxycycline or fluoroquinolone, not amoxicillin."
     },
     {
       "label": "C",
-      "text": "Only fungal thrush from Candida overgrowth",
+      "text": "Influenza and respiratory syncytial virus infections",
       "isCorrect": false,
-      "misconception": "Antifungal domain — does not match the cited teaching point.",
-      "explanation": "Wrong pathogen class."
+      "misconception": "Believes antibiotics help viral respiratory infections, a common driver of inappropriate prescribing.",
+      "explanation": "Influenza and RSV are viruses with no peptidoglycan, so amoxicillin has no effect on them; influenza is treated with antivirals such as oseltamivir."
     },
     {
       "label": "D",
-      "text": "Only prion disease of cortex tissue",
+      "text": "Giardiasis and malaria",
       "isCorrect": false,
-      "misconception": "Wrong domain — does not match the cited teaching point.",
-      "explanation": "Not antibacterial indication."
+      "misconception": "Assumes a penicillin like amoxicillin acts on protozoa, which lack the peptidoglycan it targets.",
+      "explanation": "Giardia and Plasmodium are protozoa, which lack peptidoglycan, so a penicillin such as amoxicillin has no activity against them."
     },
     {
       "label": "E",
-      "text": "Only essential hypertension without edema",
+      "text": "MRSA bacteremia and MRSA skin abscesses",
       "isCorrect": false,
-      "misconception": "Cardio distractor — does not match the cited teaching point.",
-      "explanation": "Wrong indication; see the cited source passage for detail."
+      "misconception": "Assumes any staphylococcal infection responds to a penicillin, overlooking methicillin resistance.",
+      "explanation": "MRSA carries an altered penicillin-binding protein (PBP2a) that resists beta-lactams such as amoxicillin; vancomycin or another anti-MRSA drug is needed."
     }
   ],
-  "context": "Learning objective: amoxicillin antibacterial use.",
+  "context": "Learning objective: Amoxicillin treats certain bacterial infections, such as pneumonia, skin infections and urinary tract infections.",
   "cite": "medlineplus-amoxicillin#amoxicillin-uses",
   "publicUsmle": {
     "schemaVersion": 1,

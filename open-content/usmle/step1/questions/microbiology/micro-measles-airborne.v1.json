@@ -11,45 +11,45 @@
   ],
   "questionType": "mechanism",
   "difficulty": "easy",
-  "stem": "Measles virus transmission includes which airspace property after an infectious person leaves a room?",
+  "stem": "A patient with measles is seen in an office examination room and then leaves. For up to how long can airborne virus in that closed room still transmit infection?",
   "options": [
     {
       "label": "A",
-      "text": "Only fecal-oral spread in swimming pools",
+      "text": "5 minutes",
       "isCorrect": false,
-      "misconception": "Enteric distractor — does not match the cited teaching point.",
-      "explanation": "Wrong route; see the cited source passage for detail."
+      "misconception": "Assumes measles spreads only by large droplets that fall out of the air quickly.",
+      "explanation": "Measles droplet nuclei are small enough to stay suspended far longer than a few minutes, so a short wait does not make the room safe."
     },
     {
       "label": "B",
-      "text": "Only fomite spread on stainless steel for weeks",
+      "text": "30 minutes",
       "isCorrect": false,
-      "misconception": "Not the cited measles route.",
-      "explanation": "CDC emphasizes droplets and airborne nuclei."
+      "misconception": "Underestimates how long small aerosolized droplet nuclei stay suspended in still room air.",
+      "explanation": "Thirty minutes underestimates the risk; CDC describes aerosolized measles droplet nuclei remaining infectious in closed areas for up to 2 hours."
     },
     {
       "label": "C",
-      "text": "Airborne persistence for up to 2 hours indoors",
+      "text": "2 hours",
       "isCorrect": true,
-      "misconception": "None; aerosol can linger ~2h.",
-      "explanation": "CDC: airborne in closed areas up to 2 hours."
+      "misconception": "None — measles aerosols can stay infectious in a closed room for up to 2 hours.",
+      "explanation": "CDC states measles spreads by aerosolized droplet nuclei that remain infectious in closed areas for up to 2 hours after the patient has left."
     },
     {
       "label": "D",
-      "text": "Only vector bite from Anopheles mosquitoes",
+      "text": "24 hours",
       "isCorrect": false,
-      "misconception": "Malaria distractor — does not match the cited teaching point.",
-      "explanation": "Wrong route; see the cited source passage for detail."
+      "misconception": "Overestimates airborne persistence, as if the room stayed contaminated until the next day.",
+      "explanation": "A full day overstates airborne persistence; CDC gives up to 2 hours in a closed area such as an examination room."
     },
     {
       "label": "E",
-      "text": "Only iatrogenic spread via blood transfusion",
+      "text": "7 days",
       "isCorrect": false,
-      "misconception": "Blood-borne distractor.",
-      "explanation": "Wrong route; see the cited source passage for detail."
+      "misconception": "Confuses airborne persistence with the long surface survival of hardier environmental pathogens.",
+      "explanation": "Measles virus does not stay airborne for days; CDC puts the airborne risk in a closed area at up to 2 hours."
     }
   ],
-  "context": "Learning objective: measles airborne persistence in closed spaces.",
+  "context": "Learning objective: Measles spreads by aerosolized droplet nuclei that can remain infectious in a closed room for up to 2 hours after the patient leaves.",
   "cite": "cdc-pink-book-measles#measles-airborne",
   "publicUsmle": {
     "schemaVersion": 1,

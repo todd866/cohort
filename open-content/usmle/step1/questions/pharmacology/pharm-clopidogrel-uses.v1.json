@@ -15,41 +15,41 @@
   "options": [
     {
       "label": "A",
-      "text": "Only pertussis catarrhal colds",
+      "text": "Recurrent deep vein thromboses or pulmonary emboli",
       "isCorrect": false,
-      "misconception": "Micro distractor — does not match the cited teaching point.",
-      "explanation": "This option does not match the cited source passage for the stem."
+      "misconception": "Conflates arterial antiplatelet prevention with venous thromboembolism prophylaxis, which needs anticoagulants.",
+      "explanation": "Deep vein thrombosis and pulmonary embolism are venous clots prevented with anticoagulants such as heparin or warfarin; clopidogrel is not used for them."
     },
     {
       "label": "B",
-      "text": "Only varicella latency reactivation",
+      "text": "Recurrent aortic dissections or aneurysm ruptures",
       "isCorrect": false,
-      "misconception": "Micro distractor — does not match the cited teaching point.",
-      "explanation": "This option does not match the cited source passage for the stem."
+      "misconception": "Assumes an antiplatelet drug can prevent structural failure of the aortic wall.",
+      "explanation": "Aortic dissection and aneurysm rupture are failures of the vessel wall driven by pressure and wall weakness; blocking platelet aggregation does not prevent them."
     },
     {
       "label": "C",
-      "text": "Repeat heart attacks or strokes",
+      "text": "Recurrent myocardial infarctions or ischemic strokes",
       "isCorrect": true,
-      "misconception": "None; secondary prevention.",
-      "explanation": "MedlinePlus: prevent repeat heart attacks or strokes."
+      "misconception": "None — clopidogrel is secondary prevention after MI, stroke, severe chest pain or PAD.",
+      "explanation": "The label says clopidogrel prevents repeat heart attacks or strokes in people who have had a stroke, heart attack, severe chest pain or peripheral arterial disease."
     },
     {
       "label": "D",
-      "text": "Only Hib capsule serotyping labs",
+      "text": "Recurrent cerebral venous sinus thromboses",
       "isCorrect": false,
-      "misconception": "Micro distractor — does not match the cited teaching point.",
-      "explanation": "This option does not match the cited source passage for the stem."
+      "misconception": "Confuses arterial ischemic stroke with venous sinus thrombosis, which needs anticoagulation.",
+      "explanation": "Cerebral venous sinus thrombosis is a venous clot treated with anticoagulation, heparin then warfarin or a DOAC; clopidogrel is not used."
     },
     {
       "label": "E",
-      "text": "Only relative-risk spreadsheet cells",
+      "text": "Recurrent portal or mesenteric vein thromboses",
       "isCorrect": false,
-      "misconception": "Epi distractor — does not match the cited teaching point.",
-      "explanation": "This option does not match the cited source passage for the stem."
+      "misconception": "Assumes antiplatelet therapy prevents clots in low-flow venous beds.",
+      "explanation": "Portal and mesenteric vein thromboses are venous clots managed with anticoagulants such as heparin or warfarin; an antiplatelet such as clopidogrel does not prevent them."
     }
   ],
-  "context": "Learning objective: recall clopidogrel, antiplatelet from the cited FOSS source.",
+  "context": "Learning objective: Clopidogrel prevents repeat heart attacks or strokes after a prior stroke, heart attack, severe chest pain or peripheral arterial disease.",
   "cite": "medlineplus-clopidogrel#clopidogrel-uses",
   "publicUsmle": {
     "schemaVersion": 1,

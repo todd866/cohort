@@ -11,45 +11,45 @@
   ],
   "questionType": "mechanism",
   "difficulty": "easy",
-  "stem": "Propranolol is used among other MedlinePlus uses to treat which cardiovascular problem?",
+  "stem": "Propranolol is used to treat which cardiovascular problem?",
   "options": [
     {
       "label": "A",
-      "text": "High blood pressure among other cardiac uses",
+      "text": "High blood pressure",
       "isCorrect": true,
-      "misconception": "None; hypertension is a listed use.",
-      "explanation": "MedlinePlus lists high blood pressure among uses."
+      "misconception": "None — high blood pressure is a listed propranolol use.",
+      "explanation": "High blood pressure heads propranolol's listed uses, alongside irregular heartbeats, angina, migraine and improving survival after a heart attack."
     },
     {
       "label": "B",
-      "text": "Only measles airborne isolation room procedures",
+      "text": "Symptomatic sinus bradycardia",
       "isCorrect": false,
-      "misconception": "Micro distractor — does not match the cited teaching point.",
-      "explanation": "Wrong indication; see the cited source passage for detail."
+      "misconception": "Assumes a heart-rate drug helps every rhythm problem, including slow rates.",
+      "explanation": "Beta blockade slows the sinus node further, so propranolol worsens symptomatic bradycardia; atropine or pacing is used instead."
     },
     {
       "label": "C",
-      "text": "Only polysaccharide capsule typing laboratory work",
+      "text": "Third-degree heart block",
       "isCorrect": false,
-      "misconception": "Micro distractor — does not match the cited teaching point.",
-      "explanation": "Wrong indication; see the cited source passage for detail."
+      "misconception": "Groups conduction block with the arrhythmias that beta blockers treat.",
+      "explanation": "Propranolol slows AV nodal conduction, so it is contraindicated in third-degree heart block, which needs pacing."
     },
     {
       "label": "D",
-      "text": "Only odds-ratio spreadsheet formula calculations",
+      "text": "Cardiogenic shock",
       "isCorrect": false,
-      "misconception": "Epi distractor — does not match the cited teaching point.",
-      "explanation": "Wrong indication; see the cited source passage for detail."
+      "misconception": "Treats every pump problem as a beta-blocker use, ignoring negative inotropy.",
+      "explanation": "Cardiogenic shock needs inotropic support; a beta blocker lowers contractility and would deepen the shock."
     },
     {
       "label": "E",
-      "text": "Only lipid A heat-inactivation laboratory protocols",
+      "text": "Orthostatic hypotension",
       "isCorrect": false,
-      "misconception": "Micro distractor — does not match the cited teaching point.",
-      "explanation": "Wrong indication; see the cited source passage for detail."
+      "misconception": "Confuses treating high blood pressure with treating low pressure on standing.",
+      "explanation": "Orthostatic hypotension is treated with volume, fludrocortisone or midodrine; lowering blood pressure with propranolol worsens it."
     }
   ],
-  "context": "Learning objective: propranolol for hypertension (among uses).",
+  "context": "Learning objective: Propranolol treats high blood pressure, among uses that include irregular heartbeats, angina, migraine and survival after heart attack.",
   "cite": "medlineplus-propranolol#propranolol-uses",
   "publicUsmle": {
     "schemaVersion": 1,

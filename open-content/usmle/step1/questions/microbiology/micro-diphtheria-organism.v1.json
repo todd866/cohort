@@ -10,45 +10,45 @@
   ],
   "questionType": "mechanism",
   "difficulty": "easy",
-  "stem": "Diphtheria disease is classically linked to which toxin-associated bacterium?",
+  "stem": "Diphtheria is caused by which of the following?",
   "options": [
     {
       "label": "A",
-      "text": "Neisseria meningitidis among toxigenic capsule strains",
+      "text": "Nontoxigenic strains of Corynebacterium diphtheriae",
       "isCorrect": false,
-      "misconception": "Wrong concept for this stem; does not match the cited passage.",
-      "explanation": "This option does not match the cited source passage for the stem."
+      "misconception": "Overlooks that only toxin-producing strains cause diphtheria.",
+      "explanation": "Nontoxigenic C. diphtheriae strains can cause sore throat or invasive infection, but diphtheria itself requires a toxin-producing strain."
     },
     {
       "label": "B",
-      "text": "Corynebacterium diphtheriae among toxigenic bacterial strains",
+      "text": "Toxin-producing strains of Corynebacterium diphtheriae",
       "isCorrect": true,
-      "misconception": "None — this option matches the cited source passage for the stem.",
-      "explanation": "This correct choice is supported by the cited FOSS passage."
+      "misconception": "None — diphtheria is caused by toxin-producing strains of C. diphtheriae.",
+      "explanation": "CDC attributes diphtheria to toxin-producing strains of Corynebacterium diphtheriae, so toxin production, not the species alone, defines the cause."
     },
     {
       "label": "C",
-      "text": "Streptococcus pneumoniae lobar pneumonia isolates only",
+      "text": "Beta-hemolytic strains of Streptococcus pyogenes",
       "isCorrect": false,
-      "misconception": "Wrong concept for this stem; does not match the cited passage.",
-      "explanation": "This option does not match the cited source passage for the stem."
+      "misconception": "Confuses diphtheria with streptococcal pharyngitis or scarlet fever.",
+      "explanation": "Beta-hemolytic Streptococcus pyogenes causes pharyngitis and scarlet fever, not diphtheria, though both can present with sore throat."
     },
     {
       "label": "D",
-      "text": "Bordetella pertussis whooping-cough organisms only",
+      "text": "Encapsulated strains of Haemophilus influenzae",
       "isCorrect": false,
-      "misconception": "Wrong concept for this stem; does not match the cited passage.",
-      "explanation": "This option does not match the cited source passage for the stem."
+      "misconception": "Confuses diphtheria with Hib epiglottitis, another cause of airway disease.",
+      "explanation": "Encapsulated Haemophilus influenzae, especially type b, causes meningitis and epiglottitis; it does not produce diphtheria toxin."
     },
     {
       "label": "E",
-      "text": "Haemophilus influenzae type b invasive isolates only",
+      "text": "Encapsulated strains of Streptococcus pneumoniae",
       "isCorrect": false,
-      "misconception": "Wrong concept for this stem; does not match the cited passage.",
-      "explanation": "This option does not match the cited source passage for the stem."
+      "misconception": "Confuses the diphtheria organism with another encapsulated respiratory pathogen.",
+      "explanation": "Encapsulated Streptococcus pneumoniae causes pneumonia, otitis media, and meningitis, not diphtheria."
     }
   ],
-  "context": "Learning objective: recall diphtheria from the cited FOSS source.",
+  "context": "Learning objective: Diphtheria is caused by toxin-producing strains of Corynebacterium diphtheriae.",
   "cite": "cdc-pink-book-diphtheria#diphtheria-organism",
   "publicUsmle": {
     "schemaVersion": 1,
@@ -65,20 +65,6 @@
         "cls": "foss",
         "id": "us-gov"
       }
-    },
-    "media": {
-      "kind": "asset",
-      "assetId": "micro-pathogen-virulence-v1",
-      "job": "compare-table",
-      "showWhen": "after-reveal",
-      "licence": {
-        "cls": "foss",
-        "id": "cc-by-4.0"
-      },
-      "attribution": "MD3 contributors",
-      "contentHash": "sha256:e0ca8dcce5538b15d4a9973d8a6934fc8199d41e7059a4d8f0059cc1ec78a22e"
     }
-  },
-  "imageUrl": "/figures/usmle/step1/micro-pathogen-virulence-v1.svg",
-  "imageCaption": "Pathogen/virulence and Pink Book organism map (FOSS draft)."
+  }
 }

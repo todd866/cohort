@@ -11,45 +11,45 @@
   ],
   "questionType": "mechanism",
   "difficulty": "easy",
-  "stem": "Which diabetes form is named first among people whose blood sugar this hormone is used to control?",
+  "stem": "Insulin is used to control blood sugar in which of the following conditions?",
   "options": [
     {
       "label": "A",
-      "text": "Type 1 diabetes when the pancreas does not produce enough insulin",
+      "text": "Type 1 diabetes",
       "isCorrect": true,
-      "misconception": "None — this option matches the cited source passage for the stem.",
-      "explanation": "This correct choice is supported by the cited FOSS passage."
+      "misconception": "None — type 1 diabetes is absent insulin production, treated with insulin.",
+      "explanation": "The label says insulin controls blood sugar in type 1 diabetes, a condition in which the body does not make insulin and so cannot control blood sugar."
     },
     {
       "label": "B",
-      "text": "Only migraine prophylaxis without glucose-control roles for insulin",
+      "text": "Central diabetes insipidus",
       "isCorrect": false,
-      "misconception": "Wrong concept for this stem; does not match the cited passage.",
-      "explanation": "This option does not match the cited source passage for the stem."
+      "misconception": "Equates the 'diabetes' in diabetes insipidus with a disorder of insulin or glucose.",
+      "explanation": "Central diabetes insipidus is a lack of antidiuretic hormone causing dilute polyuria with normal glucose; it is treated with desmopressin, not insulin."
     },
     {
       "label": "C",
-      "text": "Only zoster PHN analgesia without endocrine insulin indications",
+      "text": "Nephrogenic diabetes insipidus",
       "isCorrect": false,
-      "misconception": "Wrong concept for this stem; does not match the cited passage.",
-      "explanation": "This option does not match the cited source passage for the stem."
+      "misconception": "Assumes polyuria always means high blood sugar.",
+      "explanation": "Nephrogenic diabetes insipidus is renal resistance to antidiuretic hormone; blood sugar is normal, and treatment includes thiazides and a low-solute diet, not insulin."
     },
     {
       "label": "D",
-      "text": "Only selection of HA/NA influenza subtypes without diabetes insulin use",
+      "text": "Insulinoma",
       "isCorrect": false,
-      "misconception": "Wrong concept for this stem; does not match the cited passage.",
-      "explanation": "This option does not match the cited source passage for the stem."
+      "misconception": "Reverses the defect: an insulinoma is insulin excess, not deficiency.",
+      "explanation": "An insulinoma is a pancreatic beta-cell tumor that makes too much insulin and causes hypoglycemia, so giving insulin would be dangerous."
     },
     {
       "label": "E",
-      "text": "Only confounding adjustment worksheets without insulin drug therapy",
+      "text": "Primary adrenal insufficiency",
       "isCorrect": false,
-      "misconception": "Wrong concept for this stem; does not match the cited passage.",
-      "explanation": "This option does not match the cited source passage for the stem."
+      "misconception": "Links any endocrine gland failure to a need for insulin.",
+      "explanation": "Primary adrenal insufficiency is a lack of cortisol and aldosterone that predisposes to low blood sugar; it needs steroid replacement, not insulin."
     }
   ],
-  "context": "Learning objective: recall insulin type 1 diabetes use from the cited FOSS source.",
+  "context": "Learning objective: Insulin controls blood sugar in type 1 diabetes, in which the body does not make insulin, and is also used in type 2 diabetes.",
   "cite": "medlineplus-insulin#insulin-uses",
   "publicUsmle": {
     "schemaVersion": 1,

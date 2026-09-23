@@ -15,41 +15,41 @@
   "options": [
     {
       "label": "A",
-      "text": "Only sarcomere length measured at peak systole",
+      "text": "Odds of prior exposure among cases versus among controls",
       "isCorrect": false,
-      "misconception": "Cardio distractor — does not match the cited teaching point.",
-      "explanation": "Wrong domain; see the cited source passage for detail."
+      "misconception": "Confuses the risk ratio with the odds ratio from a case-control study.",
+      "explanation": "Comparing the odds of prior exposure in cases and controls gives the odds ratio, the measure of association used in case-control studies."
     },
     {
       "label": "B",
-      "text": "Only lipid A content compared across LPS batches",
+      "text": "Risk of the health event within a single group",
       "isCorrect": false,
-      "misconception": "Micro distractor — does not match the cited teaching point.",
-      "explanation": "Wrong domain; see the cited source passage for detail."
+      "misconception": "Confuses a single group's risk (incidence proportion) with a ratio comparing two groups.",
+      "explanation": "The risk of an event within a single group is an incidence proportion; a risk ratio needs a second group's risk to compare against."
     },
     {
       "label": "C",
-      "text": "Only ACE activity before versus after lisinopril",
+      "text": "Baseline characteristics of participants in the two groups",
       "isCorrect": false,
-      "misconception": "Pharm distractor — does not match the cited teaching point.",
-      "explanation": "Wrong domain; see the cited source passage for detail."
+      "misconception": "Confuses a measure of association with a check of baseline comparability.",
+      "explanation": "Baseline characteristics are compared to check that groups are similar at the start; this describes the groups, not their risk of an outcome."
     },
     {
       "label": "D",
-      "text": "Only Koplik spot counts on the third illness day",
+      "text": "Risk of death among people who already have the disease",
       "isCorrect": false,
-      "misconception": "Measles distractor — does not match the cited teaching point.",
-      "explanation": "Wrong domain; see the cited source passage for detail."
+      "misconception": "Confuses a comparison of groups with case-fatality risk among those with the disease.",
+      "explanation": "The risk of death among people who already have a disease is the case-fatality rate, a single-group measure of severity, not a comparison."
     },
     {
       "label": "E",
       "text": "Risk of a health event in one group versus another",
       "isCorrect": true,
-      "misconception": "None; RR compares risks across groups.",
-      "explanation": "CDC: RR compares risk among one group with risk among another."
+      "misconception": "None — the risk ratio compares the risk of a health event between two groups.",
+      "explanation": "CDC: a risk ratio, also called relative risk, compares the risk of a health event among one group with the risk among another group."
     }
   ],
-  "context": "Learning objective: risk ratio definition.",
+  "context": "Learning objective: A risk ratio (relative risk) compares the risk of a health event in one group with the risk in another group.",
   "cite": "cdc-epi-measures-of-association#risk-ratio-definition",
   "publicUsmle": {
     "schemaVersion": 1,

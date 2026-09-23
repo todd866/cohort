@@ -78,6 +78,12 @@ const GUIDELINE_SLUG_PREFIXES: ReadonlyArray<string> = Object.freeze([
   'qcg',      // Queensland Clinical Guidelines
   'anzcor',   // Australian and NZ Committee on Resuscitation
   'nsw',      // NSW Health Policy Directives
+  'nswpds',   // the same directives, as LocalEvidence slugs them (health.nsw.gov.au)
+  'ascia',    // ASCIA guidelines and position papers (allergy.org.au)
+  'aah',      // Australian Asthma Handbook (asthmahandbook.org.au)
+  'acsqhc',   // ACSQHC Clinical Care Standards (safetyandquality.gov.au)
+  // Not `etg`: eTG is subscription-only, and tg.org.au is absent from the
+  // domain list for that reason. The slug path must agree with the domain path.
   'nice',
   'who',
 ]);

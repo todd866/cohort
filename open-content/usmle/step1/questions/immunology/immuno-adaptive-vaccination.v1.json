@@ -15,41 +15,41 @@
   "options": [
     {
       "label": "A",
-      "text": "Only from random sampling without replacement",
+      "text": "Inherited genes or normal physiology",
       "isCorrect": false,
-      "misconception": "Stats confusion — does not match the cited teaching point.",
-      "explanation": "This option does not match the cited source passage for the stem."
+      "misconception": "Attributes adaptive immunity to inborn factors, which describe innate immunity.",
+      "explanation": "Genetic factors and physiology underlie innate immunity, which occurs naturally rather than being induced by an antigen exposure."
     },
     {
       "label": "B",
-      "text": "Only from atorvastatin tablets",
+      "text": "Maternal antibody or pooled immune globulin",
       "isCorrect": false,
-      "misconception": "Nonsense — does not match the cited teaching point.",
-      "explanation": "This option does not match the cited source passage for the stem."
+      "misconception": "Confuses passive antibody transfer with activation of the host's own adaptive response.",
+      "explanation": "Maternal antibody and immune globulin give passive immunity: preformed antibody protects briefly and does not activate the recipient's own response."
     },
     {
       "label": "C",
-      "text": "Only from loop diuretics",
+      "text": "Intact skin or mucous membrane barriers",
       "isCorrect": false,
-      "misconception": "Nonsense — does not match the cited teaching point.",
-      "explanation": "This option does not match the cited source passage for the stem."
+      "misconception": "Confuses innate physical barriers with antigen exposure.",
+      "explanation": "Skin and mucous membranes are innate physical barriers; they block microbial entry rather than supplying antigen that triggers adaptive immunity."
     },
     {
       "label": "D",
-      "text": "A pathogen or a vaccination",
+      "text": "An infecting pathogen or a vaccination",
       "isCorrect": true,
-      "misconception": "None; pathogen or vaccine antigen can activate adaptive immunity.",
-      "explanation": "OpenStax: antigen either from a pathogen or a vaccination."
+      "misconception": "None — antigen from a pathogen or a vaccine triggers adaptive immunity.",
+      "explanation": "Adaptive immunity occurs after exposure to an antigen that comes either from a pathogen or from a vaccination."
     },
     {
       "label": "E",
-      "text": "Only from Reye syndrome lipids",
+      "text": "Gastric acid or lysozyme in tears",
       "isCorrect": false,
-      "misconception": "Nonsense — does not match the cited teaching point.",
-      "explanation": "This option does not match the cited source passage for the stem."
+      "misconception": "Confuses innate chemical defenses with antigen exposure.",
+      "explanation": "Gastric acid and lysozyme are innate chemical defenses that kill microbes nonspecifically; they are not antigen sources for adaptive immunity."
     }
   ],
-  "context": "Learning objective: vaccine antigen can drive adaptive immunity.",
+  "context": "Learning objective: Adaptive immunity occurs after exposure to an antigen from either a pathogen or a vaccination.",
   "cite": "openstax-biology-2e#adaptive-activation",
   "publicUsmle": {
     "schemaVersion": 1,

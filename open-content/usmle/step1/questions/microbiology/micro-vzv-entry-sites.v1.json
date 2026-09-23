@@ -15,41 +15,41 @@
   "options": [
     {
       "label": "A",
-      "text": "Only mosquito bite inoculation",
+      "text": "Intestinal mucosa and Peyer patches",
       "isCorrect": false,
-      "misconception": "Vector distractor — does not match the cited teaching point.",
-      "explanation": "Wrong portal; see the cited source passage for detail."
+      "misconception": "Assumes VZV, like the enteroviruses, enters through the gut.",
+      "explanation": "Intestinal mucosa and Peyer patches are entry sites for enteric pathogens such as poliovirus and Salmonella Typhi, not varicella-zoster virus."
     },
     {
       "label": "B",
-      "text": "Only the colonic lumen via fecal route",
+      "text": "Urethral and cervical mucosa",
       "isCorrect": false,
-      "misconception": "Enteric distractor — does not match the cited teaching point.",
-      "explanation": "Wrong portal; see the cited source passage for detail."
+      "misconception": "Confuses VZV with genital herpes simplex virus, a related herpesvirus acquired through sexual contact.",
+      "explanation": "Urethral and cervical mucosa are portals for sexually transmitted pathogens such as HSV-2 and gonorrhea; VZV is not acquired this way."
     },
     {
       "label": "C",
       "text": "Respiratory tract and conjunctiva",
       "isCorrect": true,
-      "misconception": "None; respiratory + conjunctival entry.",
-      "explanation": "CDC lists respiratory tract and conjunctiva."
+      "misconception": "None — VZV enters through the respiratory tract and conjunctiva.",
+      "explanation": "CDC states VZV enters through the respiratory tract and conjunctiva, then replicates in the nasopharynx and regional lymph nodes before viremia."
     },
     {
       "label": "D",
-      "text": "Only percutaneous needlestick of spores",
+      "text": "Bloodstream and injection sites",
       "isCorrect": false,
-      "misconception": "Anthrax-ish distractor.",
-      "explanation": "Wrong portal; see the cited source passage for detail."
+      "misconception": "Mistakes the viremia of varicella for evidence that the virus enters directly through blood.",
+      "explanation": "Direct blood entry fits bloodborne viruses such as hepatitis B and HIV; VZV reaches the blood only after replicating at its mucosal entry sites."
     },
     {
       "label": "E",
-      "text": "Only urinary tract mucosal scrapes",
+      "text": "Insect bites and tick bites",
       "isCorrect": false,
-      "misconception": "GU distractor — does not match the cited teaching point.",
-      "explanation": "Wrong portal; see the cited source passage for detail."
+      "misconception": "Assumes a vesicular rash illness must follow an insect or tick bite.",
+      "explanation": "Insect and tick bites introduce arboviruses, rickettsiae and Borrelia; VZV has no arthropod vector."
     }
   ],
-  "context": "Learning objective: recall vzv, entry from the cited FOSS source.",
+  "context": "Learning objective: Varicella-zoster virus enters through the respiratory tract and conjunctiva, then replicates in the nasopharynx and regional lymph nodes before viremia.",
   "cite": "cdc-pink-book-varicella#vzv-entry",
   "publicUsmle": {
     "schemaVersion": 1,
@@ -66,20 +66,6 @@
         "cls": "foss",
         "id": "us-gov"
       }
-    },
-    "media": {
-      "kind": "asset",
-      "assetId": "micro-pathogen-virulence-v1",
-      "job": "compare-table",
-      "showWhen": "after-reveal",
-      "licence": {
-        "cls": "foss",
-        "id": "cc-by-4.0"
-      },
-      "attribution": "MD3 contributors",
-      "contentHash": "sha256:e0ca8dcce5538b15d4a9973d8a6934fc8199d41e7059a4d8f0059cc1ec78a22e"
     }
-  },
-  "imageUrl": "/figures/usmle/step1/micro-pathogen-virulence-v1.svg",
-  "imageCaption": "Pathogen virulence and Pink Book organism map (FOSS draft)."
+  }
 }

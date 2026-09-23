@@ -14,41 +14,41 @@
   "options": [
     {
       "label": "A",
-      "text": "Only triglyceride stores inside adipocyte lipid droplets",
+      "text": "Mycobacterium tuberculosis residing in alveolar macrophages",
       "isCorrect": false,
-      "misconception": "Energy storage distractor.",
-      "explanation": "Wrong domain; see the cited source passage for detail."
+      "misconception": "Overlooks that M. tuberculosis lives inside macrophages, out of complement's reach.",
+      "explanation": "Mycobacterium tuberculosis survives inside macrophages, shielded from complement; its control depends on T cells that activate those macrophages."
     },
     {
       "label": "B",
-      "text": "Extracellular pathogens outside host cell cytoplasm",
+      "text": "Neisseria meningitidis circulating in the bloodstream",
       "isCorrect": true,
-      "misconception": "None; complement targets extracellular pathogens.",
-      "explanation": "OpenStax: complement destroys extracellular pathogens."
+      "misconception": "None — complement destroys extracellular pathogens such as bloodstream meningococci.",
+      "explanation": "Complement functions to destroy extracellular pathogens, and meningococci circulating in the blood are extracellular, within its reach."
     },
     {
       "label": "C",
-      "text": "Only null-hypothesis claims inside a sample space",
+      "text": "Chlamydia trachomatis in conjunctival epithelial cells",
       "isCorrect": false,
-      "misconception": "Stats distractor — does not match the cited teaching point.",
-      "explanation": "Wrong domain; see the cited source passage for detail."
+      "misconception": "Forgets that Chlamydia is an obligate intracellular bacterium.",
+      "explanation": "Chlamydia trachomatis is an obligate intracellular bacterium that replicates inside epithelial cells, where complement cannot act."
     },
     {
       "label": "D",
-      "text": "Only ACE substrate peptides circulating in plasma",
+      "text": "Ehrlichia chaffeensis in circulating monocytes",
       "isCorrect": false,
-      "misconception": "Pharm distractor — does not match the cited teaching point.",
-      "explanation": "Wrong domain; see the cited source passage for detail."
+      "misconception": "Assumes an organism in the blood is extracellular, though Ehrlichia lives inside monocytes.",
+      "explanation": "Ehrlichia chaffeensis replicates inside monocytes, forming morulae; circulating with the cell does not expose it to complement."
     },
     {
       "label": "E",
-      "text": "Only nuclear DNA viruses replicating inside nuclei",
+      "text": "Rickettsia rickettsii in vascular endothelial cells",
       "isCorrect": false,
-      "misconception": "Intracellular niche distractor.",
-      "explanation": "Complement is especially extracellular."
+      "misconception": "Forgets that Rickettsia is an obligate intracellular bacterium.",
+      "explanation": "Rickettsia rickettsii is an obligate intracellular bacterium that multiplies in endothelial cells, beyond the reach of complement."
     }
   ],
-  "context": "Learning objective: complement vs extracellular pathogens.",
+  "context": "Learning objective: The complement system functions to destroy extracellular pathogens.",
   "cite": "openstax-biology-2e#complement-extracellular",
   "publicUsmle": {
     "schemaVersion": 1,

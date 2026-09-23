@@ -15,41 +15,41 @@
   "options": [
     {
       "label": "A",
-      "text": "Only mosquito midgut replication before bite spread",
+      "text": "Bite of an infected mosquito",
       "isCorrect": false,
-      "misconception": "Vector. (does not match the cited teaching point).",
-      "explanation": "This option does not match the cited source passage for the stem."
+      "misconception": "Confuses hepatitis A with mosquito-borne viral infections.",
+      "explanation": "Mosquito bites transmit arboviruses such as dengue, West Nile, and yellow fever; hepatitis A is not vector-borne."
     },
     {
       "label": "B",
-      "text": "Only airborne droplet nuclei lingering for many hours",
+      "text": "Inhalation of airborne droplet nuclei",
       "isCorrect": false,
-      "misconception": "Measles-like. (does not match the cited teaching point).",
-      "explanation": "This option does not match the cited source passage for the stem."
+      "misconception": "Confuses hepatitis A with airborne viruses such as measles.",
+      "explanation": "Airborne droplet nuclei spread measles, varicella, and tuberculosis; hepatitis A virus is acquired by ingestion, not inhalation."
     },
     {
       "label": "C",
-      "text": "Only latent dorsal-root ganglion virus reactivation",
+      "text": "Direct contact with infected skin lesions",
       "isCorrect": false,
-      "misconception": "VZV zoster. (does not match the cited teaching point).",
-      "explanation": "This option does not match the cited source passage for the stem."
+      "misconception": "Confuses hepatitis A with pathogens spread by lesion contact.",
+      "explanation": "Contact with skin lesions spreads agents such as herpes simplex virus or impetigo bacteria, not hepatitis A."
     },
     {
       "label": "D",
-      "text": "Only sexual spread of oncogenic HPV DNA genotypes",
+      "text": "Saliva inoculated by an animal bite",
       "isCorrect": false,
-      "misconception": "HPV. (does not match the cited teaching point).",
-      "explanation": "This option does not match the cited source passage for the stem."
+      "misconception": "Confuses hepatitis A with rabies, which is transmitted by animal bites.",
+      "explanation": "Saliva inoculated by an animal bite transmits rabies; hepatitis A virus is shed in feces and acquired by mouth."
     },
     {
       "label": "E",
-      "text": "Fecal-oral spread through contaminated feces or hands",
+      "text": "Fecal-oral spread through ingestion",
       "isCorrect": true,
-      "misconception": "None; fecal-oral HAV.",
-      "explanation": "CDC: fecal-oral transmission."
+      "misconception": "None — hepatitis A virus is acquired by the fecal-oral route.",
+      "explanation": "HAV is typically acquired through ingestion by fecal-oral transmission and then replicates in the liver."
     }
   ],
-  "context": "Learning objective: recall hepatitis A, transmission from the cited FOSS source.",
+  "context": "Learning objective: Hepatitis A virus is acquired by ingestion through fecal-oral transmission and replicates in the liver.",
   "cite": "cdc-pink-book-hepatitis-a#hav-fecal-oral",
   "publicUsmle": {
     "schemaVersion": 1,
@@ -66,20 +66,6 @@
         "cls": "foss",
         "id": "us-gov"
       }
-    },
-    "media": {
-      "kind": "asset",
-      "assetId": "micro-pathogen-virulence-v1",
-      "job": "compare-table",
-      "showWhen": "after-reveal",
-      "licence": {
-        "cls": "foss",
-        "id": "cc-by-4.0"
-      },
-      "attribution": "MD3 contributors",
-      "contentHash": "sha256:e0ca8dcce5538b15d4a9973d8a6934fc8199d41e7059a4d8f0059cc1ec78a22e"
     }
-  },
-  "imageUrl": "/figures/usmle/step1/micro-pathogen-virulence-v1.svg",
-  "imageCaption": "Pathogen/virulence and Pink Book organism map (FOSS draft)."
+  }
 }

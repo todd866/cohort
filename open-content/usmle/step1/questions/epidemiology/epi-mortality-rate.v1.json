@@ -14,41 +14,41 @@
   "options": [
     {
       "label": "A",
-      "text": "Only sensitivity of a diagnostic test among diseased people",
+      "text": "Proportion of people with a disease who die from it",
       "isCorrect": false,
-      "misconception": "Wrong concept for this stem; does not match the cited passage.",
-      "explanation": "This option does not match the cited source passage for the stem."
+      "misconception": "Confuses a population mortality rate with case-fatality, which is restricted to cases.",
+      "explanation": "Deaths among people who have a disease, divided by those cases, is the case-fatality rate; its denominator is cases, not the population."
     },
     {
       "label": "B",
-      "text": "How often death occurs in a defined population over an interval",
+      "text": "Frequency of death in a defined population over an interval",
       "isCorrect": true,
-      "misconception": "None — this option matches the cited source passage for the stem.",
-      "explanation": "This correct choice is supported by the cited FOSS passage."
+      "misconception": "None — a mortality rate is death frequency in a defined population over an interval.",
+      "explanation": "CDC defines a mortality rate as the frequency of occurrence of death in a defined population during a specified interval."
     },
     {
       "label": "C",
-      "text": "Only specificity of a diagnostic test among healthy people",
+      "text": "Proportion of all deaths that are due to one cause",
       "isCorrect": false,
-      "misconception": "Wrong concept for this stem; does not match the cited passage.",
-      "explanation": "This option does not match the cited source passage for the stem."
+      "misconception": "Confuses a mortality rate with proportionate mortality, whose denominator is total deaths.",
+      "explanation": "The share of all deaths due to one cause is proportionate mortality; its denominator is deaths, so it is not a rate of death in a population."
     },
     {
       "label": "D",
-      "text": "Only attributable proportion of a single causative factor",
+      "text": "Years of potential life lost before a reference age",
       "isCorrect": false,
-      "misconception": "Wrong concept for this stem; does not match the cited passage.",
-      "explanation": "This option does not match the cited source passage for the stem."
+      "misconception": "Confuses death frequency with years of potential life lost, a premature-death burden measure.",
+      "explanation": "Years of potential life lost weights each death by how early it occurs, measuring premature mortality rather than how often death occurs."
     },
     {
       "label": "E",
-      "text": "Only sample-space size for an independent coin-flip trial",
+      "text": "Probability that a newly diagnosed patient survives five years",
       "isCorrect": false,
-      "misconception": "Wrong concept for this stem; does not match the cited passage.",
-      "explanation": "This option does not match the cited source passage for the stem."
+      "misconception": "Confuses a population mortality rate with survival among diagnosed patients.",
+      "explanation": "Five-year survival is the probability a diagnosed patient is alive at five years, a prognosis measure within a patient group."
     }
   ],
-  "context": "Learning objective: recall mortality from the cited FOSS source.",
+  "context": "Learning objective: A mortality rate measures how often death occurs in a defined population during a specified interval.",
   "cite": "cdc-epi-mortality-measures#mortality-rate",
   "publicUsmle": {
     "schemaVersion": 1,
@@ -65,20 +65,6 @@
         "cls": "foss",
         "id": "us-gov"
       }
-    },
-    "media": {
-      "kind": "asset",
-      "assetId": "epi-morbidity-measures-v1",
-      "job": "compare-table",
-      "showWhen": "after-reveal",
-      "licence": {
-        "cls": "foss",
-        "id": "cc-by-4.0"
-      },
-      "attribution": "MD3 contributors",
-      "contentHash": "sha256:3fc6d23afe6a78c9503d068754c2fb966c0973d978c71410c1db2c58d455430f"
     }
-  },
-  "imageUrl": "/figures/usmle/step1/epi-morbidity-measures-v1.svg",
-  "imageCaption": "CDC morbidity and mortality frequency measures."
+  }
 }

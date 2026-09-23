@@ -11,45 +11,45 @@
   ],
   "questionType": "mechanism",
   "difficulty": "easy",
-  "stem": "The main objective of vaccination programs against this teratogenic virus, per CDC, is prevention of what?",
+  "stem": "The main objective of rubella vaccination programs is to prevent which outcome?",
   "options": [
     {
       "label": "A",
-      "text": "Only pneumococcal lobar pneumonia in elderly adults alone",
+      "text": "Rubella encephalitis in young children",
       "isCorrect": false,
-      "misconception": "Wrong concept for this stem; does not match the cited passage.",
-      "explanation": "This option does not match the cited source passage for the stem."
+      "misconception": "Assumes vaccination targets the rare neurologic complication of postnatal rubella.",
+      "explanation": "Rubella encephalitis is a rare complication of postnatal infection; it is not what rubella vaccination programs are chiefly designed to prevent."
     },
     {
       "label": "B",
-      "text": "Only adult mumps orchitis without any fetal disease concern",
+      "text": "Rubella arthritis in adult women",
       "isCorrect": false,
-      "misconception": "Wrong concept for this stem; does not match the cited passage.",
-      "explanation": "This option does not match the cited source passage for the stem."
+      "misconception": "Mistakes a common but self-limited adult complication for the program's main goal.",
+      "explanation": "Arthralgia and arthritis are common in adult women with rubella but are self-limited; they are not the main target of vaccination."
     },
     {
       "label": "C",
-      "text": "Only diphtheria myocarditis without congenital syndromes",
+      "text": "Rubella rash illness in schoolchildren",
       "isCorrect": false,
-      "misconception": "Wrong concept for this stem; does not match the cited passage.",
-      "explanation": "This option does not match the cited source passage for the stem."
+      "misconception": "Assumes the goal is preventing the mild childhood illness rather than fetal infection.",
+      "explanation": "Childhood rubella is usually mild; CDC names prevention of congenital rubella syndrome, not the childhood rash illness, as the main objective."
     },
     {
       "label": "D",
-      "text": "Congenital rubella syndrome in infants after maternal infection",
+      "text": "Congenital rubella syndrome in infants",
       "isCorrect": true,
-      "misconception": "None — this option matches the cited source passage for the stem.",
-      "explanation": "This correct choice is supported by the cited FOSS passage."
+      "misconception": "None — the main goal of rubella vaccination is preventing congenital rubella syndrome.",
+      "explanation": "CDC states that prevention of congenital rubella syndrome is the main objective of rubella vaccination programs."
     },
     {
       "label": "E",
-      "text": "Only meningococcal septicemia without pregnancy relevance",
+      "text": "Rubella thrombocytopenia in adolescents",
       "isCorrect": false,
-      "misconception": "Wrong concept for this stem; does not match the cited passage.",
-      "explanation": "This option does not match the cited source passage for the stem."
+      "misconception": "Mistakes an uncommon hematologic complication for the purpose of rubella vaccination.",
+      "explanation": "Thrombocytopenia is an uncommon complication of postnatal rubella and is not the reason rubella vaccination programs exist."
     }
   ],
-  "context": "Learning objective: recall rubella, CRS from the cited FOSS source.",
+  "context": "Learning objective: Preventing congenital rubella syndrome is the main objective of rubella vaccination programs.",
   "cite": "cdc-pink-book-rubella#rubella-crs-goal",
   "publicUsmle": {
     "schemaVersion": 1,
@@ -66,20 +66,6 @@
         "cls": "foss",
         "id": "us-gov"
       }
-    },
-    "media": {
-      "kind": "asset",
-      "assetId": "micro-pathogen-virulence-v1",
-      "job": "compare-table",
-      "showWhen": "after-reveal",
-      "licence": {
-        "cls": "foss",
-        "id": "cc-by-4.0"
-      },
-      "attribution": "MD3 contributors",
-      "contentHash": "sha256:e0ca8dcce5538b15d4a9973d8a6934fc8199d41e7059a4d8f0059cc1ec78a22e"
     }
-  },
-  "imageUrl": "/figures/usmle/step1/micro-pathogen-virulence-v1.svg",
-  "imageCaption": "Pathogen/virulence and Pink Book organism map (FOSS draft)."
+  }
 }

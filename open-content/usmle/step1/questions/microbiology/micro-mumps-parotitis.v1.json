@@ -11,45 +11,45 @@
   ],
   "questionType": "mechanism",
   "difficulty": "easy",
-  "stem": "Classic mumps clinical descriptions include parotitis paired with which finding?",
+  "stem": "Besides parotitis, which of the following is a recognized complication of mumps?",
   "options": [
     {
       "label": "A",
-      "text": "Only congenital cataracts from first-trimester rubella",
+      "text": "Subacute sclerosing panencephalitis",
       "isCorrect": false,
-      "misconception": "Wrong concept for this stem; does not match the cited passage.",
-      "explanation": "This option does not match the cited source passage for the stem."
+      "misconception": "Confuses the late neurologic sequel of measles with a mumps complication.",
+      "explanation": "Subacute sclerosing panencephalitis is a late, fatal brain complication of persistent measles virus infection, not of mumps."
     },
     {
       "label": "B",
-      "text": "Only diphtheritic pseudomembrane over the tonsillar bed",
+      "text": "Rheumatic heart disease",
       "isCorrect": false,
-      "misconception": "Wrong concept for this stem; does not match the cited passage.",
-      "explanation": "This option does not match the cited source passage for the stem."
+      "misconception": "Links a childhood throat and neck illness to the rheumatic sequelae of strep pharyngitis.",
+      "explanation": "Rheumatic heart disease follows untreated group A streptococcal pharyngitis through immune cross-reaction; it is not a complication of mumps."
     },
     {
       "label": "C",
-      "text": "Orchitis among historically described mumps complications",
+      "text": "Orchitis or oophoritis",
       "isCorrect": true,
-      "misconception": "None — this option matches the cited source passage for the stem.",
-      "explanation": "This correct choice is supported by the cited FOSS passage."
+      "misconception": "None — orchitis and oophoritis are recognized complications of mumps.",
+      "explanation": "CDC lists orchitis and oophoritis among mumps complications, along with mastitis, pancreatitis, hearing loss, meningitis and encephalitis."
     },
     {
       "label": "D",
-      "text": "Only flaccid paralysis from wild poliovirus infection",
+      "text": "Transient aplastic crisis",
       "isCorrect": false,
-      "misconception": "Wrong concept for this stem; does not match the cited passage.",
-      "explanation": "This option does not match the cited source passage for the stem."
+      "misconception": "Confuses the childhood viral illnesses, attributing parvovirus B19's marrow effect to mumps.",
+      "explanation": "Transient aplastic crisis occurs when parvovirus B19 infects red cell precursors in patients with chronic hemolysis such as sickle cell disease."
     },
     {
       "label": "E",
-      "text": "Only Koplik spots on oral mucosa during measles illness",
+      "text": "Hemolytic uremic syndrome",
       "isCorrect": false,
-      "misconception": "Wrong concept for this stem; does not match the cited passage.",
-      "explanation": "This option does not match the cited source passage for the stem."
+      "misconception": "Attributes a toxin-mediated diarrheal complication to a salivary gland virus.",
+      "explanation": "Hemolytic uremic syndrome most often follows Shiga toxin-producing E. coli diarrhea; mumps does not cause it."
     }
   ],
-  "context": "Learning objective: recall mumps, parotitis from the cited FOSS source.",
+  "context": "Learning objective: Mumps typically presents with parotitis, and its complications include orchitis, oophoritis, mastitis, pancreatitis, hearing loss, meningitis and encephalitis.",
   "cite": "cdc-pink-book-mumps#mumps-parotitis-orchitis",
   "publicUsmle": {
     "schemaVersion": 1,
@@ -66,20 +66,6 @@
         "cls": "foss",
         "id": "us-gov"
       }
-    },
-    "media": {
-      "kind": "asset",
-      "assetId": "micro-pathogen-virulence-v1",
-      "job": "compare-table",
-      "showWhen": "after-reveal",
-      "licence": {
-        "cls": "foss",
-        "id": "cc-by-4.0"
-      },
-      "attribution": "MD3 contributors",
-      "contentHash": "sha256:e0ca8dcce5538b15d4a9973d8a6934fc8199d41e7059a4d8f0059cc1ec78a22e"
     }
-  },
-  "imageUrl": "/figures/usmle/step1/micro-pathogen-virulence-v1.svg",
-  "imageCaption": "Pathogen/virulence and Pink Book organism map (FOSS draft)."
+  }
 }

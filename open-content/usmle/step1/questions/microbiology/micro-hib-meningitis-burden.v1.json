@@ -11,45 +11,45 @@
   ],
   "questionType": "mechanism",
   "difficulty": "easy",
-  "stem": "In the prevaccine era, meningitis accounted for about what share of invasive Hib disease cases per CDC?",
+  "stem": "In the prevaccine era, meningitis accounted for about what share of invasive Hib disease cases?",
   "options": [
     {
       "label": "A",
       "text": "About 50% to 65% of cases",
       "isCorrect": true,
-      "misconception": "None; majority meningitis prevaccine.",
-      "explanation": "CDC: meningitis 50-65% of cases."
+      "misconception": "None — meningitis was 50% to 65% of prevaccine invasive Hib cases.",
+      "explanation": "CDC reports that in the prevaccine era meningitis accounted for 50% to 65% of invasive Hib cases, with a fatality ratio of 3% to 6%."
     },
     {
       "label": "B",
-      "text": "Fewer than 1% of cases",
+      "text": "About 3% to 6% of cases",
       "isCorrect": false,
-      "misconception": "Too low — does not match the cited teaching point.",
-      "explanation": "Contradicts CDC; see the cited source passage for detail."
+      "misconception": "Confuses the proportion of cases with the fatality ratio of 3% to 6%.",
+      "explanation": "Three to six percent was the fatality ratio of Hib meningitis, not the share of invasive cases that were meningitis."
     },
     {
       "label": "C",
-      "text": "Exactly 100% of all human illness",
+      "text": "About 10% to 15% of cases",
       "isCorrect": false,
-      "misconception": "Overclaim — does not match the cited teaching point.",
-      "explanation": "This option does not match the cited source passage for the stem."
+      "misconception": "Underestimates how dominant meningitis was among invasive Hib cases.",
+      "explanation": "Ten to fifteen percent understates meningitis, which made up more than half of invasive Hib cases before vaccination."
     },
     {
       "label": "D",
-      "text": "Zero cases worldwide historically",
+      "text": "About 25% to 35% of cases",
       "isCorrect": false,
-      "misconception": "False — does not match the cited teaching point.",
-      "explanation": "This option does not match the cited source passage for the stem."
+      "misconception": "Underestimates meningitis, which accounted for over half of invasive Hib cases.",
+      "explanation": "A quarter to a third understates it; meningitis accounted for 50% to 65% of invasive Hib disease before vaccination."
     },
     {
       "label": "E",
-      "text": "Only cases limited to plant chloroplasts",
+      "text": "About 90% to 95% of cases",
       "isCorrect": false,
-      "misconception": "Nonsense — does not match the cited teaching point.",
-      "explanation": "This option does not match the cited source passage for the stem."
+      "misconception": "Confuses the meningitis share with the 95% of invasive disease caused by type b.",
+      "explanation": "About 95% echoes the share of invasive H. influenzae disease caused by type b before vaccines, not the share that was meningitis."
     }
   ],
-  "context": "Learning objective: recall hib, meningitis from the cited FOSS source.",
+  "context": "Learning objective: Before Hib vaccine, meningitis accounted for 50% to 65% of invasive Hib cases, with a fatality ratio of 3% to 6%.",
   "cite": "cdc-pink-book-hib#hib-meningitis-prevaccine",
   "publicUsmle": {
     "schemaVersion": 1,
@@ -81,5 +81,5 @@
     }
   },
   "imageUrl": "/figures/usmle/step1/micro-pathogen-virulence-v1.svg",
-  "imageCaption": "Pathogen virulence and Pink Book organism map (FOSS draft)."
+  "imageCaption": "Pathogen virulence and Pink Book organism map."
 }

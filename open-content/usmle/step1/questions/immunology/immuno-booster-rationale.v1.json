@@ -15,41 +15,41 @@
   "options": [
     {
       "label": "A",
-      "text": "To mimic repeat antigen exposures and boost memory",
+      "text": "To mimic a natural repeat exposure to the antigen",
       "isCorrect": true,
-      "misconception": "None; boosters mimic repeat exposures.",
-      "explanation": "OpenStax: booster vaccinations to mimic repeat exposures."
+      "misconception": "None — boosters mimic repeat exposure to the antigen.",
+      "explanation": "A booster re-exposes the immune system to the antigen, as a natural repeat exposure would, restoring antibody levels that fall over time."
     },
     {
       "label": "B",
-      "text": "To convert innate immunity into ACE inhibitor drugs",
+      "text": "To supply preformed antibody for immediate passive protection",
       "isCorrect": false,
-      "misconception": "Nonsense — does not match the cited teaching point.",
-      "explanation": "This option does not match the cited source passage for the stem."
+      "misconception": "Confuses active immunization with passive antibody transfer.",
+      "explanation": "Preformed antibody for immediate passive protection comes from immune globulin; a booster stimulates the recipient's own memory response."
     },
     {
       "label": "C",
-      "text": "To raise acetaminophen hepatotoxicity dose thresholds",
+      "text": "To induce immune tolerance to the vaccine antigen",
       "isCorrect": false,
-      "misconception": "Nonsense — does not match the cited teaching point.",
-      "explanation": "This option does not match the cited source passage for the stem."
+      "misconception": "Confuses re-stimulating immunity with inducing tolerance.",
+      "explanation": "Tolerance is unresponsiveness to an antigen; boosters aim for the opposite, a renewed protective response."
     },
     {
       "label": "D",
-      "text": "To force events to be mutually exclusive in samples",
+      "text": "To shift the response from adaptive to innate immunity",
       "isCorrect": false,
-      "misconception": "Stats confusion — does not match the cited teaching point.",
-      "explanation": "This option does not match the cited source passage for the stem."
+      "misconception": "Thinks vaccination acts on innate rather than adaptive immunity.",
+      "explanation": "Boosters act on adaptive immunity; innate immunity forms no antigen-specific memory for a booster to renew."
     },
     {
       "label": "E",
-      "text": "To replace insulin therapy in all type 1 diabetes",
+      "text": "To lower the risk of allergy to vaccine components",
       "isCorrect": false,
-      "misconception": "Wrong domain — does not match the cited teaching point.",
-      "explanation": "This option does not match the cited source passage for the stem."
+      "misconception": "Attributes booster doses to allergy prevention rather than waning memory.",
+      "explanation": "Boosters are not given to prevent allergy; repeat doses re-stimulate a protective response whose antibody levels wane."
     }
   ],
-  "context": "Learning objective: booster = simulated repeat exposure.",
+  "context": "Learning objective: booster doses mimic a repeat exposure to the antigen, renewing a protective adaptive response that wanes over time.",
   "cite": "openstax-biology-2e#booster-vaccination",
   "publicUsmle": {
     "schemaVersion": 1,

@@ -11,45 +11,45 @@
   ],
   "questionType": "mechanism",
   "difficulty": "easy",
-  "stem": "Haemophilus influenzae polysaccharide covering is described as having how many serotypes labeled a-f?",
+  "stem": "Encapsulated Haemophilus influenzae strains are classified into how many polysaccharide capsule serotypes?",
   "options": [
     {
       "label": "A",
-      "text": "Exactly zero capsules across every bacterial strain typed",
+      "text": "Two serotypes, a and b",
       "isCorrect": false,
-      "misconception": "Contradicts capsule biology.",
-      "explanation": "This option does not match the cited source passage for the stem."
+      "misconception": "Confuses the typeable-versus-nontypeable split with the number of capsular serotypes.",
+      "explanation": "H. influenzae splits into encapsulated (typeable) and nontypeable strains, but the capsule itself comes in six serotypes, a through f."
     },
     {
       "label": "B",
-      "text": "Exactly two capsule serotypes labeled X and Y only",
+      "text": "Four serotypes, a through d",
       "isCorrect": false,
-      "misconception": "Wrong count — does not match the cited teaching point.",
-      "explanation": "Not Hib framing; see the cited source passage for detail."
+      "misconception": "Undercounts the capsular serotypes of H. influenzae.",
+      "explanation": "Four matches no H. influenzae classification; the polysaccharide capsule has six serotypes, designated a through f."
     },
     {
       "label": "C",
-      "text": "Exactly one serotype labeled measles virus on panels",
+      "text": "Five serotypes, a through e",
       "isCorrect": false,
-      "misconception": "Viral distractor — does not match the cited teaching point.",
-      "explanation": "This option does not match the cited source passage for the stem."
+      "misconception": "Undercounts the serotypes by one; there are six, a through f.",
+      "explanation": "Five omits one type; the six capsular serotypes run a through f, and type b caused most invasive disease before vaccination."
     },
     {
       "label": "D",
-      "text": "Exactly twelve sarcomere bands in adult skeletal muscle",
+      "text": "Eight serotypes, a through h",
       "isCorrect": false,
-      "misconception": "Anatomy distractor — does not match the cited teaching point.",
-      "explanation": "This option does not match the cited source passage for the stem."
+      "misconception": "Overcounts the capsular serotypes of H. influenzae.",
+      "explanation": "Eight overcounts; the capsular serotypes of H. influenzae stop at f, giving six in total."
     },
     {
       "label": "E",
-      "text": "Six different serotypes labeled a-f on typing panels",
+      "text": "Six serotypes, a through f",
       "isCorrect": true,
-      "misconception": "None; six capsule serotypes.",
-      "explanation": "CDC: six serotypes a-f."
+      "misconception": "None — H. influenzae has six capsular serotypes, a through f.",
+      "explanation": "CDC: H. influenzae has six different polysaccharide capsule serotypes (a-f); type b caused 95% of invasive disease before vaccines."
     }
   ],
-  "context": "Learning objective: recall hib, capsule from the cited FOSS source.",
+  "context": "Learning objective: Haemophilus influenzae has six polysaccharide capsule serotypes (a-f); type b caused 95% of invasive disease before vaccination.",
   "cite": "cdc-pink-book-hib#hib-capsule-serotypes",
   "publicUsmle": {
     "schemaVersion": 1,
@@ -81,5 +81,5 @@
     }
   },
   "imageUrl": "/figures/usmle/step1/micro-pathogen-virulence-v1.svg",
-  "imageCaption": "Pathogen virulence and Pink Book organism map (FOSS draft)."
+  "imageCaption": "Pathogen virulence and Pink Book organism map."
 }

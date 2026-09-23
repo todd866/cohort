@@ -14,41 +14,41 @@
   "options": [
     {
       "label": "A",
-      "text": "Replicate DNA semiconservatively",
+      "text": "Repeat behaviors that bring pleasant consequences",
       "isCorrect": false,
-      "misconception": "Biochem — does not match the cited teaching point.",
-      "explanation": "This option does not match the cited source passage for the stem."
+      "misconception": "Confuses classical conditioning with consequence-driven operant conditioning.",
+      "explanation": "Repeating a behavior because of a pleasant consequence is operant conditioning, where what follows an action, not a paired stimulus, drives learning."
     },
     {
       "label": "B",
-      "text": "Associate stimuli and consequently anticipate events",
+      "text": "Associate stimuli and thereby anticipate events",
       "isCorrect": true,
-      "misconception": "None; classical conditioning associates stimuli to anticipate events.",
-      "explanation": "OpenStax defines classical conditioning as learning to associate stimuli and anticipate events."
+      "misconception": "None — classical conditioning pairs stimuli so events can be anticipated.",
+      "explanation": "Classical conditioning is learning to associate stimuli and, as a result, to anticipate events, as when a tone comes to predict food."
     },
     {
       "label": "C",
-      "text": "Operate tools by trial-and-error reinforcement only",
+      "text": "Imitate behaviors they watch others perform",
       "isCorrect": false,
-      "misconception": "That is closer to operant conditioning.",
-      "explanation": "Classical conditioning associates stimuli."
+      "misconception": "Confuses stimulus association with learning by watching a model.",
+      "explanation": "Imitating what others are seen doing is observational learning, or modeling; it needs no pairing of stimuli."
     },
     {
       "label": "D",
-      "text": "Lower activation energy of enzymes",
+      "text": "Stop an innate response to a repeated harmless stimulus",
       "isCorrect": false,
-      "misconception": "Biochem — does not match the cited teaching point.",
-      "explanation": "This option does not match the cited source passage for the stem."
+      "misconception": "Confuses non-associative habituation with associative conditioning.",
+      "explanation": "The fading of an innate response to a repeated harmless stimulus is habituation, a non-associative form of learning with no paired stimuli."
     },
     {
       "label": "E",
-      "text": "Pump protons across mitochondria",
+      "text": "Respond more strongly after an intense stimulus",
       "isCorrect": false,
-      "misconception": "Biochem — does not match the cited teaching point.",
-      "explanation": "This option does not match the cited source passage for the stem."
+      "misconception": "Confuses non-associative sensitization with associative conditioning.",
+      "explanation": "Responding more strongly after an intense stimulus is sensitization, a non-associative change that involves no stimulus pairing."
     }
   ],
-  "context": "Learning objective: classical conditioning associates stimuli.",
+  "context": "Learning objective: Classical conditioning is learning to associate stimuli and, consequently, to anticipate events.",
   "cite": "openstax-psychology-2e#classical-conditioning-associate",
   "publicUsmle": {
     "schemaVersion": 1,

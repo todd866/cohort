@@ -15,41 +15,41 @@
   "options": [
     {
       "label": "A",
-      "text": "Statins only",
+      "text": "Barbiturates",
       "isCorrect": false,
-      "misconception": "Wrong class — does not match the cited teaching point.",
-      "explanation": "This option does not match the cited source passage for the stem."
+      "misconception": "Confuses two sedative-hypnotic classes that both act at GABA-A receptors.",
+      "explanation": "Barbiturates such as phenobarbital also act at GABA-A receptors but prolong channel opening; lorazepam is a benzodiazepine, which increases opening frequency."
     },
     {
       "label": "B",
       "text": "Benzodiazepines",
       "isCorrect": true,
-      "misconception": "None; lorazepam is a benzodiazepine.",
-      "explanation": "MedlinePlus: benzodiazepines; anxiety and insomnia."
+      "misconception": "None — lorazepam is a benzodiazepine.",
+      "explanation": "The label states that lorazepam is a benzodiazepine; like diazepam and alprazolam, it enhances GABA-A receptor signaling."
     },
     {
       "label": "C",
-      "text": "Loop diuretics only",
+      "text": "Selective serotonin reuptake inhibitors",
       "isCorrect": false,
-      "misconception": "Wrong class — does not match the cited teaching point.",
-      "explanation": "This option does not match the cited source passage for the stem."
+      "misconception": "Assumes every anxiety medication is an antidepressant.",
+      "explanation": "SSRIs such as sertraline treat anxiety disorders by blocking serotonin reuptake over weeks; lorazepam is a fast-acting benzodiazepine instead."
     },
     {
       "label": "D",
-      "text": "Beta-lactam antibiotics only",
+      "text": "First-generation antihistamines",
       "isCorrect": false,
-      "misconception": "Wrong class — does not match the cited teaching point.",
-      "explanation": "This option does not match the cited source passage for the stem."
+      "misconception": "Assumes any sedating drug used for sleep is an antihistamine.",
+      "explanation": "First-generation antihistamines such as hydroxyzine or diphenhydramine sedate by blocking H1 receptors; lorazepam acts on GABA-A receptors."
     },
     {
       "label": "E",
-      "text": "Biguanides only",
+      "text": "Tricyclic antidepressants",
       "isCorrect": false,
-      "misconception": "Wrong class — does not match the cited teaching point.",
-      "explanation": "This option does not match the cited source passage for the stem."
+      "misconception": "Groups older sedating psychiatric drugs with benzodiazepines.",
+      "explanation": "Tricyclic antidepressants such as amitriptyline block norepinephrine and serotonin reuptake; lorazepam is a benzodiazepine that enhances GABA-A signaling."
     }
   ],
-  "context": "Learning objective: recall lorazepam, benzodiazepine from the cited FOSS source.",
+  "context": "Learning objective: Lorazepam is in the benzodiazepine class of medications.",
   "cite": "medlineplus-lorazepam#lorazepam-class",
   "publicUsmle": {
     "schemaVersion": 1,
@@ -66,20 +66,6 @@
         "cls": "foss",
         "id": "us-gov"
       }
-    },
-    "media": {
-      "kind": "asset",
-      "assetId": "pharm-drug-classes-v1",
-      "job": "compare-table",
-      "showWhen": "after-reveal",
-      "licence": {
-        "cls": "foss",
-        "id": "cc-by-4.0"
-      },
-      "attribution": "MD3 contributors",
-      "contentHash": "sha256:0660ff11235451eff9a2718dd975d64fa61483b220682b17bd82c8050fd4bceb"
     }
-  },
-  "imageUrl": "/figures/usmle/step1/pharm-drug-classes-v1.svg",
-  "imageCaption": "High-yield FOSS drug-class map from MedlinePlus labels."
+  }
 }

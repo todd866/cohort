@@ -10,45 +10,45 @@
   ],
   "questionType": "mechanism",
   "difficulty": "easy",
-  "stem": "Sildenafil (Viagra) is used to treat which condition in men?",
+  "stem": "Sildenafil is used to treat which condition in men?",
   "options": [
     {
       "label": "A",
-      "text": "Erectile dysfunction with inability to get or keep an erection",
+      "text": "Erectile dysfunction",
       "isCorrect": true,
-      "misconception": "None — this option matches the cited source passage for the stem.",
-      "explanation": "This correct choice is supported by the cited FOSS passage."
+      "misconception": "None — erectile dysfunction is sildenafil's listed use in men.",
+      "explanation": "Sildenafil treats erectile dysfunction in men, meaning the inability to get or keep an erection."
     },
     {
       "label": "B",
-      "text": "Only seizure prophylaxis without ED labeling present here",
+      "text": "Ischemic priapism",
       "isCorrect": false,
-      "misconception": "Wrong concept for this stem; does not match the cited passage.",
-      "explanation": "This option does not match the cited source passage for the stem."
+      "misconception": "Confuses a condition sildenafil can cause with one it treats.",
+      "explanation": "Ischemic priapism is a painful, prolonged erection, a recognized adverse effect of sildenafil, treated with aspiration and phenylephrine."
     },
     {
       "label": "C",
-      "text": "Only CKD filtration failure without sildenafil roles named",
+      "text": "Male-pattern hair loss",
       "isCorrect": false,
-      "misconception": "Wrong concept for this stem; does not match the cited passage.",
-      "explanation": "This option does not match the cited source passage for the stem."
+      "misconception": "Links every male sexual-health drug to androgen-driven hair loss.",
+      "explanation": "Male-pattern hair loss is androgen-driven and treated with finasteride or minoxidil; sildenafil does not act on hair follicles."
     },
     {
       "label": "D",
-      "text": "Only tuberculosis without erectile-dysfunction indications",
+      "text": "Testosterone deficiency",
       "isCorrect": false,
-      "misconception": "Wrong concept for this stem; does not match the cited passage.",
-      "explanation": "This option does not match the cited source passage for the stem."
+      "misconception": "Assumes an erection drug treats the underlying androgen deficiency.",
+      "explanation": "Testosterone deficiency is treated with testosterone replacement; sildenafil improves erections but does not raise testosterone."
     },
     {
       "label": "E",
-      "text": "Only spasticity from MS without ED labeling in the text",
+      "text": "Pubertal gynecomastia",
       "isCorrect": false,
-      "misconception": "Wrong concept for this stem; does not match the cited passage.",
-      "explanation": "This option does not match the cited source passage for the stem."
+      "misconception": "Groups every male hormonal complaint under erectile treatment.",
+      "explanation": "Pubertal gynecomastia usually regresses on its own and, if persistent, may need tamoxifen or surgery; sildenafil does not affect breast tissue."
     }
   ],
-  "context": "Learning objective: recall sildenafil erectile dysfunction use from the cited FOSS source.",
+  "context": "Learning objective: Sildenafil treats erectile dysfunction in men, the inability to get or keep an erection.",
   "cite": "medlineplus-sildenafil#sildenafil-uses",
   "publicUsmle": {
     "schemaVersion": 1,
@@ -65,20 +65,6 @@
         "cls": "foss",
         "id": "us-gov"
       }
-    },
-    "media": {
-      "kind": "asset",
-      "assetId": "pharm-drug-classes-v1",
-      "job": "compare-table",
-      "showWhen": "after-reveal",
-      "licence": {
-        "cls": "foss",
-        "id": "cc-by-4.0"
-      },
-      "attribution": "MD3 contributors",
-      "contentHash": "sha256:0660ff11235451eff9a2718dd975d64fa61483b220682b17bd82c8050fd4bceb"
     }
-  },
-  "imageUrl": "/figures/usmle/step1/pharm-drug-classes-v1.svg",
-  "imageCaption": "High-yield FOSS drug-class map from MedlinePlus labels."
+  }
 }

@@ -11,45 +11,45 @@
   ],
   "questionType": "mechanism",
   "difficulty": "easy",
-  "stem": "Allopurinol is used to treat which uric-acid crystal joint disease?",
+  "stem": "Allopurinol is used to treat which of the following joint diseases?",
   "options": [
     {
       "label": "A",
-      "text": "Only congenital heart disease from rubella infection",
+      "text": "Rheumatoid arthritis",
       "isCorrect": false,
-      "misconception": "Wrong concept for this stem; does not match the cited passage.",
-      "explanation": "This option does not match the cited source passage for the stem."
+      "misconception": "Treats allopurinol as a general antiarthritic drug rather than a urate-lowering agent.",
+      "explanation": "Rheumatoid arthritis is an autoimmune synovitis treated with DMARDs such as methotrexate; allopurinol has no role."
     },
     {
       "label": "B",
-      "text": "Only mumps orchitis without any crystal joint disease",
+      "text": "Knee osteoarthritis",
       "isCorrect": false,
-      "misconception": "Wrong concept for this stem; does not match the cited passage.",
-      "explanation": "This option does not match the cited source passage for the stem."
+      "misconception": "Assumes any chronic joint pain in an older adult responds to allopurinol.",
+      "explanation": "Osteoarthritis is degenerative cartilage loss managed with analgesics, exercise and joint replacement, not urate lowering."
     },
     {
       "label": "C",
-      "text": "Only diphtheria neuropathy without uric acid roles",
+      "text": "Septic arthritis",
       "isCorrect": false,
-      "misconception": "Wrong concept for this stem; does not match the cited passage.",
-      "explanation": "This option does not match the cited source passage for the stem."
+      "misconception": "Mistakes a hot, swollen infected joint for gout, which allopurinol manages by long-term urate lowering.",
+      "explanation": "Septic arthritis is a joint infection requiring drainage and antibiotics; allopurinol does not treat infection."
     },
     {
       "label": "D",
-      "text": "Gout from uric acid crystal joint disease patterns",
+      "text": "Gouty arthritis",
       "isCorrect": true,
-      "misconception": "None — this option matches the cited source passage for the stem.",
-      "explanation": "This correct choice is supported by the cited FOSS passage."
+      "misconception": "None — allopurinol is used to treat gout.",
+      "explanation": "MedlinePlus lists allopurinol for gout, where uric acid builds up in joints. It is long-term urate-lowering therapy; acute flares are treated with NSAIDs, colchicine or glucocorticoids."
     },
     {
       "label": "E",
-      "text": "Only mortality rates without any antigout drug action",
+      "text": "Calcium pyrophosphate deposition disease",
       "isCorrect": false,
-      "misconception": "Wrong concept for this stem; does not match the cited passage.",
-      "explanation": "This option does not match the cited source passage for the stem."
+      "misconception": "Confuses the two crystal arthropathies; only gout involves uric acid crystals.",
+      "explanation": "CPPD disease (pseudogout) involves calcium pyrophosphate crystals, not urate, so lowering uric acid with allopurinol does not help."
     }
   ],
-  "context": "Learning objective: recall allopurinol, gout from the cited FOSS source.",
+  "context": "Learning objective: Allopurinol is used to treat gout as long-term urate-lowering therapy, not to relieve an acute flare.",
   "cite": "medlineplus-allopurinol#allopurinol-uses",
   "publicUsmle": {
     "schemaVersion": 1,
@@ -66,20 +66,6 @@
         "cls": "foss",
         "id": "us-gov"
       }
-    },
-    "media": {
-      "kind": "asset",
-      "assetId": "pharm-drug-classes-v1",
-      "job": "compare-table",
-      "showWhen": "after-reveal",
-      "licence": {
-        "cls": "foss",
-        "id": "cc-by-4.0"
-      },
-      "attribution": "MD3 contributors",
-      "contentHash": "sha256:0660ff11235451eff9a2718dd975d64fa61483b220682b17bd82c8050fd4bceb"
     }
-  },
-  "imageUrl": "/figures/usmle/step1/pharm-drug-classes-v1.svg",
-  "imageCaption": "High-yield FOSS drug-class map from MedlinePlus labels."
+  }
 }

@@ -11,45 +11,45 @@
   ],
   "questionType": "mechanism",
   "difficulty": "easy",
-  "stem": "Lithium is used to treat and prevent mania in which mood condition?",
+  "stem": "Which drug is used to treat and prevent episodes of mania in bipolar disorder?",
   "options": [
     {
       "label": "A",
-      "text": "Bipolar disorder with manic and depressive mood episodes",
+      "text": "Lithium",
       "isCorrect": true,
-      "misconception": "None — this option matches the cited source passage for the stem.",
-      "explanation": "This correct choice is supported by the cited FOSS passage."
+      "misconception": "None — lithium is a mood stabilizer that treats and prevents bipolar mania.",
+      "explanation": "The label says lithium is used to treat and prevent episodes of mania in people with bipolar disorder."
     },
     {
       "label": "B",
-      "text": "Only coronary angina episodes without psychiatric labeling",
+      "text": "Fluoxetine",
       "isCorrect": false,
-      "misconception": "Wrong concept for this stem; does not match the cited passage.",
-      "explanation": "This option does not match the cited source passage for the stem."
+      "misconception": "Treats an antidepressant as a mood stabilizer for bipolar disorder.",
+      "explanation": "Fluoxetine is an SSRI antidepressant; given alone in bipolar disorder it can precipitate mania rather than prevent it."
     },
     {
       "label": "C",
-      "text": "Only type 1 diabetes episodes without mood-stabilizer indications",
+      "text": "Bupropion",
       "isCorrect": false,
-      "misconception": "Wrong concept for this stem; does not match the cited passage.",
-      "explanation": "This option does not match the cited source passage for the stem."
+      "misconception": "Assumes an activating antidepressant stabilizes mood.",
+      "explanation": "Bupropion is a norepinephrine-dopamine reuptake inhibitor used for depression and smoking cessation; it can trigger mania and does not prevent it."
     },
     {
       "label": "D",
-      "text": "Only influenza antigenic drift episodes without lithium roles",
+      "text": "Buspirone",
       "isCorrect": false,
-      "misconception": "Wrong concept for this stem; does not match the cited passage.",
-      "explanation": "This option does not match the cited source passage for the stem."
+      "misconception": "Confuses an anxiolytic with a mood stabilizer.",
+      "explanation": "Buspirone is a 5-HT1A partial agonist used for generalized anxiety disorder; it has no antimanic or mood-stabilizing effect."
     },
     {
       "label": "E",
-      "text": "Only bacterial colitis episodes without mania prevention uses",
+      "text": "Methylphenidate",
       "isCorrect": false,
-      "misconception": "Wrong concept for this stem; does not match the cited passage.",
-      "explanation": "This option does not match the cited source passage for the stem."
+      "misconception": "Assumes a drug that improves attention also calms manic overactivity.",
+      "explanation": "Methylphenidate is a stimulant for ADHD that raises dopamine and norepinephrine signaling; it can provoke mania rather than treat it."
     }
   ],
-  "context": "Learning objective: recall lithium bipolar mania use from the cited FOSS source.",
+  "context": "Learning objective: Lithium is used to treat and prevent episodes of mania in people with bipolar disorder.",
   "cite": "medlineplus-lithium#lithium-uses",
   "publicUsmle": {
     "schemaVersion": 1,
@@ -66,20 +66,6 @@
         "cls": "foss",
         "id": "us-gov"
       }
-    },
-    "media": {
-      "kind": "asset",
-      "assetId": "pharm-drug-classes-v1",
-      "job": "compare-table",
-      "showWhen": "after-reveal",
-      "licence": {
-        "cls": "foss",
-        "id": "cc-by-4.0"
-      },
-      "attribution": "MD3 contributors",
-      "contentHash": "sha256:0660ff11235451eff9a2718dd975d64fa61483b220682b17bd82c8050fd4bceb"
     }
-  },
-  "imageUrl": "/figures/usmle/step1/pharm-drug-classes-v1.svg",
-  "imageCaption": "High-yield FOSS drug-class map from MedlinePlus labels."
+  }
 }

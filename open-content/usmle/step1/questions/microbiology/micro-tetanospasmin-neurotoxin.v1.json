@@ -15,41 +15,41 @@
   "options": [
     {
       "label": "A",
-      "text": "Tetanospasmin, a neurotoxin that drives tetanus manifestations",
+      "text": "Tetanospasmin, a neurotoxin",
       "isCorrect": true,
-      "misconception": "None — this option matches the cited source passage for the stem.",
-      "explanation": "This correct choice is supported by the cited FOSS passage."
+      "misconception": "None — tetanospasmin is the neurotoxin responsible for tetanus.",
+      "explanation": "CDC states that tetanospasmin is a neurotoxin and is the cause of the clinical manifestations of tetanus."
     },
     {
       "label": "B",
-      "text": "Only diphtheria toxin without tetanus clinical roles",
+      "text": "Tetanolysin, a hemolysin",
       "isCorrect": false,
-      "misconception": "Wrong concept for this stem; does not match the cited passage.",
-      "explanation": "This option does not match the cited source passage for the stem."
+      "misconception": "Picks the other C. tetani exotoxin, assuming both toxins drive the disease.",
+      "explanation": "Tetanolysin is the second C. tetani exotoxin, a hemolysin of uncertain role; it does not produce the rigidity and spasms of tetanus."
     },
     {
       "label": "C",
-      "text": "Only lipid A endotoxin without neurotoxin naming",
+      "text": "Botulinum toxin, a neurotoxin",
       "isCorrect": false,
-      "misconception": "Wrong concept for this stem; does not match the cited passage.",
-      "explanation": "This option does not match the cited source passage for the stem."
+      "misconception": "Confuses the two clostridial neurotoxins, which have opposite clinical effects.",
+      "explanation": "Botulinum toxin blocks acetylcholine release at the neuromuscular junction, causing the flaccid paralysis of botulism rather than spasms."
     },
     {
       "label": "D",
-      "text": "Only cholera enterotoxin without tetanus manifestations",
+      "text": "Diphtheria toxin, an ADP-ribosylating exotoxin",
       "isCorrect": false,
-      "misconception": "Wrong concept for this stem; does not match the cited passage.",
-      "explanation": "This option does not match the cited source passage for the stem."
+      "misconception": "Groups tetanus with diphtheria because both are toxin-mediated diseases prevented by the same vaccines.",
+      "explanation": "Diphtheria toxin ADP-ribosylates elongation factor 2 to halt protein synthesis, causing pseudomembrane and myocarditis, not tetanus."
     },
     {
       "label": "E",
-      "text": "Only botulinum toxin without Pink Book tetanus naming",
+      "text": "Alpha toxin, a lecithinase",
       "isCorrect": false,
-      "misconception": "Wrong concept for this stem; does not match the cited passage.",
-      "explanation": "This option does not match the cited source passage for the stem."
+      "misconception": "Confuses the gas gangrene toxin of C. perfringens with the tetanus toxin.",
+      "explanation": "Alpha toxin is the lecithinase of Clostridium perfringens that destroys cell membranes in gas gangrene; it does not cause tetanus."
     }
   ],
-  "context": "Learning objective: recall tetanospasmin neurotoxin from the cited FOSS source.",
+  "context": "Learning objective: Tetanospasmin is the neurotoxin that causes the clinical manifestations of tetanus.",
   "cite": "cdc-pink-book-tetanus#tetanospasmin-neurotoxin",
   "publicUsmle": {
     "schemaVersion": 1,
@@ -66,20 +66,6 @@
         "cls": "foss",
         "id": "us-gov"
       }
-    },
-    "media": {
-      "kind": "asset",
-      "assetId": "micro-pathogen-virulence-v1",
-      "job": "compare-table",
-      "showWhen": "after-reveal",
-      "licence": {
-        "cls": "foss",
-        "id": "cc-by-4.0"
-      },
-      "attribution": "MD3 contributors",
-      "contentHash": "sha256:e0ca8dcce5538b15d4a9973d8a6934fc8199d41e7059a4d8f0059cc1ec78a22e"
     }
-  },
-  "imageUrl": "/figures/usmle/step1/micro-pathogen-virulence-v1.svg",
-  "imageCaption": "Pathogen/virulence and Pink Book organism map (FOSS draft)."
+  }
 }

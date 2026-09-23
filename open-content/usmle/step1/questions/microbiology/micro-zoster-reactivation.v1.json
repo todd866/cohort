@@ -12,45 +12,45 @@
   ],
   "questionType": "mechanism",
   "difficulty": "easy",
-  "stem": "Shingles illness is caused by which viral process?",
+  "stem": "Shingles is caused by which viral process?",
   "options": [
     {
       "label": "A",
-      "text": "Reactivation of latent varicella-zoster virus after prior chickenpox",
+      "text": "Reactivation of varicella-zoster virus",
       "isCorrect": true,
-      "misconception": "None — this option matches the cited source passage for the stem.",
-      "explanation": "This correct choice is supported by the cited FOSS passage."
+      "misconception": "None — shingles is caused by reactivation of varicella-zoster virus.",
+      "explanation": "CDC states herpes zoster (shingles) is caused by reactivation of varicella-zoster virus that has stayed latent since the earlier infection."
     },
     {
       "label": "B",
-      "text": "Primary infection with a brand-new unrelated RNA virus only",
+      "text": "Reactivation of herpes simplex virus",
       "isCorrect": false,
-      "misconception": "Wrong concept for this stem; does not match the cited passage.",
-      "explanation": "This option does not match the cited source passage for the stem."
+      "misconception": "Knows shingles is a herpesvirus reactivation but picks the wrong herpesvirus.",
+      "explanation": "Herpes simplex reactivation causes recurrent oral or genital herpes; it can mimic a dermatomal rash but is not shingles."
     },
     {
       "label": "C",
-      "text": "Only bacterial superinfection without any viral zoster reactivation",
+      "text": "Primary infection with varicella-zoster virus",
       "isCorrect": false,
-      "misconception": "Wrong concept for this stem; does not match the cited passage.",
-      "explanation": "This option does not match the cited source passage for the stem."
+      "misconception": "Confuses primary VZV infection (chickenpox) with its later reactivation (shingles).",
+      "explanation": "Primary varicella-zoster infection causes chickenpox (varicella); shingles arises later, when the dormant virus reactivates."
     },
     {
       "label": "D",
-      "text": "Only vaccine adjuvant reactions without latent zoster virus roles",
+      "text": "Reactivation of Epstein-Barr virus",
       "isCorrect": false,
-      "misconception": "Wrong concept for this stem; does not match the cited passage.",
-      "explanation": "This option does not match the cited source passage for the stem."
+      "misconception": "Assumes any latent herpesvirus that reactivates can produce shingles.",
+      "explanation": "Epstein-Barr virus causes infectious mononucleosis and is linked to several lymphomas; its reactivation does not cause shingles."
     },
     {
       "label": "E",
-      "text": "Only fungal dermatomal invasion without herpesvirus zoster latency",
+      "text": "Persistent infection with measles virus",
       "isCorrect": false,
-      "misconception": "Wrong concept for this stem; does not match the cited passage.",
-      "explanation": "This option does not match the cited source passage for the stem."
+      "misconception": "Confuses measles, a childhood rash virus with late sequelae, with varicella-zoster virus.",
+      "explanation": "Persistent measles virus infection of the brain causes subacute sclerosing panencephalitis, not a dermatomal vesicular rash."
     }
   ],
-  "context": "Learning objective: recall zoster VZV reactivation from the cited FOSS source.",
+  "context": "Learning objective: Herpes zoster (shingles) is caused by reactivation of varicella-zoster virus, not by a new primary infection.",
   "cite": "cdc-pink-book-zoster#zoster-reactivation",
   "publicUsmle": {
     "schemaVersion": 1,
@@ -67,20 +67,6 @@
         "cls": "foss",
         "id": "us-gov"
       }
-    },
-    "media": {
-      "kind": "asset",
-      "assetId": "micro-pathogen-virulence-v1",
-      "job": "compare-table",
-      "showWhen": "after-reveal",
-      "licence": {
-        "cls": "foss",
-        "id": "cc-by-4.0"
-      },
-      "attribution": "MD3 contributors",
-      "contentHash": "sha256:e0ca8dcce5538b15d4a9973d8a6934fc8199d41e7059a4d8f0059cc1ec78a22e"
     }
-  },
-  "imageUrl": "/figures/usmle/step1/micro-pathogen-virulence-v1.svg",
-  "imageCaption": "Pathogen/virulence and Pink Book organism map (FOSS draft)."
+  }
 }

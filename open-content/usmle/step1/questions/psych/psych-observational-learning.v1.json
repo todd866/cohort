@@ -10,45 +10,45 @@
   ],
   "questionType": "mechanism",
   "difficulty": "easy",
-  "stem": "Observational learning occurs when a person acquires a behavior primarily by which route?",
+  "stem": "A 4-year-old watches a video of an adult punching an inflatable doll. Left alone with the same doll minutes later, he punches it the same way. Which process best explains his behavior?",
   "options": [
     {
       "label": "A",
-      "text": "Watching others and then imitating them",
+      "text": "Observational learning",
       "isCorrect": true,
-      "misconception": "None; observational learning is watching then imitating/modeling.",
-      "explanation": "OpenStax describes watching others and imitating/modeling."
+      "misconception": "None — the boy learned by watching and imitating a model.",
+      "explanation": "Observational learning is learning by watching others and then imitating, or modeling, what they do or say, as the boy copies the adult."
     },
     {
       "label": "B",
-      "text": "Only by pairing UCS and CS with no model",
+      "text": "Classical conditioning",
       "isCorrect": false,
-      "misconception": "Classical conditioning is stimulus association.",
-      "explanation": "Observational learning uses models."
+      "misconception": "Confuses modeling with classical stimulus pairing.",
+      "explanation": "Classical conditioning pairs a neutral stimulus with one that triggers a reflex; the boy's behavior came from a model, not a stimulus pairing."
     },
     {
       "label": "C",
-      "text": "By beta-oxidation of fatty acids",
+      "text": "Operant conditioning",
       "isCorrect": false,
-      "misconception": "Biochem — does not match the cited teaching point.",
-      "explanation": "This option does not match the cited source passage for the stem."
+      "misconception": "Assumes new behavior needs reinforcement of one's own responses.",
+      "explanation": "Operant conditioning shapes behavior through its consequences; nothing rewarded or punished the boy's punching before he copied the adult."
     },
     {
       "label": "D",
-      "text": "By p53-triggered apoptosis",
+      "text": "Insight learning",
       "isCorrect": false,
-      "misconception": "Cell biology — does not match the cited teaching point.",
-      "explanation": "This option does not match the cited source passage for the stem."
+      "misconception": "Confuses copying a model with solving a problem through insight.",
+      "explanation": "Insight learning is a sudden grasp of a problem's solution; the boy solved no problem but copied what he saw."
     },
     {
       "label": "E",
-      "text": "By ATP synthase proton flux alone",
+      "text": "Stimulus generalization",
       "isCorrect": false,
-      "misconception": "Biochem — does not match the cited teaching point.",
-      "explanation": "This option does not match the cited source passage for the stem."
+      "misconception": "Confuses copying a model with a conditioned response spreading to similar stimuli.",
+      "explanation": "Stimulus generalization is a conditioned response spreading to stimuli like the original one; nothing here was conditioned."
     }
   ],
-  "context": "Learning objective: observational learning via modeling.",
+  "context": "Learning objective: In observational learning, people learn by watching others and then imitating, or modeling, what they do or say.",
   "cite": "openstax-psychology-2e#observational-learning-imitating",
   "publicUsmle": {
     "schemaVersion": 1,

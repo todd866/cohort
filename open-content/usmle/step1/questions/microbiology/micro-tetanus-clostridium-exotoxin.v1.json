@@ -11,45 +11,45 @@
   ],
   "questionType": "mechanism",
   "difficulty": "easy",
-  "stem": "Tetanus is an acute illness caused by an exotoxin from which bacterium?",
+  "stem": "A patient develops muscle stiffness that begins in the jaw and neck, then becomes generalized rigidity with convulsive spasms of skeletal muscles. An exotoxin produced by which bacterium causes this disease?",
   "options": [
     {
       "label": "A",
-      "text": "Only Corynebacterium diphtheriae disease without tetanus labeling",
+      "text": "Corynebacterium diphtheriae",
       "isCorrect": false,
-      "misconception": "Wrong concept for this stem; does not match the cited passage.",
-      "explanation": "This option does not match the cited source passage for the stem."
+      "misconception": "Groups the toxin-mediated diseases prevented by DTaP together and picks the wrong organism.",
+      "explanation": "Corynebacterium diphtheriae exotoxin inhibits protein synthesis, causing pharyngeal pseudomembrane, myocarditis and neuropathy, not generalized rigidity."
     },
     {
       "label": "B",
-      "text": "Clostridium tetani producing an exotoxin that drives disease",
+      "text": "Clostridium tetani",
       "isCorrect": true,
-      "misconception": "None — this option matches the cited source passage for the stem.",
-      "explanation": "This correct choice is supported by the cited FOSS passage."
+      "misconception": "None — an exotoxin of Clostridium tetani causes tetanus.",
+      "explanation": "CDC states tetanus is caused by an exotoxin of Clostridium tetani, with stiffness that begins in the jaw (lockjaw) and neck and then becomes generalized."
     },
     {
       "label": "C",
-      "text": "Only Bordetella pertussis disease without tetanus exotoxin roles",
+      "text": "Clostridium botulinum",
       "isCorrect": false,
-      "misconception": "Wrong concept for this stem; does not match the cited passage.",
-      "explanation": "This option does not match the cited source passage for the stem."
+      "misconception": "Confuses the two clostridial neurotoxin diseases; botulism is flaccid, tetanus is rigid.",
+      "explanation": "Clostridium botulinum toxin blocks acetylcholine release, producing descending flaccid paralysis, the opposite of rigidity and spasms."
     },
     {
       "label": "D",
-      "text": "Only Neisseria meningitidis disease without tetanus relevance",
+      "text": "Clostridium perfringens",
       "isCorrect": false,
-      "misconception": "Wrong concept for this stem; does not match the cited passage.",
-      "explanation": "This option does not match the cited source passage for the stem."
+      "misconception": "Assumes any wound-associated Clostridium species can cause generalized rigidity.",
+      "explanation": "Clostridium perfringens toxins cause gas gangrene and food poisoning; they do not produce lockjaw or generalized muscle spasms."
     },
     {
       "label": "E",
-      "text": "Only Streptococcus pneumoniae disease without tetanus toxin naming",
+      "text": "Bordetella pertussis",
       "isCorrect": false,
-      "misconception": "Wrong concept for this stem; does not match the cited passage.",
-      "explanation": "This option does not match the cited source passage for the stem."
+      "misconception": "Mistakes the violent coughing paroxysms of whooping cough for skeletal muscle spasms.",
+      "explanation": "Bordetella pertussis toxins cause whooping cough with paroxysmal coughing; they do not cause skeletal muscle rigidity."
     }
   ],
-  "context": "Learning objective: recall tetanus Clostridium tetani exotoxin from the cited FOSS source.",
+  "context": "Learning objective: Tetanus is caused by a Clostridium tetani exotoxin and presents with jaw and neck stiffness that progresses to generalized rigidity and spasms.",
   "cite": "cdc-pink-book-tetanus#tetanus-organism-exotoxin",
   "publicUsmle": {
     "schemaVersion": 1,
@@ -66,20 +66,6 @@
         "cls": "foss",
         "id": "us-gov"
       }
-    },
-    "media": {
-      "kind": "asset",
-      "assetId": "micro-pathogen-virulence-v1",
-      "job": "compare-table",
-      "showWhen": "after-reveal",
-      "licence": {
-        "cls": "foss",
-        "id": "cc-by-4.0"
-      },
-      "attribution": "MD3 contributors",
-      "contentHash": "sha256:e0ca8dcce5538b15d4a9973d8a6934fc8199d41e7059a4d8f0059cc1ec78a22e"
     }
-  },
-  "imageUrl": "/figures/usmle/step1/micro-pathogen-virulence-v1.svg",
-  "imageCaption": "Pathogen/virulence and Pink Book organism map (FOSS draft)."
+  }
 }

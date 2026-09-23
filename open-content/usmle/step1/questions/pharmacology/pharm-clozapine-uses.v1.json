@@ -14,41 +14,41 @@
   "options": [
     {
       "label": "A",
-      "text": "Schizophrenia affecting how a person thinks, feels, or behaves",
+      "text": "Schizophrenia",
       "isCorrect": true,
-      "misconception": "None — this option matches the cited source passage for the stem.",
-      "explanation": "This correct choice is supported by the cited FOSS passage."
+      "misconception": "None — clozapine is an atypical antipsychotic used for schizophrenia.",
+      "explanation": "The label states that clozapine, an atypical antipsychotic, is used to treat schizophrenia in certain people."
     },
     {
       "label": "B",
-      "text": "Only tuberculosis without antipsychotic indications listed here",
+      "text": "Obsessive-compulsive disorder",
       "isCorrect": false,
-      "misconception": "Wrong concept for this stem; does not match the cited passage.",
-      "explanation": "This option does not match the cited source passage for the stem."
+      "misconception": "Confuses clozapine with clomipramine, the tricyclic used for OCD.",
+      "explanation": "Obsessive-compulsive disorder is treated with SSRIs or clomipramine; clozapine is not used for it and can itself provoke obsessive-compulsive symptoms."
     },
     {
       "label": "C",
-      "text": "Only BPH urinary symptoms without psychiatric labeling present",
+      "text": "Agoraphobia",
       "isCorrect": false,
-      "misconception": "Wrong concept for this stem; does not match the cited passage.",
-      "explanation": "This option does not match the cited source passage for the stem."
+      "misconception": "Assumes severe anxiety calls for an antipsychotic.",
+      "explanation": "Agoraphobia is an anxiety disorder treated with SSRIs and exposure-based cognitive behavioral therapy; an antipsychotic such as clozapine has no role."
     },
     {
       "label": "D",
-      "text": "Only malaria attacks without clozapine roles in the label",
+      "text": "Attention-deficit/hyperactivity disorder",
       "isCorrect": false,
-      "misconception": "Wrong concept for this stem; does not match the cited passage.",
-      "explanation": "This option does not match the cited source passage for the stem."
+      "misconception": "Assumes any psychiatric disorder responds to an antipsychotic.",
+      "explanation": "ADHD is treated with stimulants such as methylphenidate or with atomoxetine; clozapine, a sedating antipsychotic, is not used."
     },
     {
       "label": "E",
-      "text": "Only erectile dysfunction without schizophrenia labeling present",
+      "text": "Bulimia nervosa",
       "isCorrect": false,
-      "misconception": "Wrong concept for this stem; does not match the cited passage.",
-      "explanation": "This option does not match the cited source passage for the stem."
+      "misconception": "Assumes a drug for severe mental illness also treats eating disorders.",
+      "explanation": "Bulimia nervosa is treated with cognitive behavioral therapy and fluoxetine; clozapine is not used and tends to increase appetite and weight."
     }
   ],
-  "context": "Learning objective: recall clozapine schizophrenia use from the cited FOSS source.",
+  "context": "Learning objective: Clozapine is an atypical antipsychotic used to treat schizophrenia in certain people.",
   "cite": "medlineplus-clozapine#clozapine-uses",
   "publicUsmle": {
     "schemaVersion": 1,
@@ -65,20 +65,6 @@
         "cls": "foss",
         "id": "us-gov"
       }
-    },
-    "media": {
-      "kind": "asset",
-      "assetId": "pharm-drug-classes-v1",
-      "job": "compare-table",
-      "showWhen": "after-reveal",
-      "licence": {
-        "cls": "foss",
-        "id": "cc-by-4.0"
-      },
-      "attribution": "MD3 contributors",
-      "contentHash": "sha256:0660ff11235451eff9a2718dd975d64fa61483b220682b17bd82c8050fd4bceb"
     }
-  },
-  "imageUrl": "/figures/usmle/step1/pharm-drug-classes-v1.svg",
-  "imageCaption": "High-yield FOSS drug-class map from MedlinePlus labels."
+  }
 }

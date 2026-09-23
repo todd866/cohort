@@ -15,41 +15,41 @@
   "options": [
     {
       "label": "A",
-      "text": "Only airborne lingering inside rooms for two hours",
+      "text": "Mosquito bites and tick bites",
       "isCorrect": false,
-      "misconception": "Measles. (does not match the cited teaching point).",
-      "explanation": "This option does not match the cited source passage for the stem."
+      "misconception": "Assumes a seasonal infection must be vector-borne; rotavirus peaks in fall and winter with no vector.",
+      "explanation": "Arthropod bites spread arboviruses and Lyme disease; rotavirus is an enteric virus spread through stool, contact and contaminated objects."
     },
     {
       "label": "B",
-      "text": "Person-to-person contact and fomite spread routes",
+      "text": "Person-to-person contact and fomites",
       "isCorrect": true,
-      "misconception": "None; fecal-oral, person-to-person, fomites.",
-      "explanation": "CDC: fecal-oral, person-to-person and fomites."
+      "misconception": "None — rotavirus spreads fecal-oral, person-to-person and by fomites.",
+      "explanation": "CDC lists rotavirus transmission as fecal-oral, person-to-person and via fomites, from a reservoir in the human GI tract and stool."
     },
     {
       "label": "C",
-      "text": "Only sexual contact spread of oncogenic HPV genotypes",
+      "text": "Blood transfusion and needle sharing",
       "isCorrect": false,
-      "misconception": "HPV. (does not match the cited teaching point).",
-      "explanation": "This option does not match the cited source passage for the stem."
+      "misconception": "Confuses enteric viral spread with bloodborne transmission.",
+      "explanation": "Transfusion and shared needles spread bloodborne viruses such as hepatitis C and HIV, not an enteric virus like rotavirus."
     },
     {
       "label": "D",
-      "text": "Only latent zoster reactivation in a single dermatome",
+      "text": "Sexual contact and vertical transmission",
       "isCorrect": false,
-      "misconception": "VZV. (does not match the cited teaching point).",
-      "explanation": "This option does not match the cited source passage for the stem."
+      "misconception": "Confuses spread among young children with the sexual or vertical routes of other infections.",
+      "explanation": "Sexual and mother-to-infant routes spread HIV, hepatitis B and syphilis; rotavirus spreads from stool to mouth by hands and surfaces."
     },
     {
       "label": "E",
-      "text": "Only transfusion of packed red blood cell units",
+      "text": "Animal bites and scratches",
       "isCorrect": false,
-      "misconception": "Blood-borne. (does not match the cited teaching point).",
-      "explanation": "This option does not match the cited source passage for the stem."
+      "misconception": "Assumes a common infant infection comes from animal exposure rather than human stool.",
+      "explanation": "Bites and scratches transmit rabies and Bartonella; rotavirus infection comes from human stool, direct contact and contaminated surfaces."
     }
   ],
-  "context": "Learning objective: recall rotavirus, transmission from the cited FOSS source.",
+  "context": "Learning objective: Rotavirus has a human GI reservoir and spreads fecal-oral, person-to-person and via fomites.",
   "cite": "cdc-pink-book-rotavirus#rota-fecal-oral",
   "publicUsmle": {
     "schemaVersion": 1,
@@ -66,20 +66,6 @@
         "cls": "foss",
         "id": "us-gov"
       }
-    },
-    "media": {
-      "kind": "asset",
-      "assetId": "micro-pathogen-virulence-v1",
-      "job": "compare-table",
-      "showWhen": "after-reveal",
-      "licence": {
-        "cls": "foss",
-        "id": "cc-by-4.0"
-      },
-      "attribution": "MD3 contributors",
-      "contentHash": "sha256:e0ca8dcce5538b15d4a9973d8a6934fc8199d41e7059a4d8f0059cc1ec78a22e"
     }
-  },
-  "imageUrl": "/figures/usmle/step1/micro-pathogen-virulence-v1.svg",
-  "imageCaption": "Pathogen/virulence and Pink Book organism map (FOSS draft)."
+  }
 }

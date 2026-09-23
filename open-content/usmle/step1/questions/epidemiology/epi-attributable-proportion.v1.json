@@ -14,41 +14,41 @@
   "options": [
     {
       "label": "A",
-      "text": "Only the plasma half-life of digoxin tablets",
+      "text": "Strength of association between an exposure and a disease",
       "isCorrect": false,
-      "misconception": "Pharm distractor — does not match the cited teaching point.",
-      "explanation": "Wrong domain; see the cited source passage for detail."
+      "misconception": "Confuses a measure of public health impact with a measure of association such as the risk ratio.",
+      "explanation": "Strength of association is what the risk ratio or odds ratio quantifies; the attributable proportion instead places an association in a public health context."
     },
     {
       "label": "B",
-      "text": "Only the molecular weight of endotoxin lipid A",
+      "text": "Frequency of new cases in a population over time",
       "isCorrect": false,
-      "misconception": "Micro distractor — does not match the cited teaching point.",
-      "explanation": "Wrong domain; see the cited source passage for detail."
+      "misconception": "Confuses an impact measure with incidence, a measure of new-case frequency.",
+      "explanation": "The frequency of new cases over a period is incidence, a measure of disease occurrence rather than of an exposure's impact."
     },
     {
       "label": "C",
-      "text": "Public health impact of a causative exposure factor",
+      "text": "Public health impact of a causative factor",
       "isCorrect": true,
-      "misconception": "None; attributable proportion = public health impact.",
-      "explanation": "CDC: measure of the public health impact of a causative factor."
+      "misconception": "None — attributable proportion quantifies a causative factor's public health impact.",
+      "explanation": "CDC defines the attributable proportion, also called the attributable risk percent, as a measure of the public health impact of a causative factor."
     },
     {
       "label": "D",
-      "text": "Only the incubation day-range of measles virus",
+      "text": "Proportion of cases who die from the condition",
       "isCorrect": false,
-      "misconception": "Measles distractor — does not match the cited teaching point.",
-      "explanation": "Wrong domain; see the cited source passage for detail."
+      "misconception": "Confuses an exposure-impact measure with case-fatality, a measure of severity.",
+      "explanation": "The proportion of cases who die from a condition is the case-fatality rate, which describes how severe a disease is, not an exposure's impact."
     },
     {
       "label": "E",
-      "text": "Only the polysaccharide serogroup of meningococcus",
+      "text": "Probability that a test detects disease in affected people",
       "isCorrect": false,
-      "misconception": "Micro distractor — does not match the cited teaching point.",
-      "explanation": "Wrong domain; see the cited source passage for detail."
+      "misconception": "Confuses an epidemiologic impact measure with the sensitivity of a diagnostic test.",
+      "explanation": "The probability that a test detects disease in people who have it is sensitivity, a property of a diagnostic test."
     }
   ],
-  "context": "Learning objective: attributable proportion.",
+  "context": "Learning objective: The attributable proportion (attributable risk percent) measures the public health impact of a causative factor.",
   "cite": "cdc-epi-measures-of-association#attributable-proportion",
   "publicUsmle": {
     "schemaVersion": 1,

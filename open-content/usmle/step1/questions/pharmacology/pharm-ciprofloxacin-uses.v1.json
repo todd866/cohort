@@ -11,45 +11,45 @@
   ],
   "questionType": "mechanism",
   "difficulty": "easy",
-  "stem": "Ciprofloxacin is used to treat or prevent which pathogen class of illness?",
+  "stem": "Ciprofloxacin is used to treat or prevent which of the following sets of infections?",
   "options": [
     {
       "label": "A",
-      "text": "Only viral measles prodromes without bacterial disease",
+      "text": "Syphilis, Lyme disease and streptococcal pharyngitis",
       "isCorrect": false,
-      "misconception": "Wrong concept for this stem; does not match the cited passage.",
-      "explanation": "This option does not match the cited source passage for the stem."
+      "misconception": "Assumes a broad-spectrum antibiotic covers every bacterial infection, including spirochetes and streptococci.",
+      "explanation": "Syphilis, Lyme disease and strep pharyngitis are treated with penicillin, doxycycline or amoxicillin; ciprofloxacin is not an effective choice for any of them."
     },
     {
       "label": "B",
-      "text": "Certain bacterial illnesses such as pneumonia and others",
+      "text": "Typhoid fever, infectious diarrhea and osteomyelitis",
       "isCorrect": true,
-      "misconception": "None — this option matches the cited source passage for the stem.",
-      "explanation": "This correct choice is supported by the cited FOSS passage."
+      "misconception": "None — ciprofloxacin treats certain bacterial infections such as typhoid and infectious diarrhea.",
+      "explanation": "MedlinePlus lists ciprofloxacin for certain bacterial infections, including pneumonia, typhoid fever, infectious diarrhea and skin, bone and joint infections."
     },
     {
       "label": "C",
-      "text": "Only congenital rubella syndrome without bacterial roles",
+      "text": "Oral thrush, tinea pedis and aspergillosis",
       "isCorrect": false,
-      "misconception": "Wrong concept for this stem; does not match the cited passage.",
-      "explanation": "This option does not match the cited source passage for the stem."
+      "misconception": "Assumes a broad-spectrum antibiotic also covers fungal infections.",
+      "explanation": "Thrush, tinea pedis and aspergillosis are fungal infections treated with antifungals; ciprofloxacin has no antifungal activity."
     },
     {
       "label": "D",
-      "text": "Only mumps orchitis without any antibacterial indication",
+      "text": "Malaria, giardiasis and toxoplasmosis",
       "isCorrect": false,
-      "misconception": "Wrong concept for this stem; does not match the cited passage.",
-      "explanation": "This option does not match the cited source passage for the stem."
+      "misconception": "Assumes a fluoroquinolone's antibacterial spectrum extends to protozoa.",
+      "explanation": "Malaria, giardiasis and toxoplasmosis are protozoal infections that need antiprotozoal drugs, not a fluoroquinolone antibacterial."
     },
     {
       "label": "E",
-      "text": "Only diphtheria toxin neutralization without antibiotics",
+      "text": "Clostridioides difficile colitis, anaerobic lung abscess and actinomycosis",
       "isCorrect": false,
-      "misconception": "Wrong concept for this stem; does not match the cited passage.",
-      "explanation": "This option does not match the cited source passage for the stem."
+      "misconception": "Assumes any bacterial infection responds to ciprofloxacin, overlooking its weak anaerobic coverage.",
+      "explanation": "Fluoroquinolones predispose to C. difficile colitis, which needs oral vancomycin or fidaxomicin; ciprofloxacin also lacks the anaerobic coverage abscess and actinomycosis need."
     }
   ],
-  "context": "Learning objective: recall ciprofloxacin, fluoroquinolone from the cited FOSS source.",
+  "context": "Learning objective: Ciprofloxacin treats or prevents certain bacterial infections, such as pneumonia, typhoid fever, infectious diarrhea and skin, bone and joint infections.",
   "cite": "medlineplus-ciprofloxacin#cipro-uses",
   "publicUsmle": {
     "schemaVersion": 1,
@@ -66,20 +66,6 @@
         "cls": "foss",
         "id": "us-gov"
       }
-    },
-    "media": {
-      "kind": "asset",
-      "assetId": "pharm-drug-classes-v1",
-      "job": "compare-table",
-      "showWhen": "after-reveal",
-      "licence": {
-        "cls": "foss",
-        "id": "cc-by-4.0"
-      },
-      "attribution": "MD3 contributors",
-      "contentHash": "sha256:0660ff11235451eff9a2718dd975d64fa61483b220682b17bd82c8050fd4bceb"
     }
-  },
-  "imageUrl": "/figures/usmle/step1/pharm-drug-classes-v1.svg",
-  "imageCaption": "High-yield FOSS drug-class map from MedlinePlus labels."
+  }
 }

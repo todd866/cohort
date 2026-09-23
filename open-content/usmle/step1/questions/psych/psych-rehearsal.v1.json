@@ -11,45 +11,45 @@
   ],
   "questionType": "mechanism",
   "difficulty": "easy",
-  "stem": "In memory research, rehearsal refers to which process?",
+  "stem": "A student reads a 7-digit phone number and silently repeats the digits, one at a time, until she has dialed them. Which memory process is she using?",
   "options": [
     {
       "label": "A",
-      "text": "Lactate dehydrogenase activity",
+      "text": "Priming",
       "isCorrect": false,
-      "misconception": "Biochem — does not match the cited teaching point.",
-      "explanation": "This option does not match the cited source passage for the stem."
+      "misconception": "Confuses deliberate repetition with unconscious priming.",
+      "explanation": "Priming is unconscious facilitation of a response by earlier exposure; her repetition is deliberate and conscious."
     },
     {
       "label": "B",
-      "text": "Irreversible competitive inhibition of enzymes",
+      "text": "Chunking",
       "isCorrect": false,
-      "misconception": "Biochem — does not match the cited teaching point.",
-      "explanation": "This option does not match the cited source passage for the stem."
+      "misconception": "Confuses repetition with grouping items into meaningful chunks.",
+      "explanation": "Chunking groups items into meaningful units, such as splitting a number into blocks; she repeats the digits singly, with no grouping."
     },
     {
       "label": "C",
-      "text": "Conscious repetition of information to be remembered",
+      "text": "Rehearsal",
       "isCorrect": true,
-      "misconception": "None; rehearsal is conscious repetition.",
-      "explanation": "OpenStax: rehearsal is conscious repetition of information to be remembered."
+      "misconception": "None — silent repetition to keep information is rehearsal.",
+      "explanation": "Rehearsal is the conscious repetition of information to be remembered, which is what she does to hold the number until dialing."
     },
     {
       "label": "D",
-      "text": "Pumping protons to the intermembrane space",
+      "text": "Consolidation",
       "isCorrect": false,
-      "misconception": "Biochem — does not match the cited teaching point.",
-      "explanation": "This option does not match the cited source passage for the stem."
+      "misconception": "Confuses holding information briefly with long-term stabilization.",
+      "explanation": "Consolidation stabilizes memories over hours to days after learning; holding a number for seconds by repeating it is not consolidation."
     },
     {
       "label": "E",
-      "text": "Crossing over between homologs",
+      "text": "Interference",
       "isCorrect": false,
-      "misconception": "Meiosis — does not match the cited teaching point.",
-      "explanation": "This option does not match the cited source passage for the stem."
+      "misconception": "Confuses a strategy for remembering with a cause of forgetting.",
+      "explanation": "Interference is forgetting caused by competing information, a cause of memory loss rather than a way to hold on to it."
     }
   ],
-  "context": "Learning objective: rehearsal = conscious repetition.",
+  "context": "Learning objective: Rehearsal is the conscious repetition of information to be remembered.",
   "cite": "openstax-psychology-2e#rehearsal-memory",
   "publicUsmle": {
     "schemaVersion": 1,
