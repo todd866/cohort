@@ -13,6 +13,12 @@
  * failure that cost two release attempts on 2026-09-16.
  *
  * Authored 2026-09-17.
+ *
+ * The eleven broad CAH regions split on 2026-09-22 (cah-cluster-0, 15, 16, 42,
+ * 46, 56, 63, 76, 96, 98, 104) no longer exist. Their entries below are history.
+ * Live children are `cah-cluster-s1-*`. Most keep the name written at the split.
+ * The six entries at the bottom replace a split name that was still a specialty
+ * tag or a section heading.
  */
 
 export interface ClusterNameEntry {
@@ -381,5 +387,29 @@ export const CLUSTER_NAMES: Readonly<Record<string, ClusterNameEntry>> = {
   "cah-cluster-49": {
     name: "Purpura, bruising and bleeding",
     evidence: "Refused a name on a six-front sample that read as abusive head trauma beside thrombotic microangiopathy. All forty fronts say otherwise: ITP, HSP/IgA vasculitis, HUS, meningococcal purpura and non-accidental bruising are one clinical question — a child with petechiae, purpura or bruises, what is it — and the geometry had it right. Strays: two migraine cards, the lethal triad, CMV retinitis.",
+  },
+  "cah-cluster-s1-16-R-R": {
+    name: "Chronic liver disease",
+    evidence: "64 live cards, 2026-09-22. Stored name was Gastroenterology, the week-list tag. Fronts are liver failure, transplant decompensation, hepatitis B, Alagille, alkaline phosphatase of growth, alpha-1 antitrypsin. Files: chronic-liver-disease-management, scaffold-lft-interpretation, cholestasis-workup-alagille.",
+  },
+  "cah-cluster-s1-63-R": {
+    name: "Acute scrotum and foreskin",
+    evidence: "60 live cards, 2026-09-22. Stored name was Surgery. Fronts are torsion, bell-clapper, paraphimosis, phimosis, hydrocele, varicocele, idiopathic scrotal oedema. The sibling leaf is already Groin and scrotum. Files: y3g-week4-surgery-b1/b2/b3.",
+  },
+  "cah-cluster-s1-56-R-R": {
+    name: "Neonatal radiographs",
+    evidence: "50 live cards, 2026-09-22. Stored name was The neonatal cases, a section heading. Fronts are NEC pneumatosis, TTN, RDS, pneumothorax, meconium ileus pattern, double bubble, Pierre Robin profile. Files: week1-radiology-chest, y3g-week2-medical-imaging-in-paediatrics.",
+  },
+  "cah-cluster-s1-42-R": {
+    name: "Growth charts and centiles",
+    evidence: "50 live cards, 2026-09-22. Stored name was Growth · The paediatric history. Twenty-two cards are tagged Growth: mid-parental height, BMI centiles, crossing two centile lines, growth velocity, faltering. The paediatric history is three cards.",
+  },
+  "cah-cluster-s1-0-L-L-L": {
+    name: "Pigmented lesions and neurofibromatosis",
+    evidence: "26 live cards, 2026-09-22. Stored name was Dermatology · The naked-eye framework, a section heading. Fronts are café-au-lait, Crowe sign, congenital melanocytic naevus, ugly duckling, plantar warts. Files: pigmented-lesions-melanoma, neurocutaneous-syndromes.",
+  },
+  "cah-cluster-s1-0-L-R": {
+    name: "Impetigo, tinea and scabies",
+    evidence: "68 live cards, 2026-09-22. Stored name was Rashes and skin lesions · Dermatology. Files impetigo-sssss (17), tinea-children (10), scabies-children (8). Fronts are golden crust, kerion, nocturnal burrows, school exclusion, SSSS.",
   },
 };

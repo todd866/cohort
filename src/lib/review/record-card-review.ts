@@ -697,6 +697,8 @@ function computeCardReviewTransition(input: {
     card.rotation,
     now,
     coreSkillCap,
+    undefined,
+    card.complexity,
   );
 
   const currentStrength = existingProgress?.retrievalStrength ?? 0;
@@ -706,6 +708,7 @@ function computeCardReviewTransition(input: {
     existingProgress?.totalReviews ?? 0,
     daysSinceLastReview,
     currentStabilityDays,
+    card.complexity,
   );
   const computedNextDueAt = computeNextDueAt(
     newRetrievalStrength,

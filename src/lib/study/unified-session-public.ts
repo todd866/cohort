@@ -4,6 +4,11 @@ import { parseCohortFeedProfile } from '@/lib/cohort/feed-profile';
 import { mapStep1ItemToUnified } from '@/lib/cohort/public-review-map';
 import { publicSessionPlan } from '@/lib/cohort/public-session-plan';
 import { USMLE_STEP1_OPEN_ROTATION } from '@/lib/usmle/raw-question-boundary';
+import { findManyCards, ownerPrivateOrSharedCardScope } from '@/lib/cards/read-repository.server';
+import {
+  COPYRIGHT_STEP1_CARD_WHERE,
+  loadCopyrightStep1Supplement,
+} from '@/lib/study/copyright-step1-supplement';
 import {
   createStep1Session,
   Step1ApiError,
@@ -55,6 +60,14 @@ export async function tryPublicCorpusSession(
         hook: index < result.hookItemCount,
       }),
     );
+    const supplement = await loadCopyrightStep1Supplement({
+      imageTier: ctx.imageTier,
+      publicSurface: ctx.publicSurface,
+      excludeCardIds: ctx.clientExcludeCardSet,
+      seed: ctx.userId,
+      load: () => loadPrivateStep1Store(ctx.userId),
+    }).catch(() => []);
+    items.push(...supplement);
 
     logSessionDiagnostic(ctx, {
       path: 'public',
@@ -68,8 +81,8 @@ export async function tryPublicCorpusSession(
         totalItems: items.length,
         version: 'public-step1',
         composition: {
-          cards: 0,
-          questions: items.length,
+          cards: items.filter((item) => item.type === 'card').length,
+          questions: items.filter((item) => item.type === 'question').length,
           groups: 0,
           snippets: 0,
         },
@@ -87,4 +100,35 @@ export async function tryPublicCorpusSession(
     }
     throw error;
   }
+}
+
+async function loadPrivateStep1Store(userId: string) {
+  const [cards, questions] = await Promise.all([
+    findManyCards(ownerPrivateOrSharedCardScope(userId), {
+      where: COPYRIGHT_STEP1_CARD_WHERE,
+      select: {
+        id: true,
+        front: true,
+        back: true,
+        context: true,
+        topics: true,
+      },
+      orderBy: { id: 'asc' },
+      take: 24,
+    }),
+    prisma.question.findMany({
+      where: { rotation: 'usmle-step1' },
+      select: {
+        id: true,
+        stem: true,
+        context: true,
+        difficulty: true,
+        topics: true,
+        options: true,
+      },
+      orderBy: { id: 'asc' },
+      take: 12,
+    }),
+  ]);
+  return { cards, questions };
 }

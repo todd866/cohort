@@ -22,7 +22,9 @@ function httpsUrl(value: unknown): boolean {
 /** Structural admission only; source accuracy and pixel matching still require review.
  * Keep the same minimum contract in scripts/export/build_medical_figures.py.
  */
-export function validateOriginalFigureScaffold(value: unknown, figureId: string): void {
+export function validateOriginalFigureScaffold(value: unknown, figureId: string,
+  expected?: { kind: 'conceptual' | 'spatial-anatomy'; sha256: string },
+): void {
   function requireValue(condition: unknown, detail: string): asserts condition {
     if (!condition) throw new Error(`Original figures: ${figureId}: invalid scaffold: ${detail}`);
   }
@@ -32,7 +34,8 @@ export function validateOriginalFigureScaffold(value: unknown, figureId: string)
   requireValue(('figureId' in value || 'id' in value)
     && (!('figureId' in value) || value.figureId === figureId)
     && (!('id' in value) || value.id === figureId), 'exact figure identity required');
-  requireValue(value.kind === 'conceptual', 'conceptual kind required; spatial anatomy is held');
+  requireValue(value.kind === 'conceptual' || value.kind === 'spatial-anatomy', 'supported kind required');
+  requireValue(!expected || value.kind === expected.kind, 'kind must match manifest');
   requireValue(Array.isArray(value.sourceFacts) && value.sourceFacts.length > 0, 'sourceFacts required');
   for (const fact of value.sourceFacts) {
     requireValue(record(fact) && text(fact.fact), 'named clinical source fact required');
@@ -66,4 +69,20 @@ export function validateOriginalFigureScaffold(value: unknown, figureId: string)
   requireValue(Array.isArray(value.forbiddenAnatomy) && value.forbiddenAnatomy.length > 0
     && value.forbiddenAnatomy.every(text), 'forbiddenAnatomy required');
   requireValue(record(value.validation) && nonempty(value.validation), 'nonempty validation record required');
+  if (value.kind === 'spatial-anatomy') {
+    const review = value.validation;
+    requireValue(expected && /^[a-f0-9]{64}$/.test(expected.sha256), 'anatomy requires manifest hash binding');
+    requireValue(text(review.reviewer) && text(review.notes), 'anatomy reviewer and notes required');
+    const reviewedAt = review.reviewedAt;
+    const parsed = typeof reviewedAt === 'string' && !reviewedAt.startsWith('0000') && /^\d{4}-\d{2}-\d{2}$/.test(reviewedAt)
+      ? new Date(`${reviewedAt}T00:00:00Z`) : new Date(NaN);
+    requireValue(Number.isFinite(parsed.getTime()) && parsed.toISOString().slice(0, 10) === reviewedAt,
+      'valid anatomy reviewedAt required');
+    for (const key of ['baseSha256', 'annotationSha256', 'finalSha256']) {
+      requireValue(typeof review[key] === 'string' && /^[a-f0-9]{64}$/.test(review[key]), `valid anatomy ${key} required`);
+    }
+    requireValue(review.finalSha256 === expected.sha256, 'anatomy finalSha256 must match figure sha256');
+    requireValue(record(review.checks) && ['sourceComparison', 'blindEndpoints', 'leaders', 'fullSize', 'mobile375']
+      .every(key => (review.checks as Record<string, unknown>)[key] === true), 'all anatomy review checks must be true');
+  }
 }

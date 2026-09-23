@@ -83,6 +83,6 @@ describe('projectCuratedQuestionForBulk', () => {
       imageRole: 'prompt' as const,
     } satisfies CuratedQuestion;
 
-    expect(projectCuratedQuestionForBulk(question)).toMatchObject({ imageRole: 'prompt' });
+    expect(projectCuratedQuestionForBulk(question)).toMatchObject({ imageRole: 'prompt', clipId: null, clipRole: null });
   });
 });

@@ -211,7 +211,12 @@ export function buildPrimaryCardDraft(
     ? question.topics
     : ['mcq'];
 
-  const variants = coerceCorrectVariants(question.correctVariants);
+  // Option labels only make sense beside the MCQ's choices. They must not
+  // beat a clinical answer merely because they are the shortest variant.
+  const optionLabels = new Set(scorableOptions.map((option) => option.label.trim().toLowerCase()));
+  const variants = coerceCorrectVariants(question.correctVariants).filter(
+    (variant) => !optionLabels.has(variant.trim().toLowerCase()),
+  );
   const chosen = chooseClozeAnswer(correctOption.text, variants);
   if (!chosen) return null;
   const { text: clozeAnswerText, fromVariant } = chosen;

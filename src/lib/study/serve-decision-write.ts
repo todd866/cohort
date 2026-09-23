@@ -241,6 +241,7 @@ function buildRow(
     || item.predictedRecallStatus
     || item.challengePolicyVersion
     || item.noveltyPolicyVersion
+    || item.noveltyQuotaRequired !== undefined
     || item.conceptThreadPolicyVersion
     || item.conditioning
     ? {
@@ -260,6 +261,11 @@ function buildRow(
         noveltyPolicyVersion: item.noveltyPolicyVersion,
         recentNeighborSimilarity: item.recentNeighborSimilarity ?? null,
         noveltyPenalty: item.noveltyPenalty ?? null,
+      } : {}),
+      ...(item.noveltyQuotaRequired !== undefined ? {
+        firstSightAtSelection: item.firstSightAtSelection ?? false,
+        noveltyQuotaRequired: item.noveltyQuotaRequired,
+        noveltyQuotaSelected: item.noveltyQuotaSelected ?? 0,
       } : {}),
       ...(item.conceptThreadPolicyVersion ? {
         conceptThreadPolicyVersion: item.conceptThreadPolicyVersion,

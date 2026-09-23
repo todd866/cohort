@@ -102,7 +102,7 @@ export type ReviewPaneKind = 'prompt-card' | 'prompt-portrait-card' | 'prompt-qu
  */
 export function reviewPaneKind(
   item:
-    | Pick<ReviewItem, 'type' | 'imageUrl' | 'imageKey' | 'imageRole' | 'imageMeta' | 'clip' | 'clipRole' | 'stem'>
+    | Pick<ReviewItem, 'type' | 'imageUrl' | 'imageKey' | 'imageRole' | 'imageMeta' | 'clip' | 'clipRole' | 'stem' | 'front'>
     | null
     | undefined,
 ): ReviewPaneKind {
@@ -113,7 +113,7 @@ export function reviewPaneKind(
   const promptClip = clipIsPrompt(item.clipRole, item.clip);
   const prompt = promptClip
     || (Boolean(item.imageUrl || item.imageKey)
-      && reviewImageIsPrompt(item.imageRole, item.imageMeta));
+      && reviewImageIsPrompt(item.imageRole, item.imageMeta, item.front ?? item.stem));
   if (!prompt) {
     // A WIDE supplementary figure — a two-panel radiograph-and-MRI composite
     // at 2:1 — is bounded by the pane's width, and beside the full reading
@@ -255,7 +255,7 @@ export const REVIEW_PANE_MEDIA =
  */
 export function itemUsesSidePane(
   item:
-    | Pick<ReviewItem, 'type' | 'imageUrl' | 'imageKey' | 'imageRole' | 'imageMeta' | 'clip' | 'clipRole' | 'stem'>
+    | Pick<ReviewItem, 'type' | 'imageUrl' | 'imageKey' | 'imageRole' | 'imageMeta' | 'clip' | 'clipRole' | 'stem' | 'front'>
     | null
     | undefined,
   /**
@@ -275,7 +275,7 @@ export function itemUsesSidePane(
   if (stemHasResultsTable(item)) return true;
   const hasFigure = Boolean(item.imageUrl || item.imageKey);
   if (!hasFigure) return false;
-  if (reviewImageIsPrompt(item.imageRole, item.imageMeta)) return true;
+  if (reviewImageIsPrompt(item.imageRole, item.imageMeta, item.front ?? item.stem)) return true;
   // Supplementary figure: centered while hidden, side-by-side once shown.
   return revealed;
 }

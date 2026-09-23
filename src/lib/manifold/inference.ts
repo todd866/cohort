@@ -296,7 +296,8 @@ export function updateStabilityDays(
   rotation?: string, // Optional: if provided, cap to exam timeline
   now?: Date,
   maxIntervalOverride?: number, // Optional: core skill cap (e.g., 21 days for ECG)
-  examDateOverride?: ExamDateInput
+  examDateOverride?: ExamDateInput,
+  complexity?: number,
 ): number {
   const minDays = 0.5;
 
@@ -315,16 +316,28 @@ export function updateStabilityDays(
     return Math.max(minDays, baseline * 0.8);
   }
 
-  const multiplier = 1.4 + 0.1 * Math.max(0, quality - 3); // 3→1.4, 4→1.5, 5→1.6
+  // A correct card above the cloze rung earns a longer interval. C1 and C2
+  // keep the old multiplier, so an easy win does not come back sooner.
+  const frontierBonus = Math.max(0, complexityRung(complexity) - 2) * 0.08;
+  const multiplier = 1.4 + 0.1 * Math.max(0, quality - 3) + frontierBonus; // 3→1.4, 4→1.5, 5→1.6
   return Math.min(maxDays, baseline * multiplier);
 }
 
-function qualityToTargetStrength(quality: number): number {
-  if (quality >= 5) return 1.0;
-  if (quality === 4) return 0.9;
-  if (quality === 3) return 0.8;
-  if (quality === 2) return 0.5;
-  return 0.3; // wrong but seen — exposure still counts
+function complexityRung(complexity: number | undefined): number {
+  if (complexity == null || !Number.isFinite(complexity)) return 2;
+  return Math.max(1, Math.min(5, Math.round(complexity)));
+}
+
+function qualityToTargetStrength(quality: number, complexity?: number): number {
+  const base = quality >= 5 ? 1
+    : quality === 4 ? 0.9
+      : quality === 3 ? 0.8
+        : quality === 2 ? 0.5
+          : 0.3; // wrong but seen — exposure still counts
+  if (quality < 3) return base;
+  // Each rung above a cloze adds a little. A correct scenario is a stronger
+  // result than a correct definition, and it cannot exceed 1.
+  return Math.min(1, base + (complexityRung(complexity) - 2) * 0.04);
 }
 
 /**
@@ -340,12 +353,13 @@ export function updateRetrievalStrength(
   quality: number, // 0-5
   totalReviews: number,
   daysSinceLastReview: number = 0,
-  stabilityDays: number = 3
+  stabilityDays: number = 3,
+  complexity?: number,
 ): number {
   // First, apply time decay to current strength
   const decayedStrength = calculateDecayedStrength(storedStrength, daysSinceLastReview, stabilityDays);
 
-  const targetStrength = qualityToTargetStrength(quality);
+  const targetStrength = qualityToTargetStrength(quality, complexity);
 
   // First review: nearly direct write (no meaningful prior to blend with).
   // Subsequent reviews: shrinking alpha but with a higher floor so late

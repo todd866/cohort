@@ -1099,8 +1099,9 @@ main:focus-visible {
    the learner has to scroll to see the finding they were asked about ("the part
    I wanna see, the neck lump, I've gotta scroll down to see it").
    Capping the bitmap directly binds in that case and is inert in the normal one,
-   where the width rule has already kept height under the budget. */
-.review-figure [data-figure-frame] > img {
+   where the width rule has already kept height under the budget. The bitmap
+   lives inside the zoom button; a direct frame-child selector misses it. */
+.review-figure [data-figure-frame] > button > img {
   max-height: var(--md-figure-height);
 }
 @media (min-width: 1024px) {

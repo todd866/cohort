@@ -1,5 +1,5 @@
 import { prisma } from '@/lib/prisma';
-import type { UnifiedItem } from './unified-session-types';
+import { CLIENT_REVIEW_BATCH_SIZE, type UnifiedItem } from './unified-session-types';
 
 const SESSION_CACHE_TTL_MS = 60 * 60 * 1000; // 1 hour
 const CACHE_EPOCH_ROTATION = '__md3_cache_epoch__';
@@ -12,7 +12,7 @@ const CACHE_EPOCH_ROTATION = '__md3_cache_epoch__';
  * cron — and the user's next request fell to the slow lanes. The expired
  * queue keeps serving as cache-stale in the meantime, so this costs nothing.
  */
-export const QUEUE_DRAIN_FLOOR_ITEMS = 15;
+export const QUEUE_DRAIN_FLOOR_ITEMS = CLIENT_REVIEW_BATCH_SIZE;
 
 /**
  * The epoch row shares the UserStudyQueue table but is a serialization lock,

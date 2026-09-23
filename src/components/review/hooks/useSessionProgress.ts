@@ -47,11 +47,16 @@ import {
 } from '@/lib/fetch-with-deadline';
 
 import type { BookedExam } from '@/lib/study/booked-exam';
+import type { ProgressPoolBands } from '@/lib/study/progress-pool';
 
 export interface RotationProgressBreakdown {
   rotation: string;
   dailyTarget: number | null;
   newPerDay: number | null;
+  firstSightTarget?: number | null;
+  todayFirstSight?: number;
+  reviewsPerDay?: number | null;
+  consolidationDays?: number | null;
   todayReviewed: number;
   daysToExam: number | null;
   examDate: string | null;
@@ -68,6 +73,9 @@ export interface RotationProgressBreakdown {
     totalTopics?: number;
     itemPercent?: number;
   };
+  progressPool?: ProgressPoolBands;
+  progressPoolHorizonDays?: number;
+  selfPaced?: boolean;
   projection: TrackProjection | null;
 }
 
@@ -75,7 +83,12 @@ export interface SessionProgress {
   reviewed: number;
   target: number | null;
   newPerDay: number | null;
+  firstSightTarget: number | null;
+  todayFirstSight: number;
   reviewsPerDay: number | null;
+  progressPool?: ProgressPoolBands;
+  progressPoolHorizonDays?: number;
+  selfPaced?: boolean;
   progress: number | null;
   coveragePercent: number | null;
   daysToExam: number | null;
@@ -96,7 +109,7 @@ export interface SessionProgress {
   loading: boolean;
   /** Record one graded item. Pass the item's rotation so the drawer's row for
    *  that rotation can move too; without it only the aggregate does. */
-  incrementReviewed: (rotation?: string | null) => void;
+  incrementReviewed: (rotation?: string | null, firstSight?: boolean) => void;
 }
 
 interface UseSessionProgressOptions {
@@ -107,8 +120,13 @@ interface UseSessionProgressOptions {
 interface DailyTargetResponse {
   dailyTarget: number | null;
   newPerDay: number | null;
+  firstSightTarget?: number | null;
+  todayFirstSight?: number;
   reviewsPerDay: number | null;
   consolidationDays: number | null;
+  progressPool?: ProgressPoolBands;
+  progressPoolHorizonDays?: number;
+  selfPaced?: boolean;
   coverage: RotationProgressBreakdown['coverage'];
   daysToExam: number | null;
   examDate: string | null;
@@ -165,11 +183,15 @@ export function useSessionProgress(
   rotation: string | string[],
   { disabled = false }: UseSessionProgressOptions = {},
 ): SessionProgress {
-  const rotations = Array.isArray(rotation) ? rotation : [rotation];
-  const rotationsKey = rotations.join(',');
+  const rotationsKey = (Array.isArray(rotation) ? rotation : [rotation]).join(',');
+  const rotations = useMemo(
+    () => rotationsKey.split(',').filter(Boolean),
+    [rotationsKey],
+  );
 
   const [data, setData] = useState<DailyTargetResponse | null>(null);
   const [sessionDelta, setSessionDelta] = useState(0);
+  const [firstSightDelta, setFirstSightDelta] = useState(0);
   // Session grades attributed to the rotation they were graded in.
   //
   // `todayReviewed` in each per-rotation row is a SERVER value fetched once at
@@ -185,6 +207,7 @@ export function useSessionProgress(
   // just told it. See .claude/rules/hot-path-latency.md — the learner must
   // never wait for a number they generated.
   const [deltaByRotation, setDeltaByRotation] = useState<Record<string, number>>({});
+  const [firstSightDeltaByRotation, setFirstSightDeltaByRotation] = useState<Record<string, number>>({});
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
@@ -239,12 +262,21 @@ export function useSessionProgress(
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [disabled, rotationsKey]);
 
-  const incrementReviewed = useCallback((rotation?: string | null) => {
-    setSessionDelta((d) => d + 1);
+  const incrementReviewed = useCallback((rotation?: string | null, firstSight = false) => {
+    if (!rotation || rotation === rotations[0]) {
+      setSessionDelta((d) => d + 1);
+      if (firstSight) setFirstSightDelta((d) => d + 1);
+    }
     if (rotation) {
       setDeltaByRotation((m) => ({ ...m, [rotation]: (m[rotation] ?? 0) + 1 }));
+      if (firstSight) {
+        setFirstSightDeltaByRotation((m) => ({
+          ...m,
+          [rotation]: (m[rotation] ?? 0) + 1,
+        }));
+      }
     }
-  }, []);
+  }, [rotations]);
 
   /** Server rows with this session's grades folded in, so every number the
    *  drawer shows moves on the same keystroke the pill does. */
@@ -252,9 +284,16 @@ export function useSessionProgress(
     (rows: RotationProgressBreakdown[] | null): RotationProgressBreakdown[] | null =>
       rows?.map((row) => {
         const delta = deltaByRotation[row.rotation] ?? 0;
-        return delta ? { ...row, todayReviewed: row.todayReviewed + delta } : row;
+        const noveltyDelta = firstSightDeltaByRotation[row.rotation] ?? 0;
+        return delta || noveltyDelta
+          ? {
+              ...row,
+              todayReviewed: row.todayReviewed + delta,
+              todayFirstSight: (row.todayFirstSight ?? 0) + noveltyDelta,
+            }
+          : row;
       }) ?? null,
-    [deltaByRotation],
+    [deltaByRotation, firstSightDeltaByRotation],
   );
 
   // Loading or fetch failed: still show a usable pill — the last figure the
@@ -270,7 +309,12 @@ export function useSessionProgress(
       reviewed,
       target: data?.dailyTarget ?? null,
       newPerDay: data?.newPerDay ?? null,
+      firstSightTarget: data?.firstSightTarget ?? null,
+      todayFirstSight: (data?.todayFirstSight ?? 0) + firstSightDelta,
       reviewsPerDay: null,
+      progressPool: data?.progressPool,
+      progressPoolHorizonDays: data?.progressPoolHorizonDays,
+      selfPaced: data?.selfPaced,
       progress: null,
       coveragePercent: data?.coverage?.percent ?? null,
       daysToExam: data?.daysToExam ?? null,
@@ -302,7 +346,12 @@ export function useSessionProgress(
     reviewed,
     target,
     newPerDay: data.newPerDay,
+    firstSightTarget: data.firstSightTarget ?? null,
+    todayFirstSight: (data.todayFirstSight ?? 0) + firstSightDelta,
     reviewsPerDay: data.reviewsPerDay,
+    progressPool: data.progressPool,
+    progressPoolHorizonDays: data.progressPoolHorizonDays,
+    selfPaced: data.selfPaced,
     progress,
     coveragePercent: data.coverage.percent,
     daysToExam: data.daysToExam,

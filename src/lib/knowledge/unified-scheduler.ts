@@ -259,6 +259,8 @@ export interface UnifiedSessionItem {
   noveltyPolicyVersion?: string;
   recentNeighborSimilarity?: number | null;
   noveltyPenalty?: number;
+  /** Never-reviewed card or never-delivered/answered question at selection. */
+  firstSightAtSelection?: boolean;
   /** Same-condition, different-facet progression selected after a cadence gap. */
   conceptThreadPolicyVersion?: string;
   conceptThreadPolicyApplied?: boolean;
@@ -346,6 +348,8 @@ export interface UnifiedSessionOptions {
   excludeVideoIds?: string[];
   /** Max new (unseen) cards to introduce in this session. Defaults to unlimited. */
   maxNewCards?: number;
+  /** Minimum first-sight cards/questions to preserve in the discretionary batch. */
+  minFirstSightItems?: number;
   /** Whether to include video "pre-teach" items for weak concepts. Default false. */
   includeVideos?: boolean;
   /** Recent topic exposures (from LearningEvents) for cross-session topic cooldown. */
@@ -516,6 +520,7 @@ export interface UnifiedSessionExamTargetDecision {
 export interface UnifiedSessionResult {
   items: UnifiedSessionItem[];
   stats: SessionStats;
+  noveltyQuota?: { required: number; selected: number };
   /** Server-only scalar provenance consumed by hydration/decision telemetry. */
   examTargetDecision?: UnifiedSessionExamTargetDecision;
 }
@@ -752,6 +757,23 @@ export function computeRecallSoftPenalty(
  * @param concepts - Concepts sorted by priority (desc)
  * @param getCluster - Function that returns the cluster ID for a concept
  */
+/**
+ * How far yesterday's cluster can crowd out the rest of the rotation.
+ *
+ * The first few exposures are free: a cluster the learner just opened still
+ * deserves its seats. Past that, each extra card in the last day multiplies
+ * priority down to a floor. Share-of-session dampening never did this — on a
+ * 200-card day, 10 cards in one cluster is only 5% and the old 0.3 slope
+ * moved priority by about one percent, so dermatology could take the week.
+ */
+export const CLUSTER_FREE_EXPOSURES = 4;
+export const CLUSTER_DAMPEN_FLOOR = 0.25;
+
+export function clusterExposureDampening(clusterCount: number): number {
+  const excess = Math.max(0, clusterCount - CLUSTER_FREE_EXPOSURES);
+  return Math.max(CLUSTER_DAMPEN_FLOOR, 0.82 ** excess);
+}
+
 export function buildClusterRoundRobin(
   concepts: ConceptState[],
   getCluster: (concept: ConceptState) => string,
@@ -1204,6 +1226,7 @@ async function constructUnifiedSessionImpl(
         size,
         cardRatio,
         maxNewCards: effectiveMaxNewCards,
+        minFirstSightItems: options.minFirstSightItems ?? 0,
         excludeCardIds: [...excludedCardIds],
         excludeQuestionIds: [...excludedQuestionIds],
         practiceLocale: options.practiceLocale ?? 'au',
@@ -1845,19 +1868,16 @@ async function constructUnifiedSessionImpl(
     return concept.conceptId; // fallback: each concept is its own group
   }
 
-  // 4e. Inter-session cluster dampening: reduce priority for concepts in clusters
-  // that dominated the previous session, ensuring day-to-day variety.
+  // 4e. Inter-session cluster dampening. A cluster keeps its first few cards
+  // of the day, then yields so the next batch can reach a domain that has
+  // not already filled the last 24 hours.
   if (recentClusterExposures && recentClusterExposures.size > 0) {
     const totalRecentExposures = [...recentClusterExposures.values()].reduce((sum, c) => sum + c, 0);
     if (totalRecentExposures > 0) {
       for (const state of conceptStates) {
         const conceptCluster = getConceptCluster(state);
         const clusterCount = recentClusterExposures.get(conceptCluster) ?? 0;
-        const clusterWeight = clusterCount / totalRecentExposures;
-        // Dampening: cluster at 100% of recent session -> priority *= 0.7
-        // Cluster at 0% -> no dampening. Never reduce below 50% of original priority.
-        const clusterDampening = Math.max(0.5, 1.0 - 0.3 * clusterWeight);
-        state.priority *= clusterDampening;
+        state.priority *= clusterExposureDampening(clusterCount);
       }
     }
   }
@@ -1948,7 +1968,10 @@ async function constructUnifiedSessionImpl(
     const needed = computeExposuresNeeded(
       c.currentRecall, DEFAULTS.targetRecall, c.confidence, daysToExam
     );
-    return needed > 0;
+    // Strong-pristine concepts are here precisely because they still contain
+    // untouched material. A mastery-only budget must not immediately remove
+    // the concepts the un-starve path just admitted.
+    return needed > 0 || conceptHasPristine.has(c.conceptId);
   });
   if (budgetFilteredConcepts.length > 0) {
     weakConcepts = budgetFilteredConcepts;
@@ -2122,11 +2145,30 @@ async function constructUnifiedSessionImpl(
 
   let selectedCardCount = 0;
   let selectedQuestionCount = 0;
+  const minFirstSightItems = Math.min(
+    size,
+    Math.max(0, Math.floor(options.minFirstSightItems ?? 0)),
+  );
+  let firstSightSelected = 0;
+  let enforceFirstSightReservation = minFirstSightItems > 0;
+  const deferredForNovelty = new Map<string, UnifiedSessionItem>();
   let selectedCoreTargetSeats = 0;
   let selectedSurplusTargetSeats = 0;
 
+  const isFirstSightItem = (item: Pick<UnifiedSessionItem, 'type' | 'id'>): boolean =>
+    item.type === 'card'
+      ? unseenCardIds.has(item.id)
+      : item.type === 'question' && !bulk.questionFamiliarity.has(item.id);
+
   function addItem(item: UnifiedSessionItem): boolean {
     if (selectedItems.length >= size) return false;
+    const firstSight = isFirstSightItem(item);
+    const seatsRemaining = size - selectedItems.length;
+    const quotaRemaining = Math.max(0, minFirstSightItems - firstSightSelected);
+    if (!firstSight && enforceFirstSightReservation && seatsRemaining <= quotaRemaining) {
+      deferredForNovelty.set(`${item.type}:${item.id}`, item);
+      return false;
+    }
     // Every real-concept lane shares the same teaching budget. Keeping the
     // guard here prevents fallback, maintenance and orphan-rescue paths from
     // silently undoing the caps enforced by the primary round-robin loops.
@@ -2150,6 +2192,7 @@ async function constructUnifiedSessionImpl(
     }
 
     selectedItems.push(item);
+    if (firstSight) firstSightSelected += 1;
     selectedConceptIds.add(item.conceptId);
     if (crossSource) selectedCrossSourceItems += 1;
 
@@ -3327,6 +3370,19 @@ async function constructUnifiedSessionImpl(
     }
   }
 
+  // A minimum can be impossible when the eligible first-sight pool is smaller
+  // than the reservation. Do not ship an avoidably short batch: once every
+  // first-sight lane has had its chance, backfill the remaining seats with the
+  // review work deferred solely by the reservation. Telemetry records the
+  // resulting shortfall so this remains observable.
+  if (selectedItems.length < size && deferredForNovelty.size > 0) {
+    enforceFirstSightReservation = false;
+    for (const item of deferredForNovelty.values()) {
+      if (selectedItems.length >= size) break;
+      addItem(item);
+    }
+  }
+
   // 8.5. Apply struggle interventions to stuck cards
   // This is the local intelligence layer: detect stuck cards and apply interventions
   let itemsWithInterventions: UnifiedSessionItem[];
@@ -3424,6 +3480,9 @@ async function constructUnifiedSessionImpl(
   // docs/superpowers/specs/2026-05-03-paam-scaffolding-loop-design.md.
   const scaffoldPaired = injectPreemptiveScaffolds(monotonyOrdered, bulk, {
     rotationSeed: servingRotationSeed,
+    // A building block follows a frontier card only after that concept was
+    // just missed. A correct hard card stays a win.
+    stepDownConceptIds: recentFailureConceptIds,
     // Paired scaffolds come exclusively from bulk.unseenCards, so they are
     // new material too. Keep review-only sessions strict: the final pairing
     // pass must not bypass maxNewCards=0 or grow the requested queue with a
@@ -3867,8 +3926,14 @@ async function constructUnifiedSessionImpl(
   }
 
   // 11. Compute stats
-  const cardCount = finalOrdered.filter((i) => i.type === 'card').length;
-  const questionCount = finalOrdered.filter((i) => i.type === 'question').length;
+  const quotaTaggedItems = finalOrdered.map((item) => ({
+    ...item,
+    firstSightAtSelection: isFirstSightItem(item),
+  }));
+  const selectedFirstSightItems = quotaTaggedItems
+    .filter((item) => item.firstSightAtSelection).length;
+  const cardCount = quotaTaggedItems.filter((i) => i.type === 'card').length;
+  const questionCount = quotaTaggedItems.filter((i) => i.type === 'question').length;
   const avgPriority =
     finalOrdered.length > 0
       ? finalOrdered.reduce((sum, i) => sum + i.priority, 0) / finalOrdered.length
@@ -3876,7 +3941,11 @@ async function constructUnifiedSessionImpl(
   const conceptPairingRate = computeConceptPairingRate(finalOrdered);
 
   return {
-    items: finalOrdered,
+    items: quotaTaggedItems,
+    noveltyQuota: {
+      required: minFirstSightItems,
+      selected: selectedFirstSightItems,
+    },
     stats: {
       totalConcepts: concepts.length,
       weakConcepts: weakConcepts.length,
@@ -3971,6 +4040,7 @@ async function constructClusterSession(
     size: number;
     cardRatio: number;
     maxNewCards: number;
+    minFirstSightItems: number;
     excludeCardIds: string[];
     excludeQuestionIds: string[];
     selectionDeterminism?: UnifiedSessionSelectionDeterminism;
@@ -3985,6 +4055,7 @@ async function constructClusterSession(
     size,
     cardRatio,
     maxNewCards,
+    minFirstSightItems,
     excludeCardIds,
     excludeQuestionIds,
     selectionDeterminism,
@@ -4025,6 +4096,10 @@ async function constructClusterSession(
     logger.warn('scheduler: cluster fallback produced empty session', { rotation });
     return {
       items: [],
+      noveltyQuota: {
+        required: Math.min(size, Math.max(0, Math.floor(minFirstSightItems))),
+        selected: 0,
+      },
       stats: {
         totalConcepts: 0,
         weakConcepts: 0,
@@ -4051,6 +4126,10 @@ async function constructClusterSession(
 
   const targetCardCount = Math.ceil(size * cardRatio);
   const targetQuestionCount = size - targetCardCount;
+  const requiredFirstSight = Math.min(
+    size,
+    Math.max(0, Math.floor(minFirstSightItems)),
+  );
 
   const selectedItems: UnifiedSessionItem[] = [];
   const selectedCardIds = new Set<string>(excludeCardIds);
@@ -4104,6 +4183,7 @@ async function constructClusterSession(
         variantGroupId: picked.variantGroupId,
         variantIndex: picked.variantIndex,
         variantType: picked.variantType,
+        firstSightAtSelection: picked.firstSightAtSelection,
       });
 
       selectedCardIds.add(picked.id);
@@ -4117,7 +4197,9 @@ async function constructClusterSession(
     if (addedThisPass === 0) break;
   }
 
-  if (targetQuestionCount > 0) {
+  const firstSightQuestionIds = new Set<string>();
+  const questionCandidateCount = Math.max(targetQuestionCount, requiredFirstSight);
+  if (questionCandidateCount > 0) {
     // This fallback path returns before bulkFetchCandidates, so it has no familiarity
     // map — load one. Without it selectVariantAwareQuestions would draw mastered and
     // fresh questions with equal probability (it is only never-answered-first WITHIN a
@@ -4126,15 +4208,18 @@ async function constructClusterSession(
       prisma as unknown as Parameters<typeof loadQuestionFamiliarity>[0],
       userId,
     );
-    const questions = await getQuestionsForRotation(userId, rotation, targetQuestionCount, {
+    const questions = await getQuestionsForRotation(userId, rotation, questionCandidateCount, {
       selectedQuestionIds,
       selectedQuestionVariantGroups,
       questionFamiliarity,
       masteredReentryCounter: { masteredServed: 0 },
+      crossSourceRotations,
+      crossSourceMappingMode,
       ...(selectionDeterminism ? { selectionDeterminism } : {}),
     });
 
     for (const q of questions) {
+      if (!questionFamiliarity.has(q.id)) firstSightQuestionIds.add(q.id);
       selectedItems.push({
         type: 'question',
         id: q.id,
@@ -4143,14 +4228,32 @@ async function constructClusterSession(
         priority: 0.5,
         interventionReason: 'needs_retest',
         ...conceptThreadPolicyReceipt(),
-        rotation,
+        rotation: q.rotation,
         topics: q.topics,
         variantGroupId: q.variantGroupId,
         variantType: q.variantType,
+        firstSightAtSelection: firstSightQuestionIds.has(q.id),
       });
       const suppressKey = questionSuppressionKey(q);
       if (suppressKey) selectedQuestionVariantGroups.add(suppressKey);
     }
+  }
+  const clusterQuotaCandidates = [...selectedItems];
+
+  // Cluster fallback has no shared bulk candidate snapshot, so gather enough
+  // questions to let novelty cross the configured card/question ratio. Reserve
+  // first-sight membership first, then preserve the fallback's original order
+  // for the remaining seats.
+  if (requiredFirstSight > 0 && selectedItems.length > size) {
+    const firstSight = selectedItems
+      .filter((item) => item.firstSightAtSelection)
+      .slice(0, requiredFirstSight);
+    const reserved = new Set(firstSight.map((item) => `${item.type}:${item.id}`));
+    const prioritized = [
+      ...firstSight,
+      ...selectedItems.filter((item) => !reserved.has(`${item.type}:${item.id}`)),
+    ].slice(0, size);
+    selectedItems.splice(0, selectedItems.length, ...prioritized);
   }
 
   const clusterCardIds = selectedItems.filter((i) => i.type === 'card').map((i) => i.id);
@@ -4218,17 +4321,67 @@ async function constructClusterSession(
     scaffoldPaired,
     (conceptId) => clusterTeachingCaps.get(conceptId) ?? 3,
   );
-  const finalOrdered = breakModalityRuns(teachingCapped);
+  const quotaReconciled = [...teachingCapped];
+  const quotaKeys = new Set(quotaReconciled.map((item) => `${item.type}:${item.id}`));
+  const quotaConceptCounts = new Map<string, number>();
+  for (const item of quotaReconciled) {
+    quotaConceptCounts.set(
+      item.conceptId,
+      (quotaConceptCounts.get(item.conceptId) ?? 0) + 1,
+    );
+  }
+  let reconciledFirstSight = quotaReconciled
+    .filter((item) => item.firstSightAtSelection).length;
+  for (const candidate of clusterQuotaCandidates) {
+    if (reconciledFirstSight >= requiredFirstSight) break;
+    if (!candidate.firstSightAtSelection) continue;
+    const key = `${candidate.type}:${candidate.id}`;
+    if (quotaKeys.has(key)) continue;
+    const conceptCap = clusterTeachingCaps.get(candidate.conceptId) ?? 3;
+    if ((quotaConceptCounts.get(candidate.conceptId) ?? 0) >= conceptCap) continue;
+    if (quotaReconciled.length >= size) {
+      const replaceAt = quotaReconciled.findLastIndex(
+        (item) => !item.firstSightAtSelection,
+      );
+      if (replaceAt < 0) break;
+      const [removed] = quotaReconciled.splice(replaceAt, 1);
+      quotaKeys.delete(`${removed.type}:${removed.id}`);
+      quotaConceptCounts.set(
+        removed.conceptId,
+        Math.max(0, (quotaConceptCounts.get(removed.conceptId) ?? 1) - 1),
+      );
+    }
+    quotaReconciled.push(candidate);
+    quotaKeys.add(key);
+    quotaConceptCounts.set(
+      candidate.conceptId,
+      (quotaConceptCounts.get(candidate.conceptId) ?? 0) + 1,
+    );
+    reconciledFirstSight += 1;
+  }
+  const finalOrdered = breakModalityRuns(quotaReconciled);
+  const unseenScaffoldIds = new Set(unseenClusterScaffolds.map((card) => card.id));
+  const quotaTaggedItems = finalOrdered.map((item) => ({
+    ...item,
+    firstSightAtSelection: item.firstSightAtSelection
+      ?? unseenScaffoldIds.has(item.id)
+      ?? firstSightQuestionIds.has(item.id),
+  }));
 
   const avgPriority =
-    finalOrdered.length > 0
-      ? finalOrdered.reduce((sum, i) => sum + i.priority, 0) / finalOrdered.length
+    quotaTaggedItems.length > 0
+      ? quotaTaggedItems.reduce((sum, i) => sum + i.priority, 0) / quotaTaggedItems.length
       : 0;
-  const finalCardCount = finalOrdered.filter((item) => item.type === 'card').length;
-  const finalQuestionCount = finalOrdered.filter((item) => item.type === 'question').length;
+  const finalCardCount = quotaTaggedItems.filter((item) => item.type === 'card').length;
+  const finalQuestionCount = quotaTaggedItems.filter((item) => item.type === 'question').length;
+  const selectedFirstSight = quotaTaggedItems.filter((item) => item.firstSightAtSelection).length;
 
   return {
-    items: finalOrdered as UnifiedSessionItem[],
+    items: quotaTaggedItems as UnifiedSessionItem[],
+    noveltyQuota: {
+      required: requiredFirstSight,
+      selected: selectedFirstSight,
+    },
     stats: {
       totalConcepts: clusters.length,
       weakConcepts: clusterStates.filter((c) => c.priority > 0).length,
@@ -4236,7 +4389,7 @@ async function constructClusterSession(
       cardCount: finalCardCount,
       questionCount: finalQuestionCount,
       averagePriority: Math.round(avgPriority * 1000) / 1000,
-      conceptPairingRate: computeConceptPairingRate(finalOrdered),
+      conceptPairingRate: computeConceptPairingRate(quotaTaggedItems),
     },
   };
 }
@@ -4262,7 +4415,7 @@ async function getCardsForCluster(
     crossSourceMappingMode?: 'adjacent' | 'open';
     isCopyrightTier?: boolean;
   },
-): Promise<CardCandidate[]> {
+): Promise<Array<CardCandidate & { firstSightAtSelection: boolean }>> {
   const excludedIds = options.selectedCardIds.size > 0 ? [...options.selectedCardIds] : undefined;
   // Same topics gate every other read path applies — without it the cluster
   // fallback can serve _needs-image / _incomplete-data cards.
@@ -4375,8 +4528,9 @@ async function getCardsForCluster(
       `cluster-card\0${clusterId}\0weak`,
     ),
   ];
+  const firstSightCardIds = new Set(newCards.map((card) => card.id));
   const seen = new Set<string>();
-  const selected: CardCandidate[] = [];
+  const selected: Array<CardCandidate & { firstSightAtSelection: boolean }> = [];
 
   for (const card of combined) {
     if (selected.length >= maxCandidates) break;
@@ -4394,6 +4548,7 @@ async function getCardsForCluster(
       variantGroupId: card.variantGroupId,
       variantIndex: card.variantIndex,
       variantType: card.variantType,
+      firstSightAtSelection: firstSightCardIds.has(card.id),
     });
   }
 
@@ -4449,10 +4604,14 @@ async function getQuestionsForRotation(
      */
     questionFamiliarity?: Map<string, QuestionFamiliarity>;
     masteredReentryCounter?: ReentryCounter;
+    /** Server-authorized source partitions for composed rotations only. */
+    crossSourceRotations?: readonly string[];
+    crossSourceMappingMode?: 'adjacent' | 'open';
     selectionDeterminism?: UnifiedSessionSelectionDeterminism;
   }
 ): Promise<Array<{
   id: string;
+  rotation: string;
   topics: string[];
   variantGroupId: string | null;
   variantType: string | null;
@@ -4470,7 +4629,11 @@ async function getQuestionsForRotation(
   const candidates = await prisma.question.findMany({
     where: withDefaultQuestionServingPolicy(
       withoutRawPublicUsmleQuestions({
-        rotation,
+        ...sessionCandidateItemWhere(
+          rotation,
+          options.crossSourceRotations ?? [],
+          options.crossSourceMappingMode ?? 'adjacent',
+        ),
         contentState: { not: 'shelved' },
         ...(excludedIds.length > 0 ? { id: { notIn: excludedIds } } : {}),
         NOT: { topics: { hasSome: EXCLUDED_TOPICS } },
@@ -4479,6 +4642,7 @@ async function getQuestionsForRotation(
     ),
     select: {
       id: true,
+      rotation: true,
       topics: true,
       variantGroupId: true,
       variantType: true,
@@ -4548,6 +4712,7 @@ async function getQuestionsForRotation(
 
   return selected.map((q) => ({
     id: q.id,
+    rotation: q.rotation,
     topics: q.topics,
     variantGroupId: q.variantGroupId,
     variantType: q.variantType,

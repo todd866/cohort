@@ -8,7 +8,19 @@ import { beginSessionCacheRefresh } from './unified-session-cache-refresh-lock';
 type CacheRefreshContext = Pick<
   SessionContext,
   'userId' | 'rotation' | 'weekFilter' | 'batchSize' | 'rotationContent' | 'imageTier' | 'commitmentLevel'
->;
+> & Partial<Pick<SessionContext, 'noveltyProgress' | 'studyTimezone'>>;
+
+/**
+ * Why a rebuild was asked for. `novelty-short` is the cache lane noticing a
+ * queue built before first-sight seats existed while the learner still owes
+ * first sights; it is served as-is and rebuilt here, off the request path.
+ */
+export type SessionCacheRefreshSource =
+  | 'cache-empty'
+  | 'cache-stale'
+  | 'instant'
+  | 'cron-warm'
+  | 'novelty-short';
 
 /**
  * A cached queue must hold enough to serve SEVERAL batches, not one.
@@ -36,7 +48,7 @@ export async function runSessionCacheRefresh(
   ctx: CacheRefreshContext,
   options: {
     recordOutcome: boolean;
-    source: 'cache-empty' | 'cache-stale' | 'instant' | 'cron-warm';
+    source: SessionCacheRefreshSource;
   },
 ): Promise<SessionCacheRefreshOutcome> {
   return beginSessionCacheRefresh(ctx.userId, ctx.rotation, () =>
@@ -48,7 +60,7 @@ async function runSessionCacheRefreshUnlocked(
   ctx: CacheRefreshContext,
   options: {
     recordOutcome: boolean;
-    source: 'cache-empty' | 'cache-stale' | 'instant' | 'cron-warm';
+    source: SessionCacheRefreshSource;
   },
 ): Promise<SessionCacheRefreshOutcome> {
   const cacheBuildSessionId = `cache:${ctx.userId}:${ctx.rotation}:${new Date().toISOString()}`;
@@ -65,7 +77,22 @@ async function runSessionCacheRefreshUnlocked(
       ctx.imageTier,
       ctx.commitmentLevel,
       cacheBuildSessionId,
-      { includeFailureAttribution: true },
+      {
+        includeFailureAttribution: true,
+        // Reserve first-sight seats only for a request that already carries
+        // today's progress: the learners the live build reserved them for.
+        // Opting every cron build in would hand about two thirds of every
+        // learner's queue to unseen cards and slow due-backlog clearance,
+        // a policy change for learners who never had the reservation.
+        ...(ctx.noveltyProgress
+          ? {
+              novelty: {
+                progress: ctx.noveltyProgress,
+                studyTimezone: ctx.studyTimezone ?? null,
+              },
+            }
+          : {}),
+      },
     );
     const durationMs = +(performance.now() - tBgStart).toFixed(1);
 

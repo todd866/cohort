@@ -154,3 +154,9 @@ content/gamsat/_harvest/index.json
 # Private image review evidence and generation scratch; accepted assets live in open-content.
 /audit/image-production/
 /output/
+
+# Reproducible textbook PDF preparation and visual-review intermediates.
+/tmp/pdfs/
+
+# PDF.js worker copied from the pinned dependency before dev/build.
+/public/pdfjs/

@@ -1,14 +1,12 @@
 /**
  * Daily Target — what you need to do today.
  *
- * Three pressures, take the max:
+ * Two capacity signals plus honest due pressure:
  *
- *   coverageWorkload =
- *     ceil(firstSeenNeed × learningFactor) + estimatedDailyReviews
- *     ↑ firstSeenNeed = ceil(unseen / (daysToExam − consolidationBuffer))
- *       learningFactor starts ~1.25 early in the term (cards take more than
- *       one view) and decays to 1.0 by the consolidation window.
- *       Reviews are part of the day, not free — add them explicitly.
+ *   theoreticalFirstSight =
+ *     ceil(unseen / (daysToExam − consolidationBuffer))
+ *     ↑ secondary full-pool planning information; it cannot make today's
+ *       displayed goal arithmetically impossible.
  *
  *   paceFloor    = max(yesterday, 3-day rolling max, MIN_DAILY_TARGET)
  *     ↑ momentum. Stops the bar from dropping after one light day.
@@ -17,7 +15,10 @@
  *     ↑ "covered ≠ ready". Resists taper while genuine-testing accuracy
  *       is below the exam-comfortable band.
  *
- *   dailyTarget  = max(coverageWorkload, paceFloor, readinessFloor)
+ *   firstSightTarget = min(theoreticalFirstSight, 50% of realistic capacity)
+ *   duePace = actual due cards spread over at most seven days, bounded so the
+ *             total commitment is at most 125% of sustainable capacity
+ *   dailyTarget = max(capacity, firstSightTarget + duePace)
  */
 
 const MIN_DAILY_TARGET = 20;
@@ -45,6 +46,9 @@ export const LEARNING_FACTOR_EARLY = 1.25;
 export const LEARNING_FACTOR_LATE = 1.0;
 /** Fallback term length when the caller has no block dates. */
 const DEFAULT_TERM_LENGTH_DAYS = 46;
+const DUE_CATCHUP_DAYS = 7;
+/** Due pressure may stretch recent sustainable capacity, but never explode it. */
+const MAX_DUE_STRETCH_MULT = 1.25;
 
 const clamp01 = (n: number) => Math.max(0, Math.min(1, n));
 
@@ -103,8 +107,8 @@ interface DailyTargetInput {
   daysToExam: number | null;
   /** Block length in days (start→exam). Drives the early learning margin. */
   termLengthDays?: number | null;
-  /** Due/relearn burden estimate — part of the primary day target. */
-  estimatedDailyReviews?: number;
+  /** Cards whose scheduler due timestamp is at or before now. */
+  actualDueItems?: number;
   currentAccuracy?: number | null;
   signalTrust?: number;
 }
@@ -114,7 +118,9 @@ export interface DailyTargetResult {
   dailyTarget: number;
   /** Informational: first-seen items/day needed before consolidation. */
   newPerDay: number;
-  /** Informational: estimated daily review burden (also folded into dailyTarget). */
+  /** Achievable first-sight goal, capped at half of recent capacity. */
+  firstSightTarget: number;
+  /** Actual due backlog spread over a short catch-up window. */
   reviewsPerDay: number;
   /** Early-term learning margin applied to first-seen need. */
   learningFactor: number;
@@ -127,7 +133,7 @@ export function computeDailyTarget(input: DailyTargetInput): DailyTargetResult |
     unseenItems,
     daysToExam,
     termLengthDays = null,
-    estimatedDailyReviews = 0,
+    actualDueItems = 0,
     recentHistory = [],
     currentAccuracy = null,
     signalTrust = 0,
@@ -136,9 +142,9 @@ export function computeDailyTarget(input: DailyTargetInput): DailyTargetResult |
 
   const effectiveDays = Math.max(daysToExam - CONSOLIDATION_BUFFER, 1);
   const newPerDay = Math.ceil(unseenItems / effectiveDays);
-  const reviewsPerDay = Math.max(0, Math.round(estimatedDailyReviews));
+  const dueCatchupDays = Math.max(1, Math.min(DUE_CATCHUP_DAYS, daysToExam));
+  const rawReviewsPerDay = Math.ceil(Math.max(0, actualDueItems) / dueCatchupDays);
   const learningFactor = learningExposureFactor({ daysToExam, termLengthDays });
-  const coverageWorkload = Math.ceil(newPerDay * learningFactor) + reviewsPerDay;
 
   const yesterday = recentHistory[1] ?? 0;
   const rollingWindow = recentHistory.slice(1, 1 + ROLLING_WINDOW_DAYS);
@@ -173,7 +179,15 @@ export function computeDailyTarget(input: DailyTargetInput): DailyTargetResult |
     }
   }
 
-  const dailyTarget = Math.max(coverageWorkload, paceFloor, readinessFloor);
+  const capacity = Math.max(paceFloor, readinessFloor);
+  const firstSightTarget = Math.min(newPerDay, Math.floor(capacity * 0.5));
+  const maxAchievableTarget = Math.ceil(capacity * MAX_DUE_STRETCH_MULT);
+  const reviewsPerDay = Math.min(
+    rawReviewsPerDay,
+    Math.max(0, maxAchievableTarget - firstSightTarget),
+  );
+  const coverageWorkload = firstSightTarget + reviewsPerDay;
+  const dailyTarget = Math.max(capacity, coverageWorkload);
   let adaptiveReason: DailyTargetResult['adaptiveReason'];
   if (coverageWorkload > paceFloor && coverageWorkload >= readinessFloor) {
     adaptiveReason = 'coverage';
@@ -186,6 +200,7 @@ export function computeDailyTarget(input: DailyTargetInput): DailyTargetResult |
   return {
     dailyTarget,
     newPerDay,
+    firstSightTarget,
     reviewsPerDay,
     learningFactor,
     consolidationDays: Math.min(CONSOLIDATION_BUFFER, daysToExam),

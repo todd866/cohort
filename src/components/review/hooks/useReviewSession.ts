@@ -1175,8 +1175,8 @@ export function useReviewSession({ rotations, week, rotationSizes, fetchSlots, f
         return items.map((item: ReviewItem) => ({
           ...item,
           blendTier: r.blendTier,
-          sessionId: r.sessionId,
-          batchId: r.batchId,
+          sessionId: item.sessionId ?? r.sessionId,
+          batchId: item.batchId !== undefined ? item.batchId : r.batchId,
         }));
       });
       const interleavedItems = perSlotItems.length > 1

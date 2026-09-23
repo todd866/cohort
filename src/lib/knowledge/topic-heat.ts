@@ -125,6 +125,37 @@ export interface TopicHeat {
   seenCount: number;
 }
 
+export interface TopicReadinessCounts {
+  ready: number;
+  slipping: number;
+  unseen: number;
+  total: number;
+}
+
+export interface TopicReadinessSummary extends TopicReadinessCounts {
+  rotation: string;
+  rotationLabel: string;
+  horizonDays: number;
+}
+
+/**
+ * Product-level readiness buckets shared by the profile and review drawer.
+ * Both cold and warm topics need attention, so they are one "slipping" count.
+ */
+export function summarizeTopicReadiness(
+  topics: readonly Pick<TopicHeat, 'band'>[],
+): TopicReadinessCounts {
+  let ready = 0;
+  let slipping = 0;
+  let unseen = 0;
+  for (const topic of topics) {
+    if (topic.band === 'fresh') ready += 1;
+    else if (topic.band === 'unseen') unseen += 1;
+    else slipping += 1;
+  }
+  return { ready, slipping, unseen, total: topics.length };
+}
+
 /**
  * The totals a topic is classified from. Produced either by summing items in
  * JS (small topics — the pinned lifetime-skill squares) or by aggregating in

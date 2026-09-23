@@ -10,19 +10,30 @@ import { HANDLE_MAX, LEADERBOARD_WINDOW_DAYS, type LeaderboardRow } from '@/lib/
  * Not joined: one sentence saying what joining means (other joined learners
  * see the name you pick, nothing else), a name box, a join button. Joined: the
  * board with your row marked, and a leave button. Nobody who has not joined
- * sees any other learner. No animation anywhere: this is a tens-per-day
+ * sees any other learner — except an admin, who gets the everyone view the
+ * server grants (`viewAll`), with a "not joined" mark on the learners who
+ * never opted in. No animation anywhere: this is a tens-per-day
  * surface at most, and the motion rule's default is none.
  */
 export interface BoardResponse {
-  handle: string;
+  handle: string | null;
   rows: LeaderboardRow[];
   me: LeaderboardRow | null;
   joinedCount: number;
+  viewAll?: boolean;
 }
 
 interface Props {
   joined: boolean;
   handle: string | null;
+  /**
+   * Admin only, decided on the server. The board then lists every registered
+   * learner, and a learner who has not opted in is shown by their own name (or
+   * the local part of their email, where no name is set) and marked as such.
+   * Nobody else's view changes, and this component never decides it for
+   * itself: it renders what the server allowed.
+   */
+  viewAll?: boolean;
   /**
    * The board as the server rendered it, when the learner is already on it.
    * Without this the joined state mounted, painted a headless box, then
@@ -41,6 +52,7 @@ const quiet = 'text-sm text-[var(--md-on-surface-variant)]';
 export function ProfileLeaderboard({
   joined: initialJoined,
   handle: initialHandle,
+  viewAll = false,
   initialBoard = null,
 }: Props) {
   const [joined, setJoined] = useState(initialJoined);
@@ -63,8 +75,8 @@ export function ProfileLeaderboard({
 
   useEffect(() => {
     // Only when the server did not already hand us the board.
-    if (joined && !initialBoard) void load();
-  }, [joined, load, initialBoard]);
+    if ((joined || viewAll) && !initialBoard) void load();
+  }, [joined, viewAll, load, initialBoard]);
 
   const join = async (event: React.FormEvent) => {
     event.preventDefault();
@@ -96,7 +108,7 @@ export function ProfileLeaderboard({
       const res = await fetchWithDeadline('/api/leaderboard', { method: 'DELETE' }, CLIENT_FETCH_DEADLINE_MS);
       if (!res.ok) throw new Error(`HTTP ${res.status}`);
       setJoined(false);
-      setBoard(null);
+      if (viewAll) await load(); else setBoard(null);
     } catch {
       setError('Could not leave just now; try again.');
     } finally {
@@ -104,7 +116,7 @@ export function ProfileLeaderboard({
     }
   };
 
-  if (!joined) {
+  if (!joined && !viewAll) {
     return (
       <section className={box} aria-labelledby="leaderboard-heading" data-testid="leaderboard-join">
         <h2 id="leaderboard-heading" className="text-base font-semibold text-[var(--md-on-surface)]">Leaderboard</h2>
@@ -137,15 +149,25 @@ export function ProfileLeaderboard({
     <section className={box} aria-labelledby="leaderboard-heading" data-testid="leaderboard-board">
       <div className="flex items-baseline justify-between gap-2">
         <h2 id="leaderboard-heading" className="text-base font-semibold text-[var(--md-on-surface)]">Leaderboard</h2>
-        <button type="button" onClick={leave} disabled={busy} className={`${quiet} underline disabled:opacity-50`}>
-          Leave
-        </button>
+        {joined && (
+          <button type="button" onClick={leave} disabled={busy} className={`${quiet} underline disabled:opacity-50`}>
+            Leave
+          </button>
+        )}
       </div>
       <p className={`${quiet} mt-1`}>
-        You are on the board as <span className="font-medium text-[var(--md-on-surface)]">{handle}</span>.
+        {joined
+          ? <>You are on the board as <span className="font-medium text-[var(--md-on-surface)]">{handle}</span>. </>
+          : <>You are not on the board. </>}
         Last {LEADERBOARD_WINDOW_DAYS} days
         {board ? `, ${board.joinedCount} joined` : ''}.
       </p>
+      {viewAll && (
+        <p className={`${quiet} mt-1`} data-testid="leaderboard-view-all">
+          Admin view: every registered learner, opted in or not. Only you see this;
+          everyone else sees the joined learners alone.
+        </p>
+      )}
       {error && <p role="alert" className="mt-2 text-sm text-[var(--md-error)]">{error}</p>}
       {board && board.rows.length > 0 && (
         <table className="mt-3 w-full text-sm">
@@ -159,14 +181,21 @@ export function ProfileLeaderboard({
             </tr>
           </thead>
           <tbody>
-            {board.rows.map((row) => (
+            {board.rows.map((row, index) => (
               <tr
-                key={row.handle}
+                key={`${row.rank}-${row.handle}-${index}`}
                 data-testid={row.isMe ? 'leaderboard-me' : undefined}
                 className={row.isMe ? 'font-medium text-[var(--md-primary)]' : 'text-[var(--md-on-surface)]'}
               >
                 <td className="py-1">{row.rank}</td>
-                <td className="py-1">{row.handle}</td>
+                <td className="py-1">
+                  {row.handle}
+                  {!row.isJoined && (
+                    <span className={`ml-1.5 text-xs ${quiet}`} data-testid="leaderboard-not-joined">
+                      not joined
+                    </span>
+                  )}
+                </td>
                 <td className="py-1 text-right tabular-nums">{row.windowReviews}</td>
                 <td className="py-1 text-right tabular-nums">{row.allTimeReviews}</td>
                 <td className="py-1 text-right tabular-nums">{row.streakDays}</td>
@@ -174,6 +203,23 @@ export function ProfileLeaderboard({
             ))}
           </tbody>
         </table>
+      )}
+      {!joined && (
+        <form onSubmit={join} className="mt-3 flex flex-wrap items-center gap-2">
+          <label htmlFor="leaderboard-handle" className="sr-only">Name to show on the leaderboard</label>
+          <input
+            id="leaderboard-handle"
+            value={handle}
+            onChange={(e) => setHandle(e.target.value)}
+            maxLength={HANDLE_MAX}
+            placeholder="Name to show"
+            autoComplete="off"
+            className="min-w-0 flex-1 rounded-lg border border-[var(--md-outline-variant)] bg-[var(--md-surface)] px-3 py-1.5 text-sm text-[var(--md-on-surface)]"
+          />
+          <button type="submit" className={button} disabled={busy || handle.trim().length === 0}>
+            {busy ? 'Joining…' : 'Join leaderboard'}
+          </button>
+        </form>
       )}
     </section>
   );

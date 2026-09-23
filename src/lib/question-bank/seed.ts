@@ -7,9 +7,10 @@ import { checkLengthBias,
   checkCombinationLengthBias, checkFormatAsymmetry } from './validate';
 import { checkFormOpacity } from '@/lib/quality/form-checks';
 import { analyzeGuessability, getGuessabilitySeverity } from '@/lib/manifold/option-guessability';
-import { bulkUpsertQuestions } from '@/lib/db/bulk-upsert';
+import { bulkUpsertQuestions, sqlEscape } from '@/lib/db/bulk-upsert';
 import { normalizeQuestionNotation } from './normalize-notation';
-import { projectCuratedQuestionForBulk } from './seed-projection';
+import { projectCuratedQuestionForBulk, type CuratedQuestionBulkProjection } from './seed-projection';
+import type { CuratedQuestion } from './types';
 
 /** Any Prisma-like client that supports raw SQL (works with both PrismaClient and $extends() result). */
 type PrismaLike = Parameters<typeof bulkUpsertQuestions>[0];
@@ -17,6 +18,34 @@ export {
   projectCuratedQuestionForBulk,
   type CuratedQuestionBulkProjection,
 } from './seed-projection';
+
+async function resolveQuestionClipIds(
+  prisma: PrismaLike,
+  questions: CuratedQuestion[],
+): Promise<CuratedQuestionBulkProjection[]> {
+  const slugs = [...new Set(
+    questions.map(question => question.clipSlug).filter((slug): slug is string => Boolean(slug)),
+  )];
+  const clipIdBySlug = new Map<string, string>();
+  if (slugs.length > 0) {
+    const rows = await (prisma as PrismaLike & {
+      $queryRawUnsafe: (sql: string) => Promise<Array<{ id: string; slug: string }>>;
+    }).$queryRawUnsafe(
+      `SELECT "id", "slug" FROM "VideoClip" WHERE "deletedAt" IS NULL AND "slug" IN (${slugs.map(slug => sqlEscape(slug)).join(', ')})`,
+    );
+    for (const row of rows) clipIdBySlug.set(row.slug, row.id);
+  }
+  const missing = questions
+    .filter(question => question.clipRole === 'prompt' && (!question.clipSlug || !clipIdBySlug.has(question.clipSlug)))
+    .map(question => question.id);
+  if (missing.length > 0) {
+    throw new Error(`Clip-prompt question(s) have no live clip: ${missing.join(', ')}`);
+  }
+  return questions.map(question => ({
+    ...projectCuratedQuestionForBulk(question),
+    clipId: question.clipSlug ? clipIdBySlug.get(question.clipSlug) ?? null : null,
+  }));
+}
 
 export async function upsertCuratedQuestionBank(
   prisma: PrismaLike,
@@ -140,7 +169,7 @@ export async function upsertCuratedQuestionBank(
 
   // Transform to bulk upsert format.
   // Keep authored bank difficulty as source of truth so ladder planning remains stable.
-  const questionsForBulk = normalizedQuestions.map(projectCuratedQuestionForBulk);
+  const questionsForBulk = await resolveQuestionClipIds(prisma, normalizedQuestions);
 
   const upserted = await bulkUpsertQuestions(prisma, questionsForBulk, {
     batchSize: resolvedBatchSize,

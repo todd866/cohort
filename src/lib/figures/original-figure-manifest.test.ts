@@ -39,7 +39,7 @@ describe('reviewed original figure manifest', () => {
     ['unaccepted review', (m: any) => { m.figures[0].review.status = 'pending'; }],
     ['unknown review method', (m: any) => { m.figures[0].review.method = 'auto-caption'; }],
     ['missing checked structure', (m: any) => { delete m.figures[0].review.structure; }],
-    ['anatomy hold', (m: any) => { m.figures[0].review.structure.kind = 'spatial-anatomy'; }],
+    ['anatomy missing hash review', (m: any) => { m.figures[0].review.structure.kind = 'spatial-anatomy'; }],
     ['unverified structure', (m: any) => { m.figures[0].review.structure.status = 'pending'; }],
     ['unsafe scaffold path', (m: any) => { m.figures[0].review.structure.specificationFiles = ['../private.json']; }],
     ['external reference pixels', (m: any) => { m.figures[0].generation.externalReferenceImages = ['textbook.png']; }],
@@ -55,5 +55,31 @@ describe('reviewed original figure manifest', () => {
     const manifest = structuredClone(manifestJson);
     mutate(manifest);
     expect(() => parseOriginalFigureManifest(manifest)).toThrow();
+  });
+});
+
+describe('spatial anatomy manifest admission', () => {
+  const anatomyManifest = () => {
+    const m: any = structuredClone(manifestJson);
+    const f = m.figures[0];
+    f.review.structure.kind = 'spatial-anatomy';
+    f.review.structure.annotationFile = `annotations/${f.id}.svg`;
+    f.review.structure.reviewedFigureSha256 = f.sha256;
+    f.teaching.imageRole = 'after-reveal';
+    return m;
+  };
+  it('accepts hash-bound anatomy only after reveal', () => {
+    expect(() => parseOriginalFigureManifest(anatomyManifest())).not.toThrow();
+  });
+  it.each(['missing', 'stale', 'prompt', 'unknown-kind', 'coerced-kind', 'missing-annotation', 'unsafe-annotation'])('rejects %s anatomy admission', reason => {
+    const m = anatomyManifest(); const f = m.figures[0];
+    if (reason === 'missing-annotation') delete f.review.structure.annotationFile;
+    if (reason === 'unsafe-annotation') f.review.structure.annotationFile = 'annotations/../private.svg';
+    if (reason === 'missing') delete f.review.structure.reviewedFigureSha256;
+    if (reason === 'stale') f.review.structure.reviewedFigureSha256 = '0'.repeat(64);
+    if (reason === 'prompt') f.teaching.imageRole = 'prompt';
+    if (reason === 'coerced-kind') f.review.structure.kind = ['spatial-anatomy'];
+    if (reason === 'unknown-kind') f.review.structure.kind = 'diagnostic';
+    expect(() => parseOriginalFigureManifest(m)).toThrow();
   });
 });

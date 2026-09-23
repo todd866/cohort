@@ -13,6 +13,9 @@ export function sessionFilterReasons(ctx: SessionContext): string[] {
   if (ctx.typeFilter) reasons.push(`type:${ctx.typeFilter}`);
   if (ctx.difficultyFilter) reasons.push(`difficulty:${ctx.difficultyFilter}`);
   if (ctx.topicsFilter) reasons.push(`topics:${ctx.topicsFilter}`);
+  // hasFilters counts a cluster scope; without it here a topic-square build
+  // logged hasFilters=true with no reason and read as an unfiltered baseline.
+  if (ctx.clusterFilter) reasons.push(`cluster:${ctx.clusterFilter}`);
   if (ctx.modulesFilter) reasons.push(`modules:${ctx.modulesFilter}`);
   if (ctx.mode) reasons.push(`mode:${ctx.mode}`);
   if (ctx.reviewFilter) reasons.push(`filter:${ctx.reviewFilter}`);

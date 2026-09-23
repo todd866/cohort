@@ -49,7 +49,7 @@ export async function ProfileTopicHeatmapSection({ userId }: { userId: string })
   const topicHeat = await loadTopicHeatmap(userId).catch(() => null);
   if (!topicHeat) return null;
   return (
-    <section aria-label="Topic readiness" className="mb-6">
+    <section id="topic-readiness" aria-label="Topic readiness" className="mb-6 scroll-mt-4">
       <TopicHeatmap
         squares={topicHeat.squares}
         rotationLabel={topicHeat.rotationLabel}
@@ -68,18 +68,26 @@ export async function ProfileTopicHeatmapSection({ userId }: { userId: string })
 }
 
 /**
- * The leaderboard, with its board already loaded when the learner is on it.
+ * The leaderboard, with its board already loaded when the learner is on it
+ * (or, for an admin, whenever they open the profile).
  * Streams like the heatmaps: it aggregates every joined learner's history,
  * which is page-render work and not something the first byte should wait on.
  * A failed read hands the client component no board, and it fetches as before.
  */
 export async function ProfileLeaderboardSection(
-  { userId, joined, handle }: { userId: string; joined: boolean; handle: string | null },
+  { userId, joined, handle, viewAll = false }:
+  { userId: string; joined: boolean; handle: string | null; viewAll?: boolean },
 ) {
-  const board = joined && handle
-    ? await loadLeaderboard(userId).then((b) => ({ handle, ...b })).catch(() => null)
+  // An admin sees the board whether or not they have joined: the everyone view
+  // is how the owner reads the cohort, and it must not depend on opting in.
+  const board = viewAll || (joined && handle)
+    ? await loadLeaderboard(userId, new Date(), { includeEveryone: viewAll })
+      .then((b) => ({ handle, ...b }))
+      .catch(() => null)
     : null;
-  return <ProfileLeaderboard joined={joined} handle={handle} initialBoard={board} />;
+  return (
+    <ProfileLeaderboard joined={joined} handle={handle} viewAll={viewAll} initialBoard={board} />
+  );
 }
 
 /**

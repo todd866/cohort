@@ -18,7 +18,9 @@ import { postContentRating } from '@/lib/review/content-rating';
 import { useSessionProgress } from './hooks/useSessionProgress';
 import { useSessionLifecycle } from './hooks/useSessionLifecycle';
 import { usePrefetchImages } from '@/hooks/usePrefetchImage';
+import { usePrefetchClips } from '@/hooks/usePrefetchClips';
 import { upcomingImageUrls } from './upcoming-images';
+import { upcomingClipUrls } from './upcoming-clips';
 import { useFlagging } from './hooks/useFlagging';
 import { SessionExpiredPrompt } from '@/components/content/SessionExpiredPrompt';
 import { submitGroupAttempt } from '@/lib/group-attempt-submit';
@@ -40,6 +42,7 @@ import type { CohortExperience } from '@/lib/cohort/experience-prior';
 import type { CohortSearchTopicV1 } from '@/lib/cohort/search-topic-contract';
 
 import { RotationFocusSelector } from './RotationFocusSelector';
+import { rotationLabel } from '@/lib/rotation-labels';
 import { ReviewScopeBanner, type ReviewClusterScope } from './ReviewScopeBanner';
 import { RotationOnboarding } from './RotationOnboarding';
 import { FlagOverlay } from './FlagOverlay';
@@ -47,6 +50,7 @@ import { CohortPrompt } from './CohortPrompt';
 import { CohortSearchOverlay } from './CohortSearchOverlay';
 import { ProgressPill } from './ProgressPill';
 import { ProgressDrawer } from './ProgressDrawer';
+import { progressRotationsForObjective } from './progress-rotation-filter';
 import { SessionEmptyState } from './SessionEmptyState';
 import { LoadingSkeleton } from './LoadingSkeleton';
 import { CardItemView } from './CardItemView';
@@ -319,6 +323,13 @@ function CohortProfileBoundary(props: UnifiedReviewProps) {
  * the connection the current card is using.
  */
 const UPCOMING_IMAGE_LOOKAHEAD = 3;
+/**
+ * Two clips, not three. An operative file can be a couple of megabytes, and
+ * the one on screen already downloads at high priority. Two is the card
+ * after this one, plus the one after that, which is enough for play() to
+ * start on the first frame.
+ */
+const UPCOMING_CLIP_LOOKAHEAD = 2;
 
 export function UnifiedReview(props: UnifiedReviewProps) {
   const isCohortHost = useCohortHost();
@@ -397,6 +408,10 @@ function UnifiedReviewBody({ rotations, week, rotationSizes, fetchSlots, feedMod
     upcomingImageUrls(items, currentIndex, UPCOMING_IMAGE_LOOKAHEAD),
     !servingOffline,
   );
+  usePrefetchClips(
+    upcomingClipUrls(items, currentIndex, UPCOMING_CLIP_LOOKAHEAD),
+    !servingOffline,
+  );
 
   useEffect(() => {
     if (searchOwnerKeyRef.current === reviewUserKey) return;
@@ -404,21 +419,14 @@ function UnifiedReviewBody({ rotations, week, rotationSizes, fetchSlots, feedMod
     setActiveSearchTopicId(null);
   }, [reviewUserKey]);
 
-  // The pill is a DAILY total, not a session or deck total: what the learner has
-  // done today against today's target. So it counts across every rotation they
-  // study, not just the one this session happens to be drawing from.
-  //
-  // Passing only the session's own rotations broke on composed decks. NSx
-  // owned no cards until 2026-09-16 — everything it served was declared for
-  // it by another corpus — so `servableCardWhere({rotation:'nsx'})` matched
-  // nothing, todayReviewed came back 0, and the pill read "1/80" to a learner
-  // who had already reviewed for hours. Their work was never lost: it was
-  // counted under anatomy and surgical-sciences, which the deck they were
-  // sitting in did not name. It still borrows most of what it serves.
-  //
-  // Falling back to the session's rotations keeps guests and Cohort hosts (which
-  // pass an empty studyable set) exactly as they were.
-  const progressRotations = studyableRotations.length > 0 ? studyableRotations : rotations;
+  // The pill belongs to one calendar objective. A distinct focused deck is
+  // fetched only as secondary context; other enrolled past/future rotations
+  // cannot inflate today's numerator or target.
+  const progressRotations = progressRotationsForObjective({
+    objectiveRotation: examRotation,
+    sessionRotations: rotations,
+    focusRotation,
+  });
   const sessionProgress = useSessionProgress(progressRotations, {
     disabled: allowUnverifiedPack,
   });
@@ -436,8 +444,8 @@ function UnifiedReviewBody({ rotations, week, rotationSizes, fetchSlots, feedMod
   // so a cold flight-mode relaunch resumes at N instead of displaying zero.
   const usingDeviceProgress = allowUnverifiedPack || servingOffline;
   const reviewed = usingDeviceProgress ? stats.total : serverReviewed;
-  const incrementReviewed = useCallback((rotation?: string | null) => {
-    if (!usingDeviceProgress) incrementServerReviewed(rotation);
+  const incrementReviewed = useCallback((rotation?: string | null, firstSight = false) => {
+    if (!usingDeviceProgress) incrementServerReviewed(rotation, firstSight);
   }, [incrementServerReviewed, usingDeviceProgress]);
 
   // Keep the unmount-metadata ref current after each commit. Writing a ref
@@ -489,8 +497,16 @@ function UnifiedReviewBody({ rotations, week, rotationSizes, fetchSlots, feedMod
     }
     // Attribute the grade to the rotation it was graded in, so the drawer's row
     // for that rotation moves on this keystroke rather than at the next fetch.
-    incrementReviewed(currentItem?.rotation);
-  }, [cohortSingleTurn, currentItem?.deliveryId, currentItem?.rotation, incrementReviewed, isCohortHost]);
+    incrementReviewed(rotations[0] ?? currentItem?.rotation, currentItem?.firstSightAtSelection);
+  }, [
+    cohortSingleTurn,
+    currentItem?.deliveryId,
+    currentItem?.firstSightAtSelection,
+    currentItem?.rotation,
+    incrementReviewed,
+    isCohortHost,
+    rotations,
+  ]);
 
   // Card review: reveal, grade
   const card = useCardReview({
@@ -757,6 +773,35 @@ function UnifiedReviewBody({ rotations, week, rotationSizes, fetchSlots, feedMod
   // Drawer state (progress details panel)
   const [drawerOpen, setDrawerOpen] = useState(false);
   const [showRotationChooser, setShowRotationChooser] = useState(false);
+  const [mobileOptionsOpen, setMobileOptionsOpen] = useState(false);
+  const mobileOptionsRef = useRef<HTMLDivElement>(null);
+  const mobileOptionsPanelRef = useRef<HTMLDivElement>(null);
+  const mobileOptionsTriggerRef = useRef<HTMLButtonElement>(null);
+
+  useEffect(() => {
+    if (!mobileOptionsOpen) return;
+    const closeOnOutsidePointer = (event: PointerEvent) => {
+      if (mobileOptionsRef.current && !mobileOptionsRef.current.contains(event.target as Node)) {
+        setMobileOptionsOpen(false);
+      }
+    };
+    const closeOnEscape = (event: KeyboardEvent) => {
+      if (event.key !== 'Escape') return;
+      event.preventDefault();
+      setMobileOptionsOpen(false);
+      mobileOptionsTriggerRef.current?.focus();
+    };
+    const closeOnDesktop = () => { if (window.innerWidth >= 640) setMobileOptionsOpen(false); };
+    window.addEventListener('resize', closeOnDesktop);
+    document.addEventListener('pointerdown', closeOnOutsidePointer);
+    document.addEventListener('keydown', closeOnEscape);
+    mobileOptionsPanelRef.current?.querySelector<HTMLElement>('select, button, input, [tabindex="0"]')?.focus();
+    return () => {
+      window.removeEventListener('resize', closeOnDesktop);
+      document.removeEventListener('pointerdown', closeOnOutsidePointer);
+      document.removeEventListener('keydown', closeOnEscape);
+    };
+  }, [mobileOptionsOpen]);
 
   // Flag state — F opens text input, Enter submits
   const flagging = useFlagging({ item: currentItem, registerResetCallback });
@@ -1038,27 +1083,52 @@ function UnifiedReviewBody({ rotations, week, rotationSizes, fetchSlots, feedMod
               Plan<span className="hidden sm:inline"> a study session</span>
             </Link>
           )}
+          {!isAuthenticated && !isCohortHost && enrollableRotations.length > 0 && (
+            <button
+              type="button"
+              onClick={() => setShowRotationChooser(true)}
+              aria-label={`Change rotation: ${rotationLabel(rotations[0])}`}
+              className="inline-flex min-w-0 max-w-[30vw] shrink items-center gap-1 overflow-hidden whitespace-nowrap rounded-full border border-[var(--md-outline-variant)] px-[8px] sm:px-3 py-[4px] text-xs text-[var(--md-on-surface-variant)] hover:bg-[var(--md-surface-container-high)]"
+            >
+              <span className="truncate">{rotationLabel(rotations[0])}</span><span aria-hidden className="shrink-0">▾</span>
+            </button>
+          )}
           {isAuthenticated && onReviewModeChange && (
-            <ReviewModeSelector
-              feedMode={feedMode}
-              reviewFilter={reviewFilter}
-              itemType={itemType}
-              onChange={onReviewModeChange}
-              newRemaining={newRemaining}
-            />
+            <div className="hidden sm:block">
+              <ReviewModeSelector
+                practiceExamHref={!isCohortHost && process.env.NEXT_PUBLIC_PRACTICE_EXAMS_ENABLED === "true" ? "/practice-exam" : undefined}
+                feedMode={feedMode}
+                reviewFilter={reviewFilter}
+                itemType={itemType}
+                onChange={onReviewModeChange}
+                newRemaining={newRemaining}
+              />
+            </div>
           )}
           {isAuthenticated && onFocusRotationChange && (
-            <RotationFocusSelector
-              options={studyableRotations}
-              value={focusRotation}
-              examRotation={examRotation}
-              onChange={onFocusRotationChange}
-              onChangeRotation={
-                enrollableRotations.length > 0
-                  ? () => setShowRotationChooser(true)
-                  : undefined
-              }
-            />
+            <>
+              <div className="hidden sm:block">
+                <RotationFocusSelector
+                  options={studyableRotations}
+                  value={focusRotation}
+                  examRotation={examRotation}
+                  defaultRotation={rotations[0]}
+                  onChange={onFocusRotationChange}
+                  onChangeRotation={
+                    enrollableRotations.length > 0
+                      ? () => setShowRotationChooser(true)
+                      : undefined
+                  }
+                />
+              </div>
+              <span
+                className="sm:hidden max-w-[30vw] truncate whitespace-nowrap text-xs font-medium text-[var(--md-on-surface)]"
+                aria-label={`Course: ${rotationLabel(focusRotation ?? rotations[0])}`}
+                title={rotationLabel(focusRotation ?? rotations[0])}
+              >
+                {rotationLabel(focusRotation ?? rotations[0])}
+              </span>
+            </>
           )}
         </div>
 
@@ -1074,49 +1144,132 @@ function UnifiedReviewBody({ rotations, week, rotationSizes, fetchSlots, feedMod
           />
         )}
 
-        <div className="ml-auto flex shrink-0 items-center gap-1.5 sm:gap-2">
-          <ImageBlurToggle />
-          {isCohortHost && searchTopics.length > 0 && (
-            <CohortSearchOverlay
-              topics={searchTopics}
-              activeTopicId={activeSearchTopicId}
-              onSelect={handleSearchTopicSelect}
-              onClear={handleSearchTopicClear}
-              disabled={cohortPromptBlocked || cohortTurnPending}
-            />
-          )}
-          {cohortProfile?.hookCompletedAt && (
-            <Link
-              href="/tech"
-              className="text-xs text-[var(--md-on-surface-variant)] underline decoration-[var(--md-outline)] underline-offset-2 hover:text-[var(--md-on-surface)]"
+        <div ref={mobileOptionsRef} className="relative ml-auto flex min-w-0 shrink-0 items-center gap-1.5 sm:gap-2">
+          <div
+            ref={mobileOptionsPanelRef}
+            id="review-mobile-options"
+            role={!isCohortHost && mobileOptionsOpen ? 'dialog' : undefined}
+            aria-label={!isCohortHost && mobileOptionsOpen ? 'Review options' : undefined}
+            className={isCohortHost
+              ? 'flex min-w-0 shrink-0 items-center gap-1.5 sm:gap-2'
+              : mobileOptionsOpen
+                ? 'absolute right-0 top-full z-30 mt-1 flex max-h-[min(70vh,32rem)] w-[min(18rem,calc(100vw-1.5rem))] flex-col gap-3 overflow-y-auto rounded-xl border border-[var(--md-outline-variant)] bg-[var(--md-surface)] p-3 text-sm shadow-xl sm:static sm:mt-0 sm:max-h-none sm:w-auto sm:flex-row sm:items-center sm:gap-2 sm:overflow-visible sm:rounded-none sm:border-0 sm:bg-transparent sm:p-0 sm:text-sm sm:shadow-none'
+                : 'hidden sm:flex sm:min-w-0 sm:shrink-0 sm:items-center sm:gap-1.5 sm:gap-2'}
+          >
+            {!isCohortHost && isAuthenticated && onFocusRotationChange && mobileOptionsOpen && (
+              <RotationFocusSelector
+                options={studyableRotations}
+                value={focusRotation}
+                examRotation={examRotation}
+                defaultRotation={rotations[0]}
+                onChange={(next) => {
+                  setMobileOptionsOpen(false);
+                  onFocusRotationChange(next);
+                }}
+                onChangeRotation={
+                  enrollableRotations.length > 0
+                    ? () => {
+                        setMobileOptionsOpen(false);
+                        setShowRotationChooser(true);
+                      }
+                    : undefined
+                }
+              />
+            )}
+            {!isCohortHost && isAuthenticated && onReviewModeChange && mobileOptionsOpen && (
+              <div data-review-options-first>
+                <ReviewModeSelector
+                practiceExamHref={!isCohortHost && process.env.NEXT_PUBLIC_PRACTICE_EXAMS_ENABLED === "true" ? "/practice-exam" : undefined}
+                  feedMode={feedMode}
+                  reviewFilter={reviewFilter}
+                  itemType={itemType}
+                  onChange={(next) => {
+                    setMobileOptionsOpen(false);
+                    onReviewModeChange(next);
+                  }}
+                  newRemaining={newRemaining}
+                />
+              </div>
+            )}
+            {isCohortHost ? (
+              <ImageBlurToggle />
+            ) : mobileOptionsOpen ? (
+              <div className="flex items-center justify-between gap-4 sm:contents">
+                <span className="sm:hidden text-xs text-[var(--md-on-surface-variant)]">Blur images</span>
+                <ImageBlurToggle />
+              </div>
+            ) : (
+              <ImageBlurToggle />
+            )}
+            {isCohortHost && searchTopics.length > 0 && (
+              <CohortSearchOverlay
+                topics={searchTopics}
+                activeTopicId={activeSearchTopicId}
+                onSelect={handleSearchTopicSelect}
+                onClear={handleSearchTopicClear}
+                disabled={cohortPromptBlocked || cohortTurnPending}
+              />
+            )}
+            {cohortProfile?.hookCompletedAt && (
+              <Link
+                href="/tech"
+                className="text-xs text-[var(--md-on-surface-variant)] underline decoration-[var(--md-outline)] underline-offset-2 hover:text-[var(--md-on-surface)]"
+              >
+                How it&apos;s built
+              </Link>
+            )}
+            <button
+              type="button"
+              onClick={() => {
+                setMobileOptionsOpen(false);
+                setFlagMode(true);
+              }}
+              disabled={flagPending}
+              aria-label={flagged ? 'Flagged — press to add another flag' : flagPending ? 'Flag queued — sending…' : 'Flag this item (F)'}
+              className={`shrink-0 whitespace-nowrap text-xs px-2 py-1 rounded-md border border-transparent transition-colors ${
+                flagged || flagPending
+                  ? 'bg-[var(--md-warning-container)] text-[var(--md-on-warning-container)] border-[var(--md-warning)]'
+                  : 'text-[var(--md-on-surface-variant)] hover:text-[var(--md-on-surface)] hover:bg-[var(--md-surface-container-high)]'
+              }`}
+              title={flagged ? 'Flagged — press to add another flag' : flagPending ? 'Flag queued — sending…' : 'Flag this item (F)'}
             >
-              How it&apos;s built
-            </Link>
+              {flagged ? (
+                <>{'⚑'}<span className="hidden sm:inline"> flagged</span></>
+              ) : flagPending ? (
+                <>{'⧖'}<span className="hidden sm:inline"> pending</span></>
+              ) : (
+                <span className="flex items-center gap-1">
+                  {'⚐'}<span className="hidden sm:inline"> flag</span>
+                  <kbd className="hidden sm:inline text-[10px] opacity-40 font-mono">f</kbd>
+                </span>
+              )}
+            </button>
+          </div>
+          {!isCohortHost && (
+            <button
+              ref={mobileOptionsTriggerRef}
+              type="button"
+              aria-label="Review options"
+              title="Review options"
+              aria-haspopup="dialog"
+              aria-expanded={mobileOptionsOpen}
+              aria-controls="review-mobile-options"
+              onClick={() => setMobileOptionsOpen((open) => !open)}
+              className="inline-flex h-[44px] w-[44px] shrink-0 items-center justify-center rounded-full border border-[var(--md-outline-variant)] text-base text-[var(--md-on-surface-variant)] hover:bg-[var(--md-surface-container-high)] sm:hidden"
+            >
+              <span aria-hidden>⋯</span>
+            </button>
           )}
-        <button
-          onClick={() => setFlagMode(true)}
-          disabled={flagPending}
-          aria-label={flagged ? 'Flagged \u2014 press to add another flag' : flagPending ? 'Flag queued \u2014 sending\u2026' : 'Flag this item (F)'}
-          className={`shrink-0 whitespace-nowrap text-xs px-2 py-1 rounded-md border border-transparent transition-colors ${
-            flagged || flagPending
-              ? 'bg-[var(--md-warning-container)] text-[var(--md-on-warning-container)] border-[var(--md-warning)]'
-              : 'text-[var(--md-on-surface-variant)] hover:text-[var(--md-on-surface)] hover:bg-[var(--md-surface-container-high)]'
-          }`}
-          title={flagged ? 'Flagged \u2014 press to add another flag' : flagPending ? 'Flag queued \u2014 sending\u2026' : 'Flag this item (F)'}
-        >
-          {flagged ? (
-            <>{'\u2691'}<span className="hidden sm:inline"> flagged</span></>
-          ) : flagPending ? (
-            <>{'\u29d6'}<span className="hidden sm:inline"> pending</span></>
-          ) : (
-            <span className="flex items-center gap-1">
-              {'\u2690'}<span className="hidden sm:inline"> flag</span>
-              <kbd className="hidden sm:inline text-[10px] opacity-40 font-mono">f</kbd>
-            </span>
-          )}
-        </button>
         </div>
       </div>
+
+      {isAuthenticated && !isCohortHost && process.env.NEXT_PUBLIC_PRACTICE_EXAMS_ENABLED === 'true' && (
+        <div className="px-4">
+          <Link href="/practice-exam" className="inline-flex min-h-11 items-center text-sm font-medium text-[var(--md-primary)] underline underline-offset-4">
+            Practice exams
+          </Link>
+        </div>
+      )}
 
       {/* A scoped session has to say so. Sits above the card rather than inside
           the toolbar: the toolbar's controls all CHANGE the session, and this

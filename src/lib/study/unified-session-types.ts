@@ -5,6 +5,7 @@ import type { ReviewFilter } from '@/lib/review/review-intent';
 import type { ServeConditioning } from '@/lib/review/serve-conditioning';
 import type { RuntimeExamTargetContext } from '@/lib/exam-target/repository.server';
 import type { ExamTargetAttemptDecisionPath } from '@/lib/exam-target/attempt-ledger.server';
+import type { NoveltyProgressSnapshot } from './novelty-budget';
 
 export interface UnifiedItem {
   type: 'card' | 'question' | 'group' | 'video';
@@ -142,6 +143,9 @@ export interface UnifiedItem {
   noveltyPolicyVersion?: string | null;
   recentNeighborSimilarity?: number | null;
   noveltyPenalty?: number | null;
+  firstSightAtSelection?: boolean;
+  noveltyQuotaRequired?: number;
+  noveltyQuotaSelected?: number;
   /** Cross-session same-topic/different-facet follow-up telemetry. */
   conceptThreadPolicyVersion?: string | null;
   conceptThreadPolicyApplied?: boolean | null;
@@ -190,6 +194,14 @@ export interface NewRemainingCounts {
 export const DEFAULT_BATCH_SIZE = 50;
 export const MAX_BATCH_SIZE = 100;
 
+/**
+ * Items the review client asks for in one request (compute-fetch-slots). A
+ * cached queue is served across several of these, so anything reserved per
+ * served batch — the live path's protected relearn and due seats — is sized
+ * against this, not against the queue.
+ */
+export const CLIENT_REVIEW_BATCH_SIZE = 15;
+
 /** Shared context passed from the orchestrator to each session path. */
 export interface SessionContext {
   rotation: string;
@@ -234,6 +246,13 @@ export interface SessionContext {
    */
   recentFigureExposures?: ReadonlyMap<string, { count: number; mostRecentMs: number }>;
   batchSize: number;
+  /** Daily hybrid-goal snapshot already loaded by the orchestrator. */
+  noveltyProgress?: NoveltyProgressSnapshot;
+  /**
+   * The learner's validated study timezone from the request, when it sent one.
+   * Carried so a background queue rebuild counts "today" on the same clock.
+   */
+  studyTimezone?: string | null;
   weekFilter: number | null;
   sessionId: string;
   batchId: string;

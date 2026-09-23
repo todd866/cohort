@@ -310,10 +310,10 @@ export const PROTECTED_PUBLIC_FALLBACKS: ReadonlyArray<Readonly<{
     // already carries privacyDeletionRequestedAt in exactly that shape.
     path: 'prisma/schema/base.prisma',
     licence: 'MIT',
-    // 2026-09-17: User gained the two leaderboard columns; a shipped route and
-    // lib query on them, so the public User model carries them too (CI
-    // foss-export, run 35220042427).
-    sha256: 'b4e98b81ee760eff4e12a2e6e219ee07ec3502c1c8a04890a33867e7ad17f069',
+    // 2026-09-22: User gained reviewMenuCustomized and reviewMenuModules. The
+    // public profile save and /api/user/minimal already select them, so the
+    // public User model carries the same two columns (CI foss-export).
+    sha256: 'cdcd92505d59b739af12e10d0d4179270dc5791060225d9ec1a897b168f3c2cf',
   },
   {
     path: 'prisma/schema/content.prisma',
@@ -529,7 +529,7 @@ export const PROTECTED_PUBLIC_FALLBACKS: ReadonlyArray<Readonly<{
     // keeps its generic behavior but receives an empty server-side registry.
     path: 'src/lib/copyright-grant-policy.server.ts',
     licence: 'MIT',
-    sha256: '35f6ba953adc84876ce93fe99e89975d58f4ce68cb8a7b99fcf9966081057b83',
+    sha256: '1eb9af7ab75f05f1ebad97522bbaa28f68d8334857c4081d1fad7a15257ea90c',
   },
   {
     path: 'src/lib/personal-deck-owners.server.ts',

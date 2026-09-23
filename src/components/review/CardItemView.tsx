@@ -54,8 +54,10 @@ interface CardItemViewProps {
 export function imageIsPrompt(
   meta: { class?: string; showWhen?: string } | undefined | null,
   imageRole?: string | null,
+  /** The card's own question: one that points at the figure needs it visible. */
+  front?: string | null,
 ): boolean {
-  return reviewImageIsPrompt(imageRole, meta);
+  return reviewImageIsPrompt(imageRole, meta, front);
 }
 
 export function CardItemView({
@@ -69,7 +71,7 @@ export function CardItemView({
   onSuppress,
 }: CardItemViewProps) {
   const hasFigure = Boolean(item.imageUrl || item.imageKey);
-  const figureIsPrompt = imageIsPrompt(item.imageMeta, item.imageRole);
+  const figureIsPrompt = imageIsPrompt(item.imageMeta, item.imageRole, item.front);
   // A clip prompt outranks a figure prompt for the media pane: it is the stem,
   // and a card carrying both is an authoring mistake rather than a layout to
   // support. A supplementary figure on a clip card still renders, below the

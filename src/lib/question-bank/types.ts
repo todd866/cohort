@@ -92,6 +92,12 @@ export interface CuratedQuestion {
   imageCaption?: string | null;
   /** 'prompt' means the image is required before answering; null is after-reveal/optional. */
   imageRole?: 'prompt' | null;
+  /** VideoClip.slug. Resolved to Question.clipId at seed. */
+  clipSlug?: string | null;
+  /** 'prompt' means the clip is the stem. Requires clipSlug and clipCaption. */
+  clipRole?: 'prompt' | null;
+  /** Shown with the clip. Must not name the answer. */
+  clipCaption?: string | null;
   variantGroupId?: string | null;
   /** Coarse practice-locale split for confirmed AU/US twin questions. */
   practiceLocale?: 'au' | 'us' | null;

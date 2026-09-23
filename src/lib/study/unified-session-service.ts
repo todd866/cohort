@@ -26,6 +26,7 @@ import { tryPublicCorpusSession } from './unified-session-public';
 import { tryStarterSession } from './unified-session-starter';
 import { tryRereviewSession } from './unified-session-rereview';
 import { tryReviewFilterSession } from './unified-session-review-filter';
+import { tryPendingQuestionSession } from './unified-session-pending-questions';
 import { tryCachedSession } from './unified-session-cache';
 import { tryInstantSession } from './unified-session-instant';
 import { buildManifoldSession } from './unified-session-manifold';
@@ -41,7 +42,7 @@ import { registeredReviewTopicRotation } from '@/lib/review/review-topic-registr
 import { USMLE_STEP1_OPEN_ROTATION, USMLE_STEP1_PRIMARY_ROTATION } from '@/lib/usmle/raw-question-boundary';
 import { isSupplementaryRotation } from '@/lib/supplementary-rotations';
 import { entitledExamCrossSourceRotations } from './cross-source-access.server';
-import { resolvePrimaries } from '@/lib/review/resolve-primaries';
+import { defaultPrimaryForViewer, resolvePrimaries } from '@/lib/review/resolve-primaries';
 import {
   REACHABLE_ROTATIONS,
   SCHEDULED_ROTATIONS,
@@ -66,8 +67,13 @@ import {
 import { getStudyDayStart } from '@/lib/study-day';
 import { evaluateObjectiveCoreGate } from './objective-core-gate';
 import { effectiveExamDailyTarget } from './effective-daily-target';
-import { computeRotationDailyTarget } from './rotation-daily-target';
+import {
+  computeRotationDailyTarget,
+  type RotationDailyTarget,
+} from './rotation-daily-target';
+import { noveltyProgressFromDailyTarget } from './novelty-budget';
 import { isComposedDeck } from '@/lib/personal-decks';
+import { inPlayStudyRotations } from '@/lib/study/in-play-rotations';
 import {
   dessertCrossSourceSlots,
   dessertOtherSourceShare,
@@ -162,7 +168,11 @@ export function normalizeModulesFilter(rotation: string, modulesFilter: string |
   if (moduleList.length === 0) return null;
 
   const rotationModules = ROTATION_TO_MODULES[rotation] || [];
-  if (rotationModules.length === 0) return moduleList.join(',');
+  if (rotationModules.length === 0) {
+    // Self-paced/composed courses use their rotation slug as the root module.
+    // The enrolled course list is not a narrower topic request.
+    return moduleList.includes(rotation) ? null : moduleList.join(',');
+  }
 
   const overlappingModules = moduleList.filter(moduleSlug =>
     rotationModules.some(rotationModule => itemMatchesModules([rotationModule], [moduleSlug])),
@@ -185,6 +195,39 @@ export type UnifiedSessionAuthOverride = {
   userId: string;
   isGuest: false;
 };
+
+/** Resolve the scheduled objective, or the first entitled self-paced deck. */
+export function currentObjectiveForViewer(args: {
+  activeModules: readonly string[];
+  emails: readonly (string | null | undefined)[];
+  imageTier: string | null | undefined;
+  track: number | null;
+  institution: string | null;
+}): string {
+  const enrolledModules = args.activeModules.filter((module) =>
+    viewerCanAccessRequestedRotations([module], {
+      emails: args.emails,
+      imageTier: args.imageTier,
+    })
+  );
+  const scheduledRotations = SCHEDULED_ROTATIONS[
+    args.institution as keyof typeof SCHEDULED_ROTATIONS
+  ] ?? SCHEDULED_ROTATIONS.usyd;
+  const activeRotations = Number.isInteger(args.track)
+    && args.track! >= 1 && args.track! <= 4
+    ? getActiveRotations(args.track as TrackNumber)
+    : [];
+  const primaries = resolvePrimaries({
+    activeModules: enrolledModules,
+    activeRotations,
+    scheduledRotations,
+  });
+  return defaultPrimaryForViewer({
+    primaries,
+    enrolledStudyable: inPlayStudyRotations(enrolledModules),
+    scheduledRotations,
+  });
+}
 
 /**
  * Every serve lane returns through `getUnifiedSession`'s `??` chain (below) —
@@ -516,18 +559,13 @@ export async function getUnifiedSession(
     );
   }
   const currentObjective = userScope
-    ? resolvePrimaries({
+    ? currentObjectiveForViewer({
         activeModules: userScope.activeModules,
-        activeRotations:
-          Number.isInteger(userScope.track)
-          && userScope.track! >= 1
-          && userScope.track! <= 4
-            ? getActiveRotations(userScope.track as TrackNumber)
-            : [],
-        scheduledRotations: SCHEDULED_ROTATIONS[
-          userScope.institution as keyof typeof SCHEDULED_ROTATIONS
-        ] ?? SCHEDULED_ROTATIONS.usyd,
-      })[0] ?? null
+        emails: identityEmails,
+        imageTier: userScope.imageTier ?? null,
+        track: userScope.track,
+        institution: userScope.institution,
+      })
     : null;
   const entitledCrossSourceRotations = entitledExamCrossSourceRotations({
     targetRotation: rotation,
@@ -541,6 +579,23 @@ export async function getUnifiedSession(
   let crossSourceRotations: string[] = [];
   let maxCrossSourceItems = 0;
   let crossSourceMappingMode: 'adjacent' | 'open' = 'adjacent';
+  const gateNow = new Date();
+  const studyDayStart = studyTimezone
+    ? getStudyDayStart(gateNow, studyTimezone)
+    : null;
+  const loadRotationDailyTarget = (): Promise<RotationDailyTarget | null> =>
+    studyDayStart
+      ? computeRotationDailyTarget(
+        authResult.userId,
+        rotation,
+        studyDayStart,
+        gateNow,
+      ).catch(() => null)
+      : Promise.resolve(null);
+  const rotationDailyTarget: RotationDailyTarget | null =
+    entitledCrossSourceRotations.length > 0
+      ? await loadRotationDailyTarget()
+      : null;
   if (entitledCrossSourceRotations.length > 0) {
     const validTrack = Number.isInteger(userScope?.track)
       && userScope!.track! >= 1
@@ -550,10 +605,6 @@ export async function getUnifiedSession(
     const startDate = validTrack ? getBlockStartDate(rotation, validTrack) : null;
     const examDate = userScope?.rotations?.[0]?.examDate
       ?? (validTrack ? getBlockExamDate(rotation, validTrack) : null);
-    const gateNow = new Date();
-    const studyDayStart = studyTimezone
-      ? getStudyDayStart(gateNow, studyTimezone)
-      : null;
     const nativeAnswersToday = studyTimezone && startDate && examDate && studyDayStart
       ? await prisma.learningEvent.count({
           where: {
@@ -564,14 +615,7 @@ export async function getUnifiedSession(
           },
         }).catch(() => null)
       : null;
-    const adaptiveTarget = studyDayStart
-      ? await computeRotationDailyTarget(
-        authResult.userId,
-        rotation,
-        studyDayStart,
-        gateNow,
-      ).then((row) => row.dailyTarget).catch(() => null)
-      : null;
+    const adaptiveTarget = rotationDailyTarget?.dailyTarget ?? null;
     const dailyTarget = effectiveExamDailyTarget({
       adaptive: adaptiveTarget,
       studyGoal: userScope?.studyGoal ?? null,
@@ -779,6 +823,13 @@ export async function getUnifiedSession(
     examTarget,
     examTargetAttempt,
     batchSize,
+    // Every lane receives this snapshot. The cache lane uses it to spot a queue
+    // that owes first sights, a background rebuild reserves them from it, and a
+    // live manifold build that does run still honours it.
+    ...(rotationDailyTarget ? {
+      noveltyProgress: noveltyProgressFromDailyTarget(rotationDailyTarget),
+    } : {}),
+    studyTimezone,
     weekFilter,
     sessionId,
     batchId,
@@ -856,6 +907,57 @@ export async function getUnifiedSession(
   if (filteredResponse) {
     return protectPersonalRotationResponse(
       await withPrivateVideoDelivery(filteredResponse, commitmentLevel),
+      privateResponseRotations,
+    );
+  }
+
+  const pendingResponse = await withContractCheck(
+    'pending-questions',
+    await tryPendingQuestionSession(ctx),
+  );
+  if (pendingResponse) {
+    return protectPersonalRotationResponse(
+      await withPrivateVideoDelivery(pendingResponse, commitmentLevel),
+      privateResponseRotations,
+    );
+  }
+
+  // First-sight seats used to be enforced HERE, by sending every ordinary
+  // request that still owed first sights straight to the live manifold build
+  // (0ed3aad36, widened to "unseen cards remain" by 4d5db9cf7). That build
+  // takes 11-17 s on CAH, so the learners it applied to waited that long on
+  // every request. The seats are now reserved where the queue is built, in the
+  // background (unified-session-cache-compute.ts), and the cache lane rebuilds
+  // a queue that predates them without making the request wait. The lanes
+  // below all receive ctx.noveltyProgress.
+  //
+  // Composed decks are the exception. They give their companion decks every
+  // seat, and the background queue is built without companions, so serving it
+  // would strip the deck to its native cards. While one still owes first
+  // sights, its ordinary requests keep the live build, as on 22 Sep.
+  const learnerNarrowed = !!(
+    typeFilter
+    || difficultyFilter
+    || topicsFilter
+    || clusterFilter
+    || effectiveModulesFilter
+    || effectiveMode
+    || feedMode
+    || reviewFilter
+  );
+  const composedDeckOwesFirstSights = isComposedDeck(rotation)
+    && !learnerNarrowed
+    && ctx.noveltyProgress?.firstSightTarget != null
+    && (
+      ctx.noveltyProgress.todayFirstSight < ctx.noveltyProgress.firstSightTarget
+      || (ctx.noveltyProgress.unseenRemaining ?? 0) > 0
+    );
+  if (composedDeckOwesFirstSights) {
+    return protectPersonalRotationResponse(
+      await withPrivateVideoDelivery(
+        await withContractCheck('manifold', await buildManifoldSession(ctx)),
+        commitmentLevel,
+      ),
       privateResponseRotations,
     );
   }

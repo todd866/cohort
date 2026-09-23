@@ -205,6 +205,7 @@ export async function hydrateScheduledItems(
           conceptId: item.conceptId,
           conceptName: item.conceptName,
           interventionReason: item.interventionReason,
+          firstSightAtSelection: item.firstSightAtSelection ?? false,
         };
       }
 
@@ -273,6 +274,7 @@ export async function hydrateScheduledItems(
           noveltyPolicyVersion: item.noveltyPolicyVersion ?? null,
           recentNeighborSimilarity: item.recentNeighborSimilarity ?? null,
           noveltyPenalty: item.noveltyPenalty ?? null,
+          firstSightAtSelection: item.firstSightAtSelection ?? false,
           conceptThreadPolicyVersion: item.conceptThreadPolicyVersion ?? null,
           conceptThreadPolicyApplied: item.conceptThreadPolicyApplied ?? null,
           conceptThreadAnchorEventId: item.conceptThreadAnchorEventId ?? null,
@@ -359,6 +361,7 @@ export async function hydrateScheduledItems(
         noveltyPolicyVersion: item.noveltyPolicyVersion ?? null,
         recentNeighborSimilarity: item.recentNeighborSimilarity ?? null,
         noveltyPenalty: item.noveltyPenalty ?? null,
+        firstSightAtSelection: item.firstSightAtSelection ?? false,
         conceptThreadPolicyVersion: item.conceptThreadPolicyVersion ?? null,
         conceptThreadPolicyApplied: item.conceptThreadPolicyApplied ?? null,
         conceptThreadAnchorEventId: item.conceptThreadAnchorEventId ?? null,

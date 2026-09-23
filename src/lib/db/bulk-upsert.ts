@@ -107,6 +107,9 @@ export async function bulkUpsertQuestions(
     imageUrl?: string | null;
     imageCaption?: string | null;
     imageRole?: 'prompt' | null;
+    clipId?: string | null;
+    clipRole?: 'prompt' | null;
+    clipCaption?: string | null;
     cite?: string | null;
     /** Structured citation/provenance envelope; falls back to legacy `cite`. */
     citationMetadata?: unknown | null;
@@ -163,6 +166,9 @@ export async function bulkUpsertQuestions(
       ${sqlEscape(q.imageUrl ?? null)},
       ${sqlEscape(q.imageCaption ?? null)},
       ${sqlEscape(q.imageRole ?? null)},
+      ${sqlEscape(q.clipId ?? null)},
+      ${sqlEscape(q.clipRole ?? null)},
+      ${sqlEscape(q.clipCaption ?? null)},
       ${q.citationMetadata != null
         ? sqlEscape(q.citationMetadata)
         : q.cite
@@ -185,7 +191,8 @@ export async function bulkUpsertQuestions(
         "moduleNodes",
         "source", "sourceFile", "questionNumber", "questionType", "difficulty",
         "format",
-        "variantGroupId", "practiceLocale", "variantType", "imageUrl", "imageCaption", "imageRole", "citations", "crosslinks", "annotations",
+        "variantGroupId", "practiceLocale", "variantType", "imageUrl", "imageCaption", "imageRole",
+        "clipId", "clipRole", "clipCaption", "citations", "crosslinks", "annotations",
         "abbreviations", "combinations", "correctVariants", "contentState", "createdAt", "updatedAt"
       )
       VALUES ${values}
@@ -214,6 +221,9 @@ export async function bulkUpsertQuestions(
         "imageUrl" = EXCLUDED."imageUrl",
         "imageCaption" = EXCLUDED."imageCaption",
         "imageRole" = EXCLUDED."imageRole",
+        "clipId" = EXCLUDED."clipId",
+        "clipRole" = EXCLUDED."clipRole",
+        "clipCaption" = EXCLUDED."clipCaption",
         -- Source files are authoritative for public rights. Omitting or
         -- explicitly nulling publicUsmle must revoke stale DB eligibility;
         -- retaining an old DB envelope would make rights removal ineffective.

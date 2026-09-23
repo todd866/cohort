@@ -12,10 +12,12 @@
 import fs from 'node:fs/promises';
 import path from 'node:path';
 import { pathToFileURL } from 'node:url';
+import { loadCuratedStarterManifest, resolveCuratedStarterRows } from './curated-starters';
 import { withDefaultQuestionServingPolicy } from '../../src/lib/questions/source-policy';
 import { withoutRawPublicUsmleQuestions } from '../../src/lib/usmle/raw-question-boundary';
 import { withoutRawPublicUsmleReinforcementCards } from '../../src/lib/usmle/raw-reinforcement-card-boundary';
 import { filterDeliverableReinforcementCardRows } from '../../src/lib/usmle/reinforcement-card-delivery';
+import { SHARED_CATALOG_CARD_SCOPE, scopedCardWhere } from '../../src/lib/cards/read-repository.server';
 import {
   assertGeneratedContentIsUsable,
   resolveGeneratedContentMode,
@@ -24,6 +26,7 @@ import {
 const ROOT = process.cwd();
 const OUTPUT_DIR = path.join(ROOT, 'src', 'lib', 'generated');
 const OUTPUT_FILE = path.join(OUTPUT_DIR, 'starter-sessions.ts');
+const CURATED_STARTERS_FILE = path.join(ROOT, 'content', 'curated-starters.json');
 
 /** Minimal item shape matching what the route handler returns */
 export interface StarterItem {
@@ -51,6 +54,7 @@ export interface StarterItem {
   complexity?: number;
   priority?: number;
   conceptName?: string;
+  evidenceUrls?: string[];
   // Cloze variant fields — used by suppressSiblingsInStarterCards.
   variantGroupId?: string | null;
   variantIndex?: number | null;
@@ -131,7 +135,10 @@ async function main() {
   const mode = resolveGeneratedContentMode(process.env, { legacyContentMapFlags: false });
   const generatedAt = mode.generatedAt ?? new Date().toISOString();
   const sessions: Record<string, StarterSession> = {};
-
+  // Public/offline distributions intentionally omit this private editorial file.
+  const curatedManifest = mode.readDatabase
+    ? await loadCuratedStarterManifest(CURATED_STARTERS_FILE)
+    : null;
   if (mode.readDatabase) {
     try {
       const { prisma } = await import('../lib/db');
@@ -141,8 +148,98 @@ async function main() {
           by: ['rotation'],
           _count: { id: true },
         });
+        const rotationNames = new Set([
+          ...rotations.map(({ rotation }) => rotation),
+          ...Object.keys(curatedManifest?.rotations ?? {}),
+        ]);
 
-        for (const { rotation } of rotations) {
+        for (const rotation of rotationNames) {
+          const curatedEntries = curatedManifest?.rotations[rotation];
+          if (curatedEntries && curatedEntries.length > 0) {
+            // A curated introduction is a fixed editorial sequence: one bounded
+            // shared-catalog query, no random concept/questions, and no fallback
+            // to different content if a reviewed row has drifted.
+            const curatedRows = await prisma.card.findMany({
+              where: scopedCardWhere(SHARED_CATALOG_CARD_SCOPE, withoutRawPublicUsmleReinforcementCards({
+                rotation,
+                stableId: { in: curatedEntries.map(({ stableId }) => stableId) },
+                ownerUserId: null,
+                deletedAt: null,
+                shelvedAt: null,
+                NOT: { topics: { hasSome: EXCLUDED_TOPICS } },
+              })),
+              select: {
+                id: true,
+                stableId: true,
+                front: true,
+                back: true,
+                backs: true,
+                context: true,
+                imageUrl: true,
+                imageCaption: true,
+                imageRole: true,
+                sourceComponent: true,
+                rotation: true,
+                week: true,
+                complexity: true,
+                crosslinks: true,
+                topics: true,
+                difficulty: true,
+                variantGroupId: true,
+                variantIndex: true,
+                variantType: true,
+                ownerUserId: true,
+                deletedAt: true,
+                shelvedAt: true,
+              },
+            });
+            const deliverableRows = await filterDeliverableReinforcementCardRows(curatedRows, {
+              client: prisma,
+              logContext: { transport: 'generated-curated-starter-session', rotation },
+            });
+            const resolved = resolveCuratedStarterRows({
+              rotation,
+              entries: curatedEntries,
+              rows: curatedRows,
+              deliverableIds: new Set(deliverableRows.map(({ id }) => id)),
+              excludedTopics: EXCLUDED_TOPICS,
+            });
+            const curatedCards: StarterItem[] = resolved.map(({ entry, row }) => ({
+              type: 'card',
+              id: row.id,
+              front: row.front,
+              back: row.back,
+              backs: (row.backs as string[] | null) ?? null,
+              context: row.context ?? null,
+              sourceComponent: row.sourceComponent,
+              crosslinks: row.crosslinks ?? null,
+              imageUrl: row.imageUrl ?? null,
+              imageCaption: row.imageCaption ?? null,
+              imageRole: row.imageRole ?? null,
+              rotation: row.rotation,
+              week: row.week ?? null,
+              complexity: row.complexity,
+              topics: row.topics,
+              difficulty: row.difficulty,
+              priority: 1,
+              conceptName: entry.topic,
+              evidenceUrls: entry.evidenceUrls,
+              variantGroupId: row.variantGroupId ?? null,
+              variantIndex: row.variantIndex ?? null,
+              variantType: row.variantType ?? null,
+            }));
+            sessions[rotation] = {
+              items: curatedCards,
+              stats: {
+                totalItems: curatedCards.length,
+                cards: curatedCards.length,
+                questions: 0,
+                generatedAt,
+              },
+            };
+            continue;
+          }
+
           // Load top concepts by exam weight
           const concepts = await prisma.concept.findMany({
             where: { rotation },
@@ -377,6 +474,7 @@ async function main() {
   lines.push('  complexity?: number;');
   lines.push('  priority?: number;');
   lines.push('  conceptName?: string;');
+  lines.push('  evidenceUrls?: string[];');
   lines.push('  variantGroupId?: string | null;');
   lines.push('  variantIndex?: number | null;');
   lines.push('  variantType?: string | null;');

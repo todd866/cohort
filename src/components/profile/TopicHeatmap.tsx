@@ -2,7 +2,12 @@
 
 import { useState, type ReactNode } from 'react';
 import Link from 'next/link';
-import { describeTopicHeat, type TopicBand, type TopicLevel } from '@/lib/knowledge/topic-heat';
+import {
+  describeTopicHeat,
+  summarizeTopicReadiness,
+  type TopicBand,
+  type TopicLevel,
+} from '@/lib/knowledge/topic-heat';
 
 /**
  * The knowledge heatmap — one square per topic in the rotation you are on,
@@ -207,7 +212,7 @@ export function TopicHeatmap({
 
   if (squares.length === 0) return null;
 
-  const ready = squares.filter((s) => s.band === 'fresh').length;
+  const summary = summarizeTopicReadiness(squares);
   const days = Math.round(horizonDays);
 
   return (
@@ -218,7 +223,7 @@ export function TopicHeatmap({
             {rotationLabel}
           </h2>
           <p className="text-xs font-medium tabular-nums text-[var(--md-on-surface-variant)]">
-            {ready}/{squares.length} ready · {days}d
+            {summary.ready} ready · {summary.slipping} slipping · {summary.unseen} unseen · {days}d
           </p>
         </div>
 

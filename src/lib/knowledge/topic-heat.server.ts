@@ -30,8 +30,7 @@ import {
   getRotation,
   isSelfPacedExamDate,
 } from '@/lib/rotations';
-import { tidyClusterLabel } from './cluster-label';
-import { authoredClusterName } from './cluster-name-overlay';
+import { resolveClusterLabel } from './cluster-subject-label';
 import {
   projectReadiness,
   type ReadinessPoint,
@@ -45,7 +44,9 @@ import {
   MIN_STABILITY_DAYS,
   WARM_CEILING,
   classifyTopicHeat,
+  summarizeTopicReadiness,
   type TopicHeat,
+  type TopicReadinessSummary,
 } from './topic-heat';
 export interface TopicSquare extends TopicHeat {
   /** Cluster id. */
@@ -286,6 +287,86 @@ function sortStably(a: TopicSquare, b: TopicSquare): number {
   return byLabel !== 0 ? byLabel : a.id.localeCompare(b.id);
 }
 
+async function loadMemberTopics(rotation: string): Promise<Map<string, string[][]>> {
+  const rows = await prisma.$queryRaw<Array<{ cluster_id: string; topics: string[] }>>`
+    SELECT "clusterId" AS cluster_id, topics
+    FROM "Card"
+    WHERE rotation = ${rotation}
+      AND "deletedAt" IS NULL
+      AND "clusterId" IS NOT NULL
+  `;
+  const topics = new Map<string, string[][]>();
+  for (const row of rows) {
+    const list = topics.get(row.cluster_id) ?? [];
+    list.push(row.topics ?? []);
+    topics.set(row.cluster_id, list);
+  }
+  return topics;
+}
+
+function clusterRowsToSquares(
+  rows: readonly ClusterHeatRow[],
+  rotation: string,
+  now: Date,
+  memberTopics: ReadonlyMap<string, readonly (readonly string[])[]>,
+): TopicSquare[] {
+  return rows
+    .map((row): TopicSquare => ({
+      ...classifyTopicHeat({
+        itemCount: row.item_count,
+        seenCount: row.seen_count,
+        totalWeight: row.total_weight,
+        heldWeight: row.held_weight,
+        lastAnsweredAt: row.last_answered_at,
+        now,
+      }),
+      id: row.cluster_id,
+      label: resolveClusterLabel({
+        clusterId: row.cluster_id,
+        storedName: row.cluster_name ?? '',
+        rotation,
+        memberTopics: memberTopics.get(row.cluster_id) ?? [],
+      }),
+      sampleFronts: (row.sample_fronts ?? []).filter((front): front is string => !!front),
+      clusterId: row.cluster_id,
+      rotation,
+    }))
+    .sort(sortStably);
+}
+
+/**
+ * Lightweight current-state read for the review drawer. It deliberately omits
+ * the eight-week LearningEvent replay used by the profile trend.
+ */
+export async function loadTopicReadinessSummary(
+  userId: string,
+  rotation: string,
+  now: Date = new Date(),
+): Promise<TopicReadinessSummary | null> {
+  try {
+    const horizonDays = await loadHorizonDays(userId, rotation, now);
+    const [rows, memberTopics] = await Promise.all([
+      loadClusterRows(userId, rotation, now, horizonDays),
+      loadMemberTopics(rotation),
+    ]);
+    const squares = clusterRowsToSquares(rows, rotation, now, memberTopics);
+    if (squares.length === 0) return null;
+    return {
+      rotation,
+      rotationLabel: getRotation(rotation)?.shortName ?? rotation,
+      horizonDays,
+      ...summarizeTopicReadiness(squares),
+    };
+  } catch (error) {
+    logger.warn('Failed to load topic readiness summary', {
+      userId,
+      rotation,
+      error: String(error),
+    });
+    return null;
+  }
+}
+
 /**
  * The knowledge heatmap for one learner: every cluster in the rotation they
  * are currently on, plus the pinned never-forget squares.
@@ -302,35 +383,14 @@ export async function loadTopicHeatmap(
     if (!rotation) return null;
 
     const horizonDays = await loadHorizonDays(userId, rotation, now);
-    const [rows, trend] = await Promise.all([
+    const [rows, trend, memberTopics] = await Promise.all([
       loadClusterRows(userId, rotation, now, horizonDays),
       // Best-effort: losing the trend costs a sparkline, never the grid.
       loadTrend(userId, rotation, now, horizonDays).catch((): ReadinessPoint[] => []),
+      loadMemberTopics(rotation),
     ]);
 
-    const squares = rows
-      .map((row): TopicSquare => ({
-        ...classifyTopicHeat({
-          itemCount: row.item_count,
-          seenCount: row.seen_count,
-          totalWeight: row.total_weight,
-          heldWeight: row.held_weight,
-          lastAnsweredAt: row.last_answered_at,
-          now,
-        }),
-        id: row.cluster_id,
-        // An authored name beats the generated one. The generator labels a
-        // region by its commonest topic tag, which cannot separate siblings —
-        // seven CAH regions came out as "Surgery". Regions we have explicitly
-        // declined to name return null here and keep the generated label,
-        // because inventing one would hide that they need splitting.
-        label: authoredClusterName(row.cluster_id)
-          ?? tidyClusterLabel(row.cluster_name ?? '', rotation),
-        sampleFronts: (row.sample_fronts ?? []).filter((f): f is string => !!f),
-        clusterId: row.cluster_id,
-        rotation,
-      }))
-      .sort(sortStably);
+    const squares = clusterRowsToSquares(rows, rotation, now, memberTopics);
 
     if (squares.length === 0) return null;
     return {

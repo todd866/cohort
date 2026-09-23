@@ -1,4 +1,18 @@
 import type { RotationProgressBreakdown } from './hooks/useSessionProgress';
+import { daysUntilCalendarExam } from '@/lib/study/progress-pool';
+
+export function progressRotationsForObjective({
+  objectiveRotation,
+  sessionRotations,
+  focusRotation,
+}: {
+  objectiveRotation: string | null;
+  sessionRotations: readonly string[];
+  focusRotation: string | null;
+}): string[] {
+  const objective = objectiveRotation ?? sessionRotations[0] ?? null;
+  return [...new Set([objective, focusRotation].filter((value): value is string => Boolean(value)))];
+}
 
 /**
  * Which rotations the progress drawer should show.
@@ -18,15 +32,32 @@ import type { RotationProgressBreakdown } from './hooks/useSessionProgress';
  * and would be wrong for six weeks before anyone noticed — the same
  * silently-stale failure as a hardcoded threshold.
  */
+/**
+ * A finished sitting is not a countdown. Days of 0 used to mean both "exam
+ * today" and "this exam was months ago, clamped up to zero", so Critical Care
+ * sorted ahead of CAH for a learner whose CC exam was in March. A positive
+ * count is trusted. Zero is exam day only when the date itself is not past.
+ */
+export function isOpenExam(row: RotationProgressBreakdown, now: Date): boolean {
+  if (!row.examDate) return false;
+  const days = row.daysToExam ?? null;
+  if (days == null || days < 0) return false;
+  if (days > 0) return true;
+  const exam = new Date(row.examDate);
+  if (Number.isNaN(exam.getTime())) return false;
+  return daysUntilCalendarExam(exam, now) >= 0;
+}
+
 export function visibleProgressRotations(
   rows: readonly RotationProgressBreakdown[],
   currentRotation: string | null,
+  now: Date = new Date(),
 ): RotationProgressBreakdown[] {
   if (rows.length === 0) return [];
 
   // The booked exam is the headline. Soonest first when more than one is booked.
   const withExam = rows
-    .filter((r) => r.examDate)
+    .filter((row) => isOpenExam(row, now))
     .sort((a, b) => (a.daysToExam ?? Infinity) - (b.daysToExam ?? Infinity));
 
   // Self-paced only (no sitting booked): the deck with the most work done today

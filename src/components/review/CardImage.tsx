@@ -48,6 +48,8 @@ interface CardImageProps {
    *  screen together. Below `lg` the pane does not exist and the normal 80vh
    *  cap applies, so this stays a purely additive responsive override. */
   inSidePane?: boolean;
+  /** Optional host-specific recovery UI when delivery or its refreshed image fails. */
+  onUnavailable?: () => void;
 }
 
 /** Image and caption share a width; only the image frame uses the viewport
@@ -205,13 +207,18 @@ function CardImageZoom({ src, alt, regions, focusRegion, open, onClose, triggerR
             aria-label="Scroll to inspect the zoomed image"
             onClick={onClose}
             className="max-h-[calc(95dvh-4rem)] cursor-zoom-out overflow-auto overscroll-contain bg-[var(--md-surface-container-lowest)]">
-            {/* Same resolved bytes and reveal-safe alt as the card. Natural
-                width (at least 60rem) gives phone labels a useful reading size. */}
+            {/* Same resolved bytes and reveal-safe alt as the card. The 60rem
+                floor gives phone labels a useful reading size, and scroll-to-
+                inspect is the right trade there. On a laptop it is not: it
+                forced 960px and then max-w-none let a 3,000px plate render at
+                natural size, so a figure that would have fitted pushed the
+                learner into scrolling both axes (reported from review,
+                2026-09-19). Above lg the image fits the dialog instead. */}
             {/* eslint-disable-next-line @next/next/no-img-element */}
             <img
               src={src}
               alt={alt}
-              className="block h-auto w-auto min-w-[60rem] max-w-none"
+              className="block h-auto w-auto min-w-[60rem] max-w-none lg:min-w-0 lg:w-full lg:max-w-full lg:object-contain"
               onLoad={applyAnchor}
             />
           </div>
@@ -275,6 +282,7 @@ export function CardImage({
   trackingComponentId,
   onSkipSensitive,
   inSidePane = false,
+  onUnavailable,
 }: CardImageProps) {
   const imageOwner = useSyncExternalStore(subscribeOfflineOwner, currentImageOwner, () => 'unbound');
   const incomingSource = JSON.stringify([trackingComponentId, imageKey, src, meta?.revealImageKey]);
@@ -384,6 +392,12 @@ export function CardImage({
   }, [imageOwner]);
 
   const pendingLookupsRef = useRef(new Set<string>());
+  const reportUnavailable = useCallback((identity: string, requestedKey: string) => {
+    if (mountedRef.current && currentIdentityRef.current === identity
+      && sourceOwnerRef.current.source === incomingSource
+      && currentAllowedKeysRef.current.includes(requestedKey)
+      && currentImageOwner() === imageOwner) onUnavailable?.();
+  }, [imageOwner, incomingSource, onUnavailable]);
   const loadStableSource = useCallback(async (
     requestedKey: string,
     identity: string,
@@ -426,19 +440,28 @@ export function CardImage({
 
       // If the bytes were not cached but connectivity has returned, recover
       // without requiring a fresh review batch.
-      if (typeof navigator !== 'undefined' && navigator.onLine === false) return;
+      if (typeof navigator !== 'undefined' && navigator.onLine === false) {
+        reportUnavailable(identity, requestedKey);
+        return;
+      }
       const res = await fetchWithDeadline(
         `/api/figures/delivery?key=${encodeURIComponent(requestedKey)}`,
         { cache: 'no-store' },
         CLIENT_FETCH_DEADLINE_MS,
       );
-      if (!res.ok) return;
+      if (!res.ok) {
+        reportUnavailable(identity, requestedKey);
+        return;
+      }
       const body = (await res.json()) as { imageUrl?: unknown };
       if (typeof body.imageUrl === 'string') {
         acceptResolvedSource(identity, requestedKey, body.imageUrl);
+      } else {
+        reportUnavailable(identity, requestedKey);
       }
     } catch {
       // Leave the appropriate placeholder in place rather than throwing.
+      if (!cacheOnly) reportUnavailable(identity, requestedKey);
     } finally {
       pendingLookupsRef.current.delete(requestId);
       if (
@@ -455,7 +478,7 @@ export function CardImage({
         }));
       }
     }
-  }, [acceptResolvedSource, imageKey, src, imageOwner, sourceBelongsToOwner]);
+  }, [acceptResolvedSource, imageKey, src, imageOwner, sourceBelongsToOwner, reportUnavailable]);
 
   // Offline-pack payloads contain only imageKey + client-safe placement
   // metadata. Resolve the owner-scoped cached bytes as soon as the renderer
@@ -499,10 +522,13 @@ export function CardImage({
   const handleImageError = useCallback(() => {
     if (!displayImageKey) return;
     const retryId = `${sourceIdentity}:${displayImageKey}`;
-    if (resignedForRef.current.has(retryId)) return;
+    if (resignedForRef.current.has(retryId)) {
+      reportUnavailable(sourceIdentity, displayImageKey);
+      return;
+    }
     resignedForRef.current.add(retryId);
     void loadStableSource(displayImageKey, sourceIdentity, false, true);
-  }, [displayImageKey, loadStableSource, sourceIdentity]);
+  }, [displayImageKey, loadStableSource, sourceIdentity, reportUnavailable]);
 
   // Object URLs from the figure cache hold a blob in memory until revoked. A
   // review component is reused across cards, so release all variants as soon as
@@ -527,7 +553,9 @@ export function CardImage({
   const completedLookups = lookupState.identity === sourceIdentity ? lookupState.keys : [];
   // When the owner has durable storage, do not start a live <img> request in
   // the render-to-effect gap. A prepared URL is available synchronously.
-  const checkingSavedPrimary = Boolean(imageKey && readOfflineOwner() && !completedLookups.includes(imageKey));
+  // Use the hydration-stable snapshot, not a direct localStorage read. Existing
+  // offline owners must render the same first tree as the signed server image.
+  const checkingSavedPrimary = Boolean(imageKey && imageOwner !== 'unbound' && !completedLookups.includes(imageKey));
   const effectiveSrc = showingRevealImage
     ? (revealImageKey ? activeResolvedSources[revealImageKey] ?? peekPreparedFigure(revealImageKey) : null)
     : (imageKey ? activeResolvedSources[imageKey] ?? peekPreparedFigure(imageKey) : null)

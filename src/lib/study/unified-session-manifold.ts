@@ -57,6 +57,7 @@ import {
 } from './relearn';
 import { relearnProfileFor } from './relearn-profile';
 import { getStudyDayStart } from '@/lib/study-day';
+import { computeNoveltyBudget } from './novelty-budget';
 import {
   countCards,
   ownerPrivateOrSharedCardScope,
@@ -125,6 +126,18 @@ async function computeNewRemaining(
 
 function scheduledItemKey(item: Pick<UnifiedSessionItem, 'type' | 'id'>): string {
   return `${item.type}:${item.id}`;
+}
+
+function ensureSourceImageCaption(item: UnifiedItem): UnifiedItem {
+  if (!item.imageUrl || item.imageCaption?.trim()) return item;
+  // Legacy atlas cards already describe the marked structure in their answer
+  // and teaching context. Reuse that source text for the reveal-gated caption;
+  // never invent a visual finding from a filename or a topic label.
+  const sourceCaption = [item.type === 'card' ? item.back : null, item.context]
+    .filter((text): text is string => typeof text === 'string' && text.trim().length > 0 && !/[<>]/.test(text))
+    .map(text => text.trim())
+    .join('\n\n');
+  return { ...item, imageCaption: sourceCaption || 'Study image' };
 }
 
 function isSchedulerProtectedItem(item: UnifiedSessionItem): boolean {
@@ -413,6 +426,20 @@ export async function buildManifoldSession(ctx: SessionContext): Promise<NextRes
       0,
       ctx.batchSize - protectedSeatCount,
     );
+    const noveltyBudget = computeNoveltyBudget({
+      batchSize: ctx.batchSize,
+      protectedSeats: protectedSeatCount,
+      totalTarget: ctx.noveltyProgress?.totalTarget ?? null,
+      todayTotal: ctx.noveltyProgress?.todayTotal ?? 0,
+      firstSightTarget: ctx.noveltyProgress?.firstSightTarget ?? null,
+      todayFirstSight: ctx.noveltyProgress?.todayFirstSight ?? 0,
+      // A topic drill is allowed to repeat. An ordinary rotation feed is not,
+      // while that rotation still has cards the learner has never seen.
+      unseenRemaining: ctx.clusterFilter
+        ? 0
+        : ctx.noveltyProgress?.unseenRemaining ?? 0,
+      newOnly: ctx.feedMode === 'new-only',
+    });
 
     if (ctx.feedMode === 'new-only') {
       // Counter is best-effort. If counts fail we still serve items; we just
@@ -459,6 +486,7 @@ export async function buildManifoldSession(ctx: SessionContext): Promise<NextRes
       size: discretionarySchedulerSize,
       requestedBatchSize: ctx.batchSize,
       protectedSeatCount,
+      minFirstSightItems: noveltyBudget.minFirstSightItems,
       // Target credit is intentionally conservative until protected cards are
       // classified against the same immutable mastery snapshot.
       protectedTargetSeatCount: 0,
@@ -860,7 +888,7 @@ export async function buildManifoldSession(ctx: SessionContext): Promise<NextRes
       });
       const similarityToPriorMap = await scoreOrderedPairwiseDistances(orderedForPairwise);
       const walkTagged = prepared.filtered.map((item) => ({
-        ...item,
+        ...ensureSourceImageCaption(item),
         servedBy: 'manifold-walk' as const,
         clusterId: item.clusterId ?? null,
         poolSize: prepared.merged.length,
@@ -874,8 +902,14 @@ export async function buildManifoldSession(ctx: SessionContext): Promise<NextRes
       controlPrepared ? enrichVariant(controlPrepared) : Promise.resolve(null),
       targetPrepared ? enrichVariant(targetPrepared) : Promise.resolve(null),
     ]);
-    const decorateVariant = (items: typeof enrichedItems) => items.map(item => ({
+    const decorateVariant = (
+      items: typeof enrichedItems,
+      quota: { required: number; selected: number } | undefined,
+    ) => items.map(item => ({
       ...item,
+      noveltyQuotaRequired: quota?.required ?? noveltyBudget.minFirstSightItems,
+      noveltyQuotaSelected: quota?.selected ?? 0,
+      firstSightAtSelection: item.firstSightAtSelection ?? false,
       decisionContext: {
         servedBy: 'manifold-walk' as const,
         sessionType: 'review' as const,
@@ -883,9 +917,15 @@ export async function buildManifoldSession(ctx: SessionContext): Promise<NextRes
         embeddingType: 'concept-embedding' as const,
       },
     }));
-    const chosenItemsForResponse = decorateVariant(enrichedItems);
-    const controlItemsForResponse = decorateVariant(controlEnrichedItems ?? enrichedItems);
-    const targetItemsForResponse = decorateVariant(targetEnrichedItems ?? enrichedItems);
+    const chosenItemsForResponse = decorateVariant(enrichedItems, sessionResult.noveltyQuota);
+    const controlItemsForResponse = decorateVariant(
+      controlEnrichedItems ?? enrichedItems,
+      controlSessionResult?.noveltyQuota ?? sessionResult.noveltyQuota,
+    );
+    const targetItemsForResponse = decorateVariant(
+      targetEnrichedItems ?? enrichedItems,
+      targetSessionResult?.noveltyQuota ?? sessionResult.noveltyQuota,
+    );
     const liveWriteContext = {
       userId: ctx.userId,
       sessionId: ctx.sessionId,
@@ -1369,7 +1409,7 @@ export async function buildManifoldSession(ctx: SessionContext): Promise<NextRes
           extra: { error: errorDetail.slice(0, 200) },
         });
         const taggedFallbackItems = dueSafeFallbackItems.map((item) => ({
-          ...item,
+          ...ensureSourceImageCaption(item),
           decisionContext: {
             servedBy: 'manifold-walk' as const,
             sessionType: 'review' as const,

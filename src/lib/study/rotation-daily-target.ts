@@ -28,6 +28,13 @@ import {
 } from './servable-pool';
 import { resolvePracticeLocale } from './practice-locale';
 import {
+  buildProgressPoolBands,
+  daysUntilCalendarExam,
+  learnedCardProgressFilter,
+  progressHorizonDays,
+  shakyCardProgressFilter,
+} from './progress-pool';
+import {
   countCards,
   findManyCards,
   ownerPrivateOrSharedCardScope,
@@ -38,6 +45,8 @@ export interface RotationDailyTarget {
   rotation: string;
   dailyTarget: number | null;
   newPerDay: number | null;
+  firstSightTarget: number | null;
+  todayFirstSight: number;
   reviewsPerDay: number | null;
   learningFactor: number | null;
   consolidationDays: number | null;
@@ -56,6 +65,9 @@ export interface RotationDailyTarget {
     /** The old seen-items share, kept as a secondary figure; it falls whenever content is added. */
     itemPercent: number;
   };
+  progressPool: ReturnType<typeof buildProgressPoolBands>;
+  progressPoolHorizonDays: number;
+  selfPaced: boolean;
   daysToExam: number | null;
   examDate: string | null;
   todayReviewed: number;
@@ -74,11 +86,24 @@ export async function computeRotationDailyTarget(
   now: Date = new Date(),
 ): Promise<RotationDailyTarget> {
   const windowStart = new Date(startOfDay.getTime() - (HISTORY_DAYS - 1) * DAY_MS);
-  const poolFilters = await loadServablePoolFilters(userId);
-  const userRow = await prisma.user.findUnique({
-    where: { id: userId },
-    select: { track: true, institution: true },
-  });
+  const [poolFilters, userRow, examDate] = await Promise.all([
+    loadServablePoolFilters(userId),
+    prisma.user.findUnique({
+      where: { id: userId },
+      select: { track: true, institution: true },
+    }),
+    getExamDateForUser(rotation, userId),
+  ]);
+  // Self-paced rotations carry a far-future sentinel for scheduler urgency;
+  // the display treats it as no deadline and uses a 21-day holding horizon.
+  // A sitting that has already passed is not a countdown either. Clamping it
+  // to 0 made a finished block sort ahead of the real exam ("0 days to exam").
+  const scheduledExamDate = examDate && !isSelfPacedExamDate(examDate) ? examDate : null;
+  const rawDays = scheduledExamDate ? daysUntilCalendarExam(scheduledExamDate, now) : null;
+  const examStillOpen = rawDays != null && rawDays >= 0;
+  const daysToExam = examStillOpen ? rawDays : null;
+  const effectiveExamDate = examStillOpen ? scheduledExamDate : null;
+  const progressPoolHorizonDays = progressHorizonDays(daysToExam);
   const practiceLocale = resolvePracticeLocale({
     institution: userRow?.institution,
     requestRotation: rotation,
@@ -105,9 +130,10 @@ export async function computeRotationDailyTarget(
     totalQuestions,
     seenCards,
     seenQuestionRows,
-    examDate,
     dueReviews,
     seenCardRows,
+    learnedCards,
+    shakyCards,
   ] = await Promise.all([
     findManyCards(cardScope, {
       where: servableCardWhere,
@@ -127,17 +153,31 @@ export async function computeRotationDailyTarget(
       select: { questionId: true },
       distinct: ['questionId'],
     }),
-    getExamDateForUser(rotation, userId),
     prisma.cardProgress.count({
       where: scopedCardProgressWhere(cardScope, {
         userId,
-        lastReview: { not: null },
-        lastQuality: { lt: 3 },
+        totalReviews: { gt: 0 },
+        suppressed: false,
+        flagged: false,
+        status: { notIn: ['retired'] },
+        nextDueAt: { lte: now },
       }, servableCardWhere),
     }),
     prisma.cardProgress.findMany({
       where: scopedCardProgressWhere(cardScope, { userId, totalReviews: { gt: 0 } }, servableCardWhere),
       select: { cardId: true },
+    }),
+    prisma.cardProgress.count({
+      where: scopedCardProgressWhere(cardScope, {
+        userId,
+        ...learnedCardProgressFilter,
+      }, servableCardWhere),
+    }),
+    prisma.cardProgress.count({
+      where: scopedCardProgressWhere(cardScope, {
+        userId,
+        ...shakyCardProgressFilter,
+      }, servableCardWhere),
     }),
   ]);
 
@@ -162,18 +202,19 @@ export async function computeRotationDailyTarget(
   const totalItems = totalCards + totalQuestions;
   const unseenItems = totalItems - totalSeen;
 
-  // Self-paced rotations (the AnKing background deck) carry a far-future
-  // sentinel so the *scheduler* keeps them near-zero urgency. For the
-  // progress display that sentinel means "no deadline" — collapse it to null
-  // so daysToExam, dailyTarget, the countdown and the pace nudge all vanish
-  // (same shape as USMLE, which has a genuinely null exam date). Without this
-  // the sentinel leaks as a literal ~26,800-day countdown and a fabricated
-  // daily target/catch-up nudge in the review drawer.
-  const effectiveExamDate = isSelfPacedExamDate(examDate) ? null : examDate;
-
-  const daysToExam = effectiveExamDate
-    ? Math.max(0, Math.ceil((effectiveExamDate.getTime() - now.getTime()) / DAY_MS))
-    : null;
+  // These counts power the drawer's knowledge bar. They are intentionally
+  // separate from `dueReviews`, which is a workload estimate and must never
+  // be painted as "shaky". A card due again was recalled; that is the review
+  // queue, not a failure. Learned is the last successful recall. Shaky is
+  // the last failed one.
+  const progressPool = buildProgressPoolBands({
+    totalCards,
+    totalQuestions,
+    seenCards,
+    seenQuestions: seenQuestionRows.length,
+    learnedCards: learnedCards > seenCards ? seenCards : learnedCards,
+    shakyCards,
+  });
 
   const track = Number.isInteger(userRow?.track)
     && userRow!.track! >= 1
@@ -185,10 +226,6 @@ export async function computeRotationDailyTarget(
   const termLengthDays = blockStart && blockExam && blockExam.getTime() > blockStart.getTime()
     ? Math.max(1, Math.ceil((blockExam.getTime() - blockStart.getTime()) / DAY_MS))
     : null;
-
-  const estimatedDailyReviews = daysToExam && daysToExam > 0
-    ? Math.ceil((dueReviews * 2) / daysToExam)
-    : 0;
 
   const nativeCardIds = cardRows.map((c) => c.id);
   const nativeCardIdSet = new Set(nativeCardIds);
@@ -317,7 +354,7 @@ export async function computeRotationDailyTarget(
     unseenItems,
     daysToExam,
     termLengthDays,
-    estimatedDailyReviews,
+    actualDueItems: dueReviews,
     recentHistory,
     currentAccuracy,
     signalTrust,
@@ -339,6 +376,8 @@ export async function computeRotationDailyTarget(
     rotation,
     dailyTarget: result?.dailyTarget ?? null,
     newPerDay: result?.newPerDay ?? null,
+    firstSightTarget: result?.firstSightTarget ?? null,
+    todayFirstSight: firstSeenHistory[0] ?? 0,
     reviewsPerDay: result?.reviewsPerDay ?? null,
     learningFactor: result?.learningFactor ?? null,
     consolidationDays: result?.consolidationDays ?? null,
@@ -357,6 +396,9 @@ export async function computeRotationDailyTarget(
       seenQuestions,
       totalQuestions,
     },
+    progressPool,
+    progressPoolHorizonDays,
+    selfPaced: daysToExam == null,
     daysToExam,
     examDate: effectiveExamDate?.toISOString() ?? null,
     todayReviewed,

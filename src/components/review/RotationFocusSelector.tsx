@@ -28,6 +28,8 @@ interface RotationFocusSelectorProps {
    * Putting it first says what the menu already does.
    */
   examRotation?: string | null;
+  /** Actual objective served when the URL has no explicit focus. */
+  defaultRotation?: string | null;
 }
 
 /**
@@ -43,6 +45,7 @@ export function RotationFocusSelector({
   forceVisible = false,
   onChangeRotation,
   examRotation = null,
+  defaultRotation = null,
 }: RotationFocusSelectorProps) {
   const [open, setOpen] = useState(false);
   const ref = useRef<HTMLDivElement>(null);
@@ -65,7 +68,8 @@ export function RotationFocusSelector({
 
   if (options.length === 0 || (!forceVisible && !onChangeRotation && options.length <= 1)) return null;
 
-  const triggerLabel = value ? rotationLabel(value) : 'All';
+  const defaultLabel = defaultRotation ? rotationLabel(defaultRotation) : 'All';
+  const triggerLabel = value ? rotationLabel(value) : defaultLabel;
   // Ordered by the caller; the exam rotation is lifted out so it can sit above
   // "All" rather than wherever the shared order happens to put it.
   const ordered = orderFocusOptions(options);
@@ -119,7 +123,7 @@ export function RotationFocusSelector({
             onClick={() => pick(null)}
             className={itemClass(value === null)}
           >
-            All
+            {defaultRotation ? `Default (${defaultLabel})` : 'All'}
           </button>
           {rest.map((slug) => (
             <button

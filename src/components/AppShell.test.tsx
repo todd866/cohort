@@ -77,4 +77,11 @@ describe('AppShell accessibility landmarks', () => {
     expect(screen.queryByRole('link', { name: 'Privacy' })).not.toBeInTheDocument();
     expect(screen.getByRole('main')).toHaveClass('h-[100svh]', 'overflow-hidden');
   });
+  it('reserves an inline connection notice above the bounded textbook workspace', () => {
+    mockPathname.mockReturnValue('/textbook/stream');
+    render(<AppShell><p>Reader</p></AppShell>);
+    expect(screen.queryByRole('navigation', { name: 'Main navigation' })).not.toBeInTheDocument();
+    expect(screen.getByRole('main')).toHaveClass('flex-1', 'min-h-0', 'overflow-auto');
+    expect(screen.queryByRole('link', { name: 'Privacy' })).not.toBeInTheDocument();
+  });
 });

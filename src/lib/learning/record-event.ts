@@ -21,6 +21,7 @@ import { loadConceptSubspace } from '@/lib/manifold/local-subspace';
 import { isAnswerEvent } from './event-taxonomy';
 import { projectToLocal } from '@/lib/manifold/pca';
 import { LARGE_QUERY_SIZE } from '@/lib/constants';
+import { persistableConceptId } from '@/lib/knowledge/synthetic-concept';
 import type { Prisma } from '@prisma/client';
 import type {
   ReviewDeviceBucket,
@@ -280,10 +281,13 @@ export async function applyLearningEventDerivedState(
   } = prepared.derived;
 
   let conceptsUpdated = 0;
-  if (conceptIds.length > 0) {
+  const conceptStateIds = conceptIds
+    .map(persistableConceptId)
+    .filter((conceptId): conceptId is string => conceptId !== null);
+  if (conceptStateIds.length > 0) {
     conceptsUpdated = await updateConceptStates(
       userId,
-      conceptIds,
+      conceptStateIds,
       eventType,
       quality,
       // A skipped MCQ is not graded; it carries no outcome for concept state.
@@ -410,7 +414,7 @@ async function updateConceptStates(
 
   for (const conceptId of conceptIds) {
     try {
-      await updateSingleConceptState(
+      const stateUpdated = await updateSingleConceptState(
         userId,
         conceptId,
         eventType,
@@ -419,7 +423,7 @@ async function updateConceptStates(
         responseMs,
         now
       );
-      updated++;
+      if (stateUpdated) updated++;
     } catch (error) {
       logger.error(`Failed to update ConceptState for ${conceptId}`, { error: String(error) });
     }
@@ -439,7 +443,17 @@ async function updateSingleConceptState(
   isCorrect: boolean | undefined,
   responseMs: number | undefined,
   now: Date
-): Promise<void> {
+): Promise<boolean> {
+  // Scheduler fallback feeds can attribute a card to a real Cluster.id where
+  // no Concept row exists. Prove the foreign-key target before reading history
+  // or attempting a ConceptState upsert; card/cluster progress is persisted by
+  // its own review path and is unaffected by this derived cache.
+  const concept = await prisma.concept.findUnique({
+    where: { id: conceptId },
+    select: { rotation: true },
+  });
+  if (!concept) return false;
+
   // Get existing state
   const existing = await prisma.conceptState.findUnique({
     where: { userId_conceptId: { userId, conceptId } },
@@ -466,12 +480,6 @@ async function updateSingleConceptState(
     responseMs,
     now
   );
-
-  // Get exam date for decay projection
-  const concept = await prisma.concept.findUnique({
-    where: { id: conceptId },
-    select: { rotation: true },
-  });
 
   let recallOnExamDay = newState.recallProbability;
   if (concept?.rotation) {
@@ -524,6 +532,7 @@ async function updateSingleConceptState(
       lastComputed: now,
     },
   });
+  return true;
 }
 
 // =============================================================================

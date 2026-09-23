@@ -5113,6 +5113,152 @@
         "answer": "A son inherits his X from his mother and Y from his father. If he inherits the maternal X carrying the recessive variant, he has no second X copy at that locus.",
         "imageRole": "after-reveal"
       }
+    },
+    {
+      "id": "uterine-fibroid-locations",
+      "title": "Fibroids and the uterine wall",
+      "file": "images/uterine-fibroid-locations.png",
+      "sha256": "73f08ee9f6bf34e722f0f558600dbd89502874f139de8723c11223939ed5544d",
+      "width": 1536,
+      "height": 1152,
+      "generatedAt": "2026-09-19",
+      "caption": "Fibroid locations within and around the smooth-muscle uterine wall.",
+      "alt": "Coronal uterine cutaway with submucosal, intramural and subserosal fibroids, myometrium, endometrium, cavity and cervix labelled.",
+      "review": {
+        "status": "accepted",
+        "method": "agent-visual-and-source-review",
+        "notes": "Independent blind endpoint review identified the three masses, muscle wall, lining, cavity and cervical tissue. Cervical-tissue target is labelled Cervix, not canal. No exact FIGO subtype is claimed. Full-size and 375px inspected; v2 labels enlarged and shortened; all remain legible at phone width.",
+        "structure": {
+          "kind": "spatial-anatomy",
+          "status": "verified",
+          "specificationFiles": [
+            "scaffolds/uterine-fibroid-locations.json"
+          ],
+          "notes": "Independent blind endpoint review identified the three masses, muscle wall, lining, cavity and cervical tissue. Cervical-tissue target is labelled Cervix, not canal. No exact FIGO subtype is claimed. Full-size and 375px inspected; v2 labels enlarged and shortened; all remain legible at phone width.",
+          "reviewedFigureSha256": "73f08ee9f6bf34e722f0f558600dbd89502874f139de8723c11223939ed5544d",
+          "annotationFile": "annotations/uterine-fibroid-locations.svg"
+        }
+      },
+      "generation": {
+        "tool": "built-in image_gen; deterministic SVG labels",
+        "model": null,
+        "promptFiles": [
+          "prompts/uterine-fibroid-locations.json"
+        ],
+        "referenceAssetIds": [],
+        "externalReferenceImages": []
+      },
+      "clinicalSources": [
+        {
+          "title": "Fibroids arise from uterine smooth muscle and are described by relationship to the cavity and outer wall.",
+          "url": "https://www.nichd.nih.gov/health/topics/uterine"
+        },
+        {
+          "title": "Submucosal, intramural and subserosal describe distinct locations.",
+          "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC10952771/"
+        }
+      ],
+      "teaching": {
+        "question": "Which muscle layer gives rise to uterine fibroids?",
+        "answer": "Myometrial smooth muscle.",
+        "imageRole": "after-reveal"
+      }
+    },
+    {
+      "id": "suprascapular-distal-compression",
+      "title": "Suprascapular nerve: distal compression",
+      "file": "images/suprascapular-distal-compression.png",
+      "sha256": "793451aa58337deb19ae831a684351dc3b32d6cac8eb0de123464b487727e748",
+      "width": 1536,
+      "height": 1152,
+      "generatedAt": "2026-09-19",
+      "caption": "Distal suprascapular compression can spare supraspinatus while denervating infraspinatus.",
+      "alt": "Posterior right scapula showing supraspinatus above the spine, infraspinatus below, and the spinoglenoid compression site. Concealed nerve is dashed.",
+      "review": {
+        "status": "accepted",
+        "method": "agent-visual-and-source-review",
+        "notes": "Initial medial-notch base rejected. Corrected lateral superior-border entrance and distal nerve landmarks independently identified before labelling. Concealed segment marked with a dashed continuation. Final leaders and full-size/375px renders reviewed; v2 labels enlarged; no clipped teaching text at phone width. Selective schematic course, not surgical navigation.",
+        "structure": {
+          "kind": "spatial-anatomy",
+          "status": "verified",
+          "specificationFiles": [
+            "scaffolds/suprascapular-distal-compression.json"
+          ],
+          "notes": "Initial medial-notch base rejected. Corrected lateral superior-border entrance and distal nerve landmarks independently identified before labelling. Concealed segment marked with a dashed continuation. Final leaders and full-size/375px renders reviewed; v2 labels enlarged; no clipped teaching text at phone width. Selective schematic course, not surgical navigation.",
+          "reviewedFigureSha256": "793451aa58337deb19ae831a684351dc3b32d6cac8eb0de123464b487727e748",
+          "annotationFile": "annotations/suprascapular-distal-compression.svg"
+        }
+      },
+      "generation": {
+        "tool": "built-in image_gen; deterministic SVG labels",
+        "model": null,
+        "promptFiles": [
+          "prompts/suprascapular-distal-compression.json"
+        ],
+        "referenceAssetIds": [],
+        "externalReferenceImages": []
+      },
+      "clinicalSources": [
+        {
+          "title": "Spinoglenoid compression can selectively denervate infraspinatus after the supraspinatus branch has left.",
+          "url": "https://pubmed.ncbi.nlm.nih.gov/7611949/"
+        }
+      ],
+      "teaching": {
+        "question": "Which muscle can remain innervated when the suprascapular nerve is compressed at the spinoglenoid notch?",
+        "answer": "Supraspinatus.",
+        "imageRole": "after-reveal"
+      }
+    },
+    {
+      "id": "distal-superficial-fibular-sensation",
+      "title": "Distal superficial fibular lesion",
+      "file": "images/distal-superficial-fibular-sensation.png",
+      "sha256": "be19fe10d310a6f34fc10d98de07f2c435c824667ff555814e5a0e335babcc84",
+      "width": 960,
+      "height": 1120,
+      "generatedAt": "2026-09-19",
+      "caption": "Typical dorsal sensory territories help localise a distal superficial fibular injury.",
+      "alt": "Dorsal right foot with numb superficial fibular territory and spared deep fibular first web space, sural lateral border and saphenous medial border.",
+      "review": {
+        "status": "accepted",
+        "method": "agent-visual-and-source-review",
+        "notes": "Reviewed unchanged right dorsal foot, five digits and independently checked territory endpoints. Distal nail regions neutral; sole sparing is an examination finding, not shown anatomy. V2 preserves all reviewed territory geometry, raises colour contrast and main labels to 14px at 375px. Independent final pixel review accepted unambiguous leaders, readable labels and no teaching-content crop.",
+        "structure": {
+          "kind": "spatial-anatomy",
+          "status": "verified",
+          "specificationFiles": [
+            "scaffolds/distal-superficial-fibular-sensation.json"
+          ],
+          "notes": "Reviewed unchanged right dorsal foot, five digits and independently checked territory endpoints. Distal nail regions neutral; sole sparing is an examination finding, not shown anatomy. V2 preserves all reviewed territory geometry, raises colour contrast and main labels to 14px at 375px. Independent final pixel review accepted unambiguous leaders, readable labels and no teaching-content crop.",
+          "reviewedFigureSha256": "be19fe10d310a6f34fc10d98de07f2c435c824667ff555814e5a0e335babcc84",
+          "annotationFile": "annotations/distal-superficial-fibular-sensation.svg"
+        }
+      },
+      "generation": {
+        "tool": "built-in image_gen; deterministic SVG labels",
+        "model": null,
+        "promptFiles": [
+          "prompts/distal-superficial-fibular-sensation.json"
+        ],
+        "referenceAssetIds": [],
+        "externalReferenceImages": []
+      },
+      "clinicalSources": [
+        {
+          "title": "Dorsal cutaneous territories include superficial fibular, deep fibular, sural and saphenous contributions; their boundaries vary.",
+          "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC6449594/"
+        },
+        {
+          "title": "Variation makes exact dorsal sensory boundaries schematic.",
+          "url": "https://pubmed.ncbi.nlm.nih.gov/32196762/"
+        }
+      ],
+      "teaching": {
+        "question": "Which spared dorsal sensory space helps distinguish a superficial from a deep fibular nerve lesion?",
+        "answer": "The first web space.",
+        "imageRole": "after-reveal"
+      }
     }
   ],
   "createdAt": "2026-09-09"

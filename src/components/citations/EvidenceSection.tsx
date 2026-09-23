@@ -82,23 +82,19 @@ export function EvidenceSection({ citations }: { citations: CardCitationWithSour
   );
 }
 
-/** Shown in place of the section when a card has no citations at all. */
+/**
+ * Renders NOTHING.
+ *
+ * An absent citation is a WORKLIST, not a warning. 92.7% of the corpus carries
+ * no citation, so the old notice ("Treat it as unverified teaching content")
+ * told nearly every learner, on nearly every card, to distrust what they were
+ * reading — while the actual response is to go and find the source. Owner's
+ * call, and it was still live on /cards/[id] on 2026-09-19.
+ *
+ * Kept as a no-op component rather than deleted so the card and question pages
+ * keep their explicit "no citations" branch, and so restoring a notice later is
+ * a change in one place.
+ */
 export function NoEvidenceNotice() {
-  return (
-    <section className="mb-6">
-      <h2
-        className="text-sm font-medium mb-2 uppercase tracking-wide"
-        style={{ color: 'var(--md-on-surface)' }}
-      >
-        Evidence
-      </h2>
-      <p
-        className="text-sm p-3 rounded-[var(--md-radius-md)]"
-        style={{ background: 'var(--md-surface-container-low)', color: 'var(--md-on-surface-variant)' }}
-      >
-        This card has not been grounded against a source yet. Treat it as
-        unverified teaching content.
-      </p>
-    </section>
-  );
+  return null;
 }

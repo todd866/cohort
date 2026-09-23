@@ -18,6 +18,9 @@ const eslintConfig = defineConfig([
     "packages/**",
     // Generated app metadata/content maps:
     "src/lib/generated/**",
+    // pdf.js worker copied in by scripts/cah-stream/prepare-worker.mjs
+    // (gitignored, minified vendor code — six no-this-alias errors, none ours):
+    "public/pdfjs/**",
     // Local research/virtualenv artifacts:
     "**/.venv/**",
     // Agent / scratch artifacts (gitignored):

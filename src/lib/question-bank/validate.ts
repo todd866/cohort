@@ -141,6 +141,15 @@ export function validateCuratedQuestion(question: CuratedQuestion): string[] {
   if (question.imageRole === 'prompt' && !isNonEmptyString(question.imageUrl)) {
     errors.push('imageRole=prompt requires imageUrl');
   }
+  if (question.clipRole != null && question.clipRole !== 'prompt') {
+    errors.push('clipRole must be "prompt" or null');
+  }
+  if (question.clipRole === 'prompt' && !isNonEmptyString(question.clipSlug)) {
+    errors.push('clipRole=prompt requires clipSlug');
+  }
+  if (question.clipRole === 'prompt' && !isNonEmptyString(question.clipCaption)) {
+    errors.push('clipRole=prompt requires clipCaption');
+  }
 
   if (!Array.isArray(question.options) || question.options.length < 4) {
     errors.push('options must be an array of at least 4 items');
@@ -173,6 +182,18 @@ export function validateCuratedQuestion(question: CuratedQuestion): string[] {
         errors.push(`correctVariants[${i}] is exactly 80 chars (likely truncated)`);
       }
     }
+    // An answer fix that flips isCorrect but leaves the variants naming the old
+    // option makes every derived surface teach the distractor.
+    const norm = (s: string) => s.trim().toLowerCase();
+    const correctTexts = new Set(question.options.filter((o) => o.isCorrect).map((o) => norm(o.text)));
+    const distractorTexts = new Set(question.options.filter((o) => !o.isCorrect).map((o) => norm(o.text)));
+    question.correctVariants.forEach((variant, i) => {
+      if (!isNonEmptyString(variant)) return;
+      const v = norm(variant);
+      if (distractorTexts.has(v) && !correctTexts.has(v)) {
+        errors.push(`correctVariants[${i}] names a distractor ("${variant}") — sync it with the correct option`);
+      }
+    });
   }
 
   return errors;

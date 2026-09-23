@@ -12,7 +12,7 @@ export function RevealActionLabel({ item, remainingAnswers = 1 }: {
 }) {
   const { blurImages } = useImageBlurPreference();
   const hasImage = Boolean(item.imageUrl || item.imageKey);
-  const prompt = reviewImageIsPrompt(item.imageRole, item.imageMeta);
+  const prompt = reviewImageIsPrompt(item.imageRole, item.imageMeta, item.front ?? item.stem);
   const concealed = hasImage && blurImages
     && shouldGateClientImageMeta(item.imageMeta, item.imageKey ?? item.imageUrl);
   const supplementary = hasImage && !prompt;

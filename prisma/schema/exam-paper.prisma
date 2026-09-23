@@ -1,0 +1,17 @@
+// Durable timed assessment state; content is a versioned snapshot, not a bank.
+model ExamPaperSession {
+  id          String    @id
+  userId      String
+  user        User      @relation(fields: [userId], references: [id], onDelete: Cascade)
+  rotation    String
+  paper       Json      @db.JsonB
+  answers     Json      @db.JsonB
+  flags       String[]
+  revision    Int       @default(0)
+  startedAt   DateTime  @db.Timestamptz(3)
+  deadlineAt  DateTime  @db.Timestamptz(3)
+  submittedAt DateTime? @db.Timestamptz(3)
+  result      Json?     @db.JsonB
+
+  @@index([userId, startedAt])
+}

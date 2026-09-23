@@ -2,6 +2,7 @@ import 'server-only';
 import { Prisma } from '@prisma/client';
 import { prisma } from '@/lib/prisma';
 import {
+  LEADERBOARD_LIMIT,
   LEADERBOARD_WINDOW_DAYS,
   rankLeaderboard,
   type LeaderboardInput,
@@ -9,7 +10,7 @@ import {
 } from './leaderboard-lib';
 
 /**
- * Loads the board for a joined viewer. One aggregate over LearningEvent for
+ * Loads the board for a joined viewer, or — for an admin — for everyone. One aggregate over LearningEvent for
  * every joined learner, then the pure ranking. Reads history, so it is a
  * page/route read, never a hot-path call: the review loop never touches this.
  *
@@ -28,17 +29,52 @@ interface AggregateRow {
   activeDays: string[] | null;
 }
 
+export interface LoadLeaderboardOptions {
+  /**
+   * Admin viewers only. Ranks every REGISTERED learner, opted in or not, so the
+   * owner can see the whole cohort rather than the self-selected slice. A
+   * learner who has not joined is labelled by their own `name`; where that is
+   * null — which is the common case — by the local part of their email, the
+   * same `displayName` fallback the daily usage table uses. Never the whole
+   * address, and never a human name inferred from one.
+   *
+   * Guests (email null) stay out: an anonymous identity is an acquisition
+   * record, not a person to rank.
+   */
+  includeEveryone?: boolean;
+}
+
 export async function loadLeaderboard(
   viewerId: string,
   now = new Date(),
-): Promise<{ rows: LeaderboardRow[]; me: LeaderboardRow | null; joinedCount: number }> {
-  const joined = await prisma.user.findMany({
-    where: { leaderboardJoinedAt: { not: null }, leaderboardHandle: { not: null } },
-    select: { id: true, leaderboardHandle: true },
+  { includeEveryone = false }: LoadLeaderboardOptions = {},
+): Promise<{
+  rows: LeaderboardRow[];
+  me: LeaderboardRow | null;
+  joinedCount: number;
+  viewAll: boolean;
+}> {
+  const candidates = await prisma.user.findMany({
+    where: includeEveryone
+      ? { email: { not: null } }
+      : { leaderboardJoinedAt: { not: null }, leaderboardHandle: { not: null } },
+    select: {
+      id: true,
+      name: true,
+      email: true,
+      leaderboardHandle: true,
+      leaderboardJoinedAt: true,
+    },
   });
-  if (joined.length === 0) return { rows: [], me: null, joinedCount: 0 };
+  const people = candidates.map((u) => ({
+    id: u.id,
+    isJoined: u.leaderboardJoinedAt !== null && u.leaderboardHandle !== null,
+    label: displayLabel(u),
+  }));
+  const joinedCount = people.filter((u) => u.isJoined).length;
+  if (people.length === 0) return { rows: [], me: null, joinedCount: 0, viewAll: includeEveryone };
 
-  const ids = joined.map((u) => u.id);
+  const ids = people.map((u) => u.id);
   const windowStart = new Date(now.getTime() - LEADERBOARD_WINDOW_DAYS * 86_400_000);
   const streakStart = new Date(now.getTime() - STREAK_LOOKBACK_DAYS * 86_400_000);
   const aggregates = await prisma.$queryRaw<AggregateRow[]>(Prisma.sql`
@@ -61,19 +97,41 @@ export async function loadLeaderboard(
     GROUP BY e."userId"
   `);
   const byUser = new Map(aggregates.map((row) => [row.userId, row]));
-  const inputs: LeaderboardInput[] = joined.map((u) => {
+  const inputs: LeaderboardInput[] = people.map((u) => {
     const agg = byUser.get(u.id);
     return {
       userId: u.id,
-      handle: u.leaderboardHandle as string,
+      handle: u.label,
       windowReviews: agg?.windowReviews ?? 0,
       allTimeReviews: agg?.allTimeReviews ?? 0,
       activeDays: agg?.activeDays ?? [],
+      isJoined: u.isJoined,
     };
   });
   const todayIso = sydneyDate(now);
-  const ranked = rankLeaderboard(inputs, viewerId, todayIso);
-  return { ...ranked, joinedCount: joined.length };
+  // The everyone view is the whole cohort by definition, so it is not cut at
+  // the public board's top 20.
+  const ranked = rankLeaderboard(
+    inputs, viewerId, todayIso, includeEveryone ? inputs.length : LEADERBOARD_LIMIT,
+  );
+  return { ...ranked, joinedCount, viewAll: includeEveryone };
+}
+
+/**
+ * What to print in the Name column. A joined learner gets the handle they
+ * typed. Anyone else — only ever visible to an admin — gets their own `name`,
+ * or the local part of their email when it is null. A name is never inferred
+ * from an address (an opaque local part stays opaque), and the domain is dropped
+ * because it identifies nothing the owner needs here.
+ */
+function displayLabel(
+  user: { name: string | null; email: string | null; leaderboardHandle: string | null; leaderboardJoinedAt: Date | null },
+): string {
+  if (user.leaderboardJoinedAt !== null && user.leaderboardHandle) return user.leaderboardHandle;
+  const name = user.name?.trim();
+  if (name) return name;
+  const local = user.email?.split('@')[0]?.trim();
+  return local || 'Unknown';
 }
 
 export function sydneyDate(at: Date): string {

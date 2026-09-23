@@ -1,7 +1,13 @@
 import { NextResponse, after } from 'next/server';
 import { prisma } from '@/lib/prisma';
 import { logger } from '@/lib/logger';
-import type { UnifiedItem, SessionContext } from './unified-session-types';
+import {
+  CLIENT_REVIEW_BATCH_SIZE,
+  type UnifiedItem,
+  type SessionContext,
+} from './unified-session-types';
+import { queueNoveltyBudget } from './novelty-budget';
+import { isComposedDeck } from '@/lib/personal-decks';
 import { logSessionDiagnostic } from './unified-session-diagnostics';
 import {
   buildCacheResponsePayload,
@@ -450,12 +456,69 @@ async function refreshCachedQuestionOptions(
 }
 
 /**
+ * A filter the learner chose. The service also sets `hasFilters` when another
+ * source is blended in after the core gate, but that is an entitlement mix:
+ * the queue is still this rotation's, and serving it is what tryCachedSession's
+ * own comment has promised since 9b15ae898. Refusing it sent every blended request to the
+ * instant shuffle, the one lane that reserves no first-sight seats.
+ */
+function isLearnerNarrowed(ctx: SessionContext): boolean {
+  return Boolean(
+    ctx.typeFilter
+    || ctx.difficultyFilter
+    || ctx.topicsFilter
+    || ctx.clusterFilter
+    || ctx.modulesFilter
+    || ctx.mode
+    || ctx.feedMode
+    || ctx.reviewFilter,
+  );
+}
+
+function isCrossSourceBlendOnly(ctx: SessionContext): boolean {
+  // A composed deck gives its companion decks every seat, and the background
+  // queue is built without companions, so its queue would strip the deck to
+  // its native cards. It keeps the live build.
+  if (isComposedDeck(ctx.rotation)) return false;
+  return (ctx.crossSourceRotations?.length ?? 0) > 0 && !isLearnerNarrowed(ctx);
+}
+
+/**
+ * Whether a served queue owes first sights it was never built to hold.
+ *
+ * The request does not wait for them: the queue is served either way. A queue
+ * with no reservation stamp predates first-sight seats, and one stamped zero
+ * was built when none were owed (or progress was unreadable), so each is
+ * rebuilt once in the background with this request's progress. A queue built
+ * under a positive reservation that still came up short ran out of servable
+ * unseen supply; rebuilding it would produce the same queue on every request.
+ */
+export function cachedQueueOwesNoveltyRebuild(
+  ctx: Pick<SessionContext, 'noveltyProgress'>,
+  items: readonly UnifiedItem[],
+): boolean {
+  if (!ctx.noveltyProgress || items.length === 0) return false;
+  const required = queueNoveltyBudget({
+    queueSize: items.length,
+    servedBatchSize: CLIENT_REVIEW_BATCH_SIZE,
+    progress: ctx.noveltyProgress,
+  }).minFirstSightItems;
+  if (required === 0) return false;
+  const firstSights = items.filter((item) => item.firstSightAtSelection === true).length;
+  if (firstSights >= required) return false;
+  const builtUnderReservation = items.some(
+    (item) => typeof item.noveltyQuotaRequired === 'number' && item.noveltyQuotaRequired > 0,
+  );
+  return !builtUnderReservation;
+}
+
+/**
  * Try to serve from session cache. Returns null if no usable cache exists
  * (falls through to instant/manifold).
  */
 export async function tryCachedSession(ctx: SessionContext): Promise<NextResponse | null> {
   if (
-    ctx.hasFilters
+    (ctx.hasFilters && !isCrossSourceBlendOnly(ctx))
     || ctx.noCache
     || ctx.isGuest
   ) return null;
@@ -683,6 +746,20 @@ export async function tryCachedSession(ctx: SessionContext): Promise<NextRespons
       // Even when only one modality survives, a final filter may have left
       // gaps in the positions assigned before media/due revalidation.
       const modalitySafeCachedItems = enrichItemsWithWalkMetadata(modalityOrderedCachedItems);
+
+      // A stale queue is already being rebuilt above, with the same progress.
+      if (isFresh && cachedQueueOwesNoveltyRebuild(ctx, modalitySafeCachedItems)) {
+        logger.info('unified-session cache owes first sights; rebuilding in background', {
+          userId: ctx.userId,
+          rotation: ctx.rotation,
+          items: modalitySafeCachedItems.length,
+          firstSights: modalitySafeCachedItems.filter((item) => item.firstSightAtSelection === true).length,
+          unseenRemaining: ctx.noveltyProgress?.unseenRemaining ?? null,
+        });
+        after(async () => {
+          await runSessionCacheRefresh(ctx, { recordOutcome: true, source: 'novelty-short' });
+        });
+      }
 
       // One query for the batch: which items has this session already been
       // delivered? Empty on a first attempt; populated when the client retried.

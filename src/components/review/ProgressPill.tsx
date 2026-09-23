@@ -33,7 +33,7 @@ export function ProgressPill({
         : target != null
           ? `Progress: ${reviewed} of ${target}`
           : `${reviewed} reviewed`}`}
-      className={`relative shrink-0 whitespace-nowrap min-w-[72px] overflow-hidden rounded-full border px-3 py-1.5 text-xs font-medium transition-colors shadow-[inset_0_1px_0_rgba(255,255,255,0.38)] ${
+      className={`relative shrink-0 whitespace-nowrap min-w-[72px] overflow-hidden rounded-full border px-[12px] py-[6px] text-xs font-medium transition-colors shadow-[inset_0_1px_0_rgba(255,255,255,0.38)] ${
         targetHit ? hitColor : activeColor
       }`}
     >

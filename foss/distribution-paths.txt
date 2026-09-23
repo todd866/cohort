@@ -45,6 +45,9 @@ open-content/gamsat/passages/s3/osmosis-diffusion.v1.json
 open-content/gamsat/passages/s3/projectile-motion.v1.json
 open-content/medical-figures/LICENSE
 open-content/medical-figures/README.md
+open-content/medical-figures/annotations/distal-superficial-fibular-sensation.svg
+open-content/medical-figures/annotations/suprascapular-distal-compression.svg
+open-content/medical-figures/annotations/uterine-fibroid-locations.svg
 open-content/medical-figures/images/abnormal-red-reflex-urgent-review.png
 open-content/medical-figures/images/accommodative-esotropia-glasses-mechanism.png
 open-content/medical-figures/images/amblyopia-competing-information-channels.png
@@ -98,6 +101,7 @@ open-content/medical-figures/images/congenital-rubella-three-teaching-associatio
 open-content/medical-figures/images/demyelination-saltatory-conduction.png
 open-content/medical-figures/images/dermatophyte-keratin-growth-model.png
 open-content/medical-figures/images/developmental-delay-versus-regression.png
+open-content/medical-figures/images/distal-superficial-fibular-sensation.png
 open-content/medical-figures/images/duchenne-hip-weakness-postural-compensation.png
 open-content/medical-figures/images/duct-patency-support-model.png
 open-content/medical-figures/images/eczema-itch-scratch-loop.png
@@ -140,6 +144,7 @@ open-content/medical-figures/images/pseudostrabismus-reflection-symmetry-concept
 open-content/medical-figures/images/respiratory-noise-phase-model.png
 open-content/medical-figures/images/scabies-household-cycle.png
 open-content/medical-figures/images/sickle-haemoglobin-polymer.png
+open-content/medical-figures/images/suprascapular-distal-compression.png
 open-content/medical-figures/images/suspected-meningitis-treatment-lp-priorities.png
 open-content/medical-figures/images/tear-production-drainage-balance.png
 open-content/medical-figures/images/tetralogy-resistance-split-model.png
@@ -147,6 +152,7 @@ open-content/medical-figures/images/thalassaemia-marrow-demand-expansion.png
 open-content/medical-figures/images/trisomy-21-chromosome-copies.png
 open-content/medical-figures/images/turner-single-x-chromosome.png
 open-content/medical-figures/images/tympanogram-pattern-comparison.png
+open-content/medical-figures/images/uterine-fibroid-locations.png
 open-content/medical-figures/images/viral-wheeze-calendar-model.png
 open-content/medical-figures/images/vwf-bridge-carrier-model.png
 open-content/medical-figures/images/x-linked-recessive-carrier-cross.png
@@ -204,6 +210,7 @@ open-content/medical-figures/prompts/congenital-rubella-three-teaching-associati
 open-content/medical-figures/prompts/demyelination-saltatory-conduction.json
 open-content/medical-figures/prompts/dermatophyte-keratin-growth-model.json
 open-content/medical-figures/prompts/developmental-delay-versus-regression.json
+open-content/medical-figures/prompts/distal-superficial-fibular-sensation.json
 open-content/medical-figures/prompts/duchenne-hip-weakness-postural-compensation.json
 open-content/medical-figures/prompts/duct-patency-support-model.json
 open-content/medical-figures/prompts/eczema-itch-scratch-loop.json
@@ -246,6 +253,7 @@ open-content/medical-figures/prompts/pseudostrabismus-reflection-symmetry-concep
 open-content/medical-figures/prompts/respiratory-noise-phase-model.json
 open-content/medical-figures/prompts/scabies-household-cycle.json
 open-content/medical-figures/prompts/sickle-haemoglobin-polymer.json
+open-content/medical-figures/prompts/suprascapular-distal-compression.json
 open-content/medical-figures/prompts/suspected-meningitis-treatment-lp-priorities.json
 open-content/medical-figures/prompts/tear-production-drainage-balance.json
 open-content/medical-figures/prompts/tetralogy-resistance-split-model.json
@@ -253,6 +261,7 @@ open-content/medical-figures/prompts/thalassaemia-marrow-demand-expansion.json
 open-content/medical-figures/prompts/trisomy-21-chromosome-copies.json
 open-content/medical-figures/prompts/turner-single-x-chromosome.json
 open-content/medical-figures/prompts/tympanogram-pattern-comparison.json
+open-content/medical-figures/prompts/uterine-fibroid-locations.json
 open-content/medical-figures/prompts/viral-wheeze-calendar-model.json
 open-content/medical-figures/prompts/vwf-bridge-carrier-model.json
 open-content/medical-figures/prompts/x-linked-recessive-carrier-cross.json
@@ -309,6 +318,7 @@ open-content/medical-figures/scaffolds/congenital-rubella-three-teaching-associa
 open-content/medical-figures/scaffolds/demyelination-saltatory-conduction.json
 open-content/medical-figures/scaffolds/dermatophyte-keratin-growth-model.json
 open-content/medical-figures/scaffolds/developmental-delay-versus-regression.json
+open-content/medical-figures/scaffolds/distal-superficial-fibular-sensation.json
 open-content/medical-figures/scaffolds/duchenne-hip-weakness-postural-compensation.json
 open-content/medical-figures/scaffolds/duct-patency-support-model.json
 open-content/medical-figures/scaffolds/eczema-itch-scratch-loop.json
@@ -351,6 +361,7 @@ open-content/medical-figures/scaffolds/pseudostrabismus-reflection-symmetry-conc
 open-content/medical-figures/scaffolds/respiratory-noise-phase-model.json
 open-content/medical-figures/scaffolds/scabies-household-cycle.json
 open-content/medical-figures/scaffolds/sickle-haemoglobin-polymer.json
+open-content/medical-figures/scaffolds/suprascapular-distal-compression.json
 open-content/medical-figures/scaffolds/suspected-meningitis-treatment-lp-priorities.json
 open-content/medical-figures/scaffolds/tear-production-drainage-balance.json
 open-content/medical-figures/scaffolds/tetralogy-resistance-split-model.json
@@ -358,6 +369,7 @@ open-content/medical-figures/scaffolds/thalassaemia-marrow-demand-expansion.json
 open-content/medical-figures/scaffolds/trisomy-21-chromosome-copies.json
 open-content/medical-figures/scaffolds/turner-single-x-chromosome.json
 open-content/medical-figures/scaffolds/tympanogram-pattern-comparison.json
+open-content/medical-figures/scaffolds/uterine-fibroid-locations.json
 open-content/medical-figures/scaffolds/viral-wheeze-calendar-model.json
 open-content/medical-figures/scaffolds/vwf-bridge-carrier-model.json
 open-content/medical-figures/scaffolds/x-linked-recessive-carrier-cross.json
@@ -1030,6 +1042,8 @@ prisma/migrations/20260916040000_user_curriculum_requested_at/migration.sql
 prisma/migrations/20260917040000_card_concept/migration.sql
 prisma/migrations/20260917080000_leaderboard_handle/migration.sql
 prisma/migrations/20260917090000_serve_decision_exposed_index/migration.sql
+prisma/migrations/20260921090000_exam_paper_sessions/migration.sql
+prisma/migrations/20260922120000_review_menu_modules/migration.sql
 prisma/migrations/migration_lock.toml
 prisma/schema/anki-bridge.prisma
 prisma/schema/anki-export.prisma
@@ -1040,6 +1054,7 @@ prisma/schema/citations.prisma
 prisma/schema/concepts.prisma
 prisma/schema/curriculum.prisma
 prisma/schema/embeddings.prisma
+prisma/schema/exam-paper.prisma
 prisma/schema/exam-target.prisma
 prisma/schema/progress.prisma
 prisma/schema/quality.prisma
@@ -1061,6 +1076,8 @@ scripts/audit/usmle-public-corpus.test.ts
 scripts/audit/usmle-public-corpus.ts
 scripts/content-lake/storage.ts
 scripts/content-lake/types.ts
+scripts/content/curated-starters.test.ts
+scripts/content/curated-starters.ts
 scripts/content/frontmatter.mjs
 scripts/content/generate-content-map.test.ts
 scripts/content/generate-content-map.ts
@@ -1176,6 +1193,7 @@ src/app/profile/profile-request-box.tsx
 src/app/profile/profile-sections.tsx
 src/app/profile/profile-settings-sections.tsx
 src/app/profile/profile-support.tsx
+src/app/profile/review-menu-section.tsx
 src/app/profile/settings/ProfileSettingsClient.tsx
 src/app/profile/settings/page.tsx
 src/app/profile/stats/loading.tsx
@@ -1338,9 +1356,11 @@ src/components/review/hooks/useReviewKeyboard.ts
 src/components/review/hooks/useReviewSession.ts
 src/components/review/hooks/useSessionLifecycle.ts
 src/components/review/hooks/useSessionProgress.ts
+src/components/review/hooks/useTopicReadiness.ts
 src/components/review/image-role.ts
 src/components/review/progress-rotation-filter.ts
 src/components/review/review-panes.ts
+src/components/review/upcoming-clips.ts
 src/components/review/upcoming-images.ts
 src/components/review/zoom-focus.ts
 src/components/rotation/RotationLandingPage.tsx
@@ -1380,6 +1400,7 @@ src/hooks/useFlagPending.ts
 src/hooks/useGrading.ts
 src/hooks/useInstitution.ts
 src/hooks/useMCQInteraction.ts
+src/hooks/usePrefetchClips.ts
 src/hooks/usePrefetchImage.ts
 src/hooks/usePrepareReviewImages.ts
 src/hooks/useReviewImageChoices.test.ts
@@ -1571,6 +1592,7 @@ src/lib/guest-user.ts
 src/lib/idempotency.ts
 src/lib/images/alt.ts
 src/lib/images/audit-patterns.ts
+src/lib/images/blur-classification.ts
 src/lib/images/library-loader.ts
 src/lib/images/serving-projection.ts
 src/lib/images/types.ts
@@ -1586,6 +1608,7 @@ src/lib/knowledge/challenge-policy.ts
 src/lib/knowledge/cluster-label.ts
 src/lib/knowledge/cluster-name-overlay.ts
 src/lib/knowledge/cluster-names.data.ts
+src/lib/knowledge/cluster-subject-label.ts
 src/lib/knowledge/concept-thread-history.ts
 src/lib/knowledge/concept-thread-policy.ts
 src/lib/knowledge/content-gaps.ts
@@ -1814,6 +1837,7 @@ src/lib/study-day.ts
 src/lib/study-queue.ts
 src/lib/study/__fixtures__/session-fixtures.ts
 src/lib/study/booked-exam.ts
+src/lib/study/copyright-step1-supplement.ts
 src/lib/study/cross-source-access.server.ts
 src/lib/study/current-session-content.ts
 src/lib/study/daily-target.ts
@@ -1825,13 +1849,18 @@ src/lib/study/focus-option-order.ts
 src/lib/study/imported-rung-access.ts
 src/lib/study/in-play-rotations.ts
 src/lib/study/jurisdiction-twin.ts
+src/lib/study/novelty-budget.ts
 src/lib/study/objective-core-gate.ts
+src/lib/study/objective-daily-target.ts
 src/lib/study/practice-locale.ts
 src/lib/study/private-video-delivery.ts
 src/lib/study/probe-lane.ts
+src/lib/study/progress-pool.ts
 src/lib/study/relearn-profile.ts
 src/lib/study/relearn.ts
 src/lib/study/review-attribution.ts
+src/lib/study/review-menu.server.ts
+src/lib/study/review-menu.ts
 src/lib/study/rotation-content-map.ts
 src/lib/study/rotation-daily-target.ts
 src/lib/study/servable-pool.ts
@@ -1860,6 +1889,7 @@ src/lib/study/unified-session-instant.ts
 src/lib/study/unified-session-manifold-exclusions.ts
 src/lib/study/unified-session-manifold-items.ts
 src/lib/study/unified-session-manifold.ts
+src/lib/study/unified-session-pending-questions.ts
 src/lib/study/unified-session-public.ts
 src/lib/study/unified-session-rereview.ts
 src/lib/study/unified-session-review-filter.ts

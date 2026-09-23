@@ -29,7 +29,8 @@ export function AppShell({
   const isExperimental = isExperimentalPath(pathname);
   const isImmersiveLab = Boolean(
     pathname?.startsWith('/x/cockpit') ||
-    pathname?.startsWith('/videos')
+    pathname?.startsWith('/videos') ||
+    pathname === '/textbook/stream'
   );
   const isReviewMode = Boolean(
     (pathname?.startsWith('/review') && pathname !== '/review') ||
@@ -38,7 +39,15 @@ export function AppShell({
     pathname?.endsWith('/study')
   );
 
-  const shell = isImmersiveLab ? (
+  const shell = pathname === '/textbook/stream' ? (
+    <div className="flex h-[100svh] min-h-0 flex-col">
+      <SkipToMainContent />
+      <ConnectionBanner inline message="Offline — prepared pages remain available." />
+      <main id="main-content" tabIndex={-1} className="min-h-0 flex-1 overflow-auto">
+        {children}
+      </main>
+    </div>
+  ) : isImmersiveLab ? (
     <>
       <SkipToMainContent />
       <ConnectionBanner />

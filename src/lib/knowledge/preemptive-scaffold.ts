@@ -122,6 +122,13 @@ export interface PreemptiveScaffoldOpts {
   scaffoldDueAt?: ReadonlyMap<string, Date | null>;
   /** Injectable clock for the due-gate. Defaults to now. */
   now?: Date;
+  /**
+   * Concepts whose high-complexity item was just missed. A building block is
+   * inserted only for those. Omit to keep the historical "pair every anchor"
+   * behaviour. An empty set inserts nothing: a correct frontier card is not
+   * followed by a cloze.
+   */
+  stepDownConceptIds?: ReadonlySet<string>;
 }
 
 const SCAFFOLD_COMPLEXITY = 1;
@@ -278,6 +285,7 @@ export function planPreemptiveScaffoldInsertions<T extends PairableItem>(
   opts: PreemptiveScaffoldOpts = {},
 ): PreemptiveScaffoldInsertion[] {
   const matchBy = opts.matchBy ?? 'topic';
+  if (opts.stepDownConceptIds && opts.stepDownConceptIds.size === 0) return [];
   // Normalize each item's topics once per plan, not once per candidate pair.
   const topicCache: SpecificTopicCache = new Map();
   const maxPairings = opts.maxPairings ?? deriveCap(items, matchBy);
@@ -350,6 +358,7 @@ export function planPreemptiveScaffoldInsertions<T extends PairableItem>(
     if (insertions.length >= maxPairings) break;
     const item = items[i];
     if (!isAnchor(item, matchBy)) continue;
+    if (opts.stepDownConceptIds && !opts.stepDownConceptIds.has(item.conceptId ?? '')) continue;
 
     // If the next item is already a complexity-1 card, the existing ordering
     // already provides scaffolding — don't pair redundantly.

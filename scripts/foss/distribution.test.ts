@@ -105,6 +105,36 @@ afterEach(() => {
 });
 
 describe('FOSS distribution boundary', () => {
+  it('keeps private exam content out while allowing only generic session storage and progress helpers', () => {
+    const root = process.cwd();
+    const policy = loadDistributionPolicy(root);
+    const reviewed = fs.readFileSync(path.join(root, policy.pathManifest), 'utf8').split(/\r?\n/);
+    const privatePrefixes = [
+      'src/app/api/exam-papers',
+      'src/app/practice-exam',
+      'src/components/exam-paper',
+      'src/lib/exam-paper',
+    ];
+
+    expect(policy.excludePrefixes).toEqual(expect.arrayContaining(privatePrefixes));
+    expect(reviewed).toContain('prisma/schema/exam-paper.prisma');
+    expect(reviewed).toContain('prisma/migrations/20260921090000_exam_paper_sessions/migration.sql');
+    expect(reviewed).toContain('src/lib/study/progress-pool.ts');
+    expect(reviewed.some((entry) => privatePrefixes.some((prefix) => (
+      entry === prefix || entry.startsWith(`${prefix}/`)
+    )))).toBe(false);
+
+    const publicPackage = JSON.parse(
+      policy.generatedTextFiles.find((entry) => entry.path === 'package.json')!.text,
+    ) as { scripts: Record<string, string> };
+    const publicEnvironment = fs.readFileSync(path.join(root, '.env.example'), 'utf8');
+    const reviewUi = fs.readFileSync(path.join(root, 'src/components/review/UnifiedReview.tsx'), 'utf8');
+    expect(Object.values(publicPackage.scripts).some((script) => script.includes('exam:check'))).toBe(false);
+    expect(publicPackage.scripts.prebuild).toContain('images:index');
+    expect(publicEnvironment).not.toContain('NEXT_PUBLIC_PRACTICE_EXAMS_ENABLED');
+    expect(reviewUi).toContain('process.env.NEXT_PUBLIC_PRACTICE_EXAMS_ENABLED === "true"');
+  });
+
   it('allows a larger reviewed binary only through its exact per-file cap and hash', () => {
     const root = fixture();
     const policyPath = path.join(root, 'foss/distribution-policy.json');
@@ -777,6 +807,7 @@ describe('FOSS distribution boundary', () => {
       'src/app/api/admin',
       'src/app/api/analytics',
       'src/app/api/audit',
+      'src/app/api/cah-stream',
       'src/app/api/cards',
       'src/app/api/citations',
       'src/app/api/concepts',
@@ -826,7 +857,10 @@ describe('FOSS distribution boundary', () => {
       'src/app/sandbox',
       'src/app/study',
       'src/app/x',
+      'src/components/cah-stream',
       'src/data',
+      'src/generated/cah-stream',
+      'src/lib/cah-stream',
       'src/lib/generated',
       'src/lib/integrations',
       'src/app/wba',
@@ -843,6 +877,7 @@ describe('FOSS distribution boundary', () => {
       'src/components/offline/OfflineTabShell.tsx',
       'src/hooks/useActiveModules.ts',
       'src/lib/anking-scaffold-content.test.ts',
+      'src/lib/cah-stream-access.server.ts',
       'src/lib/card-generator.test.ts',
       'src/lib/card-validators.test.ts',
       'src/lib/content-gen/liked-variants.test.ts',
@@ -952,6 +987,7 @@ describe('FOSS distribution boundary', () => {
       path: 'prisma/schema/base.prisma',
       text: expect.stringContaining('ankiImportJobs'),
     }));
+    expect(policy.generatedTextFiles.find(entry => entry.path === 'prisma/schema/base.prisma')?.text).toContain('examPaperSessions ExamPaperSession[]');
     const publicContentSchema = policy.generatedTextFiles.find(
       (entry) => entry.path === 'prisma/schema/content.prisma',
     );
@@ -1105,11 +1141,13 @@ describe('FOSS distribution boundary', () => {
     const publicTestPaths = [...publicPackage.scripts['foss:test'].matchAll(
       /(?:^|\s)["']?([^\s"']+\.test\.tsx?)["']?/g,
     )].map((match) => match[1]);
-    expect(publicTestPaths).toHaveLength(62);
+    expect(publicTestPaths).toHaveLength(63);
+    expect(publicTestPaths).toContain('scripts/content/curated-starters.test.ts');
     expect(policy.includeFiles).toEqual(expect.arrayContaining(publicTestPaths));
     expect(JSON.stringify(publicPackage.scripts)).not.toMatch(
       /(?:^|\s)question-bank\/|anki-import|scripts\/personal|audit:tooling-contract|seed-private/i,
     );
+    expect(JSON.stringify(publicPackage.scripts)).not.toContain('cah-stream');
     expect(publicPackage.scripts.test).toBe('npm run foss:test');
     expect(publicPackage.scripts['foss:boundary:audit']).toContain('--source-tree');
     const offlineGenerationPrerequisites = publicPackage.scripts['typecheck:scripts'].replace(
@@ -1283,6 +1321,10 @@ describe('FOSS distribution boundary', () => {
       ...fs.readFileSync(path.join(root, policy.pathManifest), 'utf8').split('\n').filter(Boolean),
       ...policy.generatedTextFiles.map((entry) => entry.path),
     ]);
+    // Keeping the shared lockfile does not make its private PDF reader public.
+    expect([...artifactPaths].filter((filePath) => (
+      filePath.includes('cah-stream') || filePath.startsWith('src/app/textbook/')
+    ))).toEqual([]);
     const selectedApiRoutes = [...artifactPaths]
       .filter((filePath) => /^src\/app\/api\/.+\/route\.(?:js|jsx|ts|tsx)$/.test(filePath))
       .sort();

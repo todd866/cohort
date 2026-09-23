@@ -1,20 +1,19 @@
 /**
- * Conservative learner-level challenge targeting.
+ * Frontier-first challenge targeting.
  *
- * This policy deliberately uses the scheduler's already-trusted, decayed
- * concept recall rather than `predictedRecall`, whose item-level estimator is
- * still telemetry-only. It moves through all three authored rungs instead of
- * jumping directly from scaffolding to stretch.
+ * The standing target is the top of the ladder. Building blocks are the
+ * step-down after a high-complexity miss, not the rung a learner starts on.
+ * Recall still has to be a real number: an unmeasured concept records no
+ * target rather than inventing one. Item-level `predictedRecall` stays
+ * telemetry-only and does not choose the rung.
  */
 
-export const CHALLENGE_POLICY_VERSION = 'concept-recall-rungs-v1';
+export const CHALLENGE_POLICY_VERSION = 'frontier-then-stepdown-v1';
 export const STANDARD_CHALLENGE_RECALL = 0.6;
 export const STRETCH_CHALLENGE_RECALL = 0.8;
 
-/** The rung a learner starts on: the scaffolded tier that `targetComplexityForRecall`
- *  returns for the weakest known recall. Named so callers that must choose a rung
- *  for an unmeasured concept pick the same one the policy already gives a
- *  struggling learner, instead of inventing a literal. */
+/** Building-block rung. Used when a high-complexity miss steps the concept
+ *  down, not as the standing target. */
 export const SCAFFOLDING_COMPLEXITY = 1;
 
 /**
@@ -38,29 +37,21 @@ export function targetChallengeTierForRecall(
   currentRecall: number | undefined,
 ): ChallengeTier | null {
   if (currentRecall === undefined || !Number.isFinite(currentRecall)) return null;
-  if (currentRecall < STANDARD_CHALLENGE_RECALL) return 'scaffolding';
-  if (currentRecall < STRETCH_CHALLENGE_RECALL) return 'standard';
   return 'stretch';
 }
 
 export function targetComplexityForRecall(
   currentRecall: number | undefined,
-): 1 | 2 | 3 | null {
-  const tier = targetChallengeTierForRecall(currentRecall);
-  if (tier === 'scaffolding') return 1;
-  if (tier === 'standard') return 2;
-  if (tier === 'stretch') return 3;
-  return null;
+): 1 | 2 | 3 | 4 | 5 | null {
+  if (targetChallengeTierForRecall(currentRecall) == null) return null;
+  return MAX_COMPLEXITY;
 }
 
 export function targetQuestionDifficultyForRecall(
   currentRecall: number | undefined,
 ): ChallengeQuestionDifficulty | null {
-  const tier = targetChallengeTierForRecall(currentRecall);
-  if (tier === 'scaffolding') return 'easy';
-  if (tier === 'standard') return 'medium';
-  if (tier === 'stretch') return 'hard';
-  return null;
+  if (targetChallengeTierForRecall(currentRecall) == null) return null;
+  return 'hard';
 }
 
 export function challengeTierDistance(

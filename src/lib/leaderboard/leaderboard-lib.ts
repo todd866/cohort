@@ -9,6 +9,11 @@
  * gameable by answering only easy cards, which is the opposite of what the
  * scheduler is trying to serve.
  *
+ * One exception, and it is one-way: an admin viewer sees every registered
+ * learner, opted in or not, labelled by their own name or email. Nobody else's
+ * view changes, and a learner who has not joined still appears to no other
+ * learner. See loadLeaderboard's `includeEveryone`.
+ *
  * The handle is the only thing shown. It is never derived from a name or an
  * email, and an email-shaped handle is refused so nobody can leak their own
  * address by accident.
@@ -51,6 +56,12 @@ export interface LeaderboardInput {
   allTimeReviews: number;
   /** Distinct Australia/Sydney calendar days with at least one answer, ISO date strings. */
   activeDays: string[];
+  /**
+   * Whether this learner opted in. False only appears in the owner-only
+   * everyone view, where the label is the learner's own name or email rather
+   * than a handle they chose.
+   */
+  isJoined: boolean;
 }
 
 export interface LeaderboardRow {
@@ -60,6 +71,7 @@ export interface LeaderboardRow {
   allTimeReviews: number;
   streakDays: number;
   isMe: boolean;
+  isJoined: boolean;
 }
 
 /**
@@ -115,6 +127,7 @@ export function rankLeaderboard(
       allTimeReviews: row.allTimeReviews,
       streakDays: currentStreak(new Set(row.activeDays), todayIso),
       isMe: row.userId === viewerId,
+      isJoined: row.isJoined,
     });
   });
   const me = all.find((row) => row.isMe) ?? null;

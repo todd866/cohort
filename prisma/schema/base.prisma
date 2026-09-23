@@ -73,6 +73,12 @@ model User {
   // Slugs like "cc/icu", "gsse/anatomy" - see ModuleNode
   activeModules String[] @default([])
 
+  // Review focus menu. Until reviewMenuCustomized is set, the shared default
+  // applies (current block + the main subject decks). Afterwards
+  // reviewMenuModules replaces that default.
+  reviewMenuCustomized Boolean  @default(false)
+  reviewMenuModules    String[] @default([])
+
   // Jurisdiction - determines which guidelines/protocols to show
   // 'nsw' | 'wa' | 'national' | null (null = show all/infer from institution)
   jurisdiction String?
@@ -112,6 +118,7 @@ model User {
   rotations                  UserRotation[]
   pageViews                  PageView[]
   questionResponses          QuestionResponse[]
+  examPaperSessions ExamPaperSession[]
   anonymousSessions          AnonymousSession[]
   termStates                 UserTermState[]
   deepDiveChatSessions       DeepDiveChatSession[]

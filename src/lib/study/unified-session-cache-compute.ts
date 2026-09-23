@@ -1,5 +1,9 @@
 import { constructUnifiedSession } from '@/lib/knowledge/unified-scheduler';
-import type { UnifiedItem, SessionContext } from './unified-session-types';
+import {
+  CLIENT_REVIEW_BATCH_SIZE,
+  type UnifiedItem,
+  type SessionContext,
+} from './unified-session-types';
 import type { CommitmentLevel } from '@/lib/commitment';
 import {
   hydrateScheduledItems,
@@ -9,6 +13,47 @@ import { writeCacheBuildServeDecisions } from './serve-decision-write';
 import { loadTeachingPaceForUser } from './teaching-pace-context';
 import { fetchRecentFigureExposures } from '@/lib/knowledge/figure-exposure.server';
 import { loadRecentQuestionFailures } from '@/lib/knowledge/recent-question-failures.server';
+import { COURSE_TIME_ZONE } from '@/lib/rotation-context';
+import { getStudyDayStart } from '@/lib/study-day';
+import { computeRotationDailyTarget } from './rotation-daily-target';
+import {
+  noveltyProgressFromDailyTarget,
+  queueNoveltyBudget,
+  type NoveltyProgressSnapshot,
+} from './novelty-budget';
+
+/**
+ * Opting a build into first-sight seats. `progress` is today's snapshot when
+ * the caller already has it (a request-triggered refresh); otherwise it is read
+ * here, off the request path, on the learner's study day.
+ */
+export interface CacheBuildNoveltyOptions {
+  progress?: NoveltyProgressSnapshot | null;
+  studyTimezone?: string | null;
+}
+
+async function resolveNoveltyProgress(
+  userId: string,
+  rotation: string,
+  novelty: CacheBuildNoveltyOptions,
+): Promise<NoveltyProgressSnapshot | null> {
+  if (novelty.progress) return novelty.progress;
+  const now = new Date();
+  // A cron build has no request to take a timezone from. The course day is
+  // Sydney's, and while unseen supply remains the reservation does not depend
+  // on the day boundary at all.
+  const startOfDay = getStudyDayStart(now, novelty.studyTimezone ?? COURSE_TIME_ZONE);
+  try {
+    return noveltyProgressFromDailyTarget(
+      await computeRotationDailyTarget(userId, rotation, startOfDay, now),
+    );
+  } catch {
+    // Degrade, never fail the build: a queue without the reservation is still
+    // a queue, and the zero stamp below lets the next request with progress
+    // trigger exactly one rebuild that carries it.
+    return null;
+  }
+}
 
 /**
  * Full manifold pipeline for background cache refresh.
@@ -34,12 +79,21 @@ export async function computeAndHydrateSession(
   imageTier: SessionContext['imageTier'],
   commitmentLevel?: CommitmentLevel,
   cacheBuildSessionId?: string,
-  options: { includeFailureAttribution?: boolean } = {},
+  options: {
+    includeFailureAttribution?: boolean;
+    /** Reserve first-sight seats the way the live build does. */
+    novelty?: CacheBuildNoveltyOptions;
+  } = {},
 ): Promise<{ items: UnifiedItem[] }> {
   // Cache-built sessions are the majority of what gets delivered, so they must
   // be paced against the course calendar exactly as the live path is. Resolved
   // from the user's track here because this path has no request context.
-  const [{ currentTeachingWeek, topicTeachingWeeks }, recentFigureExposures, recentQuestionFailures] = await Promise.all([
+  const [
+    { currentTeachingWeek, topicTeachingWeeks },
+    recentFigureExposures,
+    recentQuestionFailures,
+    noveltyProgress,
+  ] = await Promise.all([
     loadTeachingPaceForUser(userId, rotation),
     // ~550ms, so it lives here rather than on the request path.
     fetchRecentFigureExposures(userId),
@@ -49,7 +103,20 @@ export async function computeAndHydrateSession(
     options.includeFailureAttribution
       ? loadRecentQuestionFailures(userId, rotation, weekFilter).catch(() => undefined)
       : Promise.resolve(undefined),
+    options.novelty
+      ? resolveNoveltyProgress(userId, rotation, options.novelty)
+      : Promise.resolve(null),
   ]);
+  // The live build reserves first sights from today's progress. Without the
+  // same reservation here, the queue most learners are served spends the day
+  // on repeats while the rotation still has unseen cards.
+  const noveltyBudget = noveltyProgress
+    ? queueNoveltyBudget({
+        queueSize: batchSize,
+        servedBatchSize: CLIENT_REVIEW_BATCH_SIZE,
+        progress: noveltyProgress,
+      })
+    : null;
 
   const sessionResult = await constructUnifiedSession(userId, {
     rotation,
@@ -61,6 +128,7 @@ export async function computeAndHydrateSession(
     topicTeachingWeeks,
     recentFigureExposures,
     ...(recentQuestionFailures ? { recentQuestionFailures } : {}),
+    ...(noveltyBudget ? { minFirstSightItems: noveltyBudget.minFirstSightItems } : {}),
   });
 
   if (sessionResult.items.length === 0) return { items: [] };
@@ -114,8 +182,22 @@ export async function computeAndHydrateSession(
   // Strip signed URLs before caching. Keep the stable imageKey and client-safe
   // metadata so non-egress consumers (notably the offline pack) retain figure
   // placement. resolveImage is called again at live API egress for a fresh URL.
+  //
+  // A build that opted into first-sight seats stamps every item with the
+  // reservation it was made under (zero when progress was unreadable). The
+  // cache lane reads the stamp to tell a queue that predates the reservation,
+  // which it rebuilds once, from one that honestly ran short of unseen supply,
+  // which it must not rebuild in a loop.
+  const noveltyStamp = options.novelty
+    ? {
+        noveltyQuotaRequired: noveltyBudget?.minFirstSightItems ?? 0,
+        noveltyQuotaSelected: sessionResult.noveltyQuota?.selected
+          ?? hydratedItems.filter((item) => item.firstSightAtSelection).length,
+      }
+    : {};
   const itemsForCache: UnifiedItem[] = hydratedItems.map((item) => ({
     ...item,
+    ...noveltyStamp,
     imageUrl: null,
   }));
 

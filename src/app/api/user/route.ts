@@ -24,6 +24,7 @@ import {
   getWeeklyProgress,
 } from '@/lib/user/stats-queries';
 import { seedInitialQueue } from '@/lib/user/queue-seeding';
+import { isReviewMenuSlug } from '@/lib/study/review-menu';
 
 const feedProfileExplicitSchema = z.object({
   studying: z.string().max(100).optional(),
@@ -45,6 +46,7 @@ const profilePatchSchema = z.object({
   examDates: z.record(z.string().trim().min(1)).optional(),
   feedProfileExplicit: feedProfileExplicitSchema.optional(),
   resetProgressOnInstitutionChange: z.boolean().optional(),
+  reviewMenuModules: z.array(z.string().trim().min(1).max(80)).max(64).nullable().optional(),
 });
 
 type ProfilePatchInput = z.infer<typeof profilePatchSchema>;
@@ -195,6 +197,10 @@ export async function PATCH(request: NextRequest) {
     }
     const updates = parseResult.data;
 
+    if (updates.reviewMenuModules?.some((slug) => !isReviewMenuSlug(slug))) {
+      return NextResponse.json({ error: 'Unknown module' }, { status: 400 });
+    }
+
     const currentUser = await prisma.user.findUnique({
       where: { id: userId },
       select: { institution: true },
@@ -267,6 +273,10 @@ export async function PATCH(request: NextRequest) {
     }
 
     const sanitizedUpdates = toUserUpdateData(updates);
+    if (updates.reviewMenuModules !== undefined) {
+      sanitizedUpdates.reviewMenuCustomized = updates.reviewMenuModules !== null;
+      sanitizedUpdates.reviewMenuModules = updates.reviewMenuModules ?? [];
+    }
     const hasProfileUpdates = Object.keys(sanitizedUpdates).length > 0;
 
     let user: {

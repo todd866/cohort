@@ -14,15 +14,18 @@ const verifiedAt = new Date('2026-09-13T00:00:00Z');
 function makeHarness() {
   let row: {
     id: string; email: string | null; emailVerified: Date | null;
-    imageTier: string; privacyDeletionRequestedAt: Date | null;
+    imageTier: string; privacyDeletionRequestedAt: Date | null; activeModules: string[];
   } | null = null;
   const users = {
     findUnique: vi.fn(async () => row && { ...row }),
     updateMany: vi.fn(async ({ where, data }: CopyrightGrantUpdate) => {
-      if (!row || Object.entries(where).some(([key, value]) => row?.[key as keyof typeof row] !== value)) {
+      if (!row || Object.entries(where).some(([key, value]) => key === 'activeModules'
+        ? JSON.stringify(row?.activeModules) !== JSON.stringify((value as { equals: string[] }).equals)
+        : row?.[key as keyof typeof row] !== value)) {
         return { count: 0 };
       }
       row.imageTier = data.imageTier;
+      row.activeModules = [...data.activeModules];
       return { count: 1 };
     }),
   };
@@ -33,7 +36,7 @@ function makeHarness() {
     read: () => row,
     register: (overrides: Partial<NonNullable<typeof row>> = {}) => {
       row = { id: 'account-1', email: approvedEmail, emailVerified: verifiedAt,
-        imageTier: 'standard', privacyDeletionRequestedAt: null, ...overrides };
+        imageTier: 'standard', privacyDeletionRequestedAt: null, activeModules: [], ...overrides };
     },
   };
 }
@@ -48,10 +51,11 @@ describe('pending copyright grant after sign-in', () => {
     h.register();
     expect(await h.grant({ userId: 'account-1' })).toBe('granted');
     expect(h.read()?.imageTier).toBe('copyright');
+    expect(h.read()?.activeModules).toEqual([]);
     expect(h.users.updateMany).toHaveBeenCalledWith({
       where: { id: 'account-1', email: approvedEmail, emailVerified: verifiedAt,
-        imageTier: 'standard', privacyDeletionRequestedAt: null },
-      data: { imageTier: 'copyright' },
+        imageTier: 'standard', privacyDeletionRequestedAt: null, activeModules: { equals: [] } },
+      data: { imageTier: 'copyright', activeModules: [] },
     });
   });
 
@@ -98,6 +102,57 @@ describe('pending copyright grant after sign-in', () => {
     h.register(overrides);
     expect(await h.grant({ userId: 'account-1' })).toBe('unchanged');
     expect(h.users.updateMany).not.toHaveBeenCalled();
+  });
+
+  it('atomically applies the configured paeds/GSSE preset and preserves unrelated modules', async () => {
+    h.register({ activeModules: ['cah', 'critical-care', 'anatomy'] });
+    const grantWithPreset = createCopyrightGrantAfterSignIn({
+      users: h.users, approvedEmailHashes: [approvedHash],
+      modulePresets: { [approvedHash]: ['paediatric-surgery', 'surgical-sciences', 'anatomy'] }, warn: h.warn,
+    });
+    expect(await grantWithPreset({ userId: 'account-1' })).toBe('granted');
+    expect(h.read()?.imageTier).toBe('copyright');
+    expect(h.read()?.activeModules).toEqual([
+      'paediatric-surgery', 'surgical-sciences', 'anatomy', 'cah', 'critical-care',
+    ]);
+    expect(h.users.updateMany.mock.calls[0][0]).toMatchObject({
+      where: { activeModules: { equals: ['cah', 'critical-care', 'anatomy'] } },
+      data: { imageTier: 'copyright', activeModules: [
+        'paediatric-surgery', 'surgical-sciences', 'anatomy', 'cah', 'critical-care',
+      ] },
+    });
+  });
+
+  it('retries after an active-module compare-and-set conflict without overwriting concurrent choices', async () => {
+    h.register({ activeModules: ['cah'] });
+    const grantWithPreset = createCopyrightGrantAfterSignIn({
+      users: h.users, approvedEmailHashes: [approvedHash],
+      modulePresets: { [approvedHash]: ['paediatric-surgery', 'surgical-sciences', 'anatomy'] }, warn: h.warn,
+    });
+    const originalUpdate = h.users.updateMany.getMockImplementation()!;
+    h.users.updateMany.mockImplementationOnce(async (args: CopyrightGrantUpdate) => {
+      h.register({ activeModules: ['cah', 'pwh'] });
+      return originalUpdate(args);
+    });
+    expect(await grantWithPreset({ userId: 'account-1' })).toBe('unchanged');
+    expect(h.read()?.imageTier).toBe('standard');
+    expect(h.read()?.activeModules).toEqual(['cah', 'pwh']);
+    expect(await grantWithPreset({ userId: 'account-1' })).toBe('granted');
+    expect(h.read()?.activeModules).toEqual([
+      'paediatric-surgery', 'surgical-sciences', 'anatomy', 'cah', 'pwh',
+    ]);
+  });
+
+  it('does not re-add modules after the one-time tier transition', async () => {
+    h.register({ activeModules: ['cah'] });
+    const grantWithPreset = createCopyrightGrantAfterSignIn({
+      users: h.users, approvedEmailHashes: [approvedHash],
+      modulePresets: { [approvedHash]: ['paediatric-surgery', 'surgical-sciences', 'anatomy'] }, warn: h.warn,
+    });
+    expect(await grantWithPreset({ userId: 'account-1' })).toBe('granted');
+    h.register({ imageTier: 'copyright', activeModules: ['cah'] });
+    expect(await grantWithPreset({ userId: 'account-1' })).toBe('unchanged');
+    expect(h.read()?.activeModules).toEqual(['cah']);
   });
 
   it('does not create or repeat a write for a previously granted account', async () => {

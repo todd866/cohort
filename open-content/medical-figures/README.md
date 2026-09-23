@@ -13,7 +13,7 @@ lists every file with its size and checksum. These downloads are served by the
 MD3 build containing this collection.
 
 Each figure has its own Anki note. The bundle contains the full-size PNGs,
-original generation/edit prompts, conceptual scaffolds, source references, review notes and exact
+original generation/edit prompts, structural scaffolds, source references, review notes and exact
 SHA-256 checksums in [manifest.json](manifest.json). There are no patient images
 or textbook image files in this collection. The original written clinical
 specifications were illustrated with OpenAI's built-in ImageGen tool; its exact
@@ -64,8 +64,10 @@ unlabelled base and add reviewed editable labels with the
 source/endpoint review, complete revision checks and full-size/phone inspection
 are specified in the guide. Preserve the original bytes, hashes and records.
 
-The MIT release currently admits conceptual figures only; this is a tooling
-limit. Netter-derived flashcards use a separate personal MD3.info workflow with
+The collection admits conceptual figures and reviewed anatomical explanations.
+Anatomical acceptance requires independent source/endpoint review and full-size
+and phone checks bound to the final PNG hash. Editable anatomical masters live
+in `annotations/`; they embed unchanged generated bases and vector labels. Netter-derived flashcards use a separate personal MD3.info workflow with
 an explicit owner-managed copyright whitelist. They retain their source
 copyright and never enter this MIT collection, Cohort.md FOSS or public exports.
 A paywall does not substitute for the whitelist.

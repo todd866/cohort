@@ -70,7 +70,7 @@ export function McqItemView({
   interactionDisabled = false,
 }: McqItemViewProps) {
   const hasFigure = Boolean(item.imageUrl || item.imageKey);
-  const figureIsPrompt = reviewImageIsPrompt(item.imageRole, item.imageMeta);
+  const figureIsPrompt = reviewImageIsPrompt(item.imageRole, item.imageMeta, item.stem);
   // Warm the cache for an after-reveal supplementary figure while the stem is on
   // screen — it's mounted only after the user answers, so without this its <img>
   // starts fetching the instant the answer is shown (the load pause).

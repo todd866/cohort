@@ -79,6 +79,8 @@ export interface ReviewItem {
   batchId?: string | null;
   /** Per-item serve-decision trace ID; echoed back to POST /api/study/record */
   serveDecisionId?: string;
+  /** Whether this item had no prior answer/review when the scheduler selected it. */
+  firstSightAtSelection?: boolean;
   /**
    * Opaque public Step 1 delivery id. When set, select then confidence posts
    * to the configured opaque-answer endpoint; `id` is not a raw question id.

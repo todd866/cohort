@@ -245,6 +245,13 @@ function checkFamilyLengthTell(set: ContrastSet, correctKeys: Set<string>, where
 }
 
 /** Rotate an array left by n (n may exceed length). */
+/** A stable 0..4 offset per family, so different families start on different slots. */
+function authoredSlotOffset(setId: string): number {
+  let h = 0;
+  for (const ch of setId) h = (h * 31 + ch.charCodeAt(0)) >>> 0;
+  return h % OPTIONS_PER_QUESTION;
+}
+
 function rotate<T>(items: T[], n: number): T[] {
   if (items.length === 0) return items;
   const k = ((n % items.length) + items.length) % items.length;
@@ -274,8 +281,13 @@ export function expandContrastSet(set: ContrastSet, sourceFile?: string): Curate
 
     const others = set.choices.filter((c) => c.key !== stem.correct);
     const distractors = rotate(others, i).slice(0, OPTIONS_PER_QUESTION - 1);
+    // Cycle the authored slot across the family, offset per set, so the written
+    // order never puts every answer at A. The serve-time shuffle hid that; the
+    // authored layer is what exports and audit:authored-answer-position read.
+    const slot = (i + authoredSlotOffset(set.id)) % (distractors.length + 1);
+    const ordered = [...distractors.slice(0, slot), correct, ...distractors.slice(slot)];
 
-    const options: CuratedQuestionOption[] = [correct, ...distractors].map((c, idx) => ({
+    const options: CuratedQuestionOption[] = ordered.map((c, idx) => ({
       label: String.fromCharCode(65 + idx),
       text: c.text,
       isCorrect: c.key === stem.correct,

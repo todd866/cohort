@@ -28,10 +28,8 @@ import { figureCooldownBoost } from './figure-cooldown';
 import { itemTeachingWeek } from '@/lib/curriculum/teaching-pace';
 import type { BulkCandidates, BulkQuestionRow } from './bulk-candidates';
 import {
-  SCAFFOLDING_COMPLEXITY,
   STANDARD_CHALLENGE_RECALL,
   STRETCH_CHALLENGE_RECALL,
-  targetComplexityForRecall,
   MAX_COMPLEXITY,
 } from './challenge-policy';
 import {
@@ -238,34 +236,26 @@ export function getEffectiveQuestionDifficulty(candidate: {
  * Falls back to shuffled topic matching when no concept embedding exists.
  */
 /**
- * Difficulty-ladder penalty: C1 below 0.6 recall, C2 while consolidating, then
- * C3 at 0.8+. It is a no-op when current recall is unknown. Penalties only sink
- * cards away from today's rung; every tier remains reachable.
+ * Frontier penalty. Lower is better. The standing order is the top rung first.
+ * `step-down` reverses that for a concept whose high-complexity card was just
+ * missed, so the building block leads and the frontier card follows it.
+ * `conceptRecall` is accepted so callers can keep passing it; the direction
+ * comes from the miss, not from how high recall already is.
  */
 export const LADDER_STEP = 4;
 export const LADDER_UNLOCK_RECALL = STANDARD_CHALLENGE_RECALL;
 export const LADDER_STRETCH_RECALL = STRETCH_CHALLENGE_RECALL;
 
+export type ComplexityLadderMode = 'frontier' | 'step-down';
+
 export function complexityLadderBoost(
   complexity: number | undefined,
-  conceptRecall: number | undefined,
+  _conceptRecall?: number | undefined,
+  mode: ComplexityLadderMode = 'frontier',
 ): number {
-  // No recall means first contact, and first contact belongs on the bottom rung.
-  // Abstaining here (the old `return 0`) made every rung rank identically on the
-  // one exposure where the ladder matters most, so the hardest variant could win
-  // it: on the BlueLink plates that is "every label is hidden" reaching a learner
-  // before "other labels are visible" for the same structure, which is the harder
-  // card first and the scaffold never. Treating unknown as the weakest tier makes
-  // a never-seen concept behave like a badly-known one instead of like a third,
-  // unladdered case. Narrow on purpose — the question-difficulty path in
-  // unified-scheduler.ts still distinguishes unknown from weak.
-  const target = targetComplexityForRecall(conceptRecall) ?? SCAFFOLDING_COMPLEXITY;
-  // Clamp to the full 1-5 ladder. This was Math.min(3, ...), which silently
-  // ranked a board-style C5 vignette as if it were a C3 — the ladder distance
-  // that drives selection could never see the top two rungs, so authoring them
-  // would have changed nothing about what gets served.
   const boundedComplexity = Math.max(1, Math.min(MAX_COMPLEXITY, complexity ?? 2));
-  return Math.abs(boundedComplexity - target) * LADDER_STEP;
+  if (mode === 'step-down') return (boundedComplexity - 1) * LADDER_STEP;
+  return (MAX_COMPLEXITY - boundedComplexity) * LADDER_STEP;
 }
 
 export function getCardsFromBulk(
@@ -387,10 +377,14 @@ export function getCardsFromBulk(
     return -VARIANT_BOOST; // unseen sibling of probed group
   };
 
-  // Difficulty-ladder boost: easy rung first when the concept is weak, harder
-  // companion once consolidated. No-op when conceptRecall is undefined.
+  // Frontier first. A due miss at C3+ steps this concept down so the
+  // building block leads and the card they missed follows it.
+  const failedStretchIds = bulk.failedStretchCardIds;
+  const stepDown = Boolean(
+    failedStretchIds && matchingSeen.some((card) => failedStretchIds.has(card.id)),
+  );
   const ladderBoost = (card: CardCandidate): number =>
-    complexityLadderBoost(card.complexity, conceptRecall);
+    complexityLadderBoost(card.complexity, conceptRecall, stepDown ? 'step-down' : 'frontier');
 
   // Curriculum pacing, both directions: material the course has not taught yet
   // sinks (capped, so reading ahead stays possible), and the topic being taught
@@ -505,12 +499,38 @@ export function getCardsFromBulk(
     ];
   };
 
-  // Novelty is intentionally confined to the unseen stratum. Exact-due seen
-  // cards retain their existing order and can never be displaced by this layer.
-  let combined = [
-    ...rankCandidates(matchingUnseen, true),
-    ...rankCandidates(matchingSeen, false),
-  ];
+  // Frontier cards lead. A due C1/C2 the learner already passed waits at the
+  // back, so a known cloze does not outrank a scenario. After a C3+ miss the
+  // building blocks lead instead, and the missed card follows them.
+  const passedScaffoldIds = bulk.passedScaffoldCardIds;
+  const passedScaffolds = passedScaffoldIds
+    ? matchingSeen.filter((card) => passedScaffoldIds.has(card.id))
+    : [];
+  const isBuildingBlock = (card: CardCandidate): boolean => (card.complexity ?? 2) <= 2;
+  const buildingBlocks = stepDown
+    ? [...matchingUnseen, ...matchingSeen].filter(isBuildingBlock)
+    : [];
+  const frontier = stepDown
+    ? [...matchingUnseen, ...matchingSeen].filter((card) => !isBuildingBlock(card))
+    : [
+        ...matchingUnseen.filter((card) => !isBuildingBlock(card)),
+        ...matchingSeen.filter((card) => !isBuildingBlock(card)),
+      ];
+  const unseenBlocks = stepDown ? [] : matchingUnseen.filter(isBuildingBlock);
+  const otherSeen = stepDown
+    ? []
+    : matchingSeen.filter((card) => isBuildingBlock(card) && !passedScaffolds.includes(card));
+  let combined = stepDown
+    ? [
+        ...rankCandidates(buildingBlocks, false),
+        ...rankCandidates(frontier, false),
+      ]
+    : [
+        ...rankCandidates(frontier, true),
+        ...rankCandidates(unseenBlocks, true),
+        ...rankCandidates(otherSeen, false),
+        ...rankCandidates(passedScaffolds, false),
+      ];
 
   // Apply topic cooldown + bank card penalties to reorder candidates.
   // Cards with high penalty sink to the end — only picked if nothing better passes.

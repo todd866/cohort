@@ -12,12 +12,14 @@ export interface MinimalUserData {
   track: number | null;
   enabledModules: string[];
   activeModules: string[];
+  /** Server-filtered rotations this account may choose for focused review. */
+  studyableRotations?: string[];
   reviewTopicRotations?: Record<string, string>;
   /** True once the learner has described a course md3 does not cover. */
   curriculumRequested?: boolean;
 }
 
-const fetcher = async (url: string): Promise<MinimalUserData> => {
+const fetcher = async ([url]: readonly [string, string]): Promise<MinimalUserData> => {
   const res = await fetchWithDeadline(url, {}, REVIEW_CONTEXT_FETCH_DEADLINE_MS);
   if (!res.ok) throw new Error(`Failed to load user context (${res.status})`);
   return res.json();
@@ -28,7 +30,7 @@ const fetcher = async (url: string): Promise<MinimalUserData> => {
  * Both useInstitution and useUserTrack use this to avoid duplicate fetches.
  */
 export function useUserMinimal() {
-  const { status } = useSession();
+  const { status, data: session } = useSession();
 
   // Fetch for guests too, not just authenticated users. A guest can choose a
   // rotation before signing up, and this is the read that tells the review page
@@ -37,15 +39,21 @@ export function useUserMinimal() {
   // an empty context rather than a 401 when there is no identity at all, so an
   // anonymous first paint costs one small request and no error.
   const shouldFetch = status !== 'loading';
+  const ownerKey = status === 'authenticated' ? session?.user?.id : 'guest';
 
   const { data, error, isLoading, mutate } = useSWR<MinimalUserData>(
-    shouldFetch ? '/api/user/minimal' : null,
+    shouldFetch && ownerKey ? ['/api/user/minimal', ownerKey] as const : null,
     fetcher,
     {
       revalidateOnFocus: false,
       revalidateOnReconnect: false,
       dedupingInterval: 60000, // 1 minute deduplication
-      shouldRetryOnError: false,
+      // The review can keep its server-confirmed preferences while a short
+      // refresh times out. Retry in the background so later course changes
+      // also receive those preferences without requiring a reload.
+      shouldRetryOnError: true,
+      errorRetryCount: 2,
+      errorRetryInterval: 1000,
     }
   );
 

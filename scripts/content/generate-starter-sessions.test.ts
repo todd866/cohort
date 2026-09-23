@@ -107,3 +107,38 @@ describe('starter-session public-USMLE boundary', () => {
     );
   });
 });
+
+
+describe('curated starter generator path', () => {
+  it('uses one shared, live CAH card query and preserves reviewed card order without random questions', () => {
+    const source = fs.readFileSync(
+      path.resolve(__dirname, 'generate-starter-sessions.ts'),
+      'utf8',
+    );
+    const curatedBlock = source.slice(source.indexOf('const curatedEntries'), source.indexOf('// Load top concepts by exam weight'));
+    expect(curatedBlock).toContain('prisma.card.findMany');
+    expect(curatedBlock).toContain('ownerUserId: null');
+    expect(curatedBlock).toContain('scopedCardWhere(SHARED_CATALOG_CARD_SCOPE');
+    expect(curatedBlock).toContain('deletedAt: null');
+    expect(curatedBlock).toContain('shelvedAt: null');
+    expect(curatedBlock).toContain('withoutRawPublicUsmleReinforcementCards');
+    expect(curatedBlock).toContain('resolveCuratedStarterRows');
+    expect(curatedBlock).toContain('questions: 0');
+    expect(curatedBlock).not.toContain('prisma.question');
+    expect(curatedBlock).not.toContain('shuffle(');
+  });
+
+  it('retains the complete card/image provenance fields in curated starter output', () => {
+    const source = fs.readFileSync(
+      path.resolve(__dirname, 'generate-starter-sessions.ts'),
+      'utf8',
+    );
+    const curatedBlock = source.slice(source.indexOf('const curatedEntries'), source.indexOf('// Load top concepts by exam weight'));
+    for (const field of ['front', 'back', 'context', 'sourceComponent', 'imageUrl', 'imageCaption', 'imageRole', 'rotation', 'week', 'complexity', 'topics', 'difficulty', 'variantGroupId', 'variantIndex', 'variantType']) {
+      expect(curatedBlock).toContain(`${field}: row.${field}`);
+    }
+    expect(curatedBlock).toContain('backs: (row.backs as string[] | null)');
+    expect(curatedBlock).toContain('crosslinks: row.crosslinks ?? null');
+    expect(curatedBlock).toContain('evidenceUrls: entry.evidenceUrls');
+  });
+});

@@ -26,16 +26,22 @@ export const FOCUS_OPTION_ORDER: readonly string[] = [
   'year1-kat1',
   'year1-kat2',
   'year1-kat3',
-  'usmle-step1',
   'usmle-step1-open',
   // Opt-in decks: the background banks first, then the surgical/anatomy family,
   // which shares one corpus and reads best adjacent.
   'anking',
   'malleus',
   'toc',
+  // Adult physician written exam. It sits with the other postgraduate
+  // exams, ahead of the surgical family.
+  'bpt',
   'anatomy',
   'surgical-sciences',
   'paediatric-surgery',
+  // Orthopaedics, added 2026-09-21 with the self-contained ortho deck. It sits
+  // inside the surgical family for the same reason the others do: it is read
+  // alongside a rotation rather than sat as one.
+  'ortho',
   'neurosurg',
   // Year 4 2027 attachments, in the order they are actually sat: Geriatrics and
   // Neurology in Term 2, Neurosurgery and Urology in Term 3. NSx sits just above
@@ -43,6 +49,11 @@ export const FOCUS_OPTION_ORDER: readonly string[] = [
   'geriatrics',
   'neurology',
   'urology',
+  // Radiology and neuroradiology, added 2026-09-18 for a Jan/Feb 2027
+  // neuroradiology attachment. They sit after the Year 4 attachments and
+  // before the exam decks: imaging is read alongside a rotation, not sat.
+  'radiology',
+  'neuroradiology',
   'mnd',
 ];
 

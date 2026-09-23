@@ -1,5 +1,5 @@
 #!/usr/bin/env -S node --import tsx
-import { randomUUID } from 'node:crypto';
+import { createHash, randomUUID } from 'node:crypto';
 import { lstatSync, mkdirSync, readdirSync, renameSync, rmSync, unlinkSync, writeFileSync } from 'node:fs';
 import { dirname, join, resolve } from 'node:path';
 import { fileURLToPath } from 'node:url';
@@ -73,7 +73,14 @@ export function installOriginalDiagrams({ repoRoot = process.cwd(), write }: Ins
     for (const specification of figure.review.structure.specificationFiles) {
       const bytes = readSafeOriginalFile(root, `${ORIGINAL_FIGURE_ROOT}/${specification}`)!;
       const parsed: unknown = JSON.parse(bytes.toString('utf8'));
-      validateOriginalFigureScaffold(parsed, figure.id);
+      validateOriginalFigureScaffold(parsed, figure.id, { kind: figure.review.structure.kind, sha256: figure.sha256 });
+      if (figure.review.structure.kind === 'spatial-anatomy') {
+        const annotation = readSafeOriginalFile(root, `${ORIGINAL_FIGURE_ROOT}/${figure.review.structure.annotationFile}`)!;
+        const review = (parsed as { validation: { annotationSha256: string } }).validation;
+        if (createHash('sha256').update(annotation).digest('hex') !== review.annotationSha256) {
+          throw new Error(`Original figures: annotation hash differs for ${figure.id}`);
+        }
+      }
     }
     const sidecar = Buffer.from(`${JSON.stringify(originalFigureSidecar(figure, manifest), null, 2)}\n`);
     for (const [relative, bytes] of [

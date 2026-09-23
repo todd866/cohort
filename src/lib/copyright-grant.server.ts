@@ -4,10 +4,13 @@ import { createHash } from 'node:crypto';
 import type { User } from '@prisma/client';
 import prisma from './prisma';
 import { logger } from './logger';
-import { APPROVED_COPYRIGHT_EMAIL_HASHES } from './copyright-grant-policy.server';
+import {
+  APPROVED_COPYRIGHT_EMAIL_HASHES,
+  APPROVED_COPYRIGHT_MODULE_PRESETS,
+} from './copyright-grant-policy.server';
 
 type GrantUser = Pick<User,
-  'id' | 'email' | 'emailVerified' | 'imageTier' | 'privacyDeletionRequestedAt'>;
+  'id' | 'email' | 'emailVerified' | 'imageTier' | 'privacyDeletionRequestedAt' | 'activeModules'>;
 
 export interface CopyrightGrantUpdate {
   where: {
@@ -16,8 +19,9 @@ export interface CopyrightGrantUpdate {
     emailVerified: Date | null;
     imageTier: 'standard';
     privacyDeletionRequestedAt: null;
+    activeModules: { equals: string[] };
   };
-  data: { imageTier: 'copyright' };
+  data: { imageTier: 'copyright'; activeModules: string[] };
 }
 
 interface GrantUsers {
@@ -45,10 +49,12 @@ const normalizeEmail = (email: unknown): string =>
 export function createCopyrightGrantAfterSignIn({
   users,
   approvedEmailHashes = APPROVED_COPYRIGHT_EMAIL_HASHES,
+  modulePresets = APPROVED_COPYRIGHT_MODULE_PRESETS,
   warn = logger.warn,
 }: {
   users: GrantUsers;
   approvedEmailHashes?: readonly string[];
+  modulePresets?: Readonly<Record<string, readonly string[]>>;
   warn?: (message: string) => void;
 }) {
   const approved = new Set(approvedEmailHashes);
@@ -58,13 +64,14 @@ export function createCopyrightGrantAfterSignIn({
       const user = await users.findUnique({
         where: { id: userId },
         select: { id: true, email: true, emailVerified: true,
-          imageTier: true, privacyDeletionRequestedAt: true },
+          imageTier: true, privacyDeletionRequestedAt: true, activeModules: true },
       });
       if (!user || user.id !== userId || user.imageTier !== 'standard'
         || user.privacyDeletionRequestedAt || !user.email) return 'unchanged';
 
       const email = normalizeEmail(user.email);
-      if (!email || !approved.has(createHash('sha256').update(email).digest('hex'))) return 'unchanged';
+      const emailHash = createHash('sha256').update(email).digest('hex');
+      if (!email || !approved.has(emailHash)) return 'unchanged';
 
       // Magic-link login persists emailVerified before this event. OAuth does
       // not, so accept only Google's verified OIDC claim for the same primary.
@@ -72,10 +79,16 @@ export function createCopyrightGrantAfterSignIn({
         && profile?.email_verified === true && normalizeEmail(profile.email) === email;
       if (!user.emailVerified && !verifiedGooglePrimary) return 'unchanged';
 
+      const activeModules = [...user.activeModules];
+      const preset = modulePresets[emailHash];
+      const nextModules = preset
+        ? [...preset, ...activeModules.filter(module => !preset.includes(module))]
+        : activeModules;
       const result = await users.updateMany({
         where: { id: userId, email: user.email, emailVerified: user.emailVerified,
-          imageTier: 'standard', privacyDeletionRequestedAt: null },
-        data: { imageTier: 'copyright' },
+          imageTier: 'standard', privacyDeletionRequestedAt: null,
+          activeModules: { equals: activeModules } },
+        data: { imageTier: 'copyright', activeModules: nextModules },
       });
       return result.count === 1 ? 'granted' : 'unchanged';
     } catch {

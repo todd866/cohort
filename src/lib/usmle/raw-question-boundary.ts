@@ -4,7 +4,8 @@ import { CHECKED_IN_OPEN_USMLE_RELEASE_IDS } from './public-release-bundle';
 
 /**
  * The private Step 1 study material (the `content/usmle/step1` cards and the
- * private pearls bank). Registered as a personal deck, never distributed.
+ * private pearls bank). Copyright-tier only, mixed into the one Step 1
+ * session. Never a second menu row and never part of the public bank.
  */
 export const USMLE_STEP1_PRIMARY_ROTATION = 'usmle-step1' as const;
 

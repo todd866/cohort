@@ -1,6 +1,6 @@
 'use client';
 
-import { useCallback, useRef, useSyncExternalStore } from 'react';
+import { useCallback, useEffect, useRef, useState, useSyncExternalStore } from 'react';
 import { clipIsPrompt, type ClipPromptData } from './clip-role';
 import { useClipUrlRecovery } from './clip-url-recovery';
 
@@ -13,12 +13,16 @@ export type { ClipPromptData };
  * The deliberate choices here all come from the same observation: this is a
  * *question*, not a video the learner is watching.
  *
- *  - **Muted, looping, autoplaying.** For a manoeuvre the useful watch is the
- *    third one. A play button costs a tap before the question even starts, and
- *    a clip that stops after one pass makes the learner hunt for the control
- *    instead of thinking. Audio is stripped upstream anyway — the narration
- *    usually says the answer (see `clip-answer-leak.ts`) — so muting loses
- *    nothing and buys autoplay, which browsers only permit when muted.
+ *  - **Looping, and one autoplay switch.** For a manoeuvre the useful watch
+ *    is the third one. The switch is remembered. On, the clip starts by
+ *    itself: picture, and sound when the file still has any. Off, nothing
+ *    starts until Play. Operative clips have the audio stripped — the
+ *    narration usually says the answer (see `clip-answer-leak.ts`) — so
+ *    "sound" on those is silence, and they stay muted, which is also the
+ *    only autoplay browsers allow with no gesture. A clip that kept its
+ *    audio (a murmur, where the sound is the finding) starts unmuted when
+ *    the switch is on. Browsers may still refuse that first unmuted play
+ *    until a tap; the switch itself is that tap.
  *  - **Attribution withheld until reveal.** "Laparoscopic cholecystectomy" under
  *    an unanswered "what operation is this?" is the answer in the footer. The
  *    same reasoning already governs figure captions pre-reveal.
@@ -27,7 +31,47 @@ export type { ClipPromptData };
  *    of the six things moving on screen is the question.
  */
 
+/** Remembered across cards. Absent or `on` means the next clip starts by itself. */
+export const CLIP_AUTOPLAY_KEY = 'md3.clipAutoplay';
+const AUTOPLAY_EVENT = 'md3-clip-autoplay';
+
 const REDUCED_MOTION_QUERY = '(prefers-reduced-motion: reduce)';
+
+function subscribeAutoplay(onChange: () => void): () => void {
+  window.addEventListener(AUTOPLAY_EVENT, onChange);
+  window.addEventListener('storage', onChange);
+  return () => {
+    window.removeEventListener(AUTOPLAY_EVENT, onChange);
+    window.removeEventListener('storage', onChange);
+  };
+}
+
+function autoplayEnabled(): boolean {
+  try {
+    const stored = localStorage.getItem(CLIP_AUTOPLAY_KEY)
+      ?? localStorage.getItem('md3.clipAudibleAutoplay');
+    return stored !== 'off';
+  } catch {
+    return true;
+  }
+}
+
+function writeAutoplay(on: boolean): void {
+  try {
+    localStorage.setItem(CLIP_AUTOPLAY_KEY, on ? 'on' : 'off');
+  } catch {
+    // Private mode can refuse the write. The in-memory store update still
+    // applies for this page.
+  }
+  window.dispatchEvent(new Event(AUTOPLAY_EVENT));
+}
+
+function applyMute(video: HTMLVideoElement, mute: boolean): void {
+  video.muted = mute;
+  video.defaultMuted = mute;
+  if (mute) video.setAttribute('muted', '');
+  else video.removeAttribute('muted');
+}
 
 function reducedMotionQuery(): MediaQueryList | null {
   if (typeof matchMedia !== 'function') return null;
@@ -73,20 +117,87 @@ export function ClipPrompt({ clip, caption, revealed, inSidePane = false }: Clip
     getReducedMotion,
     () => false,
   );
+  const audible = !clip.audioStripped;
+  const autoplay = useSyncExternalStore(
+    subscribeAutoplay,
+    autoplayEnabled,
+    () => true,
+  );
+  // One switch for every clip. On starts the picture, and the sound when
+  // the file still has any. Off waits for Play. Reduced motion waits either way.
+  const shouldStart = !reducedMotion && autoplay;
+  // Set when the browser refuses play(). The clip then waits for a tap.
+  const [needsTap, setNeedsTap] = useState(false);
 
-  const replay = useCallback(() => {
-    const video = videoRef.current;
-    if (!video) return;
-    video.currentTime = 0;
-    // Autoplay can be refused (a background tab, a strict setting). The promise
-    // rejection is not actionable here and must not surface as an unhandled
-    // rejection in the learner's console.
-    void Promise.resolve(video.play()).catch(() => {});
+  const settle = useCallback((pending: Promise<void> | undefined) => {
+    if (pending && typeof pending.then === 'function') {
+      void pending.then(
+        () => setNeedsTap(false),
+        () => setNeedsTap(true),
+      );
+    }
   }, []);
 
+  const playFromStart = useCallback((withSound: boolean) => {
+    const video = videoRef.current;
+    if (!video) return;
+    applyMute(video, !withSound);
+    video.currentTime = 0;
+    settle(video.play());
+  }, [settle]);
+
+  useEffect(() => {
+    const video = videoRef.current;
+    if (!video) return;
+    // Safari grants autoplay from the content attribute. React's `muted` prop
+    // has a long history of setting only the DOM property, so the attribute
+    // is missing, the policy treats a silent clip as audible, and the poster
+    // sits there until someone hits the button. Set both, then call play()
+    // once data is in.
+    applyMute(video, !audible);
+    video.setAttribute('fetchpriority', 'high');
+    if (!shouldStart) {
+      video.pause();
+      return;
+    }
+    let cancelled = false;
+    const start = () => {
+      if (cancelled) return;
+      const pending = video.play();
+      if (pending && typeof pending.then === 'function') {
+        void pending.then(
+          () => { if (!cancelled) setNeedsTap(false); },
+          () => { if (!cancelled) setNeedsTap(true); },
+        );
+      }
+    };
+    video.addEventListener('loadeddata', start);
+    if (video.readyState >= 2) start();
+    return () => {
+      cancelled = true;
+      video.removeEventListener('loadeddata', start);
+    };
+  }, [src, audible, shouldStart]);
+
+  const replay = useCallback(() => {
+    playFromStart(audible);
+  }, [audible, playFromStart]);
+
+  const toggleAutoplay = useCallback(() => {
+    const next = !autoplay;
+    // play() has to run inside the click. An effect after paint is outside
+    // the gesture, and the browser will refuse the sound.
+    if (next) playFromStart(audible);
+    else {
+      videoRef.current?.pause();
+      setNeedsTap(true);
+    }
+    writeAutoplay(next);
+  }, [autoplay, audible, playFromStart]);
+
   const label = [
-    'Silent operative clip.',
-    caption ?? 'Watch the clip and answer below.',
+    audible ? 'Clip with sound.' : 'Silent operative clip.',
+    caption ?? (audible ? 'Listen, then answer below.' : 'Watch the clip and answer below.'),
   ].join(' ');
 
   return (
@@ -97,11 +208,11 @@ export function ClipPrompt({ clip, caption, revealed, inSidePane = false }: Clip
           src={src}
           poster={poster ?? undefined}
           onError={onError}
-          muted
+          muted={!audible}
           loop
           playsInline
           preload="auto"
-          autoPlay={!reducedMotion}
+          autoPlay={shouldStart}
           aria-label={label}
           className="w-full h-auto max-h-[60vh] object-contain"
         />
@@ -113,13 +224,23 @@ export function ClipPrompt({ clip, caption, revealed, inSidePane = false }: Clip
             {caption}
           </figcaption>
         ) : <span />}
-        <button
-          type="button"
-          onClick={replay}
-          className="shrink-0 min-h-[32px] px-2.5 py-1 rounded-md border border-[var(--md-outline-variant)] bg-[var(--md-surface-container-lowest)] text-xs font-medium text-[var(--md-on-surface-variant)] hover:border-[var(--md-primary)] hover:text-[var(--md-primary)] cursor-pointer transition-colors"
-        >
-          {reducedMotion ? 'Play' : 'Replay'}
-        </button>
+        <div className="flex shrink-0 gap-2">
+          <button
+            type="button"
+            aria-pressed={autoplay}
+            onClick={toggleAutoplay}
+            className={`min-h-[32px] px-2.5 py-1 rounded-md border bg-[var(--md-surface-container-lowest)] text-xs font-medium cursor-pointer transition-colors hover:border-[var(--md-primary)] hover:text-[var(--md-primary)] ${autoplay ? 'border-[var(--md-primary)] text-[var(--md-primary)]' : 'border-[var(--md-outline-variant)] text-[var(--md-on-surface-variant)]'}`}
+          >
+            {autoplay ? 'Autoplay on' : 'Autoplay off'}
+          </button>
+          <button
+            type="button"
+            onClick={replay}
+            className="min-h-[32px] px-2.5 py-1 rounded-md border border-[var(--md-outline-variant)] bg-[var(--md-surface-container-lowest)] text-xs font-medium text-[var(--md-on-surface-variant)] hover:border-[var(--md-primary)] hover:text-[var(--md-primary)] cursor-pointer transition-colors"
+          >
+            {!shouldStart || needsTap ? 'Play' : 'Replay'}
+          </button>
+        </div>
       </div>
 
       {revealed && (

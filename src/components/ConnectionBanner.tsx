@@ -37,7 +37,10 @@ function clearDismissed(): void {
   }
 }
 
-export function ConnectionBanner() {
+export function ConnectionBanner({ inline = false, message = 'Offline — answers will sync when connected.' }: {
+  inline?: boolean;
+  message?: string;
+} = {}) {
   const { data: session, status: sessionStatus } = useSession();
   const userKey = sessionStatus === 'authenticated'
     ? offlineUserKey(session?.user)
@@ -177,11 +180,11 @@ export function ConnectionBanner() {
 
   return (
     <div
-      className="fixed top-0 left-0 right-0 z-[100] bg-[var(--md-tertiary-container)] pt-[env(safe-area-inset-top)] text-[var(--md-on-tertiary-container)]"
+      className={`${inline ? 'relative shrink-0' : 'fixed top-0 left-0 right-0 z-[100]'} bg-[var(--md-tertiary-container)] pt-[env(safe-area-inset-top)] text-[var(--md-on-tertiary-container)]`}
     >
       <div className="mx-auto flex min-h-11 max-w-3xl items-center gap-2 pl-4 text-sm">
         <span role="status" className="flex-1 text-center">
-          Offline — answers will sync when connected.
+          {message}
         </span>
         <button
           type="button"

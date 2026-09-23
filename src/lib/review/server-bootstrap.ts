@@ -3,7 +3,7 @@ import 'server-only';
 import { NextRequest } from 'next/server';
 import { prisma } from '@/lib/prisma';
 import type { Institution } from '@/lib/institution';
-import { SCHEDULED_ROTATIONS, defaultPrimaryRotation } from '@/lib/institution-rotations';
+import { SCHEDULED_ROTATIONS } from '@/lib/institution-rotations';
 import {
   getActiveRotations,
   type TrackNumber,
@@ -12,9 +12,9 @@ import { viewerCanAccessPersonalRotation } from '@/lib/personal-rotation-access'
 import { inPlayStudyRotations } from '@/lib/study/in-play-rotations';
 import { getUnifiedSession } from '@/lib/study/unified-session-service';
 import { computeFetchSlots } from './compute-fetch-slots';
-import { resolvePrimaries } from './resolve-primaries';
+import { defaultPrimaryForViewer, resolvePrimaries } from './resolve-primaries';
 import { parseReviewIntent, type ReviewFilter } from './review-intent';
-import { tidyClusterLabel } from '@/lib/knowledge/cluster-label';
+import { resolveClusterLabel } from '@/lib/knowledge/cluster-subject-label';
 import { buildUnifiedSessionParams } from '@/components/review/hooks/unified-session-params';
 import {
   reviewLocationKey,
@@ -150,13 +150,18 @@ export async function buildReviewServerBootstrap(args: {
   const reviewClusterScope = clusterParam && draft.rotation && clusterCardCount > 0
     ? {
       id: clusterParam,
-      label: tidyClusterLabel(
-        (await prisma.cluster.findUnique({
+      label: resolveClusterLabel({
+        clusterId: clusterParam,
+        storedName: (await prisma.cluster.findUnique({
           where: { id: clusterParam },
           select: { name: true },
         }))?.name ?? '',
-        draft.rotation,
-      ),
+        rotation: draft.rotation,
+        memberTopics: (await prisma.card.findMany({
+          where: { clusterId: clusterParam, rotation: draft.rotation, deletedAt: null },
+          select: { topics: true },
+        })).map((card) => card.topics),
+      }),
       cardCount: clusterCardCount,
       rotation: draft.rotation,
     }
@@ -180,7 +185,11 @@ export async function buildReviewServerBootstrap(args: {
   });
   // No enrolment signal: prefetch the onboarding default the client falls
   // through to when the chooser is skipped, so the batch stays adoptable.
-  const primary = primaries[0] ?? defaultPrimaryRotation(scheduledRotations);
+  const primary = defaultPrimaryForViewer({
+    primaries,
+    enrolledStudyable: studyable,
+    scheduledRotations,
+  });
   if (!primary) return null;
 
   const feedMode: ReviewFeedMode = intent.filter === 'new'
@@ -244,8 +253,8 @@ export async function buildReviewServerBootstrap(args: {
     (payload.items ?? []).map((item) => ({
       ...item,
       blendTier: slot.blendTier,
-      sessionId: payload.sessionId ?? null,
-      batchId: payload.batchId ?? null,
+      sessionId: item.sessionId ?? payload.sessionId ?? null,
+      batchId: item.batchId !== undefined ? item.batchId : payload.batchId ?? null,
     }))
   );
   const newRemaining = delivered.reduce<{ cards: number; questions: number } | null>(

@@ -136,6 +136,18 @@ export interface BulkCandidates {
    * "mastery" from decaying without re-test.
    */
   fragileSeenCards: Set<string>;
+  /**
+   * Due cards last graded below Good at complexity 3 or above. The ranker
+   * returns these before unseen lower rungs, so a missed vignette is not
+   * replaced for the rest of the week by a cloze in the same topic.
+   */
+  failedStretchCardIds?: ReadonlySet<string>;
+  /**
+   * Due complexity-1 or 2 cards last graded Good or Easy. They stay available,
+   * but only after a harder card in the same topic. This is the easy pile
+   * sitting in everyone's near-due queue.
+   */
+  passedScaffoldCardIds?: ReadonlySet<string>;
   questionConceptLinks: Array<{ questionId: string; conceptId: string; isPrimary: boolean }>;
   videoConceptLinks: Array<{ videoId: string; conceptId: string }>;
   rotationQuestions: BulkQuestionRow[];
@@ -352,6 +364,7 @@ export async function bulkFetchCandidates(
       select: {
         totalReviews: true,
         correctCount: true,
+        lastQuality: true,
         lastReview: true,
         nextDueAt: true,
         leechSuppressedUntil: true,
@@ -502,12 +515,20 @@ export async function bulkFetchCandidates(
   const FRAGILE_MIN_DAYS_SINCE_REVIEW = 21;
   const fragileSurfaceCutoff = new Date(now.getTime() - FRAGILE_MIN_DAYS_SINCE_REVIEW * 24 * 60 * 60 * 1000);
   const fragileSeenCards = new Set<string>();
+  const failedStretchCardIds = new Set<string>();
+  const passedScaffoldCardIds = new Set<string>();
   for (const p of activeProgress) {
     if (p.totalReviews <= FRAGILE_MAX_REVIEWS
         && (p.correctCount ?? 0) >= 1
         && p.lastReview
         && p.lastReview < fragileSurfaceCutoff) {
       fragileSeenCards.add(p.card.id);
+    }
+    if (p.lastQuality == null) continue;
+    if (p.lastQuality < 3 && p.card.complexity >= 3) {
+      failedStretchCardIds.add(p.card.id);
+    } else if (p.lastQuality >= 3 && p.card.complexity <= 2) {
+      passedScaffoldCardIds.add(p.card.id);
     }
   }
 
@@ -546,6 +567,8 @@ export async function bulkFetchCandidates(
     seenCards,
     seenCardReviewCounts,
     fragileSeenCards,
+    failedStretchCardIds,
+    passedScaffoldCardIds,
     questionConceptLinks: accessibleQuestionConceptLinks,
     videoConceptLinks: accessibleVideoConceptLinks,
     rotationQuestions,

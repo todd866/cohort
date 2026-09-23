@@ -16,7 +16,7 @@ export interface OriginalFigure {
   alt: string;
   review: {
     status: 'accepted'; method: 'agent-visual-and-source-review'; notes: string;
-    structure: { kind: 'conceptual'; status: 'verified'; specificationFiles: string[]; notes: string };
+    structure: { kind: 'conceptual' | 'spatial-anatomy'; reviewedFigureSha256?: string; annotationFile?: string; status: 'verified'; specificationFiles: string[]; notes: string };
   };
   generation: {
     tool: string;
@@ -55,7 +55,7 @@ function requireValue(condition: unknown, message: string): asserts condition {
   if (!condition) throw new Error(`Original figures: ${message}`);
 }
 
-/** Server/build admission contract. The current release admits conceptual figures only. */
+/** Server/build admission contract. Anatomy additionally requires review bound to the delivered bytes. */
 export function parseOriginalFigureManifest(value: unknown): OriginalFigureManifest {
   requireValue(record(value), 'manifest must be an object');
   requireValue(value.schemaVersion === 1 && value.license === 'MIT', 'schemaVersion 1 and MIT required');
@@ -78,10 +78,14 @@ export function parseOriginalFigureManifest(value: unknown): OriginalFigureManif
     requireValue(record(figure.review) && figure.review.status === 'accepted'
       && figure.review.method === 'agent-visual-and-source-review' && text(figure.review.notes), `${id}: accepted agent QA required`);
     const structure = figure.review.structure;
-    requireValue(record(structure) && structure.kind === 'conceptual' && structure.status === 'verified'
+    requireValue(record(structure) && (structure.kind === 'conceptual' || structure.kind === 'spatial-anatomy') && structure.status === 'verified'
       && text(structure.notes) && Array.isArray(structure.specificationFiles) && structure.specificationFiles.length > 0
       && structure.specificationFiles.every((file) => typeof file === 'string' && SCAFFOLD.test(file)),
-    `${id}: verified conceptual scaffold required; spatial anatomy is held`);
+    `${id}: verified supported scaffold required`);
+    if (structure.kind === 'spatial-anatomy') {
+      requireValue(structure.annotationFile === `annotations/${id}.svg`, `${id}: exact anatomy annotationFile required`);
+      requireValue(structure.reviewedFigureSha256 === figure.sha256, `${id}: anatomy review must match figure sha256`);
+    }
     const generation = figure.generation;
     requireValue(record(generation) && text(generation.tool), `${id}: generation provenance required`);
     requireValue(Array.isArray(generation.externalReferenceImages)
@@ -99,6 +103,8 @@ export function parseOriginalFigureManifest(value: unknown): OriginalFigureManif
         && typeof source.url === 'string' && /^https:\/\/[^\s/]+\//.test(source.url)), `${id}: clinical references required`);
     requireValue(record(figure.teaching) && text(figure.teaching.question) && text(figure.teaching.answer)
       && ['prompt', 'after-reveal'].includes(String(figure.teaching.imageRole)), `${id}: teaching role required`);
+    requireValue(structure.kind !== 'spatial-anatomy' || figure.teaching.imageRole === 'after-reveal',
+      `${id}: anatomy requires after-reveal placement`);
   }
   for (const figure of value.figures) {
     for (const ref of figure.generation.referenceAssetIds) {

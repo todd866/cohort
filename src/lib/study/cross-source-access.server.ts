@@ -1,6 +1,10 @@
 import 'server-only';
 
-import { EXAM_CROSS_SOURCE_ROTATION_IDS } from '@/lib/cross-source-rotations';
+import {
+  COMPANION_SOURCE_ROTATIONS,
+  EXAM_CROSS_SOURCE_ROTATION_IDS,
+  FOCUS_SUPPLEMENT_ROTATIONS,
+} from '@/lib/cross-source-rotations';
 import { SCHEDULED_ROTATIONS } from '@/lib/institution-rotations';
 import {
   isPersonalRotation,
@@ -26,49 +30,15 @@ const SCHEDULED_EXAM_ROTATIONS = new Set(
   Object.values(SCHEDULED_ROTATIONS).flat(),
 );
 
-/**
- * Decks that study alongside a declared companion source.
- *
- * Requested 2026-09-11: "make sure we blend bluelink atlas into this." The GSSE deck
- * is textbook plates and BlueLink is 4,747 cadaver-photo ID cards of the same
- * structures — two decks only because the pictures came from different places,
- * which is not a distinction a student studying anatomy cares about.
- *
- * A companion may ONLY be a supplementary rotation, and that is what makes this
- * safe where the cross-source list below is guarded so carefully: supplementary
- * content is opt-in for any signed-in user, so admitting it grants the viewer
- * nothing they could not already reach by enrolling in it directly. Enrolment
- * is still required, so the blend arrives because the user asked for it.
- *
- * Never add a personal deck here. Those are owner-gated, and a companion
- * pairing would be a way around the allow-list that protects them.
- */
-const COMPANION_SOURCES: Readonly<Record<string, readonly string[]>> = Object.freeze({
-  // The three views of one anatomy corpus. Each draws the others' cards that
-  // declare its own slug in moduleNodes, so a plate is authored once and can
-  // appear under Anatomy, GSSE and NSx without being copied.
-  'surgical-sciences': Object.freeze(['anatomy', 'neurosurg']),
-  anatomy: Object.freeze(['surgical-sciences', 'neurosurg']),
-  neurosurg: Object.freeze(['surgical-sciences', 'anatomy']),
-  // Paeds-Surg owns no cards at all: the paediatric module seeds under
-  // surgical-sciences, and the anatomy it needs is the Rohen plate corpus that
-  // seeds there too. Without this entry the deck renders in the selector and
-  // serves an empty session — the exact NSx failure of 2026-09-14.
-  'paediatric-surgery': Object.freeze(['surgical-sciences', 'anatomy']),
-  // The Year 4 attachment decks. Each owns no cards; the material that serves
-  // them is already in the corpus and declares membership per card in
-  // moduleNodes. Measured 2026-09-18 by keyword over live cards: roughly 3,400
-  // neurology, 4,900 urology and 1,200 geriatrics candidates, concentrated in
-  // AnKing and Malleus with real contributions from the Year 3 rotations.
-  // Without an entry here each of these renders in the selector and serves an
-  // empty session forever — the 2026-09-14 NSx failure again.
-  geriatrics: Object.freeze(['anking', 'malleus', 'toc']),
-  neurology: Object.freeze(['anking', 'malleus', 'neurosurg', 'anatomy']),
-  urology: Object.freeze(['anking', 'malleus', 'surgical-sciences']),
-});
+function focusSupplements(input: ExamCrossSourceAccessInput): string[] {
+  const declared = FOCUS_SUPPLEMENT_ROTATIONS[input.targetRotation];
+  if (!declared) return [];
+  const enrolled = new Set(input.activeModules);
+  return declared.filter((source) => enrolled.has(source));
+}
 
 function companionSources(input: ExamCrossSourceAccessInput): string[] {
-  const declared = COMPANION_SOURCES[input.targetRotation];
+  const declared = COMPANION_SOURCE_ROTATIONS[input.targetRotation];
   if (!declared) return [];
 
   // A deck the learner has explicitly focused IS their objective for this
@@ -125,7 +95,7 @@ export function entitledExamCrossSourceRotations(
   const companions = companionSources(input);
   if (companions.length > 0) return companions;
 
-  if (input.explicitFocus) return [];
+  if (input.explicitFocus) return focusSupplements(input);
   // Cross-source blending supports one scheduled exam objective. Explicit
   // focus on a source deck remains source-only; it must not become a bridge
   // into other imported/private partitions.
