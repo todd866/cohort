@@ -1,10 +1,10 @@
 {
   "schemaVersion": 1,
   "boundaryPolicy": "foss/distribution-policy.json",
-  "boundaryPolicySha256": "3815f84727c7a5caff952f15f5029feaf6254b7a1b10da8565779e9f200cbe58",
-  "reviewedPathsSha256": "0dc8bdf7a7eae8d8940d30e886b4fa883e5c973bcd64dee1150c1fc03549f6f4",
-  "fileCount": 2027,
-  "totalBytes": 252786027,
+  "boundaryPolicySha256": "2c1773e5f5c262c9814eb12179545b74c56aee4197b2e90513a5d1042a9a0f85",
+  "reviewedPathsSha256": "478ecdff41b6d3d25c3142f987de6472f04a35484a19b80ec4dfa1c6d37eac8d",
+  "fileCount": 2032,
+  "totalBytes": 252803991,
   "files": [
     {
       "path": ".env.example",
@@ -120,15 +120,15 @@
     },
     {
       "path": "foss/distribution-paths.txt",
-      "bytes": 112450,
-      "sha256": "0dc8bdf7a7eae8d8940d30e886b4fa883e5c973bcd64dee1150c1fc03549f6f4",
+      "bytes": 112620,
+      "sha256": "478ecdff41b6d3d25c3142f987de6472f04a35484a19b80ec4dfa1c6d37eac8d",
       "mode": "0644",
       "licence": "MIT"
     },
     {
       "path": "foss/distribution-policy.json",
-      "bytes": 324438,
-      "sha256": "3815f84727c7a5caff952f15f5029feaf6254b7a1b10da8565779e9f200cbe58",
+      "bytes": 324643,
+      "sha256": "2c1773e5f5c262c9814eb12179545b74c56aee4197b2e90513a5d1042a9a0f85",
       "mode": "0644",
       "licence": "MIT"
     },
@@ -7694,8 +7694,8 @@
     },
     {
       "path": "scripts/foss/check-import-closure.ts",
-      "bytes": 1630,
-      "sha256": "e5d597263116935313b106588e9a348cb4488ab11a7863185d9d6cf56a5eec92",
+      "bytes": 3198,
+      "sha256": "06c38ea6021f6b1a3a6f5932b2d922ec56f91509807bb63889772591459ee46b",
       "mode": "0644",
       "licence": "MIT"
     },
@@ -7729,8 +7729,8 @@
     },
     {
       "path": "scripts/foss/import-closure.ts",
-      "bytes": 4113,
-      "sha256": "445db2c08650a60e758bcaaa1f1afde59d940d76aa0a762d19a4235eb82521a3",
+      "bytes": 7502,
+      "sha256": "6926c50cdf04ad87e33ee0a6f374fd01cba2d18d14780aba6e18345d579cabaa",
       "mode": "0644",
       "licence": "MIT"
     },
@@ -7868,9 +7868,37 @@
       "licence": "MIT"
     },
     {
+      "path": "scripts/lib/connect-resilience.mjs",
+      "bytes": 3089,
+      "sha256": "84da8cbd310ce7298b6d7a52c4bd7f6bda904668e9c9422fb633d159c00d4d66",
+      "mode": "0644",
+      "licence": "MIT"
+    },
+    {
+      "path": "scripts/lib/connect-resilience.ts",
+      "bytes": 575,
+      "sha256": "c6c59133c3a605f203895b7ba4f3a97b97488e59db4505355c22fbe561aa6adb",
+      "mode": "0644",
+      "licence": "MIT"
+    },
+    {
+      "path": "scripts/lib/db-transport.ts",
+      "bytes": 4332,
+      "sha256": "411357ed42c78776c4dfef6e5f96ed05ed5230f988e784f2b65a60218db742ed",
+      "mode": "0644",
+      "licence": "MIT"
+    },
+    {
       "path": "scripts/lib/db.ts",
       "bytes": 2832,
       "sha256": "611a4e5b9997188c8f0762dcc3d4f8a4bd3d6d8c4a342a44da43ce3d8e20c7a1",
+      "mode": "0644",
+      "licence": "MIT"
+    },
+    {
+      "path": "scripts/lib/node-version.mjs",
+      "bytes": 1325,
+      "sha256": "8cabc31d1fefa043ff5991e00e07eed030acb1739a95bd0d605c48e795a2ffd4",
       "mode": "0644",
       "licence": "MIT"
     },
@@ -7941,6 +7969,13 @@
       "path": "scripts/ops/sw-offline-navigation.test.ts",
       "bytes": 4051,
       "sha256": "033b1dff3e4edde1b1f084b88fdebcd660e7ca235e31c4ac5d4d1630977534a1",
+      "mode": "0644",
+      "licence": "MIT"
+    },
+    {
+      "path": "scripts/ops/verify-production-db-target.mjs",
+      "bytes": 3311,
+      "sha256": "c102d2611bb6f23fb32e75dda8e02ac2495e73458769b0fd87bff8e0572bf0f9",
       "mode": "0644",
       "licence": "MIT"
     },

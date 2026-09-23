@@ -1113,7 +1113,11 @@ scripts/images/anatomy-scaffolds/left-cdh.json
 scripts/images/build-index.test.ts
 scripts/images/build-index.ts
 scripts/images/install-original-diagrams.ts
+scripts/lib/connect-resilience.mjs
+scripts/lib/connect-resilience.ts
+scripts/lib/db-transport.ts
 scripts/lib/db.ts
+scripts/lib/node-version.mjs
 scripts/ops/build-isolated.sh
 scripts/ops/build-with-sw.sh
 scripts/ops/describe-error.mjs
@@ -1124,6 +1128,7 @@ scripts/ops/secret-scan.mjs
 scripts/ops/stamp-sw.sh
 scripts/ops/stamp-sw.test.ts
 scripts/ops/sw-offline-navigation.test.ts
+scripts/ops/verify-production-db-target.mjs
 scripts/usmle/check-serving-db.test.ts
 scripts/usmle/check-serving-db.ts
 scripts/usmle/clean-tree-guard.test.ts
