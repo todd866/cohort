@@ -447,10 +447,27 @@ export function useMcqReview({
       return;
     }
 
+    const correctOption = displayOptions.find(o => o.isCorrect)?.label ?? '';
+
+    // A skip is an answer like any other: going back and skipping the same
+    // delivery again shows the result but records nothing, or it would count
+    // as a second failed attempt.
+    const slot = answeredSlotKey({
+      itemType: 'question',
+      itemId: currentItem.id,
+      serveDecisionId: currentItem.serveDecisionId,
+      batchId: currentItem.batchId,
+    });
+    if (isRepeatAnswer(slot, 'skip')) {
+      setSelectedOption(null);
+      setMcqResult({ isCorrect: false, correctOption });
+      if (currentItem.context) setContext(currentItem.context);
+      return;
+    }
+    recordAnswer(slot, 'skip');
+
     const ownerLease = captureOfflineOwner();
     submittingRef.current = true;
-
-    const correctOption = displayOptions.find(o => o.isCorrect)?.label ?? '';
 
     // Record skip in background, then revalidate due count
     const correctDisplayPosition = displayOptions.findIndex(o => o.isCorrect);

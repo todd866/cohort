@@ -17,6 +17,7 @@ export const FIXABLE_ISSUE_TYPES = [
   'incorrect',
   'content-error',          // factual content error (variant of 'incorrect')
   'premortem-factual',      // factual defect found by the premortem harness
+  'premortem-clinical-practice', // the same defect, found by the premortem harness
   'context',
   'incomplete-data',
   'systemic-card-context-too-long',

@@ -36,11 +36,13 @@ import { PrismaClient } from '@prisma/client';
 import { PrismaNeon } from '@prisma/adapter-neon';
 import { PrismaPg } from '@prisma/adapter-pg';
 import { neonConfig } from '@neondatabase/serverless';
-import ws from 'ws';
 import { resolveDatabaseTarget } from '../../src/lib/database-target';
 import { resolveScriptDatabaseConnection } from './db-transport';
+import { neonWebSocketConstructor } from './neon-websocket-proxy';
 
-neonConfig.webSocketConstructor = ws;
+// Plain ws on the Mac; through HTTPS_PROXY in a cloud session, where 443 is the
+// only way out and raw Postgres cannot pass.
+neonConfig.webSocketConstructor = neonWebSocketConstructor();
 
 const databaseTarget = resolveDatabaseTarget(process.env);
 const databaseConnection = resolveScriptDatabaseConnection(databaseTarget, process.env);

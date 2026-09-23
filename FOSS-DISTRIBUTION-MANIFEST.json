@@ -1,10 +1,10 @@
 {
   "schemaVersion": 1,
   "boundaryPolicy": "foss/distribution-policy.json",
-  "boundaryPolicySha256": "9bb84191c02517e5a90ab76054882223d64e347eda14a9179b208e0b0fa55a44",
-  "reviewedPathsSha256": "43b549682571887a62591602bbb59dccab3173a4a5823093e62bd3462f8b6254",
-  "fileCount": 2035,
-  "totalBytes": 252831575,
+  "boundaryPolicySha256": "8247441d6488029821cf83391a436cad288c445b4eb27313c6d28428704c435d",
+  "reviewedPathsSha256": "80dbfb57e5a5211afa6b5693669eedeb5bff0161aad282cfbd6266acfe3e7d3f",
+  "fileCount": 2036,
+  "totalBytes": 252843291,
   "files": [
     {
       "path": ".env.example",
@@ -120,15 +120,15 @@
     },
     {
       "path": "foss/distribution-paths.txt",
-      "bytes": 112726,
-      "sha256": "43b549682571887a62591602bbb59dccab3173a4a5823093e62bd3462f8b6254",
+      "bytes": 112762,
+      "sha256": "80dbfb57e5a5211afa6b5693669eedeb5bff0161aad282cfbd6266acfe3e7d3f",
       "mode": "0644",
       "licence": "MIT"
     },
     {
       "path": "foss/distribution-policy.json",
-      "bytes": 324755,
-      "sha256": "9bb84191c02517e5a90ab76054882223d64e347eda14a9179b208e0b0fa55a44",
+      "bytes": 324872,
+      "sha256": "8247441d6488029821cf83391a436cad288c445b4eb27313c6d28428704c435d",
       "mode": "0644",
       "licence": "MIT"
     },
@@ -7057,15 +7057,15 @@
     },
     {
       "path": "package-lock.json",
-      "bytes": 505073,
-      "sha256": "7bcfc0de77752c4335dad8bb7075859b3bea6fb0c4fc4dee03fc90f04fec733e",
+      "bytes": 506377,
+      "sha256": "c642bb9b9424c69a637c265d7ba0a2be7cea7cd8ff6b1a48d7b59bb6624a0581",
       "mode": "0644",
       "licence": "MIT"
     },
     {
       "path": "package.json",
-      "bytes": 10558,
-      "sha256": "d6713f0dec88fb0f329956d7f302becec13f0713a71e114f25b1650d81033b96",
+      "bytes": 10622,
+      "sha256": "f919ee86940884e541b8cb00ee187699228104b7524603b65080c5a4d803313c",
       "mode": "0644",
       "licence": "MIT"
     },
@@ -7890,8 +7890,15 @@
     },
     {
       "path": "scripts/lib/db.ts",
-      "bytes": 2832,
-      "sha256": "611a4e5b9997188c8f0762dcc3d4f8a4bd3d6d8c4a342a44da43ce3d8e20c7a1",
+      "bytes": 3029,
+      "sha256": "08a7a4bd7cbbcbe22f8071582fe4e59c2c8f6c977133b1b0aa448643829fca9d",
+      "mode": "0644",
+      "licence": "MIT"
+    },
+    {
+      "path": "scripts/lib/neon-websocket-proxy.ts",
+      "bytes": 2132,
+      "sha256": "a09716478294a78a3a143287e03ed1903e883b6f60074694d6d91575879de447",
       "mode": "0644",
       "licence": "MIT"
     },
@@ -9514,8 +9521,8 @@
     },
     {
       "path": "src/components/review/hooks/useMcqReview.ts",
-      "bytes": 24915,
-      "sha256": "329b2641e6808069df3477e957b54409f3b1802963fe1d2c9dc4388b73a6c6b1",
+      "bytes": 25538,
+      "sha256": "34f6abdc2f93b881d3f8a57718f1462ca650b21ad29a2c6a8266ac1e38d40801",
       "mode": "0644",
       "licence": "MIT"
     },
@@ -10634,8 +10641,8 @@
     },
     {
       "path": "src/lib/content-issue-validation.ts",
-      "bytes": 6488,
-      "sha256": "2b2be871a434542d6edebdc978174331fec6a353c0d81a71081f4f6f7901f8a0",
+      "bytes": 6572,
+      "sha256": "1f2d2e81f56e1037c19c3303555c46b4d09d17241a6127c082227c3c227d82d1",
       "mode": "0644",
       "licence": "MIT"
     },
@@ -10711,8 +10718,8 @@
     },
     {
       "path": "src/lib/content/cohort-mirror.ts",
-      "bytes": 6628,
-      "sha256": "ce2947c0ad8b96701e1a466a46c8a1c218d973923dc82451e0037628f94d6791",
+      "bytes": 13787,
+      "sha256": "085ccf1b98bc55df1a06194a37a80637bf12eb441164d0995f7f4cdc674c274f",
       "mode": "0644",
       "licence": "MIT"
     },
