@@ -1,9 +1,12 @@
 /**
  * Per-item rights provenance — whose words does this card hold?
  *
- * See docs/designs/2026-09-13-content-rights-provenance.md. This is the field
- * the export boundary selects on, so that publishing to cohort.md is a property
- * of the data rather than a path allowlist somebody maintains by memory.
+ * See docs/designs/2026-09-13-content-rights-provenance.md. The decision it
+ * yields is recorded per item in a committed, private rights layer built from
+ * SOURCE FILES (docs/designs/2026-09-23-cohort-mirror.md), and the Cohort
+ * export selects on that layer, so publishing is a property of the data rather
+ * than a path allowlist somebody maintains by memory. There is no database
+ * column for it; a Card row cannot see the frontmatter or path that decide it.
  *
  * THE DEFAULT IS CLOSED AND THE BACKFILL ONLY RULES THINGS OUT.
  * `classifyCardProvenance` can return `import` or `unreviewed`; it can never
@@ -82,6 +85,7 @@ const IMPORT_SOURCE_MARKERS: ReadonlyArray<string> = Object.freeze([
   'queso',
   'zanki',
   'bluelink',  // BlueLink Anatomy Atlas (U. Michigan) — "not openly licensed"
+  'kubie',     // Kubie neuroanatomy lab collection (SUNY Downstate) — "no licence has been granted"
 ]);
 
 export function classifyCardProvenance(input: ProvenanceInput): ProvenanceResult {

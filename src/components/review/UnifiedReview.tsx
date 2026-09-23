@@ -721,6 +721,9 @@ function UnifiedReviewBody({ rotations, week, rotationSizes, fetchSlots, feedMod
       onReviewWithReset?.();
       handleCardGrade(confidence >= 3 ? 3 : 0);
     },
+    // Went back and gave the same grade again: a re-read, so move on without
+    // counting a second review in the stats or the daily total.
+    onRepeat: () => handleCardContinue(),
     onError: (msg) => onSubmitError?.(msg),
   });
 
@@ -749,6 +752,7 @@ function UnifiedReviewBody({ rotations, week, rotationSizes, fetchSlots, feedMod
       onReviewWithReset?.();
       advanceToNext();
     },
+    onRepeat: () => advanceToNext(),
     onError: (msg) => onSubmitError?.(msg),
   });
 

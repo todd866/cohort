@@ -35,6 +35,8 @@ export const FOCUS_OPTION_ORDER: readonly string[] = [
   // Adult physician written exam. It sits with the other postgraduate
   // exams, ahead of the surgical family.
   'bpt',
+  // Physical examination, 2026-09-23: studied alongside every block.
+  'physical-exam',
   'anatomy',
   'surgical-sciences',
   'paediatric-surgery',

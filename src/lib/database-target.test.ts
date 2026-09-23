@@ -133,6 +133,7 @@ describe('shared database target resolution', () => {
       'audit:overexposed-stems',
       'audit:serve-concentration',
       'audit:repetition-forecast',
+      'audit:recall-calibration',
       // Added 2026-08-12 after it silently read the mirror: the mirror listed
       // 4,235 imageless cards against production's 9,683, so a candidate set
       // built from it would have missed more than half the corpus AND risked

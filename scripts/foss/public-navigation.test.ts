@@ -587,7 +587,11 @@ describe('public navigation and static assets', () => {
     expect(sourceRepository).toContain("url.protocol !== 'https:'");
     expect(sourceRepository).toContain('url.username || url.password');
     const robots = artifactText(repoRoot, 'src/app/robots.ts');
-    expect(robots).toContain("allow: ['/about', '/privacy', '/terms']");
+    // '/practice-exam/cah' is md3's public, shareable practice paper (Facebook
+    // previews obey robots.txt). The route is excluded from this artifact, so
+    // here the allow is a no-op rather than a promise; the contract that
+    // matters is disallow-by-default with no admin or sandbox exposure.
+    expect(robots).toContain("allow: ['/about', '/privacy', '/terms', '/practice-exam/cah']");
     expect(robots).toContain("disallow: '/'");
     expect(robots).not.toMatch(/\/x\/|\/sandbox|\/admin/);
   });

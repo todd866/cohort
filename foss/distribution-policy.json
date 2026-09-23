@@ -1176,6 +1176,7 @@
     "src/app/api/mastery",
     "src/app/api/mobile",
     "src/app/api/modules",
+    "src/app/api/practice-exam",
     "src/app/api/question-bank",
     "src/app/api/question-bank/[id]",
     "src/app/api/questions",
@@ -1225,6 +1226,7 @@
     "src/components/cah-stream",
     "src/components/content/glossary-data.json",
     "src/components/exam-paper",
+    "src/components/practice-exam",
     "src/components/textbook",
     "src/data",
     "src/features/kidney-sim",
@@ -1236,6 +1238,7 @@
     "src/lib/exam-paper",
     "src/lib/generated",
     "src/lib/integrations",
+    "src/lib/practice-exam",
     "src/lib/textbook-media.ts",
     "src/lib/textbook.ts",
     "src/lib/toc-crossover",
@@ -3978,7 +3981,7 @@
     },
     {
       "path": "src/lib/personal-deck-owners.server.ts",
-      "text": "import 'server-only';\n\nimport { PERSONAL_DECKS, type PersonalDeck } from '@/lib/personal-decks';\n\nexport type PersonalDeckOwnerEmails = Readonly<Record<string, ReadonlySet<string>>>;\n\nexport function personalDeckOwnerEmails(): Record<string, ReadonlySet<string>> {\n  return {};\n}\n\nexport function personalDeckPrimaryOwnerEmail(_slug: string): string | undefined {\n  void _slug;\n  return undefined;\n}\n\nexport function ownedActiveDecks(\n  _email: string | null | undefined,\n  _today: Date,\n  _decks: PersonalDeck[] = PERSONAL_DECKS,\n  _ownerEmails: PersonalDeckOwnerEmails = {},\n): PersonalDeck[] {\n  void _email;\n  void _today;\n  void _decks;\n  void _ownerEmails;\n  return [];\n}\n/**\n * The public build declares no shared-tier deck grants. Present so the real\n * personal-rotation-access module compiles unchanged in the export.\n */\nexport function personalDeckSharedAccessTier(_slug: string): 'copyright' | undefined {\n  void _slug;\n  return undefined;\n}\n",
+      "text": "import 'server-only';\n\nimport { PERSONAL_DECKS, type PersonalDeck } from '@/lib/personal-decks';\n\nexport type PersonalDeckOwnerEmails = Readonly<Record<string, ReadonlySet<string>>>;\n\nexport function personalDeckOwnerEmails(): Record<string, ReadonlySet<string>> {\n  return {};\n}\n\nexport function personalDeckPrimaryOwnerEmail(_slug: string): string | undefined {\n  void _slug;\n  return undefined;\n}\n\nexport function ownedActiveDecks(\n  _email: string | null | undefined,\n  _today: Date,\n  _decks: PersonalDeck[] = PERSONAL_DECKS,\n  _ownerEmails: PersonalDeckOwnerEmails = {},\n): PersonalDeck[] {\n  void _email;\n  void _today;\n  void _decks;\n  void _ownerEmails;\n  return [];\n}\n/**\n * The public build declares no shared-tier deck grants. Present so the real\n * personal-rotation-access module compiles unchanged in the export.\n */\nexport function personalDeckSharedAccessTier(_slug: string): 'copyright' | 'signed-in' | undefined {\n  void _slug;\n  return undefined;\n}\n",
       "licence": "MIT"
     },
     {

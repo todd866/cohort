@@ -12,6 +12,7 @@ export const DEFAULT_REVIEW_MENU_SUBJECTS = [
   'malleus',
   'toc',
   'bpt',
+  'physical-exam',
   'anatomy',
   'surgical-sciences',
   'paediatric-surgery',

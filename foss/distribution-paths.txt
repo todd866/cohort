@@ -1501,6 +1501,7 @@ src/lib/content-version.ts
 src/lib/content.ts
 src/lib/content/cluster-assignment.ts
 src/lib/content/cluster-metadata.ts
+src/lib/content/cohort-mirror.ts
 src/lib/content/numeric-claim-risk.ts
 src/lib/content/rights-provenance.ts
 src/lib/content/source-tier.ts
@@ -1614,6 +1615,7 @@ src/lib/knowledge/cluster-label.ts
 src/lib/knowledge/cluster-name-overlay.ts
 src/lib/knowledge/cluster-names.data.ts
 src/lib/knowledge/cluster-subject-label.ts
+src/lib/knowledge/concept-recall-elo.ts
 src/lib/knowledge/concept-thread-history.ts
 src/lib/knowledge/concept-thread-policy.ts
 src/lib/knowledge/content-gaps.ts
@@ -1790,6 +1792,7 @@ src/lib/report-client-error.ts
 src/lib/review-queue.ts
 src/lib/review-stats-query.ts
 src/lib/review-stats.ts
+src/lib/review/answered-slots.ts
 src/lib/review/bootstrap-safety.ts
 src/lib/review/bootstrap-types.ts
 src/lib/review/cluster-verdict.ts

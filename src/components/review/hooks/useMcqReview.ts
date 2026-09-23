@@ -2,6 +2,7 @@ import { useState, useCallback, useRef, useEffect, useMemo } from 'react';
 import { acknowledgeReview, enqueueReview } from '@/lib/review-queue';
 import { submitWithRetry } from '@/lib/submit-with-retry';
 import { genClientRequestId } from '@/lib/client-request-id';
+import { answeredSlotKey, isRepeatAnswer, recordAnswer } from '@/lib/review/answered-slots';
 import {
   captureOfflineOwner,
   isOfflineOwnerCurrent,
@@ -335,12 +336,30 @@ export function useMcqReview({
       return;
     }
 
-    const ownerLease = captureOfflineOwner();
-    submittingRef.current = true;
-
     const selectedOptData = displayOptions.find(o => o.label === label);
     const isCorrect = selectedOptData?.isCorrect ?? false;
     const correctOption = displayOptions.find(o => o.isCorrect)?.label ?? '';
+
+    // Going back to an answered question and choosing the same option again
+    // shows the result but records nothing: it is a re-read, not a second
+    // attempt. A different option is still recorded as a correction.
+    const slot = answeredSlotKey({
+      itemType: 'question',
+      itemId: currentItem.id,
+      serveDecisionId: currentItem.serveDecisionId,
+      batchId: currentItem.batchId,
+    });
+    const answer = `option:${selectedOptData?.originalIndex ?? label}`;
+    if (isRepeatAnswer(slot, answer)) {
+      setSelectedOption(label);
+      setMcqResult({ isCorrect, correctOption });
+      if (currentItem.context) setContext(currentItem.context);
+      return;
+    }
+    recordAnswer(slot, answer);
+
+    const ownerLease = captureOfflineOwner();
+    submittingRef.current = true;
 
     // Record response in background, then revalidate due count
     // Send the original DB label (not the shuffled display label) so the

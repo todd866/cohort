@@ -111,9 +111,14 @@ describe('FOSS distribution boundary', () => {
     const reviewed = fs.readFileSync(path.join(root, policy.pathManifest), 'utf8').split(/\r?\n/);
     const privatePrefixes = [
       'src/app/api/exam-papers',
+      // The public practice paper is md3's: its paper file lives under the
+      // forbidden content/ root and its page is already under practice-exam.
+      'src/app/api/practice-exam',
       'src/app/practice-exam',
       'src/components/exam-paper',
+      'src/components/practice-exam',
       'src/lib/exam-paper',
+      'src/lib/practice-exam',
     ];
 
     expect(policy.excludePrefixes).toEqual(expect.arrayContaining(privatePrefixes));

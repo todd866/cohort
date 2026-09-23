@@ -538,8 +538,9 @@ export const PROTECTED_PUBLIC_FALLBACKS: ReadonlyArray<Readonly<{
     // (always undefined — no shared-tier grants ship) because the real
     // personal-rotation-access module now imports it for the TO'C
     // copyright-tier grant and the clean FOSS build could not compile
-    // without it.
-    sha256: 'c623830eb7fb219bc864b5e1fd8bbd721395b95c361434122188cecd15bab6fd',
+    // without it. Bumped 2026-09-23: the return type gained 'signed-in' for
+    // the Physical Examination deck; the stub still returns undefined.
+    sha256: '5c25e3912136e7889c2b9847e83826cb415734ed41d43ce74dd33ef655909d52',
   },
   {
     path: 'src/lib/personal-decks.ts',

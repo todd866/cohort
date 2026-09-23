@@ -8,6 +8,7 @@ import {
   isOfflineOwnerCurrent,
 } from '@/lib/offline/owner';
 import { captureReviewWriteClientContext } from '@/lib/review/review-write-observability';
+import { answeredSlotKey, isRepeatAnswer, recordAnswer } from '@/lib/review/answered-slots';
 
 type SaveState = 'idle' | 'saving' | 'saved' | 'queued' | 'error';
 
@@ -27,6 +28,11 @@ export interface UseGradingOptions {
   metadata?: Record<string, unknown>;
   getResponseTimeMs?: () => number;
   onGraded?: (confidence: number) => void;
+  /**
+   * Called instead of recording when the learner went back and gave this same
+   * delivery the same grade again. Should only move on. Defaults to onGraded.
+   */
+  onRepeat?: (confidence: number) => void;
   onError?: (message: string) => void;
   /** Walk-audit traceability — echoed back to POST /api/study/record */
   sessionId?: string | null;
@@ -48,6 +54,7 @@ export function useGrading({
   metadata,
   getResponseTimeMs,
   onGraded,
+  onRepeat,
   onError,
   sessionId,
   batchId,
@@ -67,6 +74,16 @@ export function useGrading({
 
   const grade = useCallback((confidence: number) => {
     if (status === 'saving' || status === 'saved' || status === 'queued') return;
+
+    const slot = answeredSlotKey({ itemType, itemId, serveDecisionId, batchId });
+    const answer = `confidence:${confidence}`;
+    if (isRepeatAnswer(slot, answer)) {
+      setSelected(confidence);
+      setStatus('saved');
+      (onRepeat ?? onGraded)?.(confidence);
+      return;
+    }
+    recordAnswer(slot, answer);
 
     const ownerLease = captureOfflineOwner();
     const gradingItemId = itemIdRef.current; // capture at grade-time
@@ -182,7 +199,7 @@ export function useGrading({
         setStatus('queued');
         onError?.(String(err));
       });
-  }, [status, itemId, itemType, metadata, getResponseTimeMs, onGraded, onError, sessionId, batchId, serveDecisionId]);
+  }, [status, itemId, itemType, metadata, getResponseTimeMs, onGraded, onRepeat, onError, sessionId, batchId, serveDecisionId]);
 
   const reset = useCallback(() => {
     setSelected(null);

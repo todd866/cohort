@@ -29,7 +29,7 @@ export function ownedActiveDecks(
  * The public build declares no shared-tier deck grants. Present so the real
  * personal-rotation-access module compiles unchanged in the export.
  */
-export function personalDeckSharedAccessTier(_slug: string): 'copyright' | undefined {
+export function personalDeckSharedAccessTier(_slug: string): 'copyright' | 'signed-in' | undefined {
   void _slug;
   return undefined;
 }

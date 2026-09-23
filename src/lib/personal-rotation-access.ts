@@ -45,6 +45,9 @@ export function viewerCanAccessPersonalRotation(
   });
   if (isOwner) return true;
   const sharedTier = personalDeckSharedAccessTier(rotation);
+  if (sharedTier === 'signed-in') {
+    return viewer.emails.some((email) => normalizeEmail(email).length > 0);
+  }
   return sharedTier !== undefined && viewer.imageTier === sharedTier;
 }
 

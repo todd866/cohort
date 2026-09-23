@@ -4,6 +4,8 @@ export type RotationId =
   | 'critical-care' | 'paam' | 'cah' | 'pwh'
   // Personal licensed rotations
   | 'anking' | 'toc'
+  // Composed physical-examination deck; owns its own bank (2026-09-23)
+  | 'physical-exam'
   // USMLE Step 1
   | 'usmle-step1' | 'usmle-step1-open' | 'usmle-biochem' | 'usmle-immunology' | 'usmle-micro'
   | 'usmle-pathology' | 'usmle-pharm' | 'usmle-cardio' | 'usmle-endo'

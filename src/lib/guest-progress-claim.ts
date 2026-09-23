@@ -44,6 +44,7 @@ export interface GuestClaimCounts {
   teachingSignals: number;
   deepDiveChatSessions: number;
   deepDiveChatMessages: number;
+  examPaperSessions: number;
 }
 
 export type GuestProgressClaimResult =
@@ -569,6 +570,7 @@ function emptyCounts(): GuestClaimCounts {
     teachingSignals: 0,
     deepDiveChatSessions: 0,
     deepDiveChatMessages: 0,
+    examPaperSessions: 0,
   };
 }
 
@@ -1124,6 +1126,16 @@ export async function claimGuestProgressRecords(
   ).count;
   counts.teachingSignals = (
     await tx.teachingSignal.updateMany({
+      where: { userId: guestUserId },
+      data: { userId: authenticatedUserId },
+    })
+  ).count;
+  // A signed-out visitor can sit the public practice paper and is told to
+  // create an account to keep the result. Sittings have globally unique ids,
+  // so they move without conflict; left behind, the guest delete below would
+  // cascade them away.
+  counts.examPaperSessions = (
+    await tx.examPaperSession.updateMany({
       where: { userId: guestUserId },
       data: { userId: authenticatedUserId },
     })

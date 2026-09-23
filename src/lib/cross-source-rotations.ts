@@ -58,12 +58,13 @@ export const COMPANION_SOURCE_ROTATIONS: Readonly<Record<string, readonly string
   // stay one card; GSSE borrows the ones that declare it.
   'surgical-sciences': Object.freeze(['anatomy', 'neurosurg', 'cah']),
   anatomy: Object.freeze(['surgical-sciences', 'neurosurg']),
-  neurosurg: Object.freeze(['surgical-sciences', 'anatomy']),
+  // CAH joined 2026-09-23: its examination clips name `neurosurg`.
+  neurosurg: Object.freeze(['surgical-sciences', 'anatomy', 'cah', 'physical-exam']),
   // Paeds-Surg owns no cards at all: the paediatric module seeds under
   // surgical-sciences, and the anatomy it needs is the Rohen plate corpus that
   // seeds there too. Without this entry the deck renders in the selector and
   // serves an empty session — the exact NSx failure of 2026-09-14.
-  'paediatric-surgery': Object.freeze(['surgical-sciences', 'anatomy']),
+  'paediatric-surgery': Object.freeze(['surgical-sciences', 'anatomy', 'cah']),
   // The Year 4 attachment decks. Each owns no cards; the material that serves
   // them is already in the corpus and declares membership per card in
   // moduleNodes. Measured 2026-09-18 by keyword over live cards: roughly 3,400
@@ -71,9 +72,18 @@ export const COMPANION_SOURCE_ROTATIONS: Readonly<Record<string, readonly string
   // AnKing and Malleus with real contributions from the Year 3 rotations.
   // Without an entry here each of these renders in the selector and serves an
   // empty session forever — the 2026-09-14 NSx failure again.
-  geriatrics: Object.freeze(['anking', 'malleus', 'toc']),
-  neurology: Object.freeze(['anking', 'malleus', 'neurosurg', 'anatomy']),
-  urology: Object.freeze(['anking', 'malleus', 'surgical-sciences']),
+  //
+  // 2026-09-23: the hand-authored rotations joined. Cards in surgical-sciences,
+  // CAH and critical-care had been naming these decks for weeks — the neuro
+  // examination clips among them — and none could be served there, because a
+  // deck borrows only from the rotations listed here. Membership is still per
+  // card: a companion contributes only cards that name the deck.
+  geriatrics: Object.freeze(['anking', 'malleus', 'toc', 'surgical-sciences', 'physical-exam']),
+  neurology: Object.freeze([
+    'anking', 'malleus', 'neurosurg', 'anatomy',
+    'surgical-sciences', 'cah', 'critical-care', 'physical-exam',
+  ]),
+  urology: Object.freeze(['anking', 'malleus', 'surgical-sciences', 'cah']),
   // Radiology and neuroradiology. Measured 2026-09-18 by keyword over LIVE
   // cards (the first count was run against the local mirror and was wrong in
   // kind, not degree — it missed AnKing's 5,618 entirely): radiology is
@@ -84,8 +94,17 @@ export const COMPANION_SOURCE_ROTATIONS: Readonly<Record<string, readonly string
   // cxr 220).
   // Neuroradiology is the thin one until Osborn's Brain is indexed, which is
   // why it draws anatomy and neurosurg rather than standing on AnKing alone.
-  radiology: Object.freeze(['anking', 'malleus', 'surgical-sciences', 'neurosurg', 'toc']),
-  neuroradiology: Object.freeze(['anking', 'malleus', 'neurosurg', 'anatomy']),
+  radiology: Object.freeze(['anking', 'malleus', 'surgical-sciences', 'neurosurg', 'toc', 'cah']),
+  neuroradiology: Object.freeze([
+    'anking', 'malleus', 'neurosurg', 'anatomy',
+    'surgical-sciences', 'cah', 'critical-care',
+  ]),
+  // Physical examination, 2026-09-23. TO'C is the examination text; CAH,
+  // GSSE and critical-care hold the examination clips; ortho holds the
+  // special tests. Each contributes only cards that name `physical-exam`.
+  'physical-exam': Object.freeze([
+    'toc', 'cah', 'surgical-sciences', 'critical-care', 'ortho', 'pwh', 'paam',
+  ]),
   // Adult Medicine DWE. The cards stay in the rotation that authored them.
   // A focused BPT session draws the ones that name `bpt`.
   bpt: Object.freeze([

@@ -133,6 +133,9 @@ export const ROTATION_DIRS = new Set([
   // before that an unregistered dir here would have dropped them a second time.
   'surgical-sciences',
   'neurosurg',
+  // The Physical Examination deck's own decision items (C3–C5 and contrast
+  // sets), original writing served at the signed-in tier. 2026-09-23.
+  'physical-exam',
 ]);
 
 /**
