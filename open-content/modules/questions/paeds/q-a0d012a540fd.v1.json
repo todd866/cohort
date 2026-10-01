@@ -1,0 +1,66 @@
+{
+  "id": "bank:cohort:paeds:q-a0d012a540fd:v1",
+  "rotation": "cohort-open",
+  "moduleNodes": [
+    "cohort/paeds"
+  ],
+  "topics": [
+    "congenital infection",
+    "TORCH",
+    "syphilis"
+  ],
+  "questionType": "next-step",
+  "difficulty": "hard",
+  "stem": "A term infant is born to a mother whose syphilis serology turned positive at 34 weeks. She received her first dose of benzathine penicillin 10 days before delivery. The infant looks well; the infant's non-treponemal titre is the same as the mother's.\n\nWhat is the most appropriate management of the infant?",
+  "options": [
+    {
+      "label": "A",
+      "text": "Full evaluation and a ten-day course of intravenous benzylpenicillin",
+      "isCorrect": true,
+      "explanation": "Maternal treatment completed less than 30 days before delivery is inadequate for the fetus, so the infant is treated regardless of how well it looks or what its titre shows. A normal examination does not exclude congenital syphilis."
+    },
+    {
+      "label": "B",
+      "text": "Reassure and repeat infant serology at 3 months",
+      "isCorrect": false,
+      "explanation": "Passive maternal antibody makes early serology uninterpretable, and waiting risks untreated infection in an infant who meets criteria for treatment now."
+    },
+    {
+      "label": "C",
+      "text": "Single dose of intramuscular benzathine penicillin",
+      "isCorrect": false,
+      "explanation": "A single dose is an option only for an infant at low risk whose mother was adequately treated well before delivery; this mother was not."
+    },
+    {
+      "label": "D",
+      "text": "Treat only if the infant's titre is fourfold higher than the mother's",
+      "isCorrect": false,
+      "explanation": "A fourfold higher titre would confirm infection, but an equal titre does not exclude it in a baby whose mother was inadequately treated."
+    },
+    {
+      "label": "E",
+      "text": "Oral amoxicillin for two weeks",
+      "isCorrect": false,
+      "explanation": "Penicillin given parenterally is the only regimen with proven efficacy in congenital syphilis; oral alternatives are not used."
+    }
+  ],
+  "context": "Congenital syphilis is preventable, and most cases follow late or inadequate maternal treatment. The rules for the infant turn on the mother's treatment history.\n\nMaternal treatment is adequate only if it was penicillin, completed at least 30 days before delivery, with a serological response. Fail any of those and the infant is investigated and given ten days of intravenous benzylpenicillin.\n\nAt birth the infant's non-treponemal titre reflects maternal antibody, so an equal titre means nothing. Most infected infants look normal at birth; snuffles, rash, hepatomegaly and bone changes appear over weeks.",
+  "publicModule": {
+    "schemaVersion": 1,
+    "origin": "mirrored",
+    "discipline": "paeds",
+    "mirroredFrom": "md3:a0d012a540fd9cf2",
+    "itemText": {
+      "licence": "CC-BY-4.0",
+      "attribution": "MD3 contributors"
+    },
+    "evidence": {
+      "kind": "reference",
+      "sourceId": "qcg-sip"
+    },
+    "review": {
+      "verdict": "passed",
+      "contentHash": "15bdc9e43ea04ffc4953654d75e194ba91412d32a977a621dc157d9783856a73"
+    }
+  }
+}

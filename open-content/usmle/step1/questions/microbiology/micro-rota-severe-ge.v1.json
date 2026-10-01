@@ -1,0 +1,70 @@
+{
+  "id": "bank:usmle-step1:micro-rota-severe-ge:v1",
+  "rotation": "usmle-step1-open",
+  "topics": [
+    "rotavirus"
+  ],
+  "moduleNodes": [
+    "usmle/step1",
+    "usmle/step1/microbiology"
+  ],
+  "questionType": "mechanism",
+  "difficulty": "easy",
+  "stem": "In the prevaccine era, rotavirus was described as the most common cause of which pediatric syndrome?",
+  "options": [
+    {
+      "label": "A",
+      "text": "Acute bronchiolitis",
+      "isCorrect": false,
+      "misconception": "Confuses the leading infant respiratory virus with the leading infant diarrheal virus.",
+      "explanation": "Acute bronchiolitis in infants is most often caused by respiratory syncytial virus, a respiratory pathogen, not rotavirus."
+    },
+    {
+      "label": "B",
+      "text": "Hemolytic uremic syndrome",
+      "isCorrect": false,
+      "misconception": "Links any severe pediatric diarrhea to HUS, which classically follows Shiga toxin-producing E. coli.",
+      "explanation": "Hemolytic uremic syndrome in children most often follows Shiga toxin-producing E. coli O157:H7 diarrhea, not rotavirus infection."
+    },
+    {
+      "label": "C",
+      "text": "Severe gastroenteritis",
+      "isCorrect": true,
+      "misconception": "None — rotavirus was the leading cause of severe pediatric gastroenteritis.",
+      "explanation": "CDC calls rotavirus the most common prevaccine-era cause of severe gastroenteritis in infants and children, with nearly universal infection by age 5."
+    },
+    {
+      "label": "D",
+      "text": "Aseptic meningitis",
+      "isCorrect": false,
+      "misconception": "Confuses rotavirus with the enteroviruses, which are acquired through the gut but cause aseptic meningitis.",
+      "explanation": "Aseptic meningitis in children is most often caused by non-polio enteroviruses; rotavirus is an enteric diarrheal pathogen."
+    },
+    {
+      "label": "E",
+      "text": "Viral croup",
+      "isCorrect": false,
+      "misconception": "Confuses rotavirus with parainfluenza virus, another common cold-season virus of young children.",
+      "explanation": "Croup is most often caused by parainfluenza virus and produces a barking cough and stridor, not diarrheal illness."
+    }
+  ],
+  "context": "Learning objective: Before vaccination, rotavirus was the most common cause of severe gastroenteritis in infants and children, infecting nearly all by age 5.",
+  "cite": "cdc-pink-book-rotavirus#rota-severe-ge",
+  "publicUsmle": {
+    "schemaVersion": 1,
+    "origin": "generated",
+    "itemText": {
+      "licence": "CC-BY-4.0",
+      "attribution": "MD3 contributors"
+    },
+    "evidence": {
+      "kind": "passage",
+      "sourceId": "cdc-pink-book-rotavirus",
+      "passageId": "rota-severe-ge",
+      "licence": {
+        "cls": "foss",
+        "id": "us-gov"
+      }
+    }
+  }
+}

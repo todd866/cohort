@@ -1,0 +1,39 @@
+{
+  "figureId": "atopic-march-possibilities",
+  "tool": "built-in image_gen",
+  "model": null,
+  "referenceAssetIds": [],
+  "externalReferenceImages": [],
+  "prompt": "Original educational conceptual illustration, landscape 3:2. Warm ivory paper, sophisticated hand-painted gouache/watercolour, confident fine brown outlines, navy lettering, restrained teal, coral and amber. Editorial science illustration with spacious composition and large legible labels. The explanatory structure must carry the meaning visually: molecules, objects, geometry or flow; never paragraphs in boxes. No organs, regional anatomy, teeth or joint cutaways, tissue layers, invented histology, diagnostic photographs, radiographs or patient data. All symbols are explicitly conceptual. Footer: 'Conceptual teaching model • Not to scale'. Title 'Atopic trajectories can branch'. Draw a graceful branching garden-path metaphor on ivory paper, starting at left with a small textured patchwork flag labelled 'Early eczema'. The path splits into THREE unweighted branches toward the right. Top branch ends at the same patchwork flag labelled 'Eczema only'. Middle branch is dotted and ends at a simple wind chime labelled 'Asthma may develop'. Bottom branch is dotted and ends at a pollen sprig beside tissue box labelled 'Allergic rhinitis may develop'. No organs or clinical skin images. Large short note 'No fixed sequence'. Smaller note 'Possible paths can overlap'. Do not draw a serial arrow from eczema to asthma to rhinitis, percentages, or claims that eczema always causes other disease.",
+  "clinicalSources": [
+    {
+      "title": "NIAMS: Atopic dermatitis",
+      "url": "https://www.niams.nih.gov/health-topics/atopic-dermatitis"
+    },
+    {
+      "title": "PLOS Medicine: Developmental profiles of eczema, wheeze, and rhinitis",
+      "url": "https://journals.plos.org/plosmedicine/article?id=10.1371/journal.pmed.1001748"
+    }
+  ],
+  "teaching": {
+    "question": "Does early eczema guarantee a later sequence of asthma and allergic rhinitis?",
+    "answer": "No. Eczema is associated with later allergic disease, but children follow several trajectories. Asthma and rhinitis are possibilities, not inevitable stages in a fixed sequence.",
+    "imageRole": "after-reveal"
+  },
+  "title": "Atopic trajectories can branch",
+  "caption": "Childhood eczema is associated with later allergic disease, but an individual child does not necessarily follow a fixed march. Several developmental patterns occur.",
+  "alt": "A path beginning at eczema branches toward eczema alone, asthma and allergic rhinitis, with dashed later paths and no numerical probabilities.",
+  "review": {
+    "status": "pending-independent-qa",
+    "method": "agent-visual-and-source-review",
+    "notes": "Early eczema forks into separate eczema-only, possible asthma and possible rhinitis branches. Later-disease paths are dashed and labelled may develop. Explicit overlap and no-fixed-sequence notes prevent mutually exclusive or inevitable interpretation. No serial disease chain, probabilities, body or tissue anatomy.",
+    "structure": {
+      "kind": "conceptual",
+      "status": "verified",
+      "specificationFiles": [
+        "scaffolds/atopic-march-possibilities.json"
+      ],
+      "notes": "Early eczema forks into separate eczema-only, possible asthma and possible rhinitis branches. Later-disease paths are dashed and labelled may develop. Explicit overlap and no-fixed-sequence notes prevent mutually exclusive or inevitable interpretation. No serial disease chain, probabilities, body or tissue anatomy."
+    }
+  }
+}

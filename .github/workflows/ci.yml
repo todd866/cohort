@@ -1,0 +1,57 @@
+name: Public CI
+
+on:
+  push:
+  pull_request:
+
+permissions:
+  contents: read
+
+jobs:
+  verify:
+    runs-on: ubuntu-latest
+    env:
+      DATABASE_URL: postgresql://dummy:dummy@localhost:5432/dummy
+      NEXTAUTH_SECRET: dummy-secret-for-public-ci
+      NEXTAUTH_URL: http://localhost:3000
+      MD3_GENERATED_CONTENT_MODE: offline
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version-file: .nvmrc
+          cache: npm
+      - name: Install source exporter dependencies
+        run: npm ci
+      - name: Audit current source boundary
+        run: npm run foss:boundary:audit
+      - name: Re-export current reviewed source
+        run: npm run foss:export -- "${{ runner.temp }}/md3-foss-current"
+      - name: Strictly audit fresh artifact
+        working-directory: ${{ runner.temp }}/md3-foss-current
+        run: |
+          "$GITHUB_WORKSPACE/node_modules/.bin/tsx" scripts/foss/distribution.ts
+      - name: Install fresh artifact dependencies
+        working-directory: ${{ runner.temp }}/md3-foss-current
+        run: npm ci
+      - name: Re-audit installed source boundary
+        working-directory: ${{ runner.temp }}/md3-foss-current
+        run: npm run foss:boundary:audit
+      - name: Typecheck public artifact
+        working-directory: ${{ runner.temp }}/md3-foss-current
+        run: npm run typecheck:scripts
+      - name: Lint public artifact
+        working-directory: ${{ runner.temp }}/md3-foss-current
+        run: npm run lint
+      - name: Run complete FOSS USMLE contract
+        working-directory: ${{ runner.temp }}/md3-foss-current
+        run: npm run foss:test
+      - name: Verify public corpus release gate
+        working-directory: ${{ runner.temp }}/md3-foss-current
+        run: npm run usmle:corpus:release-gate
+      - name: Verify public corpus dry seed
+        working-directory: ${{ runner.temp }}/md3-foss-current
+        run: npm run usmle:corpus:seed:dry
+      - name: Build fresh FOSS artifact
+        working-directory: ${{ runner.temp }}/md3-foss-current
+        run: npm run build

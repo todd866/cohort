@@ -1,0 +1,61 @@
+{
+  "id": "bank:cohort:paeds:q-05f6a07484ac:v1",
+  "rotation": "cohort-open",
+  "moduleNodes": [
+    "cohort/paeds"
+  ],
+  "topics": [
+    "bilious vomiting",
+    "malrotation",
+    "midgut volvulus",
+    "surgical emergency"
+  ],
+  "questionType": "management",
+  "difficulty": "hard",
+  "stem": "A 3-week-old has two episodes of green vomiting. He is haemodynamically stable, the abdomen is soft and a plain abdominal radiograph is non-diagnostic.\n\nWhat is the safest next step?",
+  "options": [
+    {
+      "label": "A",
+      "text": "Observe in hospital until bilious vomiting recurs",
+      "isCorrect": false,
+      "explanation": "A well interval does not exclude intermittent malrotation with volvulus; waiting risks bowel ischaemia."
+    },
+    {
+      "label": "B",
+      "text": "Give oral rehydration solution and repeat the radiograph",
+      "isCorrect": false,
+      "explanation": "Further feeding is unsafe while a mechanical obstruction and volvulus remain possible."
+    },
+    {
+      "label": "C",
+      "text": "Seek urgent surgical assessment for bowel obstruction",
+      "isCorrect": true,
+      "explanation": "Bilious vomiting in a young infant can reflect bowel obstruction or midgut volvulus. Surgical assessment is urgent even when the infant looks well and the plain film is non-diagnostic; the team can then coordinate definitive imaging."
+    },
+    {
+      "label": "D",
+      "text": "Discharge after a normal ultrasound of the pylorus",
+      "isCorrect": false,
+      "explanation": "A soft abdomen early in volvulus does not make discharge safe."
+    }
+  ],
+  "context": "Bilious vomiting in a young infant is malrotation with midgut volvulus until excluded. A stable appearance and non-diagnostic plain film do not remove the need for urgent surgical assessment.",
+  "publicModule": {
+    "schemaVersion": 1,
+    "origin": "mirrored",
+    "discipline": "paeds",
+    "mirroredFrom": "md3:05f6a07484ac3be2",
+    "itemText": {
+      "licence": "CC-BY-4.0",
+      "attribution": "MD3 contributors"
+    },
+    "evidence": {
+      "kind": "reference",
+      "sourceId": "rch-vomiting"
+    },
+    "review": {
+      "verdict": "passed",
+      "contentHash": "61a70c310f3625292ea793fad03acad578229b60a7a2e2f0ef937852b3bb0047"
+    }
+  }
+}

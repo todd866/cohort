@@ -1,0 +1,23 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 280" role="img" aria-labelledby="t d">
+  <title id="t">Adrenal cortex zones and medulla</title>
+  <desc id="d">Layered adrenal gland: zona glomerulosa (aldosterone), fasciculata (cortisol), reticularis (androgens), medulla (catecholamines).</desc>
+  <rect width="640" height="280" fill="#fafafa"/>
+  <text x="320" y="28" text-anchor="middle" font-family="system-ui,sans-serif" font-size="16" fill="#222">Adrenal gland - cortex zones + medulla</text>
+  <!-- gland outline -->
+  <ellipse cx="220" cy="155" rx="110" ry="95" fill="none" stroke="#333" stroke-width="2"/>
+  <!-- zones as nested bands -->
+  <path d="M140,100 Q220,70 300,100 Q310,155 300,210 Q220,240 140,210 Q130,155 140,100 Z" fill="#f5d0a9"/>
+  <path d="M155,115 Q220,90 285,115 Q292,155 285,195 Q220,220 155,195 Q148,155 155,115 Z" fill="#e8a87c"/>
+  <path d="M175,130 Q220,115 265,130 Q270,155 265,180 Q220,195 175,180 Q170,155 175,130 Z" fill="#c38d5f"/>
+  <ellipse cx="220" cy="155" rx="28" ry="28" fill="#8b3a3a"/>
+  <!-- labels -->
+  <line x1="300" y1="95" x2="380" y2="70" stroke="#555"/>
+  <text x="385" y="74" font-family="system-ui,sans-serif" font-size="13" fill="#333">Zona glomerulosa -> aldosterone (mineralocorticoid)</text>
+  <line x1="295" y1="140" x2="380" y2="130" stroke="#555"/>
+  <text x="385" y="134" font-family="system-ui,sans-serif" font-size="13" fill="#333">Zona fasciculata -> cortisol (glucocorticoid)</text>
+  <line x1="290" y1="185" x2="380" y2="190" stroke="#555"/>
+  <text x="385" y="194" font-family="system-ui,sans-serif" font-size="13" fill="#333">Zona reticularis -> androgens</text>
+  <line x1="248" y1="155" x2="380" y2="230" stroke="#555"/>
+  <text x="385" y="234" font-family="system-ui,sans-serif" font-size="13" fill="#333">Medulla (chromaffin) -> epinephrine / NE</text>
+  <text x="220" y="270" text-anchor="middle" font-family="system-ui,sans-serif" font-size="11" fill="#666">Mnemonic cue: GFR - glomerulosa, fasciculata, reticularis (outside -> in)</text>
+</svg>

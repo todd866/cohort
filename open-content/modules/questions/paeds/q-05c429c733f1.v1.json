@@ -1,0 +1,78 @@
+{
+  "id": "bank:cohort:paeds:q-05c429c733f1:v1",
+  "rotation": "cohort-open",
+  "moduleNodes": [
+    "cohort/paeds"
+  ],
+  "topics": [
+    "Hydrocele",
+    "Inguinoscrotal swelling",
+    "Paediatric surgery"
+  ],
+  "questionType": "diagnosis",
+  "difficulty": "easy",
+  "stem": "A 4-month-old boy has a painless scrotal swelling noticed during bathing. It is soft, fluctuant and brightly transilluminates; the examiner can feel above it. He is feeding normally and has no vomiting or groin tenderness.\n\nWhat is the most likely diagnosis?",
+  "options": [
+    {
+      "label": "A",
+      "text": "Infantile hydrocele",
+      "isCorrect": true,
+      "explanation": "Fluid around the testis produces this painless, transilluminating swelling."
+    },
+    {
+      "label": "B",
+      "text": "Scrotal haematoma",
+      "isCorrect": false,
+      "explanation": "Bleeding usually follows trauma and causes bruising or tenderness."
+    },
+    {
+      "label": "C",
+      "text": "Testicular torsion",
+      "isCorrect": false,
+      "explanation": "Torsion typically causes acute pain and needs immediate surgical assessment."
+    },
+    {
+      "label": "D",
+      "text": "Inguinal hernia",
+      "isCorrect": false,
+      "explanation": "A hernia extends towards the groin; the upper edge may be impalpable."
+    },
+    {
+      "label": "E",
+      "text": "Testicular tumour",
+      "isCorrect": false,
+      "explanation": "A solid testicular mass does not typically transilluminate brightly."
+    },
+    {
+      "label": "F",
+      "text": "Epididymal infection",
+      "isCorrect": false,
+      "explanation": "Inflammatory swelling is generally tender rather than a painless fluid collection."
+    },
+    {
+      "label": "G",
+      "text": "Scrotal varicocele",
+      "isCorrect": false,
+      "explanation": "Dilated veins feel irregular, rather than like a smooth fluid collection."
+    }
+  ],
+  "context": "A hydrocele is fluid around the testis; its examination differs from a solid mass or a groin hernia. Transillumination supports the diagnosis in a comfortable infant.\n\nAcute pain, tenderness or vomiting changes the assessment: urgently exclude torsion or an irreducible hernia.",
+  "publicModule": {
+    "schemaVersion": 1,
+    "origin": "mirrored",
+    "discipline": "paeds",
+    "mirroredFrom": "md3:05c429c733f10594",
+    "itemText": {
+      "licence": "CC-BY-4.0",
+      "attribution": "MD3 contributors"
+    },
+    "evidence": {
+      "kind": "reference",
+      "sourceId": "rch-acute-scrotal-pain-or-swelling"
+    },
+    "review": {
+      "verdict": "passed",
+      "contentHash": "6f4e9920752ea334f9dd3686bada6ea9c24a8362ff2ff7703602df0574c5c582"
+    }
+  }
+}

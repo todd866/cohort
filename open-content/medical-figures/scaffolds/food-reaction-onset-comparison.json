@@ -1,0 +1,74 @@
+{
+  "schemaVersion": 1,
+  "figureId": "food-reaction-onset-comparison",
+  "kind": "conceptual",
+  "sourceFacts": [
+    {
+      "fact": "Acute FPIES causes delayed repeated vomiting, on average two to four hours after trigger food, sometimes with pallor or lethargy.",
+      "sources": [
+        {
+          "title": "RCH Clinical Practice Guidelines: Non-IgE mediated food allergy",
+          "url": "https://www.rch.org.au/clinicalguide/guideline_index/Non-IgE_mediated_food_allergy/"
+        }
+      ]
+    },
+    {
+      "fact": "IgE-mediated reactions usually develop within 60 minutes and may cause urticaria, angioedema or airway compromise.",
+      "sources": [
+        {
+          "title": "RCH Clinical Practice Guidelines: Non-IgE mediated food allergy",
+          "url": "https://www.rch.org.au/clinicalguide/guideline_index/Non-IgE_mediated_food_allergy/"
+        },
+        {
+          "title": "RCH Clinical Practice Guidelines: IgE-mediated food allergy",
+          "url": "https://www.rch.org.au/clinicalguide/guideline_index/Food_allergy_-_IgE_mediated_food_allergy/"
+        }
+      ]
+    }
+  ],
+  "nodes": [
+    {
+      "id": "food",
+      "label": "Trigger food at hour zero"
+    },
+    {
+      "id": "ige",
+      "label": "IgE usually within one hour"
+    },
+    {
+      "id": "fpies",
+      "label": "FPIES typically two to four hours"
+    }
+  ],
+  "edges": [
+    {
+      "from": "food",
+      "to": "ige",
+      "meaning": "Time from ingestion to typical onset"
+    },
+    {
+      "from": "food",
+      "to": "fpies",
+      "meaning": "Time from ingestion to typical onset"
+    }
+  ],
+  "forbiddenAnatomy": [
+    "Patient photos, organ geometry, probability densities, diagnostic or treatment claims"
+  ],
+  "validation": {
+    "status": "verified",
+    "checks": [
+      "Brackets indicate usual symptom onset ranges, not how long symptoms last.",
+      "Equal time spacing, no interpolated clinical outcomes.",
+      "Qualifiers retain variability."
+    ],
+    "pixelReviewStatus": "verified",
+    "reviewers": [
+      "Codex primary agent",
+      "independent refuter agent"
+    ],
+    "clinicalReviewStatus": "pending",
+    "notes": "Independent review accepted labelled onset brackets; typical windows do not indicate symptom duration or probability.",
+    "reviewedFigureSha256": "7cdd4d6d16d32642360536ff6e443f6f146cc44bd829727dc35fcce7d072a9a4"
+  }
+}

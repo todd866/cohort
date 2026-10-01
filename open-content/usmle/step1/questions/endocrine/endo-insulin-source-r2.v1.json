@@ -1,0 +1,74 @@
+{
+  "id": "bank:usmle-step1:endo-insulin-source-r2:v1",
+  "rotation": "usmle-step1-open",
+  "ladderId": "insulin-source",
+  "topics": [
+    "insulin",
+    "blood glucose",
+    "pancreatic beta cells",
+    "ladder:insulin-source"
+  ],
+  "moduleNodes": [
+    "usmle/step1",
+    "usmle/step1/endocrine"
+  ],
+  "questionType": "mechanism",
+  "difficulty": "medium",
+  "stem": "After a carbohydrate-rich meal, blood sugar rises above the normal range. Which of the following islet responses most directly lowers that concentration?",
+  "options": [
+    {
+      "label": "A",
+      "text": "Alpha-cell glucagon release mobilizing hepatic glycogen",
+      "isCorrect": false,
+      "misconception": "The fasting (glucose-raising) response is being applied to the fed state.",
+      "explanation": "Glucagon raises blood glucose; after a meal the needed response is insulin release, not glucagon."
+    },
+    {
+      "label": "B",
+      "text": "Delta-cell somatostatin release blocking all islet hormones",
+      "isCorrect": false,
+      "misconception": "A non-selective inhibitory peptide is being treated as the primary fed-state actuator.",
+      "explanation": "Somatostatin can inhibit insulin and glucagon, but the direct glucose-lowering response to hyperglycemia is beta-cell insulin secretion."
+    },
+    {
+      "label": "C",
+      "text": "Beta-cell insulin release promoting cellular glucose uptake",
+      "isCorrect": true,
+      "misconception": "None; elevated glucose stimulates beta cells to release insulin, which drives glucose into target cells.",
+      "explanation": "Elevated blood glucose stimulates beta-cell insulin release; insulin facilitates glucose uptake into body cells and thereby lowers blood glucose."
+    },
+    {
+      "label": "D",
+      "text": "PP-cell polypeptide release reducing further food intake",
+      "isCorrect": false,
+      "misconception": "An appetite signal is being substituted for the acute glycemic response.",
+      "explanation": "Pancreatic polypeptide may affect appetite; it does not lower a postprandial glucose rise the way insulin does."
+    },
+    {
+      "label": "E",
+      "text": "Acinar-cell enzyme release accelerating intestinal digestion",
+      "isCorrect": false,
+      "misconception": "Exocrine digestion is being confused with endocrine glucose disposal.",
+      "explanation": "Acinar enzymes aid digestion but do not lower blood glucose; that is the role of insulin from beta cells."
+    }
+  ],
+  "context": "Learning objective: apply the fed-state islet response. Rising blood glucose stimulates beta-cell insulin release; insulin promotes cellular glucose uptake and storage, lowering concentration. Glucagon is the opposing (fasting) response.",
+  "cite": "openstax-anatomy-physiology#endo-insulin-action",
+  "publicUsmle": {
+    "schemaVersion": 1,
+    "origin": "generated",
+    "itemText": {
+      "licence": "CC-BY-4.0",
+      "attribution": "MD3 contributors"
+    },
+    "evidence": {
+      "kind": "passage",
+      "sourceId": "openstax-anatomy-physiology",
+      "passageId": "endo-insulin-action",
+      "licence": {
+        "cls": "foss",
+        "id": "cc-by-4.0"
+      }
+    }
+  }
+}

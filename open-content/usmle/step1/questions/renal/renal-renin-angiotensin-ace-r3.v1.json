@@ -1,0 +1,73 @@
+{
+  "id": "bank:usmle-step1:renal-renin-angiotensin-ace-r3:v1",
+  "rotation": "usmle-step1-open",
+  "ladderId": "renin-angiotensin-ace",
+  "difficulty": "hard",
+  "topics": [
+    "ACE inhibitors",
+    "angiotensin II",
+    "ladder:renin-angiotensin-ace"
+  ],
+  "moduleNodes": [
+    "usmle/step1",
+    "usmle/step1/renal"
+  ],
+  "questionType": "mechanism",
+  "stem": "A 58-year-old man with longstanding hypertension starts a new oral drug that inhibits angiotensin-converting enzyme. Two weeks later, laboratory studies show a rise in plasma angiotensin I with a concurrent fall in angiotensin II, and his blood pressure improves.\n\nWhich step did the drug most directly interrupt?",
+  "options": [
+    {
+      "label": "A",
+      "text": "Pulmonary ACE changing angiotensin I into II",
+      "isCorrect": true,
+      "misconception": "None; ACE in the lungs converts inactive angiotensin I to active II.",
+      "explanation": "ACE from the lungs converts angiotensin I to biologically active angiotensin II; blocking ACE stops that step."
+    },
+    {
+      "label": "B",
+      "text": "Renin making angiotensin I from angiotensinogen",
+      "isCorrect": false,
+      "misconception": "The upstream renin step is being confused with ACE blockade.",
+      "explanation": "Renin still forms angiotensin I; ACE inhibition blocks the subsequent I→II conversion."
+    },
+    {
+      "label": "C",
+      "text": "Adrenal making aldosterone after angiotensin II",
+      "isCorrect": false,
+      "misconception": "A downstream steroid step is being treated as the ACE target.",
+      "explanation": "Aldosterone synthesis is downstream of angiotensin II, not the ACE cleavage itself."
+    },
+    {
+      "label": "D",
+      "text": "Liver secreting more angiotensinogen into plasma",
+      "isCorrect": false,
+      "misconception": "Precursor production is being confused with ACE activity.",
+      "explanation": "Angiotensinogen supply is not the ACE-catalyzed I→II conversion interrupted here."
+    },
+    {
+      "label": "E",
+      "text": "Pituitary releasing ADH independent of angiotensin",
+      "isCorrect": false,
+      "misconception": "An unrelated osmoregulatory peptide is being substituted.",
+      "explanation": "ADH release is not the ACE step that activates angiotensin II."
+    }
+  ],
+  "context": "Learning objective: infer that ACE blockade interrupts pulmonary conversion of angiotensin I to II.",
+  "cite": "openstax-anatomy-physiology#renal-renin-angiotensin-ace",
+  "publicUsmle": {
+    "schemaVersion": 1,
+    "origin": "generated",
+    "itemText": {
+      "licence": "CC-BY-4.0",
+      "attribution": "MD3 contributors"
+    },
+    "evidence": {
+      "kind": "passage",
+      "sourceId": "openstax-anatomy-physiology",
+      "passageId": "renal-renin-angiotensin-ace",
+      "licence": {
+        "cls": "foss",
+        "id": "cc-by-4.0"
+      }
+    }
+  }
+}

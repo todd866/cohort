@@ -1,0 +1,66 @@
+{
+  "id": "bank:cohort:resp:q-cdde8ae9e5af:v1",
+  "rotation": "cohort-open",
+  "moduleNodes": [
+    "cohort/resp"
+  ],
+  "topics": [
+    "Respiratory",
+    "Pneumonia",
+    "Children"
+  ],
+  "questionType": "management",
+  "difficulty": "easy",
+  "stem": "A 6-year-old who is otherwise well has fever to 39 degrees, cough, and right-sided pleuritic chest pain. Examination shows reduced breath sounds and dullness at the right base, and a chest X-ray confirms right lower lobe consolidation without effusion.\n\nWhat is the most appropriate empirical antibiotic?",
+  "options": [
+    {
+      "label": "A",
+      "text": "Oral azithromycin as the first-line choice",
+      "isCorrect": false,
+      "explanation": "Macrolides are added when Mycoplasma is suspected or as a penicillin-allergy alternative, not first-line for typical lobar pneumonia."
+    },
+    {
+      "label": "B",
+      "text": "Oral co-trimoxazole as the empirical agent",
+      "isCorrect": false,
+      "explanation": "Co-trimoxazole is not first-line for typical childhood pneumonia and is used mainly for Pneumocystis in immunocompromised hosts."
+    },
+    {
+      "label": "C",
+      "text": "Oral flucloxacillin to target Staphylococcus",
+      "isCorrect": false,
+      "explanation": "Flucloxacillin targets S. aureus, which causes aggressive cavitating pneumonia, uncommon in a well child with simple consolidation."
+    },
+    {
+      "label": "D",
+      "text": "High-dose oral amoxicillin as the empirical agent",
+      "isCorrect": true,
+      "explanation": "Streptococcus pneumoniae is the dominant cause of lobar pneumonia in school-aged children, and high-dose oral amoxicillin is first-line for uncomplicated community-acquired pneumonia."
+    },
+    {
+      "label": "E",
+      "text": "Intravenous ceftriaxone for all consolidation",
+      "isCorrect": false,
+      "explanation": "Intravenous cephalosporins are reserved for severe pneumonia, empyema, or failed oral therapy; a well child is treated orally."
+    }
+  ],
+  "context": "First-line therapy for uncomplicated paediatric community-acquired pneumonia is amoxicillin, covering Streptococcus pneumoniae. If fever persists beyond 48 hours of treatment, suspect empyema and reassess with ultrasound.",
+  "publicModule": {
+    "schemaVersion": 1,
+    "origin": "mirrored",
+    "discipline": "resp",
+    "mirroredFrom": "md3:cdde8ae9e5af32d6",
+    "itemText": {
+      "licence": "CC-BY-4.0",
+      "attribution": "MD3 contributors"
+    },
+    "evidence": {
+      "kind": "reference",
+      "sourceId": "rch-antimicrobial-guidelines"
+    },
+    "review": {
+      "verdict": "passed",
+      "contentHash": "9a3bb47dd9e51fb6f69e906265504aadd07444b0d62e7cc85562ffa592796c58"
+    }
+  }
+}

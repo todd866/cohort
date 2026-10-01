@@ -1,0 +1,64 @@
+{
+  "schemaVersion": 1,
+  "figureId": "chromosome-22q11-deletion",
+  "kind": "conceptual",
+  "created": "2026-09-10",
+  "timing": "retrospective specification of previously generated candidate",
+  "sourceFacts": [
+    {
+      "fact": "22q11.2 deletion syndrome involves loss of a small segment on the long arm of chromosome22.",
+      "sourceUrls": [
+        "https://medlineplus.gov/genetics/condition/22q112-deletion-syndrome/"
+      ]
+    },
+    {
+      "fact": "A deletion in one chromosome22 copy is sufficient to cause the condition.",
+      "sourceUrls": [
+        "https://medlineplus.gov/genetics/condition/22q112-deletion-syndrome/"
+      ]
+    }
+  ],
+  "clinicalSources": [
+    {
+      "title": "MedlinePlus Genetics: 22q11.2 deletion syndrome",
+      "url": "https://medlineplus.gov/genetics/condition/22q112-deletion-syndrome/"
+    }
+  ],
+  "nodes": [
+    "intact copy symbolic rod",
+    "22q11.2 region marker",
+    "copy with segment absent"
+  ],
+  "edges": [
+    [
+      "22q11.2 region marker",
+      "copy with segment absent",
+      "missing interval indicated"
+    ]
+  ],
+  "invariants": [
+    "Marker on proximal long q side; not short p side.",
+    "Remaining rod continuous, one copy affected; region drawing is not cytogenetic banding or scale."
+  ],
+  "expectedLabels": [
+    "22q11.2 deletion",
+    "Intact copy",
+    "22q11.2 region",
+    "Deletion copy",
+    "Segment absent",
+    "q arm",
+    "p arm",
+    "A deletion in one of the two copies of chromosome 22",
+    "Region diagram, not a diagnostic karyotype"
+  ],
+  "layoutSpecification": "Two simple VERTICAL SINGLE-ROD chromosome22 ideograms, with tiny short p arm ABOVE a high centromere and long q arm BELOW. Not X-shaped replicated chromosomes. Title '22q11.2 deletion'. Left heading 'Intact copy': narrow teal rod, tiny centromere notch near top; immediately below centromere a SMALL ochre band highlighted, callout '22q11.2 region'. Right heading 'Deletion copy': same rod but shorter by exactly that small band; the remaining ends JOIN CONTINUOUSLY, no physical break or floating detached chromosome. A dotted side bracket shows omitted band extent with callout 'Segment absent'. Label 'q arm' beside lower long arm and 'p arm' beside upper short arm of LEFT rod. Bottom 'A deletion in one of the two copies of chromosome 22'. Footnote 'Region diagram, not a diagnostic karyotype'. No genes, no precise band pattern, no missing whole chromosome, no deletion of p arm.",
+  "forbiddenAnatomy": [
+    "No claimed anatomical reconstruction, diagnostic image, histology or literal neuroanatomical pathway",
+    "No organ cutaways or invented internal spatial relationships"
+  ],
+  "validation": {
+    "sourceFacts": "Checked against listed primary clinical sources during original topic review",
+    "pixelChecks": "Explicit structure check: intact ideogram highlights a proximal q-arm region below centromere; comparison lacks highlighted segment and labels one affected copy. This is a conceptual region map, not cytogenetic banding or anatomical verification; rod lengths are not a quantitative scale.",
+    "status": "self-reviewed; independent review pending"
+  }
+}

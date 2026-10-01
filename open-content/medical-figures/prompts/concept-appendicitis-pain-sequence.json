@@ -1,0 +1,29 @@
+{
+  "id": "concept-appendicitis-pain-sequence",
+  "title": "Appendicitis: a classic pain sequence",
+  "prompt": "Create an original polished 1536x1024 landscape conceptual medical teaching diagram for after-answer study. Warm hand-painted gouache and watercolour on ivory paper; a gentle storybook warmth with precise dark navy type. Matte teal, ochre, coral and blue accents. Simple neutral tokens, paper tiles, arrows and visibly abstract compartments only. Make the visual relationships legible at small size. No body parts, organs, cells, tissues, lumens, tubules, membranes, vessels, anatomical cutaways, clinical photos, diagnostic scans, babies, realistic flesh or decorative scenery. Do not turn abstract boxes or routes into organs or anatomy. Do not invent extra arrows or medical claims. Edge meanings below are metadata, not visible text: draw the arrows but do not print their meaning strings. Footer exactly: Conceptual schematic • Not anatomy. Title exactly: Appendicitis: a classic pain sequence. Three broad cards across a single time arrow. Card1 shows a diffuse circular coral watercolour glow around a dot, card2 a clock, card3 a sharp coral star within a small circle. These are neutral precision metaphors, not a body or anatomical location map. Labels carry location information. Below1 write Often poorly localised; below3 write More localised. Bottom note: A classic pattern; presentations vary in children. No appendix, organ, abdomen silhouette, dermatome or skin. Exactly two sequence arrows. Exact node labels: [{\"id\": \"1\", \"label\": \"Pain near the umbilicus\"}, {\"id\": \"2\", \"label\": \"Over the next hours\"}, {\"id\": \"3\", \"label\": \"Pain in the right lower abdomen\"}]. Exact directed connections: [{\"from\": \"1\", \"to\": \"2\", \"meaning\": \"time progression\"}, {\"from\": \"2\", \"to\": \"3\", \"meaning\": \"later localisation\"}]. Required checks: Three nodes and two time arrows; Umbilical precedes right-lower location; Variable presentations qualification clear; No anatomical map or claim that appendix physically moves.",
+  "clinicalSources": [
+    {
+      "title": "NIDDK — Appendicitis symptoms and causes",
+      "url": "https://www.niddk.nih.gov/health-information/digestive-diseases/appendicitis/symptoms-causes"
+    },
+    {
+      "title": "NIH News in Health — Appendix pain",
+      "url": "https://newsinhealth.nih.gov/2024/04/appendix-pain"
+    }
+  ],
+  "caption": "An abstract timeline contrasts early central abdominal pain with later right lower abdominal localisation in a classic appendicitis presentation.",
+  "question": "What pain sequence is classically associated with appendicitis?",
+  "answer": "Pain beginning near the umbilicus and later localising to the right lower abdomen, though children may present differently.",
+  "structureSpecification": "scaffolds/concept-appendicitis-pain-sequence.json",
+  "generationInputs": {
+    "referenceImages": [],
+    "style": "written-only"
+  },
+  "qa": {
+    "status": "pending-independent-qa",
+    "method": "agent-visual-and-source-review",
+    "notes": "Pixel check: three cards/two arrows show central pain then hours then right-lower pain. Diffuse and focused symbols are abstract and labels carry localisation. Variable-child-presentation qualifier visible. No body map or moving appendix. Independent and clinical review pending.",
+    "clinicalReviewStatus": "pending"
+  }
+}

@@ -1,0 +1,74 @@
+{
+  "id": "bank:usmle-step1:renal-adh-source-r1:v1",
+  "rotation": "usmle-step1-open",
+  "ladderId": "adh-water-balance",
+  "topics": [
+    "ADH",
+    "osmolality",
+    "posterior pituitary",
+    "ladder:adh-water-balance"
+  ],
+  "moduleNodes": [
+    "usmle/step1",
+    "usmle/step1/renal"
+  ],
+  "questionType": "mechanism",
+  "difficulty": "easy",
+  "stem": "Which of the following hormones is released from the posterior pituitary when plasma osmolality rises?",
+  "options": [
+    {
+      "label": "A",
+      "text": "Aldosterone from the adrenal cortex",
+      "isCorrect": false,
+      "misconception": "A sodium-retaining cortical steroid is being substituted for the water-retaining peptide.",
+      "explanation": "Aldosterone acts on principal cells for sodium retention; the osmolality-triggered posterior-pituitary release is ADH."
+    },
+    {
+      "label": "B",
+      "text": "Atrial natriuretic peptide from the atria",
+      "isCorrect": false,
+      "misconception": "A volume-overload natriuretic peptide is being treated as the high-osmolality response.",
+      "explanation": "ANP responds to atrial stretch; rising osmolality triggers hypothalamic osmoreceptors to release ADH from the posterior pituitary."
+    },
+    {
+      "label": "C",
+      "text": "Vasopressin from the posterior pituitary",
+      "isCorrect": true,
+      "misconception": "None; vasopressin (ADH) is the posterior-pituitary water-conserving hormone.",
+      "explanation": "Hypothalamic osmoreceptors detect rising plasma osmolality and signal release of vasopressin (ADH) from the posterior pituitary to conserve water."
+    },
+    {
+      "label": "D",
+      "text": "Oxytocin from the posterior pituitary",
+      "isCorrect": false,
+      "misconception": "The neighboring posterior-pituitary peptide is being confused with ADH.",
+      "explanation": "Oxytocin drives uterine contraction and milk ejection; the osmolality-response peptide is ADH."
+    },
+    {
+      "label": "E",
+      "text": "Renin from the juxtaglomerular apparatus",
+      "isCorrect": false,
+      "misconception": "A renal pressure sensor product is being cast as the hypothalamic osmolality hormone.",
+      "explanation": "Renin responds to reduced renal perfusion; rising osmolality triggers ADH release from the posterior pituitary."
+    }
+  ],
+  "context": "Learning objective: name the osmolality-triggered posterior-pituitary hormone. Rising plasma osmolality → hypothalamic osmoreceptors → ADH release.",
+  "cite": "openstax-anatomy-physiology#renal-osmoreceptor-adh",
+  "publicUsmle": {
+    "schemaVersion": 1,
+    "origin": "generated",
+    "itemText": {
+      "licence": "CC-BY-4.0",
+      "attribution": "MD3 contributors"
+    },
+    "evidence": {
+      "kind": "passage",
+      "sourceId": "openstax-anatomy-physiology",
+      "passageId": "renal-osmoreceptor-adh",
+      "licence": {
+        "cls": "foss",
+        "id": "cc-by-4.0"
+      }
+    }
+  }
+}

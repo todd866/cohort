@@ -1,0 +1,70 @@
+{
+  "id": "bank:usmle-step1:pharm-sildenafil-uses:v1",
+  "rotation": "usmle-step1-open",
+  "topics": [
+    "sildenafil"
+  ],
+  "moduleNodes": [
+    "usmle/step1",
+    "usmle/step1/pharmacology"
+  ],
+  "questionType": "mechanism",
+  "difficulty": "easy",
+  "stem": "Sildenafil is used to treat which condition in men?",
+  "options": [
+    {
+      "label": "A",
+      "text": "Erectile dysfunction",
+      "isCorrect": true,
+      "misconception": "None — erectile dysfunction is sildenafil's listed use in men.",
+      "explanation": "Sildenafil treats erectile dysfunction in men, meaning the inability to get or keep an erection."
+    },
+    {
+      "label": "B",
+      "text": "Ischemic priapism",
+      "isCorrect": false,
+      "misconception": "Confuses a condition sildenafil can cause with one it treats.",
+      "explanation": "Ischemic priapism is a painful, prolonged erection, a recognized adverse effect of sildenafil, treated with aspiration and phenylephrine."
+    },
+    {
+      "label": "C",
+      "text": "Male-pattern hair loss",
+      "isCorrect": false,
+      "misconception": "Links every male sexual-health drug to androgen-driven hair loss.",
+      "explanation": "Male-pattern hair loss is androgen-driven and treated with finasteride or minoxidil; sildenafil does not act on hair follicles."
+    },
+    {
+      "label": "D",
+      "text": "Testosterone deficiency",
+      "isCorrect": false,
+      "misconception": "Assumes an erection drug treats the underlying androgen deficiency.",
+      "explanation": "Testosterone deficiency is treated with testosterone replacement; sildenafil improves erections but does not raise testosterone."
+    },
+    {
+      "label": "E",
+      "text": "Pubertal gynecomastia",
+      "isCorrect": false,
+      "misconception": "Groups every male hormonal complaint under erectile treatment.",
+      "explanation": "Pubertal gynecomastia usually regresses on its own and, if persistent, may need tamoxifen or surgery; sildenafil does not affect breast tissue."
+    }
+  ],
+  "context": "Learning objective: Sildenafil treats erectile dysfunction in men, the inability to get or keep an erection.",
+  "cite": "medlineplus-sildenafil#sildenafil-uses",
+  "publicUsmle": {
+    "schemaVersion": 1,
+    "origin": "generated",
+    "itemText": {
+      "licence": "CC-BY-4.0",
+      "attribution": "MD3 contributors"
+    },
+    "evidence": {
+      "kind": "passage",
+      "sourceId": "medlineplus-sildenafil",
+      "passageId": "sildenafil-uses",
+      "licence": {
+        "cls": "foss",
+        "id": "us-gov"
+      }
+    }
+  }
+}

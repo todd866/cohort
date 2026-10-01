@@ -1,0 +1,29 @@
+{
+  "id": "concept-meckel-acid-bleeding-sequence",
+  "title": "Meckel bleeding: an acid-injury sequence",
+  "prompt": "Create an original polished 1536x1024 landscape conceptual medical teaching diagram for after-answer study. Warm hand-painted gouache and watercolour on ivory paper; a gentle storybook warmth with precise dark navy type. Matte teal, ochre, coral and blue accents. Simple neutral tokens, paper tiles, arrows and visibly abstract compartments only. Make the visual relationships legible at small size. No body parts, organs, cells, tissues, lumens, tubules, membranes, vessels, anatomical cutaways, clinical photos, diagnostic scans, babies, realistic flesh or decorative scenery. Do not turn abstract boxes or routes into organs or anatomy. Do not invent extra arrows or medical claims. Edge meanings below are metadata, not visible text: draw the arrows but do not print their meaning strings. Footer exactly: Conceptual schematic • Not anatomy. Title exactly: Meckel bleeding: an acid-injury sequence. Four concept cards form a clean left-to-right sequence of three arrows. First label accompanied only by a neutral location pin marked Ectopic, no tissue sample. Second plain H+ paper coins. Third a cracked ivory tile as a damage metaphor, explicitly no bowel section or ulcer image. Fourth a red drop token next to the word Bleeding. Small note: A possible mechanism when gastric tissue is present. Title contains Meckel, but do not draw a diverticulum, intestine, pouch or organs. Exact node labels: [{\"id\": \"1\", \"label\": \"Ectopic gastric tissue\"}, {\"id\": \"2\", \"label\": \"Acid secretion\"}, {\"id\": \"3\", \"label\": \"Adjacent intestinal ulceration\"}, {\"id\": \"4\", \"label\": \"Often painless bleeding\"}]. Exact directed connections: [{\"from\": \"1\", \"to\": \"2\", \"meaning\": \"secretion\"}, {\"from\": \"2\", \"to\": \"3\", \"meaning\": \"injury\"}, {\"from\": \"3\", \"to\": \"4\", \"meaning\": \"bleeding\"}]. Required checks: Ectopic gastric tissue before acid before ulceration before bleeding; Four nodes and three arrows; Possible and often qualifications visible; No intestinal organ or ulcer anatomy.",
+  "clinicalSources": [
+    {
+      "title": "GOSH — Meckel diverticulum",
+      "url": "https://www.gosh.nhs.uk/conditions-and-treatments/conditions-we-treat/meckels-diverticulum/"
+    },
+    {
+      "title": "CHOP — Meckel diverticulum",
+      "url": "https://www.chop.edu/conditions-diseases/meckels-diverticulum"
+    }
+  ],
+  "caption": "An abstract causal chain explains one mechanism of bleeding from a Meckel diverticulum containing gastric tissue.",
+  "question": "How can gastric tissue in a Meckel diverticulum cause bleeding?",
+  "answer": "Acid can ulcerate adjacent intestinal tissue, producing bleeding that is often painless.",
+  "structureSpecification": "scaffolds/concept-meckel-acid-bleeding-sequence.json",
+  "generationInputs": {
+    "referenceImages": [],
+    "style": "written-only"
+  },
+  "qa": {
+    "status": "pending-independent-qa",
+    "method": "agent-visual-and-source-review",
+    "notes": "Pixel check: four nodes and three forward arrows correctly link ectopic gastric tissue, acid, adjacent intestinal ulceration and often painless bleeding. Possible mechanism qualification clear. Cracked paper tile and drop remain metaphors, no bowel or lesion anatomy. Independent and clinical review pending.",
+    "clinicalReviewStatus": "pending"
+  }
+}

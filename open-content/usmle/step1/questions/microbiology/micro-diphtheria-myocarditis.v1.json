@@ -1,0 +1,71 @@
+{
+  "id": "bank:usmle-step1:micro-diphtheria-myocarditis:v1",
+  "rotation": "usmle-step1-open",
+  "topics": [
+    "diphtheria",
+    "myocarditis"
+  ],
+  "moduleNodes": [
+    "usmle/step1",
+    "usmle/step1/microbiology"
+  ],
+  "questionType": "mechanism",
+  "difficulty": "easy",
+  "stem": "Besides myocarditis, which of the following sets of complications is associated with diphtheria?",
+  "options": [
+    {
+      "label": "A",
+      "text": "Polyneuropathies, nephritis, and thrombocytopenia",
+      "isCorrect": true,
+      "misconception": "None — polyneuropathy, nephritis, and thrombocytopenia accompany myocarditis in diphtheria.",
+      "explanation": "CDC lists myocarditis, polyneuropathies, nephritis, and thrombocytopenia among the complications of diphtheria."
+    },
+    {
+      "label": "B",
+      "text": "Orchitis, pancreatitis, and aseptic meningitis",
+      "isCorrect": false,
+      "misconception": "Confuses diphtheria with mumps, whose complications include orchitis and pancreatitis.",
+      "explanation": "Orchitis, pancreatitis, and aseptic meningitis are classic complications of mumps, a paramyxovirus infection, not diphtheria."
+    },
+    {
+      "label": "C",
+      "text": "Cataracts, deafness, and patent ductus arteriosus",
+      "isCorrect": false,
+      "misconception": "Confuses diphtheria with congenital rubella syndrome.",
+      "explanation": "Cataracts, deafness, and patent ductus arteriosus make up congenital rubella syndrome after maternal rubella infection in pregnancy."
+    },
+    {
+      "label": "D",
+      "text": "Trismus, opisthotonos, and generalized muscle spasms",
+      "isCorrect": false,
+      "misconception": "Confuses diphtheria with tetanus, another toxin-mediated vaccine-preventable disease.",
+      "explanation": "Trismus, opisthotonos, and muscle spasms are tetanus features: tetanospasmin blocks inhibitory neurotransmitter release in the spinal cord."
+    },
+    {
+      "label": "E",
+      "text": "Splenic rupture, hemolytic anemia, and hepatitis",
+      "isCorrect": false,
+      "misconception": "Confuses diphtheria with infectious mononucleosis, which also causes pharyngitis.",
+      "explanation": "Splenic rupture, hemolytic anemia, and hepatitis are complications of Epstein-Barr virus infectious mononucleosis, not diphtheria."
+    }
+  ],
+  "context": "Learning objective: Complications of diphtheria include myocarditis, polyneuropathies, nephritis, and thrombocytopenia.",
+  "cite": "cdc-pink-book-diphtheria#diphtheria-complications",
+  "publicUsmle": {
+    "schemaVersion": 1,
+    "origin": "generated",
+    "itemText": {
+      "licence": "CC-BY-4.0",
+      "attribution": "MD3 contributors"
+    },
+    "evidence": {
+      "kind": "passage",
+      "sourceId": "cdc-pink-book-diphtheria",
+      "passageId": "diphtheria-complications",
+      "licence": {
+        "cls": "foss",
+        "id": "us-gov"
+      }
+    }
+  }
+}

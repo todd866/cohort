@@ -1,0 +1,69 @@
+{
+  "schemaVersion": 1,
+  "figureId": "demyelination-saltatory-conduction",
+  "kind": "conceptual",
+  "created": "2026-09-10",
+  "timing": "retrospective specification of previously generated candidate",
+  "sourceFacts": [
+    {
+      "fact": "Myelin supports efficient conduction along peripheral nerve fibres.",
+      "sourceUrls": [
+        "https://www.ninds.nih.gov/health-information/disorders/guillain-barre-syndrome"
+      ]
+    },
+    {
+      "fact": "Immune-mediated damage to myelin can slow or block conduction.",
+      "sourceUrls": [
+        "https://www.ninds.nih.gov/health-information/disorders/guillain-barre-syndrome"
+      ]
+    }
+  ],
+  "clinicalSources": [
+    {
+      "title": "NINDS: Guillain-Barr\u00e9 Syndrome",
+      "url": "https://www.ninds.nih.gov/health-information/disorders/guillain-barre-syndrome"
+    }
+  ],
+  "nodes": [
+    "continuous axon symbol",
+    "intact myelin sleeves",
+    "exposed nodes",
+    "lost myelin sleeves",
+    "slower or blocked conduction"
+  ],
+  "edges": [
+    [
+      "exposed nodes",
+      "exposed nodes",
+      "rightward saltatory signal on intact row"
+    ],
+    [
+      "lost myelin sleeves",
+      "slower or blocked conduction",
+      "functional relationship"
+    ]
+  ],
+  "invariants": [
+    "Axon symbol remains continuous in both rows.",
+    "This is an insulation/conduction concept, not a microscopic tissue specimen or anatomical reconstruction."
+  ],
+  "expectedLabels": [
+    "Intact myelin",
+    "Node",
+    "Demyelination",
+    "Slower or blocked conduction",
+    "Myelin",
+    "Signal direction",
+    "Myelin and peripheral nerve conduction"
+  ],
+  "layoutSpecification": "Two horizontal parallel axons, each a single thin ochre continuous line running LEFT to RIGHT. Top 'Intact myelin': exactly four simple teal sleeve segments around axon with small exposed gaps labelled 'Node'; above axon broad navy curved arrows jump from gap to gap toward right. Bottom 'Demyelination': same continuous unbroken axon but second and third teal sleeves partially lost, broad exposed segment; above this region small faint interrupted arrows labelled 'Slower or blocked conduction'. Label one top sleeve 'Myelin'. Top long rightward arrow 'Signal direction'. Title 'Myelin and peripheral nerve conduction'. No disconnected/cut axon, no neuron brain, no electrical trace, no cell nuclei, no faux electron microscopy.",
+  "forbiddenAnatomy": [
+    "No claimed anatomical reconstruction, diagnostic image, histology or literal neuroanatomical pathway",
+    "No organ cutaways or invented internal spatial relationships"
+  ],
+  "validation": {
+    "sourceFacts": "Checked against listed primary clinical sources during original topic review",
+    "pixelChecks": "Visually inspected: axon remains continuous; top myelin sleeves and nodes support rightward node-to-node conduction; lower exposed axon has lost covering with slower/blocked conduction label. No misleading axonal severing or fabricated electrophysiology.",
+    "status": "self-reviewed; independent review pending"
+  }
+}

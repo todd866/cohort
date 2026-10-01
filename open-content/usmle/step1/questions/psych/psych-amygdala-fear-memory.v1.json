@@ -1,0 +1,71 @@
+{
+  "id": "bank:usmle-step1:psych-amygdala-fear-memory:v1",
+  "rotation": "usmle-step1-open",
+  "topics": [
+    "amygdala",
+    "fear"
+  ],
+  "moduleNodes": [
+    "usmle/step1",
+    "usmle/step1/psych"
+  ],
+  "questionType": "mechanism",
+  "difficulty": "easy",
+  "stem": "Which statement about the amygdala and memory is correct?",
+  "options": [
+    {
+      "label": "A",
+      "text": "It is involved in fear and fear memories",
+      "isCorrect": true,
+      "misconception": "None — the amygdala is involved in fear and fear memories.",
+      "explanation": "The amygdala is involved in fear and in fear memories, linking emotional arousal to what is remembered."
+    },
+    {
+      "label": "B",
+      "text": "It stores learned motor skills and habits",
+      "isCorrect": false,
+      "misconception": "Assigns procedural memory to the amygdala instead of cerebellum and basal ganglia.",
+      "explanation": "Learned motor skills and habits are procedural memories, which depend mainly on the cerebellum and basal ganglia rather than the amygdala."
+    },
+    {
+      "label": "C",
+      "text": "It holds verbal information in working memory",
+      "isCorrect": false,
+      "misconception": "Assigns working memory to the amygdala instead of prefrontal cortex.",
+      "explanation": "Holding verbal information briefly for use is working memory, supported by prefrontal cortex; the amygdala does not maintain it."
+    },
+    {
+      "label": "D",
+      "text": "It encodes spatial maps of the surroundings",
+      "isCorrect": false,
+      "misconception": "Assigns hippocampal spatial mapping to the amygdala.",
+      "explanation": "Spatial maps of the surroundings are encoded by hippocampal place cells; the amygdala is tied to fear, not navigation."
+    },
+    {
+      "label": "E",
+      "text": "It stores the meanings of words and concepts",
+      "isCorrect": false,
+      "misconception": "Assigns semantic memory storage to the amygdala instead of temporal neocortex.",
+      "explanation": "The meanings of words and concepts are semantic memories stored across the temporal neocortex, not in the amygdala."
+    }
+  ],
+  "context": "Learning objective: The amygdala is involved in fear and in fear memories.",
+  "cite": "openstax-psychology-2e#amygdala-fear-memory",
+  "publicUsmle": {
+    "schemaVersion": 1,
+    "origin": "generated",
+    "itemText": {
+      "licence": "CC-BY-4.0",
+      "attribution": "MD3 contributors"
+    },
+    "evidence": {
+      "kind": "passage",
+      "sourceId": "openstax-psychology-2e",
+      "passageId": "amygdala-fear-memory",
+      "licence": {
+        "cls": "foss",
+        "id": "cc-by-4.0"
+      }
+    }
+  }
+}

@@ -1,0 +1,29 @@
+{
+  "id": "concept-maternal-glucose-birth-transition",
+  "title": "At birth, glucose supply changes first",
+  "prompt": "Create an original polished 1536x1024 landscape conceptual medical teaching diagram for after-answer study. Warm hand-painted gouache and watercolour on ivory paper; a gentle storybook warmth with precise dark navy type. Matte teal, ochre, coral and blue accents. Simple neutral tokens, paper tiles, arrows and visibly abstract compartments only. Make the visual relationships legible at small size. No body parts, organs, cells, tissues, lumens, tubules, membranes, vessels, anatomical cutaways, clinical photos, diagnostic scans, babies, realistic flesh or decorative scenery. Do not turn abstract boxes or routes into organs or anatomy. Do not invent extra arrows or medical claims. Edge meanings below are metadata, not visible text: draw the arrows but do not print their meaning strings. Footer exactly: Conceptual schematic • Not anatomy. Title exactly: At birth, glucose supply changes first. Split canvas vertically into BEFORE BIRTH on left and AFTER BIRTH on right with a dashed vertical timeline boundary titled Birth. Left side node1 above2 joined by one arrow. Right side node3 upper right and node4 middle right converge by two separate arrows into node5 lower right. One arrow crosses time boundary from left node2 to right node4. Exactly five labels and four arrows. Use simple glucose hexagon inventories and insulin coin tokens. Node3 shows an empty supply tag with a stop mark, no placenta, umbilical cord, parent, fetus or infant. Bottom note: Risk mechanism in infants exposed to maternal hyperglycaemia. Exact node labels: [{\"id\": \"1\", \"label\": \"High maternal glucose supply\"}, {\"id\": \"2\", \"label\": \"Fetal insulin increases\"}, {\"id\": \"3\", \"label\": \"Maternal supply stops\"}, {\"id\": \"4\", \"label\": \"Insulin remains high\"}, {\"id\": \"5\", \"label\": \"Neonatal glucose can fall\"}]. Exact directed connections: [{\"from\": \"1\", \"to\": \"2\", \"meaning\": \"fetal response\"}, {\"from\": \"2\", \"to\": \"4\", \"meaning\": \"persistence across birth\"}, {\"from\": \"3\", \"to\": \"5\", \"meaning\": \"supply withdrawal\"}, {\"from\": \"4\", \"to\": \"5\", \"meaning\": \"insulin effect\"}]. Required checks: Birth divides time, not anatomical compartments; Insulin persists from fetal stage into neonatal stage; Stopped glucose supply and persistent insulin both point to falling glucose; No maternal insulin transfer, placenta or anatomy.",
+  "clinicalSources": [
+    {
+      "title": "RCH — Neonatal hypoglycaemia evidence table",
+      "url": "https://www.rch.org.au/uploadedFiles/Main/Content/rchcpg/hospital_clinical_guideline_index/Neonatal%20Hypoglycemia%20Evidence%20Table%202023.pdf"
+    },
+    {
+      "title": "Metabolic adaptations during the neonatal period in infants of diabetic mothers — primary study",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/3532664/"
+    }
+  ],
+  "caption": "A before-and-after comparison explains neonatal hypoglycaemia risk when glucose supply stops before elevated insulin subsides.",
+  "question": "Why can an infant exposed to maternal hyperglycaemia become hypoglycaemic after birth?",
+  "answer": "Maternal glucose delivery stops at birth while increased insulin may persist, lowering neonatal glucose.",
+  "structureSpecification": "scaffolds/concept-maternal-glucose-birth-transition.json",
+  "generationInputs": {
+    "referenceImages": [],
+    "style": "written-only"
+  },
+  "qa": {
+    "status": "pending-independent-qa",
+    "method": "agent-visual-and-source-review",
+    "notes": "Pixel check: time divider clearly labels birth, five nodes and four correct arrows. Fetal insulin persists across birth, stopped maternal glucose supply and persistent insulin separately connect to falling neonatal glucose. No insulin transfer, placenta, baby or organs. Independent and clinical review pending.",
+    "clinicalReviewStatus": "pending"
+  }
+}

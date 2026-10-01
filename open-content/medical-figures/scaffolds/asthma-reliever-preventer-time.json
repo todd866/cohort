@@ -1,0 +1,101 @@
+{
+  "schemaVersion": 1,
+  "figureId": "asthma-reliever-preventer-time",
+  "kind": "conceptual",
+  "sourceFacts": [
+    {
+      "id": "fact-1",
+      "fact": "Reliever medicines provide rapid symptom relief.",
+      "sources": [
+        {
+          "title": "NHLBI — Asthma treatment and action plan",
+          "url": "https://www.nhlbi.nih.gov/health/asthma/treatment-action-plan"
+        },
+        {
+          "title": "NHLBI — Inhaled corticosteroids fact sheet",
+          "url": "https://www.nhlbi.nih.gov/resources/changing-role-inhaled-corticosteroids-asthma-management-fact-sheet"
+        }
+      ]
+    },
+    {
+      "id": "fact-2",
+      "fact": "Salbutamol is a short-acting bronchodilator that relaxes airway smooth muscle.",
+      "sources": [
+        {
+          "title": "NHLBI — Asthma treatment and action plan",
+          "url": "https://www.nhlbi.nih.gov/health/asthma/treatment-action-plan"
+        },
+        {
+          "title": "NHLBI — Inhaled corticosteroids fact sheet",
+          "url": "https://www.nhlbi.nih.gov/resources/changing-role-inhaled-corticosteroids-asthma-management-fact-sheet"
+        }
+      ]
+    },
+    {
+      "id": "fact-3",
+      "fact": "Inhaled corticosteroids control inflammation and reduce symptoms and exacerbations over time.",
+      "sources": [
+        {
+          "title": "NHLBI — Asthma treatment and action plan",
+          "url": "https://www.nhlbi.nih.gov/health/asthma/treatment-action-plan"
+        },
+        {
+          "title": "NHLBI — Inhaled corticosteroids fact sheet",
+          "url": "https://www.nhlbi.nih.gov/resources/changing-role-inhaled-corticosteroids-asthma-management-fact-sheet"
+        }
+      ]
+    }
+  ],
+  "nodes": [
+    {
+      "id": "reliever",
+      "shape": "stopwatch plus opening mechanical spring loop",
+      "label": "Salbutamol: rapid relief"
+    },
+    {
+      "id": "preventer",
+      "shape": "daily calendar marks plus steadily strengthening shield",
+      "label": "Inhaled corticosteroid: ongoing control"
+    }
+  ],
+  "edges": [
+    {
+      "from": "reliever",
+      "to": "relief",
+      "meaning": "minutes; relaxes smooth muscle"
+    },
+    {
+      "from": "preventer",
+      "to": "control",
+      "meaning": "regular use; controls inflammation over time"
+    }
+  ],
+  "labels": [
+    "RELIEVER",
+    "Salbutamol",
+    "Minutes",
+    "Relaxes smooth muscle",
+    "PREVENTER",
+    "Inhaled corticosteroid",
+    "Regular use",
+    "Controls inflammation over time",
+    "Follow the prescribed asthma plan"
+  ],
+  "forbiddenAnatomy": [
+    "Organs",
+    "Airway anatomy and cutaways",
+    "Invented tissue or patient response data"
+  ],
+  "validation": {
+    "status": "verified",
+    "method": "source-and-conceptual-structure-review",
+    "checks": [
+      "Two distinct paths: stopwatch/short path and calendar/longer path.",
+      "No lung or airway anatomy, no plotted patient response curve.",
+      "No claim inhaled corticosteroid cures asthma or supplies immediate rescue.",
+      "No dosing instructions and no assertion all regimens separate reliever from controller; schematic names the two specific medicine classes."
+    ],
+    "pixelReviewStatus": "verified",
+    "pixelReviewNotes": "Full pixel-to-specification review: the salbutamol lane connects a minutes stopwatch to a relaxed mechanical spring; the corticosteroid lane uses repeated calendar checks and a shield beside fading inflammation symbols. Clear named medicines prevent reliance on device colour. No airway, lung or tissue appears, no doses are given, and the prescribed-plan qualifier is present."
+  }
+}

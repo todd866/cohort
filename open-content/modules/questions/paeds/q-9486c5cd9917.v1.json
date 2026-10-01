@@ -1,0 +1,59 @@
+{
+  "id": "bank:cohort:paeds:q-9486c5cd9917:v1",
+  "rotation": "cohort-open",
+  "moduleNodes": [
+    "cohort/paeds"
+  ],
+  "topics": [
+    "croup",
+    "severe"
+  ],
+  "questionType": "next-step",
+  "difficulty": "medium",
+  "stem": "A child with croup has stridor at rest and marked chest wall recession.\n\nAfter oral dexamethasone, what is the next step?",
+  "options": [
+    {
+      "label": "A",
+      "text": "IV antibiotics",
+      "isCorrect": false,
+      "explanation": "Croup is viral — antibiotics have no role unless there is secondary bacterial infection."
+    },
+    {
+      "label": "B",
+      "text": "Nebulised adrenaline",
+      "isCorrect": true,
+      "explanation": "Correct — nebulised adrenaline (5 mL of 1:1000) for moderate-severe croup with stridor at rest. Onset within minutes, lasts 1-2 hours. Observe for at least 3 hours after as symptoms may rebound. Dexamethasone takes 2-4 hours for full effect."
+    },
+    {
+      "label": "C",
+      "text": "Discharge with safety netting",
+      "isCorrect": false,
+      "explanation": "Discharge is not appropriate with stridor at rest and marked recession — this is moderate-severe croup requiring further intervention."
+    },
+    {
+      "label": "D",
+      "text": "Inhaled salbutamol",
+      "isCorrect": false,
+      "explanation": "Salbutamol treats lower airway bronchospasm — croup is upper airway (subglottic) oedema. Salbutamol is ineffective."
+    }
+  ],
+  "context": "Stridor at rest with marked recession indicates severe croup.\n\nNebulised adrenaline shrinks the airway mucosa within minutes via α1 vasoconstriction, restoring patency long enough for the steroid to take effect.",
+  "publicModule": {
+    "schemaVersion": 1,
+    "origin": "mirrored",
+    "discipline": "paeds",
+    "mirroredFrom": "md3:9486c5cd99170e36",
+    "itemText": {
+      "licence": "CC-BY-4.0",
+      "attribution": "MD3 contributors"
+    },
+    "evidence": {
+      "kind": "reference",
+      "sourceId": "rch-croup-laryngotracheobronchitis"
+    },
+    "review": {
+      "verdict": "passed",
+      "contentHash": "889494cf7ca620d6e671e9565fdd723a99b8277cc41ea601b43908d324facd79"
+    }
+  }
+}

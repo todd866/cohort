@@ -1,0 +1,35 @@
+{
+  "figureId": "hand-hygiene-soil-choice",
+  "tool": "built-in image_gen",
+  "model": null,
+  "referenceAssetIds": [],
+  "externalReferenceImages": [],
+  "prompt": "Original educational conceptual illustration, landscape 3:2. Warm ivory paper, sophisticated hand-painted gouache/watercolour, confident fine brown outlines, navy lettering, restrained teal, coral and amber. Editorial science illustration with spacious composition and large legible labels. The explanatory structure must carry the meaning visually: molecules, objects, geometry or flow; never paragraphs in boxes. No organs, regional anatomy, teeth or joint cutaways, tissue layers, invented histology, diagnostic photographs, radiographs or patient data. All symbols are explicitly conceptual. Footer: 'Conceptual teaching model • Not to scale'. Title 'Visible soil changes the choice', subtitle 'Routine clinical care'. Two clear left-to-right rows. Top: a flat wooden hand-shaped paddle with brown soil smudges labelled 'Visible soil', large arrow to a simple tap with running blue water and an unbranded soap bar, label 'Soap + water'. Bottom: the same flat wooden hand-shaped paddle without visible soil labelled 'No visible soil', arrow to an unbranded pump bottle labelled 'Alcohol hand rub', small qualifier 'Usually preferred'. The hands are flat silhouettes carved in wood, five digits each, no detailed anatomy or medical procedure. Bottom text 'Exposure-specific precautions still apply'. Do not add a germ-free claim or percentages.",
+  "clinicalSources": [
+    {
+      "title": "CDC: Clinical safety—hand hygiene for healthcare workers",
+      "url": "https://www.cdc.gov/clean-hands/hcp/clinical-safety/index.html"
+    }
+  ],
+  "teaching": {
+    "question": "How does visible dirt change the usual hand-hygiene choice in clinical care?",
+    "answer": "Visible soil calls for soap and water. When hands are not visibly soiled, alcohol hand rub is usually preferred in routine clinical care, with exposure-specific precautions still observed.",
+    "imageRole": "after-reveal"
+  },
+  "title": "Visible soil changes hand hygiene",
+  "caption": "In routine clinical care, alcohol hand rub is generally preferred when hands are not visibly soiled; visible dirt calls for soap and water. Other exposure-specific precautions still apply.",
+  "alt": "Two hand-shaped wooden paddles branch to cleaning tools: dirty paddle to soap and running water, clean-looking paddle to alcohol hand rub.",
+  "review": {
+    "status": "pending-independent-qa",
+    "method": "agent-visual-and-source-review",
+    "notes": "Dirty five-digit wooden paddle points to tap and soap only; clean-looking paddle points to alcohol rub. Routine clinical care, usual preference and exposure-specific exceptions are explicit. No germ-free claim, procedural anatomy, or medication concentration added.",
+    "structure": {
+      "kind": "conceptual",
+      "status": "verified",
+      "specificationFiles": [
+        "scaffolds/hand-hygiene-soil-choice.json"
+      ],
+      "notes": "Dirty five-digit wooden paddle points to tap and soap only; clean-looking paddle points to alcohol rub. Routine clinical care, usual preference and exposure-specific exceptions are explicit. No germ-free claim, procedural anatomy, or medication concentration added."
+    }
+  }
+}

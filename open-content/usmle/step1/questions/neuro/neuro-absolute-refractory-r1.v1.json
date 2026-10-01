@@ -1,0 +1,73 @@
+{
+  "id": "bank:usmle-step1:neuro-absolute-refractory-r1:v1",
+  "rotation": "usmle-step1-open",
+  "ladderId": "absolute-refractory-period",
+  "topics": [
+    "refractory period",
+    "sodium channel inactivation",
+    "ladder:absolute-refractory-period"
+  ],
+  "moduleNodes": [
+    "usmle/step1",
+    "usmle/step1/neuroscience"
+  ],
+  "questionType": "mechanism",
+  "difficulty": "easy",
+  "stem": "During the absolute refractory period, no new action potential can be initiated because which gate on voltage-gated sodium channels is closed?",
+  "options": [
+    {
+      "label": "A",
+      "text": "The activation gate",
+      "isCorrect": false,
+      "misconception": "The gate that opens during depolarization is being blamed for absolute refractoriness.",
+      "explanation": "The activation gate opens to start the action potential; absolute refractoriness reflects closure of the inactivation gate, which prevents reopening regardless of stimulus strength."
+    },
+    {
+      "label": "B",
+      "text": "The inactivation gate",
+      "isCorrect": true,
+      "misconception": "None; the inactivation gate closes at the action potential peak and cannot reopen until the membrane repolarizes.",
+      "explanation": "During the absolute refractory period the inactivation gate of voltage-gated Na+ channels is closed, so no stimulus can trigger another action potential until the channel resets below about −55 mV."
+    },
+    {
+      "label": "C",
+      "text": "The voltage-gated potassium channel pore",
+      "isCorrect": false,
+      "misconception": "Potassium efflux is being assigned the primary block to Na+ reopening.",
+      "explanation": "K+ channel opening contributes to repolarization and the relative refractory period; the absolute period reflects Na+ channel inactivation, not K+ pore closure."
+    },
+    {
+      "label": "D",
+      "text": "The ligand-gated sodium channel",
+      "isCorrect": false,
+      "misconception": "A synaptic channel type is being substituted for the voltage-gated channel gating the action potential.",
+      "explanation": "Action potential refractoriness is a property of voltage-gated Na+ channels on the axon, not ligand-gated channels at synapses."
+    },
+    {
+      "label": "E",
+      "text": "The myelin sheath wrapping the axon",
+      "isCorrect": false,
+      "misconception": "Passive insulation is being treated as an active gating mechanism.",
+      "explanation": "Myelin affects conduction velocity and channel density but does not directly close Na+ channel gates; refractoriness is intrinsic to the channel."
+    }
+  ],
+  "context": "Learning objective: identify the gate responsible for absolute refractoriness. The inactivation gate of voltage-gated Na+ channels closes at the action potential peak and prevents any new spike until repolarization resets the channel.",
+  "cite": "openstax-anatomy-physiology#neuro-absolute-refractory",
+  "publicUsmle": {
+    "schemaVersion": 1,
+    "origin": "generated",
+    "itemText": {
+      "licence": "CC-BY-4.0",
+      "attribution": "MD3 contributors"
+    },
+    "evidence": {
+      "kind": "passage",
+      "sourceId": "openstax-anatomy-physiology",
+      "passageId": "neuro-absolute-refractory",
+      "licence": {
+        "cls": "foss",
+        "id": "cc-by-4.0"
+      }
+    }
+  }
+}

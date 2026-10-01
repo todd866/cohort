@@ -1,0 +1,73 @@
+{
+  "id": "bank:usmle-step1:cardiovascular-mean-arterial-pressure-r1:v1",
+  "rotation": "usmle-step1-open",
+  "ladderId": "mean-arterial-pressure",
+  "topics": [
+    "mean arterial pressure",
+    "blood pressure",
+    "ladder:mean-arterial-pressure"
+  ],
+  "moduleNodes": [
+    "usmle/step1",
+    "usmle/step1/cardiovascular"
+  ],
+  "questionType": "calculation",
+  "difficulty": "easy",
+  "stem": "Mean arterial pressure is calculated by adding what fraction of the pulse pressure to the diastolic pressure?",
+  "options": [
+    {
+      "label": "A",
+      "text": "Two-thirds",
+      "isCorrect": false,
+      "misconception": "Systolic pressure is being overweighted relative to diastolic.",
+      "explanation": "Adding two-thirds of the pulse pressure overweights systole; the correct weighting is one-third above diastolic."
+    },
+    {
+      "label": "B",
+      "text": "The full pulse pressure",
+      "isCorrect": false,
+      "misconception": "The entire systolic-diastolic difference is being added to diastolic.",
+      "explanation": "Adding the full pulse pressure would approximate systolic pressure, not the time-averaged mean."
+    },
+    {
+      "label": "C",
+      "text": "Zero — MAP equals diastolic pressure alone",
+      "isCorrect": false,
+      "misconception": "The contribution of systolic pressure during systole is being ignored entirely.",
+      "explanation": "Diastolic pressure alone ignores systolic flow during systole; one-third of the pulse pressure must be added."
+    },
+    {
+      "label": "D",
+      "text": "One-half",
+      "isCorrect": false,
+      "misconception": "The arithmetic midpoint of systolic and diastolic is being used instead of the time-weighted mean.",
+      "explanation": "Diastole lasts longer than systole, so the mean is weighted toward diastolic pressure; one-half would equal the simple midpoint, not MAP."
+    },
+    {
+      "label": "E",
+      "text": "One-third",
+      "isCorrect": true,
+      "misconception": "None; MAP equals diastolic pressure plus one-third of the pulse pressure.",
+      "explanation": "Mean arterial pressure equals diastolic pressure plus one-third of the difference between systolic and diastolic pressures."
+    }
+  ],
+  "context": "Learning objective: state the MAP formula. Mean arterial pressure equals diastolic pressure plus one-third of the pulse pressure (systolic minus diastolic).",
+  "cite": "openstax-anatomy-physiology#vessels-map-calculation",
+  "publicUsmle": {
+    "schemaVersion": 1,
+    "origin": "generated",
+    "itemText": {
+      "licence": "CC-BY-4.0",
+      "attribution": "MD3 contributors"
+    },
+    "evidence": {
+      "kind": "passage",
+      "sourceId": "openstax-anatomy-physiology",
+      "passageId": "vessels-map-calculation",
+      "licence": {
+        "cls": "foss",
+        "id": "cc-by-4.0"
+      }
+    }
+  }
+}

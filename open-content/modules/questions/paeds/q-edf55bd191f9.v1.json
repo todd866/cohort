@@ -1,0 +1,59 @@
+{
+  "id": "bank:cohort:paeds:q-edf55bd191f9:v1",
+  "rotation": "cohort-open",
+  "moduleNodes": [
+    "cohort/paeds"
+  ],
+  "topics": [
+    "bronchiolitis",
+    "oxygen therapy"
+  ],
+  "questionType": "management",
+  "difficulty": "easy",
+  "stem": "A 6-month-old with bronchiolitis has SpO₂ of 88% on room air.\n\nWhat is the target oxygen saturation?",
+  "options": [
+    {
+      "label": "A",
+      "text": "> 88%",
+      "isCorrect": false,
+      "explanation": ">88% is too low — this would accept significant hypoxaemia. Guidelines recommend ≥90%."
+    },
+    {
+      "label": "B",
+      "text": "> 89%",
+      "isCorrect": true,
+      "explanation": "Correct — target SpO₂ ≥90% in bronchiolitis, per the BIDS trial showing equivalence of a 90% target to a 94% target. Supplemental O₂ (nasal prongs, high-flow) is indicated if SpO₂ <90%. This infant at 88% needs oxygen therapy immediately."
+    },
+    {
+      "label": "C",
+      "text": "> 98%",
+      "isCorrect": false,
+      "explanation": ">98% is unrealistic and unnecessary — normal infant SpO₂ in sleep can dip to 92-94%."
+    },
+    {
+      "label": "D",
+      "text": "> 95%",
+      "isCorrect": false,
+      "explanation": ">95% is unnecessarily high — attempting to maintain >95% may prolong oxygen therapy and hospital stay without clinical benefit."
+    }
+  ],
+  "context": "Target SpO₂ in bronchiolitis is at or above 90% on room air or supplemental oxygen — the BIDS trial (Cunningham et al., Lancet 2015) validated a 90% target as non-inferior to a 94% target, supporting adoption of the lower threshold.\n\nChasing higher saturations (94-98%) prolongs admissions, increases parental anxiety, and exposes infants to unnecessary oxygen without improving recovery.",
+  "publicModule": {
+    "schemaVersion": 1,
+    "origin": "mirrored",
+    "discipline": "paeds",
+    "mirroredFrom": "md3:edf55bd191f9b225",
+    "itemText": {
+      "licence": "CC-BY-4.0",
+      "attribution": "MD3 contributors"
+    },
+    "evidence": {
+      "kind": "reference",
+      "sourceId": "rch-bronchiolitis"
+    },
+    "review": {
+      "verdict": "passed",
+      "contentHash": "a005b4ca50e73e66b7cc68d9d50c5518e867f6e474833c51e6a4bf87b0c667f8"
+    }
+  }
+}

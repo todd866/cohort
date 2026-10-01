@@ -1,0 +1,17 @@
+{
+  "figureId": "food-reaction-onset-comparison",
+  "tool": "Codex-authored SVG; sharp rasterization",
+  "model": null,
+  "prompt": "Independently compose a two-row onset comparison on a shared 0–4 hour axis using RCH facts. Highlight IgE usual onset within one hour and acute FPIES typical onset 2–4 hours. Show discriminating symptom patterns. Windows indicate onset, never duration or probability. Use large legible navy labels with coral and teal highlights on ivory. No source pixels.",
+  "sourceSvg": "sources/food-reaction-onset-comparison.svg",
+  "clinicalSources": [
+    {
+      "title": "RCH Clinical Practice Guidelines: Non-IgE mediated food allergy",
+      "url": "https://www.rch.org.au/clinicalguide/guideline_index/Non-IgE_mediated_food_allergy/"
+    },
+    {
+      "title": "RCH Clinical Practice Guidelines: IgE-mediated food allergy",
+      "url": "https://www.rch.org.au/clinicalguide/guideline_index/Food_allergy_-_IgE_mediated_food_allergy/"
+    }
+  ]
+}

@@ -1,0 +1,68 @@
+{
+  "id": "bank:cohort:paeds:q-be25a2c94788:v1",
+  "rotation": "cohort-open",
+  "moduleNodes": [
+    "cohort/paeds"
+  ],
+  "topics": [
+    "febrile infant",
+    "sepsis",
+    "fever without source",
+    "neonatal infection",
+    "emergency-common-presentations"
+  ],
+  "questionType": "management",
+  "difficulty": "hard",
+  "stem": "A 6-week-old presents with fever of 38.5°C, poor feeding, lethargy and mottled skin, with no clear source of infection.\n\nWhat is the appropriate management?",
+  "options": [
+    {
+      "label": "A",
+      "text": "Blood and urine cultures, LP when safe, and prompt empiric IV antibiotics",
+      "isCorrect": true,
+      "explanation": "Correct. This 29-day-to-3-month infant is clinically unwell and has no focus, so the low investigation-and-treatment threshold is crossed. LP should not delay antibiotics if unsafe or delayed."
+    },
+    {
+      "label": "B",
+      "text": "Chest X-ray if respiratory symptoms are present, with observation for 4-6 hours",
+      "isCorrect": false,
+      "explanation": "Targeted tests based on symptoms are not enough for a febrile young infant without source. This age group generally needs broader sepsis evaluation."
+    },
+    {
+      "label": "C",
+      "text": "Catheter urine specimen for culture, commence antibiotics if result is positive",
+      "isCorrect": false,
+      "explanation": "Urine testing is important, but it is not sufficient on its own in a 6-week-old febrile infant. Blood cultures and broader evaluation are still required."
+    },
+    {
+      "label": "D",
+      "text": "Paracetamol for symptomatic relief and clinical reassessment at 24 hours",
+      "isCorrect": false,
+      "explanation": "Symptomatic treatment alone is unsafe in a febrile infant under 3 months. Serious bacterial infection must be actively excluded."
+    },
+    {
+      "label": "E",
+      "text": "Oral amoxicillin and outpatient follow-up with GP review within 24 hours",
+      "isCorrect": false,
+      "explanation": "Empiric oral antibiotics and outpatient follow-up are not adequate for this high-risk age group. Hospital-based sepsis evaluation is needed."
+    }
+  ],
+  "context": "Do not apply the automatic ≤28-day pathway to every infant younger than 3 months. From 29 days to 3 months, RCH uses clinical appearance, focus and reliable follow-up, with a deliberately low threshold for investigation and treatment.\n\nThis infant is unwell, so obtain blood and uncontaminated urine cultures, perform LP when safe and give prompt IV antibiotics. If LP is unsafe or delayed, treat first and sample CSF after stabilisation.",
+  "publicModule": {
+    "schemaVersion": 1,
+    "origin": "mirrored",
+    "discipline": "paeds",
+    "mirroredFrom": "md3:be25a2c947884259",
+    "itemText": {
+      "licence": "CC-BY-4.0",
+      "attribution": "MD3 contributors"
+    },
+    "evidence": {
+      "kind": "reference",
+      "sourceId": "rch-febrile-child"
+    },
+    "review": {
+      "verdict": "passed",
+      "contentHash": "9734f774977bd9a4a34e5e98baab0430b31836dd880ff1a52e45c5b1f47bb555"
+    }
+  }
+}

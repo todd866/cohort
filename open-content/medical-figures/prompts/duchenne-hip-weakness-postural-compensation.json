@@ -1,0 +1,31 @@
+{
+  "schemaVersion": 1,
+  "figureId": "duchenne-hip-weakness-postural-compensation",
+  "sourceFacts": [
+    "In Duchenne muscular dystrophy, hip extensor weakness contributes to increased lumbar lordosis and posterior trunk compensation.",
+    "This is a compensatory movement association; the diagram should not claim a measured force model or specify internal muscle anatomy."
+  ],
+  "clinicalSources": [
+    {
+      "title": "Sutherland et al: The pathomechanics of gait in Duchenne muscular dystrophy",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/7202868/"
+    },
+    {
+      "title": "NHS Genomics Education: Duchenne muscular dystrophy",
+      "url": "https://www.genomicseducation.hee.nhs.uk/documents/duchenne-muscular-dystrophy/"
+    }
+  ],
+  "specificationFiles": [
+    "scaffolds/duchenne-hip-weakness-postural-compensation.json"
+  ],
+  "prompt": "Create an entirely original medical teaching concept illustration, landscape 3:2, warm hand-painted watercolour and gouache on ivory paper, fine ink contours, restrained navy labels, muted teal, ochre and peach accents, generous whitespace. Gentle storybook warmth with the precision and legibility of an educational atlas. Use written instructions only; no image reference. Meaningful visual relationships and sparse short labels, not paragraphs in boxes. NO internal anatomy, organ/eye/ear/brain/tissue cutaways, anatomical pathways, bones, diagnostic images, fake scans, realistic lesions, photorealistic skin, glossy wet flesh or 3D tissue. Neutral symbols or fully clothed surface poses only where specified. Preserve every direction, relationship and count in the explicit structure. Title and labels exactly as requested, no additional prose. Footer 'Educational schematic'. No logo or watermark.\n\nTitle 'A compensation for hip weakness'. Three-stage left-to-right conceptual movement diagram. LEFT: a simple low-strength gauge labelled 'Hip extensors weak'. CENTRE: one fully clothed neutral child seen in simple side profile, facing RIGHT, feet on floor, knees gently straight, torso modestly leaning backward; a small curved arrow beside shoulders points BACK toward viewer's LEFT, label 'Trunk leans back'. RIGHT: an isolated abstract CURVED RIBBON shaped like a gentle inward lumbar curve, clearly disconnected from any body and labelled 'Lumbar lordosis increases'. It is a shape mnemonic, not a spine drawing. Connect stages with teal rightward cause-association arrows. No exposed muscles, pelvis, vertebrae, gravity line, force vectors through joints or mathematical angles. Do not exaggerate child pose into a fall. Small bottom 'Movement concept \u2022 no force measurements'.",
+  "generation": {
+    "tool": "built-in image_gen",
+    "model": null,
+    "referenceAssetIds": [],
+    "externalReferenceImages": [],
+    "specificationFiles": [
+      "scaffolds/duchenne-hip-weakness-postural-compensation.json"
+    ]
+  }
+}

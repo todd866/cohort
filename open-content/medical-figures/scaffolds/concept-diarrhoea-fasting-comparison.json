@@ -1,0 +1,100 @@
+{
+  "schemaVersion": 1,
+  "id": "concept-diarrhoea-fasting-comparison",
+  "kind": "conceptual",
+  "sourceFacts": [
+    {
+      "fact": "Osmotic diarrhoea due to ingested poorly absorbed solute tends to improve when that solute is removed.",
+      "sourceUrls": [
+        "https://naspghan.org/files/documents/pdfs/training/curriculum-resources/common-outpatient/Fine_AGA_Technical_Review_on_Diarrhea_Gastroenterology_1999_Common_Outpatient_Guidelines.pdf"
+      ]
+    },
+    {
+      "fact": "Secretory diarrhoea can persist despite fasting; patterns may be mixed clinically.",
+      "sourceUrls": [
+        "https://naspghan.org/files/documents/pdfs/training/curriculum-resources/common-outpatient/Fine_AGA_Technical_Review_on_Diarrhea_Gastroenterology_1999_Common_Outpatient_Guidelines.pdf"
+      ]
+    }
+  ],
+  "nodes": [
+    {
+      "id": "1",
+      "label": "Osmotic mechanism"
+    },
+    {
+      "id": "2",
+      "label": "Offending solute removed"
+    },
+    {
+      "id": "3",
+      "label": "Diarrhoea decreases"
+    },
+    {
+      "id": "4",
+      "label": "Secretory mechanism"
+    },
+    {
+      "id": "5",
+      "label": "Secretion continues"
+    },
+    {
+      "id": "6",
+      "label": "Diarrhoea persists"
+    }
+  ],
+  "edges": [
+    {
+      "from": "1",
+      "to": "2",
+      "meaning": "remove luminal osmotic driver"
+    },
+    {
+      "from": "2",
+      "to": "3",
+      "meaning": "response"
+    },
+    {
+      "from": "4",
+      "to": "5",
+      "meaning": "ongoing driver"
+    },
+    {
+      "from": "5",
+      "to": "6",
+      "meaning": "response"
+    }
+  ],
+  "labels": [
+    "Osmotic and secretory diarrhoea respond differently",
+    "Osmotic mechanism",
+    "Offending solute removed",
+    "Diarrhoea decreases",
+    "Secretory mechanism",
+    "Secretion continues",
+    "Diarrhoea persists",
+    "Conceptual schematic • Not anatomy"
+  ],
+  "layout": "Two clearly separated horizontal lanes of three nodes each. Top lane1 to2 to3 in ochre, bottom4 to5 to6 in teal. Exactly four arrows, none between lanes. Top uses square solute tokens, a crossed-out supply tag, then fewer water-drop tokens. Bottom uses a plain abstract flow arrow, ongoing blue dots, then many water-drop tokens. Label under title: A conceptual comparison, not a fasting instruction. Bottom note: Mixed mechanisms occur. Do not draw intestines, secretory cells, membranes, pumps in tissue, foods or a child. No recommendation to withhold food or fluids.",
+  "forbiddenAnatomy": [
+    "organs",
+    "body silhouettes",
+    "tissue cross-sections",
+    "cells",
+    "tubules",
+    "vessels",
+    "clinical photographs",
+    "diagnostic scans"
+  ],
+  "validation": {
+    "sourceStatus": "checked",
+    "structureStatus": "verified",
+    "requiredChecks": [
+      "Two separate three-node lanes with four arrows",
+      "Removing solute leads to decrease only in osmotic lane",
+      "No fasting treatment instruction",
+      "No intestinal tissue, pumps or organs"
+    ],
+    "clinicalReviewStatus": "pending",
+    "pixelChecks": "Pixel check: two independent three-node lanes/four arrows. Removed solute precedes decreased output above; continued secretion precedes persistence below. Mixed mechanisms and no fasting-instruction qualifiers clear. No intestine/cell imagery. Independent and clinical review pending."
+  }
+}

@@ -1,0 +1,71 @@
+{
+  "id": "bank:usmle-step1:micro-polio-serotypes:v1",
+  "rotation": "usmle-step1-open",
+  "topics": [
+    "polio",
+    "serotypes"
+  ],
+  "moduleNodes": [
+    "usmle/step1",
+    "usmle/step1/microbiology"
+  ],
+  "questionType": "mechanism",
+  "difficulty": "easy",
+  "stem": "How many poliovirus serotypes are there, and does immunity to one protect against the others?",
+  "options": [
+    {
+      "label": "A",
+      "text": "One serotype; immunity to it protects against all strains",
+      "isCorrect": false,
+      "misconception": "Assumes poliovirus, like measles virus, is antigenically uniform so one infection protects against all.",
+      "explanation": "Poliovirus is not a single serotype; CDC lists types 1, 2 and 3, so immunity to one strain cannot cover all polio."
+    },
+    {
+      "label": "B",
+      "text": "Two serotypes; immunity to one protects against the other",
+      "isCorrect": false,
+      "misconception": "Misremembers the serotype count and assumes cross-protection between them.",
+      "explanation": "Two is the wrong count; CDC lists three poliovirus serotypes, and immunity to one does not protect against the others."
+    },
+    {
+      "label": "C",
+      "text": "Three serotypes; immunity to one protects against all three",
+      "isCorrect": false,
+      "misconception": "Knows the count but assumes antibodies to one serotype neutralize the other two.",
+      "explanation": "The count is right but the cross-protection is wrong: immunity to one poliovirus serotype gives no significant immunity to the others."
+    },
+    {
+      "label": "D",
+      "text": "Four serotypes; immunity to one gives little cross-protection",
+      "isCorrect": false,
+      "misconception": "Transfers the four-serotype pattern of dengue virus onto poliovirus.",
+      "explanation": "Dengue virus, not poliovirus, has four serotypes, and cross-protection between them is only short-lived; poliovirus has three serotypes."
+    },
+    {
+      "label": "E",
+      "text": "Three serotypes; immunity to one gives little cross-protection",
+      "isCorrect": true,
+      "misconception": "None — three serotypes with no significant cross-immunity.",
+      "explanation": "CDC lists three poliovirus serotypes (types 1, 2 and 3) and states that immunity to one does not produce significant immunity to the others."
+    }
+  ],
+  "context": "Learning objective: Poliovirus has three serotypes (types 1, 2 and 3), and immunity to one gives no significant immunity to the others.",
+  "cite": "cdc-pink-book-polio#polio-serotypes",
+  "publicUsmle": {
+    "schemaVersion": 1,
+    "origin": "generated",
+    "itemText": {
+      "licence": "CC-BY-4.0",
+      "attribution": "MD3 contributors"
+    },
+    "evidence": {
+      "kind": "passage",
+      "sourceId": "cdc-pink-book-polio",
+      "passageId": "polio-serotypes",
+      "licence": {
+        "cls": "foss",
+        "id": "us-gov"
+      }
+    }
+  }
+}

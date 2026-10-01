@@ -1,0 +1,86 @@
+{
+  "schemaVersion": 1,
+  "id": "concept-post-strep-immune-sequence",
+  "kind": "conceptual",
+  "sourceFacts": [
+    {
+      "fact": "PSGN is an immune-mediated delayed consequence of some group A streptococcal infections.",
+      "sourceUrls": [
+        "https://www.cdc.gov/group-a-strep/hcp/clinical-guidance/post-streptococcal-glomerulonephritis.html"
+      ]
+    },
+    {
+      "fact": "It is not direct streptococcal infection of the kidneys.",
+      "sourceUrls": [
+        "https://www.cdc.gov/group-a-strep/hcp/clinical-guidance/post-streptococcal-glomerulonephritis.html"
+      ]
+    }
+  ],
+  "nodes": [
+    {
+      "id": "1",
+      "label": "Earlier group A strep infection"
+    },
+    {
+      "id": "2",
+      "label": "After a latent interval"
+    },
+    {
+      "id": "3",
+      "label": "Immune-mediated inflammation"
+    },
+    {
+      "id": "4",
+      "label": "Nephritic findings"
+    }
+  ],
+  "edges": [
+    {
+      "from": "1",
+      "to": "2",
+      "meaning": "time"
+    },
+    {
+      "from": "2",
+      "to": "3",
+      "meaning": "delayed immune consequence"
+    },
+    {
+      "from": "3",
+      "to": "4",
+      "meaning": "clinical consequence"
+    }
+  ],
+  "labels": [
+    "PSGN follows an earlier infection",
+    "Earlier group A strep infection",
+    "After a latent interval",
+    "Immune-mediated inflammation",
+    "Nephritic findings",
+    "Conceptual schematic • Not anatomy"
+  ],
+  "layout": "Four large station cards left-to-right, exactly three forward arrows. First has textual tags Throat and Skin. Second shows a plain clock with the exact label After a latent interval. Third has a coral warning star. Fourth has tags Blood in urine, Oedema, Hypertension. Bottom caption: Delayed immune injury, not direct kidney infection. No day or week numbers, ranges, durations or limits anywhere. Do not print node identifiers or numerical badges. No kidney, cells or bacteria.",
+  "forbiddenAnatomy": [
+    "organs",
+    "body silhouettes",
+    "tissue cross-sections",
+    "cells",
+    "tubules",
+    "vessels",
+    "clinical photographs",
+    "diagnostic scans"
+  ],
+  "validation": {
+    "sourceStatus": "checked",
+    "structureStatus": "verified",
+    "requiredChecks": [
+      "Four nodes and three forward arrows",
+      "No numeric intervals, days or weeks anywhere",
+      "Qualitative interval precedes immune inflammation and nephritic findings",
+      "No organs or bacterial anatomy",
+      "First and last cards text only; no throat, body silhouette or skin rash icons"
+    ],
+    "clinicalReviewStatus": "pending",
+    "pixelChecks": "Corrected pixel review: four cards and three arrows, qualitative After a latent interval only, no days/weeks/numeric limits. First and last panels text only, clock and warning star are the only pictorial symbols. No anatomy or rash icons. Served clinical card untouched. Independent and clinical review pending."
+  }
+}

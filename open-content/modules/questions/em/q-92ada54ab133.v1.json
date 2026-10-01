@@ -1,0 +1,66 @@
+{
+  "id": "bank:cohort:em:q-92ada54ab133:v1",
+  "rotation": "cohort-open",
+  "moduleNodes": [
+    "cohort/em"
+  ],
+  "topics": [
+    "burns",
+    "burn-depth",
+    "emergency"
+  ],
+  "questionType": "diagnosis",
+  "difficulty": "medium",
+  "stem": "A 4-year-old pulls a cup of tea onto the forearm. The wound is dark pink and blanches only sluggishly. Light touch is dull compared with the surrounding skin, but the child still withdraws. There are a few scattered blisters.\n\nHow is this burn depth best classified?",
+  "options": [
+    {
+      "label": "A",
+      "text": "Epidermal burn",
+      "isCorrect": false,
+      "explanation": "An epidermal burn is uniformly red, blanches briskly and is very painful, without blisters. Sluggish refill and dulled sensation are deeper than that."
+    },
+    {
+      "label": "B",
+      "text": "Full-thickness burn",
+      "isCorrect": false,
+      "explanation": "Full thickness is dry, white, brown or leathery, non-blanching and insensate because the nerve endings are gone. Withdrawal to touch excludes it."
+    },
+    {
+      "label": "C",
+      "text": "Mid-dermal burn",
+      "isCorrect": true,
+      "explanation": "RCH classifies a dark pink, blistered burn with SLUGGISH capillary refill and reduced but present sensation as mid-dermal. It may heal in 2–3 weeks or need grafting, so it is reviewed rather than assumed."
+    },
+    {
+      "label": "D",
+      "text": "Deep dermal burn",
+      "isCorrect": false,
+      "explanation": "In the RCH classification deep dermal is blotchy red with ABSENT capillary refill and absent sensation. This wound is dark pink, still blanches, slowly, and the child still withdraws, so it is one layer shallower."
+    },
+    {
+      "label": "E",
+      "text": "Superficial dermal burn",
+      "isCorrect": false,
+      "explanation": "Superficial dermal burns are pale pink, moist, briskly blanching and intensely painful, usually with blisters. Sluggish refill and dulled touch are deeper than that."
+    }
+  ],
+  "context": "RCH grades burn depth by capillary refill and sensation, not colour alone. Epidermal: red, brisk refill, painful, no blister. Superficial dermal: pale pink, moist, brisk refill, painful.\n\nMid-dermal: dark pink, SLUGGISH refill, sensation reduced. Deep dermal: blotchy red, ABSENT refill, absent sensation. Full thickness: leathery, non-blanching, insensate.\n\nMid-dermal and deeper burns, and any burn to face, hands, feet, perineum or over a joint, are discussed with the burns unit.",
+  "publicModule": {
+    "schemaVersion": 1,
+    "origin": "mirrored",
+    "discipline": "em",
+    "mirroredFrom": "md3:92ada54ab133a5bb",
+    "itemText": {
+      "licence": "CC-BY-4.0",
+      "attribution": "MD3 contributors"
+    },
+    "evidence": {
+      "kind": "reference",
+      "sourceId": "rch-burns"
+    },
+    "review": {
+      "verdict": "passed",
+      "contentHash": "09ff46b87c9a6a78dabb9b9e097505d90e11b3c44a4e4cd0400dd7f9832148fa"
+    }
+  }
+}

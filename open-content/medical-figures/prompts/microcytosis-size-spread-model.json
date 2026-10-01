@@ -1,0 +1,39 @@
+{
+  "figureId": "microcytosis-size-spread-model",
+  "tool": "built-in image_gen",
+  "model": null,
+  "referenceAssetIds": [],
+  "externalReferenceImages": [],
+  "prompt": "Original educational conceptual illustration, landscape 3:2. Warm ivory paper, sophisticated hand-painted gouache/watercolour, confident fine brown outlines, navy lettering, restrained teal, coral and amber. Editorial science illustration with spacious composition and large legible labels. The explanatory structure must carry the meaning visually: molecules, objects, geometry or flow; never paragraphs in boxes. No organs, regional anatomy, teeth or joint cutaways, tissue layers, invented histology, diagnostic photographs, radiographs or patient data. All symbols are explicitly conceptual. Footer: 'Conceptual teaching model • Not to scale'. Title 'Average size ≠ size variation'. Two equal wooden trays side by side. Left tray contains six identical small coral wooden round counters, label 'Small and fairly uniform'. Right tray contains six coral wooden round counters with clearly different sizes, all modest-sized but with three sizes visibly present, label 'Small on average, more varied'. These are opaque solid counting pieces without red-cell dimples or nuclei. Above left region a simple caliper icon and 'MCV: average volume'; above right a spread-arrow icon and 'RDW: variation'. Bottom takeaway 'Small cells can have a normal RDW'. Tiny qualifier 'Tokens, not a blood film'. Do not print a numerical average or imply equal exact mean between groups. No histology or anatomical image.",
+  "clinicalSources": [
+    {
+      "title": "MedlinePlus: RDW test",
+      "url": "https://medlineplus.gov/lab-tests/rdw-red-cell-distribution-width/"
+    },
+    {
+      "title": "RCH: Anaemia guideline",
+      "url": "https://www.rch.org.au/clinicalguide/guideline_index/Anaemia_Guideline/"
+    }
+  ],
+  "teaching": {
+    "question": "Can microcytosis coexist with a normal RDW?",
+    "answer": "Yes. Microcytosis concerns the mean cell volume, whereas RDW concerns variation. Small cells can be fairly uniform; beta-thalassaemia trait often has this pattern.",
+    "imageRole": "after-reveal"
+  },
+  "title": "Average size and size variation",
+  "caption": "MCV describes average red-cell volume; RDW describes variation. Small cells can have a fairly uniform size, as often seen in beta-thalassaemia trait, so microcytosis does not require a high RDW.",
+  "alt": "Two trays compare six fairly uniform small wooden counters with six counters of mixed size; caliper and spread-arrow symbols distinguish average volume from variation.",
+  "review": {
+    "status": "pending-independent-qa",
+    "method": "agent-visual-and-source-review",
+    "notes": "Left tray contains six visually similar small counters; right has six counters with clear size variation. MCV and RDW labels distinguish average volume from variation, with no numerical equality claim. The key statement that small cells can have normal RDW is correct; counters explicitly not a blood film.",
+    "structure": {
+      "kind": "conceptual",
+      "status": "verified",
+      "specificationFiles": [
+        "scaffolds/microcytosis-size-spread-model.json"
+      ],
+      "notes": "Left tray contains six visually similar small counters; right has six counters with clear size variation. MCV and RDW labels distinguish average volume from variation, with no numerical equality claim. The key statement that small cells can have normal RDW is correct; counters explicitly not a blood film."
+    }
+  }
+}

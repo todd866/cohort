@@ -1,0 +1,70 @@
+{
+  "id": "bank:usmle-step1:micro-disease-definition:v1",
+  "rotation": "usmle-step1-open",
+  "topics": [
+    "disease"
+  ],
+  "moduleNodes": [
+    "usmle/step1",
+    "usmle/step1/microbiology"
+  ],
+  "questionType": "mechanism",
+  "difficulty": "easy",
+  "stem": "In microbiology, which of the following defines disease?",
+  "options": [
+    {
+      "label": "A",
+      "text": "Presence of microbes living on or in the body",
+      "isCorrect": false,
+      "misconception": "Equates the presence of microbes (colonization or infection) with disease.",
+      "explanation": "Microbes on or in the body may be normal microbiota, colonization or infection; disease requires damage or impairment of structure or function, not mere presence."
+    },
+    {
+      "label": "B",
+      "text": "Presence of antibodies against a specific microbe",
+      "isCorrect": false,
+      "misconception": "Equates serologic evidence of exposure with disease.",
+      "explanation": "Antibodies against a microbe show past or present exposure; they do not by themselves mean body structure or function is impaired."
+    },
+    {
+      "label": "C",
+      "text": "Subjective symptoms reported by the patient",
+      "isCorrect": false,
+      "misconception": "Equates disease with symptoms, missing asymptomatic structural or functional damage.",
+      "explanation": "Symptoms are subjective indicators a patient notices; disease is defined by damaged structure or function, which can occur with no symptoms."
+    },
+    {
+      "label": "D",
+      "text": "Damage or impairment of normal structure or function",
+      "isCorrect": true,
+      "misconception": "None — disease is damage or impairment of normal body structure or function.",
+      "explanation": "OpenStax defines disease as any condition in which the normal structure or functions of the body are damaged or impaired."
+    },
+    {
+      "label": "E",
+      "text": "An abnormal result on a routine screening test",
+      "isCorrect": false,
+      "misconception": "Equates a positive screening test with established disease.",
+      "explanation": "An abnormal screening result is a finding that needs confirmation; it can be a false positive and is not itself the definition of disease."
+    }
+  ],
+  "context": "Learning objective: A disease is any condition in which the normal structure or functions of the body are damaged or impaired.",
+  "cite": "openstax-microbiology#disease-definition",
+  "publicUsmle": {
+    "schemaVersion": 1,
+    "origin": "generated",
+    "itemText": {
+      "licence": "CC-BY-4.0",
+      "attribution": "MD3 contributors"
+    },
+    "evidence": {
+      "kind": "passage",
+      "sourceId": "openstax-microbiology",
+      "passageId": "disease-definition",
+      "licence": {
+        "cls": "foss",
+        "id": "cc-by-4.0"
+      }
+    }
+  }
+}

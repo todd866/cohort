@@ -1,0 +1,74 @@
+{
+  "id": "bank:usmle-step1:neuro-saltatory-r3:v1",
+  "rotation": "usmle-step1-open",
+  "ladderId": "action-potential-saltatory",
+  "topics": [
+    "saltatory conduction",
+    "myelin",
+    "multiple sclerosis",
+    "ladder:action-potential-saltatory"
+  ],
+  "moduleNodes": [
+    "usmle/step1",
+    "usmle/step1/neuroscience"
+  ],
+  "questionType": "mechanism",
+  "difficulty": "hard",
+  "stem": "A 28-year-old woman has had two episodes of monocular vision loss that resolved over weeks, and MRI now shows multifocal white-matter lesions. Nerve conduction studies of affected central pathways show slowed propagation.\n\nLoss of which of the following properties of myelinated axons most directly accounts for the slowed conduction?",
+  "options": [
+    {
+      "label": "A",
+      "text": "Continuous opening of channels along the entire axonal membrane",
+      "isCorrect": false,
+      "misconception": "The unmyelinated pattern is being treated as what demyelination removes.",
+      "explanation": "Continuous conduction is the slower unmyelinated strategy; demyelination removes the insulation that enables saltatory, node-to-node renewal."
+    },
+    {
+      "label": "B",
+      "text": "Saltatory regeneration of the action potential at nodes of Ranvier",
+      "isCorrect": true,
+      "misconception": "None; myelin loss impairs node-to-node saltatory conduction.",
+      "explanation": "In myelinated axons the action potential regenerates only at nodes of Ranvier and jumps between them; demyelination disrupts that saltatory pattern and slows conduction."
+    },
+    {
+      "label": "C",
+      "text": "Active glial pumping of depolarization down the fiber",
+      "isCorrect": false,
+      "misconception": "Glia are being given an active propulsive role they do not have.",
+      "explanation": "Oligodendrocytes insulate; they do not pump the signal. Slowing after demyelination reflects loss of saltatory node-to-node renewal."
+    },
+    {
+      "label": "D",
+      "text": "Amplification of action-potential peak voltage at each segment",
+      "isCorrect": false,
+      "misconception": "All-or-none spikes are being treated as size-adjustable amplifiers.",
+      "explanation": "Action potentials are all-or-none at a fixed peak; nodes renew the same amplitude rather than amplifying it, and demyelination slows by breaking saltatory jump."
+    },
+    {
+      "label": "E",
+      "text": "Widening of axonal diameter that lowers internal resistance",
+      "isCorrect": false,
+      "misconception": "A size-based speed factor is being substituted for the myelin mechanism.",
+      "explanation": "Diameter affects speed in any axon, but the demyelination-specific loss is saltatory conduction between nodes of Ranvier."
+    }
+  ],
+  "context": "Learning objective: link demyelination to loss of saltatory conduction. Myelinated axons regenerate the action potential only at nodes of Ranvier; myelin loss slows propagation by disrupting that node-to-node jump.",
+  "cite": "openstax-anatomy-physiology#neuro-saltatory-conduction",
+  "publicUsmle": {
+    "schemaVersion": 1,
+    "origin": "generated",
+    "itemText": {
+      "licence": "CC-BY-4.0",
+      "attribution": "MD3 contributors"
+    },
+    "evidence": {
+      "kind": "passage",
+      "sourceId": "openstax-anatomy-physiology",
+      "passageId": "neuro-saltatory-conduction",
+      "licence": {
+        "cls": "foss",
+        "id": "cc-by-4.0"
+      }
+    }
+  }
+}

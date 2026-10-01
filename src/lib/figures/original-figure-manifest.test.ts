@@ -1,0 +1,85 @@
+import { describe, expect, it } from 'vitest';
+import manifestJson from '../../../open-content/medical-figures/manifest.json';
+import {
+  getOriginalFigure,
+  originalFigureSidecar,
+  parseOriginalFigureManifest,
+} from './original-figure-manifest';
+
+describe('reviewed original figure manifest', () => {
+  it('preserves historical review metadata while withdrawing delivery admission', () => {
+    const manifest = parseOriginalFigureManifest(manifestJson);
+    for (const figure of manifest.figures) {
+      expect(getOriginalFigure(`/figures/originals/${figure.id}.png`)).toBeUndefined();
+      const sidecar = originalFigureSidecar(figure, manifest);
+      expect(sidecar).toMatchObject({
+        class: 'diagram', license: 'MIT', accessTier: 'public',
+        clinicalReviewStatus: 'pending', hash: `sha256-${figure.sha256}`,
+        dimensions: { w: figure.width, h: figure.height },
+        showWhen: figure.teaching.imageRole === 'prompt' ? 'always' : 'after-reveal',
+      });
+      expect(sidecar.humanReviewedBy).toBeUndefined();
+      expect(sidecar.humanReviewedAt).toBeUndefined();
+    }
+  });
+
+  it.each([
+    '/figures/originals/unknown.png',
+    '/figures/originals/../restricted/image.png',
+    '/figures/originals/%6eeonatal-scalp-comparison.png',
+    '/figures/originals/neonatal-scalp-comparison.png?download=1',
+    '/figures/originals/nested/neonatal-scalp-comparison.png',
+    '/figures/restricted/neonatal-scalp-comparison.png',
+  ])('rejects unlisted or nonliteral key %s', (key) => {
+    expect(getOriginalFigure(key)).toBeUndefined();
+  });
+
+  it.each([
+    ['non-MIT rights', (m: any) => { m.license = 'unknown'; }],
+    ['unaccepted review', (m: any) => { m.figures[0].review.status = 'pending'; }],
+    ['unknown review method', (m: any) => { m.figures[0].review.method = 'auto-caption'; }],
+    ['missing checked structure', (m: any) => { delete m.figures[0].review.structure; }],
+    ['anatomy missing hash review', (m: any) => { m.figures[0].review.structure.kind = 'spatial-anatomy'; }],
+    ['unverified structure', (m: any) => { m.figures[0].review.structure.status = 'pending'; }],
+    ['unsafe scaffold path', (m: any) => { m.figures[0].review.structure.specificationFiles = ['../private.json']; }],
+    ['external reference pixels', (m: any) => { m.figures[0].generation.externalReferenceImages = ['textbook.png']; }],
+    ['missing reference declaration', (m: any) => { delete m.figures[0].generation.externalReferenceImages; }],
+    ['traversal', (m: any) => { m.figures[0].file = 'images/../private.png'; }],
+    ['malformed hash', (m: any) => { m.figures[0].sha256 = 'abc'; }],
+    ['zero width', (m: any) => { m.figures[0].width = 0; }],
+    ['duplicate id', (m: any) => { m.figures.push(m.figures[0]); }],
+    ['unknown original reference', (m: any) => { m.figures[0].generation.referenceAssetIds = ['unreviewed']; }],
+    ['unsafe prompt path', (m: any) => { m.figures[0].generation.promptFiles = ['../private.md']; }],
+    ['missing deterministic date', (m: any) => { delete m.createdAt; for (const f of m.figures) delete f.generatedAt; }],
+  ])('rejects %s', (_label, mutate) => {
+    const manifest = structuredClone(manifestJson);
+    mutate(manifest);
+    expect(() => parseOriginalFigureManifest(manifest)).toThrow();
+  });
+});
+
+describe('spatial anatomy manifest admission', () => {
+  const anatomyManifest = () => {
+    const m: any = structuredClone(manifestJson);
+    const f = m.figures[0];
+    f.review.structure.kind = 'spatial-anatomy';
+    f.review.structure.annotationFile = `annotations/${f.id}.svg`;
+    f.review.structure.reviewedFigureSha256 = f.sha256;
+    f.teaching.imageRole = 'after-reveal';
+    return m;
+  };
+  it('accepts hash-bound anatomy only after reveal', () => {
+    expect(() => parseOriginalFigureManifest(anatomyManifest())).not.toThrow();
+  });
+  it.each(['missing', 'stale', 'prompt', 'unknown-kind', 'coerced-kind', 'missing-annotation', 'unsafe-annotation'])('rejects %s anatomy admission', reason => {
+    const m = anatomyManifest(); const f = m.figures[0];
+    if (reason === 'missing-annotation') delete f.review.structure.annotationFile;
+    if (reason === 'unsafe-annotation') f.review.structure.annotationFile = 'annotations/../private.svg';
+    if (reason === 'missing') delete f.review.structure.reviewedFigureSha256;
+    if (reason === 'stale') f.review.structure.reviewedFigureSha256 = '0'.repeat(64);
+    if (reason === 'prompt') f.teaching.imageRole = 'prompt';
+    if (reason === 'coerced-kind') f.review.structure.kind = ['spatial-anatomy'];
+    if (reason === 'unknown-kind') f.review.structure.kind = 'diagnostic';
+    expect(() => parseOriginalFigureManifest(m)).toThrow();
+  });
+});

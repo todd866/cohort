@@ -1,0 +1,70 @@
+{
+  "id": "bank:usmle-step1:epi-prevalence-definition:v1",
+  "rotation": "usmle-step1-open",
+  "topics": [
+    "prevalence"
+  ],
+  "moduleNodes": [
+    "usmle/step1",
+    "usmle/step1/epidemiology"
+  ],
+  "questionType": "mechanism",
+  "difficulty": "easy",
+  "stem": "For a given condition in a population, which of the following correctly distinguishes prevalence from incidence?",
+  "options": [
+    {
+      "label": "A",
+      "text": "Prevalence: persons who develop it; incidence: persons who have it",
+      "isCorrect": false,
+      "misconception": "Reverses the definitions of prevalence and incidence.",
+      "explanation": "This reverses the two measures: incidence counts persons who develop a condition, and prevalence counts persons who have it."
+    },
+    {
+      "label": "B",
+      "text": "Prevalence: persons who develop it; incidence: persons who die of it",
+      "isCorrect": false,
+      "misconception": "Assigns new cases to prevalence and deaths to incidence.",
+      "explanation": "Prevalence counts persons who have a condition, not those who develop it, and deaths are counted by mortality measures, not incidence."
+    },
+    {
+      "label": "C",
+      "text": "Prevalence: persons who die of it; incidence: persons who have it",
+      "isCorrect": false,
+      "misconception": "Assigns deaths to prevalence and existing cases to incidence.",
+      "explanation": "Deaths are counted by mortality measures, not prevalence, and persons who have a condition are counted by prevalence, not incidence."
+    },
+    {
+      "label": "D",
+      "text": "Prevalence: persons who have it; incidence: persons who develop it",
+      "isCorrect": true,
+      "misconception": "None — prevalence counts who has the condition; incidence counts who develops it.",
+      "explanation": "CDC: prevalence is the proportion of persons who have a condition at or during a period; incidence is the proportion or rate who develop it."
+    },
+    {
+      "label": "E",
+      "text": "Prevalence: persons who recover from it; incidence: persons who die of it",
+      "isCorrect": false,
+      "misconception": "Treats prevalence as recovery and incidence as death, confusing both with outcome measures.",
+      "explanation": "Prevalence counts persons who currently have a condition, not those who recovered, and incidence counts new cases, not deaths."
+    }
+  ],
+  "context": "Learning objective: Prevalence is the proportion of persons who have a condition; incidence is the proportion or rate who develop it.",
+  "cite": "cdc-epi-incidence-prevalence#prevalence-definition",
+  "publicUsmle": {
+    "schemaVersion": 1,
+    "origin": "generated",
+    "itemText": {
+      "licence": "CC-BY-4.0",
+      "attribution": "MD3 contributors"
+    },
+    "evidence": {
+      "kind": "passage",
+      "sourceId": "cdc-epi-incidence-prevalence",
+      "passageId": "prevalence-definition",
+      "licence": {
+        "cls": "foss",
+        "id": "us-gov"
+      }
+    }
+  }
+}

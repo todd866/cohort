@@ -1,0 +1,71 @@
+{
+  "id": "bank:usmle-step1:pharm-fluoxetine-uses:v1",
+  "rotation": "usmle-step1-open",
+  "topics": [
+    "fluoxetine",
+    "SSRI"
+  ],
+  "moduleNodes": [
+    "usmle/step1",
+    "usmle/step1/pharmacology"
+  ],
+  "questionType": "mechanism",
+  "difficulty": "easy",
+  "stem": "Fluoxetine is used to treat depression and which other psychiatric condition?",
+  "options": [
+    {
+      "label": "A",
+      "text": "Schizophrenia",
+      "isCorrect": false,
+      "misconception": "Assumes any psychotropic drug treats psychosis.",
+      "explanation": "Schizophrenia is treated with antipsychotics that block dopamine D2 receptors; fluoxetine does not treat psychosis."
+    },
+    {
+      "label": "B",
+      "text": "Acute mania",
+      "isCorrect": false,
+      "misconception": "Treats mania as the same target as depression.",
+      "explanation": "Acute mania is treated with lithium, valproate or antipsychotics; an antidepressant such as fluoxetine can precipitate or worsen mania."
+    },
+    {
+      "label": "C",
+      "text": "Attention-deficit/hyperactivity disorder",
+      "isCorrect": false,
+      "misconception": "Confuses serotonergic antidepressants with ADHD medications.",
+      "explanation": "ADHD is treated with stimulants such as methylphenidate or with atomoxetine; fluoxetine is not an ADHD treatment."
+    },
+    {
+      "label": "D",
+      "text": "Obsessive-compulsive disorder",
+      "isCorrect": true,
+      "misconception": "None — OCD is a labeled fluoxetine use alongside depression.",
+      "explanation": "The label lists obsessive-compulsive disorder alongside depression, some eating disorders, and panic attacks as uses of fluoxetine."
+    },
+    {
+      "label": "E",
+      "text": "Delirium",
+      "isCorrect": false,
+      "misconception": "Treats acute confusion from a medical cause as a mood disorder.",
+      "explanation": "Delirium is managed by finding and reversing its medical cause; fluoxetine does not treat it, and serotonergic excess can itself cause confusion."
+    }
+  ],
+  "context": "Learning objective: Fluoxetine treats depression, obsessive-compulsive disorder, some eating disorders, and panic attacks.",
+  "cite": "medlineplus-fluoxetine#fluoxetine-uses",
+  "publicUsmle": {
+    "schemaVersion": 1,
+    "origin": "generated",
+    "itemText": {
+      "licence": "CC-BY-4.0",
+      "attribution": "MD3 contributors"
+    },
+    "evidence": {
+      "kind": "passage",
+      "sourceId": "medlineplus-fluoxetine",
+      "passageId": "fluoxetine-uses",
+      "licence": {
+        "cls": "foss",
+        "id": "us-gov"
+      }
+    }
+  }
+}

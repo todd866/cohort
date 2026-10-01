@@ -1,0 +1,36 @@
+{
+  "id": "concept-uti-ascending-infection",
+  "title": "A common route of urinary infection",
+  "prompt": "Create an original polished 1536x1024 landscape conceptual medical teaching diagram for after-answer study. Warm hand-painted gouache and watercolour on ivory paper; a gentle storybook warmth with precise dark navy type. Matte teal, ochre, coral and blue accents. Simple neutral tokens, paper tiles, arrows and visibly abstract compartments only. Make the visual relationships legible at small size. No body parts, organs, cells, tissues, lumens, tubules, membranes, vessels, anatomical cutaways, clinical photos, diagnostic scans, babies, realistic flesh or decorative scenery. Do not turn abstract boxes or routes into organs or anatomy. Do not invent extra arrows or medical claims. Edge meanings below are metadata, not visible text: draw the arrows but do not print their meaning strings. Footer exactly: Conceptual schematic • Not anatomy. Title exactly: A common route of urinary infection. A vertical staircase of FOUR disconnected paper labels, beginning at lower left node1 and ascending diagonally to upper right node4. Three broad arrows point UP the staircase. Show neutral purple bead tokens traveling along these PAGE arrows, no bacterial morphology. Use small sublabel Cystitis under2 and Pyelonephritis under4. Caption: Infection may ascend; progression is not inevitable. Absolutely no urethral tube, bladder outline, ureters, kidneys or human body; this is a logical sequence with site names only. Exact node labels: [{\"id\": \"1\", \"label\": \"Bacteria enter via urethra\"}, {\"id\": \"2\", \"label\": \"Bladder infection\"}, {\"id\": \"3\", \"label\": \"Spread via ureters\"}, {\"id\": \"4\", \"label\": \"Kidney infection\"}]. Exact directed connections: [{\"from\": \"1\", \"to\": \"2\", \"meaning\": \"entry\"}, {\"from\": \"2\", \"to\": \"3\", \"meaning\": \"possible ascent\"}, {\"from\": \"3\", \"to\": \"4\", \"meaning\": \"possible upper infection\"}]. Required checks: Four nodes and three upward arrows in correct sequence; Cystitis matches bladder and pyelonephritis kidney; Possible rather than inevitable progression; Site names only, no actual urinary anatomy. CRITICAL readability correction: the entire canvas background must be UNIFORM LIGHT IVORY PAPER, including every margin behind title and footer. No dark area, black background, transparency, vignette, glow, theatrical lighting, gradients or cast shadows. All headings dark navy on light ivory. No exceptions.",
+  "clinicalSources": [
+    {
+      "title": "NICHD — What is a urinary tract infection?",
+      "url": "https://www.nichd.nih.gov/health/topics/urinary/conditioninfo/uti"
+    },
+    {
+      "title": "NIDDK — Kidney infection definition and facts",
+      "url": "https://www.niddk.nih.gov/health-information/urologic-diseases/kidney-infection-pyelonephritis/definition-facts"
+    }
+  ],
+  "caption": "A sequence of named stages explains the common ascending route of urinary infection.",
+  "question": "How can a lower urinary infection become pyelonephritis?",
+  "answer": "Infection can ascend from the bladder through the ureters to one or both kidneys.",
+  "structureSpecification": "scaffolds/concept-uti-ascending-infection.json",
+  "generationInputs": {
+    "referenceImages": [],
+    "style": "written-only"
+  },
+  "attempts": [
+    {
+      "prompt": "Create an original polished 1536x1024 landscape conceptual medical teaching diagram for after-answer study. Warm hand-painted gouache and watercolour on ivory paper; a gentle storybook warmth with precise dark navy type. Matte teal, ochre, coral and blue accents. Simple neutral tokens, paper tiles, arrows and visibly abstract compartments only. Make the visual relationships legible at small size. No body parts, organs, cells, tissues, lumens, tubules, membranes, vessels, anatomical cutaways, clinical photos, diagnostic scans, babies, realistic flesh or decorative scenery. Do not turn abstract boxes or routes into organs or anatomy. Do not invent extra arrows or medical claims. Edge meanings below are metadata, not visible text: draw the arrows but do not print their meaning strings. Footer exactly: Conceptual schematic • Not anatomy. Title exactly: A common route of urinary infection. A vertical staircase of FOUR disconnected paper labels, beginning at lower left node1 and ascending diagonally to upper right node4. Three broad arrows point UP the staircase. Show neutral purple bead tokens traveling along these PAGE arrows, no bacterial morphology. Use small sublabel Cystitis under2 and Pyelonephritis under4. Caption: Infection may ascend; progression is not inevitable. Absolutely no urethral tube, bladder outline, ureters, kidneys or human body; this is a logical sequence with site names only. Exact node labels: [{\"id\": \"1\", \"label\": \"Bacteria enter via urethra\"}, {\"id\": \"2\", \"label\": \"Bladder infection\"}, {\"id\": \"3\", \"label\": \"Spread via ureters\"}, {\"id\": \"4\", \"label\": \"Kidney infection\"}]. Exact directed connections: [{\"from\": \"1\", \"to\": \"2\", \"meaning\": \"entry\"}, {\"from\": \"2\", \"to\": \"3\", \"meaning\": \"possible ascent\"}, {\"from\": \"3\", \"to\": \"4\", \"meaning\": \"possible upper infection\"}]. Required checks: Four nodes and three upward arrows in correct sequence; Cystitis matches bladder and pyelonephritis kidney; Possible rather than inevitable progression; Site names only, no actual urinary anatomy.",
+      "status": "rejected",
+      "reason": "Dark vignette obscures title, qualification and footer, despite correct sequence."
+    }
+  ],
+  "qa": {
+    "status": "pending-independent-qa",
+    "method": "agent-visual-and-source-review",
+    "notes": "Corrected pixels: title, progression qualifier and footer are now dark on ivory and legible. Four logical site labels and three upward connectors correctly order urethral entry, bladder infection, ureteric spread, kidney infection. No organs or anatomy. Independent and clinical review pending.",
+    "clinicalReviewStatus": "pending"
+  }
+}

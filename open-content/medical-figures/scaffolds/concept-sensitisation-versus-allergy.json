@@ -1,0 +1,94 @@
+{
+  "schemaVersion": 1,
+  "id": "concept-sensitisation-versus-allergy",
+  "kind": "conceptual",
+  "sourceFacts": [
+    {
+      "fact": "Positive skin-prick or specific-IgE tests demonstrate sensitisation.",
+      "sourceUrls": [
+        "https://www.allergy.org.au/hp/papers/skin-prick-testing",
+        "https://allergy.org.au/hp/papers/ascia-position-paper-food-allergen-challenges"
+      ]
+    },
+    {
+      "fact": "Test positivity alone does not establish clinical allergy; interpret with exposure-related symptoms and history.",
+      "sourceUrls": [
+        "https://www.allergy.org.au/hp/papers/skin-prick-testing",
+        "https://allergy.org.au/hp/papers/ascia-position-paper-food-allergen-challenges"
+      ]
+    },
+    {
+      "fact": "Test magnitude alone does not predict reaction severity.",
+      "sourceUrls": [
+        "https://www.allergy.org.au/hp/papers/skin-prick-testing",
+        "https://allergy.org.au/hp/papers/ascia-position-paper-food-allergen-challenges"
+      ]
+    }
+  ],
+  "nodes": [
+    {
+      "id": "1",
+      "label": "Positive IgE-based test"
+    },
+    {
+      "id": "2",
+      "label": "Sensitisation"
+    },
+    {
+      "id": "3",
+      "label": "Exposure-related symptoms"
+    },
+    {
+      "id": "4",
+      "label": "Clinical allergy assessment"
+    }
+  ],
+  "edges": [
+    {
+      "from": "1",
+      "to": "2",
+      "meaning": "test interpretation"
+    },
+    {
+      "from": "2",
+      "to": "4",
+      "meaning": "one input"
+    },
+    {
+      "from": "3",
+      "to": "4",
+      "meaning": "history input"
+    }
+  ],
+  "labels": [
+    "Sensitisation needs clinical context",
+    "Positive IgE-based test",
+    "Sensitisation",
+    "Exposure-related symptoms",
+    "Clinical allergy assessment",
+    "Conceptual schematic • Not anatomy"
+  ],
+  "layout": "Four rectangular cards. Left top1 leads down to left middle2. Right middle3 is a separate history card. Cards2 and3 send two arrows converging at bottom centre4, visually combining two distinct inputs. Neutral symbols: checked result slip, labelled IgE tokens, a calendar with symptom dots, and a magnifying glass over blank paper. No patient, food icons or skin. A clear separate bottom note: A positive test alone does not prove clinical allergy. Small note: Test size does not predict reaction severity. No equals sign between sensitisation and clinical allergy.",
+  "forbiddenAnatomy": [
+    "organs",
+    "body silhouettes",
+    "tissue cross-sections",
+    "cells",
+    "tubules",
+    "vessels",
+    "clinical photographs",
+    "diagnostic scans"
+  ],
+  "validation": {
+    "sourceStatus": "checked",
+    "structureStatus": "verified",
+    "requiredChecks": [
+      "Four nodes and three arrows",
+      "Sensitisation and symptoms are separate inputs to assessment",
+      "No implication that test positivity or test size alone diagnoses severity",
+      "No skin or diagnostic test photograph"
+    ],
+    "clinicalReviewStatus": "pending",
+    "pixelChecks": "Pixel review: four nodes, three arrows; positive test leads to sensitisation, and sensitisation plus a separate exposure-related symptom history converge only on assessment. Both qualifying notes are legible. Neutral tokens and documents only. Independent and clinical review pending."
+  }
+}

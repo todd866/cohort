@@ -1,0 +1,99 @@
+{
+  "schemaVersion": 1,
+  "figureId": "dermatophyte-keratin-growth-model",
+  "kind": "conceptual",
+  "sourceFacts": [
+    {
+      "id": "fact-1",
+      "fact": "Dermatophytes utilise keratin as a nutrient source through keratinase activity.",
+      "sources": [
+        {
+          "title": "Adelaide University Mycology: Cutaneous mycoses",
+          "url": "https://mycology.adelaide.edu.au/mycoses/cutaneous-mycoses"
+        }
+      ]
+    },
+    {
+      "id": "fact-2",
+      "fact": "They cause tinea infections of keratinised skin, hair and nails.",
+      "sources": [
+        {
+          "title": "Adelaide University Mycology: Cutaneous mycoses",
+          "url": "https://mycology.adelaide.edu.au/mycoses/cutaneous-mycoses"
+        }
+      ]
+    },
+    {
+      "id": "fact-3",
+      "fact": "The filament is symbolic growth, not a microscopic identification image.",
+      "sources": [
+        {
+          "title": "Adelaide University Mycology: Cutaneous mycoses",
+          "url": "https://mycology.adelaide.edu.au/mycoses/cutaneous-mycoses"
+        }
+      ]
+    }
+  ],
+  "nodes": [
+    {
+      "id": "keratin",
+      "shape": "stack of fibre-textured tiles",
+      "label": "Keratin"
+    },
+    {
+      "id": "enzyme",
+      "shape": "scissors",
+      "label": "Keratinase"
+    },
+    {
+      "id": "nutrients",
+      "shape": "small tile fragments",
+      "label": "Nutrients"
+    },
+    {
+      "id": "fungus",
+      "shape": "simple branching thread",
+      "label": "Fungal growth"
+    }
+  ],
+  "edges": [
+    {
+      "from": "keratin",
+      "to": "enzyme",
+      "meaning": "keratin broken down enzymatically"
+    },
+    {
+      "from": "enzyme",
+      "to": "nutrients",
+      "meaning": "releases usable nutrients"
+    },
+    {
+      "from": "nutrients",
+      "to": "fungus",
+      "meaning": "supports dermatophyte growth"
+    }
+  ],
+  "labels": [
+    "Keratin feeds dermatophyte growth",
+    "Keratin",
+    "Keratinase",
+    "Nutrients",
+    "Fungal growth",
+    "Skin • hair • nails",
+    "Growth model, not microscopy"
+  ],
+  "forbiddenAnatomy": [
+    "Organs, tissue layers, microscopic diagnostic morphology, clinical photos, anatomical cutaways"
+  ],
+  "validation": {
+    "status": "verified",
+    "method": "source-and-conceptual-structure-review",
+    "checks": [
+      "Keratin substrate is separate abstract material, not skin/hair/nail cross-section.",
+      "Enzyme breakdown precedes nutrient use and fungal growth.",
+      "No fabricated spores, species diagnostic structures or fungal cell interiors."
+    ],
+    "pixelReviewStatus": "verified",
+    "pixelReviewNotes": "Sequence correctly proceeds from separate keratin tiles through keratinase scissors to nutrient fragments and a branching growth symbol. Tip arrows indicate growth; no species-identifying spores or microscopic cellular detail. Skin/hair/nail words describe relevant substrates without anatomical imagery. Microscopy disclaimer legible."
+  }
+}

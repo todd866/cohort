@@ -1,0 +1,29 @@
+{
+  "id": "concept-insulin-resistance-association",
+  "title": "Acanthosis nigricans: a metabolic clue",
+  "prompt": "Create an original polished 1536x1024 landscape conceptual medical teaching diagram for after-answer study. Warm hand-painted gouache and watercolour on ivory paper; a gentle storybook warmth with precise dark navy type. Matte teal, ochre, coral and blue accents. Simple neutral tokens, paper tiles, arrows and visibly abstract compartments only. Make the visual relationships legible at small size. No body parts, organs, cells, tissues, lumens, tubules, membranes, vessels, anatomical cutaways, clinical photos, diagnostic scans, babies, realistic flesh or decorative scenery. Do not turn abstract boxes or routes into organs or anatomy. Do not invent extra arrows or medical claims. Edge meanings below are metadata, not visible text: draw the arrows but do not print their meaning strings. Footer exactly: Conceptual schematic • Not anatomy. Title exactly: Acanthosis nigricans: a metabolic clue. A wide evidence-board design with three large cards linked left-to-right by two DASHED arrows labelled small clinical interpretation. First card shows a plain coral question token, not a skin sample. Second has insulin-labelled paper coins beside a question mark, no cell or receptor. Third shows a blank checklist and magnifying glass. A separate neutral bottom band says: Other causes exist; this sign alone does not diagnose diabetes. Do not draw dark skin, neck folds, obesity silhouettes, thresholds or test recommendations. Exact node labels: [{\"id\": \"1\", \"label\": \"Acanthosis nigricans\"}, {\"id\": \"2\", \"label\": \"Consider insulin resistance\"}, {\"id\": \"3\", \"label\": \"Assess metabolic context\"}]. Exact directed connections: [{\"from\": \"1\", \"to\": \"2\", \"meaning\": \"clinical reasoning\"}, {\"from\": \"2\", \"to\": \"3\", \"meaning\": \"clinical reasoning\"}]. Required checks: Three nodes and two dashed clinical reasoning arrows; Association is not portrayed as proof of diabetes; Other causes qualifier present; No skin image, tissues or body form.",
+  "clinicalSources": [
+    {
+      "title": "AAD — Acanthosis nigricans overview",
+      "url": "https://www.aad.org/public/diseases/a-z/acanthosis-nigricans-overview"
+    },
+    {
+      "title": "AAD — Acanthosis nigricans causes",
+      "url": "https://www.aad.org/public/diseases/a-z/acanthosis-nigricans-causes"
+    }
+  ],
+  "caption": "Acanthosis nigricans is a reason to consider insulin resistance in clinical context, rather than a diagnosis of diabetes.",
+  "question": "What metabolic association should acanthosis nigricans prompt you to consider?",
+  "answer": "Insulin resistance; other causes exist and the sign alone does not diagnose diabetes.",
+  "structureSpecification": "scaffolds/concept-insulin-resistance-association.json",
+  "generationInputs": {
+    "referenceImages": [],
+    "style": "written-only"
+  },
+  "qa": {
+    "status": "pending-independent-qa",
+    "method": "agent-visual-and-source-review",
+    "notes": "Pixel review: three nodes and two dashed arrows explicitly labelled clinical reasoning; insulin resistance is considered rather than proven. Other causes and no stand-alone diabetes diagnosis qualification clear. Only tokens and checklist symbols. Independent and clinical review pending.",
+    "clinicalReviewStatus": "pending"
+  }
+}

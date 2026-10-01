@@ -1,0 +1,73 @@
+{
+  "id": "bank:usmle-step1:he-sickle-hbs-shape-r3:v1",
+  "rotation": "usmle-step1-open",
+  "ladderId": "sickle-hbs-shape",
+  "difficulty": "hard",
+  "topics": [
+    "sickle cell disease",
+    "vaso-occlusion",
+    "ladder:sickle-hbs-shape"
+  ],
+  "moduleNodes": [
+    "usmle/step1",
+    "usmle/step1/hematology"
+  ],
+  "questionType": "mechanism",
+  "stem": "A 22-year-old man of African descent presents to the emergency department with severe bone pain in both thighs after a short viral illness. He has a childhood history of recurrent painful crises and intermittent jaundice. Examination shows tenderness over several long bones without overlying cellulitis.\n\nWhich mechanism most directly explains tissue ischemia during these episodes?",
+  "options": [
+    {
+      "label": "A",
+      "text": "Abnormally shaped cells lodge in narrow capillaries",
+      "isCorrect": true,
+      "misconception": "None; sickled cells lodge in capillaries and block flow.",
+      "explanation": "Sickled erythrocytes cannot fold to squeeze through narrow capillaries, lodging there and blocking blood flow to tissues."
+    },
+    {
+      "label": "B",
+      "text": "Autoantibodies lyse erythrocytes in the spleen only",
+      "isCorrect": false,
+      "misconception": "Immune hemolysis is being substituted for vaso-occlusion.",
+      "explanation": "Autoimmune hemolysis is a different pathway; sickle ischemia follows capillary lodging of deformed cells."
+    },
+    {
+      "label": "C",
+      "text": "Marrow fibrosis replaces normal erythropoiesis entirely",
+      "isCorrect": false,
+      "misconception": "Myelofibrosis is being confused with hemoglobin S vasculopathy.",
+      "explanation": "Marrow fibrosis does not explain acute vaso-occlusive bone pain from capillary obstruction."
+    },
+    {
+      "label": "D",
+      "text": "Platelet plugs occlude arteries without shape change",
+      "isCorrect": false,
+      "misconception": "Primary thrombosis is being confused with sickled-cell lodging.",
+      "explanation": "The grounded mechanism is deformed erythrocytes lodging in capillaries, not isolated platelet arterial plugs."
+    },
+    {
+      "label": "E",
+      "text": "Cholesterol emboli shower distal arterioles after plaques",
+      "isCorrect": false,
+      "misconception": "Atherosclerotic embolization is being inferred in a young adult.",
+      "explanation": "Cholesterol emboli are unrelated to hemoglobin S–driven erythrocyte deformation and capillary lodging."
+    }
+  ],
+  "context": "Learning objective: infer capillary lodging of sickled cells as the ischemia mechanism.",
+  "cite": "openstax-anatomy-physiology#he-sickle-hbs-shape",
+  "publicUsmle": {
+    "schemaVersion": 1,
+    "origin": "generated",
+    "itemText": {
+      "licence": "CC-BY-4.0",
+      "attribution": "MD3 contributors"
+    },
+    "evidence": {
+      "kind": "passage",
+      "sourceId": "openstax-anatomy-physiology",
+      "passageId": "he-sickle-hbs-shape",
+      "licence": {
+        "cls": "foss",
+        "id": "cc-by-4.0"
+      }
+    }
+  }
+}

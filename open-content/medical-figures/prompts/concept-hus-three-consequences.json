@@ -1,0 +1,29 @@
+{
+  "id": "concept-hus-three-consequences",
+  "title": "One process, three HUS consequences",
+  "prompt": "Create an original polished 1536x1024 landscape conceptual medical teaching diagram for after-answer study. Warm hand-painted gouache and watercolour on ivory paper; a gentle storybook warmth with precise dark navy type. Matte teal, ochre, coral and blue accents. Simple neutral tokens, paper tiles, arrows and visibly abstract compartments only. Make the visual relationships legible at small size. No body parts, organs, cells, tissues, lumens, tubules, membranes, vessels, anatomical cutaways, clinical photos, diagnostic scans, babies, realistic flesh or decorative scenery. Do not turn abstract boxes or routes into organs or anatomy. Do not invent extra arrows or medical claims. Edge meanings below are metadata, not visible text: draw the arrows but do not print their meaning strings. Footer exactly: Conceptual schematic • Not anatomy. Title exactly: One process, three HUS consequences. A top-centre blue node1 branches into THREE equal, clearly separated vertical columns. Left column node2 then3, centre node4 then5, right node6 then7. Exactly six connectors and seven labelled nodes, no cross-links. Neutral metaphors: torn red paper discs for fragmentation, fewer ochre dot tokens for consumption, and an abstract declining gauge for function. No red-cell microscopy, platelets with anatomical detail, vessel or kidney icon. Below the columns print: The haemolytic uraemic syndrome triad. Exact node labels: [{\"id\": \"1\", \"label\": \"Microvascular injury\"}, {\"id\": \"2\", \"label\": \"Red-cell fragmentation\"}, {\"id\": \"3\", \"label\": \"Haemolytic anaemia\"}, {\"id\": \"4\", \"label\": \"Platelet consumption\"}, {\"id\": \"5\", \"label\": \"Thrombocytopenia\"}, {\"id\": \"6\", \"label\": \"Reduced kidney function\"}, {\"id\": \"7\", \"label\": \"Acute kidney injury\"}]. Exact directed connections: [{\"from\": \"1\", \"to\": \"2\", \"meaning\": \"mechanism\"}, {\"from\": \"2\", \"to\": \"3\", \"meaning\": \"result\"}, {\"from\": \"1\", \"to\": \"4\", \"meaning\": \"mechanism\"}, {\"from\": \"4\", \"to\": \"5\", \"meaning\": \"result\"}, {\"from\": \"1\", \"to\": \"6\", \"meaning\": \"mechanism\"}, {\"from\": \"6\", \"to\": \"7\", \"meaning\": \"result\"}]. Required checks: Exactly three branches from one central process; Each mechanism links only to its matched outcome; Low platelets follow consumption and anaemia follows red-cell fragmentation; No vessels, organs, cells or clinical smear.",
+  "clinicalSources": [
+    {
+      "title": "NIDDK — Haemolytic uraemic syndrome in children",
+      "url": "https://www.niddk.nih.gov/health-information/kidney-disease/children/hemolytic-uremic-syndrome"
+    },
+    {
+      "title": "Renal microangiopathy of the haemolytic-uraemic syndrome in childhood — primary pathological study",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/940625/"
+    }
+  ],
+  "caption": "A branching conceptual diagram links microvascular injury with the three defining consequences of haemolytic uraemic syndrome.",
+  "question": "How can one microvascular process explain the HUS triad?",
+  "answer": "It damages red cells, consumes platelets and impairs kidney function, producing haemolytic anaemia, thrombocytopenia and acute kidney injury.",
+  "structureSpecification": "scaffolds/concept-hus-three-consequences.json",
+  "generationInputs": {
+    "referenceImages": [],
+    "style": "written-only"
+  },
+  "qa": {
+    "status": "pending-independent-qa",
+    "method": "agent-visual-and-source-review",
+    "notes": "Pixel review: seven nodes and six directed links form three correctly matched HUS branches. Torn red paper tokens, ochre inventory tokens and gauges stay abstract; no vascular or organ anatomy. Top microvascular heading and bottom triad heading carry the intended teaching point although the requested introductory title was omitted. Clinical and independent review pending.",
+    "clinicalReviewStatus": "pending"
+  }
+}

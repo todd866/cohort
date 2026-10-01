@@ -1,0 +1,66 @@
+{
+  "id": "bank:cohort:paeds:q-1be13d7f4ca1:v1",
+  "rotation": "cohort-open",
+  "moduleNodes": [
+    "cohort/paeds"
+  ],
+  "topics": [
+    "tetralogy-of-fallot",
+    "cyanotic-heart-disease",
+    "paediatric-cardiology"
+  ],
+  "questionType": "diagnosis",
+  "difficulty": "medium",
+  "stem": "A 4-month-old is usually pink at rest but becomes deeply cyanosed and inconsolable during a long crying episode. Femoral pulses are equal. There is a harsh ejection systolic murmur at the upper left sternal edge.\n\nWhat is the most likely congenital lesion?",
+  "options": [
+    {
+      "label": "A",
+      "text": "Truncus arteriosus",
+      "isCorrect": false,
+      "explanation": "Truncus produces mixing and a wide pulse pressure from diastolic run-off. It does not cause discrete crying-triggered hypercyanotic spells."
+    },
+    {
+      "label": "B",
+      "text": "Tetralogy of Fallot",
+      "isCorrect": true,
+      "explanation": "Hypercyanotic spells on crying, with an RVOT-type murmur and equal pulses, are the classic unoperated Fallot picture. Resting pink colour with episodic deep cyanosis fits dynamic infundibular obstruction rather than a mixing lesion that is blue from birth."
+    },
+    {
+      "label": "C",
+      "text": "Tricuspid atresia",
+      "isCorrect": false,
+      "explanation": "Tricuspid atresia is cyanotic from birth and depends on an ASD plus a VSD or PDA for pulmonary flow. Equal pulses and a spell pattern point to Fallot, not an absent tricuspid valve."
+    },
+    {
+      "label": "D",
+      "text": "Pulmonary atresia",
+      "isCorrect": false,
+      "explanation": "Pulmonary atresia is duct-dependent and severely cyanosed from the first hours of life, not a baby who is pink at rest and blue only when crying."
+    },
+    {
+      "label": "E",
+      "text": "Great-artery transposition",
+      "isCorrect": false,
+      "explanation": "TGA presents with early cyanosis and a single loud S2 rather than a harsh RVOT murmur and episodic crying spells in a previously pink infant."
+    }
+  ],
+  "context": "Tetralogy of Fallot: VSD, overriding aorta, RVOT obstruction, and RV hypertrophy.\n\nHypercyanotic spells happen when crying or straining worsens infundibular obstruction, increasing right-to-left shunt. Immediate management is knee-to-chest, oxygen, and calming — but this item asks the lesion, not the first manoeuvre.",
+  "publicModule": {
+    "schemaVersion": 1,
+    "origin": "mirrored",
+    "discipline": "paeds",
+    "mirroredFrom": "md3:1be13d7f4ca18fb0",
+    "itemText": {
+      "licence": "CC-BY-4.0",
+      "attribution": "MD3 contributors"
+    },
+    "evidence": {
+      "kind": "reference",
+      "sourceId": "rch-cyanotic-episodes-in-congenital-heart-disease"
+    },
+    "review": {
+      "verdict": "passed",
+      "contentHash": "b58d2f2de67cb0070b130f67ee40332ac1257af77c4ca5787ca02c03bc8ac545"
+    }
+  }
+}

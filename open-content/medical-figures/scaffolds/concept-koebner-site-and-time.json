@@ -1,0 +1,75 @@
+{
+  "schemaVersion": 1,
+  "id": "concept-koebner-site-and-time",
+  "kind": "conceptual",
+  "sourceFacts": [
+    {
+      "fact": "In people with psoriasis, skin injury may be followed by a new psoriatic lesion at that same site.",
+      "sourceUrls": [
+        "https://www.aad.org/public/diseases/psoriasis/triggers/flares"
+      ]
+    },
+    {
+      "fact": "The relationship is temporal and spatial; the response is not inevitable.",
+      "sourceUrls": [
+        "https://www.aad.org/public/diseases/psoriasis/triggers/flares"
+      ]
+    }
+  ],
+  "nodes": [
+    {
+      "id": "1",
+      "label": "Injury at a site"
+    },
+    {
+      "id": "2",
+      "label": "An interval passes"
+    },
+    {
+      "id": "3",
+      "label": "New psoriasis at the same site"
+    }
+  ],
+  "edges": [
+    {
+      "from": "1",
+      "to": "2",
+      "meaning": "time"
+    },
+    {
+      "from": "2",
+      "to": "3",
+      "meaning": "possible delayed response"
+    }
+  ],
+  "labels": [
+    "Koebner phenomenon: same site, later lesion",
+    "Injury at a site",
+    "An interval passes",
+    "New psoriasis at the same site",
+    "Conceptual schematic • Not anatomy"
+  ],
+  "layout": "Three large side-by-side panels. First and third each contain the EXACT SAME neutral 3-by-3 grid of ivory paper squares. In first panel put a small coral X on the central square; in third replace that X with a single purple circular token on the central square. Other eight squares stay blank in BOTH grids. Middle panel shows a simple clock. Exactly two arrows from panel1 to2 to3. Under first grid say Injury marker; under third say Lesion marker. Caption: A matched-location concept, not a skin image. Small note: May occur after injury in psoriasis. No texture resembling skin, scales, rash, scratches, blood or body parts. These are coordinate grids only.",
+  "forbiddenAnatomy": [
+    "organs",
+    "body silhouettes",
+    "tissue cross-sections",
+    "cells",
+    "tubules",
+    "vessels",
+    "clinical photographs",
+    "diagnostic scans"
+  ],
+  "validation": {
+    "sourceStatus": "checked",
+    "structureStatus": "verified",
+    "requiredChecks": [
+      "Both grids exactly three by three",
+      "Only the central square is marked in each grid",
+      "Injury marker becomes lesion marker at same location after an interval",
+      "No anatomical skin or clinical lesion simulation"
+    ],
+    "clinicalReviewStatus": "pending",
+    "pixelChecks": "Pixel check: both panels contain exactly three-by-three grids; only central square marked, X first and purple lesion token later. Clock between panels and two forward arrows preserve same-site delayed relation. No clinical skin depiction; possible occurrence qualifier clear. Independent and clinical review pending."
+  }
+}

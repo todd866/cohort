@@ -1,0 +1,71 @@
+{
+  "id": "bank:usmle-step1:gi-intussusception-telescoping-recognition:v1",
+  "rotation": "usmle-step1-open",
+  "topics": [
+    "intussusception",
+    "bowel obstruction"
+  ],
+  "moduleNodes": [
+    "usmle/step1",
+    "usmle/step1/gastrointestinal"
+  ],
+  "questionType": "diagnosis",
+  "difficulty": "easy",
+  "stem": "Which of the following diagnoses describes a bowel blockage in which one segment folds into itself like a telescope?",
+  "options": [
+    {
+      "label": "A",
+      "text": "Intussusception",
+      "isCorrect": true,
+      "misconception": "None; the telescope analogy is translated into the diagnosis named by the source.",
+      "explanation": "The CDC passage defines intussusception as a bowel blockage produced when the bowel folds into itself like a telescope."
+    },
+    {
+      "label": "B",
+      "text": "Small-bowel volvulus",
+      "isCorrect": false,
+      "misconception": "Generic bowel obstruction is recognized, but the source's defining telescope-folding process is missed.",
+      "explanation": "The cited passage assigns bowel folding into itself like a telescope to intussusception, not small-bowel volvulus."
+    },
+    {
+      "label": "C",
+      "text": "Meconium ileus",
+      "isCorrect": false,
+      "misconception": "The blockage cue is used without matching the mechanism explicitly named in the citation.",
+      "explanation": "A bowel blockage alone is not the complete cue; the passage identifies the telescope-like folding process as intussusception."
+    },
+    {
+      "label": "D",
+      "text": "Hypertrophic pyloric stenosis",
+      "isCorrect": false,
+      "misconception": "Another obstructive diagnosis is substituted for the cited folding-into-itself definition.",
+      "explanation": "The evidence names intussusception when bowel folds into itself like a telescope; it does not attach that definition to pyloric stenosis."
+    },
+    {
+      "label": "E",
+      "text": "Congenital aganglionosis",
+      "isCorrect": false,
+      "misconception": "A different bowel-obstruction label is chosen despite the passage's visual diagnostic cue.",
+      "explanation": "The telescope analogy is decisive in this evidence passage: it directly defines intussusception rather than congenital aganglionosis."
+    }
+  ],
+  "context": "Learning objective: recognize intussusception from its defining geometry. When a bowel-obstruction stem says that bowel folds into itself like a telescope, translate the image directly to intussusception.",
+  "cite": "cdc-pink-book-rotavirus#rota-intussusception",
+  "publicUsmle": {
+    "schemaVersion": 1,
+    "origin": "generated",
+    "itemText": {
+      "licence": "CC-BY-4.0",
+      "attribution": "MD3 contributors"
+    },
+    "evidence": {
+      "kind": "passage",
+      "sourceId": "cdc-pink-book-rotavirus",
+      "passageId": "rota-intussusception",
+      "licence": {
+        "cls": "foss",
+        "id": "us-gov"
+      }
+    }
+  }
+}

@@ -1,0 +1,29 @@
+{
+  "id": "concept-sensitisation-versus-allergy",
+  "title": "Sensitisation needs clinical context",
+  "prompt": "Create an original polished 1536x1024 landscape conceptual medical teaching diagram for after-answer study. Warm hand-painted gouache and watercolour on ivory paper; a gentle storybook warmth with precise dark navy type. Matte teal, ochre, coral and blue accents. Simple neutral tokens, paper tiles, arrows and visibly abstract compartments only. Make the visual relationships legible at small size. No body parts, organs, cells, tissues, lumens, tubules, membranes, vessels, anatomical cutaways, clinical photos, diagnostic scans, babies, realistic flesh or decorative scenery. Do not turn abstract boxes or routes into organs or anatomy. Do not invent extra arrows or medical claims. Edge meanings below are metadata, not visible text: draw the arrows but do not print their meaning strings. Footer exactly: Conceptual schematic • Not anatomy. Title exactly: Sensitisation needs clinical context. Four rectangular cards. Left top1 leads down to left middle2. Right middle3 is a separate history card. Cards2 and3 send two arrows converging at bottom centre4, visually combining two distinct inputs. Neutral symbols: checked result slip, labelled IgE tokens, a calendar with symptom dots, and a magnifying glass over blank paper. No patient, food icons or skin. A clear separate bottom note: A positive test alone does not prove clinical allergy. Small note: Test size does not predict reaction severity. No equals sign between sensitisation and clinical allergy. Exact node labels: [{\"id\": \"1\", \"label\": \"Positive IgE-based test\"}, {\"id\": \"2\", \"label\": \"Sensitisation\"}, {\"id\": \"3\", \"label\": \"Exposure-related symptoms\"}, {\"id\": \"4\", \"label\": \"Clinical allergy assessment\"}]. Exact directed connections: [{\"from\": \"1\", \"to\": \"2\", \"meaning\": \"test interpretation\"}, {\"from\": \"2\", \"to\": \"4\", \"meaning\": \"one input\"}, {\"from\": \"3\", \"to\": \"4\", \"meaning\": \"history input\"}]. Required checks: Four nodes and three arrows; Sensitisation and symptoms are separate inputs to assessment; No implication that test positivity or test size alone diagnoses severity; No skin or diagnostic test photograph.",
+  "clinicalSources": [
+    {
+      "title": "ASCIA — Skin prick testing guide",
+      "url": "https://www.allergy.org.au/hp/papers/skin-prick-testing"
+    },
+    {
+      "title": "ASCIA — Oral food allergen challenges position paper",
+      "url": "https://allergy.org.au/hp/papers/ascia-position-paper-food-allergen-challenges"
+    }
+  ],
+  "caption": "Test evidence and exposure-related symptoms are separate inputs to assessment of clinical allergy.",
+  "question": "What does a positive skin-prick or allergen-specific IgE test establish?",
+  "answer": "It establishes sensitisation; clinical relevance requires interpretation alongside symptoms, exposures and history.",
+  "structureSpecification": "scaffolds/concept-sensitisation-versus-allergy.json",
+  "generationInputs": {
+    "referenceImages": [],
+    "style": "written-only"
+  },
+  "qa": {
+    "status": "pending-independent-qa",
+    "method": "agent-visual-and-source-review",
+    "notes": "Pixel review: four nodes, three arrows; positive test leads to sensitisation, and sensitisation plus a separate exposure-related symptom history converge only on assessment. Both qualifying notes are legible. Neutral tokens and documents only. Independent and clinical review pending.",
+    "clinicalReviewStatus": "pending"
+  }
+}

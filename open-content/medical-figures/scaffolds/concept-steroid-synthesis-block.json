@@ -1,0 +1,101 @@
+{
+  "schemaVersion": 1,
+  "id": "concept-steroid-synthesis-block",
+  "kind": "conceptual",
+  "sourceFacts": [
+    {
+      "fact": "In salt-wasting 21-hydroxylase deficiency cortisol and aldosterone production are impaired.",
+      "sourceUrls": [
+        "https://medlineplus.gov/genetics/condition/21-hydroxylase-deficiency/"
+      ]
+    },
+    {
+      "fact": "Accumulated precursors can be converted to androgens, which are increased.",
+      "sourceUrls": [
+        "https://medlineplus.gov/genetics/condition/21-hydroxylase-deficiency/"
+      ]
+    },
+    {
+      "fact": "Aldosterone deficiency contributes to urinary salt loss.",
+      "sourceUrls": [
+        "https://medlineplus.gov/genetics/condition/21-hydroxylase-deficiency/"
+      ]
+    }
+  ],
+  "nodes": [
+    {
+      "id": "1",
+      "label": "Steroid precursors"
+    },
+    {
+      "id": "2",
+      "label": "Cortisol reduced"
+    },
+    {
+      "id": "3",
+      "label": "Aldosterone reduced"
+    },
+    {
+      "id": "4",
+      "label": "Androgens increased"
+    },
+    {
+      "id": "5",
+      "label": "Salt loss"
+    }
+  ],
+  "edges": [
+    {
+      "from": "1",
+      "to": "2",
+      "meaning": "impaired pathway"
+    },
+    {
+      "from": "1",
+      "to": "3",
+      "meaning": "impaired pathway"
+    },
+    {
+      "from": "1",
+      "to": "4",
+      "meaning": "increased androgen pathway"
+    },
+    {
+      "from": "3",
+      "to": "5",
+      "meaning": "consequence"
+    }
+  ],
+  "labels": [
+    "21-hydroxylase deficiency redirects synthesis",
+    "Steroid precursors",
+    "Cortisol reduced",
+    "Aldosterone reduced",
+    "Androgens increased",
+    "Salt loss",
+    "Conceptual schematic • Not anatomy"
+  ],
+  "layout": "A clear three-branch routing map: node1 top centre branches to left2, middle3, right4; only node3 continues down to5. Put small coral stop-bars across the LEFT and MIDDLE connectors with a shared label 21-hydroxylase block. The RIGHT connector remains open, thick teal and leads to Androgens increased. Use abstract precursor coins and outcome paper tags, not chemical structures or adrenal glands. Subtitle exactly: Classic salt-wasting form. No implied block in the androgen route.",
+  "forbiddenAnatomy": [
+    "organs",
+    "body silhouettes",
+    "tissue cross-sections",
+    "cells",
+    "tubules",
+    "vessels",
+    "clinical photographs",
+    "diagnostic scans"
+  ],
+  "validation": {
+    "sourceStatus": "checked",
+    "structureStatus": "verified",
+    "requiredChecks": [
+      "Exactly five nodes and four arrows",
+      "Both cortisol and aldosterone routes show impairment, androgen route open",
+      "Salt loss follows aldosterone reduction",
+      "Classic salt-wasting scope visible; no glands or anatomy"
+    ],
+    "clinicalReviewStatus": "pending",
+    "pixelChecks": "Pixel check: five nodes/four arrows; red block bars correctly span cortisol and aldosterone branches, androgen branch remains open. Salt loss follows low aldosterone and classic salt-wasting scope visible. Neutral coins only. Independent and clinical review pending."
+  }
+}

@@ -1,0 +1,101 @@
+{
+  "schemaVersion": 1,
+  "figureId": "birth-resistance-flow-model",
+  "kind": "conceptual",
+  "sourceFacts": [
+    {
+      "id": "fact-1",
+      "fact": "The first breaths and lung expansion contribute to pulmonary vasodilation.",
+      "sources": [
+        {
+          "title": "MSD Manual: Perinatal physiology",
+          "url": "https://www.msdmanuals.com/professional/pediatrics/perinatal-physiology/perinatal-physiology"
+        }
+      ]
+    },
+    {
+      "id": "fact-2",
+      "fact": "Rising oxygen also contributes to the fall in pulmonary vascular resistance.",
+      "sources": [
+        {
+          "title": "MSD Manual: Perinatal physiology",
+          "url": "https://www.msdmanuals.com/professional/pediatrics/perinatal-physiology/perinatal-physiology"
+        }
+      ]
+    },
+    {
+      "id": "fact-3",
+      "fact": "Lower pulmonary vascular resistance permits increased pulmonary blood flow after birth.",
+      "sources": [
+        {
+          "title": "MSD Manual: Perinatal physiology",
+          "url": "https://www.msdmanuals.com/professional/pediatrics/perinatal-physiology/perinatal-physiology"
+        }
+      ]
+    }
+  ],
+  "nodes": [
+    {
+      "id": "before",
+      "shape": "narrow mechanical gate",
+      "label": "Higher resistance"
+    },
+    {
+      "id": "trigger",
+      "shape": "breath swirl and O2 token",
+      "label": "Aeration + oxygen rise"
+    },
+    {
+      "id": "after",
+      "shape": "wide open mechanical gate",
+      "label": "Lower resistance"
+    },
+    {
+      "id": "flow",
+      "shape": "more teal flow tokens",
+      "label": "More pulmonary blood flow"
+    }
+  ],
+  "edges": [
+    {
+      "from": "trigger",
+      "to": "after",
+      "meaning": "aeration and oxygen support vasodilation"
+    },
+    {
+      "from": "before",
+      "to": "after",
+      "meaning": "normal transition lowers resistance"
+    },
+    {
+      "from": "after",
+      "to": "flow",
+      "meaning": "lower resistance supports increased blood flow"
+    }
+  ],
+  "labels": [
+    "Birth lowers resistance to pulmonary flow",
+    "Before transition",
+    "Higher resistance",
+    "Aeration + oxygen rise",
+    "After transition",
+    "Lower resistance",
+    "More pulmonary blood flow",
+    "Gate analogy, not vascular anatomy"
+  ],
+  "forbiddenAnatomy": [
+    "Organs, heart chambers, named-vessel topology, vascular/cardiac cutaways, clinical photos"
+  ],
+  "validation": {
+    "status": "verified",
+    "method": "source-and-conceptual-structure-review",
+    "checks": [
+      "Gate opening represents pulmonary vascular resistance falling; flow tokens are blood not inhaled air.",
+      "Aeration and oxygen causal cue separate from channel carrying blood.",
+      "No organ, shunt, foramen, artery or vessel geometry invented.",
+      "No exact resistance/flow ratio or claim all postnatal pathology normalises."
+    ],
+    "pixelReviewStatus": "verified",
+    "pixelReviewNotes": "Pixel check: two matched wooden tracks show a narrow gate and small flow arrow before transition, then an open gate and larger arrow with more teal blood-flow counters. Aeration and oxygen rise are a separate cause above the tracks. Labels distinguish pulmonary blood flow from inhaled air; no vascular anatomy is depicted."
+  }
+}

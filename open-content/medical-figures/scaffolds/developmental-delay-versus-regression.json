@@ -1,0 +1,76 @@
+{
+  "schemaVersion": 1,
+  "figureId": "developmental-delay-versus-regression",
+  "kind": "conceptual",
+  "created": "2026-09-10",
+  "timing": "retrospective specification of previously generated candidate",
+  "sourceFacts": [
+    {
+      "fact": "Developmental delay concerns later acquisition of expected skills.",
+      "sourceUrls": [
+        "https://www.cdc.gov/act-early/about/developmental-monitoring-and-screening.html",
+        "https://stacks.cdc.gov/view/cdc/170645"
+      ]
+    },
+    {
+      "fact": "Regression is loss of a previously acquired skill and is distinguished by the child's prior abilities.",
+      "sourceUrls": [
+        "https://www.cdc.gov/act-early/about/developmental-monitoring-and-screening.html",
+        "https://stacks.cdc.gov/view/cdc/170645"
+      ]
+    }
+  ],
+  "clinicalSources": [
+    {
+      "title": "CDC: Developmental Monitoring and Screening",
+      "url": "https://www.cdc.gov/act-early/about/developmental-monitoring-and-screening.html"
+    },
+    {
+      "title": "CDC: Social and language regression study",
+      "url": "https://stacks.cdc.gov/view/cdc/170645"
+    }
+  ],
+  "nodes": [
+    "no example word yet",
+    "example word acquired",
+    "example word previously used",
+    "example word lost"
+  ],
+  "sequence": [
+    [
+      "no example word yet",
+      "no example word yet",
+      "example word acquired"
+    ],
+    [
+      "example word previously used",
+      "example word previously used",
+      "example word lost"
+    ]
+  ],
+  "invariants": [
+    "Upper row gains word; lower row loses prior word.",
+    "Empty bubble is a single skill example, not absence of all communication."
+  ],
+  "expectedLabels": [
+    "Delay or loss of a skill?",
+    "Delay",
+    "ball",
+    "A skill is acquired later",
+    "Regression",
+    "ball",
+    "ball",
+    "A previously acquired skill is lost",
+    "Ask what the child could do before"
+  ],
+  "layoutSpecification": "Two rows of a simple conceptual skill trajectory with warm hand-painted child motif, no medical device. Title 'Delay or loss of a skill?'. Upper row heading 'Delay': three small speech bubbles progressing left to right from empty, empty, to the word 'ball'; small time arrow below; sentence 'A skill is acquired later'. Lower row 'Regression': three small speech bubbles from 'ball', 'ball', to empty fading outline; sentence 'A previously acquired skill is lost'. Use same neutral child icon beside each row; no distressed face. Bottom 'Ask what the child could do before'. No ages, test scores, normal-range claim, autism label or predicted outcome. The empty bubble means example of absent word, not inability to communicate by other means.",
+  "forbiddenAnatomy": [
+    "No claimed anatomical reconstruction, diagnostic image, histology or literal neuroanatomical pathway",
+    "No organ cutaways or invented internal spatial relationships"
+  ],
+  "validation": {
+    "sourceFacts": "Checked against listed primary clinical sources during original topic review",
+    "pixelChecks": "Visually inspected: upper sequence acquires the example word later, lower sequence loses a previously shown word; headings, time arrows and captions agree. No ages, diagnosis, outcome prediction or claim about all communication ability.",
+    "status": "self-reviewed; independent review pending"
+  }
+}

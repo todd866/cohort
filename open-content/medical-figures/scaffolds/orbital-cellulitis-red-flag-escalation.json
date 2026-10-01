@@ -1,0 +1,74 @@
+{
+  "schemaVersion": 1,
+  "figureId": "orbital-cellulitis-red-flag-escalation",
+  "kind": "conceptual",
+  "created": "2026-09-10",
+  "timing": "authored before generation",
+  "sourceFacts": [
+    {
+      "fact": "Painful or restricted eye movement, proptosis and visual impairment are red flags for orbital cellulitis.",
+      "sourceUrls": [
+        "https://www.rch.org.au/clinicalguide/guideline_index/Periorbital_and_orbital_cellulitis/"
+      ]
+    },
+    {
+      "fact": "Suspected orbital cellulitis is an emergency requiring urgent assessment, ENT and ophthalmology input and treatment.",
+      "sourceUrls": [
+        "https://www.rch.org.au/clinicalguide/guideline_index/Periorbital_and_orbital_cellulitis/"
+      ]
+    }
+  ],
+  "clinicalSources": [
+    {
+      "title": "RCH: Periorbital and orbital cellulitis",
+      "url": "https://www.rch.org.au/clinicalguide/guideline_index/Periorbital_and_orbital_cellulitis/"
+    }
+  ],
+  "nodes": [
+    "painful or limited movement",
+    "vision change or proptosis",
+    "urgent assessment",
+    "ENT",
+    "ophthalmology"
+  ],
+  "edges": [
+    [
+      "painful or limited movement",
+      "urgent assessment",
+      "red flag"
+    ],
+    [
+      "vision change or proptosis",
+      "urgent assessment",
+      "red flag"
+    ],
+    [
+      "urgent assessment",
+      "ENT",
+      "urgent specialist input"
+    ],
+    [
+      "urgent assessment",
+      "ophthalmology",
+      "urgent specialist input"
+    ]
+  ],
+  "expectedLabels": [
+    "Orbital cellulitis: act on red flags",
+    "Painful or limited eye movement",
+    "Vision change or proptosis",
+    "Urgent hospital assessment",
+    "ENT",
+    "Ophthalmology"
+  ],
+  "layoutSpecification": "Title 'Orbital cellulitis: act on red flags'. A converging then splitting action diagram. LEFT top: two short directional arrows pushing against an ochre stop-bar beside a small pain-star icon, label 'Painful or limited eye movement'. LEFT bottom: a blurred geometric star and warning flag, label 'Vision change or proptosis'. No eye or face illustration. Two distinct arrows converge at centre: a large hospital-door icon with a simple clock beside it, labelled 'Urgent hospital assessment'. Two arrows leave that hospital to two equal specialist name badges on the RIGHT, top 'ENT', bottom 'Ophthalmology'. These are parallel team inputs, neither must be completed before the other. Keep words short and icons dominant. No wait/watch branch, no doses or scan simulation.",
+  "forbiddenAnatomy": [
+    "No internal organ, eye, ear, brain, tissue or bone anatomy",
+    "No diagnostic image, patient-specific lesion appearance or literal anatomical pathway"
+  ],
+  "validation": {
+    "sourceFacts": "Checked against listed primary clinical sources on 2026-09-10",
+    "status": "self-reviewed; independent review pending",
+    "pixelChecks": "Pixel/structure check: separate movement and vision/proptosis warning groups converge toward urgent hospital assessment; two outgoing arrows lead in parallel to ENT and ophthalmology. Correct flow and legible labels. Renderer added simple external specialty icons only; there is no internal orbital, ocular or ear anatomy, wait branch or treatment sequence delay."
+  }
+}

@@ -1,0 +1,29 @@
+{
+  "id": "concept-volvulus-obstruction-ischaemia",
+  "title": "Volvulus threatens passage and perfusion",
+  "prompt": "Create an original polished 1536x1024 landscape conceptual medical teaching diagram for after-answer study. Warm hand-painted gouache and watercolour on ivory paper; a gentle storybook warmth with precise dark navy type. Matte teal, ochre, coral and blue accents. Simple neutral tokens, paper tiles, arrows and visibly abstract compartments only. Make the visual relationships legible at small size. No body parts, organs, cells, tissues, lumens, tubules, membranes, vessels, anatomical cutaways, clinical photos, diagnostic scans, babies, realistic flesh or decorative scenery. Do not turn abstract boxes or routes into organs or anatomy. Do not invent extra arrows or medical claims. Edge meanings below are metadata, not visible text: draw the arrows but do not print their meaning strings. Footer exactly: Conceptual schematic • Not anatomy. Title exactly: Volvulus threatens passage and perfusion. One top-centre concept card1 splits into two parallel branches: left2, right3 then4 below right. Exactly four nodes and three arrows. Node1 contains a simple neutral warning diamond, not twisted bowel. Node2 a plain straight page arrow with stop bar; node3 a low gauge labelled Supply; node4 a cracked paper tile. Large bottom coral band: Neonatal bilious vomiting needs urgent assessment. Do not draw actual intestinal twist, mesentery, artery, veins, organ silhouettes or malrotation geometry. This is a consequences map only. Exact node labels: [{\"id\": \"1\", \"label\": \"Midgut volvulus\"}, {\"id\": \"2\", \"label\": \"Passage obstructed\"}, {\"id\": \"3\", \"label\": \"Blood supply compromised\"}, {\"id\": \"4\", \"label\": \"Ischaemia risk\"}]. Exact directed connections: [{\"from\": \"1\", \"to\": \"2\", \"meaning\": \"mechanical consequence\"}, {\"from\": \"1\", \"to\": \"3\", \"meaning\": \"perfusion consequence\"}, {\"from\": \"3\", \"to\": \"4\", \"meaning\": \"ischaemic consequence\"}]. Required checks: Four nodes and three arrows; Obstruction and perfusion are separate consequences; Ischaemia follows perfusion compromise; No imagined bowel twist or vascular anatomy.",
+  "clinicalSources": [
+    {
+      "title": "GOSH — Malrotation and volvulus",
+      "url": "https://www.gosh.nhs.uk/conditions-and-treatments/conditions-we-treat/malrotation-and-volvulus/"
+    },
+    {
+      "title": "GOSH — Congenital anomalies requiring surgery",
+      "url": "https://media.gosh.nhs.uk/documents/16-_Congenital_anomalies_requiring_surgery.pdf"
+    }
+  ],
+  "caption": "A branched consequences map separates the obstructive and perfusion threats posed by midgut volvulus.",
+  "question": "Why is midgut volvulus time-critical?",
+  "answer": "It can block intestinal passage and compromise blood supply, creating a risk of ischaemia and tissue death.",
+  "structureSpecification": "scaffolds/concept-volvulus-obstruction-ischaemia.json",
+  "generationInputs": {
+    "referenceImages": [],
+    "style": "written-only"
+  },
+  "qa": {
+    "status": "pending-independent-qa",
+    "method": "agent-visual-and-source-review",
+    "notes": "Pixel check: four nodes/three arrows separate obstructed passage from compromised blood supply, with ischaemia only downstream of perfusion. Urgent neonatal bilious-vomiting assessment note clear. Only stop-arrow, supply gauge and cracked paper symbols; no twist or vessels. Independent and clinical review pending.",
+    "clinicalReviewStatus": "pending"
+  }
+}

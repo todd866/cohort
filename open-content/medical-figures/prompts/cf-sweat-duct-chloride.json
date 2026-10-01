@@ -1,0 +1,40 @@
+{
+  "figureId": "cf-sweat-duct-chloride",
+  "tool": "Codex-authored SVG; sharp rasterization",
+  "model": null,
+  "referenceAssetIds": [],
+  "externalReferenceImages": [],
+  "brief": {
+    "figureId": "cf-sweat-duct-chloride",
+    "stableId": "mdx:abc6e9813bfdc94813af313d50e20ba3",
+    "retrievalTarget": "Less chloride is reabsorbed in the sweat duct.",
+    "context": "CFTR dysfunction impairs chloride reabsorption in the sweat duct, leaving sweat with excess salt/chloride.",
+    "visualRelationship": "Cystic fibrosis: impaired sweat-duct chloride reabsorption",
+    "medium": "code-native SVG with PNG raster export",
+    "factBasis": [
+      {
+        "fact": "People with CF do not reabsorb salt well from sweat ducts.",
+        "url": "https://www.cff.org/community-posts/2018-07/top-5-tips-stay-healthy-summer"
+      },
+      {
+        "fact": "Sweat chloride is measured by quantitative pilocarpine iontophoresis.",
+        "url": "https://www.cff.org/medical-professionals/sweat-test-clinical-care-guidelines"
+      }
+    ],
+    "wrongReadingToPrevent": "Do not infer unsupported quantitative proportions or a different physiology from the abstract arrows.",
+    "reviewState": "pending-independent-review"
+  },
+  "sourceSvg": "sources/cf-sweat-duct-chloride.svg",
+  "sourceSvgSha256": "411eccfca03020655fc545c3a902320e8df99b5df1080c20b395609ee0e6897f",
+  "revisionNotes": "Root source and pixel review plus independent adversarial pixel review; retained conceptual relationships, corrected misleading arrow/count/timing encodings. Clinical sign-off remains pending.",
+  "clinicalSources": [
+    {
+      "title": "Cystic Fibrosis Foundation: Top 5 Tips to Stay Healthy This Summer",
+      "url": "https://www.cff.org/community-posts/2018-07/top-5-tips-stay-healthy-summer"
+    },
+    {
+      "title": "Cystic Fibrosis Foundation: Sweat Test Clinical Care Guidelines",
+      "url": "https://www.cff.org/medical-professionals/sweat-test-clinical-care-guidelines"
+    }
+  ]
+}

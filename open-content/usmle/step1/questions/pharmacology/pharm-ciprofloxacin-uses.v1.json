@@ -1,0 +1,71 @@
+{
+  "id": "bank:usmle-step1:pharm-ciprofloxacin-uses:v1",
+  "rotation": "usmle-step1-open",
+  "topics": [
+    "ciprofloxacin",
+    "fluoroquinolone"
+  ],
+  "moduleNodes": [
+    "usmle/step1",
+    "usmle/step1/pharmacology"
+  ],
+  "questionType": "mechanism",
+  "difficulty": "easy",
+  "stem": "Ciprofloxacin is used to treat or prevent which of the following sets of infections?",
+  "options": [
+    {
+      "label": "A",
+      "text": "Syphilis, Lyme disease and streptococcal pharyngitis",
+      "isCorrect": false,
+      "misconception": "Assumes a broad-spectrum antibiotic covers every bacterial infection, including spirochetes and streptococci.",
+      "explanation": "Syphilis, Lyme disease and strep pharyngitis are treated with penicillin, doxycycline or amoxicillin; ciprofloxacin is not an effective choice for any of them."
+    },
+    {
+      "label": "B",
+      "text": "Typhoid fever, infectious diarrhea and osteomyelitis",
+      "isCorrect": true,
+      "misconception": "None — ciprofloxacin treats certain bacterial infections such as typhoid and infectious diarrhea.",
+      "explanation": "MedlinePlus lists ciprofloxacin for certain bacterial infections, including pneumonia, typhoid fever, infectious diarrhea and skin, bone and joint infections."
+    },
+    {
+      "label": "C",
+      "text": "Oral thrush, tinea pedis and aspergillosis",
+      "isCorrect": false,
+      "misconception": "Assumes a broad-spectrum antibiotic also covers fungal infections.",
+      "explanation": "Thrush, tinea pedis and aspergillosis are fungal infections treated with antifungals; ciprofloxacin has no antifungal activity."
+    },
+    {
+      "label": "D",
+      "text": "Malaria, giardiasis and toxoplasmosis",
+      "isCorrect": false,
+      "misconception": "Assumes a fluoroquinolone's antibacterial spectrum extends to protozoa.",
+      "explanation": "Malaria, giardiasis and toxoplasmosis are protozoal infections that need antiprotozoal drugs, not a fluoroquinolone antibacterial."
+    },
+    {
+      "label": "E",
+      "text": "Clostridioides difficile colitis, anaerobic lung abscess and actinomycosis",
+      "isCorrect": false,
+      "misconception": "Assumes any bacterial infection responds to ciprofloxacin, overlooking its weak anaerobic coverage.",
+      "explanation": "Fluoroquinolones predispose to C. difficile colitis, which needs oral vancomycin or fidaxomicin; ciprofloxacin also lacks the anaerobic coverage abscess and actinomycosis need."
+    }
+  ],
+  "context": "Learning objective: Ciprofloxacin treats or prevents certain bacterial infections, such as pneumonia, typhoid fever, infectious diarrhea and skin, bone and joint infections.",
+  "cite": "medlineplus-ciprofloxacin#cipro-uses",
+  "publicUsmle": {
+    "schemaVersion": 1,
+    "origin": "generated",
+    "itemText": {
+      "licence": "CC-BY-4.0",
+      "attribution": "MD3 contributors"
+    },
+    "evidence": {
+      "kind": "passage",
+      "sourceId": "medlineplus-ciprofloxacin",
+      "passageId": "cipro-uses",
+      "licence": {
+        "cls": "foss",
+        "id": "us-gov"
+      }
+    }
+  }
+}

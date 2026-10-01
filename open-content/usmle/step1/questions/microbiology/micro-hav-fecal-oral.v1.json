@@ -1,0 +1,71 @@
+{
+  "id": "bank:usmle-step1:micro-hav-fecal-oral:v1",
+  "rotation": "usmle-step1-open",
+  "topics": [
+    "hepatitis A",
+    "transmission"
+  ],
+  "moduleNodes": [
+    "usmle/step1",
+    "usmle/step1/microbiology"
+  ],
+  "questionType": "mechanism",
+  "difficulty": "easy",
+  "stem": "Hepatitis A virus transmission is classically listed as which route?",
+  "options": [
+    {
+      "label": "A",
+      "text": "Bite of an infected mosquito",
+      "isCorrect": false,
+      "misconception": "Confuses hepatitis A with mosquito-borne viral infections.",
+      "explanation": "Mosquito bites transmit arboviruses such as dengue, West Nile, and yellow fever; hepatitis A is not vector-borne."
+    },
+    {
+      "label": "B",
+      "text": "Inhalation of airborne droplet nuclei",
+      "isCorrect": false,
+      "misconception": "Confuses hepatitis A with airborne viruses such as measles.",
+      "explanation": "Airborne droplet nuclei spread measles, varicella, and tuberculosis; hepatitis A virus is acquired by ingestion, not inhalation."
+    },
+    {
+      "label": "C",
+      "text": "Direct contact with infected skin lesions",
+      "isCorrect": false,
+      "misconception": "Confuses hepatitis A with pathogens spread by lesion contact.",
+      "explanation": "Contact with skin lesions spreads agents such as herpes simplex virus or impetigo bacteria, not hepatitis A."
+    },
+    {
+      "label": "D",
+      "text": "Saliva inoculated by an animal bite",
+      "isCorrect": false,
+      "misconception": "Confuses hepatitis A with rabies, which is transmitted by animal bites.",
+      "explanation": "Saliva inoculated by an animal bite transmits rabies; hepatitis A virus is shed in feces and acquired by mouth."
+    },
+    {
+      "label": "E",
+      "text": "Fecal-oral spread through ingestion",
+      "isCorrect": true,
+      "misconception": "None — hepatitis A virus is acquired by the fecal-oral route.",
+      "explanation": "HAV is typically acquired through ingestion by fecal-oral transmission and then replicates in the liver."
+    }
+  ],
+  "context": "Learning objective: Hepatitis A virus is acquired by ingestion through fecal-oral transmission and replicates in the liver.",
+  "cite": "cdc-pink-book-hepatitis-a#hav-fecal-oral",
+  "publicUsmle": {
+    "schemaVersion": 1,
+    "origin": "generated",
+    "itemText": {
+      "licence": "CC-BY-4.0",
+      "attribution": "MD3 contributors"
+    },
+    "evidence": {
+      "kind": "passage",
+      "sourceId": "cdc-pink-book-hepatitis-a",
+      "passageId": "hav-fecal-oral",
+      "licence": {
+        "cls": "foss",
+        "id": "us-gov"
+      }
+    }
+  }
+}

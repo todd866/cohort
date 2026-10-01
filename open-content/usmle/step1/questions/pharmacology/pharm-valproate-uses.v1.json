@@ -1,0 +1,71 @@
+{
+  "id": "bank:usmle-step1:pharm-valproate-uses:v1",
+  "rotation": "usmle-step1-open",
+  "topics": [
+    "valproic acid",
+    "seizures"
+  ],
+  "moduleNodes": [
+    "usmle/step1",
+    "usmle/step1/pharmacology"
+  ],
+  "questionType": "mechanism",
+  "difficulty": "easy",
+  "stem": "Valproic acid is used to treat certain types of which brain condition?",
+  "options": [
+    {
+      "label": "A",
+      "text": "Seizure disorders",
+      "isCorrect": true,
+      "misconception": "None — valproic acid treats certain types of seizures.",
+      "explanation": "Valproic acid treats certain types of seizures and is also used to treat mania in people with bipolar disorder."
+    },
+    {
+      "label": "B",
+      "text": "Parkinson disease",
+      "isCorrect": false,
+      "misconception": "Treats any movement-related brain disorder as an anticonvulsant use.",
+      "explanation": "Parkinson disease reflects loss of dopaminergic nigral neurons and is treated with carbidopa-levodopa; valproate can instead cause tremor and parkinsonism."
+    },
+    {
+      "label": "C",
+      "text": "Multiple sclerosis",
+      "isCorrect": false,
+      "misconception": "Confuses demyelinating disease with abnormal neuronal firing.",
+      "explanation": "Multiple sclerosis is immune-mediated demyelination of the central nervous system, treated with disease-modifying immunotherapies, not anticonvulsants."
+    },
+    {
+      "label": "D",
+      "text": "Hepatic encephalopathy",
+      "isCorrect": false,
+      "misconception": "Misses that valproate can cause, not treat, hyperammonemic encephalopathy.",
+      "explanation": "Hepatic encephalopathy from ammonia buildup is treated with lactulose and rifaximin; valproate can itself raise ammonia levels."
+    },
+    {
+      "label": "E",
+      "text": "Normal pressure hydrocephalus",
+      "isCorrect": false,
+      "misconception": "Treats a CSF-flow disorder as responsive to a neuronal stabilizer.",
+      "explanation": "Normal pressure hydrocephalus causes gait change, incontinence and dementia and is treated by CSF shunting, not an anticonvulsant."
+    }
+  ],
+  "context": "Learning objective: Valproic acid treats certain types of seizures and also mania in people with bipolar disorder.",
+  "cite": "medlineplus-valproic-acid#valproate-uses",
+  "publicUsmle": {
+    "schemaVersion": 1,
+    "origin": "generated",
+    "itemText": {
+      "licence": "CC-BY-4.0",
+      "attribution": "MD3 contributors"
+    },
+    "evidence": {
+      "kind": "passage",
+      "sourceId": "medlineplus-valproic-acid",
+      "passageId": "valproate-uses",
+      "licence": {
+        "cls": "foss",
+        "id": "us-gov"
+      }
+    }
+  }
+}

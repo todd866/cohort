@@ -1,0 +1,71 @@
+{
+  "id": "bank:usmle-step1:pharm-sertraline-uses:v1",
+  "rotation": "usmle-step1-open",
+  "topics": [
+    "sertraline",
+    "SSRI"
+  ],
+  "moduleNodes": [
+    "usmle/step1",
+    "usmle/step1/pharmacology"
+  ],
+  "questionType": "mechanism",
+  "difficulty": "easy",
+  "stem": "Sertraline is used to treat which psychiatric condition?",
+  "options": [
+    {
+      "label": "A",
+      "text": "Acute manic episodes",
+      "isCorrect": false,
+      "misconception": "Assumes an antidepressant treats every mood disorder, including the manic pole.",
+      "explanation": "Acute mania is treated with lithium, valproate or antipsychotics; an antidepressant such as sertraline can trigger or worsen mania."
+    },
+    {
+      "label": "B",
+      "text": "Attention-deficit/hyperactivity disorder",
+      "isCorrect": false,
+      "misconception": "Assumes any common psychiatric diagnosis responds to an SSRI.",
+      "explanation": "ADHD is treated with stimulants such as methylphenidate or with atomoxetine; sertraline does not improve attention or hyperactivity."
+    },
+    {
+      "label": "C",
+      "text": "Major depressive disorder",
+      "isCorrect": true,
+      "misconception": "None — depression is a listed sertraline use.",
+      "explanation": "Depression is among sertraline's listed uses, along with obsessive-compulsive disorder and panic attacks."
+    },
+    {
+      "label": "D",
+      "text": "Alcohol withdrawal syndrome",
+      "isCorrect": false,
+      "misconception": "Confuses a withdrawal state needing GABAergic cover with a serotonin-responsive disorder.",
+      "explanation": "Alcohol withdrawal is treated with benzodiazepines such as chlordiazepoxide or lorazepam; an SSRI does not prevent withdrawal seizures or delirium tremens."
+    },
+    {
+      "label": "E",
+      "text": "Tourette disorder",
+      "isCorrect": false,
+      "misconception": "Confuses tics with the obsessive-compulsive symptoms that often accompany them.",
+      "explanation": "Tourette tics are treated with behavioral therapy, alpha-2 agonists such as guanfacine, or antipsychotics; sertraline does not treat tics."
+    }
+  ],
+  "context": "Learning objective: Sertraline treats depression, as well as obsessive-compulsive disorder and panic attacks.",
+  "cite": "medlineplus-sertraline#sertraline-uses",
+  "publicUsmle": {
+    "schemaVersion": 1,
+    "origin": "generated",
+    "itemText": {
+      "licence": "CC-BY-4.0",
+      "attribution": "MD3 contributors"
+    },
+    "evidence": {
+      "kind": "passage",
+      "sourceId": "medlineplus-sertraline",
+      "passageId": "sertraline-uses",
+      "licence": {
+        "cls": "foss",
+        "id": "us-gov"
+      }
+    }
+  }
+}

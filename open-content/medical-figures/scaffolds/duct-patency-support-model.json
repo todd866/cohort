@@ -1,0 +1,108 @@
+{
+  "schemaVersion": 1,
+  "figureId": "duct-patency-support-model",
+  "kind": "conceptual",
+  "sourceFacts": [
+    {
+      "id": "fact-1",
+      "fact": "PGE1 is used to maintain ductus arteriosus patency in duct-dependent cardiac lesions.",
+      "sources": [
+        {
+          "title": "Cochrane: Prostaglandin E1 for keeping the duct open",
+          "url": "https://www.cochrane.org/evidence/CD011417_prostaglandin-e1-keeping-duct-open-heart-conditions-newborn"
+        },
+        {
+          "title": "South African National Department of Health: Neonatal conditions guideline",
+          "url": "https://www.knowledgehub.health.gov.za/system/files/elibdownloads/2023-04/PaedChp%2019_Neonatal%20Chapter_N_November%202022%20-%20final%20update3.pdf"
+        }
+      ]
+    },
+    {
+      "id": "fact-2",
+      "fact": "Maintaining this communication can support survival until intervention.",
+      "sources": [
+        {
+          "title": "Cochrane: Prostaglandin E1 for keeping the duct open",
+          "url": "https://www.cochrane.org/evidence/CD011417_prostaglandin-e1-keeping-duct-open-heart-conditions-newborn"
+        },
+        {
+          "title": "South African National Department of Health: Neonatal conditions guideline",
+          "url": "https://www.knowledgehub.health.gov.za/system/files/elibdownloads/2023-04/PaedChp%2019_Neonatal%20Chapter_N_November%202022%20-%20final%20update3.pdf"
+        }
+      ]
+    },
+    {
+      "id": "fact-3",
+      "fact": "Duct dependence varies by lesion; this drawing does not specify anatomical flow direction.",
+      "sources": [
+        {
+          "title": "Cochrane: Prostaglandin E1 for keeping the duct open",
+          "url": "https://www.cochrane.org/evidence/CD011417_prostaglandin-e1-keeping-duct-open-heart-conditions-newborn"
+        },
+        {
+          "title": "South African National Department of Health: Neonatal conditions guideline",
+          "url": "https://www.knowledgehub.health.gov.za/system/files/elibdownloads/2023-04/PaedChp%2019_Neonatal%20Chapter_N_November%202022%20-%20final%20update3.pdf"
+        }
+      ]
+    }
+  ],
+  "nodes": [
+    {
+      "id": "closing",
+      "shape": "gate closing across path",
+      "label": "Essential route closing"
+    },
+    {
+      "id": "support",
+      "shape": "mechanical prop labelled PGE1",
+      "label": "PGE1"
+    },
+    {
+      "id": "open",
+      "shape": "gate held open with clear path",
+      "label": "Duct kept open"
+    },
+    {
+      "id": "definitive",
+      "shape": "destination flag",
+      "label": "Definitive treatment"
+    }
+  ],
+  "edges": [
+    {
+      "from": "support",
+      "to": "open",
+      "meaning": "PGE1 maintains patency"
+    },
+    {
+      "from": "open",
+      "to": "definitive",
+      "meaning": "temporary support until definitive management"
+    }
+  ],
+  "labels": [
+    "Keeping an essential route open",
+    "Duct-dependent heart disease",
+    "Essential route closing",
+    "PGE1",
+    "Duct kept open",
+    "Temporary support",
+    "Definitive treatment",
+    "Gate analogy, not a heart map"
+  ],
+  "forbiddenAnatomy": [
+    "Organs, heart chambers, named-vessel topology, vascular/cardiac cutaways, clinical photos"
+  ],
+  "validation": {
+    "status": "verified",
+    "method": "source-and-conceptual-structure-review",
+    "checks": [
+      "PGE1 supports patency, not anatomical repair or duct closure.",
+      "Temporary bridge to treatment explicit.",
+      "No universal systemic/pulmonary direction implied.",
+      "No dose, administration site or invented cardiac anatomy."
+    ],
+    "pixelReviewStatus": "verified",
+    "pixelReviewNotes": "Pixel check: the left gate is visibly closing, while the right gate is held open by an external strut labelled PGE1. The open route continues to a separate definitive-treatment flag; temporary support is explicit. No cardiac anatomy, duct connection or flow direction within the heart is asserted."
+  }
+}

@@ -1,0 +1,72 @@
+{
+  "id": "bank:usmle-step1:pharm-amlodipine-uses:v1",
+  "rotation": "usmle-step1-open",
+  "topics": [
+    "amlodipine",
+    "calcium channel blocker",
+    "blood pressure"
+  ],
+  "moduleNodes": [
+    "usmle/step1",
+    "usmle/step1/pharmacology"
+  ],
+  "questionType": "mechanism",
+  "difficulty": "easy",
+  "stem": "Besides high blood pressure, amlodipine is used to treat which of the following cardiac conditions?",
+  "options": [
+    {
+      "label": "A",
+      "text": "Atrial fibrillation and atrial flutter",
+      "isCorrect": false,
+      "misconception": "Confuses dihydropyridines like amlodipine with verapamil and diltiazem, which slow AV conduction.",
+      "explanation": "Rate control in atrial fibrillation or flutter uses beta-blockers or non-dihydropyridine calcium channel blockers; amlodipine has little AV nodal effect."
+    },
+    {
+      "label": "B",
+      "text": "Complete heart block and sinus bradycardia",
+      "isCorrect": false,
+      "misconception": "Assumes any cardiac drug can treat any rhythm disturbance, including slow rhythms.",
+      "explanation": "Heart block and bradycardia need atropine or pacing; amlodipine does not improve sinus node or AV nodal conduction."
+    },
+    {
+      "label": "C",
+      "text": "Acute pericarditis and pericardial effusion",
+      "isCorrect": false,
+      "misconception": "Assumes amlodipine relieves any cause of chest pain, including pericardial inflammation.",
+      "explanation": "Pericarditis is treated with NSAIDs and colchicine, with drainage mainly for tamponade; amlodipine has no role in either."
+    },
+    {
+      "label": "D",
+      "text": "Infective endocarditis and rheumatic carditis",
+      "isCorrect": false,
+      "misconception": "Treats amlodipine as a general cardiac drug rather than a vasodilator for pressure and angina.",
+      "explanation": "Endocarditis needs prolonged antibiotics and rheumatic carditis needs anti-inflammatory therapy; amlodipine treats neither."
+    },
+    {
+      "label": "E",
+      "text": "Angina and coronary artery disease",
+      "isCorrect": true,
+      "misconception": "None — amlodipine treats hypertension, angina and coronary artery disease.",
+      "explanation": "MedlinePlus lists high blood pressure, certain types of angina and coronary artery disease as the conditions amlodipine is used to treat."
+    }
+  ],
+  "context": "Learning objective: Amlodipine is used to treat high blood pressure, certain types of angina and coronary artery disease.",
+  "cite": "medlineplus-amlodipine#amlodipine-uses",
+  "publicUsmle": {
+    "schemaVersion": 1,
+    "origin": "generated",
+    "itemText": {
+      "licence": "CC-BY-4.0",
+      "attribution": "MD3 contributors"
+    },
+    "evidence": {
+      "kind": "passage",
+      "sourceId": "medlineplus-amlodipine",
+      "passageId": "amlodipine-uses",
+      "licence": {
+        "cls": "foss",
+        "id": "us-gov"
+      }
+    }
+  }
+}

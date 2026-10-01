@@ -1,0 +1,71 @@
+{
+  "id": "bank:usmle-step1:pharm-warfarin-vitk:v1",
+  "rotation": "usmle-step1-open",
+  "topics": [
+    "warfarin",
+    "vitamin K"
+  ],
+  "moduleNodes": [
+    "usmle/step1",
+    "usmle/step1/pharmacology"
+  ],
+  "questionType": "mechanism",
+  "difficulty": "medium",
+  "stem": "Why does MedlinePlus advise consistent week-to-week intake of vitamin K-containing foods on this anticoagulant?",
+  "options": [
+    {
+      "label": "A",
+      "text": "Vitamin K raises sensitivity of a screening test",
+      "isCorrect": false,
+      "misconception": "Wrong framing — does not match the cited teaching point.",
+      "explanation": "Not the cited reason."
+    },
+    {
+      "label": "B",
+      "text": "Vitamin K is the null hypothesis nutrient",
+      "isCorrect": false,
+      "misconception": "Stats distractor — does not match the cited teaching point.",
+      "explanation": "Wrong domain; see the cited source passage for detail."
+    },
+    {
+      "label": "C",
+      "text": "Vitamin K can affect how warfarin works",
+      "isCorrect": true,
+      "misconception": "None; vitamin K affects warfarin action.",
+      "explanation": "MedlinePlus: vitamin K can affect how warfarin works."
+    },
+    {
+      "label": "D",
+      "text": "Vitamin K permanently destroys heparin receptors",
+      "isCorrect": false,
+      "misconception": "Wrong anticoagulant — does not match the cited teaching point.",
+      "explanation": "Heparin is a different agent."
+    },
+    {
+      "label": "E",
+      "text": "Vitamin K converts metformin into insulin",
+      "isCorrect": false,
+      "misconception": "Nonsense metabolism claim.",
+      "explanation": "Wrong domain; see the cited source passage for detail."
+    }
+  ],
+  "context": "Learning objective: warfarin–vitamin K consistency.",
+  "cite": "medlineplus-warfarin#warfarin-vitamin-k",
+  "publicUsmle": {
+    "schemaVersion": 1,
+    "origin": "generated",
+    "itemText": {
+      "licence": "CC-BY-4.0",
+      "attribution": "MD3 contributors"
+    },
+    "evidence": {
+      "kind": "passage",
+      "sourceId": "medlineplus-warfarin",
+      "passageId": "warfarin-vitamin-k",
+      "licence": {
+        "cls": "foss",
+        "id": "us-gov"
+      }
+    }
+  }
+}

@@ -1,0 +1,16 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 280" role="img" aria-labelledby="t d">
+  <title id="t">Glycogen vs triglyceride storage</title>
+  <desc id="d">Glycogen is a glucose polymer energy store; triglycerides are long-term energy storage in animals.</desc>
+  <rect width="720" height="280" fill="#ffffff"/>
+  <text x="360" y="26" text-anchor="middle" font-family="Helvetica,Arial,sans-serif" font-size="15" font-weight="700" fill="#111">Glycogen vs triglyceride storage</text>
+  <defs>
+    <marker id="arr" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto">
+      <path d="M0,0 L10,5 L0,10 z" fill="#1d4ed8"/>
+    </marker>
+  </defs>
+  <rect x="80" y="80" width="240" height="120" rx="6" fill="#dbeafe" stroke="#111" stroke-width="1.5"/>
+  <text x="200.0" y="138" text-anchor="middle" font-family="Helvetica,Arial,sans-serif" font-size="11" font-weight="700" fill="#111">Glycogen</text>
+  <text x="200.0" y="152" text-anchor="middle" font-family="Helvetica,Arial,sans-serif" font-size="10" fill="#333">glucose polymer; short-term store</text>  <rect x="400" y="80" width="240" height="120" rx="6" fill="#fef3c7" stroke="#111" stroke-width="1.5"/>
+  <text x="520.0" y="138" text-anchor="middle" font-family="Helvetica,Arial,sans-serif" font-size="11" font-weight="700" fill="#111">Triglycerides</text>
+  <text x="520.0" y="152" text-anchor="middle" font-family="Helvetica,Arial,sans-serif" font-size="10" fill="#333">long-term energy store</text>
+</svg>

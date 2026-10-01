@@ -1,0 +1,71 @@
+{
+  "id": "bank:usmle-step1:pharm-lithium-uses:v1",
+  "rotation": "usmle-step1-open",
+  "topics": [
+    "lithium",
+    "bipolar disorder"
+  ],
+  "moduleNodes": [
+    "usmle/step1",
+    "usmle/step1/pharmacology"
+  ],
+  "questionType": "mechanism",
+  "difficulty": "easy",
+  "stem": "Which drug is used to treat and prevent episodes of mania in bipolar disorder?",
+  "options": [
+    {
+      "label": "A",
+      "text": "Lithium",
+      "isCorrect": true,
+      "misconception": "None — lithium is a mood stabilizer that treats and prevents bipolar mania.",
+      "explanation": "The label says lithium is used to treat and prevent episodes of mania in people with bipolar disorder."
+    },
+    {
+      "label": "B",
+      "text": "Fluoxetine",
+      "isCorrect": false,
+      "misconception": "Treats an antidepressant as a mood stabilizer for bipolar disorder.",
+      "explanation": "Fluoxetine is an SSRI antidepressant; given alone in bipolar disorder it can precipitate mania rather than prevent it."
+    },
+    {
+      "label": "C",
+      "text": "Bupropion",
+      "isCorrect": false,
+      "misconception": "Assumes an activating antidepressant stabilizes mood.",
+      "explanation": "Bupropion is a norepinephrine-dopamine reuptake inhibitor used for depression and smoking cessation; it can trigger mania and does not prevent it."
+    },
+    {
+      "label": "D",
+      "text": "Buspirone",
+      "isCorrect": false,
+      "misconception": "Confuses an anxiolytic with a mood stabilizer.",
+      "explanation": "Buspirone is a 5-HT1A partial agonist used for generalized anxiety disorder; it has no antimanic or mood-stabilizing effect."
+    },
+    {
+      "label": "E",
+      "text": "Methylphenidate",
+      "isCorrect": false,
+      "misconception": "Assumes a drug that improves attention also calms manic overactivity.",
+      "explanation": "Methylphenidate is a stimulant for ADHD that raises dopamine and norepinephrine signaling; it can provoke mania rather than treat it."
+    }
+  ],
+  "context": "Learning objective: Lithium is used to treat and prevent episodes of mania in people with bipolar disorder.",
+  "cite": "medlineplus-lithium#lithium-uses",
+  "publicUsmle": {
+    "schemaVersion": 1,
+    "origin": "generated",
+    "itemText": {
+      "licence": "CC-BY-4.0",
+      "attribution": "MD3 contributors"
+    },
+    "evidence": {
+      "kind": "passage",
+      "sourceId": "medlineplus-lithium",
+      "passageId": "lithium-uses",
+      "licence": {
+        "cls": "foss",
+        "id": "us-gov"
+      }
+    }
+  }
+}

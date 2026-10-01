@@ -1,0 +1,66 @@
+{
+  "id": "bank:cohort:paeds:q-e61cd4730510:v1",
+  "rotation": "cohort-open",
+  "moduleNodes": [
+    "cohort/paeds"
+  ],
+  "topics": [
+    "Adolescent Health",
+    "Depression",
+    "Risk Assessment"
+  ],
+  "questionType": "next-step",
+  "difficulty": "medium",
+  "stem": "A 15-year-old boy is seen alone for review of his acne. During the psychosocial history he says he has felt flat for a couple of months, has stopped playing football and is sleeping badly. He has no previous mental health history and no current medications.\n\nWhat is the most appropriate next step?",
+  "options": [
+    {
+      "label": "A",
+      "text": "Ask him directly about thoughts of self-harm and suicide, including plan and access to means",
+      "isCorrect": true,
+      "explanation": "Low mood, loss of a valued activity and disturbed sleep is a positive depression screen, so risk must be assessed now — thoughts, plan, means and intent, asked plainly. A safety plan and, where safe, involving a parent follow from the answers."
+    },
+    {
+      "label": "B",
+      "text": "Avoid asking about suicide directly, since raising the topic can plant the idea in a vulnerable adolescent",
+      "isCorrect": false,
+      "explanation": "This is the most persistent myth in adolescent health. Asking directly about suicide does not increase risk, and it is the only way to find the young person who would never volunteer it."
+    },
+    {
+      "label": "C",
+      "text": "Arrange review in three months to see whether the low mood settles on its own",
+      "isCorrect": false,
+      "explanation": "Watchful waiting without a risk assessment is unsafe here. A three-month gap leaves an adolescent with untreated depressive symptoms and an unknown level of risk."
+    },
+    {
+      "label": "D",
+      "text": "Ask his mother in private whether she has noticed any thoughts of self-harm",
+      "isCorrect": false,
+      "explanation": "A parent's observation is useful collateral but cannot replace asking the young person, who routinely conceals suicidal thoughts from parents. Going to the parent first also breaches the confidential space just established."
+    },
+    {
+      "label": "E",
+      "text": "Refer to a psychiatrist and defer the risk questions to that assessment",
+      "isCorrect": false,
+      "explanation": "Referral may well follow, but the risk assessment cannot be deferred to a future appointment. The clinician in the room is responsible for knowing whether it is safe for him to go home today."
+    }
+  ],
+  "context": "Two months of low mood with anhedonia — giving up football — and disturbed sleep is already a positive depression screen. The next move is a risk assessment, not more screening.\n\nAsk in plain words and in sequence: passive thoughts of not wanting to be here, active thoughts of suicide, any plan, access to means, and what has stopped him so far. The last two drive the safety plan.\n\nThe fear that asking will plant the idea is unfounded, and it is why the question gets skipped. Somatic presentations like acne or headache are exactly where an unasked question stays unanswered.",
+  "publicModule": {
+    "schemaVersion": 1,
+    "origin": "mirrored",
+    "discipline": "paeds",
+    "mirroredFrom": "md3:e61cd4730510b200",
+    "itemText": {
+      "licence": "CC-BY-4.0",
+      "attribution": "MD3 contributors"
+    },
+    "evidence": {
+      "kind": "reference",
+      "sourceId": "rch-engaging-with-and-assessing-the-adolescent-patient"
+    },
+    "review": {
+      "verdict": "passed",
+      "contentHash": "ac25c40a958c83a2d8193031e88704a492de285b122a1ef9afd3a5e8bb1b78a8"
+    }
+  }
+}

@@ -1,0 +1,67 @@
+{
+  "id": "bank:cohort:em:q-fe928bbc3f51:v1",
+  "rotation": "cohort-open",
+  "moduleNodes": [
+    "cohort/em"
+  ],
+  "topics": [
+    "trauma",
+    "airway",
+    "GCS",
+    "emergencies"
+  ],
+  "questionType": "next-step",
+  "difficulty": "medium",
+  "stem": "A 9-year-old falls from a tree onto grass. In ED he is collared, talking, and haemodynamically stable. Ten minutes later he no longer opens his eyes, makes only groaning sounds, and withdraws to a trapezius squeeze.\n\nWhat is the most appropriate next step?",
+  "options": [
+    {
+      "label": "A",
+      "text": "In-collar observation",
+      "isCorrect": false,
+      "explanation": "Watching a child whose GCS is collapsing misses the reversible killer. Secure the airway now."
+    },
+    {
+      "label": "B",
+      "text": "Isotonic fluid bolus",
+      "isCorrect": false,
+      "explanation": "He was haemodynamically stable; the change is neurological. Fluid does not treat airway loss from a falling GCS."
+    },
+    {
+      "label": "C",
+      "text": "Urgent CT of the head",
+      "isCorrect": false,
+      "explanation": "CT is needed once the airway is secure. An unprotected child cannot safely lie flat in the scanner."
+    },
+    {
+      "label": "D",
+      "text": "Endotracheal intubation",
+      "isCorrect": true,
+      "explanation": "GCS has fallen to the range that cannot protect the airway (no eye opening, non-verbal, withdrawal). Definitive airway comes before CT in a deteriorating head injury."
+    },
+    {
+      "label": "E",
+      "text": "Urgent MRI of the brain",
+      "isCorrect": false,
+      "explanation": "MRI is too slow for acute trauma and still requires a protected airway. CT is the trauma imaging study after intubation."
+    }
+  ],
+  "context": "RCH: consider intubation if the GCS is persistently below 8, or the child is unresponsive or not responding purposefully to pain. Airway before imaging. Protect the cervical spine while you do it.",
+  "publicModule": {
+    "schemaVersion": 1,
+    "origin": "mirrored",
+    "discipline": "em",
+    "mirroredFrom": "md3:fe928bbc3f51803e",
+    "itemText": {
+      "licence": "CC-BY-4.0",
+      "attribution": "MD3 contributors"
+    },
+    "evidence": {
+      "kind": "reference",
+      "sourceId": "rch-head-injury"
+    },
+    "review": {
+      "verdict": "passed",
+      "contentHash": "016729ecb3d91e6f19e42d88e9e3835ff685abb4e35b86750623a86da30f3bd8"
+    }
+  }
+}

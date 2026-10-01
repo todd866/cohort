@@ -1,0 +1,70 @@
+{
+  "id": "bank:usmle-step1:pharm-methotrexate-uses:v1",
+  "rotation": "usmle-step1-open",
+  "topics": [
+    "methotrexate"
+  ],
+  "moduleNodes": [
+    "usmle/step1",
+    "usmle/step1/pharmacology"
+  ],
+  "questionType": "mechanism",
+  "difficulty": "easy",
+  "stem": "Methotrexate is used to treat which skin disease?",
+  "options": [
+    {
+      "label": "A",
+      "text": "Severe psoriasis",
+      "isCorrect": true,
+      "misconception": "None — methotrexate treats severe psoriasis and rheumatoid arthritis.",
+      "explanation": "The label says methotrexate treats severe psoriasis, a disease of red, scaly patches, and is also used for rheumatoid arthritis."
+    },
+    {
+      "label": "B",
+      "text": "Severe acne vulgaris",
+      "isCorrect": false,
+      "misconception": "Assumes any severe inflammatory-looking skin condition responds to methotrexate.",
+      "explanation": "Severe nodulocystic acne is treated with isotretinoin or oral antibiotics; methotrexate does not target sebaceous glands or Cutibacterium acnes."
+    },
+    {
+      "label": "C",
+      "text": "Extensive tinea corporis",
+      "isCorrect": false,
+      "misconception": "Mistakes a scaly ring-shaped fungal rash for psoriasis plaques.",
+      "explanation": "Tinea corporis is a dermatophyte infection treated with topical or oral antifungals; immunosuppression with methotrexate would worsen it."
+    },
+    {
+      "label": "D",
+      "text": "Widespread impetigo",
+      "isCorrect": false,
+      "misconception": "Confuses crusted infectious lesions with immune-mediated skin disease.",
+      "explanation": "Impetigo is a superficial Staphylococcus aureus or Streptococcus pyogenes infection treated with mupirocin or oral antibiotics, not methotrexate."
+    },
+    {
+      "label": "E",
+      "text": "Facial melasma",
+      "isCorrect": false,
+      "misconception": "Assumes any visible facial patch is an immune-mediated skin disease.",
+      "explanation": "Melasma is hyperpigmentation driven by hormones and sunlight, treated with sun protection and hydroquinone; it is not inflammatory, and methotrexate has no role."
+    }
+  ],
+  "context": "Learning objective: Methotrexate is used to treat severe psoriasis and also rheumatoid arthritis.",
+  "cite": "medlineplus-methotrexate#methotrexate-uses",
+  "publicUsmle": {
+    "schemaVersion": 1,
+    "origin": "generated",
+    "itemText": {
+      "licence": "CC-BY-4.0",
+      "attribution": "MD3 contributors"
+    },
+    "evidence": {
+      "kind": "passage",
+      "sourceId": "medlineplus-methotrexate",
+      "passageId": "methotrexate-uses",
+      "licence": {
+        "cls": "foss",
+        "id": "us-gov"
+      }
+    }
+  }
+}

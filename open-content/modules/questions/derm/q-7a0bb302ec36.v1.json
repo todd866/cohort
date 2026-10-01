@@ -1,0 +1,66 @@
+{
+  "id": "bank:cohort:derm:q-7a0bb302ec36:v1",
+  "rotation": "cohort-open",
+  "moduleNodes": [
+    "cohort/derm"
+  ],
+  "topics": [
+    "dermatology",
+    "impetigo",
+    "bacterial"
+  ],
+  "questionType": "management",
+  "difficulty": "medium",
+  "stem": "A 6-year-old presents with honey-coloured crusted lesions around the nose and mouth that started as small blisters 3 days ago. Several children in the class have similar symptoms. The child is afebrile and otherwise well.\n\nWhat is the most appropriate first-line treatment?",
+  "options": [
+    {
+      "label": "A",
+      "text": "Oral flucloxacillin for 7 days",
+      "isCorrect": false,
+      "explanation": "Oral antibiotics are reserved for widespread or large lesions, or systemic features. RCH uses cefalexin rather than flucloxacillin as the oral option here."
+    },
+    {
+      "label": "B",
+      "text": "Oral aciclovir (antiviral therapy)",
+      "isCorrect": false,
+      "explanation": "Impetigo is a superficial bacterial skin infection, not a herpes virus eruption. Aciclovir would treat the wrong disease."
+    },
+    {
+      "label": "C",
+      "text": "Topical mupirocin 2% three times daily for 5 days",
+      "isCorrect": true,
+      "explanation": "Correct — for localised impetigo in a well, afebrile child, RCH recommends topical mupirocin 2% applied to the crusted areas three times daily for 5 days, with crust removal and hygiene advice."
+    },
+    {
+      "label": "D",
+      "text": "Topical hydrocortisone cream (corticosteroid)",
+      "isCorrect": false,
+      "explanation": "A topical steroid treats inflammation, not the staphylococcal or streptococcal infection producing the honey-coloured crust."
+    },
+    {
+      "label": "E",
+      "text": "No treatment required - self-limiting",
+      "isCorrect": false,
+      "explanation": "Impetigo is contagious and spreading in this class, so treatment shortens the illness and limits transmission rather than simply waiting it out."
+    }
+  ],
+  "context": "Impetigo is a superficial bacterial skin infection (usually Staph aureus or Strep pyogenes) presenting with honey-coloured crusted lesions, often perioral.\n\nRCH reserves oral cefalexin for widespread or large lesions; localised impetigo gets topical mupirocin 2% three times daily.\n\nGood hygiene prevents spread.",
+  "publicModule": {
+    "schemaVersion": 1,
+    "origin": "mirrored",
+    "discipline": "derm",
+    "mirroredFrom": "md3:7a0bb302ec369dea",
+    "itemText": {
+      "licence": "CC-BY-4.0",
+      "attribution": "MD3 contributors"
+    },
+    "evidence": {
+      "kind": "reference",
+      "sourceId": "rch-cellulitis-and-other-bacterial-skin-infections"
+    },
+    "review": {
+      "verdict": "passed",
+      "contentHash": "c3e5c5293b6735cfb002eb0048e79a80ce03375deb180b404c31da3f1399e189"
+    }
+  }
+}

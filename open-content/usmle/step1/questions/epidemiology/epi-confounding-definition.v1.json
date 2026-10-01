@@ -1,0 +1,71 @@
+{
+  "id": "bank:usmle-step1:epi-confounding-definition:v1",
+  "rotation": "usmle-step1-open",
+  "topics": [
+    "confounding",
+    "biostatistics"
+  ],
+  "moduleNodes": [
+    "usmle/step1",
+    "usmle/step1/epidemiology"
+  ],
+  "questionType": "mechanism",
+  "difficulty": "easy",
+  "stem": "Confounding describes which problem when interpreting a study?",
+  "options": [
+    {
+      "label": "A",
+      "text": "Systematic error in how participants are selected for the study",
+      "isCorrect": false,
+      "misconception": "Confuses confounding with selection bias from how participants are chosen.",
+      "explanation": "Selection bias is systematic error from how participants are chosen or retained, not a mixing of the effects of several factors."
+    },
+    {
+      "label": "B",
+      "text": "Random sampling variation between a sample estimate and the truth",
+      "isCorrect": false,
+      "misconception": "Confuses a systematic mixing of effects with random sampling error.",
+      "explanation": "Random sampling error is chance variation that shrinks with larger samples; confounding is a mixing of effects that sample size does not fix."
+    },
+    {
+      "label": "C",
+      "text": "Systematic error in measuring the exposure or the outcome",
+      "isCorrect": false,
+      "misconception": "Confuses confounding with measurement (information) bias.",
+      "explanation": "Information bias comes from inaccurate measurement of exposure or outcome, not from factors whose effects are intertwined."
+    },
+    {
+      "label": "D",
+      "text": "Limited generalizability of findings beyond the study population",
+      "isCorrect": false,
+      "misconception": "Confuses an internal-validity problem with limited generalizability.",
+      "explanation": "Limited generalizability is a threat to external validity; confounding threatens internal validity by entangling the effects of different factors."
+    },
+    {
+      "label": "E",
+      "text": "Inability to separate the effects of multiple factors on a response",
+      "isCorrect": true,
+      "misconception": "None — confounding means the separate effects of factors cannot be distinguished.",
+      "explanation": "Confounding occurs when the effects of multiple factors on a response cannot be separated, making valid conclusions about each factor difficult or impossible."
+    }
+  ],
+  "context": "Learning objective: Confounding means the effects of multiple factors on a response cannot be separated, blocking valid conclusions about each factor.",
+  "cite": "openstax-introductory-statistics#confounding-definition",
+  "publicUsmle": {
+    "schemaVersion": 1,
+    "origin": "generated",
+    "itemText": {
+      "licence": "CC-BY-4.0",
+      "attribution": "MD3 contributors"
+    },
+    "evidence": {
+      "kind": "passage",
+      "sourceId": "openstax-introductory-statistics",
+      "passageId": "confounding-definition",
+      "licence": {
+        "cls": "foss",
+        "id": "cc-by-4.0"
+      }
+    }
+  }
+}

@@ -1,0 +1,71 @@
+{
+  "id": "bank:usmle-step1:pharm-insulin-type1:v1",
+  "rotation": "usmle-step1-open",
+  "topics": [
+    "insulin",
+    "type 1 diabetes"
+  ],
+  "moduleNodes": [
+    "usmle/step1",
+    "usmle/step1/pharmacology"
+  ],
+  "questionType": "mechanism",
+  "difficulty": "easy",
+  "stem": "Insulin is used to control blood sugar in which of the following conditions?",
+  "options": [
+    {
+      "label": "A",
+      "text": "Type 1 diabetes",
+      "isCorrect": true,
+      "misconception": "None — type 1 diabetes is absent insulin production, treated with insulin.",
+      "explanation": "The label says insulin controls blood sugar in type 1 diabetes, a condition in which the body does not make insulin and so cannot control blood sugar."
+    },
+    {
+      "label": "B",
+      "text": "Central diabetes insipidus",
+      "isCorrect": false,
+      "misconception": "Equates the 'diabetes' in diabetes insipidus with a disorder of insulin or glucose.",
+      "explanation": "Central diabetes insipidus is a lack of antidiuretic hormone causing dilute polyuria with normal glucose; it is treated with desmopressin, not insulin."
+    },
+    {
+      "label": "C",
+      "text": "Nephrogenic diabetes insipidus",
+      "isCorrect": false,
+      "misconception": "Assumes polyuria always means high blood sugar.",
+      "explanation": "Nephrogenic diabetes insipidus is renal resistance to antidiuretic hormone; blood sugar is normal, and treatment includes thiazides and a low-solute diet, not insulin."
+    },
+    {
+      "label": "D",
+      "text": "Insulinoma",
+      "isCorrect": false,
+      "misconception": "Reverses the defect: an insulinoma is insulin excess, not deficiency.",
+      "explanation": "An insulinoma is a pancreatic beta-cell tumor that makes too much insulin and causes hypoglycemia, so giving insulin would be dangerous."
+    },
+    {
+      "label": "E",
+      "text": "Primary adrenal insufficiency",
+      "isCorrect": false,
+      "misconception": "Links any endocrine gland failure to a need for insulin.",
+      "explanation": "Primary adrenal insufficiency is a lack of cortisol and aldosterone that predisposes to low blood sugar; it needs steroid replacement, not insulin."
+    }
+  ],
+  "context": "Learning objective: Insulin controls blood sugar in type 1 diabetes, in which the body does not make insulin, and is also used in type 2 diabetes.",
+  "cite": "medlineplus-insulin#insulin-uses",
+  "publicUsmle": {
+    "schemaVersion": 1,
+    "origin": "generated",
+    "itemText": {
+      "licence": "CC-BY-4.0",
+      "attribution": "MD3 contributors"
+    },
+    "evidence": {
+      "kind": "passage",
+      "sourceId": "medlineplus-insulin",
+      "passageId": "insulin-uses",
+      "licence": {
+        "cls": "foss",
+        "id": "us-gov"
+      }
+    }
+  }
+}

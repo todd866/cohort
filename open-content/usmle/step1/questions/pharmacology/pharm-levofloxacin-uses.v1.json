@@ -1,0 +1,71 @@
+{
+  "id": "bank:usmle-step1:pharm-levofloxacin-uses:v1",
+  "rotation": "usmle-step1-open",
+  "topics": [
+    "levofloxacin",
+    "fluoroquinolone"
+  ],
+  "moduleNodes": [
+    "usmle/step1",
+    "usmle/step1/pharmacology"
+  ],
+  "questionType": "mechanism",
+  "difficulty": "easy",
+  "stem": "Levofloxacin is used to treat which of the following?",
+  "options": [
+    {
+      "label": "A",
+      "text": "Clostridioides difficile colitis and syphilis",
+      "isCorrect": false,
+      "misconception": "Assumes a broad-spectrum antibiotic treats C. difficile, which fluoroquinolones actually promote.",
+      "explanation": "C. difficile colitis is treated with oral vancomycin or fidaxomicin, and fluoroquinolones are a leading cause of it; syphilis is treated with penicillin."
+    },
+    {
+      "label": "B",
+      "text": "MRSA bacteremia and enterococcal endocarditis",
+      "isCorrect": false,
+      "misconception": "Assumes broad gram-negative coverage extends to resistant gram-positive bloodstream infections.",
+      "explanation": "MRSA bacteremia needs vancomycin or daptomycin, and enterococcal endocarditis ampicillin-based therapy; levofloxacin is not used for either."
+    },
+    {
+      "label": "C",
+      "text": "Pneumonia and kidney, prostate, and skin infections",
+      "isCorrect": true,
+      "misconception": "None — levofloxacin treats pneumonia and kidney, prostate, and skin infections.",
+      "explanation": "The label says levofloxacin treats certain infections such as pneumonia and kidney, prostate, and skin infections."
+    },
+    {
+      "label": "D",
+      "text": "Lyme disease and Rocky Mountain spotted fever",
+      "isCorrect": false,
+      "misconception": "Assumes a broad-spectrum antibiotic covers tick-borne bacterial infections.",
+      "explanation": "Lyme disease is treated with doxycycline or amoxicillin, and Rocky Mountain spotted fever with doxycycline; fluoroquinolones such as levofloxacin are not used."
+    },
+    {
+      "label": "E",
+      "text": "Pertussis and diphtheria",
+      "isCorrect": false,
+      "misconception": "Assumes every bacterial respiratory infection is treated with a respiratory fluoroquinolone.",
+      "explanation": "Pertussis is treated with azithromycin, and diphtheria with antitoxin plus erythromycin or penicillin; levofloxacin is not used for either."
+    }
+  ],
+  "context": "Learning objective: Levofloxacin is used to treat certain infections such as pneumonia and kidney, prostate, and skin infections.",
+  "cite": "medlineplus-levofloxacin#levofloxacin-uses",
+  "publicUsmle": {
+    "schemaVersion": 1,
+    "origin": "generated",
+    "itemText": {
+      "licence": "CC-BY-4.0",
+      "attribution": "MD3 contributors"
+    },
+    "evidence": {
+      "kind": "passage",
+      "sourceId": "medlineplus-levofloxacin",
+      "passageId": "levofloxacin-uses",
+      "licence": {
+        "cls": "foss",
+        "id": "us-gov"
+      }
+    }
+  }
+}

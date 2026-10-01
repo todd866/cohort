@@ -1,0 +1,25 @@
+{
+  "id": "concept-reflux-infection-risk",
+  "title": "Why urinary reflux increases infection risk",
+  "prompt": "Create an original polished 1536x1024 landscape conceptual medical teaching diagram for after-answer study. Warm hand-painted gouache and watercolour on ivory paper; a gentle storybook warmth with precise dark navy type. Matte teal, ochre, coral and blue accents. Simple neutral tokens, paper tiles, arrows and visibly abstract compartments only. Make the visual relationships legible at small size. No body parts, organs, cells, tissues, lumens, tubules, membranes, vessels, anatomical cutaways, clinical photos, diagnostic scans, babies, realistic flesh or decorative scenery. Do not turn abstract boxes or routes into organs or anatomy. Do not invent extra arrows or medical claims. Edge meanings below are metadata, not visible text: draw the arrows but do not print their meaning strings. Footer exactly: Conceptual schematic • Not anatomy. Title exactly: Why urinary reflux increases infection risk. A descending four-step staircase of large paper tiles from upper left to lower right, no anatomy. Node2 has two labelled abstract station dots Bladder and Upper tract with a single arrow from Bladder to Upper tract, a route-map symbol only, neither organs nor tubing. Other nodes use neutral warning/risk tokens. Use a SOLID arrow from1 to2, a SOLID arrow from2 to3 and a DASHED arrow from3 to4 to stress possible outcome. Under the staircase print: Increased risk does not mean inevitable damage. Exact node labels: [{\"id\": \"1\", \"label\": \"Vesicoureteric reflux\"}, {\"id\": \"2\", \"label\": \"Urine flows backward\"}, {\"id\": \"3\", \"label\": \"Urinary infections are more likely\"}, {\"id\": \"4\", \"label\": \"Some infections cause renal scarring\"}]. Exact directed connections: [{\"from\": \"1\", \"to\": \"2\", \"meaning\": \"definition\"}, {\"from\": \"2\", \"to\": \"3\", \"meaning\": \"raises risk\"}, {\"from\": \"3\", \"to\": \"4\", \"meaning\": \"possible complication\"}]. Required checks: All four nodes visible in specified order; The inner route arrow points from Bladder to Upper tract; Final complication is qualified Some and uses dashed link; No organs, tubes or valves.",
+  "clinicalSources": [
+    {
+      "title": "NIDDK — Vesicoureteral reflux",
+      "url": "https://www.niddk.nih.gov/health-information/urologic-diseases/hydronephrosis-newborns/vesicoureteral-reflux"
+    }
+  ],
+  "caption": "An abstract risk sequence links backward urine flow in VUR with urinary infection and possible renal scarring.",
+  "question": "Why does vesicoureteric reflux matter in recurrent childhood UTI?",
+  "answer": "Backward urine flow increases infection risk; some kidney infections can leave scars. Scarring is not inevitable.",
+  "structureSpecification": "scaffolds/concept-reflux-infection-risk.json",
+  "generationInputs": {
+    "referenceImages": [],
+    "style": "written-only"
+  },
+  "qa": {
+    "status": "pending-independent-qa",
+    "method": "agent-visual-and-source-review",
+    "notes": "Pixel structure check: four staircase nodes in specified causal order; inner abstract route runs Bladder to Upper tract; final scarring edge is dashed and Some explicitly qualifies outcome. Correct footer and no organ shapes, tubes or valves. Matches source-checked scaffold. Independent and clinical review pending.",
+    "clinicalReviewStatus": "pending"
+  }
+}

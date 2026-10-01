@@ -1,0 +1,71 @@
+{
+  "id": "bank:usmle-step1:pharm-sumatriptan-uses:v1",
+  "rotation": "usmle-step1-open",
+  "topics": [
+    "sumatriptan",
+    "migraine"
+  ],
+  "moduleNodes": [
+    "usmle/step1",
+    "usmle/step1/pharmacology"
+  ],
+  "questionType": "mechanism",
+  "difficulty": "easy",
+  "stem": "Sumatriptan is used to treat symptoms of which headache syndrome?",
+  "options": [
+    {
+      "label": "A",
+      "text": "Tension-type headache",
+      "isCorrect": false,
+      "misconception": "Assumes triptans relieve every primary headache, tension-type included.",
+      "explanation": "Tension-type headache is a bilateral pressing pain treated with simple analgesics such as acetaminophen or NSAIDs; triptans are not effective for it."
+    },
+    {
+      "label": "B",
+      "text": "Medication-overuse headache",
+      "isCorrect": false,
+      "misconception": "Misses that frequent use of acute drugs such as triptans causes this headache.",
+      "explanation": "Medication-overuse headache results from frequent analgesic or triptan use; treatment is withdrawing the overused drug, so sumatriptan perpetuates it."
+    },
+    {
+      "label": "C",
+      "text": "Post-dural puncture headache",
+      "isCorrect": false,
+      "misconception": "Treats a low-CSF-pressure headache as a migraine variant.",
+      "explanation": "Post-dural puncture headache comes from CSF leak after lumbar puncture and is treated with fluids, caffeine or an epidural blood patch."
+    },
+    {
+      "label": "D",
+      "text": "Giant cell arteritis headache",
+      "isCorrect": false,
+      "misconception": "Misses a vasculitis that needs steroids to protect vision.",
+      "explanation": "Giant cell arteritis headache reflects large-vessel vasculitis needing urgent high-dose glucocorticoids; a vasoconstricting triptan is inappropriate."
+    },
+    {
+      "label": "E",
+      "text": "Migraine headache attacks",
+      "isCorrect": true,
+      "misconception": "None — migraine is sumatriptan's listed use.",
+      "explanation": "Sumatriptan, a selective serotonin receptor agonist, treats the symptoms of migraine: severe, throbbing headaches that can bring nausea and light sensitivity."
+    }
+  ],
+  "context": "Learning objective: Sumatriptan, a selective serotonin receptor agonist, treats the symptoms of migraine headaches.",
+  "cite": "medlineplus-sumatriptan#sumatriptan-uses",
+  "publicUsmle": {
+    "schemaVersion": 1,
+    "origin": "generated",
+    "itemText": {
+      "licence": "CC-BY-4.0",
+      "attribution": "MD3 contributors"
+    },
+    "evidence": {
+      "kind": "passage",
+      "sourceId": "medlineplus-sumatriptan",
+      "passageId": "sumatriptan-uses",
+      "licence": {
+        "cls": "foss",
+        "id": "us-gov"
+      }
+    }
+  }
+}

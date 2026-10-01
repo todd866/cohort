@@ -1,0 +1,99 @@
+{
+  "schemaVersion": 1,
+  "figureId": "neonatal-transition-svr-pvr",
+  "kind": "conceptual",
+  "created": "2026-09-27",
+  "timing": "authored before generation",
+  "sourceFacts": [
+    {
+      "fact": "Cord clamping removes low-resistance placental circulation and raises systemic vascular resistance.",
+      "sources": [
+        {
+          "title": "Fetal Physiology and the Transition to Extrauterine Life (peer-reviewed review, PMC)",
+          "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC4987541/"
+        }
+      ]
+    },
+    {
+      "fact": "Lung expansion and increased oxygen lower pulmonary vascular resistance and increase pulmonary blood flow.",
+      "sources": [
+        {
+          "title": "MSD Manual Professional: Perinatal Physiology",
+          "url": "https://www.msdmanuals.com/professional/pediatrics/perinatal-physiology/perinatal-physiology?ruleredirectid=742"
+        }
+      ]
+    }
+  ],
+  "targetStableId": "mdx:a95ca5d850dc08914c3fdac650af154f:blank-1",
+  "targetQuestion": "What happens to systemic and pulmonary vascular resistance during neonatal transition?",
+  "targetAnswer": "Cord clamping raises SVR while lung aeration lowers PVR.",
+  "nodes": [
+    {
+      "id": "cord",
+      "label": "Cord clamping"
+    },
+    {
+      "id": "placenta",
+      "label": "Low-resistance placenta removed"
+    },
+    {
+      "id": "svr",
+      "label": "SVR rises"
+    },
+    {
+      "id": "breaths",
+      "label": "First breaths and lung aeration"
+    },
+    {
+      "id": "pvr",
+      "label": "PVR falls"
+    },
+    {
+      "id": "transition",
+      "label": "Neonatal transition"
+    }
+  ],
+  "edges": [
+    {
+      "from": "cord",
+      "to": "svr",
+      "meaning": "removes placental circuit and raises systemic resistance"
+    },
+    {
+      "from": "breaths",
+      "to": "pvr",
+      "meaning": "aeration and oxygen lower pulmonary resistance"
+    },
+    {
+      "from": "svr",
+      "to": "transition",
+      "meaning": "part of postnatal transition"
+    },
+    {
+      "from": "pvr",
+      "to": "transition",
+      "meaning": "part of postnatal transition"
+    }
+  ],
+  "forbiddenAnatomy": [
+    "No literal organ geometry, radiographs, patient anatomy, or unsupported quantitative proportions; this is an abstract causal diagram."
+  ],
+  "validation": {
+    "status": "verified",
+    "pixelReviewStatus": "verified",
+    "clinicalReviewStatus": "pending",
+    "checks": [
+      "source facts and causal direction checked against cited URLs",
+      "SVG has no external images or generated anatomy",
+      "PNG rasterized from the exact source SVG with sharp",
+      "phone-width readability and learner hide/reveal review still required"
+    ],
+    "method": "source-and-conceptual-structure-review",
+    "reviewers": [
+      "Codex primary agent",
+      "independent refuter agent"
+    ],
+    "notes": "Root source and pixel review plus independent adversarial pixel review; retained conceptual relationships, corrected misleading arrow/count/timing encodings. Clinical sign-off remains pending.",
+    "reviewedFigureSha256": "a49c0ab3d2f3f25a5ba80c2da3b7355b9ed3aadf7333c5ff39452e8e6ae4c221"
+  }
+}

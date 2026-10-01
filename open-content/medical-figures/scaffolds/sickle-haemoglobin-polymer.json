@@ -1,0 +1,108 @@
+{
+  "schemaVersion": 1,
+  "figureId": "sickle-haemoglobin-polymer",
+  "kind": "conceptual",
+  "retrospectiveReview": true,
+  "sourceFacts": [
+    {
+      "id": "fact-1",
+      "fact": "Deoxygenated HbS can form rigid polymers and deform red cells.",
+      "sources": [
+        {
+          "title": "NHLBI: Sickle cell disease causes",
+          "url": "https://www.nhlbi.nih.gov/health/sickle-cell-disease/causes"
+        },
+        {
+          "title": "NHLBI: Evidence-based management of sickle cell disease, 2014 expert panel report",
+          "url": "https://www.nhlbi.nih.gov/sites/default/files/publications/56-364NFULL.pdf"
+        }
+      ]
+    },
+    {
+      "id": "fact-2",
+      "fact": "HbF inhibits HbS polymerisation.",
+      "sources": [
+        {
+          "title": "NHLBI: Sickle cell disease causes",
+          "url": "https://www.nhlbi.nih.gov/health/sickle-cell-disease/causes"
+        },
+        {
+          "title": "NHLBI: Evidence-based management of sickle cell disease, 2014 expert panel report",
+          "url": "https://www.nhlbi.nih.gov/sites/default/files/publications/56-364NFULL.pdf"
+        }
+      ]
+    },
+    {
+      "id": "fact-3",
+      "fact": "Hydroxyurea increases HbF; this helps reduce sickling but is not a guarantee of no sickling.",
+      "sources": [
+        {
+          "title": "NHLBI: Sickle cell disease causes",
+          "url": "https://www.nhlbi.nih.gov/health/sickle-cell-disease/causes"
+        },
+        {
+          "title": "NHLBI: Evidence-based management of sickle cell disease, 2014 expert panel report",
+          "url": "https://www.nhlbi.nih.gov/sites/default/files/publications/56-364NFULL.pdf"
+        }
+      ]
+    }
+  ],
+  "nodes": [
+    {
+      "id": "hbs",
+      "shape": "purple bead chains in a crescent symbolic red-cell container",
+      "label": "HbS polymers"
+    },
+    {
+      "id": "hbf",
+      "shape": "teal beads mixed with separate purple beads in a rounder red-cell container",
+      "label": "HbF inhibits HbS polymerisation"
+    },
+    {
+      "id": "hydroxyurea",
+      "shape": "text mechanism annotation",
+      "label": "Hydroxyurea increases HbF"
+    }
+  ],
+  "edges": [
+    {
+      "from": "hbs",
+      "to": "cell-shape",
+      "meaning": "rigid fibres deform cell"
+    },
+    {
+      "from": "hbf",
+      "to": "hbs",
+      "meaning": "inhibits polymerisation"
+    },
+    {
+      "from": "hydroxyurea",
+      "to": "hbf",
+      "meaning": "increases HbF"
+    }
+  ],
+  "labels": [
+    "HbS polymers",
+    "HbS",
+    "HbF",
+    "Hydroxyurea increases HbF",
+    "Less polymerisation helps reduce sickling"
+  ],
+  "forbiddenAnatomy": [
+    "Regional anatomy",
+    "Organ and tissue cutaways",
+    "Diagnostic or histological representations"
+  ],
+  "validation": {
+    "status": "verified",
+    "method": "source-and-conceptual-structure-review",
+    "checks": [
+      "Purple/teal molecule colours match legend.",
+      "Long polymers remain inside left crescent; right shows fewer polymers and explicit HbF.",
+      "No organs, tissue layers or clinical blood-film image.",
+      "Mechanism explicitly simplified and benefit expressed as helps reduce."
+    ],
+    "pixelReviewStatus": "verified",
+    "pixelReviewNotes": "Retrospective full-pixel comparison with molecular specification: bead polymers are within the crescent cell symbol; the rounder comparator contains distinct HbF and HbS beads with far less polymer. Colours and legends agree, hydroxyurea increases HbF is correctly labelled, and helps reduce avoids a guarantee. This is a symbolic cell-and-molecule mechanism, not an anatomical or blood-film specimen; pending independent QA."
+  }
+}

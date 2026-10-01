@@ -1,0 +1,27 @@
+{
+  "schemaVersion": 1,
+  "figureId": "jia-quiet-uveitis-screening-timeline",
+  "sourceFacts": [
+    "JIA-associated uveitis often causes no redness or pain yet can threaten vision.",
+    "Children with JIA need regular ophthalmic screening; the specialist sets the screening interval."
+  ],
+  "clinicalSources": [
+    {
+      "title": "AAPOS: Juvenile Idiopathic Arthritis",
+      "url": "https://www.aapos.org/glossary/juvenile-idiopathic-arthritis"
+    }
+  ],
+  "specificationFiles": [
+    "scaffolds/jia-quiet-uveitis-screening-timeline.json"
+  ],
+  "prompt": "Create an entirely original medical teaching concept illustration, landscape 3:2, warm hand-painted watercolour and gouache on ivory paper, fine ink contours, restrained navy labels, muted teal, ochre and peach accents, generous whitespace. Gentle storybook warmth with the precision and legibility of an educational atlas. Use written instructions only; no image reference. Meaningful visual relationships and sparse short labels, not paragraphs in boxes. NO internal anatomy, organ/eye/ear/brain/tissue cutaways, anatomical pathways, bones, diagnostic images, fake scans, realistic lesions, photorealistic skin, glossy wet flesh or 3D tissue. Neutral symbols or fully clothed surface poses only where specified. Preserve every direction, relationship and count in the explicit structure. Title and labels exactly as requested, no additional prose. Footer 'Educational schematic'. No logo or watermark.\n\nTitle 'JIA: quiet symptoms still need eye checks'. Dominant horizontal timeline across lower two-thirds, with exactly three evenly spaced calendar-page icons, each containing a small magnifying-glass symbol. One continuous teal arrow runs through the calendar sequence left-to-right, labelled 'Regular eye screening'. Above timeline a small quiet bell icon with NO ringing marks carries question 'No redness or pain?'. Nearby an ochre warning dot partly hidden behind a pale translucent screen carries label 'Uveitis can be silent'. A single arrow from this hidden-risk metaphor points to the screening timeline, never to a stop symbol. Bottom 'Interval set by the eye team'. No eyes, joints, internal inflammation anatomy, fixed visit frequency, test result or universal disease claim. Three calendars are examples of continuing follow-up, not a mandated count. STRICT exclusion: no person, no child, no landscape, no room, no posters, no signs, no decorative plaques, no handwritten slogans or inspirational text. The entire image has ONLY the requested title, five stated labels, three calendar icons, one quiet bell, one hidden warning token and their arrows. Do not add 'same day' or any visit interval.",
+  "generation": {
+    "tool": "built-in image_gen",
+    "model": null,
+    "referenceAssetIds": [],
+    "externalReferenceImages": [],
+    "specificationFiles": [
+      "scaffolds/jia-quiet-uveitis-screening-timeline.json"
+    ]
+  }
+}

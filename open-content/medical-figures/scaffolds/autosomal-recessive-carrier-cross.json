@@ -1,0 +1,91 @@
+{
+  "schemaVersion": 1,
+  "figureId": "autosomal-recessive-carrier-cross",
+  "kind": "conceptual",
+  "created": "2026-09-10",
+  "timing": "retrospective specification of previously generated candidate",
+  "sourceFacts": [
+    {
+      "fact": "For a recessive disorder, an affected child inherits the disease-associated allele from both parents.",
+      "sourceUrls": [
+        "https://medlineplus.gov/genetics/understanding/inheritance/inheritancepatterns/"
+      ]
+    },
+    {
+      "fact": "An Aa by Aa cross yields AA, Aa, Aa and aa possibilities.",
+      "sourceUrls": [
+        "https://medlineplus.gov/genetics/understanding/inheritance/inheritancepatterns/"
+      ]
+    }
+  ],
+  "clinicalSources": [
+    {
+      "title": "MedlinePlus Genetics: Inheritance patterns",
+      "url": "https://medlineplus.gov/genetics/understanding/inheritance/inheritancepatterns/"
+    }
+  ],
+  "nodes": [
+    "maternal A",
+    "maternal a",
+    "paternal A",
+    "paternal a",
+    "AA",
+    "Aa",
+    "Aa",
+    "aa"
+  ],
+  "edges": [
+    [
+      "A x A",
+      "AA",
+      "upper left"
+    ],
+    [
+      "A x a",
+      "Aa",
+      "upper right"
+    ],
+    [
+      "a x A",
+      "Aa",
+      "lower left"
+    ],
+    [
+      "a x a",
+      "aa",
+      "lower right"
+    ]
+  ],
+  "invariants": [
+    "Exactly 2x2 cells: AA,Aa,Aa,aa; AA not carrier, Aa carrier, aa affected.",
+    "Independent possible outcome per pregnancy, not guaranteed four-birth sequence."
+  ],
+  "expectedLabels": [
+    "Two carriers: autosomal recessive inheritance",
+    "Aa \u00d7 Aa",
+    "A",
+    "a",
+    "A",
+    "a",
+    "AA",
+    "Not a carrier",
+    "Aa",
+    "Carrier",
+    "Aa",
+    "Carrier",
+    "aa",
+    "Affected",
+    "a = recessive disease-associated allele",
+    "Each pregnancy is a new event"
+  ],
+  "layoutSpecification": "Very clear original hand-painted PUNNETT SQUARE. Title 'Two carriers: autosomal recessive inheritance'. Subheading 'Aa \u00d7 Aa'. Central exactly2x2grid. Column gamete headers ABOVE are 'A' over leftcolumn and 'a' over rightcolumn. Row gamete headers LEFT are 'A' top and 'a' bottom. Upper-left cell 'AA' with text 'Not a carrier'; upper-right 'Aa' with 'Carrier'; lower-left 'Aa' with 'Carrier'; lower-right 'aa' with 'Affected'. Use ivory AAcell, teal carrier cells, ochre aacell; samelettercase precisely. Small legend 'a = recessive disease-associated allele'. Bottom 'Each pregnancy is a new event'. No four realistic babies, no claim that exactly four births have these outcomes, no extra squares or impossible genotype.",
+  "forbiddenAnatomy": [
+    "No claimed anatomical reconstruction, diagnostic image, histology or literal neuroanatomical pathway",
+    "No organ cutaways or invented internal spatial relationships"
+  ],
+  "validation": {
+    "sourceFacts": "Checked against listed primary clinical sources during original topic review",
+    "pixelChecks": "Visually inspected every cell against row/column gametes: AA, Aa, Aa, aa are correct; carrier/affected labels and colours agree. Each-pregnancy wording prevents treating four squares as a guaranteed birth sequence.",
+    "status": "self-reviewed; independent review pending"
+  }
+}

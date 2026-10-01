@@ -1,0 +1,77 @@
+{
+  "id": "bank:cohort:paeds:q-884eb5eb1494:v1",
+  "rotation": "cohort-open",
+  "moduleNodes": [
+    "cohort/paeds"
+  ],
+  "topics": [
+    "Labial adhesions",
+    "Paediatric surgery"
+  ],
+  "questionType": "management",
+  "difficulty": "easy",
+  "stem": "A 2-year-old has a thin adhesion joining the medial edges of the labia minora. She passes urine comfortably, has no postvoid dribbling and has never had a urinary infection. There is no inflammation or pain.\n\nWhat is the most appropriate management?",
+  "options": [
+    {
+      "label": "A",
+      "text": "Surgical division under a general anaesthetic",
+      "isCorrect": false,
+      "explanation": "An asymptomatic adhesion does not require an operation."
+    },
+    {
+      "label": "B",
+      "text": "Topical oestrogen treatment with planned review",
+      "isCorrect": false,
+      "explanation": "Oestrogen is not routine for asymptomatic fusion with easy voiding."
+    },
+    {
+      "label": "C",
+      "text": "Oral antibiotics for a presumed infection",
+      "isCorrect": false,
+      "explanation": "There are no features supporting bacterial infection."
+    },
+    {
+      "label": "D",
+      "text": "Reassurance and observation without active treatment",
+      "isCorrect": true,
+      "explanation": "Comfortable voiding and absent symptoms favour spontaneous resolution."
+    },
+    {
+      "label": "E",
+      "text": "Manual separation of the adherent edges",
+      "isCorrect": false,
+      "explanation": "Separation is painful and recurrence is common."
+    },
+    {
+      "label": "F",
+      "text": "Urgent catheterisation to prevent urinary retention",
+      "isCorrect": false,
+      "explanation": "She empties her bladder comfortably without obstruction."
+    },
+    {
+      "label": "G",
+      "text": "Topical antifungal treatment for suspected candidiasis",
+      "isCorrect": false,
+      "explanation": "The finding is adhesion, without a candidal presentation."
+    }
+  ],
+  "context": "Labial adhesions commonly reflect thin prepubertal mucosa and minor irritation. Most resolve with growth, so comfortable voiding supports observation.\n\nIf urinary outflow becomes obstructed, discuss treatment with gynaecology. Forced separation can be painful and adhesions may recur.",
+  "publicModule": {
+    "schemaVersion": 1,
+    "origin": "mirrored",
+    "discipline": "paeds",
+    "mirroredFrom": "md3:884eb5eb1494e7b0",
+    "itemText": {
+      "licence": "CC-BY-4.0",
+      "attribution": "MD3 contributors"
+    },
+    "evidence": {
+      "kind": "reference",
+      "sourceId": "rch-vulval-and-vaginal-conditions"
+    },
+    "review": {
+      "verdict": "passed",
+      "contentHash": "f6b66261535725408d3734c5f0b71444a27374c267ae279f6722012cce768ce7"
+    }
+  }
+}

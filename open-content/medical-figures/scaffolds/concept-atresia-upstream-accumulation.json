@@ -1,0 +1,94 @@
+{
+  "schemaVersion": 1,
+  "id": "concept-atresia-upstream-accumulation",
+  "kind": "conceptual",
+  "sourceFacts": [
+    {
+      "fact": "Duodenal atresia blocks downstream passage.",
+      "sourceUrls": [
+        "https://www.gosh.nhs.uk/conditions-and-treatments/conditions-we-treat/duodenal-atresia/?CSS=Alpha",
+        "https://pmc.ncbi.nlm.nih.gov/articles/PMC6038581/"
+      ]
+    },
+    {
+      "fact": "The typical double-bubble pattern reflects gas distension in the stomach and proximal duodenum.",
+      "sourceUrls": [
+        "https://www.gosh.nhs.uk/conditions-and-treatments/conditions-we-treat/duodenal-atresia/?CSS=Alpha",
+        "https://pmc.ncbi.nlm.nih.gov/articles/PMC6038581/"
+      ]
+    },
+    {
+      "fact": "Uncomplicated complete atresia typically leaves no distal bowel gas; uncommon alternative communications are exceptions.",
+      "sourceUrls": [
+        "https://www.gosh.nhs.uk/conditions-and-treatments/conditions-we-treat/duodenal-atresia/?CSS=Alpha",
+        "https://pmc.ncbi.nlm.nih.gov/articles/PMC6038581/"
+      ]
+    }
+  ],
+  "nodes": [
+    {
+      "id": "1",
+      "label": "Duodenal outflow blocked"
+    },
+    {
+      "id": "2",
+      "label": "Gas accumulates upstream"
+    },
+    {
+      "id": "3",
+      "label": "Stomach gas"
+    },
+    {
+      "id": "4",
+      "label": "Proximal duodenal gas"
+    }
+  ],
+  "edges": [
+    {
+      "from": "1",
+      "to": "2",
+      "meaning": "obstruction consequence"
+    },
+    {
+      "from": "2",
+      "to": "3",
+      "meaning": "first upstream region"
+    },
+    {
+      "from": "2",
+      "to": "4",
+      "meaning": "second upstream region"
+    }
+  ],
+  "labels": [
+    "Duodenal atresia: why gas collects upstream",
+    "Duodenal outflow blocked",
+    "Gas accumulates upstream",
+    "Stomach gas",
+    "Proximal duodenal gas",
+    "Conceptual schematic • Not anatomy"
+  ],
+  "layout": "Use a TOP logical chain node1 then arrow to node2. Node2 branches downward into TWO separate rectangular inventory cards side by side, labels3 and4. Each inventory has neutral blue gas-dot tokens in a rectangle, not a rounded organ bubble. Put a bracket beneath the pair labelled: Two upstream gas collections. Small bottom note: Typical complete obstruction: little or no distal bowel gas. Explicitly no X-ray simulation, body, connected bowel route, tube or organ shapes. These rectangles are logic categories, not anatomy.",
+  "forbiddenAnatomy": [
+    "organs",
+    "body silhouettes",
+    "tissue cross-sections",
+    "cells",
+    "tubules",
+    "vessels",
+    "clinical photographs",
+    "diagnostic scans"
+  ],
+  "validation": {
+    "sourceStatus": "checked",
+    "structureStatus": "verified",
+    "requiredChecks": [
+      "Four nodes and three connectors, two separate upstream gas categories",
+      "No downstream gas claim stated as universal",
+      "Inventory rectangles are not organ outlines",
+      "No radiograph or anatomical route"
+    ],
+    "clinicalReviewStatus": "pending",
+    "pixelChecks": "Pixel check confirms four labelled nodes, three correct arrows and two explicitly rectangular gas inventories. Bracket links the two upstream categories without simulating a radiograph or organ route. Typical obstruction qualifier preserved. Independent and clinical review pending."
+  }
+}

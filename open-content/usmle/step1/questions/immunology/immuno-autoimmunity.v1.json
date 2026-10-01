@@ -1,0 +1,70 @@
+{
+  "id": "bank:usmle-step1:immuno-autoimmunity:v1",
+  "rotation": "usmle-step1-open",
+  "topics": [
+    "autoimmunity"
+  ],
+  "moduleNodes": [
+    "usmle/step1",
+    "usmle/step1/immunology"
+  ],
+  "questionType": "mechanism",
+  "difficulty": "medium",
+  "stem": "An autoimmune response is best described as which inappropriate reaction?",
+  "options": [
+    {
+      "label": "A",
+      "text": "Immune reaction to a harmless environmental antigen",
+      "isCorrect": false,
+      "misconception": "Confuses autoimmunity with allergy, which targets harmless foreign antigens.",
+      "explanation": "A reaction to a harmless environmental antigen is an allergy; its target is foreign, not the host's own cells."
+    },
+    {
+      "label": "B",
+      "text": "Immune attack on cells of a transplanted donor organ",
+      "isCorrect": false,
+      "misconception": "Confuses autoimmunity with alloimmune rejection of donor tissue.",
+      "explanation": "Graft rejection is an alloimmune response to donor antigens, which are foreign to the recipient rather than self-antigens."
+    },
+    {
+      "label": "C",
+      "text": "Immune complex deposition after exposure to foreign serum proteins",
+      "isCorrect": false,
+      "misconception": "Confuses autoimmunity with serum sickness, a reaction to foreign proteins.",
+      "explanation": "Serum sickness is an immune complex reaction to foreign proteins such as animal antiserum, not a response against self."
+    },
+    {
+      "label": "D",
+      "text": "Excessive cytokine release during a systemic infection",
+      "isCorrect": false,
+      "misconception": "Confuses autoimmunity with dysregulated inflammation during infection.",
+      "explanation": "A cytokine storm is an excessive, dysregulated inflammatory response to infection; it is not directed at self-antigens."
+    },
+    {
+      "label": "E",
+      "text": "Immune attack on the host's own cells or self-antigens",
+      "isCorrect": true,
+      "misconception": "None — autoimmunity is an immune response against host cells or self-antigens.",
+      "explanation": "An autoimmune response is an inappropriate immune response to host cells or self-antigens."
+    }
+  ],
+  "context": "Learning objective: An autoimmune response is an inappropriate immune response directed at host cells or self-antigens.",
+  "cite": "openstax-biology-2e#autoimmune-response",
+  "publicUsmle": {
+    "schemaVersion": 1,
+    "origin": "generated",
+    "itemText": {
+      "licence": "CC-BY-4.0",
+      "attribution": "MD3 contributors"
+    },
+    "evidence": {
+      "kind": "passage",
+      "sourceId": "openstax-biology-2e",
+      "passageId": "autoimmune-response",
+      "licence": {
+        "cls": "foss",
+        "id": "cc-by-4.0"
+      }
+    }
+  }
+}

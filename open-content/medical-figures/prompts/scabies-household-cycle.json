@@ -1,0 +1,35 @@
+{
+  "figureId": "scabies-household-cycle",
+  "tool": "built-in image_gen",
+  "model": null,
+  "referenceAssetIds": [],
+  "externalReferenceImages": [],
+  "prompt": "Original educational conceptual illustration, landscape 3:2. Warm ivory paper, sophisticated hand-painted gouache/watercolour, confident fine brown outlines, navy lettering, restrained teal, coral and amber. Editorial science illustration with spacious composition and large legible labels. The explanatory structure must carry the meaning visually: molecules, objects, geometry or flow; never paragraphs in boxes. No organs, regional anatomy, teeth or joint cutaways, tissue layers, invented histology, diagnostic photographs, radiographs or patient data. All symbols are explicitly conceptual. Footer: 'Conceptual teaching model • Not to scale'. Title: 'Scabies: break the household cycle'. Two side-by-side visual networks, each four simple friendly human bust silhouettes arranged around an open circle. No facial or skin pathology; no mites or anatomical detail. Left network: only the bottom-left person has a teal treatment check. Coral curved arrows form a complete clockwise loop among all four icons. Label above 'Only one person treated'; short label in centre 'Reinfestation can continue'. Right network: all four people each carry the identical teal check. Use pale dashed curved former-contact paths with clear gaps rather than a complete loop; put a large open broken-circle symbol at centre. Label above 'Treat close contacts together'; centre 'Break the cycle'. A small folded-laundry icon at bottom accompanies the one short reminder 'Clean used clothing and bedding'. Balanced warm paper; the loops and check coverage must make the comparison evident without prose boxes.",
+  "clinicalSources": [
+    {
+      "title": "CDC — Preventing scabies",
+      "url": "https://www.cdc.gov/scabies/prevention/index.html"
+    }
+  ],
+  "teaching": {
+    "question": "Why are household members treated together when someone has scabies?",
+    "answer": "Untreated close contacts can perpetuate transmission and reinfestation. Simultaneous treatment, together with appropriate cleaning of used clothing and bedding, helps break the cycle.",
+    "imageRole": "after-reveal"
+  },
+  "title": "Breaking the household scabies cycle",
+  "caption": "Treating the affected person and all household members and close contacts at the same time helps prevent scabies reinfestation.",
+  "alt": "Two household networks contrast treatment of one person with simultaneous treatment of all close contacts, breaking the reinfestation loop.",
+  "review": {
+    "status": "pending-independent-qa",
+    "method": "agent-visual-and-source-review",
+    "notes": "Compared full pixels against specification: both networks have four people; left has one treatment check and a complete clockwise loop; right has four checks and visibly interrupted paths plus a broken ring. No internal anatomy or skin pathology. Cleaning reminder matches CDC. Simultaneous treatment coverage is the clear visual distinction.",
+    "structure": {
+      "kind": "conceptual",
+      "status": "verified",
+      "specificationFiles": [
+        "scaffolds/scabies-household-cycle.json"
+      ],
+      "notes": "Compared full pixels against specification: both networks have four people; left has one treatment check and a complete clockwise loop; right has four checks and visibly interrupted paths plus a broken ring. No internal anatomy or skin pathology. Cleaning reminder matches CDC. Simultaneous treatment coverage is the clear visual distinction."
+    }
+  }
+}

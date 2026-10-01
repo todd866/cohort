@@ -1,0 +1,71 @@
+{
+  "id": "bank:usmle-step1:pharm-heparin-anticoagulant:v1",
+  "rotation": "usmle-step1-open",
+  "topics": [
+    "heparin",
+    "anticoagulation"
+  ],
+  "moduleNodes": [
+    "usmle/step1",
+    "usmle/step1/pharmacology"
+  ],
+  "questionType": "mechanism",
+  "difficulty": "easy",
+  "stem": "Heparin is described as which kind of agent, acting by decreasing which property of blood?",
+  "options": [
+    {
+      "label": "A",
+      "text": "Antiplatelet agent; platelet aggregation",
+      "isCorrect": false,
+      "misconception": "Confuses anticoagulants with antiplatelet drugs.",
+      "explanation": "Antiplatelet agents such as aspirin or clopidogrel block platelet aggregation; heparin acts on the coagulation cascade by potentiating antithrombin."
+    },
+    {
+      "label": "B",
+      "text": "Thrombolytic; stability of existing fibrin clots",
+      "isCorrect": false,
+      "misconception": "Believes heparin dissolves clots that have already formed.",
+      "explanation": "Thrombolytics such as alteplase convert plasminogen to plasmin to dissolve existing clots; heparin stops clots growing but does not lyse them."
+    },
+    {
+      "label": "C",
+      "text": "Vitamin K antagonist; gamma-carboxylation of clotting factors",
+      "isCorrect": false,
+      "misconception": "Confuses heparin's mechanism with warfarin's.",
+      "explanation": "Warfarin, the vitamin K antagonist, blocks vitamin K epoxide reductase so nonfunctional factors II, VII, IX, X and proteins C and S are made; heparin potentiates antithrombin."
+    },
+    {
+      "label": "D",
+      "text": "Anticoagulant; clotting ability of the blood",
+      "isCorrect": true,
+      "misconception": "None — heparin is an anticoagulant that lowers the blood's clotting ability.",
+      "explanation": "The label classes heparin as an anticoagulant ('blood thinner') that works by decreasing the clotting ability of the blood."
+    },
+    {
+      "label": "E",
+      "text": "Plasma expander; viscosity of the blood",
+      "isCorrect": false,
+      "misconception": "Takes 'blood thinner' literally as lowering viscosity.",
+      "explanation": "Plasma expanders such as albumin add intravascular volume; 'blood thinner' is a figure of speech, and heparin does not lower blood viscosity."
+    }
+  ],
+  "context": "Learning objective: Heparin is an anticoagulant ('blood thinner') that works by decreasing the clotting ability of the blood.",
+  "cite": "medlineplus-heparin#heparin-anticoagulant",
+  "publicUsmle": {
+    "schemaVersion": 1,
+    "origin": "generated",
+    "itemText": {
+      "licence": "CC-BY-4.0",
+      "attribution": "MD3 contributors"
+    },
+    "evidence": {
+      "kind": "passage",
+      "sourceId": "medlineplus-heparin",
+      "passageId": "heparin-anticoagulant",
+      "licence": {
+        "cls": "foss",
+        "id": "us-gov"
+      }
+    }
+  }
+}

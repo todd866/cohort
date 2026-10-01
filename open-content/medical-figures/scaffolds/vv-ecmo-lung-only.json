@@ -1,0 +1,109 @@
+{
+  "schemaVersion": 1,
+  "figureId": "vv-ecmo-lung-only",
+  "kind": "conceptual",
+  "created": "2026-09-27",
+  "timing": "authored before generation",
+  "sourceFacts": [
+    {
+      "fact": "VV ECMO provides lung support only and the patient heart must function adequately.",
+      "sources": [
+        {
+          "title": "ELSO: Types of ECMO",
+          "url": "https://www.elso.org/ecmo-resources/types-of-ecmo.aspx"
+        }
+      ]
+    },
+    {
+      "fact": "The oxygenator adds oxygen and removes carbon dioxide.",
+      "sources": [
+        {
+          "title": "ELSO: What Is ECMO?",
+          "url": "https://www.elso.org/extracorporeal-membrane-oxygenation.aspx"
+        }
+      ]
+    }
+  ],
+  "targetStableId": "mdx:96dcfd09628f9226eeb6bdae5ca79e7f",
+  "targetQuestion": "What does venovenous ECMO support?",
+  "targetAnswer": "Gas exchange; native cardiac output remains necessary for systemic perfusion.",
+  "nodes": [
+    {
+      "id": "drainage",
+      "label": "Venous drainage"
+    },
+    {
+      "id": "circuit",
+      "label": "VV ECMO circuit"
+    },
+    {
+      "id": "oxygenator",
+      "label": "Oxygenator"
+    },
+    {
+      "id": "return",
+      "label": "Venous return"
+    },
+    {
+      "id": "heart",
+      "label": "Native heart"
+    },
+    {
+      "id": "systemic",
+      "label": "Systemic circulation"
+    }
+  ],
+  "edges": [
+    {
+      "from": "drainage",
+      "to": "circuit",
+      "meaning": "blood enters extracorporeal circuit"
+    },
+    {
+      "from": "circuit",
+      "to": "oxygenator",
+      "meaning": "circuit routes blood through gas exchange"
+    },
+    {
+      "from": "oxygenator",
+      "to": "return",
+      "meaning": "oxygenated blood returns to veins"
+    },
+    {
+      "from": "return",
+      "to": "heart",
+      "meaning": "native heart receives venous return"
+    },
+    {
+      "from": "heart",
+      "to": "systemic",
+      "meaning": "native heart pumps systemic circulation"
+    },
+    {
+      "from": "systemic",
+      "to": "drainage",
+      "meaning": "venous blood returns for drainage"
+    }
+  ],
+  "forbiddenAnatomy": [
+    "No literal organ geometry, radiographs, patient anatomy, or unsupported quantitative proportions; this is an abstract causal diagram."
+  ],
+  "validation": {
+    "status": "verified",
+    "pixelReviewStatus": "verified",
+    "clinicalReviewStatus": "pending",
+    "checks": [
+      "source facts and causal direction checked against cited URLs",
+      "SVG has no external images or generated anatomy",
+      "PNG rasterized from the exact source SVG with sharp",
+      "phone-width readability and learner hide/reveal review still required"
+    ],
+    "method": "source-and-conceptual-structure-review",
+    "reviewers": [
+      "Codex primary agent",
+      "independent refuter agent"
+    ],
+    "notes": "Root source and pixel review plus independent adversarial pixel review; retained conceptual relationships, corrected misleading arrow/count/timing encodings. Clinical sign-off remains pending.",
+    "reviewedFigureSha256": "25ef20b0813af7912c46f2995eeb8c91d2c1500a37bf308ac246b294b450d915"
+  }
+}

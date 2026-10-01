@@ -1,0 +1,72 @@
+{
+  "id": "bank:usmle-step1:neuro-stroke-be-fast-arm-drift:v1",
+  "rotation": "usmle-step1-open",
+  "topics": [
+    "stroke",
+    "clinical recognition",
+    "B.E. F.A.S.T."
+  ],
+  "moduleNodes": [
+    "usmle/step1",
+    "usmle/step1/neuro"
+  ],
+  "questionType": "interpretation",
+  "difficulty": "easy",
+  "stem": "During a B.E. F.A.S.T. check, both arms are raised and one arm drifts downward. Which of the following interpretations is most appropriate?",
+  "options": [
+    {
+      "label": "A",
+      "text": "This excludes stroke because both arms moved",
+      "isCorrect": false,
+      "misconception": "Any movement is being treated as reassurance despite asymmetric arm drift.",
+      "explanation": "The CDC specifically identifies one arm drifting downward during the arm test as a stroke warning sign."
+    },
+    {
+      "label": "B",
+      "text": "This matters only when both arms drift",
+      "isCorrect": false,
+      "misconception": "The one-sided nature of the warning sign is being reversed.",
+      "explanation": "The cited B.E. F.A.S.T. test asks whether one arm drifts downward; bilateral drift is not required."
+    },
+    {
+      "label": "C",
+      "text": "This is reassuring if speech remains clear",
+      "isCorrect": false,
+      "misconception": "One normal component is being used to dismiss a different positive stroke sign.",
+      "explanation": "The CDC directs action when any of the listed face, arm, or speech signs is present, not only when all appear together."
+    },
+    {
+      "label": "D",
+      "text": "This is a stroke warning sign; call 9-1-1",
+      "isCorrect": true,
+      "misconception": "None; unilateral arm drift is a positive B.E. F.A.S.T. sign.",
+      "explanation": "One arm drifting downward is the arm finding in the CDC B.E. F.A.S.T. check. Seeing this sign should prompt an immediate emergency call."
+    },
+    {
+      "label": "E",
+      "text": "Wait unless facial droop appears later",
+      "isCorrect": false,
+      "misconception": "Urgent action is being postponed until a second warning sign develops.",
+      "explanation": "The CDC says to call right away if any of these signs is seen; waiting for facial droop delays care."
+    }
+  ],
+  "context": "Learning objective: apply the arm component of B.E. F.A.S.T. One arm drifting downward is a positive stroke warning sign; a single positive component is enough to activate emergency help.",
+  "cite": "cdc-stroke-signs#stroke-be-fast",
+  "publicUsmle": {
+    "schemaVersion": 1,
+    "origin": "generated",
+    "itemText": {
+      "licence": "CC-BY-4.0",
+      "attribution": "MD3 contributors"
+    },
+    "evidence": {
+      "kind": "passage",
+      "sourceId": "cdc-stroke-signs",
+      "passageId": "stroke-be-fast",
+      "licence": {
+        "cls": "foss",
+        "id": "us-gov"
+      }
+    }
+  }
+}

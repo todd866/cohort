@@ -1,0 +1,25 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 240" role="img" aria-labelledby="t d">
+  <title id="t">Vaccine types comparison</title>
+  <desc id="d">Live-attenuated vs inactivated vs conjugate vaccines: replication, immune response, and key examples.</desc>
+  <rect width="640" height="240" fill="#fafafa"/>
+  <text x="320" y="24" text-anchor="middle" font-family="system-ui,sans-serif" font-size="15" fill="#222">Vaccine types - what the immune system sees</text>
+  <!-- headers -->
+  <rect x="20" y="40" width="200" height="28" fill="#2a9d8f"/><text x="120" y="59" text-anchor="middle" font-family="system-ui,sans-serif" font-size="12" fill="#fff">Live attenuated</text>
+  <rect x="220" y="40" width="200" height="28" fill="#457b9d"/><text x="320" y="59" text-anchor="middle" font-family="system-ui,sans-serif" font-size="12" fill="#fff">Inactivated / killed</text>
+  <rect x="420" y="40" width="200" height="28" fill="#9b2226"/><text x="520" y="59" text-anchor="middle" font-family="system-ui,sans-serif" font-size="12" fill="#fff">Conjugate</text>
+  <!-- rows -->
+  <text x="120" y="95" text-anchor="middle" font-family="system-ui,sans-serif" font-size="11" fill="#333">Replicates weakly</text>
+  <text x="320" y="95" text-anchor="middle" font-family="system-ui,sans-serif" font-size="11" fill="#333">No replication</text>
+  <text x="520" y="95" text-anchor="middle" font-family="system-ui,sans-serif" font-size="11" fill="#333">Polysaccharide + protein</text>
+  <text x="120" y="120" text-anchor="middle" font-family="system-ui,sans-serif" font-size="11" fill="#333">Strong cellular + Ab</text>
+  <text x="320" y="120" text-anchor="middle" font-family="system-ui,sans-serif" font-size="11" fill="#333">Mostly humoral; boosters</text>
+  <text x="520" y="120" text-anchor="middle" font-family="system-ui,sans-serif" font-size="11" fill="#333">T-dependent Ab (kids)</text>
+  <text x="120" y="145" text-anchor="middle" font-family="system-ui,sans-serif" font-size="11" fill="#333">Avoid in pregnancy / severe</text>
+  <text x="120" y="160" text-anchor="middle" font-family="system-ui,sans-serif" font-size="11" fill="#333">immunocompromise</text>
+  <text x="320" y="145" text-anchor="middle" font-family="system-ui,sans-serif" font-size="11" fill="#333">Safer if immunocompromised</text>
+  <text x="520" y="145" text-anchor="middle" font-family="system-ui,sans-serif" font-size="11" fill="#333">Fixes poor pure-PS response</text>
+  <text x="120" y="190" text-anchor="middle" font-family="system-ui,sans-serif" font-size="11" fill="#555">MMR, varicella, rotavirus*</text>
+  <text x="320" y="190" text-anchor="middle" font-family="system-ui,sans-serif" font-size="11" fill="#555">HepA, rabies, IPV</text>
+  <text x="520" y="190" text-anchor="middle" font-family="system-ui,sans-serif" font-size="11" fill="#555">Hib, PCV, MenACWY</text>
+  <text x="320" y="225" text-anchor="middle" font-family="system-ui,sans-serif" font-size="11" fill="#666">*Product examples for teaching - follow current ACIP/CDC schedule for practice</text>
+</svg>

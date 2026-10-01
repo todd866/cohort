@@ -1,0 +1,25 @@
+{
+  "id": "concept-diarrhoea-fasting-comparison",
+  "title": "Osmotic and secretory diarrhoea respond differently",
+  "prompt": "Create an original polished 1536x1024 landscape conceptual medical teaching diagram for after-answer study. Warm hand-painted gouache and watercolour on ivory paper; a gentle storybook warmth with precise dark navy type. Matte teal, ochre, coral and blue accents. Simple neutral tokens, paper tiles, arrows and visibly abstract compartments only. Make the visual relationships legible at small size. No body parts, organs, cells, tissues, lumens, tubules, membranes, vessels, anatomical cutaways, clinical photos, diagnostic scans, babies, realistic flesh or decorative scenery. Do not turn abstract boxes or routes into organs or anatomy. Do not invent extra arrows or medical claims. Edge meanings below are metadata, not visible text: draw the arrows but do not print their meaning strings. Footer exactly: Conceptual schematic • Not anatomy. Title exactly: Osmotic and secretory diarrhoea respond differently. Two clearly separated horizontal lanes of three nodes each. Top lane1 to2 to3 in ochre, bottom4 to5 to6 in teal. Exactly four arrows, none between lanes. Top uses square solute tokens, a crossed-out supply tag, then fewer water-drop tokens. Bottom uses a plain abstract flow arrow, ongoing blue dots, then many water-drop tokens. Label under title: A conceptual comparison, not a fasting instruction. Bottom note: Mixed mechanisms occur. Do not draw intestines, secretory cells, membranes, pumps in tissue, foods or a child. No recommendation to withhold food or fluids. Exact node labels: [{\"id\": \"1\", \"label\": \"Osmotic mechanism\"}, {\"id\": \"2\", \"label\": \"Offending solute removed\"}, {\"id\": \"3\", \"label\": \"Diarrhoea decreases\"}, {\"id\": \"4\", \"label\": \"Secretory mechanism\"}, {\"id\": \"5\", \"label\": \"Secretion continues\"}, {\"id\": \"6\", \"label\": \"Diarrhoea persists\"}]. Exact directed connections: [{\"from\": \"1\", \"to\": \"2\", \"meaning\": \"remove luminal osmotic driver\"}, {\"from\": \"2\", \"to\": \"3\", \"meaning\": \"response\"}, {\"from\": \"4\", \"to\": \"5\", \"meaning\": \"ongoing driver\"}, {\"from\": \"5\", \"to\": \"6\", \"meaning\": \"response\"}]. Required checks: Two separate three-node lanes with four arrows; Removing solute leads to decrease only in osmotic lane; No fasting treatment instruction; No intestinal tissue, pumps or organs.",
+  "clinicalSources": [
+    {
+      "title": "AGA technical review on diarrhoea, hosted by NASPGHAN",
+      "url": "https://naspghan.org/files/documents/pdfs/training/curriculum-resources/common-outpatient/Fine_AGA_Technical_Review_on_Diarrhea_Gastroenterology_1999_Common_Outpatient_Guidelines.pdf"
+    }
+  ],
+  "caption": "Paired causal lanes compare the response to removing an ingested osmotic load with persistent secretory output.",
+  "question": "What response helps distinguish osmotic from secretory diarrhoea conceptually?",
+  "answer": "Osmotic diarrhoea tends to improve when the offending solute is removed, while secretory diarrhoea can persist despite fasting; mixed mechanisms occur.",
+  "structureSpecification": "scaffolds/concept-diarrhoea-fasting-comparison.json",
+  "generationInputs": {
+    "referenceImages": [],
+    "style": "written-only"
+  },
+  "qa": {
+    "status": "pending-independent-qa",
+    "method": "agent-visual-and-source-review",
+    "notes": "Pixel check: two independent three-node lanes/four arrows. Removed solute precedes decreased output above; continued secretion precedes persistence below. Mixed mechanisms and no fasting-instruction qualifiers clear. No intestine/cell imagery. Independent and clinical review pending.",
+    "clinicalReviewStatus": "pending"
+  }
+}

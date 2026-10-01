@@ -1,0 +1,66 @@
+{
+  "id": "bank:cohort:obs:q-e927811ef93c:v1",
+  "rotation": "cohort-open",
+  "moduleNodes": [
+    "cohort/obs"
+  ],
+  "topics": [
+    "pph",
+    "obstetrics",
+    "hemorrhage"
+  ],
+  "questionType": "management",
+  "difficulty": "easy",
+  "stem": "A woman has heavy vaginal bleeding shortly after delivery. The uterus feels boggy.\n\nWhat is the most appropriate first-line management?",
+  "options": [
+    {
+      "label": "A",
+      "text": "Expectant management and observation for spontaneous uterine contraction",
+      "isCorrect": false,
+      "explanation": "Watchful waiting delays treatment of active haemorrhage from uterine atony. Immediate uterine massage and uterotonics are required."
+    },
+    {
+      "label": "B",
+      "text": "Oral iron supplementation (e.g., ferrous sulfate 325 mg daily) with outpatient discharge and GP follow-up",
+      "isCorrect": false,
+      "explanation": "Iron supplementation addresses chronic anaemia, not acute haemorrhage. Active PPH from uterine atony requires immediate uterine massage and uterotonics, not outpatient management."
+    },
+    {
+      "label": "C",
+      "text": "Immediate peripartum hysterectomy for definitive haemorrhage control",
+      "isCorrect": false,
+      "explanation": "Hysterectomy is a last resort for refractory PPH after medical, mechanical, and conservative surgical measures have failed. It is not a first-line intervention."
+    },
+    {
+      "label": "D",
+      "text": "Immediate uterine massage plus uterotonics such as oxytocin first-line",
+      "isCorrect": true,
+      "explanation": "Uterine atony is the most common cause of postpartum hemorrhage. First-line management is uterine massage and uterotonics (typically oxytocin), with escalation if bleeding continues. e.g., oxytocin first line."
+    },
+    {
+      "label": "E",
+      "text": "Tocolytic therapy (e.g., nifedipine, salbutamol) to reduce uterine contractions and decrease bleeding",
+      "isCorrect": false,
+      "explanation": "Tocolytics relax uterine muscle, which would worsen atonic PPH. The treatment is the opposite: uterotonics to stimulate uterine contraction and compress the spiral arteries."
+    }
+  ],
+  "context": "For atonic PPH the first manoeuvres are simple and immediate: rub up a contraction with bimanual fundal massage, empty the bladder, give first-line uterotonic (oxytocin 5 IU IV slow + 40 IU infusion or 10 IU IM).\n\nCall for help, IV access (×2 large bore), bloods including coag and crossmatch, tranexamic acid 1 g IV.",
+  "publicModule": {
+    "schemaVersion": 1,
+    "origin": "mirrored",
+    "discipline": "obs",
+    "mirroredFrom": "md3:e927811ef93c0985",
+    "itemText": {
+      "licence": "CC-BY-4.0",
+      "attribution": "MD3 contributors"
+    },
+    "evidence": {
+      "kind": "reference",
+      "sourceId": "qcg-pph"
+    },
+    "review": {
+      "verdict": "passed",
+      "contentHash": "0b28248765376f5ff6c00b8c69ac3fd88e973c9b4e70005b3dd8043076967248"
+    }
+  }
+}

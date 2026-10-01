@@ -1,0 +1,97 @@
+{
+  "schemaVersion": 1,
+  "id": "concept-diabetes-osmotic-loss",
+  "kind": "conceptual",
+  "sourceFacts": [
+    {
+      "fact": "Insulin deficiency in type1 diabetes causes hyperglycaemia.",
+      "sourceUrls": [
+        "https://www.niddk.nih.gov/health-information/diabetes/overview/what-is-diabetes/type-1-diabetes",
+        "https://www.niddk.nih.gov/health-information/diabetes/overview/symptoms-causes"
+      ]
+    },
+    {
+      "fact": "Urinary glucose promotes water loss, contributing to polyuria and thirst.",
+      "sourceUrls": [
+        "https://www.niddk.nih.gov/health-information/diabetes/overview/what-is-diabetes/type-1-diabetes",
+        "https://www.niddk.nih.gov/health-information/diabetes/overview/symptoms-causes"
+      ]
+    }
+  ],
+  "nodes": [
+    {
+      "id": "1",
+      "label": "Insulin deficiency"
+    },
+    {
+      "id": "2",
+      "label": "Blood glucose rises"
+    },
+    {
+      "id": "3",
+      "label": "Glucose and water lost in urine"
+    },
+    {
+      "id": "4",
+      "label": "More urine"
+    },
+    {
+      "id": "5",
+      "label": "Thirst"
+    }
+  ],
+  "edges": [
+    {
+      "from": "1",
+      "to": "2",
+      "meaning": "causes hyperglycaemia"
+    },
+    {
+      "from": "2",
+      "to": "3",
+      "meaning": "excess urinary glucose retains water"
+    },
+    {
+      "from": "3",
+      "to": "4",
+      "meaning": "osmotic diuresis"
+    },
+    {
+      "from": "4",
+      "to": "5",
+      "meaning": "water loss prompts thirst"
+    }
+  ],
+  "labels": [
+    "Why high glucose causes thirst",
+    "Insulin deficiency",
+    "Blood glucose rises",
+    "Glucose and water lost in urine",
+    "More urine",
+    "Thirst",
+    "Conceptual schematic • Not anatomy"
+  ],
+  "layout": "Five concept nodes along a broad left-to-right pathway with the central node3 largest. Node1 and2 are small paper tiles at left; node3 is a large visibly rectangular tray labelled Glucose and water lost in urine with a mixture of golden hexagon glucose tokens and blue water droplet tokens moving together outward across its right edge; node4 and5 are stacked to the right linked downward. Exact edges1to2,2to3,3to4,4to5. Below node3 add a key: Gold = glucose; blue = water. Below the diagram print: Osmotic diuresis. No renal or pancreatic anatomy, blood vessel, person or drinking glass.",
+  "forbiddenAnatomy": [
+    "organs",
+    "body silhouettes",
+    "tissue cross-sections",
+    "cells",
+    "tubules",
+    "vessels",
+    "clinical photographs",
+    "diagnostic scans"
+  ],
+  "validation": {
+    "sourceStatus": "checked",
+    "structureStatus": "verified",
+    "requiredChecks": [
+      "All five nodes follow specified direction",
+      "Glucose tokens and water tokens are lost together",
+      "No kidney, islet, tubule or actual blood compartment",
+      "No universal claim that all tissues require insulin for uptake"
+    ],
+    "clinicalReviewStatus": "pending",
+    "pixelChecks": "Pixel structure check: five exact nodes in causal order; glucose hexagons and blue water droplets leave the abstract tray together, then more urine leads to thirst. Legend correctly maps tokens. No renal tubule, islet, vessel or body representation. Independent and clinical review pending."
+  }
+}

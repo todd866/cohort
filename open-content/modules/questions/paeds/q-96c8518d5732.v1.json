@@ -1,0 +1,66 @@
+{
+  "id": "bank:cohort:paeds:q-96c8518d5732:v1",
+  "rotation": "cohort-open",
+  "moduleNodes": [
+    "cohort/paeds"
+  ],
+  "topics": [
+    "melioidosis",
+    "burkholderia",
+    "tropical-medicine"
+  ],
+  "questionType": "diagnosis",
+  "difficulty": "hard",
+  "stem": "In the Top End wet season, a man with diabetes presents with rapidly progressive pneumonia and septic shock after wading in flood water.\n\nWhich organism is the most likely cause?",
+  "options": [
+    {
+      "label": "A",
+      "text": "Klebsiella pneumoniae",
+      "isCorrect": false,
+      "explanation": "Klebsiella can cause severe pneumonia in alcohol excess, but it is not the soil organism that defines Top End wet-season sepsis."
+    },
+    {
+      "label": "B",
+      "text": "Haemophilus influenzae",
+      "isCorrect": false,
+      "explanation": "Hib pneumonia is a childhood immunisation-era disease, not Top End wet-season melioidosis."
+    },
+    {
+      "label": "C",
+      "text": "Burkholderia pseudomallei",
+      "isCorrect": true,
+      "explanation": "Melioidosis (B. pseudomallei) is a wet-season soil and water organism in tropical northern Australia. Diabetes plus severe pneumonia or sepsis is the classic host-and-syndrome pair."
+    },
+    {
+      "label": "D",
+      "text": "Staphylococcus aureus",
+      "isCorrect": false,
+      "explanation": "Staph can cause necrotising pneumonia but is not the epidemiology-driven answer for wet-season northern Australian sepsis in a diabetic."
+    },
+    {
+      "label": "E",
+      "text": "Pseudomonas aeruginosa",
+      "isCorrect": false,
+      "explanation": "Pseudomonas is a hospital and bronchiectasis organism, not the named wet-season soil pathogen of the Top End."
+    }
+  ],
+  "context": "Melioidosis: Burkholderia pseudomallei, tropical northern Australia, wet season, diabetes/CKD/hazardous alcohol, pneumonia or sepsis.\n\nMeropenem or ceftazidime, then prolonged eradication with trimethoprim-sulfamethoxazole.",
+  "publicModule": {
+    "schemaVersion": 1,
+    "origin": "mirrored",
+    "discipline": "paeds",
+    "mirroredFrom": "md3:96c8518d5732aa98",
+    "itemText": {
+      "licence": "CC-BY-4.0",
+      "attribution": "MD3 contributors"
+    },
+    "evidence": {
+      "kind": "reference",
+      "sourceId": "rch-prolonged-fever"
+    },
+    "review": {
+      "verdict": "passed",
+      "contentHash": "40814a6a399c48a7054e8e3be0874ebdcbf4f4e4a4d79b2198df9cdeee8db643"
+    }
+  }
+}

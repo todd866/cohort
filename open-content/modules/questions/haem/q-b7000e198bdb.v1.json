@@ -1,0 +1,60 @@
+{
+  "id": "bank:cohort:haem:q-b7000e198bdb:v1",
+  "rotation": "cohort-open",
+  "moduleNodes": [
+    "cohort/haem"
+  ],
+  "topics": [
+    "sickle cell disease",
+    "stroke",
+    "haematology"
+  ],
+  "questionType": "next-step",
+  "difficulty": "medium",
+  "stem": "A 6-year-old boy with sickle cell disease presents with acute onset left-sided weakness, slurred speech, and facial droop. His Hb is 72 g/L (normal 115–155). He had a fever and upper respiratory symptoms 2 days ago.\n\nWhat is the most important immediate investigation?",
+  "options": [
+    {
+      "label": "A",
+      "text": "Urgent MRI brain and MRA",
+      "isCorrect": true,
+      "explanation": "RCH Stroke CPG: for suspected arterial ischaemic stroke, urgent MRI and MRA is first-line neuroimaging. RCH Sickle cell guidance likewise names MRI as the modality of choice."
+    },
+    {
+      "label": "B",
+      "text": "Haemoglobin electrophoresis",
+      "isCorrect": false,
+      "explanation": "Confirms sickle cell disease but adds nothing acutely when the diagnosis is already established and there is a focal deficit."
+    },
+    {
+      "label": "C",
+      "text": "CT brain without contrast",
+      "isCorrect": false,
+      "explanation": "Use non-contrast CT when urgent MRI is unavailable within ~30 minutes, or when haemorrhage is the leading concern. It is the fallback, not the preferred first study for this AIS-phenotype presentation."
+    },
+    {
+      "label": "D",
+      "text": "Blood cultures and empiric antibiotics",
+      "isCorrect": false,
+      "explanation": "Sepsis workup is important but cannot be allowed to delay neuroimaging when focal stroke signs are present."
+    }
+  ],
+  "context": "Stroke is one of the most feared complications of sickle cell disease in children, with peak incidence between 2 and 10 years.\n\nAcute focal neurology in a child with SCD must be assumed to be stroke until proven otherwise.\n\nImaging (RCH): urgent MRI/MRA for suspected AIS; non-contrast CT if MRI cannot be done promptly or haemorrhage is suspected (avoid contrast CT in SCD — hyperviscosity risk). Arrange the exchange transfusion pathway with haematology.",
+  "publicModule": {
+    "schemaVersion": 1,
+    "origin": "mirrored",
+    "discipline": "haem",
+    "mirroredFrom": "md3:b7000e198bdb99c1",
+    "itemText": {
+      "licence": "CC-BY-4.0",
+      "attribution": "MD3 contributors"
+    },
+    "evidence": {
+      "kind": "reference",
+      "sourceId": "rch-sickle-cell-disease"
+    },
+    "review": {
+      "verdict": "passed",
+      "contentHash": "0f66ecaad623024fe62092870b56eebec8b53f779b0a446ecf0ab2067749174d"
+    }
+  }
+}

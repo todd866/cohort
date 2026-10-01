@@ -1,0 +1,59 @@
+{
+  "id": "bank:cohort:paeds:q-aff58684c1f4:v1",
+  "rotation": "cohort-open",
+  "moduleNodes": [
+    "cohort/paeds"
+  ],
+  "topics": [
+    "bronchiolitis",
+    "investigation"
+  ],
+  "questionType": "next-step",
+  "difficulty": "easy",
+  "stem": "Which investigation is routinely indicated in an 8-month-old with typical bronchiolitis and SpO₂ of 95%?",
+  "options": [
+    {
+      "label": "A",
+      "text": "Blood gas analysis",
+      "isCorrect": false,
+      "explanation": "Blood gas is unnecessary in mild-moderate bronchiolitis with adequate saturations."
+    },
+    {
+      "label": "B",
+      "text": "Nasopharyngeal swab for RSV",
+      "isCorrect": false,
+      "explanation": "NPA for RSV may be useful for cohorting in hospital but does not change management of typical bronchiolitis. Not routinely indicated."
+    },
+    {
+      "label": "C",
+      "text": "None - clinical diagnosis",
+      "isCorrect": true,
+      "explanation": "Correct — bronchiolitis is a clinical diagnosis. Typical bronchiolitis needs no routine investigations. Investigations add cost, discomfort, and risk of false positives leading to unnecessary treatment."
+    },
+    {
+      "label": "D",
+      "text": "Chest X-ray",
+      "isCorrect": false,
+      "explanation": "CXR is not indicated in typical bronchiolitis — it does not change management and may lead to unnecessary antibiotics if atelectasis is misinterpreted as pneumonia."
+    }
+  ],
+  "context": "Bronchiolitis is a clinical diagnosis based on the prodrome (coryza, low-grade fever) followed by cough, wheeze, and fine crackles in an infant, generally under 12 months, in winter.\n\nCXR is reserved for atypical features (focal findings, persistent fever, asymmetric examination); routine CXR shows non-specific hyperinflation and patchy atelectasis that prompt unnecessary antibiotics.",
+  "publicModule": {
+    "schemaVersion": 1,
+    "origin": "mirrored",
+    "discipline": "paeds",
+    "mirroredFrom": "md3:aff58684c1f43435",
+    "itemText": {
+      "licence": "CC-BY-4.0",
+      "attribution": "MD3 contributors"
+    },
+    "evidence": {
+      "kind": "reference",
+      "sourceId": "rch-bronchiolitis"
+    },
+    "review": {
+      "verdict": "passed",
+      "contentHash": "fc86e0f0c65db6b8b83381aa9f620fb4fd9ab7fd2a7217cd7207f1e683f8716f"
+    }
+  }
+}

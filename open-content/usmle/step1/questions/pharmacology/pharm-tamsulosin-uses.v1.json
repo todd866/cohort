@@ -1,0 +1,70 @@
+{
+  "id": "bank:usmle-step1:pharm-tamsulosin-uses:v1",
+  "rotation": "usmle-step1-open",
+  "topics": [
+    "tamsulosin"
+  ],
+  "moduleNodes": [
+    "usmle/step1",
+    "usmle/step1/pharmacology"
+  ],
+  "questionType": "mechanism",
+  "difficulty": "easy",
+  "stem": "Tamsulosin is used to treat which urologic condition?",
+  "options": [
+    {
+      "label": "A",
+      "text": "Benign prostatic hyperplasia",
+      "isCorrect": true,
+      "misconception": "None — BPH is tamsulosin's listed use.",
+      "explanation": "Tamsulosin, an alpha blocker, treats benign prostatic hyperplasia, an enlarged prostate that can cause difficult, painful or frequent urination."
+    },
+    {
+      "label": "B",
+      "text": "Stress urinary incontinence",
+      "isCorrect": false,
+      "misconception": "Assumes any bladder-outlet complaint improves when outlet muscle relaxes.",
+      "explanation": "Stress incontinence stems from weak urethral support; relaxing bladder-neck smooth muscle with an alpha blocker would worsen leakage, not treat it."
+    },
+    {
+      "label": "C",
+      "text": "Prostate adenocarcinoma",
+      "isCorrect": false,
+      "misconception": "Confuses benign enlargement of the prostate with prostate malignancy.",
+      "explanation": "Prostate adenocarcinoma is treated with surgery, radiation or androgen deprivation; an alpha blocker has no antitumor effect."
+    },
+    {
+      "label": "D",
+      "text": "Nocturnal enuresis in children",
+      "isCorrect": false,
+      "misconception": "Assumes any urinary symptom responds to an alpha blocker.",
+      "explanation": "Nocturnal enuresis in children is managed with enuresis alarms or desmopressin; tamsulosin has no role in it."
+    },
+    {
+      "label": "E",
+      "text": "Uncomplicated bacterial cystitis",
+      "isCorrect": false,
+      "misconception": "Confuses infectious urinary symptoms with obstructive ones.",
+      "explanation": "Uncomplicated bacterial cystitis is treated with antibiotics such as nitrofurantoin; tamsulosin has no antimicrobial effect."
+    }
+  ],
+  "context": "Learning objective: Tamsulosin, an alpha blocker, treats benign prostatic hyperplasia, an enlarged prostate that causes urinary difficulty.",
+  "cite": "medlineplus-tamsulosin#tamsulosin-uses",
+  "publicUsmle": {
+    "schemaVersion": 1,
+    "origin": "generated",
+    "itemText": {
+      "licence": "CC-BY-4.0",
+      "attribution": "MD3 contributors"
+    },
+    "evidence": {
+      "kind": "passage",
+      "sourceId": "medlineplus-tamsulosin",
+      "passageId": "tamsulosin-uses",
+      "licence": {
+        "cls": "foss",
+        "id": "us-gov"
+      }
+    }
+  }
+}

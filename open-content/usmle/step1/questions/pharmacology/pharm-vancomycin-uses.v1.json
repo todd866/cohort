@@ -1,0 +1,71 @@
+{
+  "id": "bank:usmle-step1:pharm-vancomycin-uses:v1",
+  "rotation": "usmle-step1-open",
+  "topics": [
+    "vancomycin",
+    "colitis"
+  ],
+  "moduleNodes": [
+    "usmle/step1",
+    "usmle/step1/pharmacology"
+  ],
+  "questionType": "mechanism",
+  "difficulty": "easy",
+  "stem": "Oral vancomycin is used to treat which intestinal condition?",
+  "options": [
+    {
+      "label": "A",
+      "text": "Shigella colitis spread by fecal-oral contact",
+      "isCorrect": false,
+      "misconception": "Assumes an intestinal antibiotic covers every bacterial colitis, gram-negatives included.",
+      "explanation": "Shigella is a gram-negative rod; vancomycin cannot cross the gram-negative outer membrane, so severe shigellosis is treated with azithromycin or ciprofloxacin."
+    },
+    {
+      "label": "B",
+      "text": "Bacterial colitis following antibiotic treatment",
+      "isCorrect": true,
+      "misconception": "None — oral vancomycin treats colitis from certain bacteria after antibiotics.",
+      "explanation": "Vancomycin, a glycopeptide that kills bacteria in the intestines, treats colitis caused by certain bacteria that may occur after taking an antibiotic."
+    },
+    {
+      "label": "C",
+      "text": "Campylobacter colitis after undercooked poultry",
+      "isCorrect": false,
+      "misconception": "Overlooks that vancomycin does not act on gram-negative bacteria.",
+      "explanation": "Campylobacter jejuni is a gram-negative curved rod; vancomycin has no activity against it, and severe cases are treated with azithromycin."
+    },
+    {
+      "label": "D",
+      "text": "Ischemic colitis from reduced mesenteric flow",
+      "isCorrect": false,
+      "misconception": "Mistakes ischemic injury to the colon for an infection oral vancomycin would clear.",
+      "explanation": "Ischemic colitis comes from reduced blood flow to the colon; care is supportive, with IV broad-spectrum antibiotics if moderate or severe, and oral vancomycin has no role."
+    },
+    {
+      "label": "E",
+      "text": "Shiga toxin-producing E. coli hemorrhagic colitis",
+      "isCorrect": false,
+      "misconception": "Treats every bacterial colitis with antibiotics, missing the HUS risk in STEC.",
+      "explanation": "Shiga toxin-producing E. coli is gram-negative, so vancomycin has no activity; antibiotics are generally avoided because they may raise the risk of hemolytic uremic syndrome."
+    }
+  ],
+  "context": "Learning objective: Vancomycin, a glycopeptide antibiotic, treats colitis caused by certain bacteria that may occur after taking an antibiotic.",
+  "cite": "medlineplus-vancomycin#vancomycin-uses",
+  "publicUsmle": {
+    "schemaVersion": 1,
+    "origin": "generated",
+    "itemText": {
+      "licence": "CC-BY-4.0",
+      "attribution": "MD3 contributors"
+    },
+    "evidence": {
+      "kind": "passage",
+      "sourceId": "medlineplus-vancomycin",
+      "passageId": "vancomycin-uses",
+      "licence": {
+        "cls": "foss",
+        "id": "us-gov"
+      }
+    }
+  }
+}

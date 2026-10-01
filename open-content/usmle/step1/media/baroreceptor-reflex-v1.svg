@@ -1,0 +1,22 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 260" role="img" aria-labelledby="t d">
+  <title id="t">Baroreceptor reflex</title>
+  <desc id="d">Carotid/aortic baroreceptors sense stretch; via NTS they adjust sympathetic and parasympathetic outflow to stabilize blood pressure.</desc>
+  <rect width="640" height="260" fill="#fafafa"/>
+  <text x="320" y="26" text-anchor="middle" font-family="system-ui,sans-serif" font-size="16" fill="#222">Baroreceptor reflex (short-term BP control)</text>
+  <rect x="40" y="50" width="160" height="70" rx="8" fill="#ffedd8" stroke="#e85d04"/>
+  <text x="120" y="80" text-anchor="middle" font-family="system-ui,sans-serif" font-size="12" fill="#9c2f03">' arterial stretch</text>
+  <text x="120" y="100" text-anchor="middle" font-family="system-ui,sans-serif" font-size="12" fill="#9c2f03">(carotid / aortic)</text>
+  <path d="M200,85 L240,85" stroke="#333" stroke-width="2"/>
+  <rect x="240" y="50" width="140" height="70" rx="8" fill="#caf0f8" stroke="#0077b6"/>
+  <text x="310" y="80" text-anchor="middle" font-family="system-ui,sans-serif" font-size="12" fill="#023e8a">' afferent fire</text>
+  <text x="310" y="100" text-anchor="middle" font-family="system-ui,sans-serif" font-size="12" fill="#023e8a">IX / X -> NTS</text>
+  <path d="M380,85 L420,85" stroke="#333" stroke-width="2"/>
+  <rect x="420" y="40" width="180" height="90" rx="8" fill="#d8f3dc" stroke="#2d6a4f"/>
+  <text x="510" y="70" text-anchor="middle" font-family="system-ui,sans-serif" font-size="12" fill="#1b4332">" sympathetic</text>
+  <text x="510" y="90" text-anchor="middle" font-family="system-ui,sans-serif" font-size="12" fill="#1b4332">' parasympathetic</text>
+  <text x="510" y="110" text-anchor="middle" font-family="system-ui,sans-serif" font-size="12" fill="#1b4332">-> " HR, " SVR</text>
+  <rect x="40" y="150" width="560" height="85" rx="8" fill="#fff" stroke="#ccc"/>
+  <text x="55" y="175" font-family="system-ui,sans-serif" font-size="13" fill="#333">Opposite if BP falls: " stretch -> ' sympathetic -> ' HR / contractility / vasoconstriction</text>
+  <text x="55" y="200" font-family="system-ui,sans-serif" font-size="13" fill="#333">Sensors: carotid sinus (CN IX) and aortic arch (CN X). Effectors: heart + vessels.</text>
+  <text x="55" y="220" font-family="system-ui,sans-serif" font-size="12" fill="#555">Fast neural loop - complements slower renal / RAAS volume control</text>
+</svg>

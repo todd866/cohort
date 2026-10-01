@@ -1,0 +1,66 @@
+{
+  "id": "bank:cohort:obs:q-1ef3f80fa653:v1",
+  "rotation": "cohort-open",
+  "moduleNodes": [
+    "cohort/obs"
+  ],
+  "topics": [
+    "placenta-previa",
+    "obstetrics",
+    "bleeding"
+  ],
+  "questionType": "management",
+  "difficulty": "medium",
+  "stem": "A 32-year-old at 30 weeks gestation has painless bright red vaginal bleeding. Ultrasound suggests placenta previa.\n\nWhich action should be avoided?",
+  "options": [
+    {
+      "label": "A",
+      "text": "Maternal vital sign monitoring",
+      "isCorrect": false,
+      "explanation": "Frequent observations are essential to detect haemodynamic deterioration in antepartum haemorrhage and pose no risk to the placenta."
+    },
+    {
+      "label": "B",
+      "text": "Digital vaginal examination",
+      "isCorrect": true,
+      "explanation": "Inserting a finger through the os into a praevia can precipitate massive haemorrhage, which is why placental localisation precedes any digital exam."
+    },
+    {
+      "label": "C",
+      "text": "Fetal monitoring",
+      "isCorrect": false,
+      "explanation": "Continuous CTG is essential to assess fetal wellbeing in antepartum haemorrhage and does not contact the placenta."
+    },
+    {
+      "label": "D",
+      "text": "Speculum examination",
+      "isCorrect": false,
+      "explanation": "A careful speculum exam visualises the cervix and excludes local causes without disturbing the placenta."
+    },
+    {
+      "label": "E",
+      "text": "Ultrasound evaluation",
+      "isCorrect": false,
+      "explanation": "Ultrasound is the diagnostic test of choice — it confirms praevia and guides management without mechanical risk."
+    }
+  ],
+  "context": "When the placenta covers or sits very close to the internal cervical os, the lower segment is highly vascular and easily disturbed.\n\nAny woman with antepartum bleeding should have a transabdominal/transvaginal ultrasound to localise the placenta before any digital vaginal examination is considered.",
+  "publicModule": {
+    "schemaVersion": 1,
+    "origin": "mirrored",
+    "discipline": "obs",
+    "mirroredFrom": "md3:1ef3f80fa6530221",
+    "itemText": {
+      "licence": "CC-BY-4.0",
+      "attribution": "MD3 contributors"
+    },
+    "evidence": {
+      "kind": "reference",
+      "sourceId": "qcg-normalbirth"
+    },
+    "review": {
+      "verdict": "passed",
+      "contentHash": "3ff2e3a6a581930705b7259895b0714aa666b42b32773ef56b81e2b4d9e211a2"
+    }
+  }
+}

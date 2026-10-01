@@ -1,0 +1,73 @@
+{
+  "id": "bank:usmle-step1:he-epo-hypoxia-r2:v1",
+  "rotation": "usmle-step1-open",
+  "ladderId": "epo-hypoxia",
+  "difficulty": "medium",
+  "topics": [
+    "erythropoietin",
+    "hypoxemia",
+    "ladder:epo-hypoxia"
+  ],
+  "moduleNodes": [
+    "usmle/step1",
+    "usmle/step1/hematology"
+  ],
+  "questionType": "mechanism",
+  "stem": "Arterial oxygen content falls after rapid ascent to high altitude. Which hormone increases next to restore red blood cell mass?",
+  "options": [
+    {
+      "label": "A",
+      "text": "Thrombopoietin",
+      "isCorrect": false,
+      "misconception": "Platelet growth factor is being confused with the red-cell response.",
+      "explanation": "Thrombopoietin drives platelet production; the altitude response increases erythropoietin."
+    },
+    {
+      "label": "B",
+      "text": "Erythropoietin",
+      "isCorrect": true,
+      "misconception": "None; hypoxemia triggers renal EPO secretion that expands erythrocyte mass.",
+      "explanation": "Low oxygen tension prompts the kidneys to secrete EPO, accelerating erythrocyte production until oxygen delivery recovers."
+    },
+    {
+      "label": "C",
+      "text": "Aldosterone",
+      "isCorrect": false,
+      "misconception": "Volume regulation is being confused with the marrow response to hypoxia.",
+      "explanation": "Aldosterone regulates sodium and water balance, not hypoxia-driven erythropoiesis."
+    },
+    {
+      "label": "D",
+      "text": "Calcitonin",
+      "isCorrect": false,
+      "misconception": "Calcium regulation is being confused with the altitude red-cell response.",
+      "explanation": "Calcitonin lowers blood calcium and does not expand red-cell mass after ascent."
+    },
+    {
+      "label": "E",
+      "text": "Atrial natriuretic peptide",
+      "isCorrect": false,
+      "misconception": "A volume-lowering peptide is being credited with hypoxia adaptation.",
+      "explanation": "ANP promotes natriuresis; it is not the signal that raises erythrocyte counts at altitude."
+    }
+  ],
+  "context": "Learning objective: link hypoxemia to increased EPO as the adaptive marrow signal.",
+  "cite": "openstax-anatomy-physiology#he-erythropoietin-kidney",
+  "publicUsmle": {
+    "schemaVersion": 1,
+    "origin": "generated",
+    "itemText": {
+      "licence": "CC-BY-4.0",
+      "attribution": "MD3 contributors"
+    },
+    "evidence": {
+      "kind": "passage",
+      "sourceId": "openstax-anatomy-physiology",
+      "passageId": "he-erythropoietin-kidney",
+      "licence": {
+        "cls": "foss",
+        "id": "cc-by-4.0"
+      }
+    }
+  }
+}

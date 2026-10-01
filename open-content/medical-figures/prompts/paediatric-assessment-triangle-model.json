@@ -1,0 +1,39 @@
+{
+  "figureId": "paediatric-assessment-triangle-model",
+  "tool": "built-in image_gen",
+  "model": null,
+  "referenceAssetIds": [],
+  "externalReferenceImages": [],
+  "prompt": "Original educational conceptual illustration, landscape 3:2. Warm ivory paper, sophisticated hand-painted gouache/watercolour, confident fine brown outlines, navy lettering, restrained teal, coral and amber. Editorial science illustration with spacious composition and large legible labels. The explanatory structure must carry the meaning visually: molecules, objects, geometry or flow; never paragraphs in boxes. No organs, regional anatomy, teeth or joint cutaways, tissue layers, invented histology, diagnostic photographs, radiographs or patient data. All symbols are explicitly conceptual. Footer: 'Conceptual teaching model • Not to scale'. Title 'Three views of the unwell child', subtitle 'Paediatric assessment triangle'. A large open equilateral triangle composed of three coloured wooden beams around a simple wooden person game token labelled 'Rapid impression'. At upper left an icon of two speech bubbles labelled 'Appearance', below 'Interaction • tone • cry'. At upper right a small unnumbered effort gauge plus sound ripples labelled 'Work of breathing', below 'Effort • sounds'. At bottom centre three abstract colour tiles, one pale, one marbled, one dusky, labelled 'Circulation to skin', below 'Colour • mottling'. Tiles are paint swatches, not diagnostic skin examples; no organs. From the triangle a clear forward arrow leads to short phrase 'Assess • act • reassess'. Do not reproduce any existing clinical poster layout; use this original object composition.",
+  "clinicalSources": [
+    {
+      "title": "Children’s Health Queensland: Rapid assessment",
+      "url": "https://www.childrens.health.qld.gov.au/__data/assets/pdf_file/0033/179727/rapid-assessment.pdf"
+    },
+    {
+      "title": "RACGP: Assessment of the unwell child",
+      "url": "https://www.racgp.org.au/afp/2010/may/assessment-of-the-unwell-child/"
+    }
+  ],
+  "teaching": {
+    "question": "What three observations form the paediatric assessment triangle?",
+    "answer": "Appearance, work of breathing and circulation to skin. Together they give a rapid initial impression that informs prompt assessment, action and reassessment.",
+    "imageRole": "after-reveal"
+  },
+  "title": "Three views of the unwell child",
+  "caption": "The paediatric assessment triangle combines appearance, work of breathing and circulation to skin for a rapid initial impression. It leads into assessment and action, rather than replacing them.",
+  "alt": "Three coloured sides of a triangle surround a wooden child token; outside icons represent interaction, breathing effort and skin colour.",
+  "review": {
+    "status": "pending-independent-qa",
+    "method": "agent-visual-and-source-review",
+    "notes": "Triangle correctly locates appearance, work of breathing and circulation to skin around a non-anatomical wooden token. Supporting labels reflect interaction/tone/cry, effort/sounds, colour/mottling. Exit arrow calls for assessment, action and reassessment. Swatches are abstract paint, not purported diagnostic skin photographs; no pulse-only circulation substitution.",
+    "structure": {
+      "kind": "conceptual",
+      "status": "verified",
+      "specificationFiles": [
+        "scaffolds/paediatric-assessment-triangle-model.json"
+      ],
+      "notes": "Triangle correctly locates appearance, work of breathing and circulation to skin around a non-anatomical wooden token. Supporting labels reflect interaction/tone/cry, effort/sounds, colour/mottling. Exit arrow calls for assessment, action and reassessment. Swatches are abstract paint, not purported diagnostic skin photographs; no pulse-only circulation substitution."
+    }
+  }
+}

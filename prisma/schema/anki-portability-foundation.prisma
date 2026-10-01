@@ -1,0 +1,322 @@
+// =============================================================================
+// LOSSLESS ANKI PORTABILITY
+// Owner-scoped raw custody plus normalized private deck/note/import staging.
+// This is the single deployable custody model; the earlier operator prototype
+// is retained only as a non-Prisma reference under scripts/anki-import/.
+// =============================================================================
+
+enum SchedulerAuthority {
+  cohort
+  anki
+}
+
+enum ImportEpochStatus {
+  staging
+  validated
+  active
+  superseded
+  failed
+  cancelled
+}
+
+// One durable, user-confirmed Anki lineage. Archive hashes identify snapshots,
+// not collections: lineageId remains stable across repeat transfers and pairing.
+model AnkiCollection {
+  id          String @id @default(cuid())
+  ownerUserId String
+  owner       User   @relation(fields: [ownerUserId], references: [id], onDelete: Cascade, onUpdate: Restrict)
+
+  lineageId         String
+  sourcePackageHash String?
+  packageFormat     String?
+  formatVersion     String?
+  schemaVersion     String?
+
+  collectionCreatedAt DateTime? @db.Timestamptz(3)
+  timezone            String?
+  dayBoundaryMinutes  Int?
+  configurationState  Json?     @db.JsonB
+
+  status                      String              @default("quarantined")
+  suggestedSchedulerAuthority SchedulerAuthority?
+  rawSnapshotObjectKey        String?
+  parseManifest               Json?               @db.JsonB
+  lastConfirmedSnapshotHash   String?
+  lastConfirmedExternalCursor String?
+
+  objects        AnkiObject[]
+  reviews        AnkiCustodyReview[]
+  media          AnkiMedia[]
+  studyDecks     StudyDeck[]
+  studyNoteTypes StudyNoteType[]
+  studyNotes     StudyNote[]
+  importEpochs   ImportEpoch[]
+  learningEvents LearningEvent[]
+  bridgePairings AnkiBridgePairing[]
+  syncPeers      AnkiSyncPeer[]
+  exportJobs     AnkiExportJob[]
+  importJob      AnkiImportJob?
+
+  createdAt DateTime  @default(now()) @db.Timestamptz(3)
+  updatedAt DateTime  @updatedAt @db.Timestamptz(3)
+  deletedAt DateTime? @db.Timestamptz(3)
+
+  @@unique([id, ownerUserId])
+  @@unique([ownerUserId, lineageId])
+  @@index([ownerUserId, status])
+  @@index([ownerUserId, sourcePackageHash])
+  @@index([deletedAt])
+}
+
+// Versioned raw envelope for every decoded collection object. External numeric
+// identifiers and revisions are decimal strings so JavaScript never rounds them.
+model AnkiObject {
+  id           String         @id @default(cuid())
+  ownerUserId  String
+  owner        User           @relation(fields: [ownerUserId], references: [id], onDelete: Cascade, onUpdate: Restrict)
+  collectionId String
+  collection   AnkiCollection @relation(fields: [collectionId, ownerUserId], references: [id, ownerUserId], onDelete: Cascade, onUpdate: Restrict)
+
+  kind             String
+  externalId       String
+  revision         String  @default("0")
+  parentExternalId String?
+  noteGuid         String?
+  checksum         String?
+  contentHash      String
+  decoderVersion   Int     @default(1)
+  rawPayload       Json    @db.JsonB
+  isTombstone      Boolean @default(false)
+
+  mappedStudyDeckId     String?
+  mappedStudyDeck       StudyDeck?     @relation("AnkiObjectMappedStudyDeck", fields: [mappedStudyDeckId, ownerUserId, collectionId], references: [id, ownerUserId, sourceCollectionId], onDelete: Restrict, onUpdate: Restrict, map: "AnkiObject_mappedStudyDeck_lineage_fkey")
+  mappedStudyNoteTypeId String?
+  mappedStudyNoteType   StudyNoteType? @relation("AnkiObjectMappedStudyNoteType", fields: [mappedStudyNoteTypeId, ownerUserId, collectionId], references: [id, ownerUserId, sourceCollectionId], onDelete: Restrict, onUpdate: Restrict, map: "AnkiObject_mappedStudyNoteType_lineage_fkey")
+  mappedStudyNoteId     String?
+  mappedStudyNote       StudyNote?     @relation("AnkiObjectMappedStudyNote", fields: [mappedStudyNoteId, ownerUserId, collectionId], references: [id, ownerUserId, sourceCollectionId], onDelete: Restrict, onUpdate: Restrict, map: "AnkiObject_mappedStudyNote_lineage_fkey")
+  mappedCardId          String?
+  // Raw custody maps only to a private Card projection owned by this user and
+  // sourced from this exact collection. A migration trigger enforces lineage.
+  mappedCard            Card?          @relation("AnkiObjectMappedCard", fields: [mappedCardId], references: [id], onDelete: Restrict, onUpdate: Restrict)
+
+  createdAt DateTime @default(now()) @db.Timestamptz(3)
+
+  @@unique([collectionId, kind, externalId, revision])
+  @@index([ownerUserId, kind])
+  @@index([collectionId, noteGuid])
+  @@index([collectionId, parentExternalId])
+  @@index([collectionId, contentHash])
+  @@index([mappedStudyDeckId])
+  @@index([mappedStudyNoteTypeId])
+  @@index([mappedStudyNoteId])
+  @@index([mappedCardId])
+}
+
+// Exact first-class revlog custody. Manual/reschedule rows remain here even
+// when they intentionally do not project to a recall LearningEvent.
+model AnkiCustodyReview {
+  id           String         @id @default(cuid())
+  ownerUserId  String
+  owner        User           @relation(fields: [ownerUserId], references: [id], onDelete: Cascade, onUpdate: Restrict)
+  collectionId String
+  collection   AnkiCollection @relation(fields: [collectionId, ownerUserId], references: [id, ownerUserId], onDelete: Cascade, onUpdate: Restrict)
+
+  revlogId       String
+  externalCardId String
+  occurredAt     DateTime @db.Timestamptz(3)
+  ease           Int
+  ivl            Int
+  lastIvl        Int
+  factor         Int
+  durationMs     Int
+  reviewType     Int
+  updateSequence Int?
+  rawPayload     Json     @db.JsonB
+
+  mappedCardId  String?
+  // Exact reviews map only to this collection's owner-private Card projection;
+  // shared catalog Cards and another collection's Cards are rejected.
+  mappedCard    Card?          @relation("AnkiCustodyReviewMappedCard", fields: [mappedCardId], references: [id], onDelete: Restrict, onUpdate: Restrict)
+  learningEvent LearningEvent?
+
+  createdAt DateTime @default(now()) @db.Timestamptz(3)
+
+  @@unique([id, ownerUserId])
+  @@unique([collectionId, revlogId])
+  @@index([ownerUserId, occurredAt])
+  @@index([collectionId, externalCardId, occurredAt])
+  @@index([mappedCardId])
+}
+
+model AnkiMedia {
+  id           String         @id @default(cuid())
+  ownerUserId  String
+  owner        User           @relation(fields: [ownerUserId], references: [id], onDelete: Cascade, onUpdate: Restrict)
+  collectionId String
+  collection   AnkiCollection @relation(fields: [collectionId, ownerUserId], references: [id, ownerUserId], onDelete: Cascade, onUpdate: Restrict)
+
+  originalFilename      String
+  collisionKey          String
+  packageIndex          Int?
+  sizeBytes             BigInt
+  sniffedMimeType       String?
+  sha1                  String?
+  sha256                String
+  objectKey             String
+  collisionStatus       String    @default("clear")
+  quarantineStatus      String    @default("quarantined")
+  renderEligible        Boolean   @default(false)
+  // A future Bridge presign must use the same privacy-deletion fence as an
+  // archive upload. Bytes remain quarantined until checksum-aware completion.
+  bridgeUploadExpiresAt DateTime? @db.Timestamptz(3)
+  bridgeUploadedAt      DateTime? @db.Timestamptz(3)
+
+  createdAt DateTime @default(now()) @db.Timestamptz(3)
+  updatedAt DateTime @updatedAt @db.Timestamptz(3)
+
+  @@unique([collectionId, originalFilename, sha256])
+  @@index([ownerUserId, quarantineStatus])
+  @@index([collectionId, collisionKey])
+  @@index([collectionId, packageIndex])
+  @@index([sha256])
+}
+
+// Deck membership is orthogonal to Card.rotation. activeEpochId is the only
+// publication pointer: staged Cards stay invisible until this value is swapped.
+model StudyDeck {
+  id             String @id @default(cuid())
+  ownerUserId    String
+  owner          User   @relation(fields: [ownerUserId], references: [id], onDelete: Cascade, onUpdate: Restrict)
+  portableDeckId String @unique @default(cuid())
+
+  parentDeckId String?
+  parentDeck   StudyDeck?  @relation("StudyDeckTree", fields: [parentDeckId, ownerUserId], references: [id, ownerUserId], onDelete: Cascade, onUpdate: Restrict)
+  childDecks   StudyDeck[] @relation("StudyDeckTree")
+
+  displayName        String
+  visibility         String             @default("private")
+  rightsMetadata     Json?              @db.JsonB
+  source             String
+  rotation           String?
+  schedulerAuthority SchedulerAuthority @default(cohort)
+
+  sourceCollectionId String?
+  sourceCollection   AnkiCollection? @relation(fields: [sourceCollectionId, ownerUserId], references: [id, ownerUserId], onDelete: Cascade, onUpdate: Restrict)
+
+  activeEpochId String?       @unique
+  activeEpoch   ImportEpoch?  @relation("ActiveStudyDeckEpoch", fields: [activeEpochId, id], references: [id, studyDeckId], onDelete: Restrict, onUpdate: Restrict)
+  importEpochs  ImportEpoch[] @relation("StudyDeckImportEpochs")
+
+  cards       Card[]
+  ankiObjects AnkiObject[] @relation("AnkiObjectMappedStudyDeck")
+
+  createdAt DateTime  @default(now()) @db.Timestamptz(3)
+  updatedAt DateTime  @updatedAt @db.Timestamptz(3)
+  deletedAt DateTime? @db.Timestamptz(3)
+
+  @@unique([id, ownerUserId])
+  @@unique([id, ownerUserId, sourceCollectionId])
+  @@unique([activeEpochId, id])
+  @@index([ownerUserId, visibility])
+  @@index([ownerUserId, parentDeckId])
+  @@index([sourceCollectionId])
+  @@index([deletedAt])
+}
+
+model StudyNoteType {
+  id                 String @id @default(cuid())
+  ownerUserId        String
+  owner              User   @relation(fields: [ownerUserId], references: [id], onDelete: Cascade, onUpdate: Restrict)
+  portableNoteTypeId String @unique @default(cuid())
+
+  sourceCollectionId String?
+  sourceCollection   AnkiCollection? @relation(fields: [sourceCollectionId, ownerUserId], references: [id, ownerUserId], onDelete: Cascade, onUpdate: Restrict)
+
+  name               String
+  fieldDefinitions   Json    @db.JsonB
+  templates          Json    @db.JsonB
+  css                String? @db.Text
+  rendererCapability String  @default("preserved_only")
+
+  notes       StudyNote[]
+  ankiObjects AnkiObject[] @relation("AnkiObjectMappedStudyNoteType")
+
+  createdAt DateTime  @default(now()) @db.Timestamptz(3)
+  updatedAt DateTime  @updatedAt @db.Timestamptz(3)
+  deletedAt DateTime? @db.Timestamptz(3)
+
+  @@unique([id, ownerUserId])
+  @@unique([id, ownerUserId, sourceCollectionId])
+  @@index([ownerUserId, name])
+  @@index([sourceCollectionId])
+  @@index([deletedAt])
+}
+
+model StudyNote {
+  id             String @id @default(cuid())
+  ownerUserId    String
+  owner          User   @relation(fields: [ownerUserId], references: [id], onDelete: Cascade, onUpdate: Restrict)
+  portableNoteId String @unique @default(cuid())
+
+  noteTypeId String
+  noteType   StudyNoteType @relation(fields: [noteTypeId, ownerUserId], references: [id, ownerUserId], onDelete: Cascade, onUpdate: Restrict)
+
+  sourceCollectionId String?
+  sourceCollection   AnkiCollection? @relation(fields: [sourceCollectionId, ownerUserId], references: [id, ownerUserId], onDelete: Cascade, onUpdate: Restrict)
+
+  fields    Json     @db.JsonB
+  tags      String[] @default([])
+  sortField String?  @db.Text
+  revision  String   @default("0")
+
+  cards       Card[]
+  ankiObjects AnkiObject[] @relation("AnkiObjectMappedStudyNote")
+
+  createdAt DateTime  @default(now()) @db.Timestamptz(3)
+  updatedAt DateTime  @updatedAt @db.Timestamptz(3)
+  deletedAt DateTime? @db.Timestamptz(3)
+
+  @@unique([id, ownerUserId])
+  @@unique([id, ownerUserId, sourceCollectionId])
+  @@index([ownerUserId, noteTypeId])
+  @@index([sourceCollectionId])
+  @@index([tags], type: Gin)
+  @@index([deletedAt])
+}
+
+model ImportEpoch {
+  id          String @id @default(cuid())
+  ownerUserId String
+  owner       User   @relation(fields: [ownerUserId], references: [id], onDelete: Cascade, onUpdate: Restrict)
+
+  studyDeckId   String
+  studyDeck     StudyDeck  @relation("StudyDeckImportEpochs", fields: [studyDeckId, ownerUserId], references: [id, ownerUserId], onDelete: Cascade, onUpdate: Restrict)
+  activeForDeck StudyDeck? @relation("ActiveStudyDeckEpoch")
+
+  sourceCollectionId String?
+  sourceCollection   AnkiCollection? @relation(fields: [sourceCollectionId, ownerUserId], references: [id, ownerUserId], onDelete: Cascade, onUpdate: Restrict)
+
+  status             ImportEpochStatus @default(staging)
+  sourcePackageHash  String?
+  sourceCursor       String?
+  projectionMode     String?
+  expectedCounts     Json?             @db.JsonB
+  materializedCounts Json?             @db.JsonB
+  fidelityReport     Json?             @db.JsonB
+  validationError    String?           @db.Text
+
+  cards Card[]
+
+  createdAt    DateTime  @default(now()) @db.Timestamptz(3)
+  updatedAt    DateTime  @updatedAt @db.Timestamptz(3)
+  validatedAt  DateTime? @db.Timestamptz(3)
+  activatedAt  DateTime? @db.Timestamptz(3)
+  supersededAt DateTime? @db.Timestamptz(3)
+
+  @@unique([id, ownerUserId])
+  @@unique([id, studyDeckId])
+  @@index([ownerUserId, status])
+  @@index([studyDeckId, status])
+  @@index([sourceCollectionId])
+  @@index([sourcePackageHash])
+}

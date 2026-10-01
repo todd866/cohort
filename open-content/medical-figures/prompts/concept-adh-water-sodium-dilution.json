@@ -1,0 +1,25 @@
+{
+  "id": "concept-adh-water-sodium-dilution",
+  "title": "Retained water can dilute sodium",
+  "prompt": "Create an original polished 1536x1024 landscape conceptual medical teaching diagram for after-answer study. Warm hand-painted gouache and watercolour on ivory paper; a gentle storybook warmth with precise dark navy type. Matte teal, ochre, coral and blue accents. Simple neutral tokens, paper tiles, arrows and visibly abstract compartments only. Make the visual relationships legible at small size. No body parts, organs, cells, tissues, lumens, tubules, membranes, vessels, anatomical cutaways, clinical photos, diagnostic scans, babies, realistic flesh or decorative scenery. Do not turn abstract boxes or routes into organs or anatomy. Do not invent extra arrows or medical claims. Edge meanings below are metadata, not visible text: draw the arrows but do not print their meaning strings. Footer exactly: Conceptual schematic • Not anatomy. Title exactly: Retained water can dilute sodium. Three large cards across with two arrows. First contains ADH paper tokens, second blue water droplets, third shows TWO miniature rectangular inventory trays side by side. Each tray contains EXACTLY FOUR ochre Na tokens. Left tray has exactly FOUR blue water drops, right has exactly EIGHT blue water drops, to show more water relative to the same sodium amount. Caption within card3: Same sodium, more water: an abstract dilution example. Small top context tag: Can occur during pulmonary illness. Bottom note: Token counts are illustrative, not physiological ratios. No kidney, tubule, nephron, cells or vessel. No doses, treatment rate or laboratory threshold. Exact node labels: [{\"id\": \"1\", \"label\": \"ADH secretion increases\"}, {\"id\": \"2\", \"label\": \"More water retained\"}, {\"id\": \"3\", \"label\": \"Sodium concentration can fall\"}]. Exact directed connections: [{\"from\": \"1\", \"to\": \"2\", \"meaning\": \"antidiuresis\"}, {\"from\": \"2\", \"to\": \"3\", \"meaning\": \"dilution\"}]. Required checks: Three nodes and two arrows; Both inventory trays contain exactly four Na tokens; Second tray contains eight water drops versus four in first; Illustrative ratio qualification, no anatomy or dose.",
+  "clinicalSources": [
+    {
+      "title": "RCH — Hyponatraemia",
+      "url": "https://www.rch.org.au/clinicalguide/guideline_index/hyponatraemia/"
+    }
+  ],
+  "caption": "An ADH-to-dilution sequence distinguishes water retention from a primary loss of sodium.",
+  "question": "How can increased ADH during illness contribute to hyponatraemia?",
+  "answer": "It promotes water retention; excess water relative to sodium can lower the measured sodium concentration.",
+  "structureSpecification": "scaffolds/concept-adh-water-sodium-dilution.json",
+  "generationInputs": {
+    "referenceImages": [],
+    "style": "written-only"
+  },
+  "qa": {
+    "status": "pending-independent-qa",
+    "method": "agent-visual-and-source-review",
+    "notes": "Pixel count check: each small tray has exactly four Na tokens; left has four water drops and right eight. Three main nodes and two arrows preserve ADH to water retention to possible dilution. Ratios explicitly illustrative. No renal anatomy. Independent and clinical review pending.",
+    "clinicalReviewStatus": "pending"
+  }
+}

@@ -1,0 +1,66 @@
+{
+  "id": "bank:cohort:em:q-64ab23af47ee:v1",
+  "rotation": "cohort-open",
+  "moduleNodes": [
+    "cohort/em"
+  ],
+  "topics": [
+    "anaphylaxis",
+    "adrenaline",
+    "emergency"
+  ],
+  "questionType": "management",
+  "difficulty": "medium",
+  "stem": "A child with anaphylaxis receives IM adrenaline but symptoms persist after 5 minutes.\n\nWhat is the appropriate next step?",
+  "options": [
+    {
+      "label": "A",
+      "text": "Give a second dose of IM adrenaline",
+      "isCorrect": true,
+      "explanation": "Correct. No improvement 5 minutes after an IM dose is the trigger to give another, and doses are repeated every 5 minutes while symptoms persist.\n\nAirway, breathing and circulation support, high-flow oxygen and IV fluid for shock all run in parallel, not instead."
+    },
+    {
+      "label": "B",
+      "text": "Give IV antihistamines only",
+      "isCorrect": false,
+      "explanation": "Antihistamines do not treat airway oedema, shock, or bronchospasm effectively in anaphylaxis. They are adjuncts at best and must not replace adrenaline."
+    },
+    {
+      "label": "C",
+      "text": "Observe for another 10 minutes",
+      "isCorrect": false,
+      "explanation": "Waiting risks deterioration in a time-critical emergency. Persistent symptoms 5 minutes after a dose are the indication to repeat IM adrenaline, not to delay it."
+    },
+    {
+      "label": "D",
+      "text": "Switch to IV adrenaline immediately",
+      "isCorrect": false,
+      "explanation": "IV adrenaline is for refractory anaphylaxis, and in Australian practice that means a titrated infusion with continuous monitoring — not a bolus, which causes arrhythmia and hypertensive crisis. Repeat IM dosing comes first."
+    },
+    {
+      "label": "E",
+      "text": "Administer subcutaneous adrenaline",
+      "isCorrect": false,
+      "explanation": "Subcutaneous adrenaline is absorbed more slowly and is not recommended for anaphylaxis. The preferred route is intramuscular injection into the thigh."
+    }
+  ],
+  "context": "Adrenaline is the only first-line drug, and the cue to repeat it is failure to improve — not a fixed course. Repeat the IM dose (10 microgram/kg, max 500 microgram, into the mid-outer thigh) every 5 minutes for as long as symptoms persist.\n\nMost children settle after one or two doses. If a second dose is needed, call for senior help and set up an adrenaline infusion rather than pushing IV boluses, which risk arrhythmia and severe hypertension outside a monitored setting.\n\nKeep the child lying flat (sitting only if breathing is the problem) and never let them stand or walk. Observe for at least 4 hours after the LAST adrenaline dose for a biphasic reaction, longer if it was severe or needed repeat doses.",
+  "publicModule": {
+    "schemaVersion": 1,
+    "origin": "mirrored",
+    "discipline": "em",
+    "mirroredFrom": "md3:64ab23af47ee7a21",
+    "itemText": {
+      "licence": "CC-BY-4.0",
+      "attribution": "MD3 contributors"
+    },
+    "evidence": {
+      "kind": "reference",
+      "sourceId": "anzcor-home-first-aid-guideline-9-2-7-first-aid-management-of-anaphylaxis"
+    },
+    "review": {
+      "verdict": "passed",
+      "contentHash": "a46ebbc927aff4563c2a252f4b0b8f6434d724da221347216213b9eb10aa4074"
+    }
+  }
+}

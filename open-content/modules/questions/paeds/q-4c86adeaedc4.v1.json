@@ -1,0 +1,60 @@
+{
+  "id": "bank:cohort:paeds:q-4c86adeaedc4:v1",
+  "rotation": "cohort-open",
+  "moduleNodes": [
+    "cohort/paeds"
+  ],
+  "topics": [
+    "Down syndrome",
+    "trisomy 21",
+    "neonatal examination"
+  ],
+  "questionType": "diagnosis",
+  "difficulty": "hard",
+  "stem": "A newborn is hypotonic and has upslanting palpebral fissures, a flat nasal bridge and a single palmar crease. A harsh systolic murmur is also present.\n\nWhich diagnosis should be confirmed with chromosomal testing?",
+  "options": [
+    {
+      "label": "A",
+      "text": "Turner syndrome",
+      "isCorrect": false,
+      "explanation": "Turner syndrome occurs in phenotypic females and more often causes webbed neck and lymphoedema."
+    },
+    {
+      "label": "B",
+      "text": "Down syndrome",
+      "isCorrect": true,
+      "explanation": "The characteristic phenotype plus a likely congenital cardiac lesion points to trisomy 21."
+    },
+    {
+      "label": "C",
+      "text": "Noonan syndrome",
+      "isCorrect": false,
+      "explanation": "Noonan syndrome can cause cardiac disease but does not fit the palmar crease and classic facial pattern here."
+    },
+    {
+      "label": "D",
+      "text": "Congenital hypothyroidism",
+      "isCorrect": false,
+      "explanation": "Hypothyroidism can cause hypotonia but does not explain this dysmorphic pattern."
+    }
+  ],
+  "context": "The neonatal phenotype of trisomy 21 prompts chromosomal confirmation and screening for associated congenital disease.",
+  "publicModule": {
+    "schemaVersion": 1,
+    "origin": "mirrored",
+    "discipline": "paeds",
+    "mirroredFrom": "md3:4c86adeaedc42a47",
+    "itemText": {
+      "licence": "CC-BY-4.0",
+      "attribution": "MD3 contributors"
+    },
+    "evidence": {
+      "kind": "reference",
+      "sourceId": "qcg-prenatal-screen"
+    },
+    "review": {
+      "verdict": "passed",
+      "contentHash": "0d89f1e5341b5c8db041a66912d78fd8356cc4e8f52c327f30785d1a794522c7"
+    }
+  }
+}

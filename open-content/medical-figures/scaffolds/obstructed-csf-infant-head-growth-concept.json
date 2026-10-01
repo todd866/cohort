@@ -1,0 +1,61 @@
+{
+  "schemaVersion": 1,
+  "figureId": "obstructed-csf-infant-head-growth-concept",
+  "kind": "conceptual",
+  "created": "2026-09-10",
+  "timing": "authored before generation",
+  "sourceFacts": [
+    {
+      "fact": "Obstruction of cerebrospinal fluid flow can cause hydrocephalus.",
+      "sourceUrls": [
+        "https://www.ninds.nih.gov/health-information/disorders/hydrocephalus"
+      ]
+    },
+    {
+      "fact": "In infants, hydrocephalus can present with a rapid increase in head size because the skull can expand.",
+      "sourceUrls": [
+        "https://www.ninds.nih.gov/health-information/disorders/hydrocephalus"
+      ]
+    }
+  ],
+  "clinicalSources": [
+    {
+      "title": "NINDS: Hydrocephalus",
+      "url": "https://www.ninds.nih.gov/health-information/disorders/hydrocephalus"
+    }
+  ],
+  "nodes": [
+    "obstructed CSF flow",
+    "fluid accumulation",
+    "increasing infant head circumference"
+  ],
+  "edges": [
+    [
+      "obstructed CSF flow",
+      "fluid accumulation",
+      "causes retention"
+    ],
+    [
+      "fluid accumulation",
+      "increasing infant head circumference",
+      "possible infant presentation"
+    ]
+  ],
+  "expectedLabels": [
+    "Obstructed flow can drive head growth",
+    "CSF flow obstructed",
+    "Fluid accumulates",
+    "Infant head circumference rises",
+    "Concept model \u2022 not anatomy"
+  ],
+  "layoutSpecification": "Title 'Obstructed flow can drive head growth'. Three large metaphor stages left-to-right. LEFT: abstract blue fluid ribbon blocked by an ochre gate, label 'CSF flow obstructed'. CENTRE: several blue drops collecting in a simple open bowl, label 'Fluid accumulates'. RIGHT: two nested OPEN measuring-tape loops lying flat on paper, small loop pale and larger loop teal, with a small outward arrow between loops; label 'Infant head circumference rises'. No actual baby head, skull, brain, ventricle, suture, spine or fluid tube within anatomy. No graph, centimetres, percentile, rate or universal outcome. Cause arrows left-to-right. Bottom 'Concept model \u2022 not anatomy'. Tapes are a symbolic measurement cue, not a measurement result.",
+  "forbiddenAnatomy": [
+    "No internal organ, eye, ear, brain, tissue or bone anatomy",
+    "No diagnostic image, patient-specific lesion appearance or literal anatomical pathway"
+  ],
+  "validation": {
+    "sourceFacts": "Checked against listed primary clinical sources on 2026-09-10",
+    "status": "self-reviewed; independent review pending",
+    "pixelChecks": "Pixel/structure check: obstructed fluid symbol leads rightward to accumulation and then larger circumference-loop symbol. Measuring loops have no numerical readings; outward arrow identifies increasing circumference. All elements are object metaphors with no head, skull, ventricle or anatomical CSF pathway, and title says can."
+  }
+}

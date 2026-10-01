@@ -1,0 +1,92 @@
+{
+  "schemaVersion": 1,
+  "figureId": "vwf-bridge-carrier-model",
+  "kind": "conceptual",
+  "sourceFacts": [
+    {
+      "id": "fact-1",
+      "fact": "vWF mediates initial platelet adhesion at vascular injury.",
+      "sources": [
+        {
+          "title": "NHLBI — Full report on von Willebrand disease",
+          "url": "https://www.nhlbi.nih.gov/health-topics/diagnosis-evaluation-and-management-of-von-willebrand-disease/von-willebrand-disease-full-report"
+        }
+      ]
+    },
+    {
+      "id": "fact-2",
+      "fact": "vWF binds and stabilises factor VIII in circulation.",
+      "sources": [
+        {
+          "title": "NHLBI — Full report on von Willebrand disease",
+          "url": "https://www.nhlbi.nih.gov/health-topics/diagnosis-evaluation-and-management-of-von-willebrand-disease/von-willebrand-disease-full-report"
+        }
+      ]
+    }
+  ],
+  "nodes": [
+    {
+      "id": "collagen",
+      "shape": "single floating gold braided strand",
+      "label": "Exposed collagen"
+    },
+    {
+      "id": "vwf",
+      "shape": "long teal bead chain",
+      "label": "vWF"
+    },
+    {
+      "id": "platelet",
+      "shape": "purple platelet symbol",
+      "label": "Platelet"
+    },
+    {
+      "id": "factor-viii",
+      "shape": "distinct coral molecule on teal vWF",
+      "label": "Factor VIII"
+    }
+  ],
+  "edges": [
+    {
+      "from": "collagen",
+      "to": "vwf",
+      "meaning": "binding"
+    },
+    {
+      "from": "vwf",
+      "to": "platelet",
+      "meaning": "supports adhesion"
+    },
+    {
+      "from": "vwf",
+      "to": "factor-viii",
+      "meaning": "binds and stabilises"
+    }
+  ],
+  "labels": [
+    "Adhesion",
+    "Exposed collagen",
+    "vWF",
+    "Platelet",
+    "Carrier",
+    "Factor VIII",
+    "Binds and stabilises"
+  ],
+  "forbiddenAnatomy": [
+    "Organs",
+    "Vessel walls and endothelium",
+    "Tissue layers and anatomical cutaways"
+  ],
+  "validation": {
+    "status": "verified",
+    "method": "source-and-conceptual-structure-review",
+    "checks": [
+      "Gold collagen contacts teal vWF, which contacts purple platelet.",
+      "Factor VIII is a distinct coral molecule bound to vWF in a separate composition.",
+      "No vessel wall or endothelial layer; collagen is an isolated molecular strand.",
+      "Protein labels have correct endpoints."
+    ],
+    "pixelReviewStatus": "verified",
+    "pixelReviewNotes": "Pixel-to-specification review: gold collagen is an isolated floating strand without any tissue or endothelial layer. Two teal vWF chains physically bridge it to the purple platelet. In the separate carrier panel, coral factor VIII contacts the teal chain. Labels terminate on the correct objects and molecular simplification is explicit."
+  }
+}

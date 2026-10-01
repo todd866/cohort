@@ -1,0 +1,71 @@
+{
+  "id": "bank:usmle-step1:pharm-doxycycline-uses:v1",
+  "rotation": "usmle-step1-open",
+  "topics": [
+    "doxycycline",
+    "tetracycline"
+  ],
+  "moduleNodes": [
+    "usmle/step1",
+    "usmle/step1/pharmacology"
+  ],
+  "questionType": "mechanism",
+  "difficulty": "easy",
+  "stem": "Doxycycline is used to treat infections caused by which type of organism?",
+  "options": [
+    {
+      "label": "A",
+      "text": "Bacteria",
+      "isCorrect": true,
+      "misconception": "None — doxycycline is antibacterial, and its tick-, louse- and mite-borne uses are bacterial too.",
+      "explanation": "The label says doxycycline treats bacterial infections; the tick-, louse-, mite- and animal-spread infections it treats, such as Rocky Mountain spotted fever and Lyme disease, are bacterial too."
+    },
+    {
+      "label": "B",
+      "text": "Herpesviruses",
+      "isCorrect": false,
+      "misconception": "Assumes a broad-spectrum antibiotic also covers viruses.",
+      "explanation": "Herpesviruses such as HSV and varicella-zoster virus are treated with acyclovir or valacyclovir; doxycycline blocks bacterial ribosomes and has no antiviral activity."
+    },
+    {
+      "label": "C",
+      "text": "Fungi",
+      "isCorrect": false,
+      "misconception": "Assumes broad antibacterial coverage extends to yeasts and molds.",
+      "explanation": "Fungi such as Candida and Aspergillus are treated with azoles, echinocandins or amphotericin B; doxycycline has no antifungal use."
+    },
+    {
+      "label": "D",
+      "text": "Ectoparasites",
+      "isCorrect": false,
+      "misconception": "Confuses treating an infection a louse or mite carries with treating the infestation itself.",
+      "explanation": "Lice and scabies are treated with permethrin or ivermectin; doxycycline treats bacterial infections some ectoparasites transmit, such as louse-borne epidemic typhus, not the infestation."
+    },
+    {
+      "label": "E",
+      "text": "Arboviruses",
+      "isCorrect": false,
+      "misconception": "Assumes every tick- or mosquito-borne illness responds to doxycycline.",
+      "explanation": "Arboviruses such as West Nile virus are arthropod-borne but viral; care is supportive, and doxycycline, an antibacterial, does not treat them."
+    }
+  ],
+  "context": "Learning objective: Doxycycline treats bacterial infections, including certain infections spread by ticks, lice, mites, and infected animals.",
+  "cite": "medlineplus-doxycycline#doxy-uses",
+  "publicUsmle": {
+    "schemaVersion": 1,
+    "origin": "generated",
+    "itemText": {
+      "licence": "CC-BY-4.0",
+      "attribution": "MD3 contributors"
+    },
+    "evidence": {
+      "kind": "passage",
+      "sourceId": "medlineplus-doxycycline",
+      "passageId": "doxy-uses",
+      "licence": {
+        "cls": "foss",
+        "id": "us-gov"
+      }
+    }
+  }
+}

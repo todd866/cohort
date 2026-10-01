@@ -1,0 +1,78 @@
+{
+  "id": "bank:cohort:paeds:q-26717f63074a:v1",
+  "rotation": "cohort-open",
+  "moduleNodes": [
+    "cohort/paeds"
+  ],
+  "topics": [
+    "Atypical genitalia",
+    "Congenital adrenal hyperplasia",
+    "Paediatric surgery"
+  ],
+  "questionType": "next-step",
+  "difficulty": "easy",
+  "stem": "A 6-day-old infant has atypical external genitalia and no palpable gonads. The parents report poor feeding, vomiting and increasing weight loss. Urgent paediatric assessment is being arranged.\n\nWhat should be assessed first?",
+  "options": [
+    {
+      "label": "A",
+      "text": "Arrange a feeding review before investigating the weight loss",
+      "isCorrect": false,
+      "explanation": "Vomiting and weight loss may signal salt-wasting deterioration."
+    },
+    {
+      "label": "B",
+      "text": "Obtain chromosomal testing before assessing the electrolyte balance",
+      "isCorrect": false,
+      "explanation": "Chromosomal classification must not delay metabolic assessment."
+    },
+    {
+      "label": "C",
+      "text": "Check glucose, electrolytes and perfusion for adrenal crisis",
+      "isCorrect": true,
+      "explanation": "Salt-wasting adrenal insufficiency can cause hypoglycaemia and shock."
+    },
+    {
+      "label": "D",
+      "text": "Arrange pelvic imaging to define the internal anatomy",
+      "isCorrect": false,
+      "explanation": "Anatomical imaging does not detect urgent metabolic instability."
+    },
+    {
+      "label": "E",
+      "text": "Measure gonadal hormones to plan later pubertal treatment",
+      "isCorrect": false,
+      "explanation": "Longer-term endocrine planning follows assessment of immediate illness."
+    },
+    {
+      "label": "F",
+      "text": "Assess genital measurements to choose a reconstructive operation",
+      "isCorrect": false,
+      "explanation": "Surgical planning follows assessment of potentially fatal adrenal insufficiency."
+    },
+    {
+      "label": "G",
+      "text": "Check urinary flow to determine whether catheterisation is needed",
+      "isCorrect": false,
+      "explanation": "Outflow assessment does not address the principal endocrine emergency."
+    }
+  ],
+  "context": "Atypical genitalia with neonatal deterioration raises concern for congenital adrenal hyperplasia. Cortisol and aldosterone deficiency can produce hypoglycaemia, salt loss and shock.\n\nAssess glucose, electrolytes and perfusion urgently. Stabilisation and specialist endocrine care take priority over completing anatomical classification.",
+  "publicModule": {
+    "schemaVersion": 1,
+    "origin": "mirrored",
+    "discipline": "paeds",
+    "mirroredFrom": "md3:26717f63074af776",
+    "itemText": {
+      "licence": "CC-BY-4.0",
+      "attribution": "MD3 contributors"
+    },
+    "evidence": {
+      "kind": "reference",
+      "sourceId": "rch-adrenal-crisis-and-acute-adrenal-insufficiency"
+    },
+    "review": {
+      "verdict": "passed",
+      "contentHash": "02ff1addc4838a8b7192361d21d8cbfa85f2d44d9226d1f5d183bf6e3ba6da25"
+    }
+  }
+}

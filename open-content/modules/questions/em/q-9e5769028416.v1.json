@@ -1,0 +1,66 @@
+{
+  "id": "bank:cohort:em:q-9e5769028416:v1",
+  "rotation": "cohort-open",
+  "moduleNodes": [
+    "cohort/em"
+  ],
+  "topics": [
+    "emergency",
+    "fluids",
+    "calculation"
+  ],
+  "questionType": "management",
+  "difficulty": "medium",
+  "stem": "Calculate the daily maintenance fluid requirement for a 15kg child using the Holliday-Segar formula.",
+  "options": [
+    {
+      "label": "A",
+      "text": "1500 mL/day",
+      "isCorrect": false,
+      "explanation": "It overestimates the requirement beyond the first 10 kg, which should be counted at 50 mL/kg/day rather than 100 mL/kg/day."
+    },
+    {
+      "label": "B",
+      "text": "1250 mL/day",
+      "isCorrect": true,
+      "explanation": "Correct. Holliday-Segar gives 1000 mL for the first 10 kg plus 250 mL for the next 5 kg, giving 1250 mL/day.\n\nThat is about 52 mL/hour."
+    },
+    {
+      "label": "C",
+      "text": "750 mL/day",
+      "isCorrect": false,
+      "explanation": "A 15 kg child needs more than this for standard maintenance."
+    },
+    {
+      "label": "D",
+      "text": "1800 mL/day",
+      "isCorrect": false,
+      "explanation": "It reflects overcounting and would risk unnecessary fluid administration."
+    },
+    {
+      "label": "E",
+      "text": "1000 mL/day",
+      "isCorrect": false,
+      "explanation": "The second weight band contributes another 250 mL/day."
+    }
+  ],
+  "context": "Daily Holliday-Segar maintenance uses 100/50/20 mL/kg/day for successive weight bands. For 15 kg, this gives 1250 mL/day, or about 52 mL/hour when divided by 24.\n\nThe hourly 4-2-1 rule gives 50 mL/hour for 15 kg. Both methods are accepted starting estimates, not exact unit conversions.\n\nAdjust the prescription to illness and fluid balance; isotonic fluid with glucose is usually preferred.",
+  "publicModule": {
+    "schemaVersion": 1,
+    "origin": "mirrored",
+    "discipline": "em",
+    "mirroredFrom": "md3:9e576902841697f7",
+    "itemText": {
+      "licence": "CC-BY-4.0",
+      "attribution": "MD3 contributors"
+    },
+    "evidence": {
+      "kind": "reference",
+      "sourceId": "rch-intravenous-fluids"
+    },
+    "review": {
+      "verdict": "passed",
+      "contentHash": "5a80a8472a0ce0d34529ea0573472b45a1eab6693e72feb023bd28396f436b2c"
+    }
+  }
+}

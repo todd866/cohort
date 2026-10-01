@@ -1,0 +1,71 @@
+{
+  "id": "bank:usmle-step1:pharm-rifampin-uses:v1",
+  "rotation": "usmle-step1-open",
+  "topics": [
+    "rifampin",
+    "tuberculosis"
+  ],
+  "moduleNodes": [
+    "usmle/step1",
+    "usmle/step1/pharmacology"
+  ],
+  "questionType": "mechanism",
+  "difficulty": "easy",
+  "stem": "Rifampin is used with other medications to treat which serious infection?",
+  "options": [
+    {
+      "label": "A",
+      "text": "Mycoplasma pneumoniae pneumonia",
+      "isCorrect": false,
+      "misconception": "Links rifampin to any bacterial pneumonia rather than to mycobacterial disease.",
+      "explanation": "Mycoplasma pneumoniae lacks a cell wall and causes atypical pneumonia treated with a macrolide or doxycycline; rifampin is not used for it."
+    },
+    {
+      "label": "B",
+      "text": "Pulmonary tuberculosis",
+      "isCorrect": true,
+      "misconception": "None — rifampin is part of combination TB therapy.",
+      "explanation": "Rifampin is given with other medications to treat tuberculosis, a serious infection that affects the lungs and sometimes other parts of the body."
+    },
+    {
+      "label": "C",
+      "text": "Invasive aspergillosis",
+      "isCorrect": false,
+      "misconception": "Confuses an antimycobacterial drug with an antifungal for invasive lung disease.",
+      "explanation": "Invasive aspergillosis is a mold infection treated with voriconazole; rifampin acts on bacterial RNA polymerase and has no antifungal role."
+    },
+    {
+      "label": "D",
+      "text": "Herpes simplex encephalitis",
+      "isCorrect": false,
+      "misconception": "Assumes a broad antimicrobial covers viral encephalitis.",
+      "explanation": "Herpes simplex encephalitis is treated with intravenous acyclovir; rifampin is an antibacterial with no activity against herpesviruses."
+    },
+    {
+      "label": "E",
+      "text": "Primary syphilis",
+      "isCorrect": false,
+      "misconception": "Confuses antimycobacterial therapy with the penicillin used for syphilis.",
+      "explanation": "Primary syphilis is Treponema pallidum infection treated with benzathine penicillin G; rifampin has no place in its treatment."
+    }
+  ],
+  "context": "Learning objective: Rifampin is used with other medications to treat tuberculosis, which affects the lungs and sometimes other body sites.",
+  "cite": "medlineplus-rifampin#rifampin-uses",
+  "publicUsmle": {
+    "schemaVersion": 1,
+    "origin": "generated",
+    "itemText": {
+      "licence": "CC-BY-4.0",
+      "attribution": "MD3 contributors"
+    },
+    "evidence": {
+      "kind": "passage",
+      "sourceId": "medlineplus-rifampin",
+      "passageId": "rifampin-uses",
+      "licence": {
+        "cls": "foss",
+        "id": "us-gov"
+      }
+    }
+  }
+}

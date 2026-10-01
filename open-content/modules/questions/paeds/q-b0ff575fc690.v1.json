@@ -1,0 +1,67 @@
+{
+  "id": "bank:cohort:paeds:q-b0ff575fc690:v1",
+  "rotation": "cohort-open",
+  "moduleNodes": [
+    "cohort/paeds"
+  ],
+  "topics": [
+    "asthma",
+    "spirometry",
+    "FeNO",
+    "diagnosis"
+  ],
+  "questionType": "knowledge",
+  "difficulty": "medium",
+  "stem": "A 7-year-old presents with recurrent episodes of wheeze and nocturnal cough.\n\nHow should asthma be diagnosed at this age?",
+  "options": [
+    {
+      "label": "A",
+      "text": "Spirometry showing FEV1 improvement ≥12% OR FeNO ≥25 ppb",
+      "isCorrect": true,
+      "explanation": "Correct. In a 7-year-old, asthma diagnosis is supported by objective testing such as spirometric reversibility or an elevated FeNO.\n\nChildren use the same ≥12% FEV1 reversibility threshold as adults — the paediatric difference is no absolute ≥200mL volume requirement, not a lower percentage."
+    },
+    {
+      "label": "B",
+      "text": "Clinical diagnosis only — no testing possible at age ≤5 years",
+      "isCorrect": false,
+      "explanation": "That approach applies to younger preschool children, not a 7-year-old. School-age children should usually have objective testing rather than a diagnosis based on symptoms alone."
+    },
+    {
+      "label": "C",
+      "text": "Trial of salbutamol and clinical response ≥3 days",
+      "isCorrect": false,
+      "explanation": "A bronchodilator trial is more useful in 1-5 year olds, where formal lung function testing is limited. At age 7, spirometry and FeNO are the more appropriate diagnostic tools."
+    },
+    {
+      "label": "D",
+      "text": "Peak expiratory flow diary for ≥4 weeks",
+      "isCorrect": false,
+      "explanation": "Peak flow diaries can support monitoring, but they are not the main recommended diagnostic test here. Objective confirmation in this age group usually relies on spirometry and/or FeNO."
+    },
+    {
+      "label": "E",
+      "text": "Skin prick testing for allergens",
+      "isCorrect": false,
+      "explanation": "Skin prick testing can identify atopy, but it does not diagnose asthma itself. A child can be allergic without having objective evidence of asthma."
+    }
+  ],
+  "context": "Asthma diagnosis depends on age: under 12 months it is not diagnosed (bronchiolitis); 1 to 5 years it is clinical, with response to a salbutamol trial; from about 6, when a child can perform spirometry, it is objective.\n\nObjective evidence is reversible obstruction: FEV1 rising by 12% or more after salbutamol. FeNO (fractional exhaled nitric oxide) is a breath test for eosinophilic airway inflammation; 25 ppb or more in a child supports the diagnosis.\n\nA normal FeNO does not exclude asthma (non-eosinophilic phenotypes), which is why spirometry stays the anchor.",
+  "publicModule": {
+    "schemaVersion": 1,
+    "origin": "mirrored",
+    "discipline": "paeds",
+    "mirroredFrom": "md3:b0ff575fc690576d",
+    "itemText": {
+      "licence": "CC-BY-4.0",
+      "attribution": "MD3 contributors"
+    },
+    "evidence": {
+      "kind": "reference",
+      "sourceId": "aah-diagnosis-children-6-11-years-diagnosing-asthma-in-children-6-11-years"
+    },
+    "review": {
+      "verdict": "passed",
+      "contentHash": "0922f9d3cd13e4c0166117dfceba1626429f9b702070b01dfa83ab4431cf6dad"
+    }
+  }
+}

@@ -1,0 +1,67 @@
+{
+  "id": "bank:cohort:paeds:q-95c406a38943:v1",
+  "rotation": "cohort-open",
+  "moduleNodes": [
+    "cohort/paeds"
+  ],
+  "topics": [
+    "lumbar-puncture",
+    "raised-icp",
+    "meningitis",
+    "herniation"
+  ],
+  "questionType": "mechanism",
+  "difficulty": "medium",
+  "stem": "A 6-year-old with fever and neck stiffness has a GCS of 11, unequal pupils, and hypertension with bradycardia. Antibiotics have already been given.\n\nWhy is lumbar puncture deferred?",
+  "options": [
+    {
+      "label": "A",
+      "text": "Fever making the CSF unreadable",
+      "isCorrect": false,
+      "explanation": "Fever does not invalidate CSF. Antibiotics before LP are correct in an unstable child; they are not the reason to skip the tap forever."
+    },
+    {
+      "label": "B",
+      "text": "Neck stiffness blocking needle path",
+      "isCorrect": false,
+      "explanation": "Meningism is the indication for considering LP, not a mechanical block. Positioning can be difficult, but that is not the safety reason here."
+    },
+    {
+      "label": "C",
+      "text": "Antibiotics already sterilising CSF",
+      "isCorrect": false,
+      "explanation": "Prior antibiotics reduce culture yield but do not make LP dangerous. The deferral is about herniation, not microbiology."
+    },
+    {
+      "label": "D",
+      "text": "Bradycardia from a vasovagal reflex",
+      "isCorrect": false,
+      "explanation": "Bradycardia plus hypertension in a comatose child is Cushing's response to raised ICP, not a simple vasovagal faint."
+    },
+    {
+      "label": "E",
+      "text": "Raised ICP increasing herniation risk",
+      "isCorrect": true,
+      "explanation": "Unequal pupils, falling GCS, and Cushing physiology are signs of raised intracranial pressure. Dropping lumbar CSF pressure in that setting can precipitate cerebral herniation. Treat first; image if needed; LP only once it is safe."
+    }
+  ],
+  "context": "Do not LP a child with signs of raised ICP (falling GCS, focal neurology, unequal pupils, Cushing triad), shock, or coagulopathy.\n\nGive antibiotics immediately. CT does not fully exclude raised pressure; the decision is clinical.",
+  "publicModule": {
+    "schemaVersion": 1,
+    "origin": "mirrored",
+    "discipline": "paeds",
+    "mirroredFrom": "md3:95c406a38943c6f9",
+    "itemText": {
+      "licence": "CC-BY-4.0",
+      "attribution": "MD3 contributors"
+    },
+    "evidence": {
+      "kind": "reference",
+      "sourceId": "rch-meningitis-encephalitis"
+    },
+    "review": {
+      "verdict": "passed",
+      "contentHash": "a31e6c9e51e4e0f06eec1021abaed87af0cbbba992e14b6140ac002c6b86d32f"
+    }
+  }
+}

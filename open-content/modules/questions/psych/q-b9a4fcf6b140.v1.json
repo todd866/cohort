@@ -1,0 +1,67 @@
+{
+  "id": "bank:cohort:psych:q-b9a4fcf6b140:v1",
+  "rotation": "cohort-open",
+  "moduleNodes": [
+    "cohort/psych"
+  ],
+  "topics": [
+    "opioid use disorder",
+    "maintenance",
+    "buprenorphine",
+    "harm reduction"
+  ],
+  "questionType": "management",
+  "difficulty": "medium",
+  "stem": "A 32-year-old man meets criteria for opioid use disorder. He wants outpatient maintenance treatment and prefers a medication with a safer overdose profile.\n\nWhich option is most appropriate?",
+  "options": [
+    {
+      "label": "A",
+      "text": "Naltrexone without ensuring opioid abstinence first",
+      "isCorrect": false,
+      "explanation": "Naltrexone requires opioid abstinence before initiation to avoid precipitated withdrawal."
+    },
+    {
+      "label": "B",
+      "text": "Benzodiazepines as maintenance therapy",
+      "isCorrect": false,
+      "explanation": "Benzodiazepines are not a treatment for opioid use disorder and combining them with opioids significantly increases overdose mortality. They do not address the opioid dependence cycle and carry their own dependence risk."
+    },
+    {
+      "label": "C",
+      "text": "Buprenorphine/naloxone maintenance therapy",
+      "isCorrect": true,
+      "explanation": "Medication-assisted treatment reduces mortality and relapse. Buprenorphine (often combined with naloxone) is a first-line maintenance option with a ceiling effect on respiratory depression."
+    },
+    {
+      "label": "D",
+      "text": "Antipsychotic monotherapy",
+      "isCorrect": false,
+      "explanation": "Antipsychotics have no role in treating opioid use disorder. They do not act on opioid receptors, do not reduce cravings, and would expose the patient to unnecessary side effects (metabolic syndrome, extrapyramidal symptoms) without addressing the underlying addiction."
+    },
+    {
+      "label": "E",
+      "text": "Short course of oxycodone taper as definitive treatment",
+      "isCorrect": false,
+      "explanation": "Short opioid tapers have high relapse rates (>80%) and increased overdose risk due to loss of tolerance during the taper period. Evidence strongly favours long-term maintenance therapy over taper-only approaches for opioid use disorder."
+    }
+  ],
+  "context": "Opioid agonist treatment reduces mortality, withdrawal-driven use, and relapse. A partial agonist has a ceiling effect on respiratory depression and is often paired with an antagonist to reduce diversion.",
+  "publicModule": {
+    "schemaVersion": 1,
+    "origin": "mirrored",
+    "discipline": "psych",
+    "mirroredFrom": "md3:b9a4fcf6b1406782",
+    "itemText": {
+      "licence": "CC-BY-4.0",
+      "attribution": "MD3 contributors"
+    },
+    "evidence": {
+      "kind": "reference",
+      "sourceId": "nswpds-gl2018-019"
+    },
+    "review": {
+      "verdict": "passed",
+      "contentHash": "09ba3ad4f53984cd7c0d6bcf554abbd671a20436b1d12dc2a09da9b82cda1cd0"
+    }
+  }
+}

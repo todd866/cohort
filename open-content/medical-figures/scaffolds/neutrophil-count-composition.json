@@ -1,0 +1,91 @@
+{
+  "schemaVersion": 1,
+  "figureId": "neutrophil-count-composition",
+  "kind": "conceptual",
+  "sourceFacts": [
+    {
+      "id": "fact-1",
+      "fact": "Neutrophils are one type of white blood cell.",
+      "sources": [
+        {
+          "title": "St. Jude: Absolute neutrophil count and neutropenia",
+          "url": "https://together.stjude.org/en-us/treatment-tests-procedures/symptoms-side-effects/absolute-neutrophil-count-anc-neutropenia.html"
+        }
+      ]
+    },
+    {
+      "id": "fact-2",
+      "fact": "ANC measures the number of neutrophils, rather than all white blood cells.",
+      "sources": [
+        {
+          "title": "St. Jude: Absolute neutrophil count and neutropenia",
+          "url": "https://together.stjude.org/en-us/treatment-tests-procedures/symptoms-side-effects/absolute-neutrophil-count-anc-neutropenia.html"
+        }
+      ]
+    },
+    {
+      "id": "fact-3",
+      "fact": "Equal total white-cell populations can contain different neutrophil fractions; token counts are a conceptual example, not diagnostic thresholds.",
+      "sources": [
+        {
+          "title": "St. Jude: Absolute neutrophil count and neutropenia",
+          "url": "https://together.stjude.org/en-us/treatment-tests-procedures/symptoms-side-effects/absolute-neutrophil-count-anc-neutropenia.html"
+        }
+      ]
+    }
+  ],
+  "nodes": [
+    {
+      "id": "a",
+      "shape": "two rows of five tokens",
+      "label": "10 total; 8 neutrophils"
+    },
+    {
+      "id": "b",
+      "shape": "two rows of five tokens",
+      "label": "10 total; 1 neutrophil"
+    },
+    {
+      "id": "keyN",
+      "shape": "teal circle",
+      "label": "Neutrophil"
+    },
+    {
+      "id": "keyO",
+      "shape": "amber circle",
+      "label": "Other white cell"
+    }
+  ],
+  "edges": [
+    {
+      "from": "a",
+      "to": "b",
+      "meaning": "equal total but different neutrophil fraction comparison"
+    }
+  ],
+  "labels": [
+    "Same total. Different neutrophils.",
+    "10 total",
+    "8 neutrophils",
+    "1 neutrophil",
+    "Neutrophil",
+    "Other white cell",
+    "Illustrative tokens, not clinical thresholds",
+    "Look at the differential"
+  ],
+  "forbiddenAnatomy": [
+    "Organs, tissue layers, anatomical cutaways, histology, scans, clinical photographs"
+  ],
+  "validation": {
+    "status": "verified",
+    "method": "source-and-conceptual-structure-review",
+    "checks": [
+      "Exactly ten tokens in each main group, arranged five by two.",
+      "Left eight teal/two amber; right one teal/nine amber.",
+      "No clinical units or normal/abnormal threshold claims.",
+      "Solid abstract counters only, no invented cell interiors."
+    ],
+    "pixelReviewStatus": "verified",
+    "pixelReviewNotes": "Counted left grid: five teal above, three teal plus two amber below, total ten and eight neutrophils. Counted right grid: one teal/four amber above, five amber below, total ten and one neutrophil. Legend colours match; qualifier explicitly excludes clinical thresholds. No invented cellular morphology."
+  }
+}

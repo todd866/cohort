@@ -1,0 +1,73 @@
+{
+  "id": "bank:usmle-step1:cardiovascular-baroreceptor-reflex-r1:v1",
+  "rotation": "usmle-step1-open",
+  "ladderId": "baroreceptor-reflex",
+  "topics": [
+    "baroreceptor reflex",
+    "blood pressure regulation",
+    "ladder:baroreceptor-reflex"
+  ],
+  "moduleNodes": [
+    "usmle/step1",
+    "usmle/step1/cardiovascular"
+  ],
+  "questionType": "mechanism",
+  "difficulty": "easy",
+  "stem": "When arterial blood pressure rises, baroreceptor firing rate most likely does which of the following?",
+  "options": [
+    {
+      "label": "A",
+      "text": "Decreases because stretch receptors are inhibited by higher pressure",
+      "isCorrect": false,
+      "misconception": "The pressure–firing relationship is inverted.",
+      "explanation": "Baroreceptors increase firing when arterial pressure rises; decreased firing occurs when pressure falls."
+    },
+    {
+      "label": "B",
+      "text": "Increases because greater vessel wall stretch activates the receptors",
+      "isCorrect": true,
+      "misconception": "None; increased pressure raises baroreceptor firing rate.",
+      "explanation": "Increased blood pressure stretches carotid and aortic baroreceptors, producing increased rates of baroreceptor firing."
+    },
+    {
+      "label": "C",
+      "text": "No change because baroreceptors respond only to oxygen tension",
+      "isCorrect": false,
+      "misconception": "Chemoreceptor function is being substituted for baroreceptor function.",
+      "explanation": "Baroreceptors sense arterial stretch and pressure; chemoreceptors monitor blood gas and pH."
+    },
+    {
+      "label": "D",
+      "text": "Complete cessation of firing until pressure normalizes",
+      "isCorrect": false,
+      "misconception": "Baroreceptors are being treated as on–off switches rather than graded sensors.",
+      "explanation": "Baroreceptors fire continuously at a rate proportional to pressure; rising pressure increases, not abolishes, firing."
+    },
+    {
+      "label": "E",
+      "text": "Firing only during expiration when intrathoracic pressure rises",
+      "isCorrect": false,
+      "misconception": "A respiratory-cycle artifact is being confused with arterial baroreceptor behavior.",
+      "explanation": "Carotid and aortic baroreceptors track arterial pressure continuously, not only during a respiratory phase."
+    }
+  ],
+  "context": "Learning objective: state the baroreceptor firing response to pressure. Increased blood pressure increases baroreceptor firing; decreased pressure slows firing.",
+  "cite": "openstax-anatomy-physiology#vessels-baroreceptor-firing",
+  "publicUsmle": {
+    "schemaVersion": 1,
+    "origin": "generated",
+    "itemText": {
+      "licence": "CC-BY-4.0",
+      "attribution": "MD3 contributors"
+    },
+    "evidence": {
+      "kind": "passage",
+      "sourceId": "openstax-anatomy-physiology",
+      "passageId": "vessels-baroreceptor-firing",
+      "licence": {
+        "cls": "foss",
+        "id": "cc-by-4.0"
+      }
+    }
+  }
+}

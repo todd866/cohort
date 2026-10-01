@@ -1,0 +1,60 @@
+{
+  "id": "bank:cohort:paeds:q-a19079c1b1c1:v1",
+  "rotation": "cohort-open",
+  "moduleNodes": [
+    "cohort/paeds"
+  ],
+  "topics": [
+    "dental trauma",
+    "avulsed primary tooth",
+    "replantation"
+  ],
+  "questionType": "management",
+  "difficulty": "hard",
+  "stem": "A 4-year-old falls and completely avulses an upper primary incisor. The tooth is brought to the emergency department in milk.\n\nWhat is the most appropriate dental management?",
+  "options": [
+    {
+      "label": "A",
+      "text": "Replant it immediately and splint",
+      "isCorrect": false,
+      "explanation": "That principle applies to selected avulsed permanent teeth, not primary teeth."
+    },
+    {
+      "label": "B",
+      "text": "Store it overnight and replant tomorrow",
+      "isCorrect": false,
+      "explanation": "Delayed replantation is not indicated, and the tooth is primary."
+    },
+    {
+      "label": "C",
+      "text": "Replace it after root-canal treatment",
+      "isCorrect": false,
+      "explanation": "Root-canal treatment does not make replantation of an avulsed primary tooth safe."
+    },
+    {
+      "label": "D",
+      "text": "Do not replant the primary tooth",
+      "isCorrect": true,
+      "explanation": "Replanting a primary tooth can damage the developing permanent successor."
+    }
+  ],
+  "context": "Avulsed primary teeth are not replanted because the procedure can injure the developing permanent tooth.",
+  "publicModule": {
+    "schemaVersion": 1,
+    "origin": "mirrored",
+    "discipline": "paeds",
+    "mirroredFrom": "md3:a19079c1b1c114a8",
+    "itemText": {
+      "licence": "CC-BY-4.0",
+      "attribution": "MD3 contributors"
+    },
+    "evidence": {
+      "kind": "reference",
+      "sourceId": "rch-dental-trauma"
+    },
+    "review": {
+      "verdict": "passed",
+      "contentHash": "bfed95d9076dda917b8b5d66f3d0e3db4f802ceda494e643d0f16e91b23a63d7"
+    }
+  }
+}

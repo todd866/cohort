@@ -1,0 +1,71 @@
+{
+  "id": "bank:usmle-step1:immuno-hypersensitivity-minutes:v1",
+  "rotation": "usmle-step1-open",
+  "topics": [
+    "hypersensitivity",
+    "IgE"
+  ],
+  "moduleNodes": [
+    "usmle/step1",
+    "usmle/step1/immunology"
+  ],
+  "questionType": "mechanism",
+  "difficulty": "medium",
+  "stem": "A person already sensitized to peanut is exposed to peanut again. How soon after this re-exposure does the antibody-mediated allergic reaction begin?",
+  "options": [
+    {
+      "label": "A",
+      "text": "After 48 to 72 hours",
+      "isCorrect": false,
+      "misconception": "Confuses allergy with delayed-type (type IV) hypersensitivity.",
+      "explanation": "A reaction appearing 48 to 72 hours after exposure is delayed-type hypersensitivity, which is T-cell mediated rather than antibody mediated."
+    },
+    {
+      "label": "B",
+      "text": "After one to two weeks",
+      "isCorrect": false,
+      "misconception": "Confuses an IgE-mediated allergy with serum sickness, an IgG immune-complex reaction.",
+      "explanation": "Onset one to two weeks after exposure fits serum sickness, an IgG immune-complex reaction to foreign protein, not an allergy in a sensitized person."
+    },
+    {
+      "label": "C",
+      "text": "Within a few minutes",
+      "isCorrect": true,
+      "misconception": "None — an allergy is an antibody-mediated response occurring within minutes.",
+      "explanation": "An antibody-mediated immune response that occurs within minutes of exposure to a harmless antigen is called an allergy."
+    },
+    {
+      "label": "D",
+      "text": "After several months",
+      "isCorrect": false,
+      "misconception": "Assumes an allergic reaction needs a prolonged period to develop.",
+      "explanation": "Months is far too slow; in a sensitized person an allergic reaction starts within minutes of exposure to the antigen."
+    },
+    {
+      "label": "E",
+      "text": "After several years",
+      "isCorrect": false,
+      "misconception": "Confuses an immediate reaction with a disease process that has a long latency.",
+      "explanation": "A delay of years describes long-latency processes such as some cancers, not an allergy, which begins within minutes."
+    }
+  ],
+  "context": "Learning objective: An allergy is an antibody-mediated response to a harmless antigen that occurs within minutes of exposure.",
+  "cite": "openstax-biology-2e#hypersensitivity-ige",
+  "publicUsmle": {
+    "schemaVersion": 1,
+    "origin": "generated",
+    "itemText": {
+      "licence": "CC-BY-4.0",
+      "attribution": "MD3 contributors"
+    },
+    "evidence": {
+      "kind": "passage",
+      "sourceId": "openstax-biology-2e",
+      "passageId": "hypersensitivity-ige",
+      "licence": {
+        "cls": "foss",
+        "id": "cc-by-4.0"
+      }
+    }
+  }
+}

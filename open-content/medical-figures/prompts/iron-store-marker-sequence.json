@@ -1,0 +1,35 @@
+{
+  "figureId": "iron-store-marker-sequence",
+  "tool": "built-in image_gen",
+  "model": null,
+  "referenceAssetIds": [],
+  "externalReferenceImages": [],
+  "prompt": "Original educational conceptual illustration, landscape 3:2. Warm ivory paper, sophisticated hand-painted gouache/watercolour, confident fine brown outlines, navy lettering, restrained teal, coral and amber. Editorial science illustration with spacious composition and large legible labels. The explanatory structure must carry the meaning visually: molecules, objects, geometry or flow; never paragraphs in boxes. No organs, regional anatomy, teeth or joint cutaways, tissue layers, invented histology, diagnostic photographs, radiographs or patient data. All symbols are explicitly conceptual. Footer: 'Conceptual teaching model • Not to scale'. Title 'Iron depletion comes first'. A left-to-right comparison connected by a broad arrow labelled 'If deficiency continues'. Left stage 'Earlier': an almost empty glass jar with a few amber Fe tokens and label 'Stores depleted' plus 'Ferritin falls'; beside it a full shallow tray of coral rectangular Hb tiles labelled 'Hb may still be normal'. Right stage 'Later': empty Fe jar labelled 'Deficiency progresses'; beside it a visibly sparse tray of smaller paler Hb tiles labelled 'Hb falls', below 'Microcytosis may develop'. Jar capacity equal both sides; rectangular Hb tokens strictly symbolic. Elegant object-based sequence, no graph axes, numbers or internal anatomy.",
+  "clinicalSources": [
+    {
+      "title": "RCH: Iron deficiency and anaemia",
+      "url": "https://www.rch.org.au/immigranthealth/clinical/Iron_deficiency_and_anaemia/"
+    }
+  ],
+  "teaching": {
+    "question": "Can haemoglobin be normal despite depleted iron stores?",
+    "answer": "Yes. Ferritin falls early in iron deficiency; reduced haemoglobin and microcytosis can appear later as deficiency progresses.",
+    "imageRole": "after-reveal"
+  },
+  "title": "Iron stores fall before haemoglobin",
+  "caption": "With progressive iron deficiency, ferritin falls early; microcytosis and anaemia can develop later. A normal haemoglobin level therefore does not establish that iron stores are adequate.",
+  "alt": "Two successive stages compare an almost empty iron-store jar with preserved haemoglobin tokens, followed by reduced haemoglobin production.",
+  "review": {
+    "status": "pending-independent-qa",
+    "method": "agent-visual-and-source-review",
+    "notes": "Earlier low Fe stores and falling ferritin are shown beside preserved Hb tokens; rightward conditional arrow leads to empty stores and reduced Hb tokens later. Microcytosis is qualified as possible. All objects are symbolic jars and rectangular tiles, with no invented cellular anatomy or thresholds.",
+    "structure": {
+      "kind": "conceptual",
+      "status": "verified",
+      "specificationFiles": [
+        "scaffolds/iron-store-marker-sequence.json"
+      ],
+      "notes": "Earlier low Fe stores and falling ferritin are shown beside preserved Hb tokens; rightward conditional arrow leads to empty stores and reduced Hb tokens later. Microcytosis is qualified as possible. All objects are symbolic jars and rectangular tiles, with no invented cellular anatomy or thresholds."
+    }
+  }
+}

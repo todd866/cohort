@@ -1,0 +1,25 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 300" role="img" aria-labelledby="t d">
+  <title id="t">Cardiac cycle pressure volumes</title>
+  <desc id="desc">Isovolumic contraction, ejection, isovolumic relaxation, filling; S1 at AV close starting isovolumic contraction.</desc>
+  <rect width="720" height="300" fill="#fff"/>
+  <text x="360" y="26" text-anchor="middle" font-family="Helvetica,Arial,sans-serif" font-size="16" font-weight="700" fill="#111">Cardiac cycle - left heart (schematic)</text>
+  <rect x="40" y="60" width="150" height="160" rx="6" fill="#eff6ff" stroke="#111"/>
+  <text x="115" y="100" text-anchor="middle" font-family="Helvetica,Arial,sans-serif" font-size="12" font-weight="700" fill="#111">1. Isovolumic</text>
+  <text x="115" y="120" text-anchor="middle" font-family="Helvetica,Arial,sans-serif" font-size="12" font-weight="700" fill="#111">contraction</text>
+  <text x="115" y="150" text-anchor="middle" font-family="Helvetica,Arial,sans-serif" font-size="11" fill="#333">AV valves shut (S1)</text>
+  <text x="115" y="170" text-anchor="middle" font-family="Helvetica,Arial,sans-serif" font-size="11" fill="#333">SL still closed</text>
+  <rect x="205" y="60" width="150" height="160" rx="6" fill="#ecfdf5" stroke="#111"/>
+  <text x="280" y="110" text-anchor="middle" font-family="Helvetica,Arial,sans-serif" font-size="12" font-weight="700" fill="#111">2. Ejection</text>
+  <text x="280" y="150" text-anchor="middle" font-family="Helvetica,Arial,sans-serif" font-size="11" fill="#333">SL open</text>
+  <text x="280" y="170" text-anchor="middle" font-family="Helvetica,Arial,sans-serif" font-size="11" fill="#333">SV leaves LV</text>
+  <rect x="370" y="60" width="150" height="160" rx="6" fill="#fff7ed" stroke="#111"/>
+  <text x="445" y="100" text-anchor="middle" font-family="Helvetica,Arial,sans-serif" font-size="12" font-weight="700" fill="#111">3. Isovolumic</text>
+  <text x="445" y="120" text-anchor="middle" font-family="Helvetica,Arial,sans-serif" font-size="12" font-weight="700" fill="#111">relaxation</text>
+  <text x="445" y="150" text-anchor="middle" font-family="Helvetica,Arial,sans-serif" font-size="11" fill="#333">SL shut (S2)</text>
+  <text x="445" y="170" text-anchor="middle" font-family="Helvetica,Arial,sans-serif" font-size="11" fill="#333">AV still closed</text>
+  <rect x="535" y="60" width="150" height="160" rx="6" fill="#f5f3ff" stroke="#111"/>
+  <text x="610" y="110" text-anchor="middle" font-family="Helvetica,Arial,sans-serif" font-size="12" font-weight="700" fill="#111">4. Filling</text>
+  <text x="610" y="150" text-anchor="middle" font-family="Helvetica,Arial,sans-serif" font-size="11" fill="#333">AV open</text>
+  <text x="610" y="170" text-anchor="middle" font-family="Helvetica,Arial,sans-serif" font-size="11" fill="#333">EDV rebuilds</text>
+  <text x="360" y="260" text-anchor="middle" font-family="Helvetica,Arial,sans-serif" font-size="11" fill="#555">S1 = mitral/tricuspid close at onset of isovolumic contraction</text>
+</svg>

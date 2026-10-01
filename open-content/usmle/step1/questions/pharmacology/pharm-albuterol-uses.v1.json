@@ -1,0 +1,71 @@
+{
+  "id": "bank:usmle-step1:pharm-albuterol-uses:v1",
+  "rotation": "usmle-step1-open",
+  "topics": [
+    "albuterol",
+    "asthma"
+  ],
+  "moduleNodes": [
+    "usmle/step1",
+    "usmle/step1/pharmacology"
+  ],
+  "questionType": "mechanism",
+  "difficulty": "easy",
+  "stem": "Albuterol is used to prevent and treat which cluster of respiratory symptoms?",
+  "options": [
+    {
+      "label": "A",
+      "text": "Barking cough and stridor in viral croup",
+      "isCorrect": false,
+      "misconception": "Treats all noisy breathing as bronchospasm, missing that stridor reflects upper-airway narrowing.",
+      "explanation": "Croup narrows the subglottic upper airway; it is treated with corticosteroids and nebulized epinephrine, not albuterol bronchodilation."
+    },
+    {
+      "label": "B",
+      "text": "Sneezing and nasal congestion in allergic rhinitis",
+      "isCorrect": false,
+      "misconception": "Assumes an inhaled asthma drug also relieves nasal allergy symptoms.",
+      "explanation": "Allergic rhinitis is an upper-airway condition treated with intranasal corticosteroids and antihistamines, not an inhaled beta-2 agonist."
+    },
+    {
+      "label": "C",
+      "text": "Wheezing and chest tightness in asthma or COPD",
+      "isCorrect": true,
+      "misconception": "None — albuterol relieves bronchospasm symptoms in asthma and COPD.",
+      "explanation": "MedlinePlus lists albuterol to prevent and treat wheezing, breathlessness, cough and chest tightness caused by asthma and COPD."
+    },
+    {
+      "label": "D",
+      "text": "Pleuritic chest pain and hemoptysis in pulmonary embolism",
+      "isCorrect": false,
+      "misconception": "Assumes any acute dyspnea with chest pain responds to a bronchodilator.",
+      "explanation": "Pleuritic pain and hemoptysis from pulmonary embolism reflect a clot in the pulmonary arteries, which is treated with anticoagulation."
+    },
+    {
+      "label": "E",
+      "text": "Fever and productive cough in bacterial pneumonia",
+      "isCorrect": false,
+      "misconception": "Confuses relief of airway narrowing with treatment of a lung infection.",
+      "explanation": "Fever and productive cough from bacterial pneumonia need antibiotics; a bronchodilator does not treat the infection."
+    }
+  ],
+  "context": "Learning objective: Albuterol is used to prevent and treat wheezing, breathlessness, cough and chest tightness caused by asthma and COPD.",
+  "cite": "medlineplus-albuterol#albuterol-uses",
+  "publicUsmle": {
+    "schemaVersion": 1,
+    "origin": "generated",
+    "itemText": {
+      "licence": "CC-BY-4.0",
+      "attribution": "MD3 contributors"
+    },
+    "evidence": {
+      "kind": "passage",
+      "sourceId": "medlineplus-albuterol",
+      "passageId": "albuterol-uses",
+      "licence": {
+        "cls": "foss",
+        "id": "us-gov"
+      }
+    }
+  }
+}

@@ -1,0 +1,68 @@
+{
+  "id": "bank:cohort:paeds:q-18f25ebc3f7b:v1",
+  "rotation": "cohort-open",
+  "moduleNodes": [
+    "cohort/paeds"
+  ],
+  "topics": [
+    "appendicitis",
+    "pediatrics",
+    "abdominal pain",
+    "imaging",
+    "emergency-common-presentations"
+  ],
+  "questionType": "next-step",
+  "difficulty": "medium",
+  "stem": "A 10-year-old child has periumbilical pain that migrated to the right lower quadrant with anorexia and fever. Examination shows localised tenderness with guarding.\n\nWhat is the most appropriate next step?",
+  "options": [
+    {
+      "label": "A",
+      "text": "Abdominal ultrasound before any surgical referral, because imaging is required to confirm appendicitis in children",
+      "isCorrect": false,
+      "explanation": "Appendicitis is a clinical diagnosis. RCH reserves ultrasound for the uncertain case: it is operator-dependent, sensitivity is around 85%, and a non-visualised appendix is common, so a negative scan does not exclude the diagnosis."
+    },
+    {
+      "label": "B",
+      "text": "CT abdomen as the mandatory first-line imaging study",
+      "isCorrect": false,
+      "explanation": "CT carries a radiation dose and is not first-line in children; it is considered only when the diagnosis stays unclear after surgical review and ultrasound."
+    },
+    {
+      "label": "C",
+      "text": "Colonoscopy to directly visualise the appendiceal orifice",
+      "isCorrect": false,
+      "explanation": "Colonoscopy has no role in suspected appendicitis and is unsafe in an inflamed bowel."
+    },
+    {
+      "label": "D",
+      "text": "Surgical review now on the clinical picture; ultrasound only if the diagnosis remains uncertain",
+      "isCorrect": true,
+      "explanation": "Migratory pain, anorexia, fever and localised RIF tenderness with guarding is appendicitis until proven otherwise, and the surgeons decide on the clinical picture. Ultrasound is for the equivocal case, not a gate before referral."
+    },
+    {
+      "label": "E",
+      "text": "Discharge with analgesia, since pain that migrates argues against appendicitis",
+      "isCorrect": false,
+      "explanation": "Migration from the umbilicus to the right iliac fossa is the classic history FOR appendicitis, not against it."
+    }
+  ],
+  "context": "Appendicitis in children is a clinical diagnosis: migratory pain, anorexia, fever and localised RIF tenderness go to the surgeons, not to the scanner. RCH uses ultrasound only when the picture is uncertain.\n\nUltrasound is operator-dependent, misses about 15%, and often cannot see the appendix at all; a normal scan therefore does not exclude appendicitis. CT is kept for the persistently unclear case because of the radiation dose.",
+  "publicModule": {
+    "schemaVersion": 1,
+    "origin": "mirrored",
+    "discipline": "paeds",
+    "mirroredFrom": "md3:18f25ebc3f7b2b0d",
+    "itemText": {
+      "licence": "CC-BY-4.0",
+      "attribution": "MD3 contributors"
+    },
+    "evidence": {
+      "kind": "reference",
+      "sourceId": "rch-abdominal-pain-acute"
+    },
+    "review": {
+      "verdict": "passed",
+      "contentHash": "f792df88a66eaa0d2c92a139c2f2e18524a0d6274319a7f0194341d6d7581a28"
+    }
+  }
+}

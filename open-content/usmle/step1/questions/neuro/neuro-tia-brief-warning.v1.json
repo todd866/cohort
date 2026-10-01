@@ -1,0 +1,72 @@
+{
+  "id": "bank:usmle-step1:neuro-tia-brief-warning:v1",
+  "rotation": "usmle-step1-open",
+  "topics": [
+    "stroke",
+    "transient ischemic attack",
+    "clinical recognition"
+  ],
+  "moduleNodes": [
+    "usmle/step1",
+    "usmle/step1/neuro"
+  ],
+  "questionType": "interpretation",
+  "difficulty": "easy",
+  "stem": "Someone develops sudden stroke-like symptoms that disappear after a few minutes. Which of the following is the best interpretation?",
+  "options": [
+    {
+      "label": "A",
+      "text": "The episode is harmless because the symptoms stopped",
+      "isCorrect": false,
+      "misconception": "Resolution is being used to dismiss a brief but serious warning event.",
+      "explanation": "The CDC warns that stroke-like symptoms resolving within minutes may be a TIA and still require medical help."
+    },
+    {
+      "label": "B",
+      "text": "The episode matters only if the symptoms return the same day",
+      "isCorrect": false,
+      "misconception": "A recurrence requirement is being invented before a warning event is taken seriously.",
+      "explanation": "The cited warning does not require a second episode; even one brief episode of stroke-like symptoms may be a TIA."
+    },
+    {
+      "label": "C",
+      "text": "The episode can be ignored if speech has returned to normal",
+      "isCorrect": false,
+      "misconception": "Recovery of one function is being used to erase the significance of the earlier stroke-like symptoms.",
+      "explanation": "Complete symptom resolution does not make the episode safe to ignore; the CDC identifies this pattern as a possible TIA."
+    },
+    {
+      "label": "D",
+      "text": "The episode needs attention only if it lasted more than one hour",
+      "isCorrect": false,
+      "misconception": "An unsupported duration threshold is being used to dismiss symptoms that resolved within minutes.",
+      "explanation": "The cited passage specifically warns that symptoms lasting only a few minutes may still indicate a TIA."
+    },
+    {
+      "label": "E",
+      "text": "Treat the episode as a possible TIA needing medical help",
+      "isCorrect": true,
+      "misconception": "None; brief resolving stroke symptoms can signal a TIA.",
+      "explanation": "Stroke-like symptoms that disappear after a few minutes may represent a TIA. Their brevity does not make them harmless; medical help is still needed."
+    }
+  ],
+  "context": "Learning objective: recognize a transient ischemic attack. Stroke-like deficits that clear within minutes can still be a serious ischemic warning and should not be ignored.",
+  "cite": "cdc-stroke-signs#tia-brief-warning",
+  "publicUsmle": {
+    "schemaVersion": 1,
+    "origin": "generated",
+    "itemText": {
+      "licence": "CC-BY-4.0",
+      "attribution": "MD3 contributors"
+    },
+    "evidence": {
+      "kind": "passage",
+      "sourceId": "cdc-stroke-signs",
+      "passageId": "tia-brief-warning",
+      "licence": {
+        "cls": "foss",
+        "id": "us-gov"
+      }
+    }
+  }
+}

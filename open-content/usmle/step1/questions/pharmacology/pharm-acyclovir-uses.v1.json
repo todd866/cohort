@@ -1,0 +1,71 @@
+{
+  "id": "bank:usmle-step1:pharm-acyclovir-uses:v1",
+  "rotation": "usmle-step1-open",
+  "topics": [
+    "acyclovir",
+    "herpesvirus"
+  ],
+  "moduleNodes": [
+    "usmle/step1",
+    "usmle/step1/pharmacology"
+  ],
+  "questionType": "mechanism",
+  "difficulty": "easy",
+  "stem": "Acyclovir is used to treat viral infections such as which of the following sets?",
+  "options": [
+    {
+      "label": "A",
+      "text": "Influenza, respiratory syncytial virus and COVID-19",
+      "isCorrect": false,
+      "misconception": "Assumes acyclovir is a broad-spectrum antiviral for respiratory viruses.",
+      "explanation": "Influenza, RSV and SARS-CoV-2 are RNA respiratory viruses; acyclovir needs activation by herpesvirus thymidine kinase and does not treat them."
+    },
+    {
+      "label": "B",
+      "text": "Chickenpox, shingles and genital herpes",
+      "isCorrect": true,
+      "misconception": "None — acyclovir treats chickenpox, shingles and genital herpes.",
+      "explanation": "MedlinePlus lists chickenpox, herpes zoster (shingles) and genital herpes as infections acyclovir treats; it is an antiviral that stops viral spread."
+    },
+    {
+      "label": "C",
+      "text": "Hepatitis B, hepatitis C and HIV infection",
+      "isCorrect": false,
+      "misconception": "Assumes any nucleoside-analog antiviral also treats chronic hepatitis or HIV.",
+      "explanation": "Hepatitis B, hepatitis C and HIV need their own antiviral classes, such as nucleos(t)ide analogs, direct-acting antivirals and antiretrovirals."
+    },
+    {
+      "label": "D",
+      "text": "Genital warts, common warts and molluscum contagiosum",
+      "isCorrect": false,
+      "misconception": "Links acyclovir to all genital and skin viral lesions, not just herpesvirus infections.",
+      "explanation": "Warts are caused by HPV and molluscum contagiosum by a poxvirus; neither is treated with acyclovir, which targets herpesviruses."
+    },
+    {
+      "label": "E",
+      "text": "Measles, mumps and rubella",
+      "isCorrect": false,
+      "misconception": "Assumes acyclovir treats every childhood viral rash illness, not just varicella.",
+      "explanation": "Measles, mumps and rubella are prevented with MMR vaccine and managed supportively; acyclovir has no role against them."
+    }
+  ],
+  "context": "Learning objective: Acyclovir is an antiviral used to treat chickenpox, herpes zoster (shingles) and genital herpes.",
+  "cite": "medlineplus-acyclovir#acyclovir-uses",
+  "publicUsmle": {
+    "schemaVersion": 1,
+    "origin": "generated",
+    "itemText": {
+      "licence": "CC-BY-4.0",
+      "attribution": "MD3 contributors"
+    },
+    "evidence": {
+      "kind": "passage",
+      "sourceId": "medlineplus-acyclovir",
+      "passageId": "acyclovir-uses",
+      "licence": {
+        "cls": "foss",
+        "id": "us-gov"
+      }
+    }
+  }
+}

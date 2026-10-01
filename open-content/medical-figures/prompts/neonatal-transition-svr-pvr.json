@@ -1,0 +1,44 @@
+{
+  "figureId": "neonatal-transition-svr-pvr",
+  "tool": "Codex-authored SVG; sharp rasterization",
+  "model": null,
+  "referenceAssetIds": [],
+  "externalReferenceImages": [],
+  "brief": {
+    "figureId": "neonatal-transition-svr-pvr",
+    "stableId": "mdx:a95ca5d850dc08914c3fdac650af154f:blank-1",
+    "retrievalTarget": "Cord clamping raises SVR while lung aeration lowers PVR.",
+    "context": "Cord clamping removes the low-resistance placental circuit and raises SVR; lung aeration and oxygen lower PVR and increase pulmonary blood flow.",
+    "visualRelationship": "Neonatal transition: two resistance changes",
+    "medium": "code-native SVG with PNG raster export",
+    "factBasis": [
+      {
+        "fact": "Cord clamping removes low-resistance placental circulation and raises systemic vascular resistance.",
+        "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC4987541/"
+      },
+      {
+        "fact": "Lung expansion and increased oxygen lower pulmonary vascular resistance and increase pulmonary blood flow.",
+        "url": "https://www.msdmanuals.com/professional/pediatrics/perinatal-physiology/perinatal-physiology?ruleredirectid=742"
+      },
+      {
+        "fact": "The combined changes reverse ductal flow toward left-to-right.",
+        "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC11499276/"
+      }
+    ],
+    "wrongReadingToPrevent": "Do not infer unsupported quantitative proportions or a different physiology from the abstract arrows.",
+    "reviewState": "pending-independent-review"
+  },
+  "sourceSvg": "sources/neonatal-transition-svr-pvr.svg",
+  "sourceSvgSha256": "e44c6d2e95ca3330034eeedba6c3b87a02a2467e668c07587d56b05be4f0db73",
+  "revisionNotes": "Root source and pixel review plus independent adversarial pixel review; retained conceptual relationships, corrected misleading arrow/count/timing encodings. Clinical sign-off remains pending.",
+  "clinicalSources": [
+    {
+      "title": "Fetal Physiology and the Transition to Extrauterine Life (peer-reviewed review, PMC)",
+      "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC4987541/"
+    },
+    {
+      "title": "MSD Manual Professional: Perinatal Physiology",
+      "url": "https://www.msdmanuals.com/professional/pediatrics/perinatal-physiology/perinatal-physiology?ruleredirectid=742"
+    }
+  ]
+}

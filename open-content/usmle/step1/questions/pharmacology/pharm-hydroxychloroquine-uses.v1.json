@@ -1,0 +1,70 @@
+{
+  "id": "bank:usmle-step1:pharm-hydroxychloroquine-uses:v1",
+  "rotation": "usmle-step1-open",
+  "topics": [
+    "hydroxychloroquine"
+  ],
+  "moduleNodes": [
+    "usmle/step1",
+    "usmle/step1/pharmacology"
+  ],
+  "questionType": "mechanism",
+  "difficulty": "easy",
+  "stem": "Hydroxychloroquine is used to prevent and treat acute attacks of which infection?",
+  "options": [
+    {
+      "label": "A",
+      "text": "Malaria",
+      "isCorrect": true,
+      "misconception": "None — hydroxychloroquine is an antimalarial used for prevention and treatment.",
+      "explanation": "The label says hydroxychloroquine prevents and treats acute attacks of malaria in adults and in children weighing more than 31 kg (68 lb)."
+    },
+    {
+      "label": "B",
+      "text": "Toxoplasmosis",
+      "isCorrect": false,
+      "misconception": "Assumes an antimalarial covers every protozoal infection.",
+      "explanation": "Toxoplasmosis, from Toxoplasma gondii, is treated with pyrimethamine plus sulfadiazine and leucovorin; hydroxychloroquine is not used."
+    },
+    {
+      "label": "C",
+      "text": "Leishmaniasis",
+      "isCorrect": false,
+      "misconception": "Confuses one insect-borne protozoal infection with another.",
+      "explanation": "Leishmaniasis, spread by sandflies, is treated with amphotericin B, antimonials or miltefosine; hydroxychloroquine has no role."
+    },
+    {
+      "label": "D",
+      "text": "Giardiasis",
+      "isCorrect": false,
+      "misconception": "Treats all protozoa as responsive to quinoline antimalarials.",
+      "explanation": "Giardiasis, an intestinal protozoal infection from contaminated water, is treated with metronidazole or tinidazole, not hydroxychloroquine."
+    },
+    {
+      "label": "E",
+      "text": "Trypanosomiasis",
+      "isCorrect": false,
+      "misconception": "Groups trypanosomes with Plasmodium because both are blood-borne protozoa.",
+      "explanation": "Trypanosomiasis, African sleeping sickness or American Chagas disease, is treated with drugs such as fexinidazole, benznidazole or nifurtimox, not hydroxychloroquine."
+    }
+  ],
+  "context": "Learning objective: Hydroxychloroquine prevents and treats acute malaria attacks in adults and in children weighing more than 31 kg.",
+  "cite": "medlineplus-hydroxychloroquine#hydroxychloroquine-uses",
+  "publicUsmle": {
+    "schemaVersion": 1,
+    "origin": "generated",
+    "itemText": {
+      "licence": "CC-BY-4.0",
+      "attribution": "MD3 contributors"
+    },
+    "evidence": {
+      "kind": "passage",
+      "sourceId": "medlineplus-hydroxychloroquine",
+      "passageId": "hydroxychloroquine-uses",
+      "licence": {
+        "cls": "foss",
+        "id": "us-gov"
+      }
+    }
+  }
+}

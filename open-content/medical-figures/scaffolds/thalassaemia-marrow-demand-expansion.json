@@ -1,0 +1,68 @@
+{
+  "schemaVersion": 1,
+  "figureId": "thalassaemia-marrow-demand-expansion",
+  "kind": "conceptual",
+  "created": "2026-09-10",
+  "timing": "authored before generation",
+  "sourceFacts": [
+    {
+      "fact": "Untreated or poorly transfused severe beta-thalassaemia can cause marked anaemia and expansion of erythroid marrow.",
+      "sourceUrls": [
+        "https://www.ncbi.nlm.nih.gov/books/NBK1426/"
+      ]
+    },
+    {
+      "fact": "Expansion of marrow can produce skeletal and craniofacial changes, including frontal bossing.",
+      "sourceUrls": [
+        "https://www.ncbi.nlm.nih.gov/books/NBK1426/"
+      ]
+    }
+  ],
+  "clinicalSources": [
+    {
+      "title": "GeneReviews: Beta-Thalassemia",
+      "url": "https://www.ncbi.nlm.nih.gov/books/NBK1426/"
+    }
+  ],
+  "nodes": [
+    "severe chronic anaemia",
+    "increased blood-cell production drive",
+    "marrow expansion",
+    "skeletal change"
+  ],
+  "edges": [
+    [
+      "severe chronic anaemia",
+      "increased blood-cell production drive",
+      "increases demand"
+    ],
+    [
+      "increased blood-cell production drive",
+      "marrow expansion",
+      "increases erythroid tissue"
+    ],
+    [
+      "marrow expansion",
+      "skeletal change",
+      "can cause"
+    ]
+  ],
+  "expectedLabels": [
+    "Thalassaemia: demand expands the marrow",
+    "Severe anaemia",
+    "More production drive",
+    "Marrow expansion",
+    "Bone shape can change",
+    "Untreated or poorly transfused disease"
+  ],
+  "layoutSpecification": "Title 'Thalassaemia: demand expands the marrow'. Four simple objects on a left-to-right causal conveyor. FIRST a low fill-level gauge labelled 'Severe anaemia'. SECOND a small factory control lever pushed upward, labelled 'More production drive'. THIRD a flat warehouse icon growing from a small outlined footprint to a larger teal footprint, labelled 'Marrow expansion'. FOURTH a simple firm rectangular frame being pushed outward by two abstract outward arrows, label 'Bone shape can change'. These are industrial demand/capacity metaphors; no red cells, bone cross-section, skull, tissue, organs or patient faces. Bottom qualifying text 'Untreated or poorly transfused disease'. Clear one-way arrows between stages; no claim all anaemia or all treated thalassaemia causes these changes.",
+  "forbiddenAnatomy": [
+    "No internal organ, eye, ear, brain, tissue or bone anatomy",
+    "No diagnostic image, patient-specific lesion appearance or literal anatomical pathway"
+  ],
+  "validation": {
+    "sourceFacts": "Checked against listed primary clinical sources on 2026-09-10",
+    "status": "self-reviewed; independent review pending",
+    "pixelChecks": "Pixel/structure check: low gauge, increased production lever, expanding warehouse and outward frame arrows form the intended one-way causal chain. Bottom confines the teaching to untreated or poorly transfused disease. No tissue, skeletal cutaway, skull morphology or claim that every anaemia causes marrow expansion; object metaphors are explicit."
+  }
+}

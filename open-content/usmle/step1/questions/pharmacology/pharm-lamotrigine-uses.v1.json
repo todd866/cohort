@@ -1,0 +1,70 @@
+{
+  "id": "bank:usmle-step1:pharm-lamotrigine-uses:v1",
+  "rotation": "usmle-step1-open",
+  "topics": [
+    "lamotrigine"
+  ],
+  "moduleNodes": [
+    "usmle/step1",
+    "usmle/step1/pharmacology"
+  ],
+  "questionType": "mechanism",
+  "difficulty": "easy",
+  "stem": "Extended-release lamotrigine is used as add-on therapy for which neurologic condition?",
+  "options": [
+    {
+      "label": "A",
+      "text": "Seizures in people with epilepsy",
+      "isCorrect": true,
+      "misconception": "None — lamotrigine is an add-on antiseizure drug for certain seizure types.",
+      "explanation": "The label says extended-release lamotrigine is used with other medications to treat certain types of seizures in patients who have epilepsy."
+    },
+    {
+      "label": "B",
+      "text": "Transient ischemic attacks from carotid disease",
+      "isCorrect": false,
+      "misconception": "Mistakes transient focal deficits for focal seizures.",
+      "explanation": "Transient ischemic attacks are brief ischemic deficits prevented with antiplatelets and risk-factor control; lamotrigine does not prevent ischemia."
+    },
+    {
+      "label": "C",
+      "text": "Myasthenic crises in myasthenia gravis",
+      "isCorrect": false,
+      "misconception": "Confuses neuromuscular junction weakness with a central seizure disorder.",
+      "explanation": "Myasthenic crisis is antibody-mediated respiratory muscle weakness treated with IVIG or plasmapheresis and ventilatory support, not lamotrigine."
+    },
+    {
+      "label": "D",
+      "text": "Relapses of multiple sclerosis",
+      "isCorrect": false,
+      "misconception": "Assumes antiseizure drugs treat demyelinating attacks.",
+      "explanation": "Multiple sclerosis relapses are inflammatory demyelinating attacks treated with high-dose corticosteroids; lamotrigine is not a disease-modifying therapy."
+    },
+    {
+      "label": "E",
+      "text": "Cataplexy attacks in narcolepsy",
+      "isCorrect": false,
+      "misconception": "Mistakes sudden emotion-triggered loss of tone in narcolepsy for an atonic seizure.",
+      "explanation": "Cataplexy is sudden emotion-triggered loss of muscle tone in narcolepsy, treated with sodium oxybate or certain antidepressants, not lamotrigine."
+    }
+  ],
+  "context": "Learning objective: Extended-release lamotrigine is used with other medications to treat certain types of seizures in patients with epilepsy.",
+  "cite": "medlineplus-lamotrigine#lamotrigine-uses",
+  "publicUsmle": {
+    "schemaVersion": 1,
+    "origin": "generated",
+    "itemText": {
+      "licence": "CC-BY-4.0",
+      "attribution": "MD3 contributors"
+    },
+    "evidence": {
+      "kind": "passage",
+      "sourceId": "medlineplus-lamotrigine",
+      "passageId": "lamotrigine-uses",
+      "licence": {
+        "cls": "foss",
+        "id": "us-gov"
+      }
+    }
+  }
+}

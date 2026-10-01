@@ -1,0 +1,72 @@
+{
+  "id": "bank:usmle-step1:pharm-gabapentin-uses:v1",
+  "rotation": "usmle-step1-open",
+  "topics": [
+    "gabapentin",
+    "seizure",
+    "PHN"
+  ],
+  "moduleNodes": [
+    "usmle/step1",
+    "usmle/step1/pharmacology"
+  ],
+  "questionType": "mechanism",
+  "difficulty": "easy",
+  "stem": "Gabapentin is used as add-on therapy for which neurologic condition?",
+  "options": [
+    {
+      "label": "A",
+      "text": "Seizures in people with epilepsy",
+      "isCorrect": true,
+      "misconception": "None — gabapentin is an add-on medication for certain seizure types in epilepsy.",
+      "explanation": "The label says gabapentin is used with other medications to help control certain types of seizures in people who have epilepsy."
+    },
+    {
+      "label": "B",
+      "text": "Motor symptoms of Parkinson disease",
+      "isCorrect": false,
+      "misconception": "Assumes any neurologic drug treats movement disorders.",
+      "explanation": "Parkinson motor symptoms reflect nigrostriatal dopamine loss and are treated with levodopa-carbidopa; gabapentin has no dopaminergic action."
+    },
+    {
+      "label": "C",
+      "text": "Muscle weakness in myasthenia gravis",
+      "isCorrect": false,
+      "misconception": "Confuses a neuronal calcium-channel drug with neuromuscular junction therapy.",
+      "explanation": "Myasthenic weakness comes from antibodies to acetylcholine receptors and is treated with pyridostigmine or immunotherapy, not gabapentin."
+    },
+    {
+      "label": "D",
+      "text": "Memory loss in Alzheimer disease",
+      "isCorrect": false,
+      "misconception": "Assumes an antiseizure drug improves cognition in dementia.",
+      "explanation": "Alzheimer memory loss is treated with cholinesterase inhibitors such as donepezil or with memantine; gabapentin does not improve cognition."
+    },
+    {
+      "label": "E",
+      "text": "Chorea in Huntington disease",
+      "isCorrect": false,
+      "misconception": "Assumes antiseizure drugs suppress all involuntary movements.",
+      "explanation": "Huntington chorea is treated with VMAT2 inhibitors such as tetrabenazine; gabapentin does not reduce chorea."
+    }
+  ],
+  "context": "Learning objective: Gabapentin is used with other medications to help control certain types of seizures in people with epilepsy.",
+  "cite": "medlineplus-gabapentin#gabapentin-uses",
+  "publicUsmle": {
+    "schemaVersion": 1,
+    "origin": "generated",
+    "itemText": {
+      "licence": "CC-BY-4.0",
+      "attribution": "MD3 contributors"
+    },
+    "evidence": {
+      "kind": "passage",
+      "sourceId": "medlineplus-gabapentin",
+      "passageId": "gabapentin-uses",
+      "licence": {
+        "cls": "foss",
+        "id": "us-gov"
+      }
+    }
+  }
+}

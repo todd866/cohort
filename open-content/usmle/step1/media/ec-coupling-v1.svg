@@ -1,0 +1,27 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 260" role="img" aria-labelledby="t d">
+  <title id="t">Excitation-contraction coupling and cross-bridge</title>
+  <desc id="d">T-tubule AP releases SR Ca2z; Ca2z-troponin exposes myosin-binding sites; cross-bridge power stroke uses ATP.</desc>
+  <rect width="640" height="260" fill="#fafafa"/>
+  <text x="320" y="26" text-anchor="middle" font-family="system-ui,sans-serif" font-size="15" fill="#222">Excitation-contraction -> cross-bridge cycle</text>
+  <!-- steps as boxes -->
+  <rect x="30" y="50" width="110" height="70" rx="8" fill="#caf0f8" stroke="#0077b6"/>
+  <text x="85" y="80" text-anchor="middle" font-family="system-ui,sans-serif" font-size="12" fill="#023e8a">1. AP in</text>
+  <text x="85" y="98" text-anchor="middle" font-family="system-ui,sans-serif" font-size="12" fill="#023e8a">T-tubule</text>
+  <path d="M140,85 L170,85" stroke="#333" stroke-width="2" marker-end="url(#a)"/>
+  <rect x="170" y="50" width="120" height="70" rx="8" fill="#ffd6a5" stroke="#e85d04"/>
+  <text x="230" y="80" text-anchor="middle" font-family="system-ui,sans-serif" font-size="12" fill="#9c2f03">2. SR releases</text>
+  <text x="230" y="98" text-anchor="middle" font-family="system-ui,sans-serif" font-size="12" fill="#9c2f03">Ca2z</text>
+  <path d="M290,85 L320,85" stroke="#333" stroke-width="2"/>
+  <rect x="320" y="50" width="130" height="70" rx="8" fill="#b7e4c7" stroke="#2d6a4f"/>
+  <text x="385" y="75" text-anchor="middle" font-family="system-ui,sans-serif" font-size="12" fill="#1b4332">3. Ca2z-troponin</text>
+  <text x="385" y="93" text-anchor="middle" font-family="system-ui,sans-serif" font-size="12" fill="#1b4332">moves tropomyosin</text>
+  <path d="M450,85 L480,85" stroke="#333" stroke-width="2"/>
+  <rect x="480" y="50" width="130" height="70" rx="8" fill="#e0aaff" stroke="#7b2cbf"/>
+  <text x="545" y="75" text-anchor="middle" font-family="system-ui,sans-serif" font-size="12" fill="#5a189a">4. Cross-bridge</text>
+  <text x="545" y="93" text-anchor="middle" font-family="system-ui,sans-serif" font-size="12" fill="#5a189a">power stroke</text>
+  <!-- bottom detail -->
+  <rect x="40" y="150" width="560" height="90" rx="8" fill="#fff" stroke="#ccc"/>
+  <text x="55" y="175" font-family="system-ui,sans-serif" font-size="13" fill="#333">ATP roles: cock myosin head ? detach actin after stroke ? pump Ca2z back into SR</text>
+  <text x="55" y="198" font-family="system-ui,sans-serif" font-size="13" fill="#333">Twitch &lt; summation &lt; tetanus as stimulus frequency rises (Ca2z remains elevated)</text>
+  <text x="55" y="221" font-family="system-ui,sans-serif" font-size="13" fill="#333">No Ca2z / blocked nAChR -> no contraction (cf. NMJ blockers, botulinum)</text>
+</svg>

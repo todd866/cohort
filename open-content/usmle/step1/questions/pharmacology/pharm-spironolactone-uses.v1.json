@@ -1,0 +1,71 @@
+{
+  "id": "bank:usmle-step1:pharm-spironolactone-uses:v1",
+  "rotation": "usmle-step1-open",
+  "topics": [
+    "spironolactone",
+    "aldosterone"
+  ],
+  "moduleNodes": [
+    "usmle/step1",
+    "usmle/step1/pharmacology"
+  ],
+  "questionType": "mechanism",
+  "difficulty": "easy",
+  "stem": "Spironolactone is used to treat certain patients with which endocrine hormone-excess state?",
+  "options": [
+    {
+      "label": "A",
+      "text": "Excess thyroid hormone production",
+      "isCorrect": false,
+      "misconception": "Confuses the adrenal cortex with the thyroid as the overactive gland.",
+      "explanation": "Hyperthyroidism is treated with methimazole, propylthiouracil, radioiodine or surgery; spironolactone does not affect thyroid hormone."
+    },
+    {
+      "label": "B",
+      "text": "Excess parathyroid hormone production",
+      "isCorrect": false,
+      "misconception": "Assumes a diuretic corrects excess of a calcium-regulating hormone.",
+      "explanation": "Excess parathyroid hormone causes hypercalcemia and is treated with parathyroidectomy or cinacalcet, not an aldosterone antagonist."
+    },
+    {
+      "label": "C",
+      "text": "Excess growth hormone production",
+      "isCorrect": false,
+      "misconception": "Treats a pituitary hormone excess as responsive to a mineralocorticoid blocker.",
+      "explanation": "Excess growth hormone causes acromegaly and is treated with surgery, somatostatin analogs or pegvisomant, not spironolactone."
+    },
+    {
+      "label": "D",
+      "text": "Excess aldosterone production",
+      "isCorrect": true,
+      "misconception": "None — spironolactone treats certain patients with hyperaldosteronism.",
+      "explanation": "Spironolactone treats certain patients with hyperaldosteronism, in which the body produces too much of the hormone aldosterone."
+    },
+    {
+      "label": "E",
+      "text": "Excess prolactin production",
+      "isCorrect": false,
+      "misconception": "Confuses a dopamine-regulated pituitary hormone with an adrenal mineralocorticoid.",
+      "explanation": "Excess prolactin is treated with dopamine agonists such as cabergoline; blocking aldosterone does not lower prolactin."
+    }
+  ],
+  "context": "Learning objective: Spironolactone treats certain patients with hyperaldosteronism, in which the body produces too much aldosterone.",
+  "cite": "medlineplus-spironolactone#spironolactone-uses",
+  "publicUsmle": {
+    "schemaVersion": 1,
+    "origin": "generated",
+    "itemText": {
+      "licence": "CC-BY-4.0",
+      "attribution": "MD3 contributors"
+    },
+    "evidence": {
+      "kind": "passage",
+      "sourceId": "medlineplus-spironolactone",
+      "passageId": "spironolactone-uses",
+      "licence": {
+        "cls": "foss",
+        "id": "us-gov"
+      }
+    }
+  }
+}

@@ -1,0 +1,71 @@
+{
+  "id": "bank:usmle-step1:pharm-carbamazepine-uses:v1",
+  "rotation": "usmle-step1-open",
+  "topics": [
+    "carbamazepine",
+    "seizures"
+  ],
+  "moduleNodes": [
+    "usmle/step1",
+    "usmle/step1/pharmacology"
+  ],
+  "questionType": "mechanism",
+  "difficulty": "easy",
+  "stem": "Carbamazepine is used to control certain types of which neurologic events?",
+  "options": [
+    {
+      "label": "A",
+      "text": "Epileptic seizures",
+      "isCorrect": true,
+      "misconception": "None — carbamazepine controls certain types of seizures.",
+      "explanation": "MedlinePlus lists carbamazepine to control certain types of seizures, and also to treat trigeminal neuralgia and manic or mixed episodes."
+    },
+    {
+      "label": "B",
+      "text": "Transient ischemic attacks",
+      "isCorrect": false,
+      "misconception": "Assumes any sudden, transient neurologic deficit is a seizure.",
+      "explanation": "Transient ischemic attacks are brief focal deficits from cerebral ischemia; prevention uses antiplatelet therapy and risk-factor control, not antiseizure drugs."
+    },
+    {
+      "label": "C",
+      "text": "Vasovagal syncopal episodes",
+      "isCorrect": false,
+      "misconception": "Mistakes a brief faint, which may include a few jerks, for an epileptic seizure.",
+      "explanation": "Vasovagal syncope is transient loss of consciousness from reflex hypotension and bradycardia; it is not epileptic and needs no antiseizure drug."
+    },
+    {
+      "label": "D",
+      "text": "Narcoleptic sleep attacks",
+      "isCorrect": false,
+      "misconception": "Assumes antiseizure drugs treat every paroxysmal disorder of consciousness.",
+      "explanation": "Narcoleptic sleep attacks come from loss of hypocretin (orexin) neurons and are treated with wake-promoting drugs such as modafinil, not carbamazepine."
+    },
+    {
+      "label": "E",
+      "text": "Myasthenic crises",
+      "isCorrect": false,
+      "misconception": "Assumes a neurologic crisis of any kind responds to an antiseizure drug.",
+      "explanation": "Myasthenic crisis is autoimmune neuromuscular respiratory failure treated with IVIG or plasma exchange; carbamazepine has no role."
+    }
+  ],
+  "context": "Learning objective: Carbamazepine controls certain types of seizures and also treats trigeminal neuralgia and manic or mixed episodes.",
+  "cite": "medlineplus-carbamazepine#carbamazepine-uses",
+  "publicUsmle": {
+    "schemaVersion": 1,
+    "origin": "generated",
+    "itemText": {
+      "licence": "CC-BY-4.0",
+      "attribution": "MD3 contributors"
+    },
+    "evidence": {
+      "kind": "passage",
+      "sourceId": "medlineplus-carbamazepine",
+      "passageId": "carbamazepine-uses",
+      "licence": {
+        "cls": "foss",
+        "id": "us-gov"
+      }
+    }
+  }
+}

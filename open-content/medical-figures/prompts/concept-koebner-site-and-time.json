@@ -1,0 +1,25 @@
+{
+  "id": "concept-koebner-site-and-time",
+  "title": "Koebner phenomenon: same site, later lesion",
+  "prompt": "Create an original polished 1536x1024 landscape conceptual medical teaching diagram for after-answer study. Warm hand-painted gouache and watercolour on ivory paper; a gentle storybook warmth with precise dark navy type. Matte teal, ochre, coral and blue accents. Simple neutral tokens, paper tiles, arrows and visibly abstract compartments only. Make the visual relationships legible at small size. No body parts, organs, cells, tissues, lumens, tubules, membranes, vessels, anatomical cutaways, clinical photos, diagnostic scans, babies, realistic flesh or decorative scenery. Do not turn abstract boxes or routes into organs or anatomy. Do not invent extra arrows or medical claims. Edge meanings below are metadata, not visible text: draw the arrows but do not print their meaning strings. Footer exactly: Conceptual schematic • Not anatomy. Title exactly: Koebner phenomenon: same site, later lesion. Three large side-by-side panels. First and third each contain the EXACT SAME neutral 3-by-3 grid of ivory paper squares. In first panel put a small coral X on the central square; in third replace that X with a single purple circular token on the central square. Other eight squares stay blank in BOTH grids. Middle panel shows a simple clock. Exactly two arrows from panel1 to2 to3. Under first grid say Injury marker; under third say Lesion marker. Caption: A matched-location concept, not a skin image. Small note: May occur after injury in psoriasis. No texture resembling skin, scales, rash, scratches, blood or body parts. These are coordinate grids only. Exact node labels: [{\"id\": \"1\", \"label\": \"Injury at a site\"}, {\"id\": \"2\", \"label\": \"An interval passes\"}, {\"id\": \"3\", \"label\": \"New psoriasis at the same site\"}]. Exact directed connections: [{\"from\": \"1\", \"to\": \"2\", \"meaning\": \"time\"}, {\"from\": \"2\", \"to\": \"3\", \"meaning\": \"possible delayed response\"}]. Required checks: Both grids exactly three by three; Only the central square is marked in each grid; Injury marker becomes lesion marker at same location after an interval; No anatomical skin or clinical lesion simulation.",
+  "clinicalSources": [
+    {
+      "title": "AAD — Psoriasis triggers: skin injury",
+      "url": "https://www.aad.org/public/diseases/psoriasis/triggers/flares"
+    }
+  ],
+  "caption": "Matching positions on two abstract grids show the delayed same-site relationship in the Koebner phenomenon.",
+  "question": "What is the defining relationship in the Koebner phenomenon?",
+  "answer": "A new lesion of an existing skin disease, such as psoriasis, develops later at a site of skin injury.",
+  "structureSpecification": "scaffolds/concept-koebner-site-and-time.json",
+  "generationInputs": {
+    "referenceImages": [],
+    "style": "written-only"
+  },
+  "qa": {
+    "status": "pending-independent-qa",
+    "method": "agent-visual-and-source-review",
+    "notes": "Pixel check: both panels contain exactly three-by-three grids; only central square marked, X first and purple lesion token later. Clock between panels and two forward arrows preserve same-site delayed relation. No clinical skin depiction; possible occurrence qualifier clear. Independent and clinical review pending.",
+    "clinicalReviewStatus": "pending"
+  }
+}

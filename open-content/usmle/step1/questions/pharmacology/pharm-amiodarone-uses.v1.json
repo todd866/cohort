@@ -1,0 +1,70 @@
+{
+  "id": "bank:usmle-step1:pharm-amiodarone-uses:v1",
+  "rotation": "usmle-step1-open",
+  "topics": [
+    "amiodarone"
+  ],
+  "moduleNodes": [
+    "usmle/step1",
+    "usmle/step1/pharmacology"
+  ],
+  "questionType": "mechanism",
+  "difficulty": "easy",
+  "stem": "Amiodarone is used to treat and prevent which cardiac rhythm problems?",
+  "options": [
+    {
+      "label": "A",
+      "text": "Certain types of ventricular arrhythmias",
+      "isCorrect": true,
+      "misconception": "None — amiodarone treats and prevents certain types of ventricular arrhythmias.",
+      "explanation": "MedlinePlus lists amiodarone, an antiarrhythmic, to treat and prevent certain types of ventricular arrhythmias."
+    },
+    {
+      "label": "B",
+      "text": "Certain nonshockable arrest rhythms, such as asystole",
+      "isCorrect": false,
+      "misconception": "Assumes the arrest antiarrhythmic helps every cardiac arrest rhythm, including nonshockable ones.",
+      "explanation": "Asystole and PEA are nonshockable arrests managed with CPR and epinephrine; amiodarone is used in arrest only for VF or pulseless VT."
+    },
+    {
+      "label": "C",
+      "text": "Certain bradyarrhythmias, such as sick sinus syndrome",
+      "isCorrect": false,
+      "misconception": "Treats any rhythm disorder as an amiodarone indication, ignoring its rate-slowing effect.",
+      "explanation": "Sick sinus syndrome and symptomatic bradycardia need atropine or pacing; amiodarone slows the sinus rate and would worsen them."
+    },
+    {
+      "label": "D",
+      "text": "Certain types of heart block, such as Mobitz II",
+      "isCorrect": false,
+      "misconception": "Forgets that amiodarone depresses AV nodal conduction, so it cannot treat heart block.",
+      "explanation": "High-grade AV block such as Mobitz II needs pacing; amiodarone slows AV nodal conduction and can precipitate or worsen block."
+    },
+    {
+      "label": "E",
+      "text": "Torsades de pointes from drug-induced long QT",
+      "isCorrect": false,
+      "misconception": "Forgets that amiodarone prolongs the QT interval, so it is not the treatment for torsades.",
+      "explanation": "Torsades is treated with IV magnesium and removal of QT-prolonging drugs; amiodarone itself prolongs the QT interval."
+    }
+  ],
+  "context": "Learning objective: Amiodarone is an antiarrhythmic used to treat and prevent certain types of ventricular arrhythmias.",
+  "cite": "medlineplus-amiodarone#amiodarone-uses",
+  "publicUsmle": {
+    "schemaVersion": 1,
+    "origin": "generated",
+    "itemText": {
+      "licence": "CC-BY-4.0",
+      "attribution": "MD3 contributors"
+    },
+    "evidence": {
+      "kind": "passage",
+      "sourceId": "medlineplus-amiodarone",
+      "passageId": "amiodarone-uses",
+      "licence": {
+        "cls": "foss",
+        "id": "us-gov"
+      }
+    }
+  }
+}

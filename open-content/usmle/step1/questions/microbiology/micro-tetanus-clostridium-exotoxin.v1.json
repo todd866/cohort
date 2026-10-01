@@ -1,0 +1,71 @@
+{
+  "id": "bank:usmle-step1:micro-tetanus-clostridium-exotoxin:v1",
+  "rotation": "usmle-step1-open",
+  "topics": [
+    "tetanus",
+    "Clostridium tetani"
+  ],
+  "moduleNodes": [
+    "usmle/step1",
+    "usmle/step1/microbiology"
+  ],
+  "questionType": "mechanism",
+  "difficulty": "easy",
+  "stem": "A patient develops muscle stiffness that begins in the jaw and neck, then becomes generalized rigidity with convulsive spasms of skeletal muscles.\n\nAn exotoxin produced by which bacterium causes this disease?",
+  "options": [
+    {
+      "label": "A",
+      "text": "Corynebacterium diphtheriae",
+      "isCorrect": false,
+      "misconception": "Groups the toxin-mediated diseases prevented by DTaP together and picks the wrong organism.",
+      "explanation": "Corynebacterium diphtheriae exotoxin inhibits protein synthesis, causing pharyngeal pseudomembrane, myocarditis and neuropathy, not generalized rigidity."
+    },
+    {
+      "label": "B",
+      "text": "Clostridium tetani",
+      "isCorrect": true,
+      "misconception": "None — an exotoxin of Clostridium tetani causes tetanus.",
+      "explanation": "CDC states tetanus is caused by an exotoxin of Clostridium tetani, with stiffness that begins in the jaw (lockjaw) and neck and then becomes generalized."
+    },
+    {
+      "label": "C",
+      "text": "Clostridium botulinum",
+      "isCorrect": false,
+      "misconception": "Confuses the two clostridial neurotoxin diseases; botulism is flaccid, tetanus is rigid.",
+      "explanation": "Clostridium botulinum toxin blocks acetylcholine release, producing descending flaccid paralysis, the opposite of rigidity and spasms."
+    },
+    {
+      "label": "D",
+      "text": "Clostridium perfringens",
+      "isCorrect": false,
+      "misconception": "Assumes any wound-associated Clostridium species can cause generalized rigidity.",
+      "explanation": "Clostridium perfringens toxins cause gas gangrene and food poisoning; they do not produce lockjaw or generalized muscle spasms."
+    },
+    {
+      "label": "E",
+      "text": "Bordetella pertussis",
+      "isCorrect": false,
+      "misconception": "Mistakes the violent coughing paroxysms of whooping cough for skeletal muscle spasms.",
+      "explanation": "Bordetella pertussis toxins cause whooping cough with paroxysmal coughing; they do not cause skeletal muscle rigidity."
+    }
+  ],
+  "context": "Learning objective: Tetanus is caused by a Clostridium tetani exotoxin and presents with jaw and neck stiffness that progresses to generalized rigidity and spasms.",
+  "cite": "cdc-pink-book-tetanus#tetanus-organism-exotoxin",
+  "publicUsmle": {
+    "schemaVersion": 1,
+    "origin": "generated",
+    "itemText": {
+      "licence": "CC-BY-4.0",
+      "attribution": "MD3 contributors"
+    },
+    "evidence": {
+      "kind": "passage",
+      "sourceId": "cdc-pink-book-tetanus",
+      "passageId": "tetanus-organism-exotoxin",
+      "licence": {
+        "cls": "foss",
+        "id": "us-gov"
+      }
+    }
+  }
+}

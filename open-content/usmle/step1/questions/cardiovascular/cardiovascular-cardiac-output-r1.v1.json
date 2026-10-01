@@ -1,0 +1,73 @@
+{
+  "id": "bank:usmle-step1:cardiovascular-cardiac-output-r1:v1",
+  "rotation": "usmle-step1-open",
+  "ladderId": "cardiac-output",
+  "topics": [
+    "cardiac output",
+    "stroke volume",
+    "ladder:cardiac-output"
+  ],
+  "moduleNodes": [
+    "usmle/step1",
+    "usmle/step1/cardiovascular"
+  ],
+  "questionType": "calculation",
+  "difficulty": "easy",
+  "stem": "Which of the following equations defines cardiac output?",
+  "options": [
+    {
+      "label": "A",
+      "text": "Heart rate divided by stroke volume",
+      "isCorrect": false,
+      "misconception": "The product relationship is being inverted.",
+      "explanation": "Cardiac output is the volume ejected per minute, so rate and stroke volume multiply; dividing would give beats per milliliter, not liters per minute."
+    },
+    {
+      "label": "B",
+      "text": "Heart rate multiplied by stroke volume",
+      "isCorrect": true,
+      "misconception": "None; cardiac output equals heart rate times stroke volume.",
+      "explanation": "Each beat ejects the stroke volume, and multiplying by heart rate gives total volume per minute — the definition of cardiac output."
+    },
+    {
+      "label": "C",
+      "text": "Stroke volume minus end-diastolic volume",
+      "isCorrect": false,
+      "misconception": "A chamber volume difference is being substituted for minute output.",
+      "explanation": "End-diastolic minus end-systolic volumes relate to stroke volume itself, not to the minute-by-minute output equation."
+    },
+    {
+      "label": "D",
+      "text": "Mean arterial pressure divided by systemic vascular resistance",
+      "isCorrect": false,
+      "misconception": "A hemodynamic rearrangement is being confused with the pump definition.",
+      "explanation": "That relationship links pressure, flow, and resistance; cardiac output is defined directly as heart rate times stroke volume."
+    },
+    {
+      "label": "E",
+      "text": "Preload multiplied by afterload",
+      "isCorrect": false,
+      "misconception": "Load terms that modulate stroke volume are being multiplied as if they were the output formula.",
+      "explanation": "Preload and afterload influence stroke volume through the Frank–Starling mechanism, but cardiac output is heart rate times that stroke volume."
+    }
+  ],
+  "context": "Learning objective: state the cardiac output equation. Cardiac output equals heart rate times stroke volume; resting values average about 5.25 L/min in adults.",
+  "cite": "openstax-anatomy-physiology#vessels-cardiac-output-exercise",
+  "publicUsmle": {
+    "schemaVersion": 1,
+    "origin": "generated",
+    "itemText": {
+      "licence": "CC-BY-4.0",
+      "attribution": "MD3 contributors"
+    },
+    "evidence": {
+      "kind": "passage",
+      "sourceId": "openstax-anatomy-physiology",
+      "passageId": "vessels-cardiac-output-exercise",
+      "licence": {
+        "cls": "foss",
+        "id": "cc-by-4.0"
+      }
+    }
+  }
+}

@@ -1,0 +1,70 @@
+{
+  "id": "bank:usmle-step1:pharm-metronidazole-uses:v1",
+  "rotation": "usmle-step1-open",
+  "topics": [
+    "metronidazole"
+  ],
+  "moduleNodes": [
+    "usmle/step1",
+    "usmle/step1/pharmacology"
+  ],
+  "questionType": "mechanism",
+  "difficulty": "easy",
+  "stem": "Besides infections of the reproductive system, gastrointestinal tract, and other body areas, metronidazole is also used to treat which group of diseases?",
+  "options": [
+    {
+      "label": "A",
+      "text": "Certain sexually transmitted diseases",
+      "isCorrect": true,
+      "misconception": "None — metronidazole also treats certain STDs, alongside infections at many body sites.",
+      "explanation": "The label says metronidazole treats infections of the reproductive system, GI tract, skin and many other areas, and is also used for certain sexually transmitted diseases."
+    },
+    {
+      "label": "B",
+      "text": "Certain viral respiratory diseases",
+      "isCorrect": false,
+      "misconception": "Assumes a broad antimicrobial also covers viruses.",
+      "explanation": "Viral respiratory diseases such as influenza are treated with antivirals such as oseltamivir; metronidazole has no antiviral activity."
+    },
+    {
+      "label": "C",
+      "text": "Certain fungal skin diseases",
+      "isCorrect": false,
+      "misconception": "Assumes a drug used for skin infections also covers fungal ones.",
+      "explanation": "Fungal skin diseases such as ringworm are treated with azole or allylamine antifungals; metronidazole does not act on fungi."
+    },
+    {
+      "label": "D",
+      "text": "Certain intestinal worm diseases",
+      "isCorrect": false,
+      "misconception": "Confuses antiprotozoal activity with activity against parasitic worms.",
+      "explanation": "Intestinal worm infections such as pinworm are treated with anthelmintics such as albendazole; metronidazole is not an anthelmintic."
+    },
+    {
+      "label": "E",
+      "text": "Certain mycobacterial lung diseases",
+      "isCorrect": false,
+      "misconception": "Assumes an antibacterial used for lung infections also covers mycobacteria.",
+      "explanation": "Mycobacterial lung diseases such as tuberculosis need multidrug regimens built on isoniazid and rifampin; metronidazole is not used."
+    }
+  ],
+  "context": "Learning objective: Metronidazole treats infections of the reproductive system, GI tract, and many other body areas, plus certain sexually transmitted diseases.",
+  "cite": "medlineplus-metronidazole#metronidazole-uses",
+  "publicUsmle": {
+    "schemaVersion": 1,
+    "origin": "generated",
+    "itemText": {
+      "licence": "CC-BY-4.0",
+      "attribution": "MD3 contributors"
+    },
+    "evidence": {
+      "kind": "passage",
+      "sourceId": "medlineplus-metronidazole",
+      "passageId": "metronidazole-uses",
+      "licence": {
+        "cls": "foss",
+        "id": "us-gov"
+      }
+    }
+  }
+}

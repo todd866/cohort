@@ -1,0 +1,71 @@
+{
+  "id": "bank:usmle-step1:pharm-lorazepam-benzo:v1",
+  "rotation": "usmle-step1-open",
+  "topics": [
+    "lorazepam",
+    "benzodiazepine"
+  ],
+  "moduleNodes": [
+    "usmle/step1",
+    "usmle/step1/pharmacology"
+  ],
+  "questionType": "mechanism",
+  "difficulty": "easy",
+  "stem": "Lorazepam belongs to which medication class used to relieve anxiety and treat insomnia?",
+  "options": [
+    {
+      "label": "A",
+      "text": "Barbiturates",
+      "isCorrect": false,
+      "misconception": "Confuses two sedative-hypnotic classes that both act at GABA-A receptors.",
+      "explanation": "Barbiturates such as phenobarbital also act at GABA-A receptors but prolong channel opening; lorazepam is a benzodiazepine, which increases opening frequency."
+    },
+    {
+      "label": "B",
+      "text": "Benzodiazepines",
+      "isCorrect": true,
+      "misconception": "None — lorazepam is a benzodiazepine.",
+      "explanation": "The label states that lorazepam is a benzodiazepine; like diazepam and alprazolam, it enhances GABA-A receptor signaling."
+    },
+    {
+      "label": "C",
+      "text": "Selective serotonin reuptake inhibitors",
+      "isCorrect": false,
+      "misconception": "Assumes every anxiety medication is an antidepressant.",
+      "explanation": "SSRIs such as sertraline treat anxiety disorders by blocking serotonin reuptake over weeks; lorazepam is a fast-acting benzodiazepine instead."
+    },
+    {
+      "label": "D",
+      "text": "First-generation antihistamines",
+      "isCorrect": false,
+      "misconception": "Assumes any sedating drug used for sleep is an antihistamine.",
+      "explanation": "First-generation antihistamines such as hydroxyzine or diphenhydramine sedate by blocking H1 receptors; lorazepam acts on GABA-A receptors."
+    },
+    {
+      "label": "E",
+      "text": "Tricyclic antidepressants",
+      "isCorrect": false,
+      "misconception": "Groups older sedating psychiatric drugs with benzodiazepines.",
+      "explanation": "Tricyclic antidepressants such as amitriptyline block norepinephrine and serotonin reuptake; lorazepam is a benzodiazepine that enhances GABA-A signaling."
+    }
+  ],
+  "context": "Learning objective: Lorazepam is in the benzodiazepine class of medications.",
+  "cite": "medlineplus-lorazepam#lorazepam-class",
+  "publicUsmle": {
+    "schemaVersion": 1,
+    "origin": "generated",
+    "itemText": {
+      "licence": "CC-BY-4.0",
+      "attribution": "MD3 contributors"
+    },
+    "evidence": {
+      "kind": "passage",
+      "sourceId": "medlineplus-lorazepam",
+      "passageId": "lorazepam-class",
+      "licence": {
+        "cls": "foss",
+        "id": "us-gov"
+      }
+    }
+  }
+}

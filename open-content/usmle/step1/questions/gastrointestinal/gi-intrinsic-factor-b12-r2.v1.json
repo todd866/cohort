@@ -1,0 +1,73 @@
+{
+  "id": "bank:usmle-step1:gi-intrinsic-factor-b12-r2:v1",
+  "rotation": "usmle-step1-open",
+  "ladderId": "intrinsic-factor-b12",
+  "topics": [
+    "intrinsic factor",
+    "pernicious anemia",
+    "ladder:intrinsic-factor-b12"
+  ],
+  "moduleNodes": [
+    "usmle/step1",
+    "usmle/step1/gastrointestinal"
+  ],
+  "questionType": "mechanism",
+  "difficulty": "medium",
+  "stem": "Autoimmune destruction of gastric parietal cells eliminates a product required for terminal ileal absorption of vitamin B12. Loss of which of the following gastric secretions most directly causes the resulting macrocytic anemia?",
+  "options": [
+    {
+      "label": "A",
+      "text": "Intrinsic factor",
+      "isCorrect": true,
+      "misconception": "None; without intrinsic factor, B12 cannot be absorbed and erythropoiesis fails.",
+      "explanation": "Parietal cells secrete both HCl and intrinsic factor; loss of intrinsic factor prevents ileal B12 absorption, causing macrocytic anemia and, over time, neurological deficits."
+    },
+    {
+      "label": "B",
+      "text": "Pepsinogen",
+      "isCorrect": false,
+      "misconception": "A protease precursor is being substituted for the B12 carrier.",
+      "explanation": "Pepsinogen is activated to pepsin for protein digestion; it is not required for B12 absorption."
+    },
+    {
+      "label": "C",
+      "text": "Gastrin",
+      "isCorrect": false,
+      "misconception": "A regulatory hormone is being cast as the indispensable ileal cofactor.",
+      "explanation": "Gastrin stimulates acid secretion but is not the product without which B12 absorption fails."
+    },
+    {
+      "label": "D",
+      "text": "Mucus from surface mucous cells",
+      "isCorrect": false,
+      "misconception": "A protective secretion is being confused with the B12 absorption cofactor.",
+      "explanation": "Mucus protects the gastric lining; macrocytic anemia from parietal-cell loss reflects intrinsic factor deficiency, not mucus loss."
+    },
+    {
+      "label": "E",
+      "text": "Secretin",
+      "isCorrect": false,
+      "misconception": "A duodenal hormone is being inserted into a gastric parietal-cell defect.",
+      "explanation": "Secretin is released from the duodenal mucosa in response to acid; it does not replace intrinsic factor for B12 uptake."
+    }
+  ],
+  "context": "Learning objective: link parietal-cell loss to B12 malabsorption. Intrinsic factor is the one indispensable gastric product for ileal B12 absorption; its loss causes macrocytic anemia.",
+  "cite": "openstax-anatomy-physiology#gi-intrinsic-factor-b12",
+  "publicUsmle": {
+    "schemaVersion": 1,
+    "origin": "generated",
+    "itemText": {
+      "licence": "CC-BY-4.0",
+      "attribution": "MD3 contributors"
+    },
+    "evidence": {
+      "kind": "passage",
+      "sourceId": "openstax-anatomy-physiology",
+      "passageId": "gi-intrinsic-factor-b12",
+      "licence": {
+        "cls": "foss",
+        "id": "cc-by-4.0"
+      }
+    }
+  }
+}

@@ -1,0 +1,67 @@
+{
+  "id": "bank:cohort:paeds:q-fca6ab40b96f:v1",
+  "rotation": "cohort-open",
+  "moduleNodes": [
+    "cohort/paeds"
+  ],
+  "topics": [
+    "neonate",
+    "fever",
+    "sepsis",
+    "workup"
+  ],
+  "questionType": "management",
+  "difficulty": "medium",
+  "stem": "A 12-day-old newborn presents with a temperature of 38.3°C. He is slightly irritable but has no localizing signs.\n\nWhat is the most appropriate management?",
+  "options": [
+    {
+      "label": "A",
+      "text": "Full sepsis evaluation and start empiric IV antibiotics",
+      "isCorrect": true,
+      "explanation": "Correct. Any febrile neonate needs urgent sepsis workup, admission, and empiric IV antibiotics because the risk of serious bacterial infection is high."
+    },
+    {
+      "label": "B",
+      "text": "Discharge with oral antibiotics and outpatient follow-up",
+      "isCorrect": false,
+      "explanation": "Outpatient oral treatment is unsafe in a 12-day-old with fever because occult serious infection must be assumed until excluded."
+    },
+    {
+      "label": "C",
+      "text": "No evaluation is required if feeding is normal",
+      "isCorrect": false,
+      "explanation": "Normal feeding does not rule out neonatal sepsis. Fever alone in this age group warrants investigation."
+    },
+    {
+      "label": "D",
+      "text": "Give antipyretics only and observe at home",
+      "isCorrect": false,
+      "explanation": "Symptomatic treatment alone would miss potentially life-threatening infection in a neonate."
+    },
+    {
+      "label": "E",
+      "text": "Wait 48 hours to see if fever persists",
+      "isCorrect": false,
+      "explanation": "Delaying investigation in a febrile neonate is unsafe because clinical deterioration can be rapid."
+    }
+  ],
+  "context": "Febrile infants aged 28 days or younger by corrected age have a high risk of serious bacterial infection and require urgent blood, uncontaminated urine and CSF evaluation when safe, plus admission for empiric IV antibiotics.",
+  "publicModule": {
+    "schemaVersion": 1,
+    "origin": "mirrored",
+    "discipline": "paeds",
+    "mirroredFrom": "md3:fca6ab40b96fc36d",
+    "itemText": {
+      "licence": "CC-BY-4.0",
+      "attribution": "MD3 contributors"
+    },
+    "evidence": {
+      "kind": "reference",
+      "sourceId": "rch-febrile-child"
+    },
+    "review": {
+      "verdict": "passed",
+      "contentHash": "1f03d19221e1a92ea70fa968a4efdd22156a82911e452416a617a0ab2556ba86"
+    }
+  }
+}

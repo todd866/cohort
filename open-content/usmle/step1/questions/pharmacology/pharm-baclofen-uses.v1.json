@@ -1,0 +1,70 @@
+{
+  "id": "bank:usmle-step1:pharm-baclofen-uses:v1",
+  "rotation": "usmle-step1-open",
+  "topics": [
+    "baclofen"
+  ],
+  "moduleNodes": [
+    "usmle/step1",
+    "usmle/step1/pharmacology"
+  ],
+  "questionType": "mechanism",
+  "difficulty": "easy",
+  "stem": "Baclofen is used to treat pain and which muscle problem from MS or spinal cord disease?",
+  "options": [
+    {
+      "label": "A",
+      "text": "Spasticity (muscle stiffness and tightness)",
+      "isCorrect": true,
+      "misconception": "None — baclofen treats spasticity from MS and spinal cord disease.",
+      "explanation": "MedlinePlus lists baclofen, a skeletal muscle relaxant, for pain and certain types of spasticity from MS, spinal cord injury or other spinal cord disease."
+    },
+    {
+      "label": "B",
+      "text": "Flaccid weakness (loss of muscle tone)",
+      "isCorrect": false,
+      "misconception": "Confuses reduced tone with increased tone; baclofen lowers tone further.",
+      "explanation": "Flaccid weakness reflects lost muscle tone; a muscle relaxant like baclofen reduces tone further and would worsen it."
+    },
+    {
+      "label": "C",
+      "text": "Intention tremor (shaking on reaching)",
+      "isCorrect": false,
+      "misconception": "Assumes any MS motor symptom responds to baclofen, including cerebellar tremor.",
+      "explanation": "Intention tremor comes from cerebellar lesions, which can occur in MS; baclofen reduces spasticity, not cerebellar tremor."
+    },
+    {
+      "label": "D",
+      "text": "Muscle atrophy (loss of muscle bulk)",
+      "isCorrect": false,
+      "misconception": "Assumes a muscle relaxant helps every muscle problem, including wasting.",
+      "explanation": "Muscle atrophy is loss of bulk from denervation or disuse; it needs rehabilitation, and a muscle relaxant cannot rebuild muscle."
+    },
+    {
+      "label": "E",
+      "text": "Limb ataxia (poor coordination)",
+      "isCorrect": false,
+      "misconception": "Confuses incoordination with stiffness because both impair movement in MS.",
+      "explanation": "Limb ataxia is cerebellar or sensory incoordination; lowering muscle tone with baclofen does not restore coordination."
+    }
+  ],
+  "context": "Learning objective: Baclofen, a skeletal muscle relaxant, treats pain and spasticity from multiple sclerosis, spinal cord injury or other spinal cord disease.",
+  "cite": "medlineplus-baclofen#baclofen-uses",
+  "publicUsmle": {
+    "schemaVersion": 1,
+    "origin": "generated",
+    "itemText": {
+      "licence": "CC-BY-4.0",
+      "attribution": "MD3 contributors"
+    },
+    "evidence": {
+      "kind": "passage",
+      "sourceId": "medlineplus-baclofen",
+      "passageId": "baclofen-uses",
+      "licence": {
+        "cls": "foss",
+        "id": "us-gov"
+      }
+    }
+  }
+}

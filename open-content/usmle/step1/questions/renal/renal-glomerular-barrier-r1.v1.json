@@ -1,0 +1,73 @@
+{
+  "id": "bank:usmle-step1:renal-glomerular-barrier-r1:v1",
+  "rotation": "usmle-step1-open",
+  "ladderId": "glomerular-filtration",
+  "topics": [
+    "glomerular filtration barrier",
+    "charge selectivity",
+    "ladder:glomerular-filtration"
+  ],
+  "moduleNodes": [
+    "usmle/step1",
+    "usmle/step1/renal"
+  ],
+  "questionType": "mechanism",
+  "difficulty": "easy",
+  "stem": "Which of the following properties of the glomerular capillary wall most selectively restricts negatively charged plasma proteins?",
+  "options": [
+    {
+      "label": "A",
+      "text": "Fenestrations in the capillary endothelium that admit only cells, not fluid",
+      "isCorrect": false,
+      "misconception": "Endothelial fenestrae are being described as cell-only pores.",
+      "explanation": "Fenestrae allow plasma fluid and small solutes; charge selectivity against proteins comes mainly from negatively charged barrier elements."
+    },
+    {
+      "label": "B",
+      "text": "Fixed negative charges on the capillary wall",
+      "isCorrect": true,
+      "misconception": "None; anionic barrier charges repel anionic proteins such as albumin.",
+      "explanation": "The glomerular barrier carries fixed negative charges that electrostatically restrict passage of negatively charged plasma proteins while permitting water and small solutes."
+    },
+    {
+      "label": "C",
+      "text": "Positive charges that attract albumin into the filtrate",
+      "isCorrect": false,
+      "misconception": "The barrier polarity is being reversed.",
+      "explanation": "A positively charged barrier would favor albumin filtration; the real barrier is anionic and restricts albumin."
+    },
+    {
+      "label": "D",
+      "text": "Active tubular secretion of albumin in the PCT",
+      "isCorrect": false,
+      "misconception": "A tubular process is being substituted for glomerular restriction.",
+      "explanation": "Albumin is normally kept out of the filtrate by the glomerular barrier; PCT handling is not the primary charge-selective gate."
+    },
+    {
+      "label": "E",
+      "text": "Ureteral peristalsis that returns protein to plasma",
+      "isCorrect": false,
+      "misconception": "Downstream conduit motility is being invented as a filtration mechanism.",
+      "explanation": "Ureteral peristalsis moves urine; charge-selective exclusion of proteins occurs at the glomerular filtration barrier."
+    }
+  ],
+  "context": "Learning objective: state charge selectivity of the glomerular barrier. Fixed negative charges restrict anionic plasma proteins (e.g. albumin) while water and small solutes pass.",
+  "cite": "openstax-anatomy-physiology#renal-glomerular-charge-barrier",
+  "publicUsmle": {
+    "schemaVersion": 1,
+    "origin": "generated",
+    "itemText": {
+      "licence": "CC-BY-4.0",
+      "attribution": "MD3 contributors"
+    },
+    "evidence": {
+      "kind": "passage",
+      "sourceId": "openstax-anatomy-physiology",
+      "passageId": "renal-glomerular-charge-barrier",
+      "licence": {
+        "cls": "foss",
+        "id": "cc-by-4.0"
+      }
+    }
+  }
+}

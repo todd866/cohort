@@ -1,0 +1,107 @@
+{
+  "schemaVersion": 1,
+  "figureId": "newborn-epo-feedback",
+  "kind": "conceptual",
+  "sourceFacts": [
+    {
+      "id": "fact-1",
+      "fact": "Increased oxygenation after normal breathing begins suppresses EPO production and erythropoiesis.",
+      "sources": [
+        {
+          "title": "Merck Manual Professional — Perinatal anaemia",
+          "url": "https://www.merckmanuals.com/professional/pediatrics/perinatal-hematologic-disorders/perinatal-anemia"
+        }
+      ]
+    },
+    {
+      "id": "fact-2",
+      "fact": "Reduced production and shorter neonatal red-cell lifespan contribute to the physiological Hb nadir.",
+      "sources": [
+        {
+          "title": "Merck Manual Professional — Perinatal anaemia",
+          "url": "https://www.merckmanuals.com/professional/pediatrics/perinatal-hematologic-disorders/perinatal-anemia"
+        }
+      ]
+    },
+    {
+      "id": "fact-3",
+      "fact": "EPO stimulation later resumes and haemoglobin gradually rises.",
+      "sources": [
+        {
+          "title": "Merck Manual Professional — Perinatal anaemia",
+          "url": "https://www.merckmanuals.com/professional/pediatrics/perinatal-hematologic-disorders/perinatal-anemia"
+        }
+      ]
+    }
+  ],
+  "nodes": [
+    {
+      "id": "oxygen",
+      "shape": "cluster of teal oxygen bubbles with up arrow",
+      "label": "Oxygenation rises"
+    },
+    {
+      "id": "epo",
+      "shape": "dimmer signal beacon",
+      "label": "EPO signal falls"
+    },
+    {
+      "id": "production",
+      "shape": "sparse red disc tokens emerging from a simple abstract conveyor",
+      "label": "Red-cell production slows"
+    },
+    {
+      "id": "hb",
+      "shape": "schematic shallow U-shaped path with no measurements",
+      "label": "Physiological Hb trough"
+    }
+  ],
+  "edges": [
+    {
+      "from": "oxygen",
+      "to": "epo",
+      "meaning": "negative feedback"
+    },
+    {
+      "from": "epo",
+      "to": "production",
+      "meaning": "less erythropoietic stimulation"
+    },
+    {
+      "from": "production",
+      "to": "hb",
+      "meaning": "contributes to Hb fall"
+    },
+    {
+      "from": "lifespan",
+      "to": "hb",
+      "meaning": "shorter neonatal red-cell life also contributes"
+    }
+  ],
+  "labels": [
+    "After birth",
+    "Oxygenation rises",
+    "EPO signal falls",
+    "Red-cell production slows",
+    "Physiological Hb trough",
+    "Shorter neonatal red-cell lifespan also contributes"
+  ],
+  "forbiddenAnatomy": [
+    "Organs",
+    "Tissue layers and cutaways",
+    "Diagnostic traces or invented patient values"
+  ],
+  "validation": {
+    "status": "verified",
+    "method": "source-and-conceptual-structure-review",
+    "checks": [
+      "Causal direction oxygen up → EPO down → production down → Hb trough.",
+      "EPO is a signal icon, not an organ.",
+      "Conveyor is mechanical metaphor, no bone marrow.",
+      "Qualitative trough has no clinical values or invented patient data.",
+      "Shorter red-cell lifespan contribution is present."
+    ],
+    "pixelReviewStatus": "verified",
+    "pixelReviewNotes": "Pixel-to-specification review confirms oxygen up leads through negative feedback to EPO down, then slower production and a qualitative Hb trough. EPO is a radio signal, production a mechanical conveyor, and lifespan an hourglass; no organs or marrow. Ribbon has no axes or values and conveys timing qualitatively. Short neonatal red-cell lifespan is explicitly an additional contributor."
+  }
+}

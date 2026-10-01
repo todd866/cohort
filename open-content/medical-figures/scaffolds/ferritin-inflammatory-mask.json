@@ -1,0 +1,90 @@
+{
+  "schemaVersion": 1,
+  "figureId": "ferritin-inflammatory-mask",
+  "kind": "conceptual",
+  "sourceFacts": [
+    {
+      "id": "fact-1",
+      "fact": "Serum ferritin reflects iron stores; a low value supports iron deficiency.",
+      "sources": [
+        {
+          "title": "RCH — Iron deficiency",
+          "url": "https://www.rch.org.au/clinicalguide/guideline_index/Iron_deficiency/"
+        }
+      ]
+    },
+    {
+      "id": "fact-2",
+      "fact": "Ferritin is an acute-phase reactant.",
+      "sources": [
+        {
+          "title": "RCH — Iron deficiency",
+          "url": "https://www.rch.org.au/clinicalguide/guideline_index/Iron_deficiency/"
+        }
+      ]
+    },
+    {
+      "id": "fact-3",
+      "fact": "Normal ferritin does not exclude iron deficiency with coexisting inflammation or infection.",
+      "sources": [
+        {
+          "title": "RCH — Iron deficiency",
+          "url": "https://www.rch.org.au/clinicalguide/guideline_index/Iron_deficiency/"
+        }
+      ]
+    }
+  ],
+  "nodes": [
+    {
+      "id": "iron",
+      "shape": "nearly empty jar of iron tokens",
+      "label": "Low iron stores"
+    },
+    {
+      "id": "inflammation",
+      "shape": "small coral flame symbol",
+      "label": "Inflammation"
+    },
+    {
+      "id": "ferritin",
+      "shape": "single central slider indicator with no numeric scale",
+      "label": "Ferritin result"
+    }
+  ],
+  "edges": [
+    {
+      "from": "iron",
+      "to": "ferritin",
+      "meaning": "tends to lower"
+    },
+    {
+      "from": "inflammation",
+      "to": "ferritin",
+      "meaning": "can raise"
+    }
+  ],
+  "labels": [
+    "Low iron stores",
+    "Tends to lower ferritin",
+    "Inflammation",
+    "Can raise ferritin",
+    "Normal ferritin can be misleading during illness"
+  ],
+  "forbiddenAnatomy": [
+    "Organs",
+    "Tissue layers and cutaways",
+    "Diagnostic traces or invented patient values"
+  ],
+  "validation": {
+    "status": "verified",
+    "method": "source-and-conceptual-structure-review",
+    "checks": [
+      "The low-store influence points down and inflammatory influence points up toward one shared marker.",
+      "No numerical axis or implied exact arithmetic cancellation.",
+      "No organ, tissue, laboratory readout or actual patient value.",
+      "Caption says can rather than always; low ferritin remains meaningful."
+    ],
+    "pixelReviewStatus": "verified",
+    "pixelReviewNotes": "Pixel-to-specification review confirms one unnumbered ferritin indicator: the depleted Fe jar feeds a downward arrow and inflammation feeds an upward arrow. No reference range or exact cancelling equation is implied. The qualifier can be misleading during illness is present. No anatomy or patient measurements."
+  }
+}

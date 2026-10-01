@@ -1,0 +1,29 @@
+{
+  "id": "concept-paracetamol-detox-branches",
+  "title": "Paracetamol: detoxification can be overwhelmed",
+  "prompt": "Create an original polished 1536x1024 landscape conceptual medical teaching diagram for after-answer study. Warm hand-painted gouache and watercolour on ivory paper; a gentle storybook warmth with precise dark navy type. Matte teal, ochre, coral and blue accents. Simple neutral tokens, paper tiles, arrows and visibly abstract compartments only. Make the visual relationships legible at small size. No body parts, organs, cells, tissues, lumens, tubules, membranes, vessels, anatomical cutaways, clinical photos, diagnostic scans, babies, realistic flesh or decorative scenery. Do not turn abstract boxes or routes into organs or anatomy. Do not invent extra arrows or medical claims. Edge meanings below are metadata, not visible text: draw the arrows but do not print their meaning strings. Footer exactly: Conceptual schematic • Not anatomy. Title exactly: Paracetamol: detoxification can be overwhelmed. Six concept tiles in a branching map. Node1 top centre sends a wide blue arrow to left2 with small text Major routes; a thinner coral arrow to right3 with text Smaller route. Node3 splits into lower-left4 green, and lower-right5 coral followed downward by6. Between3 and4 write Glutathione available as a route label; node5 contains the exact depleted condition. Neutral NAPQI triangles and GSH coins, plain document labels, no chemical structural formula or liver organ. Bottom note: Simplified metabolism; no dose thresholds shown. Exact node labels: [{\"id\": \"1\", \"label\": \"Paracetamol\"}, {\"id\": \"2\", \"label\": \"Glucuronide and sulfate conjugates\"}, {\"id\": \"3\", \"label\": \"NAPQI\"}, {\"id\": \"4\", \"label\": \"Glutathione detoxification\"}, {\"id\": \"5\", \"label\": \"If glutathione is depleted\"}, {\"id\": \"6\", \"label\": \"Liver injury risk\"}]. Exact directed connections: [{\"from\": \"1\", \"to\": \"2\", \"meaning\": \"major conjugation routes\"}, {\"from\": \"1\", \"to\": \"3\", \"meaning\": \"minor reactive route\"}, {\"from\": \"3\", \"to\": \"4\", \"meaning\": \"adequate glutathione\"}, {\"from\": \"3\", \"to\": \"5\", \"meaning\": \"depleted glutathione scenario\"}, {\"from\": \"5\", \"to\": \"6\", \"meaning\": \"toxic consequence\"}]. Required checks: Six nodes and five connectors; Major conjugation route separate from smaller NAPQI route; Adequate glutathione branch ends in detoxification; depletion branch leads to injury risk; No route suggesting NAPQI always causes injury, no organs.",
+  "clinicalSources": [
+    {
+      "title": "NIDDK LiverTox — Acetaminophen",
+      "url": "https://www.ncbi.nlm.nih.gov/books/NBK548162/"
+    },
+    {
+      "title": "Mechanisms of N-acetyl-p-benzoquinone imine cytotoxicity — primary study",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/4033631/"
+    }
+  ],
+  "caption": "Two metabolic routes and a conditional detoxification branch explain how paracetamol toxicity can emerge when glutathione is depleted.",
+  "question": "Why does glutathione depletion increase paracetamol toxicity risk?",
+  "answer": "It reduces detoxification of the reactive metabolite NAPQI, allowing toxic injury.",
+  "structureSpecification": "scaffolds/concept-paracetamol-detox-branches.json",
+  "generationInputs": {
+    "referenceImages": [],
+    "style": "written-only"
+  },
+  "qa": {
+    "status": "pending-independent-qa",
+    "method": "agent-visual-and-source-review",
+    "notes": "Pixel check: six nodes/five arrows correctly separate major conjugation from smaller NAPQI route, then adequate glutathione detoxification from depletion/injury risk. No dose claim, organs or structural chemistry. Independent and clinical review pending.",
+    "clinicalReviewStatus": "pending"
+  }
+}

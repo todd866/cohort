@@ -1,0 +1,70 @@
+{
+  "id": "bank:usmle-step1:micro-hepc-liver-inflammation:v1",
+  "rotation": "usmle-step1-open",
+  "topics": [
+    "hepatitis C"
+  ],
+  "moduleNodes": [
+    "usmle/step1",
+    "usmle/step1/microbiology"
+  ],
+  "questionType": "mechanism",
+  "difficulty": "easy",
+  "stem": "Hepatitis C is described as which kind of process affecting the liver?",
+  "options": [
+    {
+      "label": "A",
+      "text": "Liver inflammation and damage caused by autoimmune attack on hepatocytes",
+      "isCorrect": false,
+      "misconception": "Confuses viral hepatitis with autoimmune hepatitis.",
+      "explanation": "Autoimmune hepatitis is inflammation from an immune attack on the body's own hepatocytes; hepatitis C is caused by a virus."
+    },
+    {
+      "label": "B",
+      "text": "Liver inflammation and damage caused by chronic heavy alcohol use",
+      "isCorrect": false,
+      "misconception": "Confuses viral hepatitis with alcoholic hepatitis.",
+      "explanation": "Alcoholic hepatitis results from heavy alcohol use; hepatitis C is an infection with a virus, not a toxic effect of ethanol."
+    },
+    {
+      "label": "C",
+      "text": "Liver inflammation and damage caused by a toxic drug reaction",
+      "isCorrect": false,
+      "misconception": "Confuses viral hepatitis with drug-induced liver injury.",
+      "explanation": "Drug-induced hepatitis, such as from acetaminophen or isoniazid, is a toxic reaction; hepatitis C is a viral infection."
+    },
+    {
+      "label": "D",
+      "text": "Liver inflammation and damage caused by a viral infection",
+      "isCorrect": true,
+      "misconception": "None — hepatitis C is a viral infection causing liver inflammation and damage.",
+      "explanation": "NIDDK defines hepatitis C as a viral infection that causes liver inflammation and damage."
+    },
+    {
+      "label": "E",
+      "text": "Liver inflammation and damage caused by reduced hepatic blood flow",
+      "isCorrect": false,
+      "misconception": "Confuses viral hepatitis with ischemic hepatitis (shock liver).",
+      "explanation": "Ischemic hepatitis follows reduced hepatic blood flow, as in shock or heart failure; hepatitis C is an infectious, viral process."
+    }
+  ],
+  "context": "Learning objective: Hepatitis C is a viral infection that causes liver inflammation and damage.",
+  "cite": "niddk-hepatitis-c#hepc-definition",
+  "publicUsmle": {
+    "schemaVersion": 1,
+    "origin": "generated",
+    "itemText": {
+      "licence": "CC-BY-4.0",
+      "attribution": "MD3 contributors"
+    },
+    "evidence": {
+      "kind": "passage",
+      "sourceId": "niddk-hepatitis-c",
+      "passageId": "hepc-definition",
+      "licence": {
+        "cls": "foss",
+        "id": "us-gov"
+      }
+    }
+  }
+}

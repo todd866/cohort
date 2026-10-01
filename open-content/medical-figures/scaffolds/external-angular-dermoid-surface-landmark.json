@@ -1,0 +1,62 @@
+{
+  "schemaVersion": 1,
+  "figureId": "external-angular-dermoid-surface-landmark",
+  "kind": "conceptual",
+  "created": "2026-09-10",
+  "timing": "authored before generation",
+  "sourceFacts": [
+    {
+      "fact": "A common periocular dermoid location is the upper outer orbital region near the eyebrow end closest to the ear.",
+      "sourceUrls": [
+        "https://www.aapos.org/glossary/dermoid-cyst"
+      ]
+    },
+    {
+      "fact": "An orbital dermoid commonly presents as a smooth firm painless lump under normal-coloured skin.",
+      "sourceUrls": [
+        "https://www.aapos.org/glossary/dermoid-cyst"
+      ]
+    }
+  ],
+  "clinicalSources": [
+    {
+      "title": "AAPOS: Dermoid Cyst",
+      "url": "https://www.aapos.org/glossary/dermoid-cyst"
+    }
+  ],
+  "nodes": [
+    "paired eyebrow arcs",
+    "midline marker",
+    "outer eyebrow endpoint",
+    "dermoid location marker"
+  ],
+  "edges": [
+    [
+      "midline marker",
+      "outer eyebrow endpoint",
+      "away from midline: lateral"
+    ],
+    [
+      "dermoid location marker",
+      "outer eyebrow endpoint",
+      "surface-location association"
+    ]
+  ],
+  "expectedLabels": [
+    "External angular dermoid",
+    "Outer end of eyebrow",
+    "Lateral = away from midline",
+    "Firm \u2022 smooth \u2022 usually painless",
+    "Surface landmark only"
+  ],
+  "layoutSpecification": "Title 'External angular dermoid'. A very simple FRONT-FACING surface-location memory map, like an abstract face pictogram. Only one thin oval head outline, two curved eyebrow strokes, a small vertical midline dash, and two tiny neutral ear notches on the oval edges; omit actual eyes, pupils, mouth, nose detail and all internal anatomy. Place exactly one small ochre location marker immediately beside the VIEWER'S RIGHT OUTER endpoint of the right eyebrow stroke, toward the ear notch, never near the middle. Leader label 'Outer end of eyebrow'. A short horizontal arrow starting at the midline and pointing OUTWARD toward this marker, labelled 'Lateral = away from midline'. Below the diagram three small tactile mnemonic symbols (smooth pebble, firm cube, calm circle) paired with the short text 'Firm \u2022 smooth \u2022 usually painless'. Small note 'Surface landmark only'. Marker is symbolic, not a realistic lesion or diagnostic portrait.",
+  "forbiddenAnatomy": [
+    "No internal organ, eye, ear, brain, tissue or bone anatomy",
+    "No diagnostic image, patient-specific lesion appearance or literal anatomical pathway"
+  ],
+  "validation": {
+    "sourceFacts": "Checked against listed primary clinical sources on 2026-09-10",
+    "status": "self-reviewed; independent review pending",
+    "pixelChecks": "Pixel/structure check: exactly one marker sits at the outer endpoint of the viewer-right eyebrow, away from the midline and toward the temple. Direction arrow and leader agree. Simple external face outline has no eyes or internal anatomy; descriptor is qualified usually painless. This verifies the surface mnemonic only."
+  }
+}

@@ -1,0 +1,29 @@
+{
+  "id": "concept-diabetes-osmotic-loss",
+  "title": "Why high glucose causes thirst",
+  "prompt": "Create an original polished 1536x1024 landscape conceptual medical teaching diagram for after-answer study. Warm hand-painted gouache and watercolour on ivory paper; a gentle storybook warmth with precise dark navy type. Matte teal, ochre, coral and blue accents. Simple neutral tokens, paper tiles, arrows and visibly abstract compartments only. Make the visual relationships legible at small size. No body parts, organs, cells, tissues, lumens, tubules, membranes, vessels, anatomical cutaways, clinical photos, diagnostic scans, babies, realistic flesh or decorative scenery. Do not turn abstract boxes or routes into organs or anatomy. Do not invent extra arrows or medical claims. Edge meanings below are metadata, not visible text: draw the arrows but do not print their meaning strings. Footer exactly: Conceptual schematic • Not anatomy. Title exactly: Why high glucose causes thirst. Five concept nodes along a broad left-to-right pathway with the central node3 largest. Node1 and2 are small paper tiles at left; node3 is a large visibly rectangular tray labelled Glucose and water lost in urine with a mixture of golden hexagon glucose tokens and blue water droplet tokens moving together outward across its right edge; node4 and5 are stacked to the right linked downward. Exact edges1to2,2to3,3to4,4to5. Below node3 add a key: Gold = glucose; blue = water. Below the diagram print: Osmotic diuresis. No renal or pancreatic anatomy, blood vessel, person or drinking glass. Exact node labels: [{\"id\": \"1\", \"label\": \"Insulin deficiency\"}, {\"id\": \"2\", \"label\": \"Blood glucose rises\"}, {\"id\": \"3\", \"label\": \"Glucose and water lost in urine\"}, {\"id\": \"4\", \"label\": \"More urine\"}, {\"id\": \"5\", \"label\": \"Thirst\"}]. Exact directed connections: [{\"from\": \"1\", \"to\": \"2\", \"meaning\": \"causes hyperglycaemia\"}, {\"from\": \"2\", \"to\": \"3\", \"meaning\": \"excess urinary glucose retains water\"}, {\"from\": \"3\", \"to\": \"4\", \"meaning\": \"osmotic diuresis\"}, {\"from\": \"4\", \"to\": \"5\", \"meaning\": \"water loss prompts thirst\"}]. Required checks: All five nodes follow specified direction; Glucose tokens and water tokens are lost together; No kidney, islet, tubule or actual blood compartment; No universal claim that all tissues require insulin for uptake.",
+  "clinicalSources": [
+    {
+      "title": "NIDDK — Type1 diabetes",
+      "url": "https://www.niddk.nih.gov/health-information/diabetes/overview/what-is-diabetes/type-1-diabetes"
+    },
+    {
+      "title": "NIDDK — Symptoms and causes of diabetes",
+      "url": "https://www.niddk.nih.gov/health-information/diabetes/overview/symptoms-causes"
+    }
+  ],
+  "caption": "Glucose-associated urinary water loss explains the connection between high blood glucose, polyuria and thirst.",
+  "question": "How does high blood glucose lead to polyuria and thirst?",
+  "answer": "Glucose that remains in urine retains water osmotically, increasing urinary water loss and prompting thirst.",
+  "structureSpecification": "scaffolds/concept-diabetes-osmotic-loss.json",
+  "generationInputs": {
+    "referenceImages": [],
+    "style": "written-only"
+  },
+  "qa": {
+    "status": "pending-independent-qa",
+    "method": "agent-visual-and-source-review",
+    "notes": "Pixel structure check: five exact nodes in causal order; glucose hexagons and blue water droplets leave the abstract tray together, then more urine leads to thirst. Legend correctly maps tokens. No renal tubule, islet, vessel or body representation. Independent and clinical review pending.",
+    "clinicalReviewStatus": "pending"
+  }
+}

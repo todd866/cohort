@@ -1,0 +1,38 @@
+{
+  "figureId": "suprascapular-distal-compression",
+  "kind": "spatial-anatomy",
+  "sourceFacts": [
+    {
+      "fact": "Spinoglenoid compression can selectively denervate infraspinatus after the supraspinatus branch has left.",
+      "sourceUrls": [
+        "https://pubmed.ncbi.nlm.nih.gov/7611949/"
+      ]
+    }
+  ],
+  "nodes": [
+    "Supraspinatus",
+    "Infraspinatus",
+    "Scapular spine",
+    "Suprascapular nerve",
+    "Spinoglenoid notch"
+  ],
+  "edges": [],
+  "forbiddenAnatomy": [
+    "No invented labels, diagnostic imaging, patient likeness or unsupported precision."
+  ],
+  "validation": {
+    "reviewer": "batch2_source_review",
+    "reviewedAt": "2026-09-19",
+    "baseSha256": "e0ec7194422bfb3c3e1754772878c5a82e170c13156fddfbeef9057a86dcfc36",
+    "annotationSha256": "2998ed6462f3d05bba6ffb37372073b04c5afd8b9f571995fbb0a76e67726240",
+    "finalSha256": "793451aa58337deb19ae831a684351dc3b32d6cac8eb0de123464b487727e748",
+    "checks": {
+      "sourceComparison": true,
+      "blindEndpoints": true,
+      "leaders": true,
+      "fullSize": true,
+      "mobile375": true
+    },
+    "notes": "Initial medial-notch base rejected. Corrected lateral superior-border entrance and distal nerve landmarks independently identified before labelling. Concealed segment marked with a dashed continuation. Final leaders and full-size/375px renders reviewed; v2 labels enlarged; no clipped teaching text at phone width. Selective schematic course, not surgical navigation."
+  }
+}

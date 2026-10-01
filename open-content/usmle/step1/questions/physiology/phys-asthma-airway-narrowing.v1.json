@@ -1,0 +1,70 @@
+{
+  "id": "bank:usmle-step1:phys-asthma-airway-narrowing:v1",
+  "rotation": "usmle-step1-open",
+  "topics": [
+    "asthma"
+  ],
+  "moduleNodes": [
+    "usmle/step1",
+    "usmle/step1/physiology"
+  ],
+  "questionType": "mechanism",
+  "difficulty": "easy",
+  "stem": "In asthma, what happens to the airways at times?",
+  "options": [
+    {
+      "label": "A",
+      "text": "They become permanently dilated",
+      "isCorrect": false,
+      "misconception": "Confuses reversible airway narrowing with fixed dilation of damaged bronchi.",
+      "explanation": "Permanent airway dilation with scarring is bronchiectasis, usually after recurrent infection; asthma narrows the airways instead."
+    },
+    {
+      "label": "B",
+      "text": "They are compressed by enlarged hilar nodes",
+      "isCorrect": false,
+      "misconception": "Confuses external compression of a bronchus with inflammation of the airway wall.",
+      "explanation": "Enlarged hilar lymph nodes, as in sarcoidosis or tuberculosis, press on a bronchus from outside; asthma narrows airways through inflammation of the wall."
+    },
+    {
+      "label": "C",
+      "text": "They lose alveolar attachments",
+      "isCorrect": false,
+      "misconception": "Confuses asthma's airway narrowing with emphysema's alveolar destruction.",
+      "explanation": "Loss of alveolar attachments is emphysema, where destroyed alveolar walls stop tethering small airways open; asthma involves inflammation, not tissue destruction."
+    },
+    {
+      "label": "D",
+      "text": "They are blocked by an inhaled object",
+      "isCorrect": false,
+      "misconception": "Mistakes a focal mechanical obstruction for diffuse episodic narrowing.",
+      "explanation": "An inhaled foreign body blocks one airway mechanically, often with sudden one-sided wheeze; asthma is diffuse, episodic inflammation and narrowing."
+    },
+    {
+      "label": "E",
+      "text": "They become inflamed and narrowed",
+      "isCorrect": true,
+      "misconception": "None — asthma airways become inflamed and narrowed at times.",
+      "explanation": "In asthma the airways can become inflamed and narrowed at times, which makes it harder for air to flow out when breathing out."
+    }
+  ],
+  "context": "Learning objective: In asthma, the airways become inflamed and narrowed at times, making it harder for air to flow out on exhalation.",
+  "cite": "nhlbi-asthma#asthma-airways",
+  "publicUsmle": {
+    "schemaVersion": 1,
+    "origin": "generated",
+    "itemText": {
+      "licence": "CC-BY-4.0",
+      "attribution": "MD3 contributors"
+    },
+    "evidence": {
+      "kind": "passage",
+      "sourceId": "nhlbi-asthma",
+      "passageId": "asthma-airways",
+      "licence": {
+        "cls": "foss",
+        "id": "us-gov"
+      }
+    }
+  }
+}

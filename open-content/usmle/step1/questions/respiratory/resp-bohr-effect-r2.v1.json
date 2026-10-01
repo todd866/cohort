@@ -1,0 +1,73 @@
+{
+  "id": "bank:usmle-step1:resp-bohr-effect-r2:v1",
+  "rotation": "usmle-step1-open",
+  "ladderId": "bohr-effect",
+  "difficulty": "medium",
+  "topics": [
+    "Bohr effect",
+    "oxygen unloading",
+    "ladder:bohr-effect"
+  ],
+  "moduleNodes": [
+    "usmle/step1",
+    "usmle/step1/respiratory"
+  ],
+  "questionType": "mechanism",
+  "stem": "Working skeletal muscle generates lactic acid. How does the local pH change affect hemoglobin?",
+  "options": [
+    {
+      "label": "A",
+      "text": "It inhibits oxygen release to myocytes",
+      "isCorrect": false,
+      "misconception": "Acid is being treated as a loading signal.",
+      "explanation": "Acidic pH promotes dissociation; it does not inhibit unloading to tissues."
+    },
+    {
+      "label": "B",
+      "text": "It raises hemoglobin's oxygen affinity",
+      "isCorrect": false,
+      "misconception": "A left shift is being inferred from acidosis.",
+      "explanation": "Acidosis lowers affinity and promotes dissociation rather than raising affinity."
+    },
+    {
+      "label": "C",
+      "text": "It promotes oxygen dissociation from hemoglobin",
+      "isCorrect": true,
+      "misconception": "None; acidic pH promotes O2 dissociation from hemoglobin.",
+      "explanation": "A lower, more acidic pH promotes oxygen dissociation, matching local metabolic acid production."
+    },
+    {
+      "label": "D",
+      "text": "It blocks carbon dioxide binding to globin",
+      "isCorrect": false,
+      "misconception": "CO2 carriage is being confused with the Bohr unloading effect.",
+      "explanation": "The described effect is acid-driven oxygen dissociation, not blocked CO2 binding."
+    },
+    {
+      "label": "E",
+      "text": "It converts hemoglobin entirely to methemoglobin",
+      "isCorrect": false,
+      "misconception": "Oxidative denaturation is being inferred from acid.",
+      "explanation": "Acidosis does not oxidize heme iron to methemoglobin in this pathway."
+    }
+  ],
+  "context": "Learning objective: apply that local acidosis promotes oxygen unloading from hemoglobin.",
+  "cite": "openstax-anatomy-physiology#resp-bohr-effect",
+  "publicUsmle": {
+    "schemaVersion": 1,
+    "origin": "generated",
+    "itemText": {
+      "licence": "CC-BY-4.0",
+      "attribution": "MD3 contributors"
+    },
+    "evidence": {
+      "kind": "passage",
+      "sourceId": "openstax-anatomy-physiology",
+      "passageId": "resp-bohr-effect",
+      "licence": {
+        "cls": "foss",
+        "id": "cc-by-4.0"
+      }
+    }
+  }
+}

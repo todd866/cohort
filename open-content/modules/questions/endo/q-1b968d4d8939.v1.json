@@ -1,0 +1,65 @@
+{
+  "id": "bank:cohort:endo:q-1b968d4d8939:v1",
+  "rotation": "cohort-open",
+  "moduleNodes": [
+    "cohort/endo"
+  ],
+  "topics": [
+    "endocrinology",
+    "congenital-adrenal-hyperplasia"
+  ],
+  "questionType": "next-step",
+  "difficulty": "medium",
+  "stem": "The paediatric emergency registrar sees a 12-day-old boy, born at term, who has vomited since yesterday and is now lethargic. His genitalia are typical for a boy. There is no adrenal sick-day plan. Admission samples showed low sodium, high potassium, low glucose and a metabolic acidosis. Hypoglycaemia has already been treated with intravenous 10% glucose, and one 10 mL/kg bolus of 0.9% sodium chloride has not restored perfusion. The ECG shows no changes of hyperkalaemia.\n\nWhich endocrine treatment should the registrar give next?",
+  "options": [
+    {
+      "label": "A",
+      "text": "Treat the potassium disturbance alone and delay hydrocortisone",
+      "isCorrect": false,
+      "explanation": "Potassium management does not replace the missing cortisol. Hydrocortisone must not be delayed while electrolyte abnormalities are assessed and treated."
+    },
+    {
+      "label": "B",
+      "text": "Give another 10 mL/kg sodium chloride bolus and withhold steroid",
+      "isCorrect": false,
+      "explanation": "Another sodium chloride bolus, with steroid withheld, repeats a step that has not restored perfusion. Cortisol deficiency is why this shock does not correct with fluid alone."
+    },
+    {
+      "label": "C",
+      "text": "Wait for the 17-hydroxyprogesterone result before any steroid",
+      "isCorrect": false,
+      "explanation": "A 17-hydroxyprogesterone sample is taken before the steroid only if that draw does not delay it. The result itself is not a reason to postpone hydrocortisone."
+    },
+    {
+      "label": "D",
+      "text": "Give hydrocortisone 25 mg intramuscularly or intravenously now",
+      "isCorrect": true,
+      "explanation": "Parenteral hydrocortisone is required in adrenal crisis, and the initial dose from birth to six weeks is 25 mg. Glucose replacement and a saline bolus have already been given."
+    },
+    {
+      "label": "E",
+      "text": "Give oral fludrocortisone now and delay parenteral hydrocortisone",
+      "isCorrect": false,
+      "explanation": "Oral fludrocortisone can wait until feeds are tolerated and does not treat the crisis. The immediate glucocorticoid is parenteral hydrocortisone."
+    }
+  ],
+  "context": "Boys with salt-wasting disease often have typical genitalia, so collapse in the second week may be the first sign. Virilisation more often flags affected girls at birth.\n\nCortisol deficiency weakens cardiac function and blunts the response to catecholamines. More saline does not replace the missing hormone.\n\nTake cortisol, ACTH and 17-hydroxyprogesterone only if the blood draw does not delay treatment. Do not wait for the result, and do not start with oral fludrocortisone.",
+  "publicModule": {
+    "schemaVersion": 1,
+    "origin": "mirrored",
+    "discipline": "endo",
+    "mirroredFrom": "md3:1b968d4d8939b37a",
+    "itemText": {
+      "licence": "CC-BY-4.0",
+      "attribution": "MD3 contributors"
+    },
+    "evidence": {
+      "kind": "reference",
+      "sourceId": "rch-adrenal-crisis-and-acute-adrenal-insufficiency"
+    },
+    "review": {
+      "verdict": "passed",
+      "contentHash": "dc26be8094a0e9c922a07dd32410a042d0a6415291441fcd5a880e8f5f8c2166"
+    }
+  }
+}

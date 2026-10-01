@@ -1,0 +1,66 @@
+{
+  "id": "bank:cohort:resp:q-0421f261852b:v1",
+  "rotation": "cohort-open",
+  "moduleNodes": [
+    "cohort/resp"
+  ],
+  "topics": [
+    "respiratory",
+    "asthma",
+    "diagnosis"
+  ],
+  "questionType": "diagnosis",
+  "difficulty": "medium",
+  "stem": "A 9-month-old presents with recurrent episodes of wheeze triggered by viral infections.\n\nWhat is the most appropriate approach?",
+  "options": [
+    {
+      "label": "A",
+      "text": "Order fractional exhaled nitric oxide (FeNO) test",
+      "isCorrect": false,
+      "explanation": "FeNO is not validated in infants and does not resolve the question in this age group."
+    },
+    {
+      "label": "B",
+      "text": "Trial inhaled corticosteroids for six-week period",
+      "isCorrect": false,
+      "explanation": "A six-week ICS trial is a preschool-asthma diagnostic step from 1 year of age, not a first move in a 9-month-old with viral-triggered wheeze."
+    },
+    {
+      "label": "C",
+      "text": "Avoid an asthma label; assess and refer if persistent",
+      "isCorrect": true,
+      "explanation": "Correct — the Australian Asthma Handbook advises against diagnosing asthma under 12 months. Acute wheeze at this age is usually bronchiolitis, transient early wheeze should not be treated with bronchodilators, and persistent wheeze warrants specialist assessment."
+    },
+    {
+      "label": "D",
+      "text": "Arrange spirometry to confirm asthma diagnosis",
+      "isCorrect": false,
+      "explanation": "Spirometry needs cooperation that is not achievable until roughly school age."
+    },
+    {
+      "label": "E",
+      "text": "Diagnose asthma and commence preventer therapy",
+      "isCorrect": false,
+      "explanation": "Asthma is not diagnosed in the first year of life, so committing to preventer therapy on this basis is premature."
+    }
+  ],
+  "context": "Asthma should NOT be diagnosed in children under 12 months - recurrent wheeze in infancy is usually viral-induced wheeze or bronchiolitis.\n\nManagement is supportive, without routine bronchodilators: wheeze at this age is usually bronchiolitis, which does not respond to salbutamol. Review the diagnosis as the child grows.",
+  "publicModule": {
+    "schemaVersion": 1,
+    "origin": "mirrored",
+    "discipline": "resp",
+    "mirroredFrom": "md3:0421f261852b9f1f",
+    "itemText": {
+      "licence": "CC-BY-4.0",
+      "attribution": "MD3 contributors"
+    },
+    "evidence": {
+      "kind": "reference",
+      "sourceId": "aah-management-children-1-5-years-medication-management-initial-asthma-treatment-for-children-1-5-years-after-diagnosis"
+    },
+    "review": {
+      "verdict": "passed",
+      "contentHash": "27cb6e81ba45e0fb845d5daa7da08de4dedeb4d1ac471e62de5e5f3706a1c85b"
+    }
+  }
+}

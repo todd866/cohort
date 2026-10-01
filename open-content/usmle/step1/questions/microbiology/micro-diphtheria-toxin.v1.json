@@ -1,0 +1,71 @@
+{
+  "id": "bank:usmle-step1:micro-diphtheria-toxin:v1",
+  "rotation": "usmle-step1-open",
+  "topics": [
+    "diphtheria",
+    "toxin"
+  ],
+  "moduleNodes": [
+    "usmle/step1",
+    "usmle/step1/microbiology"
+  ],
+  "questionType": "mechanism",
+  "difficulty": "easy",
+  "stem": "Which of the following causes both the local and the systemic manifestations of diphtheria?",
+  "options": [
+    {
+      "label": "A",
+      "text": "Bloodstream invasion by the infecting bacterium",
+      "isCorrect": false,
+      "misconception": "Assumes systemic signs need bacteremia rather than a circulating exotoxin.",
+      "explanation": "In respiratory diphtheria the bacteria stay at the site of infection; distant effects come from absorbed toxin, not bloodstream invasion."
+    },
+    {
+      "label": "B",
+      "text": "Lipoteichoic acid of the infecting bacterium",
+      "isCorrect": false,
+      "misconception": "Attributes a toxin-mediated disease to a cell-wall component.",
+      "explanation": "Lipoteichoic acid is a gram-positive cell-wall component that triggers inflammation; it does not account for diphtheria's systemic toxicity."
+    },
+    {
+      "label": "C",
+      "text": "Toxin produced by the infecting bacterium",
+      "isCorrect": true,
+      "misconception": "None — diphtheria toxin produces the local and systemic manifestations.",
+      "explanation": "CDC states that diphtheria toxin, made by toxin-producing strains, causes both the local and the systemic manifestations of diphtheria."
+    },
+    {
+      "label": "D",
+      "text": "Immune complexes formed against the infecting bacterium",
+      "isCorrect": false,
+      "misconception": "Attributes a toxin-mediated disease to immune complex (type III) injury.",
+      "explanation": "Immune complexes cause type III disease such as serum sickness or poststreptococcal glomerulonephritis, not the manifestations of diphtheria."
+    },
+    {
+      "label": "E",
+      "text": "Lipopolysaccharide of the infecting bacterium",
+      "isCorrect": false,
+      "misconception": "Attributes a gram-positive, toxin-mediated disease to gram-negative endotoxin.",
+      "explanation": "Lipopolysaccharide is endotoxin in gram-negative outer membranes; Corynebacterium diphtheriae is gram-positive and lacks it."
+    }
+  ],
+  "context": "Learning objective: Diphtheria toxin causes both the local and the systemic manifestations of diphtheria.",
+  "cite": "cdc-pink-book-diphtheria#diphtheria-toxin",
+  "publicUsmle": {
+    "schemaVersion": 1,
+    "origin": "generated",
+    "itemText": {
+      "licence": "CC-BY-4.0",
+      "attribution": "MD3 contributors"
+    },
+    "evidence": {
+      "kind": "passage",
+      "sourceId": "cdc-pink-book-diphtheria",
+      "passageId": "diphtheria-toxin",
+      "licence": {
+        "cls": "foss",
+        "id": "us-gov"
+      }
+    }
+  }
+}

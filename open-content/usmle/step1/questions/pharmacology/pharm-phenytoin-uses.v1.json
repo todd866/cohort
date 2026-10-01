@@ -1,0 +1,71 @@
+{
+  "id": "bank:usmle-step1:pharm-phenytoin-uses:v1",
+  "rotation": "usmle-step1-open",
+  "topics": [
+    "phenytoin",
+    "seizures"
+  ],
+  "moduleNodes": [
+    "usmle/step1",
+    "usmle/step1/pharmacology"
+  ],
+  "questionType": "mechanism",
+  "difficulty": "easy",
+  "stem": "Phenytoin is used to control which neurologic events?",
+  "options": [
+    {
+      "label": "A",
+      "text": "Migraine headache attacks with visual aura",
+      "isCorrect": false,
+      "misconception": "Assumes every anticonvulsant prevents migraine; phenytoin is not one that does.",
+      "explanation": "Migraine prevention uses drugs such as topiramate, propranolol or valproate; phenytoin is not a migraine treatment."
+    },
+    {
+      "label": "B",
+      "text": "Transient ischemic attacks from carotid disease",
+      "isCorrect": false,
+      "misconception": "Mistakes brief focal ischemia for a seizure that an anticonvulsant would control.",
+      "explanation": "A transient ischemic attack is brief focal brain ischemia, managed with antiplatelet therapy and risk-factor control rather than an anticonvulsant."
+    },
+    {
+      "label": "C",
+      "text": "Cataplexy episodes in patients with narcolepsy",
+      "isCorrect": false,
+      "misconception": "Mistakes a sudden loss of muscle tone for an epileptic event.",
+      "explanation": "Cataplexy is emotion-triggered loss of muscle tone in narcolepsy, treated with sodium oxybate or antidepressants; it is not an epileptic seizure."
+    },
+    {
+      "label": "D",
+      "text": "Seizures during or after brain surgery",
+      "isCorrect": true,
+      "misconception": "None — phenytoin is an anticonvulsant used for certain seizures.",
+      "explanation": "Phenytoin, an anticonvulsant, controls certain types of seizures and treats and prevents seizures that begin during or after brain surgery."
+    },
+    {
+      "label": "E",
+      "text": "Vertigo attacks from Meniere disease",
+      "isCorrect": false,
+      "misconception": "Confuses episodic inner-ear vertigo with seizures.",
+      "explanation": "Meniere vertigo reflects endolymphatic hydrops and is managed with salt restriction, diuretics or vestibular suppressants, not phenytoin."
+    }
+  ],
+  "context": "Learning objective: Phenytoin, an anticonvulsant, controls certain seizures and treats and prevents seizures during or after brain surgery.",
+  "cite": "medlineplus-phenytoin#phenytoin-uses",
+  "publicUsmle": {
+    "schemaVersion": 1,
+    "origin": "generated",
+    "itemText": {
+      "licence": "CC-BY-4.0",
+      "attribution": "MD3 contributors"
+    },
+    "evidence": {
+      "kind": "passage",
+      "sourceId": "medlineplus-phenytoin",
+      "passageId": "phenytoin-uses",
+      "licence": {
+        "cls": "foss",
+        "id": "us-gov"
+      }
+    }
+  }
+}

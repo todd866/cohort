@@ -1,0 +1,66 @@
+{
+  "id": "bank:cohort:em:q-5117dba2cdc0:v1",
+  "rotation": "cohort-open",
+  "moduleNodes": [
+    "cohort/em"
+  ],
+  "topics": [
+    "resuscitation",
+    "adrenaline",
+    "emergency"
+  ],
+  "questionType": "management",
+  "difficulty": "medium",
+  "stem": "A 6-year-old is pulled from a backyard pool in cardiac arrest. High-quality CPR is under way and the defibrillator shows ventricular fibrillation. IV access is obtained during the first CPR cycle.\n\nUnder ANZCOR 2026, when should the first dose of adrenaline be given?",
+  "options": [
+    {
+      "label": "A",
+      "text": "After the second defibrillation attempt",
+      "isCorrect": true,
+      "explanation": "ANZCOR 2026 specifies the first IV/IO adrenaline dose after the second defibrillation attempt in paediatric VF/pulseless VT, then every second CPR loop."
+    },
+    {
+      "label": "B",
+      "text": "Immediately, now that IV access is available",
+      "isCorrect": false,
+      "explanation": "As-early-as-possible adrenaline is the non-shockable pathway. Ventricular fibrillation requires prompt defibrillation, with adrenaline introduced at the paediatric algorithm’s specified point."
+    },
+    {
+      "label": "C",
+      "text": "After the first unsuccessful shock",
+      "isCorrect": false,
+      "explanation": "ANZCOR 2026 specifies the second defibrillation attempt. Continue high-quality CPR between shocks rather than moving adrenaline forward after one shock."
+    },
+    {
+      "label": "D",
+      "text": "Only once return of spontaneous circulation is achieved",
+      "isCorrect": false,
+      "explanation": "Adrenaline is given during resuscitation. Waiting for return of spontaneous circulation would omit an indicated intra-arrest treatment."
+    },
+    {
+      "label": "E",
+      "text": "Adrenaline is not used in shockable arrests",
+      "isCorrect": false,
+      "explanation": "Adrenaline is part of the paediatric shockable pathway, after the second defibrillation attempt. Defibrillation and uninterrupted CPR remain priorities."
+    }
+  ],
+  "context": "ANZCOR 2026: give adrenaline as early as possible for non-shockable paediatric arrest, or after the second defibrillation attempt for VF/pulseless VT.\n\nContinue 2-minute CPR cycles between shocks. Repeat adrenaline every second loop while maintaining high-quality compressions.\n\nIV/IO dose: 10 microg/kg, maximum 1 mg; 0.1 mL/kg of 1:10,000 (100 microg/mL), capped at 10 mL. Name the concentration when requesting or giving the drug.",
+  "publicModule": {
+    "schemaVersion": 1,
+    "origin": "mirrored",
+    "discipline": "em",
+    "mirroredFrom": "md3:5117dba2cdc0299f",
+    "itemText": {
+      "licence": "CC-BY-4.0",
+      "attribution": "MD3 contributors"
+    },
+    "evidence": {
+      "kind": "reference",
+      "sourceId": "anzcor-home-paediatric-advanced-life-support-guideline-12-2-paediatric-advanced-life-support-pals"
+    },
+    "review": {
+      "verdict": "passed",
+      "contentHash": "e6af6db73e2a09fce567f6191860758aa965cf2f13155f1fcdd7ec01d0f2cbf1"
+    }
+  }
+}

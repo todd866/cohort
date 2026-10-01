@@ -1,0 +1,60 @@
+{
+  "id": "bank:cohort:paeds:q-4fb0f2dbe7d5:v1",
+  "rotation": "cohort-open",
+  "moduleNodes": [
+    "cohort/paeds"
+  ],
+  "topics": [
+    "SCID",
+    "TRECs",
+    "T cells"
+  ],
+  "questionType": "mechanism",
+  "difficulty": "medium",
+  "stem": "A baby with SCID has very low TRECs on newborn screening.\n\nWhich cells are primarily affected?",
+  "options": [
+    {
+      "label": "A",
+      "text": "B cells",
+      "isCorrect": false,
+      "explanation": "B cells — incorrect in this context. The clinical scenario best fits T cells."
+    },
+    {
+      "label": "B",
+      "text": "Neutrophils",
+      "isCorrect": false,
+      "explanation": "The clinical scenario best fits T cells."
+    },
+    {
+      "label": "C",
+      "text": "Natural killer cells",
+      "isCorrect": false,
+      "explanation": "The clinical scenario best fits T cells."
+    },
+    {
+      "label": "D",
+      "text": "T cells",
+      "isCorrect": true,
+      "explanation": "TRECs (T-cell receptor excision circles) are byproducts of T cell maturation in the thymus. Low TRECs indicate absent or diminished T cell development."
+    }
+  ],
+  "context": "TRECs (T-cell receptor excision circles) are tiny loops of DNA cut out of the genome each time a thymocyte successfully rearranges its T-cell receptor.\n\nSCID is fundamentally a T-cell defect — although B-cell and NK-cell numbers vary by genetic subtype (X-linked, ADA, JAK3, etc.), the universal feature is failed T-cell development.",
+  "publicModule": {
+    "schemaVersion": 1,
+    "origin": "mirrored",
+    "discipline": "paeds",
+    "mirroredFrom": "md3:4fb0f2dbe7d55d50",
+    "itemText": {
+      "licence": "CC-BY-4.0",
+      "attribution": "MD3 contributors"
+    },
+    "evidence": {
+      "kind": "reference",
+      "sourceId": "ascia-ascia-guidelines-scid-tapid"
+    },
+    "review": {
+      "verdict": "passed",
+      "contentHash": "1789043d3ca89614f0ec65077ac0f80cff9ae9c2ff741ac6b611ff48c668c52b"
+    }
+  }
+}

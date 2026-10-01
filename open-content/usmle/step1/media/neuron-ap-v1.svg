@@ -1,0 +1,18 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 360" role="img" aria-labelledby="t d">
+  <title id="t">Neuron resting potential and action potential</title>
+  <desc id="d">RMP, threshold, Na upstroke, K repolarization, absolute refractory, saltatory conduction, EPSP/IPSP summation.</desc>
+  <rect width="720" height="360" fill="#ffffff"/>
+  <text x="360" y="26" text-anchor="middle" font-family="Helvetica,Arial,sans-serif" font-size="15" font-weight="700" fill="#111">Neuron resting potential and action potential</text>
+  <defs>
+    <marker id="arr" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto">
+      <path d="M0,0 L10,5 L0,10 z" fill="#1d4ed8"/>
+    </marker>
+  </defs>
+  <polyline points="60,220 140,220 160,80 200,80 230,250 280,200 360,200 420,200" fill="none" stroke="#1d4ed8" stroke-width="3"/>  <line x1="40" y1="220" x2="500" y2="220" stroke="#999" stroke-width="1"/>  <text x="90" y="240" font-family="Helvetica,Arial,sans-serif" font-size="10" fill="#333">RMP</text>  <text x="155" y="70" font-family="Helvetica,Arial,sans-serif" font-size="10" fill="#333">threshold</text>  <text x="175" y="100" font-family="Helvetica,Arial,sans-serif" font-size="10" fill="#1d4ed8">Na+ in</text>  <text x="230" y="270" font-family="Helvetica,Arial,sans-serif" font-size="10" fill="#1d4ed8">K+ out</text>  <text x="300" y="190" font-family="Helvetica,Arial,sans-serif" font-size="10" fill="#b91c1c">absolute refractory</text>  <rect x="520" y="50" width="170" height="70" rx="6" fill="#dbeafe" stroke="#111" stroke-width="1.5"/>
+  <text x="605.0" y="83" text-anchor="middle" font-family="Helvetica,Arial,sans-serif" font-size="11" font-weight="700" fill="#111">Saltatory</text>
+  <text x="605.0" y="97" text-anchor="middle" font-family="Helvetica,Arial,sans-serif" font-size="10" fill="#333">nodes of Ranvier</text>  <rect x="520" y="140" width="170" height="70" rx="6" fill="#fef3c7" stroke="#111" stroke-width="1.5"/>
+  <text x="605.0" y="173" text-anchor="middle" font-family="Helvetica,Arial,sans-serif" font-size="11" font-weight="700" fill="#111">EPSP / IPSP</text>
+  <text x="605.0" y="187" text-anchor="middle" font-family="Helvetica,Arial,sans-serif" font-size="10" fill="#333">local graded</text>  <rect x="520" y="230" width="170" height="70" rx="6" fill="#d1fae5" stroke="#111" stroke-width="1.5"/>
+  <text x="605.0" y="263" text-anchor="middle" font-family="Helvetica,Arial,sans-serif" font-size="11" font-weight="700" fill="#111">Summation</text>
+  <text x="605.0" y="277" text-anchor="middle" font-family="Helvetica,Arial,sans-serif" font-size="10" fill="#333">spatial + temporal</text>  <text x="280" y="320" text-anchor="middle" font-family="Helvetica,Arial,sans-serif" font-size="11" fill="#333">RMP from K+ leak / Na-K ATPase; AP when EPSPs hit threshold</text>
+</svg>

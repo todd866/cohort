@@ -1,0 +1,79 @@
+{
+  "schemaVersion": 1,
+  "figureId": "mastoiditis-worsening-infection-escalation",
+  "kind": "conceptual",
+  "created": "2026-09-10",
+  "timing": "authored before generation",
+  "sourceFacts": [
+    {
+      "fact": "Mastoiditis can complicate an ear infection and present with postauricular swelling, tenderness and displacement of the pinna.",
+      "sourceUrls": [
+        "https://www.rch.org.au/clinicalguide/guideline_index/acute_otitis_media/",
+        "https://www.nhs.uk/conditions/mastoiditis/"
+      ]
+    },
+    {
+      "fact": "New swelling behind the ear with worsening pain or fever needs urgent assessment and ENT involvement.",
+      "sourceUrls": [
+        "https://www.rch.org.au/clinicalguide/guideline_index/acute_otitis_media/",
+        "https://www.nhs.uk/conditions/mastoiditis/"
+      ]
+    }
+  ],
+  "clinicalSources": [
+    {
+      "title": "RCH: Acute otitis media",
+      "url": "https://www.rch.org.au/clinicalguide/guideline_index/acute_otitis_media/"
+    },
+    {
+      "title": "NHS: Mastoiditis",
+      "url": "https://www.nhs.uk/conditions/mastoiditis/"
+    }
+  ],
+  "nodes": [
+    "ear infection",
+    "worsening pain or fever",
+    "new behind-ear swelling",
+    "urgent assessment",
+    "ENT"
+  ],
+  "edges": [
+    [
+      "ear infection",
+      "worsening pain or fever",
+      "deterioration"
+    ],
+    [
+      "worsening pain or fever",
+      "urgent assessment",
+      "warning"
+    ],
+    [
+      "new behind-ear swelling",
+      "urgent assessment",
+      "warning"
+    ],
+    [
+      "urgent assessment",
+      "ENT",
+      "specialist involvement"
+    ]
+  ],
+  "expectedLabels": [
+    "Ear infection getting worse?",
+    "Pain or fever persists",
+    "New swelling behind the ear",
+    "Urgent assessment",
+    "Think mastoiditis \u2022 involve ENT"
+  ],
+  "layoutSpecification": "Title 'Ear infection getting worse?'. Start LEFT with a plain prescription slip and calendar, label 'Ear infection'. A rightward arrow reaches a centre WARNING CLUSTER of two separate symbolic items: a warm-coloured thermometer and jagged pain mark labelled 'Pain or fever persists', and a small ochre flag labelled 'New swelling behind the ear'. Do not depict any ear, face, swelling shape or internal anatomy; the location is stated in the label only. Two clear arrows from these warning items converge on a large hospital doorway on RIGHT labelled 'Urgent assessment'. Bottom 'Think mastoiditis \u2022 involve ENT'. No continue-waiting branch, no direct diagnosis by an image, no dose, no fictional temperature reading, no scan.",
+  "forbiddenAnatomy": [
+    "No internal organ, eye, ear, brain, tissue or bone anatomy",
+    "No diagnostic image, patient-specific lesion appearance or literal anatomical pathway"
+  ],
+  "validation": {
+    "sourceFacts": "Checked against listed primary clinical sources on 2026-09-10",
+    "status": "self-reviewed; independent review pending",
+    "pixelChecks": "Pixel/structure check: ear infection context leads to persistent pain/fever and new behind-ear swelling warnings, both directed to urgent assessment. ENT involvement explicitly named. No actual ear, realistic swelling, internal anatomy, wait branch, numerical fever threshold or automatic definitive diagnosis."
+  }
+}

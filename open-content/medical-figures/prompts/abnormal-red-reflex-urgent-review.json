@@ -1,0 +1,27 @@
+{
+  "schemaVersion": 1,
+  "figureId": "abnormal-red-reflex-urgent-review",
+  "sourceFacts": [
+    "A white or absent expected red reflex may reflect serious ocular disease, including retinoblastoma or cataract.",
+    "Leukocoria needs prompt ophthalmologist assessment; its appearance alone does not identify the cause."
+  ],
+  "clinicalSources": [
+    {
+      "title": "AAPOS: Leukocoria",
+      "url": "https://www.aapos.org/glossary/leukocoria"
+    }
+  ],
+  "specificationFiles": [
+    "scaffolds/abnormal-red-reflex-urgent-review.json"
+  ],
+  "prompt": "Create an entirely original medical teaching concept illustration, landscape 3:2, warm hand-painted watercolour and gouache on ivory paper, fine ink contours, restrained navy labels, muted teal, ochre and peach accents, generous whitespace. Gentle storybook warmth with the precision and legibility of an educational atlas. Use written instructions only; no image reference. Meaningful visual relationships and sparse short labels, not paragraphs in boxes. NO internal anatomy, organ/eye/ear/brain/tissue cutaways, anatomical pathways, bones, diagnostic images, fake scans, realistic lesions, photorealistic skin, glossy wet flesh or 3D tissue. Neutral symbols or fully clothed surface poses only where specified. Preserve every direction, relationship and count in the explicit structure. Title and labels exactly as requested, no additional prose. Footer 'Educational schematic'. No logo or watermark.\n\nTitle 'Abnormal red reflex: a signal to act'. LEFT three small abstract indicator tiles stacked vertically, no eye shapes: top tile a white circle with navy outline labelled 'White'; middle tile an empty dark-grey circle labelled 'Absent'; bottom tile TWO circles of unequal warm-red brightness labelled 'Unequal'. Do not use clinical photograph lighting, pupil or iris texture. Three clear arrows merge into one large arrow at centre pointing RIGHT to an urgent appointment card labelled 'Urgent ophthalmology'. To its right a magnifying glass over a plain question-mark token, labelled 'Find the cause'; beneath 'Including retinoblastoma'. Very small bottom 'Symbols only \u2022 not diagnostic images'. Diagram must not imply every warning sign equals retinoblastoma; it leads to evaluation of possible causes.",
+  "generation": {
+    "tool": "built-in image_gen",
+    "model": null,
+    "referenceAssetIds": [],
+    "externalReferenceImages": [],
+    "specificationFiles": [
+      "scaffolds/abnormal-red-reflex-urgent-review.json"
+    ]
+  }
+}

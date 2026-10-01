@@ -1,0 +1,16 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 320" role="img" aria-labelledby="t d">
+  <title id="t">Influenza antigenic drift vs shift</title>
+  <desc id="d">Drift from mutations causes seasonal change; shift from reassortment creates new pandemic subtypes.</desc>
+  <rect width="720" height="320" fill="#ffffff"/>
+  <text x="360" y="26" text-anchor="middle" font-family="Helvetica,Arial,sans-serif" font-size="15" font-weight="700" fill="#111">Influenza antigenic drift vs shift</text>
+  <defs>
+    <marker id="arr" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto">
+      <path d="M0,0 L10,5 L0,10 z" fill="#1d4ed8"/>
+    </marker>
+  </defs>
+  <rect x="40" y="60" width="300" height="140" rx="6" fill="#fef3c7" stroke="#111" stroke-width="1.5"/>
+  <text x="190.0" y="128" text-anchor="middle" font-family="Helvetica,Arial,sans-serif" font-size="11" font-weight="700" fill="#111">Antigenic DRIFT</text>
+  <text x="190.0" y="142" text-anchor="middle" font-family="Helvetica,Arial,sans-serif" font-size="10" fill="#333">point mutations</text>  <text x="190" y="120" text-anchor="middle" font-family="Helvetica,Arial,sans-serif" font-size="11" fill="#333">same subtype; seasonal epidemics</text>  <text x="190" y="145" text-anchor="middle" font-family="Helvetica,Arial,sans-serif" font-size="11" fill="#333">HA/NA gradual change</text>  <rect x="380" y="60" width="300" height="140" rx="6" fill="#fee2e2" stroke="#111" stroke-width="1.5"/>
+  <text x="530.0" y="128" text-anchor="middle" font-family="Helvetica,Arial,sans-serif" font-size="11" font-weight="700" fill="#111">Antigenic SHIFT</text>
+  <text x="530.0" y="142" text-anchor="middle" font-family="Helvetica,Arial,sans-serif" font-size="10" fill="#333">reassortment</text>  <text x="530" y="120" text-anchor="middle" font-family="Helvetica,Arial,sans-serif" font-size="11" fill="#333">new subtype; pandemics</text>  <text x="530" y="145" text-anchor="middle" font-family="Helvetica,Arial,sans-serif" font-size="11" fill="#333">segmented RNA + co-infection</text>  <text x="360" y="260" text-anchor="middle" font-family="Helvetica,Arial,sans-serif" font-size="12" fill="#333">Drift = vaccine update yearly; Shift = novel pandemic strain</text>
+</svg>

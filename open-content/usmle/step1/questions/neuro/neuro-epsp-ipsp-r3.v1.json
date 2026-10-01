@@ -1,0 +1,74 @@
+{
+  "id": "bank:usmle-step1:neuro-epsp-ipsp-r3:v1",
+  "rotation": "usmle-step1-open",
+  "ladderId": "epsp-ipsp",
+  "topics": [
+    "EPSP",
+    "IPSP",
+    "spinal cord",
+    "ladder:epsp-ipsp"
+  ],
+  "moduleNodes": [
+    "usmle/step1",
+    "usmle/step1/neuroscience"
+  ],
+  "questionType": "mechanism",
+  "difficulty": "hard",
+  "stem": "A 41-year-old man with stiff-person syndrome has antibodies that reduce glycine release from spinal inhibitory interneurons. Intracellular recordings from an affected alpha motor neuron show that concurrent excitatory inputs now produce firing at lower stimulus intensity than in healthy controls, and postsynaptic hyperpolarization is absent.\n\nWhich of the following events is lost and best explains why excitatory input more readily reaches threshold?",
+  "options": [
+    {
+      "label": "A",
+      "text": "Hyperpolarizing chloride-mediated signaling at the postsynaptic membrane",
+      "isCorrect": true,
+      "misconception": "None; without inhibitory hyperpolarization, net input is less opposed and excitatory potentials summate to threshold more easily.",
+      "explanation": "Glycinergic inhibition hyperpolarizes motor neurons via Cl− entry; losing it removes opposition so excitatory depolarizations face less resistance and trigger action potentials at lower stimulus strength."
+    },
+    {
+      "label": "B",
+      "text": "Loss of excitatory postsynaptic potentials at the neuromuscular junction",
+      "isCorrect": false,
+      "misconception": "The peripheral synapse is being blamed for a central integration defect.",
+      "explanation": "The neuromuscular junction is downstream of the motor neuron spike; the defect here is reduced central inhibition, not loss of EPSPs at the muscle endplate."
+    },
+    {
+      "label": "C",
+      "text": "Loss of saltatory conduction along the motor axon",
+      "isCorrect": false,
+      "misconception": "Axonal propagation is being substituted for synaptic integration.",
+      "explanation": "Saltatory conduction affects spike propagation; the recording shows changed synaptic potentials at the soma before firing."
+    },
+    {
+      "label": "D",
+      "text": "Loss of absolute refractory period in voltage-gated sodium channels",
+      "isCorrect": false,
+      "misconception": "Channel refractoriness is being confused with synaptic inhibition.",
+      "explanation": "Refractory periods limit spike frequency after firing; the easier threshold crossing here reflects absent inhibitory IPSPs, not altered Na+ channel recovery."
+    },
+    {
+      "label": "E",
+      "text": "Loss of resting membrane potential maintained by the sodium-potassium pump",
+      "isCorrect": false,
+      "misconception": "Baseline polarization is being treated as the missing inhibitory event.",
+      "explanation": "The pump sets resting potential; the disease reduces glycine-mediated IPSPs, not pump activity."
+    }
+  ],
+  "context": "Learning objective: link loss of glycinergic IPSPs to easier motor-neuron firing. IPSPs hyperpolarize; without them, EPSPs summate to threshold more readily — the integrative basis of disinhibition.",
+  "cite": "openstax-anatomy-physiology#neuro-epsp-ipsp",
+  "publicUsmle": {
+    "schemaVersion": 1,
+    "origin": "generated",
+    "itemText": {
+      "licence": "CC-BY-4.0",
+      "attribution": "MD3 contributors"
+    },
+    "evidence": {
+      "kind": "passage",
+      "sourceId": "openstax-anatomy-physiology",
+      "passageId": "neuro-epsp-ipsp",
+      "licence": {
+        "cls": "foss",
+        "id": "cc-by-4.0"
+      }
+    }
+  }
+}

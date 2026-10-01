@@ -1,0 +1,265 @@
+{
+  "schemaVersion": 1,
+  "id": "gamsat:s3:acid-base-titration",
+  "section": "s3",
+  "title": "Acid-Base Titration and Buffer Systems",
+  "domain": "acid-base-titration",
+  "passage": "A chemistry student performs a titration experiment to determine the concentration and identity of an unknown weak acid, HA. The student pipettes 25.0 mL of the unknown acid solution into a flask and titrates it with 0.100 M sodium hydroxide (NaOH) solution, monitoring pH with a digital pH meter.\n\nThe following data were collected:\n\n| Volume NaOH added (mL) | pH |\n|------------------------|-----|\n| 0.0 | 3.05 |\n| 5.0 | 4.15 |\n| 10.0 | 4.57 |\n| 15.0 | 4.92 |\n| 20.0 | 5.35 |\n| 25.0 | 5.98 |\n| 28.0 | 6.75 |\n| 29.0 | 7.35 |\n| 30.0 | 8.72 |\n| 31.0 | 10.50 |\n| 35.0 | 11.68 |\n| 40.0 | 12.05 |\n\nThe titration curve shows a gradual pH increase initially, followed by a sharp increase near the equivalence point, and then a gradual increase again at high volumes of added base.\n\nThe student identifies the equivalence point at approximately 30.0 mL of NaOH added, where pH = 8.72. At the half-equivalence point (15.0 mL NaOH added), the pH is 4.92.\n\nTo verify the acid's identity, the student prepares a buffer solution by mixing 50.0 mL of the unknown acid with 50.0 mL of 0.100 M NaOH. The resulting solution has pH = 4.95. When 10.0 mL of 0.100 M HCl is added to this buffer, the pH changes to 4.72.\n\nThe student considers several weak acids as possibilities:\n- Formic acid (HCOOH): pKₐ = 3.75\n- Acetic acid (CH₃COOH): pKₐ = 4.76\n- Benzoic acid (C₆H₅COOH): pKₐ = 4.20\n- Butyric acid (C₃H₇COOH): pKₐ = 4.82",
+  "questions": [
+    {
+      "id": "gamsat:s3:acid-base-titration:q1",
+      "moves": [
+        "s3-stoichiometric-ratio"
+      ],
+      "stem": "What is the concentration of the unknown acid solution?",
+      "options": [
+        {
+          "label": "A",
+          "text": "0.050 M",
+          "isCorrect": false
+        },
+        {
+          "label": "B",
+          "text": "0.100 M",
+          "isCorrect": false
+        },
+        {
+          "label": "C",
+          "text": "0.120 M",
+          "isCorrect": true
+        },
+        {
+          "label": "D",
+          "text": "0.150 M",
+          "isCorrect": false
+        }
+      ],
+      "explanation": "At equivalence, moles acid = moles base. Moles NaOH = 0.100 M x 0.0300 L = 0.00300 mol = moles HA, so concentration = 0.00300 mol / 0.0250 L = 0.120 M. The equivalence point at 30.0 mL is identified by the sharp pH jump — this inflection point, not pH = 7, defines complete neutralisation.",
+      "difficulty": "medium"
+    },
+    {
+      "id": "gamsat:s3:acid-base-titration:q2",
+      "moves": [
+        "s3-stoichiometric-ratio"
+      ],
+      "stem": "Based on the pH at the half-equivalence point, what is the pKₐ of the unknown acid?",
+      "options": [
+        {
+          "label": "A",
+          "text": "3.75",
+          "isCorrect": false
+        },
+        {
+          "label": "B",
+          "text": "4.20",
+          "isCorrect": false
+        },
+        {
+          "label": "C",
+          "text": "4.76",
+          "isCorrect": false
+        },
+        {
+          "label": "D",
+          "text": "4.92",
+          "isCorrect": true
+        }
+      ],
+      "explanation": "At 15.0 mL (half of the 30.0 mL equivalence point), exactly half the acid is neutralised so [HA] = [A-], and Henderson-Hasselbalch simplifies to pH = pKa + log(1) = pKa = 4.92. The other values (3.75, 4.20, 4.76) are pKa values of candidate acids from the passage, not the experimental finding. This relationship — pH = pKa at the half-equivalence point — lets you read pKa directly off a titration curve.",
+      "difficulty": "medium"
+    },
+    {
+      "id": "gamsat:s3:acid-base-titration:q3",
+      "moves": [
+        "s3-stoichiometric-ratio"
+      ],
+      "stem": "Why is the pH at the equivalence point (8.72) greater than 7.00?",
+      "options": [
+        {
+          "label": "A",
+          "text": "The weak acid has not been completely neutralised at that point",
+          "isCorrect": false
+        },
+        {
+          "label": "B",
+          "text": "The conjugate base A⁻ undergoes hydrolysis to produce OH⁻",
+          "isCorrect": true
+        },
+        {
+          "label": "C",
+          "text": "Excess NaOH is present in solution",
+          "isCorrect": false
+        },
+        {
+          "label": "D",
+          "text": "The buffer capacity is exceeded",
+          "isCorrect": false
+        }
+      ],
+      "explanation": "At equivalence, only the conjugate base A- and Na⁺ remain. A- undergoes hydrolysis (A- + H₂O -> HA + OH⁻), producing hydroxide ions and making pH > 7. Equivalence means full neutralisation so the acid is completely consumed, and no excess NaOH has been added. The pattern: weak acid + strong base gives pH > 7 at equivalence, weak base + strong acid gives pH < 7, and only strong-strong gives exactly 7.",
+      "difficulty": "medium"
+    },
+    {
+      "id": "gamsat:s3:acid-base-titration:q4",
+      "moves": [
+        "s3-prediction-from-model",
+        "s3-table-comparison"
+      ],
+      "stem": "Which acid is most likely the unknown acid based on the experimental pKₐ value?",
+      "options": [
+        {
+          "label": "A",
+          "text": "Formic acid",
+          "isCorrect": false
+        },
+        {
+          "label": "B",
+          "text": "Acetic acid",
+          "isCorrect": false
+        },
+        {
+          "label": "C",
+          "text": "Benzoic acid",
+          "isCorrect": false
+        },
+        {
+          "label": "D",
+          "text": "Butyric acid",
+          "isCorrect": true
+        }
+      ],
+      "explanation": "The experimental pKa of 4.92 is closest to butyric acid (pKa = 4.82), with only 0.10 pH units difference — well within experimental error. Formic acid (3.75), benzoic acid (4.20), and acetic acid (4.76) all differ by substantially more, and the buffer verification pH of 4.95 further supports butyric acid. Experimental pKa values rarely match textbook values exactly; a difference of +/-0.1-0.2 pH units is typical.",
+      "difficulty": "medium"
+    },
+    {
+      "id": "gamsat:s3:acid-base-titration:q5",
+      "moves": [
+        "s3-equilibrium-shift",
+        "s3-stoichiometric-ratio"
+      ],
+      "stem": "In the buffer verification experiment, what is the approximate ratio of [A⁻]/[HA] before HCl is added?",
+      "options": [
+        {
+          "label": "A",
+          "text": "1:10",
+          "isCorrect": false
+        },
+        {
+          "label": "B",
+          "text": "1:1",
+          "isCorrect": true
+        },
+        {
+          "label": "C",
+          "text": "10:1",
+          "isCorrect": false
+        },
+        {
+          "label": "D",
+          "text": "100:1",
+          "isCorrect": false
+        }
+      ],
+      "explanation": "The buffer pH of 4.95 is very close to the pKa of 4.92, so by Henderson-Hasselbalch, log([A-]/[HA]) ≈ 0.03, meaning [A-]/[HA] ≈ 1. The ratios 1:10, 10:1, and 100:1 would give pH values approximately -1, +1, and +2 units from pKa respectively. Each 10-fold change in [A-]/[HA] shifts pH by exactly 1 unit from pKa.",
+      "difficulty": "medium"
+    },
+    {
+      "id": "gamsat:s3:acid-base-titration:q6",
+      "moves": [
+        "s3-equilibrium-shift"
+      ],
+      "stem": "When 10.0 mL of 0.100 M HCl is added to the buffer, the pH changes from 4.95 to 4.72. What is the buffer capacity demonstrated by this change?",
+      "options": [
+        {
+          "label": "A",
+          "text": "Very low (pH change > 1 unit)",
+          "isCorrect": false
+        },
+        {
+          "label": "B",
+          "text": "Moderate (pH change 0.2-0.5 units)",
+          "isCorrect": true
+        },
+        {
+          "label": "C",
+          "text": "High (pH change &lt; 0.1 units)",
+          "isCorrect": false
+        },
+        {
+          "label": "D",
+          "text": "Cannot be determined from given information",
+          "isCorrect": false
+        }
+      ],
+      "explanation": "The pH change of 0.23 units (4.95 to 4.72) upon adding 1.00 mmol HCl is moderate — the buffer resists the change but not maximally. A change greater than 1 unit would indicate very low capacity, while less than 0.1 units would indicate high capacity. Buffers work best within +/-1 pH unit of their pKa — outside this range, one component is depleted and capacity drops sharply.",
+      "difficulty": "medium"
+    },
+    {
+      "id": "gamsat:s3:acid-base-titration:q7",
+      "moves": [
+        "s3-equilibrium-shift"
+      ],
+      "stem": "At what volume of NaOH added would the buffering capacity be optimal?",
+      "options": [
+        {
+          "label": "A",
+          "text": "0 mL (initial acid)",
+          "isCorrect": false
+        },
+        {
+          "label": "B",
+          "text": "15 mL (half-equivalence point)",
+          "isCorrect": true
+        },
+        {
+          "label": "C",
+          "text": "30 mL (equivalence point)",
+          "isCorrect": false
+        },
+        {
+          "label": "D",
+          "text": "40 mL (excess base)",
+          "isCorrect": false
+        }
+      ],
+      "explanation": "At the half-equivalence point (15 mL), [HA] = [A-] and the buffer can resist pH changes equally in both directions — this is maximum buffer capacity. At 0 mL there is no conjugate base, at equivalence (30 mL) no acid remains, and with excess base (40 mL) no buffer system exists. Blood pH of 7.4 is actually outside bicarbonate's optimal range (pKa 6.1), but this is compensated by the open CO₂ system.",
+      "difficulty": "medium"
+    },
+    {
+      "id": "gamsat:s3:acid-base-titration:q8",
+      "moves": [
+        "s3-stoichiometric-ratio"
+      ],
+      "stem": "If the titration were performed with a strong acid (HCl) instead of a weak acid, how would the pH at the equivalence point differ?",
+      "options": [
+        {
+          "label": "A",
+          "text": "pH would be less than 7",
+          "isCorrect": false
+        },
+        {
+          "label": "B",
+          "text": "pH would equal exactly 7",
+          "isCorrect": true
+        },
+        {
+          "label": "C",
+          "text": "pH would be greater than 7",
+          "isCorrect": false
+        },
+        {
+          "label": "D",
+          "text": "pH would equal the pKₐ of HCl",
+          "isCorrect": false
+        }
+      ],
+      "explanation": "HCl + NaOH produces NaCl + H₂O. At equivalence, Na⁺ and Cl⁻ remain, and neither ion hydrolyses because both derive from strong acid and strong base, giving pH = 7.00 exactly. This contrasts with the weak acid titration in the passage where the conjugate base hydrolyses (pH = 8.72). The equivalence point pattern: strong-strong = 7, weak acid-strong base > 7, strong acid-weak base < 7 — all a direct consequence of conjugate hydrolysis.",
+      "difficulty": "medium"
+    }
+  ],
+  "licence": {
+    "id": "CC-BY-4.0",
+    "attribution": "MD3 contributors"
+  },
+  "origin": "authored"
+}

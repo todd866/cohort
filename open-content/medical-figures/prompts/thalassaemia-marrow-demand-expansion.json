@@ -1,0 +1,27 @@
+{
+  "schemaVersion": 1,
+  "figureId": "thalassaemia-marrow-demand-expansion",
+  "sourceFacts": [
+    "Untreated or poorly transfused severe beta-thalassaemia can cause marked anaemia and expansion of erythroid marrow.",
+    "Expansion of marrow can produce skeletal and craniofacial changes, including frontal bossing."
+  ],
+  "clinicalSources": [
+    {
+      "title": "GeneReviews: Beta-Thalassemia",
+      "url": "https://www.ncbi.nlm.nih.gov/books/NBK1426/"
+    }
+  ],
+  "specificationFiles": [
+    "scaffolds/thalassaemia-marrow-demand-expansion.json"
+  ],
+  "prompt": "Create an entirely original medical teaching concept illustration, landscape 3:2, warm hand-painted watercolour and gouache on ivory paper, fine ink contours, restrained navy labels, muted teal, ochre and peach accents, generous whitespace. Gentle storybook warmth with the precision and legibility of an educational atlas. Use written instructions only; no image reference. Meaningful visual relationships and sparse short labels, not paragraphs in boxes. NO internal anatomy, organ/eye/ear/brain/tissue cutaways, anatomical pathways, bones, diagnostic images, fake scans, realistic lesions, photorealistic skin, glossy wet flesh or 3D tissue. Neutral symbols or fully clothed surface poses only where specified. Preserve every direction, relationship and count in the explicit structure. Title and labels exactly as requested, no additional prose. Footer 'Educational schematic'. No logo or watermark.\n\nTitle 'Thalassaemia: demand expands the marrow'. Four simple objects on a left-to-right causal conveyor. FIRST a low fill-level gauge labelled 'Severe anaemia'. SECOND a small factory control lever pushed upward, labelled 'More production drive'. THIRD a flat warehouse icon growing from a small outlined footprint to a larger teal footprint, labelled 'Marrow expansion'. FOURTH a simple firm rectangular frame being pushed outward by two abstract outward arrows, label 'Bone shape can change'. These are industrial demand/capacity metaphors; no red cells, bone cross-section, skull, tissue, organs or patient faces. Bottom qualifying text 'Untreated or poorly transfused disease'. Clear one-way arrows between stages; no claim all anaemia or all treated thalassaemia causes these changes.",
+  "generation": {
+    "tool": "built-in image_gen",
+    "model": null,
+    "referenceAssetIds": [],
+    "externalReferenceImages": [],
+    "specificationFiles": [
+      "scaffolds/thalassaemia-marrow-demand-expansion.json"
+    ]
+  }
+}

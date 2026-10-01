@@ -1,0 +1,118 @@
+{
+  "schemaVersion": 1,
+  "figureId": "tetralogy-resistance-split-model",
+  "kind": "conceptual",
+  "sourceFacts": [
+    {
+      "id": "fact-1",
+      "fact": "Obstruction to pulmonary flow in tetralogy diverts blood across the ventricular communication toward the aorta.",
+      "sources": [
+        {
+          "title": "RCH Cardiology: Tetralogy of Fallot",
+          "url": "https://www.rch.org.au/cardiology/heart_defects/Fallots_Tetralogy/"
+        },
+        {
+          "title": "Sydney Children’s Hospitals Network: Tetralogy of Fallot and hypercyanotic spells",
+          "url": "https://www.schn.health.nsw.gov.au/factsheets/tetralogy-fallot-tof-and-hypercyanotic-spells"
+        }
+      ]
+    },
+    {
+      "id": "fact-2",
+      "fact": "Reduced pulmonary flow and increased right-to-left bypass worsen oxygenation.",
+      "sources": [
+        {
+          "title": "RCH Cardiology: Tetralogy of Fallot",
+          "url": "https://www.rch.org.au/cardiology/heart_defects/Fallots_Tetralogy/"
+        },
+        {
+          "title": "Sydney Children’s Hospitals Network: Tetralogy of Fallot and hypercyanotic spells",
+          "url": "https://www.schn.health.nsw.gov.au/factsheets/tetralogy-fallot-tof-and-hypercyanotic-spells"
+        }
+      ]
+    },
+    {
+      "id": "fact-3",
+      "fact": "The diagram isolates relative resistance at a flow split and is not an anatomical reconstruction.",
+      "sources": [
+        {
+          "title": "RCH Cardiology: Tetralogy of Fallot",
+          "url": "https://www.rch.org.au/cardiology/heart_defects/Fallots_Tetralogy/"
+        },
+        {
+          "title": "Sydney Children’s Hospitals Network: Tetralogy of Fallot and hypercyanotic spells",
+          "url": "https://www.schn.health.nsw.gov.au/factsheets/tetralogy-fallot-tof-and-hypercyanotic-spells"
+        }
+      ]
+    }
+  ],
+  "nodes": [
+    {
+      "id": "input",
+      "shape": "single stream into fork",
+      "label": "Incoming flow"
+    },
+    {
+      "id": "lung",
+      "shape": "upper branch",
+      "label": "Toward lungs"
+    },
+    {
+      "id": "body",
+      "shape": "lower branch",
+      "label": "Bypass to body"
+    },
+    {
+      "id": "restriction",
+      "shape": "gate on upper branch",
+      "label": "Greater obstruction"
+    }
+  ],
+  "edges": [
+    {
+      "from": "input",
+      "to": "lung",
+      "meaning": "pulmonary flow route"
+    },
+    {
+      "from": "input",
+      "to": "body",
+      "meaning": "right-to-left bypass route exists"
+    },
+    {
+      "from": "restriction",
+      "to": "lung",
+      "meaning": "more restriction reduces pulmonary flow"
+    },
+    {
+      "from": "restriction",
+      "to": "body",
+      "meaning": "relative bypass increases"
+    }
+  ],
+  "labels": [
+    "More obstruction diverts more flow",
+    "Flow principle in tetralogy",
+    "Less obstruction",
+    "Greater obstruction",
+    "Toward lungs",
+    "Bypass to body",
+    "Less lung flow; more bypass",
+    "Flow analogy, not a heart map"
+  ],
+  "forbiddenAnatomy": [
+    "Organs, heart chambers, named-vessel topology, vascular/cardiac cutaways, clinical photos"
+  ],
+  "validation": {
+    "status": "verified",
+    "method": "source-and-conceptual-structure-review",
+    "checks": [
+      "Both diagrams have same input and two output routes, one toward lungs one bypass body.",
+      "Restrictor only in lung branch; severe scenario has narrower lung and wider bypass arrows.",
+      "No anatomic chambers, vessels or misplaced shunts drawn.",
+      "No numerical flow conservation or oxygen saturation claims."
+    ],
+    "pixelReviewStatus": "verified",
+    "pixelReviewNotes": "Pixel check: each side has one input splitting into exactly two abstract outputs. Greater obstruction nearly closes only the toward-lungs gate, narrows that arrow and enlarges bypass-to-body flow. Both directions are downstream and labels remain matched; explicit flow-analogy caption avoids a cardiac anatomy claim."
+  }
+}

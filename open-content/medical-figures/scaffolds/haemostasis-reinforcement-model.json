@@ -1,0 +1,74 @@
+{
+  "schemaVersion": 1,
+  "figureId": "haemostasis-reinforcement-model",
+  "kind": "conceptual",
+  "sourceFacts": [
+    {
+      "id": "fact-1",
+      "fact": "Platelets aggregate to form a plug.",
+      "sources": [
+        {
+          "title": "NHLBI — How does blood clot?",
+          "url": "https://www.nhlbi.nih.gov/health/clotting-disorders/how-blood-clots"
+        }
+      ]
+    },
+    {
+      "id": "fact-2",
+      "fact": "Fibrin forms a mesh that reinforces and stabilises the plug.",
+      "sources": [
+        {
+          "title": "NHLBI — How does blood clot?",
+          "url": "https://www.nhlbi.nih.gov/health/clotting-disorders/how-blood-clots"
+        }
+      ]
+    }
+  ],
+  "nodes": [
+    {
+      "id": "frame-left",
+      "shape": "two separated neutral grey bars, explicitly artificial frame",
+      "label": "Conceptual injury gap"
+    },
+    {
+      "id": "plug",
+      "shape": "cluster of purple beads bridging gap",
+      "label": "Platelet plug"
+    },
+    {
+      "id": "mesh",
+      "shape": "teal interlacing strands through identical beads",
+      "label": "Fibrin reinforcement"
+    }
+  ],
+  "edges": [
+    {
+      "from": "plug",
+      "to": "mesh",
+      "meaning": "coagulation generates fibrin reinforcement"
+    }
+  ],
+  "labels": [
+    "Platelet plug",
+    "Fibrin reinforcement",
+    "Platelets gather",
+    "Fibrin strengthens the plug"
+  ],
+  "forbiddenAnatomy": [
+    "Organs",
+    "Vessel walls and endothelium",
+    "Tissue layers and anatomical cutaways"
+  ],
+  "validation": {
+    "status": "verified",
+    "method": "source-and-conceptual-structure-review",
+    "checks": [
+      "Two identical artificial gaps contain the same purple bead plug.",
+      "Only the second plug has an interlacing teal mesh.",
+      "No tissue, endothelium or vessel section.",
+      "Arrow describes reinforcement rather than platelets turning into fibrin."
+    ],
+    "pixelReviewStatus": "verified",
+    "pixelReviewNotes": "Pixel-to-specification review: two pairs of clearly artificial grey blocks contain purple bead plugs; only the second has a teal interlacing mesh anchored across both blocks. Coagulation adds fibrin arrow preserves platelets as distinct purple objects. No tissue layers or vessel wall; abstract injury model is explicit."
+  }
+}

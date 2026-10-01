@@ -1,0 +1,73 @@
+{
+  "id": "bank:usmle-step1:resp-surfactant-source-r1:v1",
+  "rotation": "usmle-step1-open",
+  "ladderId": "surfactant-nrds",
+  "topics": [
+    "surfactant",
+    "type II alveolar cell",
+    "ladder:surfactant-nrds"
+  ],
+  "moduleNodes": [
+    "usmle/step1",
+    "usmle/step1/respiratory"
+  ],
+  "questionType": "mechanism",
+  "difficulty": "easy",
+  "stem": "Which of the following cell types secretes pulmonary surfactant that reduces alveolar surface tension?",
+  "options": [
+    {
+      "label": "A",
+      "text": "Type I alveolar epithelial cells",
+      "isCorrect": false,
+      "misconception": "The gas-exchange epithelium is being confused with the secretory cell.",
+      "explanation": "Type I cells form the thin gas-exchange surface; surfactant comes from type II alveolar cells."
+    },
+    {
+      "label": "B",
+      "text": "Type II alveolar epithelial cells",
+      "isCorrect": true,
+      "misconception": "None; type II cells secrete surfactant that lowers surface tension.",
+      "explanation": "Type II alveolar cells secrete pulmonary surfactant, which reduces the surface tension of the alveoli and stabilizes them against collapse."
+    },
+    {
+      "label": "C",
+      "text": "Alveolar macrophages",
+      "isCorrect": false,
+      "misconception": "A phagocyte is being treated as the surfactant source.",
+      "explanation": "Alveolar macrophages clear debris; they do not secrete the surfactant that reduces surface tension."
+    },
+    {
+      "label": "D",
+      "text": "Bronchial smooth-muscle cells",
+      "isCorrect": false,
+      "misconception": "Airway muscle is being confused with alveolar secretory epithelium.",
+      "explanation": "Smooth muscle regulates airway caliber; surfactant is an alveolar type II epithelial secretion."
+    },
+    {
+      "label": "E",
+      "text": "Pulmonary capillary endothelial cells",
+      "isCorrect": false,
+      "misconception": "The vascular endothelium is being cast as the surfactant source.",
+      "explanation": "Endothelium lines capillaries for gas exchange; surfactant is secreted into the alveolar lining by type II cells."
+    }
+  ],
+  "context": "Learning objective: identify the surfactant-secreting cell. Type II alveolar cells secrete pulmonary surfactant that reduces alveolar surface tension.",
+  "cite": "openstax-anatomy-physiology#resp-type-ii-surfactant",
+  "publicUsmle": {
+    "schemaVersion": 1,
+    "origin": "generated",
+    "itemText": {
+      "licence": "CC-BY-4.0",
+      "attribution": "MD3 contributors"
+    },
+    "evidence": {
+      "kind": "passage",
+      "sourceId": "openstax-anatomy-physiology",
+      "passageId": "resp-type-ii-surfactant",
+      "licence": {
+        "cls": "foss",
+        "id": "cc-by-4.0"
+      }
+    }
+  }
+}

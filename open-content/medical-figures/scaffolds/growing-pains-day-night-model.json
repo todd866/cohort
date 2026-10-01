@@ -1,0 +1,94 @@
+{
+  "schemaVersion": 1,
+  "figureId": "growing-pains-day-night-model",
+  "kind": "conceptual",
+  "sourceFacts": [
+    {
+      "id": "fact-1",
+      "fact": "Typical symptoms are bilateral leg aches in the evening or night that resolve by morning.",
+      "sources": [
+        {
+          "title": "NHS: Growing pains",
+          "url": "https://www.nhs.uk/conditions/growing-pains/"
+        }
+      ]
+    },
+    {
+      "id": "fact-2",
+      "fact": "Morning pain, limp, swelling and systemic symptoms warrant medical assessment.",
+      "sources": [
+        {
+          "title": "NHS: Growing pains",
+          "url": "https://www.nhs.uk/conditions/growing-pains/"
+        }
+      ]
+    },
+    {
+      "id": "fact-3",
+      "fact": "The cause is unknown; the name does not mean pain is caused by bone growth.",
+      "sources": [
+        {
+          "title": "NHS: Growing pains",
+          "url": "https://www.nhs.uk/conditions/growing-pains/"
+        }
+      ]
+    }
+  ],
+  "nodes": [
+    {
+      "id": "night",
+      "shape": "moon and two slippers with ache sparks",
+      "label": "Both legs ache at night"
+    },
+    {
+      "id": "day",
+      "shape": "sun and two shoes in motion",
+      "label": "Well and active by morning"
+    },
+    {
+      "id": "atypical",
+      "shape": "red flags",
+      "label": "Morning pain; limp; swelling; unwell"
+    },
+    {
+      "id": "review",
+      "shape": "red-flag strip",
+      "label": "Reassess"
+    }
+  ],
+  "edges": [
+    {
+      "from": "night",
+      "to": "day",
+      "meaning": "typical overnight resolution"
+    },
+    {
+      "from": "atypical",
+      "to": "review",
+      "meaning": "atypical pattern requires reassessment"
+    }
+  ],
+  "labels": [
+    "A pattern that resolves by morning",
+    "Typical growing pains",
+    "Evening / night",
+    "Both legs may ache",
+    "Morning / day",
+    "Pain settles; normal activity",
+    "Reassess if: morning pain • limp • swelling • unwell"
+  ],
+  "forbiddenAnatomy": [
+    "Organs, joints, bones, tissue layers, histology, clinical photographs"
+  ],
+  "validation": {
+    "status": "verified",
+    "method": "source-and-conceptual-structure-review",
+    "checks": [
+      "Both slippers highlighted at night; daytime activity free of pain.",
+      "Red flags distinct from typical pattern.",
+      "No causal claim about bone growth and no internal joint imagery."
+    ],
+    "pixelReviewStatus": "verified",
+    "pixelReviewNotes": "Both night slippers have ache marks; morning trainers and ball show normal activity without pain. The rightward arrow and night/day labels agree. Red-flag strip explicitly calls for reassessment with morning pain, limp, swelling or being unwell. No bone-growth mechanism or organ/joint anatomy invented."
+  }
+}

@@ -1,0 +1,73 @@
+{
+  "id": "bank:usmle-step1:resp-bohr-effect-r1:v1",
+  "rotation": "usmle-step1-open",
+  "ladderId": "bohr-effect",
+  "difficulty": "easy",
+  "topics": [
+    "Bohr effect",
+    "hemoglobin",
+    "ladder:bohr-effect"
+  ],
+  "moduleNodes": [
+    "usmle/step1",
+    "usmle/step1/respiratory"
+  ],
+  "questionType": "mechanism",
+  "stem": "Which change promotes oxygen dissociation from hemoglobin?",
+  "options": [
+    {
+      "label": "A",
+      "text": "A more acidic blood pH",
+      "isCorrect": true,
+      "misconception": "None; lower, more acidic pH promotes O2 release from hemoglobin.",
+      "explanation": "A lower, more acidic pH promotes oxygen dissociation from hemoglobin."
+    },
+    {
+      "label": "B",
+      "text": "A more basic blood pH",
+      "isCorrect": false,
+      "misconception": "Alkalosis is being treated as the unloading signal.",
+      "explanation": "A higher, more basic pH inhibits oxygen dissociation from hemoglobin."
+    },
+    {
+      "label": "C",
+      "text": "A fall in tissue temperature",
+      "isCorrect": false,
+      "misconception": "Cooling is being confused with the acid-driven Bohr effect.",
+      "explanation": "The grounded unloading cue here is acidic pH, not a temperature decrease."
+    },
+    {
+      "label": "D",
+      "text": "A rise in inspired oxygen only",
+      "isCorrect": false,
+      "misconception": "Raised alveolar PO2 is being confused with hemoglobin unloading.",
+      "explanation": "Higher inspired oxygen raises loading pressure; acidic pH promotes dissociation."
+    },
+    {
+      "label": "E",
+      "text": "A decrease in 2,3-BPG alone",
+      "isCorrect": false,
+      "misconception": "A left-shift signal is being treated as unloading.",
+      "explanation": "Lower 2,3-BPG favors holding oxygen; acidic pH promotes dissociation."
+    }
+  ],
+  "context": "Learning objective: recall that acidic pH promotes oxygen dissociation from hemoglobin (Bohr effect).",
+  "cite": "openstax-anatomy-physiology#resp-bohr-effect",
+  "publicUsmle": {
+    "schemaVersion": 1,
+    "origin": "generated",
+    "itemText": {
+      "licence": "CC-BY-4.0",
+      "attribution": "MD3 contributors"
+    },
+    "evidence": {
+      "kind": "passage",
+      "sourceId": "openstax-anatomy-physiology",
+      "passageId": "resp-bohr-effect",
+      "licence": {
+        "cls": "foss",
+        "id": "cc-by-4.0"
+      }
+    }
+  }
+}

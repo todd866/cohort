@@ -1,0 +1,88 @@
+{
+  "schemaVersion": 1,
+  "figureId": "viral-wheeze-calendar-model",
+  "kind": "conceptual",
+  "sourceFacts": [
+    {
+      "id": "fact-1",
+      "fact": "Viral infections commonly trigger preschool wheeze.",
+      "sources": [
+        {
+          "title": "Royal United Hospitals Bath: Preschool wheeze",
+          "url": "https://www.ruh.nhs.uk/patients/patient_information/PAE007_Preschool_wheeze.pdf"
+        }
+      ]
+    },
+    {
+      "id": "fact-2",
+      "fact": "Most preschool children with this pattern are well between infections.",
+      "sources": [
+        {
+          "title": "Royal United Hospitals Bath: Preschool wheeze",
+          "url": "https://www.ruh.nhs.uk/patients/patient_information/PAE007_Preschool_wheeze.pdf"
+        }
+      ]
+    },
+    {
+      "id": "fact-3",
+      "fact": "The schematic depicts a history pattern, not a diagnosis or fixed episode length.",
+      "sources": [
+        {
+          "title": "Royal United Hospitals Bath: Preschool wheeze",
+          "url": "https://www.ruh.nhs.uk/patients/patient_information/PAE007_Preschool_wheeze.pdf"
+        }
+      ]
+    }
+  ],
+  "nodes": [
+    {
+      "id": "episode1",
+      "shape": "virus badge and sound ripple",
+      "label": "Viral infection + wheeze"
+    },
+    {
+      "id": "interval",
+      "shape": "clear calendar tiles and play blocks",
+      "label": "Well between episodes"
+    },
+    {
+      "id": "episode2",
+      "shape": "virus badge and sound ripple",
+      "label": "Viral infection + wheeze"
+    }
+  ],
+  "edges": [
+    {
+      "from": "episode1",
+      "to": "interval",
+      "meaning": "symptoms settle between infections"
+    },
+    {
+      "from": "interval",
+      "to": "episode2",
+      "meaning": "another viral-triggered episode can occur"
+    }
+  ],
+  "labels": [
+    "Episodes and intervals",
+    "Viral infection + wheeze",
+    "Well between episodes",
+    "Ask about interval symptoms",
+    "Illustrative pattern, not a diagnosis"
+  ],
+  "forbiddenAnatomy": [
+    "Organs, tissue layers, microscopy or clinical-recording simulation"
+  ],
+  "validation": {
+    "status": "verified",
+    "method": "source-and-conceptual-structure-review",
+    "checks": [
+      "Wheeze clusters sit with cold symbols; intervening blocks visually clear.",
+      "Calendar unnumbered; no fixed duration implied.",
+      "Does not label all viral wheeze as non-asthma.",
+      "Virus badges and explicit infection words replace all rain/weather imagery."
+    ],
+    "pixelReviewStatus": "verified",
+    "pixelReviewNotes": "Revised after independent QA. Both episode clusters now use explicit virus badges and text Viral infection + wheeze; there are no clouds, rain or weather cues. Clear well interval and rightward unnumbered time arrow preserved. Pattern-not-diagnosis qualifier remains. Previous weather-ambiguous hash archived as superseded."
+  }
+}

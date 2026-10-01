@@ -1,0 +1,39 @@
+{
+  "figureId": "obstruction-flow-volume-concept",
+  "tool": "built-in image_gen",
+  "model": null,
+  "referenceAssetIds": [],
+  "externalReferenceImages": [],
+  "prompt": "Original educational conceptual illustration, landscape 3:2. Warm ivory paper, sophisticated hand-painted gouache/watercolour, confident fine brown outlines, navy lettering, restrained teal, coral and amber. Editorial science illustration with spacious composition and large legible labels. The explanatory structure must carry the meaning visually: molecules, objects, geometry or flow; never paragraphs in boxes. No organs, regional anatomy, teeth or joint cutaways, tissue layers, invented histology, diagnostic photographs, radiographs or patient data. All symbols are explicitly conceptual. Footer: 'Conceptual teaching model • Not to scale'. Title 'The scooped expiratory limb'. One large clean schematic graph on ivory paper. Vertical axis 'Expiratory flow' pointing UP; horizontal axis 'Exhaled volume' pointing RIGHT. No clinical numbers, tick values or units. Plot only positive expiratory limb above the baseline: both curves start at lower left, rise sharply to an early peak close to the left, then descend to zero at the far right. A thin dashed grey 'Reference shape' has a nearly straight descending segment. A solid coral 'Scooped descent' has an early lower peak, then drops steeply and smoothly bows BELOW the dashed reference through mid-expiration, progressively flattening toward the right baseline: its descending segment is clearly concave UP (scooped inward toward the baseline), never a convex arch. Label leader ends in scooped descending segment. Small directional arrow on solid curve points down-right. Bottom notes 'Expiratory limb only' and 'Schematic, not patient data'. No negative inspiratory curve, lungs, bronchi or fake clinical machine printout.",
+  "clinicalSources": [
+    {
+      "title": "ATS/ERS: Standardization of spirometry 2019",
+      "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC6794117/"
+    },
+    {
+      "title": "Merck Manual: Airflow, lung volumes and flow-volume loop",
+      "url": "https://www.merckmanuals.com/professional/pulmonary-disorders/tests-of-pulmonary-function-pft/airflow-lung-volumes-and-flow-volume-loop"
+    }
+  ],
+  "teaching": {
+    "question": "What does a scooped descending expiratory limb suggest on a flow-volume plot?",
+    "answer": "It suggests an obstructive pattern. Spirometry still requires acceptable manoeuvres and interpretation of measured indices such as FEV1/FVC; the sketch shows shape only.",
+    "imageRole": "after-reveal"
+  },
+  "title": "The scooped expiratory limb",
+  "caption": "An obstructive flow-volume pattern may have a concave descending expiratory limb. The sketch isolates that shape; interpreting spirometry also requires valid manoeuvres and the measured indices.",
+  "alt": "A qualitative expiratory flow-versus-exhaled-volume plot compares a dashed straight descent with a lower solid scooped descent after the peak.",
+  "review": {
+    "status": "pending-independent-qa",
+    "method": "agent-visual-and-source-review",
+    "notes": "Flow axis points upward, exhaled-volume axis right. Both curves rise near left then return to baseline. Solid coral descending segment lies below dashed reference and is concave upward after its early peak; direction arrow points down-right. Explicit expiratory-only and schematic-not-patient-data labels. No diagnostic recording invented.",
+    "structure": {
+      "kind": "conceptual",
+      "status": "verified",
+      "specificationFiles": [
+        "scaffolds/obstruction-flow-volume-concept.json"
+      ],
+      "notes": "Flow axis points upward, exhaled-volume axis right. Both curves rise near left then return to baseline. Solid coral descending segment lies below dashed reference and is concave upward after its early peak; direction arrow points down-right. Explicit expiratory-only and schematic-not-patient-data labels. No diagnostic recording invented."
+    }
+  }
+}

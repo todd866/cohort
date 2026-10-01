@@ -1,0 +1,71 @@
+{
+  "id": "bank:usmle-step1:micro-tetanospasmin-neurotoxin:v1",
+  "rotation": "usmle-step1-open",
+  "topics": [
+    "tetanus",
+    "tetanospasmin"
+  ],
+  "moduleNodes": [
+    "usmle/step1",
+    "usmle/step1/microbiology"
+  ],
+  "questionType": "mechanism",
+  "difficulty": "easy",
+  "stem": "Which named toxin causes the clinical manifestations of tetanus?",
+  "options": [
+    {
+      "label": "A",
+      "text": "Tetanospasmin, a neurotoxin",
+      "isCorrect": true,
+      "misconception": "None — tetanospasmin is the neurotoxin responsible for tetanus.",
+      "explanation": "CDC states that tetanospasmin is a neurotoxin and is the cause of the clinical manifestations of tetanus."
+    },
+    {
+      "label": "B",
+      "text": "Tetanolysin, a hemolysin",
+      "isCorrect": false,
+      "misconception": "Picks the other C. tetani exotoxin, assuming both toxins drive the disease.",
+      "explanation": "Tetanolysin is the second C. tetani exotoxin, a hemolysin of uncertain role; it does not produce the rigidity and spasms of tetanus."
+    },
+    {
+      "label": "C",
+      "text": "Botulinum toxin, a neurotoxin",
+      "isCorrect": false,
+      "misconception": "Confuses the two clostridial neurotoxins, which have opposite clinical effects.",
+      "explanation": "Botulinum toxin blocks acetylcholine release at the neuromuscular junction, causing the flaccid paralysis of botulism rather than spasms."
+    },
+    {
+      "label": "D",
+      "text": "Diphtheria toxin, an ADP-ribosylating exotoxin",
+      "isCorrect": false,
+      "misconception": "Groups tetanus with diphtheria because both are toxin-mediated diseases prevented by the same vaccines.",
+      "explanation": "Diphtheria toxin ADP-ribosylates elongation factor 2 to halt protein synthesis, causing pseudomembrane and myocarditis, not tetanus."
+    },
+    {
+      "label": "E",
+      "text": "Alpha toxin, a lecithinase",
+      "isCorrect": false,
+      "misconception": "Confuses the gas gangrene toxin of C. perfringens with the tetanus toxin.",
+      "explanation": "Alpha toxin is the lecithinase of Clostridium perfringens that destroys cell membranes in gas gangrene; it does not cause tetanus."
+    }
+  ],
+  "context": "Learning objective: Tetanospasmin is the neurotoxin that causes the clinical manifestations of tetanus.",
+  "cite": "cdc-pink-book-tetanus#tetanospasmin-neurotoxin",
+  "publicUsmle": {
+    "schemaVersion": 1,
+    "origin": "generated",
+    "itemText": {
+      "licence": "CC-BY-4.0",
+      "attribution": "MD3 contributors"
+    },
+    "evidence": {
+      "kind": "passage",
+      "sourceId": "cdc-pink-book-tetanus",
+      "passageId": "tetanospasmin-neurotoxin",
+      "licence": {
+        "cls": "foss",
+        "id": "us-gov"
+      }
+    }
+  }
+}

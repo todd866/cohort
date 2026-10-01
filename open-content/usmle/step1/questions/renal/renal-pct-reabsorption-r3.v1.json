@@ -1,0 +1,74 @@
+{
+  "id": "bank:usmle-step1:renal-pct-reabsorption-r3:v1",
+  "rotation": "usmle-step1-open",
+  "ladderId": "pct-reabsorption",
+  "topics": [
+    "proximal tubule",
+    "SGLT2",
+    "diabetes mellitus",
+    "ladder:pct-reabsorption"
+  ],
+  "moduleNodes": [
+    "usmle/step1",
+    "usmle/step1/renal"
+  ],
+  "questionType": "mechanism",
+  "difficulty": "hard",
+  "stem": "A 58-year-old man with type 2 diabetes mellitus starts canagliflozin and develops glucosuria despite adequate insulin therapy. Before treatment, his proximal tubule cells recovered essentially all filtered glucose at normal plasma concentrations.\n\nInhibition of which of the following proximal-tubule transport steps most directly explains the new glucosuria?",
+  "options": [
+    {
+      "label": "A",
+      "text": "Apical sodium-linked glucose uptake at the brush border",
+      "isCorrect": true,
+      "misconception": "None; blocking apical sodium-linked glucose uptake prevents reclamation and produces glucosuria.",
+      "explanation": "Filtered glucose is normally reclaimed by apical symporters powered by the sodium gradient; inhibitors of these transporters leave glucose in the filtrate even when insulin is present."
+    },
+    {
+      "label": "B",
+      "text": "Basolateral facilitative glucose export into peritubular blood",
+      "isCorrect": false,
+      "misconception": "The exit step is being blocked instead of the apical entry step targeted by the drug class.",
+      "explanation": "GLUT transporters move glucose out of the cell after apical uptake; the drug acts on apical SGLT symporters, not basolateral export alone."
+    },
+    {
+      "label": "C",
+      "text": "Thick ascending limb sodium-potassium-chloride cotransport in the loop",
+      "isCorrect": false,
+      "misconception": "A loop diuretic target is being substituted for a proximal glucose transporter.",
+      "explanation": "NKCC2 in the thick ascending limb handles salt, not glucose; glucosuria reflects proximal Na+/glucose symport blockade."
+    },
+    {
+      "label": "D",
+      "text": "ADH-regulated aquaporin-2 insertion in collecting-duct principal cells",
+      "isCorrect": false,
+      "misconception": "ADH-regulated water channels are being blamed for glucose loss.",
+      "explanation": "Aquaporin-2 governs water reabsorption downstream; glucose handling fails at the proximal Na+/glucose symporter."
+    },
+    {
+      "label": "E",
+      "text": "Principal-cell epithelial sodium channel reabsorption in the collecting duct",
+      "isCorrect": false,
+      "misconception": "Distal sodium reabsorption is being linked to proximal glucose transport.",
+      "explanation": "ENaC in principal cells reclaims sodium late in the nephron; SGLT inhibitors act on proximal apical Na+/glucose symport."
+    }
+  ],
+  "context": "Learning objective: link SGLT inhibition to glucosuria. Proximal Na+/glucose symporters normally recover filtered glucose; blocking them causes glucose loss in urine — the mechanism of SGLT2 inhibitors.",
+  "cite": "openstax-anatomy-physiology#renal-pct-reabsorption",
+  "publicUsmle": {
+    "schemaVersion": 1,
+    "origin": "generated",
+    "itemText": {
+      "licence": "CC-BY-4.0",
+      "attribution": "MD3 contributors"
+    },
+    "evidence": {
+      "kind": "passage",
+      "sourceId": "openstax-anatomy-physiology",
+      "passageId": "renal-pct-reabsorption",
+      "licence": {
+        "cls": "foss",
+        "id": "cc-by-4.0"
+      }
+    }
+  }
+}

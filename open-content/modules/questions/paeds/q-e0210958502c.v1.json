@@ -1,0 +1,66 @@
+{
+  "id": "bank:cohort:paeds:q-e0210958502c:v1",
+  "rotation": "cohort-open",
+  "moduleNodes": [
+    "cohort/paeds"
+  ],
+  "topics": [
+    "Paediatric Dental Health & Trauma",
+    "dental trauma",
+    "inhaled tooth fragment"
+  ],
+  "questionType": "investigation",
+  "difficulty": "medium",
+  "stem": "A 5-year-old fell face-first from monkey bars 2 hours ago. Half the crown of an upper front tooth is missing and could not be found at the park. He coughed and gagged for about a minute after the fall. He did not lose consciousness, has not vomited and is alert. His bite is normal, the lip is intact, the chest is clear and SpO2 is 99% in room air (normal 95% or above).\n\nWhich investigation is most appropriate?",
+  "options": [
+    {
+      "label": "A",
+      "text": "Chest X-ray to look for an inhaled tooth fragment",
+      "isCorrect": true,
+      "explanation": "Every missing tooth or fragment must be accounted for. A coughing and gagging episode at the time of injury raises aspiration, and tooth is radio-opaque, so a chest X-ray is the test."
+    },
+    {
+      "label": "B",
+      "text": "CT brain to exclude an intracranial injury",
+      "isCorrect": false,
+      "explanation": "He has no loss of consciousness, vomiting or altered alertness, so there is no head-injury indication for CT; the open question is the fragment."
+    },
+    {
+      "label": "C",
+      "text": "Orthopantomogram to look for a mandibular fracture",
+      "isCorrect": false,
+      "explanation": "An orthopantomogram is for suspected jaw or temporomandibular joint injury or a possibly intruded tooth; his bite is normal."
+    },
+    {
+      "label": "D",
+      "text": "Abdominal X-ray to confirm the fragment was swallowed",
+      "isCorrect": false,
+      "explanation": "A swallowed fragment usually passes harmlessly and needs no film. The danger is the airway, which an abdominal film does not image."
+    },
+    {
+      "label": "E",
+      "text": "No imaging, as a lost fragment can be presumed swallowed",
+      "isCorrect": false,
+      "explanation": "Presuming it was swallowed ignores the choking episode. A normal chest examination does not exclude an inhaled foreign body, which can later cause collapse or pneumonia."
+    }
+  ],
+  "context": "After dental trauma, account for every tooth and fragment. A missing piece may be embedded in the lip, swallowed or inhaled: examine the lips and mouth, then think about the chest.\n\nA choking, coughing or gagging episode at the time of injury is the clue to aspiration. Tooth is radio-opaque, so a chest X-ray is done when aspiration is suspected; a normal chest examination does not exclude it.\n\nAn orthopantomogram is reserved for suspected jaw or TMJ injury or a possibly intruded tooth, in a child old enough to cooperate.",
+  "publicModule": {
+    "schemaVersion": 1,
+    "origin": "mirrored",
+    "discipline": "paeds",
+    "mirroredFrom": "md3:e0210958502c4f62",
+    "itemText": {
+      "licence": "CC-BY-4.0",
+      "attribution": "MD3 contributors"
+    },
+    "evidence": {
+      "kind": "reference",
+      "sourceId": "rch-dental-trauma"
+    },
+    "review": {
+      "verdict": "passed",
+      "contentHash": "b3ff58a48f7c4436342beda0105627c2af8ae8fb37b7704dffee3326a9900373"
+    }
+  }
+}

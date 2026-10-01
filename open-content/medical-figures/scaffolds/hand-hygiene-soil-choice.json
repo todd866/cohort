@@ -1,0 +1,95 @@
+{
+  "schemaVersion": 1,
+  "figureId": "hand-hygiene-soil-choice",
+  "kind": "conceptual",
+  "sourceFacts": [
+    {
+      "id": "fact-1",
+      "fact": "Alcohol-based hand sanitiser is preferred for most clinical hand-hygiene situations unless hands are visibly soiled.",
+      "sources": [
+        {
+          "title": "CDC: Clinical safety—hand hygiene for healthcare workers",
+          "url": "https://www.cdc.gov/clean-hands/hcp/clinical-safety/index.html"
+        }
+      ]
+    },
+    {
+      "id": "fact-2",
+      "fact": "Visibly dirty hands should be washed with soap and water.",
+      "sources": [
+        {
+          "title": "CDC: Clinical safety—hand hygiene for healthcare workers",
+          "url": "https://www.cdc.gov/clean-hands/hcp/clinical-safety/index.html"
+        }
+      ]
+    },
+    {
+      "id": "fact-3",
+      "fact": "This is a routine-care comparison, not every exposure-specific exception.",
+      "sources": [
+        {
+          "title": "CDC: Clinical safety—hand hygiene for healthcare workers",
+          "url": "https://www.cdc.gov/clean-hands/hcp/clinical-safety/index.html"
+        }
+      ]
+    }
+  ],
+  "nodes": [
+    {
+      "id": "dirty",
+      "shape": "hand-shaped paddle with soil",
+      "label": "Visible soil"
+    },
+    {
+      "id": "water",
+      "shape": "tap and soap",
+      "label": "Soap + water"
+    },
+    {
+      "id": "clean",
+      "shape": "clean-looking hand-shaped paddle",
+      "label": "No visible soil"
+    },
+    {
+      "id": "rub",
+      "shape": "pump bottle",
+      "label": "Alcohol hand rub"
+    }
+  ],
+  "edges": [
+    {
+      "from": "dirty",
+      "to": "water",
+      "meaning": "visible soil directs washing"
+    },
+    {
+      "from": "clean",
+      "to": "rub",
+      "meaning": "usual preference in routine clinical care"
+    }
+  ],
+  "labels": [
+    "Visible soil changes the choice",
+    "Routine clinical care",
+    "Visible soil",
+    "Soap + water",
+    "No visible soil",
+    "Alcohol hand rub",
+    "Usually preferred",
+    "Exposure-specific precautions still apply"
+  ],
+  "forbiddenAnatomy": [
+    "Organs, skin layers, tissue cutaways, histology, diagnostic traces, clinical photos"
+  ],
+  "validation": {
+    "status": "verified",
+    "method": "source-and-conceptual-structure-review",
+    "checks": [
+      "Dirty branch points only to soap and water.",
+      "Alcohol route explicitly qualified routine clinical care/usual preference.",
+      "Hand icons have no internal anatomy; clean-looking does not imply germ-free."
+    ],
+    "pixelReviewStatus": "verified",
+    "pixelReviewNotes": "Dirty five-digit wooden paddle points to tap and soap only; clean-looking paddle points to alcohol rub. Routine clinical care, usual preference and exposure-specific exceptions are explicit. No germ-free claim, procedural anatomy, or medication concentration added."
+  }
+}

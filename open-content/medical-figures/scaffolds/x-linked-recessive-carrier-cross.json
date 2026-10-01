@@ -1,0 +1,91 @@
+{
+  "schemaVersion": 1,
+  "figureId": "x-linked-recessive-carrier-cross",
+  "kind": "conceptual",
+  "created": "2026-09-10",
+  "timing": "retrospective specification of previously generated candidate",
+  "sourceFacts": [
+    {
+      "fact": "An XY child inherits their X chromosome from their mother.",
+      "sourceUrls": [
+        "https://medlineplus.gov/genetics/understanding/inheritance/inheritancepatterns/"
+      ]
+    },
+    {
+      "fact": "With a carrier mother and unaffected father, an X-linked recessive allele may produce an affected son or a carrier daughter.",
+      "sourceUrls": [
+        "https://medlineplus.gov/genetics/understanding/inheritance/inheritancepatterns/"
+      ]
+    }
+  ],
+  "clinicalSources": [
+    {
+      "title": "MedlinePlus Genetics: Inheritance patterns",
+      "url": "https://medlineplus.gov/genetics/understanding/inheritance/inheritancepatterns/"
+    }
+  ],
+  "nodes": [
+    "maternal XA",
+    "maternal Xa",
+    "paternal XA",
+    "paternal Y",
+    "XAXA",
+    "XAY",
+    "XAXa",
+    "XaY"
+  ],
+  "edges": [
+    [
+      "XA x XA",
+      "XAXA",
+      "upper left"
+    ],
+    [
+      "XA x Y",
+      "XAY",
+      "upper right"
+    ],
+    [
+      "Xa x XA",
+      "XAXa",
+      "lower left"
+    ],
+    [
+      "Xa x Y",
+      "XaY",
+      "lower right"
+    ]
+  ],
+  "invariants": [
+    "Exactly 2x2 cells with correct superscript A/a and labels.",
+    "No claim carrier daughters can never have symptoms."
+  ],
+  "expectedLabels": [
+    "X-linked recessive inheritance",
+    "Carrier mother \u00d7 unaffected father",
+    "X\u1d2c",
+    "Y",
+    "X\u1d2c",
+    "X\u1d43",
+    "X\u1d2cX\u1d2c",
+    "Non-carrier daughter",
+    "X\u1d2cY",
+    "Unaffected son",
+    "X\u1d2cX\u1d43",
+    "Carrier daughter",
+    "X\u1d43Y",
+    "Affected son",
+    "X\u1d43 carries the recessive variant",
+    "Each child inherits one maternal X"
+  ],
+  "layoutSpecification": "Precise hand-painted 2x2 Punnett square. Title 'X-linked recessive inheritance'. Subtitle 'Carrier mother \u00d7 unaffected father'. Use genotype notation X\u1d2c and X\u1d43 (superscript A,a) and Y consistently. Column headers paternal gametes 'X\u1d2c' and 'Y'. Row headers maternal gametes 'X\u1d2c' and 'X\u1d43'. Upper-left cell 'X\u1d2cX\u1d2c' caption 'Non-carrier daughter'. Upper-right 'X\u1d2cY' caption 'Unaffected son'. Lower-left 'X\u1d2cX\u1d43' caption 'Carrier daughter'. Lower-right 'X\u1d43Y' caption 'Affected son'. Tint only carrier cell pale teal and affected cell pale ochre. Legend 'X\u1d43 carries the recessive variant'. Bottom 'Each child inherits one maternal X'. No claim carriers can never have symptoms, no additional chromosome copies, no gender stereotypes.",
+  "forbiddenAnatomy": [
+    "No claimed anatomical reconstruction, diagnostic image, histology or literal neuroanatomical pathway",
+    "No organ cutaways or invented internal spatial relationships"
+  ],
+  "validation": {
+    "sourceFacts": "Checked against listed primary clinical sources during original topic review",
+    "pixelChecks": "Visually inspected all four combinations: XAXA, XAY, XAXa, XaY match paternal columns and maternal rows; daughter/son carrier/affected labels agree and superscripts are legible. No claim that carriers are invariably asymptomatic.",
+    "status": "self-reviewed; independent review pending"
+  }
+}

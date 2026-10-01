@@ -1,0 +1,67 @@
+{
+  "id": "bank:cohort:paeds:q-69908e0b57ab:v1",
+  "rotation": "cohort-open",
+  "moduleNodes": [
+    "cohort/paeds"
+  ],
+  "topics": [
+    "asthma",
+    "inhaler technique",
+    "spacer",
+    "drug delivery"
+  ],
+  "questionType": "management",
+  "difficulty": "easy",
+  "stem": "A 6-year-old with asthma is using a metered-dose inhaler (MDI) without a spacer.\n\nWhy is a spacer recommended for children?",
+  "options": [
+    {
+      "label": "A",
+      "text": "Enhances gastrointestinal absorption of swallowed medication by reducing particle size",
+      "isCorrect": false,
+      "explanation": "A spacer is not used to improve gastrointestinal absorption. In fact, one benefit is that less medication impacts the oropharynx and gets swallowed."
+    },
+    {
+      "label": "B",
+      "text": "Reduces the need for coordination between actuation and inhalation",
+      "isCorrect": true,
+      "explanation": "Correct. A spacer makes MDI use easier because the child does not need perfect timing between pressing the inhaler and inhaling.\n\nThat improves drug delivery to the lungs."
+    },
+    {
+      "label": "C",
+      "text": "Increases the nominal medication dose released by each canister actuation",
+      "isCorrect": false,
+      "explanation": "The dose metered by the canister is unchanged. A spacer can increase the fraction reaching the lungs, which is different from increasing the nominal dose per puff."
+    },
+    {
+      "label": "D",
+      "text": "Improves delivery when several puffs are released into the chamber together",
+      "isCorrect": false,
+      "explanation": "Use one puff at a time: multiple puffs together reduce effective delivery. The child then uses a slow inhalation with a breath hold, or several tidal breaths if needed."
+    },
+    {
+      "label": "E",
+      "text": "Accelerates the rate of aerosol delivery by increasing particle velocity to the airways",
+      "isCorrect": false,
+      "explanation": "A spacer actually slows the aerosol and reduces large-particle impaction in the oropharynx. It does not improve delivery by blasting particles faster into the airways."
+    }
+  ],
+  "context": "A spacer reduces the coordination needed between pressing a puffer and inhaling. It slows the aerosol so less deposits in the mouth and throat.\n\nMore of the metered dose can reach the lungs; the nominal dose released by the canister stays the same.\n\nGive one puff at a time. Match the inhalation technique to the child’s ability and check technique regularly.",
+  "publicModule": {
+    "schemaVersion": 1,
+    "origin": "mirrored",
+    "discipline": "paeds",
+    "mirroredFrom": "md3:69908e0b57abbd00",
+    "itemText": {
+      "licence": "CC-BY-4.0",
+      "attribution": "MD3 contributors"
+    },
+    "evidence": {
+      "kind": "reference",
+      "sourceId": "aah-management-children-6-11-years-principles-of-management-selecting-inhalers-for-children-6-11-years"
+    },
+    "review": {
+      "verdict": "passed",
+      "contentHash": "72c94084d00a0242f2758a372b750166f58ecb19353c64f4310d0a7466911298"
+    }
+  }
+}

@@ -1,0 +1,59 @@
+// Durable, owner-scoped lifecycle for quarantined .apkg imports. The package
+// bytes live in the private user-documents bucket; this row is the only public
+// workflow state and cascades with its custody collection.
+enum AnkiImportJobState {
+  awaiting_upload
+  inspecting
+  preview_ready
+  importing
+  active
+  failed
+  cancelled
+}
+
+model AnkiImportJob {
+  id          String @id @default(cuid())
+  ownerUserId String
+  owner       User   @relation(fields: [ownerUserId], references: [id], onDelete: Cascade, onUpdate: Restrict)
+
+  collectionId String         @unique
+  collection   AnkiCollection @relation(fields: [collectionId, ownerUserId], references: [id, ownerUserId], onDelete: Cascade, onUpdate: Restrict)
+
+  state          AnkiImportJobState @default(awaiting_upload)
+  filename       String
+  sizeBytes      Int
+  sha256         String
+  idempotencyKey String
+  requestHash    String
+  rawObjectKey   String
+
+  uploadUrlExpiresAt DateTime  @db.Timestamptz(3)
+  uploadedAt         DateTime? @db.Timestamptz(3)
+  inspectedAt        DateTime? @db.Timestamptz(3)
+  confirmedAt        DateTime? @db.Timestamptz(3)
+
+  preview        Json?   @db.JsonB
+  projectionMode String?
+  targetRotation String?
+  failureCode    String?
+  publicMessage  String? @db.Text
+
+  leaseToken       String?
+  leaseAcquiredAt  DateTime? @db.Timestamptz(3)
+  leaseHeartbeatAt DateTime? @db.Timestamptz(3)
+  attemptCount     Int       @default(0)
+
+  deletionRequestedAt DateTime? @db.Timestamptz(3)
+  deleteAfter         DateTime? @db.Timestamptz(3)
+  rawDeletedAt        DateTime? @db.Timestamptz(3)
+
+  createdAt DateTime @default(now()) @db.Timestamptz(3)
+  updatedAt DateTime @updatedAt @db.Timestamptz(3)
+
+  @@unique([id, ownerUserId])
+  @@unique([collectionId, ownerUserId])
+  @@unique([ownerUserId, idempotencyKey])
+  @@index([ownerUserId, createdAt])
+  @@index([state, leaseHeartbeatAt])
+  @@index([state, deleteAfter])
+}

@@ -1,0 +1,62 @@
+{
+  "id": "bank:cohort:paeds:q-b9f658e12029:v1",
+  "rotation": "cohort-open",
+  "moduleNodes": [
+    "cohort/paeds"
+  ],
+  "topics": [
+    "chest x-ray",
+    "paediatric chest radiology",
+    "radiology-chest",
+    "neonatology",
+    "paediatric surgery"
+  ],
+  "questionType": "diagnosis",
+  "difficulty": "medium",
+  "stem": "A newborn presents to Emergency with severe respiratory distress. The chest X-ray shows a bubbly lucency filling the left hemithorax that is continuous with the abdominal gas pattern, mediastinal shift to the right, and a non-aerated left lung.\n\nWhat is the most likely diagnosis?",
+  "options": [
+    {
+      "label": "A",
+      "text": "Hiatus hernia",
+      "isCorrect": false,
+      "explanation": "A hiatus hernia produces a retrocardiac gas-filled structure, not a bubbly hemithorax with mediastinal shift and an unaerated lung."
+    },
+    {
+      "label": "B",
+      "text": "Right lower lobe collapse",
+      "isCorrect": false,
+      "explanation": "Collapse produces increased density with volume loss and shift towards the abnormality, the opposite of the lucent, space-occupying picture described."
+    },
+    {
+      "label": "C",
+      "text": "Cystic adenomatoid malformation of the lung",
+      "isCorrect": false,
+      "explanation": "This is the main differential and can look very similar, but the cystic spaces are intrapulmonary and are not continuous with the abdominal gas pattern."
+    },
+    {
+      "label": "D",
+      "text": "Congenital diaphragmatic hernia",
+      "isCorrect": true,
+      "explanation": "Air-filled bowel within the chest gives the bubbly appearance, and its continuity with the abdominal gas is the feature that distinguishes it from an intrathoracic cystic lesion."
+    }
+  ],
+  "context": "Follow the gas across the diaphragm. Bowel in the chest looks bubbly, and following that gas down across the diaphragm is what separates it from an intrathoracic cystic lesion.\n\nThe mass effect does the rest: mediastinum pushed away, ipsilateral lung unaerated and variably hypoplastic from compression in utero.",
+  "publicModule": {
+    "schemaVersion": 1,
+    "origin": "mirrored",
+    "discipline": "paeds",
+    "mirroredFrom": "md3:b9f658e1202979a6",
+    "itemText": {
+      "licence": "CC-BY-4.0",
+      "attribution": "MD3 contributors"
+    },
+    "evidence": {
+      "kind": "reference",
+      "sourceId": "qcg-stabil"
+    },
+    "review": {
+      "verdict": "passed",
+      "contentHash": "bafeab8bf1ecde0e22c3f1be593b1823588b422a206c0a1fa88f229c10fbe058"
+    }
+  }
+}

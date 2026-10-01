@@ -1,0 +1,71 @@
+{
+  "id": "bank:usmle-step1:immuno-adaptive-vaccination:v1",
+  "rotation": "usmle-step1-open",
+  "topics": [
+    "adaptive immunity",
+    "vaccination"
+  ],
+  "moduleNodes": [
+    "usmle/step1",
+    "usmle/step1/immunology"
+  ],
+  "questionType": "mechanism",
+  "difficulty": "easy",
+  "stem": "Adaptive immunity can be activated by antigen from which sources?",
+  "options": [
+    {
+      "label": "A",
+      "text": "Inherited genes or normal physiology",
+      "isCorrect": false,
+      "misconception": "Attributes adaptive immunity to inborn factors, which describe innate immunity.",
+      "explanation": "Genetic factors and physiology underlie innate immunity, which occurs naturally rather than being induced by an antigen exposure."
+    },
+    {
+      "label": "B",
+      "text": "Maternal antibody or pooled immune globulin",
+      "isCorrect": false,
+      "misconception": "Confuses passive antibody transfer with activation of the host's own adaptive response.",
+      "explanation": "Maternal antibody and immune globulin give passive immunity: preformed antibody protects briefly and does not activate the recipient's own response."
+    },
+    {
+      "label": "C",
+      "text": "Intact skin or mucous membrane barriers",
+      "isCorrect": false,
+      "misconception": "Confuses innate physical barriers with antigen exposure.",
+      "explanation": "Skin and mucous membranes are innate physical barriers; they block microbial entry rather than supplying antigen that triggers adaptive immunity."
+    },
+    {
+      "label": "D",
+      "text": "An infecting pathogen or a vaccination",
+      "isCorrect": true,
+      "misconception": "None — antigen from a pathogen or a vaccine triggers adaptive immunity.",
+      "explanation": "Adaptive immunity occurs after exposure to an antigen that comes either from a pathogen or from a vaccination."
+    },
+    {
+      "label": "E",
+      "text": "Gastric acid or lysozyme in tears",
+      "isCorrect": false,
+      "misconception": "Confuses innate chemical defenses with antigen exposure.",
+      "explanation": "Gastric acid and lysozyme are innate chemical defenses that kill microbes nonspecifically; they are not antigen sources for adaptive immunity."
+    }
+  ],
+  "context": "Learning objective: Adaptive immunity occurs after exposure to an antigen from either a pathogen or a vaccination.",
+  "cite": "openstax-biology-2e#adaptive-activation",
+  "publicUsmle": {
+    "schemaVersion": 1,
+    "origin": "generated",
+    "itemText": {
+      "licence": "CC-BY-4.0",
+      "attribution": "MD3 contributors"
+    },
+    "evidence": {
+      "kind": "passage",
+      "sourceId": "openstax-biology-2e",
+      "passageId": "adaptive-activation",
+      "licence": {
+        "cls": "foss",
+        "id": "cc-by-4.0"
+      }
+    }
+  }
+}

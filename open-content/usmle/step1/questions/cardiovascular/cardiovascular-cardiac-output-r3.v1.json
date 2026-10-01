@@ -1,0 +1,73 @@
+{
+  "id": "bank:usmle-step1:cardiovascular-cardiac-output-r3:v1",
+  "rotation": "usmle-step1-open",
+  "ladderId": "cardiac-output",
+  "topics": [
+    "cardiac output",
+    "heart failure",
+    "ladder:cardiac-output"
+  ],
+  "moduleNodes": [
+    "usmle/step1",
+    "usmle/step1/cardiovascular"
+  ],
+  "questionType": "calculation",
+  "difficulty": "hard",
+  "stem": "A 68-year-old man with systolic heart failure has fatigue and exertional dyspnea. Echocardiography shows an ejection fraction of 25 percent. His resting heart rate is 88 beats per minute and stroke volume is 40 mL.\n\nWhich of the following values best approximates his resting cardiac output?",
+  "options": [
+    {
+      "label": "A",
+      "text": "7.0 L/min",
+      "isCorrect": false,
+      "misconception": "An exertional output is being reported at rest.",
+      "explanation": "7.0 L/min exceeds what 88 × 40 mL yields and is more typical of moderate exercise than decompensated resting failure."
+    },
+    {
+      "label": "B",
+      "text": "14.0 L/min",
+      "isCorrect": false,
+      "misconception": "Maximal exercise output is being chosen for a resting heart-failure patient.",
+      "explanation": "Outputs near 14–20 L/min occur in vigorous exercise; resting failure with low stroke volume gives about 3.5 L/min."
+    },
+    {
+      "label": "C",
+      "text": "1.8 L/min",
+      "isCorrect": false,
+      "misconception": "Heart rate is being omitted from the product.",
+      "explanation": "40 mL alone is not cardiac output; multiplying 88 beats per minute by 40 mL gives about 3.5 L/min."
+    },
+    {
+      "label": "D",
+      "text": "3.5 L/min",
+      "isCorrect": true,
+      "misconception": "None; 88 × 40 mL ≈ 3.5 L/min.",
+      "explanation": "Cardiac output equals heart rate times stroke volume: 88 × 40 mL = 3,520 mL/min ≈ 3.5 L/min, well below the normal resting average near 5.25 L/min in pump failure."
+    },
+    {
+      "label": "E",
+      "text": "5.25 L/min",
+      "isCorrect": false,
+      "misconception": "The population mean resting output is being applied despite low stroke volume.",
+      "explanation": "5.25 L/min would require a higher stroke volume or lower rate; with 40 mL per beat the product is about 3.5 L/min."
+    }
+  ],
+  "context": "Learning objective: compute low cardiac output in heart failure. Output = heart rate × stroke volume; with stroke volume 40 mL and rate 88/min, resting output is about 3.5 L/min.",
+  "cite": "openstax-anatomy-physiology#vessels-cardiac-output-exercise",
+  "publicUsmle": {
+    "schemaVersion": 1,
+    "origin": "generated",
+    "itemText": {
+      "licence": "CC-BY-4.0",
+      "attribution": "MD3 contributors"
+    },
+    "evidence": {
+      "kind": "passage",
+      "sourceId": "openstax-anatomy-physiology",
+      "passageId": "vessels-cardiac-output-exercise",
+      "licence": {
+        "cls": "foss",
+        "id": "cc-by-4.0"
+      }
+    }
+  }
+}

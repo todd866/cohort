@@ -1,0 +1,35 @@
+{
+  "figureId": "growing-pains-day-night-model",
+  "tool": "built-in image_gen",
+  "model": null,
+  "referenceAssetIds": [],
+  "externalReferenceImages": [],
+  "prompt": "Original educational conceptual illustration, landscape 3:2. Warm ivory paper, sophisticated hand-painted gouache/watercolour, confident fine brown outlines, navy lettering, restrained teal, coral and amber. Editorial science illustration with spacious composition and large legible labels. The explanatory structure must carry the meaning visually: molecules, objects, geometry or flow; never paragraphs in boxes. No organs, regional anatomy, teeth or joint cutaways, tissue layers, invented histology, diagnostic photographs, radiographs or patient data. All symbols are explicitly conceptual. Footer: 'Conceptual teaching model • Not to scale'. Title 'A pattern that resolves by morning', subtitle 'Typical growing pains'. Left under a large moon labelled 'Evening / night': a PAIR of soft slippers, both surrounded by small coral ache sparks, label 'Both legs may ache'. Broad rightward time arrow leads to right under a sun labelled 'Morning / day': a pair of trainers with light motion lines and a ball, no pain sparks, label 'Pain settles; normal activity'. This is a time-pattern analogy using footwear, no legs or bones. A clearly separate narrow bottom strip with small red flag icon says 'Reassess if: morning pain • limp • swelling • unwell'. No suggestion that all nocturnal pain is benign, no growth plate illustration.",
+  "clinicalSources": [
+    {
+      "title": "NHS: Growing pains",
+      "url": "https://www.nhs.uk/conditions/growing-pains/"
+    }
+  ],
+  "teaching": {
+    "question": "Which features fit typical growing pains, and which should prompt reassessment?",
+    "answer": "Bilateral evening or night aches that settle by morning with normal daytime activity fit the usual pattern. Morning pain, limping, swelling or systemic illness need reassessment.",
+    "imageRole": "after-reveal"
+  },
+  "title": "A pattern that resolves by morning",
+  "caption": "Typical growing pains affect both legs in the evening or night and settle by morning. Morning pain, limp, swelling or systemic illness require reassessment rather than automatic reassurance.",
+  "alt": "Moon and sunrise panels compare paired slippers with ache sparks at night and active shoes by day; a separate red-flag strip lists atypical features.",
+  "review": {
+    "status": "pending-independent-qa",
+    "method": "agent-visual-and-source-review",
+    "notes": "Both night slippers have ache marks; morning trainers and ball show normal activity without pain. The rightward arrow and night/day labels agree. Red-flag strip explicitly calls for reassessment with morning pain, limp, swelling or being unwell. No bone-growth mechanism or organ/joint anatomy invented.",
+    "structure": {
+      "kind": "conceptual",
+      "status": "verified",
+      "specificationFiles": [
+        "scaffolds/growing-pains-day-night-model.json"
+      ],
+      "notes": "Both night slippers have ache marks; morning trainers and ball show normal activity without pain. The rightward arrow and night/day labels agree. Red-flag strip explicitly calls for reassessment with morning pain, limp, swelling or being unwell. No bone-growth mechanism or organ/joint anatomy invented."
+    }
+  }
+}

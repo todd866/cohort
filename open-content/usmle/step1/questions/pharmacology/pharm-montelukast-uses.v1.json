@@ -1,0 +1,71 @@
+{
+  "id": "bank:usmle-step1:pharm-montelukast-uses:v1",
+  "rotation": "usmle-step1-open",
+  "topics": [
+    "montelukast",
+    "asthma"
+  ],
+  "moduleNodes": [
+    "usmle/step1",
+    "usmle/step1/pharmacology"
+  ],
+  "questionType": "mechanism",
+  "difficulty": "easy",
+  "stem": "Montelukast is used to prevent which group of breathing symptoms?",
+  "options": [
+    {
+      "label": "A",
+      "text": "Stridor and barking cough caused by croup",
+      "isCorrect": false,
+      "misconception": "Equates upper-airway stridor with lower-airway wheezing.",
+      "explanation": "Croup is viral laryngotracheitis causing stridor and a barking cough; it is treated with dexamethasone and nebulized epinephrine, not montelukast."
+    },
+    {
+      "label": "B",
+      "text": "Wheezing, chest tightness, and coughing caused by asthma",
+      "isCorrect": true,
+      "misconception": "None — montelukast is a controller that prevents asthma symptoms.",
+      "explanation": "The label says montelukast prevents wheezing, difficulty breathing, chest tightness, and coughing caused by asthma in adults and children 12 months and older."
+    },
+    {
+      "label": "C",
+      "text": "Productive cough and fever caused by pneumonia",
+      "isCorrect": false,
+      "misconception": "Assumes any cough responds to an asthma controller.",
+      "explanation": "Productive cough and fever from pneumonia reflect alveolar infection needing antibiotics; blocking leukotriene receptors does not treat infection."
+    },
+    {
+      "label": "D",
+      "text": "Pleuritic pain and breathlessness caused by pulmonary embolism",
+      "isCorrect": false,
+      "misconception": "Treats all sudden breathlessness as bronchospasm.",
+      "explanation": "Pleuritic pain and breathlessness from pulmonary embolism come from clot in the pulmonary arteries and need anticoagulation, not a leukotriene blocker."
+    },
+    {
+      "label": "E",
+      "text": "Crackles and orthopnea caused by heart failure",
+      "isCorrect": false,
+      "misconception": "Confuses 'cardiac asthma' from pulmonary congestion with true asthma.",
+      "explanation": "Crackles and orthopnea in heart failure come from pulmonary venous congestion, treated with diuretics; montelukast does not relieve fluid overload."
+    }
+  ],
+  "context": "Learning objective: Montelukast prevents wheezing, difficulty breathing, chest tightness, and coughing caused by asthma in adults and children 12 months and older.",
+  "cite": "medlineplus-montelukast#montelukast-uses",
+  "publicUsmle": {
+    "schemaVersion": 1,
+    "origin": "generated",
+    "itemText": {
+      "licence": "CC-BY-4.0",
+      "attribution": "MD3 contributors"
+    },
+    "evidence": {
+      "kind": "passage",
+      "sourceId": "medlineplus-montelukast",
+      "passageId": "montelukast-uses",
+      "licence": {
+        "cls": "foss",
+        "id": "us-gov"
+      }
+    }
+  }
+}

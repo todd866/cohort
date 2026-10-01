@@ -1,0 +1,80 @@
+{
+  "schemaVersion": 1,
+  "figureId": "childhood-otitis-fluid-retention-cycle",
+  "kind": "conceptual",
+  "created": "2026-09-10",
+  "timing": "authored before generation",
+  "sourceFacts": [
+    {
+      "fact": "A childhood upper respiratory infection can impair Eustachian tube ventilation and drainage, allowing middle-ear fluid to accumulate.",
+      "sourceUrls": [
+        "https://www.nidcd.nih.gov/health/ear-infections-children",
+        "https://www.rch.org.au/clinicalguide/guideline_index/acute_otitis_media/"
+      ]
+    },
+    {
+      "fact": "Fluid can persist after acute otitis media; effusion alone does not prove ongoing acute infection.",
+      "sourceUrls": [
+        "https://www.nidcd.nih.gov/health/ear-infections-children",
+        "https://www.rch.org.au/clinicalguide/guideline_index/acute_otitis_media/"
+      ]
+    }
+  ],
+  "clinicalSources": [
+    {
+      "title": "NIDCD: Ear Infections in Children",
+      "url": "https://www.nidcd.nih.gov/health/ear-infections-children"
+    },
+    {
+      "title": "RCH: Acute otitis media",
+      "url": "https://www.rch.org.au/clinicalguide/guideline_index/acute_otitis_media/"
+    }
+  ],
+  "nodes": [
+    "cold",
+    "reduced ventilation and drainage",
+    "retained fluid",
+    "possible persistence"
+  ],
+  "edges": [
+    [
+      "cold",
+      "reduced ventilation and drainage",
+      "can cause"
+    ],
+    [
+      "reduced ventilation and drainage",
+      "retained fluid",
+      "can cause"
+    ],
+    [
+      "retained fluid",
+      "possible persistence",
+      "can persist after acute symptoms settle"
+    ]
+  ],
+  "expectedLabels": [
+    "After a respiratory infection",
+    "Less ventilation",
+    "Less drainage",
+    "Fluid can remain",
+    "Acute symptoms may settle first",
+    "Respiratory infection"
+  ],
+  "layoutSpecification": "Title 'After a respiratory infection'. Use a three-stage left-to-right visual mechanism built from abstract objects, explicitly no ears, head, throat or bodily tube. Left: a small folded tissue and a round spiked respiratory-virus SYMBOL, labelled 'Respiratory infection'. Middle: two small abstract flow ribbons, one air swirl and one water drop, each narrowed by a simple gate icon; labels 'Less ventilation' and 'Less drainage'. Both ribbons feed the RIGHT stage, a shallow open glass bowl with pooled blue drops labelled 'Fluid can remain'. Beneath the bowl a small calendar with fading ochre symptom marks is labelled 'Acute symptoms may settle first'. Direction arrows all left-to-right. Draw no microbes within fluid and do not equate every effusion with active infection. All objects are visual metaphors, not a substitute anatomical pathway. NO snowflakes, wind, temperature symbols or cold-weather cues. Infection is the initiating concept; the virus icon is generic, not microbiological anatomy.",
+  "forbiddenAnatomy": [
+    "No internal organ, eye, ear, brain, tissue or bone anatomy",
+    "No diagnostic image, patient-specific lesion appearance or literal anatomical pathway"
+  ],
+  "validation": {
+    "sourceFacts": "Checked against listed primary clinical sources on 2026-09-10",
+    "status": "self-reviewed; independent review pending",
+    "pixelChecks": "Independent-review correction pixel check: initiating node now clearly labelled Respiratory infection with tissue and generic virus symbol; no snowflake or cold-weather cause. Remaining rightward structure connects reduced ventilation/drainage to retained fluid and persistence after acute symptoms settle. Abstract gates/bowl only, no ear anatomy or ongoing-infection claim."
+  },
+  "generationAttempts": [
+    {
+      "status": "rejected-after-independent-review",
+      "reason": "Snowflake/cold icon could be read as cold-weather causation. Replace with respiratory infection symbol and label."
+    }
+  ]
+}

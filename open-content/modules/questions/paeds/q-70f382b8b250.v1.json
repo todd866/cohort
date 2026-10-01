@@ -1,0 +1,66 @@
+{
+  "id": "bank:cohort:paeds:q-70f382b8b250:v1",
+  "rotation": "cohort-open",
+  "moduleNodes": [
+    "cohort/paeds"
+  ],
+  "topics": [
+    "pneumonia",
+    "chest x-ray",
+    "investigations"
+  ],
+  "questionType": "management",
+  "difficulty": "medium",
+  "stem": "A 3-year-old presents with fever, cough, and focal crackles on the right side. You clinically diagnose pneumonia.\n\nWhich statement best describes when a chest X-ray should be obtained?",
+  "options": [
+    {
+      "label": "A",
+      "text": "When the child is well enough for outpatient management",
+      "isCorrect": false,
+      "explanation": "Being well enough for outpatient care describes disposition, not an imaging indication. Many admitted children with non-severe pneumonia still do not need a CXR."
+    },
+    {
+      "label": "B",
+      "text": "Only after two weeks of persistent cough and fever",
+      "isCorrect": false,
+      "explanation": "Too late. Failure to improve after 48-72 hours of appropriate therapy is the point at which imaging should be considered, not a fortnight."
+    },
+    {
+      "label": "C",
+      "text": "Routinely, for every child with suspected pneumonia",
+      "isCorrect": false,
+      "explanation": "Pneumonia in children is a clinical diagnosis. Routine imaging of every suspected case adds radiation without changing management."
+    },
+    {
+      "label": "D",
+      "text": "Only if the child requires intensive care admission",
+      "isCorrect": false,
+      "explanation": "Too restrictive — CXR has a clear role in suspected severe or complicated disease and in treatment failure."
+    },
+    {
+      "label": "E",
+      "text": "When severe or complicated pneumonia is suspected",
+      "isCorrect": true,
+      "explanation": "Correct — RCH recommends an initial CXR when severe or complicated pneumonia is suspected, and considering imaging if the child deteriorates or has not improved after 48-72 hours of appropriate antibiotics."
+    }
+  ],
+  "context": "Chest X-ray is NOT routinely required for uncomplicated community-acquired pneumonia managed as an outpatient.",
+  "publicModule": {
+    "schemaVersion": 1,
+    "origin": "mirrored",
+    "discipline": "paeds",
+    "mirroredFrom": "md3:70f382b8b2508641",
+    "itemText": {
+      "licence": "CC-BY-4.0",
+      "attribution": "MD3 contributors"
+    },
+    "evidence": {
+      "kind": "reference",
+      "sourceId": "rch-community-acquired-pneumonia"
+    },
+    "review": {
+      "verdict": "passed",
+      "contentHash": "3569b757d1b0f972fe039b5ea8e80121dbb22a6af351c8aaab1878ca2bceb812"
+    }
+  }
+}

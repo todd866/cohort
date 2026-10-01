@@ -1,0 +1,70 @@
+{
+  "id": "bank:usmle-step1:psych-classical-conditioning:v1",
+  "rotation": "usmle-step1-open",
+  "topics": [
+    "classical conditioning"
+  ],
+  "moduleNodes": [
+    "usmle/step1",
+    "usmle/step1/psych"
+  ],
+  "questionType": "mechanism",
+  "difficulty": "easy",
+  "stem": "Classical conditioning is a process by which organisms learn to do what?",
+  "options": [
+    {
+      "label": "A",
+      "text": "Repeat behaviors that bring pleasant consequences",
+      "isCorrect": false,
+      "misconception": "Confuses classical conditioning with consequence-driven operant conditioning.",
+      "explanation": "Repeating a behavior because of a pleasant consequence is operant conditioning, where what follows an action, not a paired stimulus, drives learning."
+    },
+    {
+      "label": "B",
+      "text": "Associate stimuli and thereby anticipate events",
+      "isCorrect": true,
+      "misconception": "None — classical conditioning pairs stimuli so events can be anticipated.",
+      "explanation": "Classical conditioning is learning to associate stimuli and, as a result, to anticipate events, as when a tone comes to predict food."
+    },
+    {
+      "label": "C",
+      "text": "Imitate behaviors they watch others perform",
+      "isCorrect": false,
+      "misconception": "Confuses stimulus association with learning by watching a model.",
+      "explanation": "Imitating what others are seen doing is observational learning, or modeling; it needs no pairing of stimuli."
+    },
+    {
+      "label": "D",
+      "text": "Stop an innate response to a repeated harmless stimulus",
+      "isCorrect": false,
+      "misconception": "Confuses non-associative habituation with associative conditioning.",
+      "explanation": "The fading of an innate response to a repeated harmless stimulus is habituation, a non-associative form of learning with no paired stimuli."
+    },
+    {
+      "label": "E",
+      "text": "Respond more strongly after an intense stimulus",
+      "isCorrect": false,
+      "misconception": "Confuses non-associative sensitization with associative conditioning.",
+      "explanation": "Responding more strongly after an intense stimulus is sensitization, a non-associative change that involves no stimulus pairing."
+    }
+  ],
+  "context": "Learning objective: Classical conditioning is learning to associate stimuli and, consequently, to anticipate events.",
+  "cite": "openstax-psychology-2e#classical-conditioning-associate",
+  "publicUsmle": {
+    "schemaVersion": 1,
+    "origin": "generated",
+    "itemText": {
+      "licence": "CC-BY-4.0",
+      "attribution": "MD3 contributors"
+    },
+    "evidence": {
+      "kind": "passage",
+      "sourceId": "openstax-psychology-2e",
+      "passageId": "classical-conditioning-associate",
+      "licence": {
+        "cls": "foss",
+        "id": "cc-by-4.0"
+      }
+    }
+  }
+}

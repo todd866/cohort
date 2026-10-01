@@ -1,0 +1,71 @@
+{
+  "id": "bank:usmle-step1:micro-vzv-entry-sites:v1",
+  "rotation": "usmle-step1-open",
+  "topics": [
+    "vzv",
+    "entry"
+  ],
+  "moduleNodes": [
+    "usmle/step1",
+    "usmle/step1/microbiology"
+  ],
+  "questionType": "mechanism",
+  "difficulty": "easy",
+  "stem": "Varicella-zoster virus entry is classically described via which portals?",
+  "options": [
+    {
+      "label": "A",
+      "text": "Intestinal mucosa and Peyer patches",
+      "isCorrect": false,
+      "misconception": "Assumes VZV, like the enteroviruses, enters through the gut.",
+      "explanation": "Intestinal mucosa and Peyer patches are entry sites for enteric pathogens such as poliovirus and Salmonella Typhi, not varicella-zoster virus."
+    },
+    {
+      "label": "B",
+      "text": "Urethral and cervical mucosa",
+      "isCorrect": false,
+      "misconception": "Confuses VZV with genital herpes simplex virus, a related herpesvirus acquired through sexual contact.",
+      "explanation": "Urethral and cervical mucosa are portals for sexually transmitted pathogens such as HSV-2 and gonorrhea; VZV is not acquired this way."
+    },
+    {
+      "label": "C",
+      "text": "Respiratory tract and conjunctiva",
+      "isCorrect": true,
+      "misconception": "None — VZV enters through the respiratory tract and conjunctiva.",
+      "explanation": "CDC states VZV enters through the respiratory tract and conjunctiva, then replicates in the nasopharynx and regional lymph nodes before viremia."
+    },
+    {
+      "label": "D",
+      "text": "Bloodstream and injection sites",
+      "isCorrect": false,
+      "misconception": "Mistakes the viremia of varicella for evidence that the virus enters directly through blood.",
+      "explanation": "Direct blood entry fits bloodborne viruses such as hepatitis B and HIV; VZV reaches the blood only after replicating at its mucosal entry sites."
+    },
+    {
+      "label": "E",
+      "text": "Insect bites and tick bites",
+      "isCorrect": false,
+      "misconception": "Assumes a vesicular rash illness must follow an insect or tick bite.",
+      "explanation": "Insect and tick bites introduce arboviruses, rickettsiae and Borrelia; VZV has no arthropod vector."
+    }
+  ],
+  "context": "Learning objective: Varicella-zoster virus enters through the respiratory tract and conjunctiva, then replicates in the nasopharynx and regional lymph nodes before viremia.",
+  "cite": "cdc-pink-book-varicella#vzv-entry",
+  "publicUsmle": {
+    "schemaVersion": 1,
+    "origin": "generated",
+    "itemText": {
+      "licence": "CC-BY-4.0",
+      "attribution": "MD3 contributors"
+    },
+    "evidence": {
+      "kind": "passage",
+      "sourceId": "cdc-pink-book-varicella",
+      "passageId": "vzv-entry",
+      "licence": {
+        "cls": "foss",
+        "id": "us-gov"
+      }
+    }
+  }
+}

@@ -1,0 +1,59 @@
+{
+  "id": "bank:cohort:paeds:q-b6ebde516586:v1",
+  "rotation": "cohort-open",
+  "moduleNodes": [
+    "cohort/paeds"
+  ],
+  "topics": [
+    "immunodeficiency",
+    "antibody"
+  ],
+  "questionType": "diagnosis",
+  "difficulty": "hard",
+  "stem": "A child has had recurrent severe bacterial infections with encapsulated organisms (Strep pneumoniae, H. influenzae).\n\nWhich immunodeficiency is most likely?",
+  "options": [
+    {
+      "label": "A",
+      "text": "Phagocyte deficiency (neutrophil)",
+      "isCorrect": false,
+      "explanation": "Antibody is the best answer for this scenario."
+    },
+    {
+      "label": "B",
+      "text": "Complement deficiency (lytic pathway)",
+      "isCorrect": false,
+      "explanation": "Antibody is the best answer for this scenario."
+    },
+    {
+      "label": "C",
+      "text": "Antibody (B cell) deficiency",
+      "isCorrect": true,
+      "explanation": "Encapsulated bacteria (SHiNE: Strep pneumo, H. flu, Neisseria, E. coli) require antibody opsonisation for killing. B cell/antibody deficiency leads to recurrent sinopulmonary infections."
+    },
+    {
+      "label": "D",
+      "text": "T cell deficiency (cellular immunity)",
+      "isCorrect": false,
+      "explanation": "Antibody is the best answer for this scenario."
+    }
+  ],
+  "context": "Encapsulated bacteria (Streptococcus pneumoniae, Haemophilus influenzae, Neisseria, Salmonella, Klebsiella) are killed primarily through opsonisation by IgG followed by phagocytic uptake.\n\nClinical clue: recurrent sinusitis, otitis media, pneumonia, and giardiasis from infancy in a previously well child.",
+  "publicModule": {
+    "schemaVersion": 1,
+    "origin": "mirrored",
+    "discipline": "paeds",
+    "mirroredFrom": "md3:b6ebde516586609e",
+    "itemText": {
+      "licence": "CC-BY-4.0",
+      "attribution": "MD3 contributors"
+    },
+    "evidence": {
+      "kind": "reference",
+      "sourceId": "ascia-pid"
+    },
+    "review": {
+      "verdict": "passed",
+      "contentHash": "f433df8eefb53822ebf5ba005a488db6bd431fda4b221e6b9c1decce1cb47d24"
+    }
+  }
+}

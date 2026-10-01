@@ -1,0 +1,77 @@
+{
+  "schemaVersion": 1,
+  "id": "concept-insulin-resistance-association",
+  "kind": "conceptual",
+  "sourceFacts": [
+    {
+      "fact": "Acanthosis nigricans can be associated with insulin resistance or prediabetes.",
+      "sourceUrls": [
+        "https://www.aad.org/public/diseases/a-z/acanthosis-nigricans-overview",
+        "https://www.aad.org/public/diseases/a-z/acanthosis-nigricans-causes"
+      ]
+    },
+    {
+      "fact": "It can also have medication-related or other causes and does not establish diabetes by itself.",
+      "sourceUrls": [
+        "https://www.aad.org/public/diseases/a-z/acanthosis-nigricans-overview",
+        "https://www.aad.org/public/diseases/a-z/acanthosis-nigricans-causes"
+      ]
+    }
+  ],
+  "nodes": [
+    {
+      "id": "1",
+      "label": "Acanthosis nigricans"
+    },
+    {
+      "id": "2",
+      "label": "Consider insulin resistance"
+    },
+    {
+      "id": "3",
+      "label": "Assess metabolic context"
+    }
+  ],
+  "edges": [
+    {
+      "from": "1",
+      "to": "2",
+      "meaning": "clinical reasoning"
+    },
+    {
+      "from": "2",
+      "to": "3",
+      "meaning": "clinical reasoning"
+    }
+  ],
+  "labels": [
+    "Acanthosis nigricans: a metabolic clue",
+    "Acanthosis nigricans",
+    "Consider insulin resistance",
+    "Assess metabolic context",
+    "Conceptual schematic • Not anatomy"
+  ],
+  "layout": "A wide evidence-board design with three large cards linked left-to-right by two DASHED arrows labelled small clinical interpretation. First card shows a plain coral question token, not a skin sample. Second has insulin-labelled paper coins beside a question mark, no cell or receptor. Third shows a blank checklist and magnifying glass. A separate neutral bottom band says: Other causes exist; this sign alone does not diagnose diabetes. Do not draw dark skin, neck folds, obesity silhouettes, thresholds or test recommendations.",
+  "forbiddenAnatomy": [
+    "organs",
+    "body silhouettes",
+    "tissue cross-sections",
+    "cells",
+    "tubules",
+    "vessels",
+    "clinical photographs",
+    "diagnostic scans"
+  ],
+  "validation": {
+    "sourceStatus": "checked",
+    "structureStatus": "verified",
+    "requiredChecks": [
+      "Three nodes and two dashed clinical reasoning arrows",
+      "Association is not portrayed as proof of diabetes",
+      "Other causes qualifier present",
+      "No skin image, tissues or body form"
+    ],
+    "clinicalReviewStatus": "pending",
+    "pixelChecks": "Pixel review: three nodes and two dashed arrows explicitly labelled clinical reasoning; insulin resistance is considered rather than proven. Other causes and no stand-alone diabetes diagnosis qualification clear. Only tokens and checklist symbols. Independent and clinical review pending."
+  }
+}

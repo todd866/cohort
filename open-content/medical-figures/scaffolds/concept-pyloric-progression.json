@@ -1,0 +1,75 @@
+{
+  "schemaVersion": 1,
+  "id": "concept-pyloric-progression",
+  "kind": "conceptual",
+  "sourceFacts": [
+    {
+      "fact": "Pyloric muscle thickening causes gastric outlet obstruction.",
+      "sourceUrls": [
+        "https://www.rch.org.au/clinicalguide/guideline_index/Pyloric_Stenosis/"
+      ]
+    },
+    {
+      "fact": "Progressive non-bilious vomiting commonly emerges over the early weeks of life.",
+      "sourceUrls": [
+        "https://www.rch.org.au/clinicalguide/guideline_index/Pyloric_Stenosis/"
+      ]
+    }
+  ],
+  "nodes": [
+    {
+      "id": "1",
+      "label": "Muscle thickening increases"
+    },
+    {
+      "id": "2",
+      "label": "Outlet resistance rises"
+    },
+    {
+      "id": "3",
+      "label": "Vomiting becomes more forceful"
+    }
+  ],
+  "edges": [
+    {
+      "from": "1",
+      "to": "2",
+      "meaning": "causes"
+    },
+    {
+      "from": "2",
+      "to": "3",
+      "meaning": "leads to"
+    }
+  ],
+  "labels": [
+    "Why pyloric symptoms develop progressively",
+    "Muscle thickening increases",
+    "Outlet resistance rises",
+    "Vomiting becomes more forceful",
+    "Conceptual schematic • Not anatomy"
+  ],
+  "layout": "Three large sequential paper tiles left to right, numbered 1 to 3. In tile1 use three columns of neutral ochre square tokens of increasing heights, explicitly a qualitative growth metaphor, with no axis or age numbers. Tile2 has an abstract red resistance symbol, not a lumen or narrowing tube. Tile3 has three increasing outward arrow marks, not a vomiting person. Link the tiles with exactly two broad forward arrows. Under the row print: Typical evolution over the first weeks of life. Below that print: Vomiting is non-bilious.",
+  "forbiddenAnatomy": [
+    "organs",
+    "body silhouettes",
+    "tissue cross-sections",
+    "cells",
+    "tubules",
+    "vessels",
+    "clinical photographs",
+    "diagnostic scans"
+  ],
+  "validation": {
+    "sourceStatus": "checked",
+    "structureStatus": "verified",
+    "requiredChecks": [
+      "Exactly three ordered nodes and two arrows, 1 to2 to3",
+      "No anatomical channel or stomach",
+      "No claim that presentation is impossible at birth",
+      "No quantitative age or muscle-thickness graph"
+    ],
+    "clinicalReviewStatus": "pending",
+    "pixelChecks": "Pixel structure check: exactly three ordered tiles with two causal connections, increasing square-token stacks and outward-arrow metaphor; all specified clinical labels present; typical timing qualified. No anatomy or numerical scale. Matches source-checked scaffold. Independent review and clinical review pending."
+  }
+}

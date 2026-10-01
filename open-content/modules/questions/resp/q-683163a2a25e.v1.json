@@ -1,0 +1,67 @@
+{
+  "id": "bank:cohort:resp:q-683163a2a25e:v1",
+  "rotation": "cohort-open",
+  "moduleNodes": [
+    "cohort/resp"
+  ],
+  "topics": [
+    "Respiratory",
+    "Pertussis",
+    "Cough",
+    "Children"
+  ],
+  "questionType": "diagnosis",
+  "difficulty": "medium",
+  "stem": "An unvaccinated 9-year-old has had a dry cough for 10 days. Over the last 3 days it has changed: severe bursts of coughing fits often end in an audible inspiratory 'whoop' and post-tussive vomiting. He is afebrile, otherwise well between episodes.\n\nWhich phase of his illness best fits this picture?",
+  "options": [
+    {
+      "label": "A",
+      "text": "Catarrhal stage — most infectious, mild rhinorrhoea",
+      "isCorrect": false,
+      "explanation": "The catarrhal stage gives a coryzal illness with mild cough; it precedes the inspiratory whoop and post-tussive vomiting seen here."
+    },
+    {
+      "label": "B",
+      "text": "Post-viral hyperreactive airway phase",
+      "isCorrect": false,
+      "explanation": "Post-viral bronchial hyperreactivity gives a residual dry cough without the characteristic inspiratory whoop or vomiting."
+    },
+    {
+      "label": "C",
+      "text": "Paroxysmal stage — follows the catarrhal stage",
+      "isCorrect": true,
+      "explanation": "Severe coughing fits with an inspiratory whoop and post-tussive vomiting define the paroxysmal stage, which follows a 1–2 week catarrhal phase and lasts about 1–2 weeks."
+    },
+    {
+      "label": "D",
+      "text": "Convalescent stage — gradual recovery, cough fades over weeks",
+      "isCorrect": false,
+      "explanation": "The convalescent phase (2–6 weeks, up to 3 months) is recovery: the cough tapers off, although a later viral infection can bring the paroxysms back."
+    },
+    {
+      "label": "E",
+      "text": "Incubation period — no respiratory symptoms yet",
+      "isCorrect": false,
+      "explanation": "Incubation is asymptomatic, lasting 7-10 days; the patient is already 10 days symptomatic with severe cough."
+    }
+  ],
+  "context": "Pertussis runs through catarrhal (most infectious), paroxysmal (whoop and vomiting, about 1–2 weeks) and convalescent (2–6 weeks, up to 3 months) phases. Macrolides reduce infectivity but do little once toxin-driven paroxysms have begun.",
+  "publicModule": {
+    "schemaVersion": 1,
+    "origin": "mirrored",
+    "discipline": "resp",
+    "mirroredFrom": "md3:683163a2a25edd3f",
+    "itemText": {
+      "licence": "CC-BY-4.0",
+      "attribution": "MD3 contributors"
+    },
+    "evidence": {
+      "kind": "reference",
+      "sourceId": "rch-whooping-cough-pertussis"
+    },
+    "review": {
+      "verdict": "passed",
+      "contentHash": "31b1a9672f4e6d6f30e42e2f50cd55b3814cf4e70ebaa81aa5f8449a242d46f7"
+    }
+  }
+}

@@ -1,0 +1,43 @@
+{
+  "figureId": "respiratory-noise-phase-model",
+  "tool": "built-in image_gen",
+  "model": null,
+  "referenceAssetIds": [],
+  "externalReferenceImages": [],
+  "prompt": "Original educational conceptual illustration, landscape 3:2. Warm ivory paper, sophisticated hand-painted gouache/watercolour, confident fine brown outlines, navy lettering, restrained teal, coral and amber. Editorial science illustration with spacious composition and large legible labels. The explanatory structure must carry the meaning visually: molecules, objects, geometry or flow; never paragraphs in boxes. No organs, regional anatomy, teeth or joint cutaways, tissue layers, invented histology, diagnostic photographs, radiographs or patient data. All symbols are explicitly conceptual. Footer: 'Conceptual teaching model • Not to scale'. Title 'Place the sound within the breath'. Clean conceptual timing chart with two wide columns: left pale teal header 'Breathe in', right pale amber header 'Breathe out'. Three rows labelled left: 'Stridor', 'Wheeze', 'Grunting'. In Stridor row one solid navy rounded bar lies mainly in the Breathe in column, label 'Often inspiratory'. In Wheeze row one solid coral rounded bar lies in Breathe out column, label 'Usually expiratory'. In Grunting row one short gold rectangular marker lies well within Breathe out column, label 'Expiratory'. These are simple timing bars, NO waveform, frequency graph, patient monitor or anatomy. The column boundary must line up vertically across all rows. Notes below: 'Stridor can also be biphasic' and 'Timing is a clue, not a diagnosis'. Do not show stridor as exclusively inspiratory.",
+  "clinicalSources": [
+    {
+      "title": "Nationwide Children’s: Noisy breathing",
+      "url": "https://www.nationwidechildrens.org/conditions/noisy-breathing-stridor"
+    },
+    {
+      "title": "WHO: Pocket Book—cough or difficulty breathing",
+      "url": "https://www.ncbi.nlm.nih.gov/books/NBK154448/"
+    },
+    {
+      "title": "UCSF neonatal manual: Respiratory distress syndrome",
+      "url": "https://www.ucsfbenioffchildrens.org/-/media/project/ucsf/ucsf-bch/pdf/manuals/25_rds.pdf?rev=841fef9fcf014d11bb606d3c22025887"
+    }
+  ],
+  "teaching": {
+    "question": "How does timing within the breath help interpret stridor, wheeze and grunting?",
+    "answer": "Stridor is often inspiratory but can be biphasic or expiratory. Wheeze is typically expiratory, and grunting is an expiratory distress sign. Use the phase together with clinical assessment.",
+    "imageRole": "after-reveal"
+  },
+  "title": "Place the sound within the breath",
+  "caption": "The phase of a respiratory sound helps interpretation: stridor is often inspiratory, wheeze usually expiratory, and grunting is an expiratory sign of respiratory distress. Timing is a clue, not a diagnosis by itself.",
+  "alt": "Three phase bands place stridor mainly during inspiration, wheeze during expiration and short grunt markers during expiration, with a note that stridor may span both phases.",
+  "review": {
+    "status": "pending-independent-qa",
+    "method": "agent-visual-and-source-review",
+    "notes": "All rows share an aligned inspiration/expiration boundary. Stridor bar and often-inspiratory label lie in inspiration; wheeze and grunt markers are in expiration. Biphasic-stridor qualifier is legible. Solid timing bars have no waveform or clinical-recording claim. No anatomy or exclusive diagnostic rule.",
+    "structure": {
+      "kind": "conceptual",
+      "status": "verified",
+      "specificationFiles": [
+        "scaffolds/respiratory-noise-phase-model.json"
+      ],
+      "notes": "All rows share an aligned inspiration/expiration boundary. Stridor bar and often-inspiratory label lie in inspiration; wheeze and grunt markers are in expiration. Biphasic-stridor qualifier is legible. Solid timing bars have no waveform or clinical-recording claim. No anatomy or exclusive diagnostic rule."
+    }
+  }
+}

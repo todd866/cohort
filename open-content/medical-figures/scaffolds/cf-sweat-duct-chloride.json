@@ -1,0 +1,80 @@
+{
+  "schemaVersion": 1,
+  "figureId": "cf-sweat-duct-chloride",
+  "kind": "conceptual",
+  "created": "2026-09-27",
+  "timing": "authored before generation",
+  "sourceFacts": [
+    {
+      "fact": "People with CF do not reabsorb salt well from sweat ducts.",
+      "sources": [
+        {
+          "title": "Cystic Fibrosis Foundation: Top 5 Tips to Stay Healthy This Summer",
+          "url": "https://www.cff.org/community-posts/2018-07/top-5-tips-stay-healthy-summer"
+        }
+      ]
+    },
+    {
+      "fact": "Sweat chloride is measured by quantitative pilocarpine iontophoresis.",
+      "sources": [
+        {
+          "title": "Cystic Fibrosis Foundation: Sweat Test Clinical Care Guidelines",
+          "url": "https://www.cff.org/medical-professionals/sweat-test-clinical-care-guidelines"
+        }
+      ]
+    }
+  ],
+  "targetStableId": "mdx:abc6e9813bfdc94813af313d50e20ba3",
+  "targetQuestion": "Why is sweat salty in cystic fibrosis?",
+  "targetAnswer": "Less chloride is reabsorbed in the sweat duct.",
+  "nodes": [
+    {
+      "id": "normal-sweat",
+      "label": "Sweat with chloride"
+    },
+    {
+      "id": "normal-body",
+      "label": "Body"
+    },
+    {
+      "id": "cf-sweat",
+      "label": "Sweat with chloride"
+    },
+    {
+      "id": "cf-body",
+      "label": "Body"
+    }
+  ],
+  "edges": [
+    {
+      "from": "normal-sweat",
+      "to": "normal-body",
+      "meaning": "Solid arrow: chloride reabsorption with functioning CFTR"
+    },
+    {
+      "from": "cf-sweat",
+      "to": "cf-body",
+      "meaning": "Thin dashed arrow: reduced chloride reabsorption with impaired CFTR"
+    }
+  ],
+  "forbiddenAnatomy": [
+    "No literal organ geometry, radiographs, patient anatomy, or unsupported quantitative proportions; this is an abstract causal diagram."
+  ],
+  "validation": {
+    "status": "verified",
+    "pixelReviewStatus": "verified",
+    "clinicalReviewStatus": "pending",
+    "checks": [
+      "Named compartments are conceptual; no membrane or gland anatomy is drawn.",
+      "Arrows run from sweat to body in both panels; reduced reabsorption is not reversed secretion.",
+      "No particles, concentration ratios or absolute flux values are depicted."
+    ],
+    "method": "source-and-conceptual-structure-review",
+    "reviewers": [
+      "Codex primary agent",
+      "independent refuter agent"
+    ],
+    "notes": "Root source and pixel review plus independent adversarial pixel review; retained conceptual relationships, corrected misleading arrow/count/timing encodings. Clinical sign-off remains pending.",
+    "reviewedFigureSha256": "8278adf70dbd4cfea4f5713dcf3823c497020df2ac33e27bc597501111702aa8"
+  }
+}

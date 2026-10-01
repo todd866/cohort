@@ -1,0 +1,55 @@
+{
+  "schemaVersion": 1,
+  "figureId": "turner-single-x-chromosome",
+  "kind": "conceptual",
+  "created": "2026-09-10",
+  "timing": "retrospective specification of previously generated candidate",
+  "sourceFacts": [
+    {
+      "fact": "MonosomyX means one X chromosome copy, described as45,X.",
+      "sourceUrls": [
+        "https://medlineplus.gov/genetics/condition/turner-syndrome/"
+      ]
+    },
+    {
+      "fact": "Turner syndrome also includes mosaic or structurally altered X chromosome patterns.",
+      "sourceUrls": [
+        "https://medlineplus.gov/genetics/condition/turner-syndrome/"
+      ]
+    }
+  ],
+  "clinicalSources": [
+    {
+      "title": "MedlinePlus Genetics: Turner syndrome",
+      "url": "https://medlineplus.gov/genetics/condition/turner-syndrome/"
+    }
+  ],
+  "nodes": [
+    "46,XX two X icons",
+    "45,X one X icon"
+  ],
+  "edges": [],
+  "invariants": [
+    "Exactly two X icons versus exactly one; no ghost copy.",
+    "Only one Turner pattern; mosaic and structural patterns explicitly remain possible."
+  ],
+  "expectedLabels": [
+    "Monosomy X",
+    "Two X copies",
+    "46,XX",
+    "One X copy",
+    "45,X",
+    "One chromosome pattern seen in Turner syndrome",
+    "Other Turner patterns include mosaicism and structural X changes"
+  ],
+  "layoutSpecification": "Simple hand-painted chromosome COPY-COUNT comparison only, no internal anatomy, patient face, cell mechanism or physical chromosome-band map. Title 'Monosomy X'. Left heading 'Two X copies': EXACTLY TWO identical teal X-shaped chromosome symbols, well separated. Small label underneath '46,XX'. Right heading 'One X copy': EXACTLY ONE identical teal X-shaped chromosome symbol, centred. Small label underneath '45,X'. No dashed or ghost second X on right: absence must be literal blank space. Bottom sentence 'One chromosome pattern seen in Turner syndrome'. Very small additional line 'Other Turner patterns include mosaicism and structural X changes'. This is a conceptual count diagram; X-shaped symbols are chromosome icons and not a karyotype. Maintain exact2vs1 count.",
+  "forbiddenAnatomy": [
+    "No claimed anatomical reconstruction, diagnostic image, histology or literal neuroanatomical pathway",
+    "No organ cutaways or invented internal spatial relationships"
+  ],
+  "validation": {
+    "sourceFacts": "Checked against listed primary clinical sources during original topic review",
+    "pixelChecks": "Explicit structure check: exactly two X chromosome icons above46,XX and one above45,X; no ghost copy, missing arms or extra symbols. Caption states other Turner chromosome patterns exist. Verification is of copy-count logic, not cytogenetic morphology.",
+    "status": "self-reviewed; independent review pending"
+  }
+}

@@ -1,0 +1,29 @@
+{
+  "id": "concept-iron-transport-chain",
+  "title": "Iron deficiency has several routes",
+  "prompt": "Create an original polished 1536x1024 landscape conceptual medical teaching diagram for after-answer study. Warm hand-painted gouache and watercolour on ivory paper; a gentle storybook warmth with precise dark navy type. Matte teal, ochre, coral and blue accents. Simple neutral tokens, paper tiles, arrows and visibly abstract compartments only. Make the visual relationships legible at small size. No body parts, organs, cells, tissues, lumens, tubules, membranes, vessels, anatomical cutaways, clinical photos, diagnostic scans, babies, realistic flesh or decorative scenery. Do not turn abstract boxes or routes into organs or anatomy. Do not invent extra arrows or medical claims. Edge meanings below are metadata, not visible text: draw the arrows but do not print their meaning strings. Footer exactly: Conceptual schematic • Not anatomy. Title exactly: Iron deficiency has several routes. Three upper evidence cards show1 with a sparse inventory,2 with an abstract transfer arrow bearing a small stop mark,3 with Fe coins leaving a plain tray. Three arrows converge into large middle4 with sparse Fe tokens, then one arrow down to5 with a partly completed row of plain blocks labelled Hb. Exactly five nodes and four main arrows. Bottom note: Think about intake, absorption and losses. Avoid gut, blood cells, bone marrow, bleeding wounds or foods. Inventories are only a supply metaphor. Exact node labels: [{\"id\": \"1\", \"label\": \"Low iron intake\"}, {\"id\": \"2\", \"label\": \"Reduced absorption\"}, {\"id\": \"3\", \"label\": \"Blood loss\"}, {\"id\": \"4\", \"label\": \"Less iron available\"}, {\"id\": \"5\", \"label\": \"Haemoglobin production limited\"}]. Exact directed connections: [{\"from\": \"1\", \"to\": \"4\", \"meaning\": \"supply reduction\"}, {\"from\": \"2\", \"to\": \"4\", \"meaning\": \"absorption reduction\"}, {\"from\": \"3\", \"to\": \"4\", \"meaning\": \"loss\"}, {\"from\": \"4\", \"to\": \"5\", \"meaning\": \"haemoglobin consequence\"}]. Required checks: Three causes converge, none portrayed as consequence of anaemia; Five nodes/four main arrows; Only iron-availability step leads to limited haemoglobin production; No blood cells, marrow or intestine.",
+  "clinicalSources": [
+    {
+      "title": "NHLBI — Iron-deficiency anaemia",
+      "url": "https://www.nhlbi.nih.gov/health/anemia/iron-deficiency-anemia"
+    },
+    {
+      "title": "NIH ODS — Iron health professional fact sheet",
+      "url": "https://ods.od.nih.gov/factsheets/Iron-HealthProfessional/"
+    }
+  ],
+  "caption": "A supply-and-loss map shows why iron deficiency can arise through poor intake, malabsorption or blood loss.",
+  "question": "Why should iron deficiency prompt consideration of more than dietary intake?",
+  "answer": "Reduced absorption and blood loss can also lower iron availability for haemoglobin synthesis.",
+  "structureSpecification": "scaffolds/concept-iron-transport-chain.json",
+  "generationInputs": {
+    "referenceImages": [],
+    "style": "written-only"
+  },
+  "qa": {
+    "status": "pending-independent-qa",
+    "method": "agent-visual-and-source-review",
+    "notes": "Pixel check: five nodes/four main arrows; intake, absorption and loss converge on availability then haemoglobin production. Transfer stop mark shows reduced absorption, tray escape shows loss, incomplete Hb inventory shows limited synthesis. Introductory title omitted, but all teaching labels and footer retained. No tissues. Independent and clinical review pending.",
+    "clinicalReviewStatus": "pending"
+  }
+}

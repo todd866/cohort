@@ -1,0 +1,70 @@
+{
+  "id": "bank:usmle-step1:pharm-clozapine-uses:v1",
+  "rotation": "usmle-step1-open",
+  "topics": [
+    "clozapine"
+  ],
+  "moduleNodes": [
+    "usmle/step1",
+    "usmle/step1/pharmacology"
+  ],
+  "questionType": "mechanism",
+  "difficulty": "easy",
+  "stem": "Clozapine is used to treat which mental illness in certain people?",
+  "options": [
+    {
+      "label": "A",
+      "text": "Schizophrenia",
+      "isCorrect": true,
+      "misconception": "None — clozapine is an atypical antipsychotic used for schizophrenia.",
+      "explanation": "The label states that clozapine, an atypical antipsychotic, is used to treat schizophrenia in certain people."
+    },
+    {
+      "label": "B",
+      "text": "Obsessive-compulsive disorder",
+      "isCorrect": false,
+      "misconception": "Confuses clozapine with clomipramine, the tricyclic used for OCD.",
+      "explanation": "Obsessive-compulsive disorder is treated with SSRIs or clomipramine; clozapine is not used for it and can itself provoke obsessive-compulsive symptoms."
+    },
+    {
+      "label": "C",
+      "text": "Agoraphobia",
+      "isCorrect": false,
+      "misconception": "Assumes severe anxiety calls for an antipsychotic.",
+      "explanation": "Agoraphobia is an anxiety disorder treated with SSRIs and exposure-based cognitive behavioral therapy; an antipsychotic such as clozapine has no role."
+    },
+    {
+      "label": "D",
+      "text": "Attention-deficit/hyperactivity disorder",
+      "isCorrect": false,
+      "misconception": "Assumes any psychiatric disorder responds to an antipsychotic.",
+      "explanation": "ADHD is treated with stimulants such as methylphenidate or with atomoxetine; clozapine, a sedating antipsychotic, is not used."
+    },
+    {
+      "label": "E",
+      "text": "Bulimia nervosa",
+      "isCorrect": false,
+      "misconception": "Assumes a drug for severe mental illness also treats eating disorders.",
+      "explanation": "Bulimia nervosa is treated with cognitive behavioral therapy and fluoxetine; clozapine is not used and tends to increase appetite and weight."
+    }
+  ],
+  "context": "Learning objective: Clozapine is an atypical antipsychotic used to treat schizophrenia in certain people.",
+  "cite": "medlineplus-clozapine#clozapine-uses",
+  "publicUsmle": {
+    "schemaVersion": 1,
+    "origin": "generated",
+    "itemText": {
+      "licence": "CC-BY-4.0",
+      "attribution": "MD3 contributors"
+    },
+    "evidence": {
+      "kind": "passage",
+      "sourceId": "medlineplus-clozapine",
+      "passageId": "clozapine-uses",
+      "licence": {
+        "cls": "foss",
+        "id": "us-gov"
+      }
+    }
+  }
+}

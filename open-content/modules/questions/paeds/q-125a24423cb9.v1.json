@@ -1,0 +1,59 @@
+{
+  "id": "bank:cohort:paeds:q-125a24423cb9:v1",
+  "rotation": "cohort-open",
+  "moduleNodes": [
+    "cohort/paeds"
+  ],
+  "topics": [
+    "SCID",
+    "screening"
+  ],
+  "questionType": "next-step",
+  "difficulty": "medium",
+  "stem": "An infant with SCID is identified on newborn screening.\n\nWhat was tested?",
+  "options": [
+    {
+      "label": "A",
+      "text": "Immunoglobulin levels (serum Ig)",
+      "isCorrect": false,
+      "explanation": "It are not measured on newborn screening — they also reflect maternal IgG transfer and are unreliable in neonates."
+    },
+    {
+      "label": "B",
+      "text": "T-cell receptor excision circles (TRECs)",
+      "isCorrect": true,
+      "explanation": "Correct — TRECs are byproducts of T-cell receptor gene rearrangement in the thymus. Low/absent TRECs on dried blood spot screening indicates T-cell lymphopaenia, detecting SCID before clinical presentation. Early diagnosis enables curative HSCT before infections."
+    },
+    {
+      "label": "C",
+      "text": "Complement levels (CH50 assay)",
+      "isCorrect": false,
+      "explanation": "CH50 measures total complement pathway activity — not part of newborn screening panels."
+    },
+    {
+      "label": "D",
+      "text": "Neutrophil oxidative burst (DHR test)",
+      "isCorrect": false,
+      "explanation": "DHR test (dihydrorhodamine) tests neutrophil function for CGD — not used in newborn screening."
+    }
+  ],
+  "context": "TRECs (T-cell receptor excision circles) are tiny loops of DNA cut out of the genome each time a thymocyte successfully rearranges its T-cell receptor.\n\nDetecting SCID at birth, before opportunistic infection, is what makes treatment curative — early stem-cell transplant has near-100% survival, while delayed diagnosis after PJP or disseminated BCG drops survival sharply.",
+  "publicModule": {
+    "schemaVersion": 1,
+    "origin": "mirrored",
+    "discipline": "paeds",
+    "mirroredFrom": "md3:125a24423cb9f339",
+    "itemText": {
+      "licence": "CC-BY-4.0",
+      "attribution": "MD3 contributors"
+    },
+    "evidence": {
+      "kind": "reference",
+      "sourceId": "ascia-ascia-guidelines-scid-tapid"
+    },
+    "review": {
+      "verdict": "passed",
+      "contentHash": "f6a31a913af402efebdfe393c8dffd3b6aa61a9d8d49531c66c2510d8fb1a579"
+    }
+  }
+}

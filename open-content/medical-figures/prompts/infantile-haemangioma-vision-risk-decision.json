@@ -1,0 +1,27 @@
+{
+  "schemaVersion": 1,
+  "figureId": "infantile-haemangioma-vision-risk-decision",
+  "sourceFacts": [
+    "Many infantile periocular haemangiomas can be observed, but those threatening vision need treatment.",
+    "Propranolol is a first-line treatment for haemangiomas needing systemic therapy; treatment selection and monitoring are supervised."
+  ],
+  "clinicalSources": [
+    {
+      "title": "AAPOS: Capillary Hemangioma",
+      "url": "https://www.aapos.org/glossary/capillary-hemangioma"
+    }
+  ],
+  "specificationFiles": [
+    "scaffolds/infantile-haemangioma-vision-risk-decision.json"
+  ],
+  "prompt": "Create an entirely original medical teaching concept illustration, landscape 3:2, warm hand-painted watercolour and gouache on ivory paper, fine ink contours, restrained navy labels, muted teal, ochre and peach accents, generous whitespace. Gentle storybook warmth with the precision and legibility of an educational atlas. Use written instructions only; no image reference. Meaningful visual relationships and sparse short labels, not paragraphs in boxes. NO internal anatomy, organ/eye/ear/brain/tissue cutaways, anatomical pathways, bones, diagnostic images, fake scans, realistic lesions, photorealistic skin, glossy wet flesh or 3D tissue. Neutral symbols or fully clothed surface poses only where specified. Preserve every direction, relationship and count in the explicit structure. Title and labels exactly as requested, no additional prose. Footer 'Educational schematic'. No logo or watermark.\n\nTitle 'Haemangioma: protect developing vision'. Draw a clear two-branch path beginning at a generic small ochre cluster of round tokens on the LEFT labelled 'Infantile haemangioma' (not a realistic birthmark or blood vessel). Branch UP along teal path to a clear square window icon, label 'Vision safe', then a calendar icon labelled 'Monitor'. Branch DOWN along ochre path to a square window partly obscured by a plain ochre shade, label 'Vision threatened', then a clinician badge and an unmeasured plain medicine bottle labelled 'Specialist treatment'. Small line under bottle 'Propranolol may be used'. Window is only a metaphor for visual function. No actual eyelid, eyeball, lesion photograph, optic pathway, dosage or claim all haemangiomas need medication. Arrows flow from assessment to appropriate branch.",
+  "generation": {
+    "tool": "built-in image_gen",
+    "model": null,
+    "referenceAssetIds": [],
+    "externalReferenceImages": [],
+    "specificationFiles": [
+      "scaffolds/infantile-haemangioma-vision-risk-decision.json"
+    ]
+  }
+}

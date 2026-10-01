@@ -1,0 +1,39 @@
+{
+  "figureId": "tetralogy-resistance-split-model",
+  "tool": "built-in image_gen",
+  "model": null,
+  "referenceAssetIds": [],
+  "externalReferenceImages": [],
+  "prompt": "Original educational conceptual illustration, landscape 3:2. Warm ivory paper, sophisticated hand-painted gouache/watercolour, confident fine brown outlines, navy lettering, restrained teal, coral and amber. Editorial science illustration with spacious composition and large legible labels. The explanatory structure must carry the meaning visually: molecules, objects, geometry or flow; never paragraphs in boxes. No organs, regional anatomy, teeth or joint cutaways, tissue layers, invented histology, diagnostic photographs, radiographs or patient data. All symbols are explicitly conceptual. Footer: 'Conceptual teaching model • Not to scale'. Title 'More obstruction diverts more flow', subtitle 'Flow principle in tetralogy'. Two side-by-side abstract Y-shaped WATER-CHANNEL STYLE diagrams carved in wood, not vascular anatomy. Each has ONE input from the left that splits into an upper route labelled 'Toward lungs' and a lower route labelled 'Bypass to body'. Left heading 'Less obstruction': upper route has a fairly open small mechanical gate and a broad teal flow arrow; lower route a thinner navy arrow. Right heading 'Greater obstruction': same upper-route gate almost closed, tiny teal arrow still passing toward lungs; lower-route navy bypass arrow is clearly much broader than on the left. No branch rejoins, no extra inlets. Only relative arrow widths, no numbers. Takeaway 'Less lung flow; more bypass'. Footer 'Flow analogy, not a heart map'. No heart, organs, named vessels, chambers, valves or patients.",
+  "clinicalSources": [
+    {
+      "title": "RCH Cardiology: Tetralogy of Fallot",
+      "url": "https://www.rch.org.au/cardiology/heart_defects/Fallots_Tetralogy/"
+    },
+    {
+      "title": "Sydney Children’s Hospitals Network: Tetralogy of Fallot and hypercyanotic spells",
+      "url": "https://www.schn.health.nsw.gov.au/factsheets/tetralogy-fallot-tof-and-hypercyanotic-spells"
+    }
+  ],
+  "teaching": {
+    "question": "Why can severe outflow obstruction cause marked cyanosis early in tetralogy of Fallot?",
+    "answer": "It limits flow toward the lungs and promotes more right-to-left bypass to the systemic circulation, reducing oxygenation.",
+    "imageRole": "after-reveal"
+  },
+  "title": "More obstruction diverts more flow",
+  "caption": "In tetralogy of Fallot, greater right-ventricular outflow obstruction reduces flow toward the lungs and promotes right-to-left bypass, worsening cyanosis. This abstract split shows the flow principle only.",
+  "alt": "Two identical forked channels compare a relatively open lung route with a narrowed lung route and larger bypass arrow to the body.",
+  "review": {
+    "status": "pending-independent-qa",
+    "method": "agent-visual-and-source-review",
+    "notes": "Pixel check: each side has one input splitting into exactly two abstract outputs. Greater obstruction nearly closes only the toward-lungs gate, narrows that arrow and enlarges bypass-to-body flow. Both directions are downstream and labels remain matched; explicit flow-analogy caption avoids a cardiac anatomy claim.",
+    "structure": {
+      "kind": "conceptual",
+      "status": "verified",
+      "specificationFiles": [
+        "scaffolds/tetralogy-resistance-split-model.json"
+      ],
+      "notes": "Pixel check: each side has one input splitting into exactly two abstract outputs. Greater obstruction nearly closes only the toward-lungs gate, narrows that arrow and enlarges bypass-to-body flow. Both directions are downstream and labels remain matched; explicit flow-analogy caption avoids a cardiac anatomy claim."
+    }
+  }
+}

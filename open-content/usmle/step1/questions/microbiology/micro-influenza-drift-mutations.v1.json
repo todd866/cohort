@@ -1,0 +1,71 @@
+{
+  "id": "bank:usmle-step1:micro-influenza-drift-mutations:v1",
+  "rotation": "usmle-step1-open",
+  "topics": [
+    "influenza",
+    "antigenic drift"
+  ],
+  "moduleNodes": [
+    "usmle/step1",
+    "usmle/step1/microbiology"
+  ],
+  "questionType": "interpretation",
+  "difficulty": "hard",
+  "stem": "A 34-year-old clinician recovers from influenza. Four winters later, immune testing shows poor recognition of a newly circulating strain. Surveillance indicates that the strain changed gradually across successive seasons rather than appearing as a wholly new subtype in one abrupt event.\n\nWhich of the following molecular findings most directly explains the reduced recognition of the newer strain?",
+  "options": [
+    {
+      "label": "A",
+      "text": "Stable integration of viral RNA into the clinician’s genome",
+      "isCorrect": false,
+      "misconception": "Attributes seasonal antigen change to persistence in host DNA.",
+      "explanation": "The serial isolates instead show accumulating viral-gene mutations that alter HA and NA."
+    },
+    {
+      "label": "B",
+      "text": "Abrupt exchange of viral genes in a single event",
+      "isCorrect": false,
+      "misconception": "Chooses a sudden change despite the incremental sequence findings.",
+      "explanation": "The passage defines drift as small mutations accumulating over time, matching the gradual pattern here."
+    },
+    {
+      "label": "C",
+      "text": "Progressive deletion of surface-antigen genes without replacement",
+      "isCorrect": false,
+      "misconception": "Mistakes altered antigens for loss of the antigen-encoding genes.",
+      "explanation": "The findings show changing HA and NA produced by small mutations, not disappearance of their genes."
+    },
+    {
+      "label": "D",
+      "text": "Accumulation of point changes that alter surface antigens",
+      "isCorrect": true,
+      "misconception": "Recognizes the gradual molecular pattern of antigenic drift.",
+      "explanation": "Antigenic drift is the accumulation of small viral-gene mutations that progressively change HA and NA."
+    },
+    {
+      "label": "E",
+      "text": "Selection by antibodies without changes in viral genes",
+      "isCorrect": false,
+      "misconception": "Ignores the directly observed viral sequence changes.",
+      "explanation": "Immune recognition falls because mutations change HA and NA; unchanged viral genes would not match the data."
+    }
+  ],
+  "context": "Learning objective: recognize antigenic drift from serial change. Small mutations accumulate in influenza genes, changing HA and NA until older immune recognition becomes less effective; the incremental pattern distinguishes drift from a single abrupt event.",
+  "cite": "cdc-pink-book-influenza#influenza-drift-genes",
+  "publicUsmle": {
+    "schemaVersion": 1,
+    "origin": "generated",
+    "itemText": {
+      "licence": "CC-BY-4.0",
+      "attribution": "MD3 contributors"
+    },
+    "evidence": {
+      "kind": "passage",
+      "sourceId": "cdc-pink-book-influenza",
+      "passageId": "influenza-drift-genes",
+      "licence": {
+        "cls": "foss",
+        "id": "us-gov"
+      }
+    }
+  }
+}

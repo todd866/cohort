@@ -1,0 +1,39 @@
+{
+  "figureId": "duct-patency-support-model",
+  "tool": "built-in image_gen",
+  "model": null,
+  "referenceAssetIds": [],
+  "externalReferenceImages": [],
+  "prompt": "Original educational conceptual illustration, landscape 3:2. Warm ivory paper, sophisticated hand-painted gouache/watercolour, confident fine brown outlines, navy lettering, restrained teal, coral and amber. Editorial science illustration with spacious composition and large legible labels. The explanatory structure must carry the meaning visually: molecules, objects, geometry or flow; never paragraphs in boxes. No organs, regional anatomy, teeth or joint cutaways, tissue layers, invented histology, diagnostic photographs, radiographs or patient data. All symbols are explicitly conceptual. Footer: 'Conceptual teaching model • Not to scale'. Title 'Keeping an essential route open', subtitle 'Duct-dependent heart disease'. A simple two-stage wooden gate metaphor. Left a narrow essential path blocked by a gate that is swinging shut, label 'Essential route closing'. Arrow to right the same gate held OPEN by a brass support strut clearly labelled 'PGE1'; a broad teal flow ribbon can pass through the open gateway, label 'Duct kept open'. From the open path, a gentle forward ribbon leads to a modest destination flag labelled 'Definitive treatment'. Below open gateway 'Temporary support'. No water vessels, hearts, organs, anatomic duct map, vascular direction labels, patients, surgical instrument or doses. Footer 'Gate analogy, not a heart map'. The drug holds the route open; it does not repair the underlying condition. No extra slogans.",
+  "clinicalSources": [
+    {
+      "title": "Cochrane: Prostaglandin E1 for keeping the duct open",
+      "url": "https://www.cochrane.org/evidence/CD011417_prostaglandin-e1-keeping-duct-open-heart-conditions-newborn"
+    },
+    {
+      "title": "South African National Department of Health: Neonatal conditions guideline",
+      "url": "https://www.knowledgehub.health.gov.za/system/files/elibdownloads/2023-04/PaedChp%2019_Neonatal%20Chapter_N_November%202022%20-%20final%20update3.pdf"
+    }
+  ],
+  "teaching": {
+    "question": "What is the purpose of PGE1 in duct-dependent congenital heart disease?",
+    "answer": "It maintains ductal patency to support the required circulation while definitive treatment is arranged. It is temporary physiological support rather than a repair of the defect.",
+    "imageRole": "after-reveal"
+  },
+  "title": "Keeping an essential route open",
+  "caption": "Prostaglandin E1 can maintain ductal patency in duct-dependent congenital heart disease as temporary support before definitive treatment. The open gate is a functional analogy, not an anatomical map.",
+  "alt": "An essential wooden route is blocked by a closing gate in one panel and kept open by a PGE1-labelled support in another, with a path toward definitive treatment.",
+  "review": {
+    "status": "pending-independent-qa",
+    "method": "agent-visual-and-source-review",
+    "notes": "Pixel check: the left gate is visibly closing, while the right gate is held open by an external strut labelled PGE1. The open route continues to a separate definitive-treatment flag; temporary support is explicit. No cardiac anatomy, duct connection or flow direction within the heart is asserted.",
+    "structure": {
+      "kind": "conceptual",
+      "status": "verified",
+      "specificationFiles": [
+        "scaffolds/duct-patency-support-model.json"
+      ],
+      "notes": "Pixel check: the left gate is visibly closing, while the right gate is held open by an external strut labelled PGE1. The open route continues to a separate definitive-treatment flag; temporary support is explicit. No cardiac anatomy, duct connection or flow direction within the heart is asserted."
+    }
+  }
+}

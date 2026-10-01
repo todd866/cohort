@@ -1,0 +1,46 @@
+{
+  "figureId": "uterine-fibroid-locations",
+  "kind": "spatial-anatomy",
+  "sourceFacts": [
+    {
+      "fact": "Fibroids arise from uterine smooth muscle and are described by relationship to the cavity and outer wall.",
+      "sourceUrls": [
+        "https://www.nichd.nih.gov/health/topics/uterine"
+      ]
+    },
+    {
+      "fact": "Submucosal, intramural and subserosal describe distinct locations.",
+      "sourceUrls": [
+        "https://pmc.ncbi.nlm.nih.gov/articles/PMC10952771/"
+      ]
+    }
+  ],
+  "nodes": [
+    "Submucosal fibroid",
+    "Intramural fibroid",
+    "Subserosal fibroid",
+    "Myometrium",
+    "Endometrium",
+    "Uterine cavity",
+    "Cervix"
+  ],
+  "edges": [],
+  "forbiddenAnatomy": [
+    "No invented labels, diagnostic imaging, patient likeness or unsupported precision."
+  ],
+  "validation": {
+    "reviewer": "batch2_source_review",
+    "reviewedAt": "2026-09-19",
+    "baseSha256": "a00bba4f668d52fb66cb3f2fcd3ceb41e29cba8d75df02889cf6586643ed06ca",
+    "annotationSha256": "6057a2bc6344c0ac28b461034f2729f4466a601b942d73aca2e96a020c7bc55c",
+    "finalSha256": "73f08ee9f6bf34e722f0f558600dbd89502874f139de8723c11223939ed5544d",
+    "checks": {
+      "sourceComparison": true,
+      "blindEndpoints": true,
+      "leaders": true,
+      "fullSize": true,
+      "mobile375": true
+    },
+    "notes": "Independent blind endpoint review identified the three masses, muscle wall, lining, cavity and cervical tissue. Cervical-tissue target is labelled Cervix, not canal. No exact FIGO subtype is claimed. Full-size and 375px inspected; v2 labels enlarged and shortened; all remain legible at phone width."
+  }
+}

@@ -1,0 +1,59 @@
+{
+  "id": "bank:cohort:paeds:q-2bc53f350af9:v1",
+  "rotation": "cohort-open",
+  "moduleNodes": [
+    "cohort/paeds"
+  ],
+  "topics": [
+    "FPIES",
+    "non-IgE allergy"
+  ],
+  "questionType": "diagnosis",
+  "difficulty": "medium",
+  "stem": "A 9-month-old presents with profuse vomiting 3 hours after eating rice cereal for the first time. They are pale and lethargic.\n\nWhat is the most likely diagnosis?",
+  "options": [
+    {
+      "label": "A",
+      "text": "Acute infectious gastroenteritis (viral)",
+      "isCorrect": false,
+      "explanation": "Early viral gastroenteritis can begin with vomiting alone, but profuse vomiting a few hours after a first rice exposure, with pallor and lethargy, makes FPIES much more likely."
+    },
+    {
+      "label": "B",
+      "text": "IgE-mediated food allergy (type I hypersensitivity)",
+      "isCorrect": false,
+      "explanation": "It causes rapid-onset urticaria, angioedema, wheeze, or anaphylaxis — not isolated profuse vomiting with lethargy."
+    },
+    {
+      "label": "C",
+      "text": "Infantile hypertrophic pyloric stenosis",
+      "isCorrect": false,
+      "explanation": "Pyloric stenosis presents at 2-8 weeks with projectile non-bilious vomiting after feeds, palpable olive-shaped mass — not acute onset after solid food at 9 months."
+    },
+    {
+      "label": "D",
+      "text": "Food protein-induced enterocolitis syndrome (FPIES)",
+      "isCorrect": true,
+      "explanation": "Correct — FPIES: non-IgE-mediated food allergy presenting with profuse vomiting 1-4 hours after ingestion, often with pallor, lethargy, and hypotension. Common triggers: rice, oats, milk, soy. SPT and specific IgE are negative. Diagnosed clinically."
+    }
+  ],
+  "context": "FPIES is a non-IgE, T-cell-mediated reaction to food proteins (most often rice, oats, cow's milk, or soy in solids-introduction age).\n\nThe classic presentation is a previously well infant who looks pale, lethargic, and dehydrated after the food, sometimes mistaken for sepsis.",
+  "publicModule": {
+    "schemaVersion": 1,
+    "origin": "mirrored",
+    "discipline": "paeds",
+    "mirroredFrom": "md3:2bc53f350af914ef",
+    "itemText": {
+      "licence": "CC-BY-4.0",
+      "attribution": "MD3 contributors"
+    },
+    "evidence": {
+      "kind": "reference",
+      "sourceId": "rch-non-ige-mediated-food-allergy"
+    },
+    "review": {
+      "verdict": "passed",
+      "contentHash": "3c5cb619c013b870d20573eee7dee98fbd9e86c468021438ce9862b0f77ea992"
+    }
+  }
+}

@@ -1,0 +1,29 @@
+{
+  "id": "concept-coeliac-immune-malabsorption",
+  "title": "Coeliac disease: gluten to malabsorption",
+  "prompt": "Create an original polished 1536x1024 landscape conceptual medical teaching diagram for after-answer study. Warm hand-painted gouache and watercolour on ivory paper; a gentle storybook warmth with precise dark navy type. Matte teal, ochre, coral and blue accents. Simple neutral tokens, paper tiles, arrows and visibly abstract compartments only. Make the visual relationships legible at small size. No body parts, organs, cells, tissues, lumens, tubules, membranes, vessels, anatomical cutaways, clinical photos, diagnostic scans, babies, realistic flesh or decorative scenery. Do not turn abstract boxes or routes into organs or anatomy. Do not invent extra arrows or medical claims. Edge meanings below are metadata, not visible text: draw the arrows but do not print their meaning strings. Footer exactly: Conceptual schematic • Not anatomy. Title exactly: Coeliac disease: gluten to malabsorption. Arrange four large circular paper medallions clockwise along an OPEN quarter-turning path from upper-left through upper-right and lower-right to lower-left, with arrow1 to2 to3 to4 and NO closing feedback arrow. Node1 shows one token labelled Gluten; node2 an abstract alert burst; node3 a cracked plain rectangular tile clearly a damage symbol, not tissue; node4 shows a few gold Nutrient coins entering a plain collection box while other coins remain outside. Spell all four node labels fully. At centre print: In a susceptible person. No wheat allergy symbol, intestine, villi or tissue surface. Exact node labels: [{\"id\": \"1\", \"label\": \"Gluten exposure\"}, {\"id\": \"2\", \"label\": \"Abnormal immune response\"}, {\"id\": \"3\", \"label\": \"Intestinal injury\"}, {\"id\": \"4\", \"label\": \"Reduced nutrient absorption\"}]. Exact directed connections: [{\"from\": \"1\", \"to\": \"2\", \"meaning\": \"trigger\"}, {\"from\": \"2\", \"to\": \"3\", \"meaning\": \"immune-mediated injury\"}, {\"from\": \"3\", \"to\": \"4\", \"meaning\": \"functional consequence\"}]. Required checks: Exactly four nodes, three forward links and no feedback loop; Gluten triggers immune response before intestinal injury; Nutrient collection is an abstract metaphor, not mucosa; No organs, villi, tissue or wheat allergy claim.",
+  "clinicalSources": [
+    {
+      "title": "NIDDK — Celiac disease definition and facts",
+      "url": "https://www.niddk.nih.gov/health-information/digestive-diseases/celiac-disease/definition-facts"
+    },
+    {
+      "title": "MedlinePlus — Gluten and celiac disease",
+      "url": "https://medlineplus.gov/medlineplus-videos/gluten-and-celiac-disease/"
+    }
+  ],
+  "caption": "An abstract chain connects gluten exposure, abnormal immune activation, intestinal injury and reduced nutrient absorption in coeliac disease.",
+  "question": "Why can a gluten-triggered immune disorder cause nutritional deficiencies?",
+  "answer": "The immune response damages intestinal function, reducing absorption of nutrients.",
+  "structureSpecification": "scaffolds/concept-coeliac-immune-malabsorption.json",
+  "generationInputs": {
+    "referenceImages": [],
+    "style": "written-only"
+  },
+  "qa": {
+    "status": "pending-independent-qa",
+    "method": "agent-visual-and-source-review",
+    "notes": "Pixel structure check: four medallions linked clockwise through gluten, immune response, injury and malabsorption, with no closing loop. Susceptibility qualification present. All imagery is neutral tokens, alert and cracked tile; no intestinal surface or organs. Nutrient token N is clarified by the full node label. Independent and clinical review pending.",
+    "clinicalReviewStatus": "pending"
+  }
+}

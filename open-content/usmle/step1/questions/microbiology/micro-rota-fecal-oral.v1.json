@@ -1,0 +1,71 @@
+{
+  "id": "bank:usmle-step1:micro-rota-fecal-oral:v1",
+  "rotation": "usmle-step1-open",
+  "topics": [
+    "rotavirus",
+    "transmission"
+  ],
+  "moduleNodes": [
+    "usmle/step1",
+    "usmle/step1/microbiology"
+  ],
+  "questionType": "mechanism",
+  "difficulty": "easy",
+  "stem": "Rotavirus spread is described as fecal-oral plus which other modes?",
+  "options": [
+    {
+      "label": "A",
+      "text": "Mosquito bites and tick bites",
+      "isCorrect": false,
+      "misconception": "Assumes a seasonal infection must be vector-borne; rotavirus peaks in fall and winter with no vector.",
+      "explanation": "Arthropod bites spread arboviruses and Lyme disease; rotavirus is an enteric virus spread through stool, contact and contaminated objects."
+    },
+    {
+      "label": "B",
+      "text": "Person-to-person contact and fomites",
+      "isCorrect": true,
+      "misconception": "None — rotavirus spreads fecal-oral, person-to-person and by fomites.",
+      "explanation": "CDC lists rotavirus transmission as fecal-oral, person-to-person and via fomites, from a reservoir in the human GI tract and stool."
+    },
+    {
+      "label": "C",
+      "text": "Blood transfusion and needle sharing",
+      "isCorrect": false,
+      "misconception": "Confuses enteric viral spread with bloodborne transmission.",
+      "explanation": "Transfusion and shared needles spread bloodborne viruses such as hepatitis C and HIV, not an enteric virus like rotavirus."
+    },
+    {
+      "label": "D",
+      "text": "Sexual contact and vertical transmission",
+      "isCorrect": false,
+      "misconception": "Confuses spread among young children with the sexual or vertical routes of other infections.",
+      "explanation": "Sexual and mother-to-infant routes spread HIV, hepatitis B and syphilis; rotavirus spreads from stool to mouth by hands and surfaces."
+    },
+    {
+      "label": "E",
+      "text": "Animal bites and scratches",
+      "isCorrect": false,
+      "misconception": "Assumes a common infant infection comes from animal exposure rather than human stool.",
+      "explanation": "Bites and scratches transmit rabies and Bartonella; rotavirus infection comes from human stool, direct contact and contaminated surfaces."
+    }
+  ],
+  "context": "Learning objective: Rotavirus has a human GI reservoir and spreads fecal-oral, person-to-person and via fomites.",
+  "cite": "cdc-pink-book-rotavirus#rota-fecal-oral",
+  "publicUsmle": {
+    "schemaVersion": 1,
+    "origin": "generated",
+    "itemText": {
+      "licence": "CC-BY-4.0",
+      "attribution": "MD3 contributors"
+    },
+    "evidence": {
+      "kind": "passage",
+      "sourceId": "cdc-pink-book-rotavirus",
+      "passageId": "rota-fecal-oral",
+      "licence": {
+        "cls": "foss",
+        "id": "us-gov"
+      }
+    }
+  }
+}

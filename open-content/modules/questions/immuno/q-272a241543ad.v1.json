@@ -1,0 +1,66 @@
+{
+  "id": "bank:cohort:immuno:q-272a241543ad:v1",
+  "rotation": "cohort-open",
+  "moduleNodes": [
+    "cohort/immuno"
+  ],
+  "topics": [
+    "allergy",
+    "immunology",
+    "food-allergy"
+  ],
+  "questionType": "diagnosis",
+  "difficulty": "medium",
+  "stem": "A 6-week-old breastfed infant has blood-streaked mucousy stools but is otherwise thriving and well. There is no vomiting, rash, or failure to thrive.\n\nWhat is the most likely diagnosis?",
+  "options": [
+    {
+      "label": "A",
+      "text": "Inflammatory bowel disease with chronic mucosal inflammation",
+      "isCorrect": false,
+      "explanation": "Inflammatory bowel disease is very unlikely in a thriving 6-week-old infant and would not usually present as this isolated mild rectal bleeding picture. The age and wellness of the infant argue strongly against it."
+    },
+    {
+      "label": "B",
+      "text": "Food protein-induced allergic proctocolitis (FPIAP)",
+      "isCorrect": true,
+      "explanation": "Correct. FPIAP causes blood-streaked mucousy stools in an otherwise well thriving young infant, often from cow's milk protein exposure through breast milk or formula."
+    },
+    {
+      "label": "C",
+      "text": "Infectious gastroenteritis from viral or bacterial pathogen",
+      "isCorrect": false,
+      "explanation": "Infectious gastroenteritis would usually produce diarrhoea, systemic upset, or an unwell infant. This child is well and feeding normally."
+    },
+    {
+      "label": "D",
+      "text": "Necrotising enterocolitis (NEC) with bowel wall ischaemia",
+      "isCorrect": false,
+      "explanation": "NEC is a serious illness causing abdominal distension and systemic compromise, usually in vulnerable infants, not a thriving well baby with mild stool blood."
+    },
+    {
+      "label": "E",
+      "text": "Intussusception with telescoping of bowel and obstruction",
+      "isCorrect": false,
+      "explanation": "Intussusception causes a much sicker infant with colicky pain, vomiting, and often intermittent distress. The well appearance here points away from it."
+    }
+  ],
+  "context": "FPIAP presents in the first months of life with blood/mucus in stools in an otherwise well-appearing infant. It is the mildest form of non-IgE cow's milk protein allergy.\n\nTreatment is maternal dietary elimination if breastfeeding, or hydrolysed formula.",
+  "publicModule": {
+    "schemaVersion": 1,
+    "origin": "mirrored",
+    "discipline": "immuno",
+    "mirroredFrom": "md3:272a241543ad648e",
+    "itemText": {
+      "licence": "CC-BY-4.0",
+      "attribution": "MD3 contributors"
+    },
+    "evidence": {
+      "kind": "reference",
+      "sourceId": "rch-non-ige-mediated-food-allergy"
+    },
+    "review": {
+      "verdict": "passed",
+      "contentHash": "798e284f5d02cfe317721c66b0a052acba5e70f91308e9485c85475ce55c39e2"
+    }
+  }
+}

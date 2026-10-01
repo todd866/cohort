@@ -1,0 +1,66 @@
+{
+  "id": "bank:cohort:paeds:q-f41e7d492328:v1",
+  "rotation": "cohort-open",
+  "moduleNodes": [
+    "cohort/paeds"
+  ],
+  "topics": [
+    "haemophilus",
+    "microbiology",
+    "epiglottitis"
+  ],
+  "questionType": "diagnosis",
+  "difficulty": "easy",
+  "stem": "An unimmunised 3-year-old is drooling, toxic and febrile with soft stridor. Blood culture grows small Gram-negative coccobacilli.\n\nWhich organism is most likely?",
+  "options": [
+    {
+      "label": "A",
+      "text": "Haemophilus influenzae",
+      "isCorrect": true,
+      "explanation": "H. influenzae is the classic Gram-negative coccobacillus in paediatric teaching (otitis, sinusitis, historically Hib epiglottitis)."
+    },
+    {
+      "label": "B",
+      "text": "Streptococcus pneumoniae",
+      "isCorrect": false,
+      "explanation": "S. pneumoniae is a Gram-positive lancet-shaped diplococcus."
+    },
+    {
+      "label": "C",
+      "text": "Clostridium difficile",
+      "isCorrect": false,
+      "explanation": "C. difficile is a Gram-positive anaerobic rod, not a Gram-negative coccobacillus."
+    },
+    {
+      "label": "D",
+      "text": "Staphylococcus aureus",
+      "isCorrect": false,
+      "explanation": "S. aureus is a Gram-positive coccus in clusters."
+    },
+    {
+      "label": "E",
+      "text": "Neisseria meningitidis",
+      "isCorrect": false,
+      "explanation": "N. meningitidis is a Gram-negative diplococcus (kidney-bean), not a coccobacillus."
+    }
+  ],
+  "context": "A toxic, drooling, unimmunised child with soft stridor has epiglottitis. Haemophilus influenzae type b is the Gram-negative coccobacillus that causes it.\n\nBordetella is also a coccobacillus, but it causes pertussis, not this airway picture. Hib vaccine is why epiglottitis is now uncommon.",
+  "publicModule": {
+    "schemaVersion": 1,
+    "origin": "mirrored",
+    "discipline": "paeds",
+    "mirroredFrom": "md3:f41e7d492328bc13",
+    "itemText": {
+      "licence": "CC-BY-4.0",
+      "attribution": "MD3 contributors"
+    },
+    "evidence": {
+      "kind": "reference",
+      "sourceId": "aih-haemophilus-influenzae-type-b-hib"
+    },
+    "review": {
+      "verdict": "passed",
+      "contentHash": "b4ac6f10a962ccdefcd1b6077efc6503c076cd82e2a8a51c8a84ca1c7032250d"
+    }
+  }
+}

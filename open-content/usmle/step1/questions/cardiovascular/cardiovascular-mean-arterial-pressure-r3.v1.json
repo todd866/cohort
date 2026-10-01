@@ -1,0 +1,73 @@
+{
+  "id": "bank:usmle-step1:cardiovascular-mean-arterial-pressure-r3:v1",
+  "rotation": "usmle-step1-open",
+  "ladderId": "mean-arterial-pressure",
+  "topics": [
+    "mean arterial pressure",
+    "septic shock",
+    "ladder:mean-arterial-pressure"
+  ],
+  "moduleNodes": [
+    "usmle/step1",
+    "usmle/step1/cardiovascular"
+  ],
+  "questionType": "calculation",
+  "difficulty": "hard",
+  "stem": "A 74-year-old woman with urosepsis is brought to the emergency department lethargic and confused. Examination shows cool extremities, delayed capillary refill, and a blood pressure of 80/50 mm Hg with a heart rate of 118 beats per minute.\n\nWhich of the following values best approximates her mean arterial pressure?",
+  "options": [
+    {
+      "label": "A",
+      "text": "50 mm Hg",
+      "isCorrect": false,
+      "misconception": "Diastolic pressure alone is being reported as the mean.",
+      "explanation": "MAP adds one-third of the pulse pressure to diastolic; 50 mm Hg ignores the systolic contribution during the brief systolic phase."
+    },
+    {
+      "label": "B",
+      "text": "60 mm Hg",
+      "isCorrect": true,
+      "misconception": "None; 50 + (80 − 50)/3 ≈ 60 mm Hg.",
+      "explanation": "Mean arterial pressure equals diastolic plus one-third of the pulse pressure: 50 + 30/3 = 60 mm Hg, consistent with hypotensive shock."
+    },
+    {
+      "label": "C",
+      "text": "65 mm Hg",
+      "isCorrect": false,
+      "misconception": "The arithmetic midpoint of systolic and diastolic is being used.",
+      "explanation": "The simple midpoint of 80 and 50 is 65 mm Hg; MAP weights diastole more heavily and gives about 60 mm Hg."
+    },
+    {
+      "label": "D",
+      "text": "70 mm Hg",
+      "isCorrect": false,
+      "misconception": "Two-thirds of the pulse pressure is being added instead of one-third.",
+      "explanation": "Adding two-thirds of the pulse pressure to diastolic overestimates MAP; the correct computation yields about 60 mm Hg."
+    },
+    {
+      "label": "E",
+      "text": "80 mm Hg",
+      "isCorrect": false,
+      "misconception": "Systolic pressure is being reported as the mean.",
+      "explanation": "Systolic pressure is the peak, not the time-averaged perfusion pressure; MAP is much closer to diastolic in hypotension."
+    }
+  ],
+  "context": "Learning objective: compute MAP in shock. MAP = diastolic + (systolic − diastolic)/3; values below about 65 mm Hg threaten organ perfusion.",
+  "cite": "openstax-anatomy-physiology#vessels-map-calculation",
+  "publicUsmle": {
+    "schemaVersion": 1,
+    "origin": "generated",
+    "itemText": {
+      "licence": "CC-BY-4.0",
+      "attribution": "MD3 contributors"
+    },
+    "evidence": {
+      "kind": "passage",
+      "sourceId": "openstax-anatomy-physiology",
+      "passageId": "vessels-map-calculation",
+      "licence": {
+        "cls": "foss",
+        "id": "cc-by-4.0"
+      }
+    }
+  }
+}

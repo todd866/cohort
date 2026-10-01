@@ -1,0 +1,74 @@
+{
+  "schemaVersion": 1,
+  "figureId": "late-onset-neonatal-sepsis-meningitis-check",
+  "kind": "conceptual",
+  "created": "2026-09-10",
+  "timing": "authored before generation",
+  "sourceFacts": [
+    {
+      "fact": "Assessment of suspected late-onset neonatal sepsis particularly includes consideration of lumbar puncture and meningitis.",
+      "sourceUrls": [
+        "https://www.rch.org.au/clinicalguide/guideline_index/Neonatal_antimicrobial_guidelines/",
+        "https://www.rch.org.au/clinicalguide/guideline_index/Lumbar_puncture/"
+      ]
+    },
+    {
+      "fact": "CSF assessment can identify CNS infection; LP safety must be assessed, and urgent antibiotics must not be delayed in a seriously unwell child.",
+      "sourceUrls": [
+        "https://www.rch.org.au/clinicalguide/guideline_index/Neonatal_antimicrobial_guidelines/",
+        "https://www.rch.org.au/clinicalguide/guideline_index/Lumbar_puncture/"
+      ]
+    }
+  ],
+  "clinicalSources": [
+    {
+      "title": "RCH: Neonatal antimicrobial guidelines",
+      "url": "https://www.rch.org.au/clinicalguide/guideline_index/Neonatal_antimicrobial_guidelines/"
+    },
+    {
+      "title": "RCH: Lumbar puncture",
+      "url": "https://www.rch.org.au/clinicalguide/guideline_index/Lumbar_puncture/"
+    }
+  ],
+  "nodes": [
+    "late-onset neonatal sepsis",
+    "bloodstream assessment",
+    "meningitis consideration",
+    "CSF assessment when safe"
+  ],
+  "edges": [
+    [
+      "late-onset neonatal sepsis",
+      "bloodstream assessment",
+      "part of evaluation"
+    ],
+    [
+      "late-onset neonatal sepsis",
+      "meningitis consideration",
+      "do not overlook"
+    ],
+    [
+      "meningitis consideration",
+      "CSF assessment when safe",
+      "diagnostic assessment"
+    ]
+  ],
+  "expectedLabels": [
+    "Late-onset neonatal sepsis",
+    "Think beyond the bloodstream",
+    "Blood assessment",
+    "Consider meningitis",
+    "CSF assessment when safe",
+    "Urgent treatment must not wait"
+  ],
+  "layoutSpecification": "Title 'Late-onset neonatal sepsis'. A branching evaluation concept with a small fully wrapped sleeping-infant pictogram at LEFT above caption 'Think beyond the bloodstream'. Two parallel large branches go RIGHT. TOP branch ends at a small closed specimen tube with muted red fluid labelled 'Blood assessment'. LOWER branch goes to a large question-mark token labelled 'Consider meningitis', then to a second closed specimen tube with CLEAR pale-blue fluid labelled 'CSF assessment when safe'. No brain, spinal cord, meninges, body compartments, needle placement, microbes or lab microscope view. The tubes are specimen symbols, not diagnostic appearance. Bottom bold short line 'Urgent treatment must not wait'. No claim all late sepsis has meningitis or that early sepsis excludes it.",
+  "forbiddenAnatomy": [
+    "No internal organ, eye, ear, brain, tissue or bone anatomy",
+    "No diagnostic image, patient-specific lesion appearance or literal anatomical pathway"
+  ],
+  "validation": {
+    "sourceFacts": "Checked against listed primary clinical sources on 2026-09-10",
+    "status": "self-reviewed; independent review pending",
+    "pixelChecks": "Pixel/structure check: neonatal assessment branches independently toward blood assessment and consideration of meningitis, with safety-qualified CSF assessment after the latter. Prominent urgent-treatment-must-not-wait line prevents investigation delay. No internal anatomy, needle placement, microbial image or assertion that all sepsis includes meningitis; tubes are specimen symbols."
+  }
+}

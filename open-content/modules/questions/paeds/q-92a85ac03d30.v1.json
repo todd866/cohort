@@ -1,0 +1,66 @@
+{
+  "id": "bank:cohort:paeds:q-92a85ac03d30:v1",
+  "rotation": "cohort-open",
+  "moduleNodes": [
+    "cohort/paeds"
+  ],
+  "topics": [
+    "Paediatric Dental Health & Trauma",
+    "dental trauma",
+    "crown fracture with pulp exposure"
+  ],
+  "questionType": "management",
+  "difficulty": "medium",
+  "stem": "A 9-year-old boy fell from his scooter an hour ago and broke his upper left central incisor. The broken surface shows a white outer rim, a yellowish inner layer and a small central pink spot that bleeds slightly. The tooth is very sensitive to air. His father has the fragment. There was no head injury and no other tooth is loose.\n\nWhat is the most appropriate management?",
+  "options": [
+    {
+      "label": "A",
+      "text": "Smooth the edge and refer to a community dentist within weeks",
+      "isCorrect": false,
+      "explanation": "Community review suits a fracture confined to enamel (white) or enamel and dentine (yellow). The pink bleeding spot is exposed pulp, which makes this an emergency."
+    },
+    {
+      "label": "B",
+      "text": "Extract the tooth to prevent infection of the exposed pulp",
+      "isCorrect": false,
+      "explanation": "Extraction is the usual outcome for a primary tooth with pulp exposure. At nine this central incisor is permanent, and prompt pulp treatment can save it."
+    },
+    {
+      "label": "C",
+      "text": "Reposition and splint the tooth under local anaesthetic",
+      "isCorrect": false,
+      "explanation": "Repositioning and splinting are for teeth displaced within the socket (luxation injuries). This tooth is fractured, not displaced."
+    },
+    {
+      "label": "D",
+      "text": "Refer to the emergency dental service now, fragment in milk",
+      "isCorrect": true,
+      "explanation": "Pink, bleeding tissue at the centre of the break is exposed pulp. A permanent tooth needs same-day emergency dental care to keep it alive, and the fragment is stored in milk for possible rebonding."
+    },
+    {
+      "label": "E",
+      "text": "Start oral amoxicillin and review with the GP in a week",
+      "isCorrect": false,
+      "explanation": "Antibiotics do not treat an exposed pulp, and a week's delay risks losing the tooth; the pulp needs dental treatment today."
+    }
+  ],
+  "context": "Read a broken tooth by colour: enamel is white, dentine yellow, pulp pink. Enamel or enamel-dentine fractures can wait for a community dentist; a pink, bleeding spot means exposed pulp.\n\nExposed pulp in a permanent tooth needs same-day emergency dental care to save the tooth. Keep the fragment in milk for possible rebonding. A primary tooth with pulp exposure is usually extracted.\n\nUpper central incisors are usually permanent from about 7-8 years. Check tetanus status and account for every fragment, which may be in the lip or inhaled.",
+  "publicModule": {
+    "schemaVersion": 1,
+    "origin": "mirrored",
+    "discipline": "paeds",
+    "mirroredFrom": "md3:92a85ac03d3005d3",
+    "itemText": {
+      "licence": "CC-BY-4.0",
+      "attribution": "MD3 contributors"
+    },
+    "evidence": {
+      "kind": "reference",
+      "sourceId": "rch-dental-trauma"
+    },
+    "review": {
+      "verdict": "passed",
+      "contentHash": "5e48fc7fbac6c0ed8bb999f8f3f2e708d00eb554dcc1cab83aa1b87131c57c87"
+    }
+  }
+}

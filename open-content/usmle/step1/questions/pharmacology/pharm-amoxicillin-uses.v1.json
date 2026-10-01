@@ -1,0 +1,71 @@
+{
+  "id": "bank:usmle-step1:pharm-amoxicillin-uses:v1",
+  "rotation": "usmle-step1-open",
+  "topics": [
+    "amoxicillin",
+    "antibiotic"
+  ],
+  "moduleNodes": [
+    "usmle/step1",
+    "usmle/step1/pharmacology"
+  ],
+  "questionType": "mechanism",
+  "difficulty": "easy",
+  "stem": "Amoxicillin is used to treat which of the following pairs of infections?",
+  "options": [
+    {
+      "label": "A",
+      "text": "Bacterial pneumonia and urinary tract infections",
+      "isCorrect": true,
+      "misconception": "None — amoxicillin treats certain bacterial infections, including pneumonia and urinary tract infections.",
+      "explanation": "MedlinePlus lists amoxicillin for certain infections caused by bacteria, such as pneumonia, skin infections and urinary tract infections."
+    },
+    {
+      "label": "B",
+      "text": "Mycoplasma and Legionella pneumonias",
+      "isCorrect": false,
+      "misconception": "Assumes a drug that treats typical bacterial pneumonia also covers atypical organisms.",
+      "explanation": "Mycoplasma lacks a cell wall and Legionella lives inside cells, so atypical pneumonia needs a macrolide, doxycycline or fluoroquinolone, not amoxicillin."
+    },
+    {
+      "label": "C",
+      "text": "Influenza and respiratory syncytial virus infections",
+      "isCorrect": false,
+      "misconception": "Believes antibiotics help viral respiratory infections, a common driver of inappropriate prescribing.",
+      "explanation": "Influenza and RSV are viruses with no peptidoglycan, so amoxicillin has no effect on them; influenza is treated with antivirals such as oseltamivir."
+    },
+    {
+      "label": "D",
+      "text": "Giardiasis and malaria",
+      "isCorrect": false,
+      "misconception": "Assumes a penicillin like amoxicillin acts on protozoa, which lack the peptidoglycan it targets.",
+      "explanation": "Giardia and Plasmodium are protozoa, which lack peptidoglycan, so a penicillin such as amoxicillin has no activity against them."
+    },
+    {
+      "label": "E",
+      "text": "MRSA bacteremia and MRSA skin abscesses",
+      "isCorrect": false,
+      "misconception": "Assumes any staphylococcal infection responds to a penicillin, overlooking methicillin resistance.",
+      "explanation": "MRSA carries an altered penicillin-binding protein (PBP2a) that resists beta-lactams such as amoxicillin; vancomycin or another anti-MRSA drug is needed."
+    }
+  ],
+  "context": "Learning objective: Amoxicillin treats certain bacterial infections, such as pneumonia, skin infections and urinary tract infections.",
+  "cite": "medlineplus-amoxicillin#amoxicillin-uses",
+  "publicUsmle": {
+    "schemaVersion": 1,
+    "origin": "generated",
+    "itemText": {
+      "licence": "CC-BY-4.0",
+      "attribution": "MD3 contributors"
+    },
+    "evidence": {
+      "kind": "passage",
+      "sourceId": "medlineplus-amoxicillin",
+      "passageId": "amoxicillin-uses",
+      "licence": {
+        "cls": "foss",
+        "id": "us-gov"
+      }
+    }
+  }
+}

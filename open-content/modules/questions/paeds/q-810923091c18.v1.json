@@ -1,0 +1,66 @@
+{
+  "id": "bank:cohort:paeds:q-810923091c18:v1",
+  "rotation": "cohort-open",
+  "moduleNodes": [
+    "cohort/paeds"
+  ],
+  "topics": [
+    "Paediatric Conjunctivitis",
+    "infectious keratitis",
+    "red eye red flags"
+  ],
+  "questionType": "management",
+  "difficulty": "medium",
+  "stem": "A 15-year-old who wears monthly soft contact lenses, and often sleeps and swims in them, has had 1 day of severe right eye pain, photophobia and blurred vision. The eye is intensely red with some discharge. Visual acuity is 6/24 on the right and 6/6 on the left. Fluorescein shows a small round white corneal opacity with overlying staining.\n\nWhat is the most appropriate next step?",
+  "options": [
+    {
+      "label": "A",
+      "text": "Chloramphenicol eye drops and GP review in 48 hours",
+      "isCorrect": false,
+      "explanation": "Chloramphenicol suits simple bacterial conjunctivitis. Pain, photophobia, reduced acuity and a corneal opacity signal keratitis, which threatens sight and needs specialist treatment now."
+    },
+    {
+      "label": "B",
+      "text": "Stop wearing lenses and use lubricant eye drops",
+      "isCorrect": false,
+      "explanation": "Stopping lens wear is part of the answer but not enough: a corneal opacity with pain and reduced vision in a lens wearer needs specialist assessment today."
+    },
+    {
+      "label": "C",
+      "text": "Urgent same-day ophthalmology review, lens kept for culture",
+      "isCorrect": true,
+      "explanation": "Severe pain, photophobia, reduced vision and a white corneal opacity in a contact lens wearer mean infectious keratitis. Contact ophthalmology urgently and keep the removed lens so it can be cultured."
+    },
+    {
+      "label": "D",
+      "text": "Topical corticosteroid drops to reduce the inflammation",
+      "isCorrect": false,
+      "explanation": "Steroid drops started without specialist review can worsen an infective keratitis, including herpes simplex infection."
+    },
+    {
+      "label": "E",
+      "text": "Oral flucloxacillin for presumed staphylococcal infection",
+      "isCorrect": false,
+      "explanation": "Keratitis needs specialist-directed topical treatment; an oral antistaphylococcal antibiotic does not treat an infected cornea."
+    }
+  ],
+  "context": "Conjunctivitis is the commonest red eye, but severe pain, photophobia and reduced visual acuity point to a sight-threatening cause and need specialist ophthalmology assessment.\n\nInfectious keratitis gives pain, discharge, reduced vision and a round white corneal opacity or ulcer on fluorescein. It is often associated with contact lens wear.\n\nContact ophthalmology urgently and keep the contact lens for culture. Do not start steroid drops, and do not settle for antibiotic drops with a delayed review.",
+  "publicModule": {
+    "schemaVersion": 1,
+    "origin": "mirrored",
+    "discipline": "paeds",
+    "mirroredFrom": "md3:810923091c1818ea",
+    "itemText": {
+      "licence": "CC-BY-4.0",
+      "attribution": "MD3 contributors"
+    },
+    "evidence": {
+      "kind": "reference",
+      "sourceId": "rch-acute-red-eye"
+    },
+    "review": {
+      "verdict": "passed",
+      "contentHash": "08301ec49d79b1242751f2919909c7978da438472a7c7947e85c46d7ca52bcea"
+    }
+  }
+}

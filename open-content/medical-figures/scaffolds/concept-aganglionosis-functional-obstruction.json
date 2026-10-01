@@ -1,0 +1,87 @@
+{
+  "schemaVersion": 1,
+  "id": "concept-aganglionosis-functional-obstruction",
+  "kind": "conceptual",
+  "sourceFacts": [
+    {
+      "fact": "Hirschsprung disease has absent enteric nerve cells in a distal intestinal segment.",
+      "sourceUrls": [
+        "https://www.niddk.nih.gov/health-information/digestive-diseases/hirschsprung-disease/definition-facts",
+        "https://medlineplus.gov/genetics/condition/hirschsprung-disease/"
+      ]
+    },
+    {
+      "fact": "The affected segment cannot move stool normally, causing functional obstruction and neonatal symptoms.",
+      "sourceUrls": [
+        "https://www.niddk.nih.gov/health-information/digestive-diseases/hirschsprung-disease/definition-facts",
+        "https://medlineplus.gov/genetics/condition/hirschsprung-disease/"
+      ]
+    }
+  ],
+  "nodes": [
+    {
+      "id": "1",
+      "label": "Distal enteric ganglia absent"
+    },
+    {
+      "id": "2",
+      "label": "Coordinated propulsion fails"
+    },
+    {
+      "id": "3",
+      "label": "Functional obstruction"
+    },
+    {
+      "id": "4",
+      "label": "Delayed meconium and distension"
+    }
+  ],
+  "edges": [
+    {
+      "from": "1",
+      "to": "2",
+      "meaning": "loss of neural control"
+    },
+    {
+      "from": "2",
+      "to": "3",
+      "meaning": "causes"
+    },
+    {
+      "from": "3",
+      "to": "4",
+      "meaning": "can present with"
+    }
+  ],
+  "labels": [
+    "Hirschsprung disease: a failure of bowel propulsion",
+    "Distal enteric ganglia absent",
+    "Coordinated propulsion fails",
+    "Functional obstruction",
+    "Delayed meconium and distension",
+    "Conceptual schematic • Not anatomy"
+  ],
+  "layout": "Four large numbered tiles in a horizontal sequence. Tile1 uses three signal-dot positions with two as empty dashed circles; do not draw a neuron or nerve. Tile2 uses an interrupted abstract signal arrow ending at a stop mark. Tile3 uses neutral ochre square tokens backed up at an abstract stop line, not a bowel tube. Tile4 uses a clock and outward arrows as symptom tokens, no person or abdomen. Draw exactly three connectors between the four tiles. Under the row print: Functional blockage from missing nerve control.",
+  "forbiddenAnatomy": [
+    "organs",
+    "body silhouettes",
+    "tissue cross-sections",
+    "cells",
+    "tubules",
+    "vessels",
+    "clinical photographs",
+    "diagnostic scans"
+  ],
+  "validation": {
+    "sourceStatus": "checked",
+    "structureStatus": "verified",
+    "requiredChecks": [
+      "Four ordered concept nodes and three forward connections",
+      "No drawn nerve, ganglia, bowel or tissue layers",
+      "Abstract obstruction marker must not be described as a physical plug",
+      "No diagnostic time cutoff or claimed universal symptom"
+    ],
+    "clinicalReviewStatus": "pending",
+    "pixelChecks": "Pixel structure check: all four specified causal nodes with three forward connections. Missing-signal dots, failed arrow, stopped tokens and clock are explicitly abstract; token counts are not anatomical cell counts. Functional blockage from missing nerve control is labelled, with no nerve, tissue or bowel rendering. No time cutoff. Independent and clinical review pending."
+  }
+}

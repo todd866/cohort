@@ -1,0 +1,71 @@
+{
+  "id": "bank:usmle-step1:pharm-isoniazid-uses:v1",
+  "rotation": "usmle-step1-open",
+  "topics": [
+    "isoniazid",
+    "tuberculosis"
+  ],
+  "moduleNodes": [
+    "usmle/step1",
+    "usmle/step1/pharmacology"
+  ],
+  "questionType": "mechanism",
+  "difficulty": "easy",
+  "stem": "Isoniazid is used to treat and prevent which serious lung-centered infection?",
+  "options": [
+    {
+      "label": "A",
+      "text": "Pneumocystosis",
+      "isCorrect": false,
+      "misconception": "Assumes any serious pneumonia in immunocompromised patients responds to an antituberculosis drug.",
+      "explanation": "Pneumocystosis (Pneumocystis pneumonia) is a fungal infection of immunocompromised patients, treated and prevented with trimethoprim-sulfamethoxazole, not isoniazid."
+    },
+    {
+      "label": "B",
+      "text": "Tuberculosis",
+      "isCorrect": true,
+      "misconception": "None — isoniazid is an antituberculosis agent for treatment and prevention.",
+      "explanation": "The label says isoniazid, an antituberculosis agent, treats tuberculosis and prevents it in certain people at risk of TB infection."
+    },
+    {
+      "label": "C",
+      "text": "Aspergillosis",
+      "isCorrect": false,
+      "misconception": "Confuses cavitary fungal lung disease with tuberculosis.",
+      "explanation": "Invasive aspergillosis is a mold infection treated with voriconazole; isoniazid inhibits mycolic acid synthesis, and fungi have no mycolic acids."
+    },
+    {
+      "label": "D",
+      "text": "Legionellosis",
+      "isCorrect": false,
+      "misconception": "Assumes an antituberculosis drug covers ordinary bacterial pneumonia.",
+      "explanation": "Legionellosis (Legionnaires disease) is treated with azithromycin or levofloxacin; isoniazid's activity is essentially limited to mycobacteria."
+    },
+    {
+      "label": "E",
+      "text": "Histoplasmosis",
+      "isCorrect": false,
+      "misconception": "Mistakes a granulomatous fungal infection for TB because both form granulomas.",
+      "explanation": "Histoplasmosis is a dimorphic fungal infection from bird or bat droppings, treated with itraconazole or amphotericin B, not isoniazid."
+    }
+  ],
+  "context": "Learning objective: Isoniazid, an antituberculosis agent, treats tuberculosis and prevents it in certain people at risk of TB infection.",
+  "cite": "medlineplus-isoniazid#isoniazid-uses",
+  "publicUsmle": {
+    "schemaVersion": 1,
+    "origin": "generated",
+    "itemText": {
+      "licence": "CC-BY-4.0",
+      "attribution": "MD3 contributors"
+    },
+    "evidence": {
+      "kind": "passage",
+      "sourceId": "medlineplus-isoniazid",
+      "passageId": "isoniazid-uses",
+      "licence": {
+        "cls": "foss",
+        "id": "us-gov"
+      }
+    }
+  }
+}

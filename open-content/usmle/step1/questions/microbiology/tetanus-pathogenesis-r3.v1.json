@@ -1,0 +1,74 @@
+{
+  "id": "bank:usmle-step1:tetanus-pathogenesis-r3:v1",
+  "rotation": "usmle-step1-open",
+  "ladderId": "tetanus-pathogenesis",
+  "topics": [
+    "tetanus",
+    "tetanospasmin",
+    "disinhibition",
+    "ladder:tetanus-pathogenesis"
+  ],
+  "moduleNodes": [
+    "usmle/step1",
+    "usmle/step1/microbiology"
+  ],
+  "questionType": "mechanism",
+  "difficulty": "hard",
+  "stem": "An unvaccinated 45-year-old farmer is brought to the emergency department with trismus, neck stiffness, and generalized painful spasms triggered by minor stimuli. He recalls a soil-contaminated puncture wound to his foot sustained while working in a barn ten days ago. Anaerobic conditions in the deep wound allowed Clostridium tetani spores to germinate and release tetanospasmin.\n\nWhich of the following synaptic effects of the toxin most directly produces the sustained muscle spasms?",
+  "options": [
+    {
+      "label": "A",
+      "text": "Blockade of acetylcholine release at the neuromuscular junction",
+      "isCorrect": false,
+      "misconception": "Botulinum-like NMJ blockade is being confused with tetanus toxin action.",
+      "explanation": "Botulinum toxin blocks ACh release and causes flaccid paralysis; tetanospasmin blocks inhibitory interneuron transmission, causing rigidity and spasms."
+    },
+    {
+      "label": "B",
+      "text": "Blockade of inhibitory neurotransmitter release onto motor neurons",
+      "isCorrect": true,
+      "misconception": "None; loss of inhibition disinhibits motor outflow and produces spasms.",
+      "explanation": "Tetanospasmin interferes with release of inhibitory neurotransmitters, blocking inhibitor impulses so motor neurons fire unchecked and skeletal muscles spasm."
+    },
+    {
+      "label": "C",
+      "text": "Irreversible activation of nicotinic receptors on skeletal muscle",
+      "isCorrect": false,
+      "misconception": "A postsynaptic agonist effect is being invented for an intracellular toxin.",
+      "explanation": "Tetanospasmin acts inside inhibitory neurons to block transmitter release; it does not agonize muscle nicotinic receptors."
+    },
+    {
+      "label": "D",
+      "text": "Destruction of dorsal-root sensory ganglia by spore germination",
+      "isCorrect": false,
+      "misconception": "Sensory ganglion damage is being substituted for central disinhibition.",
+      "explanation": "Spores germinate in the anaerobic wound; the clinical spasms come from tetanospasmin blocking inhibitory impulses to motor neurons."
+    },
+    {
+      "label": "E",
+      "text": "Autoimmune attack on myelinated central axons",
+      "isCorrect": false,
+      "misconception": "A demyelinating mechanism is being imported from another disease.",
+      "explanation": "Tetanus is toxin-mediated disinhibition, not demyelination; myelin loss would slow conduction rather than produce tetanic spasms."
+    }
+  ],
+  "context": "Learning objective: integrate anaerobic germination with tetanospasmin disinhibition. Spores germinate anaerobically → tetanospasmin → block inhibitory transmitter release → unchecked motor activity → spasms.",
+  "cite": "cdc-pink-book-tetanus#tetanus-disinhibition",
+  "publicUsmle": {
+    "schemaVersion": 1,
+    "origin": "generated",
+    "itemText": {
+      "licence": "CC-BY-4.0",
+      "attribution": "MD3 contributors"
+    },
+    "evidence": {
+      "kind": "passage",
+      "sourceId": "cdc-pink-book-tetanus",
+      "passageId": "tetanus-disinhibition",
+      "licence": {
+        "cls": "foss",
+        "id": "us-gov"
+      }
+    }
+  }
+}

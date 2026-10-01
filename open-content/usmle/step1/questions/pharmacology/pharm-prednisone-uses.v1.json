@@ -1,0 +1,71 @@
+{
+  "id": "bank:usmle-step1:pharm-prednisone-uses:v1",
+  "rotation": "usmle-step1-open",
+  "topics": [
+    "prednisone",
+    "corticosteroid"
+  ],
+  "moduleNodes": [
+    "usmle/step1",
+    "usmle/step1/pharmacology"
+  ],
+  "questionType": "mechanism",
+  "difficulty": "easy",
+  "stem": "Prednisone is used alone or with other medications to treat symptoms of which endocrine deficit state?",
+  "options": [
+    {
+      "label": "A",
+      "text": "Primary hypothyroidism",
+      "isCorrect": false,
+      "misconception": "Assumes one steroid replaces any deficient hormone, thyroid hormone included.",
+      "explanation": "Primary hypothyroidism is treated with levothyroxine replacement; a glucocorticoid does not restore thyroid hormone."
+    },
+    {
+      "label": "B",
+      "text": "Postsurgical hypoparathyroidism",
+      "isCorrect": false,
+      "misconception": "Confuses adrenal steroid replacement with replacement in the calcium axis.",
+      "explanation": "Postsurgical hypoparathyroidism causes hypocalcemia and is treated with calcium and calcitriol, not a glucocorticoid."
+    },
+    {
+      "label": "C",
+      "text": "Central diabetes insipidus",
+      "isCorrect": false,
+      "misconception": "Confuses the adrenal cortex with the posterior pituitary as the deficient gland.",
+      "explanation": "Central diabetes insipidus reflects too little antidiuretic hormone and is treated with desmopressin; prednisone does not replace ADH."
+    },
+    {
+      "label": "D",
+      "text": "Growth hormone deficiency",
+      "isCorrect": false,
+      "misconception": "Assumes a glucocorticoid can stand in for anterior pituitary growth hormone.",
+      "explanation": "Growth hormone deficiency is treated with recombinant somatropin; glucocorticoids actually slow growth in children."
+    },
+    {
+      "label": "E",
+      "text": "Adrenal insufficiency",
+      "isCorrect": true,
+      "misconception": "None — prednisone supplies glucocorticoid when corticosteroid levels are low.",
+      "explanation": "Prednisone treats symptoms of low corticosteroid levels, as in adrenal insufficiency; it supplies glucocorticoid only, so primary disease may also need fludrocortisone."
+    }
+  ],
+  "context": "Learning objective: Prednisone treats symptoms of low corticosteroid levels, as in adrenal insufficiency, by supplying glucocorticoid.",
+  "cite": "medlineplus-prednisone#prednisone-uses",
+  "publicUsmle": {
+    "schemaVersion": 1,
+    "origin": "generated",
+    "itemText": {
+      "licence": "CC-BY-4.0",
+      "attribution": "MD3 contributors"
+    },
+    "evidence": {
+      "kind": "passage",
+      "sourceId": "medlineplus-prednisone",
+      "passageId": "prednisone-uses",
+      "licence": {
+        "cls": "foss",
+        "id": "us-gov"
+      }
+    }
+  }
+}

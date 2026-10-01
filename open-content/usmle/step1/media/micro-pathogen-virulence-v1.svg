@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" width="940" height="560" viewBox="0 0 940 560" role="img" aria-labelledby="title desc">
+<title id="title">Pathogen virulence board</title>
+<desc id="desc">Pathogenicity vs virulence, primary vs opportunistic, lipid A, capsule vs phagocytosis, measles meningococcus pneumococcus</desc>
+<rect width="940" height="560" fill="#f7f4ef"/>
+<text x="32" y="40" font-family="Helvetica, Arial, sans-serif" font-size="24" font-weight="700" fill="#1a1a1a">Micro virulence map (FOSS draft)</text>
+<rect x="32" y="70" width="280" height="150" rx="10" fill="#dbeafe" stroke="#1e3a5f" stroke-width="2"/>
+<text x="48" y="105" font-family="Helvetica, Arial, sans-serif" font-size="15" font-weight="700" fill="#1e3a5f">Pathogenicity</text>
+<text x="48" y="135" font-family="Helvetica, Arial, sans-serif" font-size="13" fill="#1a1a1a">Ability to cause disease</text>
+<text x="48" y="165" font-family="Helvetica, Arial, sans-serif" font-size="15" font-weight="700" fill="#1e3a5f">Virulence</text>
+<text x="48" y="195" font-family="Helvetica, Arial, sans-serif" font-size="13" fill="#1a1a1a">Degree of pathogenicity</text>
+<rect x="330" y="70" width="280" height="150" rx="10" fill="#dcfce7" stroke="#14532d" stroke-width="2"/>
+<text x="346" y="105" font-family="Helvetica, Arial, sans-serif" font-size="15" font-weight="700" fill="#14532d">Primary pathogen</text>
+<text x="346" y="135" font-family="Helvetica, Arial, sans-serif" font-size="13" fill="#1a1a1a">Disease even if host intact</text>
+<text x="346" y="170" font-family="Helvetica, Arial, sans-serif" font-size="15" font-weight="700" fill="#14532d">Opportunistic</text>
+<text x="346" y="200" font-family="Helvetica, Arial, sans-serif" font-size="13" fill="#1a1a1a">Needs compromised niche</text>
+<rect x="628" y="70" width="280" height="150" rx="10" fill="#fee2e2" stroke="#7f1d1d" stroke-width="2"/>
+<text x="644" y="105" font-family="Helvetica, Arial, sans-serif" font-size="15" font-weight="700" fill="#7f1d1d">LPS / Lipid A</text>
+<text x="644" y="135" font-family="Helvetica, Arial, sans-serif" font-size="13" fill="#1a1a1a">Toxic moiety of endotoxin</text>
+<text x="644" y="170" font-family="Helvetica, Arial, sans-serif" font-size="15" font-weight="700" fill="#7f1d1d">Capsule</text>
+<text x="644" y="200" font-family="Helvetica, Arial, sans-serif" font-size="13" fill="#1a1a1a">Blocks phagocyte ingestion</text>
+<rect x="32" y="250" width="280" height="140" rx="10" fill="#fff" stroke="#1e3a5f" stroke-width="2"/>
+<text x="48" y="285" font-family="Helvetica, Arial, sans-serif" font-size="15" font-weight="700" fill="#1e3a5f">Measles</text>
+<text x="48" y="315" font-family="Helvetica, Arial, sans-serif" font-size="13" fill="#1a1a1a">Droplets + airborne ~2h</text>
+<text x="48" y="345" font-family="Helvetica, Arial, sans-serif" font-size="13" fill="#1a1a1a">Koplik spots; rash ~14d</text>
+<rect x="330" y="250" width="280" height="140" rx="10" fill="#fff" stroke="#1e3a5f" stroke-width="2"/>
+<text x="346" y="285" font-family="Helvetica, Arial, sans-serif" font-size="15" font-weight="700" fill="#1e3a5f">N. meningitidis</text>
+<text x="346" y="315" font-family="Helvetica, Arial, sans-serif" font-size="13" fill="#1a1a1a">Meningitis / sepsis</text>
+<text x="346" y="345" font-family="Helvetica, Arial, sans-serif" font-size="13" fill="#1a1a1a">Polysaccharide capsule</text>
+<rect x="628" y="250" width="280" height="140" rx="10" fill="#fff" stroke="#1e3a5f" stroke-width="2"/>
+<text x="644" y="285" font-family="Helvetica, Arial, sans-serif" font-size="15" font-weight="700" fill="#1e3a5f">S. pneumoniae</text>
+<text x="644" y="315" font-family="Helvetica, Arial, sans-serif" font-size="13" fill="#1a1a1a">Pneumococcus</text>
+<text x="644" y="345" font-family="Helvetica, Arial, sans-serif" font-size="13" fill="#1a1a1a">Capsular polysaccharide</text>
+<rect x="32" y="420" width="876" height="100" rx="10" fill="#fff" stroke="#cbd5e1" stroke-width="2"/>
+<text x="52" y="460" font-family="Helvetica, Arial, sans-serif" font-size="14" fill="#1a1a1a">Disease = damaged or impaired normal structure/function (OpenStax).</text>
+<text x="52" y="490" font-family="Helvetica, Arial, sans-serif" font-size="14" fill="#1a1a1a">Adhesins bind host receptors; capsules also aid adhesion + immune evasion.</text>
+</svg>

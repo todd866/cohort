@@ -1,0 +1,72 @@
+{
+  "id": "bank:usmle-step1:micro-vaccine-live-replication-failure:v1",
+  "rotation": "usmle-step1-open",
+  "topics": [
+    "vaccines",
+    "live attenuated vaccines",
+    "vaccine replication"
+  ],
+  "moduleNodes": [
+    "usmle/step1",
+    "usmle/step1/microbiology"
+  ],
+  "questionType": "mechanism",
+  "difficulty": "easy",
+  "stem": "A live attenuated vaccine is being engineered for safer use. Which of the following properties must the preparation retain in the vaccinated person to generate its intended immune response?",
+  "options": [
+    {
+      "label": "A",
+      "text": "Polysaccharide signaling without T-cell participation",
+      "isCorrect": false,
+      "misconception": "Imports a nonliving polysaccharide-response framework into a live attenuated vaccine question.",
+      "explanation": "The CDC passage grounds the response of this vaccine class in replication of the attenuated organism, not in an isolated polysaccharide signal."
+    },
+    {
+      "label": "B",
+      "text": "Transfer of preformed pathogen-specific antibody",
+      "isCorrect": false,
+      "misconception": "Confuses active vaccination with administration of an already formed immune product.",
+      "explanation": "The cited requirement is replication of the attenuated organism in the recipient, not transfer of a ready-made antibody preparation."
+    },
+    {
+      "label": "C",
+      "text": "Placental transport of maternal antibody",
+      "isCorrect": false,
+      "misconception": "Substitutes maternal antibody transfer for the mechanism of a vaccine given directly to the recipient.",
+      "explanation": "Placental transfer does not explain why the administered live attenuated preparation itself requires replication in the vaccinated person."
+    },
+    {
+      "label": "D",
+      "text": "Neutralization of antigen inside the syringe",
+      "isCorrect": false,
+      "misconception": "Locates the immune-generating event in the vaccine container rather than in the vaccinated host.",
+      "explanation": "The passage identifies replication after administration in the vaccinated person as the required event; neutralization within the syringe is not that event."
+    },
+    {
+      "label": "E",
+      "text": "Replication within the recipient after administration",
+      "isCorrect": true,
+      "misconception": "None; replication in the recipient is required for this vaccine class to generate its intended response.",
+      "explanation": "The CDC passage states that a live attenuated vaccine must replicate in the vaccinated person to produce an immune response. That capacity therefore has to remain intact."
+    }
+  ],
+  "context": "Learning objective: identify replication in the vaccinated person as a necessary step for a live attenuated vaccine. Attenuation must preserve the process the CDC identifies as required for the intended immune response.",
+  "cite": "cdc-pink-book-vaccine-principles#live-vaccine-replication",
+  "publicUsmle": {
+    "schemaVersion": 1,
+    "origin": "generated",
+    "itemText": {
+      "licence": "CC-BY-4.0",
+      "attribution": "MD3 contributors"
+    },
+    "evidence": {
+      "kind": "passage",
+      "sourceId": "cdc-pink-book-vaccine-principles",
+      "passageId": "live-vaccine-replication",
+      "licence": {
+        "cls": "foss",
+        "id": "us-gov"
+      }
+    }
+  }
+}

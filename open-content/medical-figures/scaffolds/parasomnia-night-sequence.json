@@ -1,0 +1,116 @@
+{
+  "schemaVersion": 1,
+  "figureId": "parasomnia-night-sequence",
+  "kind": "conceptual",
+  "sourceFacts": [
+    {
+      "id": "fact-1",
+      "fact": "Night terrors occur during deep non-REM sleep, usually in the first few hours.",
+      "sources": [
+        {
+          "title": "RCH: Night terrors",
+          "url": "https://www.rch.org.au/kidsinfo/fact_sheets/Night_terrors_night_time_wakings/"
+        },
+        {
+          "title": "NHS children’s health: Sleepwalking, nightmares and night terrors",
+          "url": "https://bedslutonchildrenshealth.nhs.uk/sleep/sleepwalking-nightmares-and-night-terrors/"
+        }
+      ]
+    },
+    {
+      "id": "fact-2",
+      "fact": "Nightmares occur during REM sleep, often later in the night.",
+      "sources": [
+        {
+          "title": "RCH: Night terrors",
+          "url": "https://www.rch.org.au/kidsinfo/fact_sheets/Night_terrors_night_time_wakings/"
+        },
+        {
+          "title": "NHS children’s health: Sleepwalking, nightmares and night terrors",
+          "url": "https://bedslutonchildrenshealth.nhs.uk/sleep/sleepwalking-nightmares-and-night-terrors/"
+        }
+      ]
+    },
+    {
+      "id": "fact-3",
+      "fact": "Children usually do not recall a night terror; they can awaken fully and recall a nightmare.",
+      "sources": [
+        {
+          "title": "RCH: Night terrors",
+          "url": "https://www.rch.org.au/kidsinfo/fact_sheets/Night_terrors_night_time_wakings/"
+        },
+        {
+          "title": "NHS children’s health: Sleepwalking, nightmares and night terrors",
+          "url": "https://bedslutonchildrenshealth.nhs.uk/sleep/sleepwalking-nightmares-and-night-terrors/"
+        }
+      ]
+    }
+  ],
+  "nodes": [
+    {
+      "id": "start",
+      "shape": "moon",
+      "label": "Sleep onset"
+    },
+    {
+      "id": "terror",
+      "shape": "bell and blank thought bubble",
+      "label": "Night terror"
+    },
+    {
+      "id": "dream",
+      "shape": "dream cloud and recall card",
+      "label": "Nightmare"
+    },
+    {
+      "id": "end",
+      "shape": "sunrise",
+      "label": "Morning"
+    }
+  ],
+  "edges": [
+    {
+      "from": "start",
+      "to": "terror",
+      "meaning": "usually early night"
+    },
+    {
+      "from": "terror",
+      "to": "dream",
+      "meaning": "qualitative timing comparison, not mandatory sequence"
+    },
+    {
+      "from": "dream",
+      "to": "end",
+      "meaning": "nightmare often later"
+    }
+  ],
+  "labels": [
+    "Night terror or nightmare?",
+    "Sleep onset",
+    "Morning",
+    "Usually early",
+    "Night terror",
+    "Deep non-REM",
+    "Little or no recall",
+    "Often later",
+    "Nightmare",
+    "REM sleep",
+    "Dream remembered",
+    "Typical timing, not a fixed schedule"
+  ],
+  "forbiddenAnatomy": [
+    "Organs, skin layers, tissue cutaways, histology, diagnostic traces, clinical photos"
+  ],
+  "validation": {
+    "status": "verified",
+    "method": "source-and-conceptual-structure-review",
+    "checks": [
+      "Night terrors occupy earlier time region and deep non-REM; nightmares later and REM.",
+      "Recall contrast correct.",
+      "No invented polysomnography, precise cycles or implication both events happen nightly."
+    ],
+    "pixelReviewStatus": "verified",
+    "pixelReviewNotes": "Night terror is positioned early relative to sleep onset and explicitly labelled deep non-REM with little/no recall. Nightmare is later relative to morning and labelled REM with remembered star postcard. No arrow implies one disorder causes the other. Timing qualifier excludes fixed schedule; no invented sleep recording."
+  }
+}

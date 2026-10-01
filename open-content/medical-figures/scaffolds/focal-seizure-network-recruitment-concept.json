@@ -1,0 +1,67 @@
+{
+  "schemaVersion": 1,
+  "figureId": "focal-seizure-network-recruitment-concept",
+  "kind": "conceptual",
+  "created": "2026-09-10",
+  "timing": "authored before generation",
+  "sourceFacts": [
+    {
+      "fact": "A focal seizure begins in a network limited to one hemisphere and can spread to involve both sides.",
+      "sourceUrls": [
+        "https://www.ninds.nih.gov/health-information/disorders/epilepsy-and-seizures",
+        "https://www.cdc.gov/epilepsy/about/types-of-seizures.html"
+      ]
+    },
+    {
+      "fact": "Network recruitment is a functional concept; a simplified node diagram does not show cortical topography or actual pathways.",
+      "sourceUrls": [
+        "https://www.ninds.nih.gov/health-information/disorders/epilepsy-and-seizures",
+        "https://www.cdc.gov/epilepsy/about/types-of-seizures.html"
+      ]
+    }
+  ],
+  "clinicalSources": [
+    {
+      "title": "NINDS: Epilepsy and Seizures",
+      "url": "https://www.ninds.nih.gov/health-information/disorders/epilepsy-and-seizures"
+    },
+    {
+      "title": "CDC: Types of Seizures",
+      "url": "https://www.cdc.gov/epilepsy/about/types-of-seizures.html"
+    }
+  ],
+  "nodes": [
+    "limited active node group",
+    "wider active network"
+  ],
+  "edges": [
+    [
+      "limited active node group",
+      "wider active network",
+      "may recruit more network"
+    ]
+  ],
+  "expectedLabels": [
+    "Focal seizure: possible network spread",
+    "Limited onset",
+    "Wider recruitment",
+    "May spread",
+    "Abstract network \u2022 not brain anatomy"
+  ],
+  "layoutSpecification": "Title 'Focal seizure: possible network spread'. Two identical ABSTRACT networks side-by-side on plain ivory background, with no head, brain, organ outlines, hemispheres, cortical contours, neural tracts or body parts. Each network is exactly NINE equally spaced circular nodes in a simple 3-by-3 grid connected by faint straight horizontal and vertical grey lines. LEFT heading 'Limited onset': only the TOP-LEFT and TOP-CENTRE nodes are ochre; all other seven nodes are pale teal. RIGHT heading 'Wider recruitment': seven of the nine nodes are ochre, with the original two still ochre, and two bottom-corner nodes remain pale teal. A single broad arrow BETWEEN the two grids labelled 'May spread'. Bottom 'Abstract network \u2022 not brain anatomy'. This is a conceptual increase in recruited network, not a physical tract map or a claim that spread always happens. No EEG. CRITICAL readability: fully OPAQUE near-white/ivory background across the entire canvas. NO black, dark-blue or dark gradient background; NO transparency, vignette, neon glow, coloured halos, blur or shadow fields. ALL lettering solid deep navy, plainly readable at small size against near-white. Flat pastel nodes, thin grey connections and one rightward arrow only. Exact two 3x3 grids and the counts already specified.",
+  "forbiddenAnatomy": [
+    "No internal organ, eye, ear, brain, tissue or bone anatomy",
+    "No diagnostic image, patient-specific lesion appearance or literal anatomical pathway"
+  ],
+  "validation": {
+    "sourceFacts": "Checked against listed primary clinical sources on 2026-09-10",
+    "status": "self-reviewed; independent review pending",
+    "pixelChecks": "Pixel/structure check on revised image: exactly nine nodes in each 3x3 grid; left has two adjacent active nodes, right seven active nodes with both original nodes retained and two bottom-corner inactive nodes. Single rightward may-spread arrow. Navy lettering on opaque near-white background is legible. No brain outline, cortical topography, tracts or EEG. Initial dark low-contrast candidate rejected."
+  },
+  "generationAttempts": [
+    {
+      "status": "rejected",
+      "reason": "First image used dark halo background with navy text, making labels unreadable despite correct node counts."
+    }
+  ]
+}

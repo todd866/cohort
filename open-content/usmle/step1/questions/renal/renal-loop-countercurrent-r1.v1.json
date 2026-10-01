@@ -1,0 +1,73 @@
+{
+  "id": "bank:usmle-step1:renal-loop-countercurrent-r1:v1",
+  "rotation": "usmle-step1-open",
+  "ladderId": "renal-loop-countercurrent",
+  "topics": [
+    "loop of Henle",
+    "countercurrent multiplier",
+    "ladder:renal-loop-countercurrent"
+  ],
+  "moduleNodes": [
+    "usmle/step1",
+    "usmle/step1/renal"
+  ],
+  "questionType": "mechanism",
+  "difficulty": "easy",
+  "stem": "Which of the following nephron segments is impermeable to water while actively extruding sodium into the medullary interstitium?",
+  "options": [
+    {
+      "label": "A",
+      "text": "Proximal convoluted tubule in the renal cortex",
+      "isCorrect": false,
+      "misconception": "The bulk reabsorption site is being assigned the countercurrent multiplier role.",
+      "explanation": "The proximal tubule reabsorbs most filtered solute and water isosmotically; the medullary gradient is built in the loop of Henle."
+    },
+    {
+      "label": "B",
+      "text": "Descending limb of the loop of Henle in the medulla",
+      "isCorrect": false,
+      "misconception": "The water-permeable limb is being confused with the salt-pumping limb.",
+      "explanation": "The descending limb is freely water-permeable via aquaporins and loses water to the interstitium; it does not actively extrude sodium."
+    },
+    {
+      "label": "C",
+      "text": "Ascending limb of the loop of Henle in the medulla",
+      "isCorrect": true,
+      "misconception": "None; the ascending limb pumps Na+ without water following, raising medullary osmolarity.",
+      "explanation": "The ascending limb is impermeable to water yet actively pumps Na+ into the interstitium, creating the hyperosmotic medulla of the countercurrent multiplier."
+    },
+    {
+      "label": "D",
+      "text": "Distal convoluted tubule in the renal cortex",
+      "isCorrect": false,
+      "misconception": "A downstream fine-tuning segment is being assigned the gradient-building role.",
+      "explanation": "The distal tubule adjusts sodium under aldosterone control but does not generate the medullary osmolar gradient."
+    },
+    {
+      "label": "E",
+      "text": "Cortical collecting duct in the renal medulla",
+      "isCorrect": false,
+      "misconception": "The final urine-concentrating segment is being confused with the gradient generator.",
+      "explanation": "The collecting duct reabsorbs water under ADH using the pre-existing medullary gradient; the ascending limb builds that gradient."
+    }
+  ],
+  "context": "Learning objective: identify the countercurrent multiplier segment. The water-impermeable ascending limb extrudes Na+ (and urea contributes) to create medullary hyperosmolarity.",
+  "cite": "openstax-anatomy-physiology#renal-loop-countercurrent",
+  "publicUsmle": {
+    "schemaVersion": 1,
+    "origin": "generated",
+    "itemText": {
+      "licence": "CC-BY-4.0",
+      "attribution": "MD3 contributors"
+    },
+    "evidence": {
+      "kind": "passage",
+      "sourceId": "openstax-anatomy-physiology",
+      "passageId": "renal-loop-countercurrent",
+      "licence": {
+        "cls": "foss",
+        "id": "cc-by-4.0"
+      }
+    }
+  }
+}

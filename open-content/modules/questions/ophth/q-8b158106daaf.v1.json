@@ -1,0 +1,60 @@
+{
+  "id": "bank:cohort:ophth:q-8b158106daaf:v1",
+  "rotation": "cohort-open",
+  "moduleNodes": [
+    "cohort/ophth"
+  ],
+  "topics": [
+    "enthesitis-related arthritis",
+    "acute anterior uveitis",
+    "ophthalmology"
+  ],
+  "questionType": "management",
+  "difficulty": "medium",
+  "stem": "A 12-year-old boy with Achilles enthesitis develops a painful red photophobic eye.\n\nWhat should the treating clinician arrange?",
+  "options": [
+    {
+      "label": "A",
+      "text": "Routine slit-lamp screening in six months",
+      "isCorrect": false,
+      "explanation": "Routine screening addresses silent chronic uveitis; it is too slow for a painful red photophobic eye."
+    },
+    {
+      "label": "B",
+      "text": "Increase physiotherapy and reassess next month",
+      "isCorrect": false,
+      "explanation": "Exercise may support arthritis care but does not assess an acutely inflamed eye."
+    },
+    {
+      "label": "C",
+      "text": "Reassure because HLA-B27 disease spares the eye",
+      "isCorrect": false,
+      "explanation": "HLA-B27-associated enthesitis-related arthritis is associated with acute anterior uveitis."
+    },
+    {
+      "label": "D",
+      "text": "Urgent ophthalmology assessment for acute uveitis",
+      "isCorrect": true,
+      "explanation": "Pain, redness and photophobia fit acute anterior uveitis in enthesitis-related arthritis and need urgent eye assessment."
+    }
+  ],
+  "context": "Enthesitis-related arthritis can cause acute anterior uveitis, with pain, redness and photophobia. This differs from silent chronic uveitis in oligoarticular JIA.\n\nThese symptoms require urgent eye assessment rather than waiting for routine screening. Ongoing inflammation can cause synechiae and visual loss.",
+  "publicModule": {
+    "schemaVersion": 1,
+    "origin": "mirrored",
+    "discipline": "ophth",
+    "mirroredFrom": "md3:8b158106daafaef0",
+    "itemText": {
+      "licence": "CC-BY-4.0",
+      "attribution": "MD3 contributors"
+    },
+    "evidence": {
+      "kind": "reference",
+      "sourceId": "rch-acute-red-eye"
+    },
+    "review": {
+      "verdict": "passed",
+      "contentHash": "7ce06524b1e959a252670d9bc9f1aec92fb7b8bd02057264bb5070a48d3153c0"
+    }
+  }
+}

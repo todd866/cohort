@@ -1,0 +1,74 @@
+{
+  "id": "bank:usmle-step1:biochem-glycolysis-ischemia-r3:v1",
+  "rotation": "usmle-step1-open",
+  "ladderId": "glycolysis",
+  "topics": [
+    "glycolysis",
+    "ischemia",
+    "anaerobic ATP",
+    "ladder:glycolysis"
+  ],
+  "moduleNodes": [
+    "usmle/step1",
+    "usmle/step1/biochemistry"
+  ],
+  "questionType": "mechanism",
+  "difficulty": "hard",
+  "stem": "A 58-year-old man with type 2 diabetes presents to the emergency department with crushing substernal chest pain for 45 minutes. Electrocardiography shows ST-segment elevation in leads V2 through V4, and cardiac catheterization confirms occlusion of the left anterior descending artery. Biopsy of the ischemic myocardium reveals depleted mitochondrial ATP and accumulating lactate despite continued glucose uptake.\n\nWhich of the following best explains why substrate-level ATP production can briefly continue in this tissue without oxygen?",
+  "options": [
+    {
+      "label": "A",
+      "text": "Glycolysis proceeds in the cytosol and does not require oxygen",
+      "isCorrect": true,
+      "misconception": "None; glycolysis is anaerobic and cytosolic.",
+      "explanation": "Glycolysis converts glucose to pyruvate in the cytosol and can proceed without oxygen; under ischemia it continues briefly to supply substrate-level ATP while mitochondria cannot run oxidative phosphorylation."
+    },
+    {
+      "label": "B",
+      "text": "Glycolysis relocates into mitochondria when oxygen delivery falls",
+      "isCorrect": false,
+      "misconception": "A compartment shift is being invented for anaerobiosis.",
+      "explanation": "Glycolysis remains cytosolic; mitochondria run the TCA cycle and oxidative phosphorylation, which fail without oxygen."
+    },
+    {
+      "label": "C",
+      "text": "Hexokinase begins to consume oxygen as an alternative substrate",
+      "isCorrect": false,
+      "misconception": "The glucose-trapping enzyme is being given a respiratory role.",
+      "explanation": "Hexokinase phosphorylates glucose with ATP; it does not use oxygen, and ischemia does not convert it into an oxidase."
+    },
+    {
+      "label": "D",
+      "text": "PFK stops so that all ATP is spared for ion pumps",
+      "isCorrect": false,
+      "misconception": "Regulatory shutdown is being treated as the reason ATP continues.",
+      "explanation": "PFK regulation modulates glycolytic rate; the reason ATP can still be made without O2 is that glycolysis itself is anaerobic, not that PFK stops."
+    },
+    {
+      "label": "E",
+      "text": "Myosin ATPase reverses to generate ATP from ADP",
+      "isCorrect": false,
+      "misconception": "Contractile ATPase is being cast as an ATP synthase.",
+      "explanation": "Myosin hydrolyzes ATP; it does not reverse to synthesize ATP during ischemia—the brief ATP comes from cytosolic glycolysis."
+    }
+  ],
+  "context": "Learning objective: apply anaerobic glycolysis in ischemia. Glycolysis is cytoplasmic and oxygen-independent, so it can continue briefly when mitochondrial oxidative phosphorylation fails.",
+  "cite": "openstax-biology-2e#glycolysis-anaerobic-cytoplasm",
+  "publicUsmle": {
+    "schemaVersion": 1,
+    "origin": "generated",
+    "itemText": {
+      "licence": "CC-BY-4.0",
+      "attribution": "MD3 contributors"
+    },
+    "evidence": {
+      "kind": "passage",
+      "sourceId": "openstax-biology-2e",
+      "passageId": "glycolysis-anaerobic-cytoplasm",
+      "licence": {
+        "cls": "foss",
+        "id": "cc-by-4.0"
+      }
+    }
+  }
+}

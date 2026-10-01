@@ -1,0 +1,74 @@
+{
+  "id": "bank:usmle-step1:cardiovascular-frank-starling-r3:v1",
+  "rotation": "usmle-step1-open",
+  "ladderId": "frank-starling",
+  "topics": [
+    "Frank-Starling mechanism",
+    "heart failure",
+    "contractility",
+    "ladder:frank-starling"
+  ],
+  "moduleNodes": [
+    "usmle/step1",
+    "usmle/step1/cardiovascular"
+  ],
+  "questionType": "mechanism",
+  "difficulty": "hard",
+  "stem": "A 68-year-old man with a prior myocardial infarction presents with progressive dyspnea and orthopnea. Examination shows elevated jugular venous pressure and bilateral crackles. Echocardiography reveals a dilated left ventricle with a markedly depressed ejection fraction. Despite an elevated end-diastolic volume, his forward stroke volume remains low.\n\nWhich of the following best explains why the Frank–Starling mechanism fails to restore adequate output in this patient?",
+  "options": [
+    {
+      "label": "A",
+      "text": "Increased preload has abolished venous return to the heart",
+      "isCorrect": false,
+      "misconception": "High filling is being treated as loss of venous return.",
+      "explanation": "Venous return and preload are elevated; the problem is that the damaged myocardium cannot convert that stretch into an adequate stroke volume."
+    },
+    {
+      "label": "B",
+      "text": "Reduced contractility flattens the stretch–force relationship",
+      "isCorrect": true,
+      "misconception": "None; a weak ventricle sits on a depressed Frank–Starling curve.",
+      "explanation": "Frank–Starling links greater stretch to stronger contraction only within limits and for a given inotropic state; after infarction, reduced contractility flattens that curve so elevated end-diastolic volume no longer yields adequate stroke volume."
+    },
+    {
+      "label": "C",
+      "text": "Decreased afterload prevents the ventricle from ejecting",
+      "isCorrect": false,
+      "misconception": "Low afterload is being blamed for low output.",
+      "explanation": "Lower afterload would favor ejection; in systolic failure the limiting factor is reduced contractility, often with elevated afterload from vasoconstriction."
+    },
+    {
+      "label": "D",
+      "text": "Heart rate alone determines stroke volume in dilated ventricles",
+      "isCorrect": false,
+      "misconception": "Rate is being substituted for the length–tension mechanism.",
+      "explanation": "Heart rate multiplies stroke volume to give cardiac output; it does not replace preload–contractility coupling as the per-beat mechanism."
+    },
+    {
+      "label": "E",
+      "text": "Increased ventricular compliance cancels any effect of stretch",
+      "isCorrect": false,
+      "misconception": "A compliance change is being treated as the reason stretch fails.",
+      "explanation": "Compliance affects how filling pressure maps to volume; the failed output here reflects depressed contractility on the Frank–Starling curve, not cancelled stretch from compliance alone."
+    }
+  ],
+  "context": "Learning objective: recognize when Frank–Starling cannot compensate. In systolic heart failure, reduced contractility depresses the stretch–force curve so elevated preload no longer restores stroke volume.",
+  "cite": "openstax-anatomy-physiology#heart-frank-starling-preload",
+  "publicUsmle": {
+    "schemaVersion": 1,
+    "origin": "generated",
+    "itemText": {
+      "licence": "CC-BY-4.0",
+      "attribution": "MD3 contributors"
+    },
+    "evidence": {
+      "kind": "passage",
+      "sourceId": "openstax-anatomy-physiology",
+      "passageId": "heart-frank-starling-preload",
+      "licence": {
+        "cls": "foss",
+        "id": "cc-by-4.0"
+      }
+    }
+  }
+}

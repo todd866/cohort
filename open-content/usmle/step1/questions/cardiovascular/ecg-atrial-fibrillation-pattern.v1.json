@@ -1,0 +1,89 @@
+{
+  "id": "bank:usmle-step1:ecg-atrial-fibrillation-pattern:v1",
+  "rotation": "usmle-step1-open",
+  "topics": [
+    "electrocardiogram",
+    "ECG interpretation",
+    "atrial fibrillation",
+    "irregular rhythm"
+  ],
+  "moduleNodes": [
+    "usmle/step1",
+    "usmle/step1/cardiovascular"
+  ],
+  "questionType": "interpretation",
+  "difficulty": "easy",
+  "stem": "Which rhythm diagnosis best matches the R-R spacing and baseline pattern visible in this recorded tracing?",
+  "options": [
+    {
+      "label": "A",
+      "text": "Atrial fibrillation",
+      "isCorrect": true,
+      "misconception": "None; the strip shows disorganized atrial activity and irregular ventricular timing.",
+      "explanation": "The baseline lacks discrete P waves and the QRS complexes occur at unequal intervals, matching atrial fibrillation."
+    },
+    {
+      "label": "B",
+      "text": "Normal sinus rhythm",
+      "isCorrect": false,
+      "misconception": "Irregular ventricular timing and absent organized P waves are being overlooked.",
+      "explanation": "Sinus rhythm requires organized P waves preceding QRS complexes with a regular relationship, which is absent here."
+    },
+    {
+      "label": "C",
+      "text": "Second-degree AV block",
+      "isCorrect": false,
+      "misconception": "Intermittent failure of conduction is being inferred without discrete P waves.",
+      "explanation": "Second-degree block has identifiable regular P waves, some of which fail to conduct; this tracing has no discrete P waves."
+    },
+    {
+      "label": "D",
+      "text": "Ventricular tachycardia",
+      "isCorrect": false,
+      "misconception": "An irregular narrow-complex rhythm is being confused with a regular broad-complex tachycardia.",
+      "explanation": "The QRS complexes here are narrow and variably spaced rather than broad, rapid, and regularly repeated."
+    },
+    {
+      "label": "E",
+      "text": "Complete AV block",
+      "isCorrect": false,
+      "misconception": "Absent atrial organization is being confused with independent organized atrial activity.",
+      "explanation": "Complete block retains regular P waves that march independently through a slower ventricular rhythm; no organized P waves are visible here."
+    }
+  ],
+  "context": "Learning objective: identify atrial fibrillation with a repeatable rhythm-strip sequence. Read a rhythm strip in a fixed order: rate, R-R regularity, P waves, PR relationship, then QRS width. Here the R-R intervals are irregularly irregular and no consistent P wave precedes the narrow QRS complexes, supporting atrial fibrillation. A regular saw-tooth atrial baseline would instead suggest atrial flutter.",
+  "cite": "open-rn-nursing-advanced-skills#ecg-atrial-fibrillation-features",
+  "publicUsmle": {
+    "schemaVersion": 1,
+    "origin": "generated",
+    "itemText": {
+      "licence": "CC-BY-4.0",
+      "attribution": "MD3 contributors"
+    },
+    "evidence": {
+      "kind": "passage",
+      "sourceId": "open-rn-nursing-advanced-skills",
+      "passageId": "ecg-atrial-fibrillation-features",
+      "licence": {
+        "cls": "foss",
+        "id": "cc-by-4.0"
+      }
+    },
+    "media": {
+      "kind": "asset",
+      "assetId": "ecg-case-6r3t9x",
+      "job": "trace",
+      "showWhen": "always",
+      "licence": {
+        "cls": "foss",
+        "id": "cc-by-4.0"
+      },
+      "attribution": "PTB-XL v1.0.3 via PhysioNet; rendered by MD3 contributors",
+      "contentHash": "sha256:49fb68b89bacd3f80d40edd475f2b24bf693f04d18422797b4f7c290c071f18f",
+      "clinicalConditionIds": ["atrial-fibrillation"],
+      "clinicalKeyFindings": ["Irregularly irregular R-R intervals, no consistent P waves, and narrow QRS complexes"]
+    }
+  },
+  "imageUrl": "/figures/usmle/step1/ecg-case-6r3t9x.svg",
+  "imageCaption": "Recorded Lead II strip with six narrow sharp complexes separated by unequal intervals and no consistently repeating small deflection before them."
+}

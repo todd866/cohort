@@ -1,0 +1,71 @@
+{
+  "id": "bank:usmle-step1:micro-capsule-phagocytosis:v1",
+  "rotation": "usmle-step1-open",
+  "topics": [
+    "capsule",
+    "immune evasion"
+  ],
+  "moduleNodes": [
+    "usmle/step1",
+    "usmle/step1/microbiology"
+  ],
+  "questionType": "mechanism",
+  "difficulty": "easy",
+  "stem": "Bacterial capsules aid immune evasion mainly by interfering with which host process?",
+  "options": [
+    {
+      "label": "A",
+      "text": "Short-term memory encoding alone",
+      "isCorrect": false,
+      "misconception": "Psych domain — does not match the cited teaching point.",
+      "explanation": "Wrong process; see the cited source passage for detail."
+    },
+    {
+      "label": "B",
+      "text": "Hepatic cholesterol synthesis alone",
+      "isCorrect": false,
+      "misconception": "Statin domain — does not match the cited teaching point.",
+      "explanation": "Wrong process; see the cited source passage for detail."
+    },
+    {
+      "label": "C",
+      "text": "Renal sodium reabsorption alone",
+      "isCorrect": false,
+      "misconception": "Diuretic domain — does not match the cited teaching point.",
+      "explanation": "Wrong process; see the cited source passage for detail."
+    },
+    {
+      "label": "D",
+      "text": "Thyroid hormone replacement alone",
+      "isCorrect": false,
+      "misconception": "Endocrine domain — does not match the cited teaching point.",
+      "explanation": "Wrong process; see the cited source passage for detail."
+    },
+    {
+      "label": "E",
+      "text": "Phagocyte ingestion of the bacterium",
+      "isCorrect": true,
+      "misconception": "None; capsules block phagocytosis.",
+      "explanation": "OpenStax: capsules prevent ingestion by phagocytes."
+    }
+  ],
+  "context": "Learning objective: capsule vs phagocytosis.",
+  "cite": "openstax-microbiology#capsule-immune-evasion",
+  "publicUsmle": {
+    "schemaVersion": 1,
+    "origin": "generated",
+    "itemText": {
+      "licence": "CC-BY-4.0",
+      "attribution": "MD3 contributors"
+    },
+    "evidence": {
+      "kind": "passage",
+      "sourceId": "openstax-microbiology",
+      "passageId": "capsule-immune-evasion",
+      "licence": {
+        "cls": "foss",
+        "id": "cc-by-4.0"
+      }
+    }
+  }
+}

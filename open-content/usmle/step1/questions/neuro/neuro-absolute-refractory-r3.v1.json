@@ -1,0 +1,73 @@
+{
+  "id": "bank:usmle-step1:neuro-absolute-refractory-r3:v1",
+  "rotation": "usmle-step1-open",
+  "ladderId": "absolute-refractory-period",
+  "topics": [
+    "local anesthetics",
+    "refractory period",
+    "ladder:absolute-refractory-period"
+  ],
+  "moduleNodes": [
+    "usmle/step1",
+    "usmle/step1/neuroscience"
+  ],
+  "questionType": "mechanism",
+  "difficulty": "hard",
+  "stem": "A 32-year-old man receives lidocaine infiltration before wound repair and loses sensation in the injected dermatome. Nerve conduction studies afterward show that rapidly firing axons are blocked preferentially.\n\nWhich of the following best explains why drugs that prolong the absolute refractory period prevent propagation of high-frequency impulses?",
+  "options": [
+    {
+      "label": "A",
+      "text": "They hold voltage-gated sodium channels in the inactivated state between spikes",
+      "isCorrect": true,
+      "misconception": "None; use-dependent block keeps Na+ channels inactivated so rapidly firing fibers cannot reset.",
+      "explanation": "Local anesthetics bind open and inactivated Na+ channels; high-frequency firing keeps channels in the inactivated state where drug affinity is highest, prolonging absolute refractoriness and blocking propagation."
+    },
+    {
+      "label": "B",
+      "text": "They permanently depolarize the resting membrane potential up to firing threshold",
+      "isCorrect": false,
+      "misconception": "A tonic depolarization mechanism is being substituted for use-dependent channel block.",
+      "explanation": "Local anesthetics block conduction by stabilizing inactivated Na+ channels, not by shifting resting potential to threshold."
+    },
+    {
+      "label": "C",
+      "text": "They open potassium channels and hyperpolarize the axon membrane beyond its resting potential",
+      "isCorrect": false,
+      "misconception": "A K+ channel opener mechanism is being attributed to lidocaine.",
+      "explanation": "Lidocaine acts primarily on voltage-gated Na+ channels; K+ hyperpolarization is not its principal local-anesthetic mechanism."
+    },
+    {
+      "label": "D",
+      "text": "They strip myelin sheaths and convert saltatory conduction into continuous conduction",
+      "isCorrect": false,
+      "misconception": "A demyelinating lesion is being confused with reversible pharmacologic block.",
+      "explanation": "Local anesthetics reversibly block Na+ channels in the membrane; they do not strip myelin like demyelinating disease."
+    },
+    {
+      "label": "E",
+      "text": "They block synthesis of replacement sodium channels at the node of Ranvier over hours",
+      "isCorrect": false,
+      "misconception": "A long-term structural effect is being proposed for an acute reversible block.",
+      "explanation": "Local anesthesia is immediate and reversible via channel blockade, not via altered channel synthesis."
+    }
+  ],
+  "context": "Learning objective: link absolute refractory period to local anesthetic use-dependence. Prolonging Na+ channel inactivation prevents high-frequency axons from recovering between spikes, blocking sensation.",
+  "cite": "openstax-anatomy-physiology#neuro-absolute-refractory",
+  "publicUsmle": {
+    "schemaVersion": 1,
+    "origin": "generated",
+    "itemText": {
+      "licence": "CC-BY-4.0",
+      "attribution": "MD3 contributors"
+    },
+    "evidence": {
+      "kind": "passage",
+      "sourceId": "openstax-anatomy-physiology",
+      "passageId": "neuro-absolute-refractory",
+      "licence": {
+        "cls": "foss",
+        "id": "cc-by-4.0"
+      }
+    }
+  }
+}

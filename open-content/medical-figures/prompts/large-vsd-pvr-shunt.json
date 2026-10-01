@@ -1,0 +1,36 @@
+{
+  "figureId": "large-vsd-pvr-shunt",
+  "tool": "Codex-authored SVG; sharp rasterization",
+  "model": null,
+  "referenceAssetIds": [],
+  "externalReferenceImages": [],
+  "brief": {
+    "figureId": "large-vsd-pvr-shunt",
+    "stableId": "mdx:6404f65a176d66c7537dbb0461bbd1aa",
+    "retrievalTarget": "Falling PVR allows a large left-to-right shunt and pulmonary overcirculation.",
+    "context": "When PVR falls after birth, a large VSD permits substantial left-to-right flow, pulmonary overcirculation and volume overload that may produce heart-failure signs.",
+    "visualRelationship": "Large VSD: falling PVR unmasks pulmonary overcirculation",
+    "medium": "code-native SVG with PNG raster export",
+    "factBasis": [
+      {
+        "fact": "VSD shunt magnitude depends on defect size and downstream resistance including PVR.",
+        "url": "https://www.msdmanuals.com/professional/pediatrics/congenital-cardiovascular-anomalies/ventricular-septal-defect-vsd"
+      },
+      {
+        "fact": "Larger defects can cause pulmonary overcirculation and heart-failure symptoms when PVR falls.",
+        "url": "https://www.msdmanuals.com/professional/pediatrics/congenital-cardiovascular-anomalies/ventricular-septal-defect-vsd"
+      }
+    ],
+    "wrongReadingToPrevent": "Do not infer unsupported quantitative proportions or a different physiology from the abstract arrows.",
+    "reviewState": "pending-independent-review"
+  },
+  "sourceSvg": "sources/large-vsd-pvr-shunt.svg",
+  "sourceSvgSha256": "387a3c385709cd46dd128734f1209af4feba4c132163cf0f6fe7bbb779f6d384",
+  "revisionNotes": "Root source and pixel review plus independent adversarial pixel review; retained conceptual relationships, corrected misleading arrow/count/timing encodings. Clinical sign-off remains pending.",
+  "clinicalSources": [
+    {
+      "title": "MSD Manual Professional: Ventricular Septal Defect",
+      "url": "https://www.msdmanuals.com/professional/pediatrics/congenital-cardiovascular-anomalies/ventricular-septal-defect-vsd"
+    }
+  ]
+}

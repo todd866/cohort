@@ -1,0 +1,73 @@
+{
+  "id": "bank:usmle-step1:pharm-warfarin-mechanical-valve-clot-prevention:v1",
+  "rotation": "usmle-step1-open",
+  "topics": [
+    "warfarin",
+    "heart",
+    "mechanical heart valve",
+    "blood clots"
+  ],
+  "moduleNodes": [
+    "usmle/step1",
+    "usmle/step1/pharmacology"
+  ],
+  "questionType": "management",
+  "difficulty": "medium",
+  "stem": "A patient with a mechanical replacement heart valve is prescribed warfarin. Which of the following therapeutic goals most directly matches the cited use for this patient's valve-related risk?",
+  "options": [
+    {
+      "label": "A",
+      "text": "Eradicate bacteria attached to the replacement valve",
+      "isCorrect": false,
+      "misconception": "Warfarin's clot-related purpose is confused with treatment of a prosthetic-device infection.",
+      "explanation": "The cited passage describes warfarin as preventing and treating blood clots and preventing complications in people with replacement valves, not as an antibacterial therapy."
+    },
+    {
+      "label": "B",
+      "text": "Prevent complications associated with the replacement valve",
+      "isCorrect": true,
+      "misconception": "None; warfarin is used to prevent clot-related complications in people with mechanical replacement valves.",
+      "explanation": "MedlinePlus lists prevention of complications in people with prosthetic or mechanical heart valves among warfarin's uses."
+    },
+    {
+      "label": "C",
+      "text": "Reverse structural wear of the replacement valve",
+      "isCorrect": false,
+      "misconception": "A mechanical-device problem is recognized, but it is assigned a purpose not listed for warfarin.",
+      "explanation": "The cited use concerns blood clots and prevention of complications in people with replacement valves; it does not describe reversal of structural wear."
+    },
+    {
+      "label": "D",
+      "text": "Suppress immune rejection of the replacement valve",
+      "isCorrect": false,
+      "misconception": "The replacement valve is treated as transplanted tissue requiring immune suppression rather than as a clot-risk setting.",
+      "explanation": "The source supports warfarin for clot prevention and valve-associated complication prevention, not immune suppression."
+    },
+    {
+      "label": "E",
+      "text": "Regenerate native tissue across the replacement valve",
+      "isCorrect": false,
+      "misconception": "The drug's preventive purpose is replaced by an unsupported tissue-regeneration goal.",
+      "explanation": "Warfarin's cited role is prevention and treatment of blood clots and prevention of complications in people with replacement valves, not tissue regeneration."
+    }
+  ],
+  "context": "Learning objective: identify why warfarin is used with a mechanical replacement heart valve. Warfarin prevents and treats blood clots and helps prevent complications in people with prosthetic or mechanical heart valves.",
+  "cite": "medlineplus-warfarin#warfarin-uses",
+  "publicUsmle": {
+    "schemaVersion": 1,
+    "origin": "generated",
+    "itemText": {
+      "licence": "CC-BY-4.0",
+      "attribution": "MD3 contributors"
+    },
+    "evidence": {
+      "kind": "passage",
+      "sourceId": "medlineplus-warfarin",
+      "passageId": "warfarin-uses",
+      "licence": {
+        "cls": "foss",
+        "id": "us-gov"
+      }
+    }
+  }
+}

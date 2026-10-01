@@ -1,0 +1,26 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 400" role="img" aria-labelledby="t d">
+  <title id="t">Hemostasis cascade and fibrinolysis</title>
+  <desc id="d">Three hemostasis steps, factor X convergence, fibrin formation, plasmin fibrinolysis, heparin from mast cells.</desc>
+  <rect width="720" height="400" fill="#ffffff"/>
+  <text x="360" y="26" text-anchor="middle" font-family="Helvetica,Arial,sans-serif" font-size="15" font-weight="700" fill="#111">Hemostasis cascade and fibrinolysis</text>
+  <defs>
+    <marker id="arr" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto">
+      <path d="M0,0 L10,5 L0,10 z" fill="#1d4ed8"/>
+    </marker>
+  </defs>
+  <rect x="40" y="55" width="180" height="70" rx="6" fill="#fee2e2" stroke="#111" stroke-width="1.5"/>
+  <text x="130.0" y="88" text-anchor="middle" font-family="Helvetica,Arial,sans-serif" font-size="11" font-weight="700" fill="#111">1. Vascular spasm</text>
+  <text x="130.0" y="102" text-anchor="middle" font-family="Helvetica,Arial,sans-serif" font-size="10" fill="#333">immediate</text>  <rect x="260" y="55" width="180" height="70" rx="6" fill="#fef3c7" stroke="#111" stroke-width="1.5"/>
+  <text x="350.0" y="88" text-anchor="middle" font-family="Helvetica,Arial,sans-serif" font-size="11" font-weight="700" fill="#111">2. Platelet plug</text>
+  <text x="350.0" y="102" text-anchor="middle" font-family="Helvetica,Arial,sans-serif" font-size="10" fill="#333">primary hemostasis</text>  <rect x="480" y="55" width="200" height="70" rx="6" fill="#dbeafe" stroke="#111" stroke-width="1.5"/>
+  <text x="580.0" y="88" text-anchor="middle" font-family="Helvetica,Arial,sans-serif" font-size="11" font-weight="700" fill="#111">3. Coagulation</text>
+  <text x="580.0" y="102" text-anchor="middle" font-family="Helvetica,Arial,sans-serif" font-size="10" fill="#333">fibrin clot</text>  <line x1="220" y1="90" x2="260" y2="90" stroke="#1d4ed8" stroke-width="2" marker-end="url(#arr)"/>  <line x1="440" y1="90" x2="480" y2="90" stroke="#1d4ed8" stroke-width="2" marker-end="url(#arr)"/>  <rect x="40" y="160" width="300" height="90" rx="6" fill="#dbeafe" stroke="#111" stroke-width="1.5"/>
+  <text x="190.0" y="203" text-anchor="middle" font-family="Helvetica,Arial,sans-serif" font-size="11" font-weight="700" fill="#111">Cascade convergence</text>
+  <text x="190.0" y="217" text-anchor="middle" font-family="Helvetica,Arial,sans-serif" font-size="10" fill="#333">extrinsic + intrinsic -> Xa</text>  <rect x="380" y="160" width="300" height="90" rx="6" fill="#d1fae5" stroke="#111" stroke-width="1.5"/>
+  <text x="530.0" y="203" text-anchor="middle" font-family="Helvetica,Arial,sans-serif" font-size="11" font-weight="700" fill="#111">Thrombin -> fibrin</text>
+  <text x="530.0" y="217" text-anchor="middle" font-family="Helvetica,Arial,sans-serif" font-size="10" fill="#333">stabilizes plug</text>  <rect x="40" y="280" width="300" height="80" rx="6" fill="#fce7f3" stroke="#111" stroke-width="1.5"/>
+  <text x="190.0" y="318" text-anchor="middle" font-family="Helvetica,Arial,sans-serif" font-size="11" font-weight="700" fill="#111">Fibrinolysis</text>
+  <text x="190.0" y="332" text-anchor="middle" font-family="Helvetica,Arial,sans-serif" font-size="10" fill="#333">plasmin digests fibrin</text>  <rect x="380" y="280" width="300" height="80" rx="6" fill="#e5e7eb" stroke="#111" stroke-width="1.5"/>
+  <text x="530.0" y="318" text-anchor="middle" font-family="Helvetica,Arial,sans-serif" font-size="11" font-weight="700" fill="#111">Heparin (mast cells)</text>
+  <text x="530.0" y="332" text-anchor="middle" font-family="Helvetica,Arial,sans-serif" font-size="10" fill="#333">boosts antithrombin</text>
+</svg>

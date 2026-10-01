@@ -1,0 +1,71 @@
+{
+  "id": "bank:usmle-step1:pharm-haloperidol-uses:v1",
+  "rotation": "usmle-step1-open",
+  "topics": [
+    "haloperidol",
+    "psychosis"
+  ],
+  "moduleNodes": [
+    "usmle/step1",
+    "usmle/step1/pharmacology"
+  ],
+  "questionType": "mechanism",
+  "difficulty": "easy",
+  "stem": "Haloperidol is used to manage which class of mental illness?",
+  "options": [
+    {
+      "label": "A",
+      "text": "Anxiety disorders",
+      "isCorrect": false,
+      "misconception": "Assumes an antipsychotic treats anxiety because it can calm agitation.",
+      "explanation": "Anxiety disorders are treated with SSRIs or SNRIs and psychotherapy; a D2-blocking antipsychotic such as haloperidol is not an anxiety treatment."
+    },
+    {
+      "label": "B",
+      "text": "Psychotic disorders",
+      "isCorrect": true,
+      "misconception": "None — haloperidol is an antipsychotic for psychotic disorders.",
+      "explanation": "The label says haloperidol manages psychotic disorders, which cause disturbed or unusual thinking, loss of interest in life, and strong or inappropriate emotions."
+    },
+    {
+      "label": "C",
+      "text": "Eating disorders",
+      "isCorrect": false,
+      "misconception": "Groups eating disorders with psychosis because both involve distorted thinking.",
+      "explanation": "Eating disorders such as anorexia and bulimia are treated with nutritional rehabilitation, psychotherapy and sometimes fluoxetine, not haloperidol."
+    },
+    {
+      "label": "D",
+      "text": "Dissociative disorders",
+      "isCorrect": false,
+      "misconception": "Confuses dissociation (detachment) with psychosis (loss of contact with reality).",
+      "explanation": "Dissociative disorders, such as dissociative identity disorder, are treated mainly with psychotherapy; haloperidol has no role."
+    },
+    {
+      "label": "E",
+      "text": "Sleep-wake disorders",
+      "isCorrect": false,
+      "misconception": "Assumes any antipsychotic doubles as a sleep medication.",
+      "explanation": "Sleep-wake disorders such as insomnia or narcolepsy are treated with sleep hygiene, CBT, or specific hypnotics or stimulants, not haloperidol."
+    }
+  ],
+  "context": "Learning objective: Haloperidol is used to manage psychotic disorders, marked by disturbed thinking and strong or inappropriate emotions.",
+  "cite": "medlineplus-haloperidol#haloperidol-uses",
+  "publicUsmle": {
+    "schemaVersion": 1,
+    "origin": "generated",
+    "itemText": {
+      "licence": "CC-BY-4.0",
+      "attribution": "MD3 contributors"
+    },
+    "evidence": {
+      "kind": "passage",
+      "sourceId": "medlineplus-haloperidol",
+      "passageId": "haloperidol-uses",
+      "licence": {
+        "cls": "foss",
+        "id": "us-gov"
+      }
+    }
+  }
+}

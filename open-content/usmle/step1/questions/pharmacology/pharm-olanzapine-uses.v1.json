@@ -1,0 +1,71 @@
+{
+  "id": "bank:usmle-step1:pharm-olanzapine-uses:v1",
+  "rotation": "usmle-step1-open",
+  "topics": [
+    "olanzapine",
+    "schizophrenia"
+  ],
+  "moduleNodes": [
+    "usmle/step1",
+    "usmle/step1/pharmacology"
+  ],
+  "questionType": "mechanism",
+  "difficulty": "easy",
+  "stem": "Olanzapine is used to treat which pair of mental illnesses?",
+  "options": [
+    {
+      "label": "A",
+      "text": "Panic disorder and specific phobia",
+      "isCorrect": false,
+      "misconception": "Assumes an antipsychotic treats severe anxiety disorders.",
+      "explanation": "Panic disorder is treated with SSRIs and CBT, and specific phobia with exposure therapy; an antipsychotic such as olanzapine is not used."
+    },
+    {
+      "label": "B",
+      "text": "Alcohol use disorder and opioid use disorder",
+      "isCorrect": false,
+      "misconception": "Confuses sedating antipsychotics with addiction pharmacotherapy.",
+      "explanation": "Alcohol and opioid use disorders are treated with naltrexone, acamprosate, buprenorphine or methadone; olanzapine has no role."
+    },
+    {
+      "label": "C",
+      "text": "Bulimia nervosa and binge-eating disorder",
+      "isCorrect": false,
+      "misconception": "Groups eating disorders with psychosis as disorders of distorted thinking.",
+      "explanation": "Bulimia and binge-eating disorder are treated with psychotherapy, fluoxetine or lisdexamfetamine; olanzapine's appetite-raising effect makes it a poor fit."
+    },
+    {
+      "label": "D",
+      "text": "Attention-deficit/hyperactivity disorder and specific learning disorder",
+      "isCorrect": false,
+      "misconception": "Assumes any psychiatric diagnosis responds to antipsychotics.",
+      "explanation": "ADHD and specific learning disorder are neurodevelopmental conditions managed with stimulants and educational support, not olanzapine."
+    },
+    {
+      "label": "E",
+      "text": "Schizophrenia and bipolar I disorder",
+      "isCorrect": true,
+      "misconception": "None — olanzapine is an antipsychotic for schizophrenia and bipolar I disorder.",
+      "explanation": "The label says olanzapine treats schizophrenia and bipolar I disorder, an illness of depression, mania, and other abnormal moods."
+    }
+  ],
+  "context": "Learning objective: Olanzapine is used to treat schizophrenia and bipolar I disorder.",
+  "cite": "medlineplus-olanzapine#olanzapine-uses",
+  "publicUsmle": {
+    "schemaVersion": 1,
+    "origin": "generated",
+    "itemText": {
+      "licence": "CC-BY-4.0",
+      "attribution": "MD3 contributors"
+    },
+    "evidence": {
+      "kind": "passage",
+      "sourceId": "medlineplus-olanzapine",
+      "passageId": "olanzapine-uses",
+      "licence": {
+        "cls": "foss",
+        "id": "us-gov"
+      }
+    }
+  }
+}

@@ -1,0 +1,72 @@
+{
+  "id": "bank:usmle-step1:pharm-albuterol-asthma-symptom-treatment:v1",
+  "rotation": "usmle-step1-open",
+  "topics": [
+    "albuterol",
+    "asthma",
+    "symptom treatment"
+  ],
+  "moduleNodes": [
+    "usmle/step1",
+    "usmle/step1/pharmacology"
+  ],
+  "questionType": "management",
+  "difficulty": "easy",
+  "stem": "A prescription is written for albuterol. Which of the following therapeutic goals is directly supported by its cited use?",
+  "options": [
+    {
+      "label": "A",
+      "text": "Prevent and treat migraine-related head pain, nausea, and photophobia",
+      "isCorrect": false,
+      "misconception": "The prevention-and-treatment language is retained, but an unrelated neurologic symptom cluster is substituted.",
+      "explanation": "The albuterol passage supports prevention and treatment of breathing difficulty, wheeze, cough, and chest tightness; it does not identify a migraine symptom cluster as its goal."
+    },
+    {
+      "label": "B",
+      "text": "Prevent and treat seizure-related convulsions, rigidity, and impaired awareness",
+      "isCorrect": false,
+      "misconception": "A seizure symptom cluster is substituted for the respiratory symptoms named in the passage.",
+      "explanation": "The cited use for albuterol concerns respiratory symptoms caused by asthma or COPD, not a seizure-related symptom cluster."
+    },
+    {
+      "label": "C",
+      "text": "Prevent and treat asthma-related wheeze, dyspnea, cough, and tightness",
+      "isCorrect": true,
+      "misconception": "None; the prescription is connected to the complete respiratory symptom cluster named in the source.",
+      "explanation": "MedlinePlus states that albuterol is used to prevent and treat difficulty breathing, wheezing, shortness of breath, coughing, and chest tightness caused by asthma or COPD."
+    },
+    {
+      "label": "D",
+      "text": "Prevent and treat kidney-related edema, salt retention, and hypertension",
+      "isCorrect": false,
+      "misconception": "A renal and fluid-related symptom cluster is substituted for albuterol's cited breathing symptoms.",
+      "explanation": "The evidence identifies albuterol with prevention and treatment of breathing symptoms; it does not assign albuterol this renal indication cluster."
+    },
+    {
+      "label": "E",
+      "text": "Prevent and treat infection-related fever, rash, cough, and lymphadenopathy",
+      "isCorrect": false,
+      "misconception": "A systemic infection symptom cluster is substituted for the source's lung-disease symptom use.",
+      "explanation": "The albuterol passage addresses breathing difficulty, wheezing, cough, and chest tightness caused by lung disease, not this infection-related symptom cluster."
+    }
+  ],
+  "context": "Learning objective: retrieve albuterol's therapeutic goal from the prescription. The passage supports albuterol for both prevention and treatment of difficulty breathing, wheezing, shortness of breath, cough, and chest tightness caused by asthma or COPD.",
+  "cite": "medlineplus-albuterol#albuterol-uses",
+  "publicUsmle": {
+    "schemaVersion": 1,
+    "origin": "generated",
+    "itemText": {
+      "licence": "CC-BY-4.0",
+      "attribution": "MD3 contributors"
+    },
+    "evidence": {
+      "kind": "passage",
+      "sourceId": "medlineplus-albuterol",
+      "passageId": "albuterol-uses",
+      "licence": {
+        "cls": "foss",
+        "id": "us-gov"
+      }
+    }
+  }
+}

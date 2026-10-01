@@ -1,0 +1,89 @@
+{
+  "id": "bank:usmle-step1:ecg-second-degree-block-pattern:v1",
+  "rotation": "usmle-step1-open",
+  "topics": [
+    "electrocardiogram",
+    "ECG interpretation",
+    "second-degree atrioventricular block",
+    "dropped QRS complex"
+  ],
+  "moduleNodes": [
+    "usmle/step1",
+    "usmle/step1/cardiovascular"
+  ],
+  "questionType": "interpretation",
+  "difficulty": "easy",
+  "stem": "Which atrioventricular conduction pattern is visible in this rhythm strip?",
+  "options": [
+    {
+      "label": "A",
+      "text": "Fixed one-to-one P-to-QRS conduction",
+      "isCorrect": false,
+      "misconception": "The tracing is being read as one-to-one atrioventricular conduction.",
+      "explanation": "Several P waves are followed by no QRS complex, so conduction is not one-to-one."
+    },
+    {
+      "label": "B",
+      "text": "Intermittent P-to-QRS conduction",
+      "isCorrect": true,
+      "misconception": "None; intermittent failure of atrioventricular conduction defines the displayed pattern.",
+      "explanation": "Regular P waves are present, but only one of every three atrial impulses is followed by a ventricular QRS complex."
+    },
+    {
+      "label": "C",
+      "text": "Independent atrial and ventricular rhythms",
+      "isCorrect": false,
+      "misconception": "Complete atrioventricular dissociation is being substituted for intermittent block.",
+      "explanation": "The conducted beats retain a visible P-to-QRS relationship; complete independence would indicate third-degree block."
+    },
+    {
+      "label": "D",
+      "text": "Absent P waves with irregular QRS timing",
+      "isCorrect": false,
+      "misconception": "Atrial fibrillation is being substituted for regularly timed P waves.",
+      "explanation": "This strip contains distinct regular P waves, unlike the disorganized atrial activity of atrial fibrillation."
+    },
+    {
+      "label": "E",
+      "text": "Rapid broad-complex ventricular rhythm",
+      "isCorrect": false,
+      "misconception": "Ventricular tachycardia is being substituted for intermittent conduction.",
+      "explanation": "The ventricular complexes are separated by visible atrial waves and are not a rapid broad-complex rhythm."
+    }
+  ],
+  "context": "Learning objective: recognize high-grade second-degree atrioventricular block with three-to-one conduction. First check whether the P waves march out regularly, then determine how many atrial impulses produce a QRS complex. Here only every third P wave conducts, giving a 3:1 pattern. The broad ventricular complexes reflect the additional intraventricular conduction disease documented in this recording and do not change the atrioventricular ratio.",
+  "cite": "openstax-anatomy-physiology#heart-ecg-second-degree-block",
+  "publicUsmle": {
+    "schemaVersion": 1,
+    "origin": "generated",
+    "itemText": {
+      "licence": "CC-BY-4.0",
+      "attribution": "MD3 contributors"
+    },
+    "evidence": {
+      "kind": "passage",
+      "sourceId": "openstax-anatomy-physiology",
+      "passageId": "heart-ecg-second-degree-block",
+      "licence": {
+        "cls": "foss",
+        "id": "cc-by-4.0"
+      }
+    },
+    "media": {
+      "kind": "asset",
+      "assetId": "ecg-case-4n8k2p",
+      "job": "trace",
+      "showWhen": "always",
+      "licence": {
+        "cls": "foss",
+        "id": "cc-by-4.0"
+      },
+      "attribution": "PTB-XL v1.0.3 via PhysioNet; rendered by MD3 contributors",
+      "contentHash": "sha256:8f10419e6b00251099edc375f6b8a75f3c8cd168f7ff0b33257ea25b3b9020b0",
+      "clinicalConditionIds": ["second-degree-atrioventricular-block"],
+      "clinicalKeyFindings": ["Regular atrial deflections with one conducted beat for every three P waves"]
+    }
+  },
+  "imageUrl": "/figures/usmle/step1/ecg-case-4n8k2p.svg",
+  "imageCaption": "Recorded Lead II strip in which smaller narrow deflections recur at about three times the rate of the larger complexes."
+}

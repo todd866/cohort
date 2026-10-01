@@ -1,0 +1,70 @@
+{
+  "id": "bank:usmle-step1:pharm-risperidone-uses:v1",
+  "rotation": "usmle-step1-open",
+  "topics": [
+    "risperidone"
+  ],
+  "moduleNodes": [
+    "usmle/step1",
+    "usmle/step1/pharmacology"
+  ],
+  "questionType": "mechanism",
+  "difficulty": "easy",
+  "stem": "Risperidone is used to treat which mental illness?",
+  "options": [
+    {
+      "label": "A",
+      "text": "Schizophrenia",
+      "isCorrect": true,
+      "misconception": "None — schizophrenia is a listed risperidone use.",
+      "explanation": "Schizophrenia is the first of risperidone's listed uses, followed by bipolar disorder and irritability in autistic disorder."
+    },
+    {
+      "label": "B",
+      "text": "Agoraphobia",
+      "isCorrect": false,
+      "misconception": "Assumes a severe anxiety disorder calls for an antipsychotic.",
+      "explanation": "Agoraphobia is an anxiety disorder treated with cognitive behavioral therapy and SSRIs, not an antipsychotic."
+    },
+    {
+      "label": "C",
+      "text": "Insomnia",
+      "isCorrect": false,
+      "misconception": "Mistakes sedation as a side effect for a sleep indication.",
+      "explanation": "Insomnia is managed with sleep hygiene, cognitive behavioral therapy for insomnia or hypnotics; risperidone is not a sleep treatment."
+    },
+    {
+      "label": "D",
+      "text": "Bulimia",
+      "isCorrect": false,
+      "misconception": "Confuses an eating disorder with the psychotic and mood disorders risperidone treats.",
+      "explanation": "Bulimia nervosa is treated with cognitive behavioral therapy and fluoxetine; antipsychotics are not a treatment for it."
+    },
+    {
+      "label": "E",
+      "text": "Kleptomania",
+      "isCorrect": false,
+      "misconception": "Treats an impulse-control disorder as a psychotic illness.",
+      "explanation": "Kleptomania is an impulse-control disorder managed with cognitive behavioral therapy, sometimes with naltrexone; it is not an antipsychotic indication."
+    }
+  ],
+  "context": "Learning objective: Risperidone treats schizophrenia, and also bipolar disorder and irritability in autistic disorder.",
+  "cite": "medlineplus-risperidone#risperidone-uses",
+  "publicUsmle": {
+    "schemaVersion": 1,
+    "origin": "generated",
+    "itemText": {
+      "licence": "CC-BY-4.0",
+      "attribution": "MD3 contributors"
+    },
+    "evidence": {
+      "kind": "passage",
+      "sourceId": "medlineplus-risperidone",
+      "passageId": "risperidone-uses",
+      "licence": {
+        "cls": "foss",
+        "id": "us-gov"
+      }
+    }
+  }
+}

@@ -1,0 +1,71 @@
+{
+  "id": "bank:usmle-step1:micro-influenza-orthomyxovirus:v1",
+  "rotation": "usmle-step1-open",
+  "topics": [
+    "influenza",
+    "orthomyxovirus"
+  ],
+  "moduleNodes": [
+    "usmle/step1",
+    "usmle/step1/microbiology"
+  ],
+  "questionType": "interpretation",
+  "difficulty": "easy",
+  "stem": "Which description matches influenza viruses that infect humans?",
+  "options": [
+    {
+      "label": "A",
+      "text": "Single-stranded, helically shaped RNA orthomyxoviruses",
+      "isCorrect": true,
+      "misconception": "Recognizes the genome, shape, and family stated in the source.",
+      "explanation": "The Pink Book describes influenza as a single-stranded, helically shaped RNA virus of the orthomyxovirus family."
+    },
+    {
+      "label": "B",
+      "text": "Double-stranded, helically shaped DNA orthomyxoviruses",
+      "isCorrect": false,
+      "misconception": "Keeps the family and shape but reverses the genome description.",
+      "explanation": "Influenza has a single-stranded RNA genome, not a double-stranded DNA genome."
+    },
+    {
+      "label": "C",
+      "text": "Single-stranded, icosahedral RNA orthomyxoviruses",
+      "isCorrect": false,
+      "misconception": "Keeps the genome and family but substitutes the wrong viral shape.",
+      "explanation": "The source describes influenza as helically shaped rather than icosahedral."
+    },
+    {
+      "label": "D",
+      "text": "Single-stranded, helically shaped RNA retroviruses",
+      "isCorrect": false,
+      "misconception": "Keeps the genome and shape but substitutes the wrong viral family.",
+      "explanation": "The checked passage places influenza in the orthomyxovirus family, not the retrovirus family."
+    },
+    {
+      "label": "E",
+      "text": "Double-stranded, icosahedral DNA retroviruses",
+      "isCorrect": false,
+      "misconception": "Changes the genome, shape, and family away from the source description.",
+      "explanation": "None of these three features matches the single-stranded helical RNA orthomyxovirus description."
+    }
+  ],
+  "context": "Learning objective: identify influenza's viral profile. Human influenza viruses are single-stranded, helically shaped RNA viruses in the orthomyxovirus family; the three types known to affect humans are A, B, and C.",
+  "cite": "cdc-pink-book-influenza#influenza-orthomyxovirus",
+  "publicUsmle": {
+    "schemaVersion": 1,
+    "origin": "generated",
+    "itemText": {
+      "licence": "CC-BY-4.0",
+      "attribution": "MD3 contributors"
+    },
+    "evidence": {
+      "kind": "passage",
+      "sourceId": "cdc-pink-book-influenza",
+      "passageId": "influenza-orthomyxovirus",
+      "licence": {
+        "cls": "foss",
+        "id": "us-gov"
+      }
+    }
+  }
+}

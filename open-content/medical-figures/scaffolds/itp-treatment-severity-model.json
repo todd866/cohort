@@ -1,0 +1,99 @@
+{
+  "schemaVersion": 1,
+  "figureId": "itp-treatment-severity-model",
+  "kind": "conceptual",
+  "sourceFacts": [
+    {
+      "id": "fact-1",
+      "fact": "Treatment is based on clinical features rather than platelet count alone.",
+      "sources": [
+        {
+          "title": "RCH: Immune thrombocytopenic purpura guideline",
+          "url": "https://www.rch.org.au/clinicalguide/guideline_index/Immune_thrombocytopenic_purpura/"
+        }
+      ]
+    },
+    {
+      "id": "fact-2",
+      "fact": "Active bleeding, risk of future bleeding and psychosocial factors influence decisions.",
+      "sources": [
+        {
+          "title": "RCH: Immune thrombocytopenic purpura guideline",
+          "url": "https://www.rch.org.au/clinicalguide/guideline_index/Immune_thrombocytopenic_purpura/"
+        }
+      ]
+    },
+    {
+      "id": "fact-3",
+      "fact": "The treatment goal is to stop bleeding rather than normalise the platelet count.",
+      "sources": [
+        {
+          "title": "RCH: Immune thrombocytopenic purpura guideline",
+          "url": "https://www.rch.org.au/clinicalguide/guideline_index/Immune_thrombocytopenic_purpura/"
+        }
+      ]
+    }
+  ],
+  "nodes": [
+    {
+      "id": "count",
+      "shape": "lab card",
+      "label": "Platelet count"
+    },
+    {
+      "id": "bleed",
+      "shape": "coral droplet weight",
+      "label": "Bleeding"
+    },
+    {
+      "id": "context",
+      "shape": "shield and calendar weights",
+      "label": "Risk + context"
+    },
+    {
+      "id": "decision",
+      "shape": "balance",
+      "label": "Treatment decision"
+    }
+  ],
+  "edges": [
+    {
+      "from": "count",
+      "to": "decision",
+      "meaning": "count does not determine treatment by itself"
+    },
+    {
+      "from": "bleed",
+      "to": "decision",
+      "meaning": "clinical bleeding drives decision"
+    },
+    {
+      "from": "context",
+      "to": "decision",
+      "meaning": "future risk and safety affect decision"
+    }
+  ],
+  "labels": [
+    "Clinical bleeding guides ITP decisions",
+    "Platelet count",
+    "Bleeding",
+    "Risk + context",
+    "Treatment decision",
+    "Aim: control bleeding",
+    "Clinical judgement, not a numeric trigger"
+  ],
+  "forbiddenAnatomy": [
+    "Organs, tissue, blood film simulation, clinical photos"
+  ],
+  "validation": {
+    "status": "verified",
+    "method": "source-and-conceptual-structure-review",
+    "checks": [
+      "Clinical side visibly outweighs count card without implying count irrelevant.",
+      "No cut-off values, medication choices or claim all low counts require treatment.",
+      "No body, simulated haemorrhage or diagnostic lesion."
+    ],
+    "pixelReviewStatus": "verified",
+    "pixelReviewNotes": "The scale beam and lower right pan correctly give greater weight to bleeding and risk/context than a platelet-count card. Goal is control bleeding; no numeric trigger, drug or dose appears. Additional decorative phrases are nonspecific and do not add clinical claims. Objects represent judgement rather than actual haemorrhage or organ anatomy."
+  }
+}

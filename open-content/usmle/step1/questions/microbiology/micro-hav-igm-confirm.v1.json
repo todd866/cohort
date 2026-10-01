@@ -1,0 +1,71 @@
+{
+  "id": "bank:usmle-step1:micro-hav-igm-confirm:v1",
+  "rotation": "usmle-step1-open",
+  "topics": [
+    "hepatitis A",
+    "IgM"
+  ],
+  "moduleNodes": [
+    "usmle/step1",
+    "usmle/step1/microbiology"
+  ],
+  "questionType": "mechanism",
+  "difficulty": "easy",
+  "stem": "Acute HAV infection is confirmed in the acute or early convalescent phase by which serum finding?",
+  "options": [
+    {
+      "label": "A",
+      "text": "IgM anti-HAV in serum",
+      "isCorrect": true,
+      "misconception": "None — IgM anti-HAV confirms acute hepatitis A.",
+      "explanation": "Acute HAV infection is confirmed during the acute or early convalescent phase by the presence of IgM anti-HAV in serum."
+    },
+    {
+      "label": "B",
+      "text": "IgG anti-HAV in serum",
+      "isCorrect": false,
+      "misconception": "Confuses the lasting IgG marker of immunity with the IgM marker of acute infection.",
+      "explanation": "IgG anti-HAV persists after infection or vaccination, so it marks immunity and cannot by itself confirm acute infection."
+    },
+    {
+      "label": "C",
+      "text": "Total anti-HAV in serum",
+      "isCorrect": false,
+      "misconception": "Assumes a total antibody test distinguishes acute from past hepatitis A.",
+      "explanation": "Total anti-HAV measures IgM and IgG together, so it is positive after past infection or vaccination and cannot by itself confirm acute infection."
+    },
+    {
+      "label": "D",
+      "text": "Elevated aminotransferases in serum",
+      "isCorrect": false,
+      "misconception": "Treats a nonspecific marker of liver injury as virus-specific confirmation.",
+      "explanation": "Raised aminotransferases show hepatocellular injury from any cause, such as other viral hepatitis or drugs; they do not identify hepatitis A."
+    },
+    {
+      "label": "E",
+      "text": "Elevated bilirubin in serum",
+      "isCorrect": false,
+      "misconception": "Treats a rise in bilirubin as confirmation of a specific virus.",
+      "explanation": "Raised bilirubin reflects jaundice from many liver or hemolytic causes; it fits hepatitis but cannot confirm hepatitis A."
+    }
+  ],
+  "context": "Learning objective: IgM anti-HAV in serum confirms acute hepatitis A during the acute or early convalescent phase.",
+  "cite": "cdc-pink-book-hepatitis-a#hav-igm",
+  "publicUsmle": {
+    "schemaVersion": 1,
+    "origin": "generated",
+    "itemText": {
+      "licence": "CC-BY-4.0",
+      "attribution": "MD3 contributors"
+    },
+    "evidence": {
+      "kind": "passage",
+      "sourceId": "cdc-pink-book-hepatitis-a",
+      "passageId": "hav-igm",
+      "licence": {
+        "cls": "foss",
+        "id": "us-gov"
+      }
+    }
+  }
+}

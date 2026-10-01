@@ -1,0 +1,35 @@
+{
+  "figureId": "haemophilia-inheritance-model",
+  "tool": "built-in image_gen",
+  "model": null,
+  "referenceAssetIds": [],
+  "externalReferenceImages": [],
+  "prompt": "Original educational conceptual illustration, landscape 3:2. Warm ivory paper, sophisticated hand-painted gouache/watercolour, confident fine brown outlines, navy lettering, restrained teal, coral and amber. Editorial science illustration with spacious composition and large legible labels. The explanatory structure must carry the meaning visually: molecules, objects, geometry or flow; never paragraphs in boxes. No organs, regional anatomy, teeth or joint cutaways, tissue layers, invented histology, diagnostic photographs, radiographs or patient data. All symbols are explicitly conceptual. Footer: 'Conceptual teaching model • Not to scale'. Create a beautifully simple 2 by 2 Mendelian tile board, titled 'X-linked haemophilia'. Above the two columns write 'Mother: carrier', with separate column header tiles X (navy) and Xh (coral). To the left of the two rows write 'Father: no variant', with row headers X (navy) and Y (teal). Exact cell contents: top left 'XX' and 'Daughter: no variant'; top right 'XhX' and 'Carrier daughter'; bottom left 'XY' and 'Son: no variant'; bottom right 'XhY' and 'Son: haemophilia'. Represent the alleles as large letter tiles, not bodies or children. Coral only highlights Xh. Bottom key 'Xh = X with the haemophilia variant'. Two short bottom notes: 'Carrier females may bleed' and 'Each cell: 1 in 4 per pregnancy'. Never label the carrier daughter unaffected. Clear four-square combinatorial visual, plenty of breathing room.",
+  "clinicalSources": [
+    {
+      "title": "CDC: About Hemophilia",
+      "url": "https://www.cdc.gov/hemophilia/about/index.html"
+    }
+  ],
+  "teaching": {
+    "question": "With a carrier mother and a father without haemophilia, how can the variant be inherited?",
+    "answer": "Each pregnancy can yield a daughter without the variant, a carrier daughter, a son without the variant, or a son with haemophilia. In the simple model each combination has probability one quarter; carrier females can bleed.",
+    "imageRole": "after-reveal"
+  },
+  "title": "X-linked haemophilia inheritance",
+  "caption": "For a carrier mother and a father without the variant, a simple X-linked model gives four equally likely sex-and-variant combinations per pregnancy. Carrier females can have bleeding symptoms.",
+  "alt": "A two-by-two inheritance grid combines maternal X or Xh with paternal X or Y to show daughter and son outcomes.",
+  "review": {
+    "status": "pending-independent-qa",
+    "method": "agent-visual-and-source-review",
+    "notes": "Checked all four cells against the headers: maternal X/Xh columns and paternal X/Y rows produce XX, XhX, XY, XhY respectively. Female carrier outcome is labelled carrier and the qualifier explicitly allows bleeding. The one-quarter statement is per pregnancy. Letter colours consistently distinguish variant Xh, ordinary X and Y. No anatomical imagery.",
+    "structure": {
+      "kind": "conceptual",
+      "status": "verified",
+      "specificationFiles": [
+        "scaffolds/haemophilia-inheritance-model.json"
+      ],
+      "notes": "Checked all four cells against the headers: maternal X/Xh columns and paternal X/Y rows produce XX, XhX, XY, XhY respectively. Female carrier outcome is labelled carrier and the qualifier explicitly allows bleeding. The one-quarter statement is per pregnancy. Letter colours consistently distinguish variant Xh, ordinary X and Y. No anatomical imagery."
+    }
+  }
+}

@@ -1,0 +1,66 @@
+{
+  "id": "bank:cohort:msk:q-44a1060a7ed0:v1",
+  "rotation": "cohort-open",
+  "moduleNodes": [
+    "cohort/msk"
+  ],
+  "topics": [
+    "systemic-jia",
+    "still-disease",
+    "rheumatology"
+  ],
+  "questionType": "diagnosis",
+  "difficulty": "medium",
+  "stem": "A 4-year-old has had daily fever spikes to 39.5 °C that return to normal between peaks. With each spike a faint salmon-pink macular rash appears on the trunk and fades as the temperature falls. There is now a swollen knee.\n\nWhich JIA subtype is this?",
+  "options": [
+    {
+      "label": "A",
+      "text": "Enthesitis-related arthritis",
+      "isCorrect": false,
+      "explanation": "Enthesitis-related arthritis presents with tendon-insertion pain and sacroiliitis in older children, not quotidian fever and a rash that comes with each spike."
+    },
+    {
+      "label": "B",
+      "text": "Oligoarticular JIA",
+      "isCorrect": false,
+      "explanation": "Oligoarticular JIA involves four or fewer joints without systemic features; it does not explain quotidian fever with an evanescent rash."
+    },
+    {
+      "label": "C",
+      "text": "Systemic-onset JIA",
+      "isCorrect": true,
+      "explanation": "Correct. Quotidian fever with an evanescent salmon rash that appears with the spikes, and then arthritis, is systemic JIA. Ferritin is often very high, and macrophage activation syndrome is the feared complication."
+    },
+    {
+      "label": "D",
+      "text": "Polyarticular RF-negative JIA",
+      "isCorrect": false,
+      "explanation": "Polyarticular JIA involves five or more joints; it does not produce the systemic fever-and-rash pattern."
+    },
+    {
+      "label": "E",
+      "text": "Juvenile psoriatic arthritis",
+      "isCorrect": false,
+      "explanation": "Psoriatic plaques, nail pitting or dactylitis define psoriatic arthritis, not the fever-and-evanescent-rash picture."
+    }
+  ],
+  "context": "Systemic JIA: quotidian fever (spikes once or twice daily, returning to baseline) + evanescent salmon rash + arthritis. Ferritin is often very high. MAS is the feared complication.\n\nThe rash corresponding to fever spikes is the discriminator from infection and from other JIA subtypes.",
+  "publicModule": {
+    "schemaVersion": 1,
+    "origin": "mirrored",
+    "discipline": "msk",
+    "mirroredFrom": "md3:44a1060a7ed0ecdd",
+    "itemText": {
+      "licence": "CC-BY-4.0",
+      "attribution": "MD3 contributors"
+    },
+    "evidence": {
+      "kind": "reference",
+      "sourceId": "rch-kawasaki-disease"
+    },
+    "review": {
+      "verdict": "passed",
+      "contentHash": "5ecafbad17aaffc91aecb352b0b7775ff4eafc43c53b23c77c1720d279b0dfef"
+    }
+  }
+}

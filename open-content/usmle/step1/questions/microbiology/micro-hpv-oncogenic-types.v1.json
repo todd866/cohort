@@ -1,0 +1,71 @@
+{
+  "id": "bank:usmle-step1:micro-hpv-oncogenic-types:v1",
+  "rotation": "usmle-step1-open",
+  "topics": [
+    "hpv",
+    "oncogenic"
+  ],
+  "moduleNodes": [
+    "usmle/step1",
+    "usmle/step1/microbiology"
+  ],
+  "questionType": "mechanism",
+  "difficulty": "easy",
+  "stem": "High-risk HPV types such as 16 and 18 can cause which of the following?",
+  "options": [
+    {
+      "label": "A",
+      "text": "Hepatocellular carcinoma following chronic liver infection",
+      "isCorrect": false,
+      "misconception": "Confuses HPV with the hepatitis viruses that cause liver cancer.",
+      "explanation": "Hepatocellular carcinoma after chronic liver infection is linked to hepatitis B and C viruses, not HPV."
+    },
+    {
+      "label": "B",
+      "text": "Cervical cell abnormalities that are precursors to cancer",
+      "isCorrect": true,
+      "misconception": "None — high-risk HPV causes precancerous cervical abnormalities and anogenital cancers.",
+      "explanation": "CDC: high-risk HPV types, including 16 and 18, cause cervical cell abnormalities that are precursors to cancer, and anogenital cancers."
+    },
+    {
+      "label": "C",
+      "text": "Kaposi sarcoma in immunosuppressed patients",
+      "isCorrect": false,
+      "misconception": "Confuses HPV with HHV-8, the cause of Kaposi sarcoma.",
+      "explanation": "Kaposi sarcoma is caused by human herpesvirus 8, mainly in people with HIV or other immunosuppression."
+    },
+    {
+      "label": "D",
+      "text": "Adult T-cell leukemia after retroviral infection",
+      "isCorrect": false,
+      "misconception": "Confuses HPV with HTLV-1, an oncogenic retrovirus.",
+      "explanation": "Adult T-cell leukemia/lymphoma follows infection with HTLV-1, a retrovirus that infects CD4 T cells."
+    },
+    {
+      "label": "E",
+      "text": "Burkitt lymphoma arising from infected B cells",
+      "isCorrect": false,
+      "misconception": "Confuses HPV with Epstein-Barr virus, which is linked to Burkitt lymphoma.",
+      "explanation": "Burkitt lymphoma is linked to Epstein-Barr virus, which infects B cells; HPV infects squamous epithelium."
+    }
+  ],
+  "context": "Learning objective: High-risk HPV types, including 16 and 18, cause cervical cell abnormalities that are precursors to cancer, and anogenital cancers.",
+  "cite": "cdc-pink-book-hpv#hpv-oncogenic-16-18",
+  "publicUsmle": {
+    "schemaVersion": 1,
+    "origin": "generated",
+    "itemText": {
+      "licence": "CC-BY-4.0",
+      "attribution": "MD3 contributors"
+    },
+    "evidence": {
+      "kind": "passage",
+      "sourceId": "cdc-pink-book-hpv",
+      "passageId": "hpv-oncogenic-16-18",
+      "licence": {
+        "cls": "foss",
+        "id": "us-gov"
+      }
+    }
+  }
+}

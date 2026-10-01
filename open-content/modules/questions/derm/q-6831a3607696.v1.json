@@ -1,0 +1,66 @@
+{
+  "id": "bank:cohort:derm:q-6831a3607696:v1",
+  "rotation": "cohort-open",
+  "moduleNodes": [
+    "cohort/derm"
+  ],
+  "topics": [
+    "molluscum",
+    "poxvirus",
+    "dermatology"
+  ],
+  "questionType": "diagnosis",
+  "difficulty": "easy",
+  "stem": "A well 6-year-old who swims twice a week has a cluster of small pearly papules in the axilla. Each lesion has a central dimple. They have been present for three months and are not itchy.\n\nWhat is the most likely diagnosis?",
+  "options": [
+    {
+      "label": "A",
+      "text": "Flat plane viral warts",
+      "isCorrect": false,
+      "explanation": "Plane warts are flat-topped and smooth but lack the central umbilication that marks molluscum."
+    },
+    {
+      "label": "B",
+      "text": "Common viral verrucae",
+      "isCorrect": false,
+      "explanation": "Warts are rough and hyperkeratotic with black capillary dots, not smooth pearly papules with a central dimple."
+    },
+    {
+      "label": "C",
+      "text": "Guttate psoriasis plaques",
+      "isCorrect": false,
+      "explanation": "Guttate psoriasis follows streptococcal infection and produces scaly salmon papules, not umbilicated pearly lesions."
+    },
+    {
+      "label": "D",
+      "text": "Molluscum contagiosum",
+      "isCorrect": true,
+      "explanation": "Pearly dome-shaped papules with central umbilication in a well child are molluscum, a poxvirus infection that spreads in wet environments such as swimming. It is self-limiting in immunocompetent children."
+    },
+    {
+      "label": "E",
+      "text": "Keratosis pilaris bumps",
+      "isCorrect": false,
+      "explanation": "Keratosis pilaris is rough follicular plugging on the upper arms, without discrete pearly umbilicated papules."
+    }
+  ],
+  "context": "Molluscum contagiosum is a poxvirus. The diagnostic morphology is a pearly, umbilicated papule.\n\nTreatment is usually expectant in well children; lesions can last months. Avoid sharing towels. Genital molluscum in a young child raises a safeguarding question, but clustered axillary lesions after swimming do not.",
+  "publicModule": {
+    "schemaVersion": 1,
+    "origin": "mirrored",
+    "discipline": "derm",
+    "mirroredFrom": "md3:6831a360769681d8",
+    "itemText": {
+      "licence": "CC-BY-4.0",
+      "attribution": "MD3 contributors"
+    },
+    "evidence": {
+      "kind": "reference",
+      "sourceId": "rch-molluscum-contagiosum"
+    },
+    "review": {
+      "verdict": "passed",
+      "contentHash": "2f37e129900d274344868a1593cbc49587ef6acdf36975daa34995ad558ac872"
+    }
+  }
+}

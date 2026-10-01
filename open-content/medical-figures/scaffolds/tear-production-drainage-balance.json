@@ -1,0 +1,68 @@
+{
+  "schemaVersion": 1,
+  "figureId": "tear-production-drainage-balance",
+  "kind": "conceptual",
+  "created": "2026-09-10",
+  "timing": "authored before generation",
+  "sourceFacts": [
+    {
+      "fact": "Nasolacrimal obstruction prevents normal tear drainage, causing tears to build up and overflow.",
+      "sourceUrls": [
+        "https://www.aapos.org/glossary/nasolacrimal-duct-obstruction"
+      ]
+    },
+    {
+      "fact": "Watery eyes and discharge from obstruction do not require increased tear production; infection remains a clinical differential.",
+      "sourceUrls": [
+        "https://www.aapos.org/glossary/nasolacrimal-duct-obstruction"
+      ]
+    }
+  ],
+  "clinicalSources": [
+    {
+      "title": "AAPOS: Nasolacrimal Duct Obstruction",
+      "url": "https://www.aapos.org/glossary/nasolacrimal-duct-obstruction"
+    }
+  ],
+  "nodes": [
+    "ordinary tear input",
+    "open outlet",
+    "blocked outlet",
+    "overflow"
+  ],
+  "edges": [
+    [
+      "ordinary tear input",
+      "open outlet",
+      "balanced flow: usual drainage"
+    ],
+    [
+      "ordinary tear input",
+      "blocked outlet",
+      "input continues despite obstruction"
+    ],
+    [
+      "blocked outlet",
+      "overflow",
+      "accumulation"
+    ]
+  ],
+  "expectedLabels": [
+    "Tear production and drainage",
+    "Usual drainage",
+    "Poor drainage",
+    "Same tear input",
+    "Overflow",
+    "Abstract balance model"
+  ],
+  "layoutSpecification": "Title 'Tear production and drainage'. Side-by-side balance metaphor with two identical simple open ceramic bowls, no eyes or anatomical channels. In BOTH panels exactly three teal drops descend from above under a shared bracket 'Same tear input'. LEFT heading 'Usual drainage': bowl water low; open short abstract outlet on bowl's lower right lets blue drops leave into a small puddle, arrow points OUTWARD. RIGHT heading 'Poor drainage': same bowl outlet visibly capped with an ochre stop symbol; water rises to rim and drops spill OVER the outer rim, labelled 'Overflow'. No outward flow through the capped outlet. Bottom 'Abstract balance model'. Keep same incoming drop count and clear difference at outlets; this visual explains poor drainage, not a clinical test or increased tear production.",
+  "forbiddenAnatomy": [
+    "No internal organ, eye, ear, brain, tissue or bone anatomy",
+    "No diagnostic image, patient-specific lesion appearance or literal anatomical pathway"
+  ],
+  "validation": {
+    "sourceFacts": "Checked against listed primary clinical sources on 2026-09-10",
+    "status": "self-reviewed; independent review pending",
+    "pixelChecks": "Pixel/structure check: both panels have matching incoming drop sequences; left outlet is open with outward flow and low fluid level, right outlet is capped with overflow only over the rim. No flow crosses the cap. The renderer added a shared-input drop above each panel, equally; this does not alter the same-input comparison. All labels readable and bowls explicitly labelled an abstract balance model."
+  }
+}

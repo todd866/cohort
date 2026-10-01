@@ -1,0 +1,73 @@
+{
+  "id": "bank:usmle-step1:he-iron-absorption-r2:v1",
+  "rotation": "usmle-step1-open",
+  "ladderId": "iron-absorption",
+  "difficulty": "medium",
+  "topics": [
+    "iron absorption",
+    "duodenum",
+    "ladder:iron-absorption"
+  ],
+  "moduleNodes": [
+    "usmle/step1",
+    "usmle/step1/hematology"
+  ],
+  "questionType": "mechanism",
+  "stem": "Dietary ionic iron needed for hemoglobin production enters duodenal enterocytes primarily by which mechanism?",
+  "options": [
+    {
+      "label": "A",
+      "text": "Simple diffusion through aqueous membrane pores",
+      "isCorrect": false,
+      "misconception": "Passive leak is being assumed for a regulated mineral.",
+      "explanation": "Iron entry into mucosal cells is active transport, not simple diffusion through pores."
+    },
+    {
+      "label": "B",
+      "text": "Paracellular leak between adjacent enterocytes",
+      "isCorrect": false,
+      "misconception": "Tight-junction leak is being confused with transcellular uptake.",
+      "explanation": "Regulated iron uptake is transcellular into mucosal cells, not primarily paracellular leak."
+    },
+    {
+      "label": "C",
+      "text": "Active transport into the enterocyte cytoplasm",
+      "isCorrect": true,
+      "misconception": "None; ionic iron is absorbed into mucosal cells via active transport.",
+      "explanation": "Ionic iron is taken into duodenal mucosal cells by active transport before ferritin binding."
+    },
+    {
+      "label": "D",
+      "text": "Endocytosis of intact circulating transferrin",
+      "isCorrect": false,
+      "misconception": "Plasma iron delivery is being confused with dietary mucosal uptake.",
+      "explanation": "Dietary ionic iron is actively transported into mucosa; circulating transferrin is not endocytosed from the lumen."
+    },
+    {
+      "label": "E",
+      "text": "Facilitated diffusion only down a gradient",
+      "isCorrect": false,
+      "misconception": "Carrier-mediated passive entry is being confused with active uptake.",
+      "explanation": "The described mucosal entry pathway is active transport, not facilitated diffusion alone."
+    }
+  ],
+  "context": "Learning objective: apply that dietary ionic iron enters duodenal mucosal cells by active transport.",
+  "cite": "openstax-anatomy-physiology#he-iron-deficiency-microcytic",
+  "publicUsmle": {
+    "schemaVersion": 1,
+    "origin": "generated",
+    "itemText": {
+      "licence": "CC-BY-4.0",
+      "attribution": "MD3 contributors"
+    },
+    "evidence": {
+      "kind": "passage",
+      "sourceId": "openstax-anatomy-physiology",
+      "passageId": "he-iron-deficiency-microcytic",
+      "licence": {
+        "cls": "foss",
+        "id": "cc-by-4.0"
+      }
+    }
+  }
+}

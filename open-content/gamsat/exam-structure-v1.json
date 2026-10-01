@@ -1,0 +1,111 @@
+{
+  "schemaVersion": 1,
+  "source": {
+    "title": "GAMSAT Information Booklet 2026",
+    "publisher": "Australian Council for Educational Research (ACER)",
+    "url": "https://gamsat.acer.org/files/GAMSAT_Information_booklet.pdf",
+    "retrieved": "2026-08-06",
+    "note": "Facts and short descriptive quotations from ACER's own published booklet, recorded to ground the move taxonomy. ACER's booklet is their copyright; nothing here is a test item, and no ACER question, passage or option is reproduced."
+  },
+  "testWindows": {
+    "note": "New in 2026: the exam is split into two separate windows, not one sitting.",
+    "first": "Written Communication, remote proctored for all test takers",
+    "second": "Reasoning in Humanities and Social Sciences + Reasoning in Biological and Physical Sciences, at in-person test centres, approximately three weeks after the Written Communication window"
+  },
+  "sections": [
+    {
+      "id": "s1",
+      "name": "Reasoning in Humanities and Social Sciences",
+      "questions": 62,
+      "minutes": 100,
+      "format": "multiple choice, four alternatives",
+      "scoreWeight": 1,
+      "stimulusKinds": [
+        "personal",
+        "imaginative",
+        "expository",
+        "argumentative",
+        "visual",
+        "tabular"
+      ],
+      "acerSkillFamilies": [
+        {
+          "id": "understanding",
+          "quote": "recognition of explicit and implicit meanings through close reading of words and phrases as well as global interpretations of texts"
+        },
+        {
+          "id": "plausible-reasoning",
+          "quote": "interrelating, elaborating and extending concepts and ideas, and drawing conclusions"
+        },
+        {
+          "id": "critical-thinking",
+          "quote": "make discriminations and judgments in the realm of plausible reasoning"
+        }
+      ]
+    },
+    {
+      "id": "s2",
+      "name": "Written Communication",
+      "questions": 2,
+      "minutes": 65,
+      "format": "two writing tasks on a common theme",
+      "scoreWeight": 1,
+      "acerCriteria": [
+        {
+          "id": "thought-and-content",
+          "gloss": "the quality of what is said — what is made of and developed from the task, and the kinds of thoughts offered"
+        },
+        {
+          "id": "organisation-and-expression",
+          "gloss": "the quality of the structure developed and language used — the shape and form of the piece"
+        }
+      ],
+      "note": "ACER states pre-prepared and memorised responses score poorly and may be flagged as plagiarised. Nothing in this project should encourage a pre-written essay."
+    },
+    {
+      "id": "s3",
+      "name": "Reasoning in Biological and Physical Sciences",
+      "questions": 75,
+      "minutes": 150,
+      "format": "multiple choice, four alternatives",
+      "scoreWeight": 2,
+      "disciplineProportions": {
+        "chemistry": 0.4,
+        "biology": 0.4,
+        "physics": 0.2
+      },
+      "assumedKnowledge": "first year of university studies in biology and chemistry, and A-level/Leaving Certificate/Year 12 in physics",
+      "assumedKnowledgeCaveat": "The test however, focuses primarily on problem solving and on the use of the prerequisite knowledge.",
+      "acerSkills": [
+        "identify knowledge in new contexts",
+        "analyse and interpret data",
+        "discover relationships",
+        "translate knowledge from one form to another",
+        "formulate and apply hypotheses and make generalisations",
+        "deduce consequences from models",
+        "follow and evaluate a line of reasoning",
+        "evaluate evidence",
+        "categorise and select information relevant to problems",
+        "generate and apply strategies to solve problems",
+        "make comparisons",
+        "extrapolate",
+        "interpolate",
+        "estimate",
+        "recognise limits in accuracy"
+      ]
+    }
+  ],
+  "scoring": {
+    "formula": "(1 x Humanities & Social Sciences + 1 x Written Communication + 2 x Biological & Physical Sciences) / 4",
+    "implication": "Section III is double-weighted and is therefore 50% of the overall score on its own — the single highest-leverage section to target."
+  },
+  "licence": {
+    "id": "CC-BY-4.0",
+    "attribution": "MD3 contributors",
+    "note": "This structured record is our own compilation. The quoted phrases are short factual descriptors attributed to ACER."
+  },
+  "scopeOfAuthority": {
+    "trustFor": "Structure: question counts, timings, section weighting, discipline proportions, test-window arrangement.",
+    "doNotTrustFor": "What the exam actually rewards. The skill descriptors here are the construct as DECLARED, and are too generic to discriminate. ACER free practice material is also widely reported as easier than and unrepresentative of the live exam, so neither the booklet nor the free samples should be treated as ground truth for difficulty or for which reasoning moves carry marks."
+  }
+}

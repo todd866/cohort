@@ -1,0 +1,71 @@
+{
+  "id": "bank:usmle-step1:pharm-lisinopril-ace:v1",
+  "rotation": "usmle-step1-open",
+  "topics": [
+    "lisinopril",
+    "ACE inhibitor"
+  ],
+  "moduleNodes": [
+    "usmle/step1",
+    "usmle/step1/pharmacology"
+  ],
+  "questionType": "mechanism",
+  "difficulty": "easy",
+  "stem": "Lisinopril belongs to which class used for high blood pressure and heart failure?",
+  "options": [
+    {
+      "label": "A",
+      "text": "Angiotensin II type 1 receptor blockers",
+      "isCorrect": false,
+      "misconception": "Confuses ACE inhibitors (-pril) with angiotensin receptor blockers (-sartan).",
+      "explanation": "Angiotensin II receptor blockers such as losartan block the AT1 receptor; lisinopril instead blocks the formation of angiotensin II."
+    },
+    {
+      "label": "B",
+      "text": "Beta-adrenergic receptor blockers",
+      "isCorrect": false,
+      "misconception": "Groups every antihypertensive used in heart failure into the beta-blocker class.",
+      "explanation": "Beta blockers such as metoprolol block beta-adrenergic receptors; lisinopril acts on the renin-angiotensin system instead."
+    },
+    {
+      "label": "C",
+      "text": "Thiazide diuretics",
+      "isCorrect": false,
+      "misconception": "Assumes first-line antihypertensives are all diuretics.",
+      "explanation": "Thiazide diuretics such as hydrochlorothiazide block the distal tubule Na-Cl cotransporter; lisinopril is not a diuretic."
+    },
+    {
+      "label": "D",
+      "text": "Direct renin inhibitors",
+      "isCorrect": false,
+      "misconception": "Places the drug at the wrong step of the renin-angiotensin cascade.",
+      "explanation": "Direct renin inhibitors such as aliskiren block renin's conversion of angiotensinogen, one step upstream of where lisinopril acts."
+    },
+    {
+      "label": "E",
+      "text": "Angiotensin-converting enzyme inhibitors",
+      "isCorrect": true,
+      "misconception": "None — lisinopril is an ACE inhibitor.",
+      "explanation": "The label states that lisinopril is an angiotensin-converting enzyme (ACE) inhibitor; drugs ending in '-pril' share this class."
+    }
+  ],
+  "context": "Learning objective: Lisinopril is in the angiotensin-converting enzyme (ACE) inhibitor class of medications.",
+  "cite": "medlineplus-lisinopril#lisinopril-ace",
+  "publicUsmle": {
+    "schemaVersion": 1,
+    "origin": "generated",
+    "itemText": {
+      "licence": "CC-BY-4.0",
+      "attribution": "MD3 contributors"
+    },
+    "evidence": {
+      "kind": "passage",
+      "sourceId": "medlineplus-lisinopril",
+      "passageId": "lisinopril-ace",
+      "licence": {
+        "cls": "foss",
+        "id": "us-gov"
+      }
+    }
+  }
+}

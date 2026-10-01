@@ -1,0 +1,71 @@
+{
+  "id": "bank:usmle-step1:immuno-booster-rationale:v1",
+  "rotation": "usmle-step1-open",
+  "topics": [
+    "vaccination",
+    "boosters"
+  ],
+  "moduleNodes": [
+    "usmle/step1",
+    "usmle/step1/immunology"
+  ],
+  "questionType": "mechanism",
+  "difficulty": "medium",
+  "stem": "Why do many vaccine courses include booster vaccinations?",
+  "options": [
+    {
+      "label": "A",
+      "text": "To mimic a natural repeat exposure to the antigen",
+      "isCorrect": true,
+      "misconception": "None — boosters mimic repeat exposure to the antigen.",
+      "explanation": "A booster re-exposes the immune system to the antigen, as a natural repeat exposure would, restoring antibody levels that fall over time."
+    },
+    {
+      "label": "B",
+      "text": "To supply preformed antibody for immediate passive protection",
+      "isCorrect": false,
+      "misconception": "Confuses active immunization with passive antibody transfer.",
+      "explanation": "Preformed antibody for immediate passive protection comes from immune globulin; a booster stimulates the recipient's own memory response."
+    },
+    {
+      "label": "C",
+      "text": "To induce immune tolerance to the vaccine antigen",
+      "isCorrect": false,
+      "misconception": "Confuses re-stimulating immunity with inducing tolerance.",
+      "explanation": "Tolerance is unresponsiveness to an antigen; boosters aim for the opposite, a renewed protective response."
+    },
+    {
+      "label": "D",
+      "text": "To shift the response from adaptive to innate immunity",
+      "isCorrect": false,
+      "misconception": "Thinks vaccination acts on innate rather than adaptive immunity.",
+      "explanation": "Boosters act on adaptive immunity; innate immunity forms no antigen-specific memory for a booster to renew."
+    },
+    {
+      "label": "E",
+      "text": "To lower the risk of allergy to vaccine components",
+      "isCorrect": false,
+      "misconception": "Attributes booster doses to allergy prevention rather than waning memory.",
+      "explanation": "Boosters are not given to prevent allergy; repeat doses re-stimulate a protective response whose antibody levels wane."
+    }
+  ],
+  "context": "Learning objective: booster doses mimic a repeat exposure to the antigen, renewing a protective adaptive response that wanes over time.",
+  "cite": "openstax-biology-2e#booster-vaccination",
+  "publicUsmle": {
+    "schemaVersion": 1,
+    "origin": "generated",
+    "itemText": {
+      "licence": "CC-BY-4.0",
+      "attribution": "MD3 contributors"
+    },
+    "evidence": {
+      "kind": "passage",
+      "sourceId": "openstax-biology-2e",
+      "passageId": "booster-vaccination",
+      "licence": {
+        "cls": "foss",
+        "id": "cc-by-4.0"
+      }
+    }
+  }
+}

@@ -1,0 +1,73 @@
+{
+  "id": "bank:usmle-step1:renal-bicarbonate-conservation-r1:v1",
+  "rotation": "usmle-step1-open",
+  "ladderId": "renal-bicarbonate-conservation",
+  "topics": [
+    "bicarbonate reabsorption",
+    "carbonic anhydrase",
+    "ladder:renal-bicarbonate-conservation"
+  ],
+  "moduleNodes": [
+    "usmle/step1",
+    "usmle/step1/renal"
+  ],
+  "questionType": "mechanism",
+  "difficulty": "easy",
+  "stem": "Because renal tubule cells are impermeable to bicarbonate, filtered bicarbonate is recovered primarily by converting it to which molecule that can enter the cell?",
+  "options": [
+    {
+      "label": "A",
+      "text": "Carbon dioxide",
+      "isCorrect": true,
+      "misconception": "None; luminal bicarbonate is converted to CO2, which diffuses into tubule cells for regeneration.",
+      "explanation": "Filtered bicarbonate reacts to form carbonic acid, which yields CO2 that enters the cell; intracellular carbonic anhydrase regenerates bicarbonate for return to blood while H+ is secreted."
+    },
+    {
+      "label": "B",
+      "text": "Ammonia",
+      "isCorrect": false,
+      "misconception": "A buffer used in chronic acid excretion is being confused with proximal bicarbonate recovery.",
+      "explanation": "Ammonia buffers secreted H+ in the collecting duct during chronic acidosis; proximal bicarbonate conservation uses the CO2/carbonic anhydrase pathway."
+    },
+    {
+      "label": "C",
+      "text": "Phosphate",
+      "isCorrect": false,
+      "misconception": "A titratable acid buffer is being substituted for the primary bicarbonate recovery intermediate.",
+      "explanation": "Phosphate buffers filtered H+ in the urine; bicarbonate reabsorption depends on CO2 entry and intracellular regeneration."
+    },
+    {
+      "label": "D",
+      "text": "Urea",
+      "isCorrect": false,
+      "misconception": "A medullary osmole is being confused with an acid-base intermediate.",
+      "explanation": "Urea contributes to medullary tonicity but plays no role in proximal bicarbonate reabsorption via carbonic anhydrase."
+    },
+    {
+      "label": "E",
+      "text": "Lactate",
+      "isCorrect": false,
+      "misconception": "An organic anion from anaerobic metabolism is being cast as the bicarbonate recovery intermediate.",
+      "explanation": "Lactate is a metabolic product, not the CO2 intermediate that tubule cells use to regenerate reabsorbed bicarbonate."
+    }
+  ],
+  "context": "Learning objective: state the CO2 intermediate in bicarbonate recovery. Tubule cells cannot pass bicarbonate directly; luminal bicarbonate becomes CO2, enters the cell, and is converted back to bicarbonate for the blood while H+ is secreted.",
+  "cite": "openstax-anatomy-physiology#renal-bicarbonate-conservation",
+  "publicUsmle": {
+    "schemaVersion": 1,
+    "origin": "generated",
+    "itemText": {
+      "licence": "CC-BY-4.0",
+      "attribution": "MD3 contributors"
+    },
+    "evidence": {
+      "kind": "passage",
+      "sourceId": "openstax-anatomy-physiology",
+      "passageId": "renal-bicarbonate-conservation",
+      "licence": {
+        "cls": "foss",
+        "id": "cc-by-4.0"
+      }
+    }
+  }
+}

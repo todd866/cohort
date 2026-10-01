@@ -1,0 +1,65 @@
+{
+  "id": "bank:cohort:paeds:q-1002df7e2c74:v1",
+  "rotation": "cohort-open",
+  "moduleNodes": [
+    "cohort/paeds"
+  ],
+  "topics": [
+    "pertussis",
+    "household-prophylaxis"
+  ],
+  "questionType": "next-step",
+  "difficulty": "hard",
+  "stem": "The GP in the practice reviews a 3-year-old boy who has coughed for 8 days. For the last 2 days the cough comes in paroxysms and he vomits afterwards. He is afebrile and active. A throat swab for pertussis PCR yesterday was negative. His 10-week-old sister lives in the same house and is well.\n\nWhat should the GP do next?",
+  "options": [
+    {
+      "label": "A",
+      "text": "Arrange chest X-rays and start azithromycin only if pneumonia is present",
+      "isCorrect": false,
+      "explanation": "A chest X-ray is for an unwell infant under 6 months, when pertussis pneumonia is a concern. It should not decide treatment for this well child and his sister."
+    },
+    {
+      "label": "B",
+      "text": "Accept the negative throat PCR and review both children in one week",
+      "isCorrect": false,
+      "explanation": "A negative throat swab does not exclude pertussis, and waiting a week leaves the exposed infant without prophylaxis. Send the correct specimen and act on the clinical and contact risk now."
+    },
+    {
+      "label": "C",
+      "text": "Start therapeutic azithromycin for the boy only and observe the infant sister",
+      "isCorrect": false,
+      "explanation": "The boy needs treatment, but observing the well 10-week-old misses the separate post-exposure prophylaxis recommendation for an exposed infant under 6 months."
+    },
+    {
+      "label": "D",
+      "text": "Treat the boy, give the infant prophylaxis, and send a posterior nasopharyngeal PCR",
+      "isCorrect": true,
+      "explanation": "Treat the symptomatic boy despite the insensitive throat swab; give separate post-exposure prophylaxis to the exposed infant under 6 months; send the preferred PCR specimen."
+    },
+    {
+      "label": "E",
+      "text": "Repeat the throat PCR and start azithromycin only if that swab is positive",
+      "isCorrect": false,
+      "explanation": "Repeating the less-sensitive throat specimen is the wrong test, and treatment of the symptomatic child should not wait for a positive result."
+    }
+  ],
+  "context": "A throat swab does not exclude pertussis; send a posterior nasopharyngeal PCR. Treat the symptomatic boy, while the well 10-week-old receives separate post-exposure prophylaxis as an exposed infant under 6 months.\n\nRCH and Therapeutic Guidelines support these two actions. Their timing descriptions differ, so this item does not collapse them into one numeric cutoff.\n\nA chest radiograph is for an unwell infant with possible pulmonary complications, not the test that decides treatment here.",
+  "publicModule": {
+    "schemaVersion": 1,
+    "origin": "mirrored",
+    "discipline": "paeds",
+    "mirroredFrom": "md3:1002df7e2c74c1b7",
+    "itemText": {
+      "licence": "CC-BY-4.0",
+      "attribution": "MD3 contributors"
+    },
+    "evidence": {
+      "kind": "reference",
+      "sourceId": "rch-whooping-cough-pertussis"
+    },
+    "review": {
+      "verdict": "passed",
+      "contentHash": "901ef99fc17f59396fe69a816ee40d588987ee5501ad7750af6b2894f46480e5"
+    }
+  }
+}

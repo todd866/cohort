@@ -1,0 +1,67 @@
+{
+  "id": "bank:cohort:em:q-f83f9cd6e5ef:v1",
+  "rotation": "cohort-open",
+  "moduleNodes": [
+    "cohort/em"
+  ],
+  "topics": [
+    "trauma",
+    "abcd",
+    "primary-survey",
+    "emergency"
+  ],
+  "questionType": "management",
+  "difficulty": "easy",
+  "stem": "A child is carried in after a fall from a trampoline onto concrete. There is an obvious open forearm fracture and a lot of blood on the clothes. He is pale and quiet.\n\nWhat is the first step in assessment and management?",
+  "options": [
+    {
+      "label": "A",
+      "text": "Theatre for debridement first",
+      "isCorrect": false,
+      "explanation": "Open-fracture debridement is important and time-sensitive, but it is not the first action in a pale quiet trauma patient."
+    },
+    {
+      "label": "B",
+      "text": "Apply a sling to save the nerve",
+      "isCorrect": false,
+      "explanation": "Splinting protects soft tissue and nerves after the primary survey. It is not the opening move."
+    },
+    {
+      "label": "C",
+      "text": "ABCD before treating the fracture",
+      "isCorrect": true,
+      "explanation": "An obvious fracture is a distracting injury. The first step is a primary survey (airway with C-spine, breathing, circulation with haemorrhage control, disability) to find life threats. Only then come reduction, sling, and orthopaedics."
+    },
+    {
+      "label": "D",
+      "text": "Immediate fracture reduction now",
+      "isCorrect": false,
+      "explanation": "Reducing the arm first skips airway and bleeding. A quiet pale child may be shocked or obstructing."
+    },
+    {
+      "label": "E",
+      "text": "Urgent orthopaedic call first",
+      "isCorrect": false,
+      "explanation": "Orthopaedics will be needed, but not before ABCD. Life threats outrank the open fracture."
+    }
+  ],
+  "context": "Paediatric trauma: <C>ABCDE / ABCD first, even when a dramatic limb injury is visible.\n\nCatastrophic haemorrhage, airway, breathing, then circulation. Fracture care follows.",
+  "publicModule": {
+    "schemaVersion": 1,
+    "origin": "mirrored",
+    "discipline": "em",
+    "mirroredFrom": "md3:f83f9cd6e5ef5621",
+    "itemText": {
+      "licence": "CC-BY-4.0",
+      "attribution": "MD3 contributors"
+    },
+    "evidence": {
+      "kind": "reference",
+      "sourceId": "rch-major-paediatric-trauma-the-secondary-survey"
+    },
+    "review": {
+      "verdict": "passed",
+      "contentHash": "70b1bd422020953198587eed690b041533dc88b0e29301dd0182d469b0fed69a"
+    }
+  }
+}

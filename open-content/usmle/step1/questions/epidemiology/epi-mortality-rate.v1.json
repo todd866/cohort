@@ -1,0 +1,70 @@
+{
+  "id": "bank:usmle-step1:epi-mortality-rate:v1",
+  "rotation": "usmle-step1-open",
+  "topics": [
+    "mortality"
+  ],
+  "moduleNodes": [
+    "usmle/step1",
+    "usmle/step1/epidemiology"
+  ],
+  "questionType": "mechanism",
+  "difficulty": "easy",
+  "stem": "A mortality rate measures which epidemiologic quantity about deaths?",
+  "options": [
+    {
+      "label": "A",
+      "text": "Proportion of people with a disease who die from it",
+      "isCorrect": false,
+      "misconception": "Confuses a population mortality rate with case-fatality, which is restricted to cases.",
+      "explanation": "Deaths among people who have a disease, divided by those cases, is the case-fatality rate; its denominator is cases, not the population."
+    },
+    {
+      "label": "B",
+      "text": "Frequency of death in a defined population over an interval",
+      "isCorrect": true,
+      "misconception": "None — a mortality rate is death frequency in a defined population over an interval.",
+      "explanation": "CDC defines a mortality rate as the frequency of occurrence of death in a defined population during a specified interval."
+    },
+    {
+      "label": "C",
+      "text": "Proportion of all deaths that are due to one cause",
+      "isCorrect": false,
+      "misconception": "Confuses a mortality rate with proportionate mortality, whose denominator is total deaths.",
+      "explanation": "The share of all deaths due to one cause is proportionate mortality; its denominator is deaths, so it is not a rate of death in a population."
+    },
+    {
+      "label": "D",
+      "text": "Years of potential life lost before a reference age",
+      "isCorrect": false,
+      "misconception": "Confuses death frequency with years of potential life lost, a premature-death burden measure.",
+      "explanation": "Years of potential life lost weights each death by how early it occurs, measuring premature mortality rather than how often death occurs."
+    },
+    {
+      "label": "E",
+      "text": "Probability that a newly diagnosed patient survives five years",
+      "isCorrect": false,
+      "misconception": "Confuses a population mortality rate with survival among diagnosed patients.",
+      "explanation": "Five-year survival is the probability a diagnosed patient is alive at five years, a prognosis measure within a patient group."
+    }
+  ],
+  "context": "Learning objective: A mortality rate measures how often death occurs in a defined population during a specified interval.",
+  "cite": "cdc-epi-mortality-measures#mortality-rate",
+  "publicUsmle": {
+    "schemaVersion": 1,
+    "origin": "generated",
+    "itemText": {
+      "licence": "CC-BY-4.0",
+      "attribution": "MD3 contributors"
+    },
+    "evidence": {
+      "kind": "passage",
+      "sourceId": "cdc-epi-mortality-measures",
+      "passageId": "mortality-rate",
+      "licence": {
+        "cls": "foss",
+        "id": "us-gov"
+      }
+    }
+  }
+}

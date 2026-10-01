@@ -1,0 +1,120 @@
+{
+  "schemaVersion": 1,
+  "figureId": "bronchiolitis-asthma-obstruction-model",
+  "kind": "conceptual",
+  "sourceFacts": [
+    {
+      "id": "fact-1",
+      "fact": "Asthma can narrow airways through smooth-muscle tightening, inflammation and mucus.",
+      "sources": [
+        {
+          "title": "NHLBI: Asthma causes",
+          "url": "https://www.nhlbi.nih.gov/health/asthma/causes"
+        },
+        {
+          "title": "RCH: Bronchiolitis",
+          "url": "https://www.rch.org.au/clinicalguide/guideline_index/Bronchiolitis/"
+        },
+        {
+          "title": "RCH Kids Health: Bronchiolitis",
+          "url": "https://www.rch.org.au/kidsinfo/fact_sheets/bronchiolitis/"
+        }
+      ]
+    },
+    {
+      "id": "fact-2",
+      "fact": "Bronchiolitis causes swelling and obstructing material in small airways; routine beta-2 agonists are not recommended.",
+      "sources": [
+        {
+          "title": "NHLBI: Asthma causes",
+          "url": "https://www.nhlbi.nih.gov/health/asthma/causes"
+        },
+        {
+          "title": "RCH: Bronchiolitis",
+          "url": "https://www.rch.org.au/clinicalguide/guideline_index/Bronchiolitis/"
+        },
+        {
+          "title": "RCH Kids Health: Bronchiolitis",
+          "url": "https://www.rch.org.au/kidsinfo/fact_sheets/bronchiolitis/"
+        }
+      ]
+    },
+    {
+      "id": "fact-3",
+      "fact": "The comparison isolates bronchodilator-sensitive muscle tension and does not claim either illness has only one mechanism.",
+      "sources": [
+        {
+          "title": "NHLBI: Asthma causes",
+          "url": "https://www.nhlbi.nih.gov/health/asthma/causes"
+        },
+        {
+          "title": "RCH: Bronchiolitis",
+          "url": "https://www.rch.org.au/clinicalguide/guideline_index/Bronchiolitis/"
+        },
+        {
+          "title": "RCH Kids Health: Bronchiolitis",
+          "url": "https://www.rch.org.au/kidsinfo/fact_sheets/bronchiolitis/"
+        }
+      ]
+    }
+  ],
+  "nodes": [
+    {
+      "id": "band",
+      "shape": "tight mechanical strap",
+      "label": "Muscle tightening"
+    },
+    {
+      "id": "loose",
+      "shape": "loose strap and wider track",
+      "label": "Relaxation opens space"
+    },
+    {
+      "id": "material",
+      "shape": "padding and loose fragments",
+      "label": "Swelling + material"
+    },
+    {
+      "id": "persist",
+      "shape": "persistent blockage after strap release",
+      "label": "Blockage remains"
+    }
+  ],
+  "edges": [
+    {
+      "from": "band",
+      "to": "loose",
+      "meaning": "relaxing tension can improve airflow"
+    },
+    {
+      "from": "material",
+      "to": "persist",
+      "meaning": "relaxing muscle alone does not remove predominant swelling/material"
+    }
+  ],
+  "labels": [
+    "Different reasons for a narrow passage",
+    "Asthma: muscle component",
+    "Tight band",
+    "Band relaxes",
+    "More room for flow",
+    "Bronchiolitis: swelling + material",
+    "Blockage remains",
+    "Selective mechanical analogies"
+  ],
+  "forbiddenAnatomy": [
+    "Organs, airway cross-sections, tissue layers, clinical photos, copied clinical scoring graphics"
+  ],
+  "validation": {
+    "status": "verified",
+    "method": "source-and-conceptual-structure-review",
+    "checks": [
+      "Artificial tracks not bronchial cross-sections.",
+      "Asthma label identifies muscle component, not sole mechanism.",
+      "Bronchiolitis material persists despite loosened band, without asserting absence of muscle.",
+      "No claim bronchodilators cure swelling or remove debris."
+    ],
+    "pixelReviewStatus": "verified",
+    "pixelReviewNotes": "Top manufactured track opens after strap relaxation with wider flow arrow; asthma heading expressly limits it to the muscle component. Bottom padding and cork remain after loosening with small residual flow arrow. All four panels show artificial wooden/fabric models, not airway cross-sections. Selective-analogy qualifier excludes a one-mechanism disease claim."
+  }
+}

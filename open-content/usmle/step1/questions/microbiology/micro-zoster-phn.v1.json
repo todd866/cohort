@@ -1,0 +1,71 @@
+{
+  "id": "bank:usmle-step1:micro-zoster-phn:v1",
+  "rotation": "usmle-step1-open",
+  "topics": [
+    "zoster",
+    "postherpetic neuralgia"
+  ],
+  "moduleNodes": [
+    "usmle/step1",
+    "usmle/step1/microbiology"
+  ],
+  "questionType": "mechanism",
+  "difficulty": "easy",
+  "stem": "What is the most common debilitating complication of shingles?",
+  "options": [
+    {
+      "label": "A",
+      "text": "Bacterial superinfection of skin lesions",
+      "isCorrect": false,
+      "misconception": "Assumes infection of the visible blisters, rather than nerve pain, is the main complication.",
+      "explanation": "Staphylococcal or streptococcal superinfection can complicate zoster lesions, but it is much less common than persistent pain."
+    },
+    {
+      "label": "B",
+      "text": "Ramsay Hunt syndrome",
+      "isCorrect": false,
+      "misconception": "Overweights a memorable eponymous syndrome over the common chronic pain complication.",
+      "explanation": "Ramsay Hunt syndrome is facial palsy with ear vesicles from geniculate ganglion reactivation; it is a recognized but uncommon zoster complication."
+    },
+    {
+      "label": "C",
+      "text": "VZV vasculopathy with stroke",
+      "isCorrect": false,
+      "misconception": "Overweights a rare but dramatic neurologic complication over the common one.",
+      "explanation": "VZV vasculopathy can cause stroke after zoster, especially ophthalmic zoster, but it is rare compared with postherpetic neuralgia."
+    },
+    {
+      "label": "D",
+      "text": "Acute retinal necrosis",
+      "isCorrect": false,
+      "misconception": "Assumes dramatic eye involvement is the most frequent zoster complication.",
+      "explanation": "Acute retinal necrosis is a rare, sight-threatening VZV or HSV retinitis; it is not the most common complication of zoster."
+    },
+    {
+      "label": "E",
+      "text": "Postherpetic neuralgia",
+      "isCorrect": true,
+      "misconception": "None — postherpetic neuralgia is the most common and debilitating zoster complication.",
+      "explanation": "CDC names postherpetic neuralgia, pain that persists where the rash was after the lesions resolve, as the most common and debilitating zoster complication."
+    }
+  ],
+  "context": "Learning objective: Postherpetic neuralgia, pain persisting in the rash area after lesions resolve, is the most common and debilitating complication of zoster.",
+  "cite": "cdc-pink-book-zoster#zoster-phn",
+  "publicUsmle": {
+    "schemaVersion": 1,
+    "origin": "generated",
+    "itemText": {
+      "licence": "CC-BY-4.0",
+      "attribution": "MD3 contributors"
+    },
+    "evidence": {
+      "kind": "passage",
+      "sourceId": "cdc-pink-book-zoster",
+      "passageId": "zoster-phn",
+      "licence": {
+        "cls": "foss",
+        "id": "us-gov"
+      }
+    }
+  }
+}

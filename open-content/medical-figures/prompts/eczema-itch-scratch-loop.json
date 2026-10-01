@@ -1,0 +1,35 @@
+{
+  "figureId": "eczema-itch-scratch-loop",
+  "tool": "built-in image_gen",
+  "model": null,
+  "referenceAssetIds": [],
+  "externalReferenceImages": [],
+  "prompt": "Original educational conceptual illustration, landscape 3:2. Warm ivory paper, sophisticated hand-painted gouache/watercolour, confident fine brown outlines, navy lettering, restrained teal, coral and amber. Editorial science illustration with spacious composition and large legible labels. The explanatory structure must carry the meaning visually: molecules, objects, geometry or flow; never paragraphs in boxes. No organs, regional anatomy, teeth or joint cutaways, tissue layers, invented histology, diagnostic photographs, radiographs or patient data. All symbols are explicitly conceptual. Footer: 'Conceptual teaching model • Not to scale'. Title 'The itch–scratch cycle'. A large spacious CLOCKWISE four-object loop: upper left small coral flame labelled 'Inflammation'; upper right gold tingling spark labelled 'Itch'; lower right a small wooden rake labelled 'Scratching'; lower left a freestanding cracked brickwork shield labelled 'Barrier damage'. Teal water droplets escape through a crack near the shield, labelled 'Moisture escapes'. Strong clockwise arrows join precisely flame→spark→rake→shield→flame. Rake does not touch a body: there is no body or skin. Shield visibly constructed from ordinary clay bricks, clearly an analogy. No extra nodes or medications.",
+  "clinicalSources": [
+    {
+      "title": "NIAMS: Atopic dermatitis",
+      "url": "https://www.niams.nih.gov/health-topics/atopic-dermatitis"
+    }
+  ],
+  "teaching": {
+    "question": "How can scratching perpetuate eczema?",
+    "answer": "Inflammation causes itch and scratching. Scratching damages the barrier, worsening moisture loss and inflammation, which promotes further itch.",
+    "imageRole": "after-reveal"
+  },
+  "title": "The itch–scratch cycle",
+  "caption": "Inflammation promotes itch. Scratching further damages the barrier, allowing moisture loss and contributing to further inflammation.",
+  "alt": "Four objects form a clockwise loop: flame, itch spark, wooden rake and cracked brick shield.",
+  "review": {
+    "status": "pending-independent-qa",
+    "method": "agent-visual-and-source-review",
+    "notes": "All four clockwise arrowheads checked: inflammation to itch, itch to scratching, scratching to barrier damage, barrier damage back to inflammation. Droplets leave the cracked brick shield. The rake and masonry are clearly objects rather than skin or tissue anatomy; no anatomical cutaway.",
+    "structure": {
+      "kind": "conceptual",
+      "status": "verified",
+      "specificationFiles": [
+        "scaffolds/eczema-itch-scratch-loop.json"
+      ],
+      "notes": "All four clockwise arrowheads checked: inflammation to itch, itch to scratching, scratching to barrier damage, barrier damage back to inflammation. Droplets leave the cracked brick shield. The rake and masonry are clearly objects rather than skin or tissue anatomy; no anatomical cutaway."
+    }
+  }
+}

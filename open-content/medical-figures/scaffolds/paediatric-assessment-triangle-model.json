@@ -1,0 +1,124 @@
+{
+  "schemaVersion": 1,
+  "figureId": "paediatric-assessment-triangle-model",
+  "kind": "conceptual",
+  "sourceFacts": [
+    {
+      "id": "fact-1",
+      "fact": "The assessment triangle includes appearance, breathing and circulation to skin.",
+      "sources": [
+        {
+          "title": "Children’s Health Queensland: Rapid assessment",
+          "url": "https://www.childrens.health.qld.gov.au/__data/assets/pdf_file/0033/179727/rapid-assessment.pdf"
+        },
+        {
+          "title": "RACGP: Assessment of the unwell child",
+          "url": "https://www.racgp.org.au/afp/2010/may/assessment-of-the-unwell-child/"
+        }
+      ]
+    },
+    {
+      "id": "fact-2",
+      "fact": "It provides a rapid initial impression of illness severity.",
+      "sources": [
+        {
+          "title": "Children’s Health Queensland: Rapid assessment",
+          "url": "https://www.childrens.health.qld.gov.au/__data/assets/pdf_file/0033/179727/rapid-assessment.pdf"
+        },
+        {
+          "title": "RACGP: Assessment of the unwell child",
+          "url": "https://www.racgp.org.au/afp/2010/may/assessment-of-the-unwell-child/"
+        }
+      ]
+    },
+    {
+      "id": "fact-3",
+      "fact": "Primary assessment, immediate management and reassessment follow as needed.",
+      "sources": [
+        {
+          "title": "Children’s Health Queensland: Rapid assessment",
+          "url": "https://www.childrens.health.qld.gov.au/__data/assets/pdf_file/0033/179727/rapid-assessment.pdf"
+        },
+        {
+          "title": "RACGP: Assessment of the unwell child",
+          "url": "https://www.racgp.org.au/afp/2010/may/assessment-of-the-unwell-child/"
+        }
+      ]
+    }
+  ],
+  "nodes": [
+    {
+      "id": "appearance",
+      "shape": "speech bubbles and gaze dots",
+      "label": "Appearance"
+    },
+    {
+      "id": "breathing",
+      "shape": "effort meter and sound ripples",
+      "label": "Work of breathing"
+    },
+    {
+      "id": "circulation",
+      "shape": "abstract colour tiles",
+      "label": "Circulation to skin"
+    },
+    {
+      "id": "child",
+      "shape": "wooden person token",
+      "label": "Rapid impression"
+    },
+    {
+      "id": "action",
+      "shape": "forward arrow",
+      "label": "Assess • act • reassess"
+    }
+  ],
+  "edges": [
+    {
+      "from": "appearance",
+      "to": "child",
+      "meaning": "contributes to impression"
+    },
+    {
+      "from": "breathing",
+      "to": "child",
+      "meaning": "contributes to impression"
+    },
+    {
+      "from": "circulation",
+      "to": "child",
+      "meaning": "contributes to impression"
+    },
+    {
+      "from": "child",
+      "to": "action",
+      "meaning": "initial impression informs action"
+    }
+  ],
+  "labels": [
+    "Three views of the unwell child",
+    "Paediatric assessment triangle",
+    "Appearance",
+    "Interaction • tone • cry",
+    "Work of breathing",
+    "Effort • sounds",
+    "Circulation to skin",
+    "Colour • mottling",
+    "Rapid impression",
+    "Assess • act • reassess"
+  ],
+  "forbiddenAnatomy": [
+    "Organs, joints, bones, tissue layers, histology, clinical photographs"
+  ],
+  "validation": {
+    "status": "verified",
+    "method": "source-and-conceptual-structure-review",
+    "checks": [
+      "Three domains correctly named; breathing is work not merely rate.",
+      "Circulation focuses on visible skin appearance; no heartbeat icon implying pulse examination alone.",
+      "No claim that rapid impression replaces ABCDE or urgent care."
+    ],
+    "pixelReviewStatus": "verified",
+    "pixelReviewNotes": "Triangle correctly locates appearance, work of breathing and circulation to skin around a non-anatomical wooden token. Supporting labels reflect interaction/tone/cry, effort/sounds, colour/mottling. Exit arrow calls for assessment, action and reassessment. Swatches are abstract paint, not purported diagnostic skin photographs; no pulse-only circulation substitution."
+  }
+}

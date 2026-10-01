@@ -1,0 +1,29 @@
+{
+  "id": "concept-impaction-overflow-mechanism",
+  "title": "Soiling can occur despite retained stool",
+  "prompt": "Create an original polished 1536x1024 landscape conceptual medical teaching diagram for after-answer study. Warm hand-painted gouache and watercolour on ivory paper; a gentle storybook warmth with precise dark navy type. Matte teal, ochre, coral and blue accents. Simple neutral tokens, paper tiles, arrows and visibly abstract compartments only. Make the visual relationships legible at small size. No body parts, organs, cells, tissues, lumens, tubules, membranes, vessels, anatomical cutaways, clinical photos, diagnostic scans, babies, realistic flesh or decorative scenery. Do not turn abstract boxes or routes into organs or anatomy. Do not invent extra arrows or medical claims. Edge meanings below are metadata, not visible text: draw the arrows but do not print their meaning strings. Footer exactly: Conceptual schematic • Not anatomy. Title exactly: Soiling can occur despite retained stool. Three wide cards linked left-to-right with two arrows. First has a stack of ochre cubes marked Retained. Second shows the same stack on an OPEN rectangular board with a thin blue PAGE arrow traveling around the cubes to illustrate bypass; no tube encloses the board. Label board Abstract bypass model. Third shows three blue drop tokens and a small label Often unnoticed. The board has square corners and is plainly a tabletop logic model, never a colon or rectum. Bottom note: Leakage does not exclude constipation. No children, underwear, anus, intestine, pelvis or realistic stool. Exact node labels: [{\"id\": \"1\", \"label\": \"Hard stool retained\"}, {\"id\": \"2\", \"label\": \"Softer stool leaks around it\"}, {\"id\": \"3\", \"label\": \"Overflow soiling\"}]. Exact directed connections: [{\"from\": \"1\", \"to\": \"2\", \"meaning\": \"overflow mechanism\"}, {\"from\": \"2\", \"to\": \"3\", \"meaning\": \"clinical consequence\"}]. Required checks: Three nodes and two main arrows; Bypass travels around retained cubes, not through them; Bypass board open, rectangular and nonanatomical; No body, colon or realistic faeces.",
+  "clinicalSources": [
+    {
+      "title": "AAP HealthyChildren — Encopresis and faecal soiling",
+      "url": "https://www.healthychildren.org/English/health-issues/conditions/emotional-problems/Pages/Soiling-Encopresis.aspx"
+    },
+    {
+      "title": "NHS — Constipation in children",
+      "url": "https://www.nhs.uk/baby/health/constipation-in-children/"
+    }
+  ],
+  "caption": "An abstract bypass model explains how liquid stool can leak around retained hard stool and cause overflow soiling.",
+  "question": "How can constipation cause faecal soiling?",
+  "answer": "Softer stool can leak around an impacted mass, often without the child noticing.",
+  "structureSpecification": "scaffolds/concept-impaction-overflow-mechanism.json",
+  "generationInputs": {
+    "referenceImages": [],
+    "style": "written-only"
+  },
+  "qa": {
+    "status": "pending-independent-qa",
+    "method": "agent-visual-and-source-review",
+    "notes": "Pixel check: three cards and two main arrows; open rectangular tabletop board and blue route around retained cubes explain bypass. No enclosing bowel tube, pelvic anatomy or faecal photorealism. Often unnoticed and constipation qualification visible. Independent and clinical review pending.",
+    "clinicalReviewStatus": "pending"
+  }
+}

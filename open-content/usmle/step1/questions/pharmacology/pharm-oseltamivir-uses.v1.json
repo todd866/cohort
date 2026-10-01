@@ -1,0 +1,71 @@
+{
+  "id": "bank:usmle-step1:pharm-oseltamivir-uses:v1",
+  "rotation": "usmle-step1-open",
+  "topics": [
+    "oseltamivir",
+    "influenza"
+  ],
+  "moduleNodes": [
+    "usmle/step1",
+    "usmle/step1/pharmacology"
+  ],
+  "questionType": "mechanism",
+  "difficulty": "easy",
+  "stem": "Oseltamivir is used to treat some types of which respiratory viral illness?",
+  "options": [
+    {
+      "label": "A",
+      "text": "Respiratory syncytial virus bronchiolitis",
+      "isCorrect": false,
+      "misconception": "Assumes every common respiratory virus shares influenza's neuraminidase target.",
+      "explanation": "RSV bronchiolitis is managed supportively, with nirsevimab or palivizumab for prevention; oseltamivir inhibits influenza neuraminidase, which RSV lacks."
+    },
+    {
+      "label": "B",
+      "text": "SARS-CoV-2 infection",
+      "isCorrect": false,
+      "misconception": "Assumes a flu antiviral covers other enveloped respiratory RNA viruses.",
+      "explanation": "COVID-19 is caused by a coronavirus that has no neuraminidase target; drugs such as nirmatrelvir-ritonavir or remdesivir are used instead."
+    },
+    {
+      "label": "C",
+      "text": "Influenza virus infection",
+      "isCorrect": true,
+      "misconception": "None — influenza is the listed oseltamivir indication.",
+      "explanation": "Oseltamivir treats some types of influenza in adults, children and infants older than 2 weeks who have had flu symptoms for no longer than 2 days."
+    },
+    {
+      "label": "D",
+      "text": "Adenovirus pharyngoconjunctival fever",
+      "isCorrect": false,
+      "misconception": "Assumes a flu antiviral covers adenovirus, a DNA virus with no neuraminidase.",
+      "explanation": "Adenovirus is a nonenveloped DNA virus that causes pharyngoconjunctival fever; care is supportive, and a neuraminidase inhibitor has nothing to act on."
+    },
+    {
+      "label": "E",
+      "text": "Rhinovirus common cold",
+      "isCorrect": false,
+      "misconception": "Assumes antivirals are used for the self-limited common cold.",
+      "explanation": "Rhinovirus colds are self-limited and treated symptomatically; rhinovirus has no neuraminidase for oseltamivir to inhibit."
+    }
+  ],
+  "context": "Learning objective: Oseltamivir treats some types of influenza in patients who have had flu symptoms for no longer than 2 days.",
+  "cite": "medlineplus-oseltamivir#oseltamivir-uses",
+  "publicUsmle": {
+    "schemaVersion": 1,
+    "origin": "generated",
+    "itemText": {
+      "licence": "CC-BY-4.0",
+      "attribution": "MD3 contributors"
+    },
+    "evidence": {
+      "kind": "passage",
+      "sourceId": "medlineplus-oseltamivir",
+      "passageId": "oseltamivir-uses",
+      "licence": {
+        "cls": "foss",
+        "id": "us-gov"
+      }
+    }
+  }
+}

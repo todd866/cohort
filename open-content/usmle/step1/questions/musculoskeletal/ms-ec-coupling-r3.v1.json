@@ -1,0 +1,74 @@
+{
+  "id": "bank:usmle-step1:ms-ec-coupling-r3:v1",
+  "rotation": "usmle-step1-open",
+  "ladderId": "excitation-contraction-coupling",
+  "topics": [
+    "excitation-contraction coupling",
+    "sarcoplasmic reticulum",
+    "calcium",
+    "ladder:excitation-contraction-coupling"
+  ],
+  "moduleNodes": [
+    "usmle/step1",
+    "usmle/step1/musculoskeletal"
+  ],
+  "questionType": "mechanism",
+  "difficulty": "hard",
+  "stem": "A 24-year-old man receives a drug that prevents calcium release from the sarcoplasmic reticulum of skeletal muscle. An action potential still propagates along the sarcolemma and T-tubules, but the fiber does not develop tension.\n\nWhich of the following steps fails as the direct consequence of blocked SR calcium release?",
+  "options": [
+    {
+      "label": "A",
+      "text": "Opening of voltage-gated sodium channels at the motor end plate",
+      "isCorrect": false,
+      "misconception": "The end-plate trigger is being blamed when the action potential already propagates.",
+      "explanation": "The stem states the action potential still propagates; the block is downstream at SR calcium release needed to expose actin sites."
+    },
+    {
+      "label": "B",
+      "text": "Exposure of myosin-binding sites on actin via troponin–tropomyosin shift",
+      "isCorrect": true,
+      "misconception": "None; without SR Ca2+ the troponin–tropomyosin complex never uncovers actin sites.",
+      "explanation": "SR calcium enters the sarcoplasm and activates the troponin–tropomyosin complex so tropomyosin shifts off myosin-binding sites on actin; without that Ca2+, cross-bridges cannot form and tension fails."
+    },
+    {
+      "label": "C",
+      "text": "Hydrolysis of ATP by the myosin head during the power stroke",
+      "isCorrect": false,
+      "misconception": "The ATPase step is being treated as the first failed event.",
+      "explanation": "Myosin ATPase acts after binding sites are exposed; the primary failure with blocked SR release is that tropomyosin never uncovers those sites."
+    },
+    {
+      "label": "D",
+      "text": "Shortening of the A band as thick filaments dissolve",
+      "isCorrect": false,
+      "misconception": "A false description of sliding-filament geometry is being offered.",
+      "explanation": "The A band width stays constant during contraction; thick filaments do not dissolve, and the drug’s effect is upstream at Ca2+-dependent site exposure."
+    },
+    {
+      "label": "E",
+      "text": "Fusion of synaptic vesicles at the neuromuscular junction",
+      "isCorrect": false,
+      "misconception": "Presynaptic release is being blamed when the fiber still fires an action potential.",
+      "explanation": "Vesicle fusion releases ACh to start the end-plate potential; here the action potential reaches the T-tubules, so the failure is SR Ca2+ release and subsequent troponin activation."
+    }
+  ],
+  "context": "Learning objective: place SR Ca2+ release between the action potential and cross-bridge cycling. AP → SR Ca2+ release → troponin–tropomyosin uncovering of actin sites → sliding filaments.",
+  "cite": "openstax-anatomy-physiology#ms-calcium-troponin-tropomyosin",
+  "publicUsmle": {
+    "schemaVersion": 1,
+    "origin": "generated",
+    "itemText": {
+      "licence": "CC-BY-4.0",
+      "attribution": "MD3 contributors"
+    },
+    "evidence": {
+      "kind": "passage",
+      "sourceId": "openstax-anatomy-physiology",
+      "passageId": "ms-calcium-troponin-tropomyosin",
+      "licence": {
+        "cls": "foss",
+        "id": "cc-by-4.0"
+      }
+    }
+  }
+}

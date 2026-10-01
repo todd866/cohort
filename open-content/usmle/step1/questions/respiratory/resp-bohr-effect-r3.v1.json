@@ -1,0 +1,73 @@
+{
+  "id": "bank:usmle-step1:resp-bohr-effect-r3:v1",
+  "rotation": "usmle-step1-open",
+  "ladderId": "bohr-effect",
+  "difficulty": "hard",
+  "topics": [
+    "Bohr effect",
+    "tissue hypoxia",
+    "ladder:bohr-effect"
+  ],
+  "moduleNodes": [
+    "usmle/step1",
+    "usmle/step1/respiratory"
+  ],
+  "questionType": "mechanism",
+  "stem": "A 24-year-old recreational runner finishes a 400-meter sprint and reports burning pain in both thighs with heavy breathing. Capillary blood sampled from the working muscle is more acidic than an arterial sample drawn at rest a few minutes earlier.\n\nWhich mechanism most directly improves oxygen delivery in this setting?",
+  "options": [
+    {
+      "label": "A",
+      "text": "Acidic pH promotes oxygen dissociation from hemoglobin",
+      "isCorrect": true,
+      "misconception": "None; lower pH promotes O2 release to acidifying tissues.",
+      "explanation": "A lower, more acidic pH promotes oxygen dissociation from hemoglobin, aiding delivery to active muscle."
+    },
+    {
+      "label": "B",
+      "text": "Basic pH inhibits oxygen dissociation from hemoglobin",
+      "isCorrect": false,
+      "misconception": "The alkalotic Bohr limb is being applied to acidifying muscle.",
+      "explanation": "A higher, more basic pH inhibits dissociation; working muscle is acidic, not basic."
+    },
+    {
+      "label": "C",
+      "text": "Acidic pH permanently denatures hemoglobin tetramers",
+      "isCorrect": false,
+      "misconception": "Irreversible protein damage is being inferred from physiologic acidosis.",
+      "explanation": "The Bohr effect is a reversible affinity change, not permanent denaturation."
+    },
+    {
+      "label": "D",
+      "text": "Acidic pH stops erythrocyte glycolysis entirely",
+      "isCorrect": false,
+      "misconception": "Metabolic shutdown is being confused with unloading.",
+      "explanation": "Oxygen unloading via lower pH does not require stopping red-cell glycolysis."
+    },
+    {
+      "label": "E",
+      "text": "Acidic pH converts all plasma CO2 into dissolved gas",
+      "isCorrect": false,
+      "misconception": "CO2 chemistry is being substituted for hemoglobin unloading.",
+      "explanation": "The grounded delivery mechanism is acid-promoted oxygen dissociation from hemoglobin."
+    }
+  ],
+  "context": "Learning objective: infer acid-promoted O2 unloading as the mechanism aiding delivery in working muscle.",
+  "cite": "openstax-anatomy-physiology#resp-bohr-effect",
+  "publicUsmle": {
+    "schemaVersion": 1,
+    "origin": "generated",
+    "itemText": {
+      "licence": "CC-BY-4.0",
+      "attribution": "MD3 contributors"
+    },
+    "evidence": {
+      "kind": "passage",
+      "sourceId": "openstax-anatomy-physiology",
+      "passageId": "resp-bohr-effect",
+      "licence": {
+        "cls": "foss",
+        "id": "cc-by-4.0"
+      }
+    }
+  }
+}

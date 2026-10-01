@@ -1,0 +1,71 @@
+{
+  "id": "bank:usmle-step1:pharm-allopurinol-uses:v1",
+  "rotation": "usmle-step1-open",
+  "topics": [
+    "allopurinol",
+    "gout"
+  ],
+  "moduleNodes": [
+    "usmle/step1",
+    "usmle/step1/pharmacology"
+  ],
+  "questionType": "mechanism",
+  "difficulty": "easy",
+  "stem": "Allopurinol is used to treat which of the following joint diseases?",
+  "options": [
+    {
+      "label": "A",
+      "text": "Rheumatoid arthritis",
+      "isCorrect": false,
+      "misconception": "Treats allopurinol as a general antiarthritic drug rather than a urate-lowering agent.",
+      "explanation": "Rheumatoid arthritis is an autoimmune synovitis treated with DMARDs such as methotrexate; allopurinol has no role."
+    },
+    {
+      "label": "B",
+      "text": "Knee osteoarthritis",
+      "isCorrect": false,
+      "misconception": "Assumes any chronic joint pain in an older adult responds to allopurinol.",
+      "explanation": "Osteoarthritis is degenerative cartilage loss managed with analgesics, exercise and joint replacement, not urate lowering."
+    },
+    {
+      "label": "C",
+      "text": "Septic arthritis",
+      "isCorrect": false,
+      "misconception": "Mistakes a hot, swollen infected joint for gout, which allopurinol manages by long-term urate lowering.",
+      "explanation": "Septic arthritis is a joint infection requiring drainage and antibiotics; allopurinol does not treat infection."
+    },
+    {
+      "label": "D",
+      "text": "Gouty arthritis",
+      "isCorrect": true,
+      "misconception": "None — allopurinol is used to treat gout.",
+      "explanation": "MedlinePlus lists allopurinol for gout, where uric acid builds up in joints. It is long-term urate-lowering therapy; acute flares are treated with NSAIDs, colchicine or glucocorticoids."
+    },
+    {
+      "label": "E",
+      "text": "Calcium pyrophosphate deposition disease",
+      "isCorrect": false,
+      "misconception": "Confuses the two crystal arthropathies; only gout involves uric acid crystals.",
+      "explanation": "CPPD disease (pseudogout) involves calcium pyrophosphate crystals, not urate, so lowering uric acid with allopurinol does not help."
+    }
+  ],
+  "context": "Learning objective: Allopurinol is used to treat gout as long-term urate-lowering therapy, not to relieve an acute flare.",
+  "cite": "medlineplus-allopurinol#allopurinol-uses",
+  "publicUsmle": {
+    "schemaVersion": 1,
+    "origin": "generated",
+    "itemText": {
+      "licence": "CC-BY-4.0",
+      "attribution": "MD3 contributors"
+    },
+    "evidence": {
+      "kind": "passage",
+      "sourceId": "medlineplus-allopurinol",
+      "passageId": "allopurinol-uses",
+      "licence": {
+        "cls": "foss",
+        "id": "us-gov"
+      }
+    }
+  }
+}

@@ -1,0 +1,93 @@
+{
+  "schemaVersion": 1,
+  "figureId": "eczema-itch-scratch-loop",
+  "kind": "conceptual",
+  "sourceFacts": [
+    {
+      "id": "fact-1",
+      "fact": "Inflammation triggers itch, which provokes scratching.",
+      "sources": [
+        {
+          "title": "NIAMS: Atopic dermatitis",
+          "url": "https://www.niams.nih.gov/health-topics/atopic-dermatitis"
+        }
+      ]
+    },
+    {
+      "id": "fact-2",
+      "fact": "Scratching further damages skin; barrier damage and moisture loss contribute to inflammation.",
+      "sources": [
+        {
+          "title": "NIAMS: Atopic dermatitis",
+          "url": "https://www.niams.nih.gov/health-topics/atopic-dermatitis"
+        }
+      ]
+    }
+  ],
+  "nodes": [
+    {
+      "id": "inflammation",
+      "shape": "flame",
+      "label": "Inflammation"
+    },
+    {
+      "id": "itch",
+      "shape": "tingling spark",
+      "label": "Itch"
+    },
+    {
+      "id": "scratch",
+      "shape": "wooden rake",
+      "label": "Scratching"
+    },
+    {
+      "id": "barrier",
+      "shape": "cracked brick shield",
+      "label": "Barrier damage"
+    }
+  ],
+  "edges": [
+    {
+      "from": "inflammation",
+      "to": "itch",
+      "meaning": "promotes itch"
+    },
+    {
+      "from": "itch",
+      "to": "scratch",
+      "meaning": "provokes scratching"
+    },
+    {
+      "from": "scratch",
+      "to": "barrier",
+      "meaning": "causes damage"
+    },
+    {
+      "from": "barrier",
+      "to": "inflammation",
+      "meaning": "moisture loss and damage worsen inflammation"
+    }
+  ],
+  "labels": [
+    "The itch–scratch cycle",
+    "Inflammation",
+    "Itch",
+    "Scratching",
+    "Barrier damage",
+    "Moisture escapes"
+  ],
+  "forbiddenAnatomy": [
+    "Organs, skin anatomy, tissue layers, cutaways, histology, clinical photos"
+  ],
+  "validation": {
+    "status": "verified",
+    "method": "source-and-conceptual-structure-review",
+    "checks": [
+      "Four directed edges form exactly inflammation→itch→scratching→barrier damage→inflammation.",
+      "Brick shield is architectural analogy, not skin layers.",
+      "Rake is a symbol; no clinical lesion or body part."
+    ],
+    "pixelReviewStatus": "verified",
+    "pixelReviewNotes": "All four clockwise arrowheads checked: inflammation to itch, itch to scratching, scratching to barrier damage, barrier damage back to inflammation. Droplets leave the cracked brick shield. The rake and masonry are clearly objects rather than skin or tissue anatomy; no anatomical cutaway."
+  }
+}

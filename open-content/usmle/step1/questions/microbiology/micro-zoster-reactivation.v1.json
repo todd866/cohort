@@ -1,0 +1,72 @@
+{
+  "id": "bank:usmle-step1:micro-zoster-reactivation:v1",
+  "rotation": "usmle-step1-open",
+  "topics": [
+    "zoster",
+    "VZV",
+    "shingles"
+  ],
+  "moduleNodes": [
+    "usmle/step1",
+    "usmle/step1/microbiology"
+  ],
+  "questionType": "mechanism",
+  "difficulty": "easy",
+  "stem": "Shingles is caused by which viral process?",
+  "options": [
+    {
+      "label": "A",
+      "text": "Reactivation of varicella-zoster virus",
+      "isCorrect": true,
+      "misconception": "None — shingles is caused by reactivation of varicella-zoster virus.",
+      "explanation": "CDC states herpes zoster (shingles) is caused by reactivation of varicella-zoster virus that has stayed latent since the earlier infection."
+    },
+    {
+      "label": "B",
+      "text": "Reactivation of herpes simplex virus",
+      "isCorrect": false,
+      "misconception": "Knows shingles is a herpesvirus reactivation but picks the wrong herpesvirus.",
+      "explanation": "Herpes simplex reactivation causes recurrent oral or genital herpes; it can mimic a dermatomal rash but is not shingles."
+    },
+    {
+      "label": "C",
+      "text": "Primary infection with varicella-zoster virus",
+      "isCorrect": false,
+      "misconception": "Confuses primary VZV infection (chickenpox) with its later reactivation (shingles).",
+      "explanation": "Primary varicella-zoster infection causes chickenpox (varicella); shingles arises later, when the dormant virus reactivates."
+    },
+    {
+      "label": "D",
+      "text": "Reactivation of Epstein-Barr virus",
+      "isCorrect": false,
+      "misconception": "Assumes any latent herpesvirus that reactivates can produce shingles.",
+      "explanation": "Epstein-Barr virus causes infectious mononucleosis and is linked to several lymphomas; its reactivation does not cause shingles."
+    },
+    {
+      "label": "E",
+      "text": "Persistent infection with measles virus",
+      "isCorrect": false,
+      "misconception": "Confuses measles, a childhood rash virus with late sequelae, with varicella-zoster virus.",
+      "explanation": "Persistent measles virus infection of the brain causes subacute sclerosing panencephalitis, not a dermatomal vesicular rash."
+    }
+  ],
+  "context": "Learning objective: Herpes zoster (shingles) is caused by reactivation of varicella-zoster virus, not by a new primary infection.",
+  "cite": "cdc-pink-book-zoster#zoster-reactivation",
+  "publicUsmle": {
+    "schemaVersion": 1,
+    "origin": "generated",
+    "itemText": {
+      "licence": "CC-BY-4.0",
+      "attribution": "MD3 contributors"
+    },
+    "evidence": {
+      "kind": "passage",
+      "sourceId": "cdc-pink-book-zoster",
+      "passageId": "zoster-reactivation",
+      "licence": {
+        "cls": "foss",
+        "id": "us-gov"
+      }
+    }
+  }
+}

@@ -1,0 +1,71 @@
+{
+  "id": "bank:usmle-step1:resp-asthma-exhalation-recognition:v1",
+  "rotation": "usmle-step1-open",
+  "topics": [
+    "asthma",
+    "clinical recognition"
+  ],
+  "moduleNodes": [
+    "usmle/step1",
+    "usmle/step1/respiratory"
+  ],
+  "questionType": "diagnosis",
+  "difficulty": "easy",
+  "stem": "Which of the following diagnoses is defined by airways that become inflamed and narrowed at times, making exhalation harder?",
+  "options": [
+    {
+      "label": "A",
+      "text": "Bronchiectasis",
+      "isCorrect": false,
+      "misconception": "An airway diagnosis is selected without matching the complete source-defined pattern.",
+      "explanation": "The cited passage assigns the combination of intermittent airway inflammation, narrowing, and harder expiratory airflow to asthma, not bronchiectasis."
+    },
+    {
+      "label": "B",
+      "text": "Bronchial asthma",
+      "isCorrect": true,
+      "misconception": "None; the full airway pattern is mapped to its source-defined diagnosis.",
+      "explanation": "NHLBI describes asthma as airways becoming inflamed and narrowed at times, which makes it harder for air to flow out during exhalation."
+    },
+    {
+      "label": "C",
+      "text": "Chronic bronchitis",
+      "isCorrect": false,
+      "misconception": "The general airway wording is noticed, but the passage's named diagnosis is missed.",
+      "explanation": "The evidence directly identifies asthma when episodic airway inflammation and narrowing make exhalation harder; it does not identify chronic bronchitis."
+    },
+    {
+      "label": "D",
+      "text": "Pulmonary emphysema",
+      "isCorrect": false,
+      "misconception": "Expiratory difficulty is isolated from the paired inflammation and narrowing cues.",
+      "explanation": "The passage links harder outward airflow specifically to airways that become inflamed and narrowed at times, and names that condition asthma."
+    },
+    {
+      "label": "E",
+      "text": "Interstitial fibrosis",
+      "isCorrect": false,
+      "misconception": "A broad lung diagnosis is chosen instead of using the passage's airway-focused definition.",
+      "explanation": "The cited definition is airway-specific: intermittent inflammation and narrowing with harder exhalation identify asthma rather than interstitial fibrosis."
+    }
+  ],
+  "context": "Learning objective: recognize asthma from its source-defined airway pattern. Airways that become inflamed and narrowed at times make it harder for air to flow out during exhalation; that paired structural and expiratory clue is the diagnostic payoff.",
+  "cite": "nhlbi-asthma#asthma-airways",
+  "publicUsmle": {
+    "schemaVersion": 1,
+    "origin": "generated",
+    "itemText": {
+      "licence": "CC-BY-4.0",
+      "attribution": "MD3 contributors"
+    },
+    "evidence": {
+      "kind": "passage",
+      "sourceId": "nhlbi-asthma",
+      "passageId": "asthma-airways",
+      "licence": {
+        "cls": "foss",
+        "id": "us-gov"
+      }
+    }
+  }
+}

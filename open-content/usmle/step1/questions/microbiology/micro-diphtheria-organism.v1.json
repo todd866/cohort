@@ -1,0 +1,70 @@
+{
+  "id": "bank:usmle-step1:micro-diphtheria-organism:v1",
+  "rotation": "usmle-step1-open",
+  "topics": [
+    "diphtheria"
+  ],
+  "moduleNodes": [
+    "usmle/step1",
+    "usmle/step1/microbiology"
+  ],
+  "questionType": "mechanism",
+  "difficulty": "easy",
+  "stem": "Diphtheria is caused by which of the following?",
+  "options": [
+    {
+      "label": "A",
+      "text": "Nontoxigenic strains of Corynebacterium diphtheriae",
+      "isCorrect": false,
+      "misconception": "Overlooks that only toxin-producing strains cause diphtheria.",
+      "explanation": "Nontoxigenic C. diphtheriae strains can cause sore throat or invasive infection, but diphtheria itself requires a toxin-producing strain."
+    },
+    {
+      "label": "B",
+      "text": "Toxin-producing strains of Corynebacterium diphtheriae",
+      "isCorrect": true,
+      "misconception": "None — diphtheria is caused by toxin-producing strains of C. diphtheriae.",
+      "explanation": "CDC attributes diphtheria to toxin-producing strains of Corynebacterium diphtheriae, so toxin production, not the species alone, defines the cause."
+    },
+    {
+      "label": "C",
+      "text": "Beta-hemolytic strains of Streptococcus pyogenes",
+      "isCorrect": false,
+      "misconception": "Confuses diphtheria with streptococcal pharyngitis or scarlet fever.",
+      "explanation": "Beta-hemolytic Streptococcus pyogenes causes pharyngitis and scarlet fever, not diphtheria, though both can present with sore throat."
+    },
+    {
+      "label": "D",
+      "text": "Encapsulated strains of Haemophilus influenzae",
+      "isCorrect": false,
+      "misconception": "Confuses diphtheria with Hib epiglottitis, another cause of airway disease.",
+      "explanation": "Encapsulated Haemophilus influenzae, especially type b, causes meningitis and epiglottitis; it does not produce diphtheria toxin."
+    },
+    {
+      "label": "E",
+      "text": "Encapsulated strains of Streptococcus pneumoniae",
+      "isCorrect": false,
+      "misconception": "Confuses the diphtheria organism with another encapsulated respiratory pathogen.",
+      "explanation": "Encapsulated Streptococcus pneumoniae causes pneumonia, otitis media, and meningitis, not diphtheria."
+    }
+  ],
+  "context": "Learning objective: Diphtheria is caused by toxin-producing strains of Corynebacterium diphtheriae.",
+  "cite": "cdc-pink-book-diphtheria#diphtheria-organism",
+  "publicUsmle": {
+    "schemaVersion": 1,
+    "origin": "generated",
+    "itemText": {
+      "licence": "CC-BY-4.0",
+      "attribution": "MD3 contributors"
+    },
+    "evidence": {
+      "kind": "passage",
+      "sourceId": "cdc-pink-book-diphtheria",
+      "passageId": "diphtheria-organism",
+      "licence": {
+        "cls": "foss",
+        "id": "us-gov"
+      }
+    }
+  }
+}

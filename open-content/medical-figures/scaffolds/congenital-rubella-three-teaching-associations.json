@@ -1,0 +1,67 @@
+{
+  "schemaVersion": 1,
+  "figureId": "congenital-rubella-three-teaching-associations",
+  "kind": "conceptual",
+  "created": "2026-09-10",
+  "timing": "authored before generation",
+  "sourceFacts": [
+    {
+      "fact": "Congenital rubella syndrome can cause cataracts, hearing loss and congenital heart defects.",
+      "sourceUrls": [
+        "https://www.cdc.gov/rubella/pregnancy/index.html"
+      ]
+    },
+    {
+      "fact": "These are classic associations, not an exhaustive list or a requirement that all occur together.",
+      "sourceUrls": [
+        "https://www.cdc.gov/rubella/pregnancy/index.html"
+      ]
+    }
+  ],
+  "clinicalSources": [
+    {
+      "title": "CDC: Pregnancy and Rubella",
+      "url": "https://www.cdc.gov/rubella/pregnancy/index.html"
+    }
+  ],
+  "nodes": [
+    "congenital rubella",
+    "cataracts",
+    "hearing loss",
+    "heart defects"
+  ],
+  "edges": [
+    [
+      "congenital rubella",
+      "cataracts",
+      "can cause"
+    ],
+    [
+      "congenital rubella",
+      "hearing loss",
+      "can cause"
+    ],
+    [
+      "congenital rubella",
+      "heart defects",
+      "can cause"
+    ]
+  ],
+  "expectedLabels": [
+    "Congenital rubella",
+    "Cataracts",
+    "Hearing loss",
+    "Heart defects",
+    "Classic associations \u2022 not all are present"
+  ],
+  "layoutSpecification": "Title 'Congenital rubella'. Build a large balanced triangular association map: a small central ochre circle with a generic dotted virus SYMBOL, not microbiology detail, branches with three equal arrows to three widely spaced large mnemonic icons. TOP vertex: a cloudy rectangular window pane labelled 'Cataracts'. LOWER LEFT vertex: a bell with fading sound-wave marks labelled 'Hearing loss'. LOWER RIGHT vertex: a flat Valentine-heart symbol with a small warning dot beside it, label 'Heart defects'. No anatomical eye, lens cross-section, ear, cardiac chambers or vessel connections. Each icon is a metaphor. At bottom 'Classic associations \u2022 not all are present'. Do not suggest the triangle diagnoses rubella by itself.",
+  "forbiddenAnatomy": [
+    "No internal organ, eye, ear, brain, tissue or bone anatomy",
+    "No diagnostic image, patient-specific lesion appearance or literal anatomical pathway"
+  ],
+  "validation": {
+    "sourceFacts": "Checked against listed primary clinical sources on 2026-09-10",
+    "status": "self-reviewed; independent review pending",
+    "pixelChecks": "Pixel/structure check: one central rubella symbol branches outward to exactly three metaphor icons with correct labels: cloudy window/cataracts, fading bell/hearing loss, nonanatomical heart/heart defects. Qualification says not all are present. No eye, ear or cardiac internal anatomy; all arrowheads point from cause toward associations."
+  }
+}

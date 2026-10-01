@@ -1,0 +1,109 @@
+{
+  "schemaVersion": 1,
+  "figureId": "large-vsd-pvr-shunt",
+  "kind": "conceptual",
+  "created": "2026-09-27",
+  "timing": "authored before generation",
+  "sourceFacts": [
+    {
+      "fact": "VSD shunt magnitude depends on defect size and downstream resistance including PVR.",
+      "sources": [
+        {
+          "title": "MSD Manual Professional: Ventricular Septal Defect",
+          "url": "https://www.msdmanuals.com/professional/pediatrics/congenital-cardiovascular-anomalies/ventricular-septal-defect-vsd"
+        }
+      ]
+    },
+    {
+      "fact": "Larger defects can cause pulmonary overcirculation and heart-failure symptoms when PVR falls.",
+      "sources": [
+        {
+          "title": "MSD Manual Professional: Ventricular Septal Defect",
+          "url": "https://www.msdmanuals.com/professional/pediatrics/congenital-cardiovascular-anomalies/ventricular-septal-defect-vsd"
+        }
+      ]
+    }
+  ],
+  "targetStableId": "mdx:6404f65a176d66c7537dbb0461bbd1aa",
+  "targetQuestion": "Why can a large VSD cause heart failure after the first weeks of life?",
+  "targetAnswer": "Falling PVR allows a large left-to-right shunt and pulmonary overcirculation.",
+  "nodes": [
+    {
+      "id": "lv",
+      "label": "Left ventricle"
+    },
+    {
+      "id": "vsd",
+      "label": "Large VSD"
+    },
+    {
+      "id": "rv",
+      "label": "Right ventricle"
+    },
+    {
+      "id": "pulmonary",
+      "label": "Pulmonary circulation / overcirculation"
+    },
+    {
+      "id": "return",
+      "label": "Pulmonary return"
+    },
+    {
+      "id": "hf",
+      "label": "Volume load may cause heart failure"
+    }
+  ],
+  "edges": [
+    {
+      "from": "lv",
+      "to": "vsd",
+      "meaning": "left-to-right shunt through defect"
+    },
+    {
+      "from": "vsd",
+      "to": "rv",
+      "meaning": "shunted blood enters right ventricle"
+    },
+    {
+      "from": "rv",
+      "to": "pulmonary",
+      "meaning": "flow reaches pulmonary circulation"
+    },
+    {
+      "from": "pulmonary",
+      "to": "return",
+      "meaning": "pulmonary blood returns to left heart"
+    },
+    {
+      "from": "return",
+      "to": "lv",
+      "meaning": "volume returns to left ventricle"
+    },
+    {
+      "from": "pulmonary",
+      "to": "hf",
+      "meaning": "overcirculation can cause volume load"
+    }
+  ],
+  "forbiddenAnatomy": [
+    "No literal organ geometry, radiographs, patient anatomy, or unsupported quantitative proportions; this is an abstract causal diagram."
+  ],
+  "validation": {
+    "status": "verified",
+    "pixelReviewStatus": "verified",
+    "clinicalReviewStatus": "pending",
+    "checks": [
+      "source facts and causal direction checked against cited URLs",
+      "SVG has no external images or generated anatomy",
+      "PNG rasterized from the exact source SVG with sharp",
+      "phone-width readability and learner hide/reveal review still required"
+    ],
+    "method": "source-and-conceptual-structure-review",
+    "reviewers": [
+      "Codex primary agent",
+      "independent refuter agent"
+    ],
+    "notes": "Root source and pixel review plus independent adversarial pixel review; retained conceptual relationships, corrected misleading arrow/count/timing encodings. Clinical sign-off remains pending.",
+    "reviewedFigureSha256": "8bee0ddd968ab7d9349e294aa71176e9c723eb85d88fb5365170750bbb334066"
+  }
+}

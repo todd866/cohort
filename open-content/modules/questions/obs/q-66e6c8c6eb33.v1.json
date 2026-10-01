@@ -1,0 +1,66 @@
+{
+  "id": "bank:cohort:obs:q-66e6c8c6eb33:v1",
+  "rotation": "cohort-open",
+  "moduleNodes": [
+    "cohort/obs"
+  ],
+  "topics": [
+    "ectopic",
+    "pregnancy",
+    "gynecology"
+  ],
+  "questionType": "management",
+  "difficulty": "medium",
+  "stem": "A patient has a suspected ectopic pregnancy. She is hemodynamically stable, has no severe pain, and an adnexal mass is seen.\n\nWhich factor most strongly favors medical management with methotrexate rather than immediate surgery?",
+  "options": [
+    {
+      "label": "A",
+      "text": "Clinical signs of ectopic rupture",
+      "isCorrect": false,
+      "explanation": "Signs of rupture (acute abdomen, haemodynamic instability) are an absolute contraindication to methotrexate and mandate urgent surgical intervention."
+    },
+    {
+      "label": "B",
+      "text": "Reliable follow-up and clinical stability",
+      "isCorrect": true,
+      "explanation": "Methotrexate works over days, so it needs β-hCG on day 4 and day 7 and a prompt return for new pain. RANZCOG reserves it for women who are clinically stable and can reliably come back for review."
+    },
+    {
+      "label": "C",
+      "text": "Inability to return for monitoring",
+      "isCorrect": false,
+      "explanation": "Inability to follow up is a contraindication to MTX, not an indication — without serial β-hCG, treatment failure or rupture cannot be detected in time."
+    },
+    {
+      "label": "D",
+      "text": "Peritoneal signs (acute inflammation)",
+      "isCorrect": false,
+      "explanation": "Suggests intraperitoneal bleeding or rupture — surgical emergency. MTX requires the absence of acute peritoneal irritation."
+    },
+    {
+      "label": "E",
+      "text": "Hemodynamic instability with hypotension",
+      "isCorrect": false,
+      "explanation": "Haemodynamic instability mandates surgical management — MTX has slow onset and won't address active bleeding."
+    }
+  ],
+  "context": "Methotrexate management of stable, unruptured ectopic requires careful follow-up. After single-dose IM methotrexate (50 mg/m²), measure bhCG on day 4 and day 7. Day 4 bhCG often rises before falling — acceptable.\n\nA day 4 to day 7 fall of 15% or more indicates response — continue weekly bhCG to undetectable. A fall of less than 15%: give a second methotrexate dose. Continued symptoms or rising bhCG: consider surgery.",
+  "publicModule": {
+    "schemaVersion": 1,
+    "origin": "mirrored",
+    "discipline": "obs",
+    "mirroredFrom": "md3:66e6c8c6eb33d9d2",
+    "itemText": {
+      "licence": "CC-BY-4.0",
+      "attribution": "MD3 contributors"
+    },
+    "evidence": {
+      "kind": "reference",
+      "sourceId": "ranzcog-miscarriage-ectopic-pregnancy"
+    },
+    "review": {
+      "verdict": "passed",
+      "contentHash": "b69a9a0be886813388c328b2f6851a492636fc3d95c7466cc6051b6015db00d0"
+    }
+  }
+}

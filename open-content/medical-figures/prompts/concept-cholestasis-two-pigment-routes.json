@@ -1,0 +1,36 @@
+{
+  "id": "concept-cholestasis-two-pigment-routes",
+  "title": "Cholestasis changes stool and urine colour",
+  "prompt": "Create an original polished 1536x1024 landscape conceptual medical teaching diagram for after-answer study. Warm hand-painted gouache and watercolour on ivory paper; a gentle storybook warmth with precise dark navy type. Matte teal, ochre, coral and blue accents. Simple neutral tokens, paper tiles, arrows and visibly abstract compartments only. Make the visual relationships legible at small size. No body parts, organs, cells, tissues, lumens, tubules, membranes, vessels, anatomical cutaways, clinical photos, diagnostic scans, babies, realistic flesh or decorative scenery. Do not turn abstract boxes or routes into organs or anatomy. Do not invent extra arrows or medical claims. Footer exactly: Conceptual schematic • Not anatomy. Title exactly: Cholestasis changes stool and urine colour. A branching concept diagram. Node1 at top centre. LEFT branch node2 then node3 downward, ending with an ivory colour swatch labelled Pale stool; no stool sculpture. RIGHT branch node4 then node5 then node6 downward, ending with a dark amber droplet token labelled Dark urine. Draw arrows only between the named connected nodes. Keep the two branches separate and the bottom endpoints aligned. A small note under node4 reads: Water-soluble. No organs or tubes. Exact node labels: [{\"id\": \"1\", \"label\": \"Impaired bile flow\"}, {\"id\": \"2\", \"label\": \"Less pigment reaches stool\"}, {\"id\": \"3\", \"label\": \"Pale stool\"}, {\"id\": \"4\", \"label\": \"Conjugated bilirubin in blood\"}, {\"id\": \"5\", \"label\": \"Bilirubin enters urine\"}, {\"id\": \"6\", \"label\": \"Dark urine\"}]. Exact directed connections: [{\"from\": \"1\", \"to\": \"2\", \"meaning\": \"reduces intestinal pigment delivery\"}, {\"from\": \"2\", \"to\": \"3\", \"meaning\": \"explains colour\"}, {\"from\": \"1\", \"to\": \"4\", \"meaning\": \"causes accumulation\"}, {\"from\": \"4\", \"to\": \"5\", \"meaning\": \"water-soluble bilirubin can be excreted\"}, {\"from\": \"5\", \"to\": \"6\", \"meaning\": \"explains colour\"}]. Required checks: Left branch means less pigment in stool, right branch means bilirubin in urine; The blood label says conjugated; No kidney, liver, ducts or urinary tract; No gallstone or specific cause of cholestasis is depicted. CRITICAL: There must be SIX distinct node boxes, all six exact node labels visible. Do NOT print edge meaning strings as text. On the right, THREE separate boxes read Conjugated bilirubin in blood, then Bilirubin enters urine, then Dark urine. Make room for all three vertically. The centre box Bilirubin enters urine is mandatory, not replaceable by an edge label.",
+  "clinicalSources": [
+    {
+      "title": "NIDDK — Biliary atresia symptoms and causes",
+      "url": "https://www.niddk.nih.gov/health-information/liver-disease/biliary-atresia/symptoms-causes"
+    },
+    {
+      "title": "NIDDK — Biliary atresia",
+      "url": "https://www.govinfo.gov/content/pkg/GOVPUB-HE20_3300-PURL-gpo1378/pdf/GOVPUB-HE20_3300-PURL-gpo1378.pdf"
+    }
+  ],
+  "caption": "Two abstract pigment routes explain why cholestasis can cause pale stools and dark urine.",
+  "question": "Why can cholestasis make stool pale while urine becomes dark?",
+  "answer": "Less bile pigment reaches stool, while water-soluble conjugated bilirubin accumulates in blood and is excreted in urine.",
+  "structureSpecification": "scaffolds/concept-cholestasis-two-pigment-routes.json",
+  "generationInputs": {
+    "referenceImages": [],
+    "style": "written-only"
+  },
+  "attempts": [
+    {
+      "prompt": "Create an original polished 1536x1024 landscape conceptual medical teaching diagram for after-answer study. Warm hand-painted gouache and watercolour on ivory paper; a gentle storybook warmth with precise dark navy type. Matte teal, ochre, coral and blue accents. Simple neutral tokens, paper tiles, arrows and visibly abstract compartments only. Make the visual relationships legible at small size. No body parts, organs, cells, tissues, lumens, tubules, membranes, vessels, anatomical cutaways, clinical photos, diagnostic scans, babies, realistic flesh or decorative scenery. Do not turn abstract boxes or routes into organs or anatomy. Do not invent extra arrows or medical claims. Footer exactly: Conceptual schematic • Not anatomy. Title exactly: Cholestasis changes stool and urine colour. A branching concept diagram. Node1 at top centre. LEFT branch node2 then node3 downward, ending with an ivory colour swatch labelled Pale stool; no stool sculpture. RIGHT branch node4 then node5 then node6 downward, ending with a dark amber droplet token labelled Dark urine. Draw arrows only between the named connected nodes. Keep the two branches separate and the bottom endpoints aligned. A small note under node4 reads: Water-soluble. No organs or tubes. Exact node labels: [{\"id\": \"1\", \"label\": \"Impaired bile flow\"}, {\"id\": \"2\", \"label\": \"Less pigment reaches stool\"}, {\"id\": \"3\", \"label\": \"Pale stool\"}, {\"id\": \"4\", \"label\": \"Conjugated bilirubin in blood\"}, {\"id\": \"5\", \"label\": \"Bilirubin enters urine\"}, {\"id\": \"6\", \"label\": \"Dark urine\"}]. Exact directed connections: [{\"from\": \"1\", \"to\": \"2\", \"meaning\": \"reduces intestinal pigment delivery\"}, {\"from\": \"2\", \"to\": \"3\", \"meaning\": \"explains colour\"}, {\"from\": \"1\", \"to\": \"4\", \"meaning\": \"causes accumulation\"}, {\"from\": \"4\", \"to\": \"5\", \"meaning\": \"water-soluble bilirubin can be excreted\"}, {\"from\": \"5\", \"to\": \"6\", \"meaning\": \"explains colour\"}]. Required checks: Left branch means less pigment in stool, right branch means bilirubin in urine; The blood label says conjugated; No kidney, liver, ducts or urinary tract; No gallstone or specific cause of cholestasis is depicted.",
+      "status": "rejected",
+      "reason": "Required node Bilirubin enters urine was omitted; the renderer substituted an edge explanation."
+    }
+  ],
+  "qa": {
+    "status": "pending-independent-qa",
+    "method": "agent-visual-and-source-review",
+    "notes": "Pixel structure check after rejecting omitted-node draft: all six specified nodes now visible, two independent branches and five correctly directed edges. Urinary branch explicitly includes conjugated blood bilirubin, water solubility, entry into urine, then dark urine; stool branch has reduced pigment then pale stool. Neutral swatch/droplet only, no anatomy. Independent and clinical review pending.",
+    "clinicalReviewStatus": "pending"
+  }
+}

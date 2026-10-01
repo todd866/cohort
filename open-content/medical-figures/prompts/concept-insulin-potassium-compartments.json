@@ -1,0 +1,25 @@
+{
+  "id": "concept-insulin-potassium-compartments",
+  "title": "Insulin moves potassium into cells",
+  "prompt": "Create an original polished 1536x1024 landscape conceptual medical teaching diagram for after-answer study. Warm hand-painted gouache and watercolour on ivory paper; a gentle storybook warmth with precise dark navy type. Matte teal, ochre, coral and blue accents. Simple neutral tokens, paper tiles, arrows and visibly abstract compartments only. Make the visual relationships legible at small size. No body parts, organs, cells, tissues, lumens, tubules, membranes, vessels, anatomical cutaways, clinical photos, diagnostic scans, babies, realistic flesh or decorative scenery. Do not turn abstract boxes or routes into organs or anatomy. Do not invent extra arrows or medical claims. Edge meanings below are metadata, not visible text: draw the arrows but do not print their meaning strings. Footer exactly: Conceptual schematic • Not anatomy. Title exactly: Insulin moves potassium into cells. Two large plain rectangular inventory boxes side by side: left1 Outside cells, right2 Inside cells. Both contain small K+ paper coins. One broad arrow carrying two K+ coins points from LEFT box to RIGHT box, labelled Insulin drives K+ inward. A separate downward arrow from LEFT box points to card3 below the left box. Right box has no outward arrows. Above boxes say Abstract potassium inventories. Bottom band: In DKA, total-body potassium is already depleted. Smaller line: Redistribution does not replace lost potassium. No round cell, membrane, transporter, vessel, lab threshold or treatment dose. Rectangles are categories only, not cells or physical volumes. Exact node labels: [{\"id\": \"1\", \"label\": \"Outside cells\"}, {\"id\": \"2\", \"label\": \"Inside cells\"}, {\"id\": \"3\", \"label\": \"Serum potassium can fall\"}]. Exact directed connections: [{\"from\": \"1\", \"to\": \"2\", \"meaning\": \"potassium redistribution promoted by insulin\"}, {\"from\": \"1\", \"to\": \"3\", \"meaning\": \"fall in extracellular concentration\"}]. Required checks: K+ transfer arrow exclusively outside to inside cells; Serum-fall consequence connects to outside-cell inventory; Total-body deficit clearly distinguished from redistribution; No cell membrane, pump or anatomical compartment.",
+  "clinicalSources": [
+    {
+      "title": "RCH — Diabetic ketoacidosis",
+      "url": "https://www.rch.org.au/clinicalguide/guideline_index/Diabetic_ketoacidosis/"
+    }
+  ],
+  "caption": "An abstract transfer diagram explains the fall in serum potassium when insulin drives potassium into cells.",
+  "question": "Why can serum potassium fall rapidly after insulin begins in DKA?",
+  "answer": "Insulin shifts potassium into cells while total-body potassium is already depleted.",
+  "structureSpecification": "scaffolds/concept-insulin-potassium-compartments.json",
+  "generationInputs": {
+    "referenceImages": [],
+    "style": "written-only"
+  },
+  "qa": {
+    "status": "pending-independent-qa",
+    "method": "agent-visual-and-source-review",
+    "notes": "Pixel check: K+ transfer arrow points exclusively outside to inside cells, separate lower consequence from outside inventory to serum potassium fall. Inventories explicitly abstract, total-body deficit and redistribution distinction visible. No cell membrane, pump or dose. Token amounts do not encode real compartment proportions. Independent and clinical review pending.",
+    "clinicalReviewStatus": "pending"
+  }
+}

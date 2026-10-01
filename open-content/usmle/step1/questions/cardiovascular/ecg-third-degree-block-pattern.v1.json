@@ -1,0 +1,89 @@
+{
+  "id": "bank:usmle-step1:ecg-third-degree-block-pattern:v1",
+  "rotation": "usmle-step1-open",
+  "topics": [
+    "electrocardiogram",
+    "ECG interpretation",
+    "third-degree atrioventricular block",
+    "atrioventricular dissociation"
+  ],
+  "moduleNodes": [
+    "usmle/step1",
+    "usmle/step1/cardiovascular"
+  ],
+  "questionType": "interpretation",
+  "difficulty": "medium",
+  "stem": "Which atrioventricular relationship is visible in this rhythm strip?",
+  "options": [
+    {
+      "label": "A",
+      "text": "Fixed one-to-one AV conduction",
+      "isCorrect": false,
+      "misconception": "One-to-one atrioventricular conduction is being inferred despite changing P-to-QRS positions.",
+      "explanation": "The P waves do not maintain a fixed interval before the QRS complexes, so each atrial impulse is not conducting normally."
+    },
+    {
+      "label": "B",
+      "text": "Alternating two-to-one AV conduction",
+      "isCorrect": false,
+      "misconception": "A fixed partial block is being substituted for complete dissociation.",
+      "explanation": "There is no repeating conducted P-to-QRS relationship; the two rhythms move independently."
+    },
+    {
+      "label": "C",
+      "text": "Absent P waves with irregular QRS timing",
+      "isCorrect": false,
+      "misconception": "Atrial fibrillation is being substituted despite visible organized P waves.",
+      "explanation": "Regular P waves remain visible, and the ventricular complexes also follow a regular slower rhythm."
+    },
+    {
+      "label": "D",
+      "text": "Independent atrial and ventricular rhythms",
+      "isCorrect": true,
+      "misconception": "None; independent P waves and QRS complexes indicate complete atrioventricular block.",
+      "explanation": "The P waves march through at one rate while the QRS complexes occur at a slower separate rate, with no fixed correlation."
+    },
+    {
+      "label": "E",
+      "text": "Fixed retrograde QRS-to-P conduction",
+      "isCorrect": false,
+      "misconception": "A causal QRS-to-P relationship is being inferred from occasional proximity.",
+      "explanation": "The P-wave timing remains independent of the QRS complexes rather than following them at a fixed retrograde interval."
+    }
+  ],
+  "context": "Learning objective: recognize atrioventricular dissociation by comparing atrial and ventricular clocks. In this recorded strip, atrial activity continues near 98 per minute while the ventricular escape rhythm is near 40 per minute. The P-to-QRS relationship changes beat to beat, demonstrating independent activity and complete (third-degree) atrioventricular block.",
+  "cite": "open-rn-nursing-advanced-skills#ecg-third-degree-block-features",
+  "publicUsmle": {
+    "schemaVersion": 1,
+    "origin": "generated",
+    "itemText": {
+      "licence": "CC-BY-4.0",
+      "attribution": "MD3 contributors"
+    },
+    "evidence": {
+      "kind": "passage",
+      "sourceId": "open-rn-nursing-advanced-skills",
+      "passageId": "ecg-third-degree-block-features",
+      "licence": {
+        "cls": "foss",
+        "id": "cc-by-4.0"
+      }
+    },
+    "media": {
+      "kind": "asset",
+      "assetId": "ecg-case-9q4d7m",
+      "job": "trace",
+      "showWhen": "always",
+      "licence": {
+        "cls": "foss",
+        "id": "cc-by-4.0"
+      },
+      "attribution": "PTB-XL v1.0.3 via PhysioNet; rendered by MD3 contributors",
+      "contentHash": "sha256:b85585534147778702f2e4905395694dc6b82f8c264129abfae6a00c03ded5bf",
+      "clinicalConditionIds": ["third-degree-atrioventricular-block"],
+      "clinicalKeyFindings": ["Regular atrial activity near 98 per minute and a slower ventricular escape rhythm near 40 per minute with no fixed relationship"]
+    }
+  },
+  "imageUrl": "/figures/usmle/step1/ecg-case-9q4d7m.svg",
+  "imageCaption": "Recorded Lead II strip with faster small rounded deflections and slower sharp complexes whose relative timing changes."
+}

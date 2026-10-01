@@ -1,0 +1,73 @@
+{
+  "id": "bank:usmle-step1:he-sickle-hbs-shape-r1:v1",
+  "rotation": "usmle-step1-open",
+  "ladderId": "sickle-hbs-shape",
+  "difficulty": "easy",
+  "topics": [
+    "sickle cell disease",
+    "hemoglobin S",
+    "ladder:sickle-hbs-shape"
+  ],
+  "moduleNodes": [
+    "usmle/step1",
+    "usmle/step1/hematology"
+  ],
+  "questionType": "mechanism",
+  "stem": "Sickle cell disease is caused by production of which hemoglobin type?",
+  "options": [
+    {
+      "label": "A",
+      "text": "Hemoglobin A2",
+      "isCorrect": false,
+      "misconception": "A normal minor adult hemoglobin is being confused with the sickle variant.",
+      "explanation": "Hemoglobin A2 is a normal minor adult form; sickle disease involves hemoglobin S."
+    },
+    {
+      "label": "B",
+      "text": "Hemoglobin S",
+      "isCorrect": true,
+      "misconception": "None; sickle cell disease produces abnormal hemoglobin S.",
+      "explanation": "Sickle cell disease is caused by production of abnormal hemoglobin S."
+    },
+    {
+      "label": "C",
+      "text": "Hemoglobin F",
+      "isCorrect": false,
+      "misconception": "Fetal hemoglobin is being confused with the disease-causing adult variant.",
+      "explanation": "Hemoglobin F is fetal hemoglobin; the sickle variant is hemoglobin S."
+    },
+    {
+      "label": "D",
+      "text": "Hemoglobin C",
+      "isCorrect": false,
+      "misconception": "Another hemoglobinopathy is being substituted for HbS disease.",
+      "explanation": "Hemoglobin C is a different variant; classic sickle disease is driven by hemoglobin S."
+    },
+    {
+      "label": "E",
+      "text": "Methemoglobin",
+      "isCorrect": false,
+      "misconception": "An acquired dyshemoglobin is being confused with inherited HbS.",
+      "explanation": "Methemoglobin is oxidized heme iron; it is not the genetic sickle hemoglobin."
+    }
+  ],
+  "context": "Learning objective: identify hemoglobin S as the abnormal hemoglobin in sickle cell disease.",
+  "cite": "openstax-anatomy-physiology#he-sickle-hbs-shape",
+  "publicUsmle": {
+    "schemaVersion": 1,
+    "origin": "generated",
+    "itemText": {
+      "licence": "CC-BY-4.0",
+      "attribution": "MD3 contributors"
+    },
+    "evidence": {
+      "kind": "passage",
+      "sourceId": "openstax-anatomy-physiology",
+      "passageId": "he-sickle-hbs-shape",
+      "licence": {
+        "cls": "foss",
+        "id": "cc-by-4.0"
+      }
+    }
+  }
+}

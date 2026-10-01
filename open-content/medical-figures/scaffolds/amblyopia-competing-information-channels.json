@@ -1,0 +1,63 @@
+{
+  "schemaVersion": 1,
+  "figureId": "amblyopia-competing-information-channels",
+  "kind": "conceptual",
+  "created": "2026-09-10",
+  "timing": "authored before generation",
+  "sourceFacts": [
+    {
+      "fact": "Misaligned eyes can provide conflicting images, and the developing visual system can suppress one eye's input.",
+      "sourceUrls": [
+        "https://www.aapos.org/glossary/amblyopia"
+      ]
+    },
+    {
+      "fact": "Suppression is functional reduced use of information, not severing of an optic nerve.",
+      "sourceUrls": [
+        "https://www.aapos.org/glossary/amblyopia"
+      ]
+    }
+  ],
+  "clinicalSources": [
+    {
+      "title": "AAPOS: Amblyopia",
+      "url": "https://www.aapos.org/glossary/amblyopia"
+    }
+  ],
+  "nodes": [
+    "aligned input",
+    "conflicting input",
+    "shared visual learning",
+    "suppression"
+  ],
+  "edges": [
+    [
+      "aligned input",
+      "shared visual learning",
+      "clear strong information channel"
+    ],
+    [
+      "conflicting input",
+      "shared visual learning",
+      "faded weaker information channel"
+    ]
+  ],
+  "expectedLabels": [
+    "Strabismic amblyopia: unequal use of input",
+    "Aligned input",
+    "Conflicting input",
+    "Suppression",
+    "Visual learning",
+    "Information model \u2022 not nerve anatomy"
+  ],
+  "layoutSpecification": "Title 'Strabismic amblyopia: unequal use of input'. Two abstract signal lanes from LEFT to RIGHT with no eye, head, brain, hemisphere, cortex or nerves. LEFT upper postcard contains a crisp upright toy-star icon labelled 'Aligned input'. LEFT lower postcard contains the same star with a faint offset duplicate labelled 'Conflicting input'. UPPER lane is a broad solid teal ribbon carrying a crisp star toward a plain rectangular learning tile at RIGHT labelled 'Visual learning'. LOWER lane is an ochre ribbon that becomes pale and thin as it approaches the SAME tile, with its star fading, label 'Suppression'. Both lanes reach the tile boundary; neither is cut or physically broken. Bottom 'Information model \u2022 not nerve anatomy'. Do not put organs inside or on learning tile; only a neutral small book symbol.",
+  "forbiddenAnatomy": [
+    "No internal organ, eye, ear, brain, tissue or bone anatomy",
+    "No diagnostic image, patient-specific lesion appearance or literal anatomical pathway"
+  ],
+  "validation": {
+    "sourceFacts": "Checked against listed primary clinical sources on 2026-09-10",
+    "status": "self-reviewed; independent review pending",
+    "pixelChecks": "Pixel/structure check: crisp aligned input and conflicting double image lead through two continuous information ribbons to a neutral book/learning tile. Lower ribbon and image become faint under suppression label; neither channel is severed. No brain, cortex, eye, nerve, internal anatomy or localisation patch remains. Caption clearly calls this an information model."
+  }
+}

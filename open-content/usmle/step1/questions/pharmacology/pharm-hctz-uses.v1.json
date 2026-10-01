@@ -1,0 +1,72 @@
+{
+  "id": "bank:usmle-step1:pharm-hctz-uses:v1",
+  "rotation": "usmle-step1-open",
+  "topics": [
+    "hydrochlorothiazide",
+    "diuretic",
+    "blood pressure"
+  ],
+  "moduleNodes": [
+    "usmle/step1",
+    "usmle/step1/pharmacology"
+  ],
+  "questionType": "mechanism",
+  "difficulty": "easy",
+  "stem": "Hydrochlorothiazide is used alone or with other medications to treat which cardiovascular problem?",
+  "options": [
+    {
+      "label": "A",
+      "text": "Orthostatic hypotension",
+      "isCorrect": false,
+      "misconception": "Reverses the effect: a diuretic lowers blood pressure rather than raising it.",
+      "explanation": "Orthostatic hypotension needs volume expansion, fludrocortisone or midodrine; the diuresis from a thiazide would lower pressure further and worsen it."
+    },
+    {
+      "label": "B",
+      "text": "Symptomatic bradycardia",
+      "isCorrect": false,
+      "misconception": "Assumes any cardiovascular drug adjusts heart rate.",
+      "explanation": "Symptomatic bradycardia is treated with atropine or pacing; hydrochlorothiazide has no effect on sinoatrial or atrioventricular nodal rate."
+    },
+    {
+      "label": "C",
+      "text": "Chronic hypertension",
+      "isCorrect": true,
+      "misconception": "None — hydrochlorothiazide is used alone or combined to treat hypertension.",
+      "explanation": "The label says hydrochlorothiazide is used alone or with other medications to treat high blood pressure."
+    },
+    {
+      "label": "D",
+      "text": "Stable angina",
+      "isCorrect": false,
+      "misconception": "Confuses an antihypertensive diuretic with antianginal drugs.",
+      "explanation": "Stable angina is treated with nitrates, beta blockers or calcium channel blockers that reduce myocardial oxygen demand, not with a thiazide diuretic."
+    },
+    {
+      "label": "E",
+      "text": "Atrial fibrillation",
+      "isCorrect": false,
+      "misconception": "Assumes antihypertensives also control cardiac rhythm.",
+      "explanation": "Atrial fibrillation is managed with rate control, rhythm control and anticoagulation; hydrochlorothiazide does not treat it and can cause hypokalemia."
+    }
+  ],
+  "context": "Learning objective: Hydrochlorothiazide is used alone or with other medications to treat high blood pressure.",
+  "cite": "medlineplus-hctz#hctz-uses",
+  "publicUsmle": {
+    "schemaVersion": 1,
+    "origin": "generated",
+    "itemText": {
+      "licence": "CC-BY-4.0",
+      "attribution": "MD3 contributors"
+    },
+    "evidence": {
+      "kind": "passage",
+      "sourceId": "medlineplus-hctz",
+      "passageId": "hctz-uses",
+      "licence": {
+        "cls": "foss",
+        "id": "us-gov"
+      }
+    }
+  }
+}

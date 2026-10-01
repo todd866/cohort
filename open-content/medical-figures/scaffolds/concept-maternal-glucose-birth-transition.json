@@ -1,0 +1,97 @@
+{
+  "schemaVersion": 1,
+  "id": "concept-maternal-glucose-birth-transition",
+  "kind": "conceptual",
+  "sourceFacts": [
+    {
+      "fact": "Maternal hyperglycaemia can drive increased fetal insulin production.",
+      "sourceUrls": [
+        "https://www.rch.org.au/uploadedFiles/Main/Content/rchcpg/hospital_clinical_guideline_index/Neonatal%20Hypoglycemia%20Evidence%20Table%202023.pdf",
+        "https://pubmed.ncbi.nlm.nih.gov/3532664/"
+      ]
+    },
+    {
+      "fact": "After birth maternal glucose supply ceases while neonatal hyperinsulinism can persist, increasing hypoglycaemia risk.",
+      "sourceUrls": [
+        "https://www.rch.org.au/uploadedFiles/Main/Content/rchcpg/hospital_clinical_guideline_index/Neonatal%20Hypoglycemia%20Evidence%20Table%202023.pdf",
+        "https://pubmed.ncbi.nlm.nih.gov/3532664/"
+      ]
+    }
+  ],
+  "nodes": [
+    {
+      "id": "1",
+      "label": "High maternal glucose supply"
+    },
+    {
+      "id": "2",
+      "label": "Fetal insulin increases"
+    },
+    {
+      "id": "3",
+      "label": "Maternal supply stops"
+    },
+    {
+      "id": "4",
+      "label": "Insulin remains high"
+    },
+    {
+      "id": "5",
+      "label": "Neonatal glucose can fall"
+    }
+  ],
+  "edges": [
+    {
+      "from": "1",
+      "to": "2",
+      "meaning": "fetal response"
+    },
+    {
+      "from": "2",
+      "to": "4",
+      "meaning": "persistence across birth"
+    },
+    {
+      "from": "3",
+      "to": "5",
+      "meaning": "supply withdrawal"
+    },
+    {
+      "from": "4",
+      "to": "5",
+      "meaning": "insulin effect"
+    }
+  ],
+  "labels": [
+    "At birth, glucose supply changes first",
+    "High maternal glucose supply",
+    "Fetal insulin increases",
+    "Maternal supply stops",
+    "Insulin remains high",
+    "Neonatal glucose can fall",
+    "Conceptual schematic • Not anatomy"
+  ],
+  "layout": "Split canvas vertically into BEFORE BIRTH on left and AFTER BIRTH on right with a dashed vertical timeline boundary titled Birth. Left side node1 above2 joined by one arrow. Right side node3 upper right and node4 middle right converge by two separate arrows into node5 lower right. One arrow crosses time boundary from left node2 to right node4. Exactly five labels and four arrows. Use simple glucose hexagon inventories and insulin coin tokens. Node3 shows an empty supply tag with a stop mark, no placenta, umbilical cord, parent, fetus or infant. Bottom note: Risk mechanism in infants exposed to maternal hyperglycaemia.",
+  "forbiddenAnatomy": [
+    "organs",
+    "body silhouettes",
+    "tissue cross-sections",
+    "cells",
+    "tubules",
+    "vessels",
+    "clinical photographs",
+    "diagnostic scans"
+  ],
+  "validation": {
+    "sourceStatus": "checked",
+    "structureStatus": "verified",
+    "requiredChecks": [
+      "Birth divides time, not anatomical compartments",
+      "Insulin persists from fetal stage into neonatal stage",
+      "Stopped glucose supply and persistent insulin both point to falling glucose",
+      "No maternal insulin transfer, placenta or anatomy"
+    ],
+    "clinicalReviewStatus": "pending",
+    "pixelChecks": "Pixel check: time divider clearly labels birth, five nodes and four correct arrows. Fetal insulin persists across birth, stopped maternal glucose supply and persistent insulin separately connect to falling neonatal glucose. No insulin transfer, placenta, baby or organs. Independent and clinical review pending."
+  }
+}

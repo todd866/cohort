@@ -1,0 +1,116 @@
+{
+  "schemaVersion": 1,
+  "figureId": "flacc-observation-domains",
+  "kind": "conceptual",
+  "sourceFacts": [
+    {
+      "id": "fact-1",
+      "fact": "FLACC stands for Face, Legs, Activity, Cry and Consolability.",
+      "sources": [
+        {
+          "title": "RCH: Pain assessment and measurement",
+          "url": "https://www.rch.org.au/rchcpg/hospital_clinical_guideline_index/Pain_Assessment_and_Measurement/"
+        }
+      ]
+    },
+    {
+      "id": "fact-2",
+      "fact": "It is an observational behavioural pain assessment tool.",
+      "sources": [
+        {
+          "title": "RCH: Pain assessment and measurement",
+          "url": "https://www.rch.org.au/rchcpg/hospital_clinical_guideline_index/Pain_Assessment_and_Measurement/"
+        }
+      ]
+    },
+    {
+      "id": "fact-3",
+      "fact": "A mnemonic is not the validated scoring rubric and cannot be used to assign scores by itself.",
+      "sources": [
+        {
+          "title": "RCH: Pain assessment and measurement",
+          "url": "https://www.rch.org.au/rchcpg/hospital_clinical_guideline_index/Pain_Assessment_and_Measurement/"
+        }
+      ]
+    }
+  ],
+  "nodes": [
+    {
+      "id": "face",
+      "shape": "generic face token",
+      "label": "F — Face"
+    },
+    {
+      "id": "legs",
+      "shape": "toy trousers",
+      "label": "L — Legs"
+    },
+    {
+      "id": "activity",
+      "shape": "rocking toy",
+      "label": "A — Activity"
+    },
+    {
+      "id": "cry",
+      "shape": "sound ripples",
+      "label": "C — Cry"
+    },
+    {
+      "id": "console",
+      "shape": "two teddy bears leaning together",
+      "label": "C — Consolability"
+    }
+  ],
+  "edges": [
+    {
+      "from": "face",
+      "to": "legs",
+      "meaning": "mnemonic order"
+    },
+    {
+      "from": "legs",
+      "to": "activity",
+      "meaning": "mnemonic order"
+    },
+    {
+      "from": "activity",
+      "to": "cry",
+      "meaning": "mnemonic order"
+    },
+    {
+      "from": "cry",
+      "to": "console",
+      "meaning": "mnemonic order"
+    }
+  ],
+  "labels": [
+    "Five domains to observe",
+    "F",
+    "L",
+    "A",
+    "C",
+    "C",
+    "Face",
+    "Legs",
+    "Activity",
+    "Cry",
+    "Consolability",
+    "Observe behaviour",
+    "Domain reminder; use the validated scoring tool"
+  ],
+  "forbiddenAnatomy": [
+    "Organs, airway cross-sections, tissue layers, clinical photos, copied clinical scoring graphics"
+  ],
+  "validation": {
+    "status": "verified",
+    "method": "source-and-conceptual-structure-review",
+    "checks": [
+      "Five letters/domain mappings in correct order.",
+      "No copied scale graphics or scoring descriptors.",
+      "No claim self-report and no child falsely assigned pain score from picture.",
+      "External toy objects only, not anatomy."
+    ],
+    "pixelReviewStatus": "verified",
+    "pixelReviewNotes": "Verified F-L-A-C-C order and Face/Legs/Activity/Cry/Consolability mapping. Each object serves the intended behavioural mnemonic. No copied faces scale, scoring table, patient score or internal anatomy. The validated-scoring-tool note makes the mnemonic boundary clear."
+  }
+}

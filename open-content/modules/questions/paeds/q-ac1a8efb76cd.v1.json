@@ -1,0 +1,67 @@
+{
+  "id": "bank:cohort:paeds:q-ac1a8efb76cd:v1",
+  "rotation": "cohort-open",
+  "moduleNodes": [
+    "cohort/paeds"
+  ],
+  "topics": [
+    "hypernatraemia",
+    "dehydration",
+    "fluids",
+    "calculation"
+  ],
+  "questionType": "calculation",
+  "difficulty": "hard",
+  "stem": "A 4-year-old with three days of watery stools weighs 18 kg. Skin turgor is doughy. You diagnose moderate (5%) hypernatraemic dehydration and will replace the deficit over 48 hours plus maintenance.\n\n| Test | Result | Reference |\n| --- | --- | --- |\n| Sodium | 165 mmol/L | 135–145 mmol/L |\n\nWhich hourly rate should she receive?",
+  "options": [
+    {
+      "label": "A",
+      "text": "75 mL/hr of IV fluid",
+      "isCorrect": true,
+      "explanation": "Maintenance by 4-2-1 is 40 + 16 = 56 mL/hr. A 5% deficit of 18 kg is 900 mL; spread over 48 hours that is 18.75 mL/hr. 56 + 18.75 ≈ 75 mL/hr. Faster rates risk a rapid sodium fall and cerebral oedema."
+    },
+    {
+      "label": "B",
+      "text": "129 mL/hr of IV fluid",
+      "isCorrect": false,
+      "explanation": "That rate over-replaces (roughly 10% deficit in 24 hours plus maintenance) and would drop the sodium too fast."
+    },
+    {
+      "label": "C",
+      "text": "154 mL/hr of IV fluid",
+      "isCorrect": false,
+      "explanation": "154 mL/hr is in the bolus-plus-rapid-replacement range and is unsafe in hypernatraemic dehydration."
+    },
+    {
+      "label": "D",
+      "text": "94 mL/hr of IV fluid",
+      "isCorrect": false,
+      "explanation": "94 mL/hr replaces the deficit over 24 hours (56 + 900/24 = 93.5). In hypernatraemia the deficit is stretched over 48 hours, not 24."
+    },
+    {
+      "label": "E",
+      "text": "56 mL/hr of IV fluid",
+      "isCorrect": false,
+      "explanation": "56 mL/hr is maintenance alone and ignores the 900 mL deficit. She remains dehydrated."
+    }
+  ],
+  "context": "Hypernatraemic dehydration: doughy skin, high Na. Replace deficit slowly (typically 48 hours) plus maintenance so sodium falls no faster than about 0.5 mmol/L/hour.\n\n18 kg, 5% deficit: 56 mL/hr maintenance + 18.75 mL/hr deficit ≈ 75 mL/hr.",
+  "publicModule": {
+    "schemaVersion": 1,
+    "origin": "mirrored",
+    "discipline": "paeds",
+    "mirroredFrom": "md3:ac1a8efb76cd6bc1",
+    "itemText": {
+      "licence": "CC-BY-4.0",
+      "attribution": "MD3 contributors"
+    },
+    "evidence": {
+      "kind": "reference",
+      "sourceId": "rch-hypernatraemia"
+    },
+    "review": {
+      "verdict": "passed",
+      "contentHash": "b9ca8021c95310501f6f6ddde2ffc9a4591482a65e8ac571949a0cc9d63b0ac4"
+    }
+  }
+}

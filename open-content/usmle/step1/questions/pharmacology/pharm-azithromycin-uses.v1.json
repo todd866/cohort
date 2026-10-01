@@ -1,0 +1,71 @@
+{
+  "id": "bank:usmle-step1:pharm-azithromycin-uses:v1",
+  "rotation": "usmle-step1-open",
+  "topics": [
+    "azithromycin",
+    "macrolide"
+  ],
+  "moduleNodes": [
+    "usmle/step1",
+    "usmle/step1/pharmacology"
+  ],
+  "questionType": "mechanism",
+  "difficulty": "easy",
+  "stem": "Azithromycin is used to treat disease caused by which kind of organism?",
+  "options": [
+    {
+      "label": "A",
+      "text": "Viruses",
+      "isCorrect": false,
+      "misconception": "Believes antibiotics treat viral colds and bronchitis, a common cause of unnecessary prescriptions.",
+      "explanation": "Colds and most acute bronchitis are viral; azithromycin acts on bacterial ribosomes and does not help them."
+    },
+    {
+      "label": "B",
+      "text": "Ectoparasites",
+      "isCorrect": false,
+      "misconception": "Assumes an antibiotic can eradicate skin infestations by mites or lice.",
+      "explanation": "Ectoparasites such as scabies mites and lice are treated with permethrin or ivermectin, not with an antibiotic."
+    },
+    {
+      "label": "C",
+      "text": "Fungi",
+      "isCorrect": false,
+      "misconception": "Assumes an antibacterial drug also covers fungal infections.",
+      "explanation": "Fungi have eukaryotic 80S ribosomes and are treated with antifungals such as azoles, echinocandins or amphotericin B."
+    },
+    {
+      "label": "D",
+      "text": "Helminths",
+      "isCorrect": false,
+      "misconception": "Assumes antibiotics also treat parasitic worm infections.",
+      "explanation": "Helminths are multicellular worms treated with anthelmintics such as albendazole or ivermectin, not macrolide antibiotics."
+    },
+    {
+      "label": "E",
+      "text": "Bacteria",
+      "isCorrect": true,
+      "misconception": "None — azithromycin treats infections caused by bacteria.",
+      "explanation": "MedlinePlus states azithromycin is used to treat infections caused by bacteria; it is a macrolide antibiotic."
+    }
+  ],
+  "context": "Learning objective: Azithromycin, a macrolide antibiotic, is used to treat infections caused by bacteria.",
+  "cite": "medlineplus-azithromycin#azithromycin-uses",
+  "publicUsmle": {
+    "schemaVersion": 1,
+    "origin": "generated",
+    "itemText": {
+      "licence": "CC-BY-4.0",
+      "attribution": "MD3 contributors"
+    },
+    "evidence": {
+      "kind": "passage",
+      "sourceId": "medlineplus-azithromycin",
+      "passageId": "azithromycin-uses",
+      "licence": {
+        "cls": "foss",
+        "id": "us-gov"
+      }
+    }
+  }
+}

@@ -1,0 +1,251 @@
+{
+  "schemaVersion": 1,
+  "distributionTier": "foss",
+  "assets": [
+    {
+      "schemaVersion": 1,
+      "assetId": "ecg-case-2w7m4q",
+      "relativePath": "media/ecg-case-2w7m4q.svg",
+      "sha256": "sha256:b70aaf0788dd72465aa908bddd7c3b72b9e3aa8c6c2b2419db8d125e7ef4a82e",
+      "dimensions": { "width": 960, "height": 360 },
+      "sourceKind": "patient-derived",
+      "modality": "ecg",
+      "distributionTier": "foss",
+      "surfaceAllowlist": ["cohort"],
+      "rights": {
+        "licenceId": "CC-BY-4.0",
+        "licenceUrl": "https://creativecommons.org/licenses/by/4.0/",
+        "sourcePageUrl": "https://physionet.org/content/ptb-xl/1.0.3/",
+        "sourceAssetId": "records500/07000/07793_hr.dat#lead=II&start=3.20s&duration=4.00s",
+        "sourceRevisionOrVersion": "PTB-XL 1.0.3; ecg_id=7793; NORM=100; two-reader human validation",
+        "attribution": "PTB-XL v1.0.3 (Wagner et al.) via PhysioNet; Lead II excerpt rendered by MD3 contributors — CC BY 4.0",
+        "commercialUseAllowed": true,
+        "shareAlike": false
+      },
+      "derivation": {
+        "sourceSha256": "sha256:74f3abc68ef093f5428bc317ae55088940b47c7fb0d8cbcaeb83d092ef439552",
+        "operation": "waveform-render",
+        "parametersDigest": "sha256:3036169ef02e23cd425fb90e9411d72624cb7289159039f1148575bf68a989df"
+      },
+      "clinical": {
+        "conditionIds": ["ventricular-depolarization"],
+        "keyFindings": ["The recorded waveform framed by X is the QRS complex"],
+        "reviewReceiptId": "ptb-xl-1.0.3-ecg-7793-source-record-qrs-peak",
+        "receiptVerifiedAt": "2026-08-14"
+      },
+      "safety": {
+        "patientMedia": true,
+        "humanSubject": true,
+        "ageClass": "adult",
+        "faceVisibility": "none",
+        "identityRisk": "none",
+        "bodyRegion": "trunk",
+        "sensitiveRegion": "none",
+        "consentBasis": "source-release",
+        "thumbnailPolicy": "allow",
+        "reviewReceiptId": "ptb-xl-1.0.3-deidentified-release",
+        "receiptVerifiedAt": "2026-08-14"
+      },
+      "accessibility": {
+        "preAnswerAlt": "Recorded Lead II strip with five regular cycles. X frames the central sharp complex.",
+        "postAnswerAlt": "Recorded Lead II sinus-rhythm strip in which X highlights the QRS complex representing ventricular depolarization."
+      }
+    },
+    {
+      "schemaVersion": 1,
+      "assetId": "ecg-case-4n8k2p",
+      "relativePath": "media/ecg-case-4n8k2p.svg",
+      "sha256": "sha256:8f10419e6b00251099edc375f6b8a75f3c8cd168f7ff0b33257ea25b3b9020b0",
+      "dimensions": { "width": 960, "height": 360 },
+      "sourceKind": "patient-derived",
+      "modality": "ecg",
+      "distributionTier": "foss",
+      "surfaceAllowlist": ["cohort"],
+      "rights": {
+        "licenceId": "CC-BY-4.0",
+        "licenceUrl": "https://creativecommons.org/licenses/by/4.0/",
+        "sourcePageUrl": "https://physionet.org/content/ptb-xl/1.0.3/",
+        "sourceAssetId": "records500/08000/08048_hr.dat#lead=II&start=0.35s&duration=8.90s",
+        "sourceRevisionOrVersion": "PTB-XL 1.0.3; ecg_id=8048; 2AVB=100; human report=3:1 AV block",
+        "attribution": "PTB-XL v1.0.3 (Wagner et al.) via PhysioNet; Lead II excerpt rendered by MD3 contributors — CC BY 4.0",
+        "commercialUseAllowed": true,
+        "shareAlike": false
+      },
+      "derivation": {
+        "sourceSha256": "sha256:9f5422b5a435c55a4bebd7eb56dc2dd038742bb3f2b3a7af16326cf12e95ea26",
+        "operation": "waveform-render",
+        "parametersDigest": "sha256:30eed988bbd1b26aed8973178bcb8827f7d0fa96b3e85c7d547b8424284aa4d7"
+      },
+      "clinical": {
+        "conditionIds": ["second-degree-atrioventricular-block"],
+        "keyFindings": ["Regular atrial deflections with one conducted beat for every three P waves"],
+        "reviewReceiptId": "ptb-xl-1.0.3-ecg-8048-human-label",
+        "receiptVerifiedAt": "2026-08-14"
+      },
+      "safety": {
+        "patientMedia": true,
+        "humanSubject": true,
+        "ageClass": "adult",
+        "faceVisibility": "none",
+        "identityRisk": "none",
+        "bodyRegion": "trunk",
+        "sensitiveRegion": "none",
+        "consentBasis": "source-release",
+        "thumbnailPolicy": "allow",
+        "reviewReceiptId": "ptb-xl-1.0.3-deidentified-release",
+        "receiptVerifiedAt": "2026-08-14"
+      },
+      "accessibility": {
+        "preAnswerAlt": "Recorded Lead II strip in which smaller narrow deflections recur at about three times the rate of the larger complexes.",
+        "postAnswerAlt": "Recorded Lead II strip with regular P waves and one ventricular complex after every third P wave, showing three-to-one high-grade second-degree AV block."
+      }
+    },
+    {
+      "schemaVersion": 1,
+      "assetId": "ecg-case-6r3t9x",
+      "relativePath": "media/ecg-case-6r3t9x.svg",
+      "sha256": "sha256:49fb68b89bacd3f80d40edd475f2b24bf693f04d18422797b4f7c290c071f18f",
+      "dimensions": { "width": 960, "height": 360 },
+      "sourceKind": "patient-derived",
+      "modality": "ecg",
+      "distributionTier": "foss",
+      "surfaceAllowlist": ["cohort"],
+      "rights": {
+        "licenceId": "CC-BY-4.0",
+        "licenceUrl": "https://creativecommons.org/licenses/by/4.0/",
+        "sourcePageUrl": "https://physionet.org/content/ptb-xl/1.0.3/",
+        "sourceAssetId": "records500/00000/00330_hr.dat#lead=II&start=0.20s&duration=6.00s",
+        "sourceRevisionOrVersion": "PTB-XL 1.0.3; ecg_id=330; human report=atrial fibrillation",
+        "attribution": "PTB-XL v1.0.3 (Wagner et al.) via PhysioNet; Lead II excerpt rendered by MD3 contributors — CC BY 4.0",
+        "commercialUseAllowed": true,
+        "shareAlike": false
+      },
+      "derivation": {
+        "sourceSha256": "sha256:77f28d5bd7b00d7439289e57f7482449a41b8f97649a48aeb1cd548bf727b8ea",
+        "operation": "waveform-render",
+        "parametersDigest": "sha256:0245c34e845612e7d75fb14b105fccaa725247dc7cadd3f1af65f44430ad7556"
+      },
+      "clinical": {
+        "conditionIds": ["atrial-fibrillation"],
+        "keyFindings": ["Irregularly irregular R-R intervals, no consistent P waves, and narrow QRS complexes"],
+        "reviewReceiptId": "ptb-xl-1.0.3-ecg-330-human-label",
+        "receiptVerifiedAt": "2026-08-14"
+      },
+      "safety": {
+        "patientMedia": true,
+        "humanSubject": true,
+        "ageClass": "adult",
+        "faceVisibility": "none",
+        "identityRisk": "none",
+        "bodyRegion": "trunk",
+        "sensitiveRegion": "none",
+        "consentBasis": "source-release",
+        "thumbnailPolicy": "allow",
+        "reviewReceiptId": "ptb-xl-1.0.3-deidentified-release",
+        "receiptVerifiedAt": "2026-08-14"
+      },
+      "accessibility": {
+        "preAnswerAlt": "Recorded Lead II strip with six narrow sharp complexes separated by unequal intervals and no consistently repeating small deflection before them.",
+        "postAnswerAlt": "Recorded Lead II strip with irregularly irregular narrow QRS complexes and no consistent P waves, supporting atrial fibrillation."
+      }
+    },
+    {
+      "schemaVersion": 1,
+      "assetId": "ecg-case-8v5c2h",
+      "relativePath": "media/ecg-case-8v5c2h.svg",
+      "sha256": "sha256:2b61a8af5877eb34309dd813509b52f0729e4c67eb4c6fc51e1aea6103cce579",
+      "dimensions": { "width": 960, "height": 360 },
+      "sourceKind": "patient-derived",
+      "modality": "ecg",
+      "distributionTier": "foss",
+      "surfaceAllowlist": ["cohort"],
+      "rights": {
+        "licenceId": "CC-BY-SA-4.0",
+        "licenceUrl": "https://creativecommons.org/licenses/by-sa/4.0/",
+        "sourcePageUrl": "https://physionet.org/content/vtac/1.0/",
+        "sourceAssetId": "waveforms/022448/022448_0120.dat#lead=II&start=300.00s&duration=6.00s",
+        "sourceRevisionOrVersion": "VTaC 1.0; event_labels.csv decision=True; final expert-reviewed label",
+        "attribution": "VTaC v1.0 (Lehman et al.) via PhysioNet; Lead II excerpt rendered by MD3 contributors — CC BY-SA 4.0",
+        "commercialUseAllowed": true,
+        "shareAlike": true
+      },
+      "derivation": {
+        "sourceSha256": "sha256:a5bc1fe476356d1eab6a5b91810711e6d1f12b3bdc82e936a8ccb7e7e71ed442",
+        "operation": "waveform-render",
+        "parametersDigest": "sha256:4f42e6191e7bdb1705b69be3024cecef0dcb6e19ec64a216bcf21f26a4f1f35a"
+      },
+      "clinical": {
+        "conditionIds": ["ventricular-tachycardia"],
+        "keyFindings": ["Expert-reviewed true VT event with a regular wide-complex rhythm above 100 beats per minute"],
+        "reviewReceiptId": "vtac-1.0-event-022448-0120-final-expert-label",
+        "receiptVerifiedAt": "2026-08-14"
+      },
+      "safety": {
+        "patientMedia": true,
+        "humanSubject": true,
+        "ageClass": "not-applicable",
+        "faceVisibility": "none",
+        "identityRisk": "none",
+        "bodyRegion": "not-applicable",
+        "sensitiveRegion": "none",
+        "consentBasis": "source-release",
+        "thumbnailPolicy": "allow",
+        "reviewReceiptId": "vtac-1.0-deidentified-release",
+        "receiptVerifiedAt": "2026-08-14"
+      },
+      "accessibility": {
+        "preAnswerAlt": "Recorded Lead II strip with eleven similar broad complexes repeating rapidly and regularly.",
+        "postAnswerAlt": "Expert-reviewed true ventricular tachycardia event with a fast regular rhythm and similar broad complexes."
+      }
+    },
+    {
+      "schemaVersion": 1,
+      "assetId": "ecg-case-9q4d7m",
+      "relativePath": "media/ecg-case-9q4d7m.svg",
+      "sha256": "sha256:b85585534147778702f2e4905395694dc6b82f8c264129abfae6a00c03ded5bf",
+      "dimensions": { "width": 960, "height": 360 },
+      "sourceKind": "patient-derived",
+      "modality": "ecg",
+      "distributionTier": "foss",
+      "surfaceAllowlist": ["cohort"],
+      "rights": {
+        "licenceId": "CC-BY-4.0",
+        "licenceUrl": "https://creativecommons.org/licenses/by/4.0/",
+        "sourcePageUrl": "https://physionet.org/content/ptb-xl/1.0.3/",
+        "sourceAssetId": "records500/00000/00959_hr.dat#lead=II&start=0.35s&duration=9.00s",
+        "sourceRevisionOrVersion": "PTB-XL 1.0.3; ecg_id=959; 3AVB=100; human report=complete heart block",
+        "attribution": "PTB-XL v1.0.3 (Wagner et al.) via PhysioNet; Lead II excerpt rendered by MD3 contributors — CC BY 4.0",
+        "commercialUseAllowed": true,
+        "shareAlike": false
+      },
+      "derivation": {
+        "sourceSha256": "sha256:d03bba71dbf4e1c47ec9e3b2e07964c00692663f366268bfd5eae2bc2ee060ce",
+        "operation": "waveform-render",
+        "parametersDigest": "sha256:5e4948c82d2e2a750d1b0aab85e819176e3fc3b33fc947c2c903a8df980f00ea"
+      },
+      "clinical": {
+        "conditionIds": ["third-degree-atrioventricular-block"],
+        "keyFindings": ["Regular atrial activity near 98 per minute and a slower ventricular escape rhythm near 40 per minute with no fixed relationship"],
+        "reviewReceiptId": "ptb-xl-1.0.3-ecg-959-human-label",
+        "receiptVerifiedAt": "2026-08-14"
+      },
+      "safety": {
+        "patientMedia": true,
+        "humanSubject": true,
+        "ageClass": "adult",
+        "faceVisibility": "none",
+        "identityRisk": "none",
+        "bodyRegion": "trunk",
+        "sensitiveRegion": "none",
+        "consentBasis": "source-release",
+        "thumbnailPolicy": "allow",
+        "reviewReceiptId": "ptb-xl-1.0.3-deidentified-release",
+        "receiptVerifiedAt": "2026-08-14"
+      },
+      "accessibility": {
+        "preAnswerAlt": "Recorded Lead II strip with faster small rounded deflections and slower sharp complexes whose relative timing changes.",
+        "postAnswerAlt": "Recorded Lead II strip with regular atrial activity near 98 per minute and a separate ventricular escape rhythm near 40 per minute, showing complete heart block."
+      }
+    }
+  ]
+}

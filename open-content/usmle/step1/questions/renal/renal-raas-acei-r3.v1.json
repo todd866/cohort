@@ -1,0 +1,74 @@
+{
+  "id": "bank:usmle-step1:renal-raas-acei-r3:v1",
+  "rotation": "usmle-step1-open",
+  "ladderId": "raas-aldosterone",
+  "topics": [
+    "ACE inhibitor",
+    "aldosterone",
+    "hyperkalemia",
+    "ladder:raas-aldosterone"
+  ],
+  "moduleNodes": [
+    "usmle/step1",
+    "usmle/step1/renal"
+  ],
+  "questionType": "mechanism",
+  "difficulty": "hard",
+  "stem": "A 62-year-old man with chronic heart failure and an ejection fraction of 30% is started on lisinopril. At a follow-up visit two weeks later he reports mild fatigue but no angioedema. Repeat electrolytes show a serum concentration of 5.6 mEq/L, up from 4.1 mEq/L at baseline.\n\nReduced activity of which of the following collecting-duct processes most directly explains the new hyperkalemia?",
+  "options": [
+    {
+      "label": "A",
+      "text": "ADH-dependent insertion of apical aquaporin channels",
+      "isCorrect": false,
+      "misconception": "A water-permeability step is being blamed for a potassium change.",
+      "explanation": "Aquaporin insertion controls water recovery, not potassium secretion; ACE inhibition lowers angiotensin II and aldosterone, which reduces principal-cell Na+/K+ exchange."
+    },
+    {
+      "label": "B",
+      "text": "Aldosterone-driven principal-cell sodium recovery and potassium secretion",
+      "isCorrect": true,
+      "misconception": "None; less aldosterone means less principal-cell K+ secretion into the urine.",
+      "explanation": "ACE blockade reduces angiotensin II formation and thereby aldosterone; aldosterone normally stimulates principal cells to recover Na+ and secrete K+, so its fall raises serum potassium."
+    },
+    {
+      "label": "C",
+      "text": "Intercalated-cell apical proton secretion into the tubular lumen",
+      "isCorrect": false,
+      "misconception": "Acid handling is being substituted for potassium handling.",
+      "explanation": "Intercalated cells secrete H+; the ACE-inhibitor hyperkalemia reflects reduced aldosterone-driven K+ secretion by principal cells."
+    },
+    {
+      "label": "D",
+      "text": "Macula densa sensing of tubular sodium chloride delivery",
+      "isCorrect": false,
+      "misconception": "The afferent sensing step is being treated as the effector that moves potassium.",
+      "explanation": "Macula densa signaling modulates renin release; the proximate cause of the potassium rise is reduced aldosterone action on principal cells."
+    },
+    {
+      "label": "E",
+      "text": "Proximal-tubule bulk reabsorption of filtered bicarbonate",
+      "isCorrect": false,
+      "misconception": "A proximal acid–base process is being cast as the potassium effector.",
+      "explanation": "Proximal bicarbonate recovery is not the ACE-inhibitor potassium mechanism; principal-cell aldosterone-dependent K+ secretion is."
+    }
+  ],
+  "context": "Learning objective: link ACE inhibition to hyperkalemia via aldosterone. Less ACE → less angiotensin II → less aldosterone → less principal-cell Na+ recovery / K+ secretion → higher serum K+.",
+  "cite": "openstax-anatomy-physiology#renal-aldosterone-principal-cells",
+  "publicUsmle": {
+    "schemaVersion": 1,
+    "origin": "generated",
+    "itemText": {
+      "licence": "CC-BY-4.0",
+      "attribution": "MD3 contributors"
+    },
+    "evidence": {
+      "kind": "passage",
+      "sourceId": "openstax-anatomy-physiology",
+      "passageId": "renal-aldosterone-principal-cells",
+      "licence": {
+        "cls": "foss",
+        "id": "cc-by-4.0"
+      }
+    }
+  }
+}

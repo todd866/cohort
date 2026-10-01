@@ -1,0 +1,76 @@
+{
+  "schemaVersion": 1,
+  "figureId": "joint-attention-triangle",
+  "kind": "conceptual",
+  "created": "2026-09-10",
+  "timing": "retrospective specification of previously generated candidate",
+  "sourceFacts": [
+    {
+      "fact": "Joint attention means sharing focus on an object or event with another person.",
+      "sourceUrls": [
+        "https://www.nichd.nih.gov/health/topics/autism/conditioninfo/treatments/joint-attention",
+        "https://www.healthychildren.org/English/health-issues/conditions/Autism/Pages/Early-Signs-of-Autism-Spectrum-Disorders.aspx"
+      ]
+    },
+    {
+      "fact": "Looking or gesturing between a person and an interesting object can communicate shared interest.",
+      "sourceUrls": [
+        "https://www.nichd.nih.gov/health/topics/autism/conditioninfo/treatments/joint-attention",
+        "https://www.healthychildren.org/English/health-issues/conditions/Autism/Pages/Early-Signs-of-Autism-Spectrum-Disorders.aspx"
+      ]
+    }
+  ],
+  "clinicalSources": [
+    {
+      "title": "NICHD: Joint Attention Therapy for Autism",
+      "url": "https://www.nichd.nih.gov/health/topics/autism/conditioninfo/treatments/joint-attention"
+    },
+    {
+      "title": "AAP HealthyChildren: Early Signs of Autism",
+      "url": "https://www.healthychildren.org/English/health-issues/conditions/Autism/Pages/Early-Signs-of-Autism-Spectrum-Disorders.aspx"
+    }
+  ],
+  "nodes": [
+    "child",
+    "caregiver",
+    "shared object"
+  ],
+  "edges": [
+    [
+      "child",
+      "caregiver",
+      "sharing attention"
+    ],
+    [
+      "caregiver",
+      "shared object",
+      "shared focus"
+    ],
+    [
+      "shared object",
+      "child",
+      "shared focus"
+    ]
+  ],
+  "invariants": [
+    "Scene combines pointing/sharing with another person and a shared object.",
+    "No score, diagnosis or required forced eye contact."
+  ],
+  "expectedLabels": [
+    "Child",
+    "Caregiver",
+    "Shared object",
+    "Joint attention",
+    "Sharing a focus with another person"
+  ],
+  "layoutSpecification": "Warm hand-painted teaching scene. A fully clothed toddler at lower left points with one hand toward a small toy bird on a low table at top centre. Caregiver kneels at lower right looking toward the toy, gentle attentive expression. Toddler head turned partially toward caregiver, showing sharing interest rather than simply reaching to obtain toy. Three thin curved teal connectors form a triangle CHILD\u2194CAREGIVER\u2194TOY\u2194CHILD; no arrows from eyeballs. Small labels 'Child', 'Caregiver', 'Shared object'. Title 'Joint attention'. Bottom 'Sharing a focus with another person'. Plain cream background, restrained colour, no autism diagnosis, no rating score, no forcing eye contact or physical restraint.",
+  "forbiddenAnatomy": [
+    "No claimed anatomical reconstruction, diagnostic image, histology or literal neuroanatomical pathway",
+    "No organ cutaways or invented internal spatial relationships"
+  ],
+  "validation": {
+    "sourceFacts": "Checked against listed primary clinical sources during original topic review",
+    "pixelChecks": "Visually inspected: child points toward shared toy while engaging caregiver; triangle connects child, caregiver and object. Labels and reciprocal scene support shared interest without a diagnosis, score or forced-eye-contact technique.",
+    "status": "self-reviewed; independent review pending"
+  }
+}

@@ -1,0 +1,67 @@
+{
+  "id": "bank:cohort:resp:q-44302b9fe9f2:v1",
+  "rotation": "cohort-open",
+  "moduleNodes": [
+    "cohort/resp"
+  ],
+  "topics": [
+    "Respiratory",
+    "Asthma",
+    "Diagnosis",
+    "Children"
+  ],
+  "questionType": "diagnosis",
+  "difficulty": "medium",
+  "stem": "A 3-year-old has had three episodes of wheeze with viral upper-respiratory illnesses in the last 6 months, the last requiring a trip to ED. Between episodes he is well, with no nocturnal cough or atopy. Spirometry is not feasible.\n\nWhat is the most appropriate diagnostic approach?",
+  "options": [
+    {
+      "label": "A",
+      "text": "Diagnose asthma now and start daily inhaled corticosteroid",
+      "isCorrect": false,
+      "explanation": "RCH does diagnose asthma at 1–5 years, but on recurrent wheeze that responds to salbutamol, and that response has not been shown yet. Most preschool children with viral wheeze more than 6 weeks apart do not need a preventer."
+    },
+    {
+      "label": "B",
+      "text": "Order skin-prick allergy testing as the first step",
+      "isCorrect": false,
+      "explanation": "Allergy testing supports an asthma diagnosis once suspected; it is not the first-line diagnostic step in a preschool wheezer."
+    },
+    {
+      "label": "C",
+      "text": "Order a CT chest to look for an alternative diagnosis",
+      "isCorrect": false,
+      "explanation": "CT chest is reserved for red flags (failure to thrive, clubbing, focal signs); a typical viral-wheeze picture does not warrant it."
+    },
+    {
+      "label": "D",
+      "text": "Spirometry with bronchodilator response to confirm asthma",
+      "isCorrect": false,
+      "explanation": "Spirometry is unreliable and not feasible before age 5-6; this is not the path to a diagnosis in a preschool child."
+    },
+    {
+      "label": "E",
+      "text": "Trial of salbutamol during episodes and observe response",
+      "isCorrect": true,
+      "explanation": "Recurrent symptoms with documented response to a salbutamol trial is the recommended approach in 1-5 year olds, given spirometry is not feasible."
+    }
+  ],
+  "context": "Asthma diagnosis by age: 0-12 mo do NOT diagnose (think bronchiolitis or floppy airways); 1-5 yo recurrent symptoms + salbutamol response.\n\n6-11 yo spirometry with bronchodilator response or FeNO; adolescents spirometry. The preschool group is the easy trap.",
+  "publicModule": {
+    "schemaVersion": 1,
+    "origin": "mirrored",
+    "discipline": "resp",
+    "mirroredFrom": "md3:44302b9fe9f27ff2",
+    "itemText": {
+      "licence": "CC-BY-4.0",
+      "attribution": "MD3 contributors"
+    },
+    "evidence": {
+      "kind": "reference",
+      "sourceId": "rch-preschool-asthma-1-5-years"
+    },
+    "review": {
+      "verdict": "passed",
+      "contentHash": "179b563cdd66a55ecb115b50590ce2aef7d6e4fb582c6505c00c434eb75036ed"
+    }
+  }
+}

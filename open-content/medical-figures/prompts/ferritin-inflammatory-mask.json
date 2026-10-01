@@ -1,0 +1,35 @@
+{
+  "figureId": "ferritin-inflammatory-mask",
+  "tool": "built-in image_gen",
+  "model": null,
+  "referenceAssetIds": [],
+  "externalReferenceImages": [],
+  "prompt": "Original educational conceptual illustration, landscape 3:2. Warm ivory paper, sophisticated hand-painted gouache/watercolour, confident fine brown outlines, navy lettering, restrained teal, coral and amber. Editorial science illustration with spacious composition and large legible labels. The explanatory structure must carry the meaning visually: molecules, objects, geometry or flow; never paragraphs in boxes. No organs, regional anatomy, teeth or joint cutaways, tissue layers, invented histology, diagnostic photographs, radiographs or patient data. All symbols are explicitly conceptual. Footer: 'Conceptual teaching model • Not to scale'. Title 'Ferritin has two influences'. Large central VERTICAL slider with a neutral pointer somewhere in its middle, no numbers, no coloured reference-range bands, labelled 'Ferritin result'. On its LEFT a glass jar containing only three amber discs marked 'Fe', labelled 'Low iron stores'. A broad navy connector from the jar meets a clear downward arrow beside the slider; text 'Tends to lower ferritin'. On its RIGHT a coral flame icon labelled 'Inflammation'; connector meets an upward arrow beside the SAME slider, text 'Can raise ferritin'. Both influences are equally visible; do not put the arrows on separate result meters, do not assert exact cancellation. A lower callout drawn as a small magnifying glass over the nearly empty iron jar, with the single short sentence 'Normal ferritin can be misleading during illness'. No organs or anatomy. Explicit conceptual metaphor, no test result numbers.",
+  "clinicalSources": [
+    {
+      "title": "RCH — Iron deficiency",
+      "url": "https://www.rch.org.au/clinicalguide/guideline_index/Iron_deficiency/"
+    }
+  ],
+  "teaching": {
+    "question": "Why can normal ferritin fail to exclude iron deficiency in an unwell child?",
+    "answer": "Ferritin rises as an acute-phase reactant. Inflammation can raise the measured ferritin despite depleted iron stores.",
+    "imageRole": "after-reveal"
+  },
+  "title": "Inflammation can mask low iron stores",
+  "caption": "Low ferritin supports iron deficiency. Because ferritin also rises with inflammation, a normal ferritin during illness does not reliably exclude depleted iron stores.",
+  "alt": "An almost-empty iron-store jar pulls a ferritin indicator down while an inflammation symbol pulls it up, illustrating competing influences on the result.",
+  "review": {
+    "status": "pending-independent-qa",
+    "method": "agent-visual-and-source-review",
+    "notes": "Pixel-to-specification review confirms one unnumbered ferritin indicator: the depleted Fe jar feeds a downward arrow and inflammation feeds an upward arrow. No reference range or exact cancelling equation is implied. The qualifier can be misleading during illness is present. No anatomy or patient measurements.",
+    "structure": {
+      "kind": "conceptual",
+      "status": "verified",
+      "specificationFiles": [
+        "scaffolds/ferritin-inflammatory-mask.json"
+      ],
+      "notes": "Pixel-to-specification review confirms one unnumbered ferritin indicator: the depleted Fe jar feeds a downward arrow and inflammation feeds an upward arrow. No reference range or exact cancelling equation is implied. The qualifier can be misleading during illness is present. No anatomy or patient measurements."
+    }
+  }
+}

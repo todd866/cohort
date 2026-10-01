@@ -1,0 +1,66 @@
+{
+  "id": "bank:cohort:paeds:q-a7d7fade2b83:v1",
+  "rotation": "cohort-open",
+  "moduleNodes": [
+    "cohort/paeds"
+  ],
+  "topics": [
+    "aspiration",
+    "recurrent pneumonia",
+    "neurodisability"
+  ],
+  "questionType": "diagnosis",
+  "difficulty": "medium",
+  "stem": "A 3-year-old with cerebral palsy has recurrent respiratory infections. Symptoms include coughing and choking during feeds, recurrent right-sided pneumonia, and chronic wet cough.\n\nWhat is the most likely underlying cause?",
+  "options": [
+    {
+      "label": "A",
+      "text": "Immunodeficiency",
+      "isCorrect": false,
+      "explanation": "A defective immune response can cause recurrent infections, but it does not specifically explain coughing and choking during feeds. The strong temporal link with swallowing points elsewhere."
+    },
+    {
+      "label": "B",
+      "text": "Cystic fibrosis",
+      "isCorrect": false,
+      "explanation": "CF causes recurrent chest infections and chronic wet cough, but it would not usually cause choking during feeds or selectively right-sided aspiration-type pneumonia. Feeding-associated symptoms are the key clue."
+    },
+    {
+      "label": "C",
+      "text": "Chronic aspiration",
+      "isCorrect": true,
+      "explanation": "Correct. Children with cerebral palsy often have oropharyngeal dysphagia and chronic aspiration, leading to coughing during feeds, recurrent right-sided pneumonia, and a persistent wet cough."
+    },
+    {
+      "label": "D",
+      "text": "Poorly controlled asthma",
+      "isCorrect": false,
+      "explanation": "Asthma causes wheeze and cough, but it does not classically cause choking with feeds or recurrent focal pneumonia from aspiration. It is the wrong mechanism for this history."
+    },
+    {
+      "label": "E",
+      "text": "Primary ciliary dyskinesia",
+      "isCorrect": false,
+      "explanation": "PCD can cause chronic wet cough and recurrent infections, but it is not characterised by feed-related choking. Neurodisability plus swallowing symptoms makes aspiration far more likely."
+    }
+  ],
+  "context": "Children with neurodisability are at high risk of oropharyngeal aspiration due to swallowing dysfunction.\n\nSigns include coughing/choking with feeds, recurrent pneumonia (especially right-sided), and chronic wet cough. Investigation includes videofluoroscopic swallow study.\n\nManagement may include modified diet texture, thickened fluids, or gastrostomy feeding.",
+  "publicModule": {
+    "schemaVersion": 1,
+    "origin": "mirrored",
+    "discipline": "paeds",
+    "mirroredFrom": "md3:a7d7fade2b830f90",
+    "itemText": {
+      "licence": "CC-BY-4.0",
+      "attribution": "MD3 contributors"
+    },
+    "evidence": {
+      "kind": "reference",
+      "sourceId": "rch-cerebral-palsy-chest-infection"
+    },
+    "review": {
+      "verdict": "passed",
+      "contentHash": "4a57b3429095defd3e2115b643efd1be9b369a43cb741aa3452b534c9dce46ee"
+    }
+  }
+}

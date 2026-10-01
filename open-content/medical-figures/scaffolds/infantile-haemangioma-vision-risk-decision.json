@@ -1,0 +1,80 @@
+{
+  "schemaVersion": 1,
+  "figureId": "infantile-haemangioma-vision-risk-decision",
+  "kind": "conceptual",
+  "created": "2026-09-10",
+  "timing": "authored before generation",
+  "sourceFacts": [
+    {
+      "fact": "Many infantile periocular haemangiomas can be observed, but those threatening vision need treatment.",
+      "sourceUrls": [
+        "https://www.aapos.org/glossary/capillary-hemangioma"
+      ]
+    },
+    {
+      "fact": "Propranolol is a first-line treatment for haemangiomas needing systemic therapy; treatment selection and monitoring are supervised.",
+      "sourceUrls": [
+        "https://www.aapos.org/glossary/capillary-hemangioma"
+      ]
+    }
+  ],
+  "clinicalSources": [
+    {
+      "title": "AAPOS: Capillary Hemangioma",
+      "url": "https://www.aapos.org/glossary/capillary-hemangioma"
+    }
+  ],
+  "nodes": [
+    "infantile haemangioma",
+    "vision not threatened",
+    "vision threatened",
+    "monitor",
+    "specialist treatment",
+    "propranolol option"
+  ],
+  "edges": [
+    [
+      "infantile haemangioma",
+      "vision not threatened",
+      "assessment branch"
+    ],
+    [
+      "infantile haemangioma",
+      "vision threatened",
+      "assessment branch"
+    ],
+    [
+      "vision not threatened",
+      "monitor",
+      "often appropriate"
+    ],
+    [
+      "vision threatened",
+      "specialist treatment",
+      "requires action"
+    ],
+    [
+      "specialist treatment",
+      "propranolol option",
+      "may use"
+    ]
+  ],
+  "expectedLabels": [
+    "Haemangioma: protect developing vision",
+    "Vision safe",
+    "Monitor",
+    "Vision threatened",
+    "Specialist treatment",
+    "Propranolol may be used"
+  ],
+  "layoutSpecification": "Title 'Haemangioma: protect developing vision'. Draw a clear two-branch path beginning at a generic small ochre cluster of round tokens on the LEFT labelled 'Infantile haemangioma' (not a realistic birthmark or blood vessel). Branch UP along teal path to a clear square window icon, label 'Vision safe', then a calendar icon labelled 'Monitor'. Branch DOWN along ochre path to a square window partly obscured by a plain ochre shade, label 'Vision threatened', then a clinician badge and an unmeasured plain medicine bottle labelled 'Specialist treatment'. Small line under bottle 'Propranolol may be used'. Window is only a metaphor for visual function. No actual eyelid, eyeball, lesion photograph, optic pathway, dosage or claim all haemangiomas need medication. Arrows flow from assessment to appropriate branch.",
+  "forbiddenAnatomy": [
+    "No internal organ, eye, ear, brain, tissue or bone anatomy",
+    "No diagnostic image, patient-specific lesion appearance or literal anatomical pathway"
+  ],
+  "validation": {
+    "sourceFacts": "Checked against listed primary clinical sources on 2026-09-10",
+    "status": "self-reviewed; independent review pending",
+    "pixelChecks": "Pixel/structure check: common starting token cluster branches toward clear-window/monitor and obscured-window/specialist treatment. Both arrow chains point forward and remain separate. Propranolol is qualified may be used; no dose or universal treatment claim. Window and tokens are abstract; clinician is external neutral illustration, with no lesion or internal anatomy."
+  }
+}

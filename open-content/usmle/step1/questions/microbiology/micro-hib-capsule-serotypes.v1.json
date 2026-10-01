@@ -1,0 +1,71 @@
+{
+  "id": "bank:usmle-step1:micro-hib-capsule-serotypes:v1",
+  "rotation": "usmle-step1-open",
+  "topics": [
+    "hib",
+    "capsule"
+  ],
+  "moduleNodes": [
+    "usmle/step1",
+    "usmle/step1/microbiology"
+  ],
+  "questionType": "mechanism",
+  "difficulty": "easy",
+  "stem": "Encapsulated Haemophilus influenzae strains are classified into how many polysaccharide capsule serotypes?",
+  "options": [
+    {
+      "label": "A",
+      "text": "Two serotypes, a and b",
+      "isCorrect": false,
+      "misconception": "Confuses the typeable-versus-nontypeable split with the number of capsular serotypes.",
+      "explanation": "H. influenzae splits into encapsulated (typeable) and nontypeable strains, but the capsule itself comes in six serotypes, a through f."
+    },
+    {
+      "label": "B",
+      "text": "Four serotypes, a through d",
+      "isCorrect": false,
+      "misconception": "Undercounts the capsular serotypes of H. influenzae.",
+      "explanation": "Four matches no H. influenzae classification; the polysaccharide capsule has six serotypes, designated a through f."
+    },
+    {
+      "label": "C",
+      "text": "Five serotypes, a through e",
+      "isCorrect": false,
+      "misconception": "Undercounts the serotypes by one; there are six, a through f.",
+      "explanation": "Five omits one type; the six capsular serotypes run a through f, and type b caused most invasive disease before vaccination."
+    },
+    {
+      "label": "D",
+      "text": "Eight serotypes, a through h",
+      "isCorrect": false,
+      "misconception": "Overcounts the capsular serotypes of H. influenzae.",
+      "explanation": "Eight overcounts; the capsular serotypes of H. influenzae stop at f, giving six in total."
+    },
+    {
+      "label": "E",
+      "text": "Six serotypes, a through f",
+      "isCorrect": true,
+      "misconception": "None — H. influenzae has six capsular serotypes, a through f.",
+      "explanation": "CDC: H. influenzae has six different polysaccharide capsule serotypes (a-f); type b caused 95% of invasive disease before vaccines."
+    }
+  ],
+  "context": "Learning objective: Haemophilus influenzae has six polysaccharide capsule serotypes (a-f); type b caused 95% of invasive disease before vaccination.",
+  "cite": "cdc-pink-book-hib#hib-capsule-serotypes",
+  "publicUsmle": {
+    "schemaVersion": 1,
+    "origin": "generated",
+    "itemText": {
+      "licence": "CC-BY-4.0",
+      "attribution": "MD3 contributors"
+    },
+    "evidence": {
+      "kind": "passage",
+      "sourceId": "cdc-pink-book-hib",
+      "passageId": "hib-capsule-serotypes",
+      "licence": {
+        "cls": "foss",
+        "id": "us-gov"
+      }
+    }
+  }
+}

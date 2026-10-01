@@ -1,0 +1,74 @@
+{
+  "id": "bank:usmle-step1:ms-nicotinic-nmj-r3:v1",
+  "rotation": "usmle-step1-open",
+  "ladderId": "nicotinic-nmj",
+  "topics": [
+    "neuromuscular junction",
+    "myasthenia gravis",
+    "nicotinic receptor",
+    "ladder:nicotinic-nmj"
+  ],
+  "moduleNodes": [
+    "usmle/step1",
+    "usmle/step1/musculoskeletal"
+  ],
+  "questionType": "mechanism",
+  "difficulty": "hard",
+  "stem": "A 34-year-old woman presents with a 3-month history of double vision and drooping eyelids that worsen after prolonged reading and improve after rest. Repetitive nerve stimulation shows a decremental response that partially corrects after edrophonium administration. Ice applied to a ptotic eyelid briefly lifts it.\n\nWhich of the following best describes the primary defect at her neuromuscular junction?",
+  "options": [
+    {
+      "label": "A",
+      "text": "Autoimmune loss of functional nicotinic acetylcholine receptors on the sarcolemma",
+      "isCorrect": true,
+      "misconception": "None; myasthenia destroys postsynaptic nicotinic receptors and fatigues transmission.",
+      "explanation": "Myasthenia gravis autoantibodies reduce nicotinic acetylcholine receptors on the muscle sarcolemma, so repeated stimulation depletes the safety margin; acetylcholinesterase inhibition temporarily restores transmission."
+    },
+    {
+      "label": "B",
+      "text": "Irreversible blockade of presynaptic acetylcholine release by a bacterial toxin",
+      "isCorrect": false,
+      "misconception": "Botulinum flaccid paralysis is being confused with fatigable weakness.",
+      "explanation": "Botulinum toxin cleaves SNARE proteins and blocks presynaptic acetylcholine release, causing flaccid paralysis that does not improve with edrophonium or show fatigable ocular weakness."
+    },
+    {
+      "label": "C",
+      "text": "Competitive antagonism of nicotinic receptors by a plant alkaloid",
+      "isCorrect": false,
+      "misconception": "Curare-like receptor blockade is being substituted for autoimmune receptor loss.",
+      "explanation": "Nondepolarizing neuromuscular blockers competitively occupy nicotinic receptors but do not produce the autoimmune decremental response or edrophonium reversal pattern of myasthenia."
+    },
+    {
+      "label": "D",
+      "text": "Deficiency of acetylcholinesterase causing receptor desensitization",
+      "isCorrect": false,
+      "misconception": "The enzyme that clears acetylcholine is being treated as deficient rather than inhibited therapeutically.",
+      "explanation": "Acetylcholinesterase eliminates acetylcholine at the neuromuscular junction; myasthenia is postsynaptic receptor loss, and edrophonium works by inhibiting the esterase, not by replacing it."
+    },
+    {
+      "label": "E",
+      "text": "Destruction of motor neuron axon terminals at the neuromuscular junction",
+      "isCorrect": false,
+      "misconception": "Presynaptic denervation is being proposed for a postsynaptic autoimmune disorder.",
+      "explanation": "Motor neuron terminals remain intact in myasthenia; the defect is loss of postsynaptic nicotinic receptors, which is why increasing synaptic acetylcholine transiently improves strength."
+    }
+  ],
+  "context": "Learning objective: distinguish NMJ failure modes. The neuromuscular junction uses acetylcholine on nicotinic receptors of the sarcolemma; myasthenia autoantibodies reduce those receptors, producing fatigable weakness that improves when acetylcholinesterase is inhibited.",
+  "cite": "openstax-anatomy-physiology#ms-neuromuscular-junction",
+  "publicUsmle": {
+    "schemaVersion": 1,
+    "origin": "generated",
+    "itemText": {
+      "licence": "CC-BY-4.0",
+      "attribution": "MD3 contributors"
+    },
+    "evidence": {
+      "kind": "passage",
+      "sourceId": "openstax-anatomy-physiology",
+      "passageId": "ms-neuromuscular-junction",
+      "licence": {
+        "cls": "foss",
+        "id": "cc-by-4.0"
+      }
+    }
+  }
+}

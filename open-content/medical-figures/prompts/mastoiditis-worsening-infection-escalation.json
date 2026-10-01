@@ -1,0 +1,31 @@
+{
+  "schemaVersion": 1,
+  "figureId": "mastoiditis-worsening-infection-escalation",
+  "sourceFacts": [
+    "Mastoiditis can complicate an ear infection and present with postauricular swelling, tenderness and displacement of the pinna.",
+    "New swelling behind the ear with worsening pain or fever needs urgent assessment and ENT involvement."
+  ],
+  "clinicalSources": [
+    {
+      "title": "RCH: Acute otitis media",
+      "url": "https://www.rch.org.au/clinicalguide/guideline_index/acute_otitis_media/"
+    },
+    {
+      "title": "NHS: Mastoiditis",
+      "url": "https://www.nhs.uk/conditions/mastoiditis/"
+    }
+  ],
+  "specificationFiles": [
+    "scaffolds/mastoiditis-worsening-infection-escalation.json"
+  ],
+  "prompt": "Create an entirely original medical teaching concept illustration, landscape 3:2, warm hand-painted watercolour and gouache on ivory paper, fine ink contours, restrained navy labels, muted teal, ochre and peach accents, generous whitespace. Gentle storybook warmth with the precision and legibility of an educational atlas. Use written instructions only; no image reference. Meaningful visual relationships and sparse short labels, not paragraphs in boxes. NO internal anatomy, organ/eye/ear/brain/tissue cutaways, anatomical pathways, bones, diagnostic images, fake scans, realistic lesions, photorealistic skin, glossy wet flesh or 3D tissue. Neutral symbols or fully clothed surface poses only where specified. Preserve every direction, relationship and count in the explicit structure. Title and labels exactly as requested, no additional prose. Footer 'Educational schematic'. No logo or watermark.\n\nTitle 'Ear infection getting worse?'. Start LEFT with a plain prescription slip and calendar, label 'Ear infection'. A rightward arrow reaches a centre WARNING CLUSTER of two separate symbolic items: a warm-coloured thermometer and jagged pain mark labelled 'Pain or fever persists', and a small ochre flag labelled 'New swelling behind the ear'. Do not depict any ear, face, swelling shape or internal anatomy; the location is stated in the label only. Two clear arrows from these warning items converge on a large hospital doorway on RIGHT labelled 'Urgent assessment'. Bottom 'Think mastoiditis \u2022 involve ENT'. No continue-waiting branch, no direct diagnosis by an image, no dose, no fictional temperature reading, no scan.",
+  "generation": {
+    "tool": "built-in image_gen",
+    "model": null,
+    "referenceAssetIds": [],
+    "externalReferenceImages": [],
+    "specificationFiles": [
+      "scaffolds/mastoiditis-worsening-infection-escalation.json"
+    ]
+  }
+}

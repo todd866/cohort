@@ -1,0 +1,71 @@
+{
+  "id": "bank:usmle-step1:pharm-oseltamivir-two-day-next-step:v1",
+  "rotation": "usmle-step1-open",
+  "topics": [
+    "oseltamivir",
+    "influenza treatment"
+  ],
+  "moduleNodes": [
+    "usmle/step1",
+    "usmle/step1/pharmacology"
+  ],
+  "questionType": "management",
+  "difficulty": "medium",
+  "stem": "A 32-year-old with influenza has had symptoms for one day. Which of the following medication uses is directly supported by the cited treatment window?",
+  "options": [
+    {
+      "label": "A",
+      "text": "Begin oseltamivir during the current two-day symptom window",
+      "isCorrect": true,
+      "misconception": "None; one day of influenza symptoms is within the stated treatment window.",
+      "explanation": "MedlinePlus includes adults with some influenza infections who have had symptoms for no longer than two days among those treated with oseltamivir."
+    },
+    {
+      "label": "B",
+      "text": "Defer oseltamivir until after the two-day symptom window",
+      "isCorrect": false,
+      "misconception": "The treatment window is reversed, turning the passage's upper bound into a waiting period.",
+      "explanation": "The cited use applies when influenza symptoms have lasted no longer than two days, so deferring beyond that window conflicts with the passage."
+    },
+    {
+      "label": "C",
+      "text": "Wait for symptom resolution before considering oseltamivir treatment",
+      "isCorrect": false,
+      "misconception": "Treatment is postponed until after the active symptom period that defines eligibility in the passage.",
+      "explanation": "The stated use is treatment during influenza symptoms of no more than two days, not after those symptoms resolve."
+    },
+    {
+      "label": "D",
+      "text": "Withhold oseltamivir because treatment applies to children alone",
+      "isCorrect": false,
+      "misconception": "The passage's age range is narrowed incorrectly by excluding adults.",
+      "explanation": "MedlinePlus explicitly includes adults, children, and infants older than two weeks in the stated treatment use."
+    },
+    {
+      "label": "E",
+      "text": "Withhold oseltamivir because influenza is outside its stated use",
+      "isCorrect": false,
+      "misconception": "The medication's named influenza indication is overlooked.",
+      "explanation": "The cited passage specifically identifies oseltamivir as treatment for some types of influenza infection."
+    }
+  ],
+  "context": "Learning objective: apply the oseltamivir treatment window. The cited use includes adults, children, and infants older than two weeks with some influenza infections when symptoms have lasted no longer than two days.",
+  "cite": "medlineplus-oseltamivir#oseltamivir-uses",
+  "publicUsmle": {
+    "schemaVersion": 1,
+    "origin": "generated",
+    "itemText": {
+      "licence": "CC-BY-4.0",
+      "attribution": "MD3 contributors"
+    },
+    "evidence": {
+      "kind": "passage",
+      "sourceId": "medlineplus-oseltamivir",
+      "passageId": "oseltamivir-uses",
+      "licence": {
+        "cls": "foss",
+        "id": "us-gov"
+      }
+    }
+  }
+}

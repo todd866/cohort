@@ -1,0 +1,74 @@
+{
+  "id": "bank:usmle-step1:endo-thyroid-hormone-synthesis-r3:v1",
+  "rotation": "usmle-step1-open",
+  "ladderId": "thyroid-hormone-synthesis",
+  "topics": [
+    "iodine deficiency",
+    "goiter",
+    "hypothyroidism",
+    "ladder:thyroid-hormone-synthesis"
+  ],
+  "moduleNodes": [
+    "usmle/step1",
+    "usmle/step1/endocrine"
+  ],
+  "questionType": "mechanism",
+  "difficulty": "hard",
+  "stem": "A 28-year-old woman who recently emigrated from an inland region without iodized salt presents with progressive neck swelling, fatigue, cold intolerance, and constipation. Examination shows dry skin and delayed relaxation of deep tendon reflexes. Thyroid palpation reveals a firm, symmetrically enlarged gland. Thyroid function tests show low free thyroxine and markedly elevated thyroid-stimulating hormone.\n\nWhich of the following best explains why her hormone output is low despite abundant thyroglobulin in follicle colloid?",
+  "options": [
+    {
+      "label": "A",
+      "text": "Dietary iodine deficiency prevents iodination of thyroglobulin tyrosines",
+      "isCorrect": true,
+      "misconception": "None; without iodine, colloid stores thyroglobulin but T3/T4 cannot be assembled.",
+      "explanation": "Thyroid hormones require iodination of tyrosine residues in thyroglobulin; iodine deficiency blocks synthesis, causing low T4, high TSH, and compensatory goiter."
+    },
+    {
+      "label": "B",
+      "text": "Excess iodine directly destroys follicle cells and abolishes thyroglobulin production",
+      "isCorrect": false,
+      "misconception": "The problem is iodine lack, not iodine excess.",
+      "explanation": "This patient lacks dietary iodine; the gland still produces thyroglobulin but cannot iodinate it to form hormone."
+    },
+    {
+      "label": "C",
+      "text": "Parafollicular cell hyperplasia suppresses follicle colloid storage",
+      "isCorrect": false,
+      "misconception": "Calcitonin-secreting cells are being blamed for hypothyroidism.",
+      "explanation": "Parafollicular cells secrete calcitonin for calcium homeostasis; hypothyroidism here reflects failed iodination in follicle colloid."
+    },
+    {
+      "label": "D",
+      "text": "Thyroglobulin is assembled in the bloodstream rather than the colloid",
+      "isCorrect": false,
+      "misconception": "The anatomic site of synthesis is misidentified.",
+      "explanation": "Thyroglobulin is produced and iodinated in follicle colloid; the defect is missing iodine substrate, not mislocalized assembly."
+    },
+    {
+      "label": "E",
+      "text": "TSH cannot stimulate endocytosis of colloid back into follicle cells",
+      "isCorrect": false,
+      "misconception": "Release is being blamed when synthesis is the limiting step.",
+      "explanation": "TSH is elevated and drives goiter; hormone output is low because iodination cannot proceed without dietary iodine."
+    }
+  ],
+  "context": "Learning objective: link iodine deficiency to failed thyroid hormone synthesis. Without iodine, tyrosines in thyroglobulin cannot be iodinated; T4 falls, TSH rises, and the gland enlarges.",
+  "cite": "openstax-anatomy-physiology#endo-thyroid-hormone-synthesis",
+  "publicUsmle": {
+    "schemaVersion": 1,
+    "origin": "generated",
+    "itemText": {
+      "licence": "CC-BY-4.0",
+      "attribution": "MD3 contributors"
+    },
+    "evidence": {
+      "kind": "passage",
+      "sourceId": "openstax-anatomy-physiology",
+      "passageId": "endo-thyroid-hormone-synthesis",
+      "licence": {
+        "cls": "foss",
+        "id": "cc-by-4.0"
+      }
+    }
+  }
+}

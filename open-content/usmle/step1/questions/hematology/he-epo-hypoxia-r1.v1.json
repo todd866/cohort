@@ -1,0 +1,73 @@
+{
+  "id": "bank:usmle-step1:he-epo-hypoxia-r1:v1",
+  "rotation": "usmle-step1-open",
+  "ladderId": "epo-hypoxia",
+  "difficulty": "easy",
+  "topics": [
+    "erythropoietin",
+    "kidney",
+    "ladder:epo-hypoxia"
+  ],
+  "moduleNodes": [
+    "usmle/step1",
+    "usmle/step1/hematology"
+  ],
+  "questionType": "mechanism",
+  "stem": "Which of the following organs secretes most of the erythropoietin that stimulates red blood cell production?",
+  "options": [
+    {
+      "label": "A",
+      "text": "The liver",
+      "isCorrect": false,
+      "misconception": "A secondary EPO source is being treated as the main one.",
+      "explanation": "The liver can make some EPO, but the kidneys produce the large majority that drives erythropoiesis."
+    },
+    {
+      "label": "B",
+      "text": "The spleen",
+      "isCorrect": false,
+      "misconception": "A site of red-cell clearance is being confused with EPO secretion.",
+      "explanation": "The spleen filters aged erythrocytes; it does not secrete most circulating erythropoietin."
+    },
+    {
+      "label": "C",
+      "text": "The bone marrow",
+      "isCorrect": false,
+      "misconception": "The EPO target tissue is being confused with the EPO source.",
+      "explanation": "Marrow responds to EPO by making erythrocytes; it is not the primary source of the hormone."
+    },
+    {
+      "label": "D",
+      "text": "The kidneys",
+      "isCorrect": true,
+      "misconception": "None; about 85 percent of EPO that stimulates red-cell production comes from the kidneys.",
+      "explanation": "The kidneys produce most erythropoietin that stimulates red blood cell formation in marrow."
+    },
+    {
+      "label": "E",
+      "text": "The adrenal cortex",
+      "isCorrect": false,
+      "misconception": "Steroid hormone glands are being confused with the EPO source.",
+      "explanation": "The adrenal cortex secretes corticosteroids and aldosterone, not erythropoietin."
+    }
+  ],
+  "context": "Learning objective: locate the main EPO source in the kidneys (~85% of production).",
+  "cite": "openstax-anatomy-physiology#renal-erythropoietin",
+  "publicUsmle": {
+    "schemaVersion": 1,
+    "origin": "generated",
+    "itemText": {
+      "licence": "CC-BY-4.0",
+      "attribution": "MD3 contributors"
+    },
+    "evidence": {
+      "kind": "passage",
+      "sourceId": "openstax-anatomy-physiology",
+      "passageId": "renal-erythropoietin",
+      "licence": {
+        "cls": "foss",
+        "id": "cc-by-4.0"
+      }
+    }
+  }
+}

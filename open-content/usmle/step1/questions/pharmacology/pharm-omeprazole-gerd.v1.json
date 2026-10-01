@@ -1,0 +1,71 @@
+{
+  "id": "bank:usmle-step1:pharm-omeprazole-gerd:v1",
+  "rotation": "usmle-step1-open",
+  "topics": [
+    "omeprazole",
+    "GERD"
+  ],
+  "moduleNodes": [
+    "usmle/step1",
+    "usmle/step1/pharmacology"
+  ],
+  "questionType": "mechanism",
+  "difficulty": "easy",
+  "stem": "Omeprazole is used alone or with other medications to treat the symptoms of which digestive condition?",
+  "options": [
+    {
+      "label": "A",
+      "text": "Gastroesophageal reflux disease",
+      "isCorrect": true,
+      "misconception": "None — GERD symptoms are a listed omeprazole use.",
+      "explanation": "Omeprazole treats the symptoms of GERD, in which backward flow of stomach acid causes heartburn and possible injury to the esophagus."
+    },
+    {
+      "label": "B",
+      "text": "Chronic ulcerative colitis",
+      "isCorrect": false,
+      "misconception": "Confuses acid-driven esophageal injury with immune-mediated colonic inflammation.",
+      "explanation": "Ulcerative colitis is immune-mediated inflammation of the colonic mucosa, treated with aminosalicylates or immunosuppressants; acid suppression does not treat it."
+    },
+    {
+      "label": "C",
+      "text": "Diarrhea-predominant irritable bowel syndrome",
+      "isCorrect": false,
+      "misconception": "Assumes any chronic gut symptom complex responds to acid suppression.",
+      "explanation": "Irritable bowel syndrome is a functional bowel disorder managed with diet, antispasmodics or antidiarrheals; reducing stomach acid does not treat it."
+    },
+    {
+      "label": "D",
+      "text": "Gluten-sensitive celiac disease",
+      "isCorrect": false,
+      "misconception": "Mistakes gluten-driven small-bowel injury for an acid-related disease.",
+      "explanation": "Celiac disease is immune-mediated injury to the small-bowel mucosa triggered by gluten; the treatment is a strict gluten-free diet."
+    },
+    {
+      "label": "E",
+      "text": "Achalasia of the distal esophagus",
+      "isCorrect": false,
+      "misconception": "Blames every esophageal symptom on acid, missing achalasia's motility failure.",
+      "explanation": "Achalasia is failure of the lower esophageal sphincter to relax after loss of inhibitory neurons; it is treated by dilation or myotomy, not acid suppression."
+    }
+  ],
+  "context": "Learning objective: Omeprazole treats the symptoms of GERD, in which backward flow of stomach acid causes heartburn and possible esophageal injury.",
+  "cite": "medlineplus-omeprazole#omeprazole-uses",
+  "publicUsmle": {
+    "schemaVersion": 1,
+    "origin": "generated",
+    "itemText": {
+      "licence": "CC-BY-4.0",
+      "attribution": "MD3 contributors"
+    },
+    "evidence": {
+      "kind": "passage",
+      "sourceId": "medlineplus-omeprazole",
+      "passageId": "omeprazole-uses",
+      "licence": {
+        "cls": "foss",
+        "id": "us-gov"
+      }
+    }
+  }
+}

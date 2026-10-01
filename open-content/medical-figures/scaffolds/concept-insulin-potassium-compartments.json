@@ -1,0 +1,81 @@
+{
+  "schemaVersion": 1,
+  "id": "concept-insulin-potassium-compartments",
+  "kind": "conceptual",
+  "sourceFacts": [
+    {
+      "fact": "Insulin promotes potassium movement from extracellular to intracellular fluid.",
+      "sourceUrls": [
+        "https://www.rch.org.au/clinicalguide/guideline_index/Diabetic_ketoacidosis/"
+      ]
+    },
+    {
+      "fact": "Serum potassium can fall when insulin is started in DKA.",
+      "sourceUrls": [
+        "https://www.rch.org.au/clinicalguide/guideline_index/Diabetic_ketoacidosis/"
+      ]
+    },
+    {
+      "fact": "Total body potassium is depleted in DKA regardless of the initial serum level.",
+      "sourceUrls": [
+        "https://www.rch.org.au/clinicalguide/guideline_index/Diabetic_ketoacidosis/"
+      ]
+    }
+  ],
+  "nodes": [
+    {
+      "id": "1",
+      "label": "Outside cells"
+    },
+    {
+      "id": "2",
+      "label": "Inside cells"
+    },
+    {
+      "id": "3",
+      "label": "Serum potassium can fall"
+    }
+  ],
+  "edges": [
+    {
+      "from": "1",
+      "to": "2",
+      "meaning": "potassium redistribution promoted by insulin"
+    },
+    {
+      "from": "1",
+      "to": "3",
+      "meaning": "fall in extracellular concentration"
+    }
+  ],
+  "labels": [
+    "Insulin moves potassium into cells",
+    "Outside cells",
+    "Inside cells",
+    "Serum potassium can fall",
+    "Conceptual schematic • Not anatomy"
+  ],
+  "layout": "Two large plain rectangular inventory boxes side by side: left1 Outside cells, right2 Inside cells. Both contain small K+ paper coins. One broad arrow carrying two K+ coins points from LEFT box to RIGHT box, labelled Insulin drives K+ inward. A separate downward arrow from LEFT box points to card3 below the left box. Right box has no outward arrows. Above boxes say Abstract potassium inventories. Bottom band: In DKA, total-body potassium is already depleted. Smaller line: Redistribution does not replace lost potassium. No round cell, membrane, transporter, vessel, lab threshold or treatment dose. Rectangles are categories only, not cells or physical volumes.",
+  "forbiddenAnatomy": [
+    "organs",
+    "body silhouettes",
+    "tissue cross-sections",
+    "cells",
+    "tubules",
+    "vessels",
+    "clinical photographs",
+    "diagnostic scans"
+  ],
+  "validation": {
+    "sourceStatus": "checked",
+    "structureStatus": "verified",
+    "requiredChecks": [
+      "K+ transfer arrow exclusively outside to inside cells",
+      "Serum-fall consequence connects to outside-cell inventory",
+      "Total-body deficit clearly distinguished from redistribution",
+      "No cell membrane, pump or anatomical compartment"
+    ],
+    "clinicalReviewStatus": "pending",
+    "pixelChecks": "Pixel check: K+ transfer arrow points exclusively outside to inside cells, separate lower consequence from outside inventory to serum potassium fall. Inventories explicitly abstract, total-body deficit and redistribution distinction visible. No cell membrane, pump or dose. Token amounts do not encode real compartment proportions. Independent and clinical review pending."
+  }
+}

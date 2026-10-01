@@ -1,0 +1,73 @@
+{
+  "id": "bank:usmle-step1:pharm-ibuprofen-mechanism:v1",
+  "rotation": "usmle-step1-open",
+  "topics": [
+    "ibuprofen",
+    "pain",
+    "fever",
+    "inflammation"
+  ],
+  "moduleNodes": [
+    "usmle/step1",
+    "usmle/step1/pharmacology"
+  ],
+  "questionType": "mechanism",
+  "difficulty": "medium",
+  "stem": "A researcher blocks the same body-produced substance targeted by ibuprofen. Which cluster of responses should decrease according to the cited mechanism?",
+  "options": [
+    {
+      "label": "A",
+      "text": "Pain, fever, and inflammation",
+      "isCorrect": true,
+      "misconception": "Recognizes the complete response cluster linked to the inhibited substance.",
+      "explanation": "The source says ibuprofen stops production of a substance that causes pain, fever, and inflammation."
+    },
+    {
+      "label": "B",
+      "text": "Cough, coryza, and conjunctivitis",
+      "isCorrect": false,
+      "misconception": "Substitutes a respiratory symptom cluster for the cited ibuprofen targets.",
+      "explanation": "These respiratory findings are not the pain-fever-inflammation cluster named in the checked passage."
+    },
+    {
+      "label": "C",
+      "text": "Nausea, jaundice, and dark urine",
+      "isCorrect": false,
+      "misconception": "Substitutes a hepatobiliary symptom cluster for the cited ibuprofen targets.",
+      "explanation": "The source links the inhibited substance to pain, fever, and inflammation, not this cluster."
+    },
+    {
+      "label": "D",
+      "text": "Fear, memory, and conditioning",
+      "isCorrect": false,
+      "misconception": "Substitutes behavioral processes for the cited physiologic responses.",
+      "explanation": "The checked mechanism concerns pain, fever, and inflammation rather than learning or memory."
+    },
+    {
+      "label": "E",
+      "text": "Filtration, secretion, and reabsorption",
+      "isCorrect": false,
+      "misconception": "Substitutes renal processes for the responses named by the source.",
+      "explanation": "Renal handling is not the response cluster that the checked ibuprofen passage identifies."
+    }
+  ],
+  "context": "Learning objective: connect ibuprofen's mechanism to its effects. It stops production of a body substance that causes three linked responses—pain, fever, and inflammation—while its class is grounded as a separate teaching claim.",
+  "cite": "medlineplus-ibuprofen#ibuprofen-mechanism",
+  "publicUsmle": {
+    "schemaVersion": 1,
+    "origin": "generated",
+    "itemText": {
+      "licence": "CC-BY-4.0",
+      "attribution": "MD3 contributors"
+    },
+    "evidence": {
+      "kind": "passage",
+      "sourceId": "medlineplus-ibuprofen",
+      "passageId": "ibuprofen-mechanism",
+      "licence": {
+        "cls": "foss",
+        "id": "us-gov"
+      }
+    }
+  }
+}

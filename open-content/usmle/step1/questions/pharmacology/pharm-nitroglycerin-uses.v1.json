@@ -1,0 +1,71 @@
+{
+  "id": "bank:usmle-step1:pharm-nitroglycerin-uses:v1",
+  "rotation": "usmle-step1-open",
+  "topics": [
+    "nitroglycerin",
+    "angina"
+  ],
+  "moduleNodes": [
+    "usmle/step1",
+    "usmle/step1/pharmacology"
+  ],
+  "questionType": "mechanism",
+  "difficulty": "easy",
+  "stem": "Nitroglycerin sublingual tablets are used to treat episodes of which cardiac symptom?",
+  "options": [
+    {
+      "label": "A",
+      "text": "Pleuritic chest pain from acute pericarditis",
+      "isCorrect": false,
+      "misconception": "Treats all chest pain as angina.",
+      "explanation": "Pericarditis pain is sharp, pleuritic and eased by sitting forward; it is inflammatory and treated with NSAIDs and colchicine, not nitroglycerin."
+    },
+    {
+      "label": "B",
+      "text": "Exertional syncope from severe aortic stenosis",
+      "isCorrect": false,
+      "misconception": "Assumes nitroglycerin helps every exertional cardiac symptom.",
+      "explanation": "Syncope in severe aortic stenosis reflects fixed outflow obstruction; venodilation from nitroglycerin lowers preload and can drop blood pressure further."
+    },
+    {
+      "label": "C",
+      "text": "Palpitations from supraventricular tachycardia",
+      "isCorrect": false,
+      "misconception": "Mistakes a rhythm problem for an ischemic one.",
+      "explanation": "Supraventricular tachycardia is stopped with vagal maneuvers or adenosine; nitroglycerin does not slow AV nodal conduction."
+    },
+    {
+      "label": "D",
+      "text": "Angina pectoris from coronary artery disease",
+      "isCorrect": true,
+      "misconception": "None — sublingual nitroglycerin relieves angina episodes in coronary artery disease.",
+      "explanation": "The label says sublingual nitroglycerin treats episodes of angina (chest pain) in people with coronary artery disease, a narrowing of the heart's blood vessels."
+    },
+    {
+      "label": "E",
+      "text": "Dizziness from symptomatic sinus bradycardia",
+      "isCorrect": false,
+      "misconception": "Assumes a cardiac rescue tablet treats any heart-related dizziness.",
+      "explanation": "Symptomatic sinus bradycardia is treated with atropine or pacing; vasodilation from nitroglycerin can worsen the hypotension that accompanies it."
+    }
+  ],
+  "context": "Learning objective: Sublingual nitroglycerin treats episodes of angina (chest pain) in people with coronary artery disease.",
+  "cite": "medlineplus-nitroglycerin#nitroglycerin-uses",
+  "publicUsmle": {
+    "schemaVersion": 1,
+    "origin": "generated",
+    "itemText": {
+      "licence": "CC-BY-4.0",
+      "attribution": "MD3 contributors"
+    },
+    "evidence": {
+      "kind": "passage",
+      "sourceId": "medlineplus-nitroglycerin",
+      "passageId": "nitroglycerin-uses",
+      "licence": {
+        "cls": "foss",
+        "id": "us-gov"
+      }
+    }
+  }
+}

@@ -1,0 +1,87 @@
+{
+  "schemaVersion": 1,
+  "id": "concept-coeliac-immune-malabsorption",
+  "kind": "conceptual",
+  "sourceFacts": [
+    {
+      "fact": "In coeliac disease, gluten triggers an abnormal immune response that damages the small intestine.",
+      "sourceUrls": [
+        "https://www.niddk.nih.gov/health-information/digestive-diseases/celiac-disease/definition-facts",
+        "https://medlineplus.gov/medlineplus-videos/gluten-and-celiac-disease/"
+      ]
+    },
+    {
+      "fact": "This injury can impair nutrient absorption.",
+      "sourceUrls": [
+        "https://www.niddk.nih.gov/health-information/digestive-diseases/celiac-disease/definition-facts",
+        "https://medlineplus.gov/medlineplus-videos/gluten-and-celiac-disease/"
+      ]
+    }
+  ],
+  "nodes": [
+    {
+      "id": "1",
+      "label": "Gluten exposure"
+    },
+    {
+      "id": "2",
+      "label": "Abnormal immune response"
+    },
+    {
+      "id": "3",
+      "label": "Intestinal injury"
+    },
+    {
+      "id": "4",
+      "label": "Reduced nutrient absorption"
+    }
+  ],
+  "edges": [
+    {
+      "from": "1",
+      "to": "2",
+      "meaning": "trigger"
+    },
+    {
+      "from": "2",
+      "to": "3",
+      "meaning": "immune-mediated injury"
+    },
+    {
+      "from": "3",
+      "to": "4",
+      "meaning": "functional consequence"
+    }
+  ],
+  "labels": [
+    "Coeliac disease: gluten to malabsorption",
+    "Gluten exposure",
+    "Abnormal immune response",
+    "Intestinal injury",
+    "Reduced nutrient absorption",
+    "Conceptual schematic • Not anatomy"
+  ],
+  "layout": "Arrange four large circular paper medallions clockwise along an OPEN quarter-turning path from upper-left through upper-right and lower-right to lower-left, with arrow1 to2 to3 to4 and NO closing feedback arrow. Node1 shows one token labelled Gluten; node2 an abstract alert burst; node3 a cracked plain rectangular tile clearly a damage symbol, not tissue; node4 shows a few gold Nutrient coins entering a plain collection box while other coins remain outside. Spell all four node labels fully. At centre print: In a susceptible person. No wheat allergy symbol, intestine, villi or tissue surface.",
+  "forbiddenAnatomy": [
+    "organs",
+    "body silhouettes",
+    "tissue cross-sections",
+    "cells",
+    "tubules",
+    "vessels",
+    "clinical photographs",
+    "diagnostic scans"
+  ],
+  "validation": {
+    "sourceStatus": "checked",
+    "structureStatus": "verified",
+    "requiredChecks": [
+      "Exactly four nodes, three forward links and no feedback loop",
+      "Gluten triggers immune response before intestinal injury",
+      "Nutrient collection is an abstract metaphor, not mucosa",
+      "No organs, villi, tissue or wheat allergy claim"
+    ],
+    "clinicalReviewStatus": "pending",
+    "pixelChecks": "Pixel structure check: four medallions linked clockwise through gluten, immune response, injury and malabsorption, with no closing loop. Susceptibility qualification present. All imagery is neutral tokens, alert and cracked tile; no intestinal surface or organs. Nutrient token N is clarified by the full node label. Independent and clinical review pending."
+  }
+}

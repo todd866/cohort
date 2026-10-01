@@ -1,0 +1,40 @@
+{
+  "figureId": "vv-ecmo-lung-only",
+  "tool": "Codex-authored SVG; sharp rasterization",
+  "model": null,
+  "referenceAssetIds": [],
+  "externalReferenceImages": [],
+  "brief": {
+    "figureId": "vv-ecmo-lung-only",
+    "stableId": "mdx:96dcfd09628f9226eeb6bdae5ca79e7f",
+    "retrievalTarget": "Gas exchange; native cardiac output remains necessary for systemic perfusion.",
+    "context": "VV ECMO adds oxygen and removes carbon dioxide in the circuit, then returns blood to the venous system; the native heart still pumps systemic circulation.",
+    "visualRelationship": "VV ECMO: gas exchange support, native heart pumps",
+    "medium": "code-native SVG with PNG raster export",
+    "factBasis": [
+      {
+        "fact": "VV ECMO provides lung support only and the patient heart must function adequately.",
+        "url": "https://www.elso.org/ecmo-resources/types-of-ecmo.aspx"
+      },
+      {
+        "fact": "The oxygenator adds oxygen and removes carbon dioxide.",
+        "url": "https://www.elso.org/extracorporeal-membrane-oxygenation.aspx"
+      }
+    ],
+    "wrongReadingToPrevent": "Do not infer unsupported quantitative proportions or a different physiology from the abstract arrows.",
+    "reviewState": "pending-independent-review"
+  },
+  "sourceSvg": "sources/vv-ecmo-lung-only.svg",
+  "sourceSvgSha256": "833753baf6105a59c14201c39c21e91dbd96bb2cba87f5eaed4aa3669c7ddbe2",
+  "revisionNotes": "Root source and pixel review plus independent adversarial pixel review; retained conceptual relationships, corrected misleading arrow/count/timing encodings. Clinical sign-off remains pending.",
+  "clinicalSources": [
+    {
+      "title": "ELSO: Types of ECMO",
+      "url": "https://www.elso.org/ecmo-resources/types-of-ecmo.aspx"
+    },
+    {
+      "title": "ELSO: What Is ECMO?",
+      "url": "https://www.elso.org/extracorporeal-membrane-oxygenation.aspx"
+    }
+  ]
+}

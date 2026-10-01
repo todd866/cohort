@@ -1,0 +1,70 @@
+{
+  "id": "bank:usmle-step1:psych-observational-learning:v1",
+  "rotation": "usmle-step1-open",
+  "topics": [
+    "observational learning"
+  ],
+  "moduleNodes": [
+    "usmle/step1",
+    "usmle/step1/psych"
+  ],
+  "questionType": "mechanism",
+  "difficulty": "easy",
+  "stem": "A 4-year-old watches a video of an adult punching an inflatable doll. Left alone with the same doll minutes later, he punches it the same way. Which process best explains his behavior?",
+  "options": [
+    {
+      "label": "A",
+      "text": "Observational learning",
+      "isCorrect": true,
+      "misconception": "None — the boy learned by watching and imitating a model.",
+      "explanation": "Observational learning is learning by watching others and then imitating, or modeling, what they do or say, as the boy copies the adult."
+    },
+    {
+      "label": "B",
+      "text": "Classical conditioning",
+      "isCorrect": false,
+      "misconception": "Confuses modeling with classical stimulus pairing.",
+      "explanation": "Classical conditioning pairs a neutral stimulus with one that triggers a reflex; the boy's behavior came from a model, not a stimulus pairing."
+    },
+    {
+      "label": "C",
+      "text": "Operant conditioning",
+      "isCorrect": false,
+      "misconception": "Assumes new behavior needs reinforcement of one's own responses.",
+      "explanation": "Operant conditioning shapes behavior through its consequences; nothing rewarded or punished the boy's punching before he copied the adult."
+    },
+    {
+      "label": "D",
+      "text": "Insight learning",
+      "isCorrect": false,
+      "misconception": "Confuses copying a model with solving a problem through insight.",
+      "explanation": "Insight learning is a sudden grasp of a problem's solution; the boy solved no problem but copied what he saw."
+    },
+    {
+      "label": "E",
+      "text": "Stimulus generalization",
+      "isCorrect": false,
+      "misconception": "Confuses copying a model with a conditioned response spreading to similar stimuli.",
+      "explanation": "Stimulus generalization is a conditioned response spreading to stimuli like the original one; nothing here was conditioned."
+    }
+  ],
+  "context": "Learning objective: In observational learning, people learn by watching others and then imitating, or modeling, what they do or say.",
+  "cite": "openstax-psychology-2e#observational-learning-imitating",
+  "publicUsmle": {
+    "schemaVersion": 1,
+    "origin": "generated",
+    "itemText": {
+      "licence": "CC-BY-4.0",
+      "attribution": "MD3 contributors"
+    },
+    "evidence": {
+      "kind": "passage",
+      "sourceId": "openstax-psychology-2e",
+      "passageId": "observational-learning-imitating",
+      "licence": {
+        "cls": "foss",
+        "id": "cc-by-4.0"
+      }
+    }
+  }
+}

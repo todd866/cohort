@@ -1,0 +1,67 @@
+{
+  "id": "bank:cohort:paeds:q-e7db971bf7fe:v1",
+  "rotation": "cohort-open",
+  "moduleNodes": [
+    "cohort/paeds"
+  ],
+  "topics": [
+    "congenital infection",
+    "TORCH",
+    "rubella",
+    "immunisation"
+  ],
+  "questionType": "next-step",
+  "difficulty": "hard",
+  "stem": "A woman's antenatal booking bloods show she is rubella non-immune. She is now 12 weeks pregnant, well, and has had no known rubella contact.\n\nWhat is the most appropriate action regarding rubella?",
+  "options": [
+    {
+      "label": "A",
+      "text": "Give MMR vaccine now, since the first trimester is when protection matters most",
+      "isCorrect": false,
+      "explanation": "Live vaccines are contraindicated in pregnancy. Timing the vaccine to the fetal risk window is the opposite of correct."
+    },
+    {
+      "label": "B",
+      "text": "Give normal human immunoglobulin now as prophylaxis",
+      "isCorrect": false,
+      "explanation": "Immunoglobulin is not reliably protective and is considered only after a proven exposure in a susceptible woman who would not consider termination."
+    },
+    {
+      "label": "C",
+      "text": "Arrange serial fetal ultrasounds for rubella features",
+      "isCorrect": false,
+      "explanation": "Without exposure or infection there is nothing to look for; the action is to prevent infection in the next pregnancy."
+    },
+    {
+      "label": "D",
+      "text": "No action is needed because rubella is eliminated in Australia",
+      "isCorrect": false,
+      "explanation": "Elimination means no endemic transmission, not no risk; imported cases occur and the fetal consequences are severe."
+    },
+    {
+      "label": "E",
+      "text": "Give MMR vaccine after delivery, before she leaves hospital",
+      "isCorrect": true,
+      "explanation": "MMR is a live vaccine and is not given in pregnancy, so the susceptible woman is protected for future pregnancies by vaccinating postpartum. Breastfeeding is not a contraindication."
+    }
+  ],
+  "context": "Congenital rubella causes cataract, sensorineural deafness and cardiac defects, classically patent ductus arteriosus, with the highest risk when maternal infection occurs in the first trimester.\n\nAntenatal screening finds the non-immune woman so she can be vaccinated after this pregnancy and the next one is protected. MMR is live and is not given in pregnancy; advise avoiding conception for 28 days after vaccination.\n\nDuring the current pregnancy the advice is to avoid contact with rubella-like illness and report any exposure promptly.",
+  "publicModule": {
+    "schemaVersion": 1,
+    "origin": "mirrored",
+    "discipline": "paeds",
+    "mirroredFrom": "md3:e7db971bf7fe3614",
+    "itemText": {
+      "licence": "CC-BY-4.0",
+      "attribution": "MD3 contributors"
+    },
+    "evidence": {
+      "kind": "reference",
+      "sourceId": "aih-rubella"
+    },
+    "review": {
+      "verdict": "passed",
+      "contentHash": "33160781fed4be819852eed4a300bcc301837150f33fa015a8e089541e446901"
+    }
+  }
+}

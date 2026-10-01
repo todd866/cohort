@@ -1,0 +1,71 @@
+{
+  "id": "bank:usmle-step1:pharm-digoxin-uses:v1",
+  "rotation": "usmle-step1-open",
+  "topics": [
+    "digoxin",
+    "heart failure"
+  ],
+  "moduleNodes": [
+    "usmle/step1",
+    "usmle/step1/pharmacology"
+  ],
+  "questionType": "mechanism",
+  "difficulty": "easy",
+  "stem": "Digoxin is used primarily to treat which pair of cardiac problems?",
+  "options": [
+    {
+      "label": "A",
+      "text": "Hypertension and aortic dissection",
+      "isCorrect": false,
+      "misconception": "Assumes any cardiac drug lowers blood pressure or protects the aortic wall.",
+      "explanation": "Hypertension and aortic dissection need blood pressure and shear-stress reduction, for example with beta blockers; digoxin raises contractility and lowers neither."
+    },
+    {
+      "label": "B",
+      "text": "Pericarditis and pericardial effusion",
+      "isCorrect": false,
+      "misconception": "Treats cardiac inflammation as a digoxin indication.",
+      "explanation": "Pericarditis and effusion are treated with NSAIDs, colchicine or drainage; digoxin has no role in pericardial disease."
+    },
+    {
+      "label": "C",
+      "text": "Infective endocarditis and Lyme carditis",
+      "isCorrect": false,
+      "misconception": "Confuses management of cardiac infection with inotropic therapy.",
+      "explanation": "Endocarditis and Lyme carditis are infections needing antibiotics; digoxin is not an antimicrobial and can worsen the heart block Lyme carditis causes."
+    },
+    {
+      "label": "D",
+      "text": "Stable angina and coronary vasospasm",
+      "isCorrect": false,
+      "misconception": "Confuses digoxin with antianginal drugs such as nitrates and calcium channel blockers.",
+      "explanation": "Stable angina is treated with nitrates, beta blockers or calcium channel blockers; coronary vasospasm with calcium channel blockers and nitrates. Digoxin raises contractility and oxygen demand."
+    },
+    {
+      "label": "E",
+      "text": "Heart failure and arrhythmias",
+      "isCorrect": true,
+      "misconception": "None — digoxin treats heart failure and arrhythmias.",
+      "explanation": "The label lists heart failure and abnormal heart rhythms (arrhythmias) as the conditions digoxin is used to treat."
+    }
+  ],
+  "context": "Learning objective: Digoxin is used to treat heart failure and abnormal heart rhythms (arrhythmias).",
+  "cite": "medlineplus-digoxin#digoxin-uses",
+  "publicUsmle": {
+    "schemaVersion": 1,
+    "origin": "generated",
+    "itemText": {
+      "licence": "CC-BY-4.0",
+      "attribution": "MD3 contributors"
+    },
+    "evidence": {
+      "kind": "passage",
+      "sourceId": "medlineplus-digoxin",
+      "passageId": "digoxin-uses",
+      "licence": {
+        "cls": "foss",
+        "id": "us-gov"
+      }
+    }
+  }
+}

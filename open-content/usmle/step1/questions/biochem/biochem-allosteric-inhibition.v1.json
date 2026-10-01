@@ -1,0 +1,70 @@
+{
+  "id": "bank:usmle-step1:biochem-allosteric-inhibition:v1",
+  "rotation": "usmle-step1-open",
+  "topics": [
+    "allosteric regulation"
+  ],
+  "moduleNodes": [
+    "usmle/step1",
+    "usmle/step1/biochem"
+  ],
+  "questionType": "mechanism",
+  "difficulty": "medium",
+  "stem": "An allosteric inhibitor typically binds where on the enzyme?",
+  "options": [
+    {
+      "label": "A",
+      "text": "Only to ribosomal RNA in the cytosol",
+      "isCorrect": false,
+      "misconception": "Wrong macromolecule class.",
+      "explanation": "Allostery here is protein-ligand regulation."
+    },
+    {
+      "label": "B",
+      "text": "At a regulatory site away from catalysis",
+      "isCorrect": true,
+      "misconception": "None; allosteric ligands bind elsewhere and reshape function.",
+      "explanation": "OpenStax describes an allosteric site that still prevents substrate binding at the active site."
+    },
+    {
+      "label": "C",
+      "text": "First destroys the substrate in solution",
+      "isCorrect": false,
+      "misconception": "Not required for classic allosteric control.",
+      "explanation": "Classic allostery is conformational on the enzyme."
+    },
+    {
+      "label": "D",
+      "text": "Covalently on the catalytic nucleophile only",
+      "isCorrect": false,
+      "misconception": "Describes some irreversible covalent inhibitors.",
+      "explanation": "Allosteric sites are separate regulatory pockets."
+    },
+    {
+      "label": "E",
+      "text": "Only to oxygen within complex IV",
+      "isCorrect": false,
+      "misconception": "Category error from electron transport.",
+      "explanation": "Not general enzyme allostery."
+    }
+  ],
+  "context": "Learning objective: allosteric inhibitors bind away from the active site.",
+  "cite": "openstax-biology-2e#allosteric-site",
+  "publicUsmle": {
+    "schemaVersion": 1,
+    "origin": "generated",
+    "itemText": {
+      "licence": "CC-BY-4.0",
+      "attribution": "MD3 contributors"
+    },
+    "evidence": {
+      "kind": "passage",
+      "sourceId": "openstax-biology-2e",
+      "passageId": "allosteric-site",
+      "licence": {
+        "cls": "foss",
+        "id": "cc-by-4.0"
+      }
+    }
+  }
+}

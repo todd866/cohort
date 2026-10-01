@@ -1,0 +1,35 @@
+{
+  "figureId": "erythema-target-zones-model",
+  "tool": "built-in image_gen",
+  "model": null,
+  "referenceAssetIds": [],
+  "externalReferenceImages": [],
+  "prompt": "Original educational conceptual illustration, landscape 3:2. Warm ivory paper, sophisticated hand-painted gouache/watercolour, confident fine brown outlines, navy lettering, restrained teal, coral and amber. Editorial science illustration with spacious composition and large legible labels. The explanatory structure must carry the meaning visually: molecules, objects, geometry or flow; never paragraphs in boxes. No organs, regional anatomy, teeth or joint cutaways, tissue layers, invented histology, diagnostic photographs, radiographs or patient data. All symbols are explicitly conceptual. Footer: 'Conceptual teaching model • Not to scale'. Title 'Three concentric colour zones', subtitle 'Classic target pattern'. One large perfectly FLAT circular paper cut-out seen straight from above on ivory background. Exactly three concentric filled regions: central muted plum/dusky disk, surrounding wide pale cream-pink annulus, outer wide coral-red annulus. No additional rings, pupil, highlight, iris texture or eye shape. Three well-separated navy leader lines end unambiguously inside their own region: 'Dusky centre' ends in central disk; 'Paler middle zone' ends in middle ring; 'Red outer margin' ends in outer coral ring. Small phrase 'Erythema multiforme'. This is paper colour geometry, not actual skin. Bottom text 'Colour model, not a diagnostic skin image'. No body, histology or anatomical cross-section.",
+  "clinicalSources": [
+    {
+      "title": "DermNet: Erythema multiforme",
+      "url": "https://dermnetnz.org/topics/erythema-multiforme"
+    }
+  ],
+  "teaching": {
+    "question": "What colour arrangement describes a classic erythema multiforme target lesion?",
+    "answer": "A dusky centre is surrounded by a paler middle zone and then a red peripheral margin. Clinical assessment is still needed because target-like lesions have multiple causes.",
+    "imageRole": "after-reveal"
+  },
+  "title": "Three concentric colour zones",
+  "caption": "A classic erythema multiforme target has a dusky centre, a paler middle zone and a red outer margin. These flat colour rings illustrate the spatial vocabulary rather than a clinical lesion.",
+  "alt": "Three concentric painted paper regions—dusky centre, pale middle ring and coral outer ring—are labelled with leaders ending in the correct zone.",
+  "review": {
+    "status": "pending-independent-qa",
+    "method": "agent-visual-and-source-review",
+    "notes": "Exactly three concentric filled regions: dusky plum centre, pale middle annulus, coral-red outer annulus. Each of the three leader dots ends in its correctly named zone. Image is flat paper geometry and states that it is not a diagnostic skin image; no pupil, skin texture or anatomy.",
+    "structure": {
+      "kind": "conceptual",
+      "status": "verified",
+      "specificationFiles": [
+        "scaffolds/erythema-target-zones-model.json"
+      ],
+      "notes": "Exactly three concentric filled regions: dusky plum centre, pale middle annulus, coral-red outer annulus. Each of the three leader dots ends in its correctly named zone. Image is flat paper geometry and states that it is not a diagnostic skin image; no pupil, skin texture or anatomy."
+    }
+  }
+}

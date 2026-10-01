@@ -1,0 +1,43 @@
+{
+  "figureId": "distal-superficial-fibular-sensation",
+  "kind": "spatial-anatomy",
+  "sourceFacts": [
+    {
+      "fact": "Dorsal cutaneous territories include superficial fibular, deep fibular, sural and saphenous contributions; their boundaries vary.",
+      "sourceUrls": [
+        "https://pmc.ncbi.nlm.nih.gov/articles/PMC6449594/"
+      ]
+    },
+    {
+      "fact": "Variation makes exact dorsal sensory boundaries schematic.",
+      "sourceUrls": [
+        "https://pubmed.ncbi.nlm.nih.gov/32196762/"
+      ]
+    }
+  ],
+  "nodes": [
+    "Deep fibular first web space",
+    "Superficial fibular dorsum",
+    "Sural lateral border",
+    "Saphenous medial border"
+  ],
+  "edges": [],
+  "forbiddenAnatomy": [
+    "No invented labels, diagnostic imaging, patient likeness or unsupported precision."
+  ],
+  "validation": {
+    "reviewer": "batch2_source_review",
+    "reviewedAt": "2026-09-19",
+    "baseSha256": "6dd2de5db898c52bde10393865dd9428855a3d152d3ba3e6e22c95010510b8d8",
+    "annotationSha256": "39b79783a900b9880596c55d6d59f609858284ee55c0c2d48fffd0e6015e95ff",
+    "finalSha256": "be19fe10d310a6f34fc10d98de07f2c435c824667ff555814e5a0e335babcc84",
+    "checks": {
+      "sourceComparison": true,
+      "blindEndpoints": true,
+      "leaders": true,
+      "fullSize": true,
+      "mobile375": true
+    },
+    "notes": "Reviewed unchanged right dorsal foot, five digits and independently checked territory endpoints. Distal nail regions neutral; sole sparing is an examination finding, not shown anatomy. V2 preserves all reviewed territory geometry, raises colour contrast and main labels to 14px at 375px. Independent final pixel review accepted unambiguous leaders, readable labels and no teaching-content crop."
+  }
+}

@@ -1,0 +1,73 @@
+{
+  "id": "bank:usmle-step1:gi-intrinsic-factor-b12-r1:v1",
+  "rotation": "usmle-step1-open",
+  "ladderId": "intrinsic-factor-b12",
+  "topics": [
+    "intrinsic factor",
+    "vitamin B12",
+    "ladder:intrinsic-factor-b12"
+  ],
+  "moduleNodes": [
+    "usmle/step1",
+    "usmle/step1/gastrointestinal"
+  ],
+  "questionType": "mechanism",
+  "difficulty": "easy",
+  "stem": "Intrinsic factor, secreted by gastric parietal cells, is required for absorption of which of the following in the terminal ileum?",
+  "options": [
+    {
+      "label": "A",
+      "text": "Iron",
+      "isCorrect": false,
+      "misconception": "A microcytic-anemia mineral is being confused with the intrinsic-factor-dependent vitamin.",
+      "explanation": "Iron is absorbed in the duodenum and does not require intrinsic factor; its deficiency causes microcytic anemia."
+    },
+    {
+      "label": "B",
+      "text": "Folate",
+      "isCorrect": false,
+      "misconception": "Another macrocytic vitamin is being selected, but it does not need intrinsic factor.",
+      "explanation": "Folate is absorbed proximally in the jejunum without intrinsic factor; B12 is the ileal, intrinsic-factor-dependent vitamin."
+    },
+    {
+      "label": "C",
+      "text": "Vitamin B12",
+      "isCorrect": true,
+      "misconception": "None; intrinsic factor enables terminal ileal B12 absorption.",
+      "explanation": "Intrinsic factor binds vitamin B12, allowing its absorption in the terminal ileum; without it, B12 deficiency causes macrocytic anemia and neurological dysfunction."
+    },
+    {
+      "label": "D",
+      "text": "Vitamin D",
+      "isCorrect": false,
+      "misconception": "A fat-soluble vitamin absorbed with bile is being confused with B12.",
+      "explanation": "Vitamin D is absorbed with dietary fat throughout the small intestine and does not require intrinsic factor."
+    },
+    {
+      "label": "E",
+      "text": "Bile salts",
+      "isCorrect": false,
+      "misconception": "A lipid-emulsifying product is being confused with a vitamin carrier requirement.",
+      "explanation": "Bile salts are absorbed in the terminal ileum but are not the substrate for intrinsic factor; B12 is."
+    }
+  ],
+  "context": "Learning objective: identify the intrinsic-factor-dependent vitamin. Parietal cells secrete intrinsic factor; without it, vitamin B12 cannot be absorbed in the terminal ileum.",
+  "cite": "openstax-anatomy-physiology#gi-intrinsic-factor-b12",
+  "publicUsmle": {
+    "schemaVersion": 1,
+    "origin": "generated",
+    "itemText": {
+      "licence": "CC-BY-4.0",
+      "attribution": "MD3 contributors"
+    },
+    "evidence": {
+      "kind": "passage",
+      "sourceId": "openstax-anatomy-physiology",
+      "passageId": "gi-intrinsic-factor-b12",
+      "licence": {
+        "cls": "foss",
+        "id": "cc-by-4.0"
+      }
+    }
+  }
+}

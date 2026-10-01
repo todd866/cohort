@@ -1,0 +1,66 @@
+{
+  "id": "bank:cohort:paeds:q-2294851f2f87:v1",
+  "rotation": "cohort-open",
+  "moduleNodes": [
+    "cohort/paeds"
+  ],
+  "topics": [
+    "exanthems",
+    "streptococcal",
+    "diagnosis"
+  ],
+  "questionType": "diagnosis",
+  "difficulty": "medium",
+  "stem": "A 6-year-old with sore throat and fever develops a fine 'sandpaper-like' erythematous rash sparing the face but with flushed cheeks and circumoral pallor. Strawberry tongue is noted.\n\nWhat is the diagnosis?",
+  "options": [
+    {
+      "label": "A",
+      "text": "Drug reaction",
+      "isCorrect": false,
+      "explanation": "A drug reaction can cause erythema, but it does not classically produce sore throat, strawberry tongue, and a sandpaper rash. This triad fits scarlet fever better."
+    },
+    {
+      "label": "B",
+      "text": "Toxic shock syndrome",
+      "isCorrect": false,
+      "explanation": "Toxic shock causes severe systemic toxicity and hypotension rather than a straightforward streptococcal pharyngitis picture. The child described has a more classic scarlet fever presentation."
+    },
+    {
+      "label": "C",
+      "text": "Scarlet fever",
+      "isCorrect": true,
+      "explanation": "Correct. A fine sandpaper rash with strawberry tongue and circumoral pallor in a child with sore throat is classic for scarlet fever.\n\nGroup A streptococcus is the usual cause."
+    },
+    {
+      "label": "D",
+      "text": "Kawasaki disease",
+      "isCorrect": false,
+      "explanation": "Kawasaki can give strawberry tongue and rash, but the associated sore throat and classic sandpaper texture point to scarlet fever instead. Kawasaki usually has broader mucocutaneous criteria."
+    },
+    {
+      "label": "E",
+      "text": "Measles",
+      "isCorrect": false,
+      "explanation": "Measles is associated with cough, coryza, conjunctivitis, and a different rash morphology. It does not typically feel sandpaper-like."
+    }
+  ],
+  "context": "A streptococcal pharyngitis with toxin-mediated rash gives the recognisable triad of sandpaper-textured erythema, strawberry tongue, and circumoral pallor, often with Pastia's lines in the skin creases.\n\nTreat with penicillin (or amoxicillin) to prevent rheumatic fever — antibiotics do NOT prevent post-streptococcal glomerulonephritis.",
+  "publicModule": {
+    "schemaVersion": 1,
+    "origin": "mirrored",
+    "discipline": "paeds",
+    "mirroredFrom": "md3:2294851f2f87015e",
+    "itemText": {
+      "licence": "CC-BY-4.0",
+      "attribution": "MD3 contributors"
+    },
+    "evidence": {
+      "kind": "reference",
+      "sourceId": "rch-sore-throat"
+    },
+    "review": {
+      "verdict": "passed",
+      "contentHash": "620605e9b1d8c0c4b253d51d8e7f4f395995b4c9659e2d9da2641ff3d8a2d08a"
+    }
+  }
+}

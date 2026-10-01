@@ -1,0 +1,85 @@
+{
+  "schemaVersion": 1,
+  "id": "concept-intussusception-ischaemia-sequence",
+  "kind": "conceptual",
+  "sourceFacts": [
+    {
+      "fact": "Intussusception can cause obstruction, venous congestion and eventually bowel-wall ischaemia.",
+      "sourceUrls": [
+        "https://www.rch.org.au/clinicalguide/guideline_index/intussusception/"
+      ]
+    },
+    {
+      "fact": "Rectal bleeding or redcurrant-jelly stool is a late and less common sign suggesting ischaemia.",
+      "sourceUrls": [
+        "https://www.rch.org.au/clinicalguide/guideline_index/intussusception/"
+      ]
+    }
+  ],
+  "nodes": [
+    {
+      "id": "1",
+      "label": "Intussusception"
+    },
+    {
+      "id": "2",
+      "label": "Venous congestion"
+    },
+    {
+      "id": "3",
+      "label": "Ischaemia"
+    },
+    {
+      "id": "4",
+      "label": "Blood and mucus in stool"
+    }
+  ],
+  "edges": [
+    {
+      "from": "1",
+      "to": "2",
+      "meaning": "vascular consequence"
+    },
+    {
+      "from": "2",
+      "to": "3",
+      "meaning": "progression"
+    },
+    {
+      "from": "3",
+      "to": "4",
+      "meaning": "late sign"
+    }
+  ],
+  "labels": [
+    "Intussusception: why bloody mucus is late",
+    "Intussusception",
+    "Venous congestion",
+    "Ischaemia",
+    "Blood and mucus in stool",
+    "Conceptual schematic • Not anatomy"
+  ],
+  "layout": "Four plain paper cards arranged downward on a time staircase. Node1 a neutral stop symbol with the word Intussusception, no telescoping bowel. Node2 a stack of accumulating blue dots, no veins. Node3 a falling supply gauge, no tissue. Node4 a red drop beside a white wavy ribbon as ABSTRACT blood and mucus symbols, not a clinical stool picture. Exactly three arrows. Put a large ochre LATE tag above node4. Bottom note: Less common; do not wait for this sign. No target scan, bowel, vessels, organs or actual faecal illustration.",
+  "forbiddenAnatomy": [
+    "organs",
+    "body silhouettes",
+    "tissue cross-sections",
+    "cells",
+    "tubules",
+    "vessels",
+    "clinical photographs",
+    "diagnostic scans"
+  ],
+  "validation": {
+    "sourceStatus": "checked",
+    "structureStatus": "verified",
+    "requiredChecks": [
+      "Congestion before ischaemia before blood/mucus",
+      "Four nodes/three arrows",
+      "Late and less common explicitly stated",
+      "No simulated scan, bowel or blood vessel"
+    ],
+    "clinicalReviewStatus": "pending",
+    "pixelChecks": "Pixel check: four cards/three arrows order intussusception, congestion, ischaemia and blood/mucus. LATE and less common/do not wait qualifiers prominent. Dot inventory and supply gauge are abstract, white ribbon is mucus symbol, no bowel/vascular anatomy. Independent and clinical review pending."
+  }
+}

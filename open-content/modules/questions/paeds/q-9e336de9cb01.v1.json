@@ -1,0 +1,66 @@
+{
+  "id": "bank:cohort:paeds:q-9e336de9cb01:v1",
+  "rotation": "cohort-open",
+  "moduleNodes": [
+    "cohort/paeds"
+  ],
+  "topics": [
+    "dentistry",
+    "caries prevention",
+    "fluoride"
+  ],
+  "questionType": "next-step",
+  "difficulty": "hard",
+  "stem": "At the 18-month check a parent says they brush their toddler's teeth with water only, because they were told fluoride toothpaste is unsafe before school age. The family lives in a fluoridated water area.\n\nWhat is the most appropriate advice?",
+  "options": [
+    {
+      "label": "A",
+      "text": "Brush twice daily with a smear of paediatric fluoride toothpaste",
+      "isCorrect": true,
+      "explanation": "RCH advises that children over 12 months brush twice daily with a smear of paediatric fluoridated toothpaste. Fluoride's protective effect is topical, so the toothpaste is what matters, and the child spits out rather than rinsing so fluoride stays on the enamel."
+    },
+    {
+      "label": "B",
+      "text": "Continue brushing with water alone until the child turns six",
+      "isCorrect": false,
+      "explanation": "This leaves the primary teeth unprotected through the years when early childhood caries starts. RCH advises a smear of paediatric fluoride toothpaste from over 12 months."
+    },
+    {
+      "label": "C",
+      "text": "Switch to standard adult toothpaste now, as the water is fluoridated",
+      "isCorrect": false,
+      "explanation": "Standard toothpaste before age six raises the risk of fluorosis in the forming permanent teeth. Fluoridated water is not a reason to raise the dose."
+    },
+    {
+      "label": "D",
+      "text": "Give a daily fluoride tablet instead of using any toothpaste",
+      "isCorrect": false,
+      "explanation": "Supplements are not recommended where water is fluoridated, and swallowed fluoride is the fluorosis risk rather than the caries benefit."
+    },
+    {
+      "label": "E",
+      "text": "Rinse thoroughly with water after brushing to avoid swallowing",
+      "isCorrect": false,
+      "explanation": "Rinsing washes the fluoride off the enamel and removes most of the benefit. The advice is spit, do not rinse."
+    }
+  ],
+  "context": "Fluoride works mainly on the tooth surface, remineralising early lesions and slowing acid attack. That is why toothpaste matters even when the water is fluoridated, and why the child should spit and not rinse.\n\nRCH: children over 12 months should brush twice daily with a smear of paediatric fluoridated toothpaste.\n\nThe risk being balanced is dental fluorosis, which comes from swallowed fluoride while the permanent enamel is forming.",
+  "publicModule": {
+    "schemaVersion": 1,
+    "origin": "mirrored",
+    "discipline": "paeds",
+    "mirroredFrom": "md3:9e336de9cb013c01",
+    "itemText": {
+      "licence": "CC-BY-4.0",
+      "attribution": "MD3 contributors"
+    },
+    "evidence": {
+      "kind": "reference",
+      "sourceId": "rch-dental-conditions-non-traumatic"
+    },
+    "review": {
+      "verdict": "passed",
+      "contentHash": "09f216e5e520020d9cc972d76a39a76b2473384ec5af67d85a0114e776e7dc87"
+    }
+  }
+}

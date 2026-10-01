@@ -1,0 +1,20 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 340" role="img" aria-labelledby="t d">
+  <title id="t">DNA structure replication and central dogma</title>
+  <desc id="d">DNA double helix; parental strands template replication; codon triplets; central dogma of DNA-protein synthesis.</desc>
+  <rect width="720" height="340" fill="#ffffff"/>
+  <text x="360" y="26" text-anchor="middle" font-family="Helvetica,Arial,sans-serif" font-size="15" font-weight="700" fill="#111">DNA structure replication and central dogma</text>
+  <defs>
+    <marker id="arr" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto">
+      <path d="M0,0 L10,5 L0,10 z" fill="#1d4ed8"/>
+    </marker>
+  </defs>
+  <rect x="40" y="60" width="160" height="80" rx="6" fill="#dbeafe" stroke="#111" stroke-width="1.5"/>
+  <text x="120.0" y="98" text-anchor="middle" font-family="Helvetica,Arial,sans-serif" font-size="11" font-weight="700" fill="#111">DNA</text>
+  <text x="120.0" y="112" text-anchor="middle" font-family="Helvetica,Arial,sans-serif" font-size="10" fill="#333">double helix</text>  <rect x="260" y="60" width="160" height="80" rx="6" fill="#fef3c7" stroke="#111" stroke-width="1.5"/>
+  <text x="340.0" y="98" text-anchor="middle" font-family="Helvetica,Arial,sans-serif" font-size="11" font-weight="700" fill="#111">Replication</text>
+  <text x="340.0" y="112" text-anchor="middle" font-family="Helvetica,Arial,sans-serif" font-size="10" fill="#333">each strand template</text>  <rect x="480" y="60" width="200" height="80" rx="6" fill="#d1fae5" stroke="#111" stroke-width="1.5"/>
+  <text x="580.0" y="98" text-anchor="middle" font-family="Helvetica,Arial,sans-serif" font-size="11" font-weight="700" fill="#111">Codon</text>
+  <text x="580.0" y="112" text-anchor="middle" font-family="Helvetica,Arial,sans-serif" font-size="10" fill="#333">nucleotide triplet</text>  <line x1="200" y1="100" x2="260" y2="100" stroke="#1d4ed8" stroke-width="2" marker-end="url(#arr)"/>  <rect x="140" y="200" width="440" height="100" rx="6" fill="#fce7f3" stroke="#111" stroke-width="1.5"/>
+  <text x="360.0" y="248" text-anchor="middle" font-family="Helvetica,Arial,sans-serif" font-size="11" font-weight="700" fill="#111">Central dogma</text>
+  <text x="360.0" y="262" text-anchor="middle" font-family="Helvetica,Arial,sans-serif" font-size="10" fill="#333">DNA to RNA to protein synthesis</text>
+</svg>

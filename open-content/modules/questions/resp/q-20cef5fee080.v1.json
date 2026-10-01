@@ -1,0 +1,67 @@
+{
+  "id": "bank:cohort:resp:q-20cef5fee080:v1",
+  "rotation": "cohort-open",
+  "moduleNodes": [
+    "cohort/resp"
+  ],
+  "topics": [
+    "Respiratory",
+    "Chronic Cough in Children",
+    "Cough",
+    "Children"
+  ],
+  "questionType": "management",
+  "difficulty": "medium",
+  "stem": "A 6-year-old has a 3-month history of daily wet cough. He has no fever, no failure to thrive, no clubbing, and no history of choking. His chest X-ray and spirometry are both normal.\n\nWhat is the most appropriate initial management?",
+  "options": [
+    {
+      "label": "A",
+      "text": "Reassure and review in 4 weeks as most cough is post-viral",
+      "isCorrect": false,
+      "explanation": "A wet cough lasting more than 4 weeks is already chronic and warrants targeted treatment, not further watchful waiting."
+    },
+    {
+      "label": "B",
+      "text": "Trial of inhaled corticosteroid for presumed asthma",
+      "isCorrect": false,
+      "explanation": "A wet cough with no atopy, no wheeze, and normal spirometry is not asthma, and inhaled corticosteroid delays the correct diagnosis."
+    },
+    {
+      "label": "C",
+      "text": "An extended oral course of amoxicillin-clavulanate",
+      "isCorrect": true,
+      "explanation": "Protracted bacterial bronchitis is the commonest cause of chronic wet cough in otherwise well children and usually resolves with a 2-4 week course of amoxicillin-clavulanate."
+    },
+    {
+      "label": "D",
+      "text": "High-resolution computed tomography of the chest now",
+      "isCorrect": false,
+      "explanation": "Chest CT is reserved for suspected bronchiectasis after a failed antibiotic trial or with red flags, not as first-line."
+    },
+    {
+      "label": "E",
+      "text": "Long-term antihistamine for presumed post-nasal drip",
+      "isCorrect": false,
+      "explanation": "Post-nasal drip is more associated with a dry nocturnal cough; a daily wet cough points to protracted bacterial bronchitis."
+    }
+  ],
+  "context": "A cough beyond 4 weeks is chronic and needs workup. A daily wet cough suggests protracted bacterial bronchitis, treated with prolonged amoxicillin-clavulanate; recurrent or refractory cases prompt a bronchiectasis workup.",
+  "publicModule": {
+    "schemaVersion": 1,
+    "origin": "mirrored",
+    "discipline": "resp",
+    "mirroredFrom": "md3:20cef5fee0805be8",
+    "itemText": {
+      "licence": "CC-BY-4.0",
+      "attribution": "MD3 contributors"
+    },
+    "evidence": {
+      "kind": "reference",
+      "sourceId": "rch-cough"
+    },
+    "review": {
+      "verdict": "passed",
+      "contentHash": "aa0d7f3fad239fe0e3277da419cc6d33d3f4d355ee401ea5f1bd1e3506c6777f"
+    }
+  }
+}

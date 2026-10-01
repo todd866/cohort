@@ -1,0 +1,71 @@
+{
+  "id": "bank:usmle-step1:pharm-propranolol-uses:v1",
+  "rotation": "usmle-step1-open",
+  "topics": [
+    "propranolol",
+    "beta blocker"
+  ],
+  "moduleNodes": [
+    "usmle/step1",
+    "usmle/step1/pharmacology"
+  ],
+  "questionType": "mechanism",
+  "difficulty": "easy",
+  "stem": "Propranolol is used to treat which cardiovascular problem?",
+  "options": [
+    {
+      "label": "A",
+      "text": "High blood pressure",
+      "isCorrect": true,
+      "misconception": "None — high blood pressure is a listed propranolol use.",
+      "explanation": "High blood pressure heads propranolol's listed uses, alongside irregular heartbeats, angina, migraine and improving survival after a heart attack."
+    },
+    {
+      "label": "B",
+      "text": "Symptomatic sinus bradycardia",
+      "isCorrect": false,
+      "misconception": "Assumes a heart-rate drug helps every rhythm problem, including slow rates.",
+      "explanation": "Beta blockade slows the sinus node further, so propranolol worsens symptomatic bradycardia; atropine or pacing is used instead."
+    },
+    {
+      "label": "C",
+      "text": "Third-degree heart block",
+      "isCorrect": false,
+      "misconception": "Groups conduction block with the arrhythmias that beta blockers treat.",
+      "explanation": "Propranolol slows AV nodal conduction, so it is contraindicated in third-degree heart block, which needs pacing."
+    },
+    {
+      "label": "D",
+      "text": "Cardiogenic shock",
+      "isCorrect": false,
+      "misconception": "Treats every pump problem as a beta-blocker use, ignoring negative inotropy.",
+      "explanation": "Cardiogenic shock needs inotropic support; a beta blocker lowers contractility and would deepen the shock."
+    },
+    {
+      "label": "E",
+      "text": "Orthostatic hypotension",
+      "isCorrect": false,
+      "misconception": "Confuses treating high blood pressure with treating low pressure on standing.",
+      "explanation": "Orthostatic hypotension is treated with volume, fludrocortisone or midodrine; lowering blood pressure with propranolol worsens it."
+    }
+  ],
+  "context": "Learning objective: Propranolol treats high blood pressure, among uses that include irregular heartbeats, angina, migraine and survival after heart attack.",
+  "cite": "medlineplus-propranolol#propranolol-uses",
+  "publicUsmle": {
+    "schemaVersion": 1,
+    "origin": "generated",
+    "itemText": {
+      "licence": "CC-BY-4.0",
+      "attribution": "MD3 contributors"
+    },
+    "evidence": {
+      "kind": "passage",
+      "sourceId": "medlineplus-propranolol",
+      "passageId": "propranolol-uses",
+      "licence": {
+        "cls": "foss",
+        "id": "us-gov"
+      }
+    }
+  }
+}

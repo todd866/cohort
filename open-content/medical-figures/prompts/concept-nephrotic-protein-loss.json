@@ -1,0 +1,25 @@
+{
+  "id": "concept-nephrotic-protein-loss",
+  "title": "How protein loss contributes to oedema",
+  "prompt": "Create an original polished 1536x1024 landscape conceptual medical teaching diagram for after-answer study. Warm hand-painted gouache and watercolour on ivory paper; a gentle storybook warmth with precise dark navy type. Matte teal, ochre, coral and blue accents. Simple neutral tokens, paper tiles, arrows and visibly abstract compartments only. Make the visual relationships legible at small size. No body parts, organs, cells, tissues, lumens, tubules, membranes, vessels, anatomical cutaways, clinical photos, diagnostic scans, babies, realistic flesh or decorative scenery. Do not turn abstract boxes or routes into organs or anatomy. Do not invent extra arrows or medical claims. Footer exactly: Conceptual schematic • Not anatomy. Title exactly: How protein loss contributes to oedema. Exactly four linked concept tiles in a left-to-right chain, with no text on the three connecting arrows. Tile1 uses several ochre albumin coin tokens leaving a plain rectangular inventory box labelled Albumin. Tile2 shows fewer same-sized coins in a second plain inventory box. Tile3 uses a downward pressure-arrow icon only, no tubes or blood vessel. Tile4 contains clustered blue droplet tokens outside a small abstract boundary, not tissue. Below tile4 write: Oedema. Below the whole row write: One contributor; sodium retention also matters. Do not draw human cells, tissue, organs or vessels. Exact node labels: [{\"id\": \"1\", \"label\": \"Albumin lost in urine\"}, {\"id\": \"2\", \"label\": \"Blood albumin falls\"}, {\"id\": \"3\", \"label\": \"Plasma oncotic pressure falls\"}, {\"id\": \"4\", \"label\": \"Fluid accumulates in tissues\"}]. Exact directed connections: [{\"from\": \"1\", \"to\": \"2\", \"meaning\": \"causal\"}, {\"from\": \"2\", \"to\": \"3\", \"meaning\": \"causal\"}, {\"from\": \"3\", \"to\": \"4\", \"meaning\": \"contributes\"}]. Required checks: Four tiles and three forward arrows only; Albumin loss precedes lower blood albumin and lower oncotic pressure; Use the qualified word contributes for oedema; No glomerulus, vessels, tissue or anatomy.",
+  "clinicalSources": [
+    {
+      "title": "NIDDK — Nephrotic syndrome in children",
+      "url": "https://www.niddk.nih.gov/health-information/kidney-disease/children/nephrotic-syndrome-children"
+    }
+  ],
+  "caption": "Albumin loss, reduced plasma oncotic pressure and tissue fluid accumulation form one pathway contributing to nephrotic oedema.",
+  "question": "How can urinary albumin loss contribute to oedema?",
+  "answer": "Loss of albumin lowers its blood concentration and plasma oncotic pressure, contributing to movement of fluid into tissues; sodium retention can also contribute.",
+  "structureSpecification": "scaffolds/concept-nephrotic-protein-loss.json",
+  "generationInputs": {
+    "referenceImages": [],
+    "style": "written-only"
+  },
+  "qa": {
+    "status": "pending-independent-qa",
+    "method": "agent-visual-and-source-review",
+    "notes": "Pixel structure check: four tiles link urinary albumin loss to lower blood albumin, lower oncotic pressure and tissue fluid; same-size neutral tokens and droplets, no anatomy. Footer qualifies this as one contributor and names sodium retention. All node labels and three causal edges match scaffold. Independent and clinical review pending.",
+    "clinicalReviewStatus": "pending"
+  }
+}

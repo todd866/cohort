@@ -1,0 +1,39 @@
+// =============================================================================
+// DEEP DIVE CHAT LOGGING
+// DeepDiveChatSession, DeepDiveChatMessage
+// =============================================================================
+
+model DeepDiveChatSession {
+  id           String @id @default(cuid())
+  userId       String
+  deepDiveSlug String
+
+  messages DeepDiveChatMessage[]
+
+  createdAt DateTime @default(now()) @db.Timestamptz(3)
+  updatedAt DateTime @updatedAt @db.Timestamptz(3)
+
+  user User @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@unique([userId, deepDiveSlug])
+  @@index([deepDiveSlug])
+}
+
+model DeepDiveChatMessage {
+  id               String  @id @default(cuid())
+  sessionId        String
+  role             String // 'user' | 'assistant' | 'system'
+  content          String  @db.Text
+  model            String?
+  promptTokens     Int?
+  completionTokens Int?
+  totalTokens      Int?
+  latencyMs        Int?
+
+  createdAt DateTime @default(now()) @db.Timestamptz(3)
+
+  session DeepDiveChatSession @relation(fields: [sessionId], references: [id], onDelete: Cascade)
+
+  @@index([sessionId])
+  @@index([createdAt])
+}

@@ -1,0 +1,168 @@
+// =============================================================================
+// COHORT BRIDGE — ANKI DESKTOP, MILESTONE 1
+// Storage contract for future device-scoped pairing and Anki-authoritative,
+// Anki-to-Cohort custody sync. No bridge routes/add-on runtime exist yet.
+// No model in this file grants Cohort authority to write Anki scheduling state.
+// =============================================================================
+
+model AnkiBridgePairing {
+  id          String @id @default(cuid())
+  ownerUserId String
+  owner       User   @relation(fields: [ownerUserId], references: [id], onDelete: Cascade, onUpdate: Restrict, map: "AnkiBridgePairing_owner_fkey")
+
+  collectionId String
+  collection   AnkiCollection @relation(fields: [collectionId, ownerUserId], references: [id, ownerUserId], onDelete: Cascade, onUpdate: Restrict, map: "AnkiBridgePairing_collection_owner_fkey")
+
+  // A keyed SHA-256 digest. The future service must return the short-lived
+  // display code once and never persist it; a server-side pepper prevents
+  // offline guessing after a database-only disclosure. SQL caps the window at
+  // ten minutes and exact-code attempts at five.
+  codeHash     String    @unique
+  expiresAt    DateTime  @db.Timestamptz(3)
+  attemptCount Int       @default(0)
+  consumedAt   DateTime? @db.Timestamptz(3)
+  cancelledAt  DateTime? @db.Timestamptz(3)
+  createdAt    DateTime  @default(now()) @db.Timestamptz(3)
+
+  @@unique([id, ownerUserId, collectionId], map: "AnkiBridgePairing_id_owner_collection_key")
+  @@index([ownerUserId, expiresAt], map: "AnkiBridgePairing_owner_expiry_idx")
+  @@index([collectionId, expiresAt], map: "AnkiBridgePairing_collection_expiry_idx")
+}
+
+model AnkiSyncPeer {
+  id          String @id @default(cuid())
+  ownerUserId String
+  owner       User   @relation(fields: [ownerUserId], references: [id], onDelete: Cascade, onUpdate: Restrict, map: "AnkiSyncPeer_owner_fkey")
+
+  collectionId String
+  collection   AnkiCollection @relation(fields: [collectionId, ownerUserId], references: [id, ownerUserId], onDelete: Cascade, onUpdate: Restrict, map: "AnkiSyncPeer_collection_owner_fkey")
+
+  deviceName        String
+  credentialHash    String @unique
+  credentialVersion Int    @default(1)
+  protocolVersion   Int
+  addonVersion      String
+  ankiVersion       String
+  capabilities      Json   @db.JsonB
+  syncMode          String @default("anki_to_cohort")
+
+  revokedAt  DateTime? @db.Timestamptz(3)
+  lastSeenAt DateTime? @db.Timestamptz(3)
+  createdAt  DateTime  @default(now()) @db.Timestamptz(3)
+  updatedAt  DateTime  @updatedAt @db.Timestamptz(3)
+
+  cursors     AnkiSyncCursor[]
+  operations  AnkiBridgeOperation[]
+  conflicts   AnkiConflict[]
+  eligibility AnkiEligibilityState[]
+
+  @@unique([id, ownerUserId, collectionId], map: "AnkiSyncPeer_id_owner_collection_key")
+  @@index([ownerUserId, revokedAt], map: "AnkiSyncPeer_owner_revoked_idx")
+  @@index([collectionId, revokedAt], map: "AnkiSyncPeer_collection_revoked_idx")
+}
+
+model AnkiSyncCursor {
+  id           String       @id @default(cuid())
+  ownerUserId  String
+  collectionId String
+  peerId       String
+  peer         AnkiSyncPeer @relation(fields: [peerId, ownerUserId, collectionId], references: [id, ownerUserId, collectionId], onDelete: Cascade, onUpdate: Restrict, map: "AnkiSyncCursor_peer_scope_fkey")
+
+  direction                   String   @default("anki_to_cohort")
+  acknowledgedThroughSequence BigInt   @default(0)
+  nextExpectedSequence        BigInt   @default(1)
+  lastOperationId             String?
+  createdAt                   DateTime @default(now()) @db.Timestamptz(3)
+  updatedAt                   DateTime @updatedAt @db.Timestamptz(3)
+
+  @@unique([peerId, direction], map: "AnkiSyncCursor_peer_direction_key")
+  @@index([ownerUserId, collectionId], map: "AnkiSyncCursor_owner_collection_idx")
+}
+
+// Durable transport receipt. Payloads are immutable: reuse of operationId or
+// sequence with different bytes becomes AnkiConflict, never an overwrite.
+model AnkiBridgeOperation {
+  id           String       @id @default(cuid())
+  ownerUserId  String
+  collectionId String
+  peerId       String
+  peer         AnkiSyncPeer @relation(fields: [peerId, ownerUserId, collectionId], references: [id, ownerUserId, collectionId], onDelete: Cascade, onUpdate: Restrict, map: "AnkiBridgeOperation_peer_scope_fkey")
+
+  operationId String
+  sequence    BigInt
+  batchId     String
+  kind        String
+  payloadHash String
+  payload     Json      @db.JsonB
+  status      String    @default("applied")
+  result      Json?     @db.JsonB
+  appliedAt   DateTime? @db.Timestamptz(3)
+  createdAt   DateTime  @default(now()) @db.Timestamptz(3)
+
+  conflicts AnkiConflict[] @relation("BridgeOperationConflicts")
+
+  @@unique([id, ownerUserId, collectionId, peerId], map: "AnkiBridgeOperation_id_scope_key")
+  @@unique([peerId, operationId], map: "AnkiBridgeOperation_peer_operation_key")
+  @@unique([peerId, sequence], map: "AnkiBridgeOperation_peer_sequence_key")
+  @@index([ownerUserId, collectionId, status], map: "AnkiBridgeOperation_owner_collection_status_idx")
+  @@index([peerId, status, sequence], map: "AnkiBridgeOperation_peer_status_sequence_idx")
+}
+
+model AnkiConflict {
+  id           String       @id @default(cuid())
+  ownerUserId  String
+  collectionId String
+  peerId       String
+  peer         AnkiSyncPeer @relation(fields: [peerId, ownerUserId, collectionId], references: [id, ownerUserId, collectionId], onDelete: Cascade, onUpdate: Restrict, map: "AnkiConflict_peer_scope_fkey")
+
+  bridgeOperationId String?
+  bridgeOperation   AnkiBridgeOperation? @relation("BridgeOperationConflicts", fields: [bridgeOperationId, ownerUserId, collectionId, peerId], references: [id, ownerUserId, collectionId, peerId], onDelete: Cascade, onUpdate: Restrict, map: "AnkiConflict_operation_scope_fkey")
+
+  incomingOperationId String
+  incomingSequence    BigInt
+  conflictType        String
+  objectKind          String?
+  externalId          String?
+  revision            String?
+  localHash           String?
+  remoteHash          String
+  details             Json?     @db.JsonB
+  status              String    @default("open")
+  resolvedAt          DateTime? @db.Timestamptz(3)
+  resolution          Json?     @db.JsonB
+  createdAt           DateTime  @default(now()) @db.Timestamptz(3)
+  updatedAt           DateTime  @updatedAt @db.Timestamptz(3)
+
+  @@unique([peerId, incomingOperationId, remoteHash], map: "AnkiConflict_peer_operation_remote_key")
+  @@index([ownerUserId, status, createdAt], map: "AnkiConflict_owner_status_created_idx")
+  @@index([collectionId, status], map: "AnkiConflict_collection_status_idx")
+  @@index([peerId, status], map: "AnkiConflict_peer_status_idx")
+}
+
+// Acknowledged Anki scheduling state. It is intentionally separate from
+// CardProgress and is never written by Cohort's scheduler.
+model AnkiEligibilityState {
+  id           String       @id @default(cuid())
+  ownerUserId  String
+  collectionId String
+  peerId       String
+  peer         AnkiSyncPeer @relation(fields: [peerId, ownerUserId, collectionId], references: [id, ownerUserId, collectionId], onDelete: Cascade, onUpdate: Restrict, map: "AnkiEligibilityState_peer_scope_fkey")
+
+  externalCardId String
+  queue          Int
+  cardType       Int
+  due            String
+  interval       Int
+  suspended      Boolean
+  buried         Boolean
+  fsrsDataHash   String?
+  rawState       Json     @db.JsonB
+  bridgeSequence BigInt
+  observedAt     DateTime @db.Timestamptz(3)
+  createdAt      DateTime @default(now()) @db.Timestamptz(3)
+  updatedAt      DateTime @updatedAt @db.Timestamptz(3)
+
+  @@unique([collectionId, externalCardId], map: "AnkiEligibilityState_collection_card_key")
+  @@index([ownerUserId, collectionId, suspended, buried], map: "AnkiEligibilityState_owner_collection_eligibility_idx")
+  @@index([peerId, bridgeSequence], map: "AnkiEligibilityState_peer_sequence_idx")
+}

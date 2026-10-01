@@ -1,0 +1,234 @@
+{
+  "schemaVersion": 1,
+  "id": "gamsat:s1:poetry-dickinson",
+  "section": "s1",
+  "title": "Poetic Analysis: Emily Dickinson's \\\"Because I could not stop for Death\\\"",
+  "domain": "poetry-dickinson",
+  "passage": "One of Emily Dickinson's most celebrated poems presents death not as violent intrusion but as courteous companion:\n\n> Because I could not stop for Death –\n> He kindly stopped for me –\n> The Carriage held but just Ourselves –\n> And Immortality.\n>\n> We slowly drove – He knew no haste\n> And I had put away\n> My labor and my leisure too,\n> For His Civility –\n>\n> We passed the School, where Children strove\n> At Recess – in the Ring –\n> We passed the Fields of Gazing Grain –\n> We passed the Setting Sun –\n>\n> Or rather – He passed us –\n> The Dews drew quivering and chill –\n> For only Gossamer, my Gown –\n> My Tippet – only Tulle –\n>\n> We paused before a House that seemed\n> A Swelling of the Ground –\n> The Roof was scarcely visible –\n> The Cornice – in the Ground –\n>\n> Since then – 'tis Centuries – and yet\n> Feels shorter than the Day\n> I first surmised the Horses' Heads\n> Were toward Eternity –\n\nThe poem's power derives partly from its radical reframing of death. Where Christian tradition emphasized judgment and damnation, where Romantic poetry depicted death as dramatic crisis or transcendent release, Dickinson presents an eerily mundane social call. Death becomes a gentleman caller—courteous, patient, properly observant of social niceties. The speaker cannot \"stop\" for him (lacks agency in the timing) yet he \"kindly\" accommodates her schedule, suggesting death's inevitability softened by gentility.\n\nThis domestication of death extends to the carriage ride itself. The vehicle, conventional symbol of progress and status, becomes a hearse, yet the journey proceeds without urgency: \"He knew no haste.\" The speaker abandons \"labor and leisure\"—the entire substance of lived experience—out of politeness, \"His Civility.\" Dickinson transforms mortality's profundity into social obligation, as if death were merely an acquaintance demanding one's time.\n\nThe third stanza accelerates through life stages in rapid succession. Children at play represent youth's innocence; \"Fields of Gazing Grain\" suggest agricultural labor and maturity; \"Setting Sun\" evokes old age. Yet these are \"passed\" almost dismissively, as if the richness of human experience becomes mere scenery observed from death's carriage. The passive voice—\"We passed\"—emphasizes the speaker's surrender of agency. She neither drives nor determines the route; she is passenger to death's itinerary.\n\nThe fourth stanza introduces a crucial correction: \"Or rather – He passed us.\" Death doesn't merely accompany; death overtakes. The reversal suggests a shift in perspective—the speaker realizes she is no longer moving through life but life is receding from her. Temperature drops (\"Dews drew quivering and chill\"), and the speaker's inadequate clothing (\"only Gossamer,\" \"only Tulle\") suggests unpreparedness for death's finality. The fragile fabrics—wedding attire in some readings, burial shroud in others—emphasize vulnerability.\n\nThe \"House\" in stanza five is transparently a grave: a \"Swelling of the Ground\" with roof \"scarcely visible\" and \"Cornice—in the Ground.\" Yet Dickinson maintains the polite fiction, refusing to name death's destination explicitly. This genteel euphemism intensifies rather than softens the horror—the gap between social pretense and physical reality becomes unbridgeable.\n\nThe final stanza's temporal disorientation—\"Centuries\" feeling \"shorter than the Day\"—suggests either eternity's timelessness or death's permanent present tense. The speaker's realization comes retrospectively: \"I first surmised the Horses' Heads / Were toward Eternity.\" The verb \"surmised\" (guessed, inferred) admits uncertainty even at poem's end. The journey's destination remains ambiguous—is this Christian immortality, annihilation, or suspended consciousness? Dickinson's refusal of doctrinal certainty distinguishes her from conventionally pious contemporaries.\n\nCritics debate whether the poem affirms or subverts religious consolation. Some read the \"Immortality\" in stanza one as genuine companion, suggesting eternal life. Others emphasize the poem's unsettling ambiguities: death's exces sive politeness reads as sinister; the cold, inadequate clothing suggests not transcendence but exposure; the timeless perspective may be death's eternal consciousness rather than heavenly reward. Perhaps the poem's power lies precisely in this irresolution—death remains both ordinary social ritual and incomprehensible mystery.",
+  "questions": [
+    {
+      "id": "gamsat:s1:poetry-dickinson:q1",
+      "moves": [
+        "s1-figurative-image"
+      ],
+      "stem": "In stanza 1, Death is personified primarily as:",
+      "options": [
+        {
+          "label": "A",
+          "text": "A violent intruder",
+          "isCorrect": false
+        },
+        {
+          "label": "B",
+          "text": "A courteous gentleman",
+          "isCorrect": true
+        },
+        {
+          "label": "C",
+          "text": "A terrifying monster",
+          "isCorrect": false
+        },
+        {
+          "label": "D",
+          "text": "An old friend",
+          "isCorrect": false
+        }
+      ],
+      "explanation": "For personification questions, identify the specific social role assigned to the abstract concept through behavioural cues. Death 'kindly stopped' and shows 'Civility,' matching the conventions of a courteous gentleman caller in 19th-century social ritual. A violent intruder and a terrifying monster contradict the poem's gentle language, while an old friend implies warmth that oversteps the formal courtesy Dickinson deliberately maintains. The poem's power comes from the gap between Death's genteel persona and the horrifying reality.",
+      "difficulty": "medium"
+    },
+    {
+      "id": "gamsat:s1:poetry-dickinson:q2",
+      "moves": [
+        "s1-except-elimination",
+        "s1-figurative-image"
+      ],
+      "stem": "The phrase 'Because I could not stop for Death' (line 1) suggests the speaker:",
+      "options": [
+        {
+          "label": "A",
+          "text": "Was running away from Death",
+          "isCorrect": false
+        },
+        {
+          "label": "B",
+          "text": "Lacked time in her schedule for Death",
+          "isCorrect": false
+        },
+        {
+          "label": "C",
+          "text": "Had no control over death's timing",
+          "isCorrect": true
+        },
+        {
+          "label": "D",
+          "text": "Refused to acknowledge Death's existence",
+          "isCorrect": false
+        }
+      ],
+      "explanation": "When interpreting an opening line, distinguish between literal and figurative readings. 'Could not stop' signifies inability rather than refusal, indicating the speaker had no control over death's timing — death arrived on its own schedule. Running away imposes a chase narrative absent from the poem, and lacking time reads the metaphor too literally. In poetry, 'could not' versus 'would not' is a crucial distinction — the former implies powerlessness, the latter implies choice.",
+      "difficulty": "medium"
+    },
+    {
+      "id": "gamsat:s1:poetry-dickinson:q3",
+      "moves": [
+        "s1-comparative-ranking"
+      ],
+      "stem": "The items passed in stanza 3 (School, Fields, Setting Sun) most likely represent:",
+      "options": [
+        {
+          "label": "A",
+          "text": "Random locations along a country road",
+          "isCorrect": false
+        },
+        {
+          "label": "B",
+          "text": "Places the speaker regrets not visiting",
+          "isCorrect": false
+        },
+        {
+          "label": "C",
+          "text": "Stages of human life from youth to age",
+          "isCorrect": true
+        },
+        {
+          "label": "D",
+          "text": "Literal scenes observed during the ride",
+          "isCorrect": false
+        }
+      ],
+      "explanation": "When a poem lists concrete images in sequence, check whether they map onto an abstract progression. Children at play represent youth, Fields of Gazing Grain represent maturity, and the Setting Sun evokes old age — a symbolic progression through stages of human life. Random locations ignores the deliberate escalation, and literal scenes is partially true but misses the allegorical layer. Three-item sequences in poetry almost always represent a symbolic progression — look for the abstract pattern behind the concrete images.",
+      "difficulty": "medium"
+    },
+    {
+      "id": "gamsat:s1:poetry-dickinson:q4",
+      "moves": [
+        "s1-figurative-image",
+        "s1-inference-minimal"
+      ],
+      "stem": "The correction 'Or rather – He passed us' (line 13) indicates:",
+      "options": [
+        {
+          "label": "A",
+          "text": "Death abruptly changed the carriage's direction partway through the journey",
+          "isCorrect": false
+        },
+        {
+          "label": "B",
+          "text": "The speaker has been left behind by the world she once knew",
+          "isCorrect": false
+        },
+        {
+          "label": "C",
+          "text": "Life is receding from the speaker, not the speaker moving through life",
+          "isCorrect": true
+        },
+        {
+          "label": "D",
+          "text": "The sun itself literally overtook and passed the carriage",
+          "isCorrect": false
+        }
+      ],
+      "explanation": "When a poem interrupts itself with 'Or rather,' the correction marks a shift in the speaker's understanding. The correction signals that life is receding from the speaker rather than the speaker moving through life — a shift from active to passive perspective. Death changing direction misidentifies what changed (perspective, not direction), and the sun literally passing them is too literal. Self-corrections within a poem reveal dawning awareness — the speaker is learning something in real time.",
+      "difficulty": "medium"
+    },
+    {
+      "id": "gamsat:s1:poetry-dickinson:q5",
+      "moves": [
+        "s1-figurative-image"
+      ],
+      "stem": "The clothing described in stanza 4 ('Gossamer,' 'Tulle') suggests:",
+      "options": [
+        {
+          "label": "A",
+          "text": "The speaker is wealthy and fashionably well dressed",
+          "isCorrect": false
+        },
+        {
+          "label": "B",
+          "text": "The speaker is inadequately prepared for death",
+          "isCorrect": true
+        },
+        {
+          "label": "C",
+          "text": "Death provided appropriate attire",
+          "isCorrect": false
+        },
+        {
+          "label": "D",
+          "text": "The setting is summer",
+          "isCorrect": false
+        }
+      ],
+      "explanation": "When a poem describes clothing in a charged context, consider its symbolic function. The fragile fabrics and the repeated 'only' stress insufficiency, emphasising the speaker's unpreparedness for death's finality as temperature drops. The speaker being wealthy and fashionable misreads vulnerability as status, and a summer setting contradicts the chill of 'Dews drew quivering.' Repeated qualifiers like 'only' in poetry function as intensifiers of inadequacy — they draw attention to what is lacking, not what is present.",
+      "difficulty": "medium"
+    },
+    {
+      "id": "gamsat:s1:poetry-dickinson:q6",
+      "moves": [
+        "s1-figurative-image"
+      ],
+      "stem": "The 'House' in stanza 5 is best understood as:",
+      "options": [
+        {
+          "label": "A",
+          "text": "Death's permanent residence",
+          "isCorrect": false
+        },
+        {
+          "label": "B",
+          "text": "A euphemism for a grave",
+          "isCorrect": true
+        },
+        {
+          "label": "C",
+          "text": "A church or place of worship",
+          "isCorrect": false
+        },
+        {
+          "label": "D",
+          "text": "A metaphor for heaven",
+          "isCorrect": false
+        }
+      ],
+      "explanation": "When a poem uses an everyday word for something extraordinary, check if the physical description contradicts the literal meaning — this signals euphemism. The 'Swelling of the Ground' with roof 'scarcely visible' and 'Cornice — in the Ground' physically describes a grave, making 'House' a genteel euphemism. A church has no features underground, and a metaphor for heaven contradicts the earth-bound description. Dickinson's refusal to name death's destination directly intensifies the horror — the gap between social pretence and physical reality is where the poem's power lies.",
+      "difficulty": "medium"
+    },
+    {
+      "id": "gamsat:s1:poetry-dickinson:q7",
+      "moves": [
+        "s1-figurative-image"
+      ],
+      "stem": "The passage suggests the poem's final stanza is ambiguous because:",
+      "options": [
+        {
+          "label": "A",
+          "text": "The speaker plainly contradicts her own earlier statements",
+          "isCorrect": false
+        },
+        {
+          "label": "B",
+          "text": "The destination and nature of eternity remain uncertain",
+          "isCorrect": true
+        },
+        {
+          "label": "C",
+          "text": "The horses turn around unexpectedly",
+          "isCorrect": false
+        },
+        {
+          "label": "D",
+          "text": "The speaker wakes from a dream",
+          "isCorrect": false
+        }
+      ],
+      "explanation": "When asked about ambiguity, identify what remains unresolved and what textual evidence signals deliberate uncertainty. The verb 'surmised' (guessed, inferred) reveals the speaker's own uncertainty, and the passage asks whether the destination is Christian immortality, annihilation, or suspended consciousness. The speaker contradicting earlier statements is not supported, and the speaker waking from a dream imposes a resolution the poem refuses. When a poem ends with a verb of uncertainty ('surmised,' 'supposed'), the ambiguity is deliberate — do not resolve what the poet left open.",
+      "difficulty": "medium"
+    }
+  ],
+  "licence": {
+    "id": "CC-BY-4.0",
+    "attribution": "MD3 contributors"
+  },
+  "origin": "authored"
+}
