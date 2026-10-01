@@ -1,0 +1,65 @@
+{
+  "id": "bank:cohort:paeds:q-15f9f246dac1:v1",
+  "rotation": "cohort-open",
+  "moduleNodes": [
+    "cohort/paeds"
+  ],
+  "topics": [
+    "neonatology",
+    "congenital-syphilis"
+  ],
+  "questionType": "management",
+  "difficulty": "hard",
+  "stem": "A paediatric registrar reviews a 36-hour-old in the special care nursery. A peripheral intravenous cannula is already in place. The mother received benzathine benzylpenicillin for syphilis four days before the birth. The baby has hepatomegaly and a white nasal discharge streaked with blood.\n\nWhat should the registrar start?",
+  "options": [
+    {
+      "label": "A",
+      "text": "One intramuscular dose of benzathine benzylpenicillin",
+      "isCorrect": false,
+      "explanation": "A single benzathine benzylpenicillin dose is the precaution when congenital syphilis is unlikely but follow-up is uncertain. This baby already has signs."
+    },
+    {
+      "label": "B",
+      "text": "No penicillin until the newborn syphilis IgM returns",
+      "isCorrect": false,
+      "explanation": "A negative newborn syphilis IgM would not exclude congenital syphilis. The cited guideline says to commence treatment when suspicion or inadequate maternal treatment is present rather than waiting for test results."
+    },
+    {
+      "label": "C",
+      "text": "Intramuscular procaine penicillin daily for 10 days",
+      "isCorrect": false,
+      "explanation": "Daily intramuscular procaine penicillin is used only if intravenous access is not available. This baby already has a peripheral cannula."
+    },
+    {
+      "label": "D",
+      "text": "Intravenous benzylpenicillin treatment for 10 days",
+      "isCorrect": true,
+      "explanation": "Intravenous benzylpenicillin for 10 days is the antibiotic of choice, planned with an expert clinician. Aqueous crystalline penicillin G is that same course."
+    },
+    {
+      "label": "E",
+      "text": "Weekly intramuscular benzathine benzylpenicillin for three weeks",
+      "isCorrect": false,
+      "explanation": "Three weekly benzathine doses treat late latent syphilis or syphilis of unknown duration, not a symptomatic baby."
+    }
+  ],
+  "context": "Hepatomegaly and a bloody nasal discharge are features of early congenital syphilis, and the discharge can transmit infection. Penicillin completed within four weeks of birth is inadequate maternal treatment.\n\nThese findings are not a mild picture to watch. Start the cited neonatal IV regimen with expert input and do not wait for newborn serology.\n\nA single benzathine dose is considered only when congenital syphilis is unlikely and follow-up is uncertain; this symptomatic baby needs treatment.",
+  "publicModule": {
+    "schemaVersion": 1,
+    "origin": "mirrored",
+    "discipline": "paeds",
+    "mirroredFrom": "md3:15f9f246dac1413c",
+    "itemText": {
+      "licence": "CC-BY-4.0",
+      "attribution": "MD3 contributors"
+    },
+    "evidence": {
+      "kind": "reference",
+      "sourceId": "qcg-sip"
+    },
+    "review": {
+      "verdict": "passed",
+      "contentHash": "a864979f0440ee10d1ee2d4be3bfb66744b6b228683e1d539302531f2be74468"
+    }
+  }
+}

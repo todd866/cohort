@@ -1,0 +1,66 @@
+{
+  "id": "bank:cohort:resp:q-9e1b169aef97:v1",
+  "rotation": "cohort-open",
+  "moduleNodes": [
+    "cohort/resp"
+  ],
+  "topics": [
+    "Respiratory",
+    "Asthma",
+    "Asthma Management"
+  ],
+  "questionType": "management",
+  "difficulty": "medium",
+  "stem": "A 6-year-old with asthma on medium-dose inhaled corticosteroid has had no daytime symptoms, no night waking, no activity limitation, and reliever use of one day per week over the past 4 months.\n\nWhat is the most appropriate next step?",
+  "options": [
+    {
+      "label": "A",
+      "text": "Stop the inhaled corticosteroid abruptly today",
+      "isCorrect": false,
+      "explanation": "Abrupt cessation risks loss of control. A preventer is stopped only after about 6 months symptom-free, and this child still uses a reliever weekly."
+    },
+    {
+      "label": "B",
+      "text": "Step down to the lowest dose that keeps control",
+      "isCorrect": true,
+      "explanation": "Three or more months of good control means the preventer can be stepped down to the lowest dose that controls symptoms, with a review 4–6 weeks later."
+    },
+    {
+      "label": "C",
+      "text": "Switch to oral montelukast as the sole preventer",
+      "isCorrect": false,
+      "explanation": "Swapping a working preventer for a less effective one when control is good risks relapse."
+    },
+    {
+      "label": "D",
+      "text": "Add a long-acting beta-agonist to consolidate the gains",
+      "isCorrect": false,
+      "explanation": "A LABA is added when control is poor on inhaled corticosteroid alone, not when control is already good."
+    },
+    {
+      "label": "E",
+      "text": "Continue the current dose indefinitely without review",
+      "isCorrect": false,
+      "explanation": "Leaving a child on a fixed dose indefinitely misses the chance to minimise steroid exposure."
+    }
+  ],
+  "context": "About 3 months of good control means step down to the lowest dose that holds it, then review in 4-6 weeks. Stop the preventer only after about 6 months symptom-free.\n\nCheck technique and adherence before calling the dose a failure. Most poor control is missed doses or a poor device.",
+  "publicModule": {
+    "schemaVersion": 1,
+    "origin": "mirrored",
+    "discipline": "resp",
+    "mirroredFrom": "md3:9e1b169aef97e1ca",
+    "itemText": {
+      "licence": "CC-BY-4.0",
+      "attribution": "MD3 contributors"
+    },
+    "evidence": {
+      "kind": "reference",
+      "sourceId": "rch-asthma-in-primary-school-aged-children-6-11-years"
+    },
+    "review": {
+      "verdict": "passed",
+      "contentHash": "bf4e0bff83581763002be004b299596e074fbf6a5c83d25bfed1d3cbc0b89a77"
+    }
+  }
+}

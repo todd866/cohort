@@ -403,7 +403,9 @@ open-content/modules/questions/em/q-af21162a6c7c.v1.json
 open-content/modules/questions/em/q-f83f9cd6e5ef.v1.json
 open-content/modules/questions/em/q-fe928bbc3f51.v1.json
 open-content/modules/questions/endo/q-1b968d4d8939.v1.json
+open-content/modules/questions/endo/q-1d0fa177a5fc.v1.json
 open-content/modules/questions/haem/q-b7000e198bdb.v1.json
+open-content/modules/questions/haem/q-ff5446fda320.v1.json
 open-content/modules/questions/immuno/q-272a241543ad.v1.json
 open-content/modules/questions/msk/q-44a1060a7ed0.v1.json
 open-content/modules/questions/obs/q-1ef3f80fa653.v1.json
@@ -415,15 +417,18 @@ open-content/modules/questions/paeds/q-05c429c733f1.v1.json
 open-content/modules/questions/paeds/q-05f6a07484ac.v1.json
 open-content/modules/questions/paeds/q-1002df7e2c74.v1.json
 open-content/modules/questions/paeds/q-125a24423cb9.v1.json
+open-content/modules/questions/paeds/q-15f9f246dac1.v1.json
 open-content/modules/questions/paeds/q-18f25ebc3f7b.v1.json
 open-content/modules/questions/paeds/q-1be13d7f4ca1.v1.json
 open-content/modules/questions/paeds/q-2294851f2f87.v1.json
 open-content/modules/questions/paeds/q-26717f63074a.v1.json
 open-content/modules/questions/paeds/q-2bc53f350af9.v1.json
+open-content/modules/questions/paeds/q-3b96b5dcb104.v1.json
 open-content/modules/questions/paeds/q-4c86adeaedc4.v1.json
 open-content/modules/questions/paeds/q-4fb0f2dbe7d5.v1.json
 open-content/modules/questions/paeds/q-69908e0b57ab.v1.json
 open-content/modules/questions/paeds/q-70f382b8b250.v1.json
+open-content/modules/questions/paeds/q-71e7443bdb56.v1.json
 open-content/modules/questions/paeds/q-810923091c18.v1.json
 open-content/modules/questions/paeds/q-884eb5eb1494.v1.json
 open-content/modules/questions/paeds/q-92a85ac03d30.v1.json
@@ -440,6 +445,7 @@ open-content/modules/questions/paeds/q-b0ff575fc690.v1.json
 open-content/modules/questions/paeds/q-b6ebde516586.v1.json
 open-content/modules/questions/paeds/q-b9f658e12029.v1.json
 open-content/modules/questions/paeds/q-be25a2c94788.v1.json
+open-content/modules/questions/paeds/q-c97863d3df78.v1.json
 open-content/modules/questions/paeds/q-e0210958502c.v1.json
 open-content/modules/questions/paeds/q-e61cd4730510.v1.json
 open-content/modules/questions/paeds/q-e7db971bf7fe.v1.json
@@ -451,6 +457,7 @@ open-content/modules/questions/resp/q-0421f261852b.v1.json
 open-content/modules/questions/resp/q-20cef5fee080.v1.json
 open-content/modules/questions/resp/q-44302b9fe9f2.v1.json
 open-content/modules/questions/resp/q-683163a2a25e.v1.json
+open-content/modules/questions/resp/q-9e1b169aef97.v1.json
 open-content/modules/questions/resp/q-cdde8ae9e5af.v1.json
 open-content/modules/release-v1.json
 open-content/modules/sources.json
@@ -1125,6 +1132,7 @@ prisma/migrations/20260917080000_leaderboard_handle/migration.sql
 prisma/migrations/20260917090000_serve_decision_exposed_index/migration.sql
 prisma/migrations/20260921090000_exam_paper_sessions/migration.sql
 prisma/migrations/20260922120000_review_menu_modules/migration.sql
+prisma/migrations/20261001190000_question_statements/migration.sql
 prisma/migrations/migration_lock.toml
 prisma/schema/anki-bridge.prisma
 prisma/schema/anki-export.prisma
@@ -1397,6 +1405,7 @@ src/components/review/FlagOverlay.tsx
 src/components/review/FlagReminder.tsx
 src/components/review/GroupReview.tsx
 src/components/review/GroupReviewParts.tsx
+src/components/review/InlineCalculator.tsx
 src/components/review/LoadingSkeleton.tsx
 src/components/review/MathHtml.tsx
 src/components/review/McqItemView.tsx
@@ -1412,6 +1421,7 @@ src/components/review/ReviewableTable.tsx
 src/components/review/RotationFocusSelector.tsx
 src/components/review/RotationOnboarding.tsx
 src/components/review/SessionEmptyState.tsx
+src/components/review/StatementSetView.tsx
 src/components/review/StationChip.tsx
 src/components/review/StationDrawer.tsx
 src/components/review/TrackProjectionGraph.tsx
@@ -1421,6 +1431,7 @@ src/components/review/clip-role.ts
 src/components/review/clip-url-recovery.ts
 src/components/review/groupReviewLogic.ts
 src/components/review/hooks/keyboardTarget.ts
+src/components/review/hooks/local-mcq-grade.ts
 src/components/review/hooks/optimistic-head.ts
 src/components/review/hooks/reveal-scroll.ts
 src/components/review/hooks/types.ts
@@ -1515,6 +1526,7 @@ src/lib/auth-verification-email.test.ts
 src/lib/auth-verification-email.ts
 src/lib/auth.ts
 src/lib/bounded-request-body.ts
+src/lib/calc/evaluate.ts
 src/lib/card-extractors.ts
 src/lib/card-generator.ts
 src/lib/card-validators.ts
@@ -1849,6 +1861,8 @@ src/lib/question-bank/seed-projection.test.ts
 src/lib/question-bank/seed-projection.ts
 src/lib/question-bank/seed-reinforcement-refresh.ts
 src/lib/question-bank/seed.ts
+src/lib/question-bank/statement-file.ts
+src/lib/question-bank/statement-items.ts
 src/lib/question-bank/text-similarity.ts
 src/lib/question-bank/types.ts
 src/lib/question-bank/validate.ts
@@ -1903,6 +1917,7 @@ src/lib/review/review-intent.ts
 src/lib/review/review-load-telemetry.ts
 src/lib/review/review-user-context.ts
 src/lib/review/review-write-observability.ts
+src/lib/review/score-question-answer.ts
 src/lib/review/serve-conditioning.ts
 src/lib/review/server-bootstrap-policy.ts
 src/lib/review/server-bootstrap.ts
@@ -1930,6 +1945,7 @@ src/lib/study/dessert-mix.ts
 src/lib/study/due-backlog.ts
 src/lib/study/due-summary.ts
 src/lib/study/effective-daily-target.ts
+src/lib/study/exam-only-modules.ts
 src/lib/study/focus-option-order.ts
 src/lib/study/imported-rung-access.ts
 src/lib/study/in-play-rotations.ts

@@ -34,6 +34,9 @@ export interface CuratedQuestionOption {
   misconception?: string;
   /** Per-option explanation for post-answer feedback */
   explanation?: string;
+  /** Statement-item flags; see statement-items.ts. */
+  statement?: true;
+  fixedKey?: true;
 }
 
 /**
@@ -66,6 +69,24 @@ export type QuestionAbbreviations = Record<string, string>;
  * Each combination must include index 0 (correct answer) and have exactly 5 indices.
  */
 export type OptionCombination = [number, number, number, number, number];
+
+/**
+ * One statement of an exam-format statement item (Type X / NSA Type 1 and 2).
+ * Persisted to Question.statements; read server-side to grade and to return the
+ * scaffold for each statement a learner gets wrong. See statement-file.ts.
+ */
+export interface CuratedStatement {
+  text: string;
+  isTrue: boolean;
+  /** Normalised "structure|relation|value"; keeps paper facts out of the queue. */
+  factKey: string;
+  /** The true fact; required when isTrue is false. */
+  correction: string | null;
+  scaffoldTitle: string;
+  /** Complexity-1 teaching shown after a miss: the why, not just the answer. */
+  scaffold: string;
+  source: { book: string; pdfPage: number; printedPage: number | null; passage: string };
+}
 
 export interface CuratedQuestion {
   id: string;
@@ -126,4 +147,7 @@ export interface CuratedQuestion {
   combinations?: OptionCombination[] | null;
   /** Paraphrased versions of the correct answer text. Cycled per attempt. */
   correctVariants?: string[] | null;
+
+  /** Present only on statement items; expanded from a *.statements.json file. */
+  statements?: CuratedStatement[] | null;
 }

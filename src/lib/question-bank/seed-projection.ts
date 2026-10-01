@@ -38,5 +38,6 @@ export function projectCuratedQuestionForBulk(
     abbreviations: q.abbreviations ?? null,
     combinations: q.combinations ?? null,
     correctVariants: q.correctVariants ?? null,
+    statements: q.statements ?? null,
   };
 }

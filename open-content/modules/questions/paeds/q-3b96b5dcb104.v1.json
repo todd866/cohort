@@ -1,0 +1,60 @@
+{
+  "id": "bank:cohort:paeds:q-3b96b5dcb104:v1",
+  "rotation": "cohort-open",
+  "moduleNodes": [
+    "cohort/paeds"
+  ],
+  "topics": [
+    "growth",
+    "nutrition",
+    "faltering growth"
+  ],
+  "questionType": "management",
+  "difficulty": "hard",
+  "stem": "A toddler's detailed diet diary appears to meet estimated energy requirements, but serial weights have crossed two major centile lines downward.\n\nWhat is the best next step?",
+  "options": [
+    {
+      "label": "A",
+      "text": "Reassure because the reported calories meet estimates",
+      "isCorrect": false,
+      "explanation": "Reported intake does not override an objectively abnormal growth trajectory."
+    },
+    {
+      "label": "B",
+      "text": "Confirm measurements and assess feeding and medical causes",
+      "isCorrect": true,
+      "explanation": "Confirm the serial measurements, watch a feed, and reassess actual intake, losses, chronic illness and psychosocial factors."
+    },
+    {
+      "label": "C",
+      "text": "Diagnose an endocrine disorder from the chart alone",
+      "isCorrect": false,
+      "explanation": "The trajectory warrants assessment but does not identify a single cause by itself."
+    },
+    {
+      "label": "D",
+      "text": "Increase calories without reviewing the feeding history",
+      "isCorrect": false,
+      "explanation": "Empirical supplementation without confirming intake, technique and possible medical causes can miss the reason growth is faltering."
+    }
+  ],
+  "context": "A diet diary records what was reported. Weights crossing two major centiles downward are slow weight gain whatever the diary says.\n\nConfirm the weights, watch a feed, and reassess real intake, losses, chronic illness and psychosocial stress. Most slow weight gain is too few calories.",
+  "publicModule": {
+    "schemaVersion": 1,
+    "origin": "mirrored",
+    "discipline": "paeds",
+    "mirroredFrom": "md3:3b96b5dcb104ce16",
+    "itemText": {
+      "licence": "CC-BY-4.0",
+      "attribution": "MD3 contributors"
+    },
+    "evidence": {
+      "kind": "reference",
+      "sourceId": "rch-slow-weight-gain"
+    },
+    "review": {
+      "verdict": "passed",
+      "contentHash": "2cfb7859c4ba87b5d4e3e7d7d1d7fc640769ffde5cf9649f6020d4529617ae5f"
+    }
+  }
+}

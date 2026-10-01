@@ -303,6 +303,11 @@ model Question {
   combinations    Json? // Array of 5-index arrays
   correctVariants Json? // Array of strings
 
+  // Statement items (GSSE Type X, NSA Type 1/2): per-statement truth, fact key,
+  // source and scaffold. Server-side only. NULL for ordinary questions.
+  // See src/lib/question-bank/statement-file.ts.
+  statements Json?
+
   // Chaining - for multi-part questions about same scenario
   chainId    String? // Groups related questions
   chainOrder Int? // Order within chain (1, 2, 3...)

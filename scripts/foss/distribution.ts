@@ -375,7 +375,9 @@ export const PROTECTED_PUBLIC_FALLBACKS: ReadonlyArray<Readonly<{
     // (concept spine), so the public Card model now carries `cardConcepts`
     // and the CardConcept model + enum ride along; without them the exported
     // schema fails Prisma validation (CI foss-export, run 35187557296).
-    sha256: '3e2c79a2c33ba6657e99693b44586de0b4b05a502ac44e325aae9aa54e8ed20f',
+    // 2026-10-01: Question gained `statements Json?` (statement items); the
+    // shipped record path selects it, so the public Question carries it too.
+    sha256: '2fdf3afe7a20d9a0b0694062726fd11ecaa318d770436f31da0e84ec41ca129d',
   },
   {
     // The private deployment applies additional authoring metadata while

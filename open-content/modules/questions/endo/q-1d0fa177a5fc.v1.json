@@ -1,0 +1,65 @@
+{
+  "id": "bank:cohort:endo:q-1d0fa177a5fc:v1",
+  "rotation": "cohort-open",
+  "moduleNodes": [
+    "cohort/endo"
+  ],
+  "topics": [
+    "endocrinology",
+    "congenital-adrenal-hyperplasia"
+  ],
+  "questionType": "management",
+  "difficulty": "medium",
+  "stem": "A 12-day-old boy was admitted in shock, with typical male genitalia. Admission samples showed low sodium, high potassium, low glucose and a metabolic acidosis. Salt-wasting 21-hydroxylase deficiency is now confirmed. Parenteral hydrocortisone and 0.9% sodium chloride have restored perfusion, and the potassium is falling without ECG changes of hyperkalaemia. On day 2 he is alert and taking all his feeds. His parents ask whether a longer-acting steroid would be easier.\n\nThe paediatric registrar is discussing ongoing hormone replacement with endocrinology. Which plan is appropriate?",
+  "options": [
+    {
+      "label": "A",
+      "text": "Give night-time prednisolone alone, with no mineralocorticoid",
+      "isCorrect": false,
+      "explanation": "Prednisolone may be used at night as a longer glucocorticoid. It does not replace fludrocortisone when salt-wasting is the problem."
+    },
+    {
+      "label": "B",
+      "text": "Switch to once-daily dexamethasone and add no fludrocortisone",
+      "isCorrect": false,
+      "explanation": "Dexamethasone lasts longer but is the glucocorticoid most likely to interfere with growth. Switching to it also leaves salt-wasting without a mineralocorticoid."
+    },
+    {
+      "label": "C",
+      "text": "Continue hydrocortisone and add oral fludrocortisone now",
+      "isCorrect": true,
+      "explanation": "This is primary adrenal insufficiency. Hydrocortisone continues to replace cortisol, and oral fludrocortisone starts once feeds are tolerated to replace aldosterone."
+    },
+    {
+      "label": "D",
+      "text": "Start oral fludrocortisone and stop the hydrocortisone replacement",
+      "isCorrect": false,
+      "explanation": "Fludrocortisone replaces aldosterone only. 21-hydroxylase deficiency also stops cortisol production, so hydrocortisone has to continue."
+    },
+    {
+      "label": "E",
+      "text": "Continue stress-dose hydrocortisone alone, with no fludrocortisone",
+      "isCorrect": false,
+      "explanation": "Stress-dose hydrocortisone covers mineralocorticoid activity only during that dosing period. Ongoing salt-wasting still needs fludrocortisone after the child is feeding."
+    }
+  ],
+  "context": "Confirmed salt-wasting 21-hydroxylase deficiency requires replacement of both cortisol and aldosterone.\n\nStress-dose hydrocortisone provides mineralocorticoid activity during the acute phase. Discuss with endocrinology and add oral fludrocortisone once feeds are tolerated and continue glucocorticoid replacement.\n\nHydrocortisone is preferred for growing children; longer-acting glucocorticoids have greater potential to impair growth.",
+  "publicModule": {
+    "schemaVersion": 1,
+    "origin": "mirrored",
+    "discipline": "endo",
+    "mirroredFrom": "md3:1d0fa177a5fc63d4",
+    "itemText": {
+      "licence": "CC-BY-4.0",
+      "attribution": "MD3 contributors"
+    },
+    "evidence": {
+      "kind": "reference",
+      "sourceId": "rch-adrenal-crisis-and-acute-adrenal-insufficiency"
+    },
+    "review": {
+      "verdict": "passed",
+      "contentHash": "7d2be10d64eb91678fc2c3b3f716e04e10e243009f4f6472be115d024e21acb8"
+    }
+  }
+}

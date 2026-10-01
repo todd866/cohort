@@ -1,3 +1,4 @@
+import { responseFormatOfOptions } from '@/lib/question-bank/statement-items';
 import type { CheckStatus } from './types';
 
 interface FormCheckResult {
@@ -23,6 +24,8 @@ const FILLER_PATTERNS = [
 const ABSOLUTE_TERMS = ['always', 'never', 'all', 'none', 'every', 'no patient'];
 
 export function checkFormOpacity(options: OptionInput[]): FormCheckResult {
+  // Statements are judged one by one, not compared; see statement-items.ts.
+  if (responseFormatOfOptions(options) !== 'sba') return { status: 'pass', issues: [] };
   if (options.length === 0) return { status: 'na', issues: [] };
 
   const issues: string[] = [];

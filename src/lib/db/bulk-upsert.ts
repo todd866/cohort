@@ -118,6 +118,8 @@ export async function bulkUpsertQuestions(
     abbreviations?: unknown | null;
     combinations?: unknown | null;
     correctVariants?: unknown | null;
+    /** Statement-item metadata (truth, fact key, scaffold); NULL for ordinary questions. */
+    statements?: unknown | null;
   }>,
   options: BulkUpsertOptions = {}
 ): Promise<number> {
@@ -179,6 +181,7 @@ export async function bulkUpsertQuestions(
       ${sqlEscape(q.abbreviations ?? null)},
       ${sqlEscape(q.combinations ?? null)},
       ${sqlEscape(q.correctVariants ?? null)},
+      ${sqlEscape(q.statements ?? null)},
       'enhanced',
       NOW(),
       NOW()
@@ -193,7 +196,7 @@ export async function bulkUpsertQuestions(
         "format",
         "variantGroupId", "practiceLocale", "variantType", "imageUrl", "imageCaption", "imageRole",
         "clipId", "clipRole", "clipCaption", "citations", "crosslinks", "annotations",
-        "abbreviations", "combinations", "correctVariants", "contentState", "createdAt", "updatedAt"
+        "abbreviations", "combinations", "correctVariants", "statements", "contentState", "createdAt", "updatedAt"
       )
       VALUES ${values}
       ON CONFLICT ("id") DO UPDATE SET
@@ -233,6 +236,7 @@ export async function bulkUpsertQuestions(
         "abbreviations" = EXCLUDED."abbreviations",
         "combinations" = EXCLUDED."combinations",
         "correctVariants" = EXCLUDED."correctVariants",
+        "statements" = EXCLUDED."statements",
         "contentState" = CASE
           WHEN "Question"."contentState" IN ('shelved', 'retired') THEN "Question"."contentState"
           ELSE 'enhanced'

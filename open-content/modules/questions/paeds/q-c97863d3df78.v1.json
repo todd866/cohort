@@ -1,0 +1,59 @@
+{
+  "id": "bank:cohort:paeds:q-c97863d3df78:v1",
+  "rotation": "cohort-open",
+  "moduleNodes": [
+    "cohort/paeds"
+  ],
+  "topics": [
+    "milk allergy",
+    "prognosis"
+  ],
+  "questionType": "management",
+  "difficulty": "easy",
+  "stem": "A parent asks about the prognosis of their 2-year-old's milk allergy.\n\nWhat should you tell them?",
+  "options": [
+    {
+      "label": "A",
+      "text": "Milk allergy always progresses to anaphylaxis",
+      "isCorrect": false,
+      "explanation": "A reaction to milk can be severe, but that is not the expected course: most children outgrow milk allergy by school age."
+    },
+    {
+      "label": "B",
+      "text": "Milk allergy persists lifelong in most cases",
+      "isCorrect": false,
+      "explanation": "Lifelong persistence is the pattern for peanut, tree nut, sesame, fish and shellfish allergy; milk allergy usually resolves by school age."
+    },
+    {
+      "label": "C",
+      "text": "Most children outgrow milk allergy by school age",
+      "isCorrect": true,
+      "explanation": "ASCIA reports natural resolution by school age in 60–80% of children with IgE-mediated cow's milk or egg allergy, so most children outgrow it."
+    },
+    {
+      "label": "D",
+      "text": "Strict avoidance prevents resolution",
+      "isCorrect": false,
+      "explanation": "Avoidance is how milk allergy is managed while it lasts, and most children still outgrow it by school age."
+    }
+  ],
+  "context": "Most IgE-mediated cow's milk allergy has resolved by school age (ASCIA cites about 60-80%). Baked milk is often tolerated before fresh milk.\n\nPeanut, tree nut, fish and shellfish more often persist.",
+  "publicModule": {
+    "schemaVersion": 1,
+    "origin": "mirrored",
+    "discipline": "paeds",
+    "mirroredFrom": "md3:c97863d3df784eed",
+    "itemText": {
+      "licence": "CC-BY-4.0",
+      "attribution": "MD3 contributors"
+    },
+    "evidence": {
+      "kind": "reference",
+      "sourceId": "ascia-ascia-oral-immunotherapy-for-food-allergy"
+    },
+    "review": {
+      "verdict": "passed",
+      "contentHash": "7a2122484c90a591258027c32f5b79120a74723c59ec6a2e4304ddc2b1d783dd"
+    }
+  }
+}

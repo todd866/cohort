@@ -14,6 +14,8 @@ import { logger } from '@/lib/logger';
 import { userIdCanAccessRequestedRotations } from '@/lib/personal-rotation-access';
 import { prependCardsToQueue } from '@/lib/study-queue';
 import { coerceScorableOptions, type ScorableOption } from '@/lib/question-validation';
+import { scoreQuestionAnswer, type StatementFeedback } from './score-question-answer';
+import { responseFormatOfOptions } from '@/lib/question-bank/statement-items';
 import { mergeDecisionContext, type DecisionContext } from '@/lib/scheduler-observability';
 import {
   buildRequestFingerprint,
@@ -156,11 +158,13 @@ export type RecordQuestionAttemptOk = {
     confidence: number;
   }>;
   remediationCards: Array<{ cardId: string; front: string; similarity: number }>;
+  /** Statement items only: marks, and the scaffold for every statement missed. */
+  statementFeedback?: StatementFeedback;
 };
 
 export type QuestionAttemptReceipt = Pick<
   RecordQuestionAttemptOk,
-  'isCorrect' | 'skipped' | 'correctOption' | 'attemptNumber' | 'explanation'
+  'isCorrect' | 'skipped' | 'correctOption' | 'attemptNumber' | 'explanation' | 'statementFeedback'
 >;
 
 export type RecordQuestionAttemptDuplicate = {
@@ -331,6 +335,7 @@ export async function recordQuestionAttemptFast(
     select: {
       id: true,
       options: true,
+      statements: true,
       context: true,
       rotation: true,
       week: true,
@@ -369,6 +374,7 @@ export async function recordQuestionAttemptFast(
 
   let isCorrect: boolean;
   let correctOption: string;
+  let statementFeedback: StatementFeedback | undefined;
   if (isPublicUsmleDelivery) {
     correctOption = expectedCorrectOption!;
     isCorrect = selectedOption !== null && selectedOption === correctOption;
@@ -380,14 +386,13 @@ export async function recordQuestionAttemptFast(
     if (options.length < 4) {
       return { ok: false, status: 500, error: 'Question options are incomplete' };
     }
-    if (options.filter((option) => option.isCorrect).length !== 1) {
-      return { ok: false, status: 500, error: 'Question correct answer is invalid' };
+    const score = scoreQuestionAnswer(options, selectedOption, question.statements);
+    if (!score.ok) {
+      return { ok: false, status: score.error.startsWith('Type X') ? 400 : 500, error: score.error };
     }
-    correctOption = options.find((option) => option.isCorrect)!.label;
-    const selectedOptionData = selectedOption === null
-      ? null
-      : options.find((option) => option.label.toUpperCase() === selectedOption);
-    isCorrect = selectedOption === null ? false : (selectedOptionData?.isCorrect ?? false);
+    correctOption = score.correctOption;
+    isCorrect = score.isCorrect;
+    statementFeedback = score.statementFeedback;
   }
   // A skip is a decision not to answer, not a wrong answer. QuestionResponse
   // keeps isCorrect false (non-null column; SKIP marks it) so its readers
@@ -543,22 +548,18 @@ export async function recordQuestionAttemptFast(
           const lockedOptions: ScorableOption[] = coerceScorableOptions(
             lockedQuestion.options,
           );
-          const lockedCorrectOptions = lockedOptions.filter((option) => option.isCorrect);
-          const lockedCorrectOption = lockedCorrectOptions[0]?.label.trim().toUpperCase();
-          const lockedSelected = selectedOption === null
-            ? null
-            : lockedOptions.find(
-                (option) => option.label.trim().toUpperCase() === selectedOption,
-              );
-          const lockedIsCorrect = selectedOption === null
-            ? false
-            : (lockedSelected?.isCorrect ?? false);
+          // Same scorer as the first pass, so no format can be scored one
+          // way and verified another (statement items included).
+          const lockedScore = scoreQuestionAnswer(lockedOptions, selectedOption, null);
+          const lockedFormatIsSba = responseFormatOfOptions(lockedOptions) !== 'typeX';
+          const lockedSelected = selectedOption === null || !lockedFormatIsSba
+            ? true
+            : lockedOptions.some((option) => option.label.trim().toUpperCase() === selectedOption);
           if (
-            lockedOptions.length < 4
-            || lockedCorrectOptions.length !== 1
-            || lockedCorrectOption !== expectedCorrectOption
-            || (selectedOption !== null && !lockedSelected)
-            || lockedIsCorrect !== isCorrect
+            !lockedScore.ok
+            || lockedScore.correctOption.trim().toUpperCase() !== expectedCorrectOption
+            || !lockedSelected
+            || lockedScore.isCorrect !== isCorrect
           ) {
             return {
               kind: 'failure' as const,
@@ -642,6 +643,7 @@ export async function recordQuestionAttemptFast(
           correctOption,
           attemptNumber,
           explanation: transactionContext,
+          ...(statementFeedback ? { statementFeedback } : {}),
         };
         await afterWrite(completedReceipt);
         await tx.syncOperation.update({

@@ -1,0 +1,67 @@
+{
+  "id": "bank:cohort:paeds:q-71e7443bdb56:v1",
+  "rotation": "cohort-open",
+  "moduleNodes": [
+    "cohort/paeds"
+  ],
+  "topics": [
+    "meningitis",
+    "empiric antibiotics",
+    "ceftriaxone",
+    "paediatric infection"
+  ],
+  "questionType": "management",
+  "difficulty": "medium",
+  "stem": "A 4-year-old presents with fever, neck stiffness, and photophobia. Bacterial meningitis is suspected.\n\nWhat is the empiric antibiotic of choice?",
+  "options": [
+    {
+      "label": "A",
+      "text": "Intravenous gentamicin",
+      "isCorrect": false,
+      "explanation": "Gentamicin has poor CSF penetration and is not appropriate monotherapy for suspected bacterial meningitis in a 4-year-old."
+    },
+    {
+      "label": "B",
+      "text": "Oral amoxicillin course",
+      "isCorrect": false,
+      "explanation": "Oral antibiotics are inadequate for suspected bacterial meningitis. This is a medical emergency requiring immediate IV therapy."
+    },
+    {
+      "label": "C",
+      "text": "Ceftriaxone (or cefotaxime)",
+      "isCorrect": true,
+      "explanation": "Correct. In children aged 2 months or older, empiric bacterial meningitis treatment is usually IV ceftriaxone or cefotaxime because it covers the key likely pathogens and penetrates CSF well."
+    },
+    {
+      "label": "D",
+      "text": "Benzylpenicillin monotherapy",
+      "isCorrect": false,
+      "explanation": "Benzylpenicillin alone does not provide the standard empiric coverage needed for paediatric bacterial meningitis. Broader cephalosporin cover is preferred."
+    },
+    {
+      "label": "E",
+      "text": "Vancomycin alone (monotherapy)",
+      "isCorrect": false,
+      "explanation": "Vancomycin is added to the cephalosporin only if the Gram stain shows Gram-positive cocci. It is not the empiric drug on its own."
+    }
+  ],
+  "context": "From 2 months, empiric cover must reach pneumococcus, meningococcus and H. influenzae inside CSF. Ceftriaxone or cefotaxime does that.\n\nUnder 2 months, add benzylpenicillin to the cephalosporin to cover Listeria, and dexamethasone is not advised.",
+  "publicModule": {
+    "schemaVersion": 1,
+    "origin": "mirrored",
+    "discipline": "paeds",
+    "mirroredFrom": "md3:71e7443bdb56f8e6",
+    "itemText": {
+      "licence": "CC-BY-4.0",
+      "attribution": "MD3 contributors"
+    },
+    "evidence": {
+      "kind": "reference",
+      "sourceId": "rch-meningitis-encephalitis"
+    },
+    "review": {
+      "verdict": "passed",
+      "contentHash": "b9cf594494ceea9db885df8fd906e91347d1731e9684036ca37cc312fd86b93d"
+    }
+  }
+}

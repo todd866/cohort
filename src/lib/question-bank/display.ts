@@ -1,4 +1,5 @@
 import type { CuratedQuestion, OptionCombination } from './types';
+import { responseFormatOfOptions } from './statement-items';
 import { shuffle, displaceCorrectFromFirst } from '@/lib/utils/shuffle';
 
 /**
@@ -38,7 +39,7 @@ const AVOID_A_PROB = 0.75;
  */
 export interface QuestionOptionsInput {
   id: string;
-  options: Array<{ text: string; isCorrect: boolean; explanation?: string }>;
+  options: Array<{ text: string; isCorrect: boolean; explanation?: string; label?: string; statement?: true; fixedKey?: true }>;
   combinations?: OptionCombination[] | null;
   correctVariants?: string[] | null;
 }
@@ -51,6 +52,10 @@ export interface DisplayOption {
   originalIndex: number;
   /** Per-option explanation for post-answer feedback */
   explanation?: string;
+  /** A Type X statement (judged true/false on its own). See statement-items.ts. */
+  statement?: true;
+  /** A K-type key letter. See statement-items.ts. */
+  fixedKey?: true;
 }
 
 export interface GetQuestionOptionsOptions {
@@ -112,6 +117,20 @@ export function getQuestionOptions(
   attemptCount: number = 0,
   options: GetQuestionOptionsOptions = {}
 ): DisplayOption[] {
+  // Statement items are printed in paper order with their authored labels
+  // (1-4, or the fixed A-E key). Shuffling would scramble the key itself.
+  if (responseFormatOfOptions(question.options) !== 'sba') {
+    return question.options.map((opt, index) => ({
+      label: (opt as { label?: string }).label ?? String(index + 1),
+      text: opt.text,
+      isCorrect: opt.isCorrect,
+      originalIndex: index,
+      explanation: opt.explanation,
+      ...((opt as { statement?: true }).statement ? { statement: true as const } : {}),
+      ...((opt as { fixedKey?: true }).fixedKey ? { fixedKey: true as const } : {}),
+    }));
+  }
+
   let selectedOptions: DisplayOption[];
 
   if (question.combinations?.length) {

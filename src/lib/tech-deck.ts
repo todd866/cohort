@@ -185,7 +185,7 @@ export const TECH_DECK: { meta: { title: string; subtitle: string }; slides: Dec
       takeaways: [
         'No score prediction. The data would not support one.',
         'Efficacy unproven. Accuracy is tracked over time and reported even when flat.',
-        'Mostly one user. Treat the numbers as telemetry, not a study.',
+        'Few users so far. Treat the numbers as telemetry, not a study.',
         'Cohort uses a small transparent ranker, not MD3\u2019s private manifold path.',
       ],
     },

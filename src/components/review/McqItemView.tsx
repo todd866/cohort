@@ -6,6 +6,8 @@ import type { ReviewItem } from './hooks/types';
 import { CardImage } from './CardImage';
 import { ClipPrompt, clipIsPrompt } from './ClipPrompt';
 import { ClipContext } from './ClipContext';
+import { InlineCalculator } from './InlineCalculator';
+import { isCalculationItem } from '@/lib/calc/evaluate';
 import { PracticePromptFigure } from '@/components/practice-exam/PracticePromptFigure';
 import type { PreparedPromptFigure } from '@/components/practice-exam/usePreparedPromptFigures';
 import type { PromptFigure } from '@/lib/practice-exam/prompt-figure';
@@ -16,6 +18,8 @@ import { InlineMarkdown, MarkdownTable, extractMarkdownTables, tablesCanUseSideP
 import { splitExplanation } from '../content/mcq-utils';
 import { CheckIcon, XIcon, ChevronIcon } from '../content/mcq-icons';
 import { RevealActionLabel } from './RevealActionLabel';
+import { StatementSetView, KTypeVerdict } from './StatementSetView';
+import { responseFormatOfOptions } from '@/lib/question-bank/statement-items';
 import { reviewImageIsPrompt } from './image-role';
 import {
   itemUsesSidePane,
@@ -119,6 +123,7 @@ export function McqItemView({
       )) : stemTables.blocks.map((block, i) => block.kind === 'table'
         ? <div key={i} className="overflow-x-auto"><MarkdownTable table={block.table} leafRenderer={glossaryLeaf} /></div>
         : <div key={i} className="space-y-2">{splitExplanation(block.text).map((text, j) => <p key={j}><InlineMarkdown text={text} leafRenderer={glossaryLeaf} /></p>)}</div>)}
+      {isCalculationItem(item) && <InlineCalculator key={item.id} />}
     </div>
   );
   const resultsNode = liftTables ? (
@@ -172,7 +177,21 @@ export function McqItemView({
     />
   ) : null;
 
-  const optionsNode = (
+  const responseFormat = responseFormatOfOptions(item.options);
+  // A statement set's result is its four rows: the reveal scroll lands on
+  // them (marks first), not on the summary below.
+  const optionsNode = responseFormat === 'typeX' ? (
+    <div ref={mcqResult ? mcqAnswerRef : undefined}>
+      <StatementSetView
+        key={item.id}
+        options={item.options}
+        result={mcqResult}
+        selectedOption={selectedOption}
+        onSubmit={handleSelectOption}
+        disabled={interactionDisabled || promptBlocked}
+      />
+    </div>
+  ) : (
     <>
       {/* Inline options - before answering */}
       {!mcqResult && (
@@ -194,7 +213,7 @@ export function McqItemView({
               }`}
             >
               <span className="mt-0.5 flex h-7 w-7 shrink-0 items-center justify-center rounded-full bg-[var(--md-surface-container-high)] font-mono text-xs text-[var(--md-on-surface-variant)] group-hover:bg-[var(--md-primary-container)] group-hover:text-[var(--md-on-primary-container)] transition-colors">
-                {idx + 1}
+                {responseFormat === 'kType' ? option.label : idx + 1}
               </span>
               <span className="pt-0.5"><GlossaryText text={option.text} /></span>
             </button>
@@ -250,7 +269,7 @@ export function McqItemView({
                   className={`review-choice flex w-full items-start gap-3 text-left p-3.5 rounded-lg border transition-colors ${optionClass}`}
                 >
                   <span className={`mt-0.5 flex h-7 w-7 shrink-0 items-center justify-center rounded-full font-mono text-xs transition-colors ${labelClass}`}>
-                    {idx + 1}
+                    {responseFormat === 'kType' ? option.label : idx + 1}
                   </span>
                   <span className="min-w-0 flex-1 pt-0.5">
                     <GlossaryText text={option.text} />
@@ -280,12 +299,15 @@ export function McqItemView({
   // links row in the DOM, so they are separate nodes. `mcqAnswerRef` stays on
   // the HEAD of the reveal — that is what `needsRevealScroll` measures.
   const resultNode = mcqResult ? (
-    <div ref={mcqAnswerRef} className="mt-3 space-y-2 review-reveal">
-      {/* Result indicator - brief */}
-      {mcqResult.isCorrect ? (
+    <div ref={responseFormat === 'typeX' ? undefined : mcqAnswerRef} className="mt-3 space-y-2 review-reveal">
+      {/* Result indicator - brief. A statement set shows its marks in place. */}
+      {responseFormat === 'typeX' ? null : mcqResult.isCorrect ? (
         <div role="status" aria-label="Correct" className="inline-flex items-center gap-1 rounded-full bg-[var(--md-success-container)] px-2.5 py-1 text-sm text-[var(--md-on-success-container)] font-medium"><CheckIcon className="w-4 h-4" /> Correct</div>
       ) : (
         <div role="status" aria-label="Incorrect" className="inline-flex items-center gap-1 rounded-full bg-[var(--md-error-container)] px-2.5 py-1 text-sm text-[var(--md-on-error-container)] font-medium"><XIcon className="w-4 h-4" /> Incorrect</div>
+      )}
+      {responseFormat === 'kType' && !mcqResult.isCorrect && (
+        <KTypeVerdict selectedOption={selectedOption} correctOption={mcqResult.correctOption} />
       )}
 
       {/* Explanation — shown on both correct and incorrect */}

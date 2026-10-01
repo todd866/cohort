@@ -5,6 +5,7 @@ import type { CuratedQuestion } from './types';
 import { expandContrastSet, validateContrastSet, type ContrastSet } from './contrast-set';
 import { applyQuestionImageOverlay } from './image-overlay';
 import { validateCuratedQuestion, validateCuratedQuestionBank } from './validate';
+import { expandStatementFile, STATEMENT_FILE_SUFFIX } from './statement-file';
 import { PublicUsmleProvenanceV1Schema } from '@/lib/usmle/public-corpus';
 
 const CuratedQuestionOptionSchema = z.object({
@@ -13,6 +14,8 @@ const CuratedQuestionOptionSchema = z.object({
   isCorrect: z.boolean(),
   misconception: z.string().optional(),
   explanation: z.string().optional(),
+  statement: z.literal(true).optional(),
+  fixedKey: z.literal(true).optional(),
 });
 
 const CuratedQuestionSchema = z.object({
@@ -243,8 +246,12 @@ export function loadQuestionBankFromDisk(options: {
     // unchanged. Expanding later (or at render, as the abandoned correctVariants path
     // did) puts generated content where no validator can see it.
     // See src/lib/question-bank/contrast-set.ts.
+    // A *.statements.json file holds exam-format statement items, expanded here
+    // for the same reason. See src/lib/question-bank/statement-file.ts.
     const items: unknown[] = filePath.endsWith(CONTRAST_SET_SUFFIX)
       ? expandContrastFile(parsed, filePath, errors)
+      : filePath.endsWith(STATEMENT_FILE_SUFFIX)
+        ? expandStatementFile(parsed, filePath, errors)
       : Array.isArray(parsed)
         ? parsed
         : [parsed];

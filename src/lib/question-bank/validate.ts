@@ -1,3 +1,4 @@
+import { responseFormatOfOptions } from './statement-items';
 import type { CuratedQuestion, CuratedQuestionOption } from './types';
 import { needsResultsTable } from './results-table-policy';
 import { extractMarkdownTables } from '../inline-markdown';
@@ -161,7 +162,8 @@ export function validateCuratedQuestion(question: CuratedQuestion): string[] {
     if (uniqueLabels.size !== labels.length) errors.push('options labels must be unique');
 
     const correctCount = question.options.filter((o) => o.isCorrect).length;
-    if (correctCount !== 1) errors.push(`options must have exactly 1 correct answer (got ${correctCount})`);
+    // A Type X set's options are four independently true/false statements.
+    if (correctCount !== 1 && responseFormatOfOptions(question.options) !== 'typeX') errors.push(`options must have exactly 1 correct answer (got ${correctCount})`);
   }
 
   // Validate combinations if present
@@ -270,6 +272,16 @@ export function validateCuratedQuestionBank(questions: CuratedQuestion[]): strin
 }
 
 /**
+ * The option heuristics below (length bias, letter references, form symmetry)
+ * judge options as competing alternatives. A statement item's options are
+ * independently true or false statements, or a fixed answer key, so those
+ * heuristics do not apply to it.
+ */
+function isSingleBestAnswer(q: CuratedQuestion): boolean {
+  return responseFormatOfOptions(q.options) === 'sba';
+}
+
+/**
  * Check for longest-answer-correct pattern (legacy — use checkLengthBias instead).
  */
 export function checkLongestAnswerCorrect(
@@ -279,6 +291,8 @@ export function checkLongestAnswerCorrect(
   const flagged: { id: string; correctLen: number; maxOtherLen: number; diff: number }[] = [];
 
   for (const q of questions) {
+
+    if (!isSingleBestAnswer(q)) continue;
     if (!Array.isArray(q.options) || q.options.length < 4) continue;
 
     const correctOpt = q.options.find((o) => o.isCorrect);
@@ -336,6 +350,8 @@ export function checkCombinationLengthBias(
   const flagged: { id: string; comboIndex: number; bias: 'longest' | 'shortest'; correctLen: number; otherLen: number }[] = [];
 
   for (const q of questions) {
+
+    if (!isSingleBestAnswer(q)) continue;
     if (!Array.isArray(q.combinations) || q.combinations.length === 0) continue;
     if (!Array.isArray(q.options)) continue;
 
@@ -386,6 +402,8 @@ export function checkLengthBias(
   const flagged: { id: string; bias: 'longest' | 'shortest'; correctLen: number; maxOtherLen: number; minOtherLen: number; pctDiff: number }[] = [];
 
   for (const q of questions) {
+
+    if (!isSingleBestAnswer(q)) continue;
     if (!Array.isArray(q.options) || q.options.length < 4) continue;
 
     const correctOpt = q.options.find((o) => o.isCorrect);
@@ -431,6 +449,8 @@ export function checkOptionLetterRefs(
   const pattern = /Option [A-E]\b/g;
 
   for (const q of questions) {
+
+    if (!isSingleBestAnswer(q)) continue;
     if (!q.context) continue;
     const matches = q.context.match(pattern);
     if (matches && matches.length > 0) {
@@ -694,6 +714,8 @@ export function checkFormatAsymmetry(
   const abbrOnly = /^\([A-Z]{2,6}\)$/;
 
   for (const q of questions) {
+
+    if (!isSingleBestAnswer(q)) continue;
     if (!Array.isArray(q.options) || q.options.length < 4) continue;
 
     const correctOpt = q.options.find((o) => o.isCorrect);

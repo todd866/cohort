@@ -1,4 +1,5 @@
 import { loadPracticeReviewFocus } from '@/lib/study/practice-review-focus.server';
+import { sessionTypeFilter } from './exam-only-modules';
 import { randomUUID } from 'node:crypto';
 import { NextRequest, NextResponse } from 'next/server';
 import { requireAuthOrGuest } from '@/lib/api-utils';
@@ -338,7 +339,8 @@ export async function getUnifiedSession(
   const batchId = randomUUID();
 
   // Filter params
-  const typeFilter = searchParams.get('type') as 'card' | 'question' | 'group' | null;
+  // The surgical exam modules are questions-only whatever the client asks for.
+  const typeFilter = sessionTypeFilter(rotation, searchParams.get('type'));
   const difficultyFilter = searchParams.get('difficulty') as 'easy' | 'medium' | 'hard' | null;
   const topicsFilter = searchParams.get('topics'); // comma-separated
   // One manifold cluster, from a square on the profile knowledge heatmap.

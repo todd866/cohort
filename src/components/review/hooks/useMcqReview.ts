@@ -1,4 +1,6 @@
 import { useState, useCallback, useRef, useEffect, useMemo } from 'react';
+import { localMcqGrade } from './local-mcq-grade';
+import { responseFormatOfOptions } from '@/lib/question-bank/statement-items';
 import { acknowledgeReview, enqueueReview } from '@/lib/review-queue';
 import { submitWithRetry } from '@/lib/submit-with-retry';
 import { genClientRequestId } from '@/lib/client-request-id';
@@ -465,9 +467,9 @@ export function useMcqReview({
       return;
     }
 
-    const selectedOptData = displayOptions.find(o => o.label === label);
-    const isCorrect = selectedOptData?.isCorrect ?? false;
-    const correctOption = displayOptions.find(o => o.isCorrect)?.label ?? '';
+    const grade = localMcqGrade(displayOptions, label);
+    if (!grade) return;
+    const { isCorrect, correctOption } = grade;
 
     // Going back to an answered question and choosing the same option again
     // shows the result but records nothing: it is a re-read, not a second
@@ -478,7 +480,7 @@ export function useMcqReview({
       serveDecisionId: currentItem.serveDecisionId,
       batchId: currentItem.batchId,
     });
-    const answer = `option:${selectedOptData?.originalIndex ?? label}`;
+    const answer = grade.answerKey;
     if (isRepeatAnswer(slot, answer)) {
       setSelectedOption(label);
       setMcqResult({ isCorrect, correctOption });
@@ -490,15 +492,9 @@ export function useMcqReview({
     const ownerLease = captureOfflineOwner();
     submittingRef.current = true;
 
-    // Record response in background, then revalidate due count
-    // Send the original DB label (not the shuffled display label) so the
-    // server grades against the correct option in the database.
-    const originalLabel = selectedOptData?.originalIndex != null
-      ? String.fromCharCode(65 + selectedOptData.originalIndex)
-      : label;
-
-    const correctDisplayPosition = displayOptions.findIndex(o => o.isCorrect);
-    const selectedDisplayPosition = displayOptions.findIndex(o => o.label === label);
+    // Record response in background, then revalidate due count.
+    const originalLabel = grade.wireOption;
+    const { correctDisplayPosition, selectedDisplayPosition } = grade;
     const responseTimeMs = Date.now() - startTime;
     const clientRequestId = genClientRequestId();
     const mcqBody: Record<string, unknown> = {
@@ -506,8 +502,8 @@ export function useMcqReview({
       id: currentItem.id,
       selectedOption: originalLabel,
       responseTimeMs,
-      correctDisplayPosition,
-      selectedDisplayPosition,
+      ...(correctDisplayPosition !== undefined ? { correctDisplayPosition } : {}),
+      ...(selectedDisplayPosition !== undefined ? { selectedDisplayPosition } : {}),
       metadata: currentItem.decisionContext,
       // Idempotency key — dedups an outbox replay / retry of this MCQ grade.
       clientRequestId,
@@ -529,7 +525,7 @@ export function useMcqReview({
       total: prev.total + 1,
       correct: isCorrect ? prev.correct + 1 : prev.correct,
     }));
-    writeLastCorrectDisplayPosition(currentItem.id, correctDisplayPosition);
+    if (correctDisplayPosition !== undefined) writeLastCorrectDisplayPosition(currentItem.id, correctDisplayPosition);
 
     // Bump the daily-progress pill OPTIMISTICALLY — before the API round-
     // trip. Matches the card-grading path (useGrading) which fires
@@ -583,7 +579,11 @@ export function useMcqReview({
       return;
     }
 
-    const correctOption = displayOptions.find(o => o.isCorrect)?.label ?? '';
+    // A Type X key is its four truths ('TFFT'), not the first true statement.
+    const typeXKey = responseFormatOfOptions(displayOptions) === 'typeX'
+      ? displayOptions.map(o => (o.isCorrect ? 'T' : 'F')).join('')
+      : null;
+    const correctOption = typeXKey ?? displayOptions.find(o => o.isCorrect)?.label ?? '';
 
     // Revisiting a skipped delivery reveals it without recording another skip.
     const slot = answeredSlotKey({
@@ -604,7 +604,7 @@ export function useMcqReview({
     submittingRef.current = true;
 
     // Record skip in background, then revalidate due count
-    const correctDisplayPosition = displayOptions.findIndex(o => o.isCorrect);
+    const correctDisplayPosition = typeXKey ? undefined : displayOptions.findIndex(o => o.isCorrect);
     const responseTimeMs = Date.now() - startTime;
     const clientRequestId = genClientRequestId();
     const skipBody: Record<string, unknown> = {
@@ -612,7 +612,7 @@ export function useMcqReview({
       id: currentItem.id,
       selectedOption: null,
       responseTimeMs,
-      correctDisplayPosition,
+      ...(correctDisplayPosition !== undefined ? { correctDisplayPosition } : {}),
       selectedDisplayPosition: null,
       metadata: currentItem.decisionContext,
       clientRequestId,
@@ -627,7 +627,7 @@ export function useMcqReview({
     setSelectedOption(null);
     setMcqResult({ isCorrect: false, correctOption });
     if (currentItem.context) setContext(currentItem.context);
-    writeLastCorrectDisplayPosition(currentItem.id, correctDisplayPosition);
+    if (correctDisplayPosition !== undefined) writeLastCorrectDisplayPosition(currentItem.id, correctDisplayPosition);
 
     // Optimistic pill bump — see handleSelectOption for the same rationale.
     onReview?.();

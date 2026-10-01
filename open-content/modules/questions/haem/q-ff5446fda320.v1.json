@@ -1,0 +1,66 @@
+{
+  "id": "bank:cohort:haem:q-ff5446fda320:v1",
+  "rotation": "cohort-open",
+  "moduleNodes": [
+    "cohort/haem"
+  ],
+  "topics": [
+    "physiological anaemia",
+    "infant anaemia",
+    "haematology"
+  ],
+  "questionType": "knowledge",
+  "difficulty": "medium",
+  "stem": "A healthy 8-week-old term infant has a routine blood test showing Hb 95 g/L. The infant is well, feeding normally, and growing appropriately.\n\nWhat is the most likely explanation?",
+  "options": [
+    {
+      "label": "A",
+      "text": "Occult gastrointestinal blood loss needing investigation",
+      "isCorrect": false,
+      "explanation": "Occult blood loss would be less likely in a thriving, asymptomatic infant with the expected age and haemoglobin range. Nothing in the stem suggests gastrointestinal pathology."
+    },
+    {
+      "label": "B",
+      "text": "Bone marrow failure syndrome requiring urgent referral",
+      "isCorrect": false,
+      "explanation": "Bone marrow failure would usually present with a sicker infant or additional cytopenias, not an otherwise well 8-week-old with an isolated mild haemoglobin fall. The timing fits a normal physiological process."
+    },
+    {
+      "label": "C",
+      "text": "A normal physiological haemoglobin nadir for age",
+      "isCorrect": true,
+      "explanation": "Correct — the physiological nadir occurs at 6-12 weeks in term infants as fetal red cells are replaced and erythropoiesis is briefly suppressed. RCH gives a lower normal limit of 90 g/L at 2 months, so 95 g/L in a thriving infant is within the normal range and is not anaemia and needs no treatment."
+    },
+    {
+      "label": "D",
+      "text": "Iron deficiency anaemia requiring oral supplementation",
+      "isCorrect": false,
+      "explanation": "Iron deficiency is uncommon before 4-6 months in a term infant, because hepatic iron stores laid down in the third trimester are not yet exhausted."
+    },
+    {
+      "label": "E",
+      "text": "Late haemolytic disease of the newborn causing anaemia",
+      "isCorrect": false,
+      "explanation": "Haemolytic disease would usually be accompanied by jaundice, haemolysis markers, or a relevant neonatal history. This child is otherwise well at the normal physiological nadir age."
+    }
+  ],
+  "context": "Physiological anaemia of infancy reflects less erythropoietin after birth (higher PaO₂), the shorter survival of neonatal red cells, and haemodilution from rapid growth.\n\nIn a well, thriving infant, this is normal and doesn't require treatment.",
+  "publicModule": {
+    "schemaVersion": 1,
+    "origin": "mirrored",
+    "discipline": "haem",
+    "mirroredFrom": "md3:ff5446fda3207fca",
+    "itemText": {
+      "licence": "CC-BY-4.0",
+      "attribution": "MD3 contributors"
+    },
+    "evidence": {
+      "kind": "reference",
+      "sourceId": "rch-anaemia"
+    },
+    "review": {
+      "verdict": "passed",
+      "contentHash": "7946c751d4c94b14a11838989a86a3ca0358e01a67849268c03f2dae2cd7dc90"
+    }
+  }
+}
