@@ -99,30 +99,49 @@ export function clusterAvailabilityCtes(rotation: string): Prisma.Sql {
 }
 
 
-// NOT DONE HERE, deliberately — the PLAN query's own whole-corpus scan.
-//
-// `candidate_centroids` filters `centroids` by the family predicate immediately
-// after this CTE builds them, so averaging the other families' members is work
-// thrown away, and pushing that predicate down into `member_vectors` would remove
-// those rows before the subvector and the AVG.
-//
-// It is not a copy-paste, which is why it is not in this commit:
-// `clusterFamilyPredicate` is written against the `centroids` CTE's `cluster_id`
-// column, while inside `member_vectors` the column is `c."clusterId"` /
-// `v."clusterId"`. Reusing it verbatim produces invalid SQL, so the pushdown needs
-// a member-scoped variant of the predicate and its own test.
-//
-// And when it is done: filter on the cluster ID PATTERN, never on rotation.
-// Narrowing members by rotation looks like the same optimisation and is not —
-// `candidate_centroids` applies only an id-pattern predicate for the
-// rotation-local and canonical-global families, so a card may legitimately be
-// assigned to a global cluster with no member in its own rotation, and a global
-// cluster's centroid is meant to average its members across every rotation.
-// Filtering members by rotation would silently change centroids, and therefore
-// assignments, while looking like a pure speedup.
+/**
+ * The plan knows the candidate family before it builds centroids. Push that
+ * family's cluster-ID predicate into both member scans so Postgres does not
+ * subvector/AVG members that candidate_centroids will immediately discard.
+ *
+ * This intentionally has no rotation predicate. Local and canonical-global
+ * centroids are corpus-wide, and the represented check for nonstandard
+ * clusters is the same check used after aggregation.
+ */
+function clusterMemberFamilyPredicate(
+  family: ClusterCentroidFamily,
+  localPrefix: string,
+  memberCluster: Prisma.Sql,
+): Prisma.Sql {
+  if (family === 'rotation-local') {
+    return Prisma.sql`${memberCluster} LIKE ${localPrefix}`;
+  }
+  if (family === 'canonical-global') {
+    return Prisma.sql`${memberCluster} ~ ${CANONICAL_GLOBAL_CLUSTER_PATTERN}`;
+  }
+  return Prisma.sql`
+    EXISTS (
+      SELECT 1
+      FROM represented r
+      WHERE r.cluster_id = ${memberCluster}
+    )
+    AND ${memberCluster} NOT LIKE ${localPrefix}
+    AND ${memberCluster} !~ ${CANONICAL_GLOBAL_CLUSTER_PATTERN}
+  `;
+}
 
 
-export function clusterAssignmentTopologyCtes(rotation: string): Prisma.Sql {
+export function clusterAssignmentTopologyCtes(
+  rotation: string,
+  family?: ClusterCentroidFamily,
+): Prisma.Sql {
+  const memberFamilyPredicate = family === undefined
+    ? Prisma.empty
+    : Prisma.sql`AND ${clusterMemberFamilyPredicate(family, `${rotation}-cluster-%`, Prisma.sql`c."clusterId"`)}`;
+  const videoFamilyPredicate = family === undefined
+    ? Prisma.empty
+    : Prisma.sql`AND ${clusterMemberFamilyPredicate(family, `${rotation}-cluster-%`, Prisma.sql`v."clusterId"`)}`;
+
   return Prisma.sql`
     represented AS MATERIALIZED (
       SELECT c."clusterId" AS cluster_id
@@ -151,6 +170,7 @@ export function clusterAssignmentTopologyCtes(rotation: string): Prisma.Sql {
       WHERE c."deletedAt" IS NULL
         AND c."shelvedAt" IS NULL
         AND c."clusterId" IS NOT NULL
+        ${memberFamilyPredicate}
 
       UNION ALL
 
@@ -161,6 +181,7 @@ export function clusterAssignmentTopologyCtes(rotation: string): Prisma.Sql {
       JOIN video_embeddings ve ON ve.video_id = v.id
       WHERE v.published = true
         AND v."clusterId" IS NOT NULL
+        ${videoFamilyPredicate}
     ),
     centroids AS MATERIALIZED (
       SELECT
@@ -211,7 +232,7 @@ export function clusterAssignmentPlanSql(options: {
 
   return Prisma.sql`
     WITH
-    ${clusterAssignmentTopologyCtes(rotation)},
+    ${clusterAssignmentTopologyCtes(rotation, family)},
     targets AS MATERIALIZED (
       SELECT
         c.id AS card_id,
