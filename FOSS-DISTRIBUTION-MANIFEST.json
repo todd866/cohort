@@ -1,10 +1,10 @@
 {
   "schemaVersion": 1,
   "boundaryPolicy": "foss/distribution-policy.json",
-  "boundaryPolicySha256": "4adcea0397290e4667c275eda0de9c0dcac2b2eb81fc9babf4bd9e5de23e824c",
+  "boundaryPolicySha256": "9bb154972591e823e0660b6600a8057f3fbef478197046085e78c150fd68b2df",
   "reviewedPathsSha256": "de78ec45a15ca4491a1255280d0748c48820c7b5b91276057f7472253607c590",
   "fileCount": 2612,
-  "totalBytes": 257117906,
+  "totalBytes": 257118151,
   "files": [
     {
       "path": ".env.example",
@@ -127,8 +127,8 @@
     },
     {
       "path": "foss/distribution-policy.json",
-      "bytes": 343143,
-      "sha256": "4adcea0397290e4667c275eda0de9c0dcac2b2eb81fc9babf4bd9e5de23e824c",
+      "bytes": 343021,
+      "sha256": "9bb154972591e823e0660b6600a8057f3fbef478197046085e78c150fd68b2df",
       "mode": "0644",
       "licence": "MIT"
     },
@@ -10417,15 +10417,15 @@
     },
     {
       "path": "package-lock.json",
-      "bytes": 513886,
-      "sha256": "a2bd5c0d9fa9932bd21afbdbdea1a94666faae261f198feb21248149e8ae830e",
+      "bytes": 514257,
+      "sha256": "126d670ce3adf9cfff9184fff863efdda365eb1aa654beec8ae06a9ea6a7386c",
       "mode": "0644",
       "licence": "MIT"
     },
     {
       "path": "package.json",
-      "bytes": 10996,
-      "sha256": "72067e335fb1900841e3e6796bf70e72b4360fe1e2d84ff473b7b05b1af1f2d9",
+      "bytes": 10992,
+      "sha256": "632d9541a61050ff79d5b179687641243fafc6423bf208703a00d0fe14b7d530",
       "mode": "0644",
       "licence": "MIT"
     },
