@@ -1,0 +1,64 @@
+{
+  "id": "bank:cohort:gynae:q-c54fe8d380a8:v1",
+  "rotation": "cohort-open",
+  "moduleNodes": [
+    "cohort/gynae"
+  ],
+  "topics": [
+    "gynae"
+  ],
+  "questionType": "investigation",
+  "difficulty": "medium",
+  "stem": "A 32-year-old has a routine Cervical Screening Test. She is up to date with screening, immunocompetent and has no symptoms. An oncogenic HPV type other than 16 or 18 is detected, and reflex liquid-based cytology shows no abnormality.\n\nWhat is the next step?",
+  "options": [
+    {
+      "label": "A",
+      "text": "Colposcopy now, as an oncogenic HPV type has been found",
+      "isCorrect": false,
+      "explanation": "Only HPV 16 or 18 goes straight to colposcopy whatever the cytology shows. For other oncogenic types the reflex cytology decides, and normal cytology does not need colposcopy now."
+    },
+    {
+      "label": "B",
+      "text": "Return to routine five-yearly screening, as cytology is normal",
+      "isCorrect": false,
+      "explanation": "A detected oncogenic HPV type needs follow-up even with normal cytology; it does not return her to the five-yearly interval."
+    },
+    {
+      "label": "C",
+      "text": "Repeat cytology alone in six months, then colposcopy if abnormal",
+      "isCorrect": false,
+      "explanation": "The pathway follows HPV (not 16/18) with a repeat HPV test, not cytology alone, and the interval is 12 months."
+    },
+    {
+      "label": "D",
+      "text": "Repeat HPV testing in three years, as her cytology is normal",
+      "isCorrect": false,
+      "explanation": "Three years is not the interval in this pathway; she is retested at 12 months to see whether the infection has cleared."
+    },
+    {
+      "label": "E",
+      "text": "Repeat HPV testing in 12 months, without colposcopy now",
+      "isCorrect": true,
+      "explanation": "HPV (not 16/18) with negative cytology in an on-time, immunocompetent screener is followed with a repeat HPV test in 12 months, because many of these infections clear in that time."
+    }
+  ],
+  "context": "Oncogenic HPV other than 16 or 18, with negative cytology, is a 12-month follow-up, not immediate colposcopy.",
+  "publicModule": {
+    "schemaVersion": 1,
+    "origin": "mirrored",
+    "discipline": "gynae",
+    "mirroredFrom": "md3:c54fe8d380a8e316",
+    "itemText": {
+      "licence": "CC-BY-4.0",
+      "attribution": "MD3 contributors"
+    },
+    "evidence": {
+      "kind": "reference",
+      "sourceId": "health-gov-au-cervical-screening-program-a-summary-guide-for-healthcare-providers-0-91e407"
+    },
+    "review": {
+      "verdict": "passed",
+      "contentHash": "1f356f804f4bc8ee731082af64dc550a77cd5467a814f8096f5f809105d035b6"
+    }
+  }
+}

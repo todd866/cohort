@@ -1,0 +1,64 @@
+{
+  "id": "bank:cohort:clinical-skills:q-4b45069a5cc6:v1",
+  "rotation": "cohort-open",
+  "moduleNodes": [
+    "cohort/clinical-skills"
+  ],
+  "topics": [
+    "clinical-skills"
+  ],
+  "questionType": "management",
+  "difficulty": "medium",
+  "stem": "A stable 58-year-old is to give consent today for a planned colonoscopy with possible polypectomy. She speaks conversational English but says she understands complex information best in Arabic. The treating doctor does not speak Arabic. She asks for her adult daughter, who is fluent in both languages and a pharmacist, to interpret, saying she would be more comfortable that way. A professional interpreter can join by phone in 20 minutes, and there is time for a full discussion today.\n\nHow should the consent discussion be conducted?",
+  "options": [
+    {
+      "label": "A",
+      "text": "Respect her wish and ask her daughter to interpret",
+      "isCorrect": false,
+      "explanation": "Her preference matters, but family interpreting risks omissions and pressure; with a professional interpreter available today, it is not appropriate for consent."
+    },
+    {
+      "label": "B",
+      "text": "Proceed in English, as she speaks conversational English",
+      "isCorrect": false,
+      "explanation": "Conversational English is not the same as understanding risks and alternatives; she has said she understands complex information best in Arabic."
+    },
+    {
+      "label": "C",
+      "text": "Ask a bilingual ward clerk to interpret the risks",
+      "isCorrect": false,
+      "explanation": "Untrained staff are not accredited interpreters and their role conflicts with impartial interpretation."
+    },
+    {
+      "label": "D",
+      "text": "Explain in English and give her an Arabic leaflet to sign",
+      "isCorrect": false,
+      "explanation": "A leaflet does not replace a two-way discussion in which her questions are answered."
+    },
+    {
+      "label": "E",
+      "text": "Professional interpreter, daughter present as support",
+      "isCorrect": true,
+      "explanation": "Consent needs accurate, complete, impartial interpretation. A relative, however capable, may filter or soften information and is not bound by interpreter standards, and NSW policy limits family interpreting to emergencies when no professional is available. Her wish for support is met by having her daughter present while the interpreter interprets."
+    }
+  ],
+  "context": "For consent with a patient who needs another language, use a professional interpreter when one is available; family members may support the patient but should not interpret, except in emergencies.",
+  "publicModule": {
+    "schemaVersion": 1,
+    "origin": "mirrored",
+    "discipline": "clinical-skills",
+    "mirroredFrom": "md3:4b45069a5cc60678",
+    "itemText": {
+      "licence": "CC-BY-4.0",
+      "attribution": "MD3 contributors"
+    },
+    "evidence": {
+      "kind": "reference",
+      "sourceId": "nsw-health-policies-manuals-documents-consent-to-medical-healthcare-46dc1d"
+    },
+    "review": {
+      "verdict": "passed",
+      "contentHash": "970003fbce079bd3a5f040767c6980027cbe3479405ef8c4c6faa655bbff0798"
+    }
+  }
+}

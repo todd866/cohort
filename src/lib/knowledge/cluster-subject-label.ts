@@ -81,9 +81,15 @@ export function clusterSplitEligible(cardCount: number, topShare: number): boole
 /**
  * Process headings ("Treating it", "What it is") are nearest to the card and
  * would otherwise name a whole region. A heading made only of these words is
- * not a name.
+ * not a name. So is deck scaffolding ("Card Bank", "Key points") and a bare
+ * umbrella ("Complications"): a 2026-10-02 PWH split named clusters after them.
  */
 const WEAK_HEADING_WORDS = new Set([
+  'bank', 'card', 'cards', 'complication', 'complications', 'deck', 'key', 'notes', 'overview',
+  'points', 'questions', 'quiz', 'review', 'summary',
+  // 2026-10-03 target-count dry run: "· Extra Practice" and "Causes" named leaves.
+  'cause', 'causes', 'extra', 'malleus', 'practice',
+  'additional', 'anki', 'foundations', 'harvest', 'legacy', 'paam', 'reinforcement', 'scaffolding', 'teaching',
   'a', 'an', 'and', 'are', 'child', 'children', 'different', 'empiric', 'film',
   'for', 'how', 'in', 'initial', 'investigating', 'investigation', 'is', 'it',
   'its', 'management', 'managing', 'more', 'of', 'on', 'or', 'other', 'putting',
@@ -92,6 +98,8 @@ const WEAK_HEADING_WORDS = new Set([
 ]);
 
 export function isWeakClusterHeading(heading: string): boolean {
+  // A slug ("neonatal-hypoglycaemia") is an internal tag, not a name a learner reads.
+  if (/^[a-z0-9]+(?:-[a-z0-9]+)+$/.test(heading.trim())) return true;
   const words = heading.toLowerCase().split(/[^a-z0-9]+/).filter(Boolean);
   return words.length === 0 || words.every((word) => WEAK_HEADING_WORDS.has(word));
 }
@@ -99,14 +107,18 @@ export function isWeakClusterHeading(heading: string): boolean {
 export function rankedSubjects(
   topicLists: readonly (readonly string[])[],
 ): Array<{ name: string; count: number }> {
-  const counts = new Map<string, number>();
+  // "endometriosis" and "Endometriosis" are one subject; show the capitalised form.
+  const counts = new Map<string, { name: string; count: number }>();
   for (const topics of topicLists) {
     const subject = primaryTopicOf(topics);
     if (!subject || isWeakClusterHeading(subject)) continue;
-    counts.set(subject, (counts.get(subject) ?? 0) + 1);
+    const key = subject.toLowerCase();
+    const entry = counts.get(key) ?? { name: subject, count: 0 };
+    entry.count += 1;
+    if (/^[a-z]/.test(entry.name) && /^[A-Z]/.test(subject)) entry.name = subject;
+    counts.set(key, entry);
   }
-  return [...counts.entries()]
-    .map(([name, count]) => ({ name, count }))
+  return [...counts.values()]
     .sort((a, b) => b.count - a.count || a.name.localeCompare(b.name));
 }
 
@@ -127,12 +139,27 @@ export function labelForMembers(
   topicLists: readonly (readonly string[])[],
   fallback: string,
 ): string {
-  const ranked = rankedSubjects(topicLists);
+  // A bare lower-case tag ("newborn") is a filter, not a name a learner reads.
+  const ranked = rankedSubjects(topicLists).filter((entry) => nameable(entry.name));
   const top = ranked[0];
+  // A weak parent label ("Card Bank") is never better than the leaf's own subject.
+  if (top && isWeakClusterHeading(fallback)) return top.name;
   if (!top || topicLists.length === 0 || top.count / topicLists.length < 0.2) {
     return fallback;
   }
   return top.name;
+}
+
+/** A single lower-case word is a tag, not a name. */
+export function nameable(name: string): boolean {
+  return !/^[a-z][a-z0-9]*$/.test(name);
+}
+
+/** True when one label contains the other, so appending it would only repeat. */
+export function restates(label: string, subject: string): boolean {
+  const a = label.toLowerCase();
+  const b = subject.toLowerCase();
+  return a.includes(b) || b.includes(a);
 }
 
 /** When sibling leaves would share a label, append the next real heading. */
@@ -153,7 +180,7 @@ export function disambiguateMemberLabels(
       labels.set(leaf.id, leaf.name);
       continue;
     }
-    const next = leaf.ranked.find((entry) => entry.name !== leaf.name && entry.count >= 2);
+    const next = leaf.ranked.find((entry) => entry.count >= 2 && nameable(entry.name) && !restates(leaf.name, entry.name));
     labels.set(leaf.id, next ? `${leaf.name} · ${next.name}` : leaf.name);
   }
   return labels;

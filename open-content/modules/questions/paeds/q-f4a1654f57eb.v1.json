@@ -1,0 +1,64 @@
+{
+  "id": "bank:cohort:paeds:q-f4a1654f57eb:v1",
+  "rotation": "cohort-open",
+  "moduleNodes": [
+    "cohort/paeds"
+  ],
+  "topics": [
+    "paeds"
+  ],
+  "questionType": "diagnosis",
+  "difficulty": "hard",
+  "stem": "A 15-year-old reports eight-day periods with flooding since menarche. She has also had recurrent prolonged nosebleeds since childhood and bled for hours after a dental extraction. Her mother describes similar symptoms. She has no joint bleeds and takes no medicines. The GP obtains the following results.\n\n| Test | Result | Reference range |\n| --- | --- | --- |\n| Haemoglobin | 103 g/L | 120–155 |\n| Ferritin | 8 micrograms/L | 15–150 |\n| Platelets | 276 × 10⁹/L | 150–450 |\n| INR | 1.0 | 0.9–1.2 |\n| APTT | 31 seconds | 25–35 |\n\nWhich underlying diagnosis best explains the bleeding history?",
+  "options": [
+    {
+      "label": "A",
+      "text": "Anovulatory uterine bleeding",
+      "isCorrect": false,
+      "explanation": "Anovulation is common after menarche but cannot account for childhood epistaxis, dental bleeding and a similarly affected parent."
+    },
+    {
+      "label": "B",
+      "text": "von Willebrand disease",
+      "isCorrect": true,
+      "explanation": "von Willebrand disease can cause mucocutaneous and menstrual bleeding with normal platelet count, INR and APTT. The iron deficiency is a consequence, not a full explanation."
+    },
+    {
+      "label": "C",
+      "text": "Vitamin K deficiency",
+      "isCorrect": false,
+      "explanation": "Vitamin K deficiency usually affects coagulation tests, particularly PT/INR, and does not fit the stable familial mucosal-bleeding pattern."
+    },
+    {
+      "label": "D",
+      "text": "Immune thrombocytopenia",
+      "isCorrect": false,
+      "explanation": "Immune thrombocytopenia requires a reduced platelet count and does not explain this lifelong familial pattern with normal platelets."
+    },
+    {
+      "label": "E",
+      "text": "Haemophilia A",
+      "isCorrect": false,
+      "explanation": "Haemophilia typically causes deep muscle or joint bleeding. This mucosal pattern in successive generations, including females, is more consistent with von Willebrand disease."
+    }
+  ],
+  "context": "A normal platelet count and routine coagulation screen do not exclude von Willebrand disease. Lifelong mucosal bleeding and family history matter when assessing heavy periods.",
+  "publicModule": {
+    "schemaVersion": 1,
+    "origin": "mirrored",
+    "discipline": "paeds",
+    "mirroredFrom": "md3:f4a1654f57ebe6bc",
+    "itemText": {
+      "licence": "CC-BY-4.0",
+      "attribution": "MD3 contributors"
+    },
+    "evidence": {
+      "kind": "reference",
+      "sourceId": "rch-clinicalguide-guideline-index-von-willebrand-disease-7702f9"
+    },
+    "review": {
+      "verdict": "passed",
+      "contentHash": "48fa5977fb64d5a70ec1bc34053c17090ca39af0bef2f00ae2d9208842ac1a1a"
+    }
+  }
+}

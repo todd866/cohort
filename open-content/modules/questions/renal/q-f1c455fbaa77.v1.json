@@ -1,0 +1,64 @@
+{
+  "id": "bank:cohort:renal:q-f1c455fbaa77:v1",
+  "rotation": "cohort-open",
+  "moduleNodes": [
+    "cohort/renal"
+  ],
+  "topics": [
+    "renal"
+  ],
+  "questionType": "diagnosis",
+  "difficulty": "hard",
+  "stem": "A 4-year-old boy has had puffy eyes each morning for a week and now has swollen ankles and scrotum. He had a cold 10 days ago. He is afebrile, and his blood pressure is on the 75th centile for his height. Urine dipstick shows 4+ protein and 1+ blood.\n\n| Test | Result | Reference range |\n| --- | --- | --- |\n| Serum albumin | 16 g/L | 35–50 |\n| Creatinine | 28 µmol/L | 20–45 |\n| Urine protein:creatinine ratio | 950 mg/mmol | < 20 |\n| C3 | 1.1 g/L | 0.9–1.8 |\n\nWhich diagnosis best fits?",
+  "options": [
+    {
+      "label": "A",
+      "text": "Nephritic syndrome, as the dipstick shows blood",
+      "isCorrect": false,
+      "explanation": "Microscopic haematuria occurs in some children with minimal change disease. Nephritic syndrome needs hypertension, a raised creatinine, oliguria or red-cell casts, and his blood pressure, creatinine and C3 are normal."
+    },
+    {
+      "label": "B",
+      "text": "Post-infectious glomerulonephritis after his cold",
+      "isCorrect": false,
+      "explanation": "Post-infectious glomerulonephritis causes haematuria, hypertension and a low C3 with modest proteinuria. Here the C3 and blood pressure are normal and the proteinuria is heavy; a recent cold is common and does not point to it."
+    },
+    {
+      "label": "C",
+      "text": "Nephrotic syndrome, likely minimal change disease",
+      "isCorrect": true,
+      "explanation": "Correct. Oedema, nephrotic-range proteinuria and albumin below 25 g/L define nephrotic syndrome. At 4 years with normal blood pressure, creatinine and C3, minimal change disease is most likely; microscopic haematuria occurs in some children and does not make it nephritic."
+    },
+    {
+      "label": "D",
+      "text": "Nephrotic syndrome needing a kidney biopsy for the haematuria",
+      "isCorrect": false,
+      "explanation": "Biopsy before steroids is kept for atypical features such as age under 1 or over about 12, hypertension, a raised creatinine, a low C3 or visible haematuria. Isolated microscopic haematuria in a typical 4-year-old does not need it."
+    },
+    {
+      "label": "E",
+      "text": "Protein-losing enteropathy with low albumin",
+      "isCorrect": false,
+      "explanation": "A protein-losing enteropathy loses albumin through the gut, not the urine; a protein:creatinine ratio of 950 mg/mmol places the loss in the kidney."
+    }
+  ],
+  "context": "Nephrotic syndrome is oedema, nephrotic-range proteinuria (protein:creatinine ratio above 200 mg/mmol) and albumin below 25 g/L. Microscopic haematuria does not exclude it; hypertension, a raised creatinine or a low C3 suggest a nephritic or atypical cause.",
+  "publicModule": {
+    "schemaVersion": 1,
+    "origin": "mirrored",
+    "discipline": "renal",
+    "mirroredFrom": "md3:f1c455fbaa774618",
+    "itemText": {
+      "licence": "CC-BY-4.0",
+      "attribution": "MD3 contributors"
+    },
+    "evidence": {
+      "kind": "reference",
+      "sourceId": "rch-clinicalguide-guideline-index-nephrotic-syndrome-3712a6"
+    },
+    "review": {
+      "verdict": "passed",
+      "contentHash": "3779482b4cb35b72cf25629be1290448c9de520bb0e2f78b2091cf994684fe62"
+    }
+  }
+}

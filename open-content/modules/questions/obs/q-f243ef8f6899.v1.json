@@ -1,0 +1,64 @@
+{
+  "id": "bank:cohort:obs:q-f243ef8f6899:v1",
+  "rotation": "cohort-open",
+  "moduleNodes": [
+    "cohort/obs"
+  ],
+  "topics": [
+    "obs"
+  ],
+  "questionType": "management",
+  "difficulty": "hard",
+  "stem": "A 30-year-old multipara at 7 cm is having oxytocin augmentation for slow progress. Over the last 20 minutes she has had six contractions in ten minutes, one lasting more than two minutes. The CTG shows late decelerations with each contraction, and a deceleration to 90 beats/min lasting three minutes is now recovering. She has been turned onto her left side and her blood pressure is 120/76 mmHg. The obstetric registrar arrives.\n\nWhat should the registrar do first?",
+  "options": [
+    {
+      "label": "A",
+      "text": "Halve the oxytocin rate and reassess the trace in fifteen minutes",
+      "isCorrect": false,
+      "explanation": "Reducing the rate leaves excessive uterine activity in place while the trace is abnormal; the infusion is stopped."
+    },
+    {
+      "label": "B",
+      "text": "Call a category 1 caesarean, given the prolonged deceleration",
+      "isCorrect": false,
+      "explanation": "Caesarean may follow if the trace does not recover, but the first step is to remove the reversible cause, oxytocin-driven excessive contractions."
+    },
+    {
+      "label": "C",
+      "text": "Stop the oxytocin, giving terbutaline if the contractions persist",
+      "isCorrect": true,
+      "explanation": "Excessive contractions with an abnormal CTG during oxytocin call for stopping the infusion at once, with tocolysis such as terbutaline if uterine activity stays excessive."
+    },
+    {
+      "label": "D",
+      "text": "Take fetal scalp lactate before changing the oxytocin infusion",
+      "isCorrect": false,
+      "explanation": "Scalp sampling does not treat the cause and is inappropriate while the uterus is hyperstimulated and the trace is recovering from a prolonged deceleration."
+    },
+    {
+      "label": "E",
+      "text": "Continue oxytocin and give oxygen and a fluid bolus to the mother",
+      "isCorrect": false,
+      "explanation": "Maternal oxygen and fluids do not correct excessive contractions, and continuing oxytocin keeps the cause of the decelerations going."
+    }
+  ],
+  "context": "Excessive contractions with an abnormal CTG during oxytocin: stop the infusion, and add tocolysis if uterine activity does not settle.",
+  "publicModule": {
+    "schemaVersion": 1,
+    "origin": "mirrored",
+    "discipline": "obs",
+    "mirroredFrom": "md3:f243ef8f689990e2",
+    "itemText": {
+      "licence": "CC-BY-4.0",
+      "attribution": "MD3 contributors"
+    },
+    "evidence": {
+      "kind": "reference",
+      "sourceId": "qld-health-data-assets-pdf-file-0012-140043-g-ifs-7026af"
+    },
+    "review": {
+      "verdict": "passed",
+      "contentHash": "3fa12ac615d29de0ac2f9b3bf6dc1c950254e7c19f0482463b9b41f03dba34af"
+    }
+  }
+}

@@ -1,0 +1,64 @@
+{
+  "id": "bank:cohort:resp:q-58c006f2e0c9:v1",
+  "rotation": "cohort-open",
+  "moduleNodes": [
+    "cohort/resp"
+  ],
+  "topics": [
+    "resp"
+  ],
+  "questionType": "diagnosis",
+  "difficulty": "medium",
+  "stem": "A 4-month-old boy, born at term, has had a runny nose for 2 days and since yesterday a cough and fast breathing. His older sister has a cold. He is taking about two-thirds of his usual feeds.\n\n| Measurement | Value |\n| --- | --- |\n| Temperature | 37.8 °C |\n| Respiratory rate | 56/min with mild subcostal recession |\n| Oxygen saturation | 95% in room air |\n\nThere are widespread fine inspiratory crackles and scattered expiratory wheeze over both lungs.\n\nWhich is the most likely diagnosis?",
+  "options": [
+    {
+      "label": "A",
+      "text": "Community-acquired pneumonia",
+      "isCorrect": false,
+      "explanation": "Bacterial pneumonia usually brings high fever, focal crackles or bronchial breathing and a sicker child. Bilateral crackles and wheeze after a coryzal start in a young infant fit bronchiolitis."
+    },
+    {
+      "label": "B",
+      "text": "Pertussis infection",
+      "isCorrect": false,
+      "explanation": "Pertussis gives paroxysms of cough with vomiting, cyanosis or apnoea in young infants, with normal breathing and a clear chest between bouts, not persistent tachypnoea with crackles."
+    },
+    {
+      "label": "C",
+      "text": "Viral-induced wheeze",
+      "isCorrect": false,
+      "explanation": "Viral-induced wheeze describes wheeze with colds in preschool children beyond infancy. RCH advises that infants under 12 months presenting with wheeze are likely to have bronchiolitis."
+    },
+    {
+      "label": "D",
+      "text": "Acute viral bronchiolitis",
+      "isCorrect": true,
+      "explanation": "Correct. Coryza, then cough, tachypnoea, recession and widespread crackles or wheeze in a young infant is bronchiolitis. It is a clinical diagnosis: no swab, X-ray or blood test is needed."
+    },
+    {
+      "label": "E",
+      "text": "Congestive cardiac failure",
+      "isCorrect": false,
+      "explanation": "Heart failure from a left-to-right shunt causes sweating with feeds, poor weight gain, a murmur and hepatomegaly, without a coryzal prodrome or a sick contact."
+    }
+  ],
+  "context": "Bronchiolitis is a clinical diagnosis in infants: coryza, then cough, tachypnoea and widespread crackles or wheeze. Routine X-ray, viral swabs and blood tests are not needed.",
+  "publicModule": {
+    "schemaVersion": 1,
+    "origin": "mirrored",
+    "discipline": "resp",
+    "mirroredFrom": "md3:58c006f2e0c98bfe",
+    "itemText": {
+      "licence": "CC-BY-4.0",
+      "attribution": "MD3 contributors"
+    },
+    "evidence": {
+      "kind": "reference",
+      "sourceId": "rch-clinicalguide-guideline-index-bronchiolitis-12a4ac"
+    },
+    "review": {
+      "verdict": "passed",
+      "contentHash": "1e8054a7c7d3c36b4488846093bf55aa8ca9085071193c56fe7e9fe7f46a478b"
+    }
+  }
+}

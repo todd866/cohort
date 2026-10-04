@@ -1,0 +1,64 @@
+{
+  "id": "bank:cohort:obs:q-9f15727928f7:v1",
+  "rotation": "cohort-open",
+  "moduleNodes": [
+    "cohort/obs"
+  ],
+  "topics": [
+    "obs"
+  ],
+  "questionType": "management",
+  "difficulty": "hard",
+  "stem": "Seven days after the birth of her first baby, a 28-year-old with no psychiatric history is brought to her GP by her partner. She has hardly slept for two nights, at times does not seem to know where she is, and says the hospital swapped her baby's name bands. Today she is calm and cooperative and denies any thoughts of harm. Her partner offers to take her home and watch her, and the perinatal mental health team can see her in three days.\n\nWhat should the GP arrange?",
+  "options": [
+    {
+      "label": "A",
+      "text": "The perinatal team review in three days, with her partner supervising",
+      "isCorrect": false,
+      "explanation": "Postpartum psychosis is a medical emergency, and symptoms fluctuate, so a calm interview today does not make a three-day wait safe."
+    },
+    {
+      "label": "B",
+      "text": "Same-day emergency psychiatric assessment, not left alone with the baby",
+      "isCorrect": true,
+      "explanation": "Sleeplessness, fluctuating confusion and a fixed false belief about the baby in the first week are postpartum psychosis until proven otherwise: arrange same-day emergency assessment, usually leading to admission, and make sure she is not left alone with the baby."
+    },
+    {
+      "label": "C",
+      "text": "Blood tests for infection and thyroid first, referring if they are normal",
+      "isCorrect": false,
+      "explanation": "Confusion warrants a medical work-up, but it runs alongside the emergency assessment rather than delaying it."
+    },
+    {
+      "label": "D",
+      "text": "An Edinburgh Postnatal Depression Scale today and review tomorrow",
+      "isCorrect": false,
+      "explanation": "The EPDS screens for depression and anxiety; it does not detect psychosis, and waiting would delay care."
+    },
+    {
+      "label": "E",
+      "text": "Sertraline now, with daily telephone contact from the practice",
+      "isCorrect": false,
+      "explanation": "An antidepressant does not treat acute psychosis and may worsen a bipolar-spectrum episode."
+    }
+  ],
+  "context": "Suspected postpartum psychosis (sleeplessness, confusion, false beliefs) needs same-day emergency assessment and supervision, even when she seems calm.",
+  "publicModule": {
+    "schemaVersion": 1,
+    "origin": "mirrored",
+    "discipline": "obs",
+    "mirroredFrom": "md3:9f15727928f74cc8",
+    "itemText": {
+      "licence": "CC-BY-4.0",
+      "attribution": "MD3 contributors"
+    },
+    "evidence": {
+      "kind": "reference",
+      "sourceId": "qld-health-data-assets-pdf-file-0016-1321225-g-peri-mental-health-37ad6c"
+    },
+    "review": {
+      "verdict": "passed",
+      "contentHash": "fe739551ae0a438e312a6c63ca7d8a4f8e730b4e933629d04142bc8da11269c5"
+    }
+  }
+}

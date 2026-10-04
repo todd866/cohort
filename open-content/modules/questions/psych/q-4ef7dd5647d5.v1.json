@@ -1,0 +1,64 @@
+{
+  "id": "bank:cohort:psych:q-4ef7dd5647d5:v1",
+  "rotation": "cohort-open",
+  "moduleNodes": [
+    "cohort/psych"
+  ],
+  "topics": [
+    "psych"
+  ],
+  "questionType": "management",
+  "difficulty": "hard",
+  "stem": "A 56-year-old woman is a voluntary inpatient in a NSW hospital with severe depression without psychotic features; two weeks before admission she took an overdose. After giving informed consent she has had four ECT treatments and is improving. Before the fifth, she says clearly that she wants to stop because of word-finding and memory lapses. She can explain the expected benefits, the risk of relapse if she stops and the alternatives. She has no current suicidal intent and is eating and drinking. Her husband asks the team to continue, and the psychiatrist fears relapse.\n\nWhat should the treating psychiatrist do?",
+  "options": [
+    {
+      "label": "A",
+      "text": "Give the fifth treatment, as she consented to the full course",
+      "isCorrect": false,
+      "explanation": "Consent to ECT is for each treatment and can be withdrawn at any point. Earlier consent to a course does not override a current capable refusal."
+    },
+    {
+      "label": "B",
+      "text": "Ask her husband to consent to the remaining sessions",
+      "isCorrect": false,
+      "explanation": "A relative cannot consent on behalf of a capable adult. Her husband's wishes do not override her decision."
+    },
+    {
+      "label": "C",
+      "text": "Stop ECT and discuss her concerns and the alternatives",
+      "isCorrect": true,
+      "explanation": "She is a voluntary patient with capacity who has withdrawn consent, so ECT stops. The team should address her cognitive side effects, the options (including resuming later if she chooses) and relapse prevention."
+    },
+    {
+      "label": "D",
+      "text": "Make her involuntary and apply to the Tribunal for ECT",
+      "isCorrect": false,
+      "explanation": "Involuntary status requires mental illness with a current risk of serious harm, not a wish to continue a treatment she has refused. She has no current suicidal intent and is eating and drinking; the past overdose alone does not justify detention."
+    },
+    {
+      "label": "E",
+      "text": "Proceed if a second psychiatrist confirms the benefit",
+      "isCorrect": false,
+      "explanation": "A second opinion cannot authorise treatment that a capable voluntary patient has refused."
+    }
+  ],
+  "context": "A voluntary patient with capacity can withdraw consent to ECT at any time. Prior consent, family wishes, fear of relapse or a past overdose do not authorise continuing; the Mental Health Act cannot be used just to keep a treatment going.",
+  "publicModule": {
+    "schemaVersion": 1,
+    "origin": "mirrored",
+    "discipline": "psych",
+    "mirroredFrom": "md3:4ef7dd5647d58f51",
+    "itemText": {
+      "licence": "CC-BY-4.0",
+      "attribution": "MD3 contributors"
+    },
+    "evidence": {
+      "kind": "reference",
+      "sourceId": "nsw-health-mentalhealth-resources-publications-electroconvulsive-therapy-handbook-f8f4b2"
+    },
+    "review": {
+      "verdict": "passed",
+      "contentHash": "325e089c632d8155e33b7697e0a3e4e26116002aab98be21e6c7c9badd2f4327"
+    }
+  }
+}

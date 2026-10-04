@@ -1,0 +1,64 @@
+{
+  "id": "bank:cohort:gynae:q-7dac4328c2e1:v1",
+  "rotation": "cohort-open",
+  "moduleNodes": [
+    "cohort/gynae"
+  ],
+  "topics": [
+    "gynae"
+  ],
+  "questionType": "management",
+  "difficulty": "hard",
+  "stem": "A 34-year-old sees her GP for postcoital bleeding on most occasions over four months. Pregnancy testing and chlamydia/gonorrhoea tests are negative. Speculum examination shows no visible cervical lesion, and a clinician-collected symptomatic co-test is HPV-negative with normal cytology. She has no intermenstrual bleeding and the symptom continues.\n\nWhich next step is most appropriate?",
+  "options": [
+    {
+      "label": "A",
+      "text": "Repeat the co-test in 12 months, as both components are negative",
+      "isCorrect": false,
+      "explanation": "A negative co-test lowers but does not remove the chance of significant pathology in a symptomatic woman; repeating it in a year leaves persistent bleeding unexplained."
+    },
+    {
+      "label": "B",
+      "text": "Return her to routine five-yearly cervical screening",
+      "isCorrect": false,
+      "explanation": "Screening intervals apply to asymptomatic people; persistent postcoital bleeding needs its cause found."
+    },
+    {
+      "label": "C",
+      "text": "Refer for specialist gynaecological assessment of the bleeding",
+      "isCorrect": true,
+      "explanation": "Persistent unexplained postcoital bleeding warrants specialist gynaecological assessment even after a negative co-test, because a small proportion of cancers are HPV-negative or missed on cytology."
+    },
+    {
+      "label": "D",
+      "text": "Cauterise the cervix in general practice for presumed ectropion",
+      "isCorrect": false,
+      "explanation": "No ectropion was seen and treating a presumed cause without specialist assessment could mask significant pathology."
+    },
+    {
+      "label": "E",
+      "text": "Arrange colposcopy only if intermenstrual bleeding also develops",
+      "isCorrect": false,
+      "explanation": "Persistent postcoital bleeding is itself the indication for assessment; waiting for another symptom delays diagnosis."
+    }
+  ],
+  "context": "Persistent or recurrent postcoital bleeding warrants gynaecological assessment despite a negative co-test.",
+  "publicModule": {
+    "schemaVersion": 1,
+    "origin": "mirrored",
+    "discipline": "gynae",
+    "mirroredFrom": "md3:7dac4328c2e1b1f5",
+    "itemText": {
+      "licence": "CC-BY-4.0",
+      "attribution": "MD3 contributors"
+    },
+    "evidence": {
+      "kind": "reference",
+      "sourceId": "cancer-council-inical-guidelines-cervical-cancer-screening-guidelines-recommendations-ab8038"
+    },
+    "review": {
+      "verdict": "passed",
+      "contentHash": "ce87aa280baa11296b23ea561b5271ca4d09737aedcca219be9c5cb0c2eff64f"
+    }
+  }
+}

@@ -1,0 +1,64 @@
+{
+  "id": "bank:cohort:msk:q-24e69c790dab:v1",
+  "rotation": "cohort-open",
+  "moduleNodes": [
+    "cohort/msk"
+  ],
+  "topics": [
+    "msk"
+  ],
+  "questionType": "management",
+  "difficulty": "medium",
+  "stem": "A 13-year-old boy who plays basketball 5 times a week has had 2 months of pain below his right kneecap during jumping and kneeling. It settles with rest and does not wake him at night. There is a prominent, tender bony lump over the right tibial tubercle; the left tubercle is also prominent but not painful. The lower pole of the patella is not tender. There is no effusion, the knee moves fully, the hip examination is normal and he is otherwise well. His parents are worried the lump is a growth and want him to stop sport until it has been scanned.\n\nWhat is the most appropriate management?",
+  "options": [
+    {
+      "label": "A",
+      "text": "Knee radiograph and MRI to exclude a tumour before any advice",
+      "isCorrect": false,
+      "explanation": "Bone tumours around the knee cause pain at rest or at night, swelling beyond the normal outline of the bone, or systemic symptoms. He has activity-related pain at a typical site, with the other tubercle also prominent, so imaging is not needed and would only delay advice."
+    },
+    {
+      "label": "B",
+      "text": "Explain it, reduce jumping load, and play on as pain allows",
+      "isCorrect": true,
+      "explanation": "Correct. Activity-related pain over a prominent, tender tibial tubercle in a jumping adolescent, with a normal knee and hip, is Osgood-Schlatter disease, a traction apophysitis. It is self-limiting and settles as the growth plate fuses. Explain this, reduce jumping and kneeling load, use ice and simple analgesia, add quadriceps and hamstring stretching, and let him keep playing within pain. The bump may persist."
+    },
+    {
+      "label": "C",
+      "text": "Stop all sport for 3 months, until the lump has gone",
+      "isCorrect": false,
+      "explanation": "Complete rest is not needed, and long breaks from sport have their own costs. Activity is guided by pain."
+    },
+    {
+      "label": "D",
+      "text": "Above-knee cast for 6 weeks to rest the tibial tubercle",
+      "isCorrect": false,
+      "explanation": "Immobilisation is not used: it weakens the quadriceps and does not speed recovery."
+    },
+    {
+      "label": "E",
+      "text": "Orthopaedic referral to remove the bony fragment",
+      "isCorrect": false,
+      "explanation": "Surgery is reserved for the rare adult with a persistent painful ossicle after growth has finished, not for an active adolescent."
+    }
+  ],
+  "context": "Osgood-Schlatter disease is a clinical diagnosis: activity-related pain over a prominent, tender tibial tubercle in an active adolescent. With no night or rest pain and no systemic features, imaging is not needed; manage with explanation, load modification and stretching, continuing sport as pain allows.",
+  "publicModule": {
+    "schemaVersion": 1,
+    "origin": "mirrored",
+    "discipline": "msk",
+    "mirroredFrom": "md3:24e69c790dabb449",
+    "itemText": {
+      "licence": "CC-BY-4.0",
+      "attribution": "MD3 contributors"
+    },
+    "evidence": {
+      "kind": "reference",
+      "sourceId": "rch-ortho-for-health-professionals-osgood-schlatter-disease-ffc85d"
+    },
+    "review": {
+      "verdict": "passed",
+      "contentHash": "f6f86724c2955b12987682a8e5ceab011ea4ecb06e86b85e10c2f14771821bd8"
+    }
+  }
+}

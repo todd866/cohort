@@ -3,6 +3,7 @@
 import { useState, useEffect, useCallback, useMemo } from 'react';
 import { useSession } from 'next-auth/react';
 import { GlossaryText } from '@/components/content';
+import { GlossaryScope } from '@/components/content/GlossaryScope';
 import { DetailsButton } from '@/components/content/DetailsButton';
 import { ContentFlag } from '@/components/content/ContentFlag';
 import {
@@ -31,6 +32,7 @@ interface Question {
   rotation: string;
   questionType: string;
   difficulty: string;
+  abbreviations?: Record<string, string> | null;
   imageUrl?: string;
   crosslinks?: {
     primary?: string;
@@ -348,6 +350,7 @@ export function QuestionPractice({
 
   // Active question state
   return (
+    <GlossaryScope abbreviations={currentQuestion?.abbreviations}>
     <div>
       {/* Progress bar */}
       <div className="mb-6">
@@ -499,5 +502,6 @@ export function QuestionPractice({
         </div>
       )}
     </div>
+    </GlossaryScope>
   );
 }

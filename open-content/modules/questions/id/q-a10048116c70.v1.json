@@ -1,0 +1,82 @@
+{
+  "id": "bank:cohort:id:q-a10048116c70:v1",
+  "rotation": "cohort-open",
+  "moduleNodes": [
+    "cohort/id"
+  ],
+  "topics": [
+    "id"
+  ],
+  "questionType": "diagnosis",
+  "difficulty": "hard",
+  "stem": "A 5-month-old boy has had fever for 7 days and has been irritable throughout. Blood and urine cultures taken 3 days ago are negative, and he is still febrile despite IV ceftriaxone. His eyes are red without discharge and his lips are red, but he has no rash, no swelling of his hands or feet and no enlarged neck nodes. He has no cough or runny nose.\n\n| Test | Result | Reference range |\n| --- | --- | --- |\n| CRP | 142 mg/L | < 5 |\n| Haemoglobin | 92 g/L | 100–140 |\n| White cells | 19.5 × 10⁹/L | 6–17.5 |\n| Platelets | 610 × 10⁹/L | 150–450 |\n| Albumin | 27 g/L | 35–50 |\n| ALT | 72 U/L | < 40 |\n| Urine microscopy | 30 white cells/µL, culture no growth | < 10 white cells/µL |\n\nWhich diagnosis best fits his illness?",
+  "options": [
+    {
+      "label": "A",
+      "text": "Partially treated urinary tract infection",
+      "isCorrect": false,
+      "explanation": "Sterile pyuria invites a partially treated urinary tract infection, but his cultures grew nothing, and a UTI does not explain red eyes and lips, or fever persisting after 3 days of ceftriaxone with this inflammatory profile. Pyuria is a supporting finding for Kawasaki disease."
+    },
+    {
+      "label": "B",
+      "text": "Roseola infantum",
+      "isCorrect": false,
+      "explanation": "Roseola causes 3 to 5 days of high fever in a child who stays fairly well, followed by a rash as the fever settles. Seven days of fever with marked inflammation does not fit."
+    },
+    {
+      "label": "C",
+      "text": "Rubella",
+      "isCorrect": false,
+      "explanation": "Rubella is mild, with a low-grade fever, a rash and post-auricular nodes; it does not cause a week of high fever with this degree of inflammation."
+    },
+    {
+      "label": "D",
+      "text": "Scarlet fever",
+      "isCorrect": false,
+      "explanation": "Scarlet fever causes a sore throat and a rough rash, is uncommon under 3 years, and would have responded to ceftriaxone."
+    },
+    {
+      "label": "E",
+      "text": "Hand-foot-and-mouth disease",
+      "isCorrect": false,
+      "explanation": "Hand, foot and mouth disease causes mouth ulcers and vesicles on the hands and feet, with a short, mild fever."
+    },
+    {
+      "label": "F",
+      "text": "Kawasaki disease",
+      "isCorrect": true,
+      "explanation": "Correct. Infants under 6 months often have incomplete Kawasaki disease, with fewer than four principal features, and they have the highest risk of coronary artery aneurysms. Fever for 5 days or more with two principal features (non-purulent conjunctival injection and red lips), a raised CRP and several supporting results (anaemia, low albumin, raised ALT, a high white cell count, thrombocytosis after day 7 and sterile pyuria) fits incomplete Kawasaki disease. He needs echocardiography and treatment with IV immunoglobulin."
+    },
+    {
+      "label": "G",
+      "text": "Measles",
+      "isCorrect": false,
+      "explanation": "Measles causes cough, coryza and conjunctivitis, followed by a rash that spreads from the face within a few days of the fever starting. He has no cough, coryza or rash after 7 days."
+    },
+    {
+      "label": "H",
+      "text": "Parvovirus B19 infection",
+      "isCorrect": false,
+      "explanation": "Parvovirus causes slapped cheeks and a lacy rash in a mildly unwell child, not a week of high fever with this inflammation."
+    }
+  ],
+  "context": "Infants under 6 months often have incomplete Kawasaki disease. Unexplained fever for 5 days or more with two or three principal features, a raised CRP and supporting results (anaemia, low albumin, raised ALT, leucocytosis, thrombocytosis, sterile pyuria) should be treated as Kawasaki disease, because coronary aneurysm risk is highest at this age.",
+  "publicModule": {
+    "schemaVersion": 1,
+    "origin": "mirrored",
+    "discipline": "id",
+    "mirroredFrom": "md3:a10048116c708ca0",
+    "itemText": {
+      "licence": "CC-BY-4.0",
+      "attribution": "MD3 contributors"
+    },
+    "evidence": {
+      "kind": "reference",
+      "sourceId": "rch-clinicalguide-guideline-index-kawasaki-disease-b45290"
+    },
+    "review": {
+      "verdict": "passed",
+      "contentHash": "07af9de2682ea85ca9d9e9cc2c7d3bfb7fb55d77d20f3fc68c5b1146a0cf9b0e"
+    }
+  }
+}

@@ -1,0 +1,64 @@
+{
+  "id": "bank:cohort:obs:q-2634a2a95f19:v1",
+  "rotation": "cohort-open",
+  "moduleNodes": [
+    "cohort/obs"
+  ],
+  "topics": [
+    "obs"
+  ],
+  "questionType": "management",
+  "difficulty": "hard",
+  "stem": "Seven months after birth, a woman sees her GP for fatigue, constipation and cold intolerance. At two months postpartum she had a brief episode of palpitations with low TSH, negative TSH-receptor antibodies and no eye signs; it resolved without antithyroid treatment. She now plans another pregnancy within three months.\n\n| Investigation | Result | Laboratory reference range |\n|---|---:|---:|\n| TSH | 18 mIU/L | 0.4–4.0 |\n| Free T4 | 8 pmol/L | 10–20 |\n\nWhich treatment plan is most appropriate?",
+  "options": [
+    {
+      "label": "A",
+      "text": "Observe and repeat thyroid tests in six weeks, as recovery is expected",
+      "isCorrect": false,
+      "explanation": "Many women recover, but she is symptomatic with a TSH of 18 and low free T4 and plans pregnancy within three months; untreated hypothyroidism at conception carries fetal and obstetric risk."
+    },
+    {
+      "label": "B",
+      "text": "Start levothyroxine only if thyroid peroxidase antibodies are positive",
+      "isCorrect": false,
+      "explanation": "Antibody status predicts later permanent hypothyroidism but does not decide treatment of symptomatic overt hypothyroidism."
+    },
+    {
+      "label": "C",
+      "text": "Give levothyroxine now and continue the same dose lifelong",
+      "isCorrect": false,
+      "explanation": "Levothyroxine needs dose titration against thyroid function, and a trial of withdrawal may be appropriate later; fixing a lifelong unchanged dose ignores both."
+    },
+    {
+      "label": "D",
+      "text": "Defer treatment until she is pregnant, then begin levothyroxine",
+      "isCorrect": false,
+      "explanation": "Starting after conception leaves the early first trimester, when the fetus depends on maternal thyroxine, uncovered."
+    },
+    {
+      "label": "E",
+      "text": "Start levothyroxine now and recheck TSH and free T4 in six weeks",
+      "isCorrect": true,
+      "explanation": "Symptomatic overt hypothyroidism with pregnancy planned soon warrants levothyroxine now, with thyroid function rechecked in about six weeks to titrate the dose."
+    }
+  ],
+  "context": "In the hypothyroid phase of postpartum thyroiditis, treat symptomatic or overt hypothyroidism, especially when pregnancy is planned soon, and titrate levothyroxine against repeat thyroid tests.",
+  "publicModule": {
+    "schemaVersion": 1,
+    "origin": "mirrored",
+    "discipline": "obs",
+    "mirroredFrom": "md3:2634a2a95f19f25e",
+    "itemText": {
+      "licence": "CC-BY-4.0",
+      "attribution": "MD3 contributors"
+    },
+    "evidence": {
+      "kind": "reference",
+      "sourceId": "racgp-afp-2012-august-thyroid-disease-in-the-perinatal-period-74aed6"
+    },
+    "review": {
+      "verdict": "passed",
+      "contentHash": "8ac2c4e46e246c0ff00f81b5b4b33993c454933a3afd4f835a20866365fbacd7"
+    }
+  }
+}

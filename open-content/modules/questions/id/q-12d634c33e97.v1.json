@@ -1,0 +1,64 @@
+{
+  "id": "bank:cohort:id:q-12d634c33e97:v1",
+  "rotation": "cohort-open",
+  "moduleNodes": [
+    "cohort/id"
+  ],
+  "topics": [
+    "id"
+  ],
+  "questionType": "management",
+  "difficulty": "hard",
+  "stem": "A 2-year-old boy has had fever and lethargy for 12 hours. He has neck stiffness and a spreading non-blanching rash on his legs. He is mottled with a capillary refill time of 5 seconds, heart rate 180/min and blood pressure 80/40 mmHg, and he responds to voice. IV access has been obtained.\n\nWhat is the most appropriate next step?",
+  "options": [
+    {
+      "label": "A",
+      "text": "Fluid bolus, then LP once perfusion improves, then antibiotics",
+      "isCorrect": false,
+      "explanation": "Antibiotics must not wait for perfusion to improve or for an LP; delay in meningococcal sepsis worsens outcome."
+    },
+    {
+      "label": "B",
+      "text": "Blood culture, IV ceftriaxone and fluids; LP deferred",
+      "isCorrect": true,
+      "explanation": "Correct. He is shocked with a purpuric rash: take a blood culture, give IV ceftriaxone immediately and resuscitate with fluid. Shock contraindicates LP, which can be done once he is stable."
+    },
+    {
+      "label": "C",
+      "text": "LP straight away, then IV ceftriaxone within the hour",
+      "isCorrect": false,
+      "explanation": "LP in a shocked, purpuric child is unsafe and delays antibiotics."
+    },
+    {
+      "label": "D",
+      "text": "CT brain, then LP and antibiotics if there is no mass effect",
+      "isCorrect": false,
+      "explanation": "CT does not reliably exclude raised intracranial pressure and delays treatment; antibiotics come first."
+    },
+    {
+      "label": "E",
+      "text": "IV ceftriaxone after an LP done while fluids are running",
+      "isCorrect": false,
+      "explanation": "LP during active resuscitation is contraindicated by shock and could precipitate deterioration, and doing it first delays the antibiotic."
+    }
+  ],
+  "context": "In a shocked child with suspected bacterial meningitis or meningococcal sepsis, take a blood culture, give IV antibiotics immediately and resuscitate; defer LP until he is stable.",
+  "publicModule": {
+    "schemaVersion": 1,
+    "origin": "mirrored",
+    "discipline": "id",
+    "mirroredFrom": "md3:12d634c33e9795ce",
+    "itemText": {
+      "licence": "CC-BY-4.0",
+      "attribution": "MD3 contributors"
+    },
+    "evidence": {
+      "kind": "reference",
+      "sourceId": "rch-clinicalguide-guideline-index-acute-meningococcal-disease-91afda"
+    },
+    "review": {
+      "verdict": "passed",
+      "contentHash": "b94dea2f429b467afdfff4a8f9d9e390dc36d13ff16c70fb3848d27968e0b73a"
+    }
+  }
+}

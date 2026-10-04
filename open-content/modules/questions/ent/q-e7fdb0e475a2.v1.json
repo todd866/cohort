@@ -1,0 +1,64 @@
+{
+  "id": "bank:cohort:ent:q-e7fdb0e475a2:v1",
+  "rotation": "cohort-open",
+  "moduleNodes": [
+    "cohort/ent"
+  ],
+  "topics": [
+    "ent"
+  ],
+  "questionType": "management",
+  "difficulty": "medium",
+  "stem": "A 10-year-old boy was hit on the nose by a cricket ball 3 hours ago. His nose is swollen and slightly deviated, and both nostrils now feel blocked. Anterior rhinoscopy shows a smooth, purplish swelling on both sides of the nasal septum that indents softly when pressed with a cotton bud. His airway and observations are stable.\n\nWhat is the most appropriate next step for the emergency doctor?",
+  "options": [
+    {
+      "label": "A",
+      "text": "Nasal X-ray, then fracture clinic review in 5–7 days",
+      "isCorrect": false,
+      "explanation": "Nasal fractures are reassessed at 5–7 days once swelling settles, and X-rays add little; a septal haematoma cannot wait that long."
+    },
+    {
+      "label": "B",
+      "text": "Same-day ENT referral for drainage of the swelling",
+      "isCorrect": true,
+      "explanation": "Correct. Soft, compressible swelling on both sides of the septum after nasal trauma is a septal haematoma. It needs same-day ENT drainage to prevent septal abscess, cartilage necrosis and saddle-nose deformity."
+    },
+    {
+      "label": "C",
+      "text": "Ice and analgesia, with GP review in 3–5 days",
+      "isCorrect": false,
+      "explanation": "Waiting days risks infection and loss of septal cartilage."
+    },
+    {
+      "label": "D",
+      "text": "Topical decongestant and review once swelling settles",
+      "isCorrect": false,
+      "explanation": "A decongestant shrinks mucosa but does not drain blood trapped under the perichondrium."
+    },
+    {
+      "label": "E",
+      "text": "Anterior nasal packing to reduce the swelling",
+      "isCorrect": false,
+      "explanation": "Packing alone, without incision and drainage, leaves the haematoma in place."
+    }
+  ],
+  "context": "After nasal trauma, a fluctuant septal swelling is a septal haematoma until proven otherwise. It requires same-day ENT assessment and drainage.",
+  "publicModule": {
+    "schemaVersion": 1,
+    "origin": "mirrored",
+    "discipline": "ent",
+    "mirroredFrom": "md3:e7fdb0e475a2e9bb",
+    "itemText": {
+      "licence": "CC-BY-4.0",
+      "attribution": "MD3 contributors"
+    },
+    "evidence": {
+      "kind": "reference",
+      "sourceId": "rch-clinicalguide-guideline-index-nasal-fracture-5a1e51"
+    },
+    "review": {
+      "verdict": "passed",
+      "contentHash": "3d340c3d50865b6be31776cc1e98491d7f507451f17ea1d8807902d82dfda621"
+    }
+  }
+}

@@ -1,0 +1,64 @@
+{
+  "id": "bank:cohort:msk:q-be2c27dc9d9a:v1",
+  "rotation": "cohort-open",
+  "moduleNodes": [
+    "cohort/msk"
+  ],
+  "topics": [
+    "msk"
+  ],
+  "questionType": "knowledge",
+  "difficulty": "medium",
+  "stem": "A 13-year-old boy has had 5 weeks of a dull ache above his left knee and now walks with a limp. He weighs 82 kg, above the 97th centile for his age. The knee examination is normal. When his left hip is flexed, the thigh swings into external rotation, and internal rotation is reduced.\n\nThrough which region of the proximal femur has the displacement occurred?",
+  "options": [
+    {
+      "label": "A",
+      "text": "Epiphysis",
+      "isCorrect": false,
+      "explanation": "Despite the name, the femoral head (epiphysis) itself is intact. It stays in the acetabulum while the neck moves away from it through the growth plate."
+    },
+    {
+      "label": "B",
+      "text": "Physis",
+      "isCorrect": true,
+      "explanation": "Correct. In SUFE the capital femoral epiphysis is displaced from the metaphysis at the physis, the growth plate, which is weakest during the adolescent growth spurt."
+    },
+    {
+      "label": "C",
+      "text": "Metaphysis",
+      "isCorrect": false,
+      "explanation": "The metaphysis (the femoral neck) moves relative to the head, but the plane of the slip is the physis beside it, not the metaphysis itself."
+    },
+    {
+      "label": "D",
+      "text": "Diaphysis",
+      "isCorrect": false,
+      "explanation": "The diaphysis is the femoral shaft, far from the hip. A slip at the head does not involve it."
+    },
+    {
+      "label": "E",
+      "text": "Apophysis",
+      "isCorrect": false,
+      "explanation": "An apophysis is a tendon attachment centre, the site of avulsions and traction apophysitis, not of a slip at the femoral head."
+    }
+  ],
+  "context": "SUFE is a slip through the proximal femoral physis in an adolescent, often overweight. Knee pain may be the only complaint; obligatory external rotation on hip flexion is the sign.",
+  "publicModule": {
+    "schemaVersion": 1,
+    "origin": "mirrored",
+    "discipline": "msk",
+    "mirroredFrom": "md3:be2c27dc9d9abb19",
+    "itemText": {
+      "licence": "CC-BY-4.0",
+      "attribution": "MD3 contributors"
+    },
+    "evidence": {
+      "kind": "reference",
+      "sourceId": "rch-ex-fractures-slipped-upper-femoral-epiphysis-sufe-emergency-department-c2077b"
+    },
+    "review": {
+      "verdict": "passed",
+      "contentHash": "2ba3ade56effd88bd9372d11b8aedaae3e53b11f70253354e440d6b7800246bc"
+    }
+  }
+}

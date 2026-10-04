@@ -35,6 +35,46 @@ export function redactCredentials(text) {
     .replace(/\bpostgres(?:ql)?(?:\+[a-z0-9]+)?:\/\/[^\s'"`<>]+/gi, 'postgresql://[redacted]')
     .replace(/\bnpg_[A-Za-z0-9]{16,}\b/g, '[redacted]');
 }
+
+/**
+ * Database settings whose VALUES an operator readout may print: the statement,
+ * lock and idle-transaction time limits, and pgvector's four HNSW runtime
+ * settings. A role, a database or a session can carry any setting at all,
+ * including a custom one that holds a key or a token, so a readout prints a
+ * value only when its name is listed here AND the value has the shape that
+ * setting takes. The shape matters too: an hnsw.* value stored before pgvector
+ * was loaded is an unvalidated placeholder and could hold any text.
+ *
+ * An allowlist, not a denylist of secret-looking names, for the reason the
+ * credential pattern above exists: a check keyed to a spelling misses the next
+ * spelling.
+ */
+const DURATION_SETTING = /^\d+(?:us|ms|s|min|h|d)?$/;
+const PRINTABLE_SETTING_SHAPES = new Map([
+  ['statement_timeout', DURATION_SETTING],
+  ['lock_timeout', DURATION_SETTING],
+  ['idle_in_transaction_session_timeout', DURATION_SETTING],
+  ['hnsw.ef_search', /^\d+$/],
+  ['hnsw.iterative_scan', /^(?:off|relaxed_order|strict_order)$/],
+  ['hnsw.max_scan_tuples', /^\d+$/],
+  ['hnsw.scan_mem_multiplier', /^\d+(?:\.\d+)?$/],
+]);
+
+/** True for an allowlisted setting name, before its value is considered. */
+export function isPrintableSettingName(name) {
+  return PRINTABLE_SETTING_SHAPES.has(name);
+}
+
+/** True when a setting's value may be printed: an allowlisted name and its expected shape. */
+export function isPrintableSetting(name, value) {
+  const shape = PRINTABLE_SETTING_SHAPES.get(name);
+  return shape !== undefined && typeof value === 'string' && shape.test(value);
+}
+
+/** `name=value` for a printable setting, `name=<redacted>` for every other. */
+export function printableSetting(name, value) {
+  return isPrintableSetting(name, value) ? `${name}=${value}` : `${name}=<redacted>`;
+}
 export function describeError(error) {
   if (!(error instanceof Error)) return redactCredentials(String(error));
 

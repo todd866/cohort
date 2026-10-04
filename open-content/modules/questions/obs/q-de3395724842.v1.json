@@ -1,0 +1,64 @@
+{
+  "id": "bank:cohort:obs:q-de3395724842:v1",
+  "rotation": "cohort-open",
+  "moduleNodes": [
+    "cohort/obs"
+  ],
+  "topics": [
+    "obs"
+  ],
+  "questionType": "diagnosis",
+  "difficulty": "medium",
+  "stem": "Twenty days after her first baby was born, a woman sees her GP. She has been tearful since day 4, and it has not lifted: she feels low most of the day, cannot sleep even when the baby sleeps, no longer enjoys anything and feels she is failing as a mother. She is managing the baby's care only with her mother's help. She has no unusual beliefs, racing thoughts or reduced need for sleep. TSH and haemoglobin are normal.\n\nWhich diagnosis best fits?",
+  "options": [
+    {
+      "label": "A",
+      "text": "Postpartum blues, which began on the fourth day as expected",
+      "isCorrect": false,
+      "explanation": "The blues start in the first week but resolve within about two weeks and do not stop her caring for the baby. Hers have lasted 20 days with loss of function."
+    },
+    {
+      "label": "B",
+      "text": "Adjustment to a first baby, with sleep loss explaining the mood",
+      "isCorrect": false,
+      "explanation": "Ordinary adjustment does not cause pervasive low mood, loss of enjoyment and an inability to sleep when the baby sleeps."
+    },
+    {
+      "label": "C",
+      "text": "Postpartum thyroiditis, in its early hyperthyroid phase",
+      "isCorrect": false,
+      "explanation": "Her TSH is normal, and early thyroiditis causes anxiety, palpitations and weight loss more than pervasive low mood."
+    },
+    {
+      "label": "D",
+      "text": "Early postpartum psychosis, before delusions have developed",
+      "isCorrect": false,
+      "explanation": "Postpartum psychosis usually begins in the first two weeks with confusion, agitation, rapidly changing mood and a reduced need for sleep. She has none of these."
+    },
+    {
+      "label": "E",
+      "text": "Postnatal depression, as the low mood has outlasted two weeks",
+      "isCorrect": true,
+      "explanation": "Persistent low mood, loss of enjoyment, insomnia and guilt beyond two weeks, enough to impair her care of the baby, is postnatal depression even though it began like the blues."
+    }
+  ],
+  "context": "Symptoms that begin like the blues but persist beyond two weeks with impaired functioning are postnatal depression.",
+  "publicModule": {
+    "schemaVersion": 1,
+    "origin": "mirrored",
+    "discipline": "obs",
+    "mirroredFrom": "md3:de33957248426b45",
+    "itemText": {
+      "licence": "CC-BY-4.0",
+      "attribution": "MD3 contributors"
+    },
+    "evidence": {
+      "kind": "reference",
+      "sourceId": "qld-health-data-assets-pdf-file-0016-1321225-g-peri-mental-health-37ad6c"
+    },
+    "review": {
+      "verdict": "passed",
+      "contentHash": "cdaf036df3e8af929e2f76e45d8cde356d182dcdc6991f1e11c723472d1126cf"
+    }
+  }
+}

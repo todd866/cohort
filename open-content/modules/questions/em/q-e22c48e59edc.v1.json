@@ -1,0 +1,64 @@
+{
+  "id": "bank:cohort:em:q-e22c48e59edc:v1",
+  "rotation": "cohort-open",
+  "moduleNodes": [
+    "cohort/em"
+  ],
+  "topics": [
+    "em"
+  ],
+  "questionType": "management",
+  "difficulty": "medium",
+  "stem": "An ICU registrar reviews a 61-year-old who remains unconscious 18 hours after return of spontaneous circulation following a cardiac arrest. Oxygenation and blood pressure are within targets. The chest radiograph shows a small right basal opacity, and a sputum sample has been sent. Core temperature has risen to 38.6°C.\n\nWhich temperature plan is most appropriate?",
+  "options": [
+    {
+      "label": "A",
+      "text": "Observe the temperature, as early post-arrest fever is expected",
+      "isCorrect": false,
+      "explanation": "Fever is common after cardiac arrest but is associated with worse neurological outcome. It should be prevented, not simply observed."
+    },
+    {
+      "label": "B",
+      "text": "Give paracetamol only if the temperature exceeds 39.5°C",
+      "isCorrect": false,
+      "explanation": "Waiting for 39.5°C allows exactly the fever that post-arrest care aims to prevent."
+    },
+    {
+      "label": "C",
+      "text": "Treat the fever with antibiotics as the temperature plan",
+      "isCorrect": false,
+      "explanation": "Antibiotics may be appropriate if pneumonia is suspected, but they do not control temperature. The fever itself needs active management."
+    },
+    {
+      "label": "D",
+      "text": "Allow the fever so that neurological examination is reliable",
+      "isCorrect": false,
+      "explanation": "Fever does not make the neurological examination more reliable. Prognostication is delayed and multimodal regardless."
+    },
+    {
+      "label": "E",
+      "text": "Start active temperature control to prevent further fever",
+      "isCorrect": true,
+      "explanation": "In patients who remain unconscious after cardiac arrest, fever should be actively prevented, for at least 72 hours, using antipyretics and cooling devices as needed."
+    }
+  ],
+  "context": "Actively prevent fever in patients who remain comatose after cardiac arrest, whatever its cause.",
+  "publicModule": {
+    "schemaVersion": 1,
+    "origin": "mirrored",
+    "discipline": "em",
+    "mirroredFrom": "md3:e22c48e59edc2364",
+    "itemText": {
+      "licence": "CC-BY-4.0",
+      "attribution": "MD3 contributors"
+    },
+    "evidence": {
+      "kind": "reference",
+      "sourceId": "anzcor-uideline-11-8-targeted-temperature-management-ttm-after-cardiac-arrest-f05094"
+    },
+    "review": {
+      "verdict": "passed",
+      "contentHash": "ba7220cd02a6e445bf2907247dd57392bf44cd3d7200e3cbcfe1df2a1cc23adf"
+    }
+  }
+}

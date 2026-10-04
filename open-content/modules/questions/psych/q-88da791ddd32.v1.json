@@ -1,0 +1,64 @@
+{
+  "id": "bank:cohort:psych:q-88da791ddd32:v1",
+  "rotation": "cohort-open",
+  "moduleNodes": [
+    "cohort/psych"
+  ],
+  "topics": [
+    "psych"
+  ],
+  "questionType": "investigation",
+  "difficulty": "medium",
+  "stem": "A GP conducts a planned review of a 43-year-old woman with bipolar disorder who has been stable on lithium for two years. Her lithium trough concentration is within her agreed target, but no other monitoring blood tests have been done for a year. She has no new symptoms, and her weight is unchanged.\n\nWhich group of tests is most important to arrange alongside ongoing lithium levels?",
+  "options": [
+    {
+      "label": "A",
+      "text": "eGFR and full blood count",
+      "isCorrect": false,
+      "explanation": "Kidney function is essential, but a full blood count is not part of routine lithium monitoring, and thyroid and calcium are missing."
+    },
+    {
+      "label": "B",
+      "text": "TSH and fasting lipids",
+      "isCorrect": false,
+      "explanation": "Thyroid function is needed, but lipids are not a core lithium test, and kidney function, the most important, is missing."
+    },
+    {
+      "label": "C",
+      "text": "eGFR, TSH and calcium",
+      "isCorrect": true,
+      "explanation": "Lithium can cause chronic kidney disease, hypothyroidism and hyperparathyroidism with hypercalcaemia. Kidney function, TSH and calcium are monitored with the lithium level, at least every six months."
+    },
+    {
+      "label": "D",
+      "text": "eGFR, liver enzymes and ECG",
+      "isCorrect": false,
+      "explanation": "Kidney function is right, but lithium is not hepatically metabolised, and an ECG is indicated for cardiac risk rather than routinely."
+    },
+    {
+      "label": "E",
+      "text": "TSH, calcium and HbA1c",
+      "isCorrect": false,
+      "explanation": "Thyroid and calcium are both relevant, but leaving out kidney function misses lithium’s most important long-term harm."
+    }
+  ],
+  "context": "Long-term lithium monitoring includes kidney function, thyroid function and calcium as well as the lithium concentration.",
+  "publicModule": {
+    "schemaVersion": 1,
+    "origin": "mirrored",
+    "discipline": "psych",
+    "mirroredFrom": "md3:88da791ddd32b8a1",
+    "itemText": {
+      "licence": "CC-BY-4.0",
+      "attribution": "MD3 contributors"
+    },
+    "evidence": {
+      "kind": "reference",
+      "sourceId": "nice-guidance-cg185-chapter-recommendations-077a81"
+    },
+    "review": {
+      "verdict": "passed",
+      "contentHash": "57d80a4c0f535786746e446709ac70e3f9728198dab85567f6fa250fa8a420e3"
+    }
+  }
+}

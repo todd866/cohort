@@ -1,0 +1,64 @@
+{
+  "id": "bank:cohort:psych:q-045e54be5427:v1",
+  "rotation": "cohort-open",
+  "moduleNodes": [
+    "cohort/psych"
+  ],
+  "topics": [
+    "psych"
+  ],
+  "questionType": "management",
+  "difficulty": "hard",
+  "stem": "A psychiatrist reviews a patient with schizophrenia who has continuing disabling hallucinations. Diagnosis and substance use have been reassessed, and psychological treatment continues. The treatment record shows:\n\n| Sequential trial | Dose and duration | Adherence | Response |\n| --- | --- | --- | --- |\n| Risperidone | 2 mg/day for 3 weeks | Stopped early for akathisia | Not assessable |\n| Quetiapine | 750 mg/day for 8 weeks | Confirmed by pack checks | No meaningful improvement |\n| Aripiprazole | 30 mg/day for 8 weeks | Confirmed by pack checks | No meaningful improvement |\n\nWhich medication strategy should now be discussed?",
+  "options": [
+    {
+      "label": "A",
+      "text": "Complete an adequate risperidone trial, since that trial was cut short",
+      "isCorrect": false,
+      "explanation": "The risperidone trial was not adequate, but two other adequate, adherent trials have already failed. Treatment resistance is established without repeating it."
+    },
+    {
+      "label": "B",
+      "text": "Change to olanzapine as a further adequate non-clozapine trial",
+      "isCorrect": false,
+      "explanation": "Another standard antipsychotic is reasonable only if clozapine is unsuitable or declined. It should not delay clozapine once two adequate trials have failed."
+    },
+    {
+      "label": "C",
+      "text": "Switch to long-acting aripiprazole to secure consistent exposure",
+      "isCorrect": false,
+      "explanation": "Adherence was confirmed by pack checks, so a depot addresses no identified problem. The issue is non-response, not delivery."
+    },
+    {
+      "label": "D",
+      "text": "Offer clozapine with its required baseline tests and monitoring",
+      "isCorrect": true,
+      "explanation": "Two adequate, adherent trials without response define treatment-resistant schizophrenia; the aborted risperidone trial does not reset that count. Clozapine should be offered with its required monitoring."
+    },
+    {
+      "label": "E",
+      "text": "Add low-dose haloperidol to aripiprazole as combination therapy",
+      "isCorrect": false,
+      "explanation": "Routine antipsychotic combination adds adverse effects with weak evidence and should not postpone clozapine. It is not the next step once resistance is established."
+    }
+  ],
+  "context": "Offer clozapine after two adequate antipsychotic trials have failed, after checking adherence and other causes of non-response.",
+  "publicModule": {
+    "schemaVersion": 1,
+    "origin": "mirrored",
+    "discipline": "psych",
+    "mirroredFrom": "md3:045e54be5427e702",
+    "itemText": {
+      "licence": "CC-BY-4.0",
+      "attribution": "MD3 contributors"
+    },
+    "evidence": {
+      "kind": "reference",
+      "sourceId": "nice-guidance-cg178-chapter-recommendations-ab0e8b"
+    },
+    "review": {
+      "verdict": "passed",
+      "contentHash": "164ceff2518b22d49c21a2288755d3d01c08a24e640744e9e3335cd9996cd859"
+    }
+  }
+}

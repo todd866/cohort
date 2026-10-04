@@ -1,0 +1,64 @@
+{
+  "id": "bank:cohort:clinical-skills:q-03e993566c08:v1",
+  "rotation": "cohort-open",
+  "moduleNodes": [
+    "cohort/clinical-skills"
+  ],
+  "topics": [
+    "clinical-skills"
+  ],
+  "questionType": "management",
+  "difficulty": "hard",
+  "stem": "A NSW emergency consultant treats an unconscious 58-year-old with worsening haemorrhagic shock from a ruptured spleen; the surgeon needs to operate immediately. In his wallet is an advance care directive, signed and witnessed last year, stating that as a Jehovah's Witness he refuses blood transfusion even if he would die without it. His son, reached by phone, says, \"Give him whatever he needs.\"\n\nHow should the consultant proceed?",
+  "options": [
+    {
+      "label": "A",
+      "text": "Operate and transfuse, as an emergency overrides the refusal",
+      "isCorrect": false,
+      "explanation": "Emergency treatment without consent applies when there is no known refusal. A valid, applicable advance refusal of blood must be respected even when it is life-threatening."
+    },
+    {
+      "label": "B",
+      "text": "Delay surgery until the son arrives to give written consent",
+      "isCorrect": false,
+      "explanation": "Urgent surgery can proceed without consent, so waiting for the son delays life-saving treatment that is not refused."
+    },
+    {
+      "label": "C",
+      "text": "Seek an urgent tribunal order authorising blood transfusion",
+      "isCorrect": false,
+      "explanation": "A substitute decision-maker, including a tribunal, cannot override a valid advance refusal made by the patient."
+    },
+    {
+      "label": "D",
+      "text": "Operate now, without transfusing blood, and document why",
+      "isCorrect": true,
+      "explanation": "Emergency surgery is needed and not refused, so proceed without consent. The directive is current, witnessed and specific to blood, so respect it: operate without transfusing blood, use permitted blood-sparing measures, and document the directive and the reasoning."
+    },
+    {
+      "label": "E",
+      "text": "Transfuse only if cardiac arrest occurs during surgery",
+      "isCorrect": false,
+      "explanation": "Cardiac arrest is exactly the situation the refusal anticipates; it does not lapse at that point."
+    }
+  ],
+  "context": "In an emergency, give urgent treatment without consent, but respect a valid advance refusal of a specific treatment; family cannot override it.",
+  "publicModule": {
+    "schemaVersion": 1,
+    "origin": "mirrored",
+    "discipline": "clinical-skills",
+    "mirroredFrom": "md3:03e993566c08af04",
+    "itemText": {
+      "licence": "CC-BY-4.0",
+      "attribution": "MD3 contributors"
+    },
+    "evidence": {
+      "kind": "reference",
+      "sourceId": "nsw-health-policies-manuals-publications-consent-to-medical-healthcare-treatment-aa062c"
+    },
+    "review": {
+      "verdict": "passed",
+      "contentHash": "05f3092c0069454a7f486f473efe4d3de1ca819f811f24d49135d45dcad5ba09"
+    }
+  }
+}

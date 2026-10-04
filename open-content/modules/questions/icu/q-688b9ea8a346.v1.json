@@ -1,0 +1,64 @@
+{
+  "id": "bank:cohort:icu:q-688b9ea8a346:v1",
+  "rotation": "cohort-open",
+  "moduleNodes": [
+    "cohort/icu"
+  ],
+  "topics": [
+    "icu"
+  ],
+  "questionType": "management",
+  "difficulty": "hard",
+  "stem": "A 74-year-old man with severe COPD is in a NSW intensive care unit on non-invasive ventilation and is deteriorating. He lacks decision-making capacity. Last year, with his GP, he completed a valid advance care directive refusing intubation and invasive ventilation 'if my lungs fail again', even if this might save his life. His daughter, who is his appointed enduring guardian, asks for intubation, saying he did not really mean it and that treatments have improved.\n\nHow should the intensive-care consultant proceed?",
+  "options": [
+    {
+      "label": "A",
+      "text": "Intubate, as the guardian can override it",
+      "isCorrect": false,
+      "explanation": "An enduring guardian makes decisions the person has not already made. In NSW a guardian cannot override a valid advance refusal that clearly applies to the situation."
+    },
+    {
+      "label": "B",
+      "text": "Intubate briefly while a family meeting is held",
+      "isCorrect": false,
+      "explanation": "Intubating against a valid, applicable refusal is treatment without consent, even if intended to be temporary."
+    },
+    {
+      "label": "C",
+      "text": "Seek a tribunal order before relying on it",
+      "isCorrect": false,
+      "explanation": "A valid and applicable directive can be followed without a tribunal order. Uncertainty about validity or applicability, not disagreement, is what may justify seeking advice."
+    },
+    {
+      "label": "D",
+      "text": "Treat the directive as advice in acute illness",
+      "isCorrect": false,
+      "explanation": "The directive was written for exactly this situation; an acute exacerbation of his chronic lung disease is what he anticipated."
+    },
+    {
+      "label": "E",
+      "text": "Honour the refusal; continue care within it",
+      "isCorrect": true,
+      "explanation": "A valid advance refusal that clearly applies must be followed. The consultant continues all care he has not refused, including NIV if acceptable and symptom control, and supports the daughter through the decision."
+    }
+  ],
+  "context": "In NSW, a valid advance refusal that clearly applies to the current situation binds clinicians and cannot be overridden by family or an enduring guardian.",
+  "publicModule": {
+    "schemaVersion": 1,
+    "origin": "mirrored",
+    "discipline": "icu",
+    "mirroredFrom": "md3:688b9ea8a346ca8b",
+    "itemText": {
+      "licence": "CC-BY-4.0",
+      "attribution": "MD3 contributors"
+    },
+    "evidence": {
+      "kind": "reference",
+      "sourceId": "nsw-health-pds-activepdsdocuments-pd2014-030-f7e35a"
+    },
+    "review": {
+      "verdict": "passed",
+      "contentHash": "723699de371df94a890c702eb1b333b09d8f3d5c3a270ecafaa6b9986d0d1725"
+    }
+  }
+}

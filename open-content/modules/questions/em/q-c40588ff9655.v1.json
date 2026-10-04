@@ -1,0 +1,64 @@
+{
+  "id": "bank:cohort:em:q-c40588ff9655:v1",
+  "rotation": "cohort-open",
+  "moduleNodes": [
+    "cohort/em"
+  ],
+  "topics": [
+    "em"
+  ],
+  "questionType": "management",
+  "difficulty": "hard",
+  "stem": "Four minutes into an adult cardiac arrest, the CPR feedback device shows that the same person has compressed throughout. In the first two minutes the rate was 110/min at 5–6 cm with full recoil; now the rate is 85/min, depth is 4 cm, and end-tidal CO2 has fallen from 22 to 12 mmHg. A rhythm check is due in 20 seconds.\n\nWhat should the team leader do?",
+  "options": [
+    {
+      "label": "A",
+      "text": "Ask the same compressor to push faster, aiming at 140/min",
+      "isCorrect": false,
+      "explanation": "Fatigue is the cause, so urging the same person on rarely restores depth, and a rate of 140/min is too fast and shortens filling time."
+    },
+    {
+      "label": "B",
+      "text": "Swap compressors at the check, targeting 100–120/min",
+      "isCorrect": true,
+      "explanation": "Falling rate and depth with a parallel fall in end-tidal CO2 in a compressor who has worked for four minutes is fatigue. Change compressors at the rhythm check, with minimal pause, and target 100–120/min at 5–6 cm with full recoil."
+    },
+    {
+      "label": "C",
+      "text": "Apply a mechanical CPR device now to restore quality",
+      "isCorrect": false,
+      "explanation": "Mechanical devices are not used routinely, and fitting one interrupts compressions. A fresh compressor fixes fatigue at the check without that pause."
+    },
+    {
+      "label": "D",
+      "text": "Check tube position, as end-tidal CO2 has fallen",
+      "isCorrect": false,
+      "explanation": "Tube displacement causes an abrupt loss of the capnography trace. A gradual fall that tracks falling rate and depth points to poorer blood flow from tired compressions."
+    },
+    {
+      "label": "E",
+      "text": "Increase the ventilation rate to raise end-tidal CO2",
+      "isCorrect": false,
+      "explanation": "More ventilation does not correct poor compressions, and over-ventilation reduces venous return. End-tidal CO2 is falling because blood flow has fallen."
+    }
+  ],
+  "context": "Compression quality falls with fatigue within minutes; swap compressors about every two minutes, or sooner if quality falls, and read a gradual fall in end-tidal CO2 alongside rate and depth as falling blood flow.",
+  "publicModule": {
+    "schemaVersion": 1,
+    "origin": "mirrored",
+    "discipline": "em",
+    "mirroredFrom": "md3:c40588ff96557f74",
+    "itemText": {
+      "licence": "CC-BY-4.0",
+      "attribution": "MD3 contributors"
+    },
+    "evidence": {
+      "kind": "reference",
+      "sourceId": "anzcor-home-basic-life-support-guideline-6-compressions-d95653"
+    },
+    "review": {
+      "verdict": "passed",
+      "contentHash": "763236bbfd5aa1c5d197fc56c53566f1b5fa68feb8c1262ffd40eb85c40c4ea5"
+    }
+  }
+}

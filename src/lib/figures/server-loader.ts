@@ -1,19 +1,17 @@
 import 'server-only';
-import imageLibrary from '@/data/image-serving.generated.json';
 import type { ImageSidecar } from '@/lib/images/types';
+import { lookupServingSidecar, warmServingIndex } from './serving-index';
 
-// The SERVING projection, not the full catalog. This module sits at module
-// scope of the session route (and the review page), so its import is paid on
-// every cold start — the full 30 MB image-library.generated.json here was
-// 25.9 MB of the route's 27.6 MB synchronous entry weight and the largest
-// slice of the 4.7–6.5s cold-start residual (2026-08-21 deepdive). The
-// projection carries exactly the fields the serving path reads; the
-// behavioral contract is pinned by serving-projection.test.ts. Scripts and
-// audits that need provenance keep reading the full catalog.
-const lib = imageLibrary as unknown as Record<string, ImageSidecar>;
+// The server-only door to the serving projection. serving-index.ts holds the
+// one copy per instance and explains why it is read from disk on first use.
+// Scripts and audits that need provenance keep reading the full catalog.
 
 /** Server-only sidecar lookup. Do NOT import this from a client component. */
 export function lookupSidecar(key: string | undefined): ImageSidecar | undefined {
-  if (typeof key !== 'string') return undefined;
-  return lib[key];
+  return lookupServingSidecar(key);
+}
+
+/** For keep-warm pings: read the index before a request needs it. */
+export function warmSidecarIndex(): void {
+  warmServingIndex();
 }

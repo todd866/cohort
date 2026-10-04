@@ -1,0 +1,64 @@
+{
+  "id": "bank:cohort:em:q-a56cecd56288:v1",
+  "rotation": "cohort-open",
+  "moduleNodes": [
+    "cohort/em"
+  ],
+  "topics": [
+    "em"
+  ],
+  "questionType": "management",
+  "difficulty": "hard",
+  "stem": "An emergency registrar treats a patient after a large amitriptyline ingestion. The airway is secured and ventilation supported, but hypotension persists despite initial fluids and the QRS has widened from 100 to 160 ms (reference <120); arterial pH is 7.24 (7.35–7.45). Toxicology advice and ongoing ECG, electrolyte and blood-gas monitoring are being arranged.\n\nWhich medication most directly treats this cardiotoxicity?",
+  "options": [
+    {
+      "label": "A",
+      "text": "Intravenous sodium bicarbonate",
+      "isCorrect": true,
+      "explanation": "Sodium loading and controlled alkalinisation counter TCA-related conduction toxicity. Progressive QRS widening with hypotension is an indication, with repeated assessment to avoid excessive alkalinisation and electrolyte disturbance."
+    },
+    {
+      "label": "B",
+      "text": "Intravenous amiodarone loading dose",
+      "isCorrect": false,
+      "explanation": "This is toxic sodium-channel blockade rather than routine monomorphic VT. Amiodarone is not the first-line treatment and may compound cardiac conduction and repolarisation problems."
+    },
+    {
+      "label": "C",
+      "text": "Intravenous physostigmine",
+      "isCorrect": false,
+      "explanation": "Reversing central antimuscarinic features does not address the myocardial sodium-channel blockade. Physostigmine is inappropriate in significant TCA cardiotoxicity."
+    },
+    {
+      "label": "D",
+      "text": "Intravenous calcium gluconate",
+      "isCorrect": false,
+      "explanation": "Calcium is important for hyperkalaemic membrane toxicity, but no hyperkalaemia is established here. It does not replace bicarbonate for this TCA-associated conduction problem."
+    },
+    {
+      "label": "E",
+      "text": "Intravenous magnesium sulfate",
+      "isCorrect": false,
+      "explanation": "Magnesium treats torsades de pointes on a long QT. It does not counter the sodium-channel blockade that is widening the QRS and lowering the blood pressure here."
+    }
+  ],
+  "context": "Progressive QRS widening with cardiovascular compromise in TCA poisoning requires controlled sodium bicarbonate treatment.",
+  "publicModule": {
+    "schemaVersion": 1,
+    "origin": "mirrored",
+    "discipline": "em",
+    "mirroredFrom": "md3:a56cecd562883803",
+    "itemText": {
+      "licence": "CC-BY-4.0",
+      "attribution": "MD3 contributors"
+    },
+    "evidence": {
+      "kind": "reference",
+      "sourceId": "rch-clinicalguide-guideline-index-tricyclic-antidepressant-tca-poisoning-ba799d"
+    },
+    "review": {
+      "verdict": "passed",
+      "contentHash": "07ca278c1852d3779a04947e2e88c8d09df605c8600b557958cfcc553de03121"
+    }
+  }
+}

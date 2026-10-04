@@ -1,0 +1,82 @@
+{
+  "id": "bank:cohort:resp:q-fc8d6c75e087:v1",
+  "rotation": "cohort-open",
+  "moduleNodes": [
+    "cohort/resp"
+  ],
+  "topics": [
+    "resp"
+  ],
+  "questionType": "diagnosis",
+  "difficulty": "medium",
+  "stem": "A four-year-old has a daily wet cough for six weeks after a respiratory infection. He is otherwise well, with normal growth, no clubbing and no choking history. Chest radiography shows only mild perihilar thickening. The cough resolves completely during two weeks of appropriately prescribed amoxicillin–clavulanate.\n\nWhich diagnosis best explains this course?",
+  "options": [
+    {
+      "label": "A",
+      "text": "Childhood asthma",
+      "isCorrect": false,
+      "explanation": "Asthma more often has variable wheeze or dry cough; a persistent wet cough should prompt consideration of another cause."
+    },
+    {
+      "label": "B",
+      "text": "Pertussis infection",
+      "isCorrect": false,
+      "explanation": "Pertussis causes a more paroxysmal cough pattern and is not expected to resolve specifically with this antibiotic course."
+    },
+    {
+      "label": "C",
+      "text": "Gastro-oesophageal reflux",
+      "isCorrect": false,
+      "explanation": "There is no feeding or reflux association; the wet-cough phenotype and response support protracted bacterial bronchitis."
+    },
+    {
+      "label": "D",
+      "text": "Community-acquired bacterial pneumonia",
+      "isCorrect": false,
+      "explanation": "The well child and absence of focal radiographic consolidation favour an endobronchial process rather than pneumonia."
+    },
+    {
+      "label": "E",
+      "text": "Protracted bacterial bronchitis",
+      "isCorrect": true,
+      "explanation": "A chronic wet cough without another explanatory pointer that resolves with an appropriate antibiotic course is characteristic of protracted bacterial bronchitis."
+    },
+    {
+      "label": "F",
+      "text": "Primary ciliary dyskinesia",
+      "isCorrect": false,
+      "explanation": "This usually produces a longer recurrent sino-pulmonary history, sometimes from birth, rather than an isolated fully resolving episode."
+    },
+    {
+      "label": "G",
+      "text": "Viral bronchiolitis",
+      "isCorrect": false,
+      "explanation": "Bronchiolitis is an acute illness of younger children, not this prolonged wet cough in a well preschooler."
+    },
+    {
+      "label": "H",
+      "text": "Inhaled foreign body",
+      "isCorrect": false,
+      "explanation": "There is no abrupt choking onset or focal pointer, and complete sustained resolution with antibiotics argues against a retained object."
+    }
+  ],
+  "context": "Protracted bacterial bronchitis is a common cause of chronic wet cough in otherwise well children. Persistent or frequently recurring symptoms warrant further assessment.",
+  "publicModule": {
+    "schemaVersion": 1,
+    "origin": "mirrored",
+    "discipline": "resp",
+    "mirroredFrom": "md3:fc8d6c75e087d8b1",
+    "itemText": {
+      "licence": "CC-BY-4.0",
+      "attribution": "MD3 contributors"
+    },
+    "evidence": {
+      "kind": "reference",
+      "sourceId": "rch-clinicalguide-guideline-index-cough-3b14cc"
+    },
+    "review": {
+      "verdict": "passed",
+      "contentHash": "ddbde4bdb4419d73e4e52f10dbaac31d4a5a1d9aa786276f82b949eee6b3af04"
+    }
+  }
+}

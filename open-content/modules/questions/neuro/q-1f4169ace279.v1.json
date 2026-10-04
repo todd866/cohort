@@ -1,0 +1,64 @@
+{
+  "id": "bank:cohort:neuro:q-1f4169ace279:v1",
+  "rotation": "cohort-open",
+  "moduleNodes": [
+    "cohort/neuro"
+  ],
+  "topics": [
+    "neuro"
+  ],
+  "questionType": "management",
+  "difficulty": "hard",
+  "stem": "A 58-year-old remains unresponsive 80 hours after return of spontaneous circulation following an out-of-hospital arrest. Temperature control finished 24 hours ago. Midazolam and fentanyl infusions were stopped 12 hours ago, but he has developed oliguric acute kidney injury and a rising bilirubin from shock liver. Pupillary and corneal reflexes are present, he has no motor response to pain, and the day-1 CT brain was unremarkable. The family asks whether he will wake.\n\nHow should the ICU team approach prognosis?",
+  "options": [
+    {
+      "label": "A",
+      "text": "Advise a poor outcome, as 72 hours have now passed",
+      "isCorrect": false,
+      "explanation": "Seventy-two hours is a minimum, not a deadline. Prognostication also requires that sedatives and other confounders have cleared, which cannot be assumed here."
+    },
+    {
+      "label": "B",
+      "text": "Advise a poor outcome from the absent motor response",
+      "isCorrect": false,
+      "explanation": "An absent motor response is unreliable while sedative drugs may still be acting, and on its own it is never enough to predict a poor outcome."
+    },
+    {
+      "label": "C",
+      "text": "Advise a good outcome from the reassuring CT brain",
+      "isCorrect": false,
+      "explanation": "An early normal CT does not predict recovery; brain swelling may appear later and imaging is only one part of multimodal assessment."
+    },
+    {
+      "label": "D",
+      "text": "Delay judgement until residual sedation is excluded",
+      "isCorrect": true,
+      "explanation": "Kidney and liver failure slow the clearance of midazolam, its active metabolite and opioids, so 12 hours off the infusions may not be enough. Explain the uncertainty, allow more time or confirm sedative clearance, then use multimodal assessment."
+    },
+    {
+      "label": "E",
+      "text": "Recommend withdrawing treatment as he has not woken",
+      "isCorrect": false,
+      "explanation": "Not waking while sedatives may persist does not show irreversible brain injury. A decision to withdraw treatment needs a reliable assessment first."
+    }
+  ],
+  "context": "Post-arrest prognosis is assessed at least 72 hours after ROSC and only once confounders such as residual sedation have cleared; organ failure can prolong that wait.",
+  "publicModule": {
+    "schemaVersion": 1,
+    "origin": "mirrored",
+    "discipline": "neuro",
+    "mirroredFrom": "md3:1f4169ace279dfaf",
+    "itemText": {
+      "licence": "CC-BY-4.0",
+      "attribution": "MD3 contributors"
+    },
+    "evidence": {
+      "kind": "reference",
+      "sourceId": "anzcor-ideline-11-7-post-resuscitation-therapy-in-adult-advanced-life-support-1394cd"
+    },
+    "review": {
+      "verdict": "passed",
+      "contentHash": "d0f8f1edffebd8e71a319ceb377bb2b2f3d873c835dec3c98e7126278633a7da"
+    }
+  }
+}

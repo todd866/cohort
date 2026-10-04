@@ -30,7 +30,7 @@ export const LANE_ACTION: Record<FlagLane, string> = {
   jurisdiction: 'The AU teaching stands. Confirm this is genuinely an AU-vs-US practice difference, then tag the AU card and author the US sibling with the same conceptId. WHO/European, adult-vs-paediatric, or retrieval-only mismatches are not US twins and should be closed as non-applicable. This issue type does not withhold the AU card.',
   augment: 'KEEP the easy card; append a harder multi-format companion (harder cloze + MCQ). Never rewrite/delete the easy rung. → augment loop (step 8c).',
   image: 'Fill it: acquire and inspect a real figure, scan, photo or clip, draw a reviewed original, or fix the image the note names (crop, caption, side). Only if none is possible, wont-fix with the reason. The flag ledger requires 10 closed per morning check.',
-  decode: 'Add/flag the obscure TLA `decode: true` in glossary-data.json (step 8d). Never flag a trivial acronym.',
+  decode: 'Review the item and its siblings; save context-specific abbreviations on each item (step 8d), then verify served tooltips. Never resolve collisions through the global glossary.',
   'hand-fix': 'Fix the construction defect at source (formatting / grammar / truncated context / unclear), then re-seed.',
   teach: 'Author a complexity-1 teaching companion (KeyPoint) for the concept the flag says is under-explained.',
   judgment: 'The report is subjective or ambiguous — make a keep/wont-fix call; do not silently leave it open.',

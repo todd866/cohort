@@ -1,0 +1,64 @@
+{
+  "id": "bank:cohort:id:q-389d6b801da7:v1",
+  "rotation": "cohort-open",
+  "moduleNodes": [
+    "cohort/id"
+  ],
+  "topics": [
+    "id"
+  ],
+  "questionType": "mechanism",
+  "difficulty": "medium",
+  "stem": "Aarav was given MMR at 8 months before travel to a country with a measles outbreak. At 12 months his mother is told he still needs two further doses, at 12 and 18 months. She asks why the dose he has had does not count.\n\nWhat is the main reason?",
+  "options": [
+    {
+      "label": "A",
+      "text": "Infant B cells cannot yet make IgG to vaccine antigens",
+      "isCorrect": false,
+      "explanation": "Infants make IgG to vaccine antigens from the first months of life, which is why hepatitis B is given at birth and most vaccines from 6 weeks. Immaturity is not the main reason here."
+    },
+    {
+      "label": "B",
+      "text": "IgA in breast milk inactivates the injected vaccine",
+      "isCorrect": false,
+      "explanation": "Breast-milk IgA acts at mucosal surfaces in the infant's gut and airway. It does not reach a vaccine injected into muscle or under the skin."
+    },
+    {
+      "label": "C",
+      "text": "His mother's antibody can neutralise the live vaccine",
+      "isCorrect": true,
+      "explanation": "Correct. Maternal IgG crosses the placenta and persists through much of the first year, where it can neutralise the live attenuated virus and blunt the response to an early dose."
+    },
+    {
+      "label": "D",
+      "text": "The attenuated strain reverts to wild type in infants",
+      "isCorrect": false,
+      "explanation": "The attenuated measles vaccine strain does not revert to virulence. The problem with an early dose is a weaker response, not vaccine-derived disease."
+    },
+    {
+      "label": "E",
+      "text": "Doses under 12 months carry too high a seizure risk",
+      "isCorrect": false,
+      "explanation": "Febrile seizure risk relates to the combined MMRV vaccine as a first dose in toddlers. An early MMR dose is not counted because it may not have worked."
+    }
+  ],
+  "context": "MMR is given at 12 months because maternal antibody can neutralise the live vaccine. A dose given before 11 months does not count: two more doses are needed after the first birthday.",
+  "publicModule": {
+    "schemaVersion": 1,
+    "origin": "mirrored",
+    "discipline": "id",
+    "mirroredFrom": "md3:389d6b801da7f08f",
+    "itemText": {
+      "licence": "CC-BY-4.0",
+      "attribution": "MD3 contributors"
+    },
+    "evidence": {
+      "kind": "reference",
+      "sourceId": "aih-contents-vaccine-preventable-diseases-measles-586112"
+    },
+    "review": {
+      "verdict": "passed",
+      "contentHash": "e5fee77c8789333b65690e35b152f984dffc32647c3479ae16fc60a62f557b46"
+    }
+  }
+}

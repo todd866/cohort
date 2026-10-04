@@ -1,0 +1,64 @@
+{
+  "id": "bank:cohort:gi:q-052be6968478:v1",
+  "rotation": "cohort-open",
+  "moduleNodes": [
+    "cohort/gi"
+  ],
+  "topics": [
+    "gi"
+  ],
+  "questionType": "management",
+  "difficulty": "hard",
+  "stem": "A 6-month-old boy presents at 2am with 10 hours of vomiting and two loose stools. The early vomits were milky; the last three were dark green. He vomited an oral rehydration trial at triage. He is irritable, with heart rate 165/min, capillary refill 2 seconds, dry mucous membranes and a mildly distended abdomen. His blood glucose is 4.8 mmol/L (3.5-5.5).\n\nWhich is the most appropriate management?",
+  "options": [
+    {
+      "label": "A",
+      "text": "Rapid nasogastric rehydration with ORS",
+      "isCorrect": false,
+      "explanation": "NG rehydration suits gastroenteritis failing oral fluids, but bilious vomiting suggests obstruction. Enteral fluid is contraindicated until a surgical cause is excluded."
+    },
+    {
+      "label": "B",
+      "text": "Urgent surgical review and IV fluids",
+      "isCorrect": true,
+      "explanation": "Bilious vomiting is bowel obstruction, such as malrotation with volvulus, until proven otherwise. Keep him nil by mouth, give IV fluids, decompress with an NG tube and consult surgeons urgently."
+    },
+    {
+      "label": "C",
+      "text": "Oral ondansetron, then oral fluid trial",
+      "isCorrect": false,
+      "explanation": "Ondansetron can help in gastroenteritis, but an antiemetic may mask obstruction. Green vomiting needs surgical assessment, not another oral trial."
+    },
+    {
+      "label": "D",
+      "text": "Admit and continue small oral fluid volumes",
+      "isCorrect": false,
+      "explanation": "Continuing oral fluids delays the diagnosis of a possible volvulus, in which the bowel can become ischaemic within hours."
+    },
+    {
+      "label": "E",
+      "text": "Discharge with oral rehydration advice",
+      "isCorrect": false,
+      "explanation": "Discharge ignores a red flag. A distended abdomen with bilious vomiting needs same-day surgical review and imaging."
+    }
+  ],
+  "context": "Green vomiting in an infant is a surgical emergency until proven otherwise; loose stools do not exclude malrotation with volvulus.",
+  "publicModule": {
+    "schemaVersion": 1,
+    "origin": "mirrored",
+    "discipline": "gi",
+    "mirroredFrom": "md3:052be696847859d4",
+    "itemText": {
+      "licence": "CC-BY-4.0",
+      "attribution": "MD3 contributors"
+    },
+    "evidence": {
+      "kind": "reference",
+      "sourceId": "rch-clinicalguide-guideline-index-vomiting-6b668a"
+    },
+    "review": {
+      "verdict": "passed",
+      "contentHash": "65c7bf76b3df3a3e0e4f21b85ca40e687903f0c6951e651ce595c2c2eff37997"
+    }
+  }
+}

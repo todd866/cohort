@@ -1,0 +1,64 @@
+{
+  "id": "bank:cohort:surgery:q-1bfb8c77e07d:v1",
+  "rotation": "cohort-open",
+  "moduleNodes": [
+    "cohort/surgery"
+  ],
+  "topics": [
+    "surgery"
+  ],
+  "questionType": "management",
+  "difficulty": "medium",
+  "stem": "At a 6-month check, a term-born boy's left testis is not in the scrotum. It is palpable in the left groin. With gentle traction it can be brought to the top of the scrotum, but it springs straight back up as soon as it is released. The right testis is normal, the penis is normal, and he is well and growing. The left testis was also noted to be high at his 6-week check.\n\nWhat is the most appropriate management?",
+  "options": [
+    {
+      "label": "A",
+      "text": "Reassure, as a testis that reaches the scrotum is retractile",
+      "isCorrect": false,
+      "explanation": "A retractile testis can be brought fully into the scrotum and stays there after it is released. One that reaches only the top of the scrotum and springs straight back is undescended."
+    },
+    {
+      "label": "B",
+      "text": "Review at 12 months, as it may still descend on its own",
+      "isCorrect": false,
+      "explanation": "Spontaneous descent happens mainly in the first few months. A testis still undescended at 6 months rarely comes down, and waiting delays orchidopexy past the recommended window."
+    },
+    {
+      "label": "C",
+      "text": "Scrotal ultrasound to confirm its position before referral",
+      "isCorrect": false,
+      "explanation": "Ultrasound is not recommended before referral: it does not change management, and a palpable testis is already located."
+    },
+    {
+      "label": "D",
+      "text": "Refer to a paediatric surgeon for orchidopexy",
+      "isCorrect": true,
+      "explanation": "Correct. A testis still undescended at 6 months should be referred now so orchidopexy can be done between 6 and 12 months of age, ideally before 12 months, to improve fertility potential and allow testicular examination for later malignancy."
+    },
+    {
+      "label": "E",
+      "text": "Hormonal treatment with hCG to bring it down",
+      "isCorrect": false,
+      "explanation": "Hormonal therapy is not recommended to induce descent; success is low and it is not standard care."
+    }
+  ],
+  "context": "A testis that is still undescended at 6 months (corrected age) should be referred to a paediatric surgeon for orchidopexy, ideally before 12 months, without routine ultrasound or hormonal treatment; a retractile testis can be manipulated fully into the scrotum.",
+  "publicModule": {
+    "schemaVersion": 1,
+    "origin": "mirrored",
+    "discipline": "surgery",
+    "mirroredFrom": "md3:1bfb8c77e07d6e64",
+    "itemText": {
+      "licence": "CC-BY-4.0",
+      "attribution": "MD3 contributors"
+    },
+    "evidence": {
+      "kind": "reference",
+      "sourceId": "rch-kidsinfo-fact-sheets-undescended-testes-c4728d"
+    },
+    "review": {
+      "verdict": "passed",
+      "contentHash": "c1508d8c98783f155d6207a046f8dee0625e5a6bcccfee364cd7ca15e2ca9965"
+    }
+  }
+}

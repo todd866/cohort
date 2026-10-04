@@ -1,0 +1,64 @@
+{
+  "id": "bank:cohort:em:q-aad4dc33d9c6:v1",
+  "rotation": "cohort-open",
+  "moduleNodes": [
+    "cohort/em"
+  ],
+  "topics": [
+    "em"
+  ],
+  "questionType": "investigation",
+  "difficulty": "hard",
+  "stem": "A 71-year-old man falls forwards down two steps and strikes his forehead. He is alert, with no intoxication or head-injury findings. Cervical CT shows multilevel degenerative change but no fracture or malalignment. He now has no midline tenderness but describes burning in both hands, and examination finds mild bilateral grip weakness with normal power and sensation in the legs. The ED consultant asks whether the normal CT allows the collar to be removed.\n\nWhat should happen next?",
+  "options": [
+    {
+      "label": "A",
+      "text": "Remove the collar, as CT has shown no bony injury",
+      "isCorrect": false,
+      "explanation": "A normal CT excludes most fractures but not cord, disc or ligament injury. A new neurological deficit means the spine cannot be cleared on CT alone."
+    },
+    {
+      "label": "B",
+      "text": "Keep spinal motion restriction and arrange cervical MRI",
+      "isCorrect": true,
+      "explanation": "Bilateral hand burning and weakness, worse in the arms than the legs, after a hyperextension injury in a spondylotic neck suggest a central cord injury without fracture. MRI shows the cord, discs and ligaments; keep spinal motion restriction until it is done."
+    },
+    {
+      "label": "C",
+      "text": "Obtain flexion–extension radiographs to look for instability",
+      "isCorrect": false,
+      "explanation": "Dynamic films are unsafe and uninformative when there is a cord deficit, and they cannot show the cord."
+    },
+    {
+      "label": "D",
+      "text": "Remove the collar and request outpatient nerve studies",
+      "isCorrect": false,
+      "explanation": "Bilateral hand symptoms can tempt a peripheral explanation such as carpal tunnel, but appearing together straight after neck trauma they are a cord sign until proved otherwise."
+    },
+    {
+      "label": "E",
+      "text": "Request CT angiography to assess the vertebral arteries",
+      "isCorrect": false,
+      "explanation": "Vessel imaging is for screening criteria for blunt cerebrovascular injury; it does not explain bilateral upper-limb weakness after a hyperextension mechanism."
+    }
+  ],
+  "context": "Bilateral hand symptoms after a hyperextension injury in an older spondylotic neck suggest central cord syndrome; a normal CT does not clear the spine, so keep precautions and arrange MRI.",
+  "publicModule": {
+    "schemaVersion": 1,
+    "origin": "mirrored",
+    "discipline": "em",
+    "mirroredFrom": "md3:aad4dc33d9c68bbf",
+    "itemText": {
+      "licence": "CC-BY-4.0",
+      "attribution": "MD3 contributors"
+    },
+    "evidence": {
+      "kind": "reference",
+      "sourceId": "nice-guidance-ng41-chapter-recommendations-ffdf32"
+    },
+    "review": {
+      "verdict": "passed",
+      "contentHash": "cdc778fc12ac5b4dd0ca47c7d5dd417a15aad88497efaef42d1b7405cc0d3fb8"
+    }
+  }
+}

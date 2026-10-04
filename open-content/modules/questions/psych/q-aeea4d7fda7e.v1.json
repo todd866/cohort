@@ -1,0 +1,64 @@
+{
+  "id": "bank:cohort:psych:q-aeea4d7fda7e:v1",
+  "rotation": "cohort-open",
+  "moduleNodes": [
+    "cohort/psych"
+  ],
+  "topics": [
+    "psych"
+  ],
+  "questionType": "investigation",
+  "difficulty": "hard",
+  "stem": "An emergency doctor assesses a 17-year-old girl, weight 50 kg, six hours after a witnessed single deliberate overdose of 10 g of immediate-release paracetamol taken all at once. She is medically stable, has had an initial safety assessment and is under observation. She has no abdominal pain and the initial ALT is normal. The laboratory will return a paracetamol concentration at seven hours after ingestion. A nurse suggests starting acetylcysteine straight away 'because it's already past four hours'.\n\nWhat should guide the acetylcysteine decision?",
+  "options": [
+    {
+      "label": "A",
+      "text": "A urine drug screen for other co-ingested substances",
+      "isCorrect": false,
+      "explanation": "A drug screen does not change paracetamol management; a co-ingestant would be suspected from the history and examination."
+    },
+    {
+      "label": "B",
+      "text": "A repeat ALT tomorrow morning before deciding",
+      "isCorrect": false,
+      "explanation": "Waiting until tomorrow for ALT would lose the window in which acetylcysteine is most effective."
+    },
+    {
+      "label": "C",
+      "text": "Nothing further: start acetylcysteine now regardless",
+      "isCorrect": false,
+      "explanation": "Starting acetylcysteine before the level is reasonable only if the result will not be available within eight hours of ingestion. Here it will, so the level decides and avoids unnecessary treatment."
+    },
+    {
+      "label": "D",
+      "text": "The paracetamol level plotted on the nomogram",
+      "isCorrect": true,
+      "explanation": "After a single immediate-release ingestion at a known time, a level taken from four hours onwards is plotted on the nomogram. When it will be available within eight hours of ingestion, it decides whether acetylcysteine is needed."
+    },
+    {
+      "label": "E",
+      "text": "An INR and liver function tests for liver injury",
+      "isCorrect": false,
+      "explanation": "Normal liver tests early after ingestion do not exclude toxicity; injury appears later. The timed level predicts the risk."
+    }
+  ],
+  "context": "After a single immediate-release paracetamol ingestion at a known time, a level taken at four hours or later is plotted on the nomogram. Start acetylcysteine before the result only if it will not be available within eight hours of ingestion.",
+  "publicModule": {
+    "schemaVersion": 1,
+    "origin": "mirrored",
+    "discipline": "psych",
+    "mirroredFrom": "md3:aeea4d7fda7ee6d1",
+    "itemText": {
+      "licence": "CC-BY-4.0",
+      "attribution": "MD3 contributors"
+    },
+    "evidence": {
+      "kind": "reference",
+      "sourceId": "rch-clinicalguide-guideline-index-paracetamol-poisoning-ae676a"
+    },
+    "review": {
+      "verdict": "passed",
+      "contentHash": "a321110c4b1d1166ce4e814c2396c33d958d998bdd7335470948a15d2f94c5ab"
+    }
+  }
+}

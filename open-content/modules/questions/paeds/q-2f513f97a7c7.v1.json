@@ -1,0 +1,64 @@
+{
+  "id": "bank:cohort:paeds:q-2f513f97a7c7:v1",
+  "rotation": "cohort-open",
+  "moduleNodes": [
+    "cohort/paeds"
+  ],
+  "topics": [
+    "paeds"
+  ],
+  "questionType": "diagnosis",
+  "difficulty": "hard",
+  "stem": "A 13-year-old girl has missed 20 days of school over 2 months because of nausea and stomach aches on weekday mornings, which settle by mid-morning if she is allowed to stay home. Growth and examination are normal. In a private interview she says she worries something terrible will happen to her mother while they are apart, and she texts her many times a day. She has stopped going to sleepovers. She is a little nervous about presenting in class but enjoys lessons and has good friends, and she denies bullying.\n\nWhich diagnosis best explains the pattern?",
+  "options": [
+    {
+      "label": "A",
+      "text": "Somatic symptom disorder",
+      "isCorrect": false,
+      "explanation": "Her physical symptoms are real but settle once separation is avoided; the driving fear concerns her mother, not the symptoms themselves."
+    },
+    {
+      "label": "B",
+      "text": "Generalised anxiety disorder",
+      "isCorrect": false,
+      "explanation": "Generalised anxiety involves worry across many areas; her worry centres on harm to her mother during separation."
+    },
+    {
+      "label": "C",
+      "text": "Social anxiety disorder",
+      "isCorrect": false,
+      "explanation": "Mild nerves about presenting are common. She has friends and enjoys lessons, so fear of scrutiny does not explain the avoidance."
+    },
+    {
+      "label": "D",
+      "text": "Separation anxiety disorder",
+      "isCorrect": true,
+      "explanation": "Correct. Fear that harm will come to her mother, repeated contact when apart, avoidance of sleepovers and morning symptoms that settle when she stays home fit separation anxiety disorder."
+    },
+    {
+      "label": "E",
+      "text": "Major depressive disorder",
+      "isCorrect": false,
+      "explanation": "She enjoys lessons and friends, with no low mood or loss of interest described; depression does not explain the separation-focused fear."
+    }
+  ],
+  "context": "School avoidance has multiple causes. Ask what the young person fears: separation-related distress differs from fear of peer scrutiny, general worry or deliberate defiance.",
+  "publicModule": {
+    "schemaVersion": 1,
+    "origin": "mirrored",
+    "discipline": "paeds",
+    "mirroredFrom": "md3:2f513f97a7c75591",
+    "itemText": {
+      "licence": "CC-BY-4.0",
+      "attribution": "MD3 contributors"
+    },
+    "evidence": {
+      "kind": "reference",
+      "sourceId": "rch-clinicalguide-guideline-index-anxiety-identification-and-management-c4f446"
+    },
+    "review": {
+      "verdict": "passed",
+      "contentHash": "7f233cc853d5ed26f030bd2583db528031f1ffa75041f975bc521f792828b6ba"
+    }
+  }
+}

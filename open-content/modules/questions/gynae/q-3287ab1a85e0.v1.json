@@ -1,0 +1,64 @@
+{
+  "id": "bank:cohort:gynae:q-3287ab1a85e0:v1",
+  "rotation": "cohort-open",
+  "moduleNodes": [
+    "cohort/gynae"
+  ],
+  "topics": [
+    "gynae"
+  ],
+  "questionType": "management",
+  "difficulty": "hard",
+  "stem": "A 29-year-old patient with migraine preceded by visual aura wants reliable contraception for several years and would prefer lighter periods. She has heavy regular bleeding, with a normal examination and no identified uterine cavity abnormality. Pregnancy and infection are excluded, and there is no contraindication to intrauterine contraception.\n\nWhich option best meets her goals?",
+  "options": [
+    {
+      "label": "A",
+      "text": "A combined oral contraceptive pill taken continuously to reduce bleeding",
+      "isCorrect": false,
+      "explanation": "Migraine with aura contraindicates any combined oestrogen method because of ischaemic stroke risk, however it is taken."
+    },
+    {
+      "label": "B",
+      "text": "A copper intrauterine device, which contains no hormone",
+      "isCorrect": false,
+      "explanation": "A copper IUD suits aura but typically makes periods heavier, working against her second goal."
+    },
+    {
+      "label": "C",
+      "text": "An etonogestrel implant, which avoids oestrogen and lasts three years",
+      "isCorrect": false,
+      "explanation": "The implant is safe with aura and long-acting, but its bleeding pattern is unpredictable and it does not treat heavy menstrual bleeding."
+    },
+    {
+      "label": "D",
+      "text": "A 52 mg levonorgestrel intrauterine device for several years",
+      "isCorrect": true,
+      "explanation": "A 52 mg LNG-IUD is safe with aura, provides long-acting contraception and markedly reduces heavy menstrual bleeding."
+    },
+    {
+      "label": "E",
+      "text": "A combined vaginal ring, as it gives lower systemic oestrogen exposure",
+      "isCorrect": false,
+      "explanation": "The ring is still a combined oestrogen method and is contraindicated with migraine with aura."
+    }
+  ],
+  "context": "An LNG-IUD can meet contraception and heavy-bleeding goals in a patient with migraine with aura.",
+  "publicModule": {
+    "schemaVersion": 1,
+    "origin": "mirrored",
+    "discipline": "gynae",
+    "mirroredFrom": "md3:3287ab1a85e04461",
+    "itemText": {
+      "licence": "CC-BY-4.0",
+      "attribution": "MD3 contributors"
+    },
+    "evidence": {
+      "kind": "reference",
+      "sourceId": "ranzcog-wp-content-uploads-contraception-clinical-guideline-ef8448"
+    },
+    "review": {
+      "verdict": "passed",
+      "contentHash": "8fa82421395716e42c664a910aa0cb5f8c1d74dad9c6a8b4c4fc150e9aeffca1"
+    }
+  }
+}

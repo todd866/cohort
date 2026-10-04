@@ -21,13 +21,8 @@ export interface SimilarCard {
   rotation?: string;
   front?: string;
   complexity?: number;
-}
-
-export interface SimilarQuestion {
-  questionId: string;
-  similarity: number;
-  stem?: string;
-  source?: string;
+  /** Siblings share this; a sibling is the same fact reworded, never a scaffold for it. */
+  variantGroupId?: string | null;
 }
 
 // Cache embedding availability check
@@ -149,6 +144,81 @@ async function findItemsNearVector<T>(opts: {
 }
 
 /**
+ * hnsw.ef_search for findSimilar. Its scan carries no filter, so it stops once the inner LIMIT
+ * (the caller's limit plus the source card) is filled: one pass of this many candidates covers
+ * every caller. The shared 1,000 is sized for the concept searches that filter inside the scan.
+ */
+export const FIND_SIMILAR_EF_SEARCH = 100;
+
+/**
+ * The findSimilar search: nearest neighbours first, straight off the HNSW index (ORDER BY the
+ * distance to a parameter, LIMIT k + 1 so the source card itself cannot take a slot), then the
+ * source card and the similarity floor on those rows.
+ *
+ * Similarity falls as distance grows, so "the first k rows that clear the floor" and "the k
+ * nearest rows, then the floor" are the same set for an exact search. With the floor inside the
+ * scan, a card with fewer than k close neighbours kept the iterative scan walking towards
+ * hnsw.max_scan_tuples, detoasting a vector for every candidate it rejected. The Card join stays
+ * inside so an embedding with no Card row cannot take a slot, as before. The distance is
+ * computed once and the vector sent once (it was sent three times).
+ *
+ * Exported so the integration test can EXPLAIN exactly the statement findSimilar runs.
+ */
+export function findSimilarSql(options: {
+  sourceVector: string;
+  cardId: string;
+  limit: number;
+  minSimilarity: number;
+}): Prisma.Sql {
+  const lim = Number(options.limit);
+  const minSim = Number(options.minSimilarity);
+  return Prisma.sql`
+    SELECT
+      nn."cardId",
+      nn.rotation,
+      nn.front,
+      nn.complexity,
+      nn."variantGroupId",
+      (1 - nn.distance)::float AS similarity
+    FROM (
+      SELECT
+        c.id AS "cardId",
+        c.rotation,
+        c.front,
+        c.complexity,
+        c."variantGroupId" AS "variantGroupId",
+        e.embedding <=> ${options.sourceVector}::halfvec AS distance
+      FROM card_embeddings e
+      JOIN "Card" c ON c.id = e.card_id
+      ORDER BY distance
+      LIMIT ${lim + 1}::int
+    ) nn
+    WHERE nn."cardId" <> ${options.cardId}
+      AND (1 - nn.distance) >= ${minSim}::float
+    ORDER BY nn.distance
+    LIMIT ${lim}::int
+  `;
+}
+
+/**
+ * How a neighbour search ran. Only 'embedding' makes an empty result mean "nothing near this card":
+ * - 'embedding': the card's own vector was searched;
+ * - 'topics': the topic fallback ran, because embeddings are unavailable or the vector query failed;
+ * - 'none': nothing was searched, because the card has no embedding yet.
+ */
+export type SimilarSearchSource = 'embedding' | 'topics' | 'none';
+
+export interface SimilarSearch {
+  neighbours: SimilarCard[];
+  source: SimilarSearchSource;
+}
+
+async function topicNeighbours(cardId: string, limit: number, minSimilarity: number): Promise<SimilarCard[]> {
+  const fallbackResults = await findSimilarByTopics(cardId, limit);
+  return fallbackResults.filter((r) => r.similarity >= minSimilarity);
+}
+
+/**
  * Find similar cards using cosine similarity (or topic fallback)
  * Uses HNSW index for fast approximate nearest neighbor search
  */
@@ -157,13 +227,25 @@ export async function findSimilar(
   limit: number = 10,
   minSimilarity: number = 0.5
 ): Promise<SimilarCard[]> {
+  return (await searchSimilar(cardId, limit, minSimilarity)).neighbours;
+}
+
+/**
+ * findSimilar's search, with how it ran. A caller that treats "no neighbours" as a finding (the
+ * failed-card scaffold path records it as missing content) must check `source`: a card with no
+ * embedding returns the same empty list without anything having been searched.
+ */
+export async function searchSimilar(
+  cardId: string,
+  limit: number = 10,
+  minSimilarity: number = 0.5
+): Promise<SimilarSearch> {
   // Check if embeddings are available
   const useEmbeddings = await checkEmbeddings();
 
   if (!useEmbeddings) {
     // Fallback to topic-based similarity
-    const fallbackResults = await findSimilarByTopics(cardId, limit);
-    return fallbackResults.filter((r) => r.similarity >= minSimilarity);
+    return { neighbours: await topicNeighbours(cardId, limit, minSimilarity), source: 'topics' };
   }
 
   // Resolve the source vector first, then pass it back as a query parameter.
@@ -171,8 +253,6 @@ export async function findSimilar(
   // literal/parameter. The previous e1.embedding <=> e2.embedding join made
   // PostgreSQL scan and sort the entire embedding table for every failed card.
   try {
-    const minSim = Number(minSimilarity);
-    const lim = Number(limit);
     const sourceRows = await prisma.$queryRaw<Array<{ embedding: string }>>`
       SELECT embedding::text AS embedding
       FROM card_embeddings
@@ -180,59 +260,69 @@ export async function findSimilar(
       LIMIT 1
     `;
 
-    if (sourceRows.length === 0) return [];
+    if (sourceRows.length === 0) return { neighbours: [], source: 'none' };
     const sourceVector = sourceRows[0].embedding;
-    const results = await withHnswRuntime((transaction) => transaction.$queryRaw<SimilarCard[]>`
-        SELECT
-          c.id as "cardId",
-          c.rotation,
-          c.front,
-          (1 - (e.embedding <=> ${sourceVector}::halfvec))::float as similarity
-        FROM card_embeddings e
-        JOIN "Card" c ON c.id = e.card_id
-        WHERE e.card_id != ${cardId}
-          AND (1 - (e.embedding <=> ${sourceVector}::halfvec)) >= ${minSim}::float
-        ORDER BY e.embedding <=> ${sourceVector}::halfvec
-        LIMIT ${lim}::int
-      `);
+    const results = await withHnswRuntime(
+      (transaction) => transaction.$queryRaw<SimilarCard[]>(
+        findSimilarSql({ sourceVector, cardId, limit, minSimilarity }),
+      ),
+      undefined,
+      { efSearch: FIND_SIMILAR_EF_SEARCH },
+    );
 
-    return results;
+    return { neighbours: results, source: 'embedding' };
   } catch (error) {
     // Embedding query failed, fall back to topics
     logger.warn('Embedding query failed, using topic fallback', { error: String(error) });
     _hasEmbeddings = false;
-    const fallbackResults = await findSimilarByTopics(cardId, limit);
-    return fallbackResults.filter((r) => r.similarity >= minSimilarity);
+    return { neighbours: await topicNeighbours(cardId, limit, minSimilarity), source: 'topics' };
   }
 }
 
 /**
- * Find similar cards from OTHER rotations
- * Useful for cross-rotation concept linking
+ * The findCardsForQuestion search. The question's vector is a join column, so no index can serve
+ * it: this is an exact scan of the cards in the question's rotation (of every card, when there is
+ * no rotation), as it always was. The OFFSET 0 fence stops the planner inlining the subquery,
+ * which would copy the distance back into the WHERE, the sort and the select list: three vector
+ * comparisons, each detoasting both vectors, for every card instead of one. The floor and the
+ * order then work on the distance already computed.
+ *
+ * Exported so the integration test can EXPLAIN exactly the statement findCardsForQuestion runs.
  */
-export async function findCrossRotation(
-  cardId: string,
-  currentRotation: string,
-  limit: number = 5
-): Promise<SimilarCard[]> {
-  const lim = Number(limit);
-  const results = await prisma.$queryRaw<SimilarCard[]>`
+export function cardsForQuestionSql(options: {
+  questionId: string;
+  rotation: string | null;
+  limit: number;
+  minSimilarity: number;
+}): Prisma.Sql {
+  const lim = Number(options.limit);
+  const minSim = Number(options.minSimilarity);
+  const rotationBound = options.rotation
+    ? Prisma.sql`AND c.rotation = ${options.rotation}`
+    : Prisma.empty;
+  return Prisma.sql`
     SELECT
-      c.id as "cardId",
-      c.rotation,
-      c.front,
-      (1 - (e1.embedding <=> e2.embedding))::float as similarity
-    FROM card_embeddings e1
-    JOIN card_embeddings e2 ON e2.card_id != e1.card_id
-    JOIN "Card" c ON c.id = e2.card_id
-    WHERE e1.card_id = ${cardId}
-      AND c.rotation != ${currentRotation}
-      AND (1 - (e1.embedding <=> e2.embedding)) >= 0.7
-    ORDER BY e1.embedding <=> e2.embedding
+      nn."cardId",
+      nn.rotation,
+      nn.front,
+      (1 - nn.distance)::float AS similarity
+    FROM (
+      SELECT
+        c.id AS "cardId",
+        c.rotation,
+        c.front,
+        qe.embedding <=> ce.embedding AS distance
+      FROM question_embeddings qe
+      CROSS JOIN card_embeddings ce
+      JOIN "Card" c ON c.id = ce.card_id
+      WHERE qe.question_id = ${options.questionId}
+        ${rotationBound}
+      OFFSET 0
+    ) nn
+    WHERE (1 - nn.distance) >= ${minSim}::float
+    ORDER BY nn.distance
     LIMIT ${lim}::int
   `;
-
-  return results;
 }
 
 /**
@@ -251,38 +341,9 @@ export async function findCardsForQuestion(
   const rotation = questionMeta?.rotation ?? null;
 
   try {
-    const minSim = Number(minSimilarity);
-    const lim = Number(limit);
-    const results = rotation
-      ? await prisma.$queryRaw<SimilarCard[]>`
-          SELECT
-            c.id as "cardId",
-            c.rotation,
-            c.front,
-            (1 - (qe.embedding <=> ce.embedding))::FLOAT as similarity
-          FROM question_embeddings qe
-          CROSS JOIN card_embeddings ce
-          JOIN "Card" c ON c.id = ce.card_id
-          WHERE qe.question_id = ${questionId}
-            AND c.rotation = ${rotation}
-            AND (1 - (qe.embedding <=> ce.embedding)) >= ${minSim}::float
-          ORDER BY qe.embedding <=> ce.embedding
-          LIMIT ${lim}::int
-        `
-      : await prisma.$queryRaw<SimilarCard[]>`
-          SELECT
-            c.id as "cardId",
-            c.rotation,
-            c.front,
-            (1 - (qe.embedding <=> ce.embedding))::FLOAT as similarity
-          FROM question_embeddings qe
-          CROSS JOIN card_embeddings ce
-          JOIN "Card" c ON c.id = ce.card_id
-          WHERE qe.question_id = ${questionId}
-            AND (1 - (qe.embedding <=> ce.embedding)) >= ${minSim}::float
-          ORDER BY qe.embedding <=> ce.embedding
-          LIMIT ${lim}::int
-        `;
+    const results = await prisma.$queryRaw<SimilarCard[]>(
+      cardsForQuestionSql({ questionId, rotation, limit, minSimilarity }),
+    );
     return results;
   } catch (error) {
     logger.warn('Cross-modal search failed (Question → Cards)', { error: String(error) });
@@ -290,60 +351,10 @@ export async function findCardsForQuestion(
   }
 }
 
-/**
- * Find questions similar to a card (cross-modal search)
- * Used for testing: after reviewing cards, test with related questions
- */
-export async function findQuestionsForCard(
-  cardId: string,
-  limit: number = 5,
-  minSimilarity: number = 0.3
-): Promise<SimilarQuestion[]> {
-  const cardMeta = await prisma.card.findUnique({
-    where: { id: cardId },
-    select: { rotation: true },
-  });
-  const rotation = cardMeta?.rotation ?? null;
-
-  try {
-    const minSim = Number(minSimilarity);
-    const lim = Number(limit);
-    const results = rotation
-      ? await prisma.$queryRaw<SimilarQuestion[]>`
-          SELECT
-            q.id as "questionId",
-            q.stem,
-            q.source,
-            (1 - (ce.embedding <=> qe.embedding))::FLOAT as similarity
-          FROM card_embeddings ce
-          CROSS JOIN question_embeddings qe
-          JOIN "Question" q ON q.id = qe.question_id
-          WHERE ce.card_id = ${cardId}
-            AND q.rotation = ${rotation}
-            AND (1 - (ce.embedding <=> qe.embedding)) >= ${minSim}::float
-          ORDER BY ce.embedding <=> qe.embedding
-          LIMIT ${lim}::int
-        `
-      : await prisma.$queryRaw<SimilarQuestion[]>`
-          SELECT
-            q.id as "questionId",
-            q.stem,
-            q.source,
-            (1 - (ce.embedding <=> qe.embedding))::FLOAT as similarity
-          FROM card_embeddings ce
-          CROSS JOIN question_embeddings qe
-          JOIN "Question" q ON q.id = qe.question_id
-          WHERE ce.card_id = ${cardId}
-            AND (1 - (ce.embedding <=> qe.embedding)) >= ${minSim}::float
-          ORDER BY ce.embedding <=> qe.embedding
-          LIMIT ${lim}::int
-        `;
-    return results;
-  } catch (error) {
-    logger.warn('Cross-modal search failed (Card → Questions)', { error: String(error) });
-    return [];
-  }
-}
+// findCrossRotation and findQuestionsForCard were deleted 2026-10-02: neither had a caller, and
+// both still compared one stored vector with every row of an embedding table, up to three times
+// a row. A new search of that kind should start from cardsForQuestionSql's shape (one distance
+// per row, behind an OFFSET 0 fence) or findSimilarSql's (index first, filters after).
 
 // Re-export from shared math module
 export { cosineSimilarity } from '@/lib/math/vector-math';
@@ -563,12 +574,17 @@ export async function batchLoadConceptEmbeddings(
  * pays the load once.
  *
  * Bounded two ways: entries expire after the TTL (so a re-embed is picked up
- * within minutes without any cross-process invalidation), and the map is
+ * within the hour without any cross-process invalidation), and the map is
  * capped so a pathological caller cannot grow it past the concept catalogue.
  * The values are shared by reference — callers already treat them as
  * read-only (`truncateToManifoldDim` copies).
+ *
+ * The TTL was 10 minutes, the same as the session-cache warm cron's cadence,
+ * so cron runs missed the memo almost every time. A concept vector changes
+ * only when a script re-embeds it, and the precomputed concept top-K (which
+ * reads vectors inside Postgres) is invalidated by trigger, not by this memo.
  */
-export const CONCEPT_EMBEDDING_MEMO_TTL_MS = 10 * 60 * 1000;
+export const CONCEPT_EMBEDDING_MEMO_TTL_MS = 60 * 60 * 1000;
 const CONCEPT_EMBEDDING_MEMO_MAX_ENTRIES = 4_000;
 const conceptEmbeddingMemo = new Map<string, { vector: number[]; loadedAt: number }>();
 

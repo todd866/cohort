@@ -1,0 +1,64 @@
+{
+  "id": "bank:cohort:psych:q-2108e3d5b265:v1",
+  "rotation": "cohort-open",
+  "moduleNodes": [
+    "cohort/psych"
+  ],
+  "topics": [
+    "psych"
+  ],
+  "questionType": "knowledge",
+  "difficulty": "medium",
+  "stem": "A 34-year-old plans to quit smoking. She smokes ten cigarettes a day, has her first within five minutes of waking and sometimes wakes at night to smoke. She has made two previous quit attempts. Her GP notes that ten a day is often called “light” smoking and wants to judge her dependence to guide NRT dosing.\n\nWhich conclusion about her dependence is best supported?",
+  "options": [
+    {
+      "label": "A",
+      "text": "Low dependence, since she smokes fewer than fifteen cigarettes daily",
+      "isCorrect": false,
+      "explanation": "Cigarette count alone understates dependence, particularly at lower-seeming amounts. The timing of the first cigarette better reflects nicotine need."
+    },
+    {
+      "label": "B",
+      "text": "It cannot be judged until exhaled carbon monoxide is measured",
+      "isCorrect": false,
+      "explanation": "Carbon monoxide confirms recent smoking but does not grade dependence. The history already answers the question."
+    },
+    {
+      "label": "C",
+      "text": "Low dependence, as two earlier quit attempts show good motivation",
+      "isCorrect": false,
+      "explanation": "Quit attempts reflect motivation, not physiological dependence. They do not lower her nicotine need."
+    },
+    {
+      "label": "D",
+      "text": "Significant dependence, shown by her first cigarette on waking",
+      "isCorrect": true,
+      "explanation": "Smoking within five minutes of waking, and waking at night to smoke, indicate significant dependence despite only ten a day. This supports combination NRT rather than a light-smoker approach."
+    },
+    {
+      "label": "E",
+      "text": "Best judged by the number of years she has smoked so far",
+      "isCorrect": false,
+      "explanation": "Years of smoking contribute to harm but are a poor marker of current nicotine dependence. Time to first cigarette is more informative."
+    }
+  ],
+  "context": "Time to the first cigarette after waking is the most useful brief marker of dependence and can reveal significant dependence in someone who smokes relatively few cigarettes.",
+  "publicModule": {
+    "schemaVersion": 1,
+    "origin": "mirrored",
+    "discipline": "psych",
+    "mirroredFrom": "md3:2108e3d5b2655de7",
+    "itemText": {
+      "licence": "CC-BY-4.0",
+      "attribution": "MD3 contributors"
+    },
+    "evidence": {
+      "kind": "reference",
+      "sourceId": "nsw-health-tobacco-publications-managing-nicotine-dependence-300a60"
+    },
+    "review": {
+      "verdict": "passed",
+      "contentHash": "47c1d536036355d8596e2f1b615c5933d2d1848e38bcbbf1b7bf52c123411db6"
+    }
+  }
+}

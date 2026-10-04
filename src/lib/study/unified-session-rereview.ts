@@ -17,6 +17,7 @@ import {
   ownerPrivateOrSharedCardScope,
   scopedCardProgressWhere,
 } from '@/lib/cards/read-repository.server';
+import { normalizeAbbreviations } from './current-session-content';
 
 export const REREVIEW_COOLDOWN_MS = 45 * 60 * 1000;
 export const REREVIEW_DAILY_VIEW_CAP = 2;
@@ -103,6 +104,7 @@ export async function tryRereviewSession(ctx: SessionContext): Promise<NextRespo
           back: true,
           backs: true,
           context: true,
+          abbreviations: true,
           sourceComponent: true,
           rotation: true,
           week: true,
@@ -157,6 +159,7 @@ export async function tryRereviewSession(ctx: SessionContext): Promise<NextRespo
       back: card.back,
       backs: card.backs as string[] | null,
       context: card.context,
+      abbreviations: normalizeAbbreviations(card.abbreviations),
       sourceComponent: card.sourceComponent ?? undefined,
       rotation: card.rotation,
       week: card.week,

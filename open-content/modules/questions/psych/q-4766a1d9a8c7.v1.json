@@ -1,0 +1,64 @@
+{
+  "id": "bank:cohort:psych:q-4766a1d9a8c7:v1",
+  "rotation": "cohort-open",
+  "moduleNodes": [
+    "cohort/psych"
+  ],
+  "topics": [
+    "psych"
+  ],
+  "questionType": "management",
+  "difficulty": "hard",
+  "stem": "A psychiatrist reviews a woman who has taken a stable antipsychotic dose for eight years. For three months she has had lip-smacking, tongue movements and irregular finger movements, without stiffness, slowed movement or inner restlessness. Benzatropine was added two weeks ago and the movements have become more intrusive. Her psychosis remains controlled.\n\nWhich initial medication change best addresses the added problem?",
+  "options": [
+    {
+      "label": "A",
+      "text": "Increase benzatropine to suppress the involuntary movements",
+      "isCorrect": false,
+      "explanation": "The pattern is tardive dyskinesia, which anticholinergics can worsen. Increasing benzatropine is appropriate for some other extrapyramidal reactions, not this one."
+    },
+    {
+      "label": "B",
+      "text": "Replace benzatropine with another anticholinergic medicine",
+      "isCorrect": false,
+      "explanation": "Another anticholinergic carries the same concern. The absence of parkinsonian stiffness or slowness makes that substitution particularly unhelpful."
+    },
+    {
+      "label": "C",
+      "text": "Increase the antipsychotic dose to mask the movements",
+      "isCorrect": false,
+      "explanation": "A higher dose may temporarily suppress visible movements while increasing adverse effects. Masking them is not a sound long-term treatment plan."
+    },
+    {
+      "label": "D",
+      "text": "Reduce the antipsychotic while continuing benzatropine",
+      "isCorrect": false,
+      "explanation": "This leaves the recently added anticholinergic contributor in place and risks destabilising controlled psychosis. Review of antipsychotic treatment remains important, but withdrawing the medicine that worsened the movements is the more direct initial change."
+    },
+    {
+      "label": "E",
+      "text": "Withdraw benzatropine and reassess the movements",
+      "isCorrect": true,
+      "explanation": "Benzatropine can exacerbate tardive dyskinesia and should be withdrawn under supervision. The ongoing antipsychotic requirement and treatment options for the movements then need individual review."
+    }
+  ],
+  "context": "Anticholinergics used for acute extrapyramidal reactions can worsen tardive dyskinesia.",
+  "publicModule": {
+    "schemaVersion": 1,
+    "origin": "mirrored",
+    "discipline": "psych",
+    "mirroredFrom": "md3:4766a1d9a8c7dd13",
+    "itemText": {
+      "licence": "CC-BY-4.0",
+      "attribution": "MD3 contributors"
+    },
+    "evidence": {
+      "kind": "reference",
+      "sourceId": "acsqhc-medicine-finder-benztrop-c6cc3d"
+    },
+    "review": {
+      "verdict": "passed",
+      "contentHash": "8f77d84417f12c5697f581eb6473cc3f9f62234c52f9eb0198434d3ca0410c17"
+    }
+  }
+}

@@ -448,6 +448,18 @@ export function normalizeContext(text: string): string {
     .trim();
 }
 
+const NAMED_ENTITIES: Readonly<Record<string, string>> = Object.freeze({
+  lt: '<', gt: '>', amp: '&', quot: '"', apos: "'", nbsp: '\u00a0',
+  le: '≤', ge: '≥', ne: '≠', asymp: '≈', plusmn: '±', times: '×', divide: '÷', minus: '−',
+  deg: '°', micro: 'µ', mu: 'μ', alpha: 'α', beta: 'β', gamma: 'γ', delta: 'δ', Delta: 'Δ',
+  rarr: '→', larr: '←', harr: '↔', uarr: '↑', darr: '↓', ndash: '–', mdash: '—',
+  hellip: '…', middot: '·', frac12: '½', sup2: '²', sup3: '³',
+});
+
+function decodeCodePoint(code: number): string | undefined {
+  return Number.isInteger(code) && code > 0 && code <= 0x10ffff ? String.fromCodePoint(code) : undefined;
+}
+
 export function stripMdxComponents(text: string): string {
   return text
     // Strip <LearnMore>...</LearnMore> blocks entirely (supplementary content, not card text)
@@ -465,10 +477,11 @@ export function stripMdxComponents(text: string): string {
     .replace(/<[A-Z][a-zA-Z]*[^>]*\/>/g, '')
     // Any remaining component tags
     .replace(/<\/?[A-Z][a-zA-Z]*[^>]*>/g, '')
-    // Decode HTML entities
-    .replace(/&lt;/g, '<')
-    .replace(/&gt;/g, '>')
-    .replace(/&amp;/g, '&')
+    // Decode HTML entities: numeric ones, and the named ones medicine uses.
+    // An unknown name is left alone rather than guessed.
+    .replace(/&#(\d{1,7});/g, (whole, code: string) => decodeCodePoint(Number(code)) ?? whole)
+    .replace(/&#x([0-9a-f]{1,6});/gi, (whole, code: string) => decodeCodePoint(parseInt(code, 16)) ?? whole)
+    .replace(/&([a-z][a-z0-9]{1,31});/gi, (whole, name: string) => NAMED_ENTITIES[name] ?? whole)
     // Normalize JSX expression escapes: {'<'} -> < and {'>'} -> >
     .replace(/\{\s*['"]\s*([<>])\s*['"]\s*\}/g, '$1')
     // Normalize backslash escapes from MDX: \< -> <, \> -> >, \* -> *
@@ -508,7 +521,12 @@ export function alignMultiBlankAnswers(
     return { back: answerPart };
   }
 
-  const parts = answerPart.split(/[;\n]/).map(a => a.trim()).filter(a => a.length > 0);
+  // A `;` that closes an HTML entity (`&lt;150`) is part of the answer, not a
+  // separator: splitting there made `&lt` the first answer and shifted the rest.
+  const parts = answerPart
+    .split(/(?<!&(?:[a-z][a-z0-9]{1,31}|#\d{1,7}|#x[0-9a-f]{1,6}));|\n/i)
+    .map(a => a.trim())
+    .filter(a => a.length > 0);
 
   if (parts.length >= blankCount) {
     // Truncate to match blank count

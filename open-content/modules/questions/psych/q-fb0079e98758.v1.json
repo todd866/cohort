@@ -1,0 +1,64 @@
+{
+  "id": "bank:cohort:psych:q-fb0079e98758:v1",
+  "rotation": "cohort-open",
+  "moduleNodes": [
+    "cohort/psych"
+  ],
+  "topics": [
+    "psych"
+  ],
+  "questionType": "management",
+  "difficulty": "hard",
+  "stem": "An emergency doctor reviews a 27-year-old woman given metoclopramide for migraine-associated nausea two hours earlier. She now has painful jaw clenching, tongue protrusion, her neck twisted to one side and her eyes rolled upwards. She is frightened and says her throat feels tight. She is fully conscious between spasms. She has no urticaria, lip swelling, wheeze or stridor; oxygen saturation is 99% and blood pressure is normal. Metoclopramide has been stopped.\n\nWhich treatment should be given now?",
+  "options": [
+    {
+      "label": "A",
+      "text": "Intramuscular adrenaline",
+      "isCorrect": false,
+      "explanation": "Throat tightness can suggest anaphylaxis, but there is no urticaria, swelling, wheeze, stridor or hypotension. The spasms are a movement disorder."
+    },
+    {
+      "label": "B",
+      "text": "Parenteral benzatropine",
+      "isCorrect": true,
+      "explanation": "Sustained painful spasms of the jaw, tongue, neck and eyes within hours of a dopamine-blocking antiemetic are an acute dystonic reaction. Parenteral benzatropine usually relieves it within minutes."
+    },
+    {
+      "label": "C",
+      "text": "Intravenous diazepam",
+      "isCorrect": false,
+      "explanation": "She is conscious between spasms, so this is not a seizure; a benzodiazepine is not the first-line treatment."
+    },
+    {
+      "label": "D",
+      "text": "Intravenous dantrolene",
+      "isCorrect": false,
+      "explanation": "Dantrolene is sometimes used in severe hyperthermic syndromes such as neuroleptic malignant syndrome; she has no fever or rigidity."
+    },
+    {
+      "label": "E",
+      "text": "Oral propranolol",
+      "isCorrect": false,
+      "explanation": "Propranolol is used for akathisia, not for acute dystonia."
+    }
+  ],
+  "context": "Acute dystonia after a dopamine-blocking antiemetic causes sustained spasms of the jaw, tongue, neck or eyes and is treated promptly with a parenteral anticholinergic.",
+  "publicModule": {
+    "schemaVersion": 1,
+    "origin": "mirrored",
+    "discipline": "psych",
+    "mirroredFrom": "md3:fb0079e98758765d",
+    "itemText": {
+      "licence": "CC-BY-4.0",
+      "attribution": "MD3 contributors"
+    },
+    "evidence": {
+      "kind": "reference",
+      "sourceId": "acsqhc-medicine-finder-benzatropine-injection-5137cd"
+    },
+    "review": {
+      "verdict": "passed",
+      "contentHash": "d32a7d1998eb0227c77696973bdeb4e5c1dab16aab0f42e1764980f1d5e79006"
+    }
+  }
+}

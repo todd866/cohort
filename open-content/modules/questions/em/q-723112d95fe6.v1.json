@@ -1,0 +1,64 @@
+{
+  "id": "bank:cohort:em:q-723112d95fe6:v1",
+  "rotation": "cohort-open",
+  "moduleNodes": [
+    "cohort/em"
+  ],
+  "topics": [
+    "em"
+  ],
+  "questionType": "management",
+  "difficulty": "medium",
+  "stem": "A 38-year-old gardener has a deep puncture wound from a garden fork contaminated with soil three hours ago. The wound is being cleaned. She moved to Australia as an adult, does not know whether she completed childhood vaccinations, and remembers one tetanus injection after a cut about ten years ago. No record is available.\n\nWhich tetanus prophylaxis should the treating clinician arrange?",
+  "options": [
+    {
+      "label": "A",
+      "text": "Tetanus-containing vaccine alone, as a dose was given before",
+      "isCorrect": false,
+      "explanation": "One remembered dose does not make a complete primary course. With fewer than three documented doses and a tetanus-prone wound, vaccine alone does not give protection quickly enough."
+    },
+    {
+      "label": "B",
+      "text": "No prophylaxis, as the wound is under six hours old and cleaned",
+      "isCorrect": false,
+      "explanation": "Early cleaning reduces risk but does not make a deep, soil-contaminated puncture safe in someone with an incomplete vaccination history."
+    },
+    {
+      "label": "C",
+      "text": "Tetanus immunoglobulin alone, delaying vaccine to avoid interference",
+      "isCorrect": false,
+      "explanation": "Immunoglobulin and vaccine can be given at the same visit at separate sites without clinically important interference. Omitting the vaccine leaves her without lasting immunity."
+    },
+    {
+      "label": "D",
+      "text": "Tetanus-containing vaccine plus tetanus immunoglobulin",
+      "isCorrect": true,
+      "explanation": "A deep soil-contaminated puncture is tetanus-prone, and her history amounts to fewer than three documented doses. She needs tetanus-containing vaccine and tetanus immunoglobulin, given at separate sites, then completion of the primary course."
+    },
+    {
+      "label": "E",
+      "text": "Metronidazole in place of tetanus immunoglobulin",
+      "isCorrect": false,
+      "explanation": "Antibiotics do not neutralise tetanus toxin and do not replace immunoglobulin in an under-vaccinated person with a tetanus-prone wound."
+    }
+  ],
+  "context": "A tetanus-prone wound in someone with fewer than three documented doses, or an uncertain history, needs both vaccine and tetanus immunoglobulin.",
+  "publicModule": {
+    "schemaVersion": 1,
+    "origin": "mirrored",
+    "discipline": "em",
+    "mirroredFrom": "md3:723112d95fe6692f",
+    "itemText": {
+      "licence": "CC-BY-4.0",
+      "attribution": "MD3 contributors"
+    },
+    "evidence": {
+      "kind": "reference",
+      "sourceId": "aih-commended-to-receive-tetanus-toxoid-vaccine-and-tetanus-immunoglobulin-2836b4"
+    },
+    "review": {
+      "verdict": "passed",
+      "contentHash": "6ae8419c1f0dc98ca72b1c42c12e05baae164450e361531b3c267ca02affe0df"
+    }
+  }
+}

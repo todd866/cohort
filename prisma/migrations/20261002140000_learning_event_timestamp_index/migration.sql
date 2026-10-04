@@ -1,0 +1,18 @@
+-- Keep this migration outside an explicit transaction: PostgreSQL requires
+-- CREATE INDEX CONCURRENTLY to run as a top-level statement. Keep it to this
+-- one statement, so an interrupted build is always recovered the same way.
+--
+-- The write-health cron's liveness probe asks for the newest learning event
+-- with no user filter (ORDER BY "timestamp" DESC LIMIT 1, about a hundred
+-- times a day). Every other LearningEvent index leads with "userId", and
+-- Postgres 17 has no skip scan, so each probe read the whole
+-- (userId, timestamp) index and sorted it: about 3 s a call, growing with the
+-- table. A plain ascending btree serves the probe as a backward index scan of
+-- one leaf page, and gives the global by-time audit windows a range to scan.
+--
+-- An interrupted build (lock_timeout or statement_timeout) leaves an INVALID
+-- index and a failed migration row. To recover: drop the index with
+-- DROP INDEX CONCURRENTLY IF EXISTS "LearningEvent_timestamp_idx", mark the
+-- migration rolled back with prisma migrate resolve --rolled-back, and deploy
+-- again.
+CREATE INDEX CONCURRENTLY "LearningEvent_timestamp_idx" ON "LearningEvent" ("timestamp");

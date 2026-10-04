@@ -1,0 +1,64 @@
+{
+  "id": "bank:cohort:msk:q-d6a709d03f7c:v1",
+  "rotation": "cohort-open",
+  "moduleNodes": [
+    "cohort/msk"
+  ],
+  "topics": [
+    "msk"
+  ],
+  "questionType": "investigation",
+  "difficulty": "hard",
+  "stem": "A 13-year-old boy with obesity has had left knee pain and a limp for 3 weeks. A left knee radiograph last week was normal, and his physiotherapist has started quadriceps strengthening for 'growing pains'. He has no fever and walks into the room with a limp. His left knee has no effusion or tenderness and moves fully. When his left hip is flexed it rolls into external rotation, and internal rotation is painful and limited.\n\nWhat is the most appropriate next step?",
+  "options": [
+    {
+      "label": "A",
+      "text": "MRI of the left knee to look for an internal derangement",
+      "isCorrect": false,
+      "explanation": "Knee pain with a normal knee examination and a normal knee film points away from the knee. Hip disease commonly refers pain to the knee, and his hip signs are abnormal."
+    },
+    {
+      "label": "B",
+      "text": "Continue physiotherapy, with review if the limp persists",
+      "isCorrect": false,
+      "explanation": "Painful, limited internal rotation and external rotation on hip flexion are not growing pains. Strengthening and waiting risk the slip progressing."
+    },
+    {
+      "label": "C",
+      "text": "Hip ultrasound to look for the effusion of transient synovitis",
+      "isCorrect": false,
+      "explanation": "Transient synovitis affects younger children, often after a viral illness, and lasts days rather than weeks. Ultrasound shows an effusion but cannot assess the growth plate."
+    },
+    {
+      "label": "D",
+      "text": "AP pelvis radiograph, walking as pain allows while awaiting it",
+      "isCorrect": false,
+      "explanation": "An AP view alone can miss an early slip, which is often seen best on the lateral view. Walking on the hip risks turning a stable slip into an unstable one."
+    },
+    {
+      "label": "E",
+      "text": "AP and frog-leg radiographs of both hips, non-weight-bearing",
+      "isCorrect": true,
+      "explanation": "Correct. An obese adolescent with weeks of knee pain, a normal knee and obligatory external rotation on hip flexion has a slipped capital femoral epiphysis until proven otherwise. AP and frog-leg lateral radiographs of both hips (the slip can be bilateral) confirm it; he can walk, so the slip is stable and a frog-leg view is safe. Keep him strictly non-weight-bearing (bed or wheelchair, not crutches) and refer urgently to orthopaedics for pinning."
+    }
+  ],
+  "context": "Knee pain with a normal knee in an overweight adolescent needs a hip examination. Limited internal rotation and obligatory external rotation suggest a slipped capital femoral epiphysis: request AP and frog-leg lateral radiographs of both hips, keep the child non-weight-bearing and refer urgently.",
+  "publicModule": {
+    "schemaVersion": 1,
+    "origin": "mirrored",
+    "discipline": "msk",
+    "mirroredFrom": "md3:d6a709d03f7c8981",
+    "itemText": {
+      "licence": "CC-BY-4.0",
+      "attribution": "MD3 contributors"
+    },
+    "evidence": {
+      "kind": "reference",
+      "sourceId": "rch-ex-fractures-slipped-upper-femoral-epiphysis-sufe-emergency-department-c2077b"
+    },
+    "review": {
+      "verdict": "passed",
+      "contentHash": "238f9cc83586d31e61c44ca4b40d8a735a0dba3030f4bfe1bef7742cf1578ca7"
+    }
+  }
+}

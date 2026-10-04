@@ -232,6 +232,8 @@ export const PUBLIC_API_ROUTE_PATHS: ReadonlyArray<string> = Object.freeze([
   'src/app/api/auth/[...nextauth]/route.ts',
   'src/app/api/auth/claim-guest-progress/route.ts',
   'src/app/api/cohort/answer/route.ts',
+  'src/app/api/cohort/card-grade/route.ts',
+  'src/app/api/cohort/difficulty/route.ts',
   'src/app/api/cohort/profile/route.ts',
   'src/app/api/cohort/turn/route.ts',
   'src/app/api/content/flag/route.ts',
@@ -336,12 +338,13 @@ export const PROTECTED_PUBLIC_FALLBACKS: ReadonlyArray<Readonly<{
   {
     path: 'next.config.ts',
     licence: 'MIT',
-    sha256: '8e65f6d1957bc2f0cdff61fe6cfcc0ab253a4e1c5a2d27d44ed3b17312122696',
+    sha256: 'f23ce90dd3250efd79f049116626ed986277e259292c8647fabecf6d3c6f52aa',
   },
   {
     path: 'README.md',
     licence: 'CC-BY-4.0',
-    sha256: '302da94f4133a0eb640e7a5ea95e138748deb05a0931339e1ff53241b7ecc7a8',
+    // 2026-10-01: the clinical module cards (row in the corpus table, seed in the quick start).
+    sha256: '44dfa6fa29975b13e187ebbe0fe5d928ccba596af39cdf6c19f24b534015b053',
   },
   {
     // The exam-target ENGINE is public; the blueprint it aims at is not. The
@@ -366,7 +369,9 @@ export const PROTECTED_PUBLIC_FALLBACKS: ReadonlyArray<Readonly<{
     // 2026-09-22: User gained reviewMenuCustomized and reviewMenuModules. The
     // public profile save and /api/user/minimal already select them, so the
     // public User model carries the same two columns (CI foss-export).
-    sha256: 'cdcd92505d59b739af12e10d0d4179270dc5791060225d9ec1a897b168f3c2cf',
+    // 2026-10-04: User gained the persisted review challenge level and CAS
+    // revision, which the exported session service selects for cache builds.
+    sha256: '1646e8442cec6e1eef79d3d36d508ce940ab87f8ee89f9405fad5762168920cd',
   },
   {
     path: 'prisma/schema/content.prisma',
@@ -377,7 +382,9 @@ export const PROTECTED_PUBLIC_FALLBACKS: ReadonlyArray<Readonly<{
     // schema fails Prisma validation (CI foss-export, run 35187557296).
     // 2026-10-01: Question gained `statements Json?` (statement items); the
     // shipped record path selects it, so the public Question carries it too.
-    sha256: '2fdf3afe7a20d9a0b0694062726fd11ecaa318d770436f31da0e84ec41ca129d',
+    // 2026-10-02: Card and Question gained @@index([imageUrl]); the shipped
+    // migrations build both indexes, so the public schema declares them too.
+    sha256: '1f0c79087e5e61c2ce698bc2d4e056ad5d8bc471aad3372b0db30081a13db558',
   },
   {
     // The private deployment applies additional authoring metadata while
@@ -742,6 +749,7 @@ const PUBLIC_PACKAGE_SCRIPT_NAMES = new Set([
   'db:seed',
   'db:seed:usmle-open',
   'db:seed:cohort-modules',
+  'db:seed:cohort-module-cards',
   'manifold:embed:open',
   'db:studio',
   'dev',
@@ -1319,6 +1327,35 @@ function moduleQuestionRightsIssues(filePath: string, text: string): Distributio
   return [];
 }
 
+/**
+ * A mirrored Cohort module card shard: CC BY item text, and a grounding badge
+ * only ever as an unquoted reference (title, publisher, url).
+ */
+function moduleCardRightsIssues(filePath: string, text: string): DistributionIssue[] {
+  if (!/^open-content\/modules\/cards\/.+\.json$/.test(filePath)) return [];
+  const fail = (detail: string) => [issue('invalid-open-content-rights', filePath, detail)];
+  let parsed: unknown;
+  try {
+    parsed = JSON.parse(text) as unknown;
+  } catch {
+    return fail('module card shard is not valid JSON');
+  }
+  if (!isRecord(parsed) || parsed.licence !== 'CC-BY-4.0'
+    || typeof parsed.attribution !== 'string' || parsed.attribution.trim().length === 0
+    || !Array.isArray(parsed.cards)) {
+    return fail('module card shard lacks CC BY item rights');
+  }
+  const referenceKeys = new Set(['title', 'publisher', 'url']);
+  for (const card of parsed.cards) {
+    const reference = isRecord(card) ? card.reference : undefined;
+    if (reference === null || reference === undefined) continue;
+    if (!isRecord(reference) || Object.keys(reference).some((key) => !referenceKeys.has(key))) {
+      return fail('module card cites its source as anything but an unquoted reference');
+    }
+  }
+  return [];
+}
+
 function openQuestionRightsIssues(filePath: string, text: string): DistributionIssue[] {
   if (!/^open-content\/usmle\/step1\/questions\/.+\.json$/.test(filePath)) return [];
   let parsed: unknown;
@@ -1827,6 +1864,7 @@ function inspectFile(
       issues.push(...perSourceRightsIssues(filePath, text, policy));
       issues.push(...openQuestionRightsIssues(filePath, text));
       issues.push(...moduleQuestionRightsIssues(filePath, text));
+      issues.push(...moduleCardRightsIssues(filePath, text));
     }
   }
 

@@ -13,4 +13,5 @@ SW_FILE="${1:-public/sw.js}"
 sed \
   -e "s|^// build: .*|// build: __BUILD_STAMP__|" \
   -e "s|^const SHELL_CACHE = 'md3-shell-[^']*';$|const SHELL_CACHE = 'md3-shell-__BUILD_STAMP__';|" \
+  -e "s|^const SW_BUILD = '[^']*';$|const SW_BUILD = '__BUILD_STAMP__';|" \
   "$SW_FILE" > "$SW_FILE.tmp" && mv "$SW_FILE.tmp" "$SW_FILE"

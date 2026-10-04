@@ -1,0 +1,64 @@
+{
+  "id": "bank:cohort:psych:q-9345af705535:v1",
+  "rotation": "cohort-open",
+  "moduleNodes": [
+    "cohort/psych"
+  ],
+  "topics": [
+    "psych"
+  ],
+  "questionType": "management",
+  "difficulty": "medium",
+  "stem": "A 58-year-old man had a coronary stent inserted three months ago and has been told by his cardiologist to stop smoking. He uses a correctly applied 21 mg/24-hour nicotine patch and smokes no cigarettes, but has brief intense cravings after meals. He has no adverse effects and wants to continue nicotine replacement. He asks whether using gum as well would give him 'a nicotine overdose' or harm his heart.\n\nWhich advice best addresses his breakthrough cravings?",
+  "options": [
+    {
+      "label": "A",
+      "text": "Stop NRT, because nicotine is unsafe after a coronary stent",
+      "isCorrect": false,
+      "explanation": "NRT is safe in stable cardiovascular disease and far safer than smoking, which delivers nicotine with carbon monoxide and other toxins. Stopping risks relapse to smoking."
+    },
+    {
+      "label": "B",
+      "text": "Replace the patch with nicotine gum used only when needed",
+      "isCorrect": false,
+      "explanation": "Short-acting NRT alone gives lower background nicotine levels than the patch, and would leave him with more cravings, not fewer."
+    },
+    {
+      "label": "C",
+      "text": "Take the patch off after meals to reduce his nicotine load",
+      "isCorrect": false,
+      "explanation": "Removing the patch lowers background levels and does nothing for the cravings it is meant to prevent."
+    },
+    {
+      "label": "D",
+      "text": "Add short-acting NRT for cravings, continuing the patch",
+      "isCorrect": true,
+      "explanation": "Combination NRT, a patch for background levels plus a short-acting form for breakthrough cravings, is more effective than either alone and is safe in stable cardiovascular disease."
+    },
+    {
+      "label": "E",
+      "text": "Keep the patch alone, as combining NRT risks toxicity",
+      "isCorrect": false,
+      "explanation": "Combination NRT rarely causes nicotine excess when the person is not smoking. Withholding it leaves the cravings that drive relapse."
+    }
+  ],
+  "context": "Combine a long-acting nicotine patch with short-acting NRT for breakthrough cravings. NRT is safe in stable cardiovascular disease and much safer than smoking.",
+  "publicModule": {
+    "schemaVersion": 1,
+    "origin": "mirrored",
+    "discipline": "psych",
+    "mirroredFrom": "md3:9345af705535d8c2",
+    "itemText": {
+      "licence": "CC-BY-4.0",
+      "attribution": "MD3 contributors"
+    },
+    "evidence": {
+      "kind": "reference",
+      "sourceId": "health-gov-au-topics-smoking-vaping-and-tobacco-how-to-quit-quitting-methods-bc8c8d"
+    },
+    "review": {
+      "verdict": "passed",
+      "contentHash": "cfda73cbd4a38323f0256ababbf3aad7211e2823a06c6ba7c6da932b72a6d33c"
+    }
+  }
+}

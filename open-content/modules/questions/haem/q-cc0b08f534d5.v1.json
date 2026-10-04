@@ -1,0 +1,64 @@
+{
+  "id": "bank:cohort:haem:q-cc0b08f534d5:v1",
+  "rotation": "cohort-open",
+  "moduleNodes": [
+    "cohort/haem"
+  ],
+  "topics": [
+    "haem"
+  ],
+  "questionType": "management",
+  "difficulty": "hard",
+  "stem": "A 9-year-old with facial swelling and noisy breathing is found to have a widened mediastinum on chest X-ray. He is most comfortable sitting upright and becomes cyanosed and distressed when asked to lie flat. The emergency team at a regional hospital is considering CT under sedation.\n\nWhat is the safest next step?",
+  "options": [
+    {
+      "label": "A",
+      "text": "Observe locally while arranging a non-urgent outpatient biopsy",
+      "isCorrect": false,
+      "explanation": "Positional cyanosis is an immediate physiological warning, not a reason for outpatient work-up."
+    },
+    {
+      "label": "B",
+      "text": "Keep him upright and arrange urgent tertiary retrieval",
+      "isCorrect": true,
+      "explanation": "Maintain the position that best supports breathing and urgently involve retrieval and the specialist team; avoid unplanned sedation or supine positioning."
+    },
+    {
+      "label": "C",
+      "text": "Perform an urgent bone marrow aspirate under procedural sedation",
+      "isCorrect": false,
+      "explanation": "An invasive procedure requiring sedation should not precede a safe airway and specialist plan in this setting."
+    },
+    {
+      "label": "D",
+      "text": "Obtain a sedated supine CT scan before arranging transfer",
+      "isCorrect": false,
+      "explanation": "Lying flat and sedation can worsen airway or vascular compression; imaging must be planned by a team able to manage that risk."
+    },
+    {
+      "label": "E",
+      "text": "Give an oral steroid course and organise outpatient oncology review",
+      "isCorrect": false,
+      "explanation": "Steroids may alter diagnostic tissue and do not replace urgent stabilisation and specialist planning in a child with positional compromise."
+    }
+  ],
+  "context": "A symptomatic mediastinal mass can deteriorate with supine positioning, sedation or anaesthesia. Keep the child in the position of comfort and arrange urgent tertiary escalation.",
+  "publicModule": {
+    "schemaVersion": 1,
+    "origin": "mirrored",
+    "discipline": "haem",
+    "mirroredFrom": "md3:cc0b08f534d56a2f",
+    "itemText": {
+      "licence": "CC-BY-4.0",
+      "attribution": "MD3 contributors"
+    },
+    "evidence": {
+      "kind": "reference",
+      "sourceId": "rch-clinicalguide-guideline-index-oncological-emergencies-mediastinal-mass-61974a"
+    },
+    "review": {
+      "verdict": "passed",
+      "contentHash": "91610e2ee2ba02a52f4171fd10137888ce1c0e6b9f6b55927fec81fbfdae9709"
+    }
+  }
+}

@@ -1,0 +1,64 @@
+{
+  "id": "bank:cohort:id:q-9c1baec568f6:v1",
+  "rotation": "cohort-open",
+  "moduleNodes": [
+    "cohort/id"
+  ],
+  "topics": [
+    "id"
+  ],
+  "questionType": "investigation",
+  "difficulty": "hard",
+  "stem": "A 7-year-old boy was admitted yesterday with fever and red, swollen left eyelids after a week-long cold. On admission his eye movements were full and painless, and IV antibiotics were started. Twenty-four hours later his temperature has fallen from 39.2 °C to 38.1 °C and the lid swelling looks no worse, but he now says it hurts to look to the left and he sees double at the extremes of gaze. The left eye looks slightly more prominent than the right. Visual acuity is 6/9 on the left and 6/6 on the right.\n\nWhat is the most appropriate next step?",
+  "options": [
+    {
+      "label": "A",
+      "text": "Contrast CT of the orbits and sinuses now",
+      "isCorrect": true,
+      "explanation": "Correct. New pain on eye movement, diplopia, proptosis and reduced acuity mean the infection has spread behind the orbital septum. Contrast-enhanced CT of the orbits and sinuses looks for a subperiosteal or orbital abscess that may need drainage, and ophthalmology and ENT should review him today."
+    },
+    {
+      "label": "B",
+      "text": "Continue IV antibiotics, as the fever is settling",
+      "isCorrect": false,
+      "explanation": "A falling temperature does not outweigh new orbital signs. Painful or restricted eye movement, proptosis and reduced acuity indicate orbital involvement whatever the fever is doing, and an abscess cannot be found without imaging."
+    },
+    {
+      "label": "C",
+      "text": "Change to oral antibiotics, as the lids are no worse",
+      "isCorrect": false,
+      "explanation": "Stepping down to oral treatment is for preseptal cellulitis that is clearly improving. New orbital signs call for imaging and continued IV treatment, not de-escalation."
+    },
+    {
+      "label": "D",
+      "text": "Ultrasound of the orbit to look for an abscess",
+      "isCorrect": false,
+      "explanation": "Orbital ultrasound does not show the posterior orbit or the sinuses well and is not the standard test. Contrast CT is needed to define an abscess and its relation to the sinuses."
+    },
+    {
+      "label": "E",
+      "text": "CT only if not improving after 48 hours of IV antibiotics",
+      "isCorrect": false,
+      "explanation": "Waiting 24–48 hours suits preseptal cellulitis without orbital signs. Painful or restricted eye movement, proptosis or reduced acuity are indications for imaging now."
+    }
+  ],
+  "context": "In periorbital cellulitis, new pain on eye movement, restricted movement or diplopia, proptosis or reduced acuity means orbital involvement: arrange contrast CT of the orbits and sinuses now, with ophthalmology and ENT review, even if the fever is settling.",
+  "publicModule": {
+    "schemaVersion": 1,
+    "origin": "mirrored",
+    "discipline": "id",
+    "mirroredFrom": "md3:9c1baec568f65590",
+    "itemText": {
+      "licence": "CC-BY-4.0",
+      "attribution": "MD3 contributors"
+    },
+    "evidence": {
+      "kind": "reference",
+      "sourceId": "rch-clinicalguide-guideline-index-periorbital-and-orbital-cellulitis-0198aa"
+    },
+    "review": {
+      "verdict": "passed",
+      "contentHash": "5c09e1a0fd18ad13816a5ac77d739ff3b5b98613d760aaaa55ab01be1c982c59"
+    }
+  }
+}

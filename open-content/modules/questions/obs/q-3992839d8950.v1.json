@@ -1,0 +1,64 @@
+{
+  "id": "bank:cohort:obs:q-3992839d8950:v1",
+  "rotation": "cohort-open",
+  "moduleNodes": [
+    "cohort/obs"
+  ],
+  "topics": [
+    "obs"
+  ],
+  "questionType": "management",
+  "difficulty": "medium",
+  "stem": "A 34-year-old in her third labour arrives at 39 weeks, 8 cm dilated and contracting strongly. Her vaginal–rectal swab at 36 weeks grew group B Streptococcus. She is afebrile, her membranes are intact and she has no penicillin allergy. The midwife suggests skipping antibiotics because birth is likely within the hour, too soon for them to work.\n\nWhat should the midwife and registrar do?",
+  "options": [
+    {
+      "label": "A",
+      "text": "Omit prophylaxis, as four hours of antibiotics before birth is no longer possible",
+      "isCorrect": false,
+      "explanation": "Four hours before birth is the aim for full effect, but prophylaxis given later still reduces transmission, so it is started rather than withheld."
+    },
+    {
+      "label": "B",
+      "text": "Give oral amoxicillin now, since inserting a cannula would delay the birth",
+      "isCorrect": false,
+      "explanation": "Oral antibiotics are not adequate intrapartum prophylaxis."
+    },
+    {
+      "label": "C",
+      "text": "Omit prophylaxis and give the baby intravenous antibiotics after the birth",
+      "isCorrect": false,
+      "explanation": "Routine antibiotics for a well baby do not replace maternal prophylaxis; the baby is observed according to whether prophylaxis was adequate."
+    },
+    {
+      "label": "D",
+      "text": "Wait, and start prophylaxis only if her membranes rupture before the birth",
+      "isCorrect": false,
+      "explanation": "Carriage alone indicates prophylaxis, and intact membranes do not remove the indication."
+    },
+    {
+      "label": "E",
+      "text": "Give intravenous benzylpenicillin now, even though birth may come soon",
+      "isCorrect": true,
+      "explanation": "Current-pregnancy GBS carriage is an indication for intrapartum intravenous benzylpenicillin, and when birth is expected within two hours it is still given, because benefit may still occur."
+    }
+  ],
+  "context": "A GBS carrier in labour gets intravenous benzylpenicillin as soon as possible, even when birth is expected within the hour.",
+  "publicModule": {
+    "schemaVersion": 1,
+    "origin": "mirrored",
+    "discipline": "obs",
+    "mirroredFrom": "md3:3992839d8950f914",
+    "itemText": {
+      "licence": "CC-BY-4.0",
+      "attribution": "MD3 contributors"
+    },
+    "evidence": {
+      "kind": "reference",
+      "sourceId": "qld-health-data-assets-pdf-file-0026-626732-g-gbs-d47de8"
+    },
+    "review": {
+      "verdict": "passed",
+      "contentHash": "ebd2cf388946d084c64cc045b46b0d6192897dd6b1e57923536ffaa9f29f9112"
+    }
+  }
+}

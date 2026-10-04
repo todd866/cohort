@@ -1,0 +1,64 @@
+{
+  "id": "bank:cohort:paeds:q-e67b9974df4f:v1",
+  "rotation": "cohort-open",
+  "moduleNodes": [
+    "cohort/paeds"
+  ],
+  "topics": [
+    "paeds"
+  ],
+  "questionType": "management",
+  "difficulty": "medium",
+  "stem": "A well 39-week infant of a mother with diabetes has a confirmed blood glucose of 2.1 mmol/L before the second feed. The local treatment threshold is 2.6 mmol/L. The infant is alert, normothermic and feeding effectively, with no apnoea, jitteriness or IV access.\n\nWhich initial treatment should the paediatric registrar choose?",
+  "options": [
+    {
+      "label": "A",
+      "text": "Observe until the next scheduled feed without treatment",
+      "isCorrect": false,
+      "explanation": "The confirmed glucose is below the supplied intervention threshold. Feeding and active treatment should not be postponed."
+    },
+    {
+      "label": "B",
+      "text": "Intramuscular glucagon as the first treatment",
+      "isCorrect": false,
+      "explanation": "Glucagon has a role in selected persistent or severe hypoglycaemia, but it is not the initial treatment for this well infant with mild hypoglycaemia."
+    },
+    {
+      "label": "C",
+      "text": "Buccal glucose gel with a feed, then recheck glucose",
+      "isCorrect": true,
+      "explanation": "Buccal 40% glucose gel with feeding is appropriate initial treatment for a well term infant. Repeat glucose assessment is required, with escalation if the response is inadequate or symptoms develop."
+    },
+    {
+      "label": "D",
+      "text": "Buccal glucose gel now, and delay the feed until rechecked",
+      "isCorrect": false,
+      "explanation": "Glucose gel is given with a feed, not instead of one. Continuing milk intake helps sustain glucose while the response is monitored."
+    },
+    {
+      "label": "E",
+      "text": "IV access and a rapid glucose bolus",
+      "isCorrect": false,
+      "explanation": "IV glucose is important for symptomatic, severe or refractory hypoglycaemia. This stable feeding infant can begin with buccal gel and a feed under the neonatal protocol."
+    }
+  ],
+  "context": "A well term infant with mild hypoglycaemia can often start with buccal glucose gel plus feeding and repeat testing.",
+  "publicModule": {
+    "schemaVersion": 1,
+    "origin": "mirrored",
+    "discipline": "paeds",
+    "mirroredFrom": "md3:e67b9974df4f7f27",
+    "itemText": {
+      "licence": "CC-BY-4.0",
+      "attribution": "MD3 contributors"
+    },
+    "evidence": {
+      "kind": "reference",
+      "sourceId": "rch-rchcpg-hospital-clinical-guideline-index-neonatal-hypoglycaemia-af0b1d"
+    },
+    "review": {
+      "verdict": "passed",
+      "contentHash": "86b39cc531ddb6baf2fed707e66e8c6a46878d96696777436cca1c08e8bb0e7c"
+    }
+  }
+}

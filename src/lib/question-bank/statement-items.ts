@@ -138,6 +138,15 @@ export function gradeTypeX(options: unknown, answer: string): TypeXGrade | null 
 }
 
 /**
+ * The bank's spelling of a fact key: each `|` part trimmed, lower-cased and
+ * whitespace-collapsed. Question.statements stores this form; anything matched
+ * against it (a scaffold card's topics, say) must be normalised the same way.
+ */
+export function normaliseFactKey(key: string): string {
+  return key.split('|').map((part) => part.trim().toLowerCase().replace(/\s+/g, ' ')).join('|');
+}
+
+/**
  * The statements a K-type answer got wrong: those whose truth the chosen
  * letter's pattern misstates. A skip or unknown letter misses all four — the
  * learner committed to nothing, so every statement is worth teaching.

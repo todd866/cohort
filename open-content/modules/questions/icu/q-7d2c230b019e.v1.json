@@ -1,0 +1,64 @@
+{
+  "id": "bank:cohort:icu:q-7d2c230b019e:v1",
+  "rotation": "cohort-open",
+  "moduleNodes": [
+    "cohort/icu"
+  ],
+  "topics": [
+    "icu"
+  ],
+  "questionType": "diagnosis",
+  "difficulty": "hard",
+  "stem": "On the second day after severe head injury, a patient develops urine output of 450–600 mL/hour. He has received no mannitol, diuretic or lithium, kidney function is stable, and urine testing shows no glucose. Paired samples show:\n\n| Measurement | Result | Reference or context |\n| --- | --- | --- |\n| Serum sodium | 159 mmol/L | 135–145 |\n| Serum osmolality | 326 mOsm/kg | 275–295 |\n| Urine osmolality | 95 mOsm/kg | Varies with hydration; should rise with hyperosmolar plasma |\n\nWhich diagnosis best explains the pattern?",
+  "options": [
+    {
+      "label": "A",
+      "text": "Syndrome of inappropriate antidiuretic hormone secretion",
+      "isCorrect": false,
+      "explanation": "SIADH causes water retention with hypotonic hyponatraemia and urine that is not appropriately dilute. This patient is losing dilute water while plasma becomes hyperosmolar."
+    },
+    {
+      "label": "B",
+      "text": "Cerebral salt wasting after the head injury",
+      "isCorrect": false,
+      "explanation": "Cerebral salt wasting produces renal sodium loss and typically hyponatraemia. It does not best explain marked hypernatraemia with very dilute urine."
+    },
+    {
+      "label": "C",
+      "text": "Central diabetes insipidus after brain injury",
+      "isCorrect": true,
+      "explanation": "Hypothalamic or pituitary injury can impair vasopressin release. High urine volume that remains dilute despite hyperosmolar plasma is the characteristic failure of water conservation."
+    },
+    {
+      "label": "D",
+      "text": "Primary polydipsia with excess water intake",
+      "isCorrect": false,
+      "explanation": "Primary polydipsia dilutes the plasma, so sodium and osmolality are low or normal. Here both are high while the urine stays dilute, pointing to diabetes insipidus from failed vasopressin secretion after the head injury."
+    },
+    {
+      "label": "E",
+      "text": "Appropriate renal excretion of an excessive sodium load",
+      "isCorrect": false,
+      "explanation": "A sodium load can raise serum sodium, but an intact vasopressin response should conserve water. It does not explain persistent high-volume, profoundly dilute urine as well."
+    }
+  ],
+  "context": "Hypernatraemia with inappropriately dilute polyuria after head injury suggests central diabetes insipidus.",
+  "publicModule": {
+    "schemaVersion": 1,
+    "origin": "mirrored",
+    "discipline": "icu",
+    "mirroredFrom": "md3:7d2c230b019e1073",
+    "itemText": {
+      "licence": "CC-BY-4.0",
+      "attribution": "MD3 contributors"
+    },
+    "evidence": {
+      "kind": "reference",
+      "sourceId": "rch-clinicalguide-guideline-index-diabetes-insipidus-cee91e"
+    },
+    "review": {
+      "verdict": "passed",
+      "contentHash": "8c0551c115eb25fe76a76ca7b00dc5ea3d92e5671c56828d97ae1fb40b2c24f5"
+    }
+  }
+}

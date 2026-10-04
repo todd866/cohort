@@ -13,6 +13,7 @@ import type { PreparedPromptFigure } from '@/components/practice-exam/usePrepare
 import type { PromptFigure } from '@/lib/practice-exam/prompt-figure';
 import { CardFeedback } from './CardFeedback';
 import { usePrefetchImage } from '@/hooks/usePrefetchImage';
+import { GlossaryScope } from '../content/GlossaryScope';
 import { GlossaryText } from '../content/GlossaryText';
 import { InlineMarkdown, MarkdownTable, extractMarkdownTables, tablesCanUseSidePane, type LeafRenderer } from '@/lib/inline-markdown';
 import { splitExplanation } from '../content/mcq-utils';
@@ -371,6 +372,7 @@ export function McqItemView({
     : tailNode;
 
   return (
+    <GlossaryScope abbreviations={item.abbreviations}>
     <div className={sidePane ? reviewPaneGridClass(reviewPaneKind(item)) : REVIEW_PANE_CELL_FLAT}>
       <div className={sidePane ? REVIEW_PANE_TEXT_TOP : REVIEW_PANE_CELL_FLAT}>{paneTop}</div>
       {(figureNode || resultsNode || clipNode) && (
@@ -383,5 +385,6 @@ export function McqItemView({
       )}
       <div className={sidePane ? REVIEW_PANE_TEXT_BOTTOM : REVIEW_PANE_CELL_FLAT}>{paneBottom}</div>
     </div>
+    </GlossaryScope>
   );
 }

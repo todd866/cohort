@@ -1,0 +1,64 @@
+{
+  "id": "bank:cohort:psych:q-208121942cb3:v1",
+  "rotation": "cohort-open",
+  "moduleNodes": [
+    "cohort/psych"
+  ],
+  "topics": [
+    "psych"
+  ],
+  "questionType": "investigation",
+  "difficulty": "medium",
+  "stem": "A GP assesses an 8-year-old referred for new classroom inattention and irritability. Similar difficulties occur at home, but earlier school reports show good concentration. His parent describes loud nightly snoring, pauses followed by gasping, restless sleep and morning headaches. He often falls asleep in the car. There is no current medication or sustained mood syndrome.\n\nWhich assessment should take priority before considering an ADHD medicine?",
+  "options": [
+    {
+      "label": "A",
+      "text": "A trial of methylphenidate to see whether attention improves",
+      "isCorrect": false,
+      "explanation": "A stimulant response does not confirm ADHD and could leave obstructive sleep apnoea untreated. The breathing history should be assessed first."
+    },
+    {
+      "label": "B",
+      "text": "Parent and teacher rating scales repeated in three months",
+      "isCorrect": false,
+      "explanation": "Repeat scales would not explain the recent change and night-time symptoms. The sleep history points to a specific cause to investigate now."
+    },
+    {
+      "label": "C",
+      "text": "Paediatric sleep and ENT review, with a sleep study if needed",
+      "isCorrect": true,
+      "explanation": "Snoring with witnessed pauses, gasping, morning headaches and daytime sleepiness suggest sleep-disordered breathing, which can itself cause inattention and irritability. Sleep and ENT assessment should come before an ADHD medicine."
+    },
+    {
+      "label": "D",
+      "text": "Keep a sleep diary for a fortnight before deciding about referral",
+      "isCorrect": false,
+      "explanation": "A diary records sleep timing but cannot detect obstructed breathing, and waiting delays assessment. His witnessed pauses and gasping already justify referral."
+    },
+    {
+      "label": "E",
+      "text": "Hearing and vision screening, then reassess his attention",
+      "isCorrect": false,
+      "explanation": "Sensory screening is reasonable in inattention, but it leaves the most specific finding, his night-time breathing, unassessed. Sleep assessment takes priority."
+    }
+  ],
+  "context": "Children with inattention need assessment for relevant sleep disorders as well as developmental ADHD features.",
+  "publicModule": {
+    "schemaVersion": 1,
+    "origin": "mirrored",
+    "discipline": "psych",
+    "mirroredFrom": "md3:208121942cb3d16e",
+    "itemText": {
+      "licence": "CC-BY-4.0",
+      "attribution": "MD3 contributors"
+    },
+    "evidence": {
+      "kind": "reference",
+      "sourceId": "rch-kidsinfo-fact-sheets-childhood-obstructive-sleep-apnoea-osa-62c2e3"
+    },
+    "review": {
+      "verdict": "passed",
+      "contentHash": "17f75a7c2a855d1b07bf831160725426c94e65c5b40610ab4257ac74d96b765e"
+    }
+  }
+}

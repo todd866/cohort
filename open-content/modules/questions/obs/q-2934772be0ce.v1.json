@@ -1,0 +1,64 @@
+{
+  "id": "bank:cohort:obs:q-2934772be0ce:v1",
+  "rotation": "cohort-open",
+  "moduleNodes": [
+    "cohort/obs"
+  ],
+  "topics": [
+    "obs"
+  ],
+  "questionType": "management",
+  "difficulty": "medium",
+  "stem": "At a booking visit, a pregnant woman’s partner repeatedly answers for her and insists on remaining throughout the consultation. She is quiet and glances towards him before responding. The service routinely asks every pregnant woman about family violence. There is no immediate injury or threat requiring emergency intervention, and the midwife has not yet been able to speak with her alone.\n\nWhat is the most appropriate next step?",
+  "options": [
+    {
+      "label": "A",
+      "text": "Ask the family-violence questions now, using gentle indirect wording",
+      "isCorrect": false,
+      "explanation": "Screening questions must be asked only when she is alone; asking in front of a possibly controlling partner, however gently, can put her at risk and will not yield a true answer."
+    },
+    {
+      "label": "B",
+      "text": "Give her a helpline card discreetly while the partner is distracted",
+      "isCorrect": false,
+      "explanation": "Printed material found by a controlling partner can escalate danger; information is given once it is known to be safe for her to keep."
+    },
+    {
+      "label": "C",
+      "text": "Explain that time alone is a routine part of booking, then arrange it",
+      "isCorrect": true,
+      "explanation": "Presenting one-to-one time as standard practice for every woman creates a safe private opportunity without signalling suspicion to the partner."
+    },
+    {
+      "label": "D",
+      "text": "Telephone her mobile tomorrow to ask the screening questions privately",
+      "isCorrect": false,
+      "explanation": "Her phone may be monitored and no safe contact method has been agreed with her; an unplanned call can expose her."
+    },
+    {
+      "label": "E",
+      "text": "Notify child protection services before her next antenatal visit",
+      "isCorrect": false,
+      "explanation": "Concern has not yet been assessed with her; the first step is a safe private enquiry, after which a report may be needed if risk to the unborn child is identified."
+    }
+  ],
+  "context": "Family-violence enquiry requires a safe private opportunity; lack of disclosure in front of a partner cannot be treated as a negative screen.",
+  "publicModule": {
+    "schemaVersion": 1,
+    "origin": "mirrored",
+    "discipline": "obs",
+    "mirroredFrom": "md3:2934772be0ced37b",
+    "itemText": {
+      "licence": "CC-BY-4.0",
+      "attribution": "MD3 contributors"
+    },
+    "evidence": {
+      "kind": "reference",
+      "sourceId": "nsw-health-pds-activepdsdocuments-pd2023-009-f6cd19"
+    },
+    "review": {
+      "verdict": "passed",
+      "contentHash": "64cb0be9b7a88f58f281da2a53148e7da9b2ccb855879c424a0a43fe6bab05b7"
+    }
+  }
+}

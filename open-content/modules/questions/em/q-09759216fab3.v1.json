@@ -1,0 +1,64 @@
+{
+  "id": "bank:cohort:em:q-09759216fab3:v1",
+  "rotation": "cohort-open",
+  "moduleNodes": [
+    "cohort/em"
+  ],
+  "topics": [
+    "em"
+  ],
+  "questionType": "diagnosis",
+  "difficulty": "hard",
+  "stem": "A 17-year-old presents six hours after an uncertain tablet ingestion with vomiting, sweating and rapid deep breathing at 32/min. Temperature is 37.9°C, she is alert, pupils are normal, and the ECG shows sinus tachycardia with a normal QRS duration. A paracetamol level is pending.\n\n| Test | Result | Reference interval |\n| --- | --- | --- |\n| pH | 7.47 | 7.35–7.45 |\n| PaCO₂ | 23 mmHg | 35–45 mmHg |\n| Bicarbonate | 16 mmol/L | 22–26 mmol/L |\n| Sodium | 140 mmol/L | 135–145 mmol/L |\n| Chloride | 102 mmol/L | 95–110 mmol/L |\n\nWhich poisoning best fits the combined presentation?",
+  "options": [
+    {
+      "label": "A",
+      "text": "Paracetamol poisoning",
+      "isCorrect": false,
+      "explanation": "Paracetamol usually causes few features at six hours and does not produce this acid–base pattern early. The level is still needed, as co-ingestion is common."
+    },
+    {
+      "label": "B",
+      "text": "Tricyclic poisoning",
+      "isCorrect": false,
+      "explanation": "Tricyclic poisoning causes drowsiness, anticholinergic signs, seizures and a broad QRS with acidaemia, not an alert patient with alkalaemia and a normal QRS."
+    },
+    {
+      "label": "C",
+      "text": "Salicylate poisoning",
+      "isCorrect": true,
+      "explanation": "The pH is alkalaemic despite a low bicarbonate, meaning a primary respiratory alkalosis coexists with a metabolic acidosis; the anion gap is 140 − (102 + 16) = 22. This mixed pattern with vomiting, sweating and hyperventilation is typical of salicylate poisoning."
+    },
+    {
+      "label": "D",
+      "text": "Metformin poisoning",
+      "isCorrect": false,
+      "explanation": "Metformin toxicity causes lactic acidosis with acidaemia. Alkalaemia with a primary respiratory alkalosis does not fit."
+    },
+    {
+      "label": "E",
+      "text": "Methanol poisoning",
+      "isCorrect": false,
+      "explanation": "Methanol causes a high anion gap metabolic acidosis with acidaemia and visual symptoms, and the breathing is compensatory rather than a primary alkalosis."
+    }
+  ],
+  "context": "A primary respiratory alkalosis with a high anion gap metabolic acidosis after an ingestion suggests salicylate poisoning, even without tinnitus.",
+  "publicModule": {
+    "schemaVersion": 1,
+    "origin": "mirrored",
+    "discipline": "em",
+    "mirroredFrom": "md3:09759216fab31619",
+    "itemText": {
+      "licence": "CC-BY-4.0",
+      "attribution": "MD3 contributors"
+    },
+    "evidence": {
+      "kind": "reference",
+      "sourceId": "rch-clinicalguide-guideline-index-salicylates-posioning-c144df"
+    },
+    "review": {
+      "verdict": "passed",
+      "contentHash": "1192cc91be81a549b88c20654e584a063f1b297cdfe82e2af54fc53bb01c070e"
+    }
+  }
+}

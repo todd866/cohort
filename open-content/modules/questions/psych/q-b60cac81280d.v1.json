@@ -1,0 +1,64 @@
+{
+  "id": "bank:cohort:psych:q-b60cac81280d:v1",
+  "rotation": "cohort-open",
+  "moduleNodes": [
+    "cohort/psych"
+  ],
+  "topics": [
+    "psych"
+  ],
+  "questionType": "investigation",
+  "difficulty": "medium",
+  "stem": "A psychiatrist is preparing to start olanzapine for a 25-year-old man with a first episode of psychosis. His weight, waist circumference and blood pressure have been recorded, and an ECG is not indicated. He has no known diabetes or cardiovascular disease and has not had recent blood tests.\n\nWhich blood tests are needed to establish his metabolic baseline?",
+  "options": [
+    {
+      "label": "A",
+      "text": "Prolactin and lipids",
+      "isCorrect": false,
+      "explanation": "Prolactin is often measured before an antipsychotic, but it is not a metabolic marker, and glucose regulation is missing."
+    },
+    {
+      "label": "B",
+      "text": "HbA1c and thyroid function",
+      "isCorrect": false,
+      "explanation": "HbA1c covers glucose regulation, but thyroid function does not assess cardiometabolic risk and lipids are missing."
+    },
+    {
+      "label": "C",
+      "text": "Liver enzymes and fasting insulin",
+      "isCorrect": false,
+      "explanation": "Liver enzymes may be checked in a general baseline, but fasting insulin is not a routine monitoring test and neither replaces glucose and lipids."
+    },
+    {
+      "label": "D",
+      "text": "Glucose or HbA1c, and lipids",
+      "isCorrect": true,
+      "explanation": "Olanzapine carries a high risk of weight gain, dyslipidaemia and diabetes. Baseline glucose or HbA1c and a lipid profile, alongside weight, waist and blood pressure, allow change to be detected."
+    },
+    {
+      "label": "E",
+      "text": "Glucose and full blood count",
+      "isCorrect": false,
+      "explanation": "A full blood count is a general baseline, not a metabolic marker, and lipids are missing."
+    }
+  ],
+  "context": "Antipsychotic metabolic monitoring includes baseline weight, waist circumference, blood pressure, glucose or HbA1c and lipids, repeated during treatment.",
+  "publicModule": {
+    "schemaVersion": 1,
+    "origin": "mirrored",
+    "discipline": "psych",
+    "mirroredFrom": "md3:b60cac81280ddfb6",
+    "itemText": {
+      "licence": "CC-BY-4.0",
+      "attribution": "MD3 contributors"
+    },
+    "evidence": {
+      "kind": "reference",
+      "sourceId": "nice-guidance-cg178-chapter-recommendations-ab0e8b"
+    },
+    "review": {
+      "verdict": "passed",
+      "contentHash": "5242067f1710960a402f3b7e149b1e29aa5ea5c73e876e384a89e7f46a4ecaa2"
+    }
+  }
+}

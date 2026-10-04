@@ -1,0 +1,64 @@
+{
+  "id": "bank:cohort:obs:q-4c8b798c7024:v1",
+  "rotation": "cohort-open",
+  "moduleNodes": [
+    "cohort/obs"
+  ],
+  "topics": [
+    "obs"
+  ],
+  "questionType": "investigation",
+  "difficulty": "medium",
+  "stem": "An early-pregnancy registrar assesses a stable 28-year-old with light spotting and uncertain menstrual dates. Her first transvaginal scan shows an intrauterine gestational sac, yolk sac and embryo with a crown–rump length of 5.5 mm. No cardiac activity is detected. She has no pain or heavy bleeding and wishes to continue the pregnancy if viable.\n\nWhich plan best establishes viability without prematurely diagnosing miscarriage?",
+  "options": [
+    {
+      "label": "A",
+      "text": "Repeat transvaginal ultrasound in 48 hours and diagnose loss if unchanged",
+      "isCorrect": false,
+      "explanation": "Forty-eight hours is below the minimum interval needed to diagnose loss, so an unchanged scan at that point would not prove miscarriage."
+    },
+    {
+      "label": "B",
+      "text": "Repeat transvaginal ultrasound after at least seven days",
+      "isCorrect": true,
+      "explanation": "With a crown–rump length below 7 mm and no cardiac activity on a first scan, a repeat scan at least seven days later is needed before miscarriage can be diagnosed."
+    },
+    {
+      "label": "C",
+      "text": "Diagnose miscarriage now, as the CRL exceeds 5 mm without cardiac activity",
+      "isCorrect": false,
+      "explanation": "The diagnostic threshold is a crown–rump length of 7 mm or more without cardiac activity; at 5.5 mm the threshold is not met."
+    },
+    {
+      "label": "D",
+      "text": "Measure serum hCG twice, 48 hours apart, to establish viability",
+      "isCorrect": false,
+      "explanation": "Once an intrauterine embryo is seen, hCG trends do not establish viability; the question is answered by timed repeat ultrasound."
+    },
+    {
+      "label": "E",
+      "text": "Arrange a second-sonographer scan today to confirm the loss",
+      "isCorrect": false,
+      "explanation": "A second opinion on the same day cannot change the fact that this embryo is below the size at which absent cardiac activity is diagnostic."
+    }
+  ],
+  "context": "An embryo below 7 mm without detected cardiac activity on its first transvaginal scan needs appropriately timed repeat imaging before pregnancy loss is diagnosed.",
+  "publicModule": {
+    "schemaVersion": 1,
+    "origin": "mirrored",
+    "discipline": "obs",
+    "mirroredFrom": "md3:4c8b798c702482b3",
+    "itemText": {
+      "licence": "CC-BY-4.0",
+      "attribution": "MD3 contributors"
+    },
+    "evidence": {
+      "kind": "reference",
+      "sourceId": "nice-gnosis-of-viable-intrauterine-pregnancy-and-of-tubal-ectopic-pregnancy-fd0f1c"
+    },
+    "review": {
+      "verdict": "passed",
+      "contentHash": "28540a49f4aede990bda097e9aec98bba7635fb4e3210ca7cad512eaf5082157"
+    }
+  }
+}

@@ -1,3 +1,4 @@
+import { DecodedTerm } from './DecodedTerm';
 import { lookupGlossary } from './glossary';
 
 export type { GlossaryEntry } from './glossary';
@@ -19,22 +20,13 @@ interface TermProps {
  * CIDP, CMAP…) render the faint dotted-underline + tooltip. Everything else —
  * including the ~4,700 authored `<Term>` tags for trivial terms (ECG, BP, IV) —
  * renders plain. Keeping the affordance rare is exactly what avoids the visual
- * noise that retired the old decode-everything style on 2026-06-11. Pure-CSS tooltip (.term-tooltip in globals.css) — works on
- * hover (desktop) and focus/tap (mobile); no JS, no provider dependency.
+ * noise that retired the old decode-everything style on 2026-06-11. The expansion
+ * is portalled so card clipping and screen edges cannot crop it.
  */
 export function Term({ abbr, children }: TermProps) {
   const lookup = lookupGlossary(abbr);
   if (!lookup || lookup.entry.decode !== true) {
     return <>{children ?? abbr}</>;
   }
-  return (
-    <abbr
-      className="term-tooltip cursor-help border-b border-dotted border-[var(--md-on-surface-variant)] text-[var(--md-on-surface)] no-underline"
-      data-tooltip={lookup.entry.full}
-      tabIndex={0}
-      role="definition"
-    >
-      {children ?? lookup.abbr}
-    </abbr>
-  );
+  return <DecodedTerm expansion={lookup.entry.full}>{children ?? lookup.abbr}</DecodedTerm>;
 }

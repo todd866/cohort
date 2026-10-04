@@ -233,6 +233,10 @@ export async function buildReviewServerBootstrap(args: {
       topics: intent.topics,
       timezone: args.studyTimezone ?? undefined,
     });
+    // No refreshLeaseTtlMs: the review pages declare no maxDuration and run
+    // under the platform default, so the refreshes this render starts take the
+    // default lease, the shortest configured ceiling. That errs short, which
+    // risks a duplicate build rather than a lease outliving a stopped one.
     const response = await getUnifiedSession(
       new NextRequest(`${args.requestOrigin ?? 'https://md3.info'}/api/study/unified-session?${params}`),
       { userId: args.userId, isGuest: false },

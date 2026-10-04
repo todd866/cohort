@@ -1,0 +1,64 @@
+{
+  "id": "bank:cohort:obs:q-cdb7dc97e566:v1",
+  "rotation": "cohort-open",
+  "moduleNodes": [
+    "cohort/obs"
+  ],
+  "topics": [
+    "obs"
+  ],
+  "questionType": "management",
+  "difficulty": "medium",
+  "stem": "A woman at 16 weeks is diagnosed with secondary syphilis after a new rash and confirmatory serology. She has no penicillin allergy and no neurological or ocular symptoms. The antenatal team has arranged urgent sexual-health specialist involvement.\n\nWhich antibiotic is the appropriate basis of treatment?",
+  "options": [
+    {
+      "label": "A",
+      "text": "Intramuscular benzathine benzylpenicillin",
+      "isCorrect": true,
+      "explanation": "Long-acting IM benzathine benzylpenicillin treats early syphilis in pregnancy. The specialist team coordinates dosing and follow-up, and counsels about a possible Jarisch–Herxheimer reaction after treatment."
+    },
+    {
+      "label": "B",
+      "text": "Oral doxycycline twice daily for 14 days",
+      "isCorrect": false,
+      "explanation": "A 14-day doxycycline course is an alternative for early syphilis in selected nonpregnant adults, but tetracyclines are avoided in pregnancy and it does not substitute for penicillin here."
+    },
+    {
+      "label": "C",
+      "text": "Oral azithromycin as a single 2 g dose",
+      "isCorrect": false,
+      "explanation": "Macrolide resistance and unreliable prevention of congenital infection make azithromycin unsuitable as the standard treatment in this setting."
+    },
+    {
+      "label": "D",
+      "text": "Oral amoxicillin with probenecid",
+      "isCorrect": false,
+      "explanation": "Oral amoxicillin with probenecid is not the recommended early-syphilis regimen in pregnancy. The sustained exposure supplied by long-acting benzathine benzylpenicillin is what matters."
+    },
+    {
+      "label": "E",
+      "text": "Intravenous benzylpenicillin every 4 hours",
+      "isCorrect": false,
+      "explanation": "IV benzylpenicillin is used for neurosyphilis and certain other specialist indications. With uncomplicated secondary disease and no neurological or ocular features, the routine regimen is benzathine benzylpenicillin IM."
+    }
+  ],
+  "context": "Early syphilis in pregnancy is treated with intramuscular benzathine benzylpenicillin with urgent specialist coordination.",
+  "publicModule": {
+    "schemaVersion": 1,
+    "origin": "mirrored",
+    "discipline": "obs",
+    "mirroredFrom": "md3:cdb7dc97e56631fe",
+    "itemText": {
+      "licence": "CC-BY-4.0",
+      "attribution": "MD3 contributors"
+    },
+    "evidence": {
+      "kind": "reference",
+      "sourceId": "qld-health-data-assets-pdf-file-0035-736883-g-sip-483448"
+    },
+    "review": {
+      "verdict": "passed",
+      "contentHash": "413a75ec03237bd3e7760b0c1e36d1afcdf2ae456ebb3b1f3eddb4f39db8162c"
+    }
+  }
+}

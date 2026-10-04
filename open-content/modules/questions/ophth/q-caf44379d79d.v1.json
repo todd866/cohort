@@ -1,0 +1,64 @@
+{
+  "id": "bank:cohort:ophth:q-caf44379d79d:v1",
+  "rotation": "cohort-open",
+  "moduleNodes": [
+    "cohort/ophth"
+  ],
+  "topics": [
+    "ophth"
+  ],
+  "questionType": "management",
+  "difficulty": "medium",
+  "stem": "Mia is 20 months old and well. Over the past month her parents have noticed a white glow in her right pupil in several flash photographs. Her red reflex was recorded as normal at her 6-week check. Today the GP cannot obtain a red reflex from the right eye; the left reflex is normal. Her eyes look straight, and there is no redness, fever or trauma.\n\nWhat is the most appropriate next step for the GP?",
+  "options": [
+    {
+      "label": "A",
+      "text": "Phone the on-call ophthalmologist for review today",
+      "isCorrect": true,
+      "explanation": "Correct. A newly absent red reflex with a white pupil in photographs needs same-day ophthalmology assessment for causes including retinoblastoma and cataract; the GP should speak to the on-call service."
+    },
+    {
+      "label": "B",
+      "text": "Request an orbital ultrasound, then refer with the result",
+      "isCorrect": false,
+      "explanation": "Imaging is for the specialist to choose. Arranging it first delays assessment of a possible retinoblastoma."
+    },
+    {
+      "label": "C",
+      "text": "Recheck the red reflex at the 2-year well-child visit",
+      "isCorrect": false,
+      "explanation": "A normal reflex at 6 weeks does not clear a new abnormality: retinoblastoma and cataract can develop later. A confirmed abnormal reflex needs action now."
+    },
+    {
+      "label": "D",
+      "text": "Send a routine referral to the eye clinic",
+      "isCorrect": false,
+      "explanation": "A routine appointment is too slow for an unexplained white pupil; the specialist service should be contacted today."
+    },
+    {
+      "label": "E",
+      "text": "Refer to a local optometrist within two weeks",
+      "isCorrect": false,
+      "explanation": "A community optometry appointment delays specialist assessment of a potentially sight- or life-threatening lesion."
+    }
+  ],
+  "context": "A white pupil or absent red reflex needs immediate ophthalmology assessment for causes including retinoblastoma and cataract.",
+  "publicModule": {
+    "schemaVersion": 1,
+    "origin": "mirrored",
+    "discipline": "ophth",
+    "mirroredFrom": "md3:caf44379d79d36d1",
+    "itemText": {
+      "licence": "CC-BY-4.0",
+      "attribution": "MD3 contributors"
+    },
+    "evidence": {
+      "kind": "reference",
+      "sourceId": "rch-liaison-prereferral-guidelines-abnormal-red-reflex-and-or-white-pupil-68b41f"
+    },
+    "review": {
+      "verdict": "passed",
+      "contentHash": "51a80cf3c2de96fe63ee73df45938926de7bb2034e2cc792b3ec78f515e01e39"
+    }
+  }
+}

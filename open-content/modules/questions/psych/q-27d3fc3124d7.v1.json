@@ -1,0 +1,64 @@
+{
+  "id": "bank:cohort:psych:q-27d3fc3124d7:v1",
+  "rotation": "cohort-open",
+  "moduleNodes": [
+    "cohort/psych"
+  ],
+  "topics": [
+    "psych"
+  ],
+  "questionType": "management",
+  "difficulty": "medium",
+  "stem": "A 32-year-old man with OCD chose sertraline while awaiting specialist CBT. After two weeks at 50 mg daily, his checking rituals are unchanged. He reports consistent dosing, no activation or other adverse effects, and no suicidal thoughts. He asks for a different medicine today.\n\nWhat is the most appropriate prescribing approach?",
+  "options": [
+    {
+      "label": "A",
+      "text": "Continue sertraline through an adequate monitored trial",
+      "isCorrect": true,
+      "explanation": "Two weeks is too early to declare an SSRI ineffective for OCD. Explain the slower response, monitor progress and tolerability, and optimise the dose over an adequate trial while maintaining the CBT referral."
+    },
+    {
+      "label": "B",
+      "text": "Switch from sertraline to clomipramine now",
+      "isCorrect": false,
+      "explanation": "Clomipramine is an effective option in selected patients, but failure has not been demonstrated after this brief starting-dose exposure."
+    },
+    {
+      "label": "C",
+      "text": "Add low-dose risperidone to the sertraline",
+      "isCorrect": false,
+      "explanation": "Antipsychotic augmentation is reserved for selected inadequately responsive cases. He has not yet received an adequate first-line SSRI trial."
+    },
+    {
+      "label": "D",
+      "text": "Replace sertraline with regular diazepam until checking resolves",
+      "isCorrect": false,
+      "explanation": "Benzodiazepines do not provide an adequate treatment for the core obsession–compulsion pattern and introduce dependence and sedation concerns."
+    },
+    {
+      "label": "E",
+      "text": "Stop sertraline and use supportive counselling as the sole treatment",
+      "isCorrect": false,
+      "explanation": "There is no intolerance requiring cessation, and supportive counselling does not replace OCD-specific CBT with exposure and response prevention."
+    }
+  ],
+  "context": "OCD often responds slowly to SSRIs; a short exposure at a starting dose does not establish treatment failure.",
+  "publicModule": {
+    "schemaVersion": 1,
+    "origin": "mirrored",
+    "discipline": "psych",
+    "mirroredFrom": "md3:27d3fc3124d7658b",
+    "itemText": {
+      "licence": "CC-BY-4.0",
+      "attribution": "MD3 contributors"
+    },
+    "evidence": {
+      "kind": "reference",
+      "sourceId": "nice-guidance-cg31-chapter-recommendations-5ed199"
+    },
+    "review": {
+      "verdict": "passed",
+      "contentHash": "c843052cf709aae166de046e44e08914e21c9e6c894bc678b5fe3bf9ff4c5026"
+    }
+  }
+}

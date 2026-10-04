@@ -685,6 +685,36 @@ describe('FOSS distribution boundary', () => {
     );
   });
 
+  it('requires every exported Cohort module card shard to carry CC BY rights and unquoted references only', () => {
+    const root = fixture();
+    const shardPath = path.join(root, 'open-content/modules/cards/paeds/0.json');
+    fs.mkdirSync(path.dirname(shardPath), { recursive: true });
+    const shard = {
+      schemaVersion: 1,
+      discipline: 'paeds',
+      licence: 'CC-BY-4.0',
+      attribution: 'MD3 contributors',
+      cards: [{ id: 'cohort:paeds:c-0123456789ab:v1', front: 'x [___]', back: 'y', reference: null } as Record<string, unknown>],
+    };
+    fs.writeFileSync(shardPath, `${JSON.stringify(shard)}\n`);
+    const policy = loadDistributionPolicy(root);
+    policy.includeRoots.push('open-content/modules');
+    expect(writeReviewedPathManifest(root, policy).ok).toBe(true);
+    expect(fs.readFileSync(path.join(root, policy.pathManifest), 'utf8')).toContain('open-content/modules/cards/paeds/0.json');
+    expect(auditDistributionBoundary(root, policy).ok).toBe(true);
+
+    shard.cards[0].reference = { title: 'Guideline', url: 'https://example.org', quote: 'copied words' };
+    fs.writeFileSync(shardPath, `${JSON.stringify(shard)}\n`);
+    expect(auditDistributionBoundary(root, policy).issues).toContainEqual(
+      expect.objectContaining({ code: 'invalid-open-content-rights', path: 'open-content/modules/cards/paeds/0.json' }),
+    );
+
+    fs.writeFileSync(shardPath, `${JSON.stringify({ ...shard, cards: [{ id: 'x' }], licence: 'All rights reserved' })}\n`);
+    expect(auditDistributionBoundary(root, policy).issues).toContainEqual(
+      expect.objectContaining({ code: 'invalid-open-content-rights', path: 'open-content/modules/cards/paeds/0.json' }),
+    );
+  });
+
   it('rejects invalid UTF-8 even when a file has an allowed text extension', () => {
     const root = fixture();
     const policy = loadDistributionPolicy(root);
@@ -1024,6 +1054,11 @@ describe('FOSS distribution boundary', () => {
       text: expect.stringContaining('ankiImportJobs'),
     }));
     expect(policy.generatedTextFiles.find(entry => entry.path === 'prisma/schema/base.prisma')?.text).toContain('examPaperSessions ExamPaperSession[]');
+    const publicBaseSchema = policy.generatedTextFiles.find(
+      (entry) => entry.path === 'prisma/schema/base.prisma',
+    )?.text ?? '';
+    expect(publicBaseSchema).toMatch(/reviewChallenge\s+Int\s+@default\(0\)/);
+    expect(publicBaseSchema).toMatch(/reviewChallengeRevision\s+Int\s+@default\(0\)/);
     const publicContentSchema = policy.generatedTextFiles.find(
       (entry) => entry.path === 'prisma/schema/content.prisma',
     );
@@ -1167,11 +1202,12 @@ describe('FOSS distribution boundary', () => {
     const publicPackage = JSON.parse(publicPackageDefinition!.text) as {
       scripts: Record<string, string>;
     };
-    expect(Object.keys(publicPackage.scripts)).toHaveLength(37);
+    expect(Object.keys(publicPackage.scripts)).toHaveLength(38);
     // A self-hoster needs both: the manifold is empty without vectors, and the
     // module questions have no other public loader.
     expect(publicPackage.scripts['manifold:embed:open']).toContain('scripts/manifold/embed-open-corpus.ts');
     expect(publicPackage.scripts['db:seed:cohort-modules']).toContain('scripts/content/seed-cohort-modules.ts');
+    expect(publicPackage.scripts['db:seed:cohort-module-cards']).toContain('scripts/content/seed-cohort-module-cards.ts');
     // The public product renders broken images without this: 345 of the 556
     // released questions carry an imageUrl, and `public/figures` is a forbidden
     // prefix, so the artifact ships the diagrams under open-content instead.
@@ -1181,7 +1217,7 @@ describe('FOSS distribution boundary', () => {
     const publicTestPaths = [...publicPackage.scripts['foss:test'].matchAll(
       /(?:^|\s)["']?([^\s"']+\.test\.tsx?)["']?/g,
     )].map((match) => match[1]);
-    expect(publicTestPaths).toHaveLength(63);
+    expect(publicTestPaths).toHaveLength(66);
     expect(publicTestPaths).toContain('scripts/content/curated-starters.test.ts');
     expect(policy.includeFiles).toEqual(expect.arrayContaining(publicTestPaths));
     expect(JSON.stringify(publicPackage.scripts)).not.toMatch(

@@ -1,0 +1,64 @@
+{
+  "id": "bank:cohort:em:q-6727d5f7c873:v1",
+  "rotation": "cohort-open",
+  "moduleNodes": [
+    "cohort/em"
+  ],
+  "topics": [
+    "em"
+  ],
+  "questionType": "management",
+  "difficulty": "easy",
+  "stem": "A patient has sustained return of spontaneous circulation after cardiac arrest and is ventilated in the emergency department. Pulse oximetry now has a reliable waveform and reads 100% while the inspired oxygen fraction is 1.0. The emergency registrar is adjusting oxygen as part of post-arrest care.\n\nWhich strategy is most appropriate?",
+  "options": [
+    {
+      "label": "A",
+      "text": "Titrate inspired oxygen to an initial saturation of 94–98%",
+      "isCorrect": true,
+      "explanation": "After reliable oxygenation measurements are available, ANZCOR recommends an initial target saturation of 94–98%, avoiding both hypoxaemia and unnecessary hyperoxaemia."
+    },
+    {
+      "label": "B",
+      "text": "Leave the inspired oxygen fraction at 1.0 until a blood gas returns",
+      "isCorrect": false,
+      "explanation": "A reliable oximetry waveform is enough to start titrating. Holding FiO2 at 1.0 until a gas returns prolongs avoidable hyperoxaemia; the arterial gas then refines the target."
+    },
+    {
+      "label": "C",
+      "text": "Continue maximal FiO2 for the first 24 hours",
+      "isCorrect": false,
+      "explanation": "Maximal oxygen is appropriate during CPR and until reliable measurement is available. Continuing it for a fixed period after ROSC exposes the patient to avoidable hyperoxaemia."
+    },
+    {
+      "label": "D",
+      "text": "Aim lower, at 88–92%, to minimise hyperoxic injury",
+      "isCorrect": false,
+      "explanation": "A lower range may apply to selected patients with a separate risk of hypercapnic failure, but it is not the routine initial post-arrest target described by ANZCOR."
+    },
+    {
+      "label": "E",
+      "text": "Keep SpO2 at 98–100% to maximise tissue delivery",
+      "isCorrect": false,
+      "explanation": "A saturation of 100% cannot distinguish normoxia from marked hyperoxaemia, so a 98–100% target risks the hyperoxaemia post-arrest care aims to avoid. ANZCOR sets an initial target of 94–98%."
+    }
+  ],
+  "context": "After ROSC, use reliable monitoring to titrate oxygen towards 94–98% rather than continuing maximal oxygen by default.",
+  "publicModule": {
+    "schemaVersion": 1,
+    "origin": "mirrored",
+    "discipline": "em",
+    "mirroredFrom": "md3:6727d5f7c873bf9a",
+    "itemText": {
+      "licence": "CC-BY-4.0",
+      "attribution": "MD3 contributors"
+    },
+    "evidence": {
+      "kind": "reference",
+      "sourceId": "anzcor-ideline-11-7-post-resuscitation-therapy-in-adult-advanced-life-support-1394cd"
+    },
+    "review": {
+      "verdict": "passed",
+      "contentHash": "a7a4b725b4ccca4fccd3f41a79996fe8bf89fe407d8a09ed360519193a33aa36"
+    }
+  }
+}

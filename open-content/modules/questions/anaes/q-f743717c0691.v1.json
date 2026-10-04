@@ -1,0 +1,64 @@
+{
+  "id": "bank:cohort:anaes:q-f743717c0691:v1",
+  "rotation": "cohort-open",
+  "moduleNodes": [
+    "cohort/anaes"
+  ],
+  "topics": [
+    "anaes"
+  ],
+  "questionType": "investigation",
+  "difficulty": "medium",
+  "stem": "Five days after pelvic surgery, a 62-year-old develops unilateral calf pain and swelling of the whole leg. The calf is 4 cm larger than the other side, with pitting oedema and tenderness along the deep veins. She has no chest pain, breathlessness or tachycardia. The ward registrar scores DVT as likely, and the intern suggests starting with a D-dimer.\n\nWhich investigation should be arranged first?",
+  "options": [
+    {
+      "label": "A",
+      "text": "D-dimer, with ultrasound only if the D-dimer is raised",
+      "isCorrect": false,
+      "explanation": "A D-dimer-first strategy suits patients in whom DVT is unlikely. In a likely DVT a normal D-dimer is less reassuring, and after surgery the D-dimer is usually raised anyway."
+    },
+    {
+      "label": "B",
+      "text": "Contrast venography of the leg as the initial test",
+      "isCorrect": false,
+      "explanation": "Venography is invasive and has been replaced by ultrasound as the first test. It is reserved for rare cases where ultrasound cannot answer the question."
+    },
+    {
+      "label": "C",
+      "text": "CT pulmonary angiography to look for embolism",
+      "isCorrect": false,
+      "explanation": "She has no features of pulmonary embolism, and CTPA does not assess the leg veins. Imaging should target the suspected DVT."
+    },
+    {
+      "label": "D",
+      "text": "D-dimer, then anticoagulate without imaging if raised",
+      "isCorrect": false,
+      "explanation": "A raised D-dimer after surgery is nonspecific, so treating on it without imaging risks anticoagulating a patient who has no thrombosis."
+    },
+    {
+      "label": "E",
+      "text": "Compression ultrasound of the proximal leg veins",
+      "isCorrect": true,
+      "explanation": "When DVT is clinically likely, the first test is compression ultrasound, which confirms or excludes proximal DVT directly."
+    }
+  ],
+  "context": "When DVT is clinically likely, especially after surgery, go straight to compression ultrasound; D-dimer is for ruling out DVT in unlikely cases.",
+  "publicModule": {
+    "schemaVersion": 1,
+    "origin": "mirrored",
+    "discipline": "anaes",
+    "mirroredFrom": "md3:f743717c0691f8f3",
+    "itemText": {
+      "licence": "CC-BY-4.0",
+      "attribution": "MD3 contributors"
+    },
+    "evidence": {
+      "kind": "reference",
+      "sourceId": "nice-guidance-ng158-chapter-recommendations-a9b065"
+    },
+    "review": {
+      "verdict": "passed",
+      "contentHash": "99d828cb75eb64b36a504dcb60ba5b1c6ca43033ba75ce3d2f458ddce2a3fad8"
+    }
+  }
+}

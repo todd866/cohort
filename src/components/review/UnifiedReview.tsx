@@ -30,6 +30,7 @@ import { SessionExpiredPrompt } from '@/components/content/SessionExpiredPrompt'
 import { submitGroupAttempt } from '@/lib/group-attempt-submit';
 import type { StepResult } from '@/lib/question-groups/types';
 import { useGrading } from '@/hooks/useGrading';
+import { useCohortCardGrade } from './hooks/useCohortCardGrade';
 import { offlineUserKey } from '@/lib/offline/pack';
 import { ConfidenceButtons } from '@/components/shared/ConfidenceButtons';
 import type { ReviewFilter, ReviewItemType, ReviewTopic } from '@/lib/review/review-intent';
@@ -38,6 +39,8 @@ import { GuestReviewLoginNudge } from '@/components/ui/LoginNudge';
 import { ImageBlurToggle } from '@/components/media/ImageBlurToggle';
 import { fetchWithDeadline, CLIENT_FETCH_DEADLINE_MS } from '@/lib/fetch-with-deadline';
 import { useCohortHost } from '@/components/CohortHostContext';
+import { useReviewDifficulty } from '@/hooks/useReviewDifficulty';
+import { ReviewDifficultyControl } from './ReviewDifficultyControl';
 import {
   canonicalCohortDemandTopics,
   type CohortFeedProfile,
@@ -365,6 +368,7 @@ function UnifiedReviewBody({ rotations, week, rotationSizes, fetchSlots, feedMod
     : offlineUserKey(authSession?.user) ?? initialBatch?.ownerKey ?? null;
   const searchOwnerKeyRef = useRef(reviewUserKey);
   const reviewedAtUnmountRef = useRef(0);
+  const refreshChallengeRef = useRef<(revision: number) => void>(() => {});
 
   // Cohort uses this same visible-interval id as its durable turn journey.
   // Creating it before the review hook prevents a second, unlinked identity
@@ -380,8 +384,18 @@ function UnifiedReviewBody({ rotations, week, rotationSizes, fetchSlots, feedMod
 
   // Session: items, navigation, loading. The account key binds the offline pack
   // (src/lib/offline/pack.ts) so a device never serves one user's cards to the next.
+  const difficulty = useReviewDifficulty({
+    enabled: isAuthenticated && !allowUnverifiedPack,
+    endpoint: isCohortHost ? '/api/cohort/difficulty' : '/api/study/difficulty',
+    offline: allowUnverifiedPack,
+    identityKey: reviewUserKey,
+    onApplied: (revision) => refreshChallengeRef.current(revision),
+  });
+
   const session = useReviewSession({
     rotations, week, rotationSizes, fetchSlots, feedMode, reviewFilter, itemType, topics, cluster, focusRotation,
+    reviewChallengeRevision: difficulty.revision,
+    onChallengeExhausted: difficulty.easeAfterExhaustion,
     // The credentialless fallback must trust only the device owner record.
     // A stale next-auth value from a suspended tab must not override it.
     userKey: reviewUserKey,
@@ -402,6 +416,26 @@ function UnifiedReviewBody({ rotations, week, rotationSizes, fetchSlots, feedMod
     newRemaining,
     servingOffline,
   } = session;
+  refreshChallengeRef.current = session.refreshForChallenge;
+  const showDifficulty = isAuthenticated
+    && !(isCohortHost && currentItem?.decisionContext?.cohortHook)
+    && !allowUnverifiedPack
+    && reviewFilter !== 'due'
+    && reviewFilter !== 'at-risk'
+    && !isPracticeFollowUpTurn(currentItem)
+    && !isProtectedPracticeItem(currentItem);
+  const difficultyControl = showDifficulty ? (
+    <ReviewDifficultyControl
+      value={difficulty.level}
+      onCommit={difficulty.commit}
+      pending={difficulty.pending}
+      error={difficulty.error}
+      adjustment={difficulty.adjustment}
+      ready={difficulty.ready}
+      offline={servingOffline || allowUnverifiedPack}
+      onRetry={difficulty.retry}
+    />
+  ) : null;
 
   // Warm the figures on the next few cards while the learner reads this one.
   // Review images are otherwise requested only when their card mounts, so a
@@ -708,8 +742,8 @@ function UnifiedReviewBody({ rotations, week, rotationSizes, fetchSlots, feedMod
     if (
       isCohortHost
       && cohortSingleTurn
-      && cohortProfile?.hookCompletedAt
-      && cohortProfile.explicit.experience
+      && (!currentItem?.decisionContext?.cohortHook
+        || (cohortProfile?.hookCompletedAt && cohortProfile.explicit.experience))
     ) {
       void advanceAndRefresh();
       return;
@@ -749,6 +783,27 @@ function UnifiedReviewBody({ rotations, week, rotationSizes, fetchSlots, feedMod
     onRepeat: () => handleCardContinue(),
     onError: (msg) => onSubmitError?.(msg),
   });
+
+  // A Cohort module card is graded against its delivery, and the next turn is
+  // requested only once the grade has landed (the server refuses to continue
+  // past an ungraded delivery). md3 cards keep their optimistic grading above.
+  const cohortCardDeliveryId = isCohortHost && cohortSingleTurn && currentItem?.type === 'card'
+    ? currentItem.deliveryId ?? null
+    : null;
+  const cohortCardGrading = useCohortCardGrade({
+    deliveryId: cohortCardDeliveryId,
+    getResponseTimeMs,
+    onGraded: (confidence) => {
+      onReviewWithReset?.();
+      setStats(prev => ({
+        total: prev.total + 1,
+        correct: confidence >= 3 ? prev.correct + 1 : prev.correct,
+      }));
+      handleNext();
+    },
+    onError: (msg) => onSubmitError?.(msg),
+  });
+  const activeCardGrading = cohortCardDeliveryId ? cohortCardGrading : cardGrading;
 
   const mcqGrading = useGrading({
     itemId: currentItem?.id ?? '',
@@ -876,7 +931,7 @@ function UnifiedReviewBody({ rotations, week, rotationSizes, fetchSlots, feedMod
     flagMode,
     setFlagMode,
     handleReveal,
-    handleCardGrade: cardGrading.grade,
+    handleCardGrade: activeCardGrading.grade,
     handleCardContinue,
     // `useGrading.grade()` early-returns while a grade is saving/saved/queued
     // and does not advance, so a grade keystroke in those states would do
@@ -885,9 +940,13 @@ function UnifiedReviewBody({ rotations, week, rotationSizes, fetchSlots, feedMod
     // status is seated on a visible card. saved/queued mean the grade is
     // already recorded and saving means one is in flight, so advancing is the
     // correct response rather than a workaround.
-    cardGradeBlocked: cardGrading.status === 'saving'
+    // A Cohort card advances only through its grade, so a blocked key must
+    // never fall through to a local Continue.
+    cardGradeBlocked: !cohortCardDeliveryId && (
+      cardGrading.status === 'saving'
       || cardGrading.status === 'saved'
-      || cardGrading.status === 'queued',
+      || cardGrading.status === 'queued'
+    ),
     handleSelectOption,
     handleMcqSkip,
     handleNext,
@@ -936,7 +995,10 @@ function UnifiedReviewBody({ rotations, week, rotationSizes, fetchSlots, feedMod
 
   // Loading — skeleton that mimics card layout
   if (loading) {
-    return <LoadingSkeleton />;
+    return <div>
+      {difficultyControl && <div className="flex justify-center px-4 pt-3">{difficultyControl}</div>}
+      <LoadingSkeleton />
+    </div>;
   }
 
   // Error
@@ -945,6 +1007,7 @@ function UnifiedReviewBody({ rotations, week, rotationSizes, fetchSlots, feedMod
     const activeTopic = searchTopics.find((topic) => topic.id === activeSearchTopicId) ?? null;
     return (
       <div className="text-center py-8">
+        {difficultyControl && <div className="mb-4 flex justify-center px-4">{difficultyControl}</div>}
         <p role="alert" className="text-[var(--md-error)] mb-4">
           {cohortTurnErrorCode === 'topic_exhausted' && activeTopic
             ? `${activeTopic.label} is in the deck, but no fresh question fits your current level right now.`
@@ -983,36 +1046,42 @@ function UnifiedReviewBody({ rotations, week, rotationSizes, fetchSlots, feedMod
   // instead of an infinite spinner.
   if (items.length === 0) {
     return (
-      <SessionEmptyState
-        isExhausted={isExhausted}
-        feedMode={feedMode}
-        itemType={itemType}
-        newRemaining={newRemaining}
-        showRefresh
-        onFetch={() => fetchItems()}
-        onFeedModeChange={onFeedModeChange}
-        onReviewModeChange={onReviewModeChange}
-      />
+      <div>
+        {difficultyControl && <div className="flex justify-center px-4 pt-3">{difficultyControl}</div>}
+        <SessionEmptyState
+          isExhausted={isExhausted}
+          feedMode={feedMode}
+          itemType={itemType}
+          newRemaining={newRemaining}
+          showRefresh
+          onFetch={() => fetchItems()}
+          onFeedModeChange={onFeedModeChange}
+          onReviewModeChange={onReviewModeChange}
+        />
+      </div>
     );
   }
 
   // No more items — auto-fetch next batch or show session summary
   if (!item) {
     return (
-      <SessionEmptyState
-        isExhausted={isExhausted}
-        feedMode={feedMode}
-        itemType={itemType}
-        newRemaining={newRemaining}
-        stats={stats}
-        focusRotation={focusRotation}
-        canChooseFocus={!allowUnverifiedPack && studyableRotations.length > 0}
-        isGuest={isGuest}
-        onFetch={() => fetchItems()}
-        onFeedModeChange={onFeedModeChange}
-        onReviewModeChange={onReviewModeChange}
-        onFocusRotationChange={onFocusRotationChange}
-      />
+      <div>
+        {difficultyControl && <div className="flex justify-center px-4 pt-3">{difficultyControl}</div>}
+        <SessionEmptyState
+          isExhausted={isExhausted}
+          feedMode={feedMode}
+          itemType={itemType}
+          newRemaining={newRemaining}
+          stats={stats}
+          focusRotation={focusRotation}
+          canChooseFocus={!allowUnverifiedPack && studyableRotations.length > 0}
+          isGuest={isGuest}
+          onFetch={() => fetchItems()}
+          onFeedModeChange={onFeedModeChange}
+          onReviewModeChange={onReviewModeChange}
+          onFocusRotationChange={onFocusRotationChange}
+        />
+      </div>
     );
   }
 
@@ -1089,12 +1158,12 @@ function UnifiedReviewBody({ rotations, week, rotationSizes, fetchSlots, feedMod
           2026-09-10 as the bar visibly thickening mid-session; the FOSS
           distribution scan rejects a learner name here, so the report is
           summarised. Guarded by e2e/review-toolbar-height.spec.ts. */}
-      <div role="toolbar" aria-label="Review toolbar" className="sticky top-0 z-10 h-[52px] px-3 sm:px-4 flex flex-nowrap items-center justify-between gap-2 border-b border-[var(--md-outline-soft)] bg-[var(--md-surface)]/92 backdrop-blur shadow-[0_6px_18px_rgba(21,35,46,0.05)]">
+      <div role="toolbar" aria-label="Review toolbar" className="sticky top-0 z-10 h-[52px] px-[12px] sm:px-4 flex flex-nowrap items-center justify-between gap-[8px] sm:gap-2 border-b border-[var(--md-outline-soft)] bg-[var(--md-surface)]/92 backdrop-blur shadow-[0_6px_18px_rgba(21,35,46,0.05)]">
         {/* No Home affordance here: `/` IS this review screen, so a header link
             to it was a guaranteed no-op — and it wore a hamburger glyph, which
             reads as "open a menu". Home stays reachable from the nav rail
             (desktop) and the bottom bar (mobile), one of which is always shown. */}
-        <div className="flex min-w-0 items-center gap-1.5 sm:gap-2 text-sm text-[var(--md-on-surface-variant)]">
+        <div className="flex min-w-0 items-center gap-[6px] sm:gap-2 text-sm text-[var(--md-on-surface-variant)]">
           {currentIndex > 0 && !isCohortHost && !isProtectedPracticeItem(currentItem) && (
             <button
               onClick={handleReviewGoBack}
@@ -1109,14 +1178,14 @@ function UnifiedReviewBody({ rotations, week, rotationSizes, fetchSlots, feedMod
           {isCohortHost && (
             <Link
               href="/usmle/step1"
-              // The visible label shortens to "Plan" at phone width to hold the
+              // The visible label shortens to "Plan" at compact widths to hold the
               // toolbar's fixed 52px single row, so the accessible name has to be
               // stated rather than inferred from the text — same reason the back
               // button above carries aria-label="Go back".
               aria-label="Plan a study session"
               className="shrink-0 whitespace-nowrap rounded-md px-2 py-1 text-xs font-medium text-[var(--md-primary)] hover:bg-[var(--md-surface-container-high)] transition-colors"
             >
-              Plan<span className="hidden sm:inline"> a study session</span>
+              Plan<span className="hidden lg:inline"> a study session</span>
             </Link>
           )}
           {!isAuthenticated && !isCohortHost && enrollableRotations.length > 0 && (
@@ -1129,7 +1198,7 @@ function UnifiedReviewBody({ rotations, week, rotationSizes, fetchSlots, feedMod
               <span className="truncate">{rotationLabel(rotations[0])}</span><span aria-hidden className="shrink-0">▾</span>
             </button>
           )}
-          {isAuthenticated && onReviewModeChange && (
+          {!isCohortHost && isAuthenticated && onReviewModeChange && (
             <div className="hidden sm:block">
               <ReviewModeSelector
                 practiceExamHref={!isCohortHost && process.env.NEXT_PUBLIC_PRACTICE_EXAMS_ENABLED === "true" ? "/practice-exam" : undefined}
@@ -1175,27 +1244,30 @@ function UnifiedReviewBody({ rotations, week, rotationSizes, fetchSlots, feedMod
           )}
         </div>
 
-        {reviewed != null && (
-          <ProgressPill
-            reviewed={reviewed}
-            target={target}
-            coveragePercent={coveragePercent}
-            progress={progress}
-            targetHit={targetHit}
-            bonusCount={bonusCount}
-            onTap={() => setDrawerOpen(o => !o)}
-          />
+        {reviewed != null && !isCohortHost && (
+            <ProgressPill
+              reviewed={reviewed}
+              target={target}
+              coveragePercent={coveragePercent}
+              progress={progress}
+              targetHit={targetHit}
+              bonusCount={bonusCount}
+              onTap={() => setDrawerOpen(o => !o)}
+            />
         )}
 
-        <div ref={mobileOptionsRef} className="relative ml-auto flex min-w-0 shrink-0 items-center gap-1.5 sm:gap-2">
+        <div ref={mobileOptionsRef} className="relative ml-auto flex min-w-0 shrink-0 items-center gap-[6px] sm:gap-2">
+          {difficultyControl}
           <div
             ref={mobileOptionsPanelRef}
             id="review-mobile-options"
-            role={!isCohortHost && mobileOptionsOpen ? 'dialog' : undefined}
-            aria-label={!isCohortHost && mobileOptionsOpen ? 'Review options' : undefined}
-            tabIndex={!isCohortHost && mobileOptionsOpen ? -1 : undefined}
+            role={mobileOptionsOpen ? 'dialog' : undefined}
+            aria-label={mobileOptionsOpen ? 'Review options' : undefined}
+            tabIndex={mobileOptionsOpen ? -1 : undefined}
             className={isCohortHost
-              ? 'flex min-w-0 shrink-0 items-center gap-1.5 sm:gap-2'
+              ? mobileOptionsOpen
+                ? 'absolute right-0 top-full z-50 mt-1 flex max-h-[min(70vh,max(5rem,calc(100dvh-10rem)))] w-[min(18rem,calc(100vw-1.5rem))] flex-col items-start gap-3 overflow-y-auto rounded-xl border border-[var(--md-outline-variant)] bg-[var(--md-surface)] p-3 text-sm shadow-xl outline-none'
+                : 'hidden'
               : mobileOptionsOpen
                 ? 'absolute right-0 top-full z-50 mt-1 flex outline-none max-h-[min(70vh,max(5rem,calc(100dvh-22rem)))] w-[min(18rem,calc(100vw-1.5rem))] flex-col gap-3 overflow-y-auto rounded-xl border border-[var(--md-outline-variant)] bg-[var(--md-surface)] p-3 text-sm shadow-xl sm:static sm:mt-0 sm:max-h-none sm:w-auto sm:flex-row sm:items-center sm:gap-2 sm:overflow-visible sm:rounded-none sm:border-0 sm:bg-transparent sm:p-0 sm:text-sm sm:shadow-none'
                 : 'hidden sm:flex sm:min-w-0 sm:shrink-0 sm:items-center sm:gap-1.5 sm:gap-2'}
@@ -1272,8 +1344,7 @@ function UnifiedReviewBody({ rotations, week, rotationSizes, fetchSlots, feedMod
               </span>
             )}
           </button>
-          {!isCohortHost && (
-            <button
+          <button
               ref={mobileOptionsTriggerRef}
               type="button"
               aria-label="Review options"
@@ -1282,11 +1353,10 @@ function UnifiedReviewBody({ rotations, week, rotationSizes, fetchSlots, feedMod
               aria-expanded={mobileOptionsOpen}
               aria-controls="review-mobile-options"
               onClick={() => setMobileOptionsOpen((open) => !open)}
-              className="relative inline-flex h-[44px] w-[44px] shrink-0 items-center justify-center rounded-full border border-[var(--md-outline-variant)] text-base text-[var(--md-on-surface-variant)] hover:bg-[var(--md-surface-container-high)] sm:hidden"
+              className={`relative inline-flex h-[44px] w-[44px] shrink-0 items-center justify-center rounded-full border border-[var(--md-outline-variant)] text-base text-[var(--md-on-surface-variant)] hover:bg-[var(--md-surface-container-high)] ${isCohortHost ? '' : 'sm:hidden'}`}
             >
               <span aria-hidden>⋯</span>
             </button>
-          )}
         </div>
       </div>
 
@@ -1443,6 +1513,7 @@ function UnifiedReviewBody({ rotations, week, rotationSizes, fetchSlots, feedMod
           handleReveal={handleReveal}
           inlineReveal={false}
           onSuppress={(id) => { markSuppressed(id, 'card'); advanceToNext(); }}
+          publicSurface={isCohortHost}
           revealActions={(
             <StationChip
               topics={item.topics ?? []}
@@ -1551,7 +1622,7 @@ function UnifiedReviewBody({ rotations, week, rotationSizes, fetchSlots, feedMod
 
       {/* Card grading buttons - fixed at bottom (after revealing) */}
       {showCardGrading && (
-        <ConfidenceButtons mode="footer" onSelect={cardGrading.grade} selected={cardGrading.selected} status={cardGrading.status} />
+        <ConfidenceButtons mode="footer" onSelect={activeCardGrading.grade} selected={activeCardGrading.selected} status={activeCardGrading.status} />
       )}
 
       {/* MCQ confidence buttons - after answering (private) or after select (public opaque) */}

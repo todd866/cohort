@@ -1,0 +1,64 @@
+{
+  "id": "bank:cohort:psych:q-16ffb3b32cad:v1",
+  "rotation": "cohort-open",
+  "moduleNodes": [
+    "cohort/psych"
+  ],
+  "topics": [
+    "psych"
+  ],
+  "questionType": "investigation",
+  "difficulty": "medium",
+  "stem": "A paediatrician sees a 10-year-old whose teacher describes persistent distractibility, unfinished work and leaving his seat since Year 2. A classroom rating scale is elevated. His school report shows reading at the expected level. Hearing and vision are normal, and he sleeps well without snoring.\n\nWhat additional information is most useful before deciding whether he has ADHD?",
+  "options": [
+    {
+      "label": "A",
+      "text": "A stimulant trial to see whether his classwork improves",
+      "isCorrect": false,
+      "explanation": "Improvement on a stimulant is not diagnostic, because stimulants improve attention in many children without ADHD. The diagnosis must be established first."
+    },
+    {
+      "label": "B",
+      "text": "Whether he can concentrate on a favourite computer game",
+      "isCorrect": false,
+      "explanation": "Sustained attention to a highly rewarding game is common in ADHD and does not exclude it, so this adds little."
+    },
+    {
+      "label": "C",
+      "text": "Formal cognitive testing for a specific learning disorder",
+      "isCorrect": false,
+      "explanation": "Learning disorders can mimic or coexist with ADHD and testing may help later, but reading at the expected level makes this less pressing, and it would not supply the missing evidence from other settings."
+    },
+    {
+      "label": "D",
+      "text": "A repeat classroom rating scale from a second teacher",
+      "isCorrect": false,
+      "explanation": "A second teacher adds a rater but not a setting; both reports still describe school only."
+    },
+    {
+      "label": "E",
+      "text": "Parent and coach reports on his symptoms and impairment",
+      "isCorrect": true,
+      "explanation": "ADHD requires symptoms in two or more settings, with impairment. Parent and coach reports provide evidence from home and an outside activity, which is the information still missing."
+    }
+  ],
+  "context": "ADHD needs evidence of symptoms and impairment across settings; another rater in the same setting, or a response to medication, does not supply it.",
+  "publicModule": {
+    "schemaVersion": 1,
+    "origin": "mirrored",
+    "discipline": "psych",
+    "mirroredFrom": "md3:16ffb3b32cadef65",
+    "itemText": {
+      "licence": "CC-BY-4.0",
+      "attribution": "MD3 contributors"
+    },
+    "evidence": {
+      "kind": "reference",
+      "sourceId": "nice-guidance-ng87-chapter-recommendations-25918d"
+    },
+    "review": {
+      "verdict": "passed",
+      "contentHash": "1c6796bbb11f1b96fa566180eb018b56afe4753b900f972152f14680cd55dbc1"
+    }
+  }
+}

@@ -1,0 +1,64 @@
+{
+  "id": "bank:cohort:endo:q-0d5c1540c060:v1",
+  "rotation": "cohort-open",
+  "moduleNodes": [
+    "cohort/endo"
+  ],
+  "topics": [
+    "endo"
+  ],
+  "questionType": "diagnosis",
+  "difficulty": "hard",
+  "stem": "Tom, aged 12, is brought to his GP because his parents think his puberty has begun. For about a year he has had body odour and a few fine hairs at the base of the penis. He has grown steadily along the 25th centile with no recent acceleration. On examination, both testes measure 2 mL with an orchidometer.\n\nWhich is the correct interpretation?",
+  "options": [
+    {
+      "label": "A",
+      "text": "Puberty has begun, as pubic hair is its first sign in boys",
+      "isCorrect": false,
+      "explanation": "Pubic hair and body odour are driven by adrenal as well as testicular androgens, so they can appear with adrenarche before true puberty. They do not define its onset."
+    },
+    {
+      "label": "B",
+      "text": "Puberty is delayed for his age and needs investigating now",
+      "isCorrect": false,
+      "explanation": "Puberty in boys is delayed only if there is no testicular enlargement by 14 years. At 12, prepubertal testes are still normal."
+    },
+    {
+      "label": "C",
+      "text": "Central puberty has not begun, as the testes are under 4 mL",
+      "isCorrect": true,
+      "explanation": "Testicular enlargement to 4 mL or more marks the onset of central puberty in boys, normally between 9 and 14 years. At 2 mL, his hair and odour reflect adrenarche, and central puberty has not yet begun."
+    },
+    {
+      "label": "D",
+      "text": "Puberty is precocious, as hair appeared before he turned 12",
+      "isCorrect": false,
+      "explanation": "Precocious puberty in boys means signs before 9 years. Fine pubic hair at 11-12 is within the normal range, and his testes are prepubertal."
+    },
+    {
+      "label": "E",
+      "text": "Puberty has begun but stalled, as his growth has not sped up",
+      "isCorrect": false,
+      "explanation": "Boys have their growth spurt late in puberty, well after testicular enlargement begins, so no acceleration yet is expected rather than a sign of stalling."
+    }
+  ],
+  "context": "Puberty in boys starts with testicular volume of 4 mL or more, normally at 9-14 years. Enlargement before 9 is precocious; none by 14 is delayed.",
+  "publicModule": {
+    "schemaVersion": 1,
+    "origin": "mirrored",
+    "discipline": "endo",
+    "mirroredFrom": "md3:0d5c1540c0602e00",
+    "itemText": {
+      "licence": "CC-BY-4.0",
+      "attribution": "MD3 contributors"
+    },
+    "evidence": {
+      "kind": "reference",
+      "sourceId": "rch-primary-care-liaison-prereferral-guidelines-delayed-puberty-117dcd"
+    },
+    "review": {
+      "verdict": "passed",
+      "contentHash": "c3495a3b26d4df10dc4ff6bd1b38bac8e64897e6554b402a69bed7977ae62223"
+    }
+  }
+}

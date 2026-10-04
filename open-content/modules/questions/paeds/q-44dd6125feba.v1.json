@@ -1,0 +1,64 @@
+{
+  "id": "bank:cohort:paeds:q-44dd6125feba:v1",
+  "rotation": "cohort-open",
+  "moduleNodes": [
+    "cohort/paeds"
+  ],
+  "topics": [
+    "paeds"
+  ],
+  "questionType": "knowledge",
+  "difficulty": "medium",
+  "stem": "Tahlia, 15, comes alone to a youth health clinic in NSW asking for a contraceptive implant. She understands the benefits, risks and alternatives and can weigh them, and asks that her parents not be told. On a HEEADSSS assessment she says her boyfriend Jayden is 19 and they have been having sex for 2 months. She feels safe.\n\nWhich course of action is most appropriate?",
+  "options": [
+    {
+      "label": "A",
+      "text": "Insert the implant and keep the visit confidential",
+      "isCorrect": false,
+      "explanation": "She can consent as a mature minor, but NSW Health requires a report when a young person may face significant harm, for example a partner more than 2 years older."
+    },
+    {
+      "label": "B",
+      "text": "Insert the implant and make a child protection report",
+      "isCorrect": true,
+      "explanation": "Correct. As a mature minor she can consent to contraception. A partner more than 2 years older gives grounds for a report, and making it does not stop her having the implant."
+    },
+    {
+      "label": "C",
+      "text": "Make a report and defer the implant until it is assessed",
+      "isCorrect": false,
+      "explanation": "NSW Health states that a report does not preclude a mature minor from consenting to, or receiving, the treatment. Deferring leaves her without contraception."
+    },
+    {
+      "label": "D",
+      "text": "Defer the implant until a parent can give consent",
+      "isCorrect": false,
+      "explanation": "A competent 15-year-old can consent to hormonal contraception herself, so a parent's consent is not required."
+    },
+    {
+      "label": "E",
+      "text": "Insert the implant after telling her parents",
+      "isCorrect": false,
+      "explanation": "Telling her parents against her wishes breaches her confidentiality. The safety concern is met by the report, not by informing her parents."
+    }
+  ],
+  "context": "A competent 15-year-old can consent to contraception. Confidentiality has limits: in NSW a partner more than 2 years older is grounds for a report, and treatment still goes ahead.",
+  "publicModule": {
+    "schemaVersion": 1,
+    "origin": "mirrored",
+    "discipline": "paeds",
+    "mirroredFrom": "md3:44dd6125feba3585",
+    "itemText": {
+      "licence": "CC-BY-4.0",
+      "attribution": "MD3 contributors"
+    },
+    "evidence": {
+      "kind": "reference",
+      "sourceId": "nsw-health-policies-manuals-documents-consent-section-8-ee0ba4"
+    },
+    "review": {
+      "verdict": "passed",
+      "contentHash": "90ad3a2c12eaaeb2c598ce96ed33460bb4a8cf993d2fef8c1292e7dcf1d88c66"
+    }
+  }
+}

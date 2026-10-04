@@ -1,0 +1,64 @@
+{
+  "id": "bank:cohort:psych:q-31e09b514b44:v1",
+  "rotation": "cohort-open",
+  "moduleNodes": [
+    "cohort/psych"
+  ],
+  "topics": [
+    "psych"
+  ],
+  "questionType": "management",
+  "difficulty": "medium",
+  "stem": "A psychiatrist reviews a 23-year-old who has been well for four months after a first episode of schizophrenia. Oral aripiprazole is effective and well tolerated; he is back at university and has stopped cannabis. He asks to stop medication because he feels recovered, but is willing to discuss relapse prevention.\n\nWhich plan is most appropriate at this review?",
+  "options": [
+    {
+      "label": "A",
+      "text": "Taper aripiprazole now because functioning has recovered",
+      "isCorrect": false,
+      "explanation": "Functional recovery is encouraging, but four months of remission is early for withdrawal after a first psychotic episode. Stopping now carries substantial relapse risk."
+    },
+    {
+      "label": "B",
+      "text": "Halve the dose now and complete withdrawal at six months of remission",
+      "isCorrect": false,
+      "explanation": "Planning complete withdrawal after only six months still falls within the period of high early relapse risk. His effective, well-tolerated treatment should continue with later individual review of withdrawal."
+    },
+    {
+      "label": "C",
+      "text": "Continue aripiprazole; review withdrawal later in recovery",
+      "isCorrect": true,
+      "explanation": "Discuss the high early relapse risk and agree on continued treatment with regular review. Later withdrawal can be considered individually after sustained recovery rather than treating medication as automatically lifelong."
+    },
+    {
+      "label": "D",
+      "text": "Change to a depot preparation before considering his request",
+      "isCorrect": false,
+      "explanation": "A depot may suit someone who prefers it or has difficulty with daily dosing. Neither indication is described here, and changing formulation does not answer his question about duration."
+    },
+    {
+      "label": "E",
+      "text": "Commit to the current dose indefinitely after this first episode",
+      "isCorrect": false,
+      "explanation": "Long-term treatment may become appropriate, but an unconditional lifelong commitment is not justified solely by one episode. Benefits, harms and preferences need continuing review."
+    }
+  ],
+  "context": "Early remission after a first psychotic episode does not remove the need for relapse-prevention treatment.",
+  "publicModule": {
+    "schemaVersion": 1,
+    "origin": "mirrored",
+    "discipline": "psych",
+    "mirroredFrom": "md3:31e09b514b440c1d",
+    "itemText": {
+      "licence": "CC-BY-4.0",
+      "attribution": "MD3 contributors"
+    },
+    "evidence": {
+      "kind": "reference",
+      "sourceId": "nice-guidance-cg178-chapter-recommendations-ab0e8b"
+    },
+    "review": {
+      "verdict": "passed",
+      "contentHash": "a213c8b09714aeb61f3399b73b0c65cc56a35e61573140e7b2f22f8ffecd8a8b"
+    }
+  }
+}

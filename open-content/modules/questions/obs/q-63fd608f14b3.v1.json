@@ -1,0 +1,64 @@
+{
+  "id": "bank:cohort:obs:q-63fd608f14b3:v1",
+  "rotation": "cohort-open",
+  "moduleNodes": [
+    "cohort/obs"
+  ],
+  "topics": [
+    "obs"
+  ],
+  "questionType": "management",
+  "difficulty": "hard",
+  "stem": "An early-pregnancy registrar reviews a woman seven days after a single methotrexate dose for a confirmed 24-mm tubal ectopic pregnancy without cardiac activity. She remains pain-free, haemodynamically stable and able to attend follow-up. Haemoglobin, renal and liver results are normal.\n\n| Time after treatment | Serum hCG |\n|---|---:|\n| Day 1 | 2,000 IU/L |\n| Day 4 | 2,400 IU/L |\n| Day 7 | 2,450 IU/L |\n\nWhat should the registrar arrange now?",
+  "options": [
+    {
+      "label": "A",
+      "text": "Continue weekly hCG, as the level has now plateaued",
+      "isCorrect": false,
+      "explanation": "A plateau is not reassurance: hCG should fall by at least 15% between days four and seven. Failure to fall is an inadequate response that needs reassessment, not routine weekly surveillance."
+    },
+    {
+      "label": "B",
+      "text": "Senior reassessment for another methotrexate dose or surgery",
+      "isCorrect": true,
+      "explanation": "The day-four to day-seven rise indicates an inadequate response. Senior assessment, including repeat clinical and ultrasound review, determines whether further methotrexate remains suitable or surgery is preferable."
+    },
+    {
+      "label": "C",
+      "text": "Discharge with a home pregnancy test in three weeks",
+      "isCorrect": false,
+      "explanation": "Resolution has not been demonstrated, and persistent ectopic pregnancy can still rupture despite few symptoms."
+    },
+    {
+      "label": "D",
+      "text": "Repeat the hCG in 48 hours before making a decision",
+      "isCorrect": false,
+      "explanation": "The day-four to day-seven trend already shows an inadequate response; waiting another 48 hours for one more level delays the decision on a second dose or surgery."
+    },
+    {
+      "label": "E",
+      "text": "Give folinic acid rescue to complete the single-dose regimen",
+      "isCorrect": false,
+      "explanation": "Folinic acid is not routinely added to finish a single-dose ectopic regimen; giving it does not address the inadequate response and may antagonise methotrexate."
+    }
+  ],
+  "context": "A plateau or rise in hCG between days four and seven after methotrexate requires reassessment for additional treatment.",
+  "publicModule": {
+    "schemaVersion": 1,
+    "origin": "mirrored",
+    "discipline": "obs",
+    "mirroredFrom": "md3:63fd608f14b3ab7f",
+    "itemText": {
+      "licence": "CC-BY-4.0",
+      "attribution": "MD3 contributors"
+    },
+    "evidence": {
+      "kind": "reference",
+      "sourceId": "nice-guidance-ng126-chapter-management-of-tubal-ectopic-pregnancy-7ddd17"
+    },
+    "review": {
+      "verdict": "passed",
+      "contentHash": "1f1b0e0c6c260e935fb77e84dcc6e9603aaa709542440f8023dbddade6b96212"
+    }
+  }
+}

@@ -1,0 +1,64 @@
+{
+  "id": "bank:cohort:psych:q-20ef29e2018f:v1",
+  "rotation": "cohort-open",
+  "moduleNodes": [
+    "cohort/psych"
+  ],
+  "topics": [
+    "psych"
+  ],
+  "questionType": "management",
+  "difficulty": "medium",
+  "stem": "A GP reviews a 40-year-old man five days after he escaped a house fire. He has had two distressing dreams and is more easily startled, but is sleeping reasonably, working and accepting help from friends. Assessment finds no dissociation, persistent avoidance, major depression or current safety concerns. He asks whether he must recount every detail today to prevent PTSD.\n\nWhat should the GP offer initially?",
+  "options": [
+    {
+      "label": "A",
+      "text": "A single-session psychological debrief today",
+      "isCorrect": false,
+      "explanation": "Routine psychologically focused debriefing is not recommended to prevent PTSD. Pressuring him to recount the event is not the indicated intervention."
+    },
+    {
+      "label": "B",
+      "text": "A daily benzodiazepine course to prevent PTSD",
+      "isCorrect": false,
+      "explanation": "Benzodiazepines are not a preventive treatment for PTSD and may cause adverse effects and dependence. Mild early symptoms do not justify this strategy."
+    },
+    {
+      "label": "C",
+      "text": "An SSRI started immediately to prevent PTSD",
+      "isCorrect": false,
+      "explanation": "An SSRI is not indicated solely as prophylaxis after trauma. The current assessment does not establish a disorder needing this medication."
+    },
+    {
+      "label": "D",
+      "text": "Referral for an immediate course of trauma-focused CBT",
+      "isCorrect": false,
+      "explanation": "Trauma-focused treatment can help clinically significant symptoms, including early presentations. A full treatment course is not the initial step for this currently functioning patient with mild, subthreshold symptoms."
+    },
+    {
+      "label": "E",
+      "text": "Practical support, information and planned follow-up",
+      "isCorrect": true,
+      "explanation": "His early, subthreshold symptoms call for support and active monitoring. Do not require a detailed retelling; review the course and offer targeted treatment if symptoms become persistent or impairing."
+    }
+  ],
+  "context": "After trauma, match care to symptoms and function: provide early support and monitor subthreshold symptoms; avoid routine psychological debriefing.",
+  "publicModule": {
+    "schemaVersion": 1,
+    "origin": "mirrored",
+    "discipline": "psych",
+    "mirroredFrom": "md3:20ef29e2018f0e2a",
+    "itemText": {
+      "licence": "CC-BY-4.0",
+      "attribution": "MD3 contributors"
+    },
+    "evidence": {
+      "kind": "reference",
+      "sourceId": "nice-guidance-ng116-chapter-recommendations-8a9424"
+    },
+    "review": {
+      "verdict": "passed",
+      "contentHash": "425276a8f02fc5cbf910e7eecf0a42d466291b3a2efa6c1b704c93e215e13315"
+    }
+  }
+}

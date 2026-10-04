@@ -1,0 +1,82 @@
+{
+  "id": "bank:cohort:surgery:q-5aae61f57a46:v1",
+  "rotation": "cohort-open",
+  "moduleNodes": [
+    "cohort/surgery"
+  ],
+  "topics": [
+    "surgery"
+  ],
+  "questionType": "diagnosis",
+  "difficulty": "medium",
+  "stem": "A 5-year-old boy has had a runny nose for a week and, for 2 days, fever of 38.8 °C and a painful swelling below the angle of his left jaw. There is a single 3.5 cm node there, tender and warm, with red overlying skin; it is firm, with no fluctuance. Small, soft, non-tender nodes are felt on both sides of his neck. He has no weight loss, night sweats or hepatosplenomegaly.\n\nWhich diagnosis best fits the painful swelling?",
+  "options": [
+    {
+      "label": "A",
+      "text": "Thyroid enlargement",
+      "isCorrect": false,
+      "explanation": "Thyroid enlargement is anterior and lower in the neck, not a discrete upper cervical node."
+    },
+    {
+      "label": "B",
+      "text": "Reactive viral lymphadenopathy",
+      "isCorrect": false,
+      "explanation": "His small, soft, non-tender nodes on both sides are reactive to the cold, but they do not explain a single enlarged, hot, red, tender node with fever."
+    },
+    {
+      "label": "C",
+      "text": "Acute bacterial lymphadenitis",
+      "isCorrect": true,
+      "explanation": "Correct. A single enlarged, tender, warm node with overlying redness and fever after a viral illness is acute bacterial lymphadenitis, usually staphylococcal or streptococcal."
+    },
+    {
+      "label": "D",
+      "text": "Branchial cleft cyst",
+      "isCorrect": false,
+      "explanation": "An infected branchial cyst lies along the anterior border of sternocleidomastoid, usually with a history of a lump beforehand; this is a new, acutely inflamed node."
+    },
+    {
+      "label": "E",
+      "text": "Dermoid cyst",
+      "isCorrect": false,
+      "explanation": "Dermoid cysts usually grow slowly and are painless unless secondarily infected."
+    },
+    {
+      "label": "F",
+      "text": "Cystic lymphatic malformation",
+      "isCorrect": false,
+      "explanation": "A lymphatic malformation is a congenital structural lesion rather than a newly inflamed node."
+    },
+    {
+      "label": "G",
+      "text": "Thyroglossal duct cyst",
+      "isCorrect": false,
+      "explanation": "A thyroglossal cyst is usually midline; the swelling here is a lateral cervical node."
+    },
+    {
+      "label": "H",
+      "text": "Lymphoma",
+      "isCorrect": false,
+      "explanation": "Lymphoma more often causes persistent painless nodes and may have systemic features."
+    }
+  ],
+  "context": "A single rapidly enlarging, hot, tender node with fever is bacterial lymphadenitis even when small reactive nodes are also present; fluctuance suggests an abscess.",
+  "publicModule": {
+    "schemaVersion": 1,
+    "origin": "mirrored",
+    "discipline": "surgery",
+    "mirroredFrom": "md3:5aae61f57a465c2f",
+    "itemText": {
+      "licence": "CC-BY-4.0",
+      "attribution": "MD3 contributors"
+    },
+    "evidence": {
+      "kind": "reference",
+      "sourceId": "rch-clinicalguide-guideline-index-cervical-lymphadenopathy-9e2114"
+    },
+    "review": {
+      "verdict": "passed",
+      "contentHash": "9e7c3aae4fe7626ef0ea0f2547c2d87f2920202ba95af69028cdc2da53657abc"
+    }
+  }
+}

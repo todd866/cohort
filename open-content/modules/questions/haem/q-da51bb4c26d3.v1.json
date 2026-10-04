@@ -1,0 +1,64 @@
+{
+  "id": "bank:cohort:haem:q-da51bb4c26d3:v1",
+  "rotation": "cohort-open",
+  "moduleNodes": [
+    "cohort/haem"
+  ],
+  "topics": [
+    "haem"
+  ],
+  "questionType": "management",
+  "difficulty": "hard",
+  "stem": "A 6-year-old girl having chemotherapy for acute lymphoblastic leukaemia is brought to the emergency department with a fever. She is playful, and the following measurements are recorded:\n\n| Measurement | Value |\n| --- | --- |\n| Temperature | 38.7°C |\n| Heart rate | 124/min |\n| Blood pressure | 98/60 mmHg |\n| Capillary refill | under 2 seconds |\n| Neutrophils, 6 days ago | 0.3 ×10⁹/L |\n| Neutrophils, 3 days ago | 0.6 ×10⁹/L |\n\nHer central line site is clean. Blood cultures and a full blood count have been sent, and the count will take about 90 minutes. Her mother points out that her counts are recovering and asks whether antibiotics can wait for today's result.\n\nWhich next step is most appropriate?",
+  "options": [
+    {
+      "label": "A",
+      "text": "IV piperacillin–tazobactam within 60 minutes of arrival",
+      "isCorrect": true,
+      "explanation": "Correct. Fever in a child on chemotherapy is treated as febrile neutropenia until the count says otherwise. A stable child gets IV piperacillin–tazobactam within 60 minutes of arrival (30 if septic) without waiting for the count; amikacin is added if unstable or high risk."
+    },
+    {
+      "label": "B",
+      "text": "Await today's count, since her neutrophils are recovering",
+      "isCorrect": false,
+      "explanation": "A count from three days ago does not tell you today's count, which can fall again during chemotherapy. Waiting 90 minutes breaks the 60-minute target, and gram-negative bacteraemia can progress to shock within hours of looking well."
+    },
+    {
+      "label": "C",
+      "text": "Oral amoxicillin–clavulanate, with clinic review tomorrow",
+      "isCorrect": false,
+      "explanation": "Sending her home on oral antibiotics is not initial care. Fever with possible neutropenia is treated first with empirical IV antibiotics, and any later step-down depends on cultures, the count and her course."
+    },
+    {
+      "label": "D",
+      "text": "Paracetamol, then recheck the temperature in 1 hour",
+      "isCorrect": false,
+      "explanation": "Her measured temperature already meets the fever definition. Paracetamol may lower the number but does not treat bacteraemia, and rechecking delays antibiotics."
+    },
+    {
+      "label": "E",
+      "text": "Chest X-ray and urine culture before any antibiotic",
+      "isCorrect": false,
+      "explanation": "A chest X-ray is needed only with respiratory signs, and urine can be collected alongside treatment. Tests should not hold up the first antibiotic dose."
+    }
+  ],
+  "context": "Fever in a child on chemotherapy: IV broad-spectrum antibiotics such as piperacillin–tazobactam within 60 minutes (30 if septic). Do not wait for the count, however well the child looks or however the last count was trending.",
+  "publicModule": {
+    "schemaVersion": 1,
+    "origin": "mirrored",
+    "discipline": "haem",
+    "mirroredFrom": "md3:da51bb4c26d3388e",
+    "itemText": {
+      "licence": "CC-BY-4.0",
+      "attribution": "MD3 contributors"
+    },
+    "evidence": {
+      "kind": "reference",
+      "sourceId": "rch-icalguide-guideline-index-fever-and-suspected-or-confirmed-neutropenia-4280c8"
+    },
+    "review": {
+      "verdict": "passed",
+      "contentHash": "213e6501c062a268b81d873ed0376567ff4acb88e8699b843032759b49fef2ae"
+    }
+  }
+}

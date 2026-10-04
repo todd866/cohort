@@ -1,0 +1,64 @@
+{
+  "id": "bank:cohort:paeds:q-f2271d5e74a3:v1",
+  "rotation": "cohort-open",
+  "moduleNodes": [
+    "cohort/paeds"
+  ],
+  "topics": [
+    "paeds"
+  ],
+  "questionType": "management",
+  "difficulty": "medium",
+  "stem": "A term infant has a “refer” result in one ear on both the initial newborn hearing screen and the scheduled repeat screen. The parents report that the infant startles to loud sounds. The GP reviews the screening record.\n\nWhat should the GP recommend?",
+  "options": [
+    {
+      "label": "A",
+      "text": "Repeat the screen a third time at the six-week check",
+      "isCorrect": false,
+      "explanation": "Two refer results complete the screening pathway; a third screen delays diagnosis without adding information."
+    },
+    {
+      "label": "B",
+      "text": "Arrange prompt diagnostic audiology assessment",
+      "isCorrect": true,
+      "explanation": "A diagnostic audiological assessment establishes whether hearing loss is present and its type and degree. A refer screen alone does not prove permanent hearing loss."
+    },
+    {
+      "label": "C",
+      "text": "Review at 12 months, as only one ear did not pass",
+      "isCorrect": false,
+      "explanation": "Unilateral hearing loss can still affect speech and learning and may progress, so a refer result in one ear needs diagnostic assessment now."
+    },
+    {
+      "label": "D",
+      "text": "No further testing, as the infant startles to sound",
+      "isCorrect": false,
+      "explanation": "A startle response cannot exclude unilateral or partial hearing loss. It does not replace the recommended follow-up pathway."
+    },
+    {
+      "label": "E",
+      "text": "Monitor speech and refer if language is delayed",
+      "isCorrect": false,
+      "explanation": "Waiting for language delay misses the opportunity for early diagnosis and support. Follow-up should occur during infancy as arranged by the screening programme."
+    }
+  ],
+  "context": "A second newborn hearing-screen refer result requires diagnostic audiology, even if the infant responds to some sounds.",
+  "publicModule": {
+    "schemaVersion": 1,
+    "origin": "mirrored",
+    "discipline": "paeds",
+    "mirroredFrom": "md3:f2271d5e74a3c7ce",
+    "itemText": {
+      "licence": "CC-BY-4.0",
+      "attribution": "MD3 contributors"
+    },
+    "evidence": {
+      "kind": "reference",
+      "sourceId": "qld-childrens-ts-pdf-file-0025-174742-newborn-hearing-screening-protocols-guidelines-bf3392"
+    },
+    "review": {
+      "verdict": "passed",
+      "contentHash": "7146073049aba95fd0e56123c1629f176395d61cbb5a10355e793f2ad2ed837c"
+    }
+  }
+}

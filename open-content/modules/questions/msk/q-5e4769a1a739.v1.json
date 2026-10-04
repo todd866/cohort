@@ -1,0 +1,64 @@
+{
+  "id": "bank:cohort:msk:q-5e4769a1a739:v1",
+  "rotation": "cohort-open",
+  "moduleNodes": [
+    "cohort/msk"
+  ],
+  "topics": [
+    "msk"
+  ],
+  "questionType": "management",
+  "difficulty": "medium",
+  "stem": "A 7-year-old girl fell onto her outstretched left hand from the monkey bars. She is tender over the distal forearm with no deformity, and her hand is neurovascularly intact. The X-ray shows a bulge in the dorsal cortex of the distal radial metaphysis, with the volar cortex intact, no angulation and a normal physis.\n\nWhich is the most appropriate management?",
+  "options": [
+    {
+      "label": "A",
+      "text": "Above-elbow plaster cast for 6 weeks",
+      "isCorrect": false,
+      "explanation": "Above-elbow casting for 6 weeks is for unstable forearm fractures. A buckle fracture is stable and heals in about 3 weeks."
+    },
+    {
+      "label": "B",
+      "text": "Closed reduction under sedation, then cast",
+      "isCorrect": false,
+      "explanation": "Reduction is for angulation beyond age limits, such as more than 15 degrees at 5-10 years. This fracture has no angulation."
+    },
+    {
+      "label": "C",
+      "text": "Below-elbow cast and X-ray review at 1 week",
+      "isCorrect": false,
+      "explanation": "Casting with a fracture-clinic X-ray is for complete or greenstick metaphyseal fractures. Buckle fractures need no follow-up film or review."
+    },
+    {
+      "label": "D",
+      "text": "Removable splint for 3 weeks, no follow-up",
+      "isCorrect": true,
+      "explanation": "A buckle fracture is stable: a removable wrist splint or backslab for comfort for 3 weeks, taken off at home, with no clinic review or repeat X-ray."
+    },
+    {
+      "label": "E",
+      "text": "Collar and cuff sling for 3 weeks",
+      "isCorrect": false,
+      "explanation": "A sling does not immobilise the wrist and will not control pain from a distal radius fracture."
+    }
+  ],
+  "context": "Distal radius buckle fractures are stable: a removable splint for 3 weeks, removed at home, with no repeat X-ray or fracture-clinic review.",
+  "publicModule": {
+    "schemaVersion": 1,
+    "origin": "mirrored",
+    "discipline": "msk",
+    "mirroredFrom": "md3:5e4769a1a739e6cd",
+    "itemText": {
+      "licence": "CC-BY-4.0",
+      "attribution": "MD3 contributors"
+    },
+    "evidence": {
+      "kind": "reference",
+      "sourceId": "rch-radius-and-or-ulna-metaphyseal-fractures-emergency-department-setting-b2013a"
+    },
+    "review": {
+      "verdict": "passed",
+      "contentHash": "18bd42e8f98a526e7a553671c87ce1d3004ed94c6b9801c8bea8837a78b57ce9"
+    }
+  }
+}

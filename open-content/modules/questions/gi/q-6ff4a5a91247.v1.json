@@ -1,0 +1,64 @@
+{
+  "id": "bank:cohort:gi:q-6ff4a5a91247:v1",
+  "rotation": "cohort-open",
+  "moduleNodes": [
+    "cohort/gi"
+  ],
+  "topics": [
+    "gi"
+  ],
+  "questionType": "management",
+  "difficulty": "medium",
+  "stem": "Kai, 20 months, has looked pale for some weeks. He drinks about 1.2 litres of cow's milk a day, much of it from a bottle overnight, and eats little meat. He is active and well, with no murmur, bruising or organomegaly.\n\n| Result | Value | Reference range |\n| --- | --- | --- |\n| Haemoglobin | 86 g/L | 105-135 |\n| MCV | 58 fL | 70-86 |\n| Ferritin | 4 µg/L | 10-60 |\n\nWhite cells and platelets are normal.\n\nWhich initial management is most appropriate?",
+  "options": [
+    {
+      "label": "A",
+      "text": "Red cell transfusion, then an iron-rich diet",
+      "isCorrect": false,
+      "explanation": "RCH notes that blood transfusion is rarely required in iron deficiency. He is active, with no signs of cardiac compromise, and oral iron will correct his anaemia."
+    },
+    {
+      "label": "B",
+      "text": "Oral iron, with cow's milk under 500 mL a day",
+      "isCorrect": true,
+      "explanation": "Correct. Excess cow's milk is a classic cause of iron deficiency in toddlers. RCH treats it with oral iron 3-6 mg/kg/day and limits cow's milk to under 500 mL a day, with more iron-rich foods."
+    },
+    {
+      "label": "C",
+      "text": "Oral iron until his haemoglobin is normal",
+      "isCorrect": false,
+      "explanation": "Stopping when the haemoglobin normalises leaves his stores empty. RCH continues iron for at least 3 months after the anaemia has been corrected, then checks ferritin."
+    },
+    {
+      "label": "D",
+      "text": "IV iron infusion, then review in 3 months",
+      "isCorrect": false,
+      "explanation": "RCH considers IV iron for poor adherence, malabsorption, ongoing blood loss or failure of an oral trial. None applies to a toddler who has not yet had oral iron."
+    },
+    {
+      "label": "E",
+      "text": "Toddler formula in place of milk, and no iron",
+      "isCorrect": false,
+      "explanation": "Changing his milk alone does not treat established iron deficiency anaemia; he needs iron supplements as well as a diet with less milk and more iron-rich food."
+    }
+  ],
+  "context": "Iron deficiency from excess cow's milk: oral iron 3-6 mg/kg/day, cow's milk under 500 mL a day and more iron-rich foods; keep iron going 3 months after the Hb corrects. Transfusion is rarely needed.",
+  "publicModule": {
+    "schemaVersion": 1,
+    "origin": "mirrored",
+    "discipline": "gi",
+    "mirroredFrom": "md3:6ff4a5a9124773db",
+    "itemText": {
+      "licence": "CC-BY-4.0",
+      "attribution": "MD3 contributors"
+    },
+    "evidence": {
+      "kind": "reference",
+      "sourceId": "rch-clinicalguide-guideline-index-iron-deficiency-83a386"
+    },
+    "review": {
+      "verdict": "passed",
+      "contentHash": "8a2f6965f0f91b3638698029f0ea90c7f2a41be76ed40daff72153fd6836fb4b"
+    }
+  }
+}

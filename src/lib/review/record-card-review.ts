@@ -25,10 +25,11 @@ import {
   type PreparedLearningEvent,
 } from '@/lib/learning';
 import { getCoreSkillCap } from '@/lib/core-skills';
-import { findSimilar } from '@/lib/manifold';
+import { searchSimilar } from '@/lib/manifold';
 import { invalidateClusterState } from '@/lib/manifold/clustering';
 import { logger } from '@/lib/logger';
 import { persistableConceptId } from '@/lib/knowledge/synthetic-concept';
+import { SCAFFOLD_GAP_TYPES } from '@/lib/knowledge/scaffold-gap-types';
 import { mergeDecisionContext, type DecisionContext } from '@/lib/scheduler-observability';
 import { Prisma } from '@prisma/client';
 import {
@@ -74,6 +75,13 @@ export type RecordCardReviewInput = {
   batchId?: string;
   /** Request handlers pass Next's after(); non-request callers await inline. */
   schedulePostCommit?: PostCommitScheduler;
+  /**
+   * The card belongs to a deck another host serves (Cohort's module cards).
+   * The review itself is recorded in full, but nothing that reaches md3's
+   * cards runs: no similarity scaffolding (it would plant md3 cards as due),
+   * no leech alternatives, struggle regions or cluster invalidation.
+   */
+  isolatedFromMd3?: boolean;
 };
 
 export type RecordCardReviewOk = {
@@ -545,6 +553,21 @@ export async function recordCardReview(
     });
   }
 
+  if (input.isolatedFromMd3) {
+    postCommitTasks.length = 0;
+    postCommitTasks.push(
+      { name: 'streak', run: () => updateUserStreak(userId) },
+      { name: 'derived-learning-state', run: () => applyLearningEventDerivedState(preparedLearningEvent) },
+    );
+    await dispatchPostCommit({
+      owner: 'card-review',
+      context: { userId, cardId, clientRequestId },
+      scheduler: input.schedulePostCommit,
+      tasks: postCommitTasks,
+    });
+    return { ok: true, progress, masteryUpdate };
+  }
+
   postCommitTasks.push(
     { name: 'streak', run: () => updateUserStreak(userId) },
     {
@@ -574,10 +597,14 @@ export async function recordCardReview(
       name: 'scaffolding-queue',
       run: () => queueScaffoldingCards(
         userId,
-        cardId,
-        card.rotation,
+        {
+          id: cardId,
+          rotation: card.rotation,
+          complexity: card.complexity,
+          variantGroupId: card.variantGroupId,
+          topics: (card.topics as string[]) ?? [],
+        },
         now,
-        (card.topics as string[]) ?? [],
       ),
     });
   }
@@ -910,44 +937,63 @@ async function updateStruggleRegions(
  * the teaching that a student needs after failing a cloze card. Without
  * this, the student just sees more tests without understanding.
  */
+/** Neighbours this close are rewordings of the failed card (a moved blank scores ~0.997), not scaffolds. */
+const SCAFFOLD_NEAR_DUPLICATE_SIMILARITY = 0.95;
+/** Wide enough that excluding siblings and rewordings still leaves real candidates. */
+const SCAFFOLD_NEIGHBOURS = 10;
+const SCAFFOLD_MAX_QUEUED = 5;
+const DEFAULT_CARD_COMPLEXITY = 2;
+
+interface FailedCard {
+  id: string;
+  rotation: string;
+  complexity: number | null;
+  variantGroupId: string | null;
+  topics: string[];
+}
+
 async function queueScaffoldingCards(
   userId: string,
-  failedCardId: string,
-  rotation: string,
+  failed: FailedCard,
   now: Date,
-  failedCardTopics: string[] = []
 ): Promise<void> {
-  // Find similar cards (scaffolding) using embedding similarity
-  const similarCards = await findSimilar(failedCardId, 5);
+  const { id: failedCardId, rotation, topics: failedCardTopics } = failed;
+  const search = await searchSimilar(failedCardId, SCAFFOLD_NEIGHBOURS);
+  const similarCards = search.neighbours;
 
   if (similarCards.length === 0) {
+    // Nothing near the failed card at all is the strongest case of missing content: no simpler
+    // card on that ground, because no card on it. Only a search of the card's own embedding can
+    // say so. The same empty list comes back when the card has no embedding yet (nothing was
+    // searched) or from the topic fallback, and recording those would turn unknown into demand.
+    if (search.source === 'embedding') {
+      await recordNoSimplerScaffoldGap(failed, { nearestSimilarity: 0, similarCount: 0 });
+    }
     return;
   }
 
-  // Filter to simpler cards (complexity 1-2) that might scaffold the failed concept
+  // A scaffold is a SIMPLER card on the same ground: strictly lower complexity, from this rotation,
+  // and not the same fact reworded. Owner, 2026-10-02: "If I keep rating something as wrong it means
+  // we need more scaffolding material ... it can be quite repetitive, unhelpfully". Until this date
+  // findSimilar never returned complexity, so `complexity ?? 2 <= 2` passed every neighbour. Measured
+  // on 20 recently failed cards from live reviews: 100 cards queued, 73 no simpler than the miss, 16
+  // from another rotation, 5 siblings or rewordings, 6 genuine scaffolds; a missed catheter-position
+  // card queued five more catheter-position cards at the same level. Now: 12 scaffolds, 12 logged gaps.
+  const failedComplexity = failed.complexity ?? DEFAULT_CARD_COMPLEXITY;
   const cardIds = similarCards
-    .filter((c) => (c.complexity ?? 2) <= 2)
+    .filter((c) => (c.complexity ?? DEFAULT_CARD_COMPLEXITY) < failedComplexity)
+    .filter((c) => c.similarity < SCAFFOLD_NEAR_DUPLICATE_SIMILARITY)
+    .filter((c) => !(failed.variantGroupId && c.variantGroupId === failed.variantGroupId))
+    .filter((c) => c.rotation === undefined || c.rotation === rotation)
+    .slice(0, SCAFFOLD_MAX_QUEUED)
     .map((c) => c.cardId);
 
-  // Log scaffold gap: when the scheduler WANTS to scaffold but can't find content.
-  // These accumulate as demand signals for content creation.
+  // Neighbours, but none simpler and different: the scaffold is missing.
   const hasScaffoldCards = cardIds.length > 0;
   if (!hasScaffoldCards) {
-    // No simpler cards exist nearby — record as a content gap
-    await prisma.contentGap.create({
-      data: {
-        rotation,
-        gapType: 'scaffold_gap',
-        nearestSimilarity: similarCards.length > 0 ? similarCards[0].similarity : 0,
-        candidateCount: similarCards.length,
-        // Store the failed card info in a way the worklist script can use
-        conceptId: null, // Will be enriched by worklist script if needed
-      },
-    });
-
-    logger.info('Scaffold gap detected', {
-      failedCardId, rotation, topics: failedCardTopics,
-      similarCount: similarCards.length, scaffoldableCount: 0,
+    await recordNoSimplerScaffoldGap(failed, {
+      nearestSimilarity: similarCards[0].similarity,
+      similarCount: similarCards.length,
     });
   }
 
@@ -1018,6 +1064,37 @@ async function queueScaffoldingCards(
     data: {
       nextDueAt: now,
     },
+  });
+}
+
+/**
+ * Log a scaffold gap: a learner missed this card and nothing simpler on the same ground was found
+ * to step down to. These accumulate as demand signals for content creation, keyed to the failed
+ * card's concept so repeated misses on one fact add up to one authoring ask.
+ *
+ * This is AUTHORING demand (simpler teaching material is missing), so it has its own gap type and
+ * candidateCount counts qualifying scaffolds, which is none. It used to carry the neighbour count,
+ * and scaffold:needs reads candidateCount > 0 as "a scaffold exists, it just wasn't served" (a
+ * consumption gap): every one of these rows would have read as not a defect.
+ */
+async function recordNoSimplerScaffoldGap(
+  failed: FailedCard,
+  search: { nearestSimilarity: number; similarCount: number },
+): Promise<void> {
+  const [conceptId = null] = await getConceptIdsForCard(failed.id).catch(() => [] as string[]);
+  await prisma.contentGap.create({
+    data: {
+      rotation: failed.rotation,
+      gapType: SCAFFOLD_GAP_TYPES.failedCard,
+      nearestSimilarity: search.nearestSimilarity,
+      candidateCount: 0,
+      conceptId,
+    },
+  });
+
+  logger.info('Scaffold gap detected', {
+    failedCardId: failed.id, rotation: failed.rotation, topics: failed.topics,
+    similarCount: search.similarCount, scaffoldableCount: 0,
   });
 }
 

@@ -10,6 +10,8 @@ import type { NoveltyProgressSnapshot } from './novelty-budget';
 import type { FollowUpState } from '@/lib/practice-exam/follow-up-state';
 
 export interface UnifiedItem {
+  /** The saved preference captured at selection, including for offline packs. */
+  reviewChallenge?: import('./review-challenge-preference').ReviewChallengePreference;
   type: 'card' | 'question' | 'group' | 'video';
   id: string;
   /** Present only after an owned exact-retest or scaffold delivery is verified. */
@@ -19,6 +21,8 @@ export interface UnifiedItem {
   back?: string;
   backs?: string[] | null;
   context?: string | null;
+  /** Per-item abbreviation decodes. Never infer these from rotation/global glossary. */
+  abbreviations?: Record<string, string> | null;
   sourceComponent?: string;
   crosslinks?: {
     primary?: string;
@@ -112,7 +116,17 @@ export interface UnifiedItem {
     // cards — recallOnExamDay ≥ targetRecall AND conceptHasPristine).
     // Without this label, strong-pristine serves are indistinguishable
     // from regular reinforcement in analytics.
-    | 'strong_pristine';
+    | 'strong_pristine'
+    // A scaffold card for a statement the learner just got wrong in an
+    // exam-only module (statement-scaffold-delivery.ts). The only card those
+    // sessions admit.
+    | 'statement_scaffold';
+  /** Preserve scaffold anchor identity through cache hydration and reordering. */
+  struggleIntervention?: {
+    strategy: string;
+    isScaffold?: boolean;
+    targetCardId?: string;
+  };
   /** Teaching signal ID for prediction/outcome tracking */
   signalId?: string;
   /** ServeDecision row id; threaded through cache JSON and echoed back on /record. */
@@ -211,8 +225,26 @@ export const MAX_BATCH_SIZE = 100;
  */
 export const CLIENT_REVIEW_BATCH_SIZE = 15;
 
+/**
+ * A cached queue holding fewer items than this cannot fill one client batch.
+ * The grade that leaves a queue below it expires the queue and asks for a
+ * rebuild (unified-session-cache-store.ts), and the warm cron treats such a
+ * queue as missing (session-cache-warm.ts). Defined here, beside the batch it
+ * is measured against, so the warm planner can share it without loading the
+ * database client.
+ */
+export const QUEUE_DRAIN_FLOOR_ITEMS = CLIENT_REVIEW_BATCH_SIZE;
+
 /** Shared context passed from the orchestrator to each session path. */
 export interface SessionContext {
+  reviewChallenge?: import('./review-challenge-preference').ReviewChallengePreference;
+  /**
+   * Lease lifetime for the background queue refreshes this request starts.
+   * They run in the after() of the function serving it, so it is that
+   * function's ceiling, stated by the calling route. Unset: the shortest
+   * ceiling, SESSION_REFRESH_LEASE_TTL_MS.
+   */
+  refreshLeaseTtlMs?: number;
   /** Recent server-scored practice-paper gaps, already materialized at submission. */
   practiceReviewFocus?: PracticeReviewFocus | null;
   /** Request-local projection; never reconstructed from history while serving. */

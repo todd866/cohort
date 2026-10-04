@@ -1,0 +1,64 @@
+{
+  "id": "bank:cohort:obs:q-37648a282a78:v1",
+  "rotation": "cohort-open",
+  "moduleNodes": [
+    "cohort/obs"
+  ],
+  "topics": [
+    "obs"
+  ],
+  "questionType": "management",
+  "difficulty": "medium",
+  "stem": "A woman at 39+2 weeks chose expectant care after confirmed prelabour rupture of membranes. Twenty-six hours later she has not entered labour. She is afebrile, liquor remains clear and fetal assessment is reassuring. A recent GBS screen was negative. Her obstetric registrar revisits the birth plan with her.\n\nWhich recommendation is most appropriate now?",
+  "options": [
+    {
+      "label": "A",
+      "text": "Continue expectant care to 96 hours, as she is well and GBS negative",
+      "isCorrect": false,
+      "explanation": "Once about 24 hours have passed at term, induction is recommended because infection risk rises with time; expectant care beyond that is her informed choice, not the recommendation."
+    },
+    {
+      "label": "B",
+      "text": "Start intravenous benzylpenicillin and continue expectant management",
+      "isCorrect": false,
+      "explanation": "With a negative GBS screen, prolonged rupture alone is not an indication for GBS prophylaxis, and antibiotics do not replace timely birth."
+    },
+    {
+      "label": "C",
+      "text": "Recommend caesarean birth, as membranes ruptured over 24 hours ago",
+      "isCorrect": false,
+      "explanation": "Prolonged membrane rupture is not an indication for caesarean; induction is appropriate."
+    },
+    {
+      "label": "D",
+      "text": "Continue expectant care and induce only if fever or CTG change appears",
+      "isCorrect": false,
+      "explanation": "Waiting for fever or CTG change means acting after infection has developed rather than preventing it."
+    },
+    {
+      "label": "E",
+      "text": "Recommend induction of labour now, after discussing the options",
+      "isCorrect": true,
+      "explanation": "After about 24 hours of term prelabour rupture without labour, induction should be recommended, with shared decision-making."
+    }
+  ],
+  "context": "After about 24 hours of term PROM without labour, offer induction even when the woman is well and GBS negative.",
+  "publicModule": {
+    "schemaVersion": 1,
+    "origin": "mirrored",
+    "discipline": "obs",
+    "mirroredFrom": "md3:37648a282a78de4b",
+    "itemText": {
+      "licence": "CC-BY-4.0",
+      "attribution": "MD3 contributors"
+    },
+    "evidence": {
+      "kind": "reference",
+      "sourceId": "nice-guidance-ng207-chapter-recommendations-3f0713"
+    },
+    "review": {
+      "verdict": "passed",
+      "contentHash": "7685cde4b2ced39ee075a2ed6841d4e4966af15fd3c0563221cc95e147784516"
+    }
+  }
+}

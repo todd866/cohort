@@ -1,0 +1,64 @@
+{
+  "id": "bank:cohort:paeds:q-eb140e9a7555:v1",
+  "rotation": "cohort-open",
+  "moduleNodes": [
+    "cohort/paeds"
+  ],
+  "topics": [
+    "paeds"
+  ],
+  "questionType": "management",
+  "difficulty": "medium",
+  "stem": "A term baby is born through meconium-stained amniotic fluid. The baby cries immediately, has good tone and a heart rate of 150 beats/min, and breathes comfortably without signs of airway obstruction.\n\nWhat is the most appropriate immediate airway plan?",
+  "options": [
+    {
+      "label": "A",
+      "text": "Routine oropharyngeal suction before skin-to-skin care",
+      "isCorrect": false,
+      "explanation": "Routine suction provides no benefit in a vigorous unobstructed baby and can cause harm. Meconium exposure alone is not an indication."
+    },
+    {
+      "label": "B",
+      "text": "Direct laryngoscopy and endotracheal suction",
+      "isCorrect": false,
+      "explanation": "A vigorous baby does not need routine laryngoscopy or tracheal suction. These procedures add risk without improving outcomes in this situation."
+    },
+    {
+      "label": "C",
+      "text": "No routine suction; skin-to-skin care with observation",
+      "isCorrect": true,
+      "explanation": "The baby is breathing effectively and has good tone and heart rate. Continue routine supportive care and observe for respiratory compromise because of the meconium exposure."
+    },
+    {
+      "label": "D",
+      "text": "Positive-pressure ventilation",
+      "isCorrect": false,
+      "explanation": "PPV supports inadequate breathing; it is not a method for clearing meconium. This baby already has effective spontaneous respiration."
+    },
+    {
+      "label": "E",
+      "text": "Nasal continuous positive airway pressure",
+      "isCorrect": false,
+      "explanation": "CPAP is used when respiratory support is clinically needed. Meconium in the fluid without respiratory distress does not itself justify CPAP."
+    }
+  ],
+  "context": "A vigorous meconium-exposed newborn does not need routine suction; provide routine care and observe breathing.",
+  "publicModule": {
+    "schemaVersion": 1,
+    "origin": "mirrored",
+    "discipline": "paeds",
+    "mirroredFrom": "md3:eb140e9a75551a5d",
+    "itemText": {
+      "licence": "CC-BY-4.0",
+      "attribution": "MD3 contributors"
+    },
+    "evidence": {
+      "kind": "reference",
+      "sourceId": "qld-health-data-assets-pdf-file-0011-140600-g-resus-8ec869"
+    },
+    "review": {
+      "verdict": "passed",
+      "contentHash": "43ee170001acd75b64e4ab4be949a988763f671bd2c40ea3b5c6e6871e2b63ff"
+    }
+  }
+}

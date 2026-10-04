@@ -1,0 +1,64 @@
+{
+  "id": "bank:cohort:obs:q-d47c3d820c03:v1",
+  "rotation": "cohort-open",
+  "moduleNodes": [
+    "cohort/obs"
+  ],
+  "topics": [
+    "obs"
+  ],
+  "questionType": "management",
+  "difficulty": "medium",
+  "stem": "A patient at ten weeks has persistent vomiting and cannot retain oral fluids. In the emergency department she is tachycardic with dry mucous membranes. IV thiamine and an antiemetic have been given; renal function is normal.\n\n| Test | Result | Reference range |\n| --- | --- | --- |\n| Sodium | 129 mmol/L | 135–145 |\n| Potassium | 3.1 mmol/L | 3.5–5.0 |\n| Glucose | 4.8 mmol/L | 3.9–7.8 |\n\nWhich initial IV fluid plan is most appropriate?",
+  "options": [
+    {
+      "label": "A",
+      "text": "5% glucose with potassium chloride",
+      "isCorrect": false,
+      "explanation": "Glucose-based fluid delivers free water that can worsen hyponatraemia and does little to restore extracellular volume; adding potassium does not fix that. Thiamine must precede carbohydrate in a depleted patient, although it has been given here."
+    },
+    {
+      "label": "B",
+      "text": "3% sodium chloride by slow infusion",
+      "isCorrect": false,
+      "explanation": "Hypertonic saline is reserved for severe symptomatic hyponatraemia such as seizures or reduced consciousness. Neither is present, and it does not address her volume deficit."
+    },
+    {
+      "label": "C",
+      "text": "4% albumin then maintenance fluid",
+      "isCorrect": false,
+      "explanation": "Routine hyperemesis-related dehydration is treated with crystalloid; a colloid is not needed here."
+    },
+    {
+      "label": "D",
+      "text": "0.9% sodium chloride with potassium",
+      "isCorrect": true,
+      "explanation": "Isotonic crystalloid restores circulating volume; replace potassium in a controlled way. Reassess fluid balance and repeat electrolytes, including sodium, to guide ongoing replacement."
+    },
+    {
+      "label": "E",
+      "text": "0.18% sodium chloride with 4% glucose",
+      "isCorrect": false,
+      "explanation": "This hypotonic regimen is a poor initial choice with existing hyponatraemia and extracellular volume depletion."
+    }
+  ],
+  "context": "Initially rehydrate significant hyperemesis with isotonic crystalloid and correct measured electrolyte deficits.",
+  "publicModule": {
+    "schemaVersion": 1,
+    "origin": "mirrored",
+    "discipline": "obs",
+    "mirroredFrom": "md3:d47c3d820c0391ca",
+    "itemText": {
+      "licence": "CC-BY-4.0",
+      "attribution": "MD3 contributors"
+    },
+    "evidence": {
+      "kind": "reference",
+      "sourceId": "nsw-health-pds-activepdsdocuments-gl2022-009-90aecc"
+    },
+    "review": {
+      "verdict": "passed",
+      "contentHash": "85bd366b51635bbb622f5ed5ad1a582e98211ed0cc21e9b81fcccb553afbdf34"
+    }
+  }
+}

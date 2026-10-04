@@ -1,0 +1,64 @@
+{
+  "id": "bank:cohort:obs:q-837334873d31:v1",
+  "rotation": "cohort-open",
+  "moduleNodes": [
+    "cohort/obs"
+  ],
+  "topics": [
+    "obs"
+  ],
+  "questionType": "management",
+  "difficulty": "hard",
+  "stem": "A 29-year-old nullipara at 41+2 weeks is admitted for induction. The fetus is cephalic with the head 4/5 palpable, the membranes are intact and the CTG is normal. On examination the os admits one finger, but the cervix is uneffaced, firm and posterior, with the head at station −3; her Bishop score is 1. The resident suggests rupturing the membranes now, since the os is open.\n\nWhat should the obstetric registrar do first?",
+  "options": [
+    {
+      "label": "A",
+      "text": "Amniotomy now, as the os admits a finger, then start oxytocin",
+      "isCorrect": false,
+      "explanation": "A Bishop score of 1 is an unripe cervix, and amniotomy with the head at station −3 risks cord prolapse; an open os alone does not make the cervix favourable."
+    },
+    {
+      "label": "B",
+      "text": "Oxytocin infusion with the membranes left intact, titrated to effect",
+      "isCorrect": false,
+      "explanation": "Oxytocin stimulates contractions but works poorly on an unripe cervix, so it is not the first step when ripening is needed."
+    },
+    {
+      "label": "C",
+      "text": "Membrane sweep, with discharge and review for induction in 3 days",
+      "isCorrect": false,
+      "explanation": "A sweep may reduce the need for formal induction, but induction at 41+2 weeks has been agreed and the cervix needs ripening now."
+    },
+    {
+      "label": "D",
+      "text": "Ripen the cervix with a balloon catheter or vaginal prostaglandin",
+      "isCorrect": true,
+      "explanation": "An unfavourable cervix is ripened first, with a balloon or prostaglandin, and amniotomy and oxytocin follow once it is favourable."
+    },
+    {
+      "label": "E",
+      "text": "Caesarean birth, as a Bishop score of 1 predicts a failed induction",
+      "isCorrect": false,
+      "explanation": "A low Bishop score predicts the need for ripening, not failure, and induction remains appropriate."
+    }
+  ],
+  "context": "Score the whole cervix, not the os: a Bishop score of 1 is unripe even when the os admits a finger, so ripen before amniotomy.",
+  "publicModule": {
+    "schemaVersion": 1,
+    "origin": "mirrored",
+    "discipline": "obs",
+    "mirroredFrom": "md3:837334873d311e38",
+    "itemText": {
+      "licence": "CC-BY-4.0",
+      "attribution": "MD3 contributors"
+    },
+    "evidence": {
+      "kind": "reference",
+      "sourceId": "qld-health-data-assets-pdf-file-0020-641423-g-iol-d0f8c4"
+    },
+    "review": {
+      "verdict": "passed",
+      "contentHash": "b56f452706f4410d8e5f1c0ad5c0494b548f337451ff7cf0140e9633499b7362"
+    }
+  }
+}

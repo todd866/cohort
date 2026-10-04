@@ -1,0 +1,64 @@
+{
+  "id": "bank:cohort:psych:q-00444be12fce:v1",
+  "rotation": "cohort-open",
+  "moduleNodes": [
+    "cohort/psych"
+  ],
+  "topics": [
+    "psych"
+  ],
+  "questionType": "management",
+  "difficulty": "hard",
+  "stem": "A GP reviews an 80-year-old man with established dementia with Lewy bodies who already takes rivastigmine. Most evenings he sees a small dog in the room. He knows that others cannot see it, finds it pleasant and is not frightened. His attention and function are at his usual level, and a review finds no new medical problem or medicine. His daughter is upset and asks for haloperidol to stop the visions.\n\nWhat is the best response?",
+  "options": [
+    {
+      "label": "A",
+      "text": "Leave the visions untreated and monitor for distress",
+      "isCorrect": true,
+      "explanation": "The hallucinations cause him no distress or risk, so no drug is needed. Explain this to his daughter and review if distress, agitation or safety problems develop."
+    },
+    {
+      "label": "B",
+      "text": "Start low-dose haloperidol and review in one week",
+      "isCorrect": false,
+      "explanation": "People with Lewy body dementia can have severe, sometimes fatal, sensitivity reactions to antipsychotics; haloperidol is particularly hazardous."
+    },
+    {
+      "label": "C",
+      "text": "Start risperidone, as the visions are persistent",
+      "isCorrect": false,
+      "explanation": "Persistence alone is not a reason to treat, and risperidone carries the same antipsychotic sensitivity risk."
+    },
+    {
+      "label": "D",
+      "text": "Add benzatropine to haloperidol to prevent rigidity",
+      "isCorrect": false,
+      "explanation": "Adding an anticholinergic does not remove the sensitivity risk and may worsen confusion."
+    },
+    {
+      "label": "E",
+      "text": "Give bedtime diazepam to lessen the visions",
+      "isCorrect": false,
+      "explanation": "A benzodiazepine will not remove the visions and increases sedation, falls and confusion."
+    }
+  ],
+  "context": "In dementia with Lewy bodies, treat hallucinations only when they cause distress or risk, and avoid haloperidol because of severe antipsychotic sensitivity.",
+  "publicModule": {
+    "schemaVersion": 1,
+    "origin": "mirrored",
+    "discipline": "psych",
+    "mirroredFrom": "md3:00444be12fce1d94",
+    "itemText": {
+      "licence": "CC-BY-4.0",
+      "attribution": "MD3 contributors"
+    },
+    "evidence": {
+      "kind": "reference",
+      "sourceId": "nice-guidance-ng97-chapter-recommendations-04b504"
+    },
+    "review": {
+      "verdict": "passed",
+      "contentHash": "e2b7bd0647759a73b22fce4759ecf3a6bbab128d7efaa8d17d2ec60b143ee4ca"
+    }
+  }
+}

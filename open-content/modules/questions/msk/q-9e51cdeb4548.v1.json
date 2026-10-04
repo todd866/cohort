@@ -1,0 +1,64 @@
+{
+  "id": "bank:cohort:msk:q-9e51cdeb4548:v1",
+  "rotation": "cohort-open",
+  "moduleNodes": [
+    "cohort/msk"
+  ],
+  "topics": [
+    "msk"
+  ],
+  "questionType": "management",
+  "difficulty": "medium",
+  "stem": "A 2-year-old girl stopped using her left arm after her father pulled her up by the hand to stop her stepping onto the road. She holds the arm by her side, slightly bent, with the palm facing down, and cries when the forearm is turned palm up. There is no swelling, bruising or deformity, and no tenderness over the clavicle, humerus or wrist. Her parents ask for an X-ray to be sure nothing is broken.\n\nWhat is the most appropriate next step?",
+  "options": [
+    {
+      "label": "A",
+      "text": "Elbow X-ray first, as her parents are worried about a fracture",
+      "isCorrect": false,
+      "explanation": "Radiographs are needed only when the history or examination suggests another diagnosis, such as a fracture, or when reduction fails. A typical pull with no swelling or bony tenderness does not need one, and reduction usually reassures the family."
+    },
+    {
+      "label": "B",
+      "text": "Above-elbow backslab and fracture clinic review",
+      "isCorrect": false,
+      "explanation": "Immobilisation treats a fracture. Nothing on examination suggests one."
+    },
+    {
+      "label": "C",
+      "text": "Reduce by hyperpronation of the forearm, without an X-ray",
+      "isCorrect": true,
+      "explanation": "Correct. A pulled elbow (radial head subluxation) after traction on the hand is reduced by hyperpronation, or by supination then flexion if that fails. She will usually use the arm again within minutes."
+    },
+    {
+      "label": "D",
+      "text": "Sling, with review in a week if she still will not use it",
+      "isCorrect": false,
+      "explanation": "Leaving the subluxation unreduced prolongs pain and loss of use when a quick manoeuvre will fix it."
+    },
+    {
+      "label": "E",
+      "text": "Orthopaedic referral for reduction under sedation",
+      "isCorrect": false,
+      "explanation": "Reduction is a simple bedside procedure that does not need sedation or specialist referral."
+    }
+  ],
+  "context": "A young child who stops using the arm after a pull on the hand, holding it pronated with no swelling or bony tenderness, has a pulled elbow; reduce it by hyperpronation or supination-flexion, reserving X-ray for atypical cases or failed reduction.",
+  "publicModule": {
+    "schemaVersion": 1,
+    "origin": "mirrored",
+    "discipline": "msk",
+    "mirroredFrom": "md3:9e51cdeb45488c85",
+    "itemText": {
+      "licence": "CC-BY-4.0",
+      "attribution": "MD3 contributors"
+    },
+    "evidence": {
+      "kind": "reference",
+      "sourceId": "rch-clinicalguide-guideline-index-pulled-elbow-2b5ec5"
+    },
+    "review": {
+      "verdict": "passed",
+      "contentHash": "6d84938009afb4a506ac23894cc6ce1814ee264f2275b6f5eadf59b6e0d8ad0c"
+    }
+  }
+}

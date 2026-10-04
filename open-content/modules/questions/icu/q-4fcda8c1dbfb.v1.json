@@ -1,0 +1,64 @@
+{
+  "id": "bank:cohort:icu:q-4fcda8c1dbfb:v1",
+  "rotation": "cohort-open",
+  "moduleNodes": [
+    "cohort/icu"
+  ],
+  "topics": [
+    "icu"
+  ],
+  "questionType": "management",
+  "difficulty": "hard",
+  "stem": "A 24-year-old with known bee-venom allergy develops wheeze and a blood pressure of 78/40 mmHg within minutes of a sting. The emergency registrar gave 0.5 mg intramuscular adrenaline five minutes ago. He is still wheezy, with blood pressure 80/45 mmHg and a palpable pulse. High-flow oxygen and a rapid 20 mL/kg saline bolus are running through a large IV cannula, and he takes no regular medicines.\n\nWhich drug treatment is most appropriate now?",
+  "options": [
+    {
+      "label": "A",
+      "text": "Start an intravenous adrenaline infusion now",
+      "isCorrect": false,
+      "explanation": "An adrenaline infusion is the next step when shock persists after two or more intramuscular doses and fluids, run by staff experienced in its use. After one dose, the next step is another intramuscular dose."
+    },
+    {
+      "label": "B",
+      "text": "Give 1 mg intravenous adrenaline as a bolus",
+      "isCorrect": false,
+      "explanation": "A 1 mg IV bolus is the cardiac arrest dose. Given to a patient with a pulse, it can cause severe hypertension, arrhythmia and myocardial ischaemia."
+    },
+    {
+      "label": "C",
+      "text": "Give IV glucagon for adrenaline resistance",
+      "isCorrect": false,
+      "explanation": "Glucagon is considered for refractory anaphylaxis in patients taking a beta blocker. He takes no regular medicines and has had only one dose of adrenaline."
+    },
+    {
+      "label": "D",
+      "text": "Repeat 0.5 mg intramuscular adrenaline now",
+      "isCorrect": true,
+      "explanation": "Features of anaphylaxis persist five minutes after the first dose, so a second intramuscular dose is due. If shock persists after further doses, an infusion follows."
+    },
+    {
+      "label": "E",
+      "text": "Give IV hydrocortisone and reassess in ten minutes",
+      "isCorrect": false,
+      "explanation": "Corticosteroids act too slowly to treat shock or bronchospasm and must not delay adrenaline."
+    }
+  ],
+  "context": "Repeat intramuscular adrenaline every five minutes while anaphylaxis persists; start an infusion when shock persists despite two or more doses and fluids.",
+  "publicModule": {
+    "schemaVersion": 1,
+    "origin": "mirrored",
+    "discipline": "icu",
+    "mirroredFrom": "md3:4fcda8c1dbfb2b79",
+    "itemText": {
+      "licence": "CC-BY-4.0",
+      "attribution": "MD3 contributors"
+    },
+    "evidence": {
+      "kind": "reference",
+      "sourceId": "ascia-hp-anaphylaxis-acute-management-guidelines-f8344e"
+    },
+    "review": {
+      "verdict": "passed",
+      "contentHash": "b2d7b789056d71cc0a59c0cf085f3ca9dba4c5ef2c21945fc0b81b16f6375035"
+    }
+  }
+}

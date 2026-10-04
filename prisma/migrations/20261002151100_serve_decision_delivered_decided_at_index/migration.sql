@@ -1,0 +1,47 @@
+-- Keep this migration outside an explicit transaction: PostgreSQL requires
+-- CREATE INDEX CONCURRENTLY to run as a top-level statement, and Prisma runs a
+-- migration file statement by statement. Keep it to this one statement.
+--
+-- Every ten minutes the warm cron (src/app/api/cron/session-cache-warm) asks
+-- which learners were served what in the last 2 days:
+--
+--   SELECT "userId", rotation, max("decidedAt") FROM "ServeDecision"
+--    WHERE "decidedAt" >= $1 AND "deliveryPath" IS NOT NULL
+--      AND rotation IS NOT NULL
+--    GROUP BY "userId", rotation
+--
+-- Without this index the planner reaches those rows either through
+-- ServeDecision_decidedAt_idx, which visits every decision in the window, most
+-- of them cache-build and offline-pack rows with no deliveryPath, or through
+-- the exposed-rows partial index, which holds every delivered row ever. Either
+-- way every candidate costs a heap fetch from a multi-gigabyte table, and the
+-- statement still took seconds a call after the window was cut to 2 days.
+-- Partial on delivered rows and covering the two grouped columns, this index
+-- makes it an index-only range scan over just the delivered rows in the window,
+-- and it stays small because delivered rows are a small share of the table.
+-- On a local table of the same shape (600k rows, 1 in 20 delivered) the plan
+-- went from a bitmap heap scan touching 4,432 buffers to an index-only scan
+-- touching 33. The query must say IS NOT NULL: written IN ('live', 'cached')
+-- the planner still uses this index but re-checks every row on the heap.
+--
+-- Prisma cannot express a partial or INCLUDE index, so it exists only in SQL,
+-- like ServeDecision_exposed_userId_itemType_itemId_decidedAt_idx, and the
+-- drift check tolerates it.
+--
+-- PRE-BUILD IT BEFORE THE RELEASE. On a copy of production data the build took
+-- 101 s, too close to the release's 120 s statement_timeout. Build it first on
+-- a direct connection with a longer limit, then confirm it is valid:
+--   SET statement_timeout = '45min';
+--   CREATE INDEX CONCURRENTLY IF NOT EXISTS "ServeDecision_delivered_decidedAt_idx" ... (this statement);
+--   SELECT indisvalid, indisready FROM pg_index
+--    WHERE indexrelid = '"ServeDecision_delivered_decidedAt_idx"'::regclass;  -- both true
+-- IF NOT EXISTS then makes this migration a no-op. IF NOT EXISTS also skips an
+-- INVALID index left by an interrupted build, so if either flag is false:
+--   DROP INDEX CONCURRENTLY "ServeDecision_delivered_decidedAt_idx";
+-- build it again as above, and if this migration had failed,
+--   npx prisma migrate resolve --rolled-back 20261002151100_serve_decision_delivered_decided_at_index
+-- before deploying again.
+CREATE INDEX CONCURRENTLY IF NOT EXISTS "ServeDecision_delivered_decidedAt_idx"
+    ON "ServeDecision" ("decidedAt")
+    INCLUDE ("userId", "rotation")
+    WHERE "deliveryPath" IS NOT NULL;

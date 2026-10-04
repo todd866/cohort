@@ -1,9 +1,11 @@
 import type { ResolvedDatabaseTarget } from '../../src/lib/database-target';
+import { resolveNeonConnectionTimeoutMs } from '../../src/lib/neon-connection-timeout';
 import {
   EXPECTED_PRODUCTION_DATABASE_TARGET_SHA256,
   EXPECTED_PRODUCTION_DATABASE_UNPOOLED_TARGET_SHA256,
   verifyProductionDatabaseTargets,
 } from '../ops/verify-production-db-target.mjs';
+import { directPgOptions } from './pg-direct-config.mjs';
 
 interface ScriptDatabaseEnvironment {
   [key: string]: string | undefined;
@@ -20,19 +22,26 @@ interface ReviewedTargetFingerprints {
   expectedUnpooledFingerprint?: string;
 }
 
-const DIRECT_CONNECTION_TIMEOUT_MS = 10_000 as const;
+/** node-postgres pool settings for the attested direct session, minus the URL. */
+export type DirectPoolConfig = ReturnType<typeof directPgOptions> & { max: 1 };
 
 export type ScriptDatabaseConnection =
   | {
       adapter: 'neon';
       connectionString: string | undefined;
+      /**
+       * Connect bound only. A pooled client gets no query deadline: a query
+       * rejected client side leaves its backend running behind a socket the
+       * pool then reuses.
+       */
+      connectionTimeoutMillis: number;
       provenance: string;
     }
   | {
       adapter: 'pg';
       connectionString: string | undefined;
-      connectionTimeoutMillis?: typeof DIRECT_CONNECTION_TIMEOUT_MS;
-      maxConnections?: 1;
+      /** Present for the attested production session; absent for the local mirror. */
+      pool?: DirectPoolConfig;
       provenance: string;
     };
 
@@ -65,6 +74,7 @@ export function resolveScriptDatabaseConnection(
     return {
       adapter: 'neon',
       connectionString: databaseTarget.connectionString,
+      connectionTimeoutMillis: resolveNeonConnectionTimeoutMs(env),
       provenance: 'configured-database · transport: neon-websocket · endpoint: configured',
     };
   }
@@ -110,11 +120,13 @@ export function resolveScriptDatabaseConnection(
   const directConnectionUrl = new URL(directCandidates[0][1]);
   directConnectionUrl.searchParams.set('sslmode', 'verify-full');
 
+  // TCP keepalive and a query deadline, so a half-open socket after a compute
+  // restart fails the step (and the release runner retries it) instead of
+  // hanging. See pg-direct-config.mjs.
   return {
     adapter: 'pg',
     connectionString: directConnectionUrl.toString(),
-    connectionTimeoutMillis: DIRECT_CONNECTION_TIMEOUT_MS,
-    maxConnections: 1,
+    pool: { ...directPgOptions(), max: 1 },
     provenance: 'configured-database · transport: direct-postgres · endpoint: reviewed-unpooled',
   };
 }

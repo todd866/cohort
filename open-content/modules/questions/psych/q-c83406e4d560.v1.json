@@ -1,0 +1,64 @@
+{
+  "id": "bank:cohort:psych:q-c83406e4d560:v1",
+  "rotation": "cohort-open",
+  "moduleNodes": [
+    "cohort/psych"
+  ],
+  "topics": [
+    "psych"
+  ],
+  "questionType": "management",
+  "difficulty": "medium",
+  "stem": "A paediatrician reviews a 10-year-old whose ADHD has improved on morning methylphenidate. Over three months his weight has fallen across a centile line, although height velocity is maintained. He takes the medicine before breakfast, then eats little until evening. Examination and history reveal no other cause of weight loss.\n\nWhich initial adjustment best addresses this adverse effect while preserving benefit?",
+  "options": [
+    {
+      "label": "A",
+      "text": "Increase the morning dose to improve meal-time focus",
+      "isCorrect": false,
+      "explanation": "A higher stimulant dose may worsen appetite suppression and is not supported by the described symptom control."
+    },
+    {
+      "label": "B",
+      "text": "Switch to a long-acting formulation at the same time",
+      "isCorrect": false,
+      "explanation": "A long-acting preparation keeps appetite suppressed for longer through the day, which is likely to worsen the lunchtime intake problem."
+    },
+    {
+      "label": "C",
+      "text": "Add a midday dose to maintain symptom control through dinner",
+      "isCorrect": false,
+      "explanation": "An additional dose could extend appetite suppression, and inadequate symptom control is not reported. Evening appetite can instead be used to support intake."
+    },
+    {
+      "label": "D",
+      "text": "Stop the stimulant on school days to allow catch-up",
+      "isCorrect": false,
+      "explanation": "Stopping on school days gives up the benefit when it is needed most; planned breaks, if used, are at weekends or holidays."
+    },
+    {
+      "label": "E",
+      "text": "Give the dose with breakfast and plan evening snacks",
+      "isCorrect": true,
+      "explanation": "Giving medication with or after food and adding nutritious intake when its effect has waned can help. The clinician should monitor growth and reconsider dose or medication if the problem persists."
+    }
+  ],
+  "context": "Stimulant-associated weight loss warrants nutritional and medication review with growth monitoring.",
+  "publicModule": {
+    "schemaVersion": 1,
+    "origin": "mirrored",
+    "discipline": "psych",
+    "mirroredFrom": "md3:c83406e4d560b71f",
+    "itemText": {
+      "licence": "CC-BY-4.0",
+      "attribution": "MD3 contributors"
+    },
+    "evidence": {
+      "kind": "reference",
+      "sourceId": "nice-guidance-ng87-chapter-recommendations-25918d"
+    },
+    "review": {
+      "verdict": "passed",
+      "contentHash": "531c5098b95b2f6616dd437c1a9f76928a67d070827ded8f894c708f8dd296fd"
+    }
+  }
+}

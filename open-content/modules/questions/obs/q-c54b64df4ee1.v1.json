@@ -1,0 +1,64 @@
+{
+  "id": "bank:cohort:obs:q-c54b64df4ee1:v1",
+  "rotation": "cohort-open",
+  "moduleNodes": [
+    "cohort/obs"
+  ],
+  "topics": [
+    "obs"
+  ],
+  "questionType": "management",
+  "difficulty": "hard",
+  "stem": "A nulliparous woman at term has ruptured membranes and an epidural. She progressed to 7 cm, but has remained 7 cm dilated for four hours despite supervised oxytocin producing four strong contractions every ten minutes, with normal resting tone. The CTG is reassuring and her observations are normal. The head remains at station −2 with increasing caput and moulding. The registrar is asked to decide the next plan.\n\nWhat is the most appropriate response?",
+  "options": [
+    {
+      "label": "A",
+      "text": "Increase oxytocin to achieve five to six contractions every ten minutes",
+      "isCorrect": false,
+      "explanation": "More than five contractions in ten minutes is tachysystole and risks fetal compromise; contractions are already adequate."
+    },
+    {
+      "label": "B",
+      "text": "Continue current oxytocin for two more hours, then reassess the cervix",
+      "isCorrect": false,
+      "explanation": "Four hours without cervical change despite adequate contractions and ruptured membranes meets the definition of arrest; more time on the same plan is unlikely to help."
+    },
+    {
+      "label": "C",
+      "text": "Seek senior review and discuss whether caesarean birth is advisable",
+      "isCorrect": true,
+      "explanation": "No progress for four hours with adequate contractions, a high head, caput and moulding suggests obstruction, so senior review and discussion of caesarean are needed."
+    },
+    {
+      "label": "D",
+      "text": "Perform fetal scalp lactate sampling before deciding on the birth route",
+      "isCorrect": false,
+      "explanation": "The CTG is reassuring; scalp sampling assesses fetal wellbeing, not whether labour can progress."
+    },
+    {
+      "label": "E",
+      "text": "Stop oxytocin for an hour to rest the uterus, then restart augmentation",
+      "isCorrect": false,
+      "explanation": "Resting and restarting assumes uterine fatigue; the findings point to cephalopelvic disproportion rather than inadequate contractions."
+    }
+  ],
+  "context": "Persistent poor progress despite adequate contractions warrants senior reassessment and discussion of the safest birth plan before fetal compromise develops.",
+  "publicModule": {
+    "schemaVersion": 1,
+    "origin": "mirrored",
+    "discipline": "obs",
+    "mirroredFrom": "md3:c54b64df4ee1369a",
+    "itemText": {
+      "licence": "CC-BY-4.0",
+      "attribution": "MD3 contributors"
+    },
+    "evidence": {
+      "kind": "reference",
+      "sourceId": "nice-guidance-ng235-chapter-recommendations-318c34"
+    },
+    "review": {
+      "verdict": "passed",
+      "contentHash": "89d4c2bd0d37edca5f5215c147a4a50f9df64a5554c8f7b79b0c7c8b933bf658"
+    }
+  }
+}

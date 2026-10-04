@@ -1,0 +1,64 @@
+{
+  "id": "bank:cohort:obs:q-e18c4ea3b680:v1",
+  "rotation": "cohort-open",
+  "moduleNodes": [
+    "cohort/obs"
+  ],
+  "topics": [
+    "obs"
+  ],
+  "questionType": "diagnosis",
+  "difficulty": "hard",
+  "stem": "Five days after an uncomplicated vaginal birth she has a headache and flashing lights. Blood pressure was normal through pregnancy and at discharge. It is now 164/106 mmHg, and an hour later 158/102 mmHg. The urine protein:creatinine ratio is 15 mg/mmol. Platelets are 108 x 10^9/L. ALT, LDH and creatinine are normal, and the blood film shows no red-cell fragments. She has not had a seizure.\n\nWhich diagnosis fits?",
+  "options": [
+    {
+      "label": "A",
+      "text": "Migraine with aura, with pain pushing up the pressure",
+      "isCorrect": false,
+      "explanation": "Migraine does not explain new hypertension of 164/106 mmHg or a low platelet count. Headache with visual symptoms after birth is pre-eclampsia until shown otherwise."
+    },
+    {
+      "label": "B",
+      "text": "Gestational hypertension, as the protein ratio is under 30",
+      "isCorrect": false,
+      "explanation": "Proteinuria is not required. New hypertension with a platelet count below 150 and neurological symptoms meets the definition of pre-eclampsia, even with a protein:creatinine ratio under 30 mg/mmol."
+    },
+    {
+      "label": "C",
+      "text": "Pre-eclampsia, from her platelets and visual symptoms",
+      "isCorrect": true,
+      "explanation": "New hypertension after a normotensive pregnancy, with platelets below 150 x 10^9/L and headache with visual disturbance, is pre-eclampsia. It can first appear in the days after birth, and proteinuria is not needed."
+    },
+    {
+      "label": "D",
+      "text": "HELLP syndrome, given thrombocytopenia with a headache",
+      "isCorrect": false,
+      "explanation": "HELLP needs haemolysis and raised liver enzymes as well as low platelets. Her ALT and LDH are normal and the film shows no fragments."
+    },
+    {
+      "label": "E",
+      "text": "Eclampsia, as the flashing lights are cortical in origin",
+      "isCorrect": false,
+      "explanation": "Eclampsia is defined by a seizure. Visual symptoms are a severe feature of pre-eclampsia that warn of eclampsia; they are not the diagnosis itself."
+    }
+  ],
+  "context": "Pre-eclampsia can first present in the weeks after birth; new hypertension with thrombocytopenia or neurological symptoms meets the definition without proteinuria.",
+  "publicModule": {
+    "schemaVersion": 1,
+    "origin": "mirrored",
+    "discipline": "obs",
+    "mirroredFrom": "md3:e18c4ea3b6806f2b",
+    "itemText": {
+      "licence": "CC-BY-4.0",
+      "attribution": "MD3 contributors"
+    },
+    "evidence": {
+      "kind": "reference",
+      "sourceId": "qld-health-data-assets-pdf-file-0034-139948-g-hdp-7463b8"
+    },
+    "review": {
+      "verdict": "passed",
+      "contentHash": "c678fb0dfaf29a9490aecc32fb614a03efe1a0213f887257dde212d9b833805c"
+    }
+  }
+}

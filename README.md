@@ -46,6 +46,7 @@ behind them are at [cohort.md/tech](https://cohort.md/tech).
 | Baseline set | 25 original items served as the fixed first exposure |
 | Recorded ECGs | 5 de-identified: four PTB-XL (CC BY 4.0), one VTaC (CC BY-SA 4.0) |
 | Clinical module questions | Original, guideline-cited items mirrored from md3, under `open-content/modules/questions/` |
+| Clinical module cards | Original cloze cards mirrored from md3, each factually audited at its current wording, under `open-content/modules/cards/` |
 
 All of it is in this repository. The questions are plain JSON under
 `open-content/usmle/step1/questions/`, each with its provenance envelope, and
@@ -69,6 +70,7 @@ cp .env.example .env.local
 npm run db:push
 npm run db:seed:usmle-open
 npm run db:seed:cohort-modules  # the clinical module questions
+npm run db:seed:cohort-module-cards  # the clinical module cards
 npm run usmle:figures:install   # copy the 60 open visual assets into public/
 npm run dev
 ```

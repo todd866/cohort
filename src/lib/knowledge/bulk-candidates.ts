@@ -21,16 +21,25 @@ import {
 } from '@/lib/study/practice-locale';
 import { batchLoadConceptEmbeddings } from '@/lib/manifold';
 import { scoreItemsAgainstConceptsTopK } from '@/lib/manifold/scoring';
+import {
+  candidatePoolEpochTag,
+  learnerOwnsPrivateCards,
+  resolveConceptTopK,
+} from '@/lib/manifold/concept-topk-store';
+import { cachedCandidatePool } from './candidate-pool-cache';
+import { createHash } from 'node:crypto';
+import {
+  CARD_TOPK_ELIGIBILITY_SQL,
+  QUESTION_TOPK_ELIGIBILITY_SQL,
+  practiceLocaleTopKSql,
+} from '@/lib/manifold/concept-topk-sql';
 import type { CommitmentLevel } from '@/lib/commitment';
 import { meetsRequiredTier } from '@/lib/content-access';
 import type { QuestionFamiliarity } from './question-retirement';
-import {
-  USMLE_STEP1_ROTATIONS,
-  withoutRawPublicUsmleQuestions,
-} from '@/lib/usmle/raw-question-boundary';
-import { USMLE_STEP1_PUBLIC_MODULE } from '@/lib/usmle/public-corpus';
+import { withoutRawPublicUsmleQuestions } from '@/lib/usmle/raw-question-boundary';
 import { sessionCandidateItemWhere } from '@/lib/knowledge/session-candidate-scope';
 import {
+  SHARED_CATALOG_CARD_SCOPE,
   findManyCards,
   ownerPrivateOrSharedCardScope,
   scopedCardProgressWhere,
@@ -44,6 +53,10 @@ import {
   cardDueForSelectionWhere,
   isCardDueForSelection,
 } from '@/lib/knowledge/card-due-eligibility';
+import {
+  normalizeReviewChallengeLevel,
+  type ReviewChallengeLevel,
+} from '@/lib/study/review-challenge';
 
 /** Minimal Prisma-like client for raw queries — works with PrismaClient and $extends() result. */
 type PrismaRawClient = {
@@ -61,6 +74,63 @@ export const EXCLUDED_TOPICS: string[] = [...EXCLUDED_POOL_TOPICS];
 const TOPK_CARDS_PER_CONCEPT = 200;
 const TOPK_QUESTIONS_PER_CONCEPT = 200;
 const TOPK_VIDEOS_PER_CONCEPT = 50;
+
+const CANDIDATE_CARD_SELECT = {
+  id: true, stableId: true, rotation: true, clusterId: true, similarCards: true, topics: true,
+  sourceFile: true, imageUrl: true, importance: true, complexity: true, facilityIndex: true,
+  sampleSize: true, variantGroupId: true, variantIndex: true, variantType: true,
+  examRelevance: true, examRelevancePct: true,
+} as const;
+
+const CANDIDATE_QUESTION_SELECT = {
+  id: true,
+  rotation: true,
+  stem: true,
+  questionType: true,
+  difficulty: true,
+  variantGroupId: true,
+  variantType: true,
+  format: true,
+  facilityIndex: true,
+  totalAttempts: true,
+  source: true,
+  topics: true,
+  examRelevance: true,
+  examRelevancePct: true,
+} as const;
+
+const CANDIDATE_VIDEO_SELECT = {
+  id: true,
+  title: true,
+  thumbnailR2Key: true,
+  durationSecs: true,
+  r2Key: true,
+  creatorName: true,
+  requiredTier: true,
+} as const;
+
+/** Change-log scopes whose epochs gate the cached candidate pools of a session. */
+function candidatePoolScopes(rotation: string, crossSource: readonly string[]): string[] {
+  return [...new Set([rotation, ...crossSource])].flatMap((r) => [`card:${r}`, `question:${r}`]);
+}
+
+function conceptSetKey(conceptIds: readonly string[]): string {
+  return createHash('sha1').update([...new Set(conceptIds)].sort().join(',')).digest('base64url');
+}
+
+/**
+ * This learner's own copy of rows taken from the shared pool cache. The cache
+ * shares row objects (and their topics and similarCards arrays) between
+ * learners, and the scheduler is free to sort, annotate or extend what it is
+ * given, so nothing handed downstream may be a cached object. Measured on
+ * Node 24: about 15-20 ms for 5,000 cards that each carry ten similarCards
+ * entries, about 2 ms for 2,600 questions or 8,000 concept links. That is small
+ * beside the queries the cache saves, and unlike a field-by-field copy it stays
+ * deep when a nested field is added to the select.
+ */
+function ownCopy<T>(rows: readonly T[]): T[] {
+  return structuredClone(rows as T[]);
+}
 
 export interface BulkCardRow {
   id: string;
@@ -212,6 +282,86 @@ export interface BulkCandidates {
   questionFamiliarity: Map<string, QuestionFamiliarity>;
 }
 
+/** Apply endpoint challenge lanes before quotas and modality selection. */
+export function applyReviewLearningPoolPolicy(
+  bulk: BulkCandidates,
+  level: ReviewChallengeLevel | number | null | undefined,
+  demonstratedGapConceptIds: ReadonlySet<string> = new Set(),
+): BulkCandidates {
+  const normalized = normalizeReviewChallengeLevel(level);
+  if (normalized !== 2 && normalized !== -2) return bulk;
+
+  const cards = normalized === -2
+    ? bulk.unseenCards.filter((card) => card.complexity === 1)
+    : [];
+  const seenCards = normalized === -2
+    ? bulk.seenCards.filter((card) => card.complexity === 1)
+    : [];
+  const gapLinkedQuestionIds = new Set(bulk.questionConceptLinks
+    .filter(link => demonstratedGapConceptIds.has(link.conceptId))
+    .map(link => link.questionId));
+  const allowedQuestionIds = new Set(
+    normalized === 2
+      ? bulk.rotationQuestions
+          .filter((question) => question.difficulty === 'hard')
+          .filter((question) => gapLinkedQuestionIds.has(question.id))
+          .map((question) => question.id)
+      : [],
+  );
+  const questions = bulk.rotationQuestions.filter((question) => allowedQuestionIds.has(question.id));
+  const links = bulk.questionConceptLinks.filter((link) => (
+    allowedQuestionIds.has(link.questionId)
+    && (normalized !== 2 || demonstratedGapConceptIds.has(link.conceptId))
+  ));
+  const filterQuestionScores = (scores: Map<string, Map<string, number>>) => {
+    const result = new Map<string, Map<string, number>>();
+    for (const [conceptId, itemScores] of scores) {
+      const filtered = new Map([...itemScores].filter(([itemId]) => allowedQuestionIds.has(itemId)));
+      if (filtered.size > 0) result.set(conceptId, filtered);
+    }
+    return result;
+  };
+  const questionFamiliarity = new Map(
+    [...bulk.questionFamiliarity].filter(([questionId]) => allowedQuestionIds.has(questionId)),
+  );
+  const questionMap = new Map(questions.map((question) => [question.id, question]));
+  const cardIds = new Set([...cards, ...seenCards].map((card) => card.id));
+  const filterCardScores = new Map<string, Map<string, number>>();
+  for (const [conceptId, itemScores] of bulk.cardScores) {
+    const filtered = new Map([...itemScores].filter(([cardId]) => cardIds.has(cardId)));
+    if (filtered.size > 0) filterCardScores.set(conceptId, filtered);
+  }
+  return {
+    ...bulk,
+    unseenCards: cards,
+    seenCards,
+    seenCardReviewCounts: new Map([...bulk.seenCardReviewCounts].filter(([id]) => cardIds.has(id))),
+    cardGradeById: new Map([...(bulk.cardGradeById ?? new Map())].filter(([id]) => cardIds.has(id))),
+    fragileSeenCards: new Set([...bulk.fragileSeenCards].filter((id) => cardIds.has(id))),
+    failedStretchCardIds: new Set([...bulk.failedStretchCardIds ?? []].filter((id) => cardIds.has(id))),
+    passedScaffoldCardIds: new Set([...bulk.passedScaffoldCardIds ?? []].filter((id) => cardIds.has(id))),
+    questionConceptLinks: links,
+    rotationQuestions: questions,
+    questionMap,
+    questionScores: filterQuestionScores(bulk.questionScores),
+    questionFamiliarity,
+    rotationVideos: [],
+    videoConceptLinks: [],
+    videoMap: new Map(),
+    videoScores: new Map(),
+    cardScores: filterCardScores,
+    cardExamRelevance: new Map([...bulk.cardExamRelevance].filter(([id]) => cardIds.has(id))),
+    questionExamRelevance: new Map([...bulk.questionExamRelevance].filter(([id]) => allowedQuestionIds.has(id))),
+    cardExamTargetScores: new Map([...bulk.cardExamTargetScores].filter(([id]) => cardIds.has(id))),
+    questionExamTargetScores: new Map([...bulk.questionExamTargetScores].filter(([id]) => allowedQuestionIds.has(id))),
+    examTargetItemScores: new Map(
+      [...bulk.examTargetItemScores].filter(([key, score]) => (
+        score.itemType === 'card' ? cardIds.has(score.itemId) : allowedQuestionIds.has(score.itemId)
+      )),
+    ),
+  };
+}
+
 /**
  * Bulk fetch all candidate cards and questions for a rotation.
  */
@@ -268,7 +418,6 @@ export async function bulkFetchCandidates(
   // combined helper would make a future change to one silently move the other.
   const clipRoleWhere = clipPromptCardWhere(isCopyrightTier);
   const localeWhere = practiceLocaleWhere(practiceLocale);
-  const localeSql = Prisma.sql`AND (p."practiceLocale" IS NULL OR p."practiceLocale" = ${practiceLocale})`;
   const clusterSql = clusterId
     ? Prisma.sql`AND p."clusterId" = ${clusterId}`
     : Prisma.empty;
@@ -286,8 +435,29 @@ export async function bulkFetchCandidates(
   );
   const cardScope = ownerPrivateOrSharedCardScope(userId);
 
-  // Load concept embeddings first — score queries below take them as input
-  // so each per-concept top-K runs as a parameterized HNSW lookup. Joining
+  // User-independent candidate data — card and question metadata and concept
+  // links — comes from the per-isolate pool cache when the learner owns no
+  // private cards and the session is not narrowed to a cluster. The cached
+  // pools are supersets; this learner's progress and exclusions are applied in
+  // memory below. Any doubt (a private card, an unreadable change log) reads
+  // directly, exactly as before. Videos are always read directly: no trigger
+  // watches their publish or rights state, and the query is small.
+  const ownsPrivateCards = clusterId === null
+    ? await learnerOwnsPrivateCards(userId).catch(() => true)
+    : true;
+  const sharedPoolTag = ownsPrivateCards
+    ? null
+    : await candidatePoolEpochTag(candidatePoolScopes(rotation, allowedCrossSourceRotations));
+  const poolKey = [
+    rotation,
+    [...new Set(allowedCrossSourceRotations)].sort().join(','),
+    crossSourceMappingMode,
+    practiceLocale,
+  ].join('|');
+
+  // Load concept embeddings first — the live top-K below takes them as input
+  // (it runs only for what the precomputed top-K cannot serve) so each
+  // per-concept query can use the HNSW index, an approximate search. Joining
   // concept_embeddings to *_embeddings inside SQL forces a sequential scan
   // because pgvector's HNSW only fires against a literal/param vector.
   //
@@ -325,20 +495,48 @@ export async function bulkFetchCandidates(
     cardVariantGroupHistory,
     questionFamiliarity,
   ] = await Promise.all([
-    findManyCards(cardScope, {
-      where: {
-        // Both predicates contain an `OR`; compose them under `AND` so the
-        // nullable image gate cannot overwrite the objective/source gate.
-        AND: [rotationScope, imageRoleWhere, clipRoleWhere, localeWhere],
-        deletedAt: null,
-        shelvedAt: null,
-        ...(cardExcludeList ? { id: { notIn: cardExcludeList } } : {}),
-        ...(clusterId ? { clusterId } : {}),
-        progress: { none: { userId } },
-        NOT: { topics: { hasSome: EXCLUDED_TOPICS } },
-      },
-      select: { id: true, stableId: true, rotation: true, clusterId: true, similarCards: true, topics: true, sourceFile: true, imageUrl: true, importance: true, complexity: true, facilityIndex: true, sampleSize: true, variantGroupId: true, variantIndex: true, variantType: true, examRelevance: true, examRelevancePct: true },
-    }),
+    (async () => {
+      if (!sharedPoolTag) {
+        return findManyCards(cardScope, {
+          where: {
+            // Both predicates contain an `OR`; compose them under `AND` so the
+            // nullable image gate cannot overwrite the objective/source gate.
+            AND: [rotationScope, imageRoleWhere, clipRoleWhere, localeWhere],
+            deletedAt: null,
+            shelvedAt: null,
+            ...(cardExcludeList ? { id: { notIn: cardExcludeList } } : {}),
+            ...(clusterId ? { clusterId } : {}),
+            progress: { none: { userId } },
+            NOT: { topics: { hasSome: EXCLUDED_TOPICS } },
+          },
+          select: CANDIDATE_CARD_SELECT,
+        });
+      }
+      // The same query without the learner's two filters, cached; then
+      // "no progress row" and "not excluded" applied here.
+      const [pool, progressed] = await Promise.all([
+        cachedCandidatePool(
+          `unseen-cards:${isCopyrightTier ? 'copyright' : 'standard'}`,
+          poolKey,
+          sharedPoolTag,
+          () => findManyCards(SHARED_CATALOG_CARD_SCOPE, {
+            where: {
+              AND: [rotationScope, imageRoleWhere, clipRoleWhere, localeWhere],
+              deletedAt: null,
+              shelvedAt: null,
+              NOT: { topics: { hasSome: EXCLUDED_TOPICS } },
+            },
+            select: CANDIDATE_CARD_SELECT,
+          }),
+        ),
+        prisma.cardProgress.findMany({
+          where: scopedCardProgressWhere(cardScope, { userId }, { AND: [rotationScope] }),
+          select: { cardId: true },
+        }),
+      ]);
+      const progressedIds = new Set(progressed.map((row) => row.cardId));
+      return ownCopy(pool.filter((card) => !progressedIds.has(card.id) && !excludedCardIds.has(card.id)));
+    })(),
     prisma.cardProgress.findMany({
       where: scopedCardProgressWhere(
         cardScope,
@@ -377,41 +575,64 @@ export async function bulkFetchCandidates(
         card: { select: { id: true, stableId: true, rotation: true, clusterId: true, similarCards: true, topics: true, sourceFile: true, imageUrl: true, importance: true, complexity: true, facilityIndex: true, sampleSize: true, variantGroupId: true, variantIndex: true, variantType: true, examRelevance: true, examRelevancePct: true } },
       },
     }),
-    prisma.questionConcept.findMany({
-      where: { conceptId: { in: conceptIds } },
-      select: { questionId: true, conceptId: true, isPrimary: true },
-    }),
-    prisma.videoConcept.findMany({
-      where: { conceptId: { in: conceptIds } },
-      select: { videoId: true, conceptId: true },
-    }),
-    cardsOnly ? [] : prisma.question.findMany({
-      where: withDefaultQuestionServingPolicy(
-        withoutRawPublicUsmleQuestions({
-          AND: [rotationScope, localeWhere],
-          contentState: { not: 'shelved' },
-          ...(qExcludeList ? { id: { notIn: qExcludeList } } : {}),
-          NOT: { topics: { hasSome: EXCLUDED_TOPICS } },
+    // The concept-link pools have no trigger and stay cached for the TTL. That
+    // is safe because a link never grants eligibility: below, every question
+    // link is intersected with the freshly filtered question ids and every
+    // video link with the freshly read videos, so a stale link can at worst
+    // leave an item out of, or in, the ranking of one concept until the TTL.
+    (async () => {
+      const load = () => prisma.questionConcept.findMany({
+        where: { conceptId: { in: conceptIds } },
+        select: { questionId: true, conceptId: true, isPrimary: true },
+      });
+      return sharedPoolTag
+        ? ownCopy(await cachedCandidatePool('question-concepts', conceptSetKey(conceptIds), sharedPoolTag, load))
+        : load();
+    })(),
+    (async () => {
+      const load = () => prisma.videoConcept.findMany({
+        where: { conceptId: { in: conceptIds } },
+        select: { videoId: true, conceptId: true },
+      });
+      return sharedPoolTag
+        ? ownCopy(await cachedCandidatePool('video-concepts', conceptSetKey(conceptIds), sharedPoolTag, load))
+        : load();
+    })(),
+    (async () => {
+      if (cardsOnly) return [];
+      if (!sharedPoolTag) {
+        return prisma.question.findMany({
+          where: withDefaultQuestionServingPolicy(
+            withoutRawPublicUsmleQuestions({
+              AND: [rotationScope, localeWhere],
+              contentState: { not: 'shelved' },
+              ...(qExcludeList ? { id: { notIn: qExcludeList } } : {}),
+              NOT: { topics: { hasSome: EXCLUDED_TOPICS } },
+            }),
+            { allowPrivateSources }
+          ),
+          select: CANDIDATE_QUESTION_SELECT,
+        });
+      }
+      const pool = await cachedCandidatePool(
+        `questions:${allowPrivateSources ? 'private-sources' : 'default-sources'}`,
+        poolKey,
+        sharedPoolTag,
+        () => prisma.question.findMany({
+          where: withDefaultQuestionServingPolicy(
+            withoutRawPublicUsmleQuestions({
+              AND: [rotationScope, localeWhere],
+              contentState: { not: 'shelved' },
+              NOT: { topics: { hasSome: EXCLUDED_TOPICS } },
+            }),
+            { allowPrivateSources }
+          ),
+          select: CANDIDATE_QUESTION_SELECT,
         }),
-        { allowPrivateSources }
-      ),
-      select: {
-        id: true,
-        rotation: true,
-        stem: true,
-        questionType: true,
-        difficulty: true,
-        variantGroupId: true,
-        variantType: true,
-        format: true,
-        facilityIndex: true,
-        totalAttempts: true,
-        source: true,
-        topics: true,
-        examRelevance: true,
-        examRelevancePct: true,
-      },
-    }),
+      );
+      return ownCopy(pool.filter((question) => !allExcludedQIds.has(question.id)));
+    })(),
+    // Never cached: publish and rights state must be current on every pass.
     prisma.video.findMany({
       // NOT rotation-widened: Video has no `moduleNodes` column, so a video
       // cannot declare cross-rotation membership. Strict equality is correct.
@@ -420,48 +641,55 @@ export async function bulkFetchCandidates(
         published: true,
         rightsStatus: 'cleared',
       },
-      select: {
-        id: true,
-        title: true,
-        thumbnailR2Key: true,
-        durationSecs: true,
-        r2Key: true,
-        creatorName: true,
-        requiredTier: true,
-      },
+      select: CANDIDATE_VIDEO_SELECT,
     }),
-    scoreItemsAgainstConceptsTopK({
-      itemTable: 'card_embeddings',
-      itemIdColumn: 'card_id',
-      conceptEmbeddings,
-      rotation,
+    // The concept top-K is the same for every learner sharing this rotation,
+    // locale and cross-source scope, so it is read precomputed where the
+    // precompute is valid and run live otherwise (concept-topk-store.ts).
+    resolveConceptTopK({
+      itemType: 'card',
+      sessionRotation: rotation,
+      conceptIds: [...conceptEmbeddings.keys()],
       allowedCrossSourceRotations,
       crossSourceMappingMode,
-      cardReadScope: cardScope,
+      practiceLocale,
       topK: TOPK_CARDS_PER_CONCEPT,
-      // The cluster goes into the top-K search too, not just the candidate
-      // list: scoring is scoped by ROTATION and runs once per concept, so it
-      // is where a scoped session actually spent its time.
-      extraWhere: Prisma.sql`AND p."deletedAt" IS NULL AND p."shelvedAt" IS NULL ${localeSql}${clusterSql}`,
-    }),
-    cardsOnly ? new Map<string, Map<string, number>>() : scoreItemsAgainstConceptsTopK({
-      itemTable: 'question_embeddings',
-      itemIdColumn: 'question_id',
-      conceptEmbeddings,
-      rotation,
+      clusterId,
+      ownerUserId: userId,
+      live: (ids) => scoreItemsAgainstConceptsTopK({
+        itemTable: 'card_embeddings',
+        itemIdColumn: 'card_id',
+        conceptEmbeddings: pickConceptEmbeddings(conceptEmbeddings, ids),
+        rotation,
+        allowedCrossSourceRotations,
+        crossSourceMappingMode,
+        cardReadScope: cardScope,
+        topK: TOPK_CARDS_PER_CONCEPT,
+        // The cluster goes into the top-K search too, not just the candidate
+        // list: scoring is scoped by ROTATION and runs once per concept, so it
+        // is where a scoped session actually spent its time.
+        extraWhere: Prisma.sql`AND ${CARD_TOPK_ELIGIBILITY_SQL} AND ${practiceLocaleTopKSql(practiceLocale)}${clusterSql}`,
+      }),
+    }).then((resolved) => resolved.scores),
+    cardsOnly ? new Map<string, Map<string, number>>() : resolveConceptTopK({
+      itemType: 'question',
+      sessionRotation: rotation,
+      conceptIds: [...conceptEmbeddings.keys()],
       allowedCrossSourceRotations,
       crossSourceMappingMode,
+      practiceLocale,
       topK: TOPK_QUESTIONS_PER_CONCEPT,
-      extraWhere: Prisma.sql`
-        AND p."contentState" <> 'shelved'
-        AND p.rotation NOT IN (${Prisma.join([...USMLE_STEP1_ROTATIONS])})
-        AND (
-          p."moduleNodes" IS NULL
-          OR NOT (${USMLE_STEP1_PUBLIC_MODULE} = ANY(p."moduleNodes"))
-        )
-        ${localeSql}
-      `,
-    }),
+      live: (ids) => scoreItemsAgainstConceptsTopK({
+        itemTable: 'question_embeddings',
+        itemIdColumn: 'question_id',
+        conceptEmbeddings: pickConceptEmbeddings(conceptEmbeddings, ids),
+        rotation,
+        allowedCrossSourceRotations,
+        crossSourceMappingMode,
+        topK: TOPK_QUESTIONS_PER_CONCEPT,
+        extraWhere: Prisma.sql`AND ${QUESTION_TOPK_ELIGIBILITY_SQL} AND ${practiceLocaleTopKSql(practiceLocale)}`,
+      }),
+    }).then((resolved) => resolved.scores),
     includeVideos ? scoreItemsAgainstConceptsTopK({
       itemTable: 'video_embeddings',
       itemIdColumn: 'video_id',
@@ -605,6 +833,20 @@ export async function bulkFetchCandidates(
     cardVariantGroupHistory,
     questionFamiliarity: accessibleQuestionFamiliarity,
   };
+}
+
+/** The subset of loaded concept vectors the live top-K needs for `ids`. */
+function pickConceptEmbeddings(
+  conceptEmbeddings: Map<string, number[]>,
+  ids: readonly string[],
+): Map<string, number[]> {
+  if (ids.length === conceptEmbeddings.size) return conceptEmbeddings;
+  const picked = new Map<string, number[]>();
+  for (const id of ids) {
+    const vector = conceptEmbeddings.get(id);
+    if (vector) picked.set(id, vector);
+  }
+  return picked;
 }
 
 /**

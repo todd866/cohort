@@ -17,6 +17,7 @@ import { useImageTracking } from '@/hooks/useTracking';
 import { ConfidenceButtons } from '@/components/shared/ConfidenceButtons';
 import { InlineMarkdown } from '@/lib/inline-markdown';
 import { GlossaryText } from './GlossaryText';
+import { GlossaryScope } from './GlossaryScope';
 import { ContentFlag } from './ContentFlag';
 import { CitationList } from './CitationList';
 import {
@@ -66,6 +67,7 @@ export function MCQClient({
   imageUrl,
   imageKey,
   imageMeta,
+  abbreviations: staticAbbreviations,
   ...inputProps
 }: MCQProps & MCQClientExtraProps) {
   const {
@@ -393,6 +395,7 @@ export function MCQClient({
   }
 
   return (
+    <GlossaryScope abbreviations={useVariant ? variant?.abbreviations : staticAbbreviations}>
     <article ref={containerRef} data-mcq data-content-block className="mcq">
       <header>
         <span className="tags">
@@ -417,7 +420,7 @@ export function MCQClient({
       </header>
 
       <section className="stem">
-        <InlineMarkdown text={stem} />
+        <InlineMarkdown text={stem} leafRenderer={(text) => <GlossaryText text={text} />} />
         {resolvedImage && (() => {
           const showWhen = imageMeta?.showWhen === 'after-reveal' ? 'after-reveal' : 'always';
           const accessTier = imageMeta?.accessTier === 'auth-required' ? 'auth-required' : 'public';
@@ -493,7 +496,7 @@ export function MCQClient({
               {hasExplanation && isExpanded && (
                 <div className="option-detail">
                   {splitExplanation(option.explanation ?? '').map((block, i) => (
-                    <p key={i}><InlineMarkdown text={block} /></p>
+                    <p key={i}><InlineMarkdown text={block} leafRenderer={(text) => <GlossaryText text={text} />} /></p>
                   ))}
                 </div>
               )}
@@ -535,7 +538,7 @@ export function MCQClient({
           </p>
           <div style={{ color: 'var(--md-on-surface)', lineHeight: 1.6 }}>
             {splitExplanation(explanation).map((block, i) => (
-              <p key={i} style={{ marginBottom: '0.5rem' }}><InlineMarkdown text={block} /></p>
+              <p key={i} style={{ marginBottom: '0.5rem' }}><InlineMarkdown text={block} leafRenderer={(text) => <GlossaryText text={text} />} /></p>
             ))}
           </div>
           <div className="mt-4">
@@ -552,5 +555,6 @@ export function MCQClient({
         </footer>
       )}
     </article>
+    </GlossaryScope>
   );
 }

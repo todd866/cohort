@@ -1,0 +1,64 @@
+{
+  "id": "bank:cohort:psych:q-44f3b61dd21a:v1",
+  "rotation": "cohort-open",
+  "moduleNodes": [
+    "cohort/psych"
+  ],
+  "topics": [
+    "psych"
+  ],
+  "questionType": "management",
+  "difficulty": "medium",
+  "stem": "A GP reviews a 79-year-old with new daytime cognitive slowing, constipation, dry mouth and two falls over six weeks. During that period he began oxybutynin for urgency, amitriptyline for pain and an over-the-counter sedating antihistamine for sleep. He remains alert without fluctuation; his partner reports independent function before these changes. Examination and initial tests show no acute illness.\n\nWhich intervention should be prioritised?",
+  "options": [
+    {
+      "label": "A",
+      "text": "Add donepezil to counter the drugs’ cognitive effects",
+      "isCorrect": false,
+      "explanation": "Adding donepezil treats a drug adverse effect with another drug and can cause bradycardia and falls. Removing the cause comes first."
+    },
+    {
+      "label": "B",
+      "text": "Stop oxybutynin alone and leave the other two drugs unchanged",
+      "isCorrect": false,
+      "explanation": "Stopping one drug leaves two anticholinergic medicines in place. The effect is cumulative, so the whole load needs review."
+    },
+    {
+      "label": "C",
+      "text": "Reduce the combined anticholinergic load from the three new medicines",
+      "isCorrect": true,
+      "explanation": "New slowing with dry mouth, constipation and falls after three anticholinergic medicines points to cumulative burden. Reducing it is a reversible step that should precede any dementia work-up."
+    },
+    {
+      "label": "D",
+      "text": "Switch amitriptyline to nortriptyline and continue the others",
+      "isCorrect": false,
+      "explanation": "Nortriptyline is less anticholinergic than amitriptyline but still contributes, and the other two drugs remain. The combined burden is the problem."
+    },
+    {
+      "label": "E",
+      "text": "Defer any medicine changes until a memory clinic has confirmed dementia",
+      "isCorrect": false,
+      "explanation": "Deferring leaves a likely reversible cause in place. Medicines should be reviewed before labelling dementia."
+    }
+  ],
+  "context": "Consider cumulative medicine effects before adding treatment for a new cognitive complaint.",
+  "publicModule": {
+    "schemaVersion": 1,
+    "origin": "mirrored",
+    "discipline": "psych",
+    "mirroredFrom": "md3:44f3b61dd21abf9e",
+    "itemText": {
+      "licence": "CC-BY-4.0",
+      "attribution": "MD3 contributors"
+    },
+    "evidence": {
+      "kind": "reference",
+      "sourceId": "racgp-getattachment-af2d2506-9c65-43ab-a442-319a56f12fb7-dementia-f9655c"
+    },
+    "review": {
+      "verdict": "passed",
+      "contentHash": "78a1b45411d0b57c3579453582e982cebfe0a073821b3ca4993375abab0797fc"
+    }
+  }
+}

@@ -1,0 +1,64 @@
+{
+  "id": "bank:cohort:gi:q-f9144732eb11:v1",
+  "rotation": "cohort-open",
+  "moduleNodes": [
+    "cohort/gi"
+  ],
+  "topics": [
+    "gi"
+  ],
+  "questionType": "diagnosis",
+  "difficulty": "medium",
+  "stem": "A 14-month-old boy had 3 days of vomiting and watery diarrhoea 2 weeks ago, as did other children at his childcare. The vomiting stopped, but since then he has had frequent loose, frothy, sour-smelling stools and a red, sore bottom, and he is windy and unsettled after his cow's milk drinks. There is no blood in the stool and no rash. He drank cow's milk without problems before the illness and is still growing along the 50th centile.\n\nWhat is the most likely cause of his diarrhoea?",
+  "options": [
+    {
+      "label": "A",
+      "text": "Cow's milk protein allergy",
+      "isCorrect": false,
+      "explanation": "Cow's milk protein allergy usually starts in early infancy, often with eczema, vomiting or blood in the stool. He tolerated cow's milk before the illness, and his symptoms began with an infection."
+    },
+    {
+      "label": "B",
+      "text": "Primary lactase non-persistence",
+      "isCorrect": false,
+      "explanation": "Primary, genetically programmed decline in lactase is the commonest cause in older children and adults, but it rarely causes symptoms before about 2-3 years and does not start abruptly after an infection."
+    },
+    {
+      "label": "C",
+      "text": "Toddler's (chronic non-specific) diarrhoea",
+      "isCorrect": false,
+      "explanation": "Toddler's diarrhoea causes loose stools with undigested food in a well, thriving toddler, without perianal excoriation, wind after milk or onset after gastroenteritis."
+    },
+    {
+      "label": "D",
+      "text": "Coeliac disease",
+      "isCorrect": false,
+      "explanation": "Coeliac disease develops over months on gluten, with faltering growth, abdominal distension and irritability. An abrupt start after gastroenteritis, linked to milk, points elsewhere."
+    },
+    {
+      "label": "E",
+      "text": "Secondary lactase deficiency",
+      "isCorrect": true,
+      "explanation": "Gastroenteritis damages the villous tips where lactase sits. Undigested lactose is fermented, giving frothy, acidic stools, a sore bottom and wind after milk. It is temporary and recovers as the mucosa heals, sometimes helped by a short spell of lactose-free milk."
+    }
+  ],
+  "context": "In infants and toddlers lactose intolerance is usually secondary and temporary, after gastroenteritis damages the brush border. Primary lactase non-persistence appears later.",
+  "publicModule": {
+    "schemaVersion": 1,
+    "origin": "mirrored",
+    "discipline": "gi",
+    "mirroredFrom": "md3:f9144732eb11a5bb",
+    "itemText": {
+      "licence": "CC-BY-4.0",
+      "attribution": "MD3 contributors"
+    },
+    "evidence": {
+      "kind": "reference",
+      "sourceId": "rch-kidsinfo-fact-sheets-lactose-intolerance-6a8e61"
+    },
+    "review": {
+      "verdict": "passed",
+      "contentHash": "f183f8cd2464e56fb986b75b5cf00d0288c7a326b66d5c05a5ce85ee13507990"
+    }
+  }
+}

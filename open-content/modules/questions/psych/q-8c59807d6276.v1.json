@@ -1,0 +1,64 @@
+{
+  "id": "bank:cohort:psych:q-8c59807d6276:v1",
+  "rotation": "cohort-open",
+  "moduleNodes": [
+    "cohort/psych"
+  ],
+  "topics": [
+    "psych"
+  ],
+  "questionType": "management",
+  "difficulty": "hard",
+  "stem": "An emergency registrar treats a 17-year-old found unresponsive beside empty blister packs of a family member’s medicine. Her airway was secured after a seizure; ventilation and intravenous fluids are underway, and toxicology advice is being sought. She has dilated pupils, dry flushed skin and a palpable bladder. Blood pressure is 82/48 mmHg. The ECG shows a QRS duration of 168 ms (usual <120 ms), a prominent terminal R wave in aVR and runs of broad-complex tachycardia. Potassium is 4.1 mmol/L (3.5–5.0).\n\nWhich treatment most directly addresses the cardiac toxicity?",
+  "options": [
+    {
+      "label": "A",
+      "text": "Intravenous sodium bicarbonate",
+      "isCorrect": true,
+      "explanation": "Antimuscarinic signs with seizures, hypotension, a QRS of 168 ms and a terminal R wave in aVR indicate a tricyclic antidepressant blocking myocardial sodium channels. Sodium bicarbonate (sodium loading and alkalinisation) narrows the QRS and treats the dysrhythmia; continue ECG, electrolyte and blood-gas monitoring with toxicology support."
+    },
+    {
+      "label": "B",
+      "text": "Intravenous amiodarone loading dose",
+      "isCorrect": false,
+      "explanation": "Treating the rhythm as primary ventricular tachycardia misses its cause. The tachycardia comes from sodium-channel blockade, and amiodarone can worsen conduction delay and hypotension, so it is avoided in this poisoning."
+    },
+    {
+      "label": "C",
+      "text": "Intravenous physostigmine",
+      "isCorrect": false,
+      "explanation": "The antimuscarinic signs are real, but physostigmine is not appropriate when a wide QRS and seizures suggest tricyclic toxicity; it can precipitate bradycardia, asystole and further seizures. Reversing the antimuscarinic signs is not the priority shown by this ECG."
+    },
+    {
+      "label": "D",
+      "text": "Intravenous magnesium sulfate",
+      "isCorrect": false,
+      "explanation": "Magnesium is useful for torsades de pointes from QT prolongation. This is marked QRS widening from sodium-channel blockade, and magnesium does not reverse it."
+    },
+    {
+      "label": "E",
+      "text": "Intravenous calcium gluconate",
+      "isCorrect": false,
+      "explanation": "Calcium treats hyperkalaemic membrane instability or calcium-channel blocker poisoning. The potassium is normal and the ECG pattern points to sodium-channel blockade instead."
+    }
+  ],
+  "context": "An antimuscarinic overdose with a widened QRS and a terminal R wave in aVR suggests tricyclic sodium-channel blockade, which is treated with sodium bicarbonate rather than standard antiarrhythmics.",
+  "publicModule": {
+    "schemaVersion": 1,
+    "origin": "mirrored",
+    "discipline": "psych",
+    "mirroredFrom": "md3:8c59807d6276ada3",
+    "itemText": {
+      "licence": "CC-BY-4.0",
+      "attribution": "MD3 contributors"
+    },
+    "evidence": {
+      "kind": "reference",
+      "sourceId": "rch-clinicalguide-guideline-index-tricyclic-antidepressant-tca-poisoning-ba799d"
+    },
+    "review": {
+      "verdict": "passed",
+      "contentHash": "e38d9ff516c621818cd3a9a1b69b39b335f6015b5e3953359f2167258bfb459e"
+    }
+  }
+}

@@ -1,0 +1,64 @@
+{
+  "id": "bank:cohort:icu:q-ef859a235c32:v1",
+  "rotation": "cohort-open",
+  "moduleNodes": [
+    "cohort/icu"
+  ],
+  "topics": [
+    "icu"
+  ],
+  "questionType": "investigation",
+  "difficulty": "medium",
+  "stem": "A 22-year-old nonsmoker sees his GP about episodes of cough, chest tightness and wheeze over two years, usually with colds, exercise or cold air, and he is well between them. Today he is asymptomatic, his chest is clear and spirometry is normal, with no significant bronchodilator response. He asks for an inhaler to start now, as he has a work fitness test in two months.\n\nWhat should the GP do next?",
+  "options": [
+    {
+      "label": "A",
+      "text": "Tell him that asthma is excluded by today’s normal spirometry",
+      "isCorrect": false,
+      "explanation": "Asthma is defined by variable airflow limitation, so spirometry can be normal between episodes. A normal test while well does not exclude it."
+    },
+    {
+      "label": "B",
+      "text": "Start as-needed ICS–formoterol and confirm asthma by response",
+      "isCorrect": false,
+      "explanation": "Starting preventer-containing treatment before the diagnosis is confirmed makes it harder to confirm later, and improvement on treatment is not proof of asthma. Where possible, document variable airflow limitation first."
+    },
+    {
+      "label": "C",
+      "text": "Retest when symptomatic or arrange a bronchial challenge test",
+      "isCorrect": true,
+      "explanation": "The history suggests asthma, but variable expiratory airflow limitation has not been shown. Repeat spirometry when he has symptoms, or arrange a bronchial provocation test, to document it before committing him to long-term treatment."
+    },
+    {
+      "label": "D",
+      "text": "Diagnose exercise-induced bronchoconstriction only, with SABA",
+      "isCorrect": false,
+      "explanation": "His symptoms also occur with colds and cold air, not only with exercise, and calling it exercise-induced alone with a reliever skips confirming asthma."
+    },
+    {
+      "label": "E",
+      "text": "Refer for laryngoscopy to look for vocal cord dysfunction",
+      "isCorrect": false,
+      "explanation": "Inducible laryngeal obstruction causes throat tightness and inspiratory noise; it is considered when the pattern suggests it or asthma treatment fails, not as the first test for typical triggered wheeze."
+    }
+  ],
+  "context": "Asthma is confirmed by documenting variable expiratory airflow limitation; normal spirometry when well does not exclude it, and where possible confirm before starting treatment, because response to treatment is not proof.",
+  "publicModule": {
+    "schemaVersion": 1,
+    "origin": "mirrored",
+    "discipline": "icu",
+    "mirroredFrom": "md3:ef859a235c3225e5",
+    "itemText": {
+      "licence": "CC-BY-4.0",
+      "attribution": "MD3 contributors"
+    },
+    "evidence": {
+      "kind": "reference",
+      "sourceId": "aah-pdfs-pdf-43-5e16a7"
+    },
+    "review": {
+      "verdict": "passed",
+      "contentHash": "f19c68208d37e7363ce9fb107b6fb3f8ddd1268ef88cf3033fc7dc81c2026789"
+    }
+  }
+}

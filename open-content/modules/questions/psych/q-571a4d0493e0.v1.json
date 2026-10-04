@@ -1,0 +1,64 @@
+{
+  "id": "bank:cohort:psych:q-571a4d0493e0:v1",
+  "rotation": "cohort-open",
+  "moduleNodes": [
+    "cohort/psych"
+  ],
+  "topics": [
+    "psych"
+  ],
+  "questionType": "management",
+  "difficulty": "hard",
+  "stem": "A GP reviews a woman at eight weeks of an unplanned pregnancy. She has had three severe unipolar depressive episodes, including a hospital admission after stopping medication in a previous remission. She has been well for two years on sertraline and has no current safety concern. She wishes to stay well but has been told that pregnancy means she must stop immediately.\n\nWhich recommendation best fits this history?",
+  "options": [
+    {
+      "label": "A",
+      "text": "Discuss continuing sertraline with pregnancy and mood review",
+      "isCorrect": true,
+      "explanation": "Continuation is a reasonable option given severe recurrent illness, prior relapse on stopping and current benefit. Discuss medication uncertainties alongside untreated-illness risks and her preferences, with coordinated follow-up."
+    },
+    {
+      "label": "B",
+      "text": "Taper sertraline over the next two weeks",
+      "isCorrect": false,
+      "explanation": "Even a gradual withdrawal may destabilise a person with severe recurrent illness and a previous relapse after stopping. A taper is not the preferred response to pregnancy alone in this case."
+    },
+    {
+      "label": "C",
+      "text": "Switch to another SSRI during the first trimester",
+      "isCorrect": false,
+      "explanation": "A switch is not automatically safer and can lose a treatment that is working. It needs a specific clinical reason rather than the fact that conception was unplanned."
+    },
+    {
+      "label": "D",
+      "text": "Reduce sertraline to half the maintenance dose",
+      "isCorrect": false,
+      "explanation": "An arbitrary dose reduction does not create a guaranteed safe exposure and may reduce effectiveness. Dose decisions should follow the individual clinical assessment."
+    },
+    {
+      "label": "E",
+      "text": "Replace sertraline with intermittent doses whenever low mood appears",
+      "isCorrect": false,
+      "explanation": "SSRIs are not used intermittently in response to emerging depressive symptoms. This would undermine maintenance treatment and may cause fluctuating withdrawal effects."
+    }
+  ],
+  "context": "Pregnancy prescribing weighs relapse risk and treatment benefit alongside fetal and maternal medication risks.",
+  "publicModule": {
+    "schemaVersion": 1,
+    "origin": "mirrored",
+    "discipline": "psych",
+    "mirroredFrom": "md3:571a4d0493e0312f",
+    "itemText": {
+      "licence": "CC-BY-4.0",
+      "attribution": "MD3 contributors"
+    },
+    "evidence": {
+      "kind": "reference",
+      "sourceId": "nice-guidance-cg192-chapter-recommendations-950420"
+    },
+    "review": {
+      "verdict": "passed",
+      "contentHash": "1c461ae19c1e32c17ed0af9e981545588672b292ea304900867f560f37a78eb2"
+    }
+  }
+}

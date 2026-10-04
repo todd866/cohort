@@ -437,6 +437,7 @@ describe('public navigation and static assets', () => {
       '/api/auth/claim-guest-progress',
       '/api/auth/session',
       '/api/cohort/answer',
+      '/api/cohort/card-grade',
       '/api/cohort/profile',
       '/api/cohort/turn',
       '/api/content/flag',

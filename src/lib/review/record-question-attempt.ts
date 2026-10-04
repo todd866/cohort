@@ -13,6 +13,8 @@ import {
 import { logger } from '@/lib/logger';
 import { userIdCanAccessRequestedRotations } from '@/lib/personal-rotation-access';
 import { prependCardsToQueue } from '@/lib/study-queue';
+import { EXAM_ONLY_ROTATIONS } from '@/lib/study/exam-only-modules';
+import { queueStatementScaffoldsForMiss } from './statement-scaffold-queue';
 import { coerceScorableOptions, type ScorableOption } from '@/lib/question-validation';
 import { scoreQuestionAnswer, type StatementFeedback } from './score-question-answer';
 import { responseFormatOfOptions } from '@/lib/question-bank/statement-items';
@@ -706,6 +708,28 @@ export async function recordQuestionAttemptFast(
     });
   }
 
+  // An exam-only miss arms the scaffolds for the statements it got wrong
+  // before the grade returns, not in after(): the learner's next refill can be
+  // requested the moment they press Continue, and it must find them armed.
+  // Committed grades only (a replay returned above); a skip is not graded; an
+  // owned practice follow-up manages its own next step. Never fails the grade.
+  // Armed on the server's clock, not the client's action time: a device clock
+  // running fast would make the scaffold due in the server's future, and the
+  // next refill would miss it.
+  if (!receipt.isCorrect && !receipt.skipped && !transactionHook && !isPublicUsmleDelivery
+    && rotation && EXAM_ONLY_ROTATIONS.has(rotation)) {
+    try {
+      await queueStatementScaffoldsForMiss({
+        userId,
+        question: { id: questionId, rotation, options: question.options, statements: question.statements },
+        selectedOption,
+        now: new Date(),
+      });
+    } catch (err) {
+      logger.error('Failed to queue statement scaffolds', { userId, questionId, error: String(err) });
+    }
+  }
+
   return {
     ok: true,
     ...receipt,
@@ -775,7 +799,12 @@ export async function recordQuestionAttemptBackground(
 
     // Queue related cards for a graded wrong answer. Skips are not graded, and
     // owned practice-scaffold attempts manage their own follow-up progression.
-    if (!input.skipped && !input.skipRemediation && !isCorrect) {
+    // Exam-only modules are the exception: the fast path already armed the
+    // scaffolds of the statements the learner got wrong, and their sessions
+    // admit no other card, so a vector-similar card could never be served
+    // there; it would only make an unrelated card due in another module.
+    if (!input.skipped && !input.skipRemediation && !isCorrect
+      && !EXAM_ONLY_ROTATIONS.has(question.rotation)) {
       const remediationCardIds = await findAndQueueRemediationCards(userId, question, now);
       if (remediationCardIds.length > 0 && question.rotation) {
         await prependCardsToQueue(userId, question.rotation, remediationCardIds);

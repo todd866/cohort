@@ -4,6 +4,7 @@ import {
   USMLE_STEP1_PRIMARY_ROTATION,
 } from '@/lib/usmle/raw-question-boundary';
 import type { UnifiedItem } from '@/lib/study/unified-session-types';
+import { normalizeAbbreviations } from './current-session-content';
 
 const CARD_LIMIT = 4;
 const QUESTION_LIMIT = 2;
@@ -20,6 +21,7 @@ export function copyrightStep1CardItem(card: {
   front: string;
   back: string;
   context?: string | null;
+  abbreviations?: unknown;
   topics?: string[];
 }): UnifiedItem {
   return {
@@ -28,6 +30,7 @@ export function copyrightStep1CardItem(card: {
     front: card.front,
     back: card.back,
     context: card.context ?? null,
+    abbreviations: normalizeAbbreviations(card.abbreviations),
     topics: card.topics ?? [],
     rotation: USMLE_STEP1_OPEN_ROTATION,
     week: null,
@@ -42,6 +45,7 @@ export function copyrightStep1QuestionItem(question: {
   difficulty?: string | null;
   topics?: string[];
   options: unknown;
+  abbreviations?: unknown;
 }): UnifiedItem {
   const options = Array.isArray(question.options)
     ? question.options.flatMap((option) => {
@@ -57,6 +61,7 @@ export function copyrightStep1QuestionItem(question: {
     id: question.id,
     stem: question.stem,
     context: question.context ?? null,
+    abbreviations: normalizeAbbreviations(question.abbreviations),
     options,
     difficulty: question.difficulty ?? undefined,
     topics: question.topics ?? [],

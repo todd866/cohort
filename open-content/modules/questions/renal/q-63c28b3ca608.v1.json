@@ -1,0 +1,64 @@
+{
+  "id": "bank:cohort:renal:q-63c28b3ca608:v1",
+  "rotation": "cohort-open",
+  "moduleNodes": [
+    "cohort/renal"
+  ],
+  "topics": [
+    "renal"
+  ],
+  "questionType": "management",
+  "difficulty": "medium",
+  "stem": "An 8-year-old boy has never been dry at night. He is dry by day, has a normal examination and has no constipation or urinary symptoms. He and his family are motivated and want the treatment with the best chance of lasting dryness.\n\nWhat is the best first active treatment?",
+  "options": [
+    {
+      "label": "A",
+      "text": "A bedwetting alarm, with family support",
+      "isCorrect": true,
+      "explanation": "Correct. A bedwetting alarm is first-line active treatment for motivated families and offers better sustained dryness than desmopressin after stopping."
+    },
+    {
+      "label": "B",
+      "text": "Desmopressin tablets each night at bedtime",
+      "isCorrect": false,
+      "explanation": "Desmopressin works quickly and suits short-term needs such as camps, but relapse after stopping is common, so it gives less lasting dryness than an alarm."
+    },
+    {
+      "label": "C",
+      "text": "Lifting him to the toilet late each evening",
+      "isCorrect": false,
+      "explanation": "Lifting or waking him may reduce wet beds but does not train him to respond to a full bladder, so it does not produce lasting dryness."
+    },
+    {
+      "label": "D",
+      "text": "Oxybutynin at bedtime to calm the bladder",
+      "isCorrect": false,
+      "explanation": "Oxybutynin is for daytime bladder symptoms or an overactive bladder, usually alongside other treatment. He is dry by day, so it is not first-line for monosymptomatic enuresis."
+    },
+    {
+      "label": "E",
+      "text": "Restricting his fluids throughout the day",
+      "isCorrect": false,
+      "explanation": "Daytime fluid restriction is unhelpful and can be unsafe; spreading drinks through the day and avoiding large evening drinks is the advice."
+    }
+  ],
+  "context": "For motivated families seeking durable dryness in monosymptomatic nocturnal enuresis, offer a bedwetting alarm after addressing constipation and fluid habits. Desmopressin is useful when short-term dryness is the priority.",
+  "publicModule": {
+    "schemaVersion": 1,
+    "origin": "mirrored",
+    "discipline": "renal",
+    "mirroredFrom": "md3:63c28b3ca608dd5f",
+    "itemText": {
+      "licence": "CC-BY-4.0",
+      "attribution": "MD3 contributors"
+    },
+    "evidence": {
+      "kind": "reference",
+      "sourceId": "rch-uide-guideline-index-enuresis-bed-wetting-and-monosymptomatic-enuresis-5fe91c"
+    },
+    "review": {
+      "verdict": "passed",
+      "contentHash": "31a4bbe9cc9dd3a577796fab16d53b08ca7e7b3ab2a595746534ea4c9e434b54"
+    }
+  }
+}

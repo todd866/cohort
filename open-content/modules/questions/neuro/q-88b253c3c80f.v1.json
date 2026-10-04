@@ -1,0 +1,64 @@
+{
+  "id": "bank:cohort:neuro:q-88b253c3c80f:v1",
+  "rotation": "cohort-open",
+  "moduleNodes": [
+    "cohort/neuro"
+  ],
+  "topics": [
+    "neuro"
+  ],
+  "questionType": "investigation",
+  "difficulty": "hard",
+  "stem": "A 46-year-old woman had a sudden severe headache at 10:00 that peaked within seconds during exercise. She arrives at 15:00 with neck pain but is alert with no focal deficit. A good-quality non-contrast head CT done at 17:00 is reported as normal. It is now 17:30; senior review still suspects subarachnoid haemorrhage, and her platelet count and coagulation studies are normal.\n\nWhat should the ED plan be?",
+  "options": [
+    {
+      "label": "A",
+      "text": "Lumbar puncture now, while she remains in the department",
+      "isCorrect": false,
+      "explanation": "Before 12 hours after onset, bilirubin may not yet have formed in the CSF, so a negative or blood-stained sample cannot distinguish a traumatic tap from a subarachnoid bleed."
+    },
+    {
+      "label": "B",
+      "text": "Discharge, as the CT was within 24 hours of headache onset",
+      "isCorrect": false,
+      "explanation": "CT sensitivity is highest within about six hours of onset. Her scan was seven hours after the headache began, so a normal result does not exclude haemorrhage."
+    },
+    {
+      "label": "C",
+      "text": "Repeat the non-contrast CT tomorrow morning before deciding",
+      "isCorrect": false,
+      "explanation": "A later CT is less sensitive, not more, as blood is cleared from the subarachnoid space. It cannot replace CSF analysis."
+    },
+    {
+      "label": "D",
+      "text": "Lumbar puncture from 22:00, twelve hours after onset",
+      "isCorrect": true,
+      "explanation": "A normal CT more than six hours after onset does not exclude subarachnoid haemorrhage. Lumbar puncture with CSF spectrophotometry for bilirubin should be done at least 12 hours after onset, which here is from 22:00."
+    },
+    {
+      "label": "E",
+      "text": "Discharge with outpatient MRI and GP review in one week",
+      "isCorrect": false,
+      "explanation": "Discharging a patient with ongoing suspicion of subarachnoid haemorrhage risks a fatal rebleed before review. The diagnosis needs to be resolved during this attendance."
+    }
+  ],
+  "context": "When subarachnoid haemorrhage is still suspected after a normal CT done more than six hours after onset, do a lumbar puncture, timed at least 12 hours after the headache began.",
+  "publicModule": {
+    "schemaVersion": 1,
+    "origin": "mirrored",
+    "discipline": "neuro",
+    "mirroredFrom": "md3:88b253c3c80fe109",
+    "itemText": {
+      "licence": "CC-BY-4.0",
+      "attribution": "MD3 contributors"
+    },
+    "evidence": {
+      "kind": "reference",
+      "sourceId": "nice-guidance-ng228-chapter-recommendations-0b4ad7"
+    },
+    "review": {
+      "verdict": "passed",
+      "contentHash": "43bfde5b397cf008ef466dd794646f42c49f7d8e079395f37329c664cfbc046a"
+    }
+  }
+}

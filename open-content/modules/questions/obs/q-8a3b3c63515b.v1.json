@@ -1,0 +1,64 @@
+{
+  "id": "bank:cohort:obs:q-8a3b3c63515b:v1",
+  "rotation": "cohort-open",
+  "moduleNodes": [
+    "cohort/obs"
+  ],
+  "topics": [
+    "obs"
+  ],
+  "questionType": "diagnosis",
+  "difficulty": "hard",
+  "stem": "A woman at 35 weeks has a major placental abruption. The obstetric and anaesthetic teams are resuscitating her and preparing urgent birth. She received 1 L of crystalloid before blood was taken. Her blood pressure at booking and on arrival was normal and urinalysis showed no protein. She develops oozing from cannula sites. Results:\n\n| Test | Result | Laboratory reference range |\n|---|---:|---|\n| Platelets | 58 × 10⁹/L | 150–400 × 10⁹/L |\n| Prothrombin time | 23 seconds | 11–14 seconds |\n| Fibrinogen | 0.8 g/L | 2.0–4.0 g/L, non-pregnant |\n\nShe has no previous bleeding disorder or anticoagulant exposure.\n\nWhich complication best explains this pattern?",
+  "options": [
+    {
+      "label": "A",
+      "text": "Disseminated intravascular coagulation from the abruption",
+      "isCorrect": true,
+      "explanation": "Very low fibrinogen, prolonged prothrombin time and low platelets with oozing after a major abruption indicate consumptive coagulopathy."
+    },
+    {
+      "label": "B",
+      "text": "Dilutional coagulopathy from the crystalloid resuscitation",
+      "isCorrect": false,
+      "explanation": "One litre of crystalloid cannot lower fibrinogen from pregnancy levels to 0.8 g/L or platelets to 58; the pattern indicates consumption."
+    },
+    {
+      "label": "C",
+      "text": "Gestational thrombocytopenia unmasked by the haemorrhage",
+      "isCorrect": false,
+      "explanation": "Gestational thrombocytopenia is mild and does not prolong the prothrombin time or deplete fibrinogen."
+    },
+    {
+      "label": "D",
+      "text": "HELLP syndrome presenting without hypertension or proteinuria",
+      "isCorrect": false,
+      "explanation": "HELLP can occur without hypertension, but no haemolysis or raised liver-enzyme evidence is supplied. Profound hypofibrinogenaemia and prolonged prothrombin time after major abruption support DIC."
+    },
+    {
+      "label": "E",
+      "text": "Immune thrombocytopenia with bleeding from the abruption",
+      "isCorrect": false,
+      "explanation": "Immune thrombocytopenia lowers platelets alone and does not prolong the prothrombin time or deplete fibrinogen."
+    }
+  ],
+  "context": "Major placental abruption can cause DIC, with falling platelets, prolonged clotting times and depleted fibrinogen.",
+  "publicModule": {
+    "schemaVersion": 1,
+    "origin": "mirrored",
+    "discipline": "obs",
+    "mirroredFrom": "md3:8a3b3c63515b270e",
+    "itemText": {
+      "licence": "CC-BY-4.0",
+      "attribution": "MD3 contributors"
+    },
+    "evidence": {
+      "kind": "reference",
+      "sourceId": "qld-health-data-assets-pdf-file-0034-139948-g-hdp-7463b8"
+    },
+    "review": {
+      "verdict": "passed",
+      "contentHash": "688a90e577af6dfaeccab3f1617a4e16d1dead57ccc77f533be949b4c16532a2"
+    }
+  }
+}

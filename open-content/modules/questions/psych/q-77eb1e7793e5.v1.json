@@ -1,0 +1,64 @@
+{
+  "id": "bank:cohort:psych:q-77eb1e7793e5:v1",
+  "rotation": "cohort-open",
+  "moduleNodes": [
+    "cohort/psych"
+  ],
+  "topics": [
+    "psych"
+  ],
+  "questionType": "diagnosis",
+  "difficulty": "hard",
+  "stem": "A 52-year-old who drinks heavily every evening had an elective knee replacement yesterday morning; his last drink was at 8 pm the evening before surgery. At 10 am today he develops a tremor, sweating, anxiety and nausea. Pulse is 112/min, blood pressure 156/94 mmHg and temperature 37.6 °C. He rates his knee pain 2/10 at rest. He is fully oriented, can say the months backwards and reports no hallucinations. Capillary glucose is 6.4 mmol/L and the wound is clean.\n\nWhich explanation best fits the change?",
+  "options": [
+    {
+      "label": "A",
+      "text": "Alcohol withdrawal",
+      "isCorrect": true,
+      "explanation": "Tremor, sweating, anxiety, nausea and autonomic arousal about 38 hours after the last drink in a habitual heavy drinker fit alcohol withdrawal. A low-grade temperature is common after surgery and in withdrawal, and intact attention excludes delirium."
+    },
+    {
+      "label": "B",
+      "text": "Early postoperative sepsis",
+      "isCorrect": false,
+      "explanation": "Sepsis must be considered after surgery, but a temperature of 37.6 °C on day one with a clean wound and a tremor fits withdrawal timed to the last drink better. Reassess if fever climbs or a source appears."
+    },
+    {
+      "label": "C",
+      "text": "Alcohol withdrawal delirium",
+      "isCorrect": false,
+      "explanation": "Withdrawal delirium requires disturbed attention and awareness, often with hallucinations, usually from 48 to 72 hours. He is oriented and sustains attention, so this is not delirium yet, though he is at risk of it."
+    },
+    {
+      "label": "D",
+      "text": "Inadequate postoperative analgesia",
+      "isCorrect": false,
+      "explanation": "Pain can raise pulse and blood pressure, but pain of 2/10 does not explain the tremor and sweating, which are typical of withdrawal."
+    },
+    {
+      "label": "E",
+      "text": "Wernicke encephalopathy",
+      "isCorrect": false,
+      "explanation": "Wernicke encephalopathy causes confusion, eye-movement abnormalities or ataxia rather than autonomic arousal. He still needs parenteral thiamine as a heavy drinker, but this picture is not Wernicke encephalopathy."
+    }
+  ],
+  "context": "Postoperative tremor, sweating and tachycardia one to two days after a heavy drinker’s last drink is alcohol withdrawal until shown otherwise; intact attention separates it from delirium.",
+  "publicModule": {
+    "schemaVersion": 1,
+    "origin": "mirrored",
+    "discipline": "psych",
+    "mirroredFrom": "md3:77eb1e7793e51e2a",
+    "itemText": {
+      "licence": "CC-BY-4.0",
+      "attribution": "MD3 contributors"
+    },
+    "evidence": {
+      "kind": "reference",
+      "sourceId": "nsw-health-aod-professionals-publications-managing-withdrawal-e60532"
+    },
+    "review": {
+      "verdict": "passed",
+      "contentHash": "ac8200894f8c1f7fbed8bb05782d6b98d914ff1d61a4acfedb7540bc642c4c56"
+    }
+  }
+}

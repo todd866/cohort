@@ -1,0 +1,64 @@
+{
+  "id": "bank:cohort:obs:q-755dd4c78bbc:v1",
+  "rotation": "cohort-open",
+  "moduleNodes": [
+    "cohort/obs"
+  ],
+  "topics": [
+    "obs"
+  ],
+  "questionType": "management",
+  "difficulty": "medium",
+  "stem": "A 30-year-old sees her GP three months before she plans to conceive. Her previous pregnancy ended at 19 weeks after the morphology scan showed anencephaly. She already takes an over-the-counter pregnancy multivitamin containing 0.5 mg of folic acid and iodine, has a BMI of 24 kg/m² and takes no other medicines. She asks whether the multivitamin is enough.\n\nWhat should the GP advise?",
+  "options": [
+    {
+      "label": "A",
+      "text": "Continue the multivitamin alone, as 0.5 mg already covers her recurrence risk",
+      "isCorrect": false,
+      "explanation": "A previous neural-tube-defect pregnancy is a high-risk indication, and 0.5 mg is the usual-risk dose."
+    },
+    {
+      "label": "B",
+      "text": "Continue 0.5 mg now and change to 5 mg once a pregnancy test is positive",
+      "isCorrect": false,
+      "explanation": "The neural tube closes about four weeks after conception, often before a pregnancy is confirmed, so the higher dose must already be in place."
+    },
+    {
+      "label": "C",
+      "text": "Take folic acid 5 mg daily from now until at least 12 weeks' gestation",
+      "isCorrect": true,
+      "explanation": "After a pregnancy affected by a neural tube defect, 5 mg of folic acid daily is started before conception and continued to at least 12 weeks. She can keep the multivitamin for its iodine."
+    },
+    {
+      "label": "D",
+      "text": "Take two multivitamin tablets daily, giving 1 mg of folic acid each day",
+      "isCorrect": false,
+      "explanation": "Doubling the multivitamin still falls far short of 5 mg and doubles every other ingredient."
+    },
+    {
+      "label": "E",
+      "text": "Continue 0.5 mg, as folic acid does not lower the risk of anencephaly",
+      "isCorrect": false,
+      "explanation": "Anencephaly is a neural tube defect, and high-dose folic acid lowers the risk of recurrence."
+    }
+  ],
+  "context": "A previous pregnancy affected by any neural tube defect, including anencephaly, calls for folic acid 5 mg daily from before conception to at least 12 weeks.",
+  "publicModule": {
+    "schemaVersion": 1,
+    "origin": "mirrored",
+    "discipline": "obs",
+    "mirroredFrom": "md3:755dd4c78bbc6032",
+    "itemText": {
+      "licence": "CC-BY-4.0",
+      "attribution": "MD3 contributors"
+    },
+    "evidence": {
+      "kind": "reference",
+      "sourceId": "qld-health-wp-content-uploads-2017-10-maternity-sharedcare-guideline-cb1b54"
+    },
+    "review": {
+      "verdict": "passed",
+      "contentHash": "d76bb35013c8811f48a9c5495807a105c8a2aa1c3ae42b2134382961356c260c"
+    }
+  }
+}

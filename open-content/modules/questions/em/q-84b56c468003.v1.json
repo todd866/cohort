@@ -1,0 +1,64 @@
+{
+  "id": "bank:cohort:em:q-84b56c468003:v1",
+  "rotation": "cohort-open",
+  "moduleNodes": [
+    "cohort/em"
+  ],
+  "topics": [
+    "em"
+  ],
+  "questionType": "knowledge",
+  "difficulty": "hard",
+  "stem": "A 32-year-old motorcyclist has an unstable pelvic ring injury and persistent shock. A binder is correctly positioned, blood-product resuscitation is underway and the trauma team is arranging haemorrhage control. There is no major external blood loss. FAST shows no intraperitoneal or pericardial free fluid.\n\nHow should the registrar interpret the negative FAST?",
+  "options": [
+    {
+      "label": "A",
+      "text": "It makes clinically important internal haemorrhage unlikely",
+      "isCorrect": false,
+      "explanation": "FAST is not a reliable rule-out test for major internal bleeding. In particular, it does not adequately exclude a retroperitoneal pelvic haemorrhage."
+    },
+    {
+      "label": "B",
+      "text": "It points to a non-haemorrhagic cause of the shock",
+      "isCorrect": false,
+      "explanation": "An unstable pelvic ring injury with persistent shock is haemorrhage until proved otherwise. FAST does not image the retroperitoneum, so a negative scan does not point away from bleeding."
+    },
+    {
+      "label": "C",
+      "text": "It confirms the pelvic binder has controlled the bleeding",
+      "isCorrect": false,
+      "explanation": "FAST does not measure the success of pelvic haemorrhage control. Continuing shock requires ongoing resuscitation and definitive source-control planning."
+    },
+    {
+      "label": "D",
+      "text": "It excludes the abdomen and pelvis as potential bleeding sites",
+      "isCorrect": false,
+      "explanation": "The absence of visible free fluid does not exclude abdominal injury or retroperitoneal blood. Both the test’s anatomical coverage and sensitivity are limited."
+    },
+    {
+      "label": "E",
+      "text": "It leaves major retroperitoneal pelvic bleeding unexcluded",
+      "isCorrect": true,
+      "explanation": "Pelvic bleeding can accumulate in the retroperitoneum without appearing in standard FAST windows. The negative scan does not remove the need for urgent haemorrhage control."
+    }
+  ],
+  "context": "A negative FAST does not exclude retroperitoneal pelvic haemorrhage or other important internal bleeding.",
+  "publicModule": {
+    "schemaVersion": 1,
+    "origin": "mirrored",
+    "discipline": "em",
+    "mirroredFrom": "md3:84b56c4680031bd7",
+    "itemText": {
+      "licence": "CC-BY-4.0",
+      "attribution": "MD3 contributors"
+    },
+    "evidence": {
+      "kind": "reference",
+      "sourceId": "nice-guidance-ng39-chapter-recommendations-b50a7e"
+    },
+    "review": {
+      "verdict": "passed",
+      "contentHash": "cb83c4008b6f4aeb86c60ac09d24483f4555595def6f3de861de4b49d14b6023"
+    }
+  }
+}

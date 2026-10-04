@@ -1,0 +1,64 @@
+{
+  "id": "bank:cohort:obs:q-72c7d0821bd1:v1",
+  "rotation": "cohort-open",
+  "moduleNodes": [
+    "cohort/obs"
+  ],
+  "topics": [
+    "obs"
+  ],
+  "questionType": "management",
+  "difficulty": "hard",
+  "stem": "In a monitored maternity high-dependency area, a woman at 33 weeks has blood pressures of 176/116 and 172/114 mmHg 15 minutes apart. She has proteinuria and a persistent headache. Magnesium sulfate is running, and the obstetric and anaesthetic teams are present. She has severe asthma with a recent admission, but is currently breathing comfortably, has clear lungs and can swallow. The listed medicines are available.\n\nWhich medicine should the registrar select for prompt blood-pressure control?",
+  "options": [
+    {
+      "label": "A",
+      "text": "Intravenous labetalol",
+      "isCorrect": false,
+      "explanation": "Labetalol can treat acute severe hypertension, but its beta-blocking effects make it a poor choice in this patient with significant asthma."
+    },
+    {
+      "label": "B",
+      "text": "Oral methyldopa",
+      "isCorrect": false,
+      "explanation": "Methyldopa has a role in longer-term pregnancy blood-pressure control; its slower onset is unsuitable for this acute severe elevation."
+    },
+    {
+      "label": "C",
+      "text": "Oral immediate-release nifedipine",
+      "isCorrect": true,
+      "explanation": "Immediate-release oral nifedipine is an accepted acute option with close maternal and fetal monitoring. It provides prompt treatment without the beta-blockade concern raised by her asthma."
+    },
+    {
+      "label": "D",
+      "text": "Further intravenous magnesium bolus",
+      "isCorrect": false,
+      "explanation": "Magnesium addresses seizure risk; additional magnesium is not a substitute for an appropriate antihypertensive when severe blood pressure persists."
+    },
+    {
+      "label": "E",
+      "text": "Intravenous furosemide",
+      "isCorrect": false,
+      "explanation": "Diuresis may be needed with pulmonary oedema, but that is not present here; routine furosemide is not the indicated response to isolated severe hypertension."
+    }
+  ],
+  "context": "Acute severe pregnancy hypertension needs prompt treatment; the patient’s asthma can make nifedipine preferable to labetalol.",
+  "publicModule": {
+    "schemaVersion": 1,
+    "origin": "mirrored",
+    "discipline": "obs",
+    "mirroredFrom": "md3:72c7d0821bd16148",
+    "itemText": {
+      "licence": "CC-BY-4.0",
+      "attribution": "MD3 contributors"
+    },
+    "evidence": {
+      "kind": "reference",
+      "sourceId": "nice-guidance-ng133-chapter-recommendations-85cb9e"
+    },
+    "review": {
+      "verdict": "passed",
+      "contentHash": "8efa2a79f27325a59a1a12d9d0815cf9de4e824ac518be5c95f7fc0cf4baff34"
+    }
+  }
+}

@@ -1,0 +1,82 @@
+{
+  "id": "bank:cohort:haem:q-a169b4c03bbe:v1",
+  "rotation": "cohort-open",
+  "moduleNodes": [
+    "cohort/haem"
+  ],
+  "topics": [
+    "haem"
+  ],
+  "questionType": "diagnosis",
+  "difficulty": "hard",
+  "stem": "An 8-month-old boy who is exclusively breastfed has become floppy over 6 weeks, has stopped reaching for toys and no longer babbles. He had a cold 3 weeks ago. His mother had weight-loss surgery 4 years ago and stopped the injections prescribed afterwards when she became pregnant; she feels well. He is pale, with no jaundice or organomegaly.\n\n| Test | Result | Reference range |\n| --- | --- | --- |\n| Haemoglobin | 78 g/L | 105–135 |\n| MCV | 96 fL | 70–86 |\n| Reticulocytes | 12 × 10⁹/L | 25–100 |\n| Bilirubin | 14 µmol/L | 3–20 |\n\nWhich diagnosis best unifies the neurological and haematological findings?",
+  "options": [
+    {
+      "label": "A",
+      "text": "Transient erythroblastopenia of childhood",
+      "isCorrect": false,
+      "explanation": "Transient erythroblastopenia follows a viral illness and causes anaemia with very low reticulocytes, which makes it tempting here. But it is normocytic, usually occurs between 1 and 4 years, and does not cause developmental regression."
+    },
+    {
+      "label": "B",
+      "text": "Anaemia of chronic inflammation",
+      "isCorrect": false,
+      "explanation": "Anaemia of inflammation is mild and normocytic or microcytic, with no neurological effects."
+    },
+    {
+      "label": "C",
+      "text": "Hereditary spherocytosis",
+      "isCorrect": false,
+      "explanation": "Hereditary spherocytosis causes haemolysis, with jaundice, splenomegaly and high reticulocytes."
+    },
+    {
+      "label": "D",
+      "text": "G6PD enzyme deficiency",
+      "isCorrect": false,
+      "explanation": "G6PD deficiency causes episodes of haemolysis after an oxidant trigger, with jaundice and high reticulocytes."
+    },
+    {
+      "label": "E",
+      "text": "Vitamin B12 deficiency",
+      "isCorrect": true,
+      "explanation": "Correct. Macrocytic anaemia with low reticulocytes and loss of motor, language and social skills in an exclusively breastfed infant points to vitamin B12 deficiency. Weight-loss surgery impairs B12 absorption, his mother stopped her B12 injections, and her milk is low in B12 even though she feels well; his stores at birth also depended on her. Both need treatment, and early treatment can reverse much of the regression."
+    },
+    {
+      "label": "F",
+      "text": "Acute blood loss",
+      "isCorrect": false,
+      "explanation": "Acute blood loss causes a normocytic anaemia with a rising reticulocyte count."
+    },
+    {
+      "label": "G",
+      "text": "Autoimmune haemolytic anaemia",
+      "isCorrect": false,
+      "explanation": "Autoimmune haemolytic anaemia causes jaundice and high reticulocytes, with a positive direct antiglobulin test."
+    },
+    {
+      "label": "H",
+      "text": "Beta-thalassaemia major",
+      "isCorrect": false,
+      "explanation": "Beta-thalassaemia major presents in the second half of the first year with severe anaemia, but it is microcytic, with hepatosplenomegaly and no regression."
+    }
+  ],
+  "context": "A breastfed infant with macrocytic anaemia and developmental regression has vitamin B12 deficiency until proven otherwise. Look for the maternal cause, such as a vegan diet, pernicious anaemia or weight-loss surgery without B12 replacement, even if the mother is well.",
+  "publicModule": {
+    "schemaVersion": 1,
+    "origin": "mirrored",
+    "discipline": "haem",
+    "mirroredFrom": "md3:a169b4c03bbe17a2",
+    "itemText": {
+      "licence": "CC-BY-4.0",
+      "attribution": "MD3 contributors"
+    },
+    "evidence": {
+      "kind": "reference",
+      "sourceId": "rch-clinicalguide-guideline-index-anaemia-1b867c"
+    },
+    "review": {
+      "verdict": "passed",
+      "contentHash": "1c87c9eac7862ff028f6bf9811a9c120839e94ec98b7ece18933608cb1de690d"
+    }
+  }
+}

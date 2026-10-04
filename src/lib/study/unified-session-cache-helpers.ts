@@ -1,12 +1,18 @@
 import type { UnifiedItem } from './unified-session-types';
 import { collectItemComposition } from './unified-session-manifold-items';
 
-const DEFAULT_STALE_MAX_AGE_MS = 24 * 60 * 60 * 1000;
+/**
+ * How long past validUntil the cache lane still serves a queue, as
+ * cache-stale, before discarding it. The undelivered ServeDecision prune's
+ * floor depends on this bound (serve-decision-retention.ts); a test there pins
+ * the floor above it.
+ */
+export const CACHE_STALE_SERVE_MAX_MS = 24 * 60 * 60 * 1000;
 
 export function getCacheFreshness(
   validUntil: Date,
   now: Date,
-  staleMaxAgeMs: number = DEFAULT_STALE_MAX_AGE_MS,
+  staleMaxAgeMs: number = CACHE_STALE_SERVE_MAX_MS,
 ) {
   const ageMs = now.getTime() - validUntil.getTime();
   return {

@@ -5,13 +5,12 @@ import { normalizeAngleBracketEscapes } from '@/lib/normalize-angle-bracket-esca
 import { formatChemistry } from '@/lib/format-chemistry';
 import { tokenizeGlossaryTerms } from './glossary-autowrap';
 import { Term } from './Term';
+import { useItemAbbreviations, type ItemAbbreviations } from './GlossaryScope';
+import { DecodedTerm } from './DecodedTerm';
 
-// Renders card text, wrapping only OBSCURE glossary terms (those flagged
-// `decode: true`) in a hover-decode <Term>. The old decode-everything style was
-// removed 2026-06-11 as noise; this gated version only ever touches a curated
-// handful of genuinely-obscure TLAs (ITP, MMN, CIDP…), so trivial terms render
-// plain. Stored card text is plain (the seeder flattens authored <Term>), so
-// this is where render-time decode happens in the review feed.
+// Item-authored maps decide both which tokens decode and their exact meanings.
+// A missing key in an explicit map stays plain; legacy null-map content retains
+// the old curated global glossary until migrated. No rotation-based inference.
 //
 // The plain runs between terms also get chemistry notation: Na+ renders as
 // Na<sup>+</sup>, HCO3- as HCO<sub>3</sub><sup>-</sup>. This is the one leaf
@@ -19,9 +18,11 @@ import { Term } from './Term';
 // to do it. Greek substitution stays off here — see FormatChemistryOptions.
 const chemistry = (value: string) => formatChemistry(value, { greek: false });
 
-export function GlossaryText({ text }: { text: string }): ReactNode {
+export function GlossaryText({ text, abbreviations: explicitAbbreviations }: { text: string; abbreviations?: ItemAbbreviations | null }): ReactNode {
+  const inheritedAbbreviations = useItemAbbreviations();
+  const abbreviations = explicitAbbreviations === undefined ? inheritedAbbreviations : explicitAbbreviations;
   const normalized = normalizeAngleBracketEscapes(text);
-  const segments = tokenizeGlossaryTerms(normalized);
+  const segments = tokenizeGlossaryTerms(normalized, abbreviations);
   if (segments.length === 1 && segments[0].type === 'text') {
     return chemistry(segments[0].value);
   }
@@ -29,7 +30,7 @@ export function GlossaryText({ text }: { text: string }): ReactNode {
     seg.type === 'text' ? (
       <Fragment key={i}>{chemistry(seg.value)}</Fragment>
     ) : (
-      <Term key={i} abbr={seg.abbr} />
+      seg.expansion ? <DecodedTerm key={i} expansion={seg.expansion}>{seg.value}</DecodedTerm> : <Term key={i} abbr={seg.abbr} />
     ),
   );
 }

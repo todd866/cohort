@@ -1,0 +1,64 @@
+{
+  "id": "bank:cohort:psych:q-cb90e9b8413d:v1",
+  "rotation": "cohort-open",
+  "moduleNodes": [
+    "cohort/psych"
+  ],
+  "topics": [
+    "psych"
+  ],
+  "questionType": "management",
+  "difficulty": "hard",
+  "stem": "An addiction-medicine doctor reviews a woman at nine weeks of pregnancy who has been stable on sublingual buprenorphine for a year. She has not used non-prescribed opioids during that time. She asks to taper off now because she fears neonatal withdrawal. Antenatal care is being arranged and she has no current medication adverse effects.\n\nWhich advice best balances the maternal and infant risks?",
+  "options": [
+    {
+      "label": "A",
+      "text": "Continue buprenorphine with joint antenatal and addiction care",
+      "isCorrect": true,
+      "explanation": "Maintaining effective opioid treatment reduces the risks of return to use and unstable opioid exposure. Neonatal withdrawal is a recognised, manageable possibility to discuss and plan for, not an automatic reason to stop."
+    },
+    {
+      "label": "B",
+      "text": "Taper buprenorphine promptly to prevent any neonatal withdrawal",
+      "isCorrect": false,
+      "explanation": "A taper may destabilise recovery and is not the preferred response to this concern. Decisions require specialist discussion of the whole pregnancy risk, rather than focusing on neonatal withdrawal alone."
+    },
+    {
+      "label": "C",
+      "text": "Change to naltrexone now to avoid fetal opioid exposure",
+      "isCorrect": false,
+      "explanation": "Starting an antagonist in someone physically dependent on an opioid agonist can precipitate withdrawal. It is not a routine pregnancy substitution for effective buprenorphine."
+    },
+    {
+      "label": "D",
+      "text": "Replace buprenorphine with short courses when withdrawal occurs",
+      "isCorrect": false,
+      "explanation": "Intermittent dosing permits withdrawal and cravings between courses. Consistent treatment is preferable to repeated cycles of exposure and withdrawal."
+    },
+    {
+      "label": "E",
+      "text": "Stop buprenorphine and use clonidine as long-term relapse prevention",
+      "isCorrect": false,
+      "explanation": "Clonidine may relieve selected withdrawal symptoms but does not replace effective opioid agonist treatment for ongoing dependence. Stopping a stable regimen creates avoidable risk."
+    }
+  ],
+  "context": "Pregnancy is a reason to coordinate effective opioid treatment, not automatically withdraw it.",
+  "publicModule": {
+    "schemaVersion": 1,
+    "origin": "mirrored",
+    "discipline": "psych",
+    "mirroredFrom": "md3:cb90e9b8413d53c6",
+    "itemText": {
+      "licence": "CC-BY-4.0",
+      "attribution": "MD3 contributors"
+    },
+    "evidence": {
+      "kind": "reference",
+      "sourceId": "nsw-health-aod-publications-nsw-clinical-guidelines-opioid-132984"
+    },
+    "review": {
+      "verdict": "passed",
+      "contentHash": "4182ada816348328982ad7a1830d62e160609e52bf29c305a42cac70a3ac4b5e"
+    }
+  }
+}

@@ -1,0 +1,64 @@
+{
+  "id": "bank:cohort:gynae:q-84e8722fb59c:v1",
+  "rotation": "cohort-open",
+  "moduleNodes": [
+    "cohort/gynae"
+  ],
+  "topics": [
+    "gynae"
+  ],
+  "questionType": "investigation",
+  "difficulty": "hard",
+  "stem": "A 45-year-old sees her GP about regular but very heavy periods over the past year, flooding on the first two days. She feels tired and has occasional hot flushes. A full blood count three months ago, taken when she first mentioned tiredness, was normal. Pregnancy has been excluded, there is no intermenstrual or postcoital bleeding, no history of easy bruising or bleeding and no thyroid symptoms, and pelvic examination is normal. She asks whether blood tests are needed again so soon.\n\nWhich blood tests should the GP arrange?",
+  "options": [
+    {
+      "label": "A",
+      "text": "No tests now, since her blood count three months ago was normal",
+      "isCorrect": false,
+      "explanation": "A normal count three months ago did not measure iron stores, and she has kept losing blood since, so ferritin and a current count are needed."
+    },
+    {
+      "label": "B",
+      "text": "FSH and oestradiol, to show the bleeding is from perimenopause",
+      "isCorrect": false,
+      "explanation": "Hormone levels fluctuate in the perimenopause and neither measure the consequence of heavy bleeding nor change the initial plan."
+    },
+    {
+      "label": "C",
+      "text": "A full blood count alone, adding ferritin if she proves anaemic",
+      "isCorrect": false,
+      "explanation": "Iron stores fall before haemoglobin does, so ferritin is measured even when the blood count is normal."
+    },
+    {
+      "label": "D",
+      "text": "Coagulation studies and a von Willebrand screen, as flow is heavy",
+      "isCorrect": false,
+      "explanation": "Bleeding-disorder tests are guided by a suggestive history, such as heavy bleeding since menarche or bleeding after surgery; she has none."
+    },
+    {
+      "label": "E",
+      "text": "A full blood count and a serum ferritin to check her iron stores",
+      "isCorrect": true,
+      "explanation": "Heavy menstrual bleeding is routinely assessed for anaemia and iron deficiency with a full blood count and serum ferritin. Iron stores fall before haemoglobin does, and three more months of heavy loss have passed since the last count."
+    }
+  ],
+  "context": "Assess heavy menstrual bleeding with a current full blood count and ferritin, even after a recent normal count; other tests depend on the history.",
+  "publicModule": {
+    "schemaVersion": 1,
+    "origin": "mirrored",
+    "discipline": "gynae",
+    "mirroredFrom": "md3:84e8722fb59c4874",
+    "itemText": {
+      "licence": "CC-BY-4.0",
+      "attribution": "MD3 contributors"
+    },
+    "evidence": {
+      "kind": "reference",
+      "sourceId": "acsqhc-clinical-care-standards-heavy-menstrual-bleeding-a802d0"
+    },
+    "review": {
+      "verdict": "passed",
+      "contentHash": "bc56baba66668380bd26128bff649a3acbc96b4f4db366fcdde4d2e3377f4df8"
+    }
+  }
+}

@@ -1,0 +1,64 @@
+{
+  "id": "bank:cohort:obs:q-01abbc9fc09e:v1",
+  "rotation": "cohort-open",
+  "moduleNodes": [
+    "cohort/obs"
+  ],
+  "topics": [
+    "obs"
+  ],
+  "questionType": "management",
+  "difficulty": "hard",
+  "stem": "Four hours after birth, a woman with severe pre-eclampsia is receiving magnesium sulfate. At handover the pump is found running at 4 g per hour instead of 1 g per hour for the last three hours. She is now drowsy, her respiratory rate is 8/min with oxygen saturation 90% on air, and her patellar reflexes are absent. Her blood pressure is 162/106 mmHg. The infusion has been stopped, oxygen started and her breathing is being supported; a serum magnesium level will take 40 minutes.\n\nWhat should the obstetric registrar give next?",
+  "options": [
+    {
+      "label": "A",
+      "text": "Intravenous hydralazine first, as her blood pressure is in the severe range",
+      "isCorrect": false,
+      "explanation": "Her blood pressure needs treatment soon, but respiratory depression from magnesium is the immediate threat to life and is reversed first."
+    },
+    {
+      "label": "B",
+      "text": "Calcium gluconate IV now, without awaiting the serum level",
+      "isCorrect": true,
+      "explanation": "Absent reflexes, drowsiness and respiratory depression after a magnesium overdose are toxicity. With the infusion stopped and breathing supported, give 10% calcium gluconate intravenously, then treat the blood pressure."
+    },
+    {
+      "label": "C",
+      "text": "Nothing further until the serum magnesium level confirms toxicity",
+      "isCorrect": false,
+      "explanation": "Toxicity is diagnosed clinically; absent reflexes and a respiratory rate of 8 with falling saturation need the antidote now, not in 40 minutes."
+    },
+    {
+      "label": "D",
+      "text": "Intravenous furosemide to speed the renal excretion of magnesium",
+      "isCorrect": false,
+      "explanation": "Diuresis does not reverse the acute neuromuscular and respiratory effects, whereas calcium antagonises them within minutes."
+    },
+    {
+      "label": "E",
+      "text": "Intravenous diazepam, as seizures may recur once magnesium stops",
+      "isCorrect": false,
+      "explanation": "A benzodiazepine would deepen the respiratory depression and does not treat the toxicity."
+    }
+  ],
+  "context": "Magnesium toxicity (lost reflexes, drowsiness, respiratory depression) is treated on clinical grounds: stop the infusion, support breathing and give intravenous calcium gluconate without waiting for a level.",
+  "publicModule": {
+    "schemaVersion": 1,
+    "origin": "mirrored",
+    "discipline": "obs",
+    "mirroredFrom": "md3:01abbc9fc09ee2bd",
+    "itemText": {
+      "licence": "CC-BY-4.0",
+      "attribution": "MD3 contributors"
+    },
+    "evidence": {
+      "kind": "reference",
+      "sourceId": "qld-health-data-assets-pdf-file-0034-139948-g-hdp-7463b8"
+    },
+    "review": {
+      "verdict": "passed",
+      "contentHash": "8494d1723ca1097a676bbf5c496b85d5bbe5073af126883387b664418277c91c"
+    }
+  }
+}

@@ -1,0 +1,64 @@
+{
+  "id": "bank:cohort:resp:q-3083961e05f5:v1",
+  "rotation": "cohort-open",
+  "moduleNodes": [
+    "cohort/resp"
+  ],
+  "topics": [
+    "resp"
+  ],
+  "questionType": "management",
+  "difficulty": "hard",
+  "stem": "An otherwise healthy 5-month-old boy is on day 3 of bronchiolitis. He is taking about half his usual feeds and has had two wet nappies in 12 hours. His respiratory rate is 58/min with moderate subcostal recession, and scattered crackles and wheeze are heard throughout. Oxygen saturation is 92–93% in air, awake and asleep. He is alert, with no apnoeas. The paediatric registrar is admitting him to the ward.\n\nWhich initial plan is most appropriate?",
+  "options": [
+    {
+      "label": "A",
+      "text": "High-flow nasal oxygen for his work of breathing",
+      "isCorrect": false,
+      "explanation": "High flow is for hypoxaemia not corrected by standard oxygen or for worsening respiratory failure. Moderate recession with saturations of 92–93% does not need it, and it does not address his poor feeding."
+    },
+    {
+      "label": "B",
+      "text": "Low-flow oxygen to keep his saturations above 94%",
+      "isCorrect": false,
+      "explanation": "Bronchiolitis guidelines recommend oxygen only when saturations stay below 90%. Chasing saturations above 94% prolongs oxygen use and admission without benefit."
+    },
+    {
+      "label": "C",
+      "text": "Nasogastric feeds, without supplemental oxygen",
+      "isCorrect": true,
+      "explanation": "Correct. He is taking about half his feeds with fewer wet nappies, so he needs hydration support, and nasogastric feeds or fluids are preferred to IV in bronchiolitis. Saturations of 92–93% are above the 90% threshold, so oxygen is not needed yet."
+    },
+    {
+      "label": "D",
+      "text": "Trial of salbutamol, continued if the wheeze improves",
+      "isCorrect": false,
+      "explanation": "Bronchodilators do not help bronchiolitis in infants, and a trial adds treatment and handling without changing the outcome."
+    },
+    {
+      "label": "E",
+      "text": "Chest X-ray and antibiotics for the widespread crackles",
+      "isCorrect": false,
+      "explanation": "Widespread crackles and wheeze are typical of bronchiolitis. Chest X-ray and antibiotics are not indicated without features of a bacterial complication."
+    }
+  ],
+  "context": "In bronchiolitis, support hydration (nasogastric preferred) when intake falls to about half of normal, and give oxygen only when saturations persistently fall below 90%; salbutamol, routine X-ray and antibiotics do not help.",
+  "publicModule": {
+    "schemaVersion": 1,
+    "origin": "mirrored",
+    "discipline": "resp",
+    "mirroredFrom": "md3:3083961e05f5ad2b",
+    "itemText": {
+      "licence": "CC-BY-4.0",
+      "attribution": "MD3 contributors"
+    },
+    "evidence": {
+      "kind": "reference",
+      "sourceId": "rch-clinicalguide-guideline-index-bronchiolitis-12a4ac"
+    },
+    "review": {
+      "verdict": "passed",
+      "contentHash": "407cd1988a2209c0aecd1a431736a68d4f7afb270ada135ef47bf30aeecf15d2"
+    }
+  }
+}

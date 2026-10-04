@@ -1,0 +1,64 @@
+{
+  "id": "bank:cohort:paeds:q-833abc5a0f5c:v1",
+  "rotation": "cohort-open",
+  "moduleNodes": [
+    "cohort/paeds"
+  ],
+  "topics": [
+    "paeds"
+  ],
+  "questionType": "management",
+  "difficulty": "hard",
+  "stem": "A term infant is apnoeic at 90 seconds after birth. The neonatal registrar has begun face-mask ventilation, but the chest is not moving and the heart rate remains 80/min. There is no obvious airway obstruction.\n\nWhat should the registrar do next?",
+  "options": [
+    {
+      "label": "A",
+      "text": "Start chest compressions at a 3:1 ratio with the ventilation",
+      "isCorrect": false,
+      "explanation": "Compressions start when the heart rate stays below 60/min despite effective ventilation; at 80/min without chest rise, ventilation is not yet effective."
+    },
+    {
+      "label": "B",
+      "text": "Intubate now, before any adjustment of the mask technique",
+      "isCorrect": false,
+      "explanation": "An advanced airway is a later corrective step; simple mask and head corrections come first."
+    },
+    {
+      "label": "C",
+      "text": "Increase inspired oxygen to 100% and continue the same ventilation",
+      "isCorrect": false,
+      "explanation": "More oxygen does not help when no gas is entering the lungs; the chest is not moving."
+    },
+    {
+      "label": "D",
+      "text": "Give intravenous adrenaline through an umbilical venous line",
+      "isCorrect": false,
+      "explanation": "Adrenaline is for a heart rate below 60/min despite effective ventilation and compressions."
+    },
+    {
+      "label": "E",
+      "text": "Reapply the mask for a good seal and reposition the head",
+      "isCorrect": true,
+      "explanation": "No chest movement means ventilation is ineffective; correcting the mask seal and head position are the first corrective steps before escalation."
+    }
+  ],
+  "context": "If mask ventilation produces no chest movement, correct mask and airway technique before escalating resuscitation.",
+  "publicModule": {
+    "schemaVersion": 1,
+    "origin": "mirrored",
+    "discipline": "paeds",
+    "mirroredFrom": "md3:833abc5a0f5c3c62",
+    "itemText": {
+      "licence": "CC-BY-4.0",
+      "attribution": "MD3 contributors"
+    },
+    "evidence": {
+      "kind": "reference",
+      "sourceId": "anzcor-ideline-13-4-airway-management-and-mask-ventilation-of-the-newborn-288-784483"
+    },
+    "review": {
+      "verdict": "passed",
+      "contentHash": "9e40cca4e9e81dc19f42844091da24d855dc0068fcff3cce73c4bde93ced0bb6"
+    }
+  }
+}

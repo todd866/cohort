@@ -1,0 +1,64 @@
+{
+  "id": "bank:cohort:psych:q-be364ac8e043:v1",
+  "rotation": "cohort-open",
+  "moduleNodes": [
+    "cohort/psych"
+  ],
+  "topics": [
+    "psych"
+  ],
+  "questionType": "diagnosis",
+  "difficulty": "hard",
+  "stem": "A 48-year-old taking sertraline and regular oxycodone for back pain could not fill her oxycodone prescription and has had none for 30 hours. Her sertraline dose was increased last week. She is restless and sweaty, with pulse 112/min and dilated pupils. She is yawning, with watery eyes, a runny nose, gooseflesh and cramping diarrhoea. Temperature is 37.2°C, reflexes are normal and there is no clonus.\n\nWhat best explains this presentation?",
+  "options": [
+    {
+      "label": "A",
+      "text": "Opioid withdrawal after the oxycodone ran out",
+      "isCorrect": true,
+      "explanation": "Yawning, lacrimation, rhinorrhoea, piloerection, mydriasis and diarrhoea beginning a day after regular oxycodone stopped is opioid withdrawal. Normal reflexes and absent clonus argue against serotonin toxicity."
+    },
+    {
+      "label": "B",
+      "text": "Anticholinergic toxicity from a new medicine",
+      "isCorrect": false,
+      "explanation": "Anticholinergic toxicity causes dry, flushed skin and reduced bowel activity. She is sweaty, with diarrhoea and increased secretions."
+    },
+    {
+      "label": "C",
+      "text": "Gastroenteritis with dehydration and anxiety",
+      "isCorrect": false,
+      "explanation": "Gastroenteritis does not explain yawning, lacrimation, gooseflesh and mydriasis. The timing after oxycodone stopped is the key clue."
+    },
+    {
+      "label": "D",
+      "text": "Serotonin toxicity after the sertraline increase",
+      "isCorrect": false,
+      "explanation": "Serotonin toxicity shares restlessness, sweating, tachycardia and mydriasis, but is defined by neuromuscular excitation such as clonus and hyperreflexia. Yawning, lacrimation, rhinorrhoea and gooseflesh point elsewhere."
+    },
+    {
+      "label": "E",
+      "text": "Sympathomimetic toxicity from a decongestant",
+      "isCorrect": false,
+      "explanation": "Sympathomimetic toxicity causes agitation, tachycardia and mydriasis, but not lacrimation, rhinorrhoea, yawning or diarrhoea. There is no stimulant exposure."
+    }
+  ],
+  "context": "Opioid withdrawal is a wet state with yawning, secretions and diarrhoea; clonus and hyperreflexia, not shared autonomic signs, identify serotonin toxicity.",
+  "publicModule": {
+    "schemaVersion": 1,
+    "origin": "mirrored",
+    "discipline": "psych",
+    "mirroredFrom": "md3:be364ac8e0431031",
+    "itemText": {
+      "licence": "CC-BY-4.0",
+      "attribution": "MD3 contributors"
+    },
+    "evidence": {
+      "kind": "reference",
+      "sourceId": "nsw-health-aod-professionals-publications-managing-withdrawal-e60532"
+    },
+    "review": {
+      "verdict": "passed",
+      "contentHash": "b942ada359ca7b32cc0c667c01ff02fc26efb8d1e65b79ba5ea4b56a85706b87"
+    }
+  }
+}

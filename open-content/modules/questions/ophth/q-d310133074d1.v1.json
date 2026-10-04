@@ -1,0 +1,64 @@
+{
+  "id": "bank:cohort:ophth:q-d310133074d1:v1",
+  "rotation": "cohort-open",
+  "moduleNodes": [
+    "cohort/ophth"
+  ],
+  "topics": [
+    "ophth"
+  ],
+  "questionType": "management",
+  "difficulty": "medium",
+  "stem": "A 7-year-old girl presents 3 hours after her brother's fingernail caught her left eye. The eye is painful, red and watering, and she is reluctant to open it. Visual acuity is 6/6 in each eye. After fluorescein, examination under blue light shows a single 1 mm area of green uptake on the cornea. There is no foreign body under the everted lids, the anterior chamber is clear and the pupil is round. Which treatment is most appropriate?",
+  "options": [
+    {
+      "label": "A",
+      "text": "Prednisolone 1% eye drops",
+      "isCorrect": false,
+      "explanation": "Topical steroids slow epithelial healing and raise the risk of infection. They have no role in a simple corneal abrasion."
+    },
+    {
+      "label": "B",
+      "text": "Aciclovir 3% eye ointment",
+      "isCorrect": false,
+      "explanation": "Topical aciclovir treats herpes simplex keratitis, which shows a branching dendritic ulcer without a history of trauma, not a small traumatic abrasion."
+    },
+    {
+      "label": "C",
+      "text": "Tetracaine eye drops for home use",
+      "isCorrect": false,
+      "explanation": "Topical anaesthetic is used to allow examination. Repeated home use delays epithelial healing and can mask worsening, so it is not supplied."
+    },
+    {
+      "label": "D",
+      "text": "Chloramphenicol 0.5% eye drops",
+      "isCorrect": true,
+      "explanation": "Correct. RCH advises chloramphenicol 0.5% drops four times a day for 5-7 days for an abrasion under 2 mm, with review until healed."
+    },
+    {
+      "label": "E",
+      "text": "Oral cefalexin for 5 days",
+      "isCorrect": false,
+      "explanation": "Systemic antibiotics are not needed for an uncomplicated abrasion; topical prophylaxis covers the ocular surface."
+    }
+  ],
+  "context": "Small traumatic corneal abrasion: topical chloramphenicol, analgesia and review until healed, with no steroid or take-home anaesthetic. A dendritic ulcer needs aciclovir.",
+  "publicModule": {
+    "schemaVersion": 1,
+    "origin": "mirrored",
+    "discipline": "ophth",
+    "mirroredFrom": "md3:d310133074d12e47",
+    "itemText": {
+      "licence": "CC-BY-4.0",
+      "attribution": "MD3 contributors"
+    },
+    "evidence": {
+      "kind": "reference",
+      "sourceId": "rch-clinicalguide-guideline-index-acute-eye-injury-71efe4"
+    },
+    "review": {
+      "verdict": "passed",
+      "contentHash": "71297cf0457c0f070a2012e0ec255810ca236c908dcbd879d5fb0d0f5e9abe19"
+    }
+  }
+}

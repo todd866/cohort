@@ -1,0 +1,64 @@
+{
+  "id": "bank:cohort:paeds:q-d008fcaa1a6d:v1",
+  "rotation": "cohort-open",
+  "moduleNodes": [
+    "cohort/paeds"
+  ],
+  "topics": [
+    "paeds"
+  ],
+  "questionType": "knowledge",
+  "difficulty": "medium",
+  "stem": "At 50 hours, a well term baby is due for newborn bloodspot screening. The parents ask to skip it: the newborn examination was normal, nobody in either family has an inherited condition, and the baby is feeding well.\n\nWhat best explains why the test still matters?",
+  "options": [
+    {
+      "label": "A",
+      "text": "Screened conditions are silent at birth and treatable before harm",
+      "isCorrect": true,
+      "explanation": "Conditions such as congenital hypothyroidism, phenylketonuria and cystic fibrosis usually look normal at birth, and early treatment prevents harm. That is why every well baby is screened."
+    },
+    {
+      "label": "B",
+      "text": "It completes the check for chromosome conditions missed antenatally",
+      "isCorrect": false,
+      "explanation": "Bloodspot screening targets selected metabolic, endocrine and other conditions, not chromosome conditions in general."
+    },
+    {
+      "label": "C",
+      "text": "It excludes the inherited conditions the family history did not cover",
+      "isCorrect": false,
+      "explanation": "Most babies with a screened condition have no family history, and screening identifies higher risk rather than excluding every inherited condition."
+    },
+    {
+      "label": "D",
+      "text": "It records a baseline in case the baby becomes unwell in the first year",
+      "isCorrect": false,
+      "explanation": "The card is stored, but the test exists to screen for specific treatable conditions, not to provide a baseline for later illness."
+    },
+    {
+      "label": "E",
+      "text": "It detects conditions that the newborn examination should have found",
+      "isCorrect": false,
+      "explanation": "The screened conditions usually cannot be found on examination at birth; a normal examination is exactly why the test is needed."
+    }
+  ],
+  "context": "Newborn bloodspot screening finds selected serious conditions that look normal at birth and are treatable before harm, so a normal examination or family history is no reason to skip it.",
+  "publicModule": {
+    "schemaVersion": 1,
+    "origin": "mirrored",
+    "discipline": "paeds",
+    "mirroredFrom": "md3:d008fcaa1a6d75ff",
+    "itemText": {
+      "licence": "CC-BY-4.0",
+      "attribution": "MD3 contributors"
+    },
+    "evidence": {
+      "kind": "reference",
+      "sourceId": "nsw-health-kidsfamilies-mcfhealth-publications-new-born-bloodspot-81a9fe"
+    },
+    "review": {
+      "verdict": "passed",
+      "contentHash": "46dd4e015fbd4b88ecba8e9eb6a401934fd9fed4bdbe32b6873aaad5731a1ec5"
+    }
+  }
+}

@@ -1,0 +1,75 @@
+// =============================================================================
+// PRECOMPUTED CONCEPT TOP-K
+// The scheduler's per-concept nearest items, precomputed per (item type,
+// concept, partition, locale class) and merged at read time. Design and the
+// branch measurement that compared it with the live query:
+// docs/designs/2026-10-02-neon-scale.md. Triggers that keep it fresh live in
+// prisma/migrations/20261002130000_concept_topk_pool, the embedding-table ones
+// also in src/lib/manifold/concept-topk-triggers.ts (Prisma does not model
+// triggers or the parallel-array CHECK constraint).
+// =============================================================================
+
+/// Append-only change log. A scope ('card:<rotation>', 'question:<rotation>',
+/// 'concepts') has epoch = SUM(weight). Written only by database triggers and
+/// compacted by the refresh job; never updated in place.
+model CandidatePoolChange {
+  id        BigInt   @id @default(autoincrement())
+  scope     String
+  weight    BigInt   @default(1)
+  changedAt DateTime @default(now()) @db.Timestamptz(3)
+
+  @@index([scope])
+}
+
+/// One manifest per built partition, recording the epochs it was built from.
+model ConceptTopKPartition {
+  itemType        String
+  partition       String
+  sessionRotation String
+  localeClasses   String[]
+  itemEpoch       BigInt
+  conceptEpoch    BigInt
+  topK            Int
+  conceptCount    Int
+  buildMs         Int
+  builtAt         DateTime @default(now()) @db.Timestamptz(3)
+
+  @@id([itemType, partition])
+}
+
+/// The last full plan of the precompute and the state it saw (one row, id
+/// 'current'). The refresh plans again, scanning Card and Question, only when
+/// that state has moved or the plan is six hours old.
+model ConceptTopKPlan {
+  id               String   @id
+  itemEpochTotal   BigInt
+  sessionRotations String[]
+  partitionCount   Int
+  plannedAt        DateTime @default(now()) @db.Timestamptz(3)
+}
+
+/// A partition build that failed recently: the refresh skips it for a while
+/// instead of retrying it on every run. A successful build deletes the row.
+model ConceptTopKBuildFailure {
+  itemType  String
+  partition String
+  error     String
+  failedAt  DateTime @default(now()) @db.Timestamptz(3)
+
+  @@id([itemType, partition])
+}
+
+/// The exact top-K items for one concept over one partition and locale class,
+/// highest similarity first. An empty list is stored explicitly; a missing row
+/// means the list was never built.
+model ConceptTopKList {
+  itemType     String
+  partition    String
+  conceptId    String
+  localeClass  String
+  itemIds      String[]
+  similarities Float[]
+  builtAt      DateTime @default(now()) @db.Timestamptz(3)
+
+  @@id([itemType, partition, conceptId, localeClass])
+}

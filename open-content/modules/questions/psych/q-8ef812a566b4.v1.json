@@ -1,0 +1,64 @@
+{
+  "id": "bank:cohort:psych:q-8ef812a566b4:v1",
+  "rotation": "cohort-open",
+  "moduleNodes": [
+    "cohort/psych"
+  ],
+  "topics": [
+    "psych"
+  ],
+  "questionType": "management",
+  "difficulty": "medium",
+  "stem": "A psychiatrist sees a patient who is well on an oral antipsychotic and reliably takes it. She finds storing daily tablets in shared accommodation intrusive and asks whether there is an alternative. She is willing to attend a clinic regularly if needed.\n\nHow should the psychiatrist respond?",
+  "options": [
+    {
+      "label": "A",
+      "text": "Recommend a tablet organiser before discussing injectable treatment",
+      "isCorrect": false,
+      "explanation": "A tablet organiser supports adherence, but her adherence is already reliable. It still leaves daily tablets to store in shared accommodation, which is the problem she wants solved."
+    },
+    {
+      "label": "B",
+      "text": "Keep oral treatment, as she has missed no doses",
+      "isCorrect": false,
+      "explanation": "Long-acting treatment is not reserved for people who miss tablets. Her difficulty storing tablets in shared accommodation is a legitimate reason to discuss it."
+    },
+    {
+      "label": "C",
+      "text": "Discuss long-acting injectable options and their trade-offs",
+      "isCorrect": true,
+      "explanation": "Compare benefits, adverse effects, clinic arrangements and the product-specific initiation plan through shared decision-making. Reliable oral adherence does not remove this option."
+    },
+    {
+      "label": "D",
+      "text": "Reserve injectable treatment for patients who have missed doses",
+      "isCorrect": false,
+      "explanation": "Non-adherence is one indication, not a prerequisite. Her problem storing tablets, and her willingness to attend a clinic, are enough to discuss a long-acting formulation now."
+    },
+    {
+      "label": "E",
+      "text": "Defer injectable treatment until a relapse shows that it is needed",
+      "isCorrect": false,
+      "explanation": "Relapse is not a prerequisite for long-acting treatment. Her problem storing tablets justifies discussing a long-acting formulation while she is well."
+    }
+  ],
+  "context": "An informed preference can justify discussing a long-acting antipsychotic even when oral adherence is good.",
+  "publicModule": {
+    "schemaVersion": 1,
+    "origin": "mirrored",
+    "discipline": "psych",
+    "mirroredFrom": "md3:8ef812a566b4075a",
+    "itemText": {
+      "licence": "CC-BY-4.0",
+      "attribution": "MD3 contributors"
+    },
+    "evidence": {
+      "kind": "reference",
+      "sourceId": "nice-guidance-cg178-chapter-recommendations-ab0e8b"
+    },
+    "review": {
+      "verdict": "passed",
+      "contentHash": "88145a3464df9de583975361593c657e4cb5dfd3b2740d789d31c034ac03ebd6"
+    }
+  }
+}

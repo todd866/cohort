@@ -24,11 +24,20 @@ trap 'sh scripts/ops/restore-sw-stamp.sh "$SW_FILE"' EXIT
 # materially more to hold — on 2026-08-22 it died with "Ineffective
 # mark-compacts near heap limit" at 4079 MB during the TypeScript pass.
 #
-# Same shape as the vitest heap fix in 846713bc, and deliberately local-only:
-# Vercel sizes its own build container and may set NODE_OPTIONS itself, so an
-# existing value always wins and $VERCEL builds are left byte-identical.
-if [ -z "$VERCEL" ] && [ -z "$NODE_OPTIONS" ]; then
-  NODE_OPTIONS="--max-old-space-size=8192"
+# Same shape as the vitest heap fix in 846713bc.
+#
+# Vercel builds run on the Standard machine (4 cores, 8 GB) since 2026-10-02,
+# because Standard builds are not billed per CPU-minute and the 30-core machine
+# Elastic had picked sat idle for most of each build. Node's default heap there
+# is about a quarter of RAM, ~2 GB, under the ~4.2 GB the TypeScript pass
+# needs, so a Vercel build gets 6 GB: enough for that pass, with room left for
+# the rest of the build. An existing NODE_OPTIONS always wins.
+if [ -z "$NODE_OPTIONS" ]; then
+  if [ -n "$VERCEL" ]; then
+    NODE_OPTIONS="--max-old-space-size=6144"
+  else
+    NODE_OPTIONS="--max-old-space-size=8192"
+  fi
   export NODE_OPTIONS
 fi
 

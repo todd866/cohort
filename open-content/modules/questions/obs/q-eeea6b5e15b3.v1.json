@@ -1,0 +1,64 @@
+{
+  "id": "bank:cohort:obs:q-eeea6b5e15b3:v1",
+  "rotation": "cohort-open",
+  "moduleNodes": [
+    "cohort/obs"
+  ],
+  "topics": [
+    "obs"
+  ],
+  "questionType": "management",
+  "difficulty": "medium",
+  "stem": "A 26-year-old sees her GP four months before she plans to conceive. She takes carbamazepine for epilepsy and has never had a pregnancy affected by a neural tube defect. She asks which folic acid to start.\n\nWhat should the GP prescribe?",
+  "options": [
+    {
+      "label": "A",
+      "text": "400 micrograms daily, because she has no previous affected pregnancy",
+      "isCorrect": false,
+      "explanation": "400 micrograms is the usual-risk dose. Carbamazepine is a reason for the higher dose even when no previous pregnancy was affected."
+    },
+    {
+      "label": "B",
+      "text": "5 mg daily, but only after a pregnancy test is positive",
+      "isCorrect": false,
+      "explanation": "The higher dose is right, but waiting for a positive test misses the weeks when the neural tube closes."
+    },
+    {
+      "label": "C",
+      "text": "5 mg daily, starting now, before she conceives",
+      "isCorrect": true,
+      "explanation": "An anticonvulsant puts her in the high-risk group. The GP prescribes 5 mg folic acid daily, started before conception."
+    },
+    {
+      "label": "D",
+      "text": "No tablet. A varied diet covers an anticonvulsant",
+      "isCorrect": false,
+      "explanation": "Diet does not replace the high-risk dose while she is taking carbamazepine."
+    },
+    {
+      "label": "E",
+      "text": "5 mg daily from 12 weeks until birth",
+      "isCorrect": false,
+      "explanation": "Starting at 12 weeks is after neural-tube closure. The 5 mg dose has to be in place before she conceives."
+    }
+  ],
+  "context": "Carbamazepine is a high-risk indication for folic acid 5 mg daily, started before conception.",
+  "publicModule": {
+    "schemaVersion": 1,
+    "origin": "mirrored",
+    "discipline": "obs",
+    "mirroredFrom": "md3:eeea6b5e15b3cb77",
+    "itemText": {
+      "licence": "CC-BY-4.0",
+      "attribution": "MD3 contributors"
+    },
+    "evidence": {
+      "kind": "reference",
+      "sourceId": "qld-health-wp-content-uploads-2017-10-maternity-sharedcare-guideline-cb1b54"
+    },
+    "review": {
+      "verdict": "passed",
+      "contentHash": "638c9e0dc1f0e2a12baebfa4f93821c3275083857c1a0500d799cc861d2fba12"
+    }
+  }
+}

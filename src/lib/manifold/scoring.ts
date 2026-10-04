@@ -779,6 +779,60 @@ export async function scoreItemsAgainstConceptsTopK(
   return result;
 }
 
+/**
+ * The exact top-K items for every concept of a rotation over one precompute
+ * partition and locale class, written as one INSERT into "ConceptTopKList"
+ * (docs/designs/2026-10-02-neon-scale.md, used by concept-topk-refresh.ts).
+ *
+ * The concept vectors are read and compared inside Postgres: only item ids and
+ * similarities are written, and nothing crosses to Node. The distance is
+ * computed once in a subquery fenced with OFFSET 0, so the HNSW index cannot be
+ * chosen and the search is exact; ties are broken by item id.
+ * scoreItemsAgainstConceptsTopK is approximate when the planner uses HNSW, so
+ * the two can differ; on the tested snapshot (an isolated branch, 2 October)
+ * they agreed for CAH, PAAM, critical care and PWH, cards and questions.
+ */
+export function conceptTopKListInsertSql(input: {
+  itemType: string;
+  partition: string;
+  sessionRotation: string;
+  localeClass: string;
+  embeddingsTable: Prisma.Sql;
+  idColumn: Prisma.Sql;
+  parentTable: Prisma.Sql;
+  /** Partition, locale-class and eligibility predicates on the parent row `p`. */
+  itemPredicate: Prisma.Sql;
+  depth: number;
+}): Prisma.Sql {
+  return Prisma.sql`
+    INSERT INTO "ConceptTopKList" ("itemType", "partition", "conceptId", "localeClass", "itemIds", "similarities")
+    SELECT ${input.itemType}, ${input.partition}, cc.concept_id, ${input.localeClass}, k.item_ids, k.sims
+    FROM (
+      SELECT c.id AS concept_id, ce.embedding
+      FROM "Concept" c
+      JOIN concept_embeddings ce ON ce.concept_id = c.id
+      WHERE c.rotation = ${input.sessionRotation}
+    ) cc
+    CROSS JOIN LATERAL (
+      SELECT
+        COALESCE(array_agg(x.item_id ORDER BY x.d, x.item_id), '{}') AS item_ids,
+        COALESCE(array_agg(1 - x.d ORDER BY x.d, x.item_id), '{}') AS sims
+      FROM (
+        SELECT y.item_id, y.d
+        FROM (
+          SELECT ie.${input.idColumn} AS item_id, (ie.embedding <=> cc.embedding) AS d
+          FROM ${input.embeddingsTable} ie
+          JOIN ${input.parentTable} p ON p.id = ie.${input.idColumn}
+          WHERE ${input.itemPredicate}
+          OFFSET 0
+        ) y
+        ORDER BY y.d, y.item_id
+        LIMIT ${input.depth}::int
+      ) x
+    ) k
+  `;
+}
+
 export interface ScoreItemsByGapAlignmentOpts {
   itemTable: EmbeddingItemTable;
   itemIdColumn: EmbeddingItemIdColumn;

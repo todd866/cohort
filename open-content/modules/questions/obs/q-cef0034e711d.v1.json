@@ -1,0 +1,64 @@
+{
+  "id": "bank:cohort:obs:q-cef0034e711d:v1",
+  "rotation": "cohort-open",
+  "moduleNodes": [
+    "cohort/obs"
+  ],
+  "topics": [
+    "obs"
+  ],
+  "questionType": "management",
+  "difficulty": "hard",
+  "stem": "An RhD-negative woman has a positive antibody screen on her routine 28-week sample, taken before routine prophylaxis. Anti-D is identified at a low level (0.1 IU/mL). Her booking antibody screen was negative, and she received 625 IU of RhD immunoglobulin at 26 weeks after an episode of vaginal bleeding. She has no current bleeding and fetal assessment is reassuring.\n\nWhat is the most appropriate next step for the antenatal doctor?",
+  "options": [
+    {
+      "label": "A",
+      "text": "Treat as immune anti-D and withhold further RhD immunoglobulin",
+      "isCorrect": false,
+      "explanation": "A low level two weeks after a documented 625 IU dose, with a negative booking screen, most likely reflects passive antibody; withholding prophylaxis could allow true sensitisation."
+    },
+    {
+      "label": "B",
+      "text": "Treat as immune anti-D and refer for fetal anaemia surveillance",
+      "isCorrect": false,
+      "explanation": "Fetal anaemia surveillance is for immune anti-D at significant levels; this pattern most likely reflects passive antibody."
+    },
+    {
+      "label": "C",
+      "text": "Ask the laboratory if it is likely passive; continue the doses",
+      "isCorrect": true,
+      "explanation": "Interpret the result with the laboratory in light of the recent dose, and continue routine prophylaxis while the result is clarified."
+    },
+    {
+      "label": "D",
+      "text": "Record the antibody as passive and stop screening this pregnancy",
+      "isCorrect": false,
+      "explanation": "Passive anti-D should decline over the following weeks; stopping follow-up would miss a rising immune antibody."
+    },
+    {
+      "label": "E",
+      "text": "Repeat her RhD typing before deciding on any further prophylaxis",
+      "isCorrect": false,
+      "explanation": "Her RhD-negative status is not in doubt; the question is whether the antibody is passive or immune."
+    }
+  ],
+  "context": "Interpret anti-D detected after prophylaxis using the administration history and laboratory findings. Continue indicated prophylaxis while an uncertain result is clarified.",
+  "publicModule": {
+    "schemaVersion": 1,
+    "origin": "mirrored",
+    "discipline": "obs",
+    "mirroredFrom": "md3:cef0034e711d7379",
+    "itemText": {
+      "licence": "CC-BY-4.0",
+      "attribution": "MD3 contributors"
+    },
+    "evidence": {
+      "kind": "reference",
+      "sourceId": "qld-health-data-assets-pdf-file-0016-1219003-g-rhd-negative-f66d7e"
+    },
+    "review": {
+      "verdict": "passed",
+      "contentHash": "9ef2ff230dc2d819600865c37bc354191caa711b39705a3e0fe0c53a40b876d5"
+    }
+  }
+}

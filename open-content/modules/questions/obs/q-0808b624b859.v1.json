@@ -1,0 +1,64 @@
+{
+  "id": "bank:cohort:obs:q-0808b624b859:v1",
+  "rotation": "cohort-open",
+  "moduleNodes": [
+    "cohort/obs"
+  ],
+  "topics": [
+    "obs"
+  ],
+  "questionType": "management",
+  "difficulty": "medium",
+  "stem": "A 33-year-old had a vaginal birth four years ago and a lower-segment caesarean for fetal distress two years ago. She has chosen to labour this time. At 41+1 weeks she is admitted for induction; the fetus is cephalic, the CTG is normal and her Bishop score is 3. She points out that her previous vaginal birth should make a prostaglandin safe for her, as a friend was told.\n\nWhich method should the obstetric registrar use to prepare the cervix?",
+  "options": [
+    {
+      "label": "A",
+      "text": "A transcervical balloon catheter, then amniotomy once favourable",
+      "isCorrect": true,
+      "explanation": "After a caesarean, an unripe cervix is prepared mechanically with a balloon, followed by amniotomy and cautious oxytocin once favourable, because prostaglandins raise the risk of scar rupture."
+    },
+    {
+      "label": "B",
+      "text": "Dinoprostone gel, since a previous vaginal birth lowers her rupture risk",
+      "isCorrect": false,
+      "explanation": "A previous vaginal birth raises her chance of a vaginal birth after caesarean, but prostaglandins remain contraindicated in Australia when there is a uterine scar."
+    },
+    {
+      "label": "C",
+      "text": "Low-dose oral misoprostol, which carries less risk than vaginal forms",
+      "isCorrect": false,
+      "explanation": "Misoprostol is a prostaglandin and is contraindicated with a uterine scar, whatever the route or dose."
+    },
+    {
+      "label": "D",
+      "text": "Oxytocin infusion from the start, without any ripening step",
+      "isCorrect": false,
+      "explanation": "Oxytocin on an unripe cervix is less effective and prolongs the scar's exposure to contractions, so ripening comes first."
+    },
+    {
+      "label": "E",
+      "text": "Amniotomy now, followed by oxytocin if labour does not start",
+      "isCorrect": false,
+      "explanation": "A Bishop score of 3 is unfavourable, and amniotomy is not attempted until the cervix has ripened."
+    }
+  ],
+  "context": "Induction after caesarean uses mechanical ripening with a balloon; prostaglandins are contraindicated with a uterine scar, even after a previous vaginal birth.",
+  "publicModule": {
+    "schemaVersion": 1,
+    "origin": "mirrored",
+    "discipline": "obs",
+    "mirroredFrom": "md3:0808b624b8594c9c",
+    "itemText": {
+      "licence": "CC-BY-4.0",
+      "attribution": "MD3 contributors"
+    },
+    "evidence": {
+      "kind": "reference",
+      "sourceId": "qld-health-data-assets-pdf-file-0022-140836-g-vbac-ad74f7"
+    },
+    "review": {
+      "verdict": "passed",
+      "contentHash": "63ee4a7aee9d8565d3c47945726bc47081ad09a8175169d2306e2a611a9634b7"
+    }
+  }
+}

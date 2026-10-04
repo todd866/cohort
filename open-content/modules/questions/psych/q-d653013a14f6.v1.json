@@ -1,0 +1,64 @@
+{
+  "id": "bank:cohort:psych:q-d653013a14f6:v1",
+  "rotation": "cohort-open",
+  "moduleNodes": [
+    "cohort/psych"
+  ],
+  "topics": [
+    "psych"
+  ],
+  "questionType": "management",
+  "difficulty": "medium",
+  "stem": "An emergency doctor is planning discharge after appropriate observation of a man who survived a heroin overdose. He is alert, has decision-making capacity and agrees to an addiction appointment tomorrow. He lives with a friend who is willing to learn overdose first aid. The man says, “Naloxone saved me.”\n\nWhat should be added to the discharge plan?",
+  "options": [
+    {
+      "label": "A",
+      "text": "A naloxone kit kept by him, to use on himself if he becomes drowsy",
+      "isCorrect": false,
+      "explanation": "A person who is overdosing is usually unable to give naloxone to himself. The friend who will be present needs the supply and training."
+    },
+    {
+      "label": "B",
+      "text": "Take-home naloxone with overdose-response training for him and his friend",
+      "isCorrect": true,
+      "explanation": "Naloxone at home with a trained person likely to be present is what makes rescue possible. Both he and his friend should know how to recognise an overdose and respond."
+    },
+    {
+      "label": "C",
+      "text": "A naloxone prescription to fill after tomorrow’s addiction-clinic appointment",
+      "isCorrect": false,
+      "explanation": "Relapse and overdose can occur before tomorrow’s appointment, and unfilled prescriptions often go unused. He should leave with naloxone in hand."
+    },
+    {
+      "label": "D",
+      "text": "Oral naltrexone to take if he relapses, to block any heroin taken",
+      "isCorrect": false,
+      "explanation": "Naltrexone taken after recent heroin use precipitates withdrawal and does not reverse an overdose in progress. It is not a rescue medicine."
+    },
+    {
+      "label": "E",
+      "text": "Resuscitation and recovery-position teaching for his friend, without a naloxone kit",
+      "isCorrect": false,
+      "explanation": "Resuscitation skills without naloxone leave his friend unable to reverse opioid respiratory depression. Education and supply belong together."
+    }
+  ],
+  "context": "Overdose survivors and likely witnesses should leave with practical access to naloxone and the skills to respond.",
+  "publicModule": {
+    "schemaVersion": 1,
+    "origin": "mirrored",
+    "discipline": "psych",
+    "mirroredFrom": "md3:d653013a14f6f565",
+    "itemText": {
+      "licence": "CC-BY-4.0",
+      "attribution": "MD3 contributors"
+    },
+    "evidence": {
+      "kind": "reference",
+      "sourceId": "nsw-health-aod-professionals-publications-handbook-nurses-aod-34eeed"
+    },
+    "review": {
+      "verdict": "passed",
+      "contentHash": "eec2672a072ac5a5f0f29fbe7ac7dc823d0218d087873907901f30695a1ecbf9"
+    }
+  }
+}

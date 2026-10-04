@@ -1,0 +1,64 @@
+{
+  "id": "bank:cohort:psych:q-76f3c82ff3d9:v1",
+  "rotation": "cohort-open",
+  "moduleNodes": [
+    "cohort/psych"
+  ],
+  "topics": [
+    "psych"
+  ],
+  "questionType": "management",
+  "difficulty": "hard",
+  "stem": "A residential-care doctor reviews an 86-year-old woman with advanced dementia who has begun shouting and pushing carers away during transfers. She settles when left sitting and grimaces when her right knee is moved. She has knee osteoarthritis and cannot give a reliable pain score. She has no fever, urinary symptoms or change in attention from her baseline. A nurse's urine dipstick is positive for leucocytes, and her family asks for 'something to calm her' before transfers.\n\nWhat should the doctor prioritise?",
+  "options": [
+    {
+      "label": "A",
+      "text": "Regular low-dose risperidone before transfers",
+      "isCorrect": false,
+      "explanation": "Antipsychotics in dementia carry stroke and mortality risk and are reserved for severe distress or danger after other causes have been addressed. Her behaviour has an obvious likely cause."
+    },
+    {
+      "label": "B",
+      "text": "Antibiotics for the positive urine dipstick",
+      "isCorrect": false,
+      "explanation": "Without fever, urinary symptoms or delirium, a positive dipstick in an older woman usually reflects asymptomatic bacteriuria, which should not be treated."
+    },
+    {
+      "label": "C",
+      "text": "Citalopram for agitation in dementia",
+      "isCorrect": false,
+      "explanation": "Citalopram has some evidence for agitation in dementia but does not address the pain that is provoking this behaviour, and it prolongs the QT interval."
+    },
+    {
+      "label": "D",
+      "text": "Bed rest so that the knee is not moved",
+      "isCorrect": false,
+      "explanation": "Bed rest leads to deconditioning, pressure injury and loss of function, and does not treat the pain."
+    },
+    {
+      "label": "E",
+      "text": "Observational pain assessment and regular analgesia",
+      "isCorrect": true,
+      "explanation": "Distress only on movement and grimacing when the arthritic knee is moved suggest pain. Use an observational pain tool, examine the knee and give regular analgesia such as paracetamol, then reassess the behaviour."
+    }
+  ],
+  "context": "New distress in dementia may be communicating pain. Use observation and examination when self-report is unreliable, treat pain before sedating, and do not treat asymptomatic bacteriuria.",
+  "publicModule": {
+    "schemaVersion": 1,
+    "origin": "mirrored",
+    "discipline": "psych",
+    "mirroredFrom": "md3:76f3c82ff3d9e2c4",
+    "itemText": {
+      "licence": "CC-BY-4.0",
+      "attribution": "MD3 contributors"
+    },
+    "evidence": {
+      "kind": "reference",
+      "sourceId": "nice-guidance-ng97-chapter-recommendations-04b504"
+    },
+    "review": {
+      "verdict": "passed",
+      "contentHash": "27b54f758016e53b51801a6b7d2c3fedfa1e22ec52caa0e8fcd31fe9f2dd708d"
+    }
+  }
+}

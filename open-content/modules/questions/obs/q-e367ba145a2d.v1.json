@@ -1,0 +1,64 @@
+{
+  "id": "bank:cohort:obs:q-e367ba145a2d:v1",
+  "rotation": "cohort-open",
+  "moduleNodes": [
+    "cohort/obs"
+  ],
+  "topics": [
+    "obs"
+  ],
+  "questionType": "management",
+  "difficulty": "hard",
+  "stem": "A nulliparous woman at term has pushed for two and a half hours with an epidural. The CTG now shows complicated variable decelerations, and the obstetrician decides birth is needed. The cervix is fully dilated and the membranes have ruptured. Vaginal examination finds the occiput posterior, with moderate caput and moulding, and the bony vertex at station −1. On abdominal palpation, 3/5 of the head is above the brim.\n\nWhat birth plan fits these findings?",
+  "options": [
+    {
+      "label": "A",
+      "text": "Rotational vacuum now, as an occiput posterior head needs turning",
+      "isCorrect": false,
+      "explanation": "An instrument, rotational or not, needs no more than 1/5 of the head palpable abdominally and the bony vertex at or below the spines. With 3/5 palpable the head is not engaged, whatever its position."
+    },
+    {
+      "label": "B",
+      "text": "A trial of instrumental birth in theatre, ready for a caesarean",
+      "isCorrect": false,
+      "explanation": "A trial in theatre is for a head that meets the criteria but where success is uncertain. With 3/5 palpable and the vertex above the spines, an instrument should not be tried at all."
+    },
+    {
+      "label": "C",
+      "text": "Caesarean birth, without attempting an instrumental birth",
+      "isCorrect": true,
+      "explanation": "With 3/5 of the head palpable and the bony vertex above the spines, the head is not engaged. Birth is needed because of the CTG, so the safe route is caesarean."
+    },
+    {
+      "label": "D",
+      "text": "Manual rotation to occiput anterior, then a non-rotational vacuum",
+      "isCorrect": false,
+      "explanation": "Manual rotation corrects position, not station. It does not make an unengaged head safe for a vacuum."
+    },
+    {
+      "label": "E",
+      "text": "Another hour of pushing with oxytocin, as the head is still descending",
+      "isCorrect": false,
+      "explanation": "The CTG is abnormal and the head has not engaged after a long second stage; more pushing with oxytocin delays a birth that is needed now."
+    }
+  ],
+  "context": "An instrumental birth needs no more than 1/5 of the head palpable abdominally and the bony vertex at or below the spines; with 3/5 palpable, the plan is caesarean.",
+  "publicModule": {
+    "schemaVersion": 1,
+    "origin": "mirrored",
+    "discipline": "obs",
+    "mirroredFrom": "md3:e367ba145a2dd353",
+    "itemText": {
+      "licence": "CC-BY-4.0",
+      "attribution": "MD3 contributors"
+    },
+    "evidence": {
+      "kind": "reference",
+      "sourceId": "qld-health-data-assets-pdf-file-0033-736917-g-instrumental-1967bf"
+    },
+    "review": {
+      "verdict": "passed",
+      "contentHash": "d69b6e9cb9af95c0f7f2474986c55a2ee515610a451033d6aa6dabdbd6d1efbe"
+    }
+  }
+}

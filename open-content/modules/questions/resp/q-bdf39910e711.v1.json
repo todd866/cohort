@@ -1,0 +1,82 @@
+{
+  "id": "bank:cohort:resp:q-bdf39910e711:v1",
+  "rotation": "cohort-open",
+  "moduleNodes": [
+    "cohort/resp"
+  ],
+  "topics": [
+    "resp"
+  ],
+  "questionType": "mechanism",
+  "difficulty": "easy",
+  "stem": "A 9-year-old boy still wakes with cough and wheeze most weeks despite a daily low-dose inhaled corticosteroid taken with good technique. He is switched to a combination inhaler of fluticasone propionate and a second drug that stimulates beta-2 adrenoceptors for about 12 hours, is too slow in onset to be a reliever, and is used in asthma only with an inhaled corticosteroid.\n\nWhich drug is the second component?",
+  "options": [
+    {
+      "label": "A",
+      "text": "Inhaled salbutamol",
+      "isCorrect": false,
+      "explanation": "Salbutamol is a short-acting beta-2 agonist: fast onset and 3–4 hours of effect, used as his reliever. It is not the long-acting partner in his preventer."
+    },
+    {
+      "label": "B",
+      "text": "Inhaled salmeterol",
+      "isCorrect": true,
+      "explanation": "Correct. Salmeterol is a long-acting beta-2 agonist lasting about 12 hours, with a slower onset. For children it comes combined with fluticasone propionate in one inhaler, not on its own."
+    },
+    {
+      "label": "C",
+      "text": "Inhaled beclometasone",
+      "isCorrect": false,
+      "explanation": "Beclometasone is an inhaled corticosteroid, the same class as the fluticasone already in the inhaler. It suppresses airway inflammation rather than stimulating beta-2 receptors."
+    },
+    {
+      "label": "D",
+      "text": "Oral montelukast",
+      "isCorrect": false,
+      "explanation": "Montelukast, a leukotriene receptor antagonist, is an alternative preventer taken as a tablet, not part of an inhaler, and has no beta-2 action."
+    },
+    {
+      "label": "E",
+      "text": "Inhaled ipratropium",
+      "isCorrect": false,
+      "explanation": "Ipratropium, a short-acting antimuscarinic, is added to salbutamol in severe acute asthma. It blocks vagal bronchoconstriction rather than stimulating beta-2 receptors."
+    },
+    {
+      "label": "F",
+      "text": "IV aminophylline",
+      "isCorrect": false,
+      "explanation": "Aminophylline is an IV methylxanthine that inhibits phosphodiesterase and blocks adenosine receptors. It is an older option for critical acute asthma, not a maintenance drug."
+    },
+    {
+      "label": "G",
+      "text": "IV magnesium sulfate",
+      "isCorrect": false,
+      "explanation": "Magnesium sulfate is an IV second-line bronchodilator for severe acute asthma that blocks calcium entry into smooth muscle. It has no place in a maintenance inhaler."
+    },
+    {
+      "label": "H",
+      "text": "IV methylprednisolone",
+      "isCorrect": false,
+      "explanation": "Methylprednisolone is a systemic corticosteroid given IV in acute asthma when an oral steroid cannot be taken. It is not a beta-2 agonist."
+    }
+  ],
+  "context": "Salmeterol is a long-acting beta-2 agonist (about 12 hours, slow onset). In children it is given with fluticasone in one inhaler, as a step-up when low-dose ICS alone fails.",
+  "publicModule": {
+    "schemaVersion": 1,
+    "origin": "mirrored",
+    "discipline": "resp",
+    "mirroredFrom": "md3:bdf39910e711cbcf",
+    "itemText": {
+      "licence": "CC-BY-4.0",
+      "attribution": "MD3 contributors"
+    },
+    "evidence": {
+      "kind": "reference",
+      "sourceId": "aah-ears-medication-management-adjusting-treatment-for-children-6-11-years-4a911c"
+    },
+    "review": {
+      "verdict": "passed",
+      "contentHash": "40df08fa2139637373e7a1197511574b384e939e254c4ae568a0f457c061f2e3"
+    }
+  }
+}

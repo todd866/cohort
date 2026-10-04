@@ -1,0 +1,64 @@
+{
+  "id": "bank:cohort:psych:q-94fc24b56ac1:v1",
+  "rotation": "cohort-open",
+  "moduleNodes": [
+    "cohort/psych"
+  ],
+  "topics": [
+    "psych"
+  ],
+  "questionType": "management",
+  "difficulty": "hard",
+  "stem": "In an outpatient review, a man with schizophrenia who lives with his mother tells a psychiatry registrar, “The voice has started giving me orders. It says my tablets are poison, so yesterday I threw them in the bin.” His mother sets out his medicines each morning. He is calm and willing to talk. He has missed about a week of antipsychotic doses and smoked cannabis at the weekend.\n\nWhich line of enquiry has the highest immediate priority?",
+  "options": [
+    {
+      "label": "A",
+      "text": "How many doses he has missed and whether he will restart today",
+      "isCorrect": false,
+      "explanation": "Restarting medication matters, but adherence is not the most urgent question. He has already obeyed the voice once; what else it is ordering comes first."
+    },
+    {
+      "label": "B",
+      "text": "Whether he recognises the voice as a symptom of his illness",
+      "isCorrect": false,
+      "explanation": "Insight affects engagement and planning, but recognising a voice as illness does not reliably predict whether he will obey a harmful command."
+    },
+    {
+      "label": "C",
+      "text": "Whether the voice talks to him or about him in the third person",
+      "isCorrect": false,
+      "explanation": "Third-person and running-commentary voices help with diagnosis, which is already established. The form of the voice does not tell you whether anyone is at risk now."
+    },
+    {
+      "label": "D",
+      "text": "Whether he has had any thoughts of ending his own life lately",
+      "isCorrect": false,
+      "explanation": "Suicide risk must be asked about, but a general suicide question can miss the specific danger here: a voice calling his tablets poison, with his mother giving them to him, may be heading towards harm to her."
+    },
+    {
+      "label": "E",
+      "text": "What else the voice orders, including harm, and if he can resist",
+      "isCorrect": true,
+      "explanation": "He has already acted on a command. What the voice orders now, including harm to himself or to his mother, whether he believes he must obey and whether he feels able to resist are the strongest guides to immediate risk and shape the safety plan."
+    }
+  ],
+  "context": "When someone has obeyed a command hallucination, ask what else it commands, towards whom, and whether they can resist, before turning to adherence, phenomenology or causes.",
+  "publicModule": {
+    "schemaVersion": 1,
+    "origin": "mirrored",
+    "discipline": "psych",
+    "mirroredFrom": "md3:94fc24b56ac1081d",
+    "itemText": {
+      "licence": "CC-BY-4.0",
+      "attribution": "MD3 contributors"
+    },
+    "evidence": {
+      "kind": "reference",
+      "sourceId": "nsw-health-mentalhealth-resources-publications-mental-health-ed-guide-034d6f"
+    },
+    "review": {
+      "verdict": "passed",
+      "contentHash": "968c61f0295fc69f7cf2e9074a8aaa5eb4d1b02ef74b440bc403acc39e06ef49"
+    }
+  }
+}

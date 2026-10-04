@@ -1,0 +1,64 @@
+{
+  "id": "bank:cohort:surgery:q-c0eedb4fd362:v1",
+  "rotation": "cohort-open",
+  "moduleNodes": [
+    "cohort/surgery"
+  ],
+  "topics": [
+    "surgery"
+  ],
+  "questionType": "investigation",
+  "difficulty": "medium",
+  "stem": "Mateo, 7 weeks old, first passed meconium at 60 hours. Since then he has opened his bowels only with suppositories or rectal stimulation, every 2 to 3 days. His abdomen is distended, and he has dropped two weight centiles. On rectal examination the rectum is empty and tight, and withdrawing the finger releases an explosive gush of gas and stool.\n\nWhich test will confirm the most likely diagnosis?",
+  "options": [
+    {
+      "label": "A",
+      "text": "Contrast enema",
+      "isCorrect": false,
+      "explanation": "A contrast enema may show a narrow rectum and a transition zone, which supports the diagnosis and maps the segment, but it can look normal and does not confirm it."
+    },
+    {
+      "label": "B",
+      "text": "Anorectal manometry",
+      "isCorrect": false,
+      "explanation": "An absent rectoanal inhibitory reflex supports Hirschsprung disease, but manometry is less reliable in young infants and histology is still needed."
+    },
+    {
+      "label": "C",
+      "text": "Plain abdominal X-ray",
+      "isCorrect": false,
+      "explanation": "An abdominal X-ray is often the first test and may show dilated bowel with an empty rectum, but it cannot make the diagnosis."
+    },
+    {
+      "label": "D",
+      "text": "Sweat chloride test",
+      "isCorrect": false,
+      "explanation": "Delayed meconium can occur in cystic fibrosis, but dependence on rectal stimulation and an explosive stool after rectal examination point to aganglionosis."
+    },
+    {
+      "label": "E",
+      "text": "Suction rectal biopsy",
+      "isCorrect": true,
+      "explanation": "Correct. A bedside suction rectal biopsy showing no ganglion cells confirms Hirschsprung disease. A full-thickness biopsy is used if it is inconclusive or the child is older."
+    }
+  ],
+  "context": "Delayed meconium, constipation from birth needing stimulation, distension and an explosive stool after rectal examination suggest Hirschsprung disease; suction rectal biopsy confirms it.",
+  "publicModule": {
+    "schemaVersion": 1,
+    "origin": "mirrored",
+    "discipline": "surgery",
+    "mirroredFrom": "md3:c0eedb4fd3621b94",
+    "itemText": {
+      "licence": "CC-BY-4.0",
+      "attribution": "MD3 contributors"
+    },
+    "evidence": {
+      "kind": "reference",
+      "sourceId": "rch-uploadedfiles-main-content-cprs-cprs-booklet-hirschsprung-disease-4520a6"
+    },
+    "review": {
+      "verdict": "passed",
+      "contentHash": "7676a6ff42aae993d3f0f86df2c20c549de9ce51eebe0daa3abe7f3d4eca8b73"
+    }
+  }
+}

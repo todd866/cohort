@@ -1,0 +1,64 @@
+{
+  "id": "bank:cohort:paeds:q-3ac55d6bfdbb:v1",
+  "rotation": "cohort-open",
+  "moduleNodes": [
+    "cohort/paeds"
+  ],
+  "topics": [
+    "paeds"
+  ],
+  "questionType": "management",
+  "difficulty": "medium",
+  "stem": "An 11-year-old’s permanent upper incisor is knocked out during sport. A parent has recovered the whole tooth. The child is alert, but the first aider cannot safely reinsert it. Emergency dental care is being arranged.\n\nHow should the tooth be handled while awaiting treatment?",
+  "options": [
+    {
+      "label": "A",
+      "text": "Rinse it, then keep it in a cup of tap water",
+      "isCorrect": false,
+      "explanation": "Water is less suitable than milk and may damage root-surface cells."
+    },
+    {
+      "label": "B",
+      "text": "Hold it by the crown and store it in milk",
+      "isCorrect": true,
+      "explanation": "Correct. Handle only the crown and keep the avulsed permanent tooth in milk if immediate replantation is not feasible."
+    },
+    {
+      "label": "C",
+      "text": "Hold it by the root and store it in milk",
+      "isCorrect": false,
+      "explanation": "Holding the root damages the periodontal ligament cells needed for reattachment; pick the tooth up by the crown."
+    },
+    {
+      "label": "D",
+      "text": "Wrap it in clean, dry gauze for the dentist",
+      "isCorrect": false,
+      "explanation": "Dry storage quickly kills the root-surface cells; the tooth needs a physiological liquid such as milk."
+    },
+    {
+      "label": "E",
+      "text": "Scrub the root clean, then store it in milk",
+      "isCorrect": false,
+      "explanation": "Scrubbing strips the periodontal ligament cells from the root. If the tooth is dirty, rinse it briefly without touching the root."
+    }
+  ],
+  "context": "An avulsed permanent tooth is a dental emergency. Preserve the root surface: handle the crown and use milk for temporary storage if replantation cannot be done safely.",
+  "publicModule": {
+    "schemaVersion": 1,
+    "origin": "mirrored",
+    "discipline": "paeds",
+    "mirroredFrom": "md3:3ac55d6bfdbbbbe5",
+    "itemText": {
+      "licence": "CC-BY-4.0",
+      "attribution": "MD3 contributors"
+    },
+    "evidence": {
+      "kind": "reference",
+      "sourceId": "rch-clinicalguide-guideline-index-dental-injuries-5f09f4"
+    },
+    "review": {
+      "verdict": "passed",
+      "contentHash": "3d6273d90548a5bb3bb6b3ae910a1655695fe7299455dba81f42bd71e7f82481"
+    }
+  }
+}

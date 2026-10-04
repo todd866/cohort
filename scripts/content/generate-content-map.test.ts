@@ -299,6 +299,22 @@ describe('rotation-counts generation', () => {
     );
   });
 
+  it('writes each rotation shard as JavaScript data with a declaration beside it', () => {
+    // As .ts, the release shards (58 MB) put every card through the type
+    // checker: a cold pass needed 5.5 GB of heap and the first build on the
+    // 8 GB Standard machine sat in Next's TypeScript pass until Vercel stopped
+    // it at 45 minutes (2026-10-03). TypeScript resolves `./<slug>` to the
+    // .d.ts and never reads the data; webpack, vitest and tsx load the .js.
+    // CI generates no shards (no database), so assert on the generator source.
+    const scriptPath = path.resolve(__dirname, 'generate-content-map.ts');
+    const src = fs.readFileSync(scriptPath, 'utf8');
+    expect(src).toMatch(/path\.join\(ROTATION_MAP_DIR, `\$\{slug\}\.js`\)/);
+    expect(src).toMatch(/path\.join\(ROTATION_MAP_DIR, `\$\{slug\}\.d\.ts`\)/);
+    expect(src).not.toMatch(/path\.join\(ROTATION_MAP_DIR, `\$\{slug\}\.ts`\)/);
+    expect(src).toContain('export declare const CARDS: Record<string, StaticCard>;');
+    expect(src).toContain('export declare const QUESTIONS: Record<string, StaticQuestion>;');
+  });
+
   it('exports rotation shard loaders for each available rotation', async () => {
     const { ROTATION_CONTENT_LOADERS, AVAILABLE_ROTATIONS } = await import(
       '../../src/lib/generated/content-map-rotations'

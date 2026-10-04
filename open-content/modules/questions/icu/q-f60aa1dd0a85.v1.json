@@ -1,0 +1,64 @@
+{
+  "id": "bank:cohort:icu:q-f60aa1dd0a85:v1",
+  "rotation": "cohort-open",
+  "moduleNodes": [
+    "cohort/icu"
+  ],
+  "topics": [
+    "icu"
+  ],
+  "questionType": "diagnosis",
+  "difficulty": "hard",
+  "stem": "A ward medical officer reviews a patient admitted with vomiting and dehydration. Urine output has remained above 0.5 mL/kg/hour throughout. The same laboratory reports the following creatinine results.\n\n| Time | Creatinine | Reference interval |\n| --- | --- | --- |\n| Admission | 62 µmol/L | 45–100 µmol/L |\n| 36 hours later | 90 µmol/L | 45–100 µmol/L |\n\nHow should the trend be interpreted?",
+  "options": [
+    {
+      "label": "A",
+      "text": "Not AKI, because the rise is less than 1.5 times baseline",
+      "isCorrect": false,
+      "explanation": "The rise is 1.45 times baseline, below the 1.5-fold criterion, but that is only one of the KDIGO criteria. Meeting any one criterion defines AKI."
+    },
+    {
+      "label": "B",
+      "text": "AKI, because the 48-hour rise exceeds the absolute threshold",
+      "isCorrect": true,
+      "explanation": "Creatinine rose by 28 µmol/L within 48 hours, which meets the KDIGO criterion of a rise of at least 26.5 µmol/L in 48 hours. This is stage 1 AKI even though both values are within the reference interval."
+    },
+    {
+      "label": "C",
+      "text": "Not AKI, because both results lie within the reference interval",
+      "isCorrect": false,
+      "explanation": "A reference interval describes a population. A rise within it can still represent a substantial loss of this patient's kidney function."
+    },
+    {
+      "label": "D",
+      "text": "Not AKI, because urine output has stayed above the threshold",
+      "isCorrect": false,
+      "explanation": "Urine output is one criterion and creatinine another. Normal urine output does not exclude AKI defined by creatinine."
+    },
+    {
+      "label": "E",
+      "text": "Stage 2 AKI, because creatinine has risen by almost half",
+      "isCorrect": false,
+      "explanation": "Stage 2 requires creatinine to reach 2.0–2.9 times baseline. A rise of less than 1.5 times, meeting the absolute criterion, is stage 1."
+    }
+  ],
+  "context": "AKI is defined by any one KDIGO criterion: a rise of at least 26.5 µmol/L within 48 hours, a rise to 1.5 times baseline within 7 days, or reduced urine output.",
+  "publicModule": {
+    "schemaVersion": 1,
+    "origin": "mirrored",
+    "discipline": "icu",
+    "mirroredFrom": "md3:f60aa1dd0a854fdc",
+    "itemText": {
+      "licence": "CC-BY-4.0",
+      "attribution": "MD3 contributors"
+    },
+    "evidence": {
+      "kind": "reference",
+      "sourceId": "nice-guidance-ng148-chapter-recommendations-66fdaa"
+    },
+    "review": {
+      "verdict": "passed",
+      "contentHash": "c1da1b6890820c583dce95e0ef1328c6c23a49ce00672f519c67ec6a8e0a96a4"
+    }
+  }
+}

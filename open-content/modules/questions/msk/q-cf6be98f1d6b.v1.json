@@ -1,0 +1,82 @@
+{
+  "id": "bank:cohort:msk:q-cf6be98f1d6b:v1",
+  "rotation": "cohort-open",
+  "moduleNodes": [
+    "cohort/msk"
+  ],
+  "topics": [
+    "msk"
+  ],
+  "questionType": "diagnosis",
+  "difficulty": "medium",
+  "stem": "A 6-year-old boy has limped for 6 weeks after previously walking normally. He sometimes rubs his left thigh or knee after sport but has little pain and no fever. His left hip has reduced abduction and internal rotation; the knee is normal. Full blood count and CRP are normal. An AP pelvis X-ray shows the left femoral capital epiphysis to be smaller, flatter and denser than the right.\n\nWhich diagnosis is most likely?",
+  "options": [
+    {
+      "label": "A",
+      "text": "Transient synovitis",
+      "isCorrect": false,
+      "explanation": "Transient synovitis is an acutely painful, irritable hip, often after a viral illness, that settles within 1–2 weeks. Six weeks of limp with an abnormal femoral head is something else."
+    },
+    {
+      "label": "B",
+      "text": "Acute osteomyelitis",
+      "isCorrect": false,
+      "explanation": "Osteomyelitis brings pain, fever or raised inflammatory markers and bony tenderness. He is well with a normal CRP."
+    },
+    {
+      "label": "C",
+      "text": "Legg-Calvé-Perthes disease",
+      "isCorrect": true,
+      "explanation": "Correct. A school-age boy with a limp, mild thigh or knee pain, lost abduction and internal rotation, and a small, dense, flattened femoral head has Perthes disease. Refer urgently to orthopaedics."
+    },
+    {
+      "label": "D",
+      "text": "Slipped upper femoral epiphysis",
+      "isCorrect": false,
+      "explanation": "SUFE affects adolescents, often overweight, around the growth spurt. The X-ray shows the epiphysis slipping off the femoral neck, not a small, dense head."
+    },
+    {
+      "label": "E",
+      "text": "Septic arthritis of the hip",
+      "isCorrect": false,
+      "explanation": "Septic arthritis is acute and febrile, in a child who refuses to move the hip. He is afebrile with normal blood tests."
+    },
+    {
+      "label": "F",
+      "text": "Juvenile idiopathic arthritis",
+      "isCorrect": false,
+      "explanation": "Oligoarticular JIA usually affects a knee or ankle, with swelling and morning stiffness. It does not produce a small, sclerotic femoral head."
+    },
+    {
+      "label": "G",
+      "text": "Developmental dysplasia of the hip",
+      "isCorrect": false,
+      "explanation": "Late-presenting DDH causes a painless limp from when walking starts, with a short leg and limited abduction. He walked normally until 6 weeks ago."
+    },
+    {
+      "label": "H",
+      "text": "Toddler's fracture",
+      "isCorrect": false,
+      "explanation": "A toddler's fracture is a spiral fracture of the tibia in children aged about 1–3 years after a twist, with sudden refusal to bear weight."
+    }
+  ],
+  "context": "Perthes disease: a 4–10-year-old with a limp, mild thigh or knee pain, lost abduction and internal rotation, and a small, dense, flattened femoral epiphysis on X-ray.",
+  "publicModule": {
+    "schemaVersion": 1,
+    "origin": "mirrored",
+    "discipline": "msk",
+    "mirroredFrom": "md3:cf6be98f1d6bde8c",
+    "itemText": {
+      "licence": "CC-BY-4.0",
+      "attribution": "MD3 contributors"
+    },
+    "evidence": {
+      "kind": "reference",
+      "sourceId": "rch-ortho-for-health-professionals-perthes-disease-05db64"
+    },
+    "review": {
+      "verdict": "passed",
+      "contentHash": "e235ff7fb6ecedeff3db70c417a42c65d92f24f817f431cb522489e116f29cc9"
+    }
+  }
+}

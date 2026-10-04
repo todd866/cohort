@@ -1,0 +1,64 @@
+{
+  "id": "bank:cohort:obs:q-c6259ced4053:v1",
+  "rotation": "cohort-open",
+  "moduleNodes": [
+    "cohort/obs"
+  ],
+  "topics": [
+    "obs"
+  ],
+  "questionType": "management",
+  "difficulty": "medium",
+  "stem": "A woman at 30 weeks collapses in cardiac arrest in the maternity unit. The resuscitation team has started high-quality chest compressions with her supine on a firm surface, and the defibrillator is being attached. The uterus is palpable above the umbilicus. One minute has passed since the arrest.\n\nWhich additional manoeuvre should an available team member perform now?",
+  "options": [
+    {
+      "label": "A",
+      "text": "Tilt her 30 degrees to the left on a wedge while compressions continue",
+      "isCorrect": false,
+      "explanation": "Tilting reduces the effectiveness of chest compressions; manual displacement relieves aortocaval compression while she stays supine."
+    },
+    {
+      "label": "B",
+      "text": "Displace the uterus manually to the right while compressions continue",
+      "isCorrect": false,
+      "explanation": "Displacing to the right pushes the uterus onto the inferior vena cava; displacement is to the left."
+    },
+    {
+      "label": "C",
+      "text": "Begin resuscitative hysterotomy immediately at the arrest site",
+      "isCorrect": false,
+      "explanation": "Hysterotomy is planned for about four minutes without return of circulation; at one minute the priority is effective CPR with uterine displacement."
+    },
+    {
+      "label": "D",
+      "text": "Displace the uterus manually to the left while compressions continue",
+      "isCorrect": true,
+      "explanation": "Manual left uterine displacement relieves aortocaval compression while keeping her supine for effective compressions."
+    },
+    {
+      "label": "E",
+      "text": "Elevate her legs to increase venous return during compressions",
+      "isCorrect": false,
+      "explanation": "Leg elevation does not relieve compression of the inferior vena cava by the gravid uterus."
+    }
+  ],
+  "context": "Manual left uterine displacement accompanies CPR when the uterus is at or above the umbilicus.",
+  "publicModule": {
+    "schemaVersion": 1,
+    "origin": "mirrored",
+    "discipline": "obs",
+    "mirroredFrom": "md3:c6259ced40533e5c",
+    "itemText": {
+      "licence": "CC-BY-4.0",
+      "attribution": "MD3 contributors"
+    },
+    "evidence": {
+      "kind": "reference",
+      "sourceId": "anzcor-ed-life-support-guideline-11-10-resuscitation-in-special-circumstances-6e6a7d"
+    },
+    "review": {
+      "verdict": "passed",
+      "contentHash": "68a5f650d8843ba24a14b85ce5a6286de3548884ce0419465be7abb258898796"
+    }
+  }
+}

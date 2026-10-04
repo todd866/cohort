@@ -1,0 +1,64 @@
+{
+  "id": "bank:cohort:psych:q-622fcff5f04d:v1",
+  "rotation": "cohort-open",
+  "moduleNodes": [
+    "cohort/psych"
+  ],
+  "topics": [
+    "psych"
+  ],
+  "questionType": "management",
+  "difficulty": "medium",
+  "stem": "A psychiatry registrar assesses a 45-year-old who normally takes clozapine 300 mg at night. He missed four complete days after a pharmacy supply problem. He is now mildly suspicious but cooperative, medically stable and willing to restart. His team has confirmed the interruption, reviewed his current blood monitoring and found no adverse reaction that would preclude treatment.\n\nWhich restart plan is safest?",
+  "options": [
+    {
+      "label": "A",
+      "text": "Restart at 12.5 mg and re-titrate under supervision",
+      "isCorrect": true,
+      "explanation": "After this interruption, clozapine must be restarted at a low dose and re-titrated under the treating team’s supervision. Previous tolerance does not make an immediate return to the maintenance dose safe."
+    },
+    {
+      "label": "B",
+      "text": "Restart at 300 mg with regular postural blood-pressure checks",
+      "isCorrect": false,
+      "explanation": "Blood-pressure monitoring is important but does not make a full-dose restart safe after several days off. Severe hypotension or collapse can occur when re-titration is omitted."
+    },
+    {
+      "label": "C",
+      "text": "Restart at 150 mg tonight and resume 300 mg tomorrow",
+      "isCorrect": false,
+      "explanation": "Half of his maintenance dose is still far above the recommended restart dose. A rapid unsupervised return to 300 mg is unsafe."
+    },
+    {
+      "label": "D",
+      "text": "Restart 300 mg after confirming a low clozapine concentration",
+      "isCorrect": false,
+      "explanation": "A low concentration after missed doses does not establish tolerance of a 300 mg restart. It does not remove the need for low-dose re-titration."
+    },
+    {
+      "label": "E",
+      "text": "Resume 300 mg once his suspiciousness begins to worsen",
+      "isCorrect": false,
+      "explanation": "Waiting for worsening psychosis adds avoidable relapse risk and does not make a later full-dose restart safe. The team should restore treatment using an appropriate re-titration plan."
+    }
+  ],
+  "context": "A multi-day clozapine interruption requires a low-dose restart and re-titration, not resumption of the previous maintenance dose.",
+  "publicModule": {
+    "schemaVersion": 1,
+    "origin": "mirrored",
+    "discipline": "psych",
+    "mirroredFrom": "md3:622fcff5f04d9b8c",
+    "itemText": {
+      "licence": "CC-BY-4.0",
+      "attribution": "MD3 contributors"
+    },
+    "evidence": {
+      "kind": "reference",
+      "sourceId": "acsqhc-medicine-finder-clozaril-dc4f31"
+    },
+    "review": {
+      "verdict": "passed",
+      "contentHash": "152a3d2a08a3f58d8a903686e1135b4743b700d9e5aa4289e87417f52c226d79"
+    }
+  }
+}

@@ -1,0 +1,64 @@
+{
+  "id": "bank:cohort:obs:q-cc5dd5a78b31:v1",
+  "rotation": "cohort-open",
+  "moduleNodes": [
+    "cohort/obs"
+  ],
+  "topics": [
+    "obs"
+  ],
+  "questionType": "knowledge",
+  "difficulty": "medium",
+  "stem": "During active labour at 40 weeks, a registrar reviews the CTG. The baseline is 145 beats/min with variability of 10 beats/min. With most contractions the fetal heart rate falls within 10 seconds to about 105 beats/min, stays there for 20 seconds and returns to baseline within 10 seconds. Each fall starts at about the same time as the contraction begins.\n\nHow should these decelerations be described?",
+  "options": [
+    {
+      "label": "A",
+      "text": "Early decelerations, as each one begins with its contraction",
+      "isCorrect": false,
+      "explanation": "Early decelerations fall slowly and mirror the contraction; these fall and recover within seconds, which defines variable decelerations even when they are timed with contractions."
+    },
+    {
+      "label": "B",
+      "text": "Late decelerations, as they recur with most contractions",
+      "isCorrect": false,
+      "explanation": "Late decelerations fall gradually and reach their lowest point well after the contraction peak, whereas these are abrupt."
+    },
+    {
+      "label": "C",
+      "text": "Prolonged decelerations, as they repeat with contractions",
+      "isCorrect": false,
+      "explanation": "A prolonged deceleration lasts more than 90 seconds; these last about 40 seconds from onset to recovery."
+    },
+    {
+      "label": "D",
+      "text": "A sinusoidal pattern with regular dips in the heart rate",
+      "isCorrect": false,
+      "explanation": "A sinusoidal pattern is a smooth, regular undulating baseline with absent variability; this trace has normal variability and discrete dips."
+    },
+    {
+      "label": "E",
+      "text": "Variable decelerations, from their rapid fall and recovery",
+      "isCorrect": true,
+      "explanation": "A rapid fall and recovery defines a variable deceleration, whatever its timing; early decelerations fall slowly and mirror the contraction, so a quick fall that begins with the contraction is still variable."
+    }
+  ],
+  "context": "Classify decelerations by their shape first: an abrupt fall and recovery is variable, even when each one coincides with a contraction.",
+  "publicModule": {
+    "schemaVersion": 1,
+    "origin": "mirrored",
+    "discipline": "obs",
+    "mirroredFrom": "md3:cc5dd5a78b31dc5c",
+    "itemText": {
+      "licence": "CC-BY-4.0",
+      "attribution": "MD3 contributors"
+    },
+    "evidence": {
+      "kind": "reference",
+      "sourceId": "ranzcog-wp-content-uploads-intrapartum-fetal-surveillance-234085"
+    },
+    "review": {
+      "verdict": "passed",
+      "contentHash": "73469635c36b61b4189c90a082c55bf8defb2f02c3ca6ea9a764473e95fdb429"
+    }
+  }
+}

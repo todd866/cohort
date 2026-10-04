@@ -1,0 +1,64 @@
+{
+  "id": "bank:cohort:gi:q-046f53da1128:v1",
+  "rotation": "cohort-open",
+  "moduleNodes": [
+    "cohort/gi"
+  ],
+  "topics": [
+    "gi"
+  ],
+  "questionType": "knowledge",
+  "difficulty": "hard",
+  "stem": "Ruby, a 14-month-old girl, had 4 days of vomiting, fever and watery diarrhoea 3 weeks ago, during an outbreak at her childcare centre; a stool PCR at the time detected norovirus and no parasites. The vomiting and fever settled, but since then most drinks of cow's milk are followed within a few hours by bloating, wind and loose, frothy stools, and her nappy area is red and sore. Yoghurt and hard cheese, which she ate before the illness, cause no symptoms. There is no blood or mucus in her stools and no eczema, and her weight is still on the 50th centile.\n\nWhich diagnosis best explains her symptoms?",
+  "options": [
+    {
+      "label": "A",
+      "text": "Secondary lactase deficiency",
+      "isCorrect": true,
+      "explanation": "Correct. Infective enteritis injures the small-bowel lining that makes lactase, so for a few weeks milk sugar reaches the colon and is fermented: wind, bloating, frothy acidic stools and a sore nappy area. Yoghurt and hard cheese carry far less lactose, which is why she tolerates them. It recovers as the lining heals."
+    },
+    {
+      "label": "B",
+      "text": "Non-IgE cow's milk protein allergy",
+      "isCorrect": false,
+      "explanation": "Cow's milk protein allergy would react to the milk protein in yoghurt and cheese as well as in milk. Non-IgE allergy also usually starts in early infancy, often with vomiting, eczema or blood and mucus in the stool."
+    },
+    {
+      "label": "C",
+      "text": "Persisting Giardia infection",
+      "isCorrect": false,
+      "explanation": "Giardia spreads in childcare and causes bloating and malabsorption, but her stool PCR found no parasites, and symptoms that follow milk but not cheese point to the milk sugar rather than an infection."
+    },
+    {
+      "label": "D",
+      "text": "Toddler's (functional) diarrhoea",
+      "isCorrect": false,
+      "explanation": "Toddler's diarrhoea gives loose stools, often with visible food, in a thriving child, unrelated to milk. It does not cause the frothy, acidic stools and excoriated skin of sugar malabsorption."
+    },
+    {
+      "label": "E",
+      "text": "Newly presenting coeliac disease",
+      "isCorrect": false,
+      "explanation": "Coeliac disease follows gluten, not milk, and usually brings faltering growth or a falling weight. Her weight is unchanged and her symptoms track milk drinks."
+    }
+  ],
+  "context": "Milk intolerance that starts after gastroenteritis, with frothy acidic stools and a sore bottom but no trouble with yoghurt or hard cheese, is secondary lactase deficiency: a lactose problem, not a protein allergy, and it recovers in weeks.",
+  "publicModule": {
+    "schemaVersion": 1,
+    "origin": "mirrored",
+    "discipline": "gi",
+    "mirroredFrom": "md3:046f53da11288ad8",
+    "itemText": {
+      "licence": "CC-BY-4.0",
+      "attribution": "MD3 contributors"
+    },
+    "evidence": {
+      "kind": "reference",
+      "sourceId": "rch-kidsinfo-fact-sheets-lactose-intolerance-6a8e61"
+    },
+    "review": {
+      "verdict": "passed",
+      "contentHash": "2b184e360ede09d8b9ccadb7db287b311e16c9b174557228c9c5754e6945f794"
+    }
+  }
+}

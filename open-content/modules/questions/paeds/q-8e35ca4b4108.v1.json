@@ -1,0 +1,64 @@
+{
+  "id": "bank:cohort:paeds:q-8e35ca4b4108:v1",
+  "rotation": "cohort-open",
+  "moduleNodes": [
+    "cohort/paeds"
+  ],
+  "topics": [
+    "paeds"
+  ],
+  "questionType": "management",
+  "difficulty": "medium",
+  "stem": "A 16-year-old is on day 10 of infectious mononucleosis. He now feels well, is afebrile and has no palpable spleen. He is due to play in a rugby grand final in 4 days. His father has paid for an abdominal ultrasound, which reports a spleen of normal size, and asks whether this clears him to play.\n\nWhat advice is most appropriate?",
+  "options": [
+    {
+      "label": "A",
+      "text": "Play, as the spleen is normal on ultrasound and examination",
+      "isCorrect": false,
+      "explanation": "A normal-sized spleen on a single scan does not make contact sport safe. Splenic rupture is most likely in the first 3 weeks, often in a spleen that cannot be felt, and normal spleen size varies between people."
+    },
+    {
+      "label": "B",
+      "text": "Play, wearing padding over the left upper abdomen",
+      "isCorrect": false,
+      "explanation": "Padding does not protect the spleen from the forces of a tackle, and it would encourage a return during the riskiest period."
+    },
+    {
+      "label": "C",
+      "text": "No contact sport yet; graded return from about 4 weeks",
+      "isCorrect": true,
+      "explanation": "Correct. Most splenic ruptures in infectious mononucleosis occur in the first 3 weeks, often after minor trauma and in a spleen that cannot be felt. He should avoid contact sport and heavy exertion for now, then return gradually, usually not before about 4 weeks from the start of the illness, once he is well with no enlarged spleen."
+    },
+    {
+      "label": "D",
+      "text": "No sport of any kind for 3 months after the illness",
+      "isCorrect": false,
+      "explanation": "Most young people can return to contact sport within about a month. Three months away from all activity is unnecessary."
+    },
+    {
+      "label": "E",
+      "text": "Repeat the ultrasound the day before, and play if still normal",
+      "isCorrect": false,
+      "explanation": "A second normal scan adds no safety: on the day of the final he would still be within the period of highest risk."
+    }
+  ],
+  "context": "After infectious mononucleosis, avoid contact sport for at least the first 3–4 weeks, even when the spleen cannot be felt or looks normal on ultrasound; the return is graded and clinical.",
+  "publicModule": {
+    "schemaVersion": 1,
+    "origin": "mirrored",
+    "discipline": "paeds",
+    "mirroredFrom": "md3:8e35ca4b41087617",
+    "itemText": {
+      "licence": "CC-BY-4.0",
+      "attribution": "MD3 contributors"
+    },
+    "evidence": {
+      "kind": "reference",
+      "sourceId": "nsw-health-infectious-glandular-fever-pages-5f1b78"
+    },
+    "review": {
+      "verdict": "passed",
+      "contentHash": "8ba43094512a3cab5a9cbd753f1a53a6022305814e3a2b0a2e2ff64984c0d991"
+    }
+  }
+}

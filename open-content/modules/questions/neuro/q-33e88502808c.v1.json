@@ -1,0 +1,64 @@
+{
+  "id": "bank:cohort:neuro:q-33e88502808c:v1",
+  "rotation": "cohort-open",
+  "moduleNodes": [
+    "cohort/neuro"
+  ],
+  "topics": [
+    "neuro"
+  ],
+  "questionType": "management",
+  "difficulty": "hard",
+  "stem": "A 79-year-old woman is on day 3 after an emergency laparotomy. Her daughter says she has been a little forgetful over the past year but lives alone and manages her own bills. Yesterday she was chatting about the news. Today she drifts off mid-sentence, cannot say the months backwards and becomes tearful when asked about going home; by evening she is briefly more alert. Nursing staff describe her as settled and no trouble, and a colleague suggests she is just flat after a big operation.\n\nWhat is the most appropriate next step?",
+  "options": [
+    {
+      "label": "A",
+      "text": "Start an antidepressant for her low mood",
+      "isCorrect": false,
+      "explanation": "Tearfulness can be part of delirium. Depression develops over weeks and does not cause inattention that fluctuates within a day."
+    },
+    {
+      "label": "B",
+      "text": "Memory clinic referral after discharge",
+      "isCorrect": false,
+      "explanation": "Her mild prior forgetfulness is a risk factor for delirium, not an explanation of an acute change; deferring assessment misses a treatable cause."
+    },
+    {
+      "label": "C",
+      "text": "Low-dose haloperidol to stabilise her",
+      "isCorrect": false,
+      "explanation": "Antipsychotics are reserved for severe distress or danger and do not treat the cause; she is quiet, not agitated."
+    },
+    {
+      "label": "D",
+      "text": "Reassure the family that this is fatigue",
+      "isCorrect": false,
+      "explanation": "Fatigue does not cause inattention that fluctuates; normalising the change is how hypoactive delirium is missed."
+    },
+    {
+      "label": "E",
+      "text": "Find and treat a precipitating cause",
+      "isCorrect": true,
+      "explanation": "An acute change with inattention, drowsiness and fluctuation within a day is delirium; her quietness makes it the hypoactive form, which is easily missed. The priority is a systematic search for causes after laparotomy, such as infection or anastomotic leak, hypoxia, urinary retention, drugs and electrolyte disturbance, and treatment of what is found."
+    }
+  ],
+  "context": "Hypoactive delirium presents as a quiet, drowsy, inattentive patient with fluctuation; treat it as an acute medical problem and search for the cause.",
+  "publicModule": {
+    "schemaVersion": 1,
+    "origin": "mirrored",
+    "discipline": "neuro",
+    "mirroredFrom": "md3:33e88502808cf285",
+    "itemText": {
+      "licence": "CC-BY-4.0",
+      "attribution": "MD3 contributors"
+    },
+    "evidence": {
+      "kind": "reference",
+      "sourceId": "nice-guidance-cg103-chapter-recommendations-be0a00"
+    },
+    "review": {
+      "verdict": "passed",
+      "contentHash": "3a72c13872516adeb91e8275953333e7f1e5fb03857a1c0443ccb8e4e662771a"
+    }
+  }
+}

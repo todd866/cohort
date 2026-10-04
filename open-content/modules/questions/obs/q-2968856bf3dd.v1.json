@@ -1,0 +1,64 @@
+{
+  "id": "bank:cohort:obs:q-2968856bf3dd:v1",
+  "rotation": "cohort-open",
+  "moduleNodes": [
+    "cohort/obs"
+  ],
+  "topics": [
+    "obs"
+  ],
+  "questionType": "knowledge",
+  "difficulty": "medium",
+  "stem": "A woman with a history of asthma is being treated for atonic postpartum haemorrhage. Shortly after a further uterotonic injection, she develops wheeze and increased airway resistance. The anaesthetist treats the respiratory deterioration while the team checks which medicine was given.\n\nWhich medicine is most strongly associated with this adverse effect?",
+  "options": [
+    {
+      "label": "A",
+      "text": "Oxytocin",
+      "isCorrect": false,
+      "explanation": "Oxytocin can cause cardiovascular effects, particularly with rapid IV dosing. Bronchospasm is more characteristic of the prostaglandin F2α analogue used for refractory atony."
+    },
+    {
+      "label": "B",
+      "text": "Ergometrine",
+      "isCorrect": false,
+      "explanation": "Ergometrine is especially associated with hypertension and vasoconstriction. Those risks are distinct from the prominent bronchospasm risk in this case."
+    },
+    {
+      "label": "C",
+      "text": "Carboprost",
+      "isCorrect": true,
+      "explanation": "Carboprost is a prostaglandin F2α analogue that can cause bronchospasm and hypoxaemia. A history of asthma is therefore highly relevant when considering it."
+    },
+    {
+      "label": "D",
+      "text": "Misoprostol",
+      "isCorrect": false,
+      "explanation": "Misoprostol commonly causes shivering, fever and gastrointestinal effects. It does not share carboprost’s characteristic bronchospasm concern."
+    },
+    {
+      "label": "E",
+      "text": "Tranexamic acid",
+      "isCorrect": false,
+      "explanation": "Tranexamic acid reduces fibrinolysis and is not a uterotonic. It does not match the specific uterotonic adverse-effect pattern described."
+    }
+  ],
+  "context": "Carboprost can provoke bronchospasm; respiratory disease matters when selecting medicines for PPH.",
+  "publicModule": {
+    "schemaVersion": 1,
+    "origin": "mirrored",
+    "discipline": "obs",
+    "mirroredFrom": "md3:2968856bf3ddfc0d",
+    "itemText": {
+      "licence": "CC-BY-4.0",
+      "attribution": "MD3 contributors"
+    },
+    "evidence": {
+      "kind": "reference",
+      "sourceId": "qld-health-data-assets-pdf-file-0015-140136-g-pph-0e6f42"
+    },
+    "review": {
+      "verdict": "passed",
+      "contentHash": "44d5f7bc6609eb7e84a212dedfe280db26f209c20e7d1f5e884eb34c6f6969d7"
+    }
+  }
+}

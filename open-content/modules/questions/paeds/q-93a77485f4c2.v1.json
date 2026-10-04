@@ -1,0 +1,64 @@
+{
+  "id": "bank:cohort:paeds:q-93a77485f4c2:v1",
+  "rotation": "cohort-open",
+  "moduleNodes": [
+    "cohort/paeds"
+  ],
+  "topics": [
+    "paeds"
+  ],
+  "questionType": "management",
+  "difficulty": "hard",
+  "stem": "A term baby is born limp and apnoeic. After drying and stimulation, the neonatal registrar starts mask ventilation in air at one minute. Sixty seconds later the heart rate is 70 beats/min, the chest is barely moving with each inflation and oxygen saturation is 58%. A second clinician has arrived.\n\nWhat should the registrar do next?",
+  "options": [
+    {
+      "label": "A",
+      "text": "Start chest compressions at 3:1 and increase the oxygen to 100%",
+      "isCorrect": false,
+      "explanation": "Compressions start only when the heart rate stays below 60 despite 30 seconds of effective ventilation; here the rate is 70 and ventilation is not yet effective."
+    },
+    {
+      "label": "B",
+      "text": "Increase the oxygen to 100% and continue the same mask ventilation",
+      "isCorrect": false,
+      "explanation": "Oxygen cannot help lungs that are not being inflated. Effective ventilation comes first, with oxygen titrated to saturation."
+    },
+    {
+      "label": "C",
+      "text": "Place an umbilical venous catheter and give adrenaline",
+      "isCorrect": false,
+      "explanation": "Adrenaline is considered only if the heart rate stays below 60 despite effective ventilation and compressions."
+    },
+    {
+      "label": "D",
+      "text": "Stop inflations and give free-flow oxygen while the heart recovers",
+      "isCorrect": false,
+      "explanation": "Free-flow oxygen does not ventilate an apnoeic baby, and stopping inflations removes the treatment the baby needs."
+    },
+    {
+      "label": "E",
+      "text": "Improve the mask seal and head position, using a two-person hold",
+      "isCorrect": true,
+      "explanation": "A heart rate that is not rising with poor chest movement means ventilation is ineffective. Correct the mask seal and head position, use a two-person technique and increase pressure until the chest rises."
+    }
+  ],
+  "context": "If the newborn heart rate does not rise with mask ventilation, look at the chest: poor chest movement means fix the ventilation before any compressions or extra oxygen.",
+  "publicModule": {
+    "schemaVersion": 1,
+    "origin": "mirrored",
+    "discipline": "paeds",
+    "mirroredFrom": "md3:93a77485f4c29550",
+    "itemText": {
+      "licence": "CC-BY-4.0",
+      "attribution": "MD3 contributors"
+    },
+    "evidence": {
+      "kind": "reference",
+      "sourceId": "anzcor-ideline-13-4-airway-management-and-mask-ventilation-of-the-newborn-288-784483"
+    },
+    "review": {
+      "verdict": "passed",
+      "contentHash": "7121d25893a1143c34a1992e164417ede6f5a7c4d46a2010d75c4eca0d21c04e"
+    }
+  }
+}

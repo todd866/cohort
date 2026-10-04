@@ -1,0 +1,64 @@
+{
+  "id": "bank:cohort:gynae:q-0dd0f8a65ab4:v1",
+  "rotation": "cohort-open",
+  "moduleNodes": [
+    "cohort/gynae"
+  ],
+  "topics": [
+    "gynae"
+  ],
+  "questionType": "management",
+  "difficulty": "hard",
+  "stem": "A 38-year-old with two children has heavy, regular periods, a ferritin of 8 µg/L and a haemoglobin of 109 g/L. Pregnancy test, cervical screening and pelvic ultrasound are normal. Five years ago she had a deep vein thrombosis after a leg fracture. She wants effective, reversible contraception and the treatment that most reduces her bleeding; she has started oral iron.\n\nWhich treatment should her GP recommend?",
+  "options": [
+    {
+      "label": "A",
+      "text": "A combined oral contraceptive pill taken continuously",
+      "isCorrect": false,
+      "explanation": "Oestrogen-containing contraception is contraindicated after a previous deep vein thrombosis."
+    },
+    {
+      "label": "B",
+      "text": "A 52 mg levonorgestrel-releasing intrauterine device",
+      "isCorrect": true,
+      "explanation": "The 52 mg levonorgestrel IUD is the most effective medical treatment for heavy menstrual bleeding, provides reversible contraception and can be used after a previous DVT."
+    },
+    {
+      "label": "C",
+      "text": "Tranexamic acid on the heaviest days of each period",
+      "isCorrect": false,
+      "explanation": "Tranexamic acid is used with caution after a venous thrombosis, is less effective than the levonorgestrel device and gives no contraception."
+    },
+    {
+      "label": "D",
+      "text": "Depot medroxyprogesterone injections at 12-weekly intervals",
+      "isCorrect": false,
+      "explanation": "Depot medroxyprogesterone gives contraception but controls bleeding less reliably, often with irregular bleeding at first."
+    },
+    {
+      "label": "E",
+      "text": "Endometrial ablation as a day-surgery procedure",
+      "isCorrect": false,
+      "explanation": "Ablation is a procedure for when medical treatment fails; it gives no contraception and makes a later pregnancy hazardous."
+    }
+  ],
+  "context": "For heavy menstrual bleeding with a need for contraception, the 52 mg levonorgestrel IUD is the most effective medical option and suits women who cannot take oestrogen.",
+  "publicModule": {
+    "schemaVersion": 1,
+    "origin": "mirrored",
+    "discipline": "gynae",
+    "mirroredFrom": "md3:0dd0f8a65ab4c20a",
+    "itemText": {
+      "licence": "CC-BY-4.0",
+      "attribution": "MD3 contributors"
+    },
+    "evidence": {
+      "kind": "reference",
+      "sourceId": "acsqhc-urces-attachments-heavy-menstrual-bleeding-clinical-care-standard-2024-e18f8a"
+    },
+    "review": {
+      "verdict": "passed",
+      "contentHash": "830260edfb29c2edaef7cec951d33735685b09c0af1729f6749a5f0bc4a224cf"
+    }
+  }
+}

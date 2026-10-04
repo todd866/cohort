@@ -1,0 +1,64 @@
+{
+  "id": "bank:cohort:em:q-090e9be87fd5:v1",
+  "rotation": "cohort-open",
+  "moduleNodes": [
+    "cohort/em"
+  ],
+  "topics": [
+    "em"
+  ],
+  "questionType": "management",
+  "difficulty": "hard",
+  "stem": "An emergency registrar reviews a 17-year-old 50 minutes after she took a large number of sustained-release verapamil tablets. She was alert on arrival but is now markedly drowsy, with GCS 10, and pools secretions. Blood pressure is 96/58 mmHg. A nurse brings oral activated charcoal, and the airway team has been called.\n\nWhat should the registrar do about the charcoal now?",
+  "options": [
+    {
+      "label": "A",
+      "text": "Give it orally now, while still within the one-hour window",
+      "isCorrect": false,
+      "explanation": "Timing and the toxin favour decontamination, but a drowsy patient who cannot protect her airway may aspirate charcoal, causing severe pneumonitis."
+    },
+    {
+      "label": "B",
+      "text": "Give it now through a newly placed nasogastric tube",
+      "isCorrect": false,
+      "explanation": "A nasogastric tube does not protect the airway. Charcoal given through it can still be vomited and aspirated in an unprotected airway."
+    },
+    {
+      "label": "C",
+      "text": "Give a smaller oral dose after an antiemetic",
+      "isCorrect": false,
+      "explanation": "A smaller dose still carries aspiration risk, and antiemetics do not protect a depressed airway."
+    },
+    {
+      "label": "D",
+      "text": "Withhold it until her airway is secured by intubation",
+      "isCorrect": true,
+      "explanation": "Charcoal is contraindicated while the airway is unprotected. Once the airway is secured by intubation, charcoal can be given through a gastric tube if toxicology advice supports it for this sustained-release calcium channel blocker."
+    },
+    {
+      "label": "E",
+      "text": "Abandon it, because charcoal does not bind verapamil",
+      "isCorrect": false,
+      "explanation": "Activated charcoal does adsorb verapamil, and a large sustained-release calcium channel blocker ingestion is one of the overdoses where decontamination is most worthwhile. The barrier is the unprotected airway, not the drug."
+    }
+  ],
+  "context": "Do not give activated charcoal to a patient who cannot protect the airway; secure the airway first, then reconsider decontamination.",
+  "publicModule": {
+    "schemaVersion": 1,
+    "origin": "mirrored",
+    "discipline": "em",
+    "mirroredFrom": "md3:090e9be87fd5ee99",
+    "itemText": {
+      "licence": "CC-BY-4.0",
+      "attribution": "MD3 contributors"
+    },
+    "evidence": {
+      "kind": "reference",
+      "sourceId": "rch-clinicalguide-guideline-index-use-of-activated-charcoal-in-poisonings-037792"
+    },
+    "review": {
+      "verdict": "passed",
+      "contentHash": "f7558dbfb72afb4ddb8ced17504f5d43cc17fe7742fb6d746253eb23b1975202"
+    }
+  }
+}

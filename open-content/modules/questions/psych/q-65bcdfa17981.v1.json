@@ -1,0 +1,64 @@
+{
+  "id": "bank:cohort:psych:q-65bcdfa17981:v1",
+  "rotation": "cohort-open",
+  "moduleNodes": [
+    "cohort/psych"
+  ],
+  "topics": [
+    "psych"
+  ],
+  "questionType": "management",
+  "difficulty": "hard",
+  "stem": "A paediatrician reviews a 10-year-old whose ADHD functioning has improved markedly on a stable methylphenidate dose. Blinking and throat-clearing tics predated treatment and have waxed and waned for two years. A recent increase occurred during school stress without a dose change; the child is not distressed by the tics. His parent asks whether methylphenidate must now be stopped.\n\nWhich response best uses this history?",
+  "options": [
+    {
+      "label": "A",
+      "text": "Continue treatment while reviewing tic severity and ADHD benefit",
+      "isCorrect": true,
+      "explanation": "Tics naturally fluctuate and do not automatically preclude effective ADHD treatment. Review their course and functional impact with the family, changing treatment if harms become significant or a drug relationship emerges."
+    },
+    {
+      "label": "B",
+      "text": "Stop methylphenidate and manage ADHD without medication",
+      "isCorrect": false,
+      "explanation": "Coexisting tics are not an absolute contraindication to methylphenidate. The chronology and relative impairment matter."
+    },
+    {
+      "label": "C",
+      "text": "Add haloperidol to suppress the tics while retaining the stimulant",
+      "isCorrect": false,
+      "explanation": "Medication to suppress mild, non-impairing tics would add adverse effects without a clear present benefit. The tic burden should be assessed before escalating treatment."
+    },
+    {
+      "label": "D",
+      "text": "Increase methylphenidate specifically to suppress the new tics",
+      "isCorrect": false,
+      "explanation": "The ADHD dose should follow ADHD benefit and tolerability, not be increased reflexively for tics. A stable effective regimen does not need that change here."
+    },
+    {
+      "label": "E",
+      "text": "Change to atomoxetine and follow both ADHD symptoms and tics",
+      "isCorrect": false,
+      "explanation": "A nonstimulant can be considered if tics become impairing or appear related to stimulant treatment. Neither is established here, so a fluctuating mild tic does not require replacing an effective, tolerated ADHD treatment."
+    }
+  ],
+  "context": "Assess tic causation and impairment before abandoning an effective stimulant.",
+  "publicModule": {
+    "schemaVersion": 1,
+    "origin": "mirrored",
+    "discipline": "psych",
+    "mirroredFrom": "md3:65bcdfa17981e5f5",
+    "itemText": {
+      "licence": "CC-BY-4.0",
+      "attribution": "MD3 contributors"
+    },
+    "evidence": {
+      "kind": "reference",
+      "sourceId": "nice-guidance-ng87-chapter-recommendations-25918d"
+    },
+    "review": {
+      "verdict": "passed",
+      "contentHash": "930d28bb5b733e2a0776a23909a1cb4b7ffa4a1efc8e12dd5be04ab7ec781d35"
+    }
+  }
+}

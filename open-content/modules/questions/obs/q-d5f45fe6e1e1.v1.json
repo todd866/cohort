@@ -1,0 +1,64 @@
+{
+  "id": "bank:cohort:obs:q-d5f45fe6e1e1:v1",
+  "rotation": "cohort-open",
+  "moduleNodes": [
+    "cohort/obs"
+  ],
+  "topics": [
+    "obs"
+  ],
+  "questionType": "management",
+  "difficulty": "medium",
+  "stem": "A 27-year-old with type 1 diabetes sees her GP because she plans to stop contraception next month. Her HbA1c is 50 mmol/mol and her BMI is 24 kg/m². She has had no previous pregnancy affected by a neural tube defect. She already takes an over-the-counter pregnancy multivitamin containing 0.5 mg of folic acid daily and asks whether that is enough.\n\nWhich folic acid plan best addresses her pregnancy-related risk?",
+  "options": [
+    {
+      "label": "A",
+      "text": "Continue the 0.5 mg multivitamin, as her glucose control is now at target",
+      "isCorrect": false,
+      "explanation": "Pre-existing diabetes raises neural-tube-defect risk regardless of current glycaemic control, so the usual 0.5 mg dose is not enough."
+    },
+    {
+      "label": "B",
+      "text": "Start 5 mg daily now, continuing at least through the first trimester",
+      "isCorrect": true,
+      "explanation": "Pre-existing diabetes is an indication for 5 mg of folic acid daily, started at least a month before conception and continued through the first trimester."
+    },
+    {
+      "label": "C",
+      "text": "Continue 0.5 mg now and increase to 5 mg once pregnancy is confirmed",
+      "isCorrect": false,
+      "explanation": "The neural tube closes about four weeks after conception (six weeks’ gestation), often before pregnancy is recognised; the higher dose must already be established."
+    },
+    {
+      "label": "D",
+      "text": "Add 5 mg daily only if her HbA1c rises above target before conception",
+      "isCorrect": false,
+      "explanation": "The indication is the diabetes itself, not the current HbA1c; good control does not remove it."
+    },
+    {
+      "label": "E",
+      "text": "Take two multivitamin tablets daily to provide 1 mg of folic acid",
+      "isCorrect": false,
+      "explanation": "Doubling a multivitamin still falls well short of the recommended 5 mg and needlessly doubles every other ingredient."
+    }
+  ],
+  "context": "Pre-existing diabetes warrants high-dose folic acid before conception and during the first trimester.",
+  "publicModule": {
+    "schemaVersion": 1,
+    "origin": "mirrored",
+    "discipline": "obs",
+    "mirroredFrom": "md3:d5f45fe6e1e141bb",
+    "itemText": {
+      "licence": "CC-BY-4.0",
+      "attribution": "MD3 contributors"
+    },
+    "evidence": {
+      "kind": "reference",
+      "sourceId": "nice-guidance-ng3-chapter-recommendations-d4d14f"
+    },
+    "review": {
+      "verdict": "passed",
+      "contentHash": "2c14372c9876441c8de229a3293250638d3abf4b84a3832116c6831186af5ce3"
+    }
+  }
+}

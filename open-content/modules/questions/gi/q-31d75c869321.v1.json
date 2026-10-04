@@ -1,0 +1,64 @@
+{
+  "id": "bank:cohort:gi:q-31d75c869321:v1",
+  "rotation": "cohort-open",
+  "moduleNodes": [
+    "cohort/gi"
+  ],
+  "topics": [
+    "gi"
+  ],
+  "questionType": "knowledge",
+  "difficulty": "medium",
+  "stem": "Oliver, 10 weeks, is formula fed and brings up small amounts of milk after most feeds, sometimes through his nose. Each evening he cries for an hour or two and sometimes arches his back. He feeds eagerly, has gained weight along the 50th centile, has no eczema and has normal stools. What he brings up is never green, bloody or projectile. His mother has read about reflux medicine and asks for a prescription.\n\nWhat is the most appropriate advice?",
+  "options": [
+    {
+      "label": "A",
+      "text": "Reassure; it settles in most by 12 months, untreated",
+      "isCorrect": true,
+      "explanation": "Correct. This is physiological reflux: common, peaking at about 4 months and resolving by 12 months in most infants. Evening crying and arching are common in healthy infants and do not make it disease; a thriving baby needs reassurance and feeding guidance, not treatment."
+    },
+    {
+      "label": "B",
+      "text": "Omeprazole for 2 weeks to settle the arching and crying",
+      "isCorrect": false,
+      "explanation": "Acid suppression is for GORD with complications, not physiological reflux, and PPIs have not been shown to reduce crying in infants. RCH advises against PPI trials for unsettled babies."
+    },
+    {
+      "label": "C",
+      "text": "A hydrolysed formula for presumed cow's milk allergy",
+      "isCorrect": false,
+      "explanation": "He has no features of cow's milk protein allergy, such as eczema, blood or mucus in the stool or faltering growth, so a formula change is not needed."
+    },
+    {
+      "label": "D",
+      "text": "Ultrasound of the pylorus before deciding on treatment",
+      "isCorrect": false,
+      "explanation": "Pyloric stenosis causes forceful, projectile vomiting with a hungry, often dehydrated baby who is losing weight. Effortless spills in a thriving infant need no investigation."
+    },
+    {
+      "label": "E",
+      "text": "Raise the head of his cot so that he sleeps on a slope",
+      "isCorrect": false,
+      "explanation": "Inclining the sleep surface is not recommended because of the risk of SIDS. He should sleep flat on his back; holding him upright for 20-30 minutes after feeds may help."
+    }
+  ],
+  "context": "Regurgitation in a thriving infant is physiological reflux, even with evening crying and some arching; it peaks at about 4 months and resolves by 12 months in most. Reassure: no PPI and no inclined sleeping.",
+  "publicModule": {
+    "schemaVersion": 1,
+    "origin": "mirrored",
+    "discipline": "gi",
+    "mirroredFrom": "md3:31d75c86932101e6",
+    "itemText": {
+      "licence": "CC-BY-4.0",
+      "attribution": "MD3 contributors"
+    },
+    "evidence": {
+      "kind": "reference",
+      "sourceId": "rch-nicalguide-guideline-index-gastrooesophageal-reflux-disease-in-infants-c6c6ef"
+    },
+    "review": {
+      "verdict": "passed",
+      "contentHash": "d8988d7c3d829cc04265027420d41bebf454a2953bbcf58e95a1943c6b262973"
+    }
+  }
+}

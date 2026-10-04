@@ -58,20 +58,21 @@ function createScriptPrismaClient() {
     timeout: 120_000,
   };
   if (databaseConnection.adapter === 'pg') {
-    const pgConfig = databaseConnection.maxConnections
-      ? {
-          connectionString: databaseConnection.connectionString!,
-          connectionTimeoutMillis: databaseConnection.connectionTimeoutMillis,
-          max: databaseConnection.maxConnections,
-        }
-      : { connectionString: databaseConnection.connectionString! };
+    // Spread the whole reviewed pool config rather than picking fields, so a
+    // setting added there (keepalive, the query deadline) cannot be dropped here.
     return new PrismaClient({
-      adapter: new PrismaPg(pgConfig),
+      adapter: new PrismaPg({
+        connectionString: databaseConnection.connectionString!,
+        ...databaseConnection.pool,
+      }),
       transactionOptions,
     });
   }
   return new PrismaClient({
-    adapter: new PrismaNeon({ connectionString: databaseConnection.connectionString! }),
+    adapter: new PrismaNeon({
+      connectionString: databaseConnection.connectionString!,
+      connectionTimeoutMillis: databaseConnection.connectionTimeoutMillis,
+    }),
     transactionOptions,
   });
 }

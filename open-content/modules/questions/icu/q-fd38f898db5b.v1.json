@@ -1,0 +1,64 @@
+{
+  "id": "bank:cohort:icu:q-fd38f898db5b:v1",
+  "rotation": "cohort-open",
+  "moduleNodes": [
+    "cohort/icu"
+  ],
+  "topics": [
+    "icu"
+  ],
+  "questionType": "management",
+  "difficulty": "hard",
+  "stem": "On day 5 after an admission for pneumonia, a 70-kg 78-year-old is eating meals and drinking about 1.8 L a day without vomiting, diarrhoea or other abnormal losses. Maintenance IV fluid has run at 100 mL/h since admission. Today he has new ankle oedema and fine bibasal crackles, his weight is 3 kg above admission, and sodium is 133 mmol/L (135–145). Blood pressure and urine output are normal.\n\nWhat is the most appropriate fluid plan?",
+  "options": [
+    {
+      "label": "A",
+      "text": "Continue the IV fluid at the same rate and add furosemide",
+      "isCorrect": false,
+      "explanation": "Giving a diuretic to remove fluid that is still being infused unnecessarily treats the result rather than the cause."
+    },
+    {
+      "label": "B",
+      "text": "Halve the IV rate and recheck electrolytes in 24 hours",
+      "isCorrect": false,
+      "explanation": "His oral intake already meets his needs, so any maintenance infusion is surplus while he is overloaded."
+    },
+    {
+      "label": "C",
+      "text": "Stop the IV fluid; monitor intake, weight and electrolytes",
+      "isCorrect": true,
+      "explanation": "Daily maintenance needs are roughly 25–30 mL/kg, about 1.75–2.1 L for him, which his oral intake now meets. The 2.4 L of IV fluid a day is surplus, causing overload and dilutional hyponatraemia. Maintenance IV fluid is indicated only when oral intake cannot meet needs, so it is stopped."
+    },
+    {
+      "label": "D",
+      "text": "Change the infusion to 0.9% saline to correct the sodium",
+      "isCorrect": false,
+      "explanation": "The low sodium is dilutional from excess fluid; more fluid of any kind adds to the overload."
+    },
+    {
+      "label": "E",
+      "text": "Continue the IV fluid and restrict oral fluid to 1 L a day",
+      "isCorrect": false,
+      "explanation": "Restricting normal drinking to keep a drip running reverses the right priority; oral intake should replace IV fluid."
+    }
+  ],
+  "context": "Maintenance IV fluid is only for patients whose oral or enteral intake cannot meet daily needs (about 25–30 mL/kg); once intake is adequate, stop it, especially if overload appears.",
+  "publicModule": {
+    "schemaVersion": 1,
+    "origin": "mirrored",
+    "discipline": "icu",
+    "mirroredFrom": "md3:fd38f898db5b126b",
+    "itemText": {
+      "licence": "CC-BY-4.0",
+      "attribution": "MD3 contributors"
+    },
+    "evidence": {
+      "kind": "reference",
+      "sourceId": "nice-guidance-cg174-resources-full-guideline-pdf-191667999-642792"
+    },
+    "review": {
+      "verdict": "passed",
+      "contentHash": "07dab75ac8c16e1f46d586f52341e6cf9791d15a1be1ebc6f7bc3cca17631f35"
+    }
+  }
+}

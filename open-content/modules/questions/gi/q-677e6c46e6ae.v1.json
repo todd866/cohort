@@ -1,0 +1,64 @@
+{
+  "id": "bank:cohort:gi:q-677e6c46e6ae:v1",
+  "rotation": "cohort-open",
+  "moduleNodes": [
+    "cohort/gi"
+  ],
+  "topics": [
+    "gi"
+  ],
+  "questionType": "management",
+  "difficulty": "hard",
+  "stem": "A 9-month-old boy has had two previous episodes of repeated, profuse vomiting and floppiness starting about 2 hours after eating rice cereal. Skin-prick testing to rice was negative, and his allergist documented a non-IgE-mediated food reaction with a written plan. Today he accidentally ate rice cereal. Two hours later he is pale, floppy and vomiting repeatedly. He has no urticaria, wheeze, stridor or facial swelling. His capillary refill is 4 seconds and he remains hypotensive after positioning and oxygen.\n\nWhat is the priority treatment?",
+  "options": [
+    {
+      "label": "A",
+      "text": "IV ondansetron, then maintenance-rate fluids",
+      "isCorrect": false,
+      "explanation": "Ondansetron may help the vomiting, but maintenance-rate fluid does not resuscitate a hypotensive child."
+    },
+    {
+      "label": "B",
+      "text": "Oral rehydration solution by nasogastric tube",
+      "isCorrect": false,
+      "explanation": "Enteral rehydration is not the treatment for hypotensive shock."
+    },
+    {
+      "label": "C",
+      "text": "IM adrenaline, repeated after 5 minutes if needed",
+      "isCorrect": false,
+      "explanation": "His reactions are delayed, documented as non-IgE-mediated, skin-prick negative and without skin or airway signs: this is FPIES, where fluid, not adrenaline, treats the shock. If anaphylaxis were possible (rapid onset, skin or airway signs, an IgE-mediated allergen), IM adrenaline should be given without delay."
+    },
+    {
+      "label": "D",
+      "text": "Isotonic fluid bolus IV, then reassess",
+      "isCorrect": true,
+      "explanation": "Correct. This is a delayed, non-IgE (FPIES) reaction causing shock. Give a rapid isotonic IV fluid bolus, reassess perfusion and involve senior paediatric staff; ondansetron can be added for vomiting."
+    },
+    {
+      "label": "E",
+      "text": "IV antihistamine and hydrocortisone",
+      "isCorrect": false,
+      "explanation": "Antihistamines and corticosteroids do not reverse the hypovolaemic shock of FPIES and must not delay fluid resuscitation."
+    }
+  ],
+  "context": "FPIES causes delayed repetitive vomiting, pallor and lethargy after a trigger, usually without hives or wheeze. Shock requires isotonic fluid resuscitation and senior paediatric review.",
+  "publicModule": {
+    "schemaVersion": 1,
+    "origin": "mirrored",
+    "discipline": "gi",
+    "mirroredFrom": "md3:677e6c46e6ae6f3d",
+    "itemText": {
+      "licence": "CC-BY-4.0",
+      "attribution": "MD3 contributors"
+    },
+    "evidence": {
+      "kind": "reference",
+      "sourceId": "rch-clinicalguide-guideline-index-non-ige-mediated-food-allergy-59cb34"
+    },
+    "review": {
+      "verdict": "passed",
+      "contentHash": "b41c9a14776445a7ddbe1a8cd3f1fc6bb82dd36b02108e818225cd05ee96b17e"
+    }
+  }
+}

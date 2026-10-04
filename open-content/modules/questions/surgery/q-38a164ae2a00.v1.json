@@ -1,0 +1,64 @@
+{
+  "id": "bank:cohort:surgery:q-38a164ae2a00:v1",
+  "rotation": "cohort-open",
+  "moduleNodes": [
+    "cohort/surgery"
+  ],
+  "topics": [
+    "surgery"
+  ],
+  "questionType": "investigation",
+  "difficulty": "medium",
+  "stem": "An emergency registrar sees an 8-month-old with repeated episodes of crying, pallor and drawing up his legs, followed by periods when he seems comfortable. He has vomited twice and passed a loose stool without blood. He is stable after assessment and analgesia, with IV access established and the surgical team alerted.\n\nWhich initial imaging investigation is most appropriate?",
+  "options": [
+    {
+      "label": "A",
+      "text": "Abdominal ultrasound",
+      "isCorrect": true,
+      "explanation": "Correct. Ultrasound is the initial diagnostic study for suspected intussusception; intermittent distress warrants it before bloody stool develops."
+    },
+    {
+      "label": "B",
+      "text": "Upper gastrointestinal contrast study",
+      "isCorrect": false,
+      "explanation": "An upper GI study addresses malrotation and is not the first test for this symptom pattern."
+    },
+    {
+      "label": "C",
+      "text": "Contrast-enhanced abdominal CT",
+      "isCorrect": false,
+      "explanation": "CT adds radiation when ultrasound can rapidly answer the diagnostic question."
+    },
+    {
+      "label": "D",
+      "text": "Abdominal MRI",
+      "isCorrect": false,
+      "explanation": "MRI is not the initial emergency investigation when ultrasound is available."
+    },
+    {
+      "label": "E",
+      "text": "Plain abdominal X-ray",
+      "isCorrect": false,
+      "explanation": "An X-ray is useful if obstruction or perforation is suspected, but a normal film does not exclude intussusception."
+    }
+  ],
+  "context": "Intussusception may cause episodic pallor and pain before bloody stool develops. Stabilise first, then investigate with ultrasound.",
+  "publicModule": {
+    "schemaVersion": 1,
+    "origin": "mirrored",
+    "discipline": "surgery",
+    "mirroredFrom": "md3:38a164ae2a00f708",
+    "itemText": {
+      "licence": "CC-BY-4.0",
+      "attribution": "MD3 contributors"
+    },
+    "evidence": {
+      "kind": "reference",
+      "sourceId": "rch-clinicalguide-guideline-index-intussusception-108d7d"
+    },
+    "review": {
+      "verdict": "passed",
+      "contentHash": "83c61820b26af6ccfc07f74f417d8094b31d1a3709834ef530976fd3637b2be0"
+    }
+  }
+}

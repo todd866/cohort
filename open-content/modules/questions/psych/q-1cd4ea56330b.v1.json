@@ -1,0 +1,64 @@
+{
+  "id": "bank:cohort:psych:q-1cd4ea56330b:v1",
+  "rotation": "cohort-open",
+  "moduleNodes": [
+    "cohort/psych"
+  ],
+  "topics": [
+    "psych"
+  ],
+  "questionType": "mechanism",
+  "difficulty": "hard",
+  "stem": "A 30-year-old woman is brought in after taking extra amitriptyline tablets. She is agitated and picking at the air, with hot, dry, flushed skin, dilated pupils, a heart rate of 128/min, absent bowel sounds and a palpable bladder. Reflexes are normal and there is no clonus.\n\nWhich receptor effect best explains this pattern of findings?",
+  "options": [
+    {
+      "label": "A",
+      "text": "Excess serotonin receptor stimulation",
+      "isCorrect": false,
+      "explanation": "Serotonin toxicity causes sweating, diarrhoea, hyperreflexia and clonus; her skin is dry, bowel sounds are absent and her reflexes are normal."
+    },
+    {
+      "label": "B",
+      "text": "Alpha- and beta-adrenergic stimulation",
+      "isCorrect": false,
+      "explanation": "Sympathomimetic toxicity also causes agitation, tachycardia and dilated pupils, but the skin is sweaty and bowel and bladder function are preserved."
+    },
+    {
+      "label": "C",
+      "text": "Histamine H1 receptor blockade",
+      "isCorrect": false,
+      "explanation": "H1 blockade contributes sedation, not dry skin, urinary retention and absent bowel sounds."
+    },
+    {
+      "label": "D",
+      "text": "Mu-opioid receptor stimulation",
+      "isCorrect": false,
+      "explanation": "Opioid toxicity causes pinpoint pupils, slow breathing and sedation, the opposite of this picture."
+    },
+    {
+      "label": "E",
+      "text": "Muscarinic receptor blockade",
+      "isCorrect": true,
+      "explanation": "Delirium with hot, dry, flushed skin, dilated pupils, tachycardia, absent bowel sounds and urinary retention is the anticholinergic toxidrome, from muscarinic blockade by amitriptyline."
+    }
+  ],
+  "context": "Hot, dry, flushed skin with dilated pupils, tachycardia, urinary retention, reduced bowel sounds and delirium is muscarinic blockade; sweating points instead to sympathomimetic or serotonergic toxicity. In tricyclic overdose, also check the ECG for QRS widening.",
+  "publicModule": {
+    "schemaVersion": 1,
+    "origin": "mirrored",
+    "discipline": "psych",
+    "mirroredFrom": "md3:1cd4ea56330ba751",
+    "itemText": {
+      "licence": "CC-BY-4.0",
+      "attribution": "MD3 contributors"
+    },
+    "evidence": {
+      "kind": "reference",
+      "sourceId": "rch-clinicalguide-guideline-index-anticholinergic-syndrome-971cca"
+    },
+    "review": {
+      "verdict": "passed",
+      "contentHash": "207867b8a67a20ae43ca699d2eebc87cd0e60d1a316956f7946eed7cb8e113b7"
+    }
+  }
+}

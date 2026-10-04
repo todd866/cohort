@@ -8,6 +8,7 @@
  * This is local intelligence: embeddings + pgvector, no LLM API calls needed.
  */
 
+import { Prisma } from '@prisma/client';
 import { prisma } from '@/lib/prisma';
 import { logger } from '@/lib/logger';
 
@@ -384,6 +385,62 @@ async function updateRegionCentroid(regionId: string, cardIds: string[]): Promis
 // =============================================================================
 
 /**
+ * The bridge-card search. The centroid is a join column, so no index can serve it: this is an
+ * exact scan of the rotation, as it always was. The mastery filter sits on the nullable side of
+ * the CardProgress LEFT JOIN and so can only run after that join; the distance floor could run
+ * earlier, and did, comparing every embedded card in the rotation and then each survivor twice
+ * more for the select list and the sort. Here the cheap filters run first inside an OFFSET 0
+ * fence (which stops the planner inlining the subquery and copying the distance back into the
+ * WHERE), the distance is only a select-list column there, and the floor and the order work on
+ * the value already computed. The predicates are unchanged, including the `1 - distance > bound`
+ * form, so the boundary behaves exactly as before.
+ *
+ * Exported so the integration test can EXPLAIN exactly the statement findBridgeCards runs.
+ */
+export function bridgeCardsSql(options: {
+  userId: string;
+  rotation: string;
+  maxCount: number;
+  maxDistance: number;
+  minMastery: number;
+}): Prisma.Sql {
+  const { userId, rotation, maxCount, maxDistance, minMastery } = options;
+  return Prisma.sql`
+    WITH region AS (
+      SELECT "centroidEmbedding" AS v, "failedCardIds" AS failed
+      FROM "UserStruggleRegion"
+      WHERE "userId" = ${userId}
+        AND rotation = ${rotation}
+        AND "centroidEmbedding" IS NOT NULL
+        AND array_length("failedCardIds", 1) > 0
+    )
+    SELECT id, front, complexity, similarity, "retrievalStrength"
+    FROM (
+      SELECT
+        c.id,
+        c.front,
+        c.complexity,
+        1 - (ce.embedding <=> region.v) AS similarity,
+        COALESCE(cp."retrievalStrength", 0) AS "retrievalStrength"
+      FROM region
+      JOIN "Card" c ON c.rotation = ${rotation}
+      JOIN card_embeddings ce ON ce.card_id = c.id
+      LEFT JOIN "CardProgress" cp ON cp."cardId" = c.id AND cp."userId" = ${userId}
+      WHERE c.id != ALL(region.failed)
+        AND COALESCE(cp."retrievalStrength", 0) >= ${minMastery}
+      OFFSET 0
+    ) scored
+    WHERE similarity > ${1 - maxDistance}
+    ORDER BY
+      -- Prefer: high mastery, close to struggle region, simpler
+      "retrievalStrength" DESC,
+      similarity DESC,
+      complexity ASC
+    LIMIT ${maxCount}
+  `;
+}
+
+/**
  * Find bridge cards: cards NEAR the struggle region that the user KNOWS WELL
  * These are the scaffolding path from known → unknown territory
  */
@@ -405,35 +462,9 @@ export async function findBridgeCards(
   // centroidEmbedding is Unsupported("halfvec(3072)") so Prisma client omits it
   // — the entire bridge query reads from UserStruggleRegion via raw SQL.
   try {
-    const bridges = await prisma.$queryRaw<BridgeCard[]>`
-      WITH region AS (
-        SELECT "centroidEmbedding" AS v, "failedCardIds" AS failed
-        FROM "UserStruggleRegion"
-        WHERE "userId" = ${userId}
-          AND rotation = ${rotation}
-          AND "centroidEmbedding" IS NOT NULL
-          AND array_length("failedCardIds", 1) > 0
-      )
-      SELECT
-        c.id,
-        c.front,
-        c.complexity,
-        1 - (ce.embedding <=> region.v) as similarity,
-        COALESCE(cp."retrievalStrength", 0) as "retrievalStrength"
-      FROM region
-      JOIN "Card" c ON c.rotation = ${rotation}
-      JOIN card_embeddings ce ON ce.card_id = c.id
-      LEFT JOIN "CardProgress" cp ON cp."cardId" = c.id AND cp."userId" = ${userId}
-      WHERE c.id != ALL(region.failed)
-        AND 1 - (ce.embedding <=> region.v) > ${1 - maxDistance}
-        AND COALESCE(cp."retrievalStrength", 0) >= ${minMastery}
-      ORDER BY
-        -- Prefer: high mastery, close to struggle region, simpler
-        COALESCE(cp."retrievalStrength", 0) DESC,
-        1 - (ce.embedding <=> region.v) DESC,
-        c.complexity ASC
-      LIMIT ${maxCount}
-    `;
+    const bridges = await prisma.$queryRaw<BridgeCard[]>(
+      bridgeCardsSql({ userId, rotation, maxCount, maxDistance, minMastery }),
+    );
 
     return bridges;
   } catch (error) {

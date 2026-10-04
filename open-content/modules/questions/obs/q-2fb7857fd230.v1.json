@@ -1,0 +1,64 @@
+{
+  "id": "bank:cohort:obs:q-2fb7857fd230:v1",
+  "rotation": "cohort-open",
+  "moduleNodes": [
+    "cohort/obs"
+  ],
+  "topics": [
+    "obs"
+  ],
+  "questionType": "management",
+  "difficulty": "hard",
+  "stem": "A woman at 11 weeks was admitted overnight after three weeks of vomiting and very little food, and was given intravenous 5% dextrose with 0.45% saline. This morning the obstetric registrar finds her confused and unsteady on her feet, with horizontal nystagmus. Her blood pressure is 112/70 mmHg and she has not fitted. Sodium is 128 mmol/L (135–145) and bedside glucose is 5.4 mmol/L.\n\nWhat should the registrar give first?",
+  "options": [
+    {
+      "label": "A",
+      "text": "Intravenous thiamine now, continued over the following days",
+      "isCorrect": true,
+      "explanation": "Confusion, ataxia and nystagmus after dextrose in a starved woman are Wernicke's encephalopathy. High-dose intravenous thiamine is given at once."
+    },
+    {
+      "label": "B",
+      "text": "Hypertonic 3% saline to bring her sodium up quickly",
+      "isCorrect": false,
+      "explanation": "A sodium of 128 mmol/L does not explain nystagmus and ataxia, and rapid correction risks osmotic demyelination; it is corrected gradually with isotonic saline."
+    },
+    {
+      "label": "C",
+      "text": "Oral thiamine and a multivitamin once the vomiting settles",
+      "isCorrect": false,
+      "explanation": "She cannot absorb oral treatment reliably and the encephalopathy is already evolving; oral thiamine later is too little, too late."
+    },
+    {
+      "label": "D",
+      "text": "An urgent MRI brain before any vitamin treatment is given",
+      "isCorrect": false,
+      "explanation": "Wernicke's encephalopathy is a clinical diagnosis, and imaging must not delay thiamine."
+    },
+    {
+      "label": "E",
+      "text": "Intravenous thiamine once a thiamine level confirms deficiency",
+      "isCorrect": false,
+      "explanation": "Waiting for a thiamine level lets the damage progress. Treatment is given on clinical suspicion."
+    }
+  ],
+  "context": "Confusion, ataxia or nystagmus after dextrose in a woman with prolonged vomiting is Wernicke's encephalopathy until proven otherwise: give intravenous thiamine at once.",
+  "publicModule": {
+    "schemaVersion": 1,
+    "origin": "mirrored",
+    "discipline": "obs",
+    "mirroredFrom": "md3:2fb7857fd2303d30",
+    "itemText": {
+      "licence": "CC-BY-4.0",
+      "attribution": "MD3 contributors"
+    },
+    "evidence": {
+      "kind": "reference",
+      "sourceId": "nsw-health-pds-activepdsdocuments-gl2022-009-90aecc"
+    },
+    "review": {
+      "verdict": "passed",
+      "contentHash": "cd04225d59d410b73c03893cb3efa26adb8ef4c67ee81935b8e5d4a3978c137c"
+    }
+  }
+}

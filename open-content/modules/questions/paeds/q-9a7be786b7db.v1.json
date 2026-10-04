@@ -1,0 +1,64 @@
+{
+  "id": "bank:cohort:paeds:q-9a7be786b7db:v1",
+  "rotation": "cohort-open",
+  "moduleNodes": [
+    "cohort/paeds"
+  ],
+  "topics": [
+    "paeds"
+  ],
+  "questionType": "diagnosis",
+  "difficulty": "hard",
+  "stem": "A 12-year-old boy is referred because his teachers say he is irritable, inattentive and sometimes dozes in class. He goes to bed at 9 pm with no devices in his room and is woken at 7 am, but wakes unrefreshed with a dry mouth. His mother hears loud snoring most nights, and he has recently started wetting the bed again. His BMI is above the 95th centile and his tonsils nearly meet in the midline. What is the most likely diagnosis?",
+  "options": [
+    {
+      "label": "A",
+      "text": "Attention-deficit hyperactivity disorder",
+      "isCorrect": false,
+      "explanation": "Inattention and irritability can suggest ADHD, but he also dozes in class, wakes unrefreshed, snores loudly and has new bedwetting. Disordered sleep can mimic ADHD and should be assessed first."
+    },
+    {
+      "label": "B",
+      "text": "Depressive disorder",
+      "isCorrect": false,
+      "explanation": "Low mood can cause poor concentration and sleep change, but loud snoring, unrefreshing sleep and large tonsils point to an airway problem."
+    },
+    {
+      "label": "C",
+      "text": "Delayed sleep phase disorder",
+      "isCorrect": false,
+      "explanation": "He falls asleep at a normal time with good habits. Delayed sleep phase causes late sleep onset, not snoring and unrefreshing sleep."
+    },
+    {
+      "label": "D",
+      "text": "Narcolepsy with cataplexy",
+      "isCorrect": false,
+      "explanation": "Narcolepsy causes irresistible daytime sleep attacks and weakness triggered by emotion. It does not explain loud snoring or large tonsils."
+    },
+    {
+      "label": "E",
+      "text": "Sleep disordered breathing",
+      "isCorrect": true,
+      "explanation": "Correct. Snoring, unrefreshing sleep, sleepiness, behaviour change and new bedwetting with obesity and large tonsils suggest obstructive SDB. Refer for a sleep study and ENT review."
+    }
+  ],
+  "context": "In children, habitual snoring with daytime sleepiness, inattention or secondary enuresis, especially with large tonsils or obesity, suggests sleep disordered breathing.",
+  "publicModule": {
+    "schemaVersion": 1,
+    "origin": "mirrored",
+    "discipline": "paeds",
+    "mirroredFrom": "md3:9a7be786b7dbaa11",
+    "itemText": {
+      "licence": "CC-BY-4.0",
+      "attribution": "MD3 contributors"
+    },
+    "evidence": {
+      "kind": "reference",
+      "sourceId": "rch-kidsinfo-fact-sheets-childhood-obstructive-sleep-apnoea-osa-62c2e3"
+    },
+    "review": {
+      "verdict": "passed",
+      "contentHash": "64a2471e0ba65a4ceb7135db2af6cac22461386b0aafcb50b07c1c2946c0bd33"
+    }
+  }
+}

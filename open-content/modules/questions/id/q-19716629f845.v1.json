@@ -1,0 +1,82 @@
+{
+  "id": "bank:cohort:id:q-19716629f845:v1",
+  "rotation": "cohort-open",
+  "moduleNodes": [
+    "cohort/id"
+  ],
+  "topics": [
+    "id"
+  ],
+  "questionType": "diagnosis",
+  "difficulty": "medium",
+  "stem": "A previously healthy 14-month-old girl has had fever to 40 °C for 3 days with a mildly runny nose. On day 2 she had a 2-minute generalised seizure during the fever. She had her MMR vaccine at 12 months. This morning she is afebrile and playful, and a pink, blanching maculopapular rash has appeared on her trunk and is spreading to her neck. She has no mouth ulcers, red eyes or cough.\n\nWhich diagnosis best fits this sequence?",
+  "options": [
+    {
+      "label": "A",
+      "text": "Hand-foot-and-mouth disease",
+      "isCorrect": false,
+      "explanation": "Hand, foot and mouth disease causes mouth ulcers and vesicles on the hands and feet."
+    },
+    {
+      "label": "B",
+      "text": "Roseola infantum",
+      "isCorrect": true,
+      "explanation": "Correct. Three to five days of high fever in a child who stays fairly well, then a pink trunk rash as the fever settles and the child brightens, is roseola (human herpesvirus 6). HHV-6 is a common cause of febrile seizures at this age. A rash that comes after the fever, not with it, separates roseola from measles and rubella."
+    },
+    {
+      "label": "C",
+      "text": "Kawasaki disease",
+      "isCorrect": false,
+      "explanation": "Kawasaki disease causes fever for 5 days or more that persists while the rash and other features appear, with red eyes and mouth changes."
+    },
+    {
+      "label": "D",
+      "text": "Rubella infection",
+      "isCorrect": false,
+      "explanation": "Rubella causes a low-grade fever at the same time as a rash that starts on the face, with post-auricular nodes."
+    },
+    {
+      "label": "E",
+      "text": "Measles infection",
+      "isCorrect": false,
+      "explanation": "Measles causes cough, coryza and conjunctivitis, and the rash starts on the face at the height of the fever. A runny nose alone does not fit, and she is vaccinated."
+    },
+    {
+      "label": "F",
+      "text": "Parvovirus B19 infection",
+      "isCorrect": false,
+      "explanation": "Parvovirus causes slapped cheeks, then a lacy rash on the limbs."
+    },
+    {
+      "label": "G",
+      "text": "Varicella infection",
+      "isCorrect": false,
+      "explanation": "Varicella causes itchy vesicles in crops."
+    },
+    {
+      "label": "H",
+      "text": "Scarlet fever",
+      "isCorrect": false,
+      "explanation": "Scarlet fever causes a sore throat and a rough rash during the fever, and is uncommon under 3."
+    }
+  ],
+  "context": "Roseola: 3–5 days of high fever, then a pink trunk rash as the fever falls and the child improves; febrile seizures are common. A rash after the fever, not with it, separates it from measles and rubella.",
+  "publicModule": {
+    "schemaVersion": 1,
+    "origin": "mirrored",
+    "discipline": "id",
+    "mirroredFrom": "md3:19716629f845a857",
+    "itemText": {
+      "licence": "CC-BY-4.0",
+      "attribution": "MD3 contributors"
+    },
+    "evidence": {
+      "kind": "reference",
+      "sourceId": "rch-kidsinfo-fact-sheets-roseola-infantum-be3b1c"
+    },
+    "review": {
+      "verdict": "passed",
+      "contentHash": "ba7cb3ce8e9ef9f628166311564be5613b9b864583dc64327f68b2034fb81abd"
+    }
+  }
+}

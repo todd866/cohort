@@ -1,0 +1,64 @@
+{
+  "id": "bank:cohort:psych:q-fe13760ead16:v1",
+  "rotation": "cohort-open",
+  "moduleNodes": [
+    "cohort/psych"
+  ],
+  "topics": [
+    "psych"
+  ],
+  "questionType": "diagnosis",
+  "difficulty": "medium",
+  "stem": "A GP reviews a woman taking oxycodone under one clinician’s supervision for persistent pain. A gradual dose increase had been needed to maintain the same effect, and missed doses cause sweating and diarrhoea. A careful review finds no loss of control, craving, hazardous use, continued use despite identified harm, or disruption of roles and relationships. She takes only the agreed doses.\n\nWhat is the most accurate conclusion from this history?",
+  "options": [
+    {
+      "label": "A",
+      "text": "Mild opioid use disorder, since tolerance and withdrawal make two criteria",
+      "isCorrect": false,
+      "explanation": "DSM-5-TR does not count tolerance or withdrawal when opioids are taken as prescribed under supervision. Without behavioural criteria, the threshold for the disorder is not met."
+    },
+    {
+      "label": "B",
+      "text": "Opioid-induced hyperalgesia, shown by her need for dose increases",
+      "isCorrect": false,
+      "explanation": "Hyperalgesia means increasing pain sensitivity, often spreading beyond the original site. Needing a higher dose for the same effect is ordinary tolerance."
+    },
+    {
+      "label": "C",
+      "text": "Physical dependence from treatment, without opioid use disorder",
+      "isCorrect": true,
+      "explanation": "Tolerance and withdrawal during supervised treatment reflect physiological adaptation. Without impaired control, craving, harm or role disruption, she has physical dependence but not opioid use disorder."
+    },
+    {
+      "label": "D",
+      "text": "Iatrogenic addiction requiring prompt oxycodone cessation",
+      "isCorrect": false,
+      "explanation": "Tolerance and withdrawal during supervised treatment are physical dependence, not addiction. Stopping oxycodone promptly would precipitate withdrawal and uncontrolled pain; any dose change should be gradual and agreed."
+    },
+    {
+      "label": "E",
+      "text": "Opioid use disorder in early remission while doses are controlled",
+      "isCorrect": false,
+      "explanation": "Remission requires that the disorder was previously present. She has never met the behavioural criteria."
+    }
+  ],
+  "context": "Tolerance and withdrawal during appropriate medical treatment do not alone establish opioid use disorder.",
+  "publicModule": {
+    "schemaVersion": 1,
+    "origin": "mirrored",
+    "discipline": "psych",
+    "mirroredFrom": "md3:fe13760ead168eec",
+    "itemText": {
+      "licence": "CC-BY-4.0",
+      "attribution": "MD3 contributors"
+    },
+    "evidence": {
+      "kind": "reference",
+      "sourceId": "nsw-health-aod-publications-nsw-clinical-guidelines-opioid-132984"
+    },
+    "review": {
+      "verdict": "passed",
+      "contentHash": "87aef6094624730aa69df734e07ed5be2f83ccf872a3fd0829f90cbeebf0e726"
+    }
+  }
+}

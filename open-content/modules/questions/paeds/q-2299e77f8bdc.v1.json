@@ -1,0 +1,64 @@
+{
+  "id": "bank:cohort:paeds:q-2299e77f8bdc:v1",
+  "rotation": "cohort-open",
+  "moduleNodes": [
+    "cohort/paeds"
+  ],
+  "topics": [
+    "paeds"
+  ],
+  "questionType": "knowledge",
+  "difficulty": "medium",
+  "stem": "A 15-year-old attends her GP with her mother because of headaches. Partway through, she asks to speak with the GP alone and says she will be honest only if what she says stays private. Her mother looks uneasy and asks whether she is allowed to stay.\n\nWhat is the best response?",
+  "options": [
+    {
+      "label": "A",
+      "text": "Keep her mother in the room, as she is under 16",
+      "isCorrect": false,
+      "explanation": "No age threshold requires a parent in the room. A 15-year-old should be offered time alone to discuss sensitive matters."
+    },
+    {
+      "label": "B",
+      "text": "Ask her mother's permission before seeing her alone",
+      "isCorrect": false,
+      "explanation": "Offering time alone is routine adolescent practice and does not need the parent's permission, although explaining the plan to the parent helps."
+    },
+    {
+      "label": "C",
+      "text": "See her alone, and promise that everything stays private",
+      "isCorrect": false,
+      "explanation": "An absolute promise is unsafe because serious risk of harm may require information to be shared to protect her."
+    },
+    {
+      "label": "D",
+      "text": "See her alone, without raising confidentiality first",
+      "isCorrect": false,
+      "explanation": "Time alone is right, but without first hearing the limits she may disclose serious risk expecting total secrecy and feel betrayed when action is needed."
+    },
+    {
+      "label": "E",
+      "text": "Explain the limits of privacy, then see her alone",
+      "isCorrect": true,
+      "explanation": "Correct. Explain to both of them that time alone is routine, then explain to her that what she says stays private unless there is a serious risk of harm, and see her alone."
+    }
+  ],
+  "context": "At the start of a private adolescent consultation, explain confidentiality and the circumstances that may require information sharing for safety. Then assess the young person directly.",
+  "publicModule": {
+    "schemaVersion": 1,
+    "origin": "mirrored",
+    "discipline": "paeds",
+    "mirroredFrom": "md3:2299e77f8bdcb404",
+    "itemText": {
+      "licence": "CC-BY-4.0",
+      "attribution": "MD3 contributors"
+    },
+    "evidence": {
+      "kind": "reference",
+      "sourceId": "rch-ide-guideline-index-engaging-with-and-assessing-the-adolescent-patient-76ba17"
+    },
+    "review": {
+      "verdict": "passed",
+      "contentHash": "8c3132476511b93d0c6dd0bbb4ebcdfb1bd30dc433dfa11263797804a2208775"
+    }
+  }
+}

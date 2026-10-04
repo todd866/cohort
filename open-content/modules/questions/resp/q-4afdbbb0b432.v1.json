@@ -1,0 +1,64 @@
+{
+  "id": "bank:cohort:resp:q-4afdbbb0b432:v1",
+  "rotation": "cohort-open",
+  "moduleNodes": [
+    "cohort/resp"
+  ],
+  "topics": [
+    "resp"
+  ],
+  "questionType": "diagnosis",
+  "difficulty": "hard",
+  "stem": "Amara, a fully immunised 4-year-old, had 2 days of runny nose and barking cough and was given dexamethasone for croup yesterday. Overnight she became much worse. She now looks toxic, with a temperature of 39.8 °C, stridor at rest and a cough bringing up thick yellow secretions. She is not drooling, talks in a hoarse voice and has a tender trachea. Nebulised adrenaline helps little.\n\nWhich diagnosis is most likely?",
+  "options": [
+    {
+      "label": "A",
+      "text": "Severe viral croup",
+      "isCorrect": false,
+      "explanation": "Croup can be severe, but children are usually systemically well and improve with nebulised adrenaline. High fever, toxicity and purulent secretions point to bacterial infection."
+    },
+    {
+      "label": "B",
+      "text": "Epiglottitis",
+      "isCorrect": false,
+      "explanation": "Epiglottitis causes drooling, a muffled voice and an absent cough, mostly in children with incomplete Hib immunisation. Amara coughs, talks and is fully immunised."
+    },
+    {
+      "label": "C",
+      "text": "Retropharyngeal abscess",
+      "isCorrect": false,
+      "explanation": "A retropharyngeal abscess causes neck pain or stiffness, dysphagia and drooling, with a swollen posterior pharyngeal wall, rather than a barking productive cough."
+    },
+    {
+      "label": "D",
+      "text": "Bacterial tracheitis",
+      "isCorrect": true,
+      "explanation": "Correct. A croup-like illness that worsens after a recent URTI, with toxicity, a tender trachea, thick secretions and little response to adrenaline, suggests bacterial tracheitis."
+    },
+    {
+      "label": "E",
+      "text": "Inhaled foreign body",
+      "isCorrect": false,
+      "explanation": "An inhaled foreign body starts suddenly with a choking episode and may give one-sided chest signs. It does not cause high fever and toxicity after a croup prodrome."
+    }
+  ],
+  "context": "Stridor with high fever, toxicity, thick secretions and a tender trachea after a croup prodrome suggests bacterial tracheitis: get urgent senior airway help and give IV antibiotics.",
+  "publicModule": {
+    "schemaVersion": 1,
+    "origin": "mirrored",
+    "discipline": "resp",
+    "mirroredFrom": "md3:4afdbbb0b4329957",
+    "itemText": {
+      "licence": "CC-BY-4.0",
+      "attribution": "MD3 contributors"
+    },
+    "evidence": {
+      "kind": "reference",
+      "sourceId": "rch-clinicalguide-guideline-index-acute-upper-airway-obstruction-569796"
+    },
+    "review": {
+      "verdict": "passed",
+      "contentHash": "f81f5d81ba3b36210a8f8c70c33403734c0249b87dee76de483c7d08afd02a1a"
+    }
+  }
+}

@@ -1,0 +1,82 @@
+{
+  "id": "bank:cohort:msk:q-48187679b45e:v1",
+  "rotation": "cohort-open",
+  "moduleNodes": [
+    "cohort/msk"
+  ],
+  "topics": [
+    "msk"
+  ],
+  "questionType": "diagnosis",
+  "difficulty": "medium",
+  "stem": "A girl of 4 had a runny nose last week. Since yesterday she has limped, and today she refuses to stand. She was given ibuprofen 2 hours ago, and her temperature is now 38.6°C. She holds the right hip flexed, abducted and externally rotated and resists any passive movement of it. White cells are 13.6 ×10⁹/L, ESR 48 mm/h and CRP 64 mg/L (<5). Ultrasound shows a right hip effusion.\n\nWhich diagnosis is most likely?",
+  "options": [
+    {
+      "label": "A",
+      "text": "Transient synovitis",
+      "isCorrect": false,
+      "explanation": "Transient synovitis often follows a viral illness and also causes an effusion, but the child is usually afebrile or mildly febrile, often bears some weight and has near-normal markers. Fever above 38.5°C despite ibuprofen, refusal to stand, an ESR over 40 and white cells over 12 together make septic arthritis far more likely."
+    },
+    {
+      "label": "B",
+      "text": "Acute osteomyelitis",
+      "isCorrect": false,
+      "explanation": "Osteomyelitis also causes fever and raised markers and can coexist with a septic hip, but a hot, immobile hip with an effusion centres her findings on the joint itself."
+    },
+    {
+      "label": "C",
+      "text": "Legg-Calvé-Perthes disease",
+      "isCorrect": false,
+      "explanation": "Perthes disease is an afebrile, gradual limp in a school-age child with normal blood tests."
+    },
+    {
+      "label": "D",
+      "text": "Slipped upper femoral epiphysis",
+      "isCorrect": false,
+      "explanation": "SUFE affects adolescents around the growth spurt; it causes neither fever nor high inflammatory markers."
+    },
+    {
+      "label": "E",
+      "text": "Septic arthritis of the hip",
+      "isCorrect": true,
+      "explanation": "Correct. Fever despite ibuprofen, refusal to bear weight, a hip held flexed, abducted and externally rotated, pain on any movement, raised ESR, white cells and CRP, and an effusion mean septic arthritis: an orthopaedic emergency. The preceding cold is the distractor."
+    },
+    {
+      "label": "F",
+      "text": "Juvenile idiopathic arthritis",
+      "isCorrect": false,
+      "explanation": "JIA needs arthritis for at least 6 weeks. Even systemic JIA, with high fevers and CRP, does not begin as one acutely painful hip overnight."
+    },
+    {
+      "label": "G",
+      "text": "Developmental dysplasia of the hip",
+      "isCorrect": false,
+      "explanation": "DDH is a developmental disorder causing a painless limp from early walking. It does not cause fever or an acutely painful hip."
+    },
+    {
+      "label": "H",
+      "text": "Toddler's fracture",
+      "isCorrect": false,
+      "explanation": "A toddler's fracture causes sudden refusal to walk after a twist, with tibial tenderness, but no fever or raised CRP."
+    }
+  ],
+  "context": "A febrile child who will not bear weight, with pain on any hip movement, raised ESR, white cells and CRP and an effusion, has septic arthritis until proved otherwise, even after a viral illness; transient synovitis is a diagnosis of exclusion.",
+  "publicModule": {
+    "schemaVersion": 1,
+    "origin": "mirrored",
+    "discipline": "msk",
+    "mirroredFrom": "md3:48187679b45e6549",
+    "itemText": {
+      "licence": "CC-BY-4.0",
+      "attribution": "MD3 contributors"
+    },
+    "evidence": {
+      "kind": "reference",
+      "sourceId": "rch-clinicalguide-guideline-index-bone-and-joint-infection-dde29f"
+    },
+    "review": {
+      "verdict": "passed",
+      "contentHash": "cd594effb3cefe3417ba9d184dc8b6e7e5adb00e6941e460f5e91ac7979f6509"
+    }
+  }
+}

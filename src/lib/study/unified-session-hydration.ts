@@ -24,6 +24,7 @@ import { filterDeliverableReinforcementCardRows } from '@/lib/usmle/reinforcemen
 import {
   ownerPrivateOrSharedCardScope,
 } from '@/lib/cards/read-repository.server';
+import { normalizeAbbreviations } from './current-session-content';
 
 type HydratableCard = {
   id: string;
@@ -31,6 +32,7 @@ type HydratableCard = {
   back: string;
   backs?: unknown;
   context?: string | null;
+  abbreviations?: unknown;
   imageUrl?: string | null;
   imageCaption?: string | null;
   /** 'prompt' = the figure IS the question; unanswerable without it. Card-only. */
@@ -59,6 +61,7 @@ type HydratableQuestion = {
   stem: string;
   options: unknown;
   context: string | null;
+  abbreviations?: unknown;
   imageUrl?: string | null;
   imageCaption?: string | null;
   imageRole?: string | null;
@@ -205,6 +208,7 @@ export async function hydrateScheduledItems(
           conceptId: item.conceptId,
           conceptName: item.conceptName,
           interventionReason: item.interventionReason,
+          struggleIntervention: item.struggleIntervention,
           firstSightAtSelection: item.firstSightAtSelection ?? false,
         };
       }
@@ -234,6 +238,7 @@ export async function hydrateScheduledItems(
           back: card.back,
           backs: (card.backs as string[] | null) ?? null,
           context: card.context ?? null,
+          abbreviations: normalizeAbbreviations(card.abbreviations),
           imageUrl: resolved?.imageUrl ?? null,
           imageCaption: card.imageCaption ?? null,
           imageRole: card.imageRole ?? null,
@@ -260,6 +265,7 @@ export async function hydrateScheduledItems(
           conceptId: item.conceptId,
           conceptName: item.conceptName,
           interventionReason: item.interventionReason,
+          struggleIntervention: item.struggleIntervention,
           signalId: item.signalId,
           predictedRecall: item.predictedRecall ?? null,
           conditioning: item.conditioning ?? null,
@@ -327,6 +333,7 @@ export async function hydrateScheduledItems(
         stem: question.stem,
         options: displayOptions as DisplayOption[],
         context: question.context ?? null,
+        abbreviations: normalizeAbbreviations(question.abbreviations),
         imageUrl: resolved?.imageUrl ?? null,
         imageCaption: question.imageCaption ?? null,
         imageRole: question.imageRole ?? null,
@@ -348,6 +355,7 @@ export async function hydrateScheduledItems(
         conceptId: item.conceptId,
         conceptName: item.conceptName,
         interventionReason: item.interventionReason,
+        struggleIntervention: item.struggleIntervention,
         signalId: item.signalId,
         predictedRecall: item.predictedRecall ?? null,
         conditioning: item.conditioning ?? null,

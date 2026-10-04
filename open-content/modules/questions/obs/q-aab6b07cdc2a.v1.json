@@ -1,0 +1,64 @@
+{
+  "id": "bank:cohort:obs:q-aab6b07cdc2a:v1",
+  "rotation": "cohort-open",
+  "moduleNodes": [
+    "cohort/obs"
+  ],
+  "topics": [
+    "obs"
+  ],
+  "questionType": "management",
+  "difficulty": "medium",
+  "stem": "A 29-year-old with type 1 diabetes wants to stop contraception this month. Her HbA1c is 94 mmol/mol (10.8%), with frequent high glucose readings but no recent severe hypoglycaemia. Renal and retinal assessments are being arranged; she has started appropriate folate and is taking no teratogenic medicine. Her GP and diabetes team discuss pregnancy planning.\n\nWhich recommendation best addresses her current risk?",
+  "options": [
+    {
+      "label": "A",
+      "text": "Try to conceive now, since folate has started and insulin can be adjusted",
+      "isCorrect": false,
+      "explanation": "Folate does not offset the congenital-anomaly and miscarriage risk of an HbA1c of 94 mmol/mol at conception; organogenesis occurs before insulin could be adjusted."
+    },
+    {
+      "label": "B",
+      "text": "Try to conceive once renal and retinal assessments are reported normal",
+      "isCorrect": false,
+      "explanation": "Normal renal and retinal assessments are important, but they do not address the glycaemic risk to the fetus."
+    },
+    {
+      "label": "C",
+      "text": "Proceed now with early specialist review and a first-trimester scan",
+      "isCorrect": false,
+      "explanation": "Early review and scans detect problems but do not reduce the anomaly risk set by glucose control at conception."
+    },
+    {
+      "label": "D",
+      "text": "Continue contraception while improving glucose control before conception",
+      "isCorrect": true,
+      "explanation": "An HbA1c this high carries a substantial anomaly risk, so effective contraception should continue while control is improved towards the pre-conception target before trying to conceive."
+    },
+    {
+      "label": "E",
+      "text": "Continue contraception until her HbA1c is below 10%, then conceive",
+      "isCorrect": false,
+      "explanation": "An HbA1c above about 10% (86 mmol/mol) is the level at which pregnancy should be avoided, not the target; conception should wait until HbA1c is as close as safely possible to 6.5% (48 mmol/mol) or below."
+    }
+  ],
+  "context": "For markedly raised HbA1c in pre-existing diabetes, improve glycaemic control before conception rather than relying on later screening to manage the risk.",
+  "publicModule": {
+    "schemaVersion": 1,
+    "origin": "mirrored",
+    "discipline": "obs",
+    "mirroredFrom": "md3:aab6b07cdc2a96cd",
+    "itemText": {
+      "licence": "CC-BY-4.0",
+      "attribution": "MD3 contributors"
+    },
+    "evidence": {
+      "kind": "reference",
+      "sourceId": "nice-guidance-ng3-chapter-recommendations-d4d14f"
+    },
+    "review": {
+      "verdict": "passed",
+      "contentHash": "8a61c8ddb173a5b14d9ac9ee98174852bbbf8bb8c730b7f8a5378983040a7cdf"
+    }
+  }
+}

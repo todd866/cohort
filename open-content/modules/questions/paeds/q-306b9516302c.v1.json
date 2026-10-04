@@ -1,0 +1,64 @@
+{
+  "id": "bank:cohort:paeds:q-306b9516302c:v1",
+  "rotation": "cohort-open",
+  "moduleNodes": [
+    "cohort/paeds"
+  ],
+  "topics": [
+    "paeds"
+  ],
+  "questionType": "mechanism",
+  "difficulty": "medium",
+  "stem": "At his 3-year-old daughter's health check, a father says he has read that fluoride only strengthens teeth while they are forming inside the gums. Now that all her baby teeth have come through, he plans to stop using fluoride toothpaste.\n\nWhat is the best advice?",
+  "options": [
+    {
+      "label": "A",
+      "text": "Keep it: on the tooth surface it slows acid loss and aids repair",
+      "isCorrect": true,
+      "explanation": "Fluoride works mainly at the surface of erupted teeth: it slows demineralisation when plaque acid attacks enamel and promotes remineralisation into more acid-resistant enamel. At her age, a pea-sized amount of low-fluoride children's toothpaste, spat out and not rinsed, is advised."
+    },
+    {
+      "label": "B",
+      "text": "Keep it: fluoride kills the plaque bacteria that cause tooth decay",
+      "isCorrect": false,
+      "explanation": "Fluoride does not sterilise the mouth. Its main effect is on the enamel's response to acid, not on killing bacteria."
+    },
+    {
+      "label": "C",
+      "text": "Keep it: fluoride neutralises dietary sugars before they ferment",
+      "isCorrect": false,
+      "explanation": "Fluoride does not neutralise sugars. Plaque bacteria still ferment sugar to acid; fluoride makes enamel resist and repair that acid damage."
+    },
+    {
+      "label": "D",
+      "text": "Stop it: fluoride benefits teeth only before they have erupted",
+      "isCorrect": false,
+      "explanation": "This is the misconception in the question. The topical effect on erupted teeth is the main benefit, so stopping now would remove most of the protection."
+    },
+    {
+      "label": "E",
+      "text": "Stop it: swallowed toothpaste at her age will cause fluorosis",
+      "isCorrect": false,
+      "explanation": "Fluorosis risk is managed by using a pea-sized amount of low-fluoride toothpaste and supervising brushing, not by stopping fluoride toothpaste altogether."
+    }
+  ],
+  "context": "Caries arise when plaque bacteria ferment sugar to acid that dissolves enamel; fluoride slows that demineralisation and promotes remineralisation into more acid-resistant enamel.",
+  "publicModule": {
+    "schemaVersion": 1,
+    "origin": "mirrored",
+    "discipline": "paeds",
+    "mirroredFrom": "md3:306b9516302c2b97",
+    "itemText": {
+      "licence": "CC-BY-4.0",
+      "attribution": "MD3 contributors"
+    },
+    "evidence": {
+      "kind": "reference",
+      "sourceId": "nhmrc-sites-default-files-documents-attachments-water-fluoridationqa-f9adae"
+    },
+    "review": {
+      "verdict": "passed",
+      "contentHash": "5557fb70594a398fede51f1570527ad42bfbadc4d5d5c6ce2f3955842f9f5a3a"
+    }
+  }
+}

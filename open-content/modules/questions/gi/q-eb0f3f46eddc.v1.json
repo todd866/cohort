@@ -1,0 +1,64 @@
+{
+  "id": "bank:cohort:gi:q-eb0f3f46eddc:v1",
+  "rotation": "cohort-open",
+  "moduleNodes": [
+    "cohort/gi"
+  ],
+  "topics": [
+    "gi"
+  ],
+  "questionType": "diagnosis",
+  "difficulty": "medium",
+  "stem": "A 3-year-old girl has had hard, painful bowel motions every 4 to 5 days since toilet training began 8 months ago. When she needs to go, she hides behind the couch and crosses her legs. She was born at term, passed meconium within 24 hours and is growing along the 50th centile. Which additional finding would most strongly suggest an organic cause for her symptoms?",
+  "options": [
+    {
+      "label": "A",
+      "text": "Faecal mass palpable in the left iliac fossa",
+      "isCorrect": false,
+      "explanation": "Retained stool is often palpable in functional constipation. A faecal mass is not a red flag; an abdominal mass that does not feel like faeces would be."
+    },
+    {
+      "label": "B",
+      "text": "Streaks of fresh blood on the toilet paper",
+      "isCorrect": false,
+      "explanation": "Fresh blood streaking the paper usually comes from an anal fissure caused by passing hard stool, which is a consequence of functional constipation."
+    },
+    {
+      "label": "C",
+      "text": "Reduced ankle jerks and a sacral hair tuft",
+      "isCorrect": true,
+      "explanation": "Correct. Abnormal lower-limb neurology with a sacral hair tuft suggests occult spinal dysraphism or tethered cord, an organic cause that needs spinal imaging and referral."
+    },
+    {
+      "label": "D",
+      "text": "Soiling of loose stool into her underwear",
+      "isCorrect": false,
+      "explanation": "Loose soiling is overflow around an impacted rectum. It is typical of chronic functional constipation and responds to disimpaction and maintenance laxatives."
+    },
+    {
+      "label": "E",
+      "text": "Symptoms that began with toilet training",
+      "isCorrect": false,
+      "explanation": "Onset around toilet training with withholding posture is the classic functional story. Symptoms from birth or the first weeks of life are the red flag."
+    }
+  ],
+  "context": "In childhood constipation, abnormal lower-limb neurology or a sacral dimple or hair tuft is a red flag for spinal dysraphism; withholding, overflow soiling and fissures are functional.",
+  "publicModule": {
+    "schemaVersion": 1,
+    "origin": "mirrored",
+    "discipline": "gi",
+    "mirroredFrom": "md3:eb0f3f46eddca773",
+    "itemText": {
+      "licence": "CC-BY-4.0",
+      "attribution": "MD3 contributors"
+    },
+    "evidence": {
+      "kind": "reference",
+      "sourceId": "nice-guidance-cg99-chapter-recommendations-5191c5"
+    },
+    "review": {
+      "verdict": "passed",
+      "contentHash": "31ee5e8b4589b126886423e7cb6cd98e8788b0345a7f80b5cc84f828a73bfa2d"
+    }
+  }
+}

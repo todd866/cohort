@@ -1,0 +1,64 @@
+{
+  "id": "bank:cohort:neuro:q-cee55aea8ef5:v1",
+  "rotation": "cohort-open",
+  "moduleNodes": [
+    "cohort/neuro"
+  ],
+  "topics": [
+    "neuro"
+  ],
+  "questionType": "diagnosis",
+  "difficulty": "hard",
+  "stem": "A 20-year-old university student has a headache that built up over about eight hours. A GP started oral amoxicillin yesterday for presumed sinusitis. His temperature is 38.2°C, he has photophobia and marked neck stiffness, and over the last hour he has become drowsy and unsure of the day, with GCS 13 and no focal deficit. He has had no seizure, his behaviour was normal until today, and there is no rash.\n\nWhich diagnosis should lead the emergency assessment?",
+  "options": [
+    {
+      "label": "A",
+      "text": "Subarachnoid haemorrhage",
+      "isCorrect": false,
+      "explanation": "Severe headache with neck stiffness raises subarachnoid haemorrhage, but its onset is sudden, peaking within seconds to minutes, not building over eight hours, and fever from the start points to infection."
+    },
+    {
+      "label": "B",
+      "text": "Acute bacterial meningitis",
+      "isCorrect": true,
+      "explanation": "Headache developing over hours, fever, photophobia, marked neck stiffness and a falling conscious level are bacterial meningitis until proved otherwise. Oral antibiotics can lower the fever and blunt test results but do not exclude it, and sinusitis can be the source. He needs blood cultures and immediate IV antibiotics."
+    },
+    {
+      "label": "C",
+      "text": "Herpes simplex encephalitis",
+      "isCorrect": false,
+      "explanation": "Encephalitis causes fever and altered consciousness, but typically with behavioural change, seizures or focal signs; marked neck stiffness points more to meningeal inflammation."
+    },
+    {
+      "label": "D",
+      "text": "Viral meningitis",
+      "isCorrect": false,
+      "explanation": "Viral meningitis is commoner and also causes headache, fever and neck stiffness, but it rarely reduces the conscious level. A modest fever after oral antibiotics does not make this viral; treat as bacterial until proved otherwise."
+    },
+    {
+      "label": "E",
+      "text": "Cerebral venous sinus thrombosis",
+      "isCorrect": false,
+      "explanation": "Sinusitis can lead to venous sinus thrombosis, which causes progressive headache and drowsiness, but marked meningism with fever fits meningitis better; venous imaging is considered if the course is atypical."
+    }
+  ],
+  "context": "Fever, headache developing over hours, neck stiffness and a falling conscious level are bacterial meningitis until proved otherwise, even after oral antibiotics have lowered the fever.",
+  "publicModule": {
+    "schemaVersion": 1,
+    "origin": "mirrored",
+    "discipline": "neuro",
+    "mirroredFrom": "md3:cee55aea8ef50828",
+    "itemText": {
+      "licence": "CC-BY-4.0",
+      "attribution": "MD3 contributors"
+    },
+    "evidence": {
+      "kind": "reference",
+      "sourceId": "nice-guidance-ng240-chapter-recommendations-dfa9b3"
+    },
+    "review": {
+      "verdict": "passed",
+      "contentHash": "d1956b5bc71f21d1f99fa5a9026ee44e73a6ee214a0c451fda531b7c9f72a2c6"
+    }
+  }
+}

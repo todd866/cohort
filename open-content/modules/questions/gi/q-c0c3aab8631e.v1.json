@@ -1,0 +1,64 @@
+{
+  "id": "bank:cohort:gi:q-c0c3aab8631e:v1",
+  "rotation": "cohort-open",
+  "moduleNodes": [
+    "cohort/gi"
+  ],
+  "topics": [
+    "gi"
+  ],
+  "questionType": "investigation",
+  "difficulty": "medium",
+  "stem": "A 14-year-old boy with asthma and allergic rhinitis presented overnight after a piece of steak stuck in his lower chest; it passed after 2 hours. For 18 months he has eaten slowly, chewed carefully and drunk water with each mouthful. He has no heartburn, weight loss or vomiting of blood, and his examination is normal. His GP refers him to the paediatric gastroenterology clinic.\n\nWhich investigation is most likely to establish the diagnosis?",
+  "options": [
+    {
+      "label": "A",
+      "text": "Barium swallow to look for a stricture",
+      "isCorrect": false,
+      "explanation": "A barium swallow may show rings or a stricture, but it cannot show the eosinophilic inflammation that defines the condition."
+    },
+    {
+      "label": "B",
+      "text": "Skin prick testing to common foods",
+      "isCorrect": false,
+      "explanation": "Skin prick tests identify sensitisation, not the cause of oesophageal inflammation, and are poor at guiding diagnosis."
+    },
+    {
+      "label": "C",
+      "text": "An 8-week proton pump inhibitor trial",
+      "isCorrect": false,
+      "explanation": "A PPI is one treatment for eosinophilic oesophagitis. A response does not prove reflux or exclude eosinophilic oesophagitis, so a trial does not establish the diagnosis."
+    },
+    {
+      "label": "D",
+      "text": "24-hour pH monitoring for acid reflux",
+      "isCorrect": false,
+      "explanation": "pH monitoring assesses acid reflux. His dysphagia and food impaction without heartburn point to eosinophilic oesophagitis, which pH testing cannot diagnose."
+    },
+    {
+      "label": "E",
+      "text": "Gastroscopy with oesophageal biopsies",
+      "isCorrect": true,
+      "explanation": "Correct. Eosinophilic oesophagitis is diagnosed on biopsy (at least 15 eosinophils per high-power field), taking multiple biopsies from more than one level of the oesophagus because inflammation is patchy."
+    }
+  ],
+  "context": "An atopic child or adolescent with dysphagia, adaptive eating habits or food bolus impaction may have eosinophilic oesophagitis; the diagnosis needs endoscopy with multiple oesophageal biopsies.",
+  "publicModule": {
+    "schemaVersion": 1,
+    "origin": "mirrored",
+    "discipline": "gi",
+    "mirroredFrom": "md3:c0c3aab8631ea950",
+    "itemText": {
+      "licence": "CC-BY-4.0",
+      "attribution": "MD3 contributors"
+    },
+    "evidence": {
+      "kind": "reference",
+      "sourceId": "ascia-patients-food-other-adverse-reactions-eosinophilic-oesophagitis-acef23"
+    },
+    "review": {
+      "verdict": "passed",
+      "contentHash": "ef3032649555f76fcf8ba3e39d9aa017588a958fea89dc2db66ec933a28909a6"
+    }
+  }
+}

@@ -1,0 +1,64 @@
+{
+  "id": "bank:cohort:psych:q-fdfcea354197:v1",
+  "rotation": "cohort-open",
+  "moduleNodes": [
+    "cohort/psych"
+  ],
+  "topics": [
+    "psych"
+  ],
+  "questionType": "management",
+  "difficulty": "hard",
+  "stem": "A doctor in a NSW outpatient clinic discusses a non-urgent procedure with a 67-year-old woman whose first language is Vietnamese. She chats in simple English about her grandchildren, but when the procedure is explained she nods and gives short, inconsistent answers. Her daughter, a registered nurse who speaks both languages and has interpreted at earlier visits, says her mother has become forgetful this year and offers to interpret now, as the clinic interpreter will take 30 minutes to arrive and the clinic is running late.\n\nWhat should the doctor do before judging her capacity for this decision?",
+  "options": [
+    {
+      "label": "A",
+      "text": "Let the daughter interpret, given her clinical training",
+      "isCorrect": false,
+      "explanation": "Family members should not interpret for consent, even with clinical training or past experience. They may filter or answer for the person, and this daughter already has a view about her mother's memory."
+    },
+    {
+      "label": "B",
+      "text": "Arrange a professional interpreter for the discussion",
+      "isCorrect": true,
+      "explanation": "NSW Health policy requires a professional health care interpreter for consent and other significant discussions. Capacity can only be judged once the information has been given in a form she can understand, and a short wait is reasonable for a non-urgent procedure."
+    },
+    {
+      "label": "C",
+      "text": "Continue in English, as she manages everyday conversation",
+      "isCorrect": false,
+      "explanation": "Conversational English does not mean she can understand a technical explanation of risks and benefits. Inconsistent answers here are expected from a language barrier."
+    },
+    {
+      "label": "D",
+      "text": "Do a cognitive screen in English before going further",
+      "isCorrect": false,
+      "explanation": "A cognitive screen in her second language would underestimate her cognition and could wrongly suggest impairment. If concern about memory remains, assess it with the interpreter, using a tool designed for culturally diverse patients such as the RUDAS."
+    },
+    {
+      "label": "E",
+      "text": "Ask the daughter to consent as the person responsible",
+      "isCorrect": false,
+      "explanation": "The person responsible decides only when the patient lacks capacity. Reported forgetfulness does not establish that, and capacity has not been assessed fairly."
+    }
+  ],
+  "context": "Provide a professional interpreter before concluding that a person lacks capacity. Family members, even bilingual clinicians, should not interpret for consent, and a memory concern is assessed through the interpreter, not in the patient's second language.",
+  "publicModule": {
+    "schemaVersion": 1,
+    "origin": "mirrored",
+    "discipline": "psych",
+    "mirroredFrom": "md3:fdfcea354197b318",
+    "itemText": {
+      "licence": "CC-BY-4.0",
+      "attribution": "MD3 contributors"
+    },
+    "evidence": {
+      "kind": "reference",
+      "sourceId": "nsw-health-pds-activepdsdocuments-pd2017-044-d38dd7"
+    },
+    "review": {
+      "verdict": "passed",
+      "contentHash": "b81b1121577f7b0f6c5b1e75d1961c030973eb273cd0fe87c6f71225128d409b"
+    }
+  }
+}

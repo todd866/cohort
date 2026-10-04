@@ -1,0 +1,64 @@
+{
+  "id": "bank:cohort:ophth:q-46956acc086f:v1",
+  "rotation": "cohort-open",
+  "moduleNodes": [
+    "cohort/ophth"
+  ],
+  "topics": [
+    "ophth"
+  ],
+  "questionType": "management",
+  "difficulty": "hard",
+  "stem": "A 12-day-old girl has a red left eye with watery discharge and a cluster of vesicles on the left upper eyelid, and has been feeding less well for a day. Fluorescein shows a branching corneal epithelial lesion. She is afebrile and alert. Her mother had painful genital ulcers in the week before a vaginal delivery. The emergency registrar notes that the eye and eyelid are the only obvious sites of disease.\n\nWhat is the most appropriate next step?",
+  "options": [
+    {
+      "label": "A",
+      "text": "Topical aciclovir and urgent ophthalmology review tomorrow",
+      "isCorrect": false,
+      "explanation": "Topical antiviral treats the cornea but not virus elsewhere; neonatal eye disease can be the first sign of disseminated or CNS infection."
+    },
+    {
+      "label": "B",
+      "text": "Oral aciclovir at home, since the disease is limited to the eye",
+      "isCorrect": false,
+      "explanation": "Oral aciclovir is not adequate treatment for neonatal HSV, and apparently localised disease may already involve other organs."
+    },
+    {
+      "label": "C",
+      "text": "Swab for culture, start topical chloramphenicol, review in 24 hours",
+      "isCorrect": false,
+      "explanation": "The vesicles, branching corneal lesion and maternal history point to HSV, not bacterial conjunctivitis; waiting a day risks progression."
+    },
+    {
+      "label": "D",
+      "text": "IV aciclovir and urgent ophthalmology, deferring LP as she is alert",
+      "isCorrect": false,
+      "explanation": "Being alert does not exclude CNS infection. The CSF result decides the length of treatment, so the LP should be done."
+    },
+    {
+      "label": "E",
+      "text": "IV aciclovir, LP with CSF HSV PCR, and urgent ophthalmology",
+      "isCorrect": true,
+      "explanation": "Correct. Neonatal HSV of the skin, eye or mouth needs admission, IV aciclovir and a full work-up including CSF and blood HSV PCR, because CNS or disseminated infection may be present in a well-looking baby; ophthalmology manages the keratitis."
+    }
+  ],
+  "context": "Suspected neonatal HSV eye disease needs admission and prompt IV aciclovir, a neonatal infection/HSV work-up and urgent ophthalmology input because ocular disease may accompany systemic or CNS infection.",
+  "publicModule": {
+    "schemaVersion": 1,
+    "origin": "mirrored",
+    "discipline": "ophth",
+    "mirroredFrom": "md3:46956acc086f1dff",
+    "itemText": {
+      "licence": "CC-BY-4.0",
+      "attribution": "MD3 contributors"
+    },
+    "evidence": {
+      "kind": "reference",
+      "sourceId": "rch-clinicalguide-guideline-index-acute-red-eye-a79a06"
+    },
+    "review": {
+      "verdict": "passed",
+      "contentHash": "278a80e00fc3dcc3367165f4feb114e147f746ffb1e9d756f04f0f6a956b522b"
+    }
+  }
+}

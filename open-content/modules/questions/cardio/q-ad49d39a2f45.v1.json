@@ -1,0 +1,82 @@
+{
+  "id": "bank:cohort:cardio:q-ad49d39a2f45:v1",
+  "rotation": "cohort-open",
+  "moduleNodes": [
+    "cohort/cardio"
+  ],
+  "topics": [
+    "cardio"
+  ],
+  "questionType": "diagnosis",
+  "difficulty": "medium",
+  "stem": "A term newborn becomes deeply cyanosed within the first hour. Oxygen produces little improvement, despite minimal respiratory distress. There is a single loud second heart sound and no prominent murmur. A chest radiograph shows a narrow mediastinum and normal to mildly increased pulmonary vascular markings.\n\nWhich cardiac lesion best explains this combination?",
+  "options": [
+    {
+      "label": "A",
+      "text": "Total anomalous pulmonary venous connection",
+      "isCorrect": false,
+      "explanation": "Obstructed anomalous pulmonary venous drainage usually causes marked respiratory distress and pulmonary oedema. This relatively quiet chest with a narrow mediastinum better supports transposition."
+    },
+    {
+      "label": "B",
+      "text": "Transposition of the great arteries",
+      "isCorrect": true,
+      "explanation": "Correct. Profound early cyanosis with limited respiratory distress, a single S2 and a narrow mediastinum supports transposition. The circuits run in parallel, so oxygenated blood must mix into the systemic circuit."
+    },
+    {
+      "label": "C",
+      "text": "Persistent truncus arteriosus",
+      "isCorrect": false,
+      "explanation": "Truncus usually has a common outflow with substantial mixing and a murmur; the pattern here is more characteristic of transposition."
+    },
+    {
+      "label": "D",
+      "text": "Ventricular septal defect",
+      "isCorrect": false,
+      "explanation": "An isolated VSD does not cause profound cyanosis in the first hour; a left-to-right shunt usually becomes prominent after pulmonary resistance falls."
+    },
+    {
+      "label": "E",
+      "text": "Tetralogy of Fallot",
+      "isCorrect": false,
+      "explanation": "Tetralogy typically reduces pulmonary blood flow. Preserved pulmonary markings and a narrow mediastinum favour transposition in this neonate."
+    },
+    {
+      "label": "F",
+      "text": "Atrial septal defect",
+      "isCorrect": false,
+      "explanation": "An isolated ASD does not explain severe early cyanosis, although an atrial communication can provide essential mixing in transposition."
+    },
+    {
+      "label": "G",
+      "text": "Patent ductus arteriosus",
+      "isCorrect": false,
+      "explanation": "A ductus may provide mixing in transposition, but an isolated PDA is not the cause of this profoundly cyanotic presentation."
+    },
+    {
+      "label": "H",
+      "text": "Coarctation of the aorta",
+      "isCorrect": false,
+      "explanation": "Critical coarctation usually presents with systemic hypoperfusion as the duct closes rather than this pattern of early cyanosis with preserved pulmonary blood flow."
+    }
+  ],
+  "context": "Transposition produces parallel circulations. The severity of early cyanosis depends partly on the ability of blood to mix between them.",
+  "publicModule": {
+    "schemaVersion": 1,
+    "origin": "mirrored",
+    "discipline": "cardio",
+    "mirroredFrom": "md3:ad49d39a2f45fe75",
+    "itemText": {
+      "licence": "CC-BY-4.0",
+      "attribution": "MD3 contributors"
+    },
+    "evidence": {
+      "kind": "reference",
+      "sourceId": "rch-cardiology-heart-defects-transposition-of-the-great-arteries-42a979"
+    },
+    "review": {
+      "verdict": "passed",
+      "contentHash": "bc79f649b260580fa8f61efa45666cabfbc3893d4d9f95970dad346b0d7d2589"
+    }
+  }
+}

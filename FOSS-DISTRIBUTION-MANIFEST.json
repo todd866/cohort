@@ -1,10 +1,10 @@
 {
   "schemaVersion": 1,
   "boundaryPolicy": "foss/distribution-policy.json",
-  "boundaryPolicySha256": "eb031b2516b2b308215c22d3efbe210e4e5d218a447c1b061e8dce11aa7fb13e",
-  "reviewedPathsSha256": "6c5ff16d7208d932ecb39bec4d52ac35161181bc405526d1c53d6417cf42149b",
-  "fileCount": 2151,
-  "totalBytes": 253551512,
+  "boundaryPolicySha256": "4adcea0397290e4667c275eda0de9c0dcac2b2eb81fc9babf4bd9e5de23e824c",
+  "reviewedPathsSha256": "de78ec45a15ca4491a1255280d0748c48820c7b5b91276057f7472253607c590",
+  "fileCount": 2612,
+  "totalBytes": 257117906,
   "files": [
     {
       "path": ".env.example",
@@ -120,15 +120,15 @@
     },
     {
       "path": "foss/distribution-paths.txt",
-      "bytes": 118638,
-      "sha256": "6c5ff16d7208d932ecb39bec4d52ac35161181bc405526d1c53d6417cf42149b",
+      "bytes": 143734,
+      "sha256": "de78ec45a15ca4491a1255280d0748c48820c7b5b91276057f7472253607c590",
       "mode": "0644",
       "licence": "MIT"
     },
     {
       "path": "foss/distribution-policy.json",
-      "bytes": 341862,
-      "sha256": "eb031b2516b2b308215c22d3efbe210e4e5d218a447c1b061e8dce11aa7fb13e",
+      "bytes": 343143,
+      "sha256": "4adcea0397290e4667c275eda0de9c0dcac2b2eb81fc9babf4bd9e5de23e824c",
       "mode": "0644",
       "licence": "MIT"
     },
@@ -155,8 +155,8 @@
     },
     {
       "path": "next.config.ts",
-      "bytes": 3265,
-      "sha256": "8e65f6d1957bc2f0cdff61fe6cfcc0ab253a4e1c5a2d27d44ed3b17312122696",
+      "bytes": 3431,
+      "sha256": "f23ce90dd3250efd79f049116626ed986277e259292c8647fabecf6d3c6f52aa",
       "mode": "0644",
       "licence": "MIT"
     },
@@ -2779,6 +2779,559 @@
       "licence": "MIT"
     },
     {
+      "path": "open-content/modules/cards-release-v1.json",
+      "bytes": 264068,
+      "sha256": "dab77d071e99033a80134ca0a6671f833f3d28c9e122204e2f6ecf53fedd21a5",
+      "mode": "0644",
+      "licence": "CC-BY-4.0"
+    },
+    {
+      "path": "open-content/modules/cards/icu/0.json",
+      "bytes": 24728,
+      "sha256": "871b080e7270eb7b119490351a302f714eac4982bed381b38769e8323abff1d2",
+      "mode": "0644",
+      "licence": "CC-BY-4.0"
+    },
+    {
+      "path": "open-content/modules/cards/icu/1.json",
+      "bytes": 31080,
+      "sha256": "30548ba9caa1ad53d82cff1878f086849878acaf82658f6ca31d8e84fc44f5c4",
+      "mode": "0644",
+      "licence": "CC-BY-4.0"
+    },
+    {
+      "path": "open-content/modules/cards/icu/2.json",
+      "bytes": 24464,
+      "sha256": "78d727c88489f51382e4d952f62d1afa6f2434f99b010e830b06de60823781fe",
+      "mode": "0644",
+      "licence": "CC-BY-4.0"
+    },
+    {
+      "path": "open-content/modules/cards/icu/3.json",
+      "bytes": 20584,
+      "sha256": "e5e1077889042f41d4032387108176f43b0394f3fbbcefdf316859799506b9dc",
+      "mode": "0644",
+      "licence": "CC-BY-4.0"
+    },
+    {
+      "path": "open-content/modules/cards/icu/4.json",
+      "bytes": 21340,
+      "sha256": "50b40af5d29cc3523433c94154026935238bd6ac3db74bc033d46ecbbb155d0b",
+      "mode": "0644",
+      "licence": "CC-BY-4.0"
+    },
+    {
+      "path": "open-content/modules/cards/icu/5.json",
+      "bytes": 19746,
+      "sha256": "300168f7f862696fc388d6c3494df4b9685bae0f9de05545fc9edd2db831378a",
+      "mode": "0644",
+      "licence": "CC-BY-4.0"
+    },
+    {
+      "path": "open-content/modules/cards/icu/6.json",
+      "bytes": 26530,
+      "sha256": "832cd4a8bf4fddf97dd759b14aa86a1dea3f998c311bc91356886db19576c865",
+      "mode": "0644",
+      "licence": "CC-BY-4.0"
+    },
+    {
+      "path": "open-content/modules/cards/icu/7.json",
+      "bytes": 23594,
+      "sha256": "7b8d9b83b8f7964713f814355aa3d918a97072cef858cad8b9f588df21e5fe36",
+      "mode": "0644",
+      "licence": "CC-BY-4.0"
+    },
+    {
+      "path": "open-content/modules/cards/icu/8.json",
+      "bytes": 18998,
+      "sha256": "9adfbf5f46a04895345e18d64b72f029a60bd2818298d7e9be22154f1edf76d4",
+      "mode": "0644",
+      "licence": "CC-BY-4.0"
+    },
+    {
+      "path": "open-content/modules/cards/icu/9.json",
+      "bytes": 28201,
+      "sha256": "0a5abaa99a71e1135114b0011412ec0319726dd4fc6886e9bd53a494e125816c",
+      "mode": "0644",
+      "licence": "CC-BY-4.0"
+    },
+    {
+      "path": "open-content/modules/cards/icu/a.json",
+      "bytes": 22225,
+      "sha256": "1f7a8f1c81a09982635033b956684b220b89c267d5f533d31d21d846d1d78e91",
+      "mode": "0644",
+      "licence": "CC-BY-4.0"
+    },
+    {
+      "path": "open-content/modules/cards/icu/b.json",
+      "bytes": 21202,
+      "sha256": "74bbe7291666155e1e74e119b997bd50f0856b052c8054b4adda247723554153",
+      "mode": "0644",
+      "licence": "CC-BY-4.0"
+    },
+    {
+      "path": "open-content/modules/cards/icu/c.json",
+      "bytes": 34388,
+      "sha256": "30e53774b35e8706abffb84d65e13d2132b4b245284f5d92e05bcbf1ae71d33c",
+      "mode": "0644",
+      "licence": "CC-BY-4.0"
+    },
+    {
+      "path": "open-content/modules/cards/icu/d.json",
+      "bytes": 17725,
+      "sha256": "2b4c9a1463b113e9c21047a114bc32e199ce0c88a90473165b6337d33a71d2db",
+      "mode": "0644",
+      "licence": "CC-BY-4.0"
+    },
+    {
+      "path": "open-content/modules/cards/icu/e.json",
+      "bytes": 23207,
+      "sha256": "9de6408b36b39575283ebeda4b3122bb3de7db8beda4a252de6012942d1b26d8",
+      "mode": "0644",
+      "licence": "CC-BY-4.0"
+    },
+    {
+      "path": "open-content/modules/cards/icu/f.json",
+      "bytes": 33056,
+      "sha256": "956777f0dab4ff4cff1c8e082df5c99bf154681df98901d5c1ad921ed5223f3c",
+      "mode": "0644",
+      "licence": "CC-BY-4.0"
+    },
+    {
+      "path": "open-content/modules/cards/obs/0.json",
+      "bytes": 15208,
+      "sha256": "8733d0cd64f0e1fd14cac4a1f7f72beffc87810088638859e8f48c85e07ddd6a",
+      "mode": "0644",
+      "licence": "CC-BY-4.0"
+    },
+    {
+      "path": "open-content/modules/cards/obs/1.json",
+      "bytes": 17717,
+      "sha256": "3b594b190722b4b7e4e5d4c7ae9b7e00179ad65bdee851b3f19d6e5aa180ac68",
+      "mode": "0644",
+      "licence": "CC-BY-4.0"
+    },
+    {
+      "path": "open-content/modules/cards/obs/2.json",
+      "bytes": 15750,
+      "sha256": "e59452a07cd65993f2545881a015375b8652b23f92cc570fcaaabb3c5c120cd3",
+      "mode": "0644",
+      "licence": "CC-BY-4.0"
+    },
+    {
+      "path": "open-content/modules/cards/obs/3.json",
+      "bytes": 24074,
+      "sha256": "4f9c5b08bb30aeb6bad0b97956651f885ac3c939e066ee078a0c83c134f28f7d",
+      "mode": "0644",
+      "licence": "CC-BY-4.0"
+    },
+    {
+      "path": "open-content/modules/cards/obs/4.json",
+      "bytes": 16814,
+      "sha256": "d5b75c250c3eb756fdb5cd777c2678e03eb1ac11be85a79d07d6500ae1e1dec4",
+      "mode": "0644",
+      "licence": "CC-BY-4.0"
+    },
+    {
+      "path": "open-content/modules/cards/obs/5.json",
+      "bytes": 21617,
+      "sha256": "891082216c264958ea9861c32e4028dc05691089e1141bbf15d6f14a554f46e3",
+      "mode": "0644",
+      "licence": "CC-BY-4.0"
+    },
+    {
+      "path": "open-content/modules/cards/obs/6.json",
+      "bytes": 29283,
+      "sha256": "5aa1ad0750c7383e97754dc06353247083d574a4b6532ce467211a2df10e045c",
+      "mode": "0644",
+      "licence": "CC-BY-4.0"
+    },
+    {
+      "path": "open-content/modules/cards/obs/7.json",
+      "bytes": 20442,
+      "sha256": "3a7dec2fc19cf6b11ff8fb6fe879cbcf8d5932395f649de7fe79a743c644f2ae",
+      "mode": "0644",
+      "licence": "CC-BY-4.0"
+    },
+    {
+      "path": "open-content/modules/cards/obs/8.json",
+      "bytes": 17633,
+      "sha256": "f2a6a91ae9e45b334273060862665457f011ce6d1725fc418fcd1f919458da76",
+      "mode": "0644",
+      "licence": "CC-BY-4.0"
+    },
+    {
+      "path": "open-content/modules/cards/obs/9.json",
+      "bytes": 17458,
+      "sha256": "85658b18319fe9bd95000fe4d775458bf930dc593c6a26d70942aa3e7fb56bdc",
+      "mode": "0644",
+      "licence": "CC-BY-4.0"
+    },
+    {
+      "path": "open-content/modules/cards/obs/a.json",
+      "bytes": 19078,
+      "sha256": "6c912c854f682298b83ba2484429f375911c73fee4919df115b56dbeb0251cdd",
+      "mode": "0644",
+      "licence": "CC-BY-4.0"
+    },
+    {
+      "path": "open-content/modules/cards/obs/b.json",
+      "bytes": 18762,
+      "sha256": "dd1e1032d7521bd9252449de5d6a493fbe671a4911da2ffd47c058a1c188cde5",
+      "mode": "0644",
+      "licence": "CC-BY-4.0"
+    },
+    {
+      "path": "open-content/modules/cards/obs/c.json",
+      "bytes": 14554,
+      "sha256": "48e201c342424c150bf2289a205b121bdb2001ead510e6e56a170a21aa97ddd4",
+      "mode": "0644",
+      "licence": "CC-BY-4.0"
+    },
+    {
+      "path": "open-content/modules/cards/obs/d.json",
+      "bytes": 23204,
+      "sha256": "334011b44304eca218ff6cbdfe4af6f5ae34f4396224c8b7cabf409b11fe67b6",
+      "mode": "0644",
+      "licence": "CC-BY-4.0"
+    },
+    {
+      "path": "open-content/modules/cards/obs/e.json",
+      "bytes": 16909,
+      "sha256": "873b2db8c3f09ab8ea3e6865c839f7cc2518efccbfd9dc878e0a43398fa7832b",
+      "mode": "0644",
+      "licence": "CC-BY-4.0"
+    },
+    {
+      "path": "open-content/modules/cards/obs/f.json",
+      "bytes": 20994,
+      "sha256": "27e0002a29043dbd9facf661a97351bb15149b0f355383081ec6cdcebc8b780d",
+      "mode": "0644",
+      "licence": "CC-BY-4.0"
+    },
+    {
+      "path": "open-content/modules/cards/paeds/0.json",
+      "bytes": 54530,
+      "sha256": "484341776e0b7e22b642f498c6b570421273a6317f91876251e2fc1942938708",
+      "mode": "0644",
+      "licence": "CC-BY-4.0"
+    },
+    {
+      "path": "open-content/modules/cards/paeds/1.json",
+      "bytes": 75612,
+      "sha256": "82e66bb6c0c20adad3183b5fd603b74dde9bbcda91541933cedb57397d0f3bf8",
+      "mode": "0644",
+      "licence": "CC-BY-4.0"
+    },
+    {
+      "path": "open-content/modules/cards/paeds/2.json",
+      "bytes": 59848,
+      "sha256": "796994635617a82f7cc9be305b4fe44a178a43d0e54204afeb365afd805b195a",
+      "mode": "0644",
+      "licence": "CC-BY-4.0"
+    },
+    {
+      "path": "open-content/modules/cards/paeds/3.json",
+      "bytes": 53103,
+      "sha256": "4a84e9fa9a8943fe1cfdcac340c127e14b136d90892eaaaea2c4efea2293a1a6",
+      "mode": "0644",
+      "licence": "CC-BY-4.0"
+    },
+    {
+      "path": "open-content/modules/cards/paeds/4.json",
+      "bytes": 68964,
+      "sha256": "1388cfe663024fca0995172731051286e7c6d37771f6bf36edbde7e8cc14698f",
+      "mode": "0644",
+      "licence": "CC-BY-4.0"
+    },
+    {
+      "path": "open-content/modules/cards/paeds/5.json",
+      "bytes": 54170,
+      "sha256": "dc1471ba6e59ea12b0572601292b2c837581f76dda023283267306733ee70db1",
+      "mode": "0644",
+      "licence": "CC-BY-4.0"
+    },
+    {
+      "path": "open-content/modules/cards/paeds/6.json",
+      "bytes": 46933,
+      "sha256": "4ac0c10b138295832fc9851970bf9e48cd583c193b044eefd8cecb673d73ec26",
+      "mode": "0644",
+      "licence": "CC-BY-4.0"
+    },
+    {
+      "path": "open-content/modules/cards/paeds/7.json",
+      "bytes": 55651,
+      "sha256": "359499a804a1b15b0e622d3c5a3e1ca92642e670f2b32a0f514e4d2aa34b0bf7",
+      "mode": "0644",
+      "licence": "CC-BY-4.0"
+    },
+    {
+      "path": "open-content/modules/cards/paeds/8.json",
+      "bytes": 48937,
+      "sha256": "0ba4bb56b70c4a147c08134d71719eb6089f4c15250fa63b92d9fbf03c3872c4",
+      "mode": "0644",
+      "licence": "CC-BY-4.0"
+    },
+    {
+      "path": "open-content/modules/cards/paeds/9.json",
+      "bytes": 61731,
+      "sha256": "90836c9a8ee272bb4ff3a4aa7d263ba8264a0e8359fd6c450d8a8e91031111f3",
+      "mode": "0644",
+      "licence": "CC-BY-4.0"
+    },
+    {
+      "path": "open-content/modules/cards/paeds/a.json",
+      "bytes": 53783,
+      "sha256": "bc2361ea042c7715ce29288d00bd07dcaaeeb8936435723aec7d0cc36210d3e2",
+      "mode": "0644",
+      "licence": "CC-BY-4.0"
+    },
+    {
+      "path": "open-content/modules/cards/paeds/b.json",
+      "bytes": 54426,
+      "sha256": "aff7e5671b2546b9944dd7fd88291bcf03a7bbc495ec85ff3a7c95264e875d68",
+      "mode": "0644",
+      "licence": "CC-BY-4.0"
+    },
+    {
+      "path": "open-content/modules/cards/paeds/c.json",
+      "bytes": 46033,
+      "sha256": "f3acaf78f10e6fdb3ed954349c083ba0a5f559e01c06f071c0eb8a58daeab4dd",
+      "mode": "0644",
+      "licence": "CC-BY-4.0"
+    },
+    {
+      "path": "open-content/modules/cards/paeds/d.json",
+      "bytes": 40989,
+      "sha256": "8cadea6579923022c9692ca073a901804d77ee3fad640be7ec8cd63792b4a465",
+      "mode": "0644",
+      "licence": "CC-BY-4.0"
+    },
+    {
+      "path": "open-content/modules/cards/paeds/e.json",
+      "bytes": 54128,
+      "sha256": "f469cc305416fd24ca484805b44b9589eaa5aa771dca4c4bd21162a8b07e568c",
+      "mode": "0644",
+      "licence": "CC-BY-4.0"
+    },
+    {
+      "path": "open-content/modules/cards/paeds/f.json",
+      "bytes": 54762,
+      "sha256": "c1ee5055d65b3543dca5d267f978d32bc4f440b8fc094997056e4d16df73d3ff",
+      "mode": "0644",
+      "licence": "CC-BY-4.0"
+    },
+    {
+      "path": "open-content/modules/cards/psych/0.json",
+      "bytes": 2293,
+      "sha256": "352d96bfe7d0b7187f14758781b6e464f7aded0fc642ccc2a5115b1db2211c38",
+      "mode": "0644",
+      "licence": "CC-BY-4.0"
+    },
+    {
+      "path": "open-content/modules/cards/psych/1.json",
+      "bytes": 1675,
+      "sha256": "21555ecc2b31373829f011416224034d372ceb8d53b80127abeb7c471c8f3005",
+      "mode": "0644",
+      "licence": "CC-BY-4.0"
+    },
+    {
+      "path": "open-content/modules/cards/psych/2.json",
+      "bytes": 3915,
+      "sha256": "e1e2d35b8708ab09555a7c538391eecc7cf2349567e385d0734818cdbf29a208",
+      "mode": "0644",
+      "licence": "CC-BY-4.0"
+    },
+    {
+      "path": "open-content/modules/cards/psych/3.json",
+      "bytes": 3731,
+      "sha256": "ea62b973fda0eef9967aa49f9e5b8717f0037b2f452f44d215060a96734a5c6f",
+      "mode": "0644",
+      "licence": "CC-BY-4.0"
+    },
+    {
+      "path": "open-content/modules/cards/psych/4.json",
+      "bytes": 1842,
+      "sha256": "ee5a95afd7a0bae609fd493fac48d49e1cf5b9788250d22e9180aac852b31352",
+      "mode": "0644",
+      "licence": "CC-BY-4.0"
+    },
+    {
+      "path": "open-content/modules/cards/psych/5.json",
+      "bytes": 4248,
+      "sha256": "229083a0003b3ffbf46e515a06657e5d621bd9456eeb0ce2cd2294d4eff61bde",
+      "mode": "0644",
+      "licence": "CC-BY-4.0"
+    },
+    {
+      "path": "open-content/modules/cards/psych/6.json",
+      "bytes": 3761,
+      "sha256": "aba6ebaa6c55d2e798e4f1310399ff45087da2f04f2bbffff73a210298e8010c",
+      "mode": "0644",
+      "licence": "CC-BY-4.0"
+    },
+    {
+      "path": "open-content/modules/cards/psych/7.json",
+      "bytes": 1119,
+      "sha256": "d04241b531fceb4b9b17a90da219816eccbd5c3cdb8b5628ffff137e805ebf53",
+      "mode": "0644",
+      "licence": "CC-BY-4.0"
+    },
+    {
+      "path": "open-content/modules/cards/psych/8.json",
+      "bytes": 3493,
+      "sha256": "fec92598a9ac53415d0e72d78782d9304fa2edd04be1668f36e84b2fd60b70a3",
+      "mode": "0644",
+      "licence": "CC-BY-4.0"
+    },
+    {
+      "path": "open-content/modules/cards/psych/9.json",
+      "bytes": 1683,
+      "sha256": "7f00a6b84f696f934d4514be63d8a14b638c8ca6aab4fb2d963a34e3d14a028f",
+      "mode": "0644",
+      "licence": "CC-BY-4.0"
+    },
+    {
+      "path": "open-content/modules/cards/psych/a.json",
+      "bytes": 3566,
+      "sha256": "4b22395aa928fd3881e81e3b3a0c49dffd23d48c4aca3fee4dfcea406bb9f683",
+      "mode": "0644",
+      "licence": "CC-BY-4.0"
+    },
+    {
+      "path": "open-content/modules/cards/psych/b.json",
+      "bytes": 1626,
+      "sha256": "e55ab9a4187393cc5fedc75e93458a14f9e5c222d96071031b00e032270147b5",
+      "mode": "0644",
+      "licence": "CC-BY-4.0"
+    },
+    {
+      "path": "open-content/modules/cards/psych/c.json",
+      "bytes": 2887,
+      "sha256": "3d78bba2328605c2c5d41e0249ade192cf18193b69b6544b7231a734d9fb68db",
+      "mode": "0644",
+      "licence": "CC-BY-4.0"
+    },
+    {
+      "path": "open-content/modules/cards/psych/d.json",
+      "bytes": 835,
+      "sha256": "039ca0ea63b3b44e43ad504714fcebd17e34bfda1d8d3d2aae09cb3242e4c440",
+      "mode": "0644",
+      "licence": "CC-BY-4.0"
+    },
+    {
+      "path": "open-content/modules/cards/psych/e.json",
+      "bytes": 2551,
+      "sha256": "4b70575d64474a24c00e3320accef918f79784ec0622b542f5f490e71aefb2cf",
+      "mode": "0644",
+      "licence": "CC-BY-4.0"
+    },
+    {
+      "path": "open-content/modules/cards/psych/f.json",
+      "bytes": 2545,
+      "sha256": "aa3a0ed198e93a8b2cd3b1416d8f5692eec45069a3d36022a8cfd013d4f3c6e6",
+      "mode": "0644",
+      "licence": "CC-BY-4.0"
+    },
+    {
+      "path": "open-content/modules/cards/surgery/9.json",
+      "bytes": 774,
+      "sha256": "24ae6ff4962093e394b37e263e2521ce14033ff29651e90f8375268d67b97601",
+      "mode": "0644",
+      "licence": "CC-BY-4.0"
+    },
+    {
+      "path": "open-content/modules/questions/anaes/q-2e10739f0368.v1.json",
+      "bytes": 3027,
+      "sha256": "a174a1f196172ff11748ba805c4f337722d76d7ee26cace7e4bd1311f339ae1d",
+      "mode": "0644",
+      "licence": "CC-BY-4.0"
+    },
+    {
+      "path": "open-content/modules/questions/anaes/q-616dd1516485.v1.json",
+      "bytes": 2803,
+      "sha256": "8727d2bcb7095510c06052c8ab5113b8f1b8f175eada806b07c67467e37af301",
+      "mode": "0644",
+      "licence": "CC-BY-4.0"
+    },
+    {
+      "path": "open-content/modules/questions/anaes/q-755bb5f781d0.v1.json",
+      "bytes": 2727,
+      "sha256": "6b72a4a83e40781a3645a55eec2c71d33189a0fe81dd0102f4f093fb49703343",
+      "mode": "0644",
+      "licence": "CC-BY-4.0"
+    },
+    {
+      "path": "open-content/modules/questions/anaes/q-9d701b0991f2.v1.json",
+      "bytes": 2783,
+      "sha256": "0ecdfc932233e8e3778fafb68e330bd80ac36ef66b65d036529dcc9507218bfc",
+      "mode": "0644",
+      "licence": "CC-BY-4.0"
+    },
+    {
+      "path": "open-content/modules/questions/anaes/q-c0a45a110e0b.v1.json",
+      "bytes": 2717,
+      "sha256": "a7b04fb7471afb86445a892e76808889008e0454c2e1923845c99ce0722d12c0",
+      "mode": "0644",
+      "licence": "CC-BY-4.0"
+    },
+    {
+      "path": "open-content/modules/questions/anaes/q-e8375c2959e8.v1.json",
+      "bytes": 2855,
+      "sha256": "1c23813292b7aa55b4429acea9d144ebed31e29df3487dc456b56e0ce40ec530",
+      "mode": "0644",
+      "licence": "CC-BY-4.0"
+    },
+    {
+      "path": "open-content/modules/questions/anaes/q-f743717c0691.v1.json",
+      "bytes": 2769,
+      "sha256": "cdacd868486d93371e4918cfaaa495d32ca185df585da236099390f3494148ac",
+      "mode": "0644",
+      "licence": "CC-BY-4.0"
+    },
+    {
+      "path": "open-content/modules/questions/cardio/q-ad49d39a2f45.v1.json",
+      "bytes": 3567,
+      "sha256": "2a41f07b8b69effc46f59153cb5f377780113d6ba5e91b552746219624cb1146",
+      "mode": "0644",
+      "licence": "CC-BY-4.0"
+    },
+    {
+      "path": "open-content/modules/questions/cardio/q-f769a4f5cf12.v1.json",
+      "bytes": 2945,
+      "sha256": "81a9cbb4e977fb8f44992d8e64fc7a581fb59bf4b7a237d76c3f95cdbfa8470b",
+      "mode": "0644",
+      "licence": "CC-BY-4.0"
+    },
+    {
+      "path": "open-content/modules/questions/clinical-skills/q-03e993566c08.v1.json",
+      "bytes": 2970,
+      "sha256": "f4ece237baa6fa3ac3ad7b31f7afb12eff040ac01e18b44e4f59b3ac21727425",
+      "mode": "0644",
+      "licence": "CC-BY-4.0"
+    },
+    {
+      "path": "open-content/modules/questions/clinical-skills/q-4b45069a5cc6.v1.json",
+      "bytes": 3170,
+      "sha256": "a38ca7d161198c47f846971f617f8d7efc9776cf05767322aa44a7bdfbe729f2",
+      "mode": "0644",
+      "licence": "CC-BY-4.0"
+    },
+    {
+      "path": "open-content/modules/questions/clinical-skills/q-6300a55e40a8.v1.json",
+      "bytes": 2722,
+      "sha256": "d5e2256806705a0f2a47d74d3a8825bd6feb4263a21ff8c63919139a0959eaae",
+      "mode": "0644",
+      "licence": "CC-BY-4.0"
+    },
+    {
+      "path": "open-content/modules/questions/clinical-skills/q-997e64087e9a.v1.json",
+      "bytes": 3063,
+      "sha256": "4a7241b2b059234affe328fe4d405eff58d41a0d2be3b79b7f2e8d602d4b5c3c",
+      "mode": "0644",
+      "licence": "CC-BY-4.0"
+    },
+    {
       "path": "open-content/modules/questions/derm/q-6831a3607696.v1.json",
       "bytes": 2559,
       "sha256": "90d9420b6cd520d0e964d502c8a146f8145547b862b652817b123d13e29a645d",
@@ -2793,6 +3346,62 @@
       "licence": "CC-BY-4.0"
     },
     {
+      "path": "open-content/modules/questions/derm/q-9424e51959b7.v1.json",
+      "bytes": 2598,
+      "sha256": "744b31b3a1e8efaf7d5900f4d4a39a68fdfda8aba29a0d9aac71eb1636a79c74",
+      "mode": "0644",
+      "licence": "CC-BY-4.0"
+    },
+    {
+      "path": "open-content/modules/questions/derm/q-c259d8812082.v1.json",
+      "bytes": 2728,
+      "sha256": "1935d3f55b525dbe458820722b0462b7c037255a37fe9749745fbc46dc3e26c3",
+      "mode": "0644",
+      "licence": "CC-BY-4.0"
+    },
+    {
+      "path": "open-content/modules/questions/derm/q-c63b0236a4b4.v1.json",
+      "bytes": 2716,
+      "sha256": "8835ad94f443409e17d1e021393b710fe81e3d7000415841977d69efd81f15f3",
+      "mode": "0644",
+      "licence": "CC-BY-4.0"
+    },
+    {
+      "path": "open-content/modules/questions/em/q-090e9be87fd5.v1.json",
+      "bytes": 2880,
+      "sha256": "a06b3d057951616388a6c060adce3b9784ce9f0dd6f24d8008f8211b6b2231b7",
+      "mode": "0644",
+      "licence": "CC-BY-4.0"
+    },
+    {
+      "path": "open-content/modules/questions/em/q-09759216fab3.v1.json",
+      "bytes": 2961,
+      "sha256": "6a7086b79debc023a1fe03860730458493bf7a6b82cc3b1f61d753bcf1a1a33f",
+      "mode": "0644",
+      "licence": "CC-BY-4.0"
+    },
+    {
+      "path": "open-content/modules/questions/em/q-10207d85187e.v1.json",
+      "bytes": 2857,
+      "sha256": "d94075149682a18f084762f7f1853ef920f1b32251fa33e6e4d3ce6a5e759f64",
+      "mode": "0644",
+      "licence": "CC-BY-4.0"
+    },
+    {
+      "path": "open-content/modules/questions/em/q-2c1a086ad9a5.v1.json",
+      "bytes": 2908,
+      "sha256": "4d49863839d6d2c2bd8e11f48f666a675197e78e77f096a7301faa7c8da94774",
+      "mode": "0644",
+      "licence": "CC-BY-4.0"
+    },
+    {
+      "path": "open-content/modules/questions/em/q-3af4e12a1c35.v1.json",
+      "bytes": 2905,
+      "sha256": "0f27955712a2b4da822b7687c73b159b9724d5559a171491c1f924c4071369ee",
+      "mode": "0644",
+      "licence": "CC-BY-4.0"
+    },
+    {
       "path": "open-content/modules/questions/em/q-5117dba2cdc0.v1.json",
       "bytes": 3053,
       "sha256": "492feffb65e83e8030d24750238275595f8753eacca270f08e6c1a7f480c6267",
@@ -2800,9 +3409,37 @@
       "licence": "CC-BY-4.0"
     },
     {
+      "path": "open-content/modules/questions/em/q-5b80a9fb50c2.v1.json",
+      "bytes": 2832,
+      "sha256": "63adeb594d512ff9d1c423ce6a45d7c1d8235590b8ddc2984cb964b1f99fa265",
+      "mode": "0644",
+      "licence": "CC-BY-4.0"
+    },
+    {
       "path": "open-content/modules/questions/em/q-64ab23af47ee.v1.json",
       "bytes": 3276,
       "sha256": "1aaa56da11486aa6e27fbed5d27f28abb78238d39f147dbbd8b7b88bece339a5",
+      "mode": "0644",
+      "licence": "CC-BY-4.0"
+    },
+    {
+      "path": "open-content/modules/questions/em/q-6727d5f7c873.v1.json",
+      "bytes": 2892,
+      "sha256": "4c9896f80434afd5eba539e3cbbf2ef59de162f7144ce1f993102d8508207a1c",
+      "mode": "0644",
+      "licence": "CC-BY-4.0"
+    },
+    {
+      "path": "open-content/modules/questions/em/q-723112d95fe6.v1.json",
+      "bytes": 2984,
+      "sha256": "3cde30117c10e8f136f44d818b2add9d5d293720b2ce2db8a96decd37e2c3d86",
+      "mode": "0644",
+      "licence": "CC-BY-4.0"
+    },
+    {
+      "path": "open-content/modules/questions/em/q-84b56c468003.v1.json",
+      "bytes": 2824,
+      "sha256": "de96733a904a6cc769ee4e89bd52d17443484548525ecc68d24d78962eea95c2",
       "mode": "0644",
       "licence": "CC-BY-4.0"
     },
@@ -2821,9 +3458,65 @@
       "licence": "CC-BY-4.0"
     },
     {
+      "path": "open-content/modules/questions/em/q-a1130f8c0b8e.v1.json",
+      "bytes": 2664,
+      "sha256": "b68f0835e005e8b05f60d181deeddcce02b1d5d0a810891d683811791dfc51b0",
+      "mode": "0644",
+      "licence": "CC-BY-4.0"
+    },
+    {
+      "path": "open-content/modules/questions/em/q-a56cecd56288.v1.json",
+      "bytes": 2890,
+      "sha256": "526d225d00d098ab6dffc7deaaec77ebb6bea688c5f2f1651e0705eb3a0f8509",
+      "mode": "0644",
+      "licence": "CC-BY-4.0"
+    },
+    {
+      "path": "open-content/modules/questions/em/q-aad4dc33d9c6.v1.json",
+      "bytes": 3047,
+      "sha256": "1fea2c989c1917a315d6227b3a2f3225438de53a0ea9e61d4904dc852cbc32eb",
+      "mode": "0644",
+      "licence": "CC-BY-4.0"
+    },
+    {
       "path": "open-content/modules/questions/em/q-af21162a6c7c.v1.json",
       "bytes": 2635,
       "sha256": "a6627bbaed8f5d1cf8b7164f81dae3deb5112e2efc2411a461a14e0056dde3ca",
+      "mode": "0644",
+      "licence": "CC-BY-4.0"
+    },
+    {
+      "path": "open-content/modules/questions/em/q-b4c3a9805243.v1.json",
+      "bytes": 3013,
+      "sha256": "f96755d7c2d54495183cf4337f5f51bbe2fad2e026245b4de2bbee40d1e25a5e",
+      "mode": "0644",
+      "licence": "CC-BY-4.0"
+    },
+    {
+      "path": "open-content/modules/questions/em/q-c31597bc0bac.v1.json",
+      "bytes": 2876,
+      "sha256": "7ef87229ab8a1350359ecbc34396f241e4fe42f39ce6f1d545d3f0dfb6d27e6d",
+      "mode": "0644",
+      "licence": "CC-BY-4.0"
+    },
+    {
+      "path": "open-content/modules/questions/em/q-c40588ff9655.v1.json",
+      "bytes": 2934,
+      "sha256": "cc2645ac770f688f54791d0455ca2bf946b54aabed7073c4bf1a0fadcd25dcd9",
+      "mode": "0644",
+      "licence": "CC-BY-4.0"
+    },
+    {
+      "path": "open-content/modules/questions/em/q-e22c48e59edc.v1.json",
+      "bytes": 2676,
+      "sha256": "56ba03101f4110a974a2034788f6e6aaaeec5f1cd7512e37065bf39c769210bd",
+      "mode": "0644",
+      "licence": "CC-BY-4.0"
+    },
+    {
+      "path": "open-content/modules/questions/em/q-f7110f16e0d2.v1.json",
+      "bytes": 2466,
+      "sha256": "84f5514932277ff7d456e61b6055b3cf4be0c3089fdd2c8c4c23a7db7986c15a",
       "mode": "0644",
       "licence": "CC-BY-4.0"
     },
@@ -2842,6 +3535,13 @@
       "licence": "CC-BY-4.0"
     },
     {
+      "path": "open-content/modules/questions/endo/q-0d5c1540c060.v1.json",
+      "bytes": 2851,
+      "sha256": "c1f547ff370c850816e4576ff007aab41a1c38d109809e6cba16f0836bc20832",
+      "mode": "0644",
+      "licence": "CC-BY-4.0"
+    },
+    {
       "path": "open-content/modules/questions/endo/q-1b968d4d8939.v1.json",
       "bytes": 3443,
       "sha256": "b68f92772957c0f381878f0c7e49bf67fe91f22a79acc658b1450e35dd2205f9",
@@ -2856,9 +3556,254 @@
       "licence": "CC-BY-4.0"
     },
     {
+      "path": "open-content/modules/questions/ent/q-602dcada2c3c.v1.json",
+      "bytes": 2661,
+      "sha256": "994fd80853c1f34a41c1938b5b4dea5af09b78c3e5714464838d8a33222c890c",
+      "mode": "0644",
+      "licence": "CC-BY-4.0"
+    },
+    {
+      "path": "open-content/modules/questions/ent/q-bdd1301324b7.v1.json",
+      "bytes": 2742,
+      "sha256": "0fb5b0dd0d1a0b874d6e0bed5e43230dddb5a286f88f1e8bfafb9909215da00a",
+      "mode": "0644",
+      "licence": "CC-BY-4.0"
+    },
+    {
+      "path": "open-content/modules/questions/ent/q-e7fdb0e475a2.v1.json",
+      "bytes": 2613,
+      "sha256": "a8cb299273fd1f9a2083502821d1c955ac17c5f5b4b24d41c7f4bb2879ded661",
+      "mode": "0644",
+      "licence": "CC-BY-4.0"
+    },
+    {
+      "path": "open-content/modules/questions/ent/q-f53977a78db5.v1.json",
+      "bytes": 3050,
+      "sha256": "0d365176620ce664b1e7f21f509c4ec5e0511e84059f2d00d50cb64e097facfc",
+      "mode": "0644",
+      "licence": "CC-BY-4.0"
+    },
+    {
+      "path": "open-content/modules/questions/gi/q-046f53da1128.v1.json",
+      "bytes": 3336,
+      "sha256": "7199016eb9ea38fc515e4aa8334ca5122e73e9c7892f08fd0714b3fe319703fa",
+      "mode": "0644",
+      "licence": "CC-BY-4.0"
+    },
+    {
+      "path": "open-content/modules/questions/gi/q-052be6968478.v1.json",
+      "bytes": 2721,
+      "sha256": "8649d2d8bfff17478c27ce08d20fc9def65dc75b802f7fbfe1abf72bd56352d4",
+      "mode": "0644",
+      "licence": "CC-BY-4.0"
+    },
+    {
+      "path": "open-content/modules/questions/gi/q-2622d78526f8.v1.json",
+      "bytes": 2966,
+      "sha256": "d0d8e7a43abdb42a4b94b925521b7a1572c9f37d707cf1420f75e5246ea90a14",
+      "mode": "0644",
+      "licence": "CC-BY-4.0"
+    },
+    {
+      "path": "open-content/modules/questions/gi/q-31d75c869321.v1.json",
+      "bytes": 3157,
+      "sha256": "3933509bd4b9410c1d81f08d0c6391ec1d54c2931413c9d98af635d3fbdef67b",
+      "mode": "0644",
+      "licence": "CC-BY-4.0"
+    },
+    {
+      "path": "open-content/modules/questions/gi/q-3c4585b15b33.v1.json",
+      "bytes": 2846,
+      "sha256": "c7bd1eab89fa94c52068fcc59d0c86866ba088cc53b0c2d1bc9f5a20ed1dbd24",
+      "mode": "0644",
+      "licence": "CC-BY-4.0"
+    },
+    {
+      "path": "open-content/modules/questions/gi/q-677e6c46e6ae.v1.json",
+      "bytes": 3013,
+      "sha256": "e23c2729c8562449e89208c5387071e3802c1c31fe963b9a97616a4c93392e8c",
+      "mode": "0644",
+      "licence": "CC-BY-4.0"
+    },
+    {
+      "path": "open-content/modules/questions/gi/q-6ff4a5a91247.v1.json",
+      "bytes": 2976,
+      "sha256": "623df64481c7e307cb18786e0382a34ec3764f00167242b510bfdd8c457f14ae",
+      "mode": "0644",
+      "licence": "CC-BY-4.0"
+    },
+    {
+      "path": "open-content/modules/questions/gi/q-7650009d5d1a.v1.json",
+      "bytes": 2636,
+      "sha256": "4f1756bd344f517f3ad4b5207e17f67770cccd557a660df55f6289d32cfba407",
+      "mode": "0644",
+      "licence": "CC-BY-4.0"
+    },
+    {
+      "path": "open-content/modules/questions/gi/q-c0c3aab8631e.v1.json",
+      "bytes": 2878,
+      "sha256": "2f34694c6a407d580989db95b25ef9de27a0424c38741ab15fa8c351ab9bce35",
+      "mode": "0644",
+      "licence": "CC-BY-4.0"
+    },
+    {
+      "path": "open-content/modules/questions/gi/q-c5c8d73f0151.v1.json",
+      "bytes": 2945,
+      "sha256": "fcf28cf38c29b517bb32d00080e03276d2482be7ce82399ee367fb1cf3f8e31c",
+      "mode": "0644",
+      "licence": "CC-BY-4.0"
+    },
+    {
+      "path": "open-content/modules/questions/gi/q-eb0f3f46eddc.v1.json",
+      "bytes": 2788,
+      "sha256": "7c609c138b258e4225d9a48c0de9f7e148b1ecd7a5aed0d48b796893864eab62",
+      "mode": "0644",
+      "licence": "CC-BY-4.0"
+    },
+    {
+      "path": "open-content/modules/questions/gi/q-f9144732eb11.v1.json",
+      "bytes": 3070,
+      "sha256": "c964823a882cc5513852cde1ad0a20856df19129e3db170cd131ee51ff39fc46",
+      "mode": "0644",
+      "licence": "CC-BY-4.0"
+    },
+    {
+      "path": "open-content/modules/questions/gynae/q-00f31008c33e.v1.json",
+      "bytes": 2824,
+      "sha256": "0c8bf87c220d9d46d09d56a5ef2f89aabcfe6eac8c7a9343e53fce7a893435c2",
+      "mode": "0644",
+      "licence": "CC-BY-4.0"
+    },
+    {
+      "path": "open-content/modules/questions/gynae/q-03bfc629e022.v1.json",
+      "bytes": 2626,
+      "sha256": "4a5c3711e17dfe594a89d99a4e6aa997fccee5f9515375ffc92adef820201027",
+      "mode": "0644",
+      "licence": "CC-BY-4.0"
+    },
+    {
+      "path": "open-content/modules/questions/gynae/q-0dd0f8a65ab4.v1.json",
+      "bytes": 2789,
+      "sha256": "42cd15bd1fbcfa6cc31019a6b0e871f15a3dec7c4071610488b702d5b8df0d70",
+      "mode": "0644",
+      "licence": "CC-BY-4.0"
+    },
+    {
+      "path": "open-content/modules/questions/gynae/q-21fc8eea6717.v1.json",
+      "bytes": 2933,
+      "sha256": "d77e180c8e2a24acd9a3b7161fb65a137486d518fe939d6d2e1e7686b3bc2101",
+      "mode": "0644",
+      "licence": "CC-BY-4.0"
+    },
+    {
+      "path": "open-content/modules/questions/gynae/q-2b6a9669c9c3.v1.json",
+      "bytes": 2686,
+      "sha256": "35c305dcc1431fcf46f651fee5efc24bc378e8950c2adfcdd130eca177ff4e02",
+      "mode": "0644",
+      "licence": "CC-BY-4.0"
+    },
+    {
+      "path": "open-content/modules/questions/gynae/q-3287ab1a85e0.v1.json",
+      "bytes": 2643,
+      "sha256": "152f6cb9ace576f3a6e178f4aad772ccb397acaba1ac4f20a8698aaf515a925c",
+      "mode": "0644",
+      "licence": "CC-BY-4.0"
+    },
+    {
+      "path": "open-content/modules/questions/gynae/q-37a17f2e9b09.v1.json",
+      "bytes": 2712,
+      "sha256": "ea599bd82a420e27278b235dd8c454ad71761b6b427f5436890f53d4b6ca651d",
+      "mode": "0644",
+      "licence": "CC-BY-4.0"
+    },
+    {
+      "path": "open-content/modules/questions/gynae/q-4538199d03e4.v1.json",
+      "bytes": 2669,
+      "sha256": "5922bce967e0fd27ba6814343ed4545ee9472122c57854aa7962b9660effe3e2",
+      "mode": "0644",
+      "licence": "CC-BY-4.0"
+    },
+    {
+      "path": "open-content/modules/questions/gynae/q-52d9117e499e.v1.json",
+      "bytes": 2912,
+      "sha256": "c6600beef44eac12e9a3525547383cc9825c763f0a5b63078f6c97c53166aeac",
+      "mode": "0644",
+      "licence": "CC-BY-4.0"
+    },
+    {
+      "path": "open-content/modules/questions/gynae/q-7dac4328c2e1.v1.json",
+      "bytes": 2806,
+      "sha256": "259e5d519e75e21fb86ed156a42920ac464f47905a60f0f307eb02859c1f6be5",
+      "mode": "0644",
+      "licence": "CC-BY-4.0"
+    },
+    {
+      "path": "open-content/modules/questions/gynae/q-84e8722fb59c.v1.json",
+      "bytes": 3016,
+      "sha256": "78106386166948d6441937cbd87682c6663cd874e1a4145dbce832563bbcdd9a",
+      "mode": "0644",
+      "licence": "CC-BY-4.0"
+    },
+    {
+      "path": "open-content/modules/questions/gynae/q-865b97c2f951.v1.json",
+      "bytes": 3052,
+      "sha256": "0bb6d2872e713ba694d58ff16b94fc7759c4a43da80e977b0730b427aeb06b19",
+      "mode": "0644",
+      "licence": "CC-BY-4.0"
+    },
+    {
+      "path": "open-content/modules/questions/gynae/q-c54fe8d380a8.v1.json",
+      "bytes": 2685,
+      "sha256": "8f276e8fea0073e60039a4640f9482606e50a011c3704ac54149056d2a321a08",
+      "mode": "0644",
+      "licence": "CC-BY-4.0"
+    },
+    {
+      "path": "open-content/modules/questions/gynae/q-ff36c606592f.v1.json",
+      "bytes": 2908,
+      "sha256": "662b55541352c3c9104cd39b69b497a53ae64dedcdaaee5477eaff42a96104c1",
+      "mode": "0644",
+      "licence": "CC-BY-4.0"
+    },
+    {
+      "path": "open-content/modules/questions/haem/q-6b53d13b3ed1.v1.json",
+      "bytes": 2685,
+      "sha256": "d511b175b8513507b13eb523ad48f9e7b78040e34bca1c4296025f9cba0c4fe4",
+      "mode": "0644",
+      "licence": "CC-BY-4.0"
+    },
+    {
+      "path": "open-content/modules/questions/haem/q-909c753fd041.v1.json",
+      "bytes": 3125,
+      "sha256": "a15def8c9dc69d0d905cedc0ba882891886b0ab523a151c41e6766791fda576a",
+      "mode": "0644",
+      "licence": "CC-BY-4.0"
+    },
+    {
+      "path": "open-content/modules/questions/haem/q-a169b4c03bbe.v1.json",
+      "bytes": 3961,
+      "sha256": "536160efd2f2e337bf790bdeffede3bb682af4af5268ed45e5f830422ae1f2a0",
+      "mode": "0644",
+      "licence": "CC-BY-4.0"
+    },
+    {
       "path": "open-content/modules/questions/haem/q-b7000e198bdb.v1.json",
       "bytes": 2636,
       "sha256": "88c091244d611817cb5a44f441667290c1668e251cc0138fb45a07e9ddaa35b3",
+      "mode": "0644",
+      "licence": "CC-BY-4.0"
+    },
+    {
+      "path": "open-content/modules/questions/haem/q-cc0b08f534d5.v1.json",
+      "bytes": 2713,
+      "sha256": "8fac30de23f2acac394dece3b3c38d1da6472aeb653bb021e75d2cccdfec1a37",
+      "mode": "0644",
+      "licence": "CC-BY-4.0"
+    },
+    {
+      "path": "open-content/modules/questions/haem/q-da51bb4c26d3.v1.json",
+      "bytes": 3545,
+      "sha256": "3bf46ad6a225ae62597b54e9211299d51f94e52929701cf68bb5af6668c576f7",
       "mode": "0644",
       "licence": "CC-BY-4.0"
     },
@@ -2870,9 +3815,205 @@
       "licence": "CC-BY-4.0"
     },
     {
+      "path": "open-content/modules/questions/icu/q-47b697c9e6cb.v1.json",
+      "bytes": 2815,
+      "sha256": "21082632a87f7c580e9e4bbf618b68634d76cfd1f7a4c64e155a6bbaedcb598c",
+      "mode": "0644",
+      "licence": "CC-BY-4.0"
+    },
+    {
+      "path": "open-content/modules/questions/icu/q-4fcda8c1dbfb.v1.json",
+      "bytes": 2849,
+      "sha256": "ceb62f05fe8daddca0a49a6327c4682461df103a37684a18beeea9f1db063b25",
+      "mode": "0644",
+      "licence": "CC-BY-4.0"
+    },
+    {
+      "path": "open-content/modules/questions/icu/q-688b9ea8a346.v1.json",
+      "bytes": 2939,
+      "sha256": "be1d1c5b06a802e3cb3ed6c110302fa4898ded5de3015514d632089b8edbd3c7",
+      "mode": "0644",
+      "licence": "CC-BY-4.0"
+    },
+    {
+      "path": "open-content/modules/questions/icu/q-7d2c230b019e.v1.json",
+      "bytes": 3043,
+      "sha256": "cf7e11ad5d5f56e2e23c4ea13cd6097adf4efc9cc8ccb9cd8f4d445fe0fc18b8",
+      "mode": "0644",
+      "licence": "CC-BY-4.0"
+    },
+    {
+      "path": "open-content/modules/questions/icu/q-b062fddbdf57.v1.json",
+      "bytes": 2934,
+      "sha256": "3c9708779744e65ae56e7af16d119502d433b4f96f1004b46adf74451ac0619b",
+      "mode": "0644",
+      "licence": "CC-BY-4.0"
+    },
+    {
+      "path": "open-content/modules/questions/icu/q-b0f5e483efda.v1.json",
+      "bytes": 3033,
+      "sha256": "bfa9a2477eb051ae6f89ef76b31c557e49c8c25a1dbe31ec781592f4d50d0f0d",
+      "mode": "0644",
+      "licence": "CC-BY-4.0"
+    },
+    {
+      "path": "open-content/modules/questions/icu/q-d427cf1135bc.v1.json",
+      "bytes": 2974,
+      "sha256": "ad51b3539b30044ad1ad84a74b1afa5f63771f6d7d4eb36b1a2a0fd4c6584e3c",
+      "mode": "0644",
+      "licence": "CC-BY-4.0"
+    },
+    {
+      "path": "open-content/modules/questions/icu/q-ef859a235c32.v1.json",
+      "bytes": 3110,
+      "sha256": "5d6e570b455dd34c98cdab5a65994bbfb40d3fd12577446e1c388f5399ca736f",
+      "mode": "0644",
+      "licence": "CC-BY-4.0"
+    },
+    {
+      "path": "open-content/modules/questions/icu/q-f60aa1dd0a85.v1.json",
+      "bytes": 2857,
+      "sha256": "8bb758c9c46d254b5e63d75d9a33a6974155b23dc45254ed571cff30159d48ba",
+      "mode": "0644",
+      "licence": "CC-BY-4.0"
+    },
+    {
+      "path": "open-content/modules/questions/icu/q-fd38f898db5b.v1.json",
+      "bytes": 2895,
+      "sha256": "08b60d2cc9c311089edc830e8fe35616c871cbe729f5d034229dafd3e676f09b",
+      "mode": "0644",
+      "licence": "CC-BY-4.0"
+    },
+    {
+      "path": "open-content/modules/questions/id/q-12d634c33e97.v1.json",
+      "bytes": 2670,
+      "sha256": "949d17a93cfc77cf5e948bd7eeabc437c9740a10b92c7239bee04eeb54c08be8",
+      "mode": "0644",
+      "licence": "CC-BY-4.0"
+    },
+    {
+      "path": "open-content/modules/questions/id/q-19716629f845.v1.json",
+      "bytes": 3360,
+      "sha256": "397a223f141c413a44d91752f8c0734e50d129115eb20f3d607e3632779b5fd8",
+      "mode": "0644",
+      "licence": "CC-BY-4.0"
+    },
+    {
+      "path": "open-content/modules/questions/id/q-23ced7e7c696.v1.json",
+      "bytes": 2809,
+      "sha256": "2be7ef24b5f8cd632188ca374f9ec0609021bd3ae70dcbdc66125696ed40eb7d",
+      "mode": "0644",
+      "licence": "CC-BY-4.0"
+    },
+    {
+      "path": "open-content/modules/questions/id/q-2a4681555eb0.v1.json",
+      "bytes": 3152,
+      "sha256": "fdde96e6ed9dad45fdad4e33a75d940012b0fee5f825adda4f8d416ff6242da8",
+      "mode": "0644",
+      "licence": "CC-BY-4.0"
+    },
+    {
+      "path": "open-content/modules/questions/id/q-2aced91b910b.v1.json",
+      "bytes": 2985,
+      "sha256": "d8b19cdce3eaa754c70146e3cb8138b6f265d5d5e43cea975a2b8437096597b5",
+      "mode": "0644",
+      "licence": "CC-BY-4.0"
+    },
+    {
+      "path": "open-content/modules/questions/id/q-2d69bcec21f3.v1.json",
+      "bytes": 2787,
+      "sha256": "b9d0d76996c198bbb2913bea285d10759d89477cf823ba9485706ae4b962d84d",
+      "mode": "0644",
+      "licence": "CC-BY-4.0"
+    },
+    {
+      "path": "open-content/modules/questions/id/q-389d6b801da7.v1.json",
+      "bytes": 2750,
+      "sha256": "576d6eee50c256f347a30295369b77260ccb8e1f8c2fe781deb97b85ebc00de1",
+      "mode": "0644",
+      "licence": "CC-BY-4.0"
+    },
+    {
+      "path": "open-content/modules/questions/id/q-747b86e7a4b1.v1.json",
+      "bytes": 2610,
+      "sha256": "f1de318e0a256e9f6c66cd19049161c006d6193ac4d24637c860c1093bf5d553",
+      "mode": "0644",
+      "licence": "CC-BY-4.0"
+    },
+    {
+      "path": "open-content/modules/questions/id/q-882862cfd6d6.v1.json",
+      "bytes": 2711,
+      "sha256": "3db3bfa2428f9844d7b193a9c41ae197622c00aaaa22be586dedba2cd02eceaa",
+      "mode": "0644",
+      "licence": "CC-BY-4.0"
+    },
+    {
+      "path": "open-content/modules/questions/id/q-93396611e097.v1.json",
+      "bytes": 3163,
+      "sha256": "8e8072a3923bb24eb011f8da282666b7eb2fd6f3a5cd9ce052ea9c4f01fca5d6",
+      "mode": "0644",
+      "licence": "CC-BY-4.0"
+    },
+    {
+      "path": "open-content/modules/questions/id/q-9c1baec568f6.v1.json",
+      "bytes": 3374,
+      "sha256": "4355bd7cfb7464bcb587e77d6f9bda136d819b9085ebfdb2b25e10b3b7dd0210",
+      "mode": "0644",
+      "licence": "CC-BY-4.0"
+    },
+    {
+      "path": "open-content/modules/questions/id/q-a10048116c70.v1.json",
+      "bytes": 4466,
+      "sha256": "39b638760dbd66b3a2a2474ae39f0f887097cc9cbf1f0386fe0d21bae5c894cc",
+      "mode": "0644",
+      "licence": "CC-BY-4.0"
+    },
+    {
+      "path": "open-content/modules/questions/id/q-a5c46703bcb2.v1.json",
+      "bytes": 2732,
+      "sha256": "e3fda244979dedb5d2bd27cdd38c86486b3a2a5697f0a2418e140e2e0e29a824",
+      "mode": "0644",
+      "licence": "CC-BY-4.0"
+    },
+    {
+      "path": "open-content/modules/questions/id/q-a5f882458820.v1.json",
+      "bytes": 3550,
+      "sha256": "47ec8ef0a2471e44d102eec082c14708202c66fb83855eeb1d2241b666f7752d",
+      "mode": "0644",
+      "licence": "CC-BY-4.0"
+    },
+    {
+      "path": "open-content/modules/questions/id/q-aa32a11438af.v1.json",
+      "bytes": 3677,
+      "sha256": "048075f28aca425f8ec80d4ed751ec468a0b4e73c0d49bca3c48857ffb640810",
+      "mode": "0644",
+      "licence": "CC-BY-4.0"
+    },
+    {
+      "path": "open-content/modules/questions/id/q-e7d8c12e0712.v1.json",
+      "bytes": 2776,
+      "sha256": "99c4bfb00a4a187d643389ee2b047dc3ee014f50d8c60aff18d6a9162d698967",
+      "mode": "0644",
+      "licence": "CC-BY-4.0"
+    },
+    {
+      "path": "open-content/modules/questions/id/q-f3fcc3e59f1f.v1.json",
+      "bytes": 2932,
+      "sha256": "58d0ff46b0459e5b736d2716f440e681ca218d55592459d288e979e1073b42d1",
+      "mode": "0644",
+      "licence": "CC-BY-4.0"
+    },
+    {
       "path": "open-content/modules/questions/immuno/q-272a241543ad.v1.json",
       "bytes": 2843,
       "sha256": "4d21730fbd403ca224e0899c941b80aa28094db3f2762a5de15f62fff22ffbf7",
+      "mode": "0644",
+      "licence": "CC-BY-4.0"
+    },
+    {
+      "path": "open-content/modules/questions/msk/q-24e69c790dab.v1.json",
+      "bytes": 3453,
+      "sha256": "0dffe662ed5991b1f3582f2cbbf2cff9d04b8be0055bc88b15d5fe867145cc04",
       "mode": "0644",
       "licence": "CC-BY-4.0"
     },
@@ -2884,9 +4025,317 @@
       "licence": "CC-BY-4.0"
     },
     {
+      "path": "open-content/modules/questions/msk/q-48187679b45e.v1.json",
+      "bytes": 3782,
+      "sha256": "dfd60da8729ec9867ad572cedf763c1eb30064ed9b9ad688434495e9549bcbb2",
+      "mode": "0644",
+      "licence": "CC-BY-4.0"
+    },
+    {
+      "path": "open-content/modules/questions/msk/q-5e4769a1a739.v1.json",
+      "bytes": 2611,
+      "sha256": "615dfc3dbd5b5f61dcb11f024315abb526a0a3426f241de209b45113df3ae4b8",
+      "mode": "0644",
+      "licence": "CC-BY-4.0"
+    },
+    {
+      "path": "open-content/modules/questions/msk/q-7fb6b98132d7.v1.json",
+      "bytes": 3763,
+      "sha256": "78d3a5b5e7ff5eab335cc0ac336be98fa9f2d667ecc5358f1ebba0e608be48fd",
+      "mode": "0644",
+      "licence": "CC-BY-4.0"
+    },
+    {
+      "path": "open-content/modules/questions/msk/q-8cd9e086dc6b.v1.json",
+      "bytes": 2571,
+      "sha256": "231bd4d943b7bb83dd8025f9017f4dc10214dc36d2ca5b2fb7be042a6aee8486",
+      "mode": "0644",
+      "licence": "CC-BY-4.0"
+    },
+    {
+      "path": "open-content/modules/questions/msk/q-9e51cdeb4548.v1.json",
+      "bytes": 2932,
+      "sha256": "f84bc5a40d66cd649beccf6357cf5299ff5d6c058d85e9bdd3a8e959474c5588",
+      "mode": "0644",
+      "licence": "CC-BY-4.0"
+    },
+    {
+      "path": "open-content/modules/questions/msk/q-be2c27dc9d9a.v1.json",
+      "bytes": 2546,
+      "sha256": "61df017bd1aa133b4ae3e9989de9fef6bf0c0471cfd4a1152b1fbd0ae9e758f0",
+      "mode": "0644",
+      "licence": "CC-BY-4.0"
+    },
+    {
+      "path": "open-content/modules/questions/msk/q-cf6be98f1d6b.v1.json",
+      "bytes": 3556,
+      "sha256": "8eac62ec89cd849ed268dd23b7daa0814fc35cce41375337280bdb5a78fa6f70",
+      "mode": "0644",
+      "licence": "CC-BY-4.0"
+    },
+    {
+      "path": "open-content/modules/questions/msk/q-d6a709d03f7c.v1.json",
+      "bytes": 3445,
+      "sha256": "b99759b6c3345c8d335a5f7205899ae80722068231ebb35f8bdda94e8bf5141e",
+      "mode": "0644",
+      "licence": "CC-BY-4.0"
+    },
+    {
+      "path": "open-content/modules/questions/neuro/q-02337108391f.v1.json",
+      "bytes": 2986,
+      "sha256": "caeb81727a3fac998e2a478251b0883e16ccb1560a4ef61438b75a6a507af2a3",
+      "mode": "0644",
+      "licence": "CC-BY-4.0"
+    },
+    {
+      "path": "open-content/modules/questions/neuro/q-1f4169ace279.v1.json",
+      "bytes": 3058,
+      "sha256": "83b5687e051abbe5aeced82b097146ff24e0c64f22684b8438be20940eaa3018",
+      "mode": "0644",
+      "licence": "CC-BY-4.0"
+    },
+    {
+      "path": "open-content/modules/questions/neuro/q-33e88502808c.v1.json",
+      "bytes": 2988,
+      "sha256": "9ecab8310a1f8d1b126f78494ad418c5d8a83aad5e064e8a72cce4da95e84266",
+      "mode": "0644",
+      "licence": "CC-BY-4.0"
+    },
+    {
+      "path": "open-content/modules/questions/neuro/q-7946cad3fe4b.v1.json",
+      "bytes": 3053,
+      "sha256": "b932744f21e8f22e6d164b8cc68ee53d6e36f254b1d77b252ac210595cc4668c",
+      "mode": "0644",
+      "licence": "CC-BY-4.0"
+    },
+    {
+      "path": "open-content/modules/questions/neuro/q-85f2d5a60cc1.v1.json",
+      "bytes": 2600,
+      "sha256": "24fdf51ee1bedd98ba2802ec5c72e8b739597926869f4f50d381ecee2024185f",
+      "mode": "0644",
+      "licence": "CC-BY-4.0"
+    },
+    {
+      "path": "open-content/modules/questions/neuro/q-88b253c3c80f.v1.json",
+      "bytes": 2966,
+      "sha256": "722de6f23df48bc8ea4db687cef59b03cac32bea3c7e09308ce19015c55b62a6",
+      "mode": "0644",
+      "licence": "CC-BY-4.0"
+    },
+    {
+      "path": "open-content/modules/questions/neuro/q-a0d38f66a63f.v1.json",
+      "bytes": 3326,
+      "sha256": "46b3b2aac5e137692c6d3d4538f20c42a6dfb70ea07ea65e3db66d88c096bfda",
+      "mode": "0644",
+      "licence": "CC-BY-4.0"
+    },
+    {
+      "path": "open-content/modules/questions/neuro/q-cdce7bfa0bb9.v1.json",
+      "bytes": 2800,
+      "sha256": "2cc8c9d64a732e9b3603b99fb7ed13a710ecda2e9218aab3194c5705e98d3be8",
+      "mode": "0644",
+      "licence": "CC-BY-4.0"
+    },
+    {
+      "path": "open-content/modules/questions/neuro/q-cee55aea8ef5.v1.json",
+      "bytes": 3178,
+      "sha256": "85d54bc90e2160c41c3d70f1740ee07e30ffd044f697246118bfb8b747a86899",
+      "mode": "0644",
+      "licence": "CC-BY-4.0"
+    },
+    {
+      "path": "open-content/modules/questions/neuro/q-f915bb17a7fb.v1.json",
+      "bytes": 2925,
+      "sha256": "a227054a297c54cd736e5196e3fb7f004e81667a4ede6e9bce20251fe20dd23d",
+      "mode": "0644",
+      "licence": "CC-BY-4.0"
+    },
+    {
+      "path": "open-content/modules/questions/obs/q-00692a609aea.v1.json",
+      "bytes": 2918,
+      "sha256": "51fd39ac16b61bb98adbbfc3114f58f3972055c1e9d47265f28e88a8b40ab52a",
+      "mode": "0644",
+      "licence": "CC-BY-4.0"
+    },
+    {
+      "path": "open-content/modules/questions/obs/q-01abbc9fc09e.v1.json",
+      "bytes": 3037,
+      "sha256": "dff737c3002b23ee13da65f5fa2bc82eb7e4ee66a288a2fd6bf3d8c8b0a09724",
+      "mode": "0644",
+      "licence": "CC-BY-4.0"
+    },
+    {
+      "path": "open-content/modules/questions/obs/q-0808b624b859.v1.json",
+      "bytes": 2869,
+      "sha256": "cecd462ed37da88770f15327a403818723e59f3659a8a6e02bb04f50e890c1ec",
+      "mode": "0644",
+      "licence": "CC-BY-4.0"
+    },
+    {
+      "path": "open-content/modules/questions/obs/q-0e9661c511a8.v1.json",
+      "bytes": 2932,
+      "sha256": "273b9af3ce37bd5cfee42ae47737beeb4e531b36dfcf05d9e13b96ab637ecb21",
+      "mode": "0644",
+      "licence": "CC-BY-4.0"
+    },
+    {
+      "path": "open-content/modules/questions/obs/q-14aa89625f7c.v1.json",
+      "bytes": 2767,
+      "sha256": "54cadc5111afadc6ff9287c271e6cdd9c14b7dbc0e2875b95d808b4c76af3253",
+      "mode": "0644",
+      "licence": "CC-BY-4.0"
+    },
+    {
+      "path": "open-content/modules/questions/obs/q-1a19895a41c6.v1.json",
+      "bytes": 2689,
+      "sha256": "04a0ba3df43bfd1f7ccc1a35ac3304ccca074b9305420d56f45ae70696975a2b",
+      "mode": "0644",
+      "licence": "CC-BY-4.0"
+    },
+    {
+      "path": "open-content/modules/questions/obs/q-1a97625f3c0a.v1.json",
+      "bytes": 3031,
+      "sha256": "6547fcba36b8834bfbd00c0eaa4bbdb3c6d75857368a76a095d54aba189073d0",
+      "mode": "0644",
+      "licence": "CC-BY-4.0"
+    },
+    {
       "path": "open-content/modules/questions/obs/q-1ef3f80fa653.v1.json",
       "bytes": 2445,
       "sha256": "5cb828490bb75b79088bf227edd752350f931a5e7fd8063698f43c9feaf63892",
+      "mode": "0644",
+      "licence": "CC-BY-4.0"
+    },
+    {
+      "path": "open-content/modules/questions/obs/q-21a5c546e59a.v1.json",
+      "bytes": 2795,
+      "sha256": "7d6abf9411f872b2e64776799327579a4c629058525f80de5423f4a2f3aaee85",
+      "mode": "0644",
+      "licence": "CC-BY-4.0"
+    },
+    {
+      "path": "open-content/modules/questions/obs/q-224256abbc0a.v1.json",
+      "bytes": 2733,
+      "sha256": "5cb79f943ef2f2b7a3cce0ea980aae9928ac7cba2beea09cc6e559880ffb5837",
+      "mode": "0644",
+      "licence": "CC-BY-4.0"
+    },
+    {
+      "path": "open-content/modules/questions/obs/q-24281b59095b.v1.json",
+      "bytes": 2683,
+      "sha256": "718259aa8539e887b14fa48813ef57d4e9360ebd118a36f9aba88c6d07b18c59",
+      "mode": "0644",
+      "licence": "CC-BY-4.0"
+    },
+    {
+      "path": "open-content/modules/questions/obs/q-24fcb1d2a674.v1.json",
+      "bytes": 2945,
+      "sha256": "84aa07a3be1c9d70a54842f0d0cfd420c38d5242a7914ebaffc6df16e9a7a71d",
+      "mode": "0644",
+      "licence": "CC-BY-4.0"
+    },
+    {
+      "path": "open-content/modules/questions/obs/q-2634a2a95f19.v1.json",
+      "bytes": 3044,
+      "sha256": "083c9cf641df48a0a4a1344dc63eeb4a122bf42fb7c808b9bff91274ccaf2f6a",
+      "mode": "0644",
+      "licence": "CC-BY-4.0"
+    },
+    {
+      "path": "open-content/modules/questions/obs/q-2934772be0ce.v1.json",
+      "bytes": 2904,
+      "sha256": "7210c35e683ee185b11b51b5f219384be81b94dc666de4b6d529fbef7310a500",
+      "mode": "0644",
+      "licence": "CC-BY-4.0"
+    },
+    {
+      "path": "open-content/modules/questions/obs/q-2968856bf3dd.v1.json",
+      "bytes": 2538,
+      "sha256": "c41a577178ff0a739c8552ef607e7a3a6189e186995c832040d68dc1c8f56419",
+      "mode": "0644",
+      "licence": "CC-BY-4.0"
+    },
+    {
+      "path": "open-content/modules/questions/obs/q-2fb7857fd230.v1.json",
+      "bytes": 2756,
+      "sha256": "ab0992edd7ff4d244e6e6e6b44b136d270e1f2b88843eca76a3b864f195b1f84",
+      "mode": "0644",
+      "licence": "CC-BY-4.0"
+    },
+    {
+      "path": "open-content/modules/questions/obs/q-33533f34663c.v1.json",
+      "bytes": 2990,
+      "sha256": "b0ecc982075c93b807ea524bc7f3113c17c7cd8a61fe13e36d62a75601bade47",
+      "mode": "0644",
+      "licence": "CC-BY-4.0"
+    },
+    {
+      "path": "open-content/modules/questions/obs/q-351e5a76ed8c.v1.json",
+      "bytes": 2627,
+      "sha256": "f2985c547906a4549aa07ef7b55ceddf81028a4d2449710b3f14c42b782641b9",
+      "mode": "0644",
+      "licence": "CC-BY-4.0"
+    },
+    {
+      "path": "open-content/modules/questions/obs/q-37648a282a78.v1.json",
+      "bytes": 2691,
+      "sha256": "ef05c8e26b554333f0d6697a059c48cf8f92cc3edba7337fc90d122582b5af16",
+      "mode": "0644",
+      "licence": "CC-BY-4.0"
+    },
+    {
+      "path": "open-content/modules/questions/obs/q-3992839d8950.v1.json",
+      "bytes": 2772,
+      "sha256": "d44222c2739afe24b5fe7292cd6f8e9860e97432103f43eb52feaad49e473b91",
+      "mode": "0644",
+      "licence": "CC-BY-4.0"
+    },
+    {
+      "path": "open-content/modules/questions/obs/q-3a92c883816d.v1.json",
+      "bytes": 2896,
+      "sha256": "2a04a0034d4b993b3c207a717ad64859ad4cbb81168d295b1db7ae1202421d0c",
+      "mode": "0644",
+      "licence": "CC-BY-4.0"
+    },
+    {
+      "path": "open-content/modules/questions/obs/q-46ab5645caec.v1.json",
+      "bytes": 3051,
+      "sha256": "60105440ea5cd7cd248e283708ba8ba6b92d442b65bba5f3bb3c04cc71b690e3",
+      "mode": "0644",
+      "licence": "CC-BY-4.0"
+    },
+    {
+      "path": "open-content/modules/questions/obs/q-4c0352c97a0a.v1.json",
+      "bytes": 2818,
+      "sha256": "fff262753ddf652dc45774ff323091e9c4f61031704e64a681c63656c3194eda",
+      "mode": "0644",
+      "licence": "CC-BY-4.0"
+    },
+    {
+      "path": "open-content/modules/questions/obs/q-4c8b798c7024.v1.json",
+      "bytes": 2908,
+      "sha256": "46128ca69e9b8396d5d2ba9b2c376a7a14cc90547ab944a32fc2937b87dd2d67",
+      "mode": "0644",
+      "licence": "CC-BY-4.0"
+    },
+    {
+      "path": "open-content/modules/questions/obs/q-5001823cdfb5.v1.json",
+      "bytes": 2695,
+      "sha256": "92822f256834f3b709b9df01364da6237fd2de81c95ad1b83a356c3fb34c2390",
+      "mode": "0644",
+      "licence": "CC-BY-4.0"
+    },
+    {
+      "path": "open-content/modules/questions/obs/q-5386057967f2.v1.json",
+      "bytes": 2870,
+      "sha256": "ae4e70348c7f04ab45d17c876f4e1d4fc61d9d8312ae3776cb781e94475c74ec",
+      "mode": "0644",
+      "licence": "CC-BY-4.0"
+    },
+    {
+      "path": "open-content/modules/questions/obs/q-63fd608f14b3.v1.json",
+      "bytes": 2959,
+      "sha256": "fd1031080334c2f8e44ef8005cfac867205ec13e79c6d28ad725059bb3cfc030",
       "mode": "0644",
       "licence": "CC-BY-4.0"
     },
@@ -2898,9 +4347,310 @@
       "licence": "CC-BY-4.0"
     },
     {
+      "path": "open-content/modules/questions/obs/q-67ba7e1569eb.v1.json",
+      "bytes": 2928,
+      "sha256": "f2bece407d5b84cb2f67aaecd188c9b4dd400ff21aa9d184975c6af530b420e8",
+      "mode": "0644",
+      "licence": "CC-BY-4.0"
+    },
+    {
+      "path": "open-content/modules/questions/obs/q-705e7a136a75.v1.json",
+      "bytes": 2866,
+      "sha256": "f8eed64ffd1ca4c5701e836a814524ac315b96b126b5e40ccf267aa105f357bd",
+      "mode": "0644",
+      "licence": "CC-BY-4.0"
+    },
+    {
+      "path": "open-content/modules/questions/obs/q-72c7d0821bd1.v1.json",
+      "bytes": 2773,
+      "sha256": "dcaffc1d8b4325e397f73e61401fd9452864d9e11767973cee99aabf2eff5b3c",
+      "mode": "0644",
+      "licence": "CC-BY-4.0"
+    },
+    {
+      "path": "open-content/modules/questions/obs/q-755dd4c78bbc.v1.json",
+      "bytes": 2798,
+      "sha256": "98f19e2bdd6f0d0f4cb9f81ad1b6b84ef6be57cb325ec14bcfa42de4a42c8fba",
+      "mode": "0644",
+      "licence": "CC-BY-4.0"
+    },
+    {
+      "path": "open-content/modules/questions/obs/q-7815eceb8139.v1.json",
+      "bytes": 2881,
+      "sha256": "79c5094b4a9aa4da3621e2b5863723a23c9cc8e90bd40fc9b915662e9f793a18",
+      "mode": "0644",
+      "licence": "CC-BY-4.0"
+    },
+    {
+      "path": "open-content/modules/questions/obs/q-797773f738a5.v1.json",
+      "bytes": 2847,
+      "sha256": "c38f7ef0b1d7bbc55cdc80a99548a0452657d29d405a0d003972563190491245",
+      "mode": "0644",
+      "licence": "CC-BY-4.0"
+    },
+    {
+      "path": "open-content/modules/questions/obs/q-837334873d31.v1.json",
+      "bytes": 2780,
+      "sha256": "74634f1d80ded77bba3eb3824c7d01ab5066efb4514f9a71c330c7e9d74534d3",
+      "mode": "0644",
+      "licence": "CC-BY-4.0"
+    },
+    {
+      "path": "open-content/modules/questions/obs/q-889b1259aed9.v1.json",
+      "bytes": 3249,
+      "sha256": "c4b8e466cc15cf7ae4d4a578f0c068bf9366563e12f5344ca035d4cc4811c32a",
+      "mode": "0644",
+      "licence": "CC-BY-4.0"
+    },
+    {
+      "path": "open-content/modules/questions/obs/q-8a3b3c63515b.v1.json",
+      "bytes": 3022,
+      "sha256": "62712acd408ffea94ace6ad36d3df6f5b2a5a371b9e03eafc6914433d29160ff",
+      "mode": "0644",
+      "licence": "CC-BY-4.0"
+    },
+    {
+      "path": "open-content/modules/questions/obs/q-922675f5e95d.v1.json",
+      "bytes": 3100,
+      "sha256": "77c67926f63d52bd4755ae0fbfbaf77c697612155d90b0f4fada7362beabe090",
+      "mode": "0644",
+      "licence": "CC-BY-4.0"
+    },
+    {
+      "path": "open-content/modules/questions/obs/q-931316265fb1.v1.json",
+      "bytes": 2741,
+      "sha256": "645dba452295f92ff790bd82639400b61d69d78d08a52b578bbfae9cf3e8ff5a",
+      "mode": "0644",
+      "licence": "CC-BY-4.0"
+    },
+    {
+      "path": "open-content/modules/questions/obs/q-95fd6347d0d2.v1.json",
+      "bytes": 3039,
+      "sha256": "553723648a7ea7193cbb003bfe065e3cc5137a3d4199b0c0040f950347415376",
+      "mode": "0644",
+      "licence": "CC-BY-4.0"
+    },
+    {
+      "path": "open-content/modules/questions/obs/q-96437d005668.v1.json",
+      "bytes": 2678,
+      "sha256": "a7fbfb9f0e7d5de05ba6a7a320ce8c166e601f49cc92a5a7bc64edfd95556d7a",
+      "mode": "0644",
+      "licence": "CC-BY-4.0"
+    },
+    {
+      "path": "open-content/modules/questions/obs/q-9a0df82c3049.v1.json",
+      "bytes": 2828,
+      "sha256": "1d177ae8223b0615305f92898ab1240445d0fc33e11715c434598be7e06ddf6b",
+      "mode": "0644",
+      "licence": "CC-BY-4.0"
+    },
+    {
+      "path": "open-content/modules/questions/obs/q-9f15727928f7.v1.json",
+      "bytes": 2939,
+      "sha256": "c363eeee301d71468b4dc02d1c87b68506e908ed0dfaa5d94647c179cf23198c",
+      "mode": "0644",
+      "licence": "CC-BY-4.0"
+    },
+    {
+      "path": "open-content/modules/questions/obs/q-a869036ddc39.v1.json",
+      "bytes": 2842,
+      "sha256": "f4269bd026ff4a675de47246a953087d2784154a87c845d7dbc4acf860c95ecf",
+      "mode": "0644",
+      "licence": "CC-BY-4.0"
+    },
+    {
+      "path": "open-content/modules/questions/obs/q-aab6b07cdc2a.v1.json",
+      "bytes": 2941,
+      "sha256": "d74f4719365ceba8b834add8645e54bc8da90ba7856b99ca67e566989c182b4e",
+      "mode": "0644",
+      "licence": "CC-BY-4.0"
+    },
+    {
+      "path": "open-content/modules/questions/obs/q-ab045f7c9159.v1.json",
+      "bytes": 3010,
+      "sha256": "08f1cb678cc1afe5ea41e29a35bf119be3edea73ce896aaef139bfd8238a39db",
+      "mode": "0644",
+      "licence": "CC-BY-4.0"
+    },
+    {
+      "path": "open-content/modules/questions/obs/q-b658a422ef74.v1.json",
+      "bytes": 2797,
+      "sha256": "e173ef88fc4837721ea44d02ceb2b0342747208c4a1e13761282e051b81a19e5",
+      "mode": "0644",
+      "licence": "CC-BY-4.0"
+    },
+    {
+      "path": "open-content/modules/questions/obs/q-c3dea8bd5b63.v1.json",
+      "bytes": 2621,
+      "sha256": "1c6902c7bb321327a59c1968980a5c71069d0e9edebd740b86a46b0ef02a66da",
+      "mode": "0644",
+      "licence": "CC-BY-4.0"
+    },
+    {
+      "path": "open-content/modules/questions/obs/q-c54b64df4ee1.v1.json",
+      "bytes": 2904,
+      "sha256": "d9565cc464631090a583fd85985d4040feb8b8c8e4e50d5a83b828b745ed7253",
+      "mode": "0644",
+      "licence": "CC-BY-4.0"
+    },
+    {
+      "path": "open-content/modules/questions/obs/q-c6259ced4053.v1.json",
+      "bytes": 2674,
+      "sha256": "6b627c238d8fc7cef4c4cc22f827c45e7611a95108b5f046d81f6b2878f65797",
+      "mode": "0644",
+      "licence": "CC-BY-4.0"
+    },
+    {
+      "path": "open-content/modules/questions/obs/q-c6cc225b0dc9.v1.json",
+      "bytes": 2956,
+      "sha256": "2bcb712a4da1e73aa24c175f7a984b254ce5a2cfffd62cc617dfcb2bb6862c0a",
+      "mode": "0644",
+      "licence": "CC-BY-4.0"
+    },
+    {
+      "path": "open-content/modules/questions/obs/q-c7acd00c84a1.v1.json",
+      "bytes": 2743,
+      "sha256": "4171830cb3f9b74f5032df6e14d6af7935a09ae53d8bad579a88d773b183c09b",
+      "mode": "0644",
+      "licence": "CC-BY-4.0"
+    },
+    {
+      "path": "open-content/modules/questions/obs/q-cc5dd5a78b31.v1.json",
+      "bytes": 2845,
+      "sha256": "3a31aa9d5409a9629efcf7dfd50896a38b397f9b2acacffc8bf6ee91cd4def47",
+      "mode": "0644",
+      "licence": "CC-BY-4.0"
+    },
+    {
+      "path": "open-content/modules/questions/obs/q-cdb7dc97e566.v1.json",
+      "bytes": 2826,
+      "sha256": "7908ca9a0be6c0c7dfac9a5108e0d715d67c6ce0b48d17cdfc900155531c863e",
+      "mode": "0644",
+      "licence": "CC-BY-4.0"
+    },
+    {
+      "path": "open-content/modules/questions/obs/q-cef0034e711d.v1.json",
+      "bytes": 2840,
+      "sha256": "130af5a4d9e50425c6aa3248dda73ad157b9679bbe455b45095a3814435ac52e",
+      "mode": "0644",
+      "licence": "CC-BY-4.0"
+    },
+    {
+      "path": "open-content/modules/questions/obs/q-cf711996ad63.v1.json",
+      "bytes": 2947,
+      "sha256": "e33979068a2442e2e8663fa4b997bd611f98ce0f7627b0bbde90437d8f20fa69",
+      "mode": "0644",
+      "licence": "CC-BY-4.0"
+    },
+    {
+      "path": "open-content/modules/questions/obs/q-d012210a2d1a.v1.json",
+      "bytes": 2844,
+      "sha256": "f945ed380a1ce634608553f080cb1b4d35705405b3bebd514c0c6deabea3c90e",
+      "mode": "0644",
+      "licence": "CC-BY-4.0"
+    },
+    {
+      "path": "open-content/modules/questions/obs/q-d47c3d820c03.v1.json",
+      "bytes": 2807,
+      "sha256": "54f3fbb1bbfc5c88936c49ebee377342e825790a60e825e6ecc7292a4f82dd90",
+      "mode": "0644",
+      "licence": "CC-BY-4.0"
+    },
+    {
+      "path": "open-content/modules/questions/obs/q-d59be2e5d01c.v1.json",
+      "bytes": 2880,
+      "sha256": "478a4bde10c414cf36f0a0eeefa6626bde4c26faa5d7f155deb09db86d4e2485",
+      "mode": "0644",
+      "licence": "CC-BY-4.0"
+    },
+    {
+      "path": "open-content/modules/questions/obs/q-d5f45fe6e1e1.v1.json",
+      "bytes": 2781,
+      "sha256": "34fc1906ebe5e3ff9b058305d2101dbab45c730c5d58768550f3e854f0ca42fe",
+      "mode": "0644",
+      "licence": "CC-BY-4.0"
+    },
+    {
+      "path": "open-content/modules/questions/obs/q-d82f3535e250.v1.json",
+      "bytes": 2956,
+      "sha256": "d56db7e3083e2a4d5d937ef2d15d14e7b48cc02d5e532383cf13ee90c6ccd86b",
+      "mode": "0644",
+      "licence": "CC-BY-4.0"
+    },
+    {
+      "path": "open-content/modules/questions/obs/q-de3395724842.v1.json",
+      "bytes": 2868,
+      "sha256": "f0d1e3027bfd11d437e013b7ab462d15755abd7db1f97b84237fe144c1820cd6",
+      "mode": "0644",
+      "licence": "CC-BY-4.0"
+    },
+    {
+      "path": "open-content/modules/questions/obs/q-de96842cd6e1.v1.json",
+      "bytes": 2933,
+      "sha256": "b175046141383225544f356fd9845bc43886cf9d87d1786780b0159c97cfd9e2",
+      "mode": "0644",
+      "licence": "CC-BY-4.0"
+    },
+    {
+      "path": "open-content/modules/questions/obs/q-e043703dab1e.v1.json",
+      "bytes": 2734,
+      "sha256": "20c1e5859850ec3bad10e67319d6ce808f08c235315aadc8cbcb570b6a7bafba",
+      "mode": "0644",
+      "licence": "CC-BY-4.0"
+    },
+    {
+      "path": "open-content/modules/questions/obs/q-e18c4ea3b680.v1.json",
+      "bytes": 2972,
+      "sha256": "707d4a6a89883549873927f5541209bc72645e9a845320146dbe4e40097fee89",
+      "mode": "0644",
+      "licence": "CC-BY-4.0"
+    },
+    {
+      "path": "open-content/modules/questions/obs/q-e367ba145a2d.v1.json",
+      "bytes": 2993,
+      "sha256": "d319b0d662d4d89df960bb5ddca67e25309178b4300b9dd833678f238262985c",
+      "mode": "0644",
+      "licence": "CC-BY-4.0"
+    },
+    {
+      "path": "open-content/modules/questions/obs/q-e8af87bb59a1.v1.json",
+      "bytes": 2725,
+      "sha256": "5b8df8fb2578c4b5a07f11b8ddf92cb0b9ae266ebd118b316d1e413417baeaa9",
+      "mode": "0644",
+      "licence": "CC-BY-4.0"
+    },
+    {
       "path": "open-content/modules/questions/obs/q-e927811ef93c.v1.json",
       "bytes": 2974,
       "sha256": "037c5bd96da84a1154252a862419a0df0a420f968ab1c17b8a45655fad80dd61",
+      "mode": "0644",
+      "licence": "CC-BY-4.0"
+    },
+    {
+      "path": "open-content/modules/questions/obs/q-eeea6b5e15b3.v1.json",
+      "bytes": 2398,
+      "sha256": "85cb93c3deaf0ac2d967379a6ae5044cecbf96c2a930186d16692357a9b5fe16",
+      "mode": "0644",
+      "licence": "CC-BY-4.0"
+    },
+    {
+      "path": "open-content/modules/questions/obs/q-f243ef8f6899.v1.json",
+      "bytes": 2901,
+      "sha256": "64bdd6053950e8211ba395e80a145bcc625a4ea38f84db9d9e88d6228b23265f",
+      "mode": "0644",
+      "licence": "CC-BY-4.0"
+    },
+    {
+      "path": "open-content/modules/questions/obs/q-fedc477c8a4b.v1.json",
+      "bytes": 2858,
+      "sha256": "fcdaeb6030c53e05e3af1e1d245a0300787e0023a630c8f9a3e465a5b5ae4cce",
+      "mode": "0644",
+      "licence": "CC-BY-4.0"
+    },
+    {
+      "path": "open-content/modules/questions/obs/q-ffb2c29d58bf.v1.json",
+      "bytes": 2728,
+      "sha256": "06e4d2a50dc45b90e3c5dfa7bf57ab36c23cdc4a76904f21067196ad47ed8c2e",
       "mode": "0644",
       "licence": "CC-BY-4.0"
     },
@@ -2912,9 +4662,37 @@
       "licence": "CC-BY-4.0"
     },
     {
+      "path": "open-content/modules/questions/ophth/q-46956acc086f.v1.json",
+      "bytes": 2992,
+      "sha256": "9a5f985b86140f0648df06424817136706b436fa842aaba08947af7eb5dc877f",
+      "mode": "0644",
+      "licence": "CC-BY-4.0"
+    },
+    {
       "path": "open-content/modules/questions/ophth/q-8b158106daaf.v1.json",
       "bytes": 2220,
       "sha256": "fb86a26f1512deb5fe8ce354bc22bdb61598e73bc652f0365af0e4fd84b518fe",
+      "mode": "0644",
+      "licence": "CC-BY-4.0"
+    },
+    {
+      "path": "open-content/modules/questions/ophth/q-900f8cd1069a.v1.json",
+      "bytes": 3272,
+      "sha256": "0f92a54ba3ddb43baf3561707a3988b8c8e1f85e28f6f24db3d696cb781e7aa3",
+      "mode": "0644",
+      "licence": "CC-BY-4.0"
+    },
+    {
+      "path": "open-content/modules/questions/ophth/q-caf44379d79d.v1.json",
+      "bytes": 2761,
+      "sha256": "8c98669ac830e894f1c21e832beac4730a6c079baf6726ea95eb8a9e4bcb2c11",
+      "mode": "0644",
+      "licence": "CC-BY-4.0"
+    },
+    {
+      "path": "open-content/modules/questions/ophth/q-d310133074d1.v1.json",
+      "bytes": 2672,
+      "sha256": "10181f1a0e11f636365019739a9393bd13cff74ed3e3f54de4435865aa9d9d63",
       "mode": "0644",
       "licence": "CC-BY-4.0"
     },
@@ -2929,6 +4707,13 @@
       "path": "open-content/modules/questions/paeds/q-05f6a07484ac.v1.json",
       "bytes": 2271,
       "sha256": "819a63dfe95f538f40a249ca45028d2f8365effb060380158305e0ed42d0671c",
+      "mode": "0644",
+      "licence": "CC-BY-4.0"
+    },
+    {
+      "path": "open-content/modules/questions/paeds/q-0981a61b9795.v1.json",
+      "bytes": 3233,
+      "sha256": "2f50cb3fc40303d43e7b3c16ef83bf241417e0b0c9faae5c3280198af237f02f",
       "mode": "0644",
       "licence": "CC-BY-4.0"
     },
@@ -2968,9 +4753,23 @@
       "licence": "CC-BY-4.0"
     },
     {
+      "path": "open-content/modules/questions/paeds/q-1f1516348876.v1.json",
+      "bytes": 2998,
+      "sha256": "56e741781df71a5bf21702093ab39682fcfd1b4747e056822c6348d88d2ee677",
+      "mode": "0644",
+      "licence": "CC-BY-4.0"
+    },
+    {
       "path": "open-content/modules/questions/paeds/q-2294851f2f87.v1.json",
       "bytes": 2746,
       "sha256": "531a233da1de50b4c4417e321bf9d15a94240a2e13428055b0ee62526681c71f",
+      "mode": "0644",
+      "licence": "CC-BY-4.0"
+    },
+    {
+      "path": "open-content/modules/questions/paeds/q-2299e77f8bdc.v1.json",
+      "bytes": 2712,
+      "sha256": "466f88b097fbba5d7ce139565cb701c83d4432ccadfb908a6b6344aee061f9a4",
       "mode": "0644",
       "licence": "CC-BY-4.0"
     },
@@ -2989,9 +4788,58 @@
       "licence": "CC-BY-4.0"
     },
     {
+      "path": "open-content/modules/questions/paeds/q-2f513f97a7c7.v1.json",
+      "bytes": 2848,
+      "sha256": "27bde3a9a07c949f467bed29278f9cef310ba6124da1c7bfa87440dd0f91ebb5",
+      "mode": "0644",
+      "licence": "CC-BY-4.0"
+    },
+    {
+      "path": "open-content/modules/questions/paeds/q-2fd6e742bab6.v1.json",
+      "bytes": 2816,
+      "sha256": "825d8da797fc5d8e6c58d231104095ed146ef9bf91f75d8f58b0f8617e20e1b6",
+      "mode": "0644",
+      "licence": "CC-BY-4.0"
+    },
+    {
+      "path": "open-content/modules/questions/paeds/q-306b9516302c.v1.json",
+      "bytes": 2892,
+      "sha256": "21f6a81ac7750bd38a6773df6ddbb5d70fc853afe238da80a8410ebd0c24937b",
+      "mode": "0644",
+      "licence": "CC-BY-4.0"
+    },
+    {
+      "path": "open-content/modules/questions/paeds/q-3ac55d6bfdbb.v1.json",
+      "bytes": 2458,
+      "sha256": "46d9bd4f049704840797a1391e3c9a86df25ea44f85c86663dc92dfb24849f89",
+      "mode": "0644",
+      "licence": "CC-BY-4.0"
+    },
+    {
       "path": "open-content/modules/questions/paeds/q-3b96b5dcb104.v1.json",
       "bytes": 2266,
       "sha256": "6e6d3da534b92a76678e123fcf1e189abe5e5801a49fb9bfe2c487ba59648ca7",
+      "mode": "0644",
+      "licence": "CC-BY-4.0"
+    },
+    {
+      "path": "open-content/modules/questions/paeds/q-44dd6125feba.v1.json",
+      "bytes": 2819,
+      "sha256": "8f076e35ccdd2c11a17ba9ff5f4189d8476d2daad275d9468655978baaf36b23",
+      "mode": "0644",
+      "licence": "CC-BY-4.0"
+    },
+    {
+      "path": "open-content/modules/questions/paeds/q-4b1c4da98823.v1.json",
+      "bytes": 2875,
+      "sha256": "c69ac520b6ff7ab6e06b1554fb57b55d044b58ba7936f12b2f49b2da1b335777",
+      "mode": "0644",
+      "licence": "CC-BY-4.0"
+    },
+    {
+      "path": "open-content/modules/questions/paeds/q-4b50c9df63dd.v1.json",
+      "bytes": 2722,
+      "sha256": "8ef7f958848e2bd5bd2d081a6e7869de9862f9bd266dfae9a24e8002bb08a581",
       "mode": "0644",
       "licence": "CC-BY-4.0"
     },
@@ -3003,6 +4851,13 @@
       "licence": "CC-BY-4.0"
     },
     {
+      "path": "open-content/modules/questions/paeds/q-4d9de9ce1b34.v1.json",
+      "bytes": 2989,
+      "sha256": "76d65e15a888a5b5270ee6a808ad73bed7f0d70094e4b3169785871ee86e2baf",
+      "mode": "0644",
+      "licence": "CC-BY-4.0"
+    },
+    {
       "path": "open-content/modules/questions/paeds/q-4fb0f2dbe7d5.v1.json",
       "bytes": 1962,
       "sha256": "254d99e15f160f45ea1fb03abf82f55fd95929d65b9352b8c6bbcbbaca8fb0fd",
@@ -3010,9 +4865,23 @@
       "licence": "CC-BY-4.0"
     },
     {
+      "path": "open-content/modules/questions/paeds/q-510c450eb7d3.v1.json",
+      "bytes": 2737,
+      "sha256": "b89cae2c7b16281de90e743a0fe3795fdc5303f8167bf74bedcaa1ba7643311f",
+      "mode": "0644",
+      "licence": "CC-BY-4.0"
+    },
+    {
       "path": "open-content/modules/questions/paeds/q-69908e0b57ab.v1.json",
       "bytes": 3073,
       "sha256": "5cafeaba7f5e5edb5187495f19c02c3138e3e9cbc0da6a3bf97b76546cb66f96",
+      "mode": "0644",
+      "licence": "CC-BY-4.0"
+    },
+    {
+      "path": "open-content/modules/questions/paeds/q-6b1f7f97240f.v1.json",
+      "bytes": 2912,
+      "sha256": "4a63b41ae75a323b769f9464ed842c6b021cf99002c4f3f42ac397d14ef1cecb",
       "mode": "0644",
       "licence": "CC-BY-4.0"
     },
@@ -3038,6 +4907,20 @@
       "licence": "CC-BY-4.0"
     },
     {
+      "path": "open-content/modules/questions/paeds/q-833abc5a0f5c.v1.json",
+      "bytes": 2522,
+      "sha256": "e4b549a0a06803df9c6c0dce6c03c49e407bc7d14474f241b3416613d2bf3d22",
+      "mode": "0644",
+      "licence": "CC-BY-4.0"
+    },
+    {
+      "path": "open-content/modules/questions/paeds/q-850200a9472b.v1.json",
+      "bytes": 2953,
+      "sha256": "26b43fb740ebdace88ac5187b1a76585a5a43e39b5a2add057a751fc97a2c87f",
+      "mode": "0644",
+      "licence": "CC-BY-4.0"
+    },
+    {
       "path": "open-content/modules/questions/paeds/q-884eb5eb1494.v1.json",
       "bytes": 2757,
       "sha256": "5bc6acc2ed0310ac04b1d6c891b0c5fcc7b0db071d5289798663b105e7f3eeb7",
@@ -3045,9 +4928,23 @@
       "licence": "CC-BY-4.0"
     },
     {
+      "path": "open-content/modules/questions/paeds/q-8e35ca4b4108.v1.json",
+      "bytes": 2962,
+      "sha256": "366aca0bd3a5d811e91484c34d4075cf37565bd17816f7f460ae3926bba49359",
+      "mode": "0644",
+      "licence": "CC-BY-4.0"
+    },
+    {
       "path": "open-content/modules/questions/paeds/q-92a85ac03d30.v1.json",
       "bytes": 3296,
       "sha256": "3adf6f181fbd5e1493c4b13b6ae3127c8d53220e3f37aea97d229eecf31c27a3",
+      "mode": "0644",
+      "licence": "CC-BY-4.0"
+    },
+    {
+      "path": "open-content/modules/questions/paeds/q-93a77485f4c2.v1.json",
+      "bytes": 2826,
+      "sha256": "7c592c1eeaebdbee5b1e74a8ac5458ca0bf998dbf8cc67c5b5f48a796ca9f6cd",
       "mode": "0644",
       "licence": "CC-BY-4.0"
     },
@@ -3069,6 +4966,13 @@
       "path": "open-content/modules/questions/paeds/q-96c8518d5732.v1.json",
       "bytes": 2443,
       "sha256": "486628cf0be3241bb660815a6105dc55ce9fbb1ec21933244d7d4ef33e5c03a3",
+      "mode": "0644",
+      "licence": "CC-BY-4.0"
+    },
+    {
+      "path": "open-content/modules/questions/paeds/q-9a7be786b7db.v1.json",
+      "bytes": 2803,
+      "sha256": "b5cb78619744847ebdfaa66a7306f74cbf55d31a1f664d861f0fb69d702c2cc8",
       "mode": "0644",
       "licence": "CC-BY-4.0"
     },
@@ -3097,6 +5001,13 @@
       "path": "open-content/modules/questions/paeds/q-a7d7fade2b83.v1.json",
       "bytes": 2944,
       "sha256": "f7638c4713f816a64d3842f22379e9ed877e0355d376517eca433186c039bbbb",
+      "mode": "0644",
+      "licence": "CC-BY-4.0"
+    },
+    {
+      "path": "open-content/modules/questions/paeds/q-aa2038388db3.v1.json",
+      "bytes": 2768,
+      "sha256": "75df5c026cd38b8789ab0d91de059033558d73a683c4f9aa6d379ee2e2f1a070",
       "mode": "0644",
       "licence": "CC-BY-4.0"
     },
@@ -3136,6 +5047,13 @@
       "licence": "CC-BY-4.0"
     },
     {
+      "path": "open-content/modules/questions/paeds/q-be05a4b2bd63.v1.json",
+      "bytes": 3035,
+      "sha256": "e68135cf600b35c90cdd2cdcd36213db92c34ff222aa3460e763480390407490",
+      "mode": "0644",
+      "licence": "CC-BY-4.0"
+    },
+    {
       "path": "open-content/modules/questions/paeds/q-be25a2c94788.v1.json",
       "bytes": 3083,
       "sha256": "f43667e0cd51590455353784f43bb96e4f50f0a224a947b531e5d6fa2ca4280e",
@@ -3143,9 +5061,30 @@
       "licence": "CC-BY-4.0"
     },
     {
+      "path": "open-content/modules/questions/paeds/q-c0ea925094b5.v1.json",
+      "bytes": 2799,
+      "sha256": "88f0f131176be464279876dc0bc8022a1359c1e31492d679d444aef7a74bd139",
+      "mode": "0644",
+      "licence": "CC-BY-4.0"
+    },
+    {
+      "path": "open-content/modules/questions/paeds/q-c81dfa125e97.v1.json",
+      "bytes": 2693,
+      "sha256": "82ab6c2fdabe19f557abbb2bcc9b542041d6ecdfcc2d8f3d56ad4739c382cd5b",
+      "mode": "0644",
+      "licence": "CC-BY-4.0"
+    },
+    {
       "path": "open-content/modules/questions/paeds/q-c97863d3df78.v1.json",
       "bytes": 2164,
       "sha256": "e3b189abf901965cb75019bbb18b74e3e03388ac4d71483c2229dfbb8f468872",
+      "mode": "0644",
+      "licence": "CC-BY-4.0"
+    },
+    {
+      "path": "open-content/modules/questions/paeds/q-d008fcaa1a6d.v1.json",
+      "bytes": 2785,
+      "sha256": "fdb6114636c16637998b2a28d55ac4da035422f706b5302ab238471f15ff50ec",
       "mode": "0644",
       "licence": "CC-BY-4.0"
     },
@@ -3164,9 +5103,23 @@
       "licence": "CC-BY-4.0"
     },
     {
+      "path": "open-content/modules/questions/paeds/q-e67b9974df4f.v1.json",
+      "bytes": 2746,
+      "sha256": "0aceb63144a9682d4a745339350d1ea86ca6a6a832405726b4578f049bc03768",
+      "mode": "0644",
+      "licence": "CC-BY-4.0"
+    },
+    {
       "path": "open-content/modules/questions/paeds/q-e7db971bf7fe.v1.json",
       "bytes": 3013,
       "sha256": "722b6564e13d2e527d4195b7fcc21fa50e6104bd1fb25b51b64fcf0305ce63db",
+      "mode": "0644",
+      "licence": "CC-BY-4.0"
+    },
+    {
+      "path": "open-content/modules/questions/paeds/q-eb140e9a7555.v1.json",
+      "bytes": 2582,
+      "sha256": "96aa4aa183a51587d4acbeeaff00cf8cb01a90edaff02994f666253aa05f3c7c",
       "mode": "0644",
       "licence": "CC-BY-4.0"
     },
@@ -3178,9 +5131,30 @@
       "licence": "CC-BY-4.0"
     },
     {
+      "path": "open-content/modules/questions/paeds/q-f2271d5e74a3.v1.json",
+      "bytes": 2624,
+      "sha256": "53ae94fe662b973c23ea4e1224c51c2dddf5e5ffeaf32c6624730a2934377f67",
+      "mode": "0644",
+      "licence": "CC-BY-4.0"
+    },
+    {
       "path": "open-content/modules/questions/paeds/q-f41e7d492328.v1.json",
       "bytes": 2261,
       "sha256": "033c799fe18a39b2d5f37da8fecfba976a862da8dd2bdf1f1933821aea18512a",
+      "mode": "0644",
+      "licence": "CC-BY-4.0"
+    },
+    {
+      "path": "open-content/modules/questions/paeds/q-f430dc3a1f37.v1.json",
+      "bytes": 3331,
+      "sha256": "947cb901fb6040e90a1f34a57072ddc761c51b7de4d8780d0a37da8ac6b47faf",
+      "mode": "0644",
+      "licence": "CC-BY-4.0"
+    },
+    {
+      "path": "open-content/modules/questions/paeds/q-f4a1654f57eb.v1.json",
+      "bytes": 2919,
+      "sha256": "be78efbf91fa899f5c64ab5f76ae8933abb704e36038ec14d0ca823c006f1028",
       "mode": "0644",
       "licence": "CC-BY-4.0"
     },
@@ -3192,9 +5166,667 @@
       "licence": "CC-BY-4.0"
     },
     {
+      "path": "open-content/modules/questions/pharm/q-3b04f2e47052.v1.json",
+      "bytes": 3173,
+      "sha256": "afc617d2a2ea996df856f5f50a6f169b8b5bf19e7b01e60bcd82bce92fab823c",
+      "mode": "0644",
+      "licence": "CC-BY-4.0"
+    },
+    {
+      "path": "open-content/modules/questions/pharm/q-5de2f28717ac.v1.json",
+      "bytes": 2998,
+      "sha256": "ada3b837e886c961ef9ed8cd9f9b1deb35a0ca693135665458e27e2d80768e5f",
+      "mode": "0644",
+      "licence": "CC-BY-4.0"
+    },
+    {
+      "path": "open-content/modules/questions/pharm/q-82cf114c7aee.v1.json",
+      "bytes": 3016,
+      "sha256": "a46fd946c021e60917b252a8199b33d4368ce5691d34a87ed9d76226bb7460c2",
+      "mode": "0644",
+      "licence": "CC-BY-4.0"
+    },
+    {
+      "path": "open-content/modules/questions/pharm/q-83eaf5c73061.v1.json",
+      "bytes": 2846,
+      "sha256": "bfe2fc4b3ef2c0e3a388be44af2ae9f2a7b6e1327d7e3dcd7618e30982a246b5",
+      "mode": "0644",
+      "licence": "CC-BY-4.0"
+    },
+    {
+      "path": "open-content/modules/questions/pharm/q-a93347ab59b8.v1.json",
+      "bytes": 2952,
+      "sha256": "3dfb63960b6475c38d9b8d2c7c8f785f01573f786dbad9a1b87ad782b69ce6a9",
+      "mode": "0644",
+      "licence": "CC-BY-4.0"
+    },
+    {
+      "path": "open-content/modules/questions/pharm/q-b0e747b5da54.v1.json",
+      "bytes": 3149,
+      "sha256": "644a440885b784ced68cf19aa4455fb067d2ea5ca3e62ff9f10114c748b7a34c",
+      "mode": "0644",
+      "licence": "CC-BY-4.0"
+    },
+    {
+      "path": "open-content/modules/questions/pharm/q-fd5582fb9fe7.v1.json",
+      "bytes": 2923,
+      "sha256": "37f559e9c3e450aa0baca2f986f0af102bed6edab42d23292567df1ac7d239ce",
+      "mode": "0644",
+      "licence": "CC-BY-4.0"
+    },
+    {
+      "path": "open-content/modules/questions/psych/q-00444be12fce.v1.json",
+      "bytes": 2687,
+      "sha256": "ca89f8c93cc7ce3988f4e17cd5d9179723c32fa5b3f11b1b7588060e8a777d48",
+      "mode": "0644",
+      "licence": "CC-BY-4.0"
+    },
+    {
+      "path": "open-content/modules/questions/psych/q-045e54be5427.v1.json",
+      "bytes": 3160,
+      "sha256": "71f68760f7947cea615c7b9d88a95de80e4b7bbd989456e749ab36c784b1b08b",
+      "mode": "0644",
+      "licence": "CC-BY-4.0"
+    },
+    {
+      "path": "open-content/modules/questions/psych/q-0dc28f51b49e.v1.json",
+      "bytes": 2777,
+      "sha256": "b949b63fe5d7e901b17d663c32fa9fbdf0d66a2ed300ca0355817ddc4d16ea2c",
+      "mode": "0644",
+      "licence": "CC-BY-4.0"
+    },
+    {
+      "path": "open-content/modules/questions/psych/q-0de5750157bf.v1.json",
+      "bytes": 3035,
+      "sha256": "2cb2254d359e32337d6bf21dcaa34f59e2639c0cd1e4aa15bfa54efafcbfca95",
+      "mode": "0644",
+      "licence": "CC-BY-4.0"
+    },
+    {
+      "path": "open-content/modules/questions/psych/q-10a41efbe454.v1.json",
+      "bytes": 2891,
+      "sha256": "e3371647daa16c1b0d75f0302714fa5820a8ae6077e28484e119391b963f8a25",
+      "mode": "0644",
+      "licence": "CC-BY-4.0"
+    },
+    {
+      "path": "open-content/modules/questions/psych/q-16ffb3b32cad.v1.json",
+      "bytes": 2807,
+      "sha256": "4ec99361b0fa45baa2b7700d41f1a9350dffc80a96626897ba3de2718bdb3347",
+      "mode": "0644",
+      "licence": "CC-BY-4.0"
+    },
+    {
+      "path": "open-content/modules/questions/psych/q-1a9221ebda10.v1.json",
+      "bytes": 2985,
+      "sha256": "6c54e2679669e55e0793aa2c5a311a510ce0c853002a02998577dcd429adc266",
+      "mode": "0644",
+      "licence": "CC-BY-4.0"
+    },
+    {
+      "path": "open-content/modules/questions/psych/q-1cd4ea56330b.v1.json",
+      "bytes": 2704,
+      "sha256": "20010b2beb4c05357026730dac8b24852a86ad4878313dcc8bb59a79759ce83b",
+      "mode": "0644",
+      "licence": "CC-BY-4.0"
+    },
+    {
+      "path": "open-content/modules/questions/psych/q-208121942cb3.v1.json",
+      "bytes": 2980,
+      "sha256": "baba719c30cfba8c5e2c6f8474efc51bbfb0cbca6ae7c19d388ab7b3282964f9",
+      "mode": "0644",
+      "licence": "CC-BY-4.0"
+    },
+    {
+      "path": "open-content/modules/questions/psych/q-20ef29e2018f.v1.json",
+      "bytes": 2918,
+      "sha256": "03f053a517ab9ca7a2988018c8f0b073d16fdc0ca6d107ba1efeac8adeeb6065",
+      "mode": "0644",
+      "licence": "CC-BY-4.0"
+    },
+    {
+      "path": "open-content/modules/questions/psych/q-2108e3d5b265.v1.json",
+      "bytes": 2825,
+      "sha256": "a9a00c1c951b89d05f94ceba14c59319514a0b1f09a587baf6d6cf7757c6cc83",
+      "mode": "0644",
+      "licence": "CC-BY-4.0"
+    },
+    {
+      "path": "open-content/modules/questions/psych/q-23401665b414.v1.json",
+      "bytes": 2904,
+      "sha256": "a0704e7b42392ff9dcfe5957c23d6b853cac1f84ddc3e11690226aa27458be8e",
+      "mode": "0644",
+      "licence": "CC-BY-4.0"
+    },
+    {
+      "path": "open-content/modules/questions/psych/q-27d3fc3124d7.v1.json",
+      "bytes": 2749,
+      "sha256": "d1400bcda550fc2fa7c3ea4d4fb93f66dee79302a107c49a18b1af4248702863",
+      "mode": "0644",
+      "licence": "CC-BY-4.0"
+    },
+    {
+      "path": "open-content/modules/questions/psych/q-2b0d55aba95a.v1.json",
+      "bytes": 3359,
+      "sha256": "a4caca2df1c8cd1a0a4c91a70c503b4a6458b871fc8382d5a769461f00770cf2",
+      "mode": "0644",
+      "licence": "CC-BY-4.0"
+    },
+    {
+      "path": "open-content/modules/questions/psych/q-31e09b514b44.v1.json",
+      "bytes": 3003,
+      "sha256": "57eed0a5e511c9acb4f7b9fb25ef2249320201532ff888a7637802e084b911b6",
+      "mode": "0644",
+      "licence": "CC-BY-4.0"
+    },
+    {
+      "path": "open-content/modules/questions/psych/q-38e77f130148.v1.json",
+      "bytes": 3366,
+      "sha256": "8b320d5d2f83f79dc6efee3bedeee9357e72f861f28585e7a8c61525256a336c",
+      "mode": "0644",
+      "licence": "CC-BY-4.0"
+    },
+    {
+      "path": "open-content/modules/questions/psych/q-404bc8e2f937.v1.json",
+      "bytes": 3354,
+      "sha256": "1d1f13c9457e6f0678c44f367aec38f4f5dd56b117efa343327af3ef08675a79",
+      "mode": "0644",
+      "licence": "CC-BY-4.0"
+    },
+    {
+      "path": "open-content/modules/questions/psych/q-42a6cbf39f5b.v1.json",
+      "bytes": 3089,
+      "sha256": "2b07329f55f49812599083bbd67f89d311e1242607592faaa791a4caeb071463",
+      "mode": "0644",
+      "licence": "CC-BY-4.0"
+    },
+    {
+      "path": "open-content/modules/questions/psych/q-43d7e758f5c1.v1.json",
+      "bytes": 3116,
+      "sha256": "1c83aa146a53a6ce5e3467f5c29344ecf2a9a5675bae3e6940a3b0aea06b9bf9",
+      "mode": "0644",
+      "licence": "CC-BY-4.0"
+    },
+    {
+      "path": "open-content/modules/questions/psych/q-44f3b61dd21a.v1.json",
+      "bytes": 2845,
+      "sha256": "76dff485aaa1a331bb70122761cc49a9a137ff76b52c2911a3400cd7d3a52bd1",
+      "mode": "0644",
+      "licence": "CC-BY-4.0"
+    },
+    {
+      "path": "open-content/modules/questions/psych/q-4766a1d9a8c7.v1.json",
+      "bytes": 2944,
+      "sha256": "eea7883ddc555f81affa98e948e8c623e22569a81b5f3e1ab1b9453210203839",
+      "mode": "0644",
+      "licence": "CC-BY-4.0"
+    },
+    {
+      "path": "open-content/modules/questions/psych/q-4a23c71aa17f.v1.json",
+      "bytes": 3155,
+      "sha256": "2dfeca88acc0280500bff096fe7d0faccc55646a914c70111893f6f33127b05a",
+      "mode": "0644",
+      "licence": "CC-BY-4.0"
+    },
+    {
+      "path": "open-content/modules/questions/psych/q-4ef7dd5647d5.v1.json",
+      "bytes": 3229,
+      "sha256": "d28ed4b3bc5c75999c03e68a868698ac056999e61e8d1e4e231c4daf851a1d64",
+      "mode": "0644",
+      "licence": "CC-BY-4.0"
+    },
+    {
+      "path": "open-content/modules/questions/psych/q-571a4d0493e0.v1.json",
+      "bytes": 2972,
+      "sha256": "994ada4e45141455700c404ffef77c9e41808a91a83729b038a17abb917eb184",
+      "mode": "0644",
+      "licence": "CC-BY-4.0"
+    },
+    {
+      "path": "open-content/modules/questions/psych/q-5a3f7632e649.v1.json",
+      "bytes": 3054,
+      "sha256": "54664119c48a0c1eab742c6272a910f91c8390f9c863b6d74678890ff3b9a29a",
+      "mode": "0644",
+      "licence": "CC-BY-4.0"
+    },
+    {
+      "path": "open-content/modules/questions/psych/q-5d95f56637ea.v1.json",
+      "bytes": 3196,
+      "sha256": "49a24dea07d60c57109b5aa0199044ccf5c4b29763ee098db794b284650f349c",
+      "mode": "0644",
+      "licence": "CC-BY-4.0"
+    },
+    {
+      "path": "open-content/modules/questions/psych/q-5ea18170c48f.v1.json",
+      "bytes": 2456,
+      "sha256": "9fc2ea9028b2076a39ddecd1ce9f0163704c4fc3798a741c15c6eb42f952d436",
+      "mode": "0644",
+      "licence": "CC-BY-4.0"
+    },
+    {
+      "path": "open-content/modules/questions/psych/q-5f0453429b84.v1.json",
+      "bytes": 2838,
+      "sha256": "9cdafe9af930b771d34e2d316cd987f2aaca9cf45716b5748420da4cb2012e48",
+      "mode": "0644",
+      "licence": "CC-BY-4.0"
+    },
+    {
+      "path": "open-content/modules/questions/psych/q-622fcff5f04d.v1.json",
+      "bytes": 2908,
+      "sha256": "eaaab79a6d3a5e639880c700c31ef89992cd8b689560bcc8ce9f650b2de33fae",
+      "mode": "0644",
+      "licence": "CC-BY-4.0"
+    },
+    {
+      "path": "open-content/modules/questions/psych/q-641029d60b67.v1.json",
+      "bytes": 3062,
+      "sha256": "b547db09c427e32843d399eb58a1216cabb140798d1b89933d034078e41a955e",
+      "mode": "0644",
+      "licence": "CC-BY-4.0"
+    },
+    {
+      "path": "open-content/modules/questions/psych/q-65bcdfa17981.v1.json",
+      "bytes": 2958,
+      "sha256": "3c2485e5f65932dd9c8350be4ba966fb2e717dbccc428e00287c6c17ea266755",
+      "mode": "0644",
+      "licence": "CC-BY-4.0"
+    },
+    {
+      "path": "open-content/modules/questions/psych/q-70a32c2d6472.v1.json",
+      "bytes": 3044,
+      "sha256": "c0eda09787be48dc66faea26733bdcaee571d673d08acc79be9084aed50e2b58",
+      "mode": "0644",
+      "licence": "CC-BY-4.0"
+    },
+    {
+      "path": "open-content/modules/questions/psych/q-73b465e44a70.v1.json",
+      "bytes": 3243,
+      "sha256": "dabfdaac734077b7ecc91c961419848d6da5e0eb31f9353284bcf26b69118e27",
+      "mode": "0644",
+      "licence": "CC-BY-4.0"
+    },
+    {
+      "path": "open-content/modules/questions/psych/q-73d40d00d868.v1.json",
+      "bytes": 2563,
+      "sha256": "00ab6cbca32154ce2318975940345b2e0ac0da513738668d4c06d1393b118c07",
+      "mode": "0644",
+      "licence": "CC-BY-4.0"
+    },
+    {
+      "path": "open-content/modules/questions/psych/q-7638b433a839.v1.json",
+      "bytes": 3476,
+      "sha256": "7a0cf82de086708a9d097dfa5b1589b230967769f8beb8660587a17656f6c25c",
+      "mode": "0644",
+      "licence": "CC-BY-4.0"
+    },
+    {
+      "path": "open-content/modules/questions/psych/q-76f3c82ff3d9.v1.json",
+      "bytes": 2983,
+      "sha256": "6fac5290d71c01d5aacd5fe738e43287e4853cdd55161f2ccf76edeebf816632",
+      "mode": "0644",
+      "licence": "CC-BY-4.0"
+    },
+    {
+      "path": "open-content/modules/questions/psych/q-77eb1e7793e5.v1.json",
+      "bytes": 3124,
+      "sha256": "2ed20e7d118a6580aa4a852a9ed8a72b9f1965edbc68a3bc4e483410621a0577",
+      "mode": "0644",
+      "licence": "CC-BY-4.0"
+    },
+    {
+      "path": "open-content/modules/questions/psych/q-847f9016d8d0.v1.json",
+      "bytes": 2847,
+      "sha256": "6a1fcb9c5c9efe61d9291ee50cd0067cd217f89455f4e63c8acba71ff1614ffc",
+      "mode": "0644",
+      "licence": "CC-BY-4.0"
+    },
+    {
+      "path": "open-content/modules/questions/psych/q-857840155710.v1.json",
+      "bytes": 3151,
+      "sha256": "09cec5236cc47cf1a9ddfa218155883102db406f1d8c59522f1fb5a37cb761bf",
+      "mode": "0644",
+      "licence": "CC-BY-4.0"
+    },
+    {
+      "path": "open-content/modules/questions/psych/q-88da791ddd32.v1.json",
+      "bytes": 2598,
+      "sha256": "04cf2c2e396a0dd2d382eec8526994f2dc6cd95cb381007143b2005aa95a04d0",
+      "mode": "0644",
+      "licence": "CC-BY-4.0"
+    },
+    {
+      "path": "open-content/modules/questions/psych/q-8aa007f3f385.v1.json",
+      "bytes": 3262,
+      "sha256": "564b0589abab8dd3317c03c218d56e44eece5a5f277f767edd451271fc9d747c",
+      "mode": "0644",
+      "licence": "CC-BY-4.0"
+    },
+    {
+      "path": "open-content/modules/questions/psych/q-8aa54e32385f.v1.json",
+      "bytes": 2782,
+      "sha256": "626b124cb9bc5e1f43ba30af62e35d2d9216821a9777185adb69a76685f45d41",
+      "mode": "0644",
+      "licence": "CC-BY-4.0"
+    },
+    {
+      "path": "open-content/modules/questions/psych/q-8c59807d6276.v1.json",
+      "bytes": 3373,
+      "sha256": "fe3a4b31c4f808ba66bf10a9ad7fd72fd31148ac6f2f13653dc9c5b85ac0e0bc",
+      "mode": "0644",
+      "licence": "CC-BY-4.0"
+    },
+    {
+      "path": "open-content/modules/questions/psych/q-8ef812a566b4.v1.json",
+      "bytes": 2810,
+      "sha256": "fce38366cad91b3c9dc06c2c5b8ceb7299d7f5e8d4c3ce502dc063885b3b0332",
+      "mode": "0644",
+      "licence": "CC-BY-4.0"
+    },
+    {
+      "path": "open-content/modules/questions/psych/q-92c7113a946f.v1.json",
+      "bytes": 2909,
+      "sha256": "a6006dc8e5446b602667483c8f90a45a58ae37ddf0849b7b91fa9fdc5f25f2a1",
+      "mode": "0644",
+      "licence": "CC-BY-4.0"
+    },
+    {
+      "path": "open-content/modules/questions/psych/q-9345af705535.v1.json",
+      "bytes": 2915,
+      "sha256": "6d8bc2597b9be92f4752501d07a8d7547c85f30ce590b7927b276d23765772bc",
+      "mode": "0644",
+      "licence": "CC-BY-4.0"
+    },
+    {
+      "path": "open-content/modules/questions/psych/q-94fc24b56ac1.v1.json",
+      "bytes": 3127,
+      "sha256": "21c55b451c9cc3d4c4ea9f67ac1315e92eb1bccf618b97c31b607dbeecd86052",
+      "mode": "0644",
+      "licence": "CC-BY-4.0"
+    },
+    {
+      "path": "open-content/modules/questions/psych/q-963d3478cb3d.v1.json",
+      "bytes": 2864,
+      "sha256": "1cfb11e4d6493c13199fab5a6384489315abdff46fcffa8bd00e911d65f9443e",
+      "mode": "0644",
+      "licence": "CC-BY-4.0"
+    },
+    {
+      "path": "open-content/modules/questions/psych/q-a0e1576ab2dd.v1.json",
+      "bytes": 3408,
+      "sha256": "92c068ddcd3d6c7934aa6af4e57bc4221dc86024c6206e7ffb91a20c33343b6c",
+      "mode": "0644",
+      "licence": "CC-BY-4.0"
+    },
+    {
+      "path": "open-content/modules/questions/psych/q-a1b5eced2fd5.v1.json",
+      "bytes": 2828,
+      "sha256": "47b5c147d7cad6c411adf8bb16f2617f634df177351688e15a8f1b476545fe31",
+      "mode": "0644",
+      "licence": "CC-BY-4.0"
+    },
+    {
+      "path": "open-content/modules/questions/psych/q-a3301fd4645a.v1.json",
+      "bytes": 3008,
+      "sha256": "35b3e3b8f913ff7164b3b254c2e8fc7b92763c8de62024b20113b516e511c0ef",
+      "mode": "0644",
+      "licence": "CC-BY-4.0"
+    },
+    {
+      "path": "open-content/modules/questions/psych/q-a6d2f0ca01d7.v1.json",
+      "bytes": 2757,
+      "sha256": "051f03d933aab9b8802384b50d0c74d4fcaa17c8d589691cadef97474fedfed3",
+      "mode": "0644",
+      "licence": "CC-BY-4.0"
+    },
+    {
+      "path": "open-content/modules/questions/psych/q-adfe8a6482dc.v1.json",
+      "bytes": 2851,
+      "sha256": "b21a898ebacbe7cff41ed8d0deb60e3646ef6197d79d5e1784fe509748cde482",
+      "mode": "0644",
+      "licence": "CC-BY-4.0"
+    },
+    {
+      "path": "open-content/modules/questions/psych/q-aeea4d7fda7e.v1.json",
+      "bytes": 3080,
+      "sha256": "b784013f2d0da3ee3da083a4e0edb8c463a093addea237a23c7454dfde6f3ed9",
+      "mode": "0644",
+      "licence": "CC-BY-4.0"
+    },
+    {
+      "path": "open-content/modules/questions/psych/q-af4863f406d9.v1.json",
+      "bytes": 3020,
+      "sha256": "f712c629e084ad7c4002f1594a561b4b24fcf48467e8b88df7e71ea6807ccbd3",
+      "mode": "0644",
+      "licence": "CC-BY-4.0"
+    },
+    {
+      "path": "open-content/modules/questions/psych/q-b3e59281e483.v1.json",
+      "bytes": 2989,
+      "sha256": "2797e3ff0900aab8db5b17cd1b89ea64e59261de6527abe57ab6f9e14e5fc952",
+      "mode": "0644",
+      "licence": "CC-BY-4.0"
+    },
+    {
+      "path": "open-content/modules/questions/psych/q-b60cac81280d.v1.json",
+      "bytes": 2580,
+      "sha256": "80dd5572d3d9589d7e2fff793bd7f2e6d6cb2fabaefa753dbfbdcae047160e8f",
+      "mode": "0644",
+      "licence": "CC-BY-4.0"
+    },
+    {
       "path": "open-content/modules/questions/psych/q-b9a4fcf6b140.v1.json",
       "bytes": 2919,
       "sha256": "693c95f997aef2fbcf0de7e2c744b9fd8b2705ec6db276872fe48a63ef6588b0",
+      "mode": "0644",
+      "licence": "CC-BY-4.0"
+    },
+    {
+      "path": "open-content/modules/questions/psych/q-ba355f731524.v1.json",
+      "bytes": 3177,
+      "sha256": "7205ad3b6e5e0a4800cada5bad06451629ce2c27bcb6351611e3f852dfe8c8d2",
+      "mode": "0644",
+      "licence": "CC-BY-4.0"
+    },
+    {
+      "path": "open-content/modules/questions/psych/q-be268e8f72fb.v1.json",
+      "bytes": 2859,
+      "sha256": "3f7da5b9b99fd8425d005d2ad5b38b1feaa6973222aa6211647e07e263b76f08",
+      "mode": "0644",
+      "licence": "CC-BY-4.0"
+    },
+    {
+      "path": "open-content/modules/questions/psych/q-be364ac8e043.v1.json",
+      "bytes": 2956,
+      "sha256": "2abb4e6af1f319946cf6b950a1098145bb9e4a3d296be33ad1efe439161d7c3c",
+      "mode": "0644",
+      "licence": "CC-BY-4.0"
+    },
+    {
+      "path": "open-content/modules/questions/psych/q-bfa33f6f0829.v1.json",
+      "bytes": 3092,
+      "sha256": "486a000f1a11a325e5bbad6c7e204fc7d016670c66cd15d1c241267dfb4be16c",
+      "mode": "0644",
+      "licence": "CC-BY-4.0"
+    },
+    {
+      "path": "open-content/modules/questions/psych/q-c0cf8cf0531d.v1.json",
+      "bytes": 2842,
+      "sha256": "0236f5587dcc0c59ae83204f686bd10bc1e9be1952418666773ff1ae5178a7c9",
+      "mode": "0644",
+      "licence": "CC-BY-4.0"
+    },
+    {
+      "path": "open-content/modules/questions/psych/q-c423a69ac134.v1.json",
+      "bytes": 3487,
+      "sha256": "6b61e0d1b3fadd9e4ffd4ee17fd579a4bf69c8b6b1f440e91b8df675507449f0",
+      "mode": "0644",
+      "licence": "CC-BY-4.0"
+    },
+    {
+      "path": "open-content/modules/questions/psych/q-c48e1b601709.v1.json",
+      "bytes": 3147,
+      "sha256": "e61889345dfdaeda5d4297aa2957dfab422c4e12987df4c03793d7351e366170",
+      "mode": "0644",
+      "licence": "CC-BY-4.0"
+    },
+    {
+      "path": "open-content/modules/questions/psych/q-c83406e4d560.v1.json",
+      "bytes": 2766,
+      "sha256": "79d087043ce4bf898005604d58652205139a92523c6aa77afb22bde4a26cc405",
+      "mode": "0644",
+      "licence": "CC-BY-4.0"
+    },
+    {
+      "path": "open-content/modules/questions/psych/q-c9a018f1b7d6.v1.json",
+      "bytes": 3258,
+      "sha256": "355aa6d90f777046e57465f0d060d15cffa3dcdae7d748483c9def19c65b6cd9",
+      "mode": "0644",
+      "licence": "CC-BY-4.0"
+    },
+    {
+      "path": "open-content/modules/questions/psych/q-cb90e9b8413d.v1.json",
+      "bytes": 3012,
+      "sha256": "007c9186060511cd0dd2f0389a1440a8cec4648a49997991f57a43155196dad5",
+      "mode": "0644",
+      "licence": "CC-BY-4.0"
+    },
+    {
+      "path": "open-content/modules/questions/psych/q-cd3eed817855.v1.json",
+      "bytes": 3234,
+      "sha256": "03a120c933d095fbc06ef42cc4545a6099c52b3e6cacd771522a5a852f8e9aa7",
+      "mode": "0644",
+      "licence": "CC-BY-4.0"
+    },
+    {
+      "path": "open-content/modules/questions/psych/q-d08c2618614b.v1.json",
+      "bytes": 2815,
+      "sha256": "55ac789c3fc694ec103f9727f7dfd9987805aa8fb7b27324f317077ac24feb2a",
+      "mode": "0644",
+      "licence": "CC-BY-4.0"
+    },
+    {
+      "path": "open-content/modules/questions/psych/q-d6100ff4685e.v1.json",
+      "bytes": 3343,
+      "sha256": "f3c3c5fa852252a340a081ab06930b2ea454ac516820e597eaf615086f127bd5",
+      "mode": "0644",
+      "licence": "CC-BY-4.0"
+    },
+    {
+      "path": "open-content/modules/questions/psych/q-d6124f3658f9.v1.json",
+      "bytes": 3068,
+      "sha256": "0efff53d6d983c3590770dd1c9ce3d39c434b94a307782cb5ec2069fe8ef97de",
+      "mode": "0644",
+      "licence": "CC-BY-4.0"
+    },
+    {
+      "path": "open-content/modules/questions/psych/q-d653013a14f6.v1.json",
+      "bytes": 2847,
+      "sha256": "e53217791e9fea4b839876bbeb22937372c758803733bee1d768457059842563",
+      "mode": "0644",
+      "licence": "CC-BY-4.0"
+    },
+    {
+      "path": "open-content/modules/questions/psych/q-d69e24d32711.v1.json",
+      "bytes": 3123,
+      "sha256": "0121ab320be217dd90a8c244fb72148cf714f60f0652f684fbbc3a5674a8a884",
+      "mode": "0644",
+      "licence": "CC-BY-4.0"
+    },
+    {
+      "path": "open-content/modules/questions/psych/q-d8b9db9e40a1.v1.json",
+      "bytes": 3292,
+      "sha256": "df805be10b727b412a3b05b5327a70f4b0e774fe8ccc22af19c34aaf8cf5ec15",
+      "mode": "0644",
+      "licence": "CC-BY-4.0"
+    },
+    {
+      "path": "open-content/modules/questions/psych/q-e11247909c1d.v1.json",
+      "bytes": 2815,
+      "sha256": "16553df3f00183460a46c991224163c251c381b87ef86f40e0955b7434ce5b01",
+      "mode": "0644",
+      "licence": "CC-BY-4.0"
+    },
+    {
+      "path": "open-content/modules/questions/psych/q-e4dc203ab190.v1.json",
+      "bytes": 2971,
+      "sha256": "b360a9f6da6bf4d95eb2cb80973f656b0d6768358ce88dfdcff295c42dd0f66e",
+      "mode": "0644",
+      "licence": "CC-BY-4.0"
+    },
+    {
+      "path": "open-content/modules/questions/psych/q-e54e7fffce27.v1.json",
+      "bytes": 3045,
+      "sha256": "297dc1300b89bfe34998a9e345d7345e7f8f99aff0713f193c3f283faaa3adda",
+      "mode": "0644",
+      "licence": "CC-BY-4.0"
+    },
+    {
+      "path": "open-content/modules/questions/psych/q-f79ed82a7af7.v1.json",
+      "bytes": 3172,
+      "sha256": "6369d347d117f6e49ad90a6c4b9530ecd708d5bac316ecc25d37d4b96954a216",
+      "mode": "0644",
+      "licence": "CC-BY-4.0"
+    },
+    {
+      "path": "open-content/modules/questions/psych/q-f88e58333c6e.v1.json",
+      "bytes": 3086,
+      "sha256": "860f1b53e5896b5d51cba826db2513ee070b475237a9e6680f6a91ad0b6310fb",
+      "mode": "0644",
+      "licence": "CC-BY-4.0"
+    },
+    {
+      "path": "open-content/modules/questions/psych/q-fb0079e98758.v1.json",
+      "bytes": 2681,
+      "sha256": "51efff276eb243ecd096d66a95e0571265a79b743979c82b9fd7cc43c58eaa5c",
+      "mode": "0644",
+      "licence": "CC-BY-4.0"
+    },
+    {
+      "path": "open-content/modules/questions/psych/q-fb70ca8cdc48.v1.json",
+      "bytes": 2599,
+      "sha256": "bf093fa83d376ee807beb6633f75465a5d1d2cf04df5644a992c30de6cd3b730",
+      "mode": "0644",
+      "licence": "CC-BY-4.0"
+    },
+    {
+      "path": "open-content/modules/questions/psych/q-fc1a80ffe571.v1.json",
+      "bytes": 2910,
+      "sha256": "5f43097cf12996d56623046a3527df5a1fa6c1591fd528543dc2f84a48111ea0",
+      "mode": "0644",
+      "licence": "CC-BY-4.0"
+    },
+    {
+      "path": "open-content/modules/questions/psych/q-fdfcea354197.v1.json",
+      "bytes": 3439,
+      "sha256": "1d96417fe6fda36d7a1868dfdade18c7a095fe7d108c6689894519b72b25dcd4",
+      "mode": "0644",
+      "licence": "CC-BY-4.0"
+    },
+    {
+      "path": "open-content/modules/questions/psych/q-fe13760ead16.v1.json",
+      "bytes": 3014,
+      "sha256": "98d24b7276afad7a4333deb3a68f7258d7c3608189f63caed7cf081b963e4b59",
+      "mode": "0644",
+      "licence": "CC-BY-4.0"
+    },
+    {
+      "path": "open-content/modules/questions/renal/q-0ca0a907d247.v1.json",
+      "bytes": 2545,
+      "sha256": "12f7f0d06d799dc14580b9a41a63f6f96a9baac31d870894ae3b34c6f5ce1dde",
+      "mode": "0644",
+      "licence": "CC-BY-4.0"
+    },
+    {
+      "path": "open-content/modules/questions/renal/q-63c28b3ca608.v1.json",
+      "bytes": 2752,
+      "sha256": "30e9afa8498f8c9b255a62472969a1fd7feccfee4b2c4361c1518cba07b38538",
+      "mode": "0644",
+      "licence": "CC-BY-4.0"
+    },
+    {
+      "path": "open-content/modules/questions/renal/q-f1c455fbaa77.v1.json",
+      "bytes": 3375,
+      "sha256": "56ff6b7198ec7001099d3931c9cddef41b9ab5988801d13bd35af294204039a5",
       "mode": "0644",
       "licence": "CC-BY-4.0"
     },
@@ -3213,9 +5845,44 @@
       "licence": "CC-BY-4.0"
     },
     {
+      "path": "open-content/modules/questions/resp/q-3083961e05f5.v1.json",
+      "bytes": 3082,
+      "sha256": "886516aa2bbe6eb58a0d2b9371c825b127c52d0a8607c1da4ac2d9b16f86d51c",
+      "mode": "0644",
+      "licence": "CC-BY-4.0"
+    },
+    {
+      "path": "open-content/modules/questions/resp/q-3711e4867bbc.v1.json",
+      "bytes": 2745,
+      "sha256": "cb6581e9e931691be9093692b2710c589b832e7d0733aaac008533bb865242a8",
+      "mode": "0644",
+      "licence": "CC-BY-4.0"
+    },
+    {
       "path": "open-content/modules/questions/resp/q-44302b9fe9f2.v1.json",
       "bytes": 2853,
       "sha256": "6e915a178045d04a1f79b5b4e3a58b3b1c2bfe5198e650f412e9bc6f0603ed66",
+      "mode": "0644",
+      "licence": "CC-BY-4.0"
+    },
+    {
+      "path": "open-content/modules/questions/resp/q-4afdbbb0b432.v1.json",
+      "bytes": 2819,
+      "sha256": "67790995ca4144d044091d697cfc604cb321d1f87f2e9790fb87c09f133df1c3",
+      "mode": "0644",
+      "licence": "CC-BY-4.0"
+    },
+    {
+      "path": "open-content/modules/questions/resp/q-57b8ab3e3589.v1.json",
+      "bytes": 2711,
+      "sha256": "6d868fb9593194b94b458d09adb89986f165122ef76dc5adf83467cba860a85e",
+      "mode": "0644",
+      "licence": "CC-BY-4.0"
+    },
+    {
+      "path": "open-content/modules/questions/resp/q-58c006f2e0c9.v1.json",
+      "bytes": 2964,
+      "sha256": "4c06ebd255f30c156e0eb1a35f10a361ccd033e6d8a63798325e7df4bf1c0d7f",
       "mode": "0644",
       "licence": "CC-BY-4.0"
     },
@@ -3234,6 +5901,13 @@
       "licence": "CC-BY-4.0"
     },
     {
+      "path": "open-content/modules/questions/resp/q-bdf39910e711.v1.json",
+      "bytes": 3638,
+      "sha256": "4b255944569f9cbefb0db659f789e48bf593b3b379cf14fc2155b6b31a856872",
+      "mode": "0644",
+      "licence": "CC-BY-4.0"
+    },
+    {
       "path": "open-content/modules/questions/resp/q-cdde8ae9e5af.v1.json",
       "bytes": 2728,
       "sha256": "eb828e083884010c74c9c1c94439362de01bdb1a78dca173e70b5c1283d3a7d3",
@@ -3241,16 +5915,86 @@
       "licence": "CC-BY-4.0"
     },
     {
+      "path": "open-content/modules/questions/resp/q-e6aadc41a704.v1.json",
+      "bytes": 3274,
+      "sha256": "329afcd5844d45497400ed785d5950022c7a32013561c64fc2508819d33d2e09",
+      "mode": "0644",
+      "licence": "CC-BY-4.0"
+    },
+    {
+      "path": "open-content/modules/questions/resp/q-fc8d6c75e087.v1.json",
+      "bytes": 3303,
+      "sha256": "cfd63dcc38e66fbee828932f520c36ba217457da90b72fe6d86c5f5138be3cbf",
+      "mode": "0644",
+      "licence": "CC-BY-4.0"
+    },
+    {
+      "path": "open-content/modules/questions/surgery/q-1bfb8c77e07d.v1.json",
+      "bytes": 3029,
+      "sha256": "9d3ac053ff81ec6a853542eb17a3b9aa74c4b178a1db0a9b3e4a766a4148fbd6",
+      "mode": "0644",
+      "licence": "CC-BY-4.0"
+    },
+    {
+      "path": "open-content/modules/questions/surgery/q-26833bce2a1e.v1.json",
+      "bytes": 3316,
+      "sha256": "b144bd2709ad78abeaf853955b60fe1b2655e30b990ba9d7b086621f1655660e",
+      "mode": "0644",
+      "licence": "CC-BY-4.0"
+    },
+    {
+      "path": "open-content/modules/questions/surgery/q-38a164ae2a00.v1.json",
+      "bytes": 2418,
+      "sha256": "c566bcfdb1b158deb3450e43af202851aead7004169a214cf8c8ae8742a57d2a",
+      "mode": "0644",
+      "licence": "CC-BY-4.0"
+    },
+    {
+      "path": "open-content/modules/questions/surgery/q-5aae61f57a46.v1.json",
+      "bytes": 3269,
+      "sha256": "684cd9ce1df8d7d599bfdfb86dc68e4f2fdc5a6ac6b396acd1b170cf5879702a",
+      "mode": "0644",
+      "licence": "CC-BY-4.0"
+    },
+    {
+      "path": "open-content/modules/questions/surgery/q-8ca9665c6882.v1.json",
+      "bytes": 3477,
+      "sha256": "a0a83cd5a5a15e593340ef241c574803f08e44e6171f30f1c718c66b0ad58316",
+      "mode": "0644",
+      "licence": "CC-BY-4.0"
+    },
+    {
+      "path": "open-content/modules/questions/surgery/q-9c3716b81718.v1.json",
+      "bytes": 2948,
+      "sha256": "a6b0e1de4cfdeba107b328b55740085cdeeacf754472939cd7c42f6e3c7c13e5",
+      "mode": "0644",
+      "licence": "CC-BY-4.0"
+    },
+    {
+      "path": "open-content/modules/questions/surgery/q-a3800d85de96.v1.json",
+      "bytes": 3108,
+      "sha256": "d1ffc8ad5a575b0ca3588c149938b03faec9a5be7e031d5efd0bc41f1dc4e4e4",
+      "mode": "0644",
+      "licence": "CC-BY-4.0"
+    },
+    {
+      "path": "open-content/modules/questions/surgery/q-c0eedb4fd362.v1.json",
+      "bytes": 2748,
+      "sha256": "b19073a095176d0df9cb76f71f58623615dd88e1a1b9e9adb8fe148fd7a59fc1",
+      "mode": "0644",
+      "licence": "CC-BY-4.0"
+    },
+    {
       "path": "open-content/modules/release-v1.json",
-      "bytes": 15341,
-      "sha256": "25c3f13fb1fbacc7fd115be811e77efcc9491e2eb44e072f3be1fc15fc0e6733",
+      "bytes": 100427,
+      "sha256": "f1a6c85009b587b3339bb3692a93ffefc123bf066f8b32b7a9bd7867cbadc0d9",
       "mode": "0644",
       "licence": "CC-BY-4.0"
     },
     {
       "path": "open-content/modules/sources.json",
-      "bytes": 18289,
-      "sha256": "5090a91fd1f2846f5e270606db1b85171ffe4dba98ef6a631c1752c2d1510f87",
+      "bytes": 106499,
+      "sha256": "0b3c34087c0c3f2923c037cb87ace0cc111f4f2de2172aaab8e7dd871f329fad",
       "mode": "0644",
       "licence": "CC-BY-4.0"
     },
@@ -7680,8 +10424,8 @@
     },
     {
       "path": "package.json",
-      "bytes": 10768,
-      "sha256": "14bf9cce3d53972b88ff67596c97c826e6a72e991be5acc383b7285636b1b41d",
+      "bytes": 10996,
+      "sha256": "72067e335fb1900841e3e6796bf70e72b4360fe1e2d84ff473b7b05b1af1f2d9",
       "mode": "0644",
       "licence": "MIT"
     },
@@ -7980,6 +10724,69 @@
       "licence": "MIT"
     },
     {
+      "path": "prisma/migrations/20261002130000_concept_topk_pool/migration.sql",
+      "bytes": 14869,
+      "sha256": "80288ff991bf6d086d637f65eaecc8dd872ae632c903e71695b22dbf7616ebec",
+      "mode": "0644",
+      "licence": "MIT"
+    },
+    {
+      "path": "prisma/migrations/20261002140000_learning_event_timestamp_index/migration.sql",
+      "bytes": 1163,
+      "sha256": "92a67195e9129206c885405cf4331b6f36eec58cf4e7494fcb6a9a52cda9b8cd",
+      "mode": "0644",
+      "licence": "MIT"
+    },
+    {
+      "path": "prisma/migrations/20261002140100_card_image_url_index/migration.sql",
+      "bytes": 1114,
+      "sha256": "d320ef5372bbb3a644c266b02ce30fe817c80aad53947d79893e7561ef19c67c",
+      "mode": "0644",
+      "licence": "MIT"
+    },
+    {
+      "path": "prisma/migrations/20261002140200_question_image_url_index/migration.sql",
+      "bytes": 802,
+      "sha256": "a5ff7bba9aa4ed5de611f0ad059234c58aa0849231c9f5997910c315b394bbfe",
+      "mode": "0644",
+      "licence": "MIT"
+    },
+    {
+      "path": "prisma/migrations/20261002151000_session_refresh_lease/migration.sql",
+      "bytes": 687,
+      "sha256": "81dc3fc9e467f90cbf5e754b848ed60b0ded5ea1edf3247af5d27e5969e0bb36",
+      "mode": "0644",
+      "licence": "MIT"
+    },
+    {
+      "path": "prisma/migrations/20261002151100_serve_decision_delivered_decided_at_index/migration.sql",
+      "bytes": 2885,
+      "sha256": "bf382a810723d4eb3c268687182891c4ed581950cb652a119325202414ae2d50",
+      "mode": "0644",
+      "licence": "MIT"
+    },
+    {
+      "path": "prisma/migrations/20261002153000_question_response_created_at_index/migration.sql",
+      "bytes": 1178,
+      "sha256": "7d0957de7f693eebb5c572a6ae26fb58b5842c923078a9e5398c6b82dab0bd12",
+      "mode": "0644",
+      "licence": "MIT"
+    },
+    {
+      "path": "prisma/migrations/20261002153100_card_progress_last_review_index/migration.sql",
+      "bytes": 1404,
+      "sha256": "50a9a382b8dbea019ec5f156490b00d0eb7c8200c4bc058b6ae1489f3b614e42",
+      "mode": "0644",
+      "licence": "MIT"
+    },
+    {
+      "path": "prisma/migrations/20261004040000_review_challenge/migration.sql",
+      "bytes": 374,
+      "sha256": "3b12065576aabeb14ae18ace418d00a280d4429d9589c67fa48629d686dd63fa",
+      "mode": "0644",
+      "licence": "MIT"
+    },
+    {
       "path": "prisma/migrations/migration_lock.toml",
       "bytes": 127,
       "sha256": "d6bae7899f05da956e1070ba5703455503208ef79e161acb18c93bfe3c6cd236",
@@ -8016,8 +10823,8 @@
     },
     {
       "path": "prisma/schema/base.prisma",
-      "bytes": 11255,
-      "sha256": "cdcd92505d59b739af12e10d0d4179270dc5791060225d9ec1a897b168f3c2cf",
+      "bytes": 11439,
+      "sha256": "1646e8442cec6e1eef79d3d36d508ce940ab87f8ee89f9405fad5762168920cd",
       "mode": "0644",
       "licence": "MIT"
     },
@@ -8036,6 +10843,13 @@
       "licence": "MIT"
     },
     {
+      "path": "prisma/schema/concept-topk.prisma",
+      "bytes": 2748,
+      "sha256": "015d4f0743d83d6f523d30ea595849988018e5ee8dd2cb615174ca2179664529",
+      "mode": "0644",
+      "licence": "MIT"
+    },
+    {
       "path": "prisma/schema/concepts.prisma",
       "bytes": 7539,
       "sha256": "da9ee6d00007c235a47b0f28f114d61d97b373b9aa51883c239be609dee74c3a",
@@ -8044,8 +10858,8 @@
     },
     {
       "path": "prisma/schema/content.prisma",
-      "bytes": 23916,
-      "sha256": "2fdf3afe7a20d9a0b0694062726fd11ecaa318d770436f31da0e84ec41ca129d",
+      "bytes": 24103,
+      "sha256": "1f0c79087e5e61c2ce698bc2d4e056ad5d8bc471aad3372b0db30081a13db558",
       "mode": "0644",
       "licence": "MIT"
     },
@@ -8079,8 +10893,8 @@
     },
     {
       "path": "prisma/schema/progress.prisma",
-      "bytes": 16019,
-      "sha256": "07b138a52c9fe01a387dbfbfd897a502acf0c271a73565a08d21df80e9bb1e33",
+      "bytes": 17441,
+      "sha256": "a53c35a82246e05aa9024b9453e2bbe150430db1164f269f9c83d6c791d159c6",
       "mode": "0644",
       "licence": "MIT"
     },
@@ -8184,15 +10998,15 @@
     },
     {
       "path": "public/sw.js",
-      "bytes": 5575,
-      "sha256": "ff2a5292138a052e32f1a0ac6fd2235770f978af20b4f1c55c550e7bc13d4ac5",
+      "bytes": 7064,
+      "sha256": "dadf679ed5e2f5f77bb4bd08bbbd75012d47ee699d3285845df2d420967bc7ad",
       "mode": "0644",
       "licence": "MIT"
     },
     {
       "path": "README.md",
-      "bytes": 7560,
-      "sha256": "302da94f4133a0eb640e7a5ea95e138748deb05a0931339e1ff53241b7ecc7a8",
+      "bytes": 7776,
+      "sha256": "44dfa6fa29975b13e187ebbe0fe5d928ccba596af39cdf6c19f24b534015b053",
       "mode": "0644",
       "licence": "CC-BY-4.0"
     },
@@ -8225,6 +11039,20 @@
       "licence": "MIT"
     },
     {
+      "path": "scripts/content/cohort-card-seed.test.ts",
+      "bytes": 3100,
+      "sha256": "74c888cb79a9559d4ee2a07475c267945f51a12b5048402b0ffb1a8935f34b3e",
+      "mode": "0644",
+      "licence": "MIT"
+    },
+    {
+      "path": "scripts/content/cohort-card-seed.ts",
+      "bytes": 2896,
+      "sha256": "97e100763f50c416df2039bc6ad74ad33596563467082ea9a0c28cceb7cbb26e",
+      "mode": "0644",
+      "licence": "MIT"
+    },
+    {
       "path": "scripts/content/curated-starters.test.ts",
       "bytes": 6211,
       "sha256": "28df5055b03f90a5f4ecf0c6b704c34b75d21dd3552937e3dd1b31cb11170187",
@@ -8247,15 +11075,15 @@
     },
     {
       "path": "scripts/content/generate-content-map.test.ts",
-      "bytes": 15644,
-      "sha256": "a84772a2517a99ea6ccac2aa43dc974daeb64c6a242a4b8f0e3fcc301f67e1cf",
+      "bytes": 16752,
+      "sha256": "6635a788657918bcc6cd3aebf5d1a6b9e7a564c44ceda6e936e12fa0435e5eb6",
       "mode": "0644",
       "licence": "MIT"
     },
     {
       "path": "scripts/content/generate-content-map.ts",
-      "bytes": 24326,
-      "sha256": "e28277cbbd00fa2a9cd1fa55da94ae3b55c17dfa1946dccf4a9d6018093ffc93",
+      "bytes": 24909,
+      "sha256": "6b009abc0b41d193206edb053d502938b67790c4646cfea893361f98cdf10294",
       "mode": "0644",
       "licence": "MIT"
     },
@@ -8291,6 +11119,13 @@
       "path": "scripts/content/private-content-map-overlays.ts",
       "bytes": 568,
       "sha256": "59ff78d67c6433b09f1a2554fdd0d369b30e79e259bed25c3fd9b9ce7700ebc5",
+      "mode": "0644",
+      "licence": "MIT"
+    },
+    {
+      "path": "scripts/content/seed-cohort-module-cards.ts",
+      "bytes": 2334,
+      "sha256": "1850d759af3fcbee5909b40634ab90eefa54dcdd04cfe64cc61d1b62020288cc",
       "mode": "0644",
       "licence": "MIT"
     },
@@ -8331,15 +11166,15 @@
     },
     {
       "path": "scripts/foss/distribution.test.ts",
-      "bytes": 64283,
-      "sha256": "7a392cb30f4c78b453ec7b37e92b49923b0225210abb3f0ebe3e3359426549de",
+      "bytes": 66414,
+      "sha256": "f1012904317366abcde1a4453c5ec74e748dddf320ef8a7f3a94ce1228b32071",
       "mode": "0644",
       "licence": "MIT"
     },
     {
       "path": "scripts/foss/distribution.ts",
-      "bytes": 100277,
-      "sha256": "492107a9ee335190d82f9ea014d908024980c227fd3e5ed715e19e4a35f76436",
+      "bytes": 102114,
+      "sha256": "6c9b69c4026fa2a7a62d83a3b0716b23f55a33d9e5a4f09ca92f15d85944d586",
       "mode": "0644",
       "licence": "MIT"
     },
@@ -8373,8 +11208,8 @@
     },
     {
       "path": "scripts/foss/public-navigation.test.ts",
-      "bytes": 29524,
-      "sha256": "0eea0820f55360eb4ac989aaebec2b5e044f18a1d335e2eb1e171a83a5dba5ee",
+      "bytes": 29556,
+      "sha256": "69e388965c6b0de35156aeab783d8a0bb6044db4aac495d0ab051f8a9503b72b",
       "mode": "0644",
       "licence": "MIT"
     },
@@ -8401,8 +11236,8 @@
     },
     {
       "path": "scripts/foss/test-surface.test.ts",
-      "bytes": 8147,
-      "sha256": "60db541085d0e5cdf1cc29db6b463b6fa0202df4fa8c764ce39f670c012eeacd",
+      "bytes": 8349,
+      "sha256": "ee0128d3016b970085c26fb18bdca5eda4d54d475c19c0c704a7f096f41b5c32",
       "mode": "0644",
       "licence": "MIT"
     },
@@ -8513,15 +11348,15 @@
     },
     {
       "path": "scripts/lib/db-transport.ts",
-      "bytes": 4332,
-      "sha256": "411357ed42c78776c4dfef6e5f96ed05ed5230f988e784f2b65a60218db742ed",
+      "bytes": 5074,
+      "sha256": "ec81d8b341249314762dc611d4ceb0dd89cc58b246209b709a90ab3518203ea2",
       "mode": "0644",
       "licence": "MIT"
     },
     {
       "path": "scripts/lib/db.ts",
-      "bytes": 3029,
-      "sha256": "08a7a4bd7cbbcbe22f8071582fe4e59c2c8f6c977133b1b0aa448643829fca9d",
+      "bytes": 3039,
+      "sha256": "faddca1c6e0198f028cb23beb3916c852d2e28b1f78406ac5f65b6c2f2db1446",
       "mode": "0644",
       "licence": "MIT"
     },
@@ -8547,6 +11382,13 @@
       "licence": "MIT"
     },
     {
+      "path": "scripts/lib/pg-direct-config.mjs",
+      "bytes": 6539,
+      "sha256": "c1bc4cbb7fd60314f855ce41346752dd76f9db1d2e5f7a3d3a30526bc0d2fe57",
+      "mode": "0644",
+      "licence": "MIT"
+    },
+    {
       "path": "scripts/manifold/embed-open-corpus.ts",
       "bytes": 5405,
       "sha256": "bf7315be3a7e8815e8555e6771f922acd82da6c314daa14e235d479eed3782df",
@@ -8562,15 +11404,15 @@
     },
     {
       "path": "scripts/ops/build-with-sw.sh",
-      "bytes": 1578,
-      "sha256": "330c7327b8c5abb79df49308cf03ee847c2f63cf84d87537138a045bd27e0ecd",
+      "bytes": 1921,
+      "sha256": "1a4bf7a0f48d7a555646bedf1a6b3d584a31b2a38169e3bd649e628dffc7ed18",
       "mode": "0644",
       "licence": "MIT"
     },
     {
       "path": "scripts/ops/describe-error.mjs",
-      "bytes": 2824,
-      "sha256": "007cccf00ed1b4df4c4e258b7edeb308c9c56f413dac4b04be3d846f7a702b63",
+      "bytes": 4635,
+      "sha256": "cc03a562ffedd98fd3119dda72a57c843ec45e08a15882cb4f01fa2ec2d3af0d",
       "mode": "0644",
       "licence": "MIT"
     },
@@ -8583,8 +11425,8 @@
     },
     {
       "path": "scripts/ops/restore-sw-stamp.sh",
-      "bytes": 660,
-      "sha256": "b906b79293db5f49c978a2d5bc255ca70e02a534ed8ba378c738eb9aa38b17da",
+      "bytes": 736,
+      "sha256": "f9cb3026a80276013d35ac1f07aafaabad5823a72ee5f59c485e9ffbe9a77421",
       "mode": "0644",
       "licence": "MIT"
     },
@@ -8611,15 +11453,15 @@
     },
     {
       "path": "scripts/ops/stamp-sw.test.ts",
-      "bytes": 5540,
-      "sha256": "0c41a389d6b562327a560cf6a96c9b7f9d7c7355a41321b5ce95df9947ba3049",
+      "bytes": 6380,
+      "sha256": "8cbc244a95c3c4524c2ddeaf2f03b09cf41bac6007eda45c4382618642f0b4b4",
       "mode": "0644",
       "licence": "MIT"
     },
     {
       "path": "scripts/ops/sw-offline-navigation.test.ts",
-      "bytes": 4051,
-      "sha256": "033b1dff3e4edde1b1f084b88fdebcd660e7ca235e31c4ac5d4d1630977534a1",
+      "bytes": 9779,
+      "sha256": "248e19f2da0dfbbee6cc4cb2d123a0ab4aceb216c8172a302283dea7ce0bc5a0",
       "mode": "0644",
       "licence": "MIT"
     },
@@ -8732,6 +11574,20 @@
       "path": "src/app/api/cohort/answer/route.ts",
       "bytes": 3527,
       "sha256": "0dc48bea4a9215200bfa9e30f843a25597797e2c71debb3e25d8c71d2a234c73",
+      "mode": "0644",
+      "licence": "MIT"
+    },
+    {
+      "path": "src/app/api/cohort/card-grade/route.ts",
+      "bytes": 2357,
+      "sha256": "845fca802e4da97b6e4cbd473bdd72a0f9583c220e0dcda0f71a451f586f458d",
+      "mode": "0644",
+      "licence": "MIT"
+    },
+    {
+      "path": "src/app/api/cohort/difficulty/route.ts",
+      "bytes": 3781,
+      "sha256": "b5380f5172af018aad0158d74336185f84172d03ce4c16dfcfae33df7c8972f6",
       "mode": "0644",
       "licence": "MIT"
     },
@@ -8947,8 +11803,8 @@
     },
     {
       "path": "src/app/error.tsx",
-      "bytes": 1367,
-      "sha256": "6e5da1dedda3bf0298fff7167ea1b97b4b92473bc82c6fd7b0a5b5850a44aa9d",
+      "bytes": 1961,
+      "sha256": "15e57e5d8487de488d5271ebd5380f8eefb14858b96d5844fe24a753c180ef04",
       "mode": "0644",
       "licence": "MIT"
     },
@@ -8996,8 +11852,8 @@
     },
     {
       "path": "src/app/globals.css",
-      "bytes": 33014,
-      "sha256": "299dd79fcb77833a03e755bcc30390c78880023ef613a46e44d0c2ba78e39dc7",
+      "bytes": 32306,
+      "sha256": "837be72b7f20ada7da6e7b83d8f21eb45cf47c49f32759b0a8cefb6302dc51ff",
       "mode": "0644",
       "licence": "MIT"
     },
@@ -9010,8 +11866,8 @@
     },
     {
       "path": "src/app/layout.tsx",
-      "bytes": 6444,
-      "sha256": "a0878e8e5fdb7f9304363ede1f3d4b8e289bf9132d4d0360a9dd70d16d024a84",
+      "bytes": 6759,
+      "sha256": "bbbd82d06a7aea961f0d287bd2f668605f34aeb3167d9a2dcb71f5e7c03360e0",
       "mode": "0644",
       "licence": "MIT"
     },
@@ -9457,6 +12313,13 @@
       "licence": "MIT"
     },
     {
+      "path": "src/components/content/DecodedTerm.tsx",
+      "bytes": 4513,
+      "sha256": "154a1559feb81920f6dc8adf6f2d36c44920729d54a23bec8e3bf489390a9574",
+      "mode": "0644",
+      "licence": "MIT"
+    },
+    {
       "path": "src/components/content/DeepDive.tsx",
       "bytes": 2755,
       "sha256": "f7087ab31f4c0e6148ba3f38bc0b9c0ad1bc32e55daa716e5b8bf6610c210364",
@@ -9493,8 +12356,8 @@
     },
     {
       "path": "src/components/content/glossary-autowrap.ts",
-      "bytes": 3660,
-      "sha256": "f21e8c91ff993151198eb4dfdeb9dfd4d20ef2b90fa66e18e22be16014e6c6f6",
+      "bytes": 3139,
+      "sha256": "d6e8d49e4ae6fa33d6e957b02a26558070c8f8422d33b1e3a071a7429bae1230",
       "mode": "0644",
       "licence": "MIT"
     },
@@ -9507,15 +12370,22 @@
     },
     {
       "path": "src/components/content/glossary.ts",
-      "bytes": 3864,
-      "sha256": "f243b76afa2153466279f749ba91c964aa7b4d1a3af999471318f971e94423f2",
+      "bytes": 3271,
+      "sha256": "7555edd8491c62b6d1091199acc167a0ec6e0b5baff7dc499521df54daf83fd4",
+      "mode": "0644",
+      "licence": "MIT"
+    },
+    {
+      "path": "src/components/content/GlossaryScope.tsx",
+      "bytes": 621,
+      "sha256": "e32b5460d3aa9942226476dfb446a00ce7c8cc698173e66ea151c949724acdd8",
       "mode": "0644",
       "licence": "MIT"
     },
     {
       "path": "src/components/content/GlossaryText.tsx",
-      "bytes": 2319,
-      "sha256": "1b7ec6526fde37ccad23edcdf9b896020514b7858578d3f47ea2aad0b30cae16",
+      "bytes": 2580,
+      "sha256": "ebfa2012be910c438164b961233d5781d68b041626a0c03e357d54667c3bdf06",
       "mode": "0644",
       "licence": "MIT"
     },
@@ -9570,15 +12440,15 @@
     },
     {
       "path": "src/components/content/mcq-utils.ts",
-      "bytes": 10441,
-      "sha256": "5fd14eaf8d93f203f48d15ef401f19a2341b5f7cf88747b1bd601b05d9156db1",
+      "bytes": 10539,
+      "sha256": "f5defbe106ee664e48845c19a60dd9d9ad9464e577b3ef560ed9fc59ae322a0e",
       "mode": "0644",
       "licence": "MIT"
     },
     {
       "path": "src/components/content/MCQ.client.tsx",
-      "bytes": 21606,
-      "sha256": "72b5dba427b1b3cf3d18ea429add15e220ca7433bede24d1cfe7a166e4a25a42",
+      "bytes": 21970,
+      "sha256": "27b571aa94c41c9ecbec3811753d2914ee1d6c00563b7b3c77b9c06c4b33b7a1",
       "mode": "0644",
       "licence": "MIT"
     },
@@ -9654,8 +12524,8 @@
     },
     {
       "path": "src/components/content/Term.tsx",
-      "bytes": 1534,
-      "sha256": "33e5d8daa83fa6df5847ab8e7d9dc93b09c9f66af4b7b561df0eaa9987c487af",
+      "bytes": 1314,
+      "sha256": "459e475684cf28d1e7b70e7b260cba66c8a76b8824e39cfde4364a3eb3467827",
       "mode": "0644",
       "licence": "MIT"
     },
@@ -9871,8 +12741,8 @@
     },
     {
       "path": "src/components/practice/QuestionPractice.tsx",
-      "bytes": 17390,
-      "sha256": "c446df23a5c67075a5c147938f965a19f8bf0678c6da65c706e36e57f33f29e1",
+      "bytes": 17595,
+      "sha256": "168ad78b03a80903b3590c21aab815aa16d5f7c3f41c89e15c58811d8f0566af",
       "mode": "0644",
       "licence": "MIT"
     },
@@ -9892,8 +12762,8 @@
     },
     {
       "path": "src/components/profile/TopicHeatmap.tsx",
-      "bytes": 10932,
-      "sha256": "b6917614c80cb0f03aeae115012c2f9e1224b88efb5b7efed1eb3e8a41f2b4df",
+      "bytes": 14797,
+      "sha256": "5ea85c2957d2353c3703f7bee43ea6d1c44e53d8596078de010089503e261b47",
       "mode": "0644",
       "licence": "MIT"
     },
@@ -9934,8 +12804,8 @@
     },
     {
       "path": "src/components/review/CardItemView.tsx",
-      "bytes": 12246,
-      "sha256": "21edf73c0b2a73c067d8021e87002219a65c5542e93b2cb0f4b4d68ed8b91e5b",
+      "bytes": 12653,
+      "sha256": "1d2683574c74c9f3541d256d10519f330fc0ef63e121255a14a04d29ae0378cc",
       "mode": "0644",
       "licence": "MIT"
     },
@@ -10067,15 +12937,15 @@
     },
     {
       "path": "src/components/review/hooks/types.ts",
-      "bytes": 3987,
-      "sha256": "4062189999cf651b2f6c3ed9845136e0a57734b973e93f0d918abf2032e022b1",
+      "bytes": 4113,
+      "sha256": "7ea6e3280c4b109ce340296544174eedbf831e33d0e52074ee0b60f13d8168a1",
       "mode": "0644",
       "licence": "MIT"
     },
     {
       "path": "src/components/review/hooks/unified-session-params.ts",
-      "bytes": 2763,
-      "sha256": "e7d9426d4c26d2c97b459b587e859242c1f005808ffc42b807b80b1aace64406",
+      "bytes": 3017,
+      "sha256": "a9c7e35de862849da5240ee18a714fb2e9fc69791234c1bd252212331503b64d",
       "mode": "0644",
       "licence": "MIT"
     },
@@ -10090,6 +12960,13 @@
       "path": "src/components/review/hooks/useCardReview.ts",
       "bytes": 3656,
       "sha256": "54c087f654ac7e0b7e7f6c4a7e456567eb5a7cf8e15728ea33817714580660c7",
+      "mode": "0644",
+      "licence": "MIT"
+    },
+    {
+      "path": "src/components/review/hooks/useCohortCardGrade.ts",
+      "bytes": 3793,
+      "sha256": "9dd891b47257121248638be652d7e4b111fd44fc097ffdc41070c9ed62abb341",
       "mode": "0644",
       "licence": "MIT"
     },
@@ -10137,8 +13014,8 @@
     },
     {
       "path": "src/components/review/hooks/useReviewSession.ts",
-      "bytes": 72096,
-      "sha256": "22adba83aa191f96be6700f6854aaa76a290f85a628cd4e226b381ec5f9b20f5",
+      "bytes": 80093,
+      "sha256": "9af362e92f26470123b8d7a3123fed398fd221605c6b3afe194ba5bfd5e7e101",
       "mode": "0644",
       "licence": "MIT"
     },
@@ -10193,8 +13070,8 @@
     },
     {
       "path": "src/components/review/McqItemView.tsx",
-      "bytes": 18021,
-      "sha256": "6925d527dd87d107825e9d2fc45a01fc45412d74bc818508d986f2f152599de1",
+      "bytes": 18155,
+      "sha256": "497b30bdb49ce96b64b1a0d5107548e5e1d2109ab8d0271e1c6ee1227477c1d5",
       "mode": "0644",
       "licence": "MIT"
     },
@@ -10251,6 +13128,13 @@
       "path": "src/components/review/ReviewableTable.tsx",
       "bytes": 10741,
       "sha256": "7eae2a0858517201504290edc39f8b4a4ccbaf6c3f6ecea5c41d9563a7c9d65d",
+      "mode": "0644",
+      "licence": "MIT"
+    },
+    {
+      "path": "src/components/review/ReviewDifficultyControl.tsx",
+      "bytes": 7924,
+      "sha256": "ec2f7215578e1caae9affe5b13f05b0a8071638423ac1016e070ba1933e6ccde",
       "mode": "0644",
       "licence": "MIT"
     },
@@ -10326,8 +13210,8 @@
     },
     {
       "path": "src/components/review/UnifiedReview.tsx",
-      "bytes": 73017,
-      "sha256": "53f406b5cdecb4f342d44c0468add19d17b1426b6cef92dfdbe4fc6d50dc7902",
+      "bytes": 76445,
+      "sha256": "056342f7d37c25bbb39b48406676455b0f686e330e2d7b07e18666204432b516",
       "mode": "0644",
       "licence": "MIT"
     },
@@ -10615,6 +13499,13 @@
       "path": "src/hooks/usePrepareReviewImages.ts",
       "bytes": 3132,
       "sha256": "aa4d62a53c0a7abbfa85b05d8eaa566fdba0866890555df11bae64be0289d3a3",
+      "mode": "0644",
+      "licence": "MIT"
+    },
+    {
+      "path": "src/hooks/useReviewDifficulty.ts",
+      "bytes": 11996,
+      "sha256": "408d70102daaeefabc0be66dda06f0118bf29de5ce5255062ad6346845c04a4a",
       "mode": "0644",
       "licence": "MIT"
     },
@@ -10907,15 +13798,15 @@
     },
     {
       "path": "src/lib/card-extractors.ts",
-      "bytes": 35813,
-      "sha256": "2f527d848dabc6a4d812efe5e32d26c1a0324b58641d2f3a28833896c986aa16",
+      "bytes": 37054,
+      "sha256": "a0686ffa63dafa4f36241e5c37d8a318620f8e91bcc10b7f0e8b49a9fac4cfc0",
       "mode": "0644",
       "licence": "MIT"
     },
     {
       "path": "src/lib/card-generator.ts",
-      "bytes": 14217,
-      "sha256": "6bca35a242598a745c0685f49ffb7aeaa1668c983029e17c47ce0f03ad102539",
+      "bytes": 15180,
+      "sha256": "d3c25c029bb8313b02cab9796fb616849f1a47d2c935569e0c74e5058469ceb4",
       "mode": "0644",
       "licence": "MIT"
     },
@@ -11081,9 +13972,30 @@
       "licence": "MIT"
     },
     {
+      "path": "src/lib/cohort/card-grade.server.ts",
+      "bytes": 8506,
+      "sha256": "8de7632985cc9572ed538540e3181379a21d235e40bcd93ed9f526d9ff9f3d2e",
+      "mode": "0644",
+      "licence": "MIT"
+    },
+    {
+      "path": "src/lib/cohort/card-turn-contract.ts",
+      "bytes": 3611,
+      "sha256": "073ec8076d64d4cdefb98ca97faedf18b37110491357f43941042f90a9aad883",
+      "mode": "0644",
+      "licence": "MIT"
+    },
+    {
+      "path": "src/lib/cohort/cohort-review-challenge.ts",
+      "bytes": 2064,
+      "sha256": "7c2fdacc6613eab87857252da550984d4bcfb96ddf22749370840644b77eac51",
+      "mode": "0644",
+      "licence": "MIT"
+    },
+    {
       "path": "src/lib/cohort/cohort-turn.server.ts",
-      "bytes": 29131,
-      "sha256": "881a93ba92598bfd689f98735677d1abd72ea20ca45a3c02f9a3bace840aafb5",
+      "bytes": 44692,
+      "sha256": "742fe6e061cd0c1f7aa7a0f46ecb5ab593c5b08048971b4f94bfdd6a0eed345d",
       "mode": "0644",
       "licence": "MIT"
     },
@@ -11109,6 +14021,13 @@
       "licence": "MIT"
     },
     {
+      "path": "src/lib/cohort/module-card-corpus.server.ts",
+      "bytes": 7913,
+      "sha256": "7c2ed1b30d95ab4618b92160cadfb1e5515027f316cc221710ff5f466fadeba7",
+      "mode": "0644",
+      "licence": "MIT"
+    },
+    {
       "path": "src/lib/cohort/module-question-corpus.server.ts",
       "bytes": 7413,
       "sha256": "757fa3fedd0107f5abcc1e793280a98191a854fc6a1036464d7eb290fbba030a",
@@ -11124,8 +14043,8 @@
     },
     {
       "path": "src/lib/cohort/public-review-map.ts",
-      "bytes": 1310,
-      "sha256": "50b5610ff01cf671b8099183dc93b8d5992a6bd3e16542b9137d70ad28069805",
+      "bytes": 1888,
+      "sha256": "9d6901c97cee76f7a1e94602028e93d2beffcd7b9f428ee859f6500d368dfbbf",
       "mode": "0644",
       "licence": "MIT"
     },
@@ -11152,8 +14071,8 @@
     },
     {
       "path": "src/lib/cohort/search-topic-registry.server.ts",
-      "bytes": 26272,
-      "sha256": "a43f0995715f0b755edd8a442f6bb6b118cf45e29844259e27415c8a8bf9a2e3",
+      "bytes": 30154,
+      "sha256": "bce044fec9bc55cb4d7731aabe459f3da7034383918e633aff15717f7108feec",
       "mode": "0644",
       "licence": "MIT"
     },
@@ -11305,9 +14224,37 @@
       "licence": "MIT"
     },
     {
+      "path": "src/lib/content/cohort-card-corpus.test.ts",
+      "bytes": 4427,
+      "sha256": "ec07e36b14cf4673bba0f902c78ead4f6623fb947c3a774e4b7f47c837fca2ce",
+      "mode": "0644",
+      "licence": "MIT"
+    },
+    {
+      "path": "src/lib/content/cohort-card-corpus.ts",
+      "bytes": 7110,
+      "sha256": "6314938461c1f792a9c53c949c0d8524877971663a2c1d704dc6526228296842",
+      "mode": "0644",
+      "licence": "MIT"
+    },
+    {
+      "path": "src/lib/content/cohort-mirror-cards.test.ts",
+      "bytes": 17519,
+      "sha256": "7979a2da707303a98e635ff6a4d6b92dc8933d8e84f51d9cb9f53670b3b8ced7",
+      "mode": "0644",
+      "licence": "MIT"
+    },
+    {
+      "path": "src/lib/content/cohort-mirror-cards.ts",
+      "bytes": 18523,
+      "sha256": "a38a546dfb57b820a8adebc42ad0d768f742ca2b67398116572f22fd43c0389d",
+      "mode": "0644",
+      "licence": "MIT"
+    },
+    {
       "path": "src/lib/content/cohort-mirror.ts",
-      "bytes": 13929,
-      "sha256": "65b36865cfb8df8c53db7341700ceba910b282f2db65f997febafbd57317958b",
+      "bytes": 14346,
+      "sha256": "1a3215f4e393a2eac72278e486e78572bda600c43f0678c45935ce7c05a48493",
       "mode": "0644",
       "licence": "MIT"
     },
@@ -11446,8 +14393,8 @@
     },
     {
       "path": "src/lib/database-target.test.ts",
-      "bytes": 7352,
-      "sha256": "72de33e20b2241fad6142bf318a95c9481d01e430b3024d39d1effcffdf4bb13",
+      "bytes": 8049,
+      "sha256": "16ec47c1cfd4ca4661e0374b65e61d3481eccb5139baed1886649054b77231aa",
       "mode": "0644",
       "licence": "MIT"
     },
@@ -11469,6 +14416,13 @@
       "path": "src/lib/db/bulk-upsert.ts",
       "bytes": 14953,
       "sha256": "16cb2db998d8ccc15663d100e6c4d3171ef45acf422a4c774c519e125c4ad268",
+      "mode": "0644",
+      "licence": "MIT"
+    },
+    {
+      "path": "src/lib/db/statement-budget.ts",
+      "bytes": 5766,
+      "sha256": "061a9cd75b5bde259e0cde21fee8db0096de3ecc9c6d72a3c8291ac000470f25",
       "mode": "0644",
       "licence": "MIT"
     },
@@ -11509,8 +14463,8 @@
     },
     {
       "path": "src/lib/empirical-difficulty.ts",
-      "bytes": 7004,
-      "sha256": "bd33cbd9928e200532084f69d09c71eff06895309748a612869d26903192a466",
+      "bytes": 9202,
+      "sha256": "7d7fc4eb138456fe143dbf8df23cc52c555710c6972fb6be5ba9c38add1ef3fe",
       "mode": "0644",
       "licence": "MIT"
     },
@@ -11845,15 +14799,15 @@
     },
     {
       "path": "src/lib/figures/server-loader.ts",
-      "bytes": 1032,
-      "sha256": "a6fb9baf67eb19dab5842efe7b01732acfea9da7508e1b9c248fc88ace152abc",
+      "bytes": 721,
+      "sha256": "849facfc89e58ba27af68d7b22fc7d7f6cec05e3d35e18784dedece684bfcb3d",
       "mode": "0644",
       "licence": "MIT"
     },
     {
       "path": "src/lib/figures/serving-index.ts",
-      "bytes": 883,
-      "sha256": "5a78f3ab841512c44d30ccad96e7fa9167be98285329dd53c7086ebbb89414e1",
+      "bytes": 2088,
+      "sha256": "9fc97ecf3e48c35b3518f4647a51d952bccecded6ea1f4cffa961b35dd61bca3",
       "mode": "0644",
       "licence": "MIT"
     },
@@ -11901,8 +14855,8 @@
     },
     {
       "path": "src/lib/flags/classify-lane.ts",
-      "bytes": 9957,
-      "sha256": "aaa3779976504bd1a99d64142ba02874516cc426a85d60ba20ff197e22883cc3",
+      "bytes": 10031,
+      "sha256": "e72abf50f2b1c060f5667f7f69ea81203a88846e9cc7ee347cbccd1fa2699ba2",
       "mode": "0644",
       "licence": "MIT"
     },
@@ -12062,8 +15016,8 @@
     },
     {
       "path": "src/lib/guest-progress-claim.ts",
-      "bytes": 46716,
-      "sha256": "8b9a87abaa0d07a0e74b132158a326b2a6adc0a254dfb7eae052c533aae877a5",
+      "bytes": 47073,
+      "sha256": "9559619730c8c3207bb182ba41f54d89898090877c5f8b4c8a42cbcda628bf99",
       "mode": "0644",
       "licence": "MIT"
     },
@@ -12099,13 +15053,6 @@
       "path": "src/lib/images/blur-classification.ts",
       "bytes": 4190,
       "sha256": "a9bd296ca8e5b6ed8d124e00272c0743c9e5656637edae9e5ee478a89198cd68",
-      "mode": "0644",
-      "licence": "MIT"
-    },
-    {
-      "path": "src/lib/images/library-loader.ts",
-      "bytes": 333,
-      "sha256": "3e8b28914891024ac3eef74ce8859031646c5b16d8bf6f74347e58bcc73788d3",
       "mode": "0644",
       "licence": "MIT"
     },
@@ -12174,15 +15121,22 @@
     },
     {
       "path": "src/lib/knowledge/bulk-candidates.ts",
-      "bytes": 31321,
-      "sha256": "e7e8d430d5915e72d1d5c2f6fc582184be192e2134dbb1e842ee4c3fa8d9a2de",
+      "bytes": 41965,
+      "sha256": "a9d75c6dfa4abce21a787cd783b05b89d4abd760b334879a587e432a13629215",
+      "mode": "0644",
+      "licence": "MIT"
+    },
+    {
+      "path": "src/lib/knowledge/candidate-pool-cache.ts",
+      "bytes": 4039,
+      "sha256": "e97e64ffd5a5db18f43205e595bcb70d4af541db3a9fe7c3507c107320c2e71b",
       "mode": "0644",
       "licence": "MIT"
     },
     {
       "path": "src/lib/knowledge/candidate-ranking.ts",
-      "bytes": 38937,
-      "sha256": "5ad5d35cfa742aeef43a6e1a7b320011a29d44f1baefa5fb9bc698515cb9e0fc",
+      "bytes": 44261,
+      "sha256": "733811f215db64677da2401850301804150d36bdf6f3f8e7c13e08c6115c5b75",
       "mode": "0644",
       "licence": "MIT"
     },
@@ -12223,8 +15177,8 @@
     },
     {
       "path": "src/lib/knowledge/cluster-subject-label.ts",
-      "bytes": 6464,
-      "sha256": "f8736656da466380b3c2ebd6c3451d3dcccca2af3532b0ed8d55bdc143605714",
+      "bytes": 8115,
+      "sha256": "1090f64e9a759d83cfe38bbbb01e7c8146ff991dcfe803a06df5e034d237f9d3",
       "mode": "0644",
       "licence": "MIT"
     },
@@ -12246,6 +15200,13 @@
       "path": "src/lib/knowledge/concept-thread-policy.ts",
       "bytes": 17055,
       "sha256": "c6135aeb37211d1656527e8795940d87aef9aa79f5fe8cc93d0702bf2829f6cd",
+      "mode": "0644",
+      "licence": "MIT"
+    },
+    {
+      "path": "src/lib/knowledge/content-gap-retention.ts",
+      "bytes": 3745,
+      "sha256": "e11a61e6a7168a30fd98526caffb6c1b3f9d32f0854653ca4ca036cd776d29da",
       "mode": "0644",
       "licence": "MIT"
     },
@@ -12426,8 +15387,8 @@
     },
     {
       "path": "src/lib/knowledge/record-scaffold-gap.ts",
-      "bytes": 3667,
-      "sha256": "0c9aac2357870571166d91fb33d26dbf70677a64c4823fb359145de78bb5b6a4",
+      "bytes": 7893,
+      "sha256": "4d1f6255ab9cecc51e695e54310f539d514338f15ba86275080807590686724b",
       "mode": "0644",
       "licence": "MIT"
     },
@@ -12449,6 +15410,13 @@
       "path": "src/lib/knowledge/rotation-topic-catalog.ts",
       "bytes": 270,
       "sha256": "54041654c733fb6cbd5819e94bf1ea3d9815bb1f0c3aee68c6f508a9503675bb",
+      "mode": "0644",
+      "licence": "MIT"
+    },
+    {
+      "path": "src/lib/knowledge/scaffold-gap-types.ts",
+      "bytes": 1450,
+      "sha256": "27ac99ba2290d76c56b5b8b6b833605749bcd14a9a80876dce013016dafb1095",
       "mode": "0644",
       "licence": "MIT"
     },
@@ -12503,8 +15471,8 @@
     },
     {
       "path": "src/lib/knowledge/struggle.ts",
-      "bytes": 16297,
-      "sha256": "18d2eedb4797ba9a3cf313a1319d0e499d713a296f063f0e48c93ab349295527",
+      "bytes": 17620,
+      "sha256": "5fc5f6c9e40c3dd502afcd616410f6371c8ac0cfb76a35038f00a6cef3b1d54a",
       "mode": "0644",
       "licence": "MIT"
     },
@@ -12517,8 +15485,8 @@
     },
     {
       "path": "src/lib/knowledge/teaching-dynamics.ts",
-      "bytes": 10710,
-      "sha256": "ae1c2442ab47120e89e01d8f9c2bf516973a5cbac4fd0d2cc357c89bc098b338",
+      "bytes": 10735,
+      "sha256": "5498135997c1847167a578584c80c7ef4fae785e23c01740b20bec05a78ecf31",
       "mode": "0644",
       "licence": "MIT"
     },
@@ -12551,6 +15519,104 @@
       "licence": "MIT"
     },
     {
+      "path": "src/lib/knowledge/unified-scheduler-cluster-session.ts",
+      "bytes": 17655,
+      "sha256": "a31ea25e4cecb1c318f6928b614cc0f68ccc176f1081d3b6c8429fe8d9f9c960",
+      "mode": "0644",
+      "licence": "MIT"
+    },
+    {
+      "path": "src/lib/knowledge/unified-scheduler-config.ts",
+      "bytes": 2452,
+      "sha256": "ba33d807da28f67eb9f08525661d8e660e356ca6384ba9d76916f19dba32e8f2",
+      "mode": "0644",
+      "licence": "MIT"
+    },
+    {
+      "path": "src/lib/knowledge/unified-scheduler-diagnostics.ts",
+      "bytes": 4559,
+      "sha256": "f4f3d81c66e48aede65c50cbba08181dedf61cac3e96eb414633a7a4dc624a79",
+      "mode": "0644",
+      "licence": "MIT"
+    },
+    {
+      "path": "src/lib/knowledge/unified-scheduler-phase-backfill.ts",
+      "bytes": 24871,
+      "sha256": "d0038b62f0fab61cc8fd97baf8fea952d007e08889867c2591465712d267b525",
+      "mode": "0644",
+      "licence": "MIT"
+    },
+    {
+      "path": "src/lib/knowledge/unified-scheduler-phase-concepts.ts",
+      "bytes": 25861,
+      "sha256": "657bc1389bf884b2b87620ed15eba379bde4709ffe0e5981b12155c36a02364c",
+      "mode": "0644",
+      "licence": "MIT"
+    },
+    {
+      "path": "src/lib/knowledge/unified-scheduler-phase-finalize.ts",
+      "bytes": 18949,
+      "sha256": "91b57444eeffbfb37273006623c7db00df58156889eddc31cb0bf4161ed682e5",
+      "mode": "0644",
+      "licence": "MIT"
+    },
+    {
+      "path": "src/lib/knowledge/unified-scheduler-phase-load.ts",
+      "bytes": 22607,
+      "sha256": "bfd9592959da5754011218c37f28628a7266305fffa2a5c1448efe935c708ec3",
+      "mode": "0644",
+      "licence": "MIT"
+    },
+    {
+      "path": "src/lib/knowledge/unified-scheduler-phase-queue.ts",
+      "bytes": 18172,
+      "sha256": "dc716ba35f59f6a4aff5986c28765c74f2387d7d6fa7ac71c2f0d63955fc5fc1",
+      "mode": "0644",
+      "licence": "MIT"
+    },
+    {
+      "path": "src/lib/knowledge/unified-scheduler-phase-select.ts",
+      "bytes": 38610,
+      "sha256": "b0b9856d361558952f3621a635b46d5504d1719099f5200e09efdf22ef9d5bee",
+      "mode": "0644",
+      "licence": "MIT"
+    },
+    {
+      "path": "src/lib/knowledge/unified-scheduler-phase-setup.ts",
+      "bytes": 13556,
+      "sha256": "5474053602c4a63c1b3a985d157ccdac6b86bfa3c42f1464669ba9dff0a5e4eb",
+      "mode": "0644",
+      "licence": "MIT"
+    },
+    {
+      "path": "src/lib/knowledge/unified-scheduler-phase-state.ts",
+      "bytes": 13795,
+      "sha256": "2aca13aac45dd61694fc76fb083fb3f5190d63dec582c5f3fb9d77b42ae326bf",
+      "mode": "0644",
+      "licence": "MIT"
+    },
+    {
+      "path": "src/lib/knowledge/unified-scheduler-phase-types.ts",
+      "bytes": 10844,
+      "sha256": "722f061b19529d0777ac5270b472d24e89631310b59d3c5688ca8eb4a3e95f1b",
+      "mode": "0644",
+      "licence": "MIT"
+    },
+    {
+      "path": "src/lib/knowledge/unified-scheduler-queries.ts",
+      "bytes": 12197,
+      "sha256": "43ca00b9840e7f1bb2cc69b46389edeace0e6649a24a8314267e2e4d9caddfcb",
+      "mode": "0644",
+      "licence": "MIT"
+    },
+    {
+      "path": "src/lib/knowledge/unified-scheduler-scoring.ts",
+      "bytes": 15202,
+      "sha256": "4f7cfa1f87363552f2a3da5cbb05c3c87257a3a90bf8ee64db5fee459b164b80",
+      "mode": "0644",
+      "licence": "MIT"
+    },
+    {
       "path": "src/lib/knowledge/unified-scheduler-shared-reads.ts",
       "bytes": 7156,
       "sha256": "21b288b070dbcf394761e63647eae1532e80069ad6eea4a72ba973dea23fcec9",
@@ -12558,9 +15624,16 @@
       "licence": "MIT"
     },
     {
+      "path": "src/lib/knowledge/unified-scheduler-types.ts",
+      "bytes": 17508,
+      "sha256": "635e565a2bf0c49673eb8317deb405e2eea365a1e0e19ebf83e66bc484a976be",
+      "mode": "0644",
+      "licence": "MIT"
+    },
+    {
       "path": "src/lib/knowledge/unified-scheduler.ts",
-      "bytes": 205158,
-      "sha256": "e48b29aaa19c0c8d5aafe9e40816d16976b096e08b28bd228ee707a9ee9b8d3a",
+      "bytes": 10455,
+      "sha256": "ebf641d264a31ad9b95ab27f9620eb7c06078175281a0928e4dc6d8a930c2d68",
       "mode": "0644",
       "licence": "MIT"
     },
@@ -12706,8 +15779,8 @@
     },
     {
       "path": "src/lib/manifold/cluster-assignment.ts",
-      "bytes": 12950,
-      "sha256": "c15648b4827ed39c4f09aa2e21482df5f13d14db2c537f4f1da256b0370bb83d",
+      "bytes": 13482,
+      "sha256": "0f2d9aa434d5eb3830e70773f23b8d2563f83a6bb95653a1de35558ad8a08f99",
       "mode": "0644",
       "licence": "MIT"
     },
@@ -12715,6 +15788,48 @@
       "path": "src/lib/manifold/clustering.ts",
       "bytes": 14952,
       "sha256": "8c4a27c835986be6d512c3c444870cf1cd8565bbf4c06690d8188c2a4eb575b3",
+      "mode": "0644",
+      "licence": "MIT"
+    },
+    {
+      "path": "src/lib/manifold/concept-topk-cron.ts",
+      "bytes": 579,
+      "sha256": "7d3db54caf62055e3455ec4df8ff176c49fd20f5369249c0dc39ee791cb5e0ca",
+      "mode": "0644",
+      "licence": "MIT"
+    },
+    {
+      "path": "src/lib/manifold/concept-topk-refresh.ts",
+      "bytes": 36277,
+      "sha256": "20a3403071c501687b38a8bd921c4b043bd5202d882a1a559d93e0c74a6ab654",
+      "mode": "0644",
+      "licence": "MIT"
+    },
+    {
+      "path": "src/lib/manifold/concept-topk-sql.ts",
+      "bytes": 1410,
+      "sha256": "902ab07b098dc0fbb2d47716868567b43ad65c27523050839c6197a49c82c559",
+      "mode": "0644",
+      "licence": "MIT"
+    },
+    {
+      "path": "src/lib/manifold/concept-topk-store.ts",
+      "bytes": 22287,
+      "sha256": "d41f81e844185d5c57dbc62c2ff664fd994e22f47d50226ebfb27158f3ef225c",
+      "mode": "0644",
+      "licence": "MIT"
+    },
+    {
+      "path": "src/lib/manifold/concept-topk-triggers.ts",
+      "bytes": 9889,
+      "sha256": "5698a01fd979f13f3ce211f6b39e1235a87433fe86bd5b5fff9983459b54c2b9",
+      "mode": "0644",
+      "licence": "MIT"
+    },
+    {
+      "path": "src/lib/manifold/concept-topk.ts",
+      "bytes": 5054,
+      "sha256": "e1e223132362b672522330e6579fb817cabe40990b938b65a256aea8abe77fd7",
       "mode": "0644",
       "licence": "MIT"
     },
@@ -12804,15 +15919,15 @@
     },
     {
       "path": "src/lib/manifold/hnsw-runtime.ts",
-      "bytes": 1775,
-      "sha256": "a43006690c7e90ca58db8a5e4bc0c468b84969353ea1ed714e91a288783f0930",
+      "bytes": 2641,
+      "sha256": "04656aaf98d9b81736f5b4e5ba3a0c5aaed3f4ab440364800060ae9fe2fbd494",
       "mode": "0644",
       "licence": "MIT"
     },
     {
       "path": "src/lib/manifold/index.ts",
-      "bytes": 1345,
-      "sha256": "e3b48680ad8e49fe147d104c040672b21f163179ad4988cb1fd6434cb5a6e0db",
+      "bytes": 1343,
+      "sha256": "6baa594d98a5cce52b8463db68bfdd16e79f8e51cf2308f05a86f262bfbbfe70",
       "mode": "0644",
       "licence": "MIT"
     },
@@ -12874,22 +15989,22 @@
     },
     {
       "path": "src/lib/manifold/scoring.ts",
-      "bytes": 31473,
-      "sha256": "a8c348de4ca057138a9932728dac3a8b69f8c1f162f7b31ba407727c7cd1cbce",
+      "bytes": 33664,
+      "sha256": "b3095c882ac721594d7b5816b39a4d09d959a25467c6ed5d4c2462f620e71fc2",
       "mode": "0644",
       "licence": "MIT"
     },
     {
       "path": "src/lib/manifold/similarity-fallback.ts",
-      "bytes": 4256,
-      "sha256": "128391c41b6d23aa18f90667cd2460890f5130e9631317145cdc436663c35a48",
+      "bytes": 4498,
+      "sha256": "23fd47ffe152e5ff1e6d17921588b9c1d112a34bd56c1bde5c8c79f721d8e752",
       "mode": "0644",
       "licence": "MIT"
     },
     {
       "path": "src/lib/manifold/similarity.ts",
-      "bytes": 21545,
-      "sha256": "1f364a8f706ff2a52fecbc4f103b2506c8e7ecb2204493ac554df13d618578dd",
+      "bytes": 23100,
+      "sha256": "50b1b2d86aa86f13983db9e7a59b525dadb62fcada09d10b148f885f31e2b3f3",
       "mode": "0644",
       "licence": "MIT"
     },
@@ -13119,8 +16234,8 @@
     },
     {
       "path": "src/lib/offline/sw-registration.ts",
-      "bytes": 2244,
-      "sha256": "d1bec3a75625c845a1263c87b6d560347e3a3bebff46a97f5b7b04f5a0bc3da7",
+      "bytes": 3673,
+      "sha256": "493aade25d7d93fed25b24d63f7f23bf5f12ffaecae64d37b70377aa0f074440",
       "mode": "0644",
       "licence": "MIT"
     },
@@ -13448,15 +16563,22 @@
     },
     {
       "path": "src/lib/question-bank/statement-file.ts",
-      "bytes": 5817,
-      "sha256": "5e3040f1bf22348202d3c7561a48ecca310b62529da4787facf738b2e6130d87",
+      "bytes": 6484,
+      "sha256": "16d22d34a101c854d6a4c2f332557bd94382af9b3c9c67f3f06a3170c9496eca",
       "mode": "0644",
       "licence": "MIT"
     },
     {
       "path": "src/lib/question-bank/statement-items.ts",
-      "bytes": 5968,
-      "sha256": "cfa0a008b2e823839bc0dc8c624c6213e17fe4c34fdc7009274a356394b957e1",
+      "bytes": 6368,
+      "sha256": "3944af7072cac4a6475628dde0a458ff618463b44d584dbcf4cf4ced2b8bf194",
+      "mode": "0644",
+      "licence": "MIT"
+    },
+    {
+      "path": "src/lib/question-bank/task-axis.ts",
+      "bytes": 3360,
+      "sha256": "5a16485c1ed86bbabd5634034594195905188e0e07b8bbebe3b7d88c62f95bb3",
       "mode": "0644",
       "licence": "MIT"
     },
@@ -13791,15 +16913,15 @@
     },
     {
       "path": "src/lib/review/record-card-review.ts",
-      "bytes": 36158,
-      "sha256": "764b63be27f6be932c0dd058dfae86d861ae8715a7afc6199c5d5bc842af15f5",
+      "bytes": 40017,
+      "sha256": "e4500aba725debd814d13d0832202fea626d93cd8a94c136cc877621667c40e8",
       "mode": "0644",
       "licence": "MIT"
     },
     {
       "path": "src/lib/review/record-question-attempt.ts",
-      "bytes": 35665,
-      "sha256": "c664a3a108bfb45334125b385cdcde4104df9f386adcb5f332423c3b137b73bd",
+      "bytes": 37263,
+      "sha256": "0cbe4e728466fe4a8f95224eba67a9544d5839679a3fa3adba37c507d08de895",
       "mode": "0644",
       "licence": "MIT"
     },
@@ -13889,8 +17011,8 @@
     },
     {
       "path": "src/lib/review/server-bootstrap.ts",
-      "bytes": 11406,
-      "sha256": "909d5f223ee1565968a0aabd78c75e4504b42f8915175d19ccdcc684312d88d1",
+      "bytes": 11717,
+      "sha256": "3e5fab2408857d456e8399bfdcc9e90d6572e8b2fa6d939eb7f51fb246503fd1",
       "mode": "0644",
       "licence": "MIT"
     },
@@ -13905,6 +17027,13 @@
       "path": "src/lib/review/session-scope.ts",
       "bytes": 2425,
       "sha256": "4e4f959acc20a2dd62133554ac884ea7fc35cb5648e67037fdb1254c5ebb8a00",
+      "mode": "0644",
+      "licence": "MIT"
+    },
+    {
+      "path": "src/lib/review/statement-scaffold-queue.ts",
+      "bytes": 5527,
+      "sha256": "36fdf8b20d74ec62fc95adcb826ea709b190e483e8bafda2b1808b291e1480fd",
       "mode": "0644",
       "licence": "MIT"
     },
@@ -14015,8 +17144,8 @@
     },
     {
       "path": "src/lib/study-day.ts",
-      "bytes": 1971,
-      "sha256": "42ab89dc104ee85c176680862ddb62e8dbbb72f21620aa05d64a413e2bd84ac0",
+      "bytes": 2164,
+      "sha256": "34d791ef0fe1294b05490294e799c753c2623950c298126bf8a962829417bbe7",
       "mode": "0644",
       "licence": "MIT"
     },
@@ -14035,6 +17164,13 @@
       "licence": "MIT"
     },
     {
+      "path": "src/lib/study/background-queue-refresh.ts",
+      "bytes": 3323,
+      "sha256": "559a8d01c995d8ad58bdb44d9fab4fb5bac8f02690d421c6620cf714b1cc16a9",
+      "mode": "0644",
+      "licence": "MIT"
+    },
+    {
       "path": "src/lib/study/booked-exam.ts",
       "bytes": 2049,
       "sha256": "60be5bc5a919d217e662a6ff4f41ec8edee3a927fe534af905119e007cd6945c",
@@ -14043,8 +17179,8 @@
     },
     {
       "path": "src/lib/study/copyright-step1-supplement.ts",
-      "bytes": 3510,
-      "sha256": "d4c432d0ec4155ae13ef50067968c305f7eb99fb9bd76f9a5d31d91ea4e74d32",
+      "bytes": 3762,
+      "sha256": "223684ce1ff03b36af16552d320002a423be400225be2b04de0f0f68a40ba4c6",
       "mode": "0644",
       "licence": "MIT"
     },
@@ -14057,8 +17193,8 @@
     },
     {
       "path": "src/lib/study/current-session-content.ts",
-      "bytes": 9518,
-      "sha256": "bdf10078a1ec845228436fca288d95383ce3c97afd6e601cbbba188af78adf04",
+      "bytes": 10881,
+      "sha256": "80c7e7c5b9cb3ea8a935f179d02aa8022787aa6cbcfed69041157cca5d858e90",
       "mode": "0644",
       "licence": "MIT"
     },
@@ -14099,8 +17235,8 @@
     },
     {
       "path": "src/lib/study/exam-only-modules.ts",
-      "bytes": 1027,
-      "sha256": "7bdb8d70898d29b5ce1c17057505862a5094aa55b8045fb52cec654f2e3be775",
+      "bytes": 1358,
+      "sha256": "9f78b0dec70cb57b5e184fb248160fafa724c7806f285e928f1b2c0d47739dc7",
       "mode": "0644",
       "licence": "MIT"
     },
@@ -14273,6 +17409,69 @@
       "licence": "MIT"
     },
     {
+      "path": "src/lib/study/review-challenge-demand.ts",
+      "bytes": 4728,
+      "sha256": "198847e29b9d5a265c77ffa81ede2f7589915e854cd3d12386e5243443d931ef",
+      "mode": "0644",
+      "licence": "MIT"
+    },
+    {
+      "path": "src/lib/study/review-challenge-exhaustion.ts",
+      "bytes": 1191,
+      "sha256": "44bd6ea2ed55a3b4d2450be9f5b849cf69fc03f93853ed32b48e2b1c8569f338",
+      "mode": "0644",
+      "licence": "MIT"
+    },
+    {
+      "path": "src/lib/study/review-challenge-instant.ts",
+      "bytes": 1817,
+      "sha256": "810c2cbd1827a6a0c234fdc47812d8944fffaa8d164500305f109868ab964a4b",
+      "mode": "0644",
+      "licence": "MIT"
+    },
+    {
+      "path": "src/lib/study/review-challenge-preference.ts",
+      "bytes": 2885,
+      "sha256": "ea3c15bcd83295a6e83ff1edc9b58376cbef2f496f2e4424614126c304d99d2c",
+      "mode": "0644",
+      "licence": "MIT"
+    },
+    {
+      "path": "src/lib/study/review-challenge.ts",
+      "bytes": 8456,
+      "sha256": "5867af9e7bb16304db696fa3cfd4e14479146bc09ee07794279ad4cb2f9b418e",
+      "mode": "0644",
+      "licence": "MIT"
+    },
+    {
+      "path": "src/lib/study/review-learning-delivery.ts",
+      "bytes": 5512,
+      "sha256": "282082108ac1b366659cd121f9990e79c531935da207ce541201e4d344cff4e9",
+      "mode": "0644",
+      "licence": "MIT"
+    },
+    {
+      "path": "src/lib/study/review-learning-gap.server.ts",
+      "bytes": 2605,
+      "sha256": "52e4a64eff1aad2d2a6a0a796173834423374eb7843567863cf59d993c4ae8d8",
+      "mode": "0644",
+      "licence": "MIT"
+    },
+    {
+      "path": "src/lib/study/review-learning-item.ts",
+      "bytes": 744,
+      "sha256": "b2fe93dbddf279792587e434c84b68bffbb4b06df1a9a402f1210a6ad5d0e821",
+      "mode": "0644",
+      "licence": "MIT"
+    },
+    {
+      "path": "src/lib/study/review-learning-policy.ts",
+      "bytes": 4072,
+      "sha256": "dcdb9be55ec74f58028d087cd0c902d43c8409586c7e7e8f97d7ed7b584f4595",
+      "mode": "0644",
+      "licence": "MIT"
+    },
+    {
       "path": "src/lib/study/review-menu.server.ts",
       "bytes": 2790,
       "sha256": "14dd93781d3bf30286f36be384b6db4c286427d16d98b0f0d83d6c4db3853f6e",
@@ -14294,6 +17493,13 @@
       "licence": "MIT"
     },
     {
+      "path": "src/lib/study/rotation-daily-target-memo.ts",
+      "bytes": 3489,
+      "sha256": "96fd082fa7a74d1f60dd37757585bd354c2a4ed2fce8798fe3a3b2fc8a093299",
+      "mode": "0644",
+      "licence": "MIT"
+    },
+    {
       "path": "src/lib/study/rotation-daily-target.ts",
       "bytes": 15669,
       "sha256": "4d3f5b7169062d6869bdf277f26d1c4f74651364ae54791508661a5aab96ac22",
@@ -14302,8 +17508,8 @@
     },
     {
       "path": "src/lib/study/servable-pool.ts",
-      "bytes": 13383,
-      "sha256": "4dcfb6b534e29e0e26fc18f52751c14c774e41a502897f62ce06e39d94cee382",
+      "bytes": 13850,
+      "sha256": "352ab812ec46cff574e0ec7b17d7d82a9a58ef2454abe19b4480faad878c1c56",
       "mode": "0644",
       "licence": "MIT"
     },
@@ -14316,8 +17522,8 @@
     },
     {
       "path": "src/lib/study/serve-decision-retention.ts",
-      "bytes": 3799,
-      "sha256": "bb2d4a8ce80ab5074e5df6856c8223bfff8667998879a3558d57d3bf98d7d3fe",
+      "bytes": 11058,
+      "sha256": "cf46689b8e55c2477a067352b1ca210ec8165c2d024d438f856d4189cb20c52c",
       "mode": "0644",
       "licence": "MIT"
     },
@@ -14330,8 +17536,8 @@
     },
     {
       "path": "src/lib/study/serve-decision-write.ts",
-      "bytes": 27622,
-      "sha256": "c1fa91854fc95f8be47646eee66273dfa654d823f94adcb509938c466f2c0e64",
+      "bytes": 28009,
+      "sha256": "892edcef060b04ad4613a3ca7ac5fa09e1dd94624d4628c9d08f8a76548bde67",
       "mode": "0644",
       "licence": "MIT"
     },
@@ -14351,8 +17557,15 @@
     },
     {
       "path": "src/lib/study/session-cache-warm.ts",
-      "bytes": 5119,
-      "sha256": "142c2628d948262a8719425bb467986ed5c35d5d18e9f12c93ace6ca295e2b26",
+      "bytes": 5558,
+      "sha256": "369c73e44b50886cc1104b4d188cf115eac347ecc0064049b73dae5ee192a370",
+      "mode": "0644",
+      "licence": "MIT"
+    },
+    {
+      "path": "src/lib/study/session-refresh-lease.ts",
+      "bytes": 6883,
+      "sha256": "99562fd85dfec1225868d61bc406090a4703df5af4a46a83eb61f9c2e0ed751e",
       "mode": "0644",
       "licence": "MIT"
     },
@@ -14360,6 +17573,20 @@
       "path": "src/lib/study/source-corpus.ts",
       "bytes": 2256,
       "sha256": "6dbfbcd5d2c00d25a89e6908a01f152638994b08ad986c642f339691dc6a36a3",
+      "mode": "0644",
+      "licence": "MIT"
+    },
+    {
+      "path": "src/lib/study/statement-scaffold-delivery.ts",
+      "bytes": 13044,
+      "sha256": "7cedd7a1312bd89950d93992ac399e02825b1b1fcb8356053ada9c2a18f7473d",
+      "mode": "0644",
+      "licence": "MIT"
+    },
+    {
+      "path": "src/lib/study/statement-scaffolds.ts",
+      "bytes": 13713,
+      "sha256": "4096f580e638220caefbbac230aed514bfc2702602fbeb07994051fea90b3e67",
       "mode": "0644",
       "licence": "MIT"
     },
@@ -14393,50 +17620,50 @@
     },
     {
       "path": "src/lib/study/unified-session-cache-compute.ts",
-      "bytes": 9208,
-      "sha256": "4a88e7f466882b786f80745e1cf9399b6b6c97744561b0c1dd49d4adfd5cc6a5",
+      "bytes": 10683,
+      "sha256": "cbc957399aefef2750ab2b36f210c20d88b0a343a94e48fe562f6c3dccedbc38",
       "mode": "0644",
       "licence": "MIT"
     },
     {
       "path": "src/lib/study/unified-session-cache-helpers.ts",
-      "bytes": 2089,
-      "sha256": "ae25f65094a0783b683edc87c2e6d3f68acdd6adfe4d6d5aa7b6164966dcfe42",
+      "bytes": 2351,
+      "sha256": "297ed0ddbc3b31afd3881947f2204fe02aebf16d70c07c28e9f96e8b626801f0",
       "mode": "0644",
       "licence": "MIT"
     },
     {
       "path": "src/lib/study/unified-session-cache-refresh-lock.ts",
-      "bytes": 1053,
-      "sha256": "c1f03f20475454d476816354111f7296162334e2ff8dafccfc0ee1ffbb1ebd9a",
+      "bytes": 4354,
+      "sha256": "79f9e51ca3b1618e5b15e7217e4bbf28c9f8714d17b327192131987426b7a184",
       "mode": "0644",
       "licence": "MIT"
     },
     {
       "path": "src/lib/study/unified-session-cache-refresh.ts",
-      "bytes": 6060,
-      "sha256": "eb3cc03c49cdefebd41c2795f55c3f2fbac68de6a45f7a6c66a38489ab88524e",
+      "bytes": 8585,
+      "sha256": "f1551b614ee9c4630a14f6cca7862b5887d4ec885262f48c8cb71be71716cee8",
       "mode": "0644",
       "licence": "MIT"
     },
     {
       "path": "src/lib/study/unified-session-cache-store.ts",
-      "bytes": 9415,
-      "sha256": "126203eefcb50cb09a62ac7e9145179448816ab2583b58686b613a76cddb373c",
+      "bytes": 16829,
+      "sha256": "3562a67375ea406bcc0fa223d94935b7b8410902668fe4836e1bd9599b36a9dd",
       "mode": "0644",
       "licence": "MIT"
     },
     {
       "path": "src/lib/study/unified-session-cache.ts",
-      "bytes": 33000,
-      "sha256": "d5944c87e4ce0d7dc3b4abd51f7dabcf616b436c6fe9d4408cb27716eb8798e9",
+      "bytes": 34318,
+      "sha256": "56369456fa16767289b76ffec710bbc9b6989b071a7dca94dc49751afe9d83de",
       "mode": "0644",
       "licence": "MIT"
     },
     {
       "path": "src/lib/study/unified-session-diagnostics.ts",
-      "bytes": 4779,
-      "sha256": "1acdde9fa8af3f559856b519b0c7ae7aa1385955160f695df4682c7a136cb8c5",
+      "bytes": 4806,
+      "sha256": "b4e6243edff43fb8c8322942340147a59e2ef42b42556b57cfea951dbc624f80",
       "mode": "0644",
       "licence": "MIT"
     },
@@ -14449,15 +17676,15 @@
     },
     {
       "path": "src/lib/study/unified-session-hydration.ts",
-      "bytes": 17746,
-      "sha256": "3697c43a1c20561897b3c8d14b40c519d831550dc31087ee7eb27b329c7f86ec",
+      "bytes": 18183,
+      "sha256": "9189885e45cbd35387d6bdb29b79d61639c4a552b3124d16fd9501603831ada6",
       "mode": "0644",
       "licence": "MIT"
     },
     {
       "path": "src/lib/study/unified-session-instant.ts",
-      "bytes": 48390,
-      "sha256": "9143332acee2807133665ea3dda857034992b98df0ceab85196be8a547f9ec2c",
+      "bytes": 52416,
+      "sha256": "67a883ccd9ade9e53c51451fb2cd45b460732aa0904d5e3ef95043ae84ba319b",
       "mode": "0644",
       "licence": "MIT"
     },
@@ -14470,15 +17697,15 @@
     },
     {
       "path": "src/lib/study/unified-session-manifold-items.ts",
-      "bytes": 12122,
-      "sha256": "578f154e6ded98384ce5cbf687308a565be6d5b74907ab80bb3fec6ab7a3d975",
+      "bytes": 12178,
+      "sha256": "c4f9cb4609bd2a175f5ea14da056bbfcc387557092b6a8e0bc5d6edf74177362",
       "mode": "0644",
       "licence": "MIT"
     },
     {
       "path": "src/lib/study/unified-session-manifold.ts",
-      "bytes": 59131,
-      "sha256": "76b94577520870ff29b75f73e07a252a6dcbde4fe534e626973b7df012e45716",
+      "bytes": 60078,
+      "sha256": "01d281494a4259e8fc7d803610ed623cf13f74755fa424de5abd4d2ebbc56d6a",
       "mode": "0644",
       "licence": "MIT"
     },
@@ -14498,15 +17725,15 @@
     },
     {
       "path": "src/lib/study/unified-session-public.ts",
-      "bytes": 4383,
-      "sha256": "d12363452da66e0079947989ef7955194704c8df1fa4ac6bd66f9e3fa535cfcf",
+      "bytes": 4441,
+      "sha256": "d5b7631c13ea6ce8212b5fb26540668f78872df107c510e715bb8cbc4a310707",
       "mode": "0644",
       "licence": "MIT"
     },
     {
       "path": "src/lib/study/unified-session-rereview.ts",
-      "bytes": 10210,
-      "sha256": "a5741aceed8c3a88385100d260f23482abf78428146abf1b0bed07accbcadc36",
+      "bytes": 10374,
+      "sha256": "f41d2fdbad8c90256ec35b6eb89f7d11b0108c501ee284bd80c273d8ec031939",
       "mode": "0644",
       "licence": "MIT"
     },
@@ -14519,22 +17746,22 @@
     },
     {
       "path": "src/lib/study/unified-session-service.ts",
-      "bytes": 42184,
-      "sha256": "1c06c49b1e1ff5494decf134a8c369b37250909d3d78c6e013afa6dd557c7009",
+      "bytes": 44954,
+      "sha256": "fe01e09b68c2c4b8b659c52456644b2a4beddc82cdfbc9fbeeb9cf0088615ed1",
       "mode": "0644",
       "licence": "MIT"
     },
     {
       "path": "src/lib/study/unified-session-starter.ts",
-      "bytes": 13524,
-      "sha256": "b2264490c8a1311b79b5d32ca8376afe8f4fbd302016219e14f1c06e70d9003b",
+      "bytes": 13966,
+      "sha256": "198071a21360056f10c0f38159204f71965e0a17131d442778c377d119b09fd3",
       "mode": "0644",
       "licence": "MIT"
     },
     {
       "path": "src/lib/study/unified-session-types.ts",
-      "bytes": 14619,
-      "sha256": "12ccbc505930d11fe950b167e24084832ace86ae1dc0a87c5fd692b3b15903ce",
+      "bytes": 16190,
+      "sha256": "45c37b2efd6e7394fc1ef78e4f331daf5e1e08ef8fb3dbd43dad3138e6fd69b7",
       "mode": "0644",
       "licence": "MIT"
     },
@@ -14610,8 +17837,8 @@
     },
     {
       "path": "src/lib/user/stats-queries.ts",
-      "bytes": 10438,
-      "sha256": "3ee5af83e2cbb8c66382a86cb36c4f8286c6ed56018348f337dfae7f5f61191c",
+      "bytes": 10626,
+      "sha256": "654ff221a073a311d428ebe6c97acc47b639423aa74310cb9397bc7900c39def",
       "mode": "0644",
       "licence": "MIT"
     },
@@ -15044,8 +18271,8 @@
     },
     {
       "path": "vitest.config.mjs",
-      "bytes": 4051,
-      "sha256": "38a7be95420278ceb79e04a1a27847f5efb50c336242ae30f6357afd117172f9",
+      "bytes": 4768,
+      "sha256": "2e72306591a3ab8e1692bf2a2b03ac569ee817abcdcef66da88628f2799da9c0",
       "mode": "0644",
       "licence": "MIT"
     },

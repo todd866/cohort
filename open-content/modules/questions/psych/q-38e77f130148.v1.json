@@ -1,0 +1,64 @@
+{
+  "id": "bank:cohort:psych:q-38e77f130148:v1",
+  "rotation": "cohort-open",
+  "moduleNodes": [
+    "cohort/psych"
+  ],
+  "topics": [
+    "psych"
+  ],
+  "questionType": "management",
+  "difficulty": "medium",
+  "stem": "A 47-year-old man in a NSW GP clinic is convinced that a neighbour is controlling his thoughts and says he intends to seriously injure the neighbour today. After examining him, the GP concludes that mental illness is driving the threat; there is no intoxication or delirium. He refuses voluntary hospital assessment, and the GP finds no safe, appropriate less restrictive alternative while arranging help to maintain safety.\n\nWhich step can the GP take under the Mental Health Act 2007 (NSW)?",
+  "options": [
+    {
+      "label": "A",
+      "text": "Apply for a guardianship order to authorise his involuntary psychiatric admission",
+      "isCorrect": false,
+      "explanation": "The immediate pathway for mental illness requiring protection from serious harm is the Mental Health Act. A guardianship application is not the appropriate first step in the circumstances described."
+    },
+    {
+      "label": "B",
+      "text": "Ask his next of kin to sign consent for admission as a voluntary patient",
+      "isCorrect": false,
+      "explanation": "A relative’s agreement does not convert this adult’s refusal into voluntary consent. The GP needs to use the statutory assessment pathway whose criteria have been met."
+    },
+    {
+      "label": "C",
+      "text": "Complete a Schedule 1 certificate for transport to a declared mental health facility",
+      "isCorrect": true,
+      "explanation": "After examination and reasonable inquiry, a medical practitioner can complete Schedule 1 under section 19 when the statutory criteria and necessity for involuntary care are met. The certificate enables transport to a declared mental health facility for assessment; it is not a final Tribunal order."
+    },
+    {
+      "label": "D",
+      "text": "Seek a Tribunal order for inpatient detention before arranging transfer for assessment",
+      "isCorrect": false,
+      "explanation": "A Tribunal order is not needed before the GP can initiate the Schedule 1 assessment pathway. Continued detention involves further assessment and statutory review."
+    },
+    {
+      "label": "E",
+      "text": "Wait for a psychiatrist to examine him before completing a medical certificate",
+      "isCorrect": false,
+      "explanation": "Schedule 1 can be completed by a medical practitioner or an accredited person; the initial certificate does not require a psychiatrist. Specialist assessment follows through the receiving service."
+    }
+  ],
+  "context": "In NSW, Schedule 1 under section 19 enables involuntary assessment when the statutory criteria are met and no appropriate less restrictive care is reasonably available.",
+  "publicModule": {
+    "schemaVersion": 1,
+    "origin": "mirrored",
+    "discipline": "psych",
+    "mirroredFrom": "md3:38e77f13014844c1",
+    "itemText": {
+      "licence": "CC-BY-4.0",
+      "attribution": "MD3 contributors"
+    },
+    "evidence": {
+      "kind": "reference",
+      "sourceId": "nsw-health-mentalhealth-legislation-documents-nh600900a-289855"
+    },
+    "review": {
+      "verdict": "passed",
+      "contentHash": "e753ef91b469d69a1a5e5c7b002afe626f3c2b67398a5bb71c5d8d04f86e9186"
+    }
+  }
+}

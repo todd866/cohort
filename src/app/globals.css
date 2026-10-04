@@ -331,44 +331,26 @@ main:focus-visible {
   animation: clozeReveal 180ms ease-out;
 }
 
-/* ─── Term tooltip — CSS-only, works on hover + focus (tap on mobile) ───
-   Only obscure glossary terms (decode:true) get .term-tooltip; the rarity is
-   what keeps it from reading as noise (the decode-everything style was retired
-   2026-06-11). */
-.term-tooltip {
-  position: relative;
-}
-
-.term-tooltip::after {
-  content: attr(data-tooltip);
-  position: absolute;
-  bottom: calc(100% + 6px);
-  left: 50%;
-  transform: translateX(-50%);
+/* Only curated decode terms use this bubble. DecodedTerm.tsx measures a body portal
+   against the visual viewport and delays mouse hover by 120ms for intent. */
+.term-tooltip-bubble {
+  position: fixed;
+  left: 0;
+  top: 0;
+  box-sizing: border-box;
   padding: 4px 10px;
   border-radius: var(--md-radius-sm);
   background: var(--md-on-surface);
   color: var(--md-surface);
   font-size: 0.75rem;
   font-style: normal;
+  font-weight: normal;
   line-height: 1.4;
   white-space: normal;
-  max-width: min(250px, 90vw);
+  overflow-wrap: anywhere;
   width: max-content;
-  pointer-events: none;
-  opacity: 0;
-  /* DELIBERATE ease-in — the one in the file. With no transition-delay set, the
-     slow front of the curve IS the accidental-activation guard for a hover
-     affordance. Do not "fix" this to ease-out on its own: that removes the
-     hover-intent. The only acceptable replacement is ease-out PLUS an explicit
-     transition-delay, done in one piece. Pinned by globals.motion.test.ts. */
-  transition: opacity 120ms ease-in;
-  z-index: 50;
-}
-
-.term-tooltip:hover::after,
-.term-tooltip:focus::after {
-  opacity: 1;
+  overflow: auto;
+  z-index: 100;
 }
 
 /* ─── Buttons ─── */

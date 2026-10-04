@@ -1,0 +1,82 @@
+{
+  "id": "bank:cohort:id:q-a5f882458820:v1",
+  "rotation": "cohort-open",
+  "moduleNodes": [
+    "cohort/id"
+  ],
+  "topics": [
+    "id"
+  ],
+  "questionType": "diagnosis",
+  "difficulty": "medium",
+  "stem": "An unvaccinated girl of 3 has had 5 hours of fever to 39.8°C and a sore throat. She sits upright, leaning forward, drooling, with a muffled voice, soft stridor and no cough. She is too frightened to lie down. Her airway is secured by an anaesthetist in theatre, and her blood culture becomes positive the next day.\n\nWhich organism is most likely?",
+  "options": [
+    {
+      "label": "A",
+      "text": "Escherichia coli",
+      "isCorrect": false,
+      "explanation": "E. coli, a Gram-negative rod, causes neonatal sepsis and urinary infection rather than epiglottitis."
+    },
+    {
+      "label": "B",
+      "text": "Listeria monocytogenes",
+      "isCorrect": false,
+      "explanation": "Listeria is a Gram-positive rod that infects neonates and immunocompromised people. It does not cause epiglottitis."
+    },
+    {
+      "label": "C",
+      "text": "Group B streptococcus",
+      "isCorrect": false,
+      "explanation": "Group B streptococcus is a Gram-positive coccus that causes infection in the first months of life, not epiglottitis at 3 years."
+    },
+    {
+      "label": "D",
+      "text": "Staphylococcus aureus",
+      "isCorrect": false,
+      "explanation": "Staphylococcus aureus causes bacterial tracheitis, with a croup-like prodrome, a brassy cough and purulent secretions, and some epiglottitis now that Hib is rare. She has no cough, an abrupt onset and no vaccine protection."
+    },
+    {
+      "label": "E",
+      "text": "Streptococcus pneumoniae",
+      "isCorrect": false,
+      "explanation": "Streptococcus pneumoniae causes a minority of epiglottitis in vaccinated children. In an unvaccinated child, Hib is far more likely."
+    },
+    {
+      "label": "F",
+      "text": "Neisseria meningitidis",
+      "isCorrect": false,
+      "explanation": "Neisseria meningitidis causes septicaemia and meningitis, often with a purpuric rash, rather than epiglottitis."
+    },
+    {
+      "label": "G",
+      "text": "Group A streptococcus",
+      "isCorrect": false,
+      "explanation": "Group A streptococcus is among the causes of epiglottitis now that Hib is rare, and it causes sore throats, but it does not displace Hib in an unvaccinated child."
+    },
+    {
+      "label": "H",
+      "text": "Haemophilus influenzae",
+      "isCorrect": true,
+      "explanation": "Correct. Abrupt fever, drooling, a muffled voice, soft stridor, a tripod posture and no cough are epiglottitis, and in an unvaccinated child the cause is Haemophilus influenzae type b, a Gram-negative coccobacillus that caused over 95% of cases before vaccination."
+    }
+  ],
+  "context": "Epiglottitis (abrupt fever, drooling, muffled voice, soft stridor, tripod posture, no cough) in an unimmunised child is usually Hib, a Gram-negative coccobacillus; it caused over 95% of cases before the vaccine.",
+  "publicModule": {
+    "schemaVersion": 1,
+    "origin": "mirrored",
+    "discipline": "id",
+    "mirroredFrom": "md3:a5f882458820613b",
+    "itemText": {
+      "licence": "CC-BY-4.0",
+      "attribution": "MD3 contributors"
+    },
+    "evidence": {
+      "kind": "reference",
+      "sourceId": "aih-ontents-vaccine-preventable-diseases-haemophilus-influenzae-type-b-hib-3ce45b"
+    },
+    "review": {
+      "verdict": "passed",
+      "contentHash": "78348f1c418e469b4cb180cbcd7b9493441bd3b38d8cb653465b1cde6cfad2ae"
+    }
+  }
+}

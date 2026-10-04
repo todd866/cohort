@@ -1,0 +1,64 @@
+{
+  "id": "bank:cohort:gynae:q-03bfc629e022:v1",
+  "rotation": "cohort-open",
+  "moduleNodes": [
+    "cohort/gynae"
+  ],
+  "topics": [
+    "gynae"
+  ],
+  "questionType": "management",
+  "difficulty": "medium",
+  "stem": "A 36-year-old attends her GP to discuss a routine clinician-collected Cervical Screening Test. HPV16 is detected, but the reflex liquid-based cytology is negative. She has no abnormal bleeding or other symptoms.\n\nWhat follow-up is recommended under the Australian screening pathway?",
+  "options": [
+    {
+      "label": "A",
+      "text": "Return to routine screening in 5 years",
+      "isCorrect": false,
+      "explanation": "Routine five-year screening follows a low-risk result. HPV16 detection places her in a higher-risk pathway despite negative cytology."
+    },
+    {
+      "label": "B",
+      "text": "Repeat HPV testing in 12 months before considering referral",
+      "isCorrect": false,
+      "explanation": "A 12-month follow-up pathway can apply to selected non16/18 HPV results with low-risk cytology. It is not the pathway for HPV16 detection."
+    },
+    {
+      "label": "C",
+      "text": "Refer for colposcopic assessment",
+      "isCorrect": true,
+      "explanation": "HPV16 carries sufficient risk to require colposcopy regardless of the negative reflex cytology. Colposcopy determines whether biopsy and treatment are needed."
+    },
+    {
+      "label": "D",
+      "text": "Repeat cytology in 6 months",
+      "isCorrect": false,
+      "explanation": "Repeating cytology alone would fail to follow the HPV-based higher-risk pathway. A negative cytology result has already been obtained and does not remove the referral indication."
+    },
+    {
+      "label": "E",
+      "text": "Refer directly for cervical excisional treatment",
+      "isCorrect": false,
+      "explanation": "HPV16 positivity alone does not establish a lesion requiring excision. Colposcopic assessment and appropriate histology guide treatment."
+    }
+  ],
+  "context": "HPV16 or 18 detection requires colposcopy referral even when reflex cytology is negative.",
+  "publicModule": {
+    "schemaVersion": 1,
+    "origin": "mirrored",
+    "discipline": "gynae",
+    "mirroredFrom": "md3:03bfc629e022fc78",
+    "itemText": {
+      "licence": "CC-BY-4.0",
+      "attribution": "MD3 contributors"
+    },
+    "evidence": {
+      "kind": "reference",
+      "sourceId": "health-gov-au-cervical-screening-program-a-summary-guide-for-healthcare-providers-0-91e407"
+    },
+    "review": {
+      "verdict": "passed",
+      "contentHash": "f34599d7b233d44cc12ca2703f9a4840d4c8dd9dd9cbb24125829a2fa1512c13"
+    }
+  }
+}

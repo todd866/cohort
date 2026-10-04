@@ -1,0 +1,64 @@
+{
+  "id": "bank:cohort:psych:q-92c7113a946f:v1",
+  "rotation": "cohort-open",
+  "moduleNodes": [
+    "cohort/psych"
+  ],
+  "topics": [
+    "psych"
+  ],
+  "questionType": "management",
+  "difficulty": "medium",
+  "stem": "A GP reviews a woman who has taken lorazepam every evening for three years. When she omitted it for two nights, she developed tremor and marked anxiety, which settled after restarting it. She wants to stop, has reliable follow-up and has no history of seizures or concurrent alcohol or opioid use.\n\nWhich plan should the GP agree with her?",
+  "options": [
+    {
+      "label": "A",
+      "text": "A gradual taper, with reductions adjusted at regular reviews",
+      "isCorrect": true,
+      "explanation": "Her missed-dose symptoms suggest physical dependence, so withdrawal should be planned and gradual. Agree a flexible pace, review symptoms and address the original reason for treatment."
+    },
+    {
+      "label": "B",
+      "text": "A fixed one-week taper, with daily reductions despite symptoms",
+      "isCorrect": false,
+      "explanation": "A rigid rapid schedule after prolonged regular use may cause substantial withdrawal. The rate should respond to tolerance and individual circumstances."
+    },
+    {
+      "label": "C",
+      "text": "Switch to diazepam, then stop it over two weeks",
+      "isCorrect": false,
+      "explanation": "Switching to a longer-acting benzodiazepine such as diazepam can smooth a taper, but stopping over two weeks after three years of nightly use is too fast and invites the withdrawal she has already experienced. The pace should be gradual and adjusted to symptoms."
+    },
+    {
+      "label": "D",
+      "text": "Stop lorazepam and substitute nightly zopiclone for six months",
+      "isCorrect": false,
+      "explanation": "Switching to nightly zopiclone replaces one dependence-producing hypnotic with another and does not meet her goal of stopping regular sedatives."
+    },
+    {
+      "label": "E",
+      "text": "Continue the same dose until she can stop without withdrawal",
+      "isCorrect": false,
+      "explanation": "Remaining indefinitely on the same dose does not make physical dependence disappear. Discuss a supported taper rather than waiting for abrupt cessation to become symptom-free."
+    }
+  ],
+  "context": "Long-term benzodiazepine withdrawal requires an agreed, individualised taper.",
+  "publicModule": {
+    "schemaVersion": 1,
+    "origin": "mirrored",
+    "discipline": "psych",
+    "mirroredFrom": "md3:92c7113a946fb276",
+    "itemText": {
+      "licence": "CC-BY-4.0",
+      "attribution": "MD3 contributors"
+    },
+    "evidence": {
+      "kind": "reference",
+      "sourceId": "nsw-health-aod-professionals-publications-managing-withdrawal-e60532"
+    },
+    "review": {
+      "verdict": "passed",
+      "contentHash": "f873796bdeec00f08148686fa3f115ce7e025e0bb8fe20ac839b7c77822e6a97"
+    }
+  }
+}

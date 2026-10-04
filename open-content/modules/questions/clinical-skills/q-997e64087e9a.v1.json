@@ -1,0 +1,64 @@
+{
+  "id": "bank:cohort:clinical-skills:q-997e64087e9a:v1",
+  "rotation": "cohort-open",
+  "moduleNodes": [
+    "cohort/clinical-skills"
+  ],
+  "topics": [
+    "clinical-skills"
+  ],
+  "questionType": "management",
+  "difficulty": "medium",
+  "stem": "A medication error caused transient harm to a hospital inpatient: she was given a tenfold insulin dose and had a hypoglycaemic seizure. She has recovered, the error is confirmed, and the system investigation has begun but is incomplete. Before the consultant meets her, a junior doctor says that saying sorry will admit legal liability and suggests expressing only general regret. The patient has already asked who was responsible.\n\nWhich approach best follows open-disclosure principles?",
+  "options": [
+    {
+      "label": "A",
+      "text": "Express general regret but avoid the word sorry",
+      "isCorrect": false,
+      "explanation": "Avoiding a clear apology undermines trust; an apology is not an admission of liability under Australian apology laws."
+    },
+    {
+      "label": "B",
+      "text": "Say sorry, explain known facts, the review and follow-up",
+      "isCorrect": true,
+      "explanation": "Open disclosure starts as soon as practicable with an apology that includes the word sorry, a factual account of what is known, the patient's questions, and how the review and her care will proceed. Australian apology laws provide that an apology is not an admission of liability. Individual blame is not assigned while the review is incomplete."
+    },
+    {
+      "label": "C",
+      "text": "Name the nurse who gave the dose, since she has asked",
+      "isCorrect": false,
+      "explanation": "The investigation is incomplete and errors usually have system causes; naming an individual is speculative and unfair."
+    },
+    {
+      "label": "D",
+      "text": "Wait for the investigation before discussing the error",
+      "isCorrect": false,
+      "explanation": "Initial disclosure should not wait for the investigation; the confirmed facts are shared now and updated later."
+    },
+    {
+      "label": "E",
+      "text": "Apologise and promise that the error can never happen again",
+      "isCorrect": false,
+      "explanation": "A guarantee cannot be kept before the review has found what failed; promise to share its findings instead."
+    }
+  ],
+  "context": "Initial open disclosure happens as soon as practicable: say sorry, give the known facts, avoid blame and speculation, and explain the review and follow-up; an apology is not an admission of liability.",
+  "publicModule": {
+    "schemaVersion": 1,
+    "origin": "mirrored",
+    "discipline": "clinical-skills",
+    "mirroredFrom": "md3:997e64087e9a9a01",
+    "itemText": {
+      "licence": "CC-BY-4.0",
+      "attribution": "MD3 contributors"
+    },
+    "evidence": {
+      "kind": "reference",
+      "sourceId": "nsw-health-pds-activepdsdocuments-pd2023-034-538bac"
+    },
+    "review": {
+      "verdict": "passed",
+      "contentHash": "f5b52c9ac8c7098b5d1fe36959f115a72ba46f39dd561a1f238fe5f06510669a"
+    }
+  }
+}

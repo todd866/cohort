@@ -1,0 +1,64 @@
+{
+  "id": "bank:cohort:psych:q-adfe8a6482dc:v1",
+  "rotation": "cohort-open",
+  "moduleNodes": [
+    "cohort/psych"
+  ],
+  "topics": [
+    "psych"
+  ],
+  "questionType": "mechanism",
+  "difficulty": "medium",
+  "stem": "A man with schizophrenia developed stiffness, tremor and slowed movement on haloperidol. After a supervised switch to aripiprazole at a dose that occupies most striatal D2 receptors, his psychosis remains controlled and the parkinsonism resolves.\n\nWhich property of aripiprazole at the D2 receptor best explains this combination?",
+  "options": [
+    {
+      "label": "A",
+      "text": "Rapid dissociation that leaves most receptors unoccupied",
+      "isCorrect": false,
+      "explanation": "Fast dissociation is proposed for quetiapine and clozapine. Aripiprazole binds tightly and occupies most striatal D2 receptors, yet causes little parkinsonism."
+    },
+    {
+      "label": "B",
+      "text": "Blockade restricted to mesolimbic rather than striatal receptors",
+      "isCorrect": false,
+      "explanation": "Aripiprazole is not selective for mesolimbic receptors; it occupies striatal receptors heavily. The low motor burden comes from what it does at the receptors it occupies."
+    },
+    {
+      "label": "C",
+      "text": "Partial agonism that preserves low-level receptor stimulation",
+      "isCorrect": true,
+      "explanation": "As a partial agonist, aripiprazole blocks excess dopamine signalling yet gives low-level stimulation of the receptors it occupies. That residual striatal activity limits parkinsonism despite high occupancy."
+    },
+    {
+      "label": "D",
+      "text": "Full agonism matching the intrinsic activity of dopamine",
+      "isCorrect": false,
+      "explanation": "A full agonist would relieve parkinsonism but worsen psychosis. His psychosis stays controlled because aripiprazole’s intrinsic activity is lower than dopamine’s."
+    },
+    {
+      "label": "E",
+      "text": "Irreversible blockade with compensatory dopamine synthesis",
+      "isCorrect": false,
+      "explanation": "Irreversible blockade would worsen parkinsonism, not relieve it. Aripiprazole binds reversibly."
+    }
+  ],
+  "context": "Aripiprazole is a D2 partial agonist: its lower intrinsic activity than dopamine lets it act as an antipsychotic while leaving enough receptor stimulation to limit parkinsonism.",
+  "publicModule": {
+    "schemaVersion": 1,
+    "origin": "mirrored",
+    "discipline": "psych",
+    "mirroredFrom": "md3:adfe8a6482dca00f",
+    "itemText": {
+      "licence": "CC-BY-4.0",
+      "attribution": "MD3 contributors"
+    },
+    "evidence": {
+      "kind": "reference",
+      "sourceId": "acsqhc-medicine-finder-abilify-49c017"
+    },
+    "review": {
+      "verdict": "passed",
+      "contentHash": "0ecbe54e18878047f8334f295122e2ea3e209436feee72ce91b36d54a104336e"
+    }
+  }
+}

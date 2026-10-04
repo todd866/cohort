@@ -1,0 +1,64 @@
+{
+  "id": "bank:cohort:psych:q-73b465e44a70:v1",
+  "rotation": "cohort-open",
+  "moduleNodes": [
+    "cohort/psych"
+  ],
+  "topics": [
+    "psych"
+  ],
+  "questionType": "diagnosis",
+  "difficulty": "hard",
+  "stem": "A 31-year-old man on methadone 70 mg daily took several extra doses of his take-away methadone, then injected heroin. His partner found him unresponsive and paramedics gave intramuscular naloxone twice. Thirty minutes later in the emergency department he is restless and vomiting, with sweating, yawning, a runny nose, gooseflesh and dilated pupils. Heart rate is 108/min, respiratory rate 18/min and oxygen saturation 97%. His skin is moist, reflexes are normal with no clonus, and he is fully oriented. He wants to leave.\n\nWhich interpretation and plan are most appropriate?",
+  "options": [
+    {
+      "label": "A",
+      "text": "Methamphetamine intoxication; sedate him before he can leave",
+      "isCorrect": false,
+      "explanation": "Stimulant toxicity can cause agitation, dilated pupils and tachycardia, but not yawning, runny nose, gooseflesh and vomiting straight after naloxone."
+    },
+    {
+      "label": "B",
+      "text": "Precipitated opioid withdrawal; keep him for prolonged observation",
+      "isCorrect": true,
+      "explanation": "Naloxone has precipitated opioid withdrawal, but its effect lasts well under the duration of methadone. As it wears off he may become sedated and stop breathing again, so he needs prolonged observation, not discharge."
+    },
+    {
+      "label": "C",
+      "text": "Serotonin toxicity; give cyproheptadine and observe for an hour",
+      "isCorrect": false,
+      "explanation": "Serotonin toxicity needs neuromuscular signs such as clonus and hyperreflexia, which are absent. The timing after naloxone points to opioid withdrawal."
+    },
+    {
+      "label": "D",
+      "text": "Opioid withdrawal; he may leave once the vomiting has settled",
+      "isCorrect": false,
+      "explanation": "The picture is opioid withdrawal, but letting him leave when it settles ignores that naloxone wears off long before methadone does. Re-sedation outside hospital can be fatal."
+    },
+    {
+      "label": "E",
+      "text": "Anticholinergic toxicity; monitor him for urinary retention",
+      "isCorrect": false,
+      "explanation": "Anticholinergic toxicity gives dry, flushed skin and is not provoked by naloxone. His skin is moist and he has a runny nose and gooseflesh."
+    }
+  ],
+  "context": "Dilated pupils, yawning, rhinorrhoea, gooseflesh and vomiting in an alert patient are opioid withdrawal. After naloxone for a long-acting opioid such as methadone, the withdrawal is temporary and re-sedation is the danger.",
+  "publicModule": {
+    "schemaVersion": 1,
+    "origin": "mirrored",
+    "discipline": "psych",
+    "mirroredFrom": "md3:73b465e44a708472",
+    "itemText": {
+      "licence": "CC-BY-4.0",
+      "attribution": "MD3 contributors"
+    },
+    "evidence": {
+      "kind": "reference",
+      "sourceId": "health-gov-au-al-guidelines-for-medication-assisted-treatment-of-opioid-dependence-0-b96ebb"
+    },
+    "review": {
+      "verdict": "passed",
+      "contentHash": "59d93e5dc13379f1458ac738e3423691cf85b42fc9c88027f48cf9c2289c362a"
+    }
+  }
+}

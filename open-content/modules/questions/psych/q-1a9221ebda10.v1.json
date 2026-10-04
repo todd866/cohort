@@ -1,0 +1,64 @@
+{
+  "id": "bank:cohort:psych:q-1a9221ebda10:v1",
+  "rotation": "cohort-open",
+  "moduleNodes": [
+    "cohort/psych"
+  ],
+  "topics": [
+    "psych"
+  ],
+  "questionType": "management",
+  "difficulty": "hard",
+  "stem": "An ED liaison clinician sees a 41-year-old after a self-inflicted forearm wound. Medical assessment and wound care are under way. He drank earlier; his blood alcohol concentration is 0.09 g/100 mL. He is alert, attentive, gives a coherent account and denies current suicidal intent. He wants to discuss what happened. A colleague suggests postponing all mental-health assessment until the result is below 0.05 g/100 mL.\n\nWhat is the best response?",
+  "options": [
+    {
+      "label": "A",
+      "text": "Defer assessment until a repeat result is below the proposed threshold",
+      "isCorrect": false,
+      "explanation": "A fixed alcohol concentration does not establish whether someone can participate. Clinical assessment of engagement and cognition should determine what can be done now."
+    },
+    {
+      "label": "B",
+      "text": "Begin assessment now and reassess as the alcohol effects resolve",
+      "isCorrect": true,
+      "explanation": "He can engage, so an initial psychosocial assessment should begin alongside medical care. Alcohol can affect the account and mental state, making continued observation and reassessment important."
+    },
+    {
+      "label": "C",
+      "text": "Base disposition on his current denial of suicidal intent",
+      "isCorrect": false,
+      "explanation": "A denial of intent alone does not establish a safe disposition, especially after recent self-harm and alcohol use. A fuller assessment and plan are needed."
+    },
+    {
+      "label": "D",
+      "text": "Complete wound care before beginning any psychosocial assessment",
+      "isCorrect": false,
+      "explanation": "Psychosocial assessment need not wait until medical treatment is finished when the person can participate. The two can proceed together."
+    },
+    {
+      "label": "E",
+      "text": "Arrange community mental-health follow-up without an ED assessment",
+      "isCorrect": false,
+      "explanation": "Referral without assessment skips the risk assessment he needs today; he can engage now, and any follow-up should be planned from that assessment."
+    }
+  ],
+  "context": "After self-harm, start psychosocial assessment as early as the person can participate; use clinical reassessment rather than a fixed alcohol threshold.",
+  "publicModule": {
+    "schemaVersion": 1,
+    "origin": "mirrored",
+    "discipline": "psych",
+    "mirroredFrom": "md3:1a9221ebda10ced1",
+    "itemText": {
+      "licence": "CC-BY-4.0",
+      "attribution": "MD3 contributors"
+    },
+    "evidence": {
+      "kind": "reference",
+      "sourceId": "nice-guidance-ng225-chapter-recommendations-92f5c1"
+    },
+    "review": {
+      "verdict": "passed",
+      "contentHash": "6c1e9dc678279443952563c4bd13bfe3fba58cd9bad3ff96f6f06c22f5af1d9e"
+    }
+  }
+}

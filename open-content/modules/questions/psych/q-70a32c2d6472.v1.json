@@ -1,0 +1,64 @@
+{
+  "id": "bank:cohort:psych:q-70a32c2d6472:v1",
+  "rotation": "cohort-open",
+  "moduleNodes": [
+    "cohort/psych"
+  ],
+  "topics": [
+    "psych"
+  ],
+  "questionType": "management",
+  "difficulty": "medium",
+  "stem": "A 28-year-old woman is preparing for discharge after taking her partner's paracetamol following an argument. Medical treatment is complete, she now regrets the overdose, and she has no current suicidal intent. Follow-up with the community team is booked for tomorrow, and she already has the crisis-line number. Her partner is supportive but works night shifts. She says that when she becomes overwhelmed, usually late at night, she 'can't think of anything to do' and does not remember to call anyone.\n\nWhich addition best addresses the problem she describes?",
+  "options": [
+    {
+      "label": "A",
+      "text": "Daily phone calls from the team until her next appointment",
+      "isCorrect": false,
+      "explanation": "Scheduled calls offer contact at fixed times, but her crises come late at night when she cannot think what to do."
+    },
+    {
+      "label": "B",
+      "text": "A printed card with crisis-line and emergency numbers",
+      "isCorrect": false,
+      "explanation": "She already has the numbers. A generic list does not help someone who cannot think of what to do when overwhelmed."
+    },
+    {
+      "label": "C",
+      "text": "Her partner holds all medicines and checks on her each day",
+      "isCorrect": false,
+      "explanation": "Limiting access to means is worthwhile and belongs in the plan, but her partner works nights and monitoring does not give her steps to follow herself."
+    },
+    {
+      "label": "D",
+      "text": "A written safety plan made with her, kept on her phone",
+      "isCorrect": true,
+      "explanation": "A personalised safety plan, written with her and kept where she can reach it, lists her warning signs, her own coping steps, people and places to contact, and how to keep safe from means. It is designed for exactly the moment she describes."
+    },
+    {
+      "label": "E",
+      "text": "An overnight admission until a care coordinator is assigned",
+      "isCorrect": false,
+      "explanation": "She has no current intent and follow-up is arranged. Admission would not give her a way to manage future late-night crises."
+    }
+  ],
+  "context": "A collaborative safety plan turns warning signs into personal coping and help-seeking steps that the person can follow in a crisis; it complements follow-up, means restriction and reassessment.",
+  "publicModule": {
+    "schemaVersion": 1,
+    "origin": "mirrored",
+    "discipline": "psych",
+    "mirroredFrom": "md3:70a32c2d64720ada",
+    "itemText": {
+      "licence": "CC-BY-4.0",
+      "attribution": "MD3 contributors"
+    },
+    "evidence": {
+      "kind": "reference",
+      "sourceId": "nsw-health-pds-activepdsdocuments-pd2022-043-36f9e9"
+    },
+    "review": {
+      "verdict": "passed",
+      "contentHash": "6c92838b84b2336fcc67a832b4fee1904cb599282017283f36875a2611ee825a"
+    }
+  }
+}

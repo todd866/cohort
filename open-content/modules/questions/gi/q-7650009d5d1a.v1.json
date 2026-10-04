@@ -1,0 +1,64 @@
+{
+  "id": "bank:cohort:gi:q-7650009d5d1a:v1",
+  "rotation": "cohort-open",
+  "moduleNodes": [
+    "cohort/gi"
+  ],
+  "topics": [
+    "gi"
+  ],
+  "questionType": "investigation",
+  "difficulty": "medium",
+  "stem": "A GP sees a 4-week-old term boy who is still jaundiced. He is breastfed, feeding well and has gained 600 g above his birth weight. His mother says his stools have become pale over the past week and his urine now leaves a yellow stain on the nappy. Examination is otherwise normal, with no hepatosplenomegaly.\n\nWhich blood test should the GP request today?",
+  "options": [
+    {
+      "label": "A",
+      "text": "Total serum bilirubin, repeated in one week",
+      "isCorrect": false,
+      "explanation": "A total level cannot distinguish conjugated from unconjugated bilirubin, and a week of waiting can matter in biliary atresia."
+    },
+    {
+      "label": "B",
+      "text": "Direct antiglobulin test and reticulocyte count",
+      "isCorrect": false,
+      "explanation": "These assess haemolysis, which causes unconjugated jaundice and does not explain pale stools or dark urine."
+    },
+    {
+      "label": "C",
+      "text": "Thyroid function tests (TSH and free T4)",
+      "isCorrect": false,
+      "explanation": "Hypothyroidism can prolong unconjugated jaundice, but it does not explain pale stools and does not identify the bilirubin fraction."
+    },
+    {
+      "label": "D",
+      "text": "Total and conjugated (split) bilirubin",
+      "isCorrect": true,
+      "explanation": "Correct. Fractionation identifies conjugated hyperbilirubinaemia. Prolonged jaundice with pale stools and dark urine needs this today and urgent paediatric assessment for cholestasis, including biliary atresia."
+    },
+    {
+      "label": "E",
+      "text": "G6PD enzyme assay and a blood film",
+      "isCorrect": false,
+      "explanation": "This tests a cause of haemolysis and does not assess the cholestatic pattern."
+    }
+  ],
+  "context": "A thriving appearance does not make pale stools benign. Fractionated bilirubin is essential when prolonged jaundice accompanies pale stools or dark urine.",
+  "publicModule": {
+    "schemaVersion": 1,
+    "origin": "mirrored",
+    "discipline": "gi",
+    "mirroredFrom": "md3:7650009d5d1a6a14",
+    "itemText": {
+      "licence": "CC-BY-4.0",
+      "attribution": "MD3 contributors"
+    },
+    "evidence": {
+      "kind": "reference",
+      "sourceId": "rch-clinicalguide-guideline-index-jaundice-in-early-infancy-b2d236"
+    },
+    "review": {
+      "verdict": "passed",
+      "contentHash": "0e3eaf9cc9d104a5f9ddb860a2dcf951fdf7de5577ed36667046c8d4b9203fb2"
+    }
+  }
+}

@@ -1,0 +1,64 @@
+{
+  "id": "bank:cohort:em:q-f7110f16e0d2:v1",
+  "rotation": "cohort-open",
+  "moduleNodes": [
+    "cohort/em"
+  ],
+  "topics": [
+    "em"
+  ],
+  "questionType": "management",
+  "difficulty": "medium",
+  "stem": "Sione, 3 (14 kg), has hypernatraemic dehydration after 4 days of diarrhoea: sodium 159 mmol/L, about 5% dehydrated, not shocked. His deficit is 700 mL and his maintenance is 1200 mL a day.\n\nWhat hourly IV rate gives him full maintenance plus deficit replacement?",
+  "options": [
+    {
+      "label": "A",
+      "text": "29 mL per hour",
+      "isCorrect": false,
+      "explanation": "About 29 mL/h replaces the 700 mL deficit over 24 hours but gives no maintenance at all, so he would fall further behind."
+    },
+    {
+      "label": "B",
+      "text": "40 mL per hour",
+      "isCorrect": false,
+      "explanation": "About 40 mL/h spreads the maintenance over 48 hours as well as the deficit: (1200 + 700) / 48. He needs a full day's maintenance in every 24 hours."
+    },
+    {
+      "label": "C",
+      "text": "50 mL per hour",
+      "isCorrect": false,
+      "explanation": "About 50 mL/h is maintenance alone (1200 mL a day). It leaves his 700 mL deficit unreplaced."
+    },
+    {
+      "label": "D",
+      "text": "65 mL per hour",
+      "isCorrect": true,
+      "explanation": "Correct. The 700 mL deficit over 48 hours is 350 mL a day; with 1200 mL maintenance that is 1550 mL per 24 hours, about 65 mL/h. Sodium should fall no faster than 0.5 mmol/L/h."
+    },
+    {
+      "label": "E",
+      "text": "79 mL per hour",
+      "isCorrect": false,
+      "explanation": "About 79 mL/h replaces the whole 700 mL deficit within 24 hours. In hypernatraemia that risks too rapid a fall in sodium, with cerebral oedema and seizures."
+    }
+  ],
+  "context": "Hypernatraemic dehydration: replace the deficit over 48 hours on top of full maintenance, and let sodium fall no faster than 0.5 mmol/L/h (10-12 mmol/L a day), rechecking UEC often.",
+  "publicModule": {
+    "schemaVersion": 1,
+    "origin": "mirrored",
+    "discipline": "em",
+    "mirroredFrom": "md3:f7110f16e0d228a0",
+    "itemText": {
+      "licence": "CC-BY-4.0",
+      "attribution": "MD3 contributors"
+    },
+    "evidence": {
+      "kind": "reference",
+      "sourceId": "rch-clinicalguide-guideline-index-hypernatraemia-d3a63f"
+    },
+    "review": {
+      "verdict": "passed",
+      "contentHash": "d9a2c6fb0e7515d0f81d2f87616a2c71a2ffff48b3947bf143d3260ae9a8a8b5"
+    }
+  }
+}

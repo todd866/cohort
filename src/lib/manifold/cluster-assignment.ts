@@ -1,5 +1,6 @@
 import { Prisma } from '@prisma/client';
 import { prisma } from '@/lib/prisma';
+import { setLocalLimits } from '@/lib/db/statement-budget';
 import {
   clusterAssignmentPlanSql,
   clusterAvailabilityCtes,
@@ -28,6 +29,8 @@ export function chooseClusterFamily(counts: ClusterFamilyCounts): ClusterAssignm
 export interface ClusterAssignmentDb {
   $queryRaw(query: Prisma.Sql): Promise<unknown>;
   $executeRaw(query: Prisma.Sql): Promise<number>;
+  /** Used only for the transaction's own SET LOCAL limits. */
+  $executeRawUnsafe(query: string): Promise<number>;
 }
 
 export interface ClusterAssignmentClient extends ClusterAssignmentDb {
@@ -180,6 +183,12 @@ export async function assignMissingCardClusters(
 
   try {
     return await client.$transaction(async (tx) => {
+      // The client abandons this transaction at TRANSACTION_TIMEOUT_MS. Give
+      // the server the same ceiling, so a statement the client gave up on is
+      // cancelled instead of scanning on as an orphan, and so the bound does
+      // not depend on the role default.
+      await setLocalLimits(tx, { statementTimeoutMs: TRANSACTION_TIMEOUT_MS });
+
       // Availability counts CLUSTERS, never centroid values — see
       // clusterAvailabilityCtes. Using the topology CTEs here averaged every
       // card embedding in the database to produce numbers it then only counted.

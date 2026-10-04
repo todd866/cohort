@@ -1,0 +1,64 @@
+{
+  "id": "bank:cohort:obs:q-1a97625f3c0a:v1",
+  "rotation": "cohort-open",
+  "moduleNodes": [
+    "cohort/obs"
+  ],
+  "topics": [
+    "obs"
+  ],
+  "questionType": "management",
+  "difficulty": "hard",
+  "stem": "A consultant gynaecologist is performing laparoscopy for a painful 4-cm right ampullary ectopic pregnancy after counselling and consent for surgery. The left tube appears healthy; there is no previous infertility or tubal disease. The patient hopes for another pregnancy and agreed that the operation should maximise the chance of resolving this ectopic in one procedure while preserving future fertility where possible. Both ovaries are normal.\n\nWhich plan best fits these findings?",
+  "options": [
+    {
+      "label": "A",
+      "text": "Salpingotomy with serial serum hCG follow-up",
+      "isCorrect": false,
+      "explanation": "Salpingotomy may be preferred when the other tube is damaged or other fertility concerns favour conserving the affected tube. Here it brings a greater chance of persistent trophoblast without the same fertility rationale."
+    },
+    {
+      "label": "B",
+      "text": "Salpingectomy without routine additional methotrexate",
+      "isCorrect": true,
+      "explanation": "With a healthy other tube and no additional infertility risk, salpingectomy is generally preferred for surgical treatment. It offers reliable resolution while leaving the contralateral tube and both ovaries intact."
+    },
+    {
+      "label": "C",
+      "text": "Salpingotomy followed by prophylactic methotrexate",
+      "isCorrect": false,
+      "explanation": "Adding methotrexate does not make tube-conserving surgery the preferred default in this setting; it also adds drug exposure and monitoring."
+    },
+    {
+      "label": "D",
+      "text": "Salpingectomy followed by prophylactic methotrexate",
+      "isCorrect": false,
+      "explanation": "Routine methotrexate is not needed after an uncomplicated complete salpingectomy; the operation itself removes the tubal pregnancy."
+    },
+    {
+      "label": "E",
+      "text": "Laparoscopic injection of methotrexate into the ectopic",
+      "isCorrect": false,
+      "explanation": "The decision for definitive surgery has already been made for a painful, relatively large ectopic. Local methotrexate leaves trophoblastic tissue requiring surveillance and possible further treatment."
+    }
+  ],
+  "context": "A wish for future pregnancy does not automatically favour salpingotomy when the contralateral tube is healthy.",
+  "publicModule": {
+    "schemaVersion": 1,
+    "origin": "mirrored",
+    "discipline": "obs",
+    "mirroredFrom": "md3:1a97625f3c0a0970",
+    "itemText": {
+      "licence": "CC-BY-4.0",
+      "attribution": "MD3 contributors"
+    },
+    "evidence": {
+      "kind": "reference",
+      "sourceId": "nice-guidance-ng126-chapter-management-of-tubal-ectopic-pregnancy-7ddd17"
+    },
+    "review": {
+      "verdict": "passed",
+      "contentHash": "b4ffd1869408d467fc351ba63c0a6b98b1e7f2d59be705ba870536d0ee66ee8a"
+    }
+  }
+}

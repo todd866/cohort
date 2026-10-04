@@ -530,10 +530,58 @@ export const COHORT_SEARCH_TOPIC_REGISTRY = [
     ['endocrinology', 'endocrine emergencies', 'adrenal crisis'],
     ['practise endocrinology questions', 'learn endocrine emergency management'],
     'Apply Australian guidelines to endocrine presentations and emergencies.'),
+  moduleTopic('module-icu', 'icu', 'Intensive care',
+    ['intensive care', 'ICU', 'critical care', 'shock', 'sepsis', 'ventilation'],
+    ['practise intensive care', 'learn shock, sepsis and ventilation'],
+    'Recall the core facts of shock, sepsis, ventilation and fluids in intensive care.'),
   moduleTopic('module-ophth', 'ophth', 'Ophthalmology',
     ['ophthalmology', 'eyes', 'red eye', 'eye conditions'],
     ['practise ophthalmology questions', 'learn red eye management'],
     'Recognise and manage common eye conditions using Australian guidelines.'),
+  moduleTopic('module-gynae', 'gynae', 'Gynaecology',
+    ['gynaecology', 'gynecology', 'menstrual problems', 'contraception', 'fertility'],
+    ['practise gynaecology questions', 'learn Australian gynaecology guidelines'],
+    'Apply Australian guidelines to menstrual, fertility and gynaecological problems.'),
+  moduleTopic('module-anaes', 'anaes', 'Anaesthesia and perioperative care',
+    ['anaesthesia', 'anesthesia', 'perioperative care', 'airway management'],
+    ['practise anaesthesia questions', 'learn perioperative care guidelines'],
+    'Apply Australian guidelines to anaesthesia, airway and perioperative care.'),
+  moduleTopic('module-gi', 'gi', 'Gastroenterology',
+    ['gastroenterology', 'gut', 'digestive system', 'gastrointestinal bleeding'],
+    ['practise gastroenterology questions', 'learn gastrointestinal guidelines'],
+    'Apply Australian guidelines to gastrointestinal presentations.'),
+  moduleTopic('module-id', 'id', 'Infectious diseases',
+    ['infectious diseases', 'infections', 'antibiotics', 'sepsis'],
+    ['practise infectious diseases questions', 'learn antibiotic guidelines'],
+    'Apply Australian guidelines to the recognition and treatment of infection.'),
+  moduleTopic('module-surgery', 'surgery', 'Surgery',
+    ['surgery', 'surgical conditions', 'acute abdomen'],
+    ['practise surgery questions', 'learn surgical assessment'],
+    'Recognise and manage common surgical conditions using Australian guidelines.'),
+  moduleTopic('module-pharm', 'pharm', 'Pharmacology and analgesia',
+    ['pharmacology', 'medicines', 'analgesia', 'pain relief'],
+    ['practise pharmacology questions', 'learn safe prescribing'],
+    'Apply Australian guidance to safe prescribing and analgesia.'),
+  moduleTopic('module-ent', 'ent', 'Ear, nose and throat',
+    ['ENT', 'ear nose and throat', 'otolaryngology', 'sore throat'],
+    ['practise ENT questions', 'learn ear and throat management'],
+    'Recognise and manage common ear, nose and throat conditions using Australian guidelines.'),
+  moduleTopic('module-cardio', 'cardio', 'Cardiology',
+    ['cardiology', 'heart', 'heart murmurs', 'cardiac conditions'],
+    ['practise cardiology questions', 'learn heart condition management'],
+    'Apply Australian guidelines to common heart conditions.'),
+  moduleTopic('module-neuro', 'neuro', 'Neurology',
+    ['neurology', 'seizures', 'headache', 'altered consciousness'],
+    ['practise neurology questions', 'learn seizure and headache management'],
+    'Apply Australian guidelines to neurological presentations.'),
+  moduleTopic('module-renal', 'renal', 'Renal medicine',
+    ['renal medicine', 'kidneys', 'nephrology', 'urinary problems'],
+    ['practise renal questions', 'learn kidney condition management'],
+    'Apply Australian guidelines to kidney and urinary conditions.'),
+  moduleTopic('module-clinical-skills', 'clinical-skills', 'Clinical practice and ethics',
+    ['clinical practice', 'ethics', 'consent', 'communication', 'patient safety'],
+    ['practise clinical ethics questions', 'learn consent and open disclosure'],
+    'Apply Australian standards on consent, capacity, communication and patient safety.'),
 ] as const satisfies readonly CohortSearchTopicDefinition[];
 
 export type CohortSearchTopicId = (typeof COHORT_SEARCH_TOPIC_REGISTRY)[number]['id'];
@@ -658,11 +706,16 @@ interface SearchablePublicQuestion {
 
 export function buildCohortSearchTopics(
   questions: readonly SearchablePublicQuestion[],
+  /** Servable module cards per discipline; a module topic counts them as items. */
+  moduleCardCounts: ReadonlyMap<string, number> = new Map(),
 ): CohortSearchTopicV1[] {
   return COHORT_SEARCH_TOPIC_REGISTRY.flatMap((topic) => {
     const eligible = questions.filter((question) =>
       questionMatchesCohortSearchTopic(question, topic));
-    if (eligible.length === 0) return [];
+    const cardCount = 'moduleNode' in topic
+      ? moduleCardCounts.get(topic.moduleNode.replace(/^cohort\//, '')) ?? 0
+      : 0;
+    if (eligible.length + cardCount === 0) return [];
 
     const assetIds = new Set<string>();
     for (const question of eligible) {
@@ -677,7 +730,7 @@ export function buildCohortSearchTopics(
       searchIntents: [...topic.searchIntents],
       learningOutcomes: [...topic.learningOutcomes],
       modalities: [...topic.modalities],
-      eligibleItemCount: eligible.length,
+      eligibleItemCount: eligible.length + cardCount,
       eligibleAssetCount: assetIds.size,
     }];
   });
@@ -689,6 +742,7 @@ export async function loadCohortSearchTopics(): Promise<CohortSearchTopicV1[]> {
   // catalog projection needs to initialize the database-backed public loader.
   // Step 1 plus the mirrored modules, so a module topic is offered once it has items.
   const { loadCohortServableCorpus } = await import('./module-question-corpus.server');
+  const { countServableModuleCards } = await import('./module-card-corpus.server');
   const corpus = await loadCohortServableCorpus();
-  return buildCohortSearchTopics(corpus.questions);
+  return buildCohortSearchTopics(corpus.questions, await countServableModuleCards());
 }

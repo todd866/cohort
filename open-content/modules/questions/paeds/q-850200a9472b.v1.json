@@ -1,0 +1,64 @@
+{
+  "id": "bank:cohort:paeds:q-850200a9472b:v1",
+  "rotation": "cohort-open",
+  "moduleNodes": [
+    "cohort/paeds"
+  ],
+  "topics": [
+    "paeds"
+  ],
+  "questionType": "diagnosis",
+  "difficulty": "medium",
+  "stem": "A mother brings her 3-month-old son to the emergency department after noticing marks on his face when he woke from a nap. He cannot yet roll over. She suggests that his 2-year-old brother may have hit him with a toy. There are fresh bruises on the left ear pinna and on both cheeks. He is otherwise well and thriving. His full blood count and coagulation studies are normal.\n\nWhich explanation should be the leading concern while further assessment is arranged?",
+  "options": [
+    {
+      "label": "A",
+      "text": "Congenital dermal melanocytosis",
+      "isCorrect": false,
+      "explanation": "Dermal melanocytosis is slate-grey, present from birth, usually over the sacrum and buttocks, and does not appear after a nap or evolve like a bruise."
+    },
+    {
+      "label": "B",
+      "text": "Immune thrombocytopenia",
+      "isCorrect": false,
+      "explanation": "Immune thrombocytopenia causes widespread petechiae and bruising with a low platelet count. A normal full blood count excludes it."
+    },
+    {
+      "label": "C",
+      "text": "Mild haemophilia A",
+      "isCorrect": false,
+      "explanation": "A normal coagulation screen does not exclude mild haemophilia or von Willebrand disease, so further assessment may be needed. However, a possible bleeding disorder does not remove the safeguarding concern raised by ear and cheek bruises in a non-mobile infant."
+    },
+    {
+      "label": "D",
+      "text": "Accidental injury by a sibling",
+      "isCorrect": false,
+      "explanation": "The suggested sibling injury needs careful evaluation against the distribution and developmental history. It should not end assessment of unexplained bruising in a non-mobile infant."
+    },
+    {
+      "label": "E",
+      "text": "Possible inflicted injury",
+      "isCorrect": true,
+      "explanation": "Bruising at this age and at these sites warrants urgent assessment for possible inflicted injury. TEN-4-FACESp identifies children needing further evaluation; it does not diagnose abuse."
+    }
+  ],
+  "context": "TEN-4-FACESp: any bruise under 5 months, or bruising of torso, ear, neck, frenulum, jaw angle, cheek, eyelid or conjunctiva, or patterned, under 4 years, needs child protection assessment.",
+  "publicModule": {
+    "schemaVersion": 1,
+    "origin": "mirrored",
+    "discipline": "paeds",
+    "mirroredFrom": "md3:850200a9472b093a",
+    "itemText": {
+      "licence": "CC-BY-4.0",
+      "attribution": "MD3 contributors"
+    },
+    "evidence": {
+      "kind": "reference",
+      "sourceId": "rch-clinicalguide-guideline-index-child-abuse-365fed"
+    },
+    "review": {
+      "verdict": "passed",
+      "contentHash": "a80f9cd940de563f242db227353121bb8b28c0115a32f22f58b58cb462b41abf"
+    }
+  }
+}

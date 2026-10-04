@@ -1,0 +1,64 @@
+{
+  "id": "bank:cohort:em:q-3af4e12a1c35:v1",
+  "rotation": "cohort-open",
+  "moduleNodes": [
+    "cohort/em"
+  ],
+  "topics": [
+    "em"
+  ],
+  "questionType": "management",
+  "difficulty": "hard",
+  "stem": "An adult in ventricular fibrillation has just received a single shock. Immediately afterwards the monitor shows an organised narrow-complex rhythm at 70/min. The patient remains unresponsive without purposeful movement, and end-tidal CO₂ has stayed at 18 mmHg without an abrupt rise. There is no arterial line. A team member says, 'Organised rhythm — let's check for a pulse.'\n\nWhat should the leader direct immediately?",
+  "options": [
+    {
+      "label": "A",
+      "text": "Pause for a 12-lead ECG of the new rhythm",
+      "isCorrect": false,
+      "explanation": "A 12-lead ECG belongs after return of spontaneous circulation. Stopping compressions for it now reduces coronary and cerebral perfusion."
+    },
+    {
+      "label": "B",
+      "text": "Deliver a second shock while the pads are on",
+      "isCorrect": false,
+      "explanation": "The rhythm is no longer shockable, and shocks are not stacked; analysis occurs at the next two-minute check."
+    },
+    {
+      "label": "C",
+      "text": "Stop CPR, as the rhythm shows return of circulation",
+      "isCorrect": false,
+      "explanation": "An organised rhythm does not prove a cardiac output. Immediately after a shock the myocardium is often stunned and produces little or no output."
+    },
+    {
+      "label": "D",
+      "text": "Check a central pulse for up to 10 seconds now",
+      "isCorrect": false,
+      "explanation": "A pulse check straight after the shock interrupts compressions when output is unlikely. It is done at the next rhythm check unless there are signs of life, such as purposeful movement or an abrupt sustained rise in end-tidal CO₂."
+    },
+    {
+      "label": "E",
+      "text": "Resume compressions for two minutes at once",
+      "isCorrect": true,
+      "explanation": "After a shock, resume compressions immediately for two minutes, whatever the rhythm, unless the patient shows signs of life. The rhythm and pulse are reassessed at the next scheduled check."
+    }
+  ],
+  "context": "After a shock, resume CPR immediately for two minutes without a rhythm or pulse check, even if an organised rhythm appears, unless there are clear signs of life.",
+  "publicModule": {
+    "schemaVersion": 1,
+    "origin": "mirrored",
+    "discipline": "em",
+    "mirroredFrom": "md3:3af4e12a1c351230",
+    "itemText": {
+      "licence": "CC-BY-4.0",
+      "attribution": "MD3 contributors"
+    },
+    "evidence": {
+      "kind": "reference",
+      "sourceId": "anzcor-life-support-guideline-11-2-protocols-for-adult-advanced-life-support-654039"
+    },
+    "review": {
+      "verdict": "passed",
+      "contentHash": "87d4996533eecb52ad57a5aa012d8551037af032933daf0b10efb50f31cfd6e3"
+    }
+  }
+}

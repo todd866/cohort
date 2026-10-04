@@ -1,0 +1,64 @@
+{
+  "id": "bank:cohort:pharm:q-82cf114c7aee:v1",
+  "rotation": "cohort-open",
+  "moduleNodes": [
+    "cohort/pharm"
+  ],
+  "topics": [
+    "pharm"
+  ],
+  "questionType": "management",
+  "difficulty": "medium",
+  "stem": "A 44-year-old is day 1 after open fixation of an ankle fracture. Pain prevents him transferring to a chair for physiotherapy despite regular paracetamol and ibuprofen. He is opioid-naive, alert, eating and has normal renal function. The orthopaedic registrar agrees that a short course of oral opioid is needed, and the intern suggests something \"that lasts overnight so he is covered\".\n\nWhich prescription is most appropriate?",
+  "options": [
+    {
+      "label": "A",
+      "text": "Modified-release oxycodone 10 mg twice daily for steady cover",
+      "isCorrect": false,
+      "explanation": "Modified-release opioids are not indicated for acute pain in opioid-naive patients. They increase the risk of respiratory depression and of persistent postoperative opioid use."
+    },
+    {
+      "label": "B",
+      "text": "Immediate-release oxycodone 5 mg as needed, with a short limit",
+      "isCorrect": true,
+      "explanation": "A low dose of an immediate-release opioid, used as needed with a defined duration and review, matches short-lived acute pain and allows titration to effect."
+    },
+    {
+      "label": "C",
+      "text": "Modified-release tapentadol twice daily with no as-needed dose",
+      "isCorrect": false,
+      "explanation": "Tapentadol in modified-release form is still a sustained-release opioid, which is inappropriate for acute postoperative pain in an opioid-naive patient."
+    },
+    {
+      "label": "D",
+      "text": "Oxycodone with naloxone modified-release tablets twice daily",
+      "isCorrect": false,
+      "explanation": "Adding naloxone reduces constipation but does not change the problem: it is a modified-release opioid, which should not be started for acute pain."
+    },
+    {
+      "label": "E",
+      "text": "A low-dose transdermal buprenorphine patch for background cover",
+      "isCorrect": false,
+      "explanation": "Transdermal patches take many hours to reach effect and cannot be titrated to fluctuating acute pain. They are not recommended for acute pain in opioid-naive patients."
+    }
+  ],
+  "context": "When acute pain needs an oral opioid in an opioid-naive patient, use a low-dose immediate-release formulation with a short, reviewed plan; avoid modified-release and transdermal products.",
+  "publicModule": {
+    "schemaVersion": 1,
+    "origin": "mirrored",
+    "discipline": "pharm",
+    "mirroredFrom": "md3:82cf114c7aee467b",
+    "itemText": {
+      "licence": "CC-BY-4.0",
+      "attribution": "MD3 contributors"
+    },
+    "evidence": {
+      "kind": "reference",
+      "sourceId": "acsqhc-clinical-care-standards-opioid-analgesic-stewardship-acute-pain-dd779c"
+    },
+    "review": {
+      "verdict": "passed",
+      "contentHash": "33d39be42068e80931a76cf98491cca27107d6ae9ccd80bbbd4977326617a0b2"
+    }
+  }
+}

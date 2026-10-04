@@ -1,0 +1,64 @@
+{
+  "id": "bank:cohort:obs:q-e8af87bb59a1:v1",
+  "rotation": "cohort-open",
+  "moduleNodes": [
+    "cohort/obs"
+  ],
+  "topics": [
+    "obs"
+  ],
+  "questionType": "diagnosis",
+  "difficulty": "medium",
+  "stem": "After a forceps birth, the obstetrician examines a perineal tear with a finger in the rectum. More than half the thickness of the external anal sphincter is torn. Deep to it, a pale, circular layer of smooth muscle lying on the anorectal wall is also divided. The anorectal mucosa is intact.\n\nHow is the tear classified?",
+  "options": [
+    {
+      "label": "A",
+      "text": "Third-degree, grade 3b, as over half the external sphincter is torn",
+      "isCorrect": false,
+      "explanation": "More than half the external sphincter alone would be 3b, but injury to the internal sphincter moves the grade to 3c."
+    },
+    {
+      "label": "B",
+      "text": "Third-degree, grade 3c, as the internal sphincter is also torn",
+      "isCorrect": true,
+      "explanation": "The pale circular smooth-muscle layer between the external sphincter and the mucosa is the internal anal sphincter. Internal sphincter injury with intact mucosa is grade 3c, whatever the extent of the external sphincter tear."
+    },
+    {
+      "label": "C",
+      "text": "Fourth-degree, as the layer on the anorectal wall is torn",
+      "isCorrect": false,
+      "explanation": "Fourth-degree means the anorectal mucosa is torn. Here the internal sphincter is divided but the mucosa is intact."
+    },
+    {
+      "label": "D",
+      "text": "Third-degree, grade 3a, as the external sphincter is not fully torn",
+      "isCorrect": false,
+      "explanation": "3a is a tear of less than half the external sphincter thickness. Here more than half is torn, and the internal sphincter is injured too."
+    },
+    {
+      "label": "E",
+      "text": "Second-degree, as the anorectal mucosa remains intact",
+      "isCorrect": false,
+      "explanation": "Any injury to the anal sphincter complex makes a tear at least third-degree; intact mucosa only excludes fourth-degree."
+    }
+  ],
+  "context": "Internal anal sphincter injury with intact mucosa is a 3c tear; grades 3a and 3b describe the external sphincter alone.",
+  "publicModule": {
+    "schemaVersion": 1,
+    "origin": "mirrored",
+    "discipline": "obs",
+    "mirroredFrom": "md3:e8af87bb59a1bb0c",
+    "itemText": {
+      "licence": "CC-BY-4.0",
+      "attribution": "MD3 contributors"
+    },
+    "evidence": {
+      "kind": "reference",
+      "sourceId": "qld-health-data-assets-pdf-file-0022-142384-g-pericare-8af0a3"
+    },
+    "review": {
+      "verdict": "passed",
+      "contentHash": "bc321b590fc44278da3296f7f519f9e4d07db48debf162430fcf5570bd391f76"
+    }
+  }
+}

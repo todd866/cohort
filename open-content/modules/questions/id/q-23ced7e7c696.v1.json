@@ -1,0 +1,64 @@
+{
+  "id": "bank:cohort:id:q-23ced7e7c696:v1",
+  "rotation": "cohort-open",
+  "moduleNodes": [
+    "cohort/id"
+  ],
+  "topics": [
+    "id"
+  ],
+  "questionType": "management",
+  "difficulty": "medium",
+  "stem": "A GP reviews an eight-year-old with two days of sore throat, cough, rhinorrhoea and hoarseness. He is drinking normally and looks well. There is mild pharyngeal erythema without exudate, neck swelling or trismus. He has no personal history of rheumatic fever and no identified high-risk setting for it.\n\nWhich initial plan is most appropriate?",
+  "options": [
+    {
+      "label": "A",
+      "text": "Throat swab, starting penicillin only if it grows group A strep",
+      "isCorrect": false,
+      "explanation": "In a child at low risk of rheumatic fever, a swab to decide on antibiotics is not recommended and invites treatment of carriage; testing and treatment are for children at increased risk."
+    },
+    {
+      "label": "B",
+      "text": "Phenoxymethylpenicillin for 10 days to prevent rheumatic fever",
+      "isCorrect": false,
+      "explanation": "Penicillin to prevent rheumatic fever is for children at increased risk; he has none, and cough, rhinorrhoea and hoarseness point to a virus."
+    },
+    {
+      "label": "C",
+      "text": "Analgesia and fluids, with advice to return if worse; no swab",
+      "isCorrect": true,
+      "explanation": "Correct. Cough, rhinorrhoea and hoarseness without exudate or rheumatic fever risk indicate viral pharyngitis: analgesia, fluids and clear advice on when to return, without testing or antibiotics."
+    },
+    {
+      "label": "D",
+      "text": "Oral azithromycin for 5 days while awaiting a throat swab",
+      "isCorrect": false,
+      "explanation": "Macrolides are not first line even for streptococcal pharyngitis, and this illness is viral."
+    },
+    {
+      "label": "E",
+      "text": "Oral amoxicillin for 10 days for his red, sore throat",
+      "isCorrect": false,
+      "explanation": "A red, sore throat alone does not mean bacterial infection. With viral features and no rheumatic fever risk, amoxicillin adds adverse effects without benefit."
+    }
+  ],
+  "context": "Most childhood sore throats are viral. Antibiotic decisions depend on the clinical pattern and rheumatic-fever risk, not throat pain alone.",
+  "publicModule": {
+    "schemaVersion": 1,
+    "origin": "mirrored",
+    "discipline": "id",
+    "mirroredFrom": "md3:23ced7e7c696adf6",
+    "itemText": {
+      "licence": "CC-BY-4.0",
+      "attribution": "MD3 contributors"
+    },
+    "evidence": {
+      "kind": "reference",
+      "sourceId": "rch-clinicalguide-guideline-index-sore-throat-ac9b70"
+    },
+    "review": {
+      "verdict": "passed",
+      "contentHash": "6cd768fd41f400849d8e088156fd4ef08f99db735a875318bcba64bb84f51fa8"
+    }
+  }
+}

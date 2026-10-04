@@ -1,0 +1,64 @@
+{
+  "id": "bank:cohort:neuro:q-a0d38f66a63f:v1",
+  "rotation": "cohort-open",
+  "moduleNodes": [
+    "cohort/neuro"
+  ],
+  "topics": [
+    "neuro"
+  ],
+  "questionType": "management",
+  "difficulty": "hard",
+  "stem": "A 34-year-old with known epilepsy has a witnessed generalised tonic–clonic seizure lasting 90 seconds on an ED trolley. He had one other seizure at home three hours ago, after which he recovered fully. The jerking stopped one minute ago. He is unresponsive, with GCS 7 (E1 V2 M4), snoring respirations, a clenched jaw, oxygen saturation of 93% on air, a normal bedside glucose and no injury. A nurse has drawn up midazolam “because it’s his second today”.\n\nWhat should the bedside clinician do now?",
+  "options": [
+    {
+      "label": "A",
+      "text": "Place him on his side, give oxygen and observe his recovery",
+      "isCorrect": true,
+      "explanation": "After a brief self-terminating seizure, the priorities are airway, oxygenation and observation. The recovery position helps keep the airway clear and drain secretions; add a jaw thrust or a nasopharyngeal airway if snoring persists."
+    },
+    {
+      "label": "B",
+      "text": "Give the midazolam now, as this is his second seizure today",
+      "isCorrect": false,
+      "explanation": "Two seizures with full recovery between them is not status epilepticus, and this one has stopped. A benzodiazepine now adds respiratory depression during the postictal phase without treating an active seizure; it is for a seizure that continues or recurs before recovery."
+    },
+    {
+      "label": "C",
+      "text": "Insert an oropharyngeal airway to relieve the snoring now",
+      "isCorrect": false,
+      "explanation": "With a clenched jaw and returning reflexes, forcing in an oropharyngeal airway can injure teeth and provoke gagging or vomiting. Positioning comes first, and a nasopharyngeal airway is better tolerated if an adjunct is needed."
+    },
+    {
+      "label": "D",
+      "text": "Intubate to protect his airway, as his GCS is below 8",
+      "isCorrect": false,
+      "explanation": "A low GCS one minute after a seizure is expected and usually improves within minutes. With positioning and oxygen his airway can be maintained, so intubation is not indicated on this number alone."
+    },
+    {
+      "label": "E",
+      "text": "Arrange an urgent CT brain before he regains consciousness",
+      "isCorrect": false,
+      "explanation": "A brief typical seizure in known epilepsy without injury or focal signs does not need emergency imaging before recovery."
+    }
+  ],
+  "context": "Once a brief seizure has stopped, position, give oxygen and observe; a second seizure with recovery in between is not status epilepticus, and a low postictal GCS is not by itself an indication to intubate.",
+  "publicModule": {
+    "schemaVersion": 1,
+    "origin": "mirrored",
+    "discipline": "neuro",
+    "mirroredFrom": "md3:a0d38f66a63f4744",
+    "itemText": {
+      "licence": "CC-BY-4.0",
+      "attribution": "MD3 contributors"
+    },
+    "evidence": {
+      "kind": "reference",
+      "sourceId": "anzcor-home-first-aid-9-2-4-first-aid-management-of-a-seizure-09f66f"
+    },
+    "review": {
+      "verdict": "passed",
+      "contentHash": "7fa170b0c9fcedf18e7d80eeb555e70405d9f2350d53ee41c6bc9a478e9bca66"
+    }
+  }
+}

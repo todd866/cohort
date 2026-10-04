@@ -1,0 +1,64 @@
+{
+  "id": "bank:cohort:gynae:q-37a17f2e9b09:v1",
+  "rotation": "cohort-open",
+  "moduleNodes": [
+    "cohort/gynae"
+  ],
+  "topics": [
+    "gynae"
+  ],
+  "questionType": "management",
+  "difficulty": "medium",
+  "stem": "A 52-year-old patient has frequent hot flushes and night sweats that disrupt work and sleep. She had a total hysterectomy for fibroids at 43, with both ovaries retained, and has no history of endometriosis. After the GP discusses benefits and risks and excludes contraindications, she wishes to try menopausal hormone therapy.\n\nWhich regimen best fits her history?",
+  "options": [
+    {
+      "label": "A",
+      "text": "Low-dose vaginal oestrogen cream",
+      "isCorrect": false,
+      "explanation": "Low-dose vaginal oestrogen treats local genitourinary symptoms. It does not adequately treat the systemic vasomotor symptoms described."
+    },
+    {
+      "label": "B",
+      "text": "A progestogen-only contraceptive pill",
+      "isCorrect": false,
+      "explanation": "A contraceptive-dose progestogen-only pill is not the standard MHT regimen for this presentation. She has no uterus requiring endometrial protection."
+    },
+    {
+      "label": "C",
+      "text": "Systemic oestrogen without a progestogen",
+      "isCorrect": true,
+      "explanation": "Systemic oestrogen treats vasomotor symptoms. After total hysterectomy, with no residual endometriosis concern, progestogen is not needed for endometrial protection."
+    },
+    {
+      "label": "D",
+      "text": "Systemic oestrogen with a cyclic progestogen",
+      "isCorrect": false,
+      "explanation": "The main reason to add a progestogen is to protect an existing endometrium. It is unnecessary in this patient after total hysterectomy for fibroids."
+    },
+    {
+      "label": "E",
+      "text": "Testosterone gel as the hormonal treatment",
+      "isCorrect": false,
+      "explanation": "Testosterone is considered in selected patients with persistent hypoactive sexual desire after assessment. It is not the primary treatment for hot flushes and night sweats."
+    }
+  ],
+  "context": "After total hysterectomy, systemic oestrogen alone is usually the appropriate MHT formulation for vasomotor symptoms.",
+  "publicModule": {
+    "schemaVersion": 1,
+    "origin": "mirrored",
+    "discipline": "gynae",
+    "mirroredFrom": "md3:37a17f2e9b09aa4b",
+    "itemText": {
+      "licence": "CC-BY-4.0",
+      "attribution": "MD3 contributors"
+    },
+    "evidence": {
+      "kind": "reference",
+      "sourceId": "nice-guidance-ng23-chapter-recommendations-b2c5fb"
+    },
+    "review": {
+      "verdict": "passed",
+      "contentHash": "515887ff1f3493572d467092a4fe068f3d6c6148745b6be678e55ab8d0f8f143"
+    }
+  }
+}

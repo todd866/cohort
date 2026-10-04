@@ -1,0 +1,64 @@
+{
+  "id": "bank:cohort:psych:q-5f0453429b84:v1",
+  "rotation": "cohort-open",
+  "moduleNodes": [
+    "cohort/psych"
+  ],
+  "topics": [
+    "psych"
+  ],
+  "questionType": "management",
+  "difficulty": "medium",
+  "stem": "A 30-year-old with moderate depression has stopped going to the gym, cooking and seeing friends, and spends most afternoons in bed. In his second session of behavioural activation he says, 'I'll get back to those things once I feel more motivated. Right now I'd just fail at them.'\n\nWhat is the most appropriate response from the therapist?",
+  "options": [
+    {
+      "label": "A",
+      "text": "Agree to pause activity planning until his motivation starts to return",
+      "isCorrect": false,
+      "explanation": "Waiting for motivation keeps the avoidance cycle going; in depression, motivation usually follows activity rather than preceding it."
+    },
+    {
+      "label": "B",
+      "text": "Plan two small valued activities this week and rate mood before and after",
+      "isCorrect": true,
+      "explanation": "Behavioural activation acts before motivation returns: small, achievable, valued activities restore contact with positive reinforcement, and mood ratings show him that mood follows action."
+    },
+    {
+      "label": "C",
+      "text": "Ask him to keep a thought record challenging his belief that he will fail",
+      "isCorrect": false,
+      "explanation": "A thought record is cognitive restructuring. It can help later, but behavioural activation does not wait for beliefs to change first."
+    },
+    {
+      "label": "D",
+      "text": "Teach progressive muscle relaxation to use during his afternoons in bed",
+      "isCorrect": false,
+      "explanation": "Relaxation does not increase rewarding activity and does nothing for the withdrawal that is maintaining his low mood."
+    },
+    {
+      "label": "E",
+      "text": "Set a goal of returning to his full gym routine every day from tomorrow",
+      "isCorrect": false,
+      "explanation": "An ambitious goal is likely to fail and confirm his belief that he will fail; activities should be graded so the first steps succeed."
+    }
+  ],
+  "context": "Behavioural activation schedules small, valued activities before motivation returns, because mood tends to follow activity and avoidance cuts off positive reinforcement.",
+  "publicModule": {
+    "schemaVersion": 1,
+    "origin": "mirrored",
+    "discipline": "psych",
+    "mirroredFrom": "md3:5f0453429b84a2bc",
+    "itemText": {
+      "licence": "CC-BY-4.0",
+      "attribution": "MD3 contributors"
+    },
+    "evidence": {
+      "kind": "reference",
+      "sourceId": "nice-guidance-ng222-chapter-recommendations-73ce61"
+    },
+    "review": {
+      "verdict": "passed",
+      "contentHash": "57854ecc9d435fcdd419f4c7c258e656ffb5cc3a702bfc1f86557af5caa9113a"
+    }
+  }
+}

@@ -1,0 +1,64 @@
+{
+  "id": "bank:cohort:psych:q-4a23c71aa17f:v1",
+  "rotation": "cohort-open",
+  "moduleNodes": [
+    "cohort/psych"
+  ],
+  "topics": [
+    "psych"
+  ],
+  "questionType": "investigation",
+  "difficulty": "hard",
+  "stem": "A 52-year-old man had panic disorder in his twenties that resolved with CBT. Over the past month he has had spells of pounding heartbeat and breathlessness, and he asks his GP whether the panic attacks have come back. He has also lost 3 kg without trying and has a fine tremor of his outstretched hands. Today he feels anxious but comfortable; blood pressure is 128/80 mmHg. His radial pulse is 106/min and irregular, with no pattern to the beats. He has no chest pain, fever or goitre.\n\nWhat should the GP do first?",
+  "options": [
+    {
+      "label": "A",
+      "text": "Request thyroid function tests and act on them before any cardiac test",
+      "isCorrect": false,
+      "explanation": "Weight loss and tremor make thyrotoxicosis worth testing for, and it is a common cause of atrial fibrillation. But the rhythm is irregular now; thyroid tests explain a cause, while the ECG confirms the rhythm that decides immediate management."
+    },
+    {
+      "label": "B",
+      "text": "Start propranolol, which treats both the tremor and the fast pulse",
+      "isCorrect": false,
+      "explanation": "Propranolol would ease thyrotoxic symptoms and slow the rate, but treating before the rhythm is recorded leaves the diagnosis, and the stroke-risk decision that follows it, unmade."
+    },
+    {
+      "label": "C",
+      "text": "Send him to the emergency department by ambulance",
+      "isCorrect": false,
+      "explanation": "He is comfortable, with normal blood pressure and no chest pain or breathlessness at rest. The rhythm can be recorded in the surgery now, and the ECG decides whether he needs hospital care."
+    },
+    {
+      "label": "D",
+      "text": "Record a 12-lead ECG during this consultation",
+      "isCorrect": true,
+      "explanation": "The pulse is irregular now, so a 12-lead ECG in the consultation can capture and confirm the rhythm immediately. Thyroid tests, stroke-risk assessment and other work-up follow."
+    },
+    {
+      "label": "E",
+      "text": "Book a 24-hour Holter monitor for next week",
+      "isCorrect": false,
+      "explanation": "A Holter monitor is for intermittent symptoms not present at the time of review. The rhythm can be recorded today."
+    }
+  ],
+  "context": "An objective sign such as an irregular pulse overrides a history of panic disorder. In a stable patient, record a 12-lead ECG while the rhythm is present, before treating it or chasing its cause.",
+  "publicModule": {
+    "schemaVersion": 1,
+    "origin": "mirrored",
+    "discipline": "psych",
+    "mirroredFrom": "md3:4a23c71aa17f980e",
+    "itemText": {
+      "licence": "CC-BY-4.0",
+      "attribution": "MD3 contributors"
+    },
+    "evidence": {
+      "kind": "reference",
+      "sourceId": "nice-guidance-ng196-chapter-recommendations-7607cb"
+    },
+    "review": {
+      "verdict": "passed",
+      "contentHash": "10a3e3d02f59dd8ab5ce0d1cca6775cbb6fbdc642542de84f33ce73b6a8a0600"
+    }
+  }
+}

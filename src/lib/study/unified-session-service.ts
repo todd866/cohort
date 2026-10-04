@@ -1,7 +1,10 @@
+import { reviewChallengePreference } from './review-challenge-preference';
 import { loadPracticeReviewFocus } from '@/lib/study/practice-review-focus.server';
 import { sessionTypeFilter } from './exam-only-modules';
+import { withStatementScaffolds as addStatementScaffolds } from './statement-scaffold-delivery';
+import { withReviewLearningPolicy } from './review-learning-delivery';
 import { randomUUID } from 'node:crypto';
-import { NextRequest, NextResponse } from 'next/server';
+import { NextRequest, NextResponse, after } from 'next/server';
 import { requireAuthOrGuest } from '@/lib/api-utils';
 import { auth as authFn } from '@/lib/auth';
 import { prisma } from '@/lib/prisma';
@@ -71,10 +74,8 @@ import {
 import { getStudyDayStart } from '@/lib/study-day';
 import { evaluateObjectiveCoreGate } from './objective-core-gate';
 import { effectiveExamDailyTarget } from './effective-daily-target';
-import {
-  computeRotationDailyTarget,
-  type RotationDailyTarget,
-} from './rotation-daily-target';
+import { type RotationDailyTarget } from './rotation-daily-target';
+import { peekRotationDailyTarget, refreshRotationDailyTarget } from './rotation-daily-target-memo';
 import { noveltyProgressFromDailyTarget } from './novelty-budget';
 import { isComposedDeck } from '@/lib/personal-decks';
 import { examPreparationRolloutEnabled, resolveExamPreparationWindow } from './exam-preparation-window';
@@ -85,6 +86,10 @@ import {
   dessertOvershootRatio,
   dessertUnmappedSlots,
 } from './dessert-mix';
+
+async function withStatementScaffolds(response: NextResponse, ctx: SessionContext): Promise<NextResponse> {
+  return withReviewLearningPolicy(await addStatementScaffolds(response, ctx), ctx);
+}
 
 const PERSONAL_ROTATIONS = new Set<string>(PERSONAL_ROTATION_IDS);
 const REVIEW_FILTER_SET = new Set<string>(REVIEW_FILTERS);
@@ -319,9 +324,18 @@ export async function withContractCheck(
   return res;
 }
 
+export interface UnifiedSessionOptions {
+  /**
+   * The calling function's ceiling, as the lease for background refreshes the
+   * request starts in its after(). Omitted: SESSION_REFRESH_LEASE_TTL_MS.
+   */
+  refreshLeaseTtlMs?: number;
+}
+
 export async function getUnifiedSession(
   request: NextRequest,
   authOverride?: UnifiedSessionAuthOverride,
+  options: UnifiedSessionOptions = {},
 ) {
   const t0 = performance.now();
   const { searchParams } = new URL(request.url);
@@ -339,7 +353,8 @@ export async function getUnifiedSession(
   const batchId = randomUUID();
 
   // Filter params
-  // The surgical exam modules are questions-only whatever the client asks for.
+  // Exam rotations default to the mixed scheduler; its card pools are narrowed
+  // to native scaffold tags. Explicit type=question remains question-only.
   const typeFilter = sessionTypeFilter(rotation, searchParams.get('type'));
   const difficultyFilter = searchParams.get('difficulty') as 'easy' | 'medium' | 'hard' | null;
   const topicsFilter = searchParams.get('topics'); // comma-separated
@@ -477,6 +492,8 @@ export async function getUnifiedSession(
           track: true,
           institution: true,
           studyGoal: true,
+          reviewChallenge: true,
+          reviewChallengeRevision: true,
           rotations: {
             where: { rotation },
             select: { examDate: true },
@@ -484,6 +501,18 @@ export async function getUnifiedSession(
           },
         },
       }).catch(() => null);
+
+  if (!authResult.isGuest && !userScope && !PERSONAL_ROTATIONS.has(rotation)) {
+    return NextResponse.json({ error: 'Could not load your review preferences. Please retry.' }, { status: 503 });
+  }
+  const reviewChallenge = reviewChallengePreference(userScope);
+  const requestedChallengeRevision = searchParams.get('reviewChallengeRevision');
+  if (requestedChallengeRevision !== null && (
+    !/^\d+$/.test(requestedChallengeRevision)
+    || Number(requestedChallengeRevision) !== reviewChallenge.revision
+  )) {
+    return NextResponse.json({ error: 'Difficulty changed. Refresh upcoming items.', ...reviewChallenge }, { status: 409 });
+  }
 
   // Personal rotations are intentionally undiscoverable unless the signed-in
   // user's persisted module entitlements include the requested rotation. Keep
@@ -592,19 +621,20 @@ export async function getUnifiedSession(
   const studyDayStart = studyTimezone
     ? getStudyDayStart(gateNow, studyTimezone)
     : null;
-  const loadRotationDailyTarget = (): Promise<RotationDailyTarget | null> =>
-    studyDayStart
-      ? computeRotationDailyTarget(
-        authResult.userId,
-        rotation,
-        studyDayStart,
-        gateNow,
-      ).catch(() => null)
-      : Promise.resolve(null);
-  const rotationDailyTarget: RotationDailyTarget | null =
-    entitledCrossSourceRotations.length > 0
-      ? await loadRotationDailyTarget()
-      : null;
+  // Read the daily target, never compute it here: computing it reads every
+  // servable card and 14 days of history, 1-5 s (rotation-daily-target-memo.ts).
+  // Without a snapshot this request serves without the adaptive target, keeps
+  // the other sources locked, and the target is computed after the response.
+  const wantsDailyTarget = studyDayStart !== null && entitledCrossSourceRotations.length > 0;
+  const dailyTargetSnapshot = wantsDailyTarget
+    ? peekRotationDailyTarget(authResult.userId, rotation, studyDayStart!, gateNow.getTime())
+    : null;
+  if (wantsDailyTarget && (!dailyTargetSnapshot || dailyTargetSnapshot.stale)) {
+    const refreshUserId = authResult.userId;
+    const refreshDay = studyDayStart!;
+    after(() => refreshRotationDailyTarget(refreshUserId, rotation, refreshDay, gateNow));
+  }
+  const rotationDailyTarget: RotationDailyTarget | null = dailyTargetSnapshot?.target ?? null;
   if (entitledCrossSourceRotations.length > 0) {
     const validTrack = Number.isInteger(userScope?.track)
       && userScope!.track! >= 1
@@ -652,6 +682,8 @@ export async function getUnifiedSession(
       crossSourceMappingMode = 'adjacent';
     } else if (
       coreGate.unlocked
+      // An unknown target never unlocks the other sources early.
+      && rotationDailyTarget !== null
       && reviewFilter !== 'due'
       && reviewFilter !== 'at-risk'
     ) {
@@ -827,6 +859,7 @@ export async function getUnifiedSession(
   });
 
   const ctx: SessionContext = {
+    reviewChallenge,
     practiceReviewFocus: await practiceReviewFocusPromise,
     rotation,
     publicSurface: isCohortHostname(requestHost) ? 'cohort' : 'usmle-step1',
@@ -886,6 +919,7 @@ export async function getUnifiedSession(
     crossSourceRotations,
     maxCrossSourceItems,
     crossSourceMappingMode,
+    refreshLeaseTtlMs: options.refreshLeaseTtlMs,
   };
 
   if (ctx.rotation === USMLE_STEP1_OPEN_ROTATION) {
@@ -921,18 +955,21 @@ export async function getUnifiedSession(
       ), privateResponseRotations,
     );
   }));
-  if (practiceFollowUp) return practiceFollowUp;
+  // An explicitly opened, owned exact practice follow-up retains its exam
+  // contract. The learner's ordinary-review slider governs every lane below,
+  // including their later teaching inserts; it does not rewrite this exact task.
+  if (practiceFollowUp) return addStatementScaffolds(practiceFollowUp, ctx);
 
   if (feedMode === 'new-only') {
     // New-only used to skip every fast lane and pay a 20–30s manifold build.
     // Instant is safe here because it applies the all-time seen exclusion.
     // Rereview/starter/cache stay off: they are mixed or seen-item lanes.
-    const response = (
+    const response = await withStatementScaffolds((
       mayServeExamTargetLane(ctx, 'instant')
         ? await withContractCheck('instant', await tryInstantSession(ctx))
         : null
     )
-      ?? await withContractCheck('manifold', await buildManifoldSession(ctx));
+      ?? await withContractCheck('manifold', await buildManifoldSession(ctx)), ctx);
     return protectPersonalRotationResponse(
       await withPrivateVideoDelivery(
         await withPracticeReviewResponseProvenance(response, ctx.practiceReviewFocus ?? null, ctx.rotation),
@@ -949,7 +986,11 @@ export async function getUnifiedSession(
   if (filteredResponse) {
     return protectPersonalRotationResponse(
       await withPrivateVideoDelivery(
-        await withPracticeReviewResponseProvenance(filteredResponse, ctx.practiceReviewFocus ?? null, ctx.rotation),
+        await withPracticeReviewResponseProvenance(
+          await withStatementScaffolds(filteredResponse, ctx),
+          ctx.practiceReviewFocus ?? null,
+          ctx.rotation,
+        ),
         commitmentLevel,
       ),
       privateResponseRotations,
@@ -963,7 +1004,11 @@ export async function getUnifiedSession(
   if (pendingResponse) {
     return protectPersonalRotationResponse(
       await withPrivateVideoDelivery(
-        await withPracticeReviewResponseProvenance(pendingResponse, ctx.practiceReviewFocus ?? null, ctx.rotation),
+        await withPracticeReviewResponseProvenance(
+          await withStatementScaffolds(pendingResponse, ctx),
+          ctx.practiceReviewFocus ?? null,
+          ctx.rotation,
+        ),
         commitmentLevel,
       ),
       privateResponseRotations,
@@ -1004,7 +1049,7 @@ export async function getUnifiedSession(
     return protectPersonalRotationResponse(
       await withPrivateVideoDelivery(
         await withPracticeReviewResponseProvenance(
-          await withContractCheck('manifold', await buildManifoldSession(ctx)),
+          await withStatementScaffolds(await withContractCheck('manifold', await buildManifoldSession(ctx)), ctx),
           ctx.practiceReviewFocus ?? null,
           ctx.rotation,
         ),
@@ -1018,7 +1063,7 @@ export async function getUnifiedSession(
   // manifold lane is non-nullable (the guaranteed terminal fallback), so its
   // overload resolves to `Promise<NextResponse>` and the whole chain is
   // NextResponse — no non-null assertion needed.
-  const response = (
+  const response = await withStatementScaffolds((
     mayServeExamTargetLane(ctx, 'rereview')
       ? await withContractCheck('rereview', await tryRereviewSession(ctx))
       : null
@@ -1038,7 +1083,7 @@ export async function getUnifiedSession(
         ? await withContractCheck('instant', await tryInstantSession(ctx))
         : null
     )
-    ?? await withContractCheck('manifold', await buildManifoldSession(ctx));
+    ?? await withContractCheck('manifold', await buildManifoldSession(ctx)), ctx);
   return protectPersonalRotationResponse(
     await withPrivateVideoDelivery(
       await withPracticeReviewResponseProvenance(response, ctx.practiceReviewFocus ?? null, ctx.rotation),

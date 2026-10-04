@@ -1,0 +1,64 @@
+{
+  "id": "bank:cohort:anaes:q-c0a45a110e0b:v1",
+  "rotation": "cohort-open",
+  "moduleNodes": [
+    "cohort/anaes"
+  ],
+  "topics": [
+    "anaes"
+  ],
+  "questionType": "knowledge",
+  "difficulty": "medium",
+  "stem": "A nine-year-old with severe developmental disability cannot reliably self-report pain. After a minor procedure he is quiet and has a normal heart rate, but his parent says his unusual stillness and intermittent grimacing usually indicate pain. The ward team needs a reproducible way to assess him before and after analgesia.\n\nWhich approach is most appropriate?",
+  "options": [
+    {
+      "label": "A",
+      "text": "Ask his parent to give a 0–10 score on his behalf",
+      "isCorrect": false,
+      "explanation": "Caregiver knowledge helps interpret behaviour, but a proxy number is less reproducible than a structured behavioural assessment."
+    },
+    {
+      "label": "B",
+      "text": "A 0–10 numeric self-report scale, as for his age",
+      "isCorrect": false,
+      "explanation": "Numeric self-rating needs abilities this child does not have; developmental ability, not chronological age, decides the tool."
+    },
+    {
+      "label": "C",
+      "text": "Revised FLACC, scored with his parent's pain cues",
+      "isCorrect": true,
+      "explanation": "Correct. When self-report is unreliable, use a behavioural tool. The revised FLACC lets caregivers add the child's individual pain behaviours, such as his stillness and grimacing, and is repeated after analgesia."
+    },
+    {
+      "label": "D",
+      "text": "Faces Pain Scale–Revised, pointing to the faces himself",
+      "isCorrect": false,
+      "explanation": "Faces scales are self-report tools; he cannot reliably self-report, so a behavioural tool is needed whatever his age."
+    },
+    {
+      "label": "E",
+      "text": "Record no pain while his heart rate stays normal",
+      "isCorrect": false,
+      "explanation": "Normal physiology does not exclude pain, especially in children whose pain behaviour differs from the usual pattern."
+    }
+  ],
+  "context": "Choose a pain tool for developmental and communication ability. Quiet behaviour and normal observations do not exclude pain.",
+  "publicModule": {
+    "schemaVersion": 1,
+    "origin": "mirrored",
+    "discipline": "anaes",
+    "mirroredFrom": "md3:c0a45a110e0b79eb",
+    "itemText": {
+      "licence": "CC-BY-4.0",
+      "attribution": "MD3 contributors"
+    },
+    "evidence": {
+      "kind": "reference",
+      "sourceId": "rch-clinicalguide-guideline-index-acute-pain-management-7ffd4d"
+    },
+    "review": {
+      "verdict": "passed",
+      "contentHash": "ff012ebe7f1a2dc0bd0821be85debb9cab73f4cadbf6b7de6c80d151089cdd2c"
+    }
+  }
+}

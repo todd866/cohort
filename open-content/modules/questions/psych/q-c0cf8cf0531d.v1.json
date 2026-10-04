@@ -1,0 +1,64 @@
+{
+  "id": "bank:cohort:psych:q-c0cf8cf0531d:v1",
+  "rotation": "cohort-open",
+  "moduleNodes": [
+    "cohort/psych"
+  ],
+  "topics": [
+    "psych"
+  ],
+  "questionType": "management",
+  "difficulty": "medium",
+  "stem": "A nurse reviews a smoking-cessation diary with a patient using a correctly applied nicotine patch. Background withdrawal is controlled, but she has strong short cravings while waiting for the bus and during work breaks. She has no nicotine adverse effects and wants to continue NRT.\n\nWhich adjustment best matches this pattern?",
+  "options": [
+    {
+      "label": "A",
+      "text": "A second patch applied briefly whenever a craving begins",
+      "isCorrect": false,
+      "explanation": "A patch acts slowly and is not an appropriate rescue treatment for an individual short craving. An oral short-acting preparation better matches the episodic pattern."
+    },
+    {
+      "label": "B",
+      "text": "Short-acting nicotine lozenges alongside the daily patch",
+      "isCorrect": true,
+      "explanation": "Combining the patch with a short-acting oral product addresses breakthrough cravings while maintaining background nicotine replacement. Review technique, response and the overall cessation plan."
+    },
+    {
+      "label": "C",
+      "text": "A lower-strength patch for the next week of treatment",
+      "isCorrect": false,
+      "explanation": "There is no adverse effect or other reason to reduce effective background replacement. Lowering it may worsen withdrawal without addressing the brief cravings."
+    },
+    {
+      "label": "D",
+      "text": "Nicotine patches used during work breaks instead of daily",
+      "isCorrect": false,
+      "explanation": "Patches are designed for sustained delivery, not intermittent use during individual breaks. This would remove the background control she currently has."
+    },
+    {
+      "label": "E",
+      "text": "Short-acting nicotine lozenges instead of the daily patch",
+      "isCorrect": false,
+      "explanation": "Removing the patch would also remove the background control that is working. Adding short-acting NRT better addresses the brief cravings while preserving that benefit."
+    }
+  ],
+  "context": "Use short-acting NRT alongside a patch when brief cravings break through otherwise adequate background replacement.",
+  "publicModule": {
+    "schemaVersion": 1,
+    "origin": "mirrored",
+    "discipline": "psych",
+    "mirroredFrom": "md3:c0cf8cf0531d4b69",
+    "itemText": {
+      "licence": "CC-BY-4.0",
+      "attribution": "MD3 contributors"
+    },
+    "evidence": {
+      "kind": "reference",
+      "sourceId": "nsw-health-tobacco-publications-managing-nicotine-dependence-300a60"
+    },
+    "review": {
+      "verdict": "passed",
+      "contentHash": "1d72b02bebe4d5110f9f83b72ae1be6d4f3cabcb5e3b1e5d3b83cc3681282e1a"
+    }
+  }
+}

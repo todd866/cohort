@@ -43,22 +43,34 @@ const KEEP_CACHES = [CACHE_NAME, SHELL_CACHE, FIGURE_CACHE];
 // network interface can still black-hole requests (common on captive/hospital
 // Wi-Fi), so raw fetch rejection is not a sufficient offline signal.
 const NAVIGATION_NETWORK_DEADLINE_MS = 10_000;
+// Device storage can reject or stall independently of a healthy connection.
+// Offline caching must not prevent the current online app from loading.
+const STATIC_CACHE_LOOKUP_DEADLINE_MS = 1_000;
+// This worker's build, stamped at deploy like SHELL_CACHE. The page asks for it
+// when this worker takes control, and reloads only if it was rendered by a
+// different build (src/lib/offline/sw-registration.ts).
+const SW_BUILD = '__BUILD_STAMP__';
 const TRANSIENT_GATEWAY_STATUSES = [502, 503, 504];
 
 self.addEventListener('install', (event) => {
-  event.waitUntil(
-    caches.open(CACHE_NAME).then(() => self.skipWaiting())
-  );
+  // Caches are opened lazily. A broken cache must not block the repair worker.
+  event.waitUntil(self.skipWaiting());
 });
 
 self.addEventListener('activate', (event) => {
   event.waitUntil(
-    caches.keys().then((keys) =>
+    storageOrFallback(() => caches.keys().then((keys) =>
       Promise.all(
         keys.filter((key) => !KEEP_CACHES.includes(key)).map((key) => caches.delete(key))
       )
-    ).then(() => self.clients.claim())
+    )).then(() => self.clients.claim())
   );
+});
+
+self.addEventListener('message', (event) => {
+  if (event.data && event.data.type === 'md3-build' && event.ports && event.ports[0]) {
+    event.ports[0].postMessage({ build: SW_BUILD });
+  }
 });
 
 self.addEventListener('fetch', (event) => {
@@ -87,19 +99,40 @@ self.addEventListener('fetch', (event) => {
   }
 
   if (url.pathname.startsWith('/_next/static/')) {
-    event.respondWith(cacheFirst(request));
+    event.respondWith(cacheFirst(request, event));
   }
 });
 
-async function cacheFirst(request) {
+// Both rejection and a stuck CacheStorage process mean "cache unavailable".
+// The attached rejection handler also consumes failures arriving after timeout.
+async function storageOrFallback(operation) {
+  let timeout;
+  try {
+    return await Promise.race([
+      Promise.resolve().then(operation).catch(() => undefined),
+      new Promise((resolve) => {
+        timeout = setTimeout(resolve, STATIC_CACHE_LOOKUP_DEADLINE_MS);
+      }),
+    ]);
+  } finally {
+    clearTimeout(timeout);
+  }
+}
+
+async function cacheFirst(request, event) {
   // caches.match searches every cache, so assets stored by the offline-shell
   // warm (src/lib/offline/shell.ts) are served from here too.
-  const cached = await caches.match(request);
+  const cached = await storageOrFallback(() => caches.match(request));
   if (cached) return cached;
   const response = await fetch(request);
   if (response.ok) {
-    const cache = await caches.open(CACHE_NAME);
-    cache.put(request, response.clone());
+    // Clone before handing the response to the browser; storage writes never
+    // delay or replace a successful network response.
+    const copy = response.clone();
+    event.waitUntil(storageOrFallback(async () => {
+      const cache = await caches.open(CACHE_NAME);
+      await cache.put(request, copy);
+    }));
   }
   return response;
 }
@@ -124,7 +157,7 @@ async function networkThenShell(request) {
   try {
     return await fetchNavigationNetwork(request);
   } catch (err) {
-    const shell = await caches.match(OFFLINE_ROUTE);
+    const shell = await storageOrFallback(() => caches.match(OFFLINE_ROUTE));
     if (shell) return shell;
     throw err;
   }

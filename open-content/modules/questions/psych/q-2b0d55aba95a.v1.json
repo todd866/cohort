@@ -1,0 +1,64 @@
+{
+  "id": "bank:cohort:psych:q-2b0d55aba95a:v1",
+  "rotation": "cohort-open",
+  "moduleNodes": [
+    "cohort/psych"
+  ],
+  "topics": [
+    "psych"
+  ],
+  "questionType": "management",
+  "difficulty": "medium",
+  "stem": "A GP reviews a 42-year-old with longstanding pain, fatigue and palpitations that disrupt work. A liaison assessment has established somatic symptom disorder after considering medical and psychiatric contributors. There are no new symptoms, examination changes or red flags today. Care has become fragmented across urgent appointments with different clinicians, with repeated tests but little improvement in daily function. She wants a more useful plan.\n\nHow should ongoing care be organised?",
+  "options": [
+    {
+      "label": "A",
+      "text": "Refer to separate specialists for each symptom before changing the plan",
+      "isCorrect": false,
+      "explanation": "A targeted referral may be appropriate for a specific unresolved problem, but separate repeat referrals are unlikely to solve the current fragmentation. A coordinating clinician should keep the whole picture and function in view."
+    },
+    {
+      "label": "B",
+      "text": "Repeat the previous tests at each flare to provide renewed reassurance",
+      "isCorrect": false,
+      "explanation": "Further tests should follow a clinical indication rather than be repeated automatically for reassurance. Unnecessary investigation can cause harm and leave the maintaining pattern of care unchanged."
+    },
+    {
+      "label": "C",
+      "text": "Arrange CBT, with GP visits only when new symptoms develop",
+      "isCorrect": false,
+      "explanation": "CBT can support coping and function, but symptom-triggered GP visits alone lose the planned continuity needed here. Scheduled medical follow-up can coordinate goals and treatment while retaining earlier assessment for important changes."
+    },
+    {
+      "label": "D",
+      "text": "Plan regular GP reviews, functional goals and safety-netting",
+      "isCorrect": true,
+      "explanation": "Regular planned contact provides continuity without requiring a symptom crisis to obtain care. Agree practical functional goals, consider psychological support and explain which changes should prompt earlier reassessment."
+    },
+    {
+      "label": "E",
+      "text": "Continue brief urgent visits with whichever clinician is available",
+      "isCorrect": false,
+      "explanation": "Urgent access remains available when clinically needed, but relying on brief symptom-triggered visits can perpetuate fragmented care. Planned follow-up creates space to review progress and coordinate treatment."
+    }
+  ],
+  "context": "Persistent somatic symptoms benefit from coordinated, planned follow-up focused on function, with continued attention to clinically important changes.",
+  "publicModule": {
+    "schemaVersion": 1,
+    "origin": "mirrored",
+    "discipline": "psych",
+    "mirroredFrom": "md3:2b0d55aba95a1df6",
+    "itemText": {
+      "licence": "CC-BY-4.0",
+      "attribution": "MD3 contributors"
+    },
+    "evidence": {
+      "kind": "reference",
+      "sourceId": "racgp-afp-2015-september-managing-medically-unexplained-illness-in-general-382d3f"
+    },
+    "review": {
+      "verdict": "passed",
+      "contentHash": "d008d5258fc69b02e604e6b3c2335e51d09dfa26f03a7d1dd274d5068b49879d"
+    }
+  }
+}

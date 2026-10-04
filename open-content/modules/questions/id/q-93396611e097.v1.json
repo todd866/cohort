@@ -1,0 +1,64 @@
+{
+  "id": "bank:cohort:id:q-93396611e097:v1",
+  "rotation": "cohort-open",
+  "moduleNodes": [
+    "cohort/id"
+  ],
+  "topics": [
+    "id"
+  ],
+  "questionType": "diagnosis",
+  "difficulty": "hard",
+  "stem": "Oscar, aged 5, comes into hospital with 2 weeks of fever and cough. A chest CT shows several nodules, and a lung biopsy grows Aspergillus fumigatus. At 2 years he had a neck lymph node abscess that needed drainage twice and grew Staphylococcus aureus, and at 4 years a pneumonia caused by Burkholderia cepacia complex. Between infections he is well and thriving, with height and weight on the 25th centile and normal development. His full blood count, including the neutrophil count, is normal.\n\nWhich diagnosis best accounts for his infections?",
+  "options": [
+    {
+      "label": "A",
+      "text": "Severe combined immunodeficiency (SCID)",
+      "isCorrect": false,
+      "explanation": "SCID usually declares itself in the first few months of life with faltering growth, persistent thrush, diarrhoea and opportunistic infection, often with lymphopenia. A thriving 5-year-old with a normal blood count does not fit."
+    },
+    {
+      "label": "B",
+      "text": "X-linked agammaglobulinaemia (XLA)",
+      "isCorrect": false,
+      "explanation": "XLA causes recurrent ear, sinus and lung infections with encapsulated bacteria such as pneumococcus from a few months of age. Invasive Aspergillus and staphylococcal abscesses point to a phagocyte defect instead."
+    },
+    {
+      "label": "C",
+      "text": "Leucocyte adhesion deficiency (LAD)",
+      "isCorrect": false,
+      "explanation": "Leucocyte adhesion deficiency gives a persistently high neutrophil count and infections that do not form pus, often with delayed cord separation. Oscar's count is normal, and his node abscess formed pus."
+    },
+    {
+      "label": "D",
+      "text": "Chronic granulomatous disease (CGD)",
+      "isCorrect": true,
+      "explanation": "Correct. Neutrophils engulf but cannot kill because NADPH oxidase is defective: staphylococcal abscesses, Burkholderia and invasive Aspergillus in a well-grown child. A DHR or NBT test of neutrophil oxidase activity is the next step."
+    },
+    {
+      "label": "E",
+      "text": "Wiskott-Aldrich syndrome (WAS)",
+      "isCorrect": false,
+      "explanation": "Wiskott-Aldrich syndrome combines eczema, low platelets and recurrent infection in boys. His normal blood count, including platelets, argues against it."
+    }
+  ],
+  "context": "CGD: neutrophils normal in number but unable to kill (NADPH oxidase defect), so abscesses and pneumonias with S. aureus, Burkholderia and Aspergillus. Test oxidase activity with DHR or NBT.",
+  "publicModule": {
+    "schemaVersion": 1,
+    "origin": "mirrored",
+    "discipline": "id",
+    "mirroredFrom": "md3:93396611e097193e",
+    "itemText": {
+      "licence": "CC-BY-4.0",
+      "attribution": "MD3 contributors"
+    },
+    "evidence": {
+      "kind": "reference",
+      "sourceId": "ascia-hp-papers-pid-a03f58"
+    },
+    "review": {
+      "verdict": "passed",
+      "contentHash": "8a315729698698ae894406fd643f395757af63bff5ec962cd7c2a518b03ee12d"
+    }
+  }
+}

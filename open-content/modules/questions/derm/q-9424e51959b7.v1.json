@@ -1,0 +1,64 @@
+{
+  "id": "bank:cohort:derm:q-9424e51959b7:v1",
+  "rotation": "cohort-open",
+  "moduleNodes": [
+    "cohort/derm"
+  ],
+  "topics": [
+    "derm"
+  ],
+  "questionType": "diagnosis",
+  "difficulty": "medium",
+  "stem": "A 3-year-old boy with poorly controlled atopic eczema has had a fever of 38.9 °C for 2 days and a painful rash spreading across his face and neck. Within the eczematous skin there are clusters of small, uniform, punched-out erosions, some with haemorrhagic crusts, and a few intact tiny vesicles. He is miserable and resists being touched. What is the most likely diagnosis?",
+  "options": [
+    {
+      "label": "A",
+      "text": "Impetiginised eczema",
+      "isCorrect": false,
+      "explanation": "Bacterial infection of eczema, usually Staphylococcus aureus, causes weeping, pustules and golden crusts rather than uniform punched-out erosions."
+    },
+    {
+      "label": "B",
+      "text": "Eczema herpeticum",
+      "isCorrect": true,
+      "explanation": "Correct. Painful clustered vesicles and monomorphic punched-out erosions on eczematous skin, with fever, indicate HSV infection. Start aciclovir promptly and check the eyes."
+    },
+    {
+      "label": "C",
+      "text": "Varicella",
+      "isCorrect": false,
+      "explanation": "Varicella causes crops of itchy vesicles at different stages spread over the trunk, face and scalp, not clusters confined to eczematous skin."
+    },
+    {
+      "label": "D",
+      "text": "Herpes zoster",
+      "isCorrect": false,
+      "explanation": "Herpes zoster is dermatomal and one-sided, and it is uncommon at this age unless the child is immunocompromised."
+    },
+    {
+      "label": "E",
+      "text": "Molluscum contagiosum",
+      "isCorrect": false,
+      "explanation": "Molluscum causes firm, pearly, umbilicated papules, sometimes ringed by eczema. It is not painful and does not cause fever or erosions."
+    }
+  ],
+  "context": "Eczema herpeticum: painful clustered vesicles and punched-out erosions on eczematous skin, often with fever. Give antiviral treatment promptly and seek eye review if periorbital.",
+  "publicModule": {
+    "schemaVersion": 1,
+    "origin": "mirrored",
+    "discipline": "derm",
+    "mirroredFrom": "md3:9424e51959b7e25d",
+    "itemText": {
+      "licence": "CC-BY-4.0",
+      "attribution": "MD3 contributors"
+    },
+    "evidence": {
+      "kind": "reference",
+      "sourceId": "rch-clinicalguide-guideline-index-eczema-0a8737"
+    },
+    "review": {
+      "verdict": "passed",
+      "contentHash": "bd019147e11c4e79b66116f0c5194f19b6f37179326a8350d61e6d55299cdab4"
+    }
+  }
+}

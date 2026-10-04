@@ -1,0 +1,64 @@
+{
+  "id": "bank:cohort:id:q-a5c46703bcb2:v1",
+  "rotation": "cohort-open",
+  "moduleNodes": [
+    "cohort/id"
+  ],
+  "topics": [
+    "id"
+  ],
+  "questionType": "management",
+  "difficulty": "medium",
+  "stem": "A 13-year-old girl steps on a garden fork in a vegetable patch, sustaining a deep puncture wound to her heel contaminated with soil and manure. Her records show DTPa at 2, 4 and 6 months, 18 months and 4 years, but she was absent on the Year 7 school vaccination day. She has no immune problems. What tetanus prophylaxis is recommended?",
+  "options": [
+    {
+      "label": "A",
+      "text": "Tetanus immunoglobulin alone",
+      "isCorrect": false,
+      "explanation": "Immunoglobulin gives passive cover when active immunity is doubtful. She has had 5 doses, so TIG is not needed, and TIG alone would miss the booster she is due."
+    },
+    {
+      "label": "B",
+      "text": "dTpa booster plus tetanus immunoglobulin",
+      "isCorrect": false,
+      "explanation": "TIG is reserved for tetanus-prone wounds in people with fewer than 3 doses, an uncertain history or significant immunodeficiency. None of these applies to her."
+    },
+    {
+      "label": "C",
+      "text": "No tetanus vaccine or immunoglobulin",
+      "isCorrect": false,
+      "explanation": "This would be right if her last dose were under 5 years ago. Her last dose was at 4 years, about 9 years ago, so a tetanus-prone wound needs a booster."
+    },
+    {
+      "label": "D",
+      "text": "Three-dose primary vaccine course",
+      "isCorrect": false,
+      "explanation": "She completed a primary course and boosters, so immunological memory is intact. One booster is enough; the course does not need restarting."
+    },
+    {
+      "label": "E",
+      "text": "Single dTpa booster, no immunoglobulin",
+      "isCorrect": true,
+      "explanation": "Correct. With 3 or more doses and the last over 5 years ago, a tetanus-prone wound needs a booster. From age 10, dTpa (or dT) is used; TIG is not required."
+    }
+  ],
+  "context": "Tetanus-prone wound: with 3 or more prior doses, boost if the last dose was over 5 years ago; add TIG only for fewer than 3 doses, an uncertain history or immunodeficiency.",
+  "publicModule": {
+    "schemaVersion": 1,
+    "origin": "mirrored",
+    "discipline": "id",
+    "mirroredFrom": "md3:a5c46703bcb28878",
+    "itemText": {
+      "licence": "CC-BY-4.0",
+      "attribution": "MD3 contributors"
+    },
+    "evidence": {
+      "kind": "reference",
+      "sourceId": "aih-ooster-dose-of-dt-or-dtpa-if-their-last-dose-was-more-than-5-years-ago-cb90c5"
+    },
+    "review": {
+      "verdict": "passed",
+      "contentHash": "8da09f925508c2984f53bf2005c9b6288f28c4168f1b083bdb01e586c1bec4be"
+    }
+  }
+}

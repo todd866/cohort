@@ -1,0 +1,64 @@
+{
+  "id": "bank:cohort:obs:q-c6cc225b0dc9:v1",
+  "rotation": "cohort-open",
+  "moduleNodes": [
+    "cohort/obs"
+  ],
+  "topics": [
+    "obs"
+  ],
+  "questionType": "management",
+  "difficulty": "hard",
+  "stem": "A 26-year-old whose last period was six weeks ago presents to a regional emergency department with lower abdominal pain and right shoulder-tip pain; she fainted at home. Her pulse is 124 beats/min and blood pressure 104/68 mmHg lying, falling to 84/52 mmHg on sitting. Her abdomen is tender with guarding. Urine hCG is positive and serum hCG is 1,800 IU/L. The formal pelvic ultrasound list opens tomorrow morning.\n\nWhat should the gynaecology registrar arrange?",
+  "options": [
+    {
+      "label": "A",
+      "text": "Intramuscular methotrexate, as her hCG is in the range it treats",
+      "isCorrect": false,
+      "explanation": "Methotrexate needs haemodynamic stability and no sign of rupture; a low hCG does not make it safe in a woman with a postural drop and peritonism."
+    },
+    {
+      "label": "B",
+      "text": "Repeat serum hCG in 48 hours to confirm an abnormal pregnancy",
+      "isCorrect": false,
+      "explanation": "Serial hCG is for stable women on the unknown-location pathway; waiting 48 hours with suspected rupture risks exsanguination."
+    },
+    {
+      "label": "C",
+      "text": "Admission for observation until tomorrow's formal pelvic ultrasound",
+      "isCorrect": false,
+      "explanation": "A postural drop, shoulder-tip pain and guarding point to intraperitoneal bleeding, so observation overnight delays haemorrhage control."
+    },
+    {
+      "label": "D",
+      "text": "Resuscitation and surgery in theatre today, without awaiting the scan",
+      "isCorrect": true,
+      "explanation": "A positive pregnancy test with syncope, a postural drop, shoulder-tip pain and peritonism is a ruptured ectopic until proven otherwise: resuscitate and operate without waiting for imaging."
+    },
+    {
+      "label": "E",
+      "text": "CT of the abdomen and pelvis to confirm haemoperitoneum before theatre",
+      "isCorrect": false,
+      "explanation": "CT delays theatre and adds radiation. The clinical picture is enough, and a bedside scan can be done without holding up surgery."
+    }
+  ],
+  "context": "Compensated shock (tachycardia with a postural drop) plus shoulder-tip pain and peritonism in early pregnancy means a ruptured ectopic: resuscitate and operate, whatever the hCG.",
+  "publicModule": {
+    "schemaVersion": 1,
+    "origin": "mirrored",
+    "discipline": "obs",
+    "mirroredFrom": "md3:c6cc225b0dc90fbe",
+    "itemText": {
+      "licence": "CC-BY-4.0",
+      "attribution": "MD3 contributors"
+    },
+    "evidence": {
+      "kind": "reference",
+      "sourceId": "qld-health-data-assets-pdf-file-0033-139947-g-epl-e053ea"
+    },
+    "review": {
+      "verdict": "passed",
+      "contentHash": "d834a0eaed676b376297d26b2fd7b659d9cc565b44a85edec07663c9d38ddeb3"
+    }
+  }
+}

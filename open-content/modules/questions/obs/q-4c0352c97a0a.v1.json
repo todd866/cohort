@@ -1,0 +1,64 @@
+{
+  "id": "bank:cohort:obs:q-4c0352c97a0a:v1",
+  "rotation": "cohort-open",
+  "moduleNodes": [
+    "cohort/obs"
+  ],
+  "topics": [
+    "obs"
+  ],
+  "questionType": "management",
+  "difficulty": "medium",
+  "stem": "An early-pregnancy registrar reviews a 29-year-old at 10 weeks. Repeat transvaginal ultrasound has established a nonviable intrauterine pregnancy; the gestational sac remains in the uterus. She has no bleeding, fever or haemodynamic compromise. After discussing expectant, medical and surgical care, she chooses medical treatment and has reliable follow-up. Both medicines are available and she has no contraindication to either.\n\nWhich regimen should the registrar offer?",
+  "options": [
+    {
+      "label": "A",
+      "text": "Misoprostol alone, with a further dose if required",
+      "isCorrect": false,
+      "explanation": "Misoprostol alone is used for incomplete miscarriage, but combination treatment is preferred for this retained missed miscarriage when both drugs are suitable."
+    },
+    {
+      "label": "B",
+      "text": "Mifepristone alone, with review after 48 hours",
+      "isCorrect": false,
+      "explanation": "Mifepristone primes the uterus; used alone, it does not constitute the recommended combined regimen for evacuating a missed miscarriage."
+    },
+    {
+      "label": "C",
+      "text": "Misoprostol followed by mifepristone 48 hours later",
+      "isCorrect": false,
+      "explanation": "This reverses the sequence: mifepristone precedes the prostaglandin to improve treatment success."
+    },
+    {
+      "label": "D",
+      "text": "Mifepristone and misoprostol taken together initially",
+      "isCorrect": false,
+      "explanation": "The recommended regimen separates the drugs, allowing mifepristone pretreatment before misoprostol."
+    },
+    {
+      "label": "E",
+      "text": "Mifepristone followed by misoprostol 48 hours later",
+      "isCorrect": true,
+      "explanation": "Mifepristone pretreatment followed by misoprostol improves completion compared with misoprostol alone in missed miscarriage. A 48-hour interval is within current Australian guidance and matches NICE."
+    }
+  ],
+  "context": "Medical management of missed miscarriage uses mifepristone before misoprostol; do not substitute the incomplete-miscarriage regimen.",
+  "publicModule": {
+    "schemaVersion": 1,
+    "origin": "mirrored",
+    "discipline": "obs",
+    "mirroredFrom": "md3:4c0352c97a0a26a0",
+    "itemText": {
+      "licence": "CC-BY-4.0",
+      "attribution": "MD3 contributors"
+    },
+    "evidence": {
+      "kind": "reference",
+      "sourceId": "ranzcog-wp-content-uploads-miscarriage-ectopic-pregnancy-87c7be"
+    },
+    "review": {
+      "verdict": "passed",
+      "contentHash": "098a370a6c75bd725632861694ea8f30bc2eee183ecf66ae5ae6b6ff115dfa32"
+    }
+  }
+}

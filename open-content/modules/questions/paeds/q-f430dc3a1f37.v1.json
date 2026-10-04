@@ -1,0 +1,64 @@
+{
+  "id": "bank:cohort:paeds:q-f430dc3a1f37:v1",
+  "rotation": "cohort-open",
+  "moduleNodes": [
+    "cohort/paeds"
+  ],
+  "topics": [
+    "paeds"
+  ],
+  "questionType": "investigation",
+  "difficulty": "hard",
+  "stem": "A 10-week-old girl has had two brief episodes of stiffening with her eyes deviated to one side, after a day of sleepiness and vomiting. She is afebrile and drowsy, with a tense fontanelle, and her head circumference has risen from the 50th to the 91st centile since 6 weeks. She has two small bruises on her upper arm. Her father says she rolled off the couch onto carpet yesterday. Her glucose is normal. Abusive head trauma is suspected.\n\nWhich set of investigations is most appropriate?",
+  "options": [
+    {
+      "label": "A",
+      "text": "CT brain, skeletal survey and an ophthalmology review",
+      "isCorrect": true,
+      "explanation": "Correct. Seizures, a tense fontanelle, a rising head circumference and bruises on a non-mobile infant suggest abusive head trauma: CT brain, a skeletal survey and retinal examination by an ophthalmologist, with clotting and early child protection referral."
+    },
+    {
+      "label": "B",
+      "text": "Lumbar puncture, then blood and urine cultures",
+      "isCorrect": false,
+      "explanation": "She is afebrile, and seizures, drowsiness and a tense fontanelle suggest raised intracranial pressure, which makes lumbar puncture unsafe. Infection does not explain bruises on a non-mobile infant."
+    },
+    {
+      "label": "C",
+      "text": "EEG, MRI brain and a metabolic screen",
+      "isCorrect": false,
+      "explanation": "EEG and a metabolic screen look for epilepsy or metabolic disease. MRI of the brain and spine often follows, but first she needs imaging for bleeding and the rest of the abuse work-up."
+    },
+    {
+      "label": "D",
+      "text": "Head ultrasound, skull X-ray and clotting studies",
+      "isCorrect": false,
+      "explanation": "Clotting studies belong in the work-up and a skull film is part of a skeletal survey, but head ultrasound can miss subdural blood, and this set omits the eyes and the rest of the skeleton."
+    },
+    {
+      "label": "E",
+      "text": "CT brain alone; a skeletal survey only if it shows a bleed",
+      "isCorrect": false,
+      "explanation": "A skeletal survey is indicated in any infant with suspected abuse, whatever the CT shows, because occult fractures are common and often the strongest evidence. A 10-week-old is not yet expected to roll, so the fall history does not explain her injuries."
+    }
+  ],
+  "context": "Suspected abusive head trauma in an infant: CT brain, skeletal survey and retinal examination by an ophthalmologist, with bloods including clotting and early child protection referral. A history that does not fit the infant's development is itself a warning sign.",
+  "publicModule": {
+    "schemaVersion": 1,
+    "origin": "mirrored",
+    "discipline": "paeds",
+    "mirroredFrom": "md3:f430dc3a1f37f0ca",
+    "itemText": {
+      "licence": "CC-BY-4.0",
+      "attribution": "MD3 contributors"
+    },
+    "evidence": {
+      "kind": "reference",
+      "sourceId": "rch-vfpms-guidelines-head-injury-7caf6b"
+    },
+    "review": {
+      "verdict": "passed",
+      "contentHash": "2a7fbc313e41f4863a8cb1fa2cf10d889fe5d33bebab34993d86e649c6d263f2"
+    }
+  }
+}

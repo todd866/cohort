@@ -1,0 +1,64 @@
+{
+  "id": "bank:cohort:psych:q-0dc28f51b49e:v1",
+  "rotation": "cohort-open",
+  "moduleNodes": [
+    "cohort/psych"
+  ],
+  "topics": [
+    "psych"
+  ],
+  "questionType": "management",
+  "difficulty": "medium",
+  "stem": "A GP sees a 31-year-old man seeking help to stop online sports betting with licensed Australian bookmakers. He bets when promotional messages and odds alerts appear on his phone, and he has lost money needed for rent. He is anxious and asks whether there is a tablet that would stop the urges. The GP has assessed safety and arranged gambling-focused CBT; he has no suicidal intent. He asks for a step he can take today that will stop him acting on an urge tonight.\n\nWhich step most directly limits his access to betting when an urge occurs?",
+  "options": [
+    {
+      "label": "A",
+      "text": "Register with BetStop and block betting messages today",
+      "isCorrect": true,
+      "explanation": "BetStop, the national self-exclusion register, blocks him from licensed online and phone wagering providers and stops their marketing. Removing the cues and the access acts tonight, alongside therapy."
+    },
+    {
+      "label": "B",
+      "text": "Start naltrexone to reduce the intensity of his urges",
+      "isCorrect": false,
+      "explanation": "Naltrexone has some evidence in gambling disorder but is not first-line, takes time to assess and does not block access tonight."
+    },
+    {
+      "label": "C",
+      "text": "Have his partner review his bank statements monthly",
+      "isCorrect": false,
+      "explanation": "Monthly review finds losses after they happen; it does not stop a bet when the urge comes."
+    },
+    {
+      "label": "D",
+      "text": "Keep a written diary of the times urges arise",
+      "isCorrect": false,
+      "explanation": "Urge diaries are useful in CBT for identifying triggers but do not block access."
+    },
+    {
+      "label": "E",
+      "text": "See a financial counsellor about the overdue rent",
+      "isCorrect": false,
+      "explanation": "Financial counselling is an important part of care but does not stop him betting tonight."
+    }
+  ],
+  "context": "Self-exclusion (BetStop) and removal of gambling cues are immediate, practical barriers that complement gambling-focused therapy.",
+  "publicModule": {
+    "schemaVersion": 1,
+    "origin": "mirrored",
+    "discipline": "psych",
+    "mirroredFrom": "md3:0dc28f51b49e13c9",
+    "itemText": {
+      "licence": "CC-BY-4.0",
+      "attribution": "MD3 contributors"
+    },
+    "evidence": {
+      "kind": "reference",
+      "sourceId": "nice-guidance-ng248-chapter-recommendations-f65ecf"
+    },
+    "review": {
+      "verdict": "passed",
+      "contentHash": "25c14d33e332dcd70980071d5dfe1d0240102d19f76d38c8d34d9b043785f091"
+    }
+  }
+}

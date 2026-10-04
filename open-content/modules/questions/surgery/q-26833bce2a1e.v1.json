@@ -1,0 +1,64 @@
+{
+  "id": "bank:cohort:surgery:q-26833bce2a1e:v1",
+  "rotation": "cohort-open",
+  "moduleNodes": [
+    "cohort/surgery"
+  ],
+  "topics": [
+    "surgery"
+  ],
+  "questionType": "management",
+  "difficulty": "hard",
+  "stem": "An emergency doctor assesses Sam, 12, who has had 3 hours of lower abdominal pain that began suddenly during basketball, and has vomited twice. He is afebrile with no urinary symptoms, and his urinalysis is normal. His abdomen is soft with mild right iliac fossa tenderness. His right hemiscrotum is slightly swollen; the right testis is very tender and lies higher than the left, with a horizontal lie, and the right cremasteric reflex is absent. The surgical registrar, busy in theatre, asks for a scrotal Doppler ultrasound, which can be done in about an hour, before coming to see him.\n\nWhat should the emergency doctor do next?",
+  "options": [
+    {
+      "label": "A",
+      "text": "Book the Doppler and await the registrar's review",
+      "isCorrect": false,
+      "explanation": "RCH advises that surgical assessment is not delayed for investigations when torsion is suspected. Ultrasound is for selected cases with a low suspicion, after surgical review; this is not one."
+    },
+    {
+      "label": "B",
+      "text": "Add an abdominal ultrasound to look for appendicitis",
+      "isCorrect": false,
+      "explanation": "Torsion often presents as lower abdominal pain, which is why the scrotum is examined in any boy with abdominal pain. His scrotal findings explain the pain, and another scan only adds delay."
+    },
+    {
+      "label": "C",
+      "text": "Start IV antibiotics for presumed epididymo-orchitis",
+      "isCorrect": false,
+      "explanation": "Epididymo-orchitis usually has a gradual onset, urinary symptoms or fever, and a preserved cremasteric reflex. None fits this sudden onset with a normal urinalysis."
+    },
+    {
+      "label": "D",
+      "text": "Give analgesia and re-examine him in 2 hours",
+      "isCorrect": false,
+      "explanation": "Delay reduces the chance of saving the testis. Observation uses up the hours in which salvage is most likely."
+    },
+    {
+      "label": "E",
+      "text": "Escalate for scrotal exploration without the scan",
+      "isCorrect": true,
+      "explanation": "Correct. Sudden pain, vomiting, a high, horizontally lying tender testis and an absent cremasteric reflex make torsion very likely. Escalate, to the consultant if needed, for immediate scrotal exploration; a Doppler would only delay an operation whose success falls with every hour."
+    }
+  ],
+  "context": "Suspected testicular torsion needs immediate surgical exploration without waiting for ultrasound; escalate if a scan is requested first. Examine the scrotum in any boy with lower abdominal pain and vomiting.",
+  "publicModule": {
+    "schemaVersion": 1,
+    "origin": "mirrored",
+    "discipline": "surgery",
+    "mirroredFrom": "md3:26833bce2a1e5a81",
+    "itemText": {
+      "licence": "CC-BY-4.0",
+      "attribution": "MD3 contributors"
+    },
+    "evidence": {
+      "kind": "reference",
+      "sourceId": "rch-clinicalguide-guideline-index-acute-scrotal-pain-or-swelling-fee1fc"
+    },
+    "review": {
+      "verdict": "passed",
+      "contentHash": "4c5d2c2c0dd2b95dbb0ec3cc746f92e6d98de47ce7c6a244f9ab634605d09bf7"
+    }
+  }
+}

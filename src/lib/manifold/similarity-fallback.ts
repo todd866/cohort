@@ -12,6 +12,9 @@ export interface SimilarCardFallback {
   cardId: string;
   similarity: number;
   matchedTopics: string[];
+  rotation?: string;
+  complexity?: number;
+  variantGroupId?: string | null;
 }
 
 /**
@@ -40,6 +43,8 @@ export async function findSimilarByTopics(
       id: true,
       topics: true,
       rotation: true,
+      complexity: true,
+      variantGroupId: true,
     },
   });
 
@@ -56,6 +61,9 @@ export async function findSimilarByTopics(
       cardId: other.id,
       similarity: Math.min(1, similarity + rotationBoost),
       matchedTopics: intersection,
+      rotation: other.rotation,
+      complexity: other.complexity,
+      variantGroupId: other.variantGroupId,
     };
   });
 

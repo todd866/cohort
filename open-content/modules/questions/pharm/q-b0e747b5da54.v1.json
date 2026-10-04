@@ -1,0 +1,64 @@
+{
+  "id": "bank:cohort:pharm:q-b0e747b5da54:v1",
+  "rotation": "cohort-open",
+  "moduleNodes": [
+    "cohort/pharm"
+  ],
+  "topics": [
+    "pharm"
+  ],
+  "questionType": "management",
+  "difficulty": "hard",
+  "stem": "A 38-year-old woman is having an ultrasound-guided brachial plexus block with bupivacaine for forearm surgery. Shortly after the injection she reports tinnitus and perioral tingling, then has a generalised seizure, which stops after IV midazolam. Two minutes later she becomes pulseless in ventricular fibrillation. CPR is underway, one shock has been delivered and her airway is secured with 100% oxygen.\n\nWhich addition to standard advanced life support is most appropriate?",
+  "options": [
+    {
+      "label": "A",
+      "text": "Start 20% lipid emulsion now and continue CPR",
+      "isCorrect": true,
+      "explanation": "This is local anaesthetic systemic toxicity: neurological symptoms, a seizure, then cardiovascular collapse. Lipid emulsion is its specific treatment and is started during CPR, not after it. Resuscitation may need to be prolonged, and guidance advises smaller-than-usual adrenaline doses."
+    },
+    {
+      "label": "B",
+      "text": "Give lidocaine for the ventricular arrhythmia",
+      "isCorrect": false,
+      "explanation": "Lidocaine is itself a local anaesthetic and adds to the sodium-channel blockade causing the arrest. Amiodarone is the antiarrhythmic used if one is needed."
+    },
+    {
+      "label": "C",
+      "text": "Withhold lipid until circulation returns",
+      "isCorrect": false,
+      "explanation": "Lipid is most useful during the arrest, while bupivacaine is bound to cardiac sodium channels; waiting for return of circulation delays the treatment most likely to achieve it."
+    },
+    {
+      "label": "D",
+      "text": "Withhold adrenaline because of the toxin",
+      "isCorrect": false,
+      "explanation": "Adrenaline is not withheld. Guidance favours smaller doses because large doses can worsen arrhythmias and reduce the effect of lipid, but vasopressor support continues."
+    },
+    {
+      "label": "E",
+      "text": "Give IM adrenaline for anaphylaxis to the drug",
+      "isCorrect": false,
+      "explanation": "Anaphylaxis would cause urticaria, bronchospasm or angioedema. This sequence of neurological then cardiac toxicity follows systemic absorption or intravascular injection of the local anaesthetic."
+    }
+  ],
+  "context": "In local anaesthetic systemic toxicity with cardiac arrest, continue ALS, give 20% lipid emulsion during CPR, avoid lidocaine, use smaller adrenaline doses and expect prolonged resuscitation.",
+  "publicModule": {
+    "schemaVersion": 1,
+    "origin": "mirrored",
+    "discipline": "pharm",
+    "mirroredFrom": "md3:b0e747b5da5409bb",
+    "itemText": {
+      "licence": "CC-BY-4.0",
+      "attribution": "MD3 contributors"
+    },
+    "evidence": {
+      "kind": "reference",
+      "sourceId": "rch-clinicalguide-guideline-index-local-anaesthetic-poisoning-776c79"
+    },
+    "review": {
+      "verdict": "passed",
+      "contentHash": "baebc3302f75f7f09a35a07bad50d6134e768e5d6d36aa8a6e38d5467096bd23"
+    }
+  }
+}

@@ -1,0 +1,64 @@
+{
+  "id": "bank:cohort:psych:q-73d40d00d868:v1",
+  "rotation": "cohort-open",
+  "moduleNodes": [
+    "cohort/psych"
+  ],
+  "topics": [
+    "psych"
+  ],
+  "questionType": "management",
+  "difficulty": "medium",
+  "stem": "A 19-year-old has recently recovered from a first psychotic episode and lives with parents who frequently argue about his relapse warning signs. He agrees that his family should be involved.\n\nWhich intervention should his treating team prioritise as part of relapse prevention?",
+  "options": [
+    {
+      "label": "A",
+      "text": "Couples counselling for his parents",
+      "isCorrect": false,
+      "explanation": "Counselling the parents about their own relationship does not give the family a shared understanding of psychosis and his relapse signs, and it does not include him."
+    },
+    {
+      "label": "B",
+      "text": "Individual supportive counselling",
+      "isCorrect": false,
+      "explanation": "Individual support can help recovery, but it does not directly address the family's uncertainty and conflict about relapse signs."
+    },
+    {
+      "label": "C",
+      "text": "Group social-skills training",
+      "isCorrect": false,
+      "explanation": "Social-skills training targets interpersonal performance. The identified problem is shared family understanding and communication about relapse."
+    },
+    {
+      "label": "D",
+      "text": "Individual cognitive remediation",
+      "isCorrect": false,
+      "explanation": "Cognitive remediation targets cognitive performance, such as attention and memory, rather than family conflict about relapse planning."
+    },
+    {
+      "label": "E",
+      "text": "Structured family psychoeducation",
+      "isCorrect": true,
+      "explanation": "Family intervention combines education about the illness, communication and collaborative problem-solving with the patient's agreement, and reduces relapse risk."
+    }
+  ],
+  "context": "Family intervention combines psychoeducation, communication and problem-solving to support recovery and reduce relapse risk.",
+  "publicModule": {
+    "schemaVersion": 1,
+    "origin": "mirrored",
+    "discipline": "psych",
+    "mirroredFrom": "md3:73d40d00d8683668",
+    "itemText": {
+      "licence": "CC-BY-4.0",
+      "attribution": "MD3 contributors"
+    },
+    "evidence": {
+      "kind": "reference",
+      "sourceId": "nice-guidance-cg178-chapter-recommendations-ab0e8b"
+    },
+    "review": {
+      "verdict": "passed",
+      "contentHash": "78b472e46f27de5475d97e6e2451efdf6b755139be0d582df83caacbdce32e92"
+    }
+  }
+}

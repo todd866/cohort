@@ -1,0 +1,64 @@
+{
+  "id": "bank:cohort:em:q-c31597bc0bac:v1",
+  "rotation": "cohort-open",
+  "moduleNodes": [
+    "cohort/em"
+  ],
+  "topics": [
+    "em"
+  ],
+  "questionType": "management",
+  "difficulty": "hard",
+  "stem": "An emergency registrar manages an adult who took an excess of modified-release gliclazide. Intravenous glucose restored consciousness, but glucose has twice fallen again below 3.0 mmol/L (usual reference 3.9–7.8) despite a glucose infusion. The patient is now awake with glucose 5.6 mmol/L after another bolus, and there is no history of injected insulin.\n\nWhich additional medication best addresses the cause of recurrence?",
+  "options": [
+    {
+      "label": "A",
+      "text": "Intravenous glucagon as the sole ongoing treatment",
+      "isCorrect": false,
+      "explanation": "Glucagon can provide a temporary glucose rise but may also stimulate insulin release. It does not reliably prevent recurrent sulfonylurea-driven hypoglycaemia."
+    },
+    {
+      "label": "B",
+      "text": "Octreotide to suppress pancreatic insulin secretion",
+      "isCorrect": true,
+      "explanation": "Sulfonylureas drive endogenous insulin release, which can continue after dextrose correction. Octreotide suppresses that secretion while glucose replacement and frequent monitoring continue as needed."
+    },
+    {
+      "label": "C",
+      "text": "A small insulin infusion to stabilise glucose variation",
+      "isCorrect": false,
+      "explanation": "Insulin would worsen the hypoglycaemia. The problem is excessive insulin activity, not an insulin deficit."
+    },
+    {
+      "label": "D",
+      "text": "Intravenous sodium bicarbonate to accelerate renal clearance",
+      "isCorrect": false,
+      "explanation": "Alkalinisation is not the specific treatment for sulfonylurea-induced insulin release and does not address the recurrent hypoglycaemia."
+    },
+    {
+      "label": "E",
+      "text": "Activated charcoal as the sole replacement for glucose support",
+      "isCorrect": false,
+      "explanation": "Decontamination may have a role in selected early presentations after toxicology assessment, but does not reverse established insulin-mediated hypoglycaemia. It cannot replace metabolic treatment."
+    }
+  ],
+  "context": "Octreotide helps prevent recurrent sulfonylurea hypoglycaemia by inhibiting endogenous insulin release.",
+  "publicModule": {
+    "schemaVersion": 1,
+    "origin": "mirrored",
+    "discipline": "em",
+    "mirroredFrom": "md3:c31597bc0bace295",
+    "itemText": {
+      "licence": "CC-BY-4.0",
+      "attribution": "MD3 contributors"
+    },
+    "evidence": {
+      "kind": "reference",
+      "sourceId": "rch-clinicalguide-guideline-index-oral-hypoglycaemic-poisoning-0bcd4a"
+    },
+    "review": {
+      "verdict": "passed",
+      "contentHash": "f5f98667fb21cd2935b0df99ddf9d467403f6ddecfe9edc6aba830c3f5285f92"
+    }
+  }
+}

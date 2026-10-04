@@ -71,6 +71,9 @@ describe('shared database target resolution', () => {
       'manifold:embed',
       'manifold:cluster',
       'manifold:subspaces',
+      // Rebuilds the precomputed concept top-K the scheduler reads. Mirrored, it
+      // would report partitions built while production kept serving them live.
+      'manifold:topk:refresh',
       'courseware:embed',
       'citations:embed',
       // Imports a gated apkg manifest straight into Card. Mirrored, it would
@@ -91,6 +94,14 @@ describe('shared database target resolution', () => {
       // VideoClip row lands on a laptop — so the media exists, nothing serves
       // it, and the orphan is invisible from production.
       'clips:cut',
+      // Deletes the undelivered ServeDecision backlog. The operator refuses a
+      // non-production target itself; the blank override keeps the corpus lock
+      // and the prune on the same database.
+      'db:serve-decision:prune-undelivered',
+      // ALTERs the production role's statement and idle-in-transaction
+      // limits. It refuses a non-production target itself; the blank mirror
+      // override keeps a stray .env.local value from even being considered.
+      'db:limits:provision',
     ];
 
     const present = productionWrites.filter((name) => packageJson.scripts[name]);

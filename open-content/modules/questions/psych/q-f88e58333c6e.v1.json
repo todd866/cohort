@@ -1,0 +1,64 @@
+{
+  "id": "bank:cohort:psych:q-f88e58333c6e:v1",
+  "rotation": "cohort-open",
+  "moduleNodes": [
+    "cohort/psych"
+  ],
+  "topics": [
+    "psych"
+  ],
+  "questionType": "management",
+  "difficulty": "hard",
+  "stem": "An inpatient psychiatrist assesses a 52-year-old with eight weeks of pervasive depression, anhedonia and psychomotor slowing. She is convinced that a minor bookkeeping error means she has bankrupted every family in her town. The belief developed during the depression; there has been no psychosis outside mood episodes and no history of mania. She is eating and drinking, is not catatonic and has no current suicidal intent. After discussing ECT and medication options, she prefers medication.\n\nWhich initial drug strategy is most appropriate?",
+  "options": [
+    {
+      "label": "A",
+      "text": "Desvenlafaxine with lithium",
+      "isCorrect": false,
+      "explanation": "Lithium augmentation has a role in treatment-resistant depression, but it is not the preferred initial combination for a depressive episode with delusions. The initial strategy should also directly address the psychotic symptoms."
+    },
+    {
+      "label": "B",
+      "text": "Escitalopram alone",
+      "isCorrect": false,
+      "explanation": "Antidepressant monotherapy can be considered if antipsychotic treatment is declined. For psychotic depression, the recommended initial medication discussion includes an antidepressant–antipsychotic combination."
+    },
+    {
+      "label": "C",
+      "text": "Olanzapine alone",
+      "isCorrect": false,
+      "explanation": "An antipsychotic addresses psychotic symptoms but leaves the depressive episode insufficiently treated as a sole strategy. Combined treatment is recommended when acceptable to the patient."
+    },
+    {
+      "label": "D",
+      "text": "Lithium with lamotrigine",
+      "isCorrect": false,
+      "explanation": "Lithium and lamotrigine are used in bipolar illness, which the history does not establish. This combination is not the preferred initial treatment for unipolar psychotic depression."
+    },
+    {
+      "label": "E",
+      "text": "Sertraline with olanzapine",
+      "isCorrect": true,
+      "explanation": "An antidepressant–antipsychotic combination treats the depressive and psychotic components. ECT remains an effective alternative, particularly if illness becomes life-threatening or a rapid response is needed."
+    }
+  ],
+  "context": "For unipolar depression with psychotic features, antidepressant–antipsychotic combination treatment is an appropriate pharmacological strategy.",
+  "publicModule": {
+    "schemaVersion": 1,
+    "origin": "mirrored",
+    "discipline": "psych",
+    "mirroredFrom": "md3:f88e58333c6e38c9",
+    "itemText": {
+      "licence": "CC-BY-4.0",
+      "attribution": "MD3 contributors"
+    },
+    "evidence": {
+      "kind": "reference",
+      "sourceId": "nice-guidance-ng222-chapter-recommendations-73ce61"
+    },
+    "review": {
+      "verdict": "passed",
+      "contentHash": "8a4f35c12f67336a9f063eff3ebb016419ce82b289f08174cef00d0ea1f390ba"
+    }
+  }
+}

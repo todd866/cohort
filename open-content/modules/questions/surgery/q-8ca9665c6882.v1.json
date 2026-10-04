@@ -1,0 +1,64 @@
+{
+  "id": "bank:cohort:surgery:q-8ca9665c6882:v1",
+  "rotation": "cohort-open",
+  "moduleNodes": [
+    "cohort/surgery"
+  ],
+  "topics": [
+    "surgery"
+  ],
+  "questionType": "investigation",
+  "difficulty": "hard",
+  "stem": "A 5-week-old boy was seen by his GP at 3 weeks with small vomits after feeds, and reflux was diagnosed. Since then the vomits have become larger and more forceful and now follow most feeds. They are milky, never green, and he seems hungry straight afterwards. He has lost 150 g since his last weigh-in and has fewer wet nappies. His abdomen is soft and not distended, and no mass is felt during a test feed. A venous gas shows pH 7.48, chloride 94 mmol/L and bicarbonate 31 mmol/L.\n\nWhat is the most appropriate next investigation?",
+  "options": [
+    {
+      "label": "A",
+      "text": "None yet: thickened feeds for a week, imaging if vomiting persists",
+      "isCorrect": false,
+      "explanation": "The vomiting has changed from small posseting to progressive, forceful vomiting with weight loss, fewer wet nappies and a metabolic alkalosis. That is not reflux, and a week of thickened feeds would let the dehydration and alkalosis worsen."
+    },
+    {
+      "label": "B",
+      "text": "Upper GI contrast study, as no pyloric mass can be felt",
+      "isCorrect": false,
+      "explanation": "An upper GI contrast study is the test for malrotation when vomiting is bilious. It can show a narrowed pylorus, but it uses radiation and is not the first test; a mass that cannot be felt does not make it the better choice."
+    },
+    {
+      "label": "C",
+      "text": "Plain abdominal radiograph for a single large gastric bubble",
+      "isCorrect": false,
+      "explanation": "A plain film may show a distended stomach but cannot confirm or exclude pyloric stenosis."
+    },
+    {
+      "label": "D",
+      "text": "Repeat test feed by a surgeon, imaging only if a mass is felt",
+      "isCorrect": false,
+      "explanation": "A palpable 'olive' confirms the diagnosis, but it is often not felt, especially in an unsettled infant with a full stomach. Not feeling it does not exclude pyloric stenosis, so imaging should not wait for it."
+    },
+    {
+      "label": "E",
+      "text": "Abdominal ultrasound of the pylorus, without waiting for a mass",
+      "isCorrect": true,
+      "explanation": "Correct. Progressive, forceful non-bilious vomiting at 3 to 6 weeks, weight loss and a hypochloraemic metabolic alkalosis point to pyloric stenosis even without a palpable mass and despite the earlier diagnosis of reflux. Ultrasound of the pyloric muscle confirms it. The dehydration and alkalosis are corrected with IV fluids before surgery."
+    }
+  ],
+  "context": "Vomiting that changes from small posseting to progressive, forceful non-bilious vomiting in a 3–6-week-old, with weight loss and a hypochloraemic metabolic alkalosis, needs a pyloric ultrasound, even if no mass is felt and reflux was diagnosed earlier.",
+  "publicModule": {
+    "schemaVersion": 1,
+    "origin": "mirrored",
+    "discipline": "surgery",
+    "mirroredFrom": "md3:8ca9665c6882baa0",
+    "itemText": {
+      "licence": "CC-BY-4.0",
+      "attribution": "MD3 contributors"
+    },
+    "evidence": {
+      "kind": "reference",
+      "sourceId": "rch-clinicalguide-guideline-index-pyloric-stenosis-ba5ed6"
+    },
+    "review": {
+      "verdict": "passed",
+      "contentHash": "ff00c1dea0602654ad93e88a64e96ab355a41c4b0478314f438fa52cda9b700a"
+    }
+  }
+}

@@ -1,0 +1,64 @@
+{
+  "id": "bank:cohort:psych:q-fc1a80ffe571:v1",
+  "rotation": "cohort-open",
+  "moduleNodes": [
+    "cohort/psych"
+  ],
+  "topics": [
+    "psych"
+  ],
+  "questionType": "management",
+  "difficulty": "medium",
+  "stem": "A 38-year-old has been well for 18 months on paroxetine 20 mg daily and wants to stop treatment. During a planned taper she reduces to 10 mg, but within two days develops severe dizziness, nausea, vivid dreams and shock-like sensations that prevent her working. Her mood remains otherwise stable. The GP finds no neurological deficit, fever or new medicine exposure.\n\nWhat is the best next step?",
+  "options": [
+    {
+      "label": "A",
+      "text": "Keep the current daily dose with weekly withdrawal review",
+      "isCorrect": false,
+      "explanation": "Mild withdrawal can sometimes be observed with support, but these disabling symptoms warrant revising the dose reduction now rather than simply continuing it. A slower taper can follow once symptoms settle."
+    },
+    {
+      "label": "B",
+      "text": "Stop paroxetine completely to shorten the withdrawal period",
+      "isCorrect": false,
+      "explanation": "Complete cessation can worsen withdrawal. The close relationship to dose reduction supports reinstatement rather than a larger reduction."
+    },
+    {
+      "label": "C",
+      "text": "Take the original paroxetine dose on alternate days",
+      "isCorrect": false,
+      "explanation": "Alternate-day paroxetine creates fluctuating exposure and can worsen withdrawal. A smaller daily dose reduction is preferable when a slower taper is attempted."
+    },
+    {
+      "label": "D",
+      "text": "Resume the last tolerated dose before tapering more slowly",
+      "isCorrect": true,
+      "explanation": "Returning to the previous tolerated dose is appropriate for severe withdrawal. Once symptoms settle, smaller reductions at a slower, individually agreed pace can support her goal of stopping."
+    },
+    {
+      "label": "E",
+      "text": "Keep the lower dose and add a second antidepressant",
+      "isCorrect": false,
+      "explanation": "Adding another antidepressant is unnecessary and complicates treatment. The first step is to address the withdrawal from the dose reduction."
+    }
+  ],
+  "context": "Severe antidepressant withdrawal may require reinstating the last tolerated dose before attempting a slower taper with smaller reductions.",
+  "publicModule": {
+    "schemaVersion": 1,
+    "origin": "mirrored",
+    "discipline": "psych",
+    "mirroredFrom": "md3:fc1a80ffe5719e61",
+    "itemText": {
+      "licence": "CC-BY-4.0",
+      "attribution": "MD3 contributors"
+    },
+    "evidence": {
+      "kind": "reference",
+      "sourceId": "nice-guidance-ng222-chapter-recommendations-73ce61"
+    },
+    "review": {
+      "verdict": "passed",
+      "contentHash": "5368f4843afbd8ea7ff5bde0d1224920f77dfdb2060f93c4a9536897950fae2d"
+    }
+  }
+}

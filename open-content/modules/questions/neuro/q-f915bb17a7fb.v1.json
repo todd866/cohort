@@ -1,0 +1,64 @@
+{
+  "id": "bank:cohort:neuro:q-f915bb17a7fb:v1",
+  "rotation": "cohort-open",
+  "moduleNodes": [
+    "cohort/neuro"
+  ],
+  "topics": [
+    "neuro"
+  ],
+  "questionType": "management",
+  "difficulty": "hard",
+  "stem": "A 32-year-old man with known epilepsy ran out of levetiracetam three days ago. In the emergency department he has a generalised tonic–clonic seizure. IV midazolam was given at 5 minutes and repeated at 10 minutes, and the seizure is still continuing at 15 minutes. His airway is supported with oxygen (SpO₂ 93%), bedside glucose is 6.1 mmol/L (reference 4.0–7.8) and an IV cannula is in place.\n\nWhat should be given next?",
+  "options": [
+    {
+      "label": "A",
+      "text": "A third dose of IV midazolam",
+      "isCorrect": false,
+      "explanation": "Two doses is the usual limit; more benzodiazepine increases respiratory depression and hypotension without much extra seizure control."
+    },
+    {
+      "label": "B",
+      "text": "An IV loading dose of levetiracetam",
+      "isCorrect": true,
+      "explanation": "Benzodiazepines are first-line, but after two doses further doses add respiratory depression for little extra effect. A seizure continuing after them is established status epilepticus, treated with an IV second-line agent: levetiracetam, phenytoin or valproate are similarly effective, and levetiracetam also replaces his missed medicine."
+    },
+    {
+      "label": "C",
+      "text": "Rapid sequence intubation and propofol",
+      "isCorrect": false,
+      "explanation": "Anaesthesia and intubation are for refractory status after a second-line drug has failed, or for airway failure; his oxygenation is being maintained."
+    },
+    {
+      "label": "D",
+      "text": "Glucose 50% and thiamine before any drug",
+      "isCorrect": false,
+      "explanation": "His glucose has been checked and is normal, so giving glucose delays effective treatment."
+    },
+    {
+      "label": "E",
+      "text": "His usual levetiracetam via nasogastric tube",
+      "isCorrect": false,
+      "explanation": "Enteral absorption is too slow and unreliable in a convulsing patient; established status needs an IV loading dose."
+    }
+  ],
+  "context": "Convulsive status epilepticus: a benzodiazepine first (up to two doses), then an IV second-line agent such as levetiracetam, phenytoin or valproate, with anaesthesia for refractory seizures.",
+  "publicModule": {
+    "schemaVersion": 1,
+    "origin": "mirrored",
+    "discipline": "neuro",
+    "mirroredFrom": "md3:f915bb17a7fb60e1",
+    "itemText": {
+      "licence": "CC-BY-4.0",
+      "attribution": "MD3 contributors"
+    },
+    "evidence": {
+      "kind": "reference",
+      "sourceId": "nice-status-epilepticus-repeated-or-cluster-seizures-and-prolonged-seizures-8a9933"
+    },
+    "review": {
+      "verdict": "passed",
+      "contentHash": "94c62cd332e5b68f8e4b25f2dc1d997975fdb63f822b7d4f397c6d178146681b"
+    }
+  }
+}

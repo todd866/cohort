@@ -1,0 +1,64 @@
+{
+  "id": "bank:cohort:paeds:q-aa2038388db3:v1",
+  "rotation": "cohort-open",
+  "moduleNodes": [
+    "cohort/paeds"
+  ],
+  "topics": [
+    "paeds"
+  ],
+  "questionType": "management",
+  "difficulty": "medium",
+  "stem": "The neonatal team is preparing to stabilise a baby about to be born at 27 weeks. A preheated radiant warmer and respiratory support equipment are ready.\n\nWhich immediate thermal measure is recommended in addition to the warmer?",
+  "options": [
+    {
+      "label": "A",
+      "text": "Dry the body thoroughly first, then apply the polyethylene wrap",
+      "isCorrect": false,
+      "explanation": "For a very preterm baby, drying the body before wrapping is unnecessary and can increase heat loss. The wrap is applied immediately while the body is still wet."
+    },
+    {
+      "label": "B",
+      "text": "Place the wet body in polyethylene up to the neck and add a hat",
+      "isCorrect": true,
+      "explanation": "A suitable polyethylene bag or sheet limits evaporative heat loss without prior body drying. Keep the face accessible, use a warm hat and monitor temperature during stabilisation."
+    },
+    {
+      "label": "C",
+      "text": "Wrap the body in a dry cotton towel instead of polyethylene",
+      "isCorrect": false,
+      "explanation": "A towel is used routinely for more mature babies, but is less effective at limiting evaporative loss from the immature skin of a very preterm baby."
+    },
+    {
+      "label": "D",
+      "text": "Leave the body uncovered to maximise exposure to radiant heat",
+      "isCorrect": false,
+      "explanation": "A radiant warmer alone does not adequately address the large evaporative losses of very preterm skin. A transparent polyethylene barrier can be used under the warmer."
+    },
+    {
+      "label": "E",
+      "text": "Delay any wrapping until respiratory stabilisation is complete",
+      "isCorrect": false,
+      "explanation": "Thermal protection should begin immediately and continue during respiratory support. Waiting through stabilisation permits avoidable heat loss."
+    }
+  ],
+  "context": "Very preterm babies need immediate polyethylene wrapping without drying the body, alongside a radiant warmer and temperature monitoring.",
+  "publicModule": {
+    "schemaVersion": 1,
+    "origin": "mirrored",
+    "discipline": "paeds",
+    "mirroredFrom": "md3:aa2038388db3c31a",
+    "itemText": {
+      "licence": "CC-BY-4.0",
+      "attribution": "MD3 contributors"
+    },
+    "evidence": {
+      "kind": "reference",
+      "sourceId": "anzcor-ideline-13-8-the-resuscitation-of-the-newborn-in-special-circumstances-5bf4af"
+    },
+    "review": {
+      "verdict": "passed",
+      "contentHash": "841b27f3e5729c31253ecb71ddffe6016af43df4c69110a2c323f960ea531842"
+    }
+  }
+}

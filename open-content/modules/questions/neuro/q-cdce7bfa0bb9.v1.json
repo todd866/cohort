@@ -1,0 +1,64 @@
+{
+  "id": "bank:cohort:neuro:q-cdce7bfa0bb9:v1",
+  "rotation": "cohort-open",
+  "moduleNodes": [
+    "cohort/neuro"
+  ],
+  "topics": [
+    "neuro"
+  ],
+  "questionType": "investigation",
+  "difficulty": "hard",
+  "stem": "A 6-month-old boy has had clusters of brief, symmetric jerks for 2 weeks: his head drops and his arms fling up and forward, 10–15 times in a row, mostly just after waking. He often vomits after feeds, and his GP has wondered about reflux. Over the same period he has stopped smiling at his parents and no longer babbles. A phone video shows a cluster while he is awake.\n\nWhat is the most appropriate next step?",
+  "options": [
+    {
+      "label": "A",
+      "text": "Trial of reflux treatment and GP review in 2 weeks",
+      "isCorrect": false,
+      "explanation": "Sandifer posturing with reflux is related to feeds; it does not come in clusters on waking or cause loss of skills."
+    },
+    {
+      "label": "B",
+      "text": "Reassure the parents: benign sleep myoclonus of infancy",
+      "isCorrect": false,
+      "explanation": "Benign sleep myoclonus occurs only in sleep, stops on waking and does not affect development; these clusters occur awake, with regression."
+    },
+    {
+      "label": "C",
+      "text": "Routine EEG and neurology clinic appointment within 6 weeks",
+      "isCorrect": false,
+      "explanation": "Infantile spasms are an epileptic emergency. Outcome worsens with delay, so EEG and treatment cannot wait weeks."
+    },
+    {
+      "label": "D",
+      "text": "Urgent paediatric neurology review with EEG within days",
+      "isCorrect": true,
+      "explanation": "Correct. Clusters of spasms on waking with developmental regression suggest infantile epileptic spasms syndrome: arrange urgent neurology review with awake and sleep EEG, then first-line hormonal or vigabatrin treatment."
+    },
+    {
+      "label": "E",
+      "text": "Start levetiracetam now and arrange a routine EEG",
+      "isCorrect": false,
+      "explanation": "Levetiracetam is not first-line treatment for infantile spasms, and treatment should follow urgent EEG confirmation."
+    }
+  ],
+  "context": "Brief clustered symmetric spasms with developmental arrest or regression are an emergency. Arrange urgent neurology review and awake/sleep EEG.",
+  "publicModule": {
+    "schemaVersion": 1,
+    "origin": "mirrored",
+    "discipline": "neuro",
+    "mirroredFrom": "md3:cdce7bfa0bb9a4de",
+    "itemText": {
+      "licence": "CC-BY-4.0",
+      "attribution": "MD3 contributors"
+    },
+    "evidence": {
+      "kind": "reference",
+      "sourceId": "rch-clinicalguide-guideline-index-infantile-spasms-47e3cd"
+    },
+    "review": {
+      "verdict": "passed",
+      "contentHash": "3cc1fa7201538a103276d5cb7ac40413d91f9e416417c7107a3957ced4a74a61"
+    }
+  }
+}

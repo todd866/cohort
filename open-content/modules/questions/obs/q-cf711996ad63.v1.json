@@ -1,0 +1,64 @@
+{
+  "id": "bank:cohort:obs:q-cf711996ad63:v1",
+  "rotation": "cohort-open",
+  "moduleNodes": [
+    "cohort/obs"
+  ],
+  "topics": [
+    "obs"
+  ],
+  "questionType": "investigation",
+  "difficulty": "medium",
+  "stem": "A 30-year-old attends a GP shared-care booking visit at nine weeks in her second pregnancy. Her blood donor card says she is group O, RhD positive. After her first birth she needed a two-unit red-cell transfusion for postpartum haemorrhage; that baby was well. She asks which blood test will show whether her immune system could attack this baby's red cells.\n\nWhich test answers her question?",
+  "options": [
+    {
+      "label": "A",
+      "text": "No test, as an RhD-positive mother does not make harmful antibodies",
+      "isCorrect": false,
+      "explanation": "RhD-positive women do not make anti-D, but they can form other antibodies such as anti-c, anti-E or anti-Kell, especially after a transfusion, and these can haemolyse fetal red cells."
+    },
+    {
+      "label": "B",
+      "text": "A direct antiglobulin test performed on her own red cells",
+      "isCorrect": false,
+      "explanation": "The direct antiglobulin test detects antibody already coating red cells. It is used on the baby's cells after birth, not to screen the mother's plasma."
+    },
+    {
+      "label": "C",
+      "text": "A Kleihauer test to measure fetal cells in her circulation",
+      "isCorrect": false,
+      "explanation": "A Kleihauer test sizes a fetomaternal bleed so anti-D can be dosed in an RhD-negative woman. It does not look for maternal antibodies."
+    },
+    {
+      "label": "D",
+      "text": "Her blood group with a red-cell antibody screen of her plasma",
+      "isCorrect": true,
+      "explanation": "Every woman has her blood group and an antibody screen at booking, whatever her RhD type. The screen detects circulating red-cell alloantibodies, and her past transfusion makes a non-D antibody more likely."
+    },
+    {
+      "label": "E",
+      "text": "Cell-free fetal RHD genotyping on a maternal blood sample",
+      "isCorrect": false,
+      "explanation": "Fetal RHD genotyping guides anti-D use in RhD-negative women. It says nothing about non-D antibodies in an RhD-positive mother."
+    }
+  ],
+  "context": "Every pregnant woman, RhD positive or negative, has a blood group and red-cell antibody screen at booking; non-D antibodies, often after a transfusion, can cause fetal haemolysis.",
+  "publicModule": {
+    "schemaVersion": 1,
+    "origin": "mirrored",
+    "discipline": "obs",
+    "mirroredFrom": "md3:cf711996ad63421e",
+    "itemText": {
+      "licence": "CC-BY-4.0",
+      "attribution": "MD3 contributors"
+    },
+    "evidence": {
+      "kind": "reference",
+      "sourceId": "ranzcog-wp-content-uploads-routine-antenatal-assessment-199543"
+    },
+    "review": {
+      "verdict": "passed",
+      "contentHash": "aee906e3fc95834cf111c7b97c63f4fea64af57b4e81705d7a6e8b5152fe8f66"
+    }
+  }
+}

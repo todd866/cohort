@@ -1,0 +1,64 @@
+{
+  "id": "bank:cohort:paeds:q-0981a61b9795:v1",
+  "rotation": "cohort-open",
+  "moduleNodes": [
+    "cohort/paeds"
+  ],
+  "topics": [
+    "paeds"
+  ],
+  "questionType": "management",
+  "difficulty": "hard",
+  "stem": "Sienna, 15, has eaten almost nothing for 6 days. She says she feels fine and wants to go home.\n\n| Measurement | Value | Reference range |\n| --- | --- | --- |\n| Weight loss over 4 months | 12 kg | — |\n| Current weight | 43 kg | — |\n| Heart rate, lying | 44/min | — |\n| Heart rate, standing | 80/min | — |\n| Blood pressure | 86/52 mmHg | — |\n| Temperature | 35.3 °C | — |\n| Potassium | 3.3 mmol/L | 3.5-5.0 |\n| Phosphate | 0.82 mmol/L | 0.9-1.6 |\n| Glucose | 3.9 mmol/L | — |\n\nWhich management plan is most appropriate?",
+  "options": [
+    {
+      "label": "A",
+      "text": "Weekly family-based treatment, with GP checks in between",
+      "isCorrect": false,
+      "explanation": "Family-based treatment is first line for a medically stable adolescent. A heart rate under 50, temperature under 35.5°C, low phosphate and rapid weight loss mark instability, which needs admission."
+    },
+    {
+      "label": "B",
+      "text": "Admit, replace electrolytes, give thiamine and start NG feeds",
+      "isCorrect": true,
+      "explanation": "She is medically unstable and at high refeeding risk. Start replacement of phosphate and potassium, give thiamine before feeding, and commence a supervised NG feeding plan with cardiac and electrolyte monitoring."
+    },
+    {
+      "label": "C",
+      "text": "Admit and hold feeds until her electrolytes are normal",
+      "isCorrect": false,
+      "explanation": "Withholding nutrition prolongs starvation and keeps her unstable. Deficits are corrected and phosphate and thiamine given before the first feed, which then starts without waiting for normal results."
+    },
+    {
+      "label": "D",
+      "text": "Admit and start meals at 600 kcal a day, raised weekly",
+      "isCorrect": false,
+      "explanation": "Prolonged severe calorie restriction leaves her underfed. NSW guidance uses continuous NG feeding prescribed for age and refeeding risk, with electrolyte replacement and close monitoring."
+    },
+    {
+      "label": "E",
+      "text": "Admit and give a 20 mL/kg saline bolus for her bradycardia",
+      "isCorrect": false,
+      "explanation": "Her bradycardia is an adaptation to starvation, not a sign of shock, so a bolus is not indicated. A starved heart tolerates a fluid load poorly."
+    }
+  ],
+  "context": "Medical instability in anorexia nervosa requires admission, correction of electrolyte deficits, thiamine and supervised nutritional rehabilitation with close monitoring.",
+  "publicModule": {
+    "schemaVersion": 1,
+    "origin": "mirrored",
+    "discipline": "paeds",
+    "mirroredFrom": "md3:0981a61b9795b731",
+    "itemText": {
+      "licence": "CC-BY-4.0",
+      "attribution": "MD3 contributors"
+    },
+    "evidence": {
+      "kind": "reference",
+      "sourceId": "nsw-health-mentalhealth-resources-publications-nsw-eating-disorders-toolkit-3fb2b3"
+    },
+    "review": {
+      "verdict": "passed",
+      "contentHash": "368cb18554d13cc6d4fca57540bc76ec6ecb20bf959f129cdb1951344cfc68cd"
+    }
+  }
+}

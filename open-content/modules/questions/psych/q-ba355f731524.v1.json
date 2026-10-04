@@ -1,0 +1,64 @@
+{
+  "id": "bank:cohort:psych:q-ba355f731524:v1",
+  "rotation": "cohort-open",
+  "moduleNodes": [
+    "cohort/psych"
+  ],
+  "topics": [
+    "psych"
+  ],
+  "questionType": "management",
+  "difficulty": "medium",
+  "stem": "A GP reviews a 38-year-old seven months after he escaped a house fire. Intrusive memories, nightmares, avoidance of anything that reminds him of the fire and hypervigilance persist and have kept him off work. Fortnightly supportive counselling has helped him feel heard but has not reduced these symptoms. He has no suicidal thoughts, drinks little and is in stable housing. He says he is willing to try either a medicine or a talking therapy, whichever works best.\n\nWhich treatment should the GP recommend now?",
+  "options": [
+    {
+      "label": "A",
+      "text": "Start sertraline, and refer for therapy if symptoms persist",
+      "isCorrect": false,
+      "explanation": "An SSRI is an option when trauma-focused psychological treatment is unavailable, declined or insufficient. He is willing to engage in therapy, so a medicine first delays the more effective first-line treatment."
+    },
+    {
+      "label": "B",
+      "text": "Arrange a single session to recount the fire in full detail",
+      "isCorrect": false,
+      "explanation": "Single-session psychological debriefing is not recommended and may not help, or may worsen, symptoms. Effective trauma-focused therapy is a structured course, paced with the therapist."
+    },
+    {
+      "label": "C",
+      "text": "Continue the supportive counselling and add sleep hygiene",
+      "isCorrect": false,
+      "explanation": "Supportive counselling has already been tried without improvement. Sleep advice does not address the trauma memories and avoidance that maintain PTSD."
+    },
+    {
+      "label": "D",
+      "text": "Refer for trauma-focused CBT or EMDR with a therapist",
+      "isCorrect": true,
+      "explanation": "Australian PTSD guidelines recommend trauma-focused psychological treatment, such as trauma-focused CBT or EMDR, as first-line for adults with PTSD. He is ready to engage, so referral to a trained therapist is the recommendation."
+    },
+    {
+      "label": "E",
+      "text": "Prescribe temazepam for sleep and nightmares",
+      "isCorrect": false,
+      "explanation": "Benzodiazepines are not recommended for PTSD: they do not treat the core symptoms, may interfere with recovery and carry dependence risk."
+    }
+  ],
+  "context": "For persistent PTSD in an adult willing to engage, trauma-focused psychological therapy is first-line; medication is for when therapy is unavailable, declined or insufficient, and benzodiazepines are not recommended.",
+  "publicModule": {
+    "schemaVersion": 1,
+    "origin": "mirrored",
+    "discipline": "psych",
+    "mirroredFrom": "md3:ba355f731524a1c0",
+    "itemText": {
+      "licence": "CC-BY-4.0",
+      "attribution": "MD3 contributors"
+    },
+    "evidence": {
+      "kind": "reference",
+      "sourceId": "nice-guidance-ng116-chapter-recommendations-8a9424"
+    },
+    "review": {
+      "verdict": "passed",
+      "contentHash": "de199bf8cad22c12e4b58e3f5c75067b0f2988683aaa4b7eb8af233c84b4c56f"
+    }
+  }
+}

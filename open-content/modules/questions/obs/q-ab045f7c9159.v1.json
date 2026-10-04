@@ -1,0 +1,64 @@
+{
+  "id": "bank:cohort:obs:q-ab045f7c9159:v1",
+  "rotation": "cohort-open",
+  "moduleNodes": [
+    "cohort/obs"
+  ],
+  "topics": [
+    "obs"
+  ],
+  "questionType": "management",
+  "difficulty": "medium",
+  "stem": "A woman at 30+4 weeks has gestational diabetes treated with night-time insulin detemir and mealtime insulin aspart. She had two mild hypoglycaemic episodes this week after a dose increase. She is admitted with threatened preterm labour, and the obstetrician recommends antenatal betamethasone because birth is likely within the next week. She is eating normally, her glucose is currently in target and she has no ketonaemia.\n\nWhich diabetes plan should the teams arrange during steroid treatment?",
+  "options": [
+    {
+      "label": "A",
+      "text": "Continue her usual doses and check fasting glucose only",
+      "isCorrect": false,
+      "explanation": "Betamethasone raises glucose, particularly after meals, within hours and for several days. Fasting checks alone would miss the rise."
+    },
+    {
+      "label": "B",
+      "text": "Halve all insulin doses, given her recent hypoglycaemia",
+      "isCorrect": false,
+      "explanation": "Her recent hypoglycaemia argues against a blind increase, but steroids will raise her insulin requirement; halving her doses invites marked hyperglycaemia."
+    },
+    {
+      "label": "C",
+      "text": "Double all insulin doses now for the next five days",
+      "isCorrect": false,
+      "explanation": "Requirements usually rise, but a fixed doubling ignores her recent hypoglycaemia and her individual response; increases should follow frequent glucose readings."
+    },
+    {
+      "label": "D",
+      "text": "Monitor glucose closely and adjust insulin to a protocol",
+      "isCorrect": true,
+      "explanation": "Close capillary glucose monitoring, with insulin adjusted against a protocol from the first dose until the steroid effect wanes, balances the expected rise against her tendency to hypoglycaemia."
+    },
+    {
+      "label": "E",
+      "text": "Withhold betamethasone, as her glucose control is unstable",
+      "isCorrect": false,
+      "explanation": "The fetal benefit of corticosteroids before 34 weeks outweighs a temporary, manageable rise in glucose; diabetes is not a reason to withhold them."
+    }
+  ],
+  "context": "Antenatal corticosteroids raise glucose and insulin requirements for several days; plan close monitoring with protocol-guided adjustment, neither withholding steroids nor changing doses blindly.",
+  "publicModule": {
+    "schemaVersion": 1,
+    "origin": "mirrored",
+    "discipline": "obs",
+    "mirroredFrom": "md3:ab045f7c915989b9",
+    "itemText": {
+      "licence": "CC-BY-4.0",
+      "attribution": "MD3 contributors"
+    },
+    "evidence": {
+      "kind": "reference",
+      "sourceId": "nice-guidance-ng3-chapter-recommendations-d4d14f"
+    },
+    "review": {
+      "verdict": "passed",
+      "contentHash": "ab108bec80e1d939b17053c1a9b46c7e632f78e43f071585bcf5025b2929fef3"
+    }
+  }
+}

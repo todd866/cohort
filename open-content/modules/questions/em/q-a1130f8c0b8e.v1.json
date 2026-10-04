@@ -1,0 +1,64 @@
+{
+  "id": "bank:cohort:em:q-a1130f8c0b8e:v1",
+  "rotation": "cohort-open",
+  "moduleNodes": [
+    "cohort/em"
+  ],
+  "topics": [
+    "em"
+  ],
+  "questionType": "management",
+  "difficulty": "medium",
+  "stem": "A 37-year-old builder arrives 40 minutes after an open tibial fracture with a 3 cm wound. He is stable, distal perfusion is intact, the limb is splinted and the wound is covered with a sterile saline-moistened dressing. No antibiotics have been given. Orthopaedic debridement is planned for later this afternoon, and the registrar will grade the wound in theatre.\n\nWhat should the ED doctor do about antibiotics?",
+  "options": [
+    {
+      "label": "A",
+      "text": "Wait until theatre confirms the wound grade",
+      "isCorrect": false,
+      "explanation": "Grading guides whether to broaden cover, but first-line antibiotics should not wait for it."
+    },
+    {
+      "label": "B",
+      "text": "Give the first dose at induction in theatre",
+      "isCorrect": false,
+      "explanation": "Waiting for induction delays antibiotics by hours. Treatment starts in the ED as soon as the fracture is recognised as open."
+    },
+    {
+      "label": "C",
+      "text": "Swab the wound first, then start antibiotics",
+      "isCorrect": false,
+      "explanation": "Superficial wound swabs do not predict the organisms that later cause infection and should not delay antibiotics."
+    },
+    {
+      "label": "D",
+      "text": "Give IV cefazolin now, before the debridement",
+      "isCorrect": true,
+      "explanation": "Delay in antibiotics increases infection risk in open fractures. Give IV cefazolin as soon as possible, ideally within an hour of injury, and adjust later for wound grade or contamination."
+    },
+    {
+      "label": "E",
+      "text": "Start oral antibiotics, changing to IV later",
+      "isCorrect": false,
+      "explanation": "Oral antibiotics do not reliably achieve adequate tissue levels quickly in an open fracture. The first dose should be intravenous."
+    }
+  ],
+  "context": "Give IV antibiotics for an open fracture as soon as possible, ideally within an hour, without waiting for theatre, swabs or grading.",
+  "publicModule": {
+    "schemaVersion": 1,
+    "origin": "mirrored",
+    "discipline": "em",
+    "mirroredFrom": "md3:a1130f8c0b8eda54",
+    "itemText": {
+      "licence": "CC-BY-4.0",
+      "attribution": "MD3 contributors"
+    },
+    "evidence": {
+      "kind": "reference",
+      "sourceId": "nice-guidance-ng37-chapter-recommendations-16c812"
+    },
+    "review": {
+      "verdict": "passed",
+      "contentHash": "b26ce3dfb5bbfa9f428c05bed7bee5d8ec3c7126007f836c2bfea32f4306d6a4"
+    }
+  }
+}

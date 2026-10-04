@@ -14,6 +14,7 @@ export interface MCQProps {
   imageUrl?: string;
   correctAnswer?: string | number;
   context?: string;
+  abbreviations?: Record<string, string> | null;
   question?: string;
   answer?: string;
   distractors?: string[];
@@ -29,6 +30,7 @@ export interface QuestionVariant {
   stem: string;
   options: MCQOption[];
   context: string | null;
+  abbreviations?: Record<string, string> | null;
   shuffleSeed: string;
   difficulty: string;
 }

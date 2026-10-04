@@ -1,0 +1,64 @@
+{
+  "id": "bank:cohort:psych:q-af4863f406d9:v1",
+  "rotation": "cohort-open",
+  "moduleNodes": [
+    "cohort/psych"
+  ],
+  "topics": [
+    "psych"
+  ],
+  "questionType": "diagnosis",
+  "difficulty": "hard",
+  "stem": "A 24-year-old who smoked cannabis every night for three years stopped five days ago before starting a new job. She is irritable and anxious, has little appetite, and lies awake for hours despite feeling exhausted, with vivid dreams when she does sleep. She feels ‘flat’ and has cried twice this week, but enjoyed a friend’s birthday dinner on Saturday. She had a depressive episode two years ago. She has not felt elevated or needed less sleep, and uses no alcohol or other drugs.\n\nWhich explanation best fits?",
+  "options": [
+    {
+      "label": "A",
+      "text": "Recurrent major depressive episode",
+      "isCorrect": false,
+      "explanation": "A past episode raises the stakes and she does feel flat. But the symptoms began within days of stopping cannabis, have lasted under a week rather than two, and she can still enjoy things, so a major depressive episode is not established. Review her if low mood persists beyond the expected course of withdrawal."
+    },
+    {
+      "label": "B",
+      "text": "Hypomanic episode",
+      "isCorrect": false,
+      "explanation": "She is exhausted rather than needing less sleep, and has no elevated mood or increased activity."
+    },
+    {
+      "label": "C",
+      "text": "Cannabis withdrawal syndrome",
+      "isCorrect": true,
+      "explanation": "Irritability, anxiety, poor appetite, insomnia and vivid dreams beginning within days of stopping daily cannabis are cannabis withdrawal, which usually peaks in the first week and settles over one to two weeks."
+    },
+    {
+      "label": "D",
+      "text": "Generalised anxiety disorder",
+      "isCorrect": false,
+      "explanation": "Generalised anxiety disorder requires months of excessive worry; anxiety that began within days of stopping cannabis is better explained by withdrawal."
+    },
+    {
+      "label": "E",
+      "text": "Chronic insomnia disorder",
+      "isCorrect": false,
+      "explanation": "Insomnia here is one part of a broader syndrome, and chronic insomnia disorder requires at least three months of symptoms."
+    }
+  ],
+  "context": "Cannabis withdrawal causes irritability, anxiety, poor appetite, insomnia and vivid dreams within days of stopping regular use; duration and preserved enjoyment separate it from a depressive relapse.",
+  "publicModule": {
+    "schemaVersion": 1,
+    "origin": "mirrored",
+    "discipline": "psych",
+    "mirroredFrom": "md3:af4863f406d9bd26",
+    "itemText": {
+      "licence": "CC-BY-4.0",
+      "attribution": "MD3 contributors"
+    },
+    "evidence": {
+      "kind": "reference",
+      "sourceId": "nsw-health-aod-professionals-publications-managing-withdrawal-e60532"
+    },
+    "review": {
+      "verdict": "passed",
+      "contentHash": "d2a92461b5ac9108dc444c77742f2056f69a649908876c7a0aa271ec5ebf486e"
+    }
+  }
+}

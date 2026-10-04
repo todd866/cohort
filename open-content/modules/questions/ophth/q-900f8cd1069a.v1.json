@@ -1,0 +1,82 @@
+{
+  "id": "bank:cohort:ophth:q-900f8cd1069a:v1",
+  "rotation": "cohort-open",
+  "moduleNodes": [
+    "cohort/ophth"
+  ],
+  "topics": [
+    "ophth"
+  ],
+  "questionType": "diagnosis",
+  "difficulty": "medium",
+  "stem": "A 4-day-old baby has bilateral eyelid swelling and thick, copious purulent discharge that began yesterday and has worsened rapidly; the conjunctivae are markedly swollen. She is afebrile and feeding well. Her mother had no antenatal screening. Conjunctival swabs for Gram stain, culture and PCR have been sent, and results are pending.\n\nWhich cause is most likely?",
+  "options": [
+    {
+      "label": "A",
+      "text": "Staphylococcus aureus",
+      "isCorrect": false,
+      "explanation": "Staphylococcal conjunctivitis is common in the first weeks but is usually milder and slower, without marked chemosis."
+    },
+    {
+      "label": "B",
+      "text": "Allergic conjunctivitis",
+      "isCorrect": false,
+      "explanation": "Allergic conjunctivitis does not occur at 4 days of age and is not purulent."
+    },
+    {
+      "label": "C",
+      "text": "Adenovirus infection",
+      "isCorrect": false,
+      "explanation": "Adenovirus causes watery discharge, not hyperacute pus."
+    },
+    {
+      "label": "D",
+      "text": "Chlamydia trachomatis",
+      "isCorrect": false,
+      "explanation": "Chlamydial conjunctivitis usually starts at 5–14 days and is less explosive. Onset on day 3 with rapidly worsening copious pus favours gonorrhoea, although the swabs test for both."
+    },
+    {
+      "label": "E",
+      "text": "Neisseria gonorrhoeae",
+      "isCorrect": true,
+      "explanation": "Correct. Rapidly worsening, copious purulent discharge with marked chemosis starting in the first days of life is gonococcal ophthalmia until proven otherwise. It can perforate the cornea, so it needs admission and systemic treatment while results are pending."
+    },
+    {
+      "label": "F",
+      "text": "Nasolacrimal duct obstruction",
+      "isCorrect": false,
+      "explanation": "Duct obstruction causes a sticky eye with a white conjunctiva, not swollen lids and chemosis."
+    },
+    {
+      "label": "G",
+      "text": "Herpes simplex virus",
+      "isCorrect": false,
+      "explanation": "HSV causes vesicles and dendritic ulcers with watery discharge, not copious pus."
+    },
+    {
+      "label": "H",
+      "text": "Chemical conjunctivitis",
+      "isCorrect": false,
+      "explanation": "Chemical conjunctivitis follows prophylaxis within the first day and is mild and non-purulent."
+    }
+  ],
+  "context": "Hyperacute purulent conjunctivitis with chemosis in the first days of life is gonococcal until proven otherwise; it can perforate the cornea and needs urgent systemic treatment before results return.",
+  "publicModule": {
+    "schemaVersion": 1,
+    "origin": "mirrored",
+    "discipline": "ophth",
+    "mirroredFrom": "md3:900f8cd1069ac9aa",
+    "itemText": {
+      "licence": "CC-BY-4.0",
+      "attribution": "MD3 contributors"
+    },
+    "evidence": {
+      "kind": "reference",
+      "sourceId": "rch-clinicalguide-guideline-index-acute-red-eye-a79a06"
+    },
+    "review": {
+      "verdict": "passed",
+      "contentHash": "366ec4c633230c07531ae2ee9c1ea552848af7ef5b27169686eb2320da1fde7a"
+    }
+  }
+}

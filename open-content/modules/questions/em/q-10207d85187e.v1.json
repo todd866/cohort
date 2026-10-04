@@ -1,0 +1,64 @@
+{
+  "id": "bank:cohort:em:q-10207d85187e:v1",
+  "rotation": "cohort-open",
+  "moduleNodes": [
+    "cohort/em"
+  ],
+  "topics": [
+    "em"
+  ],
+  "questionType": "management",
+  "difficulty": "hard",
+  "stem": "A 64-year-old woman on a medical ward has a prolonged QT interval since starting a new antibiotic. She suddenly becomes unresponsive with no normal breathing and no palpable pulse. High-quality CPR is underway and pads are on. The monitor shows a broad-complex tachycardia at about 250/min whose QRS complexes twist in amplitude around the baseline. One team member suggests synchronised cardioversion because 'it is VT'; another suggests magnesium first.\n\nWhat should the ALS leader prioritise next?",
+  "options": [
+    {
+      "label": "A",
+      "text": "IV magnesium before any shock is delivered",
+      "isCorrect": false,
+      "explanation": "Magnesium is appropriate for torsades de pointes, but in a pulseless patient it is given after defibrillation, not instead of it or before it."
+    },
+    {
+      "label": "B",
+      "text": "Synchronised cardioversion to the R wave",
+      "isCorrect": false,
+      "explanation": "Synchronisation is for tachycardias with a pulse. In pulseless polymorphic VT the defibrillator often cannot sense a consistent R wave, so the shock may be delayed or not delivered."
+    },
+    {
+      "label": "C",
+      "text": "Unsynchronised shock with a minimal pause",
+      "isCorrect": true,
+      "explanation": "Pulseless polymorphic VT is a shockable rhythm and is treated like VF: an unsynchronised shock with the shortest possible pause in compressions, then immediate resumption of CPR."
+    },
+    {
+      "label": "D",
+      "text": "IV amiodarone 300 mg before the first shock",
+      "isCorrect": false,
+      "explanation": "Amiodarone is given after the third shock in refractory VF or pulseless VT, and it prolongs the QT interval further, which is undesirable here."
+    },
+    {
+      "label": "E",
+      "text": "IV adrenaline 1 mg before the first shock",
+      "isCorrect": false,
+      "explanation": "In shockable rhythms, adrenaline is given after the second shock, not before the first."
+    }
+  ],
+  "context": "Pulseless VT, including polymorphic VT, is treated like VF with prompt unsynchronised defibrillation and minimal interruption to CPR; magnesium is an adjunct after the shock.",
+  "publicModule": {
+    "schemaVersion": 1,
+    "origin": "mirrored",
+    "discipline": "em",
+    "mirroredFrom": "md3:10207d85187e7944",
+    "itemText": {
+      "licence": "CC-BY-4.0",
+      "attribution": "MD3 contributors"
+    },
+    "evidence": {
+      "kind": "reference",
+      "sourceId": "erc-media-vedoa2ga-gl2025-05-als-e-052cd1"
+    },
+    "review": {
+      "verdict": "passed",
+      "contentHash": "341f5dad8835482ee817c8ee88ef404e6946b70dfedabde4dc2fd8a895b9278f"
+    }
+  }
+}

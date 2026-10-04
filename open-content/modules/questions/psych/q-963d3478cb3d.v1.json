@@ -1,0 +1,64 @@
+{
+  "id": "bank:cohort:psych:q-963d3478cb3d:v1",
+  "rotation": "cohort-open",
+  "moduleNodes": [
+    "cohort/psych"
+  ],
+  "topics": [
+    "psych"
+  ],
+  "questionType": "management",
+  "difficulty": "hard",
+  "stem": "A GP sees a 47-year-old who wants help to stop daily heavy drinking. Two years ago, when he stopped suddenly, he had a generalised seizure followed by delirium requiring hospital treatment. He now lives with his partner, who is at home all week and willing to supervise his medication, and his employer has given him two weeks' leave. He has a mild tremor six hours after his last drink, is alert and has stable vital signs. He would much prefer to withdraw at home.\n\nWhich withdrawal plan is safest?",
+  "options": [
+    {
+      "label": "A",
+      "text": "Home withdrawal with diazepam held by his partner",
+      "isCorrect": false,
+      "explanation": "A supportive partner helps adherence, but cannot recognise or manage a seizure or delirium. His past complicated withdrawal makes home withdrawal unsafe."
+    },
+    {
+      "label": "B",
+      "text": "Daily GP review with diazepam dispensed each day",
+      "isCorrect": false,
+      "explanation": "Daily review and dispensing still leaves him unmonitored for most of the period when seizures and delirium tremens occur."
+    },
+    {
+      "label": "C",
+      "text": "Hospital-based monitored withdrawal management",
+      "isCorrect": true,
+      "explanation": "A previous withdrawal seizure and delirium predict complicated withdrawal again. That history, not his current mild symptoms or home support, sets the need for monitored inpatient withdrawal."
+    },
+    {
+      "label": "D",
+      "text": "A gradual self-directed reduction in his drinking",
+      "isCorrect": false,
+      "explanation": "Self-directed reduction in dependent drinkers is rarely successful and can still produce severe withdrawal."
+    },
+    {
+      "label": "E",
+      "text": "Counselling first, then withdrawal if it fails",
+      "isCorrect": false,
+      "explanation": "Counselling supports recovery but does not manage the withdrawal that is already starting."
+    }
+  ],
+  "context": "Choose the withdrawal setting from the risk of complications. A history of withdrawal seizures or delirium tremens calls for inpatient withdrawal, whatever the current symptom score or home support.",
+  "publicModule": {
+    "schemaVersion": 1,
+    "origin": "mirrored",
+    "discipline": "psych",
+    "mirroredFrom": "md3:963d3478cb3ddfa5",
+    "itemText": {
+      "licence": "CC-BY-4.0",
+      "attribution": "MD3 contributors"
+    },
+    "evidence": {
+      "kind": "reference",
+      "sourceId": "nice-guidance-cg115-chapter-recommendations-54174a"
+    },
+    "review": {
+      "verdict": "passed",
+      "contentHash": "0ccd53620142d155db0c3134f35062db466acc1cd41544e72bc33d4c51b06200"
+    }
+  }
+}

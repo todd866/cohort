@@ -1,0 +1,64 @@
+{
+  "id": "bank:cohort:psych:q-f79ed82a7af7:v1",
+  "rotation": "cohort-open",
+  "moduleNodes": [
+    "cohort/psych"
+  ],
+  "topics": [
+    "psych"
+  ],
+  "questionType": "investigation",
+  "difficulty": "hard",
+  "stem": "A woman who has taken clozapine for three years phones the clinic with painful mouth ulcers, a sore throat, chills and a temperature of 38.6 °C since yesterday. Her routine four-weekly full blood count, taken five days ago, was normal. She has stopped smoking since becoming unwell. She has no chest pain or breathlessness. The duty doctor arranges same-day medical assessment.\n\nWhich blood test is most time-critical because she takes clozapine?",
+  "options": [
+    {
+      "label": "A",
+      "text": "Troponin and CRP to look for clozapine-induced myocarditis",
+      "isCorrect": false,
+      "explanation": "Myocarditis is mainly a risk in the first one to two months of treatment and usually presents with chest symptoms or tachycardia. After three years, with mouth ulcers and a sore throat, neutropenia is the time-critical concern."
+    },
+    {
+      "label": "B",
+      "text": "A clozapine level, as illness and stopping smoking raise it",
+      "isCorrect": false,
+      "explanation": "Infection and stopping smoking can both raise clozapine levels, and a level is worth checking for toxicity. But a high level is not the immediately life-threatening possibility that unrecognised agranulocytosis is."
+    },
+    {
+      "label": "C",
+      "text": "Liver function tests for clozapine-induced hepatitis",
+      "isCorrect": false,
+      "explanation": "Hepatic effects are possible but do not explain fever with mouth ulcers, and liver tests do not change the immediate management of possible neutropenic sepsis."
+    },
+    {
+      "label": "D",
+      "text": "Blood cultures before any other test is requested",
+      "isCorrect": false,
+      "explanation": "Cultures are needed if she is febrile, but they do not answer the clozapine-specific question. The differential count decides whether this is neutropenic sepsis and whether clozapine must stop."
+    },
+    {
+      "label": "E",
+      "text": "A full blood count with differential, though one was normal",
+      "isCorrect": true,
+      "explanation": "Fever, sore throat and mouth ulcers on clozapine need an urgent differential count regardless of a recent normal result, because severe neutropenia can develop between scheduled tests. The result determines whether clozapine is stopped and neutropenic sepsis treated."
+    }
+  ],
+  "context": "Signs of infection on clozapine need an urgent differential blood count, even when the routine count a few days earlier was normal.",
+  "publicModule": {
+    "schemaVersion": 1,
+    "origin": "mirrored",
+    "discipline": "psych",
+    "mirroredFrom": "md3:f79ed82a7af764e1",
+    "itemText": {
+      "licence": "CC-BY-4.0",
+      "attribution": "MD3 contributors"
+    },
+    "evidence": {
+      "kind": "reference",
+      "sourceId": "acsqhc-medicine-finder-clozaril-dc4f31"
+    },
+    "review": {
+      "verdict": "passed",
+      "contentHash": "2417ad57a4221566edb93cec1c95e27a726a844885de8b2614c932023ffe03cd"
+    }
+  }
+}

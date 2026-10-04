@@ -1,0 +1,64 @@
+{
+  "id": "bank:cohort:msk:q-7fb6b98132d7:v1",
+  "rotation": "cohort-open",
+  "moduleNodes": [
+    "cohort/msk"
+  ],
+  "topics": [
+    "msk"
+  ],
+  "questionType": "diagnosis",
+  "difficulty": "hard",
+  "stem": "A 7-year-old boy has had colicky abdominal pain for 2 days and this morning passed a stool containing dark blood. He had a cold a week ago. Today raised, non-blanching spots have appeared on both legs and ankles, and his ankles are swollen and tender. His temperature is 37.8 °C, and he is alert and well perfused, with no mucosal bleeding. Blood pressure is normal. Urinalysis shows blood and protein.\n\n| Test | Result | Reference range |\n| --- | --- | --- |\n| Haemoglobin | 122 g/L | 115–155 |\n| Platelets | 310 × 10⁹/L | 150–450 |\n| Creatinine | 38 µmol/L | 25–60 |\n| Blood film | No fragmented red cells | No fragmentation |\n| PT and APTT | Normal | — |\n\nWhich diagnosis best unifies these findings?",
+  "options": [
+    {
+      "label": "A",
+      "text": "Haemolytic uraemic syndrome after a bloody stool",
+      "isCorrect": false,
+      "explanation": "A bloody stool, abdominal pain and blood in the urine invite HUS, but it needs haemolysis with fragmented red cells, a low platelet count and kidney injury. His film, platelets and creatinine are normal."
+    },
+    {
+      "label": "B",
+      "text": "Meningococcal septicaemia with early purpura",
+      "isCorrect": false,
+      "explanation": "Non-blanching spots with a raised temperature must make you think of meningococcal disease. But he is alert and well perfused, the spots are confined to the legs, and swollen ankles, gut bleeding and blood in the urine over 2 days fit a vasculitis. A child who looks unwell or has a spreading rash is treated as meningococcal disease until proven otherwise."
+    },
+    {
+      "label": "C",
+      "text": "IgA small-vessel vasculitis after his cold",
+      "isCorrect": true,
+      "explanation": "Correct. Palpable purpura on the legs with normal platelets and clotting, arthritis, colicky abdominal pain with gut bleeding, and blood and protein in the urine after a respiratory infection is IgA vasculitis (Henoch–Schönlein purpura). The abdominal pain can come before the rash. Intussusception is the main gut complication to watch for, and urine and blood pressure are monitored for 6 to 12 months for nephritis."
+    },
+    {
+      "label": "D",
+      "text": "Immune thrombocytopenia with a gut bleed",
+      "isCorrect": false,
+      "explanation": "Immune thrombocytopenia causes bruising and petechiae with a low platelet count in a well child. His platelets are normal, so the purpura comes from the vessel wall."
+    },
+    {
+      "label": "E",
+      "text": "Acute post-streptococcal glomerulonephritis",
+      "isCorrect": false,
+      "explanation": "Post-streptococcal glomerulonephritis causes a nephritic picture 1 to 3 weeks after a streptococcal infection, without purpura, arthritis or gut bleeding."
+    }
+  ],
+  "context": "Purpura with a normal platelet count and normal clotting comes from the vessel wall. With arthritis, colicky abdominal pain (which may come first) and blood in the urine, it is IgA vasculitis; urine and blood pressure are monitored for 6 to 12 months.",
+  "publicModule": {
+    "schemaVersion": 1,
+    "origin": "mirrored",
+    "discipline": "msk",
+    "mirroredFrom": "md3:7fb6b98132d7e2e5",
+    "itemText": {
+      "licence": "CC-BY-4.0",
+      "attribution": "MD3 contributors"
+    },
+    "evidence": {
+      "kind": "reference",
+      "sourceId": "rch-clinicalguide-guideline-index-henochschonlein-purpura-ea5399"
+    },
+    "review": {
+      "verdict": "passed",
+      "contentHash": "670243da63567f6595aec33949c6ccc9cceafaf534aebb18b89297d58bcb3337"
+    }
+  }
+}

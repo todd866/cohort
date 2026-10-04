@@ -1,0 +1,64 @@
+{
+  "id": "bank:cohort:gynae:q-4538199d03e4:v1",
+  "rotation": "cohort-open",
+  "moduleNodes": [
+    "cohort/gynae"
+  ],
+  "topics": [
+    "gynae"
+  ],
+  "questionType": "management",
+  "difficulty": "hard",
+  "stem": "A GP reviews a 64-year-old with new abdominal bloating and early satiety. Ultrasound shows a 6.5-cm multilocular adnexal mass with solid papillary projections and ascites. CA125 is 28 U/mL (local reference <35). She is haemodynamically stable, without acute pain.\n\nWhich next step best fits the combined findings?",
+  "options": [
+    {
+      "label": "A",
+      "text": "Repeat pelvic ultrasound in six weeks to assess for resolution",
+      "isCorrect": false,
+      "explanation": "Functional cysts that resolve are a premenopausal phenomenon; a multilocular mass with solid papillary projections and ascites at 64 is not expected to resolve."
+    },
+    {
+      "label": "B",
+      "text": "Refer to a general gynaecologist for laparoscopic cystectomy",
+      "isCorrect": false,
+      "explanation": "Laparoscopic cystectomy outside a cancer service risks rupture and inadequate staging of a probable malignancy."
+    },
+    {
+      "label": "C",
+      "text": "Refer promptly to a gynaecological oncology service",
+      "isCorrect": true,
+      "explanation": "Solid papillary projections, multilocularity and ascites give a high risk-of-malignancy score (above 200) even with a CA125 of 28, so she needs prompt gynaecological oncology care."
+    },
+    {
+      "label": "D",
+      "text": "Arrange HE4 and CEA, referring only if either is raised",
+      "isCorrect": false,
+      "explanation": "Additional markers do not override high-risk morphology and would only delay referral."
+    },
+    {
+      "label": "E",
+      "text": "Repeat CA125 in four weeks and refer if it rises above 35",
+      "isCorrect": false,
+      "explanation": "CA125 is normal in a substantial proportion of early ovarian cancers; waiting for it to rise delays treatment."
+    }
+  ],
+  "context": "Suspicious postmenopausal adnexal imaging warrants cancer-service assessment even when CA125 is within the stated laboratory range.",
+  "publicModule": {
+    "schemaVersion": 1,
+    "origin": "mirrored",
+    "discipline": "gynae",
+    "mirroredFrom": "md3:4538199d03e4c947",
+    "itemText": {
+      "licence": "CC-BY-4.0",
+      "attribution": "MD3 contributors"
+    },
+    "evidence": {
+      "kind": "reference",
+      "sourceId": "nice-guidance-ng12-chapter-recommendations-organised-by-site-of-cancer-88ecf6"
+    },
+    "review": {
+      "verdict": "passed",
+      "contentHash": "d68c8c0d5f1d353da0466b32ecf7af8d9b62aafba55ee1c3517f327047120b68"
+    }
+  }
+}

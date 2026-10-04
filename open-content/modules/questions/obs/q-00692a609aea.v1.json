@@ -1,0 +1,64 @@
+{
+  "id": "bank:cohort:obs:q-00692a609aea:v1",
+  "rotation": "cohort-open",
+  "moduleNodes": [
+    "cohort/obs"
+  ],
+  "topics": [
+    "obs"
+  ],
+  "questionType": "investigation",
+  "difficulty": "hard",
+  "stem": "At a ten-week booking visit, a GP reviews a woman with laboratory-confirmed beta-thalassaemia trait; her ferritin is normal. Her partner, the baby’s father, is well. His full blood count from a recent insurance medical showed haemoglobin 152 g/L and MCV 88 fL. The couple want to understand the risk to the baby before deciding about invasive fetal testing.\n\nWhich investigation should the GP arrange next?",
+  "options": [
+    {
+      "label": "A",
+      "text": "No partner testing, because his normal MCV excludes a relevant trait",
+      "isCorrect": false,
+      "explanation": "Some clinically important carrier states, notably HbS, have normal red-cell indices; combined with her beta-thalassaemia trait, HbS would put the fetus at risk of sickle–beta-thalassaemia."
+    },
+    {
+      "label": "B",
+      "text": "Partner ferritin first, then haemoglobin studies only if it is low",
+      "isCorrect": false,
+      "explanation": "Ferritin addresses iron deficiency, not carrier status; waiting on it delays the result that determines fetal risk."
+    },
+    {
+      "label": "C",
+      "text": "Chorionic villus sampling now, on the basis of the maternal trait",
+      "isCorrect": false,
+      "explanation": "Invasive testing is offered after both parents are shown to carry relevant traits; the partner’s status is not yet known."
+    },
+    {
+      "label": "D",
+      "text": "Maternal beta-globin gene sequencing before the partner is tested",
+      "isCorrect": false,
+      "explanation": "Her trait is already established; defining her mutation helps later fetal diagnosis but does not tell the couple whether the fetus is at risk."
+    },
+    {
+      "label": "E",
+      "text": "Arrange his haemoglobin studies now, despite a normal MCV",
+      "isCorrect": true,
+      "explanation": "When one partner is a carrier, the other needs haemoglobin studies (HPLC or electrophoresis) promptly, because a normal MCV does not exclude traits such as HbS."
+    }
+  ],
+  "context": "When a pregnant woman carries beta-thalassaemia trait, test her partner with haemoglobin studies promptly; normal red-cell indices do not exclude traits such as HbS.",
+  "publicModule": {
+    "schemaVersion": 1,
+    "origin": "mirrored",
+    "discipline": "obs",
+    "mirroredFrom": "md3:00692a609aea3dd1",
+    "itemText": {
+      "licence": "CC-BY-4.0",
+      "attribution": "MD3 contributors"
+    },
+    "evidence": {
+      "kind": "reference",
+      "sourceId": "racgp-ment-63568f23-e288-4a0e-a23a-39fbd046cc21-genomics-in-general-practice-b97a68"
+    },
+    "review": {
+      "verdict": "passed",
+      "contentHash": "3a3f1564b12f26bdebef7cb7af25b3fa6d65bc336fa6088a65440e79c910dd03"
+    }
+  }
+}

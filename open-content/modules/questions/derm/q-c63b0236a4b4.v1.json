@@ -1,0 +1,64 @@
+{
+  "id": "bank:cohort:derm:q-c63b0236a4b4:v1",
+  "rotation": "cohort-open",
+  "moduleNodes": [
+    "cohort/derm"
+  ],
+  "topics": [
+    "derm"
+  ],
+  "questionType": "mechanism",
+  "difficulty": "medium",
+  "stem": "A 7-week-old girl has a bright red, raised plaque that has spread quickly over her chin, jawline, the front of her neck and the skin in front of both ears. At birth it was a faint pink patch. She feeds well and is otherwise thriving. What is the main reason she needs urgent specialist assessment and treatment?",
+  "options": [
+    {
+      "label": "A",
+      "text": "Risk of high-output cardiac failure",
+      "isCorrect": false,
+      "explanation": "High-output cardiac failure is a concern with large liver haemangiomas, suspected when an infant has five or more skin haemangiomas, not with one segmental facial lesion."
+    },
+    {
+      "label": "B",
+      "text": "Risk of platelet consumption",
+      "isCorrect": false,
+      "explanation": "Platelet trapping (Kasabach-Merritt phenomenon) complicates kaposiform haemangioendothelioma or tufted angioma, not a common infantile haemangioma."
+    },
+    {
+      "label": "C",
+      "text": "Risk of amblyopia",
+      "isCorrect": false,
+      "explanation": "Amblyopia is the reason to treat a periocular haemangioma that blocks the visual axis or distorts the cornea. This lesion spares the eyes."
+    },
+    {
+      "label": "D",
+      "text": "Risk of airway obstruction",
+      "isCorrect": true,
+      "explanation": "Correct. A segmental haemangioma in the beard area is linked with subglottic airway haemangioma, which can obstruct the airway as it proliferates, often before stridor is obvious. She needs urgent airway assessment and oral propranolol."
+    },
+    {
+      "label": "E",
+      "text": "Risk of malignant transformation",
+      "isCorrect": false,
+      "explanation": "Infantile haemangiomas are benign vascular tumours that proliferate and then involute. They do not undergo malignant change."
+    }
+  ],
+  "context": "A beard-distribution infantile haemangioma signals possible subglottic airway haemangioma; noisy breathing or stridor needs urgent airway assessment and propranolol.",
+  "publicModule": {
+    "schemaVersion": 1,
+    "origin": "mirrored",
+    "discipline": "derm",
+    "mirroredFrom": "md3:c63b0236a4b4653b",
+    "itemText": {
+      "licence": "CC-BY-4.0",
+      "attribution": "MD3 contributors"
+    },
+    "evidence": {
+      "kind": "reference",
+      "sourceId": "rch-primary-care-liaison-prereferral-guidelines-haemangioma-infantile-77cf1f"
+    },
+    "review": {
+      "verdict": "passed",
+      "contentHash": "21b186ce87e83461bc25cef1f7571a0b4efec283f390e863e644e0336d3bb360"
+    }
+  }
+}

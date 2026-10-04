@@ -1,0 +1,22 @@
+-- Keep this migration outside an explicit transaction: PostgreSQL requires
+-- CREATE INDEX CONCURRENTLY to run as a top-level statement. Keep it to this
+-- one statement, so an interrupted build is always recovered the same way.
+--
+-- The write-health cron's liveness probe asks for the latest grade on any card
+-- with no user filter (WHERE "lastReview" IS NOT NULL ORDER BY "lastReview"
+-- DESC LIMIT 1, every ten minutes in active hours). No index held "lastReview",
+-- so each probe read the whole table and sorted it. A plain ascending btree
+-- serves the probe as a backward index scan: Prisma's DESC means NULLS FIRST,
+-- the index order reversed, and the IS NOT NULL condition starts the scan at
+-- the newest graded row, past the rows that were never graded.
+--
+-- Write cost: a grade rewrites its CardProgress row with a new "lastReview",
+-- so each grade adds one entry here. Those updates were already not HOT,
+-- because "nextDueAt", which is indexed, changes on every grade as well.
+--
+-- An interrupted build (lock_timeout or statement_timeout) leaves an INVALID
+-- index and a failed migration row. To recover: drop the index with
+-- DROP INDEX CONCURRENTLY IF EXISTS "CardProgress_lastReview_idx", mark the
+-- migration rolled back with prisma migrate resolve --rolled-back, and deploy
+-- again.
+CREATE INDEX CONCURRENTLY "CardProgress_lastReview_idx" ON "CardProgress" ("lastReview");

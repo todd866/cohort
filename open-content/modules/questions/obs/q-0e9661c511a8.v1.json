@@ -1,0 +1,64 @@
+{
+  "id": "bank:cohort:obs:q-0e9661c511a8:v1",
+  "rotation": "cohort-open",
+  "moduleNodes": [
+    "cohort/obs"
+  ],
+  "topics": [
+    "obs"
+  ],
+  "questionType": "management",
+  "difficulty": "medium",
+  "stem": "A woman at 32 weeks collapses on the antenatal ward and is in cardiac arrest. Chest compressions are under way with her supine on a firm board, and the airway is being managed. The uterine fundus is well above the umbilicus. A team member suggests tilting the whole board 30 degrees to her left.\n\nWhat should the team leader do about the uterus?",
+  "options": [
+    {
+      "label": "A",
+      "text": "Tilt the board 30 degrees left, accepting weaker compressions",
+      "isCorrect": false,
+      "explanation": "Tilting relieves caval compression but makes chest compressions less effective, because the chest is no longer flat on a firm surface. Manual displacement gives both."
+    },
+    {
+      "label": "B",
+      "text": "Keep her flat, and deal with the uterus after a return of circulation",
+      "isCorrect": false,
+      "explanation": "From about 20 weeks the uterus compresses the inferior vena cava and aorta when she lies supine, cutting the venous return that compressions depend on. Relief is needed during resuscitation, not after it."
+    },
+    {
+      "label": "C",
+      "text": "Manual left uterine displacement, compressing her supine",
+      "isCorrect": true,
+      "explanation": "Manual left uterine displacement lifts the uterus off the inferior vena cava and aorta, restoring venous return so compressions can produce cardiac output, while she stays flat for effective compressions."
+    },
+    {
+      "label": "D",
+      "text": "Start a perimortem caesarean at once, before any displacement",
+      "isCorrect": false,
+      "explanation": "Perimortem caesarean starts if there is no return of circulation by about four minutes, aiming for birth by five. Displacement is done from the start."
+    },
+    {
+      "label": "E",
+      "text": "Displace it rightward manually, away from the vena cava",
+      "isCorrect": false,
+      "explanation": "The inferior vena cava lies to the right of the spine, so the uterus is moved to the left to relieve it."
+    }
+  ],
+  "context": "In cardiac arrest from about 20 weeks, push the uterus to the left by hand while compressing supine; it relieves aortocaval compression and restores venous return.",
+  "publicModule": {
+    "schemaVersion": 1,
+    "origin": "mirrored",
+    "discipline": "obs",
+    "mirroredFrom": "md3:0e9661c511a895e1",
+    "itemText": {
+      "licence": "CC-BY-4.0",
+      "attribution": "MD3 contributors"
+    },
+    "evidence": {
+      "kind": "reference",
+      "sourceId": "anzcor-ed-life-support-guideline-11-10-resuscitation-in-special-circumstances-6e6a7d"
+    },
+    "review": {
+      "verdict": "passed",
+      "contentHash": "84159e1fd17ec2eb4c03f3a154fbe28c78c4caa9ca447917ca6f6a5cc5d81a46"
+    }
+  }
+}

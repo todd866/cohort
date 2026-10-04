@@ -1,0 +1,64 @@
+{
+  "id": "bank:cohort:psych:q-cd3eed817855:v1",
+  "rotation": "cohort-open",
+  "moduleNodes": [
+    "cohort/psych"
+  ],
+  "topics": [
+    "psych"
+  ],
+  "questionType": "management",
+  "difficulty": "hard",
+  "stem": "A GP reviews a 46-year-old woman who has taken diazepam 10 mg every night for two years. Her original insomnia is now managed with cognitive behavioural therapy, but she feels drowsy the next morning. She starts a new job in eight days and wants to be completely off diazepam before then; she asks whether she could be admitted to 'detox' to get it done in a week. She has no seizure history, does not use alcohol or other sedatives, and can attend regular reviews.\n\nWhich withdrawal plan should the GP agree with her?",
+  "options": [
+    {
+      "label": "A",
+      "text": "Switch to nightly zopiclone while she starts the new job",
+      "isCorrect": false,
+      "explanation": "Zopiclone acts on the same receptor and carries the same dependence; switching keeps the problem."
+    },
+    {
+      "label": "B",
+      "text": "Switch to a longer-acting benzodiazepine before reducing",
+      "isCorrect": false,
+      "explanation": "Switching to a long-acting drug is the first step when tapering a short-acting benzodiazepine, but she already takes diazepam, which is long-acting. Changing drug adds nothing."
+    },
+    {
+      "label": "C",
+      "text": "Halve the dose every two days and finish within a week",
+      "isCorrect": false,
+      "explanation": "Halving every two days is far too fast after two years of daily use and is likely to cause withdrawal symptoms during her first week at work."
+    },
+    {
+      "label": "D",
+      "text": "Reduce gradually over weeks, adjusting the pace at review",
+      "isCorrect": true,
+      "explanation": "Long-term benzodiazepines should be reduced gradually, in small steps every few weeks, adjusted to symptoms. Her deadline can be discussed, but a safe taper will take longer than a week, and she can start work on a reducing dose."
+    },
+    {
+      "label": "E",
+      "text": "Admit her for inpatient withdrawal to finish within a week",
+      "isCorrect": false,
+      "explanation": "Inpatient withdrawal is mainly for high doses, a history of seizures or complicated withdrawal, other sedative use or serious comorbidity, none of which she has. A one-week withdrawal after two years is too fast in any setting and risks rebound and protracted symptoms."
+    }
+  ],
+  "context": "Long-term benzodiazepines should be reduced through an agreed, individualised outpatient taper over weeks to months. A patient already on diazepam does not need switching, and admission does not make a rapid withdrawal safe.",
+  "publicModule": {
+    "schemaVersion": 1,
+    "origin": "mirrored",
+    "discipline": "psych",
+    "mirroredFrom": "md3:cd3eed817855416d",
+    "itemText": {
+      "licence": "CC-BY-4.0",
+      "attribution": "MD3 contributors"
+    },
+    "evidence": {
+      "kind": "reference",
+      "sourceId": "racgp-gp-guidelines-drugs-of-dependence-part-b-discontinuing-benzodiazepines-cc8e3f"
+    },
+    "review": {
+      "verdict": "passed",
+      "contentHash": "e8d1d6acb4eaea61753106655d9f34725498c11c4bf56592d1484716b4a74cbc"
+    }
+  }
+}

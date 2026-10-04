@@ -1,0 +1,64 @@
+{
+  "id": "bank:cohort:obs:q-d012210a2d1a:v1",
+  "rotation": "cohort-open",
+  "moduleNodes": [
+    "cohort/obs"
+  ],
+  "topics": [
+    "obs"
+  ],
+  "questionType": "management",
+  "difficulty": "hard",
+  "stem": "A 35-year-old presents in established labour at 39 weeks. A urine culture at 18 weeks grew group B Streptococcus at 10⁴ CFU/mL; she completed oral treatment and a test-of-cure culture was negative. A vaginal–rectal GBS swab at 36 weeks was also negative. She is afebrile, has intact membranes and no penicillin allergy.\n\nWhat should the admitting maternity doctor do for GBS prevention?",
+  "options": [
+    {
+      "label": "A",
+      "text": "Omit prophylaxis, as the 36-week swab supersedes the earlier urine result",
+      "isCorrect": false,
+      "explanation": "GBS bacteriuria at any count in this pregnancy marks heavy colonisation and is an indication for intrapartum prophylaxis; a later negative swab does not remove it."
+    },
+    {
+      "label": "B",
+      "text": "Omit prophylaxis, since treatment and a clear test of cure eradicated GBS",
+      "isCorrect": false,
+      "explanation": "Antenatal treatment does not eradicate genital-tract colonisation, which commonly recurs; a clear urine culture does not change the intrapartum indication."
+    },
+    {
+      "label": "C",
+      "text": "Start prophylaxis only if membranes remain ruptured for 18 hours or more",
+      "isCorrect": false,
+      "explanation": "Prolonged membrane rupture is a risk factor used when GBS status is unknown; her bacteriuria is already an indication."
+    },
+    {
+      "label": "D",
+      "text": "Give oral amoxicillin in labour to cover residual urinary colonisation",
+      "isCorrect": false,
+      "explanation": "Intrapartum prophylaxis requires intravenous antibiotics to reach adequate levels before birth; oral treatment is not effective."
+    },
+    {
+      "label": "E",
+      "text": "Start intravenous benzylpenicillin now and continue it until birth",
+      "isCorrect": true,
+      "explanation": "GBS bacteriuria in the current pregnancy is an indication for intravenous benzylpenicillin in labour, regardless of treatment or a later negative swab."
+    }
+  ],
+  "context": "GBS bacteriuria in the current pregnancy warrants intrapartum prophylaxis even after treatment and a later negative swab.",
+  "publicModule": {
+    "schemaVersion": 1,
+    "origin": "mirrored",
+    "discipline": "obs",
+    "mirroredFrom": "md3:d012210a2d1a1d04",
+    "itemText": {
+      "licence": "CC-BY-4.0",
+      "attribution": "MD3 contributors"
+    },
+    "evidence": {
+      "kind": "reference",
+      "sourceId": "qld-health-data-assets-pdf-file-0026-626732-g-gbs-d47de8"
+    },
+    "review": {
+      "verdict": "passed",
+      "contentHash": "2a8e7c58620dc9fefa9c51a307ad9458bcc1c0bc943c8eea5c110a3ed3e9fa52"
+    }
+  }
+}

@@ -1,0 +1,64 @@
+{
+  "id": "bank:cohort:psych:q-d69e24d32711:v1",
+  "rotation": "cohort-open",
+  "moduleNodes": [
+    "cohort/psych"
+  ],
+  "topics": [
+    "psych"
+  ],
+  "questionType": "investigation",
+  "difficulty": "medium",
+  "stem": "An old-age psychiatrist reviews a 74-year-old three months after effective treatment of a first depressive episode. Mood, sleep, appetite and motivation have returned to baseline, and he again enjoys company. His daughter still has to supervise bills and medicines because of repeated errors; the difficulties have progressed despite the mood improvement. Physical examination, medication review and initial blood tests have not identified another reversible cause.\n\nWhat is the most appropriate next step?",
+  "options": [
+    {
+      "label": "A",
+      "text": "Arrange comprehensive cognitive and functional assessment",
+      "isCorrect": true,
+      "explanation": "Persistent, progressive functional impairment after mood improvement warrants further assessment for a coexisting neurocognitive disorder. A depressive episode does not settle the cause of every cognitive symptom."
+    },
+    {
+      "label": "B",
+      "text": "Increase antidepressant treatment for residual cognitive symptoms",
+      "isCorrect": false,
+      "explanation": "The mood syndrome has responded, while the cognitive problem has not. Increasing medication without reassessing the formulation may add adverse effects and delay the appropriate investigation."
+    },
+    {
+      "label": "C",
+      "text": "Attribute the ongoing cognitive impairment to the depressive episode",
+      "isCorrect": false,
+      "explanation": "Cognitive impairment may improve with depression treatment, but recovery is not guaranteed and conditions can coexist. Reassurance alone would ignore the observed functional decline."
+    },
+    {
+      "label": "D",
+      "text": "Start donepezil for presumed Alzheimer disease",
+      "isCorrect": false,
+      "explanation": "The history does not yet establish a dementia subtype or an indication for donepezil. Assessment should precede disease-specific prescribing."
+    },
+    {
+      "label": "E",
+      "text": "Continue mood treatment and repeat cognition in six months",
+      "isCorrect": false,
+      "explanation": "Continue appropriate mood care, but do not postpone assessment of the progressive cognitive and functional errors for another six months. Recovery of mood has not resolved these problems."
+    }
+  ],
+  "context": "Mood recovery and cognitive recovery are separate outcomes; persistent functional decline needs its own assessment.",
+  "publicModule": {
+    "schemaVersion": 1,
+    "origin": "mirrored",
+    "discipline": "psych",
+    "mirroredFrom": "md3:d69e24d32711dd85",
+    "itemText": {
+      "licence": "CC-BY-4.0",
+      "attribution": "MD3 contributors"
+    },
+    "evidence": {
+      "kind": "reference",
+      "sourceId": "racgp-getattachment-af2d2506-9c65-43ab-a442-319a56f12fb7-dementia-f9655c"
+    },
+    "review": {
+      "verdict": "passed",
+      "contentHash": "58dd6aeed9973695c8663fecf1c8f51bfd0fdbef53ea8c110f4d3890db420d89"
+    }
+  }
+}

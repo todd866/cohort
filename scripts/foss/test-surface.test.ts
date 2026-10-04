@@ -147,6 +147,9 @@ describe('FOSS USMLE test surface', () => {
       } else if (name === 'db:seed:cohort-modules') {
         // Hydrates env through seed-open-corpus's loadSeedOpenCorpusEnvironment().
         expect(command).toContain('scripts/content/seed-cohort-modules.ts');
+      } else if (name === 'db:seed:cohort-module-cards') {
+        // Same env hydration as the module questions' seed.
+        expect(command).toContain('scripts/content/seed-cohort-module-cards.ts');
       } else {
         expect(command, `${name} must use the env-hydrating Prisma wrapper`).toContain(
           'scripts/db/prisma-with-env.mjs',

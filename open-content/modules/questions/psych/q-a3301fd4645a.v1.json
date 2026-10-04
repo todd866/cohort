@@ -1,0 +1,64 @@
+{
+  "id": "bank:cohort:psych:q-a3301fd4645a:v1",
+  "rotation": "cohort-open",
+  "moduleNodes": [
+    "cohort/psych"
+  ],
+  "topics": [
+    "psych"
+  ],
+  "questionType": "management",
+  "difficulty": "hard",
+  "stem": "A GP reviews a woman at 18 weeks of pregnancy who still smokes 12 cigarettes daily despite several weeks of counselling and Quitline support. Cravings repeatedly defeat her quit attempts. She wants to stop and asks about medication, but worries that any nicotine treatment must be as harmful as smoking. She has not tried nicotine replacement.\n\nWhich next step best fits her situation?",
+  "options": [
+    {
+      "label": "A",
+      "text": "Continue counselling alone until after delivery",
+      "isCorrect": false,
+      "explanation": "Behavioural support should continue, but repeated unsuccessful attempts justify discussing additional help during pregnancy. Delaying all medication leaves ongoing smoke exposure unaddressed."
+    },
+    {
+      "label": "B",
+      "text": "Start varenicline as the usual first pregnancy medicine",
+      "isCorrect": false,
+      "explanation": "Varenicline is not the preferred routine cessation medicine in pregnancy because pregnancy safety evidence is limited. Supervised nicotine replacement is the established option to discuss here."
+    },
+    {
+      "label": "C",
+      "text": "Recommend switching to cigarettes with a lower nicotine yield",
+      "isCorrect": false,
+      "explanation": "Low-yield cigarettes do not provide a reliable reduction in harm and may prompt compensatory smoking. The target is cessation, with practical treatment for cravings."
+    },
+    {
+      "label": "D",
+      "text": "Add oral nicotine replacement to behavioural support",
+      "isCorrect": true,
+      "explanation": "After discussing benefits and uncertainties, intermittent oral nicotine replacement can help when behavioural support alone has not succeeded. It avoids tobacco combustion products and should be used with support and review."
+    },
+    {
+      "label": "E",
+      "text": "Start a nicotine patch to be worn continuously day and night",
+      "isCorrect": false,
+      "explanation": "A patch may be appropriate if oral replacement is unsuitable or insufficient, but it is not the preferred initial formulation here. In pregnancy, patches should be removed overnight."
+    }
+  ],
+  "context": "Pregnancy does not require withholding all cessation medication when behavioural support has failed.",
+  "publicModule": {
+    "schemaVersion": 1,
+    "origin": "mirrored",
+    "discipline": "psych",
+    "mirroredFrom": "md3:a3301fd4645a869a",
+    "itemText": {
+      "licence": "CC-BY-4.0",
+      "attribution": "MD3 contributors"
+    },
+    "evidence": {
+      "kind": "reference",
+      "sourceId": "nsw-health-aod-resources-publications-substance-use-pregnant-parenting-4fbed9"
+    },
+    "review": {
+      "verdict": "passed",
+      "contentHash": "9061bf438470a05f7540f4efdfbf002ee12986c79e2bad1f684f0b76c3219c4b"
+    }
+  }
+}

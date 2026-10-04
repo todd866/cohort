@@ -1,0 +1,64 @@
+{
+  "id": "bank:cohort:obs:q-7815eceb8139:v1",
+  "rotation": "cohort-open",
+  "moduleNodes": [
+    "cohort/obs"
+  ],
+  "topics": [
+    "obs"
+  ],
+  "questionType": "management",
+  "difficulty": "hard",
+  "stem": "Forty minutes after a vaginal birth with active management of the third stage, the placenta has not delivered despite two attempts at controlled cord traction by an experienced midwife, with an empty bladder. Blood loss is now 650 mL with a steady trickle; the uterus is contracted, her pulse is 104 beats/min and blood pressure 112/70 mmHg. The obstetric registrar arrives; an anaesthetist and theatre are available.\n\nWhat is the most appropriate plan?",
+  "options": [
+    {
+      "label": "A",
+      "text": "Inject oxytocin into the umbilical vein and wait another 30 minutes",
+      "isCorrect": false,
+      "explanation": "Umbilical vein oxytocin is not recommended for retained placenta, and waiting prolongs the haemorrhage."
+    },
+    {
+      "label": "B",
+      "text": "Manual removal in the birth room now, using nitrous oxide for analgesia",
+      "isCorrect": false,
+      "explanation": "Nitrous oxide does not provide adequate anaesthesia for manual removal from the uterus."
+    },
+    {
+      "label": "C",
+      "text": "Give ergometrine, then repeat controlled cord traction with more force",
+      "isCorrect": false,
+      "explanation": "Ergometrine can cause a sustained contraction that traps the placenta, and forceful traction risks snapping the cord or inverting the uterus."
+    },
+    {
+      "label": "D",
+      "text": "Start an oxytocin infusion and allow another hour for spontaneous delivery",
+      "isCorrect": false,
+      "explanation": "An infusion may support tone while theatre is arranged, but waiting another hour with ongoing bleeding is unsafe."
+    },
+    {
+      "label": "E",
+      "text": "Manual removal in theatre under regional or general anaesthesia",
+      "isCorrect": true,
+      "explanation": "A placenta retained after active management and repeated traction, with 650 mL lost and ongoing bleeding, needs manual removal in theatre under regional or general anaesthesia, with resuscitation meanwhile."
+    }
+  ],
+  "context": "Retained placenta with ongoing bleeding after active management and failed traction: resuscitate and remove it manually in theatre under regional or general anaesthesia.",
+  "publicModule": {
+    "schemaVersion": 1,
+    "origin": "mirrored",
+    "discipline": "obs",
+    "mirroredFrom": "md3:7815eceb8139bfe6",
+    "itemText": {
+      "licence": "CC-BY-4.0",
+      "attribution": "MD3 contributors"
+    },
+    "evidence": {
+      "kind": "reference",
+      "sourceId": "qld-health-data-assets-pdf-file-0015-140136-g-pph-0e6f42"
+    },
+    "review": {
+      "verdict": "passed",
+      "contentHash": "301a4adcccbc59584f3c5e047acfefdf9b5883bfc201d35d49d59e5d77258cd0"
+    }
+  }
+}

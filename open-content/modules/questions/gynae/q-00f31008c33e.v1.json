@@ -1,0 +1,64 @@
+{
+  "id": "bank:cohort:gynae:q-00f31008c33e:v1",
+  "rotation": "cohort-open",
+  "moduleNodes": [
+    "cohort/gynae"
+  ],
+  "topics": [
+    "gynae"
+  ],
+  "questionType": "management",
+  "difficulty": "medium",
+  "stem": "A 34-year-old, six months after her second vaginal birth, reports urine leakage when she coughs, laughs or runs. She has no urgency, frequency, dysuria or difficulty emptying, and urinalysis is normal. Her BMI is 31 kg/m². Pelvic examination shows no significant prolapse, and a cough stress test shows leakage. She has not tried any treatment and asks about the operation her mother had.\n\nWhich first-line treatment should her GP offer?",
+  "options": [
+    {
+      "label": "A",
+      "text": "Supervised pelvic floor training for at least three months",
+      "isCorrect": true,
+      "explanation": "Stress incontinence is failure of urethral closure under effort. Supervised pelvic floor muscle training for at least three months is first-line, with weight-loss advice; surgery is considered only if it fails."
+    },
+    {
+      "label": "B",
+      "text": "Bladder training with timed voiding over six weeks",
+      "isCorrect": false,
+      "explanation": "Bladder training treats urgency from detrusor overactivity. She has no urgency or frequency."
+    },
+    {
+      "label": "C",
+      "text": "Referral for a mid-urethral sling, given six months of leakage",
+      "isCorrect": false,
+      "explanation": "Surgery is offered after an adequate trial of supervised pelvic floor training, and future births are a further reason to wait."
+    },
+    {
+      "label": "D",
+      "text": "An antimuscarinic, as leakage with effort is from the detrusor",
+      "isCorrect": false,
+      "explanation": "Leakage with coughing and running is stress incontinence from urethral closure failure, not detrusor overactivity, so an antimuscarinic is not first-line."
+    },
+    {
+      "label": "E",
+      "text": "Vaginal oestrogen, to restore tissue support after the birth",
+      "isCorrect": false,
+      "explanation": "Vaginal oestrogen helps postmenopausal urogenital atrophy. She is premenopausal and six months after a birth."
+    }
+  ],
+  "context": "Supervised pelvic-floor muscle training is first-line treatment for stress urinary incontinence.",
+  "publicModule": {
+    "schemaVersion": 1,
+    "origin": "mirrored",
+    "discipline": "gynae",
+    "mirroredFrom": "md3:00f31008c33eb6a8",
+    "itemText": {
+      "licence": "CC-BY-4.0",
+      "attribution": "MD3 contributors"
+    },
+    "evidence": {
+      "kind": "reference",
+      "sourceId": "qld-health-lvic-floor-dysfunction-e-g-prolapse-and-or-incontinence-urogynaecology-2d39d7"
+    },
+    "review": {
+      "verdict": "passed",
+      "contentHash": "ac296de88565fc7e8e1c0779a0322345fb313fe6c23cb79125c38948f3b7f0cc"
+    }
+  }
+}

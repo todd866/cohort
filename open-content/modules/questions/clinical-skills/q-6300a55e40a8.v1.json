@@ -1,0 +1,64 @@
+{
+  "id": "bank:cohort:clinical-skills:q-6300a55e40a8:v1",
+  "rotation": "cohort-open",
+  "moduleNodes": [
+    "cohort/clinical-skills"
+  ],
+  "topics": [
+    "clinical-skills"
+  ],
+  "questionType": "management",
+  "difficulty": "medium",
+  "stem": "At 10 pm an emergency registrar hands over an admitted 70-year-old man to the ward registrar, who is covering four wards overnight. She has given a structured summary of the presentation, observations and treatment. A CT pulmonary angiogram is still awaiting a formal report, and starting anticoagulation depends on the result. The emergency registrar finishes her shift at 10:30 pm.\n\nWhich addition most directly makes this handover safer?",
+  "options": [
+    {
+      "label": "A",
+      "text": "Name who will review the CT and act on it",
+      "isCorrect": true,
+      "explanation": "Pending results are lost when responsibility is not transferred explicitly. Agree who will check the CT report tonight and what they will do with each result, including the anticoagulation decision."
+    },
+    {
+      "label": "B",
+      "text": "Send the scan request form to the ward team",
+      "isCorrect": false,
+      "explanation": "The request form records what was asked, not who will follow up the answer."
+    },
+    {
+      "label": "C",
+      "text": "Ask radiology to phone the ward",
+      "isCorrect": false,
+      "explanation": "Radiology escalation of critical findings is a safety net, not a handover of responsibility; a non-urgent but decision-changing result may not be phoned through."
+    },
+    {
+      "label": "D",
+      "text": "Document in the notes that the CT is pending",
+      "isCorrect": false,
+      "explanation": "Documentation records that the result is outstanding but does not assign anyone to act on it."
+    },
+    {
+      "label": "E",
+      "text": "Repeat the full history so nothing is missed",
+      "isCorrect": false,
+      "explanation": "Repeating more history lengthens handover without addressing the key risk: an outstanding result with no owner."
+    }
+  ],
+  "context": "Safe handover transfers responsibility as well as information: every pending result needs a named owner and a plan for acting on it.",
+  "publicModule": {
+    "schemaVersion": 1,
+    "origin": "mirrored",
+    "discipline": "clinical-skills",
+    "mirroredFrom": "md3:6300a55e40a832ad",
+    "itemText": {
+      "licence": "CC-BY-4.0",
+      "attribution": "MD3 contributors"
+    },
+    "evidence": {
+      "kind": "reference",
+      "sourceId": "nsw-health-pds-activepdsdocuments-pd2026-021-af8cf9"
+    },
+    "review": {
+      "verdict": "passed",
+      "contentHash": "23c8ef9ba7fbc43f6ef83a8734770a3dfc484b0ef7bf1ed132b2135acf06e43c"
+    }
+  }
+}

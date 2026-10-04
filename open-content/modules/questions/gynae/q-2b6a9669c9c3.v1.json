@@ -1,0 +1,64 @@
+{
+  "id": "bank:cohort:gynae:q-2b6a9669c9c3:v1",
+  "rotation": "cohort-open",
+  "moduleNodes": [
+    "cohort/gynae"
+  ],
+  "topics": [
+    "gynae"
+  ],
+  "questionType": "knowledge",
+  "difficulty": "medium",
+  "stem": "A 27-year-old has severe dysmenorrhoea and deep dyspareunia that worsen around menstruation. A specialist transvaginal endometriosis ultrasound reports normal ovaries and no visible endometriotic lesion. Her GP explains that the scan does not exclude all forms of endometriosis.\n\nWhich manifestation is particularly liable to be missed by ultrasound?",
+  "options": [
+    {
+      "label": "A",
+      "text": "A large ovarian endometrioma",
+      "isCorrect": false,
+      "explanation": "An ovarian endometrioma is a structural lesion that ultrasound is useful for detecting. A normal scan is less reassuring for superficial peritoneal disease."
+    },
+    {
+      "label": "B",
+      "text": "Superficial peritoneal lesions",
+      "isCorrect": true,
+      "explanation": "Small superficial peritoneal lesions may not be visible on ultrasound. Their absence from a report does not exclude endometriosis in someone with suggestive symptoms."
+    },
+    {
+      "label": "C",
+      "text": "A deep bladder-wall nodule",
+      "isCorrect": false,
+      "explanation": "Specialist ultrasound can identify deep disease involving the bladder. Operator skill matters, but superficial peritoneal disease is the key recognised blind spot."
+    },
+    {
+      "label": "D",
+      "text": "A deep rectosigmoid nodule",
+      "isCorrect": false,
+      "explanation": "Specialist ultrasound can identify deep bowel endometriosis. Detection is not perfect, but small superficial implants are especially liable to remain invisible."
+    },
+    {
+      "label": "E",
+      "text": "A large rectovaginal-septum nodule",
+      "isCorrect": false,
+      "explanation": "A substantial rectovaginal nodule may be seen on specialist pelvic imaging. A normal scan is less reliable for excluding superficial implants that do not form a visible mass."
+    }
+  ],
+  "context": "A normal pelvic ultrasound does not exclude superficial peritoneal endometriosis.",
+  "publicModule": {
+    "schemaVersion": 1,
+    "origin": "mirrored",
+    "discipline": "gynae",
+    "mirroredFrom": "md3:2b6a9669c9c37f65",
+    "itemText": {
+      "licence": "CC-BY-4.0",
+      "attribution": "MD3 contributors"
+    },
+    "evidence": {
+      "kind": "reference",
+      "sourceId": "ranzcog-wp-content-uploads-endometriosis-clinical-practice-guideline-277fb1"
+    },
+    "review": {
+      "verdict": "passed",
+      "contentHash": "25b75498c041d608ae9f642747c6f157a696beda8924a592981a96fc35eb441c"
+    }
+  }
+}

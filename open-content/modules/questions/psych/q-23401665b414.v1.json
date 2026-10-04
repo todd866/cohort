@@ -1,0 +1,64 @@
+{
+  "id": "bank:cohort:psych:q-23401665b414:v1",
+  "rotation": "cohort-open",
+  "moduleNodes": [
+    "cohort/psych"
+  ],
+  "topics": [
+    "psych"
+  ],
+  "questionType": "management",
+  "difficulty": "medium",
+  "stem": "A GP reviews a 32-year-old with generalised anxiety disorder who completed six supervised guided-self-help sessions and practised between visits. Worry still occupies much of the day and is causing repeated absence from work. There is no major depression, substance misuse or acute safety concern. After discussing medication and psychological options, she prefers further psychological treatment.\n\nWhich referral best matches the next step?",
+  "options": [
+    {
+      "label": "A",
+      "text": "Another guided self-help course with more practice between sessions",
+      "isCorrect": false,
+      "explanation": "Repeating the same low-intensity step after an adequate trial delays effective treatment. Persisting impairment calls for stepping up."
+    },
+    {
+      "label": "B",
+      "text": "Group psychoeducation about worry and normal stress responses",
+      "isCorrect": false,
+      "explanation": "Group psychoeducation is a low-intensity option. She has already completed low-intensity care without enough benefit."
+    },
+    {
+      "label": "C",
+      "text": "Individual high-intensity CBT delivered by a trained therapist",
+      "isCorrect": true,
+      "explanation": "Marked GAD persisting after guided self-help calls for a high-intensity intervention. With her preference for psychological treatment, that is individual CBT from a trained therapist."
+    },
+    {
+      "label": "D",
+      "text": "Nondirective supportive counselling with a focus on current stressors",
+      "isCorrect": false,
+      "explanation": "Nondirective counselling lacks the specific techniques of GAD treatment and is not a recommended step-up. It would not target her worry process."
+    },
+    {
+      "label": "E",
+      "text": "A community mindfulness course for stress, run in a large group",
+      "isCorrect": false,
+      "explanation": "A general group course is another low-intensity option and is not a specific treatment for GAD. It does not step up the intensity of care."
+    }
+  ],
+  "context": "When GAD remains impairing after a low-intensity intervention, offer a high-intensity psychological treatment or medication according to informed preference.",
+  "publicModule": {
+    "schemaVersion": 1,
+    "origin": "mirrored",
+    "discipline": "psych",
+    "mirroredFrom": "md3:23401665b41464f2",
+    "itemText": {
+      "licence": "CC-BY-4.0",
+      "attribution": "MD3 contributors"
+    },
+    "evidence": {
+      "kind": "reference",
+      "sourceId": "nice-guidance-cg113-chapter-recommendations-e9ef7c"
+    },
+    "review": {
+      "verdict": "passed",
+      "contentHash": "13010e341ed830f4f914fbc14c17c270c3431bf6ed0745fffbe19a4861882dd8"
+    }
+  }
+}

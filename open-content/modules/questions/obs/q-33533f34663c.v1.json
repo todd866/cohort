@@ -1,0 +1,64 @@
+{
+  "id": "bank:cohort:obs:q-33533f34663c:v1",
+  "rotation": "cohort-open",
+  "moduleNodes": [
+    "cohort/obs"
+  ],
+  "topics": [
+    "obs"
+  ],
+  "questionType": "management",
+  "difficulty": "hard",
+  "stem": "A woman at 32 weeks asks her obstetrician about vaginal birth after her only previous caesarean, at 27 weeks. She has a low transverse skin scar. The operative report states that the lower segment was poorly formed, so the uterine incision was vertical and extended into the upper segment. Her current singleton is cephalic, the placenta is clear of the cervix and she has had no other uterine surgery. She strongly prefers to avoid another operation if labour is reasonable.\n\nWhich recommendation is most appropriate?",
+  "options": [
+    {
+      "label": "A",
+      "text": "Recommend a planned repeat caesarean before labour",
+      "isCorrect": true,
+      "explanation": "A vertical uterine incision extending into the upper segment behaves as a classical scar and carries a much higher risk of rupture in labour, so planned repeat caesarean before labour is recommended. Timing and a plan for early labour are agreed in advance."
+    },
+    {
+      "label": "B",
+      "text": "Offer labour, as her skin scar is low and transverse",
+      "isCorrect": false,
+      "explanation": "The skin incision says nothing about the uterine incision. Preterm caesareans often need a vertical uterine incision beneath a transverse skin scar, which is why the operative report must be read."
+    },
+    {
+      "label": "C",
+      "text": "Offer spontaneous labour, avoiding induction entirely",
+      "isCorrect": false,
+      "explanation": "Avoiding induction does not remove the rupture risk of an upper-segment scar; spontaneous labour is not the recommended plan."
+    },
+    {
+      "label": "D",
+      "text": "Offer labour if lower-segment thickness is reassuring",
+      "isCorrect": false,
+      "explanation": "A reassuring lower-segment measurement cannot establish the safety of a scar that extends into the upper segment."
+    },
+    {
+      "label": "E",
+      "text": "Offer labour with an early epidural and continuous CTG",
+      "isCorrect": false,
+      "explanation": "Monitoring and analgesia do not prevent the increased rupture risk of labour with a classical-type scar."
+    }
+  ],
+  "context": "The uterine incision, rather than the abdominal skin scar or current fetal presentation, determines whether a previous caesarean permits planned VBAC.",
+  "publicModule": {
+    "schemaVersion": 1,
+    "origin": "mirrored",
+    "discipline": "obs",
+    "mirroredFrom": "md3:33533f34663c8cee",
+    "itemText": {
+      "licence": "CC-BY-4.0",
+      "attribution": "MD3 contributors"
+    },
+    "evidence": {
+      "kind": "reference",
+      "sourceId": "qld-health-data-assets-pdf-file-0026-140795-s-vbac-62dfdf"
+    },
+    "review": {
+      "verdict": "passed",
+      "contentHash": "2e972b235ff6b2005a108794b569b1a0fe8f8a44cb610fbabf1b1bc9d6a61dfe"
+    }
+  }
+}

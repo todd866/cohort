@@ -1,0 +1,64 @@
+{
+  "id": "bank:cohort:pharm:q-5de2f28717ac:v1",
+  "rotation": "cohort-open",
+  "moduleNodes": [
+    "cohort/pharm"
+  ],
+  "topics": [
+    "pharm"
+  ],
+  "questionType": "mechanism",
+  "difficulty": "medium",
+  "stem": "During a wound washout under procedural sedation with propofol alone, a patient is unrousable to voice and has regular spontaneous breathing. When the clinician begins debriding the wound, the patient grimaces, withdraws the limb and the heart rate rises from 80 to 115/min. He remains unrousable, and afterwards he recalls nothing of the procedure.\n\nWhich property of propofol best explains the response?",
+  "options": [
+    {
+      "label": "A",
+      "text": "It causes unconsciousness without blocking pain reflexes",
+      "isCorrect": true,
+      "explanation": "Propofol is a hypnotic with little analgesic action, so noxious stimulation still drives reflex withdrawal and a sympathetic response even in an unrousable patient. The painful step needs a separate analgesic, such as an opioid, rather than more propofol."
+    },
+    {
+      "label": "B",
+      "text": "Its hypnotic effect was waning through redistribution",
+      "isCorrect": false,
+      "explanation": "Redistribution does end a propofol bolus quickly, but he stayed unrousable and has no recall. The response was triggered by the painful stimulus, not by lightening sedation."
+    },
+    {
+      "label": "C",
+      "text": "It provokes involuntary myoclonus that imitates withdrawal",
+      "isCorrect": false,
+      "explanation": "Myoclonus can occur with propofol, but it is not timed to a painful stimulus and does not explain the grimace and tachycardia that began with debridement."
+    },
+    {
+      "label": "D",
+      "text": "It produces amnesia while leaving pain awareness intact",
+      "isCorrect": false,
+      "explanation": "Amnesia with preserved awareness describes light sedation. He was unrousable to voice, so he was not aware; the grimace and withdrawal were reflex responses to a noxious stimulus."
+    },
+    {
+      "label": "E",
+      "text": "Its vasodilation provokes a reflex rise in heart rate",
+      "isCorrect": false,
+      "explanation": "Propofol does cause vasodilation, and a reflex tachycardia can follow, but that would not begin exactly with debridement or come with grimacing and withdrawal of the limb."
+    }
+  ],
+  "context": "Propofol provides hypnosis without meaningful analgesia; painful procedures under propofol sedation need a separate analgesic plan.",
+  "publicModule": {
+    "schemaVersion": 1,
+    "origin": "mirrored",
+    "discipline": "pharm",
+    "mirroredFrom": "md3:5de2f28717acb489",
+    "itemText": {
+      "licence": "CC-BY-4.0",
+      "attribution": "MD3 contributors"
+    },
+    "evidence": {
+      "kind": "reference",
+      "sourceId": "acsqhc-medicine-finder-diprivan-737b18"
+    },
+    "review": {
+      "verdict": "passed",
+      "contentHash": "498481eb0ee62d0a153a7a34b42a506d2f71772d9d20c641c02922c4b7913bf6"
+    }
+  }
+}

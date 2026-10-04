@@ -1,0 +1,64 @@
+{
+  "id": "bank:cohort:psych:q-43d7e758f5c1:v1",
+  "rotation": "cohort-open",
+  "moduleNodes": [
+    "cohort/psych"
+  ],
+  "topics": [
+    "psych"
+  ],
+  "questionType": "management",
+  "difficulty": "hard",
+  "stem": "A 67-year-old man is an involuntary patient in a NSW mental health unit with severe depression and nihilistic delusions. Despite six weeks of venlafaxine at full dose with olanzapine, he has drunk almost nothing for two days and his creatinine is rising. He says he is already dead and declines all treatment, and cannot engage in a discussion of options. His wife says she will 'sign whatever helps'. The medical team is starting intravenous fluids.\n\nWhat should the treating psychiatrist arrange?",
+  "options": [
+    {
+      "label": "A",
+      "text": "Add lithium to venlafaxine and review his response in four weeks",
+      "isCorrect": false,
+      "explanation": "Lithium augmentation is a reasonable step in treatment-resistant depression, but it takes weeks. He is dehydrated and deteriorating now, which calls for the fastest effective treatment."
+    },
+    {
+      "label": "B",
+      "text": "Assessment for ECT, with an urgent application to the Tribunal",
+      "isCorrect": true,
+      "explanation": "Psychotic depression with refusal of fluids is life-threatening and is the clearest indication for ECT. In NSW, ECT for an involuntary patient needs a determination by the Mental Health Review Tribunal, which can hear an urgent application."
+    },
+    {
+      "label": "C",
+      "text": "ECT this week, with his wife's consent as person responsible",
+      "isCorrect": false,
+      "explanation": "In NSW, ECT for an involuntary patient is authorised by the Mental Health Review Tribunal, not by a relative or guardian, whatever their wishes."
+    },
+    {
+      "label": "D",
+      "text": "Defer ECT until fluids have made him medically stable to treat",
+      "isCorrect": false,
+      "explanation": "Medical support runs alongside ECT. Waiting for stability that his depression is preventing lets the cause of the instability continue."
+    },
+    {
+      "label": "E",
+      "text": "Switch to venlafaxine plus mirtazapine and review in two weeks",
+      "isCorrect": false,
+      "explanation": "Another medication change after an adequate trial will take weeks to act. Speed matters when a patient has stopped drinking."
+    }
+  ],
+  "context": "Psychotic depression with refusal of food or fluid is an indication for urgent ECT. In NSW, ECT for an involuntary patient requires a Mental Health Review Tribunal determination; family consent cannot authorise it.",
+  "publicModule": {
+    "schemaVersion": 1,
+    "origin": "mirrored",
+    "discipline": "psych",
+    "mirroredFrom": "md3:43d7e758f5c1f24d",
+    "itemText": {
+      "licence": "CC-BY-4.0",
+      "attribution": "MD3 contributors"
+    },
+    "evidence": {
+      "kind": "reference",
+      "sourceId": "nice-guidance-ng222-chapter-recommendations-73ce61"
+    },
+    "review": {
+      "verdict": "passed",
+      "contentHash": "10e76b08eae5610b81dc0b4882e2c6f9d90c798c67dfdc1576f5e6b69cc3d610"
+    }
+  }
+}

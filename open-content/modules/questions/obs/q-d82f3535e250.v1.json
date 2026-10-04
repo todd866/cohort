@@ -1,0 +1,64 @@
+{
+  "id": "bank:cohort:obs:q-d82f3535e250:v1",
+  "rotation": "cohort-open",
+  "moduleNodes": [
+    "cohort/obs"
+  ],
+  "topics": [
+    "obs"
+  ],
+  "questionType": "management",
+  "difficulty": "hard",
+  "stem": "A woman has lost 2.4 L of blood after birth. The team has repaired a cervical tear, treated atony and given tranexamic acid; the uterus is now firm, but diffuse oozing continues. Resuscitation, warming and red-cell replacement are underway. The anaesthetist reviews these urgent results:\n\n| Investigation | Result | Local reference range |\n|---|---:|---:|\n| Fibrinogen | 1.1 g/L | 2.0–4.0 outside pregnancy |\n| Platelets | 128 × 10⁹/L | 150–400 |\n| INR | 1.2 | 0.9–1.2 |\n| APTT | 31 s | 25–35 |\n\nThe listed products are immediately available. Which additional product most directly treats the demonstrated haemostatic deficit?",
+  "options": [
+    {
+      "label": "A",
+      "text": "A further unit of packed red cells",
+      "isCorrect": false,
+      "explanation": "Red cells support oxygen delivery during blood loss but do not provide the concentrated fibrinogen replacement needed for this result."
+    },
+    {
+      "label": "B",
+      "text": "An adult dose of cryoprecipitate",
+      "isCorrect": true,
+      "explanation": "The fibrinogen is severely depleted during active bleeding. Cryoprecipitate provides targeted replacement even though INR and APTT remain near normal."
+    },
+    {
+      "label": "C",
+      "text": "An adult dose of platelets",
+      "isCorrect": false,
+      "explanation": "The platelet count is mildly reduced but well above the usual severe-bleeding replacement threshold; it does not explain the most marked measured deficit."
+    },
+    {
+      "label": "D",
+      "text": "Prothrombin complex concentrate",
+      "isCorrect": false,
+      "explanation": "Prothrombin complex concentrate supplies selected clotting factors but does not adequately replace fibrinogen and is not the targeted product here."
+    },
+    {
+      "label": "E",
+      "text": "Four units of fresh frozen plasma",
+      "isCorrect": false,
+      "explanation": "Plasma contains fibrinogen but at a much lower concentration. With cryoprecipitate available and a dominant severe fibrinogen deficit, concentrated replacement is preferred."
+    }
+  ],
+  "context": "In ongoing PPH, a very low fibrinogen needs targeted replacement; near-normal INR and APTT do not exclude a major haemostatic deficit.",
+  "publicModule": {
+    "schemaVersion": 1,
+    "origin": "mirrored",
+    "discipline": "obs",
+    "mirroredFrom": "md3:d82f3535e250a27e",
+    "itemText": {
+      "licence": "CC-BY-4.0",
+      "attribution": "MD3 contributors"
+    },
+    "evidence": {
+      "kind": "reference",
+      "sourceId": "qld-health-data-assets-pdf-file-0015-140136-g-pph-0e6f42"
+    },
+    "review": {
+      "verdict": "passed",
+      "contentHash": "6b0f9d069e0b5dcae3885ceab61df5e8adc51fe70220ea1eac52a31dde2e5765"
+    }
+  }
+}

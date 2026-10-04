@@ -28,6 +28,14 @@ export type CohortDiscipline = (typeof COHORT_DISCIPLINES)[number];
 /** Mirrored module questions are their own rows, served only on cohort.md. */
 export const COHORT_MODULE_ROTATION = 'cohort-open' as const;
 
+/**
+ * Rotations whose rows are copies another HOST serves from its own loader.
+ * md3.info must never serve, count, embed or cluster them: a mirrored card is a
+ * near-duplicate of its md3 original, so once embedded it would take the top
+ * similarity slot and md3's failure scaffolding would plant progress on it.
+ */
+export const OTHER_HOST_ROTATIONS: readonly string[] = Object.freeze([COHORT_MODULE_ROTATION]);
+
 const DISCIPLINE_SET: ReadonlySet<string> = new Set(COHORT_DISCIPLINES);
 
 /** md3 moduleNodes tokens that name a discipline under another spelling. */

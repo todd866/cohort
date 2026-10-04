@@ -19,23 +19,45 @@ import {
   type Step1DeliveryPayload,
   type Step1DeliveryRow,
   type Step1HistoryRow,
-  type Step1SessionResult,
 } from '@/lib/usmle/step1-session.server';
 import {
   type PublicUsmleQuestion,
   type PublicUsmleQuestionCorpus,
 } from '@/lib/usmle/public-question-corpus.server';
+import { randomUUID } from 'node:crypto';
 import { COHORT_MODULE_ROTATION } from '@/lib/content/cohort-mirror';
 import { loadCohortServableCorpus } from './module-question-corpus.server';
+import {
+  COHORT_CARD_DECISION_PATH,
+  COHORT_CARD_DELIVERY_CONTRACT,
+  isCohortCardSessionItem,
+  parseCohortCardSessionItem,
+  type CohortCardSessionItem,
+  type CohortTurnResult,
+} from './card-turn-contract';
+import {
+  loadCohortModuleCardCorpus,
+  selectCohortModuleCard,
+  COHORT_CARD_RELEASE_LOADABLE,
+  type CohortServableCard,
+} from './module-card-corpus.server';
 import { DIFFICULTY_TIERS, nextTier, normaliseDifficulty } from '@/lib/usmle/step1-adaptive';
 import { COHORT_HOOK_V1_IDS } from './hook-playlist';
 import { parseCohortFeedProfile, type CohortFeedProfile } from './feed-profile';
 import { publicSessionPlan } from './public-session-plan';
 import {
+  demonstratedCohortGapTopics,
+  isCohortHardGapQuestion,
+  type CohortReviewChallengeLevel,
+} from './cohort-review-challenge';
+import {
   questionMatchesCohortSearchTopic,
   resolveCohortSearchTopic,
   type CohortSearchTopicRegistryEntry,
+  COHORT_SEARCH_TOPIC_REGISTRY,
 } from './search-topic-registry.server';
+import { parseCohortChallengeExhaustion } from './card-turn-contract';
+import { reviewChallengePreference } from '@/lib/study/review-challenge-preference';
 
 const COHORT_SERVE_OPERATION = 'cohort_serve' as const;
 const COHORT_DELIVERY_CONTRACT = 'usmle-step1-delivery-v3';
@@ -106,6 +128,7 @@ export interface CohortSelectionPlan {
   allowedDifficulties?: ReturnType<typeof publicSessionPlan>['allowedDifficulties'];
   adaptiveCandidatePreference?: ReturnType<typeof publicSessionPlan>['adaptiveCandidatePreference'];
   queueReason?: 'hook-v1' | 'same-concept-remediation' | 'search-focus';
+  reviewChallengeLevel?: CohortReviewChallengeLevel;
 }
 
 function isRecord(value: unknown): value is Record<string, unknown> {
@@ -136,6 +159,8 @@ export function buildCohortSelectionPlan(input: {
   /** Exact answered predecessor wins over unrelated concurrent history. */
   previousOutcome?: { questionId: string; isCorrect: boolean };
   now?: Date;
+  reviewChallengeLevel?: CohortReviewChallengeLevel;
+  servedQuestionIds?: ReadonlySet<string>;
 }): CohortSelectionPlan {
   const deliverable = input.questions.filter(isDeliverableStep1Question);
   // The mirrored md3 modules are served only when their topic is chosen: never
@@ -148,6 +173,30 @@ export function buildCohortSelectionPlan(input: {
     ? deliverable.filter((question) => questionMatchesCohortSearchTopic(question, input.searchTopic!))
     : step1Questions;
   const profilePlan = publicSessionPlan(input.profile);
+  const challengeLevel = input.reviewChallengeLevel ?? 0;
+  const challengeAllowed: typeof profilePlan.allowedDifficulties = challengeLevel === -1
+    ? ['easy']
+    : challengeLevel === 1
+      ? ['medium', 'hard']
+      : profilePlan.allowedDifficulties;
+  const answeredIds = new Set(input.history.map((row) => row.questionId));
+  for (const id of input.servedQuestionIds ?? []) answeredIds.add(id);
+  const challengeQuestions = input.searchTopic
+    ? questions.filter((question) => questionMatchesCohortSearchTopic(question, input.searchTopic!))
+    : questions;
+  const gapTopics = demonstratedCohortGapTopics({ questions: challengeQuestions, history: input.history, now: input.now ?? new Date() });
+  if (challengeLevel === 2 && input.profile.hookCompletedAt) {
+    const hardGap = challengeQuestions.filter((question) => isCohortHardGapQuestion({ question, gapTopics, answeredIds }));
+    if (hardGap.length === 0) {
+      throw new CohortTurnError(409, 'review_challenge_exhausted', 'No eligible hard questions remain', {
+        reviewChallengeLevel: 2,
+      });
+    }
+    return {
+      stage: 'discovery', questions: hardGap, turnSize: 1, prependQuestionIds: [],
+      allowedDifficulties: ['hard'], reviewChallengeLevel: 2,
+    };
+  }
 
   if (!input.profile.hookCompletedAt) {
     const byId = new Set(step1Questions.map((question) => question.id));
@@ -164,6 +213,7 @@ export function buildCohortSelectionPlan(input: {
       turnSize: COHORT_HOOK_V1_IDS.length,
       prependQuestionIds: [...COHORT_HOOK_V1_IDS],
       queueReason: 'hook-v1',
+      reviewChallengeLevel: challengeLevel,
     };
   }
 
@@ -196,12 +246,13 @@ export function buildCohortSelectionPlan(input: {
         turnSize: 1,
         prependQuestionIds: [remediation.id],
         queueReason: 'same-concept-remediation',
+        reviewChallengeLevel: challengeLevel,
       };
     }
   }
 
   if (input.searchTopic) {
-    const allowed = new Set(profilePlan.allowedDifficulties);
+    const allowed = new Set(challengeAllowed);
     const recentAfter = (input.now ?? new Date()).getTime()
       - COHORT_FOCUS_RECENT_SUPPRESSION_MS;
     const recentIds = new Set<string>();
@@ -250,8 +301,9 @@ export function buildCohortSelectionPlan(input: {
       questions: focused,
       turnSize: 1,
       prependQuestionIds: [],
-      allowedDifficulties: profilePlan.allowedDifficulties,
+      allowedDifficulties: challengeAllowed,
       queueReason: 'search-focus',
+      reviewChallengeLevel: challengeLevel,
     };
   }
 
@@ -260,8 +312,9 @@ export function buildCohortSelectionPlan(input: {
     questions,
     turnSize: 1,
     prependQuestionIds: [],
-    allowedDifficulties: profilePlan.allowedDifficulties,
+    allowedDifficulties: challengeAllowed,
     adaptiveCandidatePreference: profilePlan.adaptiveCandidatePreference,
+    reviewChallengeLevel: challengeLevel,
   };
 }
 
@@ -284,9 +337,10 @@ function exactKeys(value: Record<string, unknown>, expected: readonly string[]):
     && expected.slice().sort().every((key, index) => key === actual[index]);
 }
 
-function parseFrozenSession(value: unknown): Step1SessionResult | null {
+function parseFrozenSession(value: unknown): CohortTurnResult | null {
   if (!isRecord(value) || !exactKeys(value, [
     'sessionId', 'mode', 'requestedSize', 'deliveredSize', 'items',
+    ...('reviewChallengeExhausted' in value ? ['reviewChallengeExhausted'] : []),
   ])) return null;
   if (
     typeof value.sessionId !== 'string'
@@ -295,12 +349,21 @@ function parseFrozenSession(value: unknown): Step1SessionResult | null {
     || !Number.isSafeInteger(value.deliveredSize)
     || !Array.isArray(value.items)
     || (value.requestedSize !== 1 && value.requestedSize !== COHORT_HOOK_V1_IDS.length)
-    || value.deliveredSize !== value.requestedSize
+    || (value.deliveredSize !== value.requestedSize
+      && !(value.requestedSize === 1 && value.deliveredSize === 0
+        && parseCohortChallengeExhaustion(value.reviewChallengeExhausted)))
+    || ('reviewChallengeExhausted' in value && (value.deliveredSize !== 0
+      || !parseCohortChallengeExhaustion(value.reviewChallengeExhausted)))
     || value.deliveredSize !== value.items.length
   ) return null;
 
+  if (value.deliveredSize === 0) return value as unknown as CohortTurnResult;
   for (const item of value.items) {
     if (!isRecord(item)) return null;
+    if (isCohortCardSessionItem(item)) {
+      if (!parseCohortCardSessionItem(item)) return null;
+      continue;
+    }
     const itemKeys = [
       'deliveryId', 'stem', 'options', 'domain', 'difficulty', 'questionType', 'attribution',
       ...('media' in item ? ['media'] : []),
@@ -357,16 +420,23 @@ function parseFrozenSession(value: unknown): Step1SessionResult | null {
       ) return null;
     }
   }
-  return value as unknown as Step1SessionResult;
+  return value as unknown as CohortTurnResult;
 }
 
-function parseCohortDeliveryPayload(value: unknown): Pick<
+type CohortDeliveryKind = 'question' | 'card';
+
+function parseCohortDeliveryPayload(value: unknown): (Pick<
   Step1DeliveryPayload,
   'contentHash' | 'servingFingerprint' | 'surface'
-> | null {
+> & { kind: CohortDeliveryKind; discipline?: string }) | null {
+  const kind: CohortDeliveryKind | null = isRecord(value)
+    ? value.contract === COHORT_DELIVERY_CONTRACT ? 'question'
+      : value.contract === COHORT_CARD_DELIVERY_CONTRACT ? 'card' : null
+    : null;
   if (
     !isRecord(value)
-    || value.contract !== COHORT_DELIVERY_CONTRACT
+    || !kind
+    || (kind === 'card' && (typeof value.discipline !== 'string' || !/^[a-z-]+$/.test(value.discipline)))
     || value.surface !== 'cohort'
     || typeof value.contentHash !== 'string'
     || !/^[a-f0-9]{64}$/.test(value.contentHash)
@@ -374,9 +444,11 @@ function parseCohortDeliveryPayload(value: unknown): Pick<
     || !/^[a-f0-9]{64}$/.test(value.servingFingerprint)
   ) return null;
   return {
+    kind,
     surface: 'cohort',
     contentHash: value.contentHash,
     servingFingerprint: value.servingFingerprint,
+    ...(kind === 'card' ? { discipline: value.discipline as string } : {}),
   };
 }
 
@@ -387,9 +459,16 @@ async function loadCorpusInTransaction(tx: Prisma.TransactionClient) {
 async function assertReplayStillEligible(
   tx: Prisma.TransactionClient,
   userId: string,
-  response: Step1SessionResult,
+  response: CohortTurnResult,
   now: Date,
 ): Promise<void> {
+  if (response.items.length === 0) {
+    if (response.requestedSize !== 1 || response.deliveredSize !== 0
+      || !parseCohortChallengeExhaustion(response.reviewChallengeExhausted)) {
+      throw new CohortTurnError(503, 'serve_receipt_unavailable', 'Saved turn receipt is unavailable');
+    }
+    return;
+  }
   const deliveryIds = response.items.map((item) => item.deliveryId);
   if (new Set(deliveryIds).size !== deliveryIds.length || deliveryIds.length === 0) {
     throw new CohortTurnError(503, 'serve_receipt_unavailable', 'Saved turn receipt is unavailable');
@@ -399,14 +478,33 @@ async function assertReplayStillEligible(
       id: { in: deliveryIds },
       userId,
       sessionId: response.sessionId,
-      itemType: 'question',
+      itemType: { in: ['question', 'card'] },
       deliveryPath: 'live',
     },
-    select: { id: true, itemId: true, payload: true },
+    select: { id: true, itemId: true, itemType: true, payload: true },
   });
   if (deliveries.length !== deliveryIds.length) {
     throw new CohortTurnError(410, 'delivery_revoked', 'This delivery is no longer eligible');
   }
+
+  const frozenById = new Map(response.items.map((item) => [item.deliveryId, item]));
+  const cardDeliveries = deliveries.filter((delivery) => delivery.itemType === 'card');
+  for (const delivery of cardDeliveries) {
+    const payload = parseCohortDeliveryPayload(delivery.payload);
+    const frozen = frozenById.get(delivery.id);
+    const card = payload?.kind === 'card' && payload.discipline
+      ? (await loadCohortModuleCardCorpus(tx as never, payload.discipline)).cards.find((c) => c.id === delivery.itemId)
+      : undefined;
+    if (
+      !payload || payload.kind !== 'card' || !card || !frozen || !isCohortCardSessionItem(frozen)
+      || payload.contentHash !== card.contentHash
+      || payload.servingFingerprint !== card.releaseFingerprint
+    ) {
+      throw new CohortTurnError(410, 'delivery_revoked', 'This delivery is no longer eligible');
+    }
+  }
+  const questionDeliveries = deliveries.filter((delivery) => delivery.itemType !== 'card');
+  if (questionDeliveries.length === 0) return;
 
   const corpus = await loadCorpusInTransaction(tx);
   const currentById = new Map(
@@ -414,18 +512,17 @@ async function assertReplayStillEligible(
       .filter(isDeliverableStep1Question)
       .map((question) => [question.id, question]),
   );
-  const frozenItemByDeliveryId = new Map(
-    response.items.map((item) => [item.deliveryId, item]),
-  );
-  for (const delivery of deliveries) {
+  for (const delivery of questionDeliveries) {
     const payload = parseCohortDeliveryPayload(delivery.payload);
     const question = currentById.get(delivery.itemId);
-    const frozenItem = frozenItemByDeliveryId.get(delivery.id);
+    const frozen = frozenById.get(delivery.id);
+    const frozenItem = frozen && !isCohortCardSessionItem(frozen) ? frozen : undefined;
     const currentMedia = question
       ? cohortPromptMediaForQuestion(question, now)
       : undefined;
     if (
       !payload
+      || payload.kind !== 'question'
       || !question
       || !frozenItem
       || payload.contentHash !== computeStep1QuestionContentHash(question)
@@ -439,9 +536,9 @@ async function assertReplayStillEligible(
 
 function cohortSurfaceWhere(): Prisma.ServeDecisionWhereInput {
   return {
-    itemType: 'question',
+    itemType: { in: ['question', 'card'] },
     deliveryPath: 'live',
-    decisionPath: { in: ['usmle-step1-baseline-v1', 'usmle-step1-daily-v1'] },
+    decisionPath: { in: ['usmle-step1-baseline-v1', 'usmle-step1-daily-v1', COHORT_CARD_DECISION_PATH] },
     payload: { path: ['surface'], equals: 'cohort' },
   };
 }
@@ -450,7 +547,7 @@ async function transactCohortTurn(
   tx: Prisma.TransactionClient,
   input: ServeCohortTurnInput,
   requestFingerprint: string,
-): Promise<{ response: Step1SessionResult; deduped: boolean }> {
+): Promise<{ response: CohortTurnResult; deduped: boolean }> {
   const now = input.now ?? new Date();
   const locked = await tx.$queryRaw<Array<{ id: string }>>`
     SELECT "id" FROM "User" WHERE "id" = ${input.userId} FOR UPDATE
@@ -546,6 +643,7 @@ async function transactCohortTurn(
   }
 
   let previousOutcome: { questionId: string; isCorrect: boolean } | undefined;
+  let previousKind: CohortDeliveryKind | undefined;
   if (input.nextDrawOrdinal === 0 && input.previousDeliveryId) {
     throw new CohortTurnError(
       409,
@@ -604,20 +702,59 @@ async function transactCohortTurn(
         'Every earlier delivery in this journey must be answered before continuing',
       );
     }
-    previousOutcome = {
-      questionId: previous.itemId,
-      isCorrect: previous.isCorrect,
-    };
+    previousKind = parseCohortDeliveryPayload(previous.payload)!.kind;
+    // A card's outcome is self-rated recall; only a question drives remediation.
+    if (previousKind === 'question') {
+      previousOutcome = {
+        questionId: previous.itemId,
+        isCorrect: previous.isCorrect,
+      };
+    }
   }
 
   const user = await tx.user.findUnique({
     where: { id: input.userId },
-    select: { feedProfile: true },
+    select: { feedProfile: true, reviewChallenge: true, reviewChallengeRevision: true },
   });
   if (!user) {
     throw new CohortTurnError(404, 'cohort_identity_not_found', 'Cohort identity not found');
   }
   const profile = parseCohortFeedProfile(user.feedProfile);
+  const preference = reviewChallengePreference(user);
+  const reviewChallengeLevel = preference.level;
+
+  // A chosen module alternates its questions with its cards: a card after a
+  // question, a question after a card, each falling back to the other when its
+  // pool is spent. The fixed hook always comes first.
+  const moduleNode = searchTopic && 'moduleNode' in searchTopic ? searchTopic.moduleNode : null;
+  if (reviewChallengeLevel === -2 && searchTopic && !moduleNode && profile.hookCompletedAt) {
+    throw new CohortTurnError(409, 'review_challenge_exhausted', 'No scaffold cards match this focus', {
+      reviewChallengeLevel: -2,
+    });
+  }
+  const cardTurn = profile.hookCompletedAt && reviewChallengeLevel !== 2 && (moduleNode || reviewChallengeLevel === -2)
+    ? () => pickModuleCard(tx, input, moduleNode ?? undefined, now, reviewChallengeLevel)
+    : null;
+  const pickedCardTopic = (card: CohortServableCard) => searchTopic ?? topicForDiscipline(card.discipline);
+  if (cardTurn && (previousKind === 'question' || reviewChallengeLevel === -2)) {
+    const picked = await cardTurn();
+    if (picked) {
+      const topic = pickedCardTopic(picked);
+      if (!topic) throw new CohortTurnError(503, 'cohort_card_topic_unavailable', 'Card topic is unavailable');
+      const response = await deliverModuleCard(tx, input, picked, topic, now);
+      return finishCohortTurn(tx, input, operation.id, response, now);
+    }
+    if (reviewChallengeLevel === -2) {
+      throw new CohortTurnError(409, 'review_challenge_exhausted', 'No eligible scaffold cards remain', {
+        reviewChallengeLevel: -2,
+      });
+    }
+  } else if (reviewChallengeLevel === -2 && profile.hookCompletedAt) {
+    throw new CohortTurnError(409, 'review_challenge_exhausted', 'No eligible scaffold cards remain', {
+      reviewChallengeLevel: -2,
+    });
+  }
+
   const corpus = await loadCorpusInTransaction(tx);
   const questionIds = corpus.questions.map((question) => question.id);
   const history = questionIds.length === 0
@@ -632,14 +769,90 @@ async function transactCohortTurn(
         },
         orderBy: { createdAt: 'asc' },
       });
-  const selection = buildCohortSelectionPlan({
-    questions: corpus.questions,
-    history,
-    profile,
-    searchTopic,
-    previousOutcome,
-    now,
-  });
+  // The public selector already has its answer history. Only the hard lane
+  // needs the additional delivered-but-unanswered exclusion; fail closed if
+  // that bounded read cannot represent the complete released pool.
+  const servedQuestionRows = reviewChallengeLevel === 2 && questionIds.length > 0
+    ? await tx.serveDecision.findMany({
+        where: { userId: input.userId, ...cohortSurfaceWhere(), itemType: 'question', itemId: { in: questionIds } },
+        select: { itemId: true },
+        orderBy: { id: 'asc' },
+        take: 20_001,
+      })
+    : [];
+  if (servedQuestionRows.length > 20_000) {
+    throw new CohortTurnError(503, 'cohort_challenge_unavailable', 'Hard-question history is temporarily unavailable');
+  }
+  let selection: CohortSelectionPlan;
+  try {
+    selection = buildCohortSelectionPlan({
+      questions: corpus.questions,
+      history,
+      profile,
+      searchTopic,
+      previousOutcome,
+      now,
+      reviewChallengeLevel,
+      servedQuestionIds: new Set(servedQuestionRows.map((row) => row.itemId)),
+    });
+  } catch (error) {
+    if (error instanceof CohortTurnError && error.code === 'review_challenge_exhausted'
+      && reviewChallengeLevel === 2) {
+      const response: CohortTurnResult = {
+        sessionId: input.journeyId,
+        mode: 'daily',
+        requestedSize: 1,
+        deliveredSize: 0,
+        items: [],
+        reviewChallengeExhausted: preference,
+      };
+      const demandQuestions = corpus.questions.filter((question) => isDeliverableStep1Question(question)
+        && (searchTopic ? questionMatchesCohortSearchTopic(question, searchTopic) : question.rotation !== COHORT_MODULE_ROTATION));
+      const gapTopics = demonstratedCohortGapTopics({ questions: demandQuestions, history, now });
+      if (gapTopics.size > 0) {
+        const answered = new Set([...history.map((row) => row.questionId), ...servedQuestionRows.map((row) => row.itemId)]);
+        const counts = new Map<string, number>();
+        for (const question of demandQuestions) {
+          if (question.difficulty !== 'hard' || answered.has(question.id)) continue;
+          for (const topic of question.topics) {
+            if (gapTopics.has(topic)) counts.set(topic, (counts.get(topic) ?? 0) + 1);
+          }
+        }
+        const demandTopics = [...gapTopics].map((topic) => ({
+          topic,
+          unseenHard: counts.get(topic) ?? 0,
+          targetUnseenHard: 15,
+          deficit: Math.max(0, 15 - (counts.get(topic) ?? 0)),
+        })).filter((entry) => entry.deficit > 0);
+        // Bound each marker to the consumer's validated envelope. Chunking
+        // preserves every topic instead of silently dropping a large gap set.
+        for (let start = 0; start < demandTopics.length; start += 32) await tx.feedEvent.create({
+          data: {
+            userId: input.userId,
+            eventType: 'content_demand',
+            itemId: 'cohort-review-challenge-v1',
+            itemType: 'review-challenge',
+            metadata: {
+              schemaVersion: 1,
+              surface: 'cohort',
+              topics: demandTopics.slice(start, start + 32),
+            },
+            timestamp: now,
+          },
+          select: { id: true },
+        });
+      }
+      return finishCohortTurn(tx, input, operation.id, response, now);
+    }
+    const picked = error instanceof CohortTurnError && error.code === 'topic_exhausted' && reviewChallengeLevel !== 2 && cardTurn
+      ? await cardTurn()
+      : null;
+    if (!picked) throw error;
+    const topic = pickedCardTopic(picked);
+    if (!topic) throw new CohortTurnError(503, 'cohort_card_topic_unavailable', 'Card topic is unavailable');
+    const response = await deliverModuleCard(tx, input, picked, topic, now);
+    return finishCohortTurn(tx, input, operation.id, response, now);
+  }
   const selectedIds = new Set(selection.questions.map((question) => question.id));
   const selectedHistory = history.filter((row) => selectedIds.has(row.questionId));
   const selectedCorpus: PublicUsmleQuestionCorpus = {
@@ -699,6 +912,13 @@ async function transactCohortTurn(
       if (selection.stage === 'search-focus' && (
         error.code === 'corpus_not_ready' || error.code === 'baseline_not_ready'
       )) {
+        const picked = cardTurn ? await cardTurn() : null;
+        if (picked) {
+          const topic = pickedCardTopic(picked);
+          if (!topic) throw new CohortTurnError(503, 'cohort_card_topic_unavailable', 'Card topic is unavailable');
+          const response = await deliverModuleCard(tx, input, picked, topic, now);
+          return finishCohortTurn(tx, input, operation.id, response, now);
+        }
         throw new CohortTurnError(
           409,
           'topic_exhausted',
@@ -710,7 +930,7 @@ async function transactCohortTurn(
     throw error;
   }
 
-  const response: Step1SessionResult = {
+  const response: CohortTurnResult = {
     sessionId: created.sessionId,
     mode: created.mode,
     requestedSize: created.requestedSize,
@@ -728,7 +948,18 @@ async function transactCohortTurn(
       'Could not safely record this delivery; please retry',
     );
   }
-  if (input.previousDeliveryId) {
+  return finishCohortTurn(tx, input, operation.id, response, now);
+}
+
+/** The shared tail of every new turn: the Continue event, then the frozen receipt. */
+async function finishCohortTurn(
+  tx: Prisma.TransactionClient,
+  input: ServeCohortTurnInput,
+  operationId: string,
+  response: CohortTurnResult,
+  now: Date,
+): Promise<{ response: CohortTurnResult; deduped: boolean }> {
+  if (input.previousDeliveryId && response.deliveredSize > 0) {
     await tx.learningEvent.create({
       data: {
         userId: input.userId,
@@ -751,7 +982,7 @@ async function transactCohortTurn(
     });
   }
   await tx.syncOperation.update({
-    where: { id: operation.id },
+    where: { id: operationId },
     data: {
       status: 'completed',
       result: response as unknown as Prisma.InputJsonValue,
@@ -760,10 +991,125 @@ async function transactCohortTurn(
   return { response, deduped: false };
 }
 
+/** The module's display name, without the guideline suffix the topic label carries. */
+function moduleDomain(topic: CohortSearchTopicRegistryEntry): string {
+  return topic.label.replace(/\s*\(Australian guidelines\)$/, '');
+}
+
+function topicForDiscipline(discipline: string): CohortSearchTopicRegistryEntry | null {
+  return COHORT_SEARCH_TOPIC_REGISTRY.find((topic) => 'moduleNode' in topic && topic.moduleNode === `cohort/${discipline}`) ?? null;
+}
+
+/**
+ * The next card for this learner in this module, or null. Reads one
+ * discipline's released cards and this learner's progress on exactly those
+ * cards, both indexed; the cards served in this journey's last few draws are
+ * held back so a just-failed card or its sibling never comes straight back.
+ */
+async function pickModuleCard(
+  tx: Prisma.TransactionClient,
+  input: ServeCohortTurnInput,
+  moduleNode: string | undefined,
+  now: Date,
+  challengeLevel: CohortReviewChallengeLevel,
+): Promise<CohortServableCard | null> {
+  if (!COHORT_CARD_RELEASE_LOADABLE) {
+    throw new CohortTurnError(503, 'cohort_scaffold_unavailable', 'Scaffold release is unavailable');
+  }
+  const discipline = moduleNode?.slice('cohort/'.length);
+  const safeDisciplines = new Set(COHORT_SEARCH_TOPIC_REGISTRY.flatMap((topic) => (
+    'moduleNode' in topic ? [topic.moduleNode.slice('cohort/'.length)] : []
+  )));
+  const loaded = await loadCohortModuleCardCorpus(tx as never, discipline);
+  const cards = discipline ? loaded.cards : loaded.cards.filter((card) => safeDisciplines.has(card.discipline));
+  if (cards.length === 0) return null;
+  const [progress, recent] = await Promise.all([
+    tx.cardProgress.findMany({
+      where: { userId: input.userId, cardId: { in: cards.map((card) => card.id) } },
+      select: { cardId: true, nextDueAt: true },
+    }),
+    tx.serveDecision.findMany({
+      where: {
+        userId: input.userId,
+        sessionId: input.journeyId,
+        itemType: 'card',
+        decisionPath: COHORT_CARD_DECISION_PATH,
+      },
+      orderBy: { position: 'desc' },
+      take: 5,
+      select: { itemId: true },
+    }),
+  ]);
+  const recentCardIds = recent.map((row) => row.itemId);
+  const recentGroups = new Set(cards
+    .filter((card) => recentCardIds.includes(card.id) && card.variantGroupId)
+    .map((card) => card.variantGroupId!));
+  return selectCohortModuleCard({
+    cards, progress, recentCardIds, recentGroups, now,
+    challengeLevel,
+  })?.card ?? null;
+}
+
+
+async function deliverModuleCard(
+  tx: Prisma.TransactionClient,
+  input: ServeCohortTurnInput,
+  card: CohortServableCard,
+  topic: CohortSearchTopicRegistryEntry,
+  now: Date,
+): Promise<CohortTurnResult> {
+  const deliveryId = randomUUID();
+  const written = await tx.serveDecision.createMany({
+    data: [{
+      id: deliveryId,
+      userId: input.userId,
+      sessionId: input.journeyId,
+      batchId: input.journeyId,
+      itemType: 'card',
+      itemId: card.id,
+      rotation: COHORT_MODULE_ROTATION,
+      week: null,
+      decidedAt: now,
+      exposedAt: now,
+      decisionPath: COHORT_CARD_DECISION_PATH,
+      deliveryPath: 'live',
+      queueReason: 'search-focus',
+      position: input.nextDrawOrdinal,
+      rankInPool: 0,
+      poolSize: 1,
+      difficultyTier: null,
+      variantGroupId: card.variantGroupId,
+      variantType: card.variantGroupId ? 'cloze-blank' : null,
+      summary: 'Cohort module card delivery',
+      payload: {
+        contract: COHORT_CARD_DELIVERY_CONTRACT,
+        surface: 'cohort',
+        discipline: card.discipline,
+        contentHash: card.contentHash,
+        servingFingerprint: card.releaseFingerprint,
+        ...(input.searchTopicId ? { searchTopicId: input.searchTopicId } : {}),
+      },
+    }],
+  });
+  if (written.count !== 1) {
+    throw new CohortTurnError(503, 'delivery_persistence_failed', 'Could not safely record this delivery; please retry');
+  }
+  const item: CohortCardSessionItem = {
+    deliveryId,
+    kind: 'card',
+    front: card.front,
+    back: card.back,
+    context: card.context,
+    domain: moduleDomain(topic),
+    attribution: { text: 'MD3 contributors', licence: 'CC-BY-4.0' },
+  };
+  return { sessionId: input.journeyId, mode: 'daily', requestedSize: 1, deliveredSize: 1, items: [item] };
+}
+
 export async function serveCohortTurn(
   input: ServeCohortTurnInput,
   options: ServeCohortTurnOptions = {},
-): Promise<{ response: Step1SessionResult; deduped: boolean }> {
+): Promise<{ response: CohortTurnResult; deduped: boolean }> {
   const requestFingerprint = buildCohortTurnFingerprint(input);
   if (options.authorizeRequest) {
     const operation = await prisma.syncOperation.findUnique({

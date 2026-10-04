@@ -1,0 +1,64 @@
+{
+  "id": "bank:cohort:surgery:q-a3800d85de96:v1",
+  "rotation": "cohort-open",
+  "moduleNodes": [
+    "cohort/surgery"
+  ],
+  "topics": [
+    "surgery"
+  ],
+  "questionType": "management",
+  "difficulty": "hard",
+  "stem": "A 6-month-old boy has cried intermittently for 3 hours and vomited twice. A firm, tender swelling extends from his right groin into the scrotum. The examiner cannot get above it, and it does not reduce with gentle pressure while he is calm. It glows when a torch is held against it. His abdomen is mildly distended.\n\nWhat is the most appropriate next step?",
+  "options": [
+    {
+      "label": "A",
+      "text": "Nil by mouth, analgesia and urgent surgical review",
+      "isCorrect": true,
+      "explanation": "Correct. An irreducible, tender groin swelling that extends into the scrotum and cannot be got above, with colicky crying, vomiting and distension, is an incarcerated inguinal hernia. Infants are at high risk of strangulation of the bowel and of testicular ischaemia. Stop feeds, give analgesia and IV fluids, and arrange urgent surgical review for reduction and early repair."
+    },
+    {
+      "label": "B",
+      "text": "Reassure: a swelling that transilluminates is a hydrocele",
+      "isCorrect": false,
+      "explanation": "Infant bowel is thin-walled and can glow with a torch, so transillumination does not exclude a hernia. Being unable to get above the swelling, tenderness, vomiting and distension say it contains bowel. A hydrocele is painless and the infant is well."
+    },
+    {
+      "label": "C",
+      "text": "Outpatient groin ultrasound, then surgical referral",
+      "isCorrect": false,
+      "explanation": "An incarcerated hernia is an emergency. Imaging as an outpatient risks strangulation."
+    },
+    {
+      "label": "D",
+      "text": "Admit and retry gentle reduction the next morning",
+      "isCorrect": false,
+      "explanation": "Waiting overnight with irreducible, tender bowel in the groin risks strangulation and testicular ischaemia."
+    },
+    {
+      "label": "E",
+      "text": "Antiemetic and review in 24 hours if vomiting continues",
+      "isCorrect": false,
+      "explanation": "The vomiting comes from obstruction, not gastroenteritis. An antiemetic and a delay would mask the cause."
+    }
+  ],
+  "context": "Transillumination does not exclude an inguinal hernia in an infant, because infant bowel can transilluminate. An irreducible, tender groin swelling you cannot get above, with vomiting, is an incarcerated hernia: nil by mouth, analgesia and urgent surgical review.",
+  "publicModule": {
+    "schemaVersion": 1,
+    "origin": "mirrored",
+    "discipline": "surgery",
+    "mirroredFrom": "md3:a3800d85de962e41",
+    "itemText": {
+      "licence": "CC-BY-4.0",
+      "attribution": "MD3 contributors"
+    },
+    "evidence": {
+      "kind": "reference",
+      "sourceId": "rch-connect-prereferral-guidelines-irreducible-inguinal-hernia-prereferral-024c62"
+    },
+    "review": {
+      "verdict": "passed",
+      "contentHash": "4e0c40ff82b1fdb3a364a2b48ca8224753456d70056fe08d812b4cb9f7318ddb"
+    }
+  }
+}

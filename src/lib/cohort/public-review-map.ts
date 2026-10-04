@@ -1,5 +1,6 @@
 import type { Step1SessionItem } from '@/lib/usmle/step1-contract';
 import type { UnifiedItem } from '@/lib/study/unified-session-types';
+import type { CohortCardSessionItem } from './card-turn-contract';
 
 export function mapStep1ItemToUnified(
   item: Step1SessionItem,
@@ -37,5 +38,26 @@ export function mapStep1ItemToUnified(
       },
     } : {}),
     ...(args.hook ? { decisionContext: { cohortHook: true } } : {}),
+  };
+}
+
+/** A Cohort module card: graded by its opaque delivery, never by a card id. */
+export function mapCohortCardToUnified(
+  item: CohortCardSessionItem,
+  args: { rotation: string },
+): UnifiedItem {
+  return {
+    type: 'card',
+    id: item.deliveryId,
+    deliveryId: item.deliveryId,
+    front: item.front,
+    back: item.back,
+    backs: null,
+    context: item.context,
+    sourceComponent: 'KeyPoint',
+    rotation: args.rotation,
+    week: null,
+    topics: [item.domain],
+    servedBy: 'focused',
   };
 }

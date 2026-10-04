@@ -1,0 +1,64 @@
+{
+  "id": "bank:cohort:surgery:q-9c3716b81718:v1",
+  "rotation": "cohort-open",
+  "moduleNodes": [
+    "cohort/surgery"
+  ],
+  "topics": [
+    "surgery"
+  ],
+  "questionType": "management",
+  "difficulty": "hard",
+  "stem": "An 11-month-old boy has had 30 hours of intermittent screaming with pallor and drawing up of his legs, and has vomited twice. He passed a small redcurrant-jelly stool this morning. Ultrasound confirms an ileocolic intussusception with a small amount of free fluid. After a 10 mL/kg saline bolus he is pink with a heart rate of 130/min, a soft abdomen and no peritonism.\n\nWhat is the most appropriate next step, decided with the surgical team?",
+  "options": [
+    {
+      "label": "A",
+      "text": "Laparotomy, as the bloody stool indicates ischaemic bowel",
+      "isCorrect": false,
+      "explanation": "Redcurrant-jelly stool reflects mucosal congestion and is common. It is not a contraindication to enema reduction in a stable child without peritonism."
+    },
+    {
+      "label": "B",
+      "text": "Laparotomy, as symptoms have lasted more than 24 hours",
+      "isCorrect": false,
+      "explanation": "A longer history lowers the success rate but is not by itself a contraindication; a stable child should still have an attempt at enema reduction."
+    },
+    {
+      "label": "C",
+      "text": "Repeat ultrasound in 6 hours to allow spontaneous reduction",
+      "isCorrect": false,
+      "explanation": "Transient small-bowel intussusceptions often reduce by themselves, but a symptomatic ileocolic intussusception needs reduction now."
+    },
+    {
+      "label": "D",
+      "text": "IV antibiotics, nasogastric drainage and observation",
+      "isCorrect": false,
+      "explanation": "Supportive care alone leaves the intussusception unreduced and risks bowel ischaemia."
+    },
+    {
+      "label": "E",
+      "text": "Air enema reduction with the surgical team available",
+      "isCorrect": true,
+      "explanation": "Correct. He is resuscitated with no peritonitis or perforation, so image-guided air enema reduction with surgeons available is first line, despite the bloody stool, free fluid and 30-hour history."
+    }
+  ],
+  "context": "Stable ileocolic intussusception is reduced by air enema with surgeons available. Peritonitis, perforation and shock that does not respond to fluids are contraindications; bloody stool, a small amount of free fluid and a longer history are not.",
+  "publicModule": {
+    "schemaVersion": 1,
+    "origin": "mirrored",
+    "discipline": "surgery",
+    "mirroredFrom": "md3:9c3716b81718f233",
+    "itemText": {
+      "licence": "CC-BY-4.0",
+      "attribution": "MD3 contributors"
+    },
+    "evidence": {
+      "kind": "reference",
+      "sourceId": "rch-clinicalguide-guideline-index-intussusception-108d7d"
+    },
+    "review": {
+      "verdict": "passed",
+      "contentHash": "f437a64b05f5d721240db50257b00e4c69ecb454da1ca7938ee8a547c09783cd"
+    }
+  }
+}

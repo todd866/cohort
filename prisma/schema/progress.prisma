@@ -72,6 +72,9 @@ model CardProgress {
   @@index([userId]) // For cluster mastery queries (joins to Card.clusterId)
   @@index([userId, status])
   @@index([projectedThroughEventId])
+  // Global by-time read: the write-health probe's latest grade on any card.
+  // No other index here holds lastReview, so none can serve it.
+  @@index([lastReview])
 }
 
 // QuestionResponse - Records every user answer for analytics
@@ -107,6 +110,9 @@ model QuestionResponse {
   @@index([userId, questionId])
   @@index([userId, createdAt])
   @@index([questionId, isCorrect])
+  // Global by-time read: the write-health probe's latest answer. (userId,
+  // createdAt) cannot serve it, because Postgres has no skip scan.
+  @@index([createdAt])
 }
 
 // Review sessions (for tracking interference patterns)
@@ -276,6 +282,9 @@ model LearningEvent {
   @@index([contentVersionId])
   @@index([externalCollectionId, externalEventId])
   @@index([userId, memoryDisposition, timestamp])
+  // Global by-time reads (the write-health latest-row probe, audit windows).
+  // Every other index here leads with userId, which cannot serve them.
+  @@index([timestamp])
 }
 
 // =============================================================================
@@ -306,6 +315,26 @@ model UserStudyQueue {
   @@unique([userId, rotation])
   @@index([userId])
   @@index([validUntil])
+}
+
+// One row per background build in flight for a (learner, scope): the shared
+// half of the refresh single flight in src/lib/study/session-refresh-lease.ts.
+// scope is "queue:<rotation>" for a study-queue rebuild and "pack:<rotation>"
+// for an offline-pack build. A build claims the row with one atomic statement
+// and deletes it when done; a crashed holder's row is taken over once expiresAt
+// passes. Both times come from the database clock so every instance agrees on
+// expiry. Write correctness never depends on this table: the cache epoch and
+// the snapshot-order check still decide whether a finished build may write.
+model SessionRefreshLease {
+  userId     String
+  scope      String
+  ownerToken String
+  // What asked for the build (a refresh source, or "offline-pack").
+  source     String
+  acquiredAt DateTime @db.Timestamptz(3)
+  expiresAt  DateTime @db.Timestamptz(3)
+
+  @@id([userId, scope])
 }
 
 // =============================================================================

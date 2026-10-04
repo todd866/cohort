@@ -1,0 +1,64 @@
+{
+  "id": "bank:cohort:derm:q-c259d8812082:v1",
+  "rotation": "cohort-open",
+  "moduleNodes": [
+    "cohort/derm"
+  ],
+  "topics": [
+    "derm"
+  ],
+  "questionType": "diagnosis",
+  "difficulty": "medium",
+  "stem": "A 22-month-old girl who attends childcare has had a temperature of 38.2 °C and has been reluctant to eat for 2 days. She has shallow ulcers on her tongue and inside her cheeks, and small oval grey vesicles with a red rim on her palms, soles and buttocks. Her gums are not swollen. She is alert and drinking small amounts. Which diagnosis best explains her illness?",
+  "options": [
+    {
+      "label": "A",
+      "text": "Varicella (chickenpox)",
+      "isCorrect": false,
+      "explanation": "Varicella causes itchy crops of vesicles at different stages over the trunk, face and scalp; the palms and soles are not the main sites."
+    },
+    {
+      "label": "B",
+      "text": "Primary herpetic gingivostomatitis",
+      "isCorrect": false,
+      "explanation": "Herpetic gingivostomatitis causes swollen, bleeding gums with vesicles on the lips and perioral skin. Apart from a whitlow on a sucked finger, it does not cause a palm, sole and buttock rash."
+    },
+    {
+      "label": "C",
+      "text": "Enteroviral herpangina",
+      "isCorrect": false,
+      "explanation": "Herpangina, also enteroviral, causes vesicles and ulcers on the soft palate and tonsillar pillars without a rash on the hands and feet."
+    },
+    {
+      "label": "D",
+      "text": "Erythema multiforme minor",
+      "isCorrect": false,
+      "explanation": "Erythema multiforme produces fixed target lesions, usually on the hands and limbs, with little mouth involvement in its minor form."
+    },
+    {
+      "label": "E",
+      "text": "Hand, foot and mouth disease",
+      "isCorrect": true,
+      "explanation": "Correct. Mouth ulcers with oval vesicles on the palms, soles and buttocks in a mildly febrile toddler is hand, foot and mouth disease, from coxsackievirus. Care is supportive."
+    }
+  ],
+  "context": "Hand, foot and mouth disease: mouth ulcers plus oval vesicles on the palms, soles and buttocks of a young child. Care is supportive; watch fluid intake because the mouth is sore.",
+  "publicModule": {
+    "schemaVersion": 1,
+    "origin": "mirrored",
+    "discipline": "derm",
+    "mirroredFrom": "md3:c259d881208232f6",
+    "itemText": {
+      "licence": "CC-BY-4.0",
+      "attribution": "MD3 contributors"
+    },
+    "evidence": {
+      "kind": "reference",
+      "sourceId": "rch-kidsinfo-fact-sheets-hand-foot-and-mouth-disease-coxsackie-virus-49558f"
+    },
+    "review": {
+      "verdict": "passed",
+      "contentHash": "b5c64e6fd037c353afa793b743f43b545de8322303c54e706c26fac8f8494ffd"
+    }
+  }
+}

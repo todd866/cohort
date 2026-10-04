@@ -94,7 +94,7 @@ export function logSessionDiagnostic(ctx: SessionContext, diagnostic: SessionDia
 export async function logCacheComputeOutcome(
   userId: string,
   rotation: string,
-  outcome: 'success' | 'empty' | 'timeout' | 'error' | 'stale',
+  outcome: 'success' | 'empty' | 'timeout' | 'error' | 'stale' | 'superseded' | 'deduped',
   details: { items?: number; durationMs?: number; error?: string; source?: string },
 ) {
   try {

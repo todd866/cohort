@@ -1,0 +1,64 @@
+{
+  "id": "bank:cohort:obs:q-d59be2e5d01c:v1",
+  "rotation": "cohort-open",
+  "moduleNodes": [
+    "cohort/obs"
+  ],
+  "topics": [
+    "obs"
+  ],
+  "questionType": "management",
+  "difficulty": "medium",
+  "stem": "A 30-year-old at nine weeks has an incomplete miscarriage confirmed at an early pregnancy clinic, with 28 mm of retained tissue on ultrasound. She is afebrile, her pulse is 78 beats/min, her bleeding is light and her haemoglobin is 121 g/L, and she lives 15 minutes from the hospital. Her mother is urging a curette 'to protect her fertility', but she would rather avoid tablets or a procedure if that is safe.\n\nWhat should the gynaecology registrar recommend?",
+  "options": [
+    {
+      "label": "A",
+      "text": "Expectant care, with review in about a week and clear return advice",
+      "isCorrect": true,
+      "explanation": "Expectant care suits a stable, afebrile woman with an incomplete miscarriage who prefers it and can reach care. Review in about 7 to 10 days confirms completion, and she returns sooner for heavy bleeding, pain or fever."
+    },
+    {
+      "label": "B",
+      "text": "Surgical aspiration, since retained tissue over 15 mm rarely passes",
+      "isCorrect": false,
+      "explanation": "No tissue-size cut-off makes expectant care unsafe in a stable woman; many incomplete miscarriages complete without treatment."
+    },
+    {
+      "label": "C",
+      "text": "Surgical aspiration, to protect her chance of a future pregnancy",
+      "isCorrect": false,
+      "explanation": "Fertility is similar after expectant, medical and surgical management, so a curette is not needed to protect it."
+    },
+    {
+      "label": "D",
+      "text": "Misoprostol, as waiting carries a higher risk of uterine infection",
+      "isCorrect": false,
+      "explanation": "Infection rates are similar with each approach. Misoprostol is an option, not a safer default, and she would rather avoid tablets."
+    },
+    {
+      "label": "E",
+      "text": "Admission for observation until the retained tissue has passed",
+      "isCorrect": false,
+      "explanation": "A stable woman with light bleeding does not need admission; expectant care is outpatient with planned review."
+    }
+  ],
+  "context": "Expectant management is a safe choice for a stable, afebrile woman with an incomplete miscarriage who prefers it and can reach care.",
+  "publicModule": {
+    "schemaVersion": 1,
+    "origin": "mirrored",
+    "discipline": "obs",
+    "mirroredFrom": "md3:d59be2e5d01c9b57",
+    "itemText": {
+      "licence": "CC-BY-4.0",
+      "attribution": "MD3 contributors"
+    },
+    "evidence": {
+      "kind": "reference",
+      "sourceId": "qld-health-data-assets-pdf-file-0033-139947-g-epl-e053ea"
+    },
+    "review": {
+      "verdict": "passed",
+      "contentHash": "0a34a6dac2c8c2a37a1a1304423babda8c6ed7a071e5882acd90dbe8931b7d32"
+    }
+  }
+}

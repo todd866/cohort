@@ -1,0 +1,64 @@
+{
+  "id": "bank:cohort:obs:q-5001823cdfb5:v1",
+  "rotation": "cohort-open",
+  "moduleNodes": [
+    "cohort/obs"
+  ],
+  "topics": [
+    "obs"
+  ],
+  "questionType": "management",
+  "difficulty": "hard",
+  "stem": "Eight days after single-dose methotrexate for a 25-mm tubal ectopic pregnancy, a woman presents with increasing lower abdominal pain and new shoulder-tip pain. Her hCG fell from 1,400 IU/L on day 4 to 800 IU/L on day 7. She was told that abdominal pain is common after methotrexate. In the emergency department she is pale, with a pulse of 118/min, blood pressure of 94/60 mmHg and lower abdominal guarding.\n\nWhat should the ED doctor prioritise?",
+  "options": [
+    {
+      "label": "A",
+      "text": "Analgesia and observation, as pain is common after methotrexate",
+      "isCorrect": false,
+      "explanation": "Pain after methotrexate is common but should not be attributed to it when there is tachycardia, hypotension, guarding and shoulder-tip pain."
+    },
+    {
+      "label": "B",
+      "text": "Formal pelvic ultrasound to confirm free fluid before referral",
+      "isCorrect": false,
+      "explanation": "Ultrasound can show free fluid, but imaging must not delay gynaecology review and surgery in a shocked patient."
+    },
+    {
+      "label": "C",
+      "text": "Resuscitation and urgent gynaecology review for emergency surgery",
+      "isCorrect": true,
+      "explanation": "Tachycardia, hypotension, guarding and shoulder-tip pain indicate rupture with haemoperitoneum; resuscitate and arrange emergency surgery."
+    },
+    {
+      "label": "D",
+      "text": "Repeat hCG today, as a falling level makes rupture unlikely",
+      "isCorrect": false,
+      "explanation": "Rupture can occur while hCG is falling after methotrexate; the trend does not outweigh haemodynamic instability."
+    },
+    {
+      "label": "E",
+      "text": "IV fluids and a CT abdomen to look for another surgical cause",
+      "isCorrect": false,
+      "explanation": "CT delays definitive care, and the history already points to ectopic rupture as the cause."
+    }
+  ],
+  "context": "Ectopic rupture remains possible during a falling hCG trajectory after methotrexate.",
+  "publicModule": {
+    "schemaVersion": 1,
+    "origin": "mirrored",
+    "discipline": "obs",
+    "mirroredFrom": "md3:5001823cdfb5d784",
+    "itemText": {
+      "licence": "CC-BY-4.0",
+      "attribution": "MD3 contributors"
+    },
+    "evidence": {
+      "kind": "reference",
+      "sourceId": "qld-health-data-assets-pdf-file-0033-139947-g-epl-e053ea"
+    },
+    "review": {
+      "verdict": "passed",
+      "contentHash": "8b281eb5dc96d1703e2af52a73dc03a9411a82fff2e45592e52e7470867da6a6"
+    }
+  }
+}

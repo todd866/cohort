@@ -1,0 +1,64 @@
+{
+  "id": "bank:cohort:paeds:q-4b1c4da98823:v1",
+  "rotation": "cohort-open",
+  "moduleNodes": [
+    "cohort/paeds"
+  ],
+  "topics": [
+    "paeds"
+  ],
+  "questionType": "investigation",
+  "difficulty": "hard",
+  "stem": "On the postnatal ward, a term baby is noticed to be jaundiced at 16 hours of age. He is feeding well and is alert. The mother is group O, RhD positive, with a negative antibody screen. A transcutaneous bilirubin meter is available on the ward, and the resident suggests using it and repeating the visual check at 24 hours.\n\nWhat should the paediatric registrar arrange?",
+  "options": [
+    {
+      "label": "A",
+      "text": "A transcutaneous reading now, sending a serum level if it reads high",
+      "isCorrect": false,
+      "explanation": "Transcutaneous meters are used as a screen from 24 hours of age; jaundice before 24 hours needs a serum bilirubin."
+    },
+    {
+      "label": "B",
+      "text": "Serum bilirubin with a blood count, blood group and antiglobulin test",
+      "isCorrect": true,
+      "explanation": "Jaundice in the first 24 hours is pathological until proven otherwise. Measure serum bilirubin and look for haemolysis with a blood count, the baby's blood group and a direct antiglobulin test; ABO incompatibility is possible with a group O mother."
+    },
+    {
+      "label": "C",
+      "text": "A repeat visual check at 24 hours, as he is feeding and alert",
+      "isCorrect": false,
+      "explanation": "Visual assessment cannot quantify bilirubin, and waiting risks missing a rapidly rising level from haemolysis."
+    },
+    {
+      "label": "D",
+      "text": "Phototherapy now without a level, as early jaundice needs treatment",
+      "isCorrect": false,
+      "explanation": "Treatment depends on the measured level plotted on a chart for age and gestation, so phototherapy is not started blind."
+    },
+    {
+      "label": "E",
+      "text": "A conjugated bilirubin, as early jaundice suggests liver disease",
+      "isCorrect": false,
+      "explanation": "Early jaundice is usually unconjugated, often from haemolysis; the conjugated fraction is the question in prolonged jaundice."
+    }
+  ],
+  "context": "Jaundice before 24 hours needs a serum bilirubin and tests for haemolysis (blood count, blood group, direct antiglobulin test), not a transcutaneous reading or a later visual check.",
+  "publicModule": {
+    "schemaVersion": 1,
+    "origin": "mirrored",
+    "discipline": "paeds",
+    "mirroredFrom": "md3:4b1c4da98823c3ff",
+    "itemText": {
+      "licence": "CC-BY-4.0",
+      "attribution": "MD3 contributors"
+    },
+    "evidence": {
+      "kind": "reference",
+      "sourceId": "qld-health-data-assets-pdf-file-0018-142038-g-jaundice-9b44c9"
+    },
+    "review": {
+      "verdict": "passed",
+      "contentHash": "4ad80ab12f5b0081afb17ebc8797a9bf562f879d9759925f7dee06b76595c693"
+    }
+  }
+}

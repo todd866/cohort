@@ -1,0 +1,64 @@
+{
+  "id": "bank:cohort:gi:q-c5c8d73f0151:v1",
+  "rotation": "cohort-open",
+  "moduleNodes": [
+    "cohort/gi"
+  ],
+  "topics": [
+    "gi"
+  ],
+  "questionType": "diagnosis",
+  "difficulty": "medium",
+  "stem": "Noah, aged 6, has passed large, hard stools every 4 or 5 days for about 4 years. He refuses to use the school toilets and, when he needs to go, squeezes his buttocks together and fidgets. He passed meconium on his first day and is growing along the 40th centile. His GP diagnoses functional constipation and plans to start a laxative.\n\nWhich finding, if present, would most suggest that his constipation is not functional?",
+  "options": [
+    {
+      "label": "A",
+      "text": "Onset at toilet training, with withholding",
+      "isCorrect": false,
+      "explanation": "Constipation often starts at a trigger such as toilet training, starting school or a painful stool, and withholding keeps it going. That story is typical of functional constipation."
+    },
+    {
+      "label": "B",
+      "text": "A small fissure and fresh blood on the paper",
+      "isCorrect": false,
+      "explanation": "A single small anal tear (fissure) with fresh blood on the paper is caused by passing hard stool. It is common in functional constipation and can itself drive withholding."
+    },
+    {
+      "label": "C",
+      "text": "Overflow soiling and a palpable faecal mass",
+      "isCorrect": false,
+      "explanation": "Overflow soiling with a palpable faecal mass means impaction, which is common in functional constipation. It changes the plan only by adding disimpaction first."
+    },
+    {
+      "label": "D",
+      "text": "A low-fibre diet and very little water",
+      "isCorrect": false,
+      "explanation": "A diet short of fibre and fluid often contributes to functional constipation. It is a reason to adjust what he eats and drinks, not a sign of an underlying disorder."
+    },
+    {
+      "label": "E",
+      "text": "Flat buttocks, deep pit above the cleft",
+      "isCorrect": true,
+      "explanation": "Correct. Flattened gluteal muscles and a central pit whose base cannot be seen are NICE red flags for occult spinal dysraphism or sacral agenesis. Refer and image the spine rather than simply treat."
+    }
+  ],
+  "context": "In childhood constipation, lower-limb neurological signs or lumbosacral stigmata (flat buttocks, deep pit, hairy patch, sinus) suggest spinal dysraphism; onset at toilet training does not.",
+  "publicModule": {
+    "schemaVersion": 1,
+    "origin": "mirrored",
+    "discipline": "gi",
+    "mirroredFrom": "md3:c5c8d73f0151bd0e",
+    "itemText": {
+      "licence": "CC-BY-4.0",
+      "attribution": "MD3 contributors"
+    },
+    "evidence": {
+      "kind": "reference",
+      "sourceId": "nice-guidance-cg99-chapter-recommendations-5191c5"
+    },
+    "review": {
+      "verdict": "passed",
+      "contentHash": "465fa7006a969387f22311e60cb873c8ee46403b53a6f3eddab76f14cd56463c"
+    }
+  }
+}

@@ -1,0 +1,64 @@
+{
+  "id": "bank:cohort:obs:q-705e7a136a75:v1",
+  "rotation": "cohort-open",
+  "moduleNodes": [
+    "cohort/obs"
+  ],
+  "topics": [
+    "obs"
+  ],
+  "questionType": "management",
+  "difficulty": "hard",
+  "stem": "A maternal–fetal medicine consultant reviews a singleton pregnancy at 31+5 weeks. Estimated fetal weight is below the first centile. Serial umbilical artery Dopplers have progressed from absent to persistent reversed end-diastolic flow, confirmed today. The CTG is currently reassuring. The mother is clinically well; corticosteroids are complete and neonatal intensive care is available.\n\nWhich timing plan is most appropriate to discuss?",
+  "options": [
+    {
+      "label": "A",
+      "text": "Plan birth now following multidisciplinary preparation",
+      "isCorrect": true,
+      "explanation": "At this gestation, persistent reversed umbilical flow is a reason to plan birth despite a currently reassuring CTG. Australian and SMFM guidance place this finding within an early-delivery window around 30–32 weeks."
+    },
+    {
+      "label": "B",
+      "text": "Continue surveillance until 34 weeks if the CTG stays normal",
+      "isCorrect": false,
+      "explanation": "A reassuring CTG is useful contemporaneous information but does not justify extending this reversed-flow pregnancy to 34 weeks."
+    },
+    {
+      "label": "C",
+      "text": "Continue surveillance until 37 weeks if growth is maintained",
+      "isCorrect": false,
+      "explanation": "Term-oriented timing applies to less severe growth-restriction patterns, not persistent reversed flow at 31+5 weeks."
+    },
+    {
+      "label": "D",
+      "text": "Defer birth until the ductus venosus A wave becomes absent",
+      "isCorrect": false,
+      "explanation": "Ductus venosus changes can inform very early FGR management, but waiting for that deterioration is not required at this gestation with reversed umbilical flow."
+    },
+    {
+      "label": "E",
+      "text": "Wait for a non-reassuring CTG before recommending birth",
+      "isCorrect": false,
+      "explanation": "Waiting for CTG deterioration adds risk when the Doppler findings already support birth planning; CTG is not the sole trigger."
+    }
+  ],
+  "context": "At around 31 weeks, persistent reversed umbilical artery end-diastolic flow can justify planned birth even when the CTG is reassuring.",
+  "publicModule": {
+    "schemaVersion": 1,
+    "origin": "mirrored",
+    "discipline": "obs",
+    "mirroredFrom": "md3:705e7a136a753fc4",
+    "itemText": {
+      "licence": "CC-BY-4.0",
+      "attribution": "MD3 contributors"
+    },
+    "evidence": {
+      "kind": "reference",
+      "sourceId": "nsw-health-pds-activepdsdocuments-gl2025-018-fb87e0"
+    },
+    "review": {
+      "verdict": "passed",
+      "contentHash": "47181c8478e510afe28116a0f86be4353b15d19e122162d1f1938ca6ecd7771f"
+    }
+  }
+}

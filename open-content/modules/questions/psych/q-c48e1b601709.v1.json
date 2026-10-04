@@ -1,0 +1,64 @@
+{
+  "id": "bank:cohort:psych:q-c48e1b601709:v1",
+  "rotation": "cohort-open",
+  "moduleNodes": [
+    "cohort/psych"
+  ],
+  "topics": [
+    "psych"
+  ],
+  "questionType": "management",
+  "difficulty": "hard",
+  "stem": "A trauma-service clinician assesses a 36-year-old with persistent PTSD after a workplace assault. He also drinks heavily on several evenings each week. He attends appointments sober, has no current withdrawal or acute safety crisis, and can use agreed coping strategies without drinking during sessions or afterwards. He wants help with both problems. One service proposes waiting for six months of abstinence before offering any PTSD treatment.\n\nWhich plan is best supported?",
+  "options": [
+    {
+      "label": "A",
+      "text": "Provide alcohol treatment and reassess PTSD after six months sober",
+      "isCorrect": false,
+      "explanation": "A fixed period of abstinence is not a prerequisite for PTSD treatment. Ongoing alcohol misuse should prompt coordinated care and assessment of readiness, rather than automatic exclusion."
+    },
+    {
+      "label": "B",
+      "text": "Provide supportive counselling until he has stopped drinking completely",
+      "isCorrect": false,
+      "explanation": "Support may help engagement, but withholding evidence-based PTSD treatment solely because of alcohol use is not justified. His ability to participate and manage distress has been assessed."
+    },
+    {
+      "label": "C",
+      "text": "Begin trauma therapy and revisit alcohol treatment after the course",
+      "isCorrect": false,
+      "explanation": "Deferring alcohol treatment leaves a contributor to safety, engagement and recovery unaddressed. Treatment of both problems should proceed together with planning for cravings and distress."
+    },
+    {
+      "label": "D",
+      "text": "Begin concurrent trauma-focused and alcohol treatment",
+      "isCorrect": true,
+      "explanation": "Concurrent or integrated care is appropriate when the person can engage safely and manage treatment-related distress. Readiness and substance use should continue to be reviewed as trauma-focused work proceeds."
+    },
+    {
+      "label": "E",
+      "text": "Use benzodiazepines before trauma sessions to replace alcohol",
+      "isCorrect": false,
+      "explanation": "Routine benzodiazepine use is not a suitable substitute for treating alcohol misuse and PTSD. It introduces sedation and dependence concerns, particularly with ongoing drinking."
+    }
+  ],
+  "context": "Do not exclude a person from PTSD treatment solely because of alcohol misuse; coordinate care and assess readiness for trauma-focused work.",
+  "publicModule": {
+    "schemaVersion": 1,
+    "origin": "mirrored",
+    "discipline": "psych",
+    "mirroredFrom": "md3:c48e1b6017096b7a",
+    "itemText": {
+      "licence": "CC-BY-4.0",
+      "attribution": "MD3 contributors"
+    },
+    "evidence": {
+      "kind": "reference",
+      "sourceId": "nice-guidance-ng116-chapter-recommendations-8a9424"
+    },
+    "review": {
+      "verdict": "passed",
+      "contentHash": "05f2b1fd258154344504b756db5a447cc4fd498b78248159be08d74cf349a11d"
+    }
+  }
+}

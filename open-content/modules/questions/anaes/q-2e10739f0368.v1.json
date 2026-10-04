@@ -1,0 +1,64 @@
+{
+  "id": "bank:cohort:anaes:q-2e10739f0368:v1",
+  "rotation": "cohort-open",
+  "moduleNodes": [
+    "cohort/anaes"
+  ],
+  "topics": [
+    "anaes"
+  ],
+  "questionType": "management",
+  "difficulty": "hard",
+  "stem": "A postoperative ward patient has taken prednisolone 10 mg daily for six months, but it was accidentally omitted for three days around surgery. The medical registrar finds vomiting, marked weakness and blood pressure 78/46 mmHg despite initial crystalloid. Tests show:\n\n| Test | Result | Reference range |\n| --- | --- | --- |\n| Glucose | 2.8 mmol/L | 3.5–7.8 |\n| Sodium | 129 mmol/L | 135–145 |\n\nGlucose correction and further resuscitation are underway, with no evidence of major bleeding.\n\nWhich additional treatment should be given promptly while causes of shock are assessed?",
+  "options": [
+    {
+      "label": "A",
+      "text": "Oral fludrocortisone replacement",
+      "isCorrect": false,
+      "explanation": "The immediate deficiency is glucocorticoid activity in a patient who cannot reliably absorb oral medicine. Fludrocortisone does not replace urgent parenteral hydrocortisone."
+    },
+    {
+      "label": "B",
+      "text": "Insulin with glucose infusion",
+      "isCorrect": false,
+      "explanation": "The patient is already hypoglycaemic. Insulin would worsen that problem and does not treat glucocorticoid-related adrenal insufficiency."
+    },
+    {
+      "label": "C",
+      "text": "Intravenous hydrocortisone bolus",
+      "isCorrect": true,
+      "explanation": "Long-term glucocorticoid exposure can suppress the adrenal response to surgical stress. Shock after interruption, with hypoglycaemia and hyponatraemia, warrants immediate parenteral hydrocortisone alongside resuscitation."
+    },
+    {
+      "label": "D",
+      "text": "Usual oral prednisolone after the next meal",
+      "isCorrect": false,
+      "explanation": "Vomiting and shock make oral delivery unreliable, and the patient needs emergency stress-dose parenteral replacement rather than a delayed routine dose."
+    },
+    {
+      "label": "E",
+      "text": "Hydrocortisone after Synacthen testing confirms deficiency",
+      "isCorrect": false,
+      "explanation": "Diagnostic testing must not delay treatment of suspected adrenal crisis. Appropriate samples can be taken promptly if this does not postpone hydrocortisone."
+    }
+  ],
+  "context": "Suspected adrenal crisis after interruption of chronic glucocorticoids requires immediate parenteral hydrocortisone alongside resuscitation.",
+  "publicModule": {
+    "schemaVersion": 1,
+    "origin": "mirrored",
+    "discipline": "anaes",
+    "mirroredFrom": "md3:2e10739f0368326b",
+    "itemText": {
+      "licence": "CC-BY-4.0",
+      "attribution": "MD3 contributors"
+    },
+    "evidence": {
+      "kind": "reference",
+      "sourceId": "nice-guidance-ng243-chapter-recommendations-0d4286"
+    },
+    "review": {
+      "verdict": "passed",
+      "contentHash": "31662f02daba36e5d55d4021f7575d2527ea3d0ffd56388fb974be1556f0514f"
+    }
+  }
+}

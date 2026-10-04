@@ -1,0 +1,64 @@
+{
+  "id": "bank:cohort:obs:q-67ba7e1569eb:v1",
+  "rotation": "cohort-open",
+  "moduleNodes": [
+    "cohort/obs"
+  ],
+  "topics": [
+    "obs"
+  ],
+  "questionType": "diagnosis",
+  "difficulty": "hard",
+  "stem": "A 30-year-old at 34 weeks, whose booking blood pressure was 112/70 mmHg, has readings of 152/98 and 150/96 mmHg four hours apart. She has new swelling of her hands and face and has gained 2 kg this week. She has no headache, visual symptoms or epigastric pain. Urine dipstick shows 1+ protein, but the protein:creatinine ratio is 16 mg/mmol (significant ≥30). Creatinine is 104 µmol/L (58 at booking), platelets 212 × 10^9/L, ALT 24 U/L, and uric acid is raised.\n\nWhich diagnosis best accounts for these findings?",
+  "options": [
+    {
+      "label": "A",
+      "text": "Gestational hypertension, as the protein:creatinine ratio is below 30",
+      "isCorrect": false,
+      "explanation": "New hypertension after 20 weeks with any organ involvement is pre-eclampsia; proteinuria is not required, and her creatinine is raised."
+    },
+    {
+      "label": "B",
+      "text": "Chronic kidney disease unmasked by the demands of pregnancy",
+      "isCorrect": false,
+      "explanation": "Her booking creatinine was normal, so the rise is new in pregnancy rather than pre-existing kidney disease."
+    },
+    {
+      "label": "C",
+      "text": "Pre-eclampsia, with renal involvement shown by the creatinine",
+      "isCorrect": true,
+      "explanation": "A creatinine above 90 µmol/L with new hypertension after 20 weeks counts as renal involvement, so this is pre-eclampsia despite a normal protein:creatinine ratio. Oedema, weight gain, uric acid and a 1+ dipstick are not criteria."
+    },
+    {
+      "label": "D",
+      "text": "HELLP syndrome evolving from gestational hypertension",
+      "isCorrect": false,
+      "explanation": "HELLP needs haemolysis, raised liver enzymes and low platelets; her platelets and ALT are normal."
+    },
+    {
+      "label": "E",
+      "text": "Chronic hypertension first detected in the third trimester",
+      "isCorrect": false,
+      "explanation": "Her booking blood pressure was normal and the hypertension began after 20 weeks, so it is not chronic."
+    }
+  ],
+  "context": "Pre-eclampsia is new hypertension after 20 weeks with any organ involvement; a creatinine above 90 µmol/L is renal involvement even when the protein:creatinine ratio is normal.",
+  "publicModule": {
+    "schemaVersion": 1,
+    "origin": "mirrored",
+    "discipline": "obs",
+    "mirroredFrom": "md3:67ba7e1569ebee68",
+    "itemText": {
+      "licence": "CC-BY-4.0",
+      "attribution": "MD3 contributors"
+    },
+    "evidence": {
+      "kind": "reference",
+      "sourceId": "qld-health-data-assets-pdf-file-0034-139948-g-hdp-7463b8"
+    },
+    "review": {
+      "verdict": "passed",
+      "contentHash": "1bdb91bda8034827609c13fadd771a9e6e32460d194e04dc908175fc01bf99bb"
+    }
+  }
+}

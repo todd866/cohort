@@ -1,0 +1,64 @@
+{
+  "id": "bank:cohort:obs:q-224256abbc0a:v1",
+  "rotation": "cohort-open",
+  "moduleNodes": [
+    "cohort/obs"
+  ],
+  "topics": [
+    "obs"
+  ],
+  "questionType": "management",
+  "difficulty": "hard",
+  "stem": "A woman at 29 weeks is in preterm labour at 6 cm, and birth is expected within the next few hours. A magnesium sulfate infusion has been started, and she has had intravenous benzylpenicillin because her GBS status is unknown. She has not yet had corticosteroids. The midwife asks whether betamethasone is still worth giving, since the baby will probably be born before a second dose.\n\nWhat should the obstetric registrar advise?",
+  "options": [
+    {
+      "label": "A",
+      "text": "Give betamethasone now, as benefit begins before a course is complete",
+      "isCorrect": true,
+      "explanation": "Antenatal corticosteroids are the treatment that reduces respiratory distress and neonatal death. Start them now, bringing the second dose forward to 12 hours if birth is likely within 24 hours."
+    },
+    {
+      "label": "B",
+      "text": "Omit betamethasone, as it needs 24 hours before it has any effect",
+      "isCorrect": false,
+      "explanation": "Benefit starts within hours, and Australian guidance advises giving corticosteroids even when birth is expected within 24 hours."
+    },
+    {
+      "label": "C",
+      "text": "Omit betamethasone, as the magnesium also speeds lung maturation",
+      "isCorrect": false,
+      "explanation": "Magnesium sulfate is given for fetal neuroprotection; it does not mature the lungs."
+    },
+    {
+      "label": "D",
+      "text": "Give nifedipine first, and start betamethasone if labour then stops",
+      "isCorrect": false,
+      "explanation": "Tocolysis at 6 cm is unlikely to stop labour, and corticosteroids should not wait for it."
+    },
+    {
+      "label": "E",
+      "text": "Give betamethasone to the baby after birth instead of the mother",
+      "isCorrect": false,
+      "explanation": "Postnatal corticosteroids are not a substitute; the benefit comes from exposure before birth."
+    }
+  ],
+  "context": "Give antenatal corticosteroids even when preterm birth is expected within hours; magnesium protects the brain, not the lungs.",
+  "publicModule": {
+    "schemaVersion": 1,
+    "origin": "mirrored",
+    "discipline": "obs",
+    "mirroredFrom": "md3:224256abbc0ac4b3",
+    "itemText": {
+      "licence": "CC-BY-4.0",
+      "attribution": "MD3 contributors"
+    },
+    "evidence": {
+      "kind": "reference",
+      "sourceId": "qld-health-data-assets-pdf-file-0019-140149-g-ptl-fd0e08"
+    },
+    "review": {
+      "verdict": "passed",
+      "contentHash": "0431f49498d4496ea6180bd3a4b846394deedb971432dfc343a9d5af083d86c0"
+    }
+  }
+}

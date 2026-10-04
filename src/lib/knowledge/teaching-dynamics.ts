@@ -37,7 +37,8 @@ type InterventionReason =
   // analytics wiring). Kept in sync with UnifiedItem.interventionReason in
   // unified-session-types.ts — search both when adding new variants.
   | 'failure_escalation'
-  | 'strong_pristine';
+  | 'strong_pristine'
+  | 'statement_scaffold';
 
 export interface PredictionResult {
   predictedMasteryDelta: number;

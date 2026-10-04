@@ -1,0 +1,64 @@
+{
+  "id": "bank:cohort:obs:q-95fd6347d0d2:v1",
+  "rotation": "cohort-open",
+  "moduleNodes": [
+    "cohort/obs"
+  ],
+  "topics": [
+    "obs"
+  ],
+  "questionType": "management",
+  "difficulty": "hard",
+  "stem": "A woman at 39 weeks is in spontaneous labour at 6 cm dilatation. The fetal heart rate falls abruptly from a baseline of 140/min to 70/min and is still 70/min nine minutes later, confirmed as distinct from the maternal pulse. The consultant obstetrician has already repositioned her, stopped the oxytocin infusion, given a fluid bolus for mild hypotension and excluded cord prolapse on vaginal examination. Contractions are three in ten minutes with normal resting tone, and maternal observations are now normal.\n\nWhat should the consultant do next?",
+  "options": [
+    {
+      "label": "A",
+      "text": "Give subcutaneous terbutaline and reassess the heart rate at 12 minutes",
+      "isCorrect": false,
+      "explanation": "Tocolysis targets excessive uterine activity; contractions here are normal in frequency and tone, and deferring the decision beyond nine minutes loses the time needed to achieve birth."
+    },
+    {
+      "label": "B",
+      "text": "Proceed to category 1 caesarean birth while monitoring continues",
+      "isCorrect": true,
+      "explanation": "A prolonged bradycardia that has not recovered by nine minutes despite correction of reversible causes warrants immediate birth; at 6 cm that means category 1 caesarean."
+    },
+    {
+      "label": "C",
+      "text": "Obtain fetal scalp lactate to decide between caesarean and waiting",
+      "isCorrect": false,
+      "explanation": "Fetal scalp sampling is contraindicated during a prolonged bradycardia; it delays birth and cannot make waiting safe."
+    },
+    {
+      "label": "D",
+      "text": "Arrange category 2 caesarean birth within the next hour",
+      "isCorrect": false,
+      "explanation": "Category 2 urgency is for compromise that is not immediately threatening; an unrecovered bradycardia is an immediate threat to fetal life."
+    },
+    {
+      "label": "E",
+      "text": "Give a second fluid bolus and observe for recovery until 15 minutes",
+      "isCorrect": false,
+      "explanation": "The reversible causes have already been treated; a further bolus and waiting follows the 'observe' path the timeline has already exhausted."
+    }
+  ],
+  "context": "A prolonged fetal bradycardia that has not recovered by about nine minutes after correcting reversible causes needs category 1 birth; at 6 cm that means caesarean.",
+  "publicModule": {
+    "schemaVersion": 1,
+    "origin": "mirrored",
+    "discipline": "obs",
+    "mirroredFrom": "md3:95fd6347d0d22c94",
+    "itemText": {
+      "licence": "CC-BY-4.0",
+      "attribution": "MD3 contributors"
+    },
+    "evidence": {
+      "kind": "reference",
+      "sourceId": "nice-guidance-ng229-chapter-recommendations-c59f0c"
+    },
+    "review": {
+      "verdict": "passed",
+      "contentHash": "c3d5be6eb803306c4f509c5250e2715e59723017962e5c72229ca8c13ee0c1d4"
+    }
+  }
+}

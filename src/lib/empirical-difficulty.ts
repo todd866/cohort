@@ -39,9 +39,18 @@ import { logger } from '@/lib/logger';
  */
 export const MIN_SAMPLE_SIZE = 2;
 
+/**
+ * All four counts come from the one statement that writes, so they read one snapshot and add up
+ * exactly: cardsUpdated + cardsUnchanged + cardsBelowThreshold = cardsConsidered.
+ */
 export interface AggregationResult {
+  /** Live cards with at least one graded CardProgress row. */
   cardsConsidered: number;
+  /** Cards this run actually rewrote: at least one stored value changed. */
   cardsUpdated: number;
+  /** Cards over the sample-size threshold that this run did not rewrite: their values already matched. */
+  cardsUnchanged: number;
+  /** Considered cards under the sample-size threshold (left as they are). */
   cardsBelowThreshold: number;
   durationMs: number;
   /**
@@ -64,9 +73,10 @@ export interface AggregationResult {
  * Run a single batch of card empirical aggregation. Returns counts so the
  * cron route can log a summary line + decide whether to alert.
  *
- * The query is one SQL statement (via Prisma's $executeRaw) to avoid the
+ * The work is one SQL statement (via Prisma's $queryRaw) to avoid the
  * N+1 round-trip of querying each card individually — for ~6k cards that's
- * 6k DB calls vs one aggregate.
+ * 6k DB calls vs one aggregate. The same statement returns the counts, so
+ * they describe exactly the snapshot it wrote from.
  */
 export async function aggregateCardEmpiricalDifficulty(): Promise<AggregationResult> {
   const startedAt = Date.now();
@@ -84,10 +94,24 @@ export async function aggregateCardEmpiricalDifficulty(): Promise<AggregationRes
   // the FROM ... per_card join's snapshot of pre-UPDATE state would be
   // wrong — UPDATE sees the original row, RETURNING gives the NEW row).
   // So we capture old values in a separate sub-query and join.
-  const result = await prisma.$queryRaw<Array<{
-    card_id: string;
-    new_facility: number;
-    new_sample: number;
+  //
+  // Only rows whose stored values would change are written. Most cards'
+  // aggregates do not move from one night to the next, and rewriting an
+  // identical row still costs a new row version, WAL and index entries.
+  // `target` casts each value to its column type first, so the guard compares
+  // exactly what the SET would store (a facility like 2/3 is not exact in
+  // binary, but the same numeric-to-double cast always yields the same double).
+  //
+  // The counts are taken in the same statement, from the same CTEs, so they
+  // see the snapshot the UPDATE saw. `counts` always yields one row, and the
+  // written cards LEFT JOIN onto it: with nothing written the result is that
+  // one row, card columns NULL, and the counts still come back.
+  const rows = await prisma.$queryRaw<Array<{
+    considered: bigint;
+    eligible: bigint;
+    card_id: string | null;
+    new_facility: number | null;
+    new_sample: number | null;
     old_facility: number | null;
     old_sample: number | null;
   }>>`
@@ -105,44 +129,65 @@ export async function aggregateCardEmpiricalDifficulty(): Promise<AggregationRes
         AND cp."lastReview" IS NOT NULL
       GROUP BY cp."cardId"
     ),
+    target AS (
+      SELECT
+        card_id,
+        facility::double precision AS facility,
+        CASE WHEN median_ms IS NULL THEN NULL ELSE median_ms::int END AS median_ms,
+        sample_size::int AS sample_size
+      FROM per_card
+      WHERE sample_size >= ${MIN_SAMPLE_SIZE}
+    ),
     old_state AS (
-      SELECT id, "facilityIndex" AS old_facility, "sampleSize" AS old_sample
-      FROM "Card"
-      WHERE id IN (SELECT card_id FROM per_card WHERE sample_size >= ${MIN_SAMPLE_SIZE})
+      SELECT c.id, c."facilityIndex" AS old_facility, c."sampleSize" AS old_sample
+      FROM "Card" c
+      INNER JOIN target t ON t.card_id = c.id
     ),
     updated AS (
       UPDATE "Card" c
       SET
-        "facilityIndex" = pc.facility,
-        "avgResponseTimeMs" = CASE WHEN pc.median_ms IS NULL THEN NULL ELSE pc.median_ms::int END,
-        "sampleSize" = pc.sample_size::int
-      FROM per_card pc
-      WHERE c.id = pc.card_id
-        AND pc.sample_size >= ${MIN_SAMPLE_SIZE}
+        "facilityIndex" = t.facility,
+        "avgResponseTimeMs" = t.median_ms,
+        "sampleSize" = t.sample_size
+      FROM target t
+      WHERE c.id = t.card_id
+        AND (c."facilityIndex", c."avgResponseTimeMs", c."sampleSize")
+          IS DISTINCT FROM (t.facility, t.median_ms, t.sample_size)
       RETURNING c.id, c."facilityIndex" AS new_facility, c."sampleSize" AS new_sample
+    ),
+    counts AS (
+      SELECT
+        (SELECT COUNT(*) FROM per_card)::bigint AS considered,
+        (SELECT COUNT(*) FROM target)::bigint AS eligible
     )
     SELECT
+      counts.considered,
+      counts.eligible,
       u.id AS card_id,
       u.new_facility,
       u.new_sample,
       o.old_facility,
       o.old_sample
-    FROM updated u
+    FROM counts
+    LEFT JOIN updated u ON true
     LEFT JOIN old_state o ON o.id = u.id
   `;
 
-  // Summary counts
-  const considered = await prisma.$queryRaw<Array<{ n: bigint }>>`
-    SELECT COUNT(*)::bigint AS n FROM (
-      SELECT cp."cardId"
-      FROM "CardProgress" cp
-      INNER JOIN "Card" c ON c.id = cp."cardId"
-      WHERE c."deletedAt" IS NULL AND c."shelvedAt" IS NULL
-        AND cp."lastQuality" IS NOT NULL AND cp."lastReview" IS NOT NULL
-      GROUP BY cp."cardId"
-    ) sub
-  `;
-  const totalConsidered = Number(considered[0]?.n ?? 0n);
+  const totalConsidered = Number(rows[0]?.considered ?? 0n);
+  // `target` is per_card at the UPDATE's own threshold, and every written card
+  // is a target card, so eligible = written + unchanged with no clamping.
+  const eligible = Number(rows[0]?.eligible ?? 0n);
+  const result = rows.flatMap((row) => (
+    row.card_id === null || row.new_facility === null || row.new_sample === null
+      ? []
+      : [{
+          card_id: row.card_id,
+          new_facility: row.new_facility,
+          new_sample: row.new_sample,
+          old_facility: row.old_facility,
+          old_sample: row.old_sample,
+        }]
+  ));
 
   // Surface only cards whose facility actually CHANGED — keeps the
   // trajectory log lean. Threshold of 0.01 = ignore floating-point noise.
@@ -164,7 +209,8 @@ export async function aggregateCardEmpiricalDifficulty(): Promise<AggregationRes
   const out: AggregationResult = {
     cardsConsidered: totalConsidered,
     cardsUpdated: result.length,
-    cardsBelowThreshold: Math.max(0, totalConsidered - result.length),
+    cardsUnchanged: eligible - result.length,
+    cardsBelowThreshold: totalConsidered - eligible,
     durationMs,
     changedCards,
   };
@@ -172,6 +218,7 @@ export async function aggregateCardEmpiricalDifficulty(): Promise<AggregationRes
   logger.info('empirical-difficulty aggregation', {
     cardsConsidered: out.cardsConsidered,
     cardsUpdated: out.cardsUpdated,
+    cardsUnchanged: out.cardsUnchanged,
     cardsBelowThreshold: out.cardsBelowThreshold,
     changedCount: out.changedCards.length,
     durationMs,

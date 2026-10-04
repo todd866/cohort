@@ -1,0 +1,64 @@
+{
+  "id": "bank:cohort:em:q-2c1a086ad9a5:v1",
+  "rotation": "cohort-open",
+  "moduleNodes": [
+    "cohort/em"
+  ],
+  "topics": [
+    "em"
+  ],
+  "questionType": "management",
+  "difficulty": "hard",
+  "stem": "A 23-year-old cut his forearm on broken glass. In the ED a nurse has held firm direct pressure with a pad over the bleeding point for 10 minutes, and further pads have been added on top. Bright red blood is still soaking through and dripping from the dressing. His pulse has risen from 104 to 126/min and his blood pressure has fallen from 122/78 to 98/60 mmHg. There is no embedded object.\n\nWhat should the doctor do next to control the bleeding?",
+  "options": [
+    {
+      "label": "A",
+      "text": "Apply an arterial tourniquet high on the upper arm",
+      "isCorrect": true,
+      "explanation": "Correctly applied direct pressure has failed, and he is now developing shock. Life-threatening limb bleeding that direct pressure cannot control is an indication for an arterial tourniquet, with the time recorded and urgent surgical control to follow."
+    },
+    {
+      "label": "B",
+      "text": "Add more pads and continue pressure for 10 minutes",
+      "isCorrect": false,
+      "explanation": "Adding pads is reasonable for seepage, but this bleeding has continued through 10 minutes of firm pressure while his pulse and blood pressure worsen. More of the same delays effective control."
+    },
+    {
+      "label": "C",
+      "text": "Compress the brachial artery at a pressure point",
+      "isCorrect": false,
+      "explanation": "Compressing proximal pressure points is unreliable and no longer recommended."
+    },
+    {
+      "label": "D",
+      "text": "Elevate the arm and leave the current dressing on",
+      "isCorrect": false,
+      "explanation": "Elevation has no proven benefit and does nothing to escalate control of bleeding that pressure has not stopped."
+    },
+    {
+      "label": "E",
+      "text": "Clamp the bleeding vessel blindly with artery forceps",
+      "isCorrect": false,
+      "explanation": "Blind clamping in a bleeding wound can damage the adjacent nerves and is not a controlled way to stop the bleeding."
+    }
+  ],
+  "context": "Direct pressure is the first step for external bleeding; when properly applied pressure fails and the bleeding is life-threatening, escalate to a tourniquet and definitive control.",
+  "publicModule": {
+    "schemaVersion": 1,
+    "origin": "mirrored",
+    "discipline": "em",
+    "mirroredFrom": "md3:2c1a086ad9a5faee",
+    "itemText": {
+      "licence": "CC-BY-4.0",
+      "attribution": "MD3 contributors"
+    },
+    "evidence": {
+      "kind": "reference",
+      "sourceId": "anzcor-home-first-aid-guideline-9-1-1-first-aid-for-management-of-bleeding-89c2d7"
+    },
+    "review": {
+      "verdict": "passed",
+      "contentHash": "e14d0bfeb38d6bd37269883eb554aae367d54fef9256ebef9411804100f7861b"
+    }
+  }
+}

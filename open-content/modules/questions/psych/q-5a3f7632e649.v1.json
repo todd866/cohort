@@ -1,0 +1,64 @@
+{
+  "id": "bank:cohort:psych:q-5a3f7632e649:v1",
+  "rotation": "cohort-open",
+  "moduleNodes": [
+    "cohort/psych"
+  ],
+  "topics": [
+    "psych"
+  ],
+  "questionType": "management",
+  "difficulty": "hard",
+  "stem": "A 26-year-old man who used methamphetamine several hours ago is pacing the emergency department, shouting that staff are 'treating him like a criminal'. He punched a wall once in the triage area but has not threatened or touched anyone. He answers questions when spoken to and accepts a cup of water. Heart rate is 118/min, temperature 37.8 °C, and glucose is normal. His record shows he needed parenteral sedation at a previous presentation, and a nurse suggests intramuscular droperidol now 'before it gets worse'.\n\nWhat should the ED registrar do first?",
+  "options": [
+    {
+      "label": "A",
+      "text": "Give intramuscular droperidol now, given his past sedation",
+      "isCorrect": false,
+      "explanation": "Parenteral sedation is for a patient who cannot be engaged or is an immediate danger. He is still responding to conversation, and his history does not decide today's management."
+    },
+    {
+      "label": "B",
+      "text": "Have four security staff hold him for an examination",
+      "isCorrect": false,
+      "explanation": "Physical restraint of a patient who can engage escalates the situation and risks injury, especially in stimulant toxicity with a raised temperature."
+    },
+    {
+      "label": "C",
+      "text": "Talk with him in a quieter area, offering oral medication",
+      "isCorrect": true,
+      "explanation": "While he can still engage, verbal de-escalation in a calmer space with one clinician leading comes first, with oral medication offered voluntarily. Sedation or restraint follow only if this fails."
+    },
+    {
+      "label": "D",
+      "text": "Take a full substance-use history at the triage desk",
+      "isCorrect": false,
+      "explanation": "Detailed history-taking in a busy triage area keeps him in the setting that is agitating him. Calm the situation first."
+    },
+    {
+      "label": "E",
+      "text": "Leave him alone in a side room until the drug wears off",
+      "isCorrect": false,
+      "explanation": "His tachycardia and temperature need monitoring in stimulant toxicity; isolating him without observation is unsafe."
+    }
+  ],
+  "context": "When an agitated patient can still engage, verbal de-escalation in a calm space, with oral medication offered, comes before parenteral sedation or restraint, whatever happened at a previous presentation.",
+  "publicModule": {
+    "schemaVersion": 1,
+    "origin": "mirrored",
+    "discipline": "psych",
+    "mirroredFrom": "md3:5a3f7632e6492b9b",
+    "itemText": {
+      "licence": "CC-BY-4.0",
+      "attribution": "MD3 contributors"
+    },
+    "evidence": {
+      "kind": "reference",
+      "sourceId": "nice-guidance-ng10-chapter-recommendations-2bdf88"
+    },
+    "review": {
+      "verdict": "passed",
+      "contentHash": "9593f2f2f99096037bf2e609d88c300385f84c434a63013a346e9af097cdacc2"
+    }
+  }
+}

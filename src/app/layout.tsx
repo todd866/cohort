@@ -107,6 +107,12 @@ export default async function RootLayout({
   return (
     <html lang="en" suppressHydrationWarning className={`${geistSans.variable} ${geistMono.variable}`}>
       <head>
+        {/*
+          The deploy that rendered this page. When a new service worker takes
+          control, the page reloads only if the worker is from a different build
+          (src/lib/offline/sw-registration.ts).
+        */}
+        <meta name="md3-build" content={process.env.VERCEL_GIT_COMMIT_SHA ?? ''} />
         <script
           dangerouslySetInnerHTML={{
             __html: `

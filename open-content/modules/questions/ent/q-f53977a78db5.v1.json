@@ -1,0 +1,64 @@
+{
+  "id": "bank:cohort:ent:q-f53977a78db5:v1",
+  "rotation": "cohort-open",
+  "moduleNodes": [
+    "cohort/ent"
+  ],
+  "topics": [
+    "ent"
+  ],
+  "questionType": "management",
+  "difficulty": "medium",
+  "stem": "A four-year-old had bilateral middle-ear effusions documented four months ago, after an episode of acute otitis media. He has had no ear pain or fever since. Repeat otoscopy still shows dull, retracted membranes with fluid and no bulging, and tympanograms are flat on both sides. Audiology shows a bilateral conductive hearing loss averaging 35 dB HL. His parents say he is coping at preschool and his speech is clear, although he turns the television up.\n\nWhat should the GP arrange next?",
+  "options": [
+    {
+      "label": "A",
+      "text": "Intranasal corticosteroid spray for 3 months, then review",
+      "isCorrect": false,
+      "explanation": "Intranasal steroids do not clear middle-ear effusions and should not delay referral."
+    },
+    {
+      "label": "B",
+      "text": "Continue watchful waiting while he is coping at preschool",
+      "isCorrect": false,
+      "explanation": "Apparent coping does not remove the indication. Persistent bilateral effusion with a 35 dB loss in a preschooler can affect language and learning before anyone notices; turning up the television is already a sign."
+    },
+    {
+      "label": "C",
+      "text": "Repeat audiology in 3 months before deciding on referral",
+      "isCorrect": false,
+      "explanation": "The 3-month observation period has passed and the hearing loss is already confirmed. More waiting prolongs hearing loss during a critical period for speech."
+    },
+    {
+      "label": "D",
+      "text": "Refer to ENT for assessment for ventilation tubes",
+      "isCorrect": true,
+      "explanation": "Correct. Bilateral effusions for more than 3 months with a confirmed bilateral hearing loss warrant ENT referral to consider ventilation tubes, even when the child seems to be coping. Advise preschool staff about his hearing meanwhile."
+    },
+    {
+      "label": "E",
+      "text": "A 4-week course of oral amoxicillin, then review",
+      "isCorrect": false,
+      "explanation": "Antibiotics give at most a short-lived benefit in otitis media with effusion and are not recommended."
+    }
+  ],
+  "context": "Bilateral otitis media with effusion lasting more than 3 months with a confirmed hearing loss needs ENT referral to consider ventilation tubes, even if the child appears to be coping; antibiotics, steroids and decongestants do not help.",
+  "publicModule": {
+    "schemaVersion": 1,
+    "origin": "mirrored",
+    "discipline": "ent",
+    "mirroredFrom": "md3:f53977a78db5824c",
+    "itemText": {
+      "licence": "CC-BY-4.0",
+      "attribution": "MD3 contributors"
+    },
+    "evidence": {
+      "kind": "reference",
+      "sourceId": "rch-clinicalguide-guideline-index-acute-otitis-media-72ebc3"
+    },
+    "review": {
+      "verdict": "passed",
+      "contentHash": "3e36d2247845d23476ce754f7b32fa483de84a7b8b9dc7051d4c4aecfa38dfb4"
+    }
+  }
+}

@@ -1,0 +1,64 @@
+{
+  "id": "bank:cohort:pharm:q-83eaf5c73061:v1",
+  "rotation": "cohort-open",
+  "moduleNodes": [
+    "cohort/pharm"
+  ],
+  "topics": [
+    "pharm"
+  ],
+  "questionType": "mechanism",
+  "difficulty": "medium",
+  "stem": "A motorcyclist with left rib fractures is breathing comfortably with oxygen saturation of 97%. CT has shown a small left pneumothorax that has not yet been drained. Paramedics had started a nitrous oxide–oxygen mixture for pain, and the emergency consultant stops it and switches to intravenous opioid analgesia.\n\nWhich property of nitrous oxide is the main reason for stopping it?",
+  "options": [
+    {
+      "label": "A",
+      "text": "Nitrous oxide enters the gas space faster than nitrogen leaves",
+      "isCorrect": true,
+      "explanation": "Nitrous oxide is far more soluble in blood than nitrogen, so it diffuses into an air-filled space much faster than nitrogen can diffuse out. The pneumothorax enlarges and can progress to tension."
+    },
+    {
+      "label": "B",
+      "text": "Nitrogen diffuses into the pleural gas faster than it can leave",
+      "isCorrect": false,
+      "explanation": "The direction is reversed. Nitrogen is poorly soluble and leaves the trapped gas slowly; it is nitrous oxide that moves in quickly."
+    },
+    {
+      "label": "C",
+      "text": "Nitrous oxide raises pulmonary vascular resistance and pressure",
+      "isCorrect": false,
+      "explanation": "A modest rise in pulmonary vascular resistance can occur, but it does not enlarge a pneumothorax and is not the main reason to stop the gas here."
+    },
+    {
+      "label": "D",
+      "text": "Nitrous oxide causes diffusion hypoxia when the mask is removed",
+      "isCorrect": false,
+      "explanation": "Diffusion hypoxia is a real effect at the end of nitrous oxide use and is prevented by giving oxygen. It does not explain the risk to an undrained pneumothorax."
+    },
+    {
+      "label": "E",
+      "text": "Nitrous oxide depresses respiratory drive after chest trauma",
+      "isCorrect": false,
+      "explanation": "Nitrous oxide has little effect on respiratory drive at analgesic concentrations. His breathing is comfortable, and the concern is the trapped gas."
+    }
+  ],
+  "context": "Nitrous oxide diffuses into trapped gas spaces faster than nitrogen leaves, so it can enlarge an undrained pneumothorax.",
+  "publicModule": {
+    "schemaVersion": 1,
+    "origin": "mirrored",
+    "discipline": "pharm",
+    "mirroredFrom": "md3:83eaf5c730616092",
+    "itemText": {
+      "licence": "CC-BY-4.0",
+      "attribution": "MD3 contributors"
+    },
+    "evidence": {
+      "kind": "reference",
+      "sourceId": "acsqhc-medicine-finder-entonox-c8dde3"
+    },
+    "review": {
+      "verdict": "passed",
+      "contentHash": "a41753de5b9e8694f5ebe5a9c063ce9705edc848a99d7fce0829d5004240be03"
+    }
+  }
+}

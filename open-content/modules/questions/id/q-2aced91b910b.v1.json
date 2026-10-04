@@ -1,0 +1,64 @@
+{
+  "id": "bank:cohort:id:q-2aced91b910b:v1",
+  "rotation": "cohort-open",
+  "moduleNodes": [
+    "cohort/id"
+  ],
+  "topics": [
+    "id"
+  ],
+  "questionType": "management",
+  "difficulty": "medium",
+  "stem": "At a NSW emergency department, an unvaccinated six-year-old returning from overseas has fever, cough, coryza, red eyes and a maculopapular rash that began on the face and spread downwards. Small white buccal lesions are seen. She is clinically stable and has been placed in the general waiting area. Confirmatory tests have not yet been collected.\n\nWhat should the treating clinician arrange immediately?",
+  "options": [
+    {
+      "label": "A",
+      "text": "Droplet precautions in a single room; notify if the PCR is positive",
+      "isCorrect": false,
+      "explanation": "Measles is airborne, not droplet-spread, and notification should follow clinical suspicion; waiting for PCR loses the window for post-exposure prophylaxis of contacts."
+    },
+    {
+      "label": "B",
+      "text": "Give her a surgical mask and keep her in the waiting area until seen",
+      "isCorrect": false,
+      "explanation": "A mask on the patient reduces but does not prevent airborne spread; she must leave the shared waiting area now."
+    },
+    {
+      "label": "C",
+      "text": "Contact precautions and test for measles, rubella and parvovirus",
+      "isCorrect": false,
+      "explanation": "Testing is right, but contact precautions do not stop airborne spread, and infection control must not wait for results."
+    },
+    {
+      "label": "D",
+      "text": "Give MMR vaccine now and send her home to await results",
+      "isCorrect": false,
+      "explanation": "MMR within 72 hours is post-exposure prophylaxis for susceptible contacts, not treatment for a probable case, and sending her home without public health advice risks further exposures."
+    },
+    {
+      "label": "E",
+      "text": "Move her to a negative-pressure room and notify public health now",
+      "isCorrect": true,
+      "explanation": "Correct. Suspected measles needs immediate airborne isolation (a negative-pressure room if available, staff with N95/P2 masks and evidence of immunity) and notification to the public health unit on clinical suspicion, before confirmation, so contacts in the waiting area can be traced."
+    }
+  ],
+  "context": "Treat suspected measles as infectious while testing is pending: separate the patient, use airborne precautions and promptly involve public health.",
+  "publicModule": {
+    "schemaVersion": 1,
+    "origin": "mirrored",
+    "discipline": "id",
+    "mirroredFrom": "md3:2aced91b910b9514",
+    "itemText": {
+      "licence": "CC-BY-4.0",
+      "attribution": "MD3 contributors"
+    },
+    "evidence": {
+      "kind": "reference",
+      "sourceId": "nsw-health-sabs-documents-2024-si-010-bc6f07"
+    },
+    "review": {
+      "verdict": "passed",
+      "contentHash": "078b9625775ed93d4a2d4ba32eac92e7af9d55c49926a2939c368663a2f8f130"
+    }
+  }
+}

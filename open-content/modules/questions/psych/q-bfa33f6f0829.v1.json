@@ -1,0 +1,64 @@
+{
+  "id": "bank:cohort:psych:q-bfa33f6f0829:v1",
+  "rotation": "cohort-open",
+  "moduleNodes": [
+    "cohort/psych"
+  ],
+  "topics": [
+    "psych"
+  ],
+  "questionType": "diagnosis",
+  "difficulty": "hard",
+  "stem": "A 39-year-old woman has been well on venlafaxine for nine months. She returned yesterday from a five-day trip on which her tablets were in a lost suitcase. From the second day away she had dizziness made worse by turning her head, nausea, irritability, insomnia with vivid dreams, aching muscles and two tearful evenings. On day 3 she took tramadol for a back strain. She still enjoys seeing friends and has no pervasive low mood. Temperature is 37.2 °C; she has no tremor, clonus or hyperreflexia.\n\nWhat best explains her symptoms?",
+  "options": [
+    {
+      "label": "A",
+      "text": "Relapse of major depression",
+      "isCorrect": false,
+      "explanation": "Brief tearfulness and irritability beginning within two days of stopping, with preserved enjoyment, are better explained by withdrawal. Relapse usually develops over weeks."
+    },
+    {
+      "label": "B",
+      "text": "Serotonin toxicity from tramadol",
+      "isCorrect": false,
+      "explanation": "Her symptoms began before the tramadol, while she was taking no serotonergic drug. Serotonin toxicity needs neuromuscular signs such as clonus and hyperreflexia, which are absent."
+    },
+    {
+      "label": "C",
+      "text": "Viral labyrinthitis",
+      "isCorrect": false,
+      "explanation": "Labyrinthitis causes continuous vertigo, often after a viral illness, but would not explain the vivid dreams, irritability, insomnia and mood change starting with missed doses."
+    },
+    {
+      "label": "D",
+      "text": "Antidepressant withdrawal",
+      "isCorrect": true,
+      "explanation": "Dizziness, nausea, flu-like aches, sleep disturbance with vivid dreams, irritability and tearfulness beginning a day or two after stopping venlafaxine, a short half-life drug, is antidepressant withdrawal. Restarting her usual dose usually settles it quickly."
+    },
+    {
+      "label": "E",
+      "text": "Recurrence of an anxiety disorder",
+      "isCorrect": false,
+      "explanation": "Anxiety does not explain dizziness on head movement, muscle aches and vivid dreams that began exactly when the venlafaxine stopped."
+    }
+  ],
+  "context": "Antidepressant withdrawal can begin within a day or two of missed doses, especially with venlafaxine or paroxetine. Its timing, physical symptoms and preserved enjoyment separate it from relapse; serotonin toxicity needs neuromuscular signs.",
+  "publicModule": {
+    "schemaVersion": 1,
+    "origin": "mirrored",
+    "discipline": "psych",
+    "mirroredFrom": "md3:bfa33f6f0829c829",
+    "itemText": {
+      "licence": "CC-BY-4.0",
+      "attribution": "MD3 contributors"
+    },
+    "evidence": {
+      "kind": "reference",
+      "sourceId": "nice-guidance-ng222-chapter-recommendations-73ce61"
+    },
+    "review": {
+      "verdict": "passed",
+      "contentHash": "9ceb7d54bebbcda5d0cb0a218f5650cc8c7aef61394a09101e90d890aae10cda"
+    }
+  }
+}

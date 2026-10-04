@@ -1,0 +1,64 @@
+{
+  "id": "bank:cohort:obs:q-3a92c883816d:v1",
+  "rotation": "cohort-open",
+  "moduleNodes": [
+    "cohort/obs"
+  ],
+  "topics": [
+    "obs"
+  ],
+  "questionType": "knowledge",
+  "difficulty": "medium",
+  "stem": "Twenty-five minutes after a spontaneous vaginal birth, a woman is holding her baby skin-to-skin. She chose active management: intramuscular oxytocin was given at the birth and the cord has been clamped and cut. Controlled cord traction has not yet delivered the placenta. Blood loss is 200 mL, the uterus is contracted and her observations are normal.\n\nWhich statement correctly describes her labour at this point?",
+  "options": [
+    {
+      "label": "A",
+      "text": "Third stage, prolonged if the placenta is still in at 30 minutes",
+      "isCorrect": true,
+      "explanation": "The third stage runs from birth of the baby to delivery of the placenta and membranes. With active management it is prolonged at 30 minutes, so escalation should be planned now if the placenta does not deliver."
+    },
+    {
+      "label": "B",
+      "text": "Third stage, prolonged only if the placenta is still in at 60 minutes",
+      "isCorrect": false,
+      "explanation": "Sixty minutes is the limit for a physiological third stage. Oxytocin and controlled cord traction shorten the expected interval to 30 minutes."
+    },
+    {
+      "label": "C",
+      "text": "Second stage, which ends once the placenta and membranes deliver",
+      "isCorrect": false,
+      "explanation": "The second stage ends with the birth of the baby, not of the placenta."
+    },
+    {
+      "label": "D",
+      "text": "Fourth stage, as the third stage ended with the birth of the baby",
+      "isCorrect": false,
+      "explanation": "The third stage ends with delivery of the placenta, not the baby. The observation period after the placenta, sometimes called the fourth stage, has not begun."
+    },
+    {
+      "label": "E",
+      "text": "Third stage, with no time limit while bleeding is light",
+      "isCorrect": false,
+      "explanation": "Light bleeding does not remove the time limit: a retained placenta can bleed suddenly, and a prolonged third stage needs assessment."
+    }
+  ],
+  "context": "The third stage lasts from birth of the baby until the placenta and membranes deliver; it is prolonged after 30 minutes with active management and after 60 minutes with physiological management.",
+  "publicModule": {
+    "schemaVersion": 1,
+    "origin": "mirrored",
+    "discipline": "obs",
+    "mirroredFrom": "md3:3a92c883816da777",
+    "itemText": {
+      "licence": "CC-BY-4.0",
+      "attribution": "MD3 contributors"
+    },
+    "evidence": {
+      "kind": "reference",
+      "sourceId": "nice-guidance-ng235-chapter-recommendations-318c34"
+    },
+    "review": {
+      "verdict": "passed",
+      "contentHash": "b2aab15ac392a6de4779af7361152e06acbab85b44c6627b847d7cb28bea5d1f"
+    }
+  }
+}

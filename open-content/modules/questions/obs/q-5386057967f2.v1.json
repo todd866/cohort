@@ -1,0 +1,64 @@
+{
+  "id": "bank:cohort:obs:q-5386057967f2:v1",
+  "rotation": "cohort-open",
+  "moduleNodes": [
+    "cohort/obs"
+  ],
+  "topics": [
+    "obs"
+  ],
+  "questionType": "management",
+  "difficulty": "hard",
+  "stem": "At 21 weeks in her first pregnancy, a 31-year-old has a transvaginal cervical length of 18 mm on her morphology scan. Three years ago she had a LLETZ for a high-grade cervical lesion. The cervix is closed on speculum examination, she has no contractions, bleeding or fluid loss, and the fetus is a normally grown singleton. She asks whether she needs a stitch because of her previous cervical surgery.\n\nWhich preventive treatment should the obstetrician recommend?",
+  "options": [
+    {
+      "label": "A",
+      "text": "Cervical cerclage, as her LLETZ has weakened the cervix",
+      "isCorrect": false,
+      "explanation": "Previous cervical surgery alone is not an indication for cerclage; without a spontaneous preterm birth or midtrimester loss, a short cervix is treated with progesterone."
+    },
+    {
+      "label": "B",
+      "text": "Vaginal progesterone, started now and continued until about 36 weeks",
+      "isCorrect": true,
+      "explanation": "An asymptomatic singleton with a short cervix before 24 weeks is offered vaginal progesterone, which lowers the risk of preterm birth; her LLETZ does not change that."
+    },
+    {
+      "label": "C",
+      "text": "An Arabin cervical pessary in place of any medicine",
+      "isCorrect": false,
+      "explanation": "Pessaries have not shown consistent benefit in singleton pregnancies with a short cervix and are not routinely recommended."
+    },
+    {
+      "label": "D",
+      "text": "Maintenance oral nifedipine, to suppress contractions until 34 weeks",
+      "isCorrect": false,
+      "explanation": "Maintenance tocolysis does not prevent preterm birth in an asymptomatic woman with a short cervix."
+    },
+    {
+      "label": "E",
+      "text": "A course of betamethasone now, as preterm birth is likely",
+      "isCorrect": false,
+      "explanation": "Corticosteroids are given when birth is likely within seven days, and a short cervix at 21 weeks is not that."
+    }
+  ],
+  "context": "A short cervix before 24 weeks in a singleton without previous spontaneous preterm birth is treated with vaginal progesterone; a previous LLETZ is not an indication for cerclage.",
+  "publicModule": {
+    "schemaVersion": 1,
+    "origin": "mirrored",
+    "discipline": "obs",
+    "mirroredFrom": "md3:5386057967f2ad89",
+    "itemText": {
+      "licence": "CC-BY-4.0",
+      "attribution": "MD3 contributors"
+    },
+    "evidence": {
+      "kind": "reference",
+      "sourceId": "qld-health-data-assets-pdf-file-0019-140149-g-ptl-fd0e08"
+    },
+    "review": {
+      "verdict": "passed",
+      "contentHash": "dd6cea3580b499598ab9e9036911345ac0e3f472e054e99d0b3979a82c18cb6c"
+    }
+  }
+}

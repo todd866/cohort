@@ -1,0 +1,64 @@
+{
+  "id": "bank:cohort:psych:q-d6100ff4685e:v1",
+  "rotation": "cohort-open",
+  "moduleNodes": [
+    "cohort/psych"
+  ],
+  "topics": [
+    "psych"
+  ],
+  "questionType": "diagnosis",
+  "difficulty": "medium",
+  "stem": "A 19-year-old man's parents bring him in because they fear he is depressed. For four days he has been irritable and anxious, has slept poorly with vivid dreams, has barely eaten, wakes in sweats and says nothing feels enjoyable. They believe depression is 'coming out' now that he has stopped 'self-medicating': he smoked cannabis every day for three years and stopped on the day he accepted a job that drug tests its staff. He starts the job next week and is worried about coping. Last year he had a similar 'flat week' while on a remote camping trip, which lifted when he got home. His mood was not persistently low before he started cannabis, and he has no suicidal thoughts or psychotic symptoms.\n\nWhat is the most likely explanation?",
+  "options": [
+    {
+      "label": "A",
+      "text": "Adjustment disorder with anxiety and depressed mood",
+      "isCorrect": false,
+      "explanation": "The new job is a stressor, but his symptoms began within days of stopping heavy cannabis use and match an earlier episode when he had none."
+    },
+    {
+      "label": "B",
+      "text": "Generalised anxiety disorder",
+      "isCorrect": false,
+      "explanation": "GAD needs at least six months of excessive worry about several matters. His anxiety began four days ago."
+    },
+    {
+      "label": "C",
+      "text": "Persistent depressive disorder unmasked by abstinence",
+      "isCorrect": false,
+      "explanation": "Persistent depressive disorder needs low mood for most days over two years. His mood was not persistently low before he started cannabis."
+    },
+    {
+      "label": "D",
+      "text": "Cannabis withdrawal",
+      "isCorrect": true,
+      "explanation": "Irritability, anxiety, poor sleep with vivid dreams, reduced appetite, low mood and sweating within a week of stopping daily cannabis is withdrawal, which usually settles over one to two weeks. The 'flat week' on a camping trip, away from his supply, was probably the same thing."
+    },
+    {
+      "label": "E",
+      "text": "Major depressive episode",
+      "isCorrect": false,
+      "explanation": "He has enough symptoms to resemble a depressive episode, but a major depressive episode requires two weeks of symptoms. Four days of low mood starting with abstinence is better explained by withdrawal; review him if it persists beyond two to three weeks."
+    }
+  ],
+  "context": "Cannabis withdrawal begins within days of stopping heavy use: irritability, anxiety, poor sleep with vivid dreams, reduced appetite and low mood, settling over one to two weeks. Low mood that persists beyond that needs reassessment.",
+  "publicModule": {
+    "schemaVersion": 1,
+    "origin": "mirrored",
+    "discipline": "psych",
+    "mirroredFrom": "md3:d6100ff4685eaee2",
+    "itemText": {
+      "licence": "CC-BY-4.0",
+      "attribution": "MD3 contributors"
+    },
+    "evidence": {
+      "kind": "reference",
+      "sourceId": "nsw-health-aod-professionals-publications-managing-withdrawal-e60532"
+    },
+    "review": {
+      "verdict": "passed",
+      "contentHash": "9bbe6e8e21228860ce3044d0b87fc02d9f9473f5564f291220918947fff32d79"
+    }
+  }
+}

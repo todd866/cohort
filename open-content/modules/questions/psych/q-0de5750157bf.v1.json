@@ -1,0 +1,64 @@
+{
+  "id": "bank:cohort:psych:q-0de5750157bf:v1",
+  "rotation": "cohort-open",
+  "moduleNodes": [
+    "cohort/psych"
+  ],
+  "topics": [
+    "psych"
+  ],
+  "questionType": "knowledge",
+  "difficulty": "hard",
+  "stem": "A man with schizophrenia is an involuntary patient under the NSW Mental Health Act. He holds a fixed belief that his neighbours are spying on him. He declines an elective knee replacement. With information presented clearly, he describes the operation, its benefits and risks and what may happen without it, and says he would rather live with the pain than face months of rehabilitation. His reasons do not involve his neighbours, and his choice is consistent across visits. His sister urges the team to proceed.\n\nWhich conclusion is most appropriate?",
+  "options": [
+    {
+      "label": "A",
+      "text": "His involuntary status means the team decides about surgery",
+      "isCorrect": false,
+      "explanation": "Involuntary status under the Mental Health Act authorises mental health treatment, not elective surgery. Consent to other treatment depends on his capacity for that decision."
+    },
+    {
+      "label": "B",
+      "text": "His fixed delusion means he lacks capacity for medical decisions",
+      "isCorrect": false,
+      "explanation": "Capacity is decision-specific. A delusion that does not influence this decision does not remove his ability to refuse surgery."
+    },
+    {
+      "label": "C",
+      "text": "He has capacity for this decision, so his refusal should stand",
+      "isCorrect": true,
+      "explanation": "He understands, retains and weighs the relevant information and communicates a consistent choice uninfluenced by his delusion. He has capacity for this decision, so his refusal is valid."
+    },
+    {
+      "label": "D",
+      "text": "His sister, as person responsible, can consent on his behalf",
+      "isCorrect": false,
+      "explanation": "A person responsible can consent only when the patient lacks capacity. He has capacity, so his sister’s view does not override his refusal."
+    },
+    {
+      "label": "E",
+      "text": "Capacity is uncertain until the delusion has been treated",
+      "isCorrect": false,
+      "explanation": "Capacity is assessed now, for the decision at hand. Waiting for unrelated symptoms to resolve would ignore his demonstrated abilities."
+    }
+  ],
+  "context": "Assess capacity from the person’s abilities for the particular decision, not from diagnosis or agreement with advice.",
+  "publicModule": {
+    "schemaVersion": 1,
+    "origin": "mirrored",
+    "discipline": "psych",
+    "mirroredFrom": "md3:0de5750157bf785b",
+    "itemText": {
+      "licence": "CC-BY-4.0",
+      "attribution": "MD3 contributors"
+    },
+    "evidence": {
+      "kind": "reference",
+      "sourceId": "nsw-health-policies-manuals-publications-consent-to-medical-healthcare-treatment-aa062c"
+    },
+    "review": {
+      "verdict": "passed",
+      "contentHash": "3e3492be0321833d790efce5a1c55b880b42f1f8dedf820ad0bd8ace069647b6"
+    }
+  }
+}

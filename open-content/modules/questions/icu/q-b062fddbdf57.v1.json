@@ -1,0 +1,64 @@
+{
+  "id": "bank:cohort:icu:q-b062fddbdf57:v1",
+  "rotation": "cohort-open",
+  "moduleNodes": [
+    "cohort/icu"
+  ],
+  "topics": [
+    "icu"
+  ],
+  "questionType": "management",
+  "difficulty": "medium",
+  "stem": "Forty-eight hours after admission with pyelonephritis and sepsis, a 52-year-old is afebrile, eating and improving on intravenous piperacillin–tazobactam. Blood and urine grow the same Escherichia coli, susceptible to amoxicillin, cefalexin, trimethoprim–sulfamethoxazole, ciprofloxacin and piperacillin–tazobactam. Renal ultrasound shows no obstruction or abscess.\n\nWhat is the most appropriate antibiotic plan?",
+  "options": [
+    {
+      "label": "A",
+      "text": "Continue piperacillin–tazobactam to complete the whole course",
+      "isCorrect": false,
+      "explanation": "Continuing broad cover once susceptibilities are known adds resistance pressure and adverse effects without benefit."
+    },
+    {
+      "label": "B",
+      "text": "Narrow to the narrowest susceptible agent, then oral",
+      "isCorrect": true,
+      "explanation": "Cultures and clinical improvement at 48 hours allow narrowing from piperacillin–tazobactam to the narrowest effective agent the local guideline recommends, moved to the oral route once he can absorb it. Bacteraemia from a urinary source with no undrained focus does not need continued broad cover."
+    },
+    {
+      "label": "C",
+      "text": "Switch to oral ciprofloxacin, as it reaches the urine well",
+      "isCorrect": false,
+      "explanation": "Ciprofloxacin would work, but it is broader than needed and is reserved for resistant organisms or allergy in Australian guidelines."
+    },
+    {
+      "label": "D",
+      "text": "Add gentamicin because the blood cultures were positive",
+      "isCorrect": false,
+      "explanation": "A susceptible organism with a controlled source does not need a second agent because it was in the blood."
+    },
+    {
+      "label": "E",
+      "text": "Stop antibiotics now that he is afebrile and eating",
+      "isCorrect": false,
+      "explanation": "Bacteraemic pyelonephritis needs a full course; improvement means narrowing, not stopping."
+    }
+  ],
+  "context": "Review empirical antibiotics at 48 hours: once cultures and clinical improvement allow, narrow to the narrowest effective agent and switch to oral, rather than continuing broad cover or reaching for another broad oral drug.",
+  "publicModule": {
+    "schemaVersion": 1,
+    "origin": "mirrored",
+    "discipline": "icu",
+    "mirroredFrom": "md3:b062fddbdf57c291",
+    "itemText": {
+      "licence": "CC-BY-4.0",
+      "attribution": "MD3 contributors"
+    },
+    "evidence": {
+      "kind": "reference",
+      "sourceId": "acsqhc-clinical-care-standards-antimicrobial-stewardship-40689a"
+    },
+    "review": {
+      "verdict": "passed",
+      "contentHash": "d0be024864dbd973ad9eda42717aa2485d2cbf0ccfefbe8b9af92919ed31a41c"
+    }
+  }
+}

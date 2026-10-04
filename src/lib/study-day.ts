@@ -54,7 +54,9 @@ export function getStudyDayStart(
     day = prev.getUTCDate();
   }
 
-  // Compute current UTC offset: localTime(now) - UTC(now)
+  // Compute current UTC offset: localTime(now) - UTC(now). The formatter has
+  // whole seconds, so compare against now truncated to the second; otherwise
+  // the offset, and the returned boundary, carry now's milliseconds.
   const localMs = Date.UTC(
     parseInt(parts.year),
     parseInt(parts.month) - 1,
@@ -63,7 +65,7 @@ export function getStudyDayStart(
     parseInt(parts.minute),
     parseInt(parts.second),
   );
-  const offsetMs = localMs - now.getTime();
+  const offsetMs = localMs - Math.floor(now.getTime() / 1000) * 1000;
 
   // Target: resetHour:00:00 on the determined date, in the user's timezone
   const targetLocalMs = Date.UTC(year, month - 1, day, resetHour, 0, 0, 0);

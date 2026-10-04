@@ -1,0 +1,64 @@
+{
+  "id": "bank:cohort:gi:q-2622d78526f8:v1",
+  "rotation": "cohort-open",
+  "moduleNodes": [
+    "cohort/gi"
+  ],
+  "topics": [
+    "gi"
+  ],
+  "questionType": "management",
+  "difficulty": "hard",
+  "stem": "A 9-month-old boy has had profuse watery diarrhoea and vomiting for 3 days. He is drowsy, with mottled, cold hands and feet, deep sighing breathing, and deeply sunken eyes and fontanelle.\n\n| Measurement | Value | Reference range |\n| --- | --- | --- |\n| Weight | 8 kg | — |\n| Capillary refill time | 5 seconds | — |\n| Heart rate | 190/min | — |\n| Sodium | 137 mmol/L | 135-145 |\n| Potassium | 3.8 mmol/L | 3.5-5.0 |\n| Bicarbonate | 12 mmol/L | 18-25 |\n| Urea | 11.8 mmol/L | 1.8-6.4 |\n| Glucose | 4.4 mmol/L | 3.6-5.4 |\n\nAn intravenous cannula is in place. Which fluid should he receive first?",
+  "options": [
+    {
+      "label": "A",
+      "text": "Oral rehydration solution via NG tube",
+      "isCorrect": false,
+      "explanation": "Enteral rehydration suits mild to moderate dehydration. He is shocked, with poor perfusion and a reduced conscious state, so IV resuscitation comes first."
+    },
+    {
+      "label": "B",
+      "text": "0.45% sodium chloride + 2.5% glucose infusion",
+      "isCorrect": false,
+      "explanation": "Hypotonic saline is not recommended for routine use in children because of the risk of hyponatraemia, and a slow infusion does not treat shock."
+    },
+    {
+      "label": "C",
+      "text": "0.9% sodium chloride + 5% glucose infusion",
+      "isCorrect": false,
+      "explanation": "This is RCH's standard fluid for maintenance and deficit replacement once perfusion is restored. It is not the first fluid in shock."
+    },
+    {
+      "label": "D",
+      "text": "0.9% sodium chloride, rapid bolus",
+      "isCorrect": true,
+      "explanation": "Correct. He has severe dehydration with shock: drowsy, mottled, CRT 5 s and acidotic. Give 10-20 mL/kg of 0.9% sodium chloride as fast as possible, then reassess."
+    },
+    {
+      "label": "E",
+      "text": "5% glucose, rapid bolus",
+      "isCorrect": false,
+      "explanation": "A glucose-only bolus becomes free water once the glucose is used, so it does not restore circulating volume and risks hyponatraemia. His glucose is normal."
+    }
+  ],
+  "context": "Shock from gastroenteritis needs a 10-20 mL/kg bolus of 0.9% sodium chloride and reassessment. Oral or NG rehydration is for mild to moderate dehydration without shock.",
+  "publicModule": {
+    "schemaVersion": 1,
+    "origin": "mirrored",
+    "discipline": "gi",
+    "mirroredFrom": "md3:2622d78526f8c768",
+    "itemText": {
+      "licence": "CC-BY-4.0",
+      "attribution": "MD3 contributors"
+    },
+    "evidence": {
+      "kind": "reference",
+      "sourceId": "rch-clinicalguide-guideline-index-intravenous-fluids-0f2461"
+    },
+    "review": {
+      "verdict": "passed",
+      "contentHash": "309f0fc865c71895ccc0dd9b257d72cb5c692b96281a6aa26a79a809f8647b5d"
+    }
+  }
+}

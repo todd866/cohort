@@ -1,0 +1,64 @@
+{
+  "id": "bank:cohort:anaes:q-755bb5f781d0:v1",
+  "rotation": "cohort-open",
+  "moduleNodes": [
+    "cohort/anaes"
+  ],
+  "topics": [
+    "anaes"
+  ],
+  "questionType": "management",
+  "difficulty": "medium",
+  "stem": "A 40-year-old is in recovery after laparoscopic cholecystectomy. She is awake, shivering vigorously and uncomfortable, with a core temperature of 35.2°C. Airway, breathing and circulation are stable, and she is receiving oxygen. Two warmed cotton blankets have been applied, and the ward is asking when she can be transferred.\n\nWhich measure should the recovery team prioritise?",
+  "options": [
+    {
+      "label": "A",
+      "text": "Add more warmed blankets and recheck temperature in an hour",
+      "isCorrect": false,
+      "explanation": "Passive insulation limits further loss but rewarms slowly. A patient below 36°C should be actively warmed."
+    },
+    {
+      "label": "B",
+      "text": "Give pethidine to stop the shivering, then warm passively",
+      "isCorrect": false,
+      "explanation": "Pethidine can reduce shivering, but abolishing the shiver removes heat production without correcting the low temperature. Active warming treats the cause."
+    },
+    {
+      "label": "C",
+      "text": "Start forced-air warming and monitor core temperature",
+      "isCorrect": true,
+      "explanation": "Forced-air warming actively restores core temperature, which also relieves shivering. Monitor temperature until it reaches at least 36°C."
+    },
+    {
+      "label": "D",
+      "text": "Give a warmed crystalloid bolus as the sole warming step",
+      "isCorrect": false,
+      "explanation": "Warmed IV fluid prevents further cooling when fluids are needed, but a bolus given only to warm her is ineffective and unnecessary."
+    },
+    {
+      "label": "E",
+      "text": "Transfer to the ward once the shivering has settled",
+      "isCorrect": false,
+      "explanation": "Transfer should wait until her temperature is at least 36°C. Settling of shivering does not show that she is normothermic."
+    }
+  ],
+  "context": "Treat postoperative hypothermia with active warming such as forced air, and do not transfer until the core temperature is at least 36°C.",
+  "publicModule": {
+    "schemaVersion": 1,
+    "origin": "mirrored",
+    "discipline": "anaes",
+    "mirroredFrom": "md3:755bb5f781d01585",
+    "itemText": {
+      "licence": "CC-BY-4.0",
+      "attribution": "MD3 contributors"
+    },
+    "evidence": {
+      "kind": "reference",
+      "sourceId": "nice-guidance-cg65-resources-full-guideline-pdf-196802751-b42f43"
+    },
+    "review": {
+      "verdict": "passed",
+      "contentHash": "303361aebd4582ecb6dd42b106783390cdf0a84173650463b7006eeeefe935c7"
+    }
+  }
+}

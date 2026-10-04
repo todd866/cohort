@@ -1,0 +1,64 @@
+{
+  "id": "bank:cohort:psych:q-c423a69ac134:v1",
+  "rotation": "cohort-open",
+  "moduleNodes": [
+    "cohort/psych"
+  ],
+  "topics": [
+    "psych"
+  ],
+  "questionType": "management",
+  "difficulty": "hard",
+  "stem": "A 27-year-old man with schizophrenia has recovered on oral aripiprazole, which controls his symptoms fully and which he tolerates well. He has relapsed twice in two years; each relapse followed a change of roster to night shifts, and at his last admission his aripiprazole plasma level was below the laboratory's detection limit. He says he takes his tablets 'most days' and that reminder apps have not helped. He is a voluntary patient, attends every appointment and wants to stay well and keep his job, though he says he would rather not have 'needles all the time'. He asks what would make another relapse less likely.\n\nWhat should his psychiatrist offer for discussion?",
+  "options": [
+    {
+      "label": "A",
+      "text": "A higher oral aripiprazole dose with the same daily routine",
+      "isCorrect": false,
+      "explanation": "His symptoms are fully controlled when he takes the medicine. A higher dose does not help if doses are missed, and adds side effects."
+    },
+    {
+      "label": "B",
+      "text": "A switch to clozapine, as two relapses show treatment resistance",
+      "isCorrect": false,
+      "explanation": "Treatment resistance means persisting symptoms despite adequate, confirmed treatment. An undetectable level at relapse shows the problem is missed doses, not resistance."
+    },
+    {
+      "label": "C",
+      "text": "A community treatment order to make his treatment compulsory",
+      "isCorrect": false,
+      "explanation": "He is engaged, voluntary and asking for help. Under the NSW Mental Health Act 2007, care is given in the least restrictive setting consistent with safety; compulsion is not the answer to forgetting tablets in someone who wants treatment."
+    },
+    {
+      "label": "D",
+      "text": "Intermittent treatment guided by his early warning signs",
+      "isCorrect": false,
+      "explanation": "Intermittent treatment carries a higher relapse risk than continuous maintenance, and he has relapsed twice already."
+    },
+    {
+      "label": "E",
+      "text": "A long-acting injectable form of his current antipsychotic",
+      "isCorrect": true,
+      "explanation": "Relapses linked to roster changes, with an undetectable level, point to unintentional non-adherence. A long-acting injectable of the drug that works, given monthly or, with the newer formulation, every two months, removes the need for daily tablets; his concern about needles is part of the discussion, not a reason to withhold the option."
+    }
+  ],
+  "context": "When relapse follows missed oral doses, shown by an undetectable level, offer a long-acting injectable antipsychotic as a shared decision. Non-adherence is not treatment resistance, and a voluntary, engaged patient does not need a community treatment order.",
+  "publicModule": {
+    "schemaVersion": 1,
+    "origin": "mirrored",
+    "discipline": "psych",
+    "mirroredFrom": "md3:c423a69ac134053f",
+    "itemText": {
+      "licence": "CC-BY-4.0",
+      "attribution": "MD3 contributors"
+    },
+    "evidence": {
+      "kind": "reference",
+      "sourceId": "nice-guidance-cg178-chapter-recommendations-ab0e8b"
+    },
+    "review": {
+      "verdict": "passed",
+      "contentHash": "ce85b531fd536aabe4888edcdcb6f4445d5efdbc373bf078d7e6762995556590"
+    }
+  }
+}

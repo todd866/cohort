@@ -1,0 +1,64 @@
+{
+  "id": "bank:cohort:psych:q-a6d2f0ca01d7:v1",
+  "rotation": "cohort-open",
+  "moduleNodes": [
+    "cohort/psych"
+  ],
+  "topics": [
+    "psych"
+  ],
+  "questionType": "management",
+  "difficulty": "medium",
+  "stem": "An ED doctor is called to a patient found unresponsive after taking opioid tablets. Respirations are 4/min and shallow, SpO₂ is 80% on room air, pupils are pinpoint and a carotid pulse is present. A nurse has gone for naloxone, which will take about two minutes; a bag-valve-mask and oxygen are at the bedside.\n\nWhich action should take immediate priority?",
+  "options": [
+    {
+      "label": "A",
+      "text": "Apply high-flow oxygen by non-rebreather mask while awaiting naloxone",
+      "isCorrect": false,
+      "explanation": "High-flow oxygen does little when he is barely breathing; the problem is ventilation, not oxygen supply. He needs assisted breaths."
+    },
+    {
+      "label": "B",
+      "text": "Insert an intravenous cannula so naloxone can be given at once",
+      "isCorrect": false,
+      "explanation": "Access is useful, and naloxone can also be given intramuscularly or intranasally. Neither should delay supporting breathing now."
+    },
+    {
+      "label": "C",
+      "text": "Start chest compressions while another nurse brings naloxone",
+      "isCorrect": false,
+      "explanation": "A carotid pulse is present, so this is respiratory rather than cardiac arrest. Compressions are not indicated."
+    },
+    {
+      "label": "D",
+      "text": "Place in the recovery position and monitor oxygen saturation",
+      "isCorrect": false,
+      "explanation": "The recovery position protects the airway in someone breathing adequately. At 4 breaths/min with SpO₂ 80%, monitoring alone allows hypoxic injury."
+    },
+    {
+      "label": "E",
+      "text": "Open the airway and give bag-mask ventilation with added oxygen",
+      "isCorrect": true,
+      "explanation": "Severe hypoventilation with a pulse needs immediate airway opening and bag-mask ventilation with oxygen. Titrated naloxone follows as soon as it arrives."
+    }
+  ],
+  "context": "Severe opioid-related hypoventilation needs immediate airway and breathing support, with naloxone given promptly.",
+  "publicModule": {
+    "schemaVersion": 1,
+    "origin": "mirrored",
+    "discipline": "psych",
+    "mirroredFrom": "md3:a6d2f0ca01d7e256",
+    "itemText": {
+      "licence": "CC-BY-4.0",
+      "attribution": "MD3 contributors"
+    },
+    "evidence": {
+      "kind": "reference",
+      "sourceId": "anzcor-ed-life-support-guideline-11-10-resuscitation-in-special-circumstances-6e6a7d"
+    },
+    "review": {
+      "verdict": "passed",
+      "contentHash": "1bd3ccbb17bfbb03fdebbb384eb12eb8178c66fe695819823a3cb9a96c720ef6"
+    }
+  }
+}

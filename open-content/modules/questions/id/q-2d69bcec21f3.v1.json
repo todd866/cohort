@@ -1,0 +1,64 @@
+{
+  "id": "bank:cohort:id:q-2d69bcec21f3:v1",
+  "rotation": "cohort-open",
+  "moduleNodes": [
+    "cohort/id"
+  ],
+  "topics": [
+    "id"
+  ],
+  "questionType": "diagnosis",
+  "difficulty": "hard",
+  "stem": "A 3-year-old boy is admitted with fever and a liver abscess that grows Staphylococcus aureus. At 14 months he had Serratia osteomyelitis of the tibia, and he has needed drainage of two perianal abscesses. His neutrophil count is normal and his umbilical cord separated at 8 days. A maternal uncle died in childhood from a fungal lung infection. He is growing along the 25th centile and developing normally. What is the most likely diagnosis?",
+  "options": [
+    {
+      "label": "A",
+      "text": "Complement deficiency",
+      "isCorrect": false,
+      "explanation": "Late complement deficiency predisposes to recurrent Neisseria infection, and early component deficiency to encapsulated bacteria and lupus-like disease, not deep abscesses."
+    },
+    {
+      "label": "B",
+      "text": "Chronic granulomatous disease",
+      "isCorrect": true,
+      "explanation": "Correct. Defective NADPH oxidase stops phagocytes killing catalase-positive organisms: S. aureus liver abscess, Serratia osteomyelitis, Aspergillus. Test with DHR or NBT."
+    },
+    {
+      "label": "C",
+      "text": "Leukocyte adhesion deficiency",
+      "isCorrect": false,
+      "explanation": "Leukocyte adhesion deficiency gives delayed cord separation, very high neutrophil counts and infections without pus. This boy forms abscesses and his cord separated normally."
+    },
+    {
+      "label": "D",
+      "text": "Severe combined immunodeficiency",
+      "isCorrect": false,
+      "explanation": "SCID presents in early infancy with faltering growth, chronic diarrhoea, thrush and severe viral infection, and is usually fatal by age 2 without transplant."
+    },
+    {
+      "label": "E",
+      "text": "X-linked agammaglobulinaemia",
+      "isCorrect": false,
+      "explanation": "XLA causes recurrent sinopulmonary infection with encapsulated bacteria after 6 months, with absent tonsils and lymph nodes, not deep abscesses."
+    }
+  ],
+  "context": "Recurrent deep abscesses with catalase-positive organisms (S. aureus, Serratia, Aspergillus) suggest chronic granulomatous disease; confirm with a DHR or NBT test.",
+  "publicModule": {
+    "schemaVersion": 1,
+    "origin": "mirrored",
+    "discipline": "id",
+    "mirroredFrom": "md3:2d69bcec21f3b265",
+    "itemText": {
+      "licence": "CC-BY-4.0",
+      "attribution": "MD3 contributors"
+    },
+    "evidence": {
+      "kind": "reference",
+      "sourceId": "ascia-hp-papers-pid-a03f58"
+    },
+    "review": {
+      "verdict": "passed",
+      "contentHash": "88ab202cb787a8642c224fe77b849f5b4233fc23a850d2f1a6dd59d2b2604259"
+    }
+  }
+}

@@ -1,0 +1,64 @@
+{
+  "id": "bank:cohort:psych:q-a1b5eced2fd5:v1",
+  "rotation": "cohort-open",
+  "moduleNodes": [
+    "cohort/psych"
+  ],
+  "topics": [
+    "psych"
+  ],
+  "questionType": "management",
+  "difficulty": "hard",
+  "stem": "An emergency doctor assesses a 17-year-old who has severely restricted her eating and lost 18% of her body weight over three months. Her BMI is now 21 kg/m², and her parents point out that she is “not even underweight”. She has fainted twice this week. Her awake heart rate is 38/min and she becomes dizzy on standing. She is not an endurance athlete and has no current suicidal intent.\n\nWhat is the most appropriate disposition?",
+  "options": [
+    {
+      "label": "A",
+      "text": "Discharge with dietitian follow-up, as her BMI is normal",
+      "isCorrect": false,
+      "explanation": "A normal BMI does not exclude medical instability; rapid weight loss is the danger here."
+    },
+    {
+      "label": "B",
+      "text": "An urgent outpatient eating-disorder clinic appointment",
+      "isCorrect": false,
+      "explanation": "Specialist outpatient care is appropriate once she is medically stable. Bradycardia of 38/min with syncope needs inpatient monitoring now."
+    },
+    {
+      "label": "C",
+      "text": "Transfer to the mental health unit for supervised meals",
+      "isCorrect": false,
+      "explanation": "A mental health unit usually cannot provide the cardiac monitoring and refeeding care that her bradycardia and syncope require."
+    },
+    {
+      "label": "D",
+      "text": "Medical ward admission with specialist team input",
+      "isCorrect": true,
+      "explanation": "Marked bradycardia, syncope and postural symptoms after rapid weight loss indicate medical instability. She needs admission to a medical (adolescent) ward for monitoring and supervised refeeding, with eating-disorder team involvement."
+    },
+    {
+      "label": "E",
+      "text": "Weekly weighing by her GP while awaiting psychotherapy",
+      "isCorrect": false,
+      "explanation": "Weekly GP review leaves an unstable adolescent without monitoring and delays treatment."
+    }
+  ],
+  "context": "Rapid weight loss can cause dangerous medical instability at a normal-range BMI; bradycardia, syncope and postural symptoms decide admission, not the BMI.",
+  "publicModule": {
+    "schemaVersion": 1,
+    "origin": "mirrored",
+    "discipline": "psych",
+    "mirroredFrom": "md3:a1b5eced2fd5ab39",
+    "itemText": {
+      "licence": "CC-BY-4.0",
+      "attribution": "MD3 contributors"
+    },
+    "evidence": {
+      "kind": "reference",
+      "sourceId": "rch-eline-index-management-of-eating-disorders-in-the-emergency-department-f5e430"
+    },
+    "review": {
+      "verdict": "passed",
+      "contentHash": "24f26ea2e539a4054092649d575d932c33f1e65fc7f09d97700476baf1974cf9"
+    }
+  }
+}

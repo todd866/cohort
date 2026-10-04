@@ -1,3 +1,5 @@
+import { applyReviewChallengeWave } from './review-challenge';
+import { nudgeInstantChallenge } from './review-challenge-instant';
 import { NextResponse, after } from 'next/server';
 import { prisma } from '@/lib/prisma';
 import { logger } from '@/lib/logger';
@@ -7,6 +9,7 @@ import { getOpenIssueExclusions } from '@/lib/content-quality/open-issue-exclusi
 import {
   admitMasteredWithinBudget,
   freshnessTier,
+  partitionByFreshness,
   resolveRetirementPolicy,
   retiredQuestionIds as computeRetiredQuestionIds,
   type QuestionFamiliarity,
@@ -44,10 +47,13 @@ import { loadCurrentSessionContent, sessionSourceKey, withCurrentSessionBody } f
 import { filterDuplicateCardVariantGroups } from './unified-session-cache-helpers';
 import { isUsableQuestion } from '@/lib/question-validation';
 import { filterDeliverableReinforcementCardRows } from '@/lib/usmle/reinforcement-card-delivery';
-import { ownerPrivateOrSharedCardScope } from '@/lib/cards/read-repository.server';
+import { findManyCards, ownerPrivateOrSharedCardScope } from '@/lib/cards/read-repository.server';
 import { buildClinicalThreadAnchors } from '@/lib/knowledge/concept-thread-history';
 import { bindPracticeScaffoldDelivery, reconcileCompletedPracticeScaffolds } from '@/lib/practice-exam/follow-up-scaffold.server';
 import { choosePracticeScaffoldTarget, prepareInstantPracticeScaffold } from './practice-scaffold-selection';
+import { EXAM_ONLY_ROTATIONS, isNativeExamScaffold } from './exam-only-modules';
+import { reviewLearningPolicy } from './review-learning-policy';
+import { getReviewLearningGap } from './review-learning-gap.server';
 import {
   CONCEPT_THREAD_MAX_AGE_MS,
   CONCEPT_THREAD_POLICY_VERSION,
@@ -142,7 +148,10 @@ export async function tryInstantSession(
   // (see .claude/rules/repetition-guards.md: every post-pool injector is its
   // own hole). Skipping the lanes also drops their queries, so this mode is
   // strictly cheaper than mixed, never slower.
-  const questionsOnly = options.practiceScaffoldOnly || ctx.typeFilter === 'question';
+  const learningPolicy = reviewLearningPolicy(ctx.reviewChallenge?.level);
+  const questionsOnly = options.practiceScaffoldOnly
+    || ctx.typeFilter === 'question'
+    || learningPolicy.questionsOnly;
 
   // Lightweight exclusion: recently reviewed/exposed cards + answered questions (24h/48h).
   // Prevents serving the same cards after a page reload. Runs one indexed query — fast.
@@ -177,7 +186,10 @@ export async function tryInstantSession(
   // the query block so their due clocks can be fetched in the same round trip.
   const scaffoldCandidateIds = questionsOnly ? [] : ctx.rotationContent.cardList
     .filter((card) => (
-      card.complexity === 1
+      (EXAM_ONLY_ROTATIONS.has(ctx.rotation)
+        ? isNativeExamScaffold(ctx.rotation, card.topics)
+        : card.complexity === 1)
+      && (!learningPolicy.scaffoldsOnly || card.complexity === 1)
       && matchesRequestedTopics(card.topics, requestedTopics)
     ))
     .map((card) => card.id);
@@ -419,9 +431,14 @@ export async function tryInstantSession(
   }
 
   const globallyExcludedQuestionIds = await getExcludedQuestionIds();
+  const reviewGap = learningPolicy.questionsOnly
+    ? await getReviewLearningGap(ctx)
+    : null;
   const tExclusions = performance.now();
   const staticCards = questionsOnly ? [] : ctx.rotationContent.cardList.filter(
     (card) => (ctx.weekFilter === null || card.week === ctx.weekFilter)
+      && (!EXAM_ONLY_ROTATIONS.has(ctx.rotation) || isNativeExamScaffold(ctx.rotation, card.topics))
+      && (!learningPolicy.scaffoldsOnly || card.complexity === 1)
       && !recentExcludedCardIds.has(card.id)
       && !openIssue.cardIds.has(card.id)
       && (!ctx.difficultyFilter || card.difficulty === ctx.difficultyFilter)
@@ -448,6 +465,9 @@ export async function tryInstantSession(
       ).filter((question) => (
         (!ctx.difficultyFilter || question.difficulty === ctx.difficultyFilter)
         && matchesRequestedTopics(question.topics, requestedTopics)
+        && (!learningPolicy.questionsOnly
+          || (reviewGap?.available === true && question.difficulty === 'hard' && reviewGap.questionIds.has(question.id)))
+        && !learningPolicy.scaffoldsOnly
       ));
 
   // A silent null here costs the learner the full manifold build and leaves no
@@ -477,13 +497,43 @@ export async function tryInstantSession(
   // questions when the learner asked for MCQs only.
   const cardCount = questionsOnly
     ? 0
-    : Math.min(Math.ceil(ctx.batchSize * 0.6), staticCards.length);
+    : Math.min(Math.ceil(ctx.batchSize * learningPolicy.preferredCardShare), staticCards.length);
   const questionCount = Math.min(ctx.batchSize - cardCount, staticQuestions.length);
   // Sibling suppression applied AFTER shuffle so a different cloze variant wins
   // across sessions. Filter-time suppression would deterministically pick the
   // first sibling in content-map order, killing rotation. Mirrors the live
   // scheduler (pickCardCandidate in unified-scheduler.ts).
-  const shuffledCards = shuffle(staticCards);
+  let shuffledCards = shuffle(staticCards);
+  let randomizedQuestions = shuffle(staticQuestions);
+  const challengeLevel = options.practiceScaffoldOnly ? 0 : (ctx.reviewChallenge?.level ?? 0);
+  if (challengeLevel !== 0 && !ctx.isGuest) {
+    // Bounded point reads of materialized progress/quality, never history scans.
+    // Everything outside this short prefix keeps the control ordering.
+    const cardPrefix = shuffledCards.slice(0, 300);
+    const questionPrefix = randomizedQuestions.slice(0, 300);
+    const cardIds = cardPrefix.map(item => item.id);
+    const questionIds = questionPrefix.map(item => item.id);
+    const [progress, cardQuality, questionQuality] = await Promise.all([
+      cardIds.length ? prisma.cardProgress.findMany({
+        where: { userId: ctx.userId, cardId: { in: cardIds } }, select: { cardId: true },
+      }) : [],
+      cardIds.length ? findManyCards(ownerPrivateOrSharedCardScope(ctx.userId), {
+        where: { id: { in: cardIds } }, select: { id: true, facilityIndex: true, sampleSize: true },
+      }) : [],
+      questionIds.length ? prisma.question.findMany({
+        where: { id: { in: questionIds } }, select: { id: true, facilityIndex: true, totalAttempts: true },
+      }) : [],
+    ]);
+    const seen = new Set(progress.map(row => row.cardId));
+    const seenGroups = new Set(cardPrefix.filter(item => seen.has(item.id)).map(item => item.variantGroupId).filter(Boolean));
+    const eligibleCards = new Set(cardPrefix.filter(item => !seen.has(item.id)
+      && (!item.variantGroupId || !seenGroups.has(item.variantGroupId))).map(item => item.id));
+    const eligibleQuestions = new Set(questionPrefix.filter(item => !questionFamiliarity.has(item.id)).map(item => item.id));
+    shuffledCards = [...nudgeInstantChallenge(cardPrefix, challengeLevel, eligibleCards,
+      new Map(cardQuality.map(row => [row.id, { facilityIndex: row.facilityIndex, sampleSize: row.sampleSize ?? 0 }]))), ...shuffledCards.slice(300)];
+    randomizedQuestions = [...nudgeInstantChallenge(questionPrefix, challengeLevel, eligibleQuestions,
+      new Map(questionQuality.map(row => [row.id, { facilityIndex: row.facilityIndex, sampleSize: row.totalAttempts }]))), ...randomizedQuestions.slice(300)];
+  }
   // One card per variant group, preferring a sibling this learner has never been
   // served. The previous loop took the first sibling in shuffle order, which
   // rotates by chance: with three siblings an already-seen one came back about a
@@ -504,7 +554,12 @@ export async function tryInstantSession(
   // session, on the hottest lane there is. Cards had it; questions were simply missed.
   // Scoped via questionSuppressionKey so it suppresses real families (contrast-set,
   // near-duplicate) without collapsing topic buckets. See variant-suppression.ts.
-  const randomizedQuestions = shuffle(staticQuestions);
+
+  // At Hardest, reserve unseen variants before considering previously missed
+  // questions. The sibling guard below must see this order too.
+  if (learningPolicy.questionsOnly) {
+    randomizedQuestions = partitionByFreshness(randomizedQuestions, question => question.id, questionFamiliarity);
+  }
   const unmasteredQuestions = randomizedQuestions.filter(
     (question) => freshnessTier(questionFamiliarity.get(question.id)) !== 2,
   );
@@ -683,6 +738,7 @@ export async function tryInstantSession(
     // replaced together from current authorized rows at the final batch read.
     return {
       type: 'card',
+      reviewChallenge: ctx.reviewChallenge,
       id: c.id,
       front: c.front,
       back: c.back,
@@ -721,6 +777,7 @@ export async function tryInstantSession(
         : null;
       return {
         type: 'question',
+        reviewChallenge: ctx.reviewChallenge,
         id: q.id,
         stem: q.stem,
         context: q.context ?? null,
@@ -786,7 +843,12 @@ export async function tryInstantSession(
     const source = ctx.rotationContent.cards[insertion.card.id];
     if (!source) continue;
     const scaffold = await hydrateInstantCard(source, 'preemptive_scaffold');
-    if (scaffold) scaffoldPairedInstant.push(scaffold);
+    if (scaffold) {
+      scaffold.struggleIntervention = {
+        strategy: 'preemptive', isScaffold: true, targetCardId: insertion.anchorItemId,
+      };
+      scaffoldPairedInstant.push(scaffold);
+    }
   }
   // Pair insertion can lengthen an existing card run; retain the same final
   // modality guard used by the manifold lane.
@@ -802,7 +864,7 @@ export async function tryInstantSession(
   // Compute manifold session in background for next request (skip for guests — no cache)
   if (!ctx.isGuest) {
     after(async () => {
-      await runSessionCacheRefresh(ctx, { recordOutcome: true, source: 'instant' });
+      await runSessionCacheRefresh(ctx, { recordOutcome: true, source: 'instant', leaseTtlMs: ctx.refreshLeaseTtlMs });
     });
   }
 
@@ -889,10 +951,12 @@ export async function tryInstantSession(
   const currentVariantSafeItems = filterDuplicateCardVariantGroups(
     currentItems.filter((item): item is UnifiedItem => item !== null),
   );
-  const orderedCurrentItems = breakModalityRuns(practiceScaffoldTarget
+  const modalityOrderedItems = breakModalityRuns(practiceScaffoldTarget
     ? [...currentVariantSafeItems.filter(item => item.type === 'question' && item.id === practiceScaffoldTarget.questionId),
       ...currentVariantSafeItems.filter(item => item.type !== 'question' || item.id !== practiceScaffoldTarget.questionId)]
     : currentVariantSafeItems);
+  const orderedCurrentItems = practiceScaffoldTarget ? modalityOrderedItems
+    : applyReviewChallengeWave(modalityOrderedItems, challengeLevel);
   const originalPriorIds = new Map(taggedInstant.map((item, index) => [item.id, taggedInstant[index - 1]?.id]));
   const unchangedPairSimilarities = new Map(orderedCurrentItems.flatMap((item, index) => {
     const similarity = similarityToPriorMap.get(item.id);

@@ -1,0 +1,64 @@
+{
+  "id": "bank:cohort:obs:q-a869036ddc39:v1",
+  "rotation": "cohort-open",
+  "moduleNodes": [
+    "cohort/obs"
+  ],
+  "topics": [
+    "obs"
+  ],
+  "questionType": "management",
+  "difficulty": "hard",
+  "stem": "A woman at 29+2 weeks whose membranes ruptured three days ago is now contracting regularly, and the cervix is 5 cm dilated. She completed a course of betamethasone yesterday, intravenous benzylpenicillin has been started, and her blood pressure is 112/70 mmHg with no proteinuria. Birth is expected within hours and the neonatal team has been called.\n\nWhich further treatment should the obstetric registrar start?",
+  "options": [
+    {
+      "label": "A",
+      "text": "Nifedipine to delay birth long enough for a repeat steroid course",
+      "isCorrect": false,
+      "explanation": "Corticosteroids are already complete, tocolysis is not used once labour is established after membrane rupture, and it would not protect the brain."
+    },
+    {
+      "label": "B",
+      "text": "Magnesium sulfate if severe hypertension or proteinuria develops later",
+      "isCorrect": false,
+      "explanation": "Here magnesium is given for fetal neuroprotection, not to prevent eclampsia, so a normal blood pressure does not remove the indication."
+    },
+    {
+      "label": "C",
+      "text": "Amoxicillin–clavulanate, to broaden cover now that labour has begun",
+      "isCorrect": false,
+      "explanation": "Amoxicillin–clavulanate is avoided after preterm membrane rupture because of its link with necrotising enterocolitis, and benzylpenicillin already covers GBS."
+    },
+    {
+      "label": "D",
+      "text": "A second course of betamethasone, since birth is now imminent",
+      "isCorrect": false,
+      "explanation": "Her course finished yesterday; a repeat dose is considered only after at least seven days."
+    },
+    {
+      "label": "E",
+      "text": "Intravenous magnesium sulfate, loading dose then infusion until birth",
+      "isCorrect": true,
+      "explanation": "Magnesium sulfate before birth under 30 weeks reduces the risk of cerebral palsy. It is indicated when birth is expected within 24 hours, whatever her blood pressure."
+    }
+  ],
+  "context": "Give magnesium sulfate for fetal neuroprotection when birth before 30 weeks is expected within 24 hours, even in a normotensive woman.",
+  "publicModule": {
+    "schemaVersion": 1,
+    "origin": "mirrored",
+    "discipline": "obs",
+    "mirroredFrom": "md3:a869036ddc396ddd",
+    "itemText": {
+      "licence": "CC-BY-4.0",
+      "attribution": "MD3 contributors"
+    },
+    "evidence": {
+      "kind": "reference",
+      "sourceId": "qld-health-data-assets-pdf-file-0019-140149-g-ptl-fd0e08"
+    },
+    "review": {
+      "verdict": "passed",
+      "contentHash": "b8e6b82da09c834355573076c89129846e6287374d2b9acf89d3f3c8e6a764f8"
+    }
+  }
+}

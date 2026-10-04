@@ -1,0 +1,64 @@
+{
+  "id": "bank:cohort:psych:q-b3e59281e483:v1",
+  "rotation": "cohort-open",
+  "moduleNodes": [
+    "cohort/psych"
+  ],
+  "topics": [
+    "psych"
+  ],
+  "questionType": "management",
+  "difficulty": "hard",
+  "stem": "A 43-year-old man with alcohol-related cirrhosis is admitted for drainage of ascites. Eighteen hours after his last drink he becomes tremulous, sweaty and anxious, with a rising withdrawal score. He usually drinks heavily every day and had a withdrawal seizure two years ago. His albumin is 24 g/L and INR 1.9. He is alert and oriented without asterixis, can swallow, and his breathing is normal; thiamine has been given.\n\nWhich medication should the treating doctor use for the withdrawal syndrome?",
+  "options": [
+    {
+      "label": "A",
+      "text": "Oral diazepam, given as a loading regimen",
+      "isCorrect": false,
+      "explanation": "Diazepam is usually preferred, but in severe liver disease its long half-life and active metabolites accumulate and risk oversedation and precipitating encephalopathy."
+    },
+    {
+      "label": "B",
+      "text": "No benzodiazepine, because of his liver disease",
+      "isCorrect": false,
+      "explanation": "He has a past withdrawal seizure and rising scores; withholding benzodiazepines leaves him at risk of seizures and delirium. Liver disease changes the choice of drug, not the need."
+    },
+    {
+      "label": "C",
+      "text": "Oral oxazepam, titrated to withdrawal scores",
+      "isCorrect": true,
+      "explanation": "Oxazepam is cleared by glucuronidation with no active metabolites, so it is preferred in severe liver disease. Symptom-triggered dosing against withdrawal scores limits the risk of oversedation."
+    },
+    {
+      "label": "D",
+      "text": "Oral olanzapine, titrated to his agitation",
+      "isCorrect": false,
+      "explanation": "Antipsychotics do not prevent withdrawal seizures and lower the seizure threshold. They are adjuncts for agitation or hallucinations, not the treatment for withdrawal."
+    },
+    {
+      "label": "E",
+      "text": "Intravenous midazolam by continuous infusion",
+      "isCorrect": false,
+      "explanation": "An infusion of midazolam is for refractory withdrawal in intensive care. He is alert, can swallow and has early withdrawal."
+    }
+  ],
+  "context": "Benzodiazepines treat alcohol withdrawal. In severe liver disease, prefer a drug without active metabolites, such as oxazepam, with symptom-triggered dosing.",
+  "publicModule": {
+    "schemaVersion": 1,
+    "origin": "mirrored",
+    "discipline": "psych",
+    "mirroredFrom": "md3:b3e59281e48373c5",
+    "itemText": {
+      "licence": "CC-BY-4.0",
+      "attribution": "MD3 contributors"
+    },
+    "evidence": {
+      "kind": "reference",
+      "sourceId": "nsw-health-aod-professionals-publications-managing-withdrawal-e60532"
+    },
+    "review": {
+      "verdict": "passed",
+      "contentHash": "af90304b616a3b1002868d97fc550af8788832792a03560ae2975330627c40f8"
+    }
+  }
+}

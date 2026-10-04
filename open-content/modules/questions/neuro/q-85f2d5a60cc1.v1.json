@@ -1,0 +1,64 @@
+{
+  "id": "bank:cohort:neuro:q-85f2d5a60cc1:v1",
+  "rotation": "cohort-open",
+  "moduleNodes": [
+    "cohort/neuro"
+  ],
+  "topics": [
+    "neuro"
+  ],
+  "questionType": "management",
+  "difficulty": "easy",
+  "stem": "Lachlan, 7 (24 kg), has been in a generalised tonic-clonic seizure for 25 minutes. He has already had two benzodiazepine doses: buccal midazolam from paramedics, then IV midazolam in hospital. His airway is held with a jaw thrust, SpO2 is 96% on oxygen and glucose is 6.1 mmol/L.\n\nWhat is needed now?",
+  "options": [
+    {
+      "label": "A",
+      "text": "Third dose of IV midazolam",
+      "isCorrect": false,
+      "explanation": "RCH allows at most two benzodiazepine doses, counting pre-hospital doses. The buccal and IV doses already make two, and a third adds respiratory depression."
+    },
+    {
+      "label": "B",
+      "text": "IV pyridoxine 100 mg",
+      "isCorrect": false,
+      "explanation": "RCH reserves pyridoxine for infants up to 6 months old whose seizures are refractory to standard anticonvulsants. Lachlan is 7."
+    },
+    {
+      "label": "C",
+      "text": "Thiopentone and intubation",
+      "isCorrect": false,
+      "explanation": "Rapid sequence intubation with an anaesthetic infusion is the step for seizures refractory to second-line treatment. His airway is currently maintained."
+    },
+    {
+      "label": "D",
+      "text": "CT brain before any more drugs",
+      "isCorrect": false,
+      "explanation": "Imaging does not stop the seizure. Treat it first; imaging can be considered once he is stable."
+    },
+    {
+      "label": "E",
+      "text": "IV levetiracetam 40-60 mg/kg",
+      "isCorrect": true,
+      "explanation": "Correct. After two benzodiazepine doses, give a second-line agent such as levetiracetam 40-60 mg/kg IV (max 4.5 g) over 5 minutes (phenytoin is an alternative) and call senior airway help."
+    }
+  ],
+  "context": "Status epilepticus: at most two benzodiazepine doses, pre-hospital ones included, then a second-line drug (levetiracetam or phenytoin) while senior airway help is called.",
+  "publicModule": {
+    "schemaVersion": 1,
+    "origin": "mirrored",
+    "discipline": "neuro",
+    "mirroredFrom": "md3:85f2d5a60cc1c855",
+    "itemText": {
+      "licence": "CC-BY-4.0",
+      "attribution": "MD3 contributors"
+    },
+    "evidence": {
+      "kind": "reference",
+      "sourceId": "rch-clinicalguide-guideline-index-seizures-acute-management-95626f"
+    },
+    "review": {
+      "verdict": "passed",
+      "contentHash": "8f9355e69ff3002219a40da3772793d0b578522b1fad18b274b3ad14da6c800c"
+    }
+  }
+}

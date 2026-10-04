@@ -1,0 +1,64 @@
+{
+  "id": "bank:cohort:psych:q-8aa007f3f385:v1",
+  "rotation": "cohort-open",
+  "moduleNodes": [
+    "cohort/psych"
+  ],
+  "topics": [
+    "psych"
+  ],
+  "questionType": "management",
+  "difficulty": "medium",
+  "stem": "An ED psychiatrist assesses a 27-year-old with borderline personality disorder after an argument with her flatmate. She has not harmed herself. After several hours of assessment and support, she describes brief self-harm urges without current intent or a plan, can use her agreed crisis strategies, and wants to stay with her sister. Her sister can remain with her; the crisis team can visit that evening and her treating clinician can review her tomorrow. There is no intoxication, psychosis or major depressive episode. She asks whether she needs several weeks in hospital to prevent future crises.\n\nWhich plan best fits the assessment?",
+  "options": [
+    {
+      "label": "A",
+      "text": "Use the agreed crisis plan with home support and prompt follow-up",
+      "isCorrect": true,
+      "explanation": "The current assessment supports a workable community alternative with immediate support and review. Admission remains an option if significant risk cannot be managed there."
+    },
+    {
+      "label": "B",
+      "text": "Offer a brief goal-defined admission despite the available home plan",
+      "isCorrect": false,
+      "explanation": "A brief, purposeful admission can be appropriate when significant risk cannot be managed outside hospital. Here the assessment identifies immediate family and crisis-team support with prompt review, so the workable community plan should be used first."
+    },
+    {
+      "label": "C",
+      "text": "Admit for continuous observation because of the personality diagnosis",
+      "isCorrect": false,
+      "explanation": "The diagnosis alone does not determine admission. Current needs, risk, available support and the person’s preferences guide the level of care."
+    },
+    {
+      "label": "D",
+      "text": "Replace her ongoing psychotherapy with inpatient crisis care",
+      "isCorrect": false,
+      "explanation": "Crisis care should connect with her continuing treatment rather than replace it. The available home and clinical support can bridge this episode."
+    },
+    {
+      "label": "E",
+      "text": "Begin regular antipsychotic treatment to prevent future self-harm",
+      "isCorrect": false,
+      "explanation": "Medication is not a routine treatment for the core disorder or recurrent self-harm. No separate indication for an antipsychotic is identified."
+    }
+  ],
+  "context": "For borderline personality disorder, consider supported community crisis care when it can meet current needs; reserve admission for needs or risks that cannot be managed there.",
+  "publicModule": {
+    "schemaVersion": 1,
+    "origin": "mirrored",
+    "discipline": "psych",
+    "mirroredFrom": "md3:8aa007f3f385a393",
+    "itemText": {
+      "licence": "CC-BY-4.0",
+      "attribution": "MD3 contributors"
+    },
+    "evidence": {
+      "kind": "reference",
+      "sourceId": "nice-guidance-cg78-chapter-recommendations-de0491"
+    },
+    "review": {
+      "verdict": "passed",
+      "contentHash": "08cf3e693930ed8c6fd5a9f8b18d2c0179476267cb557adfb2c93bde0fe40755"
+    }
+  }
+}

@@ -1,0 +1,64 @@
+{
+  "id": "bank:cohort:icu:q-47b697c9e6cb:v1",
+  "rotation": "cohort-open",
+  "moduleNodes": [
+    "cohort/icu"
+  ],
+  "topics": [
+    "icu"
+  ],
+  "questionType": "management",
+  "difficulty": "hard",
+  "stem": "A 64-year-old with a previous myocardial infarction has a regular broad-complex tachycardia at 190/min with a palpable carotid pulse, blood pressure 72/44 mmHg and drowsiness. Under sedation from a senior emergency physician, three synchronised shocks have been delivered. Each produced a few sinus beats before the same tachycardia returned; he still has a pulse and remains hypotensive. Potassium and magnesium are being checked.\n\nWhat is the most appropriate next step?",
+  "options": [
+    {
+      "label": "A",
+      "text": "Switch to unsynchronised shocks at maximum energy",
+      "isCorrect": false,
+      "explanation": "He has a pulse and an organised rhythm; an unsynchronised shock risks landing on the T wave and causing VF."
+    },
+    {
+      "label": "B",
+      "text": "Amiodarone, then a further synchronised shock",
+      "isCorrect": true,
+      "explanation": "When synchronised cardioversion fails in unstable ventricular tachycardia with a pulse, guidelines add an amiodarone loading dose over 10–20 minutes and repeat the synchronised shock, while correcting electrolytes."
+    },
+    {
+      "label": "C",
+      "text": "Give intravenous adenosine as a rapid bolus",
+      "isCorrect": false,
+      "explanation": "Adenosine is for regular narrow-complex tachycardia and will not terminate VT after a myocardial infarction."
+    },
+    {
+      "label": "D",
+      "text": "Give intravenous verapamil by slow injection",
+      "isCorrect": false,
+      "explanation": "Verapamil can cause profound hypotension and collapse in ventricular tachycardia, particularly when already hypotensive."
+    },
+    {
+      "label": "E",
+      "text": "Start CPR and give adrenaline 1 mg intravenously",
+      "isCorrect": false,
+      "explanation": "He has a palpable pulse, so cardiac arrest treatment is not indicated."
+    }
+  ],
+  "context": "In unstable ventricular tachycardia with a pulse, use synchronised cardioversion; if three shocks fail, give amiodarone and repeat the synchronised shock rather than switching to unsynchronised shocks.",
+  "publicModule": {
+    "schemaVersion": 1,
+    "origin": "mirrored",
+    "discipline": "icu",
+    "mirroredFrom": "md3:47b697c9e6cb7c39",
+    "itemText": {
+      "licence": "CC-BY-4.0",
+      "attribution": "MD3 contributors"
+    },
+    "evidence": {
+      "kind": "reference",
+      "sourceId": "anzcor-adult-advanced-life-support-guideline-11-9-managing-acute-dysrhythmias-42645d"
+    },
+    "review": {
+      "verdict": "passed",
+      "contentHash": "ab3a8e5af4e3f8015b78c20b58e45246159904609a840f90e0c920cf88b138d8"
+    }
+  }
+}

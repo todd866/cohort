@@ -1,0 +1,64 @@
+{
+  "id": "bank:cohort:psych:q-fb70ca8cdc48:v1",
+  "rotation": "cohort-open",
+  "moduleNodes": [
+    "cohort/psych"
+  ],
+  "topics": [
+    "psych"
+  ],
+  "questionType": "mechanism",
+  "difficulty": "medium",
+  "stem": "A 17-year-old with severe anorexia nervosa is admitted for nutritional rehabilitation. On day 3 of increasing feeds she develops weakness and confusion. Phosphate is 0.35 mmol/L (reference 0.80–1.50), with normal sodium and potassium.\n\nWhat is the most likely mechanism?",
+  "options": [
+    {
+      "label": "A",
+      "text": "Phosphate binding after calcium supplementation",
+      "isCorrect": false,
+      "explanation": "Calcium can bind phosphate in the gut, but no such exposure is described and the timing strongly supports a refeeding-related shift."
+    },
+    {
+      "label": "B",
+      "text": "Insulin-mediated intracellular phosphate uptake",
+      "isCorrect": true,
+      "explanation": "Carbohydrate reintroduction stimulates insulin and intracellular phosphate use and uptake. Depleted reserves can then produce severe hypophosphataemia."
+    },
+    {
+      "label": "C",
+      "text": "Reduced phosphate absorption due to steatorrhoea",
+      "isCorrect": false,
+      "explanation": "Malabsorption may contribute to nutritional depletion, but it does not best explain the abrupt change after feeding begins."
+    },
+    {
+      "label": "D",
+      "text": "Phosphate release from injured skeletal muscle",
+      "isCorrect": false,
+      "explanation": "Cell injury releases phosphate into the circulation, which would not explain the characteristic fall soon after nutrition is restarted."
+    },
+    {
+      "label": "E",
+      "text": "Increased phosphate loss through osmotic diuresis",
+      "isCorrect": false,
+      "explanation": "Osmotic diuresis can cause electrolyte loss, but there is no hyperglycaemic or polyuric syndrome to support it here."
+    }
+  ],
+  "context": "Refeeding syndrome causes insulin-mediated intracellular phosphate shift, risking weakness, cardiac dysfunction and neurological complications.",
+  "publicModule": {
+    "schemaVersion": 1,
+    "origin": "mirrored",
+    "discipline": "psych",
+    "mirroredFrom": "md3:fb70ca8cdc48d51c",
+    "itemText": {
+      "licence": "CC-BY-4.0",
+      "attribution": "MD3 contributors"
+    },
+    "evidence": {
+      "kind": "reference",
+      "sourceId": "rch-uploadedfiles-main-content-gastro-refeeding-syndrome-guideline-2b01ed"
+    },
+    "review": {
+      "verdict": "passed",
+      "contentHash": "04bbc0837b2626e25271a747edfc7836d4eab1f90d21403652b69e5b39f56758"
+    }
+  }
+}

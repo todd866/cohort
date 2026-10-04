@@ -1,0 +1,64 @@
+{
+  "id": "bank:cohort:paeds:q-4d9de9ce1b34:v1",
+  "rotation": "cohort-open",
+  "moduleNodes": [
+    "cohort/paeds"
+  ],
+  "topics": [
+    "paeds"
+  ],
+  "questionType": "management",
+  "difficulty": "hard",
+  "stem": "A 15-year-old girl in NSW attends her GP alone asking for contraception. She has been in a relationship for 4 months with a 16-year-old boy from her school and says the sex is wanted, with no pressure, drugs or alcohol involved. She can explain the options, their benefits and risks, and why she prefers the implant. She does not want her parents told. There are no other safety concerns.\n\nWhat is the most appropriate approach?",
+  "options": [
+    {
+      "label": "A",
+      "text": "Notify the Child Protection Helpline, as she is under 16",
+      "isCorrect": false,
+      "explanation": "Under-16 sexual activity is not automatically reportable in NSW. With a similar-age partner, no coercion and no other concerns, the risk-of-significant-harm threshold is not met."
+    },
+    {
+      "label": "B",
+      "text": "Insert the implant, then inform her parents",
+      "isCorrect": false,
+      "explanation": "A young person assessed as a mature minor can consent to her own treatment, and breaching confidentiality without a safety reason risks losing her from care."
+    },
+    {
+      "label": "C",
+      "text": "Assess her maturity and safety, then treat her confidentially",
+      "isCorrect": true,
+      "explanation": "Correct. Assess her understanding, voluntariness and safety, including partner age and coercion. She is a mature minor with a similar-age partner, so provide contraception confidentially."
+    },
+    {
+      "label": "D",
+      "text": "Give condoms only, until a parent consents to the implant",
+      "isCorrect": false,
+      "explanation": "Restricting her to condoms withholds her preferred, more effective method when she can consent to it herself."
+    },
+    {
+      "label": "E",
+      "text": "Refer to a sexual health clinic, as she is under 16",
+      "isCorrect": false,
+      "explanation": "GPs can prescribe for a mature minor; referral delays care and is not required because of her age."
+    }
+  ],
+  "context": "In NSW a 15-year-old who understands the treatment and chooses freely can consent to contraception as a mature minor. Explore partner age, coercion and safety; a consensual relationship with a similar-age partner and no other concerns is not a mandatory report.",
+  "publicModule": {
+    "schemaVersion": 1,
+    "origin": "mirrored",
+    "discipline": "paeds",
+    "mirroredFrom": "md3:4d9de9ce1b34076d",
+    "itemText": {
+      "licence": "CC-BY-4.0",
+      "attribution": "MD3 contributors"
+    },
+    "evidence": {
+      "kind": "reference",
+      "sourceId": "nsw-health-policies-manuals-publications-consent-to-medical-healthcare-treatment-aa062c"
+    },
+    "review": {
+      "verdict": "passed",
+      "contentHash": "6834a80e10b5d0c3763eff23ac3eb31c33e9a7b82ac2be84099a10bb60133abc"
+    }
+  }
+}

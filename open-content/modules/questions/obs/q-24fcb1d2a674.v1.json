@@ -1,0 +1,64 @@
+{
+  "id": "bank:cohort:obs:q-24fcb1d2a674:v1",
+  "rotation": "cohort-open",
+  "moduleNodes": [
+    "cohort/obs"
+  ],
+  "topics": [
+    "obs"
+  ],
+  "questionType": "management",
+  "difficulty": "hard",
+  "stem": "A woman at eight weeks is reviewed by an early-pregnancy registrar for vaginal spotting. Ultrasound shows a viable intrauterine pregnancy with a closed cervix. She has had two previous confirmed first-trimester miscarriages; investigation did not identify antiphospholipid syndrome. She is stable and asks whether a medicine can improve this pregnancy’s chance of continuing.\n\nWhich treatment is most appropriate to offer?",
+  "options": [
+    {
+      "label": "A",
+      "text": "Low-dose aspirin alone until birth",
+      "isCorrect": false,
+      "explanation": "Aspirin is used for other indications, including selected pre-eclampsia prevention and antiphospholipid-related pregnancy care; it is not the indicated treatment for this presentation."
+    },
+    {
+      "label": "B",
+      "text": "Prophylactic low-molecular-weight heparin until birth",
+      "isCorrect": false,
+      "explanation": "There is no identified thrombotic or antiphospholipid indication for heparin, and empirical anticoagulation is not the recommended response to this bleeding pattern."
+    },
+    {
+      "label": "C",
+      "text": "Vaginal micronised progesterone until the bleeding stops",
+      "isCorrect": false,
+      "explanation": "For this eligible patient with a confirmed heartbeat, the recommended progesterone course continues to 16 weeks; cessation of spotting is not the specified stopping point."
+    },
+    {
+      "label": "D",
+      "text": "Vaginal micronised progesterone until 16 weeks",
+      "isCorrect": true,
+      "explanation": "Current bleeding with two previous losses meets Australian progesterone eligibility, and the heartbeat supports continuation to 16 weeks. The recommended preparation is vaginal micronised progesterone, usually 400 mg twice daily."
+    },
+    {
+      "label": "E",
+      "text": "Intramuscular hCG injections during the first trimester",
+      "isCorrect": false,
+      "explanation": "hCG injections are not the recommended evidence-based intervention for threatened miscarriage in this setting."
+    }
+  ],
+  "context": "Current early-pregnancy bleeding plus previous miscarriages can justify vaginal micronised progesterone after confirming an intrauterine pregnancy.",
+  "publicModule": {
+    "schemaVersion": 1,
+    "origin": "mirrored",
+    "discipline": "obs",
+    "mirroredFrom": "md3:24fcb1d2a6746b7b",
+    "itemText": {
+      "licence": "CC-BY-4.0",
+      "attribution": "MD3 contributors"
+    },
+    "evidence": {
+      "kind": "reference",
+      "sourceId": "ranzcog-wp-content-uploads-miscarriage-ectopic-pregnancy-87c7be"
+    },
+    "review": {
+      "verdict": "passed",
+      "contentHash": "069ef4932cb3444a5deb247b7eae78eb4bb1864047f3f4056121f891943866e3"
+    }
+  }
+}

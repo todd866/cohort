@@ -1,0 +1,64 @@
+{
+  "id": "bank:cohort:obs:q-b658a422ef74:v1",
+  "rotation": "cohort-open",
+  "moduleNodes": [
+    "cohort/obs"
+  ],
+  "topics": [
+    "obs"
+  ],
+  "questionType": "investigation",
+  "difficulty": "medium",
+  "stem": "A 30-year-old at 32 weeks presents to maternity assessment after a gush of clear fluid an hour ago, with continuing dampness. She has no contractions, fever or bleeding, and the CTG is normal. The resident wants to feel her cervix to check that it is closed.\n\nWhich examination should come first?",
+  "options": [
+    {
+      "label": "A",
+      "text": "Sterile speculum examination, looking for pooling of fluid",
+      "isCorrect": true,
+      "explanation": "A sterile speculum examination shows pooling of liquor and lets the cervix be seen without introducing infection. A point-of-care test of the fluid can be added if pooling is not seen."
+    },
+    {
+      "label": "B",
+      "text": "A digital examination, to check the cervix is still closed",
+      "isCorrect": false,
+      "explanation": "In suspected preterm rupture without labour, digital examination is avoided because it raises the risk of infection and shortens the time to birth. The cervix can be seen at speculum."
+    },
+    {
+      "label": "C",
+      "text": "Ultrasound of liquor volume as the first and only test",
+      "isCorrect": false,
+      "explanation": "Reduced liquor on ultrasound supports the diagnosis but neither confirms nor excludes rupture, so it is not the first or only test."
+    },
+    {
+      "label": "D",
+      "text": "A fetal fibronectin swab, to show whether the membranes have ruptured",
+      "isCorrect": false,
+      "explanation": "Fetal fibronectin predicts preterm birth when the membranes are intact. It is not a test for rupture and is not valid once they have ruptured."
+    },
+    {
+      "label": "E",
+      "text": "Nitrazine testing of the pad, avoiding any speculum examination",
+      "isCorrect": false,
+      "explanation": "Nitrazine on a pad gives false positives from urine, blood or semen, and skipping the speculum misses the most direct sign."
+    }
+  ],
+  "context": "In suspected preterm prelabour rupture of membranes, the first examination is a sterile speculum for pooling; digital examination is avoided unless she is in labour.",
+  "publicModule": {
+    "schemaVersion": 1,
+    "origin": "mirrored",
+    "discipline": "obs",
+    "mirroredFrom": "md3:b658a422ef74deda",
+    "itemText": {
+      "licence": "CC-BY-4.0",
+      "attribution": "MD3 contributors"
+    },
+    "evidence": {
+      "kind": "reference",
+      "sourceId": "qld-health-data-assets-pdf-file-0035-736964-g-pprom-e852a7"
+    },
+    "review": {
+      "verdict": "passed",
+      "contentHash": "8d44513a3012572186244c5e5d3abaa8853a9ad9d61fd8f7eb81fc35ff685c68"
+    }
+  }
+}

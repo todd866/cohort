@@ -1,3 +1,4 @@
+import { createId } from '@paralleldrive/cuid2';
 import { constructUnifiedSession } from '@/lib/knowledge/unified-scheduler';
 import {
   CLIENT_REVIEW_BATCH_SIZE,
@@ -16,11 +17,13 @@ import { loadRecentQuestionFailures } from '@/lib/knowledge/recent-question-fail
 import { COURSE_TIME_ZONE } from '@/lib/rotation-context';
 import { getStudyDayStart } from '@/lib/study-day';
 import { computeRotationDailyTarget } from './rotation-daily-target';
+import { rememberRotationDailyTarget } from './rotation-daily-target-memo';
 import {
   noveltyProgressFromDailyTarget,
   queueNoveltyBudget,
   type NoveltyProgressSnapshot,
 } from './novelty-budget';
+import type { ReviewChallengePreference } from './review-challenge-preference';
 
 /**
  * Opting a build into first-sight seats. `progress` is today's snapshot when
@@ -44,9 +47,10 @@ async function resolveNoveltyProgress(
   // on the day boundary at all.
   const startOfDay = getStudyDayStart(now, novelty.studyTimezone ?? COURSE_TIME_ZONE);
   try {
-    return noveltyProgressFromDailyTarget(
-      await computeRotationDailyTarget(userId, rotation, startOfDay, now),
-    );
+    const target = await computeRotationDailyTarget(userId, rotation, startOfDay, now);
+    // The session request reads this snapshot instead of computing it.
+    rememberRotationDailyTarget(userId, rotation, startOfDay, target);
+    return noveltyProgressFromDailyTarget(target);
   } catch {
     // Degrade, never fail the build: a queue without the reservation is still
     // a queue, and the zero stamp below lets the next request with progress
@@ -83,6 +87,16 @@ export async function computeAndHydrateSession(
     includeFailureAttribution?: boolean;
     /** Reserve first-sight seats the way the live build does. */
     novelty?: CacheBuildNoveltyOptions;
+    /**
+     * False for a build the server never delivers, such as the offline pack.
+     * Its items get ids but no decision rows: an answer links only to a
+     * delivered row, so those rows could never be matched.
+     */
+    persistDecisions?: boolean;
+    /** Skip the scheduler's authoring-gap and struggle-intervention writes. */
+    suppressSchedulerSideEffects?: boolean;
+    /** Authoritative preference captured alongside the cache epoch. */
+    reviewChallenge?: ReviewChallengePreference;
   } = {},
 ): Promise<{ items: UnifiedItem[] }> {
   // Cache-built sessions are the majority of what gets delivered, so they must
@@ -129,6 +143,8 @@ export async function computeAndHydrateSession(
     recentFigureExposures,
     ...(recentQuestionFailures ? { recentQuestionFailures } : {}),
     ...(noveltyBudget ? { minFirstSightItems: noveltyBudget.minFirstSightItems } : {}),
+    ...(options.reviewChallenge ? { reviewChallenge: options.reviewChallenge.level } : {}),
+    ...(options.suppressSchedulerSideEffects ? { suppressSchedulerSideEffects: true } : {}),
   });
 
   if (sessionResult.items.length === 0) return { items: [] };
@@ -198,8 +214,20 @@ export async function computeAndHydrateSession(
   const itemsForCache: UnifiedItem[] = hydratedItems.map((item) => ({
     ...item,
     ...noveltyStamp,
+    ...(options.reviewChallenge ? { reviewChallenge: options.reviewChallenge } : {}),
     imageUrl: null,
   }));
+
+  // Same ids the writer below would assign, minus the rows. Without them the
+  // client would hide the rating control on these items.
+  if (options.persistDecisions === false) {
+    return {
+      items: itemsForCache.map((item) => ({
+        ...item,
+        serveDecisionId: item.serveDecisionId ?? createId(),
+      })),
+    };
+  }
 
   if (cacheBuildSessionId) {
     const itemsWithDecisions = await writeCacheBuildServeDecisions(itemsForCache, {

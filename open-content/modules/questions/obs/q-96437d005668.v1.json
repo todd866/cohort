@@ -1,0 +1,64 @@
+{
+  "id": "bank:cohort:obs:q-96437d005668:v1",
+  "rotation": "cohort-open",
+  "moduleNodes": [
+    "cohort/obs"
+  ],
+  "topics": [
+    "obs"
+  ],
+  "questionType": "management",
+  "difficulty": "medium",
+  "stem": "A low-risk patient in spontaneous term labour is comfortable walking and using upright positions. Maternal assessment and intermittent fetal-heart monitoring are reassuring, and she has no epidural or mobility restriction. She asks which position she should use for the rest of labour.\n\nWhich advice is most appropriate?",
+  "options": [
+    {
+      "label": "A",
+      "text": "Stay in bed, to save her energy for the second stage",
+      "isCorrect": false,
+      "explanation": "Bed rest is not needed in uncomplicated labour and limits the positions that help her cope."
+    },
+    {
+      "label": "B",
+      "text": "Walk only until 6 cm, then lie down for closer monitoring",
+      "isCorrect": false,
+      "explanation": "Intermittent auscultation can be done in most positions; reaching a particular dilatation is not a reason to confine her to bed."
+    },
+    {
+      "label": "C",
+      "text": "Lie on her left side throughout, to maximise placental blood flow",
+      "isCorrect": false,
+      "explanation": "Lying on the left side helps when there is supine hypotension or a concerning fetal heart rate. Neither is present, so there is no reason to impose it."
+    },
+    {
+      "label": "D",
+      "text": "Move and change position as she wishes, with monitoring continued",
+      "isCorrect": true,
+      "explanation": "In low-risk labour with reassuring observations, position is her choice. The midwife supports movement, upright or resting, and continues intermittent auscultation in whatever position she uses."
+    },
+    {
+      "label": "E",
+      "text": "Stay upright throughout, as it shortens the first stage",
+      "isCorrect": false,
+      "explanation": "Upright positions may shorten the first stage a little, which is a reason to offer them, not to stop her resting when she wants to."
+    }
+  ],
+  "context": "Support comfortable movement and position changes in uncomplicated labour when clinically safe.",
+  "publicModule": {
+    "schemaVersion": 1,
+    "origin": "mirrored",
+    "discipline": "obs",
+    "mirroredFrom": "md3:96437d005668ab10",
+    "itemText": {
+      "licence": "CC-BY-4.0",
+      "attribution": "MD3 contributors"
+    },
+    "evidence": {
+      "kind": "reference",
+      "sourceId": "qld-health-data-assets-pdf-file-0014-142007-g-normalbirth-d5d6f1"
+    },
+    "review": {
+      "verdict": "passed",
+      "contentHash": "2c99d7361d0bafed369c3c044417612843b842fea17436489549b076d6922cef"
+    }
+  }
+}

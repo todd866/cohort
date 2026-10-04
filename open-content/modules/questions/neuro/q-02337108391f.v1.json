@@ -1,0 +1,64 @@
+{
+  "id": "bank:cohort:neuro:q-02337108391f:v1",
+  "rotation": "cohort-open",
+  "moduleNodes": [
+    "cohort/neuro"
+  ],
+  "topics": [
+    "neuro"
+  ],
+  "questionType": "management",
+  "difficulty": "hard",
+  "stem": "A 74-year-old started a thiazide diuretic three weeks ago. She is brought in after a generalised seizure that stopped with a benzodiazepine. She is now drowsy but protecting her airway, with dry mucous membranes and a postural fall in blood pressure. Sodium is 112 mmol/L (135–145), potassium 3.1 mmol/L and glucose 6.0 mmol/L. Her sodium was 138 mmol/L two months ago. The thiazide has been stopped.\n\nWhich sodium plan is most appropriate?",
+  "options": [
+    {
+      "label": "A",
+      "text": "3% saline infusion to bring the sodium to 130 within 24 hours",
+      "isCorrect": false,
+      "explanation": "An 18 mmol/L rise in a day risks osmotic demyelination; the 24-hour rise should be limited to about 8–10 mmol/L."
+    },
+    {
+      "label": "B",
+      "text": "0.9% saline 2 L bolus for the volume depletion",
+      "isCorrect": false,
+      "explanation": "Normal saline raises sodium slowly and unpredictably; it does not treat a seizure, and restoring volume can later cause a rapid uncontrolled rise."
+    },
+    {
+      "label": "C",
+      "text": "Fluid restriction while the sodium level is rechecked",
+      "isCorrect": false,
+      "explanation": "Restriction is for euvolaemic hyponatraemia without severe symptoms; she is volume deplete and has had a seizure."
+    },
+    {
+      "label": "D",
+      "text": "3% saline bolus, aiming for a rise of about 5 mmol/L",
+      "isCorrect": true,
+      "explanation": "Severe symptoms need a prompt rise in sodium, which a small bolus of hypertonic saline gives predictably; a rise of about 5 mmol/L usually relieves symptoms. After that the aim is to limit the 24-hour rise, because she is at high risk of overcorrection as volume is restored and the thiazide washes out."
+    },
+    {
+      "label": "E",
+      "text": "Oral tolvaptan to raise the sodium",
+      "isCorrect": false,
+      "explanation": "Tolvaptan is not for emergencies or volume depletion and can raise sodium too fast."
+    }
+  ],
+  "context": "Severely symptomatic hyponatraemia is treated with small boluses of 3% saline aiming for an initial rise of about 5 mmol/L, then limiting the 24-hour rise to avoid osmotic demyelination, particularly once a reversible cause is removed.",
+  "publicModule": {
+    "schemaVersion": 1,
+    "origin": "mirrored",
+    "discipline": "neuro",
+    "mirroredFrom": "md3:02337108391f064d",
+    "itemText": {
+      "licence": "CC-BY-4.0",
+      "attribution": "MD3 contributors"
+    },
+    "evidence": {
+      "kind": "reference",
+      "sourceId": "nsw-health-nts-rhw-clin134-hyponatremiaadultmanagementofincludinghypertonicsaline-e2c230"
+    },
+    "review": {
+      "verdict": "passed",
+      "contentHash": "cb24f692fbb9de53cf7085b27fcdf91cc272ba2a7c29c50a89cdad8a1d474a81"
+    }
+  }
+}

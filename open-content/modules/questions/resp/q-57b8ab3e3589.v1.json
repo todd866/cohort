@@ -1,0 +1,64 @@
+{
+  "id": "bank:cohort:resp:q-57b8ab3e3589:v1",
+  "rotation": "cohort-open",
+  "moduleNodes": [
+    "cohort/resp"
+  ],
+  "topics": [
+    "resp"
+  ],
+  "questionType": "management",
+  "difficulty": "hard",
+  "stem": "A 10-year-old girl with known asthma is brought to the emergency department. She can say only a few words at a time, is using her neck muscles to breathe and has oxygen saturation of 89% in room air. She is alert. She is given oxygen, back-to-back salbutamol via spacer and oral prednisolone. Twenty minutes later she is still working hard to breathe.\n\nWhich treatment should be added next, within this first hour?",
+  "options": [
+    {
+      "label": "A",
+      "text": "IV magnesium sulfate bolus",
+      "isCorrect": false,
+      "explanation": "IV magnesium is the next step if she fails to respond to salbutamol plus ipratropium. It is not given before the first-hour inhaled add-on."
+    },
+    {
+      "label": "B",
+      "text": "IV aminophylline loading dose",
+      "isCorrect": false,
+      "explanation": "Aminophylline is reserved for critical asthma not responding to other treatment, in an intensive care setting. Its toxicity outweighs benefit at this stage."
+    },
+    {
+      "label": "C",
+      "text": "Inhaled ipratropium bromide",
+      "isCorrect": true,
+      "explanation": "In severe acute asthma, ipratropium, an inhaled muscarinic antagonist, is added to salbutamol during the first hour. It reduces vagally mediated bronchoconstriction and adds to the beta-agonist effect."
+    },
+    {
+      "label": "D",
+      "text": "Inhaled high-dose budesonide",
+      "isCorrect": false,
+      "explanation": "High-dose inhaled corticosteroid adds nothing to systemic steroid in acute asthma, and she has already had prednisolone."
+    },
+    {
+      "label": "E",
+      "text": "Oral montelukast",
+      "isCorrect": false,
+      "explanation": "Montelukast has no role in the treatment of acute severe asthma."
+    }
+  ],
+  "context": "In severe acute asthma, give oxygen, frequent salbutamol, a systemic steroid and inhaled ipratropium (a muscarinic antagonist) during the first hour; IV magnesium comes next if she does not respond.",
+  "publicModule": {
+    "schemaVersion": 1,
+    "origin": "mirrored",
+    "discipline": "resp",
+    "mirroredFrom": "md3:57b8ab3e35896b5f",
+    "itemText": {
+      "licence": "CC-BY-4.0",
+      "attribution": "MD3 contributors"
+    },
+    "evidence": {
+      "kind": "reference",
+      "sourceId": "aah-children-6-11-years-managing-acute-asthma-in-children-6-11-years-in-ed-2bc2c4"
+    },
+    "review": {
+      "verdict": "passed",
+      "contentHash": "04c2c044969d436ffccd1ff2f6433d4aa13f114ae6c07b7a5989e2dd443c3951"
+    }
+  }
+}

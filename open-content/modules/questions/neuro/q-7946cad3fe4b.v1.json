@@ -1,0 +1,64 @@
+{
+  "id": "bank:cohort:neuro:q-7946cad3fe4b:v1",
+  "rotation": "cohort-open",
+  "moduleNodes": [
+    "cohort/neuro"
+  ],
+  "topics": [
+    "neuro"
+  ],
+  "questionType": "investigation",
+  "difficulty": "hard",
+  "stem": "A 46-year-old woman has had migraine with aura since her teens. Nine hours ago, while lifting a heavy box, she developed a severe occipital headache that reached maximum intensity within seconds. She says it is unlike her migraines; she vomited and briefly collapsed. She is now alert with no focal deficit and mild neck stiffness. A non-contrast CT brain performed now, 9 hours after onset, is reported as normal. She would like to go home with her usual triptan.\n\nWhat is the most appropriate next step?",
+  "options": [
+    {
+      "label": "A",
+      "text": "Discharge with her triptan, as the CT is normal",
+      "isCorrect": false,
+      "explanation": "Her migraine history does not explain a headache maximal within seconds and unlike her usual attacks, and a normal CT at 9 hours is not enough to exclude bleeding."
+    },
+    {
+      "label": "B",
+      "text": "Outpatient MRI brain within the next week",
+      "isCorrect": false,
+      "explanation": "A warning bleed can be followed by a catastrophic rebleed within days; investigation must be completed now, not as an outpatient."
+    },
+    {
+      "label": "C",
+      "text": "Lumbar puncture at least 12 hours from onset",
+      "isCorrect": true,
+      "explanation": "A headache maximal within seconds, with collapse and neck stiffness, is subarachnoid haemorrhage until excluded. CT sensitivity falls after 6 hours, so a normal scan at 9 hours does not exclude it; lumbar puncture at least 12 hours from onset looks for xanthochromia. CT angiography is an alternative in some centres."
+    },
+    {
+      "label": "D",
+      "text": "Repeat non-contrast CT the next morning",
+      "isCorrect": false,
+      "explanation": "Blood becomes harder to see on CT with time, so a later scan is less sensitive, not more."
+    },
+    {
+      "label": "E",
+      "text": "A triptan in the department; discharge if settled",
+      "isCorrect": false,
+      "explanation": "Relief with treatment does not distinguish migraine from subarachnoid haemorrhage; the headache's onset, not its response, decides the work-up."
+    }
+  ],
+  "context": "A thunderclap headache needs subarachnoid haemorrhage excluded: CT within 6 hours of onset is highly sensitive; after 6 hours a normal CT is followed by lumbar puncture (at least 12 hours from onset) or CT angiography.",
+  "publicModule": {
+    "schemaVersion": 1,
+    "origin": "mirrored",
+    "discipline": "neuro",
+    "mirroredFrom": "md3:7946cad3fe4b18e8",
+    "itemText": {
+      "licence": "CC-BY-4.0",
+      "attribution": "MD3 contributors"
+    },
+    "evidence": {
+      "kind": "reference",
+      "sourceId": "nice-guidance-ng228-chapter-recommendations-0b4ad7"
+    },
+    "review": {
+      "verdict": "passed",
+      "contentHash": "e8a0ec22d532b7392de03dcbcb4b8be610fbfc585dca24f957023e9c24099cc0"
+    }
+  }
+}

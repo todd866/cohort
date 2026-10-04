@@ -1,0 +1,64 @@
+{
+  "id": "bank:cohort:psych:q-8aa54e32385f:v1",
+  "rotation": "cohort-open",
+  "moduleNodes": [
+    "cohort/psych"
+  ],
+  "topics": [
+    "psych"
+  ],
+  "questionType": "management",
+  "difficulty": "hard",
+  "stem": "An emergency doctor assesses a 28-year-old man found unresponsive at home beside used injecting equipment and two empty alprazolam blister packs. His pupils are pinpoint, his respiratory rate is 4/min and he has a palpable pulse. Capillary glucose is normal and the ECG shows a normal QRS duration. The team has opened his airway, started effective bag-mask ventilation with oxygen and obtained intravenous access.\n\nWhich medicine should be given to reverse the likely cause of his respiratory depression?",
+  "options": [
+    {
+      "label": "A",
+      "text": "Intravenous flumazenil",
+      "isCorrect": false,
+      "explanation": "The benzodiazepine packets tempt this, but flumazenil can precipitate seizures in mixed overdose or benzodiazepine dependence and is not recommended routinely. Profound respiratory depression with pinpoint pupils points to the opioid."
+    },
+    {
+      "label": "B",
+      "text": "Intravenous sodium bicarbonate",
+      "isCorrect": false,
+      "explanation": "Sodium bicarbonate treats sodium-channel blockade, as in tricyclic overdose with a wide QRS; his QRS is normal."
+    },
+    {
+      "label": "C",
+      "text": "Intravenous buprenorphine",
+      "isCorrect": false,
+      "explanation": "Buprenorphine is a partial agonist and would not reverse opioid toxicity."
+    },
+    {
+      "label": "D",
+      "text": "Intramuscular naltrexone",
+      "isCorrect": false,
+      "explanation": "Naltrexone is an oral or depot antagonist used for relapse prevention, not for emergency reversal."
+    },
+    {
+      "label": "E",
+      "text": "Intravenous naloxone",
+      "isCorrect": true,
+      "explanation": "Pinpoint pupils and a respiratory rate of 4/min indicate opioid toxicity. Continue ventilation and give naloxone, titrated to adequate breathing to limit precipitated withdrawal."
+    }
+  ],
+  "context": "Opioid-induced respiratory depression needs ventilatory support and titrated naloxone; flumazenil is not used routinely in mixed overdose because of seizure risk.",
+  "publicModule": {
+    "schemaVersion": 1,
+    "origin": "mirrored",
+    "discipline": "psych",
+    "mirroredFrom": "md3:8aa54e32385fe21d",
+    "itemText": {
+      "licence": "CC-BY-4.0",
+      "attribution": "MD3 contributors"
+    },
+    "evidence": {
+      "kind": "reference",
+      "sourceId": "anzcor-ed-life-support-guideline-11-10-resuscitation-in-special-circumstances-6e6a7d"
+    },
+    "review": {
+      "verdict": "passed",
+      "contentHash": "7e0df23db5b4b354b0f117a4bf1a9d196a9fbca037b830d768d89cfcdbbde0bc"
+    }
+  }
+}

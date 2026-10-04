@@ -1,0 +1,64 @@
+{
+  "id": "bank:cohort:obs:q-9a0df82c3049:v1",
+  "rotation": "cohort-open",
+  "moduleNodes": [
+    "cohort/obs"
+  ],
+  "topics": [
+    "obs"
+  ],
+  "questionType": "management",
+  "difficulty": "hard",
+  "stem": "A haematology registrar reviews a breastfeeding woman two weeks after an uncomplicated vaginal birth. She has a confirmed proximal DVT and is receiving therapeutic enoxaparin. Bleeding has settled, renal function is normal and she prefers oral treatment while continuing breastfeeding. She can attend INR monitoring.\n\nWhich transition plan is most appropriate?",
+  "options": [
+    {
+      "label": "A",
+      "text": "Warfarin, stopping enoxaparin with the first tablet dose",
+      "isCorrect": false,
+      "explanation": "Warfarin has a delayed onset and requires a supervised overlap with therapeutic heparin; the first tablet does not provide immediate adequate anticoagulation."
+    },
+    {
+      "label": "B",
+      "text": "Rivaroxaban, stopping enoxaparin when tablets are started",
+      "isCorrect": false,
+      "explanation": "Rivaroxaban is not the preferred oral choice during breastfeeding when established compatible alternatives are available."
+    },
+    {
+      "label": "C",
+      "text": "Apixaban, stopping enoxaparin when tablets are started",
+      "isCorrect": false,
+      "explanation": "Apixaban is a DOAC and is not recommended as the breastfeeding-compatible alternative to warfarin in current major guidelines."
+    },
+    {
+      "label": "D",
+      "text": "Dabigatran, after completing the initial enoxaparin course",
+      "isCorrect": false,
+      "explanation": "A parenteral lead-in does not resolve dabigatran’s limited breastfeeding safety evidence; the lactation constraint still applies."
+    },
+    {
+      "label": "E",
+      "text": "Warfarin with the required INR-guided enoxaparin overlap",
+      "isCorrect": true,
+      "explanation": "Warfarin is compatible with breastfeeding and can replace injections through an INR-directed transition. Continue therapeutic enoxaparin during initiation until the prescribed overlap and therapeutic-anticoagulation criteria are met."
+    }
+  ],
+  "context": "Warfarin is an established oral option during breastfeeding, but treatment of acute VTE requires a supervised heparin-to-warfarin transition.",
+  "publicModule": {
+    "schemaVersion": 1,
+    "origin": "mirrored",
+    "discipline": "obs",
+    "mirroredFrom": "md3:9a0df82c30493693",
+    "itemText": {
+      "licence": "CC-BY-4.0",
+      "attribution": "MD3 contributors"
+    },
+    "evidence": {
+      "kind": "reference",
+      "sourceId": "qld-health-data-assets-pdf-file-0025-443806-warfarin-guideline-9bc653"
+    },
+    "review": {
+      "verdict": "passed",
+      "contentHash": "62f4528bb9daf82ab873bb4b7699566620d4e91ce8bcbddd8bc03de92ae74f8e"
+    }
+  }
+}

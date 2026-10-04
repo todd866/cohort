@@ -1,0 +1,64 @@
+{
+  "id": "bank:cohort:psych:q-7638b433a839:v1",
+  "rotation": "cohort-open",
+  "moduleNodes": [
+    "cohort/psych"
+  ],
+  "topics": [
+    "psych"
+  ],
+  "questionType": "management",
+  "difficulty": "hard",
+  "stem": "A 35-year-old warehouse supervisor was assaulted at work four months ago. Since then he has intrusive memories, nightmares most nights, avoids the loading dock and startles at any shout. His GP started sertraline six weeks ago, now 100 mg daily; he sleeps a little better but the other symptoms are unchanged. He has moderate depressive symptoms without suicidal intent, and drinks about four standard drinks most nights 'to get to sleep', with no morning drinking or withdrawal symptoms. He says he is willing to see a psychologist but worries that talking about the assault will make him worse.\n\nWhat is the most appropriate next step?",
+  "options": [
+    {
+      "label": "A",
+      "text": "Defer trauma therapy until he has been alcohol-free for three months",
+      "isCorrect": false,
+      "explanation": "Harmful drinking that is not dependent does not have to be stopped before trauma-focused therapy. Australian guidance supports treating PTSD alongside substance use; a long wait leaves the core disorder untreated and the drinking is partly self-treatment of it."
+    },
+    {
+      "label": "B",
+      "text": "Offer supportive counselling that avoids discussing the assault itself",
+      "isCorrect": false,
+      "explanation": "Supportive counselling is not an effective treatment for PTSD. Avoiding the memory maintains the disorder; trauma-focused therapy works by processing it in a graded, supported way."
+    },
+    {
+      "label": "C",
+      "text": "Refer for trauma-focused CBT now, continuing sertraline",
+      "isCorrect": true,
+      "explanation": "Trauma-focused psychological therapy is first-line for PTSD, and a partial medication response does not change that. It can start now alongside sertraline, with advice and monitoring for the drinking; his fear of talking about the assault is avoidance that the therapy addresses."
+    },
+    {
+      "label": "D",
+      "text": "Add nightly temazepam for sleep and review in one month",
+      "isCorrect": false,
+      "explanation": "Benzodiazepines are not recommended in PTSD: they do not treat the disorder, may interfere with therapy and carry dependence risk, particularly with nightly alcohol."
+    },
+    {
+      "label": "E",
+      "text": "Increase sertraline and defer psychological therapy until mood lifts",
+      "isCorrect": false,
+      "explanation": "Medication is a second-line or adjunctive option in PTSD. Waiting for mood to lift delays the treatment with the best evidence, and his depressive symptoms are likely to improve as the PTSD does."
+    }
+  ],
+  "context": "Trauma-focused psychological therapy is first-line for PTSD. Partial response to an SSRI, comorbid depression or non-dependent drinking are reasons to start it, not to delay it.",
+  "publicModule": {
+    "schemaVersion": 1,
+    "origin": "mirrored",
+    "discipline": "psych",
+    "mirroredFrom": "md3:7638b433a839bbcb",
+    "itemText": {
+      "licence": "CC-BY-4.0",
+      "attribution": "MD3 contributors"
+    },
+    "evidence": {
+      "kind": "reference",
+      "sourceId": "nice-guidance-ng116-chapter-recommendations-8a9424"
+    },
+    "review": {
+      "verdict": "passed",
+      "contentHash": "a812eaee6cbf93111b1aa1dcf96742260200b74a15431eb54cd7769616b831d4"
+    }
+  }
+}

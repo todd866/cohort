@@ -25,6 +25,8 @@ export interface UnifiedSessionParamOpts {
    * delivery. See src/lib/study/serve-request-id.ts.
    */
   serveRequestId?: string;
+  /** Revision of the learner's challenge preference captured for this draw. */
+  reviewChallengeRevision?: number | null;
 }
 
 /**
@@ -50,6 +52,9 @@ export function buildUnifiedSessionParams(slot: FetchSlot, opts: UnifiedSessionP
   if (opts.cluster) params.set('cluster', opts.cluster);
   if (opts.timezone) params.set('tz', opts.timezone);
   if (opts.serveRequestId) params.set('sid', opts.serveRequestId);
+  if (opts.reviewChallengeRevision != null) {
+    params.set('reviewChallengeRevision', String(opts.reviewChallengeRevision));
+  }
   if (opts.feedMode === 'new-only' || opts.reviewFilter === 'new') {
     params.set('feedMode', 'new-only');
   }

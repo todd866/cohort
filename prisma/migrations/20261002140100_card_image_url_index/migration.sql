@@ -1,0 +1,17 @@
+-- Keep this migration outside an explicit transaction: PostgreSQL requires
+-- CREATE INDEX CONCURRENTLY to run as a top-level statement. Keep it to this
+-- one statement, so an interrupted build is always recovered the same way.
+--
+-- Figure delivery (/api/figures/delivery) asks which rotations show a figure:
+-- Card WHERE "imageUrl" = key, and the same on Question (next migration).
+-- With no index each lookup was a parallel sequential scan of Card, about
+-- 200 ms a call, and those scans pushed the rest of Card out of the buffer
+-- cache. A figure is shown by a handful of cards, so the equality lookup
+-- becomes a few index probes. Few cards carry a figure, so the same index can
+-- also serve the "imageUrl" IS NOT NULL readers.
+--
+-- An interrupted build (lock_timeout or statement_timeout) leaves an INVALID
+-- index and a failed migration row. To recover: drop the index with
+-- DROP INDEX CONCURRENTLY IF EXISTS "Card_imageUrl_idx", mark the migration
+-- rolled back with prisma migrate resolve --rolled-back, and deploy again.
+CREATE INDEX CONCURRENTLY "Card_imageUrl_idx" ON "Card" ("imageUrl");

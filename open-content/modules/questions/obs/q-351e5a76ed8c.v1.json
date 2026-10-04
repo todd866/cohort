@@ -1,0 +1,64 @@
+{
+  "id": "bank:cohort:obs:q-351e5a76ed8c:v1",
+  "rotation": "cohort-open",
+  "moduleNodes": [
+    "cohort/obs"
+  ],
+  "topics": [
+    "obs"
+  ],
+  "questionType": "management",
+  "difficulty": "medium",
+  "stem": "At a GP shared-care booking visit at ten weeks, a 29-year-old is found to be rubella non-immune. She has no rash or known exposure. She plans to breastfeed, and she asks when she should be vaccinated.\n\nWhat should the GP advise?",
+  "options": [
+    {
+      "label": "A",
+      "text": "MMR now, as the live-vaccine risk to the fetus is theoretical",
+      "isCorrect": false,
+      "explanation": "Inadvertent vaccination in pregnancy has not been shown to harm the fetus, so it is not a reason to end a pregnancy. MMR is still a live vaccine and is contraindicated in pregnancy, so it is not given at a booking visit."
+    },
+    {
+      "label": "B",
+      "text": "MMR at 28 weeks, once fetal organ formation is complete",
+      "isCorrect": false,
+      "explanation": "MMR is contraindicated at any gestation, not only during organ formation."
+    },
+    {
+      "label": "C",
+      "text": "MMR after the birth, once breastfeeding has finished",
+      "isCorrect": false,
+      "explanation": "Breastfeeding is not a contraindication to MMR. Waiting until weaning leaves her non-immune going into a future pregnancy."
+    },
+    {
+      "label": "D",
+      "text": "MMR after the birth, before she leaves the maternity unit",
+      "isCorrect": true,
+      "explanation": "MMR is a live vaccine and waits until after the birth. Giving it before discharge, while she breastfeeds, closes the gap before the next pregnancy; she then avoids pregnancy for 28 days."
+    },
+    {
+      "label": "E",
+      "text": "Normal human immunoglobulin now, with MMR after the birth",
+      "isCorrect": false,
+      "explanation": "Immunoglobulin is not given to a non-immune woman without an exposure, and it would not give lasting immunity."
+    }
+  ],
+  "context": "A rubella non-immune pregnant woman has MMR after the birth, ideally before maternity discharge; breastfeeding is not a reason to delay.",
+  "publicModule": {
+    "schemaVersion": 1,
+    "origin": "mirrored",
+    "discipline": "obs",
+    "mirroredFrom": "md3:351e5a76ed8c6c4d",
+    "itemText": {
+      "licence": "CC-BY-4.0",
+      "attribution": "MD3 contributors"
+    },
+    "evidence": {
+      "kind": "reference",
+      "sourceId": "vic-health-infectious-diseases-rubella-german-measles-edaea5"
+    },
+    "review": {
+      "verdict": "passed",
+      "contentHash": "d2ad533da831a1dc2f662a3567fdb370dc4887a9e479c0f54a1196d13fbbeb28"
+    }
+  }
+}

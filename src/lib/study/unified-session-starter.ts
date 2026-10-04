@@ -19,6 +19,7 @@ import {
   filterCardsAtDueEgress,
 } from './unified-session-helpers';
 import type { SessionContext, UnifiedItem } from './unified-session-types';
+import { EXAM_ONLY_ROTATIONS } from './exam-only-modules';
 import { logSessionDiagnostic } from './unified-session-diagnostics';
 import { writeLiveServeDecisions } from './serve-decision-write';
 import { withoutRawPublicUsmleQuestions } from '@/lib/usmle/raw-question-boundary';
@@ -30,6 +31,8 @@ import { ownerPrivateOrSharedCardScope } from '@/lib/cards/read-repository.serve
  * Returns null if user has prior activity (falls through to next path).
  */
 export async function tryStarterSession(ctx: SessionContext): Promise<NextResponse | null> {
+  // The fixed starter has no challenge alternatives. Prepare the adaptive fast lane.
+  if (ctx.reviewChallenge?.level) return null;
   // A completed exam is prior learning evidence even before the first casual review.
   if (ctx.practiceReviewFocus?.weakTopics.length) return null;
   if ((ctx.crossSourceRotations?.length ?? 0) > 0) return null;
@@ -39,6 +42,10 @@ export async function tryStarterSession(ctx: SessionContext): Promise<NextRespon
   // A cluster-scoped request is an explicit narrowing; this lane builds its own
   // candidate list and cannot honour it.
   if (ctx.clusterFilter) return null;
+  // GSSE and NSx sessions are questions-only (exam-only-modules.ts). A
+  // generated starter mixes cards in, so a new learner's first batch there
+  // comes from the question lanes instead.
+  if (EXAM_ONLY_ROTATIONS.has(ctx.rotation)) return null;
 
   const starterSession = STARTER_SESSIONS[ctx.rotation];
   if (!starterSession || starterSession.items.length === 0) return null;

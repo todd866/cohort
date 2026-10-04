@@ -1,0 +1,64 @@
+{
+  "id": "bank:cohort:psych:q-5ea18170c48f:v1",
+  "rotation": "cohort-open",
+  "moduleNodes": [
+    "cohort/psych"
+  ],
+  "topics": [
+    "psych"
+  ],
+  "questionType": "mechanism",
+  "difficulty": "medium",
+  "stem": "A physically opioid-dependent patient takes standard-dose sublingual buprenorphine soon after using heroin, before spontaneous withdrawal begins. Soon afterwards, abdominal cramps, sweating and agitation abruptly worsen.\n\nWhich mechanism best explains the deterioration?",
+  "options": [
+    {
+      "label": "A",
+      "text": "Inhibition of opioid breakdown in the liver",
+      "isCorrect": false,
+      "explanation": "This is a receptor-occupancy effect, not accumulation caused by inhibited hepatic breakdown."
+    },
+    {
+      "label": "B",
+      "text": "Activation of central muscarinic receptors",
+      "isCorrect": false,
+      "explanation": "Muscarinic activation does not explain the timing after a high-affinity opioid medication."
+    },
+    {
+      "label": "C",
+      "text": "Blockade of renal elimination of heroin",
+      "isCorrect": false,
+      "explanation": "Renal elimination does not explain the abrupt reduction in opioid effect and withdrawal symptoms."
+    },
+    {
+      "label": "D",
+      "text": "Increased full agonist activity at opioid receptors",
+      "isCorrect": false,
+      "explanation": "Buprenorphine provides less intrinsic receptor activation than a full agonist, so replacing heroin can reduce rather than increase net activity."
+    },
+    {
+      "label": "E",
+      "text": "Displacement by a high-affinity partial agonist",
+      "isCorrect": true,
+      "explanation": "Buprenorphine can displace a full agonist while providing less opioid effect, precipitating withdrawal if standard induction begins too early."
+    }
+  ],
+  "context": "High receptor affinity plus partial agonism explains buprenorphine-precipitated withdrawal.",
+  "publicModule": {
+    "schemaVersion": 1,
+    "origin": "mirrored",
+    "discipline": "psych",
+    "mirroredFrom": "md3:5ea18170c48fd608",
+    "itemText": {
+      "licence": "CC-BY-4.0",
+      "attribution": "MD3 contributors"
+    },
+    "evidence": {
+      "kind": "reference",
+      "sourceId": "health-gov-au-al-guidelines-for-medication-assisted-treatment-of-opioid-dependence-0-b96ebb"
+    },
+    "review": {
+      "verdict": "passed",
+      "contentHash": "847b7f17a30dcf8e42aa1e5b63c4b7b708b464b6d2ad2e1c72e69e09060a2864"
+    }
+  }
+}

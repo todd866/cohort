@@ -1,0 +1,64 @@
+{
+  "id": "bank:cohort:psych:q-e11247909c1d:v1",
+  "rotation": "cohort-open",
+  "moduleNodes": [
+    "cohort/psych"
+  ],
+  "topics": [
+    "psych"
+  ],
+  "questionType": "management",
+  "difficulty": "medium",
+  "stem": "A child psychiatrist assesses an 8-year-old with persistent argumentative and defiant behaviour causing problems at home and school. Assessment supports oppositional defiant disorder without ADHD, a mood episode or current dangerous aggression. The parents describe escalating arguments and inconsistent responses to behaviour. They have received general advice but no structured intervention.\n\nWhich treatment is the most appropriate next step?",
+  "options": [
+    {
+      "label": "A",
+      "text": "Individual CBT for the child focused on anger control",
+      "isCorrect": false,
+      "explanation": "Individual CBT has more evidence in older children and adolescents. At eight, changing the parent–child interaction is the central treatment."
+    },
+    {
+      "label": "B",
+      "text": "Parent-management training delivered to both parents",
+      "isCorrect": true,
+      "explanation": "Parent-management training teaches consistent limits, praise and calm consequences, breaking the cycle of escalating conflict and inconsistent responses. It is first-line treatment for ODD in young children."
+    },
+    {
+      "label": "C",
+      "text": "A school-based social-skills group for the child",
+      "isCorrect": false,
+      "explanation": "Social-skills groups do not address the inconsistent responses and escalating arguments at home. They are not first-line treatment for ODD."
+    },
+    {
+      "label": "D",
+      "text": "Family therapy exploring the parents’ own relationship",
+      "isCorrect": false,
+      "explanation": "Nothing suggests a primary relationship problem between the parents. The target is how they respond to the child’s behaviour."
+    },
+    {
+      "label": "E",
+      "text": "Individual nondirective play therapy for the child",
+      "isCorrect": false,
+      "explanation": "Nondirective play therapy lacks evidence for ODD and does not change how the parents respond to the behaviour."
+    }
+  ],
+  "context": "Parent-focused behavioural treatment is central to childhood ODD; medication is not the default response to defiance.",
+  "publicModule": {
+    "schemaVersion": 1,
+    "origin": "mirrored",
+    "discipline": "psych",
+    "mirroredFrom": "md3:e11247909c1d5309",
+    "itemText": {
+      "licence": "CC-BY-4.0",
+      "attribution": "MD3 contributors"
+    },
+    "evidence": {
+      "kind": "reference",
+      "sourceId": "nice-guidance-cg158-chapter-recommendations-ce0e8b"
+    },
+    "review": {
+      "verdict": "passed",
+      "contentHash": "648fa4f32e3beee3185f8c72dfa8cf3714ded33b420cb1ac2b554775de95a498"
+    }
+  }
+}

@@ -1,3 +1,5 @@
+import { itemMatchesReviewLearning } from './review-learning-item';
+import { applyReviewChallengeWave } from './review-challenge';
 import { NextResponse, after } from 'next/server';
 import { prisma } from '@/lib/prisma';
 import { logger } from '@/lib/logger';
@@ -49,6 +51,8 @@ import {
 import { breakModalityRuns } from '@/lib/knowledge/modality-guard';
 import { isUsableQuestion } from '@/lib/question-validation';
 import { loadCurrentSessionContent, sessionSourceKey as sourceKey, withCurrentSessionBody, type CurrentSessionSource } from './current-session-content';
+import { EXAM_ONLY_ROTATIONS, isNativeExamScaffold } from './exam-only-modules';
+import { getReviewLearningGap } from './review-learning-gap.server';
 
 type CachedQuestionSource = {
   id: string;
@@ -522,6 +526,7 @@ export async function tryCachedSession(ctx: SessionContext): Promise<NextRespons
     (ctx.hasFilters && !isCrossSourceBlendOnly(ctx))
     || ctx.noCache
     || ctx.isGuest
+    || !ctx.reviewChallenge
   ) return null;
   // Cross-source requests are NOT refused here. Refusing meant a user with
   // another source blended in could never read their own precomputed queue —
@@ -533,7 +538,7 @@ export async function tryCachedSession(ctx: SessionContext): Promise<NextRespons
 
   const tCacheStart = performance.now();
   try {
-    const cacheRow = await readSessionCache(ctx.userId, ctx.rotation);
+    const cacheRow = await readSessionCache(ctx.userId, ctx.rotation, ctx.reviewChallenge);
 
     if (cacheRow && Array.isArray(cacheRow.items) && cacheRow.items.length > 0) {
       const now = new Date();
@@ -558,6 +563,16 @@ export async function tryCachedSession(ctx: SessionContext): Promise<NextRespons
       const tCacheEnd = performance.now();
 
       let cachedItems = cacheRow.items as UnifiedItem[];
+      const gap = ctx.reviewChallenge?.level === 2 ? await getReviewLearningGap(ctx) : null;
+      if (gap && !gap.available) return null;
+      cachedItems = cachedItems.filter(item => itemMatchesReviewLearning(item, ctx.reviewChallenge?.level ?? 0, gap?.questionIds));
+      // Queues built before the mixed exam policy may still contain ordinary
+      // exam cards. Drop those rows at delivery; questions remain eligible and
+      // the refresh path will rebuild a correctly tagged mixed queue.
+      if (EXAM_ONLY_ROTATIONS.has(ctx.rotation)) {
+        cachedItems = cachedItems.filter((item) => item.type !== 'card'
+          || isNativeExamScaffold(ctx.rotation, item.topics));
+      }
       cachedItems = await filterRightsStaleCachedVideos(ctx, cachedItems);
       const initialSourceValidation = await revalidateCachedItemSources(ctx, cachedItems);
       cachedItems = initialSourceValidation.items;
@@ -593,7 +608,7 @@ export async function tryCachedSession(ctx: SessionContext): Promise<NextRespons
         });
         if (!isFresh) {
           after(async () => {
-            await runSessionCacheRefresh(ctx, { recordOutcome: true, source: 'cache-empty' });
+            await runSessionCacheRefresh(ctx, { recordOutcome: true, source: 'cache-empty', leaseTtlMs: ctx.refreshLeaseTtlMs });
           });
         }
         return null; // Fall through to instant/manifold paths
@@ -606,8 +621,10 @@ export async function tryCachedSession(ctx: SessionContext): Promise<NextRespons
       });
 
       if (!isFresh) {
+        // Recorded like every other source: this is the main refresh path now
+        // that the warm cron only builds missing queues.
         after(async () => {
-          await runSessionCacheRefresh(ctx, { recordOutcome: false, source: 'cache-stale' });
+          await runSessionCacheRefresh(ctx, { recordOutcome: true, source: 'cache-stale', leaseTtlMs: ctx.refreshLeaseTtlMs });
         });
       }
 
@@ -746,7 +763,7 @@ export async function tryCachedSession(ctx: SessionContext): Promise<NextRespons
         : egressSafeCachedItems;
       // Even when only one modality survives, a final filter may have left
       // gaps in the positions assigned before media/due revalidation.
-      const modalitySafeCachedItems = enrichItemsWithWalkMetadata(modalityOrderedCachedItems);
+      const modalitySafeCachedItems = enrichItemsWithWalkMetadata(applyReviewChallengeWave(modalityOrderedCachedItems, ctx.reviewChallenge.level));
 
       // A stale queue is already being rebuilt above, with the same progress.
       if (isFresh && cachedQueueOwesNoveltyRebuild(ctx, modalitySafeCachedItems)) {
@@ -758,7 +775,7 @@ export async function tryCachedSession(ctx: SessionContext): Promise<NextRespons
           unseenRemaining: ctx.noveltyProgress?.unseenRemaining ?? null,
         });
         after(async () => {
-          await runSessionCacheRefresh(ctx, { recordOutcome: true, source: 'novelty-short' });
+          await runSessionCacheRefresh(ctx, { recordOutcome: true, source: 'novelty-short', leaseTtlMs: ctx.refreshLeaseTtlMs });
         });
       }
 

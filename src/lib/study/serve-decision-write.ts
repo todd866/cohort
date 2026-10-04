@@ -199,6 +199,9 @@ function deliveredPayload(
   const slot = repetitionSlot ?? inheritedSlot;
   return {
     ...inheritedConceptThreadPayload(parentPayload),
+    // A preference receipt is immutable selection provenance, not a recall estimate.
+    ...(parentPayload && typeof parentPayload === 'object' && !Array.isArray(parentPayload)
+      && parentPayload.reviewChallenge ? { reviewChallenge: parentPayload.reviewChallenge } : {}),
     ...(slot ? { repetitionSlot: slot as Prisma.InputJsonValue } : {}),
     ...extra,
   };
@@ -279,11 +282,13 @@ function buildRow(
     || item.conceptThreadPolicyVersion
     || item.conditioning
     || item.repetitionSlot
+    || item.reviewChallenge
     ? {
       // Grade-conditioner context, read back by the record handler alongside
       // predictedRecall so the grade path needs no history read.
       ...(item.conditioning ? { conditioning: item.conditioning } : {}),
       ...(item.repetitionSlot ? { repetitionSlot: item.repetitionSlot } : {}),
+      ...(item.reviewChallenge ? { reviewChallenge: item.reviewChallenge } : {}),
       ...(item.predictedRecallModel ? { predictedRecallModel: item.predictedRecallModel } : {}),
       ...(item.predictedRecallSource ? { predictedRecallSource: item.predictedRecallSource } : {}),
       ...(item.predictedRecallStatus ? { predictedRecallStatus: item.predictedRecallStatus } : {}),

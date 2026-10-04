@@ -240,6 +240,8 @@ model Card {
   @@index([importEpochId])
   @@index([practiceLocale])
   @@index([clipId])
+  // Figure delivery asks which rotations show a figure (imageUrl = key).
+  @@index([imageUrl])
 
   // Concept links (the concept spine); see CardConcept below.
   cardConcepts CardConcept[]
@@ -384,6 +386,8 @@ model Question {
   @@index([examRelevanceUpdatedAt])
   @@index([practiceLocale])
   @@index([clipId])
+  // Figure delivery asks which rotations show a figure, as on Card.
+  @@index([imageUrl])
 }
 
 // QuestionConcept - Many-to-many: Question tests multiple Concepts

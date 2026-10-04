@@ -1,0 +1,64 @@
+{
+  "id": "bank:cohort:obs:q-fedc477c8a4b:v1",
+  "rotation": "cohort-open",
+  "moduleNodes": [
+    "cohort/obs"
+  ],
+  "topics": [
+    "obs"
+  ],
+  "questionType": "knowledge",
+  "difficulty": "medium",
+  "stem": "A senior obstetrician assesses a tired woman for assisted vaginal birth after 50 minutes of active pushing. Abdominally the head is 0/5 palpable. On vaginal examination the cervix is fully dilated and the vertex is at +2 station behind bulging membranes, and ultrasound confirms direct occiput anterior position. A pudendal block is effective, her bladder was emptied 20 minutes ago and she has consented. She has no epidural, is in a birth room and has not had an episiotomy.\n\nWhich step must be completed before an instrument is applied?",
+  "options": [
+    {
+      "label": "A",
+      "text": "Rupture the membranes first",
+      "isCorrect": true,
+      "explanation": "Bulging membranes mean the forewaters are intact, and membranes must be ruptured before an instrument is applied. The other findings meet the conditions for a low, direct occiput anterior birth."
+    },
+    {
+      "label": "B",
+      "text": "Site an epidural block",
+      "isCorrect": false,
+      "explanation": "An effective pudendal block can provide adequate analgesia for a low occiput anterior birth. An epidural is one analgesic option, not a prerequisite."
+    },
+    {
+      "label": "C",
+      "text": "Wait for two hours of pushing",
+      "isCorrect": false,
+      "explanation": "Maternal exhaustion is a recognised indication for assisted birth. There is no minimum duration of pushing that must be reached first."
+    },
+    {
+      "label": "D",
+      "text": "Transfer to theatre for a trial",
+      "isCorrect": false,
+      "explanation": "A trial in theatre is reserved for births with a higher chance of failure, such as mid-cavity or rotational procedures. A low, direct occiput anterior head can be delivered in the birth room."
+    },
+    {
+      "label": "E",
+      "text": "Perform an episiotomy",
+      "isCorrect": false,
+      "explanation": "Episiotomy is used selectively, particularly with forceps. It is not a condition that must be met before the instrument is applied."
+    }
+  ],
+  "context": "Assisted vaginal birth requires ruptured membranes as well as full dilation and a suitably positioned, engaged head.",
+  "publicModule": {
+    "schemaVersion": 1,
+    "origin": "mirrored",
+    "discipline": "obs",
+    "mirroredFrom": "md3:fedc477c8a4be704",
+    "itemText": {
+      "licence": "CC-BY-4.0",
+      "attribution": "MD3 contributors"
+    },
+    "evidence": {
+      "kind": "reference",
+      "sourceId": "qld-health-data-assets-pdf-file-0033-736917-g-instrumental-1967bf"
+    },
+    "review": {
+      "verdict": "passed",
+      "contentHash": "b52034b074b73c8b6f56df62e296d1a6bb70ec26bcc771250e0e3428622667df"
+    }
+  }
+}

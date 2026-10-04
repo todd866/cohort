@@ -1,0 +1,64 @@
+{
+  "id": "bank:cohort:pharm:q-a93347ab59b8:v1",
+  "rotation": "cohort-open",
+  "moduleNodes": [
+    "cohort/pharm"
+  ],
+  "topics": [
+    "pharm"
+  ],
+  "questionType": "management",
+  "difficulty": "medium",
+  "stem": "A 56-year-old woman has a morphine PCA after hysterectomy. She is comfortable, easily roused and breathing normally at 14/min. Her partner tells the ward nurse that he pressed the button while she slept last night, because the night before she woke at 3 am in severe pain. He asks what he should do tonight instead.\n\nWhich plan is most appropriate?",
+  "options": [
+    {
+      "label": "A",
+      "text": "He presses only when she wakes and asks for it",
+      "isCorrect": false,
+      "explanation": "Even a requested press by another person bypasses the sedation safeguard, because she may ask while drowsy or before the previous dose has peaked. Only the patient should activate the PCA."
+    },
+    {
+      "label": "B",
+      "text": "Add a background infusion to cover sleep",
+      "isCorrect": false,
+      "explanation": "Background infusions in opioid-naive adults add little analgesia and increase the risk of respiratory depression, particularly during sleep."
+    },
+    {
+      "label": "C",
+      "text": "Only she presses; the pain team reviews it",
+      "isCorrect": true,
+      "explanation": "PCA is safe because a patient who becomes sedated stops pressing. Any dose given by someone else removes that safeguard. Waking in pain is a real problem, but the answer is a review of the regimen (for example regular non-opioid adjuncts), not proxy dosing."
+    },
+    {
+      "label": "D",
+      "text": "Shorten the lockout so she can catch up",
+      "isCorrect": false,
+      "explanation": "A shorter lockout allows doses to stack before each has peaked, increasing the risk of sedation; it does not address night-time pain safely."
+    },
+    {
+      "label": "E",
+      "text": "He presses if she looks restless asleep",
+      "isCorrect": false,
+      "explanation": "Restlessness during sleep is not a reliable sign of pain and can reflect hypoxia or airway obstruction. Pressing for a sleeping patient is exactly the proxy dosing that causes overdose."
+    }
+  ],
+  "context": "Only the patient should press a PCA button, so that sedation stops further doses. Pain that breaks through during sleep calls for a review of the regimen, not proxy dosing or a background infusion.",
+  "publicModule": {
+    "schemaVersion": 1,
+    "origin": "mirrored",
+    "discipline": "pharm",
+    "mirroredFrom": "md3:a93347ab59b8ab39",
+    "itemText": {
+      "licence": "CC-BY-4.0",
+      "attribution": "MD3 contributors"
+    },
+    "evidence": {
+      "kind": "reference",
+      "sourceId": "nsw-health-sites-default-files-documents-patientcontrolanalgiv2020-9dc3c6"
+    },
+    "review": {
+      "verdict": "passed",
+      "contentHash": "8cb9e6e7d86e661ae4882fe7d90acf3f5fa667262c5c0b5622e03bbb57ff93e8"
+    }
+  }
+}

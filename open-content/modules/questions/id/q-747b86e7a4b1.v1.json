@@ -1,0 +1,64 @@
+{
+  "id": "bank:cohort:id:q-747b86e7a4b1:v1",
+  "rotation": "cohort-open",
+  "moduleNodes": [
+    "cohort/id"
+  ],
+  "topics": [
+    "id"
+  ],
+  "questionType": "knowledge",
+  "difficulty": "medium",
+  "stem": "A 5-month-old girl with mild eczema is about to start solid foods. Her father has hay fever and her older brother has a peanut allergy. She has never had an allergic reaction. Her parents plan to have her allergy-tested before she tries peanut, because of her brother.\n\nWhat is the best advice?",
+  "options": [
+    {
+      "label": "A",
+      "text": "At 12 months, once eczema settles",
+      "isCorrect": false,
+      "explanation": "Delaying peanut beyond the first year increases the chance of peanut allergy. ASCIA advises introduction by 12 months, including for babies with eczema."
+    },
+    {
+      "label": "B",
+      "text": "Soon after starting solids",
+      "isCorrect": true,
+      "explanation": "Correct. ASCIA advises smooth peanut butter or paste soon after solids start (around 6 months, not before 4 months) and by 12 months, then at least weekly."
+    },
+    {
+      "label": "C",
+      "text": "After a negative skin prick test",
+      "isCorrect": false,
+      "explanation": "ASCIA's advice covers babies with eczema or an allergic parent or sibling. Testing first is not needed for a baby like this and would delay introduction."
+    },
+    {
+      "label": "D",
+      "text": "Not before 3 years of age",
+      "isCorrect": false,
+      "explanation": "Waiting until 3 years is outdated advice that raises allergy risk. Whole nuts are a choking hazard in young children, but smooth paste is safe in infancy."
+    },
+    {
+      "label": "E",
+      "text": "At 2 years of age",
+      "isCorrect": false,
+      "explanation": "Waiting until 2 years misses the first-year window in which early, regular peanut reduces the risk of peanut allergy."
+    }
+  ],
+  "context": "ASCIA: introduce peanut and egg soon after solids start and by 12 months, including in babies with eczema or a family history, then keep them in the diet regularly.",
+  "publicModule": {
+    "schemaVersion": 1,
+    "origin": "mirrored",
+    "discipline": "id",
+    "mirroredFrom": "md3:747b86e7a4b1bf7f",
+    "itemText": {
+      "licence": "CC-BY-4.0",
+      "attribution": "MD3 contributors"
+    },
+    "evidence": {
+      "kind": "reference",
+      "sourceId": "ascia-tients-allergy-prevention-ascia-how-to-introduce-solid-foods-to-babies-b15055"
+    },
+    "review": {
+      "verdict": "passed",
+      "contentHash": "b22bc1b907665a95b0778ec252ae5f01116ed125d3218b20894aef833c487025"
+    }
+  }
+}

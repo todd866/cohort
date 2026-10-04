@@ -1,0 +1,64 @@
+{
+  "id": "bank:cohort:paeds:q-1f1516348876:v1",
+  "rotation": "cohort-open",
+  "moduleNodes": [
+    "cohort/paeds"
+  ],
+  "topics": [
+    "paeds"
+  ],
+  "questionType": "management",
+  "difficulty": "hard",
+  "stem": "A term infant is born unexpectedly in a hospital with a neonatal team present. At two minutes the baby has weak respiratory effort, a heart rate of 90/min and marked respiratory distress. The abdomen is scaphoid, breath sounds are greatly reduced on the left and bowel sounds are heard in the left chest. A clinician skilled in neonatal intubation and the required equipment are at the bedside.\n\nWhich immediate respiratory strategy is most appropriate?",
+  "options": [
+    {
+      "label": "A",
+      "text": "Begin face-mask positive-pressure ventilation before inserting a gastric tube",
+      "isCorrect": false,
+      "explanation": "Mask ventilation can inflate intrathoracic bowel and worsen lung compression in suspected diaphragmatic hernia."
+    },
+    {
+      "label": "B",
+      "text": "Begin nasal CPAP while arranging a diagnostic chest radiograph",
+      "isCorrect": false,
+      "explanation": "CPAP can also cause gastrointestinal distension; it is not the preferred support for this poorly breathing infant with the stated signs."
+    },
+    {
+      "label": "C",
+      "text": "Intubate for gentle ventilation and insert a large-bore gastric tube",
+      "isCorrect": true,
+      "explanation": "The findings suggest diaphragmatic hernia requiring respiratory support. Early intubation with gentle ventilation and gastric decompression avoids the distension caused by mask ventilation."
+    },
+    {
+      "label": "D",
+      "text": "Insert a gastric tube and wait for radiographic confirmation before ventilation",
+      "isCorrect": false,
+      "explanation": "Gastric decompression is useful, but the infant also needs prompt ventilation; imaging must not delay respiratory support."
+    },
+    {
+      "label": "E",
+      "text": "Insert a left pleural drain before providing assisted ventilation",
+      "isCorrect": false,
+      "explanation": "Reduced air entry alone could suggest pneumothorax, but the scaphoid abdomen and intrathoracic bowel sounds favour hernia, making an empiric pleural drain inappropriate."
+    }
+  ],
+  "context": "Suspected congenital diaphragmatic hernia changes newborn resuscitation: secure an airway and decompress the stomach rather than inflating bowel with mask ventilation.",
+  "publicModule": {
+    "schemaVersion": 1,
+    "origin": "mirrored",
+    "discipline": "paeds",
+    "mirroredFrom": "md3:1f15163488760ff3",
+    "itemText": {
+      "licence": "CC-BY-4.0",
+      "attribution": "MD3 contributors"
+    },
+    "evidence": {
+      "kind": "reference",
+      "sourceId": "anzcor-ideline-13-8-the-resuscitation-of-the-newborn-in-special-circumstances-5bf4af"
+    },
+    "review": {
+      "verdict": "passed",
+      "contentHash": "1539034c7d2de6951ac722f22a232d0dad425a8de974ee3ad544f8e515d902c3"
+    }
+  }
+}

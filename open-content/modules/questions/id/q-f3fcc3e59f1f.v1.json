@@ -1,0 +1,64 @@
+{
+  "id": "bank:cohort:id:q-f3fcc3e59f1f:v1",
+  "rotation": "cohort-open",
+  "moduleNodes": [
+    "cohort/id"
+  ],
+  "topics": [
+    "id"
+  ],
+  "questionType": "management",
+  "difficulty": "medium",
+  "stem": "A girl born at 30 weeks' gestation is now 8 weeks old by chronological age (38 weeks postmenstrual age). She was discharged from the special care nursery last week, weighs 2.3 kg, is feeding well and has no contraindication to vaccination. Her parents ask the GP whether her 2-month vaccines should wait until she is bigger or closer to her due date.\n\nWhat is the most appropriate plan?",
+  "options": [
+    {
+      "label": "A",
+      "text": "Wait until 2 months corrected age, then start the schedule",
+      "isCorrect": false,
+      "explanation": "Vaccines are timed by chronological age. Waiting for corrected age delays protection and would miss the age limit for the first rotavirus dose."
+    },
+    {
+      "label": "B",
+      "text": "Give the 2-month vaccines now, but leave out rotavirus",
+      "isCorrect": false,
+      "explanation": "Prematurity is not a reason to omit rotavirus vaccine; a stable preterm infant receives it at the usual chronological age, within its age window."
+    },
+    {
+      "label": "C",
+      "text": "Give every 2-month vaccine today, rotavirus included",
+      "isCorrect": true,
+      "explanation": "Correct. Stable preterm infants receive routine vaccines at the usual dose and chronological age, including rotavirus within its age window; the extra hepatitis B recommendation for babies born before 32 weeks is checked separately."
+    },
+    {
+      "label": "D",
+      "text": "Give hepatitis B now, and the rest at 2 months corrected age",
+      "isCorrect": false,
+      "explanation": "No routine vaccine is deferred to corrected age. Babies born before 32 weeks have an additional hepatitis B recommendation later in infancy, but that does not delay the 2-month vaccines."
+    },
+    {
+      "label": "E",
+      "text": "Wait until she weighs 2.5 kg, then start the schedule",
+      "isCorrect": false,
+      "explanation": "Weight is not a criterion for starting routine vaccines once an infant is stable."
+    }
+  ],
+  "context": "Preterm infants generally receive routine vaccines at the usual dose by chronological age. For infants born before 32 weeks or under 2000 g, also check the additional hepatitis B recommendations.",
+  "publicModule": {
+    "schemaVersion": 1,
+    "origin": "mirrored",
+    "discipline": "id",
+    "mirroredFrom": "md3:f3fcc3e59f1fe9fb",
+    "itemText": {
+      "licence": "CC-BY-4.0",
+      "attribution": "MD3 contributors"
+    },
+    "evidence": {
+      "kind": "reference",
+      "sourceId": "aih-ts-vaccination-for-special-risk-groups-vaccination-for-preterm-infants-ae0256"
+    },
+    "review": {
+      "verdict": "passed",
+      "contentHash": "702a012d08ae79ae9ad36a795e6ce5f1efcc8f35394cdf992ba66be00bf39990"
+    }
+  }
+}

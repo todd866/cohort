@@ -1,0 +1,18 @@
+-- Keep this migration outside an explicit transaction: PostgreSQL requires
+-- CREATE INDEX CONCURRENTLY to run as a top-level statement. Keep it to this
+-- one statement, so an interrupted build is always recovered the same way.
+--
+-- The write-health cron's liveness probe asks for the newest answered question
+-- with no user filter (ORDER BY "createdAt" DESC LIMIT 1, every ten minutes in
+-- active hours). The only index holding "createdAt" leads with "userId", and
+-- Postgres 17 has no skip scan, so each probe read the whole table and sorted
+-- it, at a cost that grows with every answer. A plain ascending btree serves
+-- the probe as a backward index scan of one leaf page: Prisma's DESC means
+-- NULLS FIRST, which is exactly the index order reversed.
+--
+-- An interrupted build (lock_timeout or statement_timeout) leaves an INVALID
+-- index and a failed migration row. To recover: drop the index with
+-- DROP INDEX CONCURRENTLY IF EXISTS "QuestionResponse_createdAt_idx", mark the
+-- migration rolled back with prisma migrate resolve --rolled-back, and deploy
+-- again.
+CREATE INDEX CONCURRENTLY "QuestionResponse_createdAt_idx" ON "QuestionResponse" ("createdAt");

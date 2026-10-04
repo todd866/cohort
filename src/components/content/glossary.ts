@@ -1,23 +1,11 @@
 import glossaryData from './glossary-data.json';
 
 /**
- * Medical terms/TLAs glossary
- * Add new terms here - they'll automatically work with the <Term> component
- *
- * NOTE: This static glossary is used as fallback when TermProvider context
- * is not available. The canonical source of truth is now the database,
- * seeded from this data via `npx prisma db seed`.
- *
- * CURATION: Only include terms where the tooltip adds value for a Year 3 med
- * student. Exclude universally known abbreviations (BP, HR, IV, ICU, ECG, etc.)
- * — highlighting them just adds noise.
- *
- * AMBIGUITY: Terms that collide with common English words or have multiple
- * medical meanings (e.g. CO = Cardiac Output vs Carbon Monoxide) should set
- * `autoDetect: false`. They'll still resolve via explicit `<Term abbr="CO">`
- * but won't be auto-highlighted by the regex. In MDX, use `<Term>` explicitly.
- * For DB-sourced text (questions/cards), inline markup is planned but not yet
- * implemented — for now, ambiguous terms simply won't get tooltips there.
+ * Legacy glossary for explicitly authored <Term> markup and unmigrated content.
+ * Card/question hover meanings belong to the item's `abbreviations` map, passed
+ * through GlossaryScope. This dictionary may suggest a meaning during review;
+ * it must not override an item's map or fill its intentionally absent keys.
+ * Keep legacy decode opt-ins sparse while existing content is migrated.
  */
 
 export type GlossaryEntry = {

@@ -4,6 +4,11 @@ import { useEffect } from 'react';
 import Link from 'next/link';
 import { reportClientError } from '@/lib/report-client-error';
 
+function isChunkLoadError(error: Error): boolean {
+  return error.name === 'ChunkLoadError'
+    || /^(Loading chunk .* failed|Failed to fetch dynamically imported module|Importing a module script failed)/i.test(error.message);
+}
+
 export default function ReviewError({
   error,
   reset,
@@ -16,6 +21,17 @@ export default function ReviewError({
     reportClientError(error, 'route-error');
   }, [error]);
 
+  const handleRetry = () => {
+    if (isChunkLoadError(error)) {
+      // React keeps a rejected lazy-import promise cached. A route reset would
+      // therefore render the same failure; reload the document once only when
+      // the failure identifies a stale/missing dynamic chunk.
+      window.location.reload();
+      return;
+    }
+    reset();
+  };
+
   return (
     <div className="flex flex-col items-center justify-center min-h-screen p-6 text-center">
       <div className="max-w-md space-y-4">
@@ -27,7 +43,7 @@ export default function ReviewError({
         </p>
         <div className="flex gap-3 justify-center pt-2">
           <button
-            onClick={reset}
+            onClick={handleRetry}
             className="px-4 py-2 rounded-full text-sm font-medium bg-[var(--md-primary)] text-[var(--md-on-primary)]"
           >
             Try again

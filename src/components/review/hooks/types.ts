@@ -10,6 +10,8 @@ export interface ReviewItem {
   back?: string;
   backs?: string[] | null;
   context?: string | null;
+  /** Per-item abbreviation decodes; meanings may collide across content. */
+  abbreviations?: Record<string, string> | null;
   sourceComponent?: string;
   crosslinks?: {
     primary?: string;

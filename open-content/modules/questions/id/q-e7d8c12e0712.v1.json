@@ -1,0 +1,64 @@
+{
+  "id": "bank:cohort:id:q-e7d8c12e0712:v1",
+  "rotation": "cohort-open",
+  "moduleNodes": [
+    "cohort/id"
+  ],
+  "topics": [
+    "id"
+  ],
+  "questionType": "management",
+  "difficulty": "hard",
+  "stem": "A 21-day-old term boy has a temperature of 38.4 °C measured at home and confirmed in the emergency department. He is feeding a little less than usual but is alert, pink and well perfused, with a heart rate of 170/min. There is no focal source on examination. A catheter urine dipstick is positive for leucocytes and nitrites.\n\nWhat is the most appropriate management?",
+  "options": [
+    {
+      "label": "A",
+      "text": "Urine culture and oral cefalexin, with review in 24 hours",
+      "isCorrect": false,
+      "explanation": "A febrile neonate is not managed with oral antibiotics at home, even when the dipstick suggests a urinary source."
+    },
+    {
+      "label": "B",
+      "text": "Blood, urine and CSF cultures, then IV antibiotics",
+      "isCorrect": true,
+      "explanation": "Correct. A febrile infant under 28 days needs a full sepsis evaluation including LP and prompt empirical IV antibiotics, however well he looks and whatever the urine shows."
+    },
+    {
+      "label": "C",
+      "text": "Admit for observation and urine culture, without antibiotics",
+      "isCorrect": false,
+      "explanation": "Observation without antibiotics is unsafe in a febrile neonate, as bacterial infection can progress quickly despite a well appearance."
+    },
+    {
+      "label": "D",
+      "text": "FBC and CRP, with IV antibiotics only if either is raised",
+      "isCorrect": false,
+      "explanation": "Normal inflammatory markers do not exclude serious bacterial infection in a neonate, so they cannot decide who receives antibiotics."
+    },
+    {
+      "label": "E",
+      "text": "Blood and urine cultures and IV antibiotics; LP not needed",
+      "isCorrect": false,
+      "explanation": "A positive dipstick does not exclude coexisting bacteraemia or meningitis in the first month, so neonates need CSF sampling as part of the sepsis work-up."
+    }
+  ],
+  "context": "A febrile infant under 28 days needs blood, urine and CSF cultures and empirical IV antibiotics, even if well-appearing and even when the urine explains the fever.",
+  "publicModule": {
+    "schemaVersion": 1,
+    "origin": "mirrored",
+    "discipline": "id",
+    "mirroredFrom": "md3:e7d8c12e0712f65f",
+    "itemText": {
+      "licence": "CC-BY-4.0",
+      "attribution": "MD3 contributors"
+    },
+    "evidence": {
+      "kind": "reference",
+      "sourceId": "rch-clinicalguide-guideline-index-febrile-child-86b9f3"
+    },
+    "review": {
+      "verdict": "passed",
+      "contentHash": "026a4190df7903a289aea24ffbf1ef7b8751dd082b33361f242c24e4558159f7"
+    }
+  }
+}

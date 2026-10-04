@@ -1,5 +1,6 @@
 import { Prisma } from '@prisma/client';
 import { prisma } from '@/lib/prisma';
+import { OTHER_HOST_ROTATIONS } from '@/lib/content/cohort-mirror';
 
 /** Strip JSX/MDX markup from topic names (e.g., <Term abbr="ENT" /> -> ENT) */
 function stripJsxFromTopic(topic: string): string {
@@ -19,7 +20,8 @@ function broadRotationExclusions(
   rotation: string | null,
   scope?: ProfileStatsScope,
 ): string[] {
-  return rotation ? [] : [...(scope?.excludeRotations ?? [])];
+  // Broad totals never count rows another host serves (Cohort's module copies).
+  return rotation ? [] : [...new Set([...(scope?.excludeRotations ?? []), ...OTHER_HOST_ROTATIONS])];
 }
 
 function rawRotationClause(rotation: string | null, excludedRotations: string[]) {

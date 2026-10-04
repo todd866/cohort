@@ -1,0 +1,64 @@
+{
+  "id": "bank:cohort:obs:q-de96842cd6e1:v1",
+  "rotation": "cohort-open",
+  "moduleNodes": [
+    "cohort/obs"
+  ],
+  "topics": [
+    "obs"
+  ],
+  "questionType": "management",
+  "difficulty": "medium",
+  "stem": "At 38 weeks, a woman with gestational diabetes attends a birth-planning consultation. Ultrasound estimates fetal weight at 4.7 kg. The fetus is cephalic and assessment is reassuring; she has no previous caesarean. Her obstetrician explains that ultrasound weight estimates have appreciable error.\n\nWhich recommendation best incorporates the estimated size and diabetes?",
+  "options": [
+    {
+      "label": "A",
+      "text": "Recommend induction as sufficient protection from size-related birth trauma",
+      "isCorrect": false,
+      "explanation": "Induction may form part of an individual birth plan, but it does not remove the need to discuss caesarean at this estimated weight with diabetes."
+    },
+    {
+      "label": "B",
+      "text": "Plan assisted vaginal birth to shorten the second stage",
+      "isCorrect": false,
+      "explanation": "Routine instrumental birth is not a preventive treatment for shoulder dystocia and can add trauma risk in a large fetus."
+    },
+    {
+      "label": "C",
+      "text": "Offer individual counselling about elective caesarean",
+      "isCorrect": true,
+      "explanation": "With diabetes and an estimate above 4.5 kg, planned caesarean may reduce birth trauma and should be discussed. The recommendation remains individualised because surgery has risks and the weight estimate is uncertain."
+    },
+    {
+      "label": "D",
+      "text": "Use a repeat HbA1c to determine whether the size estimate matters",
+      "isCorrect": false,
+      "explanation": "Current HbA1c does not erase fetal overgrowth already present; size and the obstetric circumstances remain relevant even if recent glucose control is satisfactory."
+    },
+    {
+      "label": "E",
+      "text": "Reserve discussion of caesarean for an estimated weight above 5.0 kg",
+      "isCorrect": false,
+      "explanation": "The threshold often discussed for a pregnancy without diabetes is higher; applying 5.0 kg to this diabetic pregnancy misses the relevant counselling threshold."
+    }
+  ],
+  "context": "Suspected fetal weight above about 4.5 kg with diabetes warrants discussion of planned caesarean, with uncertainty and maternal preferences made explicit.",
+  "publicModule": {
+    "schemaVersion": 1,
+    "origin": "mirrored",
+    "discipline": "obs",
+    "mirroredFrom": "md3:de96842cd6e11dce",
+    "itemText": {
+      "licence": "CC-BY-4.0",
+      "attribution": "MD3 contributors"
+    },
+    "evidence": {
+      "kind": "reference",
+      "sourceId": "ranzcog-wp-content-uploads-diagnosis-management-suspected-fetal-macrosomia-1bb9b6"
+    },
+    "review": {
+      "verdict": "passed",
+      "contentHash": "b23eed61ed6267dc6643ecc60109e211e77badcf9e3d8cbefa57827d03a6a442"
+    }
+  }
+}

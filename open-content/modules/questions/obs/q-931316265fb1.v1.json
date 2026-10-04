@@ -1,0 +1,64 @@
+{
+  "id": "bank:cohort:obs:q-931316265fb1:v1",
+  "rotation": "cohort-open",
+  "moduleNodes": [
+    "cohort/obs"
+  ],
+  "topics": [
+    "obs"
+  ],
+  "questionType": "investigation",
+  "difficulty": "medium",
+  "stem": "A breastfeeding woman, eight weeks after birth, has taken oral flucloxacillin for mastitis for three days. Her fever has settled, but a tender, firm 4 cm swelling persists in the upper outer quadrant of the breast with overlying redness. She is otherwise well and is still feeding from both breasts.\n\nWhich investigation should be arranged next?",
+  "options": [
+    {
+      "label": "A",
+      "text": "Diagnostic mammography to exclude an underlying malignancy",
+      "isCorrect": false,
+      "explanation": "Mammography is uncomfortable and hard to interpret in an inflamed lactating breast, and it does not answer whether there is a drainable collection."
+    },
+    {
+      "label": "B",
+      "text": "Ultrasound of the affected breast to look for a collection",
+      "isCorrect": true,
+      "explanation": "A persistent localised mass after antibiotics suggests a breast abscess. Ultrasound confirms a collection and guides needle aspiration or drainage."
+    },
+    {
+      "label": "C",
+      "text": "Breast-milk culture alone, continuing antibiotics until it settles",
+      "isCorrect": false,
+      "explanation": "Milk culture can guide antibiotic choice when mastitis fails to respond, but on its own it cannot show whether a collection needs drainage."
+    },
+    {
+      "label": "D",
+      "text": "Full blood count, CRP and blood cultures to track the infection",
+      "isCorrect": false,
+      "explanation": "Blood tests may reflect inflammation, but they cannot show a collection or guide drainage, and she is systemically well."
+    },
+    {
+      "label": "E",
+      "text": "Contrast-enhanced breast MRI to map the extent of inflammation",
+      "isCorrect": false,
+      "explanation": "MRI is not a first-line test for a suspected lactational abscess; ultrasound answers the question quickly and can guide treatment."
+    }
+  ],
+  "context": "A persistent breast lump after antibiotics for lactational mastitis needs ultrasound to look for an abscess that can be aspirated or drained.",
+  "publicModule": {
+    "schemaVersion": 1,
+    "origin": "mirrored",
+    "discipline": "obs",
+    "mirroredFrom": "md3:931316265fb1be4d",
+    "itemText": {
+      "licence": "CC-BY-4.0",
+      "attribution": "MD3 contributors"
+    },
+    "evidence": {
+      "kind": "reference",
+      "sourceId": "nsw-health-sites-default-files-documents-mast-e66247"
+    },
+    "review": {
+      "verdict": "passed",
+      "contentHash": "7985919ba1fcbe956b1a60e4faf00c1bb87cee984849d20e00b17628e4965142"
+    }
+  }
+}

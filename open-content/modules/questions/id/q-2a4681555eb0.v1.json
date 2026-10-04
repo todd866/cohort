@@ -1,0 +1,64 @@
+{
+  "id": "bank:cohort:id:q-2a4681555eb0:v1",
+  "rotation": "cohort-open",
+  "moduleNodes": [
+    "cohort/id"
+  ],
+  "topics": [
+    "id"
+  ],
+  "questionType": "investigation",
+  "difficulty": "hard",
+  "stem": "Aisha, 3, has moderate eczema that flares every few weeks. Her parents wonder whether foods are making it worse, so a specific IgE blood test was ordered: it is positive for cow's milk, hen's egg, wheat, soy and peanut. She drinks milk and eats eggs, bread and soy yoghurt most days, with no hives, vomiting or wheeze after them. She has never eaten peanut or any other nut. Her parents ask what to change.\n\nWhat is the most appropriate advice?",
+  "options": [
+    {
+      "label": "A",
+      "text": "Avoid all five foods until an allergist has seen her",
+      "isCorrect": false,
+      "explanation": "Removing foods she eats without reaction restricts her diet for no benefit, and stopping a tolerated food can risk losing that tolerance. These results show sensitisation, not allergy."
+    },
+    {
+      "label": "B",
+      "text": "Keep the four foods; start peanut at home this week",
+      "isCorrect": false,
+      "explanation": "Early introduction of peanut at home is advised for infants without a known allergy. A positive peanut test in a child who has never eaten it means the first exposure should follow specialist assessment."
+    },
+    {
+      "label": "C",
+      "text": "Stop milk and egg, the likeliest drivers of her eczema",
+      "isCorrect": false,
+      "explanation": "Eczema is driven mainly by skin barrier dysfunction and inflammation; foods are rarely the cause in a child who eats them without reaction. Stopping milk and egg risks her nutrition without improving her skin."
+    },
+    {
+      "label": "D",
+      "text": "Repeat the tests by skin prick, then decide on the diet",
+      "isCorrect": false,
+      "explanation": "A skin prick test also measures sensitisation. A second positive test cannot override a history of eating the food without reaction."
+    },
+    {
+      "label": "E",
+      "text": "Keep the four foods; peanut after specialist review",
+      "isCorrect": true,
+      "explanation": "Correct. Foods she eats regularly without a reaction stay in her diet, whatever the test shows. Peanut, never eaten and with a positive test, needs specialist assessment, which may include a supervised food challenge, before it is given."
+    }
+  ],
+  "context": "A positive IgE or skin prick test shows sensitisation, not allergy. Tolerated foods stay in the diet, food avoidance does not treat eczema, and a positive test to a food never eaten needs specialist assessment before it is introduced.",
+  "publicModule": {
+    "schemaVersion": 1,
+    "origin": "mirrored",
+    "discipline": "id",
+    "mirroredFrom": "md3:2a4681555eb07eb1",
+    "itemText": {
+      "licence": "CC-BY-4.0",
+      "attribution": "MD3 contributors"
+    },
+    "evidence": {
+      "kind": "reference",
+      "sourceId": "ascia-patients-food-allergy-faqs-7388cd"
+    },
+    "review": {
+      "verdict": "passed",
+      "contentHash": "e4c6892da642bc07ee83add33174c009f0c54012e9255a6cba5de905ea6e8872"
+    }
+  }
+}

@@ -41,6 +41,7 @@ export function ensureNonEmptyManifoldSession(
   // The caller should pre-union open-issue IDs into excludedCardIds; the
   // EXCLUDED_POOL_TOPICS gate is enforced by filterServableRotationCardList.
   const rotationCards = filterServableRotationCardList(ctx.rotationContent.cardList, {
+    rotation: ctx.rotation,
     weekFilter: ctx.weekFilter,
     excludedCardIds,
   });
@@ -273,6 +274,7 @@ export function buildErrorFallbackItems(
   // _needs-image/_incomplete-data, plus open-issue ContentIssue ids) — the same
   // guarantee the sibling rescue path (ensureNonEmptyManifoldSession) provides.
   const candidates = filterServableRotationCardList(ctx.rotationContent.cardList, {
+    rotation: ctx.rotation,
     weekFilter: ctx.weekFilter,
     excludedCardIds,
   });

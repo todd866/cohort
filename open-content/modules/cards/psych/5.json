@@ -1,0 +1,87 @@
+{
+  "schemaVersion": 1,
+  "discipline": "psych",
+  "licence": "CC-BY-4.0",
+  "attribution": "MD3 contributors",
+  "cards": [
+    {
+      "id": "cohort:psych:c-53df5d1b2c57:v1",
+      "origin": "mdx:9adb34cbaf09c3e0e5a81c2e81bc5bd4",
+      "discipline": "psych",
+      "cardType": "cloze",
+      "sourceComponent": "KeyPoint",
+      "front": "The three delirium subtypes are hyperactive (agitation, hallucinations), [___] (lethargy, reduced awareness — most commonly missed, worst prognosis), and mixed (fluctuates between both).",
+      "back": "hypoactive",
+      "context": "Ward staff describe these patients as 'settled' or 'sleeping well,' while in reality they are profoundly confused with ongoing organ dysfunction.\n\nStudies show hypoactive delirium is missed in up to 70% of cases without systematic screening (e.g., CAM or 4AT).",
+      "complexity": 2,
+      "importance": 2,
+      "variantGroup": null,
+      "variantIndex": null,
+      "reference": null
+    },
+    {
+      "id": "cohort:psych:c-56297b995eef:v1",
+      "origin": "mdx:7a18bdcd05eafdbe473a1efcfda2def5",
+      "discipline": "psych",
+      "cardType": "cloze",
+      "sourceComponent": "KeyPoint",
+      "front": "[___] competence allows a minor to consent to treatment if they demonstrate sufficient understanding and maturity, assessed on a case-by-case basis rather than by a fixed age.",
+      "back": "Gillick",
+      "context": "Gillick competence (from the 1986 UK case Gillick v West Norfolk) establishes that capacity is assessed individually, not by a fixed age threshold.",
+      "complexity": 2,
+      "importance": 2,
+      "variantGroup": null,
+      "variantIndex": null,
+      "reference": null
+    },
+    {
+      "id": "cohort:psych:c-589b38b60c16:v1",
+      "origin": "mdx:3115f2e4f386bfb59ceb42f912a96d1a",
+      "discipline": "psych",
+      "cardType": "cloze",
+      "sourceComponent": "KeyPoint",
+      "front": "Buprenorphine is preferred over methadone in patients with [___] prolongation because it has minimal cardiac conduction effects.",
+      "back": "QTc",
+      "context": "Buprenorphine has minimal effect on the hERG potassium channel and does not prolong the QTc interval, unlike methadone which can cause torsades de pointes.",
+      "complexity": 2,
+      "importance": 2,
+      "variantGroup": null,
+      "variantIndex": null,
+      "reference": {
+        "title": "NSW Clinical Guidelines: Treatment of Opioid Dependence (GL2018_019)",
+        "publisher": "NSW Health",
+        "url": "https://www1.health.nsw.gov.au/pds/Pages/doc.aspx?dn=GL2018_019"
+      }
+    },
+    {
+      "id": "cohort:psych:c-5c8f716e929a:v1",
+      "origin": "mdx:d182e3cc137f3d623f0ffb6051206b83",
+      "discipline": "psych",
+      "cardType": "cloze",
+      "sourceComponent": "KeyPoint",
+      "front": "New-onset visual hallucinations in a hospitalised patient are [___] until proven otherwise.",
+      "back": "delirium",
+      "context": "Visual hallucinations in the medical setting are a red flag for organic pathology rather than primary psychosis.",
+      "complexity": 2,
+      "importance": 2,
+      "variantGroup": null,
+      "variantIndex": null,
+      "reference": null
+    },
+    {
+      "id": "cohort:psych:c-5dc9a6f7c036:v1",
+      "origin": "mdx:1406ff6bdeea3d319945a1d3dc59a33c",
+      "discipline": "psych",
+      "cardType": "cloze",
+      "sourceComponent": "KeyPoint",
+      "front": "Key family systems concepts in child psychiatry include enmeshment vs disengagement, [___] (a child drawn into parental conflict to stabilise the dyad), and parentification (child forced into adult caretaking role).",
+      "back": "triangulation",
+      "context": "These concepts help explain why a child's symptoms may be maintained by family dynamics rather than individual pathology.\n\nTriangulation occurs when a dyadic conflict pulls in a third person (often a child) to stabilise the relationship. Parentification forces a child into an adult caretaking role, disrupting normal development.\n\nRecognising these patterns changes the treatment target from the child alone to the family system.",
+      "complexity": 2,
+      "importance": 2,
+      "variantGroup": null,
+      "variantIndex": null,
+      "reference": null
+    }
+  ]
+}

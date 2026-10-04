@@ -1,0 +1,64 @@
+{
+  "id": "bank:cohort:ent:q-bdd1301324b7:v1",
+  "rotation": "cohort-open",
+  "moduleNodes": [
+    "cohort/ent"
+  ],
+  "topics": [
+    "ent"
+  ],
+  "questionType": "management",
+  "difficulty": "hard",
+  "stem": "A 15-year-old has severe unilateral throat pain, drooling and a muffled voice. He cannot open his mouth fully. The uvula is deviated away from a bulging right tonsil. He is sitting forward, drooling but maintaining his airway. Which next step is most appropriate?",
+  "options": [
+    {
+      "label": "A",
+      "text": "Obtain contrast CT neck before arranging specialist review",
+      "isCorrect": false,
+      "explanation": "Imaging may be useful if the diagnosis or extent is uncertain, but should not delay ENT and airway assessment in this clinically typical presentation."
+    },
+    {
+      "label": "B",
+      "text": "Start IV antibiotics and reassess the swelling tomorrow",
+      "isCorrect": false,
+      "explanation": "Antibiotics are appropriate, but delayed specialist review misses the immediate airway and source-control decisions."
+    },
+    {
+      "label": "C",
+      "text": "Urgent ENT, airway assessment, IV antibiotics and drainage",
+      "isCorrect": true,
+      "explanation": "Correct. The unilateral bulge, uvula deviation, trismus and voice change suggest a peritonsillar abscess. ENT should coordinate airway assessment, antibiotics, analgesia and safe drainage."
+    },
+    {
+      "label": "D",
+      "text": "Give oral amoxicillin and dexamethasone with next-day review",
+      "isCorrect": false,
+      "explanation": "Oral outpatient therapy is inadequate for this focal collection with drooling and potential airway risk."
+    },
+    {
+      "label": "E",
+      "text": "Perform bedside needle aspiration before arranging ENT review",
+      "isCorrect": false,
+      "explanation": "Drainage requires appropriate expertise, airway assessment and a safe setting; blind or unsupported intervention is unsafe."
+    }
+  ],
+  "context": "Peritonsillar abscess presents with unilateral severe throat pain, trismus, muffled voice and uvular deviation. In a child or adolescent, involve ENT urgently, assess the airway and provide intravenous antibiotics, analgesia and drainage when safe.",
+  "publicModule": {
+    "schemaVersion": 1,
+    "origin": "mirrored",
+    "discipline": "ent",
+    "mirroredFrom": "md3:bdd1301324b71316",
+    "itemText": {
+      "licence": "CC-BY-4.0",
+      "attribution": "MD3 contributors"
+    },
+    "evidence": {
+      "kind": "reference",
+      "sourceId": "rch-clinicalguide-guideline-index-sore-throat-ac9b70"
+    },
+    "review": {
+      "verdict": "passed",
+      "contentHash": "abd38b6d773b360cac79f9665c96caf8c991d37715e2e47f9f827a1946ac9d0e"
+    }
+  }
+}

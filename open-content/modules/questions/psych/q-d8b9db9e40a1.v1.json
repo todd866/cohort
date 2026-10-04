@@ -1,0 +1,64 @@
+{
+  "id": "bank:cohort:psych:q-d8b9db9e40a1:v1",
+  "rotation": "cohort-open",
+  "moduleNodes": [
+    "cohort/psych"
+  ],
+  "topics": [
+    "psych"
+  ],
+  "questionType": "management",
+  "difficulty": "hard",
+  "stem": "A community psychiatrist reviews a 39-year-old with schizophrenia whose clozapine treatment has been optimised after previous antipsychotic trials. Adherence and concentrations are satisfactory, and there is no substance use or current mood episode. He still hears critical voices and avoids the supermarket because he believes obeying them prevents catastrophe. He has no commands to harm anyone and no immediate safety concern. He wants a psychological approach to reduce the voices’ control over his day.\n\nWhich intervention best targets his current difficulty?",
+  "options": [
+    {
+      "label": "A",
+      "text": "Cognitive remediation focused on attention and working memory",
+      "isCorrect": false,
+      "explanation": "Cognitive remediation can target cognitive difficulties, but attention and working memory are not the main problem identified here. His disability is linked to beliefs about the voices and associated avoidance."
+    },
+    {
+      "label": "B",
+      "text": "CBT for psychosis addressing beliefs about voices and coping",
+      "isCorrect": true,
+      "explanation": "CBT for psychosis can examine the perceived power and meaning of voices and develop alternative coping responses. It is used alongside medication to reduce distress and improve functioning, even when symptoms persist."
+    },
+    {
+      "label": "C",
+      "text": "Social-skills training focused on conversation and assertiveness",
+      "isCorrect": false,
+      "explanation": "Communication skills may be useful for other rehabilitation goals, but they do not directly address his belief that obeying voices prevents catastrophe. The intervention should match that maintaining process."
+    },
+    {
+      "label": "D",
+      "text": "Supported employment focused on returning to paid work",
+      "isCorrect": false,
+      "explanation": "Supported employment can help with a work goal, but he is asking for help with distressing voices and the avoidance they drive. This is a different immediate therapeutic target."
+    },
+    {
+      "label": "E",
+      "text": "Family psychoeducation focused on communication and relapse signs",
+      "isCorrect": false,
+      "explanation": "Family intervention can support recovery and relapse prevention, especially when relatives are involved. Individual CBT for psychosis more directly targets his current beliefs about voices and coping."
+    }
+  ],
+  "context": "CBT for psychosis can help with persistent voices by addressing appraisals, coping and associated behaviour alongside pharmacological treatment.",
+  "publicModule": {
+    "schemaVersion": 1,
+    "origin": "mirrored",
+    "discipline": "psych",
+    "mirroredFrom": "md3:d8b9db9e40a1c83a",
+    "itemText": {
+      "licence": "CC-BY-4.0",
+      "attribution": "MD3 contributors"
+    },
+    "evidence": {
+      "kind": "reference",
+      "sourceId": "nice-guidance-cg178-chapter-recommendations-ab0e8b"
+    },
+    "review": {
+      "verdict": "passed",
+      "contentHash": "509cdc50fd9ab3e6534c64dcbd070cfaff472f356353c0a62745977006d057f0"
+    }
+  }
+}

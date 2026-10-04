@@ -1,0 +1,64 @@
+{
+  "id": "bank:cohort:obs:q-c7acd00c84a1:v1",
+  "rotation": "cohort-open",
+  "moduleNodes": [
+    "cohort/obs"
+  ],
+  "topics": [
+    "obs"
+  ],
+  "questionType": "management",
+  "difficulty": "medium",
+  "stem": "An experienced obstetrician attempts vacuum-assisted birth for second-stage delay at term. The cervix is fully dilated and the head is engaged; position and cup placement have been checked. Three pulls of moderate traction with contractions have produced no descent of the fetal head. The cup remains attached and the fetal heart rate is currently reassuring.\n\nWhat should the operator do now?",
+  "options": [
+    {
+      "label": "A",
+      "text": "Allow up to three more pulls, because the cup has not detached",
+      "isCorrect": false,
+      "explanation": "The number of pulls is guided by descent: no descent with the first pulls means the attempt should stop, whether or not the cup stays on."
+    },
+    {
+      "label": "B",
+      "text": "Change to a new cup and repeat traction with the next contraction",
+      "isCorrect": false,
+      "explanation": "A new cup does not overcome the failure of descent; the problem is the fit of head and pelvis, not the equipment."
+    },
+    {
+      "label": "C",
+      "text": "Switch to forceps and complete the birth with the next contraction",
+      "isCorrect": false,
+      "explanation": "Sequential instruments increase maternal and neonatal trauma and, with no descent at all, are unlikely to succeed."
+    },
+    {
+      "label": "D",
+      "text": "Increase traction force, as moderate traction may be insufficient",
+      "isCorrect": false,
+      "explanation": "Greater traction raises the risk of scalp injury and subgaleal haemorrhage without addressing the cause."
+    },
+    {
+      "label": "E",
+      "text": "Abandon the attempt and reassess the safest route of birth",
+      "isCorrect": true,
+      "explanation": "Correctly applied vacuum without any descent after three pulls signals likely disproportion, so the attempt should be abandoned and birth usually completed by caesarean."
+    }
+  ],
+  "context": "No progressive descent despite correct vacuum application and appropriate traction is a reason to discontinue the attempt.",
+  "publicModule": {
+    "schemaVersion": 1,
+    "origin": "mirrored",
+    "discipline": "obs",
+    "mirroredFrom": "md3:c7acd00c84a1774c",
+    "itemText": {
+      "licence": "CC-BY-4.0",
+      "attribution": "MD3 contributors"
+    },
+    "evidence": {
+      "kind": "reference",
+      "sourceId": "qld-health-data-assets-pdf-file-0033-736917-g-instrumental-1967bf"
+    },
+    "review": {
+      "verdict": "passed",
+      "contentHash": "aeb328fa5a161d1428391bea59dd1332b302e8d41a6359bd840c79a7561531b6"
+    }
+  }
+}

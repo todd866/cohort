@@ -1,0 +1,64 @@
+{
+  "id": "bank:cohort:obs:q-c3dea8bd5b63:v1",
+  "rotation": "cohort-open",
+  "moduleNodes": [
+    "cohort/obs"
+  ],
+  "topics": [
+    "obs"
+  ],
+  "questionType": "diagnosis",
+  "difficulty": "medium",
+  "stem": "A patient without known diabetes has a 75 g oral glucose tolerance test at 27 weeks. The service uses the following current Australian thresholds.\n\n| Sample | Patient result | GDM diagnostic range |\n|---|---:|---:|\n| Fasting | 5.4 mmol/L | 5.3–6.9 mmol/L |\n| One hour | 9.9 mmol/L | At least 10.6 mmol/L |\n| Two hours | 8.6 mmol/L | 9.0–11.0 mmol/L |\n\nWhich interpretation is correct?",
+  "options": [
+    {
+      "label": "A",
+      "text": "The test is normal because both post-load values are below threshold",
+      "isCorrect": false,
+      "explanation": "A normal post-load response does not cancel a diagnostic fasting value. Each time point is assessed separately."
+    },
+    {
+      "label": "B",
+      "text": "The result is indeterminate until two samples exceed threshold",
+      "isCorrect": false,
+      "explanation": "Only one value in the diagnostic range is required; two abnormal samples are not necessary."
+    },
+    {
+      "label": "C",
+      "text": "The fasting result establishes overt diabetes first detected in pregnancy",
+      "isCorrect": false,
+      "explanation": "A fasting glucose of 5.4 mmol/L lies in the supplied GDM range. The fasting threshold for overt diabetes is at least 7.0 mmol/L."
+    },
+    {
+      "label": "D",
+      "text": "An HbA1c is required before gestational diabetes can be diagnosed",
+      "isCorrect": false,
+      "explanation": "HbA1c does not replace the pregnancy OGTT at this gestation or need to confirm this diagnostic result."
+    },
+    {
+      "label": "E",
+      "text": "The fasting result is sufficient to diagnose gestational diabetes",
+      "isCorrect": true,
+      "explanation": "The fasting concentration exceeds the supplied GDM threshold. The normal one- and two-hour values do not change that classification."
+    }
+  ],
+  "context": "One diagnostic value on the pregnancy OGTT is sufficient for GDM.",
+  "publicModule": {
+    "schemaVersion": 1,
+    "origin": "mirrored",
+    "discipline": "obs",
+    "mirroredFrom": "md3:c3dea8bd5b63cbe9",
+    "itemText": {
+      "licence": "CC-BY-4.0",
+      "attribution": "MD3 contributors"
+    },
+    "evidence": {
+      "kind": "reference",
+      "sourceId": "qld-health-data-assets-pdf-file-0022-950503-g-gdm-9a4e99"
+    },
+    "review": {
+      "verdict": "passed",
+      "contentHash": "08536511d6dfdad909a3db3dc8834fb889c9f2233e97cbfe2402647d802c2e06"
+    }
+  }
+}

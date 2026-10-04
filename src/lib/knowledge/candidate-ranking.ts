@@ -26,6 +26,15 @@ import {
 import { curriculumPacingBoost, curriculumRecencyBoost } from './curriculum-pacing';
 import { figureCooldownBoost } from './figure-cooldown';
 import { itemTeachingWeek } from '@/lib/curriculum/teaching-pace';
+import {
+  shiftQuestionDifficulty,
+  shrunkFacility,
+  type ReviewChallengeLevel,
+} from '@/lib/study/review-challenge';
+import {
+  cardEligibleForReviewLearning,
+  questionEligibleForReviewLearning,
+} from '@/lib/study/review-learning-policy';
 import type { BulkCandidates, BulkQuestionRow } from './bulk-candidates';
 import {
   STANDARD_CHALLENGE_RECALL,
@@ -303,6 +312,7 @@ export function getCardsFromBulk(
   recentFigureExposures?: ReadonlyMap<string, { count: number; mostRecentMs: number }>,
   /** Frozen clock for the selection, so ranking stays deterministic. */
   figureNowMs: number = Date.now(),
+  reviewChallenge: ReviewChallengeLevel = 0,
 ): CardCandidate[] {
   const expandedTopics = expandTopicSet(concept.topics);
   if (expandedTopics.length === 0) return [];
@@ -314,6 +324,7 @@ export function getCardsFromBulk(
 
   for (const card of bulk.unseenCards) {
     if (selectedCardIds.has(card.id)) continue;
+    if (!cardEligibleForReviewLearning(card.complexity, reviewChallenge)) continue;
     if (card.topics.some(t => topicSet.has(t))) {
       matchingUnseen.push({
         id: card.id,
@@ -333,6 +344,7 @@ export function getCardsFromBulk(
 
   for (const card of bulk.seenCards) {
     if (selectedCardIds.has(card.id)) continue;
+    if (!cardEligibleForReviewLearning(card.complexity, reviewChallenge)) continue;
     if (card.topics.some(t => topicSet.has(t))) {
       matchingSeen.push({
         id: card.id,
@@ -559,6 +571,32 @@ export function getCardsFromBulk(
     combined = penalized.map(p => p.card);
   }
 
+  // Keep the complete Auto ordering (including cooldowns and recovery) as the
+  // seat plan. Only unseen identities may change; a due card keeps its index.
+  if (reviewChallenge !== 0 && !stepDown) {
+    // A new sibling must not overtake its due family member and suppress it
+    // downstream. Keep those families in their original positions as well.
+    const seenGroups = new Set(matchingSeen.map(card => card.variantGroupId).filter(Boolean));
+    const unseenById = new Map(bulk.unseenCards
+      .filter(card => !card.variantGroupId || !seenGroups.has(card.variantGroupId))
+      .map(card => [card.id, card]));
+    const unseen = combined.filter(card => unseenById.has(card.id));
+    const target = reviewChallenge === -2 ? 1 : reviewChallenge === -1 ? 2 : reviewChallenge === 1 ? 4 : 5;
+    const authored = unseen.map((card, index) => ({ card, index }))
+      .sort((a, b) => Math.abs((a.card.complexity ?? 2) - target) - Math.abs((b.card.complexity ?? 2) - target)
+        || a.index - b.index);
+    // Facility refines only equally suitable authored tiers, with small ordinal
+    // moves. Sparse cards keep the authored decision; no recall estimate enters.
+    const preferred = authored.map(({ card }, index) => {
+      const meta = unseenById.get(card.id);
+      const quality = shrunkFacility(meta?.facilityIndex, meta?.sampleSize);
+      return { card, index, distance: Math.abs((card.complexity ?? 2) - target),
+        rank: index + (quality === null ? 0 : 2 * reviewChallenge * (quality - 0.5)) };
+    }).sort((a, b) => a.distance - b.distance || a.rank - b.rank || a.index - b.index);
+    let next = 0;
+    combined = combined.map(card => unseenById.has(card.id) ? preferred[next++].card : card);
+  }
+
   const seen = new Set<string>();
   const deduped: CardCandidate[] = [];
 
@@ -708,11 +746,21 @@ export function getQuestionsFromBulk(
     currentTeachingWeek?: number | null;
     /** Neutral topic-slug → teaching-week map for this rotation. */
     topicTeachingWeeks?: ReadonlyMap<string, number>;
+    reviewChallenge?: ReviewChallengeLevel;
+    /** Materialized low-recall or recent-miss evidence for the +2 endpoint. */
+    reviewChallengeGap?: boolean;
+    /** Position in the selected batch; keeps challenge relief slots available. */
+    challengeSlotIndex?: number;
   }
 ): RankedQuestionCandidate[] {
+  if (!questionEligibleForReviewLearning(options.reviewChallenge, {
+    demonstratedGap: options.reviewChallengeGap,
+    difficulty: options.reviewChallenge === 2 ? 'hard' : undefined,
+  })) return [];
   const difficultyPlan = options.difficultyPlan
     ? buildDifficultyPlan(options.difficultyPlan, limit)
     : buildDifficultyPlan(['medium'], limit);
+  const endpointDifficultyPlan = options.reviewChallenge === 2 ? buildDifficultyPlan(['hard'], limit) : difficultyPlan;
 
   const usedInPool = new Set(options.selectedQuestionIds);
 
@@ -825,7 +873,12 @@ export function getQuestionsFromBulk(
   );
 
   for (const candidate of bankPreferred) {
-    const effective = getEffectiveQuestionDifficulty(candidate);
+    // The hard endpoint is an authored-hard lane. Empirical calibration may
+    // refine ranking within that lane, but must not demote an authored hard
+    // question into the medium bucket and make it unreachable.
+    const effective = options.reviewChallenge === 2 && candidate.difficulty === 'hard'
+      ? 'hard'
+      : getEffectiveQuestionDifficulty(candidate);
     candidatesByDifficulty.get(effective)?.push(candidate);
   }
 
@@ -936,10 +989,27 @@ export function getQuestionsFromBulk(
     }
   }
 
+  // All existing relevance/freshness/coverage ordering runs first. Facility
+  // only moves unseen candidates within their difficulty bucket; familiar
+  // questions retain their exact positions in the control ordering.
+  if (options.reviewChallenge) {
+    for (const [difficulty, list] of candidatesByDifficulty) {
+      const unseen = list.filter(candidate => !bulk.questionFamiliarity.has(candidate.id));
+      const preferred = unseen.map((candidate, index) => {
+        const quality = shrunkFacility(candidate.facilityIndex, candidate.totalAttempts);
+        return { candidate, index, rank: index + (quality === null ? 0 : 2 * options.reviewChallenge! * (quality - 0.5)) };
+      }).sort((a, b) => a.rank - b.rank || a.index - b.index);
+      let next = 0;
+      candidatesByDifficulty.set(difficulty, list.map(candidate => (
+        bulk.questionFamiliarity.has(candidate.id) ? candidate : preferred[next++].candidate
+      )));
+    }
+  }
+
   const selectedIds = options.selectedQuestionIds;
   const selectedVariantGroups = options.selectedQuestionVariantGroups;
 
-  function takeNext(difficulty: QuestionDifficulty): {
+  function takeNext(difficulty: QuestionDifficulty, unseenOnly = false): {
     id: string;
     variantGroupId: string | null;
     variantType: string | null;
@@ -949,7 +1019,9 @@ export function getQuestionsFromBulk(
     if (!list || list.length === 0) return null;
 
     while (list.length > 0) {
-      const candidate = list.shift();
+      const nextIndex = unseenOnly ? list.findIndex(candidate => !bulk.questionFamiliarity.has(candidate.id)) : 0;
+      if (nextIndex < 0) break;
+      const [candidate] = list.splice(nextIndex, 1);
       if (!candidate) break;
       if (selectedIds.has(candidate.id)) continue;
       // Suppress only where two siblings in one session is genuinely redundant
@@ -991,15 +1063,31 @@ export function getQuestionsFromBulk(
   const selected: RankedQuestionCandidate[] = [];
 
   // 1) Try to satisfy the requested difficulty ladder
-  for (const difficulty of difficultyPlan) {
+  for (const difficulty of endpointDifficultyPlan) {
     if (selected.length >= limit) break;
-    const picked = takeNext(difficulty);
+    const baseline = candidatesByDifficulty.get(difficulty)?.find(candidate => {
+      const group = questionSuppressionKey(candidate);
+      return !selectedIds.has(candidate.id) && (!group || !selectedVariantGroups.has(group));
+    });
+    const shifted = shiftQuestionDifficulty(difficulty, options.reviewChallenge ?? 0,
+      (options.challengeSlotIndex ?? 0) + selected.length);
+    // Reviewed questions and clinical follow-ups keep the baseline seat. Only
+    // an unseen probe can be exchanged for an unseen probe of this concept.
+    const mayShift = baseline && !bulk.questionFamiliarity.has(baseline.id)
+      && !conceptThreadMatchById.has(baseline.id);
+    const picked = options.reviewChallenge === 2
+      ? takeNext(shifted, true) ?? takeNext(shifted)
+      : mayShift && shifted !== difficulty
+        ? takeNext(shifted, true) ?? takeNext(difficulty)
+        : takeNext(difficulty);
     if (picked) selected.push(picked);
   }
 
-  // 2) Backfill from easiest → hardest
+  // 2) Auto and intermediate settings retain the full fallback ladder.
+  // Hardest stays in its authored-hard pool even when the requested plan is short.
   if (selected.length < limit) {
-    for (const difficulty of QUESTION_DIFFICULTIES) {
+    const fallbackDifficulties: QuestionDifficulty[] = options.reviewChallenge === 2 ? ['hard'] : ['easy', 'medium', 'hard'];
+    for (const difficulty of fallbackDifficulties) {
       while (selected.length < limit) {
         const picked = takeNext(difficulty);
         if (!picked) break;

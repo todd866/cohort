@@ -1,0 +1,64 @@
+{
+  "id": "bank:cohort:obs:q-ffb2c29d58bf:v1",
+  "rotation": "cohort-open",
+  "moduleNodes": [
+    "cohort/obs"
+  ],
+  "topics": [
+    "obs"
+  ],
+  "questionType": "management",
+  "difficulty": "hard",
+  "stem": "Immediately after vaginal birth, a woman develops severe pain, bleeding and shock. The consultant obstetrician confirms complete uterine inversion, with the placenta still attached. The haemorrhage team is providing resuscitation, and an oxytocin infusion has been stopped. No attempt at replacement has yet been made.\n\nWhat is the next corrective manoeuvre?",
+  "options": [
+    {
+      "label": "A",
+      "text": "Remove the placenta, then replace the inverted uterus",
+      "isCorrect": false,
+      "explanation": "Removing the placenta before reduction can worsen haemorrhage; leave it attached for the initial replacement attempt."
+    },
+    {
+      "label": "B",
+      "text": "Restart oxytocin, then attempt manual uterine replacement",
+      "isCorrect": false,
+      "explanation": "Uterine contraction can impede replacement, so uterotonics follow correction of the inversion rather than precede it."
+    },
+    {
+      "label": "C",
+      "text": "Insert a uterine balloon, then arrange operative reduction",
+      "isCorrect": false,
+      "explanation": "A balloon for atonic haemorrhage does not correct the inverted anatomy; immediate replacement is the first corrective step."
+    },
+    {
+      "label": "D",
+      "text": "Attempt manual replacement with the placenta attached",
+      "isCorrect": true,
+      "explanation": "Prompt manual replacement restores the anatomy while haemorrhage resuscitation continues. The attached placenta is initially left in place, with subsequent placental and uterotonic management after reduction."
+    },
+    {
+      "label": "E",
+      "text": "Wait for transfusion to restore blood pressure before replacement",
+      "isCorrect": false,
+      "explanation": "Resuscitation and replacement proceed together; delaying correction until haemodynamic normalisation prolongs the cause of shock."
+    }
+  ],
+  "context": "For acute uterine inversion, promptly replace the uterus while resuscitating, leaving an attached placenta in place initially.",
+  "publicModule": {
+    "schemaVersion": 1,
+    "origin": "mirrored",
+    "discipline": "obs",
+    "mirroredFrom": "md3:ffb2c29d58bfbcc7",
+    "itemText": {
+      "licence": "CC-BY-4.0",
+      "attribution": "MD3 contributors"
+    },
+    "evidence": {
+      "kind": "reference",
+      "sourceId": "qld-health-data-assets-pdf-file-0015-140136-g-pph-0e6f42"
+    },
+    "review": {
+      "verdict": "passed",
+      "contentHash": "ebf330b89b9096361cfde92c822e87d2a326b84af3ff59a8b768eee1228147b3"
+    }
+  }
+}

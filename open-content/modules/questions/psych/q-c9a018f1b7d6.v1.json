@@ -1,0 +1,64 @@
+{
+  "id": "bank:cohort:psych:q-c9a018f1b7d6:v1",
+  "rotation": "cohort-open",
+  "moduleNodes": [
+    "cohort/psych"
+  ],
+  "topics": [
+    "psych"
+  ],
+  "questionType": "management",
+  "difficulty": "hard",
+  "stem": "A ward doctor reviews an 84-year-old with delirium while its medical causes are being treated. Last night he tried once to climb out of bed and was frightened, but he settled when redirected and is calm now. He repeatedly mishears staff; his hearing aids are in the drawer without batteries, there is no clock in view, and he is woken overnight for non-urgent observations. The night nurse asks for something to stop another attempt.\n\nWhich plan is most appropriate?",
+  "options": [
+    {
+      "label": "A",
+      "text": "Prescribe regular low-dose haloperidol to prevent another attempt",
+      "isCorrect": false,
+      "explanation": "Antipsychotics are reserved for severe distress or danger to himself or others after non-drug measures have failed, at the lowest dose for the shortest time. He settled with redirection, and regular dosing exposes him to sedation, falls and other harms."
+    },
+    {
+      "label": "B",
+      "text": "Raise the bed rails and add a sensor mat to alert staff overnight",
+      "isCorrect": false,
+      "explanation": "A sensor alarm can help staff respond, but raised rails give a confused man something to climb over, raising the height of any fall, and neither measure addresses why he is frightened."
+    },
+    {
+      "label": "C",
+      "text": "Keep hourly overnight observations so that change is seen early",
+      "isCorrect": false,
+      "explanation": "Observation frequency should match clinical need. His observations are being done for non-urgent reasons, and waking him through the night fragments sleep and worsens delirium."
+    },
+    {
+      "label": "D",
+      "text": "Move him to a quiet single room away from the nurses’ station",
+      "isCorrect": false,
+      "explanation": "Less noise helps, but moving him away from staff reduces observation of a man at risk of falls, and a room change is itself disorienting."
+    },
+    {
+      "label": "E",
+      "text": "Refit his hearing aids, reorient him and protect his sleep",
+      "isCorrect": true,
+      "explanation": "He cannot hear, has no orientation cues and is woken repeatedly: each is a reversible contributor to his fear. Restoring hearing, giving orientation cues and protecting overnight sleep (clustering only necessary observations) address them while keeping him close to staff."
+    }
+  ],
+  "context": "Manage delirium-related agitation by correcting its contributors (sensory loss, disorientation, broken sleep); avoid restraint and routine antipsychotics, and set overnight observations by need.",
+  "publicModule": {
+    "schemaVersion": 1,
+    "origin": "mirrored",
+    "discipline": "psych",
+    "mirroredFrom": "md3:c9a018f1b7d6cf0d",
+    "itemText": {
+      "licence": "CC-BY-4.0",
+      "attribution": "MD3 contributors"
+    },
+    "evidence": {
+      "kind": "reference",
+      "sourceId": "acsqhc-clinical-care-standards-delirium-547d22"
+    },
+    "review": {
+      "verdict": "passed",
+      "contentHash": "07af197893bce2f602dd7d396918eef157c0ad36e06071d222d3c3766cf4957a"
+    }
+  }
+}

@@ -1,0 +1,64 @@
+{
+  "id": "bank:cohort:anaes:q-9d701b0991f2:v1",
+  "rotation": "cohort-open",
+  "moduleNodes": [
+    "cohort/anaes"
+  ],
+  "topics": [
+    "anaes"
+  ],
+  "questionType": "investigation",
+  "difficulty": "hard",
+  "stem": "During an adult cardiac arrest, a tracheal tube is passed under direct view. Waveform capnography attached immediately shows a regular waveform with every breath, but the end-tidal CO2 is only 12 mmHg. One team member says the value is too low for a tracheal tube and wants it removed. Breath sounds are difficult to hear over the compressions.\n\nWhat is the best interpretation?",
+  "options": [
+    {
+      "label": "A",
+      "text": "Tracheal, with low CO2 from low cardiac output",
+      "isCorrect": true,
+      "explanation": "A sustained waveform with every breath shows CO2 returning from the lungs, which confirms tracheal placement. During CPR pulmonary blood flow is low, so end-tidal values are commonly low; the value then guides CPR quality and can signal return of circulation."
+    },
+    {
+      "label": "B",
+      "text": "Oesophageal, as end-tidal CO2 is under 35 mmHg",
+      "isCorrect": false,
+      "explanation": "The normal 35–45 mmHg range applies with a normal circulation; during CPR a low but sustained waveform is expected from a tracheal tube."
+    },
+    {
+      "label": "C",
+      "text": "Uncertain until a chest radiograph is reviewed",
+      "isCorrect": false,
+      "explanation": "A chest radiograph shows tube depth, not tracheal versus oesophageal placement, and it delays confirmation."
+    },
+    {
+      "label": "D",
+      "text": "Uncertain until breath sounds are clearly heard",
+      "isCorrect": false,
+      "explanation": "Auscultation is unreliable, especially during compressions; waveform capnography is the objective standard."
+    },
+    {
+      "label": "E",
+      "text": "Uncertain until oxygen saturation has improved",
+      "isCorrect": false,
+      "explanation": "Saturation is unreliable and lags during arrest; it does not confirm tube position."
+    }
+  ],
+  "context": "During CPR, a sustained capnography waveform confirms tracheal placement even when the end-tidal value is low; a flat trace suggests oesophageal intubation or a circuit problem.",
+  "publicModule": {
+    "schemaVersion": 1,
+    "origin": "mirrored",
+    "discipline": "anaes",
+    "mirroredFrom": "md3:9d701b0991f25855",
+    "itemText": {
+      "licence": "CC-BY-4.0",
+      "attribution": "MD3 contributors"
+    },
+    "evidence": {
+      "kind": "reference",
+      "sourceId": "anzcor-guideline-11-6-equipment-and-techniques-in-adult-advanced-life-support-30298b"
+    },
+    "review": {
+      "verdict": "passed",
+      "contentHash": "e9f367fb1685fd6cb0a7e04d3cfc54ddd694efb937565f80d74ed32d9f90b3b7"
+    }
+  }
+}

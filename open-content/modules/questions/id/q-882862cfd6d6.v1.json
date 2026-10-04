@@ -1,0 +1,64 @@
+{
+  "id": "bank:cohort:id:q-882862cfd6d6:v1",
+  "rotation": "cohort-open",
+  "moduleNodes": [
+    "cohort/id"
+  ],
+  "topics": [
+    "id"
+  ],
+  "questionType": "management",
+  "difficulty": "medium",
+  "stem": "A 13-year-old girl receives her HPV vaccine in the school immunisation program. Within 30 seconds of the injection she says she feels light-headed, then slumps in her chair. She is pale and sweaty, with a slow, strong carotid pulse of 50/min. Her breathing is quiet and unlaboured with no wheeze, and there is no rash, itch or facial swelling. When laid flat she begins to respond within a minute. Which immediate management is most appropriate?",
+  "options": [
+    {
+      "label": "A",
+      "text": "Intramuscular adrenaline into the thigh",
+      "isCorrect": false,
+      "explanation": "Adrenaline treats anaphylaxis, which brings urticaria, wheeze or stridor, tachycardia and a weak central pulse. Give it if in doubt, but these features are vasovagal."
+    },
+    {
+      "label": "B",
+      "text": "Oral cetirizine, then observe",
+      "isCorrect": false,
+      "explanation": "An antihistamine eases itch and urticaria in mild allergic reactions. She has no allergic features, and antihistamine does not treat anaphylaxis."
+    },
+    {
+      "label": "C",
+      "text": "Lie flat, legs raised, and observe",
+      "isCorrect": true,
+      "explanation": "Correct. Immediate faintness, pallor, sweating and bradycardia with a strong carotid pulse, normal breathing and quick recovery lying down are a vasovagal episode."
+    },
+    {
+      "label": "D",
+      "text": "Salbutamol 6 puffs via spacer",
+      "isCorrect": false,
+      "explanation": "Salbutamol treats bronchospasm. Her breathing is normal and there is no wheeze."
+    },
+    {
+      "label": "E",
+      "text": "Intramuscular hydrocortisone",
+      "isCorrect": false,
+      "explanation": "Corticosteroids have no role in a faint and are not first-line treatment for anaphylaxis either."
+    }
+  ],
+  "context": "After vaccination a faint comes at once, with pallor, bradycardia and a strong central pulse, and resolves lying flat. Anaphylaxis brings wheeze, urticaria, a weak pulse and needs IM adrenaline.",
+  "publicModule": {
+    "schemaVersion": 1,
+    "origin": "mirrored",
+    "discipline": "id",
+    "mirroredFrom": "md3:882862cfd6d6050b",
+    "itemText": {
+      "licence": "CC-BY-4.0",
+      "attribution": "MD3 contributors"
+    },
+    "evidence": {
+      "kind": "reference",
+      "sourceId": "aih-contents-vaccination-procedures-after-vaccination-38c218"
+    },
+    "review": {
+      "verdict": "passed",
+      "contentHash": "21cf8a4041437f15d3edc45af236aac825ba5ae0107fd5bd309135a8a1d0e685"
+    }
+  }
+}

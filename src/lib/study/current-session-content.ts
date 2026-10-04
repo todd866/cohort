@@ -12,10 +12,12 @@ import type { UnifiedItem, SessionContext } from './unified-session-types';
 /** Clinical bodies are current database state, never a bundled/cache fallback. */
 export const CURRENT_QUESTION_CONTENT_SELECT = {
   stem: true, options: true, context: true, combinations: true, correctVariants: true,
+  abbreviations: true,
   difficulty: true, variantGroupId: true, variantType: true,
 } as const;
 export const CURRENT_CARD_CONTENT_SELECT = {
   front: true, back: true, backs: true, context: true, crosslinks: true,
+  abbreviations: true,
   sourceComponent: true, complexity: true, difficulty: true, clusterId: true,
   variantGroupId: true, variantIndex: true, variantType: true,
   // Overlay key for the repetition-slot shadow. Same selected-id read.
@@ -43,6 +45,7 @@ export type CurrentQuestionRow = {
   contentState: string;
   excluded: boolean;
   context: string | null;
+  abbreviations?: unknown;
   topics: string[];
   practiceLocale: string | null;
   imageUrl: string | null;
@@ -58,6 +61,7 @@ export type CurrentCardRow = {
   back: string;
   backs: unknown;
   context: string | null;
+  abbreviations?: unknown;
   crosslinks: unknown;
   complexity: number;
   difficulty: string;
@@ -87,6 +91,26 @@ export type CurrentCardRow = {
   clipCaption: string | null;
 };
 
+/**
+ * Convert Prisma JSON to the narrow client contract. Content rows are external
+ * data at this boundary, so malformed entries must not make a whole review
+ * batch fail or leak non-string values into the renderer.
+ */
+export function normalizeAbbreviations(value: unknown): Record<string, string> | null {
+  if (value == null) return null;
+  if (typeof value !== 'object' || Array.isArray(value)) return {};
+  const rawEntries = Object.entries(value as Record<string, unknown>);
+  if (rawEntries.length === 0) return {};
+  const entries = rawEntries.flatMap(([key, expansion]) => {
+    if (!key.trim() || typeof expansion !== 'string' || !expansion.trim()) return [];
+    return [[key, expansion.trim()] as const];
+  });
+  // An explicit empty object is authoritative: it means this item was
+  // checked and intentionally has no decodes. Preserve that distinction from
+  // null/undefined, which means the item has not been migrated yet.
+  return Object.fromEntries(entries);
+}
+
 
 export type CurrentSessionSource =
   | ({ type: 'question' } & CurrentQuestionRow)
@@ -109,6 +133,7 @@ export function withCurrentSessionBody(item: UnifiedItem, source: CurrentSession
   if (source.type === 'question') {
     return { ...item, stem: source.stem, context: source.context,
       explanation: source.context, topics: source.topics, difficulty: source.difficulty,
+      abbreviations: normalizeAbbreviations(source.abbreviations),
       variantGroupId: source.variantGroupId, variantType: source.variantType,
     };
   }
@@ -116,6 +141,7 @@ export function withCurrentSessionBody(item: UnifiedItem, source: CurrentSession
     backs: source.backs as UnifiedItem['backs'], context: source.context,
     crosslinks: source.crosslinks as UnifiedItem['crosslinks'],
     sourceComponent: source.sourceComponent, topics: source.topics,
+    abbreviations: normalizeAbbreviations(source.abbreviations),
     complexity: source.complexity, difficulty: source.difficulty, clusterId: source.clusterId,
     variantGroupId: source.variantGroupId, variantIndex: source.variantIndex, variantType: source.variantType,
   };
@@ -228,12 +254,16 @@ export async function loadCurrentSessionContent(
   const sources = new Map<string, CurrentSessionSource>();
   if (questionResult.status === 'fulfilled') {
     for (const row of questionResult.value as CurrentQuestionRow[]) {
-      sources.set(sessionSourceKey('question', row.id), { type: 'question', ...row });
+      sources.set(sessionSourceKey('question', row.id), {
+        type: 'question', ...row, abbreviations: normalizeAbbreviations(row.abbreviations),
+      });
     }
   }
   if (cardResult.status === 'fulfilled') {
     for (const row of cardResult.value as CurrentCardRow[]) {
-      sources.set(sessionSourceKey('card', row.id), { type: 'card', ...row });
+      sources.set(sessionSourceKey('card', row.id), {
+        type: 'card', ...row, abbreviations: normalizeAbbreviations(row.abbreviations),
+      });
     }
   }
 

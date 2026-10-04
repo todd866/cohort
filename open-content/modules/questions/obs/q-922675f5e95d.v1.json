@@ -1,0 +1,64 @@
+{
+  "id": "bank:cohort:obs:q-922675f5e95d:v1",
+  "rotation": "cohort-open",
+  "moduleNodes": [
+    "cohort/obs"
+  ],
+  "topics": [
+    "obs"
+  ],
+  "questionType": "management",
+  "difficulty": "medium",
+  "stem": "At 30 weeks, a woman with gestational diabetes reviews her glucose diary with the diabetes-in-pregnancy team. She has followed dietary advice, walks daily and takes the highest dose of metformin she tolerates. Her fasting readings are 5.6 to 6.1 mmol/L on most days, above her agreed target, while every one-hour post-meal reading is within target. The fetal abdominal circumference has risen from the 60th centile at 24 weeks to the 92nd centile on this week's scan.\n\nWhich change should the team make?",
+  "options": [
+    {
+      "label": "A",
+      "text": "Add glibenclamide to the metformin, so she can stay on tablets",
+      "isCorrect": false,
+      "explanation": "Glibenclamide is not used in Australian gestational diabetes pathways; it reaches the fetus and causes more neonatal hypoglycaemia than insulin."
+    },
+    {
+      "label": "B",
+      "text": "Change to a very low-carbohydrate diet before adding another medicine",
+      "isCorrect": false,
+      "explanation": "Australian advice keeps carbohydrate at about 175 g a day in pregnancy; severe restriction risks ketosis and poor nutrition and does not replace insulin."
+    },
+    {
+      "label": "C",
+      "text": "Add insulin to the metformin, adjusting doses to her readings",
+      "isCorrect": true,
+      "explanation": "Fasting readings above target despite diet, activity and tolerated metformin need insulin, added to metformin and matched to the pattern, here a bedtime intermediate-acting dose for the fasting level. The rising abdominal circumference adds urgency."
+    },
+    {
+      "label": "D",
+      "text": "Keep the current plan and repeat the growth scan in four weeks",
+      "isCorrect": false,
+      "explanation": "The fasting readings already need treatment, and an abdominal circumference rising from the 60th to the 92nd centile suggests excess growth; waiting four weeks leaves both untreated."
+    },
+    {
+      "label": "E",
+      "text": "Plan induction at 37 weeks instead of adding another medicine",
+      "isCorrect": false,
+      "explanation": "Early birth does not treat maternal hyperglycaemia, and planning it now replaces glucose control with the risks of earlier birth."
+    }
+  ],
+  "context": "When fasting glucose stays above target despite diet and tolerated metformin, add insulin; glibenclamide, a stricter diet or earlier birth are not substitutes.",
+  "publicModule": {
+    "schemaVersion": 1,
+    "origin": "mirrored",
+    "discipline": "obs",
+    "mirroredFrom": "md3:922675f5e95d3a60",
+    "itemText": {
+      "licence": "CC-BY-4.0",
+      "attribution": "MD3 contributors"
+    },
+    "evidence": {
+      "kind": "reference",
+      "sourceId": "qld-health-data-assets-pdf-file-0022-950503-g-gdm-9a4e99"
+    },
+    "review": {
+      "verdict": "passed",
+      "contentHash": "21ed3cd1e7e3c54d8ceae4723901704118ccc74af15ca3fd00fd49677807007b"
+    }
+  }
+}

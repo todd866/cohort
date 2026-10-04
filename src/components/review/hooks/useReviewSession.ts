@@ -1,3 +1,5 @@
+import { exhaustedReviewChallenge } from '@/lib/study/review-challenge-exhaustion';
+import type { ReviewChallengePreference } from '@/lib/study/review-challenge-preference';
 import { useState, useEffect, useCallback, useRef } from 'react';
 import { isRectObscured, FOOTER_SAFE_PX, TOP_SAFE_PX, resetScrollToTop } from './reveal-scroll';
 import { useActiveModules } from '@/hooks/useActiveModules';
@@ -37,7 +39,14 @@ import {
 } from '@/lib/review/review-cold-start';
 import type { ReviewLoadTimer } from '@/lib/review/review-load-telemetry';
 import { genClientRequestId } from '@/lib/client-request-id';
-import { mapStep1ItemToUnified } from '@/lib/cohort/public-review-map';
+import { mapCohortCardToUnified, mapStep1ItemToUnified } from '@/lib/cohort/public-review-map';
+import {
+  isCohortCardSessionItem,
+  parseCohortCardSessionItem,
+  type CohortTurnItem,
+  type CohortTurnResult,
+  parseCohortChallengeExhaustion,
+} from '@/lib/cohort/card-turn-contract';
 import { isOpenFigurePath } from '@/lib/figures/open-figure-access';
 import {
   type Step1SessionItem,
@@ -107,6 +116,9 @@ interface UseReviewSessionOptions {
     journeyId: string;
     searchTopicId?: string | null;
   } | null;
+  /** Revision captured when the authenticated challenge preference was saved. */
+  reviewChallengeRevision?: number | null;
+  onChallengeExhausted?: (receipt: ReviewChallengePreference) => void;
 }
 
 export interface InitialReviewBatch {
@@ -115,6 +127,12 @@ export interface InitialReviewBatch {
   items: ReviewItem[];
   newRemaining: { cards: number; questions: number } | null;
 }
+
+type PendingChallengeExhaustion = {
+  receipt: ReviewChallengePreference;
+  scopeKey: string;
+  ownerKey: string | null;
+};
 
 /** Round-robin interleave items from multiple arrays */
 function interleave<T>(arrays: T[][]): T[] {
@@ -183,7 +201,7 @@ async function fetchWithRetry(
   userSignal: AbortSignal,
   loadTimer?: ReviewLoadTimer | null,
   maxAttempts = 2,
-): Promise<{ items?: ReviewItem[]; sessionId?: string | null; batchId?: string | null; newRemaining?: { cards: number; questions: number } | null }> {
+): Promise<{ items?: ReviewItem[]; sessionId?: string | null; batchId?: string | null; newRemaining?: { cards: number; questions: number } | null; reviewChallengeExhausted?: unknown }> {
   // One identity mint per fetch sequence; never loop on a persistent 401.
   const identityRetriedRef = { current: false };
   let lastError: Error | undefined;
@@ -386,7 +404,9 @@ function parseCohortSessionMedia(value: unknown): Step1SessionMedia | null {
   return value as unknown as Step1SessionMedia;
 }
 
-function parseCohortSessionItem(value: unknown): Step1SessionItem | null {
+function parseCohortSessionItem(value: unknown): CohortTurnItem | null {
+  // A module card has its own exact contract; anything else must be an MCQ.
+  if (isCohortCardSessionItem(value)) return parseCohortCardSessionItem(value);
   if (!isPlainRecord(value) || !exactObjectKeys(
     value,
     ['deliveryId', 'stem', 'options', 'domain', 'difficulty', 'questionType', 'attribution'],
@@ -427,10 +447,11 @@ function parseCohortSessionItem(value: unknown): Step1SessionItem | null {
   return value as unknown as Step1SessionItem;
 }
 
-function parseCohortTurnResponse(value: unknown): Step1SessionResult {
+function parseCohortTurnResponse(value: unknown): CohortTurnResult {
   if (!isPlainRecord(value) || !exactObjectKeys(
     value,
-    ['sessionId', 'mode', 'requestedSize', 'deliveredSize', 'items'],
+    ['sessionId', 'mode', 'requestedSize', 'deliveredSize', 'items',
+      ...('reviewChallengeExhausted' in value ? ['reviewChallengeExhausted'] : [])],
   )) {
     throw new Error('Cohort turn response was incomplete');
   }
@@ -441,7 +462,11 @@ function parseCohortTurnResponse(value: unknown): Step1SessionResult {
     || !Number.isSafeInteger(value.deliveredSize)
     || !Array.isArray(value.items)
     || (value.requestedSize !== 1 && value.requestedSize !== 3)
-    || value.deliveredSize !== value.requestedSize
+    || (value.deliveredSize !== value.requestedSize
+      && !(value.requestedSize === 1 && value.deliveredSize === 0
+        && parseCohortChallengeExhaustion(value.reviewChallengeExhausted)))
+    || ('reviewChallengeExhausted' in value && (value.deliveredSize !== 0
+      || !parseCohortChallengeExhaustion(value.reviewChallengeExhausted)))
     || value.deliveredSize !== value.items.length
   ) {
     throw new Error('Cohort turn response was invalid');
@@ -450,14 +475,14 @@ function parseCohortTurnResponse(value: unknown): Step1SessionResult {
   if (items.some((item) => item === null)) {
     throw new Error('Cohort turn contained an unsafe item');
   }
-  return { ...value, items } as unknown as Step1SessionResult;
+  return { ...value, items } as unknown as CohortTurnResult;
 }
 
 async function postCohortTurn(
   body: CohortTurnClientBody,
   userSignal: AbortSignal,
   loadTimer?: ReviewLoadTimer | null,
-): Promise<Step1SessionResult> {
+): Promise<CohortTurnResult> {
   const serialized = JSON.stringify(body);
   let lastError: Error | undefined;
   const t0 = Date.now();
@@ -513,7 +538,7 @@ async function postCohortTurn(
   throw lastError ?? new Error('Failed to load');
 }
 
-export function useReviewSession({ rotations, week, rotationSizes, fetchSlots, feedMode = 'mixed', reviewFilter, itemType, topics, cluster = null, focusRotation = null, userKey = null, allowUnverifiedPack = false, initialBatch = null, loadTimer = null, singleTurn = false, cohortTurn = null }: UseReviewSessionOptions) {
+export function useReviewSession({ rotations, week, rotationSizes, fetchSlots, feedMode = 'mixed', reviewFilter, itemType, topics, cluster = null, focusRotation = null, userKey = null, allowUnverifiedPack = false, initialBatch = null, loadTimer = null, singleTurn = false, cohortTurn = null, reviewChallengeRevision = null, onChallengeExhausted }: UseReviewSessionOptions) {
   const hasCohortTurn = cohortTurn !== null;
   const cohortJourneyId = cohortTurn?.journeyId ?? null;
   const cohortSearchTopicId = cohortTurn?.searchTopicId ?? null;
@@ -543,6 +568,13 @@ export function useReviewSession({ rotations, week, rotationSizes, fetchSlots, f
   const [loading, setLoading] = useState(!initialBatchMatches);
   /** A follow-up Continue is fetching the next pick; the answered item stays up. */
   const [refreshingNext, setRefreshingNext] = useState(false);
+  const [challengeRefreshing, setChallengeRefreshing] = useState(false);
+  const [challengeNeedsRetry, setChallengeNeedsRetry] = useState(false);
+  const challengeRefreshingRef = useRef(false);
+  const challengeNeedsRetryRef = useRef(false);
+  const challengeAdvanceIntentRef = useRef<{ itemKey: string; ownerKey: string | null } | null>(null);
+  const advanceAfterChallengeRef = useRef<(() => void) | null>(null);
+  const challengeRefreshGenerationRef = useRef(0);
   const fullLoadInFlightRef = useRef(false);
   const [error, setError] = useState<string | null>(null);
   const [cohortTurnErrorCode, setCohortTurnErrorCode] = useState<string | null>(null);
@@ -564,6 +596,11 @@ export function useReviewSession({ rotations, week, rotationSizes, fetchSlots, f
   const activeRequestScopeKeyRef = useRef(requestScopeKey);
   activeRequestScopeKeyRef.current = requestScopeKey;
   const requestGenerationRef = useRef(0);
+  const onChallengeExhaustedRef = useRef(onChallengeExhausted);
+  onChallengeExhaustedRef.current = onChallengeExhausted;
+  const [exhaustedChallenge, setExhaustedChallenge] = useState<PendingChallengeExhaustion | null>(null);
+  const reviewChallengeRevisionRef = useRef<number | null>(reviewChallengeRevision);
+  reviewChallengeRevisionRef.current = reviewChallengeRevision;
 
   const { activeModules } = useActiveModules();
 
@@ -926,6 +963,8 @@ export function useReviewSession({ rotations, week, rotationSizes, fetchSlots, f
     append = false,
     preserveSessionState = false,
     cohortSearchTopicOverride?: string | null,
+    challengeRevisionOverride?: number | null,
+    throwOnFailure = false,
   ) => {
     const pendingCohortTurn = pendingCohortTurnRef.current;
     if (
@@ -1055,7 +1094,7 @@ export function useReviewSession({ rotations, week, rotationSizes, fetchSlots, f
           }));
 
       const fetchOne = (slot: FetchSlot) => {
-        if (slot.size <= 0) return Promise.resolve({ items: [], blendTier: slot.blendTier, sessionId: null as string | null, batchId: null as string | null, newRemaining: null as { cards: number; questions: number } | null });
+        if (slot.size <= 0) return Promise.resolve({ items: [], blendTier: slot.blendTier, sessionId: null as string | null, batchId: null as string | null, newRemaining: null as { cards: number; questions: number } | null, reviewChallengeExhausted: undefined as unknown });
         if (cohortJourneyId) {
           let pending = pendingCohortTurnRef.current;
           if (!pending) {
@@ -1092,11 +1131,13 @@ export function useReviewSession({ rotations, week, rotationSizes, fetchSlots, f
                 && result.requestedSize === 3
                 && result.deliveredSize === 3;
               const mapped: ReviewItem[] = result.items.map((item) => (
-                mapStep1ItemToUnified(item, {
-                  rotation: slot.rotation,
-                  sessionId: result.sessionId,
-                  hook,
-                }) as unknown as ReviewItem
+                (isCohortCardSessionItem(item)
+                  ? mapCohortCardToUnified(item, { rotation: slot.rotation })
+                  : mapStep1ItemToUnified(item, {
+                    rotation: slot.rotation,
+                    sessionId: result.sessionId,
+                    hook,
+                  })) as unknown as ReviewItem
               ));
               cohortNextDrawOrdinalRef.current = pending.nextDrawOrdinal + result.deliveredSize;
               // Identity comparison above makes this a compare-and-clear: a
@@ -1110,6 +1151,7 @@ export function useReviewSession({ rotations, week, rotationSizes, fetchSlots, f
                 sessionId: result.sessionId,
                 batchId: result.sessionId,
                 newRemaining: null as { cards: number; questions: number } | null,
+                reviewChallengeExhausted: result.reviewChallengeExhausted,
               };
             });
         }
@@ -1122,6 +1164,7 @@ export function useReviewSession({ rotations, week, rotationSizes, fetchSlots, f
           focusRotation,
           topics,
           cluster,
+          reviewChallengeRevision: challengeRevisionOverride ?? reviewChallengeRevisionRef.current,
           excludeCards: excludeCardParams || undefined,
           excludeQuestions: excludeQuestionParams || undefined,
           timezone: resolvedBrowserTimezone(),
@@ -1145,20 +1188,22 @@ export function useReviewSession({ rotations, week, rotationSizes, fetchSlots, f
           singleTurn ? 1 : 2,
         )
           .then((res) => {
-            const batch = res as { items?: ReviewItem[]; sessionId?: string | null; batchId?: string | null; newRemaining?: { cards: number; questions: number } | null };
+            const batch = res as { items?: ReviewItem[]; sessionId?: string | null; batchId?: string | null; newRemaining?: { cards: number; questions: number } | null; reviewChallengeExhausted?: unknown };
             return {
               items: batch.items,
               blendTier: slot.blendTier,
               sessionId: batch.sessionId ?? null,
               batchId: batch.batchId ?? null,
               newRemaining: batch.newRemaining ?? null,
+              reviewChallengeExhausted: batch.reviewChallengeExhausted,
             };
           });
       };
 
       type FetchResult = Awaited<ReturnType<typeof fetchOne>>;
 
-      const settledResults = await Promise.allSettled(slots.map(fetchOne));
+      const activeSlots = slots.filter(slot => slot.size > 0);
+      const settledResults = await Promise.allSettled(activeSlots.map(fetchOne));
       if (!requestIsCurrent()) {
         throw new DOMException('The review scope changed.', 'AbortError');
       }
@@ -1176,6 +1221,16 @@ export function useReviewSession({ rotations, week, rotationSizes, fetchSlots, f
           (result): result is PromiseRejectedResult => result.status === 'rejected',
         );
         throw firstFailure?.reason ?? new Error('Failed to load');
+      }
+      const exhaustion = exhaustedReviewChallenge(
+        results, activeSlots.length,
+      );
+      if (exhaustion) {
+        setExhaustedChallenge({
+          receipt: exhaustion,
+          scopeKey: requestScopeKey,
+          ownerKey: requestUserKey ?? null,
+        });
       }
       // Sum newRemaining across slots; null if no slot returned a count.
       const aggregatedNewRemaining = results.reduce<{ cards: number; questions: number } | null>((acc, r) => {
@@ -1261,6 +1316,10 @@ export function useReviewSession({ rotations, week, rotationSizes, fetchSlots, f
         }
       } else {
         setIsExhausted(false);
+        if (challengeRevisionOverride != null) {
+          challengeNeedsRetryRef.current = false;
+          setChallengeNeedsRetry(false);
+        }
         // A live batch must not yank the card the reader is mid-way through.
         // The optimistic pack paint exists to make the first frame fast; before
         // this, that frame was replaced by a different question a moment later.
@@ -1274,7 +1333,18 @@ export function useReviewSession({ rotations, week, rotationSizes, fetchSlots, f
         const involuntaryHead = involuntaryReloadHeadRef.current;
         involuntaryReloadHeadRef.current = null;
         const retainedHead = painted ?? involuntaryHead;
-        const deduped = mergeOptimisticHead({
+        const replacingUpcoming = challengeRevisionOverride != null;
+        const currentPrefix = replacingUpcoming
+          ? itemsRef.current.slice(0, currentIndexRef.current + 1)
+          : [];
+        const heldKeys = new Set(currentPrefix.map(reviewItemKey));
+        const deduped = replacingUpcoming
+          ? dedupeReviewItems(newItems, new Set([
+              ...heldKeys,
+              ...reviewedCardIdsRef.current,
+              ...reviewedQuestionIdsRef.current,
+            ]))
+          : mergeOptimisticHead({
           paintedHead: isProtectedPracticeItem(retainedHead ?? undefined) ? null : retainedHead,
           incoming: dedupeReviewItems(newItems),
           readerHasAdvanced: involuntaryHead && !painted
@@ -1289,16 +1359,19 @@ export function useReviewSession({ rotations, week, rotationSizes, fetchSlots, f
           excludedKeys: requestTombstoneKeys,
           key: reviewItemKey,
         });
+        const replacementItems = replacingUpcoming
+          ? [...currentPrefix, ...deduped]
+          : deduped;
         itemsScopeKeyRef.current = requestScopeKey;
         itemsOwnerRef.current = requestUserKey;
-        setItems(deduped);
-        itemsRef.current = deduped;
-        setCurrentIndex(0);
+        setItems(replacementItems);
+        itemsRef.current = replacementItems;
+        if (!replacingUpcoming) setCurrentIndex(0);
         if (!preserveSessionState) {
           reviewedCardIdsRef.current.clear();
           reviewedQuestionIdsRef.current.clear();
         }
-        resetItemState();
+        if (!replacingUpcoming) resetItemState();
         if (!preserveSessionState) {
           setStatsState(
             requestUserKey
@@ -1315,7 +1388,7 @@ export function useReviewSession({ rotations, week, rotationSizes, fetchSlots, f
         // Both initial and appended batches merge into the durable reserve.
         // Cohort stays excluded because this pack cannot preserve its receipt.
         persistLiveBatch(deduped);
-        if (deduped.length > 0) {
+        if (replacementItems.length > 0) {
           loadTimerRef.current?.report('first_card');
         } else {
           loadTimerRef.current?.report('exhausted');
@@ -1342,7 +1415,7 @@ export function useReviewSession({ rotations, week, rotationSizes, fetchSlots, f
         || (err instanceof DOMException && err.name === 'AbortError')
       ) {
         aborted = true;
-      } else if (!append && servePackFallback()) {
+      } else if (!append && challengeRevisionOverride == null && servePackFallback()) {
         // Offline (or the API is down) and we have a pack: study continues.
         // Grades go to the outbox and replay on reconnect, as they already did.
         loadTimerRef.current?.report('first_card');
@@ -1366,6 +1439,11 @@ export function useReviewSession({ rotations, week, rotationSizes, fetchSlots, f
           err instanceof CohortTurnHttpError ? err.code : null,
         );
         setError(err instanceof Error ? err.message : 'Failed to load');
+        if (challengeRevisionOverride != null) {
+          challengeNeedsRetryRef.current = true;
+          setChallengeNeedsRetry(true);
+        }
+        if (throwOnFailure) throw err;
         if (!append) {
           loadTimerRef.current?.markFailure(err);
           loadTimerRef.current?.report('failed');
@@ -1385,6 +1463,67 @@ export function useReviewSession({ rotations, week, rotationSizes, fetchSlots, f
     }
   // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [resetItemState, rotations.join(','), week, activeModules, fetchSlots, feedMode, reviewFilter, itemType, requestedTopicsKey, focusRotation, requestScopeKey, servePackFallback, singleTurn, cohortJourneyId, hasCohortTurn]);
+
+  useEffect(() => {
+    if (!exhaustedChallenge || loading || isFetchingMore) return;
+    // The turn and preference load independently. Keep a valid receipt until
+    // the preference read arrives; an unknown revision is not a stale one.
+    if (reviewChallengeRevisionRef.current === null) return;
+    if (
+      exhaustedChallenge.scopeKey !== requestScopeKey
+      || exhaustedChallenge.ownerKey !== (userKeyRef.current ?? null)
+      || exhaustedChallenge.receipt.revision !== reviewChallengeRevisionRef.current
+    ) {
+      setExhaustedChallenge(null);
+      return;
+    }
+    if (items.length > currentIndex + 1) return;
+    setExhaustedChallenge(null);
+    onChallengeExhaustedRef.current?.(exhaustedChallenge.receipt);
+  }, [exhaustedChallenge, loading, isFetchingMore, items.length, currentIndex, requestScopeKey, userKey, reviewChallengeRevision]);
+
+  /** Replace only the unshown reserve after a challenge preference changes. */
+  const refreshForChallenge = useCallback(
+    async (revision: number) => {
+      if (hasCohortTurn) {
+        // A Cohort draw is persisted before delivery and requires its answer
+        // before continuing. The saved preference applies to the next draw;
+        // preserve the visible (or pending) turn and its idempotency receipt.
+        if (itemsRef.current[currentIndexRef.current] || pendingCohortTurnRef.current) return;
+        await fetchItems(false, true, undefined, undefined, true);
+        return;
+      }
+      const challengeGeneration = challengeRefreshGenerationRef.current + 1;
+      challengeRefreshGenerationRef.current = challengeGeneration;
+      challengeRefreshingRef.current = true;
+      challengeNeedsRetryRef.current = false;
+      setChallengeNeedsRetry(false);
+      setChallengeRefreshing(true);
+      const currentPrefix = itemsRef.current.slice(0, currentIndexRef.current + 1);
+      itemsRef.current = currentPrefix;
+      setItems(currentPrefix);
+      let succeeded = false;
+      try {
+        await fetchItems(false, true, undefined, revision, true);
+        succeeded = true;
+      } finally {
+        if (succeeded && challengeRefreshGenerationRef.current === challengeGeneration && challengeAdvanceIntentRef.current !== null) {
+          const intent = challengeAdvanceIntentRef.current;
+          const current = itemsRef.current[currentIndexRef.current];
+          const ownerKey = typeof itemsOwnerRef.current === 'string' ? itemsOwnerRef.current : null;
+          challengeAdvanceIntentRef.current = null;
+          if (current && intent.itemKey === reviewItemKey(current) && intent.ownerKey === ownerKey) {
+            queueMicrotask(() => advanceAfterChallengeRef.current?.());
+          }
+        }
+        if (challengeRefreshGenerationRef.current === challengeGeneration) {
+          challengeRefreshingRef.current = false;
+          setChallengeRefreshing(false);
+        }
+      }
+    },
+    [fetchItems, hasCohortTurn],
+  );
 
   // Keep a ref to fetchItems so the mount effect doesn't re-run (and abort)
   // when only activeModules changes (server sync after session resolves).
@@ -1546,6 +1685,16 @@ export function useReviewSession({ rotations, week, rotationSizes, fetchSlots, f
   const UNDO_BUFFER = 1;
 
   const advanceToNext = useCallback(() => {
+    if (challengeRefreshingRef.current || challengeNeedsRetryRef.current) {
+      const current = itemsRef.current[currentIndexRef.current];
+      if (current) {
+        challengeAdvanceIntentRef.current = {
+          itemKey: reviewItemKey(current),
+          ownerKey: typeof itemsOwnerRef.current === 'string' ? itemsOwnerRef.current : null,
+        };
+      }
+      return;
+    }
     scrollReviewToTop();
 
     const advancedItem = itemsRef.current[currentIndex];
@@ -1603,6 +1752,7 @@ export function useReviewSession({ rotations, week, rotationSizes, fetchSlots, f
 
     resetItemState();
   }, [currentIndex, feedMode, hasCohortTurn, resetItemState, scrollReviewToTop]);
+  advanceAfterChallengeRef.current = advanceToNext;
 
   /**
    * Complete the displayed turn, retire every preselected remainder, and ask
@@ -1643,16 +1793,28 @@ export function useReviewSession({ rotations, week, rotationSizes, fetchSlots, f
       if (itemsRef.current[0] !== completedItem) scrollReviewToTop();
       return;
     }
-    advanceToNext();
-    itemsRef.current = [];
-    setItems([]);
-    currentIndexRef.current = 0;
-    setCurrentIndex(0);
+    // Cohort too keeps the answered item up while the server picks the next
+    // one (the review-loop invariant: never blank between items). Only when no
+    // new item arrives does the feed clear, so the exhausted and error states
+    // still show exactly as before.
+    const displayed = itemsRef.current;
     setIsExhausted(false);
     setError(null);
-    setLoading(true);
-    await fetchItems(false, true);
-  }, [advanceToNext, cohortJourneyId, currentIndex, fetchItems, scrollReviewToTop]);
+    setRefreshingNext(true);
+    try {
+      await fetchItems(false, true);
+    } finally {
+      setRefreshingNext(false);
+    }
+    if (itemsRef.current === displayed) {
+      itemsRef.current = [];
+      setItems([]);
+      currentIndexRef.current = 0;
+      setCurrentIndex(0);
+    } else {
+      scrollReviewToTop();
+    }
+  }, [cohortJourneyId, currentIndex, fetchItems, scrollReviewToTop]);
 
   /** Called by CardFeedback when a suppress is confirmed, before advanceToNext */
   const markSuppressed = useCallback((id: string, type: 'card' | 'question') => {
@@ -1718,6 +1880,7 @@ export function useReviewSession({ rotations, week, rotationSizes, fetchSlots, f
     isFetchingMore,
     reviewTopRef,
     fetchItems,
+    refreshForChallenge,
     advanceToNext,
     advanceAndRefresh,
     refreshingNext,
@@ -1731,5 +1894,7 @@ export function useReviewSession({ rotations, week, rotationSizes, fetchSlots, f
     isOffscreen,
     newRemaining,
     servingOffline,
+    challengeRefreshing,
+    challengeNeedsRetry,
   };
 }

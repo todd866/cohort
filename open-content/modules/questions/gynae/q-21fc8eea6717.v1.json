@@ -1,0 +1,64 @@
+{
+  "id": "bank:cohort:gynae:q-21fc8eea6717:v1",
+  "rotation": "cohort-open",
+  "moduleNodes": [
+    "cohort/gynae"
+  ],
+  "topics": [
+    "gynae"
+  ],
+  "questionType": "management",
+  "difficulty": "hard",
+  "stem": "A 27-year-old has 18 months of worsening dysmenorrhoea, cyclical pelvic pain and deep dyspareunia. She is tender in the posterior fornix, and transvaginal ultrasound is normal. Pregnancy and pelvic infection have been excluded, and NSAIDs have not helped enough. She wants contraception, has no contraindication to oestrogen, and asks her GP whether she needs a laparoscopy to prove the diagnosis before any treatment.\n\nWhat should the GP recommend?",
+  "options": [
+    {
+      "label": "A",
+      "text": "Laparoscopy first, as a normal scan leaves the diagnosis unproven",
+      "isCorrect": false,
+      "explanation": "A normal ultrasound does not exclude endometriosis, particularly superficial disease, and surgery is not needed before first-line hormonal treatment."
+    },
+    {
+      "label": "B",
+      "text": "A GnRH agonist, as first-line suppression of the endometriosis",
+      "isCorrect": false,
+      "explanation": "GnRH agonists work but cause hypo-oestrogenic effects and bone loss; they are second-line after the pill or a progestogen."
+    },
+    {
+      "label": "C",
+      "text": "A copper IUD, giving contraception without hormonal side effects",
+      "isCorrect": false,
+      "explanation": "A copper IUD gives contraception but does not suppress endometriosis, and it can make periods heavier and more painful."
+    },
+    {
+      "label": "D",
+      "text": "Continuous combined pill or a progestogen, without surgery first",
+      "isCorrect": true,
+      "explanation": "Suspected endometriosis can be treated empirically. A combined pill taken continuously, or a progestogen, suppresses the disease and gives her the contraception she wants, without laparoscopy first."
+    },
+    {
+      "label": "E",
+      "text": "Repeat ultrasound after six months of NSAIDs, then reconsider",
+      "isCorrect": false,
+      "explanation": "NSAIDs have already not been enough, and repeating a normal scan delays treatment that can start now."
+    }
+  ],
+  "context": "Suspected endometriosis can be treated empirically with hormonal suppression (combined pill or progestogen); a normal ultrasound does not exclude it, and laparoscopy is not required first.",
+  "publicModule": {
+    "schemaVersion": 1,
+    "origin": "mirrored",
+    "discipline": "gynae",
+    "mirroredFrom": "md3:21fc8eea6717bcee",
+    "itemText": {
+      "licence": "CC-BY-4.0",
+      "attribution": "MD3 contributors"
+    },
+    "evidence": {
+      "kind": "reference",
+      "sourceId": "ranzcog-wp-content-uploads-endometriosis-clinical-practice-guideline-277fb1"
+    },
+    "review": {
+      "verdict": "passed",
+      "contentHash": "62bd5f1c13b097b65d70551da451ff930a4c7332c4b0167e9babe01a7aee7ac2"
+    }
+  }
+}

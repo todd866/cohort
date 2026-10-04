@@ -1,0 +1,64 @@
+{
+  "id": "bank:cohort:psych:q-be268e8f72fb:v1",
+  "rotation": "cohort-open",
+  "moduleNodes": [
+    "cohort/psych"
+  ],
+  "topics": [
+    "psych"
+  ],
+  "questionType": "management",
+  "difficulty": "hard",
+  "stem": "An on-call psychiatrist assesses a 25-year-old whose GP started sertraline three weeks ago for depression. For eight days he has slept two hours nightly without tiredness, spent his savings and claimed he can create a national airline by next week. He is difficult to interrupt and is being admitted because of severely impaired judgment. There is no stimulant use, fever, clonus or fluctuation in attention.\n\nWhat is the most appropriate medication response now?",
+  "options": [
+    {
+      "label": "A",
+      "text": "Halve the sertraline dose and add an antipsychotic",
+      "isCorrect": false,
+      "explanation": "Any continued antidepressant can drive and prolong the manic episode. Halving the dose does not remove the precipitant."
+    },
+    {
+      "label": "B",
+      "text": "Continue sertraline and add lithium to control the mania",
+      "isCorrect": false,
+      "explanation": "Lithium is an antimanic option, but continuing the antidepressant during mania can sustain the episode. The antidepressant should be stopped."
+    },
+    {
+      "label": "C",
+      "text": "Stop sertraline and begin antimanic treatment today",
+      "isCorrect": true,
+      "explanation": "A full manic syndrome emerging on an antidepressant needs the antidepressant stopped and the mania actively treated, for example with an antipsychotic or mood stabiliser. Severity here, with admission needed, rules out observation alone."
+    },
+    {
+      "label": "D",
+      "text": "Switch sertraline to bupropion and add an antipsychotic",
+      "isCorrect": false,
+      "explanation": "Switching to another antidepressant keeps an antidepressant in place during mania. Bupropion can also precipitate mania."
+    },
+    {
+      "label": "E",
+      "text": "Stop sertraline and observe for the mood to settle",
+      "isCorrect": false,
+      "explanation": "Stopping the precipitant is necessary but not sufficient when mania is this severe. He needs antimanic treatment now."
+    }
+  ],
+  "context": "A manic syndrome emerging during antidepressant treatment calls for withdrawal of the antidepressant and treatment of the acute mania.",
+  "publicModule": {
+    "schemaVersion": 1,
+    "origin": "mirrored",
+    "discipline": "psych",
+    "mirroredFrom": "md3:be268e8f72fb72b9",
+    "itemText": {
+      "licence": "CC-BY-4.0",
+      "attribution": "MD3 contributors"
+    },
+    "evidence": {
+      "kind": "reference",
+      "sourceId": "nice-guidance-cg185-chapter-recommendations-077a81"
+    },
+    "review": {
+      "verdict": "passed",
+      "contentHash": "9dbd856ca5b399f37b5c46bcc5b083cd11e56d04c2f554e8a2b71a52a45d6c95"
+    }
+  }
+}

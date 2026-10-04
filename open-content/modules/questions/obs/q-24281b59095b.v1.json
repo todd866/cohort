@@ -1,0 +1,64 @@
+{
+  "id": "bank:cohort:obs:q-24281b59095b:v1",
+  "rotation": "cohort-open",
+  "moduleNodes": [
+    "cohort/obs"
+  ],
+  "topics": [
+    "obs"
+  ],
+  "questionType": "mechanism",
+  "difficulty": "medium",
+  "stem": "A woman at 27+5 weeks is in established preterm labour, 6 cm dilated, and birth is expected within about two hours. She received her first dose of betamethasone an hour ago. Her blood pressure is normal and she has no features of pre-eclampsia. The registrar asks whether intravenous magnesium sulfate is still worth starting.\n\nWhat should the obstetrician advise?",
+  "options": [
+    {
+      "label": "A",
+      "text": "Withhold it, as she has no features of pre-eclampsia",
+      "isCorrect": false,
+      "explanation": "Magnesium for fetal neuroprotection does not depend on pre-eclampsia; the indication here is imminent birth before 30 weeks."
+    },
+    {
+      "label": "B",
+      "text": "Withhold it, as two hours is too short for any benefit",
+      "isCorrect": false,
+      "explanation": "Benefit is greatest with a few hours of infusion before birth, but it should still be started when birth is expected sooner. Birth is not delayed to complete it."
+    },
+    {
+      "label": "C",
+      "text": "Start it, mainly to delay birth for the steroids",
+      "isCorrect": false,
+      "explanation": "Magnesium is not being used as a tocolytic here and does not reliably delay birth."
+    },
+    {
+      "label": "D",
+      "text": "Start it, mainly to boost surfactant after steroids",
+      "isCorrect": false,
+      "explanation": "Faster surfactant production is the corticosteroid’s effect; magnesium does not add to lung maturation."
+    },
+    {
+      "label": "E",
+      "text": "Start it now, to lower the baby’s risk of cerebral palsy",
+      "isCorrect": true,
+      "explanation": "Magnesium sulfate before birth at under 30 weeks reduces the risk of cerebral palsy in the child. Start it now, even though birth may come before the infusion is complete."
+    }
+  ],
+  "context": "Give magnesium sulfate for fetal neuroprotection when birth before 30 weeks is imminent, even without pre-eclampsia and even if little time remains.",
+  "publicModule": {
+    "schemaVersion": 1,
+    "origin": "mirrored",
+    "discipline": "obs",
+    "mirroredFrom": "md3:24281b59095b0a7a",
+    "itemText": {
+      "licence": "CC-BY-4.0",
+      "attribution": "MD3 contributors"
+    },
+    "evidence": {
+      "kind": "reference",
+      "sourceId": "qld-health-data-assets-pdf-file-0019-140149-g-ptl-fd0e08"
+    },
+    "review": {
+      "verdict": "passed",
+      "contentHash": "c889000a5a778e9db2cb1e3b747636e73d3c5a0b6dcfe1751d52616085147c5a"
+    }
+  }
+}

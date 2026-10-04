@@ -1,0 +1,64 @@
+{
+  "id": "bank:cohort:haem:q-6b53d13b3ed1:v1",
+  "rotation": "cohort-open",
+  "moduleNodes": [
+    "cohort/haem"
+  ],
+  "topics": [
+    "haem"
+  ],
+  "questionType": "management",
+  "difficulty": "medium",
+  "stem": "A well 4-year-old has scattered petechiae after a viral illness. He is playful, has no fever, bone pain or hepatosplenomegaly. Platelets are 9 × 10⁹/L; haemoglobin and white-cell count are normal. There is no mucosal bleeding, and reliable follow-up is available. Which management is most appropriate?",
+  "options": [
+    {
+      "label": "A",
+      "text": "Observation with safety advice and early review",
+      "isCorrect": true,
+      "explanation": "Correct. Skin-only bleeding in a well child with isolated thrombocytopenia and reliable follow-up is managed by observation, bleeding precautions and paediatric review, regardless of the count alone."
+    },
+    {
+      "label": "B",
+      "text": "Oral prednisolone because petechiae are present",
+      "isCorrect": false,
+      "explanation": "Treatment is guided by clinical bleeding and context; petechiae alone do not mandate steroids."
+    },
+    {
+      "label": "C",
+      "text": "Bone marrow aspirate before any treatment decision",
+      "isCorrect": false,
+      "explanation": "Typical isolated thrombocytopenia without bone pain, organomegaly or other cytopenias does not need marrow examination."
+    },
+    {
+      "label": "D",
+      "text": "IV immunoglobulin to lift the count quickly",
+      "isCorrect": false,
+      "explanation": "IVIG is not routinely needed for skin-only bleeding in a well child with reliable follow-up."
+    },
+    {
+      "label": "E",
+      "text": "Platelet transfusion because the count is below 10",
+      "isCorrect": false,
+      "explanation": "Platelet transfusion is reserved for life-threatening bleeding; transfused platelets are rapidly destroyed in ITP."
+    }
+  ],
+  "context": "In childhood immune thrombocytopenia, treatment decisions are driven by bleeding severity, examination and circumstances rather than the platelet count alone. Provide bleeding precautions, medication advice, follow-up and a clear return plan.",
+  "publicModule": {
+    "schemaVersion": 1,
+    "origin": "mirrored",
+    "discipline": "haem",
+    "mirroredFrom": "md3:6b53d13b3ed19300",
+    "itemText": {
+      "licence": "CC-BY-4.0",
+      "attribution": "MD3 contributors"
+    },
+    "evidence": {
+      "kind": "reference",
+      "sourceId": "rch-clinicalguide-guideline-index-immune-thrombocytopenic-purpura-5e285d"
+    },
+    "review": {
+      "verdict": "passed",
+      "contentHash": "5f5993e4bb080e02e163054421f5129b1e85c0da74d5c51de43384eb3caf6d0b"
+    }
+  }
+}

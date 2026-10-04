@@ -1,0 +1,64 @@
+{
+  "id": "bank:cohort:renal:q-0ca0a907d247:v1",
+  "rotation": "cohort-open",
+  "moduleNodes": [
+    "cohort/renal"
+  ],
+  "topics": [
+    "renal"
+  ],
+  "questionType": "diagnosis",
+  "difficulty": "hard",
+  "stem": "A 7-year-old has cola-coloured urine, headache and facial puffiness 2 weeks after impetigo. Blood pressure is high. Urinalysis shows blood and 1+ protein; C3 is low. Which additional result would make post-streptococcal glomerulonephritis less likely and prompt broader renal investigation?",
+  "options": [
+    {
+      "label": "A",
+      "text": "C3 remains low after 8 weeks",
+      "isCorrect": true,
+      "explanation": "Correct. Complement should recover over the following weeks; persistent low C3 suggests another complement-mediated or systemic glomerular disease and warrants broader investigation."
+    },
+    {
+      "label": "B",
+      "text": "A mild rise in creatinine during the acute illness",
+      "isCorrect": false,
+      "explanation": "A mild acute creatinine rise can occur with nephritic disease and does not by itself argue against it."
+    },
+    {
+      "label": "C",
+      "text": "A normal serum albumin",
+      "isCorrect": false,
+      "explanation": "Normal albumin is compatible with a predominantly nephritic rather than nephrotic process."
+    },
+    {
+      "label": "D",
+      "text": "Red-cell casts on urine microscopy",
+      "isCorrect": false,
+      "explanation": "Red-cell casts support glomerular inflammation and fit the nephritic presentation."
+    },
+    {
+      "label": "E",
+      "text": "An elevated antistreptolysin O titre",
+      "isCorrect": false,
+      "explanation": "An elevated antistreptolysin O titre supports recent streptococcal exposure but is not specific for the renal complication."
+    }
+  ],
+  "context": "Post-streptococcal glomerulonephritis typically causes transient low C3. Persistent hypocomplementaemia beyond the expected recovery window is a reason to reconsider the diagnosis and seek renal specialist input.",
+  "publicModule": {
+    "schemaVersion": 1,
+    "origin": "mirrored",
+    "discipline": "renal",
+    "mirroredFrom": "md3:0ca0a907d2470ab0",
+    "itemText": {
+      "licence": "CC-BY-4.0",
+      "attribution": "MD3 contributors"
+    },
+    "evidence": {
+      "kind": "reference",
+      "sourceId": "rch-inicalguide-guideline-index-post-streptococcal-glomerulonephritis-psgn-00acf0"
+    },
+    "review": {
+      "verdict": "passed",
+      "contentHash": "688ef2ad555af1c421a4c74fabb0c21f28dc18b08ed68360fac41aa8e9b0fd7e"
+    }
+  }
+}

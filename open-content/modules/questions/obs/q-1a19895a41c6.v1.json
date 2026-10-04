@@ -1,0 +1,64 @@
+{
+  "id": "bank:cohort:obs:q-1a19895a41c6:v1",
+  "rotation": "cohort-open",
+  "moduleNodes": [
+    "cohort/obs"
+  ],
+  "topics": [
+    "obs"
+  ],
+  "questionType": "management",
+  "difficulty": "hard",
+  "stem": "A woman at 40+5 weeks is undergoing induction with a dinoprostone controlled-release pessary inserted two hours ago. Over the past 30 minutes she has averaged six contractions per 10 minutes, each lasting about 70 seconds, with normal resting tone between them. The CTG remains normal and no oxytocin is running.\n\nWhat should the obstetric registrar do first?",
+  "options": [
+    {
+      "label": "A",
+      "text": "Leave the pessary in place, since the CTG remains normal",
+      "isCorrect": false,
+      "explanation": "More than five contractions in ten minutes averaged over 30 minutes is tachysystole; a normal CTG now does not make continued prostaglandin exposure safe."
+    },
+    {
+      "label": "B",
+      "text": "Give subcutaneous terbutaline and leave the pessary in place",
+      "isCorrect": false,
+      "explanation": "Tocolysis is used if tachysystole persists or the CTG becomes abnormal; leaving the pessary in maintains the stimulus."
+    },
+    {
+      "label": "C",
+      "text": "Remove the pessary and reassess uterine activity and the CTG",
+      "isCorrect": true,
+      "explanation": "A controlled-release pessary can be withdrawn; removing it is the first response to tachysystole, followed by reassessment of contractions and the fetal heart."
+    },
+    {
+      "label": "D",
+      "text": "Perform amniotomy so that an oxytocin infusion can be started",
+      "isCorrect": false,
+      "explanation": "Amniotomy and oxytocin would add stimulation to an already overactive uterus."
+    },
+    {
+      "label": "E",
+      "text": "Give an intravenous fluid bolus and continue the induction unchanged",
+      "isCorrect": false,
+      "explanation": "Fluids do not address the prostaglandin stimulus, and continuing unchanged ignores the tachysystole."
+    }
+  ],
+  "context": "With uterine tachysystole during dinoprostone induction, remove the pessary when possible and reassess maternal and fetal status, even while the CTG is normal.",
+  "publicModule": {
+    "schemaVersion": 1,
+    "origin": "mirrored",
+    "discipline": "obs",
+    "mirroredFrom": "md3:1a19895a41c636d9",
+    "itemText": {
+      "licence": "CC-BY-4.0",
+      "attribution": "MD3 contributors"
+    },
+    "evidence": {
+      "kind": "reference",
+      "sourceId": "nice-guidance-ng207-chapter-recommendations-3f0713"
+    },
+    "review": {
+      "verdict": "passed",
+      "contentHash": "f4c5e84e9e2d9fe475fc878dc9563861a4da52f6cd65dd33af7d146440b3c75f"
+    }
+  }
+}

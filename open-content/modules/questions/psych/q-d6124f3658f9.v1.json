@@ -1,0 +1,64 @@
+{
+  "id": "bank:cohort:psych:q-d6124f3658f9:v1",
+  "rotation": "cohort-open",
+  "moduleNodes": [
+    "cohort/psych"
+  ],
+  "topics": [
+    "psych"
+  ],
+  "questionType": "management",
+  "difficulty": "hard",
+  "stem": "A 30-year-old man has schizophrenia with persistent command hallucinations. He received monthly paliperidone palmitate injections for four months, then olanzapine 20 mg daily for eight weeks with a therapeutic plasma level. Urine drug screens through both trials were negative, and he made two suicide attempts in response to the voices last year. His mother asks whether he could try a third antipsychotic instead, because she has read about blood tests. A registrar suggests adding aripiprazole to the olanzapine.\n\nWhat should be offered?",
+  "options": [
+    {
+      "label": "A",
+      "text": "Clozapine, with its blood monitoring",
+      "isCorrect": true,
+      "explanation": "Two adequate trials, one by depot so adherence is certain and one with a therapeutic level, define treatment-resistant schizophrenia. Clozapine is the only antipsychotic with superior efficacy here and also reduces suicidal behaviour, so it should be offered with its monitoring explained."
+    },
+    {
+      "label": "B",
+      "text": "Aripiprazole added to olanzapine",
+      "isCorrect": false,
+      "explanation": "Combining two non-clozapine antipsychotics adds side effects with little evidence of benefit, and delays the one drug proven to work in treatment resistance."
+    },
+    {
+      "label": "C",
+      "text": "Olanzapine increased above 20 mg daily",
+      "isCorrect": false,
+      "explanation": "Raising olanzapine above the licensed dose adds metabolic and sedative harm. Treatment resistance after an adequate dose with a therapeutic level is not solved by more of the same drug."
+    },
+    {
+      "label": "D",
+      "text": "A trial of oral amisulpride instead",
+      "isCorrect": false,
+      "explanation": "A third non-clozapine antipsychotic has a low chance of success once two adequate trials have failed, and delays clozapine during a period of high suicide risk."
+    },
+    {
+      "label": "E",
+      "text": "Sodium valproate added to olanzapine",
+      "isCorrect": false,
+      "explanation": "Mood stabiliser augmentation has weak evidence in schizophrenia and does not address the treatment resistance."
+    }
+  ],
+  "context": "After two adequate antipsychotic trials, with adherence confirmed, offer clozapine. Its reduction in suicidal behaviour makes it more pressing when voices have driven suicide attempts.",
+  "publicModule": {
+    "schemaVersion": 1,
+    "origin": "mirrored",
+    "discipline": "psych",
+    "mirroredFrom": "md3:d6124f3658f9ac35",
+    "itemText": {
+      "licence": "CC-BY-4.0",
+      "attribution": "MD3 contributors"
+    },
+    "evidence": {
+      "kind": "reference",
+      "sourceId": "nice-guidance-cg178-chapter-recommendations-ab0e8b"
+    },
+    "review": {
+      "verdict": "passed",
+      "contentHash": "bdaedf77dc92e252e2f0b8f75f4e561e3a48b99574da78c420f95dc5abb243ec"
+    }
+  }
+}

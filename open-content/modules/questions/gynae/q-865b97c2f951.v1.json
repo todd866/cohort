@@ -1,0 +1,64 @@
+{
+  "id": "bank:cohort:gynae:q-865b97c2f951:v1",
+  "rotation": "cohort-open",
+  "moduleNodes": [
+    "cohort/gynae"
+  ],
+  "topics": [
+    "gynae"
+  ],
+  "questionType": "investigation",
+  "difficulty": "medium",
+  "stem": "A 49-year-old presents with frequent small voids and intermittent urinary leakage. Over the past month she has also noticed hesitancy, a weak stream and a persistent feeling that she has not emptied her bladder. A completed three-day bladder diary confirms frequent low-volume voids. She is able to pass urine and has no pain, fever or visible haematuria. Urinalysis is normal; pelvic and focused neurological examinations reveal no abnormality.\n\nWhich investigation is most appropriate next?",
+  "options": [
+    {
+      "label": "A",
+      "text": "Repeat the three-day bladder diary over a further week",
+      "isCorrect": false,
+      "explanation": "The diary has already quantified her voiding pattern. Repeating it would not measure urine left behind; her additional emptying symptoms require assessment of residual volume."
+    },
+    {
+      "label": "B",
+      "text": "Flexible cystoscopy to inspect the bladder and urethra",
+      "isCorrect": false,
+      "explanation": "Cystoscopy may be indicated for specific suspected pathology, but is not the routine first assessment of incontinence with these symptoms. There is no haematuria or other stated indication for immediate cystoscopy."
+    },
+    {
+      "label": "C",
+      "text": "A standardised one-hour pad-weight test of leakage",
+      "isCorrect": false,
+      "explanation": "A pad test quantifies leakage. It does not establish whether incomplete emptying is contributing to the leakage and frequent small voids."
+    },
+    {
+      "label": "D",
+      "text": "Multichannel pressure-flow urodynamic studies",
+      "isCorrect": false,
+      "explanation": "Pressure-flow studies can later distinguish detrusor weakness from outlet obstruction when needed. First assess residual urine with the simpler non-invasive test."
+    },
+    {
+      "label": "E",
+      "text": "A bladder scan immediately after voiding",
+      "isCorrect": true,
+      "explanation": "Hesitancy, weak stream and incomplete-emptying sensation suggest voiding dysfunction. Postvoid bladder ultrasound is an appropriate initial way to assess retained urine and is preferred to diagnostic catheterisation when available."
+    }
+  ],
+  "context": "Urinary leakage accompanied by voiding difficulty warrants measurement of postvoid residual urine, usually with a bladder scan.",
+  "publicModule": {
+    "schemaVersion": 1,
+    "origin": "mirrored",
+    "discipline": "gynae",
+    "mirroredFrom": "md3:865b97c2f951f96c",
+    "itemText": {
+      "licence": "CC-BY-4.0",
+      "attribution": "MD3 contributors"
+    },
+    "evidence": {
+      "kind": "reference",
+      "sourceId": "nice-guidance-ng123-chapter-recommendations-b9dda9"
+    },
+    "review": {
+      "verdict": "passed",
+      "contentHash": "04411b6b3adb23f47ca39aaec675965efd7cccfb68d5080090de448d94a476e6"
+    }
+  }
+}

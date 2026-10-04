@@ -1,0 +1,64 @@
+{
+  "id": "bank:cohort:paeds:q-4b50c9df63dd:v1",
+  "rotation": "cohort-open",
+  "moduleNodes": [
+    "cohort/paeds"
+  ],
+  "topics": [
+    "paeds"
+  ],
+  "questionType": "management",
+  "difficulty": "hard",
+  "stem": "A baby born at 35+5 weeks weighing 2.6 kg had a glucose of 2.1 mmol/L at two hours and was given glucose gel and a breastfeed. At four hours the midwife sees 20 seconds of rhythmic jerking of the right arm with lip-smacking. Bedside glucose is now 1.6 mmol/L, a laboratory sample has been sent, and the paediatric registrar can site a cannula.\n\nWhat should the registrar do?",
+  "options": [
+    {
+      "label": "A",
+      "text": "A second dose of glucose gel and a breastfeed, rechecking in 30 minutes",
+      "isCorrect": false,
+      "explanation": "Glucose gel and a feed are for babies without symptoms; a seizure makes this critical hypoglycaemia that needs intravenous glucose."
+    },
+    {
+      "label": "B",
+      "text": "Intravenous phenobarbitone for the seizure, then recheck glucose",
+      "isCorrect": false,
+      "explanation": "The seizure is caused by the low glucose, so correcting it comes first; anticonvulsants are for seizures that persist once glucose is normal."
+    },
+    {
+      "label": "C",
+      "text": "Await the laboratory glucose before inserting a cannula",
+      "isCorrect": false,
+      "explanation": "Laboratory confirmation must not delay treatment of a symptomatic baby, and the sample has already been sent."
+    },
+    {
+      "label": "D",
+      "text": "A formula top-up by nasogastric tube, rechecking in an hour",
+      "isCorrect": false,
+      "explanation": "Enteral feeds are too slow and unreliable for a baby who is seizing with a low glucose."
+    },
+    {
+      "label": "E",
+      "text": "An intravenous 10% glucose bolus, followed by a glucose infusion",
+      "isCorrect": true,
+      "explanation": "Symptomatic hypoglycaemia, here a seizure, needs urgent intravenous 10% glucose as a bolus followed by an infusion, with a recheck within 30 minutes."
+    }
+  ],
+  "context": "A neonatal seizure with a low glucose is critical hypoglycaemia: give intravenous glucose at once rather than gel, feeds or an anticonvulsant.",
+  "publicModule": {
+    "schemaVersion": 1,
+    "origin": "mirrored",
+    "discipline": "paeds",
+    "mirroredFrom": "md3:4b50c9df63dd7283",
+    "itemText": {
+      "licence": "CC-BY-4.0",
+      "attribution": "MD3 contributors"
+    },
+    "evidence": {
+      "kind": "reference",
+      "sourceId": "qld-health-data-assets-pdf-file-0043-881899-g-hypogly-116e67"
+    },
+    "review": {
+      "verdict": "passed",
+      "contentHash": "8a1d13c3ffa435f00920dfd78e66471949bc473f8b40c404539c4db6f6f6e4e8"
+    }
+  }
+}

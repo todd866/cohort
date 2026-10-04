@@ -34,6 +34,10 @@ const nextConfig: NextConfig = {
   poweredByHeader: false,
   compress: true,
   serverExternalPackages: ['@prisma/client', '.prisma/client'],
+  // src/lib/figures/serving-index.ts reads this from disk on first lookup.
+  outputFileTracingIncludes: {
+    '*': ['./src/data/image-serving.generated.json'],
+  },
   outputFileTracingExcludes: {
     '*': ['public/figures/**', 'public/medical-diagrams/**', 'public/downloads/**', 'open-content/medical-figures/images/**', 'public/icons/**', 'public/screenshots/**'],
   },

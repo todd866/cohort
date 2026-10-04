@@ -1,0 +1,64 @@
+{
+  "id": "bank:cohort:psych:q-e54e7fffce27:v1",
+  "rotation": "cohort-open",
+  "moduleNodes": [
+    "cohort/psych"
+  ],
+  "topics": [
+    "psych"
+  ],
+  "questionType": "diagnosis",
+  "difficulty": "hard",
+  "stem": "A 78-year-old admitted with a chest infection has become quiet and withdrawn. His daughter says he has been a little forgetful for a year but lived independently and was chatty until two days ago. He now answers slowly and says he “can’t be bothered”. Nursing entries record:\n\n| Time | Observation |\n| --- | --- |\n| 09:00 | Drowsy; drifts off mid-sentence |\n| 14:00 | More alert and recognises the ward, but loses track of questions |\n| 22:00 | Says there are children at the end of the bed; cannot hold attention |\n\nWhich syndrome best accounts for this change?",
+  "options": [
+    {
+      "label": "A",
+      "text": "Major depressive episode",
+      "isCorrect": false,
+      "explanation": "Withdrawal and ‘can’t be bothered’ suggest depression, but depression does not cause a two-day onset of fluctuating attention and arousal."
+    },
+    {
+      "label": "B",
+      "text": "Progression of Alzheimer’s dementia",
+      "isCorrect": false,
+      "explanation": "A year of mild forgetfulness may be early dementia, which raises the risk of delirium, but dementia progresses over months, not days, and does not fluctuate in arousal like this."
+    },
+    {
+      "label": "C",
+      "text": "Mild cognitive impairment",
+      "isCorrect": false,
+      "explanation": "Mild cognitive impairment may describe his baseline, but it cannot account for an abrupt change."
+    },
+    {
+      "label": "D",
+      "text": "Dementia with Lewy bodies",
+      "isCorrect": false,
+      "explanation": "Fluctuating attention and visual hallucinations are core features of dementia with Lewy bodies, which makes it tempting. But that dementia evolves over months; an abrupt change over two days during an infection is delirium, possibly superimposed on an underlying dementia."
+    },
+    {
+      "label": "E",
+      "text": "Delirium, hypoactive type",
+      "isCorrect": true,
+      "explanation": "Acute onset over two days, fluctuating attention and arousal, drowsiness and perceptual disturbance during an infection are delirium; the quiet presentation is the hypoactive type, often mistaken for depression."
+    }
+  ],
+  "context": "An abrupt change with fluctuating attention during an illness is delirium, even when hallucinations or a background of forgetfulness suggest Lewy body or other dementia.",
+  "publicModule": {
+    "schemaVersion": 1,
+    "origin": "mirrored",
+    "discipline": "psych",
+    "mirroredFrom": "md3:e54e7fffce27e594",
+    "itemText": {
+      "licence": "CC-BY-4.0",
+      "attribution": "MD3 contributors"
+    },
+    "evidence": {
+      "kind": "reference",
+      "sourceId": "nice-guidance-cg103-chapter-recommendations-be0a00"
+    },
+    "review": {
+      "verdict": "passed",
+      "contentHash": "cc25d5e5b7bc70aec71b396eaf2f18e65239e93753ddb29bdda9f5efc718cc96"
+    }
+  }
+}

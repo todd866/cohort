@@ -1,0 +1,64 @@
+{
+  "id": "bank:cohort:psych:q-e4dc203ab190:v1",
+  "rotation": "cohort-open",
+  "moduleNodes": [
+    "cohort/psych"
+  ],
+  "topics": [
+    "psych"
+  ],
+  "questionType": "management",
+  "difficulty": "medium",
+  "stem": "An emergency doctor sees a man who has used GHB every two hours, including overnight, for several months. Four hours after his last dose he is increasingly tremulous, sweaty and tachycardic; during assessment he becomes confused and reports seeing insects. Glucose is normal, and the team is investigating other causes of delirium. He requests a few tablets to manage at home.\n\nWhich plan best addresses the immediate risk?",
+  "options": [
+    {
+      "label": "A",
+      "text": "Start a standard fixed-dose oral diazepam regimen on a general medical ward",
+      "isCorrect": false,
+      "explanation": "GHB withdrawal often needs much larger and more frequent benzodiazepine doses than alcohol withdrawal and can deteriorate within hours. A general ward regimen is unlikely to be enough."
+    },
+    {
+      "label": "B",
+      "text": "Admit for monitored benzodiazepine titration with early critical-care review",
+      "isCorrect": true,
+      "explanation": "Rapidly escalating withdrawal with early delirium after round-the-clock GHB use can become severe and benzodiazepine-resistant. It needs monitored, titrated benzodiazepine treatment with critical-care involvement."
+    },
+    {
+      "label": "C",
+      "text": "Observe without medication until 24 hours after his last dose, then reassess",
+      "isCorrect": false,
+      "explanation": "Withdrawal in round-the-clock users begins within hours of the last dose, and he is already delirious. Waiting delays treatment."
+    },
+    {
+      "label": "D",
+      "text": "Give haloperidol for the hallucinations while further tests are awaited",
+      "isCorrect": false,
+      "explanation": "Antipsychotics do not treat withdrawal and lower the seizure threshold. The hallucinations here are part of the withdrawal delirium."
+    },
+    {
+      "label": "E",
+      "text": "Give a single diazepam dose now and review him on tomorrow’s ward round",
+      "isCorrect": false,
+      "explanation": "A single dose and delayed review ignore how rapidly GHB withdrawal escalates. He needs continuous monitoring and titration."
+    }
+  ],
+  "context": "GHB withdrawal can become severe within hours, particularly after frequent dosing throughout the day and night.",
+  "publicModule": {
+    "schemaVersion": 1,
+    "origin": "mirrored",
+    "discipline": "psych",
+    "mirroredFrom": "md3:e4dc203ab190d237",
+    "itemText": {
+      "licence": "CC-BY-4.0",
+      "attribution": "MD3 contributors"
+    },
+    "evidence": {
+      "kind": "reference",
+      "sourceId": "nsw-health-aod-professionals-publications-managing-withdrawal-e60532"
+    },
+    "review": {
+      "verdict": "passed",
+      "contentHash": "54c8941c3232dda2592c8d07695c7d04359ca30bb99536fb53979f18e70f8b04"
+    }
+  }
+}

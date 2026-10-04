@@ -8,9 +8,8 @@
 export { embedContent, embedBatch, formatCardForEmbedding, type EmbeddingResult } from './embeddings';
 export {
   findSimilar,
-  findCrossRotation,
+  searchSimilar,
   findCardsForQuestion,
-  findQuestionsForCard,
   findCardsNearVector,
   findQuestionsNearVector,
   findVideosNearVector,
@@ -18,7 +17,8 @@ export {
   batchLoadItemEmbeddings,
   loadQuestionEmbedding,
   type SimilarCard,
-  type SimilarQuestion,
+  type SimilarSearch,
+  type SimilarSearchSource,
 } from './similarity';
 export {
   inferMastery,

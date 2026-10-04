@@ -1,0 +1,64 @@
+{
+  "id": "bank:cohort:em:q-5b80a9fb50c2:v1",
+  "rotation": "cohort-open",
+  "moduleNodes": [
+    "cohort/em"
+  ],
+  "topics": [
+    "em"
+  ],
+  "questionType": "management",
+  "difficulty": "hard",
+  "stem": "A 41-year-old woman is retrieved from a rural highway collision after prolonged extrication and arrives 3 hours 40 minutes after injury. Heart rate is 128/min, blood pressure 82/56 mmHg and FAST shows free intraperitoneal fluid. The major haemorrhage protocol is running and the surgical team is on its way. The ambulance record shows tranexamic acid was not given, and a colleague suggests giving it now because she is still bleeding.\n\nWhat is the most appropriate decision about tranexamic acid?",
+  "options": [
+    {
+      "label": "A",
+      "text": "Withhold it; after 3 hours it may harm",
+      "isCorrect": true,
+      "explanation": "Tranexamic acid reduces deaths from bleeding in trauma when started within 3 hours of injury, with most benefit in the first hour. Started after 3 hours it showed no benefit and a possible increase in bleeding deaths, so it is not started now; resuscitation and surgical control continue."
+    },
+    {
+      "label": "B",
+      "text": "1 g IV now, then an infusion over 8 hours",
+      "isCorrect": false,
+      "explanation": "This is the right regimen within 3 hours of injury, but at 3 hours 40 minutes the evidence points to harm rather than benefit."
+    },
+    {
+      "label": "C",
+      "text": "Half the usual dose because of the delay",
+      "isCorrect": false,
+      "explanation": "There is no evidence that a reduced dose is safe or effective after 3 hours; the problem is timing, not dose."
+    },
+    {
+      "label": "D",
+      "text": "Only if surgery fails to stop the bleeding",
+      "isCorrect": false,
+      "explanation": "Ongoing bleeding beyond 3 hours is managed with blood products and haemorrhage control; late tranexamic acid is not a rescue therapy."
+    },
+    {
+      "label": "E",
+      "text": "Recombinant factor VIIa in its place",
+      "isCorrect": false,
+      "explanation": "Recombinant factor VIIa is not routine in trauma haemorrhage; it is thrombogenic and has not improved survival."
+    }
+  ],
+  "context": "Tranexamic acid in trauma is given as early as possible and within 3 hours of injury; it is not started after 3 hours.",
+  "publicModule": {
+    "schemaVersion": 1,
+    "origin": "mirrored",
+    "discipline": "em",
+    "mirroredFrom": "md3:5b80a9fb50c2cfd5",
+    "itemText": {
+      "licence": "CC-BY-4.0",
+      "attribution": "MD3 contributors"
+    },
+    "evidence": {
+      "kind": "reference",
+      "sourceId": "nice-guidance-ng39-chapter-recommendations-b50a7e"
+    },
+    "review": {
+      "verdict": "passed",
+      "contentHash": "519f168e0f2595b869bfe23816b3ce8412d86f888e302313043d9979ecbd2539"
+    }
+  }
+}

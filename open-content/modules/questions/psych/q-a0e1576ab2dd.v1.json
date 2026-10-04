@@ -1,0 +1,64 @@
+{
+  "id": "bank:cohort:psych:q-a0e1576ab2dd:v1",
+  "rotation": "cohort-open",
+  "moduleNodes": [
+    "cohort/psych"
+  ],
+  "topics": [
+    "psych"
+  ],
+  "questionType": "management",
+  "difficulty": "hard",
+  "stem": "A 24-year-old phones her GP six days after starting sertraline 50 mg daily for a moderate depressive episode. She has taken every dose. She felt mildly nauseated and slightly on edge in the first few days, both now easing, and her mood is unchanged. Her mother has bipolar disorder. On direct questioning she is sleeping her usual hours and has no racing thoughts, increased energy, agitation or suicidal thoughts. She asks whether she should take more or try something else.\n\nWhat is the most appropriate advice now?",
+  "options": [
+    {
+      "label": "A",
+      "text": "Add low-dose quetiapine because of her mother’s bipolar disorder",
+      "isCorrect": false,
+      "explanation": "A bipolar family history calls for screening for past hypomania and advice about warning signs of a switch, which has been done; with no hypomanic features, adding an antipsychotic exposes her to metabolic and sedative harms without an indication."
+    },
+    {
+      "label": "B",
+      "text": "Increase to 100 mg, as there is no benefit after six days",
+      "isCorrect": false,
+      "explanation": "Antidepressant benefit usually takes two to four weeks to begin, so six days cannot show that the dose is inadequate. Increasing now adds adverse effects without evidence of non-response."
+    },
+    {
+      "label": "C",
+      "text": "Switch to another SSRI, as the early side effects suggest poor fit",
+      "isCorrect": false,
+      "explanation": "Mild nausea and jitteriness in the first week are common to SSRIs and are settling. Switching restarts the wait for benefit with no evidence that sertraline has failed."
+    },
+    {
+      "label": "D",
+      "text": "Continue 50 mg and review at six weeks to judge full response",
+      "isCorrect": false,
+      "explanation": "Continuing is right, but a six-week gap is too long for someone under 25 starting an antidepressant, whose risk of emerging suicidal thoughts and agitation is highest early, and who also has a family history of bipolar disorder."
+    },
+    {
+      "label": "E",
+      "text": "Continue 50 mg, explain the expected delay and review in a week",
+      "isCorrect": true,
+      "explanation": "Early adverse effects are settling, there are no features of activation or a manic switch, and six days is too soon to judge response. Continue, explain the time course and what to report, and review within about a week because she is under 25 and has a family history of bipolar disorder."
+    }
+  ],
+  "context": "Judge antidepressant response over weeks, not days, but review a young person early: under 25 or with a bipolar family history, check within about a week for agitation, suicidality or a switch.",
+  "publicModule": {
+    "schemaVersion": 1,
+    "origin": "mirrored",
+    "discipline": "psych",
+    "mirroredFrom": "md3:a0e1576ab2dd12e4",
+    "itemText": {
+      "licence": "CC-BY-4.0",
+      "attribution": "MD3 contributors"
+    },
+    "evidence": {
+      "kind": "reference",
+      "sourceId": "nice-guidance-ng222-chapter-recommendations-73ce61"
+    },
+    "review": {
+      "verdict": "passed",
+      "contentHash": "b2e35af0d81a3b7069bb182bac39d12cf733833b1d91a4e1b9b1ebc99ed9b5a8"
+    }
+  }
+}

@@ -1,0 +1,64 @@
+{
+  "id": "bank:cohort:psych:q-857840155710:v1",
+  "rotation": "cohort-open",
+  "moduleNodes": [
+    "cohort/psych"
+  ],
+  "topics": [
+    "psych"
+  ],
+  "questionType": "management",
+  "difficulty": "hard",
+  "stem": "A psychiatrist reviews a 34-year-old with disabling checking rituals. She has completed separate trials of fluoxetine and sertraline, each at the maximum tolerated dose for at least 12 weeks with confirmed adherence, and a full course of therapist-delivered ERP. There has been little improvement. She is taking sertraline 200 mg daily, has no major depression or tic disorder, and prefers another single medicine rather than augmentation.\n\nWhich medication strategy is most appropriate to discuss?",
+  "options": [
+    {
+      "label": "A",
+      "text": "Plan a supervised switch from sertraline to clomipramine",
+      "isCorrect": true,
+      "explanation": "Clomipramine is an evidence-based option after adequate SSRI trials have failed. Switching requires a planned regimen and adverse-effect monitoring rather than simply adding it to full-dose sertraline."
+    },
+    {
+      "label": "B",
+      "text": "Replace sertraline with mirtazapine monotherapy",
+      "isCorrect": false,
+      "explanation": "Mirtazapine does not have comparable evidence as an OCD monotherapy. The next single-drug trial should use an established anti-obsessional treatment."
+    },
+    {
+      "label": "C",
+      "text": "Add clomipramine while continuing the full sertraline dose",
+      "isCorrect": false,
+      "explanation": "Combining serotonergic medicines increases interaction and toxicity concerns and does not match her preference for monotherapy. Any specialist combination strategy needs separate justification and precautions."
+    },
+    {
+      "label": "D",
+      "text": "Replace sertraline with risperidone monotherapy",
+      "isCorrect": false,
+      "explanation": "Antipsychotics can have a specialist augmentation role, but risperidone alone is not an established replacement treatment for OCD. She also prefers another single anti-obsessional medicine."
+    },
+    {
+      "label": "E",
+      "text": "Continue sertraline for four more weeks with symptom review",
+      "isCorrect": false,
+      "explanation": "Two adequate SSRI trials and a full ERP course have produced little improvement. Further review remains important, but extending the same unsuccessful regimen is less appropriate than discussing an evidence-based next treatment."
+    }
+  ],
+  "context": "After adequate SSRI and ERP treatment has failed, clomipramine is a possible next pharmacological trial, with a supervised switch and monitoring.",
+  "publicModule": {
+    "schemaVersion": 1,
+    "origin": "mirrored",
+    "discipline": "psych",
+    "mirroredFrom": "md3:857840155710edf0",
+    "itemText": {
+      "licence": "CC-BY-4.0",
+      "attribution": "MD3 contributors"
+    },
+    "evidence": {
+      "kind": "reference",
+      "sourceId": "nice-guidance-cg31-chapter-recommendations-5ed199"
+    },
+    "review": {
+      "verdict": "passed",
+      "contentHash": "29b7a039169672d86f8c122832cd28077d7925f18c21d9c6fe2c2cccaa3743c6"
+    }
+  }
+}

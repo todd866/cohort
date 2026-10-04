@@ -1,0 +1,64 @@
+{
+  "id": "bank:cohort:psych:q-847f9016d8d0:v1",
+  "rotation": "cohort-open",
+  "moduleNodes": [
+    "cohort/psych"
+  ],
+  "topics": [
+    "psych"
+  ],
+  "questionType": "management",
+  "difficulty": "medium",
+  "stem": "A surgical registrar reviews a 38-year-old woman with a displaced tibial fracture awaiting surgery. She takes methadone maintenance, and her usual dose and the time of her last dose have been confirmed with the dispensing pharmacy. She is alert, breathing normally and able to take oral medicines. Despite splinting and regular paracetamol, she has severe pain. A nurse suggests avoiding opioids because of her history.\n\nWhich analgesic plan is most appropriate?",
+  "options": [
+    {
+      "label": "A",
+      "text": "Withhold methadone and use short-acting oxycodone instead",
+      "isCorrect": false,
+      "explanation": "Stopping methadone risks withdrawal and leaves her opioid-dependence treatment interrupted; maintenance and acute analgesia are separate needs."
+    },
+    {
+      "label": "B",
+      "text": "Keep giving methadone but avoid any further opioid",
+      "isCorrect": false,
+      "explanation": "Her maintenance dose provides little acute analgesia because of tolerance; avoiding extra opioid leaves severe pain undertreated."
+    },
+    {
+      "label": "C",
+      "text": "Give her usual dose plus titrated extra pain relief",
+      "isCorrect": true,
+      "explanation": "Continue the confirmed maintenance dose to prevent withdrawal, and add multimodal analgesia with titrated short-acting opioid if needed, with monitoring. Tolerance often means higher doses are required."
+    },
+    {
+      "label": "D",
+      "text": "Change methadone to naltrexone before giving analgesia",
+      "isCorrect": false,
+      "explanation": "Naltrexone would precipitate severe withdrawal and block opioid analgesia."
+    },
+    {
+      "label": "E",
+      "text": "Increase methadone as the only additional analgesia",
+      "isCorrect": false,
+      "explanation": "Changing the maintenance dose is not an acute pain plan and accumulates slowly; acute pain is managed with additional analgesia."
+    }
+  ],
+  "context": "Continue methadone maintenance during acute pain and add titrated multimodal analgesia; opioid tolerance usually increases, not removes, the analgesic requirement.",
+  "publicModule": {
+    "schemaVersion": 1,
+    "origin": "mirrored",
+    "discipline": "psych",
+    "mirroredFrom": "md3:847f9016d8d0d7f1",
+    "itemText": {
+      "licence": "CC-BY-4.0",
+      "attribution": "MD3 contributors"
+    },
+    "evidence": {
+      "kind": "reference",
+      "sourceId": "nsw-health-aod-publications-nsw-clinical-guidelines-opioid-132984"
+    },
+    "review": {
+      "verdict": "passed",
+      "contentHash": "8988e2c4aa9153b0c6cb0a3eea97663c1c71265a4e99bc59b17cf5aceac06ad2"
+    }
+  }
+}

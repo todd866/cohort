@@ -7,10 +7,21 @@ const __dirname = path.dirname(fileURLToPath(import.meta.url));
 export default defineConfig({
   test: {
     globals: true,
+    // 2026-10-03: files run in parallel again. With fileParallelism off, all
+    // 1,428 files ran one after another in a single worker: 494 s on a 10-core
+    // machine, and the release's `--maxWorkers=4` changed nothing. In parallel
+    // the same suite passed twice, 147 s with six workers and 185 s with four,
+    // and no worker holds every file's modules any more, which the history
+    // below names as the real fix for the V8 crashes. '50%' keeps a 2-core CI
+    // runner on one worker, as before; the release passes --maxWorkers=4.
+    // If the SIGSEGV with no summary returns, set fileParallelism back to
+    // false and read the history below before raising any heap.
+    //
     // Full-suite worker startup and teardown were intermittently timing out.
     // Keep the run deterministic in constrained environments.
     pool: 'threads',
-    fileParallelism: false,
+    fileParallelism: true,
+    maxWorkers: '50%',
     // fileParallelism:false means ONE long-lived worker executes all ~910 test
     // files, so its heap accumulates every module the suite touches — including
     // multi-megabyte generated content maps. On 2026-08-21 that worker died of

@@ -1,0 +1,64 @@
+{
+  "id": "bank:cohort:paeds:q-2fd6e742bab6:v1",
+  "rotation": "cohort-open",
+  "moduleNodes": [
+    "cohort/paeds"
+  ],
+  "topics": [
+    "paeds"
+  ],
+  "questionType": "management",
+  "difficulty": "medium",
+  "stem": "A term newborn remains apnoeic during resuscitation. The team has corrected the mask seal and airway position and then delivered 30 seconds of effective positive-pressure ventilation with visible chest movement. ECG and auscultation confirm a heart rate of 50 beats/min.\n\nWhat is the next resuscitation step?",
+  "options": [
+    {
+      "label": "A",
+      "text": "Continue ventilation alone for a further two minutes, then reassess",
+      "isCorrect": false,
+      "explanation": "Effective ventilation is essential, but a confirmed heart rate below 60 after 30 seconds of adequate ventilation is the threshold for adding chest compressions."
+    },
+    {
+      "label": "B",
+      "text": "Give intravenous adrenaline first, then start chest compressions",
+      "isCorrect": false,
+      "explanation": "Adrenaline is considered when the heart rate remains below 60 despite effective ventilation and compressions. It is not the next step before compressions have begun."
+    },
+    {
+      "label": "C",
+      "text": "Change to CPAP and observe for spontaneous breathing efforts",
+      "isCorrect": false,
+      "explanation": "CPAP supports a spontaneously breathing infant. It cannot replace assisted ventilation in an apnoeic newborn with profound bradycardia."
+    },
+    {
+      "label": "D",
+      "text": "Add chest compressions coordinated with ventilation at 3:1",
+      "isCorrect": true,
+      "explanation": "Persistent heart rate below 60 despite confirmed effective ventilation requires compressions. A 3:1 ratio coordinates 90 compressions and 30 inflations per minute in neonatal resuscitation."
+    },
+    {
+      "label": "E",
+      "text": "Start chest compressions with ventilation at a ratio of 15:2",
+      "isCorrect": false,
+      "explanation": "A 15:2 ratio is used in paediatric resuscitation contexts. The standard ratio for this newborn resuscitation at birth is 3:1."
+    }
+  ],
+  "context": "If newborn heart rate remains below 60 after 30 seconds of effective ventilation, add coordinated chest compressions at 3:1.",
+  "publicModule": {
+    "schemaVersion": 1,
+    "origin": "mirrored",
+    "discipline": "paeds",
+    "mirroredFrom": "md3:2fd6e742bab68927",
+    "itemText": {
+      "licence": "CC-BY-4.0",
+      "attribution": "MD3 contributors"
+    },
+    "evidence": {
+      "kind": "reference",
+      "sourceId": "anzcor-guideline-13-6-chest-compressions-during-resuscitation-of-the-newborn-a192cb"
+    },
+    "review": {
+      "verdict": "passed",
+      "contentHash": "2a9ef8afff66b78eb51c21306f2ae3402ad5fcc18f1533159f83cd8d0fd59474"
+    }
+  }
+}

@@ -18,7 +18,11 @@ import {
   logExposures,
 } from './unified-session-helpers';
 import { breakModalityRuns } from '@/lib/knowledge/modality-guard';
-import { readSessionCacheEpoch, upsertSessionCache } from './unified-session-cache-store';
+import {
+  readSessionCacheSnapshot,
+  upsertSessionCache,
+  type SessionCacheSnapshot,
+} from './unified-session-cache-store';
 import { logSessionDiagnostic } from './unified-session-diagnostics';
 import { loadManifoldExclusionState } from './unified-session-manifold-exclusions';
 import {
@@ -285,7 +289,7 @@ function failClosedExamTargetLifecycle(
 export async function buildManifoldSession(ctx: SessionContext): Promise<NextResponse> {
   let newRemaining: { cards: number; questions: number } | undefined;
   let poolFilters: ServablePoolFilters | undefined;
-  let cacheEpoch: number | null = null;
+  let cacheSnapshot: SessionCacheSnapshot | null = null;
   let fallbackSelectionDeterminism: UnifiedSessionSelectionDeterminism | undefined;
   const admittedAttempt = ctx.examTargetAttempt?.decisionPath === 'manifold-walk'
     ? ctx.examTargetAttempt
@@ -318,7 +322,10 @@ export async function buildManifoldSession(ctx: SessionContext): Promise<NextRes
   try {
     if (!ctx.hasFilters && !ctx.noCache && !ctx.isGuest) {
       try {
-        cacheEpoch = await readSessionCacheEpoch(ctx.userId);
+        // Before the scheduler reads anything: the epoch and the database-clock
+        // token this queue will be written with, the same pair every
+        // background build carries.
+        cacheSnapshot = await readSessionCacheSnapshot(ctx.userId);
       } catch (error) {
         // Cache coordination must never demote an otherwise healthy scheduler
         // request into the emergency fallback path. Skip this cache write.
@@ -495,6 +502,7 @@ export async function buildManifoldSession(ctx: SessionContext): Promise<NextRes
           .digest('hex')
       : undefined;
     const baseSchedulerOptions = {
+      reviewChallenge: ctx.reviewChallenge?.level,
       rotation: ctx.rotation,
       week: ctx.weekFilter ?? undefined,
       size: discretionarySchedulerSize,
@@ -925,6 +933,7 @@ export async function buildManifoldSession(ctx: SessionContext): Promise<NextRes
       quota: { required: number; selected: number } | undefined,
     ) => items.map(item => ({
       ...item,
+      reviewChallenge: ctx.reviewChallenge,
       noveltyQuotaRequired: quota?.required ?? noveltyBudget.minFirstSightItems,
       noveltyQuotaSelected: quota?.selected ?? 0,
       firstSightAtSelection: item.firstSightAtSelection ?? false,
@@ -1283,18 +1292,23 @@ export async function buildManifoldSession(ctx: SessionContext): Promise<NextRes
     // Cache the items *with* serveDecisionIds so cache-served items can attribute
     // back to the original decision row.
     const cacheItems = itemsWithDecisions;
-    if (!ctx.hasFilters && !ctx.noCache && !ctx.isGuest && cacheItems.length > 0 && cacheEpoch != null) {
-      const expectedCacheEpoch = cacheEpoch;
+    // The request and background-build snapshots must describe the same preference.
+    if (cacheSnapshot?.reviewChallenge && ctx.reviewChallenge
+      && cacheSnapshot.reviewChallenge.revision !== ctx.reviewChallenge.revision) cacheSnapshot = null;
+    if (!ctx.hasFilters && !ctx.noCache && !ctx.isGuest && cacheItems.length > 0 && cacheSnapshot != null) {
+      const snapshot = cacheSnapshot;
       after(async () => {
         try {
-          const written = await upsertSessionCache(
-            ctx.userId,
-            ctx.rotation,
-            cacheItems,
-            expectedCacheEpoch,
-          );
-          if (!written) {
+          // Refused, like any build, when a grade moved the epoch ('stale') or
+          // a queue from a newer snapshot is already stored ('superseded').
+          const write = await upsertSessionCache(ctx.userId, ctx.rotation, cacheItems, snapshot);
+          if (write === 'stale') {
             logger.info('Skipped stale manifold cache write after invalidation', {
+              userId: ctx.userId,
+              rotation: ctx.rotation,
+            });
+          } else if (write === 'superseded') {
+            logger.info('Skipped manifold cache write superseded by a newer queue', {
               userId: ctx.userId,
               rotation: ctx.rotation,
             });
@@ -1361,7 +1375,7 @@ export async function buildManifoldSession(ctx: SessionContext): Promise<NextRes
       || ctx.mode
       || ctx.reviewFilter,
     );
-    if (ctx.feedMode === 'new-only' || hasNarrowingRequestFilter) {
+    if (ctx.feedMode === 'new-only' || hasNarrowingRequestFilter || (ctx.reviewChallenge?.level ?? 0) !== 0) {
       await settleAttempt({
         outcome: 'request_failed',
         failureClass: attemptFailureClass,

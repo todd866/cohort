@@ -1,0 +1,64 @@
+{
+  "id": "bank:cohort:paeds:q-6b1f7f97240f:v1",
+  "rotation": "cohort-open",
+  "moduleNodes": [
+    "cohort/paeds"
+  ],
+  "topics": [
+    "paeds"
+  ],
+  "questionType": "management",
+  "difficulty": "medium",
+  "stem": "A 15-year-old girl sees her GP about acne. The GP plans a psychosocial screen as well. Confidentiality and its limits have been explained, and her mother has gone to the waiting room. She answers in single words and avoids eye contact. You want to cover drug use, sexual activity, mood and self-harm.\n\nHow should you sequence the interview?",
+  "options": [
+    {
+      "label": "A",
+      "text": "Ask about self-harm first, since it carries the greatest risk",
+      "isCorrect": false,
+      "explanation": "Opening with self-harm in a guarded teenager who has not raised it tends to close the conversation. Risk is reached through the sequence, and it is still asked about directly, without skipping it."
+    },
+    {
+      "label": "B",
+      "text": "Ask the most sensitive questions early, before she disengages",
+      "isCorrect": false,
+      "explanation": "Leading with drugs or sex before any rapport tends to produce guarded or false answers. A quiet teenager needs the easier domains first."
+    },
+    {
+      "label": "C",
+      "text": "Give her a written risk checklist to fill in on her own",
+      "isCorrect": false,
+      "explanation": "A written screen can help some young people, but it does not replace a conversation that builds trust; it is not how to structure this interview."
+    },
+    {
+      "label": "D",
+      "text": "Bring her mother back in to help fill in the history",
+      "isCorrect": false,
+      "explanation": "Her mother's presence makes honest answers about drugs, sex and mood less likely. Time alone, after confidentiality is explained, is part of the assessment."
+    },
+    {
+      "label": "E",
+      "text": "Start with home and school, then move to personal topics",
+      "isCorrect": true,
+      "explanation": "HEEADSSS runs from less threatening domains (home, education, eating, activities) to more personal ones (drugs, sexuality, suicide and mood, safety), building rapport before the sensitive questions."
+    }
+  ],
+  "context": "HEEADSSS runs from less threatening to highly personal domains, ideally with the young person alone after confidentiality and its limits have been explained.",
+  "publicModule": {
+    "schemaVersion": 1,
+    "origin": "mirrored",
+    "discipline": "paeds",
+    "mirroredFrom": "md3:6b1f7f97240f4ee8",
+    "itemText": {
+      "licence": "CC-BY-4.0",
+      "attribution": "MD3 contributors"
+    },
+    "evidence": {
+      "kind": "reference",
+      "sourceId": "rch-ide-guideline-index-engaging-with-and-assessing-the-adolescent-patient-76ba17"
+    },
+    "review": {
+      "verdict": "passed",
+      "contentHash": "eb77f9c9500b86e1c0046740c09f7e847a1b5b63842c29df6a6467ce333486c0"
+    }
+  }
+}

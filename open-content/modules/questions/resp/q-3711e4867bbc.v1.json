@@ -1,0 +1,64 @@
+{
+  "id": "bank:cohort:resp:q-3711e4867bbc:v1",
+  "rotation": "cohort-open",
+  "moduleNodes": [
+    "cohort/resp"
+  ],
+  "topics": [
+    "resp"
+  ],
+  "questionType": "management",
+  "difficulty": "medium",
+  "stem": "A 5-year-old has received appropriate oral antibiotics for lobar pneumonia for 48 hours but remains febrile and tachypnoeic. He now needs supplemental oxygen, has reduced breath sounds and dullness at the right base. Ultrasound shows a moderate loculated pleural collection.\n\nWhat is the most appropriate next step?",
+  "options": [
+    {
+      "label": "A",
+      "text": "Continue oral antibiotics and repeat the ultrasound tomorrow",
+      "isCorrect": false,
+      "explanation": "New oxygen dependence and a loculated collection after 48 hours of antibiotics indicate complicated infection that needs escalation now."
+    },
+    {
+      "label": "B",
+      "text": "IV antibiotics and tertiary referral for drainage",
+      "isCorrect": true,
+      "explanation": "Correct. Failure of oral antibiotics, a new oxygen requirement and a loculated collection mean a complicated parapneumonic effusion: give IV antibiotics and refer to the tertiary respiratory/surgical team for drainage."
+    },
+    {
+      "label": "C",
+      "text": "IV furosemide to reduce the collection, then repeat imaging",
+      "isCorrect": false,
+      "explanation": "An infected loculated collection is not volume overload; diuresis does not provide source control."
+    },
+    {
+      "label": "D",
+      "text": "CT chest to define the collection before any referral",
+      "isCorrect": false,
+      "explanation": "Ultrasound has already shown a loculated effusion. Routine CT adds radiation and should not delay specialist drainage assessment."
+    },
+    {
+      "label": "E",
+      "text": "Change to IV antibiotics alone and review in 72 hours",
+      "isCorrect": false,
+      "explanation": "IV antibiotics are needed, but a loculated collection with respiratory compromise also needs prompt drainage planning."
+    }
+  ],
+  "context": "Pneumonia complicated by a loculated effusion and respiratory compromise needs IV antibiotics plus urgent respiratory/surgical source-control planning, not observation alone.",
+  "publicModule": {
+    "schemaVersion": 1,
+    "origin": "mirrored",
+    "discipline": "resp",
+    "mirroredFrom": "md3:3711e4867bbc7cf5",
+    "itemText": {
+      "licence": "CC-BY-4.0",
+      "attribution": "MD3 contributors"
+    },
+    "evidence": {
+      "kind": "reference",
+      "sourceId": "rch-clinicalguide-guideline-index-pleural-effusion-and-empyema-2ccac2"
+    },
+    "review": {
+      "verdict": "passed",
+      "contentHash": "23440cec48ae4c6c7273614fc96cbefece425e1e46c0739da6e6964bcc7723da"
+    }
+  }
+}

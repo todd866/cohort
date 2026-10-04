@@ -1,0 +1,64 @@
+{
+  "id": "bank:cohort:psych:q-d08c2618614b:v1",
+  "rotation": "cohort-open",
+  "moduleNodes": [
+    "cohort/psych"
+  ],
+  "topics": [
+    "psych"
+  ],
+  "questionType": "management",
+  "difficulty": "medium",
+  "stem": "A GP and a patient with a mild depressive episode agree to try behavioural activation. He has stopped gardening and seeing friends, saying, “I’ll get back to things when my motivation returns.” His diary records most afternoons spent on the sofa. He would like to start with gardening.\n\nWhich initial task best fits this treatment?",
+  "options": [
+    {
+      "label": "A",
+      "text": "Record every negative thought and write evidence against it",
+      "isCorrect": false,
+      "explanation": "Thought monitoring and reappraisal are cognitive techniques that may help depression. The agreed intervention here starts by changing the pattern of activity and avoidance."
+    },
+    {
+      "label": "B",
+      "text": "Practise progressive muscle relaxation whenever motivation feels low",
+      "isCorrect": false,
+      "explanation": "Relaxation may reduce physiological tension, but it does not directly address withdrawal from valued activity. It is not the defining first task of behavioural activation."
+    },
+    {
+      "label": "C",
+      "text": "Spend the week exploring why gardening mattered in childhood",
+      "isCorrect": false,
+      "explanation": "Understanding personal meaning can be useful, but prolonged exploration without a practical task does not implement the agreed behavioural approach."
+    },
+    {
+      "label": "D",
+      "text": "Schedule a short spell of weeding and note his mood afterwards",
+      "isCorrect": true,
+      "explanation": "Choose a small, feasible activity and review what happened rather than waiting for motivation to arrive first. Tasks can gradually build pleasure, mastery and routine."
+    },
+    {
+      "label": "E",
+      "text": "Wait for a better day, then attempt a full afternoon outdoors",
+      "isCorrect": false,
+      "explanation": "Waiting for mood to improve maintains the inactive pattern. An all-afternoon target also makes an initial attempt harder than a brief agreed task."
+    }
+  ],
+  "context": "Behavioural activation uses planned, achievable activity to interrupt withdrawal and inactivity.",
+  "publicModule": {
+    "schemaVersion": 1,
+    "origin": "mirrored",
+    "discipline": "psych",
+    "mirroredFrom": "md3:d08c2618614b162e",
+    "itemText": {
+      "licence": "CC-BY-4.0",
+      "attribution": "MD3 contributors"
+    },
+    "evidence": {
+      "kind": "reference",
+      "sourceId": "nice-guidance-ng222-chapter-recommendations-73ce61"
+    },
+    "review": {
+      "verdict": "passed",
+      "contentHash": "5dd08be78250887de5c3359cd5c6210f1cfb3a7d2273326c92098f65943b28cc"
+    }
+  }
+}

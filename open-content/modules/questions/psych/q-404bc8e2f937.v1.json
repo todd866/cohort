@@ -1,0 +1,64 @@
+{
+  "id": "bank:cohort:psych:q-404bc8e2f937:v1",
+  "rotation": "cohort-open",
+  "moduleNodes": [
+    "cohort/psych"
+  ],
+  "topics": [
+    "psych"
+  ],
+  "questionType": "management",
+  "difficulty": "hard",
+  "stem": "An ED doctor reviews a 67-year-old taking long-term lithium who has become forgetful and unsteady over three days. Examination confirms dysarthria and gait ataxia. A lithium concentration obtained seven hours after the last dose is 1.1 mmol/L; the laboratory prints a reference interval of 0.6–1.2 mmol/L. Renal and electrolyte results are pending.\n\nWhich interpretation should guide immediate management?",
+  "options": [
+    {
+      "label": "A",
+      "text": "The seven-hour sample is reassuring because a twelve-hour concentration should be lower",
+      "isCorrect": false,
+      "explanation": "A later concentration may be lower, but routine sampling logic cannot make neurological findings safe to dismiss. The timing should be recorded and interpreted alongside the clinical presentation."
+    },
+    {
+      "label": "B",
+      "text": "The printed reference interval supports continued dosing while other causes are investigated",
+      "isCorrect": false,
+      "explanation": "A concentration within the printed interval does not exclude lithium neurotoxicity. Investigate other causes as well, while withholding lithium and assessing the possible adverse drug effect."
+    },
+    {
+      "label": "C",
+      "text": "The concentration indicates mild toxicity suitable for a small outpatient dose reduction",
+      "isCorrect": false,
+      "explanation": "A single concentration does not reliably grade the clinical severity or establish that outpatient dose adjustment is safe. Dysarthria and ataxia require urgent assessment rather than a small dose reduction."
+    },
+    {
+      "label": "D",
+      "text": "The sample must be repeated at twelve hours before deciding whether to withhold lithium",
+      "isCorrect": false,
+      "explanation": "A repeat concentration may help subsequent assessment, but waiting for routine timing must not delay withholding lithium or obtaining specialist advice. Suspected toxicity is a clinical problem, not simply a sampling error."
+    },
+    {
+      "label": "E",
+      "text": "Possible neurotoxicity remains; withhold lithium and seek urgent specialist assessment",
+      "isCorrect": true,
+      "explanation": "Lithium neurotoxicity can occur despite an apparently therapeutic concentration; seven-hour sampling cannot be compared directly with routine trough targets. Withhold further doses, assess renal function and electrolytes, and obtain urgent specialist advice while considering other neurological causes."
+    }
+  ],
+  "context": "Interpret lithium concentrations with symptoms and sampling time; a reassuring-looking result cannot exclude neurotoxicity.",
+  "publicModule": {
+    "schemaVersion": 1,
+    "origin": "mirrored",
+    "discipline": "psych",
+    "mirroredFrom": "md3:404bc8e2f93758b8",
+    "itemText": {
+      "licence": "CC-BY-4.0",
+      "attribution": "MD3 contributors"
+    },
+    "evidence": {
+      "kind": "reference",
+      "sourceId": "nice-guidance-cg185-chapter-recommendations-077a81"
+    },
+    "review": {
+      "verdict": "passed",
+      "contentHash": "5b818b6adc37a8f45d65669fe6b54db60d8f8129f739a3bf1e958f2a6cd95594"
+    }
+  }
+}

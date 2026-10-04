@@ -1,0 +1,64 @@
+{
+  "id": "bank:cohort:anaes:q-616dd1516485:v1",
+  "rotation": "cohort-open",
+  "moduleNodes": [
+    "cohort/anaes"
+  ],
+  "topics": [
+    "anaes"
+  ],
+  "questionType": "management",
+  "difficulty": "medium",
+  "stem": "A ward medical officer responds to respiratory depression in a patient with a documented total laryngectomy. The patient has a pulse but is breathing only four times per minute; oxygen and bag-mask ventilation over the mouth and nose produce no chest rise. Expert airway help has been called, and the neck stoma is uncovered and patent, with no tube or obstructing material visible.\n\nHow should the officer provide ventilation now?",
+  "options": [
+    {
+      "label": "A",
+      "text": "Insert an oral airway and repeat ventilation over the face",
+      "isCorrect": false,
+      "explanation": "An oral airway can relieve pharyngeal obstruction, but the upper airway no longer connects to the lungs after total laryngectomy."
+    },
+    {
+      "label": "B",
+      "text": "Occlude the neck opening and use two-person face ventilation",
+      "isCorrect": false,
+      "explanation": "Occluding the stoma closes this patient’s only airway. A better facial seal cannot reconnect the surgically separated upper and lower airways."
+    },
+    {
+      "label": "C",
+      "text": "Insert a supraglottic airway through the mouth",
+      "isCorrect": false,
+      "explanation": "An orally inserted supraglottic device cannot reach the lungs through an absent laryngeal connection. The patent stoma is the required access route."
+    },
+    {
+      "label": "D",
+      "text": "Continue facial oxygen while waiting for the airway specialist",
+      "isCorrect": false,
+      "explanation": "Facial oxygen does not reach the lungs after total laryngectomy. Effective ventilation is needed immediately rather than waiting for specialist arrival."
+    },
+    {
+      "label": "E",
+      "text": "Seal a small mask over the stoma and ventilate with oxygen",
+      "isCorrect": true,
+      "explanation": "After total laryngectomy the trachea ends at the neck stoma. A small mask with a suitable seal allows bag ventilation through this patent airway."
+    }
+  ],
+  "context": "After total laryngectomy, oxygen and ventilation must reach the lungs through the neck stoma.",
+  "publicModule": {
+    "schemaVersion": 1,
+    "origin": "mirrored",
+    "discipline": "anaes",
+    "mirroredFrom": "md3:616dd1516485dc49",
+    "itemText": {
+      "licence": "CC-BY-4.0",
+      "attribution": "MD3 contributors"
+    },
+    "evidence": {
+      "kind": "reference",
+      "sourceId": "anzcor-home-basic-life-support-guideline-5-breathing-ff7c48"
+    },
+    "review": {
+      "verdict": "passed",
+      "contentHash": "2c1d3689f3f6a9501707ea043acaddeba3502baaafeb56e7227473e82c468a1e"
+    }
+  }
+}

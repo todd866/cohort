@@ -1,0 +1,64 @@
+{
+  "id": "bank:cohort:obs:q-889b1259aed9:v1",
+  "rotation": "cohort-open",
+  "moduleNodes": [
+    "cohort/obs"
+  ],
+  "topics": [
+    "obs"
+  ],
+  "questionType": "diagnosis",
+  "difficulty": "hard",
+  "stem": "A patient reports two days of early-pregnancy bleeding that has now settled. She has never had a scan confirming an intrauterine pregnancy. She is pain-free and haemodynamically stable. Transvaginal ultrasound shows neither an intrauterine nor an adnexal pregnancy and no free fluid. Serum hCG was 650 IU/L at presentation and is 720 IU/L 48 hours later.\n\nHow should the clinician classify and manage this pregnancy at present?",
+  "options": [
+    {
+      "label": "A",
+      "text": "Complete miscarriage, as bleeding has settled and the uterus is empty",
+      "isCorrect": false,
+      "explanation": "Complete miscarriage can be diagnosed only when an intrauterine pregnancy was previously seen. Without that, an empty uterus after bleeding may still hide an ectopic pregnancy."
+    },
+    {
+      "label": "B",
+      "text": "Tubal ectopic pregnancy, so methotrexate can be started today",
+      "isCorrect": false,
+      "explanation": "An 11% rise over 48 hours is suboptimal and raises concern for ectopic pregnancy, but no adnexal mass has been seen and the pattern also fits a failing intrauterine pregnancy. Giving methotrexate for an unconfirmed diagnosis risks harming a pregnancy that is not ectopic."
+    },
+    {
+      "label": "C",
+      "text": "Probable viable intrauterine pregnancy, so rescan in two weeks",
+      "isCorrect": false,
+      "explanation": "A viable intrauterine pregnancy usually shows a substantial rise in hCG over 48 hours; a near-plateau makes viability unlikely and a two-week wait unsafe."
+    },
+    {
+      "label": "D",
+      "text": "Failed pregnancy, so she can be discharged without hCG follow-up",
+      "isCorrect": false,
+      "explanation": "A failing pregnancy may be the cause, but hCG has not fallen and ectopic pregnancy has not been excluded, so stopping follow-up is unsafe."
+    },
+    {
+      "label": "E",
+      "text": "Pregnancy of unknown location, with review and repeat hCG and scan",
+      "isCorrect": true,
+      "explanation": "With no pregnancy seen on ultrasound, this remains a pregnancy of unknown location. The plateauing hCG makes a failing or ectopic pregnancy likely, so she needs senior review within 24 hours, repeat hCG and ultrasound, and clear advice to return with pain or bleeding."
+    }
+  ],
+  "context": "An empty uterus without a previously confirmed intrauterine pregnancy is a pregnancy of unknown location; a plateauing hCG raises concern but does not diagnose ectopic pregnancy, so follow until resolved.",
+  "publicModule": {
+    "schemaVersion": 1,
+    "origin": "mirrored",
+    "discipline": "obs",
+    "mirroredFrom": "md3:889b1259aed9b545",
+    "itemText": {
+      "licence": "CC-BY-4.0",
+      "attribution": "MD3 contributors"
+    },
+    "evidence": {
+      "kind": "reference",
+      "sourceId": "nice-gnosis-of-viable-intrauterine-pregnancy-and-of-tubal-ectopic-pregnancy-fd0f1c"
+    },
+    "review": {
+      "verdict": "passed",
+      "contentHash": "5ac7308aea5426bfe010573bfce7bc1061b503c4375da72d510a22d9539fdb4f"
+    }
+  }
+}

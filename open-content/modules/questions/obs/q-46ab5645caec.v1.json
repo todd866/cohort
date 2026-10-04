@@ -1,0 +1,64 @@
+{
+  "id": "bank:cohort:obs:q-46ab5645caec:v1",
+  "rotation": "cohort-open",
+  "moduleNodes": [
+    "cohort/obs"
+  ],
+  "topics": [
+    "obs"
+  ],
+  "questionType": "diagnosis",
+  "difficulty": "medium",
+  "stem": "On day four after her first baby’s birth, a woman tells the midwife she has cried several times a day for two days, feels irritable and worries she is not coping. She had an episode of depression treated with an SSRI five years ago and has been well since. Between episodes she enjoys her baby, is feeding well and sleeps when her partner settles the baby. She has no hopelessness, thoughts of harm, confusion, unusual beliefs or reduced need for sleep.\n\nWhich assessment and plan fit best?",
+  "options": [
+    {
+      "label": "A",
+      "text": "Postnatal depression given her history; start sertraline now",
+      "isCorrect": false,
+      "explanation": "Two days of lability on day four, with enjoyment, sleep and functioning preserved, is too brief for depression. Her history raises her risk, which calls for planned follow-up rather than treatment now."
+    },
+    {
+      "label": "B",
+      "text": "Early postpartum psychosis; arrange urgent psychiatric review",
+      "isCorrect": false,
+      "explanation": "Psychosis brings confusion, disorganisation, delusions or hallucinations, often with a reduced need for sleep; she has none of these."
+    },
+    {
+      "label": "C",
+      "text": "Baby blues; offer support and review her mood within two weeks",
+      "isCorrect": true,
+      "explanation": "Tearfulness, irritability and lability in the first week, with enjoyment and functioning preserved, is the blues. Her past depression makes a planned mood review important, in case symptoms persist beyond about two weeks."
+    },
+    {
+      "label": "D",
+      "text": "Adjustment to a first baby; no further mood follow-up is needed",
+      "isCorrect": false,
+      "explanation": "The symptoms are expected and likely to pass, but her previous depression raises the risk of postnatal depression, so follow-up is still needed."
+    },
+    {
+      "label": "E",
+      "text": "Postpartum thyroiditis; check thyroid function before deciding",
+      "isCorrect": false,
+      "explanation": "Postpartum thyroiditis usually appears one to four months after birth, and nothing here suggests thyroid disease."
+    }
+  ],
+  "context": "Brief tearfulness and lability in the first postpartum week with preserved functioning is the blues; past depression changes the follow-up, not the diagnosis.",
+  "publicModule": {
+    "schemaVersion": 1,
+    "origin": "mirrored",
+    "discipline": "obs",
+    "mirroredFrom": "md3:46ab5645caec3987",
+    "itemText": {
+      "licence": "CC-BY-4.0",
+      "attribution": "MD3 contributors"
+    },
+    "evidence": {
+      "kind": "reference",
+      "sourceId": "qld-health-data-assets-pdf-file-0016-1321225-g-peri-mental-health-37ad6c"
+    },
+    "review": {
+      "verdict": "passed",
+      "contentHash": "118cffb7a8319619e980d0937b80803caa2a808ce86816e9e258a4dcb568070b"
+    }
+  }
+}

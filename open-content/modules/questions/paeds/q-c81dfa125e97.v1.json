@@ -1,0 +1,64 @@
+{
+  "id": "bank:cohort:paeds:q-c81dfa125e97:v1",
+  "rotation": "cohort-open",
+  "moduleNodes": [
+    "cohort/paeds"
+  ],
+  "topics": [
+    "paeds"
+  ],
+  "questionType": "management",
+  "difficulty": "medium",
+  "stem": "A baby is born at 39 weeks after a straightforward labour, cries at once, has good tone and is placed skin-to-skin on his mother's chest. She has chosen active management of the third stage, and the midwife, holding the oxytocin injection, suggests clamping the cord at 30 seconds so that the injection and the placenta are not delayed.\n\nWhat should happen with the cord?",
+  "options": [
+    {
+      "label": "A",
+      "text": "Clamp at 30 seconds, since he is crying and already has good tone",
+      "isCorrect": false,
+      "explanation": "Crying and good tone make him eligible for deferred clamping; they do not shorten the minimum interval."
+    },
+    {
+      "label": "B",
+      "text": "Clamp now, because oxytocin given before clamping over-transfuses him",
+      "isCorrect": false,
+      "explanation": "Oxytocin given before clamping is compatible with deferred clamping and is not a reason to clamp immediately."
+    },
+    {
+      "label": "C",
+      "text": "Clamp as soon as the oxytocin injection has been given to his mother",
+      "isCorrect": false,
+      "explanation": "The timing of the oxytocin does not decide when the cord is clamped."
+    },
+    {
+      "label": "D",
+      "text": "Clamp at 30 seconds, then milk the cut segment of cord towards him",
+      "isCorrect": false,
+      "explanation": "Cord milking is not an established alternative for term babies; deferring clamping achieves the placental transfusion."
+    },
+    {
+      "label": "E",
+      "text": "Defer clamping for at least 60 seconds; the oxytocin need not wait",
+      "isCorrect": true,
+      "explanation": "A vigorous baby at term has cord clamping deferred for at least 60 seconds, and the third-stage oxytocin can be given at birth while the cord is still intact."
+    }
+  ],
+  "context": "For a vigorous term baby, defer cord clamping for at least 60 seconds; the third-stage oxytocin does not require earlier clamping.",
+  "publicModule": {
+    "schemaVersion": 1,
+    "origin": "mirrored",
+    "discipline": "paeds",
+    "mirroredFrom": "md3:c81dfa125e971b1a",
+    "itemText": {
+      "licence": "CC-BY-4.0",
+      "attribution": "MD3 contributors"
+    },
+    "evidence": {
+      "kind": "reference",
+      "sourceId": "anzcor-uscitation-guideline-13-1-introduction-to-resuscitation-of-the-newborn-9feb1f"
+    },
+    "review": {
+      "verdict": "passed",
+      "contentHash": "24cb47dd438412183c048d26e51e405ec1f9fed3de990ba79a6bd9702160c810"
+    }
+  }
+}

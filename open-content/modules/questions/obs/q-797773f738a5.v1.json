@@ -1,0 +1,64 @@
+{
+  "id": "bank:cohort:obs:q-797773f738a5:v1",
+  "rotation": "cohort-open",
+  "moduleNodes": [
+    "cohort/obs"
+  ],
+  "topics": [
+    "obs"
+  ],
+  "questionType": "management",
+  "difficulty": "hard",
+  "stem": "Five minutes after an epidural top-up, a labouring patient becomes nauseated and her blood pressure falls from 118/72 to 78/42 mmHg, with a fetal heart-rate deceleration. She is awake, breathing comfortably, has normal arm strength and has no bleeding. There are three contractions in ten minutes. The epidural infusion has been stopped, an urgent anaesthetic review requested and IV access checked.\n\nWhat should the midwife do immediately while the anaesthetist attends?",
+  "options": [
+    {
+      "label": "A",
+      "text": "Give face-mask oxygen and await the anaesthetist’s review of the trace",
+      "isCorrect": false,
+      "explanation": "Routine maternal oxygen does not correct the cause; the deceleration reflects reduced uterine perfusion from hypotension."
+    },
+    {
+      "label": "B",
+      "text": "Turn her fully to the left lateral and give a rapid crystalloid bolus",
+      "isCorrect": true,
+      "explanation": "The deceleration is caused by maternal hypotension from sympathetic block; left lateral positioning relieves aortocaval compression and a crystalloid bolus restores preload while the anaesthetist brings a vasopressor."
+    },
+    {
+      "label": "C",
+      "text": "Give subcutaneous terbutaline to relieve the fetal heart deceleration",
+      "isCorrect": false,
+      "explanation": "Contractions are normal in frequency; tocolysis does not treat hypotension-driven reduced placental perfusion."
+    },
+    {
+      "label": "D",
+      "text": "Prepare for category 1 caesarean because of the fetal deceleration",
+      "isCorrect": false,
+      "explanation": "The deceleration has a reversible maternal cause; correct the hypotension first and reassess the fetal heart."
+    },
+    {
+      "label": "E",
+      "text": "Sit her upright to limit further upward spread of the local anaesthetic",
+      "isCorrect": false,
+      "explanation": "Sitting upright worsens venous return and hypotension; the priority is restoring blood pressure."
+    }
+  ],
+  "context": "After epidural-related hypotension, reposition left lateral, support circulation and obtain urgent anaesthetic review.",
+  "publicModule": {
+    "schemaVersion": 1,
+    "origin": "mirrored",
+    "discipline": "obs",
+    "mirroredFrom": "md3:797773f738a5a842",
+    "itemText": {
+      "licence": "CC-BY-4.0",
+      "attribution": "MD3 contributors"
+    },
+    "evidence": {
+      "kind": "reference",
+      "sourceId": "nice-guidance-ng229-chapter-recommendations-c59f0c"
+    },
+    "review": {
+      "verdict": "passed",
+      "contentHash": "601ee99eeb5bdcf46e1b480a646cb533a847ae43140a1274806db427e54ab9b1"
+    }
+  }
+}

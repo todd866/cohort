@@ -1,0 +1,64 @@
+{
+  "id": "bank:cohort:psych:q-641029d60b67:v1",
+  "rotation": "cohort-open",
+  "moduleNodes": [
+    "cohort/psych"
+  ],
+  "topics": [
+    "psych"
+  ],
+  "questionType": "management",
+  "difficulty": "hard",
+  "stem": "A 33-year-old man is stable after treatment for schizophrenia. He still hears an occasional quiet voice, which he manages well, and wants paid work in a café now. His case manager suggests six months of a prevocational training course and then volunteer work, to 'test his tolerance' before he applies for paid jobs. He is worried about approaching employers and about managing symptoms at work. His community team can offer several rehabilitation services.\n\nWhich option best supports his goal?",
+  "options": [
+    {
+      "label": "A",
+      "text": "Six months of prevocational training before job seeking",
+      "isCorrect": false,
+      "explanation": "Prolonged prevocational training delays work and has poorer employment outcomes than placing people in jobs with support."
+    },
+    {
+      "label": "B",
+      "text": "Volunteer work first, to test how he copes before paid work",
+      "isCorrect": false,
+      "explanation": "Volunteering is not what he wants and is not a necessary step to paid work. Readiness testing before job search is the approach supported employment replaced."
+    },
+    {
+      "label": "C",
+      "text": "Supported employment, starting the job search now",
+      "isCorrect": true,
+      "explanation": "Individual placement and support finds a competitive job matching his preferences quickly, then supports him in it, and is integrated with his mental health care. It is the best-evidenced route to paid work in psychosis, and residual symptoms do not exclude it."
+    },
+    {
+      "label": "D",
+      "text": "Defer work until his residual voice has fully resolved",
+      "isCorrect": false,
+      "explanation": "Waiting for complete symptom resolution is not required. Residual symptoms that he manages well are compatible with work and support."
+    },
+    {
+      "label": "E",
+      "text": "A general job-search workshop, then applying on his own",
+      "isCorrect": false,
+      "explanation": "A general workshop without continuing support does not address his worry about approaching employers or managing symptoms at work."
+    }
+  ],
+  "context": "Supported employment (individual placement and support) places people with psychosis in competitive jobs quickly, with continuing support. It outperforms 'train then place' approaches, and residual symptoms do not exclude it.",
+  "publicModule": {
+    "schemaVersion": 1,
+    "origin": "mirrored",
+    "discipline": "psych",
+    "mirroredFrom": "md3:641029d60b674303",
+    "itemText": {
+      "licence": "CC-BY-4.0",
+      "attribution": "MD3 contributors"
+    },
+    "evidence": {
+      "kind": "reference",
+      "sourceId": "nice-guidance-cg178-chapter-recommendations-ab0e8b"
+    },
+    "review": {
+      "verdict": "passed",
+      "contentHash": "df10d178751fafbfbd11ba2f2061b14d959b768b4b10f331dec556a30e85a6b3"
+    }
+  }
+}

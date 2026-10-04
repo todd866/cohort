@@ -1,5 +1,4 @@
 import { claimPracticeReviewFocus } from '@/lib/study/practice-review-focus.server';
-import { claimPracticeExamFollowUps } from '@/lib/practice-exam/follow-up.server';
 import 'server-only';
 
 import type {
@@ -96,6 +95,10 @@ export const GUEST_CLAIM_TRANSACTION = {
   maxWait: GUEST_CLAIM_MAX_WAIT_MS,
   timeout: GUEST_CLAIM_TIMEOUT_MS,
 } as const;
+
+// Every practice paper rides in on this module, and auth.ts imports this file
+// on nearly every route's cold start, so it loads only when a claim runs.
+const practiceFollowUps = () => import('@/lib/practice-exam/follow-up.server');
 
 function safeIntAdd(left: number, right: number): number {
   return Math.min(MAX_POSTGRES_INT, Math.max(0, left) + Math.max(0, right));
@@ -1200,6 +1203,7 @@ export async function claimGuestProgressRecords(
   }
 
   await claimPracticeReviewFocus(tx, authenticatedUserId, guest.feedProfile);
+  const { claimPracticeExamFollowUps } = await practiceFollowUps();
   await claimPracticeExamFollowUps(tx, authenticatedUserId, guest.feedProfile);
 
   const movedCount = Object.values(counts).reduce(
@@ -1305,6 +1309,9 @@ export async function claimGuestProgressAfterSignIn(
 
   let result: GuestProgressClaimResult | null = null;
   try {
+    // Before the serializable transaction opens, so a cold load is not spent
+    // from its 4 s budget.
+    await practiceFollowUps();
     for (
       let attempt = 1;
       attempt <= GUEST_CLAIM_MAX_ATTEMPTS;

@@ -1,0 +1,64 @@
+{
+  "id": "bank:cohort:gynae:q-ff36c606592f:v1",
+  "rotation": "cohort-open",
+  "moduleNodes": [
+    "cohort/gynae"
+  ],
+  "topics": [
+    "gynae"
+  ],
+  "questionType": "investigation",
+  "difficulty": "medium",
+  "stem": "A 30-year-old woman and her partner have been trying to conceive for 18 months. She has regular 28-day cycles, no pelvic pain and no history of PID, ectopic pregnancy or pelvic surgery. Her partner’s semen analysis and her routine pelvic ultrasound are normal. The fertility clinician now needs to assess whether her fallopian tubes are patent.\n\nWhich investigation is most appropriate from this list?",
+  "options": [
+    {
+      "label": "A",
+      "text": "Laparoscopy and dye test, the reference standard for tubal patency",
+      "isCorrect": false,
+      "explanation": "Laparoscopy and dye is the reference standard, but it needs a general anaesthetic. It is reserved for women with pelvic symptoms, a history suggesting tubal or pelvic disease, or an abnormal first-line test."
+    },
+    {
+      "label": "B",
+      "text": "Hysteroscopy, inspecting the tubal openings within the uterine cavity",
+      "isCorrect": false,
+      "explanation": "Hysteroscopy shows the uterine cavity and the tubal openings, but it cannot show whether the tubes are patent along their length."
+    },
+    {
+      "label": "C",
+      "text": "Transvaginal ultrasound with Doppler assessment of both adnexa",
+      "isCorrect": false,
+      "explanation": "Routine ultrasound has already been normal, and Doppler of the adnexa does not test tubal patency."
+    },
+    {
+      "label": "D",
+      "text": "Serum anti-Müllerian hormone, to judge her reproductive potential",
+      "isCorrect": false,
+      "explanation": "Anti-Müllerian hormone estimates ovarian reserve. It does not assess the tubes."
+    },
+    {
+      "label": "E",
+      "text": "Hysterosalpingography, an outpatient X-ray test of tubal patency",
+      "isCorrect": true,
+      "explanation": "For a woman with no history or symptoms suggesting tubal disease, hysterosalpingography is an appropriate first-line test of tubal patency that avoids surgery."
+    }
+  ],
+  "context": "In a woman at low risk of tubal disease, test tubal patency first with a less invasive test such as hysterosalpingography; reserve laparoscopy and dye for those at higher risk or with an abnormal result.",
+  "publicModule": {
+    "schemaVersion": 1,
+    "origin": "mirrored",
+    "discipline": "gynae",
+    "mirroredFrom": "md3:ff36c606592fcf66",
+    "itemText": {
+      "licence": "CC-BY-4.0",
+      "attribution": "MD3 contributors"
+    },
+    "evidence": {
+      "kind": "reference",
+      "sourceId": "who-erver-api-core-bitstreams-0b4b00be-9412-4d73-a3a9-1fb00874fdb6-content-205a12"
+    },
+    "review": {
+      "verdict": "passed",
+      "contentHash": "7e741c1aeb97aef70d425baecbdf1f397bcacca368d4db436cf31677e2824d1c"
+    }
+  }
+}

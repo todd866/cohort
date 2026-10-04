@@ -1,0 +1,64 @@
+{
+  "id": "bank:cohort:pharm:q-fd5582fb9fe7:v1",
+  "rotation": "cohort-open",
+  "moduleNodes": [
+    "cohort/pharm"
+  ],
+  "topics": [
+    "pharm"
+  ],
+  "questionType": "management",
+  "difficulty": "hard",
+  "stem": "An emergency registrar assesses a 58-kg adult who has taken immediate-release paracetamol 1.5 g every four hours while awake, about 7.5 g/day, for three days of dental pain. The last dose was six hours ago; there is nausea but no shock or known liver disease. Paracetamol is 16 mg/L and ALT is 180 U/L (reference <40); the Poisons Information Centre is being contacted.\n\nWhich treatment decision is most appropriate?",
+  "options": [
+    {
+      "label": "A",
+      "text": "Plot the level at six hours and withhold treatment if below the line",
+      "isCorrect": false,
+      "explanation": "The nomogram is not valid for repeated supratherapeutic ingestion over several days. Timing from the last dose would conceal the earlier exposure and liver injury."
+    },
+    {
+      "label": "B",
+      "text": "Withhold acetylcysteine because the concentration is below 20 mg/L",
+      "isCorrect": false,
+      "explanation": "An abnormal ALT following this repeated exposure is a treatment indication even when the concentration is below that threshold."
+    },
+    {
+      "label": "C",
+      "text": "Repeat the paracetamol level in four hours before deciding",
+      "isCorrect": false,
+      "explanation": "A repeat level adds nothing here: after repeated supratherapeutic ingestion an ALT above 50 U/L already indicates acetylcysteine, so waiting only delays treatment."
+    },
+    {
+      "label": "D",
+      "text": "Give activated charcoal and repeat ALT the next day",
+      "isCorrect": false,
+      "explanation": "Charcoal does not treat established liver injury from repeated doses over several days and is not an alternative to indicated acetylcysteine."
+    },
+    {
+      "label": "E",
+      "text": "Start acetylcysteine using the repeated-ingestion pathway",
+      "isCorrect": true,
+      "explanation": "Repeated dosing plus elevated ALT warrants acetylcysteine and toxicology-guided monitoring. This decision does not depend on plotting the final dose on an acute-ingestion nomogram."
+    }
+  ],
+  "context": "Repeated supratherapeutic paracetamol ingestion is assessed using the exposure pattern and laboratory evidence of injury, not the acute-ingestion nomogram.",
+  "publicModule": {
+    "schemaVersion": 1,
+    "origin": "mirrored",
+    "discipline": "pharm",
+    "mirroredFrom": "md3:fd5582fb9fe71539",
+    "itemText": {
+      "licence": "CC-BY-4.0",
+      "attribution": "MD3 contributors"
+    },
+    "evidence": {
+      "kind": "reference",
+      "sourceId": "rch-clinicalguide-guideline-index-paracetamol-poisoning-ae676a"
+    },
+    "review": {
+      "verdict": "passed",
+      "contentHash": "155030e64a64d413b0e5a41899fcc1139ad911d1fd337b2a5547b4e7d063d74e"
+    }
+  }
+}

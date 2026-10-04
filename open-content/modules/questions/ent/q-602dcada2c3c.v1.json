@@ -1,0 +1,64 @@
+{
+  "id": "bank:cohort:ent:q-602dcada2c3c:v1",
+  "rotation": "cohort-open",
+  "moduleNodes": [
+    "cohort/ent"
+  ],
+  "topics": [
+    "ent"
+  ],
+  "questionType": "management",
+  "difficulty": "medium",
+  "stem": "A 4-year-old boy has fever and worsening left ear pain despite 2 days of oral amoxicillin for acute otitis media. The skin behind the ear is red, swollen and tender, and the auricle is pushed forwards. He is alert, with no meningism or focal neurological signs.\n\nWhat should the emergency clinician do next?",
+  "options": [
+    {
+      "label": "A",
+      "text": "Urgent CT of the temporal bones before any IV antibiotics",
+      "isCorrect": false,
+      "explanation": "Imaging should not delay IV antibiotics. CT is guided by ENT and is for suspected intracranial or other complications, or failure to improve."
+    },
+    {
+      "label": "B",
+      "text": "Switch to oral amoxicillin–clavulanate and review in 24 hours",
+      "isCorrect": false,
+      "explanation": "Mastoiditis is a complication that needs parenteral treatment and ENT input; changing the oral agent is inadequate."
+    },
+    {
+      "label": "C",
+      "text": "Admit for IV antibiotics and urgent ENT assessment today",
+      "isCorrect": true,
+      "explanation": "Correct. Post-auricular redness, swelling and tenderness with a protruding auricle despite oral antibiotics is acute mastoiditis: admit for IV antibiotics and urgent ENT review, as drainage may be needed."
+    },
+    {
+      "label": "D",
+      "text": "Add ciprofloxacin ear drops and continue oral amoxicillin",
+      "isCorrect": false,
+      "explanation": "Topical drops do not reach the mastoid air cells and cannot treat mastoiditis."
+    },
+    {
+      "label": "E",
+      "text": "Outpatient ENT review once the acute infection has settled",
+      "isCorrect": false,
+      "explanation": "Deferring ENT review risks subperiosteal abscess and intracranial spread."
+    }
+  ],
+  "context": "Post-auricular erythema, oedema or tenderness with a protruding auricle suggests acute mastoiditis. Give prompt IV antibiotics and seek urgent ENT input because surgery may be needed.",
+  "publicModule": {
+    "schemaVersion": 1,
+    "origin": "mirrored",
+    "discipline": "ent",
+    "mirroredFrom": "md3:602dcada2c3cb134",
+    "itemText": {
+      "licence": "CC-BY-4.0",
+      "attribution": "MD3 contributors"
+    },
+    "evidence": {
+      "kind": "reference",
+      "sourceId": "rch-clinicalguide-guideline-index-acute-otitis-media-72ebc3"
+    },
+    "review": {
+      "verdict": "passed",
+      "contentHash": "4c368088eeb0626fbe66a042cff291012d4b4f2971ddc088d57bae0e998a527c"
+    }
+  }
+}

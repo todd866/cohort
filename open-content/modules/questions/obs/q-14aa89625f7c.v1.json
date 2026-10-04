@@ -1,0 +1,64 @@
+{
+  "id": "bank:cohort:obs:q-14aa89625f7c:v1",
+  "rotation": "cohort-open",
+  "moduleNodes": [
+    "cohort/obs"
+  ],
+  "topics": [
+    "obs"
+  ],
+  "questionType": "knowledge",
+  "difficulty": "medium",
+  "stem": "A clinically stable patient is being followed by an early pregnancy service after ultrasound showed neither an intrauterine nor an ectopic pregnancy. Serum hCG rises from 600 to 1,200 IU/L over 48 hours (non-pregnant reference <5 IU/L). She remains pain-free and asks whether the result proves that the pregnancy is in the uterus.\n\nWhich interpretation is most accurate?",
+  "options": [
+    {
+      "label": "A",
+      "text": "A normal rise makes an ectopic unlikely enough to discharge her",
+      "isCorrect": false,
+      "explanation": "Some ectopic pregnancies show a rise like this, so a normal-looking rise does not allow discharge from follow-up."
+    },
+    {
+      "label": "B",
+      "text": "Above 1,000 IU/L, an empty uterus on scan now means an ectopic",
+      "isCorrect": false,
+      "explanation": "No single hCG level, including 1,000 IU/L, makes an empty uterus diagnostic of ectopic pregnancy; a viable intrauterine pregnancy may still be too early to see."
+    },
+    {
+      "label": "C",
+      "text": "hCG cannot show location; she needs further ultrasound follow-up",
+      "isCorrect": true,
+      "explanation": "A pregnancy of unknown location stays unknown until ultrasound shows where it is. The rise suggests ongoing trophoblast but cannot place it, so she continues follow-up with a repeat scan."
+    },
+    {
+      "label": "D",
+      "text": "The rise shows an intrauterine pregnancy that is too small to see",
+      "isCorrect": false,
+      "explanation": "A rise is consistent with an early intrauterine pregnancy, but ectopic pregnancies can rise similarly, so it does not establish location."
+    },
+    {
+      "label": "E",
+      "text": "The rise excludes a failing pregnancy, leaving only location unknown",
+      "isCorrect": false,
+      "explanation": "A rising level does not rule out a pregnancy that will fail, and it does not settle location."
+    }
+  ],
+  "context": "A rising hCG cannot show where a pregnancy is; location of a pregnancy of unknown location is established by ultrasound.",
+  "publicModule": {
+    "schemaVersion": 1,
+    "origin": "mirrored",
+    "discipline": "obs",
+    "mirroredFrom": "md3:14aa89625f7cd0f2",
+    "itemText": {
+      "licence": "CC-BY-4.0",
+      "attribution": "MD3 contributors"
+    },
+    "evidence": {
+      "kind": "reference",
+      "sourceId": "qld-health-data-assets-pdf-file-0033-139947-g-epl-e053ea"
+    },
+    "review": {
+      "verdict": "passed",
+      "contentHash": "7a47ea3372c5a5510cb2521134eccef6892b71d1ad383a8c99acc19c950d8922"
+    }
+  }
+}

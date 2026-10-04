@@ -1,0 +1,64 @@
+{
+  "id": "bank:cohort:icu:q-b0f5e483efda:v1",
+  "rotation": "cohort-open",
+  "moduleNodes": [
+    "cohort/icu"
+  ],
+  "topics": [
+    "icu"
+  ],
+  "questionType": "management",
+  "difficulty": "hard",
+  "stem": "An ICU registrar reviews a patient with oliguric acute kidney injury after septic shock. An hour ago potassium was 6.9 mmol/L with peaked T waves; after IV calcium and insulin–glucose it is now 5.8 mmol/L and the T waves have settled. Over the same period pulmonary oedema has worsened despite IV furosemide 80 mg, urine output is 10 mL/h, and FiO2 has risen to 0.6. The catheter is patent and noradrenaline is at a stable low dose.\n\nWhat should the registrar arrange?",
+  "options": [
+    {
+      "label": "A",
+      "text": "Start renal replacement therapy now with the ICU team",
+      "isCorrect": true,
+      "explanation": "Diuretic-resistant pulmonary oedema with rising oxygen needs is an indication for renal replacement therapy on its own, and the improved potassium reflects a temporary shift into cells, not removal. With oliguria it will rebound. Start renal replacement therapy now."
+    },
+    {
+      "label": "B",
+      "text": "Repeat potassium in four hours and dialyse if it rebounds",
+      "isCorrect": false,
+      "explanation": "Insulin moves potassium into cells for a few hours; it does not remove it. Waiting for the rebound also leaves the worsening pulmonary oedema untreated."
+    },
+    {
+      "label": "C",
+      "text": "Repeat insulin–glucose hourly to hold potassium below 6",
+      "isCorrect": false,
+      "explanation": "Repeated insulin–glucose risks hypoglycaemia, removes no potassium and does nothing for the fluid overload."
+    },
+    {
+      "label": "D",
+      "text": "Give an IV sodium bicarbonate infusion to shift potassium",
+      "isCorrect": false,
+      "explanation": "Bicarbonate adds sodium and volume to a patient with worsening pulmonary oedema, and its potassium-lowering effect is small and unreliable."
+    },
+    {
+      "label": "E",
+      "text": "Wait for urea to reach a set level before any dialysis",
+      "isCorrect": false,
+      "explanation": "Dialysis is started for complications such as refractory fluid overload, hyperkalaemia or acidosis, not when a urea or creatinine value is reached."
+    }
+  ],
+  "context": "A falling potassium after insulin is redistribution, not removal; in oliguric AKI with diuretic-resistant pulmonary oedema, start renal replacement therapy rather than waiting for the rebound.",
+  "publicModule": {
+    "schemaVersion": 1,
+    "origin": "mirrored",
+    "discipline": "icu",
+    "mirroredFrom": "md3:b0f5e483efda92fe",
+    "itemText": {
+      "licence": "CC-BY-4.0",
+      "attribution": "MD3 contributors"
+    },
+    "evidence": {
+      "kind": "reference",
+      "sourceId": "kdigo-wp-content-uploads-2016-10-kdigo-2012-aki-guideline-english-59dd5c"
+    },
+    "review": {
+      "verdict": "passed",
+      "contentHash": "b9cd0dbbbfaf6555a8354d0dc7ef24e9f90752f243dbdb1995d7373937423b23"
+    }
+  }
+}

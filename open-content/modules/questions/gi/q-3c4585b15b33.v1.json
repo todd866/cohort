@@ -1,0 +1,64 @@
+{
+  "id": "bank:cohort:gi:q-3c4585b15b33:v1",
+  "rotation": "cohort-open",
+  "moduleNodes": [
+    "cohort/gi"
+  ],
+  "topics": [
+    "gi"
+  ],
+  "questionType": "management",
+  "difficulty": "medium",
+  "stem": "A 2-year-old boy has had diarrhoea for 24 hours. He vomited twice last night but not since, and is now drinking when offered. He is alert and playful, with moist mucous membranes, normal skin turgor, warm hands and a capillary refill time under 2 seconds. He has had a few wet nappies today, slightly fewer than usual. His father asks the GP what fluids to give.\n\nWhat is the best rehydration plan?",
+  "options": [
+    {
+      "label": "A",
+      "text": "Nasogastric rehydration solution over 4 hours in hospital",
+      "isCorrect": false,
+      "explanation": "Nasogastric rehydration is for children who cannot drink enough or have moderate dehydration. He is drinking and at most mildly dry."
+    },
+    {
+      "label": "B",
+      "text": "Oral rehydration solution in small, frequent amounts, with food",
+      "isCorrect": true,
+      "explanation": "Correct. With at most mild dehydration and vomiting settled, small frequent amounts of oral rehydration solution, with continued feeding, is the best plan."
+    },
+    {
+      "label": "C",
+      "text": "Oral rehydration solution with loperamide to reduce stool losses",
+      "isCorrect": false,
+      "explanation": "Antidiarrhoeal drugs are not recommended in children with gastroenteritis because of adverse effects and no meaningful benefit."
+    },
+    {
+      "label": "D",
+      "text": "A dose of ondansetron, then oral rehydration solution by cup",
+      "isCorrect": false,
+      "explanation": "Ondansetron helps when vomiting prevents oral rehydration. He has stopped vomiting and is drinking, so it adds nothing."
+    },
+    {
+      "label": "E",
+      "text": "Clear fluids only for 24 hours, then slowly reintroduce milk",
+      "isCorrect": false,
+      "explanation": "Restricting to clear fluids and withholding milk prolongs poor intake. Children should continue their usual diet."
+    }
+  ],
+  "context": "For no or mild dehydration with preserved perfusion, give oral rehydration solution in small frequent amounts and continue feeding. Ondansetron is for vomiting that blocks oral intake; escalate if oral therapy fails or shock develops.",
+  "publicModule": {
+    "schemaVersion": 1,
+    "origin": "mirrored",
+    "discipline": "gi",
+    "mirroredFrom": "md3:3c4585b15b336190",
+    "itemText": {
+      "licence": "CC-BY-4.0",
+      "attribution": "MD3 contributors"
+    },
+    "evidence": {
+      "kind": "reference",
+      "sourceId": "who-news-room-fact-sheets-detail-diarrhoeal-disease-d51c7e"
+    },
+    "review": {
+      "verdict": "passed",
+      "contentHash": "c4e0481520c9e50d04f603b93302387318492a568b4713df8026dd398e98e9af"
+    }
+  }
+}

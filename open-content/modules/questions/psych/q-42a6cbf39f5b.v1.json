@@ -1,0 +1,64 @@
+{
+  "id": "bank:cohort:psych:q-42a6cbf39f5b:v1",
+  "rotation": "cohort-open",
+  "moduleNodes": [
+    "cohort/psych"
+  ],
+  "topics": [
+    "psych"
+  ],
+  "questionType": "management",
+  "difficulty": "hard",
+  "stem": "A community psychiatrist reviews a 28-year-old woman recovering from her second episode of schizophrenia. Both relapses followed weeks of escalating arguments at home, and her partner says he gets ‘fed up’ and often criticises her lack of motivation. She is taking her antipsychotic, hears occasional voices that she finds manageable, and hopes to return to work. Both want to stay together and are willing to attend sessions.\n\nWhich additional intervention would most reduce her risk of relapse?",
+  "options": [
+    {
+      "label": "A",
+      "text": "Individual CBT for psychosis focused on her residual voices",
+      "isCorrect": false,
+      "explanation": "CBT for psychosis is recommended and could help distressing voices, but hers are manageable, and it does not target the home environment that preceded both relapses."
+    },
+    {
+      "label": "B",
+      "text": "Supported employment with a workplace adjustment plan",
+      "isCorrect": false,
+      "explanation": "Supported employment is the evidence-based way to help her return to work and is worth offering, but its aim is vocational rather than relapse prevention."
+    },
+    {
+      "label": "C",
+      "text": "A higher antipsychotic dose to cover stressful periods",
+      "isCorrect": false,
+      "explanation": "She is adherent and her relapses track conflict at home, not an inadequate dose. Raising the dose adds adverse effects without addressing the trigger."
+    },
+    {
+      "label": "D",
+      "text": "Family intervention with her partner over several months",
+      "isCorrect": true,
+      "explanation": "Structured family intervention — education, communication and problem-solving with the people she lives with, over several months — reduces relapse and admission, and directly targets the criticism and conflict that preceded both relapses."
+    },
+    {
+      "label": "E",
+      "text": "A single information session on schizophrenia for her partner",
+      "isCorrect": false,
+      "explanation": "Information alone does not change patterns of criticism and conflict. Effective family intervention is a structured series of sessions, not one-off education."
+    }
+  ],
+  "context": "Family intervention over multiple sessions reduces relapse in schizophrenia, particularly when criticism and conflict at home precede relapse; one-off education does not.",
+  "publicModule": {
+    "schemaVersion": 1,
+    "origin": "mirrored",
+    "discipline": "psych",
+    "mirroredFrom": "md3:42a6cbf39f5bae43",
+    "itemText": {
+      "licence": "CC-BY-4.0",
+      "attribution": "MD3 contributors"
+    },
+    "evidence": {
+      "kind": "reference",
+      "sourceId": "nice-guidance-cg178-chapter-recommendations-ab0e8b"
+    },
+    "review": {
+      "verdict": "passed",
+      "contentHash": "a4b6592aba9440dbbaf8e4c7cc2cc4b800e076a6462775022e7e90970a54471b"
+    }
+  }
+}

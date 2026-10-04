@@ -1,0 +1,82 @@
+{
+  "id": "bank:cohort:resp:q-e6aadc41a704:v1",
+  "rotation": "cohort-open",
+  "moduleNodes": [
+    "cohort/resp"
+  ],
+  "topics": [
+    "resp"
+  ],
+  "questionType": "diagnosis",
+  "difficulty": "medium",
+  "stem": "A six-week-old is admitted after episodes of apnoea and cyanosis. For the preceding week she had coryza followed by clusters of coughing and post-tussive vomiting, without a high fever or audible whoop. Her father has had a persistent cough for three weeks. Between episodes her chest is relatively clear.\n\nWhich diagnosis best explains this presentation?",
+  "options": [
+    {
+      "label": "A",
+      "text": "Childhood asthma",
+      "isCorrect": false,
+      "explanation": "Asthma is an unlikely explanation at this age and does not account for the household pattern and apnoeic cough clusters."
+    },
+    {
+      "label": "B",
+      "text": "Pertussis infection",
+      "isCorrect": true,
+      "explanation": "Pertussis in young infants may cause apnoea and cyanosis without a whoop. Paroxysms, post-tussive vomiting and a coughing household contact strengthen the diagnosis."
+    },
+    {
+      "label": "C",
+      "text": "Gastro-oesophageal reflux",
+      "isCorrect": false,
+      "explanation": "Reflux-related events are usually linked to feeds and do not explain the infectious prodrome and household cough."
+    },
+    {
+      "label": "D",
+      "text": "Community-acquired bacterial pneumonia",
+      "isCorrect": false,
+      "explanation": "Pneumonia more often causes persistent fever, tachypnoea or focal signs rather than relatively well intervals between cough paroxysms."
+    },
+    {
+      "label": "E",
+      "text": "Protracted bacterial bronchitis",
+      "isCorrect": false,
+      "explanation": "Protracted bacterial bronchitis causes a persistent wet cough, not this young infant’s paroxysmal illness with apnoea and a household contact."
+    },
+    {
+      "label": "F",
+      "text": "Primary ciliary dyskinesia",
+      "isCorrect": false,
+      "explanation": "Ciliary disease produces chronic symptoms; the acute linked illness and cough paroxysms favour infection."
+    },
+    {
+      "label": "G",
+      "text": "Viral bronchiolitis",
+      "isCorrect": false,
+      "explanation": "Bronchiolitis can cause apnoea, but paroxysmal coughing with vomiting and a prolonged household cough favours pertussis."
+    },
+    {
+      "label": "H",
+      "text": "Inhaled foreign body",
+      "isCorrect": false,
+      "explanation": "There is no abrupt choking onset, and a foreign body does not explain the preceding coryza and household cough."
+    }
+  ],
+  "context": "Young infants with pertussis may have apnoea rather than a whoop. Absence of the classic sound does not make the diagnosis unlikely.",
+  "publicModule": {
+    "schemaVersion": 1,
+    "origin": "mirrored",
+    "discipline": "resp",
+    "mirroredFrom": "md3:e6aadc41a704bcc0",
+    "itemText": {
+      "licence": "CC-BY-4.0",
+      "attribution": "MD3 contributors"
+    },
+    "evidence": {
+      "kind": "reference",
+      "sourceId": "rch-clinicalguide-guideline-index-whooping-cough-pertussis-ee6e31"
+    },
+    "review": {
+      "verdict": "passed",
+      "contentHash": "0a5752a3763312e2e0a2e68b0ffe4b9a8617a6b7e48340f2f6c02d0f524ac3b2"
+    }
+  }
+}

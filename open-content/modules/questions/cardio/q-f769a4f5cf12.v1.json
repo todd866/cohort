@@ -1,0 +1,64 @@
+{
+  "id": "bank:cohort:cardio:q-f769a4f5cf12:v1",
+  "rotation": "cohort-open",
+  "moduleNodes": [
+    "cohort/cardio"
+  ],
+  "topics": [
+    "cardio"
+  ],
+  "questionType": "management",
+  "difficulty": "hard",
+  "stem": "A 3-year-old boy sees his GP on day 17 of an illness that began with 6 days of high fever, red eyes without discharge, cracked red lips, a blotchy rash and swollen hands and feet. It was thought to be viral at the time. He has now been afebrile for 11 days and is playing normally, but the skin is peeling from around his fingernails. Today his CRP and ESR are normal, and an echocardiogram shows normal coronary arteries. Which is the most appropriate management?",
+  "options": [
+    {
+      "label": "A",
+      "text": "IVIG 2 g/kg as a single infusion",
+      "isCorrect": false,
+      "explanation": "After day 10, IVIG is still given if inflammation is active: fever, raised CRP or ESR, or coronary changes. He has none of these, so a late infusion adds no benefit."
+    },
+    {
+      "label": "B",
+      "text": "Low-dose aspirin and follow-up echo",
+      "isCorrect": true,
+      "explanation": "Correct. This is Kawasaki disease recognised late, with no active inflammation. Aspirin 5 mg/kg daily continues to about 6 weeks from onset, with a repeat echo at 4 to 6 weeks."
+    },
+    {
+      "label": "C",
+      "text": "IVIG with an oral prednisolone taper",
+      "isCorrect": false,
+      "explanation": "Corticosteroids are added to IVIG for high-risk children, such as young infants or those with coronary dilatation at diagnosis. They have no role once inflammation has settled."
+    },
+    {
+      "label": "D",
+      "text": "Reassurance and discharge from care",
+      "isCorrect": false,
+      "explanation": "Periungual peeling supports a diagnosis of Kawasaki disease. He still needs antiplatelet therapy and cardiology follow-up, because coronary changes can evolve over the first 6 weeks."
+    },
+    {
+      "label": "E",
+      "text": "Oral amoxicillin for ten days",
+      "isCorrect": false,
+      "explanation": "Peeling after a febrile rash can follow scarlet fever, but conjunctival injection, lip changes and hand swelling fit Kawasaki disease, and antibiotics have no role."
+    }
+  ],
+  "context": "Kawasaki disease found after day 10: give IVIG only if inflammation is still active (fever, raised CRP/ESR, coronary changes); otherwise low-dose aspirin and echo at 4-6 weeks.",
+  "publicModule": {
+    "schemaVersion": 1,
+    "origin": "mirrored",
+    "discipline": "cardio",
+    "mirroredFrom": "md3:f769a4f5cf12704f",
+    "itemText": {
+      "licence": "CC-BY-4.0",
+      "attribution": "MD3 contributors"
+    },
+    "evidence": {
+      "kind": "reference",
+      "sourceId": "rch-clinicalguide-guideline-index-kawasaki-disease-b45290"
+    },
+    "review": {
+      "verdict": "passed",
+      "contentHash": "d678a69d46eb25534c3ff995ce3ff5b08740014152ed103507850c73ae473231"
+    }
+  }
+}

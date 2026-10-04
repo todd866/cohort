@@ -1,0 +1,64 @@
+{
+  "id": "bank:cohort:haem:q-909c753fd041:v1",
+  "rotation": "cohort-open",
+  "moduleNodes": [
+    "cohort/haem"
+  ],
+  "topics": [
+    "haem"
+  ],
+  "questionType": "diagnosis",
+  "difficulty": "hard",
+  "stem": "A 6-year-old boy of Greek background develops jaundice, dark urine and pallor 2 days after starting trimethoprim–sulfamethoxazole for a urinary tract infection. He has mild tachycardia but no bleeding or rash, and his urine output is normal.\n\n| Test | Result | Reference range |\n| --- | --- | --- |\n| Haemoglobin | 72 g/L | 115–155 |\n| Reticulocytes | 9% | 0.5–2.5 |\n| Platelets | 260 × 10⁹/L | 150–450 |\n| Creatinine | 40 µmol/L | 25–60 |\n| Direct antiglobulin test | Negative | Negative |\n| Blood film | Blister cells and irregularly contracted cells; no schistocytes | No abnormal forms |\n\nWhich underlying disorder is most likely?",
+  "options": [
+    {
+      "label": "A",
+      "text": "Drug-induced immune haemolytic anaemia",
+      "isCorrect": false,
+      "explanation": "Drug-induced immune haemolysis usually gives a positive direct antiglobulin test; his is negative."
+    },
+    {
+      "label": "B",
+      "text": "Glucose-6-phosphate dehydrogenase deficiency",
+      "isCorrect": true,
+      "explanation": "Correct. Acute haemolysis 2 days after an oxidant drug in a boy of Mediterranean background, with a negative antiglobulin test and blister and irregularly contracted cells, fits G6PD deficiency. The enzyme level can be falsely normal during the reticulocytosis, so repeat it later if needed."
+    },
+    {
+      "label": "C",
+      "text": "Hereditary spherocytosis with haemolytic crisis",
+      "isCorrect": false,
+      "explanation": "Spherocytosis gives spherocytes on the film, often with splenomegaly and a family history; this film shows oxidant damage instead."
+    },
+    {
+      "label": "D",
+      "text": "Haemolytic uraemic syndrome after infection",
+      "isCorrect": false,
+      "explanation": "HUS needs thrombocytopenia, schistocytes and kidney injury; his platelets, film and creatinine are normal."
+    },
+    {
+      "label": "E",
+      "text": "Paroxysmal cold haemoglobinuria after infection",
+      "isCorrect": false,
+      "explanation": "Paroxysmal cold haemoglobinuria causes intravascular haemolysis after an infection, with a positive antiglobulin test for complement; his test is negative and the trigger is a drug."
+    }
+  ],
+  "context": "G6PD deficiency can cause acute oxidant-triggered haemolysis with jaundice, dark urine, reticulocytosis and bite cells. A normal enzyme test during haemolysis may need later repetition.",
+  "publicModule": {
+    "schemaVersion": 1,
+    "origin": "mirrored",
+    "discipline": "haem",
+    "mirroredFrom": "md3:909c753fd0415b70",
+    "itemText": {
+      "licence": "CC-BY-4.0",
+      "attribution": "MD3 contributors"
+    },
+    "evidence": {
+      "kind": "reference",
+      "sourceId": "rch-kidsinfo-fact-sheets-g6pd-deficiency-aa64b2"
+    },
+    "review": {
+      "verdict": "passed",
+      "contentHash": "853b167b4260987fe9c6db7fcb08c8d57d08449dd4645f65a45c76d3badd5c83"
+    }
+  }
+}

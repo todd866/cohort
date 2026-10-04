@@ -111,3 +111,18 @@ describe('shell cache is build-stamped', () => {
     expect(sw).toMatch(/KEEP_CACHES = \[[^\]]*SHELL_CACHE/);
   });
 });
+
+describe('restore-sw-stamp.sh', () => {
+  it('returns every stamped placeholder, so a local build never leaves sw.js stamped', () => {
+    // 3 Oct 2026: SW_BUILD (the build the worker reports to the page) was
+    // stamped by stamp-sw.sh but not restored. A committed stamp would ship an
+    // old build id and the page would reload on every update again.
+    const original = readFileSync(resolve(REPO_ROOT, 'public/sw.js'), 'utf8');
+    const f = tempSw(original);
+    const env = { ...process.env, VERCEL: '' };
+    execFileSync('sh', [STAMP_SCRIPT, f], { cwd: REPO_ROOT, env, stdio: 'pipe' });
+    expect(readFileSync(f, 'utf8')).not.toContain('__BUILD_STAMP__');
+    execFileSync('sh', [join(REPO_ROOT, 'scripts/ops/restore-sw-stamp.sh'), f], { cwd: REPO_ROOT, env });
+    expect(readFileSync(f, 'utf8')).toBe(original);
+  });
+});

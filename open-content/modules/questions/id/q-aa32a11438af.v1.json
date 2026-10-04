@@ -1,0 +1,82 @@
+{
+  "id": "bank:cohort:id:q-aa32a11438af:v1",
+  "rotation": "cohort-open",
+  "moduleNodes": [
+    "cohort/id"
+  ],
+  "topics": [
+    "id"
+  ],
+  "questionType": "diagnosis",
+  "difficulty": "hard",
+  "stem": "A 5-year-old girl has had fever and a sore throat for 2 days. Today a fine, red, blanching rash appeared on her neck and chest and spread to her trunk; it feels rough and is most marked in her elbow creases and groin. Her tongue is red with prominent papillae, her lips are red, and there is a tender 1.5 cm node below the angle of her jaw. Her tonsils are swollen and covered with exudate. Her eyes are not red, and her hands and feet are normal.\n\nWhich diagnosis is most likely?",
+  "options": [
+    {
+      "label": "A",
+      "text": "Partially treated urinary tract infection",
+      "isCorrect": false,
+      "explanation": "A urinary tract infection does not cause a fine, rough rash, a sore throat or exudate."
+    },
+    {
+      "label": "B",
+      "text": "Roseola infantum",
+      "isCorrect": false,
+      "explanation": "The roseola rash appears as the fever settles, usually in a child under 2, without a sore throat."
+    },
+    {
+      "label": "C",
+      "text": "Rubella",
+      "isCorrect": false,
+      "explanation": "Rubella causes a mild pink rash spreading from the face, with post-auricular nodes and little throat involvement."
+    },
+    {
+      "label": "D",
+      "text": "Scarlet fever",
+      "isCorrect": true,
+      "explanation": "Correct. Exudative tonsillitis with a fine, rough rash accentuated in the skin creases after 1 to 2 days of fever is scarlet fever from group A streptococcus. The red tongue, red lips and neck node overlap with Kawasaki disease, but the exudate, the rough flexural rash, the clear eyes and only 2 days of fever point to scarlet fever. A throat swab confirms it, and it is treated with penicillin."
+    },
+    {
+      "label": "E",
+      "text": "Hand-foot-and-mouth disease",
+      "isCorrect": false,
+      "explanation": "Hand, foot and mouth disease causes mouth ulcers and vesicles on the hands and feet."
+    },
+    {
+      "label": "F",
+      "text": "Kawasaki disease",
+      "isCorrect": false,
+      "explanation": "Kawasaki disease shares the red tongue, red lips, rash and a neck node, which makes it the main trap. But it classically needs fever for 5 days or more, causes non-purulent conjunctival injection and does not cause exudative tonsillitis."
+    },
+    {
+      "label": "G",
+      "text": "Measles",
+      "isCorrect": false,
+      "explanation": "Measles begins with cough, coryza and conjunctivitis, and its rash starts on the face."
+    },
+    {
+      "label": "H",
+      "text": "Parvovirus B19 infection",
+      "isCorrect": false,
+      "explanation": "Parvovirus causes slapped cheeks followed by a lacy rash on the limbs in a mildly unwell child."
+    }
+  ],
+  "context": "Scarlet fever and Kawasaki disease share a red tongue, red lips, a rash and a neck node. Exudative tonsillitis, a rough rash accentuated in skin creases, clear eyes and a short fever favour scarlet fever; non-purulent conjunctival injection and fever for 5 days or more favour Kawasaki disease.",
+  "publicModule": {
+    "schemaVersion": 1,
+    "origin": "mirrored",
+    "discipline": "id",
+    "mirroredFrom": "md3:aa32a11438af7189",
+    "itemText": {
+      "licence": "CC-BY-4.0",
+      "attribution": "MD3 contributors"
+    },
+    "evidence": {
+      "kind": "reference",
+      "sourceId": "rch-clinicalguide-guideline-index-sore-throat-ac9b70"
+    },
+    "review": {
+      "verdict": "passed",
+      "contentHash": "a0efb7563c806043fff739b5b349a9c4288c427caf5798149e6e51a57b585e02"
+    }
+  }
+}

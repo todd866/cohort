@@ -1,0 +1,64 @@
+{
+  "id": "bank:cohort:paeds:q-be05a4b2bd63:v1",
+  "rotation": "cohort-open",
+  "moduleNodes": [
+    "cohort/paeds"
+  ],
+  "topics": [
+    "paeds"
+  ],
+  "questionType": "management",
+  "difficulty": "hard",
+  "stem": "A paediatric consultant assesses a previously well three-day-old term infant with poor feeding, tachypnoea and shock. The arms are warmer than the legs; femoral pulses are very weak. Right-arm systolic pressure is 72 mmHg and leg pressure 44 mmHg. Lactate is 7.2 mmol/L (0.5–2.0). Cautious initial resuscitation and empirical antibiotics have begun. Cardiology and retrieval are involved, but echocardiography is not immediately available.\n\nWhich additional treatment most directly addresses the suspected cause of the lower-body hypoperfusion?",
+  "options": [
+    {
+      "label": "A",
+      "text": "A furosemide dose to reduce pulmonary venous congestion",
+      "isCorrect": false,
+      "explanation": "Diuresis does not relieve a duct-dependent systemic obstruction and can further compromise preload in a shocked infant."
+    },
+    {
+      "label": "B",
+      "text": "A further rapid saline bolus to normalise leg blood pressure",
+      "isCorrect": false,
+      "explanation": "Further fluid is not the targeted solution to obstructed systemic flow; repeated rapid boluses can be harmful in a cardiac cause of shock."
+    },
+    {
+      "label": "C",
+      "text": "A dobutamine infusion to improve myocardial contractility",
+      "isCorrect": false,
+      "explanation": "Inotropic support may be needed for ventricular dysfunction, but it does not restore ductal patency when systemic outflow depends on it."
+    },
+    {
+      "label": "D",
+      "text": "An indometacin course to reduce ductal blood-flow diversion",
+      "isCorrect": false,
+      "explanation": "Indometacin promotes ductal closure, which could worsen systemic hypoperfusion in a duct-dependent left-heart lesion."
+    },
+    {
+      "label": "E",
+      "text": "An alprostadil infusion to maintain or restore ductal flow",
+      "isCorrect": true,
+      "explanation": "The timing, weak femorals and arm–leg pressure difference suggest duct-dependent systemic flow. Start prostaglandin E1 with specialist guidance and airway readiness while arranging definitive imaging and transfer."
+    }
+  ],
+  "context": "Neonatal shock with weak femoral pulses after the first days of life should prompt treatment for a possible duct-dependent systemic lesion while arranging urgent specialist care.",
+  "publicModule": {
+    "schemaVersion": 1,
+    "origin": "mirrored",
+    "discipline": "paeds",
+    "mirroredFrom": "md3:be05a4b2bd6383b3",
+    "itemText": {
+      "licence": "CC-BY-4.0",
+      "attribution": "MD3 contributors"
+    },
+    "evidence": {
+      "kind": "reference",
+      "sourceId": "rch-ine-index-recognition-of-the-seriously-unwell-neonate-and-young-infant-4258f2"
+    },
+    "review": {
+      "verdict": "passed",
+      "contentHash": "3e494f61d53fb02d4c9d7a73d1ac46c8dcfb450438fd89301f8614c81768a643"
+    }
+  }
+}

@@ -1,0 +1,64 @@
+{
+  "id": "bank:cohort:paeds:q-c0ea925094b5:v1",
+  "rotation": "cohort-open",
+  "moduleNodes": [
+    "cohort/paeds"
+  ],
+  "topics": [
+    "paeds"
+  ],
+  "questionType": "knowledge",
+  "difficulty": "medium",
+  "stem": "A well 5-day-old baby has a second 'refer' result in the right ear on the NSW SWISH automated hearing screen; the left ear passed. There is no family history of hearing loss. A diagnostic audiology appointment has been offered for next week. The parents ask whether, with one ear that passed, they can simply wait and see.\n\nHow should the result be explained?",
+  "options": [
+    {
+      "label": "A",
+      "text": "It confirms permanent hearing loss in the right ear",
+      "isCorrect": false,
+      "explanation": "A screening result cannot diagnose hearing loss. Diagnostic audiology is needed to confirm or exclude it."
+    },
+    {
+      "label": "B",
+      "text": "It probably reflects birth fluid, so rescreen in three months",
+      "isCorrect": false,
+      "explanation": "Transient causes are possible, but they cannot be assumed. Delaying diagnostic assessment delays early intervention if there is a true loss."
+    },
+    {
+      "label": "C",
+      "text": "With a normal left ear, a one-sided refer needs no follow-up",
+      "isCorrect": false,
+      "explanation": "Unilateral hearing loss can affect language and learning, so a one-sided refer still goes to diagnostic audiology."
+    },
+    {
+      "label": "D",
+      "text": "It means a diagnostic assessment is needed, without confirming loss",
+      "isCorrect": true,
+      "explanation": "A refer result identifies a baby who needs diagnostic audiology. It neither confirms nor excludes hearing loss, and the assessment should go ahead promptly even when only one ear referred."
+    },
+    {
+      "label": "E",
+      "text": "It means the equipment failed, so the screen should simply be repeated",
+      "isCorrect": false,
+      "explanation": "A refer result reflects the baby's response, not an equipment fault, and after two refer results the next step is diagnostic assessment rather than more screening."
+    }
+  ],
+  "context": "A refer on newborn hearing screening, even in one ear, means prompt diagnostic audiology; it is neither a diagnosis nor something to watch.",
+  "publicModule": {
+    "schemaVersion": 1,
+    "origin": "mirrored",
+    "discipline": "paeds",
+    "mirroredFrom": "md3:c0ea925094b59287",
+    "itemText": {
+      "licence": "CC-BY-4.0",
+      "attribution": "MD3 contributors"
+    },
+    "evidence": {
+      "kind": "reference",
+      "sourceId": "nsw-health-kidsfamilies-mcfhealth-pages-referral-screening-48ef08"
+    },
+    "review": {
+      "verdict": "passed",
+      "contentHash": "f4c4adbfe9309a00a44e20d55ebe909936f1910ddd991647a8bc90adb4d5d04d"
+    }
+  }
+}

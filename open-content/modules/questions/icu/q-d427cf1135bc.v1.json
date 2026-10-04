@@ -1,0 +1,64 @@
+{
+  "id": "bank:cohort:icu:q-d427cf1135bc:v1",
+  "rotation": "cohort-open",
+  "moduleNodes": [
+    "cohort/icu"
+  ],
+  "topics": [
+    "icu"
+  ],
+  "questionType": "investigation",
+  "difficulty": "hard",
+  "stem": "An awake adult on a NSW ward has a new nasogastric tube inserted for feeding; insertion was uneventful, with no coughing or distress. The aspirate, tested on a graded pH strip, reads 4.5. She takes a proton-pump inhibitor, and the nurse asks whether a chest x-ray is needed before use because acid suppression makes pH testing unreliable.\n\nWhat should the medical officer advise?",
+  "options": [
+    {
+      "label": "A",
+      "text": "Order a chest x-ray, as the PPI makes the pH unreliable",
+      "isCorrect": false,
+      "explanation": "Acid suppression can raise gastric pH, so a correctly placed tube may fail the test and need an x-ray. It cannot make a respiratory aspirate acidic, so a pH of 5 or below still confirms gastric placement."
+    },
+    {
+      "label": "B",
+      "text": "Confirm with air insufflation and listening over the stomach",
+      "isCorrect": false,
+      "explanation": "The air insufflation ('whoosh') test cannot distinguish gastric from respiratory or oesophageal placement and must not be used."
+    },
+    {
+      "label": "C",
+      "text": "Document the pH and use the tube; no x-ray is needed",
+      "isCorrect": true,
+      "explanation": "Under NSW guidance an aspirate pH of 5 or below on a graded strip confirms gastric placement on insertion. Document the pH and external length and use the tube; an x-ray is needed when the pH is above 5, no aspirate is obtained or there is clinical concern."
+    },
+    {
+      "label": "D",
+      "text": "Use a carbon dioxide detector before allowing any feed",
+      "isCorrect": false,
+      "explanation": "A carbon dioxide detector can suggest airway placement, but it is not the confirmation standard and adds nothing once a confirmatory pH has been obtained."
+    },
+    {
+      "label": "E",
+      "text": "Repeat the pH in four hours before giving anything",
+      "isCorrect": false,
+      "explanation": "Placement has already been confirmed. Waiting adds delay without improving safety; recheck before each use and if the tube may have moved."
+    }
+  ],
+  "context": "Acid suppression can make a correctly placed tube fail the pH test, but a pH of 5 or below still confirms gastric placement; x-ray is for pH above 5, no aspirate or clinical concern.",
+  "publicModule": {
+    "schemaVersion": 1,
+    "origin": "mirrored",
+    "discipline": "icu",
+    "mirroredFrom": "md3:d427cf1135bc5022",
+    "itemText": {
+      "licence": "CC-BY-4.0",
+      "attribution": "MD3 contributors"
+    },
+    "evidence": {
+      "kind": "reference",
+      "sourceId": "nsw-health-pds-activepdsdocuments-gl2023-001-0744bc"
+    },
+    "review": {
+      "verdict": "passed",
+      "contentHash": "348de584f5b62bc32d70a8c5cae58cdf282951a7412aec087f8c620e60b04761"
+    }
+  }
+}

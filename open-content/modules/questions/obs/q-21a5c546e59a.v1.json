@@ -1,0 +1,64 @@
+{
+  "id": "bank:cohort:obs:q-21a5c546e59a:v1",
+  "rotation": "cohort-open",
+  "moduleNodes": [
+    "cohort/obs"
+  ],
+  "topics": [
+    "obs"
+  ],
+  "questionType": "investigation",
+  "difficulty": "medium",
+  "stem": "At 31 weeks, a patient reports intermittent watery vaginal loss since a gush earlier that morning. The obstetric registrar finds no fluid pooling on a sterile speculum examination. She has no bleeding, fever or contractions, and fetal assessment is reassuring, but the history still raises concern for membrane rupture.\n\nWhich test would best help clarify whether the membranes have ruptured?",
+  "options": [
+    {
+      "label": "A",
+      "text": "Serum C-reactive protein to screen for infection",
+      "isCorrect": false,
+      "explanation": "CRP may contribute to infection assessment but does not establish membrane rupture. A normal result cannot resolve this history of fluid loss."
+    },
+    {
+      "label": "B",
+      "text": "A vaginal-fluid test for amniotic-fluid proteins",
+      "isCorrect": true,
+      "explanation": "When no pooling is seen despite suggestive symptoms, a vaginal-fluid IGFBP-1 or PAMG-1 test can help identify amniotic fluid. Interpret the result with the history and examination rather than in isolation."
+    },
+    {
+      "label": "C",
+      "text": "Ultrasound measurement of the amniotic fluid index",
+      "isCorrect": false,
+      "explanation": "Liquor volume on ultrasound may be normal after rupture and can be reduced for other reasons, so it supports but does not establish the diagnosis."
+    },
+    {
+      "label": "D",
+      "text": "Digital examination to assess cervical dilation",
+      "isCorrect": false,
+      "explanation": "Digital examination assesses the cervix rather than the nature of the fluid and is generally avoided when PPROM is suspected without established labour."
+    },
+    {
+      "label": "E",
+      "text": "A high vaginal swab culture to screen for infection",
+      "isCorrect": false,
+      "explanation": "A swab identifies infection or GBS colonisation and may inform antibiotic decisions, but it does not show whether the fluid is amniotic fluid."
+    }
+  ],
+  "context": "If suspected PPROM is not confirmed by visible pooling, an amniotic-fluid protein test can support assessment.",
+  "publicModule": {
+    "schemaVersion": 1,
+    "origin": "mirrored",
+    "discipline": "obs",
+    "mirroredFrom": "md3:21a5c546e59aa483",
+    "itemText": {
+      "licence": "CC-BY-4.0",
+      "attribution": "MD3 contributors"
+    },
+    "evidence": {
+      "kind": "reference",
+      "sourceId": "nice-guidance-ng25-chapter-recommendations-4b3261"
+    },
+    "review": {
+      "verdict": "passed",
+      "contentHash": "bea92c4958bc4680a4d524056c9e023f9d0363253708648afce03dbf3a386a02"
+    }
+  }
+}

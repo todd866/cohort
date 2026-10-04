@@ -1,0 +1,64 @@
+{
+  "id": "bank:cohort:em:q-b4c3a9805243:v1",
+  "rotation": "cohort-open",
+  "moduleNodes": [
+    "cohort/em"
+  ],
+  "topics": [
+    "em"
+  ],
+  "questionType": "management",
+  "difficulty": "hard",
+  "stem": "A 58-year-old is ventilated in ICU after return of spontaneous circulation following an out-of-hospital VF arrest. To blow off the acidosis, the team has increased the ventilator rate. He has no chronic lung disease. Blood pressure is 102/60 mmHg on low-dose noradrenaline.\n\n| Test | Result | Reference range |\n| --- | --- | --- |\n| pH | 7.29 | 7.35–7.45 |\n| PaCO2 | 28 mmHg | 35–45 |\n| Bicarbonate | 13 mmol/L | 22–28 |\n| Lactate | 7.5 mmol/L | 0.5–2.0 |\n| PaO2 (FiO2 0.4) | 105 mmHg | — |\n\nWhat ventilation change is most appropriate?",
+  "options": [
+    {
+      "label": "A",
+      "text": "Increase the rate further to correct the pH",
+      "isCorrect": false,
+      "explanation": "Hypocapnia causes cerebral vasoconstriction and can worsen brain ischaemia after arrest; the metabolic acidosis should resolve with restored perfusion, not be corrected by overventilation."
+    },
+    {
+      "label": "B",
+      "text": "Keep the current rate until lactate clears",
+      "isCorrect": false,
+      "explanation": "A PaCO2 of 28 mmHg is already low enough to reduce cerebral blood flow; keeping it there while waiting for lactate to clear risks secondary brain injury."
+    },
+    {
+      "label": "C",
+      "text": "Reduce minute ventilation to a PaCO2 of 35–45",
+      "isCorrect": true,
+      "explanation": "After return of circulation, ANZCOR advises targeting normocapnia (PaCO2 35–45 mmHg) to avoid hypocapnic cerebral vasoconstriction. Reduce minute ventilation and correct the acidosis by restoring perfusion."
+    },
+    {
+      "label": "D",
+      "text": "Give sodium bicarbonate and keep the current rate",
+      "isCorrect": false,
+      "explanation": "Bicarbonate is not routinely recommended for post-arrest metabolic acidosis, and it does not correct the harmful hypocapnia."
+    },
+    {
+      "label": "E",
+      "text": "Allow permissive hypercapnia, PaCO2 50–60",
+      "isCorrect": false,
+      "explanation": "Hypercapnia raises intracranial pressure and worsens acidosis; without chronic CO2 retention, normocapnia is the target."
+    }
+  ],
+  "context": "After cardiac arrest, ventilate to normocapnia (PaCO2 35–45 mmHg); hypocapnia worsens brain ischaemia even when it partly corrects a metabolic acidosis.",
+  "publicModule": {
+    "schemaVersion": 1,
+    "origin": "mirrored",
+    "discipline": "em",
+    "mirroredFrom": "md3:b4c3a98052437ecd",
+    "itemText": {
+      "licence": "CC-BY-4.0",
+      "attribution": "MD3 contributors"
+    },
+    "evidence": {
+      "kind": "reference",
+      "sourceId": "anzcor-ideline-11-7-post-resuscitation-therapy-in-adult-advanced-life-support-1394cd"
+    },
+    "review": {
+      "verdict": "passed",
+      "contentHash": "bf993c5124019570ca8a51e8cd5590195e3840ae06019e60cbb7ab7ea0af5ccb"
+    }
+  }
+}

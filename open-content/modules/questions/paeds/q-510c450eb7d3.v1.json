@@ -1,0 +1,64 @@
+{
+  "id": "bank:cohort:paeds:q-510c450eb7d3:v1",
+  "rotation": "cohort-open",
+  "moduleNodes": [
+    "cohort/paeds"
+  ],
+  "topics": [
+    "paeds"
+  ],
+  "questionType": "management",
+  "difficulty": "hard",
+  "stem": "A 2-day-old term baby on the postnatal ward vomits bright green fluid twice after feeds. The abdomen is soft and not distended, meconium was passed on day 1, and observations are normal. The resident has obtained an abdominal radiograph, which shows a normal bowel gas pattern, and suggests continuing feeds with close observation.\n\nWhat should the paediatric registrar do?",
+  "options": [
+    {
+      "label": "A",
+      "text": "Continue feeds and observe, as the normal radiograph excludes obstruction",
+      "isCorrect": false,
+      "explanation": "A normal plain radiograph does not exclude malrotation with volvulus, so bilious vomiting still needs urgent contrast imaging and surgical assessment."
+    },
+    {
+      "label": "B",
+      "text": "Stop feeds, pass a nasogastric tube and seek urgent surgical review",
+      "isCorrect": true,
+      "explanation": "Bilious vomiting in a newborn is malrotation with volvulus until proven otherwise: stop feeds, decompress the stomach, start fluids and get urgent surgical review for an upper gastrointestinal contrast study."
+    },
+    {
+      "label": "C",
+      "text": "Change to smaller, more frequent feeds and review if vomiting persists",
+      "isCorrect": false,
+      "explanation": "Changing feeds treats reflux, whereas green vomit is a surgical red flag whatever the volume."
+    },
+    {
+      "label": "D",
+      "text": "Arrange an outpatient abdominal ultrasound in the coming week",
+      "isCorrect": false,
+      "explanation": "An outpatient scan delays diagnosis of a time-critical obstruction by days."
+    },
+    {
+      "label": "E",
+      "text": "Stop feeds and repeat the radiograph in 12 hours before referral",
+      "isCorrect": false,
+      "explanation": "Waiting 12 hours for another plain film loses time in which a volvulus can infarct the bowel."
+    }
+  ],
+  "context": "Bilious vomiting in a newborn needs urgent surgical review and contrast imaging even when the baby looks well and the plain radiograph is normal.",
+  "publicModule": {
+    "schemaVersion": 1,
+    "origin": "mirrored",
+    "discipline": "paeds",
+    "mirroredFrom": "md3:510c450eb7d3ba82",
+    "itemText": {
+      "licence": "CC-BY-4.0",
+      "attribution": "MD3 contributors"
+    },
+    "evidence": {
+      "kind": "reference",
+      "sourceId": "rch-clinicalguide-guideline-index-vomiting-6b668a"
+    },
+    "review": {
+      "verdict": "passed",
+      "contentHash": "75f5de5ef171cb9cc988778850603b59ab54857cd464666da1e2f37761a78f2d"
+    }
+  }
+}

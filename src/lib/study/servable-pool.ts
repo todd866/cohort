@@ -29,6 +29,7 @@ import {
   practiceLocaleWhere,
   type PracticeLocale,
 } from '@/lib/study/practice-locale';
+import { examScaffoldTag } from './exam-only-modules';
 
 /** Topics whose presence on a card/question disqualifies it from any user-facing pool. */
 export const EXCLUDED_POOL_TOPICS = ['_needs-image', '_incomplete-data'] as const;
@@ -202,6 +203,10 @@ export function buildServableCardWhere(options: BuildServableCardWhereOptions): 
     shelvedAt: null,
     NOT: EXCLUDED_TOPICS_NOT,
   };
+  // Exam rotations admit native scaffold cards only. The tag is the reviewed
+  // authoring boundary; a clip or low complexity alone is not sufficient.
+  const scaffoldTag = examScaffoldTag(rotation);
+  if (scaffoldTag) where.topics = { has: scaffoldTag };
   // Promoted rungs are admitted CARD BY CARD, never deck by deck.
   //
   // Requested 2026-09-14: harder questions from the imported decks, copyright
@@ -322,6 +327,7 @@ export function buildServableQuestionWhere(
  *  scheduler-internal exclusion union (open-issue + recent + all-time-seen
  *  for new-only). */
 export interface FilterServableRotationCardListOptions {
+  rotation?: string;
   weekFilter: number | null;
   excludedCardIds: ReadonlySet<string>;
   practiceLocale?: PracticeLocale;
@@ -335,8 +341,10 @@ export function filterServableRotationCardList<
     practiceLocale?: string | null;
   },
 >(cardList: ReadonlyArray<T>, options: FilterServableRotationCardListOptions): T[] {
-  const { weekFilter, excludedCardIds, practiceLocale } = options;
+  const { rotation, weekFilter, excludedCardIds, practiceLocale } = options;
+  const scaffoldTag = examScaffoldTag(rotation);
   return cardList.filter((card) => {
+    if (scaffoldTag && !card.topics?.includes(scaffoldTag)) return false;
     if (weekFilter !== null && card.week !== weekFilter) return false;
     if (excludedCardIds.has(card.id)) return false;
     if (

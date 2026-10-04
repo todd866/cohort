@@ -1,0 +1,64 @@
+{
+  "id": "bank:cohort:psych:q-5d95f56637ea:v1",
+  "rotation": "cohort-open",
+  "moduleNodes": [
+    "cohort/psych"
+  ],
+  "topics": [
+    "psych"
+  ],
+  "questionType": "management",
+  "difficulty": "hard",
+  "stem": "A patient receiving bitemporal ECT for severe depression is improving but reports distressing gaps in autobiographical memory. Serial assessment confirms emerging cognitive effects. She now eats and drinks reliably, has no immediate life-threatening symptoms and wants to continue treatment if the memory burden can be reduced. Her psychiatrist and ECT team review the next stage with her.\n\nWhich adjustment is most appropriate to discuss?",
+  "options": [
+    {
+      "label": "A",
+      "text": "Switch to right unilateral ECT at an effective suprathreshold dose",
+      "isCorrect": true,
+      "explanation": "Right unilateral placement can reduce cognitive burden compared with bitemporal treatment, provided dosing remains adequate for efficacy. The team should discuss the benefit–risk trade-off and continue monitoring response and cognition."
+    },
+    {
+      "label": "B",
+      "text": "Increase bitemporal ECT dose to reverse the memory disturbance",
+      "isCorrect": false,
+      "explanation": "Increasing the bitemporal stimulus is not a treatment for cognitive adverse effects and can worsen them. The treatment parameters should be reconsidered rather than intensified for this purpose."
+    },
+    {
+      "label": "C",
+      "text": "Continue bitemporal ECT with repeated cognitive testing",
+      "isCorrect": false,
+      "explanation": "Monitoring is necessary, but retaining the same parameters does not reduce the emerging treatment burden. Given confirmed effects, reduced urgency and her preferences, discuss a parameter change as well as continued monitoring."
+    },
+    {
+      "label": "D",
+      "text": "Stop ECT and rely on maintenance medication at this stage",
+      "isCorrect": false,
+      "explanation": "Stopping may be appropriate in some circumstances, but memory effects can sometimes be reduced by adjusting treatment. Her improvement and preference justify discussing a modified course."
+    },
+    {
+      "label": "E",
+      "text": "Move the electrodes to one side, dosed at the measured seizure threshold",
+      "isCorrect": false,
+      "explanation": "Unilateral placement needs suprathreshold dosing to be effective. Moving the electrodes while dosing at the measured seizure threshold can compromise response; dose and cognitive burden must be considered together."
+    }
+  ],
+  "context": "ECT technique can be adjusted when cognitive burden becomes clinically important.",
+  "publicModule": {
+    "schemaVersion": 1,
+    "origin": "mirrored",
+    "discipline": "psych",
+    "mirroredFrom": "md3:5d95f56637eab25e",
+    "itemText": {
+      "licence": "CC-BY-4.0",
+      "attribution": "MD3 contributors"
+    },
+    "evidence": {
+      "kind": "reference",
+      "sourceId": "nsw-health-mentalhealth-resources-publications-electroconvulsive-therapy-handbook-f8f4b2"
+    },
+    "review": {
+      "verdict": "passed",
+      "contentHash": "95fce82b9bc03b438d064d50bf9fc314eb0433611551e2b2d8974e2ae3b99b02"
+    }
+  }
+}

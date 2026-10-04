@@ -1,0 +1,64 @@
+{
+  "id": "bank:cohort:psych:q-10a41efbe454:v1",
+  "rotation": "cohort-open",
+  "moduleNodes": [
+    "cohort/psych"
+  ],
+  "topics": [
+    "psych"
+  ],
+  "questionType": "management",
+  "difficulty": "hard",
+  "stem": "A 29-year-old with bipolar I disorder is well on valproate after several previous manic admissions. She uses reliable contraception, has a negative pregnancy test and plans to try to conceive in three months. At a GP appointment she asks whether she should stop both valproate and contraception today. Her psychiatrist can review her within a week.\n\nWhat is the best advice now?",
+  "options": [
+    {
+      "label": "A",
+      "text": "Stop valproate today and continue contraception until the review",
+      "isCorrect": false,
+      "explanation": "The treatment must be reviewed before conception, but abrupt unsupervised cessation can destabilise her bipolar disorder. A prompt planned change is safer than stopping on her own."
+    },
+    {
+      "label": "B",
+      "text": "Stop contraception and continue valproate with folic acid",
+      "isCorrect": false,
+      "explanation": "Folic acid does not remove valproate’s fetal risks. Contraception should not be stopped while this treatment plan is being resolved."
+    },
+    {
+      "label": "C",
+      "text": "Maintain contraception pending a specialist medication change",
+      "isCorrect": true,
+      "explanation": "She needs prompt specialist planning to replace or discontinue valproate before conception and before stopping contraception. Until that plan is agreed, she should not abruptly stop medication herself."
+    },
+    {
+      "label": "D",
+      "text": "Continue the current regimen until pregnancy is confirmed",
+      "isCorrect": false,
+      "explanation": "Waiting for pregnancy misses the opportunity to avoid early fetal exposure. Pregnancy planning is the time to change the treatment strategy."
+    },
+    {
+      "label": "E",
+      "text": "Reduce valproate herself before stopping contraception",
+      "isCorrect": false,
+      "explanation": "An unsupervised reduction does not establish a safe preconception regimen or remove fetal risk. The change should be planned with her specialist."
+    }
+  ],
+  "context": "For bipolar disorder, plan a specialist-supervised transition away from valproate before conception; maintain contraception while the plan is implemented.",
+  "publicModule": {
+    "schemaVersion": 1,
+    "origin": "mirrored",
+    "discipline": "psych",
+    "mirroredFrom": "md3:10a41efbe4547e6a",
+    "itemText": {
+      "licence": "CC-BY-4.0",
+      "attribution": "MD3 contributors"
+    },
+    "evidence": {
+      "kind": "reference",
+      "sourceId": "acsqhc-medicine-finder-apo-sodium-valproate-1cad17"
+    },
+    "review": {
+      "verdict": "passed",
+      "contentHash": "0c6863a95c2a086eb5169558bcd2aeebaee5955e24e08a52ae7475b80de92ad5"
+    }
+  }
+}

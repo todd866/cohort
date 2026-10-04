@@ -1,0 +1,64 @@
+{
+  "id": "bank:cohort:obs:q-e043703dab1e:v1",
+  "rotation": "cohort-open",
+  "moduleNodes": [
+    "cohort/obs"
+  ],
+  "topics": [
+    "obs"
+  ],
+  "questionType": "management",
+  "difficulty": "medium",
+  "stem": "An obstetric registrar reviews a woman at 12 weeks, admitted after three weeks of persistent vomiting with very little food intake; she has lost 7% of her body weight. Saline and potassium replacement are running. Sodium is 138 mmol/L, potassium 3.6 mmol/L and glucose 4.7 mmol/L. She is alert, with no confusion, ataxia or eye signs, and still cannot keep oral medicines down. The team plans to add dextrose-containing fluid.\n\nWhich additional treatment plan is most appropriate?",
+  "options": [
+    {
+      "label": "A",
+      "text": "IV pyridoxine before the dextrose infusion begins",
+      "isCorrect": false,
+      "explanation": "Pyridoxine may help nausea, but it does not prevent the thiamine-deficiency encephalopathy that carbohydrate loading can precipitate."
+    },
+    {
+      "label": "B",
+      "text": "IV thiamine before the dextrose infusion begins",
+      "isCorrect": true,
+      "explanation": "After prolonged vomiting and poor intake, give parenteral thiamine before dextrose, because glucose metabolism consumes thiamine and can precipitate Wernicke’s encephalopathy."
+    },
+    {
+      "label": "C",
+      "text": "Oral thiamine once she can keep tablets down",
+      "isCorrect": false,
+      "explanation": "She cannot absorb oral medicines reliably and dextrose is about to be given, so oral thiamine would come too late."
+    },
+    {
+      "label": "D",
+      "text": "IV thiamine only if confusion, ataxia or nystagmus develops",
+      "isCorrect": false,
+      "explanation": "Wernicke’s encephalopathy should be prevented, not awaited; neurological signs mean damage has begun."
+    },
+    {
+      "label": "E",
+      "text": "IV thiamine once the dextrose infusion is established",
+      "isCorrect": false,
+      "explanation": "Giving dextrose first can precipitate Wernicke’s encephalopathy in a thiamine-depleted patient; the order matters."
+    }
+  ],
+  "context": "Give thiamine before planned carbohydrate administration after prolonged vomiting and poor intake.",
+  "publicModule": {
+    "schemaVersion": 1,
+    "origin": "mirrored",
+    "discipline": "obs",
+    "mirroredFrom": "md3:e043703dab1e6822",
+    "itemText": {
+      "licence": "CC-BY-4.0",
+      "attribution": "MD3 contributors"
+    },
+    "evidence": {
+      "kind": "reference",
+      "sourceId": "nsw-health-pds-activepdsdocuments-gl2022-009-90aecc"
+    },
+    "review": {
+      "verdict": "passed",
+      "contentHash": "c1910eb016cab30c6037bf799137612fb57643a2522ae29ffab94b629e1fa55c"
+    }
+  }
+}

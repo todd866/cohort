@@ -95,6 +95,8 @@ model User {
   darkMode            Boolean @default(false)
   emailDigest         Boolean @default(true) // Weekly progress emails
   preferAbbreviations Boolean @default(false) // Display "MI" vs "myocardial infarction"
+  reviewChallenge         Int @default(0) // Learner challenge bias: -2 through 2; 0 preserves Auto
+  reviewChallengeRevision Int @default(0) // Reject stale saves and prepared queues
 
   // Stats (denormalized for quick access)
   totalStudyTime Int       @default(0) // Minutes

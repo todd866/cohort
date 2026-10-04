@@ -1,0 +1,64 @@
+{
+  "id": "bank:cohort:gynae:q-52d9117e499e:v1",
+  "rotation": "cohort-open",
+  "moduleNodes": [
+    "cohort/gynae"
+  ],
+  "topics": [
+    "gynae"
+  ],
+  "questionType": "management",
+  "difficulty": "hard",
+  "stem": "An emergency registrar assesses a 17-year-old with sudden severe right-sided pelvic pain and vomiting. The pain briefly settled, then returned. Pregnancy testing is negative and she is afebrile. Ultrasound shows an enlarged right ovary with stromal oedema and a 5-cm cyst; arterial and venous flow are still detected. She remains tender despite analgesia.\n\nWhich next step is most appropriate?",
+  "options": [
+    {
+      "label": "A",
+      "text": "Admit for analgesia and repeat Doppler in six hours, operating if flow is lost",
+      "isCorrect": false,
+      "explanation": "Arterial and venous flow can persist in torsion because of the ovary’s dual supply; waiting for flow to disappear risks losing the ovary."
+    },
+    {
+      "label": "B",
+      "text": "Arrange CT abdomen to exclude appendicitis before gynaecological referral",
+      "isCorrect": false,
+      "explanation": "The ultrasound already shows an enlarged oedematous ovary with a cyst, which explains the picture; CT adds radiation and delay without changing the need for surgery."
+    },
+    {
+      "label": "C",
+      "text": "Book elective laparoscopic cystectomy once the pain has settled",
+      "isCorrect": false,
+      "explanation": "Intermittent severe pain with vomiting and an oedematous ovary suggests active torsion now; deferring surgery until pain settles risks infarction."
+    },
+    {
+      "label": "D",
+      "text": "Arrange urgent gynaecological assessment for diagnostic laparoscopy",
+      "isCorrect": true,
+      "explanation": "Torsion is a clinical and surgical diagnosis; a suggestive presentation with an enlarged oedematous ovary warrants urgent laparoscopy to detort and preserve the ovary."
+    },
+    {
+      "label": "E",
+      "text": "Arrange pelvic MRI to confirm torsion before any surgical decision",
+      "isCorrect": false,
+      "explanation": "MRI delays treatment and a normal-looking result would not exclude intermittent torsion; the decision is made on clinical grounds."
+    }
+  ],
+  "context": "Preserved Doppler flow does not exclude ovarian torsion; a convincing clinical presentation requires urgent surgical assessment.",
+  "publicModule": {
+    "schemaVersion": 1,
+    "origin": "mirrored",
+    "discipline": "gynae",
+    "mirroredFrom": "md3:52d9117e499ec4f2",
+    "itemText": {
+      "licence": "CC-BY-4.0",
+      "attribution": "MD3 contributors"
+    },
+    "evidence": {
+      "kind": "reference",
+      "sourceId": "rch-nicalguide-guideline-index-adolescent-gynaecology-lower-abdominal-pain-917d2d"
+    },
+    "review": {
+      "verdict": "passed",
+      "contentHash": "30e49dc430b1f14f5804779d3ac6060de1876ff144380f7a9f3b22c0aba586d9"
+    }
+  }
+}

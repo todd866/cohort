@@ -1,0 +1,64 @@
+{
+  "id": "bank:cohort:pharm:q-3b04f2e47052:v1",
+  "rotation": "cohort-open",
+  "moduleNodes": [
+    "cohort/pharm"
+  ],
+  "topics": [
+    "pharm"
+  ],
+  "questionType": "management",
+  "difficulty": "medium",
+  "stem": "A 36-year-old is on the surgical ward the morning after laparoscopic inguinal hernia repair. He vomited once in recovery 14 hours ago but has since eaten breakfast without nausea and swallows tablets easily. Regular paracetamol 1 g six-hourly has so far been given intravenously. His cannula will stay in until the surgical team reviews him this afternoon. His nurse asks whether to keep paracetamol IV, “since the line is in anyway and IV works better”.\n\nHow should the next scheduled dose be given?",
+  "options": [
+    {
+      "label": "A",
+      "text": "Intravenously, because IV paracetamol gives better analgesia",
+      "isCorrect": false,
+      "explanation": "Once absorption is reliable, oral paracetamol gives comparable analgesia at the same dose. The IV route adds cost and preparation errors without a clinical gain."
+    },
+    {
+      "label": "B",
+      "text": "Intravenously, as the cannula is staying in place anyway",
+      "isCorrect": false,
+      "explanation": "A cannula that happens to be in place does not make IV paracetamol better. Route should follow his ability to take tablets, and each IV dose still carries cost, preparation and dosing-error risks."
+    },
+    {
+      "label": "C",
+      "text": "Orally at the scheduled time, continuing regular oral doses",
+      "isCorrect": true,
+      "explanation": "He is eating, has no nausea and swallows tablets, so the oral route works. Switch now and keep the doses regular; the cannula can come out once the team confirms nothing else needs it."
+    },
+    {
+      "label": "D",
+      "text": "Intravenously until he has gone 24 hours without vomiting",
+      "isCorrect": false,
+      "explanation": "A single vomit in recovery that has since settled, with food tolerated, is not a barrier to the oral route. Waiting for an arbitrary vomit-free period keeps an unnecessary IV route."
+    },
+    {
+      "label": "E",
+      "text": "Orally, but only when he asks for pain relief from now on",
+      "isCorrect": false,
+      "explanation": "Changing the route is right, but changing regular paracetamol to as-needed removes the regular base of his multimodal analgesia on the first day after surgery, when pain is still expected."
+    }
+  ],
+  "context": "Switch paracetamol from IV to oral as soon as the patient can swallow and absorb it, keeping it regular; IV gives no analgesic advantage once the oral route works, even when a cannula is still in place.",
+  "publicModule": {
+    "schemaVersion": 1,
+    "origin": "mirrored",
+    "discipline": "pharm",
+    "mirroredFrom": "md3:3b04f2e470523022",
+    "itemText": {
+      "licence": "CC-BY-4.0",
+      "attribution": "MD3 contributors"
+    },
+    "evidence": {
+      "kind": "reference",
+      "sourceId": "nice-guidance-ng180-chapter-recommendations-678c8d"
+    },
+    "review": {
+      "verdict": "passed",
+      "contentHash": "05989c146806f00c32a5ed27a58611d7269c33d41672df48a832860bcc97f5a8"
+    }
+  }
+}

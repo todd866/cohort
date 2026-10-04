@@ -1,0 +1,64 @@
+{
+  "id": "bank:cohort:msk:q-8cd9e086dc6b:v1",
+  "rotation": "cohort-open",
+  "moduleNodes": [
+    "cohort/msk"
+  ],
+  "topics": [
+    "msk"
+  ],
+  "questionType": "investigation",
+  "difficulty": "medium",
+  "stem": "A 7-year-old has focal pain over the proximal tibia and fever for 4 days. He is limping but can bear weight. The initial plain radiograph is normal; CRP is elevated and the pain persists despite analgesia. What investigation is most useful to confirm the suspected diagnosis?",
+  "options": [
+    {
+      "label": "A",
+      "text": "MRI of the affected bone",
+      "isCorrect": true,
+      "explanation": "Correct. MRI is preferred for localised suspected osteomyelitis: it detects marrow inflammation and delineates adjacent soft-tissue or joint involvement despite a normal early radiograph."
+    },
+    {
+      "label": "B",
+      "text": "Ultrasound of the proximal tibia",
+      "isCorrect": false,
+      "explanation": "Ultrasound may identify a joint effusion or superficial collection, but does not exclude intramedullary infection."
+    },
+    {
+      "label": "C",
+      "text": "Repeat tibial radiographs today",
+      "isCorrect": false,
+      "explanation": "Radiographs may remain normal for several days; immediate repetition is less sensitive than MRI for marrow infection."
+    },
+    {
+      "label": "D",
+      "text": "Technetium bone scan",
+      "isCorrect": false,
+      "explanation": "Bone scintigraphy may help where symptoms cannot be localised or MRI is unavailable, but MRI is preferred for this clearly localised presentation."
+    },
+    {
+      "label": "E",
+      "text": "CT of the proximal tibia",
+      "isCorrect": false,
+      "explanation": "CT depicts cortical bone but is less useful than MRI for early marrow changes and adds ionising radiation."
+    }
+  ],
+  "context": "Early osteomyelitis may not appear on plain radiography. Persistent focal bone pain, fever and inflammatory markers should prompt MRI and orthopaedic review, with cultures and antibiotics guided by the clinical pathway.",
+  "publicModule": {
+    "schemaVersion": 1,
+    "origin": "mirrored",
+    "discipline": "msk",
+    "mirroredFrom": "md3:8cd9e086dc6b882e",
+    "itemText": {
+      "licence": "CC-BY-4.0",
+      "attribution": "MD3 contributors"
+    },
+    "evidence": {
+      "kind": "reference",
+      "sourceId": "rch-clinicalguide-guideline-index-bone-and-joint-infection-dde29f"
+    },
+    "review": {
+      "verdict": "passed",
+      "contentHash": "0b203c3a781dfea3df79718864d3af05d0f739eaa95855cee2239ceb4c75c403"
+    }
+  }
+}

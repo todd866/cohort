@@ -7,6 +7,7 @@ import { CardText } from './CardText';
 import { CardImage } from './CardImage';
 import { usePrefetchImage } from '@/hooks/usePrefetchImage';
 import { CardFeedback } from './CardFeedback';
+import { GlossaryScope } from '../content/GlossaryScope';
 import { GlossaryText } from '../content/GlossaryText';
 import { InlineMarkdown, type LeafRenderer } from '@/lib/inline-markdown';
 import { normalizeAngleBracketEscapes } from '@/lib/normalize-angle-bracket-escapes';
@@ -46,6 +47,12 @@ interface CardItemViewProps {
    *  tutor, at the same size and weight. UnifiedReview passes the clinical
    *  station chip. Shown only once the answer is out. */
   revealActions?: ReactNode;
+  /**
+   * A public surface (Cohort): the card's id is an opaque delivery, and the
+   * Details page, tutor link and like/hide feedback are md3 routes keyed to an
+   * md3 card. Show none of them.
+   */
+  publicSurface?: boolean;
 }
 
 /**
@@ -74,6 +81,7 @@ export function CardItemView({
   inlineReveal = true,
   onSuppress,
   revealActions = null,
+  publicSurface = false,
 }: CardItemViewProps) {
   const hasFigure = Boolean(item.imageUrl || item.imageKey);
   const figureIsPrompt = imageIsPrompt(item.imageMeta, item.imageRole, item.front);
@@ -194,7 +202,7 @@ export function CardItemView({
     </div>
   ) : null;
 
-  const linksNode = cardFullyRevealed ? (
+  const linksNode = cardFullyRevealed && !publicSurface ? (
     <div className="review-reveal mt-4 flex items-center justify-between text-xs">
       {/* Wraps rather than overflowing when a phone row runs out of width. */}
       <div className="flex min-w-0 flex-wrap items-center gap-x-3 gap-y-1">
@@ -258,6 +266,7 @@ export function CardItemView({
     : '';
 
   return (
+    <GlossaryScope abbreviations={item.abbreviations}>
     <div className={`${sidePane ? reviewPaneGridClass(reviewPaneKind(item)) : REVIEW_PANE_CELL_FLAT} ${compactLandscape}`}>
       <div className={`${sidePane ? REVIEW_PANE_TEXT_TOP : REVIEW_PANE_CELL_FLAT} ${compactLandscapeTop}`}>{paneTop}</div>
       {mediaNode && (
@@ -265,5 +274,6 @@ export function CardItemView({
       )}
       <div className={`${sidePane ? REVIEW_PANE_TEXT_BOTTOM : REVIEW_PANE_CELL_FLAT} ${compactLandscapeBottom}`}>{paneBottom}</div>
     </div>
+    </GlossaryScope>
   );
 }
