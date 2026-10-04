@@ -30,11 +30,14 @@ trap 'sh scripts/ops/restore-sw-stamp.sh "$SW_FILE"' EXIT
 # because Standard builds are not billed per CPU-minute and the 30-core machine
 # Elastic had picked sat idle for most of each build. Node's default heap there
 # is about a quarter of RAM, ~2 GB, under the ~4.2 GB the TypeScript pass
-# needs, so a Vercel build gets 6 GB: enough for that pass, with room left for
-# the rest of the build. An existing NODE_OPTIONS always wins.
+# needs. Use a 5 GiB heap so webpack's native allocations and the parent process
+# have room inside the 8 GB container. A cold full-content Next 16.3.8 build on
+# 2026-10-04 passed at this cap; aggregate local RSS fell from 6.055 to 5.542 GiB
+# versus the 6 GiB cap. macOS RSS is not proof of the Vercel container limit.
+# An existing NODE_OPTIONS always wins.
 if [ -z "$NODE_OPTIONS" ]; then
   if [ -n "$VERCEL" ]; then
-    NODE_OPTIONS="--max-old-space-size=6144"
+    NODE_OPTIONS="--max-old-space-size=5120"
   else
     NODE_OPTIONS="--max-old-space-size=8192"
   fi
