@@ -36,6 +36,7 @@ const nextConfig: NextConfig = {
   serverExternalPackages: ['@prisma/client', '.prisma/client'],
   // src/lib/figures/serving-index.ts reads this from disk on first lookup.
   outputFileTracingIncludes: {
+    '/api/anatomy/abducens': ['./open-content/anatomy-scaffolds/abducens-local/served.svg'],
     '*': ['./src/data/image-serving.generated.json'],
   },
   outputFileTracingExcludes: {

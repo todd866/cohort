@@ -229,6 +229,7 @@ export function findLearnerIdentifierInLine(
  * distribution audit until it is explicitly reviewed here and in the policy.
  */
 export const PUBLIC_API_ROUTE_PATHS: ReadonlyArray<string> = Object.freeze([
+  'src/app/api/anatomy/abducens/route.ts',
   'src/app/api/auth/[...nextauth]/route.ts',
   'src/app/api/auth/claim-guest-progress/route.ts',
   'src/app/api/cohort/answer/route.ts',
@@ -273,6 +274,8 @@ export const PUBLIC_API_ROUTE_PATHS: ReadonlyArray<string> = Object.freeze([
 /** Exact App Router page surface for the public Step 1 alpha. */
 export const PUBLIC_PAGE_ROUTE_PATHS: ReadonlyArray<string> = Object.freeze([
   'src/app/about/page.tsx',
+  'src/app/anatomy/page.tsx',
+  'src/app/anatomy/abducens/page.tsx',
   'src/app/auth/signin/page.tsx',
   'src/app/brief/page.tsx',
   'src/app/content/page.tsx',
@@ -341,7 +344,7 @@ export const PROTECTED_PUBLIC_FALLBACKS: ReadonlyArray<Readonly<{
   {
     path: 'next.config.ts',
     licence: 'MIT',
-    sha256: 'f23ce90dd3250efd79f049116626ed986277e259292c8647fabecf6d3c6f52aa',
+    sha256: 'af04dd4f7d3d6b7f8d53b4921282991157e220f8c19ff00e537c88ef387523a5',
   },
   {
     path: 'README.md',
@@ -413,7 +416,7 @@ export const PROTECTED_PUBLIC_FALLBACKS: ReadonlyArray<Readonly<{
   {
     path: 'src/app/page.tsx',
     licence: 'MIT',
-    sha256: '8c63827c17f633da3f7d93f3f6cfd7c6eee5026c9ba2e5a615842f3afc34bed1',
+    sha256: '71a1e4b8e3ba7bba13bc2359b30b8d33f0dd68d885e86559b818fb6d9c274ff0',
   },
   {
     path: 'src/app/privacy/page.tsx',

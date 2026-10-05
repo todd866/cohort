@@ -1,0 +1,208 @@
+{
+  "schemaVersion": 1,
+  "id": "abducens-local-labels",
+  "baseImage": {
+    "file": "base.png",
+    "sha256": "e8e5c267dedc12033cca845099639943c7a7618a1b16c842154ab3bace1e60aa",
+    "width": 1254,
+    "height": 1254,
+    "review": {
+      "status": "agent-reviewed",
+      "notes": "Parent plus independent blind pixel review supports only the local lateral-rectus/CN VI/optic-nerve grouping. Continuous muscle; motor nerve approaches deep side. Entry is occluded; posterior origins and intracranial course are intentionally absent. No clinician signoff."
+    }
+  },
+  "regions": [
+    {
+      "id": "lateral-rectus",
+      "name": "Lateral rectus",
+      "polygon": [
+        [
+          430,
+          510
+        ],
+        [
+          470,
+          510
+        ],
+        [
+          480,
+          585
+        ],
+        [
+          430,
+          585
+        ]
+      ],
+      "sources": [
+        {
+          "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC11089250/",
+          "fact": "Lateral rectus lies on the temporal side of the globe and abducts the eye."
+        }
+      ],
+      "review": {
+        "status": "agent-reviewed",
+        "notes": "Parent plus independent blind pixel review supports only the local lateral-rectus/CN VI/optic-nerve grouping. Continuous muscle; motor nerve approaches deep side. Entry is occluded; posterior origins and intracranial course are intentionally absent. No clinician signoff."
+      }
+    },
+    {
+      "id": "abducens",
+      "name": "CN VI",
+      "polygon": [
+        [
+          692,
+          989
+        ],
+        [
+          716,
+          989
+        ],
+        [
+          720,
+          1035
+        ],
+        [
+          697,
+          1035
+        ]
+      ],
+      "sources": [
+        {
+          "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC11089250/",
+          "fact": "CN VI approaches and innervates the medial/globe-facing surface of lateral rectus; penetration point is not shown."
+        }
+      ],
+      "review": {
+        "status": "agent-reviewed",
+        "notes": "Parent plus independent blind pixel review supports only the local lateral-rectus/CN VI/optic-nerve grouping. Continuous muscle; motor nerve approaches deep side. Entry is occluded; posterior origins and intracranial course are intentionally absent. No clinician signoff."
+      }
+    },
+    {
+      "id": "optic-nerve",
+      "name": "Optic nerve",
+      "polygon": [
+        [
+          756,
+          945
+        ],
+        [
+          790,
+          945
+        ],
+        [
+          800,
+          995
+        ],
+        [
+          766,
+          995
+        ]
+      ],
+      "sources": [
+        {
+          "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC11089250/",
+          "fact": "Optic nerve exits posterior globe, distinct from the motor nerve to lateral rectus."
+        }
+      ],
+      "review": {
+        "status": "agent-reviewed",
+        "notes": "Parent plus independent blind pixel review supports only the local lateral-rectus/CN VI/optic-nerve grouping. Continuous muscle; motor nerve approaches deep side. Entry is occluded; posterior origins and intracranial course are intentionally absent. No clinician signoff."
+      }
+    }
+  ],
+  "labels": [
+    {
+      "id": "lr-label",
+      "text": "Lateral rectus",
+      "anchor": [
+        451,
+        551
+      ],
+      "elbow": [
+        350,
+        602
+      ],
+      "textPosition": [
+        325,
+        610
+      ],
+      "targetRegion": "lateral-rectus",
+      "fontSize": 48,
+      "align": "end"
+    },
+    {
+      "id": "vi-label",
+      "text": "CN VI",
+      "anchor": [
+        707,
+        1018
+      ],
+      "elbow": [
+        721,
+        1120
+      ],
+      "textPosition": [
+        680,
+        1140
+      ],
+      "targetRegion": "abducens",
+      "fontSize": 48,
+      "align": "end"
+    },
+    {
+      "id": "optic-label",
+      "text": "Optic nerve",
+      "anchor": [
+        780,
+        970
+      ],
+      "elbow": [
+        940,
+        1065
+      ],
+      "textPosition": [
+        945,
+        1080
+      ],
+      "targetRegion": "optic-nerve",
+      "fontSize": 48
+    }
+  ],
+  "textBlocks": [
+    {
+      "text": "Anterior",
+      "position": [
+        740,
+        115
+      ],
+      "align": "middle",
+      "fontSize": 44
+    },
+    {
+      "text": "Temporal",
+      "position": [
+        165,
+        320
+      ],
+      "align": "middle",
+      "fontSize": 44
+    },
+    {
+      "text": "Nasal",
+      "position": [
+        1120,
+        350
+      ],
+      "align": "middle",
+      "fontSize": 44
+    }
+  ],
+  "footer": {
+    "text": "Right eye \u00b7 oblique superior view",
+    "position": [
+      627,
+      1220
+    ],
+    "align": "middle",
+    "fontSize": 42
+  }
+}

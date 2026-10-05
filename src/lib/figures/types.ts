@@ -5,8 +5,9 @@ import type {
   Modality,
   AltPolicy,
   ImageRevealRegion,
+  NumberedImageFocus,
 } from '@/lib/images/types';
-import { assessImageSensitivity, validImageRevealRegions } from '@/lib/images/types';
+import { assessImageSensitivity, validImageRevealRegions, validNumberedImageFocus } from '@/lib/images/types';
 
 /** The subset of sidecar data the client needs to render correctly.
  *  Allowlist: any new sidecar field must be explicitly added here to
@@ -25,6 +26,7 @@ export interface ClientImageMeta {
   /** Stable key for an alternate image to display once the answer is revealed. */
   revealImageKey?: string;
   revealRegions?: ImageRevealRegion[];
+  numberedFocus?: Record<string, NumberedImageFocus>;
   imageWidth?: number;
   imageHeight?: number;
   class: 'diagnostic' | 'diagram' | 'decorative' | 'lake-reference';
@@ -95,6 +97,7 @@ export function pickClientMeta(s: ImageSidecar, _imageKey?: string): ClientImage
     sensitive,
     revealImageKey: s.revealImageKey,
     revealRegions: validImageRevealRegions(s.revealRegions),
+    numberedFocus: validNumberedImageFocus(s.numberedFocus),
     class: s.class,
     altPolicy: 'altPolicy' in s ? s.altPolicy : 'generic',
     attributionText: s.attributionText,

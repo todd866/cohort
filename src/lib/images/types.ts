@@ -21,6 +21,28 @@ export interface ImageRevealRegion {
   height: number;
 }
 
+export interface NumberedImageFocus {
+  crop: ImageRevealRegion;
+  target: { x: number; y: number };
+}
+
+/** Reviewed numeric targets only; never project answer names or review notes. */
+export function validNumberedImageFocus(value: unknown): Record<string, NumberedImageFocus> | undefined {
+  if (!value || typeof value !== 'object' || Array.isArray(value)) return undefined;
+  const entries = Object.entries(value);
+  if (entries.length > 200) return undefined;
+  const result: Record<string, NumberedImageFocus> = {};
+  for (const [label, entry] of entries) {
+    if (!/^\d{1,3}$/.test(label) || !entry || typeof entry !== 'object') continue;
+    const crop = validImageRevealRegions([entry.crop])?.[0];
+    const x = entry.target?.x, y = entry.target?.y;
+    if (!crop || !Number.isFinite(x) || !Number.isFinite(y)
+      || x < crop.x || y < crop.y || x > crop.x + crop.width || y > crop.y + crop.height) continue;
+    result[label] = { crop, target: { x, y } };
+  }
+  return Object.keys(result).length ? result : undefined;
+}
+
 /** Strip unknown fields and reject malformed bounds before client projection. */
 export function validImageRevealRegions(value: unknown): ImageRevealRegion[] | undefined {
   if (!Array.isArray(value) || value.length === 0) return undefined;
@@ -88,6 +110,7 @@ interface SidecarBase {
    *  and persist in an offline pack. */
   revealImageKey?: string;
   revealRegions?: ImageRevealRegion[];
+  numberedFocus?: Record<string, NumberedImageFocus>;
   /** Shared intrinsic frame, allowing reveal assets to load without resizing. */
   imageWidth?: number;
   imageHeight?: number;

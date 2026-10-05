@@ -1,0 +1,46 @@
+{
+  "schemaVersion": 1,
+  "discipline": "anatomy",
+  "licence": "CC-BY-4.0",
+  "attribution": "MD3 contributors",
+  "cards": [
+    {
+      "id": "cohort:anatomy:c-36524ab962b8:v1",
+      "origin": "md3:ca8e0716f7f0b35c",
+      "discipline": "anatomy",
+      "cardType": "cloze",
+      "sourceComponent": "KeyPoint",
+      "front": "Which cranial nerve supplies the levator palpebrae superioris? [___]",
+      "back": "CN III (oculomotor)",
+      "context": "The levator palpebrae superioris is supplied by the superior division of cranial nerve III. Its skeletal muscle action elevates the upper eyelid.",
+      "complexity": 1,
+      "importance": 2,
+      "variantGroup": null,
+      "variantIndex": null,
+      "reference": {
+        "title": "NCBI Bookshelf: ocular motor anatomy and palsy",
+        "publisher": null,
+        "url": "https://www.ncbi.nlm.nih.gov/books/NBK537126/"
+      }
+    },
+    {
+      "id": "cohort:anatomy:c-3db791fa5153:v1",
+      "origin": "md3:1c94a8c5dde7ccc9",
+      "discipline": "anatomy",
+      "cardType": "cloze",
+      "sourceComponent": "KeyPoint",
+      "front": "A lesion of the abducens nucleus causes an ipsilateral horizontal [___] palsy.",
+      "back": "gaze",
+      "context": "The abducens nucleus contains motor neurons for the ipsilateral lateral rectus.\n\nInterneurons cross before ascending in the contralateral medial longitudinal fasciculus to the opposite medial rectus subnucleus, so the nucleus coordinates horizontal gaze.",
+      "complexity": 2,
+      "importance": 2,
+      "variantGroup": null,
+      "variantIndex": null,
+      "reference": {
+        "title": "NCBI Bookshelf: ocular motor anatomy and palsy",
+        "publisher": null,
+        "url": "https://www.ncbi.nlm.nih.gov/books/NBK430711/"
+      }
+    }
+  ]
+}

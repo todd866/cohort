@@ -1226,7 +1226,7 @@ describe('FOSS distribution boundary', () => {
     const publicTestPaths = [...publicPackage.scripts['foss:test'].matchAll(
       /(?:^|\s)["']?([^\s"']+\.test\.tsx?)["']?/g,
     )].map((match) => match[1]);
-    expect(publicTestPaths).toHaveLength(66);
+    expect(publicTestPaths).toHaveLength(72);
     expect(publicTestPaths).toContain('scripts/content/curated-starters.test.ts');
     expect(policy.includeFiles).toEqual(expect.arrayContaining(publicTestPaths));
     expect(JSON.stringify(publicPackage.scripts)).not.toMatch(

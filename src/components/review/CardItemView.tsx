@@ -30,6 +30,21 @@ import {
 
 const glossaryLeaf: LeafRenderer = (text: string) => <GlossaryText text={text} />;
 
+const ROHEN_INSTRUCTION = 'Rohen, Yokochi & Lutjen-Drecoll, Anatomy: A Photographic Atlas. The numbers are printed on the photograph; name the structure the leader line points to.';
+
+/** Presentation only: keep stored prompts/answers and review identities intact. */
+export function numberedAnatomyPresentation(front: string, context: string, caption?: string | null) {
+  const match = /^(.*?) — name structure \*\*(\d+)\*\* in the photograph\.\s*(\[[_\\]+\])$/.exec(front);
+  if (!match || !context.includes(ROHEN_INSTRUCTION)) return { front, context, caption, source: null };
+  return {
+    front: `Identify structure **${match[2]}**. ${match[3]}`,
+    context: context.replace(ROHEN_INSTRUCTION, '').replace(/(?:\\n|\s)+$/, '').trim(),
+    caption: caption?.trim() === match[1].trim() ? null : caption,
+    source: ROHEN_INSTRUCTION.split('. The numbers')[0] + '.',
+    targetNumber: match[2],
+  };
+}
+
 interface CardItemViewProps {
   item: ReviewItem;
   revealedBlanks: number;
@@ -104,11 +119,12 @@ export function CardItemView({
   // joins them at reveal — before that there is nothing to show, so the column
   // would just be a gap.
   const sidePane = itemUsesSidePane(item, cardFullyRevealed);
+  const presentation = numberedAnatomyPresentation(item.front || '', item.context || '', item.imageCaption);
 
   const stemNode = (
     <div data-card-stem className="text-[var(--md-on-surface)] mb-5 text-[1.03rem] leading-relaxed">
       <CardText
-        text={item.front || ''}
+        text={presentation.front}
         answers={item.backs || (item.back ? item.back.split('; ') : [])}
         revealedCount={revealedBlanks}
         reserveRevealSpace={mediaIsPrompt}
@@ -147,7 +163,7 @@ export function CardItemView({
   const figureNode = figureMounted ? (
     <CardImage
       src={item.imageUrl}
-      caption={item.imageCaption}
+      caption={presentation.caption}
       meta={item.imageMeta}
       prompt={figureIsPrompt}
       revealed={cardFullyRevealed}
@@ -155,6 +171,7 @@ export function CardItemView({
       trackingComponentId={item.id}
       onSkipSensitive={figureIsPrompt ? handleReveal : undefined}
       inSidePane={sidePane}
+      targetNumber={presentation.targetNumber}
     />
   ) : null;
 
@@ -192,12 +209,18 @@ export function CardItemView({
       )}
 
       {/* Context — grade buttons are in the sticky footer */}
-      {item.context && (
+      {presentation.context && (
         <div className="text-sm text-[var(--md-on-surface-variant)] mb-3 space-y-2 border-l-2 border-[var(--md-outline-soft)] pl-3">
-          {splitExplanation(normalizeAngleBracketEscapes(item.context).replace(/\\r\\n/g, '\n').replace(/\\n/g, '\n')).map((block, i) => (
+          {splitExplanation(normalizeAngleBracketEscapes(presentation.context).replace(/\\r\\n/g, '\n').replace(/\\n/g, '\n')).map((block, i) => (
             <p key={i}><InlineMarkdown text={block} leafRenderer={glossaryLeaf} /></p>
           ))}
         </div>
+      )}
+      {presentation.source && !item.imageMeta?.attributionText && (
+        <details className="text-xs text-[var(--md-on-surface-variant)] mt-2">
+          <summary className="cursor-pointer">Source</summary>
+          <p className="mt-1">{presentation.source}</p>
+        </details>
       )}
     </div>
   ) : null;
@@ -252,16 +275,17 @@ export function CardItemView({
   // treatment before the normal `lg` pane breakpoint. Keeping the question in
   // one column and the clip in the other preserves a useful surgical image
   // height while the fixed reveal control remains reachable.
-  const compactLandscape = clipPrompt
+  const compactPrompt = clipPrompt || Boolean(presentation.targetNumber);
+  const compactLandscape = compactPrompt
     ? '[@media(min-width:768px)_and_(max-height:500px)]:grid [@media(min-width:768px)_and_(max-height:500px)]:grid-cols-[minmax(0,1fr)_minmax(300px,50%)] [@media(min-width:768px)_and_(max-height:500px)]:gap-x-4'
     : '';
-  const compactLandscapeTop = clipPrompt
+  const compactLandscapeTop = compactPrompt
     ? '[@media(min-width:768px)_and_(max-height:500px)]:block [@media(min-width:768px)_and_(max-height:500px)]:col-start-1 [@media(min-width:768px)_and_(max-height:500px)]:row-start-1'
     : '';
-  const compactLandscapeMedia = clipPrompt
+  const compactLandscapeMedia = compactPrompt
     ? '[@media(min-width:768px)_and_(max-height:500px)]:block [@media(min-width:768px)_and_(max-height:500px)]:col-start-2 [@media(min-width:768px)_and_(max-height:500px)]:row-start-1 [@media(min-width:768px)_and_(max-height:500px)]:row-span-2'
     : '';
-  const compactLandscapeBottom = clipPrompt
+  const compactLandscapeBottom = compactPrompt
     ? '[@media(min-width:768px)_and_(max-height:500px)]:block [@media(min-width:768px)_and_(max-height:500px)]:col-start-1 [@media(min-width:768px)_and_(max-height:500px)]:row-start-2'
     : '';
 

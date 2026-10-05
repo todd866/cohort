@@ -5,7 +5,7 @@ import {
   shouldGateClientImageMeta,
   type ClientImageMeta,
 } from '@/lib/figures/types';
-import type { ImageRevealRegion } from '@/lib/images/types';
+import { validNumberedImageFocus, type ImageRevealRegion } from '@/lib/images/types';
 import { clickFocusRegion } from './zoom-focus';
 import { useImageTracking } from '@/hooks/useTracking';
 import { OFFLINE_FIGURES_CHANGE_EVENT, readCachedFigure } from '@/lib/offline/figures';
@@ -18,6 +18,8 @@ import {
 import { SensitiveMediaGate } from '@/components/media/SensitiveMediaGate';
 
 interface CardImageProps {
+  /** Exact numbered atlas prompt; ignored unless its sidecar has reviewed geometry. */
+  targetNumber?: string;
   /** A live/signed source when one is available. Offline-pack items deliberately
    * omit it and resolve their stable imageKey from the owner-scoped cache. */
   src?: string | null;
@@ -96,7 +98,8 @@ function anchorScroll(
   };
 }
 
-function CardImageZoom({ src, alt, regions, focusRegion, open, onClose, triggerRef }: {
+function CardImageZoom({ src, alt, regions, focusRegion, open, onClose, triggerRef, overview = false }: {
+  overview?: boolean;
   src: string;
   alt: string;
   regions?: ImageRevealRegion[];
@@ -114,6 +117,8 @@ function CardImageZoom({ src, alt, regions, focusRegion, open, onClose, triggerR
   const dialogRef = useRef<HTMLDialogElement>(null);
   const closeRef = useRef<HTMLButtonElement>(null);
   const viewportRef = useRef<HTMLDivElement>(null);
+  const [enlarged, setEnlarged] = useState(false);
+  const fitOverview = overview && !enlarged;
 
   /** Put the region in view. Safe to call more than once and at any time: it is
    *  a no-op while nothing is scrollable, which is the state a <dialog> is in
@@ -139,11 +144,12 @@ function CardImageZoom({ src, alt, regions, focusRegion, open, onClose, triggerR
   const applyAnchor = useCallback(() => {
     const viewport = viewportRef.current;
     if (!viewport) return;
+    if (fitOverview) { viewport.scrollLeft = 0; viewport.scrollTop = 0; return; }
     const target = anchorScroll(viewport, focusRegion ?? regions?.[0]);
     if (!target) return;
     viewport.scrollLeft = target.left;
     viewport.scrollTop = target.top;
-  }, [regions, focusRegion]);
+  }, [regions, focusRegion, fitOverview]);
 
   useEffect(() => {
     const dialog = dialogRef.current;
@@ -195,6 +201,9 @@ function CardImageZoom({ src, alt, regions, focusRegion, open, onClose, triggerR
         >
           <div className="flex items-center justify-between gap-4 border-b border-[var(--md-outline-variant)] px-4 py-2">
             <span className="text-sm font-medium">Image</span>
+            {overview && <button type="button" onClick={() => setEnlarged(value => !value)} className="ml-auto min-h-11 rounded-md px-3 text-sm underline">
+              {enlarged ? 'Fit plate' : 'Enlarge'}
+            </button>}
             <button ref={closeRef} type="button" onClick={onClose} className="min-h-11 min-w-11 rounded-md px-3 text-sm hover:bg-[var(--md-surface-container-high)]">
               Close
             </button>
@@ -223,7 +232,8 @@ function CardImageZoom({ src, alt, regions, focusRegion, open, onClose, triggerR
             <img
               src={src}
               alt={alt}
-              className="block h-auto w-auto min-w-[60rem] max-w-none lg:min-w-0 lg:w-full lg:max-w-full lg:object-contain"
+              className={fitOverview ? 'block mx-auto h-auto w-auto max-w-full object-contain' : overview ? 'block h-auto w-auto min-w-[60rem] max-w-none' : 'block h-auto w-auto min-w-[60rem] max-w-none lg:min-w-0 lg:w-full lg:max-w-full lg:object-contain'}
+              style={fitOverview ? { maxHeight: 'calc(95dvh - 5rem)' } : undefined}
               onLoad={applyAnchor}
             />
           </div>
@@ -276,6 +286,7 @@ function readSavedFigure(key: string, acceptLateUrl: (url: string) => void): Pro
  *  - if `meta.showWhen === 'after-reveal'` and not revealed → render nothing
  */
 export function CardImage({
+  targetNumber,
   src,
   caption,
   meta,
@@ -598,13 +609,17 @@ export function CardImage({
   const [loadedDimensions, setLoadedDimensions] = useState({ identity: '', width: 0, height: 0 });
   const imageWidth = meta?.imageWidth ?? (loadedDimensions.identity === sourceIdentity ? loadedDimensions.width : 0);
   const imageHeight = meta?.imageHeight ?? (loadedDimensions.identity === sourceIdentity ? loadedDimensions.height : 0);
-  const ratio = imageWidth > 0 && imageHeight > 0 ? imageWidth / imageHeight : undefined;
+  const numberedFocus = targetNumber && !showingRevealImage
+    ? validNumberedImageFocus(meta?.numberedFocus)?.[targetNumber] : undefined;
+  const crop = numberedFocus?.crop;
+  const ratio = imageWidth > 0 && imageHeight > 0
+    ? (imageWidth * (crop?.width ?? 1)) / (imageHeight * (crop?.height ?? 1)) : undefined;
   const figureStyle = {
     ...(ratio ? { '--md-figure-ratio': ratio } : {}),
     // Reserve the same space before and after reveal without putting hidden
     // answer-bearing text in the DOM. Opening Credit may scroll; it never
     // changes the image scale.
-    '--md-figure-notes-space': `${(caption ? 72 : 0) + (meta?.attributionText ? 20 : 0)}px`,
+    '--md-figure-notes-space': `${(caption ? 72 : 0) + (meta?.attributionText ? 20 : 0) + (crop ? 32 : 0)}px`,
   } as CSSProperties;
 
   if (!visible) return null;
@@ -640,7 +655,7 @@ export function CardImage({
       onSkip={sensitive && !revealed ? onSkipSensitive : undefined}
       captureReviewSpace={sensitive && !revealed}
     >
-        <figure style={figureStyle} className={`review-figure mb-4${inSidePane ? ` ${SIDE_PANE_FIGURE}` : ''}${expanded ? '' : ' review-figure-compact'}`}>
+        <figure style={figureStyle} data-numbered-focus={crop ? true : undefined} className={`review-figure mb-4${inSidePane ? ` ${SIDE_PANE_FIGURE}` : ''}${expanded ? '' : ' review-figure-compact'}`}>
           <div data-figure-frame style={ratio ? { aspectRatio: ratio } : undefined}
             className={`relative mx-auto block w-full overflow-hidden rounded-lg border border-[var(--md-outline-variant)] ${expanded ? 'cursor-zoom-out' : 'cursor-zoom-in'}`}>
             {effectiveSrc ? (
@@ -659,15 +674,17 @@ export function CardImage({
                 // (clientX is 0 and the rect is unreachable), so it falls back
                 // to the region, which is the right answer for that path.
                 const rect = event.currentTarget.getBoundingClientRect();
+                const clicked = clickFocusRegion(rect, event.clientX, event.clientY);
                 setZoomFocus(
                   event.detail === 0
-                    ? null
-                    : clickFocusRegion(rect, event.clientX, event.clientY),
+                    ? crop ?? null
+                    : crop && clicked ? { x: crop.x + clicked.x * crop.width, y: crop.y + clicked.y * crop.height,
+                      width: clicked.width * crop.width, height: clicked.height * crop.height } : clicked,
                 );
                 setZoomOpen(true);
               }}
-              aria-label={revealed && caption ? `Zoom image: ${caption}` : 'Zoom image'}
-              className="relative block h-full w-full"
+              aria-label={crop ? 'Full plate' : revealed && caption ? `Zoom image: ${caption}` : 'Zoom image'}
+              className="relative block h-full w-full overflow-hidden"
             >
               {/* No `title` here: the styled <figcaption> below is the single caption
                   source. A native `title` tooltip duplicated it on hover (and went
@@ -684,7 +701,15 @@ export function CardImage({
                       ? previous : { identity: sourceIdentity, width: naturalWidth, height: naturalHeight });
                 }}
                 className="block h-full w-full object-contain"
+                style={crop ? { position: 'absolute', maxWidth: 'none', maxHeight: 'none', width: `${100 / crop.width}%`, height: `${100 / crop.height}%`,
+                  left: `${-100 * crop.x / crop.width}%`, top: `${-100 * crop.y / crop.height}%` } : undefined}
               />
+              {numberedFocus && crop && (
+                <span data-numbered-target aria-hidden="true" className="pointer-events-none absolute h-4 w-4 rounded-full border-2 border-[var(--md-anatomy-target)]"
+                  style={{ left: `${100 * (numberedFocus.target.x - crop.x) / crop.width}%`, top: `${100 * (numberedFocus.target.y - crop.y) / crop.height}%`, transform: 'translate(-50%, -50%)', boxShadow: '0 0 0 2px var(--md-surface)' }}>
+                  <span className="absolute right-5 -top-2 rounded px-1 text-sm font-semibold bg-[var(--md-surface)] text-[var(--md-on-surface)]">{targetNumber}</span>
+                </span>
+              )}
               {showingRevealImage && meta?.revealRegions?.map((region, index) => (
                 <span key={index} data-reveal-region aria-hidden="true"
                   className="pointer-events-none absolute"
@@ -694,11 +719,12 @@ export function CardImage({
               ))}
             </button>
             <CardImageZoom
-              key={`${zoomIdentity}:${altText}`}
+              key={`${zoomIdentity}:${altText}:${zoomOpen ? 'open' : 'closed'}`}
               src={effectiveSrc}
               alt={altText}
               regions={meta?.revealRegions}
               focusRegion={zoomFocus}
+              overview={Boolean(crop)}
               open={zoomOpen}
               onClose={() => setZoomOpen(false)}
               triggerRef={zoomTriggerRef}
@@ -712,6 +738,8 @@ export function CardImage({
               </div>
             )}
           </div>
+          {crop && <button type="button" className="mt-1 min-h-8 text-xs text-[var(--md-on-surface-variant)] underline"
+            onClick={() => zoomTriggerRef.current?.click()}>Full plate</button>}
           {revealed && caption && (
             <figcaption className="mt-2 text-left text-sm leading-snug text-[var(--md-on-surface-variant)]">
               {caption}

@@ -30,6 +30,15 @@ const originalPaths = new Set<string>(originalFigurePaths);
 
 /** Legacy Step 1 namespace; originals are individually manifest-admitted. */
 export const OPEN_FIGURE_PREFIX = '/figures/usmle/step1/';
+/** One separately reviewed original anatomy scaffold; admission is exact-path and exact-bytes. */
+export const REVIEWED_LOCAL_ANATOMY_FIGURE = '/figures/anatomy/abducens-local.svg';
+export const REVIEWED_LOCAL_ANATOMY_SHA256 = '0b6358d3fe7a0205414a60e2ead6258684eaea0c3f70fe3f9ac5ee0a54bc4977';
+export const REVIEWED_LOCAL_ANATOMY_LICENSE = 'MIT';
+
+export function isReviewedLocalAnatomyPath(value: string | null | undefined): boolean {
+  return value === REVIEWED_LOCAL_ANATOMY_FIGURE;
+}
+
 
 /** Filename inside the open corpus: no nesting, no traversal, SVG only. */
 const OPEN_FIGURE_ASSET = /^[a-z0-9][a-z0-9-]*\.svg$/;
@@ -42,7 +51,7 @@ const OPEN_FIGURE_ASSET = /^[a-z0-9][a-z0-9-]*\.svg$/;
  * directly under the prefix is rejected rather than normalised.
  */
 export function isOpenFigurePath(path: string | null | undefined): boolean {
-  if (typeof path === 'string' && originalPaths.has(path)) return true;
+  if (typeof path === 'string' && (originalPaths.has(path) || isReviewedLocalAnatomyPath(path))) return true;
   if (typeof path !== 'string' || !path.startsWith(OPEN_FIGURE_PREFIX)) return false;
 
   const asset = path.slice(OPEN_FIGURE_PREFIX.length);

@@ -1106,7 +1106,16 @@ main:focus-visible {
   .review-figure-compact { --md-figure-height: 18rem; }
 }
 
+@media (min-width: 768px) and (max-height: 500px) {
+  .review-figure[data-numbered-focus] {
+    --md-figure-height: max(100px, calc(100svh - 16rem));
+  }
+}
+
 @media (max-width: 639px) {
+  .review-figure[data-numbered-focus] {
+    --md-figure-height: min(34svh, max(160px, calc(100svh - 29rem)));
+  }
   /* Leave the question and fixed grading/navigation controls in view. */
   .review-figure-side-pane {
     --md-figure-height: max(120px, calc(100svh - 24rem));

@@ -8,7 +8,7 @@ import {
   publicVisualSvgFailures,
 } from '@/lib/cohort/public-visual-assets';
 import publicVisualAssetManifestJson from '../../../open-content/usmle/step1/visual-assets-v1.json';
-import { OPEN_FIGURE_PREFIX, isOpenFigurePath } from './open-figure-access';
+import { OPEN_FIGURE_PREFIX, REVIEWED_LOCAL_ANATOMY_SHA256, isOpenFigurePath, isReviewedLocalAnatomyPath } from './open-figure-access';
 import { getOriginalFigure } from './original-figure-manifest';
 import { isWithdrawnFigure } from './withdrawn-figures';
 
@@ -152,7 +152,12 @@ export const OPEN_CONTENT_MEDIA_DIR = join(
   'media',
 );
 
+const LOCAL_ANATOMY_FIGURE_DIR = join(process.cwd(), 'open-content', 'anatomy-scaffolds', 'abducens-local');
 const FIGURE_SEARCH_DIRS = [PUBLIC_FIGURE_DIR, OPEN_CONTENT_MEDIA_DIR];
+
+export function isReviewedLocalAnatomyBytesAllowed(svg: string): boolean {
+  return createHash('sha256').update(svg, 'utf8').digest('hex') === REVIEWED_LOCAL_ANATOMY_SHA256;
+}
 
 /** Read one already-validated filename from a specific directory. */
 export function readOpenFigureFrom(dir: string, filename: string): string | null {
@@ -207,6 +212,10 @@ export function readOpenFigure(
   if (!segments || segments.length === 0) return null;
 
   const requested = `/figures/${segments.join('/')}`;
+  if (isReviewedLocalAnatomyPath(requested)) {
+    const svg = readOpenFigureFrom(LOCAL_ANATOMY_FIGURE_DIR, 'served.svg');
+    return svg !== null && isReviewedLocalAnatomyBytesAllowed(svg) ? svg : null;
+  }
   // This reader is only for Step 1 SVGs. Original PNGs have their own manifest
   // and byte validation below, even though both are publicly accessible.
   if (!requested.startsWith(OPEN_FIGURE_PREFIX) || !isOpenFigurePath(requested)) return null;
@@ -254,7 +263,8 @@ export function openFigureResponse(
     && segments[1] === 'step1'
     ? segments[2]
     : null;
-  const headers = filename && manifestAssetByFilename.has(filename)
+  const headers = isReviewedLocalAnatomyPath(`/figures/${segments?.join('/') ?? ''}`)
+    || (filename && manifestAssetByFilename.has(filename))
     ? MANAGED_FIGURE_HEADERS
     : OPEN_FIGURE_HEADERS;
   return new Response(withBody ? svg : null, { status: 200, headers });

@@ -1,0 +1,51 @@
+{
+  "status": "agent-reviewed-limited-local-anatomy",
+  "reviewedAt": "2026-10-05",
+  "projection": "right eye, oblique superior view",
+  "reviewedBy": [
+    "parent source and final pixel review",
+    "independent blind pixel review",
+    "independent labelled pixel and mobile readability review"
+  ],
+  "scope": [
+    "continuous lateral rectus on temporal side of globe",
+    "distinct optic nerve leaving posterior globe",
+    "CN VI approaches deep globe-facing side of lateral rectus",
+    "three short leaders terminate in their declared structures"
+  ],
+  "sources": [
+    {
+      "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC11089250/",
+      "establishes": "CN VI reaches and branches into the medial surface of lateral rectus"
+    },
+    {
+      "url": "https://pubmed.ncbi.nlm.nih.gov/28514515/",
+      "establishes": "anatomical study of abducens branches and lateral rectus innervation"
+    }
+  ],
+  "externalReferencePixelsUsed": false,
+  "generationInput": "construction.svg; original geometric drawing, not traced",
+  "reviewOutcome": "Accepted only for the stated local grouping. Earlier independently generated candidates were rejected for incorrect surface entry or ambiguous muscle continuity.",
+  "limitations": [
+    "Actual nerve penetration point is occluded.",
+    "Orbital apex, muscle origin, common tendinous ring and intracranial nerve course are absent.",
+    "No clinical or surgical precision claim; no clinician signoff.",
+    "Database agreement is corroboration, not proof of anatomical accuracy."
+  ],
+  "files": {
+    "base.png": "e8e5c267dedc12033cca845099639943c7a7618a1b16c842154ab3bace1e60aa",
+    "construction.svg": "d6af83a86fc3cf325ade4f7455ad48a12c8e6ad041236c64e434d1ace41290ff",
+    "generation-prompt.txt": "40df906733222c03e6f29932ce98d4b06c6d59289f528db1c090a0c15b8fb39e",
+    "labels.json": "2565aef2c85d7b3a6755d4d133ecbe65d1c66037a609ea6a0b139abbff00fc19",
+    "diagram.svg": "7c91c7ddfec25dc75d556a4bb8164e734fcd71c667f41094c9a228d7bea18683",
+    "diagram.svg.checks.json": "cadbfee854b79bcbc55dfc860f430a0591b43927ba9942134d38c5ae395a8e39",
+    "served.svg": "0b6358d3fe7a0205414a60e2ead6258684eaea0c3f70fe3f9ac5ee0a54bc4977"
+  },
+  "checks": {
+    "blindPixels": true,
+    "labelEndpoints": true,
+    "mobile375": true,
+    "fullSize": true
+  },
+  "servedDerivative": "diagram.svg with the complete MIT licence inserted as nonvisual SVG metadata; pixels and labels unchanged"
+}

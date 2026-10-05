@@ -1,7 +1,13 @@
 import Link from 'next/link';
 
-/** The open products cohort.md serves. Order is deliberate: most complete first. */
+/** The open learning resources cohort.md serves. */
 const COHORT_PRODUCTS = [
+  {
+    href: '/anatomy',
+    name: 'Anatomy',
+    blurb: 'Learn what structures do and why they matter.',
+    detail: '12 ocular-motor scaffolds · Adaptive practice',
+  },
   {
     href: '/gamsat',
     name: 'GAMSAT',
@@ -23,7 +29,7 @@ export default function HomePage() {
         cohort.md
       </h1>
       <p className="mt-3 text-[var(--md-on-surface-variant)]">
-        Free and open exam preparation. Every question is originally authored and
+        Free and open medical learning. Every question is originally authored and
         openly licensed. No score or pass prediction.
       </p>
 
