@@ -11,6 +11,7 @@ import { bulkUpsertQuestions, sqlEscape } from '@/lib/db/bulk-upsert';
 import { normalizeQuestionNotation } from './normalize-notation';
 import { projectCuratedQuestionForBulk, type CuratedQuestionBulkProjection } from './seed-projection';
 import type { CuratedQuestion } from './types';
+import { needsResultsTable } from './results-table-policy';
 
 /** Any Prisma-like client that supports raw SQL (works with both PrismaClient and $extends() result). */
 type PrismaLike = Parameters<typeof bulkUpsertQuestions>[0];
@@ -69,6 +70,13 @@ export async function upsertCuratedQuestionBank(
   }
 
   if (loaded.questions.length === 0) return { upserted: 0 };
+
+  // Presentation is part of the authored clinical data contract, including
+  // external imports using skipQuality. Reject before any database writes.
+  const inlinePanels = loaded.questions.filter(q => needsResultsTable(q.stem));
+  if (inlinePanels.length) {
+    throw new Error(`Question results tables required before seed:\n${inlinePanels.map(q => `- ${q.id}`).join('\n')}`);
+  }
 
   const normalizedQuestions = loaded.questions.map(normalizeQuestionNotation);
   const normalizedCount = normalizedQuestions.filter((q, index) => q !== loaded.questions[index]).length;

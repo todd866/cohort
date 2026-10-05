@@ -1,5 +1,6 @@
 'use client';
 
+import { useFlagImage } from '@/components/content/FlagImageInput';
 import { useState, useCallback, useEffect, useRef } from 'react';
 import { submitFlag } from '@/lib/flag-submit';
 import { harvestFlagDiagnostics } from '@/lib/flag-diagnostics';
@@ -26,6 +27,7 @@ interface UseFlaggingOpts {
  * replayed, never silently dropped. The ✓ is shown only on confirmed delivery.
  */
 export function useFlagging({ item, registerResetCallback }: UseFlaggingOpts) {
+  const image = useFlagImage(`${item?.type}:${item?.deliveryId ?? item?.id}`);
   const [flagMode, setFlagMode] = useState(false);
   const [flagged, setFlagged] = useState(false);
   // Durably-queued or in-flight: the flag is safe in the outbox (queued /
@@ -54,7 +56,7 @@ export function useFlagging({ item, registerResetCallback }: UseFlaggingOpts) {
     });
   }, [registerResetCallback]);
 
-  const handleFlagSubmit = useCallback(() => {
+  const handleFlagSubmit = useCallback(async () => {
     if (!item) return;
     // Block only an in-flight or durably-queued submit (pendingRef) — this stops
     // accidental double-submit of the SAME flag. A delivered flag must NOT block a
@@ -64,7 +66,7 @@ export function useFlagging({ item, registerResetCallback }: UseFlaggingOpts) {
     if (pendingRef.current) return;
     pendingRef.current = true;
     setFlagPending(true);
-    setFlagMode(false);
+    const draft = image.capture();
     const note = flagMessage.trim();
     // Harvest the render environment NOW — at the moment of flagging, with the
     // card revealed and the footer showing — so a rendering complaint ("context
@@ -80,31 +82,40 @@ export function useFlagging({ item, registerResetCallback }: UseFlaggingOpts) {
     // Exact practice retests keep the same opaque question capability as other
     // public questions; the server resolves that capability to the canonical
     // published exam component after checking owner and source fingerprints.
+    let attachmentId: string | undefined;
+    try { if (image.file) attachmentId = await image.prepare({ type: item.type as 'card' | 'question', id: opaqueDeliveryId ?? item.id, ...(opaqueDeliveryId ? { deliveryId: opaqueDeliveryId } : {}) }); }
+    catch { clear(); return; }
     submitFlag({
       type: item.type as 'card' | 'question',
       id: opaqueDeliveryId ?? item.id,
       ...(opaqueDeliveryId ? { deliveryId: opaqueDeliveryId } : {}),
       reason: 'Other',
+      ...(attachmentId ? { attachmentId } : {}),
       ...(note ? { message: note } : {}),
       ...((diagnostics || practiceSource) ? { context: {
         ...diagnostics,
         ...(practiceSource ? { componentType: 'practice-exam-item', path: practiceSource.paperPath } : {}),
       } } : {}),
     }).then((result) => {
+      if (!image.isCurrent(draft)) return;
+      if (result === 'image-unavailable') { image.retryImage(); clear(); return; }
+      if (result !== 'dropped') { image.committed(); setFlagMode(false); setFlagMessage(''); }
+      else image.setError('Flag was not sent. Your image and note are kept; try again.');
       if (result === 'delivered') { setFlagged(true); clear(); }
       else if (result === 'queued') { /* stays pending — durably queued, awaiting replay */ }
       else if (result === 'auth-required') { setAuthExpired(true); /* stays pending */ }
       else clear(); // 'dropped' — invalid, allow a retry
     }).catch(clear);
-    setFlagMessage('');
-  }, [item, flagMessage]);
+  }, [item, flagMessage, image]);
 
   const closeFlag = useCallback(() => {
+    image.remove();
     setFlagMode(false);
     setFlagMessage('');
-  }, []);
+  }, [image]);
 
   return {
+    image,
     flagMode,
     flagged,
     flagPending,

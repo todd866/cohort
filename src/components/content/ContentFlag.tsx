@@ -13,6 +13,7 @@ import { usePathname } from 'next/navigation';
 import { useContentFlagOverlay } from './content-flag-overlay-context';
 import { submitFlag, type FlagResult } from '@/lib/flag-submit';
 import { useFlagPending } from '@/hooks/useFlagPending';
+import { FlagImageInput, flagImageEvents, useFlagImage } from './FlagImageInput';
 import { SessionExpiredPrompt } from './SessionExpiredPrompt';
 
 // Flag reasons - ordered by actual usage frequency (539 flags analysed 2026-02)
@@ -111,35 +112,40 @@ export function ContentFlag({
   }, [resolvedPath, resolvedRotation, resolvedWeek, componentType, contentSnapshot]);
 
   const flagKey = useMemo(() => `${targetType}:${targetId}`, [targetType, targetId]);
+  const image = useFlagImage(flagKey);
+  const [submitting, setSubmitting] = useState(false);
+  const submittingRef = useRef(false);
   const pending = useFlagPending(flagKey);
   const delivered = overlay ? overlay.isFlagged(flagKey) : localFlagged;
   const pendingDelivery = pending === 'pending';
   const blocked = pending === 'blocked' || authExpired;
 
   const closeMenu = useCallback(() => {
+    image.remove();
     setOpen(false);
     setOtherMode(false);
     setMessage('');
-  }, []);
+  }, [image]);
 
-  const submitFlagAction = useCallback(
-    (reason: FlagReason, note?: string) => {
-      closeMenu();
-      const payload = {
-        type: targetType,
-        id: targetId,
-        reason,
-        ...(note && note.trim() ? { message: note.trim() } : {}),
-        context,
-      };
-      submitFlag(payload).then((result: FlagResult) => {
-        if (result === 'delivered') setLocalFlagged(true);
-        else if (result === 'auth-required') setAuthExpired(true);
-        // 'queued' → pending dot via useFlagPending; 'dropped' → no ✓
+  const submitFlagAction = useCallback(async (reason: FlagReason, note?: string) => {
+    if (submittingRef.current) return;
+    submittingRef.current = true; setSubmitting(true);
+    const draft = image.capture();
+    try {
+      const attachmentId = await image.prepare({ type: targetType, id: targetId });
+      const result: FlagResult = await submitFlag({ type: targetType, id: targetId, reason,
+        ...(note?.trim() ? { message: note.trim() } : {}), context,
+        ...(attachmentId ? { attachmentId } : {}),
       });
-    },
-    [targetType, targetId, context, closeMenu]
-  );
+      if (!image.isCurrent(draft)) return;
+      if (result === 'image-unavailable') { image.retryImage(); return; }
+      if (result === 'dropped') { image.setError('Could not send this flag. Try again.'); return; }
+      if (result === 'delivered') setLocalFlagged(true);
+      else if (result === 'auth-required') setAuthExpired(true);
+      image.committed(); closeMenu();
+    } catch { /* Keep the draft for retry. */ }
+    finally { submittingRef.current = false; setSubmitting(false); }
+  }, [targetType, targetId, context, image, closeMenu]);
 
   const handleButtonClick = useCallback(
     (event: ReactMouseEvent<HTMLButtonElement>) => {
@@ -288,6 +294,7 @@ export function ContentFlag({
         <>
         <div className="fixed inset-0 z-10" onClick={(event) => { event.stopPropagation(); closeMenu(); }} />
         <menu
+          {...flagImageEvents(image)}
           ref={menuRef}
           tabIndex={-1}
           onKeyDown={handleMenuKeyDown}
@@ -314,6 +321,7 @@ export function ContentFlag({
                   </button>
                 ))}
               </li>
+              <li><FlagImageInput image={image} disabled={submitting} /></li>
               <li className="flag-hint">esc to cancel</li>
             </>
           ) : (
@@ -329,9 +337,10 @@ export function ContentFlag({
                 className="flag-textarea"
                 placeholder="Describe the issue..."
               />
+              <FlagImageInput image={image} disabled={submitting} />
               <div className="flex gap-2 mt-2">
                 <button type="button" onClick={closeMenu} className="btn btn-tonal btn-sm flex-1">Cancel</button>
-                <button type="button" onClick={() => submitFlagAction('Other', message)} className="btn btn-filled btn-sm flex-1">Submit</button>
+                <button type="button" disabled={submitting} onClick={() => submitFlagAction('Other', message)} className="btn btn-filled btn-sm flex-1">Submit</button>
               </div>
               <p className="flag-hint">enter to submit</p>
             </li>

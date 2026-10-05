@@ -1,5 +1,6 @@
 'use client';
 
+import { FlagImageDeliveryNotice } from '@/components/content/FlagImageDeliveryNotice';
 import { useState, useEffect } from 'react';
 import { useSession } from 'next-auth/react';
 import { bindOfflineOwner } from '@/lib/offline/device-state';
@@ -179,9 +180,11 @@ export function ConnectionBanner({ inline = false, message = 'Offline — answer
     setDismissed(true);
   };
 
-  if (!offline || dismissed) return null;
+  if (!offline || dismissed) return <FlagImageDeliveryNotice />;
 
   return (
+    <>
+    <FlagImageDeliveryNotice />
     <div
       className={`${inline ? 'relative shrink-0' : 'fixed top-0 left-0 right-0 z-[100]'} bg-[var(--md-tertiary-container)] pt-[env(safe-area-inset-top)] text-[var(--md-on-tertiary-container)]`}
     >
@@ -199,5 +202,6 @@ export function ConnectionBanner({ inline = false, message = 'Offline — answer
         </button>
       </div>
     </div>
+    </>
   );
 }

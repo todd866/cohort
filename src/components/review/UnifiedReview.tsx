@@ -1459,6 +1459,8 @@ function UnifiedReviewBody({ rotations, week, rotationSizes, fetchSlots, feedMod
       {/* Flag overlay */}
       <FlagOverlay
         isOpen={flagMode}
+        image={flagging.image}
+        submitting={flagPending}
         flagMessage={flagMessage}
         onSubmit={handleFlagSubmit}
         onClose={closeFlag}

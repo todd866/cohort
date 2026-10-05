@@ -36,6 +36,8 @@ import {
 } from '@/lib/practice-exam/public-paper';
 import { practiceReviewPaperVersion } from '@/lib/study/practice-review-focus.server';
 
+import { isSameOriginImageRequest, FLAG_IMAGE_MAX_BYTES } from '@/lib/flags/image-contract';
+
 const PRIVATE_HEADERS = {
   'Cache-Control': 'private, no-store',
   Vary: 'Cookie',
@@ -56,11 +58,12 @@ function json(body: unknown, status = 200, headers?: Record<string, string>) {
 }
 
 async function readBoundedJson(request: NextRequest): Promise<unknown> {
+  const limit = request.headers.get('x-flag-image-upload') === '1' ? Math.ceil(FLAG_IMAGE_MAX_BYTES * 4 / 3) + 16_384 : MAX_FLAG_REQUEST_BYTES;
   const declaredLength = request.headers.get('content-length');
   if (
     declaredLength !== null
     && Number.isFinite(Number(declaredLength))
-    && Number(declaredLength) > MAX_FLAG_REQUEST_BYTES
+    && Number(declaredLength) > limit
   ) {
     throw new RangeError('Flag request is too large');
   }
@@ -73,7 +76,7 @@ async function readBoundedJson(request: NextRequest): Promise<unknown> {
     const { done, value } = await reader.read();
     if (done) break;
     totalBytes += value.byteLength;
-    if (totalBytes > MAX_FLAG_REQUEST_BYTES) {
+    if (totalBytes > limit) {
       await reader.cancel();
       throw new RangeError('Flag request is too large');
     }
@@ -85,7 +88,9 @@ async function readBoundedJson(request: NextRequest): Promise<unknown> {
     bytes.set(chunk, offset);
     offset += chunk.byteLength;
   }
-  return JSON.parse(new TextDecoder().decode(bytes)) as unknown;
+  const parsed = JSON.parse(new TextDecoder().decode(bytes)) as unknown;
+  if (totalBytes > MAX_FLAG_REQUEST_BYTES && (!isRecord(parsed) || !parsed.imageUpload)) throw new RangeError('Flag request is too large');
+  return parsed;
 }
 
 const safePath = z.string().trim().max(500).regex(/^\/[A-Za-z0-9?&=_%+.,:/-]*$/);
@@ -122,6 +127,8 @@ const flagSchema = z.object({
   reason: z.enum(STRUCTURED_FLAG_REASONS),
   message: z.string().max(1000).optional(),
   context: flagContextSchema,
+  attachmentId: z.string().regex(/^flag-image-[a-f0-9]{64}$/).optional(),
+  imageUpload: z.object({ uploadId: z.string().uuid(), base64: z.string().max(Math.ceil(FLAG_IMAGE_MAX_BYTES * 4 / 3) + 4) }).strict().optional(),
   clientRequestId: z.string().trim().min(1).max(100).regex(/^[A-Za-z0-9._:-]+$/).optional(),
 }).superRefine((value, context) => {
   if (!value.deliveryId) return;
@@ -216,6 +223,15 @@ const REASON_TO_ISSUE_TYPE: Record<string, string> = {
 };
 
 export async function POST(request: NextRequest) {
+  if (request.headers.get('x-flag-image-upload') === '1') {
+    // Authorize and throttle before buffering the larger image body. This does
+    // not mint a guest or replace target authorization below.
+    if (!isSameOriginImageRequest(request)) return json({ error: 'Same-origin request required' }, 403);
+    const uploadAuth = await requireAuthOrExistingGuest();
+    if (uploadAuth.response) return privateResponse(uploadAuth.response);
+    const uploadLimit = await checkUserRateLimit(uploadAuth.userId, 'flag-image-upload', 10, 60_000);
+    if (!uploadLimit.ok) return json({ error: 'Try again shortly' }, 429);
+  }
   let rawBody: unknown;
   try {
     rawBody = await readBoundedJson(request);
@@ -284,7 +300,10 @@ export async function POST(request: NextRequest) {
       );
     }
 
-    const { type, id, deliveryId, reason, message, context, clientRequestId } = parseResult.data;
+    const { type, id, deliveryId, reason, message, context, clientRequestId, attachmentId, imageUpload } = parseResult.data;
+    if ((attachmentId || imageUpload) && !isSameOriginImageRequest(request)) return json({ error: 'Same-origin request required' }, 403);
+    if (attachmentId && imageUpload) return json({ error: 'Invalid image request' }, 400);
+    if (attachmentId && !clientRequestId) return json({ error: 'Request identifier required' }, 400);
     const reasonLabel = reason;
     const contextData = context ?? {};
 
@@ -398,6 +417,17 @@ export async function POST(request: NextRequest) {
       }
     }
 
+    // Reuse the exact card/public-delivery authorization above before storing
+    // any bytes. Preparation creates no issue and returns no canonical IDs.
+    if (imageUpload) {
+      try {
+        const { prepareFlagImage } = await import('@/lib/flags/image.server');
+        const imageId = await prepareFlagImage(userId, targetType, targetId, imageUpload.uploadId, imageUpload.base64);
+        return json({ attachmentId: imageId });
+      } catch {
+        return json({ error: 'Image could not be uploaded. Use a PNG, JPEG or WebP under 2 MB and try again.' }, 422);
+      }
+    }
     const issueType = REASON_TO_ISSUE_TYPE[reasonLabel] ?? 'other';
     const path = typeof contextData.path === 'string'
       ? contextData.path
@@ -436,6 +466,12 @@ export async function POST(request: NextRequest) {
     // All flag writes are atomic: issue + user state
     // Each flag creates its own issue — no aggregation, so every flag is visible in triage
     const issue = await prisma.$transaction(async (tx) => {
+      if (attachmentId) {
+        const owners = await tx.$queryRawUnsafe<Array<{ privacyDeletionRequestedAt: Date | null }>>(
+          'SELECT "privacyDeletionRequestedAt" FROM "User" WHERE "id" = $1 FOR UPDATE', userId,
+        );
+        if (owners.length !== 1 || owners[0].privacyDeletionRequestedAt) return null;
+      }
       // Never trust a client-supplied snapshot as resolution evidence. Capture
       // the current canonical content inside the same transaction instead. Pin
       // the read to the rotation authorized above so a concurrent move into a
@@ -465,12 +501,30 @@ export async function POST(request: NextRequest) {
         contentSnapshot = question.stem.slice(0, 200);
       }
 
+      let attachment: Awaited<ReturnType<typeof tx.userDocument.findUnique>> | null = null;
+      if (attachmentId) {
+        attachment = await tx.userDocument.findUnique({ where: { id: attachmentId } });
+        const meta = attachment?.metadata as Record<string, unknown> | null;
+        if (attachment && (attachment.userId !== userId || attachment.purpose !== 'flag-image'
+          || meta?.targetType !== targetType || meta?.targetId !== targetId)) return null;
+        // A delayed outbox may outlive its image draft. Preserve the authorized
+        // text report, explicitly recording the missing evidence for triage.
+        if (attachment && (attachment.status !== 'quarantined'
+          || (!attachment.flagIssueId && (!attachment.deleteAfter || attachment.deleteAfter <= new Date())))) attachment = null;
+      }
+
       // Idempotency: a queue replay must not create a second issue.
       if (clientRequestId) {
         const existing = await tx.contentIssue.findFirst({ where: { clientRequestId } });
-        if (existing) return existing;
+        if (existing) {
+          const reporter = existing.metadata as Record<string, unknown> | null;
+          if (reporter?.userId !== userId || existing.targetId !== targetId || existing.targetType !== targetType) return null;
+          if (attachment && attachment.flagIssueId !== existing.id) return null;
+          return existing;
+        }
       }
 
+      if (attachment?.flagIssueId) attachment = null;
       let txIssue;
       try {
         txIssue = await tx.contentIssue.create({
@@ -497,6 +551,7 @@ export async function POST(request: NextRequest) {
             ...(Object.keys(quarantinedContext).length > 0 ? { quarantinedContext } : {}),
             metadata: {
               reporterType: 'user',
+              ...(attachmentId && !attachment ? { attachmentUnavailable: true } : {}),
               userId,
               reason: reasonLabel,
               hasQuarantinedMessage: Boolean(quarantinedMessage),
@@ -508,14 +563,20 @@ export async function POST(request: NextRequest) {
           },
         });
       } catch (e) {
-        if (clientRequestId && (e as { code?: string }).code === 'P2002') {
-          const existing = await tx.contentIssue.findFirst({ where: { clientRequestId } });
-          if (existing) return existing;
-        }
+        // A concurrent unique-key winner is retried through the durable outbox;
+        // the next transaction verifies its reporter, target and attachment.
         throw e;
       }
 
       // Update the user's local state for UI feedback
+      if (attachment) {
+        const linked = await tx.userDocument.updateMany({
+          where: { id: attachment.id, userId, flagIssueId: null, status: 'quarantined', deleteAfter: { gt: new Date() } },
+          data: { flagIssueId: txIssue.id },
+        });
+        if (linked.count !== 1) throw new Error('Attachment state changed');
+      }
+
       if (type === 'card') {
         const flagContext = {
           issueId: txIssue.id,
@@ -570,7 +631,7 @@ export async function POST(request: NextRequest) {
       success: true,
       issueId: issue.id,
       reportCount: issue.reportCount,
-    });
+    }, 200, (issue.metadata as Record<string, unknown> | null)?.attachmentUnavailable === true ? { 'X-Flag-Attachment-Unavailable': '1' } : {});
   } catch (error) {
     logger.error('Error recording flag', { userId, error: String(error) });
     return json({ error: 'Failed to record flag' }, 500);

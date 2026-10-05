@@ -236,6 +236,9 @@ export const PUBLIC_API_ROUTE_PATHS: ReadonlyArray<string> = Object.freeze([
   'src/app/api/cohort/difficulty/route.ts',
   'src/app/api/cohort/profile/route.ts',
   'src/app/api/cohort/turn/route.ts',
+  // Private feedback image: existing identity plus owner/admin object check;
+  // no public bucket URL, guest minting or document ingestion surface.
+  'src/app/api/content/flag/images/[id]/route.ts',
   'src/app/api/content/flag/route.ts',
   'src/app/api/help/route.ts',
   'src/app/api/log/client-error/route.ts',

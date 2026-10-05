@@ -77,7 +77,7 @@ export function classifyFlagLane(text: string | null | undefined): FlagLane {
   if (premortem) return PREMORTEM_LANES[premortem[1]] ?? 'needs-read';
 
   // decode first: "needs tla decode" must not be swallowed by the generic "needs … image" check
-  if (/\btla\b|\bdecode\b|\bacronym\b/.test(t)) return 'decode';
+  if (/\btlas?\b|\bdecodes?\b|\bacronyms?\b/.test(t)) return 'decode';
 
   // augment: the keep-but-scaffold directive owns too-easy / giveaway / answer-visible.
   // Widened 2026-09-16 to cover the terse shorthand reporters actually use
@@ -92,7 +92,7 @@ export function classifyFlagLane(text: string | null | undefined): FlagLane {
 
   // image / picture / diagram / figure / x-ray / a described tracing with no media
   if (
-    /\bimages?\b|\biamge\b|\bpictures?\b|\bpics?\b|\bdiagrams?\b|x-?ray|\bfigures?\b|\bphotos?\b|\bcrop(ped|ping)?\b|\bcaption\b|\bvideos?\b|\bclips?\b|koplik|no xray|(cannot|can'?t|couldn'?t) see|should have the right (ecg|cxr|tracing|film)|discusses an ecg/.test(
+    /\bimages?\b|\biamge\b|\bpictures?\b|\bpics?\b|\bdiagrams?\b|x-?ray|\bfigures?\b|\bphotos?\b|\bcrop(ped|ping)?\b|\bcaption\b|\bvideos?\b|\bclips?\b|koplik|no xray|(cannot|can'?t|couldn'?t) see|should have the right (ecg|cxr|tracing|film)|discusses an ecg|\bbox (is )?(incorrectly drawn|in the wrong (place|spot))\b/.test(
       t,
     )
   ) {
@@ -138,6 +138,8 @@ export function classifyFlagLane(text: string | null | undefined): FlagLane {
     || /too.?long answer|answer (is )?too.?long/.test(t)
     // context or explanation referring to option letters, which shuffle
     || /specific (letters|options)/.test(t)
+    // Dense clinical data presentation requests, not arbitrary mentions of tables.
+    || /\b(?:vital signs|vitals|labs?|numbers|measurements|numeric (?:data|values|results))\b.{0,90}\b(?:in|into|as)\s+(?:(?:a|the)\s+)?table\b|\btabulate\b.{0,60}\b(?:vital signs|vitals|labs?|numbers|measurements|numeric (?:data|values|results))\b|\breference ranges?\b/.test(t)
   ) {
     return 'hand-fix';
   }

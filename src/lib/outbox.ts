@@ -1,3 +1,4 @@
+import { recordFlagImageDeliveryNotice } from './flags/image-delivery-notice';
 import { fetchWithDeadline } from './fetch-with-deadline';
 import { isRetriableWriteStatus } from './write-retry-policy';
 import {
@@ -645,6 +646,7 @@ async function flushOwnerOnce(ownerKey: string): Promise<void> {
             outcomes.set(entryIdentity(entry), { action: 'remove' });
           }
         } else {
+          if (entry.kind === 'flag' && res.headers?.get?.('X-Flag-Attachment-Unavailable') === '1') recordFlagImageDeliveryNotice(ownerLease);
           transportFailures = 0;
           outcomes.set(entryIdentity(entry), { action: 'remove' });
         }

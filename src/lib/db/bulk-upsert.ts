@@ -373,7 +373,19 @@ export async function bulkUpsertCards(
         "importance" = EXCLUDED."importance",
         "crosslinks" = EXCLUDED."crosslinks",
         "annotations" = EXCLUDED."annotations",
-        "abbreviations" = EXCLUDED."abbreviations",
+        -- The MDX parser emits NULL when a decode pass has no abbreviation map.
+        -- Preserve a previously reviewed map only when the clinical card body is
+        -- unchanged. An explicit {} remains an intentional clear; a changed
+        -- front/back/backs/context with NULL must clear stale coverage.
+        "abbreviations" = CASE
+          WHEN EXCLUDED."abbreviations" IS NULL
+            AND "Card"."front" IS NOT DISTINCT FROM EXCLUDED."front"
+            AND "Card"."back" IS NOT DISTINCT FROM EXCLUDED."back"
+            AND "Card"."backs" IS NOT DISTINCT FROM EXCLUDED."backs"
+            AND "Card"."context" IS NOT DISTINCT FROM EXCLUDED."context"
+            THEN "Card"."abbreviations"
+          ELSE EXCLUDED."abbreviations"
+        END,
         "imageUrl" = EXCLUDED."imageUrl",
         "imageCaption" = EXCLUDED."imageCaption",
         "imageRole" = EXCLUDED."imageRole",

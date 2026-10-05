@@ -1534,6 +1534,7 @@ prisma/migrations/20261002151100_serve_decision_delivered_decided_at_index/migra
 prisma/migrations/20261002153000_question_response_created_at_index/migration.sql
 prisma/migrations/20261002153100_card_progress_last_review_index/migration.sql
 prisma/migrations/20261004040000_review_challenge/migration.sql
+prisma/migrations/20261005030000_flag_image_attachments/migration.sql
 prisma/migrations/migration_lock.toml
 prisma/schema/anki-bridge.prisma
 prisma/schema/anki-export.prisma
@@ -1647,6 +1648,7 @@ src/app/api/cohort/card-grade/route.ts
 src/app/api/cohort/difficulty/route.ts
 src/app/api/cohort/profile/route.ts
 src/app/api/cohort/turn/route.ts
+src/app/api/content/flag/images/[id]/route.ts
 src/app/api/content/flag/route.ts
 src/app/api/gamsat/answer/route.ts
 src/app/api/gamsat/corpus/route.ts
@@ -1748,6 +1750,8 @@ src/components/content/DeepDiveLink.tsx
 src/components/content/DetailsButton.tsx
 src/components/content/Figure.client.tsx
 src/components/content/Figure.server.tsx
+src/components/content/FlagImageDeliveryNotice.tsx
+src/components/content/FlagImageInput.tsx
 src/components/content/GlossaryScope.tsx
 src/components/content/GlossaryText.tsx
 src/components/content/ImageOcclusion.server.tsx
@@ -2079,6 +2083,10 @@ src/lib/figures/withdrawn-figures.ts
 src/lib/flag-diagnostics.ts
 src/lib/flag-submit.ts
 src/lib/flags/classify-lane.ts
+src/lib/flags/image-contract.ts
+src/lib/flags/image-delivery-notice.ts
+src/lib/flags/image-storage.server.ts
+src/lib/flags/image.server.ts
 src/lib/flags/parse-since.ts
 src/lib/flags/pattern-cluster.ts
 src/lib/flags/reconcile.ts

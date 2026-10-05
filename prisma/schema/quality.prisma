@@ -11,6 +11,7 @@
 
 // ContentIssue - Aggregated issue ticket (many reports → one issue)
 model ContentIssue {
+  attachment UserDocument?
   id              String  @id @default(cuid())
   clientRequestId String? @unique // Idempotency key from the client outbox (dedupes replays; NULLs are distinct in Postgres)
 

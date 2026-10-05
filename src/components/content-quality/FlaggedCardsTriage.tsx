@@ -38,6 +38,8 @@ type ContentIssue = {
   message: string | null;
   reporterType: string;
   reportTrustState: 'trusted' | 'structured' | 'quarantined' | 'approved' | 'rejected';
+  quarantinedImageUrl?: string | null;
+  attachmentUnavailable?: boolean;
   quarantinedMessage: string | null;
   quarantinedContext: Record<string, unknown> | null;
   approvedSummary: string | null;
@@ -339,6 +341,12 @@ export function FlaggedCardsTriage() {
 
                   {/* Human trust review — raw text is inert React text and is
                       never returned by agent-operated triage. */}
+                  {issue.attachmentUnavailable && <p className="text-sm">The attached image was unavailable; the text report was retained.</p>}
+                  {issue.quarantinedImageUrl && (
+                    <a href={issue.quarantinedImageUrl} target="_blank" rel="noopener noreferrer" className="text-sm underline">
+                      View attached image (untrusted)
+                    </a>
+                  )}
                   {issue.quarantinedMessage && (
                     <div className="p-3 rounded-xl border border-[var(--md-error)]/40 bg-[var(--md-error-container)] space-y-3">
                       <div>

@@ -10,6 +10,7 @@ import {
 import { FlagOverlay } from '@/components/review/FlagOverlay';
 import { useContentKeyboard } from '@/hooks/useContentKeyboard';
 import { KeyboardHintBar } from '@/components/shared/KeyboardHintBar';
+import { useFlagImage } from '@/components/content/FlagImageInput';
 import { submitFlag } from '@/lib/flag-submit';
 
 interface Props {
@@ -37,6 +38,10 @@ export function WeekContentWithTabs({ children, prevWeekHref, nextWeekHref }: Pr
   const [flagMessage, setFlagMessage] = useState('');
   const [activeFlag, setActiveFlag] = useState<ContentFlagRequest | null>(null);
   const [flaggedKeys, setFlaggedKeys] = useState<Set<string>>(() => new Set());
+
+  const image = useFlagImage(activeFlag?.flagKey ?? '');
+  const [submitting, setSubmitting] = useState(false);
+  const submittingRef = useRef(false);
 
   const openFocusedFlag = useCallback(() => {
     const blocks = Array.from(
@@ -76,38 +81,30 @@ export function WeekContentWithTabs({ children, prevWeekHref, nextWeekHref }: Pr
   }, []);
 
   const handleFlagClose = useCallback(() => {
+    image.remove();
     setFlagMode(false);
     setFlagMessage('');
     setActiveFlag(null);
-  }, []);
+  }, [image]);
 
-  const handleFlagSubmit = useCallback(() => {
-    if (!activeFlag) return;
-
-    const flagPayload = {
-      type: activeFlag.targetType,
-      id: activeFlag.targetId,
-      reason: 'Other',
-      ...(flagMessage.trim() ? { message: flagMessage.trim() } : {}),
-      ...(Object.keys(activeFlag.context).length > 0 ? { context: activeFlag.context } : {}),
-    } as const;
-
-    const capturedFlagKey = activeFlag.flagKey;
-    handleFlagClose();
-
-    submitFlag(flagPayload).then((result) => {
-      if (result === 'delivered') {
-        setFlaggedKeys((prev) => {
-          const next = new Set(prev);
-          next.add(capturedFlagKey);
-          return next;
-        });
-      }
-      // 'queued'/'auth-required': durable in the outbox and will replay;
-      // the inline ContentFlag button surfaces pending/blocked state via
-      // useFlagPending — nothing extra needed here.
-    });
-  }, [activeFlag, flagMessage, handleFlagClose]);
+  const handleFlagSubmit = useCallback(async () => {
+    if (!activeFlag || submittingRef.current) return;
+    submittingRef.current = true; setSubmitting(true);
+    const draft = image.capture();
+    try {
+      const attachmentId = await image.prepare({ type: activeFlag.targetType, id: activeFlag.targetId });
+      const result = await submitFlag({ type: activeFlag.targetType, id: activeFlag.targetId,
+        reason: 'Other', message: flagMessage.trim(), context: activeFlag.context,
+        ...(attachmentId ? { attachmentId } : {}),
+      });
+      if (!image.isCurrent(draft)) return;
+      if (result === 'image-unavailable') { image.retryImage(); return; }
+      if (result === 'dropped') { image.setError('Could not send this flag. Try again.'); return; }
+      if (result === 'delivered') setFlaggedKeys(prev => new Set(prev).add(activeFlag.flagKey));
+      image.committed(); handleFlagClose();
+    } catch { /* The image controller keeps the draft and explains upload failures. */ }
+    finally { submittingRef.current = false; setSubmitting(false); }
+  }, [activeFlag, flagMessage, image, handleFlagClose]);
 
   const overlayContextValue = useMemo(
     () => ({
@@ -141,6 +138,8 @@ export function WeekContentWithTabs({ children, prevWeekHref, nextWeekHref }: Pr
         />
         <FlagOverlay
           isOpen={flagMode}
+          image={image}
+          submitting={submitting}
           flagMessage={flagMessage}
           onSubmit={handleFlagSubmit}
           onClose={handleFlagClose}

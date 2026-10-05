@@ -56,10 +56,12 @@ export const COMPANION_SOURCE_ROTATIONS: Readonly<Record<string, readonly string
   // appear under Anatomy, GSSE and NSx without being copied.
   // CAH holds the valve-echo clips that also name surgical-sciences. They
   // stay one card; GSSE borrows the ones that declare it.
-  'surgical-sciences': Object.freeze(['anatomy', 'neurosurg', 'cah']),
-  anatomy: Object.freeze(['surgical-sciences', 'neurosurg']),
+  // PWH contributes explicitly mapped pelvic and embryology scaffolds.
+  // Per-card membership and independent source entitlement still apply.
+  'surgical-sciences': Object.freeze(['anatomy', 'neurosurg', 'cah', 'pwh']),
+  anatomy: Object.freeze(['surgical-sciences', 'neurosurg', 'pwh']),
   // CAH joined 2026-09-23: its examination clips name `neurosurg`.
-  neurosurg: Object.freeze(['surgical-sciences', 'anatomy', 'cah', 'physical-exam']),
+  neurosurg: Object.freeze(['surgical-sciences', 'anatomy', 'cah', 'physical-exam', 'pwh']),
   // Paeds-Surg owns no cards at all: the paediatric module seeds under
   // surgical-sciences, and the anatomy it needs is the Rohen plate corpus that
   // seeds there too. Without this entry the deck renders in the selector and

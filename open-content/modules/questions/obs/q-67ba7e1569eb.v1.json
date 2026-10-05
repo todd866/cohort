@@ -9,7 +9,7 @@
   ],
   "questionType": "diagnosis",
   "difficulty": "hard",
-  "stem": "A 30-year-old at 34 weeks, whose booking blood pressure was 112/70 mmHg, has readings of 152/98 and 150/96 mmHg four hours apart. She has new swelling of her hands and face and has gained 2 kg this week. She has no headache, visual symptoms or epigastric pain. Urine dipstick shows 1+ protein, but the protein:creatinine ratio is 16 mg/mmol (significant ≥30). Creatinine is 104 µmol/L (58 at booking), platelets 212 × 10^9/L, ALT 24 U/L, and uric acid is raised.\n\nWhich diagnosis best accounts for these findings?",
+  "stem": "A 30-year-old at 34 weeks, whose booking blood pressure was 112/70 mmHg, has readings of 152/98 and 150/96 mmHg four hours apart. She has new swelling of her hands and face and has gained 2 kg this week. She has no headache, visual symptoms or epigastric pain. Urine dipstick shows 1+ protein, but the protein:creatinine ratio is 16 mg/mmol (significant ≥30). Uric acid is raised.\n\n| Measurement | Result | Previous result |\n|---|---|---|\n| Creatinine | 104 µmol/L | 58 at booking |\n| Platelets | 212 × 10^9/L | — |\n| ALT | 24 U/L | — |\n\nWhich diagnosis best accounts for these findings?",
   "options": [
     {
       "label": "A",
@@ -58,7 +58,7 @@
     },
     "review": {
       "verdict": "passed",
-      "contentHash": "1bdb91bda8034827609c13fadd771a9e6e32460d194e04dc908175fc01bf99bb"
+      "contentHash": "ca6b21fab56b46fb7a0a63ce9935a4cbfb7e7f31d61ac301ab9529af2dbcc1a7"
     }
   }
 }

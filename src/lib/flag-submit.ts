@@ -5,7 +5,7 @@ import {
   isOfflineOwnerCurrent,
 } from './offline/owner';
 
-export type FlagResult = 'delivered' | 'queued' | 'auth-required' | 'dropped';
+export type FlagResult = 'delivered' | 'queued' | 'auth-required' | 'dropped' | 'image-unavailable';
 
 export interface FlagPayload {
   type: 'card' | 'question' | 'component' | 'page';
@@ -17,6 +17,8 @@ export interface FlagPayload {
   deliveryId?: string;
   reason: string;
   message?: string;
+  /** Verified private attachment ID only. Never enqueue image bytes. */
+  attachmentId?: string;
   context?: Record<string, unknown>;
 }
 
@@ -42,7 +44,7 @@ export async function submitFlag(payload: FlagPayload): Promise<FlagResult> {
   try {
     const res = await submitWithRetry(FLAG_URL, body, { ownerLease });
     if (!isOfflineOwnerCurrent(ownerLease)) return 'dropped';
-    if (res.ok) return 'delivered';
+    if (res.ok) return res.headers?.get?.('X-Flag-Attachment-Unavailable') === '1' ? 'image-unavailable' : 'delivered';
 
     if (res.status === 401 || res.status === 403) {
       try {
