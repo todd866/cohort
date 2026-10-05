@@ -1,0 +1,152 @@
+{
+  "schemaVersion": 1,
+  "licence": "CC-BY-4.0",
+  "attribution": "MD3 contributors",
+  "discipline": "anatomy",
+  "items": [
+    {
+      "originalId": "visual-lateral-rectus-identification",
+      "front": "Structure A is the [___] muscle.",
+      "back": "Lateral rectus",
+      "context": "The lateral rectus lies on the temporal side of the globe. It moves the eye away from the nose and is supplied by the abducens nerve (CN VI).",
+      "complexity": 1,
+      "importance": 2,
+      "sources": [
+        {
+          "title": "Cranial Nerves III, IV, and VI: Oculomotor Function",
+          "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC2801485/"
+        },
+        {
+          "title": "Reviewed local nerve-to-muscle anatomy",
+          "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC11089250/"
+        }
+      ],
+      "review": {
+        "status": "accepted",
+        "contentHash": "66f4485309aaac84490f05afa3076a97beda7fdd4276ceb21e96fc84da185bbd",
+        "reviewer": "Parent source verification and independent anatomy_ui_alignment visual-target review (agent review; not clinician signoff)",
+        "reviewedAt": "2026-10-06"
+      }
+    },
+    {
+      "originalId": "visual-lateral-rectus-action",
+      "front": "The muscle marked A produces [___] of the eye.",
+      "back": "Abduction",
+      "context": "Lateral rectus pulls the front of the eye away from the nose. Weakness limits looking towards the affected side.",
+      "complexity": 1,
+      "importance": 2,
+      "sources": [
+        {
+          "title": "Cranial Nerves III, IV, and VI: Oculomotor Function",
+          "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC2801485/"
+        },
+        {
+          "title": "Reviewed local nerve-to-muscle anatomy",
+          "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC11089250/"
+        }
+      ],
+      "review": {
+        "status": "accepted",
+        "contentHash": "62da3e2ae0e2505be3535f3c5f9cb82c1e73ee76830fd1e8ac9e8ca75fb5d071",
+        "reviewer": "Parent source verification and independent anatomy_ui_alignment visual-target review (agent review; not clinician signoff)",
+        "reviewedAt": "2026-10-06"
+      }
+    },
+    {
+      "originalId": "visual-abducens-identification",
+      "front": "Structure A is the [___].",
+      "back": "Abducens nerve",
+      "context": "The abducens nerve (CN VI) approaches the globe-facing side of lateral rectus. It carries the motor supply that makes the eye turn outward. Its entry point into the muscle is hidden in this view.",
+      "complexity": 1,
+      "importance": 2,
+      "sources": [
+        {
+          "title": "Cranial Nerves III, IV, and VI: Oculomotor Function",
+          "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC2801485/"
+        },
+        {
+          "title": "Reviewed local nerve-to-muscle anatomy",
+          "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC11089250/"
+        }
+      ],
+      "review": {
+        "status": "accepted",
+        "contentHash": "6dbe4c669c7a8faa9709d446d5eb18356786c784925ed53e036061b53e8af38d",
+        "reviewer": "Parent source verification and independent anatomy_ui_alignment visual-target review (agent review; not clinician signoff)",
+        "reviewedAt": "2026-10-06"
+      }
+    },
+    {
+      "originalId": "visual-abducens-muscle",
+      "front": "The nerve marked A supplies the [___] muscle.",
+      "back": "Lateral rectus",
+      "context": "CN VI supplies lateral rectus. The nearby optic nerve has a different role: carrying visual information rather than moving the eye.",
+      "complexity": 1,
+      "importance": 2,
+      "sources": [
+        {
+          "title": "Cranial Nerves III, IV, and VI: Oculomotor Function",
+          "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC2801485/"
+        },
+        {
+          "title": "Reviewed local nerve-to-muscle anatomy",
+          "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC11089250/"
+        }
+      ],
+      "review": {
+        "status": "accepted",
+        "contentHash": "5e0c01e3efd868455845f2d7b582fb83bf3046c0f1d32237d191d9495a52c28e",
+        "reviewer": "Parent source verification and independent anatomy_ui_alignment visual-target review (agent review; not clinician signoff)",
+        "reviewedAt": "2026-10-06"
+      }
+    },
+    {
+      "originalId": "visual-optic-nerve-identification",
+      "front": "Structure A is the [___].",
+      "back": "Optic nerve",
+      "context": "The optic nerve leaves the back of the globe and carries visual information from the retina towards the brain. It is distinct from the smaller motor nerve supplying lateral rectus.",
+      "complexity": 1,
+      "importance": 2,
+      "sources": [
+        {
+          "title": "Cranial Nerves III, IV, and VI: Oculomotor Function",
+          "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC2801485/"
+        },
+        {
+          "title": "Reviewed local nerve-to-muscle anatomy",
+          "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC11089250/"
+        }
+      ],
+      "review": {
+        "status": "accepted",
+        "contentHash": "98616eb33204a4744d8bcdf5e020bc3b32ae6899fdba0a0e8b836f5ddfa69765",
+        "reviewer": "Parent source verification and independent anatomy_ui_alignment visual-target review (agent review; not clinician signoff)",
+        "reviewedAt": "2026-10-06"
+      }
+    },
+    {
+      "originalId": "visual-optic-nerve-function",
+      "front": "The nerve marked A carries sensory information for [___].",
+      "back": "Vision",
+      "context": "The optic nerve (CN II) carries visual information from the retina. The abducens nerve (CN VI) supplies lateral rectus and controls an eye movement.",
+      "complexity": 1,
+      "importance": 2,
+      "sources": [
+        {
+          "title": "Cranial Nerves III, IV, and VI: Oculomotor Function",
+          "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC2801485/"
+        },
+        {
+          "title": "Reviewed local nerve-to-muscle anatomy",
+          "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC11089250/"
+        }
+      ],
+      "review": {
+        "status": "accepted",
+        "contentHash": "16586af56119b096808e1570a26923fcf58a6dc8de3b027db7d1a8e6fbd3b95a",
+        "reviewer": "Parent source verification and independent anatomy_ui_alignment visual-target review (agent review; not clinician signoff)",
+        "reviewedAt": "2026-10-06"
+      }
+    }
+  ]
+}

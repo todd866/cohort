@@ -2,20 +2,24 @@
 
 import { useCallback, useEffect, useRef, useState } from 'react';
 import { ConfidenceButtons } from '@/components/shared/ConfidenceButtons';
+import { CardText } from '@/components/shared/CardText';
+import { AnatomyReviewFigure, prepareAnatomyFigure } from '@/components/shared/AnatomyReviewFigure';
+import { reviewPaneGridClass, reviewShellWidthClass, REVIEW_PANE_TEXT_TOP, REVIEW_PANE_TEXT_BOTTOM, REVIEW_PANE_MEDIA } from '@/components/shared/review-pane-layout';
 import { useReviewDifficulty } from '@/hooks/useReviewDifficulty';
 import { useSession } from 'next-auth/react';
 import Link from 'next/link';
 import { InlineMarkdown } from '@/lib/inline-markdown';
 import { genClientRequestId } from '@/lib/client-request-id';
 import { extractMarkdownTables, MarkdownTable } from '@/lib/inline-markdown';
+import type { CohortExperience } from '@/lib/cohort/experience-prior';
 import {
   fetchWithDeadline,
   CLIENT_FETCH_DEADLINE_MS,
   STUDY_SESSION_FETCH_DEADLINE_MS,
 } from '@/lib/fetch-with-deadline';
-import { COHORT_EXPERIENCE_OPTIONS, type CohortExperience } from '@/lib/cohort/experience-prior';
 import {
   isCohortCardSessionItem,
+  parseCohortCardSessionItem,
   parseCohortChallengeExhaustion,
   type CohortCardSessionItem,
   type CohortTurnResult,
@@ -27,20 +31,10 @@ type Profile = { hookCompletedAt: string | null; explicit: { experience?: Cohort
 function newId(prefix: string) {
   return `${prefix}-${genClientRequestId()}`;
 }
-function renderFront(front: string) {
-  const [before, after] = front.split('[___]');
-  return (
-    <>
-      <InlineMarkdown text={before} />
-      <span className="mx-1 inline-block min-w-20 border-b-2 border-current align-baseline" />
-      {after ? <InlineMarkdown text={after} /> : null}
-    </>
-  );
-}
 function isItem(value: unknown): value is Item {
   if (!value || typeof value !== 'object') return false;
   const item = value as Record<string, unknown>;
-  if (item.kind === 'card') return isCohortCardSessionItem(item);
+  if (item.kind === 'card') return parseCohortCardSessionItem(item) !== null;
   const options = Array.isArray(item.options) ? item.options : [];
   const validOption = (option: unknown) => {
     if (!option || typeof option !== 'object') return false;
@@ -72,7 +66,7 @@ function parseTurn(value: unknown): CohortTurnResult {
     !Array.isArray(result.items) ||
     !Number.isSafeInteger(result.deliveredSize) ||
     result.deliveredSize !== result.items.length ||
-    (result.deliveredSize !== 0 && result.deliveredSize !== 1 && result.deliveredSize !== 3) ||
+    (result.deliveredSize !== 0 && result.deliveredSize !== 1) ||
     typeof result.sessionId !== 'string' ||
     typeof result.requestedSize !== 'number' ||
     result.items.some((item) => !isItem(item))
@@ -109,22 +103,18 @@ export default function AnatomyStudyClient() {
   const [saving, setSaving] = useState(false);
   const [error, setError] = useState<string | null>(null);
   const [complete, setComplete] = useState(false);
-  const [experienceSaving, setExperienceSaving] = useState(false);
-  const [hookPending, setHookPending] = useState(false);
-  const [hookError, setHookError] = useState(false);
+  const [figureReady, setFigureReady] = useState(true);
   const journeyId = useRef(newId('anatomy-journey'));
   const ordinal = useRef(0);
   const previousDelivery = useRef<string | null>(null);
   const pendingTurn = useRef<Record<string, unknown> | null>(null);
   const pendingGrade = useRef<Record<string, unknown> | null>(null);
-  const pendingHook = useRef<Record<string, unknown> | null>(null);
   const pendingAnswer = useRef<Record<string, unknown> | null>(null);
   const completedDelivery = useRef<string | null>(null);
   const advancing = useRef(false);
   const startedAt = useRef(Date.now());
-  const intro = useRef(false);
   const automaticEase = useRef(false);
-  const nextTurnRef = useRef<(size: 1 | 3) => Promise<void>>(async () => {});
+  const nextTurnRef = useRef<(size: 1) => Promise<void>>(async () => {});
   const { status: authStatus } = useSession();
   const authStatusRef = useRef(authStatus);
   authStatusRef.current = authStatus;
@@ -148,7 +138,7 @@ export default function AnatomyStudyClient() {
     setProfile(body.profile);
     return body.profile;
   }, []);
-  const nextTurn = useCallback(async (size: 1 | 3) => {
+  const nextTurn = useCallback(async (size: 1) => {
     setLoading(true);
     setError(null);
     const body = pendingTurn.current ?? {
@@ -189,9 +179,17 @@ export default function AnatomyStudyClient() {
       }
       if (result.sessionId !== journeyId.current || result.requestedSize !== size || result.deliveredSize !== size)
         throw new Error('The anatomy turn returned an unexpected number of items');
+      // The delivery stays pending until its pixels are usable. A retry keeps
+      // the same server delivery and the answered card remains on screen.
+      const nextItem = result.items[0];
+      if (isCohortCardSessionItem(nextItem) && nextItem.media) {
+        await prepareAnatomyFigure(nextItem.media.target, 'prompt');
+        void prepareAnatomyFigure(nextItem.media.target, 'answer').catch(() => {});
+      }
+      setFigureReady(!isCohortCardSessionItem(nextItem) || !nextItem.media);
       pendingTurn.current = null;
       completedDelivery.current = null;
-      intro.current = size === 3;
+
       setQueue(result.items);
       setQueueIndex(0);
       setSelected(null);
@@ -206,9 +204,7 @@ export default function AnatomyStudyClient() {
   }, []);
   nextTurnRef.current = nextTurn;
   const startAfterProfile = useCallback(
-    async (loaded: Profile) => {
-      if (!loaded.hookCompletedAt) return nextTurn(3);
-      if (!loaded.explicit.experience) return;
+    async () => {
       return nextTurn(1);
     },
     [nextTurn],
@@ -216,8 +212,8 @@ export default function AnatomyStudyClient() {
   useEffect(() => {
     let cancelled = false;
     void loadProfile()
-      .then((loaded) => {
-        if (!cancelled) return startAfterProfile(loaded);
+      .then(() => {
+        if (!cancelled) return startAfterProfile();
       })
       .catch((cause) => {
         if (!cancelled) setError(cause instanceof Error ? cause.message : 'Could not load the anatomy study profile');
@@ -230,57 +226,9 @@ export default function AnatomyStudyClient() {
     };
   }, [loadProfile, startAfterProfile]);
 
-  const saveExperience = async (experience: CohortExperience) => {
-    setExperienceSaving(true);
-    setError(null);
-    try {
-      const response = await fetchWithDeadline(
-        '/api/cohort/profile',
-        { method: 'PATCH', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ experience }) },
-        CLIENT_FETCH_DEADLINE_MS,
-      );
-      const body = (await response.json().catch(() => ({}))) as { profile?: Profile; error?: string };
-      if (!response.ok || !body.profile) throw new Error(body.error || 'Could not save your study level');
-      const refreshed = await loadProfile();
-      if (refreshed.explicit.experience) await nextTurn(1);
-    } catch (cause) {
-      setError(cause instanceof Error ? cause.message : 'Could not save your study level');
-    } finally {
-      setExperienceSaving(false);
-    }
-  };
-  const completeHook = async () => {
-    const body = pendingHook.current ?? { hookCompleted: true };
-    pendingHook.current = body;
-    setHookPending(true);
-    setHookError(false);
-    setError(null);
-    try {
-      const response = await fetchWithDeadline(
-        '/api/cohort/profile',
-        { method: 'PATCH', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify(body) },
-        CLIENT_FETCH_DEADLINE_MS,
-      );
-      const payload = (await response.json().catch(() => ({}))) as { profile?: Profile; error?: string };
-      if (!response.ok || !payload.profile) throw new Error(payload.error || 'Could not save your introduction');
-      pendingHook.current = null;
-      const refreshed = await loadProfile();
-      setQueue([]);
-      setQueueIndex(0);
-      intro.current = false;
-      if (!refreshed.explicit.experience) return;
-      await nextTurn(1);
-    } catch (cause) {
-      setHookError(true);
-      setError(cause instanceof Error ? cause.message : 'Could not save your introduction');
-    } finally {
-      setHookPending(false);
-    }
-  };
-
   const finishItem = async (confidence = 3) => {
     const item = queue[queueIndex];
-    if (!item || advancing.current || saving) return;
+    if (!item || advancing.current || saving || (isCohortCardSessionItem(item) && item.media && !figureReady)) return;
     advancing.current = true;
     setSaving(true);
     setError(null);
@@ -302,8 +250,7 @@ export default function AnatomyStudyClient() {
         pendingGrade.current = null;
       }
       if (completedDelivery.current === item.deliveryId) {
-        if (intro.current) await completeHook();
-        else await nextTurn(1);
+        await nextTurn(1);
         return;
       }
       completedDelivery.current = item.deliveryId;
@@ -315,8 +262,7 @@ export default function AnatomyStudyClient() {
         setRevealed(false);
         setQuestionReveal(null);
         startedAt.current = Date.now();
-      } else if (intro.current) await completeHook();
-      else await nextTurn(1);
+      } else await nextTurn(1);
     } catch (cause) {
       setError(cause instanceof Error ? cause.message : 'Your answer could not be saved');
     } finally {
@@ -359,6 +305,24 @@ export default function AnatomyStudyClient() {
   };
 
   const item = queue[queueIndex] ?? null;
+  const card = isCohortCardSessionItem(item);
+  const currentMediaReady = !card || !item.media || figureReady;
+  useEffect(() => {
+    const onKeyDown = (event: KeyboardEvent) => {
+      if (!item || saving || !currentMediaReady || document.querySelector('[aria-modal="true"]') || (event.target instanceof HTMLElement && (event.target.isContentEditable || event.target.closest('button, a, select'))) || event.metaKey || event.ctrlKey || event.altKey || event.target instanceof HTMLInputElement || event.target instanceof HTMLTextAreaElement) return;
+      if (event.key === ' ' && card && !revealed && currentMediaReady) {
+        event.preventDefault();
+        setRevealed(true);
+      } else if (/^[1-4]$/.test(event.key) && (card ? revealed : Boolean(selected)) && !questionReveal) {
+        event.preventDefault();
+        const level = Number(event.key);
+        if (card) void finishItem(level);
+        else void answerQuestion(level);
+      }
+    };
+    window.addEventListener('keydown', onKeyDown);
+    return () => window.removeEventListener('keydown', onKeyDown);
+  }, [item, saving, card, revealed, selected, questionReveal, currentMediaReady, finishItem, answerQuestion]);
   if (loading && !item && !profile)
     return (
       <main className="mx-auto max-w-2xl px-4 py-10">
@@ -389,41 +353,6 @@ export default function AnatomyStudyClient() {
       </main>
     );
   if (!profile) return null;
-  if (profile.hookCompletedAt && !profile.explicit.experience && !item)
-    return (
-      <main className="mx-auto max-w-2xl px-4 py-6 pb-24">
-        <header className="mb-6 flex items-center justify-between text-sm text-[var(--md-on-surface-variant)]">
-          <Link href="/" className="underline">
-            ← cohort.md
-          </Link>
-          <span>Anatomy</span>
-        </header>
-        <section
-          role="dialog"
-          aria-label="Choose study level"
-          className="rounded-xl border border-[var(--md-outline-variant)] p-4"
-        >
-          <h1 className="text-xl font-semibold">Where are you in your anatomy study?</h1>
-          <div className="mt-3 grid gap-2">
-            {COHORT_EXPERIENCE_OPTIONS.map((option) => (
-              <button
-                key={option.id}
-                disabled={experienceSaving}
-                onClick={() => void saveExperience(option.id)}
-                className="rounded-lg border px-3 py-2 text-left text-sm"
-              >
-                {option.label}
-              </button>
-            ))}
-          </div>
-          {error && (
-            <p role="alert" className="mt-4 text-[var(--md-error)]">
-              {error}
-            </p>
-          )}
-        </section>
-      </main>
-    );
   if (!item)
     return (
       <main className="mx-auto max-w-2xl px-4 py-10">
@@ -433,33 +362,25 @@ export default function AnatomyStudyClient() {
             <p role="alert" className="mt-4 text-[var(--md-error)]">
               {error}
             </p>
-            {profile.hookCompletedAt ? (
-              <button className="mt-3 underline" onClick={() => void nextTurn(1)}>
-                Retry
-              </button>
-            ) : (
-              <button className="mt-3 underline" onClick={() => void nextTurn(3)}>
-                Retry introduction
-              </button>
-            )}
+            <button className="mt-3 underline" onClick={() => void nextTurn(1)}>Retry</button>
           </>
         )}
       </main>
     );
-  const card = isCohortCardSessionItem(item);
   const question = card ? null : item;
+  const media = card ? item.media : undefined;
+  const showFigure = Boolean(media && (media.role === 'prompt' || revealed));
+  const figureAlt = revealed ? media?.postAnswerAlt : media?.preAnswerAlt;
+  const mediaReady = !media || figureReady;
   return (
-    <main className="mx-auto max-w-2xl px-4 py-6 pb-32 sm:py-10 [@media(max-height:450px)]:pt-2">
-      <header className="mb-4 [@media(max-height:450px)]:mb-1 flex items-center justify-between text-sm text-[var(--md-on-surface-variant)]">
+    <main className={`mx-auto ${reviewShellWidthClass(showFigure, 'prompt-card')} px-4 pb-40 pt-3 sm:px-6 [@media(max-height:450px)]:pt-2`}>
+      <header className="sticky top-0 z-10 -mx-4 mb-6 flex h-[52px] items-center justify-between gap-3 border-b border-[var(--md-outline-soft)] bg-[var(--md-surface)]/95 px-4 text-sm text-[var(--md-on-surface-variant)] shadow-[0_6px_18px_rgba(21,35,46,0.05)] backdrop-blur md:-mx-8 md:px-8">
         <Link href="/" className="underline">
           ← cohort.md
         </Link>
-        <Link href="/anatomy/abducens" className="underline">
-          Eye movement guide
-        </Link>
-        <span>Anatomy</span>
+        <span className="truncate">Anatomy</span>
       </header>
-      <div className="relative mb-4 flex justify-end">
+      <div className="mb-4 flex justify-end">
         {authStatus === 'authenticated' && (
           <label className="flex items-center gap-2 text-xs text-[var(--md-on-surface-variant)]">
             <span>Difficulty</span>
@@ -487,13 +408,13 @@ export default function AnatomyStudyClient() {
           </label>
         )}
       </div>
-      <article className="rounded-2xl border border-[var(--md-outline-variant)] p-5 shadow-sm [@media(max-height:450px)]:p-3">
-        <p className="text-xs uppercase tracking-wide text-[var(--md-on-surface-variant)]">{item.domain}</p>
-        <div data-card-stem className="mt-4 text-xl leading-relaxed [@media(max-height:450px)]:mt-2">
-          {card ? renderFront(item.front) : <RichText text={item.stem} />}
-        </div>
-        {question && (
-          <div className="mt-5 grid gap-2">
+      <article className={`${showFigure ? reviewPaneGridClass('prompt-card') + ' [@media(min-width:768px)_and_(max-height:500px)]:grid [@media(min-width:768px)_and_(max-height:500px)]:grid-cols-[minmax(0,1fr)_minmax(300px,50%)] [@media(min-width:768px)_and_(max-height:500px)]:gap-x-4' : 'mx-auto max-w-2xl'}`}>
+        <div className={`${showFigure ? REVIEW_PANE_TEXT_TOP + ' [@media(min-width:768px)_and_(max-height:500px)]:block [@media(min-width:768px)_and_(max-height:500px)]:col-start-1 [@media(min-width:768px)_and_(max-height:500px)]:row-start-1' : ''} min-w-0`}>
+          <div data-card-stem className="mb-5 text-[var(--md-on-surface)] text-[1.03rem] leading-relaxed">
+            {card ? <CardText text={item.front} answers={[item.back]} revealedCount={revealed ? 1 : 0} reserveRevealSpace={showFigure} /> : <RichText text={item.stem} />}
+          </div>
+          {question && (
+          <div className="mt-6 grid gap-2">
             {question.options.map((option) => (
               <button
                 key={option.label}
@@ -506,29 +427,20 @@ export default function AnatomyStudyClient() {
               </button>
             ))}
           </div>
-        )}
+          )}
         {card && !revealed && (
-          <button
-            className="mt-6 rounded-full bg-[var(--md-primary)] px-5 py-2.5 text-[var(--md-on-primary)]"
-            onClick={() => setRevealed(true)}
-          >
-            Show answer
-          </button>
-        )}
-        {card && revealed && (
-          <div className="mt-5 rounded-xl bg-[var(--md-surface-container)] p-4">
-            <div className="font-semibold">
-              <RichText text={item.back} />
-            </div>
-            {item.context && (
-              <div className="mt-2 leading-relaxed">
-                <RichText text={item.context} />
-              </div>
-            )}
+          <div style={{ bottom: 'var(--md-review-footer-bottom, 0px)' }} className="fixed left-0 right-0 z-50 border-t border-[var(--md-outline-soft)] bg-[var(--md-surface)] p-4 shadow-[0_-10px_28px_rgba(21,35,46,0.08)] safe-area-pb md:left-20">
+            <button type="button" aria-label="Show answer" disabled={!mediaReady || loading || saving} className="review-choice mx-auto block min-h-[52px] w-full max-w-2xl rounded-lg border border-[var(--md-outline-soft)] bg-[var(--md-surface-container-high)] py-3 font-medium text-[var(--md-on-surface)] transition-colors hover:bg-[var(--md-surface-container-highest)] disabled:cursor-wait disabled:opacity-60" onClick={() => setRevealed(true)}>
+              {mediaReady ? <>Show answer <span className="ml-2 text-xs text-[var(--md-on-surface-variant)]">Space</span></> : 'Preparing figure…'}
+            </button>
           </div>
         )}
+        </div>
+        {showFigure && figureAlt && <div className={REVIEW_PANE_MEDIA + ' [@media(min-width:768px)_and_(max-height:500px)]:block [@media(min-width:768px)_and_(max-height:500px)]:col-start-2 [@media(min-width:768px)_and_(max-height:500px)]:row-start-1 [@media(min-width:768px)_and_(max-height:500px)]:row-span-2'}><AnatomyReviewFigure key={item.deliveryId} target={media!.target} revealed={revealed} alt={figureAlt} onReady={setFigureReady} /></div>}
+        <div className={showFigure ? REVIEW_PANE_TEXT_BOTTOM + ' [@media(min-width:768px)_and_(max-height:500px)]:block [@media(min-width:768px)_and_(max-height:500px)]:col-start-1 [@media(min-width:768px)_and_(max-height:500px)]:row-start-2' : ''}>
+        {card && revealed && item.context && <div className="mt-5 border-l-2 border-[var(--md-outline-soft)] pl-3 text-sm leading-relaxed text-[var(--md-on-surface-variant)]"><RichText text={item.context} /></div>}
         {questionReveal && (
-          <div className="mt-5 rounded-xl border p-4">
+          <div className="mt-6 border-l-2 border-[var(--md-outline-soft)] pl-3">
             <p className="font-semibold">
               {questionReveal.isCorrect ? 'Correct' : `Correct answer: ${questionReveal.correctDisplayLabel}`}
             </p>
@@ -539,14 +451,14 @@ export default function AnatomyStudyClient() {
             )}
           </div>
         )}
-        {error && completedDelivery.current === item.deliveryId && !hookPending && (
+        {error && completedDelivery.current === item.deliveryId && (
           <button className="mt-3 underline" onClick={() => void finishItem()}>
             Retry next item
           </button>
         )}
         {questionReveal && (
           <button
-            disabled={saving || hookPending}
+            disabled={saving}
             className="mt-5 rounded-full bg-[var(--md-primary)] px-5 py-2.5 text-[var(--md-on-primary)]"
             onClick={() => void finishItem()}
           >
@@ -558,24 +470,22 @@ export default function AnatomyStudyClient() {
             {error}
           </p>
         )}
-        {hookError && (
-          <button className="mt-3 underline" onClick={() => void completeHook()}>
-            Retry introduction
-          </button>
-        )}
+
+        </div>
+
       </article>
-      {revealed && !questionReveal && card && completedDelivery.current !== item.deliveryId && (
+      {revealed && !questionReveal && card && (
         <ConfidenceButtons
           mode="footer"
           onSelect={(level) => void finishItem(level)}
-          status={saving ? 'saving' : 'idle'}
+          status={saving || loading || !currentMediaReady ? 'saving' : 'idle'}
         />
       )}
       {!card && !questionReveal && selected && (
         <ConfidenceButtons
           mode="footer"
           onSelect={(level) => void answerQuestion(level)}
-          status={saving ? 'saving' : 'idle'}
+          status={saving || loading || !currentMediaReady ? 'saving' : 'idle'}
         />
       )}
     </main>

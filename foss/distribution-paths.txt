@@ -412,6 +412,7 @@ open-content/modules/cards/anatomy/8.json
 open-content/modules/cards/anatomy/b.json
 open-content/modules/cards/anatomy/c.json
 open-content/modules/cards/anatomy/d.json
+open-content/modules/cards/anatomy/f.json
 open-content/modules/cards/icu/0.json
 open-content/modules/cards/icu/1.json
 open-content/modules/cards/icu/2.json
@@ -479,6 +480,7 @@ open-content/modules/cards/psych/f.json
 open-content/modules/cards/surgery/9.json
 open-content/modules/original-card-ids-v1.json
 open-content/modules/original-cards/anatomy/ocular-motor-nerves.json
+open-content/modules/original-cards/anatomy/ocular-motor-visual-targets.json
 open-content/modules/questions/anaes/q-2e10739f0368.v1.json
 open-content/modules/questions/anaes/q-616dd1516485.v1.json
 open-content/modules/questions/anaes/q-755bb5f781d0.v1.json
@@ -1904,9 +1906,14 @@ src/components/rotation/SubrotationReviewPage.tsx
 src/components/rotation/WeekContentPage.tsx
 src/components/rotation/WeekContentWithTabs.tsx
 src/components/rotation/WeekReviewPage.tsx
+src/components/shared/AnatomyReviewFigure.test.tsx
+src/components/shared/AnatomyReviewFigure.tsx
+src/components/shared/CardText.tsx
 src/components/shared/ConfidenceButtons.tsx
 src/components/shared/KeyboardHintBar.tsx
+src/components/shared/MathHtml.tsx
 src/components/shared/StationScript.tsx
+src/components/shared/review-pane-layout.ts
 src/components/stats/ReviewStats.tsx
 src/components/study/StudyFilters.tsx
 src/components/tech/TechDeck.tsx
@@ -1997,7 +2004,10 @@ src/lib/clinical/station-types.ts
 src/lib/clinical/wba-guides.ts
 src/lib/cloze-quality.ts
 src/lib/cloze-table-parser.ts
+src/lib/cohort/anatomy-card-media.test.ts
+src/lib/cohort/anatomy-card-media.ts
 src/lib/cohort/card-grade.server.ts
+src/lib/cohort/card-turn-contract.test.ts
 src/lib/cohort/card-turn-contract.ts
 src/lib/cohort/cohort-review-challenge.ts
 src/lib/cohort/cohort-turn.server.ts
@@ -2090,6 +2100,8 @@ src/lib/exam-target/types.ts
 src/lib/exam-target/workload.ts
 src/lib/experiments.ts
 src/lib/fetch-with-deadline.ts
+src/lib/figures/anatomy-prompt.test.ts
+src/lib/figures/anatomy-prompt.ts
 src/lib/figures/image-alternative-fingerprint.test.ts
 src/lib/figures/image-alternative-fingerprint.ts
 src/lib/figures/open-figure-access.test.ts

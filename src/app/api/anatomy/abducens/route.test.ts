@@ -2,6 +2,7 @@ import { describe, expect, it, vi } from 'vitest';
 const mock = vi.hoisted(() => ({ deliver: vi.fn((_segments: string[], body: boolean) => new Response(body ? '<svg />' : null, { status: 200 })) }));
 vi.mock('@/lib/figures/open-figure-delivery', () => ({
   openFigureResponse: mock.deliver,
+  readOpenFigure: () => '<svg><g id="label-lr-label" data-target-region="lateral-rectus"><text>Lateral rectus</text></g><g id="label-vi-label" data-target-region="abducens"><text>CN VI</text></g><g id="label-optic-label" data-target-region="optic-nerve"><text>Optic nerve</text></g></svg>',
   blockedFigureResponse: () => new Response(null, { status: 404 }),
 }));
 import { GET, HEAD } from './route';
@@ -24,4 +25,14 @@ describe('public abducens illustration', () => {
     expect(await HEAD(new Request('https://www.cohort.md/api/anatomy/abducens')).text()).toBe('');
     expect(mock.deliver).toHaveBeenLastCalledWith(['anatomy', 'abducens-local.svg'], false, { hostname: 'cohort.md' });
   });
+  it('serves an answer-concealed prompt from the admitted image', async () => {
+    const response = GET(new Request('https://cohort.md/api/anatomy/abducens?phase=prompt&target=abducens'));
+    expect(response.status).toBe(200);
+    expect(await response.text()).toContain('<text>A</text>');
+    expect(response.headers.get('cache-control')).toBe('private, no-store');
+  });
+  it.each(['phase=prompt', 'phase=unknown', 'target=../../secret', 'phase=prompt&target=other'])('rejects unreviewed parameters %s', query => {
+    expect(GET(new Request(`https://cohort.md/api/anatomy/abducens?${query}`)).status).toBe(404);
+  });
+
 });

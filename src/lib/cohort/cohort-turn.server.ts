@@ -58,6 +58,7 @@ import {
 } from './search-topic-registry.server';
 import { parseCohortChallengeExhaustion } from './card-turn-contract';
 import { reviewChallengePreference } from '@/lib/study/review-challenge-preference';
+import { anatomyCardMediaForStableId } from './anatomy-card-media';
 
 const COHORT_SERVE_OPERATION = 'cohort_serve' as const;
 const COHORT_DELIVERY_CONTRACT = 'usmle-step1-delivery-v3';
@@ -495,10 +496,12 @@ async function assertReplayStillEligible(
     const card = payload?.kind === 'card' && payload.discipline
       ? (await loadCohortModuleCardCorpus(tx as never, payload.discipline)).cards.find((c) => c.id === delivery.itemId)
       : undefined;
+    const expectedMedia = card ? anatomyCardMediaForStableId(card.stableId) : undefined;
     if (
       !payload || payload.kind !== 'card' || !card || !frozen || !isCohortCardSessionItem(frozen)
       || payload.contentHash !== card.contentHash
       || payload.servingFingerprint !== card.releaseFingerprint
+      || JSON.stringify(frozen.media ?? null) !== JSON.stringify(expectedMedia ?? null)
     ) {
       throw new CohortTurnError(410, 'delivery_revoked', 'This delivery is no longer eligible');
     }
@@ -722,21 +725,35 @@ async function transactCohortTurn(
   const profile = parseCohortFeedProfile(user.feedProfile);
   const preference = reviewChallengePreference(user);
   const reviewChallengeLevel = preference.level;
+  const moduleNode = searchTopic && 'moduleNode' in searchTopic ? searchTopic.moduleNode : null;
+  if (moduleNode === 'cohort/anatomy' && reviewChallengeLevel === 2 && !profile.hookCompletedAt) {
+    const response: CohortTurnResult = {
+      sessionId: input.journeyId,
+      mode: 'daily',
+      requestedSize: 1,
+      deliveredSize: 0,
+      items: [],
+      reviewChallengeExhausted: preference,
+    };
+    return finishCohortTurn(tx, input, operation.id, response, now);
+  }
 
   // A chosen module alternates its questions with its cards: a card after a
   // question, a question after a card, each falling back to the other when its
-  // pool is spent. The fixed hook always comes first.
-  const moduleNode = searchTopic && 'moduleNode' in searchTopic ? searchTopic.moduleNode : null;
+  // pool is spent. Anatomy opens directly into its reviewed visual card pool;
+  // other modules retain the fixed introduction.
   if (reviewChallengeLevel === -2 && searchTopic && !moduleNode && profile.hookCompletedAt) {
     throw new CohortTurnError(409, 'review_challenge_exhausted', 'No scaffold cards match this focus', {
       reviewChallengeLevel: -2,
     });
   }
-  const cardTurn = profile.hookCompletedAt && reviewChallengeLevel !== 2 && (moduleNode || reviewChallengeLevel === -2)
-    ? () => pickModuleCard(tx, input, moduleNode ?? undefined, now, reviewChallengeLevel)
+  const anatomyMediaOnly = moduleNode === 'cohort/anatomy';
+  const cardTurn = reviewChallengeLevel !== 2 && (moduleNode || reviewChallengeLevel === -2)
+    && (profile.hookCompletedAt || anatomyMediaOnly)
+    ? () => pickModuleCard(tx, input, moduleNode ?? undefined, now, reviewChallengeLevel, anatomyMediaOnly)
     : null;
   const pickedCardTopic = (card: CohortServableCard) => searchTopic ?? topicForDiscipline(card.discipline);
-  if (cardTurn && (previousKind === 'question' || reviewChallengeLevel === -2)) {
+  if (cardTurn && (previousKind === 'question' || reviewChallengeLevel === -2 || anatomyMediaOnly)) {
     const picked = await cardTurn();
     if (picked) {
       const topic = pickedCardTopic(picked);
@@ -748,6 +765,16 @@ async function transactCohortTurn(
       throw new CohortTurnError(409, 'review_challenge_exhausted', 'No eligible scaffold cards remain', {
         reviewChallengeLevel: -2,
       });
+    }
+    if (anatomyMediaOnly) {
+      const response: CohortTurnResult = {
+        sessionId: input.journeyId,
+        mode: 'daily',
+        requestedSize: 1,
+        deliveredSize: 0,
+        items: [],
+      };
+      return finishCohortTurn(tx, input, operation.id, response, now);
     }
   } else if (reviewChallengeLevel === -2 && profile.hookCompletedAt) {
     throw new CohortTurnError(409, 'review_challenge_exhausted', 'No eligible scaffold cards remain', {
@@ -1012,6 +1039,7 @@ async function pickModuleCard(
   moduleNode: string | undefined,
   now: Date,
   challengeLevel: CohortReviewChallengeLevel,
+  requireReviewedMedia = false,
 ): Promise<CohortServableCard | null> {
   if (!COHORT_CARD_RELEASE_LOADABLE) {
     throw new CohortTurnError(503, 'cohort_scaffold_unavailable', 'Scaffold release is unavailable');
@@ -1021,7 +1049,8 @@ async function pickModuleCard(
     'moduleNode' in topic ? [topic.moduleNode.slice('cohort/'.length)] : []
   )));
   const loaded = await loadCohortModuleCardCorpus(tx as never, discipline);
-  const cards = discipline ? loaded.cards : loaded.cards.filter((card) => safeDisciplines.has(card.discipline));
+  const cards = (discipline ? loaded.cards : loaded.cards.filter((card) => safeDisciplines.has(card.discipline)))
+    .filter((card) => !requireReviewedMedia || anatomyCardMediaForStableId(card.stableId));
   if (cards.length === 0) return null;
   const [progress, recent] = await Promise.all([
     tx.cardProgress.findMany({
@@ -1103,6 +1132,8 @@ async function deliverModuleCard(
     domain: moduleDomain(topic),
     attribution: { text: 'MD3 contributors', licence: 'CC-BY-4.0' },
   };
+  const media = anatomyCardMediaForStableId(card.stableId);
+  if (media) item.media = media;
   return { sessionId: input.journeyId, mode: 'daily', requestedSize: 1, deliveredSize: 1, items: [item] };
 }
 

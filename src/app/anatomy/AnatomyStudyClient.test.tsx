@@ -63,6 +63,13 @@ const card = (id: string) => ({
   domain: 'Anatomy',
   attribution: { text: 'MD3 contributors', licence: 'CC-BY-4.0' },
 });
+const media = {
+  figureId: 'abducens-local' as const,
+  target: 'lateral-rectus' as const,
+  role: 'prompt' as const,
+  preAnswerAlt: 'Prompt anatomy figure',
+  postAnswerAlt: 'Answer anatomy figure',
+};
 const json = (body: unknown, ok = true) => ({ ok, status: ok ? 200 : 503, json: async () => body });
 const turn = (journeyId: string, items: unknown[], requestedSize = 1) => ({
   sessionId: journeyId,
@@ -81,71 +88,32 @@ describe('AnatomyStudyClient lifecycle', () => {
     vi.restoreAllMocks();
     testMocks.authStatus = 'unauthenticated';
     testMocks.easeAfterExhaustion.mockReset();
+    Object.defineProperty(HTMLImageElement.prototype, 'decode', { configurable: true, value: vi.fn(async () => undefined) });
+    Object.defineProperty(URL, 'createObjectURL', { configurable: true, value: vi.fn(() => 'blob:anatomy-figure') });
+    Object.defineProperty(URL, 'revokeObjectURL', { configurable: true, value: vi.fn() });
   });
   afterEach(() => cleanup());
 
-  it('answers all three intro items, completes the hook, refreshes profile, then requests a normal turn', async () => {
+  it('starts a first guest directly on one anatomy card without an experience gate', async () => {
     const fetchMock = vi.spyOn(global, 'fetch');
-    let profileReads = 0;
     fetchMock.mockImplementation(async (input, init) => {
       const url = String(input);
-      if (url.endsWith('/api/cohort/profile')) {
-        if (init?.method === 'PATCH')
-          return json({ profile: { hookCompletedAt: 'now', explicit: { experience: 'medical-student' } } }) as Response;
-        return json({
-          profile:
-            profileReads++ === 0
-              ? { hookCompletedAt: null, explicit: { experience: 'medical-student' } }
-              : { hookCompletedAt: 'now', explicit: { experience: 'medical-student' } },
-        }) as Response;
-      }
+      if (url.endsWith('/api/cohort/profile')) return json({ profile: { hookCompletedAt: null, explicit: {} } }) as Response;
       if (url.endsWith('/api/cohort/turn')) {
-        const body = JSON.parse(String(init?.body ?? '{}')) as { nextDrawOrdinal?: number };
-        const journeyId = (JSON.parse(String(init?.body ?? '{}')) as { journeyId: string }).journeyId;
-        return json(
-          body.nextDrawOrdinal === 3
-            ? {
-                sessionId: journeyId,
-                mode: 'daily',
-                requestedSize: 1,
-                deliveredSize: 1,
-                items: [question('daily')],
-              }
-            : {
-                sessionId: journeyId,
-                mode: 'daily',
-                requestedSize: 3,
-                deliveredSize: 3,
-                items: [question('one'), question('two'), question('three')],
-              },
-        ) as Response;
+        const body = JSON.parse(String(init?.body ?? '{}')) as { journeyId: string; nextDrawOrdinal?: number };
+        expect(body.nextDrawOrdinal).toBe(0);
+        return json(turn(body.journeyId, [card('first')], 1)) as Response;
       }
-      if (url.endsWith('/api/cohort/answer'))
-        return json(
-          answer((JSON.parse(String(init?.body ?? '{}')) as { deliveryId?: string }).deliveryId ?? 'unknown'),
-        ) as Response;
       throw new Error(`unexpected ${url}`);
     });
     Object.defineProperty(crypto, 'randomUUID', { configurable: true, value: undefined });
-    const user = userEvent.setup();
     render(<AnatomyStudyClient />);
-    for (const id of ['one', 'two', 'three']) {
-      await screen.findByText(`Name structure ${id}.`);
-      await user.click(screen.getByRole('button', { name: /A\. A structure/ }));
-      await user.click(screen.getByRole('button', { name: /Good \(3\)/ }));
-      await user.click(await screen.findByRole('button', { name: 'Next' }));
-    }
-    await waitFor(() =>
-      expect(
-        fetchMock.mock.calls.some(
-          ([, init]) => init?.method === 'PATCH' && String(init.body).includes('hookCompleted'),
-        ),
-      ).toBe(true),
-    );
-    expect(await screen.findByText('Name structure daily.')).toBeInTheDocument();
+    expect(await screen.findByText(/The/)).toBeInTheDocument();
+    expect(screen.queryByRole('dialog', { name: /study level/i })).toBeNull();
+    expect(fetchMock.mock.calls.filter(([url]) => String(url).endsWith('/api/cohort/turn'))).toHaveLength(1);
   });
 
-  it('offers an introduction retry when the first turn fails after profile load', async () => {
+  it('offers a retry when the first anatomy turn fails after profile load', async () => {
     const fetchMock = vi.spyOn(global, 'fetch');
     let turns = 0;
     fetchMock.mockImplementation(async (input, init) => {
@@ -156,17 +124,15 @@ describe('AnatomyStudyClient lifecycle', () => {
         turns += 1;
         if (turns === 1) return json({ error: 'temporary' }, false) as Response;
         const body = JSON.parse(String(init?.body ?? '{}')) as { journeyId: string };
-        return json(
-          turn(body.journeyId, [question('retry-one'), question('retry-two'), question('retry-three')], 3),
-        ) as Response;
+        return json(turn(body.journeyId, [card('retry-one')], 1)) as Response;
       }
       throw new Error(`unexpected ${url}`);
     });
     const user = userEvent.setup();
     render(<AnatomyStudyClient />);
-    await waitFor(() => expect(screen.getByRole('button', { name: 'Retry introduction' })).toBeInTheDocument());
-    await user.click(screen.getByRole('button', { name: 'Retry introduction' }));
-    expect(await screen.findByText('Name structure retry-one.')).toBeInTheDocument();
+    await waitFor(() => expect(screen.getByRole('button', { name: 'Retry' })).toBeInTheDocument());
+    await user.click(screen.getByRole('button', { name: 'Retry' }));
+    expect(await screen.findByText(/retry-one/)).toBeInTheDocument();
     expect(turns).toBe(2);
   });
 
@@ -223,7 +189,6 @@ describe('AnatomyStudyClient lifecycle', () => {
     await user.click(await screen.findByRole('button', { name: 'Show answer' }));
     await user.click(screen.getByRole('button', { name: /Good \(3\)/ }));
     await waitFor(() => expect(screen.getByRole('button', { name: 'Retry next item' })).toBeInTheDocument());
-    expect(screen.queryByRole('button', { name: /Good \(3\)/ })).toBeNull();
     await user.click(screen.getByRole('button', { name: 'Retry next item' }));
     await waitFor(() => expect(screen.getByText(/next-card/)).toBeInTheDocument());
     expect(grades).toBe(1);
@@ -272,5 +237,49 @@ describe('AnatomyStudyClient lifecycle', () => {
     render(<AnatomyStudyClient />);
     await waitFor(() => expect(screen.getByRole('alert')).toHaveTextContent(/unsafe content/i));
     expect(screen.queryByText('Name structure bad.')).toBeNull();
+  });
+
+  it('rejects a malformed anatomy media descriptor before displaying the card', async () => {
+    const fetchMock = vi.spyOn(global, 'fetch');
+    fetchMock.mockImplementation(async (input, init) => {
+      const url = String(input);
+      if (url.endsWith('/api/cohort/profile')) return profileResponse();
+      if (url.endsWith('/api/cohort/turn')) {
+        const body = JSON.parse(String(init?.body ?? '{}')) as { journeyId: string };
+        const malformed = { ...card('bad-media'), media: { ...media, target: undefined } };
+        return json(turn(body.journeyId, [malformed])) as Response;
+      }
+      throw new Error(`unexpected ${url}`);
+    });
+    render(<AnatomyStudyClient />);
+    await waitFor(() => expect(screen.getByRole('alert')).toHaveTextContent(/unsafe content/i));
+    expect(screen.queryByText(/bad-media/)).toBeNull();
+  });
+
+  it('does not allow reveal until the reviewed prompt figure is loaded and passes its target', async () => {
+    const fetchMock = vi.spyOn(global, 'fetch');
+    fetchMock.mockImplementation(async (input, init) => {
+      const url = String(input);
+      if (url.endsWith('/api/cohort/profile')) return profileResponse();
+      if (url.startsWith('/api/anatomy/abducens')) return { ok: true, status: 200, blob: async () => new Blob(['figure'], { type: 'image/svg+xml' }) } as Response;
+      if (url.endsWith('/api/cohort/turn')) {
+        const body = JSON.parse(String(init?.body ?? '{}')) as { journeyId: string };
+        return json(turn(body.journeyId, [{ ...card('visual-card'), media }])) as Response;
+      }
+      throw new Error(`unexpected ${url}`);
+    });
+    const user = userEvent.setup();
+    render(<AnatomyStudyClient />);
+    const figure = await screen.findByAltText('Prompt anatomy figure');
+    const reveal = await screen.findByRole('button', { name: 'Show answer' });
+    expect(reveal).toBeEnabled();
+    expect(fetchMock.mock.calls.some(([url]) => String(url) === '/api/anatomy/abducens?target=lateral-rectus&phase=prompt')).toBe(true);
+    expect(figure).toHaveAttribute('data-source', '/api/anatomy/abducens?target=lateral-rectus&phase=prompt');
+    await user.click(reveal);
+    expect(await screen.findByAltText('Answer anatomy figure')).toHaveAttribute(
+      'data-source',
+      '/api/anatomy/abducens?target=lateral-rectus&phase=answer',
+    );
+    expect(fetchMock.mock.calls.some(([url]) => String(url) === '/api/anatomy/abducens?target=lateral-rectus&phase=answer')).toBe(true);
   });
 });

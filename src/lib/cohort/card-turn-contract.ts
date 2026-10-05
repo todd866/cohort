@@ -10,6 +10,7 @@
 import type { Step1SessionItem, Step1SessionMode } from '@/lib/usmle/step1-contract';
 import { REVIEW_CHALLENGE_POLICY_VERSION } from '@/lib/study/review-challenge';
 import type { ReviewChallengePreference } from '@/lib/study/review-challenge-preference';
+import type { AnatomyCardMediaDescriptor } from './anatomy-card-media';
 
 export const COHORT_CARD_DELIVERY_CONTRACT = 'cohort-module-card-v1' as const;
 export const COHORT_CARD_DECISION_PATH = 'cohort-module-card-v1' as const;
@@ -21,6 +22,8 @@ export interface CohortCardSessionItem {
   front: string;
   back: string;
   context: string | null;
+  /** Optional exact-match descriptor for a reviewed, closed-registry figure. */
+  media?: AnatomyCardMediaDescriptor;
   /** The module's display name. */
   domain: string;
   attribution: { text: string; licence: string };
@@ -37,7 +40,7 @@ export interface CohortTurnResult {
   reviewChallengeExhausted?: ReviewChallengePreference;
 }
 
-const CARD_KEYS = ['deliveryId', 'kind', 'front', 'back', 'context', 'domain', 'attribution'];
+const CARD_KEYS = ['deliveryId', 'kind', 'front', 'back', 'context', 'domain', 'attribution', 'media'];
 const BLANK = '[___]';
 
 function isRecord(value: unknown): value is Record<string, unknown> {
@@ -55,7 +58,10 @@ export function isCohortCardSessionItem(value: unknown): value is CohortCardSess
 
 /** The exact card item shape, or null. Anything else is refused, never repaired. */
 export function parseCohortCardSessionItem(value: unknown): CohortCardSessionItem | null {
-  if (!isRecord(value) || !hasExactKeys(value, CARD_KEYS) || value.kind !== 'card') return null;
+  if (!isRecord(value) || !hasExactKeys(value, [
+    ...CARD_KEYS.filter((key) => key !== 'media'),
+    ...('media' in value ? ['media'] : []),
+  ]) || value.kind !== 'card') return null;
   if (
     typeof value.deliveryId !== 'string' || value.deliveryId.length === 0
     || typeof value.front !== 'string' || value.front.split(BLANK).length !== 2
@@ -67,6 +73,17 @@ export function parseCohortCardSessionItem(value: unknown): CohortCardSessionIte
     || typeof value.attribution.text !== 'string' || value.attribution.text.length === 0
     || typeof value.attribution.licence !== 'string' || value.attribution.licence.length === 0
   ) return null;
+  if ('media' in value) {
+    const media = value.media;
+    if (!isRecord(media)
+      || !hasExactKeys(media, ['figureId', 'target', 'role', 'preAnswerAlt', 'postAnswerAlt'])
+      || media.figureId !== 'abducens-local'
+      || (media.target !== 'lateral-rectus' && media.target !== 'abducens' && media.target !== 'optic-nerve')
+      || (media.role !== 'prompt' && media.role !== 'supplementary')
+      || typeof media.preAnswerAlt !== 'string' || media.preAnswerAlt.trim().length === 0
+      || typeof media.postAnswerAlt !== 'string' || media.postAnswerAlt.trim().length === 0
+    ) return null;
+  }
   return value as unknown as CohortCardSessionItem;
 }
 

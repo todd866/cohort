@@ -1,10 +1,10 @@
 {
   "schemaVersion": 1,
   "boundaryPolicy": "foss/distribution-policy.json",
-  "boundaryPolicySha256": "503a8e20e3ee9dd0544a24e2c0c4d124af5919c4fd9e1bd265d0362ce4692cdf",
-  "reviewedPathsSha256": "58920868810c1b35260ac0ab37e8b631f67bbaa4e9a8e3d7b4809fdc7201194e",
-  "fileCount": 2653,
-  "totalBytes": 261127410,
+  "boundaryPolicySha256": "01a5b93bd62664b228927b6d6e8ac2c074f8f654bf827405f6250f5baa1a7ae3",
+  "reviewedPathsSha256": "998f297e52fd54f220e45285bb7f2ecd2433cab498ec8dcb5001fe767b1e3dc0",
+  "fileCount": 2665,
+  "totalBytes": 261166829,
   "files": [
     {
       "path": ".env.example",
@@ -120,15 +120,15 @@
     },
     {
       "path": "foss/distribution-paths.txt",
-      "bytes": 145687,
-      "sha256": "58920868810c1b35260ac0ab37e8b631f67bbaa4e9a8e3d7b4809fdc7201194e",
+      "bytes": 146211,
+      "sha256": "998f297e52fd54f220e45285bb7f2ecd2433cab498ec8dcb5001fe767b1e3dc0",
       "mode": "0644",
       "licence": "MIT"
     },
     {
       "path": "foss/distribution-policy.json",
-      "bytes": 345846,
-      "sha256": "503a8e20e3ee9dd0544a24e2c0c4d124af5919c4fd9e1bd265d0362ce4692cdf",
+      "bytes": 346344,
+      "sha256": "01a5b93bd62664b228927b6d6e8ac2c074f8f654bf827405f6250f5baa1a7ae3",
       "mode": "0644",
       "licence": "MIT"
     },
@@ -2850,8 +2850,8 @@
     },
     {
       "path": "open-content/modules/cards-release-v1.json",
-      "bytes": 265844,
-      "sha256": "c67dddfcea4806321496579c058b9980a7d258099561eff07b0fc1edf3de71d2",
+      "bytes": 266732,
+      "sha256": "48059d8bd80db48286e16e072e8809b9c0b406291bee3cafeb899aafacb07a89",
       "mode": "0644",
       "licence": "CC-BY-4.0"
     },
@@ -2878,8 +2878,8 @@
     },
     {
       "path": "open-content/modules/cards/anatomy/6.json",
-      "bytes": 930,
-      "sha256": "4d6c65ce2a8f1d0ddc8569bf5c9c3b8b25dde8428cc9d848616eb9d5e2e4bfe4",
+      "bytes": 1671,
+      "sha256": "f2e25128cb173cd2f605f56579e1a16978ba2d4bc15301b06dcefad21e8b35df",
       "mode": "0644",
       "licence": "CC-BY-4.0"
     },
@@ -2892,22 +2892,29 @@
     },
     {
       "path": "open-content/modules/cards/anatomy/b.json",
-      "bytes": 916,
-      "sha256": "d9a437d12e9014e89064737714194693f7bacfe8f1e62e6501ebe3f07ba87bfc",
+      "bytes": 2401,
+      "sha256": "6882d18e8f997f9d71c98f4687235b57fb195a1659d551351091cacbe7708352",
       "mode": "0644",
       "licence": "CC-BY-4.0"
     },
     {
       "path": "open-content/modules/cards/anatomy/c.json",
-      "bytes": 1001,
-      "sha256": "72a7ec2c38df58a6b068f370ad50b97a5326a99574d3c4af0bcf8516486cf2ce",
+      "bytes": 1739,
+      "sha256": "e6867dfaab3be8b9fcad873c1651e4a54b18697a301580c28bf909ff6ea2fcf0",
       "mode": "0644",
       "licence": "CC-BY-4.0"
     },
     {
       "path": "open-content/modules/cards/anatomy/d.json",
-      "bytes": 903,
-      "sha256": "a684feb77fc1c46a0b1c41e06446507ec910b44739bbcb34cd261950e86f7db8",
+      "bytes": 1688,
+      "sha256": "4e07eab0fc5b79069af43328bcfbf71dfb867d8a43b14e3b1669bd10684822ca",
+      "mode": "0644",
+      "licence": "CC-BY-4.0"
+    },
+    {
+      "path": "open-content/modules/cards/anatomy/f.json",
+      "bytes": 894,
+      "sha256": "65c090d694b35b2ae36bf4ab611096ff5490d75b48c07c5e3a36b6195067d428",
       "mode": "0644",
       "licence": "CC-BY-4.0"
     },
@@ -3368,8 +3375,8 @@
     },
     {
       "path": "open-content/modules/original-card-ids-v1.json",
-      "bytes": 520,
-      "sha256": "1a44c73198c93193a5fda4470d8a82de7d67b6d4b865d783c3cf7994119a3bcd",
+      "bytes": 760,
+      "sha256": "bdf1a17c39aad1d9f9bb6de371bd3dcf6d875466c995fa6169bc70d56d9bcea2",
       "mode": "0644",
       "licence": "CC-BY-4.0"
     },
@@ -3377,6 +3384,13 @@
       "path": "open-content/modules/original-cards/anatomy/ocular-motor-nerves.json",
       "bytes": 11031,
       "sha256": "7b4684536b183ca5fd8ff02467f541da1be25000ca23bf202f4c3563a2848acc",
+      "mode": "0644",
+      "licence": "CC-BY-4.0"
+    },
+    {
+      "path": "open-content/modules/original-cards/anatomy/ocular-motor-visual-targets.json",
+      "bytes": 6385,
+      "sha256": "3350663c9c37787173c3830a7bc3570ef26f7c82a50d7b6e4a9d4a1d5a5aadaf",
       "mode": "0644",
       "licence": "CC-BY-4.0"
     },
@@ -10564,8 +10578,8 @@
     },
     {
       "path": "package.json",
-      "bytes": 11243,
-      "sha256": "3b5bbc1f81b5c525cfcd5dfd591e0e09f92ed6a42f9ff315fcc8736bd5df8d16",
+      "bytes": 11417,
+      "sha256": "a5d7430517696e74298c0029654c3f83d65013d704f6cd597b12f4a12b6b8c03",
       "mode": "0644",
       "licence": "MIT"
     },
@@ -11321,7 +11335,7 @@
     {
       "path": "scripts/foss/distribution.test.ts",
       "bytes": 67206,
-      "sha256": "f4af0066fc9298d8f116d8f5f7e8979c46357c4fae1a12d59a33c8a94d4722ff",
+      "sha256": "58fcae3d3e3aa02759bd68911c1c75ca9fefe6e4bb118d4694f992cda24de176",
       "mode": "0644",
       "licence": "MIT"
     },
@@ -11719,15 +11733,15 @@
     },
     {
       "path": "src/app/anatomy/AnatomyStudyClient.test.tsx",
-      "bytes": 11474,
-      "sha256": "2bf3759ef29ac847b2ec0271b6f7ecbb675b7725061df22f58116f065f59389a",
+      "bytes": 12761,
+      "sha256": "1c2b5f0cd5ee11a0485151ba87001af6e783971a903bf4380cafdf85be203651",
       "mode": "0644",
       "licence": "MIT"
     },
     {
       "path": "src/app/anatomy/AnatomyStudyClient.tsx",
-      "bytes": 22440,
-      "sha256": "b044579b64e708b40dbc14a8d2151f434586737154bf62308ea35f82599bd752",
+      "bytes": 21991,
+      "sha256": "08a4fb43e53ba64e93c6fc93fa7bd53d9dd83705c8eca25c75b3d98347b3e858",
       "mode": "0644",
       "licence": "MIT"
     },
@@ -11747,15 +11761,15 @@
     },
     {
       "path": "src/app/api/anatomy/abducens/route.test.ts",
-      "bytes": 1693,
-      "sha256": "452f3c557defe66ad95b14c781fb7fab9f5168ed530065b5a87e0cf8554f55ed",
+      "bytes": 2608,
+      "sha256": "fc68a1a15770b99a9a04bc09f2780f221985ab48eccbce74d347c6be633cb09c",
       "mode": "0644",
       "licence": "MIT"
     },
     {
       "path": "src/app/api/anatomy/abducens/route.ts",
-      "bytes": 698,
-      "sha256": "44615d1aa4ca7393a7d54e02e62f18e256e8159fe15c6439c9cc0f4f2a7adb3d",
+      "bytes": 1575,
+      "sha256": "935dd6bb3f04f4db2aa882d439fd92837d3061a867f919c91dce55c6d3b5fa59",
       "mode": "0644",
       "licence": "MIT"
     },
@@ -13035,8 +13049,8 @@
     },
     {
       "path": "src/components/review/CardText.tsx",
-      "bytes": 9113,
-      "sha256": "b6930b64d80fd1e37f421929af085ffc13fb84e7f06f11f6d28d56655c9e47be",
+      "bytes": 57,
+      "sha256": "27b2287b27e2a6953e22b93db1a73d67e975699e13ead74a86def96dad1a0ae3",
       "mode": "0644",
       "licence": "MIT"
     },
@@ -13287,8 +13301,8 @@
     },
     {
       "path": "src/components/review/MathHtml.tsx",
-      "bytes": 2972,
-      "sha256": "6e6a6fd8632e69fc4178ea5277282dbf878f5901f1e7d192b1643783db4a618c",
+      "bytes": 57,
+      "sha256": "76a382f5d290a2a016b5d9d8afd255b809f7d78910d8ecd1cf5626c2f6fac844",
       "mode": "0644",
       "licence": "MIT"
     },
@@ -13343,8 +13357,8 @@
     },
     {
       "path": "src/components/review/review-panes.ts",
-      "bytes": 16916,
-      "sha256": "a7624034e8ee796555318ffdedf19b54b7fb8102b46e42bd61571e77c46294f7",
+      "bytes": 12542,
+      "sha256": "6dad6c1f69d020f796d19283283e52435a49561de4e91c73400fe1d1dfc69d01",
       "mode": "0644",
       "licence": "MIT"
     },
@@ -13517,6 +13531,27 @@
       "licence": "MIT"
     },
     {
+      "path": "src/components/shared/AnatomyReviewFigure.test.tsx",
+      "bytes": 3273,
+      "sha256": "05a16ef55424c50df4b163bee2fbf492255b70a0d7db9c53dd9c01b2fe7ffc4e",
+      "mode": "0644",
+      "licence": "MIT"
+    },
+    {
+      "path": "src/components/shared/AnatomyReviewFigure.tsx",
+      "bytes": 6465,
+      "sha256": "9f694d32efddb2e016f3cbfa74f8d80b1c1f3facbdd7826369e026e498e73ce6",
+      "mode": "0644",
+      "licence": "MIT"
+    },
+    {
+      "path": "src/components/shared/CardText.tsx",
+      "bytes": 9141,
+      "sha256": "aee6c2a880193e3a10f6e2a38c5ed43636126db5fb61c6883d88540ea565994e",
+      "mode": "0644",
+      "licence": "MIT"
+    },
+    {
       "path": "src/components/shared/ConfidenceButtons.tsx",
       "bytes": 5856,
       "sha256": "7d2eb61017b7a77a0897ad08280a646c96d4b1cfedf3de3f3d42973f00077c7f",
@@ -13527,6 +13562,20 @@
       "path": "src/components/shared/KeyboardHintBar.tsx",
       "bytes": 1363,
       "sha256": "b46e8464d940cc3d84b68d5ff2068183b16ad1abbf1f4d8c45b9d6aefcb1815e",
+      "mode": "0644",
+      "licence": "MIT"
+    },
+    {
+      "path": "src/components/shared/MathHtml.tsx",
+      "bytes": 2972,
+      "sha256": "6e6a6fd8632e69fc4178ea5277282dbf878f5901f1e7d192b1643783db4a618c",
+      "mode": "0644",
+      "licence": "MIT"
+    },
+    {
+      "path": "src/components/shared/review-pane-layout.ts",
+      "bytes": 4787,
+      "sha256": "09b495dc408745c76ca0f30a1faedbfb790f70699e3e2a183e1660466dcee9c9",
       "mode": "0644",
       "licence": "MIT"
     },
@@ -14196,6 +14245,20 @@
       "licence": "MIT"
     },
     {
+      "path": "src/lib/cohort/anatomy-card-media.test.ts",
+      "bytes": 1529,
+      "sha256": "2d569fe10d5eb50416e656e683a0ed6bad3dbb168b08b36895aefa267bb09cba",
+      "mode": "0644",
+      "licence": "MIT"
+    },
+    {
+      "path": "src/lib/cohort/anatomy-card-media.ts",
+      "bytes": 3552,
+      "sha256": "0fe12504d9190751cabc7ad1527d2dc1b452351166d7bb9cf953ad68adf8f211",
+      "mode": "0644",
+      "licence": "MIT"
+    },
+    {
       "path": "src/lib/cohort/card-grade.server.ts",
       "bytes": 8506,
       "sha256": "8de7632985cc9572ed538540e3181379a21d235e40bcd93ed9f526d9ff9f3d2e",
@@ -14203,9 +14266,16 @@
       "licence": "MIT"
     },
     {
+      "path": "src/lib/cohort/card-turn-contract.test.ts",
+      "bytes": 3071,
+      "sha256": "4694a88e9c9d9f53706e7e8c5ee5410daca9e03e8efdbe8b6f937ffbb2a73e0b",
+      "mode": "0644",
+      "licence": "MIT"
+    },
+    {
       "path": "src/lib/cohort/card-turn-contract.ts",
-      "bytes": 3611,
-      "sha256": "073ec8076d64d4cdefb98ca97faedf18b37110491357f43941042f90a9aad883",
+      "bytes": 4508,
+      "sha256": "abfc735e3d75a5b935d6105add3a8e1ea8c3ff7dea11de962a605375e4ccde8d",
       "mode": "0644",
       "licence": "MIT"
     },
@@ -14218,8 +14288,8 @@
     },
     {
       "path": "src/lib/cohort/cohort-turn.server.ts",
-      "bytes": 44692,
-      "sha256": "742fe6e061cd0c1f7aa7a0f46ecb5ab593c5b08048971b4f94bfdd6a0eed345d",
+      "bytes": 46024,
+      "sha256": "f5eb6657d283f806f08d6424ae63191547d8e6109c29d1af8d3a94feccad5fe7",
       "mode": "0644",
       "licence": "MIT"
     },
@@ -14927,6 +14997,20 @@
       "path": "src/lib/fetch-with-deadline.ts",
       "bytes": 2899,
       "sha256": "87228f621ff99c1fb34b5ca523d75c52c892739ea7377d97980305d23c826913",
+      "mode": "0644",
+      "licence": "MIT"
+    },
+    {
+      "path": "src/lib/figures/anatomy-prompt.test.ts",
+      "bytes": 1362,
+      "sha256": "74375fbde4a8288306ffc2404eee06ac37dca0afd6f8f5e0846b1401bc3847f9",
+      "mode": "0644",
+      "licence": "MIT"
+    },
+    {
+      "path": "src/lib/figures/anatomy-prompt.ts",
+      "bytes": 1401,
+      "sha256": "39de46758d09bfe1cc76e0dad40d642290c33475ab6c51a5e00c71404a05d95d",
       "mode": "0644",
       "licence": "MIT"
     },
