@@ -8,6 +8,8 @@ const databaseUrl = process.env.DATABASE_URL
   ?? 'postgresql://foss:foss@127.0.0.1:1/foss';
 
 export default defineConfig({
+  experimental: { externalTables: true },
+  tables: { external: ['public.feedback_search_embeddings'] },
   schema: path.join(__dirname, 'prisma', 'schema'),
   migrations: {
     path: path.join(__dirname, 'prisma', 'migrations'),

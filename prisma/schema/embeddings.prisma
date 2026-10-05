@@ -87,7 +87,8 @@ model ConceptSubspace {
 }
 
 // Private operational retrieval; never part of scheduler item pools.
-// Source foreign keys and update invalidation are managed by feedback-search provision.
+// Source foreign keys and update invalidation are installed by the migration
+// and mirrored by the compatibility feedback-search provision command.
 model FeedbackSearchEmbedding {
   sourceKey          String                       @id @map("source_key")
   sourceKind         String                       @map("source_kind")
