@@ -1,10 +1,10 @@
 {
   "schemaVersion": 1,
   "boundaryPolicy": "foss/distribution-policy.json",
-  "boundaryPolicySha256": "9bb154972591e823e0660b6600a8057f3fbef478197046085e78c150fd68b2df",
+  "boundaryPolicySha256": "4baf6fed661d1da8783bbdfd6a62664e33a8b9caa8f67a0bf1439f9d58f57358",
   "reviewedPathsSha256": "46937cae65e3a0eb676b74c14a86d8b9ecbb31769cd9d56cacc23af8b478cc4c",
   "fileCount": 2620,
-  "totalBytes": 257148594,
+  "totalBytes": 257150094,
   "files": [
     {
       "path": ".env.example",
@@ -127,8 +127,8 @@
     },
     {
       "path": "foss/distribution-policy.json",
-      "bytes": 343021,
-      "sha256": "9bb154972591e823e0660b6600a8057f3fbef478197046085e78c150fd68b2df",
+      "bytes": 343256,
+      "sha256": "4baf6fed661d1da8783bbdfd6a62664e33a8b9caa8f67a0bf1439f9d58f57358",
       "mode": "0644",
       "licence": "MIT"
     },
@@ -10830,8 +10830,8 @@
     },
     {
       "path": "prisma/schema/base.prisma",
-      "bytes": 11439,
-      "sha256": "1646e8442cec6e1eef79d3d36d508ce940ab87f8ee89f9405fad5762168920cd",
+      "bytes": 11668,
+      "sha256": "adedf51c8133060e1ab53bb24b53767686a75f379f336c5218f76e4c6aa54c16",
       "mode": "0644",
       "licence": "MIT"
     },
@@ -11173,15 +11173,15 @@
     },
     {
       "path": "scripts/foss/distribution.test.ts",
-      "bytes": 66414,
-      "sha256": "f1012904317366abcde1a4453c5ec74e748dddf320ef8a7f3a94ce1228b32071",
+      "bytes": 67206,
+      "sha256": "492080f6b03dcfcb5588767e6cc6a96485fb2ef03e829de5edde1bff33a9c542",
       "mode": "0644",
       "licence": "MIT"
     },
     {
       "path": "scripts/foss/distribution.ts",
-      "bytes": 102315,
-      "sha256": "90719d1eddbfc12cdd66ba4beb0f5a0c67bc8d78b08481bea138374939f56c8d",
+      "bytes": 102559,
+      "sha256": "60699a87e57ca66a998d43989396c848902d1639cb65413b7743d3e1956abd93",
       "mode": "0644",
       "licence": "MIT"
     },

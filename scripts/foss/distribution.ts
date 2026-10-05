@@ -374,7 +374,10 @@ export const PROTECTED_PUBLIC_FALLBACKS: ReadonlyArray<Readonly<{
     // public User model carries the same two columns (CI foss-export).
     // 2026-10-04: User gained the persisted review challenge level and CAS
     // revision, which the exported session service selects for cache builds.
-    sha256: '1646e8442cec6e1eef79d3d36d508ce940ab87f8ee89f9405fad5762168920cd',
+    // 2026-10-05: quarantined feedback images link UserDocument to ContentIssue.
+    // Keep the nullable opposite relation and purpose discriminator used by the
+    // exported image upload/bind/read paths; no private document surface added.
+    sha256: 'adedf51c8133060e1ab53bb24b53767686a75f379f336c5218f76e4c6aa54c16',
   },
   {
     path: 'prisma/schema/content.prisma',

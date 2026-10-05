@@ -154,6 +154,10 @@ model UserDocument {
   userId String
   user   User   @relation(fields: [userId], references: [id], onDelete: Cascade)
 
+  purpose String @default("document") // document | flag-image; feedback images never enter ingestion
+  flagIssueId String? @unique
+  flagIssue ContentIssue? @relation(fields: [flagIssueId], references: [id], onDelete: SetNull)
+
   filename  String // Original filename
   r2Key     String // R2 object key
   mimeType  String // MIME type

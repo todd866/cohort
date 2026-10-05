@@ -1059,6 +1059,15 @@ describe('FOSS distribution boundary', () => {
     )?.text ?? '';
     expect(publicBaseSchema).toMatch(/reviewChallenge\s+Int\s+@default\(0\)/);
     expect(publicBaseSchema).toMatch(/reviewChallengeRevision\s+Int\s+@default\(0\)/);
+    const publicUserDocument = publicBaseSchema.match(/model UserDocument \{[\s\S]*?\n\}/)?.[0] ?? '';
+    expect(publicUserDocument).toMatch(/purpose\s+String\s+@default\("document"\)/);
+    expect(publicUserDocument).toMatch(/flagIssueId\s+String\?\s+@unique/);
+    expect(publicUserDocument).toMatch(/flagIssue\s+ContentIssue\?\s+@relation\(fields: \[flagIssueId\], references: \[id\], onDelete: SetNull\)/);
+    // Lifecycle fields selected by the distributed feedback-image routes must
+    // survive the schema redaction as well as the relation itself.
+    for (const field of ['userId', 'r2Key', 'mimeType', 'sizeBytes', 'status', 'uploadUrlExpiresAt', 'deletionRequestedAt', 'deleteAfter', 'metadata']) {
+      expect(publicUserDocument).toMatch(new RegExp(`\\b${field}\\s+`));
+    }
     const publicContentSchema = policy.generatedTextFiles.find(
       (entry) => entry.path === 'prisma/schema/content.prisma',
     );
