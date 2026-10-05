@@ -20,6 +20,7 @@
 import { prisma } from '@/lib/prisma';
 import type { ClipPromptData } from '@/components/review/clip-role';
 import { getSignedVideoUrl } from '@/lib/video-storage';
+import { logger } from '@/lib/logger';
 
 export type ClipDenialReason = 'rights' | 'tier' | 'deleted';
 
@@ -169,23 +170,30 @@ export async function resolveClipsForSession(
       isCopyrightTier: opts.isCopyrightTier,
     }).allowed) return;
 
-    const [url, posterUrl] = await Promise.all([
-      getSignedVideoUrl(clip.r2Key),
-      clip.posterR2Key ? getSignedVideoUrl(clip.posterR2Key) : Promise.resolve(null),
-    ]);
-    out.set(clip.id, {
-      id: clip.id,
-      url,
-      posterUrl,
-      audioStripped: clip.audioStripped,
-      sourceUrl: clip.source.url,
-      sourceTitle: clip.source.title,
-      sourceAuthor: clip.source.channelName,
-      sourceLicence: clip.source.licence,
-      sourceLicenceUrl: recognisedCreativeCommonsLicence(clip.source.licence),
-      startSecs: clip.startSecs,
-      endSecs: clip.endSecs,
-    });
+    try {
+      const [url, posterUrl] = await Promise.all([
+        getSignedVideoUrl(clip.r2Key),
+        clip.posterR2Key ? getSignedVideoUrl(clip.posterR2Key) : Promise.resolve(null),
+      ]);
+      out.set(clip.id, {
+        id: clip.id,
+        url,
+        posterUrl,
+        audioStripped: clip.audioStripped,
+        sourceUrl: clip.source.url,
+        sourceTitle: clip.source.title,
+        sourceAuthor: clip.source.channelName,
+        sourceLicence: clip.source.licence,
+        sourceLicenceUrl: recognisedCreativeCommonsLicence(clip.source.licence),
+        startSecs: clip.startSecs,
+        endSecs: clip.endSecs,
+      });
+    } catch {
+      // One malformed or unavailable object must not erase healthy clips in
+      // the same session. Keep the failed clip absent so prompt callers still
+      // fail closed; never log a signed URL or storage key.
+      logger.warn('Clip signing failed; withholding clip', { clipId: clip.id });
+    }
   }));
 
   return out;

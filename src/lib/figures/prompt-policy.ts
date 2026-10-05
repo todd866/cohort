@@ -19,8 +19,21 @@ export type ImageRole = string | null | undefined;
 const FIGURE_DEIXIS =
   /\b(?:in|on)\s+the\s+(?:photograph|photo|image|figure|picture|diagram)\b|\bshown\s+(?:below|here|above)\b|\bpictured\b|\bthis\s+(?:photograph|photo|image|figure|picture)\b/i;
 
+/**
+ * Candidate detector for human/audit review only. Clinical shorthand such as
+ * "CT findings below" or "CXR below" can point at an image, but the image may
+ * itself contain a diagnostic title, labels, or annotations. This detector must
+ * never decide prompt delivery or imageRole on its own.
+ */
+const CLINICAL_FIGURE_CANDIDATE =
+  /\b(?:the\s+)?(?:CT|CXR)\s+(?:findings?\s+)?(?:shown\s+)?(?:below|here|above)\b/i;
+
 export function frontRequiresFigure(front: string | null | undefined): boolean {
   return !!front && FIGURE_DEIXIS.test(front);
+}
+
+export function frontMayNeedClinicalFigureReview(front: string | null | undefined): boolean {
+  return !!front && CLINICAL_FIGURE_CANDIDATE.test(front);
 }
 
 /**

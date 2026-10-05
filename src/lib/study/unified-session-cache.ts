@@ -51,6 +51,7 @@ import {
 import { breakModalityRuns } from '@/lib/knowledge/modality-guard';
 import { isUsableQuestion } from '@/lib/question-validation';
 import { loadCurrentSessionContent, sessionSourceKey as sourceKey, withCurrentSessionBody, type CurrentSessionSource } from './current-session-content';
+import { resolveClipsForSession } from '@/lib/video/clip-access';
 import { EXAM_ONLY_ROTATIONS, isNativeExamScaffold } from './exam-only-modules';
 import { getReviewLearningGap } from './review-learning-gap.server';
 
@@ -278,11 +279,35 @@ async function revalidateCachedItemSources(
   ctx: SessionContext,
   items: UnifiedItem[],
   expectedFingerprints?: CachedSourceFingerprints,
+  options: { resolveClips?: boolean } = {},
 ): Promise<{ items: UnifiedItem[]; fingerprints: CachedSourceFingerprints; sources: Map<string, CurrentSessionSource> }> {
   const sources = await loadCurrentSessionContent(ctx, items);
   const fingerprints: CachedSourceFingerprints = new Map();
   let deniedCount = 0;
   let persistentDriftCount = 0;
+
+  // Cache rows can predate a clip being attached to their current Card or
+  // Question. Re-read and re-sign clips from the current source rows just as
+  // we do for images; retaining the serialized clip would otherwise deliver a
+  // valid card with no prompt media (or with an obsolete signed URL). Prompt
+  // clips fail closed when the rights/tier/deletion gate cannot resolve them.
+  const clipIds = [...sources.values()]
+    .map((source) => source.clipId)
+    .filter((id): id is string => typeof id === 'string' && id.length > 0);
+  let clipMap = new Map<string, import('@/components/review/clip-role').ClipPromptData>();
+  if (options.resolveClips !== false && clipIds.length > 0) {
+    try {
+      clipMap = await resolveClipsForSession(clipIds, {
+        isCopyrightTier: ctx.imageTier === 'copyright',
+      });
+    } catch (error) {
+      logger.warn('Cache clip rehydration failed; prompt clips will be withheld', {
+        userId: ctx.userId,
+        rotation: ctx.rotation,
+        error: error instanceof Error ? error.message : String(error),
+      });
+    }
+  }
 
   const patched = items.flatMap((item): UnifiedItem[] => {
     if (item.type !== 'question' && item.type !== 'card') return [item];
@@ -298,6 +323,12 @@ async function revalidateCachedItemSources(
       return [];
     }
     fingerprints.set(key, fingerprint);
+
+    const clip = source.clipId ? clipMap.get(source.clipId) ?? null : null;
+    if (options.resolveClips !== false && source.clipRole === 'prompt' && !clip) {
+      deniedCount += 1;
+      return [];
+    }
 
     const currentImageKey = source.imageUrl ?? null;
     const currentCaption = source.imageCaption ?? null;
@@ -327,6 +358,9 @@ async function revalidateCachedItemSources(
       imageCaption: currentCaption,
       imageRole: currentRole,
       imageMeta: undefined,
+      // Replace, rather than merge, the cached clip. This clears withdrawn
+      // context clips and prevents stale signed URLs from surviving egress.
+      clip,
     } as UnifiedItem];
   });
 
@@ -574,7 +608,10 @@ export async function tryCachedSession(ctx: SessionContext): Promise<NextRespons
           || isNativeExamScaffold(ctx.rotation, item.topics));
       }
       cachedItems = await filterRightsStaleCachedVideos(ctx, cachedItems);
-      const initialSourceValidation = await revalidateCachedItemSources(ctx, cachedItems);
+      // The first pass repairs text and image identity for option refresh. Clip
+      // signing is deferred to final egress, avoiding two signed-URL batches
+      // on every cache hit while retaining the final rights/tier/deletion gate.
+      const initialSourceValidation = await revalidateCachedItemSources(ctx, cachedItems, undefined, { resolveClips: false });
       cachedItems = initialSourceValidation.items;
       cachedItems = await filterRawPublicUsmleCachedReinforcementCards(ctx, cachedItems);
 

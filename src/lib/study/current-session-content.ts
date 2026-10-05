@@ -135,6 +135,8 @@ export function withCurrentSessionBody(item: UnifiedItem, source: CurrentSession
       explanation: source.context, topics: source.topics, difficulty: source.difficulty,
       abbreviations: normalizeAbbreviations(source.abbreviations),
       variantGroupId: source.variantGroupId, variantType: source.variantType,
+      clipRole: source.clipRole === 'prompt' ? 'prompt' : null,
+      clipCaption: source.clipCaption ?? null,
     };
   }
   return { ...item, front: source.front, back: source.back,
@@ -144,6 +146,8 @@ export function withCurrentSessionBody(item: UnifiedItem, source: CurrentSession
     abbreviations: normalizeAbbreviations(source.abbreviations),
     complexity: source.complexity, difficulty: source.difficulty, clusterId: source.clusterId,
     variantGroupId: source.variantGroupId, variantIndex: source.variantIndex, variantType: source.variantType,
+    clipRole: source.clipRole === 'prompt' ? 'prompt' : null,
+    clipCaption: source.clipCaption ?? null,
   };
 }
 
