@@ -95,6 +95,23 @@ describe('starter-session public-USMLE boundary', () => {
     );
   });
 
+  it('never selects a harder sibling for a learner with no history', () => {
+    const source = fs.readFileSync(
+      path.resolve(__dirname, 'generate-starter-sessions.ts'),
+      'utf8',
+    );
+    const questionQuery = source.slice(
+      source.indexOf('// Pick 1 question for this concept'),
+      source.indexOf('// Find a medium-difficulty usable question'),
+    );
+
+    // Null variantType stays eligible. `{ not }` alone drops those rows on Postgres.
+    expect(questionQuery).toContain('HARDER_SIBLING_VARIANT_TYPE');
+    expect(questionQuery).toMatch(
+      /OR:\s*\[\s*\{\s*variantType:\s*null\s*\},\s*\{\s*variantType:\s*\{\s*not:\s*HARDER_SIBLING_VARIANT_TYPE\s*\}\s*\},?\s*\]/,
+    );
+  });
+
   it('revalidates derived cards through stableId parent lineage before artifact emission', () => {
     const source = fs.readFileSync(
       path.resolve(__dirname, 'generate-starter-sessions.ts'),

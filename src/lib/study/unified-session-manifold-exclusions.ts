@@ -2,9 +2,11 @@ import { DEFAULT_ENABLED_MODULES, getEnabledGroupTypes } from '@/lib/institution
 import { prisma } from '@/lib/prisma';
 import {
   MASTERY_CORRECT_THRESHOLD,
+  heldHarderSiblingIds,
   resolveRetirementPolicy,
   retiredQuestionIds as computeRetiredQuestionIds,
 } from '@/lib/knowledge/question-retirement';
+import { loadHarderSiblingMap } from '@/lib/knowledge/harder-sibling-map.server';
 import type { SessionContext } from './unified-session-types';
 
 type RecentExposureEvent = {
@@ -193,6 +195,7 @@ export async function loadManifoldExclusionState(
     masteredQuestions,
     allTimeSeenCards,
     allTimeSeenQuestions,
+    harderSiblingMap,
   ] = await Promise.all([
     prisma.learningEvent.findMany({
       where: {
@@ -241,6 +244,7 @@ export async function loadManifoldExclusionState(
         isCorrect: true,
       },
       _count: { questionId: true },
+      _max: { createdAt: true },
       having: {
         questionId: { _count: { gte: MASTERY_CORRECT_THRESHOLD } },
       },
@@ -258,7 +262,16 @@ export async function loadManifoldExclusionState(
           distinct: ['questionId'],
         })
       : Promise.resolve([] as Array<{ questionId: string }>),
+    loadHarderSiblingMap(),
   ]);
+
+  const anchorCorrectAtMs = new Map<string, number>();
+  for (const row of masteredQuestions) {
+    const createdAt = row._max?.createdAt;
+    if (createdAt instanceof Date && Number.isFinite(createdAt.getTime())) {
+      anchorCorrectAtMs.set(row.questionId, createdAt.getTime());
+    }
+  }
 
   return buildManifoldExclusionState({
     recentExposureEvents,
@@ -273,6 +286,9 @@ export async function loadManifoldExclusionState(
         masteredQuestions.map(r => r.questionId),
         resolveRetirementPolicy()
       ),
+      // Same exclusion set as retirement. The anchor's latest correct time is
+      // `_max.createdAt` on the mastery groupBy already loaded above.
+      ...heldHarderSiblingIds(harderSiblingMap, null, anchorCorrectAtMs, now.getTime()),
     ],
     cardRepeatCutoff,
     questionRepeatCutoff,

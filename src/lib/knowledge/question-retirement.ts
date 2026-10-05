@@ -78,6 +78,41 @@
  */
 export const MASTERY_CORRECT_THRESHOLD = 1;
 
+/**
+ * A harder sibling (`variantType: 'harder'`, `variantGroupId` = the anchor id)
+ * stays ineligible until this user has a correct answer on that anchor at least
+ * this long ago. A miss leaves no correct time, so the sibling stays held and
+ * the anchor keeps repeating. This is an eligibility hold, not session
+ * suppression: `harder` is deliberately absent from SUPPRESSIBLE_VARIANT_TYPES.
+ */
+export const HARDER_SIBLING_VARIANT_TYPE = 'harder';
+export const HARDER_SIBLING_MIN_GAP_MS = 48 * 3600 * 1000;
+
+/**
+ * Sibling ids that must not be served yet.
+ *
+ * Held unless `anchorCorrectAtMs` has the anchor and `nowMs - t` is at least
+ * the gap. Wrong-only anchors are omitted from that map by the caller. When
+ * `liveQuestionIds` is provided and does not contain the anchor, the anchor is
+ * gone (shelved or deleted) and the sibling is an ordinary question.
+ */
+export function heldHarderSiblingIds(
+  harderToAnchor: ReadonlyMap<string, string>,
+  liveQuestionIds: ReadonlySet<string> | null,
+  anchorCorrectAtMs: ReadonlyMap<string, number>,
+  nowMs: number,
+): Set<string> {
+  const held = new Set<string>();
+  for (const [siblingId, anchorId] of harderToAnchor) {
+    if (liveQuestionIds && !liveQuestionIds.has(anchorId)) continue;
+    const correctAt = anchorCorrectAtMs.get(anchorId);
+    if (correctAt === undefined || !Number.isFinite(correctAt) || nowMs - correctAt < HARDER_SIBLING_MIN_GAP_MS) {
+      held.add(siblingId);
+    }
+  }
+  return held;
+}
+
 /** Per-user, per-question exposure state, derived from QuestionResponse. */
 export interface QuestionFamiliarity {
   /** Epoch ms of this user's most recent delivered serve or answered attempt. */

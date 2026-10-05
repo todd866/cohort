@@ -39,7 +39,7 @@ const CuratedQuestionSchema = z.object({
   clipCaption: z.string().nullable().optional(),
   variantGroupId: z.string().nullable().optional(),
   practiceLocale: z.enum(['au', 'us']).nullable().optional(),
-  variantType: z.enum(['anchor', 'shuffled', 'rephrased', 'different-scenario', 'near-duplicate', 'contrast-set']).nullable().optional(),
+  variantType: z.enum(['anchor', 'shuffled', 'rephrased', 'different-scenario', 'near-duplicate', 'contrast-set', 'harder']).nullable().optional(),
   cite: z.string().nullable().optional(),
   publicUsmle: PublicUsmleProvenanceV1Schema.nullable().optional(),
   crosslinks: z.object({

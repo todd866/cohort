@@ -129,6 +129,28 @@ describe('loadQuestionBankFromDisk', () => {
     }
   });
 
+  it('retains variantGroupId and variantType for a harder sibling', () => {
+    const harderDir = fs.mkdtempSync(path.join(os.tmpdir(), 'qbank-harder-sibling-'));
+    try {
+      const rotDir = path.join(harderDir, 'cah');
+      fs.mkdirSync(rotDir, { recursive: true });
+      fs.writeFileSync(path.join(rotDir, 'harder.json'), JSON.stringify({
+        ...makeQuestion('bank:cah:x:harder:v1', 'cah'),
+        variantGroupId: 'bank:cah:x:v1',
+        variantType: 'harder',
+      }));
+      const result = loadQuestionBankFromDisk({ bankDir: harderDir });
+      expect(result.errors).toEqual([]);
+      expect(result.questions[0]).toMatchObject({
+        id: 'bank:cah:x:harder:v1',
+        variantGroupId: 'bank:cah:x:v1',
+        variantType: 'harder',
+      });
+    } finally {
+      fs.rmSync(harderDir, { recursive: true, force: true });
+    }
+  });
+
   it('retains a validated prompt image role from disk', () => {
     const promptDir = fs.mkdtempSync(path.join(os.tmpdir(), 'qbank-prompt-role-'));
     try {

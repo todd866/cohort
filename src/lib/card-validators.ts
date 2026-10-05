@@ -9,6 +9,7 @@ import * as path from 'path';
 import type { GeneratedCard } from './card-generator';
 import { detectBadClozeSpans } from './cloze-quality';
 import { figureWithdrawal } from './figures/withdrawn-figures';
+import { needsResultsTable } from './question-bank/results-table-policy';
 
 /**
  * Extract MCQ option structure from card front/back for guessability analysis.
@@ -60,6 +61,20 @@ export interface CardQualityIssue {
 export function validateCard(card: GeneratedCard): CardQualityIssue[] {
   const issues: CardQualityIssue[] = [];
   const blankCount = (card.front.match(/\[___\]/g) ?? []).length;
+
+  // Keep ordinary cards on the same measurement-panel contract as question
+  // bank stems. The policy ignores measurements already inside authored tables
+  // and excludes isolated narrative values, while blocking new multi-value
+  // prose panels before they can reach a seed.
+  const frontNeedsResultsTable = needsResultsTable(card.front);
+  const contextNeedsResultsTable = needsResultsTable(card.context ?? '');
+  if (frontNeedsResultsTable || contextNeedsResultsTable) {
+    issues.push({
+      card,
+      issue: 'Measurement panel needs a results table: front/context contains multiple inline vitals or lab values',
+      severity: 'error',
+    });
+  }
 
   // Answer too short (likely parsing error)
   // Allow 2-3 char answers - they're often valid (abbreviations, percentages, codes)

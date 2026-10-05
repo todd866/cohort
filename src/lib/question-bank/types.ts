@@ -124,8 +124,9 @@ export interface CuratedQuestion {
   variantGroupId?: string | null;
   /** Coarse practice-locale split for confirmed AU/US twin questions. */
   practiceLocale?: 'au' | 'us' | null;
-  /** 'contrast-set' = a member of a shared-choice-pool family; see contrast-set.ts. */
-  variantType?: 'anchor' | 'shuffled' | 'rephrased' | 'different-scenario' | 'near-duplicate' | 'contrast-set' | null;
+  /** 'contrast-set' = a member of a shared-choice-pool family; see contrast-set.ts.
+   *  'harder' = a sibling held until its anchor (variantGroupId) was answered correctly. */
+  variantType?: 'anchor' | 'shuffled' | 'rephrased' | 'different-scenario' | 'near-duplicate' | 'contrast-set' | 'harder' | null;
 
   // Citation for audit trail — format: source-slug#section
   // e.g. "atls#haemorrhagic-shock" or "surviving-sepsis-2021#vasopressors"

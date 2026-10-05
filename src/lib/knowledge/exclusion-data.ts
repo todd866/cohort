@@ -11,9 +11,11 @@
 import { prisma } from '@/lib/prisma';
 import {
   MASTERY_CORRECT_THRESHOLD,
+  heldHarderSiblingIds,
   resolveRetirementPolicy,
   retiredQuestionIds,
 } from './question-retirement';
+import { loadHarderSiblingMap } from './harder-sibling-map.server';
 
 export interface ExclusionData {
   excludedCardIds: Set<string>;
@@ -29,7 +31,7 @@ export async function fetchExclusionData(
   cardRepeatCutoff: Date,
   questionRepeatCutoff: Date,
 ): Promise<ExclusionData> {
-  const [recentExposureEvents, recentQuestionResponses, masteredQuestions] = await Promise.all([
+  const [recentExposureEvents, recentQuestionResponses, masteredQuestions, harderSiblingMap] = await Promise.all([
     prisma.learningEvent.findMany({
       where: {
         userId,
@@ -51,10 +53,12 @@ export async function fetchExclusionData(
         isCorrect: true,
       },
       _count: { questionId: true },
+      _max: { createdAt: true },
       having: {
         questionId: { _count: { gte: MASTERY_CORRECT_THRESHOLD } },
       },
     }),
+    loadHarderSiblingMap(),
   ]);
 
   const excludedCardIds = new Set<string>();
@@ -83,6 +87,19 @@ export async function fetchExclusionData(
     masteredQuestions.map((mq) => mq.questionId),
     resolveRetirementPolicy()
   )) {
+    excludedQuestionIds.add(questionId);
+  }
+  // A harder sibling waits until its anchor was correct at least 48 hours ago.
+  // The time is the latest correct on the mastery groupBy above — wrong answers
+  // never enter that result, so a missed anchor keeps the sibling held.
+  const anchorCorrectAtMs = new Map<string, number>();
+  for (const row of masteredQuestions) {
+    const createdAt = row._max?.createdAt;
+    if (createdAt instanceof Date && Number.isFinite(createdAt.getTime())) {
+      anchorCorrectAtMs.set(row.questionId, createdAt.getTime());
+    }
+  }
+  for (const questionId of heldHarderSiblingIds(harderSiblingMap, null, anchorCorrectAtMs, Date.now())) {
     excludedQuestionIds.add(questionId);
   }
 

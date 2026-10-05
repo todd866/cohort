@@ -85,3 +85,25 @@ model ConceptSubspace {
   @@map("concept_subspaces")
   @@ignore
 }
+
+// Private operational retrieval; never part of scheduler item pools.
+// Source foreign keys and update invalidation are managed by feedback-search provision.
+model FeedbackSearchEmbedding {
+  sourceKey          String                       @id @map("source_key")
+  sourceKind         String                       @map("source_kind")
+  sourceId           String                       @map("source_id")
+  issueId            String?                      @unique @map("issue_id")
+  feedbackId         String?                      @unique @map("feedback_id")
+  cardProgressId     String?                      @unique @map("card_progress_id")
+  questionResponseId String?                      @unique @map("question_response_id")
+  sourceRevision     String                       @map("source_revision")
+  documentHash       String                       @map("document_hash")
+  textCoverage       String                       @map("text_coverage")
+  model              String
+  dimensions         Int
+  embedding          Unsupported("halfvec(3072)")
+  indexedAt          DateTime                     @default(now()) @map("indexed_at") @db.Timestamptz(3)
+
+  @@map("feedback_search_embeddings")
+  @@ignore
+}

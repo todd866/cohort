@@ -18,6 +18,7 @@ import {
   type BridgeCard,
 } from './struggle';
 import { getUpstreamGapsForConcept, type UpstreamGap } from '../manifold/local-flow';
+import { HARDER_SIBLING_VARIANT_TYPE } from './question-retirement';
 
 // =============================================================================
 // Types
@@ -307,7 +308,9 @@ async function findVariantQuestion(
 
   if (!card || card.topics.length === 0) return null;
 
-  // Find an unanswered question on the same topics
+  // Find an unanswered question on the same topics. A harder sibling is the
+  // wrong substitute for a learner who is already stuck: it stays held until
+  // its anchor has been answered correctly. Null variantType stays eligible.
   const question = await prisma.question.findFirst({
     where: {
       rotation: card.rotation,
@@ -316,6 +319,10 @@ async function findVariantQuestion(
         : {}),
       topics: { hasSome: card.topics },
       responses: { none: { userId } },
+      OR: [
+        { variantType: null },
+        { variantType: { not: HARDER_SIBLING_VARIANT_TYPE } },
+      ],
     },
     select: { id: true },
   });

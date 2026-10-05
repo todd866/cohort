@@ -47,6 +47,25 @@ describe('projectCuratedQuestionForBulk', () => {
     }));
   });
 
+  it('keeps variantGroupId and variantType for a harder sibling on the seed projection', () => {
+    const base = {
+      id: 'bank:cah:x:harder:v1',
+      rotation: 'cah',
+      topics: ['airway'],
+      questionType: 'management',
+      difficulty: 'hard',
+      stem: 'What is the next step?',
+      options: [{ label: 'A', text: 'Answer', isCorrect: true }],
+      context: 'The harder probe of the same fact.',
+      variantGroupId: 'bank:cah:x:v1',
+      variantType: 'harder' as const,
+    } satisfies CuratedQuestion;
+    expect(projectCuratedQuestionForBulk(base)).toMatchObject({
+      variantGroupId: 'bank:cah:x:v1',
+      variantType: 'harder',
+    });
+  });
+
   it('projects and authoritatively clears practiceLocale for question twins', () => {
     const base = {
       id: 'bank:cah:fluid-locale:v1',

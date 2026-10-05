@@ -42,8 +42,10 @@ import { meetsRequiredTier } from '@/lib/content-access';
 import {
   MASTERY_CORRECT_THRESHOLD,
   resolveRetirementPolicy,
+  heldHarderSiblingIds,
   retiredQuestionIds as computeRetiredQuestionIds,
 } from '@/lib/knowledge/question-retirement';
+import { loadHarderSiblingMap } from '@/lib/knowledge/harder-sibling-map.server';
 import { filterDeliverableReinforcementCardRows } from '@/lib/usmle/reinforcement-card-delivery';
 import {
   ownerPrivateOrSharedCardScope,
@@ -164,6 +166,18 @@ async function filterRawPublicUsmleCachedReinforcementCards(
   return filtered;
 }
 
+function withHarderAnchorIds(
+  questionIds: readonly string[],
+  harderToAnchor: ReadonlyMap<string, string>,
+): string[] {
+  const ids = new Set(questionIds);
+  for (const questionId of questionIds) {
+    const anchorId = harderToAnchor.get(questionId);
+    if (anchorId) ids.add(anchorId);
+  }
+  return [...ids];
+}
+
 async function filterRecentlySeenCachedItems(
   ctx: SessionContext,
   items: UnifiedItem[],
@@ -177,7 +191,11 @@ async function filterRecentlySeenCachedItems(
   const questionCutoff = new Date(now - 48 * 60 * 60 * 1000);
   const sourceIds = [...cardIds, ...questionIds];
 
-  const [recentEvents, recentResponses, masteredQuestions] = await Promise.all([
+  // The anchor has usually retired out of this queue, so the one mastery
+  // groupBy has to name it. The map is content and is already in memory after
+  // the first read; events and recent responses still start immediately.
+  const harderSiblingMapPromise = loadHarderSiblingMap();
+  const [recentEvents, recentResponses, masteredQuestions, harderSiblingMap] = await Promise.all([
     prisma.learningEvent.findMany({
       where: {
         userId: ctx.userId,
@@ -200,19 +218,21 @@ async function filterRecentlySeenCachedItems(
         })
       : Promise.resolve([]),
     questionIds.length > 0
-      ? prisma.questionResponse.groupBy({
+      ? harderSiblingMapPromise.then((siblingMap) => prisma.questionResponse.groupBy({
           by: ['questionId'],
           where: {
             userId: ctx.userId,
-            questionId: { in: questionIds },
+            questionId: { in: withHarderAnchorIds(questionIds, siblingMap) },
             isCorrect: true,
           },
           _count: { questionId: true },
+          _max: { createdAt: true },
           having: {
             questionId: { _count: { gte: MASTERY_CORRECT_THRESHOLD } },
           },
-        })
+        }))
       : Promise.resolve([]),
+    harderSiblingMapPromise,
   ]);
 
   const excludedCardIds = new Set<string>();
@@ -238,6 +258,16 @@ async function filterRecentlySeenCachedItems(
     masteredQuestions.map((r) => r.questionId),
     resolveRetirementPolicy()
   )) {
+    excludedQuestionIds.add(questionId);
+  }
+  const anchorCorrectAtMs = new Map<string, number>();
+  for (const row of masteredQuestions) {
+    const createdAt = row._max?.createdAt;
+    if (createdAt instanceof Date && Number.isFinite(createdAt.getTime())) {
+      anchorCorrectAtMs.set(row.questionId, createdAt.getTime());
+    }
+  }
+  for (const questionId of heldHarderSiblingIds(harderSiblingMap, null, anchorCorrectAtMs, now)) {
     excludedQuestionIds.add(questionId);
   }
 

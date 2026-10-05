@@ -25,6 +25,7 @@ import { writeLiveServeDecisions } from './serve-decision-write';
 import { withoutRawPublicUsmleQuestions } from '@/lib/usmle/raw-question-boundary';
 import { filterDeliverableReinforcementCardRows } from '@/lib/usmle/reinforcement-card-delivery';
 import { ownerPrivateOrSharedCardScope } from '@/lib/cards/read-repository.server';
+import { HARDER_SIBLING_VARIANT_TYPE } from '@/lib/knowledge/question-retirement';
 
 /**
  * Fast path: new user with zero history -> pre-built starter session.
@@ -49,6 +50,12 @@ export async function tryStarterSession(ctx: SessionContext): Promise<NextRespon
 
   const starterSession = STARTER_SESSIONS[ctx.rotation];
   if (!starterSession || starterSession.items.length === 0) return null;
+  // Generated question rows do not copy variantType. When an item does carry
+  // it, a harder sibling is never a first session: the learner has no anchor yet.
+  const starterSourceItems = starterSession.items.filter((item) =>
+    item.type !== 'question' || item.variantType !== HARDER_SIBLING_VARIANT_TYPE,
+  );
+  if (starterSourceItems.length === 0) return null;
 
   // Single fast existence check — indexed on userId, <5ms
   const anyEvent = await prisma.learningEvent.findFirst({
@@ -59,7 +66,7 @@ export async function tryStarterSession(ctx: SessionContext): Promise<NextRespon
 
   // SQL-side similarityToPrior: scoreOrderedPairwiseDistances returns
   // Map<itemId, similarity> in one query. No embedding bytes leave Postgres.
-  const orderedForPairwise = starterSession.items.map((it) => {
+  const orderedForPairwise = starterSourceItems.map((it) => {
     const table: EmbeddingItemTable = it.type === 'question' ? 'question_embeddings' : 'card_embeddings';
     const column: EmbeddingItemIdColumn = it.type === 'question' ? 'question_id' : 'card_id';
     return { id: it.id, table, column };
@@ -80,13 +87,13 @@ export async function tryStarterSession(ctx: SessionContext): Promise<NextRespon
   // withholds optional alternatives without changing the existing starter.
   let alternativeSources = new Map<string, CurrentSessionSource>();
   try {
-    const mappedItems = starterSession.items.filter(item => (item.type === 'card' || item.type === 'question')
+    const mappedItems = starterSourceItems.filter(item => (item.type === 'card' || item.type === 'question')
       && getOriginalImageAlternatives({ type: item.type, id: item.id }).length > 0);
     if (mappedItems.length > 0) alternativeSources = await loadCurrentSessionContent(ctx, mappedItems);
   } catch (error) {
     logger.warn('starter: optional image source validation failed', { error: String(error) });
   }
-  const starterItemsRaw = (await Promise.all(starterSession.items.map(async (item) => {
+  const starterItemsRaw = (await Promise.all(starterSourceItems.map(async (item) => {
     // Mirror the hydration lane's resilience: one bad sidecar or signing
     // failure must degrade that item to imageless, not 500 the session.
     let resolved: Awaited<ReturnType<typeof resolveImage>> = null;
@@ -119,7 +126,7 @@ export async function tryStarterSession(ctx: SessionContext): Promise<NextRespon
       priority: item.priority ?? 1,
       servedBy: 'starter' as const,
       clusterId: (item as { clusterId?: string | null }).clusterId ?? null,
-      poolSize: starterSession.items.length,
+      poolSize: starterSourceItems.length,
       predictedRecall: null as number | null,
       difficultyTier: null as 'scaffolding' | 'standard' | 'stretch' | null,
       decisionContext: {

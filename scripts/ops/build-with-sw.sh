@@ -26,7 +26,7 @@ trap 'sh scripts/ops/restore-sw-stamp.sh "$SW_FILE"' EXIT
 #
 # Same shape as the vitest heap fix in 846713bc.
 #
-# Vercel builds run on the Standard machine (4 cores, 8 GB) since 2026-10-02,
+# Vercel builds moved to Standard (4 cores, 8 GB) on 2026-10-02,
 # because Standard builds are not billed per CPU-minute and the 30-core machine
 # Elastic had picked sat idle for most of each build. Node's default heap there
 # is about a quarter of RAM, ~2 GB, under the ~4.2 GB the TypeScript pass
@@ -34,6 +34,10 @@ trap 'sh scripts/ops/restore-sw-stamp.sh "$SW_FILE"' EXIT
 # have room inside the 8 GB container. A cold full-content Next 16.3.8 build on
 # 2026-10-04 passed at this cap; aggregate local RSS fell from 6.055 to 5.542 GiB
 # versus the 6 GiB cap. macOS RSS is not proof of the Vercel container limit.
+# On 2026-10-05 the exact a4c457c0f release was killed by container OOM during
+# webpack on Standard, despite these optimizations. The same source passed on
+# Enhanced (8 cores, 16 GB); MD3 now uses that fixed build-machine size. Keep the
+# tested 5 GiB heap cap rather than consuming the new native-allocation headroom.
 # An existing NODE_OPTIONS always wins.
 if [ -z "$NODE_OPTIONS" ]; then
   if [ -n "$VERCEL" ]; then

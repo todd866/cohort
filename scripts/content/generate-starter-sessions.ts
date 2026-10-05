@@ -22,6 +22,7 @@ import {
   assertGeneratedContentIsUsable,
   resolveGeneratedContentMode,
 } from './generate-content-map';
+import { HARDER_SIBLING_VARIANT_TYPE } from '../../src/lib/knowledge/question-retirement';
 
 const ROOT = process.cwd();
 const OUTPUT_DIR = path.join(ROOT, 'src', 'lib', 'generated');
@@ -353,6 +354,12 @@ async function main() {
                   NOT: { topics: { hasSome: EXCLUDED_TOPICS } },
                   context: { not: null },
                   ...topicFilter,
+                  // A harder sibling waits until its anchor has been answered.
+                  // Null variantType stays eligible: `{ not }` alone drops those rows.
+                  OR: [
+                    { variantType: null },
+                    { variantType: { not: HARDER_SIBLING_VARIANT_TYPE } },
+                  ],
                 }),
               ),
               orderBy: [{ difficulty: 'asc' }],

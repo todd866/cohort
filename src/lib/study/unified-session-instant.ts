@@ -9,11 +9,13 @@ import { getOpenIssueExclusions } from '@/lib/content-quality/open-issue-exclusi
 import {
   admitMasteredWithinBudget,
   freshnessTier,
+  heldHarderSiblingIds,
   partitionByFreshness,
   resolveRetirementPolicy,
   retiredQuestionIds as computeRetiredQuestionIds,
   type QuestionFamiliarity,
 } from '@/lib/knowledge/question-retirement';
+import { loadHarderSiblingMap } from '@/lib/knowledge/harder-sibling-map.server';
 import { loadQuestionFamiliarity } from '@/lib/knowledge/bulk-candidates';
 import {
   prioritizeLeastRecentlyServedContrastSiblings,
@@ -180,6 +182,7 @@ export async function tryInstantSession(
   // Hoisted: question selection needs this for both registered users and persisted
   // guests. Card progress and concept-thread history remain registered-only below.
   let questionFamiliarity = new Map<string, QuestionFamiliarity>();
+  let harderSiblingMap: ReadonlyMap<string, string> = new Map();
   let conceptThreadAnchors: ClinicalThreadAnchor[] = [];
   const instantNowMs = Date.now();
   // Scaffold candidates are the rotation's complexity-1 cards. Computed before
@@ -327,6 +330,7 @@ export async function tryInstantSession(
           isCorrect: boolean | null;
           conceptIds: string[];
         }>),
+      loadHarderSiblingMap(),
     ]);
     let historyResults: Awaited<typeof historyPromise>;
     try {
@@ -344,6 +348,7 @@ export async function tryInstantSession(
         [],
         [],
         [],
+        new Map<string, string>(),
       ] as Awaited<typeof historyPromise>;
     }
     const [
@@ -355,7 +360,9 @@ export async function tryInstantSession(
       scaffoldProgressRows,
       variantSeenRows,
       conceptThreadEvents,
+      loadedHarderSiblingMap,
     ] = historyResults;
+    harderSiblingMap = loadedHarderSiblingMap;
     for (const event of recentEvents) {
       if (event.sourceType === 'card' && event.timestamp >= cardCutoff) {
         recentExcludedCardIds.add(event.sourceId);
@@ -426,6 +433,22 @@ export async function tryInstantSession(
   for (const questionId of computeRetiredQuestionIds(
     [...questionFamiliarity].filter(([, f]) => freshnessTier(f) === 2).map(([id]) => id),
     resolveRetirementPolicy()
+  )) {
+    recentExcludedQuestionIds.add(questionId);
+  }
+  // This lane has familiarity, not a correct-answer timestamp. A retired anchor
+  // is not served again, so lastSeenAtMs on a mastered anchor is the correct time.
+  const anchorCorrectAtMs = new Map<string, number>();
+  for (const [questionId, exposure] of questionFamiliarity) {
+    if (freshnessTier(exposure) === 2 && Number.isFinite(exposure.lastSeenAtMs)) {
+      anchorCorrectAtMs.set(questionId, exposure.lastSeenAtMs);
+    }
+  }
+  for (const questionId of heldHarderSiblingIds(
+    harderSiblingMap,
+    null,
+    anchorCorrectAtMs,
+    instantNowMs,
   )) {
     recentExcludedQuestionIds.add(questionId);
   }
