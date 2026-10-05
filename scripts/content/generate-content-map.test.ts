@@ -80,7 +80,9 @@ describe('generated-content build modes', () => {
     const vercel = JSON.parse(fs.readFileSync(path.resolve('vercel.json'), 'utf8')) as {
       buildCommand: string;
     };
-    const workflow = fs.readFileSync(path.resolve('.github/workflows/ci.yml'), 'utf8');
+    const completeWorkflowPath = path.resolve('.github/workflows/local-ci-full.yml');
+    const workflow = fs.readFileSync(path.resolve('.github/workflows/ci.yml'), 'utf8')
+      + (fs.existsSync(completeWorkflowPath) ? fs.readFileSync(completeWorkflowPath, 'utf8') : '');
     const internalReleaseScriptPath = path.resolve('scripts/ops/release-green-commit.mjs');
     const internalReleaseScript = fs.existsSync(internalReleaseScriptPath)
       ? fs.readFileSync(internalReleaseScriptPath, 'utf8')
