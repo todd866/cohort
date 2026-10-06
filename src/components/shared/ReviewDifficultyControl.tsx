@@ -129,7 +129,7 @@ export function ReviewDifficultyControl({
         className="inline-flex h-[40px] min-h-[40px] min-w-[44px] max-w-[min(9.25rem,24vw)] items-center gap-[4px] rounded-full border border-[var(--md-outline-variant)] bg-[var(--md-surface)] px-[10px] text-xs leading-none text-[var(--md-on-surface-variant)] transition-colors hover:bg-[var(--md-surface-container-high)] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[var(--md-primary)] disabled:cursor-not-allowed disabled:opacity-60"
       >
         <span aria-hidden className="text-sm">◒</span>
-        <span className="hidden min-w-0 truncate sm:inline">Difficulty: {levelLabel(value)}</span>
+        <span className="hidden min-w-0 truncate @min-[60rem]/review-toolbar:inline">Difficulty: {levelLabel(value)}</span>
       </button>
 
       {open && (
@@ -137,7 +137,7 @@ export function ReviewDifficultyControl({
           id={panelId}
           role="dialog"
           aria-label="Review difficulty"
-          className="absolute left-1/2 right-auto top-full z-30 mt-[8px] w-[min(288px,calc(100vw-16px))] -translate-x-1/2 rounded-xl border border-[var(--md-outline-variant)] bg-[var(--md-surface)] p-[12px] text-[var(--md-on-surface)] shadow-lg sm:left-auto sm:right-0 sm:translate-x-0"
+          className="absolute left-1/2 right-auto top-full z-30 mt-[8px] w-[min(288px,calc(100vw-16px))] -translate-x-1/2 rounded-xl border border-[var(--md-outline-variant)] bg-[var(--md-surface)] p-[12px] text-[var(--md-on-surface)] shadow-lg @min-[60rem]/review-toolbar:left-auto @min-[60rem]/review-toolbar:right-0 @min-[60rem]/review-toolbar:translate-x-0"
         >
           <div className="flex items-start justify-between gap-3">
             <div>

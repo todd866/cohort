@@ -9,6 +9,7 @@ import type { CohortFeedProfile } from '@/lib/cohort/feed-profile';
 import type { CohortSearchTopicV1 } from '@/lib/cohort/search-topic-contract';
 import { parseCohortReviewIntent, cohortReviewHref } from '@/lib/cohort/review-intent';
 import { UnifiedReview, type CohortProfileSnapshot } from '@/components/review/UnifiedReview';
+import { LoadingSkeleton } from '@/components/review/LoadingSkeleton';
 
 export interface PublicReviewProfile {
   profile: CohortFeedProfile;
@@ -21,7 +22,7 @@ export interface PublicReviewProfile {
 /** Every public entry waits for one identity, then uses the same controller. */
 export function PublicReviewEntry() {
   const {data: session, status} = useSession();
-  if (status === 'loading') return <p role="status" className="p-6">Preparing review…</p>;
+  if (status === 'loading') return <LoadingSkeleton variant="page" />;
   return <IdentityReview key={session?.user?.id ?? 'guest'} />;
 }
 
@@ -46,7 +47,9 @@ function IdentityReview() {
     })().catch(cause => { if (!controller.signal.aborted) setError(cause instanceof Error ? cause.message : 'Could not prepare review'); });
     return () => controller.abort();
   }, [attempt]);
-  if (!snapshot) return <div className="mx-auto max-w-2xl p-6">{error ? <><p role="alert">{error}</p><button className="mt-3 underline" onClick={() => setAttempt(value => value + 1)}>Retry</button></> : <p role="status">Preparing review…</p>}</div>;
+  if (!snapshot) return error
+    ? <div className="text-center py-8"><p role="alert" className="text-[var(--md-error)] mb-4">{error}</p><button className="text-[var(--md-primary)] hover:underline" onClick={() => setAttempt(value => value + 1)}>Retry</button></div>
+    : <LoadingSkeleton variant="page" />;
   const intent = parseCohortReviewIntent(`${pathname}?${params.toString()}`, snapshot.searchTopics);
   if (!intent.valid) return <div className="p-6"><p role="alert">This module is not available.</p><Link href="/" className="underline">Choose a module</Link></div>;
   // Changing scope discards pending local state, never writes an old delivery

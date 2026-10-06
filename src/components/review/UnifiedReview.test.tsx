@@ -741,15 +741,9 @@ describe('UnifiedReview Cohort onboarding', () => {
       }),
     });
 
-    // The planner affordance survives, relocated into the toolbar's left group —
-    // the slot the primary host fills with mode and rotation selectors, which cohort
-    // leaves empty because both of those require an authenticated learner. It
-    // asserts only once the profile gate has resolved, because the toolbar lives
-    // INSIDE CohortProfileBoundary: the old banner rendered OUTSIDE that gate,
-    // which is exactly why it was the first and largest thing a learner saw.
-    const planner = await screen.findByRole('link', { name: /Plan a study session/ });
-    expect(planner).toHaveAttribute('href', '/usmle/step1');
-    expect(screen.getByRole('toolbar', { name: 'Review toolbar' })).toContainElement(planner);
+    expect(screen.queryByRole('link', { name: /Plan a study session/ })).toBeNull();
+    expect(screen.queryByRole('link', { name: /How it[’']s built/ })).toBeNull();
+    await screen.findByRole('switch', { name: 'Blur images' });
     for (const stem of ['Hook one', 'Hook two']) {
       await screen.findByText(stem);
       await userEvent.click(screen.getByRole('button', { name: new RegExp(`${stem} option A`) }));

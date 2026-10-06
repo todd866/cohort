@@ -1245,7 +1245,7 @@ function UnifiedReviewBody({ rotations, week, rotationSizes, fetchSlots, feedMod
             to it was a guaranteed no-op — and it wore a hamburger glyph, which
             reads as "open a menu". Home stays reachable from the nav rail
             (desktop) and the bottom bar (mobile), one of which is always shown. */}
-        <div className="flex min-w-0 items-center gap-[6px] sm:gap-2 text-sm text-[var(--md-on-surface-variant)]">
+        <div className="flex min-w-0 items-center gap-[6px] @min-[60rem]/review-toolbar:gap-2 text-sm text-[var(--md-on-surface-variant)]">
           {currentIndex > 0 && !isCohortHost && !isProtectedPracticeItem(currentItem) && (
             <button
               onClick={handleReviewGoBack}
@@ -1253,7 +1253,7 @@ function UnifiedReviewBody({ rotations, week, rotationSizes, fetchSlots, feedMod
               title="Go back (Z)"
               aria-label="Go back"
             >
-              {'\u21A9'}<span className="hidden sm:inline"> back</span>
+              {'\u21A9'}<span className="hidden @min-[60rem]/review-toolbar:inline"> back</span>
               <kbd className="hidden pointer-fine:inline text-[10px] opacity-40 font-mono">z</kbd>
             </button>
           )}
@@ -1268,13 +1268,13 @@ function UnifiedReviewBody({ rotations, week, rotationSizes, fetchSlots, feedMod
               type="button"
               onClick={() => setShowRotationChooser(true)}
               aria-label={`Change rotation: ${rotationLabel(rotations[0])}`}
-              className="inline-flex min-w-0 max-w-[30vw] shrink items-center gap-1 overflow-hidden whitespace-nowrap rounded-full border border-[var(--md-outline-variant)] px-[8px] sm:px-3 py-[4px] text-xs text-[var(--md-on-surface-variant)] hover:bg-[var(--md-surface-container-high)]"
+              className="inline-flex min-w-0 max-w-[30vw] shrink items-center gap-1 overflow-hidden whitespace-nowrap rounded-full border border-[var(--md-outline-variant)] px-[8px] @min-[60rem]/review-toolbar:px-3 py-[4px] text-xs text-[var(--md-on-surface-variant)] hover:bg-[var(--md-surface-container-high)]"
             >
               <span className="truncate">{rotationLabel(rotations[0])}</span><span aria-hidden className="shrink-0">▾</span>
             </button>
           )}
           {!isCohortHost && isAuthenticated && onReviewModeChange && (
-            <div className="hidden sm:block">
+            <div className="hidden @min-[60rem]/review-toolbar:block">
               <ReviewModeSelector
                 practiceExamHref={!isCohortHost && process.env.NEXT_PUBLIC_PRACTICE_EXAMS_ENABLED === "true" ? "/practice-exam" : undefined}
                 feedMode={feedMode}
@@ -1293,7 +1293,7 @@ function UnifiedReviewBody({ rotations, week, rotationSizes, fetchSlots, feedMod
               no session but does have saved decks to switch between. */}
           {(isAuthenticated || allowUnverifiedPack) && onFocusRotationChange && (
             canPickFocus ? (
-              <div className="min-w-0 max-w-[30vw] sm:max-w-none">
+              <div className="min-w-0 max-w-[30vw] @min-[60rem]/review-toolbar:max-w-none">
                 <RotationFocusSelector
                   options={studyableRotations}
                   value={focusRotation}
@@ -1331,7 +1331,7 @@ function UnifiedReviewBody({ rotations, week, rotationSizes, fetchSlots, feedMod
             />
         )}
 
-        <div ref={mobileOptionsRef} className="relative ml-auto flex min-w-0 shrink-0 items-center gap-[6px] sm:gap-2">
+        <div ref={mobileOptionsRef} className="relative ml-auto flex min-w-0 shrink-0 items-center gap-[6px] @min-[60rem]/review-toolbar:gap-2">
           {difficultyControl}
           <div
             ref={mobileOptionsPanelRef}
@@ -1339,13 +1339,9 @@ function UnifiedReviewBody({ rotations, week, rotationSizes, fetchSlots, feedMod
             role={mobileOptionsOpen ? 'dialog' : undefined}
             aria-label={mobileOptionsOpen ? 'Review options' : undefined}
             tabIndex={mobileOptionsOpen ? -1 : undefined}
-            className={isCohortHost
-              ? mobileOptionsOpen
-                ? 'absolute right-0 top-full z-50 mt-1 flex max-h-[min(70vh,max(5rem,calc(100dvh-10rem)))] w-[min(18rem,calc(100vw-1.5rem))] flex-col items-start gap-3 overflow-y-auto rounded-xl border border-[var(--md-outline-variant)] bg-[var(--md-surface)] p-3 text-sm shadow-xl outline-none'
-                : 'hidden'
-              : mobileOptionsOpen
-                ? 'absolute right-0 top-full z-50 mt-1 flex outline-none max-h-[min(70vh,max(5rem,calc(100dvh-22rem)))] w-[min(18rem,calc(100vw-1.5rem))] flex-col gap-3 overflow-y-auto rounded-xl border border-[var(--md-outline-variant)] bg-[var(--md-surface)] p-3 text-sm shadow-xl sm:static sm:mt-0 sm:max-h-none sm:w-auto sm:flex-row sm:items-center sm:gap-2 sm:overflow-visible sm:rounded-none sm:border-0 sm:bg-transparent sm:p-0 sm:text-sm sm:shadow-none'
-                : 'hidden sm:flex sm:min-w-0 sm:shrink-0 sm:items-center sm:gap-1.5 sm:gap-2'}
+            className={mobileOptionsOpen
+              ? 'absolute right-0 top-full z-50 mt-1 flex outline-none max-h-[min(70vh,max(5rem,calc(100dvh-22rem)))] w-[min(18rem,calc(100vw-1.5rem))] flex-col gap-3 overflow-y-auto rounded-xl border border-[var(--md-outline-variant)] bg-[var(--md-surface)] p-3 text-sm shadow-xl @min-[60rem]/review-toolbar:static @min-[60rem]/review-toolbar:mt-0 @min-[60rem]/review-toolbar:max-h-none @min-[60rem]/review-toolbar:w-auto @min-[60rem]/review-toolbar:flex-row @min-[60rem]/review-toolbar:items-center @min-[60rem]/review-toolbar:gap-2 @min-[60rem]/review-toolbar:overflow-visible @min-[60rem]/review-toolbar:rounded-none @min-[60rem]/review-toolbar:border-0 @min-[60rem]/review-toolbar:bg-transparent @min-[60rem]/review-toolbar:p-0 @min-[60rem]/review-toolbar:text-sm @min-[60rem]/review-toolbar:shadow-none'
+              : 'hidden @min-[60rem]/review-toolbar:flex @min-[60rem]/review-toolbar:min-w-0 @min-[60rem]/review-toolbar:shrink-0 @min-[60rem]/review-toolbar:items-center @min-[60rem]/review-toolbar:gap-1.5 @min-[60rem]/review-toolbar:gap-2'}
           >
             {!isCohortHost && isAuthenticated && onReviewModeChange && mobileOptionsOpen && (
               <div data-review-options-first>
@@ -1362,11 +1358,9 @@ function UnifiedReviewBody({ rotations, week, rotationSizes, fetchSlots, feedMod
                 />
               </div>
             )}
-            {isCohortHost ? (
-              <><Link href="/usmle/step1" className="text-xs underline">Plan a study session</Link><ImageBlurToggle /></>
-            ) : mobileOptionsOpen ? (
-              <div className="flex items-center justify-between gap-4 sm:contents">
-                <span className="sm:hidden text-xs text-[var(--md-on-surface-variant)]">Blur images</span>
+            {mobileOptionsOpen ? (
+              <div className="flex items-center justify-between gap-4 @min-[60rem]/review-toolbar:contents">
+                <span className="@min-[60rem]/review-toolbar:hidden text-xs text-[var(--md-on-surface-variant)]">Blur images</span>
                 <ImageBlurToggle />
               </div>
             ) : (
@@ -1382,14 +1376,6 @@ function UnifiedReviewBody({ rotations, week, rotationSizes, fetchSlots, feedMod
               />
             )}
             <button type="button" onClick={openShortcuts} className="min-h-11 rounded-md px-2 text-xs underline underline-offset-2">Shortcuts (?)</button>
-            {cohortProfile?.hookCompletedAt && (
-              <Link
-                href="/tech"
-                className="text-xs text-[var(--md-on-surface-variant)] underline decoration-[var(--md-outline)] underline-offset-2 hover:text-[var(--md-on-surface)]"
-              >
-                How it&apos;s built
-              </Link>
-            )}
           </div>
           {/* Outside the ⋯ panel on purpose: the flag reminder tells phone
               users to "tap ⚐ Flag", and a control buried in a menu cannot be
@@ -1402,7 +1388,7 @@ function UnifiedReviewBody({ rotations, week, rotationSizes, fetchSlots, feedMod
             }}
             disabled={flagPending}
             aria-label={flagged ? 'Flagged — press to add another flag' : flagPending ? 'Flag queued — sending…' : 'Flag this item (F)'}
-            className={`inline-flex min-h-[44px] shrink-0 items-center whitespace-nowrap text-xs px-2 rounded-md border border-transparent transition-colors sm:min-h-0 sm:py-1 ${
+            className={`inline-flex min-h-[44px] shrink-0 items-center whitespace-nowrap text-xs px-2 rounded-md border border-transparent transition-colors @min-[60rem]/review-toolbar:min-h-0 @min-[60rem]/review-toolbar:py-1 ${
               flagged || flagPending
                 ? 'bg-[var(--md-warning-container)] text-[var(--md-on-warning-container)] border-[var(--md-warning)]'
                 : 'text-[var(--md-on-surface-variant)] hover:text-[var(--md-on-surface)] hover:bg-[var(--md-surface-container-high)]'
@@ -1429,7 +1415,7 @@ function UnifiedReviewBody({ rotations, week, rotationSizes, fetchSlots, feedMod
               aria-expanded={mobileOptionsOpen}
               aria-controls="review-mobile-options"
               onClick={() => setMobileOptionsOpen((open) => !open)}
-              className={`relative inline-flex h-[44px] w-[44px] shrink-0 items-center justify-center rounded-full border border-[var(--md-outline-variant)] text-base text-[var(--md-on-surface-variant)] hover:bg-[var(--md-surface-container-high)] ${isCohortHost ? '' : 'sm:hidden'}`}
+              className="relative inline-flex h-[44px] w-[44px] shrink-0 items-center justify-center rounded-full border border-[var(--md-outline-variant)] text-base text-[var(--md-on-surface-variant)] hover:bg-[var(--md-surface-container-high)] @min-[60rem]/review-toolbar:hidden"
             >
               <span aria-hidden>⋯</span>
             </button>

@@ -48,13 +48,14 @@ export function ProgressPill({
         {targetHit ? (
           <>
             {/* Phone width: the toolbar is one fixed row, so the done state
-                collapses to "✓ +7"; the full sentence returns from `sm`. */}
-            <span className="sm:hidden">
+                collapses to "✓ +7"; the full sentence returns when the
+                toolbar has enough inline space. */}
+            <span className="@min-[60rem]/review-toolbar:hidden">
               {'\u2713'} <span className="text-[var(--md-success)]">+{bonusCount}</span>
             </span>
-            <span className="hidden sm:inline">{'\u2713'} {target} done</span>
-            <span className="hidden sm:inline opacity-50">{'\u00b7'}</span>
-            <span className="hidden sm:inline text-[var(--md-success)]">+{bonusCount} bonus</span>
+            <span className="hidden @min-[60rem]/review-toolbar:inline">{'\u2713'} {target} done</span>
+            <span className="hidden @min-[60rem]/review-toolbar:inline opacity-50">{'\u00b7'}</span>
+            <span className="hidden @min-[60rem]/review-toolbar:inline text-[var(--md-success)]">+{bonusCount} bonus</span>
           </>
         ) : target != null ? (
           <span>{reviewed}/{target}</span>
