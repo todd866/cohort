@@ -146,7 +146,7 @@ export default async function RootLayout({
           <AppShell isCohortHost={isCohortHost}>{children}</AppShell>
           {/* Inside Providers: it reads the session to bind the offline pack to
               an account, and useSession outside the provider is undefined. */}
-          <OfflineShellWarm />
+          <OfflineShellWarm isCohortHost={isCohortHost} />
         </Providers>
         {/* Where this browser first came from, stored once per learner. */}
         {isCohortHost ? null : <FirstTouchCapture />}

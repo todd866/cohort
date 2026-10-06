@@ -74,7 +74,7 @@ export function AppShell({
       <main id="main-content" tabIndex={-1} className="md:pl-20 pb-24 md:pb-0 [--md-review-footer-bottom:5rem] md:[--md-review-footer-bottom:0px]">
         {children}
       </main>
-      {pathname !== '/' && pathname !== '/review' && <footer className="md:pl-20 pb-24 md:pb-4 text-center text-xs text-[var(--md-on-surface-variant)]">
+      {pathname === '/profile' && <footer className="md:pl-20 pb-24 md:pb-4 text-center text-xs text-[var(--md-on-surface-variant)]">
         {/* Never auto-prefetch: offline shell forbids stray RSC fetches, and
             legal pages are not on the critical navigation path. */}
         <Link

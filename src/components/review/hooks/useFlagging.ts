@@ -5,6 +5,8 @@ import { useState, useCallback, useEffect, useRef } from 'react';
 import { submitFlag } from '@/lib/flag-submit';
 import { harvestFlagDiagnostics } from '@/lib/flag-diagnostics';
 import type { PracticeReviewProvenance } from '@/lib/study/practice-review-focus';
+import { genClientRequestId } from '@/lib/client-request-id';
+import { CLIENT_FETCH_DEADLINE_MS, fetchWithDeadline } from '@/lib/fetch-with-deadline';
 
 interface FlagItem {
   id: string;
@@ -19,6 +21,8 @@ interface UseFlaggingOpts {
   item: FlagItem | undefined;
   /** Subscribe a reset callback to be called when the session advances to the next item. */
   registerResetCallback: (cb: () => void) => () => void;
+  /** Cohort deliveries use the opaque delivery feedback endpoint. */
+  publicSurface?: boolean;
 }
 
 /**
@@ -26,7 +30,7 @@ interface UseFlaggingOpts {
  * Submission goes through the durable `submitFlag` outbox — failures are queued and
  * replayed, never silently dropped. The ✓ is shown only on confirmed delivery.
  */
-export function useFlagging({ item, registerResetCallback }: UseFlaggingOpts) {
+export function useFlagging({ item, registerResetCallback, publicSurface = false }: UseFlaggingOpts) {
   const image = useFlagImage(`${item?.type}:${item?.deliveryId ?? item?.id}`);
   const [flagMode, setFlagMode] = useState(false);
   const [flagged, setFlagged] = useState(false);
@@ -44,6 +48,8 @@ export function useFlagging({ item, registerResetCallback }: UseFlaggingOpts) {
   // issue on replay. The ref blocks re-entry while a submit is in-flight or
   // durably queued.
   const pendingRef = useRef(false);
+  const publicPendingRef = useRef<{ deliveryId: string; clientRequestId: string; kind: 'flag'; reason: 'Other'; message?: string } | null>(null);
+  const publicGenerationRef = useRef(0);
 
   // Reset per-item flag state when the session advances (authExpired persists).
   useEffect(() => {
@@ -52,6 +58,8 @@ export function useFlagging({ item, registerResetCallback }: UseFlaggingOpts) {
       setFlagged(false);
       setFlagPending(false);
       pendingRef.current = false;
+      publicPendingRef.current = null;
+      publicGenerationRef.current += 1;
       setFlagMessage('');
     });
   }, [registerResetCallback]);
@@ -66,6 +74,48 @@ export function useFlagging({ item, registerResetCallback }: UseFlaggingOpts) {
     if (pendingRef.current) return;
     pendingRef.current = true;
     setFlagPending(true);
+    if (publicSurface) {
+      const deliveryId = item.deliveryId;
+      if (!deliveryId) {
+        pendingRef.current = false;
+        setFlagPending(false);
+        return;
+      }
+      const generation = publicGenerationRef.current;
+      const note = flagMessage.trim();
+      const body = publicPendingRef.current ?? {
+        deliveryId,
+        clientRequestId: genClientRequestId(),
+        kind: 'flag' as const,
+        reason: 'Other' as const,
+        ...(note ? { message: note } : {}),
+      };
+      publicPendingRef.current = body;
+      try {
+        const response = await fetchWithDeadline('/api/cohort/feedback', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify(body),
+        }, CLIENT_FETCH_DEADLINE_MS);
+        if (!response.ok) throw new Error('Feedback could not be saved');
+        if (generation !== publicGenerationRef.current) return;
+        publicPendingRef.current = null;
+        image.setError(null);
+        setFlagMode(false);
+        setFlagMessage('');
+        setFlagged(true);
+        setFlagPending(false);
+        pendingRef.current = false;
+      } catch {
+        if (generation !== publicGenerationRef.current) return;
+        setFlagPending(false);
+        pendingRef.current = false;
+        // The public surface has no image controls, but the shared overlay can
+        // still expose the retry state through the same controller error slot.
+        image.setError('Feedback was not saved. Your note is kept; try again.');
+      }
+      return;
+    }
     const draft = image.capture();
     const note = flagMessage.trim();
     // Harvest the render environment NOW — at the moment of flagging, with the
@@ -106,10 +156,14 @@ export function useFlagging({ item, registerResetCallback }: UseFlaggingOpts) {
       else if (result === 'auth-required') { setAuthExpired(true); /* stays pending */ }
       else clear(); // 'dropped' — invalid, allow a retry
     }).catch(clear);
-  }, [item, flagMessage, image]);
+  }, [item, flagMessage, image, publicSurface]);
 
   const closeFlag = useCallback(() => {
     image.remove();
+    publicPendingRef.current = null;
+    publicGenerationRef.current += 1;
+    pendingRef.current = false;
+    setFlagPending(false);
     setFlagMode(false);
     setFlagMessage('');
   }, [image]);

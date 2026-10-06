@@ -35,6 +35,10 @@ const ItemSchema = z.object({
   stem: z.string().trim().min(1),
   statements: z.array(StatementSchema).length(4),
   explanation: z.string().trim().min(1),
+  // Top rung of a concept ladder: held by the existing harder-sibling gate
+  // until this question (the previous rung) was answered correctly.
+  variantGroupId: z.string().trim().min(1).optional(),
+  variantType: z.literal('harder').optional(),
   // A spot (GSSE anatomy spots are 40% of its marks): the picture is the
   // prompt, its statements are about structures marked on it, and the caption
   // says where to look without naming anything.
@@ -130,6 +134,8 @@ export function expandStatementFile(parsed: unknown, filePath: string, errors: s
         : item.explanation,
       cite: firstPage ? `${file.sourceBook}#p${firstPage}` : file.sourceBook,
       statements,
+      ...(item.variantGroupId ? { variantGroupId: item.variantGroupId } : {}),
+      ...(item.variantType ? { variantType: item.variantType } : {}),
       ...(item.imageUrl
         ? { imageUrl: item.imageUrl, imageCaption: item.imageCaption, imageRole: item.imageRole ?? 'prompt' }
         : {}),

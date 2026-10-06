@@ -18,6 +18,7 @@ import { ClipContext } from './ClipContext';
 import { RevealActionLabel } from './RevealActionLabel';
 import { TutorCardLink } from '@/components/tutor/TutorCardLink';
 import { ReviewCardBody, ReviewCardContent, ReviewExplanation } from '@/components/shared/ReviewCardContent';
+import { AnatomyReviewFigure } from '@/components/shared/AnatomyReviewFigure';
 import {
   itemUsesSidePane,
   reviewPaneKind,
@@ -57,6 +58,8 @@ interface CardItemViewProps {
    *  tutor, at the same size and weight. UnifiedReview passes the clinical
    *  station chip. Shown only once the answer is out. */
   revealActions?: ReactNode;
+  /** Optional public-surface feedback control, shown only after reveal. */
+  publicFeedback?: ReactNode;
   /**
    * A public surface (Cohort): the card's id is an opaque delivery, and the
    * Details page, tutor link and like/hide feedback are md3 routes keyed to an
@@ -92,16 +95,20 @@ export function CardItemView({
   onSuppress,
   revealActions = null,
   publicSurface = false,
+  publicFeedback = null,
 }: CardItemViewProps) {
-  const hasFigure = Boolean(item.imageUrl || item.imageKey);
+  const publicAnatomy = item.publicAnatomyMedia;
+  const attribution = item.attribution ?? publicAnatomy?.attribution;
+  const hasFigure = Boolean(item.imageUrl || item.imageKey || publicAnatomy);
   const figureIsPrompt = imageIsPrompt(item.imageMeta, item.imageRole, item.front);
+  const anatomyIsPrompt = publicAnatomy?.role === 'prompt';
   // A clip prompt outranks a figure prompt for the media pane: it is the stem,
   // and a card carrying both is an authoring mistake rather than a layout to
   // support. A supplementary figure on a clip card still renders, below the
   // clip and still only after the answer is out.
   const clipPrompt = clipIsPrompt(item.clipRole, item.clip);
   const clipCaptionInQuestionPane = clipPrompt;
-  const mediaIsPrompt = clipPrompt || figureIsPrompt;
+  const mediaIsPrompt = clipPrompt || figureIsPrompt || anatomyIsPrompt;
   // Warm the cache for the after-reveal supplementary figure while the question
   // is still on screen — it's mounted only post-reveal, so without this its
   // <img> starts fetching the instant the user reveals (the load pause).
@@ -133,7 +140,8 @@ export function CardItemView({
   // this gate a non-diagnostic figure with the default `showWhen: 'always'`
   // would render pre-reveal — CardImage's own `visible` test would allow it —
   // and could give the answer away.
-  const figureMounted = hasFigure && (figureIsPrompt || cardFullyRevealed);
+  const figureMounted = !publicAnatomy && hasFigure && (figureIsPrompt || cardFullyRevealed);
+  const anatomyMounted = Boolean(publicAnatomy && (anatomyIsPrompt || cardFullyRevealed));
 
   // A clip with no prompt role is teaching context: the whole operation, shown
   // after the answer. It mounts only post-reveal and fetches nothing until the
@@ -164,6 +172,15 @@ export function CardItemView({
       onSkipSensitive={figureIsPrompt ? handleReveal : undefined}
       inSidePane={sidePane}
       targetNumber={presentation.targetNumber}
+    />
+  ) : null;
+
+  const anatomyNode = anatomyMounted && publicAnatomy ? (
+    <AnatomyReviewFigure
+      figureId={publicAnatomy.figureId}
+      target={publicAnatomy.target}
+      revealed={cardFullyRevealed}
+      alt={cardFullyRevealed ? publicAnatomy.postAnswerAlt : publicAnatomy.preAnswerAlt}
     />
   ) : null;
 
@@ -212,10 +229,16 @@ export function CardItemView({
           <p className="mt-1">{presentation.source}</p>
         </details>
       )}
+      {attribution && (
+        <details className="text-xs text-[var(--md-on-surface-variant)] mt-2">
+          <summary className="cursor-pointer">Source</summary>
+          <p className="mt-1">{attribution.text} · {attribution.licence}</p>
+        </details>
+      )}
     </div>
   ) : null;
 
-  const linksNode = cardFullyRevealed && !publicSurface ? (
+  const linksNode = cardFullyRevealed && publicSurface ? publicFeedback : cardFullyRevealed && !publicSurface ? (
     <div className="review-reveal mt-4 flex items-center justify-between text-xs">
       {/* Wraps rather than overflowing when a phone row runs out of width. */}
       <div className="flex min-w-0 flex-wrap items-center gap-x-3 gap-y-1">
@@ -253,14 +276,15 @@ export function CardItemView({
   // SUPPLEMENTARY one follows the explanation and precedes the links, exactly
   // where it sits today. Both leave the media pane as the middle child, which
   // is why the two cells either side are all the layout needs.
-  const mediaNode = clipNode || figureNode || contextClipNode
-    ? <>{clipNode}{clipNode && figureIsPrompt ? null : figureNode}{contextClipNode}</>
+  const mediaFigureNode = anatomyNode || (clipNode && figureIsPrompt ? null : figureNode);
+  const mediaNode = clipNode || mediaFigureNode || contextClipNode
+    ? <>{clipNode}{mediaFigureNode}{contextClipNode}</>
     : null;
 
   // Keep the compact prompt treatment used by MD3 on short landscape screens.
   // This is presentation metadata so public adapters can opt into the same
   // geometry without importing the private review pane implementation.
-  const compactPrompt = clipPrompt || Boolean(presentation.targetNumber);
+  const compactPrompt = clipPrompt || Boolean(presentation.targetNumber) || Boolean(publicAnatomy);
 
 
 

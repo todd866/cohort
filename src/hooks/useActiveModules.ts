@@ -38,8 +38,8 @@ function writeLocalModules(slugs: string[]): void {
   }
 }
 
-export function useActiveModules(): UseActiveModulesReturn {
-  const [activeModules, setActiveModules] = useState<string[]>(readLocalModules);
+export function useActiveModules(enabled = true): UseActiveModulesReturn {
+  const [activeModules, setActiveModules] = useState<string[]>(() => enabled ? readLocalModules() : []);
   const setAll = useCallback(async (slugs: string[]) => {
     const next = [...new Set(slugs)];
     setActiveModules(next);

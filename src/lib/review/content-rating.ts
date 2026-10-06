@@ -1,4 +1,5 @@
 import { CLIENT_FETCH_DEADLINE_MS, fetchWithDeadline } from '@/lib/fetch-with-deadline';
+import { genClientRequestId } from '@/lib/client-request-id';
 
 export type ContentRating = 'good' | 'bad';
 
@@ -14,6 +15,8 @@ export interface PostContentRatingInput {
   /** null clears an existing rating, so pressing the same key twice un-rates. */
   rating: ContentRating | null;
   sourceComponent: string;
+  /** Opaque Cohort delivery; selects the public feedback endpoint. */
+  publicDeliveryId?: string;
 }
 
 /**
@@ -31,19 +34,28 @@ export async function postContentRating({
   serveDecisionId,
   rating,
   sourceComponent,
+  publicDeliveryId,
 }: PostContentRatingInput): Promise<boolean> {
-  if (!serveDecisionId) return false;
+  if (!serveDecisionId && !publicDeliveryId) return false;
 
   try {
-    const response = await fetchWithDeadline('/api/study/content-rating', {
+    const publicRating = Boolean(publicDeliveryId);
+    const response = await fetchWithDeadline(publicRating ? '/api/cohort/feedback' : '/api/study/content-rating', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({
-        itemType,
-        itemId,
-        serveDecisionId,
-        rating: rating ?? 'clear',
-        sourceComponent,
+        ...(publicRating ? {
+          deliveryId: publicDeliveryId,
+          clientRequestId: genClientRequestId(),
+          kind: 'rating',
+          rating: rating ?? 'clear',
+        } : {
+          itemType,
+          itemId,
+          serveDecisionId,
+          rating: rating ?? 'clear',
+          sourceComponent,
+        }),
       }),
     }, CLIENT_FETCH_DEADLINE_MS);
     return response.ok;

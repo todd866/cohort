@@ -14,10 +14,11 @@ import { logger } from '@/lib/logger';
 import { userIdCanAccessRequestedRotations } from '@/lib/personal-rotation-access';
 import { prependCardsToQueue } from '@/lib/study-queue';
 import { EXAM_ONLY_ROTATIONS } from '@/lib/study/exam-only-modules';
+import { statementScaffoldTag } from '@/lib/study/statement-scaffolds';
 import { queueStatementScaffoldsForMiss } from './statement-scaffold-queue';
 import { coerceScorableOptions, type ScorableOption } from '@/lib/question-validation';
 import { scoreQuestionAnswer, type StatementFeedback } from './score-question-answer';
-import { responseFormatOfOptions } from '@/lib/question-bank/statement-items';
+import { gradeTypeX, responseFormatOfOptions } from '@/lib/question-bank/statement-items';
 import { mergeDecisionContext, type DecisionContext } from '@/lib/scheduler-observability';
 import {
   buildRequestFingerprint,
@@ -168,6 +169,51 @@ export type QuestionAttemptReceipt = Pick<
   RecordQuestionAttemptOk,
   'isCorrect' | 'skipped' | 'correctOption' | 'attemptNumber' | 'explanation' | 'statementFeedback'
 >;
+
+/**
+ * Marks on a graded statement set, for the learning-event quality column and
+ * metadata.statementMarks. Undefined for single-best-answer. A K-type item is
+ * 4 or 0. Type X is the count of statements judged correctly. A skip is not
+ * graded and must not call this.
+ */
+function statementSetQuality(
+  options: unknown,
+  selectedOption: string,
+  isCorrect: boolean,
+): number | undefined {
+  const format = responseFormatOfOptions(options);
+  if (format === 'sba') return undefined;
+  if (format === 'typeX') return gradeTypeX(options, selectedOption)?.marks;
+  return isCorrect ? 4 : 0;
+}
+
+/**
+ * The server grade owns statementMarks. Credit reads that field, so a caller
+ * value is overwritten on a statement set and removed on every other answer.
+ */
+function metadataWithStatementMarks(
+  metadata: Record<string, unknown> | undefined,
+  marks: number | undefined,
+): Record<string, unknown> | undefined {
+  const supplied = metadata != null && Object.prototype.hasOwnProperty.call(metadata, 'statementMarks');
+  if (marks === undefined && !supplied) return metadata;
+  const next: Record<string, unknown> = { ...metadata };
+  if (marks === undefined) delete next.statementMarks;
+  else next.statementMarks = marks;
+  return next;
+}
+
+/** Generic remediation cards follow a statement set only at 2/4 or worse. */
+function queuesGenericRemediation(
+  options: unknown,
+  selectedOption: string | null,
+  isCorrect: boolean,
+): boolean {
+  if (selectedOption === null || responseFormatOfOptions(options) === 'sba') return !isCorrect;
+  const marks = statementSetQuality(options, selectedOption, isCorrect);
+  if (marks === undefined) return !isCorrect;
+  return marks <= 2;
+}
 
 export type RecordQuestionAttemptDuplicate = {
   ok: true;
@@ -403,6 +449,17 @@ export async function recordQuestionAttemptFast(
   // averages isCorrect sees no skip at all. Measured 2026-09-15: 42% of
   // recorded wrong answers were skips, and the rate scaled with volume.
   const skipped = selectedOption === null;
+  // Statement-set marks ride on quality and on metadata.statementMarks.
+  // Credit reads statementMarks only, so an anatomy mcq_attempted quality
+  // stays a 0–5 grade. isCorrect stays 4/4, so retirement and the harder-rung
+  // gate still require a fully correct set. A skip stays ungraded.
+  const statementQuality = !isPublicUsmleDelivery && !skipped && selectedOption !== null
+    ? statementSetQuality(question.options, selectedOption, isCorrect)
+    : undefined;
+  const eventMetadata = metadataWithStatementMarks(
+    skipped ? { ...input.metadata, skipped: true } : input.metadata,
+    statementQuality,
+  );
 
   const requestFingerprint = transactionHook
     ? hookRequestFingerprint!
@@ -452,9 +509,10 @@ export async function recordQuestionAttemptFast(
     sourceType: 'question',
     sourceId: questionId,
     isCorrect: skipped ? null : isCorrect,
+    ...(statementQuality !== undefined ? { quality: statementQuality } : {}),
     responseMs: responseTimeMs,
     conceptIds,
-    metadata: mergeDecisionContext(skipped ? { ...input.metadata, skipped: true } : input.metadata, walkContext),
+    metadata: mergeDecisionContext(eventMetadata, walkContext),
     clientOperationId: clientRequestId,
     deviceBucket: writeContext.deviceBucket,
     writeTransport: writeContext.transport,
@@ -708,7 +766,7 @@ export async function recordQuestionAttemptFast(
     });
   }
 
-  // An exam-only miss arms the scaffolds for the statements it got wrong
+  // A statement-set miss arms the scaffolds for the statements it got wrong
   // before the grade returns, not in after(): the learner's next refill can be
   // requested the moment they press Continue, and it must find them armed.
   // Committed grades only (a replay returned above); a skip is not graded; an
@@ -717,7 +775,8 @@ export async function recordQuestionAttemptFast(
   // running fast would make the scaffold due in the server's future, and the
   // next refill would miss it.
   if (!receipt.isCorrect && !receipt.skipped && !transactionHook && !isPublicUsmleDelivery
-    && rotation && EXAM_ONLY_ROTATIONS.has(rotation)) {
+    && statementScaffoldTag(rotation)
+    && responseFormatOfOptions(question.options) !== 'sba') {
     try {
       await queueStatementScaffoldsForMiss({
         userId,
@@ -753,7 +812,7 @@ export async function recordQuestionAttemptBackground(
     // Fetch question for context
     const question = await prisma.question.findUnique({
       where: { id: questionId },
-      select: { id: true, rotation: true, week: true, topics: true },
+      select: { id: true, rotation: true, week: true, topics: true, options: true },
     });
 
     if (!question) return;
@@ -778,6 +837,9 @@ export async function recordQuestionAttemptBackground(
       if (input.sessionId) bgWalkContext.sessionId = input.sessionId;
       if (input.batchId) bgWalkContext.batchId = input.batchId;
 
+      const backgroundQuality = input.skipped || input.selectedOption == null
+        ? undefined
+        : statementSetQuality(question.options, input.selectedOption, isCorrect);
       await writeLearningEventForQuestion(
         userId,
         questionId,
@@ -786,10 +848,13 @@ export async function recordQuestionAttemptBackground(
         responseTimeMs,
         now,
         mergeDecisionContext(
-          { ...input.metadata, predictedRecall, ...(input.skipped ? { skipped: true } : {}) },
+          metadataWithStatementMarks(
+            { ...input.metadata, predictedRecall, ...(input.skipped ? { skipped: true } : {}) },
+            backgroundQuality,
+          ),
           bgWalkContext,
         ),
-        { conceptIds },
+        { conceptIds, ...(backgroundQuality !== undefined ? { quality: backgroundQuality } : {}) },
       );
     }
 
@@ -803,7 +868,8 @@ export async function recordQuestionAttemptBackground(
     // scaffolds of the statements the learner got wrong, and their sessions
     // admit no other card, so a vector-similar card could never be served
     // there; it would only make an unrelated card due in another module.
-    if (!input.skipped && !input.skipRemediation && !isCorrect
+    if (!input.skipped && !input.skipRemediation
+      && queuesGenericRemediation(question.options, input.selectedOption, isCorrect)
       && !EXAM_ONLY_ROTATIONS.has(question.rotation)) {
       const remediationCardIds = await findAndQueueRemediationCards(userId, question, now);
       if (remediationCardIds.length > 0 && question.rotation) {
@@ -943,7 +1009,7 @@ async function writeLearningEventForQuestion(
   responseMs: number | undefined,
   timestamp: Date,
   externalMetadata?: Record<string, unknown>,
-  opts?: { week?: number; skipDbLookup?: boolean; conceptIds?: string[] },
+  opts?: { week?: number; skipDbLookup?: boolean; conceptIds?: string[]; quality?: number },
 ): Promise<void> {
   const conceptIds = opts?.conceptIds ?? await getConceptIdsForQuestion(questionId);
 
@@ -967,6 +1033,7 @@ async function writeLearningEventForQuestion(
     sourceType: 'question',
     sourceId: questionId,
     isCorrect,
+    ...(opts?.quality !== undefined ? { quality: opts.quality } : {}),
     responseMs,
     conceptIds,
     rotation: resolvedRotation,

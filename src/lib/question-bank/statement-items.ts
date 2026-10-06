@@ -121,6 +121,16 @@ export interface TypeXGrade {
   missed: number[];
 }
 
+/**
+ * Scheduler grade for one statement set. Four of four is Good, three is Hard,
+ * and two or fewer is Again. A K-type item is four or zero, so Good or Again.
+ */
+export function statementMarksGrade(marks: number): 'Good' | 'Hard' | 'Again' {
+  if (marks >= 4) return 'Good';
+  if (marks === 3) return 'Hard';
+  return 'Again';
+}
+
 /** Null when the options are not a Type X set or the answer is malformed — never a guess. */
 export function gradeTypeX(options: unknown, answer: string): TypeXGrade | null {
   if (responseFormatOfOptions(options) !== 'typeX') return null;

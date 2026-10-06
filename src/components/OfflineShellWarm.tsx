@@ -78,11 +78,12 @@ async function sendTelemetry(lease: OwnerLease, lastError?: string): Promise<voi
   }
 }
 
-export function OfflineShellWarm() {
+export function OfflineShellWarm({ isCohortHost = false }: { isCohortHost?: boolean }) {
   const { data: session, status: sessionStatus } = useSession();
   const userKey = offlineUserKey(session?.user);
 
   useEffect(() => {
+    if (isCohortHost) return;
     const schedule =
       typeof window.requestIdleCallback === 'function'
         ? window.requestIdleCallback
@@ -94,9 +95,10 @@ export function OfflineShellWarm() {
       ensurePersistentStorage().catch(() => {});
       warmOfflineShell().catch(() => {});
     });
-  }, []);
+  }, [isCohortHost]);
 
   useEffect(() => {
+    if (isCohortHost) return;
     if (sessionStatus !== 'authenticated' || !userKey) return;
     // Establish the account boundary synchronously, before any delayed fill can
     // capture a lease or write personalized data.
@@ -105,7 +107,7 @@ export function OfflineShellWarm() {
       // Report after bounded preparation, never on individual queue acks.
       void sendTelemetry(lease, lastError);
     });
-  }, [sessionStatus, userKey]);
+  }, [isCohortHost, sessionStatus, userKey]);
 
   return null;
 }

@@ -131,9 +131,9 @@ export interface UseInstitutionReturn {
  * Hook to manage user's institution and universal module preferences.
  * Works for both anonymous (localStorage) and logged-in (API) users.
  */
-export function useInstitution(): UseInstitutionReturn {
+export function useInstitution(enabled = true): UseInstitutionReturn {
   const { data: session, status } = useSession();
-  const { data: serverData, isLoading: serverLoading, mutate } = useUserMinimal();
+  const { data: serverData, isLoading: serverLoading, mutate } = useUserMinimal(enabled);
 
   // Get localStorage values with useSyncExternalStore for SSR safety
   const localInstitution = useSyncExternalStore(

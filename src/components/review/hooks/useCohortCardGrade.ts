@@ -1,4 +1,4 @@
-import { useCallback, useRef, useState } from 'react';
+import { useCallback, useEffect, useRef, useState } from 'react';
 
 import { genClientRequestId } from '@/lib/client-request-id';
 import { fetchWithDeadline } from '@/lib/fetch-with-deadline';
@@ -35,7 +35,15 @@ export function useCohortCardGrade({
   );
   const current = state.deliveryId === deliveryId ? state : { deliveryId, status: 'idle' as GradeStatus, selected: null };
   const statusRef = useRef<{ deliveryId: string | null | undefined; status: GradeStatus }>({ deliveryId, status: 'idle' });
-  const requestRef = useRef<{ deliveryId: string; confidence: number; id: string } | null>(null);
+  const deliveryIdRef = useRef(deliveryId);
+  deliveryIdRef.current = deliveryId;
+  const mountedRef = useRef(true);
+  const requestRef = useRef<{ deliveryId: string; confidence: number; id: string; responseTimeMs?: number } | null>(null);
+
+  useEffect(() => {
+    mountedRef.current = true;
+    return () => { mountedRef.current = false; };
+  }, []);
 
   const reset = useCallback(() => {
     statusRef.current = { deliveryId, status: 'idle' };
@@ -51,20 +59,31 @@ export function useCohortCardGrade({
     const clientRequestId = priorRequest && priorRequest.deliveryId === deliveryId && priorRequest.confidence === confidence
       ? priorRequest.id
       : genClientRequestId();
-    requestRef.current = { deliveryId, confidence, id: clientRequestId };
+    const priorIsSameGrade = priorRequest
+      && priorRequest.deliveryId === deliveryId
+      && priorRequest.confidence === confidence;
+    const measuredResponseTimeMs = priorIsSameGrade
+      ? priorRequest.responseTimeMs
+      : getResponseTimeMs?.();
+    const responseTimeMs = measuredResponseTimeMs != null
+      && Number.isFinite(measuredResponseTimeMs)
+      && measuredResponseTimeMs >= 0
+      ? Math.round(measuredResponseTimeMs)
+      : undefined;
+    requestRef.current = { deliveryId, confidence, id: clientRequestId, ...(responseTimeMs != null ? { responseTimeMs } : {}) };
+    const activeRequest = requestRef.current;
     const settle = (status: GradeStatus) => {
       statusRef.current = { deliveryId, status };
       setState({ deliveryId, status, selected: confidence });
     };
     settle('saving');
 
-    const responseTimeMs = getResponseTimeMs?.();
     const body = {
       deliveryId,
       confidence,
       clientRequestId,
-      ...(responseTimeMs != null && Number.isFinite(responseTimeMs) && responseTimeMs >= 0
-        ? { responseTimeMs: Math.round(responseTimeMs) }
+      ...(responseTimeMs != null
+        ? { responseTimeMs }
         : {}),
     };
     void fetchWithDeadline('/api/cohort/card-grade', {
@@ -77,10 +96,12 @@ export function useCohortCardGrade({
           const payload = await response.json().catch(() => null) as { error?: string } | null;
           throw new Error(payload?.error ?? `Grade not saved (${response.status})`);
         }
+        if (!mountedRef.current || deliveryIdRef.current !== deliveryId || requestRef.current !== activeRequest) return;
         settle('saved');
         onGraded?.(confidence);
       })
       .catch((error: unknown) => {
+        if (!mountedRef.current || deliveryIdRef.current !== deliveryId || requestRef.current !== activeRequest) return;
         settle('error');
         onError?.(error instanceof Error ? error.message : 'Grade not saved');
       });

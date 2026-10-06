@@ -1,5 +1,6 @@
 'use client';
 
+import { ReviewModulePicker } from '@/components/shared/ReviewModulePicker';
 import { ReviewToolbar } from '@/components/shared/ReviewToolbar';
 import { ReviewActionBar } from '@/components/shared/ReviewActionBar';
 import { StationChip } from './StationChip';
@@ -49,6 +50,7 @@ import {
 } from '@/lib/cohort/feed-profile';
 import type { CohortExperience } from '@/lib/cohort/experience-prior';
 import type { CohortSearchTopicV1 } from '@/lib/cohort/search-topic-contract';
+import { cohortReviewHref } from '@/lib/cohort/review-intent';
 
 import { RotationFocusSelector } from './RotationFocusSelector';
 import { rotationLabel } from '@/lib/rotation-labels';
@@ -63,13 +65,16 @@ import { ProgressDrawer } from './ProgressDrawer';
 import { progressRotationsForObjective } from './progress-rotation-filter';
 import { SessionEmptyState } from './SessionEmptyState';
 import { LoadingSkeleton } from './LoadingSkeleton';
+import { CardFeedback } from './CardFeedback';
 import { CardItemView } from './CardItemView';
 import { McqItemView } from './McqItemView';
 import { VideoItemView } from './VideoItemView';
 import { RevealActionLabel } from './RevealActionLabel';
 import { itemUsesSidePane, reviewPaneKind, reviewShellWidthClass } from './review-panes';
+import { genClientRequestId } from '@/lib/client-request-id';
 
 /** Known review item types (stable reference to avoid re-creating in render) */
+const EMPTY_COHORT_TOPICS: CohortSearchTopicV1[] = [];
 const KNOWN_TYPES = new Set(['card', 'question', 'group', 'video']);
 
 interface UnifiedReviewProps {
@@ -109,6 +114,13 @@ interface UnifiedReviewProps {
   loadTimer?: ReviewLoadTimer | null;
   /** Cohort public review is server-decided one answer at a time. */
   cohortSingleTurn?: boolean;
+  /** Profile loaded by a host entry, avoiding a second profile request. */
+  initialCohortSnapshot?: CohortProfileSnapshot | null;
+  /** Checked-in topic from the entry URL, used for the first Cohort turn. */
+  initialCohortTopicId?: string | null;
+  /** Module routes keep the task surface clear of discovery prompts. */
+  cohortModuleScoped?: boolean;
+  onCohortTopicNavigate?: (topicId: string | null) => void;
 }
 
 type CohortWriteKind = 'experience' | 'hook' | 'demand';
@@ -124,7 +136,7 @@ interface CohortWriteState extends PendingCohortWrite {
   message?: string;
 }
 
-interface CohortProfileSnapshot {
+export interface CohortProfileSnapshot {
   profile: CohortFeedProfile;
   deep: boolean;
   publicGradedCount: number;
@@ -168,7 +180,7 @@ function applyCohortPatchLocally(
  * server for a fresh turn instead of adopting that batch.
  */
 function CohortProfileBoundary(props: UnifiedReviewProps) {
-  const [snapshot, setSnapshot] = useState<CohortProfileSnapshot | null>(null);
+  const [snapshot, setSnapshot] = useState<CohortProfileSnapshot | null>(props.initialCohortSnapshot ?? null);
   const [loadError, setLoadError] = useState<string | null>(null);
   const [loadAttempt, setLoadAttempt] = useState(0);
   const [experienceWrite, setExperienceWrite] = useState<{
@@ -180,6 +192,7 @@ function CohortProfileBoundary(props: UnifiedReviewProps) {
   const discardInitialBatchRef = useRef(false);
 
   useEffect(() => {
+    if (props.initialCohortSnapshot) return;
     const controller = new AbortController();
     setLoadError(null);
     void (async () => {
@@ -223,7 +236,7 @@ function CohortProfileBoundary(props: UnifiedReviewProps) {
       }
     })();
     return () => { controller.abort(); };
-  }, [loadAttempt]);
+  }, [loadAttempt, props.initialCohortSnapshot]);
 
   const persistExperience = useCallback(async (experience: CohortExperience) => {
     if (!snapshot || experienceWriteInFlightRef.current) return;
@@ -286,7 +299,7 @@ function CohortProfileBoundary(props: UnifiedReviewProps) {
     return <LoadingSkeleton />;
   }
 
-  if (snapshot.profile.hookCompletedAt && !snapshot.profile.explicit.experience) {
+  if (!props.cohortModuleScoped && snapshot.profile.hookCompletedAt && !snapshot.profile.explicit.experience) {
     return (
       <div className="min-h-[50vh]">
         {experienceWrite?.status === 'saving' && (
@@ -358,13 +371,17 @@ export function UnifiedReview(props: UnifiedReviewProps) {
     : <UnifiedReviewBody {...props} />;
 }
 
-function UnifiedReviewBody({ rotations, week, rotationSizes, fetchSlots, feedMode = 'mixed', reviewFilter, itemType, topics, cluster = null, clusterScope = null, onFeedModeChange, onReviewModeChange, studyableRotations = [], enrollableRotations = [], examRotation = null, focusRotation = null, onFocusRotationChange, allowUnverifiedPack = false, initialBatch = null, loadTimer = null, cohortSingleTurn = false, initialCohortSnapshot = null }: UnifiedReviewProps & { initialCohortSnapshot?: CohortProfileSnapshot | null }) {
+function UnifiedReviewBody({ rotations, week, rotationSizes, fetchSlots, feedMode = 'mixed', reviewFilter, itemType, topics, cluster = null, clusterScope = null, onFeedModeChange, onReviewModeChange, studyableRotations = [], enrollableRotations = [], examRotation = null, focusRotation = null, onFocusRotationChange, allowUnverifiedPack = false, initialBatch = null, loadTimer = null, cohortSingleTurn = false, initialCohortSnapshot = null, initialCohortTopicId = null, cohortModuleScoped = false, onCohortTopicNavigate }: UnifiedReviewProps & { initialCohortSnapshot?: CohortProfileSnapshot | null }) {
   const { data: authSession, status: authStatus } = useSession();
   const isCohortHost = useCohortHost();
   const isGuest = authStatus === 'unauthenticated';
   const isAuthenticated = authStatus === 'authenticated' && Boolean(authSession?.user?.id);
-  const searchTopics = initialCohortSnapshot?.searchTopics ?? [];
-  const [activeSearchTopicId, setActiveSearchTopicId] = useState<string | null>(null);
+  const searchTopics = initialCohortSnapshot?.searchTopics ?? EMPTY_COHORT_TOPICS;
+  const [activeSearchTopicId, setActiveSearchTopicId] = useState<string | null>(initialCohortTopicId);
+  // Unlike the visibility session below, this id is the server's durable
+  // one-answer-at-a-time journey and must survive tab hide/show remounts.
+  const cohortJourneyIdRef = useRef<string | null>(null);
+  if (!cohortJourneyIdRef.current) cohortJourneyIdRef.current = genClientRequestId();
   const reviewUserKey = allowUnverifiedPack
     ? null
     : offlineUserKey(authSession?.user) ?? initialBatch?.ownerKey ?? null;
@@ -376,7 +393,7 @@ function UnifiedReviewBody({ rotations, week, rotationSizes, fetchSlots, feedMod
   // Creating it before the review hook prevents a second, unlinked identity
   // for selection telemetry.
   const { sessionId, recordAnswerIntent } = useSessionLifecycle({
-    disabled: allowUnverifiedPack,
+    disabled: allowUnverifiedPack || isCohortHost,
     rotation: rotations.join(','),
     startMetadata: { rotations, feedMode },
     getEndMetadata: () => ({
@@ -406,7 +423,7 @@ function UnifiedReviewBody({ rotations, week, rotationSizes, fetchSlots, feedMod
     loadTimer,
     singleTurn: cohortSingleTurn,
     cohortTurn: isCohortHost && cohortSingleTurn
-      ? { journeyId: sessionId, searchTopicId: activeSearchTopicId }
+      ? { journeyId: cohortJourneyIdRef.current!, searchTopicId: activeSearchTopicId }
       : null,
   });
   const {
@@ -469,7 +486,7 @@ function UnifiedReviewBody({ rotations, week, rotationSizes, fetchSlots, feedMod
     focusRotation,
   });
   const sessionProgress = useSessionProgress(progressRotations, {
-    disabled: allowUnverifiedPack,
+    disabled: allowUnverifiedPack || isCohortHost,
   });
   const {
     reviewed: serverReviewed,
@@ -678,6 +695,7 @@ function UnifiedReviewBody({ rotations, week, rotationSizes, fetchSlots, feedMod
 
   const showExperiencePrompt = Boolean(
     isCohortHost
+    && !cohortModuleScoped
     && cohortProfile
     && !cohortProfile.explicit.experience
     && (finalHookAnswered || cohortProfile.hookCompletedAt),
@@ -696,6 +714,7 @@ function UnifiedReviewBody({ rotations, week, rotationSizes, fetchSlots, feedMod
   );
   const showDemandPrompt = Boolean(
     mcqResult
+    && !cohortModuleScoped
     && cohortProfile?.explicit.experience
     && effectiveCohortDeep
     && !cohortProfile.explicit.demand
@@ -707,21 +726,54 @@ function UnifiedReviewBody({ rotations, week, rotationSizes, fetchSlots, feedMod
     || cohortWrite?.kind === 'demand',
   );
 
+  const preparedDeliveryRef = useRef<string | null>(null);
+  useEffect(() => {
+    const deliveryId = currentItem?.deliveryId;
+    // Signed-in learners can change difficulty before Continue. Guests have
+    // no such control, so prepare one adaptive turn after durable grading.
+    if (!isCohortHost || !isGuest || cohortPromptBlocked || !mcqResult || !deliveryId
+      || currentItem?.decisionContext?.cohortHook
+      || preparedDeliveryRef.current === deliveryId) return;
+    preparedDeliveryRef.current = deliveryId;
+    void session.prepareNextCohortTurn().catch(() => {
+      // Continue replays the same receipt and exposes a retry if still needed.
+    });
+  }, [isCohortHost, isGuest, cohortPromptBlocked, mcqResult, currentItem?.deliveryId,
+    currentItem?.decisionContext?.cohortHook, session.prepareNextCohortTurn]);
+
   const handleSearchTopicSelect = useCallback((topicId: string) => {
-    if (cohortTurnPending && !currentItem) return;
+    if (cohortTurnPending || refreshingNext) return;
+    if (onCohortTopicNavigate) { onCohortTopicNavigate(topicId); return; }
+    const href = cohortReviewHref(
+      `${window.location.pathname}${window.location.search}${window.location.hash}`,
+      topicId,
+      searchTopics,
+    );
+    if (href) {
+      window.history.pushState(window.history.state, '', href);
+    }
     setActiveSearchTopicId(topicId);
     if (cohortTurnErrorCode === 'topic_exhausted' || isExhausted || !currentItem) {
       void fetchItems(false, true, topicId);
     }
-  }, [cohortTurnErrorCode, cohortTurnPending, currentItem, fetchItems, isExhausted]);
+  }, [cohortTurnErrorCode, cohortTurnPending, currentItem, fetchItems, isExhausted, searchTopics, onCohortTopicNavigate, refreshingNext]);
 
   const handleSearchTopicClear = useCallback(() => {
-    if (cohortTurnPending && !currentItem) return;
+    if (cohortTurnPending || refreshingNext) return;
+    if (onCohortTopicNavigate) { onCohortTopicNavigate(null); return; }
+    const href = cohortReviewHref(
+      `${window.location.pathname}${window.location.search}${window.location.hash}`,
+      null,
+      searchTopics,
+    );
+    if (href) {
+      window.history.pushState(window.history.state, '', href);
+    }
     setActiveSearchTopicId(null);
     if (cohortTurnErrorCode === 'topic_exhausted' || isExhausted || !currentItem) {
       void fetchItems(false, true, null);
     }
-  }, [cohortTurnErrorCode, cohortTurnPending, currentItem, fetchItems, isExhausted]);
+  }, [cohortTurnErrorCode, cohortTurnPending, currentItem, fetchItems, isExhausted, searchTopics, onCohortTopicNavigate, refreshingNext]);
 
   const handleExperience = useCallback((experience: CohortExperience) => {
     void persistCohortWrite({
@@ -890,7 +942,7 @@ function UnifiedReviewBody({ rotations, week, rotationSizes, fetchSlots, feedMod
   }, [mobileOptionsOpen]);
 
   // Flag state — F opens text input, Enter submits
-  const flagging = useFlagging({ item: currentItem, registerResetCallback });
+  const flagging = useFlagging({ item: currentItem, registerResetCallback, publicSurface: isCohortHost });
   const { flagMode, flagged, flagPending, flagMessage, authExpired, setFlagMode, setFlagMessage, handleFlagSubmit, closeFlag } = flagging;
   const handleReviewGoBack = useCallback(() => {
     // Opaque Cohort deliveries are one-shot receipts. Re-entering an answered
@@ -963,11 +1015,12 @@ function UnifiedReviewBody({ rotations, week, rotationSizes, fetchSlots, feedMod
     // g / b rate what is on screen. Uses the same poster as the thumb buttons
     // so the two cannot diverge.
     handleContentRating: (rating) => {
-      if (!currentItem?.serveDecisionId) return;
+      if (!currentItem || (!currentItem.serveDecisionId && !(isCohortHost && currentItem.deliveryId))) return;
       void postContentRating({
         itemType: currentItem.type === 'question' ? 'question' : 'card',
         itemId: currentItem.id,
         serveDecisionId: currentItem.serveDecisionId,
+        publicDeliveryId: isCohortHost ? currentItem.deliveryId : undefined,
         rating,
         sourceComponent: currentItem.sourceComponent
           || (currentItem.type === 'question' ? 'MCQ' : 'Card'),
@@ -990,10 +1043,10 @@ function UnifiedReviewBody({ rotations, week, rotationSizes, fetchSlots, feedMod
   useEffect(() => {
     // Don't auto-retry while the initial load is still in progress —
     // otherwise this aborts the initial fetch via the shared abort controller.
-    if (!item && !isExhausted && !isFetchingMore && !loading) {
+    if (!item && !error && !cohortTurnPending && !isExhausted && !isFetchingMore && !loading) {
       fetchItems(true);
     }
-  }, [item, isExhausted, isFetchingMore, loading, fetchItems]);
+  }, [item, error, cohortTurnPending, isExhausted, isFetchingMore, loading, fetchItems]);
 
   // Loading — skeleton that mimics card layout
   if (loading) {
@@ -1004,7 +1057,7 @@ function UnifiedReviewBody({ rotations, week, rotationSizes, fetchSlots, feedMod
   }
 
   // Error
-  if (error) {
+  if (error && !item) {
     const isAuthError = error.toLowerCase().includes('sign in') || error.toLowerCase().includes('session');
     const activeTopic = searchTopics.find((topic) => topic.id === activeSearchTopicId) ?? null;
     return (
@@ -1089,7 +1142,7 @@ function UnifiedReviewBody({ rotations, week, rotationSizes, fetchSlots, feedMod
 
   // Determine which buttons to show in sticky footer
   const showCardReveal = item.type === 'card' && !cardFullyRevealed;
-  const showCardGrading = item.type === 'card' && cardFullyRevealed;
+  const showCardGrading = item.type === 'card' && cardFullyRevealed && !error;
   const showMcqConfidence = item.type === 'question'
     && !cohortPromptBlocked
     && scaffoldWriteStatus === 'idle'
@@ -1098,7 +1151,7 @@ function UnifiedReviewBody({ rotations, week, rotationSizes, fetchSlots, feedMod
   // Options are shown numbered 1..n, not by their display letter.
   const correctOptionIndex = mcqResult ? (item.options?.findIndex((o) => o.label === mcqResult.correctOption) ?? -1) : -1;
   const correctOptionNumber = correctOptionIndex >= 0 ? correctOptionIndex + 1 : null;
-  const showMcqContinue = item.type === 'question'
+  const showMcqContinue = !error && item.type === 'question'
     && Boolean(item.deliveryId)
     && Boolean(mcqResult)
     && !cohortPromptBlocked;
@@ -1177,19 +1230,12 @@ function UnifiedReviewBody({ rotations, week, rotationSizes, fetchSlots, feedMod
               <kbd className="hidden pointer-fine:inline text-[10px] opacity-40 font-mono">z</kbd>
             </button>
           )}
-          {isCohortHost && (
-            <Link
-              href="/usmle/step1"
-              // The visible label shortens to "Plan" at compact widths to hold the
-              // toolbar's fixed 52px single row, so the accessible name has to be
-              // stated rather than inferred from the text — same reason the back
-              // button above carries aria-label="Go back".
-              aria-label="Plan a study session"
-              className="shrink-0 whitespace-nowrap rounded-md px-2 py-1 text-xs font-medium text-[var(--md-primary)] hover:bg-[var(--md-surface-container-high)] transition-colors"
-            >
-              Plan<span className="hidden lg:inline"> a study session</span>
-            </Link>
-          )}
+          {isCohortHost && <ReviewModulePicker
+            disabled={cohortTurnPending || refreshingNext || activeCardGrading.status === 'saving' || opaqueWriteStatus === 'saving'}
+            options={searchTopics}
+            value={activeSearchTopicId}
+            onChange={value => value ? handleSearchTopicSelect(value) : handleSearchTopicClear()}
+          />}
           {!isAuthenticated && !isCohortHost && enrollableRotations.length > 0 && (
             <button
               type="button"
@@ -1290,7 +1336,7 @@ function UnifiedReviewBody({ rotations, week, rotationSizes, fetchSlots, feedMod
               </div>
             )}
             {isCohortHost ? (
-              <ImageBlurToggle />
+              <><Link href="/usmle/step1" className="text-xs underline">Plan a study session</Link><ImageBlurToggle /></>
             ) : mobileOptionsOpen ? (
               <div className="flex items-center justify-between gap-4 sm:contents">
                 <span className="sm:hidden text-xs text-[var(--md-on-surface-variant)]">Blur images</span>
@@ -1461,7 +1507,8 @@ function UnifiedReviewBody({ rotations, week, rotationSizes, fetchSlots, feedMod
       {/* Flag overlay */}
       <FlagOverlay
         isOpen={flagMode}
-        image={flagging.image}
+        image={isCohortHost ? undefined : flagging.image}
+        error={isCohortHost ? flagging.image.error : undefined}
         submitting={flagPending}
         flagMessage={flagMessage}
         onSubmit={handleFlagSubmit}
@@ -1518,6 +1565,7 @@ function UnifiedReviewBody({ rotations, week, rotationSizes, fetchSlots, feedMod
           inlineReveal={false}
           onSuppress={(id) => { markSuppressed(id, 'card'); advanceToNext(); }}
           publicSurface={isCohortHost}
+          publicFeedback={<CardFeedback key={item.id} cardId={item.id} publicDeliveryId={item.deliveryId} sourceComponent="Card" />}
           revealActions={(
             <StationChip
               topics={item.topics ?? []}
@@ -1532,6 +1580,7 @@ function UnifiedReviewBody({ rotations, week, rotationSizes, fetchSlots, feedMod
       {/* MCQ */}
       {displayItem?.type === 'question' && (
         <McqItemView
+          publicSurface={isCohortHost}
           item={displayItem}
           selectedOption={selectedOption}
           mcqResult={mcqResult}
@@ -1605,6 +1654,12 @@ function UnifiedReviewBody({ rotations, week, rotationSizes, fetchSlots, feedMod
       )}
         </div>
       </div>
+
+      {error && item && (
+        <ReviewActionBar onClick={() => { void advanceAndRefresh(); }} disabled={refreshingNext}>
+          {refreshingNext ? 'Loading next question…' : 'Could not load the next item · Retry'}
+        </ReviewActionBar>
+      )}
 
       {/* Card REVEAL bar — fixed at bottom (before revealing), in the SAME
           position as the grade ramp so the tap target never moves between

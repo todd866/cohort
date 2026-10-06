@@ -59,7 +59,7 @@ describe('AppShell accessibility landmarks', () => {
     expect(screen.getByRole('link', { name: 'Terms' })).toHaveAttribute('data-prefetch', 'false');
   });
 
-  it.each(['/', '/review', '/study/example', '/x/cockpit'])('keeps %s focused on study with a skip target', (pathname) => {
+  it.each(['/', '/review', '/anatomy', '/cah', '/pwh', '/gsse', '/neurosurgery', '/study/example', '/x/cockpit'])('keeps %s focused on study with a skip target', (pathname) => {
     mockPathname.mockReturnValue(pathname);
     render(<AppShell><p>Special layout</p></AppShell>);
 
@@ -67,6 +67,16 @@ describe('AppShell accessibility landmarks', () => {
     expect(screen.getByRole('main')).toHaveAttribute('id', 'main-content');
     expect(screen.queryByRole('link', { name: 'Privacy' })).not.toBeInTheDocument();
     expect(screen.queryByRole('link', { name: 'Terms' })).not.toBeInTheDocument();
+  });
+
+  it.each([false, true])('keeps legal links exclusively on Profile (Cohort=%s)', (isCohortHost) => {
+    mockPathname.mockReturnValue('/anatomy');
+    const { rerender } = render(<AppShell isCohortHost={isCohortHost}><p>Anatomy review</p></AppShell>);
+    expect(screen.queryByRole('contentinfo')).not.toBeInTheDocument();
+    mockPathname.mockReturnValue('/profile');
+    rerender(<AppShell isCohortHost={isCohortHost}><p>Profile</p></AppShell>);
+    expect(screen.getByRole('link', { name: 'Privacy' })).toHaveAttribute('href', '/privacy');
+    expect(screen.getByRole('link', { name: 'Terms' })).toHaveAttribute('href', '/terms');
   });
 
   // 2026-10-01 phone sweep: the Exam tab's hub and paper lists dropped the

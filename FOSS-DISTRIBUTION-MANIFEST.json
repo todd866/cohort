@@ -1,10 +1,10 @@
 {
   "schemaVersion": 1,
   "boundaryPolicy": "foss/distribution-policy.json",
-  "boundaryPolicySha256": "6080bf5eb0d8ad327ba569303aa949c8e485a1d1730f7389810549c56d3dd40f",
-  "reviewedPathsSha256": "dc353020d5fd165a1b713a8201c7baabbc1cab66241e3aad463e0315a52bc2b4",
-  "fileCount": 2768,
-  "totalBytes": 264871372,
+  "boundaryPolicySha256": "6ccda5ed99b9605bc99bcd2403504d9444c7f1432c7a66720ff4ad8f6ab04565",
+  "reviewedPathsSha256": "cad4deebbfb68865988ea4f61b727877c6df643b8cc7e274e8a7885e4fe64091",
+  "fileCount": 2770,
+  "totalBytes": 264957747,
   "files": [
     {
       "path": ".env.example",
@@ -120,15 +120,15 @@
     },
     {
       "path": "foss/distribution-paths.txt",
-      "bytes": 151966,
-      "sha256": "dc353020d5fd165a1b713a8201c7baabbc1cab66241e3aad463e0315a52bc2b4",
+      "bytes": 152050,
+      "sha256": "cad4deebbfb68865988ea4f61b727877c6df643b8cc7e274e8a7885e4fe64091",
       "mode": "0644",
       "licence": "MIT"
     },
     {
       "path": "foss/distribution-policy.json",
-      "bytes": 344579,
-      "sha256": "6080bf5eb0d8ad327ba569303aa949c8e485a1d1730f7389810549c56d3dd40f",
+      "bytes": 344996,
+      "sha256": "6ccda5ed99b9605bc99bcd2403504d9444c7f1432c7a66720ff4ad8f6ab04565",
       "mode": "0644",
       "licence": "MIT"
     },
@@ -10963,8 +10963,8 @@
     },
     {
       "path": "package.json",
-      "bytes": 12273,
-      "sha256": "c51ed34b86b8146338a3395a8d7dd5241a27effd36c273d7c8ebf5628a75fe3c",
+      "bytes": 12449,
+      "sha256": "76aa168fb63555c995bf072959ca703f814d857a95bac75518b6e9c5e3bd7f15",
       "mode": "0644",
       "licence": "MIT"
     },
@@ -11734,14 +11734,14 @@
     {
       "path": "scripts/foss/distribution.test.ts",
       "bytes": 70556,
-      "sha256": "935c1dae0875474059c7db5ed1512b9e80d846e07d4706f30ea93486e0fc5538",
+      "sha256": "843f511b849a734eb245c6bc7326bdb05682ff48f42555ec539a69a56a126614",
       "mode": "0644",
       "licence": "MIT"
     },
     {
       "path": "scripts/foss/distribution.ts",
       "bytes": 104489,
-      "sha256": "99ed3af3b22a625fff0049375c998f42560fcbd6cce3e930c9c5af790b8ee03b",
+      "sha256": "5caed7a647af91bca4142d4331b2a401eb9d09914f93deafff66619558f50d82",
       "mode": "0644",
       "licence": "MIT"
     },
@@ -11775,8 +11775,8 @@
     },
     {
       "path": "scripts/foss/public-navigation.test.ts",
-      "bytes": 29659,
-      "sha256": "fa8e417ba28f0545d1ce8e201cccee38a067401f0e7ff95e5823b04abe45c563",
+      "bytes": 31784,
+      "sha256": "ac95f46a738133684863bc128f75ef6ab27a10d421db5172402d97a526871612",
       "mode": "0644",
       "licence": "MIT"
     },
@@ -12132,8 +12132,8 @@
     },
     {
       "path": "src/app/anatomy/AnatomyStudyClient.test.tsx",
-      "bytes": 14271,
-      "sha256": "1e0e57dcb758b1c4beb35834bfd030d1dc32f3a335228cd92e35edf7aaccc384",
+      "bytes": 14772,
+      "sha256": "d98de635feabfec31fcba291cce103e2c23b99d3ce713e31815ae5779ee09577",
       "mode": "0644",
       "licence": "MIT"
     },
@@ -12517,8 +12517,8 @@
     },
     {
       "path": "src/app/layout.tsx",
-      "bytes": 6759,
-      "sha256": "bbbd82d06a7aea961f0d287bd2f668605f34aeb3167d9a2dcb71f5e7c03360e0",
+      "bytes": 6787,
+      "sha256": "567dbb313b38490683361e9d2ce9b2506c716391e2ca4ffbea7f10512901c128",
       "mode": "0644",
       "licence": "MIT"
     },
@@ -12804,15 +12804,15 @@
     },
     {
       "path": "src/components/AppShell.test.tsx",
-      "bytes": 4111,
-      "sha256": "d7764b97d42c331113f27fbfd4bca67defae0f25311efeb150f1f7d3e4328d7b",
+      "bytes": 4806,
+      "sha256": "8ca19a54865ea8b6d70ab1f83100571cfd271023ac527b9456f5eba58b28377e",
       "mode": "0644",
       "licence": "MIT"
     },
     {
       "path": "src/components/AppShell.tsx",
-      "bytes": 4238,
-      "sha256": "e6da7814a8d590874e09d584055dfd05ee5a54d1aa0a4357ff12dd9d68744415",
+      "bytes": 4219,
+      "sha256": "b3babce4494893b2fbb4fcefb0268111bb58986afc4c19f8d0d92b2382ae44bd",
       "mode": "0644",
       "licence": "MIT"
     },
@@ -12880,44 +12880,16 @@
       "licence": "MIT"
     },
     {
-      "path": "src/components/cohort/PublicReviewClient.test.tsx",
-      "bytes": 10299,
-      "sha256": "ccaf19bbc425b1220073c6000d9a19e9dca97b6d0dc9b79830005dfbf50de672",
-      "mode": "0644",
-      "licence": "MIT"
-    },
-    {
-      "path": "src/components/cohort/PublicReviewClient.tsx",
-      "bytes": 20929,
-      "sha256": "66e5264f5a211b638cc05cc46f319b3efad7388126e96e7847e8009a8e159832",
-      "mode": "0644",
-      "licence": "MIT"
-    },
-    {
       "path": "src/components/cohort/PublicReviewEntry.test.tsx",
-      "bytes": 1778,
-      "sha256": "62306457e3400bcd2e31eee1a5a31b214bc57611656e288bd112d7013abd63a4",
+      "bytes": 2002,
+      "sha256": "420cd841336e3a9c54567c54e40d87b5e19999acc55156121278d020d96dc1a0",
       "mode": "0644",
       "licence": "MIT"
     },
     {
       "path": "src/components/cohort/PublicReviewEntry.tsx",
-      "bytes": 3167,
-      "sha256": "d8379f99d0485fb7e2bae9e22802a891df2a155e3f12a69bbe36e82c6fcf6c51",
-      "mode": "0644",
-      "licence": "MIT"
-    },
-    {
-      "path": "src/components/cohort/PublicReviewFeedback.test.tsx",
-      "bytes": 1487,
-      "sha256": "99013ed4d481f7f53fd5f7c6492e3521922adead7cf4cf3372370c95b95d7cab",
-      "mode": "0644",
-      "licence": "MIT"
-    },
-    {
-      "path": "src/components/cohort/PublicReviewFeedback.tsx",
-      "bytes": 3884,
-      "sha256": "f0b8099f1ae86a855a951b71aa18e54160f879e71c4f5a13d18c92ba31d21446",
+      "bytes": 3794,
+      "sha256": "841ed0a1343f3003def5ead954dc50d0e0a025256d0b53922e186d51a6b515ef",
       "mode": "0644",
       "licence": "MIT"
     },
@@ -13420,8 +13392,8 @@
     },
     {
       "path": "src/components/OfflineShellWarm.tsx",
-      "bytes": 4706,
-      "sha256": "943ba1609fc47ab77392ab5377180c51aa15ea9b527a7b2c722622529515e6ae",
+      "bytes": 4844,
+      "sha256": "49fee176c5f1afee85d2085fbb105503116e79a4c88c4a879c7a6fd94a5a2e26",
       "mode": "0644",
       "licence": "MIT"
     },
@@ -13503,9 +13475,16 @@
       "licence": "MIT"
     },
     {
+      "path": "src/components/review/CardFeedback.test.tsx",
+      "bytes": 6756,
+      "sha256": "2e045164ce0e1fa1308e961bbdb030a0550047cdce5e28e5a588d086d5979c4e",
+      "mode": "0644",
+      "licence": "MIT"
+    },
+    {
       "path": "src/components/review/CardFeedback.tsx",
-      "bytes": 7512,
-      "sha256": "6e8fe6783990e56dfafdd22a6cb4fc4f3cffa60df9fbbc105792a2a365b57604",
+      "bytes": 8160,
+      "sha256": "34166d0c30c8ec062d86d96ac9d5e0f5e14689bbb3e6e5737009612c3a1eb4a9",
       "mode": "0644",
       "licence": "MIT"
     },
@@ -13517,9 +13496,16 @@
       "licence": "MIT"
     },
     {
+      "path": "src/components/review/CardItemView.test.tsx",
+      "bytes": 7581,
+      "sha256": "3bef8cae5be22ceff37363905633de7fddd417a319e36baaa5c64ec3f23318e9",
+      "mode": "0644",
+      "licence": "MIT"
+    },
+    {
       "path": "src/components/review/CardItemView.tsx",
-      "bytes": 12228,
-      "sha256": "70a2981f7e61bd0b30283b8022bf8f197a432b1ea6a397fe65fb7fcaf2305cb0",
+      "bytes": 13482,
+      "sha256": "efa7441b000adceb07e6b06d83edd891d1b503cf416b117163002eba48e6d9b4",
       "mode": "0644",
       "licence": "MIT"
     },
@@ -13581,8 +13567,8 @@
     },
     {
       "path": "src/components/review/FlagOverlay.tsx",
-      "bytes": 2678,
-      "sha256": "9caf4e08f11c4bb1571b626000e498987041457d606da1e89cf8ca4513992918",
+      "bytes": 2838,
+      "sha256": "875cd0f269e515c263bc263687ac5c76ef31174d53610ce7ef4c8e8e21710ab2",
       "mode": "0644",
       "licence": "MIT"
     },
@@ -13651,8 +13637,8 @@
     },
     {
       "path": "src/components/review/hooks/types.ts",
-      "bytes": 4113,
-      "sha256": "7ea6e3280c4b109ce340296544174eedbf831e33d0e52074ee0b60f13d8168a1",
+      "bytes": 4571,
+      "sha256": "97388d8c5f6bb5c54ecd6c8c7025ba531a0cb5a4728ad25adeae66f8a0826aa9",
       "mode": "0644",
       "licence": "MIT"
     },
@@ -13679,15 +13665,29 @@
     },
     {
       "path": "src/components/review/hooks/useCohortCardGrade.ts",
-      "bytes": 3793,
-      "sha256": "9dd891b47257121248638be652d7e4b111fd44fc097ffdc41070c9ed62abb341",
+      "bytes": 4729,
+      "sha256": "78dcddbaeace2f80fbac9c62ace8669674ca81a9a17ea55bea5e9b1cc6183a01",
+      "mode": "0644",
+      "licence": "MIT"
+    },
+    {
+      "path": "src/components/review/hooks/useCohortReviewSession.test.ts",
+      "bytes": 11097,
+      "sha256": "f767ad4bf587beea7603086c13d9f73f3213c4824f36d576b74228090a54b796",
+      "mode": "0644",
+      "licence": "MIT"
+    },
+    {
+      "path": "src/components/review/hooks/useFlagging.test.ts",
+      "bytes": 11191,
+      "sha256": "14167cef8f54f7ae16ad257548e7ea54e8f22a1c836d574ba8e64e82b6b2a8f1",
       "mode": "0644",
       "licence": "MIT"
     },
     {
       "path": "src/components/review/hooks/useFlagging.ts",
-      "bytes": 6017,
-      "sha256": "fafa2211a6ed012c100c9d692b8350f2380b62c5919698b8d9a4078e32c5a57c",
+      "bytes": 8274,
+      "sha256": "9c0993963517b556542116ca50bb9bb6dc5d29dfea32f3c04746cd348d3feef0",
       "mode": "0644",
       "licence": "MIT"
     },
@@ -13728,8 +13728,8 @@
     },
     {
       "path": "src/components/review/hooks/useReviewSession.ts",
-      "bytes": 80093,
-      "sha256": "9af362e92f26470123b8d7a3123fed398fd221605c6b3afe194ba5bfd5e7e101",
+      "bytes": 87642,
+      "sha256": "db60e24bae20cd174a0864f39cb4b877dff5fd6dce3ccc79f49e20147670a09f",
       "mode": "0644",
       "licence": "MIT"
     },
@@ -13784,8 +13784,8 @@
     },
     {
       "path": "src/components/review/McqItemView.tsx",
-      "bytes": 10980,
-      "sha256": "aa5954d6c0858a459d9c587aa335421832974f8fda5f5a2ed53c5072dd39a866",
+      "bytes": 11389,
+      "sha256": "f8752c064629ec59b490a0eda9df977af7f0ed0ffbb022a0f4665973362be03a",
       "mode": "0644",
       "licence": "MIT"
     },
@@ -13833,8 +13833,8 @@
     },
     {
       "path": "src/components/review/review-panes.ts",
-      "bytes": 12542,
-      "sha256": "6dad6c1f69d020f796d19283283e52435a49561de4e91c73400fe1d1dfc69d01",
+      "bytes": 12781,
+      "sha256": "e037d7eb3a1ea3d208d5c888d6cda5242052262ee3edada7be128fdc16c3708d",
       "mode": "0644",
       "licence": "MIT"
     },
@@ -13923,9 +13923,16 @@
       "licence": "MIT"
     },
     {
+      "path": "src/components/review/UnifiedReview.test.tsx",
+      "bytes": 52537,
+      "sha256": "31f980ae25435b054e7a27dc7cffbf2ee2309a7fe32969f87e61bb62650c48de",
+      "mode": "0644",
+      "licence": "MIT"
+    },
+    {
       "path": "src/components/review/UnifiedReview.tsx",
-      "bytes": 74923,
-      "sha256": "044b875aec8a26267894564f3706d7c5aeeea8c1274bb15c717d5a8bbb669c66",
+      "bytes": 78363,
+      "sha256": "026ef9ce1c1e4c7cea7f492b32bf1e79f82ab7f0ee25bbfab0b58531e8eac10d",
       "mode": "0644",
       "licence": "MIT"
     },
@@ -14134,8 +14141,8 @@
     },
     {
       "path": "src/components/shared/ReviewModulePicker.tsx",
-      "bytes": 4441,
-      "sha256": "f014c0ccac90844f6aa3110deb0d47a900ef42564d71ac28e23bc55a2263b2d3",
+      "bytes": 4509,
+      "sha256": "db55b20a9641cf9a9d2dfb567c45596e1f2e07d364f5e63d63d4c7204809e963",
       "mode": "0644",
       "licence": "MIT"
     },
@@ -14155,15 +14162,15 @@
     },
     {
       "path": "src/components/shared/ReviewQuestionContent.test.tsx",
-      "bytes": 1952,
-      "sha256": "056ddd2b7bd42af1260cc197253aadbc3fc6fe9faef52b2d8c279fa518866cf3",
+      "bytes": 2973,
+      "sha256": "40afd7763cf067813e33802afa34449a144e5170e9db30ce6ccdf0fd724f875e",
       "mode": "0644",
       "licence": "MIT"
     },
     {
       "path": "src/components/shared/ReviewQuestionContent.tsx",
-      "bytes": 7677,
-      "sha256": "e745800539ed9b7c62ba524ffbfaa21f4c790805d19d5e5dfb263b61477d012e",
+      "bytes": 7701,
+      "sha256": "faabd9be6435f863db26116079219316ad24ea9e6d9bd4754cce27bb17eb43bf",
       "mode": "0644",
       "licence": "MIT"
     },
@@ -14316,8 +14323,8 @@
     },
     {
       "path": "src/hooks/useActiveModules.ts",
-      "bytes": 3148,
-      "sha256": "7235024e8b748d2aaabc33d04bc4ea42e5d50d387897a3a2293b2947206c8b00",
+      "bytes": 3185,
+      "sha256": "c3b1ca8c20ca427b4b55be0c43a38e42a2040444f1763c1bde8d7452148b8e21",
       "mode": "0644",
       "licence": "MIT"
     },
@@ -14358,8 +14365,8 @@
     },
     {
       "path": "src/hooks/useInstitution.ts",
-      "bytes": 8020,
-      "sha256": "5f5a7437ec3d44d1a75b5fc3d5f497dafd6576f1abc43f35f3cf67bb860a72e3",
+      "bytes": 8041,
+      "sha256": "e4ec8af56d539145bd8257c46d91e1e1d944a11c9504ed0d1a6d9a83909969e6",
       "mode": "0644",
       "licence": "MIT"
     },
@@ -14428,8 +14435,8 @@
     },
     {
       "path": "src/hooks/useUserMinimal.ts",
-      "bytes": 2479,
-      "sha256": "bcb07e8264974a1cb1978bdcf960a16fd999714cc636f707e58a46c3d7297d59",
+      "bytes": 2504,
+      "sha256": "483bb2eb9d6d4b0b8c6e12a3e31e418d1608cec092ea036231d2443a04024953",
       "mode": "0644",
       "licence": "MIT"
     },
@@ -14995,8 +15002,8 @@
     },
     {
       "path": "src/lib/cohort/public-review-map.ts",
-      "bytes": 2236,
-      "sha256": "5dbd632dc014f41802355dd9b1a1604bd9ce616dd80b3e1ee2942fd3aa8ca2e5",
+      "bytes": 2271,
+      "sha256": "eea168d1ef8a6cde8be9665a47abac65ed3e7b94d9e6b678c455f4097a624af1",
       "mode": "0644",
       "licence": "MIT"
     },
@@ -16773,8 +16780,8 @@
     },
     {
       "path": "src/lib/learning/record-event.ts",
-      "bytes": 27464,
-      "sha256": "ce7e60e957e89f697cc2a342eb22d90e0d84572da608801a0b9ad2a0ce237fe6",
+      "bytes": 30107,
+      "sha256": "78319b6adf8d217579ffbc48846aa5dbc63798de045840fdc037c0c571c2bffb",
       "mode": "0644",
       "licence": "MIT"
     },
@@ -17655,15 +17662,15 @@
     },
     {
       "path": "src/lib/question-bank/statement-file.ts",
-      "bytes": 6484,
-      "sha256": "16d22d34a101c854d6a4c2f332557bd94382af9b3c9c67f3f06a3170c9496eca",
+      "bytes": 6880,
+      "sha256": "fc018a52b629238b2aa6855313f0aecd8ab4a333a55dcae6b22bbc4b930131b1",
       "mode": "0644",
       "licence": "MIT"
     },
     {
       "path": "src/lib/question-bank/statement-items.ts",
-      "bytes": 6368,
-      "sha256": "3944af7072cac4a6475628dde0a458ff618463b44d584dbcf4cf4ced2b8bf194",
+      "bytes": 6702,
+      "sha256": "78ea9851de5f9618d6776c6d001242662ea4822ff3939564cce6817ccd9af93a",
       "mode": "0644",
       "licence": "MIT"
     },
@@ -17864,9 +17871,16 @@
       "licence": "MIT"
     },
     {
+      "path": "src/lib/review/content-rating.test.ts",
+      "bytes": 2792,
+      "sha256": "11116edd4463d556fadfc45a2b72f4751bbbcd26c9e96000b56ccbe170e556c9",
+      "mode": "0644",
+      "licence": "MIT"
+    },
+    {
       "path": "src/lib/review/content-rating.ts",
-      "bytes": 1663,
-      "sha256": "9b4798bc8ffe905cc7062cf56a5d2d5e9b25e2edbf5ea178484bc79dccff454e",
+      "bytes": 2175,
+      "sha256": "559c02cf1d56389184b1a1333861132780168a45e52737c604c014a24b2f1fad",
       "mode": "0644",
       "licence": "MIT"
     },
@@ -18012,8 +18026,8 @@
     },
     {
       "path": "src/lib/review/record-question-attempt.ts",
-      "bytes": 37263,
-      "sha256": "0cbe4e728466fe4a8f95224eba67a9544d5839679a3fa3adba37c507d08de895",
+      "bytes": 40246,
+      "sha256": "b47d472e5f02b08c7f9d85f5cae7671889e227bcd723f6d58dbdef91bea0ad3f",
       "mode": "0644",
       "licence": "MIT"
     },
@@ -18670,15 +18684,15 @@
     },
     {
       "path": "src/lib/study/statement-scaffold-delivery.ts",
-      "bytes": 13044,
-      "sha256": "7cedd7a1312bd89950d93992ac399e02825b1b1fcb8356053ada9c2a18f7473d",
+      "bytes": 13266,
+      "sha256": "f44ffdd1a0246cd414a392241dc1fb28ace773e7f11b6179e1ca69f6ab99bd34",
       "mode": "0644",
       "licence": "MIT"
     },
     {
       "path": "src/lib/study/statement-scaffolds.ts",
-      "bytes": 13713,
-      "sha256": "4096f580e638220caefbbac230aed514bfc2702602fbeb07994051fea90b3e67",
+      "bytes": 14066,
+      "sha256": "7b11a6218944211a18a3f56741168f48467eff0a55d6f34b9c7f55b2e16f1543",
       "mode": "0644",
       "licence": "MIT"
     },

@@ -8,8 +8,18 @@ export interface ReviewItem {
   // Card fields
   front?: string;
   back?: string;
+  attribution?: { text: string; licence: string };
   backs?: string[] | null;
   context?: string | null;
+  /** Reviewed, public anatomy figure delivered by the Cohort adapter. */
+  publicAnatomyMedia?: {
+    figureId: import('@/lib/cohort/anatomy-figure-catalogue').AnatomyFigureId;
+    target: import('@/lib/cohort/anatomy-figure-catalogue').AnatomyFigureTarget;
+    role: 'prompt' | 'supplementary';
+    preAnswerAlt: string;
+    postAnswerAlt: string;
+    attribution: { text: string; licence: string };
+  };
   /** Per-item abbreviation decodes; meanings may collide across content. */
   abbreviations?: Record<string, string> | null;
   sourceComponent?: string;

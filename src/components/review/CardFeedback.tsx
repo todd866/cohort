@@ -1,7 +1,7 @@
 'use client';
 
 import { ThumbIcon } from '@/components/shared/ThumbIcon';
-import { useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import { postContentRating } from '@/lib/review/content-rating';
 
 interface CardFeedbackProps {
@@ -9,6 +9,8 @@ interface CardFeedbackProps {
   itemType?: 'card' | 'question';
   /** Exact delivered item trace. Required for trusted good/bad telemetry. */
   serveDecisionId?: string;
+  /** Opaque Cohort delivery; public cards only expose thumbs through this path. */
+  publicDeliveryId?: string;
   sourceComponent: string;
   liked?: boolean;
   onFeedback?: (action: 'like' | 'suppress') => void;
@@ -28,6 +30,7 @@ export function CardFeedback({
   cardId,
   itemType = 'card',
   serveDecisionId,
+  publicDeliveryId,
   sourceComponent,
   liked = false,
   onFeedback,
@@ -36,11 +39,20 @@ export function CardFeedback({
   const [showConfirm, setShowConfirm] = useState(false);
   const [qualityRating, setQualityRating] = useState<ContentRating | null>(null);
   const [isRatingSaving, setIsRatingSaving] = useState(false);
+  const ratingGeneration = useRef(0);
+  const itemIdentity = publicDeliveryId ?? serveDecisionId ?? cardId;
+
+  useEffect(() => {
+    ratingGeneration.current += 1;
+    setQualityRating(null);
+    setIsRatingSaving(false);
+  }, [itemIdentity]);
 
   const handleQualityRating = async (rating: ContentRating) => {
-    if (!serveDecisionId || isRatingSaving) return;
+    if ((!serveDecisionId && !publicDeliveryId) || isRatingSaving) return;
 
     const previousRating = qualityRating;
+    const generation = ratingGeneration.current;
     const nextRating = previousRating === rating ? null : rating;
     setQualityRating(nextRating);
     setIsRatingSaving(true);
@@ -52,12 +64,13 @@ export function CardFeedback({
         serveDecisionId,
         rating: nextRating,
         sourceComponent,
+        publicDeliveryId,
       });
       if (!stored) throw new Error('Content rating was not saved');
     } catch {
-      setQualityRating(previousRating);
+      if (generation === ratingGeneration.current) setQualityRating(previousRating);
     } finally {
-      setIsRatingSaving(false);
+      if (generation === ratingGeneration.current) setIsRatingSaving(false);
     }
   };
 
@@ -117,13 +130,13 @@ export function CardFeedback({
   // Question heart/hide actions use a card-only persistence endpoint. Questions
   // therefore render only the delivery-scoped controls, and only when their
   // ServeDecision can anchor the event to the exact item the learner saw.
-  if (itemType === 'question' && !serveDecisionId) return null;
+  if (itemType === 'question' && !serveDecisionId && !publicDeliveryId) return null;
 
   const itemLabel = itemType === 'question' ? 'question' : 'card';
 
   return (
     <div className="flex items-center gap-0.5">
-      {serveDecisionId && (
+      {(serveDecisionId || publicDeliveryId) && (
         <>
           {(['good', 'bad'] as const).map((rating) => {
             const active = qualityRating === rating;
@@ -155,7 +168,7 @@ export function CardFeedback({
         </>
       )}
 
-      {itemType === 'card' && (
+      {itemType === 'card' && !publicDeliveryId && (
         <>
           {/* Like button */}
           <button

@@ -6,13 +6,13 @@ import {
   normaliseFactKey,
   responseFormatOfOptions,
 } from '@/lib/question-bank/statement-items';
-import { EXAM_ONLY_ROTATIONS } from './exam-only-modules';
-
 /**
- * Statement scaffolds: the teaching cards an exam-only module serves after a miss.
+ * Statement scaffolds: the teaching cards a module serves after a statement miss.
  *
  * GSSE and NSx sessions are questions-only (exam-only-modules.ts). The one
  * exception is a scaffold card for a statement the learner just got wrong.
+ * USyd rotations (cah, pwh, paam, critical-care) use the same tag to link a
+ * card after a miss, and keep serving their ordinary cards and questions.
  * docs/superpowers/specs/2026-10-01-surgical-exam-realism-design.md, section 4:
  * "After a miss: serve the scaffolds for the missed statements next, in the
  * same session. The exact item returns on its normal spacing."
@@ -39,11 +39,20 @@ import { EXAM_ONLY_ROTATIONS } from './exam-only-modules';
 const TAG_BY_ROTATION: ReadonlyMap<string, string> = new Map([
   ['neurosurg', 'nsx-scaffold'],
   ['surgical-sciences', 'gsse-scaffold'],
+  ['cah', 'cah-scaffold'],
+  ['pwh', 'pwh-scaffold'],
+  ['paam', 'paam-scaffold'],
+  ['critical-care', 'cc-scaffold'],
 ]);
 
-/** The topic that marks a card as a statement scaffold for this module; null elsewhere. */
+/**
+ * The topic that marks a card as a statement scaffold for this rotation.
+ * Null when the rotation has no statement scaffolds. USyd rotations keep
+ * their cards and single-best-answer questions; the tag only links a card
+ * that should follow a missed statement.
+ */
 export function statementScaffoldTag(rotation: string | null | undefined): string | null {
-  if (!rotation || !EXAM_ONLY_ROTATIONS.has(rotation)) return null;
+  if (!rotation) return null;
   return TAG_BY_ROTATION.get(rotation) ?? null;
 }
 

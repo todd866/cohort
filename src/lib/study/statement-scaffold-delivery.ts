@@ -19,7 +19,7 @@ import {
   withStatementScaffoldOffer,
   type StatementScaffoldDeliveryRow,
 } from './statement-scaffolds';
-import { isNativeExamScaffold } from './exam-only-modules';
+import { EXAM_ONLY_ROTATIONS, isNativeExamScaffold } from './exam-only-modules';
 
 /**
  * The exam-only boundary of every session batch, and where statement
@@ -265,9 +265,10 @@ async function admitStatementScaffolds(ctx: SessionContext, tag: string, now: Da
 }
 
 /**
- * Hold an exam-only batch to questions plus this learner's live statement
- * scaffolds. Every other rotation, and any exam-only batch this does not
- * change, is returned as the same response object.
+ * Admit this learner's live statement scaffolds, and, for an exam-only
+ * module, hold the batch to questions plus native scaffold cards. A USyd
+ * rotation keeps the cards and questions the lane built. A batch this does
+ * not change is returned as the same response object.
  */
 export async function withStatementScaffolds(
   response: NextResponse,
@@ -287,12 +288,15 @@ export async function withStatementScaffolds(
   if (!isRecord(payload) || !Array.isArray(payload.items)) return response;
 
   const items = payload.items as unknown[];
-  const batch = items.filter((item): item is UnifiedItem => (
-    isRecord(item)
-    && (item.type === 'question'
-      || (item.type === 'card' && isNativeExamScaffold(ctx.rotation, item.topics as string[] | undefined)))
-  ));
-  const removed = items.length - batch.length;
+  const examOnly = EXAM_ONLY_ROTATIONS.has(ctx.rotation);
+  const batch = examOnly
+    ? items.filter((item): item is UnifiedItem => (
+      isRecord(item)
+      && (item.type === 'question'
+        || (item.type === 'card' && isNativeExamScaffold(ctx.rotation, item.topics as string[] | undefined)))
+    ))
+    : items as UnifiedItem[];
+  const removed = examOnly ? items.length - batch.length : 0;
   if (removed > 0) {
     logger.error('Exam-only batch carried non-question items; removed', {
       rotation: ctx.rotation,

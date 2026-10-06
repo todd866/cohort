@@ -35,6 +35,7 @@ interface McqResult {
 }
 
 interface McqItemViewProps {
+  publicSurface?: boolean;
   item: ReviewItem;
   preparedPrompt?: PreparedPromptFigure;
   onRetryPrompt?: (src: string) => void;
@@ -80,6 +81,7 @@ export function McqItemView({
   toggleOptionExplanation,
   selectedPending = false,
   interactionDisabled = false,
+  publicSurface = false,
 }: McqItemViewProps) {
   const hasFigure = Boolean(item.imageUrl || item.imageKey);
   const figureIsPrompt = Boolean(item.promptFigure) || reviewImageIsPrompt(item.imageRole, item.imageMeta, item.stem);
@@ -201,6 +203,10 @@ export function McqItemView({
 
   const tailNode = mcqResult ? (
     <>
+      {item.attribution && <details className="text-xs text-[var(--md-on-surface-variant)] mt-2">
+        <summary className="cursor-pointer">Source</summary>
+        <p className="mt-1">{item.attribution.text} · {item.attribution.licence}</p>
+      </details>}
       {/* Links row */}
       <div className="review-reveal mt-4 flex items-center gap-3 text-xs">
         {item.crosslinks?.primary && (
@@ -223,12 +229,13 @@ export function McqItemView({
       </div>
 
       {/* Feedback buttons — same level as card feedback */}
-      {!item.deliveryId && (
+      {(!item.deliveryId || publicSurface) && (
         <div className="mt-3 flex items-center justify-between text-xs">
           <div />
           <CardFeedback
             cardId={item.id}
             itemType="question"
+            publicDeliveryId={publicSurface ? item.deliveryId : undefined}
             serveDecisionId={item.serveDecisionId}
             sourceComponent="MCQ"
           />

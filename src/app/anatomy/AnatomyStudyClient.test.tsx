@@ -1,6 +1,6 @@
 /** @vitest-environment jsdom */
 import { afterEach, describe, expect, it, vi, beforeEach } from 'vitest';
-import { cleanup, render, screen, waitFor } from '@testing-library/react';
+import { cleanup, configure, render, screen, waitFor } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 
 const testMocks = vi.hoisted(() => ({
@@ -12,6 +12,7 @@ vi.mock('next/navigation', () => ({ usePathname: () => '/anatomy', useSearchPara
 vi.mock('@/hooks/useReviewDifficulty', () => ({
   useReviewDifficulty: (options: { onApplied?: () => void | Promise<void> }) => ({
     level: 0,
+    revision: 4,
     pending: false,
     ready: false,
     error: null,
@@ -26,6 +27,15 @@ vi.mock('@/hooks/useReviewDifficulty', () => ({
 }));
 
 import AnatomyStudyClient from './AnatomyStudyClient';
+import { CohortHostProvider } from '@/components/CohortHostContext';
+
+function renderAnatomyStudyClient() {
+  return render(
+    <CohortHostProvider isCohortHost>
+      <AnatomyStudyClient />
+    </CohortHostProvider>,
+  );
+}
 
 const question = (id: string) => ({
   deliveryId: id,
@@ -71,7 +81,10 @@ const media = {
   preAnswerAlt: 'Prompt anatomy figure',
   postAnswerAlt: 'Answer anatomy figure',
 };
-const json = (body: unknown, ok = true) => ({ ok, status: ok ? 200 : 503, json: async () => body });
+const json = (body: unknown, ok = true) => new Response(JSON.stringify(body), {
+  status: ok ? 200 : 503,
+  headers: { 'Content-Type': 'application/json' },
+});
 const turn = (journeyId: string, items: unknown[], requestedSize = 1) => ({
   sessionId: journeyId,
   mode: 'daily',
@@ -87,13 +100,16 @@ function profileResponse() {
 describe('AnatomyStudyClient lifecycle', () => {
   beforeEach(() => {
     vi.restoreAllMocks();
+    configure({ asyncUtilTimeout: 5000 });
     testMocks.authStatus = 'unauthenticated';
     testMocks.easeAfterExhaustion.mockReset();
     Object.defineProperty(HTMLImageElement.prototype, 'decode', { configurable: true, value: vi.fn(async () => undefined) });
     Object.defineProperty(URL, 'createObjectURL', { configurable: true, value: vi.fn(() => 'blob:anatomy-figure') });
     Object.defineProperty(URL, 'revokeObjectURL', { configurable: true, value: vi.fn() });
+    let requestSequence = 0;
+    Object.defineProperty(crypto, 'randomUUID', { configurable: true, value: vi.fn(() => `test-request-${++requestSequence}`) });
   });
-  afterEach(() => cleanup());
+  afterEach(() => { cleanup(); configure({ asyncUtilTimeout: 1000 }); });
 
   it('starts a first guest directly on one anatomy card without an experience gate', async () => {
     const fetchMock = vi.spyOn(global, 'fetch');
@@ -108,8 +124,7 @@ describe('AnatomyStudyClient lifecycle', () => {
       }
       throw new Error(`unexpected ${url}`);
     });
-    Object.defineProperty(crypto, 'randomUUID', { configurable: true, value: undefined });
-    render(<AnatomyStudyClient />);
+    renderAnatomyStudyClient();
     expect(await screen.findByText(/The/)).toBeInTheDocument();
     expect(screen.queryByRole('dialog', { name: /study level/i })).toBeNull();
     expect(fetchMock.mock.calls.filter(([url]) => String(url).endsWith('/api/cohort/turn'))).toHaveLength(1);
@@ -125,18 +140,18 @@ describe('AnatomyStudyClient lifecycle', () => {
         return json({ profile: { hookCompletedAt: null, explicit: { experience: 'undergrad' } }, deep: false, searchTopics: [{ id: 'module-anatomy', label: 'Anatomy', aliases: [], searchIntents: [], learningOutcomes: [], modalities: ['text'], eligibleItemCount: 1, eligibleAssetCount: 0 }], demandTopics: [] }) as Response;
       if (url.endsWith('/api/cohort/turn')) {
         turns += 1;
-        if (turns === 1) return json({ error: 'temporary' }, false) as Response;
+        if (turns <= 2) return json({ error: 'temporary' }, false) as Response;
         const body = JSON.parse(String(init?.body ?? '{}')) as { journeyId: string };
         return json(turn(body.journeyId, [card('retry-one')], 1)) as Response;
       }
       throw new Error(`unexpected ${url}`);
     });
     const user = userEvent.setup();
-    render(<AnatomyStudyClient />);
+    renderAnatomyStudyClient();
     await waitFor(() => expect(screen.getByRole('button', { name: 'Retry' })).toBeInTheDocument());
     await user.click(screen.getByRole('button', { name: 'Retry' }));
     expect(await screen.findByText(/retry-one/)).toBeInTheDocument();
-    expect(turns).toBe(2);
+    expect(turns).toBe(3);
   });
 
   it('retries a failed card grade with the identical request body', async () => {
@@ -157,10 +172,11 @@ describe('AnatomyStudyClient lifecycle', () => {
       throw new Error(`unexpected ${url}`);
     });
     const user = userEvent.setup();
-    render(<AnatomyStudyClient />);
+    renderAnatomyStudyClient();
     await user.click(await screen.findByRole('button', { name: /Show answer/ }));
     await user.click(screen.getByRole('button', { name: /Good \(3\)/ }));
-    await waitFor(() => expect(screen.getByRole('alert')).toHaveTextContent(/temporary/i));
+    await waitFor(() => expect(grades).toBe(1));
+    await waitFor(() => expect(screen.getByRole('button', { name: /Good \(3\)/ })).toBeEnabled());
     await user.click(screen.getByRole('button', { name: /Good \(3\)/ }));
     await waitFor(() => expect(grades).toBe(2));
     const bodies = fetchMock.mock.calls
@@ -180,7 +196,7 @@ describe('AnatomyStudyClient lifecycle', () => {
       if (url.endsWith('/api/cohort/turn')) {
         turns += 1;
         const body = JSON.parse(String(init?.body ?? '{}')) as { journeyId: string };
-        if (turns === 2) return json({ error: 'temporary' }, false) as Response;
+        if (turns === 2 || turns === 3) return json({ error: 'temporary' }, false) as Response;
         return json(turn(body.journeyId, [card(turns === 1 ? 'saved-card' : 'next-card')])) as Response;
       }
       if (url.endsWith('/api/cohort/card-grade')) {
@@ -190,14 +206,14 @@ describe('AnatomyStudyClient lifecycle', () => {
       throw new Error(`unexpected ${url}`);
     });
     const user = userEvent.setup();
-    render(<AnatomyStudyClient />);
+    renderAnatomyStudyClient();
     await user.click(await screen.findByRole('button', { name: /Show answer/ }));
     await user.click(screen.getByRole('button', { name: /Good \(3\)/ }));
-    await waitFor(() => expect(screen.getByRole('button', { name: 'Retry' })).toBeInTheDocument());
-    await user.click(screen.getByRole('button', { name: 'Retry' }));
+    await waitFor(() => expect(screen.getByRole('button', { name: /Retry/ })).toBeInTheDocument());
+    await user.click(screen.getByRole('button', { name: /Retry/ }));
     await waitFor(() => expect(screen.getByText(/next-card/)).toBeInTheDocument());
     expect(grades).toBe(1);
-    expect(turns).toBe(3);
+    expect(turns).toBe(4);
   });
 
   it('automatically eases a hard exhaustion response and fetches a replacement turn', async () => {
@@ -221,7 +237,7 @@ describe('AnatomyStudyClient lifecycle', () => {
       if (url.endsWith('/api/cohort/difficulty')) return json({ level: 1, revision: 5 }) as Response;
       throw new Error(`unexpected ${url}`);
     });
-    render(<AnatomyStudyClient />);
+    renderAnatomyStudyClient();
     await waitFor(() => expect(testMocks.easeAfterExhaustion).toHaveBeenCalled());
     expect(await screen.findByText(/eased-card/)).toBeInTheDocument();
     expect(turns).toBe(2);
@@ -241,8 +257,8 @@ describe('AnatomyStudyClient lifecycle', () => {
       }
       throw new Error(`unexpected ${url}`);
     });
-    render(<AnatomyStudyClient />);
-    await waitFor(() => expect(screen.getByRole('alert')).toHaveTextContent(/Invalid study question|unsafe content/i));
+    renderAnatomyStudyClient();
+    await waitFor(() => expect(screen.getByRole('alert')).toHaveTextContent(/Invalid study question|unsafe item/i));
     expect(screen.queryByText('Name structure bad.')).toBeNull();
   });
 
@@ -259,8 +275,8 @@ describe('AnatomyStudyClient lifecycle', () => {
       }
       throw new Error(`unexpected ${url}`);
     });
-    render(<AnatomyStudyClient />);
-    await waitFor(() => expect(screen.getByRole('alert')).toHaveTextContent(/Invalid study card|unsafe content/i));
+    renderAnatomyStudyClient();
+    await waitFor(() => expect(screen.getByRole('alert')).toHaveTextContent(/Invalid study card|unsafe item/i));
     expect(screen.queryByText(/bad-media/)).toBeNull();
   });
 
@@ -278,7 +294,7 @@ describe('AnatomyStudyClient lifecycle', () => {
       throw new Error(`unexpected ${url}`);
     });
     const user = userEvent.setup();
-    render(<AnatomyStudyClient />);
+    renderAnatomyStudyClient();
     const figure = await screen.findByAltText('Prompt anatomy figure');
     const reveal = await screen.findByRole('button', { name: /Show answer/ });
     expect(reveal).toBeEnabled();

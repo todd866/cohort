@@ -1830,12 +1830,8 @@ src/components/citations/CitationCard.tsx
 src/components/citations/EvidenceSection.tsx
 src/components/clinical-cockpit/ABGPanel.tsx
 src/components/cohort/PublicProfilePage.tsx
-src/components/cohort/PublicReviewClient.test.tsx
-src/components/cohort/PublicReviewClient.tsx
 src/components/cohort/PublicReviewEntry.test.tsx
 src/components/cohort/PublicReviewEntry.tsx
-src/components/cohort/PublicReviewFeedback.test.tsx
-src/components/cohort/PublicReviewFeedback.tsx
 src/components/content-quality/FlaggedCardsTriage.tsx
 src/components/content/ChecklistItem.tsx
 src/components/content/CitationList.tsx
@@ -1904,8 +1900,10 @@ src/components/profile/ReviewHeatmap.tsx
 src/components/profile/TopicHeatmap.tsx
 src/components/review/ABGContextPanel.tsx
 src/components/review/AudioView.tsx
+src/components/review/CardFeedback.test.tsx
 src/components/review/CardFeedback.tsx
 src/components/review/CardImage.tsx
+src/components/review/CardItemView.test.tsx
 src/components/review/CardItemView.tsx
 src/components/review/CardText.tsx
 src/components/review/ClipContext.tsx
@@ -1938,6 +1936,7 @@ src/components/review/StatementSetView.tsx
 src/components/review/StationChip.tsx
 src/components/review/StationDrawer.tsx
 src/components/review/TrackProjectionGraph.tsx
+src/components/review/UnifiedReview.test.tsx
 src/components/review/UnifiedReview.tsx
 src/components/review/VideoItemView.tsx
 src/components/review/clip-role.ts
@@ -1952,6 +1951,8 @@ src/components/review/hooks/unified-session-params.ts
 src/components/review/hooks/useAutoScrollIntoView.ts
 src/components/review/hooks/useCardReview.ts
 src/components/review/hooks/useCohortCardGrade.ts
+src/components/review/hooks/useCohortReviewSession.test.ts
+src/components/review/hooks/useFlagging.test.ts
 src/components/review/hooks/useFlagging.ts
 src/components/review/hooks/useGroupReview.ts
 src/components/review/hooks/useGroupReviewKeyboard.ts
@@ -2490,6 +2491,7 @@ src/lib/review/bootstrap-safety.ts
 src/lib/review/bootstrap-types.ts
 src/lib/review/cluster-verdict.ts
 src/lib/review/compute-fetch-slots.ts
+src/lib/review/content-rating.test.ts
 src/lib/review/content-rating.ts
 src/lib/review/feed-mode.ts
 src/lib/review/grade-calibration.ts

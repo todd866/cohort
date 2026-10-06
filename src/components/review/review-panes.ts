@@ -103,7 +103,7 @@ export { reviewPaneGridClass, reviewShellWidthClass, REVIEW_PANE_GRID, REVIEW_PA
  */
 export function reviewPaneKind(
   item:
-    | Pick<ReviewItem, 'type' | 'imageUrl' | 'imageKey' | 'imageRole' | 'imageMeta' | 'promptFigure' | 'clip' | 'clipRole' | 'stem' | 'front'>
+    | Pick<ReviewItem, 'type' | 'imageUrl' | 'imageKey' | 'imageRole' | 'imageMeta' | 'publicAnatomyMedia' | 'promptFigure' | 'clip' | 'clipRole' | 'stem' | 'front'>
     | null
     | undefined,
 ): ReviewPaneKind {
@@ -112,7 +112,7 @@ export function reviewPaneKind(
   // figure on a question: the text side holds stem and options.
   if (stemHasResultsTable(item)) return 'prompt-question';
   const promptClip = clipIsPrompt(item.clipRole, item.clip);
-  const prompt = Boolean(item.promptFigure) || promptClip
+  const prompt = Boolean(item.promptFigure) || item.publicAnatomyMedia?.role === 'prompt' || promptClip
     || (Boolean(item.imageUrl || item.imageKey)
       && reviewImageIsPrompt(item.imageRole, item.imageMeta, item.front ?? item.stem));
   if (!prompt) {
@@ -180,7 +180,7 @@ export function isWideFigure(meta: ReviewItem['imageMeta'] | null | undefined): 
  */
 export function itemUsesSidePane(
   item:
-    | Pick<ReviewItem, 'type' | 'imageUrl' | 'imageKey' | 'imageRole' | 'imageMeta' | 'promptFigure' | 'clip' | 'clipRole' | 'stem' | 'front'>
+    | Pick<ReviewItem, 'type' | 'imageUrl' | 'imageKey' | 'imageRole' | 'imageMeta' | 'publicAnatomyMedia' | 'promptFigure' | 'clip' | 'clipRole' | 'stem' | 'front'>
     | null
     | undefined,
   /**
@@ -195,11 +195,12 @@ export function itemUsesSidePane(
   // does: it is question content, so it and the stem have to be on screen at
   // the same time. A 16:9 clip is if anything worse stacked than a figure —
   // it is wider, so it pushes the cloze further below the fold.
-  if (item.promptFigure || clipIsPrompt(item.clipRole, item.clip)) return true;
+  if (item.promptFigure || item.publicAnatomyMedia?.role === 'prompt' || clipIsPrompt(item.clipRole, item.clip)) return true;
   // A results table in the stem is prompt content: see stemHasResultsTable.
   if (stemHasResultsTable(item)) return true;
-  const hasFigure = Boolean(item.imageUrl || item.imageKey);
+  const hasFigure = Boolean(item.imageUrl || item.imageKey || item.publicAnatomyMedia);
   if (!hasFigure) return false;
+  if (item.publicAnatomyMedia?.role === 'supplementary') return revealed;
   if (reviewImageIsPrompt(item.imageRole, item.imageMeta, item.front ?? item.stem)) return true;
   // Supplementary figure: centered while hidden, side-by-side once shown.
   return revealed;

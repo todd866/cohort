@@ -1,3 +1,4 @@
+import { prepareAnatomyFigure } from '@/components/shared/AnatomyReviewFigure';
 import { exhaustedReviewChallenge } from '@/lib/study/review-challenge-exhaustion';
 import type { ReviewChallengePreference } from '@/lib/study/review-challenge-preference';
 import { useState, useEffect, useCallback, useRef } from 'react';
@@ -316,6 +317,13 @@ interface CohortTurnClientBody {
   searchTopicId?: string;
 }
 
+interface PreparedCohortTurn {
+  request: CohortTurnClientBody;
+  items: ReviewItem[];
+  deliveredSize: number;
+  reviewChallengeExhausted?: unknown;
+}
+
 class CohortTurnHttpError extends Error {
   constructor(
     message: string,
@@ -602,7 +610,7 @@ export function useReviewSession({ rotations, week, rotationSizes, fetchSlots, f
   const reviewChallengeRevisionRef = useRef<number | null>(reviewChallengeRevision);
   reviewChallengeRevisionRef.current = reviewChallengeRevision;
 
-  const { activeModules } = useActiveModules();
+  const { activeModules } = useActiveModules(!hasCohortTurn);
 
   // The pack is bound to an account so a shared device cannot serve one user's
   // cards to the next. The key is passed in rather than read from useSession
@@ -662,6 +670,10 @@ export function useReviewSession({ rotations, week, rotationSizes, fetchSlots, f
   const cohortNextDrawOrdinalRef = useRef(0);
   const cohortPreviousDeliveryIdRef = useRef<string | null>(null);
   const pendingCohortTurnRef = useRef<CohortTurnClientBody | null>(null);
+  const preparedCohortTurnRef = useRef<PreparedCohortTurn | null>(null);
+  const cohortPreparationRequestRef = useRef<CohortTurnClientBody | null>(null);
+  const cohortPreparationRef = useRef<Promise<void> | null>(null);
+  const cohortPreparationControllerRef = useRef<AbortController | null>(null);
   const observedOwnerChangeRef = useRef(false);
   const loadTimerRef = useRef(loadTimer);
   loadTimerRef.current = loadTimer;
@@ -673,9 +685,23 @@ export function useReviewSession({ rotations, week, rotationSizes, fetchSlots, f
     cohortNextDrawOrdinalRef.current = 0;
     cohortPreviousDeliveryIdRef.current = null;
     pendingCohortTurnRef.current = null;
+    preparedCohortTurnRef.current = null;
+    cohortPreparationRequestRef.current = null;
+    cohortPreparationControllerRef.current?.abort();
+    cohortPreparationRef.current = null;
     setCohortTurnPending(false);
     setCohortTurnErrorCode(null);
   }, [cohortJourneyId]);
+
+  // A prepared delivery belongs to this exact review scope. Never let a
+  // topic/account change display or consume a turn selected for the old scope.
+  useEffect(() => () => {
+    cohortPreparationControllerRef.current?.abort();
+    cohortPreparationControllerRef.current = null;
+    cohortPreparationRef.current = null;
+    preparedCohortTurnRef.current = null;
+    cohortPreparationRequestRef.current = null;
+  }, [requestScopeKey]);
 
   useEffect(() => {
     const nextOwnerKey = userKey ?? null;
@@ -684,12 +710,16 @@ export function useReviewSession({ rotations, week, rotationSizes, fetchSlots, f
     cohortNextDrawOrdinalRef.current = 0;
     cohortPreviousDeliveryIdRef.current = null;
     pendingCohortTurnRef.current = null;
+    preparedCohortTurnRef.current = null;
+    cohortPreparationRequestRef.current = null;
+    cohortPreparationControllerRef.current?.abort();
+    cohortPreparationRef.current = null;
     cohortSearchTopicIdRef.current = null;
     setCohortTurnPending(false);
     setCohortTurnErrorCode(null);
   }, [userKey]);
 
-  useEffect(() => subscribeOfflineOwner(() => {
+  useEffect(() => hasCohortTurn ? undefined : subscribeOfflineOwner(() => {
     const nextOwner = readOfflineOwner();
     if (
       nextOwner
@@ -746,7 +776,7 @@ export function useReviewSession({ rotations, week, rotationSizes, fetchSlots, f
     setLoading(true);
     observedOwnerChangeRef.current = true;
     setOwnerRevision((revision) => revision + 1);
-  }), []);
+  }), [hasCohortTurn]);
 
   // Auto-scroll on EVERY pointer type. This used to require
   // `(pointer: coarse)`, so the post-answer scroll to the context/figure never
@@ -1115,7 +1145,7 @@ export function useReviewSession({ rotations, week, rotationSizes, fetchSlots, f
             setCohortTurnPending(true);
           }
           return postCohortTurn(pending, controller.signal, loadTimerRef.current)
-            .then((result) => {
+            .then(async (result) => {
               if (
                 !requestIsCurrent()
                 || userKeyRef.current !== requestUserKey
@@ -1139,6 +1169,23 @@ export function useReviewSession({ rotations, week, rotationSizes, fetchSlots, f
                     hook,
                   })) as unknown as ReviewItem
               ));
+              // Decode the admitted prompt before swapping cards. Warm only
+              // this turn's reveal (and the bounded hook batch), never select
+              // another adaptive turn before its predecessor is graded.
+              await Promise.all(mapped.map(async (item) => {
+                const media = item.publicAnatomyMedia;
+                if (!media) return;
+                const answer = prepareAnatomyFigure(media.target, 'answer', media.figureId);
+                void answer.catch(() => {});
+                await (media.role === 'prompt'
+                  ? prepareAnatomyFigure(media.target, 'prompt', media.figureId)
+                  : answer);
+              }));
+              if (!requestIsCurrent() || userKeyRef.current !== requestUserKey
+                || cohortJourneyRef.current !== pending.journeyId
+                || pendingCohortTurnRef.current !== pending) {
+                throw new DOMException('The Cohort journey changed.', 'AbortError');
+              }
               cohortNextDrawOrdinalRef.current = pending.nextDrawOrdinal + result.deliveredSize;
               // Identity comparison above makes this a compare-and-clear: a
               // late response can never erase a newer journey's retry body.
@@ -1652,7 +1699,7 @@ export function useReviewSession({ rotations, week, rotationSizes, fetchSlots, f
 
     // Warm up the record function in parallel so the first answer doesn't
     // hit a cold start
-    fetch('/api/study/record', {
+    if (!hasCohortTurn) fetch('/api/study/record', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: '{"type":"warmup"}',
@@ -1755,6 +1802,77 @@ export function useReviewSession({ rotations, week, rotationSizes, fetchSlots, f
   advanceAfterChallengeRef.current = advanceToNext;
 
   /**
+   * Ask Cohort for the next adaptive item while the learner reads the
+   * acknowledged answer. The response is held off-screen: the current item,
+   * ordinal and previous-delivery refs change only when Continue consumes it.
+   */
+  const prepareNextCohortTurn = useCallback(async (): Promise<void> => {
+    if (!cohortJourneyId || !hasCohortTurn) return;
+    if (cohortPreparationRef.current || preparedCohortTurnRef.current) return;
+    const current = itemsRef.current[currentIndexRef.current];
+    if (!current || current.type !== 'question' || !current.deliveryId || current.decisionContext?.cohortHook) return;
+    const scopeAtStart = requestScopeKey;
+    const journeyAtStart = cohortJourneyId;
+    const ownerAtStart = userKeyRef.current;
+    const timezone = resolvedBrowserTimezone();
+    const request = cohortPreparationRequestRef.current ?? pendingCohortTurnRef.current ?? {
+      serveRequestId: genClientRequestId(),
+      journeyId: journeyAtStart,
+      nextDrawOrdinal: cohortNextDrawOrdinalRef.current,
+      previousDeliveryId: current.deliveryId,
+      ...(cohortSearchTopicIdRef.current ? { searchTopicId: cohortSearchTopicIdRef.current } : {}),
+      ...(timezone ? { timezone } : {}),
+    };
+    // Retain this receipt through media preparation failures. A retry must
+    // replay the committed server delivery with the same idempotency key.
+    pendingCohortTurnRef.current = request;
+    cohortPreparationRequestRef.current = request;
+    setCohortTurnPending(true);
+    const controller = new AbortController();
+    cohortPreparationControllerRef.current = controller;
+    const preparation = (async () => {
+      const result = await postCohortTurn(request, controller.signal, loadTimerRef.current);
+      if (
+        controller.signal.aborted
+        || activeRequestScopeKeyRef.current !== scopeAtStart
+        || cohortJourneyRef.current !== journeyAtStart
+        || userKeyRef.current !== ownerAtStart
+      ) throw new DOMException('The Cohort journey changed.', 'AbortError');
+      if (result.sessionId !== request.journeyId) throw new Error('Cohort turn belonged to a different journey');
+      const slot = { rotation: rotations[0] ?? 'usmle-step1-open', size: 1, blendTier: 'primary' as const };
+      const hook = request.nextDrawOrdinal === 0 && result.requestedSize === 3 && result.deliveredSize === 3;
+      const mapped = result.items.map((item) => (
+        (isCohortCardSessionItem(item)
+          ? mapCohortCardToUnified(item, { rotation: slot.rotation })
+          : mapStep1ItemToUnified(item, { rotation: slot.rotation, sessionId: result.sessionId, hook })) as unknown as ReviewItem
+      ));
+      await Promise.all(mapped.map(async (item) => {
+        const media = item.publicAnatomyMedia;
+        if (!media) return;
+        const answer = prepareAnatomyFigure(media.target, 'answer', media.figureId);
+        void answer.catch(() => {});
+        await (media.role === 'prompt' ? prepareAnatomyFigure(media.target, 'prompt', media.figureId) : answer);
+      }));
+      if (controller.signal.aborted || activeRequestScopeKeyRef.current !== scopeAtStart) {
+        throw new DOMException('The Cohort journey changed.', 'AbortError');
+      }
+      preparedCohortTurnRef.current = {
+        request,
+        items: mapped,
+        deliveredSize: result.deliveredSize,
+        reviewChallengeExhausted: result.reviewChallengeExhausted,
+      };
+    })();
+    cohortPreparationRef.current = preparation;
+    try {
+      await preparation;
+    } finally {
+      if (cohortPreparationRef.current === preparation) cohortPreparationRef.current = null;
+      if (cohortPreparationControllerRef.current === controller) cohortPreparationControllerRef.current = null;
+    }
+  }, [cohortJourneyId, hasCohortTurn, requestScopeKey, rotations]);
+
+  /**
    * Complete the displayed turn, retire every preselected remainder, and ask
    * the server to choose again from the newly persisted learner state.
    *
@@ -1764,8 +1882,53 @@ export function useReviewSession({ rotations, week, rotationSizes, fetchSlots, f
    */
   const advanceAndRefresh = useCallback(async () => {
     const completedItem = itemsRef.current[currentIndex];
-    if (cohortJourneyId && completedItem?.deliveryId) {
-      cohortPreviousDeliveryIdRef.current = completedItem.deliveryId;
+    if (cohortJourneyId) {
+      const scopeAtStart = requestScopeKey;
+      const journeyAtStart = cohortJourneyId;
+      const ownerAtStart = userKeyRef.current;
+      const completedDeliveryId = completedItem?.deliveryId ?? null;
+      setIsExhausted(false);
+      setError(null);
+      setRefreshingNext(true);
+      try {
+        if (cohortPreparationRef.current) {
+          try {
+            await cohortPreparationRef.current;
+          } catch (error) {
+            if (error instanceof DOMException && error.name === 'AbortError') return;
+          }
+        }
+        if (
+          activeRequestScopeKeyRef.current !== scopeAtStart
+          || cohortJourneyRef.current !== journeyAtStart
+          || userKeyRef.current !== ownerAtStart
+          || itemsRef.current[currentIndexRef.current]?.deliveryId !== completedDeliveryId
+        ) return;
+        const prepared = preparedCohortTurnRef.current;
+        if (prepared && prepared.request.previousDeliveryId === completedDeliveryId) {
+          preparedCohortTurnRef.current = null;
+          cohortPreparationRequestRef.current = null;
+          pendingCohortTurnRef.current = null;
+          cohortPreviousDeliveryIdRef.current = completedDeliveryId;
+          cohortNextDrawOrdinalRef.current = prepared.request.nextDrawOrdinal + prepared.deliveredSize;
+          itemsRef.current = prepared.items;
+          itemsScopeKeyRef.current = requestScopeKey;
+          setItems(prepared.items);
+          setCurrentIndex(0);
+          resetItemState();
+          setCohortTurnErrorCode(null);
+          setCohortTurnPending(false);
+          const exhaustion = parseCohortChallengeExhaustion(prepared.reviewChallengeExhausted);
+          if (exhaustion) setExhaustedChallenge({ receipt: exhaustion, scopeKey: requestScopeKey, ownerKey: ownerAtStart });
+          scrollReviewToTop();
+          return;
+        }
+        if (completedDeliveryId) cohortPreviousDeliveryIdRef.current = completedDeliveryId;
+        await fetchItems(false, true);
+      } finally {
+        setRefreshingNext(false);
+      }
+      return;
     }
     if (!cohortJourneyId) {
       // Keep the answered item — its result and explanation — on screen until
@@ -1793,28 +1956,7 @@ export function useReviewSession({ rotations, week, rotationSizes, fetchSlots, f
       if (itemsRef.current[0] !== completedItem) scrollReviewToTop();
       return;
     }
-    // Cohort too keeps the answered item up while the server picks the next
-    // one (the review-loop invariant: never blank between items). Only when no
-    // new item arrives does the feed clear, so the exhausted and error states
-    // still show exactly as before.
-    const displayed = itemsRef.current;
-    setIsExhausted(false);
-    setError(null);
-    setRefreshingNext(true);
-    try {
-      await fetchItems(false, true);
-    } finally {
-      setRefreshingNext(false);
-    }
-    if (itemsRef.current === displayed) {
-      itemsRef.current = [];
-      setItems([]);
-      currentIndexRef.current = 0;
-      setCurrentIndex(0);
-    } else {
-      scrollReviewToTop();
-    }
-  }, [cohortJourneyId, currentIndex, fetchItems, scrollReviewToTop]);
+  }, [cohortJourneyId, currentIndex, fetchItems, requestScopeKey, resetItemState, scrollReviewToTop]);
 
   /** Called by CardFeedback when a suppress is confirmed, before advanceToNext */
   const markSuppressed = useCallback((id: string, type: 'card' | 'question') => {
@@ -1883,6 +2025,7 @@ export function useReviewSession({ rotations, week, rotationSizes, fetchSlots, f
     refreshForChallenge,
     advanceToNext,
     advanceAndRefresh,
+    prepareNextCohortTurn,
     refreshingNext,
     handleGoBack,
     markSuppressed,

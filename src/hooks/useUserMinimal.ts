@@ -29,7 +29,7 @@ const fetcher = async ([url]: readonly [string, string]): Promise<MinimalUserDat
  * Shared hook for minimal user data with SWR caching.
  * Both useInstitution and useUserTrack use this to avoid duplicate fetches.
  */
-export function useUserMinimal() {
+export function useUserMinimal(enabled = true) {
   const { status, data: session } = useSession();
 
   // Fetch for guests too, not just authenticated users. A guest can choose a
@@ -38,7 +38,7 @@ export function useUserMinimal() {
   // back and the chooser re-opened on every load (2026-08-23). The route returns
   // an empty context rather than a 401 when there is no identity at all, so an
   // anonymous first paint costs one small request and no error.
-  const shouldFetch = status !== 'loading';
+  const shouldFetch = enabled && status !== 'loading';
   const ownerKey = status === 'authenticated' ? session?.user?.id : 'guest';
 
   const { data, error, isLoading, mutate } = useSWR<MinimalUserData>(

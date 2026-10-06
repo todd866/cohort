@@ -6,6 +6,7 @@ import { FlagImageInput, flagImageEvents, type FlagImageController } from '@/com
 
 interface FlagOverlayProps {
   isOpen: boolean;
+  error?: string | null;
   image?: FlagImageController;
   submitting?: boolean;
   flagMessage: string;
@@ -17,6 +18,7 @@ interface FlagOverlayProps {
 export function FlagOverlay({
   isOpen,
   image,
+  error,
   submitting = false,
   flagMessage,
   onSubmit,
@@ -30,7 +32,7 @@ export function FlagOverlay({
       <div role="dialog" aria-label="Flag content" aria-modal="true" {...(image ? flagImageEvents(image) : {})} className="bg-[var(--md-surface)] rounded-xl p-4 mx-4 max-w-sm w-full max-h-[90dvh] overflow-y-auto">
         <textarea
           aria-label="What’s wrong?"
-          disabled={submitting}
+          disabled={submitting || Boolean(error)}
           autoFocus
           value={flagMessage}
           onChange={(e) => onFlagMessageChange(e.target.value)}
@@ -48,6 +50,7 @@ export function FlagOverlay({
           className="w-full p-3 rounded-lg bg-[var(--md-surface-container-high)] text-[var(--md-on-surface)] resize-none border-2 border-transparent focus:border-[var(--md-primary)] outline-none"
           rows={2}
         />
+        {error && <p role="alert" className="text-sm text-[var(--md-error)]">{error}</p>}
         {image && <FlagImageInput image={image} disabled={submitting} />}
         <div className="flex gap-2 mt-3">
           <button
@@ -61,7 +64,7 @@ export function FlagOverlay({
             onClick={onSubmit}
             className="flex-1 py-2 rounded-lg bg-[var(--md-primary)] text-[var(--md-on-primary)] hover:opacity-90 transition-colors text-sm font-medium"
           >
-            {submitting || image?.busy ? 'Sending…' : 'Flag'}
+            {submitting || image?.busy ? 'Sending…' : error ? 'Retry' : 'Flag'}
           </button>
         </div>
         <div className="text-xs text-[var(--md-on-surface-variant)] text-center mt-2 opacity-60">

@@ -19,6 +19,7 @@ export function mapStep1ItemToUnified(
     rotation: args.rotation,
     week: null,
     difficulty: item.difficulty,
+    attribution: item.attribution,
     topics: [item.domain],
     servedBy: 'focused',
     ...(media ? {

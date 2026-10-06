@@ -1,6 +1,7 @@
 'use client';
 import { useState, useRef, useEffect } from 'react';
 export interface ReviewModulePickerProps {
+  disabled?: boolean;
   options: readonly {id: string; label: string}[];
   value: string | null;
   onChange: (value: string | null) => void;
@@ -11,7 +12,7 @@ export interface ReviewModulePickerProps {
   onChangeEnrollment?: () => void;
   enrollmentLabel?: string;
 }
-export function ReviewModulePicker({options, value, onChange, defaultLabel = 'All', triggerDefaultLabel = defaultLabel, preferredId = null, ariaPrefix = 'Review module', onChangeEnrollment, enrollmentLabel = 'Change modules…'}: ReviewModulePickerProps) {
+export function ReviewModulePicker({disabled = false, options, value, onChange, defaultLabel = 'All', triggerDefaultLabel = defaultLabel, preferredId = null, ariaPrefix = 'Review module', onChangeEnrollment, enrollmentLabel = 'Change modules…'}: ReviewModulePickerProps) {
   const [open, setOpen] = useState(false);
   const ref = useRef<HTMLDivElement>(null);
 
@@ -52,6 +53,7 @@ export function ReviewModulePicker({options, value, onChange, defaultLabel = 'Al
     <div ref={ref} className="relative shrink-0">
       <button
         type="button"
+        disabled={disabled}
         onClick={() => setOpen((o) => !o)}
         aria-haspopup="menu"
         aria-expanded={open}

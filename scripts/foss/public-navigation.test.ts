@@ -405,15 +405,17 @@ describe('public navigation and static assets', () => {
     const forbiddenModulePrefixes = [
       'src/components/brief/',
       'src/components/exams/',
-      'src/components/review/',
     ];
     expect(
       [...reachable].filter((filePath) => (
         filePath !== 'src/components/review/LoadingSkeleton.tsx'
         && forbiddenModulePrefixes.some((prefix) => filePath.startsWith(prefix))
       )),
-      'public pages must not import the omitted Brief, Clinical, or legacy review UI',
+      'public pages must not import omitted Brief or Clinical interfaces',
     ).toEqual([]);
+
+    expect(reachable.has('src/components/review/UnifiedReview.tsx')).toBe(true);
+    expect(reachable.has('src/components/cohort/PublicReviewClient.tsx')).toBe(false);
 
     const allowedTargets = new Set([
       '/',
@@ -459,10 +461,37 @@ describe('public navigation and static assets', () => {
       '/api/usmle/step1/progress',
       '/api/usmle/step1/session',
     ]);
+    // The same controller now serves both products. These exact references
+    // belong to MD3 capabilities hidden on Cohort or to item kinds the public
+    // turn parser refuses. Keep the source/target pairs explicit: an added
+    // dependency still fails this scan. Public card/MCQ browser tests assert
+    // these capabilities are not invoked; route allowlists remain independent.
+    const hostGatedReviewTargets = new Set([
+      'src/components/review/CardFeedback.tsx -> /api/cards/feedback',
+      'src/components/review/CardImage.tsx -> /api/figures/delivery',
+      'src/components/review/CardItemView.tsx -> /cards/${item.id}',
+      'src/components/review/McqItemView.tsx -> /questions/${item.id}',
+      'src/components/review/RotationOnboarding.tsx -> /api/user/curriculum-request',
+      'src/components/review/RotationOnboarding.tsx -> /api/user/rotation',
+      'src/components/review/StationChip.tsx -> /clinical/station-topics.json',
+      'src/components/review/StationDrawer.tsx -> /clinical/${stationId}',
+      'src/components/review/StationDrawer.tsx -> /api/clinical/stations/${encodeURIComponent(id)}',
+      'src/components/review/UnifiedReview.tsx -> /practice-exam',
+      'src/components/review/UnifiedReview.tsx -> /api/study/session-event',
+      'src/components/review/VideoItemView.tsx -> /api/videos/${encodeURIComponent(item.id)}/delivery',
+      'src/components/review/clip-url-recovery.ts -> /api/clips/${encodeURIComponent(clip.id)}/delivery',
+      'src/components/review/hooks/useReviewSession.ts -> /api/study/record',
+      'src/components/review/hooks/useReviewSession.ts -> /api/cards/feedback',
+      'src/components/review/hooks/useTopicReadiness.ts -> /api/study/topic-readiness',
+      'src/components/tutor/TutorCardLink.tsx -> /tutor',
+    ]);
+    allowedTargets.add('/api/content/flag/images/${id}');
+    allowedTargets.add('/api/content/flag/images/${data.attachmentId}');
     const findings: string[] = [];
     for (const filePath of [...reachable].sort()) {
       for (const target of outgoingStaticTargets(artifactText(repoRoot, filePath))) {
-        if (target.startsWith('/') && !allowedTargets.has(target)) {
+        if (target.startsWith('/') && !allowedTargets.has(target)
+          && !hostGatedReviewTargets.has(`${filePath} -> ${target}`)) {
           findings.push(`${filePath} -> ${target}`);
         }
       }

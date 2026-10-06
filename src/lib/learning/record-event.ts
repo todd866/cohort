@@ -61,8 +61,8 @@ export interface LearningEventInput {
   sourceId: string;
 
   // Event-specific data
-  quality?: number; // 0-5 for card reviews
-  isCorrect?: boolean | null; // for MCQs; null = not graded (a skip)
+  quality?: number; // 0-5 for card reviews. A statement set also stores its marks here; credit reads metadata.statementMarks.
+  isCorrect?: boolean | null; // for MCQs; null = not graded (a skip). Statement sets are true only at 4/4.
   responseMs?: number;
   metadata?: Record<string, unknown>;
 
@@ -109,6 +109,8 @@ export interface PreparedLearningEvent {
     isCorrect?: boolean | null;
     responseMs?: number;
     conceptIds: string[];
+    /** Current-event metadata. Statement credit reads `statementMarks` from here. */
+    metadata?: unknown;
     timestamp: Date;
   };
 }
@@ -246,6 +248,7 @@ export async function prepareLearningEvent(
       isCorrect,
       responseMs,
       conceptIds,
+      metadata,
       timestamp,
     },
   };
@@ -284,6 +287,7 @@ export async function applyLearningEventDerivedState(
     isCorrect,
     responseMs,
     conceptIds,
+    metadata,
     timestamp,
   } = prepared.derived;
 
@@ -300,7 +304,8 @@ export async function applyLearningEventDerivedState(
       // A skipped MCQ is not graded; it carries no outcome for concept state.
       isCorrect ?? undefined,
       responseMs,
-      timestamp
+      timestamp,
+      metadata,
     );
   }
 
@@ -415,7 +420,8 @@ async function updateConceptStates(
   quality: number | undefined,
   isCorrect: boolean | undefined,
   responseMs: number | undefined,
-  now: Date
+  now: Date,
+  eventMetadata: unknown,
 ): Promise<number> {
   let updated = 0;
 
@@ -431,6 +437,7 @@ async function updateConceptStates(
         isCorrect,
         responseMs,
         now,
+        eventMetadata,
         conceptMetadata?.get(conceptId),
       );
       if (stateUpdated) updated++;
@@ -482,6 +489,7 @@ async function updateSingleConceptState(
   isCorrect: boolean | undefined,
   responseMs: number | undefined,
   now: Date,
+  eventMetadata: unknown,
   prefetchedMetadata: ConceptMetadata | null | undefined,
 ): Promise<boolean> {
   // Scheduler fallback feeds can attribute a card to a real Cluster.id where
@@ -520,7 +528,8 @@ async function updateSingleConceptState(
     quality,
     isCorrect,
     responseMs,
-    now
+    now,
+    eventMetadata,
   );
 
   let recallOnExamDay = newState.recallProbability;
@@ -657,6 +666,8 @@ export interface RecentEvent {
   isCorrect: boolean | null;
   responseMs: number | null;
   timestamp: Date;
+  /** Present when the history query returns the row. Statement credit reads `statementMarks`. */
+  metadata?: unknown;
 }
 
 function resolveGradedProbeOutcome(
@@ -664,6 +675,35 @@ function resolveGradedProbeOutcome(
   isCorrect: boolean | null | undefined,
 ): boolean | undefined {
   return isCorrect ?? (quality != null ? quality >= 3 : undefined);
+}
+
+/**
+ * Marks/4 when metadata carries a numeric statementMarks. Undefined otherwise.
+ * Quality on an mcq_attempted row is not a statement score: anatomy stores a
+ * 0–5 card grade there. Card quality stays on QUALITY_MULTIPLIERS.
+ */
+function statementSetCredit(metadata: unknown): number | undefined {
+  if (metadata == null || typeof metadata !== 'object' || Array.isArray(metadata)) return undefined;
+  const marks = (metadata as { statementMarks?: unknown }).statementMarks;
+  if (typeof marks !== 'number' || !Number.isFinite(marks)) return undefined;
+  return marks / 4;
+}
+
+/** 3/4 keeps half the success gain. 2/4 changes recall by nothing. */
+function partialStatementOutcome(credit: number): { strengthFactor: number; confidenceDelta: number } {
+  if (credit >= 0.75) return { strengthFactor: 0.5, confidenceDelta: 0 };
+  return { strengthFactor: 0, confidenceDelta: -0.01 };
+}
+
+/** A statement-set question counts as a recent failure at 2/4 or worse. */
+function recentProbeFailed(event: {
+  quality: number | null | undefined;
+  isCorrect: boolean | null | undefined;
+  metadata?: unknown;
+}): boolean {
+  const credit = statementSetCredit(event.metadata);
+  if (credit !== undefined) return credit <= 0.5;
+  return resolveGradedProbeOutcome(event.quality, event.isCorrect) === false;
 }
 
 /**
@@ -685,7 +725,8 @@ export function computeConceptState(
   quality: number | undefined,
   isCorrect: boolean | undefined,
   responseMs: number | undefined,
-  now: Date
+  now: Date,
+  metadata?: unknown,
 ): ComputedState {
   // Start from existing or defaults
   let recallProbability = existing?.recallProbability ?? 0;
@@ -702,9 +743,22 @@ export function computeConceptState(
   // shared so a new attempt type cannot count for ConceptState but go missing
   // from the engagement metrics, or the reverse.
   const isProbe = isAnswerEvent(eventType);
-  const probeSucceeded = isProbe
-    ? resolveGradedProbeOutcome(quality, isCorrect)
+  // A statement set carries its marks in metadata.statementMarks. 4/4 and
+  // 0–1/4 stay on the binary probe paths; 3/4 and 2/4 are partial and must
+  // not fall through to either one. Quality alone never sets this credit.
+  const statementCredit = statementSetCredit(metadata);
+  const partialStatement = statementCredit !== undefined && statementCredit < 1 && statementCredit > 0.25
+    ? partialStatementOutcome(statementCredit)
     : undefined;
+  const probeSucceeded = !isProbe
+    ? undefined
+    : statementCredit === undefined
+      ? resolveGradedProbeOutcome(quality, isCorrect)
+      : statementCredit >= 1
+        ? true
+        : statementCredit <= 0.25
+          ? false
+          : undefined;
   // Stored recall is anchored at the previous exposure. Advance it to this
   // event's time before adding any new evidence; otherwise a passive event can
   // reset lastExposureAt while silently erasing the whole decay interval.
@@ -748,26 +802,31 @@ export function computeConceptState(
   const failureEvidence = qualitySuppliedOutcome
     ? baseStrength - qualityAdjustment
     : baseStrength;
-  const strength = probeSucceeded === false
-    ? failureEvidence * -0.5
-    : baseStrength + qualityAdjustment;
+  // 3/4 and 2/4 sit between the binary paths, which 4/4 and 0–1/4 still take.
+  const strength = partialStatement
+    ? baseStrength * partialStatement.strengthFactor
+    : probeSucceeded === false
+      ? failureEvidence * -0.5
+      : baseStrength + qualityAdjustment;
 
   // Update recall probability (bounded 0-1)
   recallProbability = Math.max(0, Math.min(1, recallProbability + strength));
 
   // Update confidence (increases with exposure, decreases with failures)
-  const confidenceDelta = isProbe
-    ? probeSucceeded === true
-      ? 0.05
-      : -0.02
-    : 0.01;
+  const confidenceDelta = !isProbe
+    ? 0.01
+    : partialStatement
+      ? partialStatement.confidenceDelta
+      : probeSucceeded === true
+        ? 0.05
+        : -0.02;
   confidence = Math.max(
     MIN_CONFIDENCE,
     Math.min(MAX_CONFIDENCE, confidence + confidenceDelta)
   );
 
   // Update decay rate (faster decay if struggling, slower if consistent)
-  if (isProbe) {
+  if (isProbe && !partialStatement) {
     decayRate = probeSucceeded === true
       ? Math.max(0.05, decayRate - 0.01) // Slower decay on success
       : Math.min(0.2, decayRate + 0.02); // Faster decay on failure
@@ -800,7 +859,7 @@ export function computeConceptState(
   );
   const probes24h = last24h.filter((e) => isAnswerEvent(e.eventType));
   const fails24h = probes24h.filter(
-    (e) => resolveGradedProbeOutcome(e.quality, e.isCorrect) === false,
+    (e) => recentProbeFailed(e),
   );
   const recentFailRate =
     probes24h.length > 0 ? fails24h.length / probes24h.length : 0;
