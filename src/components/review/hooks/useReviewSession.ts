@@ -308,7 +308,7 @@ async function fetchWithRetry(
   throw lastError ?? new Error('Failed to load');
 }
 
-interface CohortTurnClientBody {
+export interface CohortTurnClientBody {
   serveRequestId: string;
   journeyId: string;
   nextDrawOrdinal: number;
@@ -1801,21 +1801,41 @@ export function useReviewSession({ rotations, week, rotationSizes, fetchSlots, f
   }, [currentIndex, feedMode, hasCohortTurn, resetItemState, scrollReviewToTop]);
   advanceAfterChallengeRef.current = advanceToNext;
 
+  // Reserve a stable continuation receipt before grading; retries and the
+  // ordinary turn fallback must ask for exactly the same server delivery.
+  const reserveNextCohortTurn = useCallback((deliveryId: string): CohortTurnClientBody | undefined => {
+    const current = itemsRef.current[currentIndexRef.current];
+    if (!cohortJourneyId || !hasCohortTurn || current?.deliveryId !== deliveryId) return;
+    if (pendingCohortTurnRef.current) return pendingCohortTurnRef.current.previousDeliveryId === deliveryId
+      ? pendingCohortTurnRef.current : undefined;
+    const timezone = resolvedBrowserTimezone();
+    const request: CohortTurnClientBody = {
+      serveRequestId: genClientRequestId(), journeyId: cohortJourneyId,
+      nextDrawOrdinal: cohortNextDrawOrdinalRef.current, previousDeliveryId: deliveryId,
+      ...(cohortSearchTopicIdRef.current ? { searchTopicId: cohortSearchTopicIdRef.current } : {}),
+      ...(timezone ? { timezone } : {}),
+    };
+    pendingCohortTurnRef.current = request;
+    setCohortTurnPending(true);
+    return request;
+  }, [cohortJourneyId, hasCohortTurn]);
+
   /**
    * Ask Cohort for the next adaptive item while the learner reads the
    * acknowledged answer. The response is held off-screen: the current item,
    * ordinal and previous-delivery refs change only when Continue consumes it.
    */
-  const prepareNextCohortTurn = useCallback(async (): Promise<void> => {
+  const prepareNextCohortTurn = useCallback(async (supplied?: { request: CohortTurnClientBody; response: unknown }): Promise<void> => {
     if (!cohortJourneyId || !hasCohortTurn) return;
     if (cohortPreparationRef.current || preparedCohortTurnRef.current) return;
     const current = itemsRef.current[currentIndexRef.current];
-    if (!current || current.type !== 'question' || !current.deliveryId || current.decisionContext?.cohortHook) return;
+    if (!current || (!supplied && current.type !== 'question') || !current.deliveryId || current.decisionContext?.cohortHook) return;
+    if (supplied && (pendingCohortTurnRef.current !== supplied.request || supplied.request.previousDeliveryId !== current.deliveryId)) return;
     const scopeAtStart = requestScopeKey;
     const journeyAtStart = cohortJourneyId;
     const ownerAtStart = userKeyRef.current;
     const timezone = resolvedBrowserTimezone();
-    const request = cohortPreparationRequestRef.current ?? pendingCohortTurnRef.current ?? {
+    const request = supplied?.request ?? cohortPreparationRequestRef.current ?? pendingCohortTurnRef.current ?? {
       serveRequestId: genClientRequestId(),
       journeyId: journeyAtStart,
       nextDrawOrdinal: cohortNextDrawOrdinalRef.current,
@@ -1831,7 +1851,8 @@ export function useReviewSession({ rotations, week, rotationSizes, fetchSlots, f
     const controller = new AbortController();
     cohortPreparationControllerRef.current = controller;
     const preparation = (async () => {
-      const result = await postCohortTurn(request, controller.signal, loadTimerRef.current);
+      const result = supplied ? parseCohortTurnResponse(supplied.response)
+        : await postCohortTurn(request, controller.signal, loadTimerRef.current);
       if (
         controller.signal.aborted
         || activeRequestScopeKeyRef.current !== scopeAtStart
@@ -1853,7 +1874,8 @@ export function useReviewSession({ rotations, week, rotationSizes, fetchSlots, f
         void answer.catch(() => {});
         await (media.role === 'prompt' ? prepareAnatomyFigure(media.target, 'prompt', media.figureId) : answer);
       }));
-      if (controller.signal.aborted || activeRequestScopeKeyRef.current !== scopeAtStart) {
+      if (controller.signal.aborted || activeRequestScopeKeyRef.current !== scopeAtStart
+        || userKeyRef.current !== ownerAtStart || cohortJourneyRef.current !== journeyAtStart) {
         throw new DOMException('The Cohort journey changed.', 'AbortError');
       }
       preparedCohortTurnRef.current = {
@@ -2026,6 +2048,7 @@ export function useReviewSession({ rotations, week, rotationSizes, fetchSlots, f
     advanceToNext,
     advanceAndRefresh,
     prepareNextCohortTurn,
+    reserveNextCohortTurn,
     refreshingNext,
     handleGoBack,
     markSuppressed,

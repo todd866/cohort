@@ -38,11 +38,15 @@ function subscribe(callback: () => void) {
  * that vanished with the reminder (2026-10-01). It retires for good the first
  * time the learner opens a flag through the real control: the lesson landed.
  */
-export function FlagReminder({ enabled, flagOpened, itemKey }: {
+export function FlagReminder({ enabled, flagOpened, itemKey, keyboardHint, onOpenShortcuts }: {
   enabled: boolean;
   flagOpened: boolean;
   /** The displayed item; the reminder retires after SHOW_FOR_ITEMS of them. */
   itemKey?: string;
+  /** State-specific keyboard cue, e.g. “Space reveal · 1–4 rate”. */
+  keyboardHint?: string;
+  /** Optional parent-owned shortcut dialog opener. */
+  onOpenShortcuts?: () => void;
 }) {
   const dismissed = useSyncExternalStore(subscribe, getDismissed, () => true);
   const [dismissedHere, setDismissedHere] = useState(false);
@@ -93,13 +97,19 @@ export function FlagReminder({ enabled, flagOpened, itemKey }: {
   return (
     <aside ref={reminderRef} aria-label="Help improve cards" className="relative mb-0 flex flex-wrap items-center gap-x-3 rounded-lg border border-[var(--md-outline-variant)] py-1 pl-3 pr-[56px] text-sm text-[var(--md-on-surface-variant)]">
       <p className="min-w-0 flex-[1_1_8rem] py-2">
-        Spot a mistake?{' '}
-        <span className="hidden pointer-fine:inline">
-          Press <kbd className="rounded border border-[var(--md-outline-variant)] px-1 font-mono text-xs">F</kbd> or click
-        </span>
-        <span className="pointer-fine:hidden">Tap</span>
-        {' '}<span className="whitespace-nowrap font-medium text-[var(--md-on-surface)]">⚐ Flag</span> at the top to report it.
+        {keyboardHint ? <>
+          <span className="whitespace-nowrap font-medium text-[var(--md-on-surface)]">⚐ Flag</span>
+          <span className="hidden pointer-fine:inline"> a problem <span aria-hidden="true">·</span> {keyboardHint}</span>
+        </> : <>
+          Spot a mistake?{' '}
+          <span className="hidden pointer-fine:inline">
+            Press <kbd className="rounded border border-[var(--md-outline-variant)] px-1 font-mono text-xs">F</kbd> or click
+          </span>
+          <span className="pointer-fine:hidden">Tap</span>
+          {' '}<span className="whitespace-nowrap font-medium text-[var(--md-on-surface)]">⚐ Flag</span> at the top to report it.
+        </>}
       </p>
+      {onOpenShortcuts && <button type="button" onClick={onOpenShortcuts} className="min-h-11 rounded-md px-2 text-xs font-medium underline underline-offset-2" aria-label="Shortcuts (?)">Shortcuts <span aria-hidden="true">(?)</span></button>}
       <button type="button" aria-label="Dismiss flag reminder" onClick={dismiss} className="absolute right-1 top-1 min-h-[44px] min-w-[44px] text-lg">×</button>
     </aside>
   );

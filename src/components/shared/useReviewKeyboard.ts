@@ -25,6 +25,8 @@ interface UseReviewKeyboardOptions {
   handleContentRating?: (rating: 'good' | 'bad') => void;
   /** Open every remaining blank on a multi-blank cloze in one press. */
   handleRevealAll?: () => void;
+  /** Open the compact shortcut reference (usually from `?` or Options). */
+  handleOpenShortcuts?: () => void;
   /**
    * True while a grade for this card cannot be taken — one is saving, saved or
    * queued. `useGrading.grade()` early-returns in those states and never calls
@@ -62,6 +64,7 @@ export function useReviewKeyboard({
   awaitingConfidence = false,
   handleContentRating,
   handleRevealAll,
+  handleOpenShortcuts,
   cardGradeBlocked = false,
 }: UseReviewKeyboardOptions) {
   useEffect(() => {
@@ -75,6 +78,12 @@ export function useReviewKeyboard({
       // this, the window-level shortcut can skip/reveal/advance before the
       // focused option button receives its click.
       if ((e.key === ' ' || e.key === 'Enter') && isInteractiveActivationTarget(e.target)) {
+        return;
+      }
+
+      if (handleOpenShortcuts && e.key === '?') {
+        e.preventDefault();
+        handleOpenShortcuts();
         return;
       }
 
@@ -209,5 +218,6 @@ export function useReviewKeyboard({
     handleCardContinue, handleReveal, handleCardGrade,
     handleSelectOption, handleMcqSkip, handleNext, handleMcqGrade, handleVideoRate, handleVideoContinue, handleGoBack,
     setFlagMode, awaitingConfidence, cardGradeBlocked, handleContentRating, handleRevealAll,
+    handleOpenShortcuts,
   ]);
 }

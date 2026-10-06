@@ -1292,7 +1292,12 @@ describe('FOSS distribution boundary', () => {
     const publicTestPaths = [...publicPackage.scripts['foss:test'].matchAll(
       /(?:^|\s)["']?([^\s"']+\.test\.tsx?)["']?/g,
     )].map((match) => match[1]);
-    expect(publicTestPaths).toHaveLength(98);
+    expect(publicTestPaths).toHaveLength(104);
+    expect(publicTestPaths).toEqual(expect.arrayContaining([
+      'src/components/review/ReviewKeyboardHelp.test.tsx',
+      'src/components/review/hooks/useCohortCardGrade.test.ts',
+      'src/app/api/cohort/card-grade/route.test.ts',
+    ]));
     expect(publicTestPaths).toContain('scripts/content/curated-starters.test.ts');
     expect(policy.includeFiles).toEqual(expect.arrayContaining(publicTestPaths));
     expect(JSON.stringify(publicPackage.scripts)).not.toMatch(

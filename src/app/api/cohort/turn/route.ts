@@ -3,10 +3,9 @@ import { requireAuthOrGuest } from '@/lib/api-utils';
 import {
   CohortTurnError,
   serveCohortTurn,
-  type CohortTurnRequest,
 } from '@/lib/cohort/cohort-turn.server';
 import { isCohortHostname } from '@/lib/institution';
-import { CLIENT_REQUEST_ID_MAX_LENGTH, CLIENT_REQUEST_ID_PATTERN } from '@/lib/idempotency';
+import { parseTurnBody, readBoundedTurnBody } from '@/lib/cohort/turn-request.server';
 import { logger } from '@/lib/logger';
 import { checkUserRateLimit } from '@/lib/rate-limit';
 import {
@@ -19,20 +18,6 @@ const PRIVATE_HEADERS = {
   'Cache-Control': 'private, no-store',
   Vary: 'Cookie',
 } as const;
-const MAX_TURN_BODY_BYTES = 2_048;
-const MAX_DRAW_ORDINAL = 1_000_000;
-const MAX_TIMEZONE_CHARS = 64;
-const MAX_SEARCH_TOPIC_ID_CHARS = 64;
-const SEARCH_TOPIC_ID_PATTERN = /^[a-z0-9]+(?:-[a-z0-9]+)*$/;
-const ALLOWED_KEYS = new Set([
-  'serveRequestId',
-  'journeyId',
-  'nextDrawOrdinal',
-  'previousDeliveryId',
-  'timezone',
-  'searchTopicId',
-]);
-
 function json(body: unknown, status = 200, headers?: Record<string, string>) {
   return NextResponse.json(body, {
     status,
@@ -46,104 +31,6 @@ function privateResponse(response: NextResponse): NextResponse {
   return response;
 }
 
-function isRecord(value: unknown): value is Record<string, unknown> {
-  return !!value && typeof value === 'object' && !Array.isArray(value);
-}
-
-function isOpaqueId(value: unknown): value is string {
-  return typeof value === 'string'
-    && value.length >= 1
-    && value.length <= CLIENT_REQUEST_ID_MAX_LENGTH
-    && CLIENT_REQUEST_ID_PATTERN.test(value);
-}
-
-function isIanaTimezone(value: unknown): value is string {
-  if (typeof value !== 'string' || value.length < 1 || value.length > MAX_TIMEZONE_CHARS) {
-    return false;
-  }
-  try {
-    new Intl.DateTimeFormat('en-US', { timeZone: value }).format(0);
-    return true;
-  } catch {
-    return false;
-  }
-}
-
-type ParseResult =
-  | { ok: true; value: CohortTurnRequest }
-  | { ok: false; code?: 'invalid_search_topic' };
-
-function parseTurnBody(value: unknown): ParseResult {
-  if (!isRecord(value) || Object.keys(value).some((key) => !ALLOWED_KEYS.has(key))) {
-    return { ok: false };
-  }
-  if (
-    !isOpaqueId(value.serveRequestId)
-    || !isOpaqueId(value.journeyId)
-    || !Number.isSafeInteger(value.nextDrawOrdinal)
-    || (value.nextDrawOrdinal as number) < 0
-    || (value.nextDrawOrdinal as number) > MAX_DRAW_ORDINAL
-    || ('previousDeliveryId' in value && !isOpaqueId(value.previousDeliveryId))
-    || ('timezone' in value && !isIanaTimezone(value.timezone))
-  ) {
-    return { ok: false };
-  }
-
-  let searchTopicId: string | undefined;
-  if ('searchTopicId' in value) {
-    if (
-      typeof value.searchTopicId !== 'string'
-      || value.searchTopicId.length < 1
-      || value.searchTopicId.length > MAX_SEARCH_TOPIC_ID_CHARS
-      || !SEARCH_TOPIC_ID_PATTERN.test(value.searchTopicId)
-    ) return { ok: false, code: 'invalid_search_topic' };
-    searchTopicId = value.searchTopicId;
-  }
-
-  return {
-    ok: true,
-    value: {
-      serveRequestId: value.serveRequestId,
-      journeyId: value.journeyId,
-      nextDrawOrdinal: value.nextDrawOrdinal as number,
-      ...('previousDeliveryId' in value
-        ? { previousDeliveryId: value.previousDeliveryId as string }
-        : {}),
-      ...('timezone' in value ? { timezone: value.timezone as string } : {}),
-      ...(searchTopicId ? { searchTopicId } : {}),
-    },
-  };
-}
-
-async function readBoundedBody(request: NextRequest): Promise<unknown> {
-  const declaredLength = Number(request.headers.get('content-length'));
-  if (Number.isFinite(declaredLength) && declaredLength > MAX_TURN_BODY_BYTES) {
-    throw new RangeError('Turn body is too large');
-  }
-  const reader = request.body?.getReader();
-  if (!reader) throw new SyntaxError('Turn body is empty');
-  const chunks: Uint8Array[] = [];
-  let byteLength = 0;
-  while (true) {
-    const { done, value } = await reader.read();
-    if (done) break;
-    byteLength += value.byteLength;
-    if (byteLength > MAX_TURN_BODY_BYTES) {
-      await reader.cancel().catch(() => undefined);
-      throw new RangeError('Turn body is too large');
-    }
-    chunks.push(value);
-  }
-  const bytes = new Uint8Array(byteLength);
-  let offset = 0;
-  for (const chunk of chunks) {
-    bytes.set(chunk, offset);
-    offset += chunk.byteLength;
-  }
-  const raw = new TextDecoder('utf-8', { fatal: true }).decode(bytes);
-  return JSON.parse(raw) as unknown;
-}
-
 export async function POST(request: NextRequest) {
   // URL host is the trusted routing boundary. Body and proxy-style headers are
   // intentionally ignored and cannot opt an md3.info caller into Cohort.
@@ -153,7 +40,7 @@ export async function POST(request: NextRequest) {
 
   let raw: unknown;
   try {
-    raw = await readBoundedBody(request);
+    raw = await readBoundedTurnBody(request);
   } catch (error) {
     return error instanceof RangeError
       ? json({ error: 'Turn body is too large' }, 413)

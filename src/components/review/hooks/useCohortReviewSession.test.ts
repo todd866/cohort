@@ -87,6 +87,28 @@ describe('public Cohort review session', () => {
     expect(bodies[1]).toMatchObject({ nextDrawOrdinal: 1, previousDeliveryId: 'current' });
   });
 
+  it('consumes a supplied reserved turn without fetching it again', async () => {
+    const bodies: Array<Record<string, unknown>> = [];
+    mockFetch.mockImplementation((url: string, init?: RequestInit) => {
+      if (url !== '/api/cohort/turn') return Promise.resolve({ ok: true, status: 200, json: async () => ({}) });
+      bodies.push(JSON.parse(String(init?.body)) as Record<string, unknown>);
+      return Promise.resolve(turn('journey-supplied', [question(bodies.length === 1 ? 'current' : 'unexpected-fetch')]));
+    });
+    const { result } = renderHook(() => useReviewSession({ rotations: ['usmle-step1-open'], singleTurn: true, cohortTurn: { journeyId: 'journey-supplied', searchTopicId: null } }));
+    await waitFor(() => expect(result.current.currentItem?.id).toBe('current'));
+    const request = result.current.reserveNextCohortTurn('current');
+    expect(request).toMatchObject({ journeyId: 'journey-supplied', previousDeliveryId: 'current', nextDrawOrdinal: 1 });
+    await act(async () => {
+      await result.current.prepareNextCohortTurn({
+        request: request!,
+        response: { sessionId: 'journey-supplied', mode: 'daily', requestedSize: 1, deliveredSize: 1, items: [question('supplied')] },
+      });
+      await result.current.advanceAndRefresh();
+    });
+    expect(result.current.currentItem?.id).toBe('supplied');
+    expect(bodies).toHaveLength(1);
+  });
+
   it('replays the same prepared receipt after media preparation failure', async () => {
     const bodies: Array<Record<string, unknown>> = [];
     let calls = 0;
@@ -128,6 +150,33 @@ describe('public Cohort review session', () => {
     await act(async () => { await next; });
     expect(result.current.currentItem?.id).toBe('next');
     expect(new Set(bodies.slice(1).map((body) => body.serveRequestId)).size).toBe(1);
+  });
+
+  it('does not let a prepared response from an old journey replace the new scope', async () => {
+    let releasePreparation!: (response: ReturnType<typeof turn>) => void;
+    let calls = 0;
+    mockFetch.mockImplementation((url: string) => {
+      if (url !== '/api/cohort/turn') return Promise.resolve({ ok: true, status: 200, json: async () => ({}) });
+      calls += 1;
+      if (calls === 1) return Promise.resolve(turn('journey-scope-a', [question('scope-a-current')]));
+      if (calls === 2) return new Promise((resolve) => { releasePreparation = resolve; });
+      return Promise.resolve(turn('journey-scope-b', [question('scope-b-current')]));
+    });
+    const { result, rerender } = renderHook(
+      ({ journeyId }) => useReviewSession({ rotations: ['usmle-step1-open'], singleTurn: true, cohortTurn: { journeyId, searchTopicId: null } }),
+      { initialProps: { journeyId: 'journey-scope-a' } },
+    );
+    await waitFor(() => expect(result.current.currentItem?.id).toBe('scope-a-current'));
+    let preparation!: Promise<void>;
+    act(() => {
+      result.current.reserveNextCohortTurn('scope-a-current');
+      preparation = result.current.prepareNextCohortTurn();
+    });
+    rerender({ journeyId: 'journey-scope-b' });
+    await waitFor(() => expect(result.current.currentItem?.id).toBe('scope-b-current'));
+    releasePreparation(turn('journey-scope-a', [question('scope-a-next')]));
+    await act(async () => { await preparation.catch(() => undefined); });
+    expect(result.current.currentItem?.id).toBe('scope-b-current');
   });
 
   it('saves difficulty without drawing past the ungraded module card', async () => {

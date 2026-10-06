@@ -1733,11 +1733,13 @@ src/app/api/anatomy/figure/route.ts
 src/app/api/auth/[...nextauth]/route.ts
 src/app/api/auth/claim-guest-progress/route.ts
 src/app/api/cohort/answer/route.ts
+src/app/api/cohort/card-grade/route.test.ts
 src/app/api/cohort/card-grade/route.ts
 src/app/api/cohort/difficulty/route.ts
 src/app/api/cohort/feedback/route.test.ts
 src/app/api/cohort/feedback/route.ts
 src/app/api/cohort/profile/route.ts
+src/app/api/cohort/turn/route.test.ts
 src/app/api/cohort/turn/route.ts
 src/app/api/content/flag/images/[id]/route.ts
 src/app/api/content/flag/route.ts
@@ -1912,6 +1914,7 @@ src/components/review/CohortPrompt.tsx
 src/components/review/CohortSearchOverlay.tsx
 src/components/review/FeedModeToggle.tsx
 src/components/review/FlagOverlay.tsx
+src/components/review/FlagReminder.test.tsx
 src/components/review/FlagReminder.tsx
 src/components/review/GroupReview.tsx
 src/components/review/GroupReviewParts.tsx
@@ -1925,6 +1928,8 @@ src/components/review/ProgressDrawer.tsx
 src/components/review/ProgressPill.tsx
 src/components/review/RevealActionLabel.tsx
 src/components/review/ReviewDifficultyControl.tsx
+src/components/review/ReviewKeyboardHelp.test.tsx
+src/components/review/ReviewKeyboardHelp.tsx
 src/components/review/ReviewModeProvider.tsx
 src/components/review/ReviewModeSelector.tsx
 src/components/review/ReviewScopeBanner.tsx
@@ -1950,6 +1955,7 @@ src/components/review/hooks/types.ts
 src/components/review/hooks/unified-session-params.ts
 src/components/review/hooks/useAutoScrollIntoView.ts
 src/components/review/hooks/useCardReview.ts
+src/components/review/hooks/useCohortCardGrade.test.ts
 src/components/review/hooks/useCohortCardGrade.ts
 src/components/review/hooks/useCohortReviewSession.test.ts
 src/components/review/hooks/useFlagging.test.ts
@@ -1958,6 +1964,7 @@ src/components/review/hooks/useGroupReview.ts
 src/components/review/hooks/useGroupReviewKeyboard.ts
 src/components/review/hooks/useMcqReview.ts
 src/components/review/hooks/useReviewFeedMode.ts
+src/components/review/hooks/useReviewKeyboard.test.ts
 src/components/review/hooks/useReviewKeyboard.ts
 src/components/review/hooks/useReviewSession.ts
 src/components/review/hooks/useSessionLifecycle.ts
@@ -2120,6 +2127,7 @@ src/lib/cohort/review-intent.ts
 src/lib/cohort/search-topic-contract.ts
 src/lib/cohort/search-topic-registry.server.ts
 src/lib/cohort/smoke-probe.ts
+src/lib/cohort/turn-request.server.ts
 src/lib/commitment-level.ts
 src/lib/commitment.ts
 src/lib/concept-mastery-service.ts

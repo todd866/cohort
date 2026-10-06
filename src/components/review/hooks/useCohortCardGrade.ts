@@ -3,6 +3,8 @@ import { useCallback, useEffect, useLayoutEffect, useRef, useState } from 'react
 import { genClientRequestId } from '@/lib/client-request-id';
 import { fetchWithDeadline } from '@/lib/fetch-with-deadline';
 
+import type { CohortTurnClientBody } from './useReviewSession';
+
 type GradeStatus = 'idle' | 'saving' | 'saved' | 'error';
 
 const CARD_GRADE_DEADLINE_MS = 15_000;
@@ -21,11 +23,15 @@ export function useCohortCardGrade({
   deliveryId,
   getResponseTimeMs,
   onGraded,
+  getNextTurn,
+  onNextTurn,
   onError,
 }: {
   deliveryId: string | null | undefined;
   getResponseTimeMs?: () => number;
   onGraded?: (confidence: number) => void;
+  getNextTurn?: (deliveryId: string) => CohortTurnClientBody | undefined;
+  onNextTurn?: (request: CohortTurnClientBody, response: unknown) => void;
   onError?: (message: string) => void;
 }) {
   // State is keyed to the delivery it belongs to: a new delivery reads as idle
@@ -38,7 +44,7 @@ export function useCohortCardGrade({
   const deliveryIdRef = useRef(deliveryId);
   useLayoutEffect(() => { deliveryIdRef.current = deliveryId; }, [deliveryId]);
   const mountedRef = useRef(true);
-  const requestRef = useRef<{ deliveryId: string; confidence: number; id: string; responseTimeMs?: number } | null>(null);
+  const requestRef = useRef<{ deliveryId: string; confidence: number; id: string; responseTimeMs?: number; nextTurn?: CohortTurnClientBody } | null>(null);
 
   useEffect(() => {
     mountedRef.current = true;
@@ -70,7 +76,8 @@ export function useCohortCardGrade({
       && measuredResponseTimeMs >= 0
       ? Math.round(measuredResponseTimeMs)
       : undefined;
-    requestRef.current = { deliveryId, confidence, id: clientRequestId, ...(responseTimeMs != null ? { responseTimeMs } : {}) };
+    const nextTurn = priorIsSameGrade ? priorRequest.nextTurn : getNextTurn?.(deliveryId);
+    requestRef.current = { deliveryId, confidence, id: clientRequestId, nextTurn, ...(responseTimeMs != null ? { responseTimeMs } : {}) };
     const activeRequest = requestRef.current;
     const settle = (status: GradeStatus) => {
       statusRef.current = { deliveryId, status };
@@ -82,6 +89,7 @@ export function useCohortCardGrade({
       deliveryId,
       confidence,
       clientRequestId,
+      ...(nextTurn ? { nextTurn } : {}),
       ...(responseTimeMs != null
         ? { responseTimeMs }
         : {}),
@@ -96,8 +104,10 @@ export function useCohortCardGrade({
           const payload = await response.json().catch(() => null) as { error?: string } | null;
           throw new Error(payload?.error ?? `Grade not saved (${response.status})`);
         }
+        const payload = await response.json().catch(() => null) as { nextTurn?: unknown } | null;
         if (!mountedRef.current || deliveryIdRef.current !== deliveryId || requestRef.current !== activeRequest) return;
         settle('saved');
+        if (nextTurn && payload?.nextTurn) onNextTurn?.(nextTurn, payload.nextTurn);
         onGraded?.(confidence);
       })
       .catch((error: unknown) => {
@@ -105,7 +115,7 @@ export function useCohortCardGrade({
         settle('error');
         onError?.(error instanceof Error ? error.message : 'Grade not saved');
       });
-  }, [deliveryId, getResponseTimeMs, onError, onGraded]);
+  }, [deliveryId, getResponseTimeMs, getNextTurn, onNextTurn, onError, onGraded]);
 
   return { grade, selected: current.selected, status: current.status, reset };
 }

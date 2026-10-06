@@ -58,6 +58,7 @@ import { ReviewScopeBanner, type ReviewClusterScope } from './ReviewScopeBanner'
 import { RotationOnboarding } from './RotationOnboarding';
 import { FlagOverlay } from './FlagOverlay';
 import { FlagReminder } from './FlagReminder';
+import { ReviewKeyboardHelp, type ReviewShortcutContext } from './ReviewKeyboardHelp';
 import { CohortPrompt } from './CohortPrompt';
 import { CohortSearchOverlay } from './CohortSearchOverlay';
 import { ProgressPill } from './ProgressPill';
@@ -847,6 +848,12 @@ function UnifiedReviewBody({ rotations, week, rotationSizes, fetchSlots, feedMod
   const cohortCardGrading = useCohortCardGrade({
     deliveryId: cohortCardDeliveryId,
     getResponseTimeMs,
+    getNextTurn: session.reserveNextCohortTurn,
+    onNextTurn: (request, response) => {
+      // advanceAndRefresh waits for this image preparation; a failure replays
+      // the same reserved turn through the ordinary recovery path.
+      void session.prepareNextCohortTurn({ request, response }).catch(() => {});
+    },
     onGraded: (confidence) => {
       onReviewWithReset?.();
       setStats(prev => ({
@@ -974,6 +981,25 @@ function UnifiedReviewBody({ rotations, week, rotationSizes, fetchSlots, feedMod
     handleGoBack();
   }, [cardGrading, currentItem, handleGoBack, isCohortHost, mcqGrading, videoGrading]);
 
+  const [shortcutsOpen, setShortcutsOpen] = useState(false);
+  const shortcutContext: ReviewShortcutContext = currentItem?.type === 'card'
+    ? cardFullyRevealed ? (cohortCardDeliveryId ? 'card-grade-required' : 'card-grade') : 'card-reveal'
+    : currentItem?.type === 'video' ? 'video-rate'
+    : awaitingConfidence ? 'mcq-confidence'
+    : mcqResult ? (currentItem?.deliveryId ? 'mcq-continue' : 'mcq-grade') : 'mcq-select';
+  const shortcutHint = shortcutContext === 'card-reveal' ? 'Space reveal'
+    : shortcutContext.startsWith('card-grade') ? '1–4 rate'
+    : shortcutContext === 'mcq-select' ? '1–5 choose'
+    : shortcutContext === 'mcq-confidence' ? '1–4 confidence'
+    : 'Space continue';
+  const shortcutsReturnRef = useRef<HTMLElement | null>(null);
+  const openShortcuts = useCallback(() => {
+    shortcutsReturnRef.current = mobileOptionsOpen && mobileOptionsTriggerRef.current?.getClientRects().length
+      ? mobileOptionsTriggerRef.current : document.activeElement as HTMLElement | null;
+    setMobileOptionsOpen(false);
+    setShortcutsOpen(true);
+  }, [mobileOptionsOpen]);
+
   // Keyboard shortcuts
   useReviewKeyboard({
     // The required onboarding dialog owns the keyboard. Passing no item makes
@@ -1011,6 +1037,7 @@ function UnifiedReviewBody({ rotations, week, rotationSizes, fetchSlots, feedMod
     handleVideoContinue: advanceToNext,
     handleGoBack: handleReviewGoBack,
     handleRevealAll,
+    handleOpenShortcuts: openShortcuts,
     awaitingConfidence,
     // g / b rate what is on screen. Uses the same poster as the thumb buttons
     // so the two cannot diverge.
@@ -1354,6 +1381,7 @@ function UnifiedReviewBody({ rotations, week, rotationSizes, fetchSlots, feedMod
                 disabled={cohortPromptBlocked || cohortTurnPending}
               />
             )}
+            <button type="button" onClick={openShortcuts} className="min-h-11 rounded-md px-2 text-xs underline underline-offset-2">Shortcuts (?)</button>
             {cohortProfile?.hookCompletedAt && (
               <Link
                 href="/tech"
@@ -1494,10 +1522,13 @@ function UnifiedReviewBody({ rotations, week, rotationSizes, fetchSlots, feedMod
           "floating in the middle of the screen", so that's reverted. */}
       <div data-review-content className={`px-4 py-5 sm:px-6 sm:py-7 ${bottomPaddingClass}`}>
         <div className={`${reviewShellWidthClass(usesSidePane, reviewPaneKind(item))} mx-auto review-card-shell`}>
+      <ReviewKeyboardHelp open={shortcutsOpen} onClose={() => setShortcutsOpen(false)} context={shortcutContext} returnFocusRef={shortcutsReturnRef} />
       <FlagReminder
         enabled={!flagMode && !flagPending && !flagged && (item.type === 'card' || item.type === 'question')}
         flagOpened={flagMode || flagPending || flagged}
         itemKey={`${item.type}:${item.id}`}
+        keyboardHint={shortcutHint}
+        onOpenShortcuts={openShortcuts}
       />
       {item.practiceReview && (
         <div className="mb-2">

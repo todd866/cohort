@@ -28,6 +28,9 @@ video::cue {
   --md-tertiary-container: #ffe3d8;
   --md-on-tertiary-container: #773c24;
 
+  /* Modal scrims remain dark in both themes. */
+  --md-scrim: #000000;
+
   /* Surface colors */
   --md-app-background: linear-gradient(180deg, #f8fbfc 0%, #f4f7f7 44%, #fafafa 100%);
   --md-surface: #f8fafb;
