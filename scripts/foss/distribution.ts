@@ -549,7 +549,7 @@ export const PROTECTED_PUBLIC_FALLBACKS: ReadonlyArray<Readonly<{
   {
     path: 'src/hooks/useActiveModules.ts',
     licence: 'MIT',
-    sha256: '7235024e8b748d2aaabc33d04bc4ea42e5d50d387897a3a2293b2947206c8b00',
+    sha256: 'c3b1ca8c20ca427b4b55be0c43a38e42a2040444f1763c1bde8d7452148b8e21',
   },
   {
     path: 'src/lib/current-study.ts',
