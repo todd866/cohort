@@ -1,4 +1,4 @@
-import { useCallback, useEffect, useRef, useState } from 'react';
+import { useCallback, useEffect, useLayoutEffect, useRef, useState } from 'react';
 
 import { genClientRequestId } from '@/lib/client-request-id';
 import { fetchWithDeadline } from '@/lib/fetch-with-deadline';
@@ -36,7 +36,7 @@ export function useCohortCardGrade({
   const current = state.deliveryId === deliveryId ? state : { deliveryId, status: 'idle' as GradeStatus, selected: null };
   const statusRef = useRef<{ deliveryId: string | null | undefined; status: GradeStatus }>({ deliveryId, status: 'idle' });
   const deliveryIdRef = useRef(deliveryId);
-  deliveryIdRef.current = deliveryId;
+  useLayoutEffect(() => { deliveryIdRef.current = deliveryId; }, [deliveryId]);
   const mountedRef = useRef(true);
   const requestRef = useRef<{ deliveryId: string; confidence: number; id: string; responseTimeMs?: number } | null>(null);
 
