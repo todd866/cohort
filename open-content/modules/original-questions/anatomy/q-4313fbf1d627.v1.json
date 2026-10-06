@@ -1,0 +1,65 @@
+{
+  "id": "bank:cohort:anatomy:q-4313fbf1d627:v1",
+  "rotation": "cohort-open",
+  "moduleNodes": [
+    "cohort/anatomy"
+  ],
+  "topics": [
+    "upper trunk",
+    "upper anatomy"
+  ],
+  "questionType": "single-best-answer",
+  "difficulty": "medium",
+  "stem": "A newborn has the arm adducted and internally rotated, with the elbow extended after traction on the neck during delivery. Which plexus injury best fits?",
+  "options": [
+    {
+      "label": "A",
+      "text": "Lower trunk (C8–T1)",
+      "isCorrect": false,
+      "explanation": "This primarily affects intrinsic hand muscles and medial forearm sensation."
+    },
+    {
+      "label": "B",
+      "text": "Upper trunk (C5–C6)",
+      "isCorrect": true,
+      "explanation": "Injury to the upper trunk weakens shoulder abduction, external rotation and elbow flexion, producing this posture."
+    },
+    {
+      "label": "C",
+      "text": "Posterior cord",
+      "isCorrect": false,
+      "explanation": "This would produce a radial/axillary pattern rather than the classic upper-root posture."
+    },
+    {
+      "label": "D",
+      "text": "Medial cord",
+      "isCorrect": false,
+      "explanation": "This would mainly affect the ulnar and medial median distribution."
+    },
+    {
+      "label": "E",
+      "text": "Lateral cord",
+      "isCorrect": false,
+      "explanation": "This can affect elbow flexion and some hand sensation but does not explain the full upper-trunk posture."
+    }
+  ],
+  "context": "The posture reflects weakness of muscles supplied by the upper roots, while the hand is relatively spared.",
+  "publicModule": {
+    "schemaVersion": 1,
+    "origin": "original",
+    "discipline": "anatomy",
+    "originalId": "upper-brachial-plexus",
+    "itemText": {
+      "licence": "CC-BY-4.0",
+      "attribution": "MD3 contributors"
+    },
+    "evidence": {
+      "kind": "reference",
+      "sourceId": "original-c149a0adf7574590"
+    },
+    "review": {
+      "verdict": "passed",
+      "contentHash": "b8ac9dfa5ee1c78cfdbf7b90808d608c7a51a7003989c5187ec101b9c36df5cb"
+    }
+  }
+}

@@ -1,0 +1,65 @@
+{
+  "id": "bank:cohort:anatomy:q-b835918158fa:v1",
+  "rotation": "cohort-open",
+  "moduleNodes": [
+    "cohort/anatomy"
+  ],
+  "topics": [
+    "trigone",
+    "pelvis anatomy"
+  ],
+  "questionType": "single-best-answer",
+  "difficulty": "easy",
+  "stem": "During cystoscopy, a triangular region of the bladder floor is bounded by the two ureteric openings and the internal urethral opening. Which region is this?",
+  "options": [
+    {
+      "label": "A",
+      "text": "Dome",
+      "isCorrect": false,
+      "explanation": "The dome expands markedly as urine accumulates."
+    },
+    {
+      "label": "B",
+      "text": "Detrusor muscle",
+      "isCorrect": false,
+      "explanation": "This is the bladder wall muscle, not a named internal triangular surface."
+    },
+    {
+      "label": "C",
+      "text": "Ureteric adventitia",
+      "isCorrect": false,
+      "explanation": "It surrounds the ureter outside the bladder."
+    },
+    {
+      "label": "D",
+      "text": "Trigone",
+      "isCorrect": true,
+      "explanation": "It is the fixed triangular region between the ureteric orifices and internal urethral opening."
+    },
+    {
+      "label": "E",
+      "text": "External urethral sphincter",
+      "isCorrect": false,
+      "explanation": "It lies distal to the bladder neck and is not inside the trigone."
+    }
+  ],
+  "context": "The trigone provides fixed landmarks for locating the ureteric orifices during cystoscopy. Its upper border is the interureteric ridge joining the two openings.",
+  "publicModule": {
+    "schemaVersion": 1,
+    "origin": "original",
+    "discipline": "anatomy",
+    "originalId": "pel-bladder-trigone",
+    "itemText": {
+      "licence": "CC-BY-4.0",
+      "attribution": "MD3 contributors"
+    },
+    "evidence": {
+      "kind": "reference",
+      "sourceId": "original-20064c8eb0d68a0d"
+    },
+    "review": {
+      "verdict": "passed",
+      "contentHash": "07637d45c2578aa0aa190da7c1b1e0e8b7fb00286ec979ac17e036fe147c3fee"
+    }
+  }
+}

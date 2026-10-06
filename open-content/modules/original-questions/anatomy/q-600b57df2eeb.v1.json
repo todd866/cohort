@@ -1,0 +1,65 @@
+{
+  "id": "bank:cohort:anatomy:q-600b57df2eeb:v1",
+  "rotation": "cohort-open",
+  "moduleNodes": [
+    "cohort/anatomy"
+  ],
+  "topics": [
+    "oesophagus",
+    "thorax anatomy"
+  ],
+  "questionType": "single-best-answer",
+  "difficulty": "easy",
+  "stem": "A patient with progressive dysphagia has a lesion arising within the wall of a muscular digestive tube in the posterior mediastinum. Which organ is involved?",
+  "options": [
+    {
+      "label": "A",
+      "text": "Descending thoracic aorta",
+      "isCorrect": false,
+      "explanation": "An enlarged aorta can compress the oesophagus and cause dysphagia, but it is an artery, not the digestive-tube wall identified in this stem."
+    },
+    {
+      "label": "B",
+      "text": "Trachea",
+      "isCorrect": false,
+      "explanation": "It lies anterior to the oesophagus and would more directly cause cough, stridor or airway symptoms."
+    },
+    {
+      "label": "C",
+      "text": "Oesophagus",
+      "isCorrect": true,
+      "explanation": "Its posterior mediastinal course and luminal function match both the location and progressive dysphagia."
+    },
+    {
+      "label": "D",
+      "text": "Thoracic duct",
+      "isCorrect": false,
+      "explanation": "It is a lymphatic channel and does not account for progressive luminal dysphagia."
+    },
+    {
+      "label": "E",
+      "text": "Azygos vein",
+      "isCorrect": false,
+      "explanation": "It is a posterior mediastinal vein, not a swallowing tube."
+    }
+  ],
+  "context": "The thoracic oesophagus traverses the posterior mediastinum. Dysphagia alone can also result from external compression; the demonstrated origin within a digestive-tube wall is the discriminator here.",
+  "publicModule": {
+    "schemaVersion": 1,
+    "origin": "original",
+    "discipline": "anatomy",
+    "originalId": "thorax-oesophagus",
+    "itemText": {
+      "licence": "CC-BY-4.0",
+      "attribution": "MD3 contributors"
+    },
+    "evidence": {
+      "kind": "reference",
+      "sourceId": "original-627f401744e90ca6"
+    },
+    "review": {
+      "verdict": "passed",
+      "contentHash": "da600126a1e815da27b8d3fc5e793931a2f9a20791f65e4c5a77f3f9031a2bc0"
+    }
+  }
+}

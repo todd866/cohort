@@ -8,6 +8,7 @@ const testMocks = vi.hoisted(() => ({
   easeAfterExhaustion: vi.fn(),
 }));
 vi.mock('next-auth/react', () => ({ useSession: () => ({ status: testMocks.authStatus, data: null }) }));
+vi.mock('next/navigation', () => ({ usePathname: () => '/anatomy', useSearchParams: () => new URLSearchParams(), useRouter: () => ({ push: vi.fn() }) }));
 vi.mock('@/hooks/useReviewDifficulty', () => ({
   useReviewDifficulty: (options: { onApplied?: () => void | Promise<void> }) => ({
     level: 0,
@@ -80,7 +81,7 @@ const turn = (journeyId: string, items: unknown[], requestedSize = 1) => ({
 });
 
 function profileResponse() {
-  return json({ profile: { hookCompletedAt: 'now', explicit: { experience: 'undergrad' } } }) as Response;
+  return json({ profile: { hookCompletedAt: 'now', explicit: { experience: 'undergrad' } }, deep: false, searchTopics: [{ id: 'module-anatomy', label: 'Anatomy', aliases: [], searchIntents: [], learningOutcomes: [], modalities: ['text'], eligibleItemCount: 1, eligibleAssetCount: 0 }], demandTopics: [] }) as Response;
 }
 
 describe('AnatomyStudyClient lifecycle', () => {
@@ -98,7 +99,8 @@ describe('AnatomyStudyClient lifecycle', () => {
     const fetchMock = vi.spyOn(global, 'fetch');
     fetchMock.mockImplementation(async (input, init) => {
       const url = String(input);
-      if (url.endsWith('/api/cohort/profile')) return json({ profile: { hookCompletedAt: null, explicit: {} } }) as Response;
+      if (url.endsWith('/api/session/bootstrap')) return json({ ok: true }) as Response;
+      if (url.endsWith('/api/cohort/profile')) return json({ profile: { hookCompletedAt: null, explicit: {} }, deep: false, searchTopics: [{ id: 'module-anatomy', label: 'Anatomy', aliases: [], searchIntents: [], learningOutcomes: [], modalities: ['text'], eligibleItemCount: 1, eligibleAssetCount: 0 }], demandTopics: [] }) as Response;
       if (url.endsWith('/api/cohort/turn')) {
         const body = JSON.parse(String(init?.body ?? '{}')) as { journeyId: string; nextDrawOrdinal?: number };
         expect(body.nextDrawOrdinal).toBe(0);
@@ -118,8 +120,9 @@ describe('AnatomyStudyClient lifecycle', () => {
     let turns = 0;
     fetchMock.mockImplementation(async (input, init) => {
       const url = String(input);
+      if (url.endsWith('/api/session/bootstrap')) return json({ ok: true }) as Response;
       if (url.endsWith('/api/cohort/profile'))
-        return json({ profile: { hookCompletedAt: null, explicit: { experience: 'undergrad' } } }) as Response;
+        return json({ profile: { hookCompletedAt: null, explicit: { experience: 'undergrad' } }, deep: false, searchTopics: [{ id: 'module-anatomy', label: 'Anatomy', aliases: [], searchIntents: [], learningOutcomes: [], modalities: ['text'], eligibleItemCount: 1, eligibleAssetCount: 0 }], demandTopics: [] }) as Response;
       if (url.endsWith('/api/cohort/turn')) {
         turns += 1;
         if (turns === 1) return json({ error: 'temporary' }, false) as Response;
@@ -141,6 +144,7 @@ describe('AnatomyStudyClient lifecycle', () => {
     let grades = 0;
     fetchMock.mockImplementation(async (input, init) => {
       const url = String(input);
+      if (url.endsWith('/api/session/bootstrap')) return json({ ok: true }) as Response;
       if (url.endsWith('/api/cohort/profile')) return profileResponse();
       if (url.endsWith('/api/cohort/turn')) {
         const body = JSON.parse(String(init?.body ?? '{}')) as { journeyId: string };
@@ -154,9 +158,9 @@ describe('AnatomyStudyClient lifecycle', () => {
     });
     const user = userEvent.setup();
     render(<AnatomyStudyClient />);
-    await user.click(await screen.findByRole('button', { name: 'Show answer' }));
+    await user.click(await screen.findByRole('button', { name: /Show answer/ }));
     await user.click(screen.getByRole('button', { name: /Good \(3\)/ }));
-    await waitFor(() => expect(screen.getByRole('alert')).toHaveTextContent(/grade could not be saved/i));
+    await waitFor(() => expect(screen.getByRole('alert')).toHaveTextContent(/temporary/i));
     await user.click(screen.getByRole('button', { name: /Good \(3\)/ }));
     await waitFor(() => expect(grades).toBe(2));
     const bodies = fetchMock.mock.calls
@@ -171,6 +175,7 @@ describe('AnatomyStudyClient lifecycle', () => {
     let grades = 0;
     fetchMock.mockImplementation(async (input, init) => {
       const url = String(input);
+      if (url.endsWith('/api/session/bootstrap')) return json({ ok: true }) as Response;
       if (url.endsWith('/api/cohort/profile')) return profileResponse();
       if (url.endsWith('/api/cohort/turn')) {
         turns += 1;
@@ -186,10 +191,10 @@ describe('AnatomyStudyClient lifecycle', () => {
     });
     const user = userEvent.setup();
     render(<AnatomyStudyClient />);
-    await user.click(await screen.findByRole('button', { name: 'Show answer' }));
+    await user.click(await screen.findByRole('button', { name: /Show answer/ }));
     await user.click(screen.getByRole('button', { name: /Good \(3\)/ }));
-    await waitFor(() => expect(screen.getByRole('button', { name: 'Retry next item' })).toBeInTheDocument());
-    await user.click(screen.getByRole('button', { name: 'Retry next item' }));
+    await waitFor(() => expect(screen.getByRole('button', { name: 'Retry' })).toBeInTheDocument());
+    await user.click(screen.getByRole('button', { name: 'Retry' }));
     await waitFor(() => expect(screen.getByText(/next-card/)).toBeInTheDocument());
     expect(grades).toBe(1);
     expect(turns).toBe(3);
@@ -201,6 +206,7 @@ describe('AnatomyStudyClient lifecycle', () => {
     let turns = 0;
     fetchMock.mockImplementation(async (input, init) => {
       const url = String(input);
+      if (url.endsWith('/api/session/bootstrap')) return json({ ok: true }) as Response;
       if (url.endsWith('/api/cohort/profile')) return profileResponse();
       if (url.endsWith('/api/cohort/turn')) {
         turns += 1;
@@ -225,6 +231,7 @@ describe('AnatomyStudyClient lifecycle', () => {
     const fetchMock = vi.spyOn(global, 'fetch');
     fetchMock.mockImplementation(async (input, init) => {
       const url = String(input);
+      if (url.endsWith('/api/session/bootstrap')) return json({ ok: true }) as Response;
       if (url.endsWith('/api/cohort/profile')) return profileResponse();
       if (url.endsWith('/api/cohort/turn')) {
         const body = JSON.parse(String(init?.body ?? '{}')) as { journeyId: string };
@@ -235,7 +242,7 @@ describe('AnatomyStudyClient lifecycle', () => {
       throw new Error(`unexpected ${url}`);
     });
     render(<AnatomyStudyClient />);
-    await waitFor(() => expect(screen.getByRole('alert')).toHaveTextContent(/unsafe content/i));
+    await waitFor(() => expect(screen.getByRole('alert')).toHaveTextContent(/Invalid study question|unsafe content/i));
     expect(screen.queryByText('Name structure bad.')).toBeNull();
   });
 
@@ -243,6 +250,7 @@ describe('AnatomyStudyClient lifecycle', () => {
     const fetchMock = vi.spyOn(global, 'fetch');
     fetchMock.mockImplementation(async (input, init) => {
       const url = String(input);
+      if (url.endsWith('/api/session/bootstrap')) return json({ ok: true }) as Response;
       if (url.endsWith('/api/cohort/profile')) return profileResponse();
       if (url.endsWith('/api/cohort/turn')) {
         const body = JSON.parse(String(init?.body ?? '{}')) as { journeyId: string };
@@ -252,7 +260,7 @@ describe('AnatomyStudyClient lifecycle', () => {
       throw new Error(`unexpected ${url}`);
     });
     render(<AnatomyStudyClient />);
-    await waitFor(() => expect(screen.getByRole('alert')).toHaveTextContent(/unsafe content/i));
+    await waitFor(() => expect(screen.getByRole('alert')).toHaveTextContent(/Invalid study card|unsafe content/i));
     expect(screen.queryByText(/bad-media/)).toBeNull();
   });
 
@@ -260,6 +268,7 @@ describe('AnatomyStudyClient lifecycle', () => {
     const fetchMock = vi.spyOn(global, 'fetch');
     fetchMock.mockImplementation(async (input, init) => {
       const url = String(input);
+      if (url.endsWith('/api/session/bootstrap')) return json({ ok: true }) as Response;
       if (url.endsWith('/api/cohort/profile')) return profileResponse();
       if (url.startsWith('/api/anatomy/abducens')) return { ok: true, status: 200, blob: async () => new Blob(['figure'], { type: 'image/svg+xml' }) } as Response;
       if (url.endsWith('/api/cohort/turn')) {
@@ -271,7 +280,7 @@ describe('AnatomyStudyClient lifecycle', () => {
     const user = userEvent.setup();
     render(<AnatomyStudyClient />);
     const figure = await screen.findByAltText('Prompt anatomy figure');
-    const reveal = await screen.findByRole('button', { name: 'Show answer' });
+    const reveal = await screen.findByRole('button', { name: /Show answer/ });
     expect(reveal).toBeEnabled();
     expect(fetchMock.mock.calls.some(([url]) => String(url) === '/api/anatomy/abducens?target=lateral-rectus&phase=prompt')).toBe(true);
     expect(figure).toHaveAttribute('data-source', '/api/anatomy/abducens?target=lateral-rectus&phase=prompt');

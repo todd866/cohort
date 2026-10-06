@@ -1,0 +1,65 @@
+{
+  "id": "bank:cohort:anatomy:q-eb1f160975db:v1",
+  "rotation": "cohort-open",
+  "moduleNodes": [
+    "cohort/anatomy"
+  ],
+  "topics": [
+    "cervical pleura",
+    "thorax anatomy"
+  ],
+  "questionType": "single-best-answer",
+  "difficulty": "easy",
+  "stem": "A central venous line is inserted above the first rib and pleural air is suspected after the procedure. Which structure is at risk near the lung apex?",
+  "options": [
+    {
+      "label": "A",
+      "text": "Pericardium",
+      "isCorrect": false,
+      "explanation": "It surrounds the heart in the mediastinum, not the lung apex."
+    },
+    {
+      "label": "B",
+      "text": "Diaphragm",
+      "isCorrect": false,
+      "explanation": "It forms the floor of the thorax and is not at the lung apex."
+    },
+    {
+      "label": "C",
+      "text": "Mediastinal pleura",
+      "isCorrect": false,
+      "explanation": "It lines the mediastinal surface of the lung but is not the apical projection at the root of the neck."
+    },
+    {
+      "label": "D",
+      "text": "Cervical pleura",
+      "isCorrect": true,
+      "explanation": "It extends above the first rib over the lung apex and can be injured by low-neck procedures."
+    },
+    {
+      "label": "E",
+      "text": "Endothoracic fascia",
+      "isCorrect": false,
+      "explanation": "It is a connective-tissue layer but not the pleural sac that contains the lung."
+    }
+  ],
+  "context": "The cervical pleura projects above the first rib, so procedures at the root of the neck can enter the pleural cavity.",
+  "publicModule": {
+    "schemaVersion": 1,
+    "origin": "original",
+    "discipline": "anatomy",
+    "originalId": "thorax-pneumothorax",
+    "itemText": {
+      "licence": "CC-BY-4.0",
+      "attribution": "MD3 contributors"
+    },
+    "evidence": {
+      "kind": "reference",
+      "sourceId": "original-75b41f8a4ce628d8"
+    },
+    "review": {
+      "verdict": "passed",
+      "contentHash": "c35b28ea71fbf822c923543ef17f38d9baaaebb03778d75ee907038a63bdd52e"
+    }
+  }
+}

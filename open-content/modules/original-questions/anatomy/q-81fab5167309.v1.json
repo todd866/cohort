@@ -1,0 +1,65 @@
+{
+  "id": "bank:cohort:anatomy:q-81fab5167309:v1",
+  "rotation": "cohort-open",
+  "moduleNodes": [
+    "cohort/anatomy"
+  ],
+  "topics": [
+    "phrenic nerve",
+    "thorax anatomy"
+  ],
+  "questionType": "single-best-answer",
+  "difficulty": "easy",
+  "stem": "A patient with a cervical lesion has an elevated hemidiaphragm and reduced inspiratory movement on that side. Which nerve is affected?",
+  "options": [
+    {
+      "label": "A",
+      "text": "Phrenic nerve",
+      "isCorrect": true,
+      "explanation": "It provides the main motor supply to the diaphragm and arises from C3–C5."
+    },
+    {
+      "label": "B",
+      "text": "Vagus nerve",
+      "isCorrect": false,
+      "explanation": "It supplies thoracic viscera and laryngeal branches but is not the main motor nerve of the diaphragm."
+    },
+    {
+      "label": "C",
+      "text": "Intercostal nerve",
+      "isCorrect": false,
+      "explanation": "It supplies intercostal muscles and thoracic wall sensation, not the diaphragm’s primary motor supply."
+    },
+    {
+      "label": "D",
+      "text": "Long thoracic nerve",
+      "isCorrect": false,
+      "explanation": "It supplies serratus anterior and affects scapular movement."
+    },
+    {
+      "label": "E",
+      "text": "Sympathetic trunk",
+      "isCorrect": false,
+      "explanation": "It carries autonomic fibres and does not produce the described diaphragmatic motor deficit."
+    }
+  ],
+  "context": "The pattern is unilateral diaphragmatic weakness, so the motor supply to the diaphragm is the key structure.",
+  "publicModule": {
+    "schemaVersion": 1,
+    "origin": "original",
+    "discipline": "anatomy",
+    "originalId": "thorax-phrenic",
+    "itemText": {
+      "licence": "CC-BY-4.0",
+      "attribution": "MD3 contributors"
+    },
+    "evidence": {
+      "kind": "reference",
+      "sourceId": "original-919cad4859271921"
+    },
+    "review": {
+      "verdict": "passed",
+      "contentHash": "f791561d16c936232b3593dfced8d12afe4b4e41d1e1c8992ef0ad019f34b7b6"
+    }
+  }
+}

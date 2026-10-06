@@ -1,0 +1,66 @@
+{
+  "id": "bank:cohort:anatomy:q-9d5d1e5ad1b5:v1",
+  "rotation": "cohort-open",
+  "moduleNodes": [
+    "cohort/anatomy"
+  ],
+  "topics": [
+    "glossopharyngeal nerve",
+    "tonsillar bed",
+    "head and neck anatomy"
+  ],
+  "questionType": "single-best-answer",
+  "difficulty": "medium",
+  "stem": "After tonsillectomy, a patient has reduced taste and general sensation over the posterior third of the tongue. Tongue movement is normal. Which nerve was most likely injured?",
+  "options": [
+    {
+      "label": "A",
+      "text": "Lingual nerve",
+      "isCorrect": false,
+      "explanation": "It carries general sensation from the anterior two-thirds of the tongue, rather than the posterior third."
+    },
+    {
+      "label": "B",
+      "text": "Chorda tympani",
+      "isCorrect": false,
+      "explanation": "Its taste fibres serve the anterior two-thirds of the tongue and travel with the lingual nerve."
+    },
+    {
+      "label": "C",
+      "text": "Hypoglossal nerve",
+      "isCorrect": false,
+      "explanation": "It supplies most tongue muscles; injury would produce motor weakness rather than this taste and sensory pattern."
+    },
+    {
+      "label": "D",
+      "text": "Internal branch of the superior laryngeal nerve",
+      "isCorrect": false,
+      "explanation": "It supplies sensation above the vocal folds and the epiglottic region, rather than the posterior-third tongue territory."
+    },
+    {
+      "label": "E",
+      "text": "Glossopharyngeal nerve",
+      "isCorrect": true,
+      "explanation": "Its proximity to the tonsillar bed makes it vulnerable during tonsillectomy; it carries taste and general sensation from the posterior third of the tongue."
+    }
+  ],
+  "context": "The glossopharyngeal nerve runs close to the tonsillar bed and carries posterior-tongue sensation and taste. Preserved movement helps distinguish this sensory deficit from hypoglossal injury.",
+  "publicModule": {
+    "schemaVersion": 1,
+    "origin": "original",
+    "discipline": "anatomy",
+    "originalId": "head-tonsil-glossopharyngeal",
+    "itemText": {
+      "licence": "CC-BY-4.0",
+      "attribution": "MD3 contributors"
+    },
+    "evidence": {
+      "kind": "reference",
+      "sourceId": "original-a0d1fe241ce61a0e"
+    },
+    "review": {
+      "verdict": "passed",
+      "contentHash": "7420396192046c91e00ecda0256df202652de94a25f19a6b06fcfa943fb57284"
+    }
+  }
+}

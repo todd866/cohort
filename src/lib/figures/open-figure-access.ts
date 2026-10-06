@@ -32,7 +32,7 @@ const originalPaths = new Set<string>(originalFigurePaths);
 export const OPEN_FIGURE_PREFIX = '/figures/usmle/step1/';
 /** One separately reviewed original anatomy scaffold; admission is exact-path and exact-bytes. */
 export const REVIEWED_LOCAL_ANATOMY_FIGURE = '/figures/anatomy/abducens-local.svg';
-export const REVIEWED_LOCAL_ANATOMY_SHA256 = '0b6358d3fe7a0205414a60e2ead6258684eaea0c3f70fe3f9ac5ee0a54bc4977';
+export const REVIEWED_LOCAL_ANATOMY_SHA256 = '9815d8d62c2a1e9dc6a74be027151caeba174ea7825132e47956b7fe0af0f8eb';
 export const REVIEWED_LOCAL_ANATOMY_LICENSE = 'MIT';
 
 export function isReviewedLocalAnatomyPath(value: string | null | undefined): boolean {

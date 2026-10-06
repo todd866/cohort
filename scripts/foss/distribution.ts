@@ -229,12 +229,14 @@ export function findLearnerIdentifierInLine(
  * distribution audit until it is explicitly reviewed here and in the policy.
  */
 export const PUBLIC_API_ROUTE_PATHS: ReadonlyArray<string> = Object.freeze([
+  'src/app/api/anatomy/figure/route.ts',
   'src/app/api/anatomy/abducens/route.ts',
   'src/app/api/auth/[...nextauth]/route.ts',
   'src/app/api/auth/claim-guest-progress/route.ts',
   'src/app/api/cohort/answer/route.ts',
   'src/app/api/cohort/card-grade/route.ts',
   'src/app/api/cohort/difficulty/route.ts',
+  'src/app/api/cohort/feedback/route.ts',
   'src/app/api/cohort/profile/route.ts',
   'src/app/api/cohort/turn/route.ts',
   // Private feedback image: existing identity plus owner/admin object check;
@@ -286,7 +288,6 @@ export const PUBLIC_PAGE_ROUTE_PATHS: ReadonlyArray<string> = Object.freeze([
   'src/app/profile/page.tsx',
   'src/app/profile/settings/page.tsx',
   'src/app/profile/stats/page.tsx',
-  'src/app/profile/support/page.tsx',
   'src/app/tech/page.tsx',
   'src/app/terms/page.tsx',
   'src/app/usmle/page.tsx',
@@ -416,7 +417,7 @@ export const PROTECTED_PUBLIC_FALLBACKS: ReadonlyArray<Readonly<{
   {
     path: 'src/app/page.tsx',
     licence: 'MIT',
-    sha256: '71a1e4b8e3ba7bba13bc2359b30b8d33f0dd68d885e86559b818fb6d9c274ff0',
+    sha256: '89da23501bb2b8bab38e23f29e07efefd1ebe69188a860913821721af35d7ec7',
   },
   {
     path: 'src/app/privacy/page.tsx',
@@ -426,7 +427,7 @@ export const PROTECTED_PUBLIC_FALLBACKS: ReadonlyArray<Readonly<{
   {
     path: 'src/app/profile/page.tsx',
     licence: 'MIT',
-    sha256: '3645bf914bbae6681de233e15af1c9c6a86389e0755885fd3933fece1e9c2269',
+    sha256: '80950f7de26fdac47ef785c6b2dec4fd0c528caa80b12f1739723d7fe82a7d72',
   },
   {
     path: 'src/app/profile/settings/PersonalDocumentsDestination.tsx',
@@ -504,10 +505,11 @@ export const PROTECTED_PUBLIC_FALLBACKS: ReadonlyArray<Readonly<{
     licence: 'MIT',
     sha256: 'a710b78655eb69440b7ffa29766b654dcbae86e4039f6cb0fa20216cd18706e3',
   },
+
   {
     path: 'src/components/Navigation.tsx',
     licence: 'MIT',
-    sha256: 'dae6e91fae8540c946cfe7330d38e5bbf9d4c1df3d305046b13e77a81a735b90',
+    sha256: 'c5ee7f9371461efde920bc14b201b46836716667bfbf7bd15a9e90aeb589a55f',
   },
   {
     path: 'src/components/content/AlgorithmSteps.tsx',
@@ -1304,11 +1306,12 @@ function perSourceRightsIssues(
 }
 
 /**
- * A mirrored Cohort module question cites its guideline as a REFERENCE: the
- * guideline may be readable but not redistributable, so no words of it ship.
+ * A Cohort module question (mirrored or authored-original) cites its guideline
+ * as a REFERENCE: the guideline may be readable but not redistributable, so
+ * no words of it ship.
  */
 function moduleQuestionRightsIssues(filePath: string, text: string): DistributionIssue[] {
-  if (!/^open-content\/modules\/questions\/.+\.json$/.test(filePath)) return [];
+  if (!/^open-content\/modules\/(?:questions|original-questions)\/.+\.json$/.test(filePath)) return [];
   let parsed: unknown;
   try {
     parsed = JSON.parse(text) as unknown;
@@ -1332,6 +1335,46 @@ function moduleQuestionRightsIssues(filePath: string, text: string): Distributio
       filePath,
       'module question lacks CC BY item rights or cites its source as anything but an unquoted reference',
     )];
+  }
+  return [];
+}
+
+/**
+ * Authored originals carry their CC-BY envelope in the author source lane,
+ * before the generated public question shards are built. Keep that lane
+ * explicit so a source file cannot enter the public boundary without rights
+ * metadata, even if its generated shard happens to be valid.
+ */
+function originalQuestionSourceRightsIssues(filePath: string, text: string): DistributionIssue[] {
+  if (!/^open-content\/modules\/original-question-sources\/.+\.json$/.test(filePath)) return [];
+  const fail = (detail: string) => [issue('invalid-open-content-rights', filePath, detail)];
+  let parsed: unknown;
+  try {
+    parsed = JSON.parse(text) as unknown;
+  } catch {
+    return fail('original question source is not valid JSON');
+  }
+  if (!isRecord(parsed)
+    || parsed.licence !== 'CC-BY-4.0'
+    || typeof parsed.attribution !== 'string'
+    || parsed.attribution.trim().length === 0
+    || !Array.isArray(parsed.items)
+    || parsed.items.length === 0) {
+    return fail('original question source lacks CC BY rights, attribution, or authored items');
+  }
+  for (const item of parsed.items) {
+    if (!isRecord(item) || !Array.isArray(item.sources) || item.sources.length === 0) {
+      return fail('original question source item lacks a source reference');
+    }
+    for (const source of item.sources) {
+      if (!isRecord(source)
+        || typeof source.title !== 'string'
+        || source.title.trim().length === 0
+        || typeof source.url !== 'string'
+        || !/^https:\/\//.test(source.url)) {
+        return fail('original question source item contains a non-HTTPS or incomplete reference');
+      }
+    }
   }
   return [];
 }
@@ -1873,6 +1916,7 @@ function inspectFile(
       issues.push(...perSourceRightsIssues(filePath, text, policy));
       issues.push(...openQuestionRightsIssues(filePath, text));
       issues.push(...moduleQuestionRightsIssues(filePath, text));
+      issues.push(...originalQuestionSourceRightsIssues(filePath, text));
       issues.push(...moduleCardRightsIssues(filePath, text));
     }
   }

@@ -1,0 +1,65 @@
+{
+  "id": "bank:cohort:anatomy:q-6e19e5a7e824:v1",
+  "rotation": "cohort-open",
+  "moduleNodes": [
+    "cohort/anatomy"
+  ],
+  "topics": [
+    "common fibular nerve",
+    "lower anatomy"
+  ],
+  "questionType": "single-best-answer",
+  "difficulty": "easy",
+  "stem": "A patient has foot drop and loses sensation in the first dorsal web space after injuring the fibular neck. Which nerve is affected?",
+  "options": [
+    {
+      "label": "A",
+      "text": "Tibial nerve",
+      "isCorrect": false,
+      "explanation": "It supplies plantarflexors and the sole, not dorsiflexors or the first dorsal web space."
+    },
+    {
+      "label": "B",
+      "text": "Femoral nerve",
+      "isCorrect": false,
+      "explanation": "It supplies knee extension and anterior-thigh sensation."
+    },
+    {
+      "label": "C",
+      "text": "Saphenous nerve",
+      "isCorrect": false,
+      "explanation": "It is sensory and supplies the medial leg, without causing foot drop."
+    },
+    {
+      "label": "D",
+      "text": "Obturator nerve",
+      "isCorrect": false,
+      "explanation": "It supplies thigh adductors and medial-thigh sensation."
+    },
+    {
+      "label": "E",
+      "text": "Common fibular nerve",
+      "isCorrect": true,
+      "explanation": "Injury at the fibular neck can weaken dorsiflexion and affect first-web-space sensation through its deep branch."
+    }
+  ],
+  "context": "The lesion is at a superficial site where the common nerve divides into branches for the anterior and lateral compartments.",
+  "publicModule": {
+    "schemaVersion": 1,
+    "origin": "original",
+    "discipline": "anatomy",
+    "originalId": "lower-foot-drop",
+    "itemText": {
+      "licence": "CC-BY-4.0",
+      "attribution": "MD3 contributors"
+    },
+    "evidence": {
+      "kind": "reference",
+      "sourceId": "original-5c82ad0cb4e601b6"
+    },
+    "review": {
+      "verdict": "passed",
+      "contentHash": "514a9f099c3959d5554f831361ea8e4e6fc78ab9c007875cace3100a7382f9e4"
+    }
+  }
+}

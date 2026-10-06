@@ -1,0 +1,65 @@
+{
+  "id": "bank:cohort:anatomy:q-1494336ce6c0:v1",
+  "rotation": "cohort-open",
+  "moduleNodes": [
+    "cohort/anatomy"
+  ],
+  "topics": [
+    "axillary nerve",
+    "upper anatomy"
+  ],
+  "questionType": "single-best-answer",
+  "difficulty": "easy",
+  "stem": "Following an anterior shoulder dislocation, a patient has marked weakness of shoulder abduction and numbness over the lateral shoulder. Which nerve is affected?",
+  "options": [
+    {
+      "label": "A",
+      "text": "Axillary nerve",
+      "isCorrect": true,
+      "explanation": "It supplies deltoid and sensation over the regimental-badge area, so both deficits fit."
+    },
+    {
+      "label": "B",
+      "text": "Suprascapular nerve",
+      "isCorrect": false,
+      "explanation": "It affects initiation of abduction and rotation but not the lateral shoulder skin."
+    },
+    {
+      "label": "C",
+      "text": "Musculocutaneous nerve",
+      "isCorrect": false,
+      "explanation": "It supplies elbow flexors and lateral-forearm sensation, not deltoid."
+    },
+    {
+      "label": "D",
+      "text": "Radial nerve",
+      "isCorrect": false,
+      "explanation": "It supplies posterior arm and forearm muscles, not the deltoid."
+    },
+    {
+      "label": "E",
+      "text": "Spinal accessory nerve",
+      "isCorrect": false,
+      "explanation": "It supplies trapezius and shoulder elevation, not glenohumeral abduction."
+    }
+  ],
+  "context": "The combination links the deltoid and its overlying cutaneous patch to a nerve winding around the surgical neck.",
+  "publicModule": {
+    "schemaVersion": 1,
+    "origin": "original",
+    "discipline": "anatomy",
+    "originalId": "upper-shoulder-dislocation",
+    "itemText": {
+      "licence": "CC-BY-4.0",
+      "attribution": "MD3 contributors"
+    },
+    "evidence": {
+      "kind": "reference",
+      "sourceId": "original-c34f1481354b417d"
+    },
+    "review": {
+      "verdict": "passed",
+      "contentHash": "7ef16c51e7a534f9a704edfbcaf8a12b73384908bf126d78ef74473da213a6af"
+    }
+  }
+}

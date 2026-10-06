@@ -1,0 +1,65 @@
+{
+  "id": "bank:cohort:anatomy:q-a500c0b1e4d8:v1",
+  "rotation": "cohort-open",
+  "moduleNodes": [
+    "cohort/anatomy"
+  ],
+  "topics": [
+    "long thoracic nerve",
+    "upper anatomy"
+  ],
+  "questionType": "single-best-answer",
+  "difficulty": "easy",
+  "stem": "After axillary lymph-node surgery, a patient has a prominent medial border of the scapula when pushing against a wall. Which nerve was most likely injured?",
+  "options": [
+    {
+      "label": "A",
+      "text": "Spinal accessory nerve",
+      "isCorrect": false,
+      "explanation": "It supplies trapezius and can impair shoulder elevation, but it does not produce this classic serratus pattern."
+    },
+    {
+      "label": "B",
+      "text": "Dorsal scapular nerve",
+      "isCorrect": false,
+      "explanation": "It supplies rhomboids, whose weakness can alter scapular position but is less characteristic here."
+    },
+    {
+      "label": "C",
+      "text": "Suprascapular nerve",
+      "isCorrect": false,
+      "explanation": "It supplies supraspinatus and infraspinatus, causing rotation and abduction weakness rather than winging on wall push."
+    },
+    {
+      "label": "D",
+      "text": "Axillary nerve",
+      "isCorrect": false,
+      "explanation": "It supplies deltoid and teres minor, not serratus anterior."
+    },
+    {
+      "label": "E",
+      "text": "Long thoracic nerve",
+      "isCorrect": true,
+      "explanation": "It supplies serratus anterior; weakness allows the medial scapular border to lift away from the thorax."
+    }
+  ],
+  "context": "The finding is a loss of serratus anterior stabilisation of the scapula, rather than a primary shoulder-joint lesion.",
+  "publicModule": {
+    "schemaVersion": 1,
+    "origin": "original",
+    "discipline": "anatomy",
+    "originalId": "upper-winged-scapula",
+    "itemText": {
+      "licence": "CC-BY-4.0",
+      "attribution": "MD3 contributors"
+    },
+    "evidence": {
+      "kind": "reference",
+      "sourceId": "original-a7ea8b0d51205ef7"
+    },
+    "review": {
+      "verdict": "passed",
+      "contentHash": "f0053cce478dd6fd3c9823b5ca66bb2e7991417bb13d190c500073103ed13e8a"
+    }
+  }
+}

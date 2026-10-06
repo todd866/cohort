@@ -1,0 +1,1990 @@
+{
+  "schemaVersion": 1,
+  "licence": "CC-BY-4.0",
+  "attribution": "MD3 contributors",
+  "discipline": "anatomy",
+  "items": [
+    {
+      "originalId": "upper-wrist-drop",
+      "stem": "A patient sustains a mid-shaft humeral fracture and develops wrist drop with reduced sensation in the dorsal first web space. Which nerve is most likely injured?",
+      "options": [
+        {
+          "label": "A",
+          "text": "Median nerve",
+          "isCorrect": false,
+          "explanation": "It supplies many forearm flexors and lateral-palmar sensation, so it would not explain this dorsal motor pattern."
+        },
+        {
+          "label": "B",
+          "text": "Radial nerve",
+          "isCorrect": true,
+          "explanation": "It supplies the wrist extensors and gives cutaneous sensation in the dorsal first web space, matching both findings."
+        },
+        {
+          "label": "C",
+          "text": "Ulnar nerve",
+          "isCorrect": false,
+          "explanation": "It supplies intrinsic hand muscles and medial-hand sensation, not the main wrist extensors."
+        },
+        {
+          "label": "D",
+          "text": "Axillary nerve",
+          "isCorrect": false,
+          "explanation": "It supplies deltoid and lateral shoulder sensation, which are proximal to the described deficit."
+        },
+        {
+          "label": "E",
+          "text": "Musculocutaneous nerve",
+          "isCorrect": false,
+          "explanation": "It supplies anterior-arm flexors and lateral-forearm sensation, not wrist extension."
+        }
+      ],
+      "context": "The neurological pattern localises the lesion to a nerve travelling in the radial groove before its distal branches.",
+      "topics": [
+        "radial nerve localisation",
+        "upper anatomy"
+      ],
+      "difficulty": "easy",
+      "questionType": "single-best-answer",
+      "sources": [
+        {
+          "title": "Wrist Drop",
+          "url": "https://www.ncbi.nlm.nih.gov/books/NBK532993/"
+        }
+      ],
+      "review": {
+        "status": "accepted",
+        "contentHash": "fc3ae56872fdac634ed43c73e0bccdfe3ecd7d2d628dba332208a34c9ec26c99",
+        "reviewer": "Codex primary full-item review following independent carpal_pixel_refuter source verification",
+        "reviewedAt": "2026-10-06"
+      }
+    },
+    {
+      "originalId": "upper-winged-scapula",
+      "stem": "After axillary lymph-node surgery, a patient has a prominent medial border of the scapula when pushing against a wall. Which nerve was most likely injured?",
+      "options": [
+        {
+          "label": "A",
+          "text": "Spinal accessory nerve",
+          "isCorrect": false,
+          "explanation": "It supplies trapezius and can impair shoulder elevation, but it does not produce this classic serratus pattern."
+        },
+        {
+          "label": "B",
+          "text": "Dorsal scapular nerve",
+          "isCorrect": false,
+          "explanation": "It supplies rhomboids, whose weakness can alter scapular position but is less characteristic here."
+        },
+        {
+          "label": "C",
+          "text": "Suprascapular nerve",
+          "isCorrect": false,
+          "explanation": "It supplies supraspinatus and infraspinatus, causing rotation and abduction weakness rather than winging on wall push."
+        },
+        {
+          "label": "D",
+          "text": "Axillary nerve",
+          "isCorrect": false,
+          "explanation": "It supplies deltoid and teres minor, not serratus anterior."
+        },
+        {
+          "label": "E",
+          "text": "Long thoracic nerve",
+          "isCorrect": true,
+          "explanation": "It supplies serratus anterior; weakness allows the medial scapular border to lift away from the thorax."
+        }
+      ],
+      "context": "The finding is a loss of serratus anterior stabilisation of the scapula, rather than a primary shoulder-joint lesion.",
+      "topics": [
+        "long thoracic nerve",
+        "upper anatomy"
+      ],
+      "difficulty": "easy",
+      "questionType": "single-best-answer",
+      "sources": [
+        {
+          "title": "Brachial Plexus Injuries",
+          "url": "https://www.ncbi.nlm.nih.gov/books/NBK482305/"
+        }
+      ],
+      "review": {
+        "status": "accepted",
+        "contentHash": "6eaf87521dd9f4aa137698cfaf2cc02266952a5edc2f2ad98c6db02ac43114c6",
+        "reviewer": "Codex primary full-item review following independent carpal_pixel_refuter source verification",
+        "reviewedAt": "2026-10-06"
+      }
+    },
+    {
+      "originalId": "upper-carpal-sensation",
+      "stem": "A patient has nocturnal tingling in the thumb, index and middle fingers with preserved sensation over the thenar eminence. Where is the lesion most likely?",
+      "options": [
+        {
+          "label": "A",
+          "text": "Cubital tunnel",
+          "isCorrect": false,
+          "explanation": "This compresses the ulnar nerve and affects the little finger and ulnar half of the ring finger."
+        },
+        {
+          "label": "B",
+          "text": "Pronator teres region",
+          "isCorrect": false,
+          "explanation": "A proximal median lesion can involve the palmar cutaneous branch and produce broader forearm or palm symptoms."
+        },
+        {
+          "label": "C",
+          "text": "Carpal tunnel",
+          "isCorrect": true,
+          "explanation": "Compression affects median-nerve fibres destined for the digital sensory and thenar motor branches. The palmar cutaneous branch bypasses the tunnel, so thenar skin sensation is usually spared."
+        },
+        {
+          "label": "D",
+          "text": "Guyon canal",
+          "isCorrect": false,
+          "explanation": "This affects the ulnar nerve at the wrist, not the lateral three-and-a-half digits."
+        },
+        {
+          "label": "E",
+          "text": "Radial tunnel",
+          "isCorrect": false,
+          "explanation": "This affects radial-nerve motor branches and does not produce this median sensory distribution."
+        }
+      ],
+      "context": "The spared thenar eminence points to a lesion distal to the palmar cutaneous branch, which passes superficial to the flexor retinaculum.",
+      "topics": [
+        "carpal tunnel",
+        "upper anatomy"
+      ],
+      "difficulty": "medium",
+      "questionType": "single-best-answer",
+      "sources": [
+        {
+          "title": "Carpal Tunnel Syndrome",
+          "url": "https://www.ncbi.nlm.nih.gov/books/NBK448179/"
+        }
+      ],
+      "review": {
+        "status": "accepted",
+        "contentHash": "cb62ac24d795c893affcf92a02a3b696033b3d0ca5952240a44a2e42950dca09",
+        "reviewer": "Codex primary full-item review following independent carpal_pixel_refuter source verification",
+        "reviewedAt": "2026-10-06"
+      }
+    },
+    {
+      "originalId": "upper-shoulder-dislocation",
+      "stem": "Following an anterior shoulder dislocation, a patient has marked weakness of shoulder abduction and numbness over the lateral shoulder. Which nerve is affected?",
+      "options": [
+        {
+          "label": "A",
+          "text": "Axillary nerve",
+          "isCorrect": true,
+          "explanation": "It supplies deltoid and sensation over the regimental-badge area, so both deficits fit."
+        },
+        {
+          "label": "B",
+          "text": "Suprascapular nerve",
+          "isCorrect": false,
+          "explanation": "It affects initiation of abduction and rotation but not the lateral shoulder skin."
+        },
+        {
+          "label": "C",
+          "text": "Musculocutaneous nerve",
+          "isCorrect": false,
+          "explanation": "It supplies elbow flexors and lateral-forearm sensation, not deltoid."
+        },
+        {
+          "label": "D",
+          "text": "Radial nerve",
+          "isCorrect": false,
+          "explanation": "It supplies posterior arm and forearm muscles, not the deltoid."
+        },
+        {
+          "label": "E",
+          "text": "Spinal accessory nerve",
+          "isCorrect": false,
+          "explanation": "It supplies trapezius and shoulder elevation, not glenohumeral abduction."
+        }
+      ],
+      "context": "The combination links the deltoid and its overlying cutaneous patch to a nerve winding around the surgical neck.",
+      "topics": [
+        "axillary nerve",
+        "upper anatomy"
+      ],
+      "difficulty": "easy",
+      "questionType": "single-best-answer",
+      "sources": [
+        {
+          "title": "Axillary Nerve Injury",
+          "url": "https://www.ncbi.nlm.nih.gov/books/NBK539895/"
+        }
+      ],
+      "review": {
+        "status": "accepted",
+        "contentHash": "b513945e067202cdb3bf9d84208e840a1c15e8c5873b9e0b69cd5d57f8ffaa9d",
+        "reviewer": "Codex primary full-item review following independent carpal_pixel_refuter source verification",
+        "reviewedAt": "2026-10-06"
+      }
+    },
+    {
+      "originalId": "upper-elbow-fracture",
+      "stem": "A fracture at the medial epicondyle is followed by weak finger abduction and numbness of the little finger and medial half of the ring finger. Which nerve is injured?",
+      "options": [
+        {
+          "label": "A",
+          "text": "Median nerve",
+          "isCorrect": false,
+          "explanation": "It supplies most thumb opposition and lateral digital sensation, not the described territory."
+        },
+        {
+          "label": "B",
+          "text": "Radial nerve",
+          "isCorrect": false,
+          "explanation": "It supplies wrist and finger extensors and dorsal radial sensation."
+        },
+        {
+          "label": "C",
+          "text": "Axillary nerve",
+          "isCorrect": false,
+          "explanation": "It is proximal and supplies the deltoid and lateral shoulder skin."
+        },
+        {
+          "label": "D",
+          "text": "Ulnar nerve",
+          "isCorrect": true,
+          "explanation": "It supplies the interossei and the medial one-and-a-half digits, matching the motor and sensory findings."
+        },
+        {
+          "label": "E",
+          "text": "Musculocutaneous nerve",
+          "isCorrect": false,
+          "explanation": "It supplies elbow flexors and lateral forearm sensation."
+        }
+      ],
+      "context": "The nerve is exposed behind the medial epicondyle and supplies the interossei and medial hand sensation.",
+      "topics": [
+        "ulnar nerve",
+        "upper anatomy"
+      ],
+      "difficulty": "easy",
+      "questionType": "single-best-answer",
+      "sources": [
+        {
+          "title": "Ulnar Neuropathy",
+          "url": "https://www.ncbi.nlm.nih.gov/books/NBK534226/"
+        }
+      ],
+      "review": {
+        "status": "accepted",
+        "contentHash": "897b7447519ac63a1e313aa47a3844e6d4919117193e7433f09311427415b8a9",
+        "reviewer": "Codex primary full-item review following independent carpal_pixel_refuter source verification",
+        "reviewedAt": "2026-10-06"
+      }
+    },
+    {
+      "originalId": "upper-brachial-plexus",
+      "stem": "A newborn has the arm adducted and internally rotated, with the elbow extended after traction on the neck during delivery. Which plexus injury best fits?",
+      "options": [
+        {
+          "label": "A",
+          "text": "Lower trunk (C8–T1)",
+          "isCorrect": false,
+          "explanation": "This primarily affects intrinsic hand muscles and medial forearm sensation."
+        },
+        {
+          "label": "B",
+          "text": "Upper trunk (C5–C6)",
+          "isCorrect": true,
+          "explanation": "Injury to the upper trunk weakens shoulder abduction, external rotation and elbow flexion, producing this posture."
+        },
+        {
+          "label": "C",
+          "text": "Posterior cord",
+          "isCorrect": false,
+          "explanation": "This would produce a radial/axillary pattern rather than the classic upper-root posture."
+        },
+        {
+          "label": "D",
+          "text": "Medial cord",
+          "isCorrect": false,
+          "explanation": "This would mainly affect the ulnar and medial median distribution."
+        },
+        {
+          "label": "E",
+          "text": "Lateral cord",
+          "isCorrect": false,
+          "explanation": "This can affect elbow flexion and some hand sensation but does not explain the full upper-trunk posture."
+        }
+      ],
+      "context": "The posture reflects weakness of muscles supplied by the upper roots, while the hand is relatively spared.",
+      "topics": [
+        "upper trunk",
+        "upper anatomy"
+      ],
+      "difficulty": "medium",
+      "questionType": "single-best-answer",
+      "sources": [
+        {
+          "title": "Erb Palsy",
+          "url": "https://www.ncbi.nlm.nih.gov/books/NBK513260/"
+        }
+      ],
+      "review": {
+        "status": "accepted",
+        "contentHash": "c718e354c140f473ff6b50252513324dcb446b37a08ddafc72ebad0aa6581dee",
+        "reviewer": "Codex primary full-item review following independent carpal_pixel_refuter source verification",
+        "reviewedAt": "2026-10-06"
+      }
+    },
+    {
+      "originalId": "lower-foot-drop",
+      "stem": "A patient has foot drop and loses sensation in the first dorsal web space after injuring the fibular neck. Which nerve is affected?",
+      "options": [
+        {
+          "label": "A",
+          "text": "Tibial nerve",
+          "isCorrect": false,
+          "explanation": "It supplies plantarflexors and the sole, not dorsiflexors or the first dorsal web space."
+        },
+        {
+          "label": "B",
+          "text": "Femoral nerve",
+          "isCorrect": false,
+          "explanation": "It supplies knee extension and anterior-thigh sensation."
+        },
+        {
+          "label": "C",
+          "text": "Saphenous nerve",
+          "isCorrect": false,
+          "explanation": "It is sensory and supplies the medial leg, without causing foot drop."
+        },
+        {
+          "label": "D",
+          "text": "Obturator nerve",
+          "isCorrect": false,
+          "explanation": "It supplies thigh adductors and medial-thigh sensation."
+        },
+        {
+          "label": "E",
+          "text": "Common fibular nerve",
+          "isCorrect": true,
+          "explanation": "Injury at the fibular neck can weaken dorsiflexion and affect first-web-space sensation through its deep branch."
+        }
+      ],
+      "context": "The lesion is at a superficial site where the common nerve divides into branches for the anterior and lateral compartments.",
+      "topics": [
+        "common fibular nerve",
+        "lower anatomy"
+      ],
+      "difficulty": "easy",
+      "questionType": "single-best-answer",
+      "sources": [
+        {
+          "title": "Peroneal Nerve Injury",
+          "url": "https://www.ncbi.nlm.nih.gov/books/NBK549859/"
+        }
+      ],
+      "review": {
+        "status": "accepted",
+        "contentHash": "88ae24ee47fc1c209a211efbc63107f356d57df1590595a95687074cdb10a041",
+        "reviewer": "Codex primary full-item review following independent carpal_pixel_refuter source verification",
+        "reviewedAt": "2026-10-06"
+      }
+    },
+    {
+      "originalId": "lower-knee-reflex",
+      "stem": "A patient has weak knee extension, reduced patellar reflex and numbness over the anterior thigh and medial leg. Which nerve is most likely affected?",
+      "options": [
+        {
+          "label": "A",
+          "text": "Obturator nerve",
+          "isCorrect": false,
+          "explanation": "It supplies adductors and medial-thigh sensation but not quadriceps or the patellar reflex."
+        },
+        {
+          "label": "B",
+          "text": "Tibial nerve",
+          "isCorrect": false,
+          "explanation": "It supplies posterior-leg muscles and plantar sensation."
+        },
+        {
+          "label": "C",
+          "text": "Femoral nerve",
+          "isCorrect": true,
+          "explanation": "It supplies quadriceps and gives anterior-thigh and medial-leg sensory branches, explaining the complete pattern."
+        },
+        {
+          "label": "D",
+          "text": "Common fibular nerve",
+          "isCorrect": false,
+          "explanation": "It supplies anterior/lateral leg pathways and dorsal-foot sensation, not knee extension."
+        },
+        {
+          "label": "E",
+          "text": "Sciatic nerve",
+          "isCorrect": false,
+          "explanation": "A proximal lesion would affect hamstrings and both major distal divisions, not this selective pattern."
+        }
+      ],
+      "context": "The findings combine quadriceps weakness with sensory territories carried by the femoral nerve and its saphenous branch.",
+      "topics": [
+        "femoral nerve",
+        "lower anatomy"
+      ],
+      "difficulty": "medium",
+      "questionType": "single-best-answer",
+      "sources": [
+        {
+          "title": "Anatomy, Bony Pelvis and Lower Limb: Thigh Femoral Nerve",
+          "url": "https://www.ncbi.nlm.nih.gov/books/NBK556065/"
+        }
+      ],
+      "review": {
+        "status": "accepted",
+        "contentHash": "fc4bbad9c9708148878a72d8d8dd3ee5028480c961d7123490b1e146ac700fb0",
+        "reviewer": "Codex primary full-item review following independent carpal_pixel_refuter source verification",
+        "reviewedAt": "2026-10-06"
+      }
+    },
+    {
+      "originalId": "lower-gluteal-nerve",
+      "stem": "A patient has isolated weakness of powerful hip extension: rising from a chair and climbing stairs are difficult, but hip abduction and knee extension are normal. Which nerve is most likely affected?",
+      "options": [
+        {
+          "label": "A",
+          "text": "Inferior gluteal nerve",
+          "isCorrect": true,
+          "explanation": "It supplies gluteus maximus, the main powerful hip extensor needed for rising and stair climbing."
+        },
+        {
+          "label": "B",
+          "text": "Superior gluteal nerve",
+          "isCorrect": false,
+          "explanation": "It supplies gluteus medius and minimus; injury causes pelvic instability and weak abduction."
+        },
+        {
+          "label": "C",
+          "text": "Femoral nerve",
+          "isCorrect": false,
+          "explanation": "It supplies quadriceps and would weaken knee extension."
+        },
+        {
+          "label": "D",
+          "text": "Sciatic nerve",
+          "isCorrect": false,
+          "explanation": "A proximal lesion would usually affect hamstrings and distal branches, not isolated hip extension."
+        },
+        {
+          "label": "E",
+          "text": "Obturator nerve",
+          "isCorrect": false,
+          "explanation": "It supplies the thigh adductors and would impair adduction rather than extension."
+        }
+      ],
+      "context": "The selective motor pattern localises to gluteus maximus rather than the abductor or anterior-thigh compartments.",
+      "topics": [
+        "inferior gluteal nerve",
+        "lower anatomy"
+      ],
+      "difficulty": "medium",
+      "questionType": "single-best-answer",
+      "sources": [
+        {
+          "title": "Anatomy, Abdomen and Pelvis: Inferior Gluteal Nerve",
+          "url": "https://www.ncbi.nlm.nih.gov/books/NBK532884/"
+        }
+      ],
+      "review": {
+        "status": "accepted",
+        "contentHash": "8470340d00b940f475b1ee9f63c267d8a3049eed7718c34604d7064477238f07",
+        "reviewer": "Codex primary full-item review following independent carpal_pixel_refuter source verification",
+        "reviewedAt": "2026-10-06"
+      }
+    },
+    {
+      "originalId": "lower-sciatic-palsy",
+      "stem": "A posterior hip dislocation causes weak knee flexion, ankle dorsiflexion and plantarflexion. Sensation is reduced over the lateral foot and dorsum, but the medial leg is spared. Which structure is injured?",
+      "options": [
+        {
+          "label": "A",
+          "text": "Femoral nerve",
+          "isCorrect": false,
+          "explanation": "It affects quadriceps and the medial leg, which is specifically spared here."
+        },
+        {
+          "label": "B",
+          "text": "Common fibular nerve",
+          "isCorrect": false,
+          "explanation": "It affects dorsiflexion and dorsum sensation but not plantarflexion or knee flexion."
+        },
+        {
+          "label": "C",
+          "text": "Tibial nerve",
+          "isCorrect": false,
+          "explanation": "It affects plantarflexion and posterior sensation but not dorsiflexion or most knee flexion."
+        },
+        {
+          "label": "D",
+          "text": "Sciatic nerve",
+          "isCorrect": true,
+          "explanation": "A proximal sciatic lesion can affect hamstrings and both tibial and common fibular branches, while medial-leg sensation remains via the saphenous nerve."
+        },
+        {
+          "label": "E",
+          "text": "Obturator nerve",
+          "isCorrect": false,
+          "explanation": "It supplies thigh adductors and does not produce this distal two-division pattern."
+        }
+      ],
+      "context": "The deficit spans hamstrings and both distal sciatic divisions, while sparing the saphenous territory supplied by the femoral nerve.",
+      "topics": [
+        "sciatic nerve",
+        "lower anatomy"
+      ],
+      "difficulty": "medium",
+      "questionType": "single-best-answer",
+      "sources": [
+        {
+          "title": "Anatomy, Sciatic Nerve",
+          "url": "https://www.ncbi.nlm.nih.gov/books/NBK482431/"
+        }
+      ],
+      "review": {
+        "status": "accepted",
+        "contentHash": "c15703f332ffc7325717a4440fc578fd4880cf7280b5c851608ea9f98c88ab58",
+        "reviewer": "Codex primary full-item review following independent carpal_pixel_refuter source verification",
+        "reviewedAt": "2026-10-06"
+      }
+    },
+    {
+      "originalId": "lower-achilles",
+      "stem": "A patient cannot perform a single-leg heel raise and has a reduced Achilles reflex, while knee flexion is preserved. Which nerve pathway is most likely affected?",
+      "options": [
+        {
+          "label": "A",
+          "text": "Common fibular nerve",
+          "isCorrect": false,
+          "explanation": "It supplies dorsiflexors and evertors, so injury would cause foot drop rather than loss of heel raise."
+        },
+        {
+          "label": "B",
+          "text": "Tibial nerve",
+          "isCorrect": true,
+          "explanation": "It supplies gastrocnemius and soleus and carries the predominantly S1 afferent and efferent fibres of the ankle reflex. The motor response contracts these muscles, rather than the tendon itself."
+        },
+        {
+          "label": "C",
+          "text": "Femoral nerve",
+          "isCorrect": false,
+          "explanation": "It supplies knee extension and the patellar reflex."
+        },
+        {
+          "label": "D",
+          "text": "Obturator nerve",
+          "isCorrect": false,
+          "explanation": "It supplies thigh adduction."
+        },
+        {
+          "label": "E",
+          "text": "Superior gluteal nerve",
+          "isCorrect": false,
+          "explanation": "It supplies hip abductors and does not mediate the Achilles reflex."
+        }
+      ],
+      "context": "The selective deficit points to the tibial nerve or S1 pathway supplying plantarflexors distal to the hamstrings.",
+      "topics": [
+        "tibial nerve",
+        "lower anatomy"
+      ],
+      "difficulty": "medium",
+      "questionType": "single-best-answer",
+      "sources": [
+        {
+          "title": "Achilles Reflex",
+          "url": "https://www.ncbi.nlm.nih.gov/books/NBK459229/"
+        }
+      ],
+      "review": {
+        "status": "accepted",
+        "contentHash": "f86b6673e3eed21468a97757e7eea4a6a228769011907cf617a5d6fd203a8536",
+        "reviewer": "Codex primary full-item review following independent carpal_pixel_refuter source verification",
+        "reviewedAt": "2026-10-06"
+      }
+    },
+    {
+      "originalId": "lower-gluteal-drop",
+      "stem": "During single-leg stance, the pelvis drops on the side opposite the weight-bearing leg. Which muscle on the weight-bearing side is weak?",
+      "options": [
+        {
+          "label": "A",
+          "text": "Gluteus maximus",
+          "isCorrect": false,
+          "explanation": "It extends the hip but is not the main pelvic stabiliser in this test."
+        },
+        {
+          "label": "B",
+          "text": "Adductor longus",
+          "isCorrect": false,
+          "explanation": "It adducts the thigh and does not provide the required lateral pelvic support."
+        },
+        {
+          "label": "C",
+          "text": "Sartorius",
+          "isCorrect": false,
+          "explanation": "It flexes, abducts and laterally rotates the hip but is not the principal stabiliser."
+        },
+        {
+          "label": "D",
+          "text": "Iliopsoas",
+          "isCorrect": false,
+          "explanation": "It flexes the hip and does not prevent the contralateral pelvic drop."
+        },
+        {
+          "label": "E",
+          "text": "Gluteus medius",
+          "isCorrect": true,
+          "explanation": "Its abduction force keeps the unsupported side of the pelvis level during single-leg stance."
+        }
+      ],
+      "context": "The finding is a Trendelenburg pattern caused by failure to stabilise the pelvis against gravity.",
+      "topics": [
+        "gluteus medius",
+        "lower anatomy"
+      ],
+      "difficulty": "easy",
+      "questionType": "single-best-answer",
+      "sources": [
+        {
+          "title": "Anatomy, Bony Pelvis and Lower Limb, Gluteus Medius Muscle",
+          "url": "https://www.ncbi.nlm.nih.gov/books/NBK557509/"
+        }
+      ],
+      "review": {
+        "status": "accepted",
+        "contentHash": "c0460fff2033c7a69ba9fe5903c1f57672bd312628a1a084ea4e6202ea6c0f40",
+        "reviewer": "Codex primary full-item review following independent carpal_pixel_refuter source verification",
+        "reviewedAt": "2026-10-06"
+      }
+    },
+    {
+      "originalId": "head-facial-palsy",
+      "stem": "A patient has complete unilateral facial weakness including inability to wrinkle the forehead, close the eye and smile. Which lesion best explains this pattern?",
+      "options": [
+        {
+          "label": "A",
+          "text": "Contralateral corticobulbar lesion",
+          "isCorrect": false,
+          "explanation": "This usually weakens the lower face with relative forehead sparing."
+        },
+        {
+          "label": "B",
+          "text": "Trigeminal motor lesion",
+          "isCorrect": false,
+          "explanation": "This weakens mastication and jaw movement rather than facial expression."
+        },
+        {
+          "label": "C",
+          "text": "Peripheral facial nerve lesion",
+          "isCorrect": true,
+          "explanation": "A lower motor lesion affects the ipsilateral upper and lower face, including forehead and eye closure."
+        },
+        {
+          "label": "D",
+          "text": "Hypoglossal lesion",
+          "isCorrect": false,
+          "explanation": "This affects tongue movement and does not cause facial weakness."
+        },
+        {
+          "label": "E",
+          "text": "Glossopharyngeal lesion",
+          "isCorrect": false,
+          "explanation": "This affects pharyngeal sensation and taste, not the muscles of facial expression."
+        }
+      ],
+      "context": "Upper and lower facial weakness fits a lower motor neuron pattern. A facial nucleus or fascicle lesion in the pons can also produce this pattern, so forehead weakness alone does not exclude stroke.",
+      "topics": [
+        "facial nerve",
+        "head anatomy"
+      ],
+      "difficulty": "medium",
+      "questionType": "single-best-answer",
+      "sources": [
+        {
+          "title": "Facial Nerve Anatomy and Clinical Applications",
+          "url": "https://www.ncbi.nlm.nih.gov/books/NBK554569/"
+        }
+      ],
+      "review": {
+        "status": "accepted",
+        "contentHash": "9ce6eb40beb77632fa1d60af6c30cb080458048c180982b752d0c2bf7dfdf95a",
+        "reviewer": "Codex primary full-item review following independent carpal_pixel_refuter source verification",
+        "reviewedAt": "2026-10-06"
+      }
+    },
+    {
+      "originalId": "head-hoarseness",
+      "stem": "After thyroid surgery, a patient develops hoarseness. Laryngoscopy shows an immobile vocal fold; cricothyroid function is preserved. Which nerve branch is most likely injured?",
+      "options": [
+        {
+          "label": "A",
+          "text": "Recurrent laryngeal nerve",
+          "isCorrect": true,
+          "explanation": "It supplies most intrinsic laryngeal muscles and injury can impair vocal-fold movement, causing hoarseness."
+        },
+        {
+          "label": "B",
+          "text": "External branch of the superior laryngeal nerve",
+          "isCorrect": false,
+          "explanation": "It supplies cricothyroid, which tenses the vocal fold for pitch control. Preserved cricothyroid function argues against this branch."
+        },
+        {
+          "label": "C",
+          "text": "Phrenic nerve",
+          "isCorrect": false,
+          "explanation": "It supplies the diaphragm and would affect ventilation rather than voice."
+        },
+        {
+          "label": "D",
+          "text": "Hypoglossal nerve",
+          "isCorrect": false,
+          "explanation": "It supplies tongue muscles and would cause tongue deviation or dysarthria."
+        },
+        {
+          "label": "E",
+          "text": "Glossopharyngeal nerve",
+          "isCorrect": false,
+          "explanation": "It contributes pharyngeal sensation and taste, not most vocal-fold movement."
+        }
+      ],
+      "context": "The voice change localises to a motor supply of the intrinsic laryngeal muscles.",
+      "topics": [
+        "recurrent laryngeal nerve",
+        "head anatomy"
+      ],
+      "difficulty": "medium",
+      "questionType": "single-best-answer",
+      "sources": [
+        {
+          "title": "Recurrent Laryngeal Nerve Injury",
+          "url": "https://www.ncbi.nlm.nih.gov/books/NBK560832/"
+        }
+      ],
+      "review": {
+        "status": "accepted",
+        "contentHash": "4453caf2047641c821e9e6a0c38f03d8a494f69ad47bd1c4b5b4d939029a352f",
+        "reviewer": "Codex primary full-item review following independent carpal_pixel_refuter source verification",
+        "reviewedAt": "2026-10-06"
+      }
+    },
+    {
+      "originalId": "head-retinal-arterial-supply",
+      "stem": "A patient has transient monocular visual loss from an embolus in the retinal circulation. Imaging identifies an ipsilateral neck-artery plaque as its source. Which artery most directly feeds the ophthalmic artery?",
+      "options": [
+        {
+          "label": "A",
+          "text": "External carotid artery",
+          "isCorrect": false,
+          "explanation": "Its usual branches supply the face and scalp; the ophthalmic artery normally arises from the internal carotid."
+        },
+        {
+          "label": "B",
+          "text": "Vertebral artery",
+          "isCorrect": false,
+          "explanation": "It contributes to the posterior cerebral circulation through the basilar artery, not the usual ophthalmic origin."
+        },
+        {
+          "label": "C",
+          "text": "Facial artery",
+          "isCorrect": false,
+          "explanation": "This external-carotid branch supplies superficial facial tissues rather than being the normal ophthalmic origin."
+        },
+        {
+          "label": "D",
+          "text": "Internal carotid artery",
+          "isCorrect": true,
+          "explanation": "The ophthalmic artery usually arises from it; the central retinal artery then branches from the ophthalmic artery."
+        },
+        {
+          "label": "E",
+          "text": "Ascending pharyngeal artery",
+          "isCorrect": false,
+          "explanation": "This external-carotid branch supplies deep pharyngeal and skull-base structures rather than the usual ophthalmic origin."
+        }
+      ],
+      "context": "The usual arterial route is internal carotid to ophthalmic to central retinal artery. This explains why carotid disease can produce visual symptoms in one eye.",
+      "topics": [
+        "retinal arterial supply",
+        "head and neck anatomy"
+      ],
+      "difficulty": "medium",
+      "questionType": "single-best-answer",
+      "sources": [
+        {
+          "title": "Amaurosis Fugax",
+          "url": "https://www.ncbi.nlm.nih.gov/books/NBK470528/"
+        }
+      ],
+      "review": {
+        "status": "accepted",
+        "contentHash": "ac04263cf99de6b1d4bfa003349a5bc5cde9ff60ca2a4ef3147c435981ae017f",
+        "reviewer": "Codex primary full-item review following independent carpal_pixel_refuter source verification",
+        "reviewedAt": "2026-10-06"
+      }
+    },
+    {
+      "originalId": "head-tmj",
+      "stem": "A patient cannot open the mouth fully after trauma and has pain localised just anterior to the ear. Which joint is involved?",
+      "options": [
+        {
+          "label": "A",
+          "text": "Atlanto-occipital joint",
+          "isCorrect": false,
+          "explanation": "It permits nodding between the skull and atlas, not jaw movement."
+        },
+        {
+          "label": "B",
+          "text": "Temporomandibular joint",
+          "isCorrect": true,
+          "explanation": "It lies anterior to the ear and permits mandibular hinge and translation during mouth opening."
+        },
+        {
+          "label": "C",
+          "text": "Sternoclavicular joint",
+          "isCorrect": false,
+          "explanation": "It links the upper limb to the trunk."
+        },
+        {
+          "label": "D",
+          "text": "Glenohumeral joint",
+          "isCorrect": false,
+          "explanation": "It is the shoulder joint and is unrelated to mouth opening."
+        },
+        {
+          "label": "E",
+          "text": "Zygomaticomaxillary suture",
+          "isCorrect": false,
+          "explanation": "It is a craniofacial suture and does not permit mandibular motion."
+        }
+      ],
+      "context": "The location and chewing-related movement identify the articulation between the mandibular condyle and temporal bone.",
+      "topics": [
+        "temporomandibular joint",
+        "head anatomy"
+      ],
+      "difficulty": "easy",
+      "questionType": "single-best-answer",
+      "sources": [
+        {
+          "title": "Anatomy, Head and Neck, Temporomandibular Joint",
+          "url": "https://www.ncbi.nlm.nih.gov/books/NBK538486/"
+        }
+      ],
+      "review": {
+        "status": "accepted",
+        "contentHash": "15858fc2957b063772437c11872378209298ba5ba10b7783719dec7098ac0f09",
+        "reviewer": "Codex primary full-item review following independent carpal_pixel_refuter source verification",
+        "reviewedAt": "2026-10-06"
+      }
+    },
+    {
+      "originalId": "head-tonsil-glossopharyngeal",
+      "stem": "After tonsillectomy, a patient has reduced taste and general sensation over the posterior third of the tongue. Tongue movement is normal. Which nerve was most likely injured?",
+      "options": [
+        {
+          "label": "A",
+          "text": "Lingual nerve",
+          "isCorrect": false,
+          "explanation": "It carries general sensation from the anterior two-thirds of the tongue, rather than the posterior third."
+        },
+        {
+          "label": "B",
+          "text": "Chorda tympani",
+          "isCorrect": false,
+          "explanation": "Its taste fibres serve the anterior two-thirds of the tongue and travel with the lingual nerve."
+        },
+        {
+          "label": "C",
+          "text": "Hypoglossal nerve",
+          "isCorrect": false,
+          "explanation": "It supplies most tongue muscles; injury would produce motor weakness rather than this taste and sensory pattern."
+        },
+        {
+          "label": "D",
+          "text": "Internal branch of the superior laryngeal nerve",
+          "isCorrect": false,
+          "explanation": "It supplies sensation above the vocal folds and the epiglottic region, rather than the posterior-third tongue territory."
+        },
+        {
+          "label": "E",
+          "text": "Glossopharyngeal nerve",
+          "isCorrect": true,
+          "explanation": "Its proximity to the tonsillar bed makes it vulnerable during tonsillectomy; it carries taste and general sensation from the posterior third of the tongue."
+        }
+      ],
+      "context": "The glossopharyngeal nerve runs close to the tonsillar bed and carries posterior-tongue sensation and taste. Preserved movement helps distinguish this sensory deficit from hypoglossal injury.",
+      "topics": [
+        "glossopharyngeal nerve",
+        "tonsillar bed",
+        "head and neck anatomy"
+      ],
+      "difficulty": "medium",
+      "questionType": "single-best-answer",
+      "sources": [
+        {
+          "title": "Anatomy, Head and Neck, Palatine Tonsil (Faucial Tonsils)",
+          "url": "https://www.ncbi.nlm.nih.gov/books/NBK538296/"
+        }
+      ],
+      "review": {
+        "status": "accepted",
+        "contentHash": "3b95e85718176da93b255f42565bfe6a36b6221b85ac461b81c639d1ac468914",
+        "reviewer": "Codex primary full-item review following independent carpal_pixel_refuter source verification",
+        "reviewedAt": "2026-10-06"
+      }
+    },
+    {
+      "originalId": "head-ansa-cervicalis",
+      "stem": "During neck dissection, a nerve loop is injured. Sternohyoid, sternothyroid and omohyoid become weak, while thyrohyoid and tongue movement remain intact. Which structure was injured?",
+      "options": [
+        {
+          "label": "A",
+          "text": "Hypoglossal nerve",
+          "isCorrect": false,
+          "explanation": "Injury to its motor fibres would weaken the tongue; the stem specifically preserves tongue movement."
+        },
+        {
+          "label": "B",
+          "text": "Phrenic nerve",
+          "isCorrect": false,
+          "explanation": "It supplies the diaphragm, rather than this group of infrahyoid muscles."
+        },
+        {
+          "label": "C",
+          "text": "Ansa cervicalis",
+          "isCorrect": true,
+          "explanation": "This C1–C3 loop supplies sternohyoid, sternothyroid and omohyoid, matching the selective deficit."
+        },
+        {
+          "label": "D",
+          "text": "Spinal accessory nerve",
+          "isCorrect": false,
+          "explanation": "It supplies sternocleidomastoid and trapezius, rather than these strap muscles."
+        },
+        {
+          "label": "E",
+          "text": "Recurrent laryngeal nerve",
+          "isCorrect": false,
+          "explanation": "It supplies most intrinsic laryngeal muscles rather than the three infrahyoid muscles listed."
+        }
+      ],
+      "context": "Ansa cervicalis supplies three infrahyoid muscles. Thyrohyoid receives C1 fibres travelling with the hypoglossal nerve, so it can remain intact after injury to the loop.",
+      "topics": [
+        "ansa cervicalis",
+        "infrahyoid muscles",
+        "head and neck anatomy"
+      ],
+      "difficulty": "medium",
+      "questionType": "single-best-answer",
+      "sources": [
+        {
+          "title": "Anatomy, Head and Neck: Cervical Nerves",
+          "url": "https://www.ncbi.nlm.nih.gov/books/NBK538136/"
+        }
+      ],
+      "review": {
+        "status": "accepted",
+        "contentHash": "89d9e0d7d009312df82419f6bb6ed7fe8b4b465ecdd209bbf7821724ca4cbb92",
+        "reviewer": "Codex primary full-item review following independent carpal_pixel_refuter source verification",
+        "reviewedAt": "2026-10-06"
+      }
+    },
+    {
+      "originalId": "thorax-phrenic",
+      "stem": "A patient with a cervical lesion has an elevated hemidiaphragm and reduced inspiratory movement on that side. Which nerve is affected?",
+      "options": [
+        {
+          "label": "A",
+          "text": "Phrenic nerve",
+          "isCorrect": true,
+          "explanation": "It provides the main motor supply to the diaphragm and arises from C3–C5."
+        },
+        {
+          "label": "B",
+          "text": "Vagus nerve",
+          "isCorrect": false,
+          "explanation": "It supplies thoracic viscera and laryngeal branches but is not the main motor nerve of the diaphragm."
+        },
+        {
+          "label": "C",
+          "text": "Intercostal nerve",
+          "isCorrect": false,
+          "explanation": "It supplies intercostal muscles and thoracic wall sensation, not the diaphragm’s primary motor supply."
+        },
+        {
+          "label": "D",
+          "text": "Long thoracic nerve",
+          "isCorrect": false,
+          "explanation": "It supplies serratus anterior and affects scapular movement."
+        },
+        {
+          "label": "E",
+          "text": "Sympathetic trunk",
+          "isCorrect": false,
+          "explanation": "It carries autonomic fibres and does not produce the described diaphragmatic motor deficit."
+        }
+      ],
+      "context": "The pattern is unilateral diaphragmatic weakness, so the motor supply to the diaphragm is the key structure.",
+      "topics": [
+        "phrenic nerve",
+        "thorax anatomy"
+      ],
+      "difficulty": "easy",
+      "questionType": "single-best-answer",
+      "sources": [
+        {
+          "title": "Anatomy, Thorax: Diaphragm",
+          "url": "https://www.ncbi.nlm.nih.gov/books/NBK519558/"
+        }
+      ],
+      "review": {
+        "status": "accepted",
+        "contentHash": "d28b8df4a0d3b6be6b56d20c3ccbd0e3b96bda22cc958f30bbd1ebc6846f6be0",
+        "reviewer": "Codex primary full-item review following independent carpal_pixel_refuter source verification",
+        "reviewedAt": "2026-10-06"
+      }
+    },
+    {
+      "originalId": "thorax-pneumothorax",
+      "stem": "A central venous line is inserted above the first rib and pleural air is suspected after the procedure. Which structure is at risk near the lung apex?",
+      "options": [
+        {
+          "label": "A",
+          "text": "Pericardium",
+          "isCorrect": false,
+          "explanation": "It surrounds the heart in the mediastinum, not the lung apex."
+        },
+        {
+          "label": "B",
+          "text": "Diaphragm",
+          "isCorrect": false,
+          "explanation": "It forms the floor of the thorax and is not at the lung apex."
+        },
+        {
+          "label": "C",
+          "text": "Mediastinal pleura",
+          "isCorrect": false,
+          "explanation": "It lines the mediastinal surface of the lung but is not the apical projection at the root of the neck."
+        },
+        {
+          "label": "D",
+          "text": "Cervical pleura",
+          "isCorrect": true,
+          "explanation": "It extends above the first rib over the lung apex and can be injured by low-neck procedures."
+        },
+        {
+          "label": "E",
+          "text": "Endothoracic fascia",
+          "isCorrect": false,
+          "explanation": "It is a connective-tissue layer but not the pleural sac that contains the lung."
+        }
+      ],
+      "context": "The cervical pleura projects above the first rib, so procedures at the root of the neck can enter the pleural cavity.",
+      "topics": [
+        "cervical pleura",
+        "thorax anatomy"
+      ],
+      "difficulty": "easy",
+      "questionType": "single-best-answer",
+      "sources": [
+        {
+          "title": "Anatomy, Thorax, Lungs",
+          "url": "https://www.ncbi.nlm.nih.gov/books/NBK470197/"
+        }
+      ],
+      "review": {
+        "status": "accepted",
+        "contentHash": "c98cc4c73eecb4399395c9694d0468a7656bc11fa83e9d9a016b0a557dea4624",
+        "reviewer": "Codex primary full-item review following independent carpal_pixel_refuter source verification",
+        "reviewedAt": "2026-10-06"
+      }
+    },
+    {
+      "originalId": "thorax-intercostal",
+      "stem": "A penetrating wound passes just inferior to a rib and causes bleeding with segmental chest-wall numbness. Which structure is most at risk in the costal groove?",
+      "options": [
+        {
+          "label": "A",
+          "text": "Thoracic duct",
+          "isCorrect": false,
+          "explanation": "It is a central lymphatic channel and does not run in each intercostal space."
+        },
+        {
+          "label": "B",
+          "text": "Intercostal vein, artery and nerve",
+          "isCorrect": true,
+          "explanation": "The bundle runs in the costal groove under the rib, so an inferior wound can injure all three."
+        },
+        {
+          "label": "C",
+          "text": "Phrenic nerve",
+          "isCorrect": false,
+          "explanation": "It descends on the mediastinal pleura rather than in the costal groove."
+        },
+        {
+          "label": "D",
+          "text": "Vagus nerve",
+          "isCorrect": false,
+          "explanation": "It runs with the oesophagus and airway structures, not along each rib."
+        },
+        {
+          "label": "E",
+          "text": "Internal thoracic artery alone",
+          "isCorrect": false,
+          "explanation": "It runs near the sternum; the segmental bundle in the groove includes vein, artery and nerve."
+        }
+      ],
+      "context": "The main intercostal neurovascular bundle runs in a predictable plane beneath each rib.",
+      "topics": [
+        "intercostal neurovascular bundle",
+        "thorax anatomy"
+      ],
+      "difficulty": "easy",
+      "questionType": "single-best-answer",
+      "sources": [
+        {
+          "title": "Anatomy, Thorax, Wall",
+          "url": "https://www.ncbi.nlm.nih.gov/books/NBK535414/"
+        }
+      ],
+      "review": {
+        "status": "accepted",
+        "contentHash": "a0fbea3ab782646a9ad0b7befb272d6b6c6ade54f1fcb9490d5c2d7ad9628314",
+        "reviewer": "Codex primary full-item review following independent carpal_pixel_refuter source verification",
+        "reviewedAt": "2026-10-06"
+      }
+    },
+    {
+      "originalId": "thorax-coronary",
+      "stem": "A patient has an inferior myocardial infarction with right-ventricular involvement. Which coronary artery territory is most likely?",
+      "options": [
+        {
+          "label": "A",
+          "text": "Left circumflex artery",
+          "isCorrect": false,
+          "explanation": "It can supply the inferior wall in left-dominant circulation but is less likely with right-ventricular involvement."
+        },
+        {
+          "label": "B",
+          "text": "Left anterior descending artery",
+          "isCorrect": false,
+          "explanation": "It mainly supplies the anterior wall and septum."
+        },
+        {
+          "label": "C",
+          "text": "First diagonal branch",
+          "isCorrect": false,
+          "explanation": "This branch of the left anterior descending artery supplies anterolateral left-ventricular myocardium, rather than the combined inferior and right-ventricular territory."
+        },
+        {
+          "label": "D",
+          "text": "Obtuse marginal branch",
+          "isCorrect": false,
+          "explanation": "This circumflex branch supplies lateral left-ventricular myocardium, making it a poorer fit for right-ventricular involvement."
+        },
+        {
+          "label": "E",
+          "text": "Right coronary artery",
+          "isCorrect": true,
+          "explanation": "It commonly supplies the right ventricle and inferior heart through its marginal and posterior descending branches."
+        }
+      ],
+      "context": "The inferior and right-ventricular surfaces are commonly supplied by the right coronary artery in right-dominant circulation.",
+      "topics": [
+        "right coronary artery",
+        "thorax anatomy"
+      ],
+      "difficulty": "medium",
+      "questionType": "single-best-answer",
+      "sources": [
+        {
+          "title": "Right Ventricular Myocardial Infarction",
+          "url": "https://www.ncbi.nlm.nih.gov/books/NBK431048/"
+        }
+      ],
+      "review": {
+        "status": "accepted",
+        "contentHash": "c661baa318a49acc45eff50680b2672ab59992dd1612fdc28a216bbc67e36e55",
+        "reviewer": "Codex primary full-item review following independent carpal_pixel_refuter source verification",
+        "reviewedAt": "2026-10-06"
+      }
+    },
+    {
+      "originalId": "thorax-oesophagus",
+      "stem": "A patient with progressive dysphagia has a lesion arising within the wall of a muscular digestive tube in the posterior mediastinum. Which organ is involved?",
+      "options": [
+        {
+          "label": "A",
+          "text": "Descending thoracic aorta",
+          "isCorrect": false,
+          "explanation": "An enlarged aorta can compress the oesophagus and cause dysphagia, but it is an artery, not the digestive-tube wall identified in this stem."
+        },
+        {
+          "label": "B",
+          "text": "Trachea",
+          "isCorrect": false,
+          "explanation": "It lies anterior to the oesophagus and would more directly cause cough, stridor or airway symptoms."
+        },
+        {
+          "label": "C",
+          "text": "Oesophagus",
+          "isCorrect": true,
+          "explanation": "Its posterior mediastinal course and luminal function match both the location and progressive dysphagia."
+        },
+        {
+          "label": "D",
+          "text": "Thoracic duct",
+          "isCorrect": false,
+          "explanation": "It is a lymphatic channel and does not account for progressive luminal dysphagia."
+        },
+        {
+          "label": "E",
+          "text": "Azygos vein",
+          "isCorrect": false,
+          "explanation": "It is a posterior mediastinal vein, not a swallowing tube."
+        }
+      ],
+      "context": "The thoracic oesophagus traverses the posterior mediastinum. Dysphagia alone can also result from external compression; the demonstrated origin within a digestive-tube wall is the discriminator here.",
+      "topics": [
+        "oesophagus",
+        "thorax anatomy"
+      ],
+      "difficulty": "easy",
+      "questionType": "single-best-answer",
+      "sources": [
+        {
+          "title": "Anatomy, Thorax, Mediastinum",
+          "url": "https://www.ncbi.nlm.nih.gov/books/NBK539819/"
+        }
+      ],
+      "review": {
+        "status": "accepted",
+        "contentHash": "e82684132cf6ee2a9931ef689204ae6ca0a0c5d039ef267893affabaa0bb3262",
+        "reviewer": "Codex primary full-item review following independent carpal_pixel_refuter source verification",
+        "reviewedAt": "2026-10-06"
+      }
+    },
+    {
+      "originalId": "thorax-pericardium",
+      "stem": "A patient has hypotension, raised venous pressure and muffled heart sounds after chest trauma. Which anatomical space is rapidly restricting cardiac filling?",
+      "options": [
+        {
+          "label": "A",
+          "text": "Pericardial cavity",
+          "isCorrect": true,
+          "explanation": "Blood in this confined space compresses the heart and limits diastolic filling."
+        },
+        {
+          "label": "B",
+          "text": "Pleural cavity",
+          "isCorrect": false,
+          "explanation": "Pleural blood can impair ventilation and cause shock but does not directly compress all cardiac chambers."
+        },
+        {
+          "label": "C",
+          "text": "Mediastinum",
+          "isCorrect": false,
+          "explanation": "This is a broad compartment, not the specific fluid space producing tamponade."
+        },
+        {
+          "label": "D",
+          "text": "Thoracic duct",
+          "isCorrect": false,
+          "explanation": "It is a lymphatic vessel and cannot produce circumferential cardiac compression."
+        },
+        {
+          "label": "E",
+          "text": "Peritoneal cavity",
+          "isCorrect": false,
+          "explanation": "It is below the diaphragm and does not surround the heart."
+        }
+      ],
+      "context": "The clinical triad indicates tamponade from fluid accumulating around the heart within the pericardial sac.",
+      "topics": [
+        "pericardial cavity",
+        "thorax anatomy"
+      ],
+      "difficulty": "medium",
+      "questionType": "single-best-answer",
+      "sources": [
+        {
+          "title": "Anatomy, Thorax, Heart and Pericardial Cavity",
+          "url": "https://www.ncbi.nlm.nih.gov/books/NBK482452/"
+        }
+      ],
+      "review": {
+        "status": "accepted",
+        "contentHash": "795d08cad6b475a9dac74dda1327cbc5ccfab30dcddd13c103d901a575e816b0",
+        "reviewer": "Codex primary full-item review following independent carpal_pixel_refuter source verification",
+        "reviewedAt": "2026-10-06"
+      }
+    },
+    {
+      "originalId": "abd-portal-hypertension",
+      "stem": "A patient with portal hypertension develops distal oesophageal varices. Which pair of venous pathways forms the relevant portal-to-systemic connection?",
+      "options": [
+        {
+          "label": "A",
+          "text": "Superior rectal and middle rectal veins",
+          "isCorrect": false,
+          "explanation": "These form a portosystemic connection at the rectum, not the distal oesophagus."
+        },
+        {
+          "label": "B",
+          "text": "Paraumbilical and superficial abdominal-wall veins",
+          "isCorrect": false,
+          "explanation": "These form collaterals around the umbilicus rather than at the oesophageal junction."
+        },
+        {
+          "label": "C",
+          "text": "Superior and inferior epigastric veins",
+          "isCorrect": false,
+          "explanation": "This is a systemic-to-systemic abdominal-wall route, not the relevant portal tributary."
+        },
+        {
+          "label": "D",
+          "text": "Left gastric and azygos tributaries",
+          "isCorrect": true,
+          "explanation": "These connect the portal circulation to systemic veins around the distal oesophagus."
+        },
+        {
+          "label": "E",
+          "text": "Hepatic veins and inferior vena cava",
+          "isCorrect": false,
+          "explanation": "This is the normal hepatic venous outflow, not the collateral route at the distal oesophagus."
+        }
+      ],
+      "context": "Left gastric tributaries communicate with oesophageal veins draining to the azygos system. Raised portal pressure can enlarge these collaterals into varices.",
+      "topics": [
+        "portosystemic anastomosis",
+        "abdomen anatomy"
+      ],
+      "difficulty": "medium",
+      "questionType": "single-best-answer",
+      "sources": [
+        {
+          "title": "Anatomy, Thorax, Azygos Veins",
+          "url": "https://www.ncbi.nlm.nih.gov/books/NBK554430/"
+        }
+      ],
+      "review": {
+        "status": "accepted",
+        "contentHash": "886fd396fb75748a9c4fa5226afe46e7ee2a783d77e85aaf1ddf4c5cb2f549e4",
+        "reviewer": "Codex primary full-item review following independent carpal_pixel_refuter source verification",
+        "reviewedAt": "2026-10-06"
+      }
+    },
+    {
+      "originalId": "abd-appendix",
+      "stem": "A patient with appendicitis first has poorly localised periumbilical pain, then develops sharply localised right-lower-quadrant pain when the inflamed appendix contacts the abdominal wall. Which change explains the second phase?",
+      "options": [
+        {
+          "label": "A",
+          "text": "Distension of visceral peritoneum",
+          "isCorrect": false,
+          "explanation": "This contributes to the early diffuse pain but remains poorly localised."
+        },
+        {
+          "label": "B",
+          "text": "Irritation of parietal peritoneum",
+          "isCorrect": true,
+          "explanation": "Somatic innervation of the parietal lining produces sharper, better-localised pain than visceral afferents."
+        },
+        {
+          "label": "C",
+          "text": "Stretch of the mesoappendix",
+          "isCorrect": false,
+          "explanation": "It can contribute to visceral discomfort but does not explain the new precise abdominal-wall localisation."
+        },
+        {
+          "label": "D",
+          "text": "Referred pain from the diaphragm",
+          "isCorrect": false,
+          "explanation": "This would tend to refer pain to the shoulder through phrenic pathways, not the right lower quadrant."
+        },
+        {
+          "label": "E",
+          "text": "Obstruction of the portal vein",
+          "isCorrect": false,
+          "explanation": "It would affect venous drainage and does not create this characteristic temporal pain shift."
+        }
+      ],
+      "context": "Visceral afferents produce diffuse midline pain; involvement of the somatically innervated abdominal lining produces precise localisation.",
+      "topics": [
+        "parietal peritoneum",
+        "abdomen anatomy"
+      ],
+      "difficulty": "medium",
+      "questionType": "single-best-answer",
+      "sources": [
+        {
+          "title": "Anatomy, Abdomen and Pelvis, Peritoneum",
+          "url": "https://www.ncbi.nlm.nih.gov/books/NBK534788/"
+        }
+      ],
+      "review": {
+        "status": "accepted",
+        "contentHash": "5d530e7f87cdb991654eee1b662bb8c16082e41d17de5a5b02c0cb59b7c57ea0",
+        "reviewer": "Codex primary full-item review following independent carpal_pixel_refuter source verification",
+        "reviewedAt": "2026-10-06"
+      }
+    },
+    {
+      "originalId": "abd-pancreas",
+      "stem": "A lesion at the pancreatic neck obstructs the venous confluence immediately posterior to it. The splenic vein and which other vessel normally join there?",
+      "options": [
+        {
+          "label": "A",
+          "text": "Inferior mesenteric vein",
+          "isCorrect": false,
+          "explanation": "Its termination varies and it commonly joins the splenic vein. The two principal veins forming the portal vein are the splenic and superior mesenteric veins."
+        },
+        {
+          "label": "B",
+          "text": "Left gastric vein",
+          "isCorrect": false,
+          "explanation": "It drains into the portal system but is a smaller tributary, not the main forming vessel."
+        },
+        {
+          "label": "C",
+          "text": "Inferior vena cava",
+          "isCorrect": false,
+          "explanation": "It is a systemic vein and does not join the splenic vein to form the portal vein."
+        },
+        {
+          "label": "D",
+          "text": "Right renal vein",
+          "isCorrect": false,
+          "explanation": "It drains the kidney and has no role in forming the portal vein."
+        },
+        {
+          "label": "E",
+          "text": "Superior mesenteric vein",
+          "isCorrect": true,
+          "explanation": "It joins the splenic vein behind the pancreatic neck to form the portal vein."
+        }
+      ],
+      "context": "The portal vein is formed behind the pancreatic neck from the splenic and superior mesenteric veins.",
+      "topics": [
+        "portal vein",
+        "abdomen anatomy"
+      ],
+      "difficulty": "medium",
+      "questionType": "single-best-answer",
+      "sources": [
+        {
+          "title": "Anatomy, Abdomen and Pelvis: Liver",
+          "url": "https://www.ncbi.nlm.nih.gov/books/NBK500014/"
+        }
+      ],
+      "review": {
+        "status": "accepted",
+        "contentHash": "6d9298f82e499a4259d78de4c919b525bf4601ca9fd3593b97054c4229ad3b17",
+        "reviewer": "Codex primary full-item review following independent carpal_pixel_refuter source verification",
+        "reviewedAt": "2026-10-06"
+      }
+    },
+    {
+      "originalId": "abd-inguinal",
+      "stem": "A groin hernia lies lateral to the inferior epigastric vessels and enters the deep inguinal ring. Which type is most likely?",
+      "options": [
+        {
+          "label": "A",
+          "text": "Direct inguinal hernia",
+          "isCorrect": false,
+          "explanation": "It pushes through the posterior wall medial to the inferior epigastric vessels."
+        },
+        {
+          "label": "B",
+          "text": "Femoral hernia",
+          "isCorrect": false,
+          "explanation": "It passes below the inguinal ligament through the femoral canal."
+        },
+        {
+          "label": "C",
+          "text": "Indirect inguinal hernia",
+          "isCorrect": true,
+          "explanation": "It enters lateral to the inferior epigastric vessels through the deep ring and follows the canal."
+        },
+        {
+          "label": "D",
+          "text": "Umbilical hernia",
+          "isCorrect": false,
+          "explanation": "It protrudes through the umbilical ring rather than the inguinal canal."
+        },
+        {
+          "label": "E",
+          "text": "Incisional hernia",
+          "isCorrect": false,
+          "explanation": "It occurs through a previous abdominal-wall incision."
+        }
+      ],
+      "context": "The relationship to the inferior epigastric vessels distinguishes the two main groin hernia pathways.",
+      "topics": [
+        "indirect inguinal hernia",
+        "abdomen anatomy"
+      ],
+      "difficulty": "easy",
+      "questionType": "single-best-answer",
+      "sources": [
+        {
+          "title": "Anatomy, Abdomen and Pelvis: Inguinal Region (Inguinal Canal)",
+          "url": "https://www.ncbi.nlm.nih.gov/books/NBK470204/"
+        }
+      ],
+      "review": {
+        "status": "accepted",
+        "contentHash": "5d28382df6955235ddb58cfe3be71bb0a6229a550896304d3e64fe31b7b854ac",
+        "reviewer": "Codex primary full-item review following independent carpal_pixel_refuter source verification",
+        "reviewedAt": "2026-10-06"
+      }
+    },
+    {
+      "originalId": "abd-ureter",
+      "stem": "A stone causes colicky flank pain and microscopic haematuria as it passes from the renal pelvis toward the bladder. Which structure is being obstructed?",
+      "options": [
+        {
+          "label": "A",
+          "text": "Ureter",
+          "isCorrect": true,
+          "explanation": "It is the muscular tube transporting urine from the renal pelvis to the bladder and can produce flank-to-groin colic when obstructed."
+        },
+        {
+          "label": "B",
+          "text": "Urethra",
+          "isCorrect": false,
+          "explanation": "It carries urine from the bladder to the exterior and would produce distal urinary symptoms."
+        },
+        {
+          "label": "C",
+          "text": "Renal artery",
+          "isCorrect": false,
+          "explanation": "Arterial obstruction causes ischaemia rather than urinary colic with haematuria from a travelling stone."
+        },
+        {
+          "label": "D",
+          "text": "Inferior vena cava",
+          "isCorrect": false,
+          "explanation": "It is a venous conduit and does not carry urine."
+        },
+        {
+          "label": "E",
+          "text": "Pancreatic duct",
+          "isCorrect": false,
+          "explanation": "Its obstruction produces pancreatic rather than urinary symptoms."
+        }
+      ],
+      "context": "The ureter carries urine from kidney to bladder and has predictable narrowings where stones may lodge.",
+      "topics": [
+        "ureter",
+        "abdomen anatomy"
+      ],
+      "difficulty": "easy",
+      "questionType": "single-best-answer",
+      "sources": [
+        {
+          "title": "Anatomy, Abdomen and Pelvis Ureter",
+          "url": "https://www.ncbi.nlm.nih.gov/books/NBK532980/"
+        }
+      ],
+      "review": {
+        "status": "accepted",
+        "contentHash": "8f4fc0c9252e44394050c66f8cebc788b6a6fb15cd195a74e26b7f7cf99d2dbc",
+        "reviewer": "Codex primary full-item review following independent carpal_pixel_refuter source verification",
+        "reviewedAt": "2026-10-06"
+      }
+    },
+    {
+      "originalId": "abd-hepatoduodenal-triad",
+      "stem": "During hepatoduodenal-ligament surgery, the surgeon identifies the portal vein and proper hepatic artery. Which duct accompanies them in the portal triad?",
+      "options": [
+        {
+          "label": "A",
+          "text": "Cystic duct",
+          "isCorrect": false,
+          "explanation": "It joins the common hepatic duct from the gallbladder and is not the main duct of the triad."
+        },
+        {
+          "label": "B",
+          "text": "Pancreatic duct",
+          "isCorrect": false,
+          "explanation": "It drains the pancreas and joins the biliary system near the duodenum, outside the portal triad."
+        },
+        {
+          "label": "C",
+          "text": "Right hepatic vein",
+          "isCorrect": false,
+          "explanation": "It drains liver parenchyma directly to the inferior vena cava rather than travelling in the triad."
+        },
+        {
+          "label": "D",
+          "text": "Common bile duct",
+          "isCorrect": true,
+          "explanation": "It accompanies the proper hepatic artery and portal vein in the hepatoduodenal ligament; the hepatic veins instead drain separately toward the inferior vena cava."
+        },
+        {
+          "label": "E",
+          "text": "Ureter",
+          "isCorrect": false,
+          "explanation": "It drains the kidney and has no hepatoduodenal relationship."
+        }
+      ],
+      "context": "The hepatoduodenal ligament contains the portal vein, proper hepatic artery and common bile duct. The bile duct lies anterior and to the right of the portal vein.",
+      "topics": [
+        "portal triad",
+        "abdomen anatomy"
+      ],
+      "difficulty": "easy",
+      "questionType": "single-best-answer",
+      "sources": [
+        {
+          "title": "Anatomy, Abdomen and Pelvis: Liver",
+          "url": "https://www.ncbi.nlm.nih.gov/books/NBK500014/"
+        }
+      ],
+      "review": {
+        "status": "accepted",
+        "contentHash": "4606c0ed9651b63c0226ab155174793d87f407f6b45280bd2402f2981cc59c14",
+        "reviewer": "Codex primary full-item review following independent carpal_pixel_refuter source verification",
+        "reviewedAt": "2026-10-06"
+      }
+    },
+    {
+      "originalId": "pel-femoral-hernia",
+      "stem": "A groin swelling lies inferior to the inguinal ligament and medial to the femoral vein. Which passage is involved?",
+      "options": [
+        {
+          "label": "A",
+          "text": "Deep inguinal ring",
+          "isCorrect": false,
+          "explanation": "It lies above the inguinal ligament and is the entry for an indirect inguinal hernia."
+        },
+        {
+          "label": "B",
+          "text": "Femoral canal",
+          "isCorrect": true,
+          "explanation": "It lies medial to the femoral vein within the femoral sheath and can transmit a femoral hernia."
+        },
+        {
+          "label": "C",
+          "text": "Obturator canal",
+          "isCorrect": false,
+          "explanation": "It transmits the obturator nerve and vessels through the pelvic wall."
+        },
+        {
+          "label": "D",
+          "text": "Greater sciatic foramen",
+          "isCorrect": false,
+          "explanation": "It is a posterior pelvic opening for gluteal structures."
+        },
+        {
+          "label": "E",
+          "text": "Anal canal",
+          "isCorrect": false,
+          "explanation": "It is part of the distal gastrointestinal tract and unrelated to this groin location."
+        }
+      ],
+      "context": "The position below the inguinal ligament and medial to the femoral vein identifies the femoral canal.",
+      "topics": [
+        "femoral canal",
+        "pelvis anatomy"
+      ],
+      "difficulty": "easy",
+      "questionType": "single-best-answer",
+      "sources": [
+        {
+          "title": "Anatomy, Abdomen and Pelvis: Femoral Sheath",
+          "url": "https://www.ncbi.nlm.nih.gov/books/NBK482388/"
+        }
+      ],
+      "review": {
+        "status": "accepted",
+        "contentHash": "0af2a54bd64c33b3adb31be02b28dce9611f49abcac0416920a103be3f4516a5",
+        "reviewer": "Codex primary full-item review following independent carpal_pixel_refuter source verification",
+        "reviewedAt": "2026-10-06"
+      }
+    },
+    {
+      "originalId": "pel-pudendal",
+      "stem": "After an ischial-spine injury, a patient has reduced perianal sensation and weak voluntary contraction of the external anal sphincter. Which nerve is most likely affected?",
+      "options": [
+        {
+          "label": "A",
+          "text": "Femoral nerve",
+          "isCorrect": false,
+          "explanation": "It supplies the anterior thigh and quadriceps."
+        },
+        {
+          "label": "B",
+          "text": "Obturator nerve",
+          "isCorrect": false,
+          "explanation": "It supplies the thigh adductors and medial thigh sensation."
+        },
+        {
+          "label": "C",
+          "text": "Sciatic nerve",
+          "isCorrect": false,
+          "explanation": "It supplies the posterior limb and most muscles below the knee."
+        },
+        {
+          "label": "D",
+          "text": "Pelvic splanchnic nerves",
+          "isCorrect": false,
+          "explanation": "They carry parasympathetic fibres to pelvic viscera rather than somatic sphincter control."
+        },
+        {
+          "label": "E",
+          "text": "Pudendal nerve",
+          "isCorrect": true,
+          "explanation": "Its inferior rectal branches carry perianal sensation and motor fibres to the external anal sphincter, matching both findings."
+        }
+      ],
+      "context": "The pudendal nerve passes close to the ischial spine. Its inferior rectal branches supply the external anal sphincter and perianal skin.",
+      "topics": [
+        "pudendal nerve",
+        "pelvis anatomy"
+      ],
+      "difficulty": "medium",
+      "questionType": "single-best-answer",
+      "sources": [
+        {
+          "title": "Pudendal Nerve Block",
+          "url": "https://www.ncbi.nlm.nih.gov/books/NBK551518/"
+        }
+      ],
+      "review": {
+        "status": "accepted",
+        "contentHash": "2a5b992eb1708f6a6f18e27c16333226c33870d74366e16398e9d2fe1e79d343",
+        "reviewer": "Codex primary full-item review following independent carpal_pixel_refuter source verification",
+        "reviewedAt": "2026-10-06"
+      }
+    },
+    {
+      "originalId": "pel-ureter-crossing",
+      "stem": "During pelvic surgery, a structure crossing near the uterine artery is at risk of ligation. Which structure passes inferior to the uterine artery?",
+      "options": [
+        {
+          "label": "A",
+          "text": "Ovarian artery",
+          "isCorrect": false,
+          "explanation": "It travels in the suspensory ligament and is not the structure passing below the uterine artery at this point."
+        },
+        {
+          "label": "B",
+          "text": "Internal iliac vein",
+          "isCorrect": false,
+          "explanation": "It is a pelvic venous channel but does not form this classic crossing."
+        },
+        {
+          "label": "C",
+          "text": "Pelvic ureter",
+          "isCorrect": true,
+          "explanation": "The ureter passes inferior to the uterine artery near the cervix, creating a surgical injury risk."
+        },
+        {
+          "label": "D",
+          "text": "Round ligament",
+          "isCorrect": false,
+          "explanation": "It runs toward the labium majus through the inguinal canal."
+        },
+        {
+          "label": "E",
+          "text": "Obturator nerve",
+          "isCorrect": false,
+          "explanation": "It runs along the lateral pelvic wall toward the thigh."
+        }
+      ],
+      "context": "The relationship is a key pelvic surgical landmark because the ureter carries urine from kidney to bladder.",
+      "topics": [
+        "ureter",
+        "pelvis anatomy"
+      ],
+      "difficulty": "medium",
+      "questionType": "single-best-answer",
+      "sources": [
+        {
+          "title": "Basic clinical retroperitoneal anatomy for pelvic surgeons",
+          "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC6334244/"
+        }
+      ],
+      "review": {
+        "status": "accepted",
+        "contentHash": "fcf97f1eca8cc469fc64543ab78b3c2504ad628feaa20adae3c05ab160e93237",
+        "reviewer": "Codex primary full-item review following independent carpal_pixel_refuter source verification",
+        "reviewedAt": "2026-10-06"
+      }
+    },
+    {
+      "originalId": "pel-pelvic-floor",
+      "stem": "A patient develops stress urinary leakage after pelvic-floor injury. Which muscle group normally supports the pelvic viscera and contributes to continence?",
+      "options": [
+        {
+          "label": "A",
+          "text": "Levator ani",
+          "isCorrect": true,
+          "explanation": "It forms most of the pelvic diaphragm and supports pelvic organs while contributing to continence."
+        },
+        {
+          "label": "B",
+          "text": "Gluteus maximus",
+          "isCorrect": false,
+          "explanation": "It extends the hip and forms the buttock, not the pelvic floor."
+        },
+        {
+          "label": "C",
+          "text": "Piriformis",
+          "isCorrect": false,
+          "explanation": "It forms part of the posterolateral pelvic wall and exits through the greater sciatic foramen."
+        },
+        {
+          "label": "D",
+          "text": "Obturator internus",
+          "isCorrect": false,
+          "explanation": "It lines the lateral pelvic wall and contributes to hip rotation."
+        },
+        {
+          "label": "E",
+          "text": "Rectus abdominis",
+          "isCorrect": false,
+          "explanation": "It forms the anterior abdominal wall and does not form the pelvic diaphragm."
+        }
+      ],
+      "context": "The pelvic diaphragm provides a muscular floor and works with sphincter mechanisms during increases in abdominal pressure.",
+      "topics": [
+        "levator ani",
+        "pelvis anatomy"
+      ],
+      "difficulty": "easy",
+      "questionType": "single-best-answer",
+      "sources": [
+        {
+          "title": "Anatomy, Abdomen and Pelvis: Pelvic Floor",
+          "url": "https://www.ncbi.nlm.nih.gov/books/NBK482200/"
+        }
+      ],
+      "review": {
+        "status": "accepted",
+        "contentHash": "7b5d323ee67fc1bf0bb3c25f405a6b5b2377d642e63d10f4340d2d99c1a1f057",
+        "reviewer": "Codex primary full-item review following independent carpal_pixel_refuter source verification",
+        "reviewedAt": "2026-10-06"
+      }
+    },
+    {
+      "originalId": "pel-bladder-trigone",
+      "stem": "During cystoscopy, a triangular region of the bladder floor is bounded by the two ureteric openings and the internal urethral opening. Which region is this?",
+      "options": [
+        {
+          "label": "A",
+          "text": "Dome",
+          "isCorrect": false,
+          "explanation": "The dome expands markedly as urine accumulates."
+        },
+        {
+          "label": "B",
+          "text": "Detrusor muscle",
+          "isCorrect": false,
+          "explanation": "This is the bladder wall muscle, not a named internal triangular surface."
+        },
+        {
+          "label": "C",
+          "text": "Ureteric adventitia",
+          "isCorrect": false,
+          "explanation": "It surrounds the ureter outside the bladder."
+        },
+        {
+          "label": "D",
+          "text": "Trigone",
+          "isCorrect": true,
+          "explanation": "It is the fixed triangular region between the ureteric orifices and internal urethral opening."
+        },
+        {
+          "label": "E",
+          "text": "External urethral sphincter",
+          "isCorrect": false,
+          "explanation": "It lies distal to the bladder neck and is not inside the trigone."
+        }
+      ],
+      "context": "The trigone provides fixed landmarks for locating the ureteric orifices during cystoscopy. Its upper border is the interureteric ridge joining the two openings.",
+      "topics": [
+        "trigone",
+        "pelvis anatomy"
+      ],
+      "difficulty": "easy",
+      "questionType": "single-best-answer",
+      "sources": [
+        {
+          "title": "Cystoscopy",
+          "url": "https://www.ncbi.nlm.nih.gov/books/NBK493180/"
+        }
+      ],
+      "review": {
+        "status": "accepted",
+        "contentHash": "943e3c5ca6cee5013fe74e5240bea32218b170e859020d22aaf1c01def67bac7",
+        "reviewer": "Codex primary full-item review following independent carpal_pixel_refuter source verification",
+        "reviewedAt": "2026-10-06"
+      }
+    },
+    {
+      "originalId": "pel-prostate-urethra",
+      "stem": "A man develops urinary hesitancy from enlargement of a gland surrounding the proximal urethra below the bladder. Which gland is involved?",
+      "options": [
+        {
+          "label": "A",
+          "text": "Seminal vesicle",
+          "isCorrect": false,
+          "explanation": "It lies posterior to the bladder and contributes fluid to semen but does not surround the urethra."
+        },
+        {
+          "label": "B",
+          "text": "Prostate gland",
+          "isCorrect": true,
+          "explanation": "It surrounds the proximal urethra beneath the bladder and can obstruct the urinary channel when enlarged."
+        },
+        {
+          "label": "C",
+          "text": "Bulbourethral gland",
+          "isCorrect": false,
+          "explanation": "It lies in the deep perineal pouch and contributes mucus to the urethra."
+        },
+        {
+          "label": "D",
+          "text": "Ampulla of the ductus deferens",
+          "isCorrect": false,
+          "explanation": "It is an expanded duct behind the bladder, rather than the gland enclosing the proximal urethra."
+        },
+        {
+          "label": "E",
+          "text": "Paraurethral glands",
+          "isCorrect": false,
+          "explanation": "These small glands associated with the female urethra are not the large gland surrounding the proximal male urethra."
+        }
+      ],
+      "context": "The gland’s position around the prostatic urethra explains why enlargement can obstruct urinary flow.",
+      "topics": [
+        "prostate",
+        "pelvis anatomy"
+      ],
+      "difficulty": "easy",
+      "questionType": "single-best-answer",
+      "sources": [
+        {
+          "title": "Anatomy, Abdomen and Pelvis, Prostate",
+          "url": "https://www.ncbi.nlm.nih.gov/books/NBK540987/"
+        }
+      ],
+      "review": {
+        "status": "accepted",
+        "contentHash": "def88734ea357ebcdc18af88c142c5f8149ba020b5dbbed917d25368c38b61d8",
+        "reviewer": "Codex primary full-item review following independent carpal_pixel_refuter source verification",
+        "reviewedAt": "2026-10-06"
+      }
+    }
+  ]
+}

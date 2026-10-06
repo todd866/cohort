@@ -1,0 +1,65 @@
+{
+  "id": "bank:cohort:anatomy:q-14c82f756aa9:v1",
+  "rotation": "cohort-open",
+  "moduleNodes": [
+    "cohort/anatomy"
+  ],
+  "topics": [
+    "ureter",
+    "pelvis anatomy"
+  ],
+  "questionType": "single-best-answer",
+  "difficulty": "medium",
+  "stem": "During pelvic surgery, a structure crossing near the uterine artery is at risk of ligation. Which structure passes inferior to the uterine artery?",
+  "options": [
+    {
+      "label": "A",
+      "text": "Ovarian artery",
+      "isCorrect": false,
+      "explanation": "It travels in the suspensory ligament and is not the structure passing below the uterine artery at this point."
+    },
+    {
+      "label": "B",
+      "text": "Internal iliac vein",
+      "isCorrect": false,
+      "explanation": "It is a pelvic venous channel but does not form this classic crossing."
+    },
+    {
+      "label": "C",
+      "text": "Pelvic ureter",
+      "isCorrect": true,
+      "explanation": "The ureter passes inferior to the uterine artery near the cervix, creating a surgical injury risk."
+    },
+    {
+      "label": "D",
+      "text": "Round ligament",
+      "isCorrect": false,
+      "explanation": "It runs toward the labium majus through the inguinal canal."
+    },
+    {
+      "label": "E",
+      "text": "Obturator nerve",
+      "isCorrect": false,
+      "explanation": "It runs along the lateral pelvic wall toward the thigh."
+    }
+  ],
+  "context": "The relationship is a key pelvic surgical landmark because the ureter carries urine from kidney to bladder.",
+  "publicModule": {
+    "schemaVersion": 1,
+    "origin": "original",
+    "discipline": "anatomy",
+    "originalId": "pel-ureter-crossing",
+    "itemText": {
+      "licence": "CC-BY-4.0",
+      "attribution": "MD3 contributors"
+    },
+    "evidence": {
+      "kind": "reference",
+      "sourceId": "original-500649b4227d8eb6"
+    },
+    "review": {
+      "verdict": "passed",
+      "contentHash": "d4d219f68fd0aafb04d4db1c6f2da5a6a931ae3266c618ab504d873c43034cfd"
+    }
+  }
+}

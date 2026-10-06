@@ -1,4 +1,5 @@
 'use client';
+import { ReviewActionBar } from '@/components/shared/ReviewActionBar';
 
 import Link from 'next/link';
 import { useCallback, useEffect, useRef, useState } from 'react';
@@ -8,8 +9,8 @@ import {
   fetchWithDeadline,
 } from '@/lib/fetch-with-deadline';
 import { ConfidenceButtons } from '@/components/shared/ConfidenceButtons';
-import { CheckIcon, XIcon, ChevronIcon } from '@/components/content/mcq-icons';
-import { extractMarkdownTables, InlineMarkdown, MarkdownTable, tablesCanUseSidePane } from '@/lib/inline-markdown';
+import { ReviewQuestionContent, ReviewQuestionOptions, ReviewQuestionResultBody } from '@/components/shared/ReviewQuestionContent';
+import { ReviewQuestionStem, ReviewQuestionStemTable, parseReviewQuestionStem } from '@/components/shared/ReviewQuestionStem';
 import type {
   Step1AnswerResponse,
   Step1AnswerReveal,
@@ -295,13 +296,9 @@ export default function Step1StudyClient({ mode }: { mode: Step1SessionMode }) {
   const explanationByLabel = new Map(
     reveal?.optionExplanations.map((option) => [option.label, option]) ?? [],
   );
-  const stem = extractMarkdownTables(item.stem);
-  const liftTables = tablesCanUseSidePane(stem.tables);
+  const stem = parseReviewQuestionStem(item.stem);
+  const liftTables = stem.liftTables;
   const leadIn = stem.prose.split(/\n\s*\n/).at(-1)?.trim();
-  const paragraphs = (text: string) => text.split(/\n\s*\n/).filter(Boolean).map((paragraph, index) => (
-    <p key={index}><InlineMarkdown text={paragraph} /></p>
-  ));
-
   return (
     <main className={`mx-auto ${liftTables ? 'max-w-5xl' : 'max-w-3xl'} px-4 py-6 sm:px-6 sm:py-10`}>
       <header className="mb-6 flex flex-wrap items-center justify-between gap-3 text-sm">
@@ -319,92 +316,40 @@ export default function Step1StudyClient({ mode }: { mode: Step1SessionMode }) {
         <h1 className="sr-only" aria-label={leadIn?.endsWith('?') ? `Question ${index + 1}. ${leadIn}` : undefined}>
           Question {index + 1}
         </h1>
-        <div className={liftTables ? 'mt-5 grid gap-x-6 lg:grid-cols-[minmax(0,3fr)_minmax(0,2fr)]' : 'mt-5'}>
-          <div data-question-stem className="min-w-0 space-y-3 text-base leading-relaxed lg:col-start-1 lg:row-start-1">
-            {liftTables ? paragraphs(stem.prose) : stem.blocks.map((block, blockIndex) => block.kind === 'table'
-              ? <div key={blockIndex} role="region" aria-label="Question results" tabIndex={0} className="overflow-x-auto"><MarkdownTable table={block.table} /></div>
-              : <div key={blockIndex} className="space-y-3">{paragraphs(block.text)}</div>)}
-          </div>
-          {liftTables && (
-            <div data-results-table role="region" aria-label="Question results" tabIndex={0}
-              className="mt-4 min-w-0 self-start overflow-x-auto rounded-lg border border-[var(--md-outline-variant)] bg-[var(--md-surface-container-lowest)] px-2 lg:col-start-2 lg:row-span-2 lg:row-start-1 lg:mt-0">
-              {stem.tables.map((table, tableIndex) => <MarkdownTable key={tableIndex} table={table} />)}
-            </div>
-          )}
-
-          <fieldset className="mt-6 min-w-0 space-y-2 lg:col-start-1 lg:row-start-2" disabled={submitting || answerError === 'terminal'}>
+        <ReviewQuestionContent
+          layout={liftTables ? 'prompt' : 'flat'}
+          stem={<ReviewQuestionStem text={liftTables ? stem.prose : item.stem} className="text-base" />}
+          media={liftTables ? <ReviewQuestionStemTable text={item.stem} className="min-w-0 self-start" /> : undefined}
+          options={<fieldset className="mt-6 min-w-0 space-y-2" disabled={submitting || answerError === 'terminal'}>
             <legend className="sr-only">Choose one answer</legend>
-            {item.options.map((option) => {
-              const selected = selectedLabel === option.label;
-              const correct = reveal?.correctDisplayLabel === option.label;
-              const wrongSelection = !!reveal && selected && !correct;
-              const rationale = explanationByLabel.get(option.label);
-              const rationaleText = reveal && rationale
-                ? [rationale.explanation, rationale.misconception].filter(Boolean).join(' ')
-                : '';
-              const expanded = expandedOptions.has(option.label);
-
-              // Post-reveal the card becomes the disclosure for its own rationale,
-              // which is md3's pattern — read the ones you got wrong, skip the rest.
-              let optionClass = 'border-[var(--md-outline-variant)] bg-[var(--md-surface-container-lowest)]/90';
-              let labelClass = 'bg-[var(--md-surface-container-high)] text-[var(--md-on-surface-variant)]';
-              if (correct) {
-                optionClass = 'border-[var(--md-success)]/55 bg-[var(--md-success-container)]/45';
-                labelClass = 'bg-[var(--md-success)] text-[var(--md-on-success)]';
-              } else if (wrongSelection) {
-                optionClass = 'border-[var(--md-error)]/55 bg-[var(--md-error-container)]/45';
-                labelClass = 'bg-[var(--md-error)] text-[var(--md-on-error)]';
-              } else if (selected) {
-                optionClass = 'border-[var(--md-primary)] bg-[var(--md-primary-container)]/40';
-                labelClass = 'bg-[var(--md-primary-container)] text-[var(--md-on-primary-container)]';
-              } else if (!reveal) {
-                optionClass += ' hover:border-[var(--md-primary)] hover:bg-[var(--md-primary-container)]/30';
-              }
-
-              return (
-                <div key={option.label}>
-                  <button
-                    type="button"
-                    onClick={() => {
-                      if (!reveal) chooseOption(option.label);
-                      else if (rationaleText) {
-                        setExpandedOptions((current) => {
-                          const next = new Set(current);
-                          if (!next.delete(option.label)) next.add(option.label);
-                          return next;
-                        });
-                      }
-                    }}
-                    disabled={!!reveal && !rationaleText}
-                    aria-label={`${option.label}. ${option.text}`}
-                    aria-pressed={!reveal ? selected : undefined}
-                    aria-expanded={reveal && rationaleText ? expanded : undefined}
-                    className={`review-choice group flex w-full items-start gap-3 rounded-lg border p-3.5 text-left transition-all ${optionClass}`}
-                  >
-                    <span className={`mt-0.5 flex h-7 w-7 shrink-0 items-center justify-center rounded-full font-mono text-xs transition-colors ${labelClass}`}>
-                      {option.label}
-                    </span>
-                    <span className="min-w-0 flex-1 pt-0.5">
-                      {option.text}
-                      {correct && <CheckIcon className="ml-1 inline-block h-4 w-4 align-text-bottom text-[var(--md-success)]" />}
-                      {wrongSelection && <XIcon className="ml-1 inline-block h-4 w-4 align-text-bottom text-[var(--md-error)]" />}
-                      {reveal && rationaleText && (
-                        <ChevronIcon
-                          className={`ml-2 inline-block h-4 w-4 align-text-bottom text-[var(--md-on-surface-variant)] transition-transform duration-200 ${expanded ? 'rotate-180' : ''}`}
-                        />
-                      )}
-                    </span>
-                  </button>
-                  {reveal && rationaleText && expanded && (
-                    <div className="mt-1 ml-10 mr-2 rounded-lg bg-[var(--md-surface-container)] px-3 py-2 text-sm leading-relaxed text-[var(--md-on-surface-variant)]">
-                      {rationaleText}
-                    </div>
-                  )}
-                </div>
-              );
-            })}
-          </fieldset>
-        </div>
+            <ReviewQuestionOptions
+              options={item.options.map((option) => {
+                const rationale = explanationByLabel.get(option.label);
+                return {
+                  label: option.label,
+                  text: option.text,
+                  explanation: reveal && rationale
+                    ? [rationale.explanation, rationale.misconception].filter(Boolean).join(' ')
+                    : undefined,
+                };
+              })}
+              selectedOption={selectedLabel}
+              result={reveal ? {
+                isCorrect: reveal.isCorrect,
+                correctOption: reveal.correctDisplayLabel,
+              } : null}
+              showIndex={false}
+              disabled={submitting || answerError === 'terminal'}
+              expandedExplanations={expandedOptions}
+              onToggleExplanation={(label) => setExpandedOptions((current) => {
+                const next = new Set(current);
+                if (!next.delete(label)) next.add(label);
+                return next;
+              })}
+              onSelect={chooseOption}
+            />
+          </fieldset>}
+        />
 
         {!reveal && (
           <section className="mt-6">
@@ -475,8 +420,11 @@ export default function Step1StudyClient({ mode }: { mode: Step1SessionMode }) {
             <div className={`rounded-2xl border p-5 ${
               reveal.isCorrect ? 'border-[var(--md-success)]' : 'border-[var(--md-error)]'
             }`}>
-              <p className="text-lg font-bold">{reveal.isCorrect ? 'Correct' : `Correct answer: ${reveal.correctDisplayLabel}`}</p>
-              {reveal.explanation && <p className="mt-2 leading-relaxed">{reveal.explanation}</p>}
+              <ReviewQuestionResultBody
+                result={{ isCorrect: reveal.isCorrect, correctOption: reveal.correctDisplayLabel }}
+                explanation={reveal.explanation}
+              />
+              {!reveal.isCorrect && <p className="mt-2 text-lg font-bold">Correct answer: {reveal.correctDisplayLabel}</p>}
             </div>
 
             {reveal.citation && (
@@ -520,13 +468,10 @@ export default function Step1StudyClient({ mode }: { mode: Step1SessionMode }) {
               >
                 Report an issue
               </button>
-              <button
-                type="button"
-                onClick={nextQuestion}
-                className="rounded-full bg-[var(--md-primary)] px-6 py-3 font-semibold text-[var(--md-on-primary)]"
-              >
-                {index + 1 >= session.items.length ? 'Finish session' : 'Next question'}
-              </button>
+              <div aria-hidden className="h-24" />
+              <ReviewActionBar onClick={nextQuestion}>
+                {reveal.isCorrect ? 'Correct' : `Incorrect — answer ${reveal.correctDisplayLabel}`} · {index + 1 >= session.items.length ? 'Finish session' : 'Next question'}
+              </ReviewActionBar>
             </div>
 
             {reportOpen && (

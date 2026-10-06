@@ -1,0 +1,65 @@
+{
+  "id": "bank:cohort:anatomy:q-8718b8363afe:v1",
+  "rotation": "cohort-open",
+  "moduleNodes": [
+    "cohort/anatomy"
+  ],
+  "topics": [
+    "carpal tunnel",
+    "upper anatomy"
+  ],
+  "questionType": "single-best-answer",
+  "difficulty": "medium",
+  "stem": "A patient has nocturnal tingling in the thumb, index and middle fingers with preserved sensation over the thenar eminence. Where is the lesion most likely?",
+  "options": [
+    {
+      "label": "A",
+      "text": "Cubital tunnel",
+      "isCorrect": false,
+      "explanation": "This compresses the ulnar nerve and affects the little finger and ulnar half of the ring finger."
+    },
+    {
+      "label": "B",
+      "text": "Pronator teres region",
+      "isCorrect": false,
+      "explanation": "A proximal median lesion can involve the palmar cutaneous branch and produce broader forearm or palm symptoms."
+    },
+    {
+      "label": "C",
+      "text": "Carpal tunnel",
+      "isCorrect": true,
+      "explanation": "Compression affects median-nerve fibres destined for the digital sensory and thenar motor branches. The palmar cutaneous branch bypasses the tunnel, so thenar skin sensation is usually spared."
+    },
+    {
+      "label": "D",
+      "text": "Guyon canal",
+      "isCorrect": false,
+      "explanation": "This affects the ulnar nerve at the wrist, not the lateral three-and-a-half digits."
+    },
+    {
+      "label": "E",
+      "text": "Radial tunnel",
+      "isCorrect": false,
+      "explanation": "This affects radial-nerve motor branches and does not produce this median sensory distribution."
+    }
+  ],
+  "context": "The spared thenar eminence points to a lesion distal to the palmar cutaneous branch, which passes superficial to the flexor retinaculum.",
+  "publicModule": {
+    "schemaVersion": 1,
+    "origin": "original",
+    "discipline": "anatomy",
+    "originalId": "upper-carpal-sensation",
+    "itemText": {
+      "licence": "CC-BY-4.0",
+      "attribution": "MD3 contributors"
+    },
+    "evidence": {
+      "kind": "reference",
+      "sourceId": "original-8f49bbfe218bd02a"
+    },
+    "review": {
+      "verdict": "passed",
+      "contentHash": "2eaed76e659d3e0e7b3993be489ef7ffe3844505922d6f45a5c9206d0b469069"
+    }
+  }
+}

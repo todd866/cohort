@@ -1,0 +1,66 @@
+{
+  "id": "bank:cohort:anatomy:q-4106f31e5f13:v1",
+  "rotation": "cohort-open",
+  "moduleNodes": [
+    "cohort/anatomy"
+  ],
+  "topics": [
+    "ansa cervicalis",
+    "infrahyoid muscles",
+    "head and neck anatomy"
+  ],
+  "questionType": "single-best-answer",
+  "difficulty": "medium",
+  "stem": "During neck dissection, a nerve loop is injured. Sternohyoid, sternothyroid and omohyoid become weak, while thyrohyoid and tongue movement remain intact. Which structure was injured?",
+  "options": [
+    {
+      "label": "A",
+      "text": "Hypoglossal nerve",
+      "isCorrect": false,
+      "explanation": "Injury to its motor fibres would weaken the tongue; the stem specifically preserves tongue movement."
+    },
+    {
+      "label": "B",
+      "text": "Phrenic nerve",
+      "isCorrect": false,
+      "explanation": "It supplies the diaphragm, rather than this group of infrahyoid muscles."
+    },
+    {
+      "label": "C",
+      "text": "Ansa cervicalis",
+      "isCorrect": true,
+      "explanation": "This C1–C3 loop supplies sternohyoid, sternothyroid and omohyoid, matching the selective deficit."
+    },
+    {
+      "label": "D",
+      "text": "Spinal accessory nerve",
+      "isCorrect": false,
+      "explanation": "It supplies sternocleidomastoid and trapezius, rather than these strap muscles."
+    },
+    {
+      "label": "E",
+      "text": "Recurrent laryngeal nerve",
+      "isCorrect": false,
+      "explanation": "It supplies most intrinsic laryngeal muscles rather than the three infrahyoid muscles listed."
+    }
+  ],
+  "context": "Ansa cervicalis supplies three infrahyoid muscles. Thyrohyoid receives C1 fibres travelling with the hypoglossal nerve, so it can remain intact after injury to the loop.",
+  "publicModule": {
+    "schemaVersion": 1,
+    "origin": "original",
+    "discipline": "anatomy",
+    "originalId": "head-ansa-cervicalis",
+    "itemText": {
+      "licence": "CC-BY-4.0",
+      "attribution": "MD3 contributors"
+    },
+    "evidence": {
+      "kind": "reference",
+      "sourceId": "original-027c6924d339f1ac"
+    },
+    "review": {
+      "verdict": "passed",
+      "contentHash": "178ddeb894d0da73bf25ab98b6411c30211806797972e28a326011714950b4f5"
+    }
+  }
+}

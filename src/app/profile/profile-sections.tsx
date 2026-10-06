@@ -19,4 +19,3 @@ export const YEAR_OPTIONS = ['Preclinical (Year 1-2)', 'Clinical (Year 3+)', 'Po
 
 export { Accordion } from '@/components/ui/Accordion';
 export { AppearanceSection, InstitutionModulesSection, EmailAliasesSection } from './profile-settings-sections';
-export { SupportSection } from './profile-support';

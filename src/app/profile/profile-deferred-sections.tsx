@@ -2,9 +2,14 @@ import { loadTopicHeatmap } from '@/lib/knowledge/topic-heat.server';
 import { loadReviewCalendar } from '@/lib/knowledge/review-calendar.server';
 import { loadLeaderboard } from '@/lib/leaderboard/leaderboard.server';
 import { TopicHeatmap } from '@/components/profile/TopicHeatmap';
-import { ProfileLeaderboard } from './profile-leaderboard';
+import { ProfileLeaderboard, type BoardResponse } from './profile-leaderboard';
 import { ReadinessTrend } from '@/components/profile/ReadinessTrend';
 import { ReviewHeatmap } from '@/components/profile/ReviewHeatmap';
+import { ProfileReservedSlot } from './profile-reserved-slot';
+import {
+  REVIEW_CALENDAR_SLOT_CLASS,
+  TOPIC_READINESS_SLOT_CLASS,
+} from './profile-slot-classes';
 
 /**
  * The two heavy sections of the profile, split out so the page does not wait
@@ -26,40 +31,72 @@ import { ReviewHeatmap } from '@/components/profile/ReviewHeatmap';
  * puts that off the path a learner waits on. A faster version of this query
  * would still be work nobody should wait for before seeing their own name.
  *
- * Each section returns null on failure exactly as before, so a broken read
- * hides the grid rather than showing a wall of false grey.
+ * A failed or empty read keeps the reserved height. Returning null under the
+ * placeholder collapses the slot and shifts the rest of the page.
  */
+
+const COULD_NOT_LOAD = "Couldn't load";
 
 export async function ProfileReviewCalendarSection(
   { userId, rotations }: { userId: string; rotations: string[] },
 ) {
-  const calendar = await loadReviewCalendar(userId, rotations).catch(() => null);
-  if (!calendar) return null;
+  const calendar = await loadReviewCalendar(userId, rotations).then(
+    (value) => ({ value, failed: false }),
+    () => ({ value: null, failed: true }),
+  );
+  if (calendar.failed) {
+    return (
+      <ProfileReservedSlot
+        label="Review calendar"
+        className={REVIEW_CALENDAR_SLOT_CLASS}
+        message={COULD_NOT_LOAD}
+      />
+    );
+  }
+  if (!calendar.value) {
+    return <ProfileReservedSlot label="Review calendar" className={REVIEW_CALENDAR_SLOT_CLASS} />;
+  }
+  const data = calendar.value;
   return (
     <section aria-label="Review calendar" className="mb-6">
       <h2 className="mb-3 text-xs font-semibold uppercase tracking-wider text-[var(--md-on-surface-variant)]">
         Reviews
       </h2>
-      <ReviewHeatmap heatmap={calendar.heatmap} exams={calendar.exams} today={calendar.today} />
+      <ReviewHeatmap heatmap={data.heatmap} exams={data.exams} today={data.today} />
     </section>
   );
 }
 
 export async function ProfileTopicHeatmapSection({ userId }: { userId: string }) {
-  const topicHeat = await loadTopicHeatmap(userId).catch(() => null);
-  if (!topicHeat) return null;
+  const topicHeat = await loadTopicHeatmap(userId).then(
+    (value) => ({ value, failed: false }),
+    () => ({ value: null, failed: true }),
+  );
+  if (topicHeat.failed) {
+    return (
+      <ProfileReservedSlot
+        label="Topic readiness"
+        className={TOPIC_READINESS_SLOT_CLASS}
+        message={COULD_NOT_LOAD}
+      />
+    );
+  }
+  if (!topicHeat.value) {
+    return <ProfileReservedSlot label="Topic readiness" className={TOPIC_READINESS_SLOT_CLASS} />;
+  }
+  const data = topicHeat.value;
   return (
     <section id="topic-readiness" aria-label="Topic readiness" className="mb-6 scroll-mt-4">
       <TopicHeatmap
-        squares={topicHeat.squares}
-        rotationLabel={topicHeat.rotationLabel}
-        horizonDays={topicHeat.horizonDays}
+        squares={data.squares}
+        rotationLabel={data.rotationLabel}
+        horizonDays={data.horizonDays}
         aside={
           <ReadinessTrend
-            points={topicHeat.trend}
-            projection={topicHeat.projection}
-            totalTopics={topicHeat.squares.length}
-            daysToExam={topicHeat.horizonDays}
+            points={data.trend}
+            projection={data.projection}
+            totalTopics={data.squares.length}
+            daysToExam={data.horizonDays}
           />
         }
       />
@@ -72,7 +109,8 @@ export async function ProfileTopicHeatmapSection({ userId }: { userId: string })
  * (or, for an admin, whenever they open the profile).
  * Streams like the heatmaps: it aggregates every joined learner's history,
  * which is page-render work and not something the first byte should wait on.
- * A failed read hands the client component no board, and it fetches as before.
+ * The client does not fetch on mount. A failed read says so in the reserved
+ * slot instead of handing over null and letting the browser paint the board twice.
  */
 export async function ProfileLeaderboardSection(
   { userId, joined, handle, viewAll = false }:
@@ -80,32 +118,24 @@ export async function ProfileLeaderboardSection(
 ) {
   // An admin sees the board whether or not they have joined: the everyone view
   // is how the owner reads the cohort, and it must not depend on opting in.
-  const board = viewAll || (joined && handle)
-    ? await loadLeaderboard(userId, new Date(), { includeEveryone: viewAll })
-      .then((b) => ({ handle, ...b }))
-      .catch(() => null)
-    : null;
+  if (!(viewAll || joined)) {
+    return <ProfileLeaderboard joined={joined} handle={handle} viewAll={viewAll} initialBoard={null} />;
+  }
+  let initialBoard: BoardResponse | null = null;
+  let boardUnavailable = false;
+  try {
+    const board = await loadLeaderboard(userId, new Date(), { includeEveryone: viewAll });
+    initialBoard = { handle, ...board };
+  } catch {
+    boardUnavailable = true;
+  }
   return (
-    <ProfileLeaderboard joined={joined} handle={handle} viewAll={viewAll} initialBoard={board} />
-  );
-}
-
-/**
- * Placeholders reserve the height their section will occupy.
- *
- * Not decoration: CLS is a budgeted metric here
- * (`.claude/rules/web-vitals.md`), and streaming a tall section into a page
- * that has already painted is precisely how a layout shift is earned. These
- * heights match the rendered sections — the review grid at roughly 7rem, the
- * topic grid plus its panel and trend at roughly 22rem stacked on a phone and
- * roughly 13rem once the panel sits beside the grid from `lg` up.
- */
-export function ProfileSectionPlaceholder(
-  { label, className }: { label: string; className: string },
-) {
-  return (
-    <section aria-label={label} aria-busy="true" className={`mb-6 ${className}`}>
-      <div className="h-full w-full rounded-xl border border-[var(--md-outline-variant)] bg-[var(--md-surface-container)]" />
-    </section>
+    <ProfileLeaderboard
+      joined={joined}
+      handle={handle}
+      viewAll={viewAll}
+      initialBoard={initialBoard}
+      boardUnavailable={boardUnavailable}
+    />
   );
 }

@@ -1,0 +1,65 @@
+{
+  "id": "bank:cohort:anatomy:q-31ea4fd39acd:v1",
+  "rotation": "cohort-open",
+  "moduleNodes": [
+    "cohort/anatomy"
+  ],
+  "topics": [
+    "pudendal nerve",
+    "pelvis anatomy"
+  ],
+  "questionType": "single-best-answer",
+  "difficulty": "medium",
+  "stem": "After an ischial-spine injury, a patient has reduced perianal sensation and weak voluntary contraction of the external anal sphincter. Which nerve is most likely affected?",
+  "options": [
+    {
+      "label": "A",
+      "text": "Femoral nerve",
+      "isCorrect": false,
+      "explanation": "It supplies the anterior thigh and quadriceps."
+    },
+    {
+      "label": "B",
+      "text": "Obturator nerve",
+      "isCorrect": false,
+      "explanation": "It supplies the thigh adductors and medial thigh sensation."
+    },
+    {
+      "label": "C",
+      "text": "Sciatic nerve",
+      "isCorrect": false,
+      "explanation": "It supplies the posterior limb and most muscles below the knee."
+    },
+    {
+      "label": "D",
+      "text": "Pelvic splanchnic nerves",
+      "isCorrect": false,
+      "explanation": "They carry parasympathetic fibres to pelvic viscera rather than somatic sphincter control."
+    },
+    {
+      "label": "E",
+      "text": "Pudendal nerve",
+      "isCorrect": true,
+      "explanation": "Its inferior rectal branches carry perianal sensation and motor fibres to the external anal sphincter, matching both findings."
+    }
+  ],
+  "context": "The pudendal nerve passes close to the ischial spine. Its inferior rectal branches supply the external anal sphincter and perianal skin.",
+  "publicModule": {
+    "schemaVersion": 1,
+    "origin": "original",
+    "discipline": "anatomy",
+    "originalId": "pel-pudendal",
+    "itemText": {
+      "licence": "CC-BY-4.0",
+      "attribution": "MD3 contributors"
+    },
+    "evidence": {
+      "kind": "reference",
+      "sourceId": "original-5c0309bd0a19b2fc"
+    },
+    "review": {
+      "verdict": "passed",
+      "contentHash": "61a9eeeb47518dd2aa77923b4348003d8c8732e4e25c576ef8ffec287f782f15"
+    }
+  }
+}

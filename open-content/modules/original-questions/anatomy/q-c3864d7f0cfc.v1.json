@@ -1,0 +1,65 @@
+{
+  "id": "bank:cohort:anatomy:q-c3864d7f0cfc:v1",
+  "rotation": "cohort-open",
+  "moduleNodes": [
+    "cohort/anatomy"
+  ],
+  "topics": [
+    "pericardial cavity",
+    "thorax anatomy"
+  ],
+  "questionType": "single-best-answer",
+  "difficulty": "medium",
+  "stem": "A patient has hypotension, raised venous pressure and muffled heart sounds after chest trauma. Which anatomical space is rapidly restricting cardiac filling?",
+  "options": [
+    {
+      "label": "A",
+      "text": "Pericardial cavity",
+      "isCorrect": true,
+      "explanation": "Blood in this confined space compresses the heart and limits diastolic filling."
+    },
+    {
+      "label": "B",
+      "text": "Pleural cavity",
+      "isCorrect": false,
+      "explanation": "Pleural blood can impair ventilation and cause shock but does not directly compress all cardiac chambers."
+    },
+    {
+      "label": "C",
+      "text": "Mediastinum",
+      "isCorrect": false,
+      "explanation": "This is a broad compartment, not the specific fluid space producing tamponade."
+    },
+    {
+      "label": "D",
+      "text": "Thoracic duct",
+      "isCorrect": false,
+      "explanation": "It is a lymphatic vessel and cannot produce circumferential cardiac compression."
+    },
+    {
+      "label": "E",
+      "text": "Peritoneal cavity",
+      "isCorrect": false,
+      "explanation": "It is below the diaphragm and does not surround the heart."
+    }
+  ],
+  "context": "The clinical triad indicates tamponade from fluid accumulating around the heart within the pericardial sac.",
+  "publicModule": {
+    "schemaVersion": 1,
+    "origin": "original",
+    "discipline": "anatomy",
+    "originalId": "thorax-pericardium",
+    "itemText": {
+      "licence": "CC-BY-4.0",
+      "attribution": "MD3 contributors"
+    },
+    "evidence": {
+      "kind": "reference",
+      "sourceId": "original-4480321992c02ae3"
+    },
+    "review": {
+      "verdict": "passed",
+      "contentHash": "12e6420dafb4c36f4ce648acfc0eecbe768e99745901675fc6a46e77642e36c6"
+    }
+  }
+}

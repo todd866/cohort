@@ -144,8 +144,8 @@ describe('public navigation and static assets', () => {
     // cohort.md is the product, so its root is a front door listing what it
     // serves, not a redirect into one product that hides the others.
     const publicRoot = artifactText(repoRoot, 'src/app/page.tsx');
-    expect(publicRoot).toContain("'/gamsat'");
-    expect(publicRoot).toContain("'/usmle'");
+    expect(publicRoot).toContain("@/components/cohort/PublicReviewEntry");
+    expect(publicRoot).not.toContain("COHORT_PRODUCTS");
     expect(publicRoot).not.toMatch(/redirect\(\s*['"`]\/usmle/);
     expect(institution).toContain('export const SUPPORTS_PERSONAL_BRIEF = false;');
     expect(institution).toContain('export const SUPPORTS_PERSONAL_DOCUMENTS = false;');
@@ -194,9 +194,8 @@ describe('public navigation and static assets', () => {
     expect(fill).toContain('return false;');
 
     const navigation = artifactText(repoRoot, 'src/components/Navigation.tsx');
-    expect(navigation).toContain("href: '/usmle/step1'");
-    expect(navigation).toContain("label: 'Study'");
-    expect(navigation).toContain("href: '/about'");
+    expect(navigation).toContain('ReviewNavigation');
+    expect(navigation).toContain('isCohortHost?: boolean');
     expect(navigation).toContain('isCohortHost?: boolean');
     expect(navigation).toContain("session?.user ? '/profile' : '/auth/signin'");
     expect(navigation).not.toMatch(/\/content|\/clinical|\/review/);
@@ -431,7 +430,6 @@ describe('public navigation and static assets', () => {
       '/profile',
       '/profile/settings',
       '/profile/stats',
-      '/profile/support',
       '/tech',
       '/terms',
       '/usmle',
@@ -439,10 +437,12 @@ describe('public navigation and static assets', () => {
       '/usmle/step1/study',
       '/api/auth/claim-guest-progress',
       '/api/auth/session',
+      '/api/session/bootstrap',
       '/api/cohort/answer',
       '/api/cohort/card-grade',
       '/api/cohort/profile',
       '/api/cohort/turn',
+      '/api/cohort/feedback',
       '/api/content/flag',
       // The GAMSAT session fetches its selection index, then one passage. The
       // passage target is a template literal, so it is listed in the same

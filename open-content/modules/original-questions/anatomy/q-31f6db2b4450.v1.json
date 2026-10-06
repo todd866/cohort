@@ -1,0 +1,65 @@
+{
+  "id": "bank:cohort:anatomy:q-31f6db2b4450:v1",
+  "rotation": "cohort-open",
+  "moduleNodes": [
+    "cohort/anatomy"
+  ],
+  "topics": [
+    "sciatic nerve",
+    "lower anatomy"
+  ],
+  "questionType": "single-best-answer",
+  "difficulty": "medium",
+  "stem": "A posterior hip dislocation causes weak knee flexion, ankle dorsiflexion and plantarflexion. Sensation is reduced over the lateral foot and dorsum, but the medial leg is spared. Which structure is injured?",
+  "options": [
+    {
+      "label": "A",
+      "text": "Femoral nerve",
+      "isCorrect": false,
+      "explanation": "It affects quadriceps and the medial leg, which is specifically spared here."
+    },
+    {
+      "label": "B",
+      "text": "Common fibular nerve",
+      "isCorrect": false,
+      "explanation": "It affects dorsiflexion and dorsum sensation but not plantarflexion or knee flexion."
+    },
+    {
+      "label": "C",
+      "text": "Tibial nerve",
+      "isCorrect": false,
+      "explanation": "It affects plantarflexion and posterior sensation but not dorsiflexion or most knee flexion."
+    },
+    {
+      "label": "D",
+      "text": "Sciatic nerve",
+      "isCorrect": true,
+      "explanation": "A proximal sciatic lesion can affect hamstrings and both tibial and common fibular branches, while medial-leg sensation remains via the saphenous nerve."
+    },
+    {
+      "label": "E",
+      "text": "Obturator nerve",
+      "isCorrect": false,
+      "explanation": "It supplies thigh adductors and does not produce this distal two-division pattern."
+    }
+  ],
+  "context": "The deficit spans hamstrings and both distal sciatic divisions, while sparing the saphenous territory supplied by the femoral nerve.",
+  "publicModule": {
+    "schemaVersion": 1,
+    "origin": "original",
+    "discipline": "anatomy",
+    "originalId": "lower-sciatic-palsy",
+    "itemText": {
+      "licence": "CC-BY-4.0",
+      "attribution": "MD3 contributors"
+    },
+    "evidence": {
+      "kind": "reference",
+      "sourceId": "original-18cb4b04faa92054"
+    },
+    "review": {
+      "verdict": "passed",
+      "contentHash": "0d2db72d02d8ba5b81d1a6f995a39cb93814fab311a6e6d89c1ce6dad9265fa7"
+    }
+  }
+}

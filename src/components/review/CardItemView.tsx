@@ -9,23 +9,18 @@ import { usePrefetchImage } from '@/hooks/usePrefetchImage';
 import { CardFeedback } from './CardFeedback';
 import { GlossaryScope } from '../content/GlossaryScope';
 import { GlossaryText } from '../content/GlossaryText';
-import { InlineMarkdown, type LeafRenderer } from '@/lib/inline-markdown';
+import { type LeafRenderer } from '@/lib/inline-markdown';
 import { normalizeAngleBracketEscapes } from '@/lib/normalize-angle-bracket-escapes';
-import { splitExplanation } from '../content/mcq-utils';
 import { reviewImageIsPrompt } from './image-role';
 import { clipIsPrompt } from './clip-role';
 import { ClipPrompt } from './ClipPrompt';
 import { ClipContext } from './ClipContext';
 import { RevealActionLabel } from './RevealActionLabel';
 import { TutorCardLink } from '@/components/tutor/TutorCardLink';
+import { ReviewCardBody, ReviewCardContent, ReviewExplanation } from '@/components/shared/ReviewCardContent';
 import {
   itemUsesSidePane,
-  REVIEW_PANE_CELL_FLAT,
-  reviewPaneGridClass,
   reviewPaneKind,
-  REVIEW_PANE_MEDIA,
-  REVIEW_PANE_TEXT_BOTTOM,
-  REVIEW_PANE_TEXT_TOP,
 } from './review-panes';
 
 const glossaryLeaf: LeafRenderer = (text: string) => <GlossaryText text={text} />;
@@ -121,16 +116,13 @@ export function CardItemView({
   const sidePane = itemUsesSidePane(item, cardFullyRevealed);
   const presentation = numberedAnatomyPresentation(item.front || '', item.context || '', item.imageCaption);
 
-  const stemNode = (
-    <div data-card-stem className="text-[var(--md-on-surface)] mb-5 text-[1.03rem] leading-relaxed">
-      <CardText
-        text={presentation.front}
-        answers={item.backs || (item.back ? item.back.split('; ') : [])}
-        revealedCount={revealedBlanks}
-        reserveRevealSpace={mediaIsPrompt}
-      />
-    </div>
-  );
+  const stemNode = <ReviewCardBody
+    front={presentation.front}
+    answers={item.backs || (item.back ? item.back.split('; ') : [])}
+    revealedBlanks={revealedBlanks}
+    reserveRevealSpace={mediaIsPrompt}
+    revealed={false}
+  />;
   const clipInstructionNode = clipCaptionInQuestionPane && item.clipCaption ? (
     <p className="text-sm text-[var(--md-on-surface-variant)] leading-snug mb-3">
       {item.clipCaption}
@@ -209,13 +201,11 @@ export function CardItemView({
       )}
 
       {/* Context — grade buttons are in the sticky footer */}
-      {presentation.context && (
-        <div className="text-sm text-[var(--md-on-surface-variant)] mb-3 space-y-2 border-l-2 border-[var(--md-outline-soft)] pl-3">
-          {splitExplanation(normalizeAngleBracketEscapes(presentation.context).replace(/\\r\\n/g, '\n').replace(/\\n/g, '\n')).map((block, i) => (
-            <p key={i}><InlineMarkdown text={block} leafRenderer={glossaryLeaf} /></p>
-          ))}
-        </div>
-      )}
+      {presentation.context && <ReviewExplanation
+        text={normalizeAngleBracketEscapes(presentation.context).replace(/\\r\\n/g, '\n').replace(/\\n/g, '\n')}
+        leafRenderer={glossaryLeaf}
+        className="mb-3"
+      />}
       {presentation.source && !item.imageMeta?.attributionText && (
         <details className="text-xs text-[var(--md-on-surface-variant)] mt-2">
           <summary className="cursor-pointer">Source</summary>
@@ -263,41 +253,30 @@ export function CardItemView({
   // SUPPLEMENTARY one follows the explanation and precedes the links, exactly
   // where it sits today. Both leave the media pane as the middle child, which
   // is why the two cells either side are all the layout needs.
-  const paneTop = mediaIsPrompt ? <>{stemNode}{clipInstructionNode}</> : <>{stemNode}{inlineRevealNode}{answerNode}</>;
-  const paneBottom = mediaIsPrompt
-    ? <>{inlineRevealNode}{answerNode}{linksNode}</>
-    : linksNode;
   const mediaNode = clipNode || figureNode || contextClipNode
     ? <>{clipNode}{clipNode && figureIsPrompt ? null : figureNode}{contextClipNode}</>
     : null;
 
-  // At short tablet/landscape heights a prompt clip gets a compact two-column
-  // treatment before the normal `lg` pane breakpoint. Keeping the question in
-  // one column and the clip in the other preserves a useful surgical image
-  // height while the fixed reveal control remains reachable.
+  // Keep the compact prompt treatment used by MD3 on short landscape screens.
+  // This is presentation metadata so public adapters can opt into the same
+  // geometry without importing the private review pane implementation.
   const compactPrompt = clipPrompt || Boolean(presentation.targetNumber);
-  const compactLandscape = compactPrompt
-    ? '[@media(min-width:768px)_and_(max-height:500px)]:grid [@media(min-width:768px)_and_(max-height:500px)]:grid-cols-[minmax(0,1fr)_minmax(300px,50%)] [@media(min-width:768px)_and_(max-height:500px)]:gap-x-4'
-    : '';
-  const compactLandscapeTop = compactPrompt
-    ? '[@media(min-width:768px)_and_(max-height:500px)]:block [@media(min-width:768px)_and_(max-height:500px)]:col-start-1 [@media(min-width:768px)_and_(max-height:500px)]:row-start-1'
-    : '';
-  const compactLandscapeMedia = compactPrompt
-    ? '[@media(min-width:768px)_and_(max-height:500px)]:block [@media(min-width:768px)_and_(max-height:500px)]:col-start-2 [@media(min-width:768px)_and_(max-height:500px)]:row-start-1 [@media(min-width:768px)_and_(max-height:500px)]:row-span-2'
-    : '';
-  const compactLandscapeBottom = compactPrompt
-    ? '[@media(min-width:768px)_and_(max-height:500px)]:block [@media(min-width:768px)_and_(max-height:500px)]:col-start-1 [@media(min-width:768px)_and_(max-height:500px)]:row-start-2'
-    : '';
+
+
 
   return (
     <GlossaryScope abbreviations={item.abbreviations}>
-    <div className={`${sidePane ? reviewPaneGridClass(reviewPaneKind(item)) : REVIEW_PANE_CELL_FLAT} ${compactLandscape}`}>
-      <div className={`${sidePane ? REVIEW_PANE_TEXT_TOP : REVIEW_PANE_CELL_FLAT} ${compactLandscapeTop}`}>{paneTop}</div>
-      {mediaNode && (
-        <div className={`${sidePane ? REVIEW_PANE_MEDIA : REVIEW_PANE_CELL_FLAT} ${compactLandscapeMedia}`}>{mediaNode}</div>
-      )}
-      <div className={`${sidePane ? REVIEW_PANE_TEXT_BOTTOM : REVIEW_PANE_CELL_FLAT} ${compactLandscapeBottom}`}>{paneBottom}</div>
-    </div>
+    <ReviewCardContent
+      layout={mediaNode ? (mediaIsPrompt ? 'prompt' : 'supplementary') : 'flat'}
+      paneKind={reviewPaneKind(item)}
+      compactPrompt={compactPrompt}
+      stem={mediaIsPrompt ? <>{stemNode}{clipInstructionNode}</> : stemNode}
+      reveal={inlineRevealNode}
+      answer={answerNode}
+      media={mediaNode}
+      links={linksNode}
+      answerRef={undefined}
+    />
     </GlossaryScope>
   );
 }

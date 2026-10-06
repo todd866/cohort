@@ -7,7 +7,7 @@ import {
   loadOpenUsmleQuestionBankFromDisk,
   loadSeedQuestionBanksFromDisk,
 } from './load-seed-corpus';
-import { buildModuleArtifacts, moduleReleaseFingerprints } from '@/lib/content/cohort-module-corpus';
+import { buildModuleArtifacts, buildOriginalModuleArtifacts, moduleReleaseFingerprints } from '@/lib/content/cohort-module-corpus';
 import { loadQuestionBankFromDisk } from './load';
 import {
   computeOpenUsmleQuoteSetSha256,
@@ -245,6 +245,7 @@ const mirrored = {
   licence: 'CC-BY-4.0' as const,
   attribution: 'MD3 contributors' as const,
 };
+const original = { ...mirrored, id: 'cohort:anatomy:q-abcdefabcdef:v1', origin: 'md3:abcdefabcdefabcdef', discipline: 'anatomy' as const, originalId: 'abducens-function' };
 
 /** A module root exactly as `content:cohort-mirror-questions --write` lays it out. */
 function writeModuleBank(root: string, question = mirrored): { root: string; questionPath: string } {
@@ -268,6 +269,24 @@ function writeModuleBank(root: string, question = mirrored): { root: string; que
   return { root, questionPath };
 }
 
+function writeOriginalModuleBank(root: string): void {
+  const built = buildOriginalModuleArtifacts([{ question: original, sourceId: 'anatomy-source', originalId: 'abducens-function' }], {
+    'anatomy-source': { title: 'Anatomy source', publisher: 'NCBI', url: 'https://example.org/anatomy', verifiedAt: '2026-10-06' },
+  });
+  for (const [rel, file] of built.files) {
+    const target = path.join(root, rel.replace(/^open-content\/modules\//, ''));
+    fs.mkdirSync(path.dirname(target), { recursive: true }); fs.writeFileSync(target, JSON.stringify(file));
+  }
+  fs.writeFileSync(path.join(root, 'original-questions-sources.json'), JSON.stringify(built.sources));
+  const loaded = loadQuestionBankFromDisk({ bankDir: path.join(root, 'original-questions'), allowUnregisteredRootDirs: true });
+  if (loaded.errors.length > 0) throw new Error(loaded.errors.join('\n'));
+  const fingerprints = moduleReleaseFingerprints(loaded.questions.map((question) => ({
+    ...question,
+    sourceFile: `open-content/modules/original-questions/${question.moduleNodes?.[0]?.split('/').pop() ?? 'anatomy'}/${path.basename(question.sourceFile ?? '')}`,
+  })));
+  fs.writeFileSync(path.join(root, 'original-questions-release-v1.json'), JSON.stringify({ ...built.release, questionFingerprints: fingerprints }));
+}
+
 describe('loadCohortModuleQuestionBankFromDisk', () => {
   it('loads the generated module bank as its own cohort-open rows', () => {
     const { root } = writeModuleBank(tempDir('md3-module-bank-'));
@@ -276,6 +295,13 @@ describe('loadCohortModuleQuestionBankFromDisk', () => {
     expect(result.questions.map((q) => [q.id, q.rotation, q.moduleNodes])).toEqual([
       ['bank:cohort:paeds:q-0123456789ab:v1', 'cohort-open', ['cohort/paeds']],
     ]);
+  });
+
+  it('loads accepted original questions from their separate release lane', () => {
+    const root = tempDir('md3-original-module-bank-'); writeModuleBank(root); writeOriginalModuleBank(root);
+    const result = loadCohortModuleQuestionBankFromDisk({ moduleRoot: root });
+    expect(result.errors).toEqual([]);
+    expect(result.questions.map((q) => q.id)).toEqual(['bank:cohort:paeds:q-0123456789ab:v1', 'bank:cohort:anatomy:q-abcdefabcdef:v1']);
   });
 
   it('refuses a file edited after its review', () => {

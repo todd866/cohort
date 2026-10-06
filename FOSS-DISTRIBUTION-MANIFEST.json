@@ -1,10 +1,10 @@
 {
   "schemaVersion": 1,
   "boundaryPolicy": "foss/distribution-policy.json",
-  "boundaryPolicySha256": "01a5b93bd62664b228927b6d6e8ac2c074f8f654bf827405f6250f5baa1a7ae3",
-  "reviewedPathsSha256": "998f297e52fd54f220e45285bb7f2ecd2433cab498ec8dcb5001fe767b1e3dc0",
-  "fileCount": 2665,
-  "totalBytes": 261166829,
+  "boundaryPolicySha256": "6080bf5eb0d8ad327ba569303aa949c8e485a1d1730f7389810549c56d3dd40f",
+  "reviewedPathsSha256": "dc353020d5fd165a1b713a8201c7baabbc1cab66241e3aad463e0315a52bc2b4",
+  "fileCount": 2768,
+  "totalBytes": 264871372,
   "files": [
     {
       "path": ".env.example",
@@ -120,15 +120,15 @@
     },
     {
       "path": "foss/distribution-paths.txt",
-      "bytes": 146211,
-      "sha256": "998f297e52fd54f220e45285bb7f2ecd2433cab498ec8dcb5001fe767b1e3dc0",
+      "bytes": 151966,
+      "sha256": "dc353020d5fd165a1b713a8201c7baabbc1cab66241e3aad463e0315a52bc2b4",
       "mode": "0644",
       "licence": "MIT"
     },
     {
       "path": "foss/distribution-policy.json",
-      "bytes": 346344,
-      "sha256": "01a5b93bd62664b228927b6d6e8ac2c074f8f654bf827405f6250f5baa1a7ae3",
+      "bytes": 344579,
+      "sha256": "6080bf5eb0d8ad327ba569303aa949c8e485a1d1730f7389810549c56d3dd40f",
       "mode": "0644",
       "licence": "MIT"
     },
@@ -162,8 +162,8 @@
     },
     {
       "path": "open-content/anatomy-scaffolds/abducens-local/base.png",
-      "bytes": 1039120,
-      "sha256": "e8e5c267dedc12033cca845099639943c7a7618a1b16c842154ab3bace1e60aa",
+      "bytes": 1272282,
+      "sha256": "cf014431dbe58b040c2da803e7fa7aa0177e4059c4285f64e71e0420a35b4b8b",
       "mode": "0644",
       "licence": "MIT"
     },
@@ -176,15 +176,15 @@
     },
     {
       "path": "open-content/anatomy-scaffolds/abducens-local/diagram.svg",
-      "bytes": 1393614,
-      "sha256": "7c91c7ddfec25dc75d556a4bb8164e734fcd71c667f41094c9a228d7bea18683",
+      "bytes": 1704652,
+      "sha256": "ef2ef02fbdd595376979cb66adb45caf72c7fcb2aa691c6bff6dad7897b60a84",
       "mode": "0644",
       "licence": "MIT"
     },
     {
       "path": "open-content/anatomy-scaffolds/abducens-local/diagram.svg.checks.json",
-      "bytes": 6974,
-      "sha256": "cadbfee854b79bcbc55dfc860f430a0591b43927ba9942134d38c5ae395a8e39",
+      "bytes": 7132,
+      "sha256": "021e530ec0e556fa12a2ca2a39a4023ca29e70b041d12ccdacd37d4900c132a7",
       "mode": "0644",
       "licence": "CC-BY-4.0"
     },
@@ -197,8 +197,8 @@
     },
     {
       "path": "open-content/anatomy-scaffolds/abducens-local/labels.json",
-      "bytes": 4747,
-      "sha256": "2565aef2c85d7b3a6755d4d133ecbe65d1c66037a609ea6a0b139abbff00fc19",
+      "bytes": 4905,
+      "sha256": "5ffe890cbaf25ce1437ad1b5d5200ec3cb1ed9f21417970ae05e4e6ecdc14f75",
       "mode": "0644",
       "licence": "CC-BY-4.0"
     },
@@ -211,22 +211,43 @@
     },
     {
       "path": "open-content/anatomy-scaffolds/abducens-local/README.md",
-      "bytes": 1803,
-      "sha256": "90aa474e0a0d9f247852d11bc4b080210c44a5acdd743a149794f585274a1d14",
+      "bytes": 1972,
+      "sha256": "6929ff190c341c3f396ccdf5d808da84459dd7ffdd2f37c697e1faeb8be3ad21",
       "mode": "0644",
       "licence": "CC-BY-4.0"
     },
     {
       "path": "open-content/anatomy-scaffolds/abducens-local/served.svg",
-      "bytes": 1394736,
-      "sha256": "0b6358d3fe7a0205414a60e2ead6258684eaea0c3f70fe3f9ac5ee0a54bc4977",
+      "bytes": 1705774,
+      "sha256": "9815d8d62c2a1e9dc6a74be027151caeba174ea7825132e47956b7fe0af0f8eb",
       "mode": "0644",
       "licence": "MIT"
     },
     {
       "path": "open-content/anatomy-scaffolds/abducens-local/source-review.json",
-      "bytes": 2441,
-      "sha256": "7cdc675d31deefe84d5d9d625063c5ee2828300246587929ae2676a309f686e4",
+      "bytes": 2998,
+      "sha256": "85fd4121e8fa326720a3e92cd1ddb10fd976ed6cc0ef3f7d3c75e17c9a9fea31",
+      "mode": "0644",
+      "licence": "CC-BY-4.0"
+    },
+    {
+      "path": "open-content/anatomy-scaffolds/focus-figures/carpal-tunnel-focus.png",
+      "bytes": 2317694,
+      "sha256": "60ea36b5de215cfad1da1c7d4db29001e350dea1f54231c6e8dde2d01e0b0289",
+      "mode": "0644",
+      "licence": "CC-BY-4.0"
+    },
+    {
+      "path": "open-content/anatomy-scaffolds/focus-figures/LICENSE",
+      "bytes": 739,
+      "sha256": "b8c106a4505285147e48db8c779238366020a1c324a77fd3a7294fd561e1df2f",
+      "mode": "0644",
+      "licence": "CC-BY-4.0"
+    },
+    {
+      "path": "open-content/anatomy-scaffolds/focus-figures/manifest.json",
+      "bytes": 2891,
+      "sha256": "97b0094bb2b2b930f63787683940fb67a236dca72c96b1ffa5cbf246b81e2f5c",
       "mode": "0644",
       "licence": "CC-BY-4.0"
     },
@@ -306,6 +327,13 @@
       "sha256": "8935441e1e41f0e288bb13685aa77bd836c13519ae01734e3dba7ac43b556542",
       "mode": "0644",
       "licence": "MIT"
+    },
+    {
+      "path": "open-content/anatomy-scaffolds/source-figures/manifest.json",
+      "bytes": 33,
+      "sha256": "f227c30e122122d6cacc54cdf29cd5df70b5a07bcb75a79bc54ce5273fb6d9f7",
+      "mode": "0644",
+      "licence": "CC-BY-4.0"
     },
     {
       "path": "open-content/gamsat/exam-structure-v1.json",
@@ -2850,71 +2878,120 @@
     },
     {
       "path": "open-content/modules/cards-release-v1.json",
-      "bytes": 266732,
-      "sha256": "48059d8bd80db48286e16e072e8809b9c0b406291bee3cafeb899aafacb07a89",
+      "bytes": 277092,
+      "sha256": "c3a08e54c3ca017b9fc0356ce0759ae44dbf83fb2a9cfde1d5879c817b430451",
       "mode": "0644",
       "licence": "CC-BY-4.0"
     },
     {
       "path": "open-content/modules/cards/anatomy/0.json",
-      "bytes": 1871,
-      "sha256": "e5c27c9ba0bbddafe52d3adc579bb3661b93450fd2933a2f5130259127a05cf2",
+      "bytes": 4165,
+      "sha256": "02e6ab336085870c4fe88ed8993c3c990d25e539518d6ecb10d501729ec9c68f",
+      "mode": "0644",
+      "licence": "CC-BY-4.0"
+    },
+    {
+      "path": "open-content/modules/cards/anatomy/1.json",
+      "bytes": 3252,
+      "sha256": "be45455014ca93741a5a9f9bb9d9b49e61e15bb008beffbde349bfb7f1b72874",
       "mode": "0644",
       "licence": "CC-BY-4.0"
     },
     {
       "path": "open-content/modules/cards/anatomy/2.json",
-      "bytes": 1744,
-      "sha256": "7d106b65f2f132314a0699f617ff7a079a4d64f4fca1f2b9d2d20e035be87da3",
+      "bytes": 3881,
+      "sha256": "8ceb8d503cd22e05eb08c2bd2328c3c5d3d46a1cc27d5e0d663ccff318c1dbd3",
       "mode": "0644",
       "licence": "CC-BY-4.0"
     },
     {
       "path": "open-content/modules/cards/anatomy/3.json",
-      "bytes": 1786,
-      "sha256": "b080bae278fb960bd8266e8afb6ff2300fab8fd89515083c092ff723db3020df",
+      "bytes": 4122,
+      "sha256": "9f1f05f926132bef522c70b5dc050d8973f0b965cc629f35a491109d2e8a0d0f",
+      "mode": "0644",
+      "licence": "CC-BY-4.0"
+    },
+    {
+      "path": "open-content/modules/cards/anatomy/4.json",
+      "bytes": 6141,
+      "sha256": "490ad2701c363bf8737bdf86085d968395dff9070adc15c69a87a25e07485a75",
+      "mode": "0644",
+      "licence": "CC-BY-4.0"
+    },
+    {
+      "path": "open-content/modules/cards/anatomy/5.json",
+      "bytes": 880,
+      "sha256": "67b082ca8358c4ad1a77065afcfb634d891ebe193155f32d9e264cc772cd997c",
       "mode": "0644",
       "licence": "CC-BY-4.0"
     },
     {
       "path": "open-content/modules/cards/anatomy/6.json",
-      "bytes": 1671,
-      "sha256": "f2e25128cb173cd2f605f56579e1a16978ba2d4bc15301b06dcefad21e8b35df",
+      "bytes": 5285,
+      "sha256": "ba9363c55491d9abf15d898839168de3e2021ad247b637d4e8f8328c2e0c9435",
+      "mode": "0644",
+      "licence": "CC-BY-4.0"
+    },
+    {
+      "path": "open-content/modules/cards/anatomy/7.json",
+      "bytes": 6320,
+      "sha256": "f3278e5645341c22cefdc56fc580c01cb398efe2928914c7a63051c3ea1f425e",
       "mode": "0644",
       "licence": "CC-BY-4.0"
     },
     {
       "path": "open-content/modules/cards/anatomy/8.json",
-      "bytes": 1774,
-      "sha256": "f9f2e6be591e0afa8c929d482a362d1bf51cec806558e4aae94302ab7a278e59",
+      "bytes": 7380,
+      "sha256": "89889d0006a3715849c0933bd8d959966454591ec457595662845e893a2265ae",
+      "mode": "0644",
+      "licence": "CC-BY-4.0"
+    },
+    {
+      "path": "open-content/modules/cards/anatomy/9.json",
+      "bytes": 1707,
+      "sha256": "b9d2a9e0887bfe6627a4cd4356b425419a5e97d6e3425306a87ac0b6527042cf",
+      "mode": "0644",
+      "licence": "CC-BY-4.0"
+    },
+    {
+      "path": "open-content/modules/cards/anatomy/a.json",
+      "bytes": 2348,
+      "sha256": "92ed01b9d60bcdb4cd46e6613f8de28b3a8e75beed4555dc5f09b156bc696950",
       "mode": "0644",
       "licence": "CC-BY-4.0"
     },
     {
       "path": "open-content/modules/cards/anatomy/b.json",
-      "bytes": 2401,
-      "sha256": "6882d18e8f997f9d71c98f4687235b57fb195a1659d551351091cacbe7708352",
+      "bytes": 7006,
+      "sha256": "ea9c12374ca908408dce6ea31123319ad7190494fb9845a196f312b74976f706",
       "mode": "0644",
       "licence": "CC-BY-4.0"
     },
     {
       "path": "open-content/modules/cards/anatomy/c.json",
-      "bytes": 1739,
-      "sha256": "e6867dfaab3be8b9fcad873c1651e4a54b18697a301580c28bf909ff6ea2fcf0",
+      "bytes": 4032,
+      "sha256": "f6ac137b658aa9d461b461c6c61d6ee9450b589f1f0427ed1e3030e7ee1d4623",
       "mode": "0644",
       "licence": "CC-BY-4.0"
     },
     {
       "path": "open-content/modules/cards/anatomy/d.json",
-      "bytes": 1688,
-      "sha256": "4e07eab0fc5b79069af43328bcfbf71dfb867d8a43b14e3b1669bd10684822ca",
+      "bytes": 6266,
+      "sha256": "49ea34adcd8dcc4d3aa68e511666e9dca3d0cd4720438ceb8aaf40a1b3d0528a",
+      "mode": "0644",
+      "licence": "CC-BY-4.0"
+    },
+    {
+      "path": "open-content/modules/cards/anatomy/e.json",
+      "bytes": 3850,
+      "sha256": "38ef47802613c889aa32ff9753339f815077c9020ecfdc7d3616de3c5b811457",
       "mode": "0644",
       "licence": "CC-BY-4.0"
     },
     {
       "path": "open-content/modules/cards/anatomy/f.json",
-      "bytes": 894,
-      "sha256": "65c090d694b35b2ae36bf4ab611096ff5490d75b48c07c5e3a36b6195067d428",
+      "bytes": 3238,
+      "sha256": "3fe6b6bd6e3a618861e4d1a858abe5c7caa352d4cce98f693f2a9d5a3d6b65e8",
       "mode": "0644",
       "licence": "CC-BY-4.0"
     },
@@ -3375,22 +3452,330 @@
     },
     {
       "path": "open-content/modules/original-card-ids-v1.json",
-      "bytes": 760,
-      "sha256": "bdf1a17c39aad1d9f9bb6de371bd3dcf6d875466c995fa6169bc70d56d9bcea2",
+      "bytes": 3560,
+      "sha256": "b6156c4cd800a838b235a79423aecca21542eb1326dfce849d913d3a24f38e5d",
+      "mode": "0644",
+      "licence": "CC-BY-4.0"
+    },
+    {
+      "path": "open-content/modules/original-cards/anatomy/carpal-section.json",
+      "bytes": 10431,
+      "sha256": "6ba5ec03655c4c9b291a1033092c3d626a7ebba5241a696c5168c28f09013bee",
+      "mode": "0644",
+      "licence": "CC-BY-4.0"
+    },
+    {
+      "path": "open-content/modules/original-cards/anatomy/cranial-nerve-functions.json",
+      "bytes": 18043,
+      "sha256": "7baaba56e9e15364db1219ee18ff364254bb3ffe612ca3ca821e1f101528d235",
+      "mode": "0644",
+      "licence": "CC-BY-4.0"
+    },
+    {
+      "path": "open-content/modules/original-cards/anatomy/lower-limb-foundations.json",
+      "bytes": 17731,
+      "sha256": "e7991e742f53b32bbd64e817872f1a0fe06fd3d3387a52aee09a6318f8412569",
       "mode": "0644",
       "licence": "CC-BY-4.0"
     },
     {
       "path": "open-content/modules/original-cards/anatomy/ocular-motor-nerves.json",
       "bytes": 11031,
-      "sha256": "7b4684536b183ca5fd8ff02467f541da1be25000ca23bf202f4c3563a2848acc",
+      "sha256": "15aec4213654414ead579dd8d155ecb0d897540aec32af387b3712cece4ab65b",
       "mode": "0644",
       "licence": "CC-BY-4.0"
     },
     {
       "path": "open-content/modules/original-cards/anatomy/ocular-motor-visual-targets.json",
       "bytes": 6385,
-      "sha256": "3350663c9c37787173c3830a7bc3570ef26f7c82a50d7b6e4a9d4a1d5a5aadaf",
+      "sha256": "d99024b554a25e93255660aba7fda504c3271ff92e55cad6e8f7e60dd99c42bd",
+      "mode": "0644",
+      "licence": "CC-BY-4.0"
+    },
+    {
+      "path": "open-content/modules/original-cards/anatomy/upper-limb-foundations.json",
+      "bytes": 14968,
+      "sha256": "0a2a09b55b309f3741d33af918e9b152fdec554e71857e2b96ac4459df7255cd",
+      "mode": "0644",
+      "licence": "CC-BY-4.0"
+    },
+    {
+      "path": "open-content/modules/original-question-ids-v1.json",
+      "bytes": 977,
+      "sha256": "e078c1411ba684e256d040fd26feee22a3b38bc5ac5b0e8a77e0e0e19d5cf70c",
+      "mode": "0644",
+      "licence": "CC-BY-4.0"
+    },
+    {
+      "path": "open-content/modules/original-question-sources/anatomy/regional-applied.json",
+      "bytes": 78687,
+      "sha256": "ff925783aeb89b12808273fb20f2ae119bbc23c2579dd7b0bff69588569b8a09",
+      "mode": "0644",
+      "licence": "CC-BY-4.0"
+    },
+    {
+      "path": "open-content/modules/original-questions-release-v1.json",
+      "bytes": 12565,
+      "sha256": "45d78f475a65965d27d643afbb6d8ae495838af4ebd584ce4552adffd5f46999",
+      "mode": "0644",
+      "licence": "CC-BY-4.0"
+    },
+    {
+      "path": "open-content/modules/original-questions-sources.json",
+      "bytes": 9351,
+      "sha256": "8c4e7ea241c5b22bc3a234ddf9fed457c9e64539af9c9a2e7211374c0dfdcb9c",
+      "mode": "0644",
+      "licence": "CC-BY-4.0"
+    },
+    {
+      "path": "open-content/modules/original-questions/anatomy/q-1494336ce6c0.v1.json",
+      "bytes": 2022,
+      "sha256": "1a8ce16e7e22856ffac6328f3bb3f120244c949adae43b55a99e248562992e46",
+      "mode": "0644",
+      "licence": "CC-BY-4.0"
+    },
+    {
+      "path": "open-content/modules/original-questions/anatomy/q-14c82f756aa9.v1.json",
+      "bytes": 1995,
+      "sha256": "3363ec63446e3e855766c3d9b9246f4fd3053237604a5a90c3ce8b0aeb79adb8",
+      "mode": "0644",
+      "licence": "CC-BY-4.0"
+    },
+    {
+      "path": "open-content/modules/original-questions/anatomy/q-269c3c9503cb.v1.json",
+      "bytes": 2100,
+      "sha256": "f7124c26c660c050c1ebe8af285d3919c1844369d732129c5263fe43aac3cf71",
+      "mode": "0644",
+      "licence": "CC-BY-4.0"
+    },
+    {
+      "path": "open-content/modules/original-questions/anatomy/q-31ea4fd39acd.v1.json",
+      "bytes": 2046,
+      "sha256": "41d63516a224797944d0ba713c6150dc6d55a0b1940d55c41d2cdbe1eb4ee582",
+      "mode": "0644",
+      "licence": "CC-BY-4.0"
+    },
+    {
+      "path": "open-content/modules/original-questions/anatomy/q-31f6db2b4450.v1.json",
+      "bytes": 2177,
+      "sha256": "2aa113caa98b3cc7f9e9f1025b1cd4df3fb9e9186efeb15fbb69127e7edb8d76",
+      "mode": "0644",
+      "licence": "CC-BY-4.0"
+    },
+    {
+      "path": "open-content/modules/original-questions/anatomy/q-3b62abfa1913.v1.json",
+      "bytes": 2136,
+      "sha256": "2d5caaeec2f209edf7e7749ac927865bc8cd3d3d5a0b9928bc88384ae5b5a7fc",
+      "mode": "0644",
+      "licence": "CC-BY-4.0"
+    },
+    {
+      "path": "open-content/modules/original-questions/anatomy/q-4106f31e5f13.v1.json",
+      "bytes": 2204,
+      "sha256": "ee5ac4f063a1fd65e240c1398814e501b890207d3a865e83c9e46be84aabb7b1",
+      "mode": "0644",
+      "licence": "CC-BY-4.0"
+    },
+    {
+      "path": "open-content/modules/original-questions/anatomy/q-4313fbf1d627.v1.json",
+      "bytes": 2066,
+      "sha256": "fd91a34c652b6c1d858153d9b3d56d127c59566b65edb790295b47358fcafa58",
+      "mode": "0644",
+      "licence": "CC-BY-4.0"
+    },
+    {
+      "path": "open-content/modules/original-questions/anatomy/q-4d8e58a7667b.v1.json",
+      "bytes": 1963,
+      "sha256": "5ea7d8373136a4681622709e3c9fde53b5719ac8318aa38ec915e254ea4038cf",
+      "mode": "0644",
+      "licence": "CC-BY-4.0"
+    },
+    {
+      "path": "open-content/modules/original-questions/anatomy/q-55d73f685c9c.v1.json",
+      "bytes": 1968,
+      "sha256": "20fb4d1d24f41e66572290dec83f97c596a87fbff6575fc9f84d90e360f00230",
+      "mode": "0644",
+      "licence": "CC-BY-4.0"
+    },
+    {
+      "path": "open-content/modules/original-questions/anatomy/q-5c12c07ae0db.v1.json",
+      "bytes": 1967,
+      "sha256": "d8f1af4e219ff0c1175a81a851d24d42f5d1d37f83676eed6d99394b0a767032",
+      "mode": "0644",
+      "licence": "CC-BY-4.0"
+    },
+    {
+      "path": "open-content/modules/original-questions/anatomy/q-600b57df2eeb.v1.json",
+      "bytes": 2179,
+      "sha256": "203a996c4b0bf834446e29b5e6d142fb2777d08518800fe3b779c708d4a1c45c",
+      "mode": "0644",
+      "licence": "CC-BY-4.0"
+    },
+    {
+      "path": "open-content/modules/original-questions/anatomy/q-64f768fe0a84.v1.json",
+      "bytes": 2281,
+      "sha256": "11ddfffc0f3872b11f2ffccb7ef5ab25cafca86dc516232f6ffaffcd7b782495",
+      "mode": "0644",
+      "licence": "CC-BY-4.0"
+    },
+    {
+      "path": "open-content/modules/original-questions/anatomy/q-652ad475b2f4.v1.json",
+      "bytes": 2232,
+      "sha256": "57f7faa6797ef2f9c7da7d17c95a669c130239bb4aa7f53437aeecd814ea2a07",
+      "mode": "0644",
+      "licence": "CC-BY-4.0"
+    },
+    {
+      "path": "open-content/modules/original-questions/anatomy/q-6e19e5a7e824.v1.json",
+      "bytes": 1991,
+      "sha256": "26c0875c7e4b5862bc5b0bb1fe7023ff118ac089ddfd32d1d16d87a8a8991bce",
+      "mode": "0644",
+      "licence": "CC-BY-4.0"
+    },
+    {
+      "path": "open-content/modules/original-questions/anatomy/q-81fab5167309.v1.json",
+      "bytes": 2025,
+      "sha256": "7318179c91bc7a86cc19cb8fc68e63428379b7a3d217e1d421e6c9cf3e376ea7",
+      "mode": "0644",
+      "licence": "CC-BY-4.0"
+    },
+    {
+      "path": "open-content/modules/original-questions/anatomy/q-835198e6357b.v1.json",
+      "bytes": 1951,
+      "sha256": "94c911908a092d4bf5b96a2e65d8d1651afc952020edb41251e1fc02dd308903",
+      "mode": "0644",
+      "licence": "CC-BY-4.0"
+    },
+    {
+      "path": "open-content/modules/original-questions/anatomy/q-8718b8363afe.v1.json",
+      "bytes": 2223,
+      "sha256": "952ff2e2d85aafdcca43093e95b84c89668034a958ab291e15861ff1b5a07985",
+      "mode": "0644",
+      "licence": "CC-BY-4.0"
+    },
+    {
+      "path": "open-content/modules/original-questions/anatomy/q-8887442110f0.v1.json",
+      "bytes": 2094,
+      "sha256": "0ef9285102f94f2ab08d1aa9ea9eb9c91252338a8bd573848ebd5e75856fcbaf",
+      "mode": "0644",
+      "licence": "CC-BY-4.0"
+    },
+    {
+      "path": "open-content/modules/original-questions/anatomy/q-8dca5b17522a.v1.json",
+      "bytes": 2110,
+      "sha256": "1b6c86d276a4093dd181a123d28c612c000451ab21b9a54e8e4d41277bd2f3b9",
+      "mode": "0644",
+      "licence": "CC-BY-4.0"
+    },
+    {
+      "path": "open-content/modules/original-questions/anatomy/q-91784ef93478.v1.json",
+      "bytes": 2070,
+      "sha256": "d44f0fef32a7a6a473e611d66ad1893a486f0c235b1ea10799234334fb16828d",
+      "mode": "0644",
+      "licence": "CC-BY-4.0"
+    },
+    {
+      "path": "open-content/modules/original-questions/anatomy/q-98a5cfd00301.v1.json",
+      "bytes": 2073,
+      "sha256": "02c5c540a691d9c4a4505dbd38315354915a76205dd457a038630f4db469b029",
+      "mode": "0644",
+      "licence": "CC-BY-4.0"
+    },
+    {
+      "path": "open-content/modules/original-questions/anatomy/q-9b3b1d516ead.v1.json",
+      "bytes": 2232,
+      "sha256": "68c90f928d1d5ee1a1cfafb3bbdcc22795603153d0e425ec75ede8519c64cefa",
+      "mode": "0644",
+      "licence": "CC-BY-4.0"
+    },
+    {
+      "path": "open-content/modules/original-questions/anatomy/q-9d5d1e5ad1b5.v1.json",
+      "bytes": 2393,
+      "sha256": "98f4821081ac1ecec04699360a29510456b514b3e8bd1ae92680c9ee0f33f8d0",
+      "mode": "0644",
+      "licence": "CC-BY-4.0"
+    },
+    {
+      "path": "open-content/modules/original-questions/anatomy/q-9f14aff950b7.v1.json",
+      "bytes": 2006,
+      "sha256": "6657842d9c81996237591b50d980c66eb2b6c4e6fc40c33e8ae997dcf2f6dc12",
+      "mode": "0644",
+      "licence": "CC-BY-4.0"
+    },
+    {
+      "path": "open-content/modules/original-questions/anatomy/q-a208a3bc48f9.v1.json",
+      "bytes": 2050,
+      "sha256": "119a2115b358a8d9cb936773fa2857afd4a9ed931209bf8a1d95f4ac57734923",
+      "mode": "0644",
+      "licence": "CC-BY-4.0"
+    },
+    {
+      "path": "open-content/modules/original-questions/anatomy/q-a500c0b1e4d8.v1.json",
+      "bytes": 2142,
+      "sha256": "7bb447e6defe7415f6f7e55ff5d374d8caa8092f0cd81f485890f57ed284cffb",
+      "mode": "0644",
+      "licence": "CC-BY-4.0"
+    },
+    {
+      "path": "open-content/modules/original-questions/anatomy/q-a6c8cc620110.v1.json",
+      "bytes": 2175,
+      "sha256": "83597b097f09d3d5e2a1aeb0972b4e671f77a82a5e9ad58a7f8942f65c1ed392",
+      "mode": "0644",
+      "licence": "CC-BY-4.0"
+    },
+    {
+      "path": "open-content/modules/original-questions/anatomy/q-ab50a2e3426b.v1.json",
+      "bytes": 2351,
+      "sha256": "417448a2a1be05304e4e73410a8e71de8badd201084a69c19f2f5ac9333599a5",
+      "mode": "0644",
+      "licence": "CC-BY-4.0"
+    },
+    {
+      "path": "open-content/modules/original-questions/anatomy/q-ac6d3bd26a40.v1.json",
+      "bytes": 2019,
+      "sha256": "49f8e0a1c5bfcfc8cb7f90c988c367b6545bd77f691670d90fb387a36ac34763",
+      "mode": "0644",
+      "licence": "CC-BY-4.0"
+    },
+    {
+      "path": "open-content/modules/original-questions/anatomy/q-ad14bb5de31c.v1.json",
+      "bytes": 2129,
+      "sha256": "691984ea3ef54930cd29d27141cfffe658a47452485fb0ceb789e15349f1f427",
+      "mode": "0644",
+      "licence": "CC-BY-4.0"
+    },
+    {
+      "path": "open-content/modules/original-questions/anatomy/q-b835918158fa.v1.json",
+      "bytes": 1985,
+      "sha256": "0e11cf99f6482c752dd5bafceb67d7b7c7746a32d7bf37de6d500772314280b0",
+      "mode": "0644",
+      "licence": "CC-BY-4.0"
+    },
+    {
+      "path": "open-content/modules/original-questions/anatomy/q-c1645dde35ba.v1.json",
+      "bytes": 2018,
+      "sha256": "8c313bb354a02b7cfed3328aa57da1d2adf9817be08e482e3f08ef30e0b308e6",
+      "mode": "0644",
+      "licence": "CC-BY-4.0"
+    },
+    {
+      "path": "open-content/modules/original-questions/anatomy/q-c3864d7f0cfc.v1.json",
+      "bytes": 2023,
+      "sha256": "712924b35f765c7e71468d79310d477903fa0e88a61ad5c8b232a0fee599ccff",
+      "mode": "0644",
+      "licence": "CC-BY-4.0"
+    },
+    {
+      "path": "open-content/modules/original-questions/anatomy/q-cad93a8f5351.v1.json",
+      "bytes": 2149,
+      "sha256": "8b33efdf92360cb82f091523979566301600300b84cd72e2a4805dc35aa164d3",
+      "mode": "0644",
+      "licence": "CC-BY-4.0"
+    },
+    {
+      "path": "open-content/modules/original-questions/anatomy/q-eb1f160975db.v1.json",
+      "bytes": 2016,
+      "sha256": "d4bf50ae6bda9656098199a63b2786f12cb79aa62b8e453c818ef5f6d59c926c",
       "mode": "0644",
       "licence": "CC-BY-4.0"
     },
@@ -10571,15 +10956,15 @@
     },
     {
       "path": "package-lock.json",
-      "bytes": 514257,
-      "sha256": "126d670ce3adf9cfff9184fff863efdda365eb1aa654beec8ae06a9ea6a7386c",
+      "bytes": 514463,
+      "sha256": "87822cd2fe26199e68a205b2e7acd6b71a3e967159b97e09588431c8e4c8a71e",
       "mode": "0644",
       "licence": "MIT"
     },
     {
       "path": "package.json",
-      "bytes": 11417,
-      "sha256": "a5d7430517696e74298c0029654c3f83d65013d704f6cd597b12f4a12b6b8c03",
+      "bytes": 12273,
+      "sha256": "c51ed34b86b8146338a3395a8d7dd5241a27effd36c273d7c8ebf5628a75fe3c",
       "mode": "0644",
       "licence": "MIT"
     },
@@ -11221,6 +11606,20 @@
       "licence": "MIT"
     },
     {
+      "path": "scripts/content/cohort-original-questions.test.ts",
+      "bytes": 5989,
+      "sha256": "55bbd8cd5a8b2a08081c796a00fc7879016d66b4133108cd049cc862f887af4a",
+      "mode": "0644",
+      "licence": "MIT"
+    },
+    {
+      "path": "scripts/content/cohort-original-questions.ts",
+      "bytes": 6358,
+      "sha256": "87c1fa242e6753e7a6a94ddd41ee6a1f5fad6434e40d8e1f388dbd5c81d7755c",
+      "mode": "0644",
+      "licence": "MIT"
+    },
+    {
       "path": "scripts/content/curated-starters.test.ts",
       "bytes": 6211,
       "sha256": "28df5055b03f90a5f4ecf0c6b704c34b75d21dd3552937e3dd1b31cb11170187",
@@ -11299,8 +11698,8 @@
     },
     {
       "path": "scripts/content/seed-cohort-modules.ts",
-      "bytes": 2420,
-      "sha256": "af04ede7871e49ec78f7c302426d6331ac8fb7d75f46ff5b4079c95769ab9c15",
+      "bytes": 2427,
+      "sha256": "14f3af3d1766de1d16aecfb7709a3a7c8cb37e3014faa391b37a6bc7ebf61f0d",
       "mode": "0644",
       "licence": "MIT"
     },
@@ -11334,15 +11733,15 @@
     },
     {
       "path": "scripts/foss/distribution.test.ts",
-      "bytes": 67206,
-      "sha256": "58fcae3d3e3aa02759bd68911c1c75ca9fefe6e4bb118d4694f992cda24de176",
+      "bytes": 70556,
+      "sha256": "935c1dae0875474059c7db5ed1512b9e80d846e07d4706f30ea93486e0fc5538",
       "mode": "0644",
       "licence": "MIT"
     },
     {
       "path": "scripts/foss/distribution.ts",
-      "bytes": 102671,
-      "sha256": "ddb129b992d4bda9269793413fd9d2c8d5d308fc9d3ff7ea4f5e12a6cb6b565c",
+      "bytes": 104489,
+      "sha256": "99ed3af3b22a625fff0049375c998f42560fcbd6cce3e930c9c5af790b8ee03b",
       "mode": "0644",
       "licence": "MIT"
     },
@@ -11376,8 +11775,8 @@
     },
     {
       "path": "scripts/foss/public-navigation.test.ts",
-      "bytes": 29632,
-      "sha256": "d532101b4e064ecdd4e3253c942d7642b6cf6132f39129dafa29182ea409dbc9",
+      "bytes": 29659,
+      "sha256": "fa8e417ba28f0545d1ce8e201cccee38a067401f0e7ff95e5823b04abe45c563",
       "mode": "0644",
       "licence": "MIT"
     },
@@ -11733,29 +12132,29 @@
     },
     {
       "path": "src/app/anatomy/AnatomyStudyClient.test.tsx",
-      "bytes": 12761,
-      "sha256": "1c2b5f0cd5ee11a0485151ba87001af6e783971a903bf4380cafdf85be203651",
+      "bytes": 14271,
+      "sha256": "1e0e57dcb758b1c4beb35834bfd030d1dc32f3a335228cd92e35edf7aaccc384",
       "mode": "0644",
       "licence": "MIT"
     },
     {
       "path": "src/app/anatomy/AnatomyStudyClient.tsx",
-      "bytes": 21991,
-      "sha256": "08a4fb43e53ba64e93c6fc93fa7bd53d9dd83705c8eca25c75b3d98347b3e858",
+      "bytes": 100,
+      "sha256": "a8c3a6c6c07fc564e3fd169ac453c3478534a638b135c1cc7d1136fdb83af508",
       "mode": "0644",
       "licence": "MIT"
     },
     {
       "path": "src/app/anatomy/page.test.tsx",
-      "bytes": 1076,
-      "sha256": "53f5e7d69b543a2532cc6e61ac663b9ce21ec6443cd69d4d38447e6a53aef315",
+      "bytes": 1118,
+      "sha256": "05297e830a7f285e8a9fd5f8190f0ae3bb314ea46d39b2f96e714b04a198e1eb",
       "mode": "0644",
       "licence": "MIT"
     },
     {
       "path": "src/app/anatomy/page.tsx",
-      "bytes": 823,
-      "sha256": "f7b75316ba300a33b82d887f6847737c6d7bcc237c7d8c35507fdc6147dd7af6",
+      "bytes": 866,
+      "sha256": "aa9893ea81a8a6a378427768a3a9003dee02f96951d96f744b258f924643216d",
       "mode": "0644",
       "licence": "MIT"
     },
@@ -11770,6 +12169,20 @@
       "path": "src/app/api/anatomy/abducens/route.ts",
       "bytes": 1575,
       "sha256": "935dd6bb3f04f4db2aa882d439fd92837d3061a867f919c91dce55c6d3b5fa59",
+      "mode": "0644",
+      "licence": "MIT"
+    },
+    {
+      "path": "src/app/api/anatomy/figure/route.test.ts",
+      "bytes": 3348,
+      "sha256": "b2a452e2bc1cba73efe1bfffc7ce70db3b644f9d6edeff93b4a40deda6799a87",
+      "mode": "0644",
+      "licence": "MIT"
+    },
+    {
+      "path": "src/app/api/anatomy/figure/route.ts",
+      "bytes": 1902,
+      "sha256": "80af6b5364d275c678d576933153372675a5bce59ce5a41c232f381903f624ee",
       "mode": "0644",
       "licence": "MIT"
     },
@@ -11805,6 +12218,20 @@
       "path": "src/app/api/cohort/difficulty/route.ts",
       "bytes": 3781,
       "sha256": "b5380f5172af018aad0158d74336185f84172d03ce4c16dfcfae33df7c8972f6",
+      "mode": "0644",
+      "licence": "MIT"
+    },
+    {
+      "path": "src/app/api/cohort/feedback/route.test.ts",
+      "bytes": 1884,
+      "sha256": "1caded44bd65e9699aac7d56d0713a92b4f716726639c29bd9bbacc90e014602",
+      "mode": "0644",
+      "licence": "MIT"
+    },
+    {
+      "path": "src/app/api/cohort/feedback/route.ts",
+      "bytes": 2125,
+      "sha256": "1911e8fcda847b065b66f9324a2eabdce41282807ce93591e9e5c4cd02554a00",
       "mode": "0644",
       "licence": "MIT"
     },
@@ -12125,8 +12552,8 @@
     },
     {
       "path": "src/app/page.tsx",
-      "bytes": 1906,
-      "sha256": "71a1e4b8e3ba7bba13bc2359b30b8d33f0dd68d885e86559b818fb6d9c274ff0",
+      "bytes": 272,
+      "sha256": "89da23501bb2b8bab38e23f29e07efefd1ebe69188a860913821721af35d7ec7",
       "mode": "0644",
       "licence": "MIT"
     },
@@ -12146,22 +12573,22 @@
     },
     {
       "path": "src/app/profile/loading.tsx",
-      "bytes": 864,
-      "sha256": "d83254301cc779463513b086d0e88878e6077e65929ade221052265757da2392",
+      "bytes": 1410,
+      "sha256": "354ed4113e0c12bd4f780158b86ef276bd97e7d0f4c8aef4b6ea577a9d250ad8",
       "mode": "0644",
       "licence": "MIT"
     },
     {
       "path": "src/app/profile/page.tsx",
-      "bytes": 2176,
-      "sha256": "3645bf914bbae6681de233e15af1c9c6a86389e0755885fd3933fece1e9c2269",
+      "bytes": 65,
+      "sha256": "80950f7de26fdac47ef785c6b2dec4fd0c528caa80b12f1739723d7fe82a7d72",
       "mode": "0644",
       "licence": "MIT"
     },
     {
       "path": "src/app/profile/profile-deferred-sections.tsx",
-      "bytes": 4862,
-      "sha256": "6350f93ae265c1d9ecc1bd483f3ddaa454dcc54d0ed0168eecaa028a4938052f",
+      "bytes": 5370,
+      "sha256": "e02e0bc83ef9033de512e2d984e48f8eacf865b6ddfb62b0ef97fdeb99832caf",
       "mode": "0644",
       "licence": "MIT"
     },
@@ -12181,22 +12608,29 @@
     },
     {
       "path": "src/app/profile/profile-leaderboard.tsx",
-      "bytes": 9682,
-      "sha256": "524deee63788dc8c3ff84dd8dd03950ee184ca52db4a42ef07700b75592a1b26",
+      "bytes": 9110,
+      "sha256": "bbac6d555cb457b41fe6f3a03681fb553d9dccb736d65661ed55ce8c847ac31e",
       "mode": "0644",
       "licence": "MIT"
     },
     {
       "path": "src/app/profile/profile-request-box.tsx",
-      "bytes": 9170,
-      "sha256": "17058fbe4587b8cff03d8ed5315c07ca10984a0487c645ad9544af901640aa56",
+      "bytes": 8440,
+      "sha256": "ea080f59d36488a4b2237bcd75f125abc6be69ea6929b45fd2b42cb4e98c18df",
+      "mode": "0644",
+      "licence": "MIT"
+    },
+    {
+      "path": "src/app/profile/profile-reserved-slot.tsx",
+      "bytes": 906,
+      "sha256": "386301b8a5730def90f2630d0f5856ba3c94c9660b750765da3b434f15e1fdc7",
       "mode": "0644",
       "licence": "MIT"
     },
     {
       "path": "src/app/profile/profile-sections.tsx",
-      "bytes": 883,
-      "sha256": "702d41755f168d4acee80ea634ee99d243a70953e5bc5a1daa3587c40493bc52",
+      "bytes": 831,
+      "sha256": "5101af721f1990022743f86697167b9f2abb82111f8b6071789d28036b55cbb1",
       "mode": "0644",
       "licence": "MIT"
     },
@@ -12208,9 +12642,9 @@
       "licence": "MIT"
     },
     {
-      "path": "src/app/profile/profile-support.tsx",
-      "bytes": 4233,
-      "sha256": "f79c0f1ec8677a40c505a08adfbd350a3d27666caf7315d7b0a012572b45a595",
+      "path": "src/app/profile/profile-slot-classes.ts",
+      "bytes": 388,
+      "sha256": "b500998c24b1e0d30d09b2db93cd7be2d6cd7e7ea82e58b55d50f6c272a4bab2",
       "mode": "0644",
       "licence": "MIT"
     },
@@ -12230,8 +12664,8 @@
     },
     {
       "path": "src/app/profile/review-menu-section.tsx",
-      "bytes": 4701,
-      "sha256": "16a3d63f11fc4123a0c6ffb5b88fbe80cb937b829e0c0eda819962d79ef8d01a",
+      "bytes": 4532,
+      "sha256": "03a5b758b9b8ed932218f7d79063694a6bf4e7b31b37a5a4cf63607c2fe158b4",
       "mode": "0644",
       "licence": "MIT"
     },
@@ -12252,7 +12686,7 @@
     {
       "path": "src/app/profile/settings/ProfileSettingsClient.tsx",
       "bytes": 2122,
-      "sha256": "1d0ecf1da1b663a175b7006c0ba42f75b1469f25d59d5927a178d74edfc5052c",
+      "sha256": "cd0b52bb2ccadd4319b7d1f261e93fb2e2eab029f71c0e312ef0204823f49e26",
       "mode": "0644",
       "licence": "MIT"
     },
@@ -12267,13 +12701,6 @@
       "path": "src/app/profile/stats/page.tsx",
       "bytes": 1514,
       "sha256": "eb0b8a33bb648749936e4fbc084dad756aa24f91811903869759f33f531fc24d",
-      "mode": "0644",
-      "licence": "MIT"
-    },
-    {
-      "path": "src/app/profile/support/page.tsx",
-      "bytes": 925,
-      "sha256": "0e50458ec69faf010293964b99aefa3c8f8e0b911fef60b20c86645fc9a29112",
       "mode": "0644",
       "licence": "MIT"
     },
@@ -12370,8 +12797,8 @@
     },
     {
       "path": "src/app/usmle/step1/study/Step1StudyClient.tsx",
-      "bytes": 26224,
-      "sha256": "08d4a654f20129dc84e5931ff43936d652e14c28ad532d42ebe4aeadb5ceedbb",
+      "bytes": 22413,
+      "sha256": "d25f9b13c4ed661023de0f0ed8b4ecaa1ce41452fec9b6c0c77d51d2c278a592",
       "mode": "0644",
       "licence": "MIT"
     },
@@ -12442,6 +12869,55 @@
       "path": "src/components/clinical-cockpit/ABGPanel.tsx",
       "bytes": 7531,
       "sha256": "44ce892b8152196560d0d1ce6cc69501b05ba2343c13511e2958818e6ad9a8ab",
+      "mode": "0644",
+      "licence": "MIT"
+    },
+    {
+      "path": "src/components/cohort/PublicProfilePage.tsx",
+      "bytes": 1366,
+      "sha256": "38ea54344a6662057aac30863867bacd99aaaa0e3af21108167d8883ff2043d7",
+      "mode": "0644",
+      "licence": "MIT"
+    },
+    {
+      "path": "src/components/cohort/PublicReviewClient.test.tsx",
+      "bytes": 10299,
+      "sha256": "ccaf19bbc425b1220073c6000d9a19e9dca97b6d0dc9b79830005dfbf50de672",
+      "mode": "0644",
+      "licence": "MIT"
+    },
+    {
+      "path": "src/components/cohort/PublicReviewClient.tsx",
+      "bytes": 20929,
+      "sha256": "66e5264f5a211b638cc05cc46f319b3efad7388126e96e7847e8009a8e159832",
+      "mode": "0644",
+      "licence": "MIT"
+    },
+    {
+      "path": "src/components/cohort/PublicReviewEntry.test.tsx",
+      "bytes": 1778,
+      "sha256": "62306457e3400bcd2e31eee1a5a31b214bc57611656e288bd112d7013abd63a4",
+      "mode": "0644",
+      "licence": "MIT"
+    },
+    {
+      "path": "src/components/cohort/PublicReviewEntry.tsx",
+      "bytes": 3167,
+      "sha256": "d8379f99d0485fb7e2bae9e22802a891df2a155e3f12a69bbe36e82c6fcf6c51",
+      "mode": "0644",
+      "licence": "MIT"
+    },
+    {
+      "path": "src/components/cohort/PublicReviewFeedback.test.tsx",
+      "bytes": 1487,
+      "sha256": "99013ed4d481f7f53fd5f7c6492e3521922adead7cf4cf3372370c95b95d7cab",
+      "mode": "0644",
+      "licence": "MIT"
+    },
+    {
+      "path": "src/components/cohort/PublicReviewFeedback.tsx",
+      "bytes": 3884,
+      "sha256": "f0b8099f1ae86a855a951b71aa18e54160f879e71c4f5a13d18c92ba31d21446",
       "mode": "0644",
       "licence": "MIT"
     },
@@ -12930,8 +13406,8 @@
     },
     {
       "path": "src/components/Navigation.tsx",
-      "bytes": 2060,
-      "sha256": "dae6e91fae8540c946cfe7330d38e5bbf9d4c1df3d305046b13e77a81a735b90",
+      "bytes": 1491,
+      "sha256": "c5ee7f9371461efde920bc14b201b46836716667bfbf7bd15a9e90aeb589a55f",
       "mode": "0644",
       "licence": "MIT"
     },
@@ -13028,8 +13504,8 @@
     },
     {
       "path": "src/components/review/CardFeedback.tsx",
-      "bytes": 7998,
-      "sha256": "00e23ca611498f25a064ac443013a81e70600b3bef1fd5777cce7226fc387187",
+      "bytes": 7512,
+      "sha256": "6e8fe6783990e56dfafdd22a6cb4fc4f3cffa60df9fbbc105792a2a365b57604",
       "mode": "0644",
       "licence": "MIT"
     },
@@ -13042,8 +13518,8 @@
     },
     {
       "path": "src/components/review/CardItemView.tsx",
-      "bytes": 14118,
-      "sha256": "afcdfcdb4e6bcc9b53132b12a432d4506d1425728fd6712bf0bcbacb8b685b85",
+      "bytes": 12228,
+      "sha256": "70a2981f7e61bd0b30283b8022bf8f197a432b1ea6a397fe65fb7fcaf2305cb0",
       "mode": "0644",
       "licence": "MIT"
     },
@@ -13084,8 +13560,8 @@
     },
     {
       "path": "src/components/review/CohortPrompt.tsx",
-      "bytes": 6892,
-      "sha256": "f4aefe6752548ef246b41eb279e597b91765f53231613c77f34d472b4fab6b0c",
+      "bytes": 79,
+      "sha256": "c465f40ff988884326a789aba5f0d6cc629a19d584710a29af18746579dade96",
       "mode": "0644",
       "licence": "MIT"
     },
@@ -13140,8 +13616,8 @@
     },
     {
       "path": "src/components/review/hooks/keyboardTarget.ts",
-      "bytes": 1028,
-      "sha256": "4e730a796f6bdc9ac21759172c17b3dee82a4a95380825b3aeca077f808a3a35",
+      "bytes": 52,
+      "sha256": "ecd48c8868e13fef612515311771651e48d17bc718e401400f8c3e0eda1fd535",
       "mode": "0644",
       "licence": "MIT"
     },
@@ -13245,8 +13721,8 @@
     },
     {
       "path": "src/components/review/hooks/useReviewKeyboard.ts",
-      "bytes": 7904,
-      "sha256": "23228a72e2f3ea0690505eeb5bf161283f2121b2e0a3a013576e1cf4d5d26f70",
+      "bytes": 75,
+      "sha256": "8fe21165d6a90deb6955511e92b3f61e6ea6b9651cd7024313a3cd984f367df7",
       "mode": "0644",
       "licence": "MIT"
     },
@@ -13273,8 +13749,8 @@
     },
     {
       "path": "src/components/review/hooks/useTopicReadiness.ts",
-      "bytes": 1507,
-      "sha256": "177bbeee41994c84fb185b0416d340edab9e2fa01b9cef249213a8f39404fe48",
+      "bytes": 1819,
+      "sha256": "31a9a1a8a8b71dbf5a2f496bc29922ef3bbb542f60c06adac22033cc4b633b77",
       "mode": "0644",
       "licence": "MIT"
     },
@@ -13308,8 +13784,8 @@
     },
     {
       "path": "src/components/review/McqItemView.tsx",
-      "bytes": 18155,
-      "sha256": "497b30bdb49ce96b64b1a0d5107548e5e1d2109ab8d0271e1c6ee1227477c1d5",
+      "bytes": 10980,
+      "sha256": "aa5954d6c0858a459d9c587aa335421832974f8fda5f5a2ed53c5072dd39a866",
       "mode": "0644",
       "licence": "MIT"
     },
@@ -13336,8 +13812,8 @@
     },
     {
       "path": "src/components/review/ProgressDrawer.tsx",
-      "bytes": 12493,
-      "sha256": "1835fba60f12dd35408ac080854ab2cd4d52f07246ed895cc3729f2943acddb5",
+      "bytes": 9466,
+      "sha256": "dfa72d657021a026609b79755ded98a7fcab879fcdf60713e152ef0753342813",
       "mode": "0644",
       "licence": "MIT"
     },
@@ -13371,8 +13847,8 @@
     },
     {
       "path": "src/components/review/ReviewDifficultyControl.tsx",
-      "bytes": 7924,
-      "sha256": "ec2f7215578e1caae9affe5b13f05b0a8071638423ac1016e070ba1933e6ccde",
+      "bytes": 136,
+      "sha256": "e4696877f95c1d4ab049f7d16da717364234511ca2d24a01fe90ddc805d24080",
       "mode": "0644",
       "licence": "MIT"
     },
@@ -13399,8 +13875,8 @@
     },
     {
       "path": "src/components/review/RotationFocusSelector.tsx",
-      "bytes": 5990,
-      "sha256": "d39d3ba8216028f399d72e2688c311f31e04280019bb0bb51344da4af9f6a77f",
+      "bytes": 2232,
+      "sha256": "2c76b21d38a746170fa032e6658ebfc26c05c4848509896fe06db359ec70f2eb",
       "mode": "0644",
       "licence": "MIT"
     },
@@ -13448,8 +13924,8 @@
     },
     {
       "path": "src/components/review/UnifiedReview.tsx",
-      "bytes": 76509,
-      "sha256": "3736a438994ac47ff2a761a01496c75682075c201831c453498fad9c27def01f",
+      "bytes": 74923,
+      "sha256": "044b875aec8a26267894564f3706d7c5aeeea8c1274bb15c717d5a8bbb669c66",
       "mode": "0644",
       "licence": "MIT"
     },
@@ -13532,15 +14008,15 @@
     },
     {
       "path": "src/components/shared/AnatomyReviewFigure.test.tsx",
-      "bytes": 3273,
-      "sha256": "05a16ef55424c50df4b163bee2fbf492255b70a0d7db9c53dd9c01b2fe7ffc4e",
+      "bytes": 5331,
+      "sha256": "31f07350fe4038bd2e02e4bdef24d0978299b5adebe6f00cda64248c15bff5e7",
       "mode": "0644",
       "licence": "MIT"
     },
     {
       "path": "src/components/shared/AnatomyReviewFigure.tsx",
-      "bytes": 6465,
-      "sha256": "9f694d32efddb2e016f3cbfa74f8d80b1c1f3facbdd7826369e026e498e73ce6",
+      "bytes": 8935,
+      "sha256": "251f3028027098ede9d2bd38238c28cc037e7603ed8e7bbffae614cd8add3321",
       "mode": "0644",
       "licence": "MIT"
     },
@@ -13548,6 +14024,13 @@
       "path": "src/components/shared/CardText.tsx",
       "bytes": 9141,
       "sha256": "aee6c2a880193e3a10f6e2a38c5ed43636126db5fb61c6883d88540ea565994e",
+      "mode": "0644",
+      "licence": "MIT"
+    },
+    {
+      "path": "src/components/shared/CohortPrompt.tsx",
+      "bytes": 6892,
+      "sha256": "f4aefe6752548ef246b41eb279e597b91765f53231613c77f34d472b4fab6b0c",
       "mode": "0644",
       "licence": "MIT"
     },
@@ -13566,9 +14049,51 @@
       "licence": "MIT"
     },
     {
+      "path": "src/components/shared/keyboardTarget.ts",
+      "bytes": 1067,
+      "sha256": "1f7c6a38f85909a3885e2f86e8e26ec6d2889aca9026aa8989eb21494253ff59",
+      "mode": "0644",
+      "licence": "MIT"
+    },
+    {
       "path": "src/components/shared/MathHtml.tsx",
       "bytes": 2972,
       "sha256": "6e6a6fd8632e69fc4178ea5277282dbf878f5901f1e7d192b1643783db4a618c",
+      "mode": "0644",
+      "licence": "MIT"
+    },
+    {
+      "path": "src/components/shared/ProfileDestination.tsx",
+      "bytes": 673,
+      "sha256": "55ec0208d80f9b50a52205b209f9dbc09fd88130c9a423650fc5cb24df8d22ca",
+      "mode": "0644",
+      "licence": "MIT"
+    },
+    {
+      "path": "src/components/shared/ProfileFrame.tsx",
+      "bytes": 303,
+      "sha256": "b14dee18fa72db7bd4e5aad2b7451cefb52a1a6f8c78a63e538b4a1c6ed90968",
+      "mode": "0644",
+      "licence": "MIT"
+    },
+    {
+      "path": "src/components/shared/PublicReviewFigure.test.tsx",
+      "bytes": 2760,
+      "sha256": "f0c63b60ff5ec174d80144b82f4604300c755f8013c6b688899ad05f7aed15b2",
+      "mode": "0644",
+      "licence": "MIT"
+    },
+    {
+      "path": "src/components/shared/PublicReviewFigure.tsx",
+      "bytes": 2966,
+      "sha256": "28794a129f94e2e8501315e546d970d4f320c38a65cd7fda5fce1d46bcae51f2",
+      "mode": "0644",
+      "licence": "MIT"
+    },
+    {
+      "path": "src/components/shared/review-content-types.ts",
+      "bytes": 952,
+      "sha256": "f7fdf5aa0ad42c15136a7895d51d99ad89a4110bc5fc247743ba4a1c5b1d4528",
       "mode": "0644",
       "licence": "MIT"
     },
@@ -13580,9 +14105,100 @@
       "licence": "MIT"
     },
     {
+      "path": "src/components/shared/ReviewActionBar.tsx",
+      "bytes": 974,
+      "sha256": "45e58a5fb764276591253cc1fcb624d44dabe8695f574203f23f375c3f8fa047",
+      "mode": "0644",
+      "licence": "MIT"
+    },
+    {
+      "path": "src/components/shared/ReviewCardContent.test.tsx",
+      "bytes": 726,
+      "sha256": "d88a45fc076f5e82780051f8a374929b6c3b1895a2eeb283e589332dc428f6ab",
+      "mode": "0644",
+      "licence": "MIT"
+    },
+    {
+      "path": "src/components/shared/ReviewCardContent.tsx",
+      "bytes": 4200,
+      "sha256": "4d358d456d63fd6ade5dedff2a4bf36b388e31f22f50cfe153fd90990cefbfc8",
+      "mode": "0644",
+      "licence": "MIT"
+    },
+    {
+      "path": "src/components/shared/ReviewDifficultyControl.tsx",
+      "bytes": 7924,
+      "sha256": "ec2f7215578e1caae9affe5b13f05b0a8071638423ac1016e070ba1933e6ccde",
+      "mode": "0644",
+      "licence": "MIT"
+    },
+    {
+      "path": "src/components/shared/ReviewModulePicker.tsx",
+      "bytes": 4441,
+      "sha256": "f014c0ccac90844f6aa3110deb0d47a900ef42564d71ac28e23bc55a2263b2d3",
+      "mode": "0644",
+      "licence": "MIT"
+    },
+    {
+      "path": "src/components/shared/ReviewNavigation.tsx",
+      "bytes": 4726,
+      "sha256": "ca54d17a99bcb307bdfb7657eda797e9664eb0a2a8124be8313c36135bf9b1c6",
+      "mode": "0644",
+      "licence": "MIT"
+    },
+    {
+      "path": "src/components/shared/ReviewOptions.tsx",
+      "bytes": 1881,
+      "sha256": "54473b050990349be176da7caa54cb9eb270ed83a66d2bacede595b6bf0bad2b",
+      "mode": "0644",
+      "licence": "MIT"
+    },
+    {
+      "path": "src/components/shared/ReviewQuestionContent.test.tsx",
+      "bytes": 1952,
+      "sha256": "056ddd2b7bd42af1260cc197253aadbc3fc6fe9faef52b2d8c279fa518866cf3",
+      "mode": "0644",
+      "licence": "MIT"
+    },
+    {
+      "path": "src/components/shared/ReviewQuestionContent.tsx",
+      "bytes": 7677,
+      "sha256": "e745800539ed9b7c62ba524ffbfaa21f4c790805d19d5e5dfb263b61477d012e",
+      "mode": "0644",
+      "licence": "MIT"
+    },
+    {
+      "path": "src/components/shared/ReviewQuestionStem.tsx",
+      "bytes": 2060,
+      "sha256": "9ae9d5264b5079eb0be3e699c62ee6678754c3a2cb05739e1f72962e1fad991f",
+      "mode": "0644",
+      "licence": "MIT"
+    },
+    {
+      "path": "src/components/shared/ReviewToolbar.tsx",
+      "bytes": 426,
+      "sha256": "cd6c9b1704143986d7042df2b086aeacaab8cb85dcbd1e62ab56bdf6ce6b3f6d",
+      "mode": "0644",
+      "licence": "MIT"
+    },
+    {
       "path": "src/components/shared/StationScript.tsx",
       "bytes": 5606,
       "sha256": "292db28470d373ac6eb88bef0cd04c23c84f9c41c1f9055d186641a7be336019",
+      "mode": "0644",
+      "licence": "MIT"
+    },
+    {
+      "path": "src/components/shared/ThumbIcon.tsx",
+      "bytes": 553,
+      "sha256": "53826071aee6cd308016553b9a5f08520fa816ec7319de3e38aa1c96c4186cd0",
+      "mode": "0644",
+      "licence": "MIT"
+    },
+    {
+      "path": "src/components/shared/useReviewKeyboard.ts",
+      "bytes": 8057,
+      "sha256": "c7cd1b5fcf2e43c74464742020c6479c6166e0b27fe679a54d94c5fcfc6b2681",
       "mode": "0644",
       "licence": "MIT"
     },
@@ -14246,15 +14862,22 @@
     },
     {
       "path": "src/lib/cohort/anatomy-card-media.test.ts",
-      "bytes": 1529,
-      "sha256": "2d569fe10d5eb50416e656e683a0ed6bad3dbb168b08b36895aefa267bb09cba",
+      "bytes": 2547,
+      "sha256": "53627e8bd93d866746283f292ab3fdd08de2306e6399a479e6c2e22d13d202d9",
       "mode": "0644",
       "licence": "MIT"
     },
     {
       "path": "src/lib/cohort/anatomy-card-media.ts",
-      "bytes": 3552,
-      "sha256": "0fe12504d9190751cabc7ad1527d2dc1b452351166d7bb9cf953ad68adf8f211",
+      "bytes": 7062,
+      "sha256": "9d5269f565d47d8e81b347216da2ef0a06eae5b2fe492ef0ea4784b1006ce22b",
+      "mode": "0644",
+      "licence": "MIT"
+    },
+    {
+      "path": "src/lib/cohort/anatomy-figure-catalogue.ts",
+      "bytes": 2013,
+      "sha256": "cfb36cf98e6e822785a88697b9d6244a64af4f2f88a1ee03e71f058629b9d2b9",
       "mode": "0644",
       "licence": "MIT"
     },
@@ -14274,8 +14897,8 @@
     },
     {
       "path": "src/lib/cohort/card-turn-contract.ts",
-      "bytes": 4508,
-      "sha256": "abfc735e3d75a5b935d6105add3a8e1ea8c3ff7dea11de962a605375e4ccde8d",
+      "bytes": 4432,
+      "sha256": "931bb6be56475dd95873d5d7859976bec666391d74ee7cce0e966725c454cff3",
       "mode": "0644",
       "licence": "MIT"
     },
@@ -14287,9 +14910,16 @@
       "licence": "MIT"
     },
     {
+      "path": "src/lib/cohort/cohort-turn.server.test.ts",
+      "bytes": 54682,
+      "sha256": "7cb6e00ef4fbe3aa0912de89ab60fc99084956e2c0ac4c47543fe5e3e23d7ca7",
+      "mode": "0644",
+      "licence": "MIT"
+    },
+    {
       "path": "src/lib/cohort/cohort-turn.server.ts",
-      "bytes": 46024,
-      "sha256": "f5eb6657d283f806f08d6424ae63191547d8e6109c29d1af8d3a94feccad5fe7",
+      "bytes": 46543,
+      "sha256": "da758b1fdd973c70b81422eef5c15c4ce2686583b000e38ccd074668ad0c6788",
       "mode": "0644",
       "licence": "MIT"
     },
@@ -14308,6 +14938,20 @@
       "licence": "MIT"
     },
     {
+      "path": "src/lib/cohort/feedback.server.test.ts",
+      "bytes": 6662,
+      "sha256": "607bd06753bfc9c130357f726cb087c010f98650c230fad0af1c603e827c00af",
+      "mode": "0644",
+      "licence": "MIT"
+    },
+    {
+      "path": "src/lib/cohort/feedback.server.ts",
+      "bytes": 8325,
+      "sha256": "ece58da83411e9af2db1ea751950a0fbbbc22dd62bf462cd564621e93d6c8b56",
+      "mode": "0644",
+      "licence": "MIT"
+    },
+    {
       "path": "src/lib/cohort/hook-playlist.ts",
       "bytes": 338,
       "sha256": "086810b49822fa85b72054a9c9abd6daebc5b228aaf5ea889c8ff5b6f2c41ed0",
@@ -14315,16 +14959,30 @@
       "licence": "MIT"
     },
     {
+      "path": "src/lib/cohort/module-card-corpus.server.test.ts",
+      "bytes": 7882,
+      "sha256": "099a37e8c8ed41384cbffc4541f32cae9a90c80423155351e39f4a48336495ba",
+      "mode": "0644",
+      "licence": "MIT"
+    },
+    {
       "path": "src/lib/cohort/module-card-corpus.server.ts",
-      "bytes": 7913,
-      "sha256": "7c2ed1b30d95ab4618b92160cadfb1e5515027f316cc221710ff5f466fadeba7",
+      "bytes": 8353,
+      "sha256": "253404f53370dbcc983812fcff82e788cc9dbad9908de965791a63a144a36d59",
+      "mode": "0644",
+      "licence": "MIT"
+    },
+    {
+      "path": "src/lib/cohort/module-question-corpus.server.test.ts",
+      "bytes": 7935,
+      "sha256": "bbf78a69e369eb058f1f8771833400a5a3427dd28043da0e72e1f78bb71d45bc",
       "mode": "0644",
       "licence": "MIT"
     },
     {
       "path": "src/lib/cohort/module-question-corpus.server.ts",
-      "bytes": 7413,
-      "sha256": "757fa3fedd0107f5abcc1e793280a98191a854fc6a1036464d7eb290fbba030a",
+      "bytes": 8941,
+      "sha256": "1146532693b86fd37359cd2cf0f8ff9dfa73f97d06e3ec3822540baff2344a07",
       "mode": "0644",
       "licence": "MIT"
     },
@@ -14337,8 +14995,8 @@
     },
     {
       "path": "src/lib/cohort/public-review-map.ts",
-      "bytes": 1888,
-      "sha256": "9d6901c97cee76f7a1e94602028e93d2beffcd7b9f428ee859f6500d368dfbbf",
+      "bytes": 2236,
+      "sha256": "5dbd632dc014f41802355dd9b1a1604bd9ce616dd80b3e1ee2942fd3aa8ca2e5",
       "mode": "0644",
       "licence": "MIT"
     },
@@ -14353,6 +15011,20 @@
       "path": "src/lib/cohort/public-visual-assets.ts",
       "bytes": 19782,
       "sha256": "6637f56b05de95f51b7db46099976ecf4e50f9d4cb8afea90d35eee1b53866a4",
+      "mode": "0644",
+      "licence": "MIT"
+    },
+    {
+      "path": "src/lib/cohort/review-intent.test.ts",
+      "bytes": 2033,
+      "sha256": "8fb6ba10e6d000fd0b60a1cc5eda945545110add9e663d36e60c027bc27d6493",
+      "mode": "0644",
+      "licence": "MIT"
+    },
+    {
+      "path": "src/lib/cohort/review-intent.ts",
+      "bytes": 2106,
+      "sha256": "e30d4664392c72781d9dc34e547010ceeb9a606a23813f1dafed3217f3168f64",
       "mode": "0644",
       "licence": "MIT"
     },
@@ -14553,23 +15225,44 @@
       "licence": "MIT"
     },
     {
+      "path": "src/lib/content/cohort-module-corpus.test.ts",
+      "bytes": 8744,
+      "sha256": "a9c4ca0321c804f70074f7c64997c457de6924174731ff8b180f2f1d2c90e2f8",
+      "mode": "0644",
+      "licence": "MIT"
+    },
+    {
       "path": "src/lib/content/cohort-module-corpus.ts",
-      "bytes": 8962,
-      "sha256": "67597c4170a2cc63507af5bdd09efdec123fe7f0b34dd184dd748819aa9047e7",
+      "bytes": 10579,
+      "sha256": "d710685b54ec9c0b3a2438df910a986dbd6bdd500ae93bc88122c5b33f0e2a80",
       "mode": "0644",
       "licence": "MIT"
     },
     {
       "path": "src/lib/content/cohort-original-cards.test.ts",
-      "bytes": 8080,
-      "sha256": "4a2b457e824f1a06d92746bdd4654b67c5ba3fc851e6ae20e24fcd120467d53a",
+      "bytes": 8685,
+      "sha256": "147b5e809db6de706992580ba21ea3d384b7f80be9d2a5596464a6a4735b0607",
       "mode": "0644",
       "licence": "MIT"
     },
     {
       "path": "src/lib/content/cohort-original-cards.ts",
-      "bytes": 14058,
-      "sha256": "bc68888c8b186afd41fd90b94272f59f20dde9d4d3be5fe5c4c83386548050e0",
+      "bytes": 14096,
+      "sha256": "dfa598f4e9a09bc91c3759192c746faa5f76f1b9b1496106d2a3f063f40a6474",
+      "mode": "0644",
+      "licence": "MIT"
+    },
+    {
+      "path": "src/lib/content/cohort-original-questions.test.ts",
+      "bytes": 6100,
+      "sha256": "e6db4635f9dfc79b026a045b3961b0abcae70cff5696a933b808915af4ce03de",
+      "mode": "0644",
+      "licence": "MIT"
+    },
+    {
+      "path": "src/lib/content/cohort-original-questions.ts",
+      "bytes": 15288,
+      "sha256": "fcdd85d5d58f426e6d4114a35b5e986d47014e4e60f3b0d78992839d1fef12e5",
       "mode": "0644",
       "licence": "MIT"
     },
@@ -15001,6 +15694,20 @@
       "licence": "MIT"
     },
     {
+      "path": "src/lib/figures/anatomy-focus-figure.server.test.ts",
+      "bytes": 5514,
+      "sha256": "d1159a052bf1b10f605a00fb0041d800f8a2e53fa21620231dfb30539d79f1b8",
+      "mode": "0644",
+      "licence": "MIT"
+    },
+    {
+      "path": "src/lib/figures/anatomy-focus-figure.server.ts",
+      "bytes": 7076,
+      "sha256": "fefc51ea51bd4cb325eb232eb12c772ab5ae64496c351cb7a5d0b7b0f0c0c905",
+      "mode": "0644",
+      "licence": "MIT"
+    },
+    {
       "path": "src/lib/figures/anatomy-prompt.test.ts",
       "bytes": 1362,
       "sha256": "74375fbde4a8288306ffc2404eee06ac37dca0afd6f8f5e0846b1401bc3847f9",
@@ -15011,6 +15718,20 @@
       "path": "src/lib/figures/anatomy-prompt.ts",
       "bytes": 1401,
       "sha256": "39de46758d09bfe1cc76e0dad40d642290c33475ab6c51a5e00c71404a05d95d",
+      "mode": "0644",
+      "licence": "MIT"
+    },
+    {
+      "path": "src/lib/figures/anatomy-source-figure.server.test.ts",
+      "bytes": 1881,
+      "sha256": "b10354e9966d1fc9d688f21623c7b1c355a775f3aa649b7f46f0490159fc877a",
+      "mode": "0644",
+      "licence": "MIT"
+    },
+    {
+      "path": "src/lib/figures/anatomy-source-figure.server.ts",
+      "bytes": 2002,
+      "sha256": "29213aed69fe520674345bed03a44078d7e721dafb315e5a17a261483f3b2969",
       "mode": "0644",
       "licence": "MIT"
     },
@@ -15038,7 +15759,7 @@
     {
       "path": "src/lib/figures/open-figure-access.ts",
       "bytes": 3184,
-      "sha256": "1bf09dc43a3bba92b4fadf5594590aff6e3695a154e650074e8fa41f81ffc055",
+      "sha256": "705d5470805a152aa2058cbdd9400857de2970be730da055969960655a2104a0",
       "mode": "0644",
       "licence": "MIT"
     },
@@ -16850,15 +17571,15 @@
     },
     {
       "path": "src/lib/question-bank/load-seed-corpus.test.ts",
-      "bytes": 15588,
-      "sha256": "c6bb5867d007b8784eb1291167cde2ff4f36c978d04831a2999ddc13f3915803",
+      "bytes": 17542,
+      "sha256": "697f533253a73269270ac9052c4222d05dcf6462ade55d23b7b1d22ec38acf9d",
       "mode": "0644",
       "licence": "MIT"
     },
     {
       "path": "src/lib/question-bank/load-seed-corpus.ts",
-      "bytes": 13728,
-      "sha256": "5cc07dc796db3f31b58bee9dfa3c9d4b32eca58a77ee2265c4c030bea06b1273",
+      "bytes": 17590,
+      "sha256": "42d93d24688ef140c5132bdf5dddb078fac676a63138a79f6a15f2fe2373f8a5",
       "mode": "0644",
       "licence": "MIT"
     },
@@ -18131,8 +18852,8 @@
     },
     {
       "path": "src/lib/study/unified-session-types.ts",
-      "bytes": 16190,
-      "sha256": "45c37b2efd6e7394fc1ef78e4f331daf5e1e08ef8fb3dbd43dad3138e6fd69b7",
+      "bytes": 16973,
+      "sha256": "dca9b67bca759b4c958bd78f81caf09d0dd5f9f46aaca540f8304180e32a4913",
       "mode": "0644",
       "licence": "MIT"
     },

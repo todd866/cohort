@@ -11,7 +11,7 @@ beforeEach(() => {
   vi.stubGlobal('fetch', fetchMock);
   vi.stubGlobal('URL', { ...URL, createObjectURL: vi.fn(() => `blob:anatomy-${objectUrl++}`), revokeObjectURL: vi.fn() });
   Object.defineProperty(Image.prototype, 'decode', { configurable: true, value: vi.fn().mockResolvedValue(undefined) });
-  fetchMock.mockResolvedValue(new Response(new Blob(['figure']), { status: 200 }));
+  fetchMock.mockImplementation(async () => new Response(new Blob(['figure']), { status: 200 }));
 });
 
 describe('prepareAnatomyFigure', () => {
@@ -53,5 +53,41 @@ describe('AnatomyReviewFigure', () => {
     rerender(<AnatomyReviewFigure target="lateral-rectus" revealed alt="Nerve diagram" />);
     expect(screen.getByAltText('Nerve diagram')).toBeInTheDocument();
     await waitFor(() => expect(screen.getByAltText('Nerve diagram')).toHaveAttribute('data-source', expect.stringContaining('phase=answer')));
+  });
+
+  it('retains the mounted state while evicting older unmounted states', async () => {
+    const states = [
+      ['carpal-tunnel', 'median-nerve'],
+      ['femur', 'overview'],
+      ['tibia-fibula', 'overview'],
+      ['foot', 'overview'],
+      ['heart-valves', 'overview'],
+      ['lungs', 'overview'],
+      ['kidney', 'overview'],
+    ] as const;
+    const { rerender } = render(<AnatomyReviewFigure target={states[0][1]} figureId={states[0][0]} revealed={false} alt="Anatomy state" />);
+    let firstSource = '';
+    for (const [figureId, target] of states) {
+      rerender(<AnatomyReviewFigure target={target} figureId={figureId} revealed={false} alt="Anatomy state" />);
+      const image = await screen.findByAltText('Anatomy state');
+      await waitFor(() => expect(image).toHaveAttribute('data-source'));
+      if (!firstSource) firstSource = image.getAttribute('data-source')!;
+    }
+    const currentSource = screen.getByAltText('Anatomy state').getAttribute('data-source')!;
+    const currentUrl = screen.getByAltText('Anatomy state').getAttribute('src')!;
+    expect(currentSource).toContain('figure=kidney');
+    expect(vi.mocked(URL.revokeObjectURL)).not.toHaveBeenCalledWith(currentUrl);
+    expect(vi.mocked(URL.revokeObjectURL)).toHaveBeenCalled();
+    expect(firstSource).toContain('figure=carpal-tunnel');
+  });
+
+  it('clears the old image immediately when a new target is still loading', async () => {
+    const pending = Promise.resolve(new Response(new Blob(['figure']), { status: 200 }));
+    const { rerender } = render(<AnatomyReviewFigure target="lateral-rectus" revealed={false} alt="Targeted figure" />);
+    await screen.findByAltText('Targeted figure');
+    fetchMock.mockReturnValueOnce(pending);
+    rerender(<AnatomyReviewFigure target="overview" figureId="radius-ulna" revealed={false} alt="Targeted figure" />);
+    expect(screen.queryByRole('img')).toBeNull();
+    await waitFor(() => expect(screen.getByRole('img')).toHaveAttribute('data-source', expect.stringContaining('figure=radius-ulna')));
   });
 });

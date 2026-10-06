@@ -5,6 +5,139 @@
   "attribution": "MD3 contributors",
   "cards": [
     {
+      "id": "cohort:anatomy:c-801ad4faedf9:v1",
+      "origin": "md3:b3d6312a7118b770",
+      "discipline": "anatomy",
+      "cardType": "cloze",
+      "sourceComponent": "KeyPoint",
+      "front": "Which cranial nerve supplies the tongue muscles except palatoglossus? [___]",
+      "back": "CN XII",
+      "context": "CN XII supplies intrinsic and most extrinsic tongue muscles. Palatoglossus instead receives vagal supply; a lower motor XII lesion makes the protruded tongue deviate toward the weak side.",
+      "complexity": 1,
+      "importance": 2,
+      "variantGroup": null,
+      "variantIndex": null,
+      "reference": {
+        "title": "Cranial Nerve Testing — Anatomy and Physiology; Technique",
+        "publisher": null,
+        "url": "https://www.ncbi.nlm.nih.gov/sites/books/NBK585066/"
+      }
+    },
+    {
+      "id": "cohort:anatomy:c-82a783458c89:v1",
+      "origin": "md3:319dce69df645ef5",
+      "discipline": "anatomy",
+      "cardType": "cloze",
+      "sourceComponent": "KeyPoint",
+      "front": "The cranial nerve carrying carotid sinus sensory information is [___].",
+      "back": "CN IX",
+      "context": "The carotid sinus senses arterial stretch and sends blood-pressure information through cranial nerve IX. Oxygen and carbon-dioxide chemistry is sensed by the nearby carotid body, not the sinus.",
+      "complexity": 1,
+      "importance": 2,
+      "variantGroup": null,
+      "variantIndex": null,
+      "reference": {
+        "title": "Cranial Nerve Testing — Anatomy and Physiology; Technique",
+        "publisher": null,
+        "url": "https://www.ncbi.nlm.nih.gov/sites/books/NBK585066/"
+      }
+    },
+    {
+      "id": "cohort:anatomy:c-832efadfa8c6:v1",
+      "origin": "md3:36e682a49d61d9fb",
+      "discipline": "anatomy",
+      "cardType": "cloze",
+      "sourceComponent": "KeyPoint",
+      "front": "The rotator-cuff muscle classically associated with initiating shoulder abduction is [___].",
+      "back": "supraspinatus",
+      "context": "Supraspinatus contributes to initial shoulder abduction and helps stabilise the humeral head with the other rotator-cuff muscles.",
+      "complexity": 1,
+      "importance": 2,
+      "variantGroup": null,
+      "variantIndex": null,
+      "reference": {
+        "title": "Anatomy, Shoulder and Upper Limb, Arm Supraspinatus Muscle - StatPearls",
+        "publisher": null,
+        "url": "https://www.ncbi.nlm.nih.gov/sites/books/NBK537202/"
+      }
+    },
+    {
+      "id": "cohort:anatomy:c-8a556d50e85d:v1",
+      "origin": "md3:bf9fa3f00493df33",
+      "discipline": "anatomy",
+      "cardType": "cloze",
+      "sourceComponent": "KeyPoint",
+      "front": "Which cranial nerve carries taste from the anterior two-thirds of the tongue? [___]",
+      "back": "CN VII",
+      "context": "Taste travels from the anterior two-thirds of the tongue through the chorda tympani to the facial nerve. Proximal facial-nerve injury can impair both taste and facial movement.",
+      "complexity": 1,
+      "importance": 2,
+      "variantGroup": null,
+      "variantIndex": null,
+      "reference": {
+        "title": "Cranial Nerve Testing — Anatomy and Physiology; Technique",
+        "publisher": null,
+        "url": "https://www.ncbi.nlm.nih.gov/sites/books/NBK585066/"
+      }
+    },
+    {
+      "id": "cohort:anatomy:c-8ace00fb1a81:v1",
+      "origin": "md3:765f5631ec9ce313",
+      "discipline": "anatomy",
+      "cardType": "cloze",
+      "sourceComponent": "KeyPoint",
+      "front": "The cranial nerve providing parasympathetic supply to the heart, lungs, foregut and midgut is [___].",
+      "back": "CN X (vagus)",
+      "context": "This links autonomic control in the chest with digestion. Hindgut parasympathetic supply instead comes from pelvic splanchnic nerves.",
+      "complexity": 1,
+      "importance": 2,
+      "variantGroup": null,
+      "variantIndex": null,
+      "reference": {
+        "title": "Cranial Nerve Testing — Anatomy and Physiology; Technique",
+        "publisher": null,
+        "url": "https://www.ncbi.nlm.nih.gov/sites/books/NBK585066/"
+      }
+    },
+    {
+      "id": "cohort:anatomy:c-8b2a890605ed:v1",
+      "origin": "md3:121fcb582d8a52e6",
+      "discipline": "anatomy",
+      "cardType": "cloze",
+      "sourceComponent": "KeyPoint",
+      "front": "The cranial nerve carrying vestibular information from the inner ear is [___].",
+      "back": "CN VIII (vestibulocochlear)",
+      "context": "Vestibular input helps stabilise gaze and posture. This explains vertigo or imbalance after vestibular pathway injury.",
+      "complexity": 1,
+      "importance": 2,
+      "variantGroup": null,
+      "variantIndex": null,
+      "reference": {
+        "title": "Cranial Nerve Testing — Anatomy and Physiology; Technique",
+        "publisher": null,
+        "url": "https://www.ncbi.nlm.nih.gov/sites/books/NBK585066/"
+      }
+    },
+    {
+      "id": "cohort:anatomy:c-8c11a1f36adb:v1",
+      "origin": "md3:f3640303bbfcfb62",
+      "discipline": "anatomy",
+      "cardType": "cloze",
+      "sourceComponent": "KeyPoint",
+      "front": "The main muscle extending the elbow is the [___].",
+      "back": "triceps brachii",
+      "context": "Its tendon inserts on the olecranon, behind the elbow axis. Contraction pulls the forearm into extension.",
+      "complexity": 1,
+      "importance": 2,
+      "variantGroup": null,
+      "variantIndex": null,
+      "reference": {
+        "title": "Anatomy, Shoulder and Upper Limb, Shoulder - StatPearls",
+        "publisher": null,
+        "url": "https://www.ncbi.nlm.nih.gov/sites/books/NBK536933/"
+      }
+    },
+    {
       "id": "cohort:anatomy:c-8dab68bbf8d1:v1",
       "origin": "md3:434d6779fe85f177",
       "discipline": "anatomy",

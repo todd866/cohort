@@ -9,6 +9,18 @@ import type { ExamTargetAttemptDecisionPath } from '@/lib/exam-target/attempt-le
 import type { NoveltyProgressSnapshot } from './novelty-budget';
 import type { FollowUpState } from '@/lib/practice-exam/follow-up-state';
 
+/** Closed, public-safe media contract for Cohort anatomy cards. This is kept
+ * separate from generic imageUrl so a prompt/answer figure can never be
+ * mistaken for an unrestricted legacy image or leak an answer asset. */
+export interface UnifiedAnatomyMedia {
+  figureId: import('@/lib/cohort/anatomy-figure-catalogue').AnatomyFigureId;
+  target: import('@/lib/cohort/anatomy-figure-catalogue').AnatomyFigureTarget;
+  role: 'prompt' | 'supplementary';
+  preAnswerAlt: string;
+  postAnswerAlt: string;
+  attribution: { text: string; licence: string };
+}
+
 export interface UnifiedItem {
   /** The saved preference captured at selection, including for offline packs. */
   reviewChallenge?: import('./review-challenge-preference').ReviewChallengePreference;
@@ -21,6 +33,10 @@ export interface UnifiedItem {
   back?: string;
   backs?: string[] | null;
   context?: string | null;
+  /** Exact reviewed public anatomy media, retained on card adapters only. */
+  publicAnatomyMedia?: UnifiedAnatomyMedia;
+  /** Source attribution for opaque public cards. */
+  attribution?: { text: string; licence: string };
   /** Per-item abbreviation decodes. Never infer these from rotation/global glossary. */
   abbreviations?: Record<string, string> | null;
   sourceComponent?: string;

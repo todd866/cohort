@@ -1,0 +1,65 @@
+{
+  "id": "bank:cohort:anatomy:q-8887442110f0:v1",
+  "rotation": "cohort-open",
+  "moduleNodes": [
+    "cohort/anatomy"
+  ],
+  "topics": [
+    "portal vein",
+    "abdomen anatomy"
+  ],
+  "questionType": "single-best-answer",
+  "difficulty": "medium",
+  "stem": "A lesion at the pancreatic neck obstructs the venous confluence immediately posterior to it. The splenic vein and which other vessel normally join there?",
+  "options": [
+    {
+      "label": "A",
+      "text": "Inferior mesenteric vein",
+      "isCorrect": false,
+      "explanation": "Its termination varies and it commonly joins the splenic vein. The two principal veins forming the portal vein are the splenic and superior mesenteric veins."
+    },
+    {
+      "label": "B",
+      "text": "Left gastric vein",
+      "isCorrect": false,
+      "explanation": "It drains into the portal system but is a smaller tributary, not the main forming vessel."
+    },
+    {
+      "label": "C",
+      "text": "Inferior vena cava",
+      "isCorrect": false,
+      "explanation": "It is a systemic vein and does not join the splenic vein to form the portal vein."
+    },
+    {
+      "label": "D",
+      "text": "Right renal vein",
+      "isCorrect": false,
+      "explanation": "It drains the kidney and has no role in forming the portal vein."
+    },
+    {
+      "label": "E",
+      "text": "Superior mesenteric vein",
+      "isCorrect": true,
+      "explanation": "It joins the splenic vein behind the pancreatic neck to form the portal vein."
+    }
+  ],
+  "context": "The portal vein is formed behind the pancreatic neck from the splenic and superior mesenteric veins.",
+  "publicModule": {
+    "schemaVersion": 1,
+    "origin": "original",
+    "discipline": "anatomy",
+    "originalId": "abd-pancreas",
+    "itemText": {
+      "licence": "CC-BY-4.0",
+      "attribution": "MD3 contributors"
+    },
+    "evidence": {
+      "kind": "reference",
+      "sourceId": "original-8a2385b52f95bd80"
+    },
+    "review": {
+      "verdict": "passed",
+      "contentHash": "fb3018dca067b2e31cd9120635806114ec5fc681f31e75ea40395d8e67b2932d"
+    }
+  }
+}

@@ -30,6 +30,11 @@ export interface CohortModuleSource {
   licence: { cls: 'verify' | 'foss' };
 }
 
+/** Binds a reviewed citation, including its identity and licence, to a release. */
+export function moduleSourceFingerprint(sourceId: string, source: CohortModuleSource): string {
+  return createHash('sha256').update(JSON.stringify([sourceId, source.title, source.publisher, source.url, source.verifiedAt, source.licence.cls])).digest('hex');
+}
+
 export interface CohortModuleSourceRegistry {
   schemaVersion: 1;
   sources: Readonly<Record<string, CohortModuleSource>>;
@@ -50,10 +55,12 @@ export interface CohortModuleQuestionFile {
   imageUrl?: string | null;
   publicModule: {
     schemaVersion: 1;
-    origin: 'mirrored';
+    origin: 'mirrored' | 'original';
     discipline: string;
     /** Opaque trace to the md3 item it was generated from. */
-    mirroredFrom: string;
+    mirroredFrom?: string;
+    /** Stable authored identifier for the original lane. */
+    originalId?: string;
     itemText: { licence: 'CC-BY-4.0'; attribution: string };
     evidence: { kind: 'reference'; sourceId: string };
     review: { verdict: 'passed' | 'needs-fix'; contentHash: string };
@@ -85,7 +92,9 @@ export function decidePublicModuleQuestion(
 ): CohortModuleDecision {
   const meta = item.publicModule;
   if (!meta || meta.schemaVersion !== 1) return refuse('no-provenance', 'publicModule schemaVersion 1 is required');
-  if (meta.origin !== 'mirrored') return refuse('not-mirrored', `origin ${String(meta.origin)} is not mirrored`);
+  if (meta.origin !== 'mirrored' && meta.origin !== 'original') return refuse('not-mirrored', `origin ${String(meta.origin)} is not recognised`);
+  if (meta.origin === 'mirrored' && !meta.mirroredFrom) return refuse('no-provenance', 'mirrored items require mirroredFrom');
+  if (meta.origin === 'original' && !meta.originalId) return refuse('no-provenance', 'original items require originalId');
   if (meta.itemText?.licence !== 'CC-BY-4.0') return refuse('item-licence', `item text licence ${String(meta.itemText?.licence)}`);
 
   if (!DISCIPLINES.has(meta.discipline)) return refuse('unknown-discipline', `discipline ${meta.discipline} is not a Cohort module`);
@@ -119,6 +128,8 @@ export interface CohortModuleRelease {
   questionSources: Record<string, string>;
   /** Serving fingerprint of each seeded row; the Cohort host refuses any row that drifted. */
   questionFingerprints?: Record<string, string>;
+  /** Required for the original lane; binds each item to its exact reviewed citation. */
+  questionSourceFingerprints?: Record<string, string>;
 }
 
 /**
@@ -142,15 +153,17 @@ export interface CohortModuleArtifacts {
  * the committed module files, the registry of the sources they cite, and the
  * release list. Deterministic, so regenerating unchanged input changes no byte.
  */
-export function buildModuleArtifacts(
-  items: ReadonlyArray<{ question: PublicMirrorQuestion; sourceId: string }>,
+function buildArtifacts(
+  items: ReadonlyArray<{ question: PublicMirrorQuestion; sourceId: string; originalId?: string }>,
   references: Readonly<Record<string, VerifiedReferenceEntry>>,
+  origin: 'mirrored' | 'original',
 ): CohortModuleArtifacts {
   const files = new Map<string, CohortModuleQuestionFile>();
   const sources: Record<string, CohortModuleSource> = {};
   const ordered = [...items].sort((a, b) => a.question.id.localeCompare(b.question.id));
 
-  for (const { question, sourceId } of ordered) {
+  for (const item of ordered) {
+    const { question, sourceId } = item;
     const reference = references[sourceId];
     if (!reference) throw new Error(`cited source ${sourceId} has no verified reference`);
     sources[sourceId] = { ...reference, licence: { cls: 'verify' } };
@@ -161,7 +174,7 @@ export function buildModuleArtifacts(
     const unexplained = question.options.find((o) => !o.explanation?.trim());
     if (unexplained) throw new Error(`${question.id} option ${unexplained.label} has no explanation`);
 
-    const slug = /^open:[a-z-]+:(q-[0-9a-f]{12}):v1$/.exec(question.id)?.[1];
+    const slug = /^(?:open|cohort):[a-z-]+:(q-[0-9a-f]{12}):v1$/.exec(question.id)?.[1];
     if (!slug) throw new Error(`unexpected public id ${question.id}`);
     const file: CohortModuleQuestionFile = {
       id: `bank:cohort:${question.discipline}:${slug}:v1`,
@@ -175,16 +188,16 @@ export function buildModuleArtifacts(
       context: question.context,
       publicModule: {
         schemaVersion: 1,
-        origin: 'mirrored',
+        origin,
         discipline: question.discipline,
-        mirroredFrom: question.origin,
+        ...(origin === 'mirrored' ? { mirroredFrom: question.origin } : { originalId: item.originalId }),
         itemText: { licence: 'CC-BY-4.0', attribution: 'MD3 contributors' },
         evidence: { kind: 'reference', sourceId },
         review: { verdict: 'passed', contentHash: '' },
       },
     };
     file.publicModule.review.contentHash = moduleItemContentHash(file);
-    files.set(`open-content/modules/questions/${question.discipline}/${slug}.v1.json`, file);
+    files.set(`open-content/modules/${origin === 'original' ? 'original-questions' : 'questions'}/${question.discipline}/${slug}.v1.json`, file);
   }
 
   const sortedSources = Object.fromEntries(Object.entries(sources).sort(([a], [b]) => a.localeCompare(b)));
@@ -199,4 +212,19 @@ export function buildModuleArtifacts(
       ),
     },
   };
+}
+
+
+export function buildModuleArtifacts(
+  items: ReadonlyArray<{ question: PublicMirrorQuestion; sourceId: string }>,
+  references: Readonly<Record<string, VerifiedReferenceEntry>>,
+): CohortModuleArtifacts {
+  return buildArtifacts(items, references, 'mirrored');
+}
+
+export function buildOriginalModuleArtifacts(
+  items: ReadonlyArray<{ question: PublicMirrorQuestion; sourceId: string; originalId: string }>,
+  references: Readonly<Record<string, VerifiedReferenceEntry>>,
+): CohortModuleArtifacts {
+  return buildArtifacts(items, references, 'original');
 }

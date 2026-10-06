@@ -157,12 +157,17 @@ export function selectCohortModuleCard(input: {
   now: Date;
   /** -2 is the only level that restricts cards to C1 scaffolds. */
   challengeLevel?: number;
+  /** Reviewed media families recently shown to this learner, including prior journeys. */
+  recentMediaFamilies?: ReadonlySet<string>;
+  /** Maps an admitted card to its reviewed media family, or null for text-only cards. */
+  mediaFamilyForCard?: (card: CohortServableCard) => string | null;
 }): { card: CohortServableCard; reason: 'due' | 'new' } | null {
   const pick = (heldIds: ReadonlySet<string>, heldGroups: ReadonlySet<string>) => {
     const eligible = input.cards.filter((card) => (
       (input.challengeLevel !== -2 || card.complexity === 1)
       &&
       !heldIds.has(card.id) && !(card.variantGroupId && heldGroups.has(card.variantGroupId))
+      && !(input.recentMediaFamilies?.size && input.mediaFamilyForCard?.(card) && input.recentMediaFamilies.has(input.mediaFamilyForCard(card)!))
     ));
     const dueAt = new Map(input.progress.map((p) => [p.cardId, p.nextDueAt.getTime()]));
     const due = eligible

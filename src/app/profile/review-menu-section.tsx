@@ -44,10 +44,7 @@ export function ReviewMenuSection({ choices }: { choices: ReviewMenuChoice[] }) 
       aria-label="Review menu"
       className="mb-4 rounded-xl border border-[var(--md-outline-variant)] px-4 py-3"
     >
-      <h2 className="text-sm font-semibold text-[var(--md-on-surface)]">Review menu</h2>
-      <p className="mt-0.5 mb-3 text-xs text-[var(--md-on-surface-variant)]">
-        Choose which modules appear while studying. Your current block stays listed.
-      </p>
+      <h2 className="mb-3 text-sm font-semibold text-[var(--md-on-surface)]">Review menu</h2>
       {/* Chips, not a checkbox column: 25 decks as one row each ran to three
           screens. The checkbox stays real for keyboard and screen readers. */}
       <div className="space-y-2.5">

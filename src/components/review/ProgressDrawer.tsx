@@ -35,147 +35,95 @@ function formatRotation(rotation: string): string {
     .join(' ');
 }
 
-const clampPct = (n: number) => Math.min(100, Math.max(0, Math.round(n)));
-
-/**
- * One plain-language pace line. Deliberately NO alarm red — the strongest
- * tone is the brand's tertiary (clay), reserved for "genuinely behind". We
- * answer "how am I doing?" calmly instead of shouting a 0% projection.
- */
-function paceNudge(
-  row: RotationProgressBreakdown,
-): { text: string; tone: 'good' | 'neutral' } | null {
-  // No deadline (self-paced rotations like the AnKing background deck) → there
-  // is nothing to be "behind" or "on pace" for. The projection still reports
-  // finalOverallPercent = currentPercent, which would otherwise trip the
-  // "behind on coverage" branch below; suppress the whole nudge instead.
-  if (row.daysToExam == null) return null;
-
-  const target = row.dailyTarget;
-  const reviewed = row.todayReviewed;
-  const remaining = target != null ? Math.max(0, target - reviewed) : 0;
-  const final = row.projection?.finalOverallPercent ?? null;
-  const genuinelyBehind = final != null && final < 70;
-
-  if (target != null && remaining > 0) {
-    // Keep the same remaining-today quantity without treating the schedule as
-    // a debt or implying that the target itself measures full-pool readiness.
-    return { text: `${remaining} remaining today`, tone: 'neutral' };
-  }
-  if (genuinelyBehind) return { text: 'full-pool coverage still in progress', tone: 'neutral' };
-  if (target != null) return { text: "today's target met", tone: 'good' };
-  return null;
+function formatDays(days: number): string {
+  return `${days} ${days === 1 ? 'day' : 'days'}`;
 }
 
-/** The "one honest headline" block: rotation + countdown, one coverage bar, today + a single nudge. */
+function formatCount(value: number): string {
+  return value.toLocaleString('en-US');
+}
+
+/** En dash, so an unknown count occupies the same line as the number that replaces it. */
+const UNKNOWN_COUNT = '\u2013';
+
+function topicCount(value: number | null | undefined): string {
+  return value == null ? UNKNOWN_COUNT : formatCount(value);
+}
+
+function ExamDays({ days }: { days: number }) {
+  return (
+    <span className="whitespace-nowrap text-xs tabular-nums text-[var(--md-on-surface-variant)]">
+      {formatDays(days)}
+    </span>
+  );
+}
+
+/** Today and first-sight on one line. A met target is the check, in the success token. */
+function TodayPace({ row }: { row: RotationProgressBreakdown }) {
+  const target = row.dailyTarget;
+  const reviewed = row.todayReviewed;
+  const met = target != null && reviewed >= target;
+  const today = target != null
+    ? `Today ${formatCount(reviewed)}/${formatCount(target)}${met ? ' \u2713' : ''}`
+    : `Today ${formatCount(reviewed)}`;
+  const newer = row.firstSightTarget != null
+    ? ` \u00b7 New ${formatCount(row.todayFirstSight ?? 0)}/${formatCount(row.firstSightTarget)}`
+    : '';
+
+  if (met && newer) {
+    return (
+      <p className="text-sm tabular-nums text-[var(--md-on-surface)]">
+        <span className="text-[var(--md-success)]">{today}</span>
+        {newer}
+      </p>
+    );
+  }
+
+  return (
+    <p className={`text-sm tabular-nums ${met ? 'text-[var(--md-success)]' : 'text-[var(--md-on-surface)]'}`}>
+      {today}{newer}
+    </p>
+  );
+}
+
+/** Rotation, pool, today, and a topics row that never swaps in or out. */
 function RotationHeadline({
   row,
   readiness,
+  showTopics,
 }: {
   row: RotationProgressBreakdown;
   readiness: TopicReadinessSummary | null;
+  showTopics: boolean;
 }) {
-  const coverPct = clampPct(row.coverage.percent);
-  const target = row.dailyTarget;
-  const reviewed = row.todayReviewed;
-  const nudge = paceNudge(row);
-  const nudgeClass =
-    nudge?.tone === 'good'
-      ? 'text-[var(--md-success)]'
-      : 'text-[var(--md-on-surface-variant)]';
-
   return (
     <div className="space-y-2">
-      {/* rotation + exam countdown */}
       <div className="flex items-baseline justify-between gap-3">
         <span className="text-base font-semibold text-[var(--md-on-surface)]">
           {formatRotation(row.rotation)}
         </span>
         {row.daysToExam != null && row.daysToExam > 0 && row.examDate && (
-          <span className="text-xs text-[var(--md-on-surface-variant)] whitespace-nowrap">
-            exam in {row.daysToExam} {row.daysToExam === 1 ? 'day' : 'days'}
-          </span>
+          <ExamDays days={row.daysToExam} />
         )}
       </div>
 
-      {readiness && (
-        <div className="flex flex-wrap items-baseline justify-between gap-x-3 gap-y-1 rounded-lg bg-[var(--md-surface-container-low)] px-3 py-2">
-          <div>
-            <p className="text-sm font-medium tabular-nums text-[var(--md-on-surface)]">
-              {readiness.ready} ready · {readiness.slipping} slipping · {readiness.unseen} unseen
-            </p>
-            <p className="text-xs tabular-nums text-[var(--md-on-surface-variant)]">
-              {readiness.total} topics
-            </p>
-          </div>
+      {row.progressPool && <ProgressPoolBar row={row} />}
+
+      <TodayPace row={row} />
+
+      {showTopics && (
+        <div className="flex min-h-11 items-center justify-between gap-3">
+          <p className="text-sm tabular-nums text-[var(--md-on-surface)]">
+            Topics {topicCount(readiness?.ready)} ready · {topicCount(readiness?.slipping)} slipping · {topicCount(readiness?.unseen)} unseen
+          </p>
           <Link
             href="/profile#topic-readiness"
-            className="inline-flex min-h-11 items-center text-xs font-semibold text-[var(--md-primary)] hover:underline"
+            className="inline-flex min-h-11 shrink-0 items-center whitespace-nowrap text-xs font-semibold text-[var(--md-primary)] hover:underline"
           >
-            Open topic map →
+            Topic map →
           </Link>
         </div>
       )}
-
-      {!readiness && (
-        <div className="flex items-center gap-3">
-          <div className="relative h-2 flex-1 overflow-hidden rounded-full bg-[var(--md-surface-container-high)]">
-            <div
-              className="absolute inset-y-0 left-0 rounded-full bg-[var(--md-primary)]"
-              style={{ width: `${coverPct}%` }}
-            />
-          </div>
-          <span className="tabular-nums text-xs text-[var(--md-on-surface)]">
-            {row.coverage.totalTopics
-              ? `${coverPct}% · ${row.coverage.coveredTopics ?? 0} / ${row.coverage.totalTopics} topics`
-              : `${coverPct}% covered`}
-          </span>
-        </div>
-      )}
-
-      {/* today's total and first-sight pace */}
-      <div className="flex items-baseline justify-between gap-3">
-        <span className="text-sm text-[var(--md-on-surface)]">
-          Today total{' '}
-          <span className="tabular-nums font-medium">
-            {target != null ? `${reviewed} / ${target}` : reviewed}
-          </span>
-          {target == null ? ' reviewed' : ''}
-        </span>
-        {nudge && <span className={`text-xs ${nudgeClass}`}>{nudge.text}</span>}
-      </div>
-
-      {row.firstSightTarget != null && (
-        <div className="flex items-baseline justify-between gap-3 text-sm text-[var(--md-on-surface)]">
-          <span>
-            First-sight{' '}
-            <span className="tabular-nums font-medium">
-              {row.todayFirstSight ?? 0} / {row.firstSightTarget}
-            </span>
-          </span>
-          <span className="text-xs text-[var(--md-on-surface-variant)]">
-            minimum new material
-          </span>
-        </div>
-      )}
-
-      {row.progressPool && <ProgressPoolBar row={row} />}
-
-      <details className="text-xs text-[var(--md-on-surface-variant)]">
-        <summary className="flex min-h-11 cursor-pointer select-none items-center">
-          <span className="tabular-nums">
-            {row.coverage.seen} / {row.coverage.total} items touched
-          </span>
-        </summary>
-        <p className="mt-1 leading-relaxed">
-          Cards {row.coverage.seenCards}/{row.coverage.totalCards} · questions{' '}
-          {row.coverage.seenQuestions}/{row.coverage.totalQuestions}
-          {row.newPerDay != null
-            ? ` · full-pool pace ${row.newPerDay}/day (planning only)`
-            : ''}
-          {row.reviewsPerDay != null ? ` · due pace ${row.reviewsPerDay}/day` : ''}
-        </p>
-      </details>
     </div>
   );
 }
@@ -215,10 +163,10 @@ function ProgressPoolBar({ row }: { row: RotationProgressBreakdown }) {
           );
         })}
       </div>
-      <p id={detailId} aria-live="polite" className="min-h-4 text-xs text-[var(--md-on-surface-variant)]">
+      <p id={detailId} aria-live="polite" className="min-h-5 text-sm tabular-nums text-[var(--md-on-surface)]">
         {selected
-          ? `${selected.label}: ${pool[selected.key]} of ${pool.total} items ${selected.detail}.`
-          : `${pool.total} servable items: ${POOL_BANDS.map((band) => `${band.label.toLowerCase()} ${pool[band.key]}`).join(' · ')}.`}
+          ? `${selected.label}: ${formatCount(pool[selected.key])} of ${formatCount(pool.total)} items ${selected.detail}.`
+          : POOL_BANDS.map((band) => `${formatCount(pool[band.key])} ${band.label.toLowerCase()}`).join(' · ')}
       </p>
     </div>
   );
@@ -261,9 +209,7 @@ export function ProgressDrawer({
             <span className="text-base font-semibold text-[var(--md-on-surface)]">
               {formatRotation(countdown.rotation)}
             </span>
-            <span className="text-xs text-[var(--md-on-surface-variant)] whitespace-nowrap">
-              exam in {countdown.daysToExam} {countdown.daysToExam === 1 ? 'day' : 'days'}
-            </span>
+            <ExamDays days={countdown.daysToExam} />
           </div>
         )}
         {hasRotations ? (
@@ -272,6 +218,7 @@ export function ProgressDrawer({
               key={row.rotation}
               row={row}
               readiness={readiness?.rotation === row.rotation ? readiness : null}
+              showTopics={row.rotation === readinessRotation}
             />
           ))
         ) : (
@@ -284,8 +231,8 @@ export function ProgressDrawer({
         )}
 
         {sessionReviewed > 0 && (
-          <div className="border-t border-[var(--md-outline-variant)] pt-2 text-xs opacity-60">
-            this session: {sessionReviewed} reviewed {'·'} {sessionAccuracy}% accuracy
+          <div className="border-t border-[var(--md-outline-variant)] pt-2 text-xs tabular-nums opacity-60">
+            this session {sessionReviewed} · {sessionAccuracy}%
           </div>
         )}
       </div>

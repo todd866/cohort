@@ -1,0 +1,65 @@
+{
+  "id": "bank:cohort:anatomy:q-ad14bb5de31c:v1",
+  "rotation": "cohort-open",
+  "moduleNodes": [
+    "cohort/anatomy"
+  ],
+  "topics": [
+    "recurrent laryngeal nerve",
+    "head anatomy"
+  ],
+  "questionType": "single-best-answer",
+  "difficulty": "medium",
+  "stem": "After thyroid surgery, a patient develops hoarseness. Laryngoscopy shows an immobile vocal fold; cricothyroid function is preserved. Which nerve branch is most likely injured?",
+  "options": [
+    {
+      "label": "A",
+      "text": "Recurrent laryngeal nerve",
+      "isCorrect": true,
+      "explanation": "It supplies most intrinsic laryngeal muscles and injury can impair vocal-fold movement, causing hoarseness."
+    },
+    {
+      "label": "B",
+      "text": "External branch of the superior laryngeal nerve",
+      "isCorrect": false,
+      "explanation": "It supplies cricothyroid, which tenses the vocal fold for pitch control. Preserved cricothyroid function argues against this branch."
+    },
+    {
+      "label": "C",
+      "text": "Phrenic nerve",
+      "isCorrect": false,
+      "explanation": "It supplies the diaphragm and would affect ventilation rather than voice."
+    },
+    {
+      "label": "D",
+      "text": "Hypoglossal nerve",
+      "isCorrect": false,
+      "explanation": "It supplies tongue muscles and would cause tongue deviation or dysarthria."
+    },
+    {
+      "label": "E",
+      "text": "Glossopharyngeal nerve",
+      "isCorrect": false,
+      "explanation": "It contributes pharyngeal sensation and taste, not most vocal-fold movement."
+    }
+  ],
+  "context": "The voice change localises to a motor supply of the intrinsic laryngeal muscles.",
+  "publicModule": {
+    "schemaVersion": 1,
+    "origin": "original",
+    "discipline": "anatomy",
+    "originalId": "head-hoarseness",
+    "itemText": {
+      "licence": "CC-BY-4.0",
+      "attribution": "MD3 contributors"
+    },
+    "evidence": {
+      "kind": "reference",
+      "sourceId": "original-fd4a1740352af946"
+    },
+    "review": {
+      "verdict": "passed",
+      "contentHash": "3e26d89d49e97ee3f369a9b496b9fc1d085ae538ec0727b1c19eb78fb0f21e78"
+    }
+  }
+}

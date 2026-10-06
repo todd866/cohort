@@ -1,0 +1,65 @@
+{
+  "id": "bank:cohort:anatomy:q-a208a3bc48f9:v1",
+  "rotation": "cohort-open",
+  "moduleNodes": [
+    "cohort/anatomy"
+  ],
+  "topics": [
+    "intercostal neurovascular bundle",
+    "thorax anatomy"
+  ],
+  "questionType": "single-best-answer",
+  "difficulty": "easy",
+  "stem": "A penetrating wound passes just inferior to a rib and causes bleeding with segmental chest-wall numbness. Which structure is most at risk in the costal groove?",
+  "options": [
+    {
+      "label": "A",
+      "text": "Thoracic duct",
+      "isCorrect": false,
+      "explanation": "It is a central lymphatic channel and does not run in each intercostal space."
+    },
+    {
+      "label": "B",
+      "text": "Intercostal vein, artery and nerve",
+      "isCorrect": true,
+      "explanation": "The bundle runs in the costal groove under the rib, so an inferior wound can injure all three."
+    },
+    {
+      "label": "C",
+      "text": "Phrenic nerve",
+      "isCorrect": false,
+      "explanation": "It descends on the mediastinal pleura rather than in the costal groove."
+    },
+    {
+      "label": "D",
+      "text": "Vagus nerve",
+      "isCorrect": false,
+      "explanation": "It runs with the oesophagus and airway structures, not along each rib."
+    },
+    {
+      "label": "E",
+      "text": "Internal thoracic artery alone",
+      "isCorrect": false,
+      "explanation": "It runs near the sternum; the segmental bundle in the groove includes vein, artery and nerve."
+    }
+  ],
+  "context": "The main intercostal neurovascular bundle runs in a predictable plane beneath each rib.",
+  "publicModule": {
+    "schemaVersion": 1,
+    "origin": "original",
+    "discipline": "anatomy",
+    "originalId": "thorax-intercostal",
+    "itemText": {
+      "licence": "CC-BY-4.0",
+      "attribution": "MD3 contributors"
+    },
+    "evidence": {
+      "kind": "reference",
+      "sourceId": "original-e9e947ea63208882"
+    },
+    "review": {
+      "verdict": "passed",
+      "contentHash": "87de0bc0faad1572f68f50cb6ff6a3e099a6a95d2425f4c337d60deab7c5f868"
+    }
+  }
+}

@@ -1,0 +1,94 @@
+{
+  "schemaVersion": 1,
+  "figures": [
+    {
+      "id": "carpal-tunnel-focus",
+      "file": "carpal-tunnel-focus.png",
+      "sha256": "60ea36b5de215cfad1da1c7d4db29001e350dea1f54231c6e8dde2d01e0b0289",
+      "width": 1627,
+      "height": 967,
+      "orientation": "Distal wrist \u00b7 palmar \u2191 \u00b7 radial \u2190",
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:Gray422.png",
+      "sourceSha256": "6900b08a2d90ac89cbd098544a1b3750566f4482ccb808e26b209563ba62745a",
+      "attribution": "Henry Vandyke Carter, Gray plate 422 (public domain); generated colour adaptation and annotations by MD3 contributors",
+      "licence": "CC-BY-4.0",
+      "targets": {
+        "median-nerve": {
+          "label": "Median nerve",
+          "anchor": [
+            0.43945912722802705,
+            0.2792140641158221
+          ],
+          "marker": [
+            0.4517516902274124,
+            0.12926577042399173
+          ]
+        },
+        "flexor-retinaculum": {
+          "label": "Flexor retinaculum",
+          "anchor": [
+            0.5132145052243393,
+            0.2140641158221303
+          ],
+          "marker": [
+            0.5255070682237246,
+            0.09307135470527404
+          ]
+        },
+        "trapezium": {
+          "label": "Trapezium",
+          "anchor": [
+            0.26736324523663185,
+            0.36814891416752843
+          ],
+          "marker": [
+            0.07068223724646588,
+            0.3671147880041365
+          ]
+        },
+        "trapezoid": {
+          "label": "Trapezoid",
+          "anchor": [
+            0.3208358942839582,
+            0.5822130299896587
+          ],
+          "marker": [
+            0.20590043023970497,
+            0.8324715615305067
+          ]
+        },
+        "capitate": {
+          "label": "Capitate",
+          "anchor": [
+            0.47080516287645974,
+            0.6039296794208894
+          ],
+          "marker": [
+            0.49170251997541486,
+            0.9100310237849017
+          ]
+        },
+        "hamate": {
+          "label": "Hamate",
+          "anchor": [
+            0.6515058389674248,
+            0.5377456049638056
+          ],
+          "marker": [
+            0.8973570989551322,
+            0.5274043433298863
+          ]
+        }
+      },
+      "review": {
+        "status": "accepted",
+        "reviewer": "Primary pixel/source comparison and independent carpal_pixel_refuter final overlay review, 2026-10-06",
+        "claims": [
+          "Identification of four distal carpal bones, median nerve and retinacular roof; all six prompt/answer pairs checked at375px and all six prompts at1000px.",
+          "Schematic anatomy only: no measured dimensions, clinical imaging realism or individual finger-tendon identity."
+        ],
+        "specificationSha256": "874d947579c3c5c705b6c4685f14659a8daf0b0fc17ec97e9c1ba0eeb4b1d90f"
+      }
+    }
+  ]
+}

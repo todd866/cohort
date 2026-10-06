@@ -2,10 +2,13 @@ import 'server-only';
 
 import checkedInRelease from '../../../open-content/modules/release-v1.json';
 import checkedInSources from '../../../open-content/modules/sources.json';
+import originalRelease from '../../../open-content/modules/original-questions-release-v1.json';
+import originalSources from '../../../open-content/modules/original-questions-sources.json';
 import { prisma, type ExtendedPrismaClient } from '@/lib/prisma';
 import { withDefaultQuestionServingPolicy } from '@/lib/questions/source-policy';
 import {
   COHORT_MODULE_ROTATION,
+  moduleSourceFingerprint,
   type CohortModuleRelease,
   type CohortModuleSourceRegistry,
 } from '@/lib/content/cohort-module-corpus';
@@ -41,7 +44,8 @@ export type CohortModuleExclusionReason =
   | 'release-content-drift'
   | 'not-cohort-module-row'
   | 'unservable-state'
-  | 'evidence-source-not-registered';
+  | 'evidence-source-not-registered'
+  | 'evidence-source-drift';
 
 export type CohortModuleServerDecision =
   | { eligible: true }
@@ -56,6 +60,19 @@ type QuestionStore = Pick<ExtendedPrismaClient, 'question'>;
 
 const CHECKED_IN_RELEASE = checkedInRelease as CohortModuleServingRelease;
 const CHECKED_IN_REGISTRY = checkedInSources as CohortModuleSourceRegistry;
+const CHECKED_IN_ORIGINAL_RELEASE = originalRelease as CohortModuleServingRelease;
+const CHECKED_IN_ORIGINAL_REGISTRY = originalSources as CohortModuleSourceRegistry;
+const CHECKED_IN_RELEASE_ALL: CohortModuleServingRelease = {
+  schemaVersion: 1,
+  questionIds: [...CHECKED_IN_RELEASE.questionIds, ...CHECKED_IN_ORIGINAL_RELEASE.questionIds],
+  questionSources: { ...CHECKED_IN_RELEASE.questionSources, ...CHECKED_IN_ORIGINAL_RELEASE.questionSources },
+  questionFingerprints: { ...CHECKED_IN_RELEASE.questionFingerprints, ...CHECKED_IN_ORIGINAL_RELEASE.questionFingerprints },
+  questionSourceFingerprints: CHECKED_IN_ORIGINAL_RELEASE.questionSourceFingerprints,
+};
+const CHECKED_IN_REGISTRY_ALL: CohortModuleSourceRegistry = {
+  schemaVersion: 1,
+  sources: { ...CHECKED_IN_REGISTRY.sources, ...CHECKED_IN_ORIGINAL_REGISTRY.sources },
+};
 const SERVABLE_STATES = ['validated', 'enhanced', 'cited', 'production'];
 const PRIVATE_FIELDS = ['source', 'sourceFile', 'contentState', 'excluded', 'citations', 'annotations'] as const;
 
@@ -104,6 +121,13 @@ export function buildCohortModuleCorpus(
       continue;
     }
 
+    const citationFingerprint = release.questionSourceFingerprints?.[row.id];
+    const originalLane = row.sourceFile?.startsWith('open-content/modules/original-questions/');
+    if ((originalLane && !citationFingerprint) || (citationFingerprint && citationFingerprint !== moduleSourceFingerprint(sourceId, source))) {
+      decide(refuse('evidence-source-drift', 'citation differs from its reviewed release'));
+      continue;
+    }
+
     const publicRow = { ...row } as Partial<PublicUsmleStoredQuestion>;
     for (const field of PRIVATE_FIELDS) Reflect.deleteProperty(publicRow, field);
     const publisher = source.publisher ?? source.title;
@@ -136,8 +160,8 @@ export function buildCohortModuleCorpus(
 
 export async function loadCohortModuleQuestionCorpus(
   store: QuestionStore = prisma,
-  release: CohortModuleServingRelease = CHECKED_IN_RELEASE,
-  registry: CohortModuleSourceRegistry = CHECKED_IN_REGISTRY,
+  release: CohortModuleServingRelease = CHECKED_IN_RELEASE_ALL,
+  registry: CohortModuleSourceRegistry = CHECKED_IN_REGISTRY_ALL,
 ): Promise<CohortModuleQuestionCorpus> {
   const rows = await store.question.findMany({
     where: withDefaultQuestionServingPolicy({

@@ -11,6 +11,7 @@ import type { Step1SessionItem, Step1SessionMode } from '@/lib/usmle/step1-contr
 import { REVIEW_CHALLENGE_POLICY_VERSION } from '@/lib/study/review-challenge';
 import type { ReviewChallengePreference } from '@/lib/study/review-challenge-preference';
 import type { AnatomyCardMediaDescriptor } from './anatomy-card-media';
+import { isAnatomyFigureSelection } from './anatomy-figure-catalogue';
 
 export const COHORT_CARD_DELIVERY_CONTRACT = 'cohort-module-card-v1' as const;
 export const COHORT_CARD_DECISION_PATH = 'cohort-module-card-v1' as const;
@@ -77,9 +78,7 @@ export function parseCohortCardSessionItem(value: unknown): CohortCardSessionIte
     const media = value.media;
     if (!isRecord(media)
       || !hasExactKeys(media, ['figureId', 'target', 'role', 'preAnswerAlt', 'postAnswerAlt'])
-      || media.figureId !== 'abducens-local'
-      || (media.target !== 'lateral-rectus' && media.target !== 'abducens' && media.target !== 'optic-nerve')
-      || (media.role !== 'prompt' && media.role !== 'supplementary')
+      || !isAnatomyFigureSelection(media.figureId, media.target, media.role)
       || typeof media.preAnswerAlt !== 'string' || media.preAnswerAlt.trim().length === 0
       || typeof media.postAnswerAlt !== 'string' || media.postAnswerAlt.trim().length === 0
     ) return null;

@@ -1,0 +1,65 @@
+{
+  "id": "bank:cohort:anatomy:q-ac6d3bd26a40:v1",
+  "rotation": "cohort-open",
+  "moduleNodes": [
+    "cohort/anatomy"
+  ],
+  "topics": [
+    "ureter",
+    "abdomen anatomy"
+  ],
+  "questionType": "single-best-answer",
+  "difficulty": "easy",
+  "stem": "A stone causes colicky flank pain and microscopic haematuria as it passes from the renal pelvis toward the bladder. Which structure is being obstructed?",
+  "options": [
+    {
+      "label": "A",
+      "text": "Ureter",
+      "isCorrect": true,
+      "explanation": "It is the muscular tube transporting urine from the renal pelvis to the bladder and can produce flank-to-groin colic when obstructed."
+    },
+    {
+      "label": "B",
+      "text": "Urethra",
+      "isCorrect": false,
+      "explanation": "It carries urine from the bladder to the exterior and would produce distal urinary symptoms."
+    },
+    {
+      "label": "C",
+      "text": "Renal artery",
+      "isCorrect": false,
+      "explanation": "Arterial obstruction causes ischaemia rather than urinary colic with haematuria from a travelling stone."
+    },
+    {
+      "label": "D",
+      "text": "Inferior vena cava",
+      "isCorrect": false,
+      "explanation": "It is a venous conduit and does not carry urine."
+    },
+    {
+      "label": "E",
+      "text": "Pancreatic duct",
+      "isCorrect": false,
+      "explanation": "Its obstruction produces pancreatic rather than urinary symptoms."
+    }
+  ],
+  "context": "The ureter carries urine from kidney to bladder and has predictable narrowings where stones may lodge.",
+  "publicModule": {
+    "schemaVersion": 1,
+    "origin": "original",
+    "discipline": "anatomy",
+    "originalId": "abd-ureter",
+    "itemText": {
+      "licence": "CC-BY-4.0",
+      "attribution": "MD3 contributors"
+    },
+    "evidence": {
+      "kind": "reference",
+      "sourceId": "original-cde5df5568e4f8c8"
+    },
+    "review": {
+      "verdict": "passed",
+      "contentHash": "e4571a95452542e6b31e60ce2cc5656bc6b42357d8fdf3c0f89f43de849b2ebc"
+    }
+  }
+}

@@ -1,0 +1,65 @@
+{
+  "id": "bank:cohort:anatomy:q-5c12c07ae0db:v1",
+  "rotation": "cohort-open",
+  "moduleNodes": [
+    "cohort/anatomy"
+  ],
+  "topics": [
+    "indirect inguinal hernia",
+    "abdomen anatomy"
+  ],
+  "questionType": "single-best-answer",
+  "difficulty": "easy",
+  "stem": "A groin hernia lies lateral to the inferior epigastric vessels and enters the deep inguinal ring. Which type is most likely?",
+  "options": [
+    {
+      "label": "A",
+      "text": "Direct inguinal hernia",
+      "isCorrect": false,
+      "explanation": "It pushes through the posterior wall medial to the inferior epigastric vessels."
+    },
+    {
+      "label": "B",
+      "text": "Femoral hernia",
+      "isCorrect": false,
+      "explanation": "It passes below the inguinal ligament through the femoral canal."
+    },
+    {
+      "label": "C",
+      "text": "Indirect inguinal hernia",
+      "isCorrect": true,
+      "explanation": "It enters lateral to the inferior epigastric vessels through the deep ring and follows the canal."
+    },
+    {
+      "label": "D",
+      "text": "Umbilical hernia",
+      "isCorrect": false,
+      "explanation": "It protrudes through the umbilical ring rather than the inguinal canal."
+    },
+    {
+      "label": "E",
+      "text": "Incisional hernia",
+      "isCorrect": false,
+      "explanation": "It occurs through a previous abdominal-wall incision."
+    }
+  ],
+  "context": "The relationship to the inferior epigastric vessels distinguishes the two main groin hernia pathways.",
+  "publicModule": {
+    "schemaVersion": 1,
+    "origin": "original",
+    "discipline": "anatomy",
+    "originalId": "abd-inguinal",
+    "itemText": {
+      "licence": "CC-BY-4.0",
+      "attribution": "MD3 contributors"
+    },
+    "evidence": {
+      "kind": "reference",
+      "sourceId": "original-bdc2b2bc66de92c6"
+    },
+    "review": {
+      "verdict": "passed",
+      "contentHash": "876b1428929c37524cb6bd23bbb5e9799cc5249a06b11dbd430188e9d73f1e57"
+    }
+  }
+}

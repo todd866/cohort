@@ -1,0 +1,65 @@
+{
+  "id": "bank:cohort:anatomy:q-652ad475b2f4:v1",
+  "rotation": "cohort-open",
+  "moduleNodes": [
+    "cohort/anatomy"
+  ],
+  "topics": [
+    "right coronary artery",
+    "thorax anatomy"
+  ],
+  "questionType": "single-best-answer",
+  "difficulty": "medium",
+  "stem": "A patient has an inferior myocardial infarction with right-ventricular involvement. Which coronary artery territory is most likely?",
+  "options": [
+    {
+      "label": "A",
+      "text": "Left circumflex artery",
+      "isCorrect": false,
+      "explanation": "It can supply the inferior wall in left-dominant circulation but is less likely with right-ventricular involvement."
+    },
+    {
+      "label": "B",
+      "text": "Left anterior descending artery",
+      "isCorrect": false,
+      "explanation": "It mainly supplies the anterior wall and septum."
+    },
+    {
+      "label": "C",
+      "text": "First diagonal branch",
+      "isCorrect": false,
+      "explanation": "This branch of the left anterior descending artery supplies anterolateral left-ventricular myocardium, rather than the combined inferior and right-ventricular territory."
+    },
+    {
+      "label": "D",
+      "text": "Obtuse marginal branch",
+      "isCorrect": false,
+      "explanation": "This circumflex branch supplies lateral left-ventricular myocardium, making it a poorer fit for right-ventricular involvement."
+    },
+    {
+      "label": "E",
+      "text": "Right coronary artery",
+      "isCorrect": true,
+      "explanation": "It commonly supplies the right ventricle and inferior heart through its marginal and posterior descending branches."
+    }
+  ],
+  "context": "The inferior and right-ventricular surfaces are commonly supplied by the right coronary artery in right-dominant circulation.",
+  "publicModule": {
+    "schemaVersion": 1,
+    "origin": "original",
+    "discipline": "anatomy",
+    "originalId": "thorax-coronary",
+    "itemText": {
+      "licence": "CC-BY-4.0",
+      "attribution": "MD3 contributors"
+    },
+    "evidence": {
+      "kind": "reference",
+      "sourceId": "original-97ac88c8235b1298"
+    },
+    "review": {
+      "verdict": "passed",
+      "contentHash": "90d262b8243c0c6eb1389f1316eea74c23a96bf2ae0430be0bba65c79e2bb944"
+    }
+  }
+}

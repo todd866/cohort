@@ -46,7 +46,7 @@ export default function ProfileSettingsClient({
       <div className="mt-6 grid gap-3 sm:grid-cols-2">
         <PersonalDocumentsDestination />
         <SecondaryDestination
-          href="/profile/support"
+          href="/profile#request"
           title="Feedback"
           description="Send a problem or suggestion"
         />

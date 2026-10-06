@@ -134,6 +134,7 @@ export function ProfileRequestBox() {
   if (sent) {
     return (
       <section
+        id="request"
         aria-label="Requests"
         className="mb-6 rounded-xl border border-[var(--md-outline-variant)] bg-[var(--md-surface-container)] px-4 py-3"
       >
@@ -152,27 +153,14 @@ export function ProfileRequestBox() {
   }
 
   return (
-    <section aria-label="Requests" className="mb-6">
+    <section id="request" aria-label="Requests" className="mb-6">
       <form onSubmit={submit}>
         <label
           htmlFor="profile-request"
           className="block text-base font-semibold text-[var(--md-on-surface)]"
         >
-          Tell us what to teach you
+          What should we teach? A topic, an exam, or a pasted results page.
         </label>
-        <p className="mt-1 text-sm text-[var(--md-on-surface-variant)]">
-          In your own words: content your feed is missing, a topic to add, an
-          exam you&rsquo;re sitting, something broken, a feature you want. These
-          are read every morning.
-        </p>
-        <p className="mt-1 text-sm text-[var(--md-on-surface-variant)]">
-          <strong className="font-semibold text-[var(--md-on-surface)]">
-            Sat a practice exam?
-          </strong>{' '}
-          Drop the results file here, or paste the page. Which questions you got
-          wrong is the most useful thing you can give us — it tells us what to
-          teach harder, for everyone.
-        </p>
         <textarea
           id="profile-request"
           value={message}
@@ -190,7 +178,7 @@ export function ProfileRequestBox() {
           }}
           rows={3}
           maxLength={MAX_MESSAGE_LENGTH}
-          placeholder="e.g. GP registrar sitting the KFP in November: more prescribing and paediatrics, less obstetrics — or drop your exam results here"
+          placeholder="Topic, exam, or results"
           className={`mt-3 w-full rounded-xl border bg-[var(--md-surface-container)] px-4 py-3 text-base placeholder:text-sm text-[var(--md-on-surface)] placeholder:text-[var(--md-on-surface-variant)] ${
             dragging ? 'border-[var(--md-primary)]' : 'border-[var(--md-outline-variant)]'
           }`}

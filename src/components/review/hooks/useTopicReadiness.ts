@@ -5,16 +5,24 @@ import {
   REVIEW_CONTEXT_FETCH_DEADLINE_MS,
 } from '@/lib/fetch-with-deadline';
 
-/** Load the lightweight readiness summary once, when the drawer first opens. */
+/**
+ * Prefetch the lightweight readiness summary as soon as the rotation is known.
+ *
+ * `open` stays in the signature because the drawer passes it, but the fetch
+ * is not gated on it. Waiting for the drawer to open painted a coverage bar
+ * and then swapped it for this summary. One success is cached per rotation.
+ * A failure stays silent so the drawer can keep the placeholder counts.
+ */
 export function useTopicReadiness(
   open: boolean,
   rotation: string | null,
 ): TopicReadinessSummary | null {
   const [summary, setSummary] = useState<TopicReadinessSummary | null>(null);
   const loadedRotation = useRef<string | null>(null);
+  void open;
 
   useEffect(() => {
-    if (!open || !rotation || loadedRotation.current === rotation) return;
+    if (!rotation || loadedRotation.current === rotation) return;
     let cancelled = false;
 
     fetchWithDeadline(
@@ -39,7 +47,7 @@ export function useTopicReadiness(
     return () => {
       cancelled = true;
     };
-  }, [open, rotation]);
+  }, [rotation]);
 
   return summary?.rotation === rotation ? summary : null;
 }

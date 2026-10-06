@@ -1,0 +1,65 @@
+{
+  "id": "bank:cohort:anatomy:q-ab50a2e3426b:v1",
+  "rotation": "cohort-open",
+  "moduleNodes": [
+    "cohort/anatomy"
+  ],
+  "topics": [
+    "retinal arterial supply",
+    "head and neck anatomy"
+  ],
+  "questionType": "single-best-answer",
+  "difficulty": "medium",
+  "stem": "A patient has transient monocular visual loss from an embolus in the retinal circulation. Imaging identifies an ipsilateral neck-artery plaque as its source. Which artery most directly feeds the ophthalmic artery?",
+  "options": [
+    {
+      "label": "A",
+      "text": "External carotid artery",
+      "isCorrect": false,
+      "explanation": "Its usual branches supply the face and scalp; the ophthalmic artery normally arises from the internal carotid."
+    },
+    {
+      "label": "B",
+      "text": "Vertebral artery",
+      "isCorrect": false,
+      "explanation": "It contributes to the posterior cerebral circulation through the basilar artery, not the usual ophthalmic origin."
+    },
+    {
+      "label": "C",
+      "text": "Facial artery",
+      "isCorrect": false,
+      "explanation": "This external-carotid branch supplies superficial facial tissues rather than being the normal ophthalmic origin."
+    },
+    {
+      "label": "D",
+      "text": "Internal carotid artery",
+      "isCorrect": true,
+      "explanation": "The ophthalmic artery usually arises from it; the central retinal artery then branches from the ophthalmic artery."
+    },
+    {
+      "label": "E",
+      "text": "Ascending pharyngeal artery",
+      "isCorrect": false,
+      "explanation": "This external-carotid branch supplies deep pharyngeal and skull-base structures rather than the usual ophthalmic origin."
+    }
+  ],
+  "context": "The usual arterial route is internal carotid to ophthalmic to central retinal artery. This explains why carotid disease can produce visual symptoms in one eye.",
+  "publicModule": {
+    "schemaVersion": 1,
+    "origin": "original",
+    "discipline": "anatomy",
+    "originalId": "head-retinal-arterial-supply",
+    "itemText": {
+      "licence": "CC-BY-4.0",
+      "attribution": "MD3 contributors"
+    },
+    "evidence": {
+      "kind": "reference",
+      "sourceId": "original-de026d3ef1422515"
+    },
+    "review": {
+      "verdict": "passed",
+      "contentHash": "04e3e065de5a3711841a3cfa63043d982863751e09fc66c48c7c4c3c42204a69"
+    }
+  }
+}

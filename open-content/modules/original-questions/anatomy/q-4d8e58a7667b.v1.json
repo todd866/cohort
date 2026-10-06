@@ -1,0 +1,65 @@
+{
+  "id": "bank:cohort:anatomy:q-4d8e58a7667b:v1",
+  "rotation": "cohort-open",
+  "moduleNodes": [
+    "cohort/anatomy"
+  ],
+  "topics": [
+    "femoral canal",
+    "pelvis anatomy"
+  ],
+  "questionType": "single-best-answer",
+  "difficulty": "easy",
+  "stem": "A groin swelling lies inferior to the inguinal ligament and medial to the femoral vein. Which passage is involved?",
+  "options": [
+    {
+      "label": "A",
+      "text": "Deep inguinal ring",
+      "isCorrect": false,
+      "explanation": "It lies above the inguinal ligament and is the entry for an indirect inguinal hernia."
+    },
+    {
+      "label": "B",
+      "text": "Femoral canal",
+      "isCorrect": true,
+      "explanation": "It lies medial to the femoral vein within the femoral sheath and can transmit a femoral hernia."
+    },
+    {
+      "label": "C",
+      "text": "Obturator canal",
+      "isCorrect": false,
+      "explanation": "It transmits the obturator nerve and vessels through the pelvic wall."
+    },
+    {
+      "label": "D",
+      "text": "Greater sciatic foramen",
+      "isCorrect": false,
+      "explanation": "It is a posterior pelvic opening for gluteal structures."
+    },
+    {
+      "label": "E",
+      "text": "Anal canal",
+      "isCorrect": false,
+      "explanation": "It is part of the distal gastrointestinal tract and unrelated to this groin location."
+    }
+  ],
+  "context": "The position below the inguinal ligament and medial to the femoral vein identifies the femoral canal.",
+  "publicModule": {
+    "schemaVersion": 1,
+    "origin": "original",
+    "discipline": "anatomy",
+    "originalId": "pel-femoral-hernia",
+    "itemText": {
+      "licence": "CC-BY-4.0",
+      "attribution": "MD3 contributors"
+    },
+    "evidence": {
+      "kind": "reference",
+      "sourceId": "original-a35a930996d66579"
+    },
+    "review": {
+      "verdict": "passed",
+      "contentHash": "451119c411016d48f5a9faa9eef3f63a429fe63f117b2575cbaab72c84b58fbb"
+    }
+  }
+}

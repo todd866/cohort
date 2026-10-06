@@ -1,0 +1,65 @@
+{
+  "id": "bank:cohort:anatomy:q-835198e6357b:v1",
+  "rotation": "cohort-open",
+  "moduleNodes": [
+    "cohort/anatomy"
+  ],
+  "topics": [
+    "temporomandibular joint",
+    "head anatomy"
+  ],
+  "questionType": "single-best-answer",
+  "difficulty": "easy",
+  "stem": "A patient cannot open the mouth fully after trauma and has pain localised just anterior to the ear. Which joint is involved?",
+  "options": [
+    {
+      "label": "A",
+      "text": "Atlanto-occipital joint",
+      "isCorrect": false,
+      "explanation": "It permits nodding between the skull and atlas, not jaw movement."
+    },
+    {
+      "label": "B",
+      "text": "Temporomandibular joint",
+      "isCorrect": true,
+      "explanation": "It lies anterior to the ear and permits mandibular hinge and translation during mouth opening."
+    },
+    {
+      "label": "C",
+      "text": "Sternoclavicular joint",
+      "isCorrect": false,
+      "explanation": "It links the upper limb to the trunk."
+    },
+    {
+      "label": "D",
+      "text": "Glenohumeral joint",
+      "isCorrect": false,
+      "explanation": "It is the shoulder joint and is unrelated to mouth opening."
+    },
+    {
+      "label": "E",
+      "text": "Zygomaticomaxillary suture",
+      "isCorrect": false,
+      "explanation": "It is a craniofacial suture and does not permit mandibular motion."
+    }
+  ],
+  "context": "The location and chewing-related movement identify the articulation between the mandibular condyle and temporal bone.",
+  "publicModule": {
+    "schemaVersion": 1,
+    "origin": "original",
+    "discipline": "anatomy",
+    "originalId": "head-tmj",
+    "itemText": {
+      "licence": "CC-BY-4.0",
+      "attribution": "MD3 contributors"
+    },
+    "evidence": {
+      "kind": "reference",
+      "sourceId": "original-7e21d6574b0422ba"
+    },
+    "review": {
+      "verdict": "passed",
+      "contentHash": "611eae4ecd392d2ac8a93d848c0fbd1c546351128d8220fce55ab53ef3e3d54f"
+    }
+  }
+}

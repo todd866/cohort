@@ -54,6 +54,17 @@ export function mapCohortCardToUnified(
     back: item.back,
     backs: null,
     context: item.context,
+    attribution: item.attribution,
+    ...(item.media ? {
+      publicAnatomyMedia: {
+        figureId: item.media.figureId,
+        target: item.media.target,
+        role: item.media.role,
+        preAnswerAlt: item.media.preAnswerAlt,
+        postAnswerAlt: item.media.postAnswerAlt,
+        attribution: item.attribution,
+      },
+    } : {}),
     sourceComponent: 'KeyPoint',
     rotation: args.rotation,
     week: null,

@@ -319,7 +319,48 @@ export function loadCohortModuleQuestionBankFromDisk(options: {
     }
   }
 
-  return { files, questions: errors.length === 0 ? loaded.questions : [], errors };
+  // Authored questions are a separate reviewed lane. Its release and source
+  // registry are optional while the lane is empty, but once either is present
+  // both must agree exactly with the files on disk.
+  const originalRoot = path.join(root, 'original-questions');
+  const originalReleasePath = path.join(root, 'original-questions-release-v1.json');
+  const originalRegistryPath = path.join(root, 'original-questions-sources.json');
+  const hasOriginalLane = fs.existsSync(originalRoot) || fs.existsSync(originalReleasePath) || fs.existsSync(originalRegistryPath);
+  if (!hasOriginalLane) return { files, questions: errors.length === 0 ? loaded.questions : [], errors };
+  const originalLoaded = loadQuestionBankFromDisk({ bankDir: originalRoot, allowUnregisteredRootDirs: true });
+  files.push(...originalLoaded.files, originalRegistryPath, originalReleasePath);
+  errors.push(...originalLoaded.errors);
+  try {
+    const originalRegistry = JSON.parse(fs.readFileSync(originalRegistryPath, 'utf8')) as CohortModuleSourceRegistry;
+    const originalRelease = JSON.parse(fs.readFileSync(originalReleasePath, 'utf8')) as {
+      schemaVersion?: number; questionIds?: unknown; questionFingerprints?: unknown; questionSources?: unknown;
+    };
+    if (originalRegistry.schemaVersion !== 1 || !originalRegistry.sources) throw new Error('original source registry: expected schemaVersion 1 with sources');
+    if (originalRelease.schemaVersion !== 1 || !Array.isArray(originalRelease.questionIds) || !originalRelease.questionFingerprints || !originalRelease.questionSources) throw new Error('original release: expected schemaVersion 1 with questionIds, questionFingerprints and questionSources');
+    const originalIds = originalRelease.questionIds.map(String);
+    const originalFingerprints = originalRelease.questionFingerprints as Record<string, string>;
+    const originalSources = originalRelease.questionSources as Record<string, string>;
+    const onDiskOriginal = new Set(originalLoaded.questions.map((question) => question.id));
+    const releasedOriginal = new Set(originalIds);
+    for (const id of onDiskOriginal) if (!releasedOriginal.has(id)) errors.push(`${originalReleasePath}: ${id} is on disk but not in the release`);
+    for (const id of releasedOriginal) if (!onDiskOriginal.has(id)) errors.push(`${originalReleasePath}: ${id} is released but its file is missing`);
+    for (const question of originalLoaded.questions) {
+      const file = question as unknown as CohortModuleQuestionFile;
+      const canonicalQuestion = question.sourceFile?.startsWith('open-content/modules/')
+        ? question
+        : { ...question, sourceFile: `open-content/modules/original-questions/${question.sourceFile?.split('original-questions/').pop() ?? `${question.id}.v1.json`}` };
+      const servingFingerprint = moduleReleaseFingerprints([canonicalQuestion])[question.id];
+      if (releasedOriginal.has(question.id) && originalFingerprints[question.id] !== servingFingerprint) errors.push(`${originalReleasePath}: ${question.id} serving fingerprint does not match its file`);
+      const cited = file.publicModule?.evidence?.sourceId;
+      if (releasedOriginal.has(question.id) && originalSources[question.id] !== cited) errors.push(`${originalReleasePath}: ${question.id} names source ${originalSources[question.id]} but its file cites ${cited}`);
+      const decision = decidePublicModuleQuestion(file, originalRegistry);
+      if (!decision.eligible) errors.push(`${question.sourceFile ?? question.id}: original module eligibility ${decision.reason} (${decision.detail})`);
+    }
+    if (errors.length === 0) return { files: files.sort(), questions: [...loaded.questions, ...originalLoaded.questions], errors };
+  } catch (error) {
+    errors.push(`${root}: invalid original Cohort module registry or release (${error instanceof Error ? error.message : String(error)})`);
+  }
+  return { files: files.sort(), questions: [], errors };
 }
 
 /**

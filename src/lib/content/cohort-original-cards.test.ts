@@ -126,6 +126,18 @@ describe('loadCohortOriginalCardsFromDisk', () => {
   });
 
 
+  it.each(['title', 'url'])('invalidates review when the cited source %s changes', (field) => {
+    const root = makeRoot();
+    writeDeck(root);
+    const file = path.join(root, 'anatomy/ocular.json');
+    const raw = JSON.parse(readFileSync(file, 'utf8'));
+    raw.items[0].sources[0][field] = field === 'url' ? 'https://example.org/unrelated' : 'Unrelated chapter';
+    writeFileSync(file, JSON.stringify(raw));
+    const result = loadCohortOriginalCardsFromDisk({ root });
+    expect(result.cards).toEqual([]);
+    expect(result.errors.join('\n')).toContain('does not match authored content');
+  });
+
   it('merges by public id, lets originals replace stale copies, and is idempotent', () => {
     const root = makeRoot();
     writeDeck(root);

@@ -1,6 +1,6 @@
 /**
  * Seed only the Cohort module bank (open-content/modules/), the mirrored
- * rights-clean md3 questions cohort.md serves as its own `cohort-open` rows.
+ * rights-clean mirrored and original questions cohort.md serves as its own `cohort-open` rows.
  *
  *   npm run db:seed:cohort-modules -- --dry-run   # validate, no writes
  *   npm run db:seed:cohort-modules                # upsert + retire stale module rows
@@ -9,7 +9,7 @@
  * files (the module bank is a root of loadSeedQuestionBanksFromDisk); this one
  * exists so a clean Cohort checkout, or a thin link, can load just them. It
  * never reads the private question-bank, and its stale sweep only ever sees
- * rows under open-content/modules/questions/.
+ * Question rows under open-content/modules/.
  */
 import { loadCohortModuleQuestionBankFromDisk } from '../../src/lib/question-bank/load-seed-corpus';
 import { upsertCuratedQuestionBank } from '../../src/lib/question-bank/seed';
@@ -49,7 +49,7 @@ async function main(): Promise<void> {
     const result = await seedOpenCorpusAtomically(
       prisma as unknown as OpenCorpusSeedTransactionHost,
       loaded,
-      { sourceFilePrefix: 'open-content/modules/questions/', label: LABEL },
+      { sourceFilePrefix: 'open-content/modules/', label: LABEL },
     );
     console.log(`[${LABEL}] upserted ${result.upserted} question(s); retired ${result.retired} stale module row(s).`);
   } finally {

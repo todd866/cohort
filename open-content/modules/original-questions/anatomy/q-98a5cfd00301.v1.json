@@ -1,0 +1,65 @@
+{
+  "id": "bank:cohort:anatomy:q-98a5cfd00301:v1",
+  "rotation": "cohort-open",
+  "moduleNodes": [
+    "cohort/anatomy"
+  ],
+  "topics": [
+    "tibial nerve",
+    "lower anatomy"
+  ],
+  "questionType": "single-best-answer",
+  "difficulty": "medium",
+  "stem": "A patient cannot perform a single-leg heel raise and has a reduced Achilles reflex, while knee flexion is preserved. Which nerve pathway is most likely affected?",
+  "options": [
+    {
+      "label": "A",
+      "text": "Common fibular nerve",
+      "isCorrect": false,
+      "explanation": "It supplies dorsiflexors and evertors, so injury would cause foot drop rather than loss of heel raise."
+    },
+    {
+      "label": "B",
+      "text": "Tibial nerve",
+      "isCorrect": true,
+      "explanation": "It supplies gastrocnemius and soleus and carries the predominantly S1 afferent and efferent fibres of the ankle reflex. The motor response contracts these muscles, rather than the tendon itself."
+    },
+    {
+      "label": "C",
+      "text": "Femoral nerve",
+      "isCorrect": false,
+      "explanation": "It supplies knee extension and the patellar reflex."
+    },
+    {
+      "label": "D",
+      "text": "Obturator nerve",
+      "isCorrect": false,
+      "explanation": "It supplies thigh adduction."
+    },
+    {
+      "label": "E",
+      "text": "Superior gluteal nerve",
+      "isCorrect": false,
+      "explanation": "It supplies hip abductors and does not mediate the Achilles reflex."
+    }
+  ],
+  "context": "The selective deficit points to the tibial nerve or S1 pathway supplying plantarflexors distal to the hamstrings.",
+  "publicModule": {
+    "schemaVersion": 1,
+    "origin": "original",
+    "discipline": "anatomy",
+    "originalId": "lower-achilles",
+    "itemText": {
+      "licence": "CC-BY-4.0",
+      "attribution": "MD3 contributors"
+    },
+    "evidence": {
+      "kind": "reference",
+      "sourceId": "original-e781f789e34762cf"
+    },
+    "review": {
+      "verdict": "passed",
+      "contentHash": "516ec4e03a161932da94d368062710bda9360bee8240756c17a2bb7a902b10cc"
+    }
+  }
+}

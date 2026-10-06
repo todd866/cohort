@@ -1,0 +1,65 @@
+{
+  "id": "bank:cohort:anatomy:q-3b62abfa1913:v1",
+  "rotation": "cohort-open",
+  "moduleNodes": [
+    "cohort/anatomy"
+  ],
+  "topics": [
+    "radial nerve localisation",
+    "upper anatomy"
+  ],
+  "questionType": "single-best-answer",
+  "difficulty": "easy",
+  "stem": "A patient sustains a mid-shaft humeral fracture and develops wrist drop with reduced sensation in the dorsal first web space. Which nerve is most likely injured?",
+  "options": [
+    {
+      "label": "A",
+      "text": "Median nerve",
+      "isCorrect": false,
+      "explanation": "It supplies many forearm flexors and lateral-palmar sensation, so it would not explain this dorsal motor pattern."
+    },
+    {
+      "label": "B",
+      "text": "Radial nerve",
+      "isCorrect": true,
+      "explanation": "It supplies the wrist extensors and gives cutaneous sensation in the dorsal first web space, matching both findings."
+    },
+    {
+      "label": "C",
+      "text": "Ulnar nerve",
+      "isCorrect": false,
+      "explanation": "It supplies intrinsic hand muscles and medial-hand sensation, not the main wrist extensors."
+    },
+    {
+      "label": "D",
+      "text": "Axillary nerve",
+      "isCorrect": false,
+      "explanation": "It supplies deltoid and lateral shoulder sensation, which are proximal to the described deficit."
+    },
+    {
+      "label": "E",
+      "text": "Musculocutaneous nerve",
+      "isCorrect": false,
+      "explanation": "It supplies anterior-arm flexors and lateral-forearm sensation, not wrist extension."
+    }
+  ],
+  "context": "The neurological pattern localises the lesion to a nerve travelling in the radial groove before its distal branches.",
+  "publicModule": {
+    "schemaVersion": 1,
+    "origin": "original",
+    "discipline": "anatomy",
+    "originalId": "upper-wrist-drop",
+    "itemText": {
+      "licence": "CC-BY-4.0",
+      "attribution": "MD3 contributors"
+    },
+    "evidence": {
+      "kind": "reference",
+      "sourceId": "original-3c91b7db210e15b3"
+    },
+    "review": {
+      "verdict": "passed",
+      "contentHash": "9b54265ce36e2caa0a3693e69caced41ee121f16e72663454b64101dca44a484"
+    }
+  }
+}

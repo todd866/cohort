@@ -20,7 +20,7 @@ atlas, cadaver photograph or other third-party image was supplied to generation.
 - `diagram.svg` embeds that exact base and adds editable labels.
 - `served.svg` adds the complete MIT notice as nonvisual SVG metadata for downloads.
 - `labels.json` records the image hash, reviewed anchor patches and sources.
-- `construction.svg` and `generation-prompt.txt` preserve the generation input.
+- `construction.svg` and `generation-prompt.txt` preserve the initial generation input; the 6 October base revision reduced the muscle bulk.
 - `source-review.json` records review scope, provenance and limitations.
 
 Regenerate labels from the repository root:
@@ -30,7 +30,7 @@ node --import tsx scripts/images/anatomy-annotations.ts labels.json diagram.svg 
 ```
 
 Independent AI reviews examined the unlabelled pixels and the final labelled
-image, including its readability at 375 pixels wide. This is not clinician
+image, including all three single-target prompts at 375 pixels wide. The nerve is thin at that size; this supports identification, not fine nerve-entry anatomy. This is not clinician
 signoff. Geometry checks verify anchor placement, not anatomical truth.
 The image is a reviewed reusable artifact; publication here does not itself
 attach it to live study cards.

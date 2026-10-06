@@ -1,3 +1,4 @@
+import type { AnatomyFigureId, AnatomyFigureTarget } from './anatomy-figure-catalogue';
 /**
  * The small, closed registry of reviewed illustrations that may accompany a
  * public anatomy card.  Cards opt in by their exact released stableId; text
@@ -7,14 +8,76 @@
 export type AnatomyCardMediaRole = 'prompt' | 'supplementary';
 
 export interface AnatomyCardMediaDescriptor {
-  figureId: 'abducens-local';
-  target: 'lateral-rectus' | 'abducens' | 'optic-nerve';
+  figureId: AnatomyFigureId;
+  target: AnatomyFigureTarget;
   role: AnatomyCardMediaRole;
   preAnswerAlt: string;
   postAnswerAlt: string;
 }
 
 const REVIEWED: Readonly<Record<string, AnatomyCardMediaDescriptor>> = Object.freeze({
+  // Reviewed distal carpal section: six identification and six relation/application tasks.
+  'cohort:anatomy:c-684b1b98be79:v1': {
+    figureId: 'carpal-tunnel-focus', target: 'median-nerve', role: 'prompt',
+    preAnswerAlt: 'Schematic distal wrist section with structure A marked.',
+    postAnswerAlt: 'Schematic distal wrist section with A labelled: median nerve.',
+  },
+  'cohort:anatomy:c-4282cc332060:v1': {
+    figureId: 'carpal-tunnel-focus', target: 'flexor-retinaculum', role: 'prompt',
+    preAnswerAlt: 'Schematic distal wrist section with structure A marked.',
+    postAnswerAlt: 'Schematic distal wrist section with A labelled: flexor retinaculum.',
+  },
+  'cohort:anatomy:c-15e3963e7828:v1': {
+    figureId: 'carpal-tunnel-focus', target: 'trapezium', role: 'prompt',
+    preAnswerAlt: 'Schematic distal wrist section with structure A marked.',
+    postAnswerAlt: 'Schematic distal wrist section with A labelled: trapezium.',
+  },
+  'cohort:anatomy:c-2a9d592a962f:v1': {
+    figureId: 'carpal-tunnel-focus', target: 'trapezoid', role: 'prompt',
+    preAnswerAlt: 'Schematic distal wrist section with structure A marked.',
+    postAnswerAlt: 'Schematic distal wrist section with A labelled: trapezoid.',
+  },
+  'cohort:anatomy:c-d1c8d35ea537:v1': {
+    figureId: 'carpal-tunnel-focus', target: 'capitate', role: 'prompt',
+    preAnswerAlt: 'Schematic distal wrist section with structure A marked.',
+    postAnswerAlt: 'Schematic distal wrist section with A labelled: capitate.',
+  },
+  'cohort:anatomy:c-6b1359a45b1f:v1': {
+    figureId: 'carpal-tunnel-focus', target: 'hamate', role: 'prompt',
+    preAnswerAlt: 'Schematic distal wrist section with structure A marked.',
+    postAnswerAlt: 'Schematic distal wrist section with A labelled: hamate.',
+  },
+  'cohort:anatomy:c-bf996fb12d2d:v1': {
+    figureId: 'carpal-tunnel-focus', target: 'median-nerve', role: 'prompt',
+    preAnswerAlt: 'Schematic distal wrist section with structure A marked.',
+    postAnswerAlt: 'Schematic distal wrist section with A labelled: median nerve.',
+  },
+  'cohort:anatomy:c-aa0dbbbb964c:v1': {
+    figureId: 'carpal-tunnel-focus', target: 'flexor-retinaculum', role: 'prompt',
+    preAnswerAlt: 'Schematic distal wrist section with structure A marked.',
+    postAnswerAlt: 'Schematic distal wrist section with A labelled: flexor retinaculum.',
+  },
+  'cohort:anatomy:c-26153cbb8a4b:v1': {
+    figureId: 'carpal-tunnel-focus', target: 'trapezium', role: 'prompt',
+    preAnswerAlt: 'Schematic distal wrist section with structure A marked.',
+    postAnswerAlt: 'Schematic distal wrist section with A labelled: trapezium.',
+  },
+  'cohort:anatomy:c-4751dcc945eb:v1': {
+    figureId: 'carpal-tunnel-focus', target: 'trapezoid', role: 'prompt',
+    preAnswerAlt: 'Schematic distal wrist section with structure A marked.',
+    postAnswerAlt: 'Schematic distal wrist section with A labelled: trapezoid.',
+  },
+  'cohort:anatomy:c-e88e67c4dc0c:v1': {
+    figureId: 'carpal-tunnel-focus', target: 'capitate', role: 'prompt',
+    preAnswerAlt: 'Schematic distal wrist section with structure A marked.',
+    postAnswerAlt: 'Schematic distal wrist section with A labelled: capitate.',
+  },
+  'cohort:anatomy:c-e5041ed26e0b:v1': {
+    figureId: 'carpal-tunnel-focus', target: 'hamate', role: 'prompt',
+    preAnswerAlt: 'Schematic distal wrist section with structure A marked.',
+    postAnswerAlt: 'Schematic distal wrist section with A labelled: hamate.',
+  },
+
   // cohort:anatomy:c-dd0bcce3d72d:v1 = originalId lateral-rectus-innervation
   'cohort:anatomy:c-dd0bcce3d72d:v1': {
     figureId: 'abducens-local', target: 'lateral-rectus',

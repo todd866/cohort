@@ -15,21 +15,16 @@ import { CardFeedback } from './CardFeedback';
 import { usePrefetchImage } from '@/hooks/usePrefetchImage';
 import { GlossaryScope } from '../content/GlossaryScope';
 import { GlossaryText } from '../content/GlossaryText';
-import { InlineMarkdown, MarkdownTable, extractMarkdownTables, tablesCanUseSidePane, type LeafRenderer } from '@/lib/inline-markdown';
-import { splitExplanation } from '../content/mcq-utils';
-import { CheckIcon, XIcon, ChevronIcon } from '../content/mcq-icons';
+import { type LeafRenderer } from '@/lib/inline-markdown';
 import { RevealActionLabel } from './RevealActionLabel';
 import { StatementSetView, KTypeVerdict } from './StatementSetView';
 import { responseFormatOfOptions } from '@/lib/question-bank/statement-items';
 import { reviewImageIsPrompt } from './image-role';
+import { ReviewQuestionContent, ReviewQuestionOptions, ReviewQuestionResultBody } from '@/components/shared/ReviewQuestionContent';
+import { ReviewQuestionStem, ReviewQuestionStemTable, parseReviewQuestionStem } from '@/components/shared/ReviewQuestionStem';
 import {
   itemUsesSidePane,
-  REVIEW_PANE_CELL_FLAT,
-  reviewPaneGridClass,
   reviewPaneKind,
-  REVIEW_PANE_MEDIA,
-  REVIEW_PANE_TEXT_BOTTOM,
-  REVIEW_PANE_TEXT_TOP,
 } from './review-panes';
 
 const glossaryLeaf: LeafRenderer = (text: string) => <GlossaryText text={text} />;
@@ -115,30 +110,14 @@ export function McqItemView({
   // reads the question against the numbers instead of scrolling between them.
   // Asked for twice on 2026-09-15. The prose keeps its place in the reading
   // column; on a phone the table sits between the stem and the options.
-  const stemTables = extractMarkdownTables(item.stem ?? '');
-  const liftTables = tablesCanUseSidePane(stemTables.tables);
+  const stemTables = parseReviewQuestionStem(item.stem ?? '');
+  const liftTables = stemTables.liftTables;
   const stemNode = (
-    <div className="text-[var(--md-on-surface)] mb-5 space-y-2 text-[1.03rem] leading-relaxed">
-      {liftTables ? splitExplanation(stemTables.prose).map((block, i) => (
-        <p key={i}><InlineMarkdown text={block} leafRenderer={glossaryLeaf} /></p>
-      )) : stemTables.blocks.map((block, i) => block.kind === 'table'
-        ? <div key={i} className="overflow-x-auto"><MarkdownTable table={block.table} leafRenderer={glossaryLeaf} /></div>
-        : <div key={i} className="space-y-2">{splitExplanation(block.text).map((text, j) => <p key={j}><InlineMarkdown text={text} leafRenderer={glossaryLeaf} /></p>)}</div>)}
-      {isCalculationItem(item) && <InlineCalculator key={item.id} />}
-    </div>
+    <><ReviewQuestionStem text={liftTables ? stemTables.prose : (item.stem ?? '')} leafRenderer={glossaryLeaf} className="text-[var(--md-on-surface)] mb-5 text-[1.03rem]" />
+      {isCalculationItem(item) && <InlineCalculator key={item.id} />}</>
   );
   const resultsNode = liftTables ? (
-    <div
-      data-results-table
-      role="region"
-      aria-label="Question results"
-      tabIndex={0}
-      className="mb-4 overflow-x-auto rounded-lg border border-[var(--md-outline-variant)] bg-[var(--md-surface-container-lowest)] px-2"
-    >
-      {stemTables.tables.map((table, index) => (
-        <MarkdownTable key={index} table={table} leafRenderer={glossaryLeaf} />
-      ))}
-    </div>
+    <ReviewQuestionStemTable text={item.stem ?? ''} leafRenderer={glossaryLeaf} className="mb-4" />
   ) : null;
 
   // A prompt clip is the question's media ("as the clip shows"), shown before
@@ -193,134 +172,32 @@ export function McqItemView({
       />
     </div>
   ) : (
-    <>
-      {/* Inline options - before answering */}
-      {!mcqResult && (
-        <div className="space-y-2">
-          {item.options.map((option, idx) => {
-            const isSelected = selectedOption === option.label;
-            return (
-            <button
-              key={option.label}
-              type="button"
-              disabled={interactionDisabled || promptBlocked}
-              onClick={() => handleSelectOption(option.label)}
-              className={`review-choice group flex w-full items-start gap-3 text-left p-3.5 rounded-lg border transition-colors disabled:cursor-wait disabled:opacity-60 ${
-                interactionDisabled ? 'cursor-wait' : 'cursor-pointer'
-              } ${
-                isSelected
-                  ? 'border-[var(--md-primary)] bg-[var(--md-primary-container)]/30'
-                  : 'border-[var(--md-outline-variant)] bg-[var(--md-surface-container-lowest)]/90 hover:border-[var(--md-primary)] hover:bg-[var(--md-primary-container)]/30'
-              }`}
-            >
-              <span className="mt-0.5 flex h-7 w-7 shrink-0 items-center justify-center rounded-full bg-[var(--md-surface-container-high)] font-mono text-xs text-[var(--md-on-surface-variant)] group-hover:bg-[var(--md-primary-container)] group-hover:text-[var(--md-on-primary-container)] transition-colors">
-                {responseFormat === 'kType' ? option.label : idx + 1}
-              </span>
-              <span className="pt-0.5"><GlossaryText text={option.text} /></span>
-            </button>
-            );
-          })}
-          <div className="text-sm text-[var(--md-on-surface-variant)] text-center mt-2">
-            {selectedPending ? 'how sure are you?' : handleRevealAnswer ? (
-              <button
-                type="button"
-                onClick={handleRevealAnswer}
-                disabled={interactionDisabled}
-                className="review-choice min-h-11 w-full rounded-lg border border-dashed border-[var(--md-outline-variant)] px-3 py-2 hover:bg-[var(--md-surface-container-high)] disabled:cursor-wait disabled:opacity-60"
-              >
-                <RevealActionLabel item={item} />
-              </button>
-            ) : <RevealActionLabel item={item} />}
-          </div>
-        </div>
-      )}
-
-      {/* Options shown after answering (with correct/wrong highlighting) */}
-      {mcqResult && (
-        <div className="space-y-2">
-          {item.options.map((option, idx) => {
-            const isSelected = selectedOption === option.label;
-            const isCorrect = option.label === mcqResult.correctOption;
-            const isWrong = isSelected && !mcqResult.isCorrect;
-            const optionExplanation = option.explanation?.trim() ?? '';
-            const hasOptionExplanation = optionExplanation.length > 0;
-            const isExpanded = expandedOptionExplanations.has(option.label);
-
-            let optionClass = 'border-[var(--md-outline-soft)] bg-[var(--md-surface-container-lowest)]/80';
-            let labelClass = 'bg-[var(--md-surface-container-high)] text-[var(--md-on-surface-variant)]';
-            if (isCorrect) {
-              optionClass = 'border-[var(--md-success)]/55 bg-[var(--md-success-container)]/45';
-              labelClass = 'bg-[var(--md-success)] text-[var(--md-on-success)]';
-            } else if (isWrong) {
-              optionClass = 'border-[var(--md-error)]/55 bg-[var(--md-error-container)]/45';
-              labelClass = 'bg-[var(--md-error)] text-[var(--md-on-error)]';
-            }
-            if (hasOptionExplanation) optionClass += ' cursor-pointer hover:brightness-95';
-            else optionClass += ' cursor-default';
-
-            return (
-              <div key={option.label}>
-                <button
-                  type="button"
-                  onClick={() => {
-                    if (hasOptionExplanation) toggleOptionExplanation(option.label);
-                  }}
-                  disabled={!hasOptionExplanation}
-                  aria-expanded={hasOptionExplanation ? isExpanded : undefined}
-                  className={`review-choice flex w-full items-start gap-3 text-left p-3.5 rounded-lg border transition-colors ${optionClass}`}
-                >
-                  <span className={`mt-0.5 flex h-7 w-7 shrink-0 items-center justify-center rounded-full font-mono text-xs transition-colors ${labelClass}`}>
-                    {responseFormat === 'kType' ? option.label : idx + 1}
-                  </span>
-                  <span className="min-w-0 flex-1 pt-0.5">
-                    <GlossaryText text={option.text} />
-                    {isCorrect && <CheckIcon className="ml-1 inline-block w-4 h-4 align-text-bottom text-[var(--md-success)]" />}
-                    {isWrong && <XIcon className="ml-1 inline-block w-4 h-4 align-text-bottom text-[var(--md-error)]" />}
-                    {hasOptionExplanation && (
-                      <ChevronIcon
-                        className={`ml-2 inline-block w-4 h-4 align-text-bottom text-[var(--md-on-surface-variant)] transition-transform duration-200 ${isExpanded ? 'rotate-180' : ''}`}
-                      />
-                    )}
-                  </span>
-                </button>
-                {hasOptionExplanation && isExpanded && (
-                  <div className="mt-1 ml-10 mr-2 px-3 py-2 text-sm text-[var(--md-on-surface-variant)] bg-[var(--md-surface-container)] rounded-lg leading-relaxed">
-                    <InlineMarkdown text={optionExplanation} />
-                  </div>
-                )}
-              </div>
-            );
-          })}
-        </div>
-      )}
-    </>
+    <ReviewQuestionOptions
+      options={item.options}
+      selectedOption={selectedOption}
+      result={mcqResult}
+      responseFormat={responseFormat === 'kType' ? 'kType' : 'standard'}
+      disabled={interactionDisabled || promptBlocked}
+      revealDisabled={interactionDisabled}
+      selectedPending={selectedPending}
+      onSelect={handleSelectOption}
+      expandedExplanations={expandedOptionExplanations}
+      onToggleExplanation={toggleOptionExplanation}
+      onReveal={handleRevealAnswer}
+      revealLabel={<RevealActionLabel item={item} />}
+    />
   );
 
   // Result + explanation. The supplementary figure sits between this and the
   // links row in the DOM, so they are separate nodes. `mcqAnswerRef` stays on
   // the HEAD of the reveal — that is what `needsRevealScroll` measures.
-  const resultNode = mcqResult ? (
-    <div ref={responseFormat === 'typeX' ? undefined : mcqAnswerRef} className="mt-3 space-y-2 review-reveal">
-      {/* Result indicator - brief. A statement set shows its marks in place. */}
-      {responseFormat === 'typeX' ? null : mcqResult.isCorrect ? (
-        <div role="status" aria-label="Correct" className="inline-flex items-center gap-1 rounded-full bg-[var(--md-success-container)] px-2.5 py-1 text-sm text-[var(--md-on-success-container)] font-medium"><CheckIcon className="w-4 h-4" /> Correct</div>
-      ) : (
-        <div role="status" aria-label="Incorrect" className="inline-flex items-center gap-1 rounded-full bg-[var(--md-error-container)] px-2.5 py-1 text-sm text-[var(--md-on-error-container)] font-medium"><XIcon className="w-4 h-4" /> Incorrect</div>
-      )}
-      {responseFormat === 'kType' && !mcqResult.isCorrect && (
-        <KTypeVerdict selectedOption={selectedOption} correctOption={mcqResult.correctOption} />
-      )}
-
-      {/* Explanation — shown on both correct and incorrect */}
-      {context && (
-        <div className="text-sm pt-1 text-[var(--md-on-surface-variant)] space-y-3 border-l-2 border-[var(--md-outline-soft)] pl-3">
-          {splitExplanation(context).map((block, i) => (
-            <p key={i}><InlineMarkdown text={block} /></p>
-          ))}
-        </div>
-      )}
-    </div>
-  ) : null;
+  const resultNode = mcqResult ? <div className="review-reveal" ref={responseFormat === 'typeX' ? undefined : mcqAnswerRef}>
+    {responseFormat === 'typeX' ? null : <ReviewQuestionResultBody
+      result={mcqResult}
+      verdict={responseFormat === 'kType' && !mcqResult.isCorrect ? <KTypeVerdict selectedOption={selectedOption} correctOption={mcqResult.correctOption} /> : undefined}
+      explanation={context}
+    />}
+  </div> : null;
 
   const tailNode = mcqResult ? (
     <>
@@ -366,25 +243,16 @@ export function McqItemView({
   // A results table splits the same way a prompt figure does: it is question
   // content the learner must meet before the options.
   const mediaIsPrompt = figureIsPrompt || clipPrompt || Boolean(resultsNode);
-  const paneTop = mediaIsPrompt ? stemNode : <>{stemNode}{optionsNode}{resultNode}</>;
-  const paneBottom = mediaIsPrompt
-    ? <>{optionsNode}{resultNode}{tailNode}</>
-    : tailNode;
-
-  return (
-    <GlossaryScope abbreviations={item.abbreviations}>
-    <div className={sidePane ? reviewPaneGridClass(reviewPaneKind(item)) : REVIEW_PANE_CELL_FLAT}>
-      <div className={sidePane ? REVIEW_PANE_TEXT_TOP : REVIEW_PANE_CELL_FLAT}>{paneTop}</div>
-      {(figureNode || resultsNode || clipNode) && (
-        <div className={sidePane ? REVIEW_PANE_MEDIA : 'mt-2'}>
-          {resultsNode}
-          {clipPrompt && clipNode}
-          {figureNode}
-          {!clipPrompt && clipNode}
-        </div>
-      )}
-      <div className={sidePane ? REVIEW_PANE_TEXT_BOTTOM : REVIEW_PANE_CELL_FLAT}>{paneBottom}</div>
-    </div>
-    </GlossaryScope>
-  );
+  const mediaNode = (figureNode || resultsNode || clipNode) ? <>{resultsNode}{clipPrompt && clipNode}{figureNode}{!clipPrompt && clipNode}</> : null;
+  return <GlossaryScope abbreviations={item.abbreviations}>
+    <ReviewQuestionContent
+      layout={mediaIsPrompt ? 'prompt' : (mediaNode ? 'supplementary' : 'flat')}
+      paneKind={reviewPaneKind(item)}
+      stem={stemNode}
+      options={optionsNode}
+      result={resultNode}
+      media={mediaNode}
+      tail={tailNode}
+    />
+  </GlossaryScope>;
 }

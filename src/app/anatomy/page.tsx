@@ -1,6 +1,6 @@
 import type { Metadata } from 'next';
 import { headers } from 'next/headers';
-import { notFound } from 'next/navigation';
+import { redirect } from 'next/navigation';
 import { isCohortHostname } from '@/lib/institution';
 import AnatomyStudyClient from './AnatomyStudyClient';
 
@@ -10,13 +10,13 @@ export const metadata: Metadata = {
 };
 
 /**
- * Anatomy is a Cohort-only public module. The fixed topic is passed into the
+ * Anatomy is a direct entry into the host’s ordinary reviewer. The fixed topic is passed into the
  * existing Cohort single-turn reviewer, so the server owns the released
  * question/card scope and this page never changes learner module preferences.
  */
 export default async function AnatomyPage() {
   const host = (await headers()).get('host') ?? '';
-  if (!isCohortHostname(host)) notFound();
+  if (!isCohortHostname(host)) redirect('/?rotation=anatomy');
 
   return <AnatomyStudyClient />;
 }

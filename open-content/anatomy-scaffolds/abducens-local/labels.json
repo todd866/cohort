@@ -3,12 +3,12 @@
   "id": "abducens-local-labels",
   "baseImage": {
     "file": "base.png",
-    "sha256": "e8e5c267dedc12033cca845099639943c7a7618a1b16c842154ab3bace1e60aa",
+    "sha256": "cf014431dbe58b040c2da803e7fa7aa0177e4059c4285f64e71e0420a35b4b8b",
     "width": 1254,
     "height": 1254,
     "review": {
       "status": "agent-reviewed",
-      "notes": "Parent plus independent blind pixel review supports only the local lateral-rectus/CN VI/optic-nerve grouping. Continuous muscle; motor nerve approaches deep side. Entry is occluded; posterior origins and intracranial course are intentionally absent. No clinician signoff."
+      "notes": "Revised 6 October after owner flagged excessive muscle bulk. Parent and independent pixel review support the local lateral-rectus/CN VI/optic-nerve grouping and reduced muscle bulk. Exact insertion distance, nerve penetration, posterior origin and surgical dimensions are not established. No clinician signoff."
     }
   },
   "regions": [
@@ -17,20 +17,20 @@
       "name": "Lateral rectus",
       "polygon": [
         [
-          430,
-          510
+          465,
+          530
         ],
         [
-          470,
-          510
+          488,
+          530
         ],
         [
-          480,
-          585
+          490,
+          575
         ],
         [
-          430,
-          585
+          465,
+          575
         ]
       ],
       "sources": [
@@ -41,7 +41,7 @@
       ],
       "review": {
         "status": "agent-reviewed",
-        "notes": "Parent plus independent blind pixel review supports only the local lateral-rectus/CN VI/optic-nerve grouping. Continuous muscle; motor nerve approaches deep side. Entry is occluded; posterior origins and intracranial course are intentionally absent. No clinician signoff."
+        "notes": "Revised 6 October after owner flagged excessive muscle bulk. Parent and independent pixel review support the local lateral-rectus/CN VI/optic-nerve grouping and reduced muscle bulk. Exact insertion distance, nerve penetration, posterior origin and surgical dimensions are not established. No clinician signoff."
       }
     },
     {
@@ -49,20 +49,20 @@
       "name": "CN VI",
       "polygon": [
         [
-          692,
-          989
+          693,
+          1005
         ],
         [
-          716,
-          989
+          701,
+          1005
         ],
         [
-          720,
-          1035
+          704,
+          1030
         ],
         [
-          697,
-          1035
+          696,
+          1030
         ]
       ],
       "sources": [
@@ -73,7 +73,7 @@
       ],
       "review": {
         "status": "agent-reviewed",
-        "notes": "Parent plus independent blind pixel review supports only the local lateral-rectus/CN VI/optic-nerve grouping. Continuous muscle; motor nerve approaches deep side. Entry is occluded; posterior origins and intracranial course are intentionally absent. No clinician signoff."
+        "notes": "Revised 6 October after owner flagged excessive muscle bulk. Parent and independent pixel review support the local lateral-rectus/CN VI/optic-nerve grouping and reduced muscle bulk. Exact insertion distance, nerve penetration, posterior origin and surgical dimensions are not established. No clinician signoff."
       }
     },
     {
@@ -105,7 +105,7 @@
       ],
       "review": {
         "status": "agent-reviewed",
-        "notes": "Parent plus independent blind pixel review supports only the local lateral-rectus/CN VI/optic-nerve grouping. Continuous muscle; motor nerve approaches deep side. Entry is occluded; posterior origins and intracranial course are intentionally absent. No clinician signoff."
+        "notes": "Revised 6 October after owner flagged excessive muscle bulk. Parent and independent pixel review support the local lateral-rectus/CN VI/optic-nerve grouping and reduced muscle bulk. Exact insertion distance, nerve penetration, posterior origin and surgical dimensions are not established. No clinician signoff."
       }
     }
   ],
@@ -114,7 +114,7 @@
       "id": "lr-label",
       "text": "Lateral rectus",
       "anchor": [
-        451,
+        478,
         551
       ],
       "elbow": [
@@ -133,7 +133,7 @@
       "id": "vi-label",
       "text": "CN VI",
       "anchor": [
-        707,
+        699,
         1018
       ],
       "elbow": [

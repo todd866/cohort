@@ -1,0 +1,65 @@
+{
+  "id": "bank:cohort:anatomy:q-a6c8cc620110:v1",
+  "rotation": "cohort-open",
+  "moduleNodes": [
+    "cohort/anatomy"
+  ],
+  "topics": [
+    "portal triad",
+    "abdomen anatomy"
+  ],
+  "questionType": "single-best-answer",
+  "difficulty": "easy",
+  "stem": "During hepatoduodenal-ligament surgery, the surgeon identifies the portal vein and proper hepatic artery. Which duct accompanies them in the portal triad?",
+  "options": [
+    {
+      "label": "A",
+      "text": "Cystic duct",
+      "isCorrect": false,
+      "explanation": "It joins the common hepatic duct from the gallbladder and is not the main duct of the triad."
+    },
+    {
+      "label": "B",
+      "text": "Pancreatic duct",
+      "isCorrect": false,
+      "explanation": "It drains the pancreas and joins the biliary system near the duodenum, outside the portal triad."
+    },
+    {
+      "label": "C",
+      "text": "Right hepatic vein",
+      "isCorrect": false,
+      "explanation": "It drains liver parenchyma directly to the inferior vena cava rather than travelling in the triad."
+    },
+    {
+      "label": "D",
+      "text": "Common bile duct",
+      "isCorrect": true,
+      "explanation": "It accompanies the proper hepatic artery and portal vein in the hepatoduodenal ligament; the hepatic veins instead drain separately toward the inferior vena cava."
+    },
+    {
+      "label": "E",
+      "text": "Ureter",
+      "isCorrect": false,
+      "explanation": "It drains the kidney and has no hepatoduodenal relationship."
+    }
+  ],
+  "context": "The hepatoduodenal ligament contains the portal vein, proper hepatic artery and common bile duct. The bile duct lies anterior and to the right of the portal vein.",
+  "publicModule": {
+    "schemaVersion": 1,
+    "origin": "original",
+    "discipline": "anatomy",
+    "originalId": "abd-hepatoduodenal-triad",
+    "itemText": {
+      "licence": "CC-BY-4.0",
+      "attribution": "MD3 contributors"
+    },
+    "evidence": {
+      "kind": "reference",
+      "sourceId": "original-8a2385b52f95bd80"
+    },
+    "review": {
+      "verdict": "passed",
+      "contentHash": "d0d6e830075fad351b119e8c5e8e39663dc1960f30428185002a4c5bf16d83e7"
+    }
+  }
+}

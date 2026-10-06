@@ -1,0 +1,65 @@
+{
+  "id": "bank:cohort:anatomy:q-8dca5b17522a:v1",
+  "rotation": "cohort-open",
+  "moduleNodes": [
+    "cohort/anatomy"
+  ],
+  "topics": [
+    "inferior gluteal nerve",
+    "lower anatomy"
+  ],
+  "questionType": "single-best-answer",
+  "difficulty": "medium",
+  "stem": "A patient has isolated weakness of powerful hip extension: rising from a chair and climbing stairs are difficult, but hip abduction and knee extension are normal. Which nerve is most likely affected?",
+  "options": [
+    {
+      "label": "A",
+      "text": "Inferior gluteal nerve",
+      "isCorrect": true,
+      "explanation": "It supplies gluteus maximus, the main powerful hip extensor needed for rising and stair climbing."
+    },
+    {
+      "label": "B",
+      "text": "Superior gluteal nerve",
+      "isCorrect": false,
+      "explanation": "It supplies gluteus medius and minimus; injury causes pelvic instability and weak abduction."
+    },
+    {
+      "label": "C",
+      "text": "Femoral nerve",
+      "isCorrect": false,
+      "explanation": "It supplies quadriceps and would weaken knee extension."
+    },
+    {
+      "label": "D",
+      "text": "Sciatic nerve",
+      "isCorrect": false,
+      "explanation": "A proximal lesion would usually affect hamstrings and distal branches, not isolated hip extension."
+    },
+    {
+      "label": "E",
+      "text": "Obturator nerve",
+      "isCorrect": false,
+      "explanation": "It supplies the thigh adductors and would impair adduction rather than extension."
+    }
+  ],
+  "context": "The selective motor pattern localises to gluteus maximus rather than the abductor or anterior-thigh compartments.",
+  "publicModule": {
+    "schemaVersion": 1,
+    "origin": "original",
+    "discipline": "anatomy",
+    "originalId": "lower-gluteal-nerve",
+    "itemText": {
+      "licence": "CC-BY-4.0",
+      "attribution": "MD3 contributors"
+    },
+    "evidence": {
+      "kind": "reference",
+      "sourceId": "original-0905618f7065b344"
+    },
+    "review": {
+      "verdict": "passed",
+      "contentHash": "b9cd6c19c28437402498a8e7c6fc13c5e174d78eab564299361d380856a951a3"
+    }
+  }
+}

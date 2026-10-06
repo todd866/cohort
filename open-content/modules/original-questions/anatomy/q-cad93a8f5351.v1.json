@@ -1,0 +1,65 @@
+{
+  "id": "bank:cohort:anatomy:q-cad93a8f5351:v1",
+  "rotation": "cohort-open",
+  "moduleNodes": [
+    "cohort/anatomy"
+  ],
+  "topics": [
+    "facial nerve",
+    "head anatomy"
+  ],
+  "questionType": "single-best-answer",
+  "difficulty": "medium",
+  "stem": "A patient has complete unilateral facial weakness including inability to wrinkle the forehead, close the eye and smile. Which lesion best explains this pattern?",
+  "options": [
+    {
+      "label": "A",
+      "text": "Contralateral corticobulbar lesion",
+      "isCorrect": false,
+      "explanation": "This usually weakens the lower face with relative forehead sparing."
+    },
+    {
+      "label": "B",
+      "text": "Trigeminal motor lesion",
+      "isCorrect": false,
+      "explanation": "This weakens mastication and jaw movement rather than facial expression."
+    },
+    {
+      "label": "C",
+      "text": "Peripheral facial nerve lesion",
+      "isCorrect": true,
+      "explanation": "A lower motor lesion affects the ipsilateral upper and lower face, including forehead and eye closure."
+    },
+    {
+      "label": "D",
+      "text": "Hypoglossal lesion",
+      "isCorrect": false,
+      "explanation": "This affects tongue movement and does not cause facial weakness."
+    },
+    {
+      "label": "E",
+      "text": "Glossopharyngeal lesion",
+      "isCorrect": false,
+      "explanation": "This affects pharyngeal sensation and taste, not the muscles of facial expression."
+    }
+  ],
+  "context": "Upper and lower facial weakness fits a lower motor neuron pattern. A facial nucleus or fascicle lesion in the pons can also produce this pattern, so forehead weakness alone does not exclude stroke.",
+  "publicModule": {
+    "schemaVersion": 1,
+    "origin": "original",
+    "discipline": "anatomy",
+    "originalId": "head-facial-palsy",
+    "itemText": {
+      "licence": "CC-BY-4.0",
+      "attribution": "MD3 contributors"
+    },
+    "evidence": {
+      "kind": "reference",
+      "sourceId": "original-7622cdb83808942f"
+    },
+    "review": {
+      "verdict": "passed",
+      "contentHash": "2422f9b7c112e13e3ff97dfb48229ef71b8ff9bc0676ff6ef1c0d71b967bfcee"
+    }
+  }
+}

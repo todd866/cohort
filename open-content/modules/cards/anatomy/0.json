@@ -5,6 +5,25 @@
   "attribution": "MD3 contributors",
   "cards": [
     {
+      "id": "cohort:anatomy:c-020fbfaff959:v1",
+      "origin": "md3:3c98c5f4cba1de75",
+      "discipline": "anatomy",
+      "cardType": "cloze",
+      "sourceComponent": "KeyPoint",
+      "front": "Which nerve winds around the fibular neck? [___]",
+      "back": "common fibular nerve",
+      "context": "This superficial course makes it vulnerable near the knee. Injury can weaken dorsiflexion and produce foot drop.",
+      "complexity": 1,
+      "importance": 2,
+      "variantGroup": null,
+      "variantIndex": null,
+      "reference": {
+        "title": "Anatomy, Bony Pelvis and Lower Limb: Calf Common Peroneal Nerve",
+        "publisher": null,
+        "url": "https://www.ncbi.nlm.nih.gov/sites/books/NBK532968/"
+      }
+    },
+    {
       "id": "cohort:anatomy:c-04368305ce7f:v1",
       "origin": "md3:efb3675cfeeb837b",
       "discipline": "anatomy",
@@ -24,6 +43,25 @@
       }
     },
     {
+      "id": "cohort:anatomy:c-0945cefd76b9:v1",
+      "origin": "md3:59b3b349492caf8f",
+      "discipline": "anatomy",
+      "cardType": "cloze",
+      "sourceComponent": "KeyPoint",
+      "front": "Which muscle group extends the knee? [___]",
+      "back": "quadriceps",
+      "context": "Force passes through the quadriceps tendon to the patella, then through the patellar ligament to the tibial tuberosity.",
+      "complexity": 1,
+      "importance": 2,
+      "variantGroup": null,
+      "variantIndex": null,
+      "reference": {
+        "title": "OpenStax Anatomy and Physiology",
+        "publisher": null,
+        "url": "https://openstax.org/books/anatomy-and-physiology/pages/11-6-appendicular-muscles-of-the-pelvic-girdle-and-lower-limbs"
+      }
+    },
+    {
       "id": "cohort:anatomy:c-0945dec9480e:v1",
       "origin": "md3:0fa86a4a1a98e16c",
       "discipline": "anatomy",
@@ -40,6 +78,25 @@
         "title": "NCBI Bookshelf: ocular motor anatomy and palsy",
         "publisher": null,
         "url": "https://www.ncbi.nlm.nih.gov/books/NBK573075/table/article-133080.table1/"
+      }
+    },
+    {
+      "id": "cohort:anatomy:c-0f0a29e09136:v1",
+      "origin": "md3:4313656cd0462853",
+      "discipline": "anatomy",
+      "cardType": "cloze",
+      "sourceComponent": "KeyPoint",
+      "front": "The motor nerve supplying sternocleidomastoid and trapezius is [___].",
+      "back": "CN XI (accessory)",
+      "context": "These muscles turn the head and elevate the shoulder. Testing head rotation and shoulder shrug assesses the spinal accessory nerve.",
+      "complexity": 1,
+      "importance": 2,
+      "variantGroup": null,
+      "variantIndex": null,
+      "reference": {
+        "title": "Cranial Nerve Testing — Anatomy and Physiology; Technique",
+        "publisher": null,
+        "url": "https://www.ncbi.nlm.nih.gov/sites/books/NBK585066/"
       }
     }
   ]

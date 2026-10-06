@@ -1,0 +1,65 @@
+{
+  "id": "bank:cohort:anatomy:q-9b3b1d516ead:v1",
+  "rotation": "cohort-open",
+  "moduleNodes": [
+    "cohort/anatomy"
+  ],
+  "topics": [
+    "portosystemic anastomosis",
+    "abdomen anatomy"
+  ],
+  "questionType": "single-best-answer",
+  "difficulty": "medium",
+  "stem": "A patient with portal hypertension develops distal oesophageal varices. Which pair of venous pathways forms the relevant portal-to-systemic connection?",
+  "options": [
+    {
+      "label": "A",
+      "text": "Superior rectal and middle rectal veins",
+      "isCorrect": false,
+      "explanation": "These form a portosystemic connection at the rectum, not the distal oesophagus."
+    },
+    {
+      "label": "B",
+      "text": "Paraumbilical and superficial abdominal-wall veins",
+      "isCorrect": false,
+      "explanation": "These form collaterals around the umbilicus rather than at the oesophageal junction."
+    },
+    {
+      "label": "C",
+      "text": "Superior and inferior epigastric veins",
+      "isCorrect": false,
+      "explanation": "This is a systemic-to-systemic abdominal-wall route, not the relevant portal tributary."
+    },
+    {
+      "label": "D",
+      "text": "Left gastric and azygos tributaries",
+      "isCorrect": true,
+      "explanation": "These connect the portal circulation to systemic veins around the distal oesophagus."
+    },
+    {
+      "label": "E",
+      "text": "Hepatic veins and inferior vena cava",
+      "isCorrect": false,
+      "explanation": "This is the normal hepatic venous outflow, not the collateral route at the distal oesophagus."
+    }
+  ],
+  "context": "Left gastric tributaries communicate with oesophageal veins draining to the azygos system. Raised portal pressure can enlarge these collaterals into varices.",
+  "publicModule": {
+    "schemaVersion": 1,
+    "origin": "original",
+    "discipline": "anatomy",
+    "originalId": "abd-portal-hypertension",
+    "itemText": {
+      "licence": "CC-BY-4.0",
+      "attribution": "MD3 contributors"
+    },
+    "evidence": {
+      "kind": "reference",
+      "sourceId": "original-7b864da97817d9a2"
+    },
+    "review": {
+      "verdict": "passed",
+      "contentHash": "604a043a6f03d03914196782d8221db64d3d7af222969e3fdebc0c5020b3ac7d"
+    }
+  }
+}

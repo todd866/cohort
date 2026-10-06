@@ -1,0 +1,65 @@
+{
+  "id": "bank:cohort:anatomy:q-55d73f685c9c:v1",
+  "rotation": "cohort-open",
+  "moduleNodes": [
+    "cohort/anatomy"
+  ],
+  "topics": [
+    "gluteus medius",
+    "lower anatomy"
+  ],
+  "questionType": "single-best-answer",
+  "difficulty": "easy",
+  "stem": "During single-leg stance, the pelvis drops on the side opposite the weight-bearing leg. Which muscle on the weight-bearing side is weak?",
+  "options": [
+    {
+      "label": "A",
+      "text": "Gluteus maximus",
+      "isCorrect": false,
+      "explanation": "It extends the hip but is not the main pelvic stabiliser in this test."
+    },
+    {
+      "label": "B",
+      "text": "Adductor longus",
+      "isCorrect": false,
+      "explanation": "It adducts the thigh and does not provide the required lateral pelvic support."
+    },
+    {
+      "label": "C",
+      "text": "Sartorius",
+      "isCorrect": false,
+      "explanation": "It flexes, abducts and laterally rotates the hip but is not the principal stabiliser."
+    },
+    {
+      "label": "D",
+      "text": "Iliopsoas",
+      "isCorrect": false,
+      "explanation": "It flexes the hip and does not prevent the contralateral pelvic drop."
+    },
+    {
+      "label": "E",
+      "text": "Gluteus medius",
+      "isCorrect": true,
+      "explanation": "Its abduction force keeps the unsupported side of the pelvis level during single-leg stance."
+    }
+  ],
+  "context": "The finding is a Trendelenburg pattern caused by failure to stabilise the pelvis against gravity.",
+  "publicModule": {
+    "schemaVersion": 1,
+    "origin": "original",
+    "discipline": "anatomy",
+    "originalId": "lower-gluteal-drop",
+    "itemText": {
+      "licence": "CC-BY-4.0",
+      "attribution": "MD3 contributors"
+    },
+    "evidence": {
+      "kind": "reference",
+      "sourceId": "original-92edd64187baa79d"
+    },
+    "review": {
+      "verdict": "passed",
+      "contentHash": "b1c68fca9bc570f7f855dd401df3d552f5dfd7a75fdf1d1d08bfd423e766a37d"
+    }
+  }
+}

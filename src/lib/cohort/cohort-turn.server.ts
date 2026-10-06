@@ -199,7 +199,7 @@ export function buildCohortSelectionPlan(input: {
     };
   }
 
-  if (!input.profile.hookCompletedAt) {
+  if (!input.profile.hookCompletedAt && moduleNode !== 'cohort/anatomy') {
     const byId = new Set(step1Questions.map((question) => question.id));
     if (COHORT_HOOK_V1_IDS.some((id) => !byId.has(id))) {
       throw new CohortTurnError(
@@ -747,13 +747,14 @@ async function transactCohortTurn(
       reviewChallengeLevel: -2,
     });
   }
-  const anatomyMediaOnly = moduleNode === 'cohort/anatomy';
+  const anatomyModule = moduleNode === 'cohort/anatomy';
+  const anatomyIllustratedEntry = anatomyModule && input.nextDrawOrdinal === 0;
   const cardTurn = reviewChallengeLevel !== 2 && (moduleNode || reviewChallengeLevel === -2)
-    && (profile.hookCompletedAt || anatomyMediaOnly)
-    ? () => pickModuleCard(tx, input, moduleNode ?? undefined, now, reviewChallengeLevel, anatomyMediaOnly)
+    && (profile.hookCompletedAt || anatomyModule)
+    ? () => pickModuleCard(tx, input, moduleNode ?? undefined, now, reviewChallengeLevel, anatomyIllustratedEntry)
     : null;
   const pickedCardTopic = (card: CohortServableCard) => searchTopic ?? topicForDiscipline(card.discipline);
-  if (cardTurn && (previousKind === 'question' || reviewChallengeLevel === -2 || anatomyMediaOnly)) {
+  if (cardTurn && (previousKind === 'question' || reviewChallengeLevel === -2 || anatomyIllustratedEntry)) {
     const picked = await cardTurn();
     if (picked) {
       const topic = pickedCardTopic(picked);
@@ -766,7 +767,7 @@ async function transactCohortTurn(
         reviewChallengeLevel: -2,
       });
     }
-    if (anatomyMediaOnly) {
+    if (anatomyIllustratedEntry) {
       const response: CohortTurnResult = {
         sessionId: input.journeyId,
         mode: 'daily',
@@ -1050,7 +1051,7 @@ async function pickModuleCard(
   )));
   const loaded = await loadCohortModuleCardCorpus(tx as never, discipline);
   const cards = (discipline ? loaded.cards : loaded.cards.filter((card) => safeDisciplines.has(card.discipline)))
-    .filter((card) => !requireReviewedMedia || anatomyCardMediaForStableId(card.stableId));
+    .filter((card) => !requireReviewedMedia || anatomyCardMediaForStableId(card.stableId)?.role === 'prompt');
   if (cards.length === 0) return null;
   const [progress, recent] = await Promise.all([
     tx.cardProgress.findMany({
@@ -1070,12 +1071,17 @@ async function pickModuleCard(
     }),
   ]);
   const recentCardIds = recent.map((row) => row.itemId);
+  const recentMediaFamilies = new Set(cards
+    .filter((card) => recentCardIds.includes(card.id))
+    .map((card) => anatomyCardMediaForStableId(card.stableId)?.figureId)
+    .filter((family): family is NonNullable<typeof family> => Boolean(family)));
   const recentGroups = new Set(cards
     .filter((card) => recentCardIds.includes(card.id) && card.variantGroupId)
     .map((card) => card.variantGroupId!));
   return selectCohortModuleCard({
     cards, progress, recentCardIds, recentGroups, now,
-    challengeLevel,
+    challengeLevel, recentMediaFamilies,
+    mediaFamilyForCard: (card) => anatomyCardMediaForStableId(card.stableId)?.figureId ?? null,
   })?.card ?? null;
 }
 

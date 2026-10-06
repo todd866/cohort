@@ -1,0 +1,65 @@
+{
+  "id": "bank:cohort:anatomy:q-269c3c9503cb:v1",
+  "rotation": "cohort-open",
+  "moduleNodes": [
+    "cohort/anatomy"
+  ],
+  "topics": [
+    "prostate",
+    "pelvis anatomy"
+  ],
+  "questionType": "single-best-answer",
+  "difficulty": "easy",
+  "stem": "A man develops urinary hesitancy from enlargement of a gland surrounding the proximal urethra below the bladder. Which gland is involved?",
+  "options": [
+    {
+      "label": "A",
+      "text": "Seminal vesicle",
+      "isCorrect": false,
+      "explanation": "It lies posterior to the bladder and contributes fluid to semen but does not surround the urethra."
+    },
+    {
+      "label": "B",
+      "text": "Prostate gland",
+      "isCorrect": true,
+      "explanation": "It surrounds the proximal urethra beneath the bladder and can obstruct the urinary channel when enlarged."
+    },
+    {
+      "label": "C",
+      "text": "Bulbourethral gland",
+      "isCorrect": false,
+      "explanation": "It lies in the deep perineal pouch and contributes mucus to the urethra."
+    },
+    {
+      "label": "D",
+      "text": "Ampulla of the ductus deferens",
+      "isCorrect": false,
+      "explanation": "It is an expanded duct behind the bladder, rather than the gland enclosing the proximal urethra."
+    },
+    {
+      "label": "E",
+      "text": "Paraurethral glands",
+      "isCorrect": false,
+      "explanation": "These small glands associated with the female urethra are not the large gland surrounding the proximal male urethra."
+    }
+  ],
+  "context": "The gland’s position around the prostatic urethra explains why enlargement can obstruct urinary flow.",
+  "publicModule": {
+    "schemaVersion": 1,
+    "origin": "original",
+    "discipline": "anatomy",
+    "originalId": "pel-prostate-urethra",
+    "itemText": {
+      "licence": "CC-BY-4.0",
+      "attribution": "MD3 contributors"
+    },
+    "evidence": {
+      "kind": "reference",
+      "sourceId": "original-808ba595760317e6"
+    },
+    "review": {
+      "verdict": "passed",
+      "contentHash": "e96f6f39e8b1fe21aec6c344bb644f6df3448ae335cb3645ff339cf9fc511505"
+    }
+  }
+}

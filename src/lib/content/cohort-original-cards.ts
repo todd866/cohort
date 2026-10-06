@@ -96,8 +96,8 @@ function rejectUnknown(value: object, allowed: ReadonlySet<string>, label: strin
   for (const key of keys(value)) if (!allowed.has(key)) errors.push(`${label}: unexpected field ${key}`);
 }
 function nonEmpty(value: unknown): value is string { return typeof value === 'string' && value.trim().length > 0; }
-function contentHash(item: Pick<OriginalItem, 'front' | 'back' | 'context' | 'complexity' | 'importance'>): string {
-  return hash(JSON.stringify([item.front, item.back, item.context, item.complexity, item.importance]));
+function contentHash(item: Pick<OriginalItem, 'front' | 'back' | 'context' | 'complexity' | 'importance' | 'sources'>): string {
+  return hash(JSON.stringify([item.front, item.back, item.context, item.complexity, item.importance, item.sources]));
 }
 function validDate(value: string): boolean {
   if (!ISO_DATE.test(value)) return false;
@@ -142,7 +142,7 @@ function validateItem(raw: unknown, label: string, errors: string[]): raw is Ori
     if (!nonEmpty(review.reviewer)) errors.push(`${label}.review.reviewer: expected non-empty text`);
     if (typeof review.reviewedAt !== 'string' || !validDate(review.reviewedAt)) errors.push(`${label}.review.reviewedAt: expected valid YYYY-MM-DD`);
     if (typeof review.contentHash === 'string' && SHA256.test(review.contentHash) && nonEmpty(item.front) && nonEmpty(item.back) && nonEmpty(item.context) && Number.isInteger(item.complexity) && Number.isInteger(item.importance)) {
-      const expected = contentHash(item as unknown as Pick<OriginalItem, 'front' | 'back' | 'context' | 'complexity' | 'importance'>);
+      const expected = contentHash(item as unknown as Pick<OriginalItem, 'front' | 'back' | 'context' | 'complexity' | 'importance' | 'sources'>);
       if (review.contentHash !== expected) errors.push(`${label}.review.contentHash: does not match authored content`);
     }
   }

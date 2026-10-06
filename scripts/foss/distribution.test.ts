@@ -124,13 +124,26 @@ describe('FOSS distribution boundary', () => {
       'src/lib/practice-exam',
     ];
 
-    expect(policy.excludePrefixes).toEqual(expect.arrayContaining(privatePrefixes));
+    expect(policy.excludePrefixes).toEqual(expect.arrayContaining([
+      ...privatePrefixes,
+      'open-content/modules/original-card-drafts',
+    ]));
+    expect(policy.includeFiles).toEqual(expect.arrayContaining([
+      'open-content/anatomy-scaffolds/focus-figures/manifest.json',
+      'open-content/anatomy-scaffolds/source-figures/manifest.json',
+    ]));
+    expect(policy.excludeFiles).toEqual(expect.arrayContaining([
+      'open-content/anatomy-scaffolds/focus-figures/heart-valves-focus.png',
+      'open-content/anatomy-scaffolds/focus-figures/hip-bone-focus.png',
+      'open-content/anatomy-scaffolds/focus-figures/lungs-focus.png',
+    ]));
     expect(reviewed).toContain('prisma/schema/exam-paper.prisma');
     expect(reviewed).toContain('prisma/migrations/20260921090000_exam_paper_sessions/migration.sql');
     expect(reviewed).toContain('src/lib/study/progress-pool.ts');
     expect(reviewed.some((entry) => privatePrefixes.some((prefix) => (
       entry === prefix || entry.startsWith(`${prefix}/`)
     )))).toBe(false);
+    expect(reviewed.some((entry) => entry.startsWith('open-content/modules/original-card-drafts/'))).toBe(false);
 
     const publicPackage = JSON.parse(
       policy.generatedTextFiles.find((entry) => entry.path === 'package.json')!.text,
@@ -685,6 +698,59 @@ describe('FOSS distribution boundary', () => {
     );
   });
 
+  it('covers authored original questions and excludes the private draft lane', () => {
+    const root = fixture();
+    const sourcePath = path.join(root, 'open-content/modules/original-question-sources/anatomy/regional.json');
+    const questionPath = path.join(root, 'open-content/modules/original-questions/anatomy/q-test.v1.json');
+    const draftPath = path.join(root, 'open-content/modules/original-card-drafts/anatomy/draft.json');
+    fs.mkdirSync(path.dirname(sourcePath), { recursive: true });
+    fs.mkdirSync(path.dirname(questionPath), { recursive: true });
+    fs.mkdirSync(path.dirname(draftPath), { recursive: true });
+    fs.writeFileSync(sourcePath, `${JSON.stringify({
+      schemaVersion: 1,
+      discipline: 'anatomy',
+      licence: 'CC-BY-4.0',
+      attribution: 'MD3 contributors',
+      items: [{
+        originalId: 'q-test',
+        stem: 'Which structure is shown?',
+        options: [{ label: 'A', text: 'Structure A', isCorrect: true }],
+        sources: [{ title: 'Open anatomy reference', url: 'https://example.org/anatomy' }],
+      }],
+    })}\n`);
+    fs.writeFileSync(questionPath, `${JSON.stringify({
+      publicModule: {
+        itemText: { licence: 'CC-BY-4.0', attribution: 'MD3 contributors' },
+        evidence: { kind: 'reference', sourceId: 'original-q-test' },
+      },
+    })}\n`);
+    fs.writeFileSync(draftPath, '{"private":true}\n');
+    const policy = loadDistributionPolicy(root);
+    policy.includeRoots.push('open-content/modules');
+    policy.excludePrefixes.push('open-content/modules/original-card-drafts');
+    const manifest = writeReviewedPathManifest(root, policy);
+    expect(manifest.ok).toBe(true);
+    const paths = fs.readFileSync(path.join(root, policy.pathManifest), 'utf8');
+    expect(paths).toContain('open-content/modules/original-question-sources/anatomy/regional.json');
+    expect(paths).toContain('open-content/modules/original-questions/anatomy/q-test.v1.json');
+    expect(paths).not.toContain('open-content/modules/original-card-drafts/anatomy/draft.json');
+    expect(auditDistributionBoundary(root, policy).ok).toBe(true);
+
+    fs.writeFileSync(sourcePath, `${JSON.stringify({
+      schemaVersion: 1,
+      discipline: 'anatomy',
+      licence: 'All rights reserved',
+      attribution: '',
+      items: [],
+    })}\n`);
+    expect(auditDistributionBoundary(root, policy).issues).toContainEqual(
+      expect.objectContaining({
+        code: 'invalid-open-content-rights',
+        path: 'open-content/modules/original-question-sources/anatomy/regional.json',
+      }),
+    );
+  });
+
   it('requires every exported Cohort module card shard to carry CC BY rights and unquoted references only', () => {
     const root = fixture();
     const shardPath = path.join(root, 'open-content/modules/cards/paeds/0.json');
@@ -1226,7 +1292,7 @@ describe('FOSS distribution boundary', () => {
     const publicTestPaths = [...publicPackage.scripts['foss:test'].matchAll(
       /(?:^|\s)["']?([^\s"']+\.test\.tsx?)["']?/g,
     )].map((match) => match[1]);
-    expect(publicTestPaths).toHaveLength(76);
+    expect(publicTestPaths).toHaveLength(94);
     expect(publicTestPaths).toContain('scripts/content/curated-starters.test.ts');
     expect(policy.includeFiles).toEqual(expect.arrayContaining(publicTestPaths));
     expect(JSON.stringify(publicPackage.scripts)).not.toMatch(
@@ -1345,12 +1411,13 @@ describe('FOSS distribution boundary', () => {
     expect(publicTermProvider).not.toMatch(/\bfetch\s*\(|\/api\/glossary/);
     expect(publicQuestionBankMcq).not.toMatch(/\bfetch\s*\(|\/api\/question-bank/);
     expect(publicCitation).not.toMatch(/\bfetch\s*\(|\/api\/citations/);
-    expect(publicHome).toContain("'/gamsat'");
+    expect(publicHome).toContain("@/components/cohort/PublicReviewEntry");
+    expect(publicHome).not.toContain("COHORT_PRODUCTS");
     expect(publicHome).not.toMatch(/redirect\(\s*['"`]\/usmle/);
     expect(publicContent).toContain("redirect('/usmle/step1')");
-    expect(publicNavigation).toContain("href: '/usmle/step1'");
-    expect(publicNavigation).toContain("href: '/about'");
-    expect(publicNavigation).not.toMatch(/\/content|\/clinical|\/review/);
+    expect(publicNavigation).toContain('ReviewNavigation');
+    expect(publicNavigation).toContain('isCohortHost?: boolean');
+    expect(publicNavigation).not.toMatch(/\/content|\/clinical|\/practice-exams/);
     expect(publicActiveModules).not.toMatch(/\bfetch\s*\(|\/api\/modules/);
     expect(publicOfflineFill).not.toMatch(/\/api\/study\/offline-pack|\bfetch\s*\(/);
     expect(publicOfflineShell).toContain('does not download answer-bearing study sessions');

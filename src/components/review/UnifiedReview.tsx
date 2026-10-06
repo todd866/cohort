@@ -1,5 +1,7 @@
 'use client';
 
+import { ReviewToolbar } from '@/components/shared/ReviewToolbar';
+import { ReviewActionBar } from '@/components/shared/ReviewActionBar';
 import { StationChip } from './StationChip';
 import { PracticeExamFollowUp } from './PracticeExamFollowUp';
 import { useState, useEffect, useCallback, useRef } from 'react';
@@ -1158,7 +1160,7 @@ function UnifiedReviewBody({ rotations, week, rotationSizes, fetchSlots, feedMod
           2026-09-10 as the bar visibly thickening mid-session; the FOSS
           distribution scan rejects a learner name here, so the report is
           summarised. Guarded by e2e/review-toolbar-height.spec.ts. */}
-      <div role="toolbar" aria-label="Review toolbar" className="sticky top-0 z-10 h-[52px] px-[12px] sm:px-4 flex flex-nowrap items-center justify-between gap-[8px] sm:gap-2 border-b border-[var(--md-outline-soft)] bg-[var(--md-surface)]/92 backdrop-blur shadow-[0_6px_18px_rgba(21,35,46,0.05)]">
+      <ReviewToolbar>
         {/* No Home affordance here: `/` IS this review screen, so a header link
             to it was a guaranteed no-op — and it wore a hamburger glyph, which
             reads as "open a menu". Home stays reachable from the nav rail
@@ -1358,7 +1360,7 @@ function UnifiedReviewBody({ rotations, week, rotationSizes, fetchSlots, feedMod
               <span aria-hidden>⋯</span>
             </button>
         </div>
-      </div>
+      </ReviewToolbar>
 
       {isAuthenticated && !isCohortHost && process.env.NEXT_PUBLIC_PRACTICE_EXAMS_ENABLED === 'true' && (
         <div className="px-4">
@@ -1608,18 +1610,10 @@ function UnifiedReviewBody({ rotations, week, rotationSizes, fetchSlots, feedMod
           position as the grade ramp so the tap target never moves between
           reveal and grade (one consistent spot, esp. for mobile thumbs). */}
       {showCardReveal && (
-        <div
-          className="fixed left-0 right-0 md:left-20 z-50 p-4 border-t border-[var(--md-outline-soft)] bg-[var(--md-surface)] shadow-[0_-10px_28px_rgba(21,35,46,0.08)] safe-area-pb"
-          style={{ bottom: 'var(--md-review-footer-bottom, 0px)' }}
-        >
-          <button
-            onClick={handleReveal}
-            className="review-choice max-w-2xl mx-auto w-full block min-h-[52px] py-3 rounded-lg border border-[var(--md-outline-soft)] bg-[var(--md-surface-container-high)] hover:bg-[var(--md-surface-container-highest)] text-[var(--md-on-surface)] font-medium transition-colors"
-          >
-            <RevealActionLabel item={item} remainingAnswers={blankCount - revealedBlanks} />
-            {blankCount > 1 ? ` (${revealedBlanks}/${blankCount})` : ''}
-          </button>
-        </div>
+        <ReviewActionBar onClick={handleReveal}>
+          <RevealActionLabel item={item} remainingAnswers={blankCount - revealedBlanks} />
+          {blankCount > 1 ? ` (${revealedBlanks}/${blankCount})` : ''}
+        </ReviewActionBar>
       )}
 
       {/* Card grading buttons - fixed at bottom (after revealing) */}
@@ -1655,18 +1649,7 @@ function UnifiedReviewBody({ rotations, week, rotationSizes, fetchSlots, feedMod
       )}
 
       {showMcqContinue && (
-        <div
-          className="fixed left-0 right-0 md:left-20 z-50 p-4 border-t border-[var(--md-outline-soft)] bg-[var(--md-surface)] shadow-[0_-10px_28px_rgba(21,35,46,0.08)] safe-area-pb"
-          style={{ bottom: 'var(--md-review-footer-bottom, 0px)' }}
-        >
-          {/* The result rides on the bar: on a phone the marked options and the
-              Correct/Incorrect chip can sit below the fold behind this bar, and
-              a bare "Continue" then says nothing about the answer (2026-10-01). */}
-          <button
-            onClick={handleNext}
-            disabled={refreshingNext}
-            className="review-choice max-w-2xl mx-auto w-full block min-h-[52px] py-3 rounded-lg border border-[var(--md-outline-soft)] bg-[var(--md-surface-container-high)] hover:bg-[var(--md-surface-container-highest)] text-[var(--md-on-surface)] font-medium transition-colors disabled:cursor-wait disabled:opacity-70"
-          >
+        <ReviewActionBar onClick={handleNext} disabled={refreshingNext}>
             {refreshingNext ? 'Loading next question…' : (
               <>
                 {mcqResult && (
@@ -1678,8 +1661,7 @@ function UnifiedReviewBody({ rotations, week, rotationSizes, fetchSlots, feedMod
                 Continue<span className="hidden pointer-fine:inline text-[var(--md-on-surface-variant)] font-normal"> · space</span>
               </>
             )}
-          </button>
-        </div>
+        </ReviewActionBar>
       )}
 
       {/* Video rating buttons - fixed at bottom */}

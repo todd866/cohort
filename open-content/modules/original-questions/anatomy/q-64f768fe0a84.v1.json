@@ -1,0 +1,65 @@
+{
+  "id": "bank:cohort:anatomy:q-64f768fe0a84:v1",
+  "rotation": "cohort-open",
+  "moduleNodes": [
+    "cohort/anatomy"
+  ],
+  "topics": [
+    "parietal peritoneum",
+    "abdomen anatomy"
+  ],
+  "questionType": "single-best-answer",
+  "difficulty": "medium",
+  "stem": "A patient with appendicitis first has poorly localised periumbilical pain, then develops sharply localised right-lower-quadrant pain when the inflamed appendix contacts the abdominal wall. Which change explains the second phase?",
+  "options": [
+    {
+      "label": "A",
+      "text": "Distension of visceral peritoneum",
+      "isCorrect": false,
+      "explanation": "This contributes to the early diffuse pain but remains poorly localised."
+    },
+    {
+      "label": "B",
+      "text": "Irritation of parietal peritoneum",
+      "isCorrect": true,
+      "explanation": "Somatic innervation of the parietal lining produces sharper, better-localised pain than visceral afferents."
+    },
+    {
+      "label": "C",
+      "text": "Stretch of the mesoappendix",
+      "isCorrect": false,
+      "explanation": "It can contribute to visceral discomfort but does not explain the new precise abdominal-wall localisation."
+    },
+    {
+      "label": "D",
+      "text": "Referred pain from the diaphragm",
+      "isCorrect": false,
+      "explanation": "This would tend to refer pain to the shoulder through phrenic pathways, not the right lower quadrant."
+    },
+    {
+      "label": "E",
+      "text": "Obstruction of the portal vein",
+      "isCorrect": false,
+      "explanation": "It would affect venous drainage and does not create this characteristic temporal pain shift."
+    }
+  ],
+  "context": "Visceral afferents produce diffuse midline pain; involvement of the somatically innervated abdominal lining produces precise localisation.",
+  "publicModule": {
+    "schemaVersion": 1,
+    "origin": "original",
+    "discipline": "anatomy",
+    "originalId": "abd-appendix",
+    "itemText": {
+      "licence": "CC-BY-4.0",
+      "attribution": "MD3 contributors"
+    },
+    "evidence": {
+      "kind": "reference",
+      "sourceId": "original-64b35eae5b77d859"
+    },
+    "review": {
+      "verdict": "passed",
+      "contentHash": "28311d027b328b20f78f0cd404adaad7107f7335002b9ccc0efbad85ca931766"
+    }
+  }
+}

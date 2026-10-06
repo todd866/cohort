@@ -1,0 +1,65 @@
+{
+  "id": "bank:cohort:anatomy:q-9f14aff950b7:v1",
+  "rotation": "cohort-open",
+  "moduleNodes": [
+    "cohort/anatomy"
+  ],
+  "topics": [
+    "ulnar nerve",
+    "upper anatomy"
+  ],
+  "questionType": "single-best-answer",
+  "difficulty": "easy",
+  "stem": "A fracture at the medial epicondyle is followed by weak finger abduction and numbness of the little finger and medial half of the ring finger. Which nerve is injured?",
+  "options": [
+    {
+      "label": "A",
+      "text": "Median nerve",
+      "isCorrect": false,
+      "explanation": "It supplies most thumb opposition and lateral digital sensation, not the described territory."
+    },
+    {
+      "label": "B",
+      "text": "Radial nerve",
+      "isCorrect": false,
+      "explanation": "It supplies wrist and finger extensors and dorsal radial sensation."
+    },
+    {
+      "label": "C",
+      "text": "Axillary nerve",
+      "isCorrect": false,
+      "explanation": "It is proximal and supplies the deltoid and lateral shoulder skin."
+    },
+    {
+      "label": "D",
+      "text": "Ulnar nerve",
+      "isCorrect": true,
+      "explanation": "It supplies the interossei and the medial one-and-a-half digits, matching the motor and sensory findings."
+    },
+    {
+      "label": "E",
+      "text": "Musculocutaneous nerve",
+      "isCorrect": false,
+      "explanation": "It supplies elbow flexors and lateral forearm sensation."
+    }
+  ],
+  "context": "The nerve is exposed behind the medial epicondyle and supplies the interossei and medial hand sensation.",
+  "publicModule": {
+    "schemaVersion": 1,
+    "origin": "original",
+    "discipline": "anatomy",
+    "originalId": "upper-elbow-fracture",
+    "itemText": {
+      "licence": "CC-BY-4.0",
+      "attribution": "MD3 contributors"
+    },
+    "evidence": {
+      "kind": "reference",
+      "sourceId": "original-bf28f58709561371"
+    },
+    "review": {
+      "verdict": "passed",
+      "contentHash": "1fcf272f4612f4d11320ee1b375be6ac6fa75c89d61872de4bc6dd50d3b4831c"
+    }
+  }
+}

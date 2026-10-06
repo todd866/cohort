@@ -1,23 +1,31 @@
-export default function ProfileLoading() {
-  return (
-    <div className="mx-auto max-w-2xl animate-pulse space-y-6 px-4 py-8 lg:max-w-4xl">
-      <div className="flex items-center gap-4">
-        <div className="h-16 w-16 rounded-full bg-[var(--md-surface-variant)]" />
-        <div className="flex-1 space-y-2">
-          <div className="h-5 w-40 rounded bg-[var(--md-surface-variant)]" />
-          <div className="h-3 w-56 rounded bg-[var(--md-surface-container)]" />
-        </div>
-        <div className="h-9 w-14 rounded-lg bg-[var(--md-surface-container)]" />
-      </div>
+import {
+  REVIEW_CALENDAR_SLOT_CLASS,
+  TOPIC_READINESS_SLOT_CLASS,
+} from './profile-slot-classes';
 
-      <div className="space-y-3">
-        {[1, 2, 3].map((item) => (
-          <div
-            key={item}
-            className="h-16 rounded-xl border border-[var(--md-outline-variant)] bg-[var(--md-surface-container-low)]"
-          />
-        ))}
-      </div>
+/**
+ * Same order as the profile, and the same slot heights. Identity sits after
+ * the study surfaces, so this must not lead with an avatar.
+ */
+export default function ProfileLoading() {
+  const bar = 'animate-pulse rounded-xl border border-[var(--md-outline-variant)] bg-[var(--md-surface-container)]';
+  return (
+    <div className="min-h-screen bg-[var(--md-surface)] py-8">
+      <main className="mx-auto max-w-2xl px-4 lg:max-w-4xl">
+        <div aria-hidden="true" className={`mb-6 ${TOPIC_READINESS_SLOT_CLASS} ${bar}`} />
+        <div aria-hidden="true" className={`mb-6 ${REVIEW_CALENDAR_SLOT_CLASS} ${bar}`} />
+        <div aria-hidden="true" className={`mb-4 h-11 ${bar}`} />
+        <div aria-hidden="true" className={`mb-6 h-36 ${bar}`} />
+        <div aria-hidden="true" className={`mb-4 h-24 ${bar}`} />
+        <div className="grid gap-3 sm:grid-cols-2">
+          <div aria-hidden="true" className={`h-16 ${bar}`} />
+          <div aria-hidden="true" className={`h-16 ${bar}`} />
+          <div aria-hidden="true" className={`h-16 ${bar}`} />
+        </div>
+        <div aria-hidden="true" className={`mt-6 h-16 ${bar}`} />
+        <div aria-hidden="true" className={`mt-4 h-11 ${bar}`} />
+        <div aria-hidden="true" className={`mt-6 h-40 ${bar}`} />
+      </main>
     </div>
   );
 }

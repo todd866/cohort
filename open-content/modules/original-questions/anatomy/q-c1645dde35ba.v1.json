@@ -1,0 +1,65 @@
+{
+  "id": "bank:cohort:anatomy:q-c1645dde35ba:v1",
+  "rotation": "cohort-open",
+  "moduleNodes": [
+    "cohort/anatomy"
+  ],
+  "topics": [
+    "levator ani",
+    "pelvis anatomy"
+  ],
+  "questionType": "single-best-answer",
+  "difficulty": "easy",
+  "stem": "A patient develops stress urinary leakage after pelvic-floor injury. Which muscle group normally supports the pelvic viscera and contributes to continence?",
+  "options": [
+    {
+      "label": "A",
+      "text": "Levator ani",
+      "isCorrect": true,
+      "explanation": "It forms most of the pelvic diaphragm and supports pelvic organs while contributing to continence."
+    },
+    {
+      "label": "B",
+      "text": "Gluteus maximus",
+      "isCorrect": false,
+      "explanation": "It extends the hip and forms the buttock, not the pelvic floor."
+    },
+    {
+      "label": "C",
+      "text": "Piriformis",
+      "isCorrect": false,
+      "explanation": "It forms part of the posterolateral pelvic wall and exits through the greater sciatic foramen."
+    },
+    {
+      "label": "D",
+      "text": "Obturator internus",
+      "isCorrect": false,
+      "explanation": "It lines the lateral pelvic wall and contributes to hip rotation."
+    },
+    {
+      "label": "E",
+      "text": "Rectus abdominis",
+      "isCorrect": false,
+      "explanation": "It forms the anterior abdominal wall and does not form the pelvic diaphragm."
+    }
+  ],
+  "context": "The pelvic diaphragm provides a muscular floor and works with sphincter mechanisms during increases in abdominal pressure.",
+  "publicModule": {
+    "schemaVersion": 1,
+    "origin": "original",
+    "discipline": "anatomy",
+    "originalId": "pel-pelvic-floor",
+    "itemText": {
+      "licence": "CC-BY-4.0",
+      "attribution": "MD3 contributors"
+    },
+    "evidence": {
+      "kind": "reference",
+      "sourceId": "original-4d2d233391e949e9"
+    },
+    "review": {
+      "verdict": "passed",
+      "contentHash": "d939945df1ef1a3dead259f89019e96789155074158394628f7a250a2f4a7cf3"
+    }
+  }
+}

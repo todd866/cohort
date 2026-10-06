@@ -1,11 +1,10 @@
 {
   "status": "agent-reviewed-limited-local-anatomy",
-  "reviewedAt": "2026-10-05",
+  "reviewedAt": "2026-10-06",
   "projection": "right eye, oblique superior view",
   "reviewedBy": [
-    "parent source and final pixel review",
-    "independent blind pixel review",
-    "independent labelled pixel and mobile readability review"
+    "parent source and candidate pixel review",
+    "independent candidate pixel review"
   ],
   "scope": [
     "continuous lateral rectus on temporal side of globe",
@@ -25,27 +24,35 @@
   ],
   "externalReferencePixelsUsed": false,
   "generationInput": "construction.svg; original geometric drawing, not traced",
-  "reviewOutcome": "Accepted only for the stated local grouping. Earlier independently generated candidates were rejected for incorrect surface entry or ambiguous muscle continuity.",
+  "reviewOutcome": "Reduced muscle bulk after owner report. Independent review accepted local temporal muscle/CN VI/optic nerve grouping, all three final annotation endpoints, and all three single-target prompts at 375px. Not quantitative anatomical scale.",
   "limitations": [
     "Actual nerve penetration point is occluded.",
     "Orbital apex, muscle origin, common tendinous ring and intracranial nerve course are absent.",
     "No clinical or surgical precision claim; no clinician signoff.",
-    "Database agreement is corroboration, not proof of anatomical accuracy."
+    "Database agreement is corroboration, not proof of anatomical accuracy.",
+    "Muscle remains stylised; exact scleral insertion distance is not represented or assessed."
   ],
   "files": {
-    "base.png": "e8e5c267dedc12033cca845099639943c7a7618a1b16c842154ab3bace1e60aa",
+    "base.png": "cf014431dbe58b040c2da803e7fa7aa0177e4059c4285f64e71e0420a35b4b8b",
     "construction.svg": "d6af83a86fc3cf325ade4f7455ad48a12c8e6ad041236c64e434d1ace41290ff",
     "generation-prompt.txt": "40df906733222c03e6f29932ce98d4b06c6d59289f528db1c090a0c15b8fb39e",
-    "labels.json": "2565aef2c85d7b3a6755d4d133ecbe65d1c66037a609ea6a0b139abbff00fc19",
-    "diagram.svg": "7c91c7ddfec25dc75d556a4bb8164e734fcd71c667f41094c9a228d7bea18683",
-    "diagram.svg.checks.json": "cadbfee854b79bcbc55dfc860f430a0591b43927ba9942134d38c5ae395a8e39",
-    "served.svg": "0b6358d3fe7a0205414a60e2ead6258684eaea0c3f70fe3f9ac5ee0a54bc4977"
+    "labels.json": "5ffe890cbaf25ce1437ad1b5d5200ec3cb1ed9f21417970ae05e4e6ecdc14f75",
+    "diagram.svg": "ef2ef02fbdd595376979cb66adb45caf72c7fcb2aa691c6bff6dad7897b60a84",
+    "diagram.svg.checks.json": "021e530ec0e556fa12a2ca2a39a4023ca29e70b041d12ccdacd37d4900c132a7",
+    "served.svg": "9815d8d62c2a1e9dc6a74be027151caeba174ea7825132e47956b7fe0af0f8eb"
   },
   "checks": {
-    "blindPixels": true,
+    "blindPixels": false,
     "labelEndpoints": true,
     "mobile375": true,
-    "fullSize": true
+    "fullSize": true,
+    "independentPixels": true
   },
-  "servedDerivative": "diagram.svg with the complete MIT licence inserted as nonvisual SVG metadata; pixels and labels unchanged"
+  "servedDerivative": "diagram.svg with the complete MIT licence inserted as nonvisual SVG metadata; pixels and labels unchanged",
+  "reviewMethod": "Independent agent inspected unlabelled base and final overlays; not a blinded or clinician assessment.",
+  "promptProofs": {
+    "lateral-rectus": "cf975cda2aa2a0405ddd400a1a9da67e3f1ee2232c3db71ec0ba4e70b9cf5f0a",
+    "abducens": "fc7285b5f0bed05bc89d087f281bb224afec1ee891516223bb791839f96d24f8",
+    "optic-nerve": "772b2ad661022a4b9529ccf1023a4a6241c6310a4c66f832cb78d2fb9b4a65e1"
+  }
 }

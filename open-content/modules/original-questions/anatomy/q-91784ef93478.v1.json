@@ -1,0 +1,65 @@
+{
+  "id": "bank:cohort:anatomy:q-91784ef93478:v1",
+  "rotation": "cohort-open",
+  "moduleNodes": [
+    "cohort/anatomy"
+  ],
+  "topics": [
+    "femoral nerve",
+    "lower anatomy"
+  ],
+  "questionType": "single-best-answer",
+  "difficulty": "medium",
+  "stem": "A patient has weak knee extension, reduced patellar reflex and numbness over the anterior thigh and medial leg. Which nerve is most likely affected?",
+  "options": [
+    {
+      "label": "A",
+      "text": "Obturator nerve",
+      "isCorrect": false,
+      "explanation": "It supplies adductors and medial-thigh sensation but not quadriceps or the patellar reflex."
+    },
+    {
+      "label": "B",
+      "text": "Tibial nerve",
+      "isCorrect": false,
+      "explanation": "It supplies posterior-leg muscles and plantar sensation."
+    },
+    {
+      "label": "C",
+      "text": "Femoral nerve",
+      "isCorrect": true,
+      "explanation": "It supplies quadriceps and gives anterior-thigh and medial-leg sensory branches, explaining the complete pattern."
+    },
+    {
+      "label": "D",
+      "text": "Common fibular nerve",
+      "isCorrect": false,
+      "explanation": "It supplies anterior/lateral leg pathways and dorsal-foot sensation, not knee extension."
+    },
+    {
+      "label": "E",
+      "text": "Sciatic nerve",
+      "isCorrect": false,
+      "explanation": "A proximal lesion would affect hamstrings and both major distal divisions, not this selective pattern."
+    }
+  ],
+  "context": "The findings combine quadriceps weakness with sensory territories carried by the femoral nerve and its saphenous branch.",
+  "publicModule": {
+    "schemaVersion": 1,
+    "origin": "original",
+    "discipline": "anatomy",
+    "originalId": "lower-knee-reflex",
+    "itemText": {
+      "licence": "CC-BY-4.0",
+      "attribution": "MD3 contributors"
+    },
+    "evidence": {
+      "kind": "reference",
+      "sourceId": "original-aa521573abb62a4b"
+    },
+    "review": {
+      "verdict": "passed",
+      "contentHash": "a0604ff77beadb8fc0828315cbadc3ad7845b00a2873e3eece567b2317c4794e"
+    }
+  }
+}

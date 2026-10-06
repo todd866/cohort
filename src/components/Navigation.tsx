@@ -1,48 +1,14 @@
 'use client';
-
-import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import { useSession } from 'next-auth/react';
-
-const PUBLIC_NAV_ITEMS = [
-  { href: '/usmle/step1', label: 'Study' },
-  { href: '/about', label: 'About' },
-];
-
-function NavLink({ href, label }: { href: string; label: string }) {
+import { ReviewNavigation } from '@/components/shared/ReviewNavigation';
+function CardsIcon({ className }: { className?: string }) { return <svg className={className} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><rect x="3" y="4" width="18" height="14" rx="2" /><path d="M7 8h10M7 12h6" /></svg>; }
+function UserIcon({ className }: { className?: string }) { return <svg className={className} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2" /><circle cx="12" cy="7" r="4" /></svg>; }
+/** Public navigation uses the same reviewed primitive as the hosted Cohort shell. */
+export function Navigation(_props: { isCohortHost?: boolean } = {}) {
   const pathname = usePathname();
-  const active = pathname === href || pathname.startsWith(`${href}/`);
-  return (
-    <Link
-      href={href}
-      aria-current={active ? 'page' : undefined}
-      className={active
-        ? 'rounded-xl bg-[var(--md-primary-container)] px-3 py-2 font-medium text-[var(--md-on-primary-container)]'
-        : 'rounded-xl px-3 py-2 text-[var(--md-on-surface-variant)] hover:bg-[var(--md-surface-container-high)]'}
-    >
-      {label}
-    </Link>
-  );
-}
-
-/** isCohortHost is accepted for AppShell compatibility; this shell is always Cohort. */
-export function Navigation(props: { isCohortHost?: boolean } = {}) {
-  void props.isCohortHost;
   const { data: session } = useSession();
-  const profileHref = session?.user ? '/profile' : '/auth/signin';
-  return (
-    <>
-      <nav aria-label="Main navigation" className="fixed left-0 top-0 z-50 hidden h-full w-24 flex-col gap-2 border-r border-[var(--md-outline-soft)] bg-[var(--md-surface-container-low)] p-3 md:flex">
-        <Link href="/usmle/step1" aria-label="Home" className="mb-4 rounded-xl bg-[var(--md-primary)] px-3 py-2 text-center font-bold text-[var(--md-on-primary)]">
-          cohort.md
-        </Link>
-        {PUBLIC_NAV_ITEMS.map((item) => <NavLink key={item.href} {...item} />)}
-        <div className="mt-auto"><NavLink href={profileHref} label="Profile" /></div>
-      </nav>
-      <nav aria-label="Mobile navigation" className="fixed inset-x-0 bottom-0 z-50 flex justify-around border-t border-[var(--md-outline-soft)] bg-[var(--md-surface-container-low)] p-2 md:hidden">
-        {PUBLIC_NAV_ITEMS.map((item) => <NavLink key={item.href} {...item} />)}
-        <NavLink href={profileHref} label="Profile" />
-      </nav>
-    </>
-  );
+  const profile = session?.user ? '/profile' : '/auth/signin';
+  const item = { href: '/', label: 'Review', icon: CardsIcon };
+  return <ReviewNavigation items={[item]} mobileItems={[item, { href: profile, label: session?.user ? 'Profile' : 'Sign in', icon: UserIcon }]} profile={{ href: profile, label: session?.user ? 'Profile' : 'Sign in', active: pathname.startsWith('/profile') }} logo={{ href: '/', label: 'Home', text: 'C' }} isActive={(href) => pathname === href || (href !== '/' && pathname.startsWith(href))} prefetch={() => false} onNavigate={() => {}} />;
 }
