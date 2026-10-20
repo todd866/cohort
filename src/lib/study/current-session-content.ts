@@ -1,3 +1,4 @@
+import { mediaAttachmentWhere } from './media-review';
 import { prisma } from '@/lib/prisma';
 import { logger } from '@/lib/logger';
 import { findManyCards, ownerPrivateOrSharedCardScope } from '@/lib/cards/read-repository.server';
@@ -25,7 +26,7 @@ export const CURRENT_CARD_CONTENT_SELECT = {
 } as const;
 
 export type CurrentContentContext = Pick<SessionContext, 'userId' | 'rotation' | 'practiceLocale' | 'weekFilter'> & Partial<Pick<
-  SessionContext, 'crossSourceRotations' | 'crossSourceMappingMode'
+  SessionContext, 'crossSourceRotations' | 'crossSourceMappingMode' | 'media' | 'imageTier'
 >>;
 export type CurrentQuestionRow = {
   stem: string;
@@ -172,6 +173,7 @@ export async function loadCurrentSessionContent(
   const questionWhere = withDefaultQuestionServingPolicy(
     withoutRawPublicUsmleQuestions({
       id: { in: questionIds },
+      ...(ctx.media ? { AND: [mediaAttachmentWhere(ctx.media, ctx.imageTier === 'copyright')] } : {}),
       ...(ctx.weekFilter !== null ? { week: ctx.weekFilter } : {}),
       excluded: false,
       NOT: { topics: { hasSome: [...EXCLUDED_POOL_TOPICS] } },
@@ -209,6 +211,7 @@ export async function loadCurrentSessionContent(
       ? findManyCards(ownerPrivateOrSharedCardScope(ctx.userId), {
           where: {
             id: { in: cardIds },
+            ...(ctx.media ? { AND: [mediaAttachmentWhere(ctx.media, ctx.imageTier === 'copyright')] } : {}),
             ...(ctx.weekFilter !== null ? { week: ctx.weekFilter } : {}),
             deletedAt: null,
             shelvedAt: null,

@@ -26,6 +26,8 @@ export interface SessionPayloadUser {
   imageTier: 'standard' | 'copyright';
   isAdmin: boolean;
   hasVideoAccess: boolean;
+  /** May talk to md3's AI (src/lib/ai-access.ts). */
+  aiAccess: boolean;
   /** Clinical station audiences this learner belongs to, derived from enrolment ('cah'). */
   clinicalAudiences: string[];
 }
@@ -59,11 +61,13 @@ export function buildSessionPayload({
   user,
   isAdminEmail,
   hasVideoAccess,
+  hasAiAccess = () => false,
 }: {
   session: { expires: string };
   user: AdapterRow;
   isAdminEmail: (email: string | null | undefined) => boolean;
   hasVideoAccess: (email: string | null | undefined) => boolean;
+  hasAiAccess?: (email: string | null | undefined) => boolean;
 }): SessionPayload {
   return {
     expires: session.expires,
@@ -77,6 +81,7 @@ export function buildSessionPayload({
       imageTier: user.imageTier === 'copyright' ? 'copyright' : 'standard',
       isAdmin: isAdminEmail(user.email),
       hasVideoAccess: hasVideoAccess(user.email),
+      aiAccess: hasAiAccess(user.email),
       clinicalAudiences: clinicalAudiencesFor(user.activeModules),
     },
   };

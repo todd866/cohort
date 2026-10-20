@@ -1,3 +1,5 @@
+import type { ReviewMedia } from './review-intent';
+
 /**
  * Client review-load stage timing — joins prefs gate, flush, and unified-session
  * waits into one queryable beacon. Scalar metadata only.
@@ -75,6 +77,7 @@ export function classifyReviewLoadFailure(error: unknown): ReviewLoadFailure {
 
 export interface ReviewLoadBeaconPayload extends ReviewLoadStageMs {
   kind: 'review_load';
+  media?: ReviewMedia;
   url?: string;
   httpStatus?: number;
   failureKind?: ReviewLoadFailureKind;
@@ -172,8 +175,13 @@ export function reportReviewLoad(payload: ReviewLoadBeaconPayload): void {
     if (typeof navigator === 'undefined' || typeof navigator.sendBeacon !== 'function') {
       return;
     }
+    const mediaParam = typeof window !== 'undefined'
+      ? new URLSearchParams(window.location.search).get('media') : null;
+    const media = mediaParam === 'image' || mediaParam === 'video' || mediaParam === 'any'
+      ? mediaParam : undefined;
     const body = {
       ...payload,
+      ...(media ? { media } : {}),
       url: payload.url
         ?? (typeof window !== 'undefined'
           ? `${window.location.origin}${window.location.pathname}`

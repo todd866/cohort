@@ -1,6 +1,9 @@
 import { isValidElement, Children, type ReactNode, type ReactElement } from 'react';
 import { InlineCloze } from './InlineCloze';
 
+/** Stable semantic marker for the custom MDX `<strong>` component. */
+export const MDX_STRONG_COMPONENT = Symbol.for('md3.mdx.strong');
+
 const BLANK_PATTERN = /\[(?:___|\\_\\_\\_)\]/;
 const BLANK_PATTERN_GLOBAL = /\[(?:___|\\_\\_\\_)\]/g;
 
@@ -45,10 +48,12 @@ function extractDelimitedAnswers(nodes: ReactNode[]): ReactNode[] {
 function isStrongLike(el: ReactElement): boolean {
   // Native HTML <strong>
   if (el.type === 'strong') return true;
-  // MDX custom component override — any function/component that follows [___]
-  // and has children (the answer text) is treated as the answer element.
-  // MDX always renders **bold** as the custom strong override.
-  if (typeof el.type === 'function') return true;
+  // MDX custom component override. The shared MDX component map marks this
+  // component explicitly; do not infer semantic meaning from function names,
+  // which can change under compilation/minification.
+  if (typeof el.type === 'function') {
+    return Boolean((el.type as { [MDX_STRONG_COMPONENT]?: boolean })[MDX_STRONG_COMPONENT]);
+  }
   return false;
 }
 
@@ -80,8 +85,10 @@ export function transformClozeChildren(children: ReactNode): ReactNode {
   const strongQueue: ReactNode[] = [];
   const strongIndices = new Set<number>();
 
-  // First pass: identify <strong> elements that follow a [___] text node
-  for (let i = 0; i < renderableChildren.length; i++) {
+  // First pass: identify <strong> elements that follow a [___] text node.
+  // A delimited A: section is authoritative, so preserve any stem emphasis
+  // and let the authored answers drive the blanks.
+  for (let i = 0; answerMarkerIndex < 0 && i < renderableChildren.length; i++) {
     const child = renderableChildren[i];
     if (typeof child === 'string' && hasBlank(child)) {
       // Count blanks in this text node
@@ -94,6 +101,10 @@ export function transformClozeChildren(children: ReactNode): ReactNode {
           strongQueue.push((next.props as { children?: ReactNode }).children);
           strongIndices.add(j);
           found++;
+        } else if (isValidElement(next)) {
+          // Inline components such as <Term> are part of the authored stem.
+          // Keep looking for a following strong answer without consuming them.
+          continue;
         } else if (typeof next === 'string' && next.trim() === '') {
           continue; // skip whitespace between blank and answer
         } else {
@@ -118,10 +129,10 @@ export function transformClozeChildren(children: ReactNode): ReactNode {
       for (let k = 0; k < parts.length; k++) {
         if (parts[k]) result.push(parts[k]);
         if (k < parts.length - 1) {
-          if (strongAnswerIdx < strongQueue.length) {
-            result.push(<InlineCloze key={`cloze-${i}-${k}`} answer={strongQueue[strongAnswerIdx++]} />);
-          } else if (qaAnswerIdx < qaAnswers.length) {
+          if (qaAnswerIdx < qaAnswers.length) {
             result.push(<InlineCloze key={`cloze-${i}-${k}`} answer={qaAnswers[qaAnswerIdx++]} />);
+          } else if (strongAnswerIdx < strongQueue.length) {
+            result.push(<InlineCloze key={`cloze-${i}-${k}`} answer={strongQueue[strongAnswerIdx++]} />);
           } else {
             // No answer available — render as styled blank
             result.push(

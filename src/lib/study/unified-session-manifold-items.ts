@@ -1,3 +1,4 @@
+import { matchesResolvedMedia } from './media-review';
 import { shuffle, shuffleWithSeed } from '@/lib/utils/shuffle';
 import { itemMatchesModules } from '@/lib/modules/matching';
 import type {
@@ -34,7 +35,7 @@ export function ensureNonEmptyManifoldSession(
   // request. applyManifoldFilters would strip every rescued card later anyway;
   // declining here keeps the card-free mode card-free at the point of
   // construction rather than relying on a downstream filter staying put.
-  if (ctx.typeFilter === 'question' || ctx.typeFilter === 'group') return null;
+  if (ctx.media || ctx.typeFilter === 'question' || ctx.typeFilter === 'group') return null;
 
   // Rescue must share the servable-pool predicate or it can resurrect cards
   // the scheduler intentionally filtered out (open-issue, _needs-image, etc).
@@ -81,10 +82,10 @@ export function applyManifoldFilters(
   ctx: Pick<SessionContext, 'rotation'> &
     Partial<Pick<
       SessionContext,
-      'typeFilter' | 'difficultyFilter' | 'topicsFilter' | 'modulesFilter' | 'clusterFilter'
+      'media' | 'typeFilter' | 'difficultyFilter' | 'topicsFilter' | 'modulesFilter' | 'clusterFilter'
     >>,
 ): UnifiedItem[] {
-  let filteredItems = items;
+  let filteredItems = ctx.media ? items.filter(item => matchesResolvedMedia(item, ctx.media)) : items;
 
   if (ctx.typeFilter) {
     filteredItems = filteredItems.filter((item) => item.type === ctx.typeFilter);
@@ -231,6 +232,7 @@ export function buildManifoldExposureEvents(
       // (modality-monotony, stuck-in-cluster, calibration drift) for new-only
       // sessions without false-positive flagging.
       feedMode: ctx.feedMode ?? 'mixed',
+      media: item.media,
       // Cloze-variant group id lets walk-audit detect `variant-sibling-repeat`
       // (a regression in scheduler suppression). See @/lib/audit/walk-pathologies.
       variantGroupId: item.variantGroupId,
@@ -273,6 +275,7 @@ export function buildErrorFallbackItems(
   // the scheduler intentionally filtered out (EXCLUDED_POOL_TOPICS like
   // _needs-image/_incomplete-data, plus open-issue ContentIssue ids) — the same
   // guarantee the sibling rescue path (ensureNonEmptyManifoldSession) provides.
+  if (ctx.media) return [];
   const candidates = filterServableRotationCardList(ctx.rotationContent.cardList, {
     rotation: ctx.rotation,
     weekFilter: ctx.weekFilter,

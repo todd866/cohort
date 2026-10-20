@@ -1,3 +1,5 @@
+import { buildDatedTeachingPace } from '@/lib/curriculum/teaching-topic-week';
+import { courseCalendarDay } from '@/lib/rotation-context';
 import { prisma } from '@/lib/prisma';
 import { QUEUE_DRAIN_FLOOR_ITEMS, type UnifiedItem } from './unified-session-types';
 import {
@@ -150,10 +152,17 @@ export async function readSessionCacheSnapshot(userId: string): Promise<SessionC
 export async function upsertSessionCache(
   userId: string,
   rotation: string,
-  items: UnifiedItem[],
+  builtItems: UnifiedItem[],
   snapshot: SessionCacheSnapshot,
 ): Promise<SessionCacheWriteResult> {
   const now = new Date();
+  // Refuse only a build stamped under a different lecture log; stamp the rest
+  // with the current fingerprint so every writer's queue stays readable.
+  const { teachingPaceFingerprint } = buildDatedTeachingPace(rotation, courseCalendarDay(now));
+  if (builtItems.some(item => item.teachingPaceFingerprint !== undefined && item.teachingPaceFingerprint !== teachingPaceFingerprint)) return 'stale';
+  const items = teachingPaceFingerprint === undefined
+    ? builtItems
+    : builtItems.map(item => item.teachingPaceFingerprint === undefined ? { ...item, teachingPaceFingerprint } : item);
   const validUntil = new Date(now.getTime() + SESSION_CACHE_TTL_MS);
   const itemCount = items.length;
   const dueCards = items.filter((item) => item.type === 'card').length;
@@ -356,10 +365,7 @@ export async function readSessionCache(
   `;
   const row = cached[0];
   if (!row || !Array.isArray(row.items)) return row ?? null;
-  return cacheItemsMatchReviewChallenge(
-    row.items as Array<Record<string, unknown>>,
-    normalizeReviewChallengePreference(reviewChallenge),
-  ) ? row : null;
+  return sessionCacheReceiptStatus(row.items, rotation, reviewChallenge) === 'matching' ? row : null;
 }
 
 export async function deleteSessionCache(
@@ -370,4 +376,26 @@ export async function deleteSessionCache(
     DELETE FROM "UserStudyQueue"
     WHERE "userId" = ${userId} AND rotation = ${rotation}
   `;
+}
+
+/** Static calendar fingerprint check: no extra query, including legacy queues. */
+function cacheItemsMatchTeachingPace(
+  items: readonly { teachingPaceFingerprint?: string }[],
+  rotation: string,
+  now = new Date(),
+): boolean {
+  const { teachingPaceFingerprint } = buildDatedTeachingPace(rotation, courseCalendarDay(now));
+  return items.every(item => item.teachingPaceFingerprint === teachingPaceFingerprint);
+}
+
+/** Receipt verdict shared by the app reader and read-only queue diagnostics. */
+export function sessionCacheReceiptStatus(
+  items: Array<Record<string, unknown>>,
+  rotation: string,
+  reviewChallenge: ReviewChallengePreference,
+  now = new Date(),
+): 'matching' | 'fingerprint-stale' | 'review-challenge-stale' {
+  if (!cacheItemsMatchTeachingPace(items, rotation, now)) return 'fingerprint-stale';
+  return cacheItemsMatchReviewChallenge(items, normalizeReviewChallengePreference(reviewChallenge))
+    ? 'matching' : 'review-challenge-stale';
 }

@@ -453,14 +453,14 @@ function patternMatch(question: string): string {
       /^What\s+(?:best|most\s+likely|most|best\s+(?:explains|accounts\s+for))\s+(?:explains|accounts\s+for)\s+(.*?)\s*\?$/i
     );
     if (m) {
-      return `${cap(m[1])} is best explained by [___].`;
+      return `${cap(m[1])} ${copulaFor(m[1])} best explained by [___].`;
     }
   }
   {
     // Simpler form: "What explains X?"
     const m = q.match(/^What\s+explains\s+(.*?)\s*\?$/i);
     if (m) {
-      return `${cap(m[1])} is explained by [___].`;
+      return `${cap(m[1])} ${copulaFor(m[1])} explained by [___].`;
     }
   }
 
@@ -741,6 +741,12 @@ function patternMatch(question: string): string {
     return `${stripped}: [___].`;
   }
   return `${stripped}: [___].`;
+}
+
+/** Recognise explicit plurals and common result nouns; keep singular heads such as "the pattern of results" singular. */
+function copulaFor(subject: string): 'is' | 'are' {
+  return /^(?:these|those|both)\b/i.test(subject.trim())
+    || /^(?:(?:the|his|her|their)\s+)?(?:ABG\s+)?(?:results|findings|signs|symptoms)\b/i.test(subject.trim()) ? 'are' : 'is';
 }
 
 function cap(s: string): string {

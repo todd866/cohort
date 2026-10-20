@@ -68,7 +68,11 @@ function handleReviewLoad(body: Record<string, unknown>): void {
   const outcome = outcomeRaw && OUTCOMES.has(outcomeRaw) ? outcomeRaw : 'failed';
   const uaClassRaw = safeText(body.uaClass, 16);
   const uaClass = uaClassRaw && UA_CLASSES.has(uaClassRaw) ? uaClassRaw : 'unknown';
+  const media = body.media === 'image' || body.media === 'video' || body.media === 'any'
+    ? body.media
+    : undefined;
   const metadata = {
+    ...(media ? { media } : {}),
     prefsReadyMs: finiteNonNegInt(body.prefsReadyMs),
     fetchStartMs: finiteNonNegInt(body.fetchStartMs),
     sessionTtfbMs: finiteNonNegInt(body.sessionTtfbMs),

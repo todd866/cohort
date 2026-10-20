@@ -29,6 +29,7 @@ import { ROTATION_TO_MODULES } from './unified-session-manifold-items';
 import { itemMatchesModules } from '@/lib/modules/matching';
 import { tryPublicCorpusSession } from './unified-session-public';
 import { tryStarterSession } from './unified-session-starter';
+import { tryFirstReviewHighlights } from './first-review-highlights.server';
 import { tryRereviewSession } from './unified-session-rereview';
 import { tryReviewFilterSession } from './unified-session-review-filter';
 import { tryPendingQuestionSession } from './unified-session-pending-questions';
@@ -112,6 +113,7 @@ function examTargetHardOff(): boolean {
 
 function targetCapableDecisionPath(input: {
   isGuest: boolean;
+  media?: SessionContext['media'];
   typeFilter: 'card' | 'question' | 'group' | null;
   reviewFilter: ReviewFilter | undefined;
   requestedMode: 'crunch' | 'rereview' | undefined;
@@ -120,6 +122,7 @@ function targetCapableDecisionPath(input: {
   // privacy-reviewed runtime and telemetry path. Questions/groups and the
   // duplicate rereview slot likewise have no target-capable writer today.
   if (input.isGuest
+    || input.media
     || input.typeFilter === 'question'
     || input.typeFilter === 'group'
     || input.requestedMode === 'rereview'
@@ -355,7 +358,10 @@ export async function getUnifiedSession(
   // Filter params
   // Exam rotations default to the mixed scheduler; its card pools are narrowed
   // to native scaffold tags. Explicit type=question remains question-only.
-  const typeFilter = sessionTypeFilter(rotation, searchParams.get('type'));
+  const mediaParam = searchParams.get('media');
+  const media = mediaParam === 'image' || mediaParam === 'video' || mediaParam === 'any'
+    ? mediaParam : undefined;
+  const typeFilter = sessionTypeFilter(rotation, media ? null : searchParams.get('type'));
   const difficultyFilter = searchParams.get('difficulty') as 'easy' | 'medium' | 'hard' | null;
   const topicsFilter = searchParams.get('topics'); // comma-separated
   // One manifold cluster, from a square on the profile knowledge heatmap.
@@ -371,11 +377,11 @@ export async function getUnifiedSession(
     : modeParam === 'rereview' ? 'rereview' as const
     : undefined;
   const filterParam = searchParams.get('filter');
-  const reviewFilter = filterParam && REVIEW_FILTER_SET.has(filterParam)
+  const reviewFilter = !media && filterParam && REVIEW_FILTER_SET.has(filterParam)
     ? filterParam as ReviewFilter
     : undefined;
   const feedModeParam = searchParams.get('feedMode');
-  const rawFeedMode = feedModeParam === 'new-only' || reviewFilter === 'new'
+  const rawFeedMode = !media && (feedModeParam === 'new-only' || reviewFilter === 'new')
     ? ('new-only' as const)
     : undefined;
   // Client-side dedup: items already in the user's current session
@@ -483,6 +489,8 @@ export async function getUnifiedSession(
         where: { id: authResult.userId },
         select: {
           email: true,
+          createdAt: true,
+          feedProfile: true,
           emailAliases: {
             where: { verified: true },
             select: { email: true, verified: true },
@@ -761,6 +769,7 @@ export async function getUnifiedSession(
 
   const hasFilters = !!(
     typeFilter
+    || media
     || difficultyFilter
     || topicsFilter
     || clusterFilter
@@ -787,7 +796,7 @@ export async function getUnifiedSession(
   // would let a caller reorder its own queue by asserting a week. A missing
   // track, an unscheduled rotation, or a date before the block starts all yield
   // null, and null is inert.
-  const { currentTeachingWeek, topicTeachingWeeks } = resolveTeachingPace(
+  const { currentTeachingWeek, topicTeachingWeeks, topicRecencyDays, teachingPaceFingerprint } = resolveTeachingPace(
     rotation,
     userScope?.track,
   );
@@ -796,6 +805,7 @@ export async function getUnifiedSession(
   const targetDecisionPath = targetCapableDecisionPath({
     isGuest: authResult.isGuest,
     typeFilter,
+    media,
     reviewFilter,
     requestedMode: mode,
   });
@@ -888,6 +898,7 @@ export async function getUnifiedSession(
     sessionId,
     batchId,
     typeFilter,
+    media,
     difficultyFilter,
     topicsFilter,
     clusterFilter,
@@ -916,6 +927,8 @@ export async function getUnifiedSession(
     commitmentLevel,
     currentTeachingWeek,
     topicTeachingWeeks,
+    topicRecencyDays,
+    teachingPaceFingerprint,
     crossSourceRotations,
     maxCrossSourceItems,
     crossSourceMappingMode,
@@ -1030,6 +1043,7 @@ export async function getUnifiedSession(
   // sights, its ordinary requests keep the live build, as on 22 Sep.
   const learnerNarrowed = !!(
     typeFilter
+    || media
     || difficultyFilter
     || topicsFilter
     || clusterFilter
@@ -1063,7 +1077,9 @@ export async function getUnifiedSession(
   // manifold lane is non-nullable (the guaranteed terminal fallback), so its
   // overload resolves to `Promise<NextResponse>` and the whole chain is
   // NextResponse — no non-null assertion needed.
-  const response = await withStatementScaffolds((
+  const response = await withStatementScaffolds(
+    await withContractCheck('starter', await tryFirstReviewHighlights(ctx, explicitFocus, userScope ?? undefined))
+    ?? (
     mayServeExamTargetLane(ctx, 'rereview')
       ? await withContractCheck('rereview', await tryRereviewSession(ctx))
       : null

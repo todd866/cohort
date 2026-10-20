@@ -1,5 +1,5 @@
 import Link from 'next/link';
-import { leaveByOptions, resolveDayEvents, sydneyNowTime, sydneyToday } from '@/lib/personal-brief';
+import { eventScheduleState, leaveByOptions, resolveDayEvents, sydneyNowTime, sydneyToday } from '@/lib/personal-brief';
 import type {
   BriefEvent,
   CourseBrief,
@@ -15,32 +15,32 @@ function fmt(iso: string): string {
     weekday: 'short',
     day: 'numeric',
     month: 'short',
+    year: 'numeric',
     timeZone: 'Australia/Sydney',
   }).format(new Date(`${iso}T00:00:00Z`));
 }
 
 function UpcomingEventsSection({ brief, day }: { brief: CourseBrief; day: DayView }) {
-  const upcoming = resolveDayEvents(brief, day.date, {
-    afterTime: day.date === sydneyToday() ? sydneyNowTime() : undefined,
-  });
+  const upcoming = resolveDayEvents(brief, day.date, { includeActions: false });
 
   if (upcoming.length === 0) return null;
 
   return (
     <Section
       title="Timeline"
-      subtitle="Duties, harvested one-shots, WBAs and deadlines for this day"
+      subtitle="Full day · scheduled activity does not establish attendance"
     >
       <ul className="space-y-2">
         {upcoming.map((e) => (
-          <EventRow key={e.id} event={e} />
+          <EventRow key={e.id} event={e} today={sydneyToday()} now={sydneyNowTime()} />
         ))}
       </ul>
     </Section>
   );
 }
 
-function EventRow({ event }: { event: BriefEvent }) {
+function EventRow({ event, today, now }: { event: BriefEvent; today: string; now: string }) {
+  const temporal = eventScheduleState(event, today, now);
   const when = event.when.time ?? event.when.timeLabel ?? event.when.date;
   const prepareHref = event.reviewIntent ? buildReviewHref(event.reviewIntent) : null;
 
@@ -48,7 +48,7 @@ function EventRow({ event }: { event: BriefEvent }) {
     <li className="rounded-xl border border-[var(--md-outline-soft)] bg-[var(--md-surface-container-low)] px-4 py-3">
       <div className="flex items-baseline justify-between gap-3">
         <p className="text-xs font-medium uppercase tracking-wide text-[var(--md-on-surface-variant)]">
-          {event.kind} · {when}
+          {event.kind} · {when}{event.when.endTime ? `–${event.when.endTime}` : ''}{temporal ? ` · ${temporal}` : ''}
         </p>
         {prepareHref && event.kind !== 'action' ? (
           <Link href={prepareHref} className="text-xs font-medium text-[var(--md-primary)] hover:underline">
@@ -70,7 +70,7 @@ function EventRow({ event }: { event: BriefEvent }) {
         </p>
       )}
       {event.note ? (
-        <p className="mt-1 text-xs text-[var(--md-on-surface-variant)]">{event.note}</p>
+        <p className="mt-1 break-words text-xs text-[var(--md-on-surface-variant)]">{event.note}</p>
       ) : null}
     </li>
   );
@@ -137,10 +137,10 @@ function WbaCard({ wba }: { wba: WbaView }) {
     <Card tone={alert ? 'alert' : 'neutral'}>
       <div className="flex items-baseline justify-between gap-3">
         <h3 className="font-semibold text-[var(--md-on-surface)]">
-          WBA {wba.number} · {wba.title}
+          {wba.id.startsWith('pwh-') ? wba.title : <>WBA {wba.number} · {wba.title}</>}
         </h3>
         <span className="shrink-0 text-xs font-medium text-[var(--md-on-surface-variant)]">
-          {URGENCY_LABEL[wba.urgency]}
+          {wba.status === 'unverified' ? `${wba.credited ?? 0} credited` : URGENCY_LABEL[wba.urgency]}
         </span>
       </div>
 
@@ -157,6 +157,7 @@ function WbaCard({ wba }: { wba: WbaView }) {
         </p>
       )}
 
+      {wba.checkedAt && <p className="mt-1 text-xs text-[var(--md-on-surface-variant)]">Checked {fmt(wba.checkedAt)} · {wba.status === 'unverified' ? 'work status unverified' : wba.status}</p>}
       {wba.note && (
         <p className="mt-2 text-xs text-[var(--md-on-surface-variant)]">{wba.note}</p>
       )}
@@ -211,6 +212,7 @@ function WatchRow({ w }: { w: WatchItem }) {
           {label}
         </span>
       </div>
+      {w.checkedAt && <p className="text-xs text-[var(--md-on-surface-variant)]">Checked {fmt(w.checkedAt)}</p>}
       {w.note && (
         <p className="mt-1 text-xs text-[var(--md-on-surface-variant)]">{w.note}</p>
       )}
@@ -219,16 +221,12 @@ function WatchRow({ w }: { w: WatchItem }) {
 }
 
 function DeadlineRow({ deadline }: { deadline: DeadlineView }) {
-  const overdue = deadline.urgency === 'overdue';
-  const status = overdue
-    ? deadline.lifecycle === 'unverified'
-      ? `Verify · ${-deadline.daysUntilDue}d past due`
-      : `Overdue · ${-deadline.daysUntilDue}d`
-    : deadline.urgency === 'due-soon'
-      ? deadline.daysUntilDue === 0
-        ? 'Due today'
-        : `Due in ${deadline.daysUntilDue}d`
-      : null;
+  const overdue = deadline.urgency === 'overdue' && deadline.lifecycle !== 'unverified' && !deadline.dateKind;
+  const status = deadline.dateKind === 'expiry' ? 'Recorded expiry'
+    : deadline.dateKind === 'planning' ? 'Planning reminder'
+    : deadline.lifecycle === 'unverified' ? (deadline.daysUntilDue < 0 ? 'Deadline passed · status unverified' : 'Status unverified')
+    : overdue ? `Overdue · ${-deadline.daysUntilDue}d`
+    : deadline.urgency === 'due-soon' ? (deadline.daysUntilDue === 0 ? 'Due today' : `Due in ${deadline.daysUntilDue}d`) : null;
 
   return (
     <li
@@ -243,10 +241,11 @@ function DeadlineRow({ deadline }: { deadline: DeadlineView }) {
           <p className="text-sm text-[var(--md-on-surface)]">{deadline.title}</p>
           <p className="text-xs text-[var(--md-on-surface-variant)]">{deadline.where}</p>
         </div>
-        <span className={`shrink-0 text-xs ${overdue ? 'font-semibold text-[var(--md-error)]' : 'text-[var(--md-on-surface-variant)]'}`}>
+        <span className={`max-w-[48%] text-right text-xs ${overdue ? 'font-semibold text-[var(--md-error)]' : 'text-[var(--md-on-surface-variant)]'}`}>
           {status ? `${status} · ` : ''}{fmt(deadline.dueDate)}
         </span>
       </div>
+      {deadline.checkedAt && <p className="text-xs text-[var(--md-on-surface-variant)]">Checked {fmt(deadline.checkedAt)}</p>}
       {deadline.note ? (
         <p className="mt-1 text-xs text-[var(--md-on-surface-variant)]">{deadline.note}</p>
       ) : null}
@@ -727,6 +726,20 @@ export function BriefView({ brief, day }: { brief: CourseBrief; day: DayView }) 
         </Section>
       )}
 
+      <details className="mb-8 border-t border-[var(--md-outline-soft)] pt-3">
+        <summary className="cursor-pointer text-sm font-medium">Verified outcomes</summary>
+        <ul className="mt-2 space-y-3">
+          {brief.deadlines.filter(d => d.checkedAt && (d.lifecycle === 'completed' || d.lifecycle === 'submitted')).map(d => (
+            <li key={d.title} className="text-xs text-[var(--md-on-surface-variant)]">
+              <span className="font-medium text-[var(--md-on-surface)]">{d.title} · {d.lifecycle}</span> · checked {fmt(d.checkedAt!)}
+              <p>{d.note}</p>
+              {[...(d.evidenceUrls ?? []), ...(d.sourceUrl ? [d.sourceUrl] : [])].map((url, i) => <a key={url} href={url} className="mr-3 underline text-[var(--md-primary)]">Evidence {i + 1}</a>)}
+            </li>
+          ))}
+          {brief.watchlist.filter(w => w.status === 'resolved' && w.checkedAt).map(w => <WatchRow key={w.item} w={w} />)}
+        </ul>
+      </details>
+
       {/* Arrival facts */}
       {brief.arrivalFacts.length > 0 ? (
         <Section title="On arrival">
@@ -810,11 +823,15 @@ export function BriefView({ brief, day }: { brief: CourseBrief; day: DayView }) 
 
       <footer className="mt-10 border-t border-[var(--md-outline-soft)] pt-4">
         <p className="text-xs text-[var(--md-on-surface-variant)]">
-          Last refreshed {fmt(brief.updatedAt)}
-          {brief.sources.length > 0
-            ? ` from ${brief.sources.map((s) => s.label).join(', ')}`
-            : ''}.
+          Brief edited {fmt(brief.updatedAt)}. Source checks below have separate scope and dates.
         </p>
+        <details className="mt-2 text-xs text-[var(--md-on-surface-variant)]">
+          <summary className="cursor-pointer">Source checks</summary>
+          <ul className="mt-2 space-y-2">{brief.harvest?.sources.map(source => <li key={source.sourceId}>
+            <span className="font-medium">{brief.sources.find(s => s.id === source.sourceId)?.label ?? source.sourceId}</span> · {fmt(source.checkedAt)} · {source.status === 'fresh' ? 'checked scope' : source.status}
+            <p>{source.note}</p>
+          </li>)}</ul>
+        </details>
       </footer>
     </div>
   );

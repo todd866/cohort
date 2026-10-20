@@ -126,6 +126,16 @@ describe('starter-session public-USMLE boundary', () => {
 });
 
 
+describe('starter-session clip boundary', () => {
+  // Starter sessions serve guests and new learners, who are never served clips;
+  // a clip card would reach them with no video (2026-10-07).
+  it('keeps clip cards out of the generated starter picker', () => {
+    const source = fs.readFileSync(path.resolve(__dirname, 'generate-starter-sessions.ts'), 'utf8');
+    const picker = source.slice(source.indexOf('id: { notIn: [...usedCardIds] }'));
+    expect(picker.slice(0, 400)).toContain('clipId: null');
+  });
+});
+
 describe('curated starter generator path', () => {
   it('uses one shared, live CAH card query and preserves reviewed card order without random questions', () => {
     const source = fs.readFileSync(

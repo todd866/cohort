@@ -19,7 +19,15 @@ export default defineConfig({
     //
     // Full-suite worker startup and teardown were intermittently timing out.
     // Keep the run deterministic in constrained environments.
-    pool: 'threads',
+    // 2026-10-07: 'forks', not 'threads'. The V8 crashes came back inside
+    // worker_threads workers: a heap check ("Check failed: end > addr",
+    // SIGTRAP), a SIGSEGV and "Worker exited unexpectedly", in about 3 of that
+    // day's 8 full release runs, each with the 12 GB heap applied. A fork is a
+    // whole process, so no worker shares an isolate's heap with its host. Same
+    // speed: the full suite took 156 s on four forks against 147-185 s on four
+    // threads. This lowers the odds; a run of releases, not one pass, shows
+    // whether it ends them. Workers inherit NODE_OPTIONS (test:run's heap).
+    pool: 'forks',
     fileParallelism: true,
     maxWorkers: '50%',
     // fileParallelism:false means ONE long-lived worker executes all ~910 test

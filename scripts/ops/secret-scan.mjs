@@ -2,6 +2,7 @@ import fs from 'node:fs';
 import path from 'node:path';
 import { execFileSync } from 'node:child_process';
 import { pathToFileURL } from 'node:url';
+import { CREDENTIAL_SHAPES } from './describe-error.mjs';
 
 // A repository can legitimately have more than one megabyte of tracked path
 // names. Keep the capture bounded, but large enough that enumeration itself
@@ -69,18 +70,14 @@ function isForbiddenEnvFile(filePath) {
   return !/(?:\.example|\.sample|\.template)$/i.test(base);
 }
 
-const LINE_PATTERNS = [
-  // OpenAI and Anthropic API keys both use an sk-* prefix. Require a word
-  // boundary so substrings in content identifiers do not trigger the scanner.
-  { name: 'OpenAI/Anthropic key', regex: /\bsk-(?:proj-)?[A-Za-z0-9_-]{20,}\b/g },
-  { name: 'Google API key', regex: /\bAIza[0-9A-Za-z_-]{30,}\b/g },
-  { name: 'Google OAuth client secret', regex: /\bGOCSPX-[0-9A-Za-z_-]{20,}\b/g },
-  { name: 'GitHub token', regex: /gh[pousr]_[A-Za-z0-9]{20,}/g },
-  { name: 'AWS access key', regex: /AKIA[0-9A-Z]{16}/g },
-  { name: 'JWT', regex: /eyJ[A-Za-z0-9_-]{10,}\.[A-Za-z0-9_-]{10,}\.[A-Za-z0-9_-]{10,}/g },
-  { name: 'Resend key', regex: /\bre_[A-Za-z0-9]{20,}\b/g },
-  { name: 'Neon password', regex: /\bnpg_[A-Za-z0-9]{20,}\b/g },
-];
+// The token shapes live in describe-error.mjs, shared with log redaction and
+// the tutor daemon's answer hold, so the three cannot drift apart. Shapes the
+// repo legitimately documents (postgresql://user:password@host examples) are
+// marked trackedFiles: false there and skipped here; a private key is matched
+// as a whole block below.
+const LINE_PATTERNS = CREDENTIAL_SHAPES
+  .filter((shape) => shape.trackedFiles !== false)
+  .map(({ name, pattern }) => ({ name, regex: new RegExp(pattern.source, `${pattern.flags.replace('g', '')}g`) }));
 
 const FILE_PATTERNS = [
   {

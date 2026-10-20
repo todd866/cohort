@@ -2,7 +2,7 @@
 
 import { useFlagImage } from '@/components/content/FlagImageInput';
 import { useState, useCallback, useEffect, useRef } from 'react';
-import { submitFlag } from '@/lib/flag-submit';
+import { queueFlag, type QueuedFlag } from '@/lib/flag-submit';
 import { harvestFlagDiagnostics } from '@/lib/flag-diagnostics';
 import type { PracticeReviewProvenance } from '@/lib/study/practice-review-focus';
 import { genClientRequestId } from '@/lib/client-request-id';
@@ -27,8 +27,9 @@ interface UseFlaggingOpts {
 
 /**
  * Owns the "F to flag" UI state: open the input, type a note (optional), submit, reset.
- * Submission goes through the durable `submitFlag` outbox — failures are queued and
- * replayed, never silently dropped. The ✓ is shown only on confirmed delivery.
+ * Submission is write-ahead: `queueFlag` puts the flag (and any image) in the durable
+ * outbox, the input closes at once, and delivery runs in the background. Failures stay
+ * queued and replay. The ✓ is shown only on confirmed delivery.
  */
 export function useFlagging({ item, registerResetCallback, publicSurface = false }: UseFlaggingOpts) {
   const image = useFlagImage(`${item?.type}:${item?.deliveryId ?? item?.id}`);
@@ -116,7 +117,7 @@ export function useFlagging({ item, registerResetCallback, publicSurface = false
       }
       return;
     }
-    const draft = image.capture();
+    const generation = publicGenerationRef.current;
     const note = flagMessage.trim();
     // Harvest the render environment NOW — at the moment of flagging, with the
     // card revealed and the footer showing — so a rendering complaint ("context
@@ -132,26 +133,36 @@ export function useFlagging({ item, registerResetCallback, publicSurface = false
     // Exact practice retests keep the same opaque question capability as other
     // public questions; the server resolves that capability to the canonical
     // published exam component after checking owner and source fingerprints.
-    let attachmentId: string | undefined;
-    try { if (image.file) attachmentId = await image.prepare({ type: item.type as 'card' | 'question', id: opaqueDeliveryId ?? item.id, ...(opaqueDeliveryId ? { deliveryId: opaqueDeliveryId } : {}) }); }
-    catch { clear(); return; }
-    submitFlag({
-      type: item.type as 'card' | 'question',
-      id: opaqueDeliveryId ?? item.id,
-      ...(opaqueDeliveryId ? { deliveryId: opaqueDeliveryId } : {}),
-      reason: 'Other',
-      ...(attachmentId ? { attachmentId } : {}),
-      ...(note ? { message: note } : {}),
-      ...((diagnostics || practiceSource) ? { context: {
-        ...diagnostics,
-        ...(practiceSource ? { componentType: 'practice-exam-item', path: practiceSource.paperPath } : {}),
-      } } : {}),
-    }).then((result) => {
-      if (!image.isCurrent(draft)) return;
-      if (result === 'image-unavailable') { image.retryImage(); clear(); return; }
-      if (result !== 'dropped') { image.committed(); setFlagMode(false); setFlagMessage(''); }
-      else image.setError('Flag was not sent. Your image and note are kept; try again.');
-      if (result === 'delivered') { setFlagged(true); clear(); }
+    let queued: QueuedFlag;
+    try {
+      queued = await queueFlag({
+        type: item.type as 'card' | 'question',
+        id: opaqueDeliveryId ?? item.id,
+        ...(opaqueDeliveryId ? { deliveryId: opaqueDeliveryId } : {}),
+        reason: 'Other',
+        ...(note ? { message: note } : {}),
+        ...((diagnostics || practiceSource) ? { context: {
+          ...diagnostics,
+          ...(practiceSource ? { componentType: 'practice-exam-item', path: practiceSource.paperPath } : {}),
+        } } : {}),
+      }, { image: image.file });
+    } catch {
+      // Only the image store can refuse; nothing was queued. Keep the draft.
+      if (generation !== publicGenerationRef.current) return;
+      image.setError('Not saved on this device. Try again.');
+      clear();
+      return;
+    }
+    // The item advanced (or the sheet was cancelled) while the image was being
+    // stored: the flag is queued, but this sheet now holds another draft.
+    if (generation !== publicGenerationRef.current) return;
+    // Durable on this device: close now; delivery settles the cue later.
+    image.committed();
+    setFlagMode(false);
+    setFlagMessage('');
+    queued.result.then((result) => {
+      if (generation !== publicGenerationRef.current) return;
+      if (result === 'delivered' || result === 'image-unavailable') { setFlagged(true); clear(); }
       else if (result === 'queued') { /* stays pending — durably queued, awaiting replay */ }
       else if (result === 'auth-required') { setAuthExpired(true); /* stays pending */ }
       else clear(); // 'dropped' — invalid, allow a retry

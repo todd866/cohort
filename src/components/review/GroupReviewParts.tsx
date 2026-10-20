@@ -89,7 +89,6 @@ export const GroupProgressHeader = memo(function GroupProgressHeader({
         <button
           onClick={onSkip}
           className="text-xs text-[var(--md-on-surface-variant)] hover:text-[var(--md-error)] transition-colors"
-          title="Skip this group (S)"
           aria-label="Skip this group"
         >
           Skip <span className="opacity-50">S</span>

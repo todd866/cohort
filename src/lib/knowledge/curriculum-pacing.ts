@@ -22,6 +22,8 @@
  * discouraged rather than unreachable.
  */
 
+import { normalizeCurriculumTopic, TAUGHT_TOPIC_WINDOW_DAYS } from '@/lib/curriculum/teaching-pace';
+
 /** One step of "not taught yet", sized below importanceBoost's -10..-3 band. */
 export const PACING_AHEAD_PENALTY = 3;
 const MAX_STEPS = 3;
@@ -69,6 +71,45 @@ export function curriculumPacingBoost(
  */
 export const PACING_CURRENT_WEEK_BOOST = 4;
 export const PACING_LAST_WEEK_BOOST = 2;
+
+/** Maximum dated lecture recency nudge; day 14 is neutral. */
+export const PACING_DATED_RECENCY_BOOST = PACING_CURRENT_WEEK_BOOST;
+
+/**
+ * Float cards/questions whose topic was taught recently. The map is a
+ * caller-resolved, static snapshot of normalized topic -> age in days. A
+ * matching topic takes the strongest (most recent) signal; signals never sum.
+ */
+export function datedTopicRecencyBoost(
+  topics: readonly string[],
+  topicRecencyDays: ReadonlyMap<string, number> | undefined,
+): number {
+  if (!topicRecencyDays || topicRecencyDays.size === 0) return 0;
+  let strongest = 0;
+  for (const topic of topics) {
+    const normalizedTopic = normalizeCurriculumTopic(topic);
+    if (!normalizedTopic) continue;
+    const rawAge = topicRecencyDays.get(normalizedTopic);
+    if (rawAge == null) continue;
+    if (!Number.isFinite(rawAge) || rawAge < 0 || rawAge >= TAUGHT_TOPIC_WINDOW_DAYS) continue;
+    const boost = -PACING_DATED_RECENCY_BOOST
+        * (TAUGHT_TOPIC_WINDOW_DAYS - rawAge)
+        / TAUGHT_TOPIC_WINDOW_DAYS;
+    strongest = Math.min(strongest, boost);
+  }
+  return strongest;
+}
+
+/** Concept priority counterpart to datedTopicRecencyBoost. */
+export function datedTopicRecencyConceptBoost(
+  topics: readonly string[],
+  topicRecencyDays: ReadonlyMap<string, number> | undefined,
+): number {
+  const itemBoost = datedTopicRecencyBoost(topics, topicRecencyDays);
+  return itemBoost < 0
+    ? (-itemBoost / PACING_DATED_RECENCY_BOOST) * CADENCE_CURRENT_WEEK_BOOST
+    : 0;
+}
 
 export function curriculumRecencyBoost(
   itemTeachingWeek: number | null | undefined,

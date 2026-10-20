@@ -143,3 +143,6 @@ export function currentTeachingWeek(blockStart: Date, now: Date): number | null 
   if (elapsed < 0) return null;
   return Math.floor(elapsed / MS_PER_WEEK) + 1;
 }
+
+/** Dated lecture emphasis expires after two course-calendar weeks. */
+export const TAUGHT_TOPIC_WINDOW_DAYS = 14;

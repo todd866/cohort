@@ -23,15 +23,16 @@ export function SubrotationPage({ rotationId, subrotation, Content }: Subrotatio
 
   return (
     <div className="min-h-screen">
-      <header className="sticky top-0 z-40 bg-[var(--md-surface)]/95 backdrop-blur border-b border-[var(--md-outline-variant)]">
+      {/* Sticky only from sm up: on a phone the title block took about 170px of every scrolled screen. */}
+      <header className="z-40 border-b border-[var(--md-outline-variant)] bg-[var(--md-surface)] sm:sticky sm:top-0">
         <div className="max-w-4xl mx-auto px-6 py-4">
           <div className="flex items-center justify-between">
             <div>
               <Link
-                href="/content"
+                href={`/${rotationId}`}
                 className="mb-1 inline-flex min-h-11 items-center text-sm font-semibold text-[var(--md-primary)] hover:underline"
               >
-                ← Content
+                ← {rotation.shortName}
               </Link>
               <h1 className="text-xl font-bold text-[var(--md-on-surface)]">
                 {meta.title}

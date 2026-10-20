@@ -1,6 +1,6 @@
 'use client';
 
-import { useState } from 'react';
+import { useRef, useState, type ReactNode, type RefObject } from 'react';
 import { rotationLabel } from '@/lib/rotation-labels';
 import { fetchWithDeadline, CLIENT_FETCH_DEADLINE_MS } from '@/lib/fetch-with-deadline';
 
@@ -22,6 +22,16 @@ interface RotationOnboardingProps {
   onSkip?: () => void;
   /** Set when changing course from the review toolbar rather than onboarding. */
   current?: string;
+  /** Renders optional signed-in help without pulling private tutor code into the FOSS boundary. */
+  renderHelp?: (props: RotationOnboardingHelpProps) => ReactNode;
+}
+
+export interface RotationOnboardingHelpProps {
+  visible: boolean;
+  initialDraft: string;
+  onClose: () => void;
+  anchorRef: RefObject<HTMLButtonElement | null>;
+  focusRequest: number;
 }
 
 /**
@@ -37,7 +47,7 @@ interface RotationOnboardingProps {
  * changes auto-advance. The guest's answer is carried onto their account by
  * claimGuestProgressRecords, so the question is never asked twice.
  */
-export function RotationOnboarding({ rotations, onDone, onSkip, current }: RotationOnboardingProps) {
+export function RotationOnboarding({ rotations, onDone, onSkip, current, renderHelp }: RotationOnboardingProps) {
   // Changing course from the toolbar chip is not first-visit onboarding: it
   // opens over the review, marks where they are, and cancels (2026-10-01).
   const changing = current !== undefined;
@@ -45,6 +55,11 @@ export function RotationOnboarding({ rotations, onDone, onSkip, current }: Rotat
   const [error, setError] = useState<string | null>(null);
   const [describing, setDescribing] = useState(false);
   const [description, setDescription] = useState('');
+  const [aiOpened, setAiOpened] = useState(false);
+  const [aiVisible, setAiVisible] = useState(false);
+  const aiButton = useRef<HTMLButtonElement>(null);
+  const aiDraft = `Help me choose where to start in MD3. Ask about my course, exam and date, and what I find difficult. The quick choices here are ${rotations.map(rotation => FULL_NAMES[rotation] ?? rotationLabel(rotation)).join(', ')}. Recommend a suitable choice if one fits; otherwise tell me to use Something else. I will select the rotation myself to start Review.`;
+
 
   // Whoever is not on the list still has to land somewhere, so "something else"
   // ends where "skip" ends: the default feed. It must NOT call onDone, which
@@ -104,6 +119,7 @@ export function RotationOnboarding({ rotations, onDone, onSkip, current }: Rotat
   };
 
   return (
+    <div className={!changing && aiVisible ? 'md:pr-[min(30rem,42vw)]' : undefined}>
     <div className={changing ? 'w-full' : 'mx-auto w-full max-w-md px-4 py-10'}>
       {changing ? (
         <h2 className="text-lg font-semibold text-[var(--md-on-surface)]">Change rotation</h2>
@@ -137,6 +153,20 @@ export function RotationOnboarding({ rotations, onDone, onSkip, current }: Rotat
           </button>
         ))}
       </div>
+      {!changing && renderHelp && (
+        <button ref={aiButton} type="button" disabled={saving !== null}
+          onClick={() => { setAiOpened(true); setAiVisible(true); }}
+          className="mt-2 inline-flex min-h-11 items-center text-sm font-medium text-[var(--md-primary)] hover:underline disabled:opacity-60">
+          Help me choose
+        </button>
+      )}
+      {!changing && renderHelp && aiOpened && renderHelp({
+        visible: aiVisible,
+        initialDraft: aiDraft,
+        focusRequest: aiVisible ? 1 : 0,
+        anchorRef: aiButton,
+        onClose: () => { setAiVisible(false); aiButton.current?.focus(); },
+      })}
       {!describing && (
         <button
           type="button"
@@ -197,6 +227,7 @@ export function RotationOnboarding({ rotations, onDone, onSkip, current }: Rotat
           {changing ? 'Cancel' : 'Skip for now'}
         </button>
       )}
+    </div>
     </div>
   );
 }

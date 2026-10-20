@@ -122,7 +122,7 @@ export function reviewPaneKind(
     // (2026-09-15). Known-landscape figures take the prompt-question
     // split instead: the prose keeps a real measure and the figure gains the
     // difference. Decided from metadata so reveal cannot change the grid.
-    if (isWideFigure(item.imageMeta)) return 'supplementary-wide';
+    if (item.clip || isWideFigure(item.imageMeta)) return 'supplementary-wide';
     return 'supplementary';
   }
   if (item.type === 'question') return 'prompt-question';
@@ -198,6 +198,12 @@ export function itemUsesSidePane(
   if (item.promptFigure || item.publicAnatomyMedia?.role === 'prompt' || clipIsPrompt(item.clipRole, item.clip)) return true;
   // A results table in the stem is prompt content: see stemHasResultsTable.
   if (stemHasResultsTable(item)) return true;
+  // Context clips are revealed below the answer, so they follow the same
+  // delayed pane contract as supplementary figures. Without this branch the
+  // shell remains max-w-2xl while ReviewCardContent has already opened its
+  // two-column layout, leaving a small, unreadable video beside a large empty
+  // strip on desktop.
+  if (item.clip && revealed) return true;
   const hasFigure = Boolean(item.imageUrl || item.imageKey || item.publicAnatomyMedia);
   if (!hasFigure) return false;
   if (item.publicAnatomyMedia?.role === 'supplementary') return revealed;

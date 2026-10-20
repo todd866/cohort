@@ -134,7 +134,7 @@ export async function loadSchedulerInputs(setup: SchedulerSetup): Promise<Schedu
         options.crossSourceMappingMode ?? 'adjacent',
         options.practiceLocale ?? 'au',
         includeVideos,
-        { clusterId: options.clusterFilter ?? null },
+        { clusterId: options.clusterFilter ?? null, media: options.media, imageTrust: options.imageTrust },
       )
     : bulkFetchCandidates(
         userId,
@@ -151,7 +151,7 @@ export async function loadSchedulerInputs(setup: SchedulerSetup): Promise<Schedu
         options.crossSourceMappingMode ?? 'adjacent',
         options.practiceLocale ?? 'au',
         includeVideos,
-        { clusterId: options.clusterFilter ?? null },
+        { clusterId: options.clusterFilter ?? null, media: options.media, imageTrust: options.imageTrust },
       ));
   const flowAxisPromise = readPreselection(
     'flow-axis',

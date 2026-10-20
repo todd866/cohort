@@ -30,10 +30,10 @@ export function RotationLandingPage({
       <div className="mx-auto max-w-3xl">
         <header className="mb-8">
           <Link
-            href="/content"
+            href="/textbook/week-by-week"
             className="mb-2 inline-flex min-h-11 items-center text-sm font-semibold text-[var(--md-primary)] hover:underline"
           >
-            ← Content
+            ← Week by week
           </Link>
           <h1 className="text-3xl font-bold tracking-tight text-[var(--md-on-surface)]">
             {rotation.name}
@@ -41,6 +41,12 @@ export function RotationLandingPage({
           <p className="mt-1 text-[var(--md-on-surface-variant)]">
             Specialty guides and week notes
           </p>
+          <Link
+            href={`/practice-exam/${rotationId}`}
+            className="mt-3 inline-flex min-h-11 items-center rounded-lg border border-[var(--md-outline-variant)] px-4 font-semibold text-[var(--md-primary)] hover:border-[var(--md-primary)]"
+          >
+            Practice papers →
+          </Link>
         </header>
 
         {relatedLinks.length > 0 && (

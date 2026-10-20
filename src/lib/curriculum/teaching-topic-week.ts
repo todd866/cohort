@@ -15,6 +15,7 @@
  * available on question rows that have no `sourceFile` at all.
  */
 
+import { resolveTaughtTopics } from './taught-topics';
 import { normalizeCurriculumTopic } from './teaching-pace';
 import { USYD_MD3_2026 } from './usyd-md3-2026';
 import {
@@ -83,4 +84,9 @@ function computeTopicTeachingWeekMap(rotation: string): ReadonlyMap<string, numb
   }
 
   return map;
+}
+
+/** Dated lectures share the private calendar boundary used by weekly pacing. */
+export function buildDatedTeachingPace(rotation: string, courseDay: Date) {
+  return resolveTaughtTopics(USYD_MD3_2026.taughtTopics ?? [], rotation, courseDay);
 }

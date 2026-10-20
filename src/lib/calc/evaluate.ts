@@ -80,12 +80,29 @@ export function evaluateArithmetic(input: string): number | null {
   }
 }
 
-const CALCULATION_TOPICS = /^(calculation|dose calculation|drug calculation|fluids?|maintenance fluids|fluid calculation|dosing)$/i;
-const CALCULATION_STEM = /\b(mg|mcg|microgram|mL|units?)\s*\/\s*kg\b|\bhourly rate\b|\bmL\s*\/\s*h(?:our)?\b|\bwhat (?:dose|volume|rate)\b/i;
+// A topic that names the sum outright.
+const CALCULATION_TOPICS = /^(calculation|dose calculation|drug calculation|fluid calculation)$/i;
+// Topics where questions are often, but not always, sums.
+const CALCULATION_PRONE_TOPICS = /^(fluids?|maintenance fluids|dosing)$/i;
+// Asking for an hourly rate is a sum on its own.
+const HOURLY_RATE = /\bhourly rate\b|\bmL\s*\/\s*h(?:our)?\b/i;
+// Asking for a dose, volume or rate, or quoting a per-kg dose, is a sum only
+// when the stem also gives the weight to work from.
+const ASKS_FOR_AMOUNT = /\b(mg|mcg|microgram|mL|units?)\s*\/\s*kg\b|\bwhat (?:dose|volume|rate)\b/i;
+const STATES_WEIGHT = /\b\d+(?:\.\d+)?\s*-?\s*(?:kg|kilograms?)\b(?!\s*\/)|\bweigh(?:s|ing)\b/i;
 
-/** Whether a review item is the kind of question where a calculator helps. */
+/**
+ * Whether a review item is the kind of question where a calculator helps: one
+ * whose answer is worked out, not recalled. "What dose of folic acid?" is
+ * recall, and a 30 mL/kg bolus in the history does not make the vasopressor
+ * question a sum.
+ */
 export function isCalculationItem(item: { type: string; topics?: string[] | null; stem?: string | null }): boolean {
   if (item.type !== 'question') return false;
-  if ((item.topics ?? []).some((topic) => CALCULATION_TOPICS.test(topic.trim()))) return true;
-  return CALCULATION_STEM.test(item.stem ?? '');
+  const topics = (item.topics ?? []).map((topic) => topic.trim());
+  if (topics.some((topic) => CALCULATION_TOPICS.test(topic))) return true;
+  const stem = item.stem ?? '';
+  if (HOURLY_RATE.test(stem)) return true;
+  if (!STATES_WEIGHT.test(stem)) return false;
+  return ASKS_FOR_AMOUNT.test(stem) || topics.some((topic) => CALCULATION_PRONE_TOPICS.test(topic));
 }

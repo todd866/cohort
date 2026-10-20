@@ -34,5 +34,5 @@ interface RotationFocusSelectorProps {
 
 export function RotationFocusSelector({options, value, onChange, forceVisible = false, onChangeRotation, examRotation = null, defaultRotation = null}: RotationFocusSelectorProps) {
   if (options.length === 0 || (!forceVisible && !onChangeRotation && options.length <= 1)) return null;
-  return <ReviewModulePicker options={orderFocusOptions(options).map(id => ({id, label: rotationLabel(id)}))} value={value} onChange={onChange} preferredId={examRotation} defaultLabel={defaultRotation ? `Default (${rotationLabel(defaultRotation)})` : 'All'} triggerDefaultLabel={defaultRotation ? rotationLabel(defaultRotation) : 'All'} ariaPrefix="Focus rotation" onChangeEnrollment={onChangeRotation} enrollmentLabel="Change rotation…" />;
+  return <ReviewModulePicker options={orderFocusOptions(options).map(id => ({id, label: rotationLabel(id)}))} value={value} onChange={onChange} preferredId={examRotation} defaultId={defaultRotation} defaultLabel={defaultRotation ? `Default (${rotationLabel(defaultRotation)})` : 'All'} triggerDefaultLabel={defaultRotation ? rotationLabel(defaultRotation) : 'All'} ariaPrefix="Focus rotation" onChangeEnrollment={onChangeRotation} enrollmentLabel="Change rotation…" />;
 }

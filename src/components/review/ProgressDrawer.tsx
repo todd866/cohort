@@ -1,6 +1,7 @@
 'use client';
 
 import { useState } from 'react';
+import { goalProgressText, type GoalBand } from '@/lib/study/daily-goals';
 import Link from 'next/link';
 import type { RotationProgressBreakdown } from './hooks/useSessionProgress';
 import { visibleProgressRotations } from './progress-rotation-filter';
@@ -58,33 +59,37 @@ function ExamDays({ days }: { days: number }) {
   );
 }
 
-/** Today and first-sight on one line. A met target is the check, in the success token. */
+/** Today and first-sight on one line. The glyph and colour are the day's goal band (src/lib/study/daily-goals.ts). */
 function TodayPace({ row }: { row: RotationProgressBreakdown }) {
-  const target = row.dailyTarget;
   const reviewed = row.todayReviewed;
-  const met = target != null && reviewed >= target;
-  const today = target != null
-    ? `Today ${formatCount(reviewed)}/${formatCount(target)}${met ? ' \u2713' : ''}`
-    : `Today ${formatCount(reviewed)}`;
+  const goal = goalProgressText(reviewed, row.dailyTarget, formatCount);
+  const today = goal ? `Today ${goal.text}` : `Today ${formatCount(reviewed)}`;
   const newer = row.firstSightTarget != null
     ? ` \u00b7 New ${formatCount(row.todayFirstSight ?? 0)}/${formatCount(row.firstSightTarget)}`
     : '';
 
-  if (met && newer) {
+  if (goal && goal.band !== 'red' && newer) {
     return (
       <p className="text-sm tabular-nums text-[var(--md-on-surface)]">
-        <span className="text-[var(--md-success)]">{today}</span>
+        <span className={GOAL_TEXT[goal.band]}>{today}</span>
         {newer}
       </p>
     );
   }
 
   return (
-    <p className={`text-sm tabular-nums ${met ? 'text-[var(--md-success)]' : 'text-[var(--md-on-surface)]'}`}>
+    <p className={`text-sm tabular-nums ${goal ? GOAL_TEXT[goal.band] : 'text-[var(--md-on-surface)]'}`}>
       {today}{newer}
     </p>
   );
 }
+
+const GOAL_TEXT: Record<GoalBand, string> = {
+  red: 'text-[var(--md-on-surface)]',
+  yellow: 'text-[var(--md-warning)]',
+  green: 'text-[var(--md-success)]',
+  'dark-green': 'text-[var(--md-success)]',
+};
 
 /** Rotation, pool, today, and a topics row that never swaps in or out. */
 function RotationHeadline({
@@ -155,7 +160,6 @@ function ProgressPoolBar({ row }: { row: RotationProgressBreakdown }) {
               style={{ flexGrow: Math.max(share, 0.01) }}
               aria-label={`${band.label}: ${count} of ${pool.total}, ${band.detail}`}
               aria-describedby={detailId}
-              title={`${band.label}: ${count} of ${pool.total} — ${band.detail}`}
               onMouseEnter={() => setActiveBand(band.key)}
               onFocus={() => setActiveBand(band.key)}
               onClick={() => setActiveBand(band.key)}
@@ -225,7 +229,7 @@ export function ProgressDrawer({
           <div className="flex items-baseline justify-between gap-3">
             <span className="text-base font-semibold text-[var(--md-on-surface)]">Today</span>
             <span className="tabular-nums text-sm text-[var(--md-on-surface)]">
-              {target != null ? `${reviewed} / ${target} cards` : `${reviewed} reviewed`}
+              {goalProgressText(reviewed, target)?.text.concat(' cards') ?? `${reviewed} reviewed`}
             </span>
           </div>
         )}

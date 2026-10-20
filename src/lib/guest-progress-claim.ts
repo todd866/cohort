@@ -1,5 +1,6 @@
 import { claimPracticeReviewFocus } from '@/lib/study/practice-review-focus.server';
 import 'server-only';
+import { claimGuestCheckIns } from '@/lib/check-ins/claim.server';
 
 import type {
   CardProgress,
@@ -46,6 +47,10 @@ export interface GuestClaimCounts {
   deepDiveChatSessions: number;
   deepDiveChatMessages: number;
   examPaperSessions: number;
+  tutorSessions: number;
+  tutorMessages: number;
+  tutorMemories: number;
+  tutorOutboxItems: number;
 }
 
 export type GuestProgressClaimResult =
@@ -99,6 +104,122 @@ export const GUEST_CLAIM_TRANSACTION = {
 // Every practice paper rides in on this module, and auth.ts imports this file
 // on nearly every route's cold start, so it loads only when a claim runs.
 const practiceFollowUps = () => import('@/lib/practice-exam/follow-up.server');
+
+// The public distribution's schema has no tutor tables (tutor.prisma does not
+// ship), so this file reaches them through a narrow view that exists only when
+// the client provides those delegates.
+type SessionScopedRows = {
+  findMany(args: { where: { sessionId: string }; select: { conversationId: true } }): Promise<Array<{ conversationId: string | null }>>;
+  updateMany(args: { where: { sessionId: string }; data: { sessionId: string } }): Promise<{ count: number }>;
+};
+type TutorSessionRows = {
+  findUnique(args: { where: { userId: string }; select: { id: true } }): Promise<{ id: string } | null>;
+  update(args: { where: { id: string }; data: { userId: string } }): Promise<unknown>;
+};
+type TutorClaimTables = {
+  tutorSession?: TutorSessionRows;
+  tutorMessage?: SessionScopedRows;
+  tutorConversationMemory?: SessionScopedRows;
+  tutorOutboxItem?: Pick<SessionScopedRows, 'updateMany'>;
+};
+
+async function claimTutorSession(
+  tx: Prisma.TransactionClient,
+  guestUserId: string,
+  authenticatedUserId: string,
+  counts: GuestClaimCounts,
+): Promise<void> {
+  const tables = tx as Prisma.TransactionClient & TutorClaimTables;
+  const { tutorSession, tutorMessage, tutorConversationMemory, tutorOutboxItem } = tables;
+  if (!tutorSession || !tutorMessage || !tutorConversationMemory || !tutorOutboxItem) return;
+  const guestSession = await tutorSession.findUnique({
+    where: { userId: guestUserId },
+    select: { id: true },
+  });
+  if (!guestSession) return;
+
+  const accountSession = await tutorSession.findUnique({
+    where: { userId: authenticatedUserId },
+    select: { id: true },
+  });
+  counts.tutorSessions = 1;
+
+  // With no existing account transcript, retaining the session id also retains
+  // every message, memory and usage row without extra per-row writes.
+  if (!accountSession) {
+    await tutorSession.update({
+      where: { id: guestSession.id },
+      data: { userId: authenticatedUserId },
+    });
+    return;
+  }
+
+  await tx.$queryRaw(
+    PrismaRuntime.sql`
+      SELECT "id"
+      FROM "TutorSession"
+      WHERE "id" IN (${PrismaRuntime.join([guestSession.id, accountSession.id])})
+      ORDER BY "id"
+      FOR UPDATE
+    `,
+  );
+
+  // A client-generated conversation id is only unique within a session. If
+  // both identities used the same id, move the guest conversation to a fresh
+  // id before merging so neither transcript is silently joined to the other.
+  const [guestMessages, accountMessages, guestMemories, accountMemories] = await Promise.all([
+    tutorMessage.findMany({ where: { sessionId: guestSession.id }, select: { conversationId: true } }),
+    tutorMessage.findMany({ where: { sessionId: accountSession.id }, select: { conversationId: true } }),
+    tutorConversationMemory.findMany({ where: { sessionId: guestSession.id }, select: { conversationId: true } }),
+    tutorConversationMemory.findMany({ where: { sessionId: accountSession.id }, select: { conversationId: true } }),
+  ]);
+  const key = (value: string | null): string => value === null ? '\u0000' : value;
+  const accountConversationKeys = new Set(
+    [...accountMessages, ...accountMemories].map((row) => key(row.conversationId)),
+  );
+  const guestConversationKeys = new Set(
+    [...guestMessages, ...guestMemories].map((row) => key(row.conversationId)),
+  );
+  const usedConversationKeys = new Set([...accountConversationKeys, ...guestConversationKeys]);
+  const collisions = [...guestConversationKeys].filter((id) => accountConversationKeys.has(id));
+  let remapIndex = 0;
+  for (const collision of collisions) {
+    let replacement = `guest-${guestSession.id.slice(-12)}-${remapIndex++}`;
+    while (usedConversationKeys.has(key(replacement))) {
+      replacement = `guest-${guestSession.id.slice(-12)}-${remapIndex++}`;
+    }
+    usedConversationKeys.add(key(replacement));
+    const oldPredicate = collision === '\u0000'
+      ? PrismaRuntime.sql`"conversationId" IS NULL`
+      : PrismaRuntime.sql`"conversationId" = ${collision}`;
+    await tx.$executeRaw(PrismaRuntime.sql`
+      UPDATE "TutorMessage"
+      SET "sessionId" = ${accountSession.id}, "conversationId" = ${replacement}
+      WHERE "sessionId" = ${guestSession.id} AND ${oldPredicate}
+    `);
+    await tx.$executeRaw(PrismaRuntime.sql`
+      UPDATE "TutorConversationMemory"
+      SET "sessionId" = ${accountSession.id}, "conversationId" = ${replacement}
+      WHERE "sessionId" = ${guestSession.id} AND ${oldPredicate}
+    `);
+  }
+
+  await tutorMessage.updateMany({
+    where: { sessionId: guestSession.id },
+    data: { sessionId: accountSession.id },
+  });
+  await tutorConversationMemory.updateMany({
+    where: { sessionId: guestSession.id },
+    data: { sessionId: accountSession.id },
+  });
+  const movedOutbox = await tutorOutboxItem.updateMany({
+    where: { sessionId: guestSession.id },
+    data: { sessionId: accountSession.id },
+  });
+  counts.tutorMessages = guestMessages.length;
+  counts.tutorMemories = guestMemories.length;
+  counts.tutorOutboxItems = movedOutbox.count;
+}
 
 function safeIntAdd(left: number, right: number): number {
   return Math.min(MAX_POSTGRES_INT, Math.max(0, left) + Math.max(0, right));
@@ -576,6 +697,10 @@ function emptyCounts(): GuestClaimCounts {
     deepDiveChatSessions: 0,
     deepDiveChatMessages: 0,
     examPaperSessions: 0,
+    tutorSessions: 0,
+    tutorMessages: 0,
+    tutorMemories: 0,
+    tutorOutboxItems: 0,
   };
 }
 
@@ -1147,6 +1272,8 @@ export async function claimGuestProgressRecords(
     })
   ).count;
 
+  await claimTutorSession(tx, guestUserId, authenticatedUserId, counts);
+
   // A guest can use the deep-dive tutor before signing in. Lock its session
   // rows so a concurrent assistant response either lands before this transfer
   // or waits until the surviving session has its final owner.
@@ -1202,6 +1329,7 @@ export async function claimGuestProgressRecords(
     });
   }
 
+  await claimGuestCheckIns(tx, authenticatedUserId, guest.feedProfile);
   await claimPracticeReviewFocus(tx, authenticatedUserId, guest.feedProfile);
   const { claimPracticeExamFollowUps } = await practiceFollowUps();
   await claimPracticeExamFollowUps(tx, authenticatedUserId, guest.feedProfile);

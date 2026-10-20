@@ -84,6 +84,7 @@ export function permitsStatementScaffolds(ctx: SessionContext): boolean {
     && ctx.feedMode !== 'new-only'
     // Explicit question-only requests must remain question-only; after-miss
     // cards are reserved for the default mixed adaptive session.
+    && !ctx.media
     && ctx.typeFilter === null
     && ctx.reviewChallenge?.level !== 2
     && ctx.weekFilter === null

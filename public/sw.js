@@ -50,7 +50,9 @@ const STATIC_CACHE_LOOKUP_DEADLINE_MS = 1_000;
 // when this worker takes control, and reloads only if it was rendered by a
 // different build (src/lib/offline/sw-registration.ts).
 const SW_BUILD = '__BUILD_STAMP__';
-const TRANSIENT_GATEWAY_STATUSES = [502, 503, 504];
+// An origin failure can produce an error document while the radio stays online.
+// Preserve intentional auth/not-found responses, but use saved review on 500 too.
+const TRANSIENT_GATEWAY_STATUSES = [500, 502, 503, 504];
 
 self.addEventListener('install', (event) => {
   // Caches are opened lazily. A broken cache must not block the repair worker.

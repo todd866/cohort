@@ -1,6 +1,7 @@
 'use client';
 
 import { useState } from 'react';
+import { ChipToggle } from '@/components/shared/Chip';
 export interface FilterOptions {
   type?: 'card' | 'question' | 'group';
   difficulty?: 'easy' | 'medium' | 'hard';
@@ -126,28 +127,16 @@ export function StudyFilters({ filters, onChange, availableFilters, onFilterChan
         <div>
           <span className="text-xs text-[var(--md-on-surface-variant)] mb-1.5 block">Type</span>
           <div className="flex flex-wrap gap-1.5">
-            <button
-              onClick={() => handleTypeChange(undefined)}
-              className={`px-3 py-1 text-xs rounded-full transition-colors ${
-                !filters.type
-                  ? 'bg-[var(--md-primary)] text-[var(--md-on-primary)]'
-                  : 'bg-[var(--md-surface-container-high)] text-[var(--md-on-surface-variant)] hover:bg-[var(--md-surface-container-highest)]'
-              }`}
-            >
+            <ChipToggle on={!filters.type}
+              onClick={() => handleTypeChange(undefined)}>
               All
-            </button>
+            </ChipToggle>
             {availableTypes.map((type) => (
-              <button
+              <ChipToggle on={filters.type === type}
                 key={type}
-                onClick={() => handleTypeChange(type as 'card' | 'question' | 'group')}
-                className={`px-3 py-1 text-xs rounded-full transition-colors ${
-                  filters.type === type
-                    ? 'bg-[var(--md-primary)] text-[var(--md-on-primary)]'
-                    : 'bg-[var(--md-surface-container-high)] text-[var(--md-on-surface-variant)] hover:bg-[var(--md-surface-container-highest)]'
-                }`}
-              >
+                onClick={() => handleTypeChange(type as 'card' | 'question' | 'group')}>
                 {TYPE_LABELS[type] || type}
-              </button>
+              </ChipToggle>
             ))}
           </div>
         </div>
@@ -158,28 +147,16 @@ export function StudyFilters({ filters, onChange, availableFilters, onFilterChan
         <div>
           <span className="text-xs text-[var(--md-on-surface-variant)] mb-1.5 block">Difficulty</span>
           <div className="flex flex-wrap gap-1.5">
-            <button
-              onClick={() => handleDifficultyChange(undefined)}
-              className={`px-3 py-1 text-xs rounded-full transition-colors ${
-                !filters.difficulty
-                  ? 'bg-[var(--md-primary)] text-[var(--md-on-primary)]'
-                  : 'bg-[var(--md-surface-container-high)] text-[var(--md-on-surface-variant)] hover:bg-[var(--md-surface-container-highest)]'
-              }`}
-            >
+            <ChipToggle on={!filters.difficulty}
+              onClick={() => handleDifficultyChange(undefined)}>
               All
-            </button>
+            </ChipToggle>
             {availableDifficulties.map((diff) => (
-              <button
+              <ChipToggle on={filters.difficulty === diff}
                 key={diff}
-                onClick={() => handleDifficultyChange(diff as 'easy' | 'medium' | 'hard')}
-                className={`px-3 py-1 text-xs rounded-full transition-colors ${
-                  filters.difficulty === diff
-                    ? 'bg-[var(--md-primary)] text-[var(--md-on-primary)]'
-                    : 'bg-[var(--md-surface-container-high)] text-[var(--md-on-surface-variant)] hover:bg-[var(--md-surface-container-highest)]'
-                }`}
-              >
+                onClick={() => handleDifficultyChange(diff as 'easy' | 'medium' | 'hard')}>
                 {DIFFICULTY_LABELS[diff] || diff}
-              </button>
+              </ChipToggle>
             ))}
           </div>
         </div>
@@ -193,17 +170,11 @@ export function StudyFilters({ filters, onChange, availableFilters, onFilterChan
             {availableTopics.map((topic) => {
               const isActive = filters.topics?.includes(topic);
               return (
-                <button
+                <ChipToggle on={Boolean(isActive)}
                   key={topic}
-                  onClick={() => handleTopicToggle(topic)}
-                  className={`px-3 py-1 text-xs rounded-full transition-colors ${
-                    isActive
-                      ? 'bg-[var(--md-secondary)] text-[var(--md-on-secondary)]'
-                      : 'bg-[var(--md-surface-container-high)] text-[var(--md-on-surface-variant)] hover:bg-[var(--md-surface-container-highest)]'
-                  }`}
-                >
+                  onClick={() => handleTopicToggle(topic)}>
                   {topic}
-                </button>
+                </ChipToggle>
               );
             })}
           </div>

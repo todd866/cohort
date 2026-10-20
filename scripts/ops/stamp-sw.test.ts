@@ -61,7 +61,11 @@ describe('public/sw.js build stamp (recurrence guard)', () => {
     expect(handler).not.toContain('cache.add');
     expect(handler).not.toContain('caches.match');
     expect(sw).toContain('const NAVIGATION_NETWORK_DEADLINE_MS = 10_000');
-    expect(sw).toContain('const TRANSIENT_GATEWAY_STATUSES = [502, 503, 504]');
+    // Documents and RSC payloads both treat an origin 500 as a failed
+    // navigation: the worker reports the RSC failure to the page, while a
+    // document can fall back to the credentialless offline shell. Keep this
+    // assertion aligned with the runtime contract in sw-offline-navigation.test.ts.
+    expect(sw).toContain('const TRANSIENT_GATEWAY_STATUSES = [500, 502, 503, 504]');
   });
 
   it('never writes a navigation response to a cache', () => {

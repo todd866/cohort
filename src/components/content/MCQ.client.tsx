@@ -1,5 +1,6 @@
 'use client';
 
+import { optionsCrossReference } from '@/lib/questions/option-references';
 import { useState, useEffect, useCallback, useMemo, useRef } from 'react';
 import { useSession } from 'next-auth/react';
 import { usePathname } from 'next/navigation';
@@ -132,7 +133,8 @@ export function MCQClient({
       const correctOpt = staticCorrectAnswer
         ? staticOptions.find((o) => o.label === staticCorrectAnswer)
         : staticOptions.find((o) => o.isCorrect);
-      const shuffled = shuffleWithSeed(staticOptions, seed);
+      // Options that name other options keep their order (option-references.ts).
+      const shuffled = optionsCrossReference(staticOptions.map((o) => o.text)) ? staticOptions : shuffleWithSeed(staticOptions, seed);
       const newCorrectIndex = correctOpt
         ? shuffled.indexOf(correctOpt)
         : 0;

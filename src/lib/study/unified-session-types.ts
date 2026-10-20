@@ -2,7 +2,7 @@ import type { PracticeReviewFocus, PracticeReviewProvenance } from '@/lib/study/
 import type { LoadedRotationContent } from '@/lib/study/rotation-content-map';
 import type { CommitmentLevel } from '@/lib/commitment';
 import type { ClientImageMeta, ResolvedImageAlternative } from '@/lib/figures/types';
-import type { ReviewFilter } from '@/lib/review/review-intent';
+import type { ReviewFilter, ReviewMedia } from '@/lib/review/review-intent';
 import type { ServeConditioning } from '@/lib/review/serve-conditioning';
 import type { RuntimeExamTargetContext } from '@/lib/exam-target/repository.server';
 import type { ExamTargetAttemptDecisionPath } from '@/lib/exam-target/attempt-ledger.server';
@@ -22,6 +22,10 @@ export interface UnifiedAnatomyMedia {
 }
 
 export interface UnifiedItem {
+  /** Calendar state used to rank a prepared queue. */
+  teachingPaceFingerprint?: string;
+  /** Explicit media narrowing carried into serve telemetry. */
+  media?: ReviewMedia;
   /** The saved preference captured at selection, including for offline packs. */
   reviewChallenge?: import('./review-challenge-preference').ReviewChallengePreference;
   type: 'card' | 'question' | 'group' | 'video';
@@ -303,6 +307,8 @@ export interface SessionContext {
    * teaching-cadence boost that floats what the course is lecturing on now.
    */
   topicTeachingWeeks?: ReadonlyMap<string, number>;
+  topicRecencyDays?: ReadonlyMap<string, number>;
+  teachingPaceFingerprint?: string;
   /**
    * Figure URL → this user's showings of it, feeding the expanding
    * figure-spacing interval so one picture does not recur every day.
@@ -322,6 +328,7 @@ export interface SessionContext {
   sessionId: string;
   batchId: string;
   typeFilter: string | null;
+  media?: ReviewMedia;
   difficultyFilter: string | null;
   topicsFilter: string | null;
   /**

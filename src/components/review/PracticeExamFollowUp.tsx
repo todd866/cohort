@@ -43,7 +43,7 @@ export function PracticeExamFollowUp({ provenance, compact = false }: { provenan
   if (!provenance) return null;
   const stage = stageLabel(provenance.stage, provenance.priority);
   const className = `inline-flex min-h-6 items-center font-medium text-[var(--md-primary)] ${compact ? 'text-xs' : 'text-sm'} leading-5`;
-  const heading = source ? `${source.paperTitle} · Question ${source.questionNumber}` : LABEL;
+  const heading = source ? `${source.paperTitle} · Question ${source.questionNumber}` : undefined;
   return (
     <aside aria-label="Practice exam follow-up" title={stage} className="text-[var(--md-on-surface-variant)]">
       {missed ? (

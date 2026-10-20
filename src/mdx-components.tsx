@@ -12,7 +12,7 @@ function extractText(node: ReactNode): string {
 function slugify(text: string): string {
   return text.toLowerCase().replace(/[^\w\s-]/g, '').replace(/\s+/g, '-').replace(/^[\d.]+-/, '');
 }
-import { transformClozeChildren } from '@/components/content/transformClozeChildren';
+import { MDX_STRONG_COMPONENT, transformClozeChildren } from '@/components/content/transformClozeChildren';
 import {
   KeyPoint,
   ClinicalPearl,
@@ -49,6 +49,15 @@ import { FigureClient as Figure } from '@/components/content/Figure.client';
 import { ChecklistItem, StudyChecklist } from '@/components/content/ChecklistItem';
 import { NeedImage } from '@/components/content/NeedImage';
 import { ReviewableTable } from '@/components/review/ReviewableTable';
+
+const MdxStrong = Object.assign(
+  ({ children }: { children?: ReactNode }) => (
+    <strong className="font-semibold text-[var(--md-on-surface)]">
+      {children}
+    </strong>
+  ),
+  { [MDX_STRONG_COMPONENT]: true },
+);
 
 export function useMDXComponents(components: MDXComponents): MDXComponents {
   return {
@@ -182,11 +191,7 @@ export function useMDXComponents(components: MDXComponents): MDXComponents {
         {children}
       </code>
     ),
-    strong: ({ children }) => (
-      <strong className="font-semibold text-[var(--md-on-surface)]">
-        {children}
-      </strong>
-    ),
+    strong: MdxStrong,
     a: ({ children, href }) => (
       <a
         href={href}

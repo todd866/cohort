@@ -75,6 +75,7 @@ export function ConfidenceButtons({
   if (mode === 'footer') {
     return (
       <div
+        data-review-footer
         ref={wrapperRef}
         className="fixed left-0 right-0 md:left-20 z-50 p-4 border-t border-[var(--md-outline-soft)] bg-[var(--md-surface)] shadow-[0_-10px_28px_rgba(21,35,46,0.08)] safe-area-pb"
         style={{ bottom: 'var(--md-review-footer-bottom, 0px)' }}

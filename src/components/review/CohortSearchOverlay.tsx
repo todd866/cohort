@@ -2,6 +2,7 @@
 
 import { useEffect, useMemo, useRef, useState } from 'react';
 import type { CohortSearchTopicV1 } from '@/lib/cohort/search-topic-contract';
+import { chipClass } from '@/components/shared/Chip';
 
 interface CohortSearchOverlayProps {
   topics: readonly CohortSearchTopicV1[];
@@ -68,7 +69,7 @@ export function CohortSearchOverlay({
   return (
     <div className="flex items-center gap-2">
       {activeTopic && (
-        <span className="inline-flex max-w-[13rem] items-center gap-1 rounded-full bg-[var(--md-primary-container)] px-2 py-1 text-xs text-[var(--md-on-primary-container)]">
+        <span className={chipClass(true, 'max-w-[13rem]')}>
           <span className="truncate">Learning: {activeTopic.label}</span>
           <button
             type="button"

@@ -1,7 +1,6 @@
 import { responseFormatOfOptions } from './statement-items';
 import type { CuratedQuestion, CuratedQuestionOption } from './types';
-import { needsResultsTable } from './results-table-policy';
-import { extractMarkdownTables } from '../inline-markdown';
+import { labTableNeedsReferenceColumn, needsResultsTable } from './results-table-policy';
 import { figureWithdrawal } from '../figures/withdrawn-figures';
 
 function isNonEmptyString(value: unknown): value is string {
@@ -42,51 +41,6 @@ function countSentences(text: string): number {
   if (!normalized) return 0;
   const matches = normalized.match(/[.!?](?=\s|$)/g);
   return matches ? matches.length : 1;
-}
-
-// Lab labels that, when followed by a numeric value, count as a "lab with
-// value" toward the lab-heavy detector. Context markers (ABG/VBG/blood gas)
-// don't count — they're how you know it's a lab cluster, not lab values
-// themselves.
-const LAB_LABEL_PATTERNS: RegExp[] = [
-  /\bpH(?=[\s:=|]+\d)/gi,
-  /(?:PaCO₂|PaCO2|pCO₂|pCO2)(?=[\s:=|]+\d)/gi,
-  // Exclude SpO₂ — that's pulse oximetry, not a blood-gas value.
-  /(?<![Ss])(?:PaO₂|PaO2|pO₂|pO2)(?=[\s:=|]+\d)/gi,
-  /(?:HCO₃|HCO3)(?=[\s:=|]+\d)/gi,
-  /\blactate(?=[\s:=|]+\d)/gi,
-  /\banion gap(?=[\s:=|]+\d)/gi,
-  /(?:\bNa[⁺+]?|sodium)(?=[\s:=|]+\d)/gi,
-  /(?:\bK[⁺+]?|potassium)(?=[\s:=|]+\d)/gi,
-  /(?:\bCl[⁻-]?|chloride)(?=[\s:=|]+\d)/gi,
-  /\bglucose(?=[\s:=|]+\d)/gi,
-  /\b(?:creatinine|Cr)(?=[\s:=|]+\d)/gi,
-  /\bBUN(?=[\s:=|]+\d)/gi,
-  /(?:FiO₂|FiO2)(?=[\s:=|]+\d)/gi,
-];
-
-function countLabsWithValues(stem: string): number {
-  let count = 0;
-  for (const pat of LAB_LABEL_PATTERNS) {
-    // `test` doesn't share state with `exec` on the same regex; safer to
-    // create a non-global copy to count once-per-pattern.
-    const single = new RegExp(pat.source, pat.flags.replace('g', ''));
-    if (single.test(stem)) count++;
-  }
-  return count;
-}
-
-function isLabHeavyStem(stem: string): boolean {
-  // Stem is lab-heavy if it has an ABG/VBG/blood-gas marker AND ≥3 distinct
-  // lab labels each followed by a numeric value, OR ≥4 distinct lab-with-
-  // value pairs without the gas marker. Tightened on 2026-05-15 from naive
-  // signal counting (which over-triggered on "creatinine doubled since
-  // yesterday" or anion-gap mentions without values).
-  const labWithValueCount = countLabsWithValues(stem);
-  if (/\b(ABG|VBG|blood gas)\b/i.test(stem)) {
-    return labWithValueCount >= 3;
-  }
-  return labWithValueCount >= 4;
 }
 
 function isQuestionParagraph(paragraph: string): boolean {
@@ -627,7 +581,6 @@ export function checkExamStyleCalibration(
       }
     }
 
-    const tables = extractMarkdownTables(stem).tables;
     if (needsResultsTable(stem)) {
       flagged.push({
         id: q.id,
@@ -636,11 +589,8 @@ export function checkExamStyleCalibration(
       });
     }
 
-    // Keep the existing reference-range contract for genuinely lab-heavy
-    // tables. The results-table policy is broader (it also catches vitals),
-    // but does not replace this lab-specific quality check.
-    const hasReferenceColumn = tables.some((table) => table.headers.some((header) => /\b(normal|reference|range)\b/i.test(header)));
-    if (isLabHeavyStem(stem) && tables.length > 0 && !hasReferenceColumn) {
+    // Use the same per-table reference policy as the authoring gate.
+    if (labTableNeedsReferenceColumn(stem)) {
       flagged.push({
         id: q.id,
         issue: 'lab-table-without-reference-ranges',
@@ -668,12 +618,22 @@ export function checkTruncatedText(
   // medical terms like "Stanford A", "PAPP-A", "haemophilia A".
   const longWordEndings = /\b(and|the|for|with|from|that|which|this|these|their|multiple|associated|including|anticipatory|comorbid|resulting|causing|involving|presenting|developing|especially)\s*$/i;
   const shortWordEndings = /\s(a|an|or|of|in|to|by|as|at|on)\s*$/;
+  // An ending particle can complete the phrase rather than cut it off: a
+  // phrasal verb ("leave it in", "the binder left on", "as he breathes in"),
+  // a time phrase ("three months on"), or an imperative "Leave/Keep/Put … on".
+  const completingParticle = /\b(?:is|are|was|were|be|been|being|still|left|leave|leaves|kept|keep|keeps|put|puts|stay|stays|stayed|goes|go|went|breathes|breathe|breathed|points|point|pointed|spoken|ceilings|it|them|months|weeks|days|years|hours|minutes)\s+(?:in|on|to)\s*$/i;
+  const imperativeParticle = /^(?:leave|keep|put)\b.*\s(?:in|on)\s*$/i;
+  // "that" as a pronoun object, and "associated" after an adverb, end phrases.
+  const completingThat = /\b(?:change|changes|for|about|do|does|did)\s+that\s*$/i;
+  const adverbAssociated = /\b(?:strongly|closely|commonly|frequently|often|weakly|significantly|independently|positively|negatively|inversely)\s+associated\s*$/i;
 
   function looksIncomplete(text: string): boolean {
     const trimmed = text.trim();
     if (trimmed.length < 40) return false;
     // Already ends with sentence punctuation — fine
     if (/[.?!;:)"']$/.test(trimmed)) return false;
+    if (completingParticle.test(trimmed) || imperativeParticle.test(trimmed)) return false;
+    if (completingThat.test(trimmed) || adverbAssociated.test(trimmed)) return false;
     return longWordEndings.test(trimmed) || shortWordEndings.test(trimmed);
   }
 

@@ -40,10 +40,10 @@ export function WeekContentPage({
           <div className="flex flex-col gap-3 sm:flex-row sm:items-start sm:justify-between">
             <div>
               <Link
-                href="/content"
+                href={`/${rotationId}`}
                 className="mb-1 inline-flex min-h-11 items-center text-sm font-semibold text-[var(--md-primary)] hover:underline"
               >
-                ← Content
+                ← {rotation.shortName}
               </Link>
               <h1 className="text-xl font-bold text-[var(--md-on-surface)]">
                 Week {weekNum}: {week.title}
@@ -55,14 +55,14 @@ export function WeekContentPage({
             <div className="flex flex-wrap items-center gap-2">
               <Link
                 href={`/${rotationId}/week/${weekNum}/review`}
-                className="btn btn-outlined btn-sm"
+                className="btn btn-outlined btn-sm min-h-11 px-4"
               >
                 Quiz
               </Link>
               {week.prevWeek && (
                 <Link
                   href={`/${rotationId}/week/${week.prevWeek}`}
-                  className="btn btn-text btn-sm"
+                  className="btn btn-text btn-sm min-h-11 px-4"
                 >
                   ← Prev
                 </Link>
@@ -70,7 +70,7 @@ export function WeekContentPage({
               {week.nextWeek && (
                 <Link
                   href={`/${rotationId}/week/${week.nextWeek}`}
-                  className="btn btn-text btn-sm"
+                  className="btn btn-text btn-sm min-h-11 px-4"
                 >
                   Next →
                 </Link>
@@ -159,7 +159,7 @@ export function WeekContentPage({
           {week.prevWeek ? (
             <Link
               href={`/${rotationId}/week/${week.prevWeek}`}
-              className="btn btn-outlined"
+              className="btn btn-outlined min-h-11 rounded-xl px-4 py-2"
             >
               ← Week {week.prevWeek}: {getWeekMeta(rotationId, week.prevWeek)?.title}
             </Link>
@@ -169,13 +169,13 @@ export function WeekContentPage({
           {week.nextWeek ? (
             <Link
               href={`/${rotationId}/week/${week.nextWeek}`}
-              className="btn btn-outlined"
+              className="btn btn-outlined min-h-11 rounded-xl px-4 py-2"
             >
               Week {week.nextWeek}: {getWeekMeta(rotationId, week.nextWeek)?.title} →
             </Link>
           ) : (
-            <Link href="/content" className="btn btn-outlined">
-              Back to Content
+            <Link href={`/${rotationId}`} className="btn btn-outlined min-h-11 rounded-xl px-4 py-2">
+              Back to {rotation.shortName}
             </Link>
           )}
         </div>

@@ -1,6 +1,6 @@
 'use client';
 
-import { useCallback, useMemo, useRef, useState, type ReactNode } from 'react';
+import { useCallback, useEffect, useMemo, useRef, useState, type ReactNode } from 'react';
 import { ContentFlagOverlayProvider, type ContentFlagRequest } from '@/components/content/content-flag-overlay-context';
 import { TopicTabBar } from '@/components/content/TopicTabBar';
 import {
@@ -11,7 +11,7 @@ import { FlagOverlay } from '@/components/review/FlagOverlay';
 import { useContentKeyboard } from '@/hooks/useContentKeyboard';
 import { KeyboardHintBar } from '@/components/shared/KeyboardHintBar';
 import { useFlagImage } from '@/components/content/FlagImageInput';
-import { submitFlag } from '@/lib/flag-submit';
+import { queueFlag } from '@/lib/flag-submit';
 
 interface Props {
   children: ReactNode;
@@ -42,6 +42,8 @@ export function WeekContentWithTabs({ children, prevWeekHref, nextWeekHref }: Pr
   const image = useFlagImage(activeFlag?.flagKey ?? '');
   const [submitting, setSubmitting] = useState(false);
   const submittingRef = useRef(false);
+  const activeFlagRef = useRef(activeFlag);
+  useEffect(() => { activeFlagRef.current = activeFlag; }, [activeFlag]);
 
   const openFocusedFlag = useCallback(() => {
     const blocks = Array.from(
@@ -90,20 +92,20 @@ export function WeekContentWithTabs({ children, prevWeekHref, nextWeekHref }: Pr
   const handleFlagSubmit = useCallback(async () => {
     if (!activeFlag || submittingRef.current) return;
     submittingRef.current = true; setSubmitting(true);
-    const draft = image.capture();
+    const flagKey = activeFlag.flagKey;
     try {
-      const attachmentId = await image.prepare({ type: activeFlag.targetType, id: activeFlag.targetId });
-      const result = await submitFlag({ type: activeFlag.targetType, id: activeFlag.targetId,
+      const queued = await queueFlag({ type: activeFlag.targetType, id: activeFlag.targetId,
         reason: 'Other', message: flagMessage.trim(), context: activeFlag.context,
-        ...(attachmentId ? { attachmentId } : {}),
-      });
-      if (!image.isCurrent(draft)) return;
-      if (result === 'image-unavailable') { image.retryImage(); return; }
-      if (result === 'dropped') { image.setError('Could not send this flag. Try again.'); return; }
-      if (result === 'delivered') setFlaggedKeys(prev => new Set(prev).add(activeFlag.flagKey));
-      image.committed(); handleFlagClose();
-    } catch { /* The image controller keeps the draft and explains upload failures. */ }
-    finally { submittingRef.current = false; setSubmitting(false); }
+      }, { image: image.file });
+      // Durable on this device: close now and let delivery settle the tick,
+      // unless another flag was opened while the image was being stored.
+      if (activeFlagRef.current === activeFlag) { image.committed(); handleFlagClose(); }
+      void queued.result.then((result) => {
+        if (result === 'delivered' || result === 'image-unavailable') setFlaggedKeys(prev => new Set(prev).add(flagKey));
+      }).catch(() => {});
+    } catch {
+      if (activeFlagRef.current === activeFlag) image.setError('Not saved on this device. Try again.');
+    } finally { submittingRef.current = false; setSubmitting(false); }
   }, [activeFlag, flagMessage, image, handleFlagClose]);
 
   const overlayContextValue = useMemo(

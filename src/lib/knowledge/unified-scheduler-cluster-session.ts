@@ -6,9 +6,13 @@
  * calls constructClusterSession when a rotation has no concepts.
  */
 
+import type { AccessTier } from '@/lib/images/types';
+
 import { prisma } from '@/lib/prisma';
 import { logger } from '@/lib/logger';
 import { getClusterMastery } from '@/lib/manifold/clustering';
+import { mediaCandidateWhere } from '@/lib/study/media-review';
+import type { ReviewMedia } from '@/lib/review/review-intent';
 import { sessionCandidateItemWhere } from '@/lib/knowledge/session-candidate-scope';
 import { batchLoadItemEmbeddings } from '@/lib/manifold';
 import { loadQuestionFamiliarity } from './bulk-candidates';
@@ -59,6 +63,9 @@ async function restrictToClustersWithEligibleCards<T extends { clusterId: string
      * exactly half complexity-1, so this is not a marginal saving.
      */
     minComplexity?: number;
+    media?: ReviewMedia;
+    imageTrust?: AccessTier;
+    isCopyrightTier?: boolean;
   },
 ): Promise<T[]> {
   if (clusters.length === 0) return [];
@@ -77,6 +84,7 @@ async function restrictToClustersWithEligibleCards<T extends { clusterId: string
       ...(scope.minComplexity != null
         ? { complexity: { gte: scope.minComplexity } }
         : {}),
+      AND: [mediaCandidateWhere(scope.media, scope.isCopyrightTier === true, scope.imageTrust)],
     },
   });
 
@@ -103,6 +111,8 @@ export async function constructClusterSession(
     crossSourceRotations?: readonly string[];
     crossSourceMappingMode?: 'adjacent' | 'open';
     isCopyrightTier?: boolean;
+    media?: ReviewMedia;
+    imageTrust?: AccessTier;
   }
 ): Promise<UnifiedSessionResult> {
   const {
@@ -137,15 +147,21 @@ export async function constructClusterSession(
   // into 132 clusters and only a fraction hold a neurosurgical plate. Resolve
   // which clusters actually carry an eligible card in ONE grouped query rather
   // than discovering it with a per-cluster query per pass on a request path.
-  const clusters = crossSourceRotations.length > 0
+  const clusters = crossSourceRotations.length > 0 || options.media !== undefined
     ? await restrictToClustersWithEligibleCards(allClusters, {
         rotation,
         crossSourceRotations,
         crossSourceMappingMode,
         minComplexity: CLUSTER_FALLBACK_MIN_COMPLEXITY,
+        media: options.media, imageTrust: options.imageTrust,
+        isCopyrightTier: options.isCopyrightTier === true,
       })
     : allClusters;
-  if (clusters.length === 0) {
+  // A media request can have eligible questions while no eligible card
+  // cluster survives the card prefilter. Keep going so the question lane can
+  // fill the session; ordinary mixed fallback retains its fail-closed empty
+  // result when there are no card clusters.
+  if (clusters.length === 0 && options.media === undefined) {
     // Cluster fallback found no clusters either → empty session. Logged so this
     // root cause is distinguishable from "user genuinely finished the rotation".
     logger.warn('scheduler: cluster fallback produced empty session', { rotation });
@@ -210,6 +226,7 @@ export async function constructClusterSession(
         minComplexity: CLUSTER_FALLBACK_MIN_COMPLEXITY,
         crossSourceRotations,
         crossSourceMappingMode,
+        media: options.media, imageTrust: options.imageTrust,
         isCopyrightTier: options.isCopyrightTier === true,
         practiceLocale: options.practiceLocale ?? 'au',
         now: selectionDeterminism
@@ -253,7 +270,10 @@ export async function constructClusterSession(
   }
 
   const firstSightQuestionIds = new Set<string>();
-  const questionCandidateCount = Math.max(targetQuestionCount, requiredFirstSight);
+  const questionCandidateCount = Math.max(
+    options.media === undefined ? targetQuestionCount : size,
+    requiredFirstSight,
+  );
   if (questionCandidateCount > 0) {
     // This fallback path returns before bulkFetchCandidates, so it has no familiarity
     // map — load one. Without it selectVariantAwareQuestions would draw mastered and
@@ -270,6 +290,8 @@ export async function constructClusterSession(
       masteredReentryCounter: { masteredServed: 0 },
       crossSourceRotations,
       crossSourceMappingMode,
+      media: options.media, imageTrust: options.imageTrust,
+      isCopyrightTier: options.isCopyrightTier === true,
       ...(selectionDeterminism ? { selectionDeterminism } : {}),
     });
 
@@ -333,6 +355,7 @@ export async function constructClusterSession(
         rotation,
         [...selectedClusterIds],
         selectedCardIds,
+        { media: options.media, imageTrust: options.imageTrust, isCopyrightTier: options.isCopyrightTier === true },
       );
   const scaffoldPaired = injectPreemptiveScaffoldsFromPool(
     clusterOrdered,

@@ -1,3 +1,4 @@
+import { mediaCandidateWhere, matchesResolvedMedia, mediaCandidateLimit } from './media-review';
 import { NextResponse } from 'next/server';
 import { prisma } from '@/lib/prisma';
 import { filterDeliverableReinforcementCardRows } from '@/lib/usmle/reinforcement-card-delivery';
@@ -8,6 +9,8 @@ import { enrichItemsWithWalkMetadata } from '@/lib/audit/walk-metadata';
 import { scoreOrderedPairwiseDistances } from '@/lib/manifold/scoring';
 import { logExposures } from './unified-session-helpers';
 import { questionImageIsPrompt, resolveImage } from '@/lib/figures/resolve';
+import { resolveClipsForSession } from '@/lib/video/clip-access';
+import type { ClipPromptData } from '@/components/review/clip-role';
 import { resolveImageAlternatives } from '@/lib/figures/resolve-alternatives';
 import { logger } from '@/lib/logger';
 import { writeLiveServeDecisions } from './serve-decision-write';
@@ -92,6 +95,7 @@ export async function tryRereviewSession(ctx: SessionContext): Promise<NextRespo
         // lane. Keep this separate 3-item UI slot native-only so two parallel
         // requests cannot each consume the per-batch external-content budget.
         ...sessionCandidateItemWhere(ctx.rotation),
+        ...(ctx.media ? { AND: [mediaCandidateWhere(ctx.media, ctx.imageTier === 'copyright')] } : {}),
         deletedAt: null,
         shelvedAt: null,
       },
@@ -113,11 +117,14 @@ export async function tryRereviewSession(ctx: SessionContext): Promise<NextRespo
           imageUrl: true,
           imageCaption: true,
           imageRole: true,
+          clipId: true,
+          clipRole: true,
+          clipCaption: true,
           clusterId: true,
         },
       },
     },
-    take: ctx.batchSize,
+    take: mediaCandidateLimit(ctx.batchSize, ctx.media),
   });
 
   if (wrongToday.length === 0) {
@@ -140,6 +147,18 @@ export async function tryRereviewSession(ctx: SessionContext): Promise<NextRespo
     ? 'copyright-required' as const
     : ctx.isGuest ? 'public' as const : 'auth-required' as const;
 
+  // Clips resolve in one query for the batch, under the hydration contract: a
+  // prompt clip that cannot be served drops its card, and a post-answer clip
+  // that cannot be served is simply absent (2026-10-07: this lane, like the
+  // instant lane, resolved only images).
+  const clipMap = await resolveClipsForSession(
+    wrongToday.map(({ card }) => card.clipId).filter((id): id is string => Boolean(id)),
+    { isCopyrightTier: ctx.imageTier === 'copyright' },
+  ).catch((err) => {
+    logger.warn('rereview: clip resolution failed; prompt clips withheld', { err });
+    return new Map<string, ClipPromptData>();
+  });
+
   const rereviewItemsRaw = (await Promise.all(wrongToday.map(async ({ card }) => {
     // Mirror the instant/starter lanes: one bad sidecar must degrade that card,
     // not 500 the session.
@@ -152,8 +171,12 @@ export async function tryRereviewSession(ctx: SessionContext): Promise<NextRespo
     // An image-as-prompt card's front IS the question; without its figure it is
     // unanswerable. Drop it rather than serve a broken card.
     if (questionImageIsPrompt(card.imageRole, card.imageUrl) && !resolved) return null;
+    const clip = card.clipId ? clipMap.get(card.clipId) ?? null : null;
+    if (card.clipRole === 'prompt' && !clip) return null;
+    if (!matchesResolvedMedia({ imageUrl: resolved?.imageUrl, clip }, ctx.media)) return null;
     return {
       type: 'card' as const,
+      ...(ctx.media ? { media: ctx.media } : {}),
       id: card.id,
       front: card.front,
       back: card.back,
@@ -174,6 +197,9 @@ export async function tryRereviewSession(ctx: SessionContext): Promise<NextRespo
       imageRole: card.imageRole ?? null,
       imageMeta: resolved?.imageMeta,
       imageAlternatives: await resolveImageAlternatives({ ...card, type: 'card' }, card.imageUrl ?? null, null, trustOverride),
+      clip,
+      clipRole: card.clipRole === 'prompt' ? 'prompt' as const : null,
+      clipCaption: card.clipCaption ?? null,
       // Top-level walk fields (Phase 1 of scheduler-walk-audit)
       servedBy: 'rereview' as const,
       clusterId: card.clusterId ?? null,
@@ -211,7 +237,7 @@ export async function tryRereviewSession(ctx: SessionContext): Promise<NextRespo
     },
   );
   const rereviewItems = enrichItemsWithWalkMetadata(
-    cappedRereviewItemsRaw,
+    ctx.media ? cappedRereviewItemsRaw.slice(0, ctx.batchSize) : cappedRereviewItemsRaw,
     similarityToPriorMap,
   );
   if (rereviewItems.length === 0) {

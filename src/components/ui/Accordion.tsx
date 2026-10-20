@@ -1,6 +1,7 @@
 'use client';
 
 import { useState } from 'react';
+import { ChipChevron } from '@/components/shared/Chip';
 
 export function Accordion({
   title,
@@ -23,8 +24,8 @@ export function Accordion({
         className="w-full flex items-center justify-between p-4 text-left hover:bg-[var(--md-surface-container)] transition-colors"
       >
         <span className="font-semibold text-[var(--md-on-surface)]">{title}</span>
-        <span className="text-xs text-[var(--md-on-surface-variant)]">
-          {subtitle} {open ? '\u25B4' : '\u25BE'}
+        <span className="inline-flex items-center gap-1 text-xs text-[var(--md-on-surface-variant)]">
+          {subtitle} <ChipChevron className={open ? 'rotate-180' : ''} />
         </span>
       </button>
       {open && (

@@ -12,7 +12,10 @@ import { type ExamTargetLearnerPolicy, buildExamTargetLearnerPolicy } from '@/li
 import { logger } from '@/lib/logger';
 import { truncateToManifoldDim } from '@/lib/manifold/exam-target';
 import { expandTopicSet } from '@/lib/topics';
-import { teachingCadenceConceptBoost } from './curriculum-pacing';
+import {
+  datedTopicRecencyConceptBoost,
+  teachingCadenceConceptBoost,
+} from './curriculum-pacing';
 import { cosineSimilarity } from './manifold-walk';
 import { PRACTICE_MISS_BOOST } from './practice-miss-concepts';
 import { computeHubReadiness, computeKnowledgeBreadth, computeMaintenanceShift } from './scheduler-signals';
@@ -159,6 +162,10 @@ export function rankConcepts(inputs: SchedulerInputs): ConceptRanking {
       teachingWeekForTopics(concept.topics, options.topicTeachingWeeks),
       options.currentTeachingWeek,
     );
+    const datedTopicBoost = datedTopicRecencyConceptBoost(
+      concept.topics,
+      options.topicRecencyDays,
+    );
     // Exam weight multiplier
     // Density-derived Concept.examWeight is a legacy fallback, not an exam
     // blueprint. A valid v2 treatment starts neutral, then receives the
@@ -179,7 +186,7 @@ export function rankConcepts(inputs: SchedulerInputs): ConceptRanking {
 
     const priority =
       (gapScore + confidenceBoost + staleBoost + gapAlignmentBoost + likedBoost + recentFailureBoost
-        + practiceMissBoost + teachingCadenceBoost) *
+        + practiceMissBoost + Math.max(teachingCadenceBoost, datedTopicBoost)) *
       examWeightMultiplier *
       recallSoftPenalty;
 

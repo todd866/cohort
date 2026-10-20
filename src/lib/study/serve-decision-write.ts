@@ -283,11 +283,13 @@ function buildRow(
     || item.conditioning
     || item.repetitionSlot
     || item.reviewChallenge
+    || item.media
     ? {
       // Grade-conditioner context, read back by the record handler alongside
       // predictedRecall so the grade path needs no history read.
       ...(item.conditioning ? { conditioning: item.conditioning } : {}),
       ...(item.repetitionSlot ? { repetitionSlot: item.repetitionSlot } : {}),
+      ...(item.media ? { media: item.media } : {}),
       ...(item.reviewChallenge ? { reviewChallenge: item.reviewChallenge } : {}),
       ...(item.predictedRecallModel ? { predictedRecallModel: item.predictedRecallModel } : {}),
       ...(item.predictedRecallSource ? { predictedRecallSource: item.predictedRecallSource } : {}),

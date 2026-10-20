@@ -21,6 +21,19 @@ export async function tryPublicCorpusSession(
 ): Promise<NextResponse | null> {
   if (ctx.rotation !== USMLE_STEP1_OPEN_ROTATION) return null;
 
+  // Private Step 1 deliberately delivers text-only opaque questions (its
+  // prompt-media release is Cohort-only); the private supplement DTO also has
+  // no media. Do not mint a text delivery to satisfy an empty media pool.
+  // Cohort uses a separate, causally ordered turn contract and does not expose
+  // MD3's review modes, so reject rather than silently widen a crafted request.
+  if (ctx.media) {
+    if (ctx.publicSurface === 'cohort') return NextResponse.json(
+      { error: 'Media review modes are unavailable on this surface', code: 'unsupported_review_mode' },
+      { status: 400 },
+    );
+    return NextResponse.json({ items: [], sessionId: ctx.sessionId, batchId: ctx.batchId });
+  }
+
   const row = await prisma.user.findUnique({
     where: { id: ctx.userId },
     select: { feedProfile: true },

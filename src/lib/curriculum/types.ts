@@ -18,6 +18,11 @@ export interface AssessmentPeriod {
   id: string;
   name: string;
   examDate: string; // ISO date string
+  /**
+   * First teaching day of the block, `YYYY-MM-DD`. The exam day is `examDate`.
+   * Omitted by calendars that only know the assessment date.
+   */
+  startDate?: string;
   assessments: Assessment[];
   blocks: string[]; // Block IDs covered in this period
 }
@@ -46,6 +51,8 @@ export interface WeekDefinition {
 }
 
 export interface CurriculumDefinition {
+  /** Optional dated topic log; omitted by deployments without a calendar. */
+  taughtTopics?: readonly import('./taught-topics').TaughtTopicEntry[];
   institution: string;
   program: 'md1' | 'md2' | 'md3';
   cohort: number;

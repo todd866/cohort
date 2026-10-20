@@ -1,3 +1,5 @@
+import { matchesResolvedMedia, mediaCandidateLimit } from './media-review';
+import { loadInstantMediaCandidateIds } from './media-review-candidates';
 import { applyReviewChallengeWave } from './review-challenge';
 import { nudgeInstantChallenge } from './review-challenge-instant';
 import { NextResponse, after } from 'next/server';
@@ -16,6 +18,7 @@ import {
   type QuestionFamiliarity,
 } from '@/lib/knowledge/question-retirement';
 import { loadHarderSiblingMap } from '@/lib/knowledge/harder-sibling-map.server';
+import { guardRetiredAtEgress } from './instant-egress-retirement';
 import { loadQuestionFamiliarity } from '@/lib/knowledge/bulk-candidates';
 import {
   prioritizeLeastRecentlyServedContrastSiblings,
@@ -46,6 +49,8 @@ import { resolveImageAlternatives } from '@/lib/figures/resolve-alternatives';
 import { writeLiveServeDecisions } from './serve-decision-write';
 import { shadowCardMetaFromSources, shadowDeliveredCards } from './repetition-slot-shadow';
 import { loadCurrentSessionContent, sessionSourceKey, withCurrentSessionBody } from './current-session-content';
+import { resolveClipsForSession } from '@/lib/video/clip-access';
+import type { ClipPromptData } from '@/components/review/clip-role';
 import { filterDuplicateCardVariantGroups } from './unified-session-cache-helpers';
 import { isUsableQuestion } from '@/lib/question-validation';
 import { filterDeliverableReinforcementCardRows } from '@/lib/usmle/reinforcement-card-delivery';
@@ -144,6 +149,8 @@ export async function tryInstantSession(
   }
 
   const requestedTopics = requestedTopicSet(ctx.topicsFilter);
+  const candidateLimit = mediaCandidateLimit(ctx.batchSize, ctx.media);
+  const mediaIds = await loadInstantMediaCandidateIds(ctx);
   // MCQ-only review. Every card lane below is skipped rather than filtered out
   // afterwards — including the pre-emptive scaffold pass, which injects cards
   // AFTER the pool is built and would otherwise put cards in a card-free mode
@@ -459,7 +466,8 @@ export async function tryInstantSession(
     : null;
   const tExclusions = performance.now();
   const staticCards = questionsOnly ? [] : ctx.rotationContent.cardList.filter(
-    (card) => (ctx.weekFilter === null || card.week === ctx.weekFilter)
+    (card) => (!mediaIds || mediaIds.cards.has(card.id))
+      && (ctx.weekFilter === null || card.week === ctx.weekFilter)
       && (!EXAM_ONLY_ROTATIONS.has(ctx.rotation) || isNativeExamScaffold(ctx.rotation, card.topics))
       && (!learningPolicy.scaffoldsOnly || card.complexity === 1)
       && !recentExcludedCardIds.has(card.id)
@@ -486,7 +494,8 @@ export async function tryInstantSession(
           globallyExcludedQuestionIds,
         },
       ).filter((question) => (
-        (!ctx.difficultyFilter || question.difficulty === ctx.difficultyFilter)
+        (!mediaIds || mediaIds.questions.has(question.id))
+        && (!ctx.difficultyFilter || question.difficulty === ctx.difficultyFilter)
         && matchesRequestedTopics(question.topics, requestedTopics)
         && (!learningPolicy.questionsOnly
           || (reviewGap?.available === true && question.difficulty === 'hard' && reviewGap.questionIds.has(question.id)))
@@ -518,10 +527,11 @@ export async function tryInstantSession(
 
   // Mix cards and questions roughly 60/40 — or give the whole batch to
   // questions when the learner asked for MCQs only.
-  const cardCount = questionsOnly
+  let cardCount = questionsOnly
     ? 0
-    : Math.min(Math.ceil(ctx.batchSize * learningPolicy.preferredCardShare), staticCards.length);
-  const questionCount = Math.min(ctx.batchSize - cardCount, staticQuestions.length);
+    : Math.min(Math.ceil(candidateLimit * learningPolicy.preferredCardShare), staticCards.length);
+  const questionCount = Math.min(candidateLimit - cardCount, staticQuestions.length);
+  if (ctx.media && !questionsOnly) cardCount = Math.min(candidateLimit - questionCount, staticCards.length);
   // Sibling suppression applied AFTER shuffle so a different cloze variant wins
   // across sessions. Filter-time suppression would deterministically pick the
   // first sibling in content-map order, killing rotation. Mirrors the live
@@ -836,12 +846,17 @@ export async function tryInstantSession(
   // instant lane IS a new user's first experience, and a shuffled batch once
   // led with a long, hard ethics vignette), then enforce the modality-run
   // cap so ordering doesn't trip the audit's modality-monotony pathology.
-  const modalityBoundInstant = breakModalityRuns(orderEaseIn(shuffle(instantItems)));
+  const randomizedInstant = shuffle(instantItems);
+  // A media window is larger than the delivered batch. Keep its random order
+  // through current-body resolution, or easing the window in would select only
+  // its easiest items. Sequence the surviving batch below instead.
+  const modalityBoundInstant = ctx.media ? randomizedInstant
+    : breakModalityRuns(orderEaseIn(randomizedInstant));
 
   // The instant lane used to bypass the manifold scheduler's pre-emptive
   // scaffold pass entirely. Reuse the same bounded planner, then hydrate each
   // chosen static C1 through this lane's signed-image boundary.
-  const scaffoldInsertions = questionsOnly ? [] : planPreemptiveScaffoldInsertions(
+  const scaffoldInsertions = questionsOnly || ctx.media ? [] : planPreemptiveScaffoldInsertions(
     modalityBoundInstant,
     {
       rotation: ctx.rotation,
@@ -875,7 +890,7 @@ export async function tryInstantSession(
   }
   // Pair insertion can lengthen an existing card run; retain the same final
   // modality guard used by the manifold lane.
-  const shuffledInstant = breakModalityRuns(scaffoldPairedInstant);
+  const shuffledInstant = ctx.media ? scaffoldPairedInstant : breakModalityRuns(scaffoldPairedInstant);
 
   // Timing note: tInstantEnd marks the end of SELECTION only. The tail below
   // (pairwise scoring, eligibility lookups, ServeDecision writes) is real
@@ -885,7 +900,7 @@ export async function tryInstantSession(
   const tInstantEnd = performance.now();
 
   // Compute manifold session in background for next request (skip for guests — no cache)
-  if (!ctx.isGuest) {
+  if (!ctx.isGuest && !ctx.media) {
     after(async () => {
       await runSessionCacheRefresh(ctx, { recordOutcome: true, source: 'instant', leaseTtlMs: ctx.refreshLeaseTtlMs });
     });
@@ -933,6 +948,21 @@ export async function tryInstantSession(
     }),
   ]);
   const reinforcementEligibleCardIds = new Set(eligibleInstantCards.map(card => card.id));
+  // Clips resolve at egress like images, in one query for the batch, under the
+  // same contract as hydration and the cached lane: a prompt clip that cannot be
+  // served withholds its item, and a post-answer clip that cannot be served is
+  // simply absent. This lane once resolved only images, so clip cards went out
+  // with clipRole set and no video ("Video isn't attached", 2026-10-07).
+  const clipIds = taggedInstant.flatMap((item) => {
+    if (item.type !== 'card' && item.type !== 'question') return [];
+    const source = currentSources.get(sessionSourceKey(item.type, item.id));
+    return source?.clipId ? [source.clipId] : [];
+  });
+  const clipMap = await resolveClipsForSession(clipIds, { isCopyrightTier: ctx.imageTier === 'copyright' })
+    .catch((error) => {
+      logger.warn('instant: clip resolution failed; prompt clips withheld', { error: String(error) });
+      return new Map<string, ClipPromptData>();
+    });
   const currentItems = await Promise.all(taggedInstant.map(async (item): Promise<UnifiedItem | null> => {
     if (item.type !== 'card' && item.type !== 'question') return item;
     const source = currentSources.get(sessionSourceKey(item.type, item.id));
@@ -951,8 +981,11 @@ export async function tryInstantSession(
       logger.warn('instant: current image resolution failed', { itemId: item.id, error: String(error) });
     }
     if (questionImageIsPrompt(source.imageRole, source.imageUrl) && !resolved) return null;
+    const clip = source.clipId ? clipMap.get(source.clipId) ?? null : null;
+    if (source.clipRole === 'prompt' && !clip) return null;
+    if (!matchesResolvedMedia({ imageUrl: resolved?.imageUrl, clip }, ctx.media)) return null;
     const current = {
-      ...withCurrentSessionBody(item, source), rotation: source.rotation, week: source.week,
+      ...withCurrentSessionBody(item, source), ...(ctx.media ? { media: ctx.media } : {}), clip, rotation: source.rotation, week: source.week,
       imageUrl: resolved?.imageUrl ?? null, imageKey: resolved?.imageKey ?? null,
       imageCaption: source.imageCaption, imageRole: source.imageRole, imageMeta: resolved?.imageMeta,
       imageAlternatives: await resolveImageAlternatives(source, source.imageUrl, null, trustOverride),
@@ -974,10 +1007,12 @@ export async function tryInstantSession(
   const currentVariantSafeItems = filterDuplicateCardVariantGroups(
     currentItems.filter((item): item is UnifiedItem => item !== null),
   );
+  const selectedCurrentItems = ctx.media
+    ? orderEaseIn(currentVariantSafeItems.slice(0, ctx.batchSize)) : currentVariantSafeItems;
   const modalityOrderedItems = breakModalityRuns(practiceScaffoldTarget
-    ? [...currentVariantSafeItems.filter(item => item.type === 'question' && item.id === practiceScaffoldTarget.questionId),
-      ...currentVariantSafeItems.filter(item => item.type !== 'question' || item.id !== practiceScaffoldTarget.questionId)]
-    : currentVariantSafeItems);
+    ? [...selectedCurrentItems.filter(item => item.type === 'question' && item.id === practiceScaffoldTarget.questionId),
+      ...selectedCurrentItems.filter(item => item.type !== 'question' || item.id !== practiceScaffoldTarget.questionId)]
+    : selectedCurrentItems);
   const orderedCurrentItems = practiceScaffoldTarget ? modalityOrderedItems
     : applyReviewChallengeWave(modalityOrderedItems, challengeLevel);
   const originalPriorIds = new Map(taggedInstant.map((item, index) => [item.id, taggedInstant[index - 1]?.id]));
@@ -986,7 +1021,22 @@ export async function tryInstantSession(
     return index > 0 && similarity != null && originalPriorIds.get(item.id) === orderedCurrentItems[index - 1].id
       ? [[item.id, similarity] as const] : [];
   }));
-  const egressSafeTaggedInstant = enrichItemsWithWalkMetadata(orderedCurrentItems, unchangedPairSimilarities);
+  const retirementGuard = guardRetiredAtEgress(
+    enrichItemsWithWalkMetadata(orderedCurrentItems, unchangedPairSimilarities),
+    questionFamiliarity,
+    new Set(ctx.rotationContent.questionList.map((question) => question.id)),
+    resolveRetirementPolicy(),
+  );
+  if (retirementGuard.dropped.length || retirementGuard.outOfScope.length) {
+    logger.warn('instant: retirement egress guard', {
+      rotation: ctx.rotation,
+      dropped: retirementGuard.dropped,
+      outOfScope: retirementGuard.outOfScope,
+      practiceScaffold: practiceScaffoldTarget?.questionId ?? null,
+      conceptThread: instantConceptThreadQuestionId,
+    });
+  }
+  const egressSafeTaggedInstant = retirementGuard.items;
   // The late twin of the bail-out above: the pool was non-empty but nothing
   // survived ordering and egress tagging. Distinguish it in the telemetry —
   // reaching here means the lane did almost all of its work and then threw the

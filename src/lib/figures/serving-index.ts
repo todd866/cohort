@@ -35,6 +35,11 @@ export function lookupServingSidecar(key: string | undefined): ImageSidecar | un
   return Object.hasOwn(lib, key) ? lib[key] : undefined;
 }
 
+/** Enumerate the same process-cached projection used by image delivery. */
+export function servingFigureKeys(): string[] {
+  return Object.keys(servingLibrary());
+}
+
 /** Read the index now, so a keep-warm ping leaves an instance that has it. */
 export function warmServingIndex(): void {
   servingLibrary();

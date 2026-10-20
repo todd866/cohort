@@ -9,6 +9,7 @@ import {
   COHORT_EXPERIENCE_OPTIONS,
   type CohortExperience,
 } from '@/lib/cohort/experience-prior';
+import { ChipToggle } from '@/components/shared/Chip';
 
 function focusFirstChoice(dialog: HTMLDivElement) {
   (dialog.querySelector<HTMLButtonElement>('button:not(:disabled)') ?? dialog).focus();
@@ -134,25 +135,17 @@ export function CohortPrompt({
                 {safeDemandTopics.map((topic) => {
                   const selected = topics.includes(topic.id);
                   return (
-                    <button
+                    <ChipToggle on={selected}
                       key={topic.id}
-                      type="button"
-                      aria-pressed={selected}
                       onClick={() => {
                         setTopics((current) =>
                           selected
                             ? current.filter((id) => id !== topic.id)
                             : [...current, topic.id],
                         );
-                      }}
-                      className={`rounded-full px-2.5 py-1 text-xs ${
-                        selected
-                          ? 'bg-[var(--md-primary-container)] text-[var(--md-on-primary-container)]'
-                          : 'bg-[var(--md-surface-container-high)] text-[var(--md-on-surface-variant)]'
-                      }`}
-                    >
+                      }}>
                       {topic.label}
-                    </button>
+                    </ChipToggle>
                   );
                 })}
               </div>

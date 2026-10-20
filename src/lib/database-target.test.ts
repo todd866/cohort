@@ -153,6 +153,9 @@ describe('shared database target resolution', () => {
       // production practice papers; a mirror read would be well-formed, stale, and
       // committed into the longitudinal corpus looking like a real day.
       'audit:practice-item-stats',
+      // Added 2026-10-15: learner-recorded exam results against md3 and practice
+      // papers; a mirror read would report a stale cohort as today's.
+      'audit:exam-gaps',
       // Added 2026-08-12 after it silently read the mirror: the mirror listed
       // 4,235 imageless cards against production's 9,683, so a candidate set
       // built from it would have missed more than half the corpus AND risked

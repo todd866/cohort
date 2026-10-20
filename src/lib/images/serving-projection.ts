@@ -32,6 +32,10 @@ const SERVING_FIELDS = [
   'imageWidth',
   'imageHeight',
   'attributionText',
+  // Tutor provenance, server-only: client metadata remains explicitly allowlisted.
+  'source',
+  'sourcePage',
+  'sourceLocator',
   'licenseUrl',
   'altPolicy',
   // read by assessImageSensitivity
@@ -77,6 +81,10 @@ export function projectServingSidecar(sidecar: ImageSidecar): Record<string, unk
       continue;
     }
     if (raw[field] === undefined) continue;
+    // Most source names already are the attribution; do not duplicate them
+    // across tens of thousands of figures just for the tutor's fallback.
+    if (field === 'source' && raw.source === raw.attributionText) continue;
+    if (field === 'sourcePage' && !raw.sourcePage) continue;
     if (field in ELIDED_DEFAULTS && raw[field] === ELIDED_DEFAULTS[field]) continue;
     out[field] = raw[field];
   }

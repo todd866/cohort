@@ -1,7 +1,7 @@
 import { prepareAnatomyFigure } from '@/components/shared/AnatomyReviewFigure';
 import { exhaustedReviewChallenge } from '@/lib/study/review-challenge-exhaustion';
 import type { ReviewChallengePreference } from '@/lib/study/review-challenge-preference';
-import { useState, useEffect, useCallback, useRef } from 'react';
+import { useState, useEffect, useCallback, useRef, useSyncExternalStore } from 'react';
 import { isRectObscured, FOOTER_SAFE_PX, TOP_SAFE_PX, resetScrollToTop } from './reveal-scroll';
 import { useActiveModules } from '@/hooks/useActiveModules';
 import { usePrepareReviewImages } from '@/hooks/usePrepareReviewImages';
@@ -25,14 +25,24 @@ import {
 import {
   isOfflineOwnerCurrent,
   readOfflineOwner,
+  unverifiedPackOwnerKey,
   subscribeOfflineOwner,
   type OwnerLease,
 } from '@/lib/offline/owner';
+import {
+  getLinkState,
+  getServerLinkState,
+  isLinkDegradingError,
+  markDeviceDataInUse,
+  reportLinkError,
+  reportLinkSuccess,
+  subscribeLinkState,
+} from '@/lib/offline/connectivity';
 import type { ReviewItem, ReviewStats } from './types';
 import { isPracticeFollowUpTurn, isProtectedPracticeItem } from './practice-follow-up-turn';
 import { buildUnifiedSessionParams } from './unified-session-params';
 import { mergeOptimisticHead } from './optimistic-head';
-import type { ReviewFilter, ReviewItemType, ReviewTopic } from '@/lib/review/review-intent';
+import type { ReviewFilter, ReviewItemType, ReviewMedia, ReviewTopic } from '@/lib/review/review-intent';
 import { reviewSessionScopeKey } from '@/lib/review/session-scope';
 import {
   shouldOptimisticPaintPack,
@@ -76,6 +86,8 @@ interface UseReviewSessionOptions {
   reviewFilter?: ReviewFilter;
   /** MCQ-only review: narrow every slot to questions. */
   itemType?: ReviewItemType;
+  /** Media-only review: image, video, or either. */
+  media?: ReviewMedia;
   /** Checked-in topic filters that narrow the authorized rotation. */
   topics?: readonly ReviewTopic[];
   /** One manifold cluster, from a square on the profile knowledge heatmap. */
@@ -109,6 +121,13 @@ interface UseReviewSessionOptions {
    * prefetch for that surface only; private MD3 review keeps its reserve.
    */
   singleTurn?: boolean;
+  /**
+   * The queue is the whole session (a calendar day or range). Do not append
+   * the ordinary review feed when it runs out.
+   */
+  boundedQueue?: boolean;
+  /** Included in the scope key so a replay batch cannot adopt an ordinary one. */
+  replayKey?: string | null;
   /**
    * Enables the Cohort-only idempotent POST transport. Raw search text never
    * enters this contract; only a checked-in topic id may be supplied.
@@ -151,6 +170,19 @@ function reviewItemKey(item: ReviewItem): string {
   return `${item.type}:${item.id}`;
 }
 
+/**
+ * The reviewed-id refs hold BARE ids (they also build the URL exclusion list);
+ * dedupeReviewItems compares `card:<id>` keys. Passing the refs straight in
+ * excluded nothing, and a recovery batch re-served cards already consumed
+ * (Codex review, 15 Oct 2026). Always convert through this.
+ */
+function reviewedItemKeys(cardIds: Iterable<string>, questionIds: Iterable<string>): string[] {
+  return [
+    ...[...cardIds].map((id) => `card:${id}`),
+    ...[...questionIds].map((id) => `question:${id}`),
+  ];
+}
+
 function dedupeReviewItems(items: ReviewItem[], existingKeys?: Set<string>): ReviewItem[] {
   const seen = new Set(existingKeys);
   const result: ReviewItem[] = [];
@@ -164,6 +196,13 @@ function dedupeReviewItems(items: ReviewItem[], existingKeys?: Set<string>): Rev
 }
 
 const FETCH_TIMEOUT_MS = 35_000;
+/**
+ * How long a first load may show nothing before the saved pack is painted.
+ * The live request keeps going; if it lands, its batch is adopted behind the
+ * card being read. On a weak link the alternative was a 72 s skeleton (two
+ * 35 s attempts) followed by an error (15 Oct 2026).
+ */
+export const SLOW_LINK_PAINT_MS = 6_000;
 /** Longest the review feed will wait on the offline-write flush before loading anyway. */
 const FLUSH_BUDGET_MS = 2_000;
 const RETRY_DELAY_MS = 2_000;
@@ -176,8 +215,33 @@ function resolvedBrowserTimezone(): string | undefined {
   }
 }
 
-/** Errors that should not be retried (auth failures) */
-class NonRetryableError extends Error {}
+/** Errors that should not be retried (auth failures). Always a server response. */
+class NonRetryableError extends Error {
+  readonly status: number;
+  constructor(message: string, status: number) {
+    super(message);
+    this.status = status;
+  }
+}
+
+/**
+ * The server answered with an error status. A response is never transport
+ * proof, whatever its text says ("Session build timed out" included).
+ */
+class HttpResponseError extends Error {
+  readonly status: number;
+  constructor(message: string, status: number) {
+    super(message);
+    this.status = status;
+  }
+}
+
+/** Did THIS request fail with no response at all (dead link, deadline)? */
+function isTransportProof(error: unknown): boolean {
+  if (error instanceof NonRetryableError || error instanceof HttpResponseError) return false;
+  if (typeof (error as { status?: unknown } | null)?.status === 'number') return false;
+  return isLinkDegradingError(error);
+}
 
 /** Report client-side fetch failures to server logs (fire-and-forget) */
 function reportClientError(url: string, error: string, details: Record<string, unknown>) {
@@ -217,6 +281,7 @@ async function fetchWithRetry(
 
     try {
       const res = await fetch(url, { signal });
+      if (res.status !== 502 && res.status !== 503 && res.status !== 504) reportLinkSuccess();
       const serverTiming = res.headers?.get?.('Server-Timing') ?? null;
       loadTimer?.markSessionTtfb(serverTiming);
       loadTimer?.setAttempts(attempt + 1);
@@ -244,7 +309,7 @@ async function fetchWithRetry(
             detail,
             ua: navigator.userAgent,
           });
-          throw new NonRetryableError(detail || 'Sign in to review');
+          throw new NonRetryableError(detail || 'Sign in to review', 401);
         }
         if (res.status === 403) {
           reportClientError(url, 'session-access-forbidden', {
@@ -252,9 +317,9 @@ async function fetchWithRetry(
             detail,
             ua: navigator.userAgent,
           });
-          throw new NonRetryableError(detail || 'Review access is unavailable');
+          throw new NonRetryableError(detail || 'Review access is unavailable', 403);
         }
-        throw new Error(detail ? `${detail}` : `HTTP ${res.status}`);
+        throw new HttpResponseError(detail ? `${detail}` : `HTTP ${res.status}`, res.status);
       }
       loadTimer?.clearHttpFailure();
       const batch = await res.json() as {
@@ -276,6 +341,7 @@ async function fetchWithRetry(
       // TimeoutError with a plain Error, which erases the only evidence of what
       // went wrong. A status-less failure is the case worth describing.
       loadTimer?.markFailure(err);
+      reportLinkError(err);
 
       // Replace raw "signal timed out" DOMException with a human-readable message
       if (err instanceof DOMException && err.name === 'TimeoutError') {
@@ -284,6 +350,9 @@ async function fetchWithRetry(
         lastError = err instanceof Error ? err : new Error('Failed to load');
       }
 
+      // A second 35 s attempt on a link already known to be degraded only
+      // delays the saved pack. The caller falls back now.
+      if (getLinkState() !== 'online') break;
       // Don't retry after the last attempt
       if (attempt < boundedAttempts - 1) {
         await new Promise(resolve => setTimeout(resolve, RETRY_DELAY_MS));
@@ -546,7 +615,7 @@ async function postCohortTurn(
   throw lastError ?? new Error('Failed to load');
 }
 
-export function useReviewSession({ rotations, week, rotationSizes, fetchSlots, feedMode = 'mixed', reviewFilter, itemType, topics, cluster = null, focusRotation = null, userKey = null, allowUnverifiedPack = false, initialBatch = null, loadTimer = null, singleTurn = false, cohortTurn = null, reviewChallengeRevision = null, onChallengeExhausted }: UseReviewSessionOptions) {
+export function useReviewSession({ rotations, week, rotationSizes, fetchSlots, feedMode = 'mixed', reviewFilter, itemType, media, topics, cluster = null, focusRotation = null, userKey = null, allowUnverifiedPack = false, initialBatch = null, loadTimer = null, singleTurn = false, boundedQueue = false, replayKey = null, cohortTurn = null, reviewChallengeRevision = null, onChallengeExhausted }: UseReviewSessionOptions) {
   const hasCohortTurn = cohortTurn !== null;
   const cohortJourneyId = cohortTurn?.journeyId ?? null;
   const cohortSearchTopicId = cohortTurn?.searchTopicId ?? null;
@@ -556,9 +625,11 @@ export function useReviewSession({ rotations, week, rotationSizes, fetchSlots, f
     feedMode,
     reviewFilter,
     itemType,
+    media,
     focusRotation,
     topics,
     cluster,
+    replay: replayKey,
   });
   const requestScopeKey = cohortJourneyId
     ? `${baseRequestScopeKey}:cohort:${cohortJourneyId}`
@@ -596,6 +667,13 @@ export function useReviewSession({ rotations, week, rotationSizes, fetchSlots, f
   );
   /** True when the items on screen came from the on-device pack, not the server. */
   const [servingOffline, setServingOffline] = useState(false);
+  const linkState = useSyncExternalStore(subscribeLinkState, getLinkState, getServerLinkState);
+  /**
+   * The items on screen were painted from the pack while a live session was
+   * wanted (slow or failed request). A live batch that lands afterwards is
+   * adopted BEHIND the card being read, never in place of it.
+   */
+  const fallbackPaintedRef = useRef(false);
   const [ownerRevision, setOwnerRevision] = useState(0);
   const requestedRotationsKey = rotations.join(',');
   const requestedTopicsKey = topics?.join(',') ?? '';
@@ -661,6 +739,9 @@ export function useReviewSession({ rotations, week, rotationSizes, fetchSlots, f
    * holding it, which is why the swap survived two earlier fixes.
    */
   const involuntaryReloadHeadRef = useRef<ReviewItem | null>(null);
+  /** Scope and owner the involuntary head was captured under; a reload for
+   * any other scope or account must never prepend it. */
+  const involuntaryHeadContextRef = useRef<{ scopeKey: string; ownerKey: string | null } | null>(null);
   const loadedKeyRef = useRef<string | null>(null);
   const initialBatchRef = useRef(initialBatchMatches ? initialBatch : null);
   const abortControllerRef = useRef<AbortController | null>(null);
@@ -739,8 +820,15 @@ export function useReviewSession({ rotations, week, rotationSizes, fetchSlots, f
     // Refetch under the new lease, holding the card the reader is looking at:
     // the account did not change and neither did the scope, so nothing about
     // this reload justifies moving them.
+    // A quarantine (same key, new generation) is positive proof the stored
+    // owner must not be trusted: evict, never keep-and-reload. And never keep
+    // a card that belongs to another account than the new owner's.
+    const heldOwner = itemsOwnerRef.current;
+    const heldBelongsToNext = heldOwner == null || heldOwner === nextOwnerKey;
     if (
       nextOwnerKey
+      && !nextOwner?.quarantined
+      && heldBelongsToNext
       && userKeyRef.current === nextOwnerKey
       && itemsRef.current.length > 0
     ) {
@@ -753,6 +841,7 @@ export function useReviewSession({ rotations, week, rotationSizes, fetchSlots, f
     if (
       previousOwnerKey
       && nextOwnerKey
+      && !nextOwner?.quarantined
       && previousOwnerKey === nextOwnerKey
     ) {
       observedOwnerChangeRef.current = true;
@@ -767,6 +856,9 @@ export function useReviewSession({ rotations, week, rotationSizes, fetchSlots, f
     abortControllerRef.current?.abort();
     loadedKeyRef.current = null;
     itemsOwnerRef.current = undefined;
+    optimisticHeadRef.current = null;
+    involuntaryReloadHeadRef.current = null;
+    fallbackPaintedRef.current = false;
     itemsRef.current = [];
     setItems([]);
     setCurrentIndex(0);
@@ -861,7 +953,14 @@ export function useReviewSession({ rotations, week, rotationSizes, fetchSlots, f
    * 401 from a signed-out session, and serving the previous account's cards
    * there would be a real leak — so that path insists on a matching user key.
    */
-  const resolveScopedPackItems = useCallback((): {
+  const resolveScopedPackItems = useCallback(({ transportProof = false }: {
+    /**
+     * The request failed with no response or ran past its deadline. Like the
+     * service worker's navigation fallback, that is proof of a dead link, not
+     * of a signed-out session (a 401 is a response and never counts).
+     */
+    transportProof?: boolean;
+  } = {}): {
     userKey: string;
     packUserKey: string;
     items: ReviewItem[];
@@ -878,12 +977,18 @@ export function useReviewSession({ rotations, week, rotationSizes, fetchSlots, f
     // for ONE topic, pack rows carry no clusterId, and rescuing a failed
     // scoped request with rotation-wide cards looks exactly like the square
     // doing nothing. Reported as that on 2026-09-16.
-    if (reviewFilter || itemType || cluster) return null;
+    if (reviewFilter || itemType || media || cluster) return null;
 
+    // The global link state is NOT proof here: it is sticky and can come from
+    // an unrelated request on another page. Only this request's own failure
+    // with no response (transportProof), a browser that is offline, or the
+    // service-worker fallback may unlock the stored-owner read.
     const isOffline =
       allowUnverifiedPackRef.current ||
+      transportProof ||
       (typeof navigator !== 'undefined' && navigator.onLine === false);
-    const storedOwnerKey = readOfflineOwner()?.ownerKey ?? null;
+    // A quarantined owner is never a fallback, whatever the network says.
+    const storedOwnerKey = unverifiedPackOwnerKey(readOfflineOwner());
     const sessionUserKey = userKeyRef.current;
     if (
       sessionUserKey
@@ -900,6 +1005,12 @@ export function useReviewSession({ rotations, week, rotationSizes, fetchSlots, f
       ? storedOwnerKey
       : sessionUserKey ?? (isOffline ? storedOwnerKey : null);
     if (!resolvedUserKey) return null;
+    // A cached next-auth key or the bootstrap batch's ownerKey is not renewed
+    // authentication: while the stored record for this key is quarantined
+    // (server proved sign-out or another account), its pack stays shut until
+    // a verified rebind clears the quarantine (Codex ultra review, 15 Oct).
+    const storedRecord = readOfflineOwner();
+    if (storedRecord?.quarantined && storedRecord.ownerKey === resolvedUserKey) return null;
 
     const pack = readPack(resolvedUserKey);
     const requestedRotations = new Set(requestedRotationsKey.split(',').filter(Boolean));
@@ -924,10 +1035,10 @@ export function useReviewSession({ rotations, week, rotationSizes, fetchSlots, f
       packUserKey: pack.userKey,
       items: dedupeReviewItems(packItems),
     };
-  }, [hasCohortTurn, requestedRotationsKey, requestedTopicsKey, reviewFilter, itemType, cluster, week]);
+  }, [hasCohortTurn, requestedRotationsKey, requestedTopicsKey, reviewFilter, itemType, media, cluster, week]);
 
-  const servePackFallback = useCallback((): boolean => {
-    const scoped = resolveScopedPackItems();
+  const servePackFallback = useCallback((options: { transportProof?: boolean } = {}): boolean => {
+    const scoped = resolveScopedPackItems(options);
     if (!scoped) return false;
 
     itemsScopeKeyRef.current = requestScopeKey;
@@ -946,8 +1057,37 @@ export function useReviewSession({ rotations, week, rotationSizes, fetchSlots, f
     setError(null);
     setServingOffline(true);
     servingOfflineRef.current = true;
+    fallbackPaintedRef.current = !allowUnverifiedPackRef.current;
     return true;
   }, [requestScopeKey, resetItemState, resolveScopedPackItems]);
+
+  /**
+   * Keep the session going from the pack BEHIND what is already on screen.
+   * Used when a next-batch request fails or the link is known to be degraded:
+   * the card being read, its grade bar and the queue ahead all stay put.
+   */
+  const appendPackFallback = useCallback((transportProof: boolean): boolean => {
+    if (itemsScopeKeyRef.current !== requestScopeKey) return false;
+    const scoped = resolveScopedPackItems({ transportProof });
+    if (!scoped) return false;
+    const heldOwner = itemsOwnerRef.current;
+    if (typeof heldOwner === 'string' && heldOwner !== scoped.packUserKey) return false;
+    const held = new Set(itemsRef.current.map(reviewItemKey));
+    const extra = scoped.items.filter((item) => !held.has(reviewItemKey(item))
+      && !(item.type === 'card' && reviewedCardIdsRef.current.has(item.id))
+      && !(item.type === 'question' && reviewedQuestionIdsRef.current.has(item.id)));
+    if (extra.length === 0) return false;
+    const updated = [...itemsRef.current, ...extra];
+    itemsRef.current = updated;
+    setItems(updated);
+    if (heldOwner == null) itemsOwnerRef.current = scoped.packUserKey;
+    setIsExhausted(false);
+    setError(null);
+    setServingOffline(true);
+    servingOfflineRef.current = true;
+    fallbackPaintedRef.current = true;
+    return true;
+  }, [requestScopeKey, resolveScopedPackItems]);
 
   /** Paint pack immediately while the live session request continues. */
   const paintOptimisticPack = useCallback((): boolean => {
@@ -960,6 +1100,7 @@ export function useReviewSession({ rotations, week, rotationSizes, fetchSlots, f
       queueSize,
       reviewFilter,
       itemType,
+      media,
       online,
       packItemCount: scoped?.items.length ?? 0,
     }) || !scoped) {
@@ -987,7 +1128,7 @@ export function useReviewSession({ rotations, week, rotationSizes, fetchSlots, f
     setLoading(false);
     loadTimerRef.current?.markFirstCard();
     return true;
-  }, [requestScopeKey, resetItemState, resolveScopedPackItems, reviewFilter, itemType]);
+  }, [requestScopeKey, resetItemState, resolveScopedPackItems, reviewFilter, itemType, media]);
 
   const fetchItems = useCallback(async (
     append = false,
@@ -996,6 +1137,9 @@ export function useReviewSession({ rotations, week, rotationSizes, fetchSlots, f
     challengeRevisionOverride?: number | null,
     throwOnFailure = false,
   ) => {
+    // A calendar replay is the whole queue: nothing may request or adopt an
+    // ordinary batch into it (difficulty refresh, retry, low-water prefetch).
+    if (boundedQueue) return;
     const pendingCohortTurn = pendingCohortTurnRef.current;
     if (
       cohortJourneyId
@@ -1019,6 +1163,9 @@ export function useReviewSession({ rotations, week, rotationSizes, fetchSlots, f
       // cannot remain gradeable after the user switches back to All.
       itemsScopeKeyRef.current = requestScopeKey;
       itemsRef.current = [];
+      involuntaryReloadHeadRef.current = null;
+      involuntaryHeadContextRef.current = null;
+      optimisticHeadRef.current = null;
       setItems([]);
       setCurrentIndex(0);
       setLoading(true);
@@ -1035,6 +1182,42 @@ export function useReviewSession({ rotations, week, rotationSizes, fetchSlots, f
         servePackFallback();
         setLoading(false);
       }
+      return;
+    }
+
+    // A link already known to be degraded (or a browser that says offline):
+    // do not put another doomed request in front of the saved pack. The
+    // connectivity probe brings the session back to live (see the recovery
+    // effect below).
+    if (!hasCohortTurn && challengeRevisionOverride == null && getLinkState() !== 'online') {
+      // No request has been made, so nothing here proves the link is dead:
+      // only the signed-in session's own pack may be used. Without a verified
+      // key, fall through and ask the server.
+      if (!append && itemsRef.current.length === 0) {
+        if (servePackFallback()) {
+          setLoading(false);
+          loadTimerRef.current?.report('first_card');
+          return;
+        }
+      } else if (!append && optimisticHeadRef.current && !servingOfflineRef.current) {
+        // The instant first-frame paint is the signed-in session's own pack
+        // (paintOptimisticPack has no transport proof and requires the
+        // session key). Keep it as the session instead of a doomed request.
+        optimisticHeadRef.current = null;
+        setServingOffline(true);
+        servingOfflineRef.current = true;
+        fallbackPaintedRef.current = true;
+        setLoading(false);
+        return;
+      } else if (append && !fetchingMoreRef.current && appendPackFallback(false)) {
+        return;
+      }
+    }
+
+    // Never append a live batch over device cards owned by another identity
+    // than the session's (unresolved session showing the stored owner's pack).
+    if (append && servingOfflineRef.current && itemsOwnerRef.current !== userKeyRef.current) {
+      setIsExhausted(true);
       return;
     }
 
@@ -1061,6 +1244,20 @@ export function useReviewSession({ rotations, week, rotationSizes, fetchSlots, f
 
     if (!append) loadTimerRef.current?.markFetchStart();
 
+    // Nothing on screen and the first request is slow: paint the saved pack
+    // rather than a skeleton. Requires the session's own key (no transport
+    // proof yet), so it can never show another account's pack.
+    let slowPaintTimer: ReturnType<typeof setTimeout> | undefined;
+    if (!append && !hasCohortTurn && challengeRevisionOverride == null && itemsRef.current.length === 0) {
+      slowPaintTimer = setTimeout(() => {
+        if (!requestIsCurrent() || itemsRef.current.length > 0) return;
+        if (servePackFallback()) {
+          setLoading(false);
+          loadTimerRef.current?.report('first_card');
+        }
+      }, SLOW_LINK_PAINT_MS);
+    }
+
     let aborted = false;
     try {
       // Abort any in-flight request before starting a new one
@@ -1079,6 +1276,28 @@ export function useReviewSession({ rotations, week, rotationSizes, fetchSlots, f
       const requestBeganWithPendingReviews = requestUserKey
         ? getQueueSize('review', requestUserKey) > 0
         : false;
+      // Guest grades use the existing device-guest outbox partition, not the
+      // authenticated/server bootstrap key used to own offline packs. Never
+      // infer a stored account when the current session has no account key.
+      const discoveryQueueOwner = owner && !owner.verified ? owner.ownerKey : requestUserKey;
+      const discoveryOwnerLease = owner && owner.ownerKey === discoveryQueueOwner
+        ? { ownerKey: owner.ownerKey, generation: owner.generation } : null;
+      if (append && discoveryQueueOwner && getQueueSize('review', discoveryQueueOwner) > 0
+        && itemsRef.current.some(item => item.decisionContext?.firstReviewVersion === 2)) {
+        // Grades advance optimistically. Give this background discovery draw
+        // the existing bounded flush budget so it can use committed evidence.
+        // The visible reserve remains usable; a slow link still degrades.
+        let discoveryFlushTimer: ReturnType<typeof setTimeout> | undefined;
+        try {
+          await Promise.race([
+            flushReviewQueue(discoveryQueueOwner).catch(() => {}),
+            new Promise<void>(resolve => { discoveryFlushTimer = setTimeout(resolve, FLUSH_BUDGET_MS); }),
+          ]);
+        } finally {
+          if (discoveryFlushTimer !== undefined) clearTimeout(discoveryFlushTimer);
+        }
+        if (!requestIsCurrent() || (discoveryOwnerLease && !isOfflineOwnerCurrent(discoveryOwnerLease))) return;
+      }
 
       // Build exclusion params (shared across all fetches). Durable tombstones
       // apply to the first reconnect batch too, not just appended pages.
@@ -1208,6 +1427,7 @@ export function useReviewSession({ rotations, week, rotationSizes, fetchSlots, f
           feedMode,
           reviewFilter,
           itemType,
+          media,
           focusRotation,
           topics,
           cluster,
@@ -1315,7 +1535,7 @@ export function useReviewSession({ rotations, week, rotationSizes, fetchSlots, f
 
       const persistLiveBatch = (batch: ReviewItem[]) => {
         if (hasCohortTurn || !requestUserKey || !requestOwnerLease
-          || !isOfflineOwnerCurrent(requestOwnerLease) || batch.length === 0) return;
+          || !isOfflineOwnerCurrent(requestOwnerLease) || batch.length === 0 || media) return;
         const packBatch = batch.filter(item => !isProtectedPracticeItem(item));
         if (packBatch.length === 0) return;
         const input = {
@@ -1350,7 +1570,12 @@ export function useReviewSession({ rotations, week, rotationSizes, fetchSlots, f
         if (newItems.length === 0) {
           setIsExhausted(true);
         } else {
-          const existingIds = new Set(itemsRef.current.map(reviewItemKey));
+          // Consumed items too: a server that ignored the exclusion list must
+          // not put a card the learner has already answered back in the queue.
+          const existingIds = new Set([
+            ...itemsRef.current.map(reviewItemKey),
+            ...reviewedItemKeys(reviewedCardIdsRef.current, reviewedQuestionIdsRef.current),
+          ]);
           const deduped = dedupeReviewItems(newItems, existingIds);
           if (deduped.length === 0) {
             setIsExhausted(true);
@@ -1359,6 +1584,15 @@ export function useReviewSession({ rotations, week, rotationSizes, fetchSlots, f
             itemsRef.current = updated;
             setItems(updated);
             persistLiveBatch(deduped);
+            if (
+              servingOfflineRef.current
+              && !allowUnverifiedPackRef.current
+              && itemsOwnerRef.current === requestUserKey
+            ) {
+              setServingOffline(false);
+              servingOfflineRef.current = false;
+              fallbackPaintedRef.current = false;
+            }
           }
         }
       } else {
@@ -1377,10 +1611,28 @@ export function useReviewSession({ rotations, week, rotationSizes, fetchSlots, f
         // pack-paint guard below cannot cover this: it only ever tracked the
         // optimistic paint, so a card from a live or adopted batch was
         // unprotected — the swap that survived two earlier fixes.
-        const involuntaryHead = involuntaryReloadHeadRef.current;
+        const involuntaryContext = involuntaryHeadContextRef.current;
+        const involuntaryHead = involuntaryContext === null
+          || (involuntaryContext.scopeKey === requestScopeKey && involuntaryContext.ownerKey === requestUserKey)
+          ? involuntaryReloadHeadRef.current
+          : null;
         involuntaryReloadHeadRef.current = null;
-        const retainedHead = painted ?? involuntaryHead;
-        const replacingUpcoming = challengeRevisionOverride != null;
+        involuntaryHeadContextRef.current = null;
+        // Only a card owned by this request's account may be kept on screen
+        // (an account switch mid-recovery kept A's card in front of B's batch).
+        const heldOwnedByRequest = itemsOwnerRef.current === requestUserKey;
+        const retainedHead = heldOwnedByRequest ? painted ?? involuntaryHead : null;
+        // The pack was painted because this (or an earlier) request was slow or
+        // failed, and the reader may already be several cards in. Keep every
+        // card up to the one on screen; the live batch replaces only what is
+        // still ahead.
+        const adoptBehindReader = fallbackPaintedRef.current
+          && heldOwnedByRequest
+          && servingOfflineRef.current
+          && itemsRef.current.length > 0
+          && itemsScopeKeyRef.current === requestScopeKey;
+        fallbackPaintedRef.current = false;
+        const replacingUpcoming = challengeRevisionOverride != null || adoptBehindReader;
         const currentPrefix = replacingUpcoming
           ? itemsRef.current.slice(0, currentIndexRef.current + 1)
           : [];
@@ -1388,8 +1640,7 @@ export function useReviewSession({ rotations, week, rotationSizes, fetchSlots, f
         const deduped = replacingUpcoming
           ? dedupeReviewItems(newItems, new Set([
               ...heldKeys,
-              ...reviewedCardIdsRef.current,
-              ...reviewedQuestionIdsRef.current,
+              ...reviewedItemKeys(reviewedCardIdsRef.current, reviewedQuestionIdsRef.current),
             ]))
           : mergeOptimisticHead({
           paintedHead: isProtectedPracticeItem(retainedHead ?? undefined) ? null : retainedHead,
@@ -1414,12 +1665,16 @@ export function useReviewSession({ rotations, week, rotationSizes, fetchSlots, f
         setItems(replacementItems);
         itemsRef.current = replacementItems;
         if (!replacingUpcoming) setCurrentIndex(0);
-        if (!preserveSessionState) {
+        if (!preserveSessionState && !adoptBehindReader) {
           reviewedCardIdsRef.current.clear();
           reviewedQuestionIdsRef.current.clear();
         }
-        if (!replacingUpcoming) resetItemState();
-        if (!preserveSessionState) {
+        // The kept head is still the card being read: do not reset its reveal.
+        const keptCurrentCard = Boolean(retainedHead)
+          && replacementItems[0] !== undefined
+          && reviewItemKey(replacementItems[0]) === reviewItemKey(retainedHead!);
+        if (!replacingUpcoming && !keptCurrentCard) resetItemState();
+        if (!preserveSessionState && !adoptBehindReader) {
           setStatsState(
             requestUserKey
               ? (
@@ -1462,10 +1717,39 @@ export function useReviewSession({ rotations, week, rotationSizes, fetchSlots, f
         || (err instanceof DOMException && err.name === 'AbortError')
       ) {
         aborted = true;
-      } else if (!append && challengeRevisionOverride == null && servePackFallback()) {
-        // Offline (or the API is down) and we have a pack: study continues.
-        // Grades go to the outbox and replay on reconnect, as they already did.
+      } else if (
+        !append
+        && challengeRevisionOverride == null
+        && isTransportProof(err)
+        && itemsScopeKeyRef.current === requestScopeKey
+        && itemsRef.current.length > currentIndexRef.current
+        && itemsOwnerRef.current === (userKeyRef.current ?? unverifiedPackOwnerKey(readOfflineOwner()))
+      ) {
+        // Something is already on screen (a slow-link pack paint, or the card a
+        // recovery refetch was protecting). Keep it, and keep going from the
+        // pack behind it. Resetting to the pack head here would yank the card.
+        appendPackFallback(true);
+        setServingOffline(true);
+        servingOfflineRef.current = true;
+        fallbackPaintedRef.current = true;
+      } else if (
+        !append
+        && challengeRevisionOverride == null
+        && servePackFallback({ transportProof: isTransportProof(err) })
+      ) {
+        // Offline, a dead or hanging link, or the API is down, and we have a
+        // pack: study continues. Grades go to the outbox and replay later.
         loadTimerRef.current?.report('first_card');
+      } else if (
+        append
+        && isTransportProof(err)
+        && (appendPackFallback(true) || itemsRef.current.length > currentIndexRef.current)
+      ) {
+        // The next batch did not arrive on a weak link. Either the pack now
+        // follows the current card, or there are still cards ahead: in both
+        // cases the card on screen keeps its grade bar. Before 15 Oct 2026 this
+        // set `error`, which swapped the grade bar for "Could not load the next
+        // item · Retry" mid-session.
       } else if (append && servingOfflineRef.current) {
         // Working through the pack and it ran out. That is the end of the
         // offline session, not an error worth interrupting the user with.
@@ -1497,6 +1781,7 @@ export function useReviewSession({ rotations, week, rotationSizes, fetchSlots, f
         }
       }
     } finally {
+      if (slowPaintTimer !== undefined) clearTimeout(slowPaintTimer);
       // A superseded request cannot mutate loading/prefetch state owned by its
       // replacement. The current request will settle those fields itself.
       if (requestIsCurrent()) {
@@ -1509,7 +1794,7 @@ export function useReviewSession({ rotations, week, rotationSizes, fetchSlots, f
       }
     }
   // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [resetItemState, rotations.join(','), week, activeModules, fetchSlots, feedMode, reviewFilter, itemType, requestedTopicsKey, focusRotation, requestScopeKey, servePackFallback, singleTurn, cohortJourneyId, hasCohortTurn]);
+  }, [boundedQueue, resetItemState, rotations.join(','), week, activeModules, fetchSlots, feedMode, reviewFilter, itemType, media, requestedTopicsKey, focusRotation, requestScopeKey, servePackFallback, appendPackFallback, singleTurn, cohortJourneyId, hasCohortTurn]);
 
   useEffect(() => {
     if (!exhaustedChallenge || loading || isFetchingMore) return;
@@ -1532,6 +1817,7 @@ export function useReviewSession({ rotations, week, rotationSizes, fetchSlots, f
   /** Replace only the unshown reserve after a challenge preference changes. */
   const refreshForChallenge = useCallback(
     async (revision: number) => {
+      if (boundedQueue) return;
       if (hasCohortTurn) {
         // A Cohort draw is persisted before delivery and requires its answer
         // before continuing. The saved preference applies to the next draw;
@@ -1569,13 +1855,33 @@ export function useReviewSession({ rotations, week, rotationSizes, fetchSlots, f
         }
       }
     },
-    [fetchItems, hasCohortTurn],
+    [boundedQueue, fetchItems, hasCohortTurn],
   );
 
   // Keep a ref to fetchItems so the mount effect doesn't re-run (and abort)
   // when only activeModules changes (server sync after session resolves).
   const fetchItemsRef = useRef(fetchItems);
   fetchItemsRef.current = fetchItems;
+
+  // Back to live by itself: when the link recovers while the session is on
+  // the pack, fetch a live batch and adopt it behind the card on screen.
+  const previousLinkStateRef = useRef(linkState);
+  useEffect(() => {
+    const previous = previousLinkStateRef.current;
+    previousLinkStateRef.current = linkState;
+    if (linkState !== 'online' || previous === 'online') return;
+    if (allowUnverifiedPack || hasCohortTurn || !servingOfflineRef.current) return;
+    if (fullLoadInFlightRef.current) return;
+    if (itemsOwnerRef.current !== userKeyRef.current) return;
+    fallbackPaintedRef.current = true;
+    void fetchItemsRef.current(false, true);
+  }, [linkState, allowUnverifiedPack, hasCohortTurn]);
+
+  // The connection indicator words "Using saved device data" from this.
+  useEffect(
+    () => (servingOffline || allowUnverifiedPack ? markDeviceDataInUse() : undefined),
+    [servingOffline, allowUnverifiedPack],
+  );
 
   // Load fresh items on mount/rotation change.
   // Flush any queued offline reviews BEFORE fetching so the server sees
@@ -1609,6 +1915,24 @@ export function useReviewSession({ rotations, week, rotationSizes, fetchSlots, f
       const usableItems = userKey
         ? filterOfflineTombstones(userKey, serverBatch.items)
         : serverBatch.items;
+      // A calendar replay is the whole queue. Tombstones filter it; they must
+      // not fall through into the ordinary review fetch.
+      if (boundedQueue) {
+        if (usableItems.length !== serverBatch.items.length) {
+          setItems(usableItems);
+          itemsRef.current = usableItems;
+        }
+        setLoading(false);
+        if (usableItems.length === 0) {
+          setIsExhausted(true);
+          loadTimerRef.current?.report('exhausted');
+        } else {
+          loadTimerRef.current?.report('first_card');
+        }
+        return () => {
+          abortControllerRef.current?.abort();
+        };
+      }
       // Only a batch consumed *entirely* by local progress is unusable; fall
       // through to a normal fetch in that case.
       if (usableItems.length > 0 || serverBatch.items.length === 0) {
@@ -1635,6 +1959,16 @@ export function useReviewSession({ rotations, week, rotationSizes, fetchSlots, f
       setItems([]);
       itemsRef.current = [];
       setLoading(true);
+    }
+
+    if (boundedQueue) {
+      setItems([]);
+      itemsRef.current = [];
+      setLoading(false);
+      setIsExhausted(true);
+      return () => {
+        loadedKeyRef.current = null;
+      };
     }
 
     if (allowUnverifiedPack) {
@@ -1675,10 +2009,27 @@ export function useReviewSession({ rotations, week, rotationSizes, fetchSlots, f
     // at "Preparing review…" forever. Cap the wait; the flush finishes in the
     // background and the worst case is one re-served card, which the exclusion
     // list already handles.
+    // The card on screen already belongs to this account (e.g. the saved pack
+    // shown while the session was unresolved, now confirmed): this reload must
+    // keep it, and its reveal state, instead of jumping to the new batch head.
+    const heldHead = itemsRef.current[currentIndexRef.current];
+    if (
+      heldHead
+      && userKey
+      && itemsOwnerRef.current === userKey
+      && itemsScopeKeyRef.current === requestScopeKey
+      && !isProtectedPracticeItem(heldHead)
+    ) {
+      involuntaryReloadHeadRef.current = heldHead;
+      involuntaryHeadContextRef.current = { scopeKey: requestScopeKey, ownerKey: userKey };
+    }
+
     let fetched = false;
     const startFetch = () => {
       if (fetched) return;
       fetched = true;
+      // fetchItems re-marks the load in flight if it goes to the network.
+      fullLoadInFlightRef.current = false;
       fetchItemsRef.current(false);
     };
 
@@ -1688,6 +2039,10 @@ export function useReviewSession({ rotations, week, rotationSizes, fetchSlots, f
       paintOptimisticPack();
       startFetch();
     } else {
+      // The reload is in flight from the start of its flush wait: a low-water
+      // append landing first would clear the fallback state the reload needs
+      // to keep the reader's card (Codex max review, 15 Oct 2026).
+      fullLoadInFlightRef.current = true;
       flushBudget = window.setTimeout(startFetch, FLUSH_BUDGET_MS);
       flushReviewQueue(userKey)
         .catch(() => {})
@@ -1699,7 +2054,7 @@ export function useReviewSession({ rotations, week, rotationSizes, fetchSlots, f
 
     // Warm up the record function in parallel so the first answer doesn't
     // hit a cold start
-    if (!hasCohortTurn) fetch('/api/study/record', {
+    if (!hasCohortTurn && getLinkState() === 'online') fetch('/api/study/record', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: '{"type":"warmup"}',
@@ -1707,26 +2062,41 @@ export function useReviewSession({ rotations, week, rotationSizes, fetchSlots, f
 
     return () => {
       if (flushBudget !== undefined) window.clearTimeout(flushBudget);
+      if (!fetched) {
+        fullLoadInFlightRef.current = false;
+        involuntaryReloadHeadRef.current = null;
+        involuntaryHeadContextRef.current = null;
+      }
       abortControllerRef.current?.abort();
       loadedKeyRef.current = null;
     };
-  }, [allowUnverifiedPack, ownerLoadKey, paintOptimisticPack, requestScopeKey, rotationsKey, servePackFallback, userKey, week]);
+  }, [allowUnverifiedPack, boundedQueue, ownerLoadKey, paintOptimisticPack, requestScopeKey, rotationsKey, servePackFallback, userKey, week]);
 
   // Prefetch more when running low
   useEffect(() => {
-    if (singleTurn) return;
+    if (singleTurn || boundedQueue) {
+      if (boundedQueue && !loading && items.length > 0 && currentIndex >= items.length) setIsExhausted(true);
+      return;
+    }
     // A retest or explicit scaffold must be answered before the server can
     // choose its successor. Keep preparing known assets, but do not draw
     // questions from the learner's previous phase.
     if (items.slice(currentIndex).some(isPracticeFollowUpTurn)) return;
     if (items.length - currentIndex <= 3 && !fetchingMoreRef.current && items.length > 0) {
-      if (allowUnverifiedPack || servingOfflineRef.current) {
+      // The whole scoped pack is already in `items` when serving offline, so
+      // running low is the end of the reserve, unless the link is back.
+      // Also while identity is unresolved: the pack on screen belongs to the
+      // stored owner, and a live batch must not be appended over it until a
+      // matching session key exists (that change re-keys the whole load).
+      if (allowUnverifiedPack || (servingOfflineRef.current && (
+        linkState !== 'online' || itemsOwnerRef.current !== userKeyRef.current
+      ))) {
         setIsExhausted(true);
         return;
       }
       fetchItems(true);
     }
-  }, [allowUnverifiedPack, currentIndex, items, fetchItems, singleTurn]);
+  }, [allowUnverifiedPack, boundedQueue, currentIndex, items, fetchItems, loading, singleTurn, linkState]);
 
   // Keep 1 reviewed item behind current for z-to-undo; trim the rest.
   const UNDO_BUFFER = 1;
@@ -2016,11 +2386,15 @@ export function useReviewSession({ rotations, week, rotationSizes, fetchSlots, f
 
   const expectedDisplayOwner =
     allowUnverifiedPack || servingOffline
-      ? userKey ?? readOfflineOwner()?.ownerKey ?? null
+      ? userKey ?? unverifiedPackOwnerKey(readOfflineOwner())
       : userKey ?? null;
-  const displayOwnerMatches =
+  const storedOwnerRecord = readOfflineOwner();
+  const heldIsQuarantinedDeviceData = (allowUnverifiedPack || servingOffline)
+    && Boolean(storedOwnerRecord?.quarantined)
+    && itemsOwnerRef.current === storedOwnerRecord?.ownerKey;
+  const displayOwnerMatches = !heldIsQuarantinedDeviceData && (
     itemsOwnerRef.current === undefined ||
-    itemsOwnerRef.current === expectedDisplayOwner;
+    itemsOwnerRef.current === expectedDisplayOwner);
   const displayScopeMatches = itemsScopeKeyRef.current === requestScopeKey;
   const visibleItems = displayOwnerMatches && displayScopeMatches ? items : [];
   usePrepareReviewImages(visibleItems, currentIndex, expectedDisplayOwner, allowUnverifiedPack);

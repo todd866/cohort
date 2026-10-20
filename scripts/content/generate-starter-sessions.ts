@@ -284,6 +284,9 @@ async function main() {
                 rotation,
                 deletedAt: null,
                 id: { notIn: [...usedCardIds] },
+                // Starter sessions serve guests and new learners, who are never
+                // served clips, so a clip card would arrive without its video.
+                clipId: null,
                 NOT: { topics: { hasSome: EXCLUDED_TOPICS } },
                 ...topicFilter,
               }),

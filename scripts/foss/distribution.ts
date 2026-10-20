@@ -354,6 +354,24 @@ export const PROTECTED_PUBLIC_FALLBACKS: ReadonlyArray<Readonly<{
     sha256: '44dfa6fa29975b13e187ebbe0fe5d928ccba596af39cdf6c19f24b534015b053',
   },
   {
+    // MD3 preference persistence is excluded from the public build.
+    path: 'src/components/review/LearningCheckIn.tsx',
+    licence: 'MIT',
+    sha256: 'a80c239502ba9676a87dd9046f53f3ef4a4d1ac34c3fbef242c49772f6b07604',
+  },
+  {
+    // Highlight selection is reusable; this deployment's media IDs stay private.
+    path: 'src/lib/study/first-review-catalog.ts',
+    licence: 'MIT',
+    sha256: '6f6cd733b13013217cd0c8a73771e4f7d14274c0d88b829832101c3af3bb48b0',
+  },
+  {
+    // Reuse policy ships; this deployment's reviewed storage identities do not.
+    path: 'src/lib/video/public-clip-catalog.ts',
+    licence: 'MIT',
+    sha256: '28482db6a517659cb9c1dd37553706c4e6755a8ba592fd87406b0997cd9d7b1e',
+  },
+  {
     // The exam-target ENGINE is public; the blueprint it aims at is not. The
     // real registry carries a private institutional exam blueprint (domain
     // labels, per-domain counts, and receipts naming assessment reports) —
@@ -381,7 +399,23 @@ export const PROTECTED_PUBLIC_FALLBACKS: ReadonlyArray<Readonly<{
     // 2026-10-05: quarantined feedback images link UserDocument to ContentIssue.
     // Keep the nullable opposite relation and purpose discriminator used by the
     // exported image upload/bind/read paths; no private document surface added.
-    sha256: 'adedf51c8133060e1ab53bb24b53767686a75f379f336c5218f76e4c6aa54c16',
+    // 2026-10-15: User gained the nullable `experience` JSON (statistics
+    // layout), which the distributed statistics page reads and writes.
+    sha256: '819050dd718dc0e700f3fb81d8a6d0ceb2a0c95f4d1c352a5e20caf5faf60fad',
+  },
+  {
+    // The statistics engine is public; the exam blueprint areas it rolls
+    // items into are one institution's (the same material as registry-data).
+    path: 'src/lib/stats/blueprint-areas-data.ts',
+    licence: 'MIT',
+    sha256: '4f41a16842b386616b4be8b50cac3aaa452a042baf0d7bb70bc9235d1de7f089',
+  },
+  {
+    // The Exam gaps page, layout API and calendar day breakdown are
+    // private-instance routes; the public statistics page links to none.
+    path: 'src/lib/stats/private-surfaces.ts',
+    licence: 'MIT',
+    sha256: '352f8b1fc27a6eb39679cdf2c42370c305b73326a35b08e5bc823a40a74d05ff',
   },
   {
     path: 'prisma/schema/content.prisma',
@@ -448,6 +482,12 @@ export const PROTECTED_PUBLIC_FALLBACKS: ReadonlyArray<Readonly<{
     path: 'src/components/FirstTouchCapture.tsx',
     licence: 'MIT',
     sha256: '5385f5c329dfa23b31d8eac1ae1a6df26f9b6fd9da2ca7e1552852958dab66da',
+  },
+  // The review bar mounts the owner's AI beside Flag; the public build has no AI.
+  {
+    path: 'src/components/tutor/AiReviewControl.tsx',
+    licence: 'MIT',
+    sha256: '2de9cef7fbc8d9eb2344f4fc49c2f1d342073e20cf23f0459cf16925540543bd',
   },
   {
     path: 'src/components/review/hooks/practice-follow-up-turn.ts',
@@ -739,6 +779,13 @@ export const PROTECTED_PUBLIC_FALLBACKS: ReadonlyArray<Readonly<{
     path: 'vitest.setup.ts',
     licence: 'MIT',
     sha256: '08f69cd2e5cacc8adf532067f3e3218053decaf6562b906422240894728d23ac',
+  },
+  {
+    // Private reviewed card abbreviation maps are replaced by an empty public
+    // implementation; the sidecar and its clinical meanings never ship.
+    path: 'src/lib/card-abbreviations.ts',
+    licence: 'MIT',
+    sha256: 'fc2a410663b9dfecae7cc7f573431846aae13277fae6683821391d78be9c2f92',
   },
 ];
 

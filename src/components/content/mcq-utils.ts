@@ -1,5 +1,6 @@
 // Shared MCQ utilities - extracted from duplicated code across MCQ components
 
+import { optionsCrossReference } from '@/lib/questions/option-references';
 import { shuffleWithSeed } from '@/lib/utils/shuffle';
 import { splitAtSentences } from '@/lib/utils/split-sentences';
 export { shuffleWithSeed };
@@ -291,7 +292,8 @@ export function processOptions(
     ? options.find((o) => o.label === correctAnswer)
     : options.find((o) => o.isCorrect);
 
-  const shuffled = shuffleWithSeed(options, seed);
+  // Options that name other options keep their order (option-references.ts).
+  const shuffled = optionsCrossReference(options.map((o) => o.text)) ? options : shuffleWithSeed(options, seed);
   const newCorrectIndex = correctOpt ? shuffled.indexOf(correctOpt) : 0;
 
   return {

@@ -1,3 +1,4 @@
+import { mediaCandidateLimit } from './media-review';
 import { createHash } from 'node:crypto';
 import { NextResponse, after } from 'next/server';
 import { resolveGroupImage } from '@/lib/question-groups/group-image.server';
@@ -287,6 +288,8 @@ function failClosedExamTargetLifecycle(
  * This is the most complete (and slowest) path — used when cache misses and filters are active.
  */
 export async function buildManifoldSession(ctx: SessionContext): Promise<NextResponse> {
+  const imageTrust = ctx.imageTier === 'copyright'
+    ? 'copyright-required' as const : ctx.isGuest ? 'public' as const : 'auth-required' as const;
   let newRemaining: { cards: number; questions: number } | undefined;
   let poolFilters: ServablePoolFilters | undefined;
   let cacheSnapshot: SessionCacheSnapshot | null = null;
@@ -366,6 +369,7 @@ export async function buildManifoldSession(ctx: SessionContext): Promise<NextRes
           rotation: ctx.rotation,
           allowedCrossSourceRotations: ctx.crossSourceRotations ?? [],
           weekFilter: ctx.weekFilter,
+          ...(ctx.media ? { media: ctx.media, imageTrust, isCopyrightTier: ctx.imageTier === 'copyright' } : {}),
           limit: ctx.batchSize,
           now: protectedLaneNow,
           profile: relearnProfile,
@@ -412,6 +416,7 @@ export async function buildManifoldSession(ctx: SessionContext): Promise<NextRes
           rotation: ctx.rotation,
           allowedCrossSourceRotations: ctx.crossSourceRotations ?? [],
           weekFilter: ctx.weekFilter,
+          ...(ctx.media ? { media: ctx.media, imageTrust, isCopyrightTier: ctx.imageTier === 'copyright' } : {}),
           excludeIds: dueExcludedIds,
           limit: ctx.batchSize - protectedRelearnSeats,
           now: protectedLaneNow,
@@ -502,10 +507,12 @@ export async function buildManifoldSession(ctx: SessionContext): Promise<NextRes
           .digest('hex')
       : undefined;
     const baseSchedulerOptions = {
+      media: ctx.media,
+      imageTrust,
       reviewChallenge: ctx.reviewChallenge?.level,
       rotation: ctx.rotation,
       week: ctx.weekFilter ?? undefined,
-      size: discretionarySchedulerSize,
+      size: mediaCandidateLimit(discretionarySchedulerSize, ctx.media),
       requestedBatchSize: ctx.batchSize,
       protectedSeatCount,
       minFirstSightItems: noveltyBudget.minFirstSightItems,
@@ -527,6 +534,7 @@ export async function buildManifoldSession(ctx: SessionContext): Promise<NextRes
       practiceLocale: ctx.practiceLocale,
       currentTeachingWeek: ctx.currentTeachingWeek,
       topicTeachingWeeks: ctx.topicTeachingWeeks,
+      topicRecencyDays: ctx.topicRecencyDays,
       recentFigureExposures: ctx.recentFigureExposures,
       crossSourceRotations: ctx.crossSourceRotations,
       maxCrossSourceItems: ctx.maxCrossSourceItems
@@ -629,7 +637,7 @@ export async function buildManifoldSession(ctx: SessionContext): Promise<NextRes
       const withRelearn = selectRelearnReserve({
         conceptItems: unpinnedItems,
         relearnCardIds: commonRelearnIds,
-        batchSize: ctx.batchSize,
+        batchSize: mediaCandidateLimit(ctx.batchSize, ctx.media),
       });
       const relearnPrefix = withRelearn.slice(0, commonRelearnIds.length);
       const schedulerTail = withRelearn.slice(commonRelearnIds.length);
@@ -651,7 +659,7 @@ export async function buildManifoldSession(ctx: SessionContext): Promise<NextRes
           ...relearnPrefix,
           ...duePrefix,
           ...schedulerTail,
-        ].slice(0, ctx.batchSize),
+        ].slice(0, mediaCandidateLimit(ctx.batchSize, ctx.media)),
       };
     };
     const dueSeatsForUnpinnedCount = (unpinnedCount: number) => Math.min(
@@ -760,7 +768,7 @@ export async function buildManifoldSession(ctx: SessionContext): Promise<NextRes
     const hydrateVariant = (items: typeof sessionResult.items) => hydrateScheduledItems(
       items,
       hydrationData,
-      { rotation: ctx.rotation },
+      { rotation: ctx.rotation, ...(ctx.media ? { media: ctx.media } : {}) },
       null,
       hydrateTrustOverride,
     );
@@ -821,7 +829,8 @@ export async function buildManifoldSession(ctx: SessionContext): Promise<NextRes
       // dedup so all three paired variants persist and serve the same bounded
       // final-order contract. This also keeps attempt servedItemCount within
       // the database's requestedSize constraint.
-      const finalItems = filtered.slice(0, ctx.batchSize);
+      const finalItems = filtered.slice(0, ctx.batchSize)
+        .map(item => ctx.media ? { ...item, media: ctx.media } : item);
       if (reportWarnings && duplicates > 0) {
         logger.warn('unified-session in-session dedup dropped duplicates', {
           userId: ctx.userId,
@@ -1291,7 +1300,9 @@ export async function buildManifoldSession(ctx: SessionContext): Promise<NextRes
     // from SQL via scoreOrderedPairwiseDistances), so no stripping is needed.
     // Cache the items *with* serveDecisionIds so cache-served items can attribute
     // back to the original decision row.
-    const cacheItems = itemsWithDecisions;
+    const cacheItems = ctx.teachingPaceFingerprint
+      ? itemsWithDecisions.map(item => ({ ...item, teachingPaceFingerprint: ctx.teachingPaceFingerprint }))
+      : itemsWithDecisions;
     // The request and background-build snapshots must describe the same preference.
     if (cacheSnapshot?.reviewChallenge && ctx.reviewChallenge
       && cacheSnapshot.reviewChallenge.revision !== ctx.reviewChallenge.revision) cacheSnapshot = null;
@@ -1368,6 +1379,7 @@ export async function buildManifoldSession(ctx: SessionContext): Promise<NextRes
     // New-only additionally requires all-time exclusions the fallback lacks.
     const hasNarrowingRequestFilter = Boolean(
       ctx.typeFilter
+      || ctx.media
       || ctx.difficultyFilter
       || ctx.topicsFilter
       || ctx.clusterFilter

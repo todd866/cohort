@@ -367,6 +367,7 @@ export function logExposures(
       // Feed-mode tag lets walk-audit suppress pool-constrained pathologies
       // for new-only sessions. See @/lib/audit/walk-pathologies.
       feedMode: opts.feedMode ?? 'mixed',
+      media: item.media,
       // Cloze-variant group id lets walk-audit detect `variant-sibling-repeat`
       // (a regression in scheduler suppression). See @/lib/audit/walk-pathologies.
       variantGroupId: item.variantGroupId,

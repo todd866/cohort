@@ -45,7 +45,7 @@ export function AppShell({
   const shell = pathname === '/textbook/stream' ? (
     <div className="flex h-[100svh] min-h-0 flex-col">
       <SkipToMainContent />
-      <ConnectionBanner inline message="Offline — prepared pages remain available." />
+      <ConnectionBanner offlineMessage="Prepared pages remain available" />
       <main id="main-content" tabIndex={-1} className="min-h-0 flex-1 overflow-auto">
         {children}
       </main>

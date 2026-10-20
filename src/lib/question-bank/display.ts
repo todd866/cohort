@@ -1,6 +1,7 @@
 import type { CuratedQuestion, OptionCombination } from './types';
 import { responseFormatOfOptions } from './statement-items';
 import { shuffle, displaceCorrectFromFirst } from '@/lib/utils/shuffle';
+import { optionsCrossReference } from '@/lib/questions/option-references';
 
 /**
  * Probability that a correct answer landing at A is displaced. Applied on EVERY
@@ -128,6 +129,19 @@ export function getQuestionOptions(
       explanation: opt.explanation,
       ...((opt as { statement?: true }).statement ? { statement: true as const } : {}),
       ...((opt as { fixedKey?: true }).fixedKey ? { fixedKey: true as const } : {}),
+    }));
+  }
+
+  // Options that name other options ("Both A and B", "None of the above")
+  // keep their stored order and letters: shuffled, they would point at the
+  // wrong options (src/lib/questions/option-references.ts).
+  if (optionsCrossReference(question.options.map((opt) => opt.text))) {
+    return question.options.map((opt, index) => ({
+      label: String.fromCharCode(65 + index),
+      text: opt.text,
+      isCorrect: opt.isCorrect,
+      originalIndex: index,
+      explanation: opt.explanation,
     }));
   }
 

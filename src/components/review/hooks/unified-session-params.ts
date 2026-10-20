@@ -1,5 +1,5 @@
 import type { FetchSlot } from './useReviewSession';
-import type { ReviewFilter, ReviewItemType, ReviewTopic } from '@/lib/review/review-intent';
+import type { ReviewFilter, ReviewItemType, ReviewMedia, ReviewTopic } from '@/lib/review/review-intent';
 
 export interface UnifiedSessionParamOpts {
   week?: number | null;
@@ -9,6 +9,7 @@ export interface UnifiedSessionParamOpts {
   reviewFilter?: ReviewFilter;
   /** MCQ-only review: narrow the batch to questions. */
   itemType?: ReviewItemType;
+  media?: ReviewMedia;
   /** Checked-in topic filters that narrow the authorized rotation. */
   topics?: readonly ReviewTopic[];
   /** One manifold cluster, from a square on the profile knowledge heatmap. */
@@ -46,8 +47,12 @@ export function buildUnifiedSessionParams(slot: FetchSlot, opts: UnifiedSessionP
   if (opts.activeModules.length > 0 && !focused) params.set('modules', opts.activeModules.join(','));
   if (opts.excludeCards) params.set('excludeCards', opts.excludeCards);
   if (opts.excludeQuestions) params.set('excludeQuestions', opts.excludeQuestions);
-  if (opts.reviewFilter) params.set('filter', opts.reviewFilter);
-  if (opts.itemType) params.set('type', opts.itemType);
+  if (opts.media) {
+    params.set('media', opts.media);
+  } else {
+    if (opts.reviewFilter) params.set('filter', opts.reviewFilter);
+    if (opts.itemType) params.set('type', opts.itemType);
+  }
   if (opts.topics?.length) params.set('topics', opts.topics.join(','));
   if (opts.cluster) params.set('cluster', opts.cluster);
   if (opts.timezone) params.set('tz', opts.timezone);
@@ -55,7 +60,7 @@ export function buildUnifiedSessionParams(slot: FetchSlot, opts: UnifiedSessionP
   if (opts.reviewChallengeRevision != null) {
     params.set('reviewChallengeRevision', String(opts.reviewChallengeRevision));
   }
-  if (opts.feedMode === 'new-only' || opts.reviewFilter === 'new') {
+  if (!opts.media && (opts.feedMode === 'new-only' || opts.reviewFilter === 'new')) {
     params.set('feedMode', 'new-only');
   }
   return params;

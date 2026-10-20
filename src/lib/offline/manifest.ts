@@ -2,6 +2,7 @@ import {
   detectInstitutionFromHostname,
   SUPPORTS_PERSONAL_BRIEF,
 } from '@/lib/institution';
+import { MD3_ICON_BACKGROUND } from '@/lib/brand/md3-mark';
 
 export interface ManifestIcon {
   src: string;
@@ -65,7 +66,7 @@ export function buildWebManifest(host: string): WebManifest {
     display: 'standalone',
     orientation: 'portrait',
     background_color: '#ffffff',
-    theme_color: isCohort ? '#6366f1' : '#3b82f6',
+    theme_color: isCohort ? '#6366f1' : MD3_ICON_BACKGROUND,
     icons,
     // The brief is a single-user surface that only exists on the md3 host.
     // Points at the real route, not the /brief redirect that replaced it: an

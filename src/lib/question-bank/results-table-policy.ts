@@ -66,8 +66,18 @@ function referenceEnd(prose: string, measurementEnd: number): number | null {
   if ((match[1].match(/[a-z]+/gi) ?? []).some((word) => !REFERENCE_UNIT_WORDS.has(word.toLowerCase()))) return null;
   // A range or threshold is evidence of a reference panel. Qualitative notes,
   // ages and isolated parenthetical counts do not satisfy this condition.
-  if (!/(?:\d+(?:\.\d+)?\s*[-–—]\s*\d|[<>≤≥]\s*\d)/.test(match[2])) return null;
+  if (!/(?:\d+(?:\.\d+)?\s*[-–—]\s*\d|[<>≤≥]\s*\d)/.test(match[2]) && !isWordThreshold(match[2])) return null;
   return measurementEnd + match[0].length;
+}
+
+// "(normal below 140/90)" is the same reference as "(normal <140/90)". The
+// whole parenthetical must be the threshold plus units, so "(below 2 hours
+// ago)" stays narrative.
+const WORD_THRESHOLD = /^\s*(?:(?:normal|reference|ref|target|acceptable)(?:\s+range)?\s*:?\s+)?(?:below|under|above|over|less\s+than|greater\s+than|more\s+than|up\s+to|at\s+least|at\s+most)\s+\d+(?:[.,]\d+)?(?:\s*\/\s*\d+(?:[.,]\d+)?)?([^()]*)$/i;
+function isWordThreshold(reference: string): boolean {
+  const match = reference.match(WORD_THRESHOLD);
+  if (!match || !/^[\s.,%°×^⁰¹²³⁴⁵⁶⁷⁸⁹µμ/a-z\d]*$/i.test(match[1])) return false;
+  return (match[1].match(/[a-z]+/gi) ?? []).every((word) => REFERENCE_UNIT_WORDS.has(word.toLowerCase()));
 }
 
 export function countInlineMeasurements(stem: string): number {
@@ -89,4 +99,33 @@ export function needsResultsTable(stem: string): boolean {
   const between = prose.slice(firstEnd, measurements[1].start);
   return !/\n\s*\n/.test(between)
     && /^\s*(?:,\s*(?:and\s+)?|;\s*(?:and\s+)?|and\s+)(?:(?:his|her|the)\s+)?$/i.test(between);
+}
+
+// Laboratory analytes, matched anywhere in a table row's label so that
+// "Sodium now", "Initial lactate" and "ABG on room air — pH" all count.
+// Vital signs are deliberately absent: this contract is about lab values.
+const LAB_ROW_LABEL = /(?:^|[\s(—–-])(?:pH|Pa?CO(?:2|₂)|Pa?O(?:2|₂)|HCO(?:3|₃)|bicarbonate|base\s+excess|anion\s+gap|lactate|sodium|Na[⁺+]|potassium|K[⁺+]|chloride|Cl[⁻-]|glucose|creatinine|Cr|urea|BUN|eGFR|haemoglobin|hemoglobin|Hb|Hgb|white\s+(?:blood\s+)?cell\s+count|WCC|WBC|neutrophils?|lymphocytes?|eosinophils?|platelets?|reticulocytes?|INR|APTT|fibrinogen|D-dimer|bilirubin|ALT|AST|ALP|GGT|aminotransferases|albumin|protein|calcium|magnesium|phosph(?:ate|orus)|uric\s+acid|urate|CK|troponin|BNP|NT[\s-]?proBNP|CRP|C-reactive\s+protein|ESR|procalcitonin|ferritin|TSH|free\s+T[34]|PTH|cortisol|beta-hydroxybutyrate|ketones|free\s+fatty\s+acids|osmolality|ammonia|HbA1c)(?=$|[\s,:)—–-])/i;
+const REFERENCE_HEADER = /\b(?:normal|reference|range|interval|typical|expected|band|target|usual|baseline)\b/i;
+const IN_CELL_REFERENCE = /\(\s*(?:normal\s*)?(?:[<>≤≥]\s*\d|\d+(?:\.\d+)?\s*[-–—]\s*\d)/i;
+
+/**
+ * True when an authored results table lists two or more laboratory values
+ * that the learner has nothing to interpret against: no reference-style
+ * column and no parenthesised range in the row. USyd papers print reference
+ * ranges; an item that wants to test recall of a range should be scaffolded
+ * by a card that teaches it, not hide the range in a panel.
+ */
+export function labTableNeedsReferenceColumn(stem: string): boolean {
+  if (typeof stem !== 'string' || !stem.includes('|')) return false;
+  return extractMarkdownTables(stem).tables.some((table) => {
+    if (table.headers.some((header) => REFERENCE_HEADER.test(header))) return false;
+    const bareLabRows = table.rows.filter((row) => {
+      const [label = '', ...values] = row;
+      if (!LAB_ROW_LABEL.test(label.trim())) return false;
+      if (!values.some((value) => /\d/.test(value))) return false;
+      return !values.some((value) => IN_CELL_REFERENCE.test(value)
+        || [...value.matchAll(/\(([^()\n]*)\)/g)].some((match) => isWordThreshold(match[1])));
+    });
+    return bareLabRows.length >= 2;
+  });
 }

@@ -233,7 +233,19 @@ export async function bulkUpsertQuestions(
         "citations" = EXCLUDED."citations",
         "crosslinks" = EXCLUDED."crosslinks",
         "annotations" = EXCLUDED."annotations",
-        "abbreviations" = EXCLUDED."abbreviations",
+        -- A question source may omit its optional map. Preserve a reviewed map
+        -- only when every learner-visible clinical field is unchanged; an
+        -- explicit {} remains an intentional replacement, and changed content
+        -- must not inherit meanings from the old item.
+        "abbreviations" = CASE
+          WHEN EXCLUDED."abbreviations" IS NULL
+            AND "Question"."stem" IS NOT DISTINCT FROM EXCLUDED."stem"
+            AND "Question"."options" IS NOT DISTINCT FROM EXCLUDED."options"
+            AND "Question"."explanation" IS NOT DISTINCT FROM EXCLUDED."explanation"
+            AND "Question"."correctVariants" IS NOT DISTINCT FROM EXCLUDED."correctVariants"
+            THEN "Question"."abbreviations"
+          ELSE EXCLUDED."abbreviations"
+        END,
         "combinations" = EXCLUDED."combinations",
         "correctVariants" = EXCLUDED."correctVariants",
         "statements" = EXCLUDED."statements",

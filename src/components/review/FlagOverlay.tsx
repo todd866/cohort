@@ -60,11 +60,11 @@ export function FlagOverlay({
             Cancel
           </button>
           <button
-            disabled={submitting || image?.busy}
+            disabled={submitting}
             onClick={onSubmit}
             className="flex-1 py-2 rounded-lg bg-[var(--md-primary)] text-[var(--md-on-primary)] hover:opacity-90 transition-colors text-sm font-medium"
           >
-            {submitting || image?.busy ? 'Sending…' : error ? 'Retry' : 'Flag'}
+            {submitting ? 'Sending…' : error ? 'Retry' : 'Flag'}
           </button>
         </div>
         <div className="text-xs text-[var(--md-on-surface-variant)] text-center mt-2 opacity-60">

@@ -62,6 +62,8 @@ interface SidecarBase {
   usageTier: UsageTier;
   source: string;
   sourcePage: string;
+  /** Human-verified book/figure locator; never infer a printed folio from a PDF index. */
+  sourceLocator?: string;
   directImageUrl: string;
   license: string;
   licenseUrl: string;

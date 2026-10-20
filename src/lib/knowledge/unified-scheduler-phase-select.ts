@@ -736,6 +736,7 @@ export function fillQuestions(
           selectedQuestionVariantGroups,
           currentTeachingWeek: options.currentTeachingWeek,
           topicTeachingWeeks: options.topicTeachingWeeks,
+          topicRecencyDays: options.topicRecencyDays,
           masteredReentryCounter,
           recentFormatsByConcept,
           conceptThreadMatcher: interventionReason === 'failure_escalation'
@@ -838,7 +839,7 @@ export function fillCards(
         const conceptData = conceptMap.get(concept.conceptId);
         if (!conceptData) continue;
 
-        const candidates = getCardsFromBulk(concept.conceptId, conceptData, 20, bulk, selectedCardIds, penaltyContext, concept.currentRecall, options.currentTeachingWeek, applyExamTarget ? activeCardTargetScores : undefined, activeTargetRankMove, options.topicTeachingWeeks, options.recentFigureExposures, selectionNowMs(), options.reviewChallenge);
+        const candidates = getCardsFromBulk(concept.conceptId, conceptData, 20, bulk, selectedCardIds, penaltyContext, concept.currentRecall, options.currentTeachingWeek, applyExamTarget ? activeCardTargetScores : undefined, activeTargetRankMove, options.topicTeachingWeeks, options.recentFigureExposures, selectionNowMs(), options.reviewChallenge, options.topicRecencyDays);
         if (candidates.length === 0) continue;
 
         const similarityThreshold = already === 0 ? interferenceThreshold : Math.min(0.97, interferenceThreshold + 0.1);
@@ -953,7 +954,7 @@ export function fillCoverageLane(
       if (build.selectedCardCount >= targetCardCount) break;
       if (!concept) continue;
 
-      const candidates = getCardsFromBulk(concept.id, concept, 20, bulk, selectedCardIds, penaltyContext, state?.currentRecall, options.currentTeachingWeek, applyExamTarget ? activeCardTargetScores : undefined, activeTargetRankMove, options.topicTeachingWeeks, options.recentFigureExposures, selectionNowMs(), options.reviewChallenge);
+      const candidates = getCardsFromBulk(concept.id, concept, 20, bulk, selectedCardIds, penaltyContext, state?.currentRecall, options.currentTeachingWeek, applyExamTarget ? activeCardTargetScores : undefined, activeTargetRankMove, options.topicTeachingWeeks, options.recentFigureExposures, selectionNowMs(), options.reviewChallenge, options.topicRecencyDays);
       // Coverage lane only surfaces actually-pristine cards (the whole point).
       const pristineCandidates = candidates.filter((c) => unseenCardIds.has(c.id));
       if (pristineCandidates.length === 0) continue;

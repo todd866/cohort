@@ -615,7 +615,13 @@ function topicsFromHeadingText(raw: string): string[] {
   // unspaced hyphen is part of the clinical term (for example
   // "Attention-Deficit/Hyperactivity Disorder" or "First-Episode
   // Psychosis") and must survive as reviewed topic metadata.
-  const primary = cleaned.split(/:|\s+[–—-]\s+/)[0]?.trim() ?? cleaned;
+  // A trailing bracket holding a spaced dash is a note ("Infections in
+  // Pregnancy (PWH — Anki, Y3 G)", "Driving Restrictions (Australian —
+  // Austroads)"); splitting on that dash would leave "Infections in Pregnancy
+  // (PWH". Drop the bracket first. Brackets without a spaced dash ("(ADHD)",
+  // "Stimulants (Amphetamines, Cocaine)") were never split and stay as they were.
+  const withoutProvenance = cleaned.replace(/\s*\([^()]*\s[–—-]\s[^()]*\)\s*$/, '').trim() || cleaned;
+  const primary = withoutProvenance.split(/:|\s+[–—-]\s+/)[0]?.trim() ?? withoutProvenance;
   if (!primary) return [];
 
   const topics = new Set<string>();

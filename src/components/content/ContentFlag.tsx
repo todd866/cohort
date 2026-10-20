@@ -11,10 +11,11 @@ import {
 } from 'react';
 import { usePathname } from 'next/navigation';
 import { useContentFlagOverlay } from './content-flag-overlay-context';
-import { submitFlag, type FlagResult } from '@/lib/flag-submit';
+import { queueFlag, type FlagResult } from '@/lib/flag-submit';
 import { useFlagPending } from '@/hooks/useFlagPending';
 import { FlagImageInput, flagImageEvents, useFlagImage } from './FlagImageInput';
 import { SessionExpiredPrompt } from './SessionExpiredPrompt';
+import { FlagButton } from '@/components/ui/FlagButton';
 
 // Flag reasons - ordered by actual usage frequency (539 flags analysed 2026-02)
 const FLAG_REASONS = [
@@ -130,21 +131,19 @@ export function ContentFlag({
   const submitFlagAction = useCallback(async (reason: FlagReason, note?: string) => {
     if (submittingRef.current) return;
     submittingRef.current = true; setSubmitting(true);
-    const draft = image.capture();
     try {
-      const attachmentId = await image.prepare({ type: targetType, id: targetId });
-      const result: FlagResult = await submitFlag({ type: targetType, id: targetId, reason,
+      const queued = await queueFlag({ type: targetType, id: targetId, reason,
         ...(note?.trim() ? { message: note.trim() } : {}), context,
-        ...(attachmentId ? { attachmentId } : {}),
-      });
-      if (!image.isCurrent(draft)) return;
-      if (result === 'image-unavailable') { image.retryImage(); return; }
-      if (result === 'dropped') { image.setError('Could not send this flag. Try again.'); return; }
-      if (result === 'delivered') setLocalFlagged(true);
-      else if (result === 'auth-required') setAuthExpired(true);
+      }, { image: image.file });
+      // Durable on this device: close now and let delivery settle the cue.
       image.committed(); closeMenu();
-    } catch { /* Keep the draft for retry. */ }
-    finally { submittingRef.current = false; setSubmitting(false); }
+      void queued.result.then((result: FlagResult) => {
+        if (result === 'delivered' || result === 'image-unavailable') setLocalFlagged(true);
+        else if (result === 'auth-required') setAuthExpired(true);
+      }).catch(() => {});
+    } catch {
+      image.setError('Not saved on this device. Try again.');
+    } finally { submittingRef.current = false; setSubmitting(false); }
   }, [targetType, targetId, context, image, closeMenu]);
 
   const handleButtonClick = useCallback(
@@ -270,25 +269,15 @@ export function ContentFlag({
 
   return (
     <span ref={containerRef} className={`relative inline-flex ${className ?? ''}`}>
-      <button
-        type="button"
+      <FlagButton
         data-content-flag-trigger
+        flagged={delivered}
+        pending={pendingDelivery}
         aria-label="Flag content"
         title={blocked ? 'Sign in to send flag' : pendingDelivery ? 'Flag queued — sending…' : delivered ? 'Flag submitted — click to add another' : 'Flag for improvement'}
         disabled={pendingDelivery || blocked}
         onClick={handleButtonClick}
-        className={`flag-btn${delivered ? ' flagged' : pendingDelivery ? ' flag-pending' : ''}`}
-        style={{ position: 'relative' }}
-      >
-        <FlagIcon filled={delivered} className="w-4 h-4" />
-        {pendingDelivery && (
-          <span
-            aria-hidden
-            title="Flag queued — sending…"
-            style={{ position: 'absolute', top: 0, right: 0, width: 6, height: 6, borderRadius: '50%', background: 'var(--md-tertiary, #d08700)' }}
-          />
-        )}
-      </button>
+      />
 
       {open && !overlay && (
         <>
@@ -305,7 +294,7 @@ export function ContentFlag({
             <>
               <li className="grid grid-cols-5 gap-1">
                 {FLAG_REASONS.slice(0, 5).map((reason) => (
-                  <button key={reason} type="button" onClick={() => handleReasonClick(reason)} title={reason}
+                  <button key={reason} type="button" onClick={() => handleReasonClick(reason)}
                     className="flag-reason-btn">
                     <span className="text-xs font-medium">{REASON_SHORTCUTS[reason]}</span>
                     <span className="flag-reason-label">{REASON_LABELS[reason]}</span>
@@ -314,7 +303,7 @@ export function ContentFlag({
               </li>
               <li className="grid grid-cols-4 gap-1 mt-2">
                 {FLAG_REASONS.slice(5).map((reason) => (
-                  <button key={reason} type="button" onClick={() => handleReasonClick(reason)} title={reason}
+                  <button key={reason} type="button" onClick={() => handleReasonClick(reason)}
                     className="flag-reason-btn">
                     <span className="text-xs font-medium">{REASON_SHORTCUTS[reason]}</span>
                     <span className="flag-reason-label">{reason}</span>
@@ -350,21 +339,5 @@ export function ContentFlag({
       )}
       {blocked && <SessionExpiredPrompt />}
     </span>
-  );
-}
-
-function FlagIcon({ className, filled }: { className?: string; filled?: boolean }) {
-  if (filled) {
-    return (
-      <svg className={className} viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
-        <path d="M14.4 6L14 4H5v17h2v-7h5.6l.4 2h7V6h-5.6z" />
-      </svg>
-    );
-  }
-  return (
-    <svg className={className} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" aria-hidden="true">
-      <path d="M4 15s1-1 4-1 5 2 8 2 4-1 4-1V3s-1 1-4 1-5-2-8-2-4 1-4 1z" />
-      <line x1="4" y1="22" x2="4" y2="15" />
-    </svg>
   );
 }

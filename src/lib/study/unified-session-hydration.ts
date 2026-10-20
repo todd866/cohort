@@ -1,3 +1,5 @@
+import { matchesResolvedMedia } from './media-review';
+import type { ReviewMedia } from '@/lib/review/review-intent';
 import { prisma } from '@/lib/prisma';
 import { loadCurrentSessionContent, type CurrentContentContext } from './current-session-content';
 import {
@@ -88,7 +90,8 @@ export interface ScheduledItemHydrationData {
 
 export async function loadScheduledItemHydrationData(options: {
   userId: string;
-  rotationContent: SessionContext['rotationContent'];
+  /** Unused by hydration; kept for existing callers. */
+  rotationContent?: SessionContext['rotationContent'];
   scheduledItems: ScheduledSessionItem[];
   deliveryContext: CurrentContentContext;
 }): Promise<ScheduledItemHydrationData> {
@@ -159,6 +162,7 @@ export async function hydrateScheduledItems(
   scheduledItems: ScheduledSessionItem[],
   hydrationData: ScheduledItemHydrationData,
   options: {
+    media?: ReviewMedia;
     rotation: string;
     includeVideos?: boolean;
   },
@@ -392,7 +396,8 @@ export async function hydrateScheduledItems(
      }
     }),
   );
-  const hydrated = results.filter((item): item is UnifiedItem => !!item);
+  const hydrated = results.filter((item): item is UnifiedItem => !!item && matchesResolvedMedia(item, options.media))
+    .map(item => options.media ? { ...item, media: options.media } : item);
 
   // Final cloze-sibling boundary. Most scheduler lanes carry variantGroupId
   // early enough to suppress siblings while selecting, but late fallback and

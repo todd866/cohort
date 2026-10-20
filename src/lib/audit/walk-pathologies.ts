@@ -86,6 +86,7 @@ function isScaffoldingHeavySession(session: Session): boolean {
  */
 function isPoolConstrainedSession(session: Session): boolean {
   if (session.feedMode === 'new-only') return true;
+  if (session.media !== undefined) return true;
   if (isPureFocusedSession(session)) return true;
   return false;
 }

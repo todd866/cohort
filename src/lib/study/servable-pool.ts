@@ -30,6 +30,7 @@ import {
   type PracticeLocale,
 } from '@/lib/study/practice-locale';
 import { examScaffoldTag } from './exam-only-modules';
+import { publicClipWhere } from '@/lib/video/public-clips';
 
 /** Topics whose presence on a card/question disqualifies it from any user-facing pool. */
 export const EXCLUDED_POOL_TOPICS = ['_needs-image', '_incomplete-data'] as const;
@@ -66,7 +67,7 @@ export function imagePromptCardWhere(isCopyrightTier: boolean): Prisma.CardWhere
  * Clip-as-prompt items (`clipRole === 'prompt'`) are the operative-video twin of
  * image-as-prompt cards: the 6-10s clip IS the stem, so without it the card is
  * unanswerable. Clips are cut from copyrighted operative video and served from
- * the private bucket, so they reach copyright-tier users only.
+ * the private bucket. Only exact publicly reviewed assets may also reach other tiers.
  *
  * The OR is required for the same reason it is on `imagePromptCardWhere`: Prisma
  * renders a scalar `not` as SQL `<>`, and `NULL <> 'prompt'` is UNKNOWN rather
@@ -78,6 +79,7 @@ export function clipPromptCardWhere(isCopyrightTier: boolean): Prisma.CardWhereI
     OR: [
       { clipRole: null },
       { clipRole: { not: 'prompt' } },
+      { clipRole: 'prompt', clip: { is: publicClipWhere() } },
     ],
   };
 }
@@ -88,6 +90,7 @@ export function clipPromptQuestionWhere(isCopyrightTier: boolean): Prisma.Questi
     OR: [
       { clipRole: null },
       { clipRole: { not: 'prompt' } },
+      { clipRole: 'prompt', clip: { is: publicClipWhere() } },
     ],
   };
 }
@@ -181,10 +184,12 @@ function deliverablePromptClipWhere(isCopyrightTier: boolean) {
     OR: [
       { clipRole: null },
       { clipRole: { not: 'prompt' } },
-      ...(isCopyrightTier ? [{
+      {
         clipRole: 'prompt',
-        clip: { is: { deletedAt: null, source: { rightsStatus: 'cleared' } } },
-      }] : []),
+        clip: { is: isCopyrightTier
+          ? { deletedAt: null, source: { rightsStatus: 'cleared' } }
+          : publicClipWhere() },
+      },
     ],
   };
 }

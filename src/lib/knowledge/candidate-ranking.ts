@@ -23,7 +23,11 @@ import {
   takeWithReentryCap,
   type ReentryCounter,
 } from './question-retirement';
-import { curriculumPacingBoost, curriculumRecencyBoost } from './curriculum-pacing';
+import {
+  curriculumPacingBoost,
+  curriculumRecencyBoost,
+  datedTopicRecencyBoost,
+} from './curriculum-pacing';
 import { figureCooldownBoost } from './figure-cooldown';
 import { itemTeachingWeek } from '@/lib/curriculum/teaching-pace';
 import {
@@ -313,6 +317,7 @@ export function getCardsFromBulk(
   /** Frozen clock for the selection, so ranking stays deterministic. */
   figureNowMs: number = Date.now(),
   reviewChallenge: ReviewChallengeLevel = 0,
+  topicRecencyDays?: ReadonlyMap<string, number>,
 ): CardCandidate[] {
   const expandedTopics = expandTopicSet(concept.topics);
   if (expandedTopics.length === 0) return [];
@@ -406,8 +411,9 @@ export function getCardsFromBulk(
     const week = itemTeachingWeek(
       bulk.rotation, card.sourceFile, card.topics, topicTeachingWeeks,
     );
+    const weeklyRecency = curriculumRecencyBoost(week, currentTeachingWeek);
     return curriculumPacingBoost(week, currentTeachingWeek)
-      + curriculumRecencyBoost(week, currentTeachingWeek);
+      + Math.min(weeklyRecency, datedTopicRecencyBoost(card.topics, topicRecencyDays));
   };
 
   // Figure spacing: a picture the user has seen recently sinks, with the
@@ -747,6 +753,8 @@ export function getQuestionsFromBulk(
     /** Neutral topic-slug → teaching-week map for this rotation. */
     topicTeachingWeeks?: ReadonlyMap<string, number>;
     reviewChallenge?: ReviewChallengeLevel;
+    /** Normalized topic -> age in days for the dated lecture recency nudge. */
+    topicRecencyDays?: ReadonlyMap<string, number>;
     /** Materialized low-recall or recent-miss evidence for the +2 endpoint. */
     reviewChallengeGap?: boolean;
     /** Position in the selected batch; keeps challenge relief slots available. */
@@ -818,8 +826,9 @@ export function getQuestionsFromBulk(
   // candidates, it does not resurrect a question answered an hour ago.
   const questionPacing = (row: BulkQuestionRow): number => {
     const week = itemTeachingWeek(bulk.rotation, null, row.topics, options.topicTeachingWeeks);
+    const weeklyRecency = curriculumRecencyBoost(week, options.currentTeachingWeek);
     return curriculumPacingBoost(week, options.currentTeachingWeek)
-      + curriculumRecencyBoost(week, options.currentTeachingWeek);
+      + Math.min(weeklyRecency, datedTopicRecencyBoost(row.topics, options.topicRecencyDays));
   };
 
   const rankByVector = (questions: BulkQuestionRow[]): BulkQuestionRow[] => {

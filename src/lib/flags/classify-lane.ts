@@ -83,7 +83,7 @@ export function classifyFlagLane(text: string | null | undefined): FlagLane {
   // Widened 2026-09-16 to cover the terse shorthand reporters actually use
   // for this lane, not just the full phrasings the rubric names.
   if (
-    /too.?easy|give.?away|answer is visible|answer.{0,12}(visible|obvious|given)|keep but augment|keep.{0,20}augment|supplement.{0,12}harder|harder (variant|card|version)|scaffold.{0,15}harder|what'?s the point|\beasy (cloze|question|guess)|trivially easy|very easy|seen (it|this).{0,20}a lot|makes this c1|quiz differently/.test(
+    /too.?easy|give.?away|answer is visible|answer.{0,12}(visible|obvious|given)|\banswer\b.{0,40}\bis (?:already )?in the (?:question(?!\s+bank\b)|stem)\b|keep but augment|keep.{0,20}augment|supplement.{0,12}harder|harder (variant|card|version)|scaffold.{0,15}harder|what'?s the point|\beasy (cloze|question|guess)|trivially easy|very easy|seen (it|this).{0,20}a lot|makes this c1|quiz differently/.test(
       t,
     )
   ) {

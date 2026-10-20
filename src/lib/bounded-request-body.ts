@@ -17,6 +17,14 @@ export async function readBoundedRequestText(
   request: Request,
   maxBytes: number,
 ): Promise<string> {
+  return new TextDecoder('utf-8', { fatal: true }).decode(await readBoundedRequestBytes(request, maxBytes));
+}
+
+/** The same bounded read, returning the raw bytes (an uploaded file). */
+export async function readBoundedRequestBytes(
+  request: Request,
+  maxBytes: number,
+): Promise<Uint8Array> {
   if (!Number.isSafeInteger(maxBytes) || maxBytes <= 0) {
     throw new TypeError('maxBytes must be a positive safe integer');
   }
@@ -29,7 +37,7 @@ export async function readBoundedRequestText(
     }
   }
 
-  if (!request.body) return '';
+  if (!request.body) return new Uint8Array(0);
 
   const reader = request.body.getReader();
   const chunks: Uint8Array[] = [];
@@ -55,7 +63,7 @@ export async function readBoundedRequestText(
     body.set(chunk, offset);
     offset += chunk.byteLength;
   }
-  return new TextDecoder('utf-8', { fatal: true }).decode(body);
+  return body;
 }
 
 export async function readBoundedRequestJson(

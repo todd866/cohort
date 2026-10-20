@@ -3,6 +3,8 @@
  * See docs/designs/2026-04-17-scheduler-walk-audit.md.
  */
 
+import type { ReviewMedia } from '@/lib/review/review-intent';
+
 import type { ConceptThreadMetadata } from './concept-thread-telemetry';
 
 export type ServedBy =
@@ -42,6 +44,7 @@ export interface WalkMetadata extends Partial<ConceptThreadMetadata> {
   noveltyPenalty?: number | null;
   poolSize?: number;
   feedMode?: FeedMode;
+  media?: ReviewMedia;
   /**
    * Cloze-variant group id (2026-05-08). Cards split from a single multi-blank
    * source share a `variantGroupId`. The unified scheduler suppresses sibling
@@ -115,6 +118,8 @@ export interface Session {
    * (older events or paths that don't yet emit the field).
    */
   feedMode: FeedMode;
+  /** Media-only review intent, when the session was deliberately narrowed. */
+  media?: ReviewMedia;
 }
 
 export interface SessionMetrics extends ConceptThreadWalkMetrics {

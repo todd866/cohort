@@ -17,6 +17,8 @@ import type {
   Step1SessionMode,
   Step1SessionResult,
 } from '@/lib/usmle/step1-contract';
+import { ChipAction } from '@/components/shared/Chip';
+import { randomUuid } from '@/lib/random-uuid';
 
 interface PendingAnswer {
   deliveryId: string;
@@ -82,7 +84,7 @@ export default function Step1StudyClient({ mode }: { mode: Step1SessionMode }) {
     resetAnswerState();
 
     if (!sessionRequest.current || sessionRequest.current.mode !== mode) {
-      sessionRequest.current = { mode, serveRequestId: crypto.randomUUID() };
+      sessionRequest.current = { mode, serveRequestId: randomUuid() };
     }
     void fetchWithDeadline('/api/usmle/step1/session', {
       method: 'POST',
@@ -358,13 +360,9 @@ export default function Step1StudyClient({ mode }: { mode: Step1SessionMode }) {
                 <p className="text-xs text-[var(--md-on-surface-variant)] opacity-70">
                   pick an answer, then rate how well you knew it
                 </p>
-                <button
-                  type="button"
-                  onClick={chooseSkip}
-                  className="rounded-full border border-[var(--md-outline-variant)] px-4 py-2 text-sm text-[var(--md-on-surface-variant)] hover:border-[var(--md-primary)]"
-                >
+                <ChipAction onClick={chooseSkip}>
                   Skip this question
-                </button>
+                </ChipAction>
               </div>
             )}
 

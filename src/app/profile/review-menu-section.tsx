@@ -4,6 +4,7 @@ import { useState } from 'react';
 import { useSWRConfig } from 'swr';
 import { CLIENT_FETCH_DEADLINE_MS, fetchWithDeadline } from '@/lib/fetch-with-deadline';
 import type { ReviewMenuChoice } from '@/lib/study/review-menu';
+import { CHIP_ON_WHEN_CHECKED, ChipCheck } from '@/components/shared/Chip';
 
 export function ReviewMenuSection({ choices }: { choices: ReviewMenuChoice[] }) {
   const { mutate } = useSWRConfig();
@@ -58,13 +59,7 @@ export function ReviewMenuSection({ choices }: { choices: ReviewMenuChoice[] }) 
                 <label
                   key={item.slug}
                   title={item.pinned ? 'Current block' : undefined}
-                  className={[
-                    'inline-flex min-h-8 items-center gap-1 rounded-full border px-3 text-sm',
-                    'border-[var(--md-outline-variant)] text-[var(--md-on-surface-variant)]',
-                    'has-checked:border-[var(--md-primary)] has-checked:bg-[var(--md-primary-container)] has-checked:text-[var(--md-on-primary-container)]',
-                    'has-focus-visible:outline-2 has-focus-visible:outline-offset-2 has-focus-visible:outline-[var(--md-primary)]',
-                    item.pinned ? 'font-semibold' : 'cursor-pointer hover:bg-[var(--md-surface-container-high)]',
-                  ].join(' ')}
+                  className={`${CHIP_ON_WHEN_CHECKED}${item.pinned ? ' cursor-default' : ''}`}
                 >
                   <input
                     type="checkbox"
@@ -73,7 +68,7 @@ export function ReviewMenuSection({ choices }: { choices: ReviewMenuChoice[] }) 
                     onChange={(event) => { void toggle(item.slug, event.target.checked); }}
                     className="sr-only"
                   />
-                  {item.checked && <span aria-hidden="true">✓</span>}
+                  {item.checked && <ChipCheck />}
                   <span>{item.label}</span>
                   {item.pinned && <span className="sr-only">Current block</span>}
                 </label>

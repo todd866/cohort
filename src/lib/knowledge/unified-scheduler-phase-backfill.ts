@@ -82,7 +82,7 @@ export function backfillFromAnyConcept(
       const conceptData = conceptMap.get(concept.conceptId);
       if (!conceptData) continue;
 
-      const candidates = getCardsFromBulk(concept.conceptId, conceptData, 20, bulk, selectedCardIds, penaltyContext, concept.currentRecall, options.currentTeachingWeek, applyExamTarget ? activeCardTargetScores : undefined, activeTargetRankMove, options.topicTeachingWeeks, options.recentFigureExposures, selectionNowMs());
+      const candidates = getCardsFromBulk(concept.conceptId, conceptData, 20, bulk, selectedCardIds, penaltyContext, concept.currentRecall, options.currentTeachingWeek, applyExamTarget ? activeCardTargetScores : undefined, activeTargetRankMove, options.topicTeachingWeeks, options.recentFigureExposures, selectionNowMs(), undefined, options.topicRecencyDays);
       if (candidates.length === 0) continue;
 
       const picked = build.pickCardCandidate(candidates, {
@@ -129,6 +129,7 @@ export function backfillFromAnyConcept(
           selectedQuestionVariantGroups,
           currentTeachingWeek: options.currentTeachingWeek,
           topicTeachingWeeks: options.topicTeachingWeeks,
+          topicRecencyDays: options.topicRecencyDays,
           masteredReentryCounter,
           recentFormatsByConcept,
           reviewChallengeGap: hasDemonstratedLearningGap({
@@ -235,6 +236,7 @@ export function probeStaleStrongConcepts(
         selectedQuestionVariantGroups,
         currentTeachingWeek: options.currentTeachingWeek,
         topicTeachingWeeks: options.topicTeachingWeeks,
+        topicRecencyDays: options.topicRecencyDays,
         masteredReentryCounter,
         recentFormatsByConcept,
         reviewChallengeGap: hasDemonstratedLearningGap({
@@ -289,7 +291,7 @@ export async function topUpFromRotationBank(
   plan: ConceptPlan,
   build: SessionBuildState,
 ): Promise<void> {
-  const { bulk, rotation, selectionDeterminism, size, userId } = inputs;
+  const { bulk, rotation, selectionDeterminism, size, userId, options } = inputs;
   const { targetQuestionCount } = plan;
   const {
     masteredReentryCounter,
@@ -326,6 +328,8 @@ export async function topUpFromRotationBank(
           selectedQuestionVariantGroups,
           questionFamiliarity: bulk.questionFamiliarity,
           masteredReentryCounter,
+          media: options.media, imageTrust: options.imageTrust,
+          isCopyrightTier: options.imageTier === 'copyright',
           ...(selectionDeterminism
             ? { selectionDeterminism }
             : {}),
@@ -393,7 +397,7 @@ export function backfillCardsUncapped(
       const conceptData = conceptMap.get(concept.conceptId);
       if (!conceptData) continue;
 
-      const candidates = getCardsFromBulk(concept.conceptId, conceptData, 20, bulk, selectedCardIds, penaltyContext, concept.currentRecall, options.currentTeachingWeek, applyExamTarget ? activeCardTargetScores : undefined, activeTargetRankMove, options.topicTeachingWeeks, options.recentFigureExposures, selectionNowMs());
+      const candidates = getCardsFromBulk(concept.conceptId, conceptData, 20, bulk, selectedCardIds, penaltyContext, concept.currentRecall, options.currentTeachingWeek, applyExamTarget ? activeCardTargetScores : undefined, activeTargetRankMove, options.topicTeachingWeeks, options.recentFigureExposures, selectionNowMs(), undefined, options.topicRecencyDays);
       if (candidates.length === 0) continue;
 
       const picked = build.pickCardCandidate(candidates, {

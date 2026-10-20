@@ -1,3 +1,6 @@
+import type { AccessTier } from '@/lib/images/types';
+import { mediaCandidateWhere } from './media-review';
+import type { ReviewMedia } from '@/lib/review/review-intent';
 /**
  * Due-backlog lane.
  *
@@ -44,6 +47,9 @@ export interface DueBacklogCard {
 export type DueBacklogPrisma = Pick<typeof prisma, 'cardProgress'>;
 
 export interface FetchDueBacklogOptions {
+  media?: ReviewMedia;
+  imageTrust?: AccessTier;
+  isCopyrightTier?: boolean;
   userId: string;
   rotation: string;
   /** Server-authorized external source partitions eligible for this objective. */
@@ -107,6 +113,7 @@ export async function fetchDueBacklogCards(
       },
       {
         ...cardScope,
+        ...(options.media ? { AND: [mediaCandidateWhere(options.media, options.isCopyrightTier, options.imageTrust)] } : {}),
         deletedAt: null,
         shelvedAt: null,
         ...(weekFilter !== null ? { week: weekFilter } : {}),

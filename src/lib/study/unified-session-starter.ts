@@ -1,6 +1,7 @@
 import { NextResponse, after } from 'next/server';
 import { prisma } from '@/lib/prisma';
 import { logger } from '@/lib/logger';
+import { PRACTICE_EVENT_TYPES } from '@/lib/learning/event-taxonomy';
 import { ensureCardProgressExists } from '@/lib/stats';
 import { STARTER_SESSIONS } from '@/lib/generated/starter-sessions';
 import { questionImageIsPrompt, resolveImage } from '@/lib/figures/resolve';
@@ -32,6 +33,7 @@ import { HARDER_SIBLING_VARIANT_TYPE } from '@/lib/knowledge/question-retirement
  * Returns null if user has prior activity (falls through to next path).
  */
 export async function tryStarterSession(ctx: SessionContext): Promise<NextResponse | null> {
+  if (ctx.media) return null;
   // The fixed starter has no challenge alternatives. Prepare the adaptive fast lane.
   if (ctx.reviewChallenge?.level) return null;
   // A completed exam is prior learning evidence even before the first casual review.
@@ -58,8 +60,9 @@ export async function tryStarterSession(ctx: SessionContext): Promise<NextRespon
   if (starterSourceItems.length === 0) return null;
 
   // Single fast existence check — indexed on userId, <5ms
+  // A game visit or a practice sitting is not a first review session.
   const anyEvent = await prisma.learningEvent.findFirst({
-    where: { userId: ctx.userId },
+    where: { userId: ctx.userId, eventType: { notIn: [...PRACTICE_EVENT_TYPES] } },
     select: { id: true },
   });
   if (anyEvent) return null;

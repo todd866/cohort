@@ -1,8 +1,10 @@
 'use client';
 
+import { isTransportFailure } from '@/lib/offline/transport-failure';
 import { ReviewModulePicker } from '@/components/shared/ReviewModulePicker';
 import { ReviewToolbar } from '@/components/shared/ReviewToolbar';
 import { ReviewActionBar } from '@/components/shared/ReviewActionBar';
+import { AiReviewControl } from '@/components/tutor/AiReviewControl';
 import { StationChip } from './StationChip';
 import { PracticeExamFollowUp } from './PracticeExamFollowUp';
 import { useState, useEffect, useCallback, useRef } from 'react';
@@ -36,7 +38,7 @@ import { useGrading } from '@/hooks/useGrading';
 import { useCohortCardGrade } from './hooks/useCohortCardGrade';
 import { offlineUserKey } from '@/lib/offline/pack';
 import { ConfidenceButtons } from '@/components/shared/ConfidenceButtons';
-import type { ReviewFilter, ReviewItemType, ReviewTopic } from '@/lib/review/review-intent';
+import type { ReviewFilter, ReviewItemType, ReviewMedia, ReviewTopic } from '@/lib/review/review-intent';
 import type { ReviewLoadTimer } from '@/lib/review/review-load-telemetry';
 import { GuestReviewLoginNudge } from '@/components/ui/LoginNudge';
 import { ImageBlurToggle } from '@/components/media/ImageBlurToggle';
@@ -55,15 +57,18 @@ import { cohortReviewHref } from '@/lib/cohort/review-intent';
 import { RotationFocusSelector } from './RotationFocusSelector';
 import { rotationLabel } from '@/lib/rotation-labels';
 import { ReviewScopeBanner, type ReviewClusterScope } from './ReviewScopeBanner';
+import { LearningCheckIn } from './LearningCheckIn';
+import { FIRST_REVIEW_ROTATIONS } from '@/lib/study/first-review-highlights';
 import { RotationOnboarding } from './RotationOnboarding';
 import { FlagOverlay } from './FlagOverlay';
-import { FlagReminder } from './FlagReminder';
+import { FlagButton } from '@/components/ui/FlagButton';
 import { ReviewKeyboardHelp, type ReviewShortcutContext } from './ReviewKeyboardHelp';
 import { CohortPrompt } from './CohortPrompt';
 import { CohortSearchOverlay } from './CohortSearchOverlay';
 import { ProgressPill } from './ProgressPill';
 import { ProgressDrawer } from './ProgressDrawer';
 import { progressRotationsForObjective } from './progress-rotation-filter';
+import { dailyGoalMetadata } from '@/lib/study/daily-goals';
 import { SessionEmptyState } from './SessionEmptyState';
 import { LoadingSkeleton } from './LoadingSkeleton';
 import { CardFeedback } from './CardFeedback';
@@ -73,6 +78,8 @@ import { VideoItemView } from './VideoItemView';
 import { RevealActionLabel } from './RevealActionLabel';
 import { itemUsesSidePane, reviewPaneKind, reviewShellWidthClass } from './review-panes';
 import { genClientRequestId } from '@/lib/client-request-id';
+import { ChipSelect } from '@/components/shared/Chip';
+import { ConnectionIndicator } from '@/components/offline/ConnectionIndicator';
 
 /** Known review item types (stable reference to avoid re-creating in render) */
 const EMPTY_COHORT_TOPICS: CohortSearchTopicV1[] = [];
@@ -90,6 +97,8 @@ interface UnifiedReviewProps {
   reviewFilter?: ReviewFilter;
   /** MCQ-only review: narrow every slot in this block to questions. */
   itemType?: ReviewItemType;
+  /** Media-only review: image, video, or either. */
+  media?: ReviewMedia;
   /** Checked-in topic filters that narrow this review block. */
   topics?: readonly ReviewTopic[];
   /** One manifold cluster, from a square on the profile knowledge heatmap. */
@@ -102,6 +111,8 @@ interface UnifiedReviewProps {
   studyableRotations?: string[];
   /** Full scheduled rotation list — enables the "Change rotation…" enrolment switcher. */
   enrollableRotations?: string[];
+  /** No saved rotation: keep the optional chooser beside the live review. */
+  exploring?: boolean;
   /** The scheduled block whose exam is booked — rendered first in the focus menu. */
   examRotation?: string | null;
   /** Currently focused rotation (null = All / blended feed). */
@@ -115,6 +126,10 @@ interface UnifiedReviewProps {
   loadTimer?: ReviewLoadTimer | null;
   /** Cohort public review is server-decided one answer at a time. */
   cohortSingleTurn?: boolean;
+  /** Calendar replay: the initial batch is the whole session. */
+  boundedQueue?: boolean;
+  /** Scope-key suffix so that batch cannot be adopted by an ordinary visit. */
+  replayKey?: string | null;
   /** Profile loaded by a host entry, avoiding a second profile request. */
   initialCohortSnapshot?: CohortProfileSnapshot | null;
   /** Checked-in topic from the entry URL, used for the first Cohort turn. */
@@ -372,11 +387,13 @@ export function UnifiedReview(props: UnifiedReviewProps) {
     : <UnifiedReviewBody {...props} />;
 }
 
-function UnifiedReviewBody({ rotations, week, rotationSizes, fetchSlots, feedMode = 'mixed', reviewFilter, itemType, topics, cluster = null, clusterScope = null, onFeedModeChange, onReviewModeChange, studyableRotations = [], enrollableRotations = [], examRotation = null, focusRotation = null, onFocusRotationChange, allowUnverifiedPack = false, initialBatch = null, loadTimer = null, cohortSingleTurn = false, initialCohortSnapshot = null, initialCohortTopicId = null, cohortModuleScoped = false, onCohortTopicNavigate }: UnifiedReviewProps & { initialCohortSnapshot?: CohortProfileSnapshot | null }) {
+function UnifiedReviewBody({ rotations, week, rotationSizes, fetchSlots, feedMode = 'mixed', reviewFilter, itemType, media, topics, cluster = null, clusterScope = null, onFeedModeChange, onReviewModeChange, studyableRotations = [], enrollableRotations = [], exploring = false, examRotation = null, focusRotation = null, onFocusRotationChange, allowUnverifiedPack = false, initialBatch = null, loadTimer = null, cohortSingleTurn = false, boundedQueue = false, replayKey = null, initialCohortSnapshot = null, initialCohortTopicId = null, cohortModuleScoped = false, onCohortTopicNavigate }: UnifiedReviewProps & { initialCohortSnapshot?: CohortProfileSnapshot | null }) {
   const { data: authSession, status: authStatus } = useSession();
   const isCohortHost = useCohortHost();
   const isGuest = authStatus === 'unauthenticated';
   const isAuthenticated = authStatus === 'authenticated' && Boolean(authSession?.user?.id);
+  // MD3 offers reviewed public clips; server predicates retain every asset gate.
+  const canAccessVideo = !isCohortHost;
   const searchTopics = initialCohortSnapshot?.searchTopics ?? EMPTY_COHORT_TOPICS;
   const [activeSearchTopicId, setActiveSearchTopicId] = useState<string | null>(initialCohortTopicId);
   // Unlike the visibility session below, this id is the server's durable
@@ -388,6 +405,7 @@ function UnifiedReviewBody({ rotations, week, rotationSizes, fetchSlots, feedMod
     : offlineUserKey(authSession?.user) ?? initialBatch?.ownerKey ?? null;
   const searchOwnerKeyRef = useRef(reviewUserKey);
   const reviewedAtUnmountRef = useRef(0);
+  const targetAtUnmountRef = useRef<number | null>(null);
   const refreshChallengeRef = useRef<(revision: number) => void>(() => {});
 
   // Cohort uses this same visible-interval id as its durable turn journey.
@@ -399,6 +417,7 @@ function UnifiedReviewBody({ rotations, week, rotationSizes, fetchSlots, feedMod
     startMetadata: { rotations, feedMode },
     getEndMetadata: () => ({
       finalReviewedCount: reviewedAtUnmountRef.current,
+      ...dailyGoalMetadata(reviewedAtUnmountRef.current, targetAtUnmountRef.current),
     }),
   });
 
@@ -413,7 +432,7 @@ function UnifiedReviewBody({ rotations, week, rotationSizes, fetchSlots, feedMod
   });
 
   const session = useReviewSession({
-    rotations, week, rotationSizes, fetchSlots, feedMode, reviewFilter, itemType, topics, cluster, focusRotation,
+    rotations, week, rotationSizes, fetchSlots, feedMode, reviewFilter, itemType, media, topics, cluster, focusRotation,
     reviewChallengeRevision: difficulty.revision,
     onChallengeExhausted: difficulty.easeAfterExhaustion,
     // The credentialless fallback must trust only the device owner record.
@@ -423,6 +442,8 @@ function UnifiedReviewBody({ rotations, week, rotationSizes, fetchSlots, feedMod
     initialBatch,
     loadTimer,
     singleTurn: cohortSingleTurn,
+    boundedQueue,
+    replayKey,
     cohortTurn: isCohortHost && cohortSingleTurn
       ? { journeyId: cohortJourneyIdRef.current!, searchTopicId: activeSearchTopicId }
       : null,
@@ -438,14 +459,16 @@ function UnifiedReviewBody({ rotations, week, rotationSizes, fetchSlots, feedMod
   } = session;
   refreshChallengeRef.current = session.refreshForChallenge;
   const showDifficulty = isAuthenticated
+    && !boundedQueue
     && !(isCohortHost && currentItem?.decisionContext?.cohortHook)
     && !allowUnverifiedPack
     && reviewFilter !== 'due'
     && reviewFilter !== 'at-risk'
     && !isPracticeFollowUpTurn(currentItem)
     && !isProtectedPracticeItem(currentItem);
-  const difficultyControl = showDifficulty ? (
+  const difficultyControl = (embedded = false) => showDifficulty ? (
     <ReviewDifficultyControl
+      embedded={embedded}
       value={difficulty.level}
       onCommit={difficulty.commit}
       pending={difficulty.pending}
@@ -492,9 +515,7 @@ function UnifiedReviewBody({ rotations, week, rotationSizes, fetchSlots, feedMod
   const {
     reviewed: serverReviewed,
     target,
-    progress,
     incrementReviewed: incrementServerReviewed,
-    coveragePercent, targetHit, bonusCount,
     perRotation,
     bookedExam,
   } = sessionProgress;
@@ -512,6 +533,7 @@ function UnifiedReviewBody({ rotations, week, rotationSizes, fetchSlots, feedMod
   // commit, so it is current when the lifecycle cleanup reads it.
   useEffect(() => {
     reviewedAtUnmountRef.current = reviewed;
+    targetAtUnmountRef.current = target ?? null;
   });
   // Fire target_crossed exactly once per session when the pill tips over
   // from below-target to at-or-above. The check runs on every render; the
@@ -541,10 +563,13 @@ function UnifiedReviewBody({ rotations, week, rotationSizes, fetchSlots, feedMod
   const [acknowledgedCohortAnswers, setAcknowledgedCohortAnswers] = useState(0);
   const consecutiveFailures = useRef(0);
   const onSubmitError = useCallback((msg: string) => {
+    // A dropped connection loses nothing: the answer is already in the outbox
+    // and the connection chip shows the queue. Alert only on a server refusal.
+    if (isTransportFailure(msg)) return;
     consecutiveFailures.current += 1;
     // Show error after 2 consecutive failures (first might be transient)
     if (consecutiveFailures.current >= 2) {
-      setSubmitError(`Answers not saving: ${msg}`);
+      setSubmitError(/^HTTP \d{3}/.test(msg) ? `Answers not saving (${msg}).` : 'Answers not saving.');
     }
   }, []);
   // Reset failure counter on successful submission + increment daily progress
@@ -900,6 +925,22 @@ function UnifiedReviewBody({ rotations, week, rotationSizes, fetchSlots, feedMod
   // currentIndex at UNDO_BUFFER (1), so the effect never re-fires after
   // the first couple of cards. Use item ID instead.
   const currentItemId = currentItem?.id;
+  // What a message to the AI carries: the item on screen. A Cohort delivery's
+  // id is not the item's; it is sent as a delivery and the server maps it to
+  // the item served to this learner (owner, 2026-10-09: AI on cohort.md too).
+  // The item on screen, revealed or not: "tell me about this card" before
+  // answering is the commonest question (owner, 2026-10-07). The front desk is
+  // told when it is unanswered and keeps the answer back unless asked.
+  const aiTarget = currentItem && (currentItem.type === 'card' || currentItem.type === 'question')
+    && (currentItem.deliveryId || !isCohortHost)
+    ? {
+        kind: currentItem.type,
+        id: currentItem.deliveryId ?? currentItem.id,
+        answered: currentItem.type === 'card' ? cardFullyRevealed : Boolean(mcqResult),
+        ...(currentItem.deliveryId ? { delivery: true } : {}),
+      }
+    : null;
+  const aiLabel = (currentItem?.type === 'card' ? currentItem.front : currentItem?.type === 'question' ? currentItem.stem : '') ?? '';
   useEffect(() => {
     cardGrading.reset();
     mcqGrading.reset();
@@ -930,19 +971,19 @@ function UnifiedReviewBody({ rotations, week, rotationSizes, fetchSlots, feedMod
     };
     const closeOnEscape = (event: KeyboardEvent) => {
       if (event.key !== 'Escape') return;
+      // A nested control closes first and returns focus inside Options.
+      if (mobileOptionsPanelRef.current?.querySelector('[role="dialog"]')) return;
       event.preventDefault();
       setMobileOptionsOpen(false);
       mobileOptionsTriggerRef.current?.focus();
     };
-    const closeOnDesktop = () => { if (window.innerWidth >= 640) setMobileOptionsOpen(false); };
-    window.addEventListener('resize', closeOnDesktop);
+
     document.addEventListener('pointerdown', closeOnOutsidePointer);
     document.addEventListener('keydown', closeOnEscape);
     // Focus the panel, not its first control: focusing the review-mode
     // <select> makes iOS open its native picker the moment Options opens.
     mobileOptionsPanelRef.current?.focus();
     return () => {
-      window.removeEventListener('resize', closeOnDesktop);
       document.removeEventListener('pointerdown', closeOnOutsidePointer);
       document.removeEventListener('keydown', closeOnEscape);
     };
@@ -987,11 +1028,7 @@ function UnifiedReviewBody({ rotations, week, rotationSizes, fetchSlots, feedMod
     : currentItem?.type === 'video' ? 'video-rate'
     : awaitingConfidence ? 'mcq-confidence'
     : mcqResult ? (currentItem?.deliveryId ? 'mcq-continue' : 'mcq-grade') : 'mcq-select';
-  const shortcutHint = shortcutContext === 'card-reveal' ? 'Space reveal'
-    : shortcutContext.startsWith('card-grade') ? '1–4 rate'
-    : shortcutContext === 'mcq-select' ? '1–5 choose'
-    : shortcutContext === 'mcq-confidence' ? '1–4 confidence'
-    : 'Space continue';
+
   const shortcutsReturnRef = useRef<HTMLElement | null>(null);
   const openShortcuts = useCallback(() => {
     shortcutsReturnRef.current = mobileOptionsOpen && mobileOptionsTriggerRef.current?.getClientRects().length
@@ -1070,15 +1107,16 @@ function UnifiedReviewBody({ rotations, week, rotationSizes, fetchSlots, feedMod
   useEffect(() => {
     // Don't auto-retry while the initial load is still in progress —
     // otherwise this aborts the initial fetch via the shared abort controller.
+    if (boundedQueue) return;
     if (!item && !error && !cohortTurnPending && !isExhausted && !isFetchingMore && !loading) {
       fetchItems(true);
     }
-  }, [item, error, cohortTurnPending, isExhausted, isFetchingMore, loading, fetchItems]);
+  }, [boundedQueue, item, error, cohortTurnPending, isExhausted, isFetchingMore, loading, fetchItems]);
 
   // Loading — skeleton that mimics card layout
   if (loading) {
     return <div>
-      {difficultyControl && <div className="flex justify-center px-4 pt-3">{difficultyControl}</div>}
+      {showDifficulty && <div className="flex justify-center px-4 pt-3">{difficultyControl()}</div>}
       <LoadingSkeleton />
     </div>;
   }
@@ -1089,7 +1127,7 @@ function UnifiedReviewBody({ rotations, week, rotationSizes, fetchSlots, feedMod
     const activeTopic = searchTopics.find((topic) => topic.id === activeSearchTopicId) ?? null;
     return (
       <div className="text-center py-8">
-        {difficultyControl && <div className="mb-4 flex justify-center px-4">{difficultyControl}</div>}
+        {showDifficulty && <div className="mb-4 flex justify-center px-4">{difficultyControl()}</div>}
         <p role="alert" className="text-[var(--md-error)] mb-4">
           {cohortTurnErrorCode === 'topic_exhausted' && activeTopic
             ? `${activeTopic.label} is in the deck, but no fresh question fits your current level right now.`
@@ -1129,13 +1167,15 @@ function UnifiedReviewBody({ rotations, week, rotationSizes, fetchSlots, feedMod
   if (items.length === 0) {
     return (
       <div>
-        {difficultyControl && <div className="flex justify-center px-4 pt-3">{difficultyControl}</div>}
+        {showDifficulty && <div className="flex justify-center px-4 pt-3">{difficultyControl()}</div>}
         <SessionEmptyState
           isExhausted={isExhausted}
           feedMode={feedMode}
           itemType={itemType}
+          media={media}
           newRemaining={newRemaining}
-          showRefresh
+          showRefresh={!boundedQueue}
+          replay={boundedQueue}
           onFetch={() => fetchItems()}
           onFeedModeChange={onFeedModeChange}
           onReviewModeChange={onReviewModeChange}
@@ -1148,16 +1188,19 @@ function UnifiedReviewBody({ rotations, week, rotationSizes, fetchSlots, feedMod
   if (!item) {
     return (
       <div>
-        {difficultyControl && <div className="flex justify-center px-4 pt-3">{difficultyControl}</div>}
+        {showDifficulty && <div className="flex justify-center px-4 pt-3">{difficultyControl()}</div>}
         <SessionEmptyState
           isExhausted={isExhausted}
           feedMode={feedMode}
           itemType={itemType}
+          media={media}
           newRemaining={newRemaining}
           stats={stats}
           focusRotation={focusRotation}
           canChooseFocus={!allowUnverifiedPack && studyableRotations.length > 0}
           isGuest={isGuest}
+          replay={boundedQueue}
+          canBrowseHistory={!isCohortHost && !allowUnverifiedPack}
           onFetch={() => fetchItems()}
           onFeedModeChange={onFeedModeChange}
           onReviewModeChange={onReviewModeChange}
@@ -1227,7 +1270,7 @@ function UnifiedReviewBody({ rotations, week, rotationSizes, fetchSlots, feedMod
       {showRotationChooser && (
         <RotationChooserDialog
           rotations={enrollableRotations}
-          current={rotations[0]}
+          current={exploring ? undefined : rotations[0]}
           onClose={() => setShowRotationChooser(false)}
         />
       )}
@@ -1263,15 +1306,13 @@ function UnifiedReviewBody({ rotations, week, rotationSizes, fetchSlots, feedMod
             value={activeSearchTopicId}
             onChange={value => value ? handleSearchTopicSelect(value) : handleSearchTopicClear()}
           />}
-          {!isAuthenticated && !isCohortHost && enrollableRotations.length > 0 && (
-            <button
-              type="button"
+          {(!isAuthenticated || exploring) && !isCohortHost && enrollableRotations.length > 0 && (
+            <ChipSelect
               onClick={() => setShowRotationChooser(true)}
-              aria-label={`Change rotation: ${rotationLabel(rotations[0])}`}
-              className="inline-flex min-w-0 max-w-[30vw] shrink items-center gap-1 overflow-hidden whitespace-nowrap rounded-full border border-[var(--md-outline-variant)] px-[8px] @min-[60rem]/review-toolbar:px-3 py-[4px] text-xs text-[var(--md-on-surface-variant)] hover:bg-[var(--md-surface-container-high)]"
-            >
-              <span className="truncate">{rotationLabel(rotations[0])}</span><span aria-hidden className="shrink-0">▾</span>
-            </button>
+              aria-label={exploring ? 'Choose rotation' : `Change rotation: ${rotationLabel(rotations[0])}`}
+              className={exploring ? 'max-w-[40vw] overflow-hidden' : 'max-w-[30vw] overflow-hidden'}
+              value={exploring ? 'Choose rotation' : rotationLabel(rotations[0])}
+            />
           )}
           {!isCohortHost && isAuthenticated && onReviewModeChange && (
             <div className="hidden @min-[60rem]/review-toolbar:block">
@@ -1280,6 +1321,8 @@ function UnifiedReviewBody({ rotations, week, rotationSizes, fetchSlots, feedMod
                 feedMode={feedMode}
                 reviewFilter={reviewFilter}
                 itemType={itemType}
+                media={media}
+                canAccessVideo={canAccessVideo}
                 onChange={onReviewModeChange}
                 newRemaining={newRemaining}
               />
@@ -1291,9 +1334,11 @@ function UnifiedReviewBody({ rotations, week, rotationSizes, fetchSlots, feedMod
               above the bar; one tappable chip replaces all three. It truncates
               under the same phone budget the label had. The offline pack has
               no session but does have saved decks to switch between. */}
-          {(isAuthenticated || allowUnverifiedPack) && onFocusRotationChange && (
+          {!exploring && (isAuthenticated || allowUnverifiedPack) && onFocusRotationChange && (
             canPickFocus ? (
-              <div className="min-w-0 max-w-[30vw] @min-[60rem]/review-toolbar:max-w-none">
+              // shrink-0: flex must never squeeze a short course label ("CAH",
+              // "All") into an ellipsis; only a label longer than 30vw truncates.
+              <div className="shrink-0 max-w-[30vw] @min-[60rem]/review-toolbar:max-w-none">
                 <RotationFocusSelector
                   options={studyableRotations}
                   value={focusRotation}
@@ -1311,7 +1356,6 @@ function UnifiedReviewBody({ rotations, week, rotationSizes, fetchSlots, feedMod
               <span
                 className="max-w-[30vw] truncate whitespace-nowrap text-xs font-medium text-[var(--md-on-surface)]"
                 aria-label={`Course: ${rotationLabel(focusRotation ?? rotations[0])}`}
-                title={rotationLabel(focusRotation ?? rotations[0])}
               >
                 {rotationLabel(focusRotation ?? rotations[0])}
               </span>
@@ -1323,16 +1367,11 @@ function UnifiedReviewBody({ rotations, week, rotationSizes, fetchSlots, feedMod
             <ProgressPill
               reviewed={reviewed}
               target={target}
-              coveragePercent={coveragePercent}
-              progress={progress}
-              targetHit={targetHit}
-              bonusCount={bonusCount}
               onTap={() => setDrawerOpen(o => !o)}
             />
         )}
 
-        <div ref={mobileOptionsRef} className="relative ml-auto flex min-w-0 shrink-0 items-center gap-[6px] @min-[60rem]/review-toolbar:gap-2">
-          {difficultyControl}
+        <div ref={mobileOptionsRef} className="relative ml-auto flex min-w-0 shrink-0 items-center gap-[4px] @min-[26rem]/review-toolbar:gap-[6px] @min-[60rem]/review-toolbar:gap-2">
           <div
             ref={mobileOptionsPanelRef}
             id="review-mobile-options"
@@ -1340,16 +1379,18 @@ function UnifiedReviewBody({ rotations, week, rotationSizes, fetchSlots, feedMod
             aria-label={mobileOptionsOpen ? 'Review options' : undefined}
             tabIndex={mobileOptionsOpen ? -1 : undefined}
             className={mobileOptionsOpen
-              ? 'absolute right-0 top-full z-50 mt-1 flex outline-none max-h-[min(70vh,max(5rem,calc(100dvh-22rem)))] w-[min(18rem,calc(100vw-1.5rem))] flex-col gap-3 overflow-y-auto rounded-xl border border-[var(--md-outline-variant)] bg-[var(--md-surface)] p-3 text-sm shadow-xl @min-[60rem]/review-toolbar:static @min-[60rem]/review-toolbar:mt-0 @min-[60rem]/review-toolbar:max-h-none @min-[60rem]/review-toolbar:w-auto @min-[60rem]/review-toolbar:flex-row @min-[60rem]/review-toolbar:items-center @min-[60rem]/review-toolbar:gap-2 @min-[60rem]/review-toolbar:overflow-visible @min-[60rem]/review-toolbar:rounded-none @min-[60rem]/review-toolbar:border-0 @min-[60rem]/review-toolbar:bg-transparent @min-[60rem]/review-toolbar:p-0 @min-[60rem]/review-toolbar:text-sm @min-[60rem]/review-toolbar:shadow-none'
-              : 'hidden @min-[60rem]/review-toolbar:flex @min-[60rem]/review-toolbar:min-w-0 @min-[60rem]/review-toolbar:shrink-0 @min-[60rem]/review-toolbar:items-center @min-[60rem]/review-toolbar:gap-1.5 @min-[60rem]/review-toolbar:gap-2'}
+              ? 'absolute right-0 top-full z-50 mt-1 flex max-h-[min(70vh,calc(100dvh-8rem))] w-[min(18rem,calc(100vw-1.5rem))] flex-col gap-3 overflow-y-auto rounded-xl border border-[var(--md-outline-variant)] bg-[var(--md-surface)] p-3 text-sm shadow-xl outline-none'
+              : 'hidden'}
           >
             {!isCohortHost && isAuthenticated && onReviewModeChange && mobileOptionsOpen && (
-              <div data-review-options-first>
+              <div data-review-options-first className="@min-[60rem]/review-toolbar:hidden">
                 <ReviewModeSelector
                 practiceExamHref={!isCohortHost && process.env.NEXT_PUBLIC_PRACTICE_EXAMS_ENABLED === "true" ? "/practice-exam" : undefined}
                   feedMode={feedMode}
                   reviewFilter={reviewFilter}
                   itemType={itemType}
+                  media={media}
+                  canAccessVideo={canAccessVideo}
                   onChange={(next) => {
                     setMobileOptionsOpen(false);
                     onReviewModeChange(next);
@@ -1358,14 +1399,10 @@ function UnifiedReviewBody({ rotations, week, rotationSizes, fetchSlots, feedMod
                 />
               </div>
             )}
-            {mobileOptionsOpen ? (
-              <div className="flex items-center justify-between gap-4 @min-[60rem]/review-toolbar:contents">
-                <span className="@min-[60rem]/review-toolbar:hidden text-xs text-[var(--md-on-surface-variant)]">Blur images</span>
-                <ImageBlurToggle />
-              </div>
-            ) : (
-              <ImageBlurToggle />
-            )}
+            {difficultyControl(true)}
+            {/* The chip names itself; a separate "Blur images" label beside a
+                "✓ Blur" chip said it twice (owner, 2026-10-07). */}
+            <ImageBlurToggle />
             {isCohortHost && searchTopics.length > 0 && (
               <CohortSearchOverlay
                 topics={searchTopics}
@@ -1377,35 +1414,29 @@ function UnifiedReviewBody({ rotations, week, rotationSizes, fetchSlots, feedMod
             )}
             <button type="button" onClick={openShortcuts} className="min-h-11 rounded-md px-2 text-xs underline underline-offset-2">Shortcuts (?)</button>
           </div>
-          {/* Outside the ⋯ panel on purpose: the flag reminder tells phone
-              users to "tap ⚐ Flag", and a control buried in a menu cannot be
-              learned (2026-10-01). Labelled at every width, never a bare glyph. */}
-          <button
-            type="button"
+          {/* The one connection instrument (offline, weak link, queued
+              answers) takes its own slot here and is otherwise absent.
+              15 Oct 2026: a floating pill over this bar truncated its
+              controls, beside a second full-width "saved device data" row. */}
+          <ConnectionIndicator host="toolbar" placement="below" />
+          {/* Shared icon controls stay visible at every width. */}
+          <AiReviewControl
+            access={authStatus === 'unauthenticated' ? 'guest' : !isAuthenticated ? null : authSession?.user?.isAdmin === true ? 'owner' : authSession?.user?.aiAccess === true ? 'learner' : null}
+            target={aiTarget}
+            label={aiLabel}
+          />
+          <FlagButton
             onClick={() => {
               setMobileOptionsOpen(false);
               setFlagMode(true);
             }}
             disabled={flagPending}
+            aria-keyshortcuts="F"
+            flagged={flagged}
+            pending={flagPending}
             aria-label={flagged ? 'Flagged — press to add another flag' : flagPending ? 'Flag queued — sending…' : 'Flag this item (F)'}
-            className={`inline-flex min-h-[44px] shrink-0 items-center whitespace-nowrap text-xs px-2 rounded-md border border-transparent transition-colors @min-[60rem]/review-toolbar:min-h-0 @min-[60rem]/review-toolbar:py-1 ${
-              flagged || flagPending
-                ? 'bg-[var(--md-warning-container)] text-[var(--md-on-warning-container)] border-[var(--md-warning)]'
-                : 'text-[var(--md-on-surface-variant)] hover:text-[var(--md-on-surface)] hover:bg-[var(--md-surface-container-high)]'
-            }`}
             title={flagged ? 'Flagged — press to add another flag' : flagPending ? 'Flag queued — sending…' : 'Flag this item (F)'}
-          >
-            {flagged ? (
-              <>{'⚑'} Flagged</>
-            ) : flagPending ? (
-              <>{'⧖'} Sending</>
-            ) : (
-              <span className="flex items-center gap-1">
-                {'⚐'} <span>Flag</span>
-                <kbd className="hidden pointer-fine:inline text-[10px] opacity-40 font-mono">f</kbd>
-              </span>
-            )}
-          </button>
+          />
           <button
               ref={mobileOptionsTriggerRef}
               type="button"
@@ -1415,7 +1446,7 @@ function UnifiedReviewBody({ rotations, week, rotationSizes, fetchSlots, feedMod
               aria-expanded={mobileOptionsOpen}
               aria-controls="review-mobile-options"
               onClick={() => setMobileOptionsOpen((open) => !open)}
-              className="relative inline-flex h-[44px] w-[44px] shrink-0 items-center justify-center rounded-full border border-[var(--md-outline-variant)] text-base text-[var(--md-on-surface-variant)] hover:bg-[var(--md-surface-container-high)] @min-[60rem]/review-toolbar:hidden"
+              className="relative inline-flex h-[44px] w-[44px] shrink-0 items-center justify-center rounded-full border border-[var(--md-outline-variant)] text-base text-[var(--md-on-surface-variant)] hover:bg-[var(--md-surface-container-high)]"
             >
               <span aria-hidden>⋯</span>
             </button>
@@ -1438,6 +1469,28 @@ function UnifiedReviewBody({ rotations, week, rotationSizes, fetchSlots, feedMod
           <ReviewScopeBanner scope={clusterScope} />
         </div>
       )}
+
+      <LearningCheckIn
+        key={reviewUserKey ?? 'guest'}
+        ownerKey={reviewUserKey ?? 'guest'}
+        completed={stats.total}
+        enabled={!isCohortHost && !allowUnverifiedPack && !boundedQueue && authStatus !== 'loading' && Boolean(currentItem)}
+        discovery={currentItem?.decisionContext?.firstReviewVersion === 2}
+        onExit={() => { void fetchItems(false, true); }}
+        onApplied={(choice) => {
+          if ((FIRST_REVIEW_ROTATIONS as readonly string[]).includes(choice) && onFocusRotationChange) {
+            onFocusRotationChange(choice);
+          } else if (choice === 'explore' && focusRotation && onFocusRotationChange) {
+            onFocusRotationChange(null);
+          } else if (currentItem?.decisionContext?.firstReviewVersion === 2) {
+            void fetchItems(false, true);
+          } else if (choice === 'exam') {
+            onReviewModeChange?.('mcq');
+          } else if (choice === 'explore') {
+            onReviewModeChange?.('mixed');
+          }
+        }}
+      />
 
       {/* Session expired — a flag (or other write) hit a 401. Persistent across
           cards until re-sign-in; the queued write replays automatically after. */}
@@ -1494,7 +1547,7 @@ function UnifiedReviewBody({ rotations, week, rotationSizes, fetchSlots, feedMod
       )}
 
       {!allowUnverifiedPack && (
-        <div className="mx-auto max-w-2xl px-4 pt-4 sm:px-6">
+        <div className="mx-auto max-w-2xl px-4 pt-4 sm:px-6 empty:hidden">
           <GuestReviewLoginNudge
             isGuest={isGuest}
             reviewCount={stats.total}
@@ -1509,13 +1562,6 @@ function UnifiedReviewBody({ rotations, week, rotationSizes, fetchSlots, feedMod
       <div data-review-content className={`px-4 py-5 sm:px-6 sm:py-7 ${bottomPaddingClass}`}>
         <div className={`${reviewShellWidthClass(usesSidePane, reviewPaneKind(item))} mx-auto review-card-shell`}>
       <ReviewKeyboardHelp open={shortcutsOpen} onClose={() => setShortcutsOpen(false)} context={shortcutContext} returnFocusRef={shortcutsReturnRef} />
-      <FlagReminder
-        enabled={!flagMode && !flagPending && !flagged && (item.type === 'card' || item.type === 'question')}
-        flagOpened={flagMode || flagPending || flagged}
-        itemKey={`${item.type}:${item.id}`}
-        keyboardHint={shortcutHint}
-        onOpenShortcuts={openShortcuts}
-      />
       {item.practiceReview && (
         <div className="mb-2">
           <PracticeExamFollowUp provenance={item.practiceReview} />
@@ -1696,6 +1742,7 @@ function UnifiedReviewBody({ rotations, week, rotationSizes, fetchSlots, feedMod
       {/* MCQ confidence buttons - after answering (private) or after select (public opaque) */}
       {(scaffoldWriteStatus !== 'idle' || opaqueWriteStatus !== 'idle') && (
         <div
+          data-review-footer
           className="fixed left-0 right-0 md:left-20 z-50 p-4 border-t border-[var(--md-outline-soft)] bg-[var(--md-surface)] safe-area-pb"
           style={{ bottom: 'var(--md-review-footer-bottom, 0px)' }}
         >

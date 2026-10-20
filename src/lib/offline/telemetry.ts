@@ -52,6 +52,12 @@ export interface OfflineSnapshot {
   engine: 'webkit' | 'blink' | 'gecko' | 'unknown';
   /** Set when the last pack fill failed, so a silent failure is still visible. */
   lastError?: string;
+  /** Age of the oldest unsent answer: a stuck queue, not just a busy one. */
+  outboxOldestAgeSec?: number;
+  /** Offline episodes completed since the last report, from offline/online events. */
+  offlineEpisodes?: number;
+  offlineSec?: number;
+  longestOfflineSec?: number;
 }
 
 function engineOf(ua: string): OfflineSnapshot['engine'] {
@@ -92,6 +98,8 @@ export interface SnapshotDeps {
   persistence: string;
   outboxSize: number;
   lastError?: string;
+  outboxOldestAgeSec?: number | null;
+  connectivity?: { offlineEpisodes: number; offlineSec: number; longestOfflineSec: number };
   now?: number;
 }
 
@@ -133,6 +141,8 @@ export function buildSnapshot(
     storageQuotaMb: mb(env.quota),
     engine: engineOf(env.ua),
     ...(deps.lastError ? { lastError: deps.lastError.slice(0, 300) } : {}),
+    ...(typeof deps.outboxOldestAgeSec === 'number' ? { outboxOldestAgeSec: deps.outboxOldestAgeSec } : {}),
+    ...(deps.connectivity ?? {}),
   };
 }
 

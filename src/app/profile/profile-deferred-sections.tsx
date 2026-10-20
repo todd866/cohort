@@ -6,6 +6,7 @@ import { ProfileLeaderboard, type BoardResponse } from './profile-leaderboard';
 import { ReadinessTrend } from '@/components/profile/ReadinessTrend';
 import { ReviewHeatmap } from '@/components/profile/ReviewHeatmap';
 import { ProfileReservedSlot } from './profile-reserved-slot';
+import { SECTION_HEADER } from '@/components/stats/instrument-chrome';
 import {
   REVIEW_CALENDAR_SLOT_CLASS,
   TOPIC_READINESS_SLOT_CLASS,
@@ -59,10 +60,10 @@ export async function ProfileReviewCalendarSection(
   const data = calendar.value;
   return (
     <section aria-label="Review calendar" className="mb-6">
-      <h2 className="mb-3 text-xs font-semibold uppercase tracking-wider text-[var(--md-on-surface-variant)]">
+      <h2 className={`mb-2 ${SECTION_HEADER}`}>
         Reviews
       </h2>
-      <ReviewHeatmap heatmap={data.heatmap} exams={data.exams} today={data.today} />
+      <ReviewHeatmap heatmap={data.heatmap} exams={data.exams} blocks={data.blocks} today={data.today} examLinkBase="" />
     </section>
   );
 }

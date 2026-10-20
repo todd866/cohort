@@ -7,6 +7,8 @@
  * that module re-exports the public names, so importers need no edits.
  */
 
+import type { AccessTier } from '@/lib/images/types';
+
 import type { QuestionVariantSelectionDeterminism } from '@/lib/question-variants';
 import { CONCEPT_THREAD_POLICY_VERSION } from './concept-thread-policy';
 import type { CommitmentLevel } from '@/lib/commitment';
@@ -17,6 +19,7 @@ import type { ExamTargetWorkload } from '@/lib/exam-target/workload';
 import type { ExamTargetMasteryStage } from '@/lib/exam-target/mastery';
 import type { UnifiedSchedulerSharedReadContext } from './unified-scheduler-shared-reads';
 import type { ReviewChallengeLevel } from '@/lib/study/review-challenge';
+import type { ReviewMedia } from '@/lib/review/review-intent';
 
 // =============================================================================
 // Types
@@ -181,6 +184,9 @@ export type SessionMode = 'normal' | 'crunch' | 'rereview';
 export type UnifiedSessionSelectionDeterminism = QuestionVariantSelectionDeterminism;
 
 export interface UnifiedSessionOptions {
+  /** Media eligibility narrowing applied in every candidate database query. */
+  media?: ReviewMedia;
+  imageTrust?: AccessTier;
   /** Learner-controlled challenge preference for discretionary material. */
   reviewChallenge?: ReviewChallengeLevel;
   rotation: string;
@@ -248,6 +254,8 @@ export interface UnifiedSessionOptions {
    * boundary, the institution's timetable does not. Omit for "no signal".
    */
   topicTeachingWeeks?: ReadonlyMap<string, number>;
+  /** Normalized topic slug → age in days for dated lecture recency. */
+  topicRecencyDays?: ReadonlyMap<string, number>;
   /**
    * Figure URL → how often this user has been shown it, and when. Drives the
    * expanding figure-spacing interval so the same picture does not reappear

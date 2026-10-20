@@ -8,7 +8,7 @@
  *  1. **Rights.** Only a source explicitly marked `cleared` serves. A source row
  *     that discovery created and nobody has reviewed is `restricted`, and a
  *     takedown is a single flag flip on one row rather than a hunt through R2.
- *  2. **Tier.** Copyright-tier users only, matching the image-as-prompt lane.
+ *  2. **Tier.** Copyright tier, or an exact individually reviewed public asset.
  *  3. **Soft delete.** A retired clip stops serving without losing the card's
  *     review history.
  *
@@ -21,6 +21,7 @@ import { prisma } from '@/lib/prisma';
 import type { ClipPromptData } from '@/components/review/clip-role';
 import { getSignedVideoUrl } from '@/lib/video-storage';
 import { logger } from '@/lib/logger';
+import { isPublicClipId, reviewedPublicClip, type PublicClipCandidate } from './public-clips';
 
 export type ClipDenialReason = 'rights' | 'tier' | 'deleted';
 
@@ -33,10 +34,13 @@ export function canServeClip(input: {
   rightsStatus: string | null | undefined;
   deletedAt: Date | null | undefined;
   isCopyrightTier: boolean;
+  clip?: PublicClipCandidate;
 }): ClipServeDecision {
   if (input.rightsStatus !== 'cleared') return { allowed: false, reason: 'rights' };
   if (input.deletedAt) return { allowed: false, reason: 'deleted' };
-  if (!input.isCopyrightTier) return { allowed: false, reason: 'tier' };
+  if (!input.isCopyrightTier && (!input.clip || !reviewedPublicClip(input.clip))) {
+    return { allowed: false, reason: 'tier' };
+  }
   return { allowed: true };
 }
 
@@ -55,6 +59,21 @@ export interface ResolvedClip {
   sourceAuthor: string | null;
   sourceLicence: string | null;
   sourceLicenceUrl: string | null;
+  publicReuse?: ClipPromptData['publicReuse'];
+}
+
+function sourceAttribution(clip: PublicClipCandidate & {
+  source: PublicClipCandidate['source'] & { title: string; channelName: string | null };
+}) {
+  const reviewed = reviewedPublicClip(clip);
+  return {
+    sourceUrl: reviewed?.sourceUrl ?? clip.source.url,
+    sourceTitle: reviewed?.title ?? clip.source.title,
+    sourceAuthor: reviewed?.author ?? clip.source.channelName,
+    sourceLicence: reviewed?.licence ?? clip.source.licence ?? null,
+    sourceLicenceUrl: reviewed?.licenceUrl ?? recognisedCreativeCommonsLicence(clip.source.licence),
+    ...(reviewed ? { publicReuse: { copyright: reviewed.copyright, changes: reviewed.changes } } : {}),
+  };
 }
 
 /**
@@ -82,6 +101,7 @@ export async function resolveClipForDelivery(
     where: { id: clipId },
     select: {
       id: true,
+      sourceId: true,
       r2Key: true,
       posterR2Key: true,
       startSecs: true,
@@ -98,6 +118,7 @@ export async function resolveClipForDelivery(
     rightsStatus: clip.source?.rightsStatus,
     deletedAt: clip.deletedAt,
     isCopyrightTier: opts.isCopyrightTier,
+    clip,
   });
   if (!decision.allowed) return null;
 
@@ -114,11 +135,7 @@ export async function resolveClipForDelivery(
     endSecs: clip.endSecs,
     clipKind: clip.clipKind,
     audioStripped: clip.audioStripped,
-    sourceUrl: clip.source.url,
-    sourceTitle: clip.source.title,
-    sourceAuthor: clip.source.channelName,
-    sourceLicence: clip.source.licence,
-    sourceLicenceUrl: recognisedCreativeCommonsLicence(clip.source.licence),
+    ...sourceAttribution(clip),
   };
 }
 
@@ -138,18 +155,15 @@ export async function resolveClipsForSession(
   clipIds: Iterable<string>,
   opts: { isCopyrightTier: boolean },
 ): Promise<Map<string, ClipPromptData>> {
-  const ids = Array.from(new Set([...clipIds].filter(Boolean)));
+  const ids = Array.from(new Set([...clipIds].filter(id => id && (opts.isCopyrightTier || isPublicClipId(id)))));
   const out = new Map<string, ClipPromptData>();
   if (ids.length === 0) return out;
-
-  // A standard-tier user can have no servable clip at all, so skip the query
-  // rather than fetch rows we are certain to discard.
-  if (!opts.isCopyrightTier) return out;
 
   const clips = await prisma.videoClip.findMany({
     where: { id: { in: ids }, deletedAt: null, source: { rightsStatus: 'cleared' } },
     select: {
       id: true,
+      sourceId: true,
       r2Key: true,
       posterR2Key: true,
       startSecs: true,
@@ -168,6 +182,7 @@ export async function resolveClipsForSession(
       rightsStatus: clip.source?.rightsStatus,
       deletedAt: clip.deletedAt,
       isCopyrightTier: opts.isCopyrightTier,
+      clip,
     }).allowed) return;
 
     try {
@@ -180,11 +195,7 @@ export async function resolveClipsForSession(
         url,
         posterUrl,
         audioStripped: clip.audioStripped,
-        sourceUrl: clip.source.url,
-        sourceTitle: clip.source.title,
-        sourceAuthor: clip.source.channelName,
-        sourceLicence: clip.source.licence,
-        sourceLicenceUrl: recognisedCreativeCommonsLicence(clip.source.licence),
+        ...sourceAttribution(clip),
         startSecs: clip.startSecs,
         endSecs: clip.endSecs,
       });

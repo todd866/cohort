@@ -38,6 +38,14 @@ export function checkServedItemContract(item: UnifiedItem, source?: ContractSour
       : 'legacy source item requires its prompt image but served item has no imageUrl');
   }
 
+  // A clip prompt is the question ("the step shown: [___]"); without the clip
+  // the card cannot be answered. The served item carries both fields, so this
+  // holds at the choke point for every lane (2026-10-07: the instant lane set
+  // clipRole from the current row and never resolved the clip).
+  if (item.clipRole === 'prompt' && !item.clip) {
+    violations.push('served item is clipRole=prompt but has no clip');
+  }
+
   if (questionImageIsPrompt(item.imageRole, item.imageKey) && !item.imageUrl) {
     violations.push(item.imageRole === 'prompt'
       ? 'served item is imageRole=prompt but has no imageUrl'

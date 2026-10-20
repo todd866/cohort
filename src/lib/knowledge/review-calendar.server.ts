@@ -17,16 +17,26 @@ import { prisma } from '@/lib/prisma';
 import { logger } from '@/lib/logger';
 import { buildHeatmap, isoDay, REVIEW_EVENT_TYPES, type DayCount, type HeatmapCell } from '@/lib/review-stats';
 import { isSelfPacedExamDate, getRotation } from '@/lib/rotations';
+import { USYD_MD3_2026 } from '@/lib/curriculum/usyd-md3-2026';
+import {
+  assembleExamMarkers,
+  blocksFromPeriods,
+  calendarHistoryStart,
+  labelBlocks,
+  type LabeledBlock,
+} from '@/lib/stats/calendar-grid';
+import { HEATMAP_MAX_DAYS } from '@/lib/stats/stats-page.server';
 import type { ExamMarker } from '@/components/profile/ReviewHeatmap';
 
 const TZ = 'Australia/Sydney';
 
-/** How much history the profile grid shows. The full record lives on /profile/stats. */
+/** Earlier profile grids used 26 weeks. The calendar now uses HEATMAP_MAX_DAYS. */
 export const PROFILE_WEEKS = 26;
 
 export interface ReviewCalendar {
   heatmap: HeatmapCell[];
   exams: ExamMarker[];
+  blocks: LabeledBlock[];
   today: string;
 }
 
@@ -46,35 +56,41 @@ const DAY_MS = 86_400_000;
 async function loadExamMarkers(
   userId: string,
   rotations: readonly string[],
-  from: string,
-  to: string,
+  today: string,
 ): Promise<ExamMarker[]> {
   const [results, overrides] = await Promise.all([
     prisma.examResult.findMany({
       where: { userId },
-      select: { rotation: true, examDate: true, score: true },
+      select: { id: true, rotation: true, examDate: true, score: true },
     }),
     prisma.userRotation.findMany({
       where: { userId, rotation: { in: [...rotations] } },
       select: { rotation: true, examDate: true },
     }),
   ]);
-  const scoreByRotation = new Map(results.map((r) => [r.rotation, r.score]));
   const overrideByRotation = new Map(overrides.map((r) => [r.rotation, r.examDate]));
-
-  const markers: ExamMarker[] = [];
+  const scheduled = [];
   for (const rotation of rotations) {
     const examDate = overrideByRotation.get(rotation) ?? getRotation(rotation)?.defaultExamDate ?? null;
     if (!examDate || isSelfPacedExamDate(examDate)) continue;
-    const date = isoDay(examDate.getTime());
-    if (date < from || date > to) continue;
-    markers.push({
-      date,
-      label: getRotation(rotation)?.shortName ?? rotation,
-      score: scoreByRotation.get(rotation) ?? null,
-    });
+    scheduled.push({ date: isoDay(examDate.getTime()), rotation });
   }
-  return markers.sort((a, b) => a.date.localeCompare(b.date));
+  return assembleExamMarkers({
+    today,
+    results: results.map((result) => ({
+      date: isoDay(result.examDate.getTime()),
+      rotation: result.rotation,
+      score: result.score,
+      resultId: result.id,
+    })),
+    scheduled,
+  }).map((exam) => ({
+    date: exam.date,
+    label: exam.label,
+    score: exam.score,
+    resultId: exam.resultId,
+    rotation: exam.rotation,
+  }));
 }
 
 /**
@@ -88,34 +104,46 @@ export async function loadReviewCalendar(
 ): Promise<ReviewCalendar | null> {
   try {
     const today = isoDay(now.getTime());
-    const from = isoDay(now.getTime() - PROFILE_WEEKS * 7 * DAY_MS);
+    const windowStart = new Date(now.getTime() - HEATMAP_MAX_DAYS * DAY_MS);
 
-    const [rows, candidateExams] = await Promise.all([
-      prisma.$queryRaw<{ day: Date; n: bigint }[]>`
+    const [rows, exams] = await Promise.all([
+      prisma.$queryRaw<{ day: Date; rotation: string | null; n: bigint }[]>`
       SELECT date_trunc('day', "timestamp" AT TIME ZONE ${TZ})::date AS day,
+             COALESCE(rotation, '') AS rotation,
              COUNT(*)::bigint AS n
       FROM "LearningEvent"
       WHERE "userId" = ${userId}
         AND "eventType" = ANY(${[...REVIEW_EVENT_TYPES]}::text[])
-        AND "timestamp" >= ${new Date(now.getTime() - PROFILE_WEEKS * 7 * DAY_MS)}
-      GROUP BY 1
+        AND "timestamp" >= ${windowStart}
+      GROUP BY 1, 2
       ORDER BY 1
     `,
-      loadExamMarkers(userId, rotations, from, '9999-12-31'),
+      loadExamMarkers(userId, rotations, today),
     ]);
     if (rows.length === 0) return null;
 
-    const daily: DayCount[] = rows.map((r) => ({ date: isoDay(r.day.getTime()), count: Number(r.n) }));
-
-    // Extend the grid to the NEXT exam, not the furthest one. Running out to a
-    // date two blocks away buys ten weeks of blank squares and shrinks the
-    // history that actually carries information.
-    const nextExam = candidateExams.find((e) => e.date > today)?.date;
-    const to = nextExam ?? today;
+    const activity = rows.map((row) => ({
+      day: isoDay(row.day.getTime()),
+      rotation: row.rotation ?? '',
+      n: Number(row.n),
+    }));
+    const byDay = new Map<string, number>();
+    for (const row of activity) byDay.set(row.day, (byDay.get(row.day) ?? 0) + row.n);
+    const daily: DayCount[] = [...byDay.entries()].sort(([a], [b]) => a.localeCompare(b)).map(([date, count]) => ({ date, count }));
+    const first = daily[0]?.date ?? today;
+    const from = calendarHistoryStart(first, today, HEATMAP_MAX_DAYS);
+    const lastExam = exams.filter((exam) => exam.date > today).at(-1)?.date;
+    const to = lastExam && lastExam > today ? lastExam : today;
+    const blocks = labelBlocks(
+      blocksFromPeriods(USYD_MD3_2026.assessmentPeriods),
+      activity,
+      exams.map((exam) => ({ rotation: exam.rotation ?? '', examDate: exam.date })),
+    );
 
     return {
-      heatmap: buildHeatmap(daily, from, to),
-      exams: candidateExams.filter((e) => e.date >= from && e.date <= to),
+      heatmap: buildHeatmap(daily.filter((day) => day.date >= from), from, to),
+      exams,
+      blocks,
       today,
     };
   } catch (error) {

@@ -57,6 +57,7 @@ function loadWorker(fetchMock: ReturnType<typeof vi.fn>): WorkerHarness {
 
   runInNewContext(source, {
     self: workerSelf,
+    navigator: { onLine: true },
     caches: workerCaches,
     fetch: fetchMock,
     URL,
@@ -154,6 +155,61 @@ describe('service-worker offline navigation runtime', () => {
     const response = await harness.dispatchFetch(
       request('/content', { mode: 'navigate' }),
     );
+
+    expect(await response.text()).toContain('<title>Offline</title>');
+    expect(harness.cachesMatch).toHaveBeenCalledWith('/offline');
+  });
+
+  it('serves the saved shell for an HTTP 500 navigation response', async () => {
+    const harness = loadWorker(vi.fn().mockResolvedValue(
+      new Response('server error document', { status: 500 }),
+    ));
+    harness.cachesMatch.mockResolvedValue(
+      new Response('<!doctype html><title>Offline</title>', {
+        headers: { 'Content-Type': 'text/html' },
+      }),
+    );
+
+    const response = await harness.dispatchFetch(request('/content', { mode: 'navigate' }));
+
+    expect(await response.text()).toContain('<title>Offline</title>');
+    expect(harness.cachesMatch).toHaveBeenCalledWith('/offline');
+  });
+
+  it.each([401, 403, 404])('keeps an intentional HTTP %s navigation response', async (status) => {
+    const harness = loadWorker(vi.fn().mockResolvedValue(new Response('route response', { status })));
+
+    const response = await harness.dispatchFetch(request('/missing', { mode: 'navigate' }));
+
+    expect(response.status).toBe(status);
+    expect(harness.cachesMatch).not.toHaveBeenCalled();
+  });
+
+  it('reports an HTTP 500 RSC response as a failed client navigation', async () => {
+    const harness = loadWorker(vi.fn().mockResolvedValue(
+      new Response('server error payload', { status: 500 }),
+    ));
+
+    await expect(harness.dispatchFetch(request('/content?_rsc=abc', { rsc: true })))
+      .rejects.toThrow('Transient gateway response: 500');
+    expect(harness.postMessage).toHaveBeenCalledWith({
+      type: 'md3-rsc-navigation-failed',
+      path: '/content',
+    });
+  });
+
+  it('serves the saved shell when navigator.onLine is still true but navigation transport fails', async () => {
+    // A flaky Wi-Fi link keeps navigator.onLine true while fetch rejects. The
+    // browser would otherwise show its broken document instead of the local
+    // review pack.
+    const harness = loadWorker(vi.fn().mockRejectedValue(new TypeError('Failed to fetch')));
+    harness.cachesMatch.mockResolvedValue(
+      new Response('<!doctype html><title>Offline</title>', {
+        headers: { 'Content-Type': 'text/html' },
+      }),
+    );
+
+    const response = await harness.dispatchFetch(request('/content', { mode: 'navigate' }));
 
     expect(await response.text()).toContain('<title>Offline</title>');
     expect(harness.cachesMatch).toHaveBeenCalledWith('/offline');

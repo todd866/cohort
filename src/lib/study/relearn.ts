@@ -1,3 +1,6 @@
+import type { AccessTier } from '@/lib/images/types';
+import { mediaCandidateWhere } from './media-review';
+import type { ReviewMedia } from '@/lib/review/review-intent';
 /**
  * In-session relearn lane.
  *
@@ -100,6 +103,9 @@ export const RELEARN_RESERVE_RATIO = 0.25;
 export type RelearnPrisma = Pick<typeof prisma, 'cardProgress'>;
 
 export interface FetchRelearnOptions {
+  media?: ReviewMedia;
+  imageTrust?: AccessTier;
+  isCopyrightTier?: boolean;
   userId: string;
   rotation: string;
   /** Server-authorized external source partitions eligible for this objective. */
@@ -171,6 +177,7 @@ export async function fetchRelearnCards(
       },
       {
         ...cardScope,
+        ...(options.media ? { AND: [mediaCandidateWhere(options.media, options.isCopyrightTier, options.imageTrust)] } : {}),
         deletedAt: null,
         shelvedAt: null,
         ...(weekFilter !== null ? { week: weekFilter } : {}),

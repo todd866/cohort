@@ -152,12 +152,12 @@ export async function computeRatingReliability(
 
 /** Writes the record under feedProfile.ratingReliability, preserving every other key. */
 export async function persistRatingReliability(userId: string, record: RatingReliabilityRecord): Promise<void> {
-  const existing = await prisma.user.findUnique({ where: { id: userId }, select: { feedProfile: true } });
-  const feedProfile = (existing?.feedProfile && typeof existing.feedProfile === 'object' && !Array.isArray(existing.feedProfile)
-    ? existing.feedProfile
-    : {}) as Record<string, unknown>;
-  await prisma.user.update({
-    where: { id: userId },
-    data: { feedProfile: { ...feedProfile, ratingReliability: record } as object },
-  });
+  // Atomic JSON patch preserves the shared optional-question ledger and other
+  // preferences written while this background calculation was running.
+  await prisma.$executeRaw`
+    UPDATE "User" SET "feedProfile" = jsonb_set(
+      CASE WHEN jsonb_typeof("feedProfile") = 'object' THEN "feedProfile" ELSE '{}'::jsonb END,
+      '{ratingReliability}', ${JSON.stringify(record)}::jsonb, true
+    ) WHERE "id" = ${userId}
+  `;
 }

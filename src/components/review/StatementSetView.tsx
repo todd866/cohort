@@ -154,7 +154,7 @@ export function StatementSetView({ options, result, selectedOption, onSubmit, di
               </span>
               <span className="min-w-0 flex-1 pt-0.5">
                 <GlossaryText text={option.text} />
-                <span className="ml-2 whitespace-nowrap text-xs font-medium text-[var(--md-on-surface-variant)]">
+                <span className="ml-2 text-xs font-medium text-[var(--md-on-surface-variant)]">
                   {truth}
                   {wrong && given ? ` · you said ${given[index] === 'T' ? 'true' : 'false'}` : ''}
                 </span>
@@ -165,7 +165,7 @@ export function StatementSetView({ options, result, selectedOption, onSubmit, di
             </button>
             {open && (
               <div className="ml-10 mr-2 mt-1 space-y-2 rounded-lg bg-[var(--md-surface-container)] px-3 py-2 text-sm leading-relaxed text-[var(--md-on-surface-variant)]">
-                {teaching.split(/\n\s*\n/).map((block, i) => <p key={i}><InlineMarkdown text={block} /></p>)}
+                {teaching.split(/\n\s*\n/).map((block, i) => <p key={i}><InlineMarkdown text={block} leafRenderer={(text) => <GlossaryText text={text} />} /></p>)}
               </div>
             )}
           </div>

@@ -1,5 +1,6 @@
 import { recordFlagImageDeliveryNotice } from './flags/image-delivery-notice';
 import { fetchWithDeadline } from './fetch-with-deadline';
+import { reportLinkError, reportLinkSuccess } from './offline/connectivity';
 import { isRetriableWriteStatus } from './write-retry-policy';
 import {
   currentDeviceGuestOwnerKey,
@@ -14,6 +15,12 @@ import {
 import { markReviewBootstrapDirty } from './review/bootstrap-safety';
 import { OFFLINE_OWNER_HEADER, OFFLINE_OWNER_MISMATCH_HEADER } from './offline/owner-header';
 import { releaseOfflinePackStorageForReview } from './offline/pack';
+import {
+  blobToBase64,
+  deleteQueuedFlagImage,
+  getQueuedFlagImage,
+  sweepQueuedFlagImages,
+} from './flags/queued-image-store';
 
 export const OUTBOX_STORAGE_KEY = 'md3:review-queue';
 export const OUTBOX_QUARANTINE_KEY = 'md3:outbox-quarantine:v1';
@@ -46,6 +53,8 @@ export interface OutboxEntry {
   timestamp: number;
   key?: string;            // e.g. "card:<id>" — for per-flag pending lookup
   clientRequestId?: string;
+  /** Flag only: id of the image bytes waiting in the queued-image store. */
+  imageRef?: string;
   requiresAuth?: boolean;  // last attempt returned 401
   boundedPermanentRetry?: boolean;
   permanentFailureCount?: number;
@@ -81,6 +90,34 @@ let clearGeneration = 0;
 let activeFlush: Promise<void> | null = null;
 const pendingFlushOwners = new Set<string>();
 export function markAuthBlocked(): void { authBlocked = true; }
+
+/**
+ * How the most recent replay of a flag settled, keyed by clientRequestId, so the
+ * submitter can show its tick without sending a second request of its own.
+ */
+export type FlagReplayOutcome = 'delivered' | 'image-unavailable' | 'dropped' | 'auth-required';
+const flagOutcomes = new Map<string, FlagReplayOutcome>();
+function noteFlagOutcome(entry: StoredOutboxEntry, outcome: FlagReplayOutcome): void {
+  if (entry.kind !== 'flag') return;
+  const requestId = normalizedClientRequestId(entry);
+  if (!requestId) return;
+  flagOutcomes.delete(requestId);
+  flagOutcomes.set(requestId, outcome);
+  if (flagOutcomes.size > 100) flagOutcomes.delete(flagOutcomes.keys().next().value as string);
+}
+export function takeFlagReplayOutcome(clientRequestId: string): FlagReplayOutcome | undefined {
+  const outcome = flagOutcomes.get(clientRequestId);
+  flagOutcomes.delete(clientRequestId);
+  return outcome;
+}
+
+/** Delete queued flag images no queue row references, or owned by another account. */
+function sweepFlagImages(): void {
+  const referenced = new Set(
+    readQueue().map((entry) => entry.imageRef).filter((ref): ref is string => typeof ref === 'string'),
+  );
+  void sweepQueuedFlagImages(referenced, currentOfflineOwnerKey).catch(() => {});
+}
 export function resetAuthBlockedForTest(): void { authBlocked = false; }
 
 function normalizedOwnerKey(value: unknown): string | null {
@@ -272,6 +309,12 @@ export function acknowledgeOutbox(
   if (remaining.length !== entries.length) writeQueue(remaining);
 }
 
+/** True when this owner's queue holds the write (proves a write-ahead landed). */
+export function hasQueuedRequest(kind: OutboxKind, clientRequestId: string, ownerKey: string): boolean {
+  return readQueue().some((entry) =>
+    entry.ownerKey === ownerKey && entry.kind === kind && normalizedClientRequestId(entry) === clientRequestId);
+}
+
 export function getQueueSize(
   kind?: OutboxKind,
   ownerKey: string | null = currentOfflineOwnerKey(),
@@ -283,11 +326,13 @@ export function getQueueSize(
 }
 
 /** Count-only diagnostics; never expose queued answer bodies to telemetry. */
-export function getOutboxStatus(ownerKey: string): { count: number; requiresAuthCount: number } {
+export function getOutboxStatus(ownerKey: string, now = Date.now()): { count: number; requiresAuthCount: number; oldestAgeSec: number | null } {
   const entries = readQueue().filter((entry) => entry.ownerKey === ownerKey && entry.kind === 'review');
+  const oldest = entries.reduce<number | null>((min, entry) => (min === null || entry.timestamp < min ? entry.timestamp : min), null);
   return {
     count: entries.length,
     requiresAuthCount: entries.filter((entry) => entry.requiresAuth).length,
+    oldestAgeSec: oldest === null ? null : Math.max(0, Math.round((now - oldest) / 1000)),
   };
 }
 
@@ -339,6 +384,7 @@ export function clearOutbox(ownerKey?: string): void {
   try {
     if (resolvedOwner) {
       writeQueue(readQueue().filter((entry) => entry.ownerKey !== resolvedOwner));
+      sweepFlagImages();
       return;
     }
     localStorage.removeItem(OUTBOX_STORAGE_KEY);
@@ -346,6 +392,7 @@ export function clearOutbox(ownerKey?: string): void {
   } catch {
     // A failed clear must not break account transition/sign-out.
   }
+  sweepFlagImages();
   announceChange();
 }
 
@@ -429,6 +476,7 @@ export function claimDeviceGuestReviewOutbox(
     // Active replay still fails closed to the current target-only queue.
   }
   writeQueue(applyRetention(claimed));
+  sweepFlagImages(); // guest flags were not claimed; neither are their images
   return guestReviewIdentities.size;
 }
 
@@ -499,6 +547,59 @@ function reportDroppedWrite(entry: StoredOutboxEntry, status: number): void {
   } catch { /* non-critical */ }
 }
 
+/** An image body is up to ~2.8 MB of base64; give a weak link longer than a JSON write. */
+const FLAG_IMAGE_UPLOAD_TIMEOUT_MS = 30_000;
+
+type ImageStep =
+  | { kind: 'ready'; entry: StoredOutboxEntry; imageDropped: boolean }
+  | { kind: 'auth' }
+  | { kind: 'retry' };
+
+/**
+ * Upload a queued flag's image (idempotent: the record id is the server upload
+ * id) and return the row with its attachmentId. Bytes are read only from the
+ * row's own owner partition. A permanent rejection or missing bytes sends the
+ * note without the image rather than losing the flag.
+ */
+async function attachQueuedFlagImage(entry: StoredOutboxEntry, signal: AbortSignal): Promise<ImageStep> {
+  const ref = entry.imageRef!;
+  const ownerKey = entry.ownerKey ?? '';
+  const withoutImage = (): ImageStep => {
+    void deleteQueuedFlagImage(ref);
+    return { kind: 'ready', entry: { ...entry, imageRef: undefined }, imageDropped: true };
+  };
+  let record;
+  try { record = ownerKey ? await getQueuedFlagImage(ref, ownerKey) : null; }
+  catch { return { kind: 'retry' }; } // storage unavailable: keep the bytes
+  if (!record) return withoutImage();
+  let base64: string;
+  try { base64 = await blobToBase64(record.blob); } catch { return withoutImage(); }
+  const { type, id, deliveryId } = entry.body;
+  try {
+    const res = await fetchWithDeadline(entry.url, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json', 'x-flag-image-upload': '1', [OFFLINE_OWNER_HEADER]: ownerKey },
+      body: JSON.stringify({
+        type, id, ...(typeof deliveryId === 'string' ? { deliveryId } : {}),
+        reason: 'Other',
+        imageUpload: { uploadId: record.id, base64 },
+      }),
+      signal,
+    }, FLAG_IMAGE_UPLOAD_TIMEOUT_MS);
+    if (res.status !== 502 && res.status !== 503 && res.status !== 504) reportLinkSuccess();
+    const ownerMismatch = res.status === 409 && res.headers?.get?.(OFFLINE_OWNER_MISMATCH_HEADER) === '1';
+    if (res.status === 401 || res.status === 403 || ownerMismatch) return { kind: 'auth' };
+    if (!res.ok && isRetriableWriteStatus(res.status)) return { kind: 'retry' };
+    if (!res.ok) return withoutImage();
+    const data = await res.json().catch(() => null) as { attachmentId?: unknown } | null;
+    if (typeof data?.attachmentId !== 'string') return withoutImage();
+    return { kind: 'ready', entry: { ...entry, body: { ...entry.body, attachmentId: data.attachmentId } }, imageDropped: false };
+  } catch (error) {
+    reportLinkError(error);
+    return { kind: 'retry' };
+  }
+}
+
 type FlushOutcome =
   | { action: 'remove' }
   | { action: 'retain'; entry: StoredOutboxEntry };
@@ -538,6 +639,32 @@ function commitFlushOutcomes(
 }
 
 /** Replay one owner partition after the public boundary has resolved it. */
+// A replay that stops early (three transport failures, or entries waiting out
+// a backoff) keeps the rest for "the next online/foreground signal". A phone
+// that stays open and online never sends one: on 15 Oct 2026, 31 answers sat
+// queued for hours. So a partial flush schedules its own retry while visible.
+const SELF_RETRY_DELAYS_MS = [20_000, 60_000, 180_000, 300_000];
+const selfRetry = new Map<string, { timer: ReturnType<typeof setTimeout>; attempt: number }>();
+
+function settleSelfRetry(ownerKey: string): void {
+  const remaining = readQueue().filter((entry) => entry.ownerKey === ownerKey && !entry.requiresAuth);
+  const current = selfRetry.get(ownerKey);
+  if (remaining.length === 0 || authBlocked || typeof window === 'undefined') {
+    if (current) clearTimeout(current.timer);
+    selfRetry.delete(ownerKey);
+    return;
+  }
+  if (current) clearTimeout(current.timer);
+  const attempt = current ? current.attempt + 1 : 0;
+  const delay = SELF_RETRY_DELAYS_MS[Math.min(attempt, SELF_RETRY_DELAYS_MS.length - 1)];
+  const timer = setTimeout(() => {
+    // A hidden page resumes on its foreground signal instead.
+    if (typeof document !== 'undefined' && document.visibilityState === 'hidden') return;
+    void flushOutbox(ownerKey).catch(() => {});
+  }, delay);
+  selfRetry.set(ownerKey, { timer, attempt });
+}
+
 async function flushOwnerOnce(ownerKey: string): Promise<void> {
   const currentOwner = readOfflineOwner();
   if (!currentOwner || currentOwner.ownerKey !== ownerKey) return;
@@ -551,8 +678,14 @@ async function flushOwnerOnce(ownerKey: string): Promise<void> {
   });
   try {
     clearExpiredEntries();
+    sweepFlagImages();
     const entries = readQueue();
-    const ownedEntries = entries.filter((entry) => entry.ownerKey === ownerKey);
+    // Flags go first: they are few, independent of answer order, and the
+    // submitter is waiting on this pass for its tick.
+    const ownedEntries = [
+      ...entries.filter((entry) => entry.ownerKey === ownerKey && entry.kind === 'flag'),
+      ...entries.filter((entry) => entry.ownerKey === ownerKey && entry.kind !== 'flag'),
+    ];
     if (ownedEntries.length === 0) return;
     const generationAtStart = clearGeneration;
 
@@ -572,7 +705,15 @@ async function flushOwnerOnce(ownerKey: string): Promise<void> {
     // Other accounts and unowned legacy entries stay byte-for-byte inactive.
     const outcomes = new Map<string, FlushOutcome>();
     let transportFailures = 0;
-    for (const entry of ownedEntries) {
+    const persistProgress = () => {
+      if (generationAtStart === clearGeneration && isOfflineOwnerCurrent(ownerLease)) {
+        commitFlushOutcomes(entries, outcomes);
+        outcomes.clear();
+      }
+    };
+    for (const queued of ownedEntries) {
+      let entry = queued;
+      let imageDropped = false;
       if (
         generationAtStart !== clearGeneration
         || !isOfflineOwnerCurrent(ownerLease)
@@ -590,6 +731,31 @@ async function flushOwnerOnce(ownerKey: string): Promise<void> {
         outcomes.set(entryIdentity(entry), { action: 'retain', entry });
         continue;
       }
+      if (entry.kind === 'flag' && entry.imageRef && typeof entry.body.attachmentId !== 'string') {
+        const step = await attachQueuedFlagImage(entry, ownerAbort.signal);
+        if (generationAtStart !== clearGeneration || !isOfflineOwnerCurrent(ownerLease)) break;
+        if (step.kind === 'auth') {
+          transportFailures = 0;
+          authBlocked = true;
+          noteFlagOutcome(entry, 'auth-required');
+          outcomes.set(entryIdentity(entry), { action: 'retain', entry: { ...entry, requiresAuth: true } });
+          persistProgress();
+          continue;
+        }
+        if (step.kind === 'retry') {
+          transportFailures += 1;
+          outcomes.set(entryIdentity(entry), { action: 'retain', entry });
+          persistProgress();
+          if (transportFailures >= MAX_CONSECUTIVE_TRANSPORT_FAILURES) break;
+          continue;
+        }
+        // Persist the attachment id before the flag request, so a suspended
+        // page resumes with the note POST rather than a second upload.
+        entry = step.entry;
+        imageDropped = step.imageDropped;
+        outcomes.set(entryIdentity(entry), { action: 'retain', entry });
+        persistProgress();
+      }
       try {
         const res = await fetchWithDeadline(entry.url, {
           method: 'POST',
@@ -597,6 +763,8 @@ async function flushOwnerOnce(ownerKey: string): Promise<void> {
           body: JSON.stringify(replayBodyForOutboxEntry(entry.url, entry.body)),
           signal: ownerAbort.signal,
         }, FLUSH_REQUEST_TIMEOUT_MS);
+        // Any non-gateway response proves the link.
+        if (res.status !== 502 && res.status !== 503 && res.status !== 504) reportLinkSuccess();
         if (
           generationAtStart !== clearGeneration
           || !isOfflineOwnerCurrent(ownerLease)
@@ -610,6 +778,7 @@ async function flushOwnerOnce(ownerKey: string): Promise<void> {
         if (res.status === 401 || res.status === 403 || ownerMismatch) {
           transportFailures = 0;
           authBlocked = true;
+          noteFlagOutcome(entry, 'auth-required');
           outcomes.set(entryIdentity(entry), {
             action: 'retain',
             entry: { ...entry, requiresAuth: true },
@@ -643,14 +812,21 @@ async function flushOwnerOnce(ownerKey: string): Promise<void> {
             // non-review entry). Drop and report without the request body so
             // one poison entry cannot block the outbox forever.
             reportDroppedWrite(entry, res.status);
+            noteFlagOutcome(entry, 'dropped');
+            if (entry.imageRef) void deleteQueuedFlagImage(entry.imageRef);
             outcomes.set(entryIdentity(entry), { action: 'remove' });
           }
         } else {
-          if (entry.kind === 'flag' && res.headers?.get?.('X-Flag-Attachment-Unavailable') === '1') recordFlagImageDeliveryNotice(ownerLease);
+          const attachmentUnavailable = imageDropped
+            || res.headers?.get?.('X-Flag-Attachment-Unavailable') === '1';
+          if (entry.kind === 'flag' && attachmentUnavailable) recordFlagImageDeliveryNotice(ownerLease);
+          noteFlagOutcome(entry, attachmentUnavailable ? 'image-unavailable' : 'delivered');
+          if (entry.imageRef) void deleteQueuedFlagImage(entry.imageRef);
           transportFailures = 0;
           outcomes.set(entryIdentity(entry), { action: 'remove' });
         }
-      } catch {
+      } catch (error) {
+        reportLinkError(error);
         if (
           generationAtStart !== clearGeneration
           || !isOfflineOwnerCurrent(ownerLease)
@@ -664,10 +840,7 @@ async function flushOwnerOnce(ownerKey: string): Promise<void> {
       // now instead of leaving an entire successful prefix queued until the end
       // of a multi-minute replay. Merge against current storage so new writes
       // and other-tab clears still win.
-      if (generationAtStart === clearGeneration && isOfflineOwnerCurrent(ownerLease)) {
-        commitFlushOutcomes(entries, outcomes);
-        outcomes.clear();
-      }
+      persistProgress();
       if (transportFailures >= MAX_CONSECUTIVE_TRANSPORT_FAILURES) break;
     }
     if (
@@ -679,6 +852,7 @@ async function flushOwnerOnce(ownerKey: string): Promise<void> {
   } finally {
     unsubscribeOwner();
   }
+  settleSelfRetry(ownerKey);
 }
 
 /**

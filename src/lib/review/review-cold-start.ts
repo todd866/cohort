@@ -1,4 +1,4 @@
-import type { ReviewFilter, ReviewItemType } from './review-intent';
+import type { ReviewFilter, ReviewItemType, ReviewMedia } from './review-intent';
 
 /** Empty outbox → do not pay the 2s flush budget before the session fetch. */
 export function shouldSkipFlushBudget(queueSize: number): boolean {
@@ -15,10 +15,11 @@ export function shouldOptimisticPaintPack(args: {
   queueSize: number;
   reviewFilter: ReviewFilter | undefined;
   itemType?: ReviewItemType | undefined;
+  media?: ReviewMedia | undefined;
   online: boolean;
   packItemCount: number;
 }): boolean {
-  if (args.reviewFilter || args.itemType) return false;
+  if (args.reviewFilter || args.itemType || args.media) return false;
   if (!args.online) return false;
   if (args.queueSize > 0) return false;
   return args.packItemCount > 0;

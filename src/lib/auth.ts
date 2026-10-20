@@ -156,8 +156,9 @@ export const { auth, handlers, signIn, signOut } = NextAuth({
       // Access flags — avoids exposing email lists to client
       const { isAdminEmail } = await import('./admin-shared');
       const { hasVideoAccess } = await import('./video-access');
+      const { hasAiAccess } = await import('./ai-access');
       // A whitelisted object, never the mutated row: see auth-session-payload.ts.
-      return buildSessionPayload({ session, user, isAdminEmail, hasVideoAccess });
+      return buildSessionPayload({ session, user, isAdminEmail, hasVideoAccess, hasAiAccess });
     },
   },
   events: {
@@ -193,6 +194,7 @@ declare module 'next-auth' {
       institution?: string | null;
       isAdmin?: boolean;
       hasVideoAccess?: boolean;
+      aiAccess?: boolean;
       imageTier?: 'standard' | 'copyright';
       clinicalAudiences?: string[];
     };

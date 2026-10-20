@@ -1,4 +1,5 @@
 import { fetchWithDeadline } from './fetch-with-deadline';
+import { getLinkState, reportLinkError, reportLinkSuccess } from './offline/connectivity';
 import {
   OFFLINE_OWNER_CHANGE_EVENT,
   isOfflineOwnerCurrent,
@@ -68,8 +69,13 @@ export async function submitWithRetry(
     window.addEventListener(OFFLINE_OWNER_CHANGE_EVENT, ownerChanged);
   }
 
+  // On a link already known to be degraded or offline, one attempt is enough:
+  // every caller keeps the write in its outbox, which retries on its own
+  // backoff. Three 15 s attempts per grade stacked a dozen hanging requests on
+  // a weak link (15 Oct 2026).
+  const attempts = getLinkState() === 'online' ? MAX_ATTEMPTS : 1;
   try {
-    for (let attempt = 0; attempt < MAX_ATTEMPTS; attempt++) {
+    for (let attempt = 0; attempt < attempts; attempt++) {
       assertOwnerCurrent(options.ownerLease);
       try {
         const res = await fetchWithDeadline(url, {
@@ -81,10 +87,11 @@ export async function submitWithRetry(
           body: JSON.stringify(body),
           signal: ownerController.signal,
         }, REQUEST_TIMEOUT_MS);
+        if (!isRetryableStatus(res.status)) reportLinkSuccess();
         assertOwnerCurrent(options.ownerLease);
 
         // Retry on transient HTTP errors (cold start 502/503/504)
-        if (isRetryableStatus(res.status) && attempt < MAX_ATTEMPTS - 1) {
+        if (isRetryableStatus(res.status) && attempt < attempts - 1) {
           await new Promise(r => setTimeout(r, BACKOFF_MS[attempt]));
           assertOwnerCurrent(options.ownerLease);
           continue;
@@ -92,10 +99,11 @@ export async function submitWithRetry(
 
         return res;
       } catch (err) {
+        reportLinkError(err);
         assertOwnerCurrent(options.ownerLease);
         lastError = err;
 
-        if (!isRetryable(err) || attempt >= MAX_ATTEMPTS - 1) {
+        if (!isRetryable(err) || attempt >= attempts - 1) {
           throw err;
         }
 

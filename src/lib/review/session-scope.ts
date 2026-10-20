@@ -1,5 +1,5 @@
 import type { ReviewFeedMode } from './feed-mode';
-import type { ReviewFilter, ReviewItemType, ReviewTopic } from './review-intent';
+import type { ReviewFilter, ReviewItemType, ReviewMedia, ReviewTopic } from './review-intent';
 
 export interface ReviewSessionScope {
   rotations: readonly string[];
@@ -7,9 +7,12 @@ export interface ReviewSessionScope {
   feedMode: ReviewFeedMode;
   reviewFilter?: ReviewFilter | null;
   itemType?: ReviewItemType | null;
+  media?: ReviewMedia | null;
   focusRotation?: string | null;
   topics?: readonly ReviewTopic[] | null;
   cluster?: string | null;
+  /** Calendar replay or pull-forward. Appended only when set. */
+  replay?: string | null;
 }
 
 interface SearchParamReader {
@@ -27,9 +30,12 @@ export function reviewLocationKey(searchParams: SearchParamReader): string {
   // mixed batch, but an ordinary visit keeps its pre-existing identity so a
   // perfectly adoptable batch is not invalidated just because this mode exists.
   if (searchParams.get('type') !== null) keys.push('type');
+  if (searchParams.get('media') !== null) keys.push('media');
   // A cluster-scoped visit must never adopt a batch streamed for the whole
   // rotation — those cards are outside the square the learner clicked.
   if (searchParams.get('cluster') !== null) keys.push('cluster');
+  if (searchParams.get('replay') !== null) keys.push('replay');
+  if (searchParams.get('due') !== null) keys.push('due');
   return keys
     .map((key) => `${key}=${searchParams.get(key) ?? ''}`)
     .join('&');
@@ -53,5 +59,7 @@ export function reviewSessionScopeKey(scope: ReviewSessionScope): string {
   const scoped = scope.topics?.length ? `${base}::${scope.topics.join(',')}` : base;
   // Appended only when set, for the same identity-stability reason.
   const typed = scope.itemType ? `${scoped}::type=${scope.itemType}` : scoped;
-  return scope.cluster ? `${typed}::cluster=${scope.cluster}` : typed;
+  const media = scope.media ? `${typed}::media=${scope.media}` : typed;
+  const clustered = scope.cluster ? `${media}::cluster=${scope.cluster}` : media;
+  return scope.replay ? `${clustered}::replay=${scope.replay}` : clustered;
 }

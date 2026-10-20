@@ -1,46 +1,35 @@
 'use client';
 
 import { FlagImageDeliveryNotice } from '@/components/content/FlagImageDeliveryNotice';
-import { useState, useEffect } from 'react';
+import { ConnectionIndicator } from '@/components/offline/ConnectionIndicator';
+import { useEffect } from 'react';
 import { useSession } from 'next-auth/react';
 import { bindOfflineOwner } from '@/lib/offline/device-state';
 import { offlineUserKey } from '@/lib/offline/pack';
-import { readOfflineOwner, setTabSessionOwnerKey } from '@/lib/offline/owner';
+import { quarantineOfflineOwner, readOfflineOwner, setTabSessionOwnerKey } from '@/lib/offline/owner';
 import { flushReviewQueue } from '@/lib/review-queue';
+import { getQueueSize, subscribeOutbox } from '@/lib/outbox';
+import { createOutboxRetry } from '@/lib/offline/outbox-retry';
+import { recordOffline, recordOnline } from '@/lib/offline/connectivity-log';
+import { getLinkState, subscribeLinkState } from '@/lib/offline/connectivity';
 import {
   CLIENT_FETCH_DEADLINE_MS,
   fetchWithDeadline,
 } from '@/lib/fetch-with-deadline';
 
-const DISMISS_KEY = 'md3:offline-notice-dismissed';
+/**
+ * Owns the outbox replay for every page, and renders the connection
+ * indicator only as a last resort. Reported 12 Oct 2026 as infuriating when it
+ * was a full-width bar, and 15 Oct 2026 as "two banners??" when its floating
+ * pill sat over the review toolbar beside the offline page's own row. The
+ * indicator now lives in a slot of the review toolbar or the main navigation
+ * (ConnectionIndicator); this floating copy shows only on pages with neither.
+ */
+export { OFFLINE_SHOW_AFTER_MS, QUEUED_SHOW_AFTER_MS } from '@/components/offline/ConnectionIndicator';
 
-function readDismissed(): boolean {
-  try {
-    return window.sessionStorage.getItem(DISMISS_KEY) === '1';
-  } catch {
-    return false;
-  }
-}
-
-function storeDismissed(): void {
-  try {
-    window.sessionStorage.setItem(DISMISS_KEY, '1');
-  } catch {
-    // The in-memory state still dismisses the notice for this page lifetime.
-  }
-}
-
-function clearDismissed(): void {
-  try {
-    window.sessionStorage.removeItem(DISMISS_KEY);
-  } catch {
-    // Storage can be unavailable in private browsing; state still resets.
-  }
-}
-
-export function ConnectionBanner({ inline = false, message = 'Offline — answers will sync when connected.' }: {
-  inline?: boolean;
-  message?: string;
+export function ConnectionBanner({ offlineMessage }: {
+  /** Detail line for a surface with no saved review, e.g. the textbook reader. */
+  offlineMessage?: string;
 } = {}) {
   const { data: session, status: sessionStatus } = useSession();
   const userKey = sessionStatus === 'authenticated'
@@ -49,14 +38,6 @@ export function ConnectionBanner({ inline = false, message = 'Offline — answer
   // Tell captureOfflineOwner() which account THIS tab shows (see owner.ts).
   // Assigned during render, not in an effect, so it is set before any grade.
   if (sessionStatus !== 'loading') setTabSessionOwnerKey(userKey);
-  const [offline, setOffline] = useState(() => {
-    if (typeof window === 'undefined') return false;
-    return !window.navigator.onLine;
-  });
-  const [dismissed, setDismissed] = useState(() => {
-    if (typeof window === 'undefined' || window.navigator.onLine) return false;
-    return readDismissed();
-  });
 
   useEffect(() => {
     let verifiedOwnerProof: Promise<void> | null = null;
@@ -83,14 +64,25 @@ export function ConnectionBanner({ inline = false, message = 'Offline — answer
           };
           const provedOwnerKey = offlineUserKey(payload.user);
           const currentOwner = readOfflineOwner();
+          const stillOwnsProof = currentOwner?.verified
+            && currentOwner.ownerKey === owner.ownerKey
+            && currentOwner.generation === owner.generation;
+          if (!provedOwnerKey) {
+            if (stillOwnsProof) quarantineOfflineOwner();
+            return;
+          }
           if (
             provedOwnerKey !== owner.ownerKey
             || !currentOwner?.verified
             || currentOwner.ownerKey !== owner.ownerKey
             || currentOwner.generation !== owner.generation
           ) {
+            if (stillOwnsProof) quarantineOfflineOwner();
             return;
           }
+          // Matching proof releases a same-owner quarantine and advances the
+          // lease before any queued plaintext is replayed.
+          bindOfflineOwner(owner.ownerKey);
           await flushReviewQueue(owner.ownerKey);
         })
         .catch(() => {
@@ -110,6 +102,13 @@ export function ConnectionBanner({ inline = false, message = 'Offline — answer
 
       if (sessionStatus === 'authenticated') {
         if (!userKey) return;
+        const current = readOfflineOwner();
+        if (current?.verified && current.ownerKey !== userKey) {
+          // A positive identity mismatch invalidates the old partition. Keep it
+          // inaccessible until its own identity is proved again.
+          quarantineOfflineOwner();
+          return;
+        }
         const owner = readOfflineOwner();
         if (
           !owner?.verified
@@ -146,24 +145,47 @@ export function ConnectionBanner({ inline = false, message = 'Offline — answer
       flushAlreadyBoundOwner();
     };
 
-    const goOffline = () => setOffline(true);
+    const goOffline = () => {
+      recordOffline(Date.now());
+    };
+    // Retry a non-empty queue on a timer: on patchy signal navigator.onLine
+    // stays true, no 'online' event fires, and the queue otherwise waits for
+    // the app to be backgrounded and reopened (outbox-retry.ts).
+    const retry = createOutboxRetry({
+      size: () => getQueueSize('review'),
+      flush: async () => flushAlreadyBoundOwner(),
+      visible: () => document.visibilityState === 'visible',
+    });
+    const unsubscribeRetry = subscribeOutbox(() => retry.poke());
     const goOnline = () => {
-      setOffline(false);
-      setDismissed(false);
-      clearDismissed();
+      recordOnline(Date.now());
       // A visibility/online callback may close over a session from before
       // another tab changed accounts. Never let it rebind device ownership.
       flushAlreadyBoundOwner();
+      retry.poke();
     };
     const onVisible = () => {
-      if (document.visibilityState === 'visible') flushAlreadyBoundOwner();
+      if (document.visibilityState === 'visible') {
+        flushAlreadyBoundOwner();
+        retry.poke();
+      }
     };
-
-    // Do not let an old episode's dismissal suppress a later drop in signal.
-    if (window.navigator.onLine) clearDismissed();
+    // A weak link recovers without any browser 'online' event: replay as soon
+    // as requests get through again, not on the outbox's next backoff step.
+    let lastLink = getLinkState();
+    const unsubscribeLink = subscribeLinkState(() => {
+      const link = getLinkState();
+      const recovered = link === 'online' && lastLink !== 'online';
+      lastLink = link;
+      if (recovered) {
+        flushAlreadyBoundOwner();
+        retry.poke();
+      }
+    });
 
     // Flush on mount (covers app reload after magic-link re-login).
     bindResolvedSessionAndFlush();
+    retry.poke();
 
     window.addEventListener('offline', goOffline);
     window.addEventListener('online', goOnline);
@@ -172,36 +194,16 @@ export function ConnectionBanner({ inline = false, message = 'Offline — answer
       window.removeEventListener('offline', goOffline);
       window.removeEventListener('online', goOnline);
       document.removeEventListener('visibilitychange', onVisible);
+      unsubscribeLink();
+      retry.stop();
+      unsubscribeRetry();
     };
   }, [sessionStatus, userKey]);
 
-  const dismiss = () => {
-    storeDismissed();
-    setDismissed(true);
-  };
-
-  if (!offline || dismissed) return <FlagImageDeliveryNotice />;
-
   return (
     <>
-    <FlagImageDeliveryNotice />
-    <div
-      className={`${inline ? 'relative shrink-0' : 'fixed top-0 left-0 right-0 z-[100]'} bg-[var(--md-tertiary-container)] pt-[env(safe-area-inset-top)] text-[var(--md-on-tertiary-container)]`}
-    >
-      <div className="mx-auto flex min-h-11 max-w-3xl items-center gap-2 pl-4 text-sm">
-        <span role="status" className="flex-1 text-center">
-          {message}
-        </span>
-        <button
-          type="button"
-          onClick={dismiss}
-          aria-label="Dismiss offline notice"
-          className="inline-flex h-11 w-11 shrink-0 items-center justify-center rounded-full text-xl leading-none hover:bg-black/5 focus-visible:outline-2 focus-visible:outline-offset-[-4px] focus-visible:outline-current dark:hover:bg-white/10"
-        >
-          <span aria-hidden="true">×</span>
-        </button>
-      </div>
-    </div>
+      <FlagImageDeliveryNotice />
+      <ConnectionIndicator host="floating" offlineMessage={offlineMessage} />
     </>
   );
 }

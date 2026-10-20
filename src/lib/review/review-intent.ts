@@ -8,6 +8,7 @@ export type ReviewTopic = string;
  * no selector, no fast lane, and no reason to be reachable from a URL.
  */
 export type ReviewItemType = 'question';
+export type ReviewMedia = 'image' | 'video' | 'any';
 export type ReviewTopicRotations = Readonly<Record<string, string>>;
 
 /**
@@ -24,6 +25,7 @@ export interface ReviewIntent {
   week?: number;
   filter?: ReviewFilter;
   itemType?: ReviewItemType;
+  media?: ReviewMedia;
   topics?: ReviewTopic[];
   /**
    * A manifold cluster to narrow the session to — what a square on the profile
@@ -38,6 +40,7 @@ interface SearchParamReader {
 }
 
 const REVIEW_FILTER_SET = new Set<string>(REVIEW_FILTERS);
+const REVIEW_MEDIA_SET = new Set<ReviewMedia>(['image', 'video', 'any']);
 const MIN_WEEK = 1;
 const MAX_WEEK = 52;
 
@@ -79,14 +82,24 @@ export function parseReviewIntent(
     if (week >= MIN_WEEK && week <= MAX_WEEK) intent.week = week;
   }
 
-  const filter = searchParams.get('filter');
-  if (filter && REVIEW_FILTER_SET.has(filter)) {
-    intent.filter = filter as ReviewFilter;
-  }
+  const rawMedia = searchParams.get('media');
+  const media = rawMedia && REVIEW_MEDIA_SET.has(rawMedia as ReviewMedia)
+    ? rawMedia as ReviewMedia
+    : undefined;
+  if (media) intent.media = media;
 
-  // MCQ-only. Orthogonal to rotation: an unselectable rotation already discards
-  // the whole intent above, so reaching here means the scope is legitimate.
-  if (searchParams.get('type') === 'question') intent.itemType = 'question';
+  // Media is a serving intent in its own right. It wins over legacy typed
+  // filters when a copied or hand-edited URL contains both.
+  if (!media) {
+    const filter = searchParams.get('filter');
+    if (filter && REVIEW_FILTER_SET.has(filter)) {
+      intent.filter = filter as ReviewFilter;
+    }
+
+    // MCQ-only. Orthogonal to rotation: an unselectable rotation already discards
+    // the whole intent above, so reaching here means the scope is legitimate.
+    if (searchParams.get('type') === 'question') intent.itemType = 'question';
+  }
 
   // Scoped by the rotation above: without one there is nothing to narrow, and
   // an unselectable rotation has already discarded the whole intent.
@@ -138,8 +151,9 @@ export function buildReviewHref(
   const params = new URLSearchParams();
   if (intent.rotation) params.set('rotation', intent.rotation);
   if (intent.week !== undefined) params.set('week', String(intent.week));
-  if (intent.filter) params.set('filter', intent.filter);
-  if (intent.itemType) params.set('type', intent.itemType);
+  if (intent.media) params.set('media', intent.media);
+  if (!intent.media && intent.filter) params.set('filter', intent.filter);
+  if (!intent.media && intent.itemType) params.set('type', intent.itemType);
   if (intent.rotation && intent.cluster) params.set('cluster', intent.cluster);
   const topics = intent.rotation
     ? intent.topics?.filter((topic) => (

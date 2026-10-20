@@ -37,6 +37,7 @@ import {
 import { practiceReviewPaperVersion } from '@/lib/study/practice-review-focus.server';
 
 import { isSameOriginImageRequest, FLAG_IMAGE_MAX_BYTES } from '@/lib/flags/image-contract';
+import { offlineOwnerMismatchResponse } from '@/lib/offline/owner-mismatch';
 
 const PRIVATE_HEADERS = {
   'Cache-Control': 'private, no-store',
@@ -281,6 +282,11 @@ export async function POST(request: NextRequest) {
     reporterImageTier = auth.imageTier ?? null;
   }
 
+  // A queued flag or image replayed after an account switch must not land on
+  // the account whose cookie happens to be current.
+  const ownerMismatch = offlineOwnerMismatchResponse(request, { id: userId });
+  if (ownerMismatch) return privateResponse(ownerMismatch);
+
   const rateLimit = await checkUserRateLimit(userId, 'content-flag', 30, 60_000);
   if (!rateLimit.ok) {
     return json(
@@ -424,8 +430,12 @@ export async function POST(request: NextRequest) {
         const { prepareFlagImage } = await import('@/lib/flags/image.server');
         const imageId = await prepareFlagImage(userId, targetType, targetId, imageUpload.uploadId, imageUpload.base64);
         return json({ attachmentId: imageId });
-      } catch {
-        return json({ error: 'Image could not be uploaded. Use a PNG, JPEG or WebP under 2 MB and try again.' }, 422);
+      } catch (error) {
+        // Another tab is mid-upload of the same uploadId: retriable, not invalid.
+        if (error instanceof Error && /still settling/.test(error.message)) {
+          return json({ error: 'Image upload is still settling; try again shortly' }, 503);
+        }
+        return json({ error: 'Image could not be uploaded. Use a PNG, JPEG or WebP under 4 MB and try again.' }, 422);
       }
     }
     const issueType = REASON_TO_ISSUE_TYPE[reasonLabel] ?? 'other';

@@ -29,6 +29,10 @@ const NUMBERS = [
   'outboxSize',
   'storageUsedMb',
   'storageQuotaMb',
+  'outboxOldestAgeSec',
+  'offlineEpisodes',
+  'offlineSec',
+  'longestOfflineSec',
 ] as const;
 
 const STRINGS = ['persistence', 'displayMode', 'engine', 'lastError'] as const;

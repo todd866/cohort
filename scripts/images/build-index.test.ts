@@ -19,6 +19,7 @@ function setupFixture() {
   writeFileSync(join(sidecarDir, 'hsp.jpg.json'), JSON.stringify({
     class: 'diagnostic', usageTier: 'public-attribution',
     source: 'DermNet NZ', sourcePage: 'https://dermnetnz.org/topics/hsp',
+    sourceLocator: 'HSP clinical images',
     directImageUrl: 'https://dermnetnz.org/i/hsp.jpg',
     license: 'CC BY-NC-ND 4.0',
     licenseUrl: 'https://creativecommons.org/licenses/by-nc-nd/4.0/',
@@ -134,7 +135,10 @@ describe('buildIndex', () => {
     expect(entry.attributionText).toContain('DermNet');
     expect(entry).not.toHaveProperty('hash');
     expect(entry).not.toHaveProperty('directImageUrl');
-    expect(entry).not.toHaveProperty('source');
+    expect(entry).toMatchObject({
+      source: 'DermNet NZ', sourcePage: 'https://dermnetnz.org/topics/hsp',
+      sourceLocator: 'HSP clinical images',
+    });
     expect(entry).not.toHaveProperty('dimensions');
   });
 

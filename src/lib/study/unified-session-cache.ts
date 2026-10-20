@@ -534,6 +534,7 @@ async function refreshCachedQuestionOptions(
 function isLearnerNarrowed(ctx: SessionContext): boolean {
   return Boolean(
     ctx.typeFilter
+    || ctx.media
     || ctx.difficultyFilter
     || ctx.topicsFilter
     || ctx.clusterFilter
@@ -587,7 +588,8 @@ export function cachedQueueOwesNoveltyRebuild(
  */
 export async function tryCachedSession(ctx: SessionContext): Promise<NextResponse | null> {
   if (
-    (ctx.hasFilters && !isCrossSourceBlendOnly(ctx))
+    ctx.media
+    || (ctx.hasFilters && !isCrossSourceBlendOnly(ctx))
     || ctx.noCache
     || ctx.isGuest
     || !ctx.reviewChallenge
@@ -912,6 +914,9 @@ export async function tryCachedSession(ctx: SessionContext): Promise<NextRespons
         path: cachePath,
         itemCount: taggedCachedItemsWithDecisions.length,
         totalMs,
+        cacheMs: +(tCacheEnd - tCacheStart).toFixed(1),
+        validationMs: +(tValidationEnd - tCacheEnd).toFixed(1),
+        deliveryMs: +(tResponse - tValidationEnd).toFixed(1),
         cacheState: isFresh ? 'hit' : 'stale',
         exclusionCounts: {
           clientCards: ctx.clientExcludeCardSet.size,

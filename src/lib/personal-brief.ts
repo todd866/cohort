@@ -15,7 +15,7 @@
 import type { ReviewIntent } from '@/lib/review/review-intent';
 
 export type BlockPhase = 'before' | 'during' | 'after';
-export type WbaStatus = 'not-started' | 'in-progress' | 'submitted' | 'done';
+export type WbaStatus = 'unverified' | 'not-started' | 'in-progress' | 'submitted' | 'done';
 export type WbaUrgency = 'done' | 'overdue' | 'due-soon' | 'upcoming';
 export type WatchStatus =
   | 'pending'
@@ -209,6 +209,8 @@ export interface DueConflict {
 }
 
 export interface Wba {
+  checkedAt?: string;
+  credited?: number;
   id: string;
   number: number;
   title: string;
@@ -227,6 +229,9 @@ export interface Wba {
 }
 
 export interface Deadline {
+  checkedAt?: string;
+  dateKind?: 'expiry' | 'planning';
+  evidenceUrls?: string[];
   title: string;
   dueDate: string;
   where: string;
@@ -251,6 +256,7 @@ export interface ArrivalFact {
 }
 
 export interface WatchItem {
+  checkedAt?: string;
   item: string;
   status: WatchStatus;
   source: string;
@@ -287,6 +293,8 @@ export interface WbaRules {
 
 /** One-shot / harvested timeline row authored into the brief JSON. */
 export interface HarvestedBriefEvent {
+  /** Explicit source finish; absence means no known end. */
+  endTime?: string;
   id: string;
   kind?: BriefEventKind;
   title: string;
@@ -359,6 +367,7 @@ export interface CourseBrief {
 }
 
 export interface BriefEventWhen {
+  endTime?: string;
   date: string;
   /** Exact 24-hour clock only. */
   time?: string;
@@ -739,7 +748,7 @@ function deriveCalendarEvents(
       id: e.id,
       kind: e.kind ?? 'harvested',
       title: e.title,
-      when: eventWhen(e.date, e.time),
+      when: { ...eventWhen(e.date, e.time), ...(e.endTime ? { endTime: e.endTime } : {}) },
       where: e.where,
       prepTopics: e.prepTopics ?? [],
       md3Weeks: eventMd3Weeks,
@@ -795,14 +804,14 @@ function deadlineEvent(brief: CourseBrief, d: Deadline): BriefEvent {
   };
 }
 
-function actionEvents(brief: CourseBrief, date: string): BriefEvent[] {
+function actionEvents(brief: CourseBrief): BriefEvent[] {
   return brief.watchlist
     .filter((w) => w.status === 'action-required')
     .map((w) => ({
       id: `action-${w.item}`,
       kind: 'action' as const,
       title: w.item,
-      when: { date },
+      when: { date: w.expectedBy ?? w.checkedAt ?? brief.updatedAt },
       prepTopics: [],
       md3Weeks: [],
       note: w.note,
@@ -819,9 +828,23 @@ function filterAfterTime(
   const afterMins = minutesOf(afterTime);
   return events.filter((event) => {
     if (event.kind === 'action' || event.when.date !== date || !event.when.time) return true;
-    const eventMinutes = exactMinutes(event.when.time);
+    const eventMinutes = exactMinutes(event.when.endTime ?? event.when.time);
     return eventMinutes === null || eventMinutes > afterMins;
   });
+}
+
+/** Temporal schedule state only; never attendance or completion. */
+export function eventScheduleState(event: BriefEvent, today: string, now: string): string {
+  if (event.kind !== 'duty' && event.kind !== 'harvested') return '';
+  if (event.when.date < today) return 'Past · attendance unverified';
+  if (event.when.date > today) return 'Scheduled';
+  const start = exactMinutes(event.when.time);
+  if (start === null) return 'Time unconfirmed';
+  const clock = minutesOf(now);
+  if (start > clock) return 'Upcoming';
+  const end = exactMinutes(event.when.endTime);
+  if (end === null) return 'Start passed · attendance unverified';
+  return end > clock ? 'Scheduled now' : 'Past · attendance unverified';
 }
 
 /**
@@ -848,7 +871,7 @@ export function resolveDayEvents(
     }
   }
 
-  if (includeActions) out.push(...actionEvents(brief, date));
+  if (includeActions) out.push(...actionEvents(brief));
   return filterAfterTime(sortTimedThenActions(out), date, afterTime);
 }
 
@@ -884,7 +907,7 @@ export function resolveUpcomingEvents(
     if (urgency !== 'done' && urgency !== 'historical') out.push(deadlineEvent(brief, d));
   }
 
-  if (includeActions) out.push(...actionEvents(brief, date));
+  if (includeActions) out.push(...actionEvents(brief));
   return filterAfterTime(sortTimedThenActions(out), date, afterTime);
 }
 

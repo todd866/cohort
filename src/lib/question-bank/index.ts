@@ -10,6 +10,13 @@ export {
 export { USMLE_STEP1_BASELINE_V1_MODULE } from '@/lib/usmle/public-baseline';
 export { DEFAULT_QUESTION_EXCLUSIONS_DIR, getExcludedQuestionIds, loadExcludedQuestionIdsFromDisk } from './exclusions';
 export { upsertCuratedQuestionBank } from './seed';
+export {
+  applyQuestionVideoRepair,
+  assertQuestionClipTaskReviews,
+  loadQuestionVideoRepairs,
+  questionClipTaskInput,
+  questionVideoFingerprint,
+} from './video-task-overlay';
 export { validateCuratedQuestion, validateCuratedQuestionBank, checkLongestAnswerCorrect, checkLengthBias, checkFormatAsymmetry } from './validate';
 export {
   getQuestionOptions,

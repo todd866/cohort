@@ -5,6 +5,8 @@ import { filterDeliverableReinforcementCardRows } from '@/lib/usmle/reinforcemen
 import { questionImageIsPrompt, resolveImage } from '@/lib/figures/resolve';
 import { resolveImageAlternatives } from '@/lib/figures/resolve-alternatives';
 import { logger } from '@/lib/logger';
+import { resolveClipsForSession } from '@/lib/video/clip-access';
+import type { ClipPromptData } from '@/components/review/clip-role';
 import { getExamDateForUser } from '@/lib/rotations';
 import { getCurrentRetrievalStrength } from '@/lib/manifold';
 import {
@@ -140,6 +142,9 @@ const PROGRESS_SELECT = {
       imageUrl: true,
       imageCaption: true,
       imageRole: true,
+      clipId: true,
+      clipRole: true,
+      clipCaption: true,
       clusterId: true,
       shelvedAt: true,
       stableId: true,
@@ -198,6 +203,9 @@ type ProgressRow = {
     imageUrl: string | null;
     imageCaption: string | null;
     imageRole: string | null;
+    clipId?: string | null;
+    clipRole?: string | null;
+    clipCaption?: string | null;
     clusterId: string | null;
     shelvedAt: Date | null;
     stableId?: string | null;
@@ -517,6 +525,16 @@ async function hydrateRows(
     ctx.rotation,
     rankedRows.map(({ row }) => row.cardId),
   );
+  // Clips resolve in one query for the batch, under the hydration contract: a
+  // prompt clip that cannot be served drops its card, and a post-answer clip
+  // that cannot be served is simply absent (2026-10-07).
+  const clipMap = await resolveClipsForSession(
+    rankedRows.map(({ row }) => row.card.clipId).filter((id): id is string => Boolean(id)),
+    { isCopyrightTier: ctx.imageTier === 'copyright' },
+  ).catch((error) => {
+    logger.warn('review-filter: clip resolution failed; prompt clips withheld', { error: String(error) });
+    return new Map<string, ClipPromptData>();
+  });
   const rawItems = (await Promise.all(rankedRows.map(async ({ row, predictedRecall }) => {
     const { card } = row;
     let resolved: Awaited<ReturnType<typeof resolveImage>> = null;
@@ -529,6 +547,8 @@ async function hydrateRows(
       });
     }
     if (questionImageIsPrompt(card.imageRole, card.imageUrl) && !resolved) return null;
+    const clip = card.clipId ? clipMap.get(card.clipId) ?? null : null;
+    if (card.clipRole === 'prompt' && !clip) return null;
 
     return {
       type: 'card' as const,
@@ -548,6 +568,9 @@ async function hydrateRows(
       imageRole: card.imageRole ?? null,
       imageMeta: resolved?.imageMeta,
       imageAlternatives: await resolveImageAlternatives({ ...card, type: 'card' }, card.imageUrl ?? null, null, trustOverride),
+      clip,
+      clipRole: card.clipRole === 'prompt' ? 'prompt' as const : null,
+      clipCaption: card.clipCaption ?? null,
       servedBy: 'focused' as const,
       clusterId: card.clusterId,
       poolSize: rankedRows.length,

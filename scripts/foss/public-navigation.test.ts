@@ -432,6 +432,8 @@ describe('public navigation and static assets', () => {
       '/profile',
       '/profile/settings',
       '/profile/stats',
+      // The offline connectivity probe HEADs a tiny public asset (src/lib/offline/connectivity.ts).
+      '/file.svg',
       '/tech',
       '/terms',
       '/usmle',
@@ -483,7 +485,6 @@ describe('public navigation and static assets', () => {
       'src/components/review/hooks/useReviewSession.ts -> /api/study/record',
       'src/components/review/hooks/useReviewSession.ts -> /api/cards/feedback',
       'src/components/review/hooks/useTopicReadiness.ts -> /api/study/topic-readiness',
-      'src/components/tutor/TutorCardLink.tsx -> /tutor',
     ]);
     allowedTargets.add('/api/content/flag/images/${id}');
     allowedTargets.add('/api/content/flag/images/${data.attachmentId}');

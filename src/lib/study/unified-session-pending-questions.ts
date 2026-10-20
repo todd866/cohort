@@ -49,6 +49,7 @@ function restoreRecordedCorrectPosition(
 
 function isUnnarrowedMcqRequest(ctx: SessionContext): boolean {
   return !ctx.isGuest
+    && !ctx.media
     && ctx.typeFilter === 'question'
     && !ctx.reviewFilter
     && !ctx.feedMode

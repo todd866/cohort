@@ -1,3 +1,4 @@
+import { publicClipWhere } from '@/lib/video/public-clips';
 /**
  * Bulk Candidate Fetching
  *
@@ -34,6 +35,7 @@ import {
   practiceLocaleTopKSql,
 } from '@/lib/manifold/concept-topk-sql';
 import type { CommitmentLevel } from '@/lib/commitment';
+import type { AccessTier } from '@/lib/images/types';
 import { meetsRequiredTier } from '@/lib/content-access';
 import type { QuestionFamiliarity } from './question-retirement';
 import { withoutRawPublicUsmleQuestions } from '@/lib/usmle/raw-question-boundary';
@@ -57,6 +59,8 @@ import {
   normalizeReviewChallengeLevel,
   type ReviewChallengeLevel,
 } from '@/lib/study/review-challenge';
+import { mediaCandidateWhere, matchesCandidateImage } from '@/lib/study/media-review';
+import type { ReviewMedia } from '@/lib/review/review-intent';
 
 /** Minimal Prisma-like client for raw queries — works with PrismaClient and $extends() result. */
 type PrismaRawClient = {
@@ -77,7 +81,7 @@ const TOPK_VIDEOS_PER_CONCEPT = 50;
 
 const CANDIDATE_CARD_SELECT = {
   id: true, stableId: true, rotation: true, clusterId: true, similarCards: true, topics: true,
-  sourceFile: true, imageUrl: true, importance: true, complexity: true, facilityIndex: true,
+  sourceFile: true, imageUrl: true, clipId: true, clipRole: true, importance: true, complexity: true, facilityIndex: true,
   sampleSize: true, variantGroupId: true, variantIndex: true, variantType: true,
   examRelevance: true, examRelevancePct: true,
 } as const;
@@ -94,6 +98,8 @@ const CANDIDATE_QUESTION_SELECT = {
   facilityIndex: true,
   totalAttempts: true,
   source: true,
+  imageUrl: true,
+  clipId: true,
   topics: true,
   examRelevance: true,
   examRelevancePct: true,
@@ -368,6 +374,8 @@ export function applyReviewLearningPoolPolicy(
 /** A scope the caller has already promised; applied in the queries, not after. */
 export interface CandidateScope {
   clusterId?: string | null;
+  media?: ReviewMedia;
+  imageTrust?: AccessTier;
 }
 
 export async function bulkFetchCandidates(
@@ -407,6 +415,9 @@ export async function bulkFetchCandidates(
   // widen exactly the promise the square made ("Review N cards"), so a
   // cluster-scoped fetch is cards-only and says so.
   const clusterId = scope.clusterId ?? null;
+  const media = scope.media;
+  const imageTrust = scope.imageTrust ?? (isCopyrightTier ? 'copyright-required' : 'auth-required');
+  const mediaWhere = mediaCandidateWhere(media, isCopyrightTier, imageTrust);
   const cardsOnly = clusterId !== null;
   const hasFrozenNow = Number.isFinite(frozenNowMs);
   const leechEligibilityNow = hasFrozenNow ? new Date(frozenNowMs!) : new Date();
@@ -454,6 +465,20 @@ export async function bulkFetchCandidates(
     crossSourceMappingMode,
     practiceLocale,
   ].join('|');
+  const clearedClipIds = sharedPoolTag && (!isCopyrightTier || media === 'video' || media === 'any')
+    ? new Set((await prisma.videoClip.findMany({
+      where: isCopyrightTier ? { deletedAt: null, source: { rightsStatus: 'cleared' } } : publicClipWhere(),
+      select: { id: true },
+    })).map(clip => clip.id))
+    : null;
+  const mediaPoolFilter = <T extends { imageUrl?: string | null; clipId?: string | null }>(rows: T[]): T[] => {
+    if (!media) return rows;
+    return rows.filter(row => {
+      const image = media !== 'video' && matchesCandidateImage(row.imageUrl, imageTrust);
+      const video = Boolean(row.clipId && clearedClipIds?.has(row.clipId));
+      return media === 'image' ? image : media === 'video' ? video : image || video;
+    });
+  };
 
   // Load concept embeddings first — the live top-K below takes them as input
   // (it runs only for what the precomputed top-K cannot serve) so each
@@ -501,7 +526,7 @@ export async function bulkFetchCandidates(
           where: {
             // Both predicates contain an `OR`; compose them under `AND` so the
             // nullable image gate cannot overwrite the objective/source gate.
-            AND: [rotationScope, imageRoleWhere, clipRoleWhere, localeWhere],
+            AND: [rotationScope, imageRoleWhere, clipRoleWhere, localeWhere, mediaWhere],
             deletedAt: null,
             shelvedAt: null,
             ...(cardExcludeList ? { id: { notIn: cardExcludeList } } : {}),
@@ -521,7 +546,9 @@ export async function bulkFetchCandidates(
           sharedPoolTag,
           () => findManyCards(SHARED_CATALOG_CARD_SCOPE, {
             where: {
-              AND: [rotationScope, imageRoleWhere, clipRoleWhere, localeWhere],
+              // Rights on related clip/source rows do not advance the card epoch.
+              // Cache a superset and apply current public rights below.
+              AND: [rotationScope, imageRoleWhere, localeWhere],
               deletedAt: null,
               shelvedAt: null,
               NOT: { topics: { hasSome: EXCLUDED_TOPICS } },
@@ -535,7 +562,8 @@ export async function bulkFetchCandidates(
         }),
       ]);
       const progressedIds = new Set(progressed.map((row) => row.cardId));
-      return ownCopy(pool.filter((card) => !progressedIds.has(card.id) && !excludedCardIds.has(card.id)));
+      return ownCopy(mediaPoolFilter(pool.filter((card) => !progressedIds.has(card.id) && !excludedCardIds.has(card.id)
+        && (isCopyrightTier || card.clipRole !== 'prompt' || Boolean(card.clipId && clearedClipIds?.has(card.clipId))))));
     })(),
     prisma.cardProgress.findMany({
       where: scopedCardProgressWhere(
@@ -552,7 +580,7 @@ export async function bulkFetchCandidates(
           ],
         },
         {
-          AND: [rotationScope, imageRoleWhere, clipRoleWhere, localeWhere],
+          AND: [rotationScope, imageRoleWhere, clipRoleWhere, localeWhere, mediaWhere],
           deletedAt: null,
           shelvedAt: null,
           ...(cardExcludeList ? { id: { notIn: cardExcludeList } } : {}),
@@ -604,7 +632,7 @@ export async function bulkFetchCandidates(
         return prisma.question.findMany({
           where: withDefaultQuestionServingPolicy(
             withoutRawPublicUsmleQuestions({
-              AND: [rotationScope, localeWhere],
+              AND: [rotationScope, localeWhere, mediaWhere],
               contentState: { not: 'shelved' },
               ...(qExcludeList ? { id: { notIn: qExcludeList } } : {}),
               NOT: { topics: { hasSome: EXCLUDED_TOPICS } },
@@ -630,7 +658,7 @@ export async function bulkFetchCandidates(
           select: CANDIDATE_QUESTION_SELECT,
         }),
       );
-      return ownCopy(pool.filter((question) => !allExcludedQIds.has(question.id)));
+      return ownCopy(mediaPoolFilter(pool.filter((question) => !allExcludedQIds.has(question.id))));
     })(),
     // Never cached: publish and rights state must be current on every pass.
     prisma.video.findMany({

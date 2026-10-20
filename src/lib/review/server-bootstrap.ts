@@ -84,6 +84,9 @@ export async function buildReviewServerBootstrap(args: {
   // defense even though the page bootstrap already short-circuits Cohort: a
   // future direct caller must not reintroduce an unadoptable legacy delivery.
   if (args.requestOrigin === 'https://cohort.md') return null;
+  // A calendar replay is a bounded session of that learner's own items. Do not
+  // build (and then discard) an ordinary review batch for the same navigation.
+  if (args.searchParams.has('replay') || args.searchParams.has('due')) return null;
 
   const user = await prisma.user.findUnique({
     where: { id: args.userId },
@@ -192,7 +195,9 @@ export async function buildReviewServerBootstrap(args: {
   });
   if (!primary) return null;
 
-  const feedMode: ReviewFeedMode = intent.filter === 'new'
+  const feedMode: ReviewFeedMode = intent.media
+    ? 'mixed'
+    : intent.filter === 'new'
     ? 'new-only'
     : intent.filter
       ? 'mixed'
@@ -229,6 +234,7 @@ export async function buildReviewServerBootstrap(args: {
       feedMode,
       reviewFilter: intent.filter,
       itemType: intent.itemType,
+      media: intent.media,
       focusRotation,
       topics: intent.topics,
       timezone: args.studyTimezone ?? undefined,
@@ -281,6 +287,7 @@ export async function buildReviewServerBootstrap(args: {
       feedMode,
       reviewFilter: intent.filter as ReviewFilter | undefined,
       itemType: intent.itemType,
+      media: intent.media,
       focusRotation,
       topics: intent.topics,
     }),

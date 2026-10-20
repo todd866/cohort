@@ -35,6 +35,13 @@ export const SW_UPDATE_POLL_MS = 15 * 60 * 1000;
  */
 export const SW_BUILD_REPLY_MS = 1500;
 
+/**
+ * Set on <html> while a practice paper is open. The update reload then waits:
+ * a reload mid-paper restarts the page under the learner, and the new worker
+ * serves the next navigation anyway.
+ */
+export const HOLD_UPDATE_RELOAD_ATTRIBUTE = 'data-md3-hold-reload';
+
 export function swRegistrationBootstrap(): string {
   // Inlined into a <script> tag, so it must be self-contained ES5-ish source.
   return `
@@ -48,6 +55,8 @@ export function swRegistrationBootstrap(): string {
   var pageBuild=meta?(meta.getAttribute('content')||''):'';
   var reload=function(){
     if(reloading)return;
+    var root=document.documentElement;
+    if(root&&root.hasAttribute('${HOLD_UPDATE_RELOAD_ATTRIBUTE}'))return;
     reloading=true;
     window.location.reload();
   };

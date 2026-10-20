@@ -3,7 +3,9 @@ import { describe, it, expect, vi, beforeEach, afterEach } from 'vitest';
 import { renderHook, act, waitFor } from '@testing-library/react';
 
 const submitFlag = vi.hoisted(() => vi.fn().mockResolvedValue('delivered'));
-vi.mock('@/lib/flag-submit', () => ({ submitFlag }));
+// queueFlag resolves once durable; its `result` is the delivery outcome (submitFlag spy).
+const queueFlag = vi.hoisted(() => vi.fn(async (payload: unknown) => ({ clientRequestId: 'r1', result: submitFlag(payload) })));
+vi.mock('@/lib/flag-submit', () => ({ submitFlag, queueFlag }));
 
 import { useFlagging } from './useFlagging';
 
@@ -14,16 +16,48 @@ describe('useFlagging', () => {
   beforeEach(() => { submitFlag.mockReset(); submitFlag.mockResolvedValue('delivered'); });
   afterEach(() => { vi.clearAllMocks(); });
 
-  it('keeps note and thumbnail after a text-only acknowledgement', async () => {
+  it('closes at once with the image handed to the durable queue, before delivery settles', async () => {
     URL.createObjectURL = vi.fn(() => 'blob:kept'); URL.revokeObjectURL = vi.fn();
-    submitFlag.mockResolvedValue('image-unavailable');
+    let resolveFn: (v: string) => void = () => {};
+    submitFlag.mockReturnValue(new Promise<string>((r) => { resolveFn = r; }));
+    const { result } = renderHook(() => useFlagging({ item, registerResetCallback: noopRegister }));
+    const image = new File(['bytes'], 'image.png', { type: 'image/png' });
+    act(() => { result.current.setFlagMode(true); result.current.setFlagMessage('Screenshot note'); result.current.image.choose(image); });
+    await act(async () => { await result.current.handleFlagSubmit(); });
+    // Closed while delivery is still outstanding (queueFlag's own latency is
+    // measured in src/lib/flag-offline-image.test.ts).
+    expect(result.current.flagMode).toBe(false);
+    expect(result.current.flagPending).toBe(true);
+    expect(queueFlag).toHaveBeenCalledWith(expect.objectContaining({ message: 'Screenshot note' }), { image });
+    await act(async () => { resolveFn('image-unavailable'); });
+    await waitFor(() => expect(result.current.flagged).toBe(true));
+  });
+
+  it('does not close or clear the next item\'s draft when a slow image store finishes late', async () => {
+    let resolveQueue!: (v: { clientRequestId: string; result: Promise<string> }) => void;
+    queueFlag.mockReturnValueOnce(new Promise((r) => { resolveQueue = r; }));
+    let reset: () => void = () => {};
+    const register = (cb: () => void) => { reset = cb; return () => {}; };
+    const { result } = renderHook(() => useFlagging({ item, registerResetCallback: register }));
+    act(() => { result.current.setFlagMode(true); result.current.setFlagMessage('A'); result.current.handleFlagSubmit(); });
+    act(() => { reset(); result.current.setFlagMode(true); result.current.setFlagMessage('B new draft'); });
+    await act(async () => { resolveQueue({ clientRequestId: 'r1', result: Promise.resolve('delivered') }); });
+    expect(result.current.flagMode).toBe(true);
+    expect(result.current.flagMessage).toBe('B new draft');
+    expect(result.current.flagged).toBe(false);
+  });
+
+  it('keeps the draft open when the image cannot be stored', async () => {
+    URL.createObjectURL = vi.fn(() => 'blob:kept'); URL.revokeObjectURL = vi.fn();
+    queueFlag.mockRejectedValueOnce(new Error('quota'));
     const { result } = renderHook(() => useFlagging({ item, registerResetCallback: noopRegister }));
     act(() => { result.current.setFlagMode(true); result.current.setFlagMessage('Screenshot note'); result.current.image.choose(new File(['bytes'], 'image.png', { type: 'image/png' })); });
-    vi.spyOn(result.current.image, 'prepare').mockResolvedValue('attachment');
-    await act(async () => { result.current.handleFlagSubmit(); });
-    expect(result.current.flagMode).toBe(true); expect(result.current.flagged).toBe(false);
-    expect(result.current.flagMessage).toBe('Screenshot note'); expect(result.current.image.preview).toBe('blob:kept');
-    expect(result.current.image.error).toContain('image was not attached'); expect(result.current.flagPending).toBe(false);
+    await act(async () => { await result.current.handleFlagSubmit(); });
+    expect(result.current.flagMode).toBe(true);
+    expect(result.current.flagMessage).toBe('Screenshot note');
+    expect(result.current.image.preview).toBe('blob:kept');
+    expect(result.current.image.error).toContain('Not saved');
+    expect(result.current.flagPending).toBe(false);
   });
 
   it('submits reason "Other" (never the unmapped "flag") with the note', async () => {

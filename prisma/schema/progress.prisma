@@ -405,7 +405,19 @@ model ExamResult {
   score      Float
   /// Free-text — what was easy, what was hard, what we'd change. Optional.
   notes      String?
+  /// Overall raw marks, when the learner entered n/N rather than a percentage.
+  correct    Int?
+  total      Int?
+  /// Official per-area feedback: [{ area, correct, total }], validated by
+  /// src/lib/stats/exam-result.ts. Area labels follow the rotation's blueprint.
+  areas      Json?    @db.JsonB
+  /// "Questions I remember" — learner free text. Untrusted: it reaches the
+  /// tutor only as quoted data (docs/SECURITY.md).
+  recalled   String?  @db.Text
+  /// 'script' (scripts/record-exam-result.ts) or 'learner' (Exam gaps page).
+  source     String   @default("script")
   recordedAt DateTime @default(now()) @db.Timestamptz(3)
+  updatedAt  DateTime @default(now()) @updatedAt @db.Timestamptz(3)
 
   user User @relation(fields: [userId], references: [id], onDelete: Cascade)
 

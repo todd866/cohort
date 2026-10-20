@@ -17,6 +17,7 @@ export const DEFAULT_REVIEW_MENU_SUBJECTS = [
   'surgical-sciences',
   'paediatric-surgery',
   'ortho',
+  'derm',
   'neurosurg',
   'radiology',
   'neuroradiology',

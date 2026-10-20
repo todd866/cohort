@@ -10,6 +10,7 @@ import type { SessionContext } from './unified-session-types';
  */
 export function sessionFilterReasons(ctx: SessionContext): string[] {
   const reasons: string[] = [];
+  if (ctx.media) reasons.push(`media:${ctx.media}`);
   if (ctx.typeFilter) reasons.push(`type:${ctx.typeFilter}`);
   if (ctx.difficultyFilter) reasons.push(`difficulty:${ctx.difficultyFilter}`);
   if (ctx.topicsFilter) reasons.push(`topics:${ctx.topicsFilter}`);
@@ -32,6 +33,9 @@ interface SessionDiagnostic {
   path: SessionPath;
   itemCount: number;
   totalMs: number;
+  cacheMs?: number;
+  validationMs?: number;
+  deliveryMs?: number;
   cacheState?: 'hit' | 'miss' | 'stale' | 'expired' | 'error' | 'skipped';
   exclusionCounts?: {
     recentCards?: number;
@@ -71,6 +75,9 @@ export function logSessionDiagnostic(ctx: SessionContext, diagnostic: SessionDia
             authMs: +(ctx.tAuthEnd - ctx.t0).toFixed(1),
             contentMapMs: +ctx.tContentMapMs.toFixed(1),
             identityMs: +ctx.tIdentityMs.toFixed(1),
+            ...(diagnostic.cacheMs !== undefined ? { cacheMs: diagnostic.cacheMs } : {}),
+            ...(diagnostic.validationMs !== undefined ? { validationMs: diagnostic.validationMs } : {}),
+            ...(diagnostic.deliveryMs !== undefined ? { deliveryMs: diagnostic.deliveryMs } : {}),
             cacheState: diagnostic.cacheState,
             isGuest: ctx.isGuest,
             hasFilters: ctx.hasFilters,

@@ -173,6 +173,7 @@ async function constructUnifiedSessionImpl(
         crossSourceRotations: options.crossSourceRotations ?? [],
         crossSourceMappingMode: options.crossSourceMappingMode ?? 'adjacent',
         isCopyrightTier: options.imageTier === 'copyright',
+        media: options.media, imageTrust: options.imageTrust,
         ...(selectionDeterminism ? { selectionDeterminism } : {}),
       }));
   }

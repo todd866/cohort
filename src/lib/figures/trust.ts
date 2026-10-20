@@ -1,5 +1,9 @@
-import type { Session } from 'next-auth';
 import type { ImageSidecar, AccessTier } from '@/lib/images/types';
+
+/** The resolver also runs in the laptop daemon, outside Next/Auth's type graph. */
+export interface ImageSession {
+  user?: { id?: string; imageTier?: string };
+}
 
 export const ACCESS_TIER_RANK: Record<AccessTier, number> = {
   'public': 0,
@@ -7,7 +11,7 @@ export const ACCESS_TIER_RANK: Record<AccessTier, number> = {
   'copyright-required': 2,
 };
 
-export function userTrust(session: Session | null): AccessTier {
+export function userTrust(session: ImageSession | null): AccessTier {
   if (!session?.user?.id) return 'public';
   return session.user.imageTier === 'copyright' ? 'copyright-required' : 'auth-required';
 }

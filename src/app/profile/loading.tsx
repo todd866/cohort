@@ -1,4 +1,5 @@
 import {
+  PROFILE_EXAMS_SLOT_CLASS,
   REVIEW_CALENDAR_SLOT_CLASS,
   TOPIC_READINESS_SLOT_CLASS,
 } from './profile-slot-classes';
@@ -12,11 +13,13 @@ export default function ProfileLoading() {
   return (
     <div className="min-h-screen bg-[var(--md-surface)] py-8">
       <main className="mx-auto max-w-2xl px-4 lg:max-w-4xl">
+        <div aria-hidden="true" className={`mb-6 ${PROFILE_EXAMS_SLOT_CLASS} ${bar}`} />
         <div aria-hidden="true" className={`mb-6 ${TOPIC_READINESS_SLOT_CLASS} ${bar}`} />
         <div aria-hidden="true" className={`mb-6 ${REVIEW_CALENDAR_SLOT_CLASS} ${bar}`} />
         <div aria-hidden="true" className={`mb-4 h-11 ${bar}`} />
         <div aria-hidden="true" className={`mb-6 h-36 ${bar}`} />
         <div aria-hidden="true" className={`mb-4 h-24 ${bar}`} />
+        <div aria-hidden="true" className={`mb-6 h-11 ${bar}`} />
         <div className="grid gap-3 sm:grid-cols-2">
           <div aria-hidden="true" className={`h-16 ${bar}`} />
           <div aria-hidden="true" className={`h-16 ${bar}`} />

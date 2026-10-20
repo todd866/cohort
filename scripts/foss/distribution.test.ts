@@ -107,6 +107,24 @@ afterEach(() => {
 });
 
 describe('FOSS distribution boundary', () => {
+  it('replaces private card abbreviation maps with an empty public implementation', () => {
+    const policy = loadDistributionPolicy(process.cwd());
+    const replacement = policy.generatedTextFiles.find(
+      (entry) => entry.path === 'src/lib/card-abbreviations.ts',
+    );
+    expect(replacement).toBeDefined();
+    expect(replacement?.text).toContain("export const CARD_ABBREVIATIONS_PATH = '';");
+    expect(replacement?.text).toContain('return { version: 1, cards: {} };');
+    expect(replacement?.text).toContain('return 0;');
+    expect(replacement?.text).not.toContain('fs.readFileSync');
+    expect(replacement?.text).not.toContain('card-abbreviations.json');
+    expect(replacement?.text).not.toMatch(/Rapid Sequence Intubation|Ventricular Fibrillation/);
+    expect(PROTECTED_PUBLIC_FALLBACKS).toContainEqual(expect.objectContaining({
+      path: 'src/lib/card-abbreviations.ts',
+      licence: 'MIT',
+    }));
+  });
+
   it('keeps private exam content out while allowing only generic session storage and progress helpers', () => {
     const root = process.cwd();
     const policy = loadDistributionPolicy(root);
@@ -1517,66 +1535,6 @@ describe('FOSS distribution boundary', () => {
     expect(publicPackage.scripts).not.toHaveProperty('generate:static-queues');
     expect(JSON.stringify(publicPackage.scripts)).not.toContain('generate-static-queues');
 
-    const widenedPolicy = structuredClone(policy);
-    widenedPolicy.generatedTextFiles.push({
-      path: 'src/app/api/unreviewed/route.ts',
-      text: 'export {}\n',
-      licence: 'MIT',
-    });
-    expect(auditDistributionBoundary(root, widenedPolicy, {
-      verifyExistingExportManifest: false,
-    }).issues).toContainEqual(expect.objectContaining({
-      code: 'non-foss-source-text',
-      path: 'src/app/api/unreviewed/route.ts',
-    }));
-    const widenedPagePolicy = structuredClone(policy);
-    widenedPagePolicy.generatedTextFiles.push({
-      path: 'src/app/unreviewed/page.js',
-      text: 'export default function Page() { return null; }\n',
-      licence: 'MIT',
-    });
-    expect(auditDistributionBoundary(root, widenedPagePolicy, {
-      verifyExistingExportManifest: false,
-    }).issues).toContainEqual(expect.objectContaining({
-      code: 'non-foss-source-text',
-      path: 'src/app/unreviewed/page.js',
-    }));
-    const widenedHandlerPolicy = structuredClone(policy);
-    widenedHandlerPolicy.generatedTextFiles.push({
-      path: 'src/app/unreviewed/route.js',
-      text: 'export function GET() { return new Response(null); }\n',
-      licence: 'MIT',
-    });
-    expect(auditDistributionBoundary(root, widenedHandlerPolicy, {
-      verifyExistingExportManifest: false,
-    }).issues).toContainEqual(expect.objectContaining({
-      code: 'non-foss-source-text',
-      path: 'src/app/unreviewed/route.js',
-    }));
-    const widenedShellPolicy = structuredClone(policy);
-    widenedShellPolicy.generatedTextFiles.push({
-      path: 'src/app/unreviewed/layout.jsx',
-      text: 'export default function Layout({ children }) { return children; }\n',
-      licence: 'MIT',
-    });
-    expect(auditDistributionBoundary(root, widenedShellPolicy, {
-      verifyExistingExportManifest: false,
-    }).issues).toContainEqual(expect.objectContaining({
-      code: 'non-foss-source-text',
-      path: 'src/app/unreviewed/layout.jsx',
-    }));
-    const widenedMetadataPolicy = structuredClone(policy);
-    widenedMetadataPolicy.generatedTextFiles.push({
-      path: 'src/app/sitemap.js',
-      text: 'export default function sitemap() { return []; }\n',
-      licence: 'MIT',
-    });
-    expect(auditDistributionBoundary(root, widenedMetadataPolicy, {
-      verifyExistingExportManifest: false,
-    }).issues).toContainEqual(expect.objectContaining({
-      code: 'non-foss-source-text',
-      path: 'src/app/sitemap.js',
-    }));
     const publicIcons = policy.allowedBinaryFiles.filter((entry) => (
       entry.path.startsWith('public/icons/')
     ));
@@ -1594,4 +1552,26 @@ describe('FOSS distribution boundary', () => {
     // Same treatment as the harvester scan (a9efadd0) — assertions unchanged,
     // only the hang-detection budget.
   }, 60_000);
+
+  // Keep each forbidden surface independent. Each audit walks the complete
+  // export, so give each case its own timeout instead of charging six scans
+  // to the single clean-boundary test's 60-second budget.
+  it.each([
+    { path: 'src/app/api/unreviewed/route.ts', text: 'export {}\n' },
+    { path: 'src/app/unreviewed/page.js', text: 'export default function Page() { return null; }\n' },
+    { path: 'src/app/unreviewed/route.js', text: 'export function GET() { return new Response(null); }\n' },
+    { path: 'src/app/unreviewed/layout.jsx', text: 'export default function Layout({ children }) { return children; }\n' },
+    { path: 'src/app/sitemap.js', text: 'export default function sitemap() { return []; }\n' },
+  ])('rejects the sole unreviewed surface $path', (entry) => {
+    const root = process.cwd();
+    const policy = loadDistributionPolicy(root);
+    policy.generatedTextFiles.push({ ...entry, licence: 'MIT' });
+    expect(auditDistributionBoundary(root, policy, {
+      verifyExistingExportManifest: false,
+    }).issues).toContainEqual(expect.objectContaining({
+      code: 'non-foss-source-text',
+      path: entry.path,
+    }));
+  }, 60_000);
+
 });

@@ -1,5 +1,6 @@
 'use client';
 import { useState, useRef, useEffect } from 'react';
+import { ChipSelect } from '@/components/shared/Chip';
 export interface ReviewModulePickerProps {
   disabled?: boolean;
   options: readonly {id: string; label: string}[];
@@ -7,12 +8,19 @@ export interface ReviewModulePickerProps {
   onChange: (value: string | null) => void;
   defaultLabel?: string;
   triggerDefaultLabel?: string;
+  /**
+   * The option the null (default) state resolves to. When it is listed, its own
+   * row stands for the default: no separate "Default (X)" row repeating it
+   * (owner, 2026-10-07), and picking it returns to the default rather than
+   * pinning that rotation.
+   */
+  defaultId?: string | null;
   preferredId?: string | null;
   ariaPrefix?: string;
   onChangeEnrollment?: () => void;
   enrollmentLabel?: string;
 }
-export function ReviewModulePicker({disabled = false, options, value, onChange, defaultLabel = 'All', triggerDefaultLabel = defaultLabel, preferredId = null, ariaPrefix = 'Review module', onChangeEnrollment, enrollmentLabel = 'Change modules…'}: ReviewModulePickerProps) {
+export function ReviewModulePicker({disabled = false, options, value, onChange, defaultLabel = 'All', triggerDefaultLabel = defaultLabel, defaultId = null, preferredId = null, ariaPrefix = 'Review module', onChangeEnrollment, enrollmentLabel = 'Change modules…'}: ReviewModulePickerProps) {
   const [open, setOpen] = useState(false);
   const ref = useRef<HTMLDivElement>(null);
 
@@ -35,8 +43,11 @@ export function ReviewModulePicker({disabled = false, options, value, onChange, 
   if (options.length === 0) return null;
 
   const label = (id: string) => options.find(option => option.id === id)?.label ?? id;
-  const triggerLabel = value ? label(value) : triggerDefaultLabel;
   const ordered = options.map(option => option.id);
+  const mergedDefault = defaultId && ordered.includes(defaultId) ? defaultId : null;
+  const triggerLabel = value ? label(value) : mergedDefault ? label(mergedDefault) : triggerDefaultLabel;
+  const isChecked = (id: string) => value === id || (value === null && id === mergedDefault);
+  const pickOption = (id: string) => pick(id === mergedDefault ? null : id);
   const examFirst = preferredId && ordered.includes(preferredId) ? preferredId : null;
   const rest = examFirst ? ordered.filter(id => id !== examFirst) : ordered;
   const pick = (next: string | null) => {
@@ -51,19 +62,15 @@ export function ReviewModulePicker({disabled = false, options, value, onChange, 
 
   return (
     <div ref={ref} className="relative shrink-0">
-      <button
-        type="button"
+      <ChipSelect
         disabled={disabled}
         onClick={() => setOpen((o) => !o)}
         aria-haspopup="menu"
         aria-expanded={open}
         aria-label={`${ariaPrefix}: ${triggerLabel}`}
-        title={triggerLabel}
-        className="inline-flex max-w-full items-center gap-1 whitespace-nowrap rounded-full border border-[var(--md-outline-variant)] px-3 py-1 text-xs text-[var(--md-on-surface-variant)] transition-colors hover:bg-[var(--md-surface-container-high)]"
-      >
-        <span className="min-w-0 truncate">{triggerLabel}</span>
-        <span aria-hidden className="shrink-0 opacity-60">{'▾'}</span>
-      </button>
+        className="max-w-full @max-[26rem]/review-toolbar:px-[8px]"
+        value={triggerLabel}
+      />
 
       {open && (
         <div
@@ -75,30 +82,32 @@ export function ReviewModulePicker({disabled = false, options, value, onChange, 
               key={examFirst}
               type="button"
               role="menuitemradio"
-              aria-checked={value === examFirst}
-              onClick={() => pick(examFirst)}
-              className={itemClass(value === examFirst)}
+              aria-checked={isChecked(examFirst)}
+              onClick={() => pickOption(examFirst)}
+              className={itemClass(isChecked(examFirst))}
             >
               {label(examFirst)}
             </button>
           )}
-          <button
-            type="button"
-            role="menuitemradio"
-            aria-checked={value === null}
-            onClick={() => pick(null)}
-            className={itemClass(value === null)}
-          >
-            {defaultLabel}
-          </button>
+          {!mergedDefault && (
+            <button
+              type="button"
+              role="menuitemradio"
+              aria-checked={value === null}
+              onClick={() => pick(null)}
+              className={itemClass(value === null)}
+            >
+              {defaultLabel}
+            </button>
+          )}
           {rest.map((slug) => (
             <button
               key={slug}
               type="button"
               role="menuitemradio"
-              aria-checked={value === slug}
-              onClick={() => pick(slug)}
-              className={itemClass(value === slug)}
+              aria-checked={isChecked(slug)}
+              onClick={() => pickOption(slug)}
+              className={itemClass(isChecked(slug))}
             >
               {label(slug)}
             </button>

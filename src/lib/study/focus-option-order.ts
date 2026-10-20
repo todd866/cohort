@@ -44,6 +44,8 @@ export const FOCUS_OPTION_ORDER: readonly string[] = [
   // inside the surgical family for the same reason the others do: it is read
   // alongside a rotation rather than sat as one.
   'ortho',
+  // Dermatology, added 2026-10-08 with the self-contained Dermki deck.
+  'derm',
   'neurosurg',
   // Attachment decks, grouped as one display family. NSx sits just above
   // because it is also the GSSE/anatomy family's tail.

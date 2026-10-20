@@ -20,18 +20,26 @@ const RECOVERY_DEADLINE_MS = 8_000;
 export function useClipUrlRecovery(clip: ClipPromptData): {
   src: string;
   poster: string | null;
+  unavailable: boolean;
   onError: () => void;
 } {
   // Keyed by the URL that failed, so a different clip in the same mounted
   // element starts over without an effect resetting state.
   const [fresh, setFresh] = useState<{ forUrl: string; url: string; posterUrl: string | null } | null>(null);
   const attemptedFor = useRef<string | null>(null);
+  const [failedFor, setFailedFor] = useState<string | null>(null);
   const failedUrl = clip.url;
 
   const onError = useCallback(() => {
-    if (attemptedFor.current === failedUrl) return;
+    if (attemptedFor.current === failedUrl) {
+      setFailedFor(failedUrl);
+      return;
+    }
     attemptedFor.current = failedUrl;
-    if (typeof navigator !== 'undefined' && navigator.onLine === false) return;
+    if (typeof navigator !== 'undefined' && navigator.onLine === false) {
+      setFailedFor(failedUrl);
+      return;
+    }
     const controller = typeof AbortController === 'function' ? new AbortController() : null;
     const timer = controller ? setTimeout(() => controller.abort(), RECOVERY_DEADLINE_MS) : null;
     void fetch(`/api/clips/${encodeURIComponent(clip.id)}/delivery`, {
@@ -39,16 +47,17 @@ export function useClipUrlRecovery(clip: ClipPromptData): {
       signal: controller?.signal,
     })
       .then(async (res) => {
-        if (!res.ok) return;
+        if (!res.ok) throw new Error('Clip delivery unavailable');
         const body = (await res.json()) as { url?: unknown; posterUrl?: unknown };
-        if (typeof body.url !== 'string') return;
+        if (typeof body.url !== 'string' || !body.url) throw new Error('Clip delivery unavailable');
+        setFailedFor(current => current === failedUrl ? null : current);
         setFresh({
           forUrl: failedUrl,
           url: body.url,
           posterUrl: typeof body.posterUrl === 'string' ? body.posterUrl : null,
         });
       })
-      .catch(() => {})
+      .catch(() => { setFailedFor(failedUrl); })
       .finally(() => { if (timer) clearTimeout(timer); });
   }, [clip.id, failedUrl]);
 
@@ -56,6 +65,7 @@ export function useClipUrlRecovery(clip: ClipPromptData): {
   return {
     src: recovered?.url ?? clip.url,
     poster: recovered ? recovered.posterUrl : clip.posterUrl,
+    unavailable: failedFor === clip.url,
     onError,
   };
 }

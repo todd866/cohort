@@ -2,6 +2,7 @@
 
 import { useEffect, useId, useRef, useState } from 'react';
 import { reviewChallengeLabel, normalizeReviewChallengeLevel } from '@/lib/study/review-challenge';
+import { ChipSelect } from '@/components/shared/Chip';
 
 export interface ReviewDifficultyControlProps {
   /** Current persisted preference, from -2 (foundations) to 2 (exam questions). */
@@ -16,6 +17,8 @@ export interface ReviewDifficultyControlProps {
   offline?: boolean;
   /** Optional retry for a failed save, supplied by the owning review hook. */
   onRetry?: () => void;
+  /** Expand in the enclosing options panel instead of opening an overlay. */
+  embedded?: boolean;
 }
 
 const LEVELS = [-2, -1, 0, 1, 2].map(value => ({
@@ -32,7 +35,7 @@ function levelLabel(value: number): string {
 }
 
 /**
- * The one always-visible challenge control in the review toolbar.
+ * The shared challenge control, standalone or within review options.
  *
  * The range is intentionally local state: dragging and arrowing should not
  * rebuild a prepared review queue for every intermediate value. The parent
@@ -48,6 +51,7 @@ export function ReviewDifficultyControl({
   ready = false,
   offline = false,
   onRetry,
+  embedded = false,
 }: ReviewDifficultyControlProps) {
   const [open, setOpen] = useState(false);
   const [draft, setDraft] = useState(() => clamp(value));
@@ -117,31 +121,31 @@ export function ReviewDifficultyControl({
 
   return (
     <div ref={rootRef} className="relative min-w-0 shrink">
-      <button
+      {/* The label drops on a narrow bar, leaving the value: no glyph stands
+          in for it, because no other chip in the bar carries one. */}
+      <ChipSelect
         ref={triggerRef}
-        type="button"
         aria-label={`Review difficulty: ${levelLabel(value)}`}
         aria-controls={panelId}
         aria-expanded={open}
         disabled={disabled}
-        title="Review difficulty"
         onClick={() => setOpen(current => !current)}
-        className="inline-flex h-[40px] min-h-[40px] min-w-[44px] max-w-[min(9.25rem,24vw)] items-center gap-[4px] rounded-full border border-[var(--md-outline-variant)] bg-[var(--md-surface)] px-[10px] text-xs leading-none text-[var(--md-on-surface-variant)] transition-colors hover:bg-[var(--md-surface-container-high)] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[var(--md-primary)] disabled:cursor-not-allowed disabled:opacity-60"
-      >
-        <span aria-hidden className="text-sm">◒</span>
-        <span className="hidden min-w-0 truncate @min-[60rem]/review-toolbar:inline">Difficulty: {levelLabel(value)}</span>
-      </button>
+        className={embedded ? 'w-full justify-between' : 'max-w-[min(9.25rem,24vw)]'}
+        label="Difficulty"
+        labelClassName={embedded ? undefined : 'hidden @min-[60rem]/review-toolbar:inline'}
+        value={levelLabel(value)}
+      />
 
       {open && (
         <div
           id={panelId}
           role="dialog"
           aria-label="Review difficulty"
-          className="absolute left-1/2 right-auto top-full z-30 mt-[8px] w-[min(288px,calc(100vw-16px))] -translate-x-1/2 rounded-xl border border-[var(--md-outline-variant)] bg-[var(--md-surface)] p-[12px] text-[var(--md-on-surface)] shadow-lg @min-[60rem]/review-toolbar:left-auto @min-[60rem]/review-toolbar:right-0 @min-[60rem]/review-toolbar:translate-x-0"
+          className={`${embedded ? 'relative mt-2 w-full' : 'absolute left-1/2 right-auto top-full z-30 mt-[8px] w-[min(288px,calc(100vw-16px))] -translate-x-1/2 @min-[60rem]/review-toolbar:left-auto @min-[60rem]/review-toolbar:right-0 @min-[60rem]/review-toolbar:translate-x-0'} rounded-xl border border-[var(--md-outline-variant)] bg-[var(--md-surface)] p-[12px] text-[var(--md-on-surface)] shadow-lg`}
         >
           <div className="flex items-start justify-between gap-3">
             <div>
-              <p className="text-sm font-medium">Review difficulty</p>
+              {!embedded && <p className="text-sm font-medium">Review difficulty</p>}
               <p className="mt-0.5 text-xs text-[var(--md-on-surface-variant)]">
                 {draft === -2 ? 'Simple scaffolding questions' : draft === 2 ? 'Hard exam questions in your weak topics' : levelLabel(draft)}
               </p>

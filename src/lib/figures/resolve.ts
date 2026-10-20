@@ -1,7 +1,6 @@
 import 'server-only';
-import type { Session } from 'next-auth';
 import { signFigureUrl } from './r2';
-import { canView, userTrust } from './trust';
+import { canView, userTrust, type ImageSession } from './trust';
 import type { AccessTier } from '@/lib/images/types';
 import { pickClientMeta, type ResolvedImage } from './types';
 import { lookupSidecar } from '@/lib/figures/server-loader';
@@ -72,7 +71,7 @@ export function questionImageIsPrompt(
  */
 export async function resolveImage(
   imageKey: string | null,
-  session: Session | null,
+  session: ImageSession | null,
   /**
    * Explicit access tier, for server paths that have an authenticated userId
    * but no Session object.
@@ -142,7 +141,7 @@ export type ResolveFailureReason =
 
 export function resolveImageFailureReason(
   imageKey: string | null,
-  session: Session | null,
+  session: ImageSession | null,
   trustOverride?: AccessTier,
 ): ResolveFailureReason {
   if (!imageKey) return 'no-key';

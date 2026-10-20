@@ -5,6 +5,8 @@
  * question top-up. Moved out of unified-scheduler.ts unchanged.
  */
 
+import type { AccessTier } from '@/lib/images/types';
+
 import { prisma } from '@/lib/prisma';
 import { getExcludedQuestionIds } from '@/lib/question-bank';
 import { withDefaultQuestionServingPolicy } from '@/lib/questions/source-policy';
@@ -12,6 +14,8 @@ import { userIdCanAccessPrivateSources } from '@/lib/questions/private-access';
 import { withoutRawPublicUsmleQuestions } from '@/lib/usmle/raw-question-boundary';
 import { sessionCandidateItemWhere } from '@/lib/knowledge/session-candidate-scope';
 import { imagePromptCardWhere, clipPromptCardWhere } from '@/lib/study/servable-pool';
+import { mediaCandidateWhere } from '@/lib/study/media-review';
+import type { ReviewMedia } from '@/lib/review/review-intent';
 import { selectVariantAwareQuestions } from '@/lib/question-variants';
 import { EXCLUDED_TOPICS } from './bulk-candidates';
 import { practiceLocaleWhere } from '@/lib/study/practice-locale';
@@ -49,10 +53,12 @@ export async function getCardsForCluster(
     minComplexity?: number;
     now?: Date;
     selectionDeterminism?: UnifiedSessionSelectionDeterminism;
+    media?: ReviewMedia;
+    imageTrust?: AccessTier;
+    isCopyrightTier?: boolean;
     practiceLocale?: 'au' | 'us';
     crossSourceRotations?: readonly string[];
     crossSourceMappingMode?: 'adjacent' | 'open';
-    isCopyrightTier?: boolean;
   },
 ): Promise<Array<CardCandidate & { firstSightAtSelection: boolean }>> {
   const excludedIds = options.selectedCardIds.size > 0 ? [...options.selectedCardIds] : undefined;
@@ -68,6 +74,7 @@ export async function getCardsForCluster(
   const tierGates = [
     imagePromptCardWhere(options.isCopyrightTier === true),
     clipPromptCardWhere(options.isCopyrightTier === true),
+    mediaCandidateWhere(options.media, options.isCopyrightTier === true, options.imageTrust),
   ].filter((gate) => Object.keys(gate).length > 0);
 
   const [newCards, weakCards] = await Promise.all([
@@ -199,6 +206,7 @@ export async function getUnseenScaffoldsForClusters(
   rotation: string,
   clusterIds: string[],
   selectedCardIds: Set<string>,
+  options: { media?: ReviewMedia; imageTrust?: AccessTier; isCopyrightTier?: boolean } = {},
 ): Promise<CardCandidate[]> {
   if (clusterIds.length === 0) return [];
 
@@ -213,6 +221,7 @@ export async function getUnseenScaffoldsForClusters(
       ...(excludedIds ? { id: { notIn: excludedIds } } : {}),
       progress: { none: { userId } },
       NOT: { topics: { hasSome: [...EXCLUDED_TOPICS] } },
+      AND: [mediaCandidateWhere(options.media, options.isCopyrightTier === true, options.imageTrust)],
     },
     select: {
       id: true,
@@ -247,6 +256,9 @@ export async function getQuestionsForRotation(
     crossSourceRotations?: readonly string[];
     crossSourceMappingMode?: 'adjacent' | 'open';
     selectionDeterminism?: UnifiedSessionSelectionDeterminism;
+    media?: ReviewMedia;
+    imageTrust?: AccessTier;
+    isCopyrightTier?: boolean;
   }
 ): Promise<Array<{
   id: string;
@@ -273,6 +285,7 @@ export async function getQuestionsForRotation(
           options.crossSourceRotations ?? [],
           options.crossSourceMappingMode ?? 'adjacent',
         ),
+        AND: [mediaCandidateWhere(options.media, options.isCopyrightTier === true, options.imageTrust)],
         contentState: { not: 'shelved' },
         ...(excludedIds.length > 0 ? { id: { notIn: excludedIds } } : {}),
         NOT: { topics: { hasSome: EXCLUDED_TOPICS } },

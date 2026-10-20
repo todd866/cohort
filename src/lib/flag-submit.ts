@@ -1,9 +1,7 @@
-import { submitWithRetry } from './submit-with-retry';
-import { enqueue, markAuthBlocked } from './outbox';
-import {
-  captureOfflineOwner,
-  isOfflineOwnerCurrent,
-} from './offline/owner';
+import { enqueue, flushOutbox, hasQueuedRequest, takeFlagReplayOutcome } from './outbox';
+import { captureOfflineOwner, isOfflineOwnerCurrent, type OwnerLease } from './offline/owner';
+import { deleteQueuedFlagImage, putQueuedFlagImage } from './flags/queued-image-store';
+import { randomUuid } from './random-uuid';
 
 export type FlagResult = 'delivered' | 'queued' | 'auth-required' | 'dropped' | 'image-unavailable';
 
@@ -24,63 +22,64 @@ export interface FlagPayload {
 
 const FLAG_URL = '/api/content/flag';
 
-function genId(): string {
-  try { return crypto.randomUUID(); }
-  catch { return `${Date.now()}-${Math.random().toString(36).slice(2)}`; }
+export interface FlagSubmitOptions {
+  /** Image bytes to send with the flag. Persisted on the device until sent. */
+  image?: Blob | null;
+}
+
+export interface QueuedFlag {
+  clientRequestId: string;
+  /** Settles after the first delivery attempt; the flag is already durable. */
+  result: Promise<FlagResult>;
 }
 
 /**
- * Submit a content flag durably. The ✓ in the UI must only be shown when this
- * resolves 'delivered'. 'queued'/'auth-required' mean the flag is safe in the
- * outbox and will replay; 'dropped' means the request was rejected as invalid
- * or its originating account changed before the write settled.
+ * Write a flag ahead to the durable outbox, then send it in the background.
+ *
+ * Resolves as soon as the flag (and any image, in IndexedDB) is on the device,
+ * so the sheet can close at once. The single outbox replay runner sends it,
+ * which keeps one sender per clientRequestId: no live request races a replay.
+ * Rejects when the flag or its image cannot be stored; nothing is queued then.
  */
-export async function submitFlag(payload: FlagPayload): Promise<FlagResult> {
+export async function queueFlag(payload: FlagPayload, options: FlagSubmitOptions = {}): Promise<QueuedFlag> {
   const ownerLease = captureOfflineOwner();
   const key = `${payload.type}:${payload.id}`;
-  const clientRequestId = genId();
+  const clientRequestId = randomUuid();
   const body: Record<string, unknown> = { ...payload, clientRequestId };
-
-  try {
-    const res = await submitWithRetry(FLAG_URL, body, { ownerLease });
-    if (!isOfflineOwnerCurrent(ownerLease)) return 'dropped';
-    if (res.ok) return res.headers?.get?.('X-Flag-Attachment-Unavailable') === '1' ? 'image-unavailable' : 'delivered';
-
-    if (res.status === 401 || res.status === 403) {
-      try {
-        navigator.sendBeacon('/api/log/client-error', JSON.stringify({
-          url: FLAG_URL, error: 'flag-auth-failure', status: res.status, ts: Date.now(),
-        }));
-      } catch { /* non-critical */ }
-      enqueue(
-        { kind: 'flag', key, clientRequestId, url: FLAG_URL, body, requiresAuth: true },
-        ownerLease.ownerKey,
-      );
-      markAuthBlocked();
-      return 'auth-required';
-    }
-
-    if (res.status >= 500) {
-      enqueue(
-        { kind: 'flag', key, clientRequestId, url: FLAG_URL, body },
-        ownerLease.ownerKey,
-      );
-      return 'queued';
-    }
-
-    // 4xx (e.g. 400 validation) — not retryable.
-    try {
-      navigator.sendBeacon('/api/log/client-error', JSON.stringify({
-        url: FLAG_URL, error: 'flag-rejected', status: res.status, ts: Date.now(),
-      }));
-    } catch { /* non-critical */ }
-    return 'dropped';
-  } catch {
-    if (!isOfflineOwnerCurrent(ownerLease)) return 'dropped';
-    enqueue(
-      { kind: 'flag', key, clientRequestId, url: FLAG_URL, body },
-      ownerLease.ownerKey,
-    );
-    return 'queued';
+  let imageRef: string | undefined;
+  if (options.image) {
+    imageRef = randomUuid();
+    await putQueuedFlagImage(imageRef, ownerLease.ownerKey, options.image);
   }
+  if (!isOfflineOwnerCurrent(ownerLease)) {
+    if (imageRef) void deleteQueuedFlagImage(imageRef);
+    return { clientRequestId, result: Promise.resolve('dropped') };
+  }
+  enqueue(
+    { kind: 'flag', key, clientRequestId, url: FLAG_URL, body, ...(imageRef ? { imageRef } : {}) },
+    ownerLease.ownerKey,
+  );
+  // enqueue cannot report a storage failure; confirm the row landed before
+  // the caller closes the sheet on the strength of it.
+  if (!hasQueuedRequest('flag', clientRequestId, ownerLease.ownerKey)) {
+    if (imageRef) void deleteQueuedFlagImage(imageRef);
+    throw new Error('Flag could not be saved on this device');
+  }
+  return { clientRequestId, result: deliverQueuedFlag(ownerLease, clientRequestId) };
+}
+
+async function deliverQueuedFlag(ownerLease: OwnerLease, clientRequestId: string): Promise<FlagResult> {
+  try { await flushOutbox(ownerLease.ownerKey); } catch { /* the row stays queued */ }
+  if (!isOfflineOwnerCurrent(ownerLease)) return 'dropped';
+  return takeFlagReplayOutcome(clientRequestId) ?? 'queued';
+}
+
+/**
+ * Submit a content flag durably and wait for the first delivery attempt. The ✓
+ * in the UI must only be shown when this resolves 'delivered'. 'queued' and
+ * 'auth-required' mean the flag is safe in the outbox and will replay;
+ * 'dropped' means the server rejected it as invalid or the account changed.
+ */
+export async function submitFlag(payload: FlagPayload, options: FlagSubmitOptions = {}): Promise<FlagResult> {
+  return (await queueFlag(payload, options)).result;
 }

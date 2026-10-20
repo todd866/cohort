@@ -22,18 +22,67 @@
  */
 
 /**
- * One pattern, exported, because two copies of a credential regex is the same
- * failure again — the second one drifts and nobody notices until it is in a log.
+ * The credential shapes, defined once. Three consumers read this list:
+ * redactCredentials below (logs and transcripts), the tracked-file scanner
+ * (scripts/ops/secret-scan.mjs, `npm run secrets:scan`) and the tutor daemon's
+ * answer hold (scripts/tutor/answer-guard.ts). Two copies of a credential
+ * regex is the failure this module exists to prevent: the second one drifts
+ * and nobody notices until it is in a log.
  *
- * Covers both scheme spellings, the `+`-suffixed forms (postgresql+ssl://), and
- * a bare `npg_` Neon credential with no URL around it, since a password can
- * surface in prose ("password authentication failed for npg_...").
+ * Each shape matches the SECRET, not the syntax around it, where it can (an
+ * `npg_` Neon password in prose, not only inside a URL). Patterns carry no
+ * flags beyond case; callers add `g` themselves (lastIndex is per-regex state).
+ *
+ * `trackedFiles: false` marks a shape the tracked-file scan leaves out because
+ * the repo legitimately documents it (postgresql://user:password@host
+ * examples); it still counts in a log line or a tutor answer.
+ */
+export const POSTGRES_URL_SOURCE = /\bpostgres(?:ql)?(?:\+[a-z0-9]+)?:\/\/[^\s'"`<>]+/.source;
+export const CREDENTIAL_SHAPES = Object.freeze([
+  { name: 'Postgres connection URL', pattern: new RegExp(POSTGRES_URL_SOURCE, 'i'), trackedFiles: false },
+  // Neon passwords are npg_ plus a short random tail; match the token itself.
+  { name: 'Neon password', pattern: /\bnpg_[A-Za-z0-9]{8,}\b/ },
+  // OpenAI (sk-, sk-proj-) and Anthropic (sk-ant-) keys share the sk- prefix.
+  // Case-sensitive with a word boundary: SK-N-SH and risk-benefit do not match.
+  { name: 'OpenAI/Anthropic key', pattern: /\bsk-(?:proj-|ant-)?[A-Za-z0-9_-]{16,}\b/ },
+  { name: 'Google API key', pattern: /\bAIza[0-9A-Za-z_-]{30,}\b/ },
+  { name: 'Google OAuth client secret', pattern: /\bGOCSPX-[0-9A-Za-z_-]{20,}\b/ },
+  { name: 'GitHub token', pattern: /\b(?:gh[pousr]_[A-Za-z0-9]{20,}|github_pat_[A-Za-z0-9_]{22,})/ },
+  { name: 'AWS access key', pattern: /\b(?:AKIA|ASIA)[0-9A-Z]{16}\b/ },
+  { name: 'JWT', pattern: /eyJ[A-Za-z0-9_-]{10,}\.[A-Za-z0-9_-]{10,}\.[A-Za-z0-9_-]{10,}/ },
+  { name: 'Resend key', pattern: /\bre_[A-Za-z0-9]{20,}\b/ },
+  // The header alone counts: a truncated answer may hold half a key.
+  { name: 'Private key block', pattern: /-----BEGIN(?: [A-Z0-9]+)* PRIVATE KEY-----/, trackedFiles: false },
+]);
+
+/** A whole private key block, END line optional (a truncated paste still goes). */
+export const PRIVATE_KEY_BLOCK_SOURCE = /-----BEGIN(?: [A-Z0-9]+)* PRIVATE KEY-----[\s\S]*?(?:-----END(?: [A-Z0-9]+)* PRIVATE KEY-----|$)/.source;
+
+/**
+ * The names of every credential shape in `text`, in list order. Names only:
+ * a caller logging why it refused something never needs the value.
+ */
+export function findCredentialShapes(text) {
+  if (typeof text !== 'string' || !text) return [];
+  return [...new Set(CREDENTIAL_SHAPES.filter(({ pattern }) => pattern.test(text)).map(({ name }) => name))];
+}
+
+/**
+ * Covers both scheme spellings, the `+`-suffixed forms (postgresql+ssl://), a
+ * bare `npg_` Neon credential with no URL around it (a password can surface in
+ * prose: "password authentication failed for npg_..."), and every other shape
+ * in CREDENTIAL_SHAPES.
  */
 export function redactCredentials(text) {
   if (typeof text !== 'string' || !text) return text;
-  return text
-    .replace(/\bpostgres(?:ql)?(?:\+[a-z0-9]+)?:\/\/[^\s'"`<>]+/gi, 'postgresql://[redacted]')
-    .replace(/\bnpg_[A-Za-z0-9]{16,}\b/g, '[redacted]');
+  let out = text
+    .replace(new RegExp(PRIVATE_KEY_BLOCK_SOURCE, 'g'), '[redacted]')
+    .replace(new RegExp(POSTGRES_URL_SOURCE, 'gi'), 'postgresql://[redacted]');
+  for (const { name, pattern } of CREDENTIAL_SHAPES) {
+    if (name === 'Postgres connection URL' || name === 'Private key block') continue;
+    out = out.replace(new RegExp(pattern.source, `${pattern.flags.replace('g', '')}g`), '[redacted]');
+  }
+  return out;
 }
 
 /**

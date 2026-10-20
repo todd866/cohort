@@ -121,6 +121,8 @@ export interface GeneratedCard {
   variantIndex?: number | null;
   /** 'cloze-blank' for v1 variants. */
   variantType?: string | null;
+  /** Reviewed abbreviation expansions, supplied by the stableId-bound sidecar. */
+  abbreviations?: Record<string, string> | null;
 }
 
 function extractUniqueComponentCites(content: string): string[] {

@@ -1,5 +1,6 @@
 'use client';
 
+import { takeConnectivityLog } from '@/lib/offline/connectivity-log';
 import { useEffect } from 'react';
 import { useSession } from 'next-auth/react';
 import { warmOfflineShell } from '@/lib/offline/shell';
@@ -60,6 +61,8 @@ async function sendTelemetry(lease: OwnerLease, lastError?: string): Promise<voi
           persistence,
           outboxSize: outbox.count,
           outboxAuthBlocked: outbox.requiresAuthCount > 0,
+          outboxOldestAgeSec: outbox.oldestAgeSec,
+          connectivity: takeConnectivityLog(),
           lastError,
         },
         {

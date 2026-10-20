@@ -12,6 +12,11 @@ export interface BadClozeSpan {
 
 const BLANK_TOKEN = '[___]';
 
+/** A figure plus a naming task; a decorative image alone is insufficient. */
+export function isImagePromptNamingCard(card: { front: string; imageUrl?: string | null }): boolean {
+  return Boolean(card.imageUrl) && /\bname the (?:(?:highlighted|indicated|labelled|labeled|numbered)\b|diagnosis shown\b)/i.test(card.front);
+}
+
 const RANGE_DASH = '[-–—]';
 const SIMPLE_NUMBER = /^[<>≤≥]?\s*-?\d+(?:\.\d+)?$/;
 const SHORT_TOKEN = /^[A-Za-z0-9]{1,2}$/;
@@ -189,4 +194,3 @@ export function detectBadClozeSpans(front: string, answers: string[]): BadClozeS
 
   return issues;
 }
-

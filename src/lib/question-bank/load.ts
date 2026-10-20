@@ -4,6 +4,7 @@ import { z } from 'zod';
 import type { CuratedQuestion } from './types';
 import { expandContrastSet, validateContrastSet, type ContrastSet } from './contrast-set';
 import { applyQuestionImageOverlay } from './image-overlay';
+import { applyQuestionVideoRepair, assertQuestionClipTaskReviews, loadQuestionVideoRepairs } from './video-task-overlay';
 import { validateCuratedQuestion, validateCuratedQuestionBank } from './validate';
 import { expandStatementFile, STATEMENT_FILE_SUFFIX } from './statement-file';
 import { PublicUsmleProvenanceV1Schema } from '@/lib/usmle/public-corpus';
@@ -228,6 +229,7 @@ export function loadQuestionBankFromDisk(options: {
   ).sort();
   const questions: CuratedQuestion[] = [];
   const errors: string[] = [];
+  const questionVideoRepairs = loadQuestionVideoRepairs();
 
   for (const filePath of files) {
     let parsed: unknown;
@@ -263,12 +265,12 @@ export function loadQuestionBankFromDisk(options: {
       }
 
       const parseResult = CuratedQuestionSchema.safeParse(
-        applyQuestionImageOverlay(
+        applyQuestionVideoRepair(applyQuestionImageOverlay(
           item as Record<string, unknown> & {
             id: string;
             imageUrl?: string | null;
           },
-        ),
+        ) as unknown as CuratedQuestion, questionVideoRepairs),
       );
       if (!parseResult.success) {
         for (const issue of parseResult.error.issues) {
@@ -294,6 +296,18 @@ export function loadQuestionBankFromDisk(options: {
   // Cross-file validation (duplicate IDs, etc.)
   const bankErrors = validateCuratedQuestionBank(questions);
   for (const e of bankErrors) errors.push(`${bankDir}: ${e}`);
+
+  if (errors.length === 0) {
+    const ledgerPath = path.join(process.cwd(), 'content', 'video-task-reviews.json');
+    const clipQuestions = questions.filter((question) => question.clipSlug?.trim());
+    if (clipQuestions.length > 0 && !fs.existsSync(ledgerPath)) {
+      throw new Error(`Missing content/video-task-reviews.json; refusing to load ${clipQuestions.length} clip question(s) without review receipts`);
+    }
+    if (fs.existsSync(ledgerPath)) {
+      const ledger = JSON.parse(fs.readFileSync(ledgerPath, 'utf8')) as unknown;
+      assertQuestionClipTaskReviews(questions, ledger, questionVideoRepairs);
+    }
+  }
 
   return { bankDir, files, questions, errors };
 }

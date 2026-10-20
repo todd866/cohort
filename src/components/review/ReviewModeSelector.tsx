@@ -1,14 +1,17 @@
 'use client';
 
-import type { ReviewFilter, ReviewItemType } from '@/lib/review/review-intent';
+import type { ReviewFilter, ReviewItemType, ReviewMedia } from '@/lib/review/review-intent';
 import type { ReviewFeedMode } from './hooks/useReviewFeedMode';
+import { ChipNativeSelect } from '@/components/shared/Chip';
 
-export type ReviewMode = 'mixed' | 'new' | 'due' | 'at-risk' | 'mcq';
+export type ReviewMode = 'mixed' | 'new' | 'due' | 'at-risk' | 'mcq' | 'image' | 'video' | 'media';
 
 interface ReviewModeSelectorProps {
   feedMode: ReviewFeedMode;
   reviewFilter?: ReviewFilter;
   itemType?: ReviewItemType;
+  media?: ReviewMedia;
+  canAccessVideo?: boolean;
   newRemaining: { cards: number; questions: number } | null;
   onChange: (mode: ReviewMode) => void;
   practiceExamHref?: string;
@@ -24,14 +27,20 @@ export function ReviewModeSelector({
   feedMode,
   reviewFilter,
   itemType,
+  media,
+  canAccessVideo = false,
   newRemaining,
   onChange,
   practiceExamHref,
 }: ReviewModeSelectorProps) {
-  // MCQ-only wins the display: it is the one mode that changes WHAT is served
+  // Media and MCQ-only win the display: they change WHAT is served
   // rather than which slice of it, and the request drops the typed filter when
   // it is chosen (due/at-risk have no question-only lane).
-  const mode: ReviewMode = itemType === 'question'
+  const mode: ReviewMode = media === 'image' || media === 'video'
+    ? media
+    : media === 'any'
+      ? 'media'
+      : itemType === 'question'
     ? 'mcq'
     : reviewFilter === 'due' || reviewFilter === 'at-risk'
       ? reviewFilter
@@ -43,26 +52,30 @@ export function ReviewModeSelector({
     : null;
 
   return (
-    <label className="inline-flex min-w-0 items-center">
-      <span className="sr-only">Review mode</span>
-      <select
-        aria-label="Review mode"
-        value={mode}
-        onChange={(event) => {
-          if (event.target.value === "practice-exam" && practiceExamHref) window.location.assign(practiceExamHref);
-          else onChange(event.target.value as ReviewMode);
-        }}
-        className="min-w-0 max-w-[8.5rem] truncate rounded-full border border-[var(--md-outline-variant)] bg-[var(--md-surface)] px-3 py-1 text-xs text-[var(--md-on-surface-variant)]"
-      >
-        <option value="mixed">Mixed</option>
-        <option value="new">
-          {newCount == null ? 'New only' : `New only (${newCount})`}
-        </option>
-        <option value="due">Due now</option>
-        <option value="at-risk">At risk</option>
-        <option value="mcq">MCQs only</option>
-        {practiceExamHref && <option value="practice-exam">Practice exam</option>}
-      </select>
-    </label>
+    <ChipNativeSelect
+      aria-label="Review mode"
+      value={mode}
+      onChange={(event) => {
+        if (event.target.value === "practice-exam" && practiceExamHref) window.location.assign(practiceExamHref);
+        else onChange(event.target.value as ReviewMode);
+      }}
+      className="max-w-[8.5rem]"
+    >
+      <option value="mixed">Mixed</option>
+      <option value="new">
+        {newCount == null ? 'New only' : `New only (${newCount})`}
+      </option>
+      <option value="due">Due now</option>
+      <option value="at-risk">At risk</option>
+      <option value="mcq">MCQs only</option>
+      <option value="image">Images only</option>
+      {canAccessVideo ? (
+        <option value="video">Videos only</option>
+      ) : media === 'video' ? (
+        <option value="video" disabled>Videos only (unavailable)</option>
+      ) : null}
+      <option value="media">Media only</option>
+      {practiceExamHref && <option value="practice-exam">Practice exam</option>}
+    </ChipNativeSelect>
   );
 }

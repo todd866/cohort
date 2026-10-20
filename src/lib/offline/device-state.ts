@@ -23,6 +23,15 @@ import {
   type OwnerLease,
 } from './owner';
 
+/** Clear optional chat data without pulling private chat modules into the public build. */
+function clearChatStorage(): void {
+  try {
+    for (const key of Object.keys(localStorage)) {
+      if (key.startsWith('md3:ai-send-queue:') || key.startsWith('md3:ai-experience:')) localStorage.removeItem(key);
+    }
+  } catch { /* Storage may be unavailable. Owner leases are already invalidated. */ }
+}
+
 export function bindOfflineOwner(ownerKey: string): OwnerLease {
   const previousOwner = readOfflineOwner();
   const packOwner = storedPackOwnerKey();
@@ -36,6 +45,7 @@ export function bindOfflineOwner(ownerKey: string): OwnerLease {
 
   if (switched) {
     clearImageChoiceHistory();
+    clearChatStorage();
     const deviceGuestSignIn = Boolean(
       previousOwner
       && !previousOwner.verified
@@ -70,6 +80,7 @@ export function bindOfflineOwner(ownerKey: string): OwnerLease {
 export async function clearOfflineUserData(): Promise<void> {
   // Invalidate leases first so work resolving during cleanup cannot commit.
   clearOfflineOwner();
+  clearChatStorage();
   clearImageChoiceHistory();
   clearPack();
   clearOfflineReviewProgress();

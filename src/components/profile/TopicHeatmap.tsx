@@ -2,6 +2,7 @@
 
 import { useMemo, useState, type ReactNode } from 'react';
 import Link from 'next/link';
+import { SECTION_HEADER } from '@/components/stats/instrument-chrome';
 import {
   describeTopicHeat,
   summarizeTopicReadiness,
@@ -290,7 +291,7 @@ export function TopicHeatmap({
     <div className="lg:grid lg:grid-cols-[minmax(0,1fr)_22rem] lg:gap-x-8">
       <div>
         <div className="mb-3 flex flex-wrap items-baseline justify-between gap-x-3 gap-y-1">
-          <h2 className="text-xs font-semibold uppercase tracking-wider text-[var(--md-on-surface-variant)]">
+          <h2 className={SECTION_HEADER}>
             {rotationLabel}
           </h2>
           <p className="text-xs font-medium tabular-nums text-[var(--md-on-surface-variant)]">

@@ -16,12 +16,14 @@ interface StoredOwnerState {
   ownerKey: string | null;
   verified: boolean;
   generation: number;
+  quarantined: boolean;
 }
 
 export interface OfflineOwner {
   ownerKey: string;
   verified: boolean;
   generation: number;
+  quarantined?: boolean;
 }
 
 export interface OwnerLease {
@@ -34,6 +36,7 @@ const EMPTY_STATE: StoredOwnerState = {
   ownerKey: null,
   verified: false,
   generation: 0,
+  quarantined: false,
 };
 
 let memoryState: StoredOwnerState = EMPTY_STATE;
@@ -58,6 +61,7 @@ function parseState(raw: string | null): StoredOwnerState {
       ownerKey: validOwnerKey(parsed.ownerKey) ? parsed.ownerKey : null,
       verified: validOwnerKey(parsed.ownerKey) && parsed.verified === true,
       generation,
+      quarantined: parsed.quarantined === true,
     };
   } catch {
     return EMPTY_STATE;
@@ -124,7 +128,20 @@ export function readOfflineOwner(): OfflineOwner | null {
     ownerKey: state.ownerKey,
     verified: state.verified,
     generation: state.generation,
+    quarantined: state.quarantined,
   };
+}
+
+/**
+ * The stored owner whose device data may be shown WITHOUT a verified session
+ * (offline, a dead link, the service-worker offline page). A quarantined owner
+ * never qualifies: a successful session response proved sign-out or another
+ * account, and that proof outranks any later network failure or the browser's
+ * offline flag until a verified session for that owner rebinds it (Codex
+ * review, 15 Oct 2026). Quarantine always wins.
+ */
+export function unverifiedPackOwnerKey(owner: OfflineOwner | null | undefined): string | null {
+  return owner && !owner.quarantined ? owner.ownerKey : null;
 }
 
 export function currentOfflineOwnerKey(): string | null {
@@ -148,12 +165,14 @@ export function ensureOfflineOwner(): OfflineOwner {
     ownerKey: guestOwnerKey,
     verified: false,
     generation: nextGeneration(current),
+    quarantined: false,
   };
   writeState(created);
   return {
     ownerKey: guestOwnerKey,
     verified: false,
     generation: created.generation,
+    quarantined: false,
   };
 }
 
@@ -199,7 +218,7 @@ export function bindVerifiedOfflineOwner(ownerKey: string): OwnerLease {
   if (!normalized) throw new Error('A non-empty offline owner key is required');
 
   const current = readState();
-  if (current.ownerKey === normalized && current.verified) {
+  if (current.ownerKey === normalized && current.verified && !current.quarantined) {
     return { ownerKey: normalized, generation: current.generation };
   }
 
@@ -208,9 +227,17 @@ export function bindVerifiedOfflineOwner(ownerKey: string): OwnerLease {
     ownerKey: normalized,
     verified: true,
     generation: nextGeneration(current),
+    quarantined: false,
   };
   writeState(next);
   return { ownerKey: normalized, generation: next.generation };
+}
+
+/** Hide a verified owner's local chat until the server proves who is present. */
+export function quarantineOfflineOwner(): void {
+  const current = readState();
+  if (!current.ownerKey || !current.verified || current.quarantined) return;
+  writeState({ ...current, quarantined: true, generation: nextGeneration(current) });
 }
 
 /**
@@ -224,6 +251,7 @@ export function clearOfflineOwner(): void {
     ownerKey: null,
     verified: false,
     generation: nextGeneration(current),
+    quarantined: false,
   });
 }
 
@@ -232,7 +260,8 @@ export function isOfflineOwnerCurrent(lease: OwnerLease): boolean {
   return Boolean(
     current &&
     current.ownerKey === lease.ownerKey &&
-    current.generation === lease.generation,
+    current.generation === lease.generation &&
+    !current.quarantined,
   );
 }
 

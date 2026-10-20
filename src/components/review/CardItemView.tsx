@@ -16,7 +16,6 @@ import { clipIsPrompt } from './clip-role';
 import { ClipPrompt } from './ClipPrompt';
 import { ClipContext } from './ClipContext';
 import { RevealActionLabel } from './RevealActionLabel';
-import { TutorCardLink } from '@/components/tutor/TutorCardLink';
 import { ReviewCardBody, ReviewCardContent, ReviewExplanation } from '@/components/shared/ReviewCardContent';
 import { AnatomyReviewFigure } from '@/components/shared/AnatomyReviewFigure';
 import {
@@ -54,15 +53,15 @@ interface CardItemViewProps {
    *  false and uses a fixed bottom bar so the tap target stays in one spot. */
   inlineReveal?: boolean;
   onSuppress: (id: string) => void;
-  /** More controls for the post-reveal action row, beside Details and Ask
-   *  tutor, at the same size and weight. UnifiedReview passes the clinical
-   *  station chip. Shown only once the answer is out. */
+  /** More controls for the post-reveal action row, beside Details and the
+   *  owner's Ask control, at the same size and weight. UnifiedReview passes
+   *  the clinical station chip. Shown only once the answer is out. */
   revealActions?: ReactNode;
   /** Optional public-surface feedback control, shown only after reveal. */
   publicFeedback?: ReactNode;
   /**
    * A public surface (Cohort): the card's id is an opaque delivery, and the
-   * Details page, tutor link and like/hide feedback are md3 routes keyed to an
+   * Details page, the tutor and like/hide feedback are md3 routes keyed to an
    * md3 card. Show none of them.
    */
   publicSurface?: boolean;
@@ -147,7 +146,7 @@ export function CardItemView({
   // after the answer. It mounts only post-reveal and fetches nothing until the
   // learner presses play, so a long video on a card costs a reader who ignores
   // it exactly nothing. See ClipContext for the reasoning.
-  const contextClipNode = !clipPrompt && item.clip ? (
+  const contextClipNode = !clipPrompt && item.clip && cardFullyRevealed ? (
     <ClipContext clip={item.clip} caption={item.clipCaption} revealed={cardFullyRevealed} />
   ) : null;
 
@@ -257,7 +256,6 @@ export function CardItemView({
         >
           Details ↗
         </Link>
-        <TutorCardLink cardId={item.id} />
         {revealActions}
       </div>
       <CardFeedback
@@ -291,9 +289,15 @@ export function CardItemView({
   return (
     <GlossaryScope abbreviations={item.abbreviations}>
     <ReviewCardContent
-      layout={mediaNode ? (mediaIsPrompt ? 'prompt' : 'supplementary') : 'flat'}
+      // Put an optional video immediately after the answered stem on phones,
+      // before the longer explanation. Its instructional role is unchanged:
+      // contextClipNode does not exist until the answer is fully revealed.
+      layout={mediaNode ? (mediaIsPrompt || contextClipNode ? 'prompt' : 'supplementary') : 'flat'}
       paneKind={reviewPaneKind(item)}
       compactPrompt={compactPrompt}
+      // On stacked clip cards the stem and viewing instruction are one prompt.
+      // Keep their gap compact so full-width video controls clear the footer.
+      className={clipPrompt ? 'max-sm:[&_[data-card-stem]]:mb-2' : undefined}
       stem={mediaIsPrompt ? <>{stemNode}{clipInstructionNode}</> : stemNode}
       reveal={inlineRevealNode}
       answer={answerNode}

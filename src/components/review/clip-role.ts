@@ -17,6 +17,8 @@ export interface ClipPromptData {
   sourceAuthor?: string | null;
   sourceLicence?: string | null;
   sourceLicenceUrl?: string | null;
+  /** Exact asset has a reviewed public-reuse receipt; credit is available before reveal. */
+  publicReuse?: { copyright: string; changes: string };
   startSecs: number;
   endSecs: number;
 }

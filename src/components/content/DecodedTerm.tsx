@@ -79,7 +79,7 @@ export function DecodedTerm({ expansion, children }: { expansion: string; childr
         onMouseEnter={() => {
           hovered.current = true;
           cancelHover();
-          timer.current = setTimeout(() => setOpen(true), 120);
+          setOpen(true);
         }}
         onMouseLeave={() => {
           hovered.current = false;

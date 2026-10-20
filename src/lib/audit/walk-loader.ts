@@ -195,6 +195,10 @@ export async function loadSessions(opts: LoadSessionsOpts): Promise<Session[]> {
     const feedMode = trajectory.some((t) => t.metadata.feedMode === 'new-only')
       ? 'new-only'
       : 'mixed';
+    const mediaValues = trajectory
+      .map(t => t.metadata.media)
+      .filter((value): value is NonNullable<typeof value> => value === 'image' || value === 'video' || value === 'any');
+    const media = mediaValues[0];
     sessions.push({
       sessionId,
       userId,
@@ -206,6 +210,7 @@ export async function loadSessions(opts: LoadSessionsOpts): Promise<Session[]> {
       responses,
       contentRatings,
       feedMode,
+      ...(media ? { media } : {}),
     });
   }
   sessions.sort((a, b) => a.startedAt.getTime() - b.startedAt.getTime());

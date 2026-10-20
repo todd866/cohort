@@ -266,10 +266,13 @@ export async function PATCH(request: NextRequest) {
 
       const implicit = (feedProfile.implicit || {}) as Record<string, unknown>;
 
-      await prisma.user.update({
-        where: { id: userId },
-        data: { feedProfile: { ...feedProfile, explicit, implicit } },
-      });
+      // Patch only these keys: a concurrent check-in claim must keep its budget.
+      await prisma.$executeRaw`
+        UPDATE "User" SET "feedProfile" =
+          (CASE WHEN jsonb_typeof("feedProfile") = 'object' THEN "feedProfile" ELSE '{}'::jsonb END)
+          || ${JSON.stringify({ explicit, implicit })}::jsonb
+        WHERE "id" = ${userId}
+      `;
     }
 
     const sanitizedUpdates = toUserUpdateData(updates);

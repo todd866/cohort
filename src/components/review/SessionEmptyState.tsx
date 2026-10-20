@@ -2,7 +2,7 @@
 
 import Link from 'next/link';
 import { rotationLabel } from '@/lib/rotation-labels';
-import type { ReviewItemType } from '@/lib/review/review-intent';
+import type { ReviewItemType, ReviewMedia } from '@/lib/review/review-intent';
 import type { ReviewMode } from './ReviewModeSelector';
 import type { ReviewFeedMode } from './hooks/useReviewFeedMode';
 
@@ -21,6 +21,7 @@ interface SessionEmptyStateProps {
   feedMode: ReviewFeedMode;
   /** MCQ-only review. Changes the noun, and the way back out. */
   itemType?: ReviewItemType;
+  media?: ReviewMedia;
   newRemaining: NewRemaining | null | undefined;
   /** Set when called from the "items array empty" branch — shows a Refresh button. Otherwise omits it. */
   showRefresh?: boolean;
@@ -30,8 +31,12 @@ interface SessionEmptyStateProps {
   focusRotation?: string | null;
   /** Whether this review surface can enter dedicated focused practice. */
   canChooseFocus?: boolean;
+  /** History is private-MD3 only; public/offline transports cannot enter it. */
+  canBrowseHistory?: boolean;
   /** Guest remediation must preserve its post-sign-in destination. */
   isGuest?: boolean;
+  /** Calendar replay: the supplied batch is the whole session. */
+  replay?: boolean;
   onFetch: () => void;
   onFeedModeChange?: (next: ReviewFeedMode) => void;
   onReviewModeChange?: (next: ReviewMode) => void;
@@ -39,6 +44,8 @@ interface SessionEmptyStateProps {
 }
 
 interface SessionDebriefProps {
+  itemType?: ReviewItemType;
+  canBrowseHistory: boolean;
   stats: SessionStats;
   feedMode: ReviewFeedMode;
   focusRotation: string | null;
@@ -50,6 +57,8 @@ interface SessionDebriefProps {
 }
 
 function SessionDebrief({
+  itemType,
+  canBrowseHistory,
   stats,
   feedMode,
   focusRotation,
@@ -62,10 +71,9 @@ function SessionDebrief({
   const correct = Math.min(stats.total, Math.max(0, stats.correct));
   const misses = Math.max(0, stats.total - correct);
   const focusLabel = focusRotation ? rotationLabel(focusRotation) : null;
-  const remediationPath = '/learn?lookbackDays=1';
-  const remediationHref = isGuest
-    ? `/auth/signin?source=session-remediation&callbackUrl=${encodeURIComponent(remediationPath)}`
-    : remediationPath;
+  const historyHref = (path: string) => isGuest
+    ? `/auth/signin?source=session-remediation&callbackUrl=${encodeURIComponent(path)}`
+    : path;
   const actionClass =
     'inline-flex min-h-11 w-full items-center justify-center rounded-xl px-4 py-2 text-sm font-medium transition-colors';
   const startScheduledBlock = () => {
@@ -114,19 +122,21 @@ function SessionDebrief({
           </div>
         </dl>
 
-        {misses > 0 ? (
-          <div className="mt-5">
-            <Link
-              href={remediationHref}
-              className={`${actionClass} bg-[var(--md-primary)] text-[var(--md-on-primary)] hover:opacity-90`}
-            >
-              Fix today’s misses
+        {misses > 0 && canBrowseHistory && (
+          <div className="mt-5 grid gap-2 sm:grid-cols-2">
+            {itemType !== 'question' && (
+              <Link href={historyHref('/study/history?type=card&filter=needs-review')}
+                className={`${actionClass} bg-[var(--md-primary)] text-[var(--md-on-primary)] hover:opacity-90`}>
+                Cards to revisit
+              </Link>
+            )}
+            <Link href={historyHref('/study/history?type=question&filter=incorrect')}
+              className={`${actionClass} bg-[var(--md-primary)] text-[var(--md-on-primary)] hover:opacity-90`}>
+              Incorrect questions
             </Link>
-            <p className="mt-2 text-center text-xs text-[var(--md-on-surface-variant)]">
-              Review the items that need another look while the context is fresh.
-            </p>
           </div>
-        ) : (
+        )}
+        {misses === 0 && (
           <p className="mt-5 text-center text-sm text-[var(--md-on-surface-variant)]">
             Nothing from this block needs remediation.
           </p>
@@ -216,15 +226,18 @@ function EmptyStateEscape({
 }
 
 export function SessionEmptyState({
+  canBrowseHistory = true,
   isExhausted,
   feedMode,
   itemType,
+  media,
   newRemaining,
   showRefresh,
   stats,
   focusRotation = null,
   canChooseFocus = false,
   isGuest = false,
+  replay = false,
   onFetch,
   onFeedModeChange,
   onReviewModeChange,
@@ -232,23 +245,47 @@ export function SessionEmptyState({
 }: SessionEmptyStateProps) {
   const newRemainingTotal = newRemaining ? newRemaining.cards + newRemaining.questions : null;
 
+  if (replay && isExhausted) {
+    return (
+      <p className="px-4 py-6 text-sm text-[var(--md-on-surface)]">
+        Nothing left to review from that day
+      </p>
+    );
+  }
+
   // MCQ-only owns its own exhausted state: every branch below is written in
   // cards, and a learner who asked for questions should not be told they have
   // "reviewed all available cards". A thin rotation runs out of MCQs long
   // before it runs out of content, so the way back to Mixed is the point.
-  if (isExhausted && itemType === 'question') {
+  if (isExhausted && (itemType === 'question' || media)) {
+    const noun = itemType === 'question'
+      ? 'MCQs'
+      : media === 'image' ? 'image items' : media === 'video' ? 'video items' : 'media items';
+    const emptyMessage = media === 'video'
+      ? 'No video items available to you in this rotation'
+      : `No more ${noun} ${media ? 'in this rotation' : 'right now'}`;
     return (
       <div className="text-center py-12">
         <p className="text-lg font-medium text-[var(--md-on-surface)] mb-2">
-          No more MCQs right now
+          {emptyMessage}
         </p>
         {stats && stats.total > 0 && (
           <p className="text-[var(--md-on-surface-variant)] mb-6">
             {stats.correct}/{stats.total} correct this session
           </p>
         )}
+        {itemType === 'question' && canBrowseHistory && stats && stats.correct < stats.total && (
+          <Link
+            href={isGuest
+              ? `/auth/signin?source=session-remediation&callbackUrl=${encodeURIComponent('/study/history?type=question&filter=incorrect')}`
+              : '/study/history?type=question&filter=incorrect'}
+            className="mb-4 inline-flex min-h-11 items-center rounded-xl bg-[var(--md-primary)] px-4 text-sm font-medium text-[var(--md-on-primary)]"
+          >
+            Incorrect questions
+          </Link>
+        )}
         <p className="text-sm text-[var(--md-on-surface-variant)]">
-          You&apos;ve answered every question this rotation can serve you today.
+          {!media && <>You&apos;ve answered every question this rotation can serve you today. </>}
           Switch to{' '}
           <button
             onClick={() => onReviewModeChange?.('mixed')}
@@ -265,6 +302,8 @@ export function SessionEmptyState({
   if (isExhausted && stats && stats.total > 0) {
     return (
       <SessionDebrief
+        itemType={itemType}
+        canBrowseHistory={canBrowseHistory}
         stats={stats}
         feedMode={feedMode}
         focusRotation={focusRotation}

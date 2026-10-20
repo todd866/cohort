@@ -7,14 +7,14 @@ import { FLAG_IMAGE_MAX_BYTES, FLAG_IMAGE_MAX_PIXELS, FLAG_IMAGE_DRAFT_DAYS } fr
 export async function normalizeFlagImage(base64: string) {
   if (!/^[A-Za-z0-9+/]+={0,2}$/.test(base64) || base64.length % 4 !== 0) throw new Error('Invalid image');
   const bytes = Buffer.from(base64, 'base64');
-  if (!bytes.length || bytes.length > FLAG_IMAGE_MAX_BYTES) throw new Error('Image must be 2 MB or smaller');
+  if (!bytes.length || bytes.length > FLAG_IMAGE_MAX_BYTES) throw new Error('Image must be 4 MB or smaller');
   const pipeline = sharp(bytes, { limitInputPixels: FLAG_IMAGE_MAX_PIXELS, failOn: 'warning', animated: false });
   const meta = await pipeline.metadata();
   if (!['jpeg', 'png', 'webp'].includes(meta.format ?? '') || (meta.pages ?? 1) > 1) throw new Error('Choose a PNG, JPEG or WebP image');
   if (!meta.width || !meta.height || meta.width * meta.height > FLAG_IMAGE_MAX_PIXELS) throw new Error('Image dimensions are too large');
   // Decoding and re-encoding removes EXIF/GPS, ancillary payloads and filenames.
   const data = await pipeline.rotate().webp({ quality: 88 }).toBuffer();
-  if (data.length > FLAG_IMAGE_MAX_BYTES) throw new Error('Image must be 2 MB or smaller');
+  if (data.length > FLAG_IMAGE_MAX_BYTES) throw new Error('Image must be 4 MB or smaller');
   return { data, sha256: createHash('sha256').update(data).digest('hex') };
 }
 
