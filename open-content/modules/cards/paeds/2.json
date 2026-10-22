@@ -80,6 +80,21 @@
       "reference": null
     },
     {
+      "id": "cohort:paeds:c-21ac4a64b059:v1",
+      "origin": "mdx:a96ae3babd80e1ed97068ef12a27bc62",
+      "discipline": "paeds",
+      "cardType": "cloze",
+      "sourceComponent": "KeyPoint",
+      "front": "A child has a painless midline neck lump that rises when the tongue protrudes but not when the head turns. This is a [___] cyst.",
+      "back": "thyroglossal",
+      "context": "The thyroglossal tract remains attached to the tongue base, so a cyst in the midline rises when the tongue protrudes. A dermoid does not follow that movement.",
+      "complexity": 3,
+      "importance": 2,
+      "variantGroup": null,
+      "variantIndex": null,
+      "reference": null
+    },
+    {
       "id": "cohort:paeds:c-21d790a89635:v1",
       "origin": "mdx:c840a38caf091a0ba39d4abc73e65201:blank-0",
       "discipline": "paeds",
@@ -204,6 +219,21 @@
       "reference": null
     },
     {
+      "id": "cohort:paeds:c-236f0cd8c764:v1",
+      "origin": "mdx:5df4d9ff236537fe44336ef007be1307",
+      "discipline": "paeds",
+      "cardType": "cloze",
+      "sourceComponent": "KeyPoint",
+      "front": "An otherwise well 3-year-old has a painless, smooth flank mass. CT localises the mass within renal parenchyma rather than the adrenal gland. There is no calcification or midline extension. The most likely diagnosis is [___].",
+      "back": "Wilms tumour",
+      "context": "Neuroblastoma commonly arises from the sympathetic chain, often crosses the midline and may calcify. Children may be unwell with fever, weight loss or limp from marrow spread.\n\nWilms tumour is a renal-parenchyma tumour. A well preschool child with a smooth mass confined to one flank and no calcification fits that pattern.",
+      "complexity": 3,
+      "importance": 2,
+      "variantGroup": null,
+      "variantIndex": null,
+      "reference": null
+    },
+    {
       "id": "cohort:paeds:c-23e10896acc3:v1",
       "origin": "mdx:a3b72464aecde64054cd7e53b4cbf712",
       "discipline": "paeds",
@@ -231,21 +261,6 @@
       "importance": 2,
       "variantGroup": "cohort:paeds:g-940c9698df59",
       "variantIndex": 1,
-      "reference": null
-    },
-    {
-      "id": "cohort:paeds:c-23f41fb8d0cf:v1",
-      "origin": "mdx:d2b8057e13781b4e07aa4e9b35d4ccbd:blank-0",
-      "discipline": "paeds",
-      "cardType": "cloze",
-      "sourceComponent": "KeyPoint",
-      "front": "The classic triad of infectious mononucleosis is [___], pharyngitis, and lymphadenopathy.",
-      "back": "fever",
-      "context": "The classic triad probes joint involvement of fever, the oropharynx (exudative pharyngitis), and lymphoid tissue (cervical lymphadenopathy, often with splenomegaly).\n\nBilateral posterior cervical lymphadenopathy is more specific for EBV than anterior cervical adenopathy alone — the latter is just as common in bacterial pharyngitis.",
-      "complexity": 2,
-      "importance": 2,
-      "variantGroup": "cohort:paeds:g-c15a1799d123",
-      "variantIndex": 0,
       "reference": null
     },
     {
@@ -399,21 +414,6 @@
       "reference": null
     },
     {
-      "id": "cohort:paeds:c-26016b22aaca:v1",
-      "origin": "mdx:22356ae2a02ee504469b7f61c7bb91bc",
-      "discipline": "paeds",
-      "cardType": "cloze",
-      "sourceComponent": "KeyPoint",
-      "front": "In anorectal malformations, [___] (supralevator) lesions have worse continence outcomes than low lesions.",
-      "back": "high",
-      "context": "High (supralevator) anorectal malformations have poorer continence outcomes than low lesions, so the anatomical level matters for prognosis and operative planning.\n\nStaging follows level: high lesions need a defunctioning colostomy first, then a pull-through later; low lesions can have a single primary anoplasty.\n\nMislabelling a high lesion as low and attempting primary repair risks damaging the sphincter complex.",
-      "complexity": 2,
-      "importance": 2,
-      "variantGroup": null,
-      "variantIndex": null,
-      "reference": null
-    },
-    {
       "id": "cohort:paeds:c-2625778acb36:v1",
       "origin": "mdx:bbda87e83cb721d77e76b8ab4466b308",
       "discipline": "paeds",
@@ -439,6 +439,36 @@
       "context": "A central line is both a pathogen clue and a removable focus. Culture peripheral blood and every line lumen, then strongly consider line removal in a septic neonate.\n\nAntibiotics alone may fail while infected biofilm remains in place; fulminant disease warrants urgent infectious-diseases advice about broader cover.",
       "complexity": 3,
       "importance": 3,
+      "variantGroup": null,
+      "variantIndex": null,
+      "reference": null
+    },
+    {
+      "id": "cohort:paeds:c-265875ff7fe8:v1",
+      "origin": "mdx:a60c94402fcbc5966f6ab7276ca2353f:blank-0",
+      "discipline": "paeds",
+      "cardType": "cloze",
+      "sourceComponent": "KeyPoint",
+      "front": "Cyanotic newborn not improving with oxygen (suspected duct-dependent CHD): start [___] infusion to maintain ductal patency while awaiting echo.",
+      "back": "prostaglandin E1",
+      "context": "Duct-dependent CHD relies on a patent ductus arteriosus for either pulmonary flow (pulmonary/tricuspid atresia, severe pulmonary stenosis) or systemic flow (HLHS, critical aortic stenosis, coarctation).\n\nThe duct normally closes in the first days of life — exactly when these babies crash. Empirical PGE1 (alprostadil 0.01-0.05 µg/kg/min IV) keeps it open by relaxing ductal smooth muscle.\n\nGive it to any cyanotic or collapsed neonate with duct-dependent CHD on the differential, even before echo. An unnecessary start is low-cost (apnoea, fever, hypotension); NOT starting risks a dead infant.",
+      "complexity": 2,
+      "importance": 2,
+      "variantGroup": "cohort:paeds:g-aeffdfdd5b60",
+      "variantIndex": 0,
+      "reference": null
+    },
+    {
+      "id": "cohort:paeds:c-2663cf2c4803:v1",
+      "origin": "mdx:e3cef42225aa1f4c8fae0bb5a47d7ac4",
+      "discipline": "paeds",
+      "cardType": "cloze",
+      "sourceComponent": "KeyPoint",
+      "front": "An alert toddler with moderate dehydration cannot drink enough, but has no shock or bowel obstruction. Deliver oral rehydration solution through a [___] tube before using intravenous fluid.",
+      "back": "nasogastric",
+      "context": "If an alert child with gastroenteritis cannot drink enough, the gut can still absorb oral rehydration solution delivered through a nasogastric tube. Shock or bowel obstruction changes the route decision.",
+      "complexity": 3,
+      "importance": 2,
       "variantGroup": null,
       "variantIndex": null,
       "reference": null
@@ -489,6 +519,21 @@
       "reference": null
     },
     {
+      "id": "cohort:paeds:c-28542ea8fbb8:v1",
+      "origin": "mdx:981b1f599777446fdc6c3875c3a17b32",
+      "discipline": "paeds",
+      "cardType": "cloze",
+      "sourceComponent": "KeyPoint",
+      "front": "Under four years, GCS motor 5 is localising to pain or withdrawing to [___].",
+      "back": "touch",
+      "context": "Motor 5 under four: localises to pain or withdraws to touch. Motor 4: withdraws from pain.\n\nThe touch-withdrawal nuance matters in infants who flinch away from examination but do not localise — that can be 5, not 4, on the paediatric column.\n\nFrom four years up, 5 is localises to stimuli and 4 is withdraws to stimuli — no separate 'to touch' wording, but the infant column explicitly allows touch withdrawal at 5.",
+      "complexity": 2,
+      "importance": 2,
+      "variantGroup": null,
+      "variantIndex": null,
+      "reference": null
+    },
+    {
       "id": "cohort:paeds:c-286ebf8c3ebd:v1",
       "origin": "mdx:4fc43a993d4905b796d4989c93903b17",
       "discipline": "paeds",
@@ -534,23 +579,19 @@
       "reference": null
     },
     {
-      "id": "cohort:paeds:c-2923fa25860f:v1",
-      "origin": "mdx:1bc843738027ef9eccc115782bdd4dde",
+      "id": "cohort:paeds:c-293c0f910b55:v1",
+      "origin": "mdx:8a491fe9b7d44eeb38f69b72e8acea03",
       "discipline": "paeds",
       "cardType": "cloze",
       "sourceComponent": "KeyPoint",
-      "front": "Confidentiality with an adolescent should be explained [___] the consultation begins, not after a disclosure has already been made.",
-      "back": "before",
-      "context": "Say it before they disclose, not after.\n\nA young person who has already told you something and then hears 'actually I have to report that' experiences it as a betrayal, and it is the single fastest way to lose an adolescent's trust.\n\nThe formula is short: everything stays between us, unless I'm worried you or someone else is at serious risk.",
-      "complexity": 1,
+      "front": "A convulsion that has not self-terminated by five minutes is managed as status epilepticus; the first-line drug class is a [___].",
+      "back": "benzodiazepine",
+      "context": "Most seizures self-terminate within 2–3 minutes.\n\nAn ongoing convulsion at five minutes warrants treatment as status epilepticus with a first-line benzodiazepine, such as buccal midazolam; five minutes is not a fixed onset time for neuronal injury.\n\nRepeat the benzodiazepine once before escalating to a second-line agent.",
+      "complexity": 3,
       "importance": 2,
       "variantGroup": null,
       "variantIndex": null,
-      "reference": {
-        "title": "Engaging with and assessing the adolescent patient",
-        "publisher": "The Royal Children's Hospital Melbourne",
-        "url": "https://www.rch.org.au/clinicalguide/guideline_index/Engaging_with_and_assessing_the_adolescent_patient/"
-      }
+      "reference": null
     },
     {
       "id": "cohort:paeds:c-295b76bc46df:v1",
@@ -565,6 +606,21 @@
       "importance": 2,
       "variantGroup": null,
       "variantIndex": null,
+      "reference": null
+    },
+    {
+      "id": "cohort:paeds:c-296563e81876:v1",
+      "origin": "mdx:6da7419cf01b14881a7a570e56427eb1:blank-2",
+      "discipline": "paeds",
+      "cardType": "cloze",
+      "sourceComponent": "KeyPoint",
+      "front": "Untreated Kawasaki disease causes coronary artery aneurysms in ~25% of children; IVIG within [___] days of fever onset reduces this to <5%.",
+      "back": "10",
+      "context": "Kawasaki disease is a medium-vessel vasculitis mainly of children <5 years. RCH diagnosis needs fever ≥4 days (US teaching says 5) plus ≥4 of 5 principal features.\n\nBilateral non-purulent conjunctival injection; polymorphous rash; cervical lymphadenopathy >1.5 cm; strawberry tongue or cracked lips; palmar/plantar erythema or oedema, later periungual desquamation.\n\nThe catastrophic complication is coronary artery aneurysm, in ~25% of untreated children, risking MI, sudden death and chronic coronary disease in adulthood.",
+      "complexity": 2,
+      "importance": 2,
+      "variantGroup": "cohort:paeds:g-cdaf267c62c9",
+      "variantIndex": 2,
       "reference": null
     },
     {
@@ -658,6 +714,36 @@
       "reference": null
     },
     {
+      "id": "cohort:paeds:c-2afca7b23aae:v1",
+      "origin": "mdx:3c7856aea34cb8bcb8c6e9403d849266",
+      "discipline": "paeds",
+      "cardType": "cloze",
+      "sourceComponent": "KeyPoint",
+      "front": "Polyarthralgia is a [___] Jones manifestation in high-risk populations and is not one in low-risk populations — so the same symptom means different things.",
+      "back": "major",
+      "context": "The risk stratification is not a demographic shortcut, and the difference is in the criteria themselves rather than in the clinician's judgement.\n\nPolyarthralgia counts as a MAJOR manifestation in high-risk populations and does NOT in low-risk ones. The fever and inflammatory-marker thresholds also differ between the two.\n\nSo identical joint pain carries real weight in a child from a community with high streptococcal transmission and does not carry it in a low-risk child.",
+      "complexity": 4,
+      "importance": 2,
+      "variantGroup": "cohort:paeds:g-e314c4944f39",
+      "variantIndex": null,
+      "reference": null
+    },
+    {
+      "id": "cohort:paeds:c-2b16df9d58b5:v1",
+      "origin": "mdx:754f5320a46527e8d572bb7f17c46b64",
+      "discipline": "paeds",
+      "cardType": "cloze",
+      "sourceComponent": "KeyPoint",
+      "front": "A child with episodic severe pain and lethargy now has a rigid abdomen and shock despite fluids. The complication that rules out air-enema reduction is [___].",
+      "back": "peritonitis",
+      "context": "A rigid abdomen indicates peritonitis, making insufflation unsafe. Air-enema reduction is for a resuscitated child with a soft abdomen and surgical support available.",
+      "complexity": 4,
+      "importance": 2,
+      "variantGroup": "cohort:paeds:g-f9b359b4e23a",
+      "variantIndex": null,
+      "reference": null
+    },
+    {
       "id": "cohort:paeds:c-2b750eb7d089:v1",
       "origin": "mdx:be6a5f862777fc80237ae1bcc8edfd60",
       "discipline": "paeds",
@@ -707,6 +793,36 @@
       "reference": null
     },
     {
+      "id": "cohort:paeds:c-2bd92abde096:v1",
+      "origin": "mdx:96b1f54fa0b951c1865cc6083b76779b",
+      "discipline": "paeds",
+      "cardType": "cloze",
+      "sourceComponent": "KeyPoint",
+      "front": "In a child with subglottic swelling, the narrowest fixed complete airway ring is the [___].",
+      "back": "cricoid",
+      "context": "The cricoid is the narrowest non-distensible complete ring and a fixed subglottic site. Modern measurements may find the glottic opening narrower transversely.",
+      "complexity": 2,
+      "importance": 2,
+      "variantGroup": "cohort:paeds:g-bd9bca9f39d5",
+      "variantIndex": null,
+      "reference": null
+    },
+    {
+      "id": "cohort:paeds:c-2be665bac53c:v1",
+      "origin": "mdx:26aa516fd4da0039bca6bdb87223f7b4",
+      "discipline": "paeds",
+      "cardType": "cloze",
+      "sourceComponent": "KeyPoint",
+      "front": "Compared with girls, boys with central precocious puberty are more likely to have an underlying [___].",
+      "back": "CNS lesion",
+      "context": "The aetiology of central precocious puberty differs by sex. In girls it is usually idiopathic; in boys an organic central nervous system lesion is more often found.",
+      "complexity": 2,
+      "importance": 2,
+      "variantGroup": null,
+      "variantIndex": null,
+      "reference": null
+    },
+    {
       "id": "cohort:paeds:c-2c00bf120477:v1",
       "origin": "mdx:b774a29114aad09b85ab90ed6a4a48cf:blank-1",
       "discipline": "paeds",
@@ -734,6 +850,21 @@
       "importance": 2,
       "variantGroup": null,
       "variantIndex": null,
+      "reference": null
+    },
+    {
+      "id": "cohort:paeds:c-2c246f0cbade:v1",
+      "origin": "mdx:e5338acedde76176d9b23817aa9ecff8:blank-0",
+      "discipline": "paeds",
+      "cardType": "cloze",
+      "sourceComponent": "KeyPoint",
+      "front": "A 10-day-old has bilateral mucopurulent eye discharge and lid swelling with no skin vesicles. Onset in the [___]-day window makes chlamydia the likely organism — treatment must be systemic, not topical drops, and include both parents.",
+      "back": "5-14",
+      "context": "Timing plus discharge character narrow the organism. Profuse pus in the first days is gonococcus; vesicles with watery discharge suggest herpes.\n\nMucopurulent discharge from late in the first week fits the third vertical agent.\n\nDrops cannot clear the nasopharynx, which the same organism colonises. Hence systemic therapy, plus treatment of the parents' genital infection.",
+      "complexity": 3,
+      "importance": 2,
+      "variantGroup": "cohort:paeds:g-9544a9e74d3c",
+      "variantIndex": 0,
       "reference": null
     },
     {
@@ -899,21 +1030,6 @@
       "importance": 2,
       "variantGroup": "cohort:paeds:g-76efb7183a5a",
       "variantIndex": 2,
-      "reference": null
-    },
-    {
-      "id": "cohort:paeds:c-2e10c3b6afa3:v1",
-      "origin": "mdx:6c0b5340635631219f2afd3b168ba061",
-      "discipline": "paeds",
-      "cardType": "cloze",
-      "sourceComponent": "KeyPoint",
-      "front": "Direct questions about suicide do [___] increase suicide risk; asking shows you take distress seriously and opens dialogue.",
-      "back": "not",
-      "context": "The myth that asking about suicide 'plants the idea' is wrong. Cochrane evidence confirms direct questioning does NOT increase suicide risk — it may reduce it by signalling that you take the distress seriously.\n\nAsk in stepwise escalation: mood → 'life not worth living' → 'thought about ending your life' → plan → access to means. Document verbatim.",
-      "complexity": 2,
-      "importance": 2,
-      "variantGroup": null,
-      "variantIndex": null,
       "reference": null
     },
     {

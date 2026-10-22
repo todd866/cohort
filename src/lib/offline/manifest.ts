@@ -2,7 +2,8 @@ import {
   detectInstitutionFromHostname,
   SUPPORTS_PERSONAL_BRIEF,
 } from '@/lib/institution';
-import { MD3_ICON_BACKGROUND } from '@/lib/brand/md3-mark';
+import { MD3_ICON_BACKGROUND, MD3_ICON_VERSION } from '@/lib/brand/md3-mark';
+import { COHORT_ICON_BACKGROUND, COHORT_ICON_VERSION } from '@/lib/brand/cohort-mark';
 
 export interface ManifestIcon {
   src: string;
@@ -41,12 +42,13 @@ export interface WebManifest {
 export function buildWebManifest(host: string): WebManifest {
   const isCohort = detectInstitutionFromHostname(host) === 'usmle';
   const slug = isCohort ? 'cohort' : 'md3';
+  const version = `?v=${isCohort ? COHORT_ICON_VERSION : MD3_ICON_VERSION}`;
 
   const icons: ManifestIcon[] = [
-    { src: `/icons/${slug}-192.png`, sizes: '192x192', type: 'image/png', purpose: 'any' },
-    { src: `/icons/${slug}-512.png`, sizes: '512x512', type: 'image/png', purpose: 'any' },
+    { src: `/icons/${slug}-192.png${version}`, sizes: '192x192', type: 'image/png', purpose: 'any' },
+    { src: `/icons/${slug}-512.png${version}`, sizes: '512x512', type: 'image/png', purpose: 'any' },
     {
-      src: `/icons/${slug}-maskable-512.png`,
+      src: `/icons/${slug}-maskable-512.png${version}`,
       sizes: '512x512',
       type: 'image/png',
       purpose: 'maskable',
@@ -54,8 +56,8 @@ export function buildWebManifest(host: string): WebManifest {
   ];
 
   return {
-    name: isCohort ? 'cohort.md' : 'MD3',
-    short_name: isCohort ? 'cohort.md' : 'MD3',
+    name: isCohort ? 'cohort.md' : 'md3',
+    short_name: isCohort ? 'cohort.md' : 'md3',
     description: isCohort
       ? 'Free USMLE Step 1 prep — spaced repetition and clinical vignettes'
       : 'Clinical learning platform for medical students',
@@ -66,7 +68,7 @@ export function buildWebManifest(host: string): WebManifest {
     display: 'standalone',
     orientation: 'portrait',
     background_color: '#ffffff',
-    theme_color: isCohort ? '#6366f1' : MD3_ICON_BACKGROUND,
+    theme_color: isCohort ? COHORT_ICON_BACKGROUND : MD3_ICON_BACKGROUND,
     icons,
     // The brief is a single-user surface that only exists on the md3 host.
     // Points at the real route, not the /brief redirect that replaced it: an

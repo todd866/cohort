@@ -35,6 +35,21 @@
       "reference": null
     },
     {
+      "id": "cohort:paeds:c-505e48845b30:v1",
+      "origin": "mdx:51dce31b0a89a859b95bd9c9009fc33b",
+      "discipline": "paeds",
+      "cardType": "cloze",
+      "sourceComponent": "KeyPoint",
+      "front": "IM adrenaline for anaphylaxis (child or adult) is the [___] ratio strength.",
+      "back": "1:1000",
+      "context": "This concentration rule is the same for children and adults (ASCIA / ALS): IM anaphylaxis uses 1:1000 (1 mg/mL); the dilute 1:10,000 (0.1 mg/mL) is the IV arrest strength.\n\nMixing them up is a classic, dangerous error. Paediatric dosing is weight-based (0.01 mg/kg, max 0.5 mg); adults usually get 0.5 mg IM.",
+      "complexity": 1,
+      "importance": 2,
+      "variantGroup": null,
+      "variantIndex": null,
+      "reference": null
+    },
+    {
       "id": "cohort:paeds:c-5069dda5a03a:v1",
       "origin": "mdx:c941ab7121bc856d8f644a028fd6e450",
       "discipline": "paeds",
@@ -157,6 +172,21 @@
         "publisher": "The Royal Children's Hospital Melbourne",
         "url": "https://www.rch.org.au/clinicalguide/guideline_index/Slow_weight_gain/"
       }
+    },
+    {
+      "id": "cohort:paeds:c-521d57e1e113:v1",
+      "origin": "mdx:b362e2662c6be249c584df7da9a6f0b0",
+      "discipline": "paeds",
+      "cardType": "cloze",
+      "sourceComponent": "KeyPoint",
+      "front": "Inflammatory adhesions sticking the iris to the lens, distorting the pupil in JIA uveitis, are posterior [___].",
+      "back": "synechiae",
+      "context": "Posterior synechiae are inflammatory adhesions between iris and lens; they distort the pupil and prevent even dilation.\n\nJIA-associated anterior uveitis is often painless and white-eyed, so scheduled slit-lamp screening is essential even when joints are quiet.\n\nYoung age, oligoarticular disease and ANA positivity increase eye risk. Missed disease can cause cataract, glaucoma and permanent visual loss.",
+      "complexity": 4,
+      "importance": 2,
+      "variantGroup": null,
+      "variantIndex": null,
+      "reference": null
     },
     {
       "id": "cohort:paeds:c-52d93c9ec49f:v1",
@@ -354,6 +384,21 @@
       "reference": null
     },
     {
+      "id": "cohort:paeds:c-563f310b6c75:v1",
+      "origin": "mdx:6da7419cf01b14881a7a570e56427eb1:blank-0",
+      "discipline": "paeds",
+      "cardType": "cloze",
+      "sourceComponent": "KeyPoint",
+      "front": "Untreated Kawasaki disease causes [___] artery aneurysms in ~25% of children; IVIG within 10 days of fever onset reduces this to <5%.",
+      "back": "coronary",
+      "context": "Kawasaki disease is a medium-vessel vasculitis mainly of children <5 years. RCH diagnosis needs fever ≥4 days (US teaching says 5) plus ≥4 of 5 principal features.\n\nBilateral non-purulent conjunctival injection; polymorphous rash; cervical lymphadenopathy >1.5 cm; strawberry tongue or cracked lips; palmar/plantar erythema or oedema, later periungual desquamation.\n\nThe catastrophic complication is coronary artery aneurysm, in ~25% of untreated children, risking MI, sudden death and chronic coronary disease in adulthood.",
+      "complexity": 2,
+      "importance": 2,
+      "variantGroup": "cohort:paeds:g-cdaf267c62c9",
+      "variantIndex": 0,
+      "reference": null
+    },
+    {
       "id": "cohort:paeds:c-563fcf381c55:v1",
       "origin": "mdx:f14049ea5d19c06839d38a837b71b51b:blank-1",
       "discipline": "paeds",
@@ -369,21 +414,6 @@
       "reference": null
     },
     {
-      "id": "cohort:paeds:c-5663bc6403e1:v1",
-      "origin": "mdx:ffdb2aa10f1bec5079957c76c79ff0fd:blank-0",
-      "discipline": "paeds",
-      "cardType": "cloze",
-      "sourceComponent": "KeyPoint",
-      "front": "ADING separates [___], which is what the child takes in, from growth, which is the plotted trajectory that results.",
-      "back": "nutrition",
-      "context": "Nutrition and growth are deliberately separate letters, because they answer different questions. Nutrition is what goes in — breast or formula, volumes, solids, appetite, food refusal.\n\n Growth is the plotted result over time.\n\nA growth chart cannot tell you about intake, and a feeding history cannot tell you whether the child is thriving, so a history that collapses the two loses the link between them.",
-      "complexity": 1,
-      "importance": 2,
-      "variantGroup": "cohort:paeds:g-12b4cee48493",
-      "variantIndex": 0,
-      "reference": null
-    },
-    {
       "id": "cohort:paeds:c-566aca72fe08:v1",
       "origin": "mdx:53b654a81727188d4c62d3d4a7e9ba20",
       "discipline": "paeds",
@@ -396,6 +426,21 @@
       "importance": 2,
       "variantGroup": null,
       "variantIndex": null,
+      "reference": null
+    },
+    {
+      "id": "cohort:paeds:c-56b42c2b2335:v1",
+      "origin": "mdx:52e0571ec473ac4a5bee3e9565a1e66d:blank-2",
+      "discipline": "paeds",
+      "cardType": "cloze",
+      "sourceComponent": "KeyPoint",
+      "front": "Bronchiolitis O₂ threshold (PREDICT): SpO₂ ≥90% if ≥6 wk without an underlying condition; ≥92% if <6 wk or <12 mo with one. Hydration at [___] maintenance.",
+      "back": "2/3",
+      "context": "PREDICT 2025 stratifies the SpO2 target by age and risk; RCH (≥90%) and eTG (≥92%) each flatten one end of that spectrum. BIDS still applies: do not chase 95–100%.\n\nRoute before volume: NG feeds are first-line once work of breathing defeats feeding. IV is for the infant too tachypnoeic, unstable or distended for NG, at about two-thirds maintenance.\n\nHypoxia, hyperinflation and raised intrathoracic pressure drive non-osmotic ADH. Full-rate hypotonic fluid causes dilutional hyponatraemia and seizures; give isotonic 0.9% saline with glucose and check sodium.",
+      "complexity": 2,
+      "importance": 2,
+      "variantGroup": "cohort:paeds:g-c9daeceedcbc",
+      "variantIndex": 2,
       "reference": null
     },
     {
@@ -444,21 +489,6 @@
       "reference": null
     },
     {
-      "id": "cohort:paeds:c-580e691d22c8:v1",
-      "origin": "mdx:bd1d8217113cfdbd6552564f8a2d1e5c:blank-1",
-      "discipline": "paeds",
-      "cardType": "cloze",
-      "sourceComponent": "KeyPoint",
-      "front": "Cyanotic newborn not improving with oxygen (suspected duct-dependent CHD): start prostaglandin E1 (alprostadil) infusion to maintain ductal [___] while awaiting echo.",
-      "back": "patency",
-      "context": "Duct-dependent CHD relies on a patent ductus arteriosus for either pulmonary flow (pulmonary/tricuspid atresia, severe pulmonary stenosis) or systemic flow (HLHS, critical aortic stenosis, coarctation).\n\nThe duct normally closes in the first days of life — exactly when these babies crash. Empirical PGE1 (alprostadil 0.01-0.05 µg/kg/min IV) keeps it open by relaxing ductal smooth muscle.\n\nGive it to any cyanotic or collapsed neonate with duct-dependent CHD on the differential, even before echo. An unnecessary start is low-cost (apnoea, fever, hypotension); NOT starting risks a dead infant.",
-      "complexity": 2,
-      "importance": 2,
-      "variantGroup": "cohort:paeds:g-cf6b0e8b381b",
-      "variantIndex": 1,
-      "reference": null
-    },
-    {
       "id": "cohort:paeds:c-58558c1cdbdf:v1",
       "origin": "mdx:c463251a4fafdfa447ffd7715bda9784:blank-1",
       "discipline": "paeds",
@@ -487,6 +517,40 @@
       "variantGroup": null,
       "variantIndex": null,
       "reference": null
+    },
+    {
+      "id": "cohort:paeds:c-5917256c6260:v1",
+      "origin": "mdx:6c0e6db63c47dd2c180148328a3754d7",
+      "discipline": "paeds",
+      "cardType": "cloze",
+      "sourceComponent": "KeyPoint",
+      "front": "[___] on AXR is the hallmark radiological finding of necrotising enterocolitis (NEC) in preterm neonates.",
+      "back": "Pneumatosis intestinalis",
+      "context": "Ischaemic injury to the bowel mucosa allows gas-producing bacteria to enter the bowel wall, where the gas dissects between layers and shows up on AXR as linear or bubbly lucencies hugging the bowel contour.\n\nProgression markers: portal venous gas (branching lucencies overlying the liver) indicates severe systemic dissemination, and free intraperitoneal air signals perforation requiring urgent surgery.",
+      "complexity": 2,
+      "importance": 2,
+      "variantGroup": null,
+      "variantIndex": null,
+      "reference": null
+    },
+    {
+      "id": "cohort:paeds:c-5950f6ba9c57:v1",
+      "origin": "mdx:843fa2c7258991b100b27e6f6d863dd2",
+      "discipline": "paeds",
+      "cardType": "cloze",
+      "sourceComponent": "KeyPoint",
+      "front": "The primary survey addresses immediately life-threatening injuries; the [___] survey is the detailed examination once the child is stable.",
+      "back": "secondary",
+      "context": "Primary survey is a rapid, repeatable sequence for immediately life-threatening problems — Airway, Breathing, Circulation, Disability, Exposure — with intervention at each step before moving on.\n\nIn paediatric trauma it runs in parallel with warming, cervical spine protection and a brief mechanism/time handover; the point is speed and fixation of killers, not a complete inventory.\n\nSecondary survey is the detailed head-to-toe examination and history once the child is stable enough — do not let it interrupt unfinished primary problems.",
+      "complexity": 1,
+      "importance": 2,
+      "variantGroup": null,
+      "variantIndex": null,
+      "reference": {
+        "title": "Trauma – secondary survey",
+        "publisher": "The Royal Children's Hospital Melbourne",
+        "url": "https://www.rch.org.au/clinicalguide/guideline_index/Major_paediatric_trauma_the_secondary_survey/"
+      }
     },
     {
       "id": "cohort:paeds:c-59b60fa2b337:v1",
@@ -564,6 +628,21 @@
       "reference": null
     },
     {
+      "id": "cohort:paeds:c-5b28afdd86b9:v1",
+      "origin": "mdx:bffe519e3008e43de767c749b667add1",
+      "discipline": "paeds",
+      "cardType": "cloze",
+      "sourceComponent": "KeyPoint",
+      "front": "In septic shock persisting after 40 mL/kg of 0.9% sodium chloride, RCH starts a vasoactive infusion of [___], which can run peripherally or IO.",
+      "back": "adrenaline",
+      "context": "RCH gives adrenaline 0.05-0.2 mcg/kg/min for circulatory failure persisting after 40 mL/kg, and seeks PICU input meanwhile.\n\nRCH reads an initial lactate above 3 mmol/L as poor tissue perfusion; its target after resuscitation is under 2 mmol/L. Restoring perfusion fixes the acidosis; bicarbonate is not in the pathway.",
+      "complexity": 2,
+      "importance": 2,
+      "variantGroup": null,
+      "variantIndex": null,
+      "reference": null
+    },
+    {
       "id": "cohort:paeds:c-5b9b9c4b920d:v1",
       "origin": "mdx:788aa27438ce0845f9129938fb735c04:blank-1",
       "discipline": "paeds",
@@ -624,15 +703,15 @@
       "reference": null
     },
     {
-      "id": "cohort:paeds:c-5be5a0d36dc4:v1",
-      "origin": "mdx:3fa0a0f7b798010a2cf1a46cafe73f70",
+      "id": "cohort:paeds:c-5bde5a550b79:v1",
+      "origin": "mdx:aa2ca32b5ec9f5a3ed473520610bb3f2",
       "discipline": "paeds",
       "cardType": "cloze",
       "sourceComponent": "KeyPoint",
-      "front": "Beyond renal disease, a serious GI complication of HSP is [___] — a small-bowel telescoping causing severe colicky abdominal pain.",
-      "back": "intussusception",
-      "context": "HSP intussusception is typically ileo-ileal (small-bowel), unlike the classic ileocolic intussusception of infancy, so it can be missed on the usual ultrasound windows.\n\nSuspect it when a child with HSP develops severe colicky abdominal pain.",
-      "complexity": 1,
+      "front": "A frontal film shows a hazy veil over the left hemithorax, a blurred left heart border and an elevated left hilum. The collapsed lobe is the left [___] lobe.",
+      "back": "upper",
+      "context": "The left upper lobe collapses forwards against the anterior chest wall, so the frontal film shows a hazy veil over the left hemithorax rather than a sharp wedge.\n\nThe left heart border is blurred, the left hilum is pulled up, and the over-expanded lower lobe may outline the aortic arch as a lucent crescent.",
+      "complexity": 3,
       "importance": 2,
       "variantGroup": null,
       "variantIndex": null,
@@ -663,6 +742,21 @@
       "back": "congenital scoliosis",
       "context": "A vertebra that fails to form or to separate on one side in early fetal life makes the two sides of the spine grow unequally. An unsegmented bar is the other classic lesion.\n\nA one-sided bar opposite a hemivertebra progresses fastest, while balanced anomalies, such as hemivertebrae on opposite sides, may barely progress.\n\nHeart and kidney anomalies often travel with it, so the doctor making the diagnosis screens both systems, including a renal ultrasound.",
       "complexity": 1,
+      "importance": 2,
+      "variantGroup": null,
+      "variantIndex": null,
+      "reference": null
+    },
+    {
+      "id": "cohort:paeds:c-5d23cec42ece:v1",
+      "origin": "mdx:c78d6a77f9f7171a2b393f9cf9578479",
+      "discipline": "paeds",
+      "cardType": "cloze",
+      "sourceComponent": "KeyPoint",
+      "front": "A 9-month-old has a white pupil reflex in one eye on photographs. Treat that eye as [___] until an ophthalmologist clears it.",
+      "back": "retinoblastoma",
+      "context": "A white pupil reflex in a photo is not a trick of the light.\n\nOne eye doing it is retinoblastoma until an ophthalmologist excludes it on dilated examination; imaging does not make the diagnosis, and cataract or Coats disease can also cause it.\n\nSend the child to ophthalmology this week. Do not wait for the next routine check.",
+      "complexity": 4,
       "importance": 2,
       "variantGroup": null,
       "variantIndex": null,
@@ -711,21 +805,6 @@
       "importance": 2,
       "variantGroup": null,
       "variantIndex": null,
-      "reference": null
-    },
-    {
-      "id": "cohort:paeds:c-5dd113ddec4e:v1",
-      "origin": "mdx:6326865e9e0b383b16ba48dc72bada10:blank-1",
-      "discipline": "paeds",
-      "cardType": "cloze",
-      "sourceComponent": "KeyPoint",
-      "front": "A large pleural effusion displaces the mediastinum away from the effusion, but associated pulmonary [___] may cancel the shift.",
-      "back": "collapse",
-      "context": "Mediastinal shift is the sign that tells you how much fluid there is — unless collapse cancels it out.\n\nA large effusion pushes the trachea and mediastinum to the opposite side. Where there is associated pulmonary collapse pulling the other way, there may be no shift at all.",
-      "complexity": 2,
-      "importance": 2,
-      "variantGroup": "cohort:paeds:g-93d6162fb9ec",
-      "variantIndex": 1,
       "reference": null
     },
     {
@@ -801,21 +880,6 @@
       "importance": 2,
       "variantGroup": "cohort:paeds:g-d365fc9c151e",
       "variantIndex": 0,
-      "reference": null
-    },
-    {
-      "id": "cohort:paeds:c-5e7f68648ff5:v1",
-      "origin": "mdx:fbc3005c7e42c8643e6966635976161d",
-      "discipline": "paeds",
-      "cardType": "cloze",
-      "sourceComponent": "KeyPoint",
-      "front": "The bacterial cause of tonsillitis predicted by the Centor criteria is group A [___].",
-      "back": "streptococcus",
-      "context": "Most sore throats in young children are viral. The bacterial cause worth treating is group A strep, which the Centor criteria (fever, tonsillar exudate, tender anterior nodes, no cough) help predict before antibiotics.",
-      "complexity": 1,
-      "importance": 2,
-      "variantGroup": null,
-      "variantIndex": null,
       "reference": null
     },
     {

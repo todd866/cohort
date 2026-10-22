@@ -2,15 +2,24 @@
 import Link from 'next/link';
 import type { ComponentType, MouseEvent as ReactMouseEvent, ReactNode } from 'react';
 import { MD3_MARK_DIGITS, MD3_MARK_LETTERS } from '@/lib/brand/md3-mark';
+import { COHORT_MARK_DOT, COHORT_MARK_LETTER } from '@/lib/brand/cohort-mark';
 
 type Icon = ComponentType<{ className?: string }>;
 
 function BrandMark({ text }: { text: string }) {
   const year = /^M([123])$/.exec(text)?.[1] as keyof typeof MD3_MARK_DIGITS | undefined;
-  return <div aria-hidden="true" className="w-10 h-10 rounded-xl bg-[var(--md-primary)] text-[var(--md-on-primary)] flex items-center justify-center">
+  if (text === 'C') {
+    return <div aria-hidden="true" className="w-10 h-10 rounded-xl bg-[var(--md-cohort-tile)] flex items-center justify-center">
+      <svg viewBox="0 0 48 48" className="h-10 w-10" focusable="false">
+        <path d={COHORT_MARK_LETTER} fill="var(--md-cohort-on-tile)" />
+        <path d={COHORT_MARK_DOT} fill="var(--md-cohort-accent)" />
+      </svg>
+    </div>;
+  }
+  return <div aria-hidden="true" className="w-10 h-10 rounded-xl bg-[var(--md-brand-tile)] text-[var(--md-brand-on-tile)] flex items-center justify-center">
     {year ? <svg viewBox="0 0 48 48" className="h-10 w-10" fill="currentColor" focusable="false">
       <path d={MD3_MARK_LETTERS} />
-      <path d={MD3_MARK_DIGITS[year]} />
+      <path d={MD3_MARK_DIGITS[year]} fill="var(--md-brand-accent)" />
     </svg> : <span className="font-bold text-lg">{text}</span>}
   </div>;
 }

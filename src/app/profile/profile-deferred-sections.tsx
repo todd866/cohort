@@ -1,4 +1,4 @@
-import { loadTopicHeatmap } from '@/lib/knowledge/topic-heat.server';
+import { loadTopicHeatmapForRequest } from './topic-heat-for-request';
 import { loadReviewCalendar } from '@/lib/knowledge/review-calendar.server';
 import { loadLeaderboard } from '@/lib/leaderboard/leaderboard.server';
 import { TopicHeatmap } from '@/components/profile/TopicHeatmap';
@@ -39,9 +39,9 @@ import {
 const COULD_NOT_LOAD = "Couldn't load";
 
 export async function ProfileReviewCalendarSection(
-  { userId, rotations }: { userId: string; rotations: string[] },
+  { userId, rotations, track = null }: { userId: string; rotations: string[]; track?: number | null },
 ) {
-  const calendar = await loadReviewCalendar(userId, rotations).then(
+  const calendar = await loadReviewCalendar(userId, rotations, new Date(), { track }).then(
     (value) => ({ value, failed: false }),
     () => ({ value: null, failed: true }),
   );
@@ -69,7 +69,7 @@ export async function ProfileReviewCalendarSection(
 }
 
 export async function ProfileTopicHeatmapSection({ userId }: { userId: string }) {
-  const topicHeat = await loadTopicHeatmap(userId).then(
+  const topicHeat = await loadTopicHeatmapForRequest(userId).then(
     (value) => ({ value, failed: false }),
     () => ({ value: null, failed: true }),
   );

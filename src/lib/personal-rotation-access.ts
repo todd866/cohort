@@ -1,6 +1,8 @@
 import { prisma } from '@/lib/prisma';
 import { personalDeckSlugs } from '@/lib/personal-decks';
 import {
+  personalDeckGrantHash,
+  personalDeckLearnerGrantHashes,
   personalDeckOwnerEmails,
   personalDeckSharedAccessTier,
 } from '@/lib/personal-deck-owners.server';
@@ -14,6 +16,7 @@ const PERSONAL_ROTATIONS = new Set<string>(personalDeckSlugs());
 // Kept in the server-only owner registry so neither client bundles nor a
 // client-writable User.activeModules value can grant or disclose access.
 const OWNER_EMAILS: Record<string, ReadonlySet<string>> = personalDeckOwnerEmails();
+const LEARNER_GRANTS: Record<string, ReadonlySet<string>> = personalDeckLearnerGrantHashes();
 
 export function isPersonalRotation(rotation: string): rotation is PersonalRotationId {
   return PERSONAL_ROTATIONS.has(rotation);
@@ -44,6 +47,11 @@ export function viewerCanAccessPersonalRotation(
     return normalized.length > 0 && owners.has(normalized);
   });
   if (isOwner) return true;
+  const grants = LEARNER_GRANTS[rotation];
+  if (grants?.size && viewer.emails.some((email) =>
+    normalizeEmail(email).length > 0 && grants.has(personalDeckGrantHash(email)))) {
+    return true;
+  }
   const sharedTier = personalDeckSharedAccessTier(rotation);
   if (sharedTier === 'signed-in') {
     return viewer.emails.some((email) => normalizeEmail(email).length > 0);

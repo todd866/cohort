@@ -6,17 +6,20 @@ import {
   type PersonalRotationViewer,
 } from '@/lib/personal-rotation-access';
 import { ROTATION_LABELS, rotationLabel } from '@/lib/rotation-labels';
-import { getActiveRotations, type TrackNumber } from '@/lib/rotation-context';
+import { getCurrentBlockIndex, scheduledRotationPhase, TRACKS, type TrackNumber } from '@/lib/rotation-context';
 import { orderFocusOptions } from '@/lib/study/focus-option-order';
 import { inPlayStudyRotations } from '@/lib/study/in-play-rotations';
 import { USMLE_STEP1_OPEN_ROTATION } from '@/lib/usmle/raw-question-boundary';
 import { reviewMenuRotations, type ReviewMenuChoice } from '@/lib/study/review-menu';
+import { isMd1Program, MD1_DECK } from '@/lib/md1-program';
 
 export interface ReviewMenuViewer {
   email: string | null;
   imageTier: string | null | undefined;
   activeModules: readonly string[];
   track: number | null;
+  /** User.institution. 'usyd-md1' swaps the Year 3 calendar for the first-year default. */
+  institution?: string | null;
   /** False means the shared default. True means reviewMenuModules is the shortlist. */
   reviewMenuCustomized: boolean;
   reviewMenuModules: readonly string[];
@@ -29,9 +32,33 @@ function viewerOf(user: ReviewMenuViewer): PersonalRotationViewer {
   };
 }
 
-export function calendarRotation(track: number | null): string | null {
+export function calendarRotation(track: number | null, now: Date = new Date()): string | null {
   if (!Number.isInteger(track) || track == null || track < 1 || track > 4) return null;
-  return getActiveRotations(track as TrackNumber)[0] ?? null;
+  return TRACKS[track as TrackNumber][getCurrentBlockIndex(now)] ?? null;
+}
+
+const EARLY_YEAR_DECK = /^year[12]-/;
+
+/** First- and second-year decks belong in the menus of MD1 and MD2 learners only. */
+function inEarlyYears(institution: string | null | undefined): boolean {
+  return institution === 'usyd-md1' || institution === 'usyd-md2';
+}
+
+/**
+ * Read-time block rollover for a saved menu, 2026-10-22. A shortlist saved
+ * during CAH still listed CAH a block later, and first-year KAT decks lingered
+ * in Year 3 menus. Stored preferences are not rewritten: the menu drops a
+ * rotation the learner's stream has finished, and the catalogue (choices)
+ * keeps it listed and unticked, so a past block stays one tap away.
+ */
+export function relevantMenuSlugs(
+  slugs: readonly string[],
+  viewer: { track: number | null; institution?: string | null },
+  now: Date = new Date(),
+): string[] {
+  const early = inEarlyYears(viewer.institution);
+  return slugs.filter((slug) => (early || !EARLY_YEAR_DECK.test(slug))
+    && scheduledRotationPhase(slug, viewer.track, now) !== 'past');
 }
 
 /** Studyable rotations this viewer may open. Personal decks stay owner-gated. */
@@ -49,17 +76,22 @@ export function authorizedStudyRotations(user: ReviewMenuViewer): string[] {
   return rotations;
 }
 
-export function buildReviewMenu(user: ReviewMenuViewer): {
+export function buildReviewMenu(user: ReviewMenuViewer, now: Date = new Date()): {
   menu: string[];
   choices: ReviewMenuChoice[];
 } {
-  const calendar = calendarRotation(user.track);
-  const authorized = authorizedStudyRotations(user);
+  const md1 = isMd1Program(user.institution);
+  // A first-year has no Year 3 block, whatever track the chooser left behind.
+  const calendar = md1 ? null : calendarRotation(user.track, now);
+  const early = inEarlyYears(user.institution);
+  const authorized = authorizedStudyRotations(user).filter((slug) => early || !EARLY_YEAR_DECK.test(slug));
   const menu = reviewMenuRotations({
     authorized,
     calendarRotation: calendar,
-    saved: user.reviewMenuCustomized ? user.reviewMenuModules : null,
+    saved: user.reviewMenuCustomized ? relevantMenuSlugs(user.reviewMenuModules, user, now) : null,
+    program: md1 ? 'md1' : null,
   });
+  const pinned = md1 ? (menu.includes(MD1_DECK) ? MD1_DECK : null) : calendar;
   // The booked block is usually authorized already; listing it twice showed
   // two pinned rows for one block.
   const catalog = orderFocusOptions([
@@ -69,7 +101,7 @@ export function buildReviewMenu(user: ReviewMenuViewer): {
   const choices = catalog.map((slug) => ({
     slug,
     label: rotationLabel(slug),
-    pinned: slug === calendar,
+    pinned: slug === pinned,
     checked: selected.has(slug),
   }));
   return { menu, choices };

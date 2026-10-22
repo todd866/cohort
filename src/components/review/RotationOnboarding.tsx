@@ -58,7 +58,7 @@ export function RotationOnboarding({ rotations, onDone, onSkip, current, renderH
   const [aiOpened, setAiOpened] = useState(false);
   const [aiVisible, setAiVisible] = useState(false);
   const aiButton = useRef<HTMLButtonElement>(null);
-  const aiDraft = `Help me choose where to start in MD3. Ask about my course, exam and date, and what I find difficult. The quick choices here are ${rotations.map(rotation => FULL_NAMES[rotation] ?? rotationLabel(rotation)).join(', ')}. Recommend a suitable choice if one fits; otherwise tell me to use Something else. I will select the rotation myself to start Review.`;
+  const aiDraft = `Help me choose where to start in md3. Ask about my course, exam and date, and what I find difficult. The quick choices here are ${rotations.map(rotation => FULL_NAMES[rotation] ?? rotationLabel(rotation)).join(', ')}. Recommend a suitable choice if one fits; otherwise tell me to use Something else. I will select the rotation myself to start Review.`;
 
 
   // Whoever is not on the list still has to land somewhere, so "something else"

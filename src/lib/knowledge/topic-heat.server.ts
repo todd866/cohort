@@ -24,8 +24,8 @@
 
 import { prisma } from '@/lib/prisma';
 import { logger } from '@/lib/logger';
+import { getProgressRotation } from './progress-rotation.server';
 import {
-  getCurrentRotation,
   getExamDateForUser,
   getRotation,
   isSelfPacedExamDate,
@@ -69,6 +69,11 @@ export interface TopicHeatmap {
   rotationLabel: string;
   /** Days to the exam the map is aiming at. Drives how harshly staleness reads. */
   horizonDays: number;
+  /**
+   * False when no exam date is on file and horizonDays is the default horizon,
+   * so nothing downstream reads it as a countdown. Absent means dated.
+   */
+  examDated?: boolean;
   squares: TopicSquare[];
 }
 
@@ -178,14 +183,24 @@ async function loadHorizonDays(
   rotation: string,
   now: Date,
 ): Promise<number> {
+  return (await loadHorizon(userId, rotation, now)).days;
+}
+
+/** The horizon, and whether it is a real exam date rather than the default. */
+async function loadHorizon(
+  userId: string,
+  rotation: string,
+  now: Date,
+): Promise<{ days: number; dated: boolean }> {
+  const fallback = { days: DEFAULT_HORIZON_DAYS, dated: false };
   try {
     const examDate = await getExamDateForUser(rotation, userId);
-    if (!examDate || isSelfPacedExamDate(examDate)) return DEFAULT_HORIZON_DAYS;
+    if (!examDate || isSelfPacedExamDate(examDate)) return fallback;
     const days = (examDate.getTime() - now.getTime()) / DAY_MS;
     // A past exam stops tightening the grid to nothing; the learner has moved on.
-    return days > 0 ? days : DEFAULT_HORIZON_DAYS;
+    return days > 0 ? { days, dated: true } : fallback;
   } catch {
-    return DEFAULT_HORIZON_DAYS;
+    return fallback;
   }
 }
 
@@ -379,10 +394,11 @@ export async function loadTopicHeatmap(
   now: Date = new Date(),
 ): Promise<TopicHeatmap | null> {
   try {
-    const rotation = await getCurrentRotation(userId);
+    const rotation = await getProgressRotation(userId);
     if (!rotation) return null;
 
-    const horizonDays = await loadHorizonDays(userId, rotation, now);
+    const horizon = await loadHorizon(userId, rotation, now);
+    const horizonDays = horizon.days;
     const [rows, trend, memberTopics] = await Promise.all([
       loadClusterRows(userId, rotation, now, horizonDays),
       // Best-effort: losing the trend costs a sparkline, never the grid.
@@ -401,6 +417,7 @@ export async function loadTopicHeatmap(
         : null,
       rotationLabel: getRotation(rotation)?.shortName ?? rotation,
       horizonDays,
+      examDated: horizon.dated,
       squares,
     };
   } catch (error) {

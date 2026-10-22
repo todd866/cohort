@@ -118,9 +118,6 @@ export function ReadinessTrend({
         <circle cx={x(lastMs)} cy={y(last.ready)} r={2.25} fill="var(--md-heat-4)" />
       </svg>
 
-      {sentence && (
-        <p className="mt-1 text-xs text-[var(--md-on-surface-variant)]">{sentence}</p>
-      )}
     </div>
   );
 }

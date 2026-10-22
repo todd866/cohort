@@ -5,6 +5,36 @@
   "attribution": "MD3 contributors",
   "cards": [
     {
+      "id": "cohort:paeds:c-c05f54a6a2a4:v1",
+      "origin": "mdx:1467f82a2f40afa94ce98a137e7539c0",
+      "discipline": "paeds",
+      "cardType": "cloze",
+      "sourceComponent": "KeyPoint",
+      "front": "A prolonged aPTT in haemophilia [___] on mixing with normal plasma, unlike an inhibitor.",
+      "back": "corrects",
+      "context": "Both haemophilias sit in the INTRINSIC pathway, which aPTT measures. PT/INR tests the extrinsic pathway and is untouched.\n\nSo the coagulation screen shows an isolated prolonged aPTT — and because the defect is a factor rather than an inhibitor, it CORRECTS on mixing with normal plasma.\n\nA prolonged aPTT that fails to correct points at an inhibitor, such as antiphospholipid antibody, instead.",
+      "complexity": 3,
+      "importance": 2,
+      "variantGroup": "cohort:paeds:g-64b1e3601842",
+      "variantIndex": null,
+      "reference": null
+    },
+    {
+      "id": "cohort:paeds:c-c097b3c6190f:v1",
+      "origin": "mdx:76da786e8939d6668104956f78df9bd7",
+      "discipline": "paeds",
+      "cardType": "cloze",
+      "sourceComponent": "KeyPoint",
+      "front": "A well child with a runny nose is due MMR today. The cold is not a reason to [___] the vaccine.",
+      "back": "delay",
+      "context": "A runny nose in an otherwise well child is not a reason to move a live vaccine to next year.\n\nDelay is for a significant fever or a real contraindication. A missed visit is how measles immunity slips.",
+      "complexity": 4,
+      "importance": 2,
+      "variantGroup": null,
+      "variantIndex": null,
+      "reference": null
+    },
+    {
       "id": "cohort:paeds:c-c0b0135fdee6:v1",
       "origin": "mdx:c3f7ddb4ef29194d2de50e6f7a2db336",
       "discipline": "paeds",
@@ -18,25 +48,6 @@
       "variantGroup": "cohort:paeds:g-fea0830f309e",
       "variantIndex": null,
       "reference": null
-    },
-    {
-      "id": "cohort:paeds:c-c0b2676a88de:v1",
-      "origin": "mdx:2673e965e3c5cc72c70e62220ccc8ab2",
-      "discipline": "paeds",
-      "cardType": "cloze",
-      "sourceComponent": "KeyPoint",
-      "front": "The neonatal infusion that maintains ductal patency in duct-dependent congenital heart disease is [___] E1.",
-      "back": "prostaglandin",
-      "context": "In duct-dependent CHD, closing the duct collapses systemic or pulmonary flow. Keep it open pharmacologically until definitive surgery.",
-      "complexity": 1,
-      "importance": 2,
-      "variantGroup": null,
-      "variantIndex": null,
-      "reference": {
-        "title": "Stabilisation for retrieval – neonatal",
-        "publisher": "Queensland Clinical Guidelines",
-        "url": "https://www.health.qld.gov.au/__data/assets/pdf_file/0017/144026/g-stabil.pdf"
-      }
     },
     {
       "id": "cohort:paeds:c-c0ba15d72eec:v1",
@@ -325,6 +336,36 @@
       "reference": null
     },
     {
+      "id": "cohort:paeds:c-c4c2921ee107:v1",
+      "origin": "mdx:956c4358a2fcd8d69f5c85320d9c234a",
+      "discipline": "paeds",
+      "cardType": "cloze",
+      "sourceComponent": "KeyPoint",
+      "front": "On a growth chart, short stature means height below the [___] centile for age and sex.",
+      "back": "3rd",
+      "context": "Short stature is not a single diagnosis — it is a pattern on the growth chart.\n\nPlot height for age and sex, then read the centile band. A child plainly below the normal range on the chart is short; Victoria at 105 cm at 7 years sits under the 3rd centile line visually.\n\nThe first move is always the chart plus a careful history and examination, not a formula or velocity calculation.",
+      "complexity": 1,
+      "importance": 2,
+      "variantGroup": null,
+      "variantIndex": null,
+      "reference": null
+    },
+    {
+      "id": "cohort:paeds:c-c538b3fc5e0f:v1",
+      "origin": "mdx:33ba12f8f3b4162f4336ed29b0566c54",
+      "discipline": "paeds",
+      "cardType": "cloze",
+      "sourceComponent": "KeyPoint",
+      "front": "After a correction bolus, ketones may keep rising for [___] hours before falling, which is expected rather than treatment failure.",
+      "back": "1-2",
+      "context": "Two ketone trajectories look identical for the first hour and mean opposite things. Expected: after a correction bolus, ketones may RISE for one to two hours and then fall.\n\nThat is the insulin working: fat breakdown stops, but circulating ketones take time to clear. Re-dosing here stacks insulin.\n\nKetones still climbing after that window, especially above 1.5, despite extra boluses, mean the home plan has failed and need urgent review. The first recheck does not tell you it worked; the second does.",
+      "complexity": 3,
+      "importance": 2,
+      "variantGroup": null,
+      "variantIndex": null,
+      "reference": null
+    },
+    {
       "id": "cohort:paeds:c-c53930d6654a:v1",
       "origin": "mdx:efda419c1e00c4d605b7b228dd2ce96a",
       "discipline": "paeds",
@@ -333,6 +374,21 @@
       "front": "Joint inflammation in a child under 16 with no other cause must last at least [___] to define juvenile idiopathic arthritis.",
       "back": "6 weeks",
       "context": "The 6-week threshold is the whole point — it separates chronic JIA from the far commoner transient/post-infectious arthritis that resolves on its own. Onset must be before the 16th birthday.",
+      "complexity": 1,
+      "importance": 2,
+      "variantGroup": null,
+      "variantIndex": null,
+      "reference": null
+    },
+    {
+      "id": "cohort:paeds:c-c5781085a60d:v1",
+      "origin": "mdx:403c9b94179c34a38cfbb21c9abe8948",
+      "discipline": "paeds",
+      "cardType": "cloze",
+      "sourceComponent": "KeyPoint",
+      "front": "In ALL, reduced red-cell production causes [___], producing pallor and fatigue.",
+      "back": "anaemia",
+      "context": "Every presenting feature traces back to blast cells crowding out normal marrow: loss of red-cell production causes anaemia (pallor, fatigue).\n\nLoss of platelets causes thrombocytopaenia (bruising, petechiae), and marrow expansion causes bone pain.\n\nHepatosplenomegaly and lymphadenopathy reflect leukaemic infiltration of those organs. Peak age 2-5 years; ~85-90% cured with 2-year multi-phase chemo.",
       "complexity": 1,
       "importance": 2,
       "variantGroup": null,
@@ -400,6 +456,21 @@
       "reference": null
     },
     {
+      "id": "cohort:paeds:c-c6d99b5fbafa:v1",
+      "origin": "mdx:e9f998fe7ec6789ac34c3345733475ff:blank-1",
+      "discipline": "paeds",
+      "cardType": "cloze",
+      "sourceComponent": "KeyPoint",
+      "front": "Two serious complications of osteomyelitis are spread to the adjacent joint causing septic arthritis, and unequal limb lengths from growth-plate damage, termed [___].",
+      "back": "limb-length discrepancy",
+      "context": "Untreated or chronic osteomyelitis spreads to the neighbouring joint and damages the adjacent growth plate, so a delayed presentation risks both an infected joint and a future limb-length problem.",
+      "complexity": 1,
+      "importance": 2,
+      "variantGroup": "cohort:paeds:g-fd8005ab697a",
+      "variantIndex": 1,
+      "reference": null
+    },
+    {
       "id": "cohort:paeds:c-c712f9c92b3d:v1",
       "origin": "mdx:0417fcbf4328bba0a9dc2163b63c41e8:blank-1",
       "discipline": "paeds",
@@ -426,6 +497,21 @@
       "complexity": 3,
       "importance": 2,
       "variantGroup": "cohort:paeds:g-1d0ed364d771",
+      "variantIndex": 0,
+      "reference": null
+    },
+    {
+      "id": "cohort:paeds:c-c760098ad979:v1",
+      "origin": "mdx:12c791a26d5a7017a964822cb48c91ef:blank-0",
+      "discipline": "paeds",
+      "cardType": "cloze",
+      "sourceComponent": "KeyPoint",
+      "front": "To achieve a neutral airway in an infant, place a folded towel under the [___] — the large occiput otherwise flexes the neck and obstructs the airway.",
+      "back": "shoulders",
+      "context": "An infant's occiput is proportionally huge: lying flat, it flexes the neck and closes the airway you are trying to open.\n\nA folded towel under the SHOULDERS — not the head — restores the neutral position. In an older child the target is the sniffing position instead.\n\nSuction only what you can see, with a light: blind suction provokes laryngospasm and bradycardia.",
+      "complexity": 2,
+      "importance": 2,
+      "variantGroup": "cohort:paeds:g-cbe470cf6b3d",
       "variantIndex": 0,
       "reference": null
     },
@@ -475,21 +561,6 @@
       "reference": null
     },
     {
-      "id": "cohort:paeds:c-c94a5e18a074:v1",
-      "origin": "mdx:9b81cf02f36fa6c63acfdc0a6dbc4614",
-      "discipline": "paeds",
-      "cardType": "cloze",
-      "sourceComponent": "KeyPoint",
-      "front": "In the paediatric ADING history, the 'A' prompts the [___] history — pregnancy, birth and the perinatal period.",
-      "back": "antenatal",
-      "context": "This is the domain with no adult equivalent, which is why it is the one most often forgotten.\n\nIt covers the pregnancy (maternal illness, medications, exposures, screening), the birth (gestation, mode, birth weight), and the perinatal period (resuscitation, nursery, jaundice, feeding).",
-      "complexity": 1,
-      "importance": 2,
-      "variantGroup": null,
-      "variantIndex": null,
-      "reference": null
-    },
-    {
       "id": "cohort:paeds:c-c98077976bb8:v1",
       "origin": "mdx:c66f739d8ca13b32b1807da6a556e95e",
       "discipline": "paeds",
@@ -518,25 +589,6 @@
       "variantGroup": "cohort:paeds:g-c8bcff0a2f0b",
       "variantIndex": 0,
       "reference": null
-    },
-    {
-      "id": "cohort:paeds:c-c9b062e19073:v1",
-      "origin": "mdx:838b55523089249fa4e33b726dfbd3f4",
-      "discipline": "paeds",
-      "cardType": "cloze",
-      "sourceComponent": "KeyPoint",
-      "front": "A ventilated neonate suddenly becomes hypoxic and hypotensive with unilateral absent air entry. The immediate decompression is [___].",
-      "back": "needle aspiration",
-      "context": "In a ventilated neonate, sudden hypoxia, falling air entry and cardiovascular compromise indicate a tension air leak. Mechanical ventilation can worsen the pressure, so this is a neonatal emergency.\n\nQueensland neonatal retrieval guidance calls for urgent needle aspiration when pneumothorax causes significant respiratory or cardiopulmonary compromise, followed by definitive drainage planning.",
-      "complexity": 3,
-      "importance": 3,
-      "variantGroup": "cohort:paeds:g-a25c247bda71",
-      "variantIndex": null,
-      "reference": {
-        "title": "Stabilisation for retrieval – neonatal",
-        "publisher": "Queensland Clinical Guidelines",
-        "url": "https://www.health.qld.gov.au/__data/assets/pdf_file/0017/144026/g-stabil.pdf"
-      }
     },
     {
       "id": "cohort:paeds:c-c9c1b20c18d4:v1",
@@ -618,21 +670,6 @@
       "reference": null
     },
     {
-      "id": "cohort:paeds:c-ca312d30a675:v1",
-      "origin": "mdx:510beb04c42bc71af048aba36cd2b95f:blank-0",
-      "discipline": "paeds",
-      "cardType": "cloze",
-      "sourceComponent": "KeyPoint",
-      "front": "Obtain appropriate [___] before antibiotics when this causes no treatment delay; in critical infection, give empiric therapy promptly.",
-      "back": "cultures",
-      "context": "Obtain appropriate cultures before the first dose when this can be done promptly, because antibiotics reduce culture yield and the result enables narrowing.\n\nIn sepsis, meningitis or another time-critical infection, sampling must not become a reason to delay empiric treatment.",
-      "complexity": 2,
-      "importance": 3,
-      "variantGroup": "cohort:paeds:g-a304a60b9998",
-      "variantIndex": 0,
-      "reference": null
-    },
-    {
       "id": "cohort:paeds:c-caa2f032cf3b:v1",
       "origin": "mdx:74e9388da734ad22f8e9eafd23808c49:blank-1",
       "discipline": "paeds",
@@ -657,6 +694,21 @@
       "back": "orthopaedic referral",
       "context": "The Cobb angle sets the threshold: a curve over 20 degrees goes to a specialist, while a smaller curve in a growing child is re-examined and re-imaged.\n\nThe orthopaedic surgeon then weighs curve size against remaining growth to choose observation, bracing or surgery. Before menarche she is near peak growth, when curves progress fastest.\n\nReassurance alone is the trap, and MRI is reserved for red flags such as pain, a left thoracic curve or abnormal neurology.",
       "complexity": 4,
+      "importance": 2,
+      "variantGroup": null,
+      "variantIndex": null,
+      "reference": null
+    },
+    {
+      "id": "cohort:paeds:c-cb24d4ce251f:v1",
+      "origin": "mdx:9cebe102313f86f45b2d00fe39d4bc9e",
+      "discipline": "paeds",
+      "cardType": "cloze",
+      "sourceComponent": "KeyPoint",
+      "front": "In a child with chronic haemolysis, parvovirus B19 causes an [___] by halting red cell production.",
+      "back": "aplastic crisis",
+      "context": "The rash itself is harmless; this is when parvovirus IS a problem. B19 infects red cell precursors and briefly shuts down red cell production. A healthy child does not notice, as red cells outlive the pause.\n\nIn CHRONIC HAEMOLYTIC ANAEMIA (sickle cell disease, hereditary spherocytosis, thalassaemia), red cells are short-lived with no reserve.\n\nThe same pause makes haemoglobin fall abruptly: an aplastic crisis, with pallor, lethargy and a LOW reticulocyte count despite severe anaemia.",
+      "complexity": 3,
       "importance": 2,
       "variantGroup": null,
       "variantIndex": null,
@@ -712,6 +764,21 @@
       }
     },
     {
+      "id": "cohort:paeds:c-ccb2b27d6f02:v1",
+      "origin": "mdx:3c249273c1c03a3f608d272a7624d1e7:blank-1",
+      "discipline": "paeds",
+      "cardType": "cloze",
+      "sourceComponent": "KeyPoint",
+      "front": "Two healthcare rescuers doing paediatric CPR use a ratio of 15:2, compressing one-[___] of chest depth at 100-120/min.",
+      "back": "third",
+      "context": "Healthcare-rescuer paediatric ratio is 15:2, not the adult 30:2. Depth one-third of the chest, rate 100-120.\n\nInfant: two thumbs, hands encircling. Small child: heel of one hand.",
+      "complexity": 2,
+      "importance": 2,
+      "variantGroup": "cohort:paeds:g-8376747469c0",
+      "variantIndex": 1,
+      "reference": null
+    },
+    {
       "id": "cohort:paeds:c-ccc426b90618:v1",
       "origin": "mdx:0b87f86b1f1324a2d36f9e656430b270",
       "discipline": "paeds",
@@ -757,14 +824,29 @@
       "reference": null
     },
     {
-      "id": "cohort:paeds:c-cef57fcacf1f:v1",
-      "origin": "mdx:db44808d57bdd230e230c9a66a4d3101",
+      "id": "cohort:paeds:c-cf0e0160188c:v1",
+      "origin": "mdx:6a3aa0de702cdda2ff02504ff8a3f173",
       "discipline": "paeds",
       "cardType": "cloze",
       "sourceComponent": "KeyPoint",
-      "front": "Compared with adults, [___] lymphoblastic leukaemia is much more characteristic of childhood cancer epidemiology.",
-      "back": "acute",
-      "context": "Adult cancers are mostly carcinomas. Childhood cancers are mostly leukaemias and embryonal tumours — ALL is the commonest paediatric malignancy and far more childhood-characteristic than adult.",
+      "front": "A 2-year-old in septic shock remains poorly perfused after 40 mL/kg of 0.9% saline, and now has hepatomegaly and crackles. The next step is starting [___] rather than a further bolus.",
+      "back": "inotropes",
+      "context": "Shock that persists after 40 mL/kg is fluid-refractory. New hepatomegaly and crackles say the circulation is now overloaded, and another bolus worsens it.\n\nThe inotrope is adrenaline for cold shock (mottled, weak pulses), run dilute through a peripheral line until central access is in.\n\nNoradrenaline is the choice for warm shock with bounding pulses and a low diastolic pressure. Antibiotics should already be running.",
+      "complexity": 4,
+      "importance": 3,
+      "variantGroup": "cohort:paeds:g-4e652686ab05",
+      "variantIndex": null,
+      "reference": null
+    },
+    {
+      "id": "cohort:paeds:c-cf8a3e2c9f0a:v1",
+      "origin": "mdx:15dcd47bbac5ca7e7eea5075d784eb53",
+      "discipline": "paeds",
+      "cardType": "cloze",
+      "sourceComponent": "KeyPoint",
+      "front": "The confirmatory diagnostic test for cystic fibrosis is the [___].",
+      "back": "sweat test",
+      "context": "Quantitative pilocarpine sweat testing measures chloride. In a person with compatible features, a result ≥60 mmol/L supports CF; intermediate results need repeat or further testing. Newborn screening is not diagnostic.",
       "complexity": 1,
       "importance": 2,
       "variantGroup": null,

@@ -20,6 +20,21 @@
       "reference": null
     },
     {
+      "id": "cohort:paeds:c-606519885af5:v1",
+      "origin": "mdx:8d2bac647bd2597411e00c56cf1c9ecc",
+      "discipline": "paeds",
+      "cardType": "cloze",
+      "sourceComponent": "KeyPoint",
+      "front": "After newborn compressions, the heart rate rises to 80 per minute but the baby remains apnoeic. The respiratory support still required is [___].",
+      "back": "positive-pressure ventilation",
+      "context": "Once the heart rate rises above 60 per minute, stop compressions and continue ventilation while breathing is inadequate or the heart rate remains below 100 per minute.\n\nThe heart rate response determines the next step, not the clock alone.",
+      "complexity": 3,
+      "importance": 2,
+      "variantGroup": null,
+      "variantIndex": null,
+      "reference": null
+    },
+    {
       "id": "cohort:paeds:c-606e69e31ff1:v1",
       "origin": "mdx:16dce7e4d0192f538b2c64c28b095a9a:blank-1",
       "discipline": "paeds",
@@ -50,21 +65,6 @@
       "reference": null
     },
     {
-      "id": "cohort:paeds:c-61b6a83b1590:v1",
-      "origin": "mdx:c9ca02714b5db29f5a37b639bf3772ff:blank-1",
-      "discipline": "paeds",
-      "cardType": "cloze",
-      "sourceComponent": "KeyPoint",
-      "front": "A positive HBsAg (a surface antigen) means current Hepatitis B infection, whereas a positive [___] (a surface antibody) means immunity from vaccination or cleared infection.",
-      "back": "anti-HBs",
-      "context": "Read the three Hep B markers as a story, not a list. 'B surface ANTIGEN' is a piece of the virus itself, so finding it means the virus is currently in the body (current infection).\n\n'Surface ANTIBODY' (anti-HBs) is the body's protective response — present after vaccination or after clearing the infection, so it means immunity.\n\nThe third marker, anti-HBc (core antibody), means the person has at some point been exposed to the real virus — it is positive in current and past natural infection, but NOT after vaccination.",
-      "complexity": 1,
-      "importance": 2,
-      "variantGroup": "cohort:paeds:g-285b5d2e2512",
-      "variantIndex": 1,
-      "reference": null
-    },
-    {
       "id": "cohort:paeds:c-61dbbd93c1fb:v1",
       "origin": "mdx:1cd4049400d941b887d5b8ded0f93b93",
       "discipline": "paeds",
@@ -74,6 +74,21 @@
       "back": "calcification",
       "context": "The neural-crest tumour outgrows its blood supply and necroses, and necrotic tumour mineralises — visible on CT in most cases. Wilms', a renal-parenchyma tumour, only rarely mineralises.\n\nThe company each mass keeps differs too: neuroblastoma children are often unwell (fevers, weight loss, limp from marrow spread; median ~18 months), while Wilms' children are classically well (peak 3-4 years).",
       "complexity": 1,
+      "importance": 2,
+      "variantGroup": null,
+      "variantIndex": null,
+      "reference": null
+    },
+    {
+      "id": "cohort:paeds:c-61fc6d14bf86:v1",
+      "origin": "mdx:f6c2f5d5665a1458e141fdb71513f666",
+      "discipline": "paeds",
+      "cardType": "cloze",
+      "sourceComponent": "KeyPoint",
+      "front": "Mid-parental target height for a boy adds [___] cm to the sum of parental heights before halving.",
+      "back": "13",
+      "context": "The boy formula mirrors the girl rule with the opposite sign on the same 13 cm adjustment.\n\nBoy: (mother + father + 13) ÷ 2.\n\nTrap: using the girl formula for a boy (or forgetting the adjustment entirely) misclassifies familial short stature and sends you down the wrong investigation list.",
+      "complexity": 2,
       "importance": 2,
       "variantGroup": null,
       "variantIndex": null,
@@ -189,6 +204,25 @@
       "reference": null
     },
     {
+      "id": "cohort:paeds:c-63d08185a42c:v1",
+      "origin": "mdx:7524ca3d30ba1acdc2499ffdbfec8ba1",
+      "discipline": "paeds",
+      "cardType": "cloze",
+      "sourceComponent": "KeyPoint",
+      "front": "Epiglottitis became rare in children after routine [___] immunisation.",
+      "back": "Hib",
+      "context": "Routine Hib immunisation removed Haemophilus influenzae type b as a cause of epiglottitis and meningitis in vaccinated children.\n\nThat is why epiglottitis is now rare, and why an unimmunised child changes the differential entirely.\n\nNon-typeable strains persist and cause otitis media and exacerbations, but those are not the invasive disease the vaccine targets.",
+      "complexity": 3,
+      "importance": 2,
+      "variantGroup": "cohort:paeds:g-f54f3d7fae5e",
+      "variantIndex": null,
+      "reference": {
+        "title": "Haemophilus influenzae type b (Hib)",
+        "publisher": "Australian Immunisation Handbook",
+        "url": "https://immunisationhandbook.health.gov.au/contents/vaccine-preventable-diseases/haemophilus-influenzae-type-b-hib"
+      }
+    },
+    {
       "id": "cohort:paeds:c-63d512ffe924:v1",
       "origin": "mdx:90f59c28a90f7aded48fbb758265012b",
       "discipline": "paeds",
@@ -263,7 +297,7 @@
       "context": "Fever, tonsillar exudate and tender anterior nodes can occur in viral illness too. The Centor discriminator that argues against a simple viral URI is the absence of cough.",
       "complexity": 1,
       "importance": 2,
-      "variantGroup": "cohort:paeds:g-5e7f68648ff5",
+      "variantGroup": "cohort:paeds:g-bafe3aeaf7f0",
       "variantIndex": null,
       "reference": null
     },
@@ -295,21 +329,6 @@
       "importance": 2,
       "variantGroup": "cohort:paeds:g-3ffce8d0cfb4",
       "variantIndex": 0,
-      "reference": null
-    },
-    {
-      "id": "cohort:paeds:c-646efcc131c1:v1",
-      "origin": "mdx:a3ab41d339baf11b4ec90c0ef7737a34:blank-1",
-      "discipline": "paeds",
-      "cardType": "cloze",
-      "sourceComponent": "KeyPoint",
-      "front": "Reticulocytes index marrow output: a high count points to blood loss or haemolysis (cells made fine but destroyed), whereas a low count points to a marrow [___] problem.",
-      "back": "production",
-      "context": "Reticulocytes are immature red cells just released from marrow, so their count is a live readout of marrow output. This is the single best bedside split of the anaemia differential.\n\nHigh count = marrow is working, so red cells are being lost or destroyed faster than made (bleeding, haemolysis). Low/normal count = the marrow itself is the bottleneck (deficiency, suppression, infiltration).",
-      "complexity": 1,
-      "importance": 2,
-      "variantGroup": "cohort:paeds:g-9dc7eff00ffc",
-      "variantIndex": 1,
       "reference": null
     },
     {
@@ -373,15 +392,15 @@
       "reference": null
     },
     {
-      "id": "cohort:paeds:c-64fe91aae54e:v1",
-      "origin": "mdx:b01730dd55a0c4f8d11208e70b4f09b1",
+      "id": "cohort:paeds:c-64f1a29ac701:v1",
+      "origin": "mdx:4f8894301ec301ae425d3fc542d1a01c",
       "discipline": "paeds",
       "cardType": "cloze",
       "sourceComponent": "KeyPoint",
-      "front": "Faltering [___] is a central complication of chronic liver disease in children and should be tracked at every visit.",
-      "back": "growth",
-      "context": "Chronic liver disease is a growth disease in paediatrics. The liver handles protein synthesis, energy metabolism, and bile-dependent fat absorption — all impaired as disease progresses.\n\nFaltering growth is often the metric parents notice first, and it predicts outcome independently of the liver biochemistry. Every clinic visit should plot height and weight on age-appropriate charts.",
-      "complexity": 1,
+      "front": "A newborn's heart rate remains below 60 per minute after 30 seconds of effective ventilation with visible chest movement. Add [___].",
+      "back": "chest compressions",
+      "context": "ANZCOR recommends chest compressions when the heart rate remains below 60 per minute after at least 30 seconds of effective ventilation.\n\nCorrect mask seal, airway position and chest movement before escalating to compressions.",
+      "complexity": 3,
       "importance": 2,
       "variantGroup": null,
       "variantIndex": null,
@@ -418,21 +437,6 @@
       "reference": null
     },
     {
-      "id": "cohort:paeds:c-66accd259c02:v1",
-      "origin": "mdx:22a09a919aa21bed325847c2ef868897",
-      "discipline": "paeds",
-      "cardType": "cloze",
-      "sourceComponent": "KeyPoint",
-      "front": "Pleural air between the mediastinum and lung gives an unusually crisp mediastinal outline on a neonatal film — the etched [___] border sign.",
-      "back": "heart",
-      "context": "Neonatal pneumothorax does not look like the adult version, and this named sign is why it gets missed.\n\nPleural air interposed between the mediastinum and lung outlines the mediastinal border unusually crisply. Recognising an over-sharp cardiac border on a sick ventilated neonate is often the only clue.",
-      "complexity": 2,
-      "importance": 2,
-      "variantGroup": null,
-      "variantIndex": null,
-      "reference": null
-    },
-    {
       "id": "cohort:paeds:c-66d60d691903:v1",
       "origin": "mdx:dfbe899af86842817c17508c9c55f690:blank-1",
       "discipline": "paeds",
@@ -445,6 +449,21 @@
       "importance": 2,
       "variantGroup": "cohort:paeds:g-4253cf2cd6b6",
       "variantIndex": 1,
+      "reference": null
+    },
+    {
+      "id": "cohort:paeds:c-67e60a005150:v1",
+      "origin": "mdx:ec0961a18cc4e9b8a88c575ee44579a4",
+      "discipline": "paeds",
+      "cardType": "cloze",
+      "sourceComponent": "KeyPoint",
+      "front": "Excision of a thyroglossal cyst must include the central [___], or the cyst recurs.",
+      "back": "hyoid",
+      "context": "A midline neck lump that rises on tongue protrusion is a tract from the tongue base, not a lymph node to watch.\n\nRemoving the lump alone leaves the tract. The centre of the bone it hooks around has to go with it, or the cyst returns.",
+      "complexity": 4,
+      "importance": 2,
+      "variantGroup": null,
+      "variantIndex": null,
       "reference": null
     },
     {
@@ -527,21 +546,6 @@
       "reference": null
     },
     {
-      "id": "cohort:paeds:c-69dc122b6059:v1",
-      "origin": "mdx:7c666d74afe0f4596fbfa47e929123f5",
-      "discipline": "paeds",
-      "cardType": "cloze",
-      "sourceComponent": "KeyPoint",
-      "front": "At the routine 6-month NIP visit a healthy non-Indigenous infant receives only the [___] DTPa-hepB-IPV-Hib vaccine.",
-      "back": "hexavalent",
-      "context": "The 6-month visit is the one people pad. For a healthy non-Indigenous infant the NIP gives only the hexavalent DTPa-hepB-IPV-Hib.\n\nPneumococcal conjugate at this age is an extra dose for Aboriginal and Torres Strait Islander children and for children with specified medical-risk conditions — not a routine extra in 'some states'.",
-      "complexity": 1,
-      "importance": 2,
-      "variantGroup": null,
-      "variantIndex": null,
-      "reference": null
-    },
-    {
       "id": "cohort:paeds:c-69f2ed5819f2:v1",
       "origin": "mdx:dba7c2fe2381389c42947be571c8e8a2:blank-1",
       "discipline": "paeds",
@@ -557,18 +561,18 @@
       "reference": null
     },
     {
-      "id": "cohort:paeds:c-6a726b966da1:v1",
-      "origin": "mdx:f7a7ea5a5f555e7dc745b8a4f3c6bafa:blank-1",
+      "id": "cohort:paeds:c-6a965b97f4c0:v1",
+      "origin": "mdx:d3c733c7de817f4265efb36d20f06322",
       "discipline": "paeds",
       "cardType": "cloze",
       "sourceComponent": "KeyPoint",
-      "front": "Primary haemostasis (platelet plug, mucocutaneous bleeding) is mediated by platelets and vWF; secondary haemostasis (deep bleeding) is mediated by [___].",
-      "back": "coagulation factors",
-      "context": "Primary haemostasis: platelets + vWF form the initial platelet plug at sites of vascular injury.\n\nSecondary haemostasis: coagulation factor cascade generates fibrin thrombus stabilising the clot.\n\nDefects cause deep bleeding (joints, muscles, post-surgical) — haemophilia A/B, factor deficiencies, anticoagulation.",
-      "complexity": 1,
+      "front": "Morning headache, vomiting, ataxia and a head tilt in a child suggest a tumour in the [___].",
+      "back": "posterior fossa",
+      "context": "Childhood brain tumours are often infratentorial. Posterior fossa disease can cause morning headache, vomiting, ataxia or a head tilt through cerebellar or fourth-ventricle effects.",
+      "complexity": 2,
       "importance": 2,
-      "variantGroup": "cohort:paeds:g-d5b5d348df6d",
-      "variantIndex": 1,
+      "variantGroup": null,
+      "variantIndex": null,
       "reference": null
     },
     {
@@ -583,21 +587,6 @@
       "complexity": 2,
       "importance": 3,
       "variantGroup": "cohort:paeds:g-47ef2c7e6091",
-      "variantIndex": 0,
-      "reference": null
-    },
-    {
-      "id": "cohort:paeds:c-6b2bb2a538db:v1",
-      "origin": "mdx:a3ab41d339baf11b4ec90c0ef7737a34:blank-0",
-      "discipline": "paeds",
-      "cardType": "cloze",
-      "sourceComponent": "KeyPoint",
-      "front": "Reticulocytes index marrow output: a high count points to blood loss or [___] (cells made fine but destroyed), whereas a low count points to a marrow production problem.",
-      "back": "haemolysis",
-      "context": "Reticulocytes are immature red cells just released from marrow, so their count is a live readout of marrow output. This is the single best bedside split of the anaemia differential.\n\nHigh count = marrow is working, so red cells are being lost or destroyed faster than made (bleeding, haemolysis). Low/normal count = the marrow itself is the bottleneck (deficiency, suppression, infiltration).",
-      "complexity": 1,
-      "importance": 2,
-      "variantGroup": "cohort:paeds:g-9dc7eff00ffc",
       "variantIndex": 0,
       "reference": null
     },
@@ -707,6 +696,21 @@
       "reference": null
     },
     {
+      "id": "cohort:paeds:c-6d6770d95ab0:v1",
+      "origin": "mdx:bf70dad8fda5837bbf43e28d4d2ca825",
+      "discipline": "paeds",
+      "cardType": "cloze",
+      "sourceComponent": "KeyPoint",
+      "front": "Low- to medium-dose ICS reduce linear growth velocity by a mean of about [___] cm per year, mostly in the first year of treatment.",
+      "back": "0.48",
+      "context": "Parents ask about growth, so know the number. A Cochrane review found low- to medium-dose ICS cut growth velocity by a mean 0.48 cm per year, with 0.61 cm less growth after the first year.\n\nThe effect is dose-dependent and greatest in year one, then velocity returns to normal. One long-term study found mean adult height about 1.2 cm lower after childhood ICS.\n\nPoorly controlled asthma itself suppresses growth, and that is the line that reassures a parent. RCH: measure height and weight at least annually on ICS, ideally every 3 to 6 months.",
+      "complexity": 3,
+      "importance": 2,
+      "variantGroup": null,
+      "variantIndex": null,
+      "reference": null
+    },
+    {
       "id": "cohort:paeds:c-6df29fad908d:v1",
       "origin": "mdx:e6b4e497925358d3e3bcc32d6b39b653",
       "discipline": "paeds",
@@ -752,6 +756,21 @@
       "reference": null
     },
     {
+      "id": "cohort:paeds:c-6e3be8779da0:v1",
+      "origin": "mdx:32f9449fb2b343be0d2883c6225a0bad",
+      "discipline": "paeds",
+      "cardType": "cloze",
+      "sourceComponent": "KeyPoint",
+      "front": "Recurrent hypoglycaemia with vomiting during illness warrants [___] care and diabetes team contact.",
+      "back": "emergency",
+      "context": "After treating hypoglycaemia, reassess blood glucose frequently — vomiting can cause rebound swings. Small, frequent carbohydrate-containing fluids may be needed when solid food is refused.\n\nIf hypoglycaemia recurs or the child cannot keep fluids down, emergency care is appropriate for intravenous glucose and antiemetics while the diabetes team adjusts insulin.\n\nFamilies should have glucagon for severe hypoglycaemia when the child is unconscious or cannot swallow safely; sick days are when it is most often needed.",
+      "complexity": 2,
+      "importance": 2,
+      "variantGroup": null,
+      "variantIndex": null,
+      "reference": null
+    },
+    {
       "id": "cohort:paeds:c-6e57a8c47281:v1",
       "origin": "mdx:2c9785d84816f580dc8c35a6dc4ceb90",
       "discipline": "paeds",
@@ -762,7 +781,22 @@
       "context": "A maculopapular eruption can follow amoxicillin during EBV infection. This alone neither establishes nor excludes antibiotic allergy.\n\nRecord timing and severity and assess through the paediatric antibiotic-allergy pathway before assigning or removing a lasting allergy label.",
       "complexity": 1,
       "importance": 2,
-      "variantGroup": "cohort:paeds:g-488569f7c630",
+      "variantGroup": "cohort:paeds:g-ce1afbbd9cf2",
+      "variantIndex": null,
+      "reference": null
+    },
+    {
+      "id": "cohort:paeds:c-6e8470fa705d:v1",
+      "origin": "mdx:21d850af994ceed16e9c590a70ccb243",
+      "discipline": "paeds",
+      "cardType": "cloze",
+      "sourceComponent": "KeyPoint",
+      "front": "A school-age child has sleep-onset focal seizures with drooling and speech arrest. The expected EEG shows [___] spikes.",
+      "back": "centrotemporal",
+      "context": "SeLECTS is the commonest focal epilepsy syndrome of childhood. Seizures often arise from sleep and involve the lower face or mouth with drooling or speech arrest.",
+      "complexity": 2,
+      "importance": 2,
+      "variantGroup": "cohort:paeds:g-25d1b86f0413",
       "variantIndex": null,
       "reference": null
     },

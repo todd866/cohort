@@ -84,6 +84,16 @@ video::cue {
   --md-on-surface-variant: #4d5860;
   --md-outline-soft: color-mix(in srgb, var(--md-outline-variant) 68%, transparent);
   --md-review-surface: var(--md-surface-container-lowest);
+  /* Brand tile (logo variant F, 21 Oct 2026): identical in both themes, like
+     the installed-app icon. Mirrors MD3_ICON_* in src/lib/brand/md3-mark.ts. */
+  --md-brand-tile: #1c5888;
+  --md-brand-on-tile: #ffffff;
+  --md-brand-accent: #f0a07a;
+  /* cohort.md's tile, same family. Mirrors COHORT_ICON_* in
+     src/lib/brand/cohort-mark.ts. */
+  --md-cohort-tile: #4f46e5;
+  --md-cohort-on-tile: #ffffff;
+  --md-cohort-accent: #fcd34d;
 
   /* Semantic colors */
   --md-error: #bb3734;
@@ -535,21 +545,36 @@ main:focus-visible {
 /* The prompt leads; the repeated answer rows stay quieter. Scope this to the
    shared review compositor so textbook and timed-paper typography is intact. */
 .review-question-content [data-question-stem] {
-  margin-bottom: 1.5rem;
-  font-size: clamp(1.0625rem, 1rem + 0.3vw, 1.25rem);
-  font-weight: 500;
-  line-height: 1.55;
-  letter-spacing: -0.015em;
+  margin-bottom: 1.25rem;
+  font-size: 1.0625rem;
+  line-height: 1.6;
+  color: var(--md-on-surface);
+}
+
+/* Hierarchy comes from the lead-in, not from a heavier vignette: the case is
+   read once at body weight, the question the learner must answer stands out.
+   Global, so every stem renderer marks its question line the same way. */
+[data-question-lead] {
+  font-weight: 600;
 }
 
 .review-option {
-  border-radius: var(--md-radius-md);
-  line-height: 1.55;
+  border-radius: var(--md-radius-sm);
+  line-height: 1.45;
+  padding: 0.6875rem 0.875rem;
+  gap: 0.75rem;
 }
 
 .review-option-index {
-  border-radius: var(--md-radius-sm);
+  height: 1.5rem;
+  width: 1.5rem;
+  margin-top: 0;
+  border-radius: 6px;
   font-variant-numeric: tabular-nums;
+}
+
+.review-option > span:last-child {
+  padding-top: 0.0625rem;
 }
 
 .review-choice {

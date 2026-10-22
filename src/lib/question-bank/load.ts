@@ -140,6 +140,9 @@ export const ROTATION_DIRS = new Set([
   // The Physical Examination deck's own decision items (C3–C5 and contrast
   // sets), original writing served at the signed-in tier. 2026-09-23.
   'physical-exam',
+  // The first-year KAT4 + MMCA deck's own MCQs (original writing, owner-gated
+  // to its named learners). 2026-10-21.
+  'md1-foundations',
 ]);
 
 /**

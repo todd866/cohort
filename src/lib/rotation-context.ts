@@ -78,7 +78,8 @@ export function getCurrentWeek(): number {
   return 1;
 }
 
-export function getCurrentBlockIndex(): number {
+export function getCurrentBlockIndex(_now: Date = new Date()): number {
+  void _now;
   return 0;
 }
 
@@ -121,4 +122,18 @@ export function courseCalendarDay(now: Date, timeZone: string = COURSE_TIME_ZONE
   }).formatToParts(now);
   const get = (type: string): string => parts.find((part) => part.type === type)?.value ?? '01';
   return new Date(`${get('year')}-${get('month')}-${get('day')}T00:00:00.000Z`);
+}
+
+export type RotationPhase = 'past' | 'current' | 'future';
+
+/** Public build: no institution calendar, so no rotation has a phase. */
+export function scheduledRotationPhase(
+  _rotationId: string,
+  _track: number | null | undefined,
+  _now: Date = new Date(),
+): RotationPhase | null {
+  void _rotationId;
+  void _track;
+  void _now;
+  return null;
 }

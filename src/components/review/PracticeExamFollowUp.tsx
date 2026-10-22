@@ -1,6 +1,7 @@
 'use client';
 
 import { useEffect, useId, useRef, useState } from 'react';
+import { ExamStem } from '@/components/content/ExamStem';
 import type { PracticeReviewMissedQuestion, PracticeReviewProvenance } from '@/lib/study/practice-review-focus';
 
 function stageLabel(stage: PracticeReviewProvenance['stage'], priority: PracticeReviewProvenance['priority']): string {
@@ -80,7 +81,7 @@ export function PracticeExamFollowUp({ provenance, compact = false }: { provenan
               className="mt-2 h-auto max-h-48 w-full rounded-md object-contain"
             />
           )}
-          <p className="mt-2 whitespace-pre-wrap text-sm text-[var(--md-on-surface)]">{missed.stem}</p>
+          <ExamStem stem={missed.stem} className="mt-2 text-sm text-[var(--md-on-surface)]" />
           <ol className="mt-2 space-y-1">
             {missed.options.map((text, index) => {
               const chosen = index === missed.selectedIndex;

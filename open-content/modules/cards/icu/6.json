@@ -35,6 +35,21 @@
       "reference": null
     },
     {
+      "id": "cohort:icu:c-61ee495d4233:v1",
+      "origin": "mdx:11394d650ea6e33e7e96a927ca0a4b1f",
+      "discipline": "icu",
+      "cardType": "cloze",
+      "sourceComponent": "KeyPoint",
+      "front": "A normal aortic valve opens as [___] cusps.",
+      "back": "three",
+      "context": "Count the parts that open in the centre. Fusion of cusps is the common congenital variant. The normal count is what this short-axis view is for.",
+      "complexity": 1,
+      "importance": 2,
+      "variantGroup": null,
+      "variantIndex": null,
+      "reference": null
+    },
+    {
       "id": "cohort:icu:c-622a745287de:v1",
       "origin": "mdx:51f265612aef2ad076c94dcd1ac4981d:blank-2",
       "discipline": "icu",
@@ -365,21 +380,6 @@
       "reference": null
     },
     {
-      "id": "cohort:icu:c-69ebeba3d437:v1",
-      "origin": "mdx:0d8fbcc601ce1f0336967bf36bf18ee8:blank-3",
-      "discipline": "icu",
-      "cardType": "cloze",
-      "sourceComponent": "KeyPoint",
-      "front": "Post-arrest ABG targets? SpO₂: 94–98% (avoid hyperoxia). PaCO₂: 35–45 mmHg (normocapnia). Acidosis: treat the cause, not pH (bicarb only if pH < [___]).",
-      "back": "7.1",
-      "context": "Post-ROSC hyperoxia worsens neurological outcomes via free radical injury. Hypocapnia reduces cerebral perfusion; hypercapnia increases ICP.\n\nBicarbonate generates CO₂ — rarely indicated unless pH below 7.1.",
-      "complexity": 2,
-      "importance": 2,
-      "variantGroup": "cohort:icu:g-07eb13336fa2",
-      "variantIndex": 3,
-      "reference": null
-    },
-    {
       "id": "cohort:icu:c-6b08ff00594d:v1",
       "origin": "mdx:fc3046a979df62eab8416737bd992665",
       "discipline": "icu",
@@ -448,21 +448,6 @@
       "front": "First-line diuretic in acute pulmonary oedema is IV [___] (loop diuretic to reduce preload).",
       "back": "frusemide",
       "context": "The classic bundle for acute pulmonary oedema. Modern practice leans on nitrates, non-invasive ventilation (CPAP) and diuresis; routine morphine is now discouraged as it is linked to worse outcomes.",
-      "complexity": 1,
-      "importance": 2,
-      "variantGroup": null,
-      "variantIndex": null,
-      "reference": null
-    },
-    {
-      "id": "cohort:icu:c-6e488cf6e428:v1",
-      "origin": "mdx:0640dd9877b438004679c966d3e1d680",
-      "discipline": "icu",
-      "cardType": "cloze",
-      "sourceComponent": "KeyPoint",
-      "front": "First-line treatment for eclamptic seizures is magnesium sulphate, given as a [___] slow IV bolus.",
-      "back": "4 g",
-      "context": "Eclamptic seizures have specific management — magnesium sulphate is first-line, NOT benzodiazepines.",
       "complexity": 1,
       "importance": 2,
       "variantGroup": null,

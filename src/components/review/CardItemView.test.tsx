@@ -146,6 +146,15 @@ describe('numbered atlas presentation', () => {
       context: teaching, caption: 'Superior view',
     });
   });
+  it('still presents the numbered target after the atlas instruction left the context', () => {
+    // c975f368a (2026-10-07) stripped the instruction paragraph from every Rohen
+    // context; the presentation must key on the generated front, or the legend
+    // focus and the short prompt silently switch off for 7,000 cards.
+    const teaching = 'Supplies lateral rectus.\\n\\nInjury impairs eye abduction.';
+    expect(numberedAnatomyPresentation(front, teaching, title)).toMatchObject({
+      front: 'Identify structure **7**. [___]', context: teaching, caption: null, targetNumber: '7',
+    });
+  });
   it('does not change other clinical prompts or discard their explanations', () => {
     const other = 'Which cranial nerve is affected? [___]';
     expect(numberedAnatomyPresentation(other, context, title)).toEqual({ front: other, context, caption: title, source: null });

@@ -604,6 +604,23 @@ describe('public navigation and static assets', () => {
       new RegExp(`${release.questionIds.length} original, citation-backed`, 'i'),
     );
     expect(readme).toMatch(new RegExp(`${baseline.questionIds.length} original`, 'i'));
+    // The module rows are counted too, and from the same manifests the seeds read.
+    const moduleQuestions = JSON.parse(
+      artifactText(repoRoot, 'open-content/modules/release-v1.json'),
+    ) as { questionIds: string[] };
+    const moduleCards = JSON.parse(
+      artifactText(repoRoot, 'open-content/modules/cards-release-v1.json'),
+    ) as { cardIds: string[] };
+    const originalQuestions = JSON.parse(
+      artifactText(repoRoot, 'open-content/modules/original-questions-release-v1.json'),
+    ) as { questionIds: string[] };
+    const originalCards = JSON.parse(
+      artifactText(repoRoot, 'open-content/modules/original-card-ids-v1.json'),
+    ) as { ids: string[] };
+    expect(readme).toContain(`| ${moduleQuestions.questionIds.length} guideline-cited items`);
+    expect(readme).toContain(`| ${moduleCards.cardIds.length.toLocaleString('en-US')} cloze cards`);
+    expect(readme).toContain(`| ${originalQuestions.questionIds.length} written for Cohort`);
+    expect(readme).toContain(`${originalCards.ids.length} of them are anatomy cards written for Cohort`);
     expect(readme).toContain('https://cohort.md');
     expect(readme).not.toContain(
       'Current /usmle routes are administrator-gated: set ADMIN_EMAILS',
@@ -718,10 +735,11 @@ describe('public navigation and static assets', () => {
     ]);
     expect(paths.has('src/app/usmle/step1/page.tsx')).toBe(true);
     const referenced = new Set(manifests.flatMap((manifest) => (
-      manifest.icons.map((icon) => icon.src.slice(1))
+      // Strip the cache-busting ?v= that makes installed apps refresh their icon.
+      manifest.icons.map((icon) => icon.src.slice(1).replace(/\?.*$/, ''))
     )));
     const layout = artifactText(repoRoot, 'src/app/layout.tsx');
-    for (const match of layout.matchAll(/["']\/(icons\/[^"']+apple-touch\.png)["']/g)) {
+    for (const match of layout.matchAll(/["'`]\/(icons\/[^"'`?]+apple-touch\.png)(?:\?[^"'`]*)?["'`]/g)) {
       referenced.add(match[1]);
     }
 

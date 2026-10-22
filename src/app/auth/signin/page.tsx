@@ -136,7 +136,7 @@ function SignInContent() {
       <div className="max-w-sm w-full">
         <div className="text-center mb-8">
           <h1 className="text-2xl font-bold text-[var(--md-on-surface)] mb-2">
-            Sign in to MD3
+            Sign in to md3
           </h1>
           <p className="text-[var(--md-on-surface-variant)]">
             Track your progress and sync across devices

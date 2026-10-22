@@ -58,10 +58,10 @@ export const TECH_DECK: { meta: { title: string; subtitle: string }; slides: Dec
       eyebrow: 'cohort.md',
       title: 'Spaced repetition,\nbut on concepts',
       subtitle:
-        'Cohort changes the next question from your answer history. Private MD3 also uses concept embeddings and exam signals.',
+        'Cohort changes the next question from your answer history. Private md3 also uses concept embeddings and exam signals.',
       chips: [
         { text: 'Cohort: difficulty + teaching ladders', accent: 'primary' },
-        { text: 'MD3: 3,072D concept embeddings', accent: 'muted' },
+        { text: 'md3: 3,072D concept embeddings', accent: 'muted' },
         { text: 'Open source', accent: 'muted' },
       ],
     },
@@ -79,7 +79,7 @@ export const TECH_DECK: { meta: { title: string; subtitle: string }; slides: Dec
     {
       id: 'manifold',
       layout: 'steps',
-      eyebrow: 'The private MD3 engine',
+      eyebrow: 'The private md3 engine',
       title: 'Concepts live in one space',
       steps: [
         {
@@ -111,7 +111,7 @@ export const TECH_DECK: { meta: { title: string; subtitle: string }; slides: Dec
       title: 'The centroid gap is designed — and currently inert',
       equation: 'designed gap = exam centroid − learner centroid',
       equationNote:
-        'The code exists, but the production courseware-embedding table is empty, so its ranking boost is zero. Private MD3 currently uses vector neighbourhoods plus blueprint signals; Cohort uses answer history, difficulty and teaching ladders.',
+        'The code exists, but the production courseware-embedding table is empty, so its ranking boost is zero. Private md3 currently uses vector neighbourhoods plus blueprint signals; Cohort uses answer history, difficulty and teaching ladders.',
     },
     {
       id: 'teaching',
@@ -186,7 +186,7 @@ export const TECH_DECK: { meta: { title: string; subtitle: string }; slides: Dec
         'No score prediction. The data would not support one.',
         'Efficacy unproven. Accuracy is tracked over time and reported even when flat.',
         'Few users so far. Treat the numbers as telemetry, not a study.',
-        'Cohort uses a small transparent ranker, not MD3\u2019s private manifold path.',
+        'Cohort uses a small transparent ranker, not md3\u2019s private manifold path.',
       ],
     },
     {

@@ -17,6 +17,7 @@ import { requireAuthOrExistingGuest } from '@/lib/api-utils';
 import { viewerCanAccessPersonalRotation } from '@/lib/personal-rotation-access';
 import { authorizedReviewTopicRotations } from '@/lib/review/review-topic-registry.server';
 import { buildReviewMenu } from '@/lib/study/review-menu.server';
+import { effectiveInstitution } from '@/lib/effective-institution';
 
 function isMd3Hostname(hostname: string): boolean {
   const host = hostname.toLowerCase().split(':')[0];
@@ -68,6 +69,11 @@ export async function GET(request: NextRequest) {
       return NextResponse.json({ error: 'User not found' }, { status: 404 });
     }
 
+    // A registered learner with a Year 3 stream and no institution recorded is
+    // read as usyd (effective-institution.ts); a guest never is.
+    const institution = effectiveInstitution({
+      institution: user.institution, track: user.track, registered: !auth.isGuest,
+    });
     const activeModules = user.activeModules.filter((rotation) =>
       viewerCanAccessPersonalRotation(rotation, {
         emails: [user.email],
@@ -83,12 +89,13 @@ export async function GET(request: NextRequest) {
       imageTier: user.imageTier,
       activeModules,
       track: user.track,
+      institution,
       reviewMenuCustomized: user.reviewMenuCustomized ?? false,
       reviewMenuModules: user.reviewMenuModules ?? [],
     });
 
     return NextResponse.json({
-      institution: user.institution,
+      institution,
       track: user.track,
       enabledModules: user.enabledModules,
       activeModules,

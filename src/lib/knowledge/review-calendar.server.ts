@@ -16,7 +16,7 @@
 import { prisma } from '@/lib/prisma';
 import { logger } from '@/lib/logger';
 import { buildHeatmap, isoDay, REVIEW_EVENT_TYPES, type DayCount, type HeatmapCell } from '@/lib/review-stats';
-import { isSelfPacedExamDate, getRotation } from '@/lib/rotations';
+import { isSelfPacedExamDate, defaultExamDateFor } from '@/lib/rotations';
 import { USYD_MD3_2026 } from '@/lib/curriculum/usyd-md3-2026';
 import {
   assembleExamMarkers,
@@ -57,6 +57,7 @@ async function loadExamMarkers(
   userId: string,
   rotations: readonly string[],
   today: string,
+  track: number | null,
 ): Promise<ExamMarker[]> {
   const [results, overrides] = await Promise.all([
     prisma.examResult.findMany({
@@ -71,7 +72,7 @@ async function loadExamMarkers(
   const overrideByRotation = new Map(overrides.map((r) => [r.rotation, r.examDate]));
   const scheduled = [];
   for (const rotation of rotations) {
-    const examDate = overrideByRotation.get(rotation) ?? getRotation(rotation)?.defaultExamDate ?? null;
+    const examDate = overrideByRotation.get(rotation) ?? defaultExamDateFor(rotation, track);
     if (!examDate || isSelfPacedExamDate(examDate)) continue;
     scheduled.push({ date: isoDay(examDate.getTime()), rotation });
   }
@@ -101,6 +102,8 @@ export async function loadReviewCalendar(
   userId: string,
   rotations: readonly string[],
   now: Date = new Date(),
+  /** The learner's stream, so block defaults are their exams, not Track 3's. */
+  { track = null }: { track?: number | null } = {},
 ): Promise<ReviewCalendar | null> {
   try {
     const today = isoDay(now.getTime());
@@ -118,7 +121,7 @@ export async function loadReviewCalendar(
       GROUP BY 1, 2
       ORDER BY 1
     `,
-      loadExamMarkers(userId, rotations, today),
+      loadExamMarkers(userId, rotations, today, track),
     ]);
     if (rows.length === 0) return null;
 

@@ -9,12 +9,12 @@ export interface Step1MediaSourcePresentation {
 
 const STEP1_MEDIA_SOURCE_PRESENTATION = new Map<string, Step1MediaSourcePresentation>([
   ['https://physionet.org/content/ptb-xl/1.0.3/', {
-    attributionText: 'Wagner et al. via PhysioNet; Lead II excerpt rendered by MD3 contributors — CC BY 4.0',
+    attributionText: 'Wagner et al. via PhysioNet; Lead II excerpt rendered by md3 contributors — CC BY 4.0',
     licenseUrl: 'https://creativecommons.org/licenses/by/4.0/',
     promptSourcePage: true,
   }],
   ['https://physionet.org/content/vtac/1.0/', {
-    attributionText: 'Lehman et al. via PhysioNet; Lead II excerpt rendered by MD3 contributors — CC BY-SA 4.0',
+    attributionText: 'Lehman et al. via PhysioNet; Lead II excerpt rendered by md3 contributors — CC BY-SA 4.0',
     licenseUrl: 'https://creativecommons.org/licenses/by-sa/4.0/',
     promptSourcePage: false,
   }],

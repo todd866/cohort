@@ -108,7 +108,7 @@ export function AppShell({
             prefetch={false}
             className="text-sm text-[var(--md-on-surface-variant)] hover:text-[var(--md-primary)]"
           >
-            Back to MD3
+            Back to md3
           </Link>
         </div>
       </div>

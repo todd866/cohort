@@ -188,6 +188,17 @@ export async function POST(request: NextRequest) {
       select: { track: true, activeModules: true },
     });
 
+    // A registered learner choosing a Year 3 stream is a USyd student: record
+    // it where nothing is recorded, never over an existing institution, never
+    // for a guest. over half of active learners had a stream and no institution on
+    // 2026-10-22, and every USyd gate failed closed on them.
+    if (!auth.isGuest && track !== undefined && track !== null) {
+      await prisma.user.updateMany({
+        where: { id: userId, institution: null },
+        data: { institution: 'usyd' },
+      });
+    }
+
     // Auto-create UserRotation records from block calendar when track is set
     if (track !== undefined && track !== null) {
       const trackRotations = TRACKS[track as TrackNumber];

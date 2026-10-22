@@ -95,21 +95,6 @@
       "reference": null
     },
     {
-      "id": "cohort:paeds:c-a24c5115ea40:v1",
-      "origin": "mdx:5e44e1528a70456f0ba1167b8a9b1cfb:blank-0",
-      "discipline": "paeds",
-      "cardType": "cloze",
-      "sourceComponent": "KeyPoint",
-      "front": "ALL is the commonest childhood malignancy (~80% of paediatric leukaemias); presents with [___], thrombocytopaenia, bone pain, hepatosplenomegaly; ~85-90% cured.",
-      "back": "anaemia",
-      "context": "Every presenting feature traces back to blast cells crowding out normal marrow: loss of red-cell production causes anaemia (pallor, fatigue).\n\nLoss of platelets causes thrombocytopaenia (bruising, petechiae), and marrow expansion causes bone pain.\n\nHepatosplenomegaly and lymphadenopathy reflect leukaemic infiltration of those organs. Peak age 2-5 years; ~85-90% cured with 2-year multi-phase chemo.",
-      "complexity": 1,
-      "importance": 2,
-      "variantGroup": "cohort:paeds:g-a40fcc4f2522",
-      "variantIndex": 0,
-      "reference": null
-    },
-    {
       "id": "cohort:paeds:c-a2f6c1a443a3:v1",
       "origin": "mdx:68d52f22acf67bde9f2ef74799a06f24",
       "discipline": "paeds",
@@ -194,6 +179,36 @@
       "back": "epiglottitis",
       "context": "The classic picture: a toxic, febrile child sitting forward (tripod), drooling, with NO barking cough — the supraglottic swelling stops the cord vibration that makes croup bark. Now rare thanks to Hib vaccination.",
       "complexity": 1,
+      "importance": 2,
+      "variantGroup": null,
+      "variantIndex": null,
+      "reference": null
+    },
+    {
+      "id": "cohort:paeds:c-a3a48e4233b0:v1",
+      "origin": "mdx:6fc3c9d7987684e22c753063c9bc6353",
+      "discipline": "paeds",
+      "cardType": "cloze",
+      "sourceComponent": "KeyPoint",
+      "front": "The usual starting dose of fluoxetine for an adolescent with depression is [___] mg daily.",
+      "back": "10",
+      "context": "Adolescents start low: fluoxetine 5 to 10 mg daily. In the NPC case the supervisor prescribed half a 20 mg dispersible tablet (10 mg) daily, with no repeats, so the young person is reviewed before the supply runs out.\n\nIncrements are 5 to 10 mg no faster than every 2 weeks. Because of the long half-life, benefit is judged at 4 to 6 weeks; doses above 20 mg go through a specialist.",
+      "complexity": 2,
+      "importance": 2,
+      "variantGroup": null,
+      "variantIndex": null,
+      "reference": null
+    },
+    {
+      "id": "cohort:paeds:c-a3c2f31d65e0:v1",
+      "origin": "mdx:fb7c8a9d00eb5ef51d61648d0e3b689c",
+      "discipline": "paeds",
+      "cardType": "cloze",
+      "sourceComponent": "KeyPoint",
+      "front": "ICS and LABA must always be prescribed as a single [___] inhaler, because LABA monotherapy increases exacerbations and asthma-related death.",
+      "back": "fixed-dose combination",
+      "context": "What survives the SMART story, and what every guideline still states, is a dispensing rule rather than a ban.\n\neTG: always give ICS plus LABA as a fixed-dose combination inhaler, to avoid the possibility of a patient taking a LABA without an ICS. LABA monotherapy increases the risk of exacerbations and asthma-related death.\n\nSeparate inhalers are the hazard, because the child can run out of the ICS and keep using the LABA.",
+      "complexity": 2,
       "importance": 2,
       "variantGroup": null,
       "variantIndex": null,
@@ -335,6 +350,21 @@
       "reference": null
     },
     {
+      "id": "cohort:paeds:c-a656c2a1ba7a:v1",
+      "origin": "mdx:2569f83ba2bbe01d4de9d37c677e1ab5",
+      "discipline": "paeds",
+      "cardType": "cloze",
+      "sourceComponent": "KeyPoint",
+      "front": "Opsoclonus in a toddler is a reason to search for a [___].",
+      "back": "neuroblastoma",
+      "context": "The eye movements can be a paraneoplastic sign. Imaging of the chest and abdomen looks for the tumour.",
+      "complexity": 1,
+      "importance": 2,
+      "variantGroup": null,
+      "variantIndex": null,
+      "reference": null
+    },
+    {
       "id": "cohort:paeds:c-a66947472ef7:v1",
       "origin": "mdx:d367ea7449c0b5d7d2330db9bb80e393:blank-0",
       "discipline": "paeds",
@@ -429,6 +459,21 @@
       "reference": null
     },
     {
+      "id": "cohort:paeds:c-a7bf950605d1:v1",
+      "origin": "mdx:1c3c8d48a392bdbebfb051f6f95e9126",
+      "discipline": "paeds",
+      "cardType": "cloze",
+      "sourceComponent": "KeyPoint",
+      "front": "Normal initial films do not exclude Perthes; if the limp persists, repeat radiographs or [___] are considered.",
+      "back": "MRI",
+      "context": "Normal initial films do not exclude early Perthes disease. Persistent or recurrent symptoms require reassessment.\n\nClear AP and frog-leg films with hips that move fully make it unlikely now. But early Perthes is radiographically SILENT, so a normal film is a snapshot rather than a discharge.\n\nPersistent symptoms or recurrence warrant review and consideration of repeat radiographs or MRI; do not wait for another episode if the limp continues.",
+      "complexity": 4,
+      "importance": 2,
+      "variantGroup": "cohort:paeds:g-e314c4944f39",
+      "variantIndex": null,
+      "reference": null
+    },
+    {
       "id": "cohort:paeds:c-a7d0c863bd34:v1",
       "origin": "mdx:0f3787ce0a9855a7f8e2dcb09d43d187:blank-0",
       "discipline": "paeds",
@@ -471,6 +516,21 @@
       "importance": 2,
       "variantGroup": "cohort:paeds:g-c8bcff0a2f0b",
       "variantIndex": 1,
+      "reference": null
+    },
+    {
+      "id": "cohort:paeds:c-a8455da9f07e:v1",
+      "origin": "mdx:3363934ff189664a0ca33cdaffef6c1c",
+      "discipline": "paeds",
+      "cardType": "cloze",
+      "sourceComponent": "KeyPoint",
+      "front": "A febrile schoolchild has meningism; CSF shows paired Gram-negative cocci. Which organism is most likely: [___]?",
+      "back": "Neisseria meningitidis",
+      "context": "Meningococcal meningitis is caused by Neisseria meningitidis. On Gram stain, the organisms are paired Gram-negative cocci.",
+      "complexity": 3,
+      "importance": 2,
+      "variantGroup": null,
+      "variantIndex": null,
       "reference": null
     },
     {
@@ -628,21 +688,6 @@
       }
     },
     {
-      "id": "cohort:paeds:c-aa99e23d9ff8:v1",
-      "origin": "mdx:7a0e1b37833484747d68547d5d8e859c:blank-2",
-      "discipline": "paeds",
-      "cardType": "cloze",
-      "sourceComponent": "KeyPoint",
-      "front": "Pertussis presents with paroxysmal cough + inspiratory 'whoop' + post-tussive vomiting; treat with azithromycin; infants <6 months may present with [___] instead.",
-      "back": "apnoea",
-      "context": "Pertussis classically has three stages: catarrhal (days 1-14, URTI-like — most contagious), paroxysmal (weeks 2-6, fits with inspiratory 'whoop', post-tussive vomiting, exhaustion), convalescent (weeks 6-10).\n\nInfants <6 months may NOT whoop — present with apnoea, cyanosis, feeding difficulty (mortality ~1 in 125).\n\nVaccinated individuals can still transmit — hence adult/adolescent boosters + cocoon strategy.",
-      "complexity": 2,
-      "importance": 2,
-      "variantGroup": "cohort:paeds:g-5809e8873c26",
-      "variantIndex": 2,
-      "reference": null
-    },
-    {
       "id": "cohort:paeds:c-aa9ca60385cd:v1",
       "origin": "mdx:003d33ff82cd8fd5175a444873e2b84b",
       "discipline": "paeds",
@@ -677,6 +722,21 @@
       }
     },
     {
+      "id": "cohort:paeds:c-ab2711157ec8:v1",
+      "origin": "mdx:30b84e04e615e9765df11ea217d2b89d",
+      "discipline": "paeds",
+      "cardType": "cloze",
+      "sourceComponent": "KeyPoint",
+      "front": "A 4-year-old has bilateral middle-ear effusions on two examinations 3 months apart, a 30 dB conductive loss and a speech delay. The intervention is [___], not a further period of observation.",
+      "back": "grommets",
+      "context": "Glue ear usually resolves within 3 months, so the first step is watchful waiting with a repeat hearing test.\n\nPersistent bilateral effusion with a conductive loss over 25 dB, or speech delay, is the threshold for grommets. Adenoidectomy is added for a second set, not the first.",
+      "complexity": 3,
+      "importance": 3,
+      "variantGroup": "cohort:paeds:g-630252287a5b",
+      "variantIndex": null,
+      "reference": null
+    },
+    {
       "id": "cohort:paeds:c-ab5d9a3de2f0:v1",
       "origin": "mdx:0ff05c6a06904575a103196e1425f077",
       "discipline": "paeds",
@@ -700,6 +760,21 @@
       "front": "Haemolysis raises the [___] bilirubin fraction, because red-cell breakdown delivers pigment to the liver faster than it can be processed.",
       "back": "unconjugated",
       "context": "Haemolysis raises bilirubin by overwhelming a normal liver with breakdown product — a problem of production, upstream of the conjugation step.\n\nContrast obstruction or hepatocellular disease, which traps the already-processed pigment and raises the conjugated fraction instead.",
+      "complexity": 1,
+      "importance": 2,
+      "variantGroup": null,
+      "variantIndex": null,
+      "reference": null
+    },
+    {
+      "id": "cohort:paeds:c-ab90cacef68e:v1",
+      "origin": "mdx:6756814dc8c3bdc326c78972bbb97c3b",
+      "discipline": "paeds",
+      "cardType": "cloze",
+      "sourceComponent": "KeyPoint",
+      "front": "The first-line corticosteroid for croup with stridor is [___].",
+      "back": "dexamethasone",
+      "context": "A single dose of oral dexamethasone reduces airway oedema when croup includes stridor or relevant risk factors.\n\nA child with a barking cough alone, no current or previous stridor and no relevant risk factors does not routinely need a corticosteroid.\n\nNebulised adrenaline is for severe croup (persistent stridor at rest), or moderate croup that persists or worsens after the steroid.",
       "complexity": 1,
       "importance": 2,
       "variantGroup": null,
@@ -831,6 +906,21 @@
       }
     },
     {
+      "id": "cohort:paeds:c-addbcb02904c:v1",
+      "origin": "mdx:80b75aac520a6553538b61f0e5f6cf3e",
+      "discipline": "paeds",
+      "cardType": "cloze",
+      "sourceComponent": "KeyPoint",
+      "front": "An infant remains obstructed supine until the airway is repositioned. To restore neutral alignment, place a folded towel under the [___].",
+      "back": "shoulders",
+      "context": "An infant's proportionally large occiput can flex the neck when lying flat. A folded towel under the shoulders helps restore a neutral or slightly extended sniffing position.",
+      "complexity": 3,
+      "importance": 2,
+      "variantGroup": null,
+      "variantIndex": null,
+      "reference": null
+    },
+    {
       "id": "cohort:paeds:c-addc87b01c4e:v1",
       "origin": "mdx:bbfaaa143dc423da243c1a88e9db45e0",
       "discipline": "paeds",
@@ -903,6 +993,21 @@
       "importance": 2,
       "variantGroup": "cohort:paeds:g-d629e2bae3b7",
       "variantIndex": 1,
+      "reference": null
+    },
+    {
+      "id": "cohort:paeds:c-af297d72b433:v1",
+      "origin": "mdx:8771dd3e35092ec3933d457d4c872a7a",
+      "discipline": "paeds",
+      "cardType": "cloze",
+      "sourceComponent": "KeyPoint",
+      "front": "A toddler with pneumonia has a loculated pleural effusion. Oral amoxicillin is not enough. The chest needs a [___].",
+      "back": "drain",
+      "context": "A loculated pleural collection beside pneumonia will not empty through a vein. Oral antibiotic alone leaves the pus in the chest.\n\nThe child needs the collection taken off the lung, and a surgical opinion. Home antibiotics are the miss.",
+      "complexity": 4,
+      "importance": 2,
+      "variantGroup": null,
+      "variantIndex": null,
       "reference": null
     },
     {

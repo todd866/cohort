@@ -9,19 +9,44 @@ export const MD3_MARK_DIGITS = {
   '3': "M38.501 31.239Q35.93 31.239 34.535 30.062Q33.14 28.886 33.042 26.864L36.066 26.747Q36.172 27.781 36.806 28.263Q37.44 28.745 38.501 28.745Q39.2 28.745 39.75 28.537Q40.301 28.328 40.622 27.901Q40.944 27.473 40.944 26.829Q40.944 25.83 40.262 25.333Q39.579 24.835 38.416 24.835H37.171V22.634H38.416Q39.305 22.634 39.904 22.252Q40.503 21.869 40.503 20.96Q40.503 20.168 40.016 19.711Q39.528 19.255 38.47 19.255Q37.42 19.255 36.892 19.688Q36.363 20.121 36.25 20.804L33.253 20.652Q33.46 18.88 34.814 17.82Q36.168 16.761 38.47 16.761Q40.109 16.761 41.241 17.231Q42.373 17.701 42.96 18.576Q43.547 19.45 43.547 20.648Q43.547 21.877 42.732 22.679Q41.916 23.481 40.406 23.762V23.434Q42.127 23.688 43.063 24.626Q44 25.565 44 27.04Q44 28.355 43.323 29.298Q42.646 30.24 41.413 30.74Q40.18 31.239 38.501 31.239Z",
 } as const;
 
-// Raster assets cannot resolve CSS variables. Match the light-mode primary
-// and on-primary tokens; the live navigation continues to use those tokens.
+// Raster assets cannot resolve CSS variables. These are the brand tile's own
+// colours (owner pick, 21 Oct 2026: variant F): navy tile, white "md", a warm
+// terracotta "3". globals.css repeats them as --md-brand-* for the live nav.
 export const MD3_ICON_BACKGROUND = '#1c5888';
 export const MD3_ICON_FOREGROUND = '#ffffff';
+export const MD3_ICON_ACCENT = '#f0a07a';
+
+/** Below this size three letters turn to mush; the tab icon is a lone "3". */
+export const MD3_SMALL_ICON_MAX = 32;
 
 export function md3IconSvg(size: number, { fullBleed = false, maskable = false } = {}): string {
+  const rect = `<rect width="48" height="48" rx="${fullBleed ? 0 : size <= MD3_SMALL_ICON_MAX ? 10 : 12}" fill="${MD3_ICON_BACKGROUND}"/>`;
+  if (size <= MD3_SMALL_ICON_MAX) {
+    // The "3" alone, scaled about its centre (38.5, 24) to fill the tile.
+    return `<svg xmlns="http://www.w3.org/2000/svg" width="${size}" height="${size}" viewBox="0 0 48 48">
+  ${rect}
+  <path fill="${MD3_ICON_ACCENT}" transform="translate(-56.85 -26.4) scale(2.1)" d="${MD3_MARK_DIGITS['3']}"/>
+</svg>`;
+  }
   // A 0.76 scale keeps the whole mark inside the circular maskable safe zone.
   const transform = maskable ? 'translate(5.76 5.76) scale(.76)' : '';
   return `<svg xmlns="http://www.w3.org/2000/svg" width="${size}" height="${size}" viewBox="0 0 48 48">
-  <rect width="48" height="48" rx="${fullBleed ? 0 : 12}" fill="${MD3_ICON_BACKGROUND}"/>
-  <g transform="${transform}" fill="${MD3_ICON_FOREGROUND}">
-    <path d="${MD3_MARK_LETTERS}"/>
-    <path d="${MD3_MARK_DIGITS['3']}"/>
+  ${rect}
+  <g transform="${transform}">
+    <path fill="${MD3_ICON_FOREGROUND}" d="${MD3_MARK_LETTERS}"/>
+    <path fill="${MD3_ICON_ACCENT}" d="${MD3_MARK_DIGITS['3']}"/>
   </g>
 </svg>`;
 }
+
+// FNV-1a of the rendered mark. Installed apps refresh their icon only when the
+// manifest's icon URLs change, so the URLs carry this and move with the logo.
+export function markVersion(text: string): string {
+  let hash = 0x811c9dc5;
+  for (let i = 0; i < text.length; i += 1) {
+    hash ^= text.charCodeAt(i);
+    hash = Math.imul(hash, 0x01000193);
+  }
+  return (hash >>> 0).toString(16).padStart(8, '0');
+}
+export const MD3_ICON_VERSION = markVersion(md3IconSvg(512) + md3IconSvg(512, { fullBleed: true, maskable: true }));

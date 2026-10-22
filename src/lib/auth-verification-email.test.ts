@@ -26,9 +26,9 @@ describe('buildVerificationEmailContext', () => {
     expect(wrapper.pathname).toBe('/auth/verify-email');
     expect(wrapper.searchParams.get('callback')).toBe(original);
     expect(context).toMatchObject({
-      productName: 'MD3 Study',
-      actionLabel: 'Sign in to MD3',
-      subject: 'Sign in to MD3 Study',
+      productName: 'md3 Study',
+      actionLabel: 'Sign in to md3',
+      subject: 'Sign in to md3 Study',
     });
   });
 
@@ -53,7 +53,7 @@ describe('buildVerificationEmailContext', () => {
     });
 
     expect(new URL(context.verifyUrl).origin).toBe('https://learn.example.org');
-    expect(context.productName).toBe('MD3 Study');
+    expect(context.productName).toBe('md3 Study');
   });
 
   it('allows loopback only outside production', () => {

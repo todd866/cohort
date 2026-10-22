@@ -1,9 +1,13 @@
+<p align="center"><img src="public/icons/cohort-192.png" width="96" height="96" alt="Cohort"></p>
+
 # Cohort
 
 Open-source spaced repetition for medicine, scheduled over an embedding of
 concepts rather than a deck of facts.
 
-Try it at **[cohort.md](https://cohort.md)**. No account is needed to study.
+Try it at **[cohort.md](https://cohort.md)**. No account is needed to study:
+the front page is a review loop over the clinical module cards and questions,
+and the Step 1 bank is at [cohort.md/usmle](https://cohort.md/usmle).
 
 Cohort is a learning engine with an open question bank aligned to the USMLE
 curriculum: 556 questions so far, each written for this corpus and carrying the
@@ -45,8 +49,9 @@ behind them are at [cohort.md/tech](https://cohort.md/tech).
 | Step 1 questions | 556 original, citation-backed items, each with a source and passage pointer |
 | Baseline set | 25 original items served as the fixed first exposure |
 | Recorded ECGs | 5 de-identified: four PTB-XL (CC BY 4.0), one VTaC (CC BY-SA 4.0) |
-| Clinical module questions | Original, guideline-cited items mirrored from md3, under `open-content/modules/questions/` |
-| Clinical module cards | Original cloze cards mirrored from md3, each factually audited at its current wording, under `open-content/modules/cards/` |
+| Clinical module questions | 392 guideline-cited items in 24 disciplines, mirrored from md3, under `open-content/modules/questions/` |
+| Anatomy questions | 36 written for Cohort, under `open-content/modules/original-questions/` |
+| Clinical module cards | 1,994 cloze cards, each factually audited at its current wording, under `open-content/modules/cards/`; 88 of them are anatomy cards written for Cohort |
 
 All of it is in this repository. The questions are plain JSON under
 `open-content/usmle/step1/questions/`, each with its provenance envelope, and

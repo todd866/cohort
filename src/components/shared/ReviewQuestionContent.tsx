@@ -65,7 +65,7 @@ export function ReviewQuestionOptions({
     {options.map((option, idx) => {
       const selected = selectedOption === option.label;
       return <button key={option.label} type="button" aria-label={`${option.label}. ${option.text}`} aria-pressed={selected} disabled={disabled} onClick={() => onSelect(option.label)}
-        className={`review-choice review-option group flex w-full items-start gap-3 text-left p-3.5 rounded-lg border transition-colors disabled:cursor-wait disabled:opacity-60 ${disabled ? 'cursor-wait' : 'cursor-pointer'} ${selected ? 'border-[var(--md-primary)] bg-[var(--md-primary-container)]/30' : 'border-[var(--md-outline-soft)] bg-[var(--md-surface-container-low)]/70 hover:border-[var(--md-primary)] hover:bg-[var(--md-primary-container)]/30'}`}>
+        className={`review-choice review-option group flex w-full items-start gap-3 text-left p-3.5 rounded-lg border transition-colors disabled:cursor-wait disabled:opacity-60 ${disabled ? 'cursor-wait' : 'cursor-pointer'} ${selected ? 'border-[var(--md-primary)] bg-[var(--md-primary-container)]/30' : 'border-[var(--md-outline-variant)] bg-transparent hover:border-[var(--md-primary)] hover:bg-[var(--md-primary-container)]/25'}`}>
         <span className="review-option-index mt-0.5 flex h-7 w-7 shrink-0 items-center justify-center bg-[var(--md-surface-container-high)] font-mono text-xs text-[var(--md-on-surface-variant)] group-hover:bg-[var(--md-primary-container)] group-hover:text-[var(--md-on-primary-container)] transition-colors">{showIndex && responseFormat !== 'kType' && !lettered ? idx + 1 : option.label}</span>
         <span className="pt-0.5"><GlossaryText text={option.text} /></span>
       </button>;
@@ -82,7 +82,7 @@ export function ReviewQuestionOptions({
     const explanation = option.explanation?.trim() ?? '';
     const hasExplanation = explanation.length > 0;
     const expanded = expandedExplanations.has(option.label);
-    const optionClass = correct ? 'border-[var(--md-success)]/55 bg-[var(--md-success-container)]/45' : wrong ? 'border-[var(--md-error)]/55 bg-[var(--md-error-container)]/45' : 'border-[var(--md-outline-soft)] bg-[var(--md-surface-container-lowest)]/80';
+    const optionClass = correct ? 'border-[var(--md-success)]/55 bg-[var(--md-success-container)]/45' : wrong ? 'border-[var(--md-error)]/55 bg-[var(--md-error-container)]/45' : 'border-[var(--md-outline-soft)] bg-transparent';
     const labelClass = correct ? 'bg-[var(--md-success)] text-[var(--md-on-success)]' : wrong ? 'bg-[var(--md-error)] text-[var(--md-on-error)]' : 'bg-[var(--md-surface-container-high)] text-[var(--md-on-surface-variant)]';
     return <div key={option.label}>
       <button type="button" onClick={() => hasExplanation && onToggleExplanation?.(option.label)} disabled={!hasExplanation} aria-label={`${option.label}. ${option.text}`} aria-expanded={hasExplanation ? expanded : undefined} className={`review-choice review-option flex w-full items-start gap-3 text-left p-3.5 rounded-lg border transition-colors ${optionClass} ${hasExplanation ? 'cursor-pointer hover:brightness-95' : 'cursor-default'}`}>

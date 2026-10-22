@@ -28,7 +28,7 @@ export default async function AbducensGuidePage() {
             <summary className="cursor-pointer">Sources and illustration</summary>
             <p className="mt-2">This original drawing shows a local relationship, not the whole orbit. The nerve entry point is hidden; its intracranial course is not shown.</p>
             <p className="mt-2"><a className="underline" href="https://pmc.ncbi.nlm.nih.gov/articles/PMC11089250/">Anatomical study</a> · <a className="underline" href="https://www.ncbi.nlm.nih.gov/books/NBK482177/">Abducens palsy</a></p>
-            <p className="mt-2">Original AI-assisted illustration and editable labels: MD3 contributors, MIT licence. Source and independent pixel reviews; no clinician signoff.</p>
+            <p className="mt-2">Original AI-assisted illustration and editable labels: md3 contributors, MIT licence. Source and independent pixel reviews; no clinician signoff.</p>
             <a className="mt-2 inline-block underline" href="/api/anatomy/abducens" download>Download illustration</a>
           </details>
         </div>

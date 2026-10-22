@@ -1,6 +1,7 @@
 'use client';
 
 import { memo } from 'react';
+import { splitStemLead } from '@/lib/question-stem-lead';
 import { isTracingType } from './groupReviewLogic';
 import Image from 'next/image';
 import { QuestionGroupStep, StepOption, TeachingExplanation } from '@/lib/question-groups/types';
@@ -283,8 +284,11 @@ export const GroupStepContent = memo(function GroupStepContent({
       {/* MCQ type step */}
       {currentStep.type === 'mcq' && currentStep.options && (
         <>
-          <div className="text-[var(--md-on-surface)] text-sm mb-2 whitespace-pre-line">
-            <MathText text={currentStep.stem || ''} />
+          <div className="text-[var(--md-on-surface)] text-sm mb-2 whitespace-pre-line space-y-2">
+            {(() => { const { body, lead } = splitStemLead(currentStep.stem || ''); return <>
+              {body && <p><MathText text={body} /></p>}
+              {lead && <p data-question-lead><MathText text={lead} /></p>}
+            </>; })()}
           </div>
 
           {/* Options shown inline only AFTER answering (to show correct/incorrect feedback) */}

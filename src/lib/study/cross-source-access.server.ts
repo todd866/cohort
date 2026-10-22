@@ -1,6 +1,7 @@
 import 'server-only';
 
 import {
+  COMPANION_ENROLMENT_IMPLIED_TARGETS,
   COMPANION_SOURCE_ROTATIONS,
   EXAM_CROSS_SOURCE_ROTATION_IDS,
   FOCUS_SUPPLEMENT_ROTATIONS,
@@ -56,8 +57,11 @@ function companionSources(input: ExamCrossSourceAccessInput): string[] {
   if (!chosen) return [];
 
   const enrolled = new Set(input.activeModules);
+  // The deck itself must still be enrolled; see COMPANION_ENROLMENT_IMPLIED_TARGETS.
+  const enrolmentImplied = COMPANION_ENROLMENT_IMPLIED_TARGETS.has(input.targetRotation)
+    && enrolled.has(input.targetRotation);
   return declared.filter((source) => {
-    if (!enrolled.has(source)) return false;
+    if (!enrolmentImplied && !enrolled.has(source)) return false;
     if (!isPersonalRotation(source)) return true;
     // A personal companion is admitted only when the viewer is independently
     // entitled to it. That is not an exception to the owner gate, it IS the

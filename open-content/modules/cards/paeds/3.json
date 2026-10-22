@@ -110,6 +110,21 @@
       "reference": null
     },
     {
+      "id": "cohort:paeds:c-30b25e7b25ac:v1",
+      "origin": "mdx:146900d1ec35120982d4a371ce18785a:blank-1",
+      "discipline": "paeds",
+      "cardType": "cloze",
+      "sourceComponent": "KeyPoint",
+      "front": "Besides prematurity, hyaline membrane disease is more likely in infants of diabetic mothers, in the [___] twin, and after caesarean delivery or perinatal asphyxia.",
+      "back": "second",
+      "context": "Every risk factor means surfactant is deficient or inhibited. Prematurity dominates. In maternal diabetes, fetal hyperinsulinaemia opposes the cortisol drive to surfactant.\n\nCaesarean before labour blunts the cortisol and catecholamine drive, plus iatrogenic prematurity. Perinatal asphyxia inhibits surfactant already made; retained lung fluid is TTN, not this.\n\nTwins are numbered by birth order; the presenting twin is only provisionally Twin 1. Twin 2 risks partial placental separation and malpresentation needing operative delivery, so hypoxia is commoner.",
+      "complexity": 2,
+      "importance": 2,
+      "variantGroup": "cohort:paeds:g-161f146c5d2d",
+      "variantIndex": 1,
+      "reference": null
+    },
+    {
       "id": "cohort:paeds:c-30be3e7176bf:v1",
       "origin": "mdx:a95a2faf6ae6419d18bd5114a63bd9e4:blank-0",
       "discipline": "paeds",
@@ -167,6 +182,21 @@
       "importance": 2,
       "variantGroup": null,
       "variantIndex": null,
+      "reference": null
+    },
+    {
+      "id": "cohort:paeds:c-3224b6a5831c:v1",
+      "origin": "mdx:0e02a5f9ba784f8d656fc8eac204e804:blank-1",
+      "discipline": "paeds",
+      "cardType": "cloze",
+      "sourceComponent": "KeyPoint",
+      "front": "West syndrome triad: epileptic spasms (1-2 seconds, repetitive in clusters), [___] on EEG, developmental regression; treat with prednisolone or vigabatrin.",
+      "back": "hypsarrhythmia",
+      "context": "Hypsarrhythmia is a chaotic EEG background: large, irregular slow waves mixed with spikes from several regions. It is not a regular seizure rhythm.\n\nSuspected infantile spasms need urgent awake/sleep EEG and neurology review; a normal early EEG does not exclude them. Prompt treatment reduces developmental harm.\n\nTreatment is specialist-led: high-dose prednisolone is usual first-line therapy; vigabatrin is first-line for tuberous sclerosis. Other treatable causes need specific therapy.",
+      "complexity": 1,
+      "importance": 2,
+      "variantGroup": "cohort:paeds:g-7d912036a7ef",
+      "variantIndex": 1,
       "reference": null
     },
     {
@@ -249,18 +279,18 @@
       "reference": null
     },
     {
-      "id": "cohort:paeds:c-34535efe9862:v1",
-      "origin": "mdx:d8f3f9973f627455d9cd6c07f94b06b4:blank-1",
+      "id": "cohort:paeds:c-345ff6d9f67b:v1",
+      "origin": "mdx:a23269b813799773c7fb43bd42deaf3a",
       "discipline": "paeds",
       "cardType": "cloze",
       "sourceComponent": "KeyPoint",
-      "front": "Most common bacterial cause of paediatric tonsillitis is Group A Streptococcus, peak 5-15 years, rare under [___]; treat with phenoxymethylpenicillin to prevent rheumatic fever.",
-      "back": "3",
-      "context": "GABHS (S. pyogenes) is the dominant bacterial cause of paediatric tonsillitis — peak 5-15y, rare <3y (immature lymphoid tissue, different flora). Most sore throats in young children are viral.\n\nGABHS needs phenoxymethylpenicillin 10 days, mainly to prevent acute rheumatic fever (antibiotics do NOT prevent post-streptococcal glomerulonephritis).\n\nTonsillectomy for recurrent cases meeting Paradise criteria (7+/yr, 5/yr for 2y, 3/yr for 3y).",
-      "complexity": 2,
+      "front": "A child has daily fever spikes, a fleeting salmon-pink rash during fever and persistent arthritis, without an infectious focus. Which JIA subtype fits: [___]?",
+      "back": "systemic",
+      "context": "Systemic juvenile idiopathic arthritis can produce quotidian fever, an evanescent salmon-pink rash and arthritis. The fever pattern and rash are useful clinical discriminators.",
+      "complexity": 3,
       "importance": 2,
-      "variantGroup": "cohort:paeds:g-42523ecdd3ae",
-      "variantIndex": 1,
+      "variantGroup": null,
+      "variantIndex": null,
       "reference": null
     },
     {
@@ -553,21 +583,6 @@
       "reference": null
     },
     {
-      "id": "cohort:paeds:c-3846551e1067:v1",
-      "origin": "mdx:93bbfcf4c76042c8be404a0766a36e07",
-      "discipline": "paeds",
-      "cardType": "cloze",
-      "sourceComponent": "KeyPoint",
-      "front": "Persistent middle-ear fluid without acute infection — the commonest cause of childhood conductive hearing loss — is otitis media with [___].",
-      "back": "effusion",
-      "context": "Fluid persists in the middle ear after the acute infection settles, with no signs of acute inflammation.\n\nIt's the commonest cause of conductive hearing loss in children and can delay speech — most resolve spontaneously over weeks to months.",
-      "complexity": 1,
-      "importance": 2,
-      "variantGroup": null,
-      "variantIndex": null,
-      "reference": null
-    },
-    {
       "id": "cohort:paeds:c-3848f4a0ed4a:v1",
       "origin": "mdx:20ccfbb8762de7c39894c84613efc0c6",
       "discipline": "paeds",
@@ -656,6 +671,21 @@
       "back": "spontaneous",
       "context": "Motor under four differs subtly from age four and over. Score 6 includes spontaneous movement or obeying verbal commands (not 'obeys commands' alone as the only route to 6).\n\nScore 5 is localising to pain or withdrawing to touch — touch withdrawal counts as 5, not 4.\n\nThese tweaks prevent under-scoring a moving infant who is not yet following commands reliably.",
       "complexity": 1,
+      "importance": 2,
+      "variantGroup": null,
+      "variantIndex": null,
+      "reference": null
+    },
+    {
+      "id": "cohort:paeds:c-3a2688447852:v1",
+      "origin": "mdx:ae25ed0bcb21fd86d225d818492dc8a3",
+      "discipline": "paeds",
+      "cardType": "cloze",
+      "sourceComponent": "KeyPoint",
+      "front": "A bronchiolitic infant on full-maintenance 0.45% saline with 5% glucose has a sodium of 128 mmol/L on day 2. The fluid change that addresses the cause is to reduce the rate and switch to an [___] fluid.",
+      "back": "isotonic",
+      "context": "Full-rate hypotonic fluid in an infant already retaining free water under ADH causes dilutional hyponatraemia. A sodium of 128 in a bronchiolitic infant on IV fluids is that mechanism until proven otherwise.\n\nA seizure is its complication. Correct it by cutting the rate to two-thirds maintenance, switching to an isotonic glucose-containing fluid and rechecking the sodium, not by giving a water-rich bolus.",
+      "complexity": 3,
       "importance": 2,
       "variantGroup": null,
       "variantIndex": null,
@@ -899,6 +929,21 @@
       "importance": 2,
       "variantGroup": "cohort:paeds:g-d3560c97236e",
       "variantIndex": 0,
+      "reference": null
+    },
+    {
+      "id": "cohort:paeds:c-3f7f998671b1:v1",
+      "origin": "mdx:e882dc0d624cc4ba5c83edbdd55c64da",
+      "discipline": "paeds",
+      "cardType": "cloze",
+      "sourceComponent": "KeyPoint",
+      "front": "The triad of subdural haematoma, retinal haemorrhages, and encephalopathy in an infant suggests [___].",
+      "back": "abusive head trauma",
+      "context": "The classic triad from violent acceleration–deceleration: subdural haematomas (torn bridging veins), retinal haemorrhages, and diffuse encephalopathy.\n\nIn an infant with no plausible mechanism, this is abuse until excluded.",
+      "complexity": 1,
+      "importance": 2,
+      "variantGroup": null,
+      "variantIndex": null,
       "reference": null
     }
   ]

@@ -33,3 +33,15 @@ export function personalDeckSharedAccessTier(_slug: string): 'copyright' | 'sign
   void _slug;
   return undefined;
 }
+/**
+ * The public build declares no learner grants. Present so the real
+ * personal-rotation-access module compiles unchanged in the export.
+ */
+export function personalDeckGrantHash(_email: string | null | undefined): string {
+  void _email;
+  return '';
+}
+
+export function personalDeckLearnerGrantHashes(): Record<string, ReadonlySet<string>> {
+  return {};
+}

@@ -5,21 +5,6 @@
   "attribution": "MD3 contributors",
   "cards": [
     {
-      "id": "cohort:icu:c-a02deb59cc9a:v1",
-      "origin": "mdx:588486bd4bebd4b661ac31e86c7a2b34:blank-2",
-      "discipline": "icu",
-      "cardType": "cloze",
-      "sourceComponent": "KeyPoint",
-      "front": "VBG-to-ABG conversion offsets? pH: VBG 0.02–0.04 lower. pCO₂: VBG 3–8 mmHg higher. HCO₃⁻: [___]. Lactate: Same. PaO₂: Cannot assess from VBG.",
-      "back": "Essentially same",
-      "context": "VBG correlates well for pH, pCO₂, lactate, electrolytes. Main limitation: cannot assess PaO₂.\n\nUse SpO₂ for oxygenation screening; ABG only when precise PaO₂/P:F ratio needed.",
-      "complexity": 2,
-      "importance": 2,
-      "variantGroup": "cohort:icu:g-c416c82e5eed",
-      "variantIndex": 2,
-      "reference": null
-    },
-    {
       "id": "cohort:icu:c-a0f1ce59c7eb:v1",
       "origin": "mdx:e9aa25e87429f76f58505257810f4bc0:blank-1",
       "discipline": "icu",
@@ -137,21 +122,6 @@
       "importance": 2,
       "variantGroup": "cohort:icu:g-5320a8a5a362",
       "variantIndex": 2,
-      "reference": null
-    },
-    {
-      "id": "cohort:icu:c-a61331755d2f:v1",
-      "origin": "mdx:37e46baddcd4a0d3adf854c295ff2594:blank-0",
-      "discipline": "icu",
-      "cardType": "cloze",
-      "sourceComponent": "KeyPoint",
-      "front": "A-a gradient = [___] minus PaO₂. Age-adjusted upper limit (mmHg) ≈ (age÷4) + 4 mmHg.",
-      "back": "PAO₂",
-      "context": "A-a gradient quantifies gas exchange efficiency. Normal widens with age.\n\nElevated A-a = intrinsic lung pathology (V/Q mismatch, shunt, diffusion impairment). Normal A-a with hypoxaemia = hypoventilation (lungs fine).",
-      "complexity": 2,
-      "importance": 2,
-      "variantGroup": "cohort:icu:g-08695ff3aae1",
-      "variantIndex": 0,
       "reference": null
     },
     {
@@ -305,21 +275,6 @@
       "reference": null
     },
     {
-      "id": "cohort:icu:c-ac02249bfe81:v1",
-      "origin": "mdx:37e46baddcd4a0d3adf854c295ff2594:blank-2",
-      "discipline": "icu",
-      "cardType": "cloze",
-      "sourceComponent": "KeyPoint",
-      "front": "A-a gradient = PAO₂ minus PaO₂. Age-adjusted upper limit (mmHg) ≈ (age÷4) + [___].",
-      "back": "4 mmHg",
-      "context": "A-a gradient quantifies gas exchange efficiency. Normal widens with age.\n\nElevated A-a = intrinsic lung pathology (V/Q mismatch, shunt, diffusion impairment). Normal A-a with hypoxaemia = hypoventilation (lungs fine).",
-      "complexity": 2,
-      "importance": 2,
-      "variantGroup": "cohort:icu:g-08695ff3aae1",
-      "variantIndex": 2,
-      "reference": null
-    },
-    {
       "id": "cohort:icu:c-ac0256296ece:v1",
       "origin": "mdx:30888b42e2c68785005cd113a3745b9c:blank-1",
       "discipline": "icu",
@@ -422,21 +377,6 @@
       "importance": 2,
       "variantGroup": null,
       "variantIndex": null,
-      "reference": null
-    },
-    {
-      "id": "cohort:icu:c-afd23b46b993:v1",
-      "origin": "mdx:588486bd4bebd4b661ac31e86c7a2b34:blank-0",
-      "discipline": "icu",
-      "cardType": "cloze",
-      "sourceComponent": "KeyPoint",
-      "front": "VBG-to-ABG conversion offsets? pH: VBG [___] lower. pCO₂: VBG 3–8 mmHg higher. HCO₃⁻: Essentially same. Lactate: Same. PaO₂: Cannot assess from VBG.",
-      "back": "0.02–0.04",
-      "context": "VBG correlates well for pH, pCO₂, lactate, electrolytes. Main limitation: cannot assess PaO₂.\n\nUse SpO₂ for oxygenation screening; ABG only when precise PaO₂/P:F ratio needed.",
-      "complexity": 2,
-      "importance": 2,
-      "variantGroup": "cohort:icu:g-c416c82e5eed",
-      "variantIndex": 0,
       "reference": null
     }
   ]

@@ -55,7 +55,7 @@ export function connectionIndicatorView({
       count: queued,
       title: 'Live',
       details: [],
-      label: 'Return to live MD3',
+      label: 'Return to live md3',
       href: liveHref,
     };
   }

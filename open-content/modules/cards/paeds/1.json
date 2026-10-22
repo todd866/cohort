@@ -272,18 +272,18 @@
       "reference": null
     },
     {
-      "id": "cohort:paeds:c-1359161a8e3c:v1",
-      "origin": "mdx:7a0e1b37833484747d68547d5d8e859c:blank-0",
+      "id": "cohort:paeds:c-1375784a0911:v1",
+      "origin": "mdx:6b4fd3e91f1b521aef9b7d58b6dd773c",
       "discipline": "paeds",
       "cardType": "cloze",
       "sourceComponent": "KeyPoint",
-      "front": "Pertussis presents with paroxysmal cough + inspiratory '[___]' + post-tussive vomiting; treat with azithromycin; infants <6 months may present with apnoea instead.",
-      "back": "whoop",
-      "context": "Pertussis classically has three stages: catarrhal (days 1-14, URTI-like — most contagious), paroxysmal (weeks 2-6, fits with inspiratory 'whoop', post-tussive vomiting, exhaustion), convalescent (weeks 6-10).\n\nInfants <6 months may NOT whoop — present with apnoea, cyanosis, feeding difficulty (mortality ~1 in 125).\n\nVaccinated individuals can still transmit — hence adult/adolescent boosters + cocoon strategy.",
+      "front": "A child with vesicoureteric reflux is particularly prone to recurrent [___].",
+      "back": "urinary tract infections",
+      "context": "The ureterovesical junction normally limits backward flow. Reflux can carry infected bladder urine towards the kidneys.",
       "complexity": 2,
       "importance": 2,
-      "variantGroup": "cohort:paeds:g-5809e8873c26",
-      "variantIndex": 0,
+      "variantGroup": null,
+      "variantIndex": null,
       "reference": null
     },
     {
@@ -298,21 +298,6 @@
       "complexity": 2,
       "importance": 2,
       "variantGroup": "cohort:paeds:g-5b63644b3bf2",
-      "variantIndex": 1,
-      "reference": null
-    },
-    {
-      "id": "cohort:paeds:c-13e8fa20a3fe:v1",
-      "origin": "mdx:d2b8057e13781b4e07aa4e9b35d4ccbd:blank-1",
-      "discipline": "paeds",
-      "cardType": "cloze",
-      "sourceComponent": "KeyPoint",
-      "front": "The classic triad of infectious mononucleosis is fever, [___], and lymphadenopathy.",
-      "back": "pharyngitis",
-      "context": "The classic triad probes joint involvement of fever, the oropharynx (exudative pharyngitis), and lymphoid tissue (cervical lymphadenopathy, often with splenomegaly).\n\nBilateral posterior cervical lymphadenopathy is more specific for EBV than anterior cervical adenopathy alone — the latter is just as common in bacterial pharyngitis.",
-      "complexity": 2,
-      "importance": 2,
-      "variantGroup": "cohort:paeds:g-c15a1799d123",
       "variantIndex": 1,
       "reference": null
     },
@@ -392,6 +377,21 @@
       "reference": null
     },
     {
+      "id": "cohort:paeds:c-14af5e98c050:v1",
+      "origin": "mdx:72867e73f8b49ba07bf9586e1b279e30",
+      "discipline": "paeds",
+      "cardType": "cloze",
+      "sourceComponent": "KeyPoint",
+      "front": "A child has 2 weeks of paroxysmal cough with a whoop. To confirm the suspected infection now, choose [___] rather than serology.",
+      "back": "PCR",
+      "context": "At two weeks of paroxysmal cough, pertussis PCR is still in its most useful window. Serology is not the early test, and culture is less sensitive than PCR.",
+      "complexity": 3,
+      "importance": 2,
+      "variantGroup": null,
+      "variantIndex": null,
+      "reference": null
+    },
+    {
       "id": "cohort:paeds:c-150d22ef2e8b:v1",
       "origin": "mdx:00c2f6bbe50ae5cbad672a94098d88a4:blank-0",
       "discipline": "paeds",
@@ -467,6 +467,21 @@
       "reference": null
     },
     {
+      "id": "cohort:paeds:c-15a7480bb1cc:v1",
+      "origin": "mdx:15cdccb0b98cd3f649d3b478a8e406ff",
+      "discipline": "paeds",
+      "cardType": "cloze",
+      "sourceComponent": "KeyPoint",
+      "front": "Before taking vital signs, the hands-off paediatric assessment judges interaction, tone, gaze and cry as the child's [___].",
+      "back": "appearance",
+      "context": "The Paediatric Assessment Triangle is a hands-off, across-the-room assessment. Its three components are appearance, work of breathing and circulation to skin.",
+      "complexity": 2,
+      "importance": 2,
+      "variantGroup": "cohort:paeds:g-061fd82e436d",
+      "variantIndex": null,
+      "reference": null
+    },
+    {
       "id": "cohort:paeds:c-15b76fd28894:v1",
       "origin": "mdx:2bd9ae152485f908f79648aae1752a0d:blank-0",
       "discipline": "paeds",
@@ -499,21 +514,6 @@
         "publisher": "The Royal Children's Hospital Melbourne",
         "url": "https://www.rch.org.au/clinicalguide/guideline_index/Sore_throat/"
       }
-    },
-    {
-      "id": "cohort:paeds:c-1611b3f13885:v1",
-      "origin": "mdx:1de2573c553d5a30e4cc6eb875fda166",
-      "discipline": "paeds",
-      "cardType": "cloze",
-      "sourceComponent": "KeyPoint",
-      "front": "[___] (intramural bowel gas) on AXR is the hallmark radiological finding of necrotising enterocolitis (NEC) in preterm neonates.",
-      "back": "Pneumatosis intestinalis",
-      "context": "Ischaemic injury to the bowel mucosa allows gas-producing bacteria to enter the bowel wall, where the gas dissects between layers and shows up on AXR as linear or bubbly lucencies hugging the bowel contour.\n\nProgression markers: portal venous gas (branching lucencies overlying the liver) indicates severe systemic dissemination, and free intraperitoneal air signals perforation requiring urgent surgery.",
-      "complexity": 2,
-      "importance": 2,
-      "variantGroup": null,
-      "variantIndex": null,
-      "reference": null
     },
     {
       "id": "cohort:paeds:c-164bf36e9b2d:v1",
@@ -679,25 +679,6 @@
       "variantGroup": null,
       "variantIndex": null,
       "reference": null
-    },
-    {
-      "id": "cohort:paeds:c-178751eb7522:v1",
-      "origin": "mdx:7a0e1b37833484747d68547d5d8e859c:blank-1",
-      "discipline": "paeds",
-      "cardType": "cloze",
-      "sourceComponent": "KeyPoint",
-      "front": "Pertussis presents with paroxysmal cough + inspiratory 'whoop' + post-tussive vomiting; treat with [___]; infants <6 months may present with apnoea instead.",
-      "back": "azithromycin",
-      "context": "Pertussis classically has three stages: catarrhal (days 1-14, URTI-like — most contagious), paroxysmal (weeks 2-6, fits with inspiratory 'whoop', post-tussive vomiting, exhaustion), convalescent (weeks 6-10).\n\nInfants <6 months may NOT whoop — present with apnoea, cyanosis, feeding difficulty (mortality ~1 in 125).\n\nVaccinated individuals can still transmit — hence adult/adolescent boosters + cocoon strategy.",
-      "complexity": 2,
-      "importance": 2,
-      "variantGroup": "cohort:paeds:g-5809e8873c26",
-      "variantIndex": 1,
-      "reference": {
-        "title": "Whooping cough (pertussis)",
-        "publisher": "The Royal Children's Hospital Melbourne",
-        "url": "https://www.rch.org.au/clinicalguide/guideline_index/Whooping_cough_pertussis/"
-      }
     },
     {
       "id": "cohort:paeds:c-179dbdf11789:v1",
@@ -974,6 +955,21 @@
       "reference": null
     },
     {
+      "id": "cohort:paeds:c-1c305dda0f8c:v1",
+      "origin": "mdx:96dcfd09628f9226eeb6bdae5ca79e7f",
+      "discipline": "paeds",
+      "cardType": "cloze",
+      "sourceComponent": "KeyPoint",
+      "front": "Venovenous ECMO provides [___] support only, so the patient's own heart must still function well enough to meet the body's needs.",
+      "back": "lung",
+      "context": "Blood is taken from a vein, oxygenated, and returned to a vein. Nothing in that loop pumps for the child.\n\nIf the ventricle cannot meet the body's needs, lung-only support leaves the circulation unsupported. That is the trap when pulmonary oedema is mistaken for the primary problem.",
+      "complexity": 1,
+      "importance": 2,
+      "variantGroup": null,
+      "variantIndex": null,
+      "reference": null
+    },
+    {
       "id": "cohort:paeds:c-1c3d72db7b6f:v1",
       "origin": "mdx:c0cd6b131f3d7bac1d95d571d9b79ae3",
       "discipline": "paeds",
@@ -983,6 +979,36 @@
       "back": "functional",
       "context": "Functional dyspepsia is a POSITIVE clinical diagnosis, not just 'all the tests were normal': epigastric pain or discomfort, early satiety, or postprandial fullness with no organic cause.\n\nRome IV asks for symptoms on at least 4 days/month for 2+ months. Alarm features that argue against it and force work-up: weight loss, vomiting, dysphagia, GI bleeding, nocturnal symptoms.",
       "complexity": 1,
+      "importance": 2,
+      "variantGroup": null,
+      "variantIndex": null,
+      "reference": null
+    },
+    {
+      "id": "cohort:paeds:c-1c55bbf63785:v1",
+      "origin": "mdx:ef45b555f102f1c7ba79722d26c1f304",
+      "discipline": "paeds",
+      "cardType": "cloze",
+      "sourceComponent": "KeyPoint",
+      "front": "The most common congenital heart lesion, announcing itself with a harsh pansystolic murmur at the lower left sternal edge from 4-8 weeks as pulmonary resistance falls, is a [___].",
+      "back": "VSD",
+      "context": "Anchor the frequency fact to the exam findings: a harsh pansystolic murmur at the lower left sternal edge, absent at birth and appearing at 4-8 weeks as pulmonary resistance falls and shunt flow picks up.\n\nSmall defects are often the loudest — high-velocity flow through a tight hole — and most close spontaneously.",
+      "complexity": 1,
+      "importance": 2,
+      "variantGroup": null,
+      "variantIndex": null,
+      "reference": null
+    },
+    {
+      "id": "cohort:paeds:c-1c5ca0e537ec:v1",
+      "origin": "mdx:43e7ee1dc96174dd4a092ef29025ab06",
+      "discipline": "paeds",
+      "cardType": "cloze",
+      "sourceComponent": "KeyPoint",
+      "front": "Consolidation that blurs the left heart border but spares the left hemidiaphragm lies in the [___].",
+      "back": "lingula",
+      "context": "The lingula is part of the left upper lobe and lies against the left heart border, as the middle lobe does on the right.\n\nSo lingular consolidation or collapse blurs the left heart border while the left hemidiaphragm stays sharp. Lower lobe disease does the opposite.",
+      "complexity": 2,
       "importance": 2,
       "variantGroup": null,
       "variantIndex": null,
@@ -1050,21 +1076,6 @@
       "importance": 2,
       "variantGroup": "cohort:paeds:g-71e657786a07",
       "variantIndex": 0,
-      "reference": null
-    },
-    {
-      "id": "cohort:paeds:c-1db39eccc1c9:v1",
-      "origin": "mdx:d2b8057e13781b4e07aa4e9b35d4ccbd:blank-2",
-      "discipline": "paeds",
-      "cardType": "cloze",
-      "sourceComponent": "KeyPoint",
-      "front": "The classic triad of infectious mononucleosis is fever, pharyngitis, and [___].",
-      "back": "lymphadenopathy",
-      "context": "The classic triad probes joint involvement of fever, the oropharynx (exudative pharyngitis), and lymphoid tissue (cervical lymphadenopathy, often with splenomegaly).\n\nBilateral posterior cervical lymphadenopathy is more specific for EBV than anterior cervical adenopathy alone — the latter is just as common in bacterial pharyngitis.",
-      "complexity": 2,
-      "importance": 2,
-      "variantGroup": "cohort:paeds:g-c15a1799d123",
-      "variantIndex": 2,
       "reference": null
     },
     {
@@ -1239,21 +1250,6 @@
         "publisher": "The Royal Children's Hospital Melbourne",
         "url": "https://www.rch.org.au/clinicalguide/guideline_index/Anaemia/"
       }
-    },
-    {
-      "id": "cohort:paeds:c-1fc2d8115faf:v1",
-      "origin": "mdx:a933eb83568568b029bf9c5cb0f94df4",
-      "discipline": "paeds",
-      "cardType": "cloze",
-      "sourceComponent": "KeyPoint",
-      "front": "After immediate urticaria following peanut ingestion, first-line testing for IgE-mediated allergy is [___] prick.",
-      "back": "skin",
-      "context": "IgE-mediated food allergy presents within minutes to 2 hours with urticaria, angioedema, or anaphylaxis.\n\nSkin prick testing detects sensitisation in vivo; a positive result still requires a convincing exposure history to confirm clinical allergy.",
-      "complexity": 1,
-      "importance": 2,
-      "variantGroup": null,
-      "variantIndex": null,
-      "reference": null
     },
     {
       "id": "cohort:paeds:c-1fe11f75998c:v1",

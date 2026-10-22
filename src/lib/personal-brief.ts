@@ -247,6 +247,8 @@ export interface Deadline {
   readingMin?: number;
   /** Explicit Review deep-link. Deadlines never inherit the block rotation. */
   reviewIntent?: ReviewIntent;
+  /** A counted form obligation, shown as one row on the Clinical tab, e.g. E&A 0/3. */
+  tally?: { label: string; done: number; required: number };
 }
 
 export interface ArrivalFact {

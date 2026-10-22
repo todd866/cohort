@@ -163,6 +163,21 @@
       "reference": null
     },
     {
+      "id": "cohort:paeds:c-d25aeea7f99b:v1",
+      "origin": "mdx:d7b7a19b84e43da9d44b69685338f822",
+      "discipline": "paeds",
+      "cardType": "cloze",
+      "sourceComponent": "KeyPoint",
+      "front": "On injection therapy during illness, basal insulin should usually [___] unless the team advises otherwise.",
+      "back": "continue",
+      "context": "On multiple daily injections, basal insulin must continue through illness unless the diabetes team advises otherwise. Stopping basal allows lipolysis and ketone rise even if the child is not eating much.\n\nRapid-acting insulin covers carbs and correction. With glucose and ketones both elevated, RCH adds rapid-acting insulin at 10% or 20% of the total daily dose, on top of usual doses, once ketones reach 0.6.\n\nThe family's own action plan takes precedence where it differs. With no plan to hand, the RCH table is the fallback, not a guess.",
+      "complexity": 1,
+      "importance": 2,
+      "variantGroup": null,
+      "variantIndex": null,
+      "reference": null
+    },
+    {
       "id": "cohort:paeds:c-d2b65ef874f1:v1",
       "origin": "mdx:a95a2faf6ae6419d18bd5114a63bd9e4:blank-1",
       "discipline": "paeds",
@@ -291,21 +306,6 @@
       "reference": null
     },
     {
-      "id": "cohort:paeds:c-d4b4d9032e0d:v1",
-      "origin": "mdx:d8f3f9973f627455d9cd6c07f94b06b4:blank-0",
-      "discipline": "paeds",
-      "cardType": "cloze",
-      "sourceComponent": "KeyPoint",
-      "front": "Most common bacterial cause of paediatric tonsillitis is Group A [___], peak 5-15 years, rare under 3; treat with phenoxymethylpenicillin to prevent rheumatic fever.",
-      "back": "Streptococcus",
-      "context": "GABHS (S. pyogenes) is the dominant bacterial cause of paediatric tonsillitis — peak 5-15y, rare <3y (immature lymphoid tissue, different flora). Most sore throats in young children are viral.\n\nGABHS needs phenoxymethylpenicillin 10 days, mainly to prevent acute rheumatic fever (antibiotics do NOT prevent post-streptococcal glomerulonephritis).\n\nTonsillectomy for recurrent cases meeting Paradise criteria (7+/yr, 5/yr for 2y, 3/yr for 3y).",
-      "complexity": 2,
-      "importance": 2,
-      "variantGroup": "cohort:paeds:g-42523ecdd3ae",
-      "variantIndex": 0,
-      "reference": null
-    },
-    {
       "id": "cohort:paeds:c-d50025f3c1e4:v1",
       "origin": "mdx:338e41d8f13367c5dd4f9c4d4d9b457e:blank-1",
       "discipline": "paeds",
@@ -333,6 +333,21 @@
       "importance": 2,
       "variantGroup": "cohort:paeds:g-fb7c270744cc",
       "variantIndex": 1,
+      "reference": null
+    },
+    {
+      "id": "cohort:paeds:c-d59f8bceba6a:v1",
+      "origin": "mdx:ec7a863c675f2a2d95e5d6639a9ab8fa",
+      "discipline": "paeds",
+      "cardType": "cloze",
+      "sourceComponent": "KeyPoint",
+      "front": "After anaphylaxis, observe the child for at least [___] after the last adrenaline dose before discharge.",
+      "back": "4 hours",
+      "context": "Discharge with adrenaline autoinjectors, an ASCIA Action Plan and allergy referral.\n\nObserve for longer, often overnight, after a severe reaction or when more than one adrenaline dose was needed.",
+      "complexity": 2,
+      "importance": 2,
+      "variantGroup": null,
+      "variantIndex": null,
       "reference": null
     },
     {
@@ -516,6 +531,21 @@
       "reference": null
     },
     {
+      "id": "cohort:paeds:c-dc6454ddb998:v1",
+      "origin": "mdx:63627d99710b7d764fcc7942ef528dc1",
+      "discipline": "paeds",
+      "cardType": "cloze",
+      "sourceComponent": "KeyPoint",
+      "front": "A 10-year-old reaches ED 30 minutes after an upper central incisor was knocked out. A teacher kept the intact tooth in milk, and he is alert and cooperative. Before urgent dental review, the ED doctor should [___] it.",
+      "back": "replant",
+      "context": "Upper central incisors are permanent from about 7 to 8 years, and a permanent tooth survives best back in its own socket. Milk only keeps the root-surface cells alive until then.\n\nHold it by the crown, rinse it gently in saline if dirty without scrubbing, ease it into the socket and have him bite on gauze. Prophylactic antibiotics follow replantation.\n\nThe emergency dental service then splints it. A primary tooth is never replanted, because that can damage the permanent tooth developing beneath it.",
+      "complexity": 3,
+      "importance": 2,
+      "variantGroup": "cohort:paeds:g-35ccb487ed10",
+      "variantIndex": null,
+      "reference": null
+    },
+    {
       "id": "cohort:paeds:c-dcc3aa84d60a:v1",
       "origin": "mdx:a71eccb90d6704b118fc7299404382a2:blank-0",
       "discipline": "paeds",
@@ -588,21 +618,6 @@
       "importance": 2,
       "variantGroup": "cohort:paeds:g-2de988dc0057",
       "variantIndex": null,
-      "reference": null
-    },
-    {
-      "id": "cohort:paeds:c-de6a014fdbb6:v1",
-      "origin": "mdx:3939bedd1fb35ab701c7819c25bffb0a:blank-1",
-      "discipline": "paeds",
-      "cardType": "cloze",
-      "sourceComponent": "KeyPoint",
-      "front": "Pubertal gynaecomastia affects ~80% of normal males in Tanner stages 3-4; usually resolves spontaneously within [___] years.",
-      "back": "1-2",
-      "context": "Pubertal gynaecomastia affects up to 80% of normal males in Tanner stage 3-4 — transient relative oestrogen excess as testosterone production rises.\n\nRefer if persistent (>2 years), severe, or features of underlying pathology (Klinefelter, drug use, sex steroid tumour).",
-      "complexity": 2,
-      "importance": 2,
-      "variantGroup": "cohort:paeds:g-f3e0406503c2",
-      "variantIndex": 1,
       "reference": null
     },
     {

@@ -37,6 +37,9 @@ export interface Station {
   viva?: { q: string; a: string }[];
   review: { rotation: string; topics: string[] };
   sources: StationSource[];
-  /** Who may open it beyond the owner/allowlist. 'cah' = any signed-in learner enrolled in CAH. */
-  audiences?: ('cah')[];
+  /**
+   * Who may open it beyond the owner/allowlist. 'cah' = any signed-in learner
+   * enrolled in CAH; 'md1' = a learner enrolled in the MD1 KAT4 + MMCA deck.
+   */
+  audiences?: ('cah' | 'md1')[];
 }

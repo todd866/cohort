@@ -108,7 +108,7 @@ export async function notifyOpsAlert(alert: OpsAlert): Promise<OpsAlertResult> {
         body: JSON.stringify({
           from: emailFrom,
           to: adminRecipients,
-          subject: `[MD3 ${alert.severity}] ${alert.code}`,
+          subject: `[md3 ${alert.severity}] ${alert.code}`,
           text: [
             alert.summary,
             '',

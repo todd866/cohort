@@ -68,6 +68,8 @@ describe('shared database target resolution', () => {
     // stale embeddings while its own diagnostic (audit:embedding-coverage)
     // reads production, so the loop could never converge.
     const productionWrites = [
+      // 2026-10-22: sets User.institution where NULL; mirrored, it would report a backfill production never got.
+      'ops:backfill-usyd-institution',
       'manifold:embed',
       'manifold:cluster',
       'manifold:subspaces',
@@ -156,6 +158,8 @@ describe('shared database target resolution', () => {
       // Added 2026-10-15: learner-recorded exam results against md3 and practice
       // papers; a mirror read would report a stale cohort as today's.
       'audit:exam-gaps',
+      // Added 2026-10-22: what each active learner's pages decide, from production state.
+      'audit:ux-relevance',
       // Added 2026-08-12 after it silently read the mirror: the mirror listed
       // 4,235 imageless cards against production's 9,683, so a candidate set
       // built from it would have missed more than half the corpus AND risked

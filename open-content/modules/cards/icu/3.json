@@ -155,21 +155,6 @@
       "reference": null
     },
     {
-      "id": "cohort:icu:c-37dbbb0b3529:v1",
-      "origin": "mdx:9769d28460793772c7b351c8e6943730",
-      "discipline": "icu",
-      "cardType": "cloze",
-      "sourceComponent": "KeyPoint",
-      "front": "Normal lactate upper limit: below [___]. Levels of 2–4 are mildly elevated; above 4 is severe.",
-      "back": "2 mmol/L",
-      "context": "Lactate 2–4 is mildly elevated and warrants monitoring; above 4 is severe.",
-      "complexity": 2,
-      "importance": 2,
-      "variantGroup": null,
-      "variantIndex": null,
-      "reference": null
-    },
-    {
       "id": "cohort:icu:c-3864757a51e3:v1",
       "origin": "mdx:9ed7185998a71d5fc3757348acaf7a30:blank-1",
       "discipline": "icu",
@@ -196,21 +181,6 @@
       "complexity": 1,
       "importance": 2,
       "variantGroup": "cohort:icu:g-3bae3f4957b6",
-      "variantIndex": 1,
-      "reference": null
-    },
-    {
-      "id": "cohort:icu:c-388313e7794c:v1",
-      "origin": "mdx:37e46baddcd4a0d3adf854c295ff2594:blank-1",
-      "discipline": "icu",
-      "cardType": "cloze",
-      "sourceComponent": "KeyPoint",
-      "front": "A-a gradient = PAO₂ minus [___]. Age-adjusted upper limit (mmHg) ≈ (age÷4) + 4 mmHg.",
-      "back": "PaO₂",
-      "context": "A-a gradient quantifies gas exchange efficiency. Normal widens with age.\n\nElevated A-a = intrinsic lung pathology (V/Q mismatch, shunt, diffusion impairment). Normal A-a with hypoxaemia = hypoventilation (lungs fine).",
-      "complexity": 2,
-      "importance": 2,
-      "variantGroup": "cohort:icu:g-08695ff3aae1",
       "variantIndex": 1,
       "reference": null
     },

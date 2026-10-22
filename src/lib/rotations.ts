@@ -67,6 +67,11 @@ export async function getExamDateForUser(
   return getRotation(rotationId)?.defaultExamDate ?? null;
 }
 
+export function defaultExamDateFor(rotationId: string, _track: number | null | undefined): Date | null {
+  void _track;
+  return getRotation(rotationId)?.defaultExamDate ?? null;
+}
+
 export function getExamDate(rotationId: string): Date | null {
   return getRotation(rotationId)?.defaultExamDate ?? null;
 }

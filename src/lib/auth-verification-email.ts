@@ -11,9 +11,9 @@ export interface MutableAuthEnvironment extends VerificationEmailEnvironment {
 
 export interface VerificationEmailContext {
   verifyUrl: string;
-  productName: 'Cohort' | 'MD3 Study';
-  actionLabel: 'Sign in to Cohort' | 'Sign in to MD3';
-  subject: 'Sign in to Cohort' | 'Sign in to MD3 Study';
+  productName: 'Cohort' | 'md3 Study';
+  actionLabel: 'Sign in to Cohort' | 'Sign in to md3';
+  subject: 'Sign in to Cohort' | 'Sign in to md3 Study';
 }
 
 const FIRST_PARTY_HOSTS = new Set([
@@ -160,8 +160,8 @@ export function buildVerificationEmailContext(
   }
 
   const isCohort = callback.hostname.toLowerCase().replace(/^www\./, '') === 'cohort.md';
-  const productName = isCohort ? 'Cohort' : 'MD3 Study';
-  const actionLabel = isCohort ? 'Sign in to Cohort' : 'Sign in to MD3';
+  const productName = isCohort ? 'Cohort' : 'md3 Study';
+  const actionLabel = isCohort ? 'Sign in to Cohort' : 'Sign in to md3';
   const verify = new URL('/auth/verify-email', trustedOrigin);
   verify.searchParams.set('callback', callback.toString());
 

@@ -80,6 +80,21 @@
       "reference": null
     },
     {
+      "id": "cohort:paeds:c-7204554d92cd:v1",
+      "origin": "mdx:e9fa439a10b3efea3d519cca43c93d05",
+      "discipline": "paeds",
+      "cardType": "cloze",
+      "sourceComponent": "KeyPoint",
+      "front": "A scooped (concave) expiratory limb on the flow-volume loop is the shape of [___] airway disease.",
+      "back": "obstructive",
+      "context": "The flow-volume loop draws the same numbers as a shape. In obstruction, expiration starts fast then flow collapses as small airways close early, so the descending limb is scooped (concave) instead of straight.\n\nRestriction shrinks the whole loop but keeps its shape, a miniature normal.\n\nA flattened inspiratory limb means obstruction outside the chest (a floppy upper airway); flattening of both limbs means a fixed narrowing such as tracheal stenosis.",
+      "complexity": 1,
+      "importance": 2,
+      "variantGroup": null,
+      "variantIndex": null,
+      "reference": null
+    },
+    {
       "id": "cohort:paeds:c-722cde78deb2:v1",
       "origin": "mdx:afb39b5ce6eb2e7609238da25286c9bc",
       "discipline": "paeds",
@@ -154,7 +169,7 @@
       "context": "Hip pain by age is the highest-yield paediatric ortho pattern. Avascular necrosis of the femoral head strikes the 4–10 boy; younger onset means more remodelling time and a better prognosis.",
       "complexity": 1,
       "importance": 2,
-      "variantGroup": null,
+      "variantGroup": "cohort:paeds:g-f970a83d2e62",
       "variantIndex": null,
       "reference": null
     },
@@ -199,21 +214,6 @@
       "context": "Peak age is 3-18 months, classically after a viral illness enlarges Peyer's patches to form the ileocolic lead point. Between episodes the child may look deceptively well.\n\nRedcurrant-jelly stool is a late, ischaemic sign — do not wait for it; ultrasound shows the target sign.",
       "complexity": 1,
       "importance": 3,
-      "variantGroup": null,
-      "variantIndex": null,
-      "reference": null
-    },
-    {
-      "id": "cohort:paeds:c-73951e95f32b:v1",
-      "origin": "mdx:0a3ed57ae6f70ea1da66625c18ab69b5",
-      "discipline": "paeds",
-      "cardType": "cloze",
-      "sourceComponent": "KeyPoint",
-      "front": "A guideline's antibiotic duration usually counts the [___] IV-plus-oral course rather than a new course after step-down.",
-      "back": "total",
-      "context": "RCH durations generally mean the minimum total treatment, combining intravenous and oral days. Switching route does not reset the course clock.\n\nDuration still changes with source control, organism, complications and response, so use a site-specific guideline rather than extending treatment by habit.",
-      "complexity": 2,
-      "importance": 2,
       "variantGroup": null,
       "variantIndex": null,
       "reference": null
@@ -324,6 +324,21 @@
       "complexity": 1,
       "importance": 2,
       "variantGroup": "cohort:paeds:g-e3ba136b992a",
+      "variantIndex": null,
+      "reference": null
+    },
+    {
+      "id": "cohort:paeds:c-74efdc3b428d:v1",
+      "origin": "mdx:1216ebe6c891386d3dab2622914c37cf",
+      "discipline": "paeds",
+      "cardType": "cloze",
+      "sourceComponent": "KeyPoint",
+      "front": "Oral propranolol is the first-line drug when an [___] haemangioma needs treatment near the eye or airway.",
+      "back": "infantile",
+      "context": "Only the minority that threaten function or ulcerate need treatment. Oral propranolol shrinks them and is first-line over steroids or surgery.",
+      "complexity": 1,
+      "importance": 2,
+      "variantGroup": "cohort:paeds:g-46931afa1b21",
       "variantIndex": null,
       "reference": null
     },
@@ -572,6 +587,21 @@
       "reference": null
     },
     {
+      "id": "cohort:paeds:c-78a34eacdd75:v1",
+      "origin": "mdx:99fa27ab8828ea78b381d7db40229031",
+      "discipline": "paeds",
+      "cardType": "cloze",
+      "sourceComponent": "KeyPoint",
+      "front": "A newborn with microcephaly, cleft lip and palate, polycystic kidneys and postaxial polydactyly has [___].",
+      "back": "Patau syndrome",
+      "context": "Patau syndrome is trisomy 13. Its phenotype includes severe midline malformations, microcephaly, cleft lip and palate, polydactyly and polycystic kidneys.",
+      "complexity": 2,
+      "importance": 2,
+      "variantGroup": "cohort:paeds:g-9c0d727ab99f",
+      "variantIndex": null,
+      "reference": null
+    },
+    {
       "id": "cohort:paeds:c-79153d26420f:v1",
       "origin": "mdx:fd51715151d840a874775e1cedf530ad",
       "discipline": "paeds",
@@ -662,21 +692,6 @@
       "reference": null
     },
     {
-      "id": "cohort:paeds:c-7a6dce2324c6:v1",
-      "origin": "mdx:f7a7ea5a5f555e7dc745b8a4f3c6bafa:blank-0",
-      "discipline": "paeds",
-      "cardType": "cloze",
-      "sourceComponent": "KeyPoint",
-      "front": "Primary haemostasis (platelet plug, mucocutaneous bleeding) is mediated by [___] and vWF; secondary haemostasis (deep bleeding) is mediated by coagulation factors.",
-      "back": "platelets",
-      "context": "Primary haemostasis: platelets + vWF form the initial platelet plug at sites of vascular injury.\n\nSecondary haemostasis: coagulation factor cascade generates fibrin thrombus stabilising the clot.\n\nDefects cause deep bleeding (joints, muscles, post-surgical) — haemophilia A/B, factor deficiencies, anticoagulation.",
-      "complexity": 1,
-      "importance": 2,
-      "variantGroup": "cohort:paeds:g-d5b5d348df6d",
-      "variantIndex": 0,
-      "reference": null
-    },
-    {
       "id": "cohort:paeds:c-7a77bfcaaf36:v1",
       "origin": "mdx:713d9feb14d8121e22f2d0307f341909",
       "discipline": "paeds",
@@ -704,6 +719,21 @@
       "importance": 2,
       "variantGroup": "cohort:paeds:g-44de98cd8d2f",
       "variantIndex": 0,
+      "reference": null
+    },
+    {
+      "id": "cohort:paeds:c-7ab03a0664d9:v1",
+      "origin": "mdx:9be17050f4bed6fd0f7bfcb3353eb3a8",
+      "discipline": "paeds",
+      "cardType": "cloze",
+      "sourceComponent": "KeyPoint",
+      "front": "Obtain appropriate [___] before antibiotics when this causes no treatment delay; in critical infection, give empiric therapy promptly.",
+      "back": "cultures",
+      "context": "Obtain appropriate cultures before the first dose when this can be done promptly, because antibiotics reduce culture yield and the result enables narrowing.\n\nIn sepsis, meningitis or another time-critical infection, sampling must not become a reason to delay empiric treatment.",
+      "complexity": 2,
+      "importance": 3,
+      "variantGroup": null,
+      "variantIndex": null,
       "reference": null
     },
     {
@@ -794,6 +824,21 @@
       "importance": 2,
       "variantGroup": null,
       "variantIndex": null,
+      "reference": null
+    },
+    {
+      "id": "cohort:paeds:c-7c51c441bc71:v1",
+      "origin": "mdx:5356e1d537e451b7df3a5f39178c02dd:blank-0",
+      "discipline": "paeds",
+      "cardType": "cloze",
+      "sourceComponent": "KeyPoint",
+      "front": "Paediatric Assessment Triangle (PAT) components: [___], Work of Breathing, Circulation to skin; abnormality in any = sick child.",
+      "back": "Appearance",
+      "context": "The Paediatric Assessment Triangle is a 60-second visual triage from the doorway, before touching the child: Appearance, Work of Breathing, Circulation to skin.\n\nWork of breathing is audible noises, retractions, flaring and the position chosen. Circulation to skin is pallor, mottling and cyanosis — a perfusion sign, not oxygenation, and the side most often forgotten.\n\nBreathing alone is respiratory distress; add abnormal appearance and it is respiratory failure. Circulation alone is compensated shock; add appearance, decompensated; all three, cardiopulmonary failure.",
+      "complexity": 2,
+      "importance": 2,
+      "variantGroup": "cohort:paeds:g-509c80022e6b",
+      "variantIndex": 0,
       "reference": null
     },
     {
@@ -945,6 +990,25 @@
       "variantGroup": "cohort:paeds:g-afa994982837",
       "variantIndex": 0,
       "reference": null
+    },
+    {
+      "id": "cohort:paeds:c-7eff6ebfac41:v1",
+      "origin": "mdx:1072b6ab1f74d731a034e308b7ac30be",
+      "discipline": "paeds",
+      "cardType": "cloze",
+      "sourceComponent": "KeyPoint",
+      "front": "Shock from gastroenteritis is treated with a 10-20 mL/kg bolus of [___], then reassessment.",
+      "back": "0.9% sodium chloride",
+      "context": "Oral or nasogastric rehydration is for mild to moderate dehydration without shock.\n\nNever use a hypotonic fluid for a bolus.",
+      "complexity": 2,
+      "importance": 2,
+      "variantGroup": null,
+      "variantIndex": null,
+      "reference": {
+        "title": "Intravenous fluids",
+        "publisher": "The Royal Children's Hospital Melbourne",
+        "url": "https://www.rch.org.au/clinicalguide/guideline_index/Intravenous_fluids/"
+      }
     },
     {
       "id": "cohort:paeds:c-7f2e540d4077:v1",

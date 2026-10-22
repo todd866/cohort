@@ -3,11 +3,11 @@ import Link from 'next/link';
 import { redirect } from 'next/navigation';
 import { auth } from '@/lib/auth';
 import { prisma } from '@/lib/prisma';
-import { ROTATIONS } from '@/lib/rotations';
+import { examDateRows } from './exam-date-rows';
 import ProfileSettingsClient, { type SettingsRotation } from './ProfileSettingsClient';
 
 export const metadata: Metadata = {
-  title: 'Settings - MD3',
+  title: 'Settings - md3',
   description: 'Manage study dates, appearance and account preferences.',
 };
 
@@ -20,6 +20,8 @@ export default async function ProfileSettingsPage() {
     select: {
       email: true,
       jurisdiction: true,
+      institution: true,
+      track: true,
       rotations: {
         select: {
           rotation: true,
@@ -34,13 +36,7 @@ export default async function ProfileSettingsPage() {
     rotation.rotation,
     rotation.examDate,
   ]));
-  const rotations: SettingsRotation[] = ROTATIONS.map((rotation) => ({
-    id: rotation.id,
-    shortName: rotation.shortName,
-    examDate: (examDates.get(rotation.id) ?? rotation.defaultExamDate)
-      .toISOString()
-      .slice(0, 10),
-  }));
+  const rotations: SettingsRotation[] = examDateRows(user.institution, examDates, user.track);
 
   return (
     <div className="min-h-screen bg-[var(--md-surface)] py-8">

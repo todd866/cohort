@@ -5,21 +5,6 @@
   "attribution": "MD3 contributors",
   "cards": [
     {
-      "id": "cohort:icu:c-f0db14ed54ab:v1",
-      "origin": "mdx:f70fb74f9cc25c20ec475d93aabbc61c:blank-2",
-      "discipline": "icu",
-      "cardType": "cloze",
-      "sourceComponent": "KeyPoint",
-      "front": "Base excess normal range: −2 to +2 mmol/L. Negative (base deficit) = metabolic [___]. Positive = metabolic alkalosis. More negative than −10: severe (haemorrhage, septic shock).",
-      "back": "acidosis",
-      "context": "Base excess quantifies the metabolic component independent of respiratory changes. It answers: how much acid or base to add to return pH to 7.40 at pCO₂ 40?\n\nIn trauma, BE is a surrogate for shock severity.",
-      "complexity": 1,
-      "importance": 2,
-      "variantGroup": "cohort:icu:g-dd19d7abf335",
-      "variantIndex": 2,
-      "reference": null
-    },
-    {
       "id": "cohort:icu:c-f19fc433f85c:v1",
       "origin": "mdx:ff666b187c096286fce62ac2529932f0:blank-1",
       "discipline": "icu",
@@ -272,21 +257,6 @@
       "importance": 2,
       "variantGroup": null,
       "variantIndex": null,
-      "reference": null
-    },
-    {
-      "id": "cohort:icu:c-f95e0fe29e1a:v1",
-      "origin": "mdx:f70fb74f9cc25c20ec475d93aabbc61c:blank-3",
-      "discipline": "icu",
-      "cardType": "cloze",
-      "sourceComponent": "KeyPoint",
-      "front": "Base excess normal range: −2 to +2 mmol/L. Negative (base deficit) = metabolic acidosis. Positive = metabolic [___]. More negative than −10: severe (haemorrhage, septic shock).",
-      "back": "alkalosis",
-      "context": "Base excess quantifies the metabolic component independent of respiratory changes. It answers: how much acid or base to add to return pH to 7.40 at pCO₂ 40?\n\nIn trauma, BE is a surrogate for shock severity.",
-      "complexity": 1,
-      "importance": 2,
-      "variantGroup": "cohort:icu:g-dd19d7abf335",
-      "variantIndex": 3,
       "reference": null
     },
     {

@@ -193,7 +193,7 @@ export function CockpitLab() {
             href="/"
             className="text-xs text-[var(--md-on-surface-variant)] hover:text-[var(--md-primary)]"
           >
-            MD3
+            md3
           </Link>
           <div className="text-sm font-semibold text-[var(--md-on-surface)] truncate">
             Cockpit

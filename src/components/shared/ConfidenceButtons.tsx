@@ -53,7 +53,20 @@ const LEVELS = [
   { confidence: 4, color: 'var(--md-primary)' },
 ] as const;
 
-const tint = (color: string) => `color-mix(in srgb, ${color} 14%, transparent)`;
+// The footer tiles are a fixed 52px: the AI chat dock's composer is laid out
+// to meet the review footer at the same top edge (tutor-dock-viewport.spec).
+// Variant B (owner pick, 21 Oct 2026): each grade is a tile washed in its own
+// colour, with its key as an inline keycap. All four carry equal weight: the
+// grade is the scheduler's only input, so no button is styled as the default.
+const tileStyle = (color: string, selected: boolean) => ({
+  color,
+  backgroundColor: `color-mix(in srgb, ${color} ${selected ? 26 : 12}%, var(--md-surface-container-lowest))`,
+  borderColor: selected ? color : `color-mix(in srgb, ${color} 35%, transparent)`,
+});
+
+function Keycap({ n }: { n: number }) {
+  return <kbd aria-hidden="true" className="rounded border border-current/40 px-1 font-mono text-[11px] font-medium leading-4 opacity-80 tabular-nums">{n}</kbd>;
+}
 
 interface ConfidenceButtonsProps {
   mode: 'inline' | 'footer';
@@ -90,20 +103,11 @@ export function ConfidenceButtons({
                 disabled={disabled}
                 onClick={() => onSelect(level.confidence)}
                 aria-label={confidenceButtonName(level.confidence)}
-                className={`review-choice flex-1 py-2.5 rounded-lg border transition-colors font-medium text-sm ${
-                  isSelected
-                    ? 'border-current'
-                    : 'border-[var(--md-outline-soft)] bg-[var(--md-surface-container-high)] hover:bg-[var(--md-surface-container-highest)]'
-                } ${disabled && !isSelected ? 'opacity-40' : ''}`}
-                style={{
-                  color: level.color,
-                  ...(isSelected ? { backgroundColor: tint(level.color) } : {}),
-                }}
+                className={`review-choice flex flex-1 h-[52px] items-center justify-center gap-2 rounded-[10px] border font-semibold text-sm transition-colors hover:brightness-[0.97] ${disabled && !isSelected ? 'opacity-40' : ''}`}
+                style={tileStyle(level.color, isSelected)}
               >
-                <span className="block leading-tight">{CONFIDENCE_LABELS[level.confidence]}</span>
-                <span className="block text-[10px] leading-tight opacity-60 tabular-nums">
-                  {level.confidence}
-                </span>
+                {CONFIDENCE_LABELS[level.confidence]}
+                <Keycap n={level.confidence} />
               </button>
             );
           })}
@@ -123,18 +127,11 @@ export function ConfidenceButtons({
             disabled={disabled}
             onClick={() => onSelect(level.confidence)}
             aria-label={confidenceButtonName(level.confidence)}
-            className={`review-choice min-w-[44px] min-h-[44px] px-2 rounded-md border text-xs font-medium transition-colors ${
-              isSelected
-                ? 'border-current'
-                : 'border-transparent hover:bg-[var(--md-surface-container-high)] hover:border-[var(--md-outline-soft)]'
-            } ${disabled && !isSelected ? 'opacity-40' : ''}`}
-            style={
-              isSelected
-                ? { color: level.color, backgroundColor: tint(level.color) }
-                : { color: 'color-mix(in srgb, var(--md-on-surface-variant) 55%, transparent)' }
-            }
+            className={`review-choice flex min-h-11 min-w-11 items-center justify-center gap-1.5 rounded-lg border px-2.5 text-xs font-semibold transition-colors hover:brightness-[0.97] ${disabled && !isSelected ? 'opacity-40' : ''}`}
+            style={tileStyle(level.color, isSelected)}
           >
             {CONFIDENCE_LABELS[level.confidence]}
+            <Keycap n={level.confidence} />
           </button>
         );
       })}

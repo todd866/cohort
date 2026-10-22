@@ -50,21 +50,6 @@
       "reference": null
     },
     {
-      "id": "cohort:paeds:c-81436ba826eb:v1",
-      "origin": "mdx:269a3f18db1bd131e3fac74015d424f1",
-      "discipline": "paeds",
-      "cardType": "cloze",
-      "sourceComponent": "KeyPoint",
-      "front": "A well 5-year-old has 20 pearly umbilicated papules on the trunk for 4 months; the parents want them removed. The advice is that they resolve without treatment within [___].",
-      "back": "18 months",
-      "context": "Molluscum is a poxvirus infection that clears on its own over 6 to 18 months once immunity develops. Treatment is for cosmetic or social reasons only and risks scarring.\n\nThe exception is the immunocompromised child, in whom hundreds of lesions can persist and need a dermatologist.",
-      "complexity": 3,
-      "importance": 3,
-      "variantGroup": "cohort:paeds:g-2af111ce54c8",
-      "variantIndex": null,
-      "reference": null
-    },
-    {
       "id": "cohort:paeds:c-8176f79f9cb3:v1",
       "origin": "mdx:ef591eedaa0df74a80826a83e30c9e50",
       "discipline": "paeds",
@@ -118,6 +103,21 @@
       }
     },
     {
+      "id": "cohort:paeds:c-82bdb2018cc3:v1",
+      "origin": "mdx:69c4d6dcd1ab6c496c676035a8899b53",
+      "discipline": "paeds",
+      "cardType": "cloze",
+      "sourceComponent": "KeyPoint",
+      "front": "Constitutional delay is distinguished from familial short stature because its [___] age is delayed.",
+      "back": "bone",
+      "context": "Constitutional delay and familial short stature look alike on a single measurement and separate on two other data points.\n\nIn CONSTITUTIONAL delay the bone age is DELAYED relative to chronological age, and the predicted adult height is normal — the child is late, not short.\n\nIn FAMILIAL short stature the bone age matches chronological age and the predicted height is genuinely low, matching the parents.",
+      "complexity": 4,
+      "importance": 2,
+      "variantGroup": "cohort:paeds:g-940c9698df59",
+      "variantIndex": null,
+      "reference": null
+    },
+    {
       "id": "cohort:paeds:c-831afb655d16:v1",
       "origin": "mdx:425c1b7c9f7a089234246112dbe914fa:blank-0",
       "discipline": "paeds",
@@ -145,6 +145,21 @@
       "importance": 3,
       "variantGroup": "cohort:paeds:g-1780cf63bfe1",
       "variantIndex": 0,
+      "reference": null
+    },
+    {
+      "id": "cohort:paeds:c-843a436948c8:v1",
+      "origin": "mdx:1739c32900f0e39b19fe4a3ebd2dfbed",
+      "discipline": "paeds",
+      "cardType": "cloze",
+      "sourceComponent": "KeyPoint",
+      "front": "An object pushed into the mouth during this seizure gets [___].",
+      "back": "bitten",
+      "context": "The jaw clenches by itself during the jerking. A finger or a spoon put between the teeth gets bitten, and it does not stop the seizure.",
+      "complexity": 1,
+      "importance": 2,
+      "variantGroup": null,
+      "variantIndex": null,
       "reference": null
     },
     {
@@ -190,6 +205,21 @@
       "importance": 2,
       "variantGroup": null,
       "variantIndex": null,
+      "reference": null
+    },
+    {
+      "id": "cohort:paeds:c-8527cd9da52f:v1",
+      "origin": "mdx:81b1c2d417e5eff1c47c0e9100a8ecfc:blank-1",
+      "discipline": "paeds",
+      "cardType": "cloze",
+      "sourceComponent": "KeyPoint",
+      "front": "The APLS hypotension rule of thumb covers only the 1-10 year band. For a term neonate the threshold is instead a systolic below 60 mmHg, and for a child over ten it is a systolic below [___] mmHg.",
+      "back": "90",
+      "context": "The 70 + (2 x age) rule is the one most people memorise, but it only covers 1-10 years, and the two bands either side of it are where the rule quietly fails.\n\nApplying it to a neonate gives 70, which would wrongly label a normal newborn as shocked; applying it to a fifteen-year-old gives 100, which would wrongly label a shocked adolescent as fine.\n\nLearn the three bands together, not the middle one alone.",
+      "complexity": 2,
+      "importance": 2,
+      "variantGroup": "cohort:paeds:g-0363bd6a3359",
+      "variantIndex": 1,
       "reference": null
     },
     {
@@ -332,18 +362,18 @@
       "reference": null
     },
     {
-      "id": "cohort:paeds:c-886fb6bce3b4:v1",
-      "origin": "mdx:bd1d8217113cfdbd6552564f8a2d1e5c:blank-0",
+      "id": "cohort:paeds:c-88d579409904:v1",
+      "origin": "mdx:f873ee5b13ed6b9ff63ab36ed21c6beb",
       "discipline": "paeds",
       "cardType": "cloze",
       "sourceComponent": "KeyPoint",
-      "front": "Cyanotic newborn not improving with oxygen (suspected duct-dependent CHD): start [___] (alprostadil) infusion to maintain ductal patency while awaiting echo.",
-      "back": "prostaglandin E1",
-      "context": "Duct-dependent CHD relies on a patent ductus arteriosus for either pulmonary flow (pulmonary/tricuspid atresia, severe pulmonary stenosis) or systemic flow (HLHS, critical aortic stenosis, coarctation).\n\nThe duct normally closes in the first days of life — exactly when these babies crash. Empirical PGE1 (alprostadil 0.01-0.05 µg/kg/min IV) keeps it open by relaxing ductal smooth muscle.\n\nGive it to any cyanotic or collapsed neonate with duct-dependent CHD on the differential, even before echo. An unnecessary start is low-cost (apnoea, fever, hypotension); NOT starting risks a dead infant.",
-      "complexity": 2,
+      "front": "A child whose turned eye was never treated loses vision in it from [___], though the eye itself is healthy.",
+      "back": "amblyopia",
+      "context": "An eye that turns and is not used loses cortical vision, even when the eyeball itself is structurally normal.\n\nStraightening the eyes later does not give that vision back. The cortex has already dropped the signal.",
+      "complexity": 4,
       "importance": 2,
-      "variantGroup": "cohort:paeds:g-cf6b0e8b381b",
-      "variantIndex": 0,
+      "variantGroup": null,
+      "variantIndex": null,
       "reference": null
     },
     {
@@ -386,21 +416,6 @@
       "back": "tide mark",
       "context": "When a child is held in hot water, the skin contacts liquid at a single static level — producing a sharp horizontal line between burned and unburned tissue.\n\nAccidental spills produce splash patterns: irregular borders, asymmetric depth, and no spared creases because the child moves.",
       "complexity": 2,
-      "importance": 2,
-      "variantGroup": null,
-      "variantIndex": null,
-      "reference": null
-    },
-    {
-      "id": "cohort:paeds:c-89a52c798e57:v1",
-      "origin": "mdx:1d2dcf5c42936dad0349c2e52be801ee",
-      "discipline": "paeds",
-      "cardType": "cloze",
-      "sourceComponent": "KeyPoint",
-      "front": "A 6-year-old finishes a 4-day burst of prednisolone for acute asthma. The course should be stopped [___], without a taper.",
-      "back": "now",
-      "context": "The taper decision is about cumulative adrenal-axis exposure, not a universal day-count threshold. A short burst can be stopped without weaning.\n\nLonger or repeated systemic courses need individual review; repeated bursts should also trigger a preventer and adherence review.",
-      "complexity": 3,
       "importance": 2,
       "variantGroup": null,
       "variantIndex": null,
@@ -486,21 +501,6 @@
       "reference": null
     },
     {
-      "id": "cohort:paeds:c-8b2373338f63:v1",
-      "origin": "mdx:ffdb2aa10f1bec5079957c76c79ff0fd:blank-1",
-      "discipline": "paeds",
-      "cardType": "cloze",
-      "sourceComponent": "KeyPoint",
-      "front": "ADING separates nutrition, which is what the child takes in, from [___], which is the plotted trajectory that results.",
-      "back": "growth",
-      "context": "Nutrition and growth are deliberately separate letters, because they answer different questions. Nutrition is what goes in — breast or formula, volumes, solids, appetite, food refusal.\n\n Growth is the plotted result over time.\n\nA growth chart cannot tell you about intake, and a feeding history cannot tell you whether the child is thriving, so a history that collapses the two loses the link between them.",
-      "complexity": 1,
-      "importance": 2,
-      "variantGroup": "cohort:paeds:g-12b4cee48493",
-      "variantIndex": 1,
-      "reference": null
-    },
-    {
       "id": "cohort:paeds:c-8b68dfc6ab1b:v1",
       "origin": "mdx:6a94c9016d13e607406cd59bf158b35a:blank-0",
       "discipline": "paeds",
@@ -531,21 +531,6 @@
       "reference": null
     },
     {
-      "id": "cohort:paeds:c-8c5c382b98d9:v1",
-      "origin": "mdx:43c6be1193ce4ae991898392007265f0",
-      "discipline": "paeds",
-      "cardType": "cloze",
-      "sourceComponent": "KeyPoint",
-      "front": "The airflow obstruction in asthma is characteristically [___] — it improves after a bronchodilator.",
-      "back": "reversible",
-      "context": "Two features define asthma: the obstruction REVERSES with a bronchodilator, and the airways over-react to multiple triggers (exercise, allergens, cold air). Reversibility is what separates it from fixed obstruction.",
-      "complexity": 1,
-      "importance": 2,
-      "variantGroup": null,
-      "variantIndex": null,
-      "reference": null
-    },
-    {
       "id": "cohort:paeds:c-8c933a580edd:v1",
       "origin": "mdx:e6c06f5acd9c32005607cc87789ac910",
       "discipline": "paeds",
@@ -554,6 +539,21 @@
       "front": "A 2-year-old has weight loss and a firm, irregular mass crossing the midline. Ultrasound shows a suprarenal mass encasing vessels with calcification. The working diagnosis is [___].",
       "back": "neuroblastoma",
       "context": "The paediatric team is deciding what a suprarenal mass represents after ultrasound. A mass above and displacing the kidney follows the sympathetic chain rather than arising from renal tissue.\n\nNeuroblastoma can occur along the sympathetic chain, but the adrenal medulla is its commonest primary site. Cross-sectional imaging and urine catecholamine metabolites follow this localisation step.",
+      "complexity": 3,
+      "importance": 2,
+      "variantGroup": null,
+      "variantIndex": null,
+      "reference": null
+    },
+    {
+      "id": "cohort:paeds:c-8cbf43c27b29:v1",
+      "origin": "mdx:1229037ae33ccf156bfe9048ac2d9784",
+      "discipline": "paeds",
+      "cardType": "cloze",
+      "sourceComponent": "KeyPoint",
+      "front": "A 3-year-old has 6 days of fever, bilateral non-exudative conjunctivitis, oral changes, polymorphous rash and hand or foot changes. The major cardiac complication is a coronary artery [___].",
+      "back": "aneurysm",
+      "context": "Untreated Kawasaki disease can injure the coronary arteries. Coronary artery aneurysms are the major cardiac complication and explain the urgency of recognition.",
       "complexity": 3,
       "importance": 2,
       "variantGroup": null,
@@ -663,21 +663,6 @@
       }
     },
     {
-      "id": "cohort:paeds:c-8df14263c715:v1",
-      "origin": "mdx:85a32c9b8bfb54412ac223ebf16d7cba:blank-0",
-      "discipline": "paeds",
-      "cardType": "cloze",
-      "sourceComponent": "KeyPoint",
-      "front": "After nasal trauma the septum must always be inspected, because an undrained septal haematoma devascularises the septal [___] and causes perforation or abscess. Drainage is urgent, not deferred to review.",
-      "back": "cartilage",
-      "context": "Epistaxis and nasal trauma are usually benign, which is exactly why the one time-critical finding gets missed. Every child with nasal trauma needs the septum inspected.\n\n A septal haematoma strips the mucoperichondrium off the cartilage, which depends on it for blood supply, so untreated it necroses within days — giving septal perforation or abscess and a saddle-nose deformity.\n\nIt needs urgent drainage, not review in a week; associated fractures are reduced within 7 to 10 days.",
-      "complexity": 3,
-      "importance": 2,
-      "variantGroup": "cohort:paeds:g-d9a11bc10985",
-      "variantIndex": 0,
-      "reference": null
-    },
-    {
       "id": "cohort:paeds:c-8e14457093be:v1",
       "origin": "mdx:2a70577505df2e623ced62d759a4395f",
       "discipline": "paeds",
@@ -718,7 +703,7 @@
       "context": "Pale stools and dark urine mean bile is not reaching the gut. Jaundice beyond 2 weeks, or any pale stool, needs a split bilirubin, not reassurance.\n\nThe extrahepatic bile ducts are progressively obliterated, and the operation is the Kasai portoenterostomy. It is about a quarter of neonatal cholestasis in referral centres.\n\nA normal ultrasound does not exclude it, so a suspected case is discussed with a tertiary paediatric service within 24 hours.",
       "complexity": 1,
       "importance": 2,
-      "variantGroup": "cohort:paeds:g-0faa55b2532d",
+      "variantGroup": "cohort:paeds:g-e13fe3e5b84b",
       "variantIndex": null,
       "reference": null
     },

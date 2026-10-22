@@ -141,7 +141,7 @@ export function originalFigureSidecar(
     usageTier: 'public-attribution',
     accessTier: 'public',
     showWhen: figure.teaching.imageRole === 'prompt' ? 'always' : 'after-reveal',
-    source: 'MD3 original medical diagrams',
+    source: 'md3 original medical diagrams',
     sourcePage: '',
     directImageUrl: `${ORIGINAL_FIGURE_PREFIX}${figure.id}.png`,
     license: 'MIT',

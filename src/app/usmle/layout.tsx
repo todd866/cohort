@@ -18,7 +18,7 @@ export default async function USMLELayout({ children }: { children: React.ReactN
       <footer className="mx-auto max-w-xl px-4 pb-10 text-xs leading-relaxed text-[var(--md-on-surface-variant)] sm:px-6">
         <p>
           USMLE® is a registered trademark of the Federation of State Medical Boards and the
-          National Board of Medical Examiners. MD3/Cohort is independent and is not affiliated
+          National Board of Medical Examiners. md3/Cohort is independent and is not affiliated
           with or endorsed by either organization. This corpus uses original questions, not
           recalled exam items.
         </p>

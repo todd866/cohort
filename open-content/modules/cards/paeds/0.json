@@ -20,6 +20,21 @@
       "reference": null
     },
     {
+      "id": "cohort:paeds:c-00712fcbfe39:v1",
+      "origin": "mdx:e8c47a649479ca8e4bd3a8d45c2e7155",
+      "discipline": "paeds",
+      "cardType": "cloze",
+      "sourceComponent": "KeyPoint",
+      "front": "Noonan syndrome can look like Turner syndrome, with a webbed neck and short stature, but it occurs in both sexes and its [___] is normal.",
+      "back": "karyotype",
+      "context": "Turner syndrome is a missing or abnormal X chromosome in a girl, so a blood karyotype is the test that looks for it. In a short girl with a webbed neck, the karyotype comes first.\n\nNoonan syndrome is a single-gene RASopathy, most often PTPN11, so its chromosomes look normal and a gene panel confirms it.\n\nThe heart helps: Turner brings coarctation and other left-sided lesions; Noonan most often brings pulmonary valve stenosis.",
+      "complexity": 1,
+      "importance": 2,
+      "variantGroup": null,
+      "variantIndex": null,
+      "reference": null
+    },
+    {
       "id": "cohort:paeds:c-0072875929b2:v1",
       "origin": "mdx:90b3a07fee43459df069984da56e1d19",
       "discipline": "paeds",
@@ -31,21 +46,6 @@
       "complexity": 1,
       "importance": 2,
       "variantGroup": "cohort:paeds:g-9098d477e60d",
-      "variantIndex": null,
-      "reference": null
-    },
-    {
-      "id": "cohort:paeds:c-00844efad114:v1",
-      "origin": "mdx:ac5d96294e4285dba4013acd743c98c4",
-      "discipline": "paeds",
-      "cardType": "cloze",
-      "sourceComponent": "KeyPoint",
-      "front": "Bruising in a [___] infant (cannot cruise or walk) should be considered non-accidental until proven otherwise. Any bruise in a baby who cannot independently move is highly suspicious.",
-      "back": "non-mobile",
-      "context": "Babies do not bruise themselves — accidental bruises require independent movement (cruising, walking, climbing). A bruise in an infant who cannot generate the kinetic energy to cause one therefore demands explanation.\n\nThe TEN-4 rule extends this logic to mobile children: bruising on the Torso, Ear, or Neck in any child under 4 warrants investigation.",
-      "complexity": 2,
-      "importance": 2,
-      "variantGroup": null,
       "variantIndex": null,
       "reference": null
     },
@@ -122,6 +122,21 @@
       "importance": 2,
       "variantGroup": null,
       "variantIndex": null,
+      "reference": null
+    },
+    {
+      "id": "cohort:paeds:c-022b753b3fd6:v1",
+      "origin": "mdx:484501f8db37be933b5694ee554bd0fd:blank-0",
+      "discipline": "paeds",
+      "cardType": "cloze",
+      "sourceComponent": "KeyPoint",
+      "front": "A 3-year-old is in asystole with no documented weight. After the APLS weight estimate, the correctly formatted request is 'Adrenaline, [___] mL of 1-in-10,000, IV, stat' — a dose of 140 micrograms.",
+      "back": "1.4",
+      "context": "The full chain, done silently before speaking: (3 + 4) x 2 = 14 kg; 14 x 10 microg/kg = 140 microg; at 100 microg/mL that is 1.4 mL.\n\nAsystole is the expected paediatric rhythm, so this dose goes in immediately on access, not after any shock.\n\nIf any link is missing — formula, dose, or concentration — the request cannot be formed. That is the point: the format forces the doctor to own the arithmetic.",
+      "complexity": 3,
+      "importance": 2,
+      "variantGroup": "cohort:paeds:g-64f629e94d49",
+      "variantIndex": 0,
       "reference": null
     },
     {
@@ -260,25 +275,6 @@
       "reference": null
     },
     {
-      "id": "cohort:paeds:c-04dba3a6fc5a:v1",
-      "origin": "mdx:14dd9515418088c0c71bcfc6b4aa3e7a",
-      "discipline": "paeds",
-      "cardType": "cloze",
-      "sourceComponent": "KeyPoint",
-      "front": "A child with a barking cough alone, no history of stridor and no relevant risk factors does [___] routinely need dexamethasone.",
-      "back": "not",
-      "context": "A child with a barking cough alone, no current or previous stridor and no relevant risk factors does not routinely need a corticosteroid.\n\nConsider oral dexamethasone when stridor is present or risk factors raise concern. Moderate-to-severe stridor at rest needs dexamethasone plus nebulised adrenaline and observation after adrenaline.",
-      "complexity": 3,
-      "importance": 2,
-      "variantGroup": null,
-      "variantIndex": null,
-      "reference": {
-        "title": "Croup (Laryngotracheobronchitis)",
-        "publisher": "The Royal Children's Hospital Melbourne",
-        "url": "https://www.rch.org.au/clinicalguide/guideline_index/Croup_Laryngotracheobronchitis/"
-      }
-    },
-    {
       "id": "cohort:paeds:c-0536df610e16:v1",
       "origin": "mdx:e73d2eb1f8f0478c6598cf24d7a012a9:blank-1",
       "discipline": "paeds",
@@ -294,21 +290,6 @@
       "reference": null
     },
     {
-      "id": "cohort:paeds:c-05429209dee9:v1",
-      "origin": "mdx:c256c920c6d43ba73e53e6ef78041330:blank-0",
-      "discipline": "paeds",
-      "cardType": "cloze",
-      "sourceComponent": "KeyPoint",
-      "front": "Absent red reflex (leukocoria) in newborn must rule out [___]; refer to paediatric ophthalmology urgently.",
-      "back": "retinoblastoma",
-      "context": "Absent or asymmetric red reflex (LEUKOCORIA — white pupillary reflex) in an infant is a paediatric emergency.\n\nExam: dim room, ophthalmoscope at arm's length, symmetric red reflex through both pupils — retinoblastoma shows a white reflex in one eye (often noticed on flash photography).",
-      "complexity": 2,
-      "importance": 2,
-      "variantGroup": "cohort:paeds:g-df8c7fb26da0",
-      "variantIndex": 0,
-      "reference": null
-    },
-    {
       "id": "cohort:paeds:c-05805513c1f1:v1",
       "origin": "mdx:15282d1a2c7c16a75582b81259f98f29",
       "discipline": "paeds",
@@ -320,6 +301,21 @@
       "complexity": 1,
       "importance": 2,
       "variantGroup": null,
+      "variantIndex": null,
+      "reference": null
+    },
+    {
+      "id": "cohort:paeds:c-05a5f29fa748:v1",
+      "origin": "mdx:33071de3cf63ddd8766b775a60d6a358",
+      "discipline": "paeds",
+      "cardType": "cloze",
+      "sourceComponent": "KeyPoint",
+      "front": "A child over 20 kg develops anaphylaxis and receives an adrenaline autoinjector; the RCH dose is [___].",
+      "back": "0.3 mg",
+      "context": "An autoinjector has a fixed dose. For a child over 20 kg, RCH uses a 300 microgram (0.3 mg) adrenaline autoinjector.\n\nIf drawing adrenaline from an ampoule, use the local weight-based dose and verify its concentration rather than substituting an age-band estimate.",
+      "complexity": 3,
+      "importance": 2,
+      "variantGroup": "cohort:paeds:g-d82d13cf8435",
       "variantIndex": null,
       "reference": null
     },
@@ -373,6 +369,21 @@
       }
     },
     {
+      "id": "cohort:paeds:c-061f989294d6:v1",
+      "origin": "mdx:0b2483f26667c9e84e97fa3921153d96",
+      "discipline": "paeds",
+      "cardType": "cloze",
+      "sourceComponent": "KeyPoint",
+      "front": "The diagnostic finding in pneumothorax is a pleural line with absent lung [___] beyond it.",
+      "back": "markings",
+      "context": "A pneumothorax is air in the pleural space, so the lung falls away from the chest wall. The finding is a thin white line — the visceral pleural edge — with LUNG MARKINGS ON ONE SIDE OF IT AND NONE BEYOND.\n\nThat absence beyond the line is the diagnostic part. A skin fold, a scapular edge or a tube can all produce a line on a chest film, but only a pneumothorax removes the vessels outside it.\n\nSo trace the line and ask what is on the far side.",
+      "complexity": 2,
+      "importance": 2,
+      "variantGroup": null,
+      "variantIndex": null,
+      "reference": null
+    },
+    {
       "id": "cohort:paeds:c-0655475d96f3:v1",
       "origin": "mdx:5f1fcb926d60835a049a157516bc0675",
       "discipline": "paeds",
@@ -400,6 +411,21 @@
       "importance": 2,
       "variantGroup": "cohort:paeds:g-825a13e0a8cf",
       "variantIndex": 0,
+      "reference": null
+    },
+    {
+      "id": "cohort:paeds:c-06afb480c0cb:v1",
+      "origin": "mdx:d87ef26d5ab433ec19559a2ac603b9c0",
+      "discipline": "paeds",
+      "cardType": "cloze",
+      "sourceComponent": "KeyPoint",
+      "front": "An infant vomits repeatedly and goes floppy two hours after first rice cereal. This delayed reaction is [___].",
+      "back": "FPIES",
+      "context": "Profuse vomiting two to four hours after a new food, with pallor and floppiness, is a delayed gut allergy.\n\nIt is not anaphylaxis, so adrenaline is not the treatment. The food is stopped and the child is rehydrated.",
+      "complexity": 4,
+      "importance": 2,
+      "variantGroup": null,
+      "variantIndex": null,
       "reference": null
     },
     {
@@ -542,21 +568,6 @@
       "reference": null
     },
     {
-      "id": "cohort:paeds:c-09f4146061a2:v1",
-      "origin": "mdx:8d8329e0855de0b97d1de5721baed917",
-      "discipline": "paeds",
-      "cardType": "cloze",
-      "sourceComponent": "KeyPoint",
-      "front": "The corrective operation for biliary atresia is the [___] portoenterostomy, which works best when done before 8 weeks of age.",
-      "back": "Kasai",
-      "context": "It connects bowel to the porta hepatis to drain bile.\n\nOutcomes fall sharply with delay because untreated bile obstruction scars the liver — late diagnosis is why prolonged neonatal jaundice must be worked up promptly, not watched.",
-      "complexity": 1,
-      "importance": 2,
-      "variantGroup": null,
-      "variantIndex": null,
-      "reference": null
-    },
-    {
       "id": "cohort:paeds:c-0a22486b1f1a:v1",
       "origin": "mdx:f7d0712e5ec6e61e6b329bfd9fb09d0b",
       "discipline": "paeds",
@@ -625,21 +636,6 @@
       "front": "The most common Salter-Harris fracture (type II) runs through the [___] plus the physis, sparing the joint surface.",
       "back": "metaphysis",
       "context": "Type II is much the commonest physeal fracture and generally does well — the line runs up out of the physis into the metaphysis, sparing the joint surface.\n\nThe grade matters because it tracks how much of the growth apparatus is disrupted, which predicts the risk of later growth arrest.",
-      "complexity": 1,
-      "importance": 2,
-      "variantGroup": null,
-      "variantIndex": null,
-      "reference": null
-    },
-    {
-      "id": "cohort:paeds:c-0b3abb1a1a00:v1",
-      "origin": "mdx:11e00241f1f94c7b6b5dfc11969e8728",
-      "discipline": "paeds",
-      "cardType": "cloze",
-      "sourceComponent": "KeyPoint",
-      "front": "Unconjugated bilirubin is fat-soluble and can cross the blood-brain barrier, causing [___] (bilirubin encephalopathy).",
-      "back": "kernicterus",
-      "context": "The unconjugated form is fat-soluble and not yet water-soluble, so a high enough unbound level crosses the blood-brain barrier and deposits in the basal ganglia.\n\nThat is why neonatal UNCONJUGATED jaundice (not conjugated) is the one treated with phototherapy or exchange transfusion — to prevent this irreversible brain injury.",
       "complexity": 1,
       "importance": 2,
       "variantGroup": null,
@@ -737,6 +733,21 @@
       "reference": null
     },
     {
+      "id": "cohort:paeds:c-0d4f2c55ee23:v1",
+      "origin": "mdx:5fe136f344a7e7651fdac0ff372947f1",
+      "discipline": "paeds",
+      "cardType": "cloze",
+      "sourceComponent": "KeyPoint",
+      "front": "A toddler's film shows a dense right apical wedge, a raised horizontal fissure and the trachea pulled right. The collapsed lobe is the right [___] lobe.",
+      "back": "upper",
+      "context": "Collapse is volume loss, so structures move towards the airless lobe. A collapsing right upper lobe pulls the horizontal fissure upwards and the trachea to the right.\n\nThe lobe becomes a dense wedge at the right apex. In a toddler, a sudden lobar collapse should prompt the question of an inhaled foreign body or a mucus plug.",
+      "complexity": 3,
+      "importance": 2,
+      "variantGroup": null,
+      "variantIndex": null,
+      "reference": null
+    },
+    {
       "id": "cohort:paeds:c-0d55e7e1e84a:v1",
       "origin": "mdx:2cfae08e8174c1f41bd88cb5f922b253",
       "discipline": "paeds",
@@ -794,6 +805,21 @@
       "importance": 2,
       "variantGroup": "cohort:paeds:g-65ff12e89953",
       "variantIndex": 0,
+      "reference": null
+    },
+    {
+      "id": "cohort:paeds:c-0de8fa669bdd:v1",
+      "origin": "mdx:0d0154f5bf86b3641198d8eb8acb32d5",
+      "discipline": "paeds",
+      "cardType": "cloze",
+      "sourceComponent": "KeyPoint",
+      "front": "A well 3-year-old has several shin bruises and one bruise on the pinna. The bruise that mandates a child-protection assessment is the one on the [___].",
+      "back": "ear",
+      "context": "Site beats size. A 3-year-old collects shin, knee, elbow and forehead bruises daily — the bony leading edges of a mobile child, and not TEN-4 sites.\n\nA pinna bruise needs a direct blow or a pinch: a protected site with no leading edge.\n\nSo under 4 years it is a TEN-4 site, investigated as inflicted injury until proven otherwise, however normal the rest of the skin looks.",
+      "complexity": 3,
+      "importance": 3,
+      "variantGroup": null,
+      "variantIndex": null,
       "reference": null
     },
     {

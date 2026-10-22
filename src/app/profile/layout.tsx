@@ -1,7 +1,7 @@
 import type { Metadata } from 'next';
 
 export const metadata: Metadata = {
-  title: 'Profile - MD3',
+  title: 'Profile - md3',
   description: 'View your study stats, streaks, and account settings.',
 };
 

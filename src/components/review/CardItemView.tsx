@@ -30,7 +30,9 @@ const ROHEN_INSTRUCTION = 'Rohen, Yokochi & Lutjen-Drecoll, Anatomy: A Photograp
 /** Presentation only: keep stored prompts/answers and review identities intact. */
 export function numberedAnatomyPresentation(front: string, context: string, caption?: string | null) {
   const match = /^(.*?) — name structure \*\*(\d+)\*\* in the photograph\.\s*(\[[_\\]+\])$/.exec(front);
-  if (!match || !context.includes(ROHEN_INSTRUCTION)) return { front, context, caption, source: null };
+  // Keyed on the generated front alone: the instruction paragraph was stripped
+  // from Rohen contexts on 2026-10-07, and gating on it switched this off.
+  if (!match) return { front, context, caption, source: null };
   return {
     front: `Identify structure **${match[2]}**. ${match[3]}`,
     context: context.replace(ROHEN_INSTRUCTION, '').replace(/(?:\\n|\s)+$/, '').trim(),

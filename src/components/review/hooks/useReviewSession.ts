@@ -429,12 +429,12 @@ const COHORT_SESSION_MEDIA_LICENSE_URLS = new Set([
 ]);
 const COHORT_PROMPT_MEDIA_PRESENTATIONS = [
   {
-    attributionText: 'Wagner et al. via PhysioNet; Lead II excerpt rendered by MD3 contributors — CC BY 4.0',
+    attributionText: 'Wagner et al. via PhysioNet; Lead II excerpt rendered by md3 contributors — CC BY 4.0',
     licenseUrl: 'https://creativecommons.org/licenses/by/4.0/',
     sourcePageUrl: 'https://physionet.org/content/ptb-xl/1.0.3/',
   },
   {
-    attributionText: 'Lehman et al. via PhysioNet; Lead II excerpt rendered by MD3 contributors — CC BY-SA 4.0',
+    attributionText: 'Lehman et al. via PhysioNet; Lead II excerpt rendered by md3 contributors — CC BY-SA 4.0',
     licenseUrl: 'https://creativecommons.org/licenses/by-sa/4.0/',
     sourcePageUrl: null,
   },

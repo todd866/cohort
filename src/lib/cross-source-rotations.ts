@@ -109,6 +109,15 @@ export const COMPANION_SOURCE_ROTATIONS: Readonly<Record<string, readonly string
   'physical-exam': Object.freeze([
     'toc', 'cah', 'surgical-sciences', 'critical-care', 'ortho', 'pwh', 'paam',
   ]),
+  // MD1 KAT4 + MMCA (2026-10-21): the first-year renal, gastro and neuro
+  // banks, the physical-exam deck and the examination clips, each contributing
+  // only the items that name `md1-foundations`.
+  // TO'C holds the adult abdominal examination; CAH and GSSE hold the neuro
+  // examination clips; year1-kat1 holds the Year 1 neuro and renal physiology.
+  'md1-foundations': Object.freeze([
+    'year1-kat3', 'year1-kat2', 'year1-kat1', 'year2-kat7',
+    'physical-exam', 'toc', 'cah', 'surgical-sciences',
+  ]),
   // Adult Medicine DWE. The cards stay in the rotation that authored them.
   // A focused BPT session draws the ones that name `bpt`.
   bpt: Object.freeze([
@@ -116,6 +125,22 @@ export const COMPANION_SOURCE_ROTATIONS: Readonly<Record<string, readonly string
     'malleus', 'anking', 'toc', 'surgical-sciences',
   ]),
 });
+
+/**
+ * Decks whose enrolment implies enrolment in their declared companions.
+ *
+ * Every other deck admits a companion only when the learner is enrolled in
+ * that source too. That suits a Year 3 student, who is enrolled in the blocks
+ * whose clips a deck borrows. A first-year is not, and enrolling them in CAH
+ * to reach its examination clips would make CAH their default landing
+ * (`resolvePrimaries` prefers a scheduled enrolment over a self-paced deck).
+ * So for these decks the deck's own enrolment stands in for each companion's.
+ * It widens nothing else: the per-item moduleNodes gate still applies, and a
+ * personal companion still needs the viewer's own entitlement.
+ */
+export const COMPANION_ENROLMENT_IMPLIED_TARGETS: ReadonlySet<string> = new Set([
+  'md1-foundations',
+]);
 
 /**
  * Sources a scheduled block may borrow when the learner explicitly focuses it.

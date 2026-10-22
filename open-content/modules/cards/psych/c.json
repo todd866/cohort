@@ -5,6 +5,21 @@
   "attribution": "MD3 contributors",
   "cards": [
     {
+      "id": "cohort:psych:c-c26c0d3bc359:v1",
+      "origin": "mdx:a69da16e2bcc1c756df92baa44ef9c58",
+      "discipline": "psych",
+      "cardType": "cloze",
+      "sourceComponent": "KeyPoint",
+      "front": "The Mental Health Act mandates the least [___] environment principle -- if community treatment is feasible, continued involuntary inpatient detention may not be justified.",
+      "back": "restrictive",
+      "context": "Involuntary care is a significant deprivation of liberty; we are legally bound to seek the minimum level of control necessary for safety. If a CTO can keep someone safe in the community, that is the required path.",
+      "complexity": 2,
+      "importance": 2,
+      "variantGroup": null,
+      "variantIndex": null,
+      "reference": null
+    },
+    {
       "id": "cohort:psych:c-c298773b611e:v1",
       "origin": "mdx:18706eddbfcc875955fb730d12b2a5e7",
       "discipline": "psych",
@@ -33,6 +48,25 @@
       "variantGroup": null,
       "variantIndex": null,
       "reference": null
+    },
+    {
+      "id": "cohort:psych:c-c86a58f77334:v1",
+      "origin": "mdx:10cbb4136d46f30f2a847fe2a5a85258",
+      "discipline": "psych",
+      "cardType": "cloze",
+      "sourceComponent": "KeyPoint",
+      "front": "Fragile X is described as the most common [___] cause of intellectual disability.",
+      "back": "inherited",
+      "context": "Caused by an FMR1 trinucleotide repeat and X-linked, so it passes through families — distinguishing it from sporadic causes like Down syndrome.",
+      "complexity": 1,
+      "importance": 2,
+      "variantGroup": null,
+      "variantIndex": null,
+      "reference": {
+        "title": "Preconception and prenatal genetic screening",
+        "publisher": "Queensland Clinical Guidelines",
+        "url": "https://www.health.qld.gov.au/__data/assets/pdf_file/0018/1324602/g-prenatal-screen.pdf"
+      }
     },
     {
       "id": "cohort:psych:c-c95138a07888:v1",

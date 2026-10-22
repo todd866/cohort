@@ -350,8 +350,8 @@ export const PROTECTED_PUBLIC_FALLBACKS: ReadonlyArray<Readonly<{
   {
     path: 'README.md',
     licence: 'CC-BY-4.0',
-    // 2026-10-01: the clinical module cards (row in the corpus table, seed in the quick start).
-    sha256: '44dfa6fa29975b13e187ebbe0fe5d928ccba596af39cdf6c19f24b534015b053',
+    // 2026-10-22: logo, front-page pointer, and counted module rows.
+    sha256: 'b6cc44fbec43d1eb4ff4e84f88113390b2c0b0dc6b4c2879677f445adae215e9',
   },
   {
     // MD3 preference persistence is excluded from the public build.
@@ -708,7 +708,9 @@ export const PROTECTED_PUBLIC_FALLBACKS: ReadonlyArray<Readonly<{
     // copyright-tier grant and the clean FOSS build could not compile
     // without it. Bumped 2026-09-23: the return type gained 'signed-in' for
     // the Physical Examination deck; the stub still returns undefined.
-    sha256: '5c25e3912136e7889c2b9847e83826cb415734ed41d43ce74dd33ef655909d52',
+    // Bumped 2026-10-21: learner grants (hashed addresses) joined the real
+    // registry; the stub declares none.
+    sha256: '56e791d0df6198e16f93ec33b9ddadfa399934d58b28ddcbc6eb227313fa469c',
   },
   {
     path: 'src/lib/personal-decks.ts',
@@ -724,6 +726,13 @@ export const PROTECTED_PUBLIC_FALLBACKS: ReadonlyArray<Readonly<{
     path: 'src/lib/questions/private-access.ts',
     licence: 'MIT',
     sha256: '9669e7c0d325f492a2649cbe12283ff7dcfec0e580ce238c811df2c3db91d39a',
+  },
+  {
+    // Clinical stations and institution guides do not ship, so the public
+    // build has no current-rotation audience; auth.ts stays import-compatible.
+    path: 'src/lib/clinical/clinical-audience.ts',
+    licence: 'MIT',
+    sha256: 'ac61c579ac01bd6315fac0cafd517a2cb49864ab558ed1fe7ecbd60ee604dcb3',
   },
   {
     // Private review-topic identifiers never enter the public source tree.
@@ -743,7 +752,10 @@ export const PROTECTED_PUBLIC_FALLBACKS: ReadonlyArray<Readonly<{
     // Bumped 2026-08-17: the public shim gained courseCalendarDay, a pure
     // timezone helper with no calendar in it, because teaching-pace-context
     // imports it and the clean FOSS build could not compile without it.
-    sha256: 'baed42c4c800154bdaa35139d9175b7dccb69bb1d3be59ace3df0dbabe642b96',
+    // Bumped 2026-10-22: scheduledRotationPhase (always null: no calendar
+    // ships) and an optional `now` on getCurrentBlockIndex, for the review
+    // menu's read-time block rollover.
+    sha256: '839bc739d047b121b4d22e3e8cb4b5936a5ea71eb630afc8beffc2542f9b8e56',
   },
   {
     path: 'src/lib/rotation-labels.ts',
@@ -758,7 +770,9 @@ export const PROTECTED_PUBLIC_FALLBACKS: ReadonlyArray<Readonly<{
   {
     path: 'src/lib/rotations.ts',
     licence: 'MIT',
-    sha256: '1d9f5d2f04d4faf55a0ffff49f7bfb6a4a56add608c360d9107e5b66a5601fd4',
+    // Bumped 2026-10-22: defaultExamDateFor (the configured default; no
+    // stream calendar ships) for the profile calendar.
+    sha256: '38aa554f046156185ae08375ef78d2ed588286907e0949091ce0c1080d5a1a47',
   },
   {
     path: 'src/lib/source-registry-data.json',

@@ -5,6 +5,25 @@
   "attribution": "MD3 contributors",
   "cards": [
     {
+      "id": "cohort:paeds:c-90272d250136:v1",
+      "origin": "mdx:9f486933b7c561b85b761780f54e3c52",
+      "discipline": "paeds",
+      "cardType": "cloze",
+      "sourceComponent": "KeyPoint",
+      "front": "In hypernatraemic dehydration, replace the fluid deficit over [___] on top of full maintenance, letting sodium fall no faster than 0.5 mmol/L per hour.",
+      "back": "48 hours",
+      "context": "A rapid fall in sodium draws water into brain cells and can cause cerebral oedema and seizures.\n\nRecheck the UEC often, aiming for a fall of no more than 10-12 mmol/L a day.",
+      "complexity": 2,
+      "importance": 2,
+      "variantGroup": null,
+      "variantIndex": null,
+      "reference": {
+        "title": "Hypernatraemia",
+        "publisher": "The Royal Children's Hospital Melbourne",
+        "url": "https://www.rch.org.au/clinicalguide/guideline_index/Hypernatraemia/"
+      }
+    },
+    {
       "id": "cohort:paeds:c-9098d477e60d:v1",
       "origin": "mdx:7eb6b22d6964abfb091d8b09439c365f",
       "discipline": "paeds",
@@ -129,6 +148,21 @@
       "reference": null
     },
     {
+      "id": "cohort:paeds:c-92aa2da36755:v1",
+      "origin": "mdx:443446704201b4055882353c980255bc",
+      "discipline": "paeds",
+      "cardType": "cloze",
+      "sourceComponent": "KeyPoint",
+      "front": "A 2-year-old has a barking cough, persistent stridor at rest and marked recession. Dexamethasone is in. This is severe croup, so nebulised [___] is added.",
+      "back": "adrenaline",
+      "context": "RCH grades stridor that is intermittent at rest as moderate croup: oral dexamethasone 0.15 mg/kg, with adrenaline only if it persists or worsens.\n\nPersistent stridor at rest is severe: nebulised adrenaline plus dexamethasone 0.6 mg/kg, then at least 3 hours of observation after the adrenaline.",
+      "complexity": 4,
+      "importance": 2,
+      "variantGroup": null,
+      "variantIndex": null,
+      "reference": null
+    },
+    {
       "id": "cohort:paeds:c-92b22cb8177a:v1",
       "origin": "mdx:29bc9d4c207bd8d1f454f836d5038111:blank-1",
       "discipline": "paeds",
@@ -160,21 +194,6 @@
       "importance": 3,
       "variantGroup": "cohort:paeds:g-779395e43d68",
       "variantIndex": null,
-      "reference": null
-    },
-    {
-      "id": "cohort:paeds:c-93660a43adb9:v1",
-      "origin": "mdx:e6235c3a3d35ea70f8b46226d235fa88:blank-0",
-      "discipline": "paeds",
-      "cardType": "cloze",
-      "sourceComponent": "KeyPoint",
-      "front": "Two serious complications of osteomyelitis are spread to the adjacent joint causing [___], and growth-plate damage causing limb-length discrepancy.",
-      "back": "septic arthritis",
-      "context": "Untreated or chronic osteomyelitis spreads to the neighbouring joint and damages the adjacent growth plate, so a delayed presentation risks both an infected joint and a future limb-length problem.",
-      "complexity": 1,
-      "importance": 2,
-      "variantGroup": "cohort:paeds:g-00afe31efdde",
-      "variantIndex": 0,
       "reference": null
     },
     {
@@ -272,21 +291,6 @@
       "reference": null
     },
     {
-      "id": "cohort:paeds:c-94dce2a87788:v1",
-      "origin": "mdx:41acc7859f8f1dde27d478e4e7d70987",
-      "discipline": "paeds",
-      "cardType": "cloze",
-      "sourceComponent": "KeyPoint",
-      "front": "A teenager with sore throat, fever, marked cervical lymphadenopathy, and splenomegaly likely has infectious [___].",
-      "back": "mononucleosis",
-      "context": "Recognise the picture: an adolescent with a prolonged sore throat, fever, prominent posterior cervical lymphadenopathy, and fatigue, often with splenomegaly (advise no contact sport — splenic rupture risk).",
-      "complexity": 1,
-      "importance": 2,
-      "variantGroup": null,
-      "variantIndex": null,
-      "reference": null
-    },
-    {
       "id": "cohort:paeds:c-94f855697ab3:v1",
       "origin": "mdx:1f93b50211bf6c01e610529c33bf43a7:blank-0",
       "discipline": "paeds",
@@ -355,6 +359,21 @@
       "front": "Gillick competence lets a child consent to treatment, but a competent child's [___] of life-sustaining treatment may still be overridden by a court.",
       "back": "refusal",
       "context": "A competent child's CONSENT is effective. Their REFUSAL of life-sustaining treatment can still be overridden by a court or, in some circumstances, by a person with parental responsibility.\n\nThe asymmetry is deliberate and often surprises students: the law is more willing to let a child say yes to treatment than to let them say no to survival.",
+      "complexity": 2,
+      "importance": 2,
+      "variantGroup": null,
+      "variantIndex": null,
+      "reference": null
+    },
+    {
+      "id": "cohort:paeds:c-9637e49ae1e7:v1",
+      "origin": "mdx:27ce7f10b9932dfa09ee1060c16ab48c",
+      "discipline": "paeds",
+      "cardType": "cloze",
+      "sourceComponent": "KeyPoint",
+      "front": "Prednisolone for acute asthma in a child is dosed at [___], up to a maximum of 50 mg.",
+      "back": "1 mg/kg",
+      "context": "Doses for children are communicated to parents in both volume and milligrams, because the suspension strength is where errors happen.\n\nPrednisolone oral liquid is commonly 5 mg/mL, so '3 mL = 15 mg' is roughly 1 mg/kg for a 15 kg child. Writing both figures is what prevents a tenfold error at the kitchen bench.\n\neTG dose for acute asthma in a child is prednisolone 1 mg/kg up to a maximum of 50 mg.",
       "complexity": 2,
       "importance": 2,
       "variantGroup": null,
@@ -671,6 +690,21 @@
       "importance": 2,
       "variantGroup": "cohort:paeds:g-f2cc66367ba2",
       "variantIndex": 0,
+      "reference": null
+    },
+    {
+      "id": "cohort:paeds:c-9b662f1e659f:v1",
+      "origin": "mdx:7471d7fd0fdf96dd0c00003435580356",
+      "discipline": "paeds",
+      "cardType": "cloze",
+      "sourceComponent": "KeyPoint",
+      "front": "A child with ALL has 54 chromosomes in the leukaemic blasts. This hyperdiploidy predicts a [___] prognosis.",
+      "back": "favourable",
+      "context": "Risk stratification in paediatric ALL sorts patients by features that predict relapse, so high-risk disease can be given intensified therapy.\n\nPloidy is one axis: hyperdiploidy (extra chromosomes, over 50) is favourable, hypodiploidy (fewer than 44 chromosomes) is adverse.\n\nB-cell precursor lineage and a good prednisone response (assessed day 7-8 of induction) are favourable; T-cell lineage and a poor steroid response are adverse.",
+      "complexity": 1,
+      "importance": 2,
+      "variantGroup": null,
+      "variantIndex": null,
       "reference": null
     },
     {
@@ -993,17 +1027,17 @@
       "reference": null
     },
     {
-      "id": "cohort:paeds:c-9f972f8c6769:v1",
-      "origin": "mdx:772f38f182221e995dcf9cf16b4d40d8",
+      "id": "cohort:paeds:c-9fa285d2853f:v1",
+      "origin": "mdx:0f53ac2ee17871d442605ab32dc698fa",
       "discipline": "paeds",
       "cardType": "cloze",
       "sourceComponent": "KeyPoint",
-      "front": "In TORCH, the letters stand for toxoplasmosis, other, rubella, cytomegalovirus and [___] simplex.",
-      "back": "herpes",
-      "context": "TORCH is a memory aid for the infections a mother can pass to her baby before or around birth: Toxoplasmosis, Other, Rubella, Cytomegalovirus and Herpes simplex.\n\nThe 'Other' bucket is doing a lot of work — it holds syphilis, varicella, parvovirus B19, HIV, listeria and more recently Zika.\n\nMany clinicians now think the acronym is past its use-by date for exactly that reason, but it is still how the topic is taught and examined.",
-      "complexity": 1,
+      "front": "A ventilated neonate suddenly has a hyperlucent hemithorax with absent lung markings. This indicates a [___].",
+      "back": "pneumothorax",
+      "context": "A neonatal pneumothorax can appear as a hyperlucent hemithorax without lung markings. Positive-pressure ventilation is an important risk factor.",
+      "complexity": 2,
       "importance": 2,
-      "variantGroup": null,
+      "variantGroup": "cohort:paeds:g-09cebe3e2f7b",
       "variantIndex": null,
       "reference": null
     },

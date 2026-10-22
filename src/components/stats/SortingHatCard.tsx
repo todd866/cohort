@@ -71,13 +71,13 @@ export function SortingHatCard({ initialState }: {initialState: SortingHatState}
         {!choosing ? <>
           {confirmed ? <>
             <p className="font-medium text-[var(--md-on-surface)]">{confirmed.label} won that round.</p>
-            <p className="mt-2 text-[var(--md-on-surface-variant)]">I’ll use your pick in MD3’s study suggestions.</p>
+            <p className="mt-2 text-[var(--md-on-surface-variant)]">I’ll use your pick in md3’s study suggestions.</p>
             <div className="mt-1 flex flex-wrap gap-x-3">
               <button type="button" className={actionClass} disabled={busy} onClick={()=>void start()}>Change my pick</button>
               {claimId && <button type="button" className={actionClass} disabled={busy} onClick={()=>void save('clear-answer')}>Forget this</button>}
             </div>
           </> : <>
-            <p className="text-[var(--md-on-surface-variant)]">Let me try a hunch. Tell me when I’m onto something; I’ll remember it for MD3’s study suggestions.</p>
+            <p className="text-[var(--md-on-surface-variant)]">Let me try a hunch. Tell me when I’m onto something; I’ll remember it for md3’s study suggestions.</p>
             <button type="button" className={actionClass} disabled={busy} onClick={()=>void start()}>{busy ? 'One moment…' : 'Try the hat'}</button>
           </>}
         </> : reading ? <>

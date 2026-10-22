@@ -14,6 +14,8 @@ import { detectInstitutionFromHostname } from "@/lib/institution";
 import { hasGuestUserCookie } from "@/lib/guest-user-cookie";
 import { isVercelAnalyticsEnabled } from "@/lib/analytics-config";
 import { FirstTouchCapture } from "@/components/FirstTouchCapture";
+import { MD3_ICON_VERSION } from "@/lib/brand/md3-mark";
+import { COHORT_ICON_VERSION } from "@/lib/brand/cohort-mark";
 
 /**
  * Self-hosted instead of `geist/font/*`, and deliberately NOT preloaded.
@@ -54,7 +56,7 @@ export async function generateMetadata(): Promise<Metadata> {
   const institution = detectInstitutionFromHostname(host);
 
   const isCohort = institution === "usmle";
-  const title = isCohort ? "cohort.md" : "MD3";
+  const title = isCohort ? "cohort.md" : "md3";
   const description = isCohort
     ? "USMLE Step 1 preparation with free practice questions, explanations, and targeted review."
     : "Clinical learning platform for medical students";
@@ -73,7 +75,7 @@ export async function generateMetadata(): Promise<Metadata> {
     appleWebApp: { capable: true, title, statusBarStyle: "default" },
     icons: {
       // iOS ignores the manifest for Add to Home Screen and reads this instead.
-      apple: isCohort ? "/icons/cohort-apple-touch.png" : "/icons/md3-apple-touch.png",
+      apple: isCohort ? `/icons/cohort-apple-touch.png?v=${COHORT_ICON_VERSION}` : `/icons/md3-apple-touch.png?v=${MD3_ICON_VERSION}`,
     },
   };
 }

@@ -11,6 +11,8 @@ import { AUTH_PAGES, SESSION_CONFIG } from './auth-session-config';
 import { createAliasAwareAdapter } from './auth-alias';
 import { createSessionLookupRetryAdapter } from './auth-session-retry';
 import { buildSessionPayload } from './auth-session-payload';
+import { viewerCanAccessPersonalRotation } from './personal-rotation-access';
+import { currentRotationAudiences } from './clinical/clinical-audience';
 import { claimGuestProgressAfterSignIn } from './guest-progress-claim';
 import { grantPendingCopyrightAfterSignIn } from './copyright-grant.server';
 import { recordAuthSuccessBestEffort } from './tracking/auth-funnel';
@@ -158,7 +160,11 @@ export const { auth, handlers, signIn, signOut } = NextAuth({
       const { hasVideoAccess } = await import('./video-access');
       const { hasAiAccess } = await import('./ai-access');
       // A whitelisted object, never the mutated row: see auth-session-payload.ts.
-      return buildSessionPayload({ session, user, isAdminEmail, hasVideoAccess, hasAiAccess });
+      return buildSessionPayload({
+        session, user, isAdminEmail, hasVideoAccess, hasAiAccess,
+        canAccessPersonalRotation: viewerCanAccessPersonalRotation,
+        currentRotationAudiences: (viewer) => currentRotationAudiences(viewer),
+      });
     },
   },
   events: {
@@ -192,6 +198,7 @@ declare module 'next-auth' {
       image?: string | null;
       betaAccess?: boolean;
       institution?: string | null;
+      track?: number | null;
       isAdmin?: boolean;
       hasVideoAccess?: boolean;
       aiAccess?: boolean;

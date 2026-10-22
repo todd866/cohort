@@ -3,8 +3,8 @@ import Link from 'next/link';
 import { resolveSourceRepositoryUrl } from '@/lib/source-repository';
 
 export const metadata: Metadata = {
-  title: 'About - MD3',
-  description: 'Scope, principles, and limitations of the open MD3/Cohort Step 1 alpha',
+  title: 'About - md3',
+  description: 'Scope, principles, and limitations of the open md3/Cohort Step 1 alpha',
 };
 
 const OFFICIAL_USMLE_ABOUT = 'https://www.usmle.org/about-usmle';
@@ -25,7 +25,7 @@ export default function AboutPage() {
           &larr; Back to Step 1
         </Link>
         <h1 className="mb-4 text-4xl font-bold text-[var(--md-on-surface)]">
-          About MD3 and Cohort
+          About md3 and Cohort
         </h1>
         <p className="mb-12 text-lg text-[var(--md-on-surface-variant)]">
           A free, open-source Step 1 study alpha built in public.
@@ -65,14 +65,14 @@ export default function AboutPage() {
             <h2 className="mb-4 text-2xl font-semibold">Open source and open content</h2>
             {sourceRepositoryUrl ? (
               <p className="mb-4 leading-relaxed text-[var(--md-on-surface-variant)]">
-                MD3&apos;s reviewed source distribution is available for people to inspect, learn
+                md3&apos;s reviewed source distribution is available for people to inspect, learn
                 from, adapt, and contribute to. Contributor-owned software uses the MIT License;
                 contributor-owned educational content uses CC BY 4.0. Exact-passages and
                 third-party assets keep their recorded source-level rights.
               </p>
             ) : (
               <p className="mb-4 leading-relaxed text-[var(--md-on-surface-variant)]">
-                MD3&apos;s contributor-owned code and educational content are licensed for open
+                md3&apos;s contributor-owned code and educational content are licensed for open
                 reuse within its reviewed source distribution. This deployment has not yet
                 published a source repository link.
               </p>
@@ -96,7 +96,7 @@ export default function AboutPage() {
           <section>
             <h2 className="mb-4 text-2xl font-semibold">Independence and exam security</h2>
             <p className="mb-4 leading-relaxed text-[var(--md-on-surface-variant)]">
-              MD3 and Cohort are independent educational projects. They are not affiliated with,
+              md3 and Cohort are independent educational projects. They are not affiliated with,
               endorsed by, or sponsored by the USMLE program. The software is educational only
               and is not medical advice.
             </p>

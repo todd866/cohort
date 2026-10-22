@@ -26,6 +26,8 @@ export const FOCUS_OPTION_ORDER: readonly string[] = [
   'year1-kat1',
   'year1-kat2',
   'year1-kat3',
+  // The first-year KAT4 + MMCA deck, 2026-10-21: with the Year 1 blocks.
+  'md1-foundations',
   'usmle-step1-open',
   // Opt-in decks: the background banks first, then the surgical/anatomy family,
   // which shares one corpus and reads best adjacent.

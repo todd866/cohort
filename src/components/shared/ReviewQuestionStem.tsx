@@ -1,5 +1,6 @@
 'use client';
 
+import { splitStemLead } from '@/lib/question-stem-lead';
 import { InlineMarkdown, MarkdownTable, extractMarkdownTables, tablesCanUseSidePane, type LeafRenderer } from '@/lib/inline-markdown';
 
 export interface ReviewQuestionStemProps {
@@ -21,13 +22,20 @@ export function parseReviewQuestionStem(text: string) {
 
 export function ReviewQuestionStem({ text, leafRenderer, className = '' }: ReviewQuestionStemProps) {
   const parsed = parseReviewQuestionStem(text);
+  const lastProse = parsed.blocks.findLastIndex((block) => block.kind !== 'table');
   const paragraphs = (value: string) => value.split(/\n\s*\n/).filter(Boolean).map((paragraph, index) => (
     <p key={index}><InlineMarkdown text={paragraph} leafRenderer={leafRenderer} /></p>
   ));
+  // The question line is bold on every stem, run-on or not (splitStemLead).
+  const prose = (value: string, isLast: boolean) => {
+    if (!isLast) return paragraphs(value);
+    const { body, lead } = splitStemLead(value);
+    return <>{body && paragraphs(body)}{lead && <p data-question-lead><InlineMarkdown text={lead} leafRenderer={leafRenderer} /></p>}</>;
+  };
   return <div data-question-stem className={`min-w-0 space-y-3 text-base leading-relaxed ${className}`}>
     {parsed.blocks.map((block, index) => block.kind === 'table'
       ? <div key={index} role="region" aria-label="Question results" tabIndex={0} className="overflow-x-auto"><MarkdownTable table={block.table} leafRenderer={leafRenderer} /></div>
-      : <div key={index} className="space-y-3">{paragraphs(block.text)}</div>)}
+      : <div key={index} className="space-y-3">{prose(block.text, index === lastProse)}</div>)}
   </div>;
 }
 

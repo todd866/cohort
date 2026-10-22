@@ -424,6 +424,15 @@ open-content/modules/cards/anatomy/c.json
 open-content/modules/cards/anatomy/d.json
 open-content/modules/cards/anatomy/e.json
 open-content/modules/cards/anatomy/f.json
+open-content/modules/cards/gynae/0.json
+open-content/modules/cards/gynae/1.json
+open-content/modules/cards/gynae/5.json
+open-content/modules/cards/gynae/6.json
+open-content/modules/cards/gynae/a.json
+open-content/modules/cards/gynae/c.json
+open-content/modules/cards/gynae/d.json
+open-content/modules/cards/gynae/e.json
+open-content/modules/cards/gynae/f.json
 open-content/modules/cards/icu/0.json
 open-content/modules/cards/icu/1.json
 open-content/modules/cards/icu/2.json
@@ -488,7 +497,10 @@ open-content/modules/cards/psych/c.json
 open-content/modules/cards/psych/d.json
 open-content/modules/cards/psych/e.json
 open-content/modules/cards/psych/f.json
+open-content/modules/cards/surgery/1.json
+open-content/modules/cards/surgery/7.json
 open-content/modules/cards/surgery/9.json
+open-content/modules/cards/surgery/d.json
 open-content/modules/original-card-ids-v1.json
 open-content/modules/original-cards/anatomy/carpal-section.json
 open-content/modules/original-cards/anatomy/cranial-nerve-functions.json
@@ -1800,9 +1812,11 @@ src/app/profile/profile-slot-classes.ts
 src/app/profile/profile-visit-section.tsx
 src/app/profile/review-menu-section.tsx
 src/app/profile/settings/ProfileSettingsClient.tsx
+src/app/profile/settings/exam-date-rows.ts
 src/app/profile/settings/page.tsx
 src/app/profile/stats/loading.tsx
 src/app/profile/stats/page.tsx
+src/app/profile/topic-heat-for-request.ts
 src/app/robots.ts
 src/app/tech/page.tsx
 src/app/usmle/layout.test.tsx
@@ -1848,6 +1862,7 @@ src/components/content/DecodedTerm.tsx
 src/components/content/DeepDive.tsx
 src/components/content/DeepDiveLink.tsx
 src/components/content/DetailsButton.tsx
+src/components/content/ExamStem.tsx
 src/components/content/Figure.client.tsx
 src/components/content/Figure.server.tsx
 src/components/content/FlagImageDeliveryNotice.tsx
@@ -2096,6 +2111,7 @@ src/lib/auth-verification-email.test.ts
 src/lib/auth-verification-email.ts
 src/lib/auth.ts
 src/lib/bounded-request-body.ts
+src/lib/brand/cohort-mark.ts
 src/lib/brand/md3-mark.ts
 src/lib/calc/evaluate.ts
 src/lib/card-extractors.ts
@@ -2203,6 +2219,7 @@ src/lib/date-utils.ts
 src/lib/db/bulk-upsert.ts
 src/lib/db/statement-budget.ts
 src/lib/due-helpers.ts
+src/lib/effective-institution.ts
 src/lib/empirical-difficulty.ts
 src/lib/exam-target/activation.ts
 src/lib/exam-target/allocator.ts
@@ -2341,6 +2358,7 @@ src/lib/knowledge/modality-guard.ts
 src/lib/knowledge/practice-miss-concepts.ts
 src/lib/knowledge/preemptive-scaffold.ts
 src/lib/knowledge/primary-topic.ts
+src/lib/knowledge/progress-rotation.server.ts
 src/lib/knowledge/question-retirement.ts
 src/lib/knowledge/readiness-trend.ts
 src/lib/knowledge/recent-neighbor-penalty.ts
@@ -2441,6 +2459,7 @@ src/lib/math/contains-math.ts
 src/lib/math/render-math.ts
 src/lib/math/vector-math.ts
 src/lib/mcq-to-cloze.ts
+src/lib/md1-program.ts
 src/lib/medical-cockpit/index.ts
 src/lib/medical-cockpit/manifold.ts
 src/lib/mimic/aggregate.ts
@@ -2514,6 +2533,7 @@ src/lib/question-bank/video-task-overlay.ts
 src/lib/question-groups/group-image-keys.json
 src/lib/question-groups/group-image.server.ts
 src/lib/question-groups/types.ts
+src/lib/question-stem-lead.ts
 src/lib/question-validation.ts
 src/lib/question-variants.ts
 src/lib/questions/display-options.ts

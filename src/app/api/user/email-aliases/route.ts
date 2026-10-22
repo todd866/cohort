@@ -111,7 +111,7 @@ export async function POST(request: NextRequest) {
       );
     }
     const isCohort = new URL(appOrigin).hostname.toLowerCase().replace(/^www\./, '') === 'cohort.md';
-    const productName = isCohort ? 'Cohort' : 'MD3 Study';
+    const productName = isCohort ? 'Cohort' : 'md3 Study';
     const resend = new Resend(outboundEmail.apiKey);
     const rateLimit = await checkUserRateLimit(
       userId,
