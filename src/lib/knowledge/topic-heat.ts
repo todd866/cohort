@@ -73,6 +73,9 @@ export interface TopicHeat {
 export interface TopicReadinessCounts {
   ready: number;
   slipping: number;
+  /** Explicit colour counts; optional for older API responses. */
+  needsReview?: number;
+  learning?: number;
   unseen: number;
   total: number;
 }
@@ -86,7 +89,7 @@ export interface TopicReadinessSummary extends TopicReadinessCounts {
 /**
  * Product-level readiness buckets shared by the profile and review drawer.
  * Both cold and warm topics need attention. The legacy API field "slipping"
- * is retained for compatibility; the UI calls these topics "learning".
+ * is retained for compatibility; the UI uses the separate cold and warm counts to match the legend.
  */
 export function summarizeTopicReadiness(
   topics: readonly Pick<TopicHeat, 'band'>[],
@@ -94,12 +97,18 @@ export function summarizeTopicReadiness(
   let ready = 0;
   let slipping = 0;
   let unseen = 0;
+  let needsReview = 0;
+  let learning = 0;
   for (const topic of topics) {
     if (topic.band === 'fresh') ready += 1;
     else if (topic.band === 'unseen') unseen += 1;
-    else slipping += 1;
+    else {
+      slipping += 1;
+      if (topic.band === 'cold') needsReview += 1;
+      else learning += 1;
+    }
   }
-  return { ready, slipping, unseen, total: topics.length };
+  return { ready, slipping, unseen, needsReview, learning, total: topics.length };
 }
 
 /**

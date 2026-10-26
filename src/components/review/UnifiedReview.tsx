@@ -1,5 +1,6 @@
 'use client';
 import { UniversalRecallCard } from './UniversalRecallCard';
+import { ContentBrowserDialog } from '@/components/study/ContentBrowserDialog';
 import { universalRecallObjective } from '@/lib/review/universal-recall';
 
 import { isTransportFailure } from '@/lib/offline/transport-failure';
@@ -977,6 +978,8 @@ function UnifiedReviewBody({ rotations, week, rotationSizes, fetchSlots, feedMod
 
   // Drawer state (progress details panel)
   const [drawerOpen, setDrawerOpen] = useState(false);
+  const [contentBrowserOpen, setContentBrowserOpen] = useState(false);
+  const [contentBrowserMounted, setContentBrowserMounted] = useState(false);
   const [showRotationChooser, setShowRotationChooser] = useState(false);
   const [mobileOptionsOpen, setMobileOptionsOpen] = useState(false);
   const mobileOptionsRef = useRef<HTMLDivElement>(null);
@@ -1063,7 +1066,7 @@ function UnifiedReviewBody({ rotations, week, rotationSizes, fetchSlots, feedMod
     // The required onboarding dialog owns the keyboard. Passing no item makes
     // Space/Enter/number shortcuts inert while its controls retain native
     // keyboard activation.
-    currentItem: cohortPromptBlocked || scaffoldWriteStatus !== 'idle' || opaqueWriteStatus !== 'idle' ? undefined : currentItem,
+    currentItem: contentBrowserOpen || cohortPromptBlocked || scaffoldWriteStatus !== 'idle' || opaqueWriteStatus !== 'idle' ? undefined : currentItem,
     cardFullyRevealed,
     mcqResult,
     flagMode,
@@ -1095,7 +1098,7 @@ function UnifiedReviewBody({ rotations, week, rotationSizes, fetchSlots, feedMod
     handleVideoContinue: advanceToNext,
     handleGoBack: handleReviewGoBack,
     handleRevealAll,
-    handleOpenShortcuts: openShortcuts,
+    handleOpenShortcuts: contentBrowserOpen ? undefined : openShortcuts,
     awaitingConfidence,
     // g / b rate what is on screen. Uses the same poster as the thumb buttons
     // so the two cannot diverge.
@@ -1440,6 +1443,11 @@ function UnifiedReviewBody({ rotations, week, rotationSizes, fetchSlots, feedMod
                 disabled={cohortPromptBlocked || cohortTurnPending}
               />
             )}
+            {!isCohortHost && isAuthenticated && <button type="button" onClick={() => {
+              setMobileOptionsOpen(false);
+              setContentBrowserMounted(true);
+              setContentBrowserOpen(true);
+            }} className="min-h-11 rounded-md px-2 text-left text-sm underline underline-offset-2">Browse content</button>}
             <button type="button" onClick={openShortcuts} className="min-h-11 rounded-md px-2 text-xs underline underline-offset-2">Shortcuts (?)</button>
           </div>
           {/* The one connection instrument (offline, weak link, queued
@@ -1480,6 +1488,10 @@ function UnifiedReviewBody({ rotations, week, rotationSizes, fetchSlots, feedMod
             </button>
         </div>
       </ReviewToolbar>
+      {contentBrowserMounted && !isCohortHost && isAuthenticated && authSession?.user?.id && (
+        <ContentBrowserDialog key={`content-browser:${authSession.user.id}`} userId={authSession.user.id} rotation={rotations[0] ?? ''}
+          open={contentBrowserOpen} returnFocusRef={mobileOptionsTriggerRef} onClose={() => { setContentBrowserOpen(false); mobileOptionsTriggerRef.current?.focus(); }} />
+      )}
 
       {isAuthenticated && !isCohortHost && process.env.NEXT_PUBLIC_PRACTICE_EXAMS_ENABLED === 'true' && (
         <div className="px-4">

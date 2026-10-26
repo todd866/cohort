@@ -469,6 +469,7 @@ describe('public navigation and static assets', () => {
     // dependency still fails this scan. Public card/MCQ browser tests assert
     // these capabilities are not invoked; route allowlists remain independent.
     const hostGatedReviewTargets = new Set([
+      'src/components/study/ContentBrowser.tsx -> /api/study/browser',
       'src/components/review/CardFeedback.tsx -> /api/cards/feedback',
       'src/components/review/CardImage.tsx -> /api/figures/delivery',
       'src/components/review/CardItemView.tsx -> /cards/${item.id}',

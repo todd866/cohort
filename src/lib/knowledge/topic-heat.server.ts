@@ -163,6 +163,7 @@ async function loadClusterRows(
       -- cards in the rotation, which is how a topic square served an
       -- unrelated question from an unscoped session.
       AND c."deletedAt" IS NULL
+      AND c."shelvedAt" IS NULL
       -- Drop the card entirely rather than counting it unseen: a suppressed
       -- card must not inflate the topic's denominator either.
       AND COALESCE(p.suppressed, false) = false
@@ -248,6 +249,7 @@ async function loadTrend(
       WHERE c.rotation = ${rotation}
         AND c."clusterId" IS NOT NULL
         AND c."deletedAt" IS NULL
+        AND c."shelvedAt" IS NULL
         AND COALESCE(p.suppressed, false) = false
     ),
     -- One pass over this learner's card events, joined once. The obvious shape
@@ -319,6 +321,7 @@ async function loadMemberTopics(rotation: string): Promise<Map<string, string[][
     FROM "Card"
     WHERE rotation = ${rotation}
       AND "deletedAt" IS NULL
+      AND "shelvedAt" IS NULL
       AND "clusterId" IS NOT NULL
   `;
   const topics = new Map<string, string[][]>();

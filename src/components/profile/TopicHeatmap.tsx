@@ -2,6 +2,7 @@
 
 import { useMemo, useState } from 'react';
 import Link from 'next/link';
+import { ContentBrowserDialog } from '@/components/study/ContentBrowserDialog';
 import { SECTION_HEADER } from '@/components/stats/instrument-chrome';
 import {
   describeTopicHeat,
@@ -17,14 +18,9 @@ import {
  * Squares fill the width row by row, in a stable order so a topic keeps its
  * place and can be watched turning green.
  *
- * WHY SQUARES ARE BUTTONS AND NOT LINKS. They were links, with the detail in a
- * `title` attribute. That is a ~1s delay, unstyled, and — the part that
- * mattered — completely invisible on touch, where a tap just navigated. So on a
- * phone there was no way to find out what a square WAS without committing to a
- * review session. Now hover or keyboard focus previews a square and a click
- * pins it; the panel below carries the link out. One extra click to start
- * reviewing, in exchange for being able to read the grid at all on the device
- * it is mostly read on.
+ * Squares are accessible buttons: hover/focus previews a topic; activating
+ * one opens its read-only card browser without navigating away from the map.
+ * The pinned topic, scroll position and keyboard focus survive closing it.
  *
  * The panel has a reserved minimum height so filling it in never reflows the
  * page (.claude/rules/web-vitals.md — CLS is a budgeted metric here).
@@ -197,9 +193,11 @@ function Legend() {
       <details className="text-[11px] text-[var(--md-on-surface-variant)]">
         <summary className="cursor-pointer">How colours work</summary>
         <p className="mt-1 max-w-sm">
-          Estimated current recall from your latest answers or card ratings, memory stability,
-          and time since review. Unseen or missed cards add no credit. Green means at least
-          80% across the topic, weighted by difficulty. This is an estimate, not an exam prediction.
+          Cards only. Good and Easy ratings contribute recall credit, reduced by time since review
+          and memory stability. Again, Hard, unreviewed cards and missing grades add no credit.
+          The estimate includes every live, unsuppressed card in the topic, weighted by difficulty.
+          Red is below 40%, amber is 40–79%, and green is at least 80%.
+          New means no recorded card reviews in that topic. This is not an exam prediction.
         </p>
       </details>
     </div>
@@ -216,7 +214,7 @@ function DetailPanel({ square }: { square: TopicHeatmapSquare | null }) {
     >
       {!square ? (
         <p className="text-xs text-[var(--md-on-surface-variant)]">
-          Hover or tap a square to see what that topic is.
+          Select a topic to browse its cards.
         </p>
       ) : (
         <>
@@ -287,16 +285,20 @@ export function TopicHeatmap({
   rotationLabel,
   horizonDays,
   examDated = true,
+  userId,
 }: {
   squares: TopicHeatmapSquare[];
   rotationLabel: string;
   horizonDays: number;
   examDated?: boolean;
+  userId?: string;
 }) {
   // `pinned` survives pointer-out so a tapped square stays readable; `hovered`
   // is the transient preview and wins while it is set.
   const [pinned, setPinned] = useState<TopicHeatmapSquare | null>(null);
   const [hovered, setHovered] = useState<TopicHeatmapSquare | null>(null);
+  const [browse, setBrowse] = useState<{ rotation: string; cluster?: string; label?: string; summary?: string } | null>(null);
+  const [browserOpen, setBrowserOpen] = useState(false);
   const active = hovered ?? pinned;
   const columns = useMemo(() => topicGridColumns(squares.length), [squares.length]);
 
@@ -314,8 +316,11 @@ export function TopicHeatmap({
           <h2 className={SECTION_HEADER}>
             {rotationLabel}
           </h2>
+          {userId && <button type="button" aria-haspopup="dialog"
+            className="min-h-11 px-2 text-xs font-semibold text-[var(--md-primary)] hover:underline"
+            onClick={() => { setBrowse({ rotation: '' }); setBrowserOpen(true); }}>View all</button>}
           <p className="text-xs font-medium tabular-nums text-[var(--md-on-surface-variant)]">
-            {summary.ready} ready · {summary.slipping} learning · {summary.unseen} unseen{examDated ? ` · ${days}d` : ''}
+            {summary.ready} ready · {summary.needsReview} needs review · {summary.learning} learning · {summary.unseen} unseen{examDated ? ` · ${days}d` : ''}
           </p>
         </div>
 
@@ -339,6 +344,7 @@ export function TopicHeatmap({
                   data-testid={`topic-square-${square.id}`}
                   data-band={square.band}
                   aria-pressed={pinned?.id === square.id}
+                  aria-haspopup={userId ? 'dialog' : undefined}
                   // No `title`. The browser's native tooltip rendered the
                   // same sentence the panel below already shows, ~1s after
                   // hover, unstyled, and floating over the grid — reported
@@ -350,7 +356,13 @@ export function TopicHeatmap({
                   onMouseLeave={() => setHovered(null)}
                   onFocus={() => setHovered(square)}
                   onBlur={() => setHovered(null)}
-                  onClick={() => setPinned(square)}
+                  onClick={() => {
+                    setPinned(square);
+                    if (userId) {
+                      setBrowse({ rotation: square.rotation, cluster: square.clusterId, label: square.label, summary: `${describeTopicHeat(square)} · ${square.seenCount}/${square.itemCount} cards reviewed · ${Math.round(square.score * 100)}% estimated recall` });
+                      setBrowserOpen(true);
+                    }
+                  }}
                   className="block aspect-square w-full rounded-[3px] focus-visible:outline
                              focus-visible:outline-2 focus-visible:outline-offset-1
                              focus-visible:outline-[var(--md-primary)]"
@@ -369,6 +381,10 @@ export function TopicHeatmap({
         <Legend />
       </div>
 
+      {userId && browse && <ContentBrowserDialog
+        key={`${browse.rotation}:${browse.cluster ?? 'all'}`}
+        open={browserOpen} onClose={() => setBrowserOpen(false)} userId={userId}
+        rotation={browse.rotation} initialClusterId={browse.cluster} topicLabel={browse.label} topicSummary={browse.summary} closeLabel="Back to map" />}
       <div className="lg:flex lg:flex-col">
         <DetailPanel square={active} />
       </div>

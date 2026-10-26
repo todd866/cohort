@@ -29,7 +29,7 @@ import {
   practiceLocaleWhere,
   type PracticeLocale,
 } from '@/lib/study/practice-locale';
-import { examScaffoldTag } from './exam-only-modules';
+import { EXAM_SCAFFOLD_TAGS, examScaffoldTag } from './exam-only-modules';
 import { publicClipWhere } from '@/lib/video/public-clips';
 
 /** Topics whose presence on a card/question disqualifies it from any user-facing pool. */
@@ -126,6 +126,8 @@ export async function loadServablePoolFilters(userId: string): Promise<ServableP
 
 export interface BuildServableCardWhereOptions {
   rotation: string;
+  /** Manual all-content browsing only; caller must still apply rotation entitlement. */
+  allRotations?: boolean;
   /** Null means "all weeks". */
   week: number | null;
   /** When set, also restricts to cards the user has never seen. */
@@ -203,6 +205,9 @@ export function buildServableCardWhere(options: BuildServableCardWhereOptions): 
     crossSourceMappingMode = 'adjacent',
     isCopyrightTier,
   } = options;
+  if (options.allRotations && (includePromotedRungs || allowedCrossSourceRotations !== undefined)) {
+    throw new TypeError('All-content browsing cannot use a session rotation scope');
+  }
   const where: Prisma.CardWhereInput = {
     deletedAt: null,
     shelvedAt: null,
@@ -210,8 +215,14 @@ export function buildServableCardWhere(options: BuildServableCardWhereOptions): 
   };
   // Exam rotations admit native scaffold cards only. The tag is the reviewed
   // authoring boundary; a clip or low complexity alone is not sufficient.
-  const scaffoldTag = examScaffoldTag(rotation);
+  const scaffoldTag = options.allRotations ? null : examScaffoldTag(rotation);
   if (scaffoldTag) where.topics = { has: scaffoldTag };
+  if (options.allRotations) {
+    where.OR = [
+      { rotation: { notIn: Object.keys(EXAM_SCAFFOLD_TAGS) } },
+      ...Object.entries(EXAM_SCAFFOLD_TAGS).map(([examRotation, tag]) => ({ rotation: examRotation, topics: { has: tag } })),
+    ];
+  }
   // Promoted rungs are admitted CARD BY CARD, never deck by deck.
   //
   // Requested 2026-09-14: harder questions from the imported decks, copyright
@@ -237,7 +248,7 @@ export function buildServableCardWhere(options: BuildServableCardWhereOptions): 
         moduleNodes: { has: `hard-rung:${rotation}` },
       },
     ];
-  } else {
+  } else if (!options.allRotations) {
     where.rotation = rotation;
   }
   if (week !== null) where.week = week;
@@ -268,6 +279,8 @@ export function buildServableCardWhere(options: BuildServableCardWhereOptions): 
 
 export interface BuildServableQuestionWhereOptions {
   rotation: string;
+  /** Manual all-content browsing only; caller must still apply rotation entitlement. */
+  allRotations?: boolean;
   week: number | null;
   newOnlyForUserId?: string;
   openIssueQuestionIds: ReadonlySet<string>;
@@ -296,6 +309,9 @@ export function buildServableQuestionWhere(
     isCopyrightTier,
   } = options;
 
+  if (options.allRotations && allowedCrossSourceRotations !== undefined) {
+    throw new TypeError('All-content browsing cannot use a session rotation scope');
+  }
   const excludedIds = new Set<string>([...openIssueQuestionIds, ...globallyExcludedQuestionIds]);
 
   const inner: Prisma.QuestionWhereInput = {
@@ -307,7 +323,7 @@ export function buildServableQuestionWhere(
       inner,
       sessionCandidateItemWhere(rotation, allowedCrossSourceRotations, crossSourceMappingMode),
     );
-  } else {
+  } else if (!options.allRotations) {
     inner.rotation = rotation;
   }
   if (week !== null) inner.week = week;

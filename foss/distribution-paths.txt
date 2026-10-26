@@ -2051,6 +2051,8 @@ src/components/stats/StatsInstruments.tsx
 src/components/stats/StatsLayoutShell.tsx
 src/components/stats/instrument-chrome.ts
 src/components/stats/stats-layout-context.tsx
+src/components/study/ContentBrowser.tsx
+src/components/study/ContentBrowserDialog.tsx
 src/components/study/StudyFilters.tsx
 src/components/tech/TechDeck.tsx
 src/components/ui/Accordion.tsx
@@ -2637,6 +2639,7 @@ src/lib/study-queue.ts
 src/lib/study/__fixtures__/session-fixtures.ts
 src/lib/study/background-queue-refresh.ts
 src/lib/study/booked-exam.ts
+src/lib/study/content-browser.ts
 src/lib/study/copyright-step1-supplement.ts
 src/lib/study/cross-source-access.server.ts
 src/lib/study/current-session-content.ts

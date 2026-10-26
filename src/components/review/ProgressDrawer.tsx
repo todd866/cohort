@@ -133,7 +133,9 @@ function RotationHeadline({
       {showTopics && (
         <div className="flex min-h-11 items-center justify-between gap-3">
           <p className="text-sm tabular-nums text-[var(--md-on-surface)]">
-            Topics {topicCount(readiness?.ready)} ready · {topicCount(readiness?.slipping)} learning · {topicCount(readiness?.unseen)} unseen
+            Topics {topicCount(readiness?.ready)} ready · {readiness?.needsReview == null
+              ? <>{topicCount(readiness?.slipping)} in progress</>
+              : <>{topicCount(readiness.needsReview)} needs review · {topicCount(readiness.learning)} learning</>} · {topicCount(readiness?.unseen)} unseen
           </p>
           <Link
             href="/profile#topic-readiness"

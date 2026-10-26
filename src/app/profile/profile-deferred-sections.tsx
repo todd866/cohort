@@ -88,6 +88,7 @@ export async function ProfileTopicHeatmapSection({ userId }: { userId: string })
   return (
     <section id="topic-readiness" aria-label="Topic readiness" className="mb-6 scroll-mt-4">
       <TopicHeatmap
+        userId={userId}
         squares={data.squares}
         rotationLabel={data.rotationLabel}
         horizonDays={data.horizonDays}
