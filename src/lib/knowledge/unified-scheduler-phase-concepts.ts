@@ -1,3 +1,4 @@
+import { preferSimulationTopics } from '@/lib/study/simulation-focus';
 /**
  * Unified scheduler: the concept plan
  *
@@ -542,6 +543,14 @@ export function selectWeakConcepts(
     );
     allocationChangedConceptMembershipCount = allocated.changedMembershipCount;
     allocationCoverageDebtDomainCodes = allocated.coverageDebtDomainCodes;
+  }
+
+  if (options.simulationFocus) {
+    const discretionary = weakConcepts.filter(state => !recentFailureConceptIds.has(state.conceptId));
+    const preferred = preferSimulationTopics(discretionary, state => inputs.conceptMap.get(state.conceptId)?.topics ?? [], options.simulationFocus);
+    let index = 0;
+    weakConcepts = weakConcepts.map(state => recentFailureConceptIds.has(state.conceptId) ? state : preferred[index++]);
+    allocatedConceptRanks = new Map(weakConcepts.map((state, rank) => [state.conceptId, rank]));
   }
 
   // 6c. D_eff maintenance shift: when knowledge breadth is narrowing, shift toward

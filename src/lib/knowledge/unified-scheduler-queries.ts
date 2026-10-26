@@ -36,6 +36,10 @@ import {
 import { cardDueForSelectionWhere } from '@/lib/knowledge/card-due-eligibility';
 import type { UnifiedSessionSelectionDeterminism } from './unified-scheduler-types';
 import { shuffleForSelection } from './unified-scheduler-config';
+import { deckStrandMixFor, selectByDeckStrands } from '@/lib/study/deck-strand-mix';
+
+/** Question rows read for a strand-mixed deck: more than such a deck holds today. */
+const STRAND_MIX_QUESTION_POOL = 1000;
 
 // =============================================================================
 // Helper Functions
@@ -60,7 +64,7 @@ export async function getCardsForCluster(
     crossSourceRotations?: readonly string[];
     crossSourceMappingMode?: 'adjacent' | 'open';
   },
-): Promise<Array<CardCandidate & { firstSightAtSelection: boolean }>> {
+): Promise<Array<CardCandidate & { rotation: string; firstSightAtSelection: boolean }>> {
   const excludedIds = options.selectedCardIds.size > 0 ? [...options.selectedCardIds] : undefined;
   // Same topics gate every other read path applies — without it the cluster
   // fallback can serve _needs-image / _incomplete-data cards.
@@ -101,6 +105,7 @@ export async function getCardsForCluster(
       },
       select: {
         id: true,
+        rotation: true,
         clusterId: true,
         similarCards: true,
         topics: true,
@@ -146,6 +151,7 @@ export async function getCardsForCluster(
         card: {
           select: {
             id: true,
+            rotation: true,
             clusterId: true,
             similarCards: true,
             topics: true,
@@ -176,7 +182,7 @@ export async function getCardsForCluster(
   ];
   const firstSightCardIds = new Set(newCards.map((card) => card.id));
   const seen = new Set<string>();
-  const selected: Array<CardCandidate & { firstSightAtSelection: boolean }> = [];
+  const selected: Array<CardCandidate & { rotation: string; firstSightAtSelection: boolean }> = [];
 
   for (const card of combined) {
     if (selected.length >= maxCandidates) break;
@@ -185,6 +191,9 @@ export async function getCardsForCluster(
     if (options.selectedCardIds.has(card.id)) continue;
     selected.push({
       id: card.id,
+      // The card's own source partition: a composed deck's companion cards
+      // carry their home rotation, which strand membership reads.
+      rotation: card.rotation,
       clusterId: card.clusterId,
       similarCards: card.similarCards,
       topics: card.topics,
@@ -263,6 +272,7 @@ export async function getQuestionsForRotation(
 ): Promise<Array<{
   id: string;
   rotation: string;
+  sourceFile: string | null;
   topics: string[];
   variantGroupId: string | null;
   variantType: string | null;
@@ -274,7 +284,13 @@ export async function getQuestionsForRotation(
   if (globallyExcluded.size > 0) {
     excludedIds.push(...globallyExcluded);
   }
-  const poolSize = Math.max(30, limit * 10);
+  // A deck with a strand mix (deck-strand-mix.ts) needs both strands in the
+  // pool, and a newest-first window of a few dozen rows can hold only one. Its
+  // whole question pool is a few hundred narrow rows, so read it all.
+  const strandMix = deckStrandMixFor(rotation);
+  const poolSize = strandMix
+    ? Math.max(STRAND_MIX_QUESTION_POOL, limit * 10)
+    : Math.max(30, limit * 10);
 
   const allowPrivateSources = await userIdCanAccessPrivateSources(userId);
   const candidates = await prisma.question.findMany({
@@ -302,6 +318,7 @@ export async function getQuestionsForRotation(
       facilityIndex: true,
       totalAttempts: true,
       source: true,
+      sourceFile: true,
     },
     take: poolSize,
     orderBy: { createdAt: 'desc' },
@@ -336,11 +353,14 @@ export async function getQuestionsForRotation(
       )
     : candidatesAfterSessionVariantFilter;
 
-  const selected = options.selectionDeterminism
+  // With a strand mix, let the variant selector pick one question per family
+  // across the whole admitted pool, then take `limit` of them by strand.
+  const variantLimit = strandMix ? admitted.length : limit;
+  const variantSelected = options.selectionDeterminism
     ? await selectVariantAwareQuestions(
         admitted,
         userId,
-        limit,
+        variantLimit,
         48,
         familiarity,
         options.selectionDeterminism,
@@ -348,10 +368,16 @@ export async function getQuestionsForRotation(
     : await selectVariantAwareQuestions(
         admitted,
         userId,
-        limit,
+        variantLimit,
         48,
         familiarity,
       );
+  const selected = strandMix
+    ? selectByDeckStrands(variantSelected, limit, {
+        deck: rotation,
+        identify: (q) => ({ rotation: q.rotation, sourceFile: q.sourceFile }),
+      })
+    : variantSelected;
   if (familiarity && counter) {
     // Increment on what was actually SERVED, not what was admitted.
     counter.masteredServed += countMastered(selected, (q) => q.id, familiarity);
@@ -365,6 +391,7 @@ export async function getQuestionsForRotation(
   return selected.map((q) => ({
     id: q.id,
     rotation: q.rotation,
+    sourceFile: q.sourceFile ?? null,
     topics: q.topics,
     variantGroupId: q.variantGroupId,
     variantType: q.variantType,

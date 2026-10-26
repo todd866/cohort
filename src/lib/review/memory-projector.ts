@@ -79,6 +79,9 @@ export interface MemoryProjectionPolicyV1 {
    * into this value before replay so ambient configuration cannot change it.
    */
   maximumStabilityDays: number;
+  /** Explicit maintenance due ceiling; absent preserves legacy replay semantics. */
+  maximumReviewIntervalDays?: number;
+  selfAssessmentOnly?: boolean;
   /** Fixed offset east of UTC used for daily review/failure floors. */
   studyDayBoundaryOffsetMinutes: number;
 }
@@ -343,6 +346,8 @@ export function projectCardMemory(input: ProjectCardMemoryInput): CardMemoryProj
       memory = applyReview(memory, event, {
         complexity: input.card.complexity,
         maximumStabilityDays: input.policy.maximumStabilityDays,
+        maximumReviewIntervalDays: input.policy.maximumReviewIntervalDays,
+        selfAssessmentOnly: input.policy.selfAssessmentOnly,
         liked: input.preferences.liked,
         studyDayStart,
         reviewsOnStudyDay,
@@ -502,6 +507,8 @@ export function appendStreamingCardMemoryEvent(
     state.memory = applyReview(state.memory, { ...event, occurredAt }, {
       complexity: state.card.complexity,
       maximumStabilityDays: state.policy.maximumStabilityDays,
+      maximumReviewIntervalDays: state.policy.maximumReviewIntervalDays,
+      selfAssessmentOnly: state.policy.selfAssessmentOnly,
       liked: state.preferences.liked,
       studyDayStart,
       reviewsOnStudyDay: state.reviewsOnStudyDay,
@@ -552,6 +559,8 @@ function applyReview(
   context: {
     complexity: number;
     maximumStabilityDays: number;
+    maximumReviewIntervalDays?: number;
+    selfAssessmentOnly?: boolean;
     liked: boolean;
     studyDayStart: number;
     reviewsOnStudyDay: number;
@@ -585,6 +594,12 @@ function applyReview(
     retrievalStrength,
     reviewedAt,
   });
+  if (context.selfAssessmentOnly) {
+    mastery.status = 'reviewing';
+    mastery.masteredAt = null;
+    mastery.consecutiveCorrectFast = 0;
+    mastery.nextDueInDays = null;
+  }
   const struggle = updateStruggle(current, quality, reviewedAt);
 
   let leechSuppressionCount = current.leechSuppressionCount;
@@ -629,6 +644,12 @@ function applyReview(
       * V1.likedIntervalMultiplier;
     nextDueAt = new Date(reviewedAt.getTime() + shortenedInterval);
     if (nextDueAt.getTime() < nextStudyDay) nextDueAt = new Date(nextStudyDay);
+  }
+
+  if (context.maximumReviewIntervalDays !== undefined) {
+    nextDueAt = new Date(Math.min(
+      nextDueAt.getTime(), reviewedAt.getTime() + context.maximumReviewIntervalDays * MS_PER_DAY,
+    ));
   }
 
   return {
@@ -886,6 +907,14 @@ function validatePolicy(policy: MemoryProjectionPolicyV1): void {
     || policy.maximumStabilityDays < V1.minimumStabilityDays
   ) {
     throw new Error('maximumStabilityDays must be a finite number >= 0.5');
+  }
+  if (policy.selfAssessmentOnly !== undefined && typeof policy.selfAssessmentOnly !== 'boolean') {
+    throw new Error('selfAssessmentOnly must be boolean');
+  }
+  if (policy.maximumReviewIntervalDays !== undefined && (
+    !Number.isFinite(policy.maximumReviewIntervalDays) || policy.maximumReviewIntervalDays < 3
+  )) {
+    throw new Error('maximumReviewIntervalDays must be a finite number >= 3 (failure spacing floor)');
   }
   if (
     !Number.isSafeInteger(policy.studyDayBoundaryOffsetMinutes)

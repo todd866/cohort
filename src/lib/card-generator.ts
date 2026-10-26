@@ -19,6 +19,7 @@ import { parseFrontmatter } from './frontmatter';
 import { CONTENT_ROTATION_IDS, EXAM_PREP_ROTATION_IDS, resolveModuleRotation } from './rotations';
 import { parseCiteReference } from './cite-utils';
 import { inferSingleSourceSlugFromSourceLines } from './source-registry';
+import {authoredCardSet} from './authored-card-sets';
 
 import {
   extractWeekFromFilename,
@@ -228,6 +229,7 @@ export function parseContentFile(
   const cards: GeneratedCard[] = [];
 
   // Extract from each component type
+  cards.push(...authoredCardSet(data.cardSet,rotation,sourceFile));
   cards.push(...extractMnemonicCards(content, rotation, week, headings));
   cards.push(...extractKeyPointCards(content, rotation, week, headings));
   cards.push(...extractDangerCards(content, rotation, week, headings));

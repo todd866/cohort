@@ -61,6 +61,7 @@ import { choosePracticeScaffoldTarget, prepareInstantPracticeScaffold } from './
 import { EXAM_ONLY_ROTATIONS, isNativeExamScaffold } from './exam-only-modules';
 import { reviewLearningPolicy } from './review-learning-policy';
 import { getReviewLearningGap } from './review-learning-gap.server';
+import { orderByDeckStrands, sessionItemStrandIdentity, type StrandIdentity } from './deck-strand-mix';
 import {
   CONCEPT_THREAD_MAX_AGE_MS,
   CONCEPT_THREAD_POLICY_VERSION,
@@ -136,6 +137,9 @@ export async function tryInstantSession(
   options: { practiceScaffoldOnly?: boolean } = {},
 ): Promise<NextResponse | null> {
 
+  // The instant pool has no personal topic allocation. Use the shared focused
+  // cache/manifold builder, while preserving exact requested scaffold delivery.
+  if (ctx.simulationFocus && !options.practiceScaffoldOnly) return null;
   const declineReason = instantDeclineReason(ctx);
   if (declineReason) {
     logSessionDiagnostic(ctx, {
@@ -567,6 +571,19 @@ export async function tryInstantSession(
     randomizedQuestions = [...nudgeInstantChallenge(questionPrefix, challengeLevel, eligibleQuestions,
       new Map(questionQuality.map(row => [row.id, { facilityIndex: row.facilityIndex, sampleSize: row.totalAttempts }]))), ...randomizedQuestions.slice(300)];
   }
+  // A deck that prepares for two exams interleaves its strands before the
+  // prefix is taken, so the batch carries both (deck-strand-mix.ts). Stable
+  // within a strand: the shuffle and the challenge nudge still decide which
+  // item of a strand comes first. A no-op for every other deck.
+  const staticStrandIdentity = (item: { rotation: string; sourceFile?: string | null }): StrandIdentity => (
+    { rotation: item.rotation, sourceFile: item.sourceFile ?? null }
+  );
+  shuffledCards = orderByDeckStrands(shuffledCards, {
+    deck: ctx.rotation, seed: `${ctx.sessionId}:cards`, identify: staticStrandIdentity,
+  });
+  randomizedQuestions = orderByDeckStrands(randomizedQuestions, {
+    deck: ctx.rotation, seed: `${ctx.sessionId}:questions`, identify: staticStrandIdentity,
+  });
   // One card per variant group, preferring a sibling this learner has never been
   // served. The previous loop took the first sibling in shuffle order, which
   // rotates by chance: with three siblings an already-seen one came back about a
@@ -1007,8 +1024,18 @@ export async function tryInstantSession(
   const currentVariantSafeItems = filterDuplicateCardVariantGroups(
     currentItems.filter((item): item is UnifiedItem => item !== null),
   );
+  // Spread the strands through the delivered order as well; a paired scaffold
+  // stays behind its anchor. Native items carry their source file in the
+  // content map, and companion items are told apart by rotation alone.
+  const strandOrderedItems = orderByDeckStrands(currentVariantSafeItems, {
+    deck: ctx.rotation,
+    seed: ctx.sessionId,
+    identify: (item) => sessionItemStrandIdentity(item, ctx.rotationContent, ctx.rotation),
+    keepWithPrevious: (item) => item.struggleIntervention?.isScaffold === true,
+    shareBasis: 'present',
+  });
   const selectedCurrentItems = ctx.media
-    ? orderEaseIn(currentVariantSafeItems.slice(0, ctx.batchSize)) : currentVariantSafeItems;
+    ? orderEaseIn(strandOrderedItems.slice(0, ctx.batchSize)) : strandOrderedItems;
   const modalityOrderedItems = breakModalityRuns(practiceScaffoldTarget
     ? [...selectedCurrentItems.filter(item => item.type === 'question' && item.id === practiceScaffoldTarget.questionId),
       ...selectedCurrentItems.filter(item => item.type !== 'question' || item.id !== practiceScaffoldTarget.questionId)]

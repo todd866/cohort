@@ -14,7 +14,7 @@ model Source {
   shortName String // "CC Bible"
 
   // Classification
-  sourceType   String // 'textbook', 'guidelines', 'lecture', 'uptodate', 'peer-reviewed'
+  sourceType   String // 'textbook', 'guidelines', 'lecture', 'uptodate', 'peer-reviewed', 'product-information'
   reliability  Int     @default(3) // 1-5 tier (5 = gold standard guidelines)
   jurisdiction String? // 'nsw' | 'wa' | 'national' | 'international' | null (null = universal)
 

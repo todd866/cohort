@@ -9,7 +9,7 @@
  *
  * Owner, 2026-10-21: "make a holistically good site for these MD1s". The study
  * container is one shared deck (MD1_DECK, explicit focus, owner-gated in the
- * personal-deck registry); the exams are KAT4 and the MMCA.
+ * personal-deck registry); the exams are KAT4, the MMCA and AHCT 4.
  */
 
 export const MD1_INSTITUTION = 'usyd-md1';
@@ -43,6 +43,9 @@ export interface Md1Exam {
 export const MD1_EXAMS: readonly Md1Exam[] = [
   { id: MD1_DECK, short: 'KAT4' },
   { id: 'md1-mmca', short: 'MMCA' },
+  // Anatomy and Histology Competency Test 4: 12 timed prosection and slide
+  // stations, written identification (2024: 18 November). Added 2026-10-22.
+  { id: 'md1-ahct', short: 'AHCT4' },
 ];
 
 export function isMd1Program(institution: string | null | undefined): boolean {

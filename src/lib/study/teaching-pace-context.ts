@@ -13,6 +13,9 @@
  * resolver, used by both, is what stops that drift recurring.
  */
 
+import {withSimulationLearningFocus} from '@/lib/simulation/learning-cycle';
+import { resolveSimulationFocus } from './simulation-focus.server';
+import type { SimulationFocus } from './simulation-focus';
 import { prisma } from '@/lib/prisma';
 import { logger } from '@/lib/logger';
 import { getBlockStartDate, courseCalendarDay, type TrackNumber } from '@/lib/rotation-context';
@@ -20,6 +23,7 @@ import { currentTeachingWeek as currentTeachingWeekFor } from '@/lib/curriculum/
 import { buildDatedTeachingPace, buildTopicTeachingWeekMap } from '@/lib/curriculum/teaching-topic-week';
 
 export interface TeachingPace {
+  simulationFocus?: SimulationFocus | null;
   /** Topic slug → course calendar days since its most recent lecture. */
   topicRecencyDays: ReadonlyMap<string, number>;
   /** Rotation log and daily decay state used to validate prepared queues. */
@@ -43,10 +47,10 @@ function isTrackNumber(value: unknown): value is TrackNumber {
  * so it is still returned — it costs nothing and is inert without a week.
  * Dated lectures apply to everyone reviewing the rotation, regardless of track.
  */
-export function resolveTeachingPace(rotation: string, track: unknown, now = new Date()): TeachingPace {
+export function resolveTeachingPace(rotation: string, track: unknown, now = new Date(), email?: string | null, simulationGoal?:unknown, feedProfile?:unknown): TeachingPace {
   const topicTeachingWeeks = buildTopicTeachingWeekMap(rotation);
   const courseDay = courseCalendarDay(now);
-  const dated = buildDatedTeachingPace(rotation, courseDay);
+  const dated = { ...buildDatedTeachingPace(rotation, courseDay), simulationFocus: withSimulationLearningFocus(resolveSimulationFocus(email, rotation, now, simulationGoal),feedProfile,rotation,now,simulationGoal) };
   if (!isTrackNumber(track)) return { currentTeachingWeek: null, topicTeachingWeeks, ...dated };
   const blockStart = getBlockStartDate(rotation, track);
   return {
@@ -73,9 +77,9 @@ export async function loadTeachingPaceForUser(
   try {
     const user = await prisma.user.findUnique({
       where: { id: userId },
-      select: { track: true },
+      select: { track: true, email: true, simulationGoal:true, feedProfile:true },
     });
-    return resolveTeachingPace(rotation, user?.track, now);
+    return resolveTeachingPace(rotation, user?.track, now, user?.email,user?.simulationGoal,user?.feedProfile);
   } catch (error) {
     logger.warn('Failed to resolve teaching pace; scheduling without weekly pacing', {
       userId,

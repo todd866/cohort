@@ -1,4 +1,6 @@
 'use client';
+import { UniversalRecallCard } from './UniversalRecallCard';
+import { universalRecallObjective } from '@/lib/review/universal-recall';
 
 import { isTransportFailure } from '@/lib/offline/transport-failure';
 import { ReviewModulePicker } from '@/components/shared/ReviewModulePicker';
@@ -67,6 +69,7 @@ import { CohortPrompt } from './CohortPrompt';
 import { CohortSearchOverlay } from './CohortSearchOverlay';
 import { ProgressPill } from './ProgressPill';
 import { ProgressDrawer } from './ProgressDrawer';
+import { reviewProgressPresentation } from './progress-presentation';
 import { progressRotationsForObjective } from './progress-rotation-filter';
 import { dailyGoalMetadata } from '@/lib/study/daily-goals';
 import { SessionEmptyState } from './SessionEmptyState';
@@ -524,6 +527,23 @@ function UnifiedReviewBody({ rotations, week, rotationSizes, fetchSlots, feedMod
   // so a cold flight-mode relaunch resumes at N instead of displaying zero.
   const usingDeviceProgress = allowUnverifiedPack || servingOffline;
   const reviewed = usingDeviceProgress ? stats.total : serverReviewed;
+  const displayedProgress = reviewProgressPresentation({
+    feedMode, reviewFilter, itemType, media,
+    scoped: Boolean(cluster || topics?.length || week || boundedQueue
+      || (focusRotation && examRotation && focusRotation !== examRotation)),
+    offline: usingDeviceProgress,
+    sessionReviewed: stats.total,
+    reviewed, target,
+    todayFirstSight: sessionProgress.todayFirstSight,
+    firstSightTarget: sessionProgress.firstSightTarget,
+  });
+  const topicScopeControl = clusterScope ? (
+    <div className="px-4">
+      <ReviewScopeBanner scope={clusterScope} feedMode={feedMode} reviewFilter={reviewFilter}
+        itemType={itemType} media={media} canAccessVideo={canAccessVideo} onReviewModeChange={onReviewModeChange}
+        practiceExamHref={!isCohortHost && process.env.NEXT_PUBLIC_PRACTICE_EXAMS_ENABLED === 'true' ? '/practice-exam' : undefined} />
+    </div>
+  ) : null;
   const incrementReviewed = useCallback((rotation?: string | null, firstSight = false) => {
     if (!usingDeviceProgress) incrementServerReviewed(rotation, firstSight);
   }, [incrementServerReviewed, usingDeviceProgress]);
@@ -849,14 +869,15 @@ function UnifiedReviewBody({ rotations, week, rotationSizes, fetchSlots, feedMod
   const cardGrading = useGrading({
     itemId: currentItem?.id ?? '',
     itemType: 'card',
+    answerIdentity: card.recallEvidence ? JSON.stringify(card.recallEvidence) : undefined,
     getResponseTimeMs,
-    metadata: currentItem?.decisionContext,
+    metadata: { ...currentItem?.decisionContext, ...(card.recallEvidence ? { universalRecall: card.recallEvidence } : {}) },
     sessionId: currentItem?.sessionId,
     batchId: currentItem?.batchId,
     serveDecisionId: currentItem?.serveDecisionId,
     onGraded: (confidence) => {
       onReviewWithReset?.();
-      handleCardGrade(confidence >= 3 ? 3 : 0);
+      handleCardGrade(confidence >= 3 && (!card.recallEvidence || (!card.recallEvidence.assisted && card.recallEvidence.omittedComponentIds.length === 0)) ? 3 : 0);
     },
     // Went back and gave the same grade again: a re-read, so move on without
     // counting a second review in the stats or the daily total.
@@ -1117,6 +1138,7 @@ function UnifiedReviewBody({ rotations, week, rotationSizes, fetchSlots, feedMod
   if (loading) {
     return <div>
       {showDifficulty && <div className="flex justify-center px-4 pt-3">{difficultyControl()}</div>}
+      {topicScopeControl}
       <LoadingSkeleton />
     </div>;
   }
@@ -1127,6 +1149,7 @@ function UnifiedReviewBody({ rotations, week, rotationSizes, fetchSlots, feedMod
     const activeTopic = searchTopics.find((topic) => topic.id === activeSearchTopicId) ?? null;
     return (
       <div className="text-center py-8">
+        {topicScopeControl}
         {showDifficulty && <div className="mb-4 flex justify-center px-4">{difficultyControl()}</div>}
         <p role="alert" className="text-[var(--md-error)] mb-4">
           {cohortTurnErrorCode === 'topic_exhausted' && activeTopic
@@ -1168,7 +1191,10 @@ function UnifiedReviewBody({ rotations, week, rotationSizes, fetchSlots, feedMod
     return (
       <div>
         {showDifficulty && <div className="flex justify-center px-4 pt-3">{difficultyControl()}</div>}
+        {topicScopeControl}
         <SessionEmptyState
+          reviewFilter={reviewFilter}
+          topicScoped={Boolean(clusterScope)}
           isExhausted={isExhausted}
           feedMode={feedMode}
           itemType={itemType}
@@ -1189,7 +1215,10 @@ function UnifiedReviewBody({ rotations, week, rotationSizes, fetchSlots, feedMod
     return (
       <div>
         {showDifficulty && <div className="flex justify-center px-4 pt-3">{difficultyControl()}</div>}
+        {topicScopeControl}
         <SessionEmptyState
+          reviewFilter={reviewFilter}
+          topicScoped={Boolean(clusterScope)}
           isExhausted={isExhausted}
           feedMode={feedMode}
           itemType={itemType}
@@ -1211,7 +1240,7 @@ function UnifiedReviewBody({ rotations, week, rotationSizes, fetchSlots, feedMod
   }
 
   // Determine which buttons to show in sticky footer
-  const showCardReveal = item.type === 'card' && !cardFullyRevealed;
+  const showCardReveal = item.type === 'card' && !cardFullyRevealed && !universalRecallObjective(item.id);
   const showCardGrading = item.type === 'card' && cardFullyRevealed && !error;
   const showMcqConfidence = item.type === 'question'
     && !cohortPromptBlocked
@@ -1314,7 +1343,7 @@ function UnifiedReviewBody({ rotations, week, rotationSizes, fetchSlots, feedMod
               value={exploring ? 'Choose rotation' : rotationLabel(rotations[0])}
             />
           )}
-          {!isCohortHost && isAuthenticated && onReviewModeChange && (
+          {!isCohortHost && !clusterScope && isAuthenticated && onReviewModeChange && (
             <div className="hidden @min-[60rem]/review-toolbar:block">
               <ReviewModeSelector
                 practiceExamHref={!isCohortHost && process.env.NEXT_PUBLIC_PRACTICE_EXAMS_ENABLED === "true" ? "/practice-exam" : undefined}
@@ -1365,8 +1394,7 @@ function UnifiedReviewBody({ rotations, week, rotationSizes, fetchSlots, feedMod
 
         {reviewed != null && !isCohortHost && (
             <ProgressPill
-              reviewed={reviewed}
-              target={target}
+              {...displayedProgress}
               onTap={() => setDrawerOpen(o => !o)}
             />
         )}
@@ -1382,7 +1410,7 @@ function UnifiedReviewBody({ rotations, week, rotationSizes, fetchSlots, feedMod
               ? 'absolute right-0 top-full z-50 mt-1 flex max-h-[min(70vh,calc(100dvh-8rem))] w-[min(18rem,calc(100vw-1.5rem))] flex-col gap-3 overflow-y-auto rounded-xl border border-[var(--md-outline-variant)] bg-[var(--md-surface)] p-3 text-sm shadow-xl outline-none'
               : 'hidden'}
           >
-            {!isCohortHost && isAuthenticated && onReviewModeChange && mobileOptionsOpen && (
+            {!isCohortHost && !clusterScope && isAuthenticated && onReviewModeChange && mobileOptionsOpen && (
               <div data-review-options-first className="@min-[60rem]/review-toolbar:hidden">
                 <ReviewModeSelector
                 practiceExamHref={!isCohortHost && process.env.NEXT_PUBLIC_PRACTICE_EXAMS_ENABLED === "true" ? "/practice-exam" : undefined}
@@ -1461,14 +1489,8 @@ function UnifiedReviewBody({ rotations, week, rotationSizes, fetchSlots, feedMod
         </div>
       )}
 
-      {/* A scoped session has to say so. Sits above the card rather than inside
-          the toolbar: the toolbar's controls all CHANGE the session, and this
-          reports what the session already is. */}
-      {clusterScope && (
-        <div className="px-4">
-          <ReviewScopeBanner scope={clusterScope} />
-        </div>
-      )}
+      {/* Keep topic identity and its mode together, including on phones. */}
+      {topicScopeControl}
 
       <LearningCheckIn
         key={reviewUserKey ?? 'guest'}
@@ -1508,6 +1530,8 @@ function UnifiedReviewBody({ rotations, week, rotationSizes, fetchSlots, feedMod
           target={target}
           perRotation={perRotation}
           bookedExam={bookedExam}
+          feedMode={feedMode}
+          scoped={displayedProgress.kind === 'session'}
           sessionReviewed={stats.total}
           sessionAccuracy={stats.total > 0 ? Math.round(stats.correct / stats.total * 100) : 0}
           currentRotation={focusRotation}
@@ -1617,7 +1641,11 @@ function UnifiedReviewBody({ rotations, week, rotationSizes, fetchSlots, feedMod
 
 
       {/* CARD */}
-      {item.type === 'card' && (
+      {item.type === 'card' && universalRecallObjective(item.id) && (
+        <UniversalRecallCard key={item.id} objective={universalRecallObjective(item.id)!}
+          evidence={card.recallEvidence} onAttempt={card.commitRecallAttempt} onEvidence={card.setRecallEvidence} />
+      )}
+      {item.type === 'card' && !universalRecallObjective(item.id) && (
         <CardItemView
           item={item}
           revealedBlanks={revealedBlanks}

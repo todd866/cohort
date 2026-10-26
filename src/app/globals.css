@@ -551,11 +551,10 @@ main:focus-visible {
   color: var(--md-on-surface);
 }
 
-/* Hierarchy comes from the lead-in, not from a heavier vignette: the case is
-   read once at body weight, the question the learner must answer stands out.
-   Global, so every stem renderer marks its question line the same way. */
+/* The question line is its own paragraph at body weight. Owner, 22 Oct 2026:
+   no bold on stems ("I didn't ask for it"); the paragraph break separates it. */
 [data-question-lead] {
-  font-weight: 600;
+  font-weight: inherit;
 }
 
 .review-option {

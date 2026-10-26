@@ -1,3 +1,4 @@
+import { universalRecallObjective, type UniversalRecallEvidence } from '@/lib/review/universal-recall';
 import { useState, useCallback, useMemo, useEffect, useRef } from 'react';
 import type { ReviewItem, ReviewStats } from './types';
 
@@ -17,6 +18,7 @@ export function useCardReview({
   registerResetCallback,
   onAnswerIntent,
 }: UseCardReviewOptions) {
+  const [recallEvidence, setRecallEvidence] = useState<UniversalRecallEvidence | null>(null);
   const [revealedBlanks, setRevealedBlanks] = useState(0);
   const cardAnswerRef = useRef<HTMLDivElement | null>(null);
 
@@ -29,6 +31,7 @@ export function useCardReview({
   const [lastItemId, setLastItemId] = useState(currentItem?.id);
   if (currentItem?.id !== lastItemId) {
     setLastItemId(currentItem?.id);
+    setRecallEvidence(null);
     setRevealedBlanks(0);
   }
 
@@ -36,6 +39,7 @@ export function useCardReview({
   useEffect(() => {
     return registerResetCallback(() => {
       setRevealedBlanks(0);
+      setRecallEvidence(null);
     });
   }, [registerResetCallback]);
 
@@ -48,17 +52,19 @@ export function useCardReview({
 
   // Card: reveal next blank (or show grading if all revealed)
   const handleReveal = useCallback(() => {
+    if (universalRecallObjective(currentItem?.id) && !recallEvidence) return;
     const totalBlanks = blankCount > 0 ? blankCount : 1;
     setRevealedBlanks((prev) => Math.min(prev + 1, totalBlanks));
-  }, [blankCount]);
+  }, [blankCount, currentItem?.id, recallEvidence]);
 
   // Reveal the whole card at once. Space deliberately steps one blank at a
   // time, but on a multi-blank card that is one press per blank when the
   // learner already knows them all.
   const handleRevealAll = useCallback(() => {
+    if (universalRecallObjective(currentItem?.id) && !recallEvidence) return;
     const totalBlanks = blankCount > 0 ? blankCount : 1;
     setRevealedBlanks(totalBlanks);
-  }, [blankCount]);
+  }, [blankCount, currentItem?.id, recallEvidence]);
 
   // Check if all blanks are revealed
   const cardFullyRevealed = useMemo(() => {
@@ -89,7 +95,13 @@ export function useCardReview({
     advanceToNext();
   }, [advanceToNext]);
 
+  const commitRecallAttempt = (evidence: UniversalRecallEvidence) => {
+    setRecallEvidence(evidence);
+    setRevealedBlanks(1);
+  };
+
   return {
+    recallEvidence, setRecallEvidence, commitRecallAttempt,
     revealedBlanks,
     handleRevealAll,
     blankCount,

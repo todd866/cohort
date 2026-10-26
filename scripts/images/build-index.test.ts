@@ -1,5 +1,5 @@
 import { describe, it, expect } from 'vitest';
-import { mkdtempSync, writeFileSync, mkdirSync, readFileSync } from 'node:fs';
+import { mkdtempSync, writeFileSync, mkdirSync, readFileSync, existsSync } from 'node:fs';
 import { tmpdir } from 'node:os';
 import { join } from 'node:path';
 import {
@@ -39,6 +39,17 @@ function setupFixture() {
 }
 
 describe('buildIndex', () => {
+  it('validates sidecars without writing indexes in check mode, even offline', () => {
+    const root = setupFixture();
+    const outFile = join(root, 'must-not-exist.json');
+    const opts = { sidecarRoot: join(root, 'figure-sidecars'), outFile, check: true };
+    expect(buildIndexForMode(opts, resolveImageIndexMode({ MD3_GENERATED_CONTENT_MODE: 'offline' })).entries).toBe(1);
+    expect(existsSync(outFile)).toBe(false);
+    writeFileSync(join(opts.sidecarRoot, 'bad.png.json'), JSON.stringify({ sensitivityReviewStatus: 'reviewed-safe' }));
+    expect(() => buildIndexForMode(opts, resolveImageIndexMode({}))).toThrow(/sensitivity/);
+    expect(existsSync(outFile)).toBe(false);
+  });
+
   it('resolves explicit offline/release modes and rejects misspellings', () => {
     expect(resolveImageIndexMode({})).toEqual({ name: 'database', requireSidecars: true });
     expect(resolveImageIndexMode({ MD3_GENERATED_CONTENT_MODE: 'offline' }))

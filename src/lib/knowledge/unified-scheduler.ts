@@ -42,6 +42,7 @@ import {
   fillCoverageLane,
   fillQuestions,
   holdBackUnearnedStages,
+  fillSimulationPreparation,
   preTeachNaiveConcepts,
   preTeachVideos,
   reserveAppliedSurplus,
@@ -209,6 +210,10 @@ async function constructUnifiedSessionImpl(
 
   // 7. Select items from top concepts
   const build = createSessionBuild(inputs, plan);
+
+  // Simulation deadline: unrecalled preparation takes every seat it can
+  // before exam-core, videos, questions, or ordinary due cards.
+  fillSimulationPreparation(inputs, build);
 
   // 7a-core) Reserve today's scheduled atomic facts before any ordinary concept, applied
   // or cross-source selection.

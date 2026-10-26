@@ -2,7 +2,7 @@
 
 import Link from 'next/link';
 import { rotationLabel } from '@/lib/rotation-labels';
-import type { ReviewItemType, ReviewMedia } from '@/lib/review/review-intent';
+import type { ReviewFilter, ReviewItemType, ReviewMedia } from '@/lib/review/review-intent';
 import type { ReviewMode } from './ReviewModeSelector';
 import type { ReviewFeedMode } from './hooks/useReviewFeedMode';
 
@@ -17,6 +17,8 @@ interface NewRemaining {
 }
 
 interface SessionEmptyStateProps {
+  reviewFilter?: ReviewFilter;
+  topicScoped?: boolean;
   isExhausted: boolean;
   feedMode: ReviewFeedMode;
   /** MCQ-only review. Changes the noun, and the way back out. */
@@ -226,6 +228,8 @@ function EmptyStateEscape({
 }
 
 export function SessionEmptyState({
+  reviewFilter,
+  topicScoped = false,
   canBrowseHistory = true,
   isExhausted,
   feedMode,
@@ -250,6 +254,21 @@ export function SessionEmptyState({
       <p className="px-4 py-6 text-sm text-[var(--md-on-surface)]">
         Nothing left to review from that day
       </p>
+    );
+  }
+
+  if (isExhausted && (reviewFilter === 'due' || reviewFilter === 'at-risk')) {
+    return (
+      <div className="text-center py-8">
+        <p className="text-lg font-medium text-[var(--md-on-surface)] mb-2">
+          {reviewFilter === 'due' ? 'No more due cards' : 'No more at-risk cards'} {topicScoped ? 'in this topic' : 'right now'}
+        </p>
+        {stats && stats.total > 0 && <p className="text-sm text-[var(--md-on-surface-variant)]">{stats.total} reviewed this session</p>}
+        {onReviewModeChange && <button type="button" onClick={() => onReviewModeChange('new')}
+          className="mt-3 min-h-11 rounded-lg border border-[var(--md-outline-variant)] px-4 text-sm text-[var(--md-primary)]">
+          Learn new{topicScoped ? ' in this topic' : ''}
+        </button>}
+      </div>
     );
   }
 

@@ -55,6 +55,8 @@ export interface NaivePreTeachOptions {
   /** Card IDs already selected by earlier scheduler sections (videos);
    *  pre-teach won't re-pick them. */
   alreadySelectedCardIds?: Set<string>;
+  /** Reviewed personal preparation preference, within eligible C1 scaffolds. */
+  preferCard?: (card: BulkCardRow) => boolean;
 }
 
 function topicsOverlap(a: string[] | undefined, b: string[]): boolean {
@@ -93,6 +95,12 @@ export function pickNaivePreTeachCards(
     if (b.priority !== a.priority) return b.priority - a.priority;
     return a.conceptName.localeCompare(b.conceptName);
   });
+
+  if (options.preferCard) {
+    candidateScaffolds.sort((a,b) => Number(options.preferCard!(b)) - Number(options.preferCard!(a)));
+    const hasPreferred = (concept: NaivePreTeachConcept) => candidateScaffolds.some(card => !used.has(card.id) && options.preferCard!(card) && topicsOverlap(concept.topics,card.topics));
+    ordered.sort((a,b) => Number(hasPreferred(b)) - Number(hasPreferred(a)));
+  }
 
   const picks: NaivePreTeachPick[] = [];
   for (const concept of ordered) {

@@ -6,6 +6,10 @@
  */
 export type StationKind = 'examine' | 'history' | 'assess' | 'procedure' | 'interpret';
 export type Population = 'adult' | 'paediatric';
+export const STATION_KINDS: readonly StationKind[] = ['examine', 'history', 'assess', 'procedure', 'interpret'];
+export const POPULATIONS: readonly Population[] = ['adult', 'paediatric'];
+export const STATION_AUDIENCES = ['cah', 'pwh', 'md1'] as const;
+export type StationAudience = (typeof STATION_AUDIENCES)[number];
 
 export interface LineMore { body: string; sourceIds: string[] }
 export interface Line {
@@ -28,6 +32,8 @@ export interface Station {
   title: string;
   task: string;
   minutes: number;
+  /** Unscored guidance displayed in Practice, separate from recall content. */
+  practiceInstructions?: { markingRule: string; completionReminder: string };
   phases: Phase[];
   /** Examiner-chosen branches, e.g. respiratory / cardiovascular / abdominal. */
   tracks?: Record<string, Phase[]>;
@@ -38,8 +44,9 @@ export interface Station {
   review: { rotation: string; topics: string[] };
   sources: StationSource[];
   /**
-   * Who may open it beyond the owner/allowlist. 'cah' = any signed-in learner
-   * enrolled in CAH; 'md1' = a learner enrolled in the MD1 KAT4 + MMCA deck.
+   * Who may open it beyond the owner/allowlist. A rotation id ('cah', 'pwh')
+   * = a USyd learner whose current rotation it is (clinical-audience.ts);
+   * 'md1' = a learner enrolled in the MD1 KAT4 + MMCA deck.
    */
-  audiences?: ('cah' | 'md1')[];
+  audiences?: StationAudience[];
 }

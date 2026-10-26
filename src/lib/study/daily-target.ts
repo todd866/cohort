@@ -8,8 +8,9 @@
  *     ↑ secondary full-pool planning information; it cannot make today's
  *       displayed goal arithmetically impossible.
  *
- *   paceFloor    = max(yesterday, 3-day rolling max, MIN_DAILY_TARGET)
- *     ↑ momentum. Stops the bar from dropping after one light day.
+ *   paceFloor    = max(lower median of 7 completed days, MIN_DAILY_TARGET)
+ *     ↑ typical calendar-day pace, including rest days. One big day must not
+ *       become a daily commitment. Today's unfinished count is excluded.
  *
  *   readinessFloor = paceFloor × (1 + K·readinessPress)
  *     ↑ "covered ≠ ready". Resists taper while genuine-testing accuracy
@@ -22,7 +23,7 @@
  */
 
 const MIN_DAILY_TARGET = 20;
-const ROLLING_WINDOW_DAYS = 3;
+const PACE_WINDOW_DAYS = 7;
 const NEW_USER_DEFAULT = 30;
 /** Days before exam to stop introducing new cards (for the informational newPerDay). */
 const CONSOLIDATION_BUFFER = 5;
@@ -102,6 +103,7 @@ export function readinessSignal(
 }
 
 interface DailyTargetInput {
+  /** Newest first: today, yesterday, ...; zero includes a rest day. */
   recentHistory?: number[];
   unseenItems: number;
   daysToExam: number | null;
@@ -125,7 +127,7 @@ export interface DailyTargetResult {
   /** Early-term learning margin applied to first-seen need. */
   learningFactor: number;
   consolidationDays: number;
-  adaptiveReason: 'new_user' | 'yesterday' | 'rolling_max' | 'floor' | 'coverage' | 'readiness';
+  adaptiveReason: 'new_user' | 'recent_pace' | 'floor' | 'coverage' | 'readiness';
 }
 
 export function computeDailyTarget(input: DailyTargetInput): DailyTargetResult | null {
@@ -146,27 +148,28 @@ export function computeDailyTarget(input: DailyTargetInput): DailyTargetResult |
   const rawReviewsPerDay = Math.ceil(Math.max(0, actualDueItems) / dueCatchupDays);
   const learningFactor = learningExposureFactor({ daysToExam, termLengthDays });
 
-  const yesterday = recentHistory[1] ?? 0;
-  const rollingWindow = recentHistory.slice(1, 1 + ROLLING_WINDOW_DAYS);
-  const rollingMax = rollingWindow.length > 0 ? Math.max(0, ...rollingWindow) : 0;
-  const activeDaysInHistory = recentHistory.slice(1).filter((n) => n > 0).length;
+  // Copy before sorting: callers also use the chronological history for
+  // progress/projections. Keep quiet days rather than estimating only the
+  // days on which the learner found time to study. The lower middle avoids
+  // averaging one unusually large day into a short two-day history.
+  const completedDays = recentHistory.slice(1, 1 + PACE_WINDOW_DAYS)
+    .map((count) => Number.isFinite(count) ? Math.max(0, count) : 0)
+    .sort((a, b) => a - b);
+  const typicalPace = completedDays[Math.floor((completedDays.length - 1) / 2)] ?? 0;
+  const activeDaysInHistory = recentHistory.slice(1).filter((n) => Number.isFinite(n) && n > 0).length;
 
   let paceFloor: number;
-  let paceReason: 'new_user' | 'yesterday' | 'rolling_max' | 'floor';
+  let paceReason: 'new_user' | 'recent_pace' | 'floor';
   if (activeDaysInHistory < 2) {
     paceFloor = NEW_USER_DEFAULT;
     paceReason = 'new_user';
   } else {
-    const candidate = Math.max(yesterday, rollingMax);
-    if (candidate < MIN_DAILY_TARGET) {
+    if (typicalPace < MIN_DAILY_TARGET) {
       paceFloor = MIN_DAILY_TARGET;
       paceReason = 'floor';
-    } else if (yesterday >= rollingMax) {
-      paceFloor = yesterday;
-      paceReason = 'yesterday';
     } else {
-      paceFloor = rollingMax;
-      paceReason = 'rolling_max';
+      paceFloor = typicalPace;
+      paceReason = 'recent_pace';
     }
   }
 

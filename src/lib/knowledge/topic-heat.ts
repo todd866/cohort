@@ -1,68 +1,13 @@
 /**
- * Topic heat — the pure layer behind the profile knowledge heatmap.
+ * Topic knowledge estimate: successful latest recall, decayed with the
+ * scheduler's power-law memory curve, averaged over the whole live topic.
+ * Unseen, failed and ungraded items contribute zero; studying is counted
+ * separately. Card grades include self-reported recall, so this is an
+ * estimate of current knowledge, not a validated exam-pass probability.
  *
- * One rule colours every square, and it is deliberately NOT the old currency
- * rule. Currency gated green behind a high windowed-accuracy bar measured from
- * the learner's own confidence presses. Self-rating is not calibrated: in
- * practice self-ratings cluster at the lowest confidence, so the gate could be
- * unreachable by construction and every row sat red
- * permanently. Nothing the learner did could move it, which is the opposite of
- * what an instrument is for.
- *
- * So heat reads only what the learner DID, never how they rated themselves,
- * and it asks ONE question: how ready is this topic for exam day?
- *
- *   readiness(item) = R(exam | last review) / R(exam | reviewed today)
- *   score(topic)    = Σ(weight × readiness) / Σ(weight)
- *
- * R is md3's own power-law forgetting curve, R(t) = (1 + t/S)^-0.5 — the same
- * one predictRetrievalStrengthOnDate uses — so the map and the scheduler share
- * a memory model rather than each inventing one. Dividing by the best the item
- * could do makes the score a fraction of ACHIEVABLE readiness: an item
- * reviewed today scores 1, one never answered scores 0, and "all green by exam
- * day" is a target the learner can actually hit by reviewing.
- *
- * The score folds in all three things a learner means by "do I know this?":
- * VOLUME (uncovered items score 0 and drag the weighted mean down), RECENCY
- * (readiness decays smoothly with time since review), and DIFFICULTY (hard
- * material carries four times an easy item's weight, so drilling the hard
- * cards darkens a square faster than grinding the easy ones).
- *
- * It also tightens on its own as the exam nears: with the horizon d in the
- * numerator, a month-old review still looks respectable in week one and looks
- * threadbare in the final week. The grid gets harder to keep green exactly
- * when it should.
- *
- *   unseen (grey)   nothing in the topic has ever been answered
- *   cold   (red)    score below COLD_CEILING — been too long
- *   warm   (yellow) score below WARM_CEILING — been a while
- *   fresh  (green)  at or above it, in four depths
- *
- * WHY NORMALISED READINESS AND NOT AN ABSOLUTE ONE. Four rules were built and
- * measured against a real rotation before this one, and the first three
- * produced grids that told the learner nothing:
- *
- *   newest answer in the topic       four squares in five green — two cards out
- *                                    of a hundred-odd marked a whole topic fresh
- *   median weight in a 14-day window one square in twenty-five green —
- *                                    re-covering half of every topic each
- *                                    fortnight across a few thousand cards is
- *                                    arithmetically impossible
- *   the scheduler's own due-state    a few per cent of cards not overdue
- *   raw projected exam-day recall    almost every topic near zero
- *
- * The last one is the instructive failure. It is not wrong — it is what md3's
- * model actually predicts — but observed stability hovers near its default of a
- * few days, so little survives a three-week horizon and every square reads red.
- * An instrument whose needle is pinned tells you nothing, and it was pinned by a
- * data problem the grid cannot fix. Normalising by the achievable maximum
- * divides that problem out: the score measures distance from where this item
- * COULD be on exam day, which is the part the learner and the scheduler
- * control. On the same rotation that produced the degenerate grids above, it
- * spreads across all four bands.
- *
- * Everything here is deterministic: `now` is injected, no Date.now(), no I/O.
- * The Prisma side lives in topic-heat.server.ts.
+ * A successful review starts at 1. Stability learned by the scheduler governs
+ * how quickly that evidence fades. The exam countdown does not inflate it.
+ * Pure and deterministic; the grouped SQL equivalent lives in topic-heat.server.ts.
  */
 
 export const DAY_MS = 86_400_000;
@@ -84,14 +29,12 @@ export const MIN_STABILITY_DAYS = 0.1;
 export const DEFAULT_STABILITY_DAYS = 3;
 
 /** Below this score a topic is red. */
-export const COLD_CEILING = 0.25;
+export const COLD_CEILING = 0.4;
 /** Below this score (and at or above COLD_CEILING) a topic is yellow. */
-export const WARM_CEILING = 0.4;
+export const WARM_CEILING = 0.8;
 
 /**
- * Difficulty weights. Authored `Card.difficulty` / `Question.difficulty`, not
- * the learner's self-rating — deliberately, so a learner's grading habit can
- * never distort the map the way it distorted currency.
+ * Difficulty weights use authored difficulty, independently of the latest recall grade.
  */
 export const DIFFICULTY_WEIGHT = {
   easy: 0.5,
@@ -111,12 +54,14 @@ export interface TopicItem {
   lastAnsweredAt: Date | null;
   /** The scheduler's stability for this item. Defaults to CardProgress's own default. */
   stabilityDays?: number;
+  /** Canonical latest recall grade: 0–5; unknown is not evidence of success. */
+  lastQuality?: number | null;
 }
 
 export interface TopicHeat {
   band: TopicBand;
   level: TopicLevel;
-  /** 0–1. Weighted share of this topic's ACHIEVABLE exam-day readiness. */
+  /** 0–1. Weighted estimated current recall across the whole topic. */
   score: number;
   /** Most recent answer anywhere in the topic. Shown to the learner. */
   lastAnsweredAt: Date | null;
@@ -140,7 +85,8 @@ export interface TopicReadinessSummary extends TopicReadinessCounts {
 
 /**
  * Product-level readiness buckets shared by the profile and review drawer.
- * Both cold and warm topics need attention, so they are one "slipping" count.
+ * Both cold and warm topics need attention. The legacy API field "slipping"
+ * is retained for compatibility; the UI calls these topics "learning".
  */
 export function summarizeTopicReadiness(
   topics: readonly Pick<TopicHeat, 'band'>[],
@@ -179,32 +125,21 @@ export function itemWeight(difficulty: string): number {
     : DIFFICULTY_WEIGHT.medium;
 }
 
-/**
- * How ready one item is for exam day, as a fraction of the best it could be.
- *
- * Both numerator and denominator are md3's power-law curve R(t) = (1 + t/S)^-0.5,
- * evaluated at the exam: the numerator from the item's actual last review, the
- * denominator as if it were reviewed today. The square roots cancel into
- *
- *     sqrt((S + horizon) / (S + horizon + age))
- *
- * which is 1 for an item reviewed today, falls as it ages, and never reaches
- * zero — an old review is worth less than a new one but more than nothing. An
- * item never answered returns 0 outright; there is no curve to decay.
- *
- * A negative age (client clock skew) clamps to just-reviewed.
- */
+/** Current recall estimate. A failed or unknown latest grade cannot earn credit. */
 export function itemReadiness(input: {
   ageDays: number | null;
   stabilityDays: number;
-  horizonDays: number;
+  lastQuality?: number | null;
+  /** Retained for callers; the exam horizon never changes current knowledge. */
+  horizonDays?: number;
 }): number {
-  const { ageDays } = input;
-  if (ageDays === null) return 0;
-  const stability = Math.max(MIN_STABILITY_DAYS, input.stabilityDays);
-  const horizon = Math.max(0, input.horizonDays);
-  const age = Math.max(0, ageDays);
-  return Math.sqrt((stability + horizon) / (stability + horizon + age));
+  const { ageDays, lastQuality } = input;
+  if (ageDays === null || !Number.isFinite(ageDays)
+      || lastQuality == null || !Number.isFinite(lastQuality)
+      || lastQuality < 3 || lastQuality > 5) return 0;
+  const stability = Number.isFinite(input.stabilityDays)
+    ? Math.max(MIN_STABILITY_DAYS, input.stabilityDays) : DEFAULT_STABILITY_DAYS;
+  return Math.sqrt(stability / (stability + Math.max(0, ageDays)));
 }
 
 /**
@@ -213,7 +148,7 @@ export function itemReadiness(input: {
  * means having actually done the hard material, since easy items contribute a
  * quarter of what hard ones do.
  */
-const DEPTH_THRESHOLDS = [0.5, 0.6, 0.7] as const;
+const DEPTH_THRESHOLDS = [0.85, 0.9, 0.95] as const;
 
 function levelForScore(score: number): TopicLevel {
   const [t1, t2, t3] = DEPTH_THRESHOLDS;
@@ -279,6 +214,7 @@ export function computeTopicHeat(input: {
       ageDays: (nowMs - ts) / DAY_MS,
       stabilityDays: item.stabilityDays ?? DEFAULT_STABILITY_DAYS,
       horizonDays,
+      lastQuality: item.lastQuality,
     });
   }
 
@@ -302,13 +238,10 @@ export function describeTopicHeat(heat: { band: TopicBand; level: TopicLevel }):
     case 'unseen':
       return 'Never studied';
     case 'cold':
-      return "Won't hold";
+      return 'Needs review';
     case 'warm':
-      return 'Slipping';
+      return 'Learning';
     case 'fresh':
-      if (heat.level >= 4) return 'Ready';
-      if (heat.level === 3) return 'Nearly there';
-      if (heat.level === 2) return 'Halfway';
-      return 'Started';
+      return 'Ready';
   }
 }

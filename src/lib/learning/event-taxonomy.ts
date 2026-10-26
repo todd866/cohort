@@ -62,6 +62,7 @@ export const DIAGNOSTIC_EVENT_TYPES = [
  */
 export const PRACTICE_EVENT_TYPES = [
   'clinical_practice',
+  'simulation_practice',
   // One In-Network patient visit: sourceId is a game case id, never a card or
   // question, and the row carries no conceptIds, so concept state ignores it.
   'scenario_visit',

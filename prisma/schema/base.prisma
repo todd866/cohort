@@ -97,6 +97,8 @@ model User {
   preferAbbreviations Boolean @default(false) // Display "MI" vs "myocardial infarction"
   // Learner-chosen experience settings (statistics layout); validated on read and write.
   experience          Json?
+  // Optional learner-owned practice goal; no private case content.
+  simulationGoal      Json?
   reviewChallenge        Int @default(0) // Learner challenge bias: -2 through 2; 0 preserves Auto
   reviewChallengeRevision Int @default(0) // Reject stale saves and prepared queues
 

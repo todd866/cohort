@@ -85,12 +85,17 @@ export function buildReviewMenu(user: ReviewMenuViewer, now: Date = new Date()):
   const calendar = md1 ? null : calendarRotation(user.track, now);
   const early = inEarlyYears(user.institution);
   const authorized = authorizedStudyRotations(user).filter((slug) => early || !EARLY_YEAR_DECK.test(slug));
+  const alwaysOfferGsse = user.imageTier === 'copyright' && authorized.includes('surgical-sciences');
   const menu = reviewMenuRotations({
     authorized,
     calendarRotation: calendar,
     saved: user.reviewMenuCustomized ? relevantMenuSlugs(user.reviewMenuModules, user, now) : null,
     program: md1 ? 'md1' : null,
   });
+  // GSSE is a shared copyright-tier choice, including saved and MD1 menus.
+  // This changes visibility only; selecting it still uses the enrollment API.
+  if (alwaysOfferGsse && !menu.includes('surgical-sciences')) menu.push('surgical-sciences');
+  const orderedMenu = orderFocusOptions(menu);
   const pinned = md1 ? (menu.includes(MD1_DECK) ? MD1_DECK : null) : calendar;
   // The booked block is usually authorized already; listing it twice showed
   // two pinned rows for one block.
@@ -101,8 +106,8 @@ export function buildReviewMenu(user: ReviewMenuViewer, now: Date = new Date()):
   const choices = catalog.map((slug) => ({
     slug,
     label: rotationLabel(slug),
-    pinned: slug === pinned,
+    pinned: slug === pinned || (alwaysOfferGsse && slug === 'surgical-sciences'),
     checked: selected.has(slug),
   }));
-  return { menu, choices };
+  return { menu: orderedMenu, choices };
 }

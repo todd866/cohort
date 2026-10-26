@@ -4,7 +4,7 @@ export interface SourceDefinition {
   slug: string;
   name: string;
   shortName: string;
-  sourceType: 'guidelines' | 'textbook' | 'lecture' | 'uptodate' | 'peer-reviewed';
+  sourceType: 'guidelines' | 'textbook' | 'lecture' | 'uptodate' | 'peer-reviewed' | 'product-information';
   reliability: 1 | 2 | 3 | 4 | 5;
   jurisdiction?: 'nsw' | 'wa' | 'national' | 'international' | null;
   publisher?: string;

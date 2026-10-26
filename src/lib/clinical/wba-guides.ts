@@ -114,6 +114,8 @@ export interface WbaGuide {
   /** Talk-through or trap content resting on a single source, or not checked against one. */
   unverified?: string[];
   run?: WbaRun;
+  /** Id of the clinical station that drills this WBA's examination (src/lib/clinical/stations.ts). */
+  station?: string;
   /** What a suitable patient looks like, from the task text and common presentations. */
   cases?: string[];
 }

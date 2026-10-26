@@ -26,6 +26,8 @@ export interface UseGradingOptions {
   itemId: string;
   itemType: 'card' | 'question' | 'video';
   metadata?: Record<string, unknown>;
+  /** Distinguish revised evidence on a revisited delivery with the same grade. */
+  answerIdentity?: string;
   getResponseTimeMs?: () => number;
   onGraded?: (confidence: number) => void;
   /**
@@ -52,6 +54,7 @@ export function useGrading({
   itemId,
   itemType,
   metadata,
+  answerIdentity,
   getResponseTimeMs,
   onGraded,
   onRepeat,
@@ -76,7 +79,7 @@ export function useGrading({
     if (status === 'saving' || status === 'saved' || status === 'queued') return;
 
     const slot = answeredSlotKey({ itemType, itemId, serveDecisionId, batchId });
-    const answer = `confidence:${confidence}`;
+    const answer = `confidence:${confidence}${answerIdentity ? `:${answerIdentity}` : ""}`;
     if (isRepeatAnswer(slot, answer)) {
       setSelected(confidence);
       setStatus('saved');
@@ -199,7 +202,7 @@ export function useGrading({
         setStatus('queued');
         onError?.(String(err));
       });
-  }, [status, itemId, itemType, metadata, getResponseTimeMs, onGraded, onRepeat, onError, sessionId, batchId, serveDecisionId]);
+  }, [status, itemId, itemType, metadata, answerIdentity, getResponseTimeMs, onGraded, onRepeat, onError, sessionId, batchId, serveDecisionId]);
 
   const reset = useCallback(() => {
     setSelected(null);

@@ -8,6 +8,7 @@ import { visibleProgressRotations } from './progress-rotation-filter';
 import type { BookedExam } from '@/lib/study/booked-exam';
 import type { TopicReadinessSummary } from '@/lib/knowledge/topic-heat';
 import { useTopicReadiness } from './hooks/useTopicReadiness';
+import type { ReviewFeedMode } from '@/lib/review/feed-mode';
 
 interface ProgressDrawerProps {
   open: boolean;
@@ -26,6 +27,8 @@ interface ProgressDrawerProps {
    *  focusing a self-paced deck returns a payload with no exam-bearing row at
    *  all — so it cannot be derived from `perRotation`. */
   bookedExam?: BookedExam | null;
+  feedMode?: ReviewFeedMode;
+  scoped?: boolean;
 }
 
 function formatRotation(rotation: string): string {
@@ -60,27 +63,34 @@ function ExamDays({ days }: { days: number }) {
 }
 
 /** Today and first-sight on one line. The glyph and colour are the day's goal band (src/lib/study/daily-goals.ts). */
-function TodayPace({ row }: { row: RotationProgressBreakdown }) {
-  const reviewed = row.todayReviewed;
-  const goal = goalProgressText(reviewed, row.dailyTarget, formatCount);
-  const today = goal ? `Today ${goal.text}` : `Today ${formatCount(reviewed)}`;
-  const newer = row.firstSightTarget != null
+function TodayPace({ row, feedMode, scoped }: { row: RotationProgressBreakdown; feedMode: ReviewFeedMode; scoped: boolean }) {
+  const newOnly = feedMode === 'new-only';
+  const reviewed = newOnly ? row.todayFirstSight ?? 0 : row.todayReviewed;
+  const target = newOnly ? row.firstSightTarget ?? null : row.dailyTarget;
+  const goal = goalProgressText(reviewed, target, formatCount);
+  const prefix = newOnly ? 'New today' : 'Today';
+  const today = `${prefix} ${goal?.text ?? formatCount(reviewed)}`;
+  const newer = !newOnly && row.firstSightTarget != null
     ? ` \u00b7 New ${formatCount(row.todayFirstSight ?? 0)}/${formatCount(row.firstSightTarget)}`
     : '';
 
-  if (goal && goal.band !== 'red' && newer) {
-    return (
-      <p className="text-sm tabular-nums text-[var(--md-on-surface)]">
-        <span className={GOAL_TEXT[goal.band]}>{today}</span>
-        {newer}
-      </p>
-    );
-  }
-
   return (
-    <p className={`text-sm tabular-nums ${goal ? GOAL_TEXT[goal.band] : 'text-[var(--md-on-surface)]'}`}>
-      {today}{newer}
-    </p>
+    <details className="text-sm text-[var(--md-on-surface)]">
+      <summary className="cursor-pointer tabular-nums" aria-label={`${scoped ? 'Whole course. ' : ''}${today}${newer}. How today's target is calculated`}>
+        {scoped && <span className="text-xs text-[var(--md-on-surface-variant)]">Whole course · </span>}
+        {goal && goal.band !== 'red' && newer
+          ? <><span className={GOAL_TEXT[goal.band]}>{today}</span>{newer}</>
+          : <span className={goal ? GOAL_TEXT[goal.band] : ''}>{today}{newer}</span>}
+      </summary>
+      <p className="mt-1 text-xs text-[var(--md-on-surface-variant)]">
+        {newOnly && <>New only counts first-time answers toward the new-material goal. Previously studied items, including due reviews, are excluded from this mode. </>}
+        {scoped && <>These daily counts cover the whole course, not just this session. </>}
+        Your target balances recent study pace, due reviews, unseen material and time to the exam.
+        MCQ performance can raise it when there is enough reliable answer history.
+        The goal for first-seen material is capped at half your estimated daily capacity; due reviews are spread
+        over up to seven days. It is a study goal, not a measure of mastery.
+      </p>
+    </details>
   );
 }
 
@@ -96,10 +106,14 @@ function RotationHeadline({
   row,
   readiness,
   showTopics,
+  feedMode,
+  scoped,
 }: {
   row: RotationProgressBreakdown;
   readiness: TopicReadinessSummary | null;
   showTopics: boolean;
+  feedMode: ReviewFeedMode;
+  scoped: boolean;
 }) {
   return (
     <div className="space-y-2">
@@ -114,12 +128,12 @@ function RotationHeadline({
 
       {row.progressPool && <ProgressPoolBar row={row} />}
 
-      <TodayPace row={row} />
+      <TodayPace row={row} feedMode={feedMode} scoped={scoped} />
 
       {showTopics && (
         <div className="flex min-h-11 items-center justify-between gap-3">
           <p className="text-sm tabular-nums text-[var(--md-on-surface)]">
-            Topics {topicCount(readiness?.ready)} ready · {topicCount(readiness?.slipping)} slipping · {topicCount(readiness?.unseen)} unseen
+            Topics {topicCount(readiness?.ready)} ready · {topicCount(readiness?.slipping)} learning · {topicCount(readiness?.unseen)} unseen
           </p>
           <Link
             href="/profile#topic-readiness"
@@ -185,6 +199,8 @@ export function ProgressDrawer({
   sessionAccuracy,
   currentRotation,
   bookedExam,
+  feedMode = 'mixed',
+  scoped = false,
 }: ProgressDrawerProps) {
   const hasRotations = perRotation && perRotation.length > 0;
   const rows = hasRotations
@@ -223,6 +239,8 @@ export function ProgressDrawer({
               row={row}
               readiness={readiness?.rotation === row.rotation ? readiness : null}
               showTopics={row.rotation === readinessRotation}
+              feedMode={feedMode}
+              scoped={scoped}
             />
           ))
         ) : (

@@ -136,6 +136,10 @@ export function classifyFlagLane(text: string | null | undefined): FlagLane {
     || /longest (answer|option)/.test(t)
     // answer length: "too-long answer", "answer too long"
     || /too.?long answer|answer (is )?too.?long/.test(t)
+    // Reported 23 October: paragraph length and an unnamed referent are
+    // construction complaints; preserve higher-priority media/teaching lanes.
+    || /\btoo[ -]long paragraphs?\b|\bparagraphs? (?:is |are )?too[ -]long\b/.test(t)
+    || /^(?:a |the )?method of what\??$/.test(t)
     // context or explanation referring to option letters, which shuffle
     || /specific (letters|options)/.test(t)
     // Dense clinical data presentation requests, not arbitrary mentions of tables.

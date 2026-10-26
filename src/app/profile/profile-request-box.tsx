@@ -139,7 +139,7 @@ export function ProfileRequestBox() {
         className="mb-6 rounded-xl border border-[var(--md-outline-variant)] bg-[var(--md-surface-container)] px-4 py-3"
       >
         <p className="text-sm text-[var(--md-on-surface)]">
-          Sent. A person reads every one of these.
+          Sent.
         </p>
         <button
           type="button"
@@ -159,7 +159,7 @@ export function ProfileRequestBox() {
           htmlFor="profile-request"
           className="block text-base font-semibold text-[var(--md-on-surface)]"
         >
-          What should we teach? A topic, an exam, or a pasted results page.
+          Request a topic or paste results
         </label>
         <textarea
           id="profile-request"
@@ -176,7 +176,7 @@ export function ProfileRequestBox() {
             const file = event.dataTransfer?.files?.[0];
             if (file) void readFile(file);
           }}
-          rows={3}
+          rows={2}
           maxLength={MAX_MESSAGE_LENGTH}
           placeholder="Topic, exam, or results"
           className={`mt-3 w-full rounded-xl border bg-[var(--md-surface-container)] px-4 py-3 text-base placeholder:text-sm text-[var(--md-on-surface)] placeholder:text-[var(--md-on-surface-variant)] ${

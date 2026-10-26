@@ -67,7 +67,7 @@ export interface TopicHeatmap {
   projection: ReadinessProjection | null;
   /** Human label for the rotation, e.g. "CAH". Falls back to the slug. */
   rotationLabel: string;
-  /** Days to the exam the map is aiming at. Drives how harshly staleness reads. */
+  /** Days to the exam, for the countdown only; not part of the current recall score. */
   horizonDays: number;
   /**
    * False when no exam date is on file and horizonDays is the default horizon,
@@ -93,7 +93,7 @@ interface ClusterHeatRow {
 }
 
 /**
- * One row per cluster in the rotation, already weighted and windowed.
+ * One row per cluster, weighted by difficulty and current successful recall.
  *
  * Suppressed cards are excluded: a learner who has told us not to serve a card
  * should not be told they are behind on it. `lastReview` is the per-card
@@ -119,12 +119,12 @@ async function loadClusterRows(
           ELSE ${DIFFICULTY_WEIGHT.medium}::float
         END
       ), 0)::float                  AS total_weight,
-      -- itemReadiness() in topic-heat.ts, spelled in SQL: an item's exam-day
-      -- recall as a fraction of the best it could be, sqrt((S+d)/(S+d+age)).
+      -- itemReadiness() in topic-heat.ts: successful latest recall × sqrt(S/(S+age)).
       -- Never-answered items contribute nothing and so drag the topic's mean
       -- down, which is how coverage enters the score.
       COALESCE(SUM(
-        CASE WHEN p."lastReview" IS NULL THEN 0 ELSE
+        CASE WHEN p."lastReview" IS NULL OR p."lastQuality" IS NULL
+          OR p."lastQuality" < 3 OR p."lastQuality" > 5 THEN 0 ELSE
           (CASE c.difficulty
             WHEN 'easy' THEN ${DIFFICULTY_WEIGHT.easy}::float
             WHEN 'hard' THEN ${DIFFICULTY_WEIGHT.hard}::float
@@ -132,10 +132,10 @@ async function loadClusterRows(
           END)
           * SQRT(
               (GREATEST(COALESCE(p."stabilityDays", ${DEFAULT_STABILITY_DAYS}::float),
-                        ${MIN_STABILITY_DAYS}::float) + ${horizonDays}::float)
+                        ${MIN_STABILITY_DAYS}::float))
               /
               (GREATEST(COALESCE(p."stabilityDays", ${DEFAULT_STABILITY_DAYS}::float),
-                        ${MIN_STABILITY_DAYS}::float) + ${horizonDays}::float
+                        ${MIN_STABILITY_DAYS}::float)
                + GREATEST(0, EXTRACT(EPOCH FROM (${now}::timestamptz - p."lastReview")) / 86400))
             )
         END
@@ -210,8 +210,9 @@ const TREND_WEEKS = 8;
 /**
  * Replay the ready-count weekly over the trailing window.
  *
- * Every sample is scored against TODAY's horizon, not the horizon as it stood
- * then — see readiness-trend.ts for why. One query: sample dates cross-joined
+ * Each sample uses the latest card grade at that date. Historical stability
+ * is unavailable here: the replay uses the fixed default, never today's
+ * stability (which would leak later learning into the past). It is approximate. One query: sample dates cross-joined
  * against the rotation's cards, each card's most recent review before that
  * date, aggregated per cluster and counted. Sub-second on a rotation of a few
  * thousand cards: page-render territory, and nowhere near the serve path.
@@ -238,9 +239,15 @@ async function loadTrend(
                ELSE ${DIFFICULTY_WEIGHT.medium}::float
              END w
       FROM "Card" c
+      -- The same card set as the grid (loadClusterRows): live cards in a
+      -- cluster that exists. Without these two filters the replay scored
+      -- 139 PWH topics against the grid's 125, and the profile paired a
+      -- ready count from one with a projection from the other.
+      JOIN "Cluster" cl ON cl.id = c."clusterId"
       LEFT JOIN "CardProgress" p ON p."cardId" = c.id AND p."userId" = ${userId}
       WHERE c.rotation = ${rotation}
         AND c."clusterId" IS NOT NULL
+        AND c."deletedAt" IS NULL
         AND COALESCE(p.suppressed, false) = false
     ),
     -- One pass over this learner's card events, joined once. The obvious shape
@@ -249,7 +256,7 @@ async function loadTrend(
     -- 3.6s. Joining the events in and using a FILTER aggregate is the same
     -- answer in 0.4s.
     ev AS (
-      SELECT e."sourceId" id, e.timestamp ts
+      SELECT e."sourceId" id, e.id event_id, e.timestamp ts, e.quality
       FROM "LearningEvent" e
       WHERE e."userId" = ${userId} AND e."sourceType" = 'card'
         -- 'card_reviewed' ONLY. Filtering on sourceType alone also catches
@@ -258,11 +265,14 @@ async function loadTrend(
         -- CardProgress.lastReview, which the grid reads, moves on a graded
         -- review, so this must match it.
         AND e."eventType" = 'card_reviewed'
+        AND (e."memoryDisposition" IS NULL OR e."memoryDisposition" = 'applied')
         AND e.timestamp >= ${now}::timestamptz - interval '400 days'
     ),
     per AS (
       SELECT s.at, cd.cid, cd.id, MIN(cd.w) w,
-             MAX(ev.ts) FILTER (WHERE ev.ts <= s.at) last_at
+             MAX(ev.ts) FILTER (WHERE ev.ts <= s.at) last_at,
+             (array_agg(ev.quality ORDER BY ev.ts DESC, ev.event_id DESC)
+               FILTER (WHERE ev.ts <= s.at))[1] last_quality
       FROM samples s
       CROSS JOIN cards cd
       LEFT JOIN ev ON ev.id = cd.id
@@ -270,10 +280,11 @@ async function loadTrend(
     ),
     scored AS (
       SELECT at, cid, SUM(w) tw,
-        SUM(CASE WHEN last_at IS NULL THEN 0 ELSE
+        SUM(CASE WHEN last_at IS NULL OR last_quality IS NULL
+          OR last_quality < 3 OR last_quality > 5 THEN 0 ELSE
           w * SQRT(
-            (${DEFAULT_STABILITY_DAYS}::float + ${horizonDays}::float)
-            / (${DEFAULT_STABILITY_DAYS}::float + ${horizonDays}::float
+            ${DEFAULT_STABILITY_DAYS}::float
+            / (${DEFAULT_STABILITY_DAYS}::float
                + GREATEST(0, EXTRACT(EPOCH FROM (at - last_at)) / 86400))
           ) END) hw
       FROM per GROUP BY 1, 2

@@ -118,7 +118,7 @@ export function StationScript({ station, showMore = false, track }: {
       ...phase,
       name: trackNames.length > 1 || track === undefined ? `${name} · ${phase.name}` : phase.name,
     }))),
-    { name: STATION_FINISH, lines: station.close, takeaway: '' },
+    ...(station.close.length ? [{ name: STATION_FINISH, lines: station.close, takeaway: '' }] : []),
   ];
   let next = 1;
   return (

@@ -1,6 +1,6 @@
 'use client';
 
-import { useMemo, useState, type ReactNode } from 'react';
+import { useMemo, useState } from 'react';
 import Link from 'next/link';
 import { SECTION_HEADER } from '@/components/stats/instrument-chrome';
 import {
@@ -12,7 +12,7 @@ import {
 
 /**
  * The knowledge heatmap — one square per topic in the rotation you are on,
- * coloured by how ready it is for exam day.
+ * coloured by estimated current recall.
  *
  * Squares fill the width row by row, in a stable order so a topic keeps its
  * place and can be watched turning green.
@@ -30,7 +30,7 @@ import {
  * page (.claude/rules/web-vitals.md — CLS is a budgeted metric here).
  *
  * LAYOUT. On a phone everything stacks. From `lg` up the grid and its legend
- * sit in a left column and the detail panel and the trend fill the right one,
+ * sit in a left column and the detail panel fills the right one,
  * so on a laptop the whole section is one row instead of a scroll (owner,
  * 2026-09-18: the page was spending a full viewport on ~250px of squares).
  *
@@ -144,7 +144,7 @@ export function squareTitle(square: TopicHeatmapSquare): string {
     square.label,
     describeTopicHeat(square),
     `${square.seenCount}/${square.itemCount} studied`,
-    `${Math.round(square.score * 100)}% ready`,
+    `${Math.round(square.score * 100)}% estimated recall`,
   ].join(' · ');
 }
 
@@ -166,16 +166,20 @@ export function describeLastStudied(
   return `studied ${months} month${months === 1 ? '' : 's'} ago`;
 }
 
-function reviewHref(square: TopicHeatmapSquare): string {
-  const params = new URLSearchParams({ rotation: square.rotation, cluster: square.clusterId });
+function topicReviewHref(square: TopicHeatmapSquare, filter: 'due' | 'new'): string {
+  const params = new URLSearchParams({
+    rotation: square.rotation,
+    cluster: square.clusterId,
+    filter,
+  });
   return `/review?${params.toString()}`;
 }
 
 function Legend() {
   const steps = [
     { token: 'var(--md-heat-unseen)', label: 'New' },
-    { token: 'var(--md-heat-cold)', label: 'Lost' },
-    { token: 'var(--md-heat-warm)', label: 'Slipping' },
+    { token: 'var(--md-heat-cold)', label: 'Needs review' },
+    { token: 'var(--md-heat-warm)', label: 'Learning' },
     { token: 'var(--md-heat-4)', label: 'Ready' },
   ];
   return (
@@ -190,6 +194,14 @@ function Legend() {
           <span className="text-[11px] text-[var(--md-on-surface-variant)]">{step.label}</span>
         </span>
       ))}
+      <details className="text-[11px] text-[var(--md-on-surface-variant)]">
+        <summary className="cursor-pointer">How colours work</summary>
+        <p className="mt-1 max-w-sm">
+          Estimated current recall from your latest answers or card ratings, memory stability,
+          and time since review. Unseen or missed cards add no credit. Green means at least
+          80% across the topic, weighted by difficulty. This is an estimate, not an exam prediction.
+        </p>
+      </details>
     </div>
   );
 }
@@ -225,7 +237,7 @@ function DetailPanel({ square }: { square: TopicHeatmapSquare | null }) {
           </div>
 
           <p className="mt-0.5 text-xs tabular-nums text-[var(--md-on-surface-variant)]">
-            {square.seenCount}/{square.itemCount} studied · {Math.round(square.score * 100)}% ready
+            {square.seenCount}/{square.itemCount} studied · {Math.round(square.score * 100)}% estimated recall
             {' · '}
             {describeLastStudied(square.lastAnsweredAt)}
           </p>
@@ -248,13 +260,22 @@ function DetailPanel({ square }: { square: TopicHeatmapSquare | null }) {
               first pass feel like it achieved nothing — while the line above
               already says "46/166 studied". Learners click a red square to turn
               it green, and that takes a few sessions on a big topic. */}
-          <Link
-            href={reviewHref(square)}
-            data-testid="topic-detail-review"
-            className="mt-2 inline-block text-xs font-semibold text-[var(--md-primary)] hover:underline"
-          >
-            Review this topic →
-          </Link>
+          <div data-testid="topic-detail-actions" className="mt-2 flex flex-wrap gap-2">
+            <Link
+              href={topicReviewHref(square, 'due')}
+              data-testid="topic-detail-review-due"
+              className="inline-flex min-h-11 items-center rounded-md px-2 text-xs font-semibold text-[var(--md-primary)] hover:bg-[var(--md-surface-container-high)] hover:underline"
+            >
+              Review due
+            </Link>
+            <Link
+              href={topicReviewHref(square, 'new')}
+              data-testid="topic-detail-learn-new"
+              className="inline-flex min-h-11 items-center rounded-md px-2 text-xs font-semibold text-[var(--md-primary)] hover:bg-[var(--md-surface-container-high)] hover:underline"
+            >
+              Learn new
+            </Link>
+          </div>
         </>
       )}
     </div>
@@ -265,13 +286,12 @@ export function TopicHeatmap({
   squares,
   rotationLabel,
   horizonDays,
-  aside,
+  examDated = true,
 }: {
   squares: TopicHeatmapSquare[];
   rotationLabel: string;
   horizonDays: number;
-  /** Rendered under the detail panel — the readiness trend on the profile. */
-  aside?: ReactNode;
+  examDated?: boolean;
 }) {
   // `pinned` survives pointer-out so a tapped square stays readable; `hovered`
   // is the transient preview and wins while it is set.
@@ -286,8 +306,8 @@ export function TopicHeatmap({
   const days = Math.round(horizonDays);
 
   return (
-    // From lg the panel and trend get a fixed 22rem — the 260px trend and the
-    // panel's status line fit — and the squares take the rest of the row.
+    // From lg the panel gets a fixed 22rem and the squares take the rest of
+    // the row. (The readiness trend chart sat under it until 2026-10-22.)
     <div className="lg:grid lg:grid-cols-[minmax(0,1fr)_22rem] lg:gap-x-8">
       <div>
         <div className="mb-3 flex flex-wrap items-baseline justify-between gap-x-3 gap-y-1">
@@ -295,7 +315,7 @@ export function TopicHeatmap({
             {rotationLabel}
           </h2>
           <p className="text-xs font-medium tabular-nums text-[var(--md-on-surface-variant)]">
-            {summary.ready} ready · {summary.slipping} slipping · {summary.unseen} unseen · {days}d
+            {summary.ready} ready · {summary.slipping} learning · {summary.unseen} unseen{examDated ? ` · ${days}d` : ''}
           </p>
         </div>
 
@@ -351,7 +371,6 @@ export function TopicHeatmap({
 
       <div className="lg:flex lg:flex-col">
         <DetailPanel square={active} />
-        {aside}
       </div>
     </div>
   );

@@ -3,7 +3,6 @@ import { loadReviewCalendar } from '@/lib/knowledge/review-calendar.server';
 import { loadLeaderboard } from '@/lib/leaderboard/leaderboard.server';
 import { TopicHeatmap } from '@/components/profile/TopicHeatmap';
 import { ProfileLeaderboard, type BoardResponse } from './profile-leaderboard';
-import { ReadinessTrend } from '@/components/profile/ReadinessTrend';
 import { ReviewHeatmap } from '@/components/profile/ReviewHeatmap';
 import { ProfileReservedSlot } from './profile-reserved-slot';
 import { SECTION_HEADER } from '@/components/stats/instrument-chrome';
@@ -92,14 +91,7 @@ export async function ProfileTopicHeatmapSection({ userId }: { userId: string })
         squares={data.squares}
         rotationLabel={data.rotationLabel}
         horizonDays={data.horizonDays}
-        aside={
-          <ReadinessTrend
-            points={data.trend}
-            projection={data.projection}
-            totalTopics={data.squares.length}
-            daysToExam={data.horizonDays}
-          />
-        }
+        examDated={data.examDated}
       />
     </section>
   );

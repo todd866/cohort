@@ -42,7 +42,12 @@ export function AppShell({
     pathname?.endsWith('/study')
   );
 
-  const shell = pathname === '/textbook/stream' ? (
+  const shell = pathname === '/sim-practice' ? (
+    <div className="flex h-[100svh] min-h-0 flex-col">
+      <SkipToMainContent /><ConnectionBanner /><Navigation isCohortHost={isCohortHost} />
+      <main id="main-content" tabIndex={-1} className="min-h-0 flex-1 pb-20 md:pb-0 md:pl-20">{children}</main>
+    </div>
+  ) : pathname === '/textbook/stream' ? (
     <div className="flex h-[100svh] min-h-0 flex-col">
       <SkipToMainContent />
       <ConnectionBanner offlineMessage="Prepared pages remain available" />

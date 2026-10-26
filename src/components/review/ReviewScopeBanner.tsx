@@ -1,4 +1,9 @@
+'use client';
+
 import Link from 'next/link';
+import { ReviewModeSelector, type ReviewMode } from './ReviewModeSelector';
+import type { ReviewFeedMode } from './hooks/useReviewFeedMode';
+import type { ReviewFilter, ReviewItemType, ReviewMedia } from '@/lib/review/review-intent';
 
 export interface ReviewClusterScope {
   /** The manifold cluster id the session is restricted to. */
@@ -33,7 +38,25 @@ export interface ReviewClusterScope {
  * rule is that entrance motion on content the learner is reading is a defect
  * rather than a flourish.
  */
-export function ReviewScopeBanner({ scope }: { scope: ReviewClusterScope | null }) {
+export function ReviewScopeBanner({
+  scope,
+  feedMode,
+  reviewFilter,
+  itemType,
+  media,
+  canAccessVideo,
+  practiceExamHref,
+  onReviewModeChange,
+}: {
+  scope: ReviewClusterScope | null;
+  feedMode?: ReviewFeedMode;
+  reviewFilter?: ReviewFilter;
+  itemType?: ReviewItemType;
+  media?: ReviewMedia;
+  canAccessVideo?: boolean;
+  practiceExamHref?: string;
+  onReviewModeChange?: (mode: ReviewMode) => void;
+}) {
   if (!scope) return null;
   const exitHref = scope.rotation ? `/?rotation=${encodeURIComponent(scope.rotation)}` : '/';
   const cards = `${scope.cardCount} ${scope.cardCount === 1 ? 'card' : 'cards'}`;
@@ -48,12 +71,26 @@ export function ReviewScopeBanner({ scope }: { scope: ReviewClusterScope | null 
         <span className="font-medium">{scope.label}</span>
         <span className="text-[var(--md-on-surface-variant)]">{` · ${cards}`}</span>
       </p>
-      <Link
-        href={exitHref}
-        className="text-sm text-[var(--md-primary)] underline-offset-2 hover:underline"
-      >
-        Leave this topic
-      </Link>
+      <div className="flex min-h-11 flex-wrap items-center justify-end gap-2">
+        {onReviewModeChange && (
+          <ReviewModeSelector
+            feedMode={feedMode ?? 'mixed'}
+            reviewFilter={reviewFilter}
+            itemType={itemType}
+            media={media}
+            canAccessVideo={canAccessVideo}
+            practiceExamHref={practiceExamHref}
+            newRemaining={null}
+            onChange={onReviewModeChange}
+          />
+        )}
+        <Link
+          href={exitHref}
+          className="inline-flex min-h-11 items-center px-2 text-sm text-[var(--md-primary)] underline-offset-2 hover:underline"
+        >
+          Leave this topic
+        </Link>
+      </div>
     </div>
   );
 }

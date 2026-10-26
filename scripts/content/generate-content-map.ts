@@ -23,6 +23,7 @@ import {
   type PrivateContentMapCardInput,
 } from './private-content-map-overlays';
 import { describeError } from '../ops/describe-error.mjs';
+import { deckStrandMixFor } from '../../src/lib/study/deck-strand-mix';
 
 const ROOT = process.cwd();
 const OUTPUT_DIR = path.join(ROOT, 'src', 'lib', 'generated');
@@ -179,7 +180,9 @@ const DEPRECATED_ROTATIONS = [
 // corpus served through the manifold, so the static map buys it nothing.
 // `neurosurg` is the same corpus's neuroanatomy half (Kubie), split out of
 // surgical-sciences on 2026-09-16, and is served the same way.
-const NON_INLINED_ROTATIONS = ['anking', 'surgical-sciences', 'neurosurg'];
+// Universal recall is loaded by the due-checked cross-rotation delivery path,
+// not the ordinary rotation map or a selectable institution block.
+const NON_INLINED_ROTATIONS = ['anking', 'surgical-sciences', 'neurosurg', 'universal-core'];
 // Rotations another HOST serves from its own loader. `cohort-open` rows are
 // copies of md3 questions, mirrored for cohort.md (docs/designs/2026-09-23-
 // cohort-mirror.md): in md3's map they would show twice in md3's own browser.
@@ -405,6 +408,10 @@ async function main() {
     variantGroupId: card.variantGroupId ?? null,
     variantIndex: card.variantIndex ?? null,
     variantType: card.variantType ?? null,
+    // Only a deck with a strand mix needs the source file at serve time
+    // (deck-strand-mix.ts reads it to tell its strands apart). Emitting it for
+    // every card would add megabytes to the shards for no reader.
+    ...(deckStrandMixFor(card.rotation) ? { sourceFile: card.sourceFile ?? null } : {}),
   }));
 
   const normalizedQuestions = questions.map((question) => ({
@@ -426,6 +433,7 @@ async function main() {
     difficulty: question.difficulty,
     combinations: question.combinations ?? null,
     correctVariants: question.correctVariants ?? null,
+    ...(deckStrandMixFor(question.rotation) ? { sourceFile: question.sourceFile ?? null } : {}),
   }));
 
   await fs.mkdir(OUTPUT_DIR, { recursive: true });
@@ -461,6 +469,8 @@ async function main() {
   typeLines.push('  variantGroupId: string | null;');
   typeLines.push('  variantIndex: number | null;');
   typeLines.push('  variantType: string | null;');
+  typeLines.push('  /** Present only for a deck with a strand mix (src/lib/study/deck-strand-mix.ts). */');
+  typeLines.push('  sourceFile?: string | null;');
   typeLines.push('}');
   typeLines.push('');
   typeLines.push('export interface StaticQuestion {');
@@ -482,6 +492,8 @@ async function main() {
   typeLines.push('  difficulty: string;');
   typeLines.push('  combinations: unknown;');
   typeLines.push('  correctVariants: unknown;');
+  typeLines.push('  /** Present only for a deck with a strand mix (src/lib/study/deck-strand-mix.ts). */');
+  typeLines.push('  sourceFile?: string | null;');
   typeLines.push('}');
   typeLines.push('');
 

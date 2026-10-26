@@ -1,3 +1,4 @@
+import { universalRecallObjective, parseUniversalRecallEvidence } from './universal-recall';
 import { prisma } from '@/lib/prisma';
 import {
   computeNextDueAt,
@@ -115,7 +116,12 @@ export type RecordCardReviewResult =
 export async function recordCardReview(
   input: RecordCardReviewInput
 ): Promise<RecordCardReviewResult> {
-  const { userId, cardId, quality, clientRequestId } = input;
+  const { userId, cardId, clientRequestId } = input;
+  const objective = universalRecallObjective(cardId);
+  const recallEvidence = objective ? parseUniversalRecallEvidence(cardId, input.metadata?.universalRecall) : null;
+  if (objective && !recallEvidence) return { ok: false, status: 400, error: 'A whole-list recall attempt is required' };
+  const quality = recallEvidence && (recallEvidence.assisted || recallEvidence.omittedComponentIds.length)
+    ? Math.min(input.quality, 1) : input.quality;
   const responseTimeMs = input.responseTimeMs ?? undefined;
   const confusedWith = input.confusedWith ?? undefined;
 
@@ -184,6 +190,7 @@ export async function recordCardReview(
   };
   const requestFingerprint = buildRequestFingerprint('card_review', cardId, {
     quality,
+    ...(recallEvidence ? { universalRecall: recallEvidence } : {}),
     responseTimeMs: responseTimeMs ?? null,
     confusedWith: confusedWith ?? null,
     clientTimestamp: input.clientTimestampFingerprint !== undefined
@@ -201,7 +208,7 @@ export async function recordCardReview(
     quality,
     responseMs: responseTimeMs ?? null,
     timestamp: now,
-    externalMetadata: mergeDecisionContext(input.metadata, {
+    externalMetadata: mergeDecisionContext({ ...input.metadata, ...(recallEvidence ? { universalRecall: recallEvidence } : {}) }, {
       ...(input.sessionId ? { sessionId: input.sessionId } : {}),
       ...(input.batchId ? { batchId: input.batchId } : {}),
     }),
@@ -304,6 +311,8 @@ export async function recordCardReview(
             disposition: 'history_only',
             memorySequence: null,
             maximumStabilityDays,
+            maximumReviewIntervalDays: getCoreSkillCap(card.rotation),
+            selfAssessmentOnly: Boolean(objective),
             studyDayBoundaryOffsetMinutes: -now.getTimezoneOffset(),
             liked: existingProgress.liked,
           },
@@ -384,13 +393,17 @@ export async function recordCardReview(
       const preparedLearningEvent = withMemoryProjectionIdentity(
         withAdditionalLearningEventMetadata(
           basePreparedLearningEvent,
-          { retrievalStrengthBefore: transition.currentStrength },
+          { retrievalStrengthBefore: transition.currentStrength,
+            ...(objective ? { universalRecallPriorReviewAt: existingProgress?.lastReview?.toISOString() ?? null } : {}),
+          },
         ),
         {
           writeTransport: writeContext.transport,
           disposition: 'applied',
           memorySequence,
           maximumStabilityDays,
+          maximumReviewIntervalDays: getCoreSkillCap(card.rotation),
+          selfAssessmentOnly: Boolean(objective),
           studyDayBoundaryOffsetMinutes: -now.getTimezoneOffset(),
           liked: existingProgress?.liked ?? false,
         },
@@ -763,6 +776,12 @@ function computeCardReviewTransition(input: {
     { complexity: card.complexity },
     { totalReviews: totalReviewsAfter, retrievalStrength: newRetrievalStrength },
   );
+  if (universalRecallObjective(cardId)) {
+    masteryUpdate.status = 'reviewing';
+    masteryUpdate.masteredAt = null;
+    masteryUpdate.consecutiveCorrectFast = 0;
+    masteryUpdate.nextDueInDays = undefined;
+  }
   const struggleUpdate = updateStruggleTracking(
     quality,
     existingProgress?.recentFailCount ?? 0,
@@ -824,6 +843,13 @@ function computeCardReviewTransition(input: {
     if (finalNextDueAt < tomorrowStart) finalNextDueAt = tomorrowStart;
   }
   finalNextDueAt = spreadDueDate(finalNextDueAt, cardId, now);
+  // Stability is not an interval: graduation and date spreading can exceed it.
+  // Enforce the explicit maintenance policy on the date actually persisted.
+  if (coreSkillCap !== undefined) {
+    finalNextDueAt = new Date(Math.min(
+      finalNextDueAt.getTime(), now.getTime() + coreSkillCap * 86400000,
+    ));
+  }
 
   return {
     currentStrength,
@@ -865,6 +891,8 @@ function withMemoryProjectionIdentity(
     disposition: 'applied' | 'history_only';
     memorySequence: number | null;
     maximumStabilityDays: number;
+    maximumReviewIntervalDays?: number;
+    selfAssessmentOnly?: boolean;
     studyDayBoundaryOffsetMinutes: number;
     liked: boolean;
   },
@@ -880,6 +908,10 @@ function withMemoryProjectionIdentity(
         policy: {
           version: MEMORY_PROJECTOR_VERSION,
           maximumStabilityDays: input.maximumStabilityDays,
+          ...(input.selfAssessmentOnly ? { selfAssessmentOnly: true } : {}),
+          ...(input.maximumReviewIntervalDays === undefined ? {} : {
+            maximumReviewIntervalDays: input.maximumReviewIntervalDays,
+          }),
           studyDayBoundaryOffsetMinutes: input.studyDayBoundaryOffsetMinutes,
         },
         preferenceSnapshot: { liked: input.liked },

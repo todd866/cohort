@@ -79,6 +79,56 @@ const TOPK_CARDS_PER_CONCEPT = 200;
 const TOPK_QUESTIONS_PER_CONCEPT = 200;
 const TOPK_VIDEOS_PER_CONCEPT = 50;
 
+async function loadSimulationPreparation(
+  userId: string,
+  rotation: string,
+  stableIds: readonly string[],
+): Promise<NonNullable<BulkCandidates['simulationPreparation']>> {
+  const cards = await prisma.card.findMany({
+    where: {
+      stableId: { in: [...stableIds] },
+      rotation,
+      deletedAt: null,
+      shelvedAt: null,
+      ownerUserId: null,
+    },
+    select: {
+      ...CANDIDATE_CARD_SELECT,
+      progress: {
+        where: { userId },
+        take: 1,
+        select: {
+          lastQuality: true,
+          totalReviews: true,
+          lastReview: true,
+          nextDueAt: true,
+          flagged: true,
+          suppressed: true,
+          status: true,
+        },
+      },
+    },
+  });
+  const allowed = new Set(stableIds);
+  const rows: NonNullable<BulkCandidates['simulationPreparation']> = [];
+  for (const card of cards) {
+    if (!card.stableId || !allowed.has(card.stableId)) continue;
+    const progress = Array.isArray(card.progress) ? card.progress[0] : undefined;
+    if (progress?.flagged || progress?.suppressed || progress?.status === 'retired') continue;
+    const { progress: _progress, ...rest } = card;
+    rows.push({
+      id: card.id,
+      stableId: card.stableId,
+      lastQuality: progress?.lastQuality ?? null,
+      totalReviews: progress?.totalReviews ?? 0,
+      lastReview: progress?.lastReview ?? null,
+      nextDueAt: progress?.nextDueAt ?? null,
+      card: rest,
+    });
+  }
+  return rows;
+}
+
 const CANDIDATE_CARD_SELECT = {
   id: true, stableId: true, rotation: true, clusterId: true, similarCards: true, topics: true,
   sourceFile: true, imageUrl: true, clipId: true, clipRole: true, importance: true, complexity: true, facilityIndex: true,
@@ -212,6 +262,13 @@ export interface BulkCandidates {
    * fixtures that predate the field.
    */
   cardGradeById?: Map<string, { lastQuality: number | null; correctCount: number }>;
+  /**
+   * Reviewed simulation-preparation cards for an active focus, including ones
+   * the ordinary due clock or 24-hour repeat exclusion would park. A Good or
+   * Easy grade whose next review is still in the future is omitted by the
+   * ordering step.
+   */
+  simulationPreparation?: Array<import('@/lib/study/simulation-preparation').SimulationPreparationEvidence & { card: BulkCardRow }>;
   /**
    * Card IDs at fragile mastery: ≤2 reviews, ≥1 correct, lastReview ≥21 days
    * ago. The candidate ranker boosts these to prevent single-success
@@ -409,6 +466,8 @@ export async function bulkFetchCandidates(
    * a 503, so the square served nothing at all (2026-09-16).
    */
   scope: CandidateScope = {},
+  /** Reviewed stable ids for an active simulation focus. Empty skips the read. */
+  preparationStableIds: readonly string[] = [],
 ): Promise<BulkCandidates> {
   // Questions carry no clusterId, so there is no such thing as a question
   // scoped to a cluster. Serving unscoped ones beside scoped cards would
@@ -828,12 +887,20 @@ export async function bulkFetchCandidates(
     else questionExamTargetScores.set(score.itemId, score.itemTargetIndex);
   }
 
+  const simulationPreparation = preparationStableIds.length === 0
+    ? []
+    : await loadSimulationPreparation(userId, rotation, preparationStableIds).catch((error) => {
+        logger.warn('Simulation preparation lookup failed', { error: String(error) });
+        return [];
+      });
+
   return {
     rotation,
     unseenCards,
     seenCards,
     seenCardReviewCounts,
     cardGradeById,
+    simulationPreparation,
     fragileSeenCards,
     failedStretchCardIds,
     passedScaffoldCardIds,

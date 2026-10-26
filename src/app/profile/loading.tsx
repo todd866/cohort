@@ -18,16 +18,15 @@ export default function ProfileLoading() {
         <div aria-hidden="true" className={`mb-6 ${REVIEW_CALENDAR_SLOT_CLASS} ${bar}`} />
         <div aria-hidden="true" className={`mb-4 h-11 ${bar}`} />
         <div aria-hidden="true" className={`mb-6 h-36 ${bar}`} />
-        <div aria-hidden="true" className={`mb-4 h-24 ${bar}`} />
-        <div aria-hidden="true" className={`mb-6 h-11 ${bar}`} />
         <div className="grid gap-3 sm:grid-cols-2">
+          <div aria-hidden="true" className={`h-16 ${bar}`} />
           <div aria-hidden="true" className={`h-16 ${bar}`} />
           <div aria-hidden="true" className={`h-16 ${bar}`} />
           <div aria-hidden="true" className={`h-16 ${bar}`} />
         </div>
         <div aria-hidden="true" className={`mt-6 h-16 ${bar}`} />
         <div aria-hidden="true" className={`mt-4 h-11 ${bar}`} />
-        <div aria-hidden="true" className={`mt-6 h-40 ${bar}`} />
+        <div aria-hidden="true" className={`mt-4 h-11 ${bar}`} />
       </main>
     </div>
   );

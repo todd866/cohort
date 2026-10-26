@@ -1,3 +1,5 @@
+import { withUniversalRecall } from './universal-recall-delivery';
+import { withSimulationResponseReceipt } from './simulation-response';
 import { reviewChallengePreference } from './review-challenge-preference';
 import { loadPracticeReviewFocus } from '@/lib/study/practice-review-focus.server';
 import { sessionTypeFilter } from './exam-only-modules';
@@ -89,7 +91,7 @@ import {
 } from './dessert-mix';
 
 async function withStatementScaffolds(response: NextResponse, ctx: SessionContext): Promise<NextResponse> {
-  return withReviewLearningPolicy(await addStatementScaffolds(response, ctx), ctx);
+  return withUniversalRecall(await withReviewLearningPolicy(await addStatementScaffolds(response, ctx), ctx), ctx);
 }
 
 const PERSONAL_ROTATIONS = new Set<string>(PERSONAL_ROTATION_IDS);
@@ -489,6 +491,7 @@ export async function getUnifiedSession(
         where: { id: authResult.userId },
         select: {
           email: true,
+          simulationGoal: true,
           createdAt: true,
           feedProfile: true,
           emailAliases: {
@@ -796,9 +799,13 @@ export async function getUnifiedSession(
   // would let a caller reorder its own queue by asserting a week. A missing
   // track, an unscheduled rotation, or a date before the block starts all yield
   // null, and null is inert.
-  const { currentTeachingWeek, topicTeachingWeeks, topicRecencyDays, teachingPaceFingerprint } = resolveTeachingPace(
+  const { currentTeachingWeek, topicTeachingWeeks, topicRecencyDays, teachingPaceFingerprint, simulationFocus } = resolveTeachingPace(
     rotation,
     userScope?.track,
+    new Date(),
+    userScope?.email,
+    userScope?.simulationGoal,
+    userScope?.feedProfile,
   );
 
 
@@ -929,6 +936,7 @@ export async function getUnifiedSession(
     topicTeachingWeeks,
     topicRecencyDays,
     teachingPaceFingerprint,
+    simulationFocus: hasFilters ? null : simulationFocus,
     crossSourceRotations,
     maxCrossSourceItems,
     crossSourceMappingMode,
@@ -984,10 +992,10 @@ export async function getUnifiedSession(
     )
       ?? await withContractCheck('manifold', await buildManifoldSession(ctx)), ctx);
     return protectPersonalRotationResponse(
-      await withPrivateVideoDelivery(
+      await withSimulationResponseReceipt(await withPrivateVideoDelivery(
         await withPracticeReviewResponseProvenance(response, ctx.practiceReviewFocus ?? null, ctx.rotation),
         commitmentLevel,
-      ),
+      ), ctx.simulationFocus),
       privateResponseRotations,
     );
   }
@@ -1101,10 +1109,10 @@ export async function getUnifiedSession(
     )
     ?? await withContractCheck('manifold', await buildManifoldSession(ctx)), ctx);
   return protectPersonalRotationResponse(
-    await withPrivateVideoDelivery(
+    await withSimulationResponseReceipt(await withPrivateVideoDelivery(
       await withPracticeReviewResponseProvenance(response, ctx.practiceReviewFocus ?? null, ctx.rotation),
       commitmentLevel,
-    ),
+    ), ctx.simulationFocus),
     privateResponseRotations,
   );
 }

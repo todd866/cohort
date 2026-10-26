@@ -166,12 +166,12 @@ export class SessionBuildState {
     return (this.cardsPerConcept.get(conceptId) ?? 0) + (this.questionsPerConcept.get(conceptId) ?? 0);
   }
 
-  addItem(item: UnifiedSessionItem): boolean {
+  addItem(item: UnifiedSessionItem, options?: { bypassNoveltyReservation?: boolean }): boolean {
     if (this.selectedItems.length >= this.size) return false;
     const firstSight = this.isFirstSightItem(item);
     const seatsRemaining = this.size - this.selectedItems.length;
     const quotaRemaining = Math.max(0, this.minFirstSightItems - this.firstSightSelected);
-    if (!firstSight && this.enforceFirstSightReservation && seatsRemaining <= quotaRemaining) {
+    if (!options?.bypassNoveltyReservation && !firstSight && this.enforceFirstSightReservation && seatsRemaining <= quotaRemaining) {
       this.deferredForNovelty.set(`${item.type}:${item.id}`, item);
       return false;
     }

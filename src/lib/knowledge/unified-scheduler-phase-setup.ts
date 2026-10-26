@@ -61,6 +61,7 @@ function unifiedSchedulerSharedReadFingerprint(
       commitmentLevel: options.commitmentLevel ?? 'browser',
       imageTier: options.imageTier ?? 'standard',
       currentTeachingWeek: options.currentTeachingWeek ?? null,
+      simulationFocus: options.simulationFocus ?? null,
       protectedSeatCount: options.protectedSeatCount ?? null,
       protectedTargetSeatCount: options.protectedTargetSeatCount ?? null,
       requestedBatchSize: options.requestedBatchSize ?? null,

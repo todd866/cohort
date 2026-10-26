@@ -29,6 +29,13 @@ import {
 } from './unified-scheduler-types';
 import { enforceConceptTeachingCaps } from './unified-scheduler-scoring';
 import {
+  deckStrandMixFor,
+  deckStrandOf,
+  orderByDeckStrands,
+  strandSeatTargets,
+  type StrandIdentity,
+} from '@/lib/study/deck-strand-mix';
+import {
   getCardsForCluster,
   getQuestionsForRotation,
   getUnseenScaffoldsForClusters,
@@ -212,6 +219,23 @@ export async function constructClusterSession(
 
   let selectedCardCount = 0;
 
+  // A deck that serves two exams (deck-strand-mix.ts) holds seats for each
+  // strand while both have supply. A due review is never held back for the
+  // mix; only first-sight cards wait for their strand's seats. When a whole
+  // pass adds nothing, the hold is released and any remaining seat goes to
+  // whichever strand still has eligible cards.
+  const strandMix = deckStrandMixFor(rotation);
+  const cardStrandSeats = strandMix ? strandSeatTargets(strandMix, targetCardCount) : null;
+  const cardStrandCounts = new Map<string, number>();
+  let holdCardStrandSeats = cardStrandSeats !== null;
+  const strandIdentityByKey = new Map<string, StrandIdentity>();
+  const cardStrandOpen = (candidate: { rotation: string; sourceFile: string | null; firstSightAtSelection: boolean }) => {
+    if (!holdCardStrandSeats || !strandMix || !cardStrandSeats) return true;
+    if (!candidate.firstSightAtSelection) return true;
+    const strand = deckStrandOf(strandMix, candidate);
+    return (cardStrandCounts.get(strand) ?? 0) < (cardStrandSeats.get(strand) ?? 0);
+  };
+
   for (let pass = 0; selectedCardCount < targetCardCount; pass++) {
     const maxPerCluster = 2 + pass;
     let addedThisPass = 0;
@@ -237,10 +261,16 @@ export async function constructClusterSession(
       if (candidates.length === 0) continue;
 
       const picked = candidates.find(
-        (candidate) => !candidate.variantGroupId
-          || !selectedCardVariantGroups.has(candidate.variantGroupId),
+        (candidate) => (!candidate.variantGroupId
+          || !selectedCardVariantGroups.has(candidate.variantGroupId))
+          && cardStrandOpen(candidate),
       );
       if (!picked) continue;
+      if (strandMix) {
+        const strand = deckStrandOf(strandMix, picked);
+        cardStrandCounts.set(strand, (cardStrandCounts.get(strand) ?? 0) + 1);
+        strandIdentityByKey.set(`card:${picked.id}`, { rotation: picked.rotation, sourceFile: picked.sourceFile });
+      }
       selectedItems.push({
         type: 'card',
         id: picked.id,
@@ -266,7 +296,13 @@ export async function constructClusterSession(
       addedThisPass += 1;
     }
 
-    if (addedThisPass === 0) break;
+    if (addedThisPass === 0) {
+      if (holdCardStrandSeats) {
+        holdCardStrandSeats = false;
+        continue;
+      }
+      break;
+    }
   }
 
   const firstSightQuestionIds = new Set<string>();
@@ -297,6 +333,7 @@ export async function constructClusterSession(
 
     for (const q of questions) {
       if (!questionFamiliarity.has(q.id)) firstSightQuestionIds.add(q.id);
+      strandIdentityByKey.set(`question:${q.id}`, { rotation: q.rotation, sourceFile: q.sourceFile });
       selectedItems.push({
         type: 'question',
         id: q.id,
@@ -437,7 +474,17 @@ export async function constructClusterSession(
     );
     reconciledFirstSight += 1;
   }
-  const finalOrdered = breakModalityRuns(quotaReconciled);
+  // Spread the strands through the batch (a no-op for a deck without a mix).
+  // A paired scaffold stays directly behind its anchor.
+  const strandOrdered = orderByDeckStrands(quotaReconciled, {
+    deck: rotation,
+    seed: servingRotationSeed,
+    identify: (item) => strandIdentityByKey.get(`${item.type}:${item.id}`)
+      ?? { rotation: item.rotation ?? rotation, sourceFile: scaffoldMetaById.get(item.id)?.sourceFile ?? null },
+    keepWithPrevious: (item) => item.interventionReason === 'preemptive_scaffold',
+    shareBasis: 'present',
+  });
+  const finalOrdered = breakModalityRuns(strandOrdered);
   const unseenScaffoldIds = new Set(unseenClusterScaffolds.map((card) => card.id));
   const quotaTaggedItems = finalOrdered.map((item) => ({
     ...item,

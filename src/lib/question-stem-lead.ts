@@ -1,7 +1,7 @@
 /**
- * Every MCQ stem renders the same way: the scenario at body weight, then the
- * question line in bold (owner, 21 Oct 2026: "some questions are bold some
- * aren't, it's kinda random"). Authored stems put the question in its own
+ * Every MCQ stem renders the same way: the scenario, then the question line as
+ * its own paragraph, all at body weight (owner, 22 Oct 2026: no bold on stems).
+ * Authored stems put the question in its own
  * paragraph; older ones run it on, so the final question sentence is split off
  * at render time rather than relying on the source to be tidy.
  */

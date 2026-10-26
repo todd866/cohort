@@ -120,6 +120,9 @@ describe('generated-content build modes', () => {
 });
 
 describe('rotations kept out of md3\'s content map', () => {
+  it('keeps shared recall on its due-checked delivery path rather than an ordinary rotation shard', () => {
+    expect(EXCLUDED_FROM_MAP).toContain('universal-core');
+  });
   it('never inlines the Cohort mirror: its rows are copies of md3 questions served only on cohort.md', () => {
     expect(EXCLUDED_FROM_MAP).toContain('cohort-open');
   });
@@ -269,6 +272,16 @@ describe('rotation-counts generation', () => {
     expect(src).toMatch(/typeLines\.push\(['"]\s*variantGroupId: string \| null;['"]\)/);
     expect(src).toMatch(/typeLines\.push\(['"]\s*variantIndex: number \| null;['"]\)/);
     expect(src).toMatch(/typeLines\.push\(['"]\s*variantType: string \| null;['"]\)/);
+  });
+
+  it('carries sourceFile into the shards only for decks with a strand mix', () => {
+    // The instant lane tells a strand-mixed deck's strands apart by source file
+    // (src/lib/study/deck-strand-mix.ts) and must not query for it. Every other
+    // rotation stays as it was, so the shards do not grow for no reader.
+    const src = fs.readFileSync(path.resolve(__dirname, 'generate-content-map.ts'), 'utf8');
+    expect(src).toMatch(/deckStrandMixFor\(card\.rotation\)\s*\?\s*\{\s*sourceFile:\s*card\.sourceFile\s*\?\?\s*null\s*\}\s*:\s*\{\}/);
+    expect(src).toMatch(/deckStrandMixFor\(question\.rotation\)\s*\?\s*\{\s*sourceFile:\s*question\.sourceFile\s*\?\?\s*null\s*\}\s*:\s*\{\}/);
+    expect(src.match(/typeLines\.push\(['"]\s*sourceFile\?: string \| null;['"]\)/g) ?? []).toHaveLength(2);
   });
 
   it('keeps raw public-USMLE questions out of generated legacy content maps', () => {

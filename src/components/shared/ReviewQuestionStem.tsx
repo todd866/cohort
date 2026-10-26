@@ -26,7 +26,7 @@ export function ReviewQuestionStem({ text, leafRenderer, className = '' }: Revie
   const paragraphs = (value: string) => value.split(/\n\s*\n/).filter(Boolean).map((paragraph, index) => (
     <p key={index}><InlineMarkdown text={paragraph} leafRenderer={leafRenderer} /></p>
   ));
-  // The question line is bold on every stem, run-on or not (splitStemLead).
+  // The question line is its own paragraph on every stem, run-on or not (splitStemLead).
   const prose = (value: string, isLast: boolean) => {
     if (!isLast) return paragraphs(value);
     const { body, lead } = splitStemLead(value);

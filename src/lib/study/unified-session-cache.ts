@@ -1,3 +1,4 @@
+import { simulationCacheMatches } from './simulation-focus';
 import { itemMatchesReviewLearning } from './review-learning-item';
 import { applyReviewChallengeWave } from './review-challenge';
 import { NextResponse, after } from 'next/server';
@@ -51,6 +52,7 @@ import {
   ownerPrivateOrSharedCardScope,
 } from '@/lib/cards/read-repository.server';
 import { breakModalityRuns } from '@/lib/knowledge/modality-guard';
+import { orderByDeckStrands, sessionItemStrandIdentity } from './deck-strand-mix';
 import { isUsableQuestion } from '@/lib/question-validation';
 import { loadCurrentSessionContent, sessionSourceKey as sourceKey, withCurrentSessionBody, type CurrentSessionSource } from './current-session-content';
 import { resolveClipsForSession } from '@/lib/video/clip-access';
@@ -272,6 +274,9 @@ async function filterRecentlySeenCachedItems(
   }
 
   return items.filter((item) => {
+    // A miss on tomorrow's simulation stays in the queue inside the 24-hour
+    // repeat window. The final due-egress read below drops it once it is held.
+    if (item.type === 'card' && item.interventionReason === 'simulation_preparation') return true;
     if (item.type === 'card') return !excludedCardIds.has(item.id);
     if (item.type === 'question') return !excludedQuestionIds.has(item.id);
     return true;
@@ -629,6 +634,7 @@ export async function tryCachedSession(ctx: SessionContext): Promise<NextRespons
       const tCacheEnd = performance.now();
 
       let cachedItems = cacheRow.items as UnifiedItem[];
+      if (!simulationCacheMatches(cachedItems, ctx.simulationFocus)) return null;
       const gap = ctx.reviewChallenge?.level === 2 ? await getReviewLearningGap(ctx) : null;
       if (gap && !gap.available) return null;
       cachedItems = cachedItems.filter(item => itemMatchesReviewLearning(item, ctx.reviewChallenge?.level ?? 0, gap?.questionIds));
@@ -825,11 +831,20 @@ export async function tryCachedSession(ctx: SessionContext): Promise<NextRespons
       // safe when it was built. Re-run the existing order-only guard at the
       // final egress boundary, once eligibility is settled. A one-sided queue
       // is intentionally left untouched because no valid separator exists.
-      const hasCachedCard = egressSafeCachedItems.some((item) => item.type === 'card');
-      const hasCachedQuestion = egressSafeCachedItems.some((item) => item.type === 'question');
+      // The same filters can bunch a strand-mixed deck's strands
+      // (deck-strand-mix.ts); re-spread them first. A no-op for other decks.
+      const strandOrderedCachedItems = orderByDeckStrands(egressSafeCachedItems, {
+        deck: ctx.rotation,
+        seed: ctx.sessionId,
+        identify: (item) => sessionItemStrandIdentity(item, ctx.rotationContent, ctx.rotation),
+        keepWithPrevious: (item) => item.struggleIntervention?.isScaffold === true,
+        shareBasis: 'present',
+      });
+      const hasCachedCard = strandOrderedCachedItems.some((item) => item.type === 'card');
+      const hasCachedQuestion = strandOrderedCachedItems.some((item) => item.type === 'question');
       const modalityOrderedCachedItems = hasCachedCard && hasCachedQuestion
-        ? breakModalityRuns(egressSafeCachedItems)
-        : egressSafeCachedItems;
+        ? breakModalityRuns(strandOrderedCachedItems)
+        : strandOrderedCachedItems;
       // Even when only one modality survives, a final filter may have left
       // gaps in the positions assigned before media/due revalidation.
       const modalitySafeCachedItems = enrichItemsWithWalkMetadata(applyReviewChallengeWave(modalityOrderedCachedItems, ctx.reviewChallenge.level));

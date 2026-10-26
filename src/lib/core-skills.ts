@@ -11,7 +11,8 @@
 import { UNIVERSAL_MODULES } from './institution';
 
 /**
- * Get the stability cap (max interval in days) for a card based on its rotation.
+ * Get the maintenance interval ceiling in days for a card based on its rotation.
+ * The writer also uses this as a stability ceiling; those are distinct limits.
  * Returns undefined if the rotation is not a core skill rotation.
  */
 export function getCoreSkillCap(rotation: string): number | undefined {

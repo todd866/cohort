@@ -58,11 +58,12 @@ export function ReviewMenuSection({ choices }: { choices: ReviewMenuChoice[] }) 
               {group.items.map((item) => (
                 <label
                   key={item.slug}
-                  title={item.pinned ? 'Current block' : undefined}
+                  title={item.pinned ? 'Always shown' : undefined}
                   className={`${CHIP_ON_WHEN_CHECKED}${item.pinned ? ' cursor-default' : ''}`}
                 >
                   <input
                     type="checkbox"
+                    aria-label={`${item.label}${item.pinned ? ", always shown" : ""}`}
                     checked={item.checked}
                     disabled={item.pinned || saving}
                     onChange={(event) => { void toggle(item.slug, event.target.checked); }}
@@ -70,7 +71,6 @@ export function ReviewMenuSection({ choices }: { choices: ReviewMenuChoice[] }) 
                   />
                   {item.checked && <ChipCheck />}
                   <span>{item.label}</span>
-                  {item.pinned && <span className="sr-only">Current block</span>}
                 </label>
               ))}
             </div>

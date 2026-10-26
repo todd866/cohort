@@ -114,9 +114,11 @@ export const COMPANION_SOURCE_ROTATIONS: Readonly<Record<string, readonly string
   // only the items that name `md1-foundations`.
   // TO'C holds the adult abdominal examination; CAH and GSSE hold the neuro
   // examination clips; year1-kat1 holds the Year 1 neuro and renal physiology.
+  // AHCT 4 (2026-10-22): the Rohen prosection plates of the regions the test
+  // covers (brain, cranial nerves, meninges, spinal cord, eye, ear).
   'md1-foundations': Object.freeze([
     'year1-kat3', 'year1-kat2', 'year1-kat1', 'year2-kat7',
-    'physical-exam', 'toc', 'cah', 'surgical-sciences',
+    'physical-exam', 'toc', 'cah', 'surgical-sciences', 'anatomy',
   ]),
   // Adult Medicine DWE. The cards stay in the rotation that authored them.
   // A focused BPT session draws the ones that name `bpt`.

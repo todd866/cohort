@@ -22,6 +22,7 @@ export interface UnifiedAnatomyMedia {
 }
 
 export interface UnifiedItem {
+  simulationFocusFingerprint?: string;
   /** Calendar state used to rank a prepared queue. */
   teachingPaceFingerprint?: string;
   /** Explicit media narrowing carried into serve telemetry. */
@@ -132,6 +133,9 @@ export interface UnifiedItem {
     // concepts the user graded q<3 in the last 2h). Overrides the
     // teaching-state label so analytics can see when D drives a serve.
     | 'failure_escalation'
+    // Unrecalled reviewed simulation preparation, served until a Good or Easy
+    // grade parks it. The deadline replaces the ordinary due clock.
+    | 'simulation_preparation'
     // Set when the concept was un-starved by E (strong but still has unseen
     // cards — recallOnExamDay ≥ targetRecall AND conceptHasPristine).
     // Without this label, strong-pristine serves are indistinguishable
@@ -257,6 +261,7 @@ export const QUEUE_DRAIN_FLOOR_ITEMS = CLIENT_REVIEW_BATCH_SIZE;
 
 /** Shared context passed from the orchestrator to each session path. */
 export interface SessionContext {
+  simulationFocus?: import('./simulation-focus').SimulationFocus | null;
   reviewChallenge?: import('./review-challenge-preference').ReviewChallengePreference;
   /**
    * Lease lifetime for the background queue refreshes this request starts.

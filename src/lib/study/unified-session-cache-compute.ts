@@ -103,7 +103,7 @@ export async function computeAndHydrateSession(
   // be paced against the course calendar exactly as the live path is. Resolved
   // from the user's track here because this path has no request context.
   const [
-    { currentTeachingWeek, topicTeachingWeeks, topicRecencyDays, teachingPaceFingerprint },
+    { currentTeachingWeek, topicTeachingWeeks, topicRecencyDays, teachingPaceFingerprint, simulationFocus },
     recentFigureExposures,
     recentQuestionFailures,
     noveltyProgress,
@@ -141,6 +141,7 @@ export async function computeAndHydrateSession(
     currentTeachingWeek,
     topicTeachingWeeks,
     topicRecencyDays,
+    simulationFocus,
     recentFigureExposures,
     ...(recentQuestionFailures ? { recentQuestionFailures } : {}),
     ...(noveltyBudget ? { minFirstSightItems: noveltyBudget.minFirstSightItems } : {}),
@@ -215,6 +216,7 @@ export async function computeAndHydrateSession(
   const itemsForCache: UnifiedItem[] = hydratedItems.map((item) => ({
     ...item,
     ...noveltyStamp,
+    ...(simulationFocus ? { simulationFocusFingerprint: simulationFocus.fingerprint } : {}),
     ...(teachingPaceFingerprint ? { teachingPaceFingerprint } : {}),
     ...(options.reviewChallenge ? { reviewChallenge: options.reviewChallenge } : {}),
     imageUrl: null,

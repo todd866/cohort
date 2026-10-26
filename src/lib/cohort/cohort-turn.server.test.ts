@@ -1128,7 +1128,7 @@ describe('serveCohortTurn: module cards', () => {
     expect(response.items[0]).toMatchObject({ difficulty: 'hard', stem: hard.stem });
     expect(tx.serveDecision.createMany).toHaveBeenCalledWith({ data: [expect.objectContaining({ itemId: hard.id })] });
     expect(mocks.loadCards).not.toHaveBeenCalled();
-  });
+  }, 30_000); // runs real Step 1 adaptive delivery over the corpus; 5 s timed out under release CI load (24 Oct 2026)
 
   it('records exact public demand for a spent hard pool, including unanswered deliveries', async () => {
     setDifficulty(2);

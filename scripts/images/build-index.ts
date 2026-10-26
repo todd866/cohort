@@ -13,6 +13,8 @@ import { isOriginalFigureCollectionWithdrawn, originalFigureManifest } from '../
 const IMAGE_EXT = new Set(['.jpg', '.jpeg', '.png', '.webp', '.gif', '.svg']);
 
 interface BuildOpts {
+  /** Validate real sidecars without changing generated or installed files. */
+  check?: boolean;
   sidecarRoot: string;
   outFile: string;
   /**
@@ -125,6 +127,7 @@ export function buildIndex(opts: BuildOpts): BuildStats {
   const stableEntries = Object.fromEntries(
     Object.entries(entries).sort(([left], [right]) => left.localeCompare(right)),
   );
+  if (opts.check) return { entries: Object.keys(stableEntries).length, sensitivityDefaults: 0, warnings };
   const body = JSON.stringify(stableEntries, null, 2) + '\n';
   mkdirSync(dirname(opts.outFile), { recursive: true });
   writeFileSync(opts.outFile, body, 'utf-8');
@@ -151,7 +154,7 @@ export function buildIndexForMode(
   opts: BuildOpts,
   mode: ImageIndexMode,
 ): BuildStats {
-  if (mode.requireSidecars) return buildIndex(opts);
+  if (opts.check || mode.requireSidecars) return buildIndex(opts);
   mkdirSync(dirname(opts.outFile), { recursive: true });
   writeFileSync(opts.outFile, '{}\n', 'utf-8');
   if (opts.servingOutFile) {
@@ -169,15 +172,17 @@ if (import.meta.url === `file://${process.argv[1]}`) {
   let stats: BuildStats;
   try {
     const mode = resolveImageIndexMode(process.env);
+    const check = process.argv.includes('--check');
     // Public originals are validated and copied for static delivery in every
     // build, including clean FOSS checkouts and offline development builds.
     if (!isOriginalFigureCollectionWithdrawn(originalFigureManifest)) {
-      installOriginalDiagrams({ repoRoot: root, write: true });
-    } else {
+      installOriginalDiagrams({ repoRoot: root, write: !check });
+    } else if (!check) {
       const result = withdrawOriginalDiagrams(root);
       console.log(`[images:index] original diagram collection withdrawn; removed ${result.removed} managed outputs`);
     }
     stats = buildIndexForMode({
+      check,
       sidecarRoot,
       outFile: join(root, 'src', 'data', 'image-library.generated.json'),
       servingOutFile: join(root, 'src', 'data', 'image-serving.generated.json'),

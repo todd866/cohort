@@ -37,6 +37,7 @@ type InterventionReason =
   // analytics wiring). Kept in sync with UnifiedItem.interventionReason in
   // unified-session-types.ts — search both when adding new variants.
   | 'failure_escalation'
+  | 'simulation_preparation'
   | 'strong_pristine'
   | 'statement_scaffold';
 
@@ -178,6 +179,9 @@ export function mapInterventionReason(reason: InterventionReason): InterventionT
     // Failure-escalation serves are remediation — the user just got the
     // concept wrong, and the boost surfaced this item to re-teach it.
     case 'failure_escalation':
+      return 'remediate';
+    // Deadline preparation is the same job as a miss: keep the card until held.
+    case 'simulation_preparation':
       return 'remediate';
     // Strong-pristine serves are reinforcement of an already-strong concept
     // that just happens to still have unseen cards in the pool — the role

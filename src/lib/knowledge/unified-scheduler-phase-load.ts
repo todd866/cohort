@@ -27,6 +27,7 @@ import { computeKnowledgeVectorFromData } from '@/lib/manifold/knowledge-vector'
 import { prisma } from '@/lib/prisma';
 import { getStudyDayStart } from '@/lib/study-day';
 import { applyReviewLearningPoolPolicy, bulkFetchCandidates } from './bulk-candidates';
+import { simulationPreparationStableIds } from '@/lib/study/simulation-preparation';
 import { hasDemonstratedLearningGap } from '@/lib/study/review-learning-policy';
 import { loadRecentClinicalThreadAnchors } from './concept-thread-history';
 import type { ClinicalThreadAnchor } from './concept-thread-policy';
@@ -135,6 +136,7 @@ export async function loadSchedulerInputs(setup: SchedulerSetup): Promise<Schedu
         options.practiceLocale ?? 'au',
         includeVideos,
         { clusterId: options.clusterFilter ?? null, media: options.media, imageTrust: options.imageTrust },
+        simulationPreparationStableIds(options.simulationFocus),
       )
     : bulkFetchCandidates(
         userId,
@@ -152,6 +154,7 @@ export async function loadSchedulerInputs(setup: SchedulerSetup): Promise<Schedu
         options.practiceLocale ?? 'au',
         includeVideos,
         { clusterId: options.clusterFilter ?? null, media: options.media, imageTrust: options.imageTrust },
+        simulationPreparationStableIds(options.simulationFocus),
       ));
   const flowAxisPromise = readPreselection(
     'flow-axis',
@@ -220,7 +223,7 @@ export async function loadSchedulerInputs(setup: SchedulerSetup): Promise<Schedu
       const rows = await prisma.learningEvent.findMany({
         where: {
           userId,
-          eventType: { in: ['clinical_practice', 'group_attempted'] },
+          eventType: { in: ['clinical_practice', 'simulation_practice', 'group_attempted'] },
           timestamp: { gte: new Date(selectionNowMs() - PRACTICE_MISS_WINDOW_MS) },
         },
         select: { metadata: true },

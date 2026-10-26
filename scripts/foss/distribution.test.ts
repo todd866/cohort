@@ -1143,6 +1143,10 @@ describe('FOSS distribution boundary', () => {
     )?.text ?? '';
     expect(publicBaseSchema).toMatch(/reviewChallenge\s+Int\s+@default\(0\)/);
     expect(publicBaseSchema).toMatch(/reviewChallengeRevision\s+Int\s+@default\(0\)/);
+    // Shared live/background selectors read this nullable user field. The
+    // public fallback ignores its private simulation semantics, but its
+    // Prisma schema must match the distributed additive migration.
+    expect(publicBaseSchema).toMatch(/simulationGoal\s+Json\?/);
     const publicUserDocument = publicBaseSchema.match(/model UserDocument \{[\s\S]*?\n\}/)?.[0] ?? '';
     expect(publicUserDocument).toMatch(/purpose\s+String\s+@default\("document"\)/);
     expect(publicUserDocument).toMatch(/flagIssueId\s+String\?\s+@unique/);
@@ -1574,4 +1578,25 @@ describe('FOSS distribution boundary', () => {
     }));
   }, 60_000);
 
+});
+
+describe('private PWH textbook distribution', () => {
+  it('keeps authored and generated textbook trees outside the public path set', () => {
+    const policy = loadDistributionPolicy(process.cwd());
+    const manifest = fs.readFileSync(policy.pathManifest, 'utf8').split('\n');
+    // Assert the boundary even in an exported checkout where private files do not exist.
+    const privateRoots = ['content/book', 'scripts/book', 'src/generated/textbook'];
+    expect(policy.forbiddenPrefixes).toContain('content');
+    expect(policy.excludePrefixes).toContain('src/generated/textbook');
+    const paths = [...privateRoots, 'src/lib/textbook.ts', 'src/lib/textbook-media.ts'];
+    for (const file of paths) {
+      const matches = (prefix: string) => file === prefix || file.startsWith(`${prefix}/`);
+      const included = policy.includeFiles.includes(file) || policy.includeRoots.some(matches);
+      const excluded = policy.excludeFiles.includes(file) || policy.excludePrefixes.some(matches);
+      const withinPrivatePath = (candidate: string) => candidate === file || candidate.startsWith(`${file}/`);
+      expect(included && !excluded, file).toBe(false);
+      expect(manifest.some(withinPrivatePath), file).toBe(false);
+      expect(policy.generatedTextFiles.some(entry => withinPrivatePath(entry.path)), file).toBe(false);
+    }
+  });
 });

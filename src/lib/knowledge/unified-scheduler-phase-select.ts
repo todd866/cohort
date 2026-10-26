@@ -1,3 +1,5 @@
+import { preferReviewedSimulationCards, simulationItemEvidence } from '@/lib/study/simulation-item-relevance';
+import { orderUnrecalledSimulationPreparation } from '@/lib/study/simulation-preparation';
 /**
  * Unified scheduler: item selection
  *
@@ -536,6 +538,37 @@ export function preTeachVideos(
  * first encounter is a teaching moment rather than a cold test. Capped at three, and
  * at the new-card budget that remains.
  */
+/**
+ * While a simulation deadline is active, unrecalled reviewed preparation
+ * fills the session before every other lane. A held card is absent from the
+ * list. Misses stay eligible even when the spacing clock or the 24-hour
+ * repeat window would park them.
+ */
+export function fillSimulationPreparation(
+  inputs: SchedulerInputs,
+  build: SessionBuildState,
+): void {
+  const rows = inputs.bulk.simulationPreparation;
+  if (!inputs.options.simulationFocus || !rows?.length) return;
+  const ordered = orderUnrecalledSimulationPreparation(rows, new Date(inputs.selectionNowMs()));
+  for (const row of ordered) {
+    if (build.selectedItems.length >= inputs.size) break;
+    if (build.selectedItems.some(item => item.id === row.id)) continue;
+    build.selectedCardIds.delete(row.id);
+    build.addItem({
+      type: 'card',
+      id: row.id,
+      conceptId: '_unattached',
+      conceptName: 'Simulation preparation',
+      priority: 1,
+      interventionReason: 'simulation_preparation',
+      variantGroupId: row.card.variantGroupId,
+      variantIndex: row.card.variantIndex,
+      variantType: row.card.variantType,
+    }, { bypassNoveltyReservation: true });
+  }
+}
+
 export function preTeachNaiveConcepts(
   inputs: SchedulerInputs,
   plan: ConceptPlan,
@@ -588,6 +621,7 @@ export function preTeachNaiveConcepts(
       const picks = pickNaivePreTeachCards(naivePreTeachConcepts, bulk, {
         maxPreTeach: Math.min(3, slotsRemaining, newCardBudgetRemaining),
         alreadySelectedCardIds: selectedCardIds,
+        preferCard: inputs.options.simulationFocus ? card => Boolean(simulationItemEvidence({stableId:card.stableId},inputs.options.simulationFocus)) : undefined,
       });
       for (const pick of picks) {
         if (build.selectedCardCount >= targetCardCount) break;
@@ -796,6 +830,9 @@ export function fillCards(
     recentFailureConceptIds,
     selectionNowMs,
   } = inputs;
+  const stableIds = options.simulationFocus
+    ? new Map([...bulk.unseenCards, ...bulk.seenCards].map(card => [card.id, card.stableId]))
+    : new Map<string, string | null | undefined>();
   const {
     activeCardTargetScores,
     activeTargetRankMove,
@@ -845,7 +882,7 @@ export function fillCards(
         const similarityThreshold = already === 0 ? interferenceThreshold : Math.min(0.97, interferenceThreshold + 0.1);
         const maxPerCluster = already === 0 ? 3 : 5;
 
-        const picked = build.pickCardCandidate(candidates, { similarityThreshold, maxPerCluster });
+        const picked = build.pickCardCandidate(preferReviewedSimulationCards(candidates, card => ({ stableId: stableIds.get(card.id) }), recentFailureConceptIds.has(concept.conceptId) ? null : options.simulationFocus), { similarityThreshold, maxPerCluster });
         if (!picked) continue;
 
         const baseCardReason =

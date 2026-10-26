@@ -19,6 +19,7 @@ import {
   logExposures,
 } from './unified-session-helpers';
 import { breakModalityRuns } from '@/lib/knowledge/modality-guard';
+import { orderByDeckStrands, sessionItemStrandIdentity } from './deck-strand-mix';
 import {
   readSessionCacheSnapshot,
   upsertSessionCache,
@@ -535,6 +536,7 @@ export async function buildManifoldSession(ctx: SessionContext): Promise<NextRes
       currentTeachingWeek: ctx.currentTeachingWeek,
       topicTeachingWeeks: ctx.topicTeachingWeeks,
       topicRecencyDays: ctx.topicRecencyDays,
+      simulationFocus: ctx.simulationFocus,
       recentFigureExposures: ctx.recentFigureExposures,
       crossSourceRotations: ctx.crossSourceRotations,
       maxCrossSourceItems: ctx.maxCrossSourceItems
@@ -794,7 +796,16 @@ export async function buildManifoldSession(ctx: SessionContext): Promise<NextRes
     ) => {
       // interleaveGroups inserts a group item every `gap` positions in baseItems.
       // Re-apply the modality guard because an inserted item can extend a run.
-      const merged = breakModalityRuns(interleaveGroups(variantBaseItems, groupItems));
+      // Hydration can drop items the scheduler spread between a strand-mixed
+      // deck's strands (deck-strand-mix.ts); re-spread them. No-op elsewhere.
+      const strandOrderedBaseItems = orderByDeckStrands(variantBaseItems, {
+        deck: ctx.rotation,
+        seed: ctx.sessionId,
+        identify: (item) => sessionItemStrandIdentity(item, ctx.rotationContent, ctx.rotation),
+        keepWithPrevious: (item) => item.struggleIntervention?.isScaffold === true,
+        shareBasis: 'present',
+      });
+      const merged = breakModalityRuns(interleaveGroups(strandOrderedBaseItems, groupItems));
       const filteredByRequest = applyManifoldFilters(merged, ctx);
       const capped = capCrossSourceSessionItems(filteredByRequest, {
         sessionRotation: ctx.rotation,
@@ -1300,6 +1311,9 @@ export async function buildManifoldSession(ctx: SessionContext): Promise<NextRes
     // from SQL via scoreOrderedPairwiseDistances), so no stripping is needed.
     // Cache the items *with* serveDecisionIds so cache-served items can attribute
     // back to the original decision row.
+    if (ctx.simulationFocus) {
+      for (const item of itemsWithDecisions) item.simulationFocusFingerprint = ctx.simulationFocus.fingerprint;
+    }
     const cacheItems = ctx.teachingPaceFingerprint
       ? itemsWithDecisions.map(item => ({ ...item, teachingPaceFingerprint: ctx.teachingPaceFingerprint }))
       : itemsWithDecisions;

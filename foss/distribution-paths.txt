@@ -1626,6 +1626,8 @@ prisma/migrations/20261004040000_review_challenge/migration.sql
 prisma/migrations/20261005030000_flag_image_attachments/migration.sql
 prisma/migrations/20261005100000_feedback_search_embeddings/migration.sql
 prisma/migrations/20261015090000_exam_gaps_and_experience/migration.sql
+prisma/migrations/20261023120000_user_simulation_goal/migration.sql
+prisma/migrations/20261026230000_universal_recall_objectives/migration.sql
 prisma/migrations/migration_lock.toml
 prisma/schema/anki-bridge.prisma
 prisma/schema/anki-export.prisma
@@ -1838,6 +1840,7 @@ src/components/GuestProgressClaimWarm.tsx
 src/components/OfflineShellWarm.tsx
 src/components/Providers.tsx
 src/components/ReviewBootstrapSafetyWarm.tsx
+src/components/StandaloneTitle.tsx
 src/components/ThemeProvider.tsx
 src/components/TrackingProvider.tsx
 src/components/brief/BriefOfflineCache.tsx
@@ -1918,7 +1921,6 @@ src/components/offline/connection-indicator-model.ts
 src/components/practice/ClozeCard.tsx
 src/components/practice/PracticeSession.tsx
 src/components/practice/QuestionPractice.tsx
-src/components/profile/ReadinessTrend.tsx
 src/components/profile/ReviewHeatmap.tsx
 src/components/profile/TopicHeatmap.tsx
 src/components/review/ABGContextPanel.tsx
@@ -1965,6 +1967,7 @@ src/components/review/StationDrawer.tsx
 src/components/review/TrackProjectionGraph.tsx
 src/components/review/UnifiedReview.test.tsx
 src/components/review/UnifiedReview.tsx
+src/components/review/UniversalRecallCard.tsx
 src/components/review/VideoItemView.tsx
 src/components/review/clip-autoplay.ts
 src/components/review/clip-frame.ts
@@ -1996,6 +1999,7 @@ src/components/review/hooks/useSessionLifecycle.ts
 src/components/review/hooks/useSessionProgress.ts
 src/components/review/hooks/useTopicReadiness.ts
 src/components/review/image-role.ts
+src/components/review/progress-presentation.ts
 src/components/review/progress-rotation-filter.ts
 src/components/review/review-panes.ts
 src/components/review/upcoming-clips.ts
@@ -2113,6 +2117,7 @@ src/lib/auth.ts
 src/lib/bounded-request-body.ts
 src/lib/brand/cohort-mark.ts
 src/lib/brand/md3-mark.ts
+src/lib/brand/standalone-title.ts
 src/lib/calc/evaluate.ts
 src/lib/card-extractors.ts
 src/lib/card-generator.ts
@@ -2594,6 +2599,7 @@ src/lib/review/session-scope.ts
 src/lib/review/statement-scaffold-queue.ts
 src/lib/review/study-blend.ts
 src/lib/review/study-timezone-cookie.ts
+src/lib/review/universal-recall.ts
 src/lib/rotation-metadata.ts
 src/lib/scheduler-observability.ts
 src/lib/scheduler/concept-teaching-state.ts
@@ -2637,6 +2643,7 @@ src/lib/study/current-session-content.ts
 src/lib/study/daily-goals.ts
 src/lib/study/daily-target.ts
 src/lib/study/day-replay.server.ts
+src/lib/study/deck-strand-mix.ts
 src/lib/study/dessert-mix.ts
 src/lib/study/discovery.ts
 src/lib/study/due-backlog.ts
@@ -2692,6 +2699,12 @@ src/lib/study/serve-request-id.ts
 src/lib/study/served-item-contract.ts
 src/lib/study/session-cache-warm.ts
 src/lib/study/session-refresh-lease.ts
+src/lib/study/simulation-focus.ts
+src/lib/study/simulation-goal.ts
+src/lib/study/simulation-item-map.json
+src/lib/study/simulation-item-relevance.ts
+src/lib/study/simulation-preparation.ts
+src/lib/study/simulation-response.ts
 src/lib/study/source-corpus.ts
 src/lib/study/statement-scaffold-delivery.ts
 src/lib/study/statement-scaffolds.ts
@@ -2719,6 +2732,7 @@ src/lib/study/unified-session-review-filter.ts
 src/lib/study/unified-session-service.ts
 src/lib/study/unified-session-starter.ts
 src/lib/study/unified-session-types.ts
+src/lib/study/universal-recall-delivery.ts
 src/lib/submit-with-retry.ts
 src/lib/subtitle-quality.ts
 src/lib/supplementary-rotations.ts

@@ -20,6 +20,8 @@ export interface SensitiveMediaGateProps {
   onSkip?: () => void;
   /** Overrides the review-specific keyboard hint for alternate skip semantics. */
   skipInstruction?: string;
+  /** Bedside use: the Show image button only, without the review explanation. */
+  compact?: boolean;
   /**
    * While concealed, capture an unmodified page-level Space shortcut to show
    * the image. Enter remains available to the review's reveal/skip shortcut.
@@ -56,6 +58,7 @@ function SensitiveMediaOccurrence({
   onSkip,
   skipInstruction,
   captureReviewSpace = false,
+  compact = false,
   blurImages,
 }: Omit<SensitiveMediaGateProps, 'consentKey'> & { blurImages: boolean }) {
   const descriptionId = useId();
@@ -94,7 +97,7 @@ function SensitiveMediaOccurrence({
     <div
       role="group"
       aria-label="Sensitive media"
-      aria-describedby={descriptionId}
+      aria-describedby={compact ? undefined : descriptionId}
       data-sensitive-media-state="concealed"
       className="relative overflow-hidden rounded-lg"
     >
@@ -115,15 +118,17 @@ function SensitiveMediaOccurrence({
           backgroundColor: 'color-mix(in srgb, var(--md-surface) 42%, transparent)',
         }}
       >
-        <div>
-          <p className="font-medium">Sensitive medical image</p>
-          <p
-            id={descriptionId}
-            className="mt-1 text-sm text-[var(--md-on-surface-variant)]"
-          >
-            Blurred until you choose to show it.
-          </p>
-        </div>
+        {!compact && (
+          <div>
+            <p className="font-medium">Sensitive medical image</p>
+            <p
+              id={descriptionId}
+              className="mt-1 text-sm text-[var(--md-on-surface-variant)]"
+            >
+              Blurred until you choose to show it.
+            </p>
+          </div>
+        )}
         <div className="flex w-full max-w-sm flex-col gap-2 sm:flex-row sm:justify-center">
           <button
             type="button"

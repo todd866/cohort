@@ -326,6 +326,22 @@ export const PROTECTED_PUBLIC_FALLBACKS: ReadonlyArray<Readonly<{
   licence: DistributionLicence;
   sha256: string;
 }>> = [
+  {
+    // Public scheduler keeps the contract but has no private attendance allocations.
+    path: 'src/lib/study/simulation-focus.server.ts',
+    licence: 'MIT',
+    sha256: '13cd06105af63f075b53d977b592d40f63e57a4e0edc43fce5703af4f09c720a',
+  },
+  {
+    path: 'src/lib/authored-card-sets.ts',
+    licence: 'MIT',
+    sha256: '10b9a659d815e8161c064c3305378f1e63ec1baa3c3c94e340d2c0e5779e2083',
+  },
+  {
+    path: 'src/lib/simulation/learning-cycle.ts',
+    licence: 'MIT',
+    sha256: '036fc1db9ea424ca625bfc7434e8c95568ab6942652a39b113bf89c8152f5e55',
+  },
   // Shared review imports retain their contracts without admitting private exam assets.
   {
     path: 'src/lib/practice-exam/prompt-figure.ts',
@@ -401,7 +417,9 @@ export const PROTECTED_PUBLIC_FALLBACKS: ReadonlyArray<Readonly<{
     // exported image upload/bind/read paths; no private document surface added.
     // 2026-10-15: User gained the nullable `experience` JSON (statistics
     // layout), which the distributed statistics page reads and writes.
-    sha256: '819050dd718dc0e700f3fb81d8a6d0ceb2a0c95f4d1c352a5e20caf5faf60fad',
+    // 2026-10-23: shared queue selectors read nullable simulationGoal. Its
+    // additive migration is distributed; private cases and focus stay omitted.
+    sha256: '05a272f4986fcf8d6bc7ab6fbb74d7531ee40c65309ed16cec1466f543bdfdb9',
   },
   {
     // The statistics engine is public; the exam blueprint areas it rolls

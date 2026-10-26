@@ -80,6 +80,7 @@ export interface UnifiedSessionItem {
     // can observe when these boosts drove a serve. Kept in sync with the
     // unions in unified-session-types.ts and teaching-dynamics.ts.
     | 'failure_escalation'
+    | 'simulation_preparation'
     | 'strong_pristine'
     // A successful response opened a mature, same-condition,
     // different-clinical-facet follow-up (for example cause -> presentation).
@@ -184,6 +185,7 @@ export type SessionMode = 'normal' | 'crunch' | 'rereview';
 export type UnifiedSessionSelectionDeterminism = QuestionVariantSelectionDeterminism;
 
 export interface UnifiedSessionOptions {
+  simulationFocus?: import('@/lib/study/simulation-focus').SimulationFocus | null;
   /** Media eligibility narrowing applied in every candidate database query. */
   media?: ReviewMedia;
   imageTrust?: AccessTier;

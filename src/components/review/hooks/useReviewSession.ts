@@ -1632,7 +1632,15 @@ export function useReviewSession({ rotations, week, rotationSizes, fetchSlots, f
           && itemsRef.current.length > 0
           && itemsScopeKeyRef.current === requestScopeKey;
         fallbackPaintedRef.current = false;
-        const replacingUpcoming = challengeRevisionOverride != null || adoptBehindReader;
+        // A same-account reload is a continuation too. Keeping just its
+        // captured head loses the consumed prefix and admits A behind B after
+        // A was answered. Use the reader's position at response time (they may
+        // have advanced while this batch was in flight), plus trimmed keys.
+        const continueReader = adoptBehindReader || Boolean(
+          involuntaryHead && heldOwnedByRequest
+          && itemsScopeKeyRef.current === requestScopeKey,
+        );
+        const replacingUpcoming = challengeRevisionOverride != null || continueReader;
         const currentPrefix = replacingUpcoming
           ? itemsRef.current.slice(0, currentIndexRef.current + 1)
           : [];
@@ -1665,16 +1673,17 @@ export function useReviewSession({ rotations, week, rotationSizes, fetchSlots, f
         setItems(replacementItems);
         itemsRef.current = replacementItems;
         if (!replacingUpcoming) setCurrentIndex(0);
-        if (!preserveSessionState && !adoptBehindReader) {
+        if (!preserveSessionState && !continueReader) {
           reviewedCardIdsRef.current.clear();
           reviewedQuestionIdsRef.current.clear();
         }
-        // The kept head is still the card being read: do not reset its reveal.
+        // For whole-list replacement only, a kept head is still being read.
+        // Prefix adoption above retains the current index and reveal outright.
         const keptCurrentCard = Boolean(retainedHead)
           && replacementItems[0] !== undefined
           && reviewItemKey(replacementItems[0]) === reviewItemKey(retainedHead!);
         if (!replacingUpcoming && !keptCurrentCard) resetItemState();
-        if (!preserveSessionState && !adoptBehindReader) {
+        if (!preserveSessionState && !continueReader) {
           setStatsState(
             requestUserKey
               ? (

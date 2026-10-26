@@ -7,6 +7,12 @@ const __dirname = path.dirname(fileURLToPath(import.meta.url));
 export default defineConfig({
   test: {
     globals: true,
+    // 2026-10-24: 15 s, not the 5 s default. Release local CI runs seven heavy
+    // jobs at once on a shared Mac; six release attempts in one day died on a
+    // single jsdom or corpus test passing 5 s under load, then restarted ~40 min.
+    // No test here depends on the shorter limit; a genuinely hung test still fails.
+    testTimeout: 15_000,
+    hookTimeout: 30_000,
     // 2026-10-03: files run in parallel again. With fileParallelism off, all
     // 1,428 files ran one after another in a single worker: 494 s on a 10-core
     // machine, and the release's `--maxWorkers=4` changed nothing. In parallel

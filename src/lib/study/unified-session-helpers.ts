@@ -1,3 +1,4 @@
+import { isSimulationPreparationHeld } from './simulation-preparation';
 import { after } from 'next/server';
 import type { Prisma } from '@prisma/client';
 import { prisma } from '@/lib/prisma';
@@ -101,6 +102,7 @@ export interface CardDueExposureAudit {
 
 export const CARD_DUE_EGRESS_POLICY_BYPASS_REASONS = [
   'failure_escalation',
+  'simulation_preparation',
   'mcq_bridge_card',
 ] as const;
 
@@ -112,6 +114,9 @@ export type CardDueEgressPolicyBypassReason =
  *
  * - failure_escalation: a failed card is intentionally relearned after its
  *   short lane-specific cooldown, before the ordinary SRS clock.
+ * - simulation_preparation: an unrecalled reviewed card for an active
+ *   simulation deadline. The deadline is the due date. A Good or Easy grade
+ *   whose next review is still in the future leaves the lane.
  * - mcq_bridge_card: a prerequisite can precede a harder MCQ only when its
  *   exact due date and 24-hour review cooldown allow it, or it is pristine.
  *   The legacy telemetry marker is not permission to bypass the due clock.
@@ -153,7 +158,8 @@ export interface CardDueEgressResult {
  * queues can outlive the review that moved a card into the future. Missing
  * CardProgress is the pristine-card case and remains eligible. An unavailable
  * lookup is never interpreted as permission to serve ordinary cards or bridges.
- * Only failure_escalation retains its independent lane-specific permission.
+ * Only failure_escalation retains permission if the read fails. Simulation
+ * preparation must still be unrecalled in the current progress snapshot.
  */
 export async function filterCardsAtDueEgress(
   items: UnifiedItem[],
@@ -189,7 +195,9 @@ export async function filterCardsAtDueEgress(
   >();
   for (const item of items) {
     const reason = cardDueEgressPolicyBypassReason(item);
-    if (reason === 'failure_escalation') policyBypassReasonByCardId.set(item.id, reason);
+    if (reason === 'failure_escalation') {
+      policyBypassReasonByCardId.set(item.id, reason);
+    }
   }
   const policyBypassCardIds = new Set(policyBypassReasonByCardId.keys());
   try {
@@ -207,6 +215,7 @@ export async function filterCardsAtDueEgress(
         status: true,
         lastQuality: true,
         correctCount: true,
+        totalReviews: true,
       },
     });
     const gradeByCardId = new Map<string, { lastQuality: number | null; correctCount: number }>();
@@ -222,7 +231,13 @@ export async function filterCardsAtDueEgress(
     const allowedBypasses = new Map(policyBypassReasonByCardId);
     for (const item of items) {
       if (item.type !== 'card') continue;
-      if (cardDueEgressPolicyBypassReason(item) === 'mcq_bridge_card') {
+      if (cardDueEgressPolicyBypassReason(item) === 'simulation_preparation') {
+        const progress = progressByCardId.get(item.id);
+        if (!progress || !isSimulationPreparationHeld(progress, checkedAt)) {
+          eligibleCardIds.add(item.id);
+          allowedBypasses.set(item.id, 'simulation_preparation');
+        }
+      } else if (cardDueEgressPolicyBypassReason(item) === 'mcq_bridge_card') {
         if (isBridgeCardEligible(progressByCardId.get(item.id), checkedAt)) {
           eligibleCardIds.add(item.id);
           allowedBypasses.set(item.id, 'mcq_bridge_card');
@@ -248,7 +263,7 @@ export async function filterCardsAtDueEgress(
       gradeByCardId,
     };
   } catch (error) {
-    logger.error(`${opts.path}: final card due lookup failed; dropping ordinary cards and bridges`, {
+    logger.error(`${opts.path}: final card due lookup failed; dropping ordinary cards, bridges and simulation preparation`, {
       userId: opts.userId,
       rotation: opts.rotation,
       candidateCardCount: cardIds.length,

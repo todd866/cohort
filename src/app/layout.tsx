@@ -14,6 +14,7 @@ import { detectInstitutionFromHostname } from "@/lib/institution";
 import { hasGuestUserCookie } from "@/lib/guest-user-cookie";
 import { isVercelAnalyticsEnabled } from "@/lib/analytics-config";
 import { FirstTouchCapture } from "@/components/FirstTouchCapture";
+import { StandaloneTitle } from "@/components/StandaloneTitle";
 import { MD3_ICON_VERSION } from "@/lib/brand/md3-mark";
 import { COHORT_ICON_VERSION } from "@/lib/brand/cohort-mark";
 
@@ -150,6 +151,7 @@ export default async function RootLayout({
               an account, and useSession outside the provider is undefined. */}
           <OfflineShellWarm isCohortHost={isCohortHost} />
         </Providers>
+        <StandaloneTitle brand={isCohortHost ? "cohort.md" : "md3"} />
         {/* Where this browser first came from, stored once per learner. */}
         {isCohortHost ? null : <FirstTouchCapture />}
         {isVercelAnalyticsEnabled() ? <Analytics /> : null}
