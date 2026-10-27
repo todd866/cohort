@@ -1,10 +1,10 @@
 {
   "schemaVersion": 1,
   "boundaryPolicy": "foss/distribution-policy.json",
-  "boundaryPolicySha256": "d9a2679d8d5fa6a9b7665d54945347c534d7dce3b847fae487f3bc58e98ab8b0",
+  "boundaryPolicySha256": "d9e53c49bc702b7413a566256de59eb465ec12867810d5fb09d89c6bb95e43e6",
   "reviewedPathsSha256": "e0b535cb931175a50794c835c4ff6201a78956da05978045281bde5ed0edbd5e",
   "fileCount": 2896,
-  "totalBytes": 265691255,
+  "totalBytes": 265692166,
   "files": [
     {
       "path": ".env.example",
@@ -127,8 +127,8 @@
     },
     {
       "path": "foss/distribution-policy.json",
-      "bytes": 355778,
-      "sha256": "d9a2679d8d5fa6a9b7665d54945347c534d7dce3b847fae487f3bc58e98ab8b0",
+      "bytes": 355805,
+      "sha256": "d9e53c49bc702b7413a566256de59eb465ec12867810d5fb09d89c6bb95e43e6",
       "mode": "0644",
       "licence": "MIT"
     },
@@ -11846,7 +11846,7 @@
     {
       "path": "scripts/foss/distribution.ts",
       "bytes": 107952,
-      "sha256": "abd0174ae5475c0a6840b2bb969c7cfff447e8d6a3892295fb3af81cfe9a4974",
+      "sha256": "95c88b7cdb9307e0def9da47ce77ffdbfee8faef554d3b7dc669f697a456bac2",
       "mode": "0644",
       "licence": "MIT"
     },
@@ -12622,8 +12622,8 @@
     },
     {
       "path": "src/app/globals.css",
-      "bytes": 35644,
-      "sha256": "edcc6ba6354c080ae1902497db31b5919544d66a9539bca71d6c372543a7cace",
+      "bytes": 36305,
+      "sha256": "53bd2867831f359b336d638f77058a7433e79fbe963d6bbb43b90bb046dcde4a",
       "mode": "0644",
       "licence": "MIT"
     },
@@ -12706,8 +12706,8 @@
     },
     {
       "path": "src/app/profile/profile-deferred-sections.tsx",
-      "bytes": 5249,
-      "sha256": "7631009ee7cee9d148869079a907919b21af87717abbf1da3c8f00db988d141a",
+      "bytes": 5288,
+      "sha256": "85364cfa902efb7f70ce3bacbf25140412b3a461a820fcae89d0a44923360849",
       "mode": "0644",
       "licence": "MIT"
     },
@@ -13616,8 +13616,8 @@
     },
     {
       "path": "src/components/profile/TopicHeatmap.tsx",
-      "bytes": 17081,
-      "sha256": "4645d8f1a72667b2db15b02f87b5c25d8caec09278157e5f38aa6e1fc478f70a",
+      "bytes": 19320,
+      "sha256": "a8213469be53355b1594a7f46f0c67724105aeff95e4f14f71746f09b6d28d02",
       "mode": "0644",
       "licence": "MIT"
     },
@@ -14176,8 +14176,8 @@
     },
     {
       "path": "src/components/review/UnifiedReview.tsx",
-      "bytes": 84880,
-      "sha256": "d57d967400505dca3f8a3770ba5f61617453ea604a8a7985891e535d9eb64ae2",
+      "bytes": 84936,
+      "sha256": "2818e70828178c15ce2d5e77e3fdbd6382d079e7b7c49b46ff31affbfa840016",
       "mode": "0644",
       "licence": "MIT"
     },
@@ -14603,8 +14603,8 @@
     },
     {
       "path": "src/components/tutor/AiReviewControl.tsx",
-      "bytes": 415,
-      "sha256": "2de9cef7fbc8d9eb2344f4fc49c2f1d342073e20cf23f0459cf16925540543bd",
+      "bytes": 441,
+      "sha256": "57bdf96a35895037ff822052fd039ff3be84723cd1cd83074130795d8c9749cf",
       "mode": "0644",
       "licence": "MIT"
     },
@@ -15107,8 +15107,8 @@
     },
     {
       "path": "src/lib/card-validators.ts",
-      "bytes": 10493,
-      "sha256": "ac6259b60197cb65bd335314e185ace546225d9cc2da8de7d1d4c06ae12fc383",
+      "bytes": 10920,
+      "sha256": "b5899f80ca4453b9e1cef3a8d121d00c24cd2434455366023c4588c5a635ca39",
       "mode": "0644",
       "licence": "MIT"
     },
@@ -16276,8 +16276,8 @@
     },
     {
       "path": "src/lib/figures/prompt-policy.ts",
-      "bytes": 3366,
-      "sha256": "1d483c58bc52ecbd53ce28eacf887c9b8c6ac775b274c76a3cdea7116cae7910",
+      "bytes": 3759,
+      "sha256": "3e900102a886ffe460e03ee8568d93caedbb8073f76597f20c66639afeefa553",
       "mode": "0644",
       "licence": "MIT"
     },
@@ -19503,8 +19503,8 @@
     },
     {
       "path": "src/lib/study/simulation-item-map.json",
-      "bytes": 37111,
-      "sha256": "d1cd66a9877fea2d6486ad95c20b12aa8bfb3d7828dcf558907a03d0d323f8f0",
+      "bytes": 34154,
+      "sha256": "b451af8e39c71bfb08bdf78f5b79e089e22456ffabefae31f1ee7284aba41ae3",
       "mode": "0644",
       "licence": "MIT"
     },

@@ -4451,7 +4451,7 @@
     },
     {
       "path": "src/components/tutor/AiReviewControl.tsx",
-      "text": "'use client';\n\n/**\n * The public build has no AI: md3's api/tutor and the agent that answers it\n * are private to md3.info, so the review bar renders without it.\n */\nexport interface AiReviewControlProps {\n  access: 'owner' | 'learner' | 'guest' | null;\n  target: { kind: 'card' | 'question'; id: string } | null;\n  label: string;\n}\n\nexport function AiReviewControl(_props: AiReviewControlProps) {\n  return null;\n}\n",
+      "text": "'use client';\n\n/**\n * The public build has no AI: md3's api/tutor and the agent that answers it\n * are private to md3.info, so the review bar renders without it.\n */\nexport interface AiReviewControlProps {\n  access: 'owner' | 'learner' | 'guest' | null;\n  target: { kind: 'card' | 'question'; id: string } | null;\n  label: string;\n  sessionMisses?: number;\n}\n\nexport function AiReviewControl(_props: AiReviewControlProps) {\n  return null;\n}\n",
       "licence": "MIT"
     },
     {

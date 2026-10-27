@@ -1079,13 +1079,19 @@ main:focus-visible {
    — a state, not a magnitude. That is why it does not reuse --md-ramp-*: the
    two grids sit on the same page and must not be read as the same scale.
 
-   Four greens plus grey, red and amber. Green-vs-red is the classic deutan
+   Coverage uses a fixed sequential blue scale, separate from recall readiness.
+   Readiness: four greens plus grey, red and amber. Green-vs-red is the classic deutan
    trap, so the sequence is monotonic in LIGHTNESS from cold through warm into
    the greens, and every square also carries its status in words in its
    tooltip. Colour is never the only channel.
    Dark steps are SELECTED against the dark surface, not an automatic flip. */
 :root {
   --md-heat-unseen: var(--md-surface-container-high);
+  --md-coverage-1: #d6e6f2;
+  --md-coverage-2: #9fc3df;
+  --md-coverage-3: #639bc4;
+  --md-coverage-4: #326d9e;
+  --md-coverage-5: #173f68;
   --md-heat-cold: #c0443d;
   --md-heat-warm: #d98b16;
   --md-heat-1: #cbe9d4;
@@ -1096,6 +1102,11 @@ main:focus-visible {
 @media (prefers-color-scheme: dark) {
   :root {
     --md-heat-unseen: #273137;
+    --md-coverage-1: #233f59;
+    --md-coverage-2: #335f82;
+    --md-coverage-3: #4c85ad;
+    --md-coverage-4: #78add0;
+    --md-coverage-5: #b1d8ee;
     --md-heat-cold: #93332f;
     --md-heat-warm: #a06a18;
     --md-heat-1: #1f4634;
@@ -1106,6 +1117,11 @@ main:focus-visible {
 }
 :root[data-theme='dark'] {
   --md-heat-unseen: #273137;
+  --md-coverage-1: #233f59;
+  --md-coverage-2: #335f82;
+  --md-coverage-3: #4c85ad;
+  --md-coverage-4: #78add0;
+  --md-coverage-5: #b1d8ee;
   --md-heat-cold: #93332f;
   --md-heat-warm: #a06a18;
   --md-heat-1: #1f4634;
@@ -1115,6 +1131,11 @@ main:focus-visible {
 }
 :root[data-theme='light'] {
   --md-heat-unseen: var(--md-surface-container-high);
+  --md-coverage-1: #d6e6f2;
+  --md-coverage-2: #9fc3df;
+  --md-coverage-3: #639bc4;
+  --md-coverage-4: #326d9e;
+  --md-coverage-5: #173f68;
   --md-heat-cold: #c0443d;
   --md-heat-warm: #d98b16;
   --md-heat-1: #cbe9d4;

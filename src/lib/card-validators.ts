@@ -62,6 +62,16 @@ export function validateCard(card: GeneratedCard): CardQualityIssue[] {
   const issues: CardQualityIssue[] = [];
   const blankCount = (card.front.match(/\[___\]/g) ?? []).length;
 
+  // Review renders a Card as prompt + reveal. Options written into a Card's
+  // front show as plain text with nothing to select (flagged 2026-10-27).
+  if (card.cardType === 'mcq' && extractMCQOptions(card.front, card.back)) {
+    issues.push({
+      card,
+      issue: 'MCQ with lettered options authored as a Card: put it in the question bank so review can render selectable options',
+      severity: 'error',
+    });
+  }
+
   // Keep ordinary cards on the same measurement-panel contract as question
   // bank stems. The policy ignores measurements already inside authored tables
   // and excludes isolated narrative values, while blocking new multi-value

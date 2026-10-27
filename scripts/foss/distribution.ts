@@ -505,7 +505,7 @@ export const PROTECTED_PUBLIC_FALLBACKS: ReadonlyArray<Readonly<{
   {
     path: 'src/components/tutor/AiReviewControl.tsx',
     licence: 'MIT',
-    sha256: '2de9cef7fbc8d9eb2344f4fc49c2f1d342073e20cf23f0459cf16925540543bd',
+    sha256: '57bdf96a35895037ff822052fd039ff3be84723cd1cd83074130795d8c9749cf',
   },
   {
     path: 'src/components/review/hooks/practice-follow-up-turn.ts',

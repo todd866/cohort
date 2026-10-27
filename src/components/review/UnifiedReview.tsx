@@ -1460,6 +1460,7 @@ function UnifiedReviewBody({ rotations, week, rotationSizes, fetchSlots, feedMod
             access={authStatus === 'unauthenticated' ? 'guest' : !isAuthenticated ? null : authSession?.user?.isAdmin === true ? 'owner' : authSession?.user?.aiAccess === true ? 'learner' : null}
             target={aiTarget}
             label={aiLabel}
+            sessionMisses={stats.total - stats.correct}
           />
           <FlagButton
             onClick={() => {

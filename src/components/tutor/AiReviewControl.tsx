@@ -8,6 +8,7 @@ export interface AiReviewControlProps {
   access: 'owner' | 'learner' | 'guest' | null;
   target: { kind: 'card' | 'question'; id: string } | null;
   label: string;
+  sessionMisses?: number;
 }
 
 export function AiReviewControl(_props: AiReviewControlProps) {

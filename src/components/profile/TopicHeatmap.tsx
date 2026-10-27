@@ -13,10 +13,10 @@ import {
 
 /**
  * The knowledge heatmap — one square per topic in the rotation you are on,
- * coloured by estimated current recall.
+ * coloured by reviewed coverage by default; readiness is a separate selectable measure.
  *
  * Squares fill the width row by row, in a stable order so a topic keeps its
- * place and can be watched turning green.
+ * place as coverage increases.
  *
  * Squares are accessible buttons: hover/focus previews a topic; activating
  * one opens its read-only card browser without navigating away from the map.
@@ -134,12 +134,23 @@ export function heatToken(band: TopicBand, level: TopicLevel): string {
   return `var(--md-heat-${Math.min(4, Math.max(1, level))})`;
 }
 
+/** Fixed absolute coverage; independent of readiness, cohort and topic ordering. */
+export function coverageStep(seen: number, total: number): number {
+  if (!Number.isFinite(seen) || !Number.isFinite(total) || total <= 0 || seen <= 0) return 0;
+  if (seen >= total) return 5;
+  return Math.min(4, Math.floor(seen / total * 4) + 1);
+}
+export function coverageToken(seen: number, total: number): string {
+  const step = coverageStep(seen, total);
+  return step ? `var(--md-coverage-${step})` : 'var(--md-heat-unseen)';
+}
+
 /** Terse label for the screen reader and the native tooltip fallback. */
 export function squareTitle(square: TopicHeatmapSquare): string {
   return [
     square.label,
-    describeTopicHeat(square),
-    `${square.seenCount}/${square.itemCount} studied`,
+    `${square.seenCount}/${square.itemCount} cards reviewed`,
+    `Readiness: ${describeTopicHeat(square)}`,
     `${Math.round(square.score * 100)}% estimated recall`,
   ].join(' · ');
 }
@@ -171,8 +182,11 @@ function topicReviewHref(square: TopicHeatmapSquare, filter: 'due' | 'new'): str
   return `/review?${params.toString()}`;
 }
 
-function Legend() {
-  const steps = [
+function Legend({ mode }: { mode: 'coverage' | 'readiness' }) {
+  const steps = mode === 'coverage' ? [
+    { token: 'var(--md-heat-unseen)', label: 'Unseen' },
+    ...['<25%', '25–49%', '50–74%', '75–99%', '100%'].map((label, i) => ({token: `var(--md-coverage-${i+1})`, label})),
+  ] : [
     { token: 'var(--md-heat-unseen)', label: 'New' },
     { token: 'var(--md-heat-cold)', label: 'Needs review' },
     { token: 'var(--md-heat-warm)', label: 'Learning' },
@@ -193,18 +207,18 @@ function Legend() {
       <details className="text-[11px] text-[var(--md-on-surface-variant)]">
         <summary className="cursor-pointer">How colours work</summary>
         <p className="mt-1 max-w-sm">
-          Cards only. Good and Easy ratings contribute recall credit, reduced by time since review
+          {mode === 'coverage' ? 'Cards with a recorded review / live, unsuppressed cards in each topic. Fixed percentage bands; Unseen means none recorded. Reviewed does not mean mastered. Readiness is a separate estimate based on recall outcomes and time.' : <>Cards only. Good and Easy ratings contribute recall credit, reduced by time since review
           and memory stability. Again, Hard, unreviewed cards and missing grades add no credit.
           The estimate includes every live, unsuppressed card in the topic, weighted by difficulty.
           Red is below 40%, amber is 40–79%, and green is at least 80%.
-          New means no recorded card reviews in that topic. This is not an exam prediction.
+          New means no recorded card reviews in that topic. This is not an exam prediction.</>}
         </p>
       </details>
     </div>
   );
 }
 
-function DetailPanel({ square }: { square: TopicHeatmapSquare | null }) {
+function DetailPanel({ square, mode }: { square: TopicHeatmapSquare | null; mode: 'coverage' | 'readiness' }) {
   return (
     <div
       data-testid="topic-detail"
@@ -226,16 +240,16 @@ function DetailPanel({ square }: { square: TopicHeatmapSquare | null }) {
               <span
                 aria-hidden="true"
                 className="inline-block h-2.5 w-2.5 rounded-[2px]"
-                style={{ background: heatToken(square.band, square.level) }}
+                style={{ background: mode === 'coverage' ? coverageToken(square.seenCount, square.itemCount) : heatToken(square.band, square.level) }}
               />
               <span className="text-xs font-medium text-[var(--md-on-surface-variant)]">
-                {describeTopicHeat(square)}
+                {mode === 'coverage' ? `${square.seenCount}/${square.itemCount} reviewed` : describeTopicHeat(square)}
               </span>
             </span>
           </div>
 
           <p className="mt-0.5 text-xs tabular-nums text-[var(--md-on-surface-variant)]">
-            {square.seenCount}/{square.itemCount} studied · {Math.round(square.score * 100)}% estimated recall
+            {mode === 'coverage' ? `Readiness: ${describeTopicHeat(square)}` : `${square.seenCount}/${square.itemCount} reviewed`} · {Math.round(square.score * 100)}% estimated recall
             {' · '}
             {describeLastStudied(square.lastAnsweredAt)}
           </p>
@@ -299,6 +313,7 @@ export function TopicHeatmap({
   const [hovered, setHovered] = useState<TopicHeatmapSquare | null>(null);
   const [browse, setBrowse] = useState<{ rotation: string; cluster?: string; label?: string; summary?: string } | null>(null);
   const [browserOpen, setBrowserOpen] = useState(false);
+  const [mode, setMode] = useState<'coverage' | 'readiness'>('coverage');
   const active = hovered ?? pinned;
   const columns = useMemo(() => topicGridColumns(squares.length), [squares.length]);
 
@@ -306,6 +321,8 @@ export function TopicHeatmap({
 
   const summary = summarizeTopicReadiness(squares);
   const days = Math.round(horizonDays);
+  const reviewed = squares.reduce((sum, square) => sum + square.seenCount, 0);
+  const total = squares.reduce((sum, square) => sum + square.itemCount, 0);
 
   return (
     // From lg the panel gets a fixed 22rem and the squares take the rest of
@@ -316,11 +333,15 @@ export function TopicHeatmap({
           <h2 className={SECTION_HEADER}>
             {rotationLabel}
           </h2>
+          <select aria-label="Map measure" value={mode} onChange={event => setMode(event.target.value as 'coverage' | 'readiness')}
+            className="min-h-11 rounded-lg border border-[var(--md-outline-variant)] bg-[var(--md-surface)] px-2 text-xs text-[var(--md-on-surface)]">
+            <option value="coverage">Coverage</option><option value="readiness">Readiness</option>
+          </select>
           {userId && <button type="button" aria-haspopup="dialog"
             className="min-h-11 px-2 text-xs font-semibold text-[var(--md-primary)] hover:underline"
             onClick={() => { setBrowse({ rotation: '' }); setBrowserOpen(true); }}>View all</button>}
           <p className="text-xs font-medium tabular-nums text-[var(--md-on-surface-variant)]">
-            {summary.ready} ready · {summary.needsReview} needs review · {summary.learning} learning · {summary.unseen} unseen{examDated ? ` · ${days}d` : ''}
+            {mode === 'coverage' ? `${reviewed}/${total} cards reviewed` : `${summary.ready} ready · ${summary.needsReview} needs review · ${summary.learning} learning · ${summary.unseen} unseen${examDated ? ` · ${days}d` : ''}`}
           </p>
         </div>
 
@@ -343,6 +364,7 @@ export function TopicHeatmap({
                   type="button"
                   data-testid={`topic-square-${square.id}`}
                   data-band={square.band}
+                  data-coverage={coverageStep(square.seenCount, square.itemCount)}
                   aria-pressed={pinned?.id === square.id}
                   aria-haspopup={userId ? 'dialog' : undefined}
                   // No `title`. The browser's native tooltip rendered the
@@ -367,7 +389,7 @@ export function TopicHeatmap({
                              focus-visible:outline-2 focus-visible:outline-offset-1
                              focus-visible:outline-[var(--md-primary)]"
                   style={{
-                    background: heatToken(square.band, square.level),
+                    background: mode === 'coverage' ? coverageToken(square.seenCount, square.itemCount) : heatToken(square.band, square.level),
                     // A ring rather than a scale: a transform makes a small
                     // square jump out from under the pointer.
                     boxShadow: isActive ? '0 0 0 2px var(--md-on-surface)' : undefined,
@@ -378,7 +400,7 @@ export function TopicHeatmap({
           </div>
         </div>
 
-        <Legend />
+        <Legend mode={mode} />
       </div>
 
       {userId && browse && <ContentBrowserDialog
@@ -386,7 +408,7 @@ export function TopicHeatmap({
         open={browserOpen} onClose={() => setBrowserOpen(false)} userId={userId}
         rotation={browse.rotation} initialClusterId={browse.cluster} topicLabel={browse.label} topicSummary={browse.summary} closeLabel="Back to map" />}
       <div className="lg:flex lg:flex-col">
-        <DetailPanel square={active} />
+        <DetailPanel square={active} mode={mode} />
       </div>
     </div>
   );

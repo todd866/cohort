@@ -75,18 +75,18 @@ export async function ProfileTopicHeatmapSection({ userId }: { userId: string })
   if (topicHeat.failed) {
     return (
       <ProfileReservedSlot
-        label="Topic readiness"
+        label="Topic coverage and readiness"
         className={TOPIC_READINESS_SLOT_CLASS}
         message={COULD_NOT_LOAD}
       />
     );
   }
   if (!topicHeat.value) {
-    return <ProfileReservedSlot label="Topic readiness" className={TOPIC_READINESS_SLOT_CLASS} />;
+    return <ProfileReservedSlot label="Topic coverage and readiness" className={TOPIC_READINESS_SLOT_CLASS} />;
   }
   const data = topicHeat.value;
   return (
-    <section id="topic-readiness" aria-label="Topic readiness" className="mb-6 scroll-mt-4">
+    <section id="topic-readiness" aria-label="Topic coverage and readiness" className="mb-6 scroll-mt-4">
       <TopicHeatmap
         userId={userId}
         squares={data.squares}

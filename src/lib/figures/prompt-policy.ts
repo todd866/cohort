@@ -17,7 +17,10 @@ export type ImageRole = string | null | undefined;
  * prompt and give the answer away.
  */
 const FIGURE_DEIXIS =
-  /\b(?:in|on)\s+the\s+(?:photograph|photo|image|figure|picture|diagram)\b|\bshown\s+(?:below|here|above)\b|\bpictured\b|\bthis\s+(?:photograph|photo|image|figure|picture)\b/i;
+  /\b(?:in|on)\s+the\s+(?:photograph|photo|image|figure|picture|diagram)\b|\bshown\s+(?:below|here|above)\b|\bpictured\b|\bthis\s+(?:photograph|photo|image|figure|picture)\b|\bthe\s+(?:following|accompanying)\s+(?:photograph|photo|image|figure|picture|diagram|drawing|illustration|radiograph|x-ray|ECG)\b|(?<!\b(?:CT|CXR)\s)\b(?:image|x-ray|radiograph)\s+below\b/i;
+// The last two alternatives (28 Oct 2026): 47 imported or atlas cards said "the
+// following image", "the X-ray below" or "the accompanying drawing" and rendered
+// with the picture hidden until reveal.
 
 /**
  * Candidate detector for human/audit review only. Clinical shorthand such as

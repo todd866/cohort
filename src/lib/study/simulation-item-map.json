@@ -312,13 +312,13 @@
       "rationale": "Reviewed foundation supporting recognition, safe escalation or a treatment decision in the named simulation pathway."
     },
     {
-      "stableId": "mdx:1be094eef43975bd05a5d53ea8d44515",
-      "contentHash": "e85732d9a41f1de25b547ae1780fde802a58153b0517f815d30bc37a45727c0c",
+      "stableId": "mdx:291d208be59eafbd01c9e8f275ebfe37",
+      "contentHash": "6d53e79b525dcace78d4d2ffc6b3f7eb5c1272cc9907a269768ff32acb76bcb0",
       "topic": "postpartum-haemorrhage",
       "complexity": 3,
       "relation": "prerequisite",
       "sourceFile": "content/pwh/simulation-foundations-2026.mdx",
-      "reviewed": "2026-10-23",
+      "reviewed": "2026-10-28",
       "rationale": "Reviewed foundation supporting recognition, safe escalation or a treatment decision in the named simulation pathway."
     },
     {
@@ -493,62 +493,62 @@
     },
     {
       "stableId": "sim-htn-sequencing-c4",
-      "contentHash": "c012ac27e5d7007de018c0e74eddbdc927959f44fbc412e2620a7663399f43bb",
+      "contentHash": "0295c577e294ea0bc6d54f492de80c6fb310081ad498b0e64e24852a5c87236f",
       "topic": "pre-eclampsia",
       "complexity": 4,
       "relation": "direct",
       "sourceFile": "src/lib/simulation/decision-drills.ts",
-      "reviewed": "2026-10-23",
+      "reviewed": "2026-10-28",
       "rationale": "Direct rehearsal of the named pathway decision; available on demand, not claimed seeded into the daily bank."
     },
     {
       "stableId": "sim-htn-changing-risk-c5",
-      "contentHash": "41cdee4f05f69daaf045faba9360b0055c4ae3b7283d13de27d6be656131ae0a",
+      "contentHash": "dd321ca097607b48d38fb6d0d90a083fad5a639265f6438c12d7a34033f62745",
       "topic": "pre-eclampsia",
       "complexity": 5,
       "relation": "direct",
       "sourceFile": "src/lib/simulation/decision-drills.ts",
-      "reviewed": "2026-10-23",
+      "reviewed": "2026-10-28",
       "rationale": "Direct rehearsal of the named pathway decision; available on demand, not claimed seeded into the daily bank."
     },
     {
       "stableId": "sim-pph-contradictory-findings-c4",
-      "contentHash": "1d01500515171821cab6b10bfed851dbbc915a874ea4ce246991acd1a15cf0ef",
+      "contentHash": "53c03dca24f8f3b9ac27a8fba10707fa6e123f37048b73c48bb740ca6ae22316",
       "topic": "postpartum-haemorrhage",
       "complexity": 4,
       "relation": "direct",
       "sourceFile": "src/lib/simulation/decision-drills.ts",
-      "reviewed": "2026-10-23",
+      "reviewed": "2026-10-28",
       "rationale": "Direct rehearsal of the named pathway decision; available on demand, not claimed seeded into the daily bank."
     },
     {
       "stableId": "sim-pph-time-and-comorbidity-c5",
-      "contentHash": "37bec01614cc1064e0aadaafffe93ffd9662a1ebd42ef3cbbe7dfb500e027ba6",
+      "contentHash": "4a3654afe52c46dceca6aa94f921750457d3fdbd147a9f967e170f958cc50d7c",
       "topic": "postpartum-haemorrhage",
       "complexity": 5,
       "relation": "direct",
       "sourceFile": "src/lib/simulation/decision-drills.ts",
-      "reviewed": "2026-10-23",
+      "reviewed": "2026-10-28",
       "rationale": "Direct rehearsal of the named pathway decision; available on demand, not claimed seeded into the daily bank."
     },
     {
       "stableId": "sim-collapse-circulation-c4",
-      "contentHash": "51ecdfb11f83db081ac8bce325de4385e16a08010b5c5a2ba3d850fd18b5986d",
+      "contentHash": "cad37c73bcc12dcd061004ea39869066c5381fa95de5eb90e25ec45b4d925a78",
       "topic": "maternal-collapse",
       "complexity": 4,
       "relation": "direct",
       "sourceFile": "src/lib/simulation/decision-drills.ts",
-      "reviewed": "2026-10-23",
+      "reviewed": "2026-10-28",
       "rationale": "Direct rehearsal of the named pathway decision; available on demand, not claimed seeded into the daily bank."
     },
     {
       "stableId": "sim-arrest-team-priorities-c5",
-      "contentHash": "1c4bd5673f86ddeda4a9a61499ec9622288f0930e4d9a5053e53deba563c7773",
+      "contentHash": "a39b171846c625c9121971b5d87d586d38adfc722a308c1460700a048c242104",
       "topic": "maternal-collapse",
       "complexity": 5,
       "relation": "direct",
       "sourceFile": "src/lib/simulation/decision-drills.ts",
-      "reviewed": "2026-10-23",
+      "reviewed": "2026-10-28",
       "rationale": "Direct rehearsal of the named pathway decision; available on demand, not claimed seeded into the daily bank."
     },
     {
@@ -560,66 +560,6 @@
       "sourceFile": "content/pwh/curriculum-obs-39.mdx",
       "reviewed": "2026-10-23",
       "rationale": "Existing corpus: maternal benefit of resuscitative delivery supports early senior-team preparation. Does not import a fixed delivery-start interval."
-    },
-    {
-      "stableId": "simulation:sim-htn-sequencing-c4:2026-10-23.1",
-      "contentHash": "28d0c53526545b80b5ffb3c75f457624a6f4485fe7d2460a688d4b0706795755",
-      "topic": "pre-eclampsia",
-      "complexity": 4,
-      "relation": "direct",
-      "sourceFile": "src/lib/simulation/decision-drills.ts",
-      "reviewed": "2026-10-23",
-      "rationale": "Native Card representation of the same on-demand decision drill, including options. Not a separate authored prompt."
-    },
-    {
-      "stableId": "simulation:sim-htn-changing-risk-c5:2026-10-23.1",
-      "contentHash": "b0a65886aaa40b8fd674b3a9e9681250afbd376f76baa3c5bf08f96b189529de",
-      "topic": "pre-eclampsia",
-      "complexity": 5,
-      "relation": "direct",
-      "sourceFile": "src/lib/simulation/decision-drills.ts",
-      "reviewed": "2026-10-23",
-      "rationale": "Native Card representation of the same on-demand decision drill, including options. Not a separate authored prompt."
-    },
-    {
-      "stableId": "simulation:sim-pph-contradictory-findings-c4:2026-10-23.1",
-      "contentHash": "ef58f9e455dc41de040dd020aedd335834a51b713488aba6b98083d8e1159299",
-      "topic": "postpartum-haemorrhage",
-      "complexity": 4,
-      "relation": "direct",
-      "sourceFile": "src/lib/simulation/decision-drills.ts",
-      "reviewed": "2026-10-23",
-      "rationale": "Native Card representation of the same on-demand decision drill, including options. Not a separate authored prompt."
-    },
-    {
-      "stableId": "simulation:sim-pph-time-and-comorbidity-c5:2026-10-23.1",
-      "contentHash": "4a240cbaf8564e9ddaeefa7724834323fd26a6505957cd0334466936355ef41e",
-      "topic": "postpartum-haemorrhage",
-      "complexity": 5,
-      "relation": "direct",
-      "sourceFile": "src/lib/simulation/decision-drills.ts",
-      "reviewed": "2026-10-23",
-      "rationale": "Native Card representation of the same on-demand decision drill, including options. Not a separate authored prompt."
-    },
-    {
-      "stableId": "simulation:sim-collapse-circulation-c4:2026-10-23.1",
-      "contentHash": "db0cfdca206b8101a877cf134e2952587417f326817d2e5a6187370a6fbe84de",
-      "topic": "maternal-collapse",
-      "complexity": 4,
-      "relation": "direct",
-      "sourceFile": "src/lib/simulation/decision-drills.ts",
-      "reviewed": "2026-10-23",
-      "rationale": "Native Card representation of the same on-demand decision drill, including options. Not a separate authored prompt."
-    },
-    {
-      "stableId": "simulation:sim-arrest-team-priorities-c5:2026-10-23.1",
-      "contentHash": "374a37eed574a94878e987a400695b57dca562770514cf9cc63f0f287087546d",
-      "topic": "maternal-collapse",
-      "complexity": 5,
-      "relation": "direct",
-      "sourceFile": "src/lib/simulation/decision-drills.ts",
-      "reviewed": "2026-10-23",
-      "rationale": "Native Card representation of the same on-demand decision drill, including options. Not a separate authored prompt."
     },
     {
       "stableId": "mdx:14e3dd71df50b377bd685474795ddeff",
