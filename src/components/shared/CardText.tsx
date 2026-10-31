@@ -16,6 +16,17 @@ const glossaryLeaf: LeafRenderer = (text: string) => <GlossaryText text={text} /
  * Note: dangerouslySetInnerHTML is safe here because KaTeX only produces
  * mathematical HTML and input is our controlled card content, not user input.
  */
+/**
+ * A blank that opens a sentence shows its answer with a capital, as the stored
+ * answer is usually the mid-sentence form ("tenofovir"). Only a plain lower-case
+ * first word is changed, so pH, eGFR, mRNA and β-hCG keep their case.
+ */
+export function capitaliseAtSentenceStart(answer: string, preceding: string): string {
+  const opensSentence = /(^|[.!?]["')\]]?\s+|\n\s*)$/.test(preceding.replace(/\*\*/g, ''));
+  if (!opensSentence || !/^[a-z][a-z'’-]*(\s|$)/.test(answer)) return answer;
+  return answer[0].toUpperCase() + answer.slice(1);
+}
+
 export function CardText({
   text,
   answers,
@@ -38,6 +49,9 @@ export function CardText({
     // blank into a non-breaking space makes the slot wrap together with its next
     // word instead of orphaning. (`whitespace-pre-wrap` honours U+00A0.)
     let afterBlank = false;
+    // Text before the current blank, with earlier blanks as a placeholder, so a
+    // blank can tell whether it opens a sentence.
+    let preceding = '';
     const bindLeading = (s: string) =>
       afterBlank ? s.replace(/^[ \t]+/, '\u00A0') : s;
 
@@ -53,6 +67,7 @@ export function CardText({
         segments.push({ type: 'text', content: bindLeading(beforeBlank) });
         afterBlank = false;
       }
+      preceding += beforeBlank;
       remaining = remaining.slice((blankMatch.index || 0) + blankMatch[0].length);
       // Punctuation touching the blank travels WITH it.
       //
@@ -68,10 +83,11 @@ export function CardText({
       const trailingPunctuation = remaining.match(/^[.,;:!?)\]}"'»…]+/)?.[0];
       segments.push({
         type: 'blank',
-        content: normalizeAngleBracketEscapes(answers?.[blankIndex] || '???'),
+        content: capitaliseAtSentenceStart(normalizeAngleBracketEscapes(answers?.[blankIndex] || '???'), preceding),
         index: blankIndex,
         trailing: trailingPunctuation,
       });
+      preceding += `x${trailingPunctuation ?? ''}`;
       if (trailingPunctuation) remaining = remaining.slice(trailingPunctuation.length);
       afterBlank = true;
       blankIndex++;
@@ -167,11 +183,10 @@ export function CardText({
         const isRevealed = idx !== undefined && idx < revealedCount;
         const isNext = idx !== undefined && idx === revealedCount;
         // Wrap the slot and any punctuation that touched it in one no-break
-        // group, so the browser has no opportunity to separate them. Applied to
-        // both states: the revealed span is already `inline` and safe on its
-        // own, but keeping one shape means the reveal cannot change the wrap.
+        // group while hidden. Revealed answers are inline text: they must wrap
+        // at spaces, while touching punctuation stays beside the final word.
         const withTrailing = (slot: React.ReactNode) => (
-          <span key={i} data-cloze-group className="whitespace-nowrap">
+          <span key={i} data-cloze-group className={isRevealed ? undefined : 'whitespace-nowrap'}>
             {slot}
             {part.trailing ? renderText(part.trailing) : null}
           </span>

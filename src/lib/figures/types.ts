@@ -27,6 +27,7 @@ export interface ClientImageMeta {
   revealImageKey?: string;
   revealRegions?: ImageRevealRegion[];
   numberedFocus?: Record<string, NumberedImageFocus>;
+  regionFocus?: boolean;
   imageWidth?: number;
   imageHeight?: number;
   class: 'diagnostic' | 'diagram' | 'decorative' | 'lake-reference';
@@ -98,6 +99,7 @@ export function pickClientMeta(s: ImageSidecar, _imageKey?: string): ClientImage
     revealImageKey: s.revealImageKey,
     revealRegions: validImageRevealRegions(s.revealRegions),
     numberedFocus: validNumberedImageFocus(s.numberedFocus),
+    regionFocus: s.regionFocus === true ? true : undefined,
     class: s.class,
     altPolicy: 'altPolicy' in s ? s.altPolicy : 'generic',
     attributionText: s.attributionText,

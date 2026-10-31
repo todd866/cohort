@@ -319,6 +319,23 @@ sub, sup {
    it's intentionally NOT set here. */
 
 /* Selection */
+/* One select chevron everywhere (owner, 31 Oct 2026: the native arrow sat
+   against the box edge next to "Coverage"). Unlayered, so it outranks a
+   utility px-* on the element. A select that draws its own chevron (the
+   chip select) opts out with data-own-chevron. */
+select:not([multiple]):not([size]):not([data-own-chevron]) {
+  appearance: none;
+  -webkit-appearance: none;
+  padding-right: 2.25rem;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath d='M1 1.5l5 5 5-5' fill='none' stroke='%234d5860' stroke-width='1.6' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 0.75rem center;
+  background-size: 0.75rem 0.5rem;
+}
+.dark select:not([multiple]):not([size]):not([data-own-chevron]) {
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath d='M1 1.5l5 5 5-5' fill='none' stroke='%23c3c6cf' stroke-width='1.6' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");
+}
+
 ::selection {
   background: var(--md-primary-container);
   color: var(--md-on-primary-container);
@@ -1181,6 +1198,43 @@ main:focus-visible {
   .review-card-shell:has(> [aria-label="Help improve cards"]) {
     /* The compact content wrapper replaces its usual sm:py-7 top inset. */
     --md-review-leading-space-saved: 28px;
+  }
+}
+/* Hide-one flowchart: a zoomed window on the hidden box plus the whole chart.
+   Stacked by default; the desktop side pane sets them side by side at one
+   height h, the largest that fits both the height budget and the pane width
+   (owner, 30 Oct 2026: "plenty of whitespace"). */
+.region-focus-overview { height: clamp(96px, 15svh, 150px); }
+/* Split hide-one diagram (owner flag, 31 Oct 2026): the window sits under the
+   question, so it leaves room for the stem above the reveal bar; on a phone the
+   whole chart below it is the thumbnail, on desktop it fills the media pane. */
+.review-figure[data-region-part="window"] { --md-figure-height: 46svh; }
+@media (max-width: 1023px) {
+  .review-figure[data-region-part="window"] { --md-figure-height: 36svh; margin-bottom: 0.5rem; }
+  .review-figure[data-region-part="overview"] { --md-figure-height: clamp(96px, 15svh, 150px); }
+}
+@media (min-width: 1024px) {
+  .review-figure-side-pane[data-region-focus] {
+    width: 100%;
+    container-type: inline-size;
+  }
+  .review-figure-side-pane[data-region-focus] .region-focus-row {
+    --md-region-h: min(var(--md-figure-height),
+      calc((100cqw - 0.5rem) / (var(--md-figure-ratio) + var(--md-overview-ratio))));
+    display: flex;
+    gap: 0.5rem;
+    justify-content: center;
+    align-items: flex-start;
+  }
+  .review-figure-side-pane[data-region-focus] .region-focus-row > [data-figure-frame] {
+    flex: none;
+    width: calc(var(--md-region-h) * var(--md-figure-ratio));
+    margin: 0;
+  }
+  .review-figure-side-pane[data-region-focus] .region-focus-row > .region-focus-overview {
+    flex: none;
+    height: var(--md-region-h);
+    margin: 0;
   }
 }
 .review-figure-compact { --md-figure-height: 11rem; }

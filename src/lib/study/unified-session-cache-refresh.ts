@@ -118,6 +118,8 @@ async function runSessionCacheRefreshUnlocked(
       {
         includeFailureAttribution: true,
         reviewChallenge: snapshot.reviewChallenge,
+        // Read with the epoch, so the stamp matches what the writer checks.
+        mediaPreferences: snapshot.mediaPreferences,
         // Reserve first-sight seats only for a request that already carries
         // today's progress: the learners the live build reserved them for.
         // Opting every cron build in would hand about two thirds of every

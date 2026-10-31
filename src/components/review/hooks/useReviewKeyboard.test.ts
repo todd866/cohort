@@ -78,6 +78,48 @@ function renderKeyboard(overrides: Record<string, unknown> = {}) {
 const GOOD_CONFIDENCE = 3;
 
 describe('useReviewKeyboard', () => {
+  // Owner, 30 Oct 2026: "add jkl; as a 1234 adjunct ... right-hand-only reviewing".
+  describe('home-row number keys', () => {
+    it('grades a revealed card with j k l ; as 1 2 3 4', () => {
+      const h = renderKeyboard({ cardFullyRevealed: true });
+      for (const key of ['j', 'k', 'l', ';']) pressKey(key);
+      expect(h.handleCardGrade.mock.calls.map(c => c[0])).toEqual([1, 2, 3, 4]);
+    });
+
+    it('picks MCQ options with j k l ; and apostrophe as 1 to 5', () => {
+      const h = renderKeyboard({ currentItem: makeQuestion(5) });
+      pressKey("'");
+      expect(h.handleSelectOption).toHaveBeenCalledWith('E');
+      const h2 = renderKeyboard({ currentItem: makeQuestion(5) });
+      pressKey('k');
+      expect(h2.handleSelectOption).toHaveBeenCalledWith('B');
+    });
+
+    it('rates confidence after an MCQ and rates a video with home-row keys', () => {
+      const mcq = renderKeyboard({ currentItem: makeQuestion(4), mcqResult: { isCorrect: true, correctOption: 'A' } });
+      pressKey(';');
+      expect(mcq.handleMcqGrade).toHaveBeenCalledWith(4);
+      const video = renderKeyboard({ currentItem: { type: 'video', id: 'v1', rotation: 'pwh' } });
+      pressKey('j');
+      expect(video.handleVideoRate).toHaveBeenCalledWith(1);
+    });
+
+    it('works with caps lock on, and does not grade a card that is not revealed', () => {
+      const h = renderKeyboard({ cardFullyRevealed: true });
+      pressKey('L');
+      expect(h.handleCardGrade).toHaveBeenCalledWith(3);
+      const hidden = renderKeyboard({ cardFullyRevealed: false });
+      pressKey('j');
+      expect(hidden.handleCardGrade).not.toHaveBeenCalled();
+    });
+
+    it('leaves apostrophe out of grading, which has only four grades', () => {
+      const h = renderKeyboard({ cardFullyRevealed: true });
+      pressKey("'");
+      expect(h.handleCardGrade).not.toHaveBeenCalled();
+    });
+  });
+
   describe('held keys', () => {
     // 2026-09-26: a held key auto-repeated through hundreds of items at a fraction of a
     // second each — cards graded Again, MCQs answered A — and every one was recorded as

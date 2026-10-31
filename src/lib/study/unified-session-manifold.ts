@@ -770,7 +770,11 @@ export async function buildManifoldSession(ctx: SessionContext): Promise<NextRes
     const hydrateVariant = (items: typeof sessionResult.items) => hydrateScheduledItems(
       items,
       hydrationData,
-      { rotation: ctx.rotation, ...(ctx.media ? { media: ctx.media } : {}) },
+      {
+        rotation: ctx.rotation,
+        ...(ctx.media ? { media: ctx.media } : {}),
+        ...(ctx.mediaPreferences ? { mediaPreferences: ctx.mediaPreferences } : {}),
+      },
       null,
       hydrateTrustOverride,
     );
@@ -1439,7 +1443,7 @@ export async function buildManifoldSession(ctx: SessionContext): Promise<NextRes
           }),
         ]);
         const currentFallbackItems = await hydrateScheduledItems(
-          fallbackScheduled, fallbackHydration, { rotation: ctx.rotation }, null,
+          fallbackScheduled, fallbackHydration, { rotation: ctx.rotation, mediaPreferences: ctx.mediaPreferences }, null,
           ctx.imageTier === 'copyright' ? 'copyright-required' : ctx.isGuest ? 'public' : 'auth-required',
         );
         const dueSafeFallbackItems = currentFallbackItems.filter(item => fallbackCardDue.eligibleCardIds.has(item.id));

@@ -29,6 +29,7 @@ const SERVING_FIELDS = [
   'showWhen',
   'revealImageKey',
   'revealRegions',
+  'regionFocus',
   'imageWidth',
   'imageHeight',
   'attributionText',

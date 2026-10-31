@@ -59,6 +59,9 @@ export const FOCUS_OPTION_ORDER: readonly string[] = [
   // before the exam decks: imaging is read alongside a rotation, not sat.
   'radiology',
   'neuroradiology',
+  // O&G, added 2026-10-28 for an elective attachment: with the other
+  // attachment views, read alongside a rotation rather than sat.
+  'obgyn',
   'mnd',
 ];
 

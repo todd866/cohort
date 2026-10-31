@@ -42,6 +42,18 @@ export const SW_BUILD_REPLY_MS = 1500;
  */
 export const HOLD_UPDATE_RELOAD_ATTRIBUTE = 'data-md3-hold-reload';
 
+/**
+ * A worker from before the build query (the pre-stamp `md3-shell-v1` worker)
+ * never answers it. 24 Oct 2026: one such worker outlived several releases in
+ * the owner's Chrome until it was unregistered by hand. If the controlling
+ * worker stays silent this long, ask for an update; if none is installing,
+ * unregister it and reload once, so the next load fetches a current worker.
+ */
+export const SW_STALE_WORKER_REPLY_MS = 3000;
+
+/** sessionStorage key: the stale-worker repair runs at most once per tab. */
+export const STALE_WORKER_FLAG = 'md3-sw-stale-repair';
+
 export function swRegistrationBootstrap(): string {
   // Inlined into a <script> tag, so it must be self-contained ES5-ish source.
   return `
@@ -78,9 +90,27 @@ export function swRegistrationBootstrap(): string {
     try{ctl.postMessage({type:'md3-build'},[channel.port2]);}
     catch(err){if(!answered){answered=true;clearTimeout(timer);reload();}}
   });
-  navigator.serviceWorker.register('/sw.js').then(function(reg){
+  var repairStaleWorker=function(reg){
+    var ctl=navigator.serviceWorker.controller;
+    if(!ctl||typeof MessageChannel==='undefined')return;
+    try{if(sessionStorage.getItem('${STALE_WORKER_FLAG}'))return;}catch(e){return;}
+    var answered=false;
+    var channel=new MessageChannel();
+    channel.port1.onmessage=function(){answered=true;};
+    setTimeout(function(){
+      if(answered)return;
+      Promise.resolve(reg.update()).catch(function(){}).then(function(){
+        if(reg.installing||reg.waiting)return;
+        try{sessionStorage.setItem('${STALE_WORKER_FLAG}','1');}catch(e){return;}
+        return reg.unregister().then(function(){reload();});
+      }).catch(function(){});
+    },${SW_STALE_WORKER_REPLY_MS});
+    try{ctl.postMessage({type:'md3-build'},[channel.port2]);}catch(e){}
+  };
+  navigator.serviceWorker.register('/sw.js',{updateViaCache:'none'}).then(function(reg){
     var check=function(){ try{reg.update();}catch(e){} };
     check();
+    repairStaleWorker(reg);
     document.addEventListener('visibilitychange',function(){
       if(document.visibilityState==='visible')check();
     });

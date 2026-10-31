@@ -1,16 +1,78 @@
 import type { Metadata } from 'next';
 import Link from 'next/link';
+import { headers } from 'next/headers';
+import { isCohortHostname } from '@/lib/institution';
 import { resolveSourceRepositoryUrl } from '@/lib/source-repository';
 
-export const metadata: Metadata = {
-  title: 'About - md3',
-  description: 'Scope, principles, and limitations of the open md3/Cohort Step 1 alpha',
-};
+export async function generateMetadata(): Promise<Metadata> {
+  const host = (await headers()).get('host') ?? '';
+  return isCohortHostname(host)
+    ? { title: 'About - md3', description: 'Scope, principles, and limitations of the open md3/Cohort Step 1 alpha' }
+    : { title: 'About - md3', description: 'What md3 is, who it is for, and what it is not: a personalised spaced-repetition question bank for University of Sydney MD students.' };
+}
 
 const OFFICIAL_USMLE_ABOUT = 'https://www.usmle.org/about-usmle';
 const OFFICIAL_USMLE_SECURITY = 'https://www.usmle.org/what-to-know/exam-security-fairness';
 
-export default function AboutPage() {
+function Md3About() {
+  return (
+    <main className="min-h-screen px-6 py-8">
+      <div className="mx-auto max-w-3xl">
+        <Link href="/" className="mb-4 inline-block text-sm text-[var(--md-primary)] hover:underline">
+          &larr; Back to review
+        </Link>
+        <h1 className="mb-4 text-4xl font-bold text-[var(--md-on-surface)]">About md3</h1>
+        <p className="mb-12 text-lg text-[var(--md-on-surface-variant)]">
+          A personalised spaced-repetition question bank for University of Sydney MD students.
+        </p>
+
+        <div className="space-y-12 text-[var(--md-on-surface)]">
+          <section>
+            <h2 className="mb-4 text-2xl font-semibold">What md3 is</h2>
+            <p className="leading-relaxed text-[var(--md-on-surface-variant)]">
+              md3 schedules cards and questions around what you already know and what your
+              rotation exams will ask. It includes practice papers with explanations and
+              follow-up questions, and an AI tutor you can ask about the item in front of you.
+            </p>
+          </section>
+
+          <section>
+            <h2 className="mb-4 text-2xl font-semibold">Who it is for</h2>
+            <p className="leading-relaxed text-[var(--md-on-surface-variant)]">
+              Medical students working through clinical rotations who want regular, targeted
+              revision instead of rereading notes.
+            </p>
+          </section>
+
+          <section>
+            <h2 className="mb-4 text-2xl font-semibold">What it is not</h2>
+            <ul className="list-disc space-y-2 pl-6 text-[var(--md-on-surface-variant)]">
+              <li>It is not a predictor of exam results.</li>
+              <li>
+                It is not affiliated with the University of Sydney or any exam body.
+              </li>
+              <li>
+                Content is checked against Australian guidelines, but md3 is not a clinical
+                reference. Check current local guidance before treating a patient.
+              </li>
+            </ul>
+          </section>
+
+          <section>
+            <h2 className="mb-4 text-2xl font-semibold">Report a problem</h2>
+            <p className="leading-relaxed text-[var(--md-on-surface-variant)]">
+              Use the flag on any card or question to describe what is wrong. Reports are read
+              and acted on.
+            </p>
+          </section>
+        </div>
+      </div>
+    </main>
+  );
+}
+
+export default async function AboutPage() {
+  if (!isCohortHostname((await headers()).get('host') ?? '')) return <Md3About />;
   const sourceRepositoryUrl = resolveSourceRepositoryUrl(
     process.env.NEXT_PUBLIC_SOURCE_REPOSITORY_URL,
   );

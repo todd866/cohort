@@ -193,7 +193,7 @@ export async function tryPendingQuestionSession(
     const hydrated = await hydrateScheduledItems(
       scheduledItems,
       hydrationData,
-      { rotation: ctx.rotation },
+      { rotation: ctx.rotation, mediaPreferences: ctx.mediaPreferences },
       null,
       ctx.imageTier === 'copyright' ? 'copyright-required' : 'auth-required',
     );

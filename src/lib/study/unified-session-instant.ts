@@ -1,4 +1,5 @@
 import { matchesResolvedMedia, mediaCandidateLimit } from './media-review';
+import { itemExcludedByMediaPreferences } from './review-media-preferences';
 import { loadInstantMediaCandidateIds } from './media-review-candidates';
 import { applyReviewChallengeWave } from './review-challenge';
 import { nudgeInstantChallenge } from './review-challenge-instant';
@@ -1022,7 +1023,8 @@ export async function tryInstantSession(
     };
   }));
   const currentVariantSafeItems = filterDuplicateCardVariantGroups(
-    currentItems.filter((item): item is UnifiedItem => item !== null),
+    currentItems.filter((item): item is UnifiedItem => item !== null
+      && !itemExcludedByMediaPreferences(item, ctx.mediaPreferences)),
   );
   // Spread the strands through the delivered order as well; a paired scaffold
   // stays behind its anchor. Native items carry their source file in the

@@ -298,6 +298,7 @@ export const PUBLIC_PAGE_ROUTE_PATHS: ReadonlyArray<string> = Object.freeze([
 
 /** Non-API route handlers needed by the public application shell. */
 export const PUBLIC_APP_HANDLER_ROUTE_PATHS: ReadonlyArray<string> = Object.freeze([
+  'src/app/favicon.ico/route.ts',
   'src/app/manifest.webmanifest/route.ts',
 ]);
 
@@ -361,7 +362,7 @@ export const PROTECTED_PUBLIC_FALLBACKS: ReadonlyArray<Readonly<{
   {
     path: 'next.config.ts',
     licence: 'MIT',
-    sha256: 'af04dd4f7d3d6b7f8d53b4921282991157e220f8c19ff00e537c88ef387523a5',
+    sha256: 'd0e9a6cf29f50e6d80cbd992fda2dfb8d8a07b66d0284f286a5c4c84edd6a0ef',
   },
   {
     path: 'README.md',
@@ -788,9 +789,9 @@ export const PROTECTED_PUBLIC_FALLBACKS: ReadonlyArray<Readonly<{
   {
     path: 'src/lib/rotations.ts',
     licence: 'MIT',
-    // Bumped 2026-10-22: defaultExamDateFor (the configured default; no
-    // stream calendar ships) for the profile calendar.
-    sha256: '38aa554f046156185ae08375ef78d2ed588286907e0949091ce0c1080d5a1a47',
+    // Bumped 2026-10-31: storedExamDateFor (identity here; no stream calendar
+    // ships) for the review calendar and exams panel.
+    sha256: 'a3f34d93323c60906bcc1977d894442e98acf8eb9400e5a0394dc6263bd3ad7f',
   },
   {
     path: 'src/lib/source-registry-data.json',

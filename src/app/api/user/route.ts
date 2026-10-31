@@ -43,7 +43,7 @@ const profilePatchSchema = z.object({
   institution: z.string().trim().max(50).nullable().optional(),
   enabledModules: z.array(z.string().trim().min(1)).optional(),
   jurisdiction: z.string().trim().max(20).nullable().optional(),
-  examDates: z.record(z.string().trim().min(1)).optional(),
+  examDates: z.record(z.string(), z.string().trim().min(1)).optional(),
   feedProfileExplicit: feedProfileExplicitSchema.optional(),
   resetProgressOnInstitutionChange: z.boolean().optional(),
   reviewMenuModules: z.array(z.string().trim().min(1).max(80)).max(64).nullable().optional(),

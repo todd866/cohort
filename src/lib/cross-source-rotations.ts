@@ -80,12 +80,23 @@ export const COMPANION_SOURCE_ROTATIONS: Readonly<Record<string, readonly string
   // examination clips among them — and none could be served there, because a
   // deck borrows only from the rotations listed here. Membership is still per
   // card: a companion contributes only cards that name the deck.
-  geriatrics: Object.freeze(['anking', 'malleus', 'toc', 'surgical-sciences', 'physical-exam']),
+  //
+  // 2026-10-31 (owner-delegated decision, BACKLOG 24): the USyd course
+  // rotations are legitimate suppliers for these decks, so their declared
+  // memberships are reachable. A learner choosing Neurology should see the
+  // PAAM, MND, TO'C and Year 1-3 neurology cards, not only AnKing. usmle-step1
+  // stays out (see COMPANION_SOURCE_EXCLUSIONS). Per-card membership and
+  // independent source entitlement still apply.
+  geriatrics: Object.freeze([
+    'anking', 'malleus', 'toc', 'surgical-sciences', 'physical-exam',
+    'paam', 'critical-care', 'year1-kat1', 'year2-kat5', 'year3-common',
+  ]),
   neurology: Object.freeze([
     'anking', 'malleus', 'neurosurg', 'anatomy',
     'surgical-sciences', 'cah', 'critical-care', 'physical-exam',
+    'paam', 'mnd', 'toc', 'year2-kat7', 'year3-common',
   ]),
-  urology: Object.freeze(['anking', 'malleus', 'surgical-sciences', 'cah']),
+  urology: Object.freeze(['anking', 'malleus', 'surgical-sciences', 'cah', 'pwh']),
   // Radiology and neuroradiology. Measured 2026-09-18 by keyword over LIVE
   // cards (the first count was run against the local mirror and was wrong in
   // kind, not degree — it missed AnKing's 5,618 entirely): radiology is
@@ -98,10 +109,19 @@ export const COMPANION_SOURCE_ROTATIONS: Readonly<Record<string, readonly string
   // why it draws anatomy and neurosurg rather than standing on AnKing alone.
   radiology: Object.freeze([
     'anking', 'malleus', 'surgical-sciences', 'neurosurg', 'toc', 'cah', 'critical-care',
+    'pwh', 'mnd', 'year1-kat1', 'year2-kat5', 'year2-kat7', 'year3-common',
   ]),
   neuroradiology: Object.freeze([
     'anking', 'malleus', 'neurosurg', 'anatomy',
     'surgical-sciences', 'cah', 'critical-care',
+    'pwh', 'year2-kat7', 'year3-common',
+  ]),
+  // Obstetrics & Gynaecology, 2026-10-28. PWH is the native corpus; GSSE and
+  // anatomy hold the pelvic plates and operative tissue planes; physical-exam
+  // the obstetric abdomen and speculum routines; AnKing and Malleus the
+  // background. Each contributes only cards that name `obgyn`.
+  obgyn: Object.freeze([
+    'pwh', 'surgical-sciences', 'anatomy', 'physical-exam', 'anking', 'malleus',
   ]),
   // Physical examination, 2026-09-23. TO'C is the examination text; CAH,
   // GSSE and critical-care hold the examination clips; ortho holds the
@@ -126,6 +146,22 @@ export const COMPANION_SOURCE_ROTATIONS: Readonly<Record<string, readonly string
     'cah', 'critical-care', 'paam', 'pwh',
     'malleus', 'anking', 'toc', 'surgical-sciences',
   ]),
+});
+
+/**
+ * Source rotations deliberately kept out of every composed deck's companion
+ * policy, with the reason. The audit reports their declarations as
+ * acknowledged exclusions rather than failures.
+ *
+ * usmle-step1 carries US framing and is not USyd teaching. Its cards' stray
+ * deck declarations (Step 1 neurology/pathology/msk/reproductive cards naming
+ * neurology, radiology, neuroradiology, urology) live only in the database,
+ * written by keyword/discipline backfills; no MDX `modules=` attribute or
+ * overlay declares them, so there is no source line to drop. Serving already
+ * refuses them because the rotation is absent from every companion list.
+ */
+export const COMPANION_SOURCE_EXCLUSIONS: Readonly<Record<string, string>> = Object.freeze({
+  'usmle-step1': 'US-framed Step 1 notes are not USyd teaching; keep out of the USyd composed decks',
 });
 
 /**

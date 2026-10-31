@@ -16,7 +16,7 @@
 import { prisma } from '@/lib/prisma';
 import { logger } from '@/lib/logger';
 import { buildHeatmap, isoDay, REVIEW_EVENT_TYPES, type DayCount, type HeatmapCell } from '@/lib/review-stats';
-import { isSelfPacedExamDate, defaultExamDateFor } from '@/lib/rotations';
+import { isSelfPacedExamDate, defaultExamDateFor, storedExamDateFor } from '@/lib/rotations';
 import { USYD_MD3_2026 } from '@/lib/curriculum/usyd-md3-2026';
 import {
   assembleExamMarkers,
@@ -69,7 +69,8 @@ async function loadExamMarkers(
       select: { rotation: true, examDate: true },
     }),
   ]);
-  const overrideByRotation = new Map(overrides.map((r) => [r.rotation, r.examDate]));
+  // Through the stream-aware reader: a row left by an earlier stream is not a choice.
+  const overrideByRotation = new Map(overrides.map((r) => [r.rotation, storedExamDateFor(r.rotation, track, r.examDate)]));
   const scheduled = [];
   for (const rotation of rotations) {
     const examDate = overrideByRotation.get(rotation) ?? defaultExamDateFor(rotation, track);

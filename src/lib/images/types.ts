@@ -113,6 +113,9 @@ interface SidecarBase {
   revealImageKey?: string;
   revealRegions?: ImageRevealRegion[];
   numberedFocus?: Record<string, NumberedImageFocus>;
+  /** A hide-one diagram prompt: review shows a zoomed window on the hidden box
+   *  beside the whole diagram (owner, 30 Oct 2026). */
+  regionFocus?: boolean;
   /** Shared intrinsic frame, allowing reveal assets to load without resizing. */
   imageWidth?: number;
   imageHeight?: number;

@@ -50,7 +50,7 @@ describe('CardItemView public anatomy media', () => {
     rerender(<CardItemViewTest item={card({ publicAnatomyMedia: anatomyMedia })} cardFullyRevealed />);
     expect(screen.getByTestId('anatomy-figure')).toHaveAttribute('data-alt', anatomyMedia.postAnswerAlt);
     expect(screen.getByTestId('anatomy-figure')).toHaveAttribute('data-revealed', 'true');
-    expect(screen.getByText('lateral rectus')).toBeInTheDocument();
+    expect(screen.getByText('Lateral rectus')).toBeInTheDocument();
   });
 
   it('keeps supplementary public anatomy hidden until reveal', () => {
@@ -158,5 +158,41 @@ describe('numbered atlas presentation', () => {
   it('does not change other clinical prompts or discard their explanations', () => {
     const other = 'Which cranial nerve is affected? [___]';
     expect(numberedAnatomyPresentation(other, context, title)).toEqual({ front: other, context, caption: title, source: null });
+  });
+});
+
+describe('CardItemView figure plus context clip', () => {
+  const clip = {
+    id: 'clip-1', url: 'https://media.example/clip.mp4', posterUrl: null, audioStripped: true,
+    sourceUrl: 'https://example.org/source', sourceTitle: 'Operative source', startSecs: 0, endSecs: 8,
+  };
+  const figured = card({
+    rotation: 'pwh',
+    front: 'The pararectal space of Okabayashi lies [___] to the ureter.',
+    back: 'medial',
+    context: 'The ureter divides the medial and lateral pararectal spaces.',
+    imageUrl: 'https://media.example/pelvic-spaces.png',
+    imageMeta: { class: 'diagram', showWhen: 'after-reveal', imageWidth: 1000, imageHeight: 700, accessTier: 'public', altPolicy: 'generic', attributionText: 'Test figure' },
+    clip,
+  });
+
+  // Owner flag 2026-10-28: with both in the media pane the figure took the
+  // pane's height and the clip came out a few hundred pixels wide, while the
+  // reading column sat empty under the explanation.
+  it('puts the clip under the explanation in the reading column and leaves the figure in the media pane', () => {
+    const { container } = render(<CardItemViewTest item={figured} cardFullyRevealed />);
+    const video = container.querySelector('video');
+    expect(video).not.toBeNull();
+    const videoCell = video!.closest('[class*="lg:row-start-2"]');
+    expect(videoCell?.className).toContain('lg:col-start-1');
+    const figure = container.querySelector('img');
+    expect(figure?.closest('[class*="lg:row-start-2"]')).toBeNull();
+  });
+
+  it('keeps a clip with no figure in the media pane', () => {
+    const { container } = render(
+      <CardItemViewTest item={card({ ...figured, imageUrl: undefined, imageMeta: undefined })} cardFullyRevealed />,
+    );
+    expect(container.querySelector('video')?.closest('[class*="lg:row-start-2"]')).toBeNull();
   });
 });

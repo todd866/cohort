@@ -45,6 +45,8 @@ import type { ReviewFilter, ReviewItemType, ReviewMedia, ReviewTopic } from '@/l
 import type { ReviewLoadTimer } from '@/lib/review/review-load-telemetry';
 import { GuestReviewLoginNudge } from '@/components/ui/LoginNudge';
 import { ImageBlurToggle } from '@/components/media/ImageBlurToggle';
+import { ReviewMediaToggles } from '@/components/media/ReviewMediaToggles';
+import { saveReviewMediaPreferencesToAccount, useReviewMediaPreferences } from '@/components/media/useReviewMediaPreferences';
 import { fetchWithDeadline, CLIENT_FETCH_DEADLINE_MS } from '@/lib/fetch-with-deadline';
 import { useCohortHost } from '@/components/CohortHostContext';
 import { useReviewDifficulty } from '@/hooks/useReviewDifficulty';
@@ -435,8 +437,19 @@ function UnifiedReviewBody({ rotations, week, rotationSizes, fetchSlots, feedMod
     onApplied: (revision) => refreshChallengeRef.current(revision),
   });
 
+  // "No videos" / "No images". Cohort turns are drawn by their own server
+  // path, so the choice applies to md3 review only.
+  const reviewMedia = useReviewMediaPreferences();
+  const offerMediaChoice = !isCohortHost;
+  const toggleReviewMedia = useCallback((kind: 'hideVideos' | 'hideImages', on: boolean) => {
+    const saved = reviewMedia.setPreference(kind, on);
+    if (isAuthenticated && !allowUnverifiedPack) void saveReviewMediaPreferencesToAccount(saved);
+  }, [reviewMedia, isAuthenticated, allowUnverifiedPack]);
+
   const session = useReviewSession({
     rotations, week, rotationSizes, fetchSlots, feedMode, reviewFilter, itemType, media, topics, cluster, focusRotation,
+    mediaPreferences: offerMediaChoice ? reviewMedia.preferences : null,
+    onServerMediaPreferences: offerMediaChoice ? reviewMedia.adoptServer : undefined,
     reviewChallengeRevision: difficulty.revision,
     onChallengeExhausted: difficulty.easeAfterExhaustion,
     // The credentialless fallback must trust only the device owner record.
@@ -1433,7 +1446,12 @@ function UnifiedReviewBody({ rotations, week, rotationSizes, fetchSlots, feedMod
             {difficultyControl(true)}
             {/* The chip names itself; a separate "Blur images" label beside a
                 "✓ Blur" chip said it twice (owner, 2026-10-07). */}
-            <ImageBlurToggle />
+            <div className="flex flex-wrap items-center gap-2">
+              <ImageBlurToggle />
+              {offerMediaChoice && (
+                <ReviewMediaToggles preferences={reviewMedia.preferences} onToggle={toggleReviewMedia} />
+              )}
+            </div>
             {isCohortHost && searchTopics.length > 0 && (
               <CohortSearchOverlay
                 topics={searchTopics}

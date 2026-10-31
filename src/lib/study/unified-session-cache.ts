@@ -56,6 +56,7 @@ import { orderByDeckStrands, sessionItemStrandIdentity } from './deck-strand-mix
 import { isUsableQuestion } from '@/lib/question-validation';
 import { loadCurrentSessionContent, sessionSourceKey as sourceKey, withCurrentSessionBody, type CurrentSessionSource } from './current-session-content';
 import { resolveClipsForSession } from '@/lib/video/clip-access';
+import { itemExcludedByMediaPreferences } from './review-media-preferences';
 import { EXAM_ONLY_ROTATIONS, isNativeExamScaffold } from './exam-only-modules';
 import { getReviewLearningGap } from './review-learning-gap.server';
 
@@ -609,7 +610,7 @@ export async function tryCachedSession(ctx: SessionContext): Promise<NextRespons
 
   const tCacheStart = performance.now();
   try {
-    const cacheRow = await readSessionCache(ctx.userId, ctx.rotation, ctx.reviewChallenge);
+    const cacheRow = await readSessionCache(ctx.userId, ctx.rotation, ctx.reviewChallenge, ctx.mediaPreferences);
 
     if (cacheRow && Array.isArray(cacheRow.items) && cacheRow.items.length > 0) {
       const now = new Date();
@@ -638,6 +639,11 @@ export async function tryCachedSession(ctx: SessionContext): Promise<NextRespons
       const gap = ctx.reviewChallenge?.level === 2 ? await getReviewLearningGap(ctx) : null;
       if (gap && !gap.available) return null;
       cachedItems = cachedItems.filter(item => itemMatchesReviewLearning(item, ctx.reviewChallenge?.level ?? 0, gap?.questionIds));
+      // The receipt above already refuses a queue built under another choice;
+      // this keeps a request-level `hide=` (a toggle not yet saved) honest too.
+      if (ctx.mediaPreferences) {
+        cachedItems = cachedItems.filter(item => !itemExcludedByMediaPreferences(item, ctx.mediaPreferences));
+      }
       // Queues built before the mixed exam policy may still contain ordinary
       // exam cards. Drop those rows at delivery; questions remain eligible and
       // the refresh path will rebuild a correctly tagged mixed queue.

@@ -6,6 +6,7 @@ import {
   type ClientImageMeta,
 } from '@/lib/figures/types';
 import { validNumberedImageFocus, type ImageRevealRegion } from '@/lib/images/types';
+import { regionFocusCrop } from '@/lib/images/region-focus';
 import { clickFocusRegion } from './zoom-focus';
 import { useImageTracking } from '@/hooks/useTracking';
 import { OFFLINE_FIGURES_CHANGE_EVENT, readCachedFigure } from '@/lib/offline/figures';
@@ -16,6 +17,7 @@ import {
   fetchWithDeadline,
 } from '@/lib/fetch-with-deadline';
 import { SensitiveMediaGate } from '@/components/media/SensitiveMediaGate';
+
 
 interface CardImageProps {
   /** Exact numbered atlas prompt; ignored unless its sidecar has reviewed geometry. */
@@ -52,6 +54,10 @@ interface CardImageProps {
   inSidePane?: boolean;
   /** Optional host-specific recovery UI when delivery or its refreshed image fails. */
   onUnavailable?: () => void;
+  /** A hide-one diagram drawn in two places: 'window' is the zoomed box under
+   *  the question, 'overview' the whole diagram in the media pane with the
+   *  window outlined. Omitted, both render together in one figure. */
+  regionPart?: 'window' | 'overview';
 }
 
 /** Image and caption share a width; only the image frame uses the viewport
@@ -299,6 +305,7 @@ export function CardImage({
   onSkipSensitive,
   inSidePane = false,
   onUnavailable,
+  regionPart,
 }: CardImageProps) {
   const imageOwner = useSyncExternalStore(subscribeOfflineOwner, currentImageOwner, () => 'unbound');
   const incomingSource = JSON.stringify([trackingComponentId, imageKey, src, meta?.revealImageKey]);
@@ -326,7 +333,8 @@ export function CardImage({
   const safeFallback = src?.startsWith('/figures/') ? src : null;
   const analyticsKey = imageKey ?? safeFallback;
   const sensitive = shouldGateClientImageMeta(meta, analyticsKey);
-  const trackedKey = visible && sourceBelongsToOwner ? analyticsKey : null;
+  // The window part of a split hide-one diagram is the same figure; the overview counts the view.
+  const trackedKey = visible && sourceBelongsToOwner && regionPart !== 'window' ? analyticsKey : null;
   const trackingIdentity = analyticsKey
     ? `${trackingComponentId ?? 'media'}:${analyticsKey}`
     : null;
@@ -611,15 +619,28 @@ export function CardImage({
   const imageHeight = meta?.imageHeight ?? (loadedDimensions.identity === sourceIdentity ? loadedDimensions.height : 0);
   const numberedFocus = targetNumber && !showingRevealImage
     ? validNumberedImageFocus(meta?.numberedFocus)?.[targetNumber] : undefined;
-  const crop = numberedFocus?.crop;
+  // A hide-one diagram (a QCG flowchart) is unreadable whole at phone width, so
+  // the frame shows a zoomed window on the hidden box, before and after reveal,
+  // and the whole diagram sits beside it as an overview (owner, 30 Oct 2026:
+  // "show the whole thing, plus a zoomed in portion. We have plenty of
+  // whitespace"). Phones stack the two; the desktop side pane sets them side by
+  // side at one height, so neither costs the other vertical space.
+  const focusWindow = !numberedFocus && meta?.regionFocus
+    ? regionFocusCrop(meta.revealRegions, imageWidth, imageHeight) : undefined;
+  // Owner flag, 31 Oct 2026: the window goes under the question and the whole
+  // chart takes the media pane. The overview part shows the uncropped diagram
+  // with the window outlined; the window part drops the thumbnail.
+  const regionCrop = regionPart === 'overview' ? undefined : focusWindow;
+  const crop = numberedFocus?.crop ?? regionCrop;
   const ratio = imageWidth > 0 && imageHeight > 0
     ? (imageWidth * (crop?.width ?? 1)) / (imageHeight * (crop?.height ?? 1)) : undefined;
   const figureStyle = {
     ...(ratio ? { '--md-figure-ratio': ratio } : {}),
+    ...(regionCrop && !regionPart ? { '--md-overview-ratio': imageWidth / imageHeight } : {}),
     // Reserve the same space before and after reveal without putting hidden
     // answer-bearing text in the DOM. Opening Credit may scroll; it never
     // changes the image scale.
-    '--md-figure-notes-space': `${(caption ? 72 : 0) + (meta?.attributionText ? 20 : 0) + (crop ? 32 : 0)}px`,
+    '--md-figure-notes-space': `${(caption ? 72 : 0) + (meta?.attributionText ? 20 : 0) + (regionCrop ? 0 : crop ? 32 : 0)}px`,
   } as CSSProperties;
 
   if (!visible) return null;
@@ -655,7 +676,8 @@ export function CardImage({
       onSkip={sensitive && !revealed ? onSkipSensitive : undefined}
       captureReviewSpace={sensitive && !revealed}
     >
-        <figure style={figureStyle} data-numbered-focus={crop ? true : undefined} className={`review-figure mb-4${inSidePane ? ` ${SIDE_PANE_FIGURE}` : ''}${expanded ? '' : ' review-figure-compact'}`}>
+        <figure style={figureStyle} data-numbered-focus={crop ? true : undefined} data-region-focus={regionCrop && !regionPart ? true : undefined} data-region-part={focusWindow ? regionPart : undefined} className={`review-figure mb-4${inSidePane ? ` ${SIDE_PANE_FIGURE}` : ''}${expanded ? '' : ' review-figure-compact'}`}>
+          <div data-region-row={regionCrop && !regionPart ? true : undefined} className={regionCrop && !regionPart ? 'region-focus-row' : 'contents'}>
           <div data-figure-frame style={ratio ? { aspectRatio: ratio } : undefined}
             className={`relative mx-auto block w-full overflow-hidden rounded-lg border border-[var(--md-outline-variant)] ${expanded ? 'cursor-zoom-out' : 'cursor-zoom-in'}`}>
             {effectiveSrc ? (
@@ -683,7 +705,7 @@ export function CardImage({
                 );
                 setZoomOpen(true);
               }}
-              aria-label={crop ? 'Full plate' : revealed && caption ? `Zoom image: ${caption}` : 'Zoom image'}
+              aria-label={regionPart === 'overview' ? 'Whole flowchart' : crop ? 'Full plate' : revealed && caption ? `Zoom image: ${caption}` : 'Zoom image'}
               className="relative block h-full w-full overflow-hidden"
             >
               {/* No `title` here: the styled <figcaption> below is the single caption
@@ -710,11 +732,18 @@ export function CardImage({
                   <span className="absolute right-5 -top-2 rounded px-1 text-sm font-semibold bg-[var(--md-surface)] text-[var(--md-on-surface)]">{targetNumber}</span>
                 </span>
               )}
+              {regionPart === 'overview' && focusWindow && (
+                <span data-region-window aria-hidden="true" className="pointer-events-none absolute"
+                  style={{ left: `${focusWindow.x * 100}%`, top: `${focusWindow.y * 100}%`,
+                    width: `${focusWindow.width * 100}%`, height: `${focusWindow.height * 100}%`,
+                    outline: '2px solid var(--md-anatomy-target)' }} />
+              )}
               {showingRevealImage && meta?.revealRegions?.map((region, index) => (
                 <span key={index} data-reveal-region aria-hidden="true"
                   className="pointer-events-none absolute"
-                  style={{ left: `${region.x * 100}%`, top: `${region.y * 100}%`,
-                    width: `${region.width * 100}%`, height: `${region.height * 100}%`,
+                  style={{ left: `${100 * (region.x - (crop?.x ?? 0)) / (crop?.width ?? 1)}%`,
+                    top: `${100 * (region.y - (crop?.y ?? 0)) / (crop?.height ?? 1)}%`,
+                    width: `${100 * region.width / (crop?.width ?? 1)}%`, height: `${100 * region.height / (crop?.height ?? 1)}%`,
                     outline: '2px solid var(--md-anatomy-target)', outlineOffset: '1px', backgroundColor: 'transparent' }} />
               ))}
             </button>
@@ -738,9 +767,22 @@ export function CardImage({
               </div>
             )}
           </div>
-          {crop && <button type="button" className="mt-1 min-h-8 text-xs text-[var(--md-on-surface-variant)] underline"
+          {regionCrop && effectiveSrc && !regionPart ? (
+            <button type="button" data-region-overview aria-label="Whole flowchart"
+              onClick={() => zoomTriggerRef.current?.click()}
+              className="region-focus-overview relative mx-auto mt-2 block overflow-hidden rounded border border-[var(--md-outline-variant)]"
+              style={{ aspectRatio: imageWidth / imageHeight }}>
+              {/* eslint-disable-next-line @next/next/no-img-element */}
+              <img src={effectiveSrc} alt="" aria-hidden="true" className="block h-full w-full object-contain" />
+              <span aria-hidden="true" className="pointer-events-none absolute"
+                style={{ left: `${regionCrop.x * 100}%`, top: `${regionCrop.y * 100}%`,
+                  width: `${regionCrop.width * 100}%`, height: `${regionCrop.height * 100}%`,
+                  outline: '2px solid var(--md-anatomy-target)' }} />
+            </button>
+          ) : crop && !regionPart && <button type="button" className="mt-1 min-h-8 text-xs text-[var(--md-on-surface-variant)] underline"
             onClick={() => zoomTriggerRef.current?.click()}>Full plate</button>}
-          {revealed && caption && (
+          </div>
+          {revealed && caption && regionPart !== 'window' && (
             <figcaption className="mt-2 text-left text-sm leading-snug text-[var(--md-on-surface-variant)]">
               {caption}
             </figcaption>
@@ -788,7 +830,7 @@ export function CardImage({
             * because the side-pane height budget bounds the whole FIGURE and
             * every line under the image is subtracted from the image.
             */}
-          {(effectiveSrc || (meta?.attributionText && showAnswerBearingCredit)) && (
+          {regionPart !== 'window' && (effectiveSrc || (meta?.attributionText && showAnswerBearingCredit)) && (
             <div className="mt-1 flex items-start justify-between gap-3">
               <div className="min-w-0 flex-1">
           {meta?.attributionText && showAnswerBearingCredit && (

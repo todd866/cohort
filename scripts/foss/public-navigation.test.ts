@@ -486,6 +486,8 @@ describe('public navigation and static assets', () => {
       'src/components/review/hooks/useReviewSession.ts -> /api/study/record',
       'src/components/review/hooks/useReviewSession.ts -> /api/cards/feedback',
       'src/components/review/hooks/useTopicReadiness.ts -> /api/study/topic-readiness',
+      // No videos / No images is not offered on Cohort (UnifiedReview's offerMediaChoice).
+      'src/components/media/useReviewMediaPreferences.ts -> /api/study/media-preferences',
     ]);
     allowedTargets.add('/api/content/flag/images/${id}');
     allowedTargets.add('/api/content/flag/images/${data.attachmentId}');

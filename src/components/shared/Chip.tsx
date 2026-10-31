@@ -107,6 +107,7 @@ export function ChipNativeSelect({
   return (
     <span className={`relative inline-flex min-w-0 items-center ${wrapperClassName}`}>
       <select
+        data-own-chevron=""
         className={chipClass(false, `cursor-pointer appearance-none truncate pr-7 text-[var(--md-on-surface)] ${className}`)}
         {...rest}
       >

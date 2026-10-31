@@ -129,8 +129,8 @@ export function McqItemView({
   const clipPrompt = clipIsPrompt(item.clipRole, item.clip);
   const clipNode = item.clip
     ? clipPrompt
-      ? <ClipPrompt clip={item.clip} caption={item.clipCaption} revealed={Boolean(mcqResult)} inSidePane={sidePane} />
-      : mcqResult ? <ClipContext clip={item.clip} caption={item.clipCaption} revealed /> : null
+      ? <ClipPrompt clip={item.clip} caption={item.clipCaption} revealed={Boolean(mcqResult)} inSidePane={sidePane} occurrenceKey={item.id} />
+      : mcqResult ? <ClipContext clip={item.clip} caption={item.clipCaption} revealed occurrenceKey={item.id} /> : null
     : null;
 
   const promptBlocked = Boolean(item.promptFigure) && preparedPrompt?.status !== 'ready';
@@ -250,7 +250,11 @@ export function McqItemView({
   // A results table splits the same way a prompt figure does: it is question
   // content the learner must meet before the options.
   const mediaIsPrompt = figureIsPrompt || clipPrompt || Boolean(resultsNode);
-  const mediaNode = (figureNode || resultsNode || clipNode) ? <>{resultsNode}{clipPrompt && clipNode}{figureNode}{!clipPrompt && clipNode}</> : null;
+  // A context clip beside a figure goes under the answer in the reading column
+  // (same contract as CardItemView, owner flag 2026-10-28); alone it keeps the pane.
+  const clipBesideProse = Boolean(!clipPrompt && clipNode && figureNode);
+  const paneClipNode = !clipPrompt && !clipBesideProse ? clipNode : null;
+  const mediaNode = (figureNode || resultsNode || (clipPrompt ? clipNode : paneClipNode)) ? <>{resultsNode}{clipPrompt && clipNode}{figureNode}{paneClipNode}</> : null;
   return <GlossaryScope abbreviations={item.abbreviations}>
     <ReviewQuestionContent
       layout={mediaIsPrompt ? 'prompt' : (mediaNode ? 'supplementary' : 'flat')}
@@ -259,7 +263,7 @@ export function McqItemView({
       options={optionsNode}
       result={resultNode}
       media={mediaNode}
-      tail={tailNode}
+      tail={clipBesideProse ? <>{clipNode}{tailNode}</> : tailNode}
     />
   </GlossaryScope>;
 }

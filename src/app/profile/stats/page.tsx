@@ -9,6 +9,7 @@ import { loadStatsPage } from '@/lib/stats/stats-page.server';
 import { parsePeriod } from '@/lib/stats/stats-model';
 import type { StatsDb } from '@/lib/stats/stats-query.server';
 import { StatsDashboard } from '@/components/stats/StatsDashboard';
+import { RefreshOnReturn } from '@/components/profile/RefreshOnReturn';
 
 export const metadata: Metadata = {
   title: 'Statistics',
@@ -35,6 +36,7 @@ export default async function StatsPage({
 
   return (
     <main className="mx-auto max-w-3xl px-4 py-6 pb-28 md:pb-10">
+      <RefreshOnReturn />
       <header className="mb-4">
         <Link href="/profile" className="text-xs text-[var(--md-on-surface-variant)] hover:underline">
           ← Profile

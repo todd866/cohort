@@ -118,3 +118,18 @@ export async function getCurrentRotationWithDetails(_userId: string): Promise<{
   void _userId;
   return null;
 }
+
+/**
+ * The private app re-dates a stored exam date that belongs to another stream's
+ * calendar; the open distribution ships no stream calendar, so a stored date is
+ * taken as the learner's own.
+ */
+export function storedExamDateFor(
+  _rotationId: string,
+  _track: number | null | undefined,
+  stored: Date,
+): Date {
+  void _rotationId;
+  void _track;
+  return stored;
+}

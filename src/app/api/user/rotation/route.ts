@@ -203,8 +203,20 @@ export async function POST(request: NextRequest) {
     if (track !== undefined && track !== null) {
       const trackRotations = TRACKS[track as TrackNumber];
       await Promise.all(
-        BLOCKS.map((block, blockIndex) => {
+        BLOCKS.map(async (block, blockIndex) => {
           const rotationId = trackRotations[blockIndex];
+          // Rows written under a previous stream hold that stream's calendar
+          // for this rotation, which the upsert below preserves as if the
+          // learner had chosen it. A date on another block's exam day is a
+          // calendar default, never a choice: re-date it. Typed dates stay.
+          await prisma.userRotation.updateMany({
+            where: {
+              userId,
+              rotation: rotationId,
+              examDate: { in: BLOCKS.map((b) => b.exam).filter((d) => d.getTime() !== block.exam.getTime()) },
+            },
+            data: { examDate: block.exam },
+          });
           return prisma.userRotation.upsert({
             where: { userId_rotation: { userId, rotation: rotationId } },
             create: {

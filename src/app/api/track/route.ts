@@ -52,7 +52,7 @@ const trackingEventSchema = z.object({
   componentType: z.string().trim().max(100).optional(),
   componentId: z.string().trim().max(200).optional(),
   action: z.string().trim().max(100).optional(),
-  metadata: z.record(z.unknown()).refine(
+  metadata: z.record(z.string(), z.unknown()).refine(
     (value) => JSON.stringify(value).length <= 4_096,
     'metadata is too large',
   ).optional(),

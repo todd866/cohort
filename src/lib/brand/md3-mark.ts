@@ -19,6 +19,12 @@ export const MD3_ICON_ACCENT = '#f0a07a';
 /** Below this size three letters turn to mush; the tab icon is a lone "3". */
 export const MD3_SMALL_ICON_MAX = 32;
 
+/** macOS Chrome shows the maskable icon uncropped in the Dock, where the 80%
+ * safe-circle size (0.9) still read as small text (owner pick, 30 Oct 2026:
+ * variant B). 1.08 runs the wordmark nearly edge to edge and keeps it inside a
+ * full circle crop; only tighter launcher masks clip the tips. */
+export const MD3_MASKABLE_SCALE = 1.08;
+
 export function md3IconSvg(size: number, { fullBleed = false, maskable = false } = {}): string {
   const rect = `<rect width="48" height="48" rx="${fullBleed ? 0 : size <= MD3_SMALL_ICON_MAX ? 10 : 12}" fill="${MD3_ICON_BACKGROUND}"/>`;
   if (size <= MD3_SMALL_ICON_MAX) {
@@ -28,8 +34,8 @@ export function md3IconSvg(size: number, { fullBleed = false, maskable = false }
   <path fill="${MD3_ICON_ACCENT}" transform="translate(-56.85 -26.4) scale(2.1)" d="${MD3_MARK_DIGITS['3']}"/>
 </svg>`;
   }
-  // A 0.76 scale keeps the whole mark inside the circular maskable safe zone.
-  const transform = maskable ? 'translate(5.76 5.76) scale(.76)' : '';
+  const offset = (24 * (1 - MD3_MASKABLE_SCALE)).toFixed(2);
+  const transform = maskable ? `translate(${offset} ${offset}) scale(${MD3_MASKABLE_SCALE})` : '';
   return `<svg xmlns="http://www.w3.org/2000/svg" width="${size}" height="${size}" viewBox="0 0 48 48">
   ${rect}
   <g transform="${transform}">

@@ -53,8 +53,10 @@ export default function ProfilePageClient({
         {
           method: 'PATCH',
           headers: { 'Content-Type': 'application/json' },
+          // A blank name is "not set", not a new name: the API rejects an empty
+          // string, which failed every save for a learner who never set one.
           body: JSON.stringify({
-            name: savedName,
+            ...(savedName ? { name: savedName } : {}),
             studyGoal: editForm.studyGoal,
             feedProfileExplicit,
           }),
@@ -65,7 +67,7 @@ export default function ProfilePageClient({
 
       setProfile((current) => ({
         ...current,
-        name: savedName,
+        name: savedName || current.name,
         studyGoal: editForm.studyGoal,
         feedProfileExplicit,
       }));
@@ -95,18 +97,7 @@ export default function ProfilePageClient({
         )}
 
         <div className="min-w-0 flex-1">
-          {editing ? (
-            <input
-              type="text"
-              id="profile-name"
-              aria-label="Your name"
-              autoComplete="name"
-              value={editForm.name}
-              onChange={(event) => setEditForm({ ...editForm, name: event.target.value })}
-              placeholder="Your name"
-              className="w-full rounded-lg border border-[var(--md-outline)] bg-[var(--md-surface-container)] px-3 py-1 text-xl font-bold text-[var(--md-on-surface)]"
-            />
-          ) : profile.name ? (
+          {profile.name ? (
             <h1 className="truncate text-xl font-bold text-[var(--md-on-surface)]">
               {profile.name}
             </h1>
@@ -151,49 +142,32 @@ export default function ProfilePageClient({
             ) : null}
         </div>
 
-        <div className="flex-shrink-0 self-start">
-          {editing ? (
-            <div className="flex gap-2">
-              <button
-                type="button"
-                onClick={() => {
-                  setEditing(false);
-                  setSaveError(null);
-                  setEditForm(editFormFor(profile));
-                }}
-                disabled={saving}
-                className="rounded-lg border border-[var(--md-outline)] px-3 py-1.5 text-sm text-[var(--md-on-surface)]"
-              >
-                Cancel
-              </button>
-              <button
-                type="button"
-                onClick={handleSave}
-                disabled={saving}
-                className="rounded-lg bg-[var(--md-primary)] px-3 py-1.5 text-sm text-[var(--md-on-primary)]"
-              >
-                {saving ? 'Saving…' : 'Save'}
-              </button>
-            </div>
-          ) : (
-            <button
-              type="button"
-              onClick={() => setEditing(true)}
-              className="rounded-lg border border-[var(--md-outline)] px-3 py-1.5 text-sm text-[var(--md-on-surface-variant)]"
-            >
-              Edit
-            </button>
-          )}
-        </div>
+        {!editing ? (
+          <button
+            type="button"
+            onClick={() => setEditing(true)}
+            className="flex-shrink-0 self-start rounded-lg border border-[var(--md-outline)] px-3 py-1.5 text-sm text-[var(--md-on-surface-variant)]"
+          >
+            Edit
+          </button>
+        ) : null}
       </div>
 
       {editing ? (
-        <div className="mt-4 space-y-3 sm:pl-20">
-          {saveError ? (
-            <p role="alert" className="text-sm text-[var(--md-error)]">
-              {saveError}
-            </p>
-          ) : null}
+        <div className="mt-4 space-y-3">
+          <div>
+            <label htmlFor="profile-name" className="mb-1 block text-xs text-[var(--md-on-surface-variant)]">
+              Your name
+            </label>
+            <input
+              type="text"
+              id="profile-name"
+              autoComplete="name"
+              value={editForm.name}
+              onChange={(event) => setEditForm({ ...editForm, name: event.target.value })}
+              className="w-full rounded-lg border border-[var(--md-outline)] bg-[var(--md-surface-container)] px-3 py-2 text-sm text-[var(--md-on-surface)]"
+            />
+          </div>
 
           <div className="grid grid-cols-2 gap-3">
             <div>
@@ -236,6 +210,7 @@ export default function ProfilePageClient({
             </div>
           </div>
 
+          <div className="grid gap-3 sm:grid-cols-2">
           <div>
             <label
               htmlFor="profile-school"
@@ -270,7 +245,9 @@ export default function ProfilePageClient({
               className="w-full rounded-lg border border-[var(--md-outline)] bg-[var(--md-surface-container)] px-3 py-2 text-sm text-[var(--md-on-surface)]"
             />
           </div>
+          </div>
 
+          <div className="flex flex-wrap items-end gap-3">
           <div>
             <label
               htmlFor="profile-study-goal"
@@ -287,6 +264,32 @@ export default function ProfilePageClient({
               }}
               className="w-24 rounded-lg border border-[var(--md-outline)] bg-[var(--md-surface-container)] px-3 py-2 text-sm text-[var(--md-on-surface)]"
             />
+          </div>
+          <div className="flex flex-1 flex-wrap items-center justify-end gap-2">
+            {saveError ? (
+              <p role="alert" className="mr-auto text-sm text-[var(--md-error)]">{saveError}</p>
+            ) : null}
+            <button
+              type="button"
+              onClick={() => {
+                setEditing(false);
+                setSaveError(null);
+                setEditForm(editFormFor(profile));
+              }}
+              disabled={saving}
+              className="rounded-lg border border-[var(--md-outline)] px-3 py-2 text-sm text-[var(--md-on-surface)]"
+            >
+              Cancel
+            </button>
+            <button
+              type="button"
+              onClick={handleSave}
+              disabled={saving}
+              className="rounded-lg bg-[var(--md-primary)] px-3 py-2 text-sm text-[var(--md-on-primary)]"
+            >
+              {saving ? 'Saving…' : 'Save'}
+            </button>
+          </div>
           </div>
         </div>
       ) : null}

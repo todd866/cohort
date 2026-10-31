@@ -24,6 +24,11 @@ import {
   type NoveltyProgressSnapshot,
 } from './novelty-budget';
 import type { ReviewChallengePreference } from './review-challenge-preference';
+import {
+  hasMediaExclusions,
+  reviewMediaFingerprint,
+  type ReviewMediaPreferences,
+} from './review-media-preferences';
 
 /**
  * Opting a build into first-sight seats. `progress` is today's snapshot when
@@ -97,6 +102,8 @@ export async function computeAndHydrateSession(
     suppressSchedulerSideEffects?: boolean;
     /** Authoritative preference captured alongside the cache epoch. */
     reviewChallenge?: ReviewChallengePreference;
+    /** "No videos" / "No images" captured alongside the cache epoch. */
+    mediaPreferences?: ReviewMediaPreferences;
   } = {},
 ): Promise<{ items: UnifiedItem[] }> {
   // Cache-built sessions are the majority of what gets delivered, so they must
@@ -166,8 +173,11 @@ export async function computeAndHydrateSession(
     user: { id: userId, imageTier },
   } as import('next-auth').Session;
 
+  const mediaPreferences = hasMediaExclusions(options.mediaPreferences) ? options.mediaPreferences : undefined;
+  const mediaPreferenceFingerprint = reviewMediaFingerprint(mediaPreferences);
   const hydratedItems = await hydrateScheduledItems(sessionResult.items, hydrationData, {
     rotation,
+    mediaPreferences,
     // Videos are OFF, and this is deliberate — do not flip it back without
     // reading this.
     //
@@ -219,6 +229,7 @@ export async function computeAndHydrateSession(
     ...(simulationFocus ? { simulationFocusFingerprint: simulationFocus.fingerprint } : {}),
     ...(teachingPaceFingerprint ? { teachingPaceFingerprint } : {}),
     ...(options.reviewChallenge ? { reviewChallenge: options.reviewChallenge } : {}),
+    ...(mediaPreferenceFingerprint ? { mediaPreferenceFingerprint } : {}),
     imageUrl: null,
   }));
 

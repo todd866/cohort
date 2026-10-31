@@ -1,6 +1,6 @@
 import { useEffect } from 'react';
 type KeyboardReviewItem = { type: string; options?: { label: string }[] };
-import { isEditableShortcutTarget, isInteractiveActivationTarget } from './keyboardTarget';
+import { isEditableShortcutTarget, isInteractiveActivationTarget, shortcutNumber } from './keyboardTarget';
 
 interface UseReviewKeyboardOptions {
   currentItem: KeyboardReviewItem | undefined;
@@ -153,7 +153,7 @@ export function useReviewKeyboard({
             e.preventDefault();
             handleCardContinue();
           } else {
-            const keyNum = parseInt(e.key);
+            const keyNum = shortcutNumber(e.key);
             if (keyNum >= 1 && keyNum <= 4) {
               e.preventDefault();
               if (cardGradeBlocked) handleCardContinue();
@@ -163,7 +163,7 @@ export function useReviewKeyboard({
         }
       } else if (currentItem.type === 'question') {
         if (awaitingConfidence && !mcqResult) {
-          const keyNum = parseInt(e.key);
+          const keyNum = shortcutNumber(e.key);
           if (!Number.isNaN(keyNum) && keyNum >= 1 && keyNum <= 4) {
             e.preventDefault();
             handleMcqGrade(keyNum);
@@ -175,7 +175,7 @@ export function useReviewKeyboard({
             e.preventDefault();
             handleMcqSkip();
           } else {
-            const keyNum = parseInt(e.key);
+            const keyNum = shortcutNumber(e.key);
             if (keyNum >= 1 && keyNum <= 5 && currentItem.options) {
               const labels = ['A', 'B', 'C', 'D', 'E'];
               const label = labels[keyNum - 1];
@@ -186,7 +186,7 @@ export function useReviewKeyboard({
             }
           }
         } else {
-          const keyNum = parseInt(e.key);
+          const keyNum = shortcutNumber(e.key);
           if (!Number.isNaN(keyNum) && keyNum >= 1 && keyNum <= 4) {
             e.preventDefault();
             handleMcqGrade(keyNum);
@@ -198,7 +198,7 @@ export function useReviewKeyboard({
           }
         }
       } else if (currentItem.type === 'video') {
-        const keyNum = parseInt(e.key);
+        const keyNum = shortcutNumber(e.key);
         if (!Number.isNaN(keyNum) && keyNum >= 1 && keyNum <= 4) {
           e.preventDefault();
           handleVideoRate(keyNum);

@@ -1,7 +1,15 @@
 import { prepareAnatomyFigure } from '@/components/shared/AnatomyReviewFigure';
 import { exhaustedReviewChallenge } from '@/lib/study/review-challenge-exhaustion';
 import type { ReviewChallengePreference } from '@/lib/study/review-challenge-preference';
-import { useState, useEffect, useCallback, useRef, useSyncExternalStore } from 'react';
+import {
+  itemExcludedByMediaPreferences,
+  normalizeReviewMediaPreferences,
+  reviewMediaFingerprint,
+  reviewMediaHideParam,
+  withoutHiddenMedia,
+  type StoredReviewMediaPreferences,
+} from '@/lib/study/review-media-preferences';
+import { useState, useEffect, useCallback, useMemo, useRef, useSyncExternalStore } from 'react';
 import { isRectObscured, FOOTER_SAFE_PX, TOP_SAFE_PX, resetScrollToTop } from './reveal-scroll';
 import { useActiveModules } from '@/hooks/useActiveModules';
 import { usePrepareReviewImages } from '@/hooks/usePrepareReviewImages';
@@ -139,6 +147,16 @@ interface UseReviewSessionOptions {
   /** Revision captured when the authenticated challenge preference was saved. */
   reviewChallengeRevision?: number | null;
   onChallengeExhausted?: (receipt: ReviewChallengePreference) => void;
+  /**
+   * "No videos" / "No images" as this device knows them. Items whose clip or
+   * picture is the question are dropped from anything the session holds or
+   * fetches; media after the answer is removed from what is displayed. A
+   * revision of 0 means never chosen here: no `hide=` is sent and the account's
+   * saved choice applies.
+   */
+  mediaPreferences?: StoredReviewMediaPreferences | null;
+  /** The account's saved choice, as the session response reports it. */
+  onServerMediaPreferences?: (value: unknown) => boolean;
 }
 
 export interface InitialReviewBatch {
@@ -615,7 +633,7 @@ async function postCohortTurn(
   throw lastError ?? new Error('Failed to load');
 }
 
-export function useReviewSession({ rotations, week, rotationSizes, fetchSlots, feedMode = 'mixed', reviewFilter, itemType, media, topics, cluster = null, focusRotation = null, userKey = null, allowUnverifiedPack = false, initialBatch = null, loadTimer = null, singleTurn = false, boundedQueue = false, replayKey = null, cohortTurn = null, reviewChallengeRevision = null, onChallengeExhausted }: UseReviewSessionOptions) {
+export function useReviewSession({ rotations, week, rotationSizes, fetchSlots, feedMode = 'mixed', reviewFilter, itemType, media, topics, cluster = null, focusRotation = null, userKey = null, allowUnverifiedPack = false, initialBatch = null, loadTimer = null, singleTurn = false, boundedQueue = false, replayKey = null, cohortTurn = null, reviewChallengeRevision = null, onChallengeExhausted, mediaPreferences = null, onServerMediaPreferences }: UseReviewSessionOptions) {
   const hasCohortTurn = cohortTurn !== null;
   const cohortJourneyId = cohortTurn?.journeyId ?? null;
   const cohortSearchTopicId = cohortTurn?.searchTopicId ?? null;
@@ -687,6 +705,13 @@ export function useReviewSession({ rotations, week, rotationSizes, fetchSlots, f
   const [exhaustedChallenge, setExhaustedChallenge] = useState<PendingChallengeExhaustion | null>(null);
   const reviewChallengeRevisionRef = useRef<number | null>(reviewChallengeRevision);
   reviewChallengeRevisionRef.current = reviewChallengeRevision;
+  const mediaPreferencesRef = useRef(mediaPreferences);
+  mediaPreferencesRef.current = mediaPreferences;
+  const onServerMediaPreferencesRef = useRef(onServerMediaPreferences);
+  onServerMediaPreferencesRef.current = onServerMediaPreferences;
+  // Set when the account's choice was adopted from a response that had
+  // already applied it, so the change needs no second fetch.
+  const adoptedMediaFingerprintRef = useRef<string | null>(null);
 
   const { activeModules } = useActiveModules(!hasCohortTurn);
 
@@ -1021,6 +1046,8 @@ export function useReviewSession({ rotations, week, rotationSizes, fetchSlots, f
       // These deliveries require a current server phase and canonical answer
       // acknowledgement. A generic offline pack cannot establish either.
       if (isProtectedPracticeItem(item)) return false;
+      // A week-long pack can predate a "No videos" / "No images" choice.
+      if (itemExcludedByMediaPreferences(item, mediaPreferencesRef.current)) return false;
       if (!item.rotation || !requestedRotations.has(item.rotation)) return false;
       if (week !== undefined && item.week !== week) return false;
       if (
@@ -1136,6 +1163,8 @@ export function useReviewSession({ rotations, week, rotationSizes, fetchSlots, f
     cohortSearchTopicOverride?: string | null,
     challengeRevisionOverride?: number | null,
     throwOnFailure = false,
+    /** Keep everything up to the card on screen and replace only what is ahead. */
+    replaceUpcomingOverride = false,
   ) => {
     // A calendar replay is the whole queue: nothing may request or adopt an
     // ordinary batch into it (difficulty refresh, retry, low-water prefetch).
@@ -1432,6 +1461,9 @@ export function useReviewSession({ rotations, week, rotationSizes, fetchSlots, f
           topics,
           cluster,
           reviewChallengeRevision: challengeRevisionOverride ?? reviewChallengeRevisionRef.current,
+          hide: mediaPreferencesRef.current && mediaPreferencesRef.current.rev > 0
+            ? reviewMediaHideParam(mediaPreferencesRef.current)
+            : undefined,
           excludeCards: excludeCardParams || undefined,
           excludeQuestions: excludeQuestionParams || undefined,
           timezone: resolvedBrowserTimezone(),
@@ -1455,7 +1487,16 @@ export function useReviewSession({ rotations, week, rotationSizes, fetchSlots, f
           singleTurn ? 1 : 2,
         )
           .then((res) => {
-            const batch = res as { items?: ReviewItem[]; sessionId?: string | null; batchId?: string | null; newRemaining?: { cards: number; questions: number } | null; reviewChallengeExhausted?: unknown };
+            const batch = res as { items?: ReviewItem[]; sessionId?: string | null; batchId?: string | null; newRemaining?: { cards: number; questions: number } | null; reviewChallengeExhausted?: unknown; mediaPreferences?: unknown };
+            if (batch.mediaPreferences !== undefined && onServerMediaPreferencesRef.current) {
+              // The response already applied the account's choice; adopting it
+              // here needs no refetch, only a prune of what is held.
+              if (onServerMediaPreferencesRef.current(batch.mediaPreferences)) {
+                adoptedMediaFingerprintRef.current = reviewMediaFingerprint(
+                  normalizeReviewMediaPreferences(batch.mediaPreferences),
+                );
+              }
+            }
             return {
               items: batch.items,
               blendTier: slot.blendTier,
@@ -1530,7 +1571,10 @@ export function useReviewSession({ rotations, week, rotationSizes, fetchSlots, f
       // in flight; its response must remain filtered against what was pending
       // when it began.
       const newItems = currentlySafeItems.filter(
-        (item) => !requestTombstoneKeys.has(reviewItemKey(item)),
+        (item) => !requestTombstoneKeys.has(reviewItemKey(item))
+          // Authoritative on the client too: a batch requested before a
+          // "No videos" / "No images" change can land after it.
+          && !itemExcludedByMediaPreferences(item, mediaPreferencesRef.current),
       );
 
       const persistLiveBatch = (batch: ReviewItem[]) => {
@@ -1640,7 +1684,7 @@ export function useReviewSession({ rotations, week, rotationSizes, fetchSlots, f
           involuntaryHead && heldOwnedByRequest
           && itemsScopeKeyRef.current === requestScopeKey,
         );
-        const replacingUpcoming = challengeRevisionOverride != null || continueReader;
+        const replacingUpcoming = challengeRevisionOverride != null || replaceUpcomingOverride || continueReader;
         const currentPrefix = replacingUpcoming
           ? itemsRef.current.slice(0, currentIndexRef.current + 1)
           : [];
@@ -1871,6 +1915,37 @@ export function useReviewSession({ rotations, week, rotationSizes, fetchSlots, f
   // when only activeModules changes (server sync after session resolves).
   const fetchItemsRef = useRef(fetchItems);
   fetchItemsRef.current = fetchItems;
+
+  /**
+   * "No videos" / "No images" changed. Drop what now needs hidden media from
+   * the queue ahead, and the card on screen too when another is ready to take
+   * its place (never blank the review), then refill what is ahead under the
+   * new choice. A change adopted from a response that already applied it only
+   * prunes.
+   */
+  const mediaFingerprint = reviewMediaFingerprint(mediaPreferences);
+  const appliedMediaFingerprintRef = useRef(mediaFingerprint);
+  useEffect(() => {
+    if (appliedMediaFingerprintRef.current === mediaFingerprint) return;
+    appliedMediaFingerprintRef.current = mediaFingerprint;
+    const adopted = adoptedMediaFingerprintRef.current === mediaFingerprint;
+    adoptedMediaFingerprintRef.current = null;
+    const preferences = mediaPreferencesRef.current;
+    const index = currentIndexRef.current;
+    const held = itemsRef.current;
+    const current = held[index];
+    const ahead = held.slice(index + 1).filter((item) => !itemExcludedByMediaPreferences(item, preferences));
+    const dropCurrent = Boolean(current) && itemExcludedByMediaPreferences(current, preferences) && ahead.length > 0;
+    const pruned = [...held.slice(0, index), ...(current && !dropCurrent ? [current] : []), ...ahead];
+    if (pruned.length !== held.length) {
+      itemsRef.current = pruned;
+      setItems(pruned);
+      if (dropCurrent) resetItemState();
+    }
+    if (adopted || boundedQueue || hasCohortTurn || allowUnverifiedPackRef.current || held.length === 0) return;
+    void fetchItemsRef.current(false, true, undefined, undefined, false, true);
+  }, [mediaFingerprint, boundedQueue, hasCohortTurn, resetItemState]);
+
 
   // Back to live by itself: when the link recovers while the session is on
   // the pack, fetch a live batch and adopt it behind the card on screen.
@@ -2407,7 +2482,13 @@ export function useReviewSession({ rotations, week, rotationSizes, fetchSlots, f
   const displayScopeMatches = itemsScopeKeyRef.current === requestScopeKey;
   const visibleItems = displayOwnerMatches && displayScopeMatches ? items : [];
   usePrepareReviewImages(visibleItems, currentIndex, expectedDisplayOwner, allowUnverifiedPack);
-  const displayItems = useReviewImageChoices(visibleItems, currentIndex, expectedDisplayOwner);
+  const choiceItems = useReviewImageChoices(visibleItems, currentIndex, expectedDisplayOwner);
+  // Media after the answer is not rendered under "No videos" / "No images":
+  // the item keeps its index and works from its text.
+  const displayItems = useMemo(
+    () => choiceItems.map((item) => withoutHiddenMedia(item, mediaPreferences)),
+    [choiceItems, mediaPreferences],
+  );
   const currentItem = displayOwnerMatches && displayScopeMatches
     ? (displayItems[currentIndex] as ReviewItem | undefined)
     : undefined;

@@ -87,13 +87,16 @@ export async function loadLeaderboard(
         FROM "LearningEvent" d
         WHERE d."userId" = e."userId"
           AND d."eventType" = ANY(${ANSWER_EVENT_TYPES}::text[])
-          AND d."isCorrect" IS NOT NULL
+          AND ((d."eventType" = 'card_reviewed' AND d.quality IS NOT NULL)
+            OR (d."eventType" = 'mcq_attempted' AND d."isCorrect" IS NOT NULL))
           AND d."timestamp" >= ${streakStart}
       ) AS "activeDays"
     FROM "LearningEvent" e
     WHERE e."userId" = ANY(${ids}::text[])
       AND e."eventType" = ANY(${ANSWER_EVENT_TYPES}::text[])
-      AND e."isCorrect" IS NOT NULL
+      -- A graded card records quality, never isCorrect (as the stats page counts it).
+      AND ((e."eventType" = 'card_reviewed' AND e.quality IS NOT NULL)
+        OR (e."eventType" = 'mcq_attempted' AND e."isCorrect" IS NOT NULL))
     GROUP BY e."userId"
   `);
   const byUser = new Map(aggregates.map((row) => [row.userId, row]));

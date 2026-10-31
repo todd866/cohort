@@ -1,4 +1,5 @@
 import type { NextConfig } from 'next';
+import path from 'node:path';
 import { vercelAnalyticsCspSources } from './src/lib/analytics-config';
 
 function configuredHttpsUrl(value: string | undefined): URL | null {
@@ -30,6 +31,14 @@ const analyticsConnectSourceList = analyticsCsp.connect.length > 0
   : '';
 
 const nextConfig: NextConfig = {
+  // Bare `zod` in browser bundles goes through the jitless shim: zod 4's eval
+  // probe is a CSP violation report on every page otherwise.
+  webpack: (config, { isServer }) => {
+    if (!isServer) {
+      config.resolve.alias = { ...config.resolve.alias, zod$: path.resolve(process.cwd(), 'src/lib/zod-browser.ts') };
+    }
+    return config;
+  },
   distDir: process.env.NEXT_DIST_DIR?.trim() || '.next',
   poweredByHeader: false,
   compress: true,

@@ -79,12 +79,30 @@ function isMd1AhctItem(item: StrandIdentity): boolean {
   return item.rotation === 'anatomy';
 }
 
+/**
+ * The O&G attachment deck (2026-10-28) borrows thousands of anatomy plates and
+ * BlueLink cadaver images of the pelvis and abdominal walls beside PWH's
+ * clinical corpus. Without a mix the anatomy, which outnumbers it, fills most
+ * seats; the attachment is clinical first, with the anatomy that explains it.
+ */
+const OBGYN_ANATOMY_ROTATIONS: ReadonlySet<string> = new Set(['anatomy', 'surgical-sciences']);
+
+function isObgynAnatomyItem(item: StrandIdentity): boolean {
+  return OBGYN_ANATOMY_ROTATIONS.has(item.rotation ?? '');
+}
+
 export const DECK_STRAND_MIX: Readonly<Record<string, DeckStrandMix>> = Object.freeze({
   [MD1_DECK]: Object.freeze({
     strands: Object.freeze([
       Object.freeze({ id: 'mmca', share: 0.35, matches: isMd1MmcaItem }),
       Object.freeze({ id: 'ahct', share: 0.15, matches: isMd1AhctItem }),
       Object.freeze({ id: 'exam', share: 0.5, matches: () => true }),
+    ]),
+  }),
+  obgyn: Object.freeze({
+    strands: Object.freeze([
+      Object.freeze({ id: 'anatomy', share: 0.3, matches: isObgynAnatomyItem }),
+      Object.freeze({ id: 'clinical', share: 0.7, matches: () => true }),
     ]),
   }),
 });

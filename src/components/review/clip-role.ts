@@ -21,6 +21,9 @@ export interface ClipPromptData {
   publicReuse?: { copyright: string; changes: string };
   startSecs: number;
   endSecs: number;
+  /** On the reviewed sensitive list (`src/lib/video/sensitive-clips.json`).
+   *  With blur on, review holds it behind the sensitive-media gate. */
+  sensitive?: boolean;
 }
 
 /**

@@ -3,6 +3,7 @@
 import { useRef, useState, type ReactNode, type RefObject } from 'react';
 import { rotationLabel } from '@/lib/rotation-labels';
 import { fetchWithDeadline, CLIENT_FETCH_DEADLINE_MS } from '@/lib/fetch-with-deadline';
+import { matchCourseDescription, type CourseMatch } from '@/lib/onboarding/course-match';
 
 // Full names for first-contact users — the short codes (CC, PAAM) mean
 // nothing before you know the course.
@@ -55,6 +56,7 @@ export function RotationOnboarding({ rotations, onDone, onSkip, current, renderH
   const [error, setError] = useState<string | null>(null);
   const [describing, setDescribing] = useState(false);
   const [description, setDescription] = useState('');
+  const [offer, setOffer] = useState<CourseMatch | null>(null);
   const [aiOpened, setAiOpened] = useState(false);
   const [aiVisible, setAiVisible] = useState(false);
   const aiButton = useRef<HTMLButtonElement>(null);
@@ -96,6 +98,14 @@ export function RotationOnboarding({ rotations, onDone, onSkip, current, renderH
       }, CLIENT_FETCH_DEADLINE_MS);
     } catch {
       // Deliberately swallowed: see above.
+    }
+    // A description naming one rotation md3 teaches gets that rotation offered,
+    // started only by their tap; anything else keeps the default (24 Oct 2026).
+    const match = matchCourseDescription(message, rotations);
+    if (match) {
+      setOffer(match);
+      setSaving(null);
+      return;
     }
     leaveWithoutARotation();
   };
@@ -180,7 +190,42 @@ export function RotationOnboarding({ rotations, onDone, onSkip, current, renderH
           </span>
         </button>
       )}
-      {describing && (
+      {offer && (
+        <div className="mt-4">
+          <div className="flex gap-2">
+            {offer.kind === 'rotation' ? (
+              <button
+                type="button"
+                disabled={saving !== null}
+                onClick={() => void pick(offer.rotation)}
+                aria-label={`Start ${FULL_NAMES[offer.rotation] ?? rotationLabel(offer.rotation)}`}
+                className="flex-1 rounded-xl bg-[var(--md-primary)] px-4 py-3.5 text-left text-base font-medium text-[var(--md-on-primary)] transition-opacity disabled:opacity-60"
+              >
+                Start {rotationLabel(offer.rotation)}{saving === offer.rotation ? '…' : ''}
+              </button>
+            ) : (
+              <a
+                href="https://cohort.md"
+                className="flex-1 rounded-xl bg-[var(--md-primary)] px-4 py-3.5 text-base font-medium text-[var(--md-on-primary)]"
+              >
+                Open USMLE Step 1 on cohort.md
+              </a>
+            )}
+            <button
+              type="button"
+              disabled={saving !== null}
+              onClick={leaveWithoutARotation}
+              className="rounded-xl border border-[var(--md-outline-variant)] px-4 py-3.5 text-base font-medium text-[var(--md-on-surface-variant)] disabled:opacity-60"
+            >
+              Not now
+            </button>
+          </div>
+          <p className="mt-2 text-sm text-[var(--md-on-surface-variant)]">
+            The closest match to your course. A person reads your note and can fit it better.
+          </p>
+        </div>
+      )}
+      {describing && !offer && (
         <div className="mt-4">
           <label
             htmlFor="onboarding-other"

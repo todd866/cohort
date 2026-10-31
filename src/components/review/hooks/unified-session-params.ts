@@ -28,6 +28,8 @@ export interface UnifiedSessionParamOpts {
   serveRequestId?: string;
   /** Revision of the learner's challenge preference captured for this draw. */
   reviewChallengeRevision?: number | null;
+  /** "No videos" / "No images" as this device knows them (`video,image` or `none`). */
+  hide?: string;
 }
 
 /**
@@ -57,6 +59,7 @@ export function buildUnifiedSessionParams(slot: FetchSlot, opts: UnifiedSessionP
   if (opts.cluster) params.set('cluster', opts.cluster);
   if (opts.timezone) params.set('tz', opts.timezone);
   if (opts.serveRequestId) params.set('sid', opts.serveRequestId);
+  if (opts.hide) params.set('hide', opts.hide);
   if (opts.reviewChallengeRevision != null) {
     params.set('reviewChallengeRevision', String(opts.reviewChallengeRevision));
   }

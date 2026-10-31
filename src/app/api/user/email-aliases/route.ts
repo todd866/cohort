@@ -20,7 +20,10 @@ import { checkUserRateLimit } from '@/lib/rate-limit';
 import { getOutboundEmailConfig } from '@/lib/outbound-email-config';
 
 const emailAliasPostSchema = z.object({
-  email: z.string().trim().email('Invalid email format'),
+  // Zod 4 words type errors differently; keep the strings clients already see.
+  email: z.string({
+    error: (issue) => (issue.input === undefined ? 'Required' : `Expected string, received ${typeof issue.input}`),
+  }).trim().email('Invalid email format'),
   label: z.string().trim().max(100).nullable().optional(),
 });
 

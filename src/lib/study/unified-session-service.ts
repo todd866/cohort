@@ -84,6 +84,14 @@ import { isComposedDeck } from '@/lib/personal-decks';
 import { examPreparationRolloutEnabled, resolveExamPreparationWindow } from './exam-preparation-window';
 import { inPlayStudyRotations } from '@/lib/study/in-play-rotations';
 import {
+  DEFAULT_REVIEW_MEDIA_PREFERENCES,
+  effectiveReviewMediaPreferences,
+  hasMediaExclusions,
+  parseReviewMediaHideParam,
+  reviewMediaPreferencesFromExperience,
+} from './review-media-preferences';
+import { withReviewMediaPreferences, type ReviewMediaEgress } from './review-media-egress';
+import {
   dessertCrossSourceSlots,
   dessertOtherSourceShare,
   dessertOvershootRatio,
@@ -342,6 +350,19 @@ export async function getUnifiedSession(
   authOverride?: UnifiedSessionAuthOverride,
   options: UnifiedSessionOptions = {},
 ) {
+  // "No videos" / "No images" are resolved inside, once identity is known.
+  // Every lane's response then passes this one boundary.
+  const mediaEgress: ReviewMediaEgress = { preferences: { ...DEFAULT_REVIEW_MEDIA_PREFERENCES }, stored: null };
+  const response = await buildUnifiedSessionResponse(request, authOverride, options, mediaEgress);
+  return withReviewMediaPreferences(response, mediaEgress);
+}
+
+async function buildUnifiedSessionResponse(
+  request: NextRequest,
+  authOverride: UnifiedSessionAuthOverride | undefined,
+  options: UnifiedSessionOptions,
+  mediaEgress: ReviewMediaEgress,
+) {
   const t0 = performance.now();
   const { searchParams } = new URL(request.url);
   const requestHost = (request.headers.get('host') ?? new URL(request.url).host)
@@ -505,6 +526,7 @@ export async function getUnifiedSession(
           studyGoal: true,
           reviewChallenge: true,
           reviewChallengeRevision: true,
+          experience: true,
           rotations: {
             where: { rotation },
             select: { examDate: true },
@@ -517,6 +539,15 @@ export async function getUnifiedSession(
     return NextResponse.json({ error: 'Could not load your review preferences. Please retry.' }, { status: 503 });
   }
   const reviewChallenge = reviewChallengePreference(userScope);
+  // An explicit `hide=` is what the learner's toggles show right now; without
+  // one the saved choice applies (a second device, or a background tab).
+  const storedMediaPreferences = userScope ? reviewMediaPreferencesFromExperience(userScope.experience) : null;
+  const mediaPreferences = effectiveReviewMediaPreferences(
+    parseReviewMediaHideParam(searchParams.get('hide')) ?? storedMediaPreferences ?? DEFAULT_REVIEW_MEDIA_PREFERENCES,
+    media,
+  );
+  mediaEgress.preferences = mediaPreferences;
+  mediaEgress.stored = storedMediaPreferences;
   const requestedChallengeRevision = searchParams.get('reviewChallengeRevision');
   if (requestedChallengeRevision !== null && (
     !/^\d+$/.test(requestedChallengeRevision)
@@ -906,6 +937,7 @@ export async function getUnifiedSession(
     batchId,
     typeFilter,
     media,
+    ...(hasMediaExclusions(mediaPreferences) ? { mediaPreferences } : {}),
     difficultyFilter,
     topicsFilter,
     clusterFilter,

@@ -22,6 +22,7 @@ import type { ClipPromptData } from '@/components/review/clip-role';
 import { getSignedVideoUrl } from '@/lib/video-storage';
 import { logger } from '@/lib/logger';
 import { isPublicClipId, reviewedPublicClip, type PublicClipCandidate } from './public-clips';
+import { isSensitiveClipSlug } from './sensitive-clips';
 
 export type ClipDenialReason = 'rights' | 'tier' | 'deleted';
 
@@ -163,6 +164,7 @@ export async function resolveClipsForSession(
     where: { id: { in: ids }, deletedAt: null, source: { rightsStatus: 'cleared' } },
     select: {
       id: true,
+      slug: true,
       sourceId: true,
       r2Key: true,
       posterR2Key: true,
@@ -198,6 +200,7 @@ export async function resolveClipsForSession(
         ...sourceAttribution(clip),
         startSecs: clip.startSecs,
         endSecs: clip.endSecs,
+        ...(isSensitiveClipSlug(clip.slug) ? { sensitive: true } : {}),
       });
     } catch {
       // One malformed or unavailable object must not erase healthy clips in

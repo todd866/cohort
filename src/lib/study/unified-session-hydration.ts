@@ -1,4 +1,5 @@
 import { matchesResolvedMedia } from './media-review';
+import { itemExcludedByMediaPreferences, type ReviewMediaPreferences } from './review-media-preferences';
 import type { ReviewMedia } from '@/lib/review/review-intent';
 import { prisma } from '@/lib/prisma';
 import { loadCurrentSessionContent, type CurrentContentContext } from './current-session-content';
@@ -163,6 +164,8 @@ export async function hydrateScheduledItems(
   hydrationData: ScheduledItemHydrationData,
   options: {
     media?: ReviewMedia;
+    /** "No videos" / "No images": items that need the hidden media are dropped. */
+    mediaPreferences?: ReviewMediaPreferences;
     rotation: string;
     includeVideos?: boolean;
   },
@@ -396,7 +399,8 @@ export async function hydrateScheduledItems(
      }
     }),
   );
-  const hydrated = results.filter((item): item is UnifiedItem => !!item && matchesResolvedMedia(item, options.media))
+  const hydrated = results.filter((item): item is UnifiedItem => !!item && matchesResolvedMedia(item, options.media)
+    && !itemExcludedByMediaPreferences(item, options.mediaPreferences))
     .map(item => options.media ? { ...item, media: options.media } : item);
 
   // Final cloze-sibling boundary. Most scheduler lanes carry variantGroupId

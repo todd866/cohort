@@ -1,13 +1,13 @@
 'use client';
 
-import { useCallback, useEffect, useLayoutEffect, useRef, useState } from 'react';
+import { useEffect, useLayoutEffect, useRef, useState } from 'react';
+import { SensitiveMediaGate, useSensitiveMediaConcealed } from '@/components/media/SensitiveMediaGate';
 import { clipIsPrompt, type ClipPromptData } from './clip-role';
 import { useClipUrlRecovery } from './clip-url-recovery';
-import { CLIP_FRAME_CLASS, useClipFrame } from './clip-frame';
-import { applyClipMute, observeClipAutoplay } from './clip-autoplay';
-import { useClipPlaybackPreferences, writeAutoplay } from './clip-playback-preferences';
-export { CLIP_AUTOPLAY_KEY } from './clip-playback-preferences';
-import { isShortClipDuration, isShortClipWindow } from '@/lib/video/clip-duration';
+import { applyClipFrameWidth, CLIP_FRAME_CLASS, useClipFrame } from './clip-frame';
+import { observeClipAutoplay } from './clip-autoplay';
+import { ClipTapLayer } from './clip-tap-layer';
+import { isShortClipWindow } from '@/lib/video/clip-duration';
 
 export { clipIsPrompt };
 export type { ClipPromptData };
@@ -19,14 +19,15 @@ export type { ClipPromptData };
  * The deliberate choices here all come from the same observation: this is a
  * *question*, not a video the learner is watching.
  *
- *  - **Looping, and one autoplay switch.** For a manoeuvre the useful watch
- *    is the third one. The switch is remembered. On, the clip starts by
- *    itself, muted. Play/Replay enables sound when the file has any. Off, nothing
- *    starts until Play. Operative clips have the audio stripped — the
- *    narration usually says the answer (see `clip-answer-leak.ts`) — so
- *    "sound" on those is silence. Clips with retained sound also start
- *    muted, as mobile browsers require; Play/Replay is the explicit gesture
- *    that enables it.
+ *  - **It just plays, like a social-video feed.** For a manoeuvre the useful
+ *    watch is the third one, so the clip starts by itself when it is on
+ *    screen, muted and looping, and fills the phone's width. There is no
+ *    autoplay switch and no control bar: a tap on the picture pauses or
+ *    resumes it (owner, 29 Oct 2026: "It should just play, as big as it can,
+ *    full-width"). Operative clips have the audio stripped — the narration
+ *    usually says the answer (see `clip-answer-leak.ts`). Clips with retained
+ *    sound also start muted, as mobile browsers require; a speaker button on
+ *    the picture turns the sound on.
  *
  *  - **Diagnostic source titles withheld until reveal.** "Laparoscopic cholecystectomy" under
  *    an unanswered "what operation is this?" is the answer in the footer. The
@@ -44,19 +45,64 @@ interface ClipPromptProps {
   revealed: boolean;
   /** Rendered in the `lg` side pane (see `review-panes.ts`). */
   inSidePane?: boolean;
+  /**
+   * The review item showing this clip. Consent to a sensitive clip belongs to
+   * one occurrence: the next card reusing the clip is concealed again.
+   */
+  occurrenceKey?: string;
+  /** Reveal/skip the answer without showing a sensitive clip. */
+  onSkipSensitive?: () => void;
 }
 
-export function ClipPrompt({ clip, caption, revealed, inSidePane = false }: ClipPromptProps) {
+/**
+ * A clip on the reviewed sensitive list (`src/lib/video/sensitive-clips.json`)
+ * sits behind the shared sensitive-media gate while Blur images is on. There it
+ * stays on its poster, loads no more than metadata and does not start; once
+ * shown it plays like any other clip. Turning blur back on conceals and stops it.
+ */
+export function ClipPrompt({ clip, caption, revealed, inSidePane = false, occurrenceKey, onSkipSensitive }: ClipPromptProps) {
+  const sensitive = clip.sensitive === true;
+  return (
+    <figure className={`my-3 [@media(max-height:500px)]:my-1 ${inSidePane ? 'lg:my-0' : ''}`}>
+      <SensitiveMediaGate
+        consentKey={`${occurrenceKey ?? 'clip'}:${clip.id}`}
+        sensitive={sensitive}
+        mediaKind="clip"
+        onSkip={sensitive && !revealed ? onSkipSensitive : undefined}
+        captureReviewSpace={sensitive && !revealed}
+      >
+        <ClipPromptFrame clip={clip} caption={caption} revealed={revealed} />
+      </SensitiveMediaGate>
+
+      {caption && (
+        <figcaption className="mt-2 text-sm text-[var(--md-on-surface-variant)] leading-snug">
+          {caption}
+        </figcaption>
+      )}
+
+      {revealed ? <ClipAttribution clip={clip} /> : clip.publicReuse ? (
+        <details className="mt-1.5 text-xs text-[var(--md-on-surface-variant)]">
+          <summary className="cursor-pointer">Source · {clip.sourceLicence}</summary>
+          <ClipAttribution clip={clip} />
+        </details>
+      ) : null}
+    </figure>
+  );
+}
+
+/** The picture itself. It remounts when the gate conceals or shows it, so its
+ *  playback effects always start from the current consent. */
+function ClipPromptFrame({ clip, caption, revealed }: {
+  clip: ClipPromptData;
+  caption?: string | null;
+  revealed: boolean;
+}) {
   const videoRef = useRef<HTMLVideoElement>(null);
-  const figureRef = useRef<HTMLElement>(null);
   const frameRef = useRef<HTMLDivElement>(null);
+  const concealed = useSensitiveMediaConcealed();
   const { src, poster, onError, unavailable: deliveryUnavailable } = useClipUrlRecovery(clip);
   const frame = useClipFrame();
-  const { reducedMotion, autoplay } = useClipPlaybackPreferences();
   const audible = !clip.audioStripped;
-  // One switch starts every short clip muted. Play/Replay can enable sound.
-  // Off and reduced motion wait for Play.
-  const shouldStart = !reducedMotion && autoplay;
   const declaredShort = isShortClipWindow(clip.startSecs, clip.endSecs);
   const mediaKey = `${clip.id}:${src}:${declaredShort ? 'short' : 'unavailable'}`;
   const [mediaStatus, setMediaStatus] = useState({ key: mediaKey, unavailable: !declaredShort });
@@ -68,11 +114,13 @@ export function ClipPrompt({ clip, caption, revealed, inSidePane = false }: Clip
   // Set when the browser refuses play(). The clip then waits for a tap.
   const [needsTap, setNeedsTap] = useState(false);
 
-  // Keep playback controls and the source disclosure above the fixed answer
+  // Keep the picture and the source disclosure above the fixed answer
   // bar. Long stems and enlarged text retain a useful minimum and may scroll.
   useLayoutEffect(() => {
-    const figure = figureRef.current;
     const element = frameRef.current;
+    // Read from the DOM: a child's layout effect runs before the parent's ref
+    // is attached, so the figure ref is still null on first mount.
+    const figure = element?.closest('figure');
     if (!figure || !element) return;
     const root = element.closest('[data-review-content]')?.parentElement ?? document;
     const footer = [...root.querySelectorAll('[data-review-footer]')]
@@ -83,8 +131,7 @@ export function ClipPrompt({ clip, caption, revealed, inSidePane = false }: Clip
       const rect = element.getBoundingClientRect();
       const controls = figure.getBoundingClientRect().bottom - rect.bottom;
       const height = Math.max(viewportBottom <= 500 ? 100 : 120, bottom - rect.top - controls - 8);
-      const width = `${height * frame.ratio}px`;
-      if (element.style.maxWidth !== width) element.style.maxWidth = width;
+      applyClipFrameWidth(element, height, frame.ratio);
     };
     fit();
     const observer = typeof ResizeObserver === 'undefined' ? null : new ResizeObserver(fit);
@@ -99,58 +146,22 @@ export function ClipPrompt({ clip, caption, revealed, inSidePane = false }: Clip
     };
   }, [frame.ratio, src, revealed]);
 
-  const settle = useCallback((pending: Promise<void> | undefined) => {
-    if (pending && typeof pending.then === 'function') {
-      void pending.then(
-        () => setNeedsTap(false),
-        () => setNeedsTap(true),
-      );
-    }
-  }, []);
-
-  const playFromStart = useCallback((withSound: boolean) => {
-    const video = videoRef.current;
-    if (!video || !declaredShort || !isShortClipDuration(video.duration)) {
-      if (video && declaredShort && Number.isNaN(video.duration)) return;
-      setMediaStatus({ key: mediaKey, unavailable: true });
-      video?.pause();
-      return;
-    }
-    applyClipMute(video, !withSound);
-    video.currentTime = 0;
-    settle(video.play());
-  }, [declaredShort, mediaKey, settle]);
-
   useEffect(() => {
     const video = videoRef.current;
     if (!video) return;
-    video.setAttribute('fetchpriority', 'high');
+    video.setAttribute('fetchpriority', concealed ? 'low' : 'high');
     if (!declaredShort) {
       video.removeAttribute('src');
       video.pause();
       return;
     }
     return observeClipAutoplay(video, {
-      enabled: shouldStart,
+      // Concealed: stay on the poster with metadata only, never start.
+      enabled: !concealed,
       onDuration: valid => setMediaStatus({ key: mediaKey, unavailable: !valid }),
       onBlocked: setNeedsTap,
     });
-  }, [clip.id, src, declaredShort, mediaKey, shouldStart]);
-
-  const replay = useCallback(() => {
-    playFromStart(audible);
-  }, [audible, playFromStart]);
-
-  const toggleAutoplay = useCallback(() => {
-    const next = !autoplay;
-    // Enabling automatic playback always starts muted, including on Safari.
-    if (next) playFromStart(false);
-    else {
-      videoRef.current?.pause();
-      setNeedsTap(true);
-    }
-    writeAutoplay(next);
-  }, [autoplay, playFromStart]);
+  }, [clip.id, src, declaredShort, mediaKey, concealed]);
 
   const label = [
     audible ? 'Clip with sound.' : 'Silent clinical clip.',
@@ -158,63 +169,32 @@ export function ClipPrompt({ clip, caption, revealed, inSidePane = false }: Clip
   ].join(' ');
 
   return (
-    <figure ref={figureRef} className={`my-3 [@media(max-height:500px)]:my-1 ${inSidePane ? 'lg:my-0' : ''}`}>
-      <div ref={frameRef} className={`${CLIP_FRAME_CLASS} relative rounded-lg overflow-hidden border border-[var(--md-outline-variant)] bg-black`} style={frame.frameStyle}>
-        <video
-          ref={videoRef}
-          key={`${clip.id}:${declaredShort ? src : 'unavailable'}`}
-          src={declaredShort ? src : undefined}
-          poster={poster ?? undefined}
-          onError={onError}
-          muted
-          loop
-          playsInline
-          preload={declaredShort ? 'metadata' : 'none'}
-          autoPlay={false}
-          aria-label={label}
-          onLoadedMetadata={frame.onLoadedMetadata}
-          style={frame.videoStyle}
-          className="block w-full h-auto object-contain"
-        />
-        {mediaUnavailable && (
-          <div className="absolute inset-x-2 bottom-2 rounded bg-[var(--md-inverse-surface)] px-2 py-1 text-xs text-[var(--md-inverse-on-surface)]" role="status">
-            Clip unavailable for this card.
-          </div>
-        )}
-      </div>
-
-      <div className="mt-2 flex items-start justify-between gap-3">
-        {caption ? (
-          <figcaption className="text-sm text-[var(--md-on-surface-variant)] leading-snug">
-            {caption}
-          </figcaption>
-        ) : <span />}
-        <div className="flex shrink-0 gap-2">
-          <button
-            type="button"
-            aria-pressed={autoplay}
-            onClick={toggleAutoplay}
-            className={`min-h-[32px] px-2.5 py-1 rounded-md border bg-[var(--md-surface-container-lowest)] text-xs font-medium cursor-pointer transition-colors hover:border-[var(--md-primary)] hover:text-[var(--md-primary)] ${autoplay ? 'border-[var(--md-primary)] text-[var(--md-primary)]' : 'border-[var(--md-outline-variant)] text-[var(--md-on-surface-variant)]'}`}
-          >
-            {autoplay ? 'Autoplay on' : 'Autoplay off'}
-          </button>
-          <button
-            type="button"
-            onClick={replay}
-            className="min-h-[32px] px-2.5 py-1 rounded-md border border-[var(--md-outline-variant)] bg-[var(--md-surface-container-lowest)] text-xs font-medium text-[var(--md-on-surface-variant)] hover:border-[var(--md-primary)] hover:text-[var(--md-primary)] cursor-pointer transition-colors"
-          >
-            {!shouldStart || needsTap ? 'Play' : 'Replay'}
-          </button>
+    <div ref={frameRef} className={`${CLIP_FRAME_CLASS} relative rounded-lg overflow-hidden border border-[var(--md-outline-variant)] bg-black`} style={frame.frameStyle}>
+      <video
+        ref={videoRef}
+        key={`${clip.id}:${declaredShort ? src : 'unavailable'}`}
+        src={declaredShort ? src : undefined}
+        poster={poster ?? undefined}
+        onError={onError}
+        muted
+        loop
+        playsInline
+        preload={declaredShort ? 'metadata' : 'none'}
+        autoPlay={false}
+        aria-label={label}
+        onLoadedMetadata={frame.onLoadedMetadata}
+        style={frame.videoStyle}
+        className="block w-full h-auto object-contain"
+      />
+      {declaredShort && !mediaUnavailable && !concealed && (
+        <ClipTapLayer key={`tap:${clip.id}:${src}`} videoRef={videoRef} audible={audible} blocked={needsTap} label={label} />
+      )}
+      {mediaUnavailable && (
+        <div className="absolute inset-x-2 bottom-2 rounded bg-[var(--md-inverse-surface)] px-2 py-1 text-xs text-[var(--md-inverse-on-surface)]" role="status">
+          Clip unavailable for this card.
         </div>
-      </div>
-
-      {revealed ? <ClipAttribution clip={clip} /> : clip.publicReuse ? (
-        <details className="mt-1.5 text-xs text-[var(--md-on-surface-variant)]">
-          <summary className="cursor-pointer">Source · {clip.sourceLicence}</summary>
-          <ClipAttribution clip={clip} />
-        </details>
-      ) : null}
-    </figure>
+      )}
+    </div>
   );
 }
 

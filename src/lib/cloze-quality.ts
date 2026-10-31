@@ -17,6 +17,17 @@ export function isImagePromptNamingCard(card: { front: string; imageUrl?: string
   return Boolean(card.imageUrl) && /\bname the (?:(?:highlighted|indicated|labelled|labeled|numbered)\b|diagnosis shown\b)/i.test(card.front);
 }
 
+/**
+ * A flowchart hide-one occlusion card (scripts/images/flowchart-occlusion.ts): the
+ * figure hides one box and the answer is that box's text, so it is a clause or a
+ * dose line by construction, not a tightenable recall span. The generator writes
+ * the fixed caption tail "The pink box hides the answer."; a figure alone is a
+ * wired illustration on an ordinary cloze and stays policed.
+ */
+export function isImageOcclusionCard(card: { imageUrl?: string | null; imageCaption?: string | null }): boolean {
+  return Boolean(card.imageUrl) && /\bhides the answer\b/i.test(card.imageCaption ?? '');
+}
+
 const RANGE_DASH = '[-–—]';
 const SIMPLE_NUMBER = /^[<>≤≥]?\s*-?\d+(?:\.\d+)?$/;
 const SHORT_TOKEN = /^[A-Za-z0-9]{1,2}$/;

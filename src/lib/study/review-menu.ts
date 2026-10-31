@@ -22,6 +22,7 @@ export const DEFAULT_REVIEW_MENU_SUBJECTS = [
   'neurosurg',
   'radiology',
   'neuroradiology',
+  'obgyn',
 ] as const;
 
 /** The only Step 1 study rotation. */

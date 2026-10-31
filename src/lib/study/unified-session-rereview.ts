@@ -1,4 +1,5 @@
 import { mediaCandidateWhere, matchesResolvedMedia, mediaCandidateLimit } from './media-review';
+import { itemExcludedByMediaPreferences } from './review-media-preferences';
 import { NextResponse } from 'next/server';
 import { prisma } from '@/lib/prisma';
 import { filterDeliverableReinforcementCardRows } from '@/lib/usmle/reinforcement-card-delivery';
@@ -174,6 +175,10 @@ export async function tryRereviewSession(ctx: SessionContext): Promise<NextRespo
     const clip = card.clipId ? clipMap.get(card.clipId) ?? null : null;
     if (card.clipRole === 'prompt' && !clip) return null;
     if (!matchesResolvedMedia({ imageUrl: resolved?.imageUrl, clip }, ctx.media)) return null;
+    if (itemExcludedByMediaPreferences({
+      type: 'card', front: card.front, imageUrl: resolved?.imageUrl, imageKey: resolved?.imageKey,
+      imageRole: card.imageRole, imageMeta: resolved?.imageMeta, clipRole: card.clipRole,
+    }, ctx.mediaPreferences)) return null;
     return {
       type: 'card' as const,
       ...(ctx.media ? { media: ctx.media } : {}),

@@ -334,7 +334,7 @@ export function TopicHeatmap({
             {rotationLabel}
           </h2>
           <select aria-label="Map measure" value={mode} onChange={event => setMode(event.target.value as 'coverage' | 'readiness')}
-            className="min-h-11 rounded-lg border border-[var(--md-outline-variant)] bg-[var(--md-surface)] px-2 text-xs text-[var(--md-on-surface)]">
+            className="min-h-11 rounded-lg border border-[var(--md-outline-variant)] bg-[var(--md-surface)] pl-3 text-xs text-[var(--md-on-surface)]">
             <option value="coverage">Coverage</option><option value="readiness">Readiness</option>
           </select>
           {userId && <button type="button" aria-haspopup="dialog"

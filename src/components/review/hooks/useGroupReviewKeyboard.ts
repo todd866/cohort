@@ -1,7 +1,7 @@
 import { useEffect } from 'react';
 import { isTracingType } from '../groupReviewLogic';
 import type { QuestionGroupStep, StepOption } from '@/lib/question-groups/types';
-import { isEditableShortcutTarget, isInteractiveActivationTarget } from './keyboardTarget';
+import { isEditableShortcutTarget, isInteractiveActivationTarget, shortcutNumber } from './keyboardTarget';
 
 interface UseGroupReviewKeyboardOptions {
   currentStep: QuestionGroupStep | undefined;
@@ -65,10 +65,8 @@ export function useGroupReviewKeyboard({
           }
         } else {
           // 1-4 to grade, space/enter continues without recording confidence
-          if (e.key === '1') { e.preventDefault(); handleCardGrade(1); }
-          if (e.key === '2') { e.preventDefault(); handleCardGrade(2); }
-          if (e.key === '3') { e.preventDefault(); handleCardGrade(3); }
-          if (e.key === '4') { e.preventDefault(); handleCardGrade(4); }
+          const grade = shortcutNumber(e.key);
+          if (grade >= 1 && grade <= 4) { e.preventDefault(); handleCardGrade(grade); }
           if (e.key === ' ' || e.key === 'Enter') {
             e.preventDefault();
             advanceWithoutRating();
@@ -85,7 +83,7 @@ export function useGroupReviewKeyboard({
             return;
           }
           // 1-5 to select option (matches display)
-          const keyNum = parseInt(e.key, 10);
+          const keyNum = shortcutNumber(e.key);
           if (keyNum >= 1 && keyNum <= displayOptions.length) {
             const option = displayOptions[keyNum - 1];
             if (option) {
@@ -95,10 +93,8 @@ export function useGroupReviewKeyboard({
           }
         } else if (mcqShowRating) {
           // 1-4 to rate after answering, space/enter continues without confidence
-          if (e.key === '1') { e.preventDefault(); handleMcqGrade(1); }
-          if (e.key === '2') { e.preventDefault(); handleMcqGrade(2); }
-          if (e.key === '3') { e.preventDefault(); handleMcqGrade(3); }
-          if (e.key === '4') { e.preventDefault(); handleMcqGrade(4); }
+          const grade = shortcutNumber(e.key);
+          if (grade >= 1 && grade <= 4) { e.preventDefault(); handleMcqGrade(grade); }
           if (e.key === ' ' || e.key === 'Enter') {
             e.preventDefault();
             handleMcqContinue();

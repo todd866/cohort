@@ -6,7 +6,7 @@ const ServingFingerprintSchema = z.string().regex(/^[a-f0-9]{64}$/);
 const OpenUsmleReleaseManifestSchema = z.object({
   schemaVersion: z.literal(2),
   questionIds: z.array(QuestionIdSchema).min(1),
-  questionFingerprints: z.record(ServingFingerprintSchema),
+  questionFingerprints: z.record(z.string(), ServingFingerprintSchema),
 }).strict();
 
 export interface OpenUsmleReleaseManifest {

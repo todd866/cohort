@@ -149,7 +149,7 @@ export function CardItemView({
   // learner presses play, so a long video on a card costs a reader who ignores
   // it exactly nothing. See ClipContext for the reasoning.
   const contextClipNode = !clipPrompt && item.clip && cardFullyRevealed ? (
-    <ClipContext clip={item.clip} caption={item.clipCaption} revealed={cardFullyRevealed} />
+    <ClipContext clip={item.clip} caption={item.clipCaption} revealed={cardFullyRevealed} occurrenceKey={item.id} />
   ) : null;
 
   const clipNode = clipPrompt && item.clip ? (
@@ -158,11 +158,32 @@ export function CardItemView({
       caption={clipCaptionInQuestionPane ? null : item.clipCaption}
       revealed={cardFullyRevealed}
       inSidePane={sidePane}
+      occurrenceKey={item.id}
+      onSkipSensitive={handleReveal}
+    />
+  ) : null;
+
+  // A hide-one diagram splits in two (owner flag, 31 Oct 2026): the zoomed
+  // window reads as part of the question, under the stem, and the whole chart
+  // takes the media pane. Phones stack them in the same order.
+  const regionSplit = Boolean(item.imageMeta?.regionFocus && item.imageMeta?.revealRegions?.length);
+  const windowNode = figureMounted && regionSplit ? (
+    <CardImage
+      src={item.imageUrl}
+      caption={presentation.caption}
+      meta={item.imageMeta}
+      prompt={figureIsPrompt}
+      revealed={cardFullyRevealed}
+      imageKey={item.imageKey ?? null}
+      trackingComponentId={item.id}
+      onSkipSensitive={figureIsPrompt ? handleReveal : undefined}
+      regionPart="window"
     />
   ) : null;
 
   const figureNode = figureMounted ? (
     <CardImage
+      regionPart={regionSplit ? 'overview' : undefined}
       src={item.imageUrl}
       caption={presentation.caption}
       meta={item.imageMeta}
@@ -277,8 +298,15 @@ export function CardItemView({
   // where it sits today. Both leave the media pane as the middle child, which
   // is why the two cells either side are all the layout needs.
   const mediaFigureNode = anatomyNode || (clipNode && figureIsPrompt ? null : figureNode);
-  const mediaNode = clipNode || mediaFigureNode || contextClipNode
-    ? <>{clipNode}{mediaFigureNode}{contextClipNode}</>
+  // A context clip beside a figure goes under the explanation, in the reading
+  // column. Stacked in the media pane the figure took the pane's height and the
+  // clip came out a few hundred pixels wide while the column under the prose
+  // sat empty (owner flag, 2026-10-28). Still one mount; a clip with no figure
+  // keeps the media pane to itself.
+  const clipBesideProse = Boolean(contextClipNode && mediaFigureNode);
+  const paneClipNode = clipBesideProse ? null : contextClipNode;
+  const mediaNode = clipNode || mediaFigureNode || paneClipNode
+    ? <>{clipNode}{mediaFigureNode}{paneClipNode}</>
     : null;
 
   // Keep the compact prompt treatment used by MD3 on short landscape screens.
@@ -300,9 +328,9 @@ export function CardItemView({
       // On stacked clip cards the stem and viewing instruction are one prompt.
       // Keep their gap compact so full-width video controls clear the footer.
       className={clipPrompt ? 'max-sm:[&_[data-card-stem]]:mb-2' : undefined}
-      stem={mediaIsPrompt ? <>{stemNode}{clipInstructionNode}</> : stemNode}
+      stem={mediaIsPrompt ? <>{stemNode}{clipInstructionNode}{windowNode}</> : <>{stemNode}{windowNode}</>}
       reveal={inlineRevealNode}
-      answer={answerNode}
+      answer={clipBesideProse ? <>{answerNode}{contextClipNode}</> : answerNode}
       media={mediaNode}
       links={linksNode}
       answerRef={undefined}

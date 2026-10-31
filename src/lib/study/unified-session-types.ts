@@ -27,6 +27,9 @@ export interface UnifiedItem {
   teachingPaceFingerprint?: string;
   /** Explicit media narrowing carried into serve telemetry. */
   media?: ReviewMedia;
+  /** "No videos" / "No images" in force when a cached queue was built
+   *  (`reviewMediaFingerprint`). Absent on legacy rows: the default. */
+  mediaPreferenceFingerprint?: string;
   /** The saved preference captured at selection, including for offline packs. */
   reviewChallenge?: import('./review-challenge-preference').ReviewChallengePreference;
   type: 'card' | 'question' | 'group' | 'video';
@@ -334,6 +337,9 @@ export interface SessionContext {
   batchId: string;
   typeFilter: string | null;
   media?: ReviewMedia;
+  /** "No videos" / "No images", already narrowed by an explicit media mode.
+   *  Items needing hidden media are excluded in every lane. */
+  mediaPreferences?: import('./review-media-preferences').ReviewMediaPreferences;
   difficultyFilter: string | null;
   topicsFilter: string | null;
   /**

@@ -122,7 +122,10 @@ export function reviewPaneKind(
     // (2026-09-15). Known-landscape figures take the prompt-question
     // split instead: the prose keeps a real measure and the figure gains the
     // difference. Decided from metadata so reveal cannot change the grid.
-    if (item.clip || isWideFigure(item.imageMeta)) return 'supplementary-wide';
+    // A context clip alone takes the wide pane; beside a figure it moves to the
+    // reading column (CardItemView), which then needs the full measure.
+    const hasFigure = Boolean(item.imageUrl || item.imageKey || item.publicAnatomyMedia);
+    if ((item.clip && !hasFigure) || isWideFigure(item.imageMeta)) return 'supplementary-wide';
     return 'supplementary';
   }
   if (item.type === 'question') return 'prompt-question';

@@ -134,7 +134,12 @@ export function mcqToCloze(stem: string, _correctAnswer: string): string | null 
   // Post-conversion validation: reject broken cloze cards
   // 1. Statement still starts with a question word → fallback produced garbage
   if (/^(?:What|Which|How|When|Why|Where|Who)\s/i.test(clozeStatement)) return null;
-  // 2. Statement is just "[noun]: [___]." with no verb → not a proper sentence
+  if (/\?\s*$/.test(clozeStatement)) return null;
+  // 2. A compound question, or an inversion no rule repaired, reads as garbage.
+  if (/\band\s+(?:\w+\s+){0,2}(?:what|which|how|why|when|where|who)\b/i.test(question)) return null;
+  if (/\bthat\s+(?:is|are|was|were|does|do|did)\s+(?:she|he|they|it|you|we|this|these)\b|^The\s+(?:is|are)\b/i.test(clozeStatement)) return null;
+  if (/^Which\b[^?]*\bdid\s+(?:she|he|they|it|you|we|this|these)\b/i.test(question)) return null;
+  // 3. Statement is just "[noun]: [___]." with no verb → not a proper sentence
   if (/^[^.]+:\s*\[___\]\.$/.test(clozeStatement) && !/\b(?:is|are|was|were|has|have|means|requires)\b/i.test(clozeStatement)) return null;
 
   // Reassemble: scenario + cloze statement, preserving paragraph break.
@@ -244,6 +249,23 @@ function questionToStatement(question: string): string {
 
 function patternMatch(question: string): string {
   const q = question.trim();
+
+  // === "Which/What X is she …?" / "… does this suggest?" — inverted subject ===
+  // The generic rule below reads the auxiliary as the noun's own verb and
+  // emits "The respiratory pattern that is she demonstrating is [___]." Put the
+  // subject back in front of the verb instead.
+  {
+    const m = q.match(/^(?:Which|What)\s+(?!(?:is|are|was|were|does|do|of|else)\b)([\w\s'-]+?)\s+(is|are|was|were|does|do)\s+((?:she|he|they|it|you|we|this|these|her|his|their)\b.*?)\s*\?$/i);
+    // Unrepairable: return the question itself, which mcqToCloze rejects.
+    if (m) return invertedSubjectStatement(m[1].trim(), m[2].toLowerCase(), m[3].trim().split(/\s+/)) ?? q;
+  }
+
+  // === "Which are X?" (no article) → "X are [___]." ===
+  {
+    const m = q.match(/^Which\s+are\s+(?!the\b)((?:[\w'-]+\s+){2,}[\w'-]+)\s*\?$/i);
+    if (m) return `${cap(m[1])} are [___].`;
+  }
+
 
   // === Pattern N1: "What [noun] is (most|least|best|first-line) [adj] for [target]?" ===
   // "What ECG finding is most specific for hyperkalaemia?" →
@@ -396,6 +418,16 @@ function patternMatch(question: string): string {
     const m = q.match(/^Which\s+(?:scenario|situation|condition)\s+is\s+a\s+contraindication\s+to\s+(.+?)\s*\?$/i);
     if (m) {
       return `A contraindication to ${m[1].trim()} is [___].`;
+    }
+  }
+
+  // === "Which of the [group] is/are [rest]?" → "Of the [group], the one that is [rest] is [___]." ===
+  // Must precede the generic rule below, which takes "of the ..." as its noun.
+  {
+    const m = q.match(/^Which\s+of\s+(the\s+.+?)\s+(is|are)\s+(.+?)\s*\?$/i);
+    if (m && !/^the\s+following\b/i.test(m[1])) {
+      const one = m[2].toLowerCase() === 'are' ? 'ones' : 'one';
+      return `Of ${m[1]}, the ${one} that ${m[2].toLowerCase()} ${m[3]} ${m[2].toLowerCase()} [___].`;
     }
   }
 
@@ -747,6 +779,48 @@ function patternMatch(question: string): string {
 function copulaFor(subject: string): 'is' | 'are' {
   return /^(?:these|those|both)\b/i.test(subject.trim())
     || /^(?:(?:the|his|her|their)\s+)?(?:ABG\s+)?(?:results|findings|signs|symptoms)\b/i.test(subject.trim()) ? 'are' : 'is';
+}
+
+const PRONOUN_SUBJECT = /^(?:she|he|they|it|you|we|this|these)$/i;
+const ADVERB = /^(?:most|best|usually|typically|directly|likely|commonly|primarily|mainly|strongly|still|also|ultimately|then|now|first)$/i;
+// Verbs that follow "does this …" in md3 stems. Unknown verbs return null:
+// no card beats a guessed subject boundary ("this reporting patterns have").
+const BARE_VERB = /^(?:suggest|indicate|represent|demonstrate|show|support|favour|favor|require|need|carry|prevent|have|put|cause|mean|identify|explain|point|confirm|predict|imply|reflect|describe|increase|reduce|raise|lower|affect|produce|treat|lead|target|explain|place|leave|test|measure|detect|exclude|rule|allow|risk|protect|trigger|block|inhibit|stimulate|activate|signal|warrant|threaten|involve|contain|lack|use|make|give|change|cross|reach|address|belong)$/i;
+
+function invertedSubjectStatement(noun: string, aux: string, words: string[]): string | null {
+  if (aux === 'does' || aux === 'do') {
+    // "does this test detect": a later verb means the earlier word was the noun.
+    const later = words.findIndex((w, i) => i > 1 && BARE_VERB.test(w));
+    const v = later > 1 ? later : words.findIndex((w, i) => i > 0 && BARE_VERB.test(w));
+    if (v < 1) return null;
+    const subject = words.slice(0, v).filter((w, i) => i === 0 || !ADVERB.test(w));
+    const adverbs = words.slice(1, v).filter((w) => ADVERB.test(w));
+    const verb = aux === 'does' ? thirdPersonSingular(words[v]) : words[v];
+    return `The ${noun} ${[...subject, ...adverbs, verb, ...words.slice(v + 1)].join(' ')} is [___].`;
+  }
+  if (words.length === 1) {
+    // "Which lesion is this?" → "This lesion is [___]."; "Which risk is it?" → "The risk is [___]."
+    return /^(?:this|these)$/i.test(words[0]) ? `${cap(words[0].toLowerCase())} ${noun} ${aux} [___].` : `The ${noun} ${aux} [___].`;
+  }
+  if (!words.every((w) => /^[\w'’-]+$/.test(w))) return null;
+  // "is she demonstrating" → "she is demonstrating". A determiner subject runs
+  // to the first adverb, participle or preposition: "is this baby at risk of"
+  // → "this baby is at risk of"; "is her driving pressure" is all subject.
+  let subjectLength = 1;
+  if (/^(?:this|these|her|his|their)$/i.test(words[0])) {
+    const end = words.findIndex((w, i) => i >= 2 && (ADVERB.test(w) || /(?:ing|ed|ive|ible|able|ous)$/i.test(w) || /^(?:at|in|on|of|for|to|with|from|by|as)$/i.test(w)));
+    if (end === -1) return `${cap(words.join(' '))} ${aux} [___].`;
+    // "is this consistent with": a predicate word straight after the determiner ends the subject.
+    subjectLength = ADVERB.test(words[1]) || /^(?:to|at|in|on|of|for|with|as|consistent|compatible|likely|suggestive|typical|characteristic|diagnostic|indicative|due|related|caused)$/i.test(words[1]) ? 1 : end;
+  }
+  return `The ${noun} ${[...words.slice(0, subjectLength), aux, ...words.slice(subjectLength)].join(' ')} is [___].`;
+}
+
+function thirdPersonSingular(verb: string): string {
+  if (/^have$/i.test(verb)) return 'has';
+  if (/(?:s|sh|ch|x|z|o)$/i.test(verb)) return `${verb}es`;
+  if (/[^aeiou]y$/i.test(verb)) return `${verb.slice(0, -1)}ies`;
+  return `${verb}s`;
 }
 
 function cap(s: string): string {

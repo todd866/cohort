@@ -1,6 +1,6 @@
 'use client';
 
-import { useCallback, useEffect, useId, useState, type ReactNode } from 'react';
+import { createContext, useCallback, useContext, useEffect, useId, useState, type ReactNode } from 'react';
 import {
   isEditableShortcutTarget,
   isInteractiveActivationTarget,
@@ -28,6 +28,18 @@ export interface SensitiveMediaGateProps {
    * Focused controls retain their native Enter/Space activation.
    */
   captureReviewSpace?: boolean;
+  /** Names the media in the gate's labels. A clip also stays still while concealed. */
+  mediaKind?: 'image' | 'clip';
+}
+
+/**
+ * True for media rendered under the concealed blur. An image can sit there
+ * harmlessly; a clip must not start, or load beyond metadata, until shown.
+ */
+const SensitiveMediaConcealedContext = createContext(false);
+
+export function useSensitiveMediaConcealed(): boolean {
+  return useContext(SensitiveMediaConcealedContext);
 }
 
 /**
@@ -59,6 +71,7 @@ function SensitiveMediaOccurrence({
   skipInstruction,
   captureReviewSpace = false,
   compact = false,
+  mediaKind = 'image',
   blurImages,
 }: Omit<SensitiveMediaGateProps, 'consentKey'> & { blurImages: boolean }) {
   const descriptionId = useId();
@@ -110,7 +123,9 @@ function SensitiveMediaOccurrence({
           transformOrigin: 'center',
         }}
       >
-        {children}
+        <SensitiveMediaConcealedContext.Provider value>
+          {children}
+        </SensitiveMediaConcealedContext.Provider>
       </div>
       <div
         className="absolute inset-0 flex flex-col items-center justify-center gap-3 p-4 text-center text-[var(--md-on-surface)]"
@@ -120,7 +135,7 @@ function SensitiveMediaOccurrence({
       >
         {!compact && (
           <div>
-            <p className="font-medium">Sensitive medical image</p>
+            <p className="font-medium">{mediaKind === 'clip' ? 'Sensitive clip' : 'Sensitive medical image'}</p>
             <p
               id={descriptionId}
               className="mt-1 text-sm text-[var(--md-on-surface-variant)]"
@@ -135,7 +150,7 @@ function SensitiveMediaOccurrence({
             onClick={showImage}
             className="min-h-11 min-w-11 rounded-lg bg-[var(--md-primary)] px-4 py-2 font-medium text-[var(--md-on-primary)]"
           >
-            Show image
+            {mediaKind === 'clip' ? 'Show clip' : 'Show image'}
           </button>
           {onSkip && (
             <button
@@ -143,7 +158,7 @@ function SensitiveMediaOccurrence({
               onClick={onSkip}
               className="min-h-11 min-w-11 rounded-lg border border-[var(--md-outline)] bg-[var(--md-surface)] px-4 py-2 font-medium text-[var(--md-on-surface)]"
             >
-              Skip image
+              {mediaKind === 'clip' ? 'Skip clip' : 'Skip image'}
             </button>
           )}
         </div>

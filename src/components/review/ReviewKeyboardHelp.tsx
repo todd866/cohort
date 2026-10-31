@@ -30,20 +30,20 @@ export function reviewShortcutsFor(context: ReviewShortcutContext): readonly Rev
     ];
     case 'card-grade-required':
     case 'card-grade': return [
-      { keys: '1–4', label: 'Rate the card' },
+      { keys: '1–4 · J K L ;', label: 'Rate the card' },
       { keys: 'Space / Enter', label: 'Rate Good' },
       { keys: 'F', label: 'Flag this item' },
       { keys: '?', label: 'Open shortcuts' },
     ];
     case 'mcq-select': return [
-      { keys: '1–5', label: 'Choose an answer' },
+      { keys: "1–5 · J K L ; '", label: 'Choose an answer' },
       { keys: 'Space / Enter', label: 'Skip this question' },
       { keys: 'F', label: 'Flag this item' },
       { keys: '?', label: 'Open shortcuts' },
     ];
     case 'mcq-grade':
     case 'mcq-confidence': return [
-      { keys: '1–4', label: 'Set confidence' },
+      { keys: '1–4 · J K L ;', label: 'Set confidence' },
       { keys: 'F', label: 'Flag this item' },
       { keys: '?', label: 'Open shortcuts' },
     ];
@@ -53,7 +53,7 @@ export function reviewShortcutsFor(context: ReviewShortcutContext): readonly Rev
       { keys: '?', label: 'Open shortcuts' },
     ];
     case 'video-rate': return [
-      { keys: '1–4', label: 'Rate the video' },
+      { keys: '1–4 · J K L ;', label: 'Rate the video' },
       { keys: 'Space / Enter', label: 'Continue' },
       { keys: 'F', label: 'Flag this item' },
       { keys: '?', label: 'Open shortcuts' },

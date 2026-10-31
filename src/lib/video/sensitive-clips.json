@@ -1,0 +1,395 @@
+{
+  "rule": "A clip is listed when its footage shows (1) genital, perineal, vulval, vaginal or cervical exposure, including procedures through a speculum and realistic genital or birth simulation models; (2) vaginal birth or a birth complication; or (3) open surgery on a visible patient body (skin incision, opened abdomen, uterus, skull or neck). Not listed: laparoscopic, endoscopic, hysteroscopic, robotic or microscope views inside the body, ultrasound and other imaging, animations and illustrations, bench models that are not anatomical (bread, foam, tissue pads), and examinations of non-intimate body parts.",
+  "method": "Candidates from VideoClip and VideoSource titles and clip labels (all 519 clips in the configured database, 29 Oct 2026); every candidate poster frame (240), plus 50 borderline non-candidates, was looked at before listing.",
+  "reviewedAt": "2026-10-29",
+  "clips": [
+    {
+      "slug": "exam-cough-impulse",
+      "reason": "genital or groin exposure (inguinal or scrotal surgery or examination)"
+    },
+    {
+      "slug": "neck-internal-jugular-vein",
+      "reason": "open surgery on a visible patient"
+    },
+    {
+      "slug": "nsx-craniotomy-burr-hole",
+      "reason": "open surgery on a visible patient"
+    },
+    {
+      "slug": "nsx-craniotomy-dura-exposed",
+      "reason": "open surgery on a visible patient"
+    },
+    {
+      "slug": "nsx-craniotomy-scalp-closure",
+      "reason": "open surgery on a visible patient"
+    },
+    {
+      "slug": "nsx-craniotomy-subdural-opened",
+      "reason": "open surgery on a visible patient"
+    },
+    {
+      "slug": "obgyn-clinic-anterior-repair-closure-20261028",
+      "reason": "vulval, vaginal or cervical procedure (realistic simulation model)"
+    },
+    {
+      "slug": "obgyn-clinic-anterior-repair-dissection-20261028",
+      "reason": "vulval, vaginal or cervical procedure (realistic simulation model)"
+    },
+    {
+      "slug": "obgyn-clinic-bartholin-drainage-live-20261028",
+      "reason": "vulval, vaginal or cervical procedure"
+    },
+    {
+      "slug": "obgyn-clinic-bartholin-incision-20261028",
+      "reason": "vulval, vaginal or cervical procedure (realistic simulation model)"
+    },
+    {
+      "slug": "obgyn-clinic-bartholin-opening-live-20261028",
+      "reason": "vulval, vaginal or cervical procedure"
+    },
+    {
+      "slug": "obgyn-clinic-iud-removal-20261028",
+      "reason": "vulval, vaginal or cervical procedure (realistic simulation model)"
+    },
+    {
+      "slug": "obgyn-clinic-leep-ball-haemostasis-20261028",
+      "reason": "vulval, vaginal or cervical procedure"
+    },
+    {
+      "slug": "obgyn-clinic-leep-loop-excision-20261028",
+      "reason": "vulval, vaginal or cervical procedure (realistic simulation model)"
+    },
+    {
+      "slug": "obgyn-clinic-mva-rotation-caption-redacted-20261028",
+      "reason": "vaginal birth or a birth complication (realistic simulation model)"
+    },
+    {
+      "slug": "obgyn-clinic-pap-spatula-20261028",
+      "reason": "vulval, vaginal or cervical procedure"
+    },
+    {
+      "slug": "obgyn-clinic-vaghyst-cervical-incision-20261028",
+      "reason": "vulval, vaginal or cervical procedure"
+    },
+    {
+      "slug": "obgyn-clinic-vaghyst-cervix-20261028",
+      "reason": "vulval, vaginal or cervical procedure"
+    },
+    {
+      "slug": "obgyn-clinic-vaghyst-pedicle-suture-20261028",
+      "reason": "vulval, vaginal or cervical procedure"
+    },
+    {
+      "slug": "obgyn-clinic-word-balloon-test-20261028",
+      "reason": "vulval, vaginal or cervical procedure (realistic simulation model)"
+    },
+    {
+      "slug": "obgyn-clinic-word-placement-20261028",
+      "reason": "vulval, vaginal or cervical procedure (realistic simulation model)"
+    },
+    {
+      "slug": "obgyn-forceps-glowm-20261028",
+      "reason": "vaginal birth or a birth complication (realistic simulation model)"
+    },
+    {
+      "slug": "obgyn-lap-hasson-cannula-glowm-20261028",
+      "reason": "open surgery on a visible patient"
+    },
+    {
+      "slug": "obgyn-lap-hasson-entry-toronto-20261028",
+      "reason": "open surgery on a visible patient"
+    },
+    {
+      "slug": "obgyn-manual-placenta-20261028",
+      "reason": "vaginal birth or a birth complication (realistic simulation model)"
+    },
+    {
+      "slug": "obgyn-mva-20261028",
+      "reason": "vaginal birth or a birth complication"
+    },
+    {
+      "slug": "obgyn-obs-birth-head-extension-close",
+      "reason": "vaginal birth or a birth complication"
+    },
+    {
+      "slug": "obgyn-obs-breech-leg-release",
+      "reason": "vaginal birth or a birth complication (realistic simulation model)"
+    },
+    {
+      "slug": "obgyn-obs-breech-msv",
+      "reason": "vaginal birth or a birth complication (realistic simulation model)"
+    },
+    {
+      "slug": "obgyn-obs-controlled-cord-traction",
+      "reason": "vaginal birth or a birth complication"
+    },
+    {
+      "slug": "obgyn-obs-cord-division",
+      "reason": "vaginal birth or a birth complication"
+    },
+    {
+      "slug": "obgyn-obs-cs-bladder-dissection",
+      "reason": "open abdominal or uterine surgery (caesarean or postpartum haemorrhage)"
+    },
+    {
+      "slug": "obgyn-obs-cs-blunt-entry-extension-clear",
+      "reason": "open abdominal or uterine surgery (caesarean or postpartum haemorrhage)"
+    },
+    {
+      "slug": "obgyn-obs-cs-exteriorisation-clear",
+      "reason": "open abdominal or uterine surgery (caesarean or postpartum haemorrhage)"
+    },
+    {
+      "slug": "obgyn-obs-cs-fascial-opening",
+      "reason": "open abdominal or uterine surgery (caesarean or postpartum haemorrhage)"
+    },
+    {
+      "slug": "obgyn-obs-cs-head-delivery",
+      "reason": "open abdominal or uterine surgery (caesarean or postpartum haemorrhage)"
+    },
+    {
+      "slug": "obgyn-obs-cs-peritoneal-entry",
+      "reason": "open abdominal or uterine surgery (caesarean or postpartum haemorrhage)"
+    },
+    {
+      "slug": "obgyn-obs-cs-placenta-extraction-clear",
+      "reason": "open abdominal or uterine surgery (caesarean or postpartum haemorrhage)"
+    },
+    {
+      "slug": "obgyn-obs-cs-rectus-separation-clear",
+      "reason": "open abdominal or uterine surgery (caesarean or postpartum haemorrhage)"
+    },
+    {
+      "slug": "obgyn-obs-cs-skin-incision-clear",
+      "reason": "open abdominal or uterine surgery (caesarean or postpartum haemorrhage)"
+    },
+    {
+      "slug": "obgyn-obs-cs-subcutaneous-fat",
+      "reason": "open abdominal or uterine surgery (caesarean or postpartum haemorrhage)"
+    },
+    {
+      "slug": "obgyn-obs-cs-uterine-closure-clear",
+      "reason": "open abdominal or uterine surgery (caesarean or postpartum haemorrhage)"
+    },
+    {
+      "slug": "obgyn-obs-cs-vaginal-disimpaction",
+      "reason": "vaginal birth or a birth complication (realistic simulation model)"
+    },
+    {
+      "slug": "obgyn-obs-fascial-running-closure",
+      "reason": "open abdominal or uterine surgery (caesarean or postpartum haemorrhage)"
+    },
+    {
+      "slug": "obgyn-obs-forceps-blade-insertion",
+      "reason": "vaginal birth or a birth complication"
+    },
+    {
+      "slug": "obgyn-obs-forceps-blade-removal",
+      "reason": "vaginal birth or a birth complication"
+    },
+    {
+      "slug": "obgyn-obs-forceps-locking",
+      "reason": "vaginal birth or a birth complication (realistic simulation model)"
+    },
+    {
+      "slug": "obgyn-obs-fourth-degree-tear",
+      "reason": "perineal examination or repair"
+    },
+    {
+      "slug": "obgyn-obs-inversion-hydrostatic-seal",
+      "reason": "vaginal birth or a birth complication"
+    },
+    {
+      "slug": "obgyn-obs-inversion-manual-reduction",
+      "reason": "vaginal birth or a birth complication (realistic simulation model)"
+    },
+    {
+      "slug": "obgyn-obs-oasis-overlap-close",
+      "reason": "perineal examination or repair"
+    },
+    {
+      "slug": "obgyn-obs-placenta-membrane-check",
+      "reason": "vaginal birth or a birth complication"
+    },
+    {
+      "slug": "obgyn-obs-placenta-surface-turn",
+      "reason": "vaginal birth or a birth complication"
+    },
+    {
+      "slug": "obgyn-obs-pph-bimanual-real-clear",
+      "reason": "open abdominal or uterine surgery (caesarean or postpartum haemorrhage)"
+    },
+    {
+      "slug": "obgyn-obs-pph-brace-configuration",
+      "reason": "open abdominal or uterine surgery (caesarean or postpartum haemorrhage)"
+    },
+    {
+      "slug": "obgyn-obs-rectal-assessment",
+      "reason": "perineal examination or repair"
+    },
+    {
+      "slug": "obgyn-obs-repair-perineal-muscle",
+      "reason": "perineal examination or repair (realistic simulation model)"
+    },
+    {
+      "slug": "obgyn-obs-repair-subcuticular",
+      "reason": "perineal examination or repair (realistic simulation model)"
+    },
+    {
+      "slug": "obgyn-obs-repair-vaginal-mucosa",
+      "reason": "perineal examination or repair (realistic simulation model)"
+    },
+    {
+      "slug": "obgyn-obs-shoulder-cephalic-replacement",
+      "reason": "vaginal birth or a birth complication (realistic simulation model)"
+    },
+    {
+      "slug": "obgyn-obs-shoulder-mcroberts-clear",
+      "reason": "vaginal birth or a birth complication (realistic simulation model)"
+    },
+    {
+      "slug": "obgyn-obs-shoulder-posterior-arm-sweep",
+      "reason": "vaginal birth or a birth complication (realistic simulation model)"
+    },
+    {
+      "slug": "obgyn-obs-sphincter-end-retrieval",
+      "reason": "perineal examination or repair"
+    },
+    {
+      "slug": "obgyn-obs-uterine-compression",
+      "reason": "open abdominal or uterine surgery (caesarean or postpartum haemorrhage)"
+    },
+    {
+      "slug": "obgyn-obs-vacuum-head-delivery",
+      "reason": "vaginal birth or a birth complication (realistic simulation model)"
+    },
+    {
+      "slug": "obgyn-procedure-context-clinic-mva-aspiration-rotation-20261028",
+      "reason": "vaginal birth or a birth complication (realistic simulation model)"
+    },
+    {
+      "slug": "obgyn-procedure-context-hasson-20261028",
+      "reason": "open surgery on a visible patient"
+    },
+    {
+      "slug": "obgyn-procedure-context-lovset-20261028",
+      "reason": "vaginal birth or a birth complication (realistic simulation model)"
+    },
+    {
+      "slug": "obgyn-procedure-context-obs-shoulder-mcroberts-20261028",
+      "reason": "vaginal birth or a birth complication (realistic simulation model)"
+    },
+    {
+      "slug": "obgyn-procedure-context-obs-shoulder-posterior-arm-20261028",
+      "reason": "vaginal birth or a birth complication (realistic simulation model)"
+    },
+    {
+      "slug": "obgyn-procedure-context-rectal-exam-20261028",
+      "reason": "perineal examination or repair"
+    },
+    {
+      "slug": "obgyn-procedure-context-repair-apex-20261028",
+      "reason": "perineal examination or repair (realistic simulation model)"
+    },
+    {
+      "slug": "obgyn-procedure-context-sslf-suspension-20261028",
+      "reason": "vulval, vaginal or cervical procedure"
+    },
+    {
+      "slug": "obgyn-procedure-context-vacuum-point-v2-20261028",
+      "reason": "vaginal birth or a birth complication (realistic simulation model)"
+    },
+    {
+      "slug": "obgyn-procedure-context-vacuum-traction-20261028",
+      "reason": "vaginal birth or a birth complication (realistic simulation model)"
+    },
+    {
+      "slug": "obgyn-suprapubic-pressure-20261028",
+      "reason": "vaginal birth or a birth complication (realistic simulation model)"
+    },
+    {
+      "slug": "obgyn-vacuum-20261028",
+      "reason": "vaginal birth or a birth complication (realistic simulation model)"
+    },
+    {
+      "slug": "obgyn-w2-acetowhite-20261028",
+      "reason": "vulval, vaginal or cervical procedure"
+    },
+    {
+      "slug": "obgyn-w2-cerclage-20261028",
+      "reason": "vulval, vaginal or cervical procedure"
+    },
+    {
+      "slug": "obgyn-w2-lletz-loop-20261028",
+      "reason": "vulval, vaginal or cervical procedure"
+    },
+    {
+      "slug": "obgyn-w2-rag-sign-20261028",
+      "reason": "vulval, vaginal or cervical procedure"
+    },
+    {
+      "slug": "paeds-cdh-percutaneous-tract",
+      "reason": "open surgery on a visible patient"
+    },
+    {
+      "slug": "paeds-glove-port-instrument-access",
+      "reason": "open surgery on a visible patient"
+    },
+    {
+      "slug": "paeds-glove-port-wound-retractor",
+      "reason": "open surgery on a visible patient"
+    },
+    {
+      "slug": "paeds-herniotomy-sac-dissection",
+      "reason": "genital or groin exposure (inguinal or scrotal surgery or examination)"
+    },
+    {
+      "slug": "paeds-ileoileal-intussusception",
+      "reason": "open surgery on a visible patient"
+    },
+    {
+      "slug": "paeds-ileoileal-manual-reduction",
+      "reason": "open surgery on a visible patient"
+    },
+    {
+      "slug": "paeds-open-hernia-exposure",
+      "reason": "genital or groin exposure (inguinal or scrotal surgery or examination)"
+    },
+    {
+      "slug": "paeds-orchiopexy-cord-mobilisation",
+      "reason": "genital or groin exposure (inguinal or scrotal surgery or examination)"
+    },
+    {
+      "slug": "paeds-orchiopexy-length-check",
+      "reason": "genital or groin exposure (inguinal or scrotal surgery or examination)"
+    },
+    {
+      "slug": "paeds-pyloromyotomy-spread",
+      "reason": "open surgery on a visible patient"
+    },
+    {
+      "slug": "pwh-bladder-dissection",
+      "reason": "open abdominal or uterine surgery (caesarean or postpartum haemorrhage)"
+    },
+    {
+      "slug": "pwh-cesarea-exteriorized-uterus",
+      "reason": "open abdominal or uterine surgery (caesarean or postpartum haemorrhage)"
+    },
+    {
+      "slug": "pwh-placental-delivery-toronto",
+      "reason": "vaginal birth or a birth complication"
+    },
+    {
+      "slug": "pwh-restitution-toronto",
+      "reason": "vaginal birth or a birth complication"
+    },
+    {
+      "slug": "pwh-ring-pessary-vaginal-adhesion-2023",
+      "reason": "vulval, vaginal or cervical procedure"
+    },
+    {
+      "slug": "pwh-round-ligament-exposure",
+      "reason": "open abdominal or uterine surgery (caesarean or postpartum haemorrhage)"
+    }
+  ]
+}

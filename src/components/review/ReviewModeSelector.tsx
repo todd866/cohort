@@ -23,6 +23,19 @@ interface ReviewModeSelectorProps {
  * Due/at-risk were previously URL-only contracts: the scheduler implemented
  * them, but a reviewer could not select them from the review surface.
  */
+/** What each mode serves, shown as the picker's tooltip. Learner question,
+ *  31 Oct 2026: does grading every at-risk card Easy mean they never return? */
+export const MODE_HINTS: Record<ReviewMode, string> = {
+  mixed: 'Due reviews, new items and questions, chosen by the scheduler',
+  new: 'Only items you have not seen yet',
+  due: 'Only reviews that are due now',
+  'at-risk': 'Reviewed cards predicted to slip below mastery by exam day. Grade honestly: Easy pushes a card furthest out, but it still comes back',
+  mcq: 'Only multiple-choice questions',
+  image: 'Only items with an image',
+  video: 'Only items with a video clip',
+  media: 'Only items with an image or video',
+};
+
 export function ReviewModeSelector({
   feedMode,
   reviewFilter,
@@ -54,6 +67,7 @@ export function ReviewModeSelector({
   return (
     <ChipNativeSelect
       aria-label="Review mode"
+      title={MODE_HINTS[mode]}
       value={mode}
       onChange={(event) => {
         if (event.target.value === "practice-exam" && practiceExamHref) window.location.assign(practiceExamHref);

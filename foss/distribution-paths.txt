@@ -1784,6 +1784,7 @@ src/app/api/usmle/step1/session/route.test.ts
 src/app/api/usmle/step1/session/route.ts
 src/app/auth/signin/page.tsx
 src/app/error.tsx
+src/app/favicon.ico/route.ts
 src/app/fonts/Geist-Variable.woff2
 src/app/fonts/GeistMono-Variable.woff2
 src/app/gamsat/GamsatSessionClient.tsx
@@ -1908,8 +1909,10 @@ src/components/exams/ExamProtocol.tsx
 src/components/exams/ScenarioTrainer.tsx
 src/components/manifold/HeatFieldChart.tsx
 src/components/media/ImageBlurToggle.tsx
+src/components/media/ReviewMediaToggles.tsx
 src/components/media/SensitiveMediaGate.tsx
 src/components/media/useImageBlurPreference.ts
+src/components/media/useReviewMediaPreferences.ts
 src/components/medical-cockpit/CockpitLab.tsx
 src/components/medical-cockpit/CockpitPanel.tsx
 src/components/medical-cockpit/Metric.tsx
@@ -1921,6 +1924,7 @@ src/components/offline/connection-indicator-model.ts
 src/components/practice/ClozeCard.tsx
 src/components/practice/PracticeSession.tsx
 src/components/practice/QuestionPractice.tsx
+src/components/profile/RefreshOnReturn.tsx
 src/components/profile/ReviewHeatmap.tsx
 src/components/profile/TopicHeatmap.tsx
 src/components/review/ABGContextPanel.tsx
@@ -1971,8 +1975,8 @@ src/components/review/UniversalRecallCard.tsx
 src/components/review/VideoItemView.tsx
 src/components/review/clip-autoplay.ts
 src/components/review/clip-frame.ts
-src/components/review/clip-playback-preferences.ts
 src/components/review/clip-role.ts
+src/components/review/clip-tap-layer.tsx
 src/components/review/clip-url-recovery.ts
 src/components/review/groupReviewLogic.ts
 src/components/review/hooks/keyboardTarget.ts
@@ -2323,6 +2327,7 @@ src/lib/guest-user.ts
 src/lib/idempotency.ts
 src/lib/images/audit-patterns.ts
 src/lib/images/blur-classification.ts
+src/lib/images/region-focus.ts
 src/lib/images/serving-projection.ts
 src/lib/images/types.ts
 src/lib/images/visual-topics.ts
@@ -2493,6 +2498,7 @@ src/lib/offline/sw-registration.ts
 src/lib/offline/tab-router.ts
 src/lib/offline/telemetry.ts
 src/lib/offline/transport-failure.ts
+src/lib/onboarding/course-match.ts
 src/lib/ops-alert.ts
 src/lib/ops/write-probe.ts
 src/lib/outbound-email-config.test.ts
@@ -2688,6 +2694,9 @@ src/lib/study/review-learning-delivery.ts
 src/lib/study/review-learning-gap.server.ts
 src/lib/study/review-learning-item.ts
 src/lib/study/review-learning-policy.ts
+src/lib/study/review-media-egress.ts
+src/lib/study/review-media-preferences.server.ts
+src/lib/study/review-media-preferences.ts
 src/lib/study/review-menu.server.ts
 src/lib/study/review-menu.ts
 src/lib/study/rotation-content-map.ts
@@ -2798,10 +2807,13 @@ src/lib/video/clip-motion.ts
 src/lib/video/clip-task-review.ts
 src/lib/video/clip-windows.ts
 src/lib/video/public-clips.ts
+src/lib/video/sensitive-clips.json
+src/lib/video/sensitive-clips.ts
 src/lib/video/video-embedding.ts
 src/lib/video/video-pedagogy.ts
 src/lib/with-guards.ts
 src/lib/write-retry-policy.ts
+src/lib/zod-browser.ts
 src/mdx-components.tsx
 src/test-utils/api.ts
 src/test-utils/mock-auth.ts

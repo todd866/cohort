@@ -8,6 +8,11 @@ import {
   type ReviewChallengePreference,
 } from './review-challenge-preference';
 import { REVIEW_CHALLENGE_POLICY_VERSION } from './review-challenge';
+import {
+  reviewMediaFingerprint,
+  reviewMediaPreferencesFromExperience,
+  type ReviewMediaPreferences,
+} from './review-media-preferences';
 
 /** Bump the shared epoch and clear every prepared rotation in one transaction. */
 export async function invalidateAllSessionCachesInTransaction(
@@ -100,6 +105,8 @@ export interface SessionCacheSnapshot {
    */
   snapshotAt: Date;
   reviewChallenge?: ReviewChallengePreference;
+  /** The learner's saved "No videos" / "No images", read with the epoch. */
+  mediaPreferences?: ReviewMediaPreferences;
 }
 
 /** Capture this before starting an expensive cache computation. */
@@ -109,6 +116,7 @@ export async function readSessionCacheSnapshot(userId: string): Promise<SessionC
     snapshotAt: Date;
     reviewChallenge: number | null;
     reviewChallengeRevision: number | null;
+    experience: unknown;
   }>>`
     SELECT (
              SELECT "itemCount"
@@ -117,7 +125,8 @@ export async function readSessionCacheSnapshot(userId: string): Promise<SessionC
            ) AS epoch,
            clock_timestamp()::timestamptz(3) AS "snapshotAt",
            u."reviewChallenge",
-           u."reviewChallengeRevision"
+           u."reviewChallengeRevision",
+           u.experience
       FROM "User" u
      WHERE u.id = ${userId}
   `;
@@ -133,6 +142,9 @@ export async function readSessionCacheSnapshot(userId: string): Promise<SessionC
       revision: row.reviewChallengeRevision,
       policy: REVIEW_CHALLENGE_POLICY_VERSION,
     }),
+    mediaPreferences: (({ hideVideos, hideImages }) => ({ hideVideos, hideImages }))(
+      reviewMediaPreferencesFromExperience(row.experience),
+    ),
   };
 }
 
@@ -171,6 +183,9 @@ export async function upsertSessionCache(
   if (!cacheItemsMatchReviewChallenge(items as unknown as Array<Record<string, unknown>>, reviewChallenge)) {
     return 'stale';
   }
+  // A build stamped under another "No videos" / "No images" choice than the
+  // one read with the epoch must not become the served queue.
+  if (!cacheItemsMatchMediaPreferences(items, snapshot.mediaPreferences)) return 'stale';
 
   return prisma.$transaction(async (tx) => {
     // The epoch row is also the serialization lock for cache writes versus a
@@ -356,6 +371,7 @@ export async function readSessionCache(
   userId: string,
   rotation: string,
   reviewChallenge: ReviewChallengePreference,
+  mediaPreferences?: ReviewMediaPreferences,
 ): Promise<SessionCacheRow | null> {
   const cached = await prisma.$queryRaw<SessionCacheRow[]>`
     SELECT items, "validUntil"
@@ -365,7 +381,7 @@ export async function readSessionCache(
   `;
   const row = cached[0];
   if (!row || !Array.isArray(row.items)) return row ?? null;
-  return sessionCacheReceiptStatus(row.items, rotation, reviewChallenge) === 'matching' ? row : null;
+  return sessionCacheReceiptStatus(row.items, rotation, reviewChallenge, new Date(), mediaPreferences) === 'matching' ? row : null;
 }
 
 export async function deleteSessionCache(
@@ -388,14 +404,31 @@ function cacheItemsMatchTeachingPace(
   return items.every(item => item.teachingPaceFingerprint === teachingPaceFingerprint);
 }
 
+/**
+ * Every item carries the "No videos" / "No images" fingerprint it was built
+ * under. An unstamped (legacy) item reads as the default, so queues built
+ * before the choice existed stay readable for learners who never made one.
+ */
+export function cacheItemsMatchMediaPreferences(
+  items: ReadonlyArray<{ mediaPreferenceFingerprint?: unknown }>,
+  mediaPreferences: ReviewMediaPreferences | null | undefined,
+): boolean {
+  const expected = reviewMediaFingerprint(mediaPreferences);
+  return items.every((item) => (typeof item.mediaPreferenceFingerprint === 'string'
+    ? item.mediaPreferenceFingerprint : '') === expected);
+}
+
 /** Receipt verdict shared by the app reader and read-only queue diagnostics. */
 export function sessionCacheReceiptStatus(
   items: Array<Record<string, unknown>>,
   rotation: string,
   reviewChallenge: ReviewChallengePreference,
   now = new Date(),
-): 'matching' | 'fingerprint-stale' | 'review-challenge-stale' {
+  mediaPreferences?: ReviewMediaPreferences,
+): 'matching' | 'fingerprint-stale' | 'review-challenge-stale' | 'media-preferences-stale' {
   if (!cacheItemsMatchTeachingPace(items, rotation, now)) return 'fingerprint-stale';
-  return cacheItemsMatchReviewChallenge(items, normalizeReviewChallengePreference(reviewChallenge))
-    ? 'matching' : 'review-challenge-stale';
+  if (!cacheItemsMatchReviewChallenge(items, normalizeReviewChallengePreference(reviewChallenge))) {
+    return 'review-challenge-stale';
+  }
+  return cacheItemsMatchMediaPreferences(items, mediaPreferences) ? 'matching' : 'media-preferences-stale';
 }
