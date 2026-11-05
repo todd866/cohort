@@ -71,7 +71,11 @@ export function ReviewKeyboardHelp({
   onClose,
   context,
   returnFocusRef,
+  canBrowse = false,
+  canGoBack = false,
 }: {
+  canBrowse?: boolean;
+  canGoBack?: boolean;
   open: boolean;
   onClose: () => void;
   context: ReviewShortcutContext;
@@ -80,7 +84,7 @@ export function ReviewKeyboardHelp({
   const dialogRef = useRef<HTMLDivElement>(null);
   const closeRef = useRef<HTMLButtonElement>(null);
   const previousFocusRef = useRef<HTMLElement | null>(null);
-  const shortcuts = reviewShortcutsFor(context);
+  const shortcuts = [...reviewShortcutsFor(context), ...(canGoBack ? [{ keys: 'Z', label: 'Revisit previous questions' }] : []), ...(canBrowse ? [{ keys: 'B', label: 'Browse content' }] : [])];
 
   useEffect(() => {
     if (open) {

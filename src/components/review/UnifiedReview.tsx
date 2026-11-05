@@ -1,5 +1,7 @@
 'use client';
 import { UniversalRecallCard } from './UniversalRecallCard';
+import { ReviewHistoryDialog } from './ReviewHistoryDialog';
+import { useReviewHistory } from './hooks/useReviewHistory';
 import { ContentBrowserDialog } from '@/components/study/ContentBrowserDialog';
 import { universalRecallObjective } from '@/lib/review/universal-recall';
 
@@ -10,11 +12,11 @@ import { ReviewActionBar } from '@/components/shared/ReviewActionBar';
 import { AiReviewControl } from '@/components/tutor/AiReviewControl';
 import { StationChip } from './StationChip';
 import { PracticeExamFollowUp } from './PracticeExamFollowUp';
-import { useState, useEffect, useCallback, useRef } from 'react';
+import { useState, useEffect, useCallback, useMemo, useRef } from 'react';
 import Link from 'next/link';
 import { useSession } from 'next-auth/react';
 import type { ReviewFeedMode } from './hooks/useReviewFeedMode';
-import { ReviewModeSelector, type ReviewMode } from './ReviewModeSelector';
+import { ReviewModeSelector, textOnlyTransition, type ReviewMode } from './ReviewModeSelector';
 import { GroupReview } from './GroupReview';
 import {
   useReviewSession,
@@ -445,6 +447,17 @@ function UnifiedReviewBody({ rotations, week, rotationSizes, fetchSlots, feedMod
     const saved = reviewMedia.setPreference(kind, on);
     if (isAuthenticated && !allowUnverifiedPack) void saveReviewMediaPreferencesToAccount(saved);
   }, [reviewMedia, isAuthenticated, allowUnverifiedPack]);
+  // Text only in the mode picker is both hides at once (owner, 31 Oct 2026).
+  const textOnly = offerMediaChoice && reviewMedia.preferences.hideVideos && reviewMedia.preferences.hideImages;
+  const handleReviewModeChoice = useMemo(() => (onReviewModeChange ? (next: ReviewMode) => {
+    const { hideMedia, mode } = textOnlyTransition(next, textOnly);
+    if (hideMedia !== null && offerMediaChoice) {
+      reviewMedia.setPreference('hideVideos', hideMedia);
+      const saved = reviewMedia.setPreference('hideImages', hideMedia);
+      if (isAuthenticated && !allowUnverifiedPack) void saveReviewMediaPreferencesToAccount(saved);
+    }
+    onReviewModeChange(mode);
+  } : undefined), [onReviewModeChange, textOnly, offerMediaChoice, reviewMedia, isAuthenticated, allowUnverifiedPack]);
 
   const session = useReviewSession({
     rotations, week, rotationSizes, fetchSlots, feedMode, reviewFilter, itemType, media, topics, cluster, focusRotation,
@@ -469,7 +482,7 @@ function UnifiedReviewBody({ rotations, week, rotationSizes, fetchSlots, feedMod
     items, currentItem, currentIndex, loading, error, cohortTurnErrorCode, cohortTurnPending,
     stats, setStats,
     startTime, isExhausted, isFetchingMore, reviewTopRef,
-    fetchItems, advanceToNext, advanceAndRefresh, refreshingNext, handleGoBack, markSuppressed, registerResetCallback,
+    fetchItems, advanceToNext, advanceAndRefresh, refreshingNext, markSuppressed, registerResetCallback,
     shouldAutoScroll, scrollBehavior,
     newRemaining,
     servingOffline,
@@ -554,7 +567,7 @@ function UnifiedReviewBody({ rotations, week, rotationSizes, fetchSlots, feedMod
   const topicScopeControl = clusterScope ? (
     <div className="px-4">
       <ReviewScopeBanner scope={clusterScope} feedMode={feedMode} reviewFilter={reviewFilter}
-        itemType={itemType} media={media} canAccessVideo={canAccessVideo} onReviewModeChange={onReviewModeChange}
+        itemType={itemType} media={media} canAccessVideo={canAccessVideo} onReviewModeChange={handleReviewModeChoice} textOnly={textOnly}
         practiceExamHref={!isCohortHost && process.env.NEXT_PUBLIC_PRACTICE_EXAMS_ENABLED === 'true' ? '/practice-exam' : undefined} />
     </div>
   ) : null;
@@ -1029,35 +1042,18 @@ function UnifiedReviewBody({ rotations, week, rotationSizes, fetchSlots, feedMod
   // Flag state — F opens text input, Enter submits
   const flagging = useFlagging({ item: currentItem, registerResetCallback, publicSurface: isCohortHost });
   const { flagMode, flagged, flagPending, flagMessage, authExpired, setFlagMode, setFlagMessage, handleFlagSubmit, closeFlag } = flagging;
-  const handleReviewGoBack = useCallback(() => {
-    // Opaque Cohort deliveries are one-shot receipts. Re-entering an answered
-    // item would reset its local reveal state and invite a non-identical replay
-    // that the server must reject, leaving the learner stranded.
-    if (isCohortHost || isProtectedPracticeItem(currentItem)) return;
-
-    // Clear grading state HERE rather than leaning on the currentItemId effect
-    // below. Reported 2026-09-12: going back to a card repeatedly greys out the
-    // grade bar, and only a page reload restores it.
-    //
-    // `ConfidenceButtons` disables itself while status is saving/saved/queued,
-    // and the only thing that clears that status is an effect keyed on the item
-    // ID. Going back can land on an item whose ID equals the one already
-    // displayed — `advanceToNext` trims the list and pins currentIndex at the
-    // undo buffer — and when it does, the effect never fires, the stale `saved`
-    // status survives, and the grade bar is dead until a reload.
-    //
-    // Resetting on the way back is also the better invariant: going back IS an
-    // intent to re-answer, so grading state should clear whether or not the ID
-    // happened to change. The ID effect stays as the forward-navigation path.
-    //
-    // All three graders, not just the card one: the effect resets card, MCQ and
-    // video together, so clearing only the reported case would leave the same
-    // bug waiting behind the next MCQ.
-    cardGrading.reset();
-    mcqGrading.reset();
-    videoGrading.reset();
-    handleGoBack();
-  }, [cardGrading, currentItem, handleGoBack, isCohortHost, mcqGrading, videoGrading]);
+  const historyScope = JSON.stringify([isCohortHost, authSession?.user?.id ?? null, reviewUserKey, authStatus, allowUnverifiedPack, [...rotations].sort(), week, feedMode, reviewFilter, itemType, replayKey, media, topics ? [...topics].sort() : null, cluster, focusRotation]);
+  const historyEntry = useMemo(() => !isCohortHost && currentItem && !isProtectedPracticeItem(currentItem) && currentItem.type !== 'group' ? {
+    item: currentItem.type === 'question' && displayOptions ? { ...currentItem, options: displayOptions } : currentItem,
+    selectedOption, mcqResult, context,
+  } : null, [isCohortHost, currentItem, displayOptions, selectedOption, mcqResult, context]);
+  const history = useReviewHistory(historyScope, historyEntry);
+  const handleReviewGoBack = history.back;
+  const openContentBrowser = () => {
+    setMobileOptionsOpen(false);
+    setContentBrowserMounted(true);
+    setContentBrowserOpen(true);
+  };
 
   const [shortcutsOpen, setShortcutsOpen] = useState(false);
   const shortcutContext: ReviewShortcutContext = currentItem?.type === 'card'
@@ -1076,10 +1072,11 @@ function UnifiedReviewBody({ rotations, week, rotationSizes, fetchSlots, feedMod
 
   // Keyboard shortcuts
   useReviewKeyboard({
+    disabled: history.index !== null || contentBrowserOpen || cohortPromptBlocked,
     // The required onboarding dialog owns the keyboard. Passing no item makes
     // Space/Enter/number shortcuts inert while its controls retain native
     // keyboard activation.
-    currentItem: contentBrowserOpen || cohortPromptBlocked || scaffoldWriteStatus !== 'idle' || opaqueWriteStatus !== 'idle' ? undefined : currentItem,
+    currentItem: history.index !== null || contentBrowserOpen || cohortPromptBlocked || scaffoldWriteStatus !== 'idle' || opaqueWriteStatus !== 'idle' ? undefined : currentItem,
     cardFullyRevealed,
     mcqResult,
     flagMode,
@@ -1112,8 +1109,9 @@ function UnifiedReviewBody({ rotations, week, rotationSizes, fetchSlots, feedMod
     handleGoBack: handleReviewGoBack,
     handleRevealAll,
     handleOpenShortcuts: contentBrowserOpen ? undefined : openShortcuts,
+    handleOpenBrowser: !isCohortHost && isAuthenticated ? openContentBrowser : undefined,
     awaitingConfidence,
-    // g / b rate what is on screen. Uses the same poster as the thumb buttons
+    // G rates what is on screen. Uses the same poster as the thumb buttons
     // so the two cannot diverge.
     handleContentRating: (rating) => {
       if (!currentItem || (!currentItem.serveDecisionId && !(isCohortHost && currentItem.deliveryId))) return;
@@ -1150,9 +1148,18 @@ function UnifiedReviewBody({ rotations, week, rotationSizes, fetchSlots, feedMod
     }
   }, [boundedQueue, item, error, cohortTurnPending, isExhausted, isFetchingMore, loading, fetchItems]);
 
+  const reviewDialogs = <>
+      <ReviewHistoryDialog entries={history.entries} index={history.index} onIndexChange={history.setIndex} onClose={history.close} />
+      {contentBrowserMounted && !isCohortHost && isAuthenticated && authSession?.user?.id && (
+        <ContentBrowserDialog key={`content-browser:${authSession.user.id}`} userId={authSession.user.id} rotation={rotations[0] ?? ''}
+          open={contentBrowserOpen} returnFocusRef={mobileOptionsTriggerRef} onClose={() => { setContentBrowserOpen(false); mobileOptionsTriggerRef.current?.focus(); }} />
+      )}
+  </>;
+
   // Loading — skeleton that mimics card layout
   if (loading) {
     return <div>
+      {reviewDialogs}
       {showDifficulty && <div className="flex justify-center px-4 pt-3">{difficultyControl()}</div>}
       {topicScopeControl}
       <LoadingSkeleton />
@@ -1165,6 +1172,7 @@ function UnifiedReviewBody({ rotations, week, rotationSizes, fetchSlots, feedMod
     const activeTopic = searchTopics.find((topic) => topic.id === activeSearchTopicId) ?? null;
     return (
       <div className="text-center py-8">
+        {reviewDialogs}
         {topicScopeControl}
         {showDifficulty && <div className="mb-4 flex justify-center px-4">{difficultyControl()}</div>}
         <p role="alert" className="text-[var(--md-error)] mb-4">
@@ -1201,6 +1209,11 @@ function UnifiedReviewBody({ rotations, week, rotationSizes, fetchSlots, feedMod
     );
   }
 
+  const historyReader = <>
+    {history.entries.length > 0 && <button type="button" onClick={history.back} className="min-h-11 rounded-md px-3 text-sm">Previous questions (Z)</button>}
+    {reviewDialogs}
+  </>;
+
   // Empty — API returned no content. If exhausted, show a real message
   // instead of an infinite spinner.
   if (items.length === 0) {
@@ -1208,6 +1221,7 @@ function UnifiedReviewBody({ rotations, week, rotationSizes, fetchSlots, feedMod
       <div>
         {showDifficulty && <div className="flex justify-center px-4 pt-3">{difficultyControl()}</div>}
         {topicScopeControl}
+        {historyReader}
         <SessionEmptyState
           reviewFilter={reviewFilter}
           topicScoped={Boolean(clusterScope)}
@@ -1220,7 +1234,7 @@ function UnifiedReviewBody({ rotations, week, rotationSizes, fetchSlots, feedMod
           replay={boundedQueue}
           onFetch={() => fetchItems()}
           onFeedModeChange={onFeedModeChange}
-          onReviewModeChange={onReviewModeChange}
+          onReviewModeChange={handleReviewModeChoice}
         />
       </div>
     );
@@ -1232,6 +1246,7 @@ function UnifiedReviewBody({ rotations, week, rotationSizes, fetchSlots, feedMod
       <div>
         {showDifficulty && <div className="flex justify-center px-4 pt-3">{difficultyControl()}</div>}
         {topicScopeControl}
+        {historyReader}
         <SessionEmptyState
           reviewFilter={reviewFilter}
           topicScoped={Boolean(clusterScope)}
@@ -1248,7 +1263,7 @@ function UnifiedReviewBody({ rotations, week, rotationSizes, fetchSlots, feedMod
           canBrowseHistory={!isCohortHost && !allowUnverifiedPack}
           onFetch={() => fetchItems()}
           onFeedModeChange={onFeedModeChange}
-          onReviewModeChange={onReviewModeChange}
+          onReviewModeChange={handleReviewModeChoice}
           onFocusRotationChange={onFocusRotationChange}
         />
       </div>
@@ -1334,7 +1349,7 @@ function UnifiedReviewBody({ rotations, week, rotationSizes, fetchSlots, feedMod
             reads as "open a menu". Home stays reachable from the nav rail
             (desktop) and the bottom bar (mobile), one of which is always shown. */}
         <div className="flex min-w-0 items-center gap-[6px] @min-[60rem]/review-toolbar:gap-2 text-sm text-[var(--md-on-surface-variant)]">
-          {currentIndex > 0 && !isCohortHost && !isProtectedPracticeItem(currentItem) && (
+          {history.entries.length > 0 && !isCohortHost && (
             <button
               onClick={handleReviewGoBack}
               className="shrink-0 whitespace-nowrap px-2 py-1 rounded-md hover:bg-[var(--md-surface-container-high)] transition-colors text-xs flex items-center gap-1"
@@ -1368,7 +1383,8 @@ function UnifiedReviewBody({ rotations, week, rotationSizes, fetchSlots, feedMod
                 itemType={itemType}
                 media={media}
                 canAccessVideo={canAccessVideo}
-                onChange={onReviewModeChange}
+                textOnly={textOnly}
+                onChange={handleReviewModeChoice!}
                 newRemaining={newRemaining}
               />
             </div>
@@ -1435,9 +1451,10 @@ function UnifiedReviewBody({ rotations, week, rotationSizes, fetchSlots, feedMod
                   itemType={itemType}
                   media={media}
                   canAccessVideo={canAccessVideo}
+                  textOnly={textOnly}
                   onChange={(next) => {
                     setMobileOptionsOpen(false);
-                    onReviewModeChange(next);
+                    handleReviewModeChoice!(next);
                   }}
                   newRemaining={newRemaining}
                 />
@@ -1461,11 +1478,7 @@ function UnifiedReviewBody({ rotations, week, rotationSizes, fetchSlots, feedMod
                 disabled={cohortPromptBlocked || cohortTurnPending}
               />
             )}
-            {!isCohortHost && isAuthenticated && <button type="button" onClick={() => {
-              setMobileOptionsOpen(false);
-              setContentBrowserMounted(true);
-              setContentBrowserOpen(true);
-            }} className="min-h-11 rounded-md px-2 text-left text-sm underline underline-offset-2">Browse content</button>}
+            {!isCohortHost && isAuthenticated && <button type="button" aria-label="Browse content" aria-keyshortcuts="B" onClick={openContentBrowser} className="min-h-11 rounded-md px-2 text-left text-sm underline underline-offset-2">Browse content (B)</button>}
             <button type="button" onClick={openShortcuts} className="min-h-11 rounded-md px-2 text-xs underline underline-offset-2">Shortcuts (?)</button>
           </div>
           {/* The one connection instrument (offline, weak link, queued
@@ -1507,10 +1520,7 @@ function UnifiedReviewBody({ rotations, week, rotationSizes, fetchSlots, feedMod
             </button>
         </div>
       </ReviewToolbar>
-      {contentBrowserMounted && !isCohortHost && isAuthenticated && authSession?.user?.id && (
-        <ContentBrowserDialog key={`content-browser:${authSession.user.id}`} userId={authSession.user.id} rotation={rotations[0] ?? ''}
-          open={contentBrowserOpen} returnFocusRef={mobileOptionsTriggerRef} onClose={() => { setContentBrowserOpen(false); mobileOptionsTriggerRef.current?.focus(); }} />
-      )}
+      {reviewDialogs}
 
       {isAuthenticated && !isCohortHost && process.env.NEXT_PUBLIC_PRACTICE_EXAMS_ENABLED === 'true' && (
         <div className="px-4">
@@ -1616,7 +1626,7 @@ function UnifiedReviewBody({ rotations, week, rotationSizes, fetchSlots, feedMod
           "floating in the middle of the screen", so that's reverted. */}
       <div data-review-content className={`px-4 py-5 sm:px-6 sm:py-7 ${bottomPaddingClass}`}>
         <div className={`${reviewShellWidthClass(usesSidePane, reviewPaneKind(item))} mx-auto review-card-shell`}>
-      <ReviewKeyboardHelp open={shortcutsOpen} onClose={() => setShortcutsOpen(false)} context={shortcutContext} returnFocusRef={shortcutsReturnRef} />
+      <ReviewKeyboardHelp open={shortcutsOpen} onClose={() => setShortcutsOpen(false)} context={shortcutContext} canBrowse={!isCohortHost && isAuthenticated} canGoBack={history.entries.length > 0} returnFocusRef={shortcutsReturnRef} />
       {item.practiceReview && (
         <div className="mb-2">
           <PracticeExamFollowUp provenance={item.practiceReview} />

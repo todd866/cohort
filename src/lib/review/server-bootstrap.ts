@@ -10,7 +10,7 @@ import {
 } from '@/lib/rotation-context';
 import { viewerCanAccessPersonalRotation } from '@/lib/personal-rotation-access';
 import { inPlayStudyRotations } from '@/lib/study/in-play-rotations';
-import { getUnifiedSession } from '@/lib/study/unified-session-service';
+import { getUnifiedSession, type UnifiedSessionOptions } from '@/lib/study/unified-session-service';
 import { computeFetchSlots } from './compute-fetch-slots';
 import { defaultPrimaryForViewer, resolvePrimaries } from './resolve-primaries';
 import { parseReviewIntent, type ReviewFilter } from './review-intent';
@@ -79,6 +79,11 @@ export async function buildReviewServerBootstrap(args: {
   institutionOverride?: Institution | null;
   /** Canonical product origin resolved by the page host. */
   requestOrigin?: 'https://cohort.md' | 'https://md3.info';
+  /**
+   * Session-prep lookup the private page supplies (it reads the course brief),
+   * so the first, server-rendered batch follows the same focus as the API.
+   */
+  resolvePrepWeek?: UnifiedSessionOptions['resolvePrepWeek'];
 }): Promise<ReviewServerBootstrap | null> {
   // Cohort uses only the idempotent browser-journey POST turn path. Keep this
   // defense even though the page bootstrap already short-circuits Cohort: a
@@ -246,6 +251,7 @@ export async function buildReviewServerBootstrap(args: {
     const response = await getUnifiedSession(
       new NextRequest(`${args.requestOrigin ?? 'https://md3.info'}/api/study/unified-session?${params}`),
       { userId: args.userId, isGuest: false },
+      ...(args.resolvePrepWeek ? [{ resolvePrepWeek: args.resolvePrepWeek }] : []),
     );
     if (!response.ok) {
       throw new Error(`server review slot failed (${response.status})`);

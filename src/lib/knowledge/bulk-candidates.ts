@@ -202,6 +202,7 @@ export interface BulkCardRow {
    *  .claude/rules/cloze-granularity.md for why a detector that needs imageUrl
    *  must be given it: an omitted select silently changes the verdict. */
   imageUrl: string | null;
+  clipId?: string | null;
   importance: number;
   /** 1 = scaffolding (teaching), 2 = standard (testing), ≥3 = stretch. */
   complexity: number;
@@ -659,7 +660,7 @@ export async function bulkFetchCandidates(
         lastReview: true,
         nextDueAt: true,
         leechSuppressedUntil: true,
-        card: { select: { id: true, stableId: true, rotation: true, clusterId: true, similarCards: true, topics: true, sourceFile: true, imageUrl: true, importance: true, complexity: true, facilityIndex: true, sampleSize: true, variantGroupId: true, variantIndex: true, variantType: true, examRelevance: true, examRelevancePct: true } },
+        card: { select: { id: true, stableId: true, rotation: true, clusterId: true, similarCards: true, topics: true, sourceFile: true, imageUrl: true, clipId: true, importance: true, complexity: true, facilityIndex: true, sampleSize: true, variantGroupId: true, variantIndex: true, variantType: true, examRelevance: true, examRelevancePct: true } },
       },
     }),
     // The concept-link pools have no trigger and stay cached for the TTL. That

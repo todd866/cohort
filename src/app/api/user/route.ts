@@ -24,7 +24,7 @@ import {
   getWeeklyProgress,
 } from '@/lib/user/stats-queries';
 import { seedInitialQueue } from '@/lib/user/queue-seeding';
-import { isReviewMenuSlug } from '@/lib/study/review-menu';
+import { isReviewMenuSlug, reviewMenuDefaultDecks } from '@/lib/study/review-menu';
 
 const feedProfileExplicitSchema = z.object({
   studying: z.string().max(100).optional(),
@@ -279,6 +279,7 @@ export async function PATCH(request: NextRequest) {
     if (updates.reviewMenuModules !== undefined) {
       sanitizedUpdates.reviewMenuCustomized = updates.reviewMenuModules !== null;
       sanitizedUpdates.reviewMenuModules = updates.reviewMenuModules ?? [];
+      sanitizedUpdates.reviewMenuKnownDecks = updates.reviewMenuModules === null ? [] : reviewMenuDefaultDecks();
     }
     const hasProfileUpdates = Object.keys(sanitizedUpdates).length > 0;
 

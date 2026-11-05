@@ -10,6 +10,7 @@ import type { SessionContext } from './unified-session-types';
  */
 export function sessionFilterReasons(ctx: SessionContext): string[] {
   const reasons: string[] = [];
+  if (ctx.weekFilter != null) reasons.push(`week:${ctx.weekFilter}`);
   if (ctx.media) reasons.push(`media:${ctx.media}`);
   if (ctx.typeFilter) reasons.push(`type:${ctx.typeFilter}`);
   if (ctx.difficultyFilter) reasons.push(`difficulty:${ctx.difficultyFilter}`);

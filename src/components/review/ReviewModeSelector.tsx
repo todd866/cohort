@@ -4,7 +4,7 @@ import type { ReviewFilter, ReviewItemType, ReviewMedia } from '@/lib/review/rev
 import type { ReviewFeedMode } from './hooks/useReviewFeedMode';
 import { ChipNativeSelect } from '@/components/shared/Chip';
 
-export type ReviewMode = 'mixed' | 'new' | 'due' | 'at-risk' | 'mcq' | 'image' | 'video' | 'media';
+export type ReviewMode = 'mixed' | 'new' | 'due' | 'at-risk' | 'mcq' | 'image' | 'video' | 'media' | 'text';
 
 interface ReviewModeSelectorProps {
   feedMode: ReviewFeedMode;
@@ -15,6 +15,8 @@ interface ReviewModeSelectorProps {
   newRemaining: { cards: number; questions: number } | null;
   onChange: (mode: ReviewMode) => void;
   practiceExamHref?: string;
+  /** Both No videos and No images are on: the picker reads Text only. */
+  textOnly?: boolean;
 }
 
 /**
@@ -34,7 +36,19 @@ export const MODE_HINTS: Record<ReviewMode, string> = {
   image: 'Only items with an image',
   video: 'Only items with a video clip',
   media: 'Only items with an image or video',
+  text: 'No images or videos: items whose picture or clip is the question are left out',
 };
+
+/**
+ * Text only is the two media hides from Options, chosen from the picker
+ * (owner, 31 Oct 2026). Choosing it turns both on and serves the mixed feed;
+ * choosing anything else while it is on turns both off, so a single-choice
+ * picker never hides a filter it does not show. null leaves the hides alone.
+ */
+export function textOnlyTransition(next: ReviewMode, textOnly: boolean): { hideMedia: boolean | null; mode: ReviewMode } {
+  if (next === 'text') return { hideMedia: true, mode: 'mixed' };
+  return { hideMedia: textOnly ? false : null, mode: next };
+}
 
 export function ReviewModeSelector({
   feedMode,
@@ -45,11 +59,12 @@ export function ReviewModeSelector({
   newRemaining,
   onChange,
   practiceExamHref,
+  textOnly = false,
 }: ReviewModeSelectorProps) {
   // Media and MCQ-only win the display: they change WHAT is served
   // rather than which slice of it, and the request drops the typed filter when
   // it is chosen (due/at-risk have no question-only lane).
-  const mode: ReviewMode = media === 'image' || media === 'video'
+  const baseMode: ReviewMode = media === 'image' || media === 'video'
     ? media
     : media === 'any'
       ? 'media'
@@ -60,6 +75,7 @@ export function ReviewModeSelector({
       : reviewFilter === 'new' || feedMode === 'new-only'
         ? 'new'
         : 'mixed';
+  const mode: ReviewMode = textOnly && baseMode === 'mixed' ? 'text' : baseMode;
   const newCount = newRemaining
     ? newRemaining.cards + newRemaining.questions
     : null;
@@ -89,6 +105,7 @@ export function ReviewModeSelector({
         <option value="video" disabled>Videos only (unavailable)</option>
       ) : null}
       <option value="media">Media only</option>
+      <option value="text">Text only</option>
       {practiceExamHref && <option value="practice-exam">Practice exam</option>}
     </ChipNativeSelect>
   );

@@ -27,6 +27,7 @@ interface UseReviewKeyboardOptions {
   handleRevealAll?: () => void;
   /** Open the compact shortcut reference (usually from `?` or Options). */
   handleOpenShortcuts?: () => void;
+  handleOpenBrowser?: () => void;
   /**
    * True while a grade for this card cannot be taken — one is saving, saved or
    * queued. `useGrading.grade()` early-returns in those states and never calls
@@ -65,10 +66,12 @@ export function useReviewKeyboard({
   handleContentRating,
   handleRevealAll,
   handleOpenShortcuts,
+  handleOpenBrowser,
   cardGradeBlocked = false,
 }: UseReviewKeyboardOptions) {
   useEffect(() => {
-    const handleKeyDown = (e: KeyboardEvent) => {
+    type ShortcutEvent = Pick<KeyboardEvent, 'key' | 'target' | 'repeat' | 'preventDefault'>;
+    const act = (e: ShortcutEvent) => {
       // A held key auto-repeats: that is not a decision. Left unguarded, one held
       // key grades hundreds of items in minutes and records each as real evidence.
       if (disabled || e.repeat || document.querySelector('[aria-modal="true"]')) return;
@@ -87,37 +90,36 @@ export function useReviewKeyboard({
         return;
       }
 
-      if (!currentItem) return;
-
       // Flag mode — keyboard is captured by the textarea, nothing to handle here
       if (flagMode) return;
 
-      // 'g' / 'b' rate the item on screen. The thumbs shipped mouse-only and
-      // recorded zero ratings ever; every other review action has a key.
-      if (handleContentRating && (e.key === 'g' || e.key === 'G')) {
+      // B follows Anki's browser shortcut; bad ratings remain on the thumb button.
+      if (currentItem && handleContentRating && (e.key === 'g' || e.key === 'G')) {
         e.preventDefault();
         handleContentRating('good');
         return;
       }
-      if (handleContentRating && (e.key === 'b' || e.key === 'B')) {
+      if (handleOpenBrowser && (e.key === 'b' || e.key === 'B')) {
         e.preventDefault();
-        handleContentRating('bad');
+        handleOpenBrowser();
         return;
       }
 
       // 'f' to enter flag mode (anytime)
-      if (e.key === 'f' || e.key === 'F') {
+      if (currentItem && (e.key === 'f' || e.key === 'F')) {
         e.preventDefault();
         setFlagMode(true);
         return;
       }
 
-      // 'z' or Cmd+Z to go back
+      // Z revisits history without changing the live turn.
       if (e.key === 'z' || e.key === 'Z') {
         e.preventDefault();
         handleGoBack();
         return;
       }
+
+      if (!currentItem) return;
 
       if (currentItem.type === 'card') {
         if (!cardFullyRevealed) {
@@ -211,13 +213,54 @@ export function useReviewKeyboard({
       }
     };
 
+    // Number shortcuts (1-9 and the home-row twins J K L ; ') show on press and
+    // act on release (owner, 1 Nov 2026): the button under the key looks pressed
+    // while it is held, so pressing J lights the same button as 1 and the twins
+    // teach themselves without a label. Releasing a different key, or leaving
+    // the window, cancels. Every other key still acts on press.
+    const root = document.documentElement;
+    let armed: { key: string; target: EventTarget | null } | null = null;
+    const disarm = () => {
+      armed = null;
+      delete root.dataset.shortcutPressed;
+    };
+    const handleKeyDown = (e: KeyboardEvent) => {
+      if (e.metaKey || e.ctrlKey || e.altKey) return;
+      const n = shortcutNumber(e.key);
+      if (Number.isNaN(n)) {
+        act(e);
+        return;
+      }
+      if (e.repeat) {
+        if (armed) e.preventDefault();
+        return;
+      }
+      if (disabled || document.querySelector('[aria-modal="true"]') || isEditableShortcutTarget(e.target)) return;
+      armed = { key: e.key.toLowerCase(), target: e.target };
+      root.dataset.shortcutPressed = String(n);
+      e.preventDefault();
+    };
+    const handleKeyUp = (e: KeyboardEvent) => {
+      if (!armed || e.key.toLowerCase() !== armed.key) return;
+      const { target } = armed;
+      disarm();
+      act({ key: e.key, target, repeat: false, preventDefault: () => e.preventDefault() });
+    };
+
     window.addEventListener('keydown', handleKeyDown);
-    return () => window.removeEventListener('keydown', handleKeyDown);
+    window.addEventListener('keyup', handleKeyUp);
+    window.addEventListener('blur', disarm);
+    return () => {
+      window.removeEventListener('keydown', handleKeyDown);
+      window.removeEventListener('keyup', handleKeyUp);
+      window.removeEventListener('blur', disarm);
+      disarm();
+    };
   }, [
     currentItem, disabled, cardFullyRevealed, mcqResult, flagMode,
     handleCardContinue, handleReveal, handleCardGrade,
     handleSelectOption, handleMcqSkip, handleNext, handleMcqGrade, handleVideoRate, handleVideoContinue, handleGoBack,
     setFlagMode, awaitingConfidence, cardGradeBlocked, handleContentRating, handleRevealAll,
-    handleOpenShortcuts,
+    handleOpenShortcuts, handleOpenBrowser,
   ]);
 }

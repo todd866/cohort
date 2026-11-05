@@ -11,6 +11,14 @@ export interface TaughtTopicEntry {
 
 const MS_PER_DAY = 86_400_000;
 
+/**
+ * Days ahead of a dated session that its topics already lead the queue. Owner,
+ * 2026-11-04: "we should automatically be ... serving must-know content" for the
+ * day's mandatory sessions, so the morning check dates an entry on the session
+ * day and the learner meets it the day before as well as after.
+ */
+export const TAUGHT_TOPIC_LEAD_DAYS = 1;
+
 /** courseDay is the course's local date represented at UTC midnight. */
 export function resolveTaughtTopics(
   entries: readonly TaughtTopicEntry[],
@@ -21,10 +29,12 @@ export function resolveTaughtTopics(
   const ages = new Map<string, number>();
   for (const entry of log) {
     const age = (courseDay.getTime() - Date.parse(`${entry.date}T00:00:00Z`)) / MS_PER_DAY;
-    if (!Number.isInteger(age) || age < 0 || age >= TAUGHT_TOPIC_WINDOW_DAYS) continue;
+    if (!Number.isInteger(age) || age < -TAUGHT_TOPIC_LEAD_DAYS || age >= TAUGHT_TOPIC_WINDOW_DAYS) continue;
+    // Before the session counts as the day itself: full strength.
+    const effectiveAge = Math.max(0, age);
     for (const rawTopic of entry.topics) {
       const topic = normalizeCurriculumTopic(rawTopic);
-      if (topic) ages.set(topic, Math.min(ages.get(topic) ?? Infinity, age));
+      if (topic) ages.set(topic, Math.min(ages.get(topic) ?? Infinity, effectiveAge));
     }
   }
   const topicRecencyDays = new Map([...ages].sort(([a], [b]) => a.localeCompare(b)));

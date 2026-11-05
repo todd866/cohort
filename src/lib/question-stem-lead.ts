@@ -11,12 +11,15 @@ export function splitStemLead(text: string): { body: string; lead: string | null
   const trimmed = text.trim();
   const paragraphs = trimmed.split(/\n\s*\n/);
   const last = paragraphs.at(-1)?.trim() ?? '';
-  if (!/[?:]$/.test(last)) return { body: trimmed, lead: null };
+  // Inline Markdown may wrap the question ("**What next?**"). Recognise its
+  // closing emphasis delimiters without removing them from the returned text:
+  // the detector and every stem renderer must agree about the same question.
+  if (!/[?:](?:\*{1,3}|_{1,3})?$/.test(last)) return { body: trimmed, lead: null };
   if (paragraphs.length > 1) return { body: paragraphs.slice(0, -1).join('\n\n').trim(), lead: last };
 
   // One paragraph: the lead is the sentence after the last safe boundary.
   let cut = -1;
-  for (const match of last.matchAll(/[.!?](?=\s+[A-Z(])/g)) {
+  for (const match of last.matchAll(/[.!?](?=\s+(?:\*{1,3}|_{1,3})?[A-Z(])/g)) {
     const end = (match.index ?? 0) + 1;
     if (match[0] === '.' && NON_TERMINAL.test(last.slice(0, end))) continue;
     cut = end;

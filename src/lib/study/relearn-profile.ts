@@ -77,6 +77,23 @@ export const HAMMER_RELEARN: RelearnProfile = {
  * chose a subject, and choosing a subject is what licenses the drill. An
  * ordinary rotation session — even a focused one — keeps the daily values.
  */
+/**
+ * A session is scoped when the learner chose its subject: a cluster square, a
+ * week link (`?week=11`) or a topic set. The owner, 2026-11-04, on a week deck:
+ * it "needs to stay on the same cards until I mark them correct". A week link is
+ * as deliberate a choice as a cluster, so it drills too. An unscoped rotation
+ * feed keeps the daily profile.
+ */
+export function isScopedStudySession(ctx: {
+  clusterFilter?: string | null;
+  weekFilter?: number | null;
+  topicsFilter?: string | null;
+}): boolean {
+  return Boolean(ctx.clusterFilter)
+    || (ctx.weekFilter !== null && ctx.weekFilter !== undefined)
+    || Boolean(ctx.topicsFilter);
+}
+
 export function relearnProfileFor(session: { topicScoped: boolean }): RelearnProfile {
   return session.topicScoped ? HAMMER_RELEARN : DAILY_FEED_RELEARN;
 }

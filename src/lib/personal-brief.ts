@@ -225,6 +225,11 @@ export interface Wba {
   prepResources: PrepResource[];
   /** Explicit Review deep-link. Omit when no md3 preparation maps cleanly. */
   reviewIntent?: ReviewIntent;
+  /**
+   * Date the owner said this WBA is done. Not verification: status stays
+   * unverified until RISR shows credit. Session prep stops preparing it.
+   */
+  ownerReportedDone?: string;
   note?: string;
 }
 

@@ -420,7 +420,9 @@ export const PROTECTED_PUBLIC_FALLBACKS: ReadonlyArray<Readonly<{
     // layout), which the distributed statistics page reads and writes.
     // 2026-10-23: shared queue selectors read nullable simulationGoal. Its
     // additive migration is distributed; private cases and focus stay omitted.
-    sha256: '05a272f4986fcf8d6bc7ab6fbb74d7531ee40c65309ed16cec1466f543bdfdb9',
+    // 2026-11-05: reviewMenuKnownDecks, which the public profile save writes and
+    // /api/user/minimal reads, so a new default deck reaches saved menus.
+    sha256: '041ab2123ce8aa87c0e78cf2e0e40b87addbaff246023475bfb2134cb6da3b46',
   },
   {
     // The statistics engine is public; the exam blueprint areas it rolls

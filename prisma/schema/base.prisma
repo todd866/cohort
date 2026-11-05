@@ -78,6 +78,9 @@ model User {
   // reviewMenuModules replaces that default.
   reviewMenuCustomized Boolean  @default(false)
   reviewMenuModules    String[] @default([])
+  // Default decks the learner had been offered at that save, so a deck added
+  // to the default later still reaches a saved menu (BACKLOG 0t).
+  reviewMenuKnownDecks String[] @default([])
 
   // Jurisdiction - determines which guidelines/protocols to show
   // 'nsw' | 'wa' | 'national' | null (null = show all/infer from institution)

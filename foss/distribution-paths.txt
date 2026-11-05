@@ -1628,6 +1628,7 @@ prisma/migrations/20261005100000_feedback_search_embeddings/migration.sql
 prisma/migrations/20261015090000_exam_gaps_and_experience/migration.sql
 prisma/migrations/20261023120000_user_simulation_goal/migration.sql
 prisma/migrations/20261026230000_universal_recall_objectives/migration.sql
+prisma/migrations/20261105000000_user_review_menu_known_decks/migration.sql
 prisma/migrations/migration_lock.toml
 prisma/schema/anki-bridge.prisma
 prisma/schema/anki-export.prisma
@@ -1955,6 +1956,7 @@ src/components/review/ProgressDrawer.tsx
 src/components/review/ProgressPill.tsx
 src/components/review/RevealActionLabel.tsx
 src/components/review/ReviewDifficultyControl.tsx
+src/components/review/ReviewHistoryDialog.tsx
 src/components/review/ReviewKeyboardHelp.test.tsx
 src/components/review/ReviewKeyboardHelp.tsx
 src/components/review/ReviewModeProvider.tsx
@@ -1996,6 +1998,7 @@ src/components/review/hooks/useGroupReview.ts
 src/components/review/hooks/useGroupReviewKeyboard.ts
 src/components/review/hooks/useMcqReview.ts
 src/components/review/hooks/useReviewFeedMode.ts
+src/components/review/hooks/useReviewHistory.ts
 src/components/review/hooks/useReviewKeyboard.test.ts
 src/components/review/hooks/useReviewKeyboard.ts
 src/components/review/hooks/useReviewSession.ts
@@ -2366,6 +2369,7 @@ src/lib/knowledge/intervention.ts
 src/lib/knowledge/item-recall-estimate.ts
 src/lib/knowledge/leech-regeneration.ts
 src/lib/knowledge/manifold-walk.ts
+src/lib/knowledge/media-presence.ts
 src/lib/knowledge/modality-guard.ts
 src/lib/knowledge/practice-miss-concepts.ts
 src/lib/knowledge/preemptive-scaffold.ts

@@ -63,7 +63,7 @@ import {
   fetchRelearnCards,
   selectRelearnReserve,
 } from './relearn';
-import { relearnProfileFor } from './relearn-profile';
+import { isScopedStudySession, relearnProfileFor } from './relearn-profile';
 import { getStudyDayStart } from '@/lib/study-day';
 import { computeNoveltyBudget } from './novelty-budget';
 import {
@@ -356,12 +356,12 @@ export async function buildManifoldSession(ctx: SessionContext): Promise<NextRes
     for (const id of poolFilters.openIssueQuestionIds) exclusionState.excludedQuestionIds.add(id);
 
     const protectedLaneNow = new Date();
-    // A cluster in the request means the learner chose a subject, and choosing a
+    // A cluster, week or topic in the request means the learner chose a subject, and choosing a
     // subject is what licenses the drill: repeating what you just missed IS a
     // topic session, where in the daily feed it would crowd out a rotation's
     // worth of work. Everything else about the lane, including its anti-loop
     // guards, is unchanged.
-    const relearnProfile = relearnProfileFor({ topicScoped: Boolean(ctx.clusterFilter) });
+    const relearnProfile = relearnProfileFor({ topicScoped: isScopedStudySession(ctx) });
     let prefetchedRelearnCardIds: string[] = [];
     if (ctx.feedMode !== 'new-only') {
       try {

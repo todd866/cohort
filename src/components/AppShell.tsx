@@ -45,7 +45,7 @@ export function AppShell({
   const shell = pathname === '/sim-practice' ? (
     <div className="flex h-[100svh] min-h-0 flex-col">
       <SkipToMainContent /><ConnectionBanner /><Navigation isCohortHost={isCohortHost} />
-      <main id="main-content" tabIndex={-1} className="min-h-0 flex-1 pb-20 md:pb-0 md:pl-20">{children}</main>
+      <main id="main-content" tabIndex={-1} className="min-h-0 flex-1 pb-[var(--md-mobile-nav-height,5rem)] md:pb-0 md:pl-20">{children}</main>
     </div>
   ) : pathname === '/textbook/stream' ? (
     <div className="flex h-[100svh] min-h-0 flex-col">
@@ -76,10 +76,10 @@ export function AppShell({
       <SkipToMainContent />
       <ConnectionBanner />
       <Navigation isCohortHost={isCohortHost} />
-      <main id="main-content" tabIndex={-1} className="md:pl-20 pb-24 md:pb-0 [--md-review-footer-bottom:5rem] md:[--md-review-footer-bottom:0px]">
+      <main id="main-content" tabIndex={-1} className="md:pl-20 pb-[var(--md-mobile-nav-height,6rem)] md:pb-0 [--md-review-footer-bottom:var(--md-mobile-nav-height,5rem)] md:[--md-review-footer-bottom:0px]">
         {children}
       </main>
-      {pathname === '/profile' && <footer className="md:pl-20 pb-24 md:pb-4 text-center text-xs text-[var(--md-on-surface-variant)]">
+      {pathname === '/profile' && <footer className="md:pl-20 pb-[var(--md-mobile-nav-height,6rem)] md:pb-4 text-center text-xs text-[var(--md-on-surface-variant)]">
         {/* Never auto-prefetch: offline shell forbids stray RSC fetches, and
             legal pages are not on the critical navigation path. */}
         <Link

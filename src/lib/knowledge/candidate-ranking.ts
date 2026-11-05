@@ -40,6 +40,7 @@ import {
   questionEligibleForReviewLearning,
 } from '@/lib/study/review-learning-policy';
 import type { BulkCandidates, BulkQuestionRow } from './bulk-candidates';
+import { mediaPresenceBoost } from './media-presence';
 import {
   STANDARD_CHALLENGE_RECALL,
   STRETCH_CHALLENGE_RECALL,
@@ -189,6 +190,7 @@ export type CardCandidate = {
   sourceFile: string | null;
   /** Figure on the card. Optional: absent means no figure-spacing signal. */
   imageUrl?: string | null;
+  clipId?: string | null;
   importance: number;
   complexity: number;
   variantGroupId: string | null;
@@ -338,6 +340,7 @@ export function getCardsFromBulk(
         topics: card.topics,
         sourceFile: card.sourceFile,
         imageUrl: card.imageUrl,
+        clipId: card.clipId,
         importance: card.importance,
         complexity: card.complexity,
         variantGroupId: card.variantGroupId,
@@ -358,6 +361,7 @@ export function getCardsFromBulk(
         topics: card.topics,
         sourceFile: card.sourceFile,
         imageUrl: card.imageUrl,
+        clipId: card.clipId,
         importance: card.importance,
         complexity: card.complexity,
         variantGroupId: card.variantGroupId,
@@ -419,6 +423,7 @@ export function getCardsFromBulk(
   // Figure spacing: a picture the user has seen recently sinks, with the
   // interval expanding each time they see it. Keeps one figure off fifteen
   // cards' worth of consecutive mornings without ever making it unreachable.
+  const mediaBoost = (card: CardCandidate): number => mediaPresenceBoost(card.imageUrl, card.clipId);
   const figureBoost = (card: CardCandidate): number =>
     figureCooldownBoost(card.imageUrl, recentFigureExposures, figureNowMs);
 
@@ -467,8 +472,8 @@ export function getCardsFromBulk(
         const la = ladderBoost(a);
         const lb = ladderBoost(b);
         if (la !== lb) return la - lb;
-        const pa = pacingBoost(a) + figureBoost(a);
-        const pb = pacingBoost(b) + figureBoost(b);
+        const pa = pacingBoost(a) + figureBoost(a) + mediaBoost(a);
+        const pb = pacingBoost(b) + figureBoost(b) + mediaBoost(b);
         if (pa !== pb) return pa - pb;
         return (b.importance ?? 1) - (a.importance ?? 1);
       };
@@ -485,7 +490,7 @@ export function getCardsFromBulk(
     for (const card of candidates) {
       const baseRank = vectorRank.get(card.id);
       if (baseRank !== undefined) {
-        ranked.push({ card, rank: baseRank + importanceBoost(card.importance ?? 1) + variantBoost(card) + ladderBoost(card) + pacingBoost(card) + figureBoost(card) });
+        ranked.push({ card, rank: baseRank + importanceBoost(card.importance ?? 1) + variantBoost(card) + ladderBoost(card) + pacingBoost(card) + figureBoost(card) + mediaBoost(card) });
       } else {
         unranked.push(card);
       }
@@ -500,8 +505,8 @@ export function getCardsFromBulk(
       const la = ladderBoost(a);
       const lb = ladderBoost(b);
       if (la !== lb) return la - lb;
-      const pa = pacingBoost(a) + figureBoost(a);
-      const pb = pacingBoost(b) + figureBoost(b);
+      const pa = pacingBoost(a) + figureBoost(a) + mediaBoost(a);
+      const pb = pacingBoost(b) + figureBoost(b) + mediaBoost(b);
       if (pa !== pb) return pa - pb;
       return (b.importance ?? 1) - (a.importance ?? 1);
     });

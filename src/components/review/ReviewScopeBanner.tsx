@@ -47,6 +47,7 @@ export function ReviewScopeBanner({
   canAccessVideo,
   practiceExamHref,
   onReviewModeChange,
+  textOnly = false,
 }: {
   scope: ReviewClusterScope | null;
   feedMode?: ReviewFeedMode;
@@ -56,6 +57,7 @@ export function ReviewScopeBanner({
   canAccessVideo?: boolean;
   practiceExamHref?: string;
   onReviewModeChange?: (mode: ReviewMode) => void;
+  textOnly?: boolean;
 }) {
   if (!scope) return null;
   const exitHref = scope.rotation ? `/?rotation=${encodeURIComponent(scope.rotation)}` : '/';
@@ -82,6 +84,7 @@ export function ReviewScopeBanner({
             practiceExamHref={practiceExamHref}
             newRemaining={null}
             onChange={onReviewModeChange}
+            textOnly={textOnly}
           />
         )}
         <Link

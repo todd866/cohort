@@ -31,8 +31,11 @@ export interface SourceFile {
 
 const MNEMONIC_RE = /<Mnemonic\b([^>]*)>([\s\S]*?)<\/Mnemonic>/g;
 const TITLE_RE = /title="([^"]+)"/;
-/** `**C**onjunctivitis (bilateral)` → `Conjunctivitis`, parenthetical dropped. */
-const ITEM_RE = /^\s*\*\*([^*]+)\*\*([^\n(]*)/;
+/**
+ * `**C**onjunctivitis (bilateral)` → `Conjunctivitis`, parenthetical dropped.
+ * A list marker (`- `, `* `, `1. `) may precede it.
+ */
+const ITEM_RE = /^\s*(?:[-+*]|\d+[.)])?\s*\*\*([^*]+)\*\*([^\n(]*)/;
 
 /**
  * Strip the markdown emphasis a mnemonic uses to highlight its letters, and
@@ -82,8 +85,18 @@ function clozeAnswers(text: string): Set<string> {
  */
 function isDrilled(block: MnemonicBlock, text: string, answers: Set<string>): boolean {
   const cards = text.replace(MNEMONIC_RE, '');
-  if (new RegExp(`\\b${block.title.replace(/[.*+?^${}()|[\]\\]/g, '\\$&')}\\b`, 'i').test(cards)) {
-    return true;
+  // A card names a set by its short name: "SCALP" for "SCALP: the five layers
+  // of the scalp", "HELPERR" for "HELPERR — Shoulder Dystocia Management".
+  // Only an all-capitals mnemonic counts, matched case-sensitively in a card's
+  // question: "DELIRIUM — Common Precipitants" is not drilled by a card that
+  // merely says "delirium".
+  const shortName = block.title.split(/\s*:\s|\s[—–-]\s/)[0].trim();
+  const escape = (value: string) => value.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
+  // \b fails after a title ending in ')' ("4 T's of PPH (PPH)"): use lookarounds.
+  if (new RegExp(`(?<![\\w])${escape(block.title)}(?![\\w])`, 'i').test(cards)) return true;
+  if (shortName !== block.title && /^[A-Z0-9][A-Z0-9-]{2,}$/.test(shortName)) {
+    const questions = [...cards.matchAll(/\*\*Q:\*\*([^\n]*)/g)].map((m) => m[1]).join('\n');
+    if (new RegExp(`\\b${escape(shortName)}\\b`).test(questions)) return true;
   }
   if (block.items.length === 0) return false;
   const hit = block.items.filter((item) => {

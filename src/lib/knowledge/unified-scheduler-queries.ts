@@ -63,6 +63,8 @@ export async function getCardsForCluster(
     practiceLocale?: 'au' | 'us';
     crossSourceRotations?: readonly string[];
     crossSourceMappingMode?: 'adjacent' | 'open';
+    /** A week-scoped session (`?week=N`) reads only that week's cards. */
+    week?: number;
   },
 ): Promise<Array<CardCandidate & { rotation: string; firstSightAtSelection: boolean }>> {
   const excludedIds = options.selectedCardIds.size > 0 ? [...options.selectedCardIds] : undefined;
@@ -93,6 +95,7 @@ export async function getCardsForCluster(
           options.crossSourceMappingMode ?? 'adjacent',
         ),
         clusterId,
+        ...(options.week !== undefined ? { week: options.week } : {}),
         deletedAt: null,
         shelvedAt: null,
         AND: [localeWhere, ...tierGates],
@@ -136,6 +139,7 @@ export async function getCardsForCluster(
             options.crossSourceMappingMode ?? 'adjacent',
           ),
           clusterId,
+          ...(options.week !== undefined ? { week: options.week } : {}),
           deletedAt: null,
           shelvedAt: null,
           AND: [localeWhere, ...tierGates],

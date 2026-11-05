@@ -23,6 +23,8 @@ export interface ReviewMenuViewer {
   /** False means the shared default. True means reviewMenuModules is the shortlist. */
   reviewMenuCustomized: boolean;
   reviewMenuModules: readonly string[];
+  /** Default decks offered when the menu was saved; empty for a menu saved before 5 Nov 2026. Absent: none added. */
+  reviewMenuKnownDecks?: readonly string[];
 }
 
 function viewerOf(user: ReviewMenuViewer): PersonalRotationViewer {
@@ -90,6 +92,7 @@ export function buildReviewMenu(user: ReviewMenuViewer, now: Date = new Date()):
     authorized,
     calendarRotation: calendar,
     saved: user.reviewMenuCustomized ? relevantMenuSlugs(user.reviewMenuModules, user, now) : null,
+    known: user.reviewMenuKnownDecks ?? null,
     program: md1 ? 'md1' : null,
   });
   // GSSE is a shared copyright-tier choice, including saved and MD1 menus.

@@ -11,11 +11,14 @@ interface RelatedLink {
 interface RotationLandingPageProps {
   rotationId: string;
   relatedLinks?: RelatedLink[];
+  /** Optional curated weekly review counts, used only by rotations with a small core lane. */
+  weeklyReviewCounts?: Record<number, number>;
 }
 
 export function RotationLandingPage({
   rotationId,
   relatedLinks = [],
+  weeklyReviewCounts,
 }: RotationLandingPageProps) {
   const rotation = getRotation(rotationId);
   if (!rotation) return null;
@@ -93,26 +96,37 @@ export function RotationLandingPage({
           <ol className="divide-y divide-[var(--md-outline-soft)] overflow-hidden rounded-2xl border border-[var(--md-outline-soft)] bg-[var(--md-surface-container-lowest)]">
             {weeks.map((week) => (
               <li key={week.num}>
-                <Link
-                  href={`/${rotationId}/week/${week.num}`}
-                  className="flex items-start gap-4 px-4 py-3.5 transition-colors hover:bg-[var(--md-surface-container)]"
-                >
-                  <span className="w-6 shrink-0 text-right text-sm font-bold tabular-nums text-[var(--md-primary)]">
-                    {week.num}
-                  </span>
-                  <span className="min-w-0 flex-1">
-                    <span className="font-semibold text-[var(--md-on-surface)]">
-                      {week.title}
+                <div className="flex items-start">
+                  <Link
+                    href={`/${rotationId}/week/${week.num}`}
+                    className="flex min-w-0 flex-1 items-start gap-4 px-4 py-3.5 transition-colors hover:bg-[var(--md-surface-container)]"
+                  >
+                    <span className="w-6 shrink-0 text-right text-sm font-bold tabular-nums text-[var(--md-primary)]">
+                      {week.num}
                     </span>
-                    {week.topics.length > 0 && (
-                      <span className="mt-0.5 block text-sm text-[var(--md-on-surface-variant)]">
-                        {week.topics.slice(0, 4).join(' · ')}
-                        {week.topics.length > 4 ? ` · +${week.topics.length - 4} more` : ''}
+                    <span className="min-w-0 flex-1">
+                      <span className="font-semibold text-[var(--md-on-surface)]">
+                        {week.title}
                       </span>
-                    )}
-                  </span>
-                  <span className="sr-only">Week {week.num}</span>
-                </Link>
+                      {week.topics.length > 0 && (
+                        <span className="mt-0.5 block text-sm text-[var(--md-on-surface-variant)]">
+                          {week.topics.slice(0, 4).join(' · ')}
+                          {week.topics.length > 4 ? ` · +${week.topics.length - 4} more` : ''}
+                        </span>
+                      )}
+                    </span>
+                    <span className="sr-only">Week {week.num}</span>
+                  </Link>
+                  {weeklyReviewCounts?.[week.num] !== undefined && (
+                    <Link
+                      href={`/${rotationId}/week/${week.num}/review`}
+                      className="mr-2 inline-flex min-h-11 shrink-0 items-center rounded-lg px-3 text-sm font-semibold text-[var(--md-primary)] hover:bg-[var(--md-surface-container)] hover:underline"
+                      aria-label={`Review ${weeklyReviewCounts[week.num]} core prompts for week ${week.num}`}
+                    >
+                      {weeklyReviewCounts[week.num]} cards →
+                    </Link>
+                  )}
+                </div>
               </li>
             ))}
           </ol>

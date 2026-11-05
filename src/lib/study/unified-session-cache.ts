@@ -539,7 +539,8 @@ async function refreshCachedQuestionOptions(
  */
 function isLearnerNarrowed(ctx: SessionContext): boolean {
   return Boolean(
-    ctx.typeFilter
+    ctx.weekFilter != null
+    || ctx.typeFilter
     || ctx.media
     || ctx.difficultyFilter
     || ctx.topicsFilter

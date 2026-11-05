@@ -142,8 +142,8 @@ export function CardFeedback({
             const active = qualityRating === rating;
             const key = rating === 'good' ? 'g' : 'b';
             const label = active
-              ? `Clear ${rating} ${itemLabel} rating (${key})`
-              : `Mark as a ${rating} ${itemLabel} (${key})`;
+              ? `Clear ${rating} ${itemLabel} rating${rating === 'good' ? ` (${key})` : ''}`
+              : `Mark as a ${rating} ${itemLabel}${rating === 'good' ? ` (${key})` : ''}`;
             return (
               <button
                 key={rating}

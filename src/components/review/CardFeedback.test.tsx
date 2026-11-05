@@ -48,7 +48,7 @@ describe('CardFeedback accessibility', () => {
     );
 
     expect(screen.getByRole('button', { name: 'Mark as a good card (g)' })).toHaveAttribute('aria-pressed', 'false');
-    expect(screen.getByRole('button', { name: 'Mark as a bad card (b)' })).toHaveAttribute('aria-pressed', 'false');
+    expect(screen.getByRole('button', { name: 'Mark as a bad card' })).toHaveAttribute('aria-pressed', 'false');
   });
 
   it('shows only content-rating controls for questions', () => {
@@ -63,7 +63,7 @@ describe('CardFeedback accessibility', () => {
 
     expect(screen.getAllByRole('button')).toHaveLength(2);
     expect(screen.getByRole('button', { name: 'Mark as a good question (g)' })).toBeInTheDocument();
-    expect(screen.getByRole('button', { name: 'Mark as a bad question (b)' })).toBeInTheDocument();
+    expect(screen.getByRole('button', { name: 'Mark as a bad question' })).toBeInTheDocument();
     expect(screen.queryByRole('button', { name: /more cards/i })).not.toBeInTheDocument();
     expect(screen.queryByRole('button', { name: /hide/i })).not.toBeInTheDocument();
   });
@@ -132,10 +132,10 @@ describe('CardFeedback accessibility', () => {
       />,
     );
 
-    await user.click(screen.getByRole('button', { name: 'Mark as a bad card (b)' }));
+    await user.click(screen.getByRole('button', { name: 'Mark as a bad card' }));
 
     await waitFor(() => {
-      expect(screen.getByRole('button', { name: 'Mark as a bad card (b)' })).toHaveAttribute('aria-pressed', 'false');
+      expect(screen.getByRole('button', { name: 'Mark as a bad card' })).toHaveAttribute('aria-pressed', 'false');
     });
   });
 

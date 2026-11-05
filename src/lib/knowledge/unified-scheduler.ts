@@ -143,6 +143,7 @@ async function constructUnifiedSessionImpl(
   const setup = await resolveSchedulerSetup(userId, options);
   const {
     rotation,
+    week,
     size,
     concepts,
     excludedCardIds,
@@ -164,8 +165,11 @@ async function constructUnifiedSessionImpl(
     // request cannot reopen a second repository view midway through the pair.
     return readPreselection('cluster-fallback-session', () => constructClusterSession(userId, {
         rotation,
+        ...(week !== undefined && week !== null ? { week } : {}),
         size,
-        cardRatio,
+        // Bank questions carry no week, so hydration drops every one a
+        // week-scoped batch picks. Give a week deck's seats to its cards.
+        cardRatio: week !== undefined && week !== null ? 1 : cardRatio,
         maxNewCards: effectiveMaxNewCards,
         minFirstSightItems: options.minFirstSightItems ?? 0,
         excludeCardIds: [...excludedCardIds],

@@ -384,6 +384,17 @@ main:focus-visible {
  * layout/size property: a transition on every element on every theme/state
  * change would animate layout + compositing across the whole tree and tank
  * scroll/interaction performance. Animate those per-component instead. */
+/* Number shortcuts show on press and act on release (useReviewKeyboard): the
+   button under the held key looks pressed. A snap, not an animation: this is a
+   keyboard action made hundreds of times a day (.claude/rules/motion.md). */
+html[data-shortcut-pressed="1"] [data-shortcut="1"],
+html[data-shortcut-pressed="2"] [data-shortcut="2"],
+html[data-shortcut-pressed="3"] [data-shortcut="3"],
+html[data-shortcut-pressed="4"] [data-shortcut="4"],
+html[data-shortcut-pressed="5"] [data-shortcut="5"] {
+  box-shadow: inset 0 0 0 2px currentColor;
+}
+
 * {
   transition-property: background-color, border-color, color, fill, stroke;
   transition-duration: var(--md-duration-fast);

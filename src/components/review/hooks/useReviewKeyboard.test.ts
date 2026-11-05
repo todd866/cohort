@@ -42,18 +42,25 @@ function defaultHandlers() {
     handleVideoRate: vi.fn(),
     handleVideoContinue: vi.fn(),
     handleGoBack: vi.fn(),
+    handleOpenBrowser: vi.fn(),
     setFlagMode: vi.fn(),
     handleContentRating: vi.fn(),
     handleRevealAll: vi.fn(),
   };
 }
 
-function pressKey(key: string, target?: EventTarget | null) {
-  const event = new KeyboardEvent('keydown', { key, bubbles: true });
+function keyEvent(type: 'keydown' | 'keyup', key: string, target?: EventTarget | null, repeat = false) {
+  const event = new KeyboardEvent(type, { key, bubbles: true, repeat });
   if (target) {
     Object.defineProperty(event, 'target', { value: target });
   }
   window.dispatchEvent(event);
+}
+
+/** A whole key press: down, then up. Number shortcuts act on release. */
+function pressKey(key: string, target?: EventTarget | null) {
+  keyEvent('keydown', key, target);
+  keyEvent('keyup', key, target);
 }
 
 function renderKeyboard(overrides: Record<string, unknown> = {}) {
@@ -78,6 +85,45 @@ function renderKeyboard(overrides: Record<string, unknown> = {}) {
 const GOOD_CONFIDENCE = 3;
 
 describe('useReviewKeyboard', () => {
+  // Owner, 1 Nov 2026: pressing a number shows its button pressed; holding it
+  // keeps it pressed; the choice registers on release. J lights the same button
+  // as 1, so the home-row twins teach themselves without a label.
+  describe('press shows, release acts', () => {
+    beforeEach(() => { delete document.documentElement.dataset.shortcutPressed; });
+
+    it('marks the pressed number while held and grades only on release', () => {
+      const h = renderKeyboard({ cardFullyRevealed: true });
+      keyEvent('keydown', 'l');
+      expect(document.documentElement.dataset.shortcutPressed).toBe('3');
+      keyEvent('keydown', 'l', null, true);
+      expect(h.handleCardGrade).not.toHaveBeenCalled();
+      keyEvent('keyup', 'l');
+      expect(h.handleCardGrade).toHaveBeenCalledTimes(1);
+      expect(h.handleCardGrade).toHaveBeenCalledWith(3);
+      expect(document.documentElement.dataset.shortcutPressed).toBeUndefined();
+    });
+
+    it('ignores the release of a different key, and cancels on blur', () => {
+      const h = renderKeyboard({ cardFullyRevealed: true });
+      keyEvent('keydown', '2');
+      keyEvent('keyup', '3');
+      expect(h.handleCardGrade).not.toHaveBeenCalled();
+      window.dispatchEvent(new Event('blur'));
+      expect(document.documentElement.dataset.shortcutPressed).toBeUndefined();
+      keyEvent('keyup', '2');
+      expect(h.handleCardGrade).not.toHaveBeenCalled();
+    });
+
+    it('selects an MCQ option on release of its home-row key', () => {
+      const h = renderKeyboard({ currentItem: makeQuestion(5) });
+      keyEvent('keydown', "'");
+      expect(document.documentElement.dataset.shortcutPressed).toBe('5');
+      expect(h.handleSelectOption).not.toHaveBeenCalled();
+      keyEvent('keyup', "'");
+      expect(h.handleSelectOption).toHaveBeenCalledWith('E');
+    });
+  });
+
   // Owner, 30 Oct 2026: "add jkl; as a 1234 adjunct ... right-hand-only reviewing".
   describe('home-row number keys', () => {
     it('grades a revealed card with j k l ; as 1 2 3 4', () => {
@@ -225,7 +271,7 @@ describe('useReviewKeyboard', () => {
   // ---- No current item ----
 
   describe('when no current item', () => {
-    it('ignores all key presses', () => {
+    it('keeps history available after the last item, without grading', () => {
       const { handleReveal, handleCardGrade, handleGoBack } = renderKeyboard({
         currentItem: undefined,
       });
@@ -236,7 +282,7 @@ describe('useReviewKeyboard', () => {
 
       expect(handleReveal).not.toHaveBeenCalled();
       expect(handleCardGrade).not.toHaveBeenCalled();
-      expect(handleGoBack).not.toHaveBeenCalled();
+      expect(handleGoBack).toHaveBeenCalledOnce();
     });
   });
 
@@ -562,7 +608,7 @@ describe('useReviewKeyboard', () => {
     });
   });
 
-  // ---- Content rating (g / b) ----
+  // ---- Content rating (G) and browser (B) ----
 
   describe('content rating shortcuts', () => {
     // The thumbs have existed since content-rating-v1 and recorded zero
@@ -574,18 +620,35 @@ describe('useReviewKeyboard', () => {
       expect(handleContentRating).toHaveBeenCalledWith('good');
     });
 
-    it('rates the current item bad on b', () => {
-      const { handleContentRating } = renderKeyboard();
+    it('opens the browser on b without rating content', () => {
+      const { handleContentRating, handleOpenBrowser } = renderKeyboard();
       pressKey('b');
-      expect(handleContentRating).toHaveBeenCalledWith('bad');
+      expect(handleOpenBrowser).toHaveBeenCalledOnce();
+      expect(handleContentRating).not.toHaveBeenCalled();
     });
 
     it('accepts the uppercase forms', () => {
-      const { handleContentRating } = renderKeyboard();
+      const { handleContentRating, handleOpenBrowser } = renderKeyboard();
       pressKey('G');
       pressKey('B');
       expect(handleContentRating).toHaveBeenNthCalledWith(1, 'good');
-      expect(handleContentRating).toHaveBeenNthCalledWith(2, 'bad');
+      expect(handleOpenBrowser).toHaveBeenCalledOnce();
+      expect(handleContentRating).toHaveBeenCalledTimes(1);
+    });
+
+    it('does not open the browser while typing, in a modal, or with browser modifiers', () => {
+      const { handleOpenBrowser } = renderKeyboard();
+      const input = document.createElement('input');
+      document.body.appendChild(input);
+      pressKey('b', input);
+      window.dispatchEvent(new KeyboardEvent('keydown', { key: 'b', ctrlKey: true }));
+      const modal = document.createElement('div');
+      modal.setAttribute('aria-modal', 'true');
+      document.body.appendChild(modal);
+      pressKey('b');
+      expect(handleOpenBrowser).not.toHaveBeenCalled();
+      input.remove();
+      modal.remove();
     });
 
     it('rates a question as well as a card', () => {

@@ -73,6 +73,7 @@ async function restrictToClustersWithEligibleCards<T extends { clusterId: string
     media?: ReviewMedia;
     imageTrust?: AccessTier;
     isCopyrightTier?: boolean;
+    week?: number;
   },
 ): Promise<T[]> {
   if (clusters.length === 0) return [];
@@ -86,6 +87,7 @@ async function restrictToClustersWithEligibleCards<T extends { clusterId: string
         scope.crossSourceMappingMode,
       ),
       clusterId: { in: clusters.map((cluster) => cluster.clusterId) },
+      ...(scope.week !== undefined ? { week: scope.week } : {}),
       deletedAt: null,
       shelvedAt: null,
       ...(scope.minComplexity != null
@@ -120,6 +122,8 @@ export async function constructClusterSession(
     isCopyrightTier?: boolean;
     media?: ReviewMedia;
     imageTrust?: AccessTier;
+    /** A week-scoped session (`?week=N`): visit and read only that week's cards. */
+    week?: number;
   }
 ): Promise<UnifiedSessionResult> {
   const {
@@ -154,8 +158,9 @@ export async function constructClusterSession(
   // into 132 clusters and only a fraction hold a neurosurgical plate. Resolve
   // which clusters actually carry an eligible card in ONE grouped query rather
   // than discovering it with a per-cluster query per pass on a request path.
-  const clusters = crossSourceRotations.length > 0 || options.media !== undefined
+  const clusters = crossSourceRotations.length > 0 || options.media !== undefined || options.week !== undefined
     ? await restrictToClustersWithEligibleCards(allClusters, {
+        week: options.week,
         rotation,
         crossSourceRotations,
         crossSourceMappingMode,
@@ -247,6 +252,7 @@ export async function constructClusterSession(
 
       const candidates = await getCardsForCluster(userId, rotation, cluster.clusterId, 12, {
         selectedCardIds,
+        ...(options.week !== undefined ? { week: options.week } : {}),
         minComplexity: CLUSTER_FALLBACK_MIN_COMPLEXITY,
         crossSourceRotations,
         crossSourceMappingMode,

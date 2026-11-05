@@ -93,7 +93,7 @@ export function ConfidenceButtons({
         className="fixed left-0 right-0 md:left-20 z-50 p-4 border-t border-[var(--md-outline-soft)] bg-[var(--md-surface)] shadow-[0_-10px_28px_rgba(21,35,46,0.08)] safe-area-pb"
         style={{ bottom: 'var(--md-review-footer-bottom, 0px)' }}
       >
-        <div role="group" aria-label={GROUP_LABEL} className="max-w-2xl mx-auto flex gap-2">
+        <div role="group" aria-label={GROUP_LABEL} className="max-w-2xl mx-auto flex flex-wrap gap-2">
           {LEVELS.map((level) => {
             const isSelected = selected === level.confidence;
             return (
@@ -102,8 +102,9 @@ export function ConfidenceButtons({
                 type="button"
                 disabled={disabled}
                 onClick={() => onSelect(level.confidence)}
+                data-shortcut={disabled ? undefined : level.confidence}
                 aria-label={confidenceButtonName(level.confidence)}
-                className={`review-choice flex flex-1 h-[52px] items-center justify-center gap-2 rounded-[10px] border font-semibold text-sm transition-colors hover:brightness-[0.97] ${disabled && !isSelected ? 'opacity-40' : ''}`}
+                className={`review-choice flex flex-1 min-w-max flex-[1_1_calc(25%_-_0.375rem)] h-[52px] items-center justify-center gap-2 rounded-[10px] border font-semibold text-sm transition-colors hover:brightness-[0.97] ${disabled && !isSelected ? 'opacity-40' : ''}`}
                 style={tileStyle(level.color, isSelected)}
               >
                 {CONFIDENCE_LABELS[level.confidence]}
@@ -126,6 +127,7 @@ export function ConfidenceButtons({
             type="button"
             disabled={disabled}
             onClick={() => onSelect(level.confidence)}
+            data-shortcut={disabled ? undefined : level.confidence}
             aria-label={confidenceButtonName(level.confidence)}
             className={`review-choice flex min-h-11 min-w-11 items-center justify-center gap-1.5 rounded-lg border px-2.5 text-xs font-semibold transition-colors hover:brightness-[0.97] ${disabled && !isSelected ? 'opacity-40' : ''}`}
             style={tileStyle(level.color, isSelected)}

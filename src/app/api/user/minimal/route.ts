@@ -61,6 +61,7 @@ export async function GET(request: NextRequest) {
         imageTier: true,
         reviewMenuCustomized: true,
         reviewMenuModules: true,
+        reviewMenuKnownDecks: true,
         curriculumRequestedAt: true,
       },
     });
@@ -92,6 +93,7 @@ export async function GET(request: NextRequest) {
       institution,
       reviewMenuCustomized: user.reviewMenuCustomized ?? false,
       reviewMenuModules: user.reviewMenuModules ?? [],
+      reviewMenuKnownDecks: user.reviewMenuKnownDecks ?? [],
     });
 
     return NextResponse.json({

@@ -210,6 +210,7 @@ type PairableItem = {
   conceptId?: string;
   clusterId?: string | null;
   variantGroupId?: string | null;
+  interventionReason?: string | null;
 };
 
 type AnchorItem = PairableItem & { type: 'card' | 'question' };
@@ -226,6 +227,12 @@ function isAnchor(
   item: PairableItem,
   matchBy: NonNullable<PreemptiveScaffoldOpts['matchBy']>,
 ): item is AnchorItem {
+  // A concept-thread follow-up is offered only after a correct answer on the
+  // same condition. Its insert would be a C1 restating the fact the follow-up
+  // tests, served at the very next position (learner flag, 2026-11-03:
+  // pre-eclampsia vignette, then the pre-eclampsia definition card). The C1
+  // itself stays eligible everywhere else; only this insert is withheld.
+  if (item.interventionReason === 'concept_followup') return false;
   // Questions are pure test items with no internal scaffolding tier — every
   // question is a pairing anchor regardless of difficulty.
   if (item.type === 'question') {

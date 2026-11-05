@@ -343,6 +343,12 @@ export interface UnifiedSessionOptions {
    * request starts in its after(). Omitted: SESSION_REFRESH_LEASE_TTL_MS.
    */
   refreshLeaseTtlMs?: number;
+  /**
+   * Week of the deck an upcoming mandatory session prepares, for a plain feed.
+   * Supplied by the private route (it reads the course brief); absent in public
+   * builds, where the plain feed is unchanged.
+   */
+  resolvePrepWeek?: (userId: string, rotation: string, now: Date) => Promise<number | null>;
 }
 
 export async function getUnifiedSession(
@@ -435,7 +441,7 @@ async function buildUnifiedSessionResponse(
   }
   const batchSize = parseBatchSize(sizeParam);
   const week = weekParam ? parseInt(weekParam, 10) : null;
-  const weekFilter = Number.isFinite(week) ? week : null;
+  let weekFilter = Number.isFinite(week) ? week : null;
 
   let authResult: { userId: string; isGuest: boolean };
   // Timed on its own (see SessionContext.tIdentityMs): this is the request's
@@ -801,8 +807,12 @@ async function buildUnifiedSessionResponse(
     ? undefined
     : mode;
 
-  const hasFilters = !!(
-    typeFilter
+  // A week scope counts: the rotation's cached queue is unscoped, so a week deck
+  // that read or rebuilt it served the next plain feed that week's cards
+  // (2026-11-04). Computed after the session-prep focus has set weekFilter.
+  let hasFilters = !!(
+    weekFilter !== null
+    || typeFilter
     || media
     || difficultyFilter
     || topicsFilter
@@ -905,6 +915,22 @@ async function buildUnifiedSessionResponse(
     institution: userScope?.institution,
     requestRotation: rotation,
   });
+
+  // Session prep: a plain feed (no week, topic, cluster, module, media, type,
+  // filter or mode) becomes the deck for the owner's next
+  // mandatory session until it starts. Owner, 2026-11-04: "It should just go
+  // into my feed without me needing to do anything." Brief lookup only, no
+  // database; `prep=off` or any narrowing choice keeps the ordinary feed. A
+  // rotation focus (`focus=1`, sent whenever a rotation is chosen) is not one:
+  // excluding it kept the prep off every real request (seen live, 4 Nov).
+  if (
+    options.resolvePrepWeek && !authResult.isGuest && weekFilter === null && !topicsFilter && !clusterFilter
+    && !modulesFilter && !media && !typeFilter && !reviewFilter && !mode
+    && !difficultyFilter && searchParams.get('prep') !== 'off'
+  ) {
+    weekFilter = await options.resolvePrepWeek?.(authResult.userId, rotation, new Date()).catch(() => null) ?? null;
+    if (weekFilter !== null) hasFilters = true;
+  }
 
   const ctx: SessionContext = {
     reviewChallenge,

@@ -35,6 +35,7 @@ interface McqResult {
 }
 
 interface McqItemViewProps {
+  readOnly?: boolean;
   publicSurface?: boolean;
   item: ReviewItem;
   preparedPrompt?: PreparedPromptFigure;
@@ -82,6 +83,7 @@ export function McqItemView({
   selectedPending = false,
   interactionDisabled = false,
   publicSurface = false,
+  readOnly = false,
 }: McqItemViewProps) {
   const hasFigure = Boolean(item.imageUrl || item.imageKey);
   const figureIsPrompt = Boolean(item.promptFigure) || reviewImageIsPrompt(item.imageRole, item.imageMeta, item.stem);
@@ -229,7 +231,7 @@ export function McqItemView({
       </div>
 
       {/* Feedback buttons — same level as card feedback */}
-      {(!item.deliveryId || publicSurface) && (
+      {!readOnly && (!item.deliveryId || publicSurface) && (
         <div className="mt-3 flex items-center justify-between text-xs">
           <div />
           <CardFeedback
