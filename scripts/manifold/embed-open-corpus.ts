@@ -19,7 +19,7 @@
  * Embeddings cost money per item. Nothing here runs implicitly: no default
  * "embed everything", and --dry-run reports the bill before you pay it.
  */
-import { genAI, EMBEDDING_MODEL, EMBEDDING_DIMENSIONS } from '../lib/gemini';
+import { genAI, EMBEDDING_API_MODEL, EMBEDDING_DIMENSIONS } from '../lib/gemini';
 import { prisma } from '../lib/db';
 
 type Target = 'cards' | 'questions' | 'concepts';
@@ -44,7 +44,7 @@ function parseTargets(): Target[] {
 
 /** One embedding request. Kept tiny so a caller can swap the provider. */
 async function embed(text: string): Promise<number[]> {
-  const model = genAI.getGenerativeModel({ model: EMBEDDING_MODEL });
+  const model = genAI.getGenerativeModel({ model: EMBEDDING_API_MODEL });
   const res = await model.embedContent(text);
   const values = res.embedding?.values ?? [];
   if (values.length !== EMBEDDING_DIMENSIONS) {
