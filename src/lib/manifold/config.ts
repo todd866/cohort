@@ -5,10 +5,8 @@
  * Aligning all runtime consumers to the Gemini Embedding 2 space.
  */
 
-/** Stored vector-space label. Must not change without a migration. */
+/** The canonical model used for all embeddings in the platform. */
 export const MANIFOLD_MODEL = 'gemini-embedding-2-preview';
-/** Gemini API model id for getGenerativeModel. */
-export const MANIFOLD_API_MODEL = 'gemini-embedding-2';
 
 /** The raw dimensionality of the stored vectors in Postgres (Gemini 2 default). */
 export const STORED_MANIFOLD_DIM = 3072;

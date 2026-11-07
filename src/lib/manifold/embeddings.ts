@@ -10,7 +10,7 @@ import type { Content, EmbedContentRequest } from '@google/generative-ai';
 import * as fs from 'node:fs';
 import * as path from 'node:path';
 import { logger } from '@/lib/logger';
-import { MANIFOLD_API_MODEL, STORED_MANIFOLD_DIM } from './config';
+import { MANIFOLD_MODEL, STORED_MANIFOLD_DIM } from './config';
 
 export interface EmbeddingResult {
   id: string;
@@ -164,7 +164,7 @@ function getClient(): GoogleGenerativeAI {
  */
 export async function embedContent(content: string, imageUrl?: string | null): Promise<number[]> {
   const client = getClient();
-  const model = client.getGenerativeModel({ model: MANIFOLD_API_MODEL });
+  const model = client.getGenerativeModel({ model: MANIFOLD_MODEL });
 
   try {
     const result = await model.embedContent(makeEmbedRequest(content, imageUrl));
@@ -185,7 +185,7 @@ export async function embedBatch(
   onProgress?: (completed: number, total: number) => void
 ): Promise<EmbeddingResult[]> {
   const client = getClient();
-  const model = client.getGenerativeModel({ model: MANIFOLD_API_MODEL });
+  const model = client.getGenerativeModel({ model: MANIFOLD_MODEL });
   const results: EmbeddingResult[] = [];
   const total = items.length;
 
