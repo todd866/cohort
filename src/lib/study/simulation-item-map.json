@@ -1,5 +1,5 @@
 {
-  "version": "2026-10-23.3",
+  "version": "2026-11-09.1",
   "records": [
     {
       "stableId": "mdx:b59e8bbf0a26d5f7ff5d57e642bf9fbf:blank-0",
@@ -493,22 +493,22 @@
     },
     {
       "stableId": "sim-htn-sequencing-c4",
-      "contentHash": "0295c577e294ea0bc6d54f492de80c6fb310081ad498b0e64e24852a5c87236f",
+      "contentHash": "dd74c5bd5e0294f04219688dfb2ade1204c225dc1a23ea109b34a80f6efb5b48",
       "topic": "pre-eclampsia",
       "complexity": 4,
       "relation": "direct",
       "sourceFile": "src/lib/simulation/decision-drills.ts",
-      "reviewed": "2026-10-28",
+      "reviewed": "2026-11-09",
       "rationale": "Direct rehearsal of the named pathway decision; available on demand, not claimed seeded into the daily bank."
     },
     {
       "stableId": "sim-htn-changing-risk-c5",
-      "contentHash": "dd321ca097607b48d38fb6d0d90a083fad5a639265f6438c12d7a34033f62745",
+      "contentHash": "bcd158e8db181b07ff77ea40edb51a40f07f2e666029582cca4545adc0ccf32c",
       "topic": "pre-eclampsia",
       "complexity": 5,
       "relation": "direct",
       "sourceFile": "src/lib/simulation/decision-drills.ts",
-      "reviewed": "2026-10-28",
+      "reviewed": "2026-11-09",
       "rationale": "Direct rehearsal of the named pathway decision; available on demand, not claimed seeded into the daily bank."
     },
     {
@@ -523,12 +523,12 @@
     },
     {
       "stableId": "sim-pph-time-and-comorbidity-c5",
-      "contentHash": "4a3654afe52c46dceca6aa94f921750457d3fdbd147a9f967e170f958cc50d7c",
+      "contentHash": "35be66d087094f78784f77844921a54757519cb7fc0d1472794293db10ec4170",
       "topic": "postpartum-haemorrhage",
       "complexity": 5,
       "relation": "direct",
       "sourceFile": "src/lib/simulation/decision-drills.ts",
-      "reviewed": "2026-10-28",
+      "reviewed": "2026-11-09",
       "rationale": "Direct rehearsal of the named pathway decision; available on demand, not claimed seeded into the daily bank."
     },
     {
@@ -543,12 +543,12 @@
     },
     {
       "stableId": "sim-arrest-team-priorities-c5",
-      "contentHash": "a39b171846c625c9121971b5d87d586d38adfc722a308c1460700a048c242104",
+      "contentHash": "b21d45fa77bce3d5f8fbfddd3b5a356a6c0dd0623f8ecd76752fd7c68633be88",
       "topic": "maternal-collapse",
       "complexity": 5,
       "relation": "direct",
       "sourceFile": "src/lib/simulation/decision-drills.ts",
-      "reviewed": "2026-10-28",
+      "reviewed": "2026-11-09",
       "rationale": "Direct rehearsal of the named pathway decision; available on demand, not claimed seeded into the daily bank."
     },
     {
@@ -637,8 +637,8 @@
       "rationale": "Shared role, supervision and team-action prerequisite for all three rehearsals; NSW policy, AMC training and simulation assumptions remain distinct."
     },
     {
-      "stableId": "mdx:d9440f1874ea1b31f5bbfac4778ee744",
-      "contentHash": "f939ca9eed45cc99c1c76789af2910a31bc2481ea4f7fff97a56537a70ce85e5",
+      "stableId": "mdx:505f184555be2ef78ec8229ea7a83e43",
+      "contentHash": "af33a237087ff9fa94ba0a3e6b2a3af8ed0de35c2f3ee40bc4010c797e9a25cd",
       "topic": "pre-eclampsia",
       "complexity": 1,
       "relation": "prerequisite",
@@ -647,8 +647,8 @@
       "rationale": "Reviewed role-bounded management-fork prerequisite; explicit route, resource or reassessment decision."
     },
     {
-      "stableId": "mdx:138dfb1ccca9b53236b7eb1ab180708f",
-      "contentHash": "be489ee6fbaf1dadda23b92628d939e9e966c708542df1c5c6f3857422cb2bc5",
+      "stableId": "mdx:4be8f151177c6c826d5934767b3a39ad",
+      "contentHash": "47b377ddeab5ff481590e1321847693f6f4ea5fc7b471b3ab96525143e2b3f8d",
       "topic": "pre-eclampsia",
       "complexity": 2,
       "relation": "prerequisite",
@@ -657,8 +657,8 @@
       "rationale": "Reviewed role-bounded management-fork prerequisite; explicit route, resource or reassessment decision."
     },
     {
-      "stableId": "mdx:7ebeff6f53901d115ded5087d69e0351",
-      "contentHash": "b2dfc3f1711c8e75b5e4757a9009828b39006262c9edf72de3be822107bffd44",
+      "stableId": "mdx:bba3daff8c5384ffd447bd6df28465fd",
+      "contentHash": "2dbfac7b64fd8e219b272490b77288be610016859fc97e326ba9e69919a1e555",
       "topic": "pre-eclampsia",
       "complexity": 3,
       "relation": "prerequisite",
@@ -667,8 +667,8 @@
       "rationale": "Reviewed role-bounded management-fork prerequisite; explicit route, resource or reassessment decision."
     },
     {
-      "stableId": "mdx:9cc039996eef734687f47efa3ed27c1c",
-      "contentHash": "0325ab06e45b8f19e64975fcc0a6de7d9e843f81e42da27808bce1265c41a69e",
+      "stableId": "mdx:3ec279408419cd9293d207fdcb28325a",
+      "contentHash": "56c208fdfa82047e2612786e6beba8d37ae07baf8496bda22df7b2f8f02b898b",
       "topic": "postpartum-haemorrhage",
       "complexity": 1,
       "relation": "prerequisite",
@@ -677,8 +677,8 @@
       "rationale": "Reviewed role-bounded management-fork prerequisite; explicit route, resource or reassessment decision."
     },
     {
-      "stableId": "mdx:8f275462d2aa24802d7f4f50cf080b1f",
-      "contentHash": "a6a5a5f1bd0c1af2028ca6ee1eff7b30a46fd6bee06c3faa03bfe52f557c4d9c",
+      "stableId": "mdx:578b27ecfb9b47044e482d39ebcc2a1c",
+      "contentHash": "88b453879a1025dbfc0e889eff6c9efd5a76980b914f8c4266a2c84b6b6040d0",
       "topic": "postpartum-haemorrhage",
       "complexity": 2,
       "relation": "prerequisite",
@@ -687,8 +687,8 @@
       "rationale": "Reviewed role-bounded management-fork prerequisite; explicit route, resource or reassessment decision."
     },
     {
-      "stableId": "mdx:e7e5b1eace204eaf1fb7742293fffbfd",
-      "contentHash": "df644a1a1cd743d2ec6cfc93a8abd850d5730a06d0f56091189c4180c6847829",
+      "stableId": "mdx:e634bae5973e4500fcd0ae4af9cc3aef",
+      "contentHash": "c772a1dda36778ba39008c04c924d65a35999d05d3847ccf35b98f7522a98ace",
       "topic": "postpartum-haemorrhage",
       "complexity": 3,
       "relation": "prerequisite",
@@ -697,8 +697,8 @@
       "rationale": "Reviewed role-bounded management-fork prerequisite; explicit route, resource or reassessment decision."
     },
     {
-      "stableId": "mdx:a231266b245403b8f91e88d1bad78713",
-      "contentHash": "7cec322bb9fe4157a3450cec43d839dff7e1a40904790589882349d3c9e1668a",
+      "stableId": "mdx:abd8853cdd1da03722f6d6cdb4179d40",
+      "contentHash": "a87882a92782c3186a0629469b8e0fc3f2c53b3618628bccab7aefe5f45d7789",
       "topic": "maternal-collapse",
       "complexity": 1,
       "relation": "prerequisite",

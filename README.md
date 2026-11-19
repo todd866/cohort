@@ -51,7 +51,7 @@ behind them are at [cohort.md/tech](https://cohort.md/tech).
 | Recorded ECGs | 5 de-identified: four PTB-XL (CC BY 4.0), one VTaC (CC BY-SA 4.0) |
 | Clinical module questions | 392 guideline-cited items in 24 disciplines, mirrored from md3, under `open-content/modules/questions/` |
 | Anatomy questions | 36 written for Cohort, under `open-content/modules/original-questions/` |
-| Clinical module cards | 1,994 cloze cards, each factually audited at its current wording, under `open-content/modules/cards/`; 88 of them are anatomy cards written for Cohort |
+| Clinical module cards | 2,136 cloze cards, each factually audited at its current wording, under `open-content/modules/cards/`; 88 of them are anatomy cards written for Cohort |
 
 All of it is in this repository. The questions are plain JSON under
 `open-content/usmle/step1/questions/`, each with its provenance envelope, and
