@@ -16,22 +16,19 @@ import path from 'node:path';
 import { fileURLToPath } from 'node:url';
 import { unreachableRotations } from '../../src/lib/institution-rotations';
 import { OTHER_HOST_ROTATIONS } from '../../src/lib/content/cohort-mirror';
-import { withoutRawPublicUsmleQuestions } from '../../src/lib/usmle/raw-question-boundary';
-import { withoutRawPublicUsmleReinforcementCards } from '../../src/lib/usmle/raw-reinforcement-card-boundary';
 import {
   applyPrivateContentMapOverlays,
   type PrivateContentMapCardInput,
 } from './private-content-map-overlays';
 import { describeError } from '../ops/describe-error.mjs';
 import { deckStrandMixFor } from '../../src/lib/study/deck-strand-mix';
+import { rotationHasPassSet } from '../../src/lib/knowledge/pass-set-inputs';
+import {
+  loadContentMapCardRows,
+  loadContentMapQuestionRows,
+} from './content-map-row-cache';
 
 const ROOT = process.cwd();
-const OUTPUT_DIR = path.join(ROOT, 'src', 'lib', 'generated');
-const LEGACY_MONOLITH_FILE = path.join(OUTPUT_DIR, 'content-map.ts');
-const CONTENT_MAP_TYPES_FILE = path.join(OUTPUT_DIR, 'content-map-types.ts');
-const ROTATION_COUNTS_FILE = path.join(OUTPUT_DIR, 'rotation-counts.ts');
-const ROTATION_MAP_DIR = path.join(OUTPUT_DIR, 'content-map-rotations');
-const ROTATION_MAP_INDEX_FILE = path.join(ROTATION_MAP_DIR, 'index.ts');
 
 export type GeneratedContentModeName = 'database' | 'offline' | 'release';
 
@@ -213,6 +210,9 @@ interface StaticCard {
   variantGroupId: unknown;
   variantIndex: unknown;
   variantType: unknown;
+  importance?: unknown;
+  examRelevancePct?: unknown;
+  examDomain?: unknown;
 }
 
 interface StaticQuestion {
@@ -259,6 +259,279 @@ export function buildRotationSlugMap(rotations: readonly string[]): Map<string, 
   return rotationToSlug;
 }
 
+export interface WriteGeneratedContentMapOptions {
+  cards: StaticCard[];
+  questions: StaticQuestion[];
+  mode: GeneratedContentMode;
+  generatedAt: string;
+  rootDir?: string;
+}
+
+/** Emit generated content-map artifacts from already-loaded card/question rows. */
+export async function writeGeneratedContentMapFromRows(
+  options: WriteGeneratedContentMapOptions,
+): Promise<void> {
+  const { cards, questions, mode, generatedAt } = options;
+  const rootDir = options.rootDir ?? ROOT;
+  const outputDir = path.join(rootDir, 'src', 'lib', 'generated');
+  const legacyMonolithFile = path.join(outputDir, 'content-map.ts');
+  const contentMapTypesFile = path.join(outputDir, 'content-map-types.ts');
+  const rotationCountsFile = path.join(outputDir, 'rotation-counts.ts');
+  const rotationMapDir = path.join(outputDir, 'content-map-rotations');
+  const rotationMapIndexFile = path.join(rotationMapDir, 'index.ts');
+
+  assertGeneratedContentIsUsable(mode, 'content map', cards.length + questions.length);
+
+  const normalizedCards = cards.map((card) => ({
+    id: card.id,
+    front: card.front,
+    back: card.back,
+    backs: card.backs ?? null,
+    context: card.context ?? null,
+    imageUrl: card.imageUrl ?? null,
+    imageCaption: card.imageCaption ?? null,
+    imageRole: card.imageRole ?? null,
+    sourceComponent: card.sourceComponent,
+    rotation: card.rotation,
+    week: card.week,
+    clusterId: card.clusterId ?? null,
+    complexity: card.complexity,
+    crosslinks: card.crosslinks ?? null,
+    cardType: card.cardType,
+    topics: card.topics ?? [],
+    difficulty: card.difficulty,
+    variantGroupId: card.variantGroupId ?? null,
+    variantIndex: card.variantIndex ?? null,
+    variantType: card.variantType ?? null,
+    ...(deckStrandMixFor(card.rotation) ? { sourceFile: card.sourceFile ?? null } : {}),
+    ...(rotationHasPassSet(card.rotation) ? {
+      importance: card.importance ?? 1,
+      examRelevancePct: card.examRelevancePct ?? null,
+      examDomain: card.examDomain ?? null,
+    } : {}),
+  }));
+
+  const normalizedQuestions = questions.map((question) => ({
+    id: question.id,
+    stem: question.stem,
+    questionType: question.questionType,
+    format: question.format ?? null,
+    variantGroupId: question.variantGroupId ?? null,
+    variantType: question.variantType ?? null,
+    options: question.options,
+    context: question.context ?? null,
+    imageUrl: question.imageUrl ?? null,
+    imageCaption: question.imageCaption ?? null,
+    imageRole: question.imageRole ?? null,
+    rotation: question.rotation,
+    moduleNodes: question.moduleNodes ?? [],
+    week: question.week ?? null,
+    topics: question.topics ?? [],
+    difficulty: question.difficulty,
+    combinations: question.combinations ?? null,
+    correctVariants: question.correctVariants ?? null,
+    ...(deckStrandMixFor(question.rotation) ? { sourceFile: question.sourceFile ?? null } : {}),
+  }));
+
+  await fs.mkdir(outputDir, { recursive: true });
+
+  const typeLines: string[] = [];
+  typeLines.push('/*');
+  typeLines.push(' * AUTO-GENERATED FILE — DO NOT EDIT');
+  typeLines.push(' *');
+  typeLines.push(' * Generated by: scripts/generate-content-map.ts');
+  typeLines.push(` * Generated at: ${generatedAt}`);
+  typeLines.push(` * Build mode: ${mode.name}`);
+  typeLines.push(' */');
+  typeLines.push('');
+  typeLines.push('export interface StaticCard {');
+  typeLines.push('  id: string;');
+  typeLines.push('  front: string;');
+  typeLines.push('  back: string;');
+  typeLines.push('  backs: string[] | null;');
+  typeLines.push('  context: string | null;');
+  typeLines.push('  imageUrl: string | null;');
+  typeLines.push('  imageCaption: string | null;');
+  typeLines.push('  imageRole: string | null;');
+  typeLines.push('  sourceComponent: string;');
+  typeLines.push('  rotation: string;');
+  typeLines.push('  week: number | null;');
+  typeLines.push('  clusterId: string | null;');
+  typeLines.push('  complexity: number;');
+  typeLines.push('  crosslinks: unknown;');
+  typeLines.push('  cardType: string;');
+  typeLines.push('  topics: string[];');
+  typeLines.push('  difficulty: string;');
+  typeLines.push('  variantGroupId: string | null;');
+  typeLines.push('  variantIndex: number | null;');
+  typeLines.push('  variantType: string | null;');
+  typeLines.push('  /** Present only for a deck with a strand mix (src/lib/study/deck-strand-mix.ts). */');
+  typeLines.push('  sourceFile?: string | null;');
+  typeLines.push('  /** Pass-set inputs; present only for rotations with an exam target. */');
+  typeLines.push('  importance?: number;');
+  typeLines.push('  examRelevancePct?: number | null;');
+  typeLines.push('  examDomain?: string | null;');
+  typeLines.push('}');
+  typeLines.push('');
+  typeLines.push('export interface StaticQuestion {');
+  typeLines.push('  id: string;');
+  typeLines.push('  stem: string;');
+  typeLines.push('  questionType: string;');
+  typeLines.push('  format: string | null;');
+  typeLines.push('  variantGroupId: string | null;');
+  typeLines.push('  variantType: string | null;');
+  typeLines.push('  options: unknown;');
+  typeLines.push('  context: string | null;');
+  typeLines.push('  imageUrl: string | null;');
+  typeLines.push('  imageCaption: string | null;');
+  typeLines.push('  imageRole: string | null;');
+  typeLines.push('  rotation: string;');
+  typeLines.push('  moduleNodes: string[];');
+  typeLines.push('  week: number | null;');
+  typeLines.push('  topics: string[];');
+  typeLines.push('  difficulty: string;');
+  typeLines.push('  combinations: unknown;');
+  typeLines.push('  correctVariants: unknown;');
+  typeLines.push('  /** Present only for a deck with a strand mix (src/lib/study/deck-strand-mix.ts). */');
+  typeLines.push('  sourceFile?: string | null;');
+  typeLines.push('}');
+  typeLines.push('');
+
+  await fs.writeFile(contentMapTypesFile, typeLines.join('\n'), 'utf8');
+  console.log(`[generate-content-map] Wrote shared types → ${path.relative(rootDir, contentMapTypesFile)}`);
+
+  const rotationSet = new Set<string>([
+    ...normalizedCards.map((card) => card.rotation),
+    ...normalizedQuestions.map((question) => question.rotation),
+  ]);
+  const rotations = [...rotationSet].sort((a, b) => a.localeCompare(b));
+
+  const unreachable = unreachableRotations(rotations);
+  if (unreachable.length > 0) {
+    throw new Error(
+      `[generate-content-map] ${unreachable.length} rotation(s) have content but are not reachable ` +
+        `by anything (nobody can ever be served them): ${unreachable.join(', ')}. ` +
+        `Add each to REACHABLE_ROTATIONS in src/lib/institution-rotations.ts.`,
+    );
+  }
+
+  const rotationToSlug = buildRotationSlugMap(rotations);
+
+  await fs.rm(rotationMapDir, { recursive: true, force: true });
+  await fs.mkdir(rotationMapDir, { recursive: true });
+
+  for (const rotation of rotations) {
+    const slug = rotationToSlug.get(rotation)!;
+    const rotationCards = normalizedCards.filter((card) => card.rotation === rotation);
+    const rotationQuestions = normalizedQuestions.filter((question) => question.rotation === rotation);
+
+    const header = [
+      '/*',
+      ' * AUTO-GENERATED FILE — DO NOT EDIT',
+      ' *',
+      ' * Generated by: scripts/generate-content-map.ts',
+      ` * Rotation: ${rotation}`,
+      ` * Cards: ${rotationCards.length} | Questions: ${rotationQuestions.length}`,
+      ' */',
+      '',
+    ];
+    const shardLines: string[] = [...header];
+    shardLines.push('export const CARDS = {');
+    for (const card of rotationCards) {
+      shardLines.push(`  ${JSON.stringify(card.id)}: ${JSON.stringify(card)},`);
+    }
+    shardLines.push('};');
+    shardLines.push('');
+    shardLines.push('export const QUESTIONS = {');
+    for (const question of rotationQuestions) {
+      shardLines.push(`  ${JSON.stringify(question.id)}: ${JSON.stringify(question)},`);
+    }
+    shardLines.push('};');
+    shardLines.push('');
+
+    const declarationLines = [
+      ...header,
+      "import type { StaticCard, StaticQuestion } from '../content-map-types';",
+      '',
+      'export declare const CARDS: Record<string, StaticCard>;',
+      'export declare const QUESTIONS: Record<string, StaticQuestion>;',
+      '',
+    ];
+
+    await fs.writeFile(path.join(rotationMapDir, `${slug}.js`), shardLines.join('\n'), 'utf8');
+    await fs.writeFile(path.join(rotationMapDir, `${slug}.d.ts`), declarationLines.join('\n'), 'utf8');
+  }
+
+  const indexLines: string[] = [];
+  indexLines.push('/*');
+  indexLines.push(' * AUTO-GENERATED FILE — DO NOT EDIT');
+  indexLines.push(' *');
+  indexLines.push(' * Generated by: scripts/generate-content-map.ts');
+  indexLines.push(` * Generated at: ${generatedAt}`);
+  indexLines.push(` * Build mode: ${mode.name}`);
+  indexLines.push(' */');
+  indexLines.push('');
+  indexLines.push("import type { StaticCard, StaticQuestion } from '../content-map-types';");
+  indexLines.push('');
+  indexLines.push('export interface RotationContentMap {');
+  indexLines.push('  cards: Record<string, StaticCard>;');
+  indexLines.push('  questions: Record<string, StaticQuestion>;');
+  indexLines.push('}');
+  indexLines.push('');
+  indexLines.push('export const ROTATION_CONTENT_LOADERS: Record<string, () => Promise<RotationContentMap>> = {');
+  for (const rotation of rotations) {
+    const slug = rotationToSlug.get(rotation)!;
+    indexLines.push(
+      `  ${JSON.stringify(rotation)}: () => import('./${slug}').then((m) => ({ cards: m.CARDS, questions: m.QUESTIONS })),`,
+    );
+  }
+  indexLines.push('};');
+  indexLines.push('');
+  indexLines.push(`export const AVAILABLE_ROTATIONS = ${JSON.stringify(rotations)} as const;`);
+  indexLines.push('');
+
+  await fs.writeFile(rotationMapIndexFile, indexLines.join('\n'), 'utf8');
+  console.log(
+    `[generate-content-map] Wrote ${rotations.length} rotation shards → ${path.relative(rootDir, rotationMapDir)}`,
+  );
+
+  await fs.rm(legacyMonolithFile, { force: true });
+
+  const rotationCounts: Record<string, number> = {};
+  for (const card of normalizedCards) {
+    const rot = card.rotation;
+    rotationCounts[rot] = (rotationCounts[rot] ?? 0) + 1;
+  }
+  for (const question of normalizedQuestions) {
+    const rot = question.rotation;
+    rotationCounts[rot] = (rotationCounts[rot] ?? 0) + 1;
+  }
+
+  const sortedEntries = Object.entries(rotationCounts).sort(([a], [b]) => a.localeCompare(b));
+
+  const rcLines: string[] = [];
+  rcLines.push('/*');
+  rcLines.push(' * AUTO-GENERATED FILE — DO NOT EDIT');
+  rcLines.push(' *');
+  rcLines.push(' * Generated by: scripts/generate-content-map.ts');
+  rcLines.push(` * Generated at: ${generatedAt}`);
+  rcLines.push(` * Build mode: ${mode.name}`);
+  rcLines.push(' */');
+  rcLines.push('');
+  rcLines.push('/** Total items (cards + questions) per rotation, computed at build time. */');
+  rcLines.push('export const ROTATION_COUNTS: Record<string, number> = {');
+  for (const [rotation, count] of sortedEntries) {
+    rcLines.push(`  ${JSON.stringify(rotation)}: ${count},`);
+  }
+  rcLines.push('};');
+  rcLines.push('');
+
+  await fs.writeFile(rotationCountsFile, rcLines.join('\n'), 'utf8');
+  console.log(
+    `[generate-content-map] Wrote rotation counts → ${path.relative(rootDir, rotationCountsFile)}`,
+  );
+}
+
 async function main() {
   const mode = resolveGeneratedContentMode();
   const generatedAt = mode.generatedAt ?? new Date().toISOString();
@@ -276,65 +549,8 @@ async function main() {
         // Direct release transport intentionally has a one-connection pool.
         // Keep these two large reads sequential so the second query cannot
         // exhaust its pool-acquisition timeout while the first is still live.
-        cards = await prisma.card.findMany({
-          where: withoutRawPublicUsmleReinforcementCards({
-            deletedAt: null,
-            shelvedAt: null,
-            rotation: { notIn: EXCLUDED_FROM_MAP },
-          }),
-          select: {
-            id: true,
-            stableId: true,
-            sourceFile: true,
-            front: true,
-            back: true,
-            backs: true,
-            context: true,
-            imageUrl: true,
-            imageCaption: true,
-            imageRole: true,
-            sourceComponent: true,
-            rotation: true,
-            week: true,
-            clusterId: true,
-            complexity: true,
-            crosslinks: true,
-            cardType: true,
-            topics: true,
-            difficulty: true,
-            variantGroupId: true,
-            variantIndex: true,
-            variantType: true,
-          },
-        });
-        questions = await prisma.question.findMany({
-          where: withoutRawPublicUsmleQuestions({
-            excluded: false,
-            contentState: { notIn: ['raw', 'shelved', 'retired'] },
-            rotation: { notIn: EXCLUDED_FROM_MAP },
-          }),
-          select: {
-            id: true,
-            sourceFile: true,
-            stem: true,
-            questionType: true,
-            format: true,
-            variantGroupId: true,
-            variantType: true,
-            options: true,
-            context: true,
-            imageUrl: true,
-            imageCaption: true,
-            imageRole: true,
-            rotation: true,
-            moduleNodes: true,
-            week: true,
-            topics: true,
-            difficulty: true,
-            combinations: true,
-            correctVariants: true,
-          },
-        });
+        cards = await loadContentMapCardRows<StaticCard>(prisma, EXCLUDED_FROM_MAP);
+        questions = await loadContentMapQuestionRows<StaticQuestion>(prisma, EXCLUDED_FROM_MAP);
         cards = await filterDeliverableReinforcementCardRows(cards, {
           client: prisma,
           logContext: { transport: 'generated-content-map' },
@@ -385,264 +601,7 @@ async function main() {
     );
   }
 
-  assertGeneratedContentIsUsable(mode, 'content map', cards.length + questions.length);
-
-  const normalizedCards = cards.map((card) => ({
-    id: card.id,
-    front: card.front,
-    back: card.back,
-    backs: card.backs ?? null,
-    context: card.context ?? null,
-    imageUrl: card.imageUrl ?? null,
-    imageCaption: card.imageCaption ?? null,
-    imageRole: card.imageRole ?? null,
-    sourceComponent: card.sourceComponent,
-    rotation: card.rotation,
-    week: card.week,
-    clusterId: card.clusterId ?? null,
-    complexity: card.complexity,
-    crosslinks: card.crosslinks ?? null,
-    cardType: card.cardType,
-    topics: card.topics ?? [],
-    difficulty: card.difficulty,
-    variantGroupId: card.variantGroupId ?? null,
-    variantIndex: card.variantIndex ?? null,
-    variantType: card.variantType ?? null,
-    // Only a deck with a strand mix needs the source file at serve time
-    // (deck-strand-mix.ts reads it to tell its strands apart). Emitting it for
-    // every card would add megabytes to the shards for no reader.
-    ...(deckStrandMixFor(card.rotation) ? { sourceFile: card.sourceFile ?? null } : {}),
-  }));
-
-  const normalizedQuestions = questions.map((question) => ({
-    id: question.id,
-    stem: question.stem,
-    questionType: question.questionType,
-    format: question.format ?? null,
-    variantGroupId: question.variantGroupId ?? null,
-    variantType: question.variantType ?? null,
-    options: question.options,
-    context: question.context ?? null,
-    imageUrl: question.imageUrl ?? null,
-    imageCaption: question.imageCaption ?? null,
-    imageRole: question.imageRole ?? null,
-    rotation: question.rotation,
-    moduleNodes: question.moduleNodes ?? [],
-    week: question.week ?? null,
-    topics: question.topics ?? [],
-    difficulty: question.difficulty,
-    combinations: question.combinations ?? null,
-    correctVariants: question.correctVariants ?? null,
-    ...(deckStrandMixFor(question.rotation) ? { sourceFile: question.sourceFile ?? null } : {}),
-  }));
-
-  await fs.mkdir(OUTPUT_DIR, { recursive: true });
-
-  // --- Shared type definitions ---
-  const typeLines: string[] = [];
-  typeLines.push('/*');
-  typeLines.push(' * AUTO-GENERATED FILE — DO NOT EDIT');
-  typeLines.push(' *');
-  typeLines.push(' * Generated by: scripts/generate-content-map.ts');
-  typeLines.push(` * Generated at: ${generatedAt}`);
-  typeLines.push(` * Build mode: ${mode.name}`);
-  typeLines.push(' */');
-  typeLines.push('');
-  typeLines.push('export interface StaticCard {');
-  typeLines.push('  id: string;');
-  typeLines.push('  front: string;');
-  typeLines.push('  back: string;');
-  typeLines.push('  backs: string[] | null;');
-  typeLines.push('  context: string | null;');
-  typeLines.push('  imageUrl: string | null;');
-  typeLines.push('  imageCaption: string | null;');
-  typeLines.push('  imageRole: string | null;');
-  typeLines.push('  sourceComponent: string;');
-  typeLines.push('  rotation: string;');
-  typeLines.push('  week: number | null;');
-  typeLines.push('  clusterId: string | null;');
-  typeLines.push('  complexity: number;');
-  typeLines.push('  crosslinks: unknown;');
-  typeLines.push('  cardType: string;');
-  typeLines.push('  topics: string[];');
-  typeLines.push('  difficulty: string;');
-  typeLines.push('  variantGroupId: string | null;');
-  typeLines.push('  variantIndex: number | null;');
-  typeLines.push('  variantType: string | null;');
-  typeLines.push('  /** Present only for a deck with a strand mix (src/lib/study/deck-strand-mix.ts). */');
-  typeLines.push('  sourceFile?: string | null;');
-  typeLines.push('}');
-  typeLines.push('');
-  typeLines.push('export interface StaticQuestion {');
-  typeLines.push('  id: string;');
-  typeLines.push('  stem: string;');
-  typeLines.push('  questionType: string;');
-  typeLines.push('  format: string | null;');
-  typeLines.push('  variantGroupId: string | null;');
-  typeLines.push('  variantType: string | null;');
-  typeLines.push('  options: unknown;');
-  typeLines.push('  context: string | null;');
-  typeLines.push('  imageUrl: string | null;');
-  typeLines.push('  imageCaption: string | null;');
-  typeLines.push('  imageRole: string | null;');
-  typeLines.push('  rotation: string;');
-  typeLines.push('  moduleNodes: string[];');
-  typeLines.push('  week: number | null;');
-  typeLines.push('  topics: string[];');
-  typeLines.push('  difficulty: string;');
-  typeLines.push('  combinations: unknown;');
-  typeLines.push('  correctVariants: unknown;');
-  typeLines.push('  /** Present only for a deck with a strand mix (src/lib/study/deck-strand-mix.ts). */');
-  typeLines.push('  sourceFile?: string | null;');
-  typeLines.push('}');
-  typeLines.push('');
-
-  await fs.writeFile(CONTENT_MAP_TYPES_FILE, typeLines.join('\n'), 'utf8');
-  console.log(`[generate-content-map] Wrote shared types → ${path.relative(ROOT, CONTENT_MAP_TYPES_FILE)}`);
-
-  // --- Per-rotation shards + dynamic loader index ---
-  const rotationSet = new Set<string>([
-    ...normalizedCards.map((card) => card.rotation),
-    ...normalizedQuestions.map((question) => question.rotation),
-  ]);
-  const rotations = [...rotationSet].sort((a, b) => a.localeCompare(b));
-
-  // Reachability guard (audit 2.5): every content-bearing rotation must be in
-  // REACHABLE_ROTATIONS — a scheduled block, an explicit-focus deck, or a
-  // standalone product. Fail the build on divergence rather than ship content
-  // nothing can serve (year1-kat2/kat3 previously did; gamsat later did too).
-  const unreachable = unreachableRotations(rotations);
-  if (unreachable.length > 0) {
-    throw new Error(
-      `[generate-content-map] ${unreachable.length} rotation(s) have content but are not reachable ` +
-        `by anything (nobody can ever be served them): ${unreachable.join(', ')}. ` +
-        `Add each to REACHABLE_ROTATIONS in src/lib/institution-rotations.ts.`,
-    );
-  }
-
-  const rotationToSlug = buildRotationSlugMap(rotations);
-
-  await fs.rm(ROTATION_MAP_DIR, { recursive: true, force: true });
-  await fs.mkdir(ROTATION_MAP_DIR, { recursive: true });
-
-  for (const rotation of rotations) {
-    const slug = rotationToSlug.get(rotation)!;
-    const rotationCards = normalizedCards.filter((card) => card.rotation === rotation);
-    const rotationQuestions = normalizedQuestions.filter((question) => question.rotation === rotation);
-
-    // The data is plain JavaScript and its types sit in a declaration beside
-    // it. TypeScript resolves `./<slug>` to the .d.ts and never reads the
-    // data; webpack, vitest and tsx load the .js. As .ts, the release shards
-    // (58 MB) put every card through the type checker: a cold pass needed
-    // 5.5 GB of heap, more than a Vercel build on the 8 GB Standard machine
-    // can hold beside Next itself (2026-10-03).
-    const header = [
-      '/*',
-      ' * AUTO-GENERATED FILE — DO NOT EDIT',
-      ' *',
-      ' * Generated by: scripts/generate-content-map.ts',
-      ` * Rotation: ${rotation}`,
-      ` * Cards: ${rotationCards.length} | Questions: ${rotationQuestions.length}`,
-      ' */',
-      '',
-    ];
-    const shardLines: string[] = [...header];
-    shardLines.push('export const CARDS = {');
-    for (const card of rotationCards) {
-      shardLines.push(`  ${JSON.stringify(card.id)}: ${JSON.stringify(card)},`);
-    }
-    shardLines.push('};');
-    shardLines.push('');
-    shardLines.push('export const QUESTIONS = {');
-    for (const question of rotationQuestions) {
-      shardLines.push(`  ${JSON.stringify(question.id)}: ${JSON.stringify(question)},`);
-    }
-    shardLines.push('};');
-    shardLines.push('');
-
-    const declarationLines = [
-      ...header,
-      "import type { StaticCard, StaticQuestion } from '../content-map-types';",
-      '',
-      'export declare const CARDS: Record<string, StaticCard>;',
-      'export declare const QUESTIONS: Record<string, StaticQuestion>;',
-      '',
-    ];
-
-    await fs.writeFile(path.join(ROTATION_MAP_DIR, `${slug}.js`), shardLines.join('\n'), 'utf8');
-    await fs.writeFile(path.join(ROTATION_MAP_DIR, `${slug}.d.ts`), declarationLines.join('\n'), 'utf8');
-  }
-
-  const indexLines: string[] = [];
-  indexLines.push('/*');
-  indexLines.push(' * AUTO-GENERATED FILE — DO NOT EDIT');
-  indexLines.push(' *');
-  indexLines.push(' * Generated by: scripts/generate-content-map.ts');
-  indexLines.push(` * Generated at: ${generatedAt}`);
-  indexLines.push(` * Build mode: ${mode.name}`);
-  indexLines.push(' */');
-  indexLines.push('');
-  indexLines.push("import type { StaticCard, StaticQuestion } from '../content-map-types';");
-  indexLines.push('');
-  indexLines.push('export interface RotationContentMap {');
-  indexLines.push('  cards: Record<string, StaticCard>;');
-  indexLines.push('  questions: Record<string, StaticQuestion>;');
-  indexLines.push('}');
-  indexLines.push('');
-  indexLines.push('export const ROTATION_CONTENT_LOADERS: Record<string, () => Promise<RotationContentMap>> = {');
-  for (const rotation of rotations) {
-    const slug = rotationToSlug.get(rotation)!;
-    indexLines.push(
-      `  ${JSON.stringify(rotation)}: () => import('./${slug}').then((m) => ({ cards: m.CARDS, questions: m.QUESTIONS })),`
-    );
-  }
-  indexLines.push('};');
-  indexLines.push('');
-  indexLines.push(`export const AVAILABLE_ROTATIONS = ${JSON.stringify(rotations)} as const;`);
-  indexLines.push('');
-
-  await fs.writeFile(ROTATION_MAP_INDEX_FILE, indexLines.join('\n'), 'utf8');
-  console.log(
-    `[generate-content-map] Wrote ${rotations.length} rotation shards → ${path.relative(ROOT, ROTATION_MAP_DIR)}`
-  );
-
-  // Remove legacy monolith map now that all runtime users are sharded.
-  await fs.rm(LEGACY_MONOLITH_FILE, { force: true });
-
-  // --- Rotation counts (tiny client-safe file) ---
-  const rotationCounts: Record<string, number> = {};
-  for (const card of normalizedCards) {
-    const rot = card.rotation;
-    rotationCounts[rot] = (rotationCounts[rot] ?? 0) + 1;
-  }
-  for (const question of normalizedQuestions) {
-    const rot = question.rotation;
-    rotationCounts[rot] = (rotationCounts[rot] ?? 0) + 1;
-  }
-
-  const sortedEntries = Object.entries(rotationCounts).sort(([a], [b]) => a.localeCompare(b));
-
-  const rcLines: string[] = [];
-  rcLines.push('/*');
-  rcLines.push(' * AUTO-GENERATED FILE — DO NOT EDIT');
-  rcLines.push(' *');
-  rcLines.push(' * Generated by: scripts/generate-content-map.ts');
-  rcLines.push(` * Generated at: ${generatedAt}`);
-  rcLines.push(` * Build mode: ${mode.name}`);
-  rcLines.push(' */');
-  rcLines.push('');
-  rcLines.push('/** Total items (cards + questions) per rotation, computed at build time. */');
-  rcLines.push('export const ROTATION_COUNTS: Record<string, number> = {');
-  for (const [rotation, count] of sortedEntries) {
-    rcLines.push(`  ${JSON.stringify(rotation)}: ${count},`);
-  }
-  rcLines.push('};');
-  rcLines.push('');
-
-  await fs.writeFile(ROTATION_COUNTS_FILE, rcLines.join('\n'), 'utf8');
-  console.log(
-    `[generate-content-map] Wrote rotation counts → ${path.relative(ROOT, ROTATION_COUNTS_FILE)}`
-  );
+  await writeGeneratedContentMapFromRows({ cards, questions, mode, generatedAt });
 }
 
 function isDirectExecution(): boolean {

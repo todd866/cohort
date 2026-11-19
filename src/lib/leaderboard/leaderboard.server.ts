@@ -1,4 +1,5 @@
 import 'server-only';
+import { LINKED_PROFILE_EMAIL_DOMAIN } from '@/lib/profiles/linked-profile-identity';
 import { Prisma } from '@prisma/client';
 import { prisma } from '@/lib/prisma';
 import {
@@ -55,9 +56,14 @@ export async function loadLeaderboard(
   viewAll: boolean;
 }> {
   const candidates = await prisma.user.findMany({
+    // Linked learner profiles are never compared with learners.
     where: includeEveryone
-      ? { email: { not: null } }
-      : { leaderboardJoinedAt: { not: null }, leaderboardHandle: { not: null } },
+      ? { email: { not: null }, NOT: { email: { endsWith: `@${LINKED_PROFILE_EMAIL_DOMAIN}` } } }
+      : {
+          leaderboardJoinedAt: { not: null },
+          leaderboardHandle: { not: null },
+          OR: [{ email: null }, { NOT: { email: { endsWith: `@${LINKED_PROFILE_EMAIL_DOMAIN}` } } }],
+        },
     select: {
       id: true,
       name: true,

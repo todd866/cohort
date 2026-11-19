@@ -36,7 +36,6 @@ const eslintConfig = defineConfig([
     "audit/image-production/**",
     "coverage/**",
     // Exclude archived/scratch scripts from main lint gate:
-    "scripts/archive/**",
     "scripts/ecg-database/.venv/**",
     "scripts/_*.ts",
     "scripts/_*.tsx",

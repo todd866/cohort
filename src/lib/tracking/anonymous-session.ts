@@ -141,6 +141,14 @@ export async function linkSessionToUser(sessionId: string, userId: string): Prom
   // feedEvent.updateMany below drop its where key (`{ sessionFingerprint: undefined }`
   // → `{}`) and stamp EVERY FeedEvent with this userId. Never run on bad input.
   if (!sessionId || !userId) return;
+  // Session callbacks run on every authenticated request. An already-linked
+  // cookie needs no transaction or connection reservation. This read can only
+  // skip work; actual linking still rechecks ownership inside the transaction.
+  const linked = await prisma.anonymousSession.findUnique({
+    where: { id: sessionId },
+    select: { userId: true },
+  });
+  if (linked?.userId === userId) return;
   await prisma.$transaction(async (tx) => {
     const session = await tx.anonymousSession.findUnique({
       where: { id: sessionId },

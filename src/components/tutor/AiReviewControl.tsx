@@ -9,6 +9,7 @@ export interface AiReviewControlProps {
   target: { kind: 'card' | 'question'; id: string } | null;
   label: string;
   sessionMisses?: number;
+  voiceSupport?: null;
 }
 
 export function AiReviewControl(_props: AiReviewControlProps) {

@@ -7,6 +7,7 @@ import userEvent from '@testing-library/user-event';
 import { UnifiedReview } from './UnifiedReview';
 import { CohortHostProvider } from '@/components/CohortHostContext';
 import { reviewSessionScopeKey } from '@/lib/review/session-scope';
+import { currentReviewActions, setVoiceReview } from '@/lib/review/review-actions';
 import type { ReviewItem } from './hooks/types';
 
 // Mock next-auth/react for useSession in useActiveModules
@@ -94,6 +95,7 @@ describe('UnifiedReview (autoscroll)', () => {
   });
 
   afterEach(() => {
+    setVoiceReview(false);
     vi.unstubAllGlobals();
     vi.restoreAllMocks();
   });
@@ -123,6 +125,7 @@ describe('UnifiedReview (autoscroll)', () => {
                   type: 'question',
                   id: 'q1',
                   stem: 'First question stem',
+                  contextText: 'A woman presents with a new wrist drop.',
                   options: [
                     { label: 'A', text: 'Option A', isCorrect: true },
                     { label: 'B', text: 'Option B', isCorrect: false },
@@ -155,6 +158,13 @@ describe('UnifiedReview (autoscroll)', () => {
     render(<UnifiedReview rotations={["critical-care"]} />);
 
     await screen.findByText('First question stem');
+    expect(currentReviewActions()?.describe().stem).toBe('A woman presents with a new wrist drop.\n\nFirst question stem');
+    expect(currentReviewActions()?.describe().explanation).toBeUndefined();
+    expect(currentReviewActions()?.describe().labelledOptions?.map(({ label, displayLabel }) => ({ label, displayLabel }))).toEqual(
+      [...document.querySelectorAll('.review-option-index')].map(badge => ({
+        label: badge.closest('button')?.getAttribute('aria-label')?.split('.')[0], displayLabel: badge.textContent,
+      })),
+    );
     expect(screen.queryByRole('heading', { name: 'USMLE Step 1 practice' })).toBeNull();
     expect(scrollByMock).not.toHaveBeenCalled();
     expect(scrollIntoViewMock).not.toHaveBeenCalled();

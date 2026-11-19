@@ -9,6 +9,7 @@ import * as path from 'path';
 import type { GeneratedCard } from './card-generator';
 import { detectBadClozeSpans } from './cloze-quality';
 import { figureWithdrawal } from './figures/withdrawn-figures';
+import { isMedicalRuleExempt } from './content/medical-rule-exemptions';
 import { needsResultsTable } from './question-bank/results-table-policy';
 
 /**
@@ -276,8 +277,8 @@ export function validateCard(card: GeneratedCard): CardQualityIssue[] {
     });
   }
 
-  // Missing citation
-  if (!card.cite) {
+  // Missing citation (a non-medical rotation exempt from it has no clinical source to cite)
+  if (!card.cite && !isMedicalRuleExempt(card.rotation, 'missing-source')) {
     issues.push({
       card,
       issue: 'Card has no cite attribute — source not traceable',

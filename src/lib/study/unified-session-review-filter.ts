@@ -32,6 +32,7 @@ import {
 } from './repetition-slot-shadow';
 import type { SlotPools } from './repetition-slot';
 import { writeLiveServeDecisions } from './serve-decision-write';
+import { learnerItemPredictionFor } from './learner-item-prediction-load';
 import type { SessionContext, UnifiedItem } from './unified-session-types';
 import {
   isProtectedReviewTargetContext,
@@ -659,6 +660,7 @@ export async function tryReviewFilterSession(
           rotation: ctx.rotation,
           decisionPath: 'review-filter',
           queueReason: ctx.reviewFilter,
+          learnerItem: learnerItemPredictionFor(ctx),
         });
 
     logExposures(itemsWithDecisions, {

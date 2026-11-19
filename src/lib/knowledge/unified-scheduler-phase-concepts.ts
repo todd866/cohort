@@ -440,6 +440,7 @@ export function findPristineConcepts(inputs: SchedulerInputs): Set<string> {
   for (const c of concepts) {
     const topicSet = new Set<string>(expandTopicSet(c.topics));
     for (const card of bulk.unseenCards) {
+      if (bulk.passSetDeferredCardIds?.has(card.id)) continue;
       if (card.topics.some((t) => topicSet.has(t))) {
         conceptHasPristine.add(c.id);
         break;

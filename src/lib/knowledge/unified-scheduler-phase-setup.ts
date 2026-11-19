@@ -69,6 +69,7 @@ function unifiedSchedulerSharedReadFingerprint(
       selectionDeterminism: options.selectionDeterminism ?? null,
       crossSourceRotations: new Set(options.crossSourceRotations ?? []),
       maxCrossSourceItems: options.maxCrossSourceItems ?? null,
+      sessionPrepBlend: options.sessionPrepBlend ?? null,
     },
     target: target ? {
       computeRequested: Boolean(

@@ -328,6 +328,30 @@ export const PROTECTED_PUBLIC_FALLBACKS: ReadonlyArray<Readonly<{
   sha256: string;
 }>> = [
   {
+    // Public preparation has no personal brief, timetable or learner history.
+    path: 'src/lib/study/session-prep-blend.server.ts',
+    licence: 'MIT',
+    sha256: '3a7729cb87e809c21f9e532642767d722192c4938c1907b2be977c8f45a3962c',
+  },
+  {
+    // Reviewed null boundary: no owner identity, allowlist or schedule is exported.
+    path: 'src/lib/study/session-prep-week.server.ts',
+    licence: 'MIT',
+    sha256: '634181a7321f42377eacb49fc53ebd0ecc23a4c51f4319dab80754ee99a0aea9',
+  },
+  {
+    // Reviewed null boundary: no owner identity, allowlist or schedule is exported.
+    path: 'src/lib/study/presentation-prep-reoffer.ts',
+    licence: 'MIT',
+    sha256: '9b223b8344da4ddb195a692d807795eaf3f4dadea734af67c4d5fc28f07a3372',
+  },
+  {
+    // Reviewed null boundary: no owner identity, allowlist or schedule is exported.
+    path: 'src/lib/study/presentation-prep-cache.ts',
+    licence: 'MIT',
+    sha256: 'c630be142769567a769a99a47d417d7f193481a94c3e170634faaa0bf5a51fde',
+  },
+  {
     // Public scheduler keeps the contract but has no private attendance allocations.
     path: 'src/lib/study/simulation-focus.server.ts',
     licence: 'MIT',
@@ -368,7 +392,8 @@ export const PROTECTED_PUBLIC_FALLBACKS: ReadonlyArray<Readonly<{
     path: 'README.md',
     licence: 'CC-BY-4.0',
     // 2026-10-22: logo, front-page pointer, and counted module rows.
-    sha256: 'b6cc44fbec43d1eb4ff4e84f88113390b2c0b0dc6b4c2879677f445adae215e9',
+    // 2026-11-15: module card count 1,994 -> 2,136 (mirror regenerated); no other change.
+    sha256: '8f75719f25aa052b4799e5d650a281d4da12016a1b356a417faaddf9df15617d',
   },
   {
     // MD3 preference persistence is excluded from the public build.
@@ -508,7 +533,60 @@ export const PROTECTED_PUBLIC_FALLBACKS: ReadonlyArray<Readonly<{
   {
     path: 'src/components/tutor/AiReviewControl.tsx',
     licence: 'MIT',
-    sha256: '57bdf96a35895037ff822052fd039ff3be84723cd1cd83074130795d8c9749cf',
+    sha256: '7463f661bdf6ab98545b3751ba1fce3011473aac9372243832fbd96412d4ab86',
+  },
+  // Shared review imports remain inert: no AI, microphone, credential cache or MCP.
+  // Profile settings mounts the MCP token row; the public build has no token API.
+  {
+    path: 'src/app/profile/settings/McpTokenRow.tsx',
+    licence: 'MIT',
+    sha256: 'cc6a2017c5f83ef54102c14d880cd239e9c36fa18c94a3bc50ddda61217468f8',
+  },
+  {
+    path: 'src/components/tutor/useNativeReviewBridge.ts',
+    licence: 'MIT',
+    sha256: 'a70296ea35bdfa3de8494dba2c58c632fa1ec64e31f5befde2121d00253c314f',
+  },
+  {
+    path: 'src/components/tutor/TalkVolumeStepper.tsx',
+    licence: 'MIT',
+    sha256: '4fc699266380a114998a8aefc08f0461934e73cb8f3c5e9c4313f643551d374f',
+  },
+  {
+    path: 'src/components/tutor/useReviewVoiceSupport.ts',
+    licence: 'MIT',
+    sha256: '03d5632ea3905474bc7e81a2be491cd5325b9b73cde43756bd13c1fac3c40b2a',
+  },
+  {
+    path: 'src/lib/tutor/native-review-protocol.ts',
+    licence: 'MIT',
+    sha256: 'd9199a80336b76ab7ae8d3a0695628a45e967b906dbf8017e77ea3663bc54597',
+  },
+  {
+    path: 'src/lib/voice-secret-cache.ts',
+    licence: 'MIT',
+    sha256: 'df92247e34b3d93ae285d2307d7ffd14d192dc634258fd0b18793f1bfde1efe3',
+  },
+  {
+    path: 'src/lib/tutor/voice-recording.server.ts',
+    licence: 'MIT',
+    sha256: '83acb0f808860e5367555f4ad221744603042d02ece5922bf94461a338a5227d',
+  },
+  {
+    path: 'src/lib/r2.ts',
+    licence: 'MIT',
+    sha256: '457cc6fe06faaac07616e09c89cbcebb2b7f98ae6b279a3cf57e36239c281703',
+  },
+  {
+    path: 'src/lib/tutor/openai-metered-request.server.ts',
+    licence: 'MIT',
+    sha256: '0236f4dd2798cb15982e371c5598f2f5bbdf4b6a14db49c4c0e49872bb2bed55',
+  },
+  // The public auth policy retains secure production cookies; no local-demo override.
+  {
+    path: 'src/lib/auth-cookie-policy.ts',
+    licence: 'MIT',
+    sha256: '2514ff173c6816b2fccb97691500bcb6f10f49df3a573538dd0c1e1ff6156f00',
   },
   {
     path: 'src/components/review/hooks/practice-follow-up-turn.ts',
@@ -763,6 +841,18 @@ export const PROTECTED_PUBLIC_FALLBACKS: ReadonlyArray<Readonly<{
     sha256: 'b40a406b790819d3ebf744e4c0f051f4993f11a0535055e9b6a6ce811f9fc267',
   },
   {
+    // Linked learner profiles are private: the public session is always the
+    // account's own, and no profile narrows a deck.
+    path: 'src/lib/profiles/linked-profile-topic.ts',
+    licence: 'MIT',
+    sha256: '6bb5c22010776f61721b60e182f97992caca399bfe2af38302e380313cb5616a',
+  },
+  {
+    path: 'src/lib/profiles/session-profile.server.ts',
+    licence: 'MIT',
+    sha256: 'ad79b6856be2201713a5dd08695c88b4020b6c68010e9a6df1f1e4a6341e7b0f',
+  },
+  {
     path: 'src/lib/review/scheduler-config.ts',
     licence: 'MIT',
     sha256: '7452f53ce80503fb5bd0ed42a87e177ac1851644002fd000ea284120e48c167a',
@@ -793,7 +883,9 @@ export const PROTECTED_PUBLIC_FALLBACKS: ReadonlyArray<Readonly<{
     licence: 'MIT',
     // Bumped 2026-10-31: storedExamDateFor (identity here; no stream calendar
     // ships) for the review calendar and exams panel.
-    sha256: 'a3f34d93323c60906bcc1977d894442e98acf8eb9400e5a0394dc6263bd3ad7f',
+    // Bumped 2026-11-10: examDateForStabilityCap (the learner's own stored
+    // date while it is ahead) for the card grader's exam cap.
+    sha256: '5d0e5f3c035bdd58255063cee3639d39a04d57cfd366aeb92df724bc715e40d8',
   },
   {
     path: 'src/lib/source-registry-data.json',

@@ -17,6 +17,7 @@ import {
   SERIALIZABLE_REVIEW_TRANSACTION,
 } from '@/lib/idempotency';
 import { logger } from '@/lib/logger';
+import { readOnboardingYear } from '@/lib/onboarding/study-year';
 import { prisma } from '@/lib/prisma';
 import { calculateStreakFromDailyStats } from '@/lib/stats';
 
@@ -26,6 +27,19 @@ type ClaimNotEligibleReason =
   | 'guest-missing'
   | 'guest-not-anonymous'
   | 'same-user';
+
+/** `feedProfile` data carrying the guest's first-run year onto an account that has none. */
+function guestOnboardingYearUpdate(
+  guestProfile: unknown,
+  accountProfile: unknown,
+): { feedProfile?: PrismaRuntime.InputJsonValue } {
+  const year = readOnboardingYear(guestProfile);
+  if (!year || readOnboardingYear(accountProfile)) return {};
+  const base = accountProfile && typeof accountProfile === 'object' && !Array.isArray(accountProfile)
+    ? accountProfile as Record<string, PrismaRuntime.InputJsonValue>
+    : {};
+  return { feedProfile: { ...base, onboardingYear: year } };
+}
 
 export interface GuestClaimCounts {
   cardProgress: number;
@@ -57,6 +71,7 @@ export type GuestProgressClaimResult =
   | { status: 'claimed'; counts: GuestClaimCounts }
   | { status: 'nothing-to-claim'; counts: GuestClaimCounts }
   | { status: 'not-eligible'; reason: ClaimNotEligibleReason }
+  | { status: 'deferred'; reason: 'voice-session-active'; retryable: true }
   | { status: 'failed' };
 
 /**
@@ -121,6 +136,10 @@ type TutorClaimTables = {
   tutorMessage?: SessionScopedRows;
   tutorConversationMemory?: SessionScopedRows;
   tutorOutboxItem?: Pick<SessionScopedRows, 'updateMany'>;
+  tutorVoiceEvent?: Pick<SessionScopedRows, 'updateMany'>;
+  tutorVoiceReasoningRound?: {
+    updateMany(args: { where: { sessionId: string; userId: string }; data: { sessionId: string; userId: string } }): Promise<{ count: number }>;
+  };
 };
 
 async function claimTutorSession(
@@ -143,6 +162,13 @@ async function claimTutorSession(
     select: { id: true },
   });
   counts.tutorSessions = 1;
+
+  // These private rounds carry both ownership keys. Move them rather than
+  // archiving them: their spend remains in the live ledger exactly once.
+  await tables.tutorVoiceReasoningRound?.updateMany({
+    where: { sessionId: guestSession.id, userId: guestUserId },
+    data: { sessionId: accountSession?.id ?? guestSession.id, userId: authenticatedUserId },
+  });
 
   // With no existing account transcript, retaining the session id also retains
   // every message, memory and usage row without extra per-row writes.
@@ -213,6 +239,11 @@ async function claimTutorSession(
     data: { sessionId: accountSession.id },
   });
   const movedOutbox = await tutorOutboxItem.updateMany({
+    where: { sessionId: guestSession.id },
+    data: { sessionId: accountSession.id },
+  });
+  // The record of their live voice sessions comes with them too.
+  await tables.tutorVoiceEvent?.updateMany({
     where: { sessionId: guestSession.id },
     data: { sessionId: accountSession.id },
   });
@@ -718,6 +749,13 @@ export async function claimGuestProgressRecords(
     return { status: 'not-eligible', reason: 'same-user' };
   }
 
+  // The private app preserves paid usage while transferring the guest. Public
+  // builds have no tutor delegates and keep their existing lock footprint.
+  if ((tx as Prisma.TransactionClient & TutorClaimTables).tutorSession) {
+    const { lockGuestUsageClaim } = await import('@/lib/tutor/voice-recording.server');
+    await lockGuestUsageClaim(tx);
+  }
+
   // Lock both identities in deterministic order. Review writes take a foreign
   // key lock on User; this prevents a grade from landing under the guest
   // identity halfway through the transfer.
@@ -743,6 +781,7 @@ export async function claimGuestProgressRecords(
       lastActiveAt: true,
       activeModules: true,
       track: true,
+      institution: true,
       accounts: { select: { id: true }, take: 1 },
     },
   });
@@ -755,6 +794,8 @@ export async function claimGuestProgressRecords(
       lastActiveAt: true,
       activeModules: true,
       track: true,
+      institution: true,
+      feedProfile: true,
     },
   });
 
@@ -766,6 +807,15 @@ export async function claimGuestProgressRecords(
   }
   if (guest.email !== null || guest.accounts.length > 0) {
     return { status: 'not-eligible', reason: 'guest-not-anonymous' };
+  }
+
+  if ((tx as Prisma.TransactionClient & TutorClaimTables).tutorSession) {
+    const { hasUnresolvedGuestVoiceOwnership } = await import('@/lib/tutor/voice-recording.server');
+    if (await hasUnresolvedGuestVoiceOwnership(tx, guestUserId)) {
+      // Sign-in still succeeds. Keep the trusted cookie and every guest row so
+      // the normal bounded retry can import them after the call has closed.
+      return { status: 'deferred', reason: 'voice-session-active', retryable: true };
+    }
   }
 
   const counts = emptyCounts();
@@ -941,6 +991,14 @@ export async function claimGuestProgressRecords(
         ...(authenticatedUser.track === null && guest.track !== null
           ? { track: guest.track }
           : {}),
+        // The first-run year travels with the enrolment it produced. A year-only
+        // choice (MD1, MD2) lives in the institution, so that is carried too;
+        // both fill only what the account has not set. The rows are locked, so
+        // the profile read above cannot be stale.
+        ...(!authenticatedUser.institution && guest.institution
+          ? { institution: guest.institution }
+          : {}),
+        ...guestOnboardingYearUpdate(guest.feedProfile, authenticatedUser.feedProfile),
       };
 
   await tx.user.update({
@@ -1273,6 +1331,10 @@ export async function claimGuestProgressRecords(
   ).count;
 
   await claimTutorSession(tx, guestUserId, authenticatedUserId, counts);
+  if ((tx as Prisma.TransactionClient & TutorClaimTables).tutorSession) {
+    const { claimGuestOpenAiUsage } = await import('@/lib/tutor/voice-recording.server');
+    await claimGuestOpenAiUsage(tx, guestUserId, authenticatedUserId);
+  }
 
   // A guest can use the deep-dive tutor before signing in. Lock its session
   // rows so a concurrent assistant response either lands before this transfer
@@ -1345,6 +1407,9 @@ export async function claimGuestProgressRecords(
   // first canonical write after commit now fails its User FK and is safely
   // retried by the client under the authenticated identity; it cannot recreate
   // progress under an orphan guest.
+  const { deleteVoiceRecordingPrefix } = await import('@/lib/tutor/voice-recording.server');
+  const { deleteR2Objects } = await import('@/lib/r2');
+  await deleteVoiceRecordingPrefix(tx as never, guestUserId, deleteR2Objects);
   await tx.user.delete({
     where: { id: guestUserId },
     select: { id: true },
@@ -1515,7 +1580,7 @@ async function finishClaim(args: {
   // identity — logging it would drown real claim outcomes.
   if (!(result.status === 'not-eligible' && result.reason === 'cookie-missing')) {
     const durationMs = Date.now() - startedAt;
-    const reason = result.status === 'not-eligible' ? result.reason : undefined;
+    const reason = result.status === 'not-eligible' || result.status === 'deferred' ? result.reason : undefined;
     logger.info('guest-progress-claim', {
       authenticatedUserId,
       guestUserId,

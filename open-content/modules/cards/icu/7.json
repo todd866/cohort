@@ -20,17 +20,32 @@
       "reference": null
     },
     {
-      "id": "cohort:icu:c-720fe79858c5:v1",
-      "origin": "mdx:92f66363b572a0aaa4b667225366a47f:blank-0",
+      "id": "cohort:icu:c-7187944286f1:v1",
+      "origin": "mdx:79c088167eb4257e536dd5e1c6b3dbee:blank-1",
       "discipline": "icu",
       "cardType": "cloze",
       "sourceComponent": "KeyPoint",
-      "front": "For a 70 kg patient receiving lignocaine with adrenaline (max [___] mg/kg), the total maximum dose is 490 mg.",
-      "back": "7",
-      "context": "Adrenaline causes local vasoconstriction, which slows lignocaine systemic absorption — lifting the safe maximum from 3 mg/kg (plain) to 7 mg/kg (with adrenaline).\n\nAdrenaline-containing solutions are contraindicated in end-arterial territories (digits, nose, penis, ears) where vasoconstriction risks ischaemia.",
+      "front": "Adult CPR compression depth should be at least 5 cm at a rate of [___] per minute.",
+      "back": "100-120",
+      "context": "ANZCOR adult CPR: compress to at least 5 cm depth (but not >6 cm — going too deep risks rib fracture, sternal injury, and lung contusion) at 100-120/min.\n\nThe 100-120/min rate is the trade-off between adequate cerebral and coronary perfusion (lower rates inadequate) and rescuer fatigue / inadequate diastolic filling (higher rates worse).",
       "complexity": 2,
       "importance": 2,
-      "variantGroup": "cohort:icu:g-94c2db408c80",
+      "variantGroup": "cohort:icu:g-4ffcd00f0002",
+      "variantIndex": 1,
+      "reference": null
+    },
+    {
+      "id": "cohort:icu:c-7212dea73cd2:v1",
+      "origin": "mdx:2258eeec58db4829877c4c69ee24c5b8:blank-0",
+      "discipline": "icu",
+      "cardType": "cloze",
+      "sourceComponent": "KeyPoint",
+      "front": "The default maintenance IV fluid for a euvolaemic patient with normal electrolytes is [___]% NaCl + 4% glucose.",
+      "back": "0.18",
+      "context": "The default maintenance fluid for a euvolaemic patient with normal electrolytes is 0.18% NaCl + 4% glucose. It provides 31 mmol/L Na+ (appropriate for maintenance needs) plus glucose to prevent ketosis.\n\n0.9% NaCl and Hartmann's are resuscitation fluids with too much Na+ for maintenance.",
+      "complexity": 2,
+      "importance": 2,
+      "variantGroup": "cohort:icu:g-e62e3581dbcd",
       "variantIndex": 0,
       "reference": null
     },
@@ -47,21 +62,6 @@
       "importance": 2,
       "variantGroup": "cohort:icu:g-98c9b7088340",
       "variantIndex": 2,
-      "reference": null
-    },
-    {
-      "id": "cohort:icu:c-74a905924976:v1",
-      "origin": "mdx:341abf35b798975df11e59c2856ac7c1:blank-1",
-      "discipline": "icu",
-      "cardType": "cloze",
-      "sourceComponent": "KeyPoint",
-      "front": "First-line treatment for torsades de pointes is IV magnesium at a dose of [___] g.",
-      "back": "2",
-      "context": "Torsades de pointes is polymorphic VT in the setting of QT prolongation — the QRS complexes 'twist' around the isoelectric baseline, alternating positive and negative deflections.\n\nAlso: stop QT-prolonging drugs (macrolides, antipsychotics, methadone, ondansetron, hydroxychloroquine), correct K⁺ to >4.5, correct Mg²⁺ to >1.0, isoprenaline or pacing to overdrive >100/min if recurrent.",
-      "complexity": 1,
-      "importance": 2,
-      "variantGroup": "cohort:icu:g-bf2712b36b42",
-      "variantIndex": 1,
       "reference": null
     },
     {
@@ -137,21 +137,6 @@
       "importance": 2,
       "variantGroup": "cohort:icu:g-7c30236ff468",
       "variantIndex": 2,
-      "reference": null
-    },
-    {
-      "id": "cohort:icu:c-76e5ebb76808:v1",
-      "origin": "mdx:9ed7185998a71d5fc3757348acaf7a30:blank-0",
-      "discipline": "icu",
-      "cardType": "cloze",
-      "sourceComponent": "KeyPoint",
-      "front": "Pre-anaesthetic fasting: [___] hours for clear fluids and 6 hours for solids.",
-      "back": "2",
-      "context": "GA abolishes protective airway reflexes. Gastric contents can regurgitate, causing pulmonary aspiration leading to chemical pneumonitis, ARDS, or death.\n\nStandard fasting: 6 hours for solids, 2 hours for clear fluids — the '2-and-6 rule.'.",
-      "complexity": 2,
-      "importance": 2,
-      "variantGroup": "cohort:icu:g-197160a4be6d",
-      "variantIndex": 0,
       "reference": null
     },
     {
@@ -290,6 +275,21 @@
       "reference": null
     },
     {
+      "id": "cohort:icu:c-7b5f2d8001c7:v1",
+      "origin": "mdx:8ba9314efa896057318a6eef348bf2bb:blank-0",
+      "discipline": "icu",
+      "cardType": "cloze",
+      "sourceComponent": "KeyPoint",
+      "front": "Massive PE with persistent hypotension: systemic [___] mg alteplase IV over 2 hours.",
+      "back": "100",
+      "context": "Massive PE = obstruction killing the patient haemodynamically (sustained hypotension or vasopressor need despite fluid).\n\nAlteplase 100 mg over 2 h is standard; in cardiac arrest from suspected PE, 50 mg bolus + continue CPR 60-90 min.",
+      "complexity": 2,
+      "importance": 2,
+      "variantGroup": "cohort:icu:g-aa0d51b87564",
+      "variantIndex": 0,
+      "reference": null
+    },
+    {
       "id": "cohort:icu:c-7bcdd5ae88d5:v1",
       "origin": "mdx:669230c889a454d5d77c000bbaf3b6f7:blank-1",
       "discipline": "icu",
@@ -302,21 +302,6 @@
       "importance": 2,
       "variantGroup": "cohort:icu:g-4af711257cec",
       "variantIndex": 1,
-      "reference": null
-    },
-    {
-      "id": "cohort:icu:c-7cb1067b22a9:v1",
-      "origin": "mdx:8c0079e63978907a1db72f31dabbcf73:blank-0",
-      "discipline": "icu",
-      "cardType": "cloze",
-      "sourceComponent": "KeyPoint",
-      "front": "Septic shock (Sepsis-3): vasopressors needed for MAP ≥[___] mmHg AND lactate >2 mmol/L despite adequate fluids.",
-      "back": "65",
-      "context": "Sepsis-3 defines septic shock as sepsis with persistent hypotension requiring vasopressors AND lactate >2 despite adequate fluids. Both criteria must be met.\n\nThis subset carries >40% mortality.",
-      "complexity": 2,
-      "importance": 2,
-      "variantGroup": "cohort:icu:g-b09333b8c67d",
-      "variantIndex": 0,
       "reference": null
     },
     {
@@ -346,21 +331,6 @@
       "complexity": 2,
       "importance": 2,
       "variantGroup": "cohort:icu:g-6ecc204c4e9c",
-      "variantIndex": 1,
-      "reference": null
-    },
-    {
-      "id": "cohort:icu:c-7d4dce26f953:v1",
-      "origin": "mdx:6a21fc93cdafe2c3dd8f394f497b755e:blank-1",
-      "discipline": "icu",
-      "cardType": "cloze",
-      "sourceComponent": "KeyPoint",
-      "front": "Delta ratio 0.8-2.0 indicates pure HAGMA; <0.8 = mixed HAGMA + NAGMA; >2.0 = HAGMA + [___].",
-      "back": "metabolic alkalosis",
-      "context": "In a clean HAGMA, every unmeasured anion consumes a bicarbonate — rise in AG and fall in HCO₃ should be ~1:1. Delta ratio formalises that; value 0.8-2.0 says nothing else is going on.\n\nOutside that window a second process is hiding. <0.8 = HCO₃ fell further than AG rose, so a normal-AG acidosis is co-existing (DKA + diarrhoea.",
-      "complexity": 2,
-      "importance": 2,
-      "variantGroup": "cohort:icu:g-ba96d1a78eed",
       "variantIndex": 1,
       "reference": null
     },
@@ -395,6 +365,21 @@
       "reference": null
     },
     {
+      "id": "cohort:icu:c-7e29f14667d6:v1",
+      "origin": "mdx:a073eedd2257699382889809d489c54f:blank-1",
+      "discipline": "icu",
+      "cardType": "cloze",
+      "sourceComponent": "KeyPoint",
+      "front": "CRASH-2 showed TXA benefit only within 3 hours of injury; after this window there is possible [___].",
+      "back": "harm",
+      "context": "CRASH-2 (2010, 20,000 trauma patients) found tranexamic acid (1 g over 10 min, then 1 g over 8 hours) reduces all-cause mortality and bleeding deaths if given within 3 hours of injury.\n\nAfter 3 hours, TXA may HARM — possibly through paradoxical bleeding from secondary fibrinolysis activation. Document time of injury, not time of presentation. Don't give TXA late.",
+      "complexity": 2,
+      "importance": 2,
+      "variantGroup": "cohort:icu:g-5a4c1ddad0e8",
+      "variantIndex": 1,
+      "reference": null
+    },
+    {
       "id": "cohort:icu:c-7e820742069c:v1",
       "origin": "mdx:3dc10e66945442cf6f0019327fed1aca:blank-0",
       "discipline": "icu",
@@ -421,21 +406,6 @@
       "complexity": 2,
       "importance": 2,
       "variantGroup": "cohort:icu:g-9b2e2ecd4caa",
-      "variantIndex": 1,
-      "reference": null
-    },
-    {
-      "id": "cohort:icu:c-7f27b494d52d:v1",
-      "origin": "mdx:d49e4208d393c3e3d10be005ecc741fa:blank-1",
-      "discipline": "icu",
-      "cardType": "cloze",
-      "sourceComponent": "KeyPoint",
-      "front": "Per CRASH-2, trauma TXA dosing is 1 g IV bolus over 10 min, then the same dose given as an infusion over 8 hours. Beyond [___] hours from injury, the mortality benefit is lost — and may even be harmful.",
-      "back": "3",
-      "context": "CRASH-2 (Lancet 2010, n=20,211): TXA cuts all-cause mortality by 1.5% absolute (NNT ~67) when given within 3 hours of injury.\n\nMechanism: blocks plasminogen activation, preventing fibrinolysis without promoting new clot formation.\n\nProtocol: same dose for bolus (over 10 min) and 8-hour infusion — the symmetry makes it easy to recall under stress.",
-      "complexity": 2,
-      "importance": 2,
-      "variantGroup": "cohort:icu:g-e9d41c45c8a8",
       "variantIndex": 1,
       "reference": null
     },

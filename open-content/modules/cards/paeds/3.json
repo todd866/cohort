@@ -125,18 +125,37 @@
       "reference": null
     },
     {
-      "id": "cohort:paeds:c-30be3e7176bf:v1",
-      "origin": "mdx:a95a2faf6ae6419d18bd5114a63bd9e4:blank-0",
+      "id": "cohort:paeds:c-30cb88a678ed:v1",
+      "origin": "mdx:516e629d6a88f89d0d17fb80ce9eae3e:blank-0",
       "discipline": "paeds",
       "cardType": "cloze",
       "sourceComponent": "KeyPoint",
-      "front": "Gastro-oesophageal reflux (GOR) is physiological in infants — peaks at [___] months and resolves by 12-18 months as the lower oesophageal sphincter (LES) matures. Distinguish from GORD (= GOR with complications).",
-      "back": "4",
-      "context": "Physiological GOR (gastro-oesophageal reflux) is the 'happy spitter' — frequent regurgitation but normal weight gain, no distress, no respiratory issues. Common in infants because the LES tone is immature.\n\nPeaks ~4 months, resolves by 12-18 months as the LES matures. Pathological GORD = reflux causing complications (FTT, oesophagitis, aspiration).",
+      "front": "Croup is caused by [___] virus; peak age ~2 years; classic triad of barking cough, hoarse voice, stridor.",
+      "back": "parainfluenza",
+      "context": "Parainfluenza causes ~75% of croup; RSV, adenovirus, influenza, and rhinovirus account for the rest.\n\nSymptoms classically worsen overnight from supine position and increased oedema.",
       "complexity": 2,
       "importance": 2,
-      "variantGroup": "cohort:paeds:g-60ead98700cc",
+      "variantGroup": "cohort:paeds:g-c7acfcb10668",
       "variantIndex": 0,
+      "reference": {
+        "title": "Croup (Laryngotracheobronchitis)",
+        "publisher": "The Royal Children's Hospital Melbourne",
+        "url": "https://www.rch.org.au/clinicalguide/guideline_index/Croup_Laryngotracheobronchitis/"
+      }
+    },
+    {
+      "id": "cohort:paeds:c-310d219d6a20:v1",
+      "origin": "mdx:151ce7dc00bffb90252fce4280a3c4cc",
+      "discipline": "paeds",
+      "cardType": "cloze",
+      "sourceComponent": "KeyPoint",
+      "front": "In the weeks after birth, red cells carrying the high-oxygen-affinity [___] are cleared faster than the marrow replaces them with adult haemoglobin, one driver of the physiological anaemia that bottoms out at 8-12 weeks.",
+      "back": "HbF",
+      "context": "Fetal red cells are built for a low-oxygen placenta: their haemoglobin binds oxygen more avidly than the adult form. Once the lungs take over, that high affinity is no longer needed.\n\nThree things then drop the haemoglobin together: better oxygenation switches off erythropoietin, short-lived fetal cells are cleared, and rapid growth dilutes the red cell mass.\n\nThe term nadir of about 110 g/L at 8-12 weeks is normal and self-resolves; investigate a lower fall or any worrying feature. Preterm babies fall earlier (about 6 weeks) and deeper.",
+      "complexity": 1,
+      "importance": 2,
+      "variantGroup": "cohort:paeds:g-96d70a22c83e",
+      "variantIndex": null,
       "reference": null
     },
     {
@@ -264,6 +283,36 @@
       "reference": null
     },
     {
+      "id": "cohort:paeds:c-331b2dae1203:v1",
+      "origin": "mdx:e3824331b143e4cb4ba2defb7a95f29b:blank-0",
+      "discipline": "paeds",
+      "cardType": "cloze",
+      "sourceComponent": "KeyPoint",
+      "front": "Chronic diarrhoea types: fatty (steatorrhoea, fat malabsorption); watery ([___] or secretory); bloody (infection, IBD).",
+      "back": "osmotic",
+      "context": "The character of diarrhoea narrows the cause. Fatty (steatorrhoea — pale, greasy, foul, floats) → fat malabsorption (CF, pancreatic insufficiency, biliary disease, coeliac).\n\nWatery → osmotic (lactose intolerance) or secretory (toxin, hormone, bile salt). Bloody → infection, IBD, milk protein intolerance.",
+      "complexity": 2,
+      "importance": 2,
+      "variantGroup": "cohort:paeds:g-87a44d07c456",
+      "variantIndex": 0,
+      "reference": null
+    },
+    {
+      "id": "cohort:paeds:c-340e5d02f701:v1",
+      "origin": "mdx:52146841d6f1d615590747d6f05a40f9:blank-0",
+      "discipline": "paeds",
+      "cardType": "cloze",
+      "sourceComponent": "KeyPoint",
+      "front": "Cystic fibrosis is an autosomal [___] disease caused by variants in the CFTR gene; the most common variant is F508del (about 70% of alleles).",
+      "back": "recessive",
+      "context": "Recessive inheritance means a child needs two faulty CFTR alleles (one from each carrier parent) to be affected — which is why CF is autosomal recessive and unaffected siblings can still be carriers.\n\nF508del is a three-base deletion losing phenylalanine at position 508. The misfolded protein is degraded before reaching the cell surface.\n\nIt dominates the mutation pool and defines which CFTR modulators a patient can use.",
+      "complexity": 2,
+      "importance": 2,
+      "variantGroup": "cohort:paeds:g-cb58656a5bae",
+      "variantIndex": 0,
+      "reference": null
+    },
+    {
       "id": "cohort:paeds:c-3439f43d676f:v1",
       "origin": "mdx:93f26ad5deb1f3ca3f894d9191718877",
       "discipline": "paeds",
@@ -294,18 +343,18 @@
       "reference": null
     },
     {
-      "id": "cohort:paeds:c-34afa42318db:v1",
-      "origin": "mdx:cd943411e3731be5cb54c7641182b0e1:blank-1",
+      "id": "cohort:paeds:c-34cfc0ba5363:v1",
+      "origin": "mdx:758e0cacea59d76ac74be3ec0c41968b:blank-0",
       "discipline": "paeds",
       "cardType": "cloze",
       "sourceComponent": "KeyPoint",
-      "front": "An undescended testis rarely descends after 3 months of age — refer then, aiming for orchidopexy at [___] months.",
-      "back": "6-12",
-      "context": "Most testes that will descend do so in the first few months of life; beyond that, waiting adds nothing, so refer rather than watch.\n\nEarly surgery protects heat-sensitive germ cells — the longer a testis sits inguinal, the worse the fertility outcome. Prepubertal orchidopexy also lowers (never removes) malignancy risk and keeps the testis examinable.",
-      "complexity": 1,
+      "front": "Cystic fibrosis (CF) management pillars: [___] clearance, dornase alfa, nebulised hypertonic saline, antibiotics, and pancreatic enzyme replacement.",
+      "back": "airway",
+      "context": "The five pillars of CF maintenance work together: daily airway clearance — positive expiratory pressure (PEP), active cycle of breathing (ACBT), exercise — prevents mucus stagnation.\n\nDornase alfa cleaves neutrophil DNA. Antibiotics: empirical for exacerbations, chronic suppressive (inhaled tobramycin for Pseudomonas); pancreatic enzyme replacement therapy (PERT) for nutrition.",
+      "complexity": 2,
       "importance": 2,
-      "variantGroup": "cohort:paeds:g-9f8330f7271c",
-      "variantIndex": 1,
+      "variantGroup": "cohort:paeds:g-9402c609895a",
+      "variantIndex": 0,
       "reference": null
     },
     {
@@ -478,21 +527,6 @@
       "reference": null
     },
     {
-      "id": "cohort:paeds:c-36e7d094e5cd:v1",
-      "origin": "mdx:9f906afb57fd222bb517e114a0b257d6:blank-0",
-      "discipline": "paeds",
-      "cardType": "cloze",
-      "sourceComponent": "KeyPoint",
-      "front": "A well 3-year-old has a bulging tympanic membrane, an effusion and no discharge. The appropriate first step is analgesia plus [___] for 48 hours; the single feature in the history that would most clearly override this in an infant is age under 6 months.",
-      "back": "watchful waiting",
-      "context": "Most uncomplicated acute otitis media is analgesia and 48 hours of watchful waiting. The examinable skill is who should NOT wait.\n\nAge under 6 months, systemic illness, discharge, craniofacial anomaly, immunocompromise, a cochlear implant, and high-risk Aboriginal or Torres Strait Islander children all lower the threshold.\n\nBilateral disease under 2 is not by itself an automatic RCH indication — follow the local antimicrobial guideline.",
-      "complexity": 3,
-      "importance": 2,
-      "variantGroup": "cohort:paeds:g-7f409773269e",
-      "variantIndex": 0,
-      "reference": null
-    },
-    {
       "id": "cohort:paeds:c-3705432e9bd5:v1",
       "origin": "mdx:da790fee634a13ae3cced53d29237ff3:blank-1",
       "discipline": "paeds",
@@ -549,21 +583,6 @@
       "complexity": 1,
       "importance": 2,
       "variantGroup": "cohort:paeds:g-128f841e52b8",
-      "variantIndex": null,
-      "reference": null
-    },
-    {
-      "id": "cohort:paeds:c-378f338c2de2:v1",
-      "origin": "mdx:9cc32cab3d8215c92917f22f00c857dc",
-      "discipline": "paeds",
-      "cardType": "cloze",
-      "sourceComponent": "KeyPoint",
-      "front": "With the first breaths after birth, pulmonary vascular resistance [___], allowing pulmonary blood flow to rise sharply.",
-      "back": "falls",
-      "context": "Lung aeration and rising oxygen tension dilate the pulmonary vessels; PVR falls and left-sided pressures rise, closing the foramen ovale flap.\n\nThis transition is why duct-dependent lesions can look well at birth and collapse days later as the duct closes.",
-      "complexity": 1,
-      "importance": 3,
-      "variantGroup": null,
       "variantIndex": null,
       "reference": null
     },
@@ -707,6 +726,36 @@
       "reference": null
     },
     {
+      "id": "cohort:paeds:c-3a4575341ee9:v1",
+      "origin": "mdx:83f8dc884646ae99253ba76c785abc54:blank-1",
+      "discipline": "paeds",
+      "cardType": "cloze",
+      "sourceComponent": "KeyPoint",
+      "front": "Refeeding syndrome risk peaks in the first 2 weeks of nutritional rehabilitation; monitor and replace [___], potassium, and magnesium; start at 10-15 kcal/kg/day.",
+      "back": "phosphate",
+      "context": "Refeeding syndrome kills via hypophosphataemia. In starvation, the body uses fat and protein metabolism (low insulin, depleted intracellular phosphate, K, Mg).\n\nRe-introduced carbohydrate triggers an insulin surge that pulls phosphate (plus K and Mg) intracellularly to support glycolysis — depleting already-low intracellular stores and dropping serum levels precipitously.\n\nThe protocol: start at 10-15 kcal/kg/day (much lower than nutritional repletion targets), advance slowly over 7-10 days.",
+      "complexity": 2,
+      "importance": 2,
+      "variantGroup": "cohort:paeds:g-adb1748f018d",
+      "variantIndex": 1,
+      "reference": null
+    },
+    {
+      "id": "cohort:paeds:c-3a50771674da:v1",
+      "origin": "mdx:04f9c84068b775c002adc191216c528a:blank-1",
+      "discipline": "paeds",
+      "cardType": "cloze",
+      "sourceComponent": "KeyPoint",
+      "front": "Bordetella pertussis is a Gram-negative [___] coccobacillus; mortality is ~1 in 125 babies under 6 months.",
+      "back": "aerobic",
+      "context": "Bordetella pertussis is a Gram-negative aerobic coccobacillus — it colonises ciliated respiratory epithelium and acts via secreted toxins (it is not an intracellular pathogen).\n\nAzithromycin is given to eradicate the organism and limit spread, not because the bacterium hides inside cells. Infant mortality reflects apnoea and pulmonary hypertension from severe paroxysmal coughing.\n\nMaternal vaccination in pregnancy + cocoon strategy is the main protection for infants too young for their own vaccine.",
+      "complexity": 2,
+      "importance": 2,
+      "variantGroup": "cohort:paeds:g-3ca46d9634a1",
+      "variantIndex": 1,
+      "reference": null
+    },
+    {
       "id": "cohort:paeds:c-3b04be55cacb:v1",
       "origin": "mdx:e240fd70f5a2716f4ca71cfcc6fd1c8d",
       "discipline": "paeds",
@@ -822,7 +871,7 @@
       "context": "Most infantile haemangiomas need observation, but lesions threatening vision, breathing or function need specialist assessment. Propranolol reduces growth and promotes involution.\n\nTreatment requires a prescribed plan and monitoring. Poor feeding increases the risk of hypoglycaemia.",
       "complexity": 1,
       "importance": 3,
-      "variantGroup": "cohort:paeds:g-b5d1c6616a9b",
+      "variantGroup": "cohort:paeds:g-2d0ba8923ddc",
       "variantIndex": null,
       "reference": null
     },
@@ -872,21 +921,6 @@
       "reference": null
     },
     {
-      "id": "cohort:paeds:c-3da0078900aa:v1",
-      "origin": "mdx:41dd95ce1aa4d79ac59a8ebe1ca288a5:blank-1",
-      "discipline": "paeds",
-      "cardType": "cloze",
-      "sourceComponent": "KeyPoint",
-      "front": "Most common cause of croup is parainfluenza; peak age ~[___] years.",
-      "back": "2",
-      "context": "Parainfluenza accounts for ~75% of croup. The peak age (1-2 years) reflects subglottic narrowness — same oedema in older children causes much less obstruction.",
-      "complexity": 2,
-      "importance": 2,
-      "variantGroup": "cohort:paeds:g-825a13e0a8cf",
-      "variantIndex": 1,
-      "reference": null
-    },
-    {
       "id": "cohort:paeds:c-3e73b9b5d31e:v1",
       "origin": "mdx:48b40d1a4fef6059b61b4a3db20c40e7",
       "discipline": "paeds",
@@ -895,6 +929,21 @@
       "front": "Because valine is hydrophobic, on deoxygenation HbS molecules [___] into long rigid fibres that distort the red cell into the classic sickle shape, driving vaso-occlusion.",
       "back": "polymerise",
       "context": "The exposed hydrophobic patch on deoxy-HbS binds a complementary pocket on an adjacent beta-chain, so fibres build only in the deoxygenated state and dissolve on re-oxygenation.\n\nThis is why crises are precipitated by hypoxia, dehydration, acidosis and infection, and why the defect is intermolecular (between molecules) rather than a problem with oxygen binding itself.",
+      "complexity": 3,
+      "importance": 2,
+      "variantGroup": null,
+      "variantIndex": null,
+      "reference": null
+    },
+    {
+      "id": "cohort:paeds:c-3f2a3f9654e5:v1",
+      "origin": "mdx:a1989c24248790b41695a563b896f4d4",
+      "discipline": "paeds",
+      "cardType": "cloze",
+      "sourceComponent": "KeyPoint",
+      "front": "Early pubic hair in a 7-year-old girl is investigated as central precocious puberty rather than premature adrenarche when it is accompanied by [___] development.",
+      "back": "breast",
+      "context": "Premature adrenarche and true central precocious puberty both give early pubic hair, and the discriminator is whether the GONADS have been switched on.\n\nBreast development in a girl (or testicular enlargement above 4 mL in a boy) is gonadarche and means the axis is running: pubertal LH, advanced bone age, accelerating height velocity.\n\nPubic hair, axillary hair and body odour ALONE are adrenal androgens, with prepubertal LH and a bone age near chronological — benign, and it needs reassurance rather than a GnRH agonist.",
       "complexity": 3,
       "importance": 2,
       "variantGroup": null,
@@ -944,6 +993,21 @@
       "importance": 2,
       "variantGroup": null,
       "variantIndex": null,
+      "reference": null
+    },
+    {
+      "id": "cohort:paeds:c-3fcfbc9915be:v1",
+      "origin": "mdx:c803ce6debf17233becadc975d1192f3:blank-1",
+      "discipline": "paeds",
+      "cardType": "cloze",
+      "sourceComponent": "KeyPoint",
+      "front": "Congenital hypothyroidism is the most common preventable cause of intellectual disability; detected by raised [___] on newborn screen; start levothyroxine ideally within 2 weeks.",
+      "back": "TSH",
+      "context": "Congenital hypothyroidism is the most common preventable cause of intellectual disability — affects 1 in 3000-4000 live births. Detected on newborn bloodspot screening (elevated TSH).\n\nMost common cause is thyroid dysgenesis (~85%) — agenesis, hypoplasia, or ectopic tissue.\n\nLevothyroxine should start as soon as the diagnosis is confirmed, ideally within the first 2 weeks of life. Early treatment allows essentially normal cognitive development.",
+      "complexity": 2,
+      "importance": 2,
+      "variantGroup": "cohort:paeds:g-30b711067436",
+      "variantIndex": 1,
       "reference": null
     }
   ]

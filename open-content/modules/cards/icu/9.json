@@ -35,21 +35,6 @@
       "reference": null
     },
     {
-      "id": "cohort:icu:c-915e6c8c8f3f:v1",
-      "origin": "mdx:24de9b8265e6717c2227991cdbc8bc1e:blank-0",
-      "discipline": "icu",
-      "cardType": "cloze",
-      "sourceComponent": "KeyPoint",
-      "front": "Max safe lignocaine dose is [___] mg/kg plain and 7 mg/kg with adrenaline.",
-      "back": "3",
-      "context": "Adrenaline causes vasoconstriction at injection site, slowing systemic absorption and allowing higher safe doses. Never use adrenaline-containing local in digits, penis, nose, or ears — risk of ischaemic necrosis.",
-      "complexity": 2,
-      "importance": 2,
-      "variantGroup": "cohort:icu:g-5e8589e33037",
-      "variantIndex": 0,
-      "reference": null
-    },
-    {
       "id": "cohort:icu:c-923ec2d7ed4c:v1",
       "origin": "mdx:26931d444cd84d1ea81f3ed4559e69c5:blank-0",
       "discipline": "icu",
@@ -92,21 +77,6 @@
       "importance": 2,
       "variantGroup": null,
       "variantIndex": null,
-      "reference": null
-    },
-    {
-      "id": "cohort:icu:c-94e1419952f8:v1",
-      "origin": "mdx:033a602f45433b2898922599517eeb79:blank-0",
-      "discipline": "icu",
-      "cardType": "cloze",
-      "sourceComponent": "KeyPoint",
-      "front": "In non-shockable rhythms (PEA/asystole), adrenaline 1 mg IV is given [___] and then every 4 minutes.",
-      "back": "immediately",
-      "context": "In non-shockable arrest, adrenaline goes *immediately* because there's no defibrillation to prioritise — α-1 vasoconstriction raises diastolic aortic pressure, which is what perfuses the coronaries during CPR.\n\nContrast with shockable rhythms: there, defibrillation comes first, adrenaline is *delayed* until after the 2nd shock so the early shocks aren't competing with the catecholamine surge. Same dose either way (1 mg IV/IO).",
-      "complexity": 2,
-      "importance": 2,
-      "variantGroup": "cohort:icu:g-97f99ecfb7e6",
-      "variantIndex": 0,
       "reference": null
     },
     {
@@ -170,21 +140,6 @@
       "reference": null
     },
     {
-      "id": "cohort:icu:c-961c9c6cf107:v1",
-      "origin": "mdx:4f40a84394130b98d402f8bd5fbc4cc9:blank-2",
-      "discipline": "icu",
-      "cardType": "cloze",
-      "sourceComponent": "Danger",
-      "front": "Modified-release (MR) paracetamol has delayed/prolonged absorption. A single level can miss peaks — take 2 levels [___] hours apart.",
-      "back": "4",
-      "context": "MR formulations like Panadol Osteo have delayed and prolonged absorption. A single nomogram plot can miss ongoing absorption — two levels 4h apart detect the characteristic double peak.",
-      "complexity": 2,
-      "importance": 2,
-      "variantGroup": "cohort:icu:g-d0731f255c8a",
-      "variantIndex": 2,
-      "reference": null
-    },
-    {
       "id": "cohort:icu:c-9641ad5174c3:v1",
       "origin": "mdx:add48c52e5e52437a68cdcbbafc6b4a8",
       "discipline": "icu",
@@ -212,6 +167,21 @@
       "importance": 2,
       "variantGroup": "cohort:icu:g-6a23e8dadf4d",
       "variantIndex": 0,
+      "reference": null
+    },
+    {
+      "id": "cohort:icu:c-967fa16b50e2:v1",
+      "origin": "mdx:3e49968bbdfc3722d7c43de972aec778:blank-2",
+      "discipline": "icu",
+      "cardType": "cloze",
+      "sourceComponent": "KeyPoint",
+      "front": "Parkland timing is calculated from time of injury (not presentation). The first half is given over 8 hours, the second half over [___] hours.",
+      "back": "16",
+      "context": "Capillary leak is maximal in the first 8 hours post-burn, so fluid requirements are frontloaded. Timing from injury (not presentation) matters — delayed patients need catch-up fluids to compensate for initial deficit.",
+      "complexity": 2,
+      "importance": 2,
+      "variantGroup": "cohort:icu:g-1532f98bb2ee",
+      "variantIndex": 2,
       "reference": null
     },
     {
@@ -350,21 +320,6 @@
       "reference": null
     },
     {
-      "id": "cohort:icu:c-9bf0297ae98c:v1",
-      "origin": "mdx:92f66363b572a0aaa4b667225366a47f:blank-1",
-      "discipline": "icu",
-      "cardType": "cloze",
-      "sourceComponent": "KeyPoint",
-      "front": "For a 70 kg patient receiving lignocaine with adrenaline (max 7 mg/kg), the total maximum dose is [___] mg.",
-      "back": "490",
-      "context": "Adrenaline causes local vasoconstriction, which slows lignocaine systemic absorption — lifting the safe maximum from 3 mg/kg (plain) to 7 mg/kg (with adrenaline).\n\nAdrenaline-containing solutions are contraindicated in end-arterial territories (digits, nose, penis, ears) where vasoconstriction risks ischaemia.",
-      "complexity": 2,
-      "importance": 2,
-      "variantGroup": "cohort:icu:g-94c2db408c80",
-      "variantIndex": 1,
-      "reference": null
-    },
-    {
       "id": "cohort:icu:c-9cfa26c0b96e:v1",
       "origin": "mdx:d98d699bf723ffcc531c20c970886c73:blank-0",
       "discipline": "icu",
@@ -497,21 +452,6 @@
       "importance": 2,
       "variantGroup": null,
       "variantIndex": null,
-      "reference": null
-    },
-    {
-      "id": "cohort:icu:c-9f1e1b218856:v1",
-      "origin": "mdx:861b78cce3c77f5288c4008801fc9478:blank-1",
-      "discipline": "icu",
-      "cardType": "cloze",
-      "sourceComponent": "KeyPoint",
-      "front": "Adult CPR compression depth should be at least 5 cm at a rate of [___] per minute.",
-      "back": "100-120",
-      "context": "ANZCOR adult CPR: compress to at least 5 cm depth (but not >6 cm — going too deep risks rib fracture, sternal injury, and lung contusion) at 100-120/min.\n\nThe 100-120/min rate is the trade-off between adequate cerebral and coronary perfusion (lower rates inadequate) and rescuer fatigue / inadequate diastolic filling (higher rates worse).",
-      "complexity": 2,
-      "importance": 2,
-      "variantGroup": "cohort:icu:g-100c81e99f0d",
-      "variantIndex": 1,
       "reference": null
     },
     {

@@ -1,4 +1,7 @@
+import { orderSessionPrepCandidates, prepModalityBudgets } from './session-prep-allocation';
 import { matchesResolvedMedia, mediaCandidateLimit } from './media-review';
+import { passSetIntakeEnabled, preferPassSetFacts } from '@/lib/knowledge/pass-set';
+import { passSetForPool } from '@/lib/knowledge/pass-set-inputs';
 import { itemExcludedByMediaPreferences } from './review-media-preferences';
 import { loadInstantMediaCandidateIds } from './media-review-candidates';
 import { applyReviewChallengeWave } from './review-challenge';
@@ -47,7 +50,16 @@ import {
 } from '@/lib/manifold/scoring';
 import { questionImageIsPrompt, resolveImage } from '@/lib/figures/resolve';
 import { resolveImageAlternatives } from '@/lib/figures/resolve-alternatives';
+import {
+  INSTANT_OVERDUE_FIRST_POLICY,
+  dueCardCount,
+  instantCardOrderMode,
+  orderCardsOverdueFirst,
+  type InstantCardProgress,
+} from './instant-card-order';
 import { writeLiveServeDecisions } from './serve-decision-write';
+import { learnerItemPredictionFor } from './learner-item-prediction-load';
+import { instantSelectionRecord, type InstantSelectionFacts } from './serve-selection';
 import { shadowCardMetaFromSources, shadowDeliveredCards } from './repetition-slot-shadow';
 import { loadCurrentSessionContent, sessionSourceKey, withCurrentSessionBody } from './current-session-content';
 import { resolveClipsForSession } from '@/lib/video/clip-access';
@@ -74,7 +86,23 @@ import {
 /** Bound on the variant-sibling point lookup so it cannot grow into a scan. */
 const INSTANT_VARIANT_LOOKUP_CAP = 1500;
 
+/**
+ * Cap on card ids whose due clocks are read for the overdue-first order. Past
+ * it the remaining cards are treated as unseen (the old shuffle), never as an
+ * error. A point lookup on the (cardId, userId) unique index.
+ */
+const INSTANT_PROGRESS_LOOKUP_CAP = 4000;
+
 const INSTANT_CONCEPT_THREAD_EVENT_LIMIT = 800;
+
+interface InstantProgressRow {
+  cardId: string;
+  nextDueAt?: Date | null;
+  suppressed?: boolean;
+  flagged?: boolean;
+  status?: string;
+  leechSuppressedUntil?: Date | null;
+}
 const INSTANT_CONCEPT_THREAD_ANCHOR_LIMIT = 24;
 
 /**
@@ -216,6 +244,21 @@ export async function tryInstantSession(
     .filter((card) => card.variantGroupId != null && matchesRequestedTopics(card.topics, requestedTopics))
     .map((card) => card.id)
     .slice(0, INSTANT_VARIANT_LOOKUP_CAP);
+  // Overdue-first card order (instant-card-order.ts). Read once per request.
+  // Registered learners only: guests have no progress and keep the shuffle. The
+  // due clocks ride the existing variant-seen point read below, widened to the
+  // lane's candidate card ids; no extra query.
+  const cardOrderMode = instantCardOrderMode();
+  const overdueFirstRequested = cardOrderMode === 'overdue-first' && !ctx.isGuest && !questionsOnly;
+  const progressLookupIds = overdueFirstRequested
+    ? [...new Set([
+        ...variantSiblingIds,
+        ...ctx.rotationContent.cardList
+          .filter((card) => matchesRequestedTopics(card.topics, requestedTopics))
+          .map((card) => card.id),
+      ])].slice(0, INSTANT_PROGRESS_LOOKUP_CAP)
+    : variantSiblingIds;
+  let cardProgressById = new Map<string, InstantCardProgress>();
   // Keep guest scaffold due-state empty to preserve the existing card behavior.
   let scaffoldDueAt = new Map<string, Date | null>();
   // Same for variants: guests retain the previous random-sibling behaviour.
@@ -290,12 +333,25 @@ export async function tryInstantSession(
       // point lookup on the (cardId, userId) unique index over ids we already
       // hold — not a serve-history aggregation — joining this Promise.all so it
       // adds no wall-clock. See .claude/rules/hot-path-latency.md.
-      !ctx.isGuest && variantSiblingIds.length > 0
+      !ctx.isGuest && progressLookupIds.length > 0
         ? prisma.cardProgress.findMany({
-            where: { userId: ctx.userId, cardId: { in: variantSiblingIds } },
-            select: { cardId: true },
+            where: { userId: ctx.userId, cardId: { in: progressLookupIds } },
+            // The due clock and the parked flags are what the overdue-first
+            // order needs; they ride this existing read.
+            select: {
+              cardId: true, nextDueAt: true, suppressed: true, flagged: true,
+              status: true, leechSuppressedUntil: true,
+            },
+          }).catch((error): InstantProgressRow[] => {
+            // A missing due clock degrades the order to the plain shuffle; it
+            // never fails the session (hot-path-latency.md). The egress
+            // due-gate re-reads and fails closed on its own.
+            logger.warn('instant: progress read failed; serving without overdue order', {
+              error: error instanceof Error ? error.message : String(error),
+            });
+            return [];
           })
-        : Promise.resolve([] as Array<{ cardId: string }>),
+        : Promise.resolve([] as InstantProgressRow[]),
       !ctx.isGuest
         ? prisma.learningEvent.findMany({
           where: {
@@ -398,6 +454,13 @@ export async function tryInstantSession(
     // due-gate to "no gate", it never fails the session.
     scaffoldDueAt = new Map((scaffoldProgressRows ?? []).map((row) => [row.cardId, row.nextDueAt]));
     seenVariantCardIds = new Set((variantSeenRows ?? []).map((row) => row.cardId));
+    if (overdueFirstRequested) {
+      cardProgressById = new Map((variantSeenRows ?? []).map((row) => [row.cardId, {
+        nextDueAt: row.nextDueAt ?? null,
+        parked: Boolean(row.suppressed || row.flagged || row.status === 'retired'
+          || (row.leechSuppressedUntil && row.leechSuppressedUntil.getTime() > instantNowMs)),
+      }]));
+    }
     if (!ctx.isGuest) conceptThreadAnchors = buildClinicalThreadAnchors({
       successfulEvents: conceptThreadEvents
         .filter(event => (
@@ -543,8 +606,22 @@ export async function tryInstantSession(
   // scheduler (pickCardCandidate in unified-scheduler.ts).
   let shuffledCards = shuffle(staticCards);
   let randomizedQuestions = shuffle(staticQuestions);
+  // Why a pick here is not a plain k-of-n draw, recorded with each delivered
+  // row (serve-selection.ts). Bookkeeping only: nothing below reads it.
+  const cardDrawReasons: string[] = [];
+  const questionDrawReasons: string[] = [];
+  const sameOrder = <T>(before: readonly T[], after: readonly T[]) => (
+    before.length === after.length && before.every((entry, index) => entry === after[index])
+  );
+  if (ctx.media) { cardDrawReasons.push('media-window'); questionDrawReasons.push('media-window'); }
+  if (staticCards.some((card) => card.variantGroupId != null)) cardDrawReasons.push('variant-groups-in-pool');
+  if (staticQuestions.some((question) => questionSuppressionKey(question))) {
+    questionDrawReasons.push('sibling-families-in-pool');
+  }
   const challengeLevel = options.practiceScaffoldOnly ? 0 : (ctx.reviewChallenge?.level ?? 0);
   if (challengeLevel !== 0 && !ctx.isGuest) {
+    cardDrawReasons.push('challenge-nudge');
+    questionDrawReasons.push('challenge-nudge');
     // Bounded point reads of materialized progress/quality, never history scans.
     // Everything outside this short prefix keeps the control ordering.
     const cardPrefix = shuffledCards.slice(0, 300);
@@ -579,16 +656,61 @@ export async function tryInstantSession(
   const staticStrandIdentity = (item: { rotation: string; sourceFile?: string | null }): StrandIdentity => (
     { rotation: item.rotation, sourceFile: item.sourceFile ?? null }
   );
+  const cardsBeforeStrands = shuffledCards;
   shuffledCards = orderByDeckStrands(shuffledCards, {
     deck: ctx.rotation, seed: `${ctx.sessionId}:cards`, identify: staticStrandIdentity,
   });
+  if (!sameOrder(cardsBeforeStrands, shuffledCards)) cardDrawReasons.push('strand-mix');
+  // This lane is a shuffle with no ranking stage, so the pass set is a stable
+  // partition: its facts first, the rest after (pass-set.ts). The pass set is
+  // built from the static content map, memoised per process: no query. A
+  // scope the learner chose (topics, week, media, difficulty) is left alone.
+  if (
+    passSetIntakeEnabled()
+    && requestedTopics.size === 0
+    && ctx.weekFilter === null
+    && (!ctx.media || ctx.media === 'any')
+    && !ctx.difficultyFilter
+  ) {
+    const cardsBeforePassSet = shuffledCards;
+    shuffledCards = preferPassSetFacts(
+      shuffledCards,
+      passSetForPool(ctx.rotationContent.cardList, ctx.rotation),
+    );
+    if (!sameOrder(cardsBeforePassSet, shuffledCards)) cardDrawReasons.push('pass-set-first');
+  }
+  // Overdue-first: seen, due cards lead (most overdue first); unseen and
+  // not-due cards keep the order built above. Applied last so the shuffle,
+  // challenge nudge, strand mix and pass-set partition still decide the order
+  // of everything it does not move. Eligibility is unchanged. A learner with no
+  // due progress gets the list back unchanged.
+  const overdueFirstActive = overdueFirstRequested
+    && dueCardCount(shuffledCards, cardProgressById, new Date(instantNowMs)) > 0;
+  if (overdueFirstActive) {
+    shuffledCards = orderCardsOverdueFirst(shuffledCards, cardProgressById, new Date(instantNowMs));
+    cardDrawReasons.push('overdue-first');
+  }
+  const questionsBeforeStrands = randomizedQuestions;
   randomizedQuestions = orderByDeckStrands(randomizedQuestions, {
     deck: ctx.rotation, seed: `${ctx.sessionId}:questions`, identify: staticStrandIdentity,
   });
+  if (!sameOrder(questionsBeforeStrands, randomizedQuestions)) questionDrawReasons.push('strand-mix');
   // One card per variant group, preferring a sibling this learner has never been
   // served. The previous loop took the first sibling in shuffle order, which
   // rotates by chance: with three siblings an already-seen one came back about a
   // third of the time.
+  const prepKeys = new Set(ctx.sessionPrepBlend?.itemIds ?? []);
+  const protectedDue = overdueFirstActive ? Math.min(cardCount, dueCardCount(shuffledCards, cardProgressById, new Date(instantNowMs))) : 0;
+  const prepBudget = prepModalityBudgets(ctx.sessionPrepBlend?.share ?? 0,
+    cardCount - protectedDue, questionCount,
+    shuffledCards.filter(card => prepKeys.has(`card:${card.id}`) && !(overdueFirstActive && cardProgressById.has(card.id))).length,
+    randomizedQuestions.filter(question => prepKeys.has(`question:${question.id}`) && freshnessTier(questionFamiliarity.get(question.id)) !== 2).length);
+  shuffledCards = orderSessionPrepCandidates(shuffledCards, ctx.sessionPrepBlend, {
+    size: cardCount, prepSeats: prepBudget.cards,
+    key: card => `card:${card.id}`,
+    // These seen/due cards were placed first above; prep cannot displace them.
+    protected: card => overdueFirstActive && cardProgressById.has(card.id),
+  });
   const selectedCards = selectRotatingVariants(shuffledCards, seenVariantCardIds, cardCount);
   // Shuffle for variety FIRST, then gate: admitMasteredWithinBudget preserves order
   // within each tier, so mastered questions sink while the fresh pool stays random.
@@ -609,6 +731,7 @@ export async function tryInstantSession(
   // At Hardest, reserve unseen variants before considering previously missed
   // questions. The sibling guard below must see this order too.
   if (learningPolicy.questionsOnly) {
+    questionDrawReasons.push('freshness-partition');
     randomizedQuestions = partitionByFreshness(randomizedQuestions, question => question.id, questionFamiliarity);
   }
   const unmasteredQuestions = randomizedQuestions.filter(
@@ -617,6 +740,7 @@ export async function tryInstantSession(
   const masteredQuestions = randomizedQuestions.filter(
     (question) => freshnessTier(questionFamiliarity.get(question.id)) === 2,
   );
+  if (masteredQuestions.length > 0) questionDrawReasons.push('mastered-budget');
   const seenQuestionGroups = new Set<string>();
   const suppressSiblings = (questions: typeof randomizedQuestions) =>
     prioritizeLeastRecentlyServedContrastSiblings(
@@ -657,13 +781,18 @@ export async function tryInstantSession(
   // next step is unavailable. Exit before selection/delivery writes; the
   // caller can then offer another owned exact exam miss.
   if (options.practiceScaffoldOnly && !practiceScaffoldTarget) return null;
+  if (practiceScaffoldTarget) questionDrawReasons.push('practice-scaffold');
 
   // The single reservation is drawn from the sibling-safe, unmastered pool.
   // It never restores a retired, flagged, recently served or excluded row.
+  const prepOrderedQuestions = orderSessionPrepCandidates(siblingSafeQuestions, ctx.sessionPrepBlend, {
+    size: questionCount, prepSeats: prepBudget.questions, key: question => `question:${question.id}`,
+    protected: question => question.id === practiceScaffoldTarget?.questionId,
+  });
   const practiceOrderedQuestions = practiceScaffoldTarget
-    ? [...siblingSafeQuestions.filter(question => question.id === practiceScaffoldTarget.questionId),
-      ...siblingSafeQuestions.filter(question => question.id !== practiceScaffoldTarget.questionId)]
-    : siblingSafeQuestions;
+    ? [...prepOrderedQuestions.filter(question => question.id === practiceScaffoldTarget.questionId),
+      ...prepOrderedQuestions.filter(question => question.id !== practiceScaffoldTarget.questionId)]
+    : prepOrderedQuestions;
 
   const selectedQuestions = admitMasteredWithinBudget(
     options.practiceScaffoldOnly
@@ -736,7 +865,10 @@ export async function tryInstantSession(
         const replacementIndex = selectedQuestions.findLastIndex(question => (
           questionStratum(question) === winner.stratum
         ));
-        if (replacementIndex >= 0) selectedQuestions[replacementIndex] = winner.question;
+        if (replacementIndex >= 0) {
+          selectedQuestions[replacementIndex] = winner.question;
+          questionDrawReasons.push('concept-thread-replacement');
+        }
       }
     }
   }
@@ -955,6 +1087,9 @@ export async function tryInstantSession(
   // read for its current body, and batch-read selected cards alongside the
   // existing lineage/due proofs. No per-item content or history queries.
   const taggedInstantCards = taggedInstant.filter((item) => item.type === 'card');
+  // The delivery prediction's item facility comes with the current-body read
+  // below (same rows, two more columns); nothing is read for it separately.
+  const learnerItem = learnerItemPredictionFor(ctx);
   const [currentSources, eligibleInstantCards, instantCardDue] = await Promise.all([
     loadCurrentSessionContent({ ...ctx, crossSourceRotations: [] }, taggedInstant, { includeQuestionConcepts: true }),
     filterDeliverableReinforcementCardRows(taggedInstantCards, {
@@ -1084,6 +1219,13 @@ export async function tryInstantSession(
     return null;
   }
 
+  // The pools the draw was made from, after every exclusion and filter above.
+  const instantSelectionFacts: InstantSelectionFacts = {
+    batchReasons: { card: cardDrawReasons, question: questionDrawReasons },
+    eligiblePool: { card: staticCards.length, question: staticQuestions.length },
+    requested: { card: cardCount, question: questionCount },
+    ...(overdueFirstActive ? { cardPolicy: INSTANT_OVERDUE_FIRST_POLICY } : {}),
+  };
   const shadowedInstant = shadowDeliveredCards(egressSafeTaggedInstant, {
     rotation: ctx.rotation,
     grades: instantCardDue.gradeByCardId,
@@ -1096,6 +1238,14 @@ export async function tryInstantSession(
     rotation: ctx.rotation,
     decisionPath: 'instant',
     queueReason: 'instant',
+    learnerItem,
+    selection: (item) => instantSelectionRecord(
+      item,
+      item.interventionReason === 'preemptive_scaffold' ? ['scaffold-insertion']
+        : item.interventionReason === 'concept_followup' ? ['concept-thread']
+          : [],
+      instantSelectionFacts,
+    ),
   });
   const scaffoldItem = practiceScaffoldTarget && taggedInstantWithDecisions.find(item =>
     item.type === 'question' && item.id === practiceScaffoldTarget.questionId);

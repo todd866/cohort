@@ -65,21 +65,6 @@
       "reference": null
     },
     {
-      "id": "cohort:paeds:c-011964eaf12d:v1",
-      "origin": "mdx:6637f8ed48301fa207c4ae42d30bd7f2:blank-0",
-      "discipline": "paeds",
-      "cardType": "cloze",
-      "sourceComponent": "KeyPoint",
-      "front": "Live vaccines (MMR, varicella, rotavirus, BCG, LAIV, yellow fever) are contraindicated in [___] and pregnancy; minor illness is NOT a contraindication.",
-      "back": "immunocompromise",
-      "context": "Live vaccines (MMR, varicella, rotavirus, BCG, LAIV, yellow fever, Zostavax) contain weakened but replicating organisms — strong immunity, but risk of vaccine-strain disease in immunocompromised hosts.\n\nAbsolute contraindications: pregnancy and severe immunocompromise (HIV with low CD4, active malignancy, high-dose immunosuppressants, post-SCT).",
-      "complexity": 2,
-      "importance": 2,
-      "variantGroup": "cohort:paeds:g-81d0703bf113",
-      "variantIndex": 0,
-      "reference": null
-    },
-    {
       "id": "cohort:paeds:c-011af3367536:v1",
       "origin": "mdx:abd0deb648bb2174efb4ee21b28cc2cc:blank-1",
       "discipline": "paeds",
@@ -104,6 +89,21 @@
       "back": "body weight",
       "context": "Individual signs and nappy counts are imprecise. A recent well weight compared with the current weight gives the most accurate estimate of the fluid deficit.\n\nWhen no recent weight is available, combine the intake and output history with examination. Normal blood pressure does not exclude mild or moderate dehydration.",
       "complexity": 1,
+      "importance": 2,
+      "variantGroup": null,
+      "variantIndex": null,
+      "reference": null
+    },
+    {
+      "id": "cohort:paeds:c-019981f85b90:v1",
+      "origin": "mdx:3c829d761503a0a0b83cf09e6249486c",
+      "discipline": "paeds",
+      "cardType": "cloze",
+      "sourceComponent": "KeyPoint",
+      "front": "An 11-year-old with recurrent wheeze has FEV1 rise from 68% to 82% predicted after salbutamol. This exceeds the National Asthma Council criterion of at least [___] improvement from baseline.",
+      "back": "12%",
+      "context": "Repeat spirometry 10–15 minutes after salbutamol. The National Asthma Council criterion is a rise of at least 12% from baseline; ERS/ATS instead uses a rise of more than 10% of the predicted value.\n\nHere, 68% to 82% predicted is a 14-point gain, or 20.6% relative to baseline. Bronchodilator responsiveness supports asthma when the symptom pattern fits and alternative causes have been assessed.\n\nA negative bronchodilator response on one occasion does not exclude asthma. Repeat testing when symptomatic or pursue other objective testing if suspicion remains.",
+      "complexity": 3,
       "importance": 2,
       "variantGroup": null,
       "variantIndex": null,
@@ -140,21 +140,6 @@
       "reference": null
     },
     {
-      "id": "cohort:paeds:c-0261475ceccf:v1",
-      "origin": "mdx:7a6180a3de732fe3063d7b1f8d5e67cd:blank-1",
-      "discipline": "paeds",
-      "cardType": "cloze",
-      "sourceComponent": "KeyPoint",
-      "front": "Definitive investigation and treatment for paediatric foreign body aspiration is rigid bronchoscopy under GA — better than [___] for retrieval.",
-      "back": "flexible",
-      "context": "Rigid bronchoscopy provides ventilation through the scope, allows dedicated forceps and suction, and a stable platform for removal.\n\nPerformed under GA in theatre with the surgical team standing by for thoracotomy if needed.",
-      "complexity": 2,
-      "importance": 2,
-      "variantGroup": "cohort:paeds:g-4ddfd4d2220f",
-      "variantIndex": 1,
-      "reference": null
-    },
-    {
       "id": "cohort:paeds:c-028ca1a8e17d:v1",
       "origin": "mdx:0e02a5f9ba784f8d656fc8eac204e804:blank-2",
       "discipline": "paeds",
@@ -167,36 +152,6 @@
       "importance": 2,
       "variantGroup": "cohort:paeds:g-7d912036a7ef",
       "variantIndex": 2,
-      "reference": null
-    },
-    {
-      "id": "cohort:paeds:c-02a8c7296df0:v1",
-      "origin": "mdx:a4c7dc9c2055d1c7c584467dfd8d40c4:blank-0",
-      "discipline": "paeds",
-      "cardType": "cloze",
-      "sourceComponent": "KeyPoint",
-      "front": "Convulsive status epilepticus = seizure ≥[___] minutes or recurrent without return to baseline; bimodal peaks in toddlers and elderly.",
-      "back": "5",
-      "context": "Status epilepticus is now defined operationally at 5 minutes (the threshold beyond which seizures rarely self-terminate and significant neuronal injury accumulates). Bimodal incidence — toddlers and elderly.\n\nTreatment ladder: 1st line two doses of midazolam IV/buccal 5 minutes apart; 2nd line phenytoin or levetiracetam; 3rd line RSI + intubation with thiopentone.\n\nAlways check BSL.",
-      "complexity": 1,
-      "importance": 2,
-      "variantGroup": "cohort:paeds:g-71d3001c9ec5",
-      "variantIndex": 0,
-      "reference": null
-    },
-    {
-      "id": "cohort:paeds:c-02af60ddbbe4:v1",
-      "origin": "mdx:1d92d4f011a0addf3bde224171fb5119:blank-0",
-      "discipline": "paeds",
-      "cardType": "cloze",
-      "sourceComponent": "KeyPoint",
-      "front": "Physiological Hb nadir at [___] weeks is normal — driven by suppressed EPO, transition from HbF to HbA, and haemodilution.",
-      "back": "6-8",
-      "context": "Physiological Hb nadir at 6-8 weeks of life is normal — Hb drops to ~95-110 g/L.\n\nSelf-resolves; no investigation needed unless Hb drops below age-specific thresholds or there are other features.",
-      "complexity": 1,
-      "importance": 2,
-      "variantGroup": "cohort:paeds:g-b2cbb551a28d",
-      "variantIndex": 0,
       "reference": null
     },
     {
@@ -275,18 +230,18 @@
       "reference": null
     },
     {
-      "id": "cohort:paeds:c-0536df610e16:v1",
-      "origin": "mdx:e73d2eb1f8f0478c6598cf24d7a012a9:blank-1",
+      "id": "cohort:paeds:c-04a8d2a906f7:v1",
+      "origin": "mdx:13f4fa9cc4f25f2e1c35fb0d64789592",
       "discipline": "paeds",
       "cardType": "cloze",
       "sourceComponent": "KeyPoint",
-      "front": "ITP: most common paediatric thrombocytopenia, usually 1-4 weeks post-viral, self-limiting in [___]% within 6 months; if other cell lines abnormal — suspect malignancy.",
-      "back": "80",
-      "context": "Immune thrombocytopaenic purpura (ITP) is the commonest cause of thrombocytopenia in well children. Typical presentation 1-4 weeks after viral infection — autoantibody-mediated platelet destruction.\n\nPetechiae, bruising, mucosal bleeding; everything else (FBC otherwise normal, no organomegaly, no constitutional symptoms) normal. Self-limiting in 80% within 6 months.\n\nIf anything else abnormal — suspect malignancy.",
+      "front": "The frequency distinction is that [___] is the most common congenital heart lesion overall, whereas TOF is the most common cyanotic lesion.",
+      "back": "VSD",
+      "context": "Keep the denominator straight: VSD is the most common congenital heart lesion across all categories. TOF leads only when the question is restricted to cyanotic congenital heart disease.",
       "complexity": 1,
       "importance": 2,
-      "variantGroup": "cohort:paeds:g-a3be8c432af8",
-      "variantIndex": 1,
+      "variantGroup": null,
+      "variantIndex": null,
       "reference": null
     },
     {
@@ -399,21 +354,6 @@
       "reference": null
     },
     {
-      "id": "cohort:paeds:c-069a7e470083:v1",
-      "origin": "mdx:41dd95ce1aa4d79ac59a8ebe1ca288a5:blank-0",
-      "discipline": "paeds",
-      "cardType": "cloze",
-      "sourceComponent": "KeyPoint",
-      "front": "Most common cause of croup is [___]; peak age ~2 years.",
-      "back": "parainfluenza",
-      "context": "Parainfluenza accounts for ~75% of croup. The peak age (1-2 years) reflects subglottic narrowness — same oedema in older children causes much less obstruction.",
-      "complexity": 2,
-      "importance": 2,
-      "variantGroup": "cohort:paeds:g-825a13e0a8cf",
-      "variantIndex": 0,
-      "reference": null
-    },
-    {
       "id": "cohort:paeds:c-06afb480c0cb:v1",
       "origin": "mdx:d87ef26d5ab433ec19559a2ac603b9c0",
       "discipline": "paeds",
@@ -459,6 +399,21 @@
       "reference": null
     },
     {
+      "id": "cohort:paeds:c-075d9444f41f:v1",
+      "origin": "mdx:52146841d6f1d615590747d6f05a40f9:blank-2",
+      "discipline": "paeds",
+      "cardType": "cloze",
+      "sourceComponent": "KeyPoint",
+      "front": "Cystic fibrosis is an autosomal recessive disease caused by variants in the CFTR gene; the most common variant is [___] (about 70% of alleles).",
+      "back": "F508del",
+      "context": "Recessive inheritance means a child needs two faulty CFTR alleles (one from each carrier parent) to be affected — which is why CF is autosomal recessive and unaffected siblings can still be carriers.\n\nF508del is a three-base deletion losing phenylalanine at position 508. The misfolded protein is degraded before reaching the cell surface.\n\nIt dominates the mutation pool and defines which CFTR modulators a patient can use.",
+      "complexity": 2,
+      "importance": 2,
+      "variantGroup": "cohort:paeds:g-cb58656a5bae",
+      "variantIndex": 2,
+      "reference": null
+    },
+    {
       "id": "cohort:paeds:c-076586647358:v1",
       "origin": "mdx:545851262218bbad54a72bfac8300d26",
       "discipline": "paeds",
@@ -471,6 +426,21 @@
       "importance": 2,
       "variantGroup": null,
       "variantIndex": null,
+      "reference": null
+    },
+    {
+      "id": "cohort:paeds:c-08065612bd7a:v1",
+      "origin": "mdx:7a3da171531c83f53e0896c3d912df7f:blank-0",
+      "discipline": "paeds",
+      "cardType": "cloze",
+      "sourceComponent": "KeyPoint",
+      "front": "Strabismus affects ~[___] of children; untreated risks amblyopia (vision suppression in the misaligned eye).",
+      "back": "2%",
+      "context": "Strabismus (eye misalignment) affects ~2% of children. Risk factors: family history, prematurity, refractive error (commonly hyperopia → accommodative esotropia), neurological disorders.\n\nUntreated strabismus causes amblyopia (vision suppression in the misaligned eye) — refer to ophthalmology by age 4-6 months for any persistent misalignment.",
+      "complexity": 2,
+      "importance": 2,
+      "variantGroup": "cohort:paeds:g-dc2fe72d55c8",
+      "variantIndex": 0,
       "reference": null
     },
     {
@@ -568,6 +538,21 @@
       "reference": null
     },
     {
+      "id": "cohort:paeds:c-09f157ef2076:v1",
+      "origin": "mdx:206af7105c35e55e659d07cdfa23144c:blank-1",
+      "discipline": "paeds",
+      "cardType": "cloze",
+      "sourceComponent": "KeyPoint",
+      "front": "An abnormal red reflex in a newborn requires exclusion of the intraocular malignancy retinoblastoma; refer to paediatric ophthalmology [___].",
+      "back": "urgently",
+      "context": "Absent or asymmetric red reflex (LEUKOCORIA — white pupillary reflex) in an infant is a paediatric emergency.\n\nExam: dim room, ophthalmoscope at arm's length, symmetric red reflex through both pupils — retinoblastoma shows a white reflex in one eye (often noticed on flash photography).",
+      "complexity": 2,
+      "importance": 2,
+      "variantGroup": "cohort:paeds:g-1a23ea7dc417",
+      "variantIndex": 1,
+      "reference": null
+    },
+    {
       "id": "cohort:paeds:c-0a22486b1f1a:v1",
       "origin": "mdx:f7d0712e5ec6e61e6b329bfd9fb09d0b",
       "discipline": "paeds",
@@ -628,6 +613,25 @@
       "reference": null
     },
     {
+      "id": "cohort:paeds:c-0ae93e3e778c:v1",
+      "origin": "mdx:92f45688bda12b626e1b6192fea4a7d8",
+      "discipline": "paeds",
+      "cardType": "cloze",
+      "sourceComponent": "KeyPoint",
+      "front": "In febrile neutropenia, broad-spectrum IV antibiotics must be given within [___] minutes.",
+      "back": "60",
+      "context": "A neutropenic child cannot mount a normal inflammatory response — Gram-negative bacteraemia can progress from fever spike to septic shock in hours.\n\nOn arrival take blood cultures (peripheral + central line), urine, swabs, and CXR if respiratory symptoms — do NOT let investigations delay the first dose of empiric piperacillin-tazobactam (or local equivalent).",
+      "complexity": 1,
+      "importance": 2,
+      "variantGroup": null,
+      "variantIndex": null,
+      "reference": {
+        "title": "Fever and suspected or confirmed neutropenia",
+        "publisher": "The Royal Children's Hospital Melbourne",
+        "url": "https://www.rch.org.au/clinicalguide/guideline_index/Fever_and_suspected_or_confirmed_neutropenia/"
+      }
+    },
+    {
       "id": "cohort:paeds:c-0af389d5068a:v1",
       "origin": "mdx:2dccb6a70104594466ac38593988b4a5",
       "discipline": "paeds",
@@ -641,6 +645,25 @@
       "variantGroup": null,
       "variantIndex": null,
       "reference": null
+    },
+    {
+      "id": "cohort:paeds:c-0b77ec6e9ee2:v1",
+      "origin": "mdx:a88eadb509c7eb0d7dabe9ca49d6093b:blank-0",
+      "discipline": "paeds",
+      "cardType": "cloze",
+      "sourceComponent": "KeyPoint",
+      "front": "Newborn screening for SCID measures [___], DNA loops produced when developing T-cells rearrange their receptor genes; an absent reading on the bloodspot triggers urgent confirmatory immunology testing, then bone marrow transplant if SCID is confirmed.",
+      "back": "TRECs",
+      "context": "SCID is a paediatric emergency. Transplant before 3.5 months is associated with high survival, but infection status also matters; early diagnosis and infection prevention are key.\n\nT-cell receptor excision circles (TRECs) are circular DNA fragments cut out when thymocytes rearrange their T-cell receptor genes. A normal thymus produces lots; SCID produces almost none.\n\nNewborn bloodspot TREC screening catches SCID before clinical infection. NSW added it in 2018; other Australian states are rolling out.",
+      "complexity": 1,
+      "importance": 2,
+      "variantGroup": "cohort:paeds:g-dc9530b57d0c",
+      "variantIndex": 0,
+      "reference": {
+        "title": "ASCIA-TAPID Consensus Guideline: Diagnosis, Management and Transplantation of SCID in Australia and New Zealand",
+        "publisher": "ASCIA",
+        "url": "https://www.allergy.org.au/hp/papers/ascia-guidelines-scid-tapid"
+      }
     },
     {
       "id": "cohort:paeds:c-0b9024e48270:v1",
@@ -685,21 +708,6 @@
       "importance": 2,
       "variantGroup": null,
       "variantIndex": null,
-      "reference": null
-    },
-    {
-      "id": "cohort:paeds:c-0d171b22df7f:v1",
-      "origin": "mdx:58cd0330463041e2f3f9e13bb4a3e139:blank-1",
-      "discipline": "paeds",
-      "cardType": "cloze",
-      "sourceComponent": "KeyPoint",
-      "front": "Bordetella pertussis is a Gram-negative [___] coccobacillus; mortality is ~1 in 125 babies under 6 months.",
-      "back": "aerobic",
-      "context": "Bordetella pertussis is a Gram-negative aerobic coccobacillus — it colonises ciliated respiratory epithelium and acts via secreted toxins (it is not an intracellular pathogen).\n\nAzithromycin is given to eradicate the organism and limit spread, not because the bacterium hides inside cells. Infant mortality reflects apnoea and pulmonary hypertension from severe paroxysmal coughing.\n\nMaternal vaccination in pregnancy + cocoon strategy is the main protection for infants too young for their own vaccine.",
-      "complexity": 2,
-      "importance": 2,
-      "variantGroup": "cohort:paeds:g-76efb7183a5a",
-      "variantIndex": 1,
       "reference": null
     },
     {
@@ -790,6 +798,36 @@
       "importance": 2,
       "variantGroup": "cohort:paeds:g-65ff12e89953",
       "variantIndex": 1,
+      "reference": null
+    },
+    {
+      "id": "cohort:paeds:c-0d946d624edd:v1",
+      "origin": "mdx:42e30ca38f1209ed2735de5d6bbca6d2",
+      "discipline": "paeds",
+      "cardType": "cloze",
+      "sourceComponent": "KeyPoint",
+      "front": "A 9-day-old has a sticky eye and a staccato cough. Topical treatment is insufficient because the [___] must also be cleared, so an oral macrolide is given.",
+      "back": "nasopharynx",
+      "context": "Neonatal conjunctivitis is dated, not just described, because the timing names the organism and the urgency.\n\nDay 1 to 2 is chemical; day 2 to 5 with profuse purulent discharge and lid oedema is gonococcal, which can perforate a cornea within days and needs systemic ceftriaxone and immediate ophthalmology.\n\nDay 5 to 14 with a more watery or mucoid discharge is chlamydial, which needs ORAL azithromycin rather than drops, because the same organism colonises the nasopharynx and causes an afebrile pneumonitis.",
+      "complexity": 3,
+      "importance": 2,
+      "variantGroup": null,
+      "variantIndex": null,
+      "reference": null
+    },
+    {
+      "id": "cohort:paeds:c-0dd189cce00f:v1",
+      "origin": "mdx:83051480e5508e8c10b34508ddad167a:blank-0",
+      "discipline": "paeds",
+      "cardType": "cloze",
+      "sourceComponent": "KeyPoint",
+      "front": "Although clean catch is appropriate in a stable pre-continent child, the lowest-contamination sample up to 6 months is a [___]; bag specimens should not be cultured.",
+      "back": "suprapubic aspirate",
+      "context": "UTI is a common cause of fever without a focus in young children. Missing it can lead to recurrent infection and renal scarring, especially when urinary tract abnormalities are present.\n\nA clean catch suits a stable pre-continent child. Suprapubic aspirate has the lowest contamination up to 6 months.\n\nReserve aspirate when an uncontaminated sample is essential or treatment cannot wait. Midstream urine suits a toilet-trained child. Do not culture bag urine, because false-positive contamination is common.",
+      "complexity": 1,
+      "importance": 2,
+      "variantGroup": "cohort:paeds:g-d3e361543a6e",
+      "variantIndex": 0,
       "reference": null
     },
     {

@@ -150,3 +150,57 @@ describe('curated starter card resolution', () => {
     })).toThrow(/Duplicate variant group/);
   });
 });
+
+describe('reviewed text-only starter projection', () => {
+  const omitted = {
+    imageUrl: '/figures/restricted/explanation/' + 'a'.repeat(64) + '.png',
+    imageRole: null,
+    imageCaption: 'Reviewed optional explanation',
+  } as const;
+  const original = row('text-only');
+  const reviewed = entry(original, { omitExplanationImage: omitted });
+  const live = row('text-only', omitted);
+  const resolve = (card = live, selected = reviewed) => resolveCuratedStarterRows({
+    rotation: 'cah', entries: [selected], rows: [card],
+    deliverableIds: new Set([card.id]), excludedTopics, imageIsPrompt: () => false,
+  });
+  it('projects only exactly pinned optional media, preserves body hash and leaves live row untouched', () => {
+    const result = resolve()[0];
+    expect(result.row).toEqual({ ...live, imageUrl: null, imageRole: null, imageCaption: null });
+    expect(curatedStarterSnapshotHash(result.row)).toBe(reviewed.sha256);
+    expect(live.imageUrl).toBe(omitted.imageUrl);
+  });
+  it('requires current media policy and rejects a sidecar becoming a prompt', () => {
+    const args = { rotation: 'cah', entries: [reviewed], rows: [live],
+      deliverableIds: new Set([live.id]), excludedTopics };
+    expect(() => resolveCuratedStarterRows(args)).toThrow(/Omitted explanation image drift/);
+    expect(() => resolveCuratedStarterRows({ ...args, imageIsPrompt: () => true }))
+      .toThrow(/Omitted explanation image drift/);
+  });
+  it('still rejects clinical-body drift', () => {
+    expect(() => resolve({ ...live, context: 'Changed clinical teaching' })).toThrow(/Snapshot drift/);
+  });
+  it.each([
+    { imageRole: 'prompt' },
+    { imageUrl: '/figures/restricted/explanation/' + 'b'.repeat(64) + '.png' },
+    { imageCaption: 'Different image meaning' },
+    { imageUrl: null },
+  ])('requires fresh review for any omitted metadata change %j', (change) => {
+    expect(() => resolve({ ...live, ...change })).toThrow(/Omitted explanation image drift/);
+  });
+  it('does not omit unreviewed images or alter a pinned public CXR', () => {
+    expect(() => resolve(live, entry(original))).toThrow(/Snapshot drift/);
+    const cxr = row('cxr', { imageUrl: '/figures/cah/bronchiolitis.jpg', imageRole: 'prompt' });
+    expect(resolve(cxr, entry(cxr))[0].row).toEqual(cxr);
+  });
+  it.each([
+    { ...omitted, imageRole: 'prompt' },
+    { ...omitted, imageUrl: '/figures/restricted/prompt.png' },
+    { ...omitted, imageCaption: 1 },
+  ])('rejects unsafe or malformed omission manifests %j', (omitExplanationImage) => {
+    expect(() => parseCuratedStarterManifest({
+      schemaVersion: 1, reviewedAt: '2026-11-08',
+      rotations: { cah: [{ ...reviewed, omitExplanationImage }] },
+    })).toThrow(/Invalid omitted explanation image/);
+  });
+});

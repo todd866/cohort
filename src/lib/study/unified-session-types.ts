@@ -22,6 +22,7 @@ export interface UnifiedAnatomyMedia {
 }
 
 export interface UnifiedItem {
+  sessionPrepBlendFingerprint?: string;
   simulationFocusFingerprint?: string;
   /** Calendar state used to rank a prepared queue. */
   teachingPaceFingerprint?: string;
@@ -264,6 +265,15 @@ export const QUEUE_DRAIN_FLOOR_ITEMS = CLIENT_REVIEW_BATCH_SIZE;
 
 /** Shared context passed from the orchestrator to each session path. */
 export interface SessionContext {
+  sessionPrepBlend?: import('./session-prep-blend').PrepBlendPlan | null;
+  /**
+   * The request's learner-item predictor (learner-item-prediction-load.ts),
+   * created once so every lane the request tries shares one learner read.
+   */
+  learnerItemPrediction?: import('./learner-item-prediction-load').LearnerItemPredictor | null;
+  presentationPrepReoffer?: import('./presentation-prep-reoffer').PresentationPrepReoffer | null;
+  /** True only when the private server resolver selected the prep scope. */
+  automaticPrepWeek?: boolean;
   simulationFocus?: import('./simulation-focus').SimulationFocus | null;
   reviewChallenge?: import('./review-challenge-preference').ReviewChallengePreference;
   /**
@@ -277,6 +287,8 @@ export interface SessionContext {
   practiceReviewFocus?: PracticeReviewFocus | null;
   /** Request-local projection; never reconstructed from history while serving. */
   practiceFollowUpState?: FollowUpState;
+  /** The learner turned exam follow-ups off (`User.experience.practiceFollowUps`). */
+  practiceFollowUpsOff?: boolean;
   /** Populated only after binding an owned ordinary Question delivery. */
   verifiedPracticeScaffolds?: Map<string, { questionId: string; provenance: PracticeReviewProvenance }>;
   rotation: string;

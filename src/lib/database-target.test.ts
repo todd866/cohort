@@ -138,6 +138,7 @@ describe('shared database target resolution', () => {
       'audit:teaching-alignment',
       'audit:concept-followup',
       'audit:exact-card-due',
+      'audit:talk',
       'audit:tutor',
       'audit:serving-path',
       'audit:orphan-cards',
@@ -151,6 +152,10 @@ describe('shared database target resolution', () => {
       'audit:card-variants',
       'audit:repetition-slot',
       'audit:recall-calibration',
+      // Added 2026-11-10: both replay or rebuild from production learner state and
+      // write dated reports; a mirror read would commit a stale cohort as today's.
+      'audit:predictive-replay',
+      'audit:policy-diagnostics',
       // Added 2026-09-30. Its report and snapshot row describe how learners did on
       // production practice papers; a mirror read would be well-formed, stale, and
       // committed into the longitudinal corpus looking like a real day.

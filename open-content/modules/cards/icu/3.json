@@ -35,21 +35,6 @@
       "reference": null
     },
     {
-      "id": "cohort:icu:c-33739529a39b:v1",
-      "origin": "mdx:f94208bcf31c973bda5adf5014e93c72:blank-0",
-      "discipline": "icu",
-      "cardType": "cloze",
-      "sourceComponent": "KeyPoint",
-      "front": "Preoperative fasting times: [___] hours for solids and 2 hours for clear fluids.",
-      "back": "6",
-      "context": "Managing medications perioperatively is a key preoperative assessment skill. Some drugs must continue, others must be withheld.",
-      "complexity": 2,
-      "importance": 2,
-      "variantGroup": "cohort:icu:g-c6e88c8fa348",
-      "variantIndex": 0,
-      "reference": null
-    },
-    {
       "id": "cohort:icu:c-3482134f2d0d:v1",
       "origin": "mdx:589ee6e5918875bf9eacbaeb4bf303be:blank-2",
       "discipline": "icu",
@@ -77,21 +62,6 @@
       "importance": 2,
       "variantGroup": "cohort:icu:g-089dd6493d8e",
       "variantIndex": 0,
-      "reference": null
-    },
-    {
-      "id": "cohort:icu:c-35734a8b8b69:v1",
-      "origin": "mdx:5aa99a94915aa5c09959e297eb2cf0d4:blank-1",
-      "discipline": "icu",
-      "cardType": "cloze",
-      "sourceComponent": "KeyPoint",
-      "front": "Target lactate clearance in sepsis is >10% in 2–6 hours. Inadequate clearance warrants reassessing [___] and source control.",
-      "back": "volume status",
-      "context": "Repeat lactate at 2-6 hours after starting resuscitation in sepsis. Target is >10% clearance — failure means tissue perfusion isn't improving despite the bundle interventions.\n\nNon-clearing lactate is a trigger to revisit the basics: are we volume-responsive? (passive leg raise, IVC distensibility) Is source control adequate? (drained abscess, removed line.",
-      "complexity": 2,
-      "importance": 2,
-      "variantGroup": "cohort:icu:g-aadc1406003f",
-      "variantIndex": 1,
       "reference": null
     },
     {
@@ -151,21 +121,6 @@
       "complexity": 2,
       "importance": 2,
       "variantGroup": "cohort:icu:g-831524f79312",
-      "variantIndex": 1,
-      "reference": null
-    },
-    {
-      "id": "cohort:icu:c-3864757a51e3:v1",
-      "origin": "mdx:9ed7185998a71d5fc3757348acaf7a30:blank-1",
-      "discipline": "icu",
-      "cardType": "cloze",
-      "sourceComponent": "KeyPoint",
-      "front": "Pre-anaesthetic fasting: 2 hours for clear fluids and [___] hours for solids.",
-      "back": "6",
-      "context": "GA abolishes protective airway reflexes. Gastric contents can regurgitate, causing pulmonary aspiration leading to chemical pneumonitis, ARDS, or death.\n\nStandard fasting: 6 hours for solids, 2 hours for clear fluids — the '2-and-6 rule.'.",
-      "complexity": 2,
-      "importance": 2,
-      "variantGroup": "cohort:icu:g-197160a4be6d",
       "variantIndex": 1,
       "reference": null
     },
@@ -260,21 +215,6 @@
       "reference": null
     },
     {
-      "id": "cohort:icu:c-3b0a6a9fc46b:v1",
-      "origin": "mdx:341abf35b798975df11e59c2856ac7c1:blank-0",
-      "discipline": "icu",
-      "cardType": "cloze",
-      "sourceComponent": "KeyPoint",
-      "front": "First-line treatment for torsades de pointes is IV [___] at a dose of 2 g.",
-      "back": "magnesium",
-      "context": "Torsades de pointes is polymorphic VT in the setting of QT prolongation — the QRS complexes 'twist' around the isoelectric baseline, alternating positive and negative deflections.\n\nAlso: stop QT-prolonging drugs (macrolides, antipsychotics, methadone, ondansetron, hydroxychloroquine), correct K⁺ to >4.5, correct Mg²⁺ to >1.0, isoprenaline or pacing to overdrive >100/min if recurrent.",
-      "complexity": 1,
-      "importance": 2,
-      "variantGroup": "cohort:icu:g-bf2712b36b42",
-      "variantIndex": 0,
-      "reference": null
-    },
-    {
       "id": "cohort:icu:c-3c560ca2f6d6:v1",
       "origin": "mdx:f7368e6065343251b8c457da4be8b5d3:blank-1",
       "discipline": "icu",
@@ -301,21 +241,6 @@
       "complexity": 2,
       "importance": 2,
       "variantGroup": "cohort:icu:g-8c7a89bb9bee",
-      "variantIndex": 0,
-      "reference": null
-    },
-    {
-      "id": "cohort:icu:c-3e1d707bec85:v1",
-      "origin": "mdx:4f40a84394130b98d402f8bd5fbc4cc9:blank-0",
-      "discipline": "icu",
-      "cardType": "cloze",
-      "sourceComponent": "Danger",
-      "front": "Modified-release (MR) paracetamol has [___] absorption. A single level can miss peaks — take 2 levels 4 hours apart.",
-      "back": "delayed/prolonged",
-      "context": "MR formulations like Panadol Osteo have delayed and prolonged absorption. A single nomogram plot can miss ongoing absorption — two levels 4h apart detect the characteristic double peak.",
-      "complexity": 2,
-      "importance": 2,
-      "variantGroup": "cohort:icu:g-d0731f255c8a",
       "variantIndex": 0,
       "reference": null
     },

@@ -41,6 +41,8 @@ export async function seedInitialQueue(
         where: {
           rotation,
           deletedAt: null,
+          // Shared catalog only: the newest cards in a module are often another learner's Anki sync.
+          ownerUserId: null,
         },
         take: remaining,
         orderBy: { createdAt: 'desc' },

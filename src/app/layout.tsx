@@ -150,10 +150,10 @@ export default async function RootLayout({
           {/* Inside Providers: it reads the session to bind the offline pack to
               an account, and useSession outside the provider is undefined. */}
           <OfflineShellWarm isCohortHost={isCohortHost} />
+          {/* Capture only after the provider has installed the identity barrier. */}
+          {isCohortHost ? null : <FirstTouchCapture />}
         </Providers>
         <StandaloneTitle brand={isCohortHost ? "cohort.md" : "md3"} />
-        {/* Where this browser first came from, stored once per learner. */}
-        {isCohortHost ? null : <FirstTouchCapture />}
         {isVercelAnalyticsEnabled() ? <Analytics /> : null}
       </body>
     </html>

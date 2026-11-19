@@ -11,6 +11,8 @@ export interface ReviewSessionScope {
   focusRotation?: string | null;
   topics?: readonly ReviewTopic[] | null;
   cluster?: string | null;
+  /** Explicitly disable private automatic preparation for this visit. */
+  prepDisabled?: boolean;
   /** Calendar replay or pull-forward. Appended only when set. */
   replay?: string | null;
 }
@@ -36,6 +38,9 @@ export function reviewLocationKey(searchParams: SearchParamReader): string {
   if (searchParams.get('cluster') !== null) keys.push('cluster');
   if (searchParams.get('replay') !== null) keys.push('replay');
   if (searchParams.get('due') !== null) keys.push('due');
+  // A streamed prep-enabled batch cannot be adopted after an explicit opt-out.
+  // Only the supported off value changes identity; ordinary URLs stay stable.
+  if (searchParams.get('prep') === 'off') keys.push('prep');
   return keys
     .map((key) => `${key}=${searchParams.get(key) ?? ''}`)
     .join('&');
@@ -61,5 +66,6 @@ export function reviewSessionScopeKey(scope: ReviewSessionScope): string {
   const typed = scope.itemType ? `${scoped}::type=${scope.itemType}` : scoped;
   const media = scope.media ? `${typed}::media=${scope.media}` : typed;
   const clustered = scope.cluster ? `${media}::cluster=${scope.cluster}` : media;
-  return scope.replay ? `${clustered}::replay=${scope.replay}` : clustered;
+  const prepared = scope.prepDisabled ? `${clustered}::prep=off` : clustered;
+  return scope.replay ? `${prepared}::replay=${scope.replay}` : prepared;
 }

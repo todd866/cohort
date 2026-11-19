@@ -8,6 +8,7 @@ import {
   EXCLUDED_FROM_MAP,
   resolveGeneratedContentMode,
   toRotationSlug,
+  writeGeneratedContentMapFromRows,
 } from './generate-content-map';
 
 describe('generated-content build modes', () => {
@@ -129,6 +130,19 @@ describe('rotations kept out of md3\'s content map', () => {
 });
 
 describe('rotation-counts generation', () => {
+  beforeAll(async () => {
+    const generatedIndex = path.resolve('src/lib/generated/content-map-rotations/index.ts');
+    if (!fs.existsSync(generatedIndex)) {
+      const mode = resolveGeneratedContentMode({ MD3_GENERATED_CONTENT_MODE: 'offline' });
+      await writeGeneratedContentMapFromRows({
+        cards: [],
+        questions: [],
+        mode,
+        generatedAt: mode.generatedAt ?? '1970-01-01T00:00:00.000Z',
+      });
+    }
+  });
+
   it('normalizes rotation names into filesystem-safe slugs', () => {
     expect(toRotationSlug('Critical Care')).toBe('critical_care');
     expect(toRotationSlug('USMLE-Cardio')).toBe('usmle-cardio');
@@ -167,11 +181,11 @@ describe('rotation-counts generation', () => {
     expect(cardInterface).toMatch(/imageCaption:/);
     expect(questionInterface).toMatch(/imageCaption:/);
 
-    // Both Prisma selects must request imageCaption.
-    const selectBlocks = src.match(/select:\s*\{[\s\S]*?\}/g) ?? [];
-    const topLevelSelects = selectBlocks.filter((s) => s.includes('imageUrl: true'));
-    expect(topLevelSelects.length).toBeGreaterThanOrEqual(2);
-    for (const block of topLevelSelects) {
+    const rowCacheSrc = fs.readFileSync(path.resolve(__dirname, 'content-map-row-cache.ts'), 'utf8');
+    const selectBlocks = rowCacheSrc.match(/FIND_MANY_SELECT = \{[\s\S]*?\} as const;/g) ?? [];
+    const mediaSelects = selectBlocks.filter((s) => s.includes('imageUrl: true'));
+    expect(mediaSelects.length).toBeGreaterThanOrEqual(2);
+    for (const block of mediaSelects) {
       expect(block).toContain('imageCaption: true');
     }
 
@@ -186,8 +200,10 @@ describe('rotation-counts generation', () => {
 
   it('serializes the two large database reads for the one-connection release transport', () => {
     const src = fs.readFileSync(path.resolve(__dirname, 'generate-content-map.ts'), 'utf8');
-    const cardRead = src.indexOf('cards = await prisma.card.findMany({');
-    const questionRead = src.indexOf('questions = await prisma.question.findMany({');
+    const cardRead = src.indexOf('cards = await loadContentMapCardRows<StaticCard>(prisma, EXCLUDED_FROM_MAP);');
+    const questionRead = src.indexOf(
+      'questions = await loadContentMapQuestionRows<StaticQuestion>(prisma, EXCLUDED_FROM_MAP);',
+    );
 
     expect(cardRead).toBeGreaterThan(0);
     expect(questionRead).toBeGreaterThan(cardRead);
@@ -201,7 +217,8 @@ describe('rotation-counts generation', () => {
     expect(cardInterface).toMatch(/imageRole:/);
     expect(questionInterface).toMatch(/imageRole:/);
 
-    const selectBlocks = src.match(/select:\s*\{[\s\S]*?\}/g) ?? [];
+    const rowCacheSrc = fs.readFileSync(path.resolve(__dirname, 'content-map-row-cache.ts'), 'utf8');
+    const selectBlocks = rowCacheSrc.match(/FIND_MANY_SELECT = \{[\s\S]*?\} as const;/g) ?? [];
     const mediaSelects = selectBlocks.filter((block) => block.includes('imageUrl: true'));
     expect(mediaSelects.length).toBeGreaterThanOrEqual(2);
     for (const block of mediaSelects) expect(block).toContain('imageRole: true');
@@ -220,10 +237,8 @@ describe('rotation-counts generation', () => {
     expect(questionInterface).toMatch(/variantGroupId:/);
     expect(questionInterface).toMatch(/variantType:/);
 
-    const selectBlocks = src.match(/select:\s*\{[\s\S]*?\}/g) ?? [];
-    const questionSelect = selectBlocks.find(
-      (block) => block.includes('stem: true') && block.includes('options: true'),
-    );
+    const rowCacheSrc = fs.readFileSync(path.resolve(__dirname, 'content-map-row-cache.ts'), 'utf8');
+    const questionSelect = rowCacheSrc.match(/CONTENT_MAP_QUESTION_FIND_MANY_SELECT = \{[\s\S]*?\} as const;/)?.[0];
     expect(questionSelect, 'question prisma select block').toBeDefined();
     expect(questionSelect).toContain('questionType: true');
     expect(questionSelect).toContain('format: true');
@@ -254,10 +269,8 @@ describe('rotation-counts generation', () => {
     expect(cardInterface).toMatch(/variantType:/);
 
     // The Card prisma select requests all three fields.
-    const selectBlocks = src.match(/select:\s*\{[\s\S]*?\}/g) ?? [];
-    const cardSelect = selectBlocks.find(
-      (s) => s.includes('imageUrl: true') && s.includes('cardType: true'),
-    );
+    const rowCacheSrc = fs.readFileSync(path.resolve(__dirname, 'content-map-row-cache.ts'), 'utf8');
+    const cardSelect = rowCacheSrc.match(/CONTENT_MAP_CARD_FIND_MANY_SELECT = \{[\s\S]*?\} as const;/)?.[0];
     expect(cardSelect, 'card prisma select block').toBeDefined();
     expect(cardSelect).toContain('variantGroupId: true');
     expect(cardSelect).toContain('variantIndex: true');
@@ -285,31 +298,31 @@ describe('rotation-counts generation', () => {
   });
 
   it('keeps raw public-USMLE questions out of generated legacy content maps', () => {
-    const scriptPath = path.resolve(__dirname, 'generate-content-map.ts');
-    const src = fs.readFileSync(scriptPath, 'utf8');
+    const rowCachePath = path.resolve(__dirname, 'content-map-row-cache.ts');
+    const rowCacheSrc = fs.readFileSync(rowCachePath, 'utf8');
+    const generatorSrc = fs.readFileSync(path.resolve(__dirname, 'generate-content-map.ts'), 'utf8');
 
-    expect(src).toContain("import { withoutRawPublicUsmleQuestions } from '../../src/lib/usmle/raw-question-boundary';");
-    expect(src).toMatch(
-      /prisma\.question\.findMany\(\{\s*where:\s*withoutRawPublicUsmleQuestions\(\{[\s\S]*?excluded:\s*false[\s\S]*?rotation:\s*\{\s*notIn:\s*EXCLUDED_FROM_MAP\s*\}[\s\S]*?\}\),/,
+    expect(rowCacheSrc).toContain('withoutRawPublicUsmleQuestions');
+    expect(rowCacheSrc).toMatch(
+      /withoutRawPublicUsmleQuestions\(\{[\s\S]*?excluded:\s*false[\s\S]*?rotation:\s*\{\s*notIn:\s*\[\.\.\.excludedRotations\]\s*\}/,
     );
-    const questionInterface = src.match(/interface StaticQuestion \{[\s\S]*?\}/)?.[0] ?? '';
+    const questionInterface = generatorSrc.match(/interface StaticQuestion \{[\s\S]*?\}/)?.[0] ?? '';
     expect(questionInterface).toMatch(/moduleNodes:/);
-    expect(src).toMatch(/rotation:\s*true,\s*moduleNodes:\s*true,/);
-    expect(src).toMatch(/moduleNodes:\s*question\.moduleNodes\s*\?\?\s*\[\]/);
-    expect(src).toMatch(/typeLines\.push\(['"]\s*moduleNodes: string\[\];['"]\)/);
+    expect(rowCacheSrc).toMatch(/moduleNodes:\s*true/);
+    expect(generatorSrc).toMatch(/moduleNodes:\s*question\.moduleNodes\s*\?\?\s*\[\]/);
+    expect(generatorSrc).toMatch(/typeLines\.push\(['"]\s*moduleNodes: string\[\];['"]\)/);
   });
 
   it('keeps public-USMLE question-reinforcement cards out of generated legacy maps', () => {
-    const scriptPath = path.resolve(__dirname, 'generate-content-map.ts');
-    const src = fs.readFileSync(scriptPath, 'utf8');
+    const rowCachePath = path.resolve(__dirname, 'content-map-row-cache.ts');
+    const rowCacheSrc = fs.readFileSync(rowCachePath, 'utf8');
+    const generatorSrc = fs.readFileSync(path.resolve(__dirname, 'generate-content-map.ts'), 'utf8');
 
-    expect(src).toContain(
-      "import { withoutRawPublicUsmleReinforcementCards } from '../../src/lib/usmle/raw-reinforcement-card-boundary';",
+    expect(rowCacheSrc).toContain('withoutRawPublicUsmleReinforcementCards');
+    expect(rowCacheSrc).toMatch(
+      /withoutRawPublicUsmleReinforcementCards\(\{[\s\S]*?deletedAt:\s*null[\s\S]*?rotation:\s*\{\s*notIn:\s*\[\.\.\.excludedRotations\]\s*\}/,
     );
-    expect(src).toMatch(
-      /prisma\.card\.findMany\(\{\s*where:\s*withoutRawPublicUsmleReinforcementCards\(\{[\s\S]*?deletedAt:\s*null[\s\S]*?rotation:\s*\{\s*notIn:\s*EXCLUDED_FROM_MAP\s*\}[\s\S]*?\}\),/,
-    );
-    expect(src).toMatch(
+    expect(generatorSrc).toMatch(
       /cards\s*=\s*await filterDeliverableReinforcementCardRows\(cards,\s*\{[\s\S]*?client:\s*prisma,[\s\S]*?transport:\s*'generated-content-map'/,
     );
   });
@@ -323,9 +336,9 @@ describe('rotation-counts generation', () => {
     // CI generates no shards (no database), so assert on the generator source.
     const scriptPath = path.resolve(__dirname, 'generate-content-map.ts');
     const src = fs.readFileSync(scriptPath, 'utf8');
-    expect(src).toMatch(/path\.join\(ROTATION_MAP_DIR, `\$\{slug\}\.js`\)/);
-    expect(src).toMatch(/path\.join\(ROTATION_MAP_DIR, `\$\{slug\}\.d\.ts`\)/);
-    expect(src).not.toMatch(/path\.join\(ROTATION_MAP_DIR, `\$\{slug\}\.ts`\)/);
+    expect(src).toMatch(/path\.join\(rotationMapDir, `\$\{slug\}\.js`\)/);
+    expect(src).toMatch(/path\.join\(rotationMapDir, `\$\{slug\}\.d\.ts`\)/);
+    expect(src).not.toMatch(/path\.join\(rotationMapDir, `\$\{slug\}\.ts`\)/);
     expect(src).toContain('export declare const CARDS: Record<string, StaticCard>;');
     expect(src).toContain('export declare const QUESTIONS: Record<string, StaticQuestion>;');
   });
@@ -346,5 +359,8 @@ describe('rotation-counts generation', () => {
       expect(sample).toHaveProperty('cards');
       expect(sample).toHaveProperty('questions');
     }
-  }, 15_000);
+    // In release mode the first shard is a ~16 MB generated module. Importing it
+    // took over 15 s on a loaded laptop twice on 6 Nov 2026 (release attempts 4
+    // and 10) and passes in ~3 s idle: a load budget, not a slow-code signal.
+  }, 60_000);
 });

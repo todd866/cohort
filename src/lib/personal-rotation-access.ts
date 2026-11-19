@@ -7,6 +7,21 @@ import {
   personalDeckSharedAccessTier,
 } from '@/lib/personal-deck-owners.server';
 import { isExamCrossSourceRotation } from '@/lib/cross-source-rotations';
+import { viewerIsLinkedProfile } from '@/lib/profiles/linked-profile-identity';
+
+// A deck whose shared tier is this value belongs to linked learner profiles,
+// and a linked profile may read no other rotation, personal or not.
+const LINKED_PROFILE_TIER: string = 'linked-profile';
+
+function isLinkedProfileDeck(rotation: string): boolean {
+  return isPersonalRotation(rotation)
+    && (personalDeckSharedAccessTier(rotation) as string | undefined) === LINKED_PROFILE_TIER;
+}
+
+/** The rotations a linked profile may study (its own decks). */
+export function linkedProfileRotations(): string[] {
+  return [...PERSONAL_ROTATIONS].filter(isLinkedProfileDeck);
+}
 
 export type PersonalRotationId = string;
 
@@ -40,7 +55,10 @@ export function viewerCanAccessPersonalRotation(
   rotation: string,
   viewer: PersonalRotationViewer,
 ): boolean {
+  const linkedViewer = viewerIsLinkedProfile(viewer.emails);
+  if (linkedViewer) return isLinkedProfileDeck(rotation);
   if (!isPersonalRotation(rotation)) return true;
+  if (isLinkedProfileDeck(rotation)) return false;
   const owners = OWNER_EMAILS[rotation];
   const isOwner = viewer.emails.some((email) => {
     const normalized = normalizeEmail(email);
@@ -63,6 +81,9 @@ export function viewerCanAccessRequestedRotations(
   rotations: readonly string[],
   viewer: PersonalRotationViewer,
 ): boolean {
+  if (viewerIsLinkedProfile(viewer.emails)) {
+    return rotations.every((rotation) => viewerCanAccessPersonalRotation(rotation, viewer));
+  }
   const personal = rotations.filter(isPersonalRotation);
   if (personal.length === 0) return true;
   return personal.every((rotation) => viewerCanAccessPersonalRotation(rotation, viewer));
@@ -157,7 +178,10 @@ export async function userIdCanAccessRequestedRotations(
     if (!enrolledSources.every((rotation) => user.activeModules.includes(rotation))) {
       return false;
     }
-    return viewerCanAccessRequestedRotations(personal, {
+    // All requested rotations, not only the personal ones: a linked profile is
+    // refused every rotation but its own deck (non-linked viewers are unchanged,
+    // because the predicate ignores non-personal rotations for them).
+    return viewerCanAccessRequestedRotations(rotations, {
       emails: [
         user.email,
         ...(user.emailAliases ?? [])

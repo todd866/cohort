@@ -95,21 +95,6 @@
       "reference": null
     },
     {
-      "id": "cohort:icu:c-4405d191bdb4:v1",
-      "origin": "mdx:dd3336991b625de705206ea8048055ac:blank-1",
-      "discipline": "icu",
-      "cardType": "cloze",
-      "sourceComponent": "KeyPoint",
-      "front": "Key damage control resuscitation targets: pH greater than 7.2, lactate less than [___] mmol/L, ionised calcium greater than 1.1 mmol/L, and temperature greater than 35°C.",
-      "back": "4",
-      "context": "Resuscitation targets during damage control provide specific endpoints to guide product replacement. These numbers should be checked every 30-60 minutes during active MTP.\n\nTBI patients have higher targets because the injured brain tolerates coagulopathy and anaemia poorly.",
-      "complexity": 2,
-      "importance": 2,
-      "variantGroup": "cohort:icu:g-c3eccec4b4cc",
-      "variantIndex": 1,
-      "reference": null
-    },
-    {
       "id": "cohort:icu:c-44236c80a27a:v1",
       "origin": "mdx:88fa4f1bf787b24a90e7164dbe7b7771:blank-1",
       "discipline": "icu",
@@ -167,6 +152,21 @@
       "importance": 2,
       "variantGroup": "cohort:icu:g-ddbff5774244",
       "variantIndex": 0,
+      "reference": null
+    },
+    {
+      "id": "cohort:icu:c-4786369c0595:v1",
+      "origin": "mdx:a30e6501b521e2a08ff5200293fc5de2:blank-1",
+      "discipline": "icu",
+      "cardType": "cloze",
+      "sourceComponent": "Danger",
+      "front": "Modified-release (MR) paracetamol has delayed/prolonged absorption. A single level can miss peaks — take [___] levels 4 hours apart.",
+      "back": "2",
+      "context": "MR formulations like Panadol Osteo have delayed and prolonged absorption. A single nomogram plot can miss ongoing absorption — two levels 4h apart detect the characteristic double peak.",
+      "complexity": 2,
+      "importance": 2,
+      "variantGroup": "cohort:icu:g-120d823c450a",
+      "variantIndex": 1,
       "reference": null
     },
     {
@@ -287,6 +287,21 @@
       "importance": 2,
       "variantGroup": null,
       "variantIndex": null,
+      "reference": null
+    },
+    {
+      "id": "cohort:icu:c-4be5ea3210ee:v1",
+      "origin": "mdx:f9b97e1e299e35e7ef9f1e4463a13857:blank-0",
+      "discipline": "icu",
+      "cardType": "cloze",
+      "sourceComponent": "KeyPoint",
+      "front": "Septic shock (Sepsis-3): vasopressors needed for MAP ≥[___] mmHg AND lactate >2 mmol/L despite adequate fluids.",
+      "back": "65",
+      "context": "Sepsis-3 defines septic shock as sepsis with persistent hypotension requiring vasopressors AND lactate >2 despite adequate fluids. Both criteria must be met.\n\nThis subset carries >40% mortality.",
+      "complexity": 2,
+      "importance": 2,
+      "variantGroup": "cohort:icu:g-3f1eabf79796",
+      "variantIndex": 0,
       "reference": null
     },
     {

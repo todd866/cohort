@@ -315,6 +315,40 @@ export function hasQueuedRequest(kind: OutboxKind, clientRequestId: string, owne
     entry.ownerKey === ownerKey && entry.kind === kind && normalizedClientRequestId(entry) === clientRequestId);
 }
 
+function reviewIdentityFromBody(body: Record<string, unknown> | undefined): string | null {
+  if (!body || typeof body !== 'object') return null;
+  const id = typeof body.id === 'string' ? body.id : '';
+  if ((body.type === 'card' || body.type === 'question') && id) return `${body.type}:${id}`;
+  if (typeof body.cardId === 'string' && body.cardId) return `card:${body.cardId}`;
+  if (typeof body.questionId === 'string' && body.questionId) return `question:${body.questionId}`;
+  return null;
+}
+
+/** Stable ids for queued review grades. Bodies stay in the outbox. */
+export function queuedReviewRequestIds(ownerKey: string | null = currentOfflineOwnerKey()): string[] {
+  const resolvedOwner = normalizedOwnerKey(ownerKey);
+  if (!resolvedOwner) return [];
+  const ids: string[] = [];
+  for (const entry of readQueue()) {
+    if (entry.ownerKey !== resolvedOwner || entry.kind !== 'review') continue;
+    ids.push(normalizedClientRequestId(entry) ?? entryIdentity(entry));
+  }
+  return ids;
+}
+
+/** Identities with a queued grade. Bodies stay in the outbox. */
+export function queuedReviewItemIdentities(ownerKey: string | null): string[] {
+  const resolvedOwner = normalizedOwnerKey(ownerKey);
+  if (!resolvedOwner) return [];
+  const keys: string[] = [];
+  for (const entry of readQueue()) {
+    if (entry.ownerKey !== resolvedOwner || entry.kind !== 'review') continue;
+    const key = reviewIdentityFromBody(entry.body);
+    if (key) keys.push(key);
+  }
+  return keys;
+}
+
 export function getQueueSize(
   kind?: OutboxKind,
   ownerKey: string | null = currentOfflineOwnerKey(),

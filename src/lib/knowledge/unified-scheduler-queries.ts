@@ -54,6 +54,9 @@ export async function getCardsForCluster(
   maxCandidates: number,
   options: {
     selectedCardIds: Set<string>;
+    /** A prep candidate read narrows supply without weakening any gate. */
+    onlyCardIds?: readonly string[];
+    preferWeak?: boolean;
     minComplexity?: number;
     now?: Date;
     selectionDeterminism?: UnifiedSessionSelectionDeterminism;
@@ -98,7 +101,7 @@ export async function getCardsForCluster(
         ...(options.week !== undefined ? { week: options.week } : {}),
         deletedAt: null,
         shelvedAt: null,
-        AND: [localeWhere, ...tierGates],
+        AND: [localeWhere, ...tierGates, ...(options.onlyCardIds ? [{ id: { in: [...options.onlyCardIds] } }] : [])],
         ...(excludedIds ? { id: { notIn: excludedIds } } : {}),
         ...(options.minComplexity != null
           ? { complexity: { gte: options.minComplexity } }
@@ -142,7 +145,7 @@ export async function getCardsForCluster(
           ...(options.week !== undefined ? { week: options.week } : {}),
           deletedAt: null,
           shelvedAt: null,
-          AND: [localeWhere, ...tierGates],
+          AND: [localeWhere, ...tierGates, ...(options.onlyCardIds ? [{ id: { in: [...options.onlyCardIds] } }] : [])],
           ...(excludedIds ? { id: { notIn: excludedIds } } : {}),
           ...(options.minComplexity != null
             ? { complexity: { gte: options.minComplexity } }
@@ -185,6 +188,7 @@ export async function getCardsForCluster(
     ),
   ];
   const firstSightCardIds = new Set(newCards.map((card) => card.id));
+  if (options.preferWeak) combined.sort((a, b) => Number(firstSightCardIds.has(a.id)) - Number(firstSightCardIds.has(b.id)));
   const seen = new Set<string>();
   const selected: Array<CardCandidate & { rotation: string; firstSightAtSelection: boolean }> = [];
 
@@ -219,7 +223,7 @@ export async function getUnseenScaffoldsForClusters(
   rotation: string,
   clusterIds: string[],
   selectedCardIds: Set<string>,
-  options: { media?: ReviewMedia; imageTrust?: AccessTier; isCopyrightTier?: boolean } = {},
+  options: { media?: ReviewMedia; imageTrust?: AccessTier; isCopyrightTier?: boolean; week?: number } = {},
 ): Promise<CardCandidate[]> {
   if (clusterIds.length === 0) return [];
 
@@ -227,6 +231,7 @@ export async function getUnseenScaffoldsForClusters(
   return findManyCards(ownerPrivateOrSharedCardScope(userId), {
     where: {
       rotation,
+      ...(options.week !== undefined ? { week: options.week } : {}),
       clusterId: { in: clusterIds },
       complexity: 1,
       deletedAt: null,
@@ -272,6 +277,7 @@ export async function getQuestionsForRotation(
     media?: ReviewMedia;
     imageTrust?: AccessTier;
     isCopyrightTier?: boolean;
+    week?: number;
   }
 ): Promise<Array<{
   id: string;
@@ -307,6 +313,7 @@ export async function getQuestionsForRotation(
         ),
         AND: [mediaCandidateWhere(options.media, options.isCopyrightTier === true, options.imageTrust)],
         contentState: { not: 'shelved' },
+        ...(options.week !== undefined ? { week: options.week } : {}),
         ...(excludedIds.length > 0 ? { id: { notIn: excludedIds } } : {}),
         NOT: { topics: { hasSome: EXCLUDED_TOPICS } },
       }),

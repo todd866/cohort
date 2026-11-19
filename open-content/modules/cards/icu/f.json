@@ -35,21 +35,6 @@
       "reference": null
     },
     {
-      "id": "cohort:icu:c-f27d34d627f1:v1",
-      "origin": "mdx:5aa99a94915aa5c09959e297eb2cf0d4:blank-0",
-      "discipline": "icu",
-      "cardType": "cloze",
-      "sourceComponent": "KeyPoint",
-      "front": "Target lactate clearance in sepsis is >[___]% in 2–6 hours. Inadequate clearance warrants reassessing volume status and source control.",
-      "back": "10",
-      "context": "Repeat lactate at 2-6 hours after starting resuscitation in sepsis. Target is >10% clearance — failure means tissue perfusion isn't improving despite the bundle interventions.\n\nNon-clearing lactate is a trigger to revisit the basics: are we volume-responsive? (passive leg raise, IVC distensibility) Is source control adequate? (drained abscess, removed line.",
-      "complexity": 2,
-      "importance": 2,
-      "variantGroup": "cohort:icu:g-aadc1406003f",
-      "variantIndex": 0,
-      "reference": null
-    },
-    {
       "id": "cohort:icu:c-f3e6ee3899d9:v1",
       "origin": "mdx:1d55322244b56c663265c621a5b56b61:blank-1",
       "discipline": "icu",
@@ -76,6 +61,21 @@
       "complexity": 2,
       "importance": 2,
       "variantGroup": "cohort:icu:g-cf29801edd72",
+      "variantIndex": 1,
+      "reference": null
+    },
+    {
+      "id": "cohort:icu:c-f48fe5b39b24:v1",
+      "origin": "mdx:0296b294a4661159298b72d22a901b3b:blank-1",
+      "discipline": "icu",
+      "cardType": "cloze",
+      "sourceComponent": "KeyPoint",
+      "front": "For a 70 kg patient receiving lignocaine with adrenaline (max 7 mg/kg), the total maximum dose is [___] mg.",
+      "back": "490",
+      "context": "Adrenaline causes local vasoconstriction, which slows lignocaine systemic absorption — lifting the safe maximum from 3 mg/kg (plain) to 7 mg/kg (with adrenaline).\n\nAdrenaline-containing solutions are contraindicated in end-arterial territories (digits, nose, penis, ears) where vasoconstriction risks ischaemia.",
+      "complexity": 2,
+      "importance": 2,
+      "variantGroup": "cohort:icu:g-b94969afcf69",
       "variantIndex": 1,
       "reference": null
     },
@@ -140,18 +140,18 @@
       "reference": null
     },
     {
-      "id": "cohort:icu:c-f611734c7adb:v1",
-      "origin": "mdx:de3332716cfe4c7117a4ef37b5c34ef1:blank-0",
+      "id": "cohort:icu:c-f5f58748325e:v1",
+      "origin": "mdx:fdb0fd3bc814b5f62770d3a71498a5fe:blank-1",
       "discipline": "icu",
       "cardType": "cloze",
       "sourceComponent": "KeyPoint",
-      "front": "Parkland formula timing is calculated from time of [___], not presentation. The first half is given over 8 hours.",
+      "front": "Parkland formula: 4 mL x weight (kg) x %TBSA; timing is calculated from time of [___], not presentation.",
       "back": "injury",
-      "context": "Parkland formula: 4 mL x body weight (kg) x %TBSA burned. Give the first half over the first 8 hours from the TIME OF INJURY (not time of presentation).\n\nGive the second half over the next 16 hours. This is a common exam mistake — always calculate from time of burn, not arrival to hospital.",
+      "context": "Parkland is calculated from time of INJURY, not time of presentation — late presenters need a faster initial fluid rate to deliver the first half within 8 hours of the burn (when capillary leak is greatest).\n\nA patient who presents 4 hours post-burn still needs half the 24-hour total in the next 4 hours. Conversely, fluid started in the field counts toward the total — communicate with retrieval/ambulance about volumes given.",
       "complexity": 2,
       "importance": 2,
-      "variantGroup": "cohort:icu:g-ba82ce49b643",
-      "variantIndex": 0,
+      "variantGroup": "cohort:icu:g-8098e4c6e7ba",
+      "variantIndex": 1,
       "reference": null
     },
     {
@@ -230,21 +230,6 @@
       "reference": null
     },
     {
-      "id": "cohort:icu:c-f89092adef24:v1",
-      "origin": "mdx:4f40a84394130b98d402f8bd5fbc4cc9:blank-1",
-      "discipline": "icu",
-      "cardType": "cloze",
-      "sourceComponent": "Danger",
-      "front": "Modified-release (MR) paracetamol has delayed/prolonged absorption. A single level can miss peaks — take [___] levels 4 hours apart.",
-      "back": "2",
-      "context": "MR formulations like Panadol Osteo have delayed and prolonged absorption. A single nomogram plot can miss ongoing absorption — two levels 4h apart detect the characteristic double peak.",
-      "complexity": 2,
-      "importance": 2,
-      "variantGroup": "cohort:icu:g-d0731f255c8a",
-      "variantIndex": 1,
-      "reference": null
-    },
-    {
       "id": "cohort:icu:c-f91a5b520c6e:v1",
       "origin": "mdx:6ae711d46a4a522c510db612ed2c5748",
       "discipline": "icu",
@@ -257,21 +242,6 @@
       "importance": 2,
       "variantGroup": null,
       "variantIndex": null,
-      "reference": null
-    },
-    {
-      "id": "cohort:icu:c-f9c37db337cd:v1",
-      "origin": "mdx:bd6bcc4f1832dad088ffbfa376dd1a64:blank-0",
-      "discipline": "icu",
-      "cardType": "cloze",
-      "sourceComponent": "KeyPoint",
-      "front": "Parkland timing is calculated from time of [___] (not presentation). The first half is given over 8 hours, the second half over 16 hours.",
-      "back": "injury",
-      "context": "Capillary leak is maximal in the first 8 hours post-burn, so fluid requirements are frontloaded. Timing from injury (not presentation) matters — delayed patients need catch-up fluids to compensate for initial deficit.",
-      "complexity": 2,
-      "importance": 2,
-      "variantGroup": "cohort:icu:g-5c234701d41d",
-      "variantIndex": 0,
       "reference": null
     },
     {
@@ -347,36 +317,6 @@
       "importance": 2,
       "variantGroup": "cohort:icu:g-831524f79312",
       "variantIndex": 0,
-      "reference": null
-    },
-    {
-      "id": "cohort:icu:c-fbc2399fd560:v1",
-      "origin": "mdx:f208fb8d9843d188988c2fe841dd8b21:blank-0",
-      "discipline": "icu",
-      "cardType": "cloze",
-      "sourceComponent": "KeyPoint",
-      "front": "After treating anaphylaxis, observe for a minimum of [___] hours for a biphasic reaction.",
-      "back": "4",
-      "context": "Biphasic reactions occur in up to 20% of anaphylaxis cases. The second phase can be as severe as the first and typically occurs within 4-8 hours, which is why observation is mandatory.",
-      "complexity": 2,
-      "importance": 2,
-      "variantGroup": "cohort:icu:g-33f378fe84eb",
-      "variantIndex": 0,
-      "reference": null
-    },
-    {
-      "id": "cohort:icu:c-fbef8a931618:v1",
-      "origin": "mdx:32c2be567eb39f6f369fb9137e1366f8:blank-1",
-      "discipline": "icu",
-      "cardType": "cloze",
-      "sourceComponent": "KeyPoint",
-      "front": "The Parkland formula is 4 mL x weight (kg) x %TBSA over [___] hours.",
-      "back": "24",
-      "context": "Parkland: 4 mL × kg × %TBSA of crystalloid (Hartmann's preferred over saline) over 24 hours, with HALF given in the first 8 hours from time of injury (not from time of presentation.\n\nThe 4-mL coefficient is empirical, derived to maintain end-organ perfusion and urine output 0.5 mL/kg/h in adults (1 mL/kg/h in children).",
-      "complexity": 2,
-      "importance": 2,
-      "variantGroup": "cohort:icu:g-a6cc2c270d4e",
-      "variantIndex": 1,
       "reference": null
     },
     {
@@ -545,21 +485,6 @@
       "reference": null
     },
     {
-      "id": "cohort:icu:c-fef7efc5a438:v1",
-      "origin": "mdx:f85da32137cd89952a3497449c798d3c:blank-1",
-      "discipline": "icu",
-      "cardType": "cloze",
-      "sourceComponent": "KeyPoint",
-      "front": "NAC can cease when paracetamol is <10 mg/L, ALT is falling, INR is <2, and the patient is asymptomatic; pH belongs to [___] transplant criteria.",
-      "back": "King's College",
-      "context": "NAC cessation criteria are conservative because hepatotoxicity peaks at 72-96 hours and can still progress after NAC is stopped.\n\nKing's College Hospital criteria for paracetamol-induced acute liver failure (the threshold for transplant referral) include: arterial pH <7.3 after fluid resuscitation, OR all three of (creatinine >300 µmol/L.",
-      "complexity": 1,
-      "importance": 2,
-      "variantGroup": "cohort:icu:g-4532837c837c",
-      "variantIndex": 1,
-      "reference": null
-    },
-    {
       "id": "cohort:icu:c-ff97f824f49d:v1",
       "origin": "mdx:a0ef82e32fb4f70ea7465dcdbf43051b:blank-0",
       "discipline": "icu",
@@ -571,21 +496,6 @@
       "complexity": 2,
       "importance": 2,
       "variantGroup": "cohort:icu:g-d9104f4d93b1",
-      "variantIndex": 0,
-      "reference": null
-    },
-    {
-      "id": "cohort:icu:c-ffcab37af4b7:v1",
-      "origin": "mdx:32c2be567eb39f6f369fb9137e1366f8:blank-0",
-      "discipline": "icu",
-      "cardType": "cloze",
-      "sourceComponent": "KeyPoint",
-      "front": "The Parkland formula is [___] mL x weight (kg) x %TBSA over 24 hours.",
-      "back": "4",
-      "context": "Parkland: 4 mL × kg × %TBSA of crystalloid (Hartmann's preferred over saline) over 24 hours, with HALF given in the first 8 hours from time of injury (not from time of presentation.\n\nThe 4-mL coefficient is empirical, derived to maintain end-organ perfusion and urine output 0.5 mL/kg/h in adults (1 mL/kg/h in children).",
-      "complexity": 2,
-      "importance": 2,
-      "variantGroup": "cohort:icu:g-a6cc2c270d4e",
       "variantIndex": 0,
       "reference": null
     }

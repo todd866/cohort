@@ -13,7 +13,17 @@ import { requireAuthOrExistingGuest, requireAuthOrGuest } from '@/lib/api-utils'
 import { getCurrentBlockIndex, getRotationForTrack, BLOCKS, TRACKS, type TrackNumber } from '@/lib/rotation-context';
 import { ROTATION_TO_MODULES } from '@/lib/study/unified-session-manifold-items';
 import { PERSONAL_ROTATION_IDS } from '@/lib/rotations';
+import { viewerCanAccessPersonalRotation } from '@/lib/personal-rotation-access';
 import { isSupplementaryRotation } from '@/lib/supplementary-rotations';
+import {
+  STUDY_YEARS,
+  USYD_YEAR_INSTITUTIONS,
+  institutionForYear,
+  modulesForYear,
+  yearNeedsRotation,
+  type StudyYear,
+} from '@/lib/onboarding/study-year';
+import { stampOnboardingYear } from '@/lib/onboarding/study-year.server';
 
 const VALID_ROTATIONS = ['critical-care', 'paam', 'cah', 'pwh'] as const;
 
@@ -43,21 +53,36 @@ const VALID_ROTATIONS = ['critical-care', 'paam', 'cah', 'pwh'] as const;
  * kind of deck means adding it to this predicate, and the two tests in
  * route.test.ts pin both categories so the next one fails loudly instead.
  */
-function activeModulesForRotation(
-  currentModules: readonly string[],
-  rotationModules: readonly string[],
-): string[] {
-  const preserved = currentModules.filter(
+function preservedModules(currentModules: readonly string[]): string[] {
+  return currentModules.filter(
     (moduleId) =>
       PERSONAL_ROTATION_IDS.includes(moduleId as (typeof PERSONAL_ROTATION_IDS)[number]) ||
       isSupplementaryRotation(moduleId),
   );
-  return [...new Set(['usyd-md3', ...preserved, ...rotationModules])];
+}
+
+function activeModulesForRotation(
+  currentModules: readonly string[],
+  rotationModules: readonly string[],
+): string[] {
+  return [...new Set(['usyd-md3', ...preservedModules(currentModules), ...rotationModules])];
+}
+
+/**
+ * The enrolment for a year that saves on its first tap (MD1, MD2): that year's
+ * modules plus the same non-rotation enrolments a rotation change keeps. The
+ * Year 3 marker is not added, and rotation modules from an earlier choice go.
+ */
+function activeModulesForYear(currentModules: readonly string[], year: StudyYear): string[] {
+  return [...new Set([...preservedModules(currentModules), ...modulesForYear(year)])];
 }
 
 const rotationPostSchema = z.object({
   rotation: z.enum(VALID_ROTATIONS).nullable().optional(),
   track: z.number().int().min(1).max(4).nullable().optional(),
+  // The first-run year. MD1 and MD2 save everything themselves; MD3 and MD4
+  // arrive with the rotation they then chose.
+  year: z.enum(STUDY_YEARS).optional(),
 });
 
 export async function GET() {
@@ -151,6 +176,13 @@ export async function POST(request: NextRequest) {
         );
       }
 
+      if (parseResult.error.issues.some((issue) => issue.path[0] === 'year')) {
+        return NextResponse.json(
+          { error: 'Invalid year' },
+          { status: 400 }
+        );
+      }
+
       const hasTrackIssue = parseResult.error.issues.some(
         (issue) => issue.path[0] === 'track'
       );
@@ -166,7 +198,42 @@ export async function POST(request: NextRequest) {
         { status: 400 }
       );
     }
-    const { rotation, track: requestedTrack } = parseResult.data;
+    const { rotation, track: requestedTrack, year } = parseResult.data;
+
+    // MD1 / MD2: one tap saves the whole year. Guests too — the institution is
+    // what makes the review feed read the year's rotations, and the guest's
+    // answer is carried onto the account by claimGuestProgressRecords.
+    if (year && !yearNeedsRotation(year)) {
+      const current = await prisma.user.findUnique({
+        where: { id: userId },
+        select: { institution: true, activeModules: true, email: true },
+      });
+      const institution = institutionForYear(year);
+      // Replace only a missing institution or one inside the USyd family; never
+      // an explicit usmle / other choice.
+      const mayRecordInstitution = !current?.institution || USYD_YEAR_INSTITUTIONS.has(current.institution);
+      await prisma.user.update({
+        where: { id: userId },
+        data: {
+          track: null,
+          activeModules: activeModulesForYear((current?.activeModules as string[]) ?? [], year),
+          ...(institution && mayRecordInstitution ? { institution } : {}),
+        },
+      });
+      await stampOnboardingYear(prisma, userId, year);
+      // A signed-in learner with an email is granted the first-year deck, so
+      // the picker goes straight to review. A guest has no email: report the
+      // missing deck so the picker can offer sign-in. Restricted figures stay
+      // on the copyright image tier in the figure-delivery path.
+      const missing = modulesForYear(year).find((slug) =>
+        !viewerCanAccessPersonalRotation(slug, { emails: [current?.email], imageTier: null }));
+      return NextResponse.json({
+        year,
+        track: null,
+        currentRotation: null,
+        ...(missing ? { missingDeck: { slug: missing, canRequest: !auth.isGuest } } : {}),
+      });
+    }
 
     // A bare rotation choice (the onboarding chooser sends only {rotation})
     // still deserves a track: infer the track whose CURRENT block is that
@@ -255,6 +322,8 @@ export async function POST(request: NextRequest) {
         });
       }
     }
+
+    if (year) await stampOnboardingYear(prisma, userId, year);
 
     return NextResponse.json({
       track: updatedUser.track,

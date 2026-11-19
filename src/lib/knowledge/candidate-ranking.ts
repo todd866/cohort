@@ -331,6 +331,8 @@ export function getCardsFromBulk(
 
   for (const card of bulk.unseenCards) {
     if (selectedCardIds.has(card.id)) continue;
+    // A new fact outside the pass set waits while pass-set supply lasts.
+    if (bulk.passSetDeferredCardIds?.has(card.id)) continue;
     if (!cardEligibleForReviewLearning(card.complexity, reviewChallenge)) continue;
     if (card.topics.some(t => topicSet.has(t))) {
       matchingUnseen.push({

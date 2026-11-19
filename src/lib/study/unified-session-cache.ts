@@ -1,3 +1,6 @@
+import { orderSessionPrepCandidates } from './session-prep-allocation';
+import { batchExposureMayBeReoffered, presentationPrepCardIsEligible, presentationPrepCardReviewCutoff } from './presentation-prep-reoffer';
+import { isAutomaticPresentationPrep, preparePresentationPrepCache } from './presentation-prep-cache';
 import { simulationCacheMatches } from './simulation-focus';
 import { itemMatchesReviewLearning } from './review-learning-item';
 import { applyReviewChallengeWave } from './review-challenge';
@@ -39,6 +42,8 @@ import {
   logExposures,
 } from './unified-session-helpers';
 import { shadowCardMetaFromSources, shadowDeliveredCards } from './repetition-slot-shadow';
+import { loadDeliveryConceptStates, stampDeliveryPredictions } from './delivery-prediction';
+import { learnerItemKey, learnerItemPredictionFor } from './learner-item-prediction-load';
 import { meetsRequiredTier } from '@/lib/content-access';
 import {
   MASTERY_CORRECT_THRESHOLD,
@@ -193,28 +198,35 @@ async function filterRecentlySeenCachedItems(
   const cardCutoff = new Date(now - 24 * 60 * 60 * 1000);
   const questionCutoff = new Date(now - 48 * 60 * 60 * 1000);
   const sourceIds = [...cardIds, ...questionIds];
+  const prep = isAutomaticPresentationPrep(ctx, new Date(now)) ? ctx.presentationPrepReoffer : null;
+  const prepCardIds = cardIds.filter(id => prep?.cardIds?.includes(id));
+  const prepIds = prep ? [...prep.questionIds, ...(prep.cardIds ?? [])] : [];
 
   // The anchor has usually retired out of this queue, so the one mastery
   // groupBy has to name it. The map is content and is already in memory after
   // the first read; events and recent responses still start immediately.
   const harderSiblingMapPromise = loadHarderSiblingMap();
-  const [recentEvents, recentResponses, masteredQuestions, harderSiblingMap] = await Promise.all([
+  const [recentEvents, recentResponses, masteredQuestions, harderSiblingMap, prepIssues, prepProgress] = await Promise.all([
     prisma.learningEvent.findMany({
       where: {
         userId: ctx.userId,
         sourceId: { in: sourceIds },
         sourceType: { in: ['card', 'question'] },
         eventType: { in: ['card_reviewed', 'mcq_attempted', 'content_exposed'] },
-        timestamp: { gte: questionCutoff },
+        OR: [
+          { timestamp: { gte: questionCutoff } },
+          ...(ctx.presentationPrepReoffer ? [{ sourceId: { in: ctx.presentationPrepReoffer.questionIds }, eventType: 'mcq_attempted' }] : []),
+        ],
       },
-      select: { sourceId: true, sourceType: true, timestamp: true },
+      select: { sourceId: true, sourceType: true, timestamp: true, eventType: true, metadata: true },
     }),
     questionIds.length > 0
       ? prisma.questionResponse.findMany({
           where: {
             userId: ctx.userId,
             questionId: { in: questionIds },
-            createdAt: { gte: questionCutoff },
+            OR: [{ createdAt: { gte: questionCutoff } },
+              ...(ctx.presentationPrepReoffer ? [{ questionId: { in: ctx.presentationPrepReoffer.questionIds } }] : [])],
           },
           select: { questionId: true },
           distinct: ['questionId'],
@@ -236,16 +248,27 @@ async function filterRecentlySeenCachedItems(
         }))
       : Promise.resolve([]),
     harderSiblingMapPromise,
+    prep ? prisma.contentIssue.findMany({ where: { targetId: { in: prepIds }, status: { in: ['open', 'in-progress'] } }, select: { targetId: true } }) : Promise.resolve([]),
+    prepCardIds.length ? prisma.cardProgress.findMany({
+      where: { userId: ctx.userId, cardId: { in: prepCardIds } },
+      select: { cardId: true, nextDueAt: true, lastReview: true, suppressed: true, flagged: true, leechSuppressedUntil: true },
+    }) : Promise.resolve([]),
   ]);
 
-  const excludedCardIds = new Set<string>();
-  const excludedQuestionIds = new Set<string>();
+  const excludedCardIds = new Set<string>(prepIssues.map(issue => issue.targetId));
+  for (const progress of prepProgress) {
+    if (prep && !presentationPrepCardIsEligible(progress, prep, new Date(now))) excludedCardIds.add(progress.cardId);
+  }
+  const excludedQuestionIds = new Set<string>(prepIssues.map(issue => issue.targetId));
 
   for (const event of recentEvents) {
-    if (event.sourceType === 'card' && event.timestamp >= cardCutoff) {
+    const isPrepCard = prep?.cardIds?.includes(event.sourceId);
+    const effectiveCardCutoff = isPrepCard ? presentationPrepCardReviewCutoff(prep!, new Date(now)) : cardCutoff;
+    if (event.sourceType === 'card' && event.timestamp >= effectiveCardCutoff
+      && !batchExposureMayBeReoffered(event, prep, new Date(now))) {
       excludedCardIds.add(event.sourceId);
     }
-    if (event.sourceType === 'question') {
+    if (event.sourceType === 'question' && !batchExposureMayBeReoffered(event, ctx.presentationPrepReoffer, new Date(now))) {
       excludedQuestionIds.add(event.sourceId);
     }
   }
@@ -277,7 +300,8 @@ async function filterRecentlySeenCachedItems(
   return items.filter((item) => {
     // A miss on tomorrow's simulation stays in the queue inside the 24-hour
     // repeat window. The final due-egress read below drops it once it is held.
-    if (item.type === 'card' && item.interventionReason === 'simulation_preparation') return true;
+    if (item.type === 'card' && item.interventionReason === 'simulation_preparation'
+      && !prepCardIds.includes(item.id)) return true;
     if (item.type === 'card') return !excludedCardIds.has(item.id);
     if (item.type === 'question') return !excludedQuestionIds.has(item.id);
     return true;
@@ -596,7 +620,7 @@ export function cachedQueueOwesNoveltyRebuild(
 export async function tryCachedSession(ctx: SessionContext): Promise<NextResponse | null> {
   if (
     ctx.media
-    || (ctx.hasFilters && !isCrossSourceBlendOnly(ctx))
+    || (ctx.hasFilters && !isCrossSourceBlendOnly(ctx) && !isAutomaticPresentationPrep(ctx))
     || ctx.noCache
     || ctx.isGuest
     || !ctx.reviewChallenge
@@ -611,6 +635,8 @@ export async function tryCachedSession(ctx: SessionContext): Promise<NextRespons
 
   const tCacheStart = performance.now();
   try {
+    const presentationPrep = isAutomaticPresentationPrep(ctx);
+    if (presentationPrep && !await preparePresentationPrepCache(ctx)) return null;
     const cacheRow = await readSessionCache(ctx.userId, ctx.rotation, ctx.reviewChallenge, ctx.mediaPreferences);
 
     if (cacheRow && Array.isArray(cacheRow.items) && cacheRow.items.length > 0) {
@@ -636,12 +662,25 @@ export async function tryCachedSession(ctx: SessionContext): Promise<NextRespons
       const tCacheEnd = performance.now();
 
       let cachedItems = cacheRow.items as UnifiedItem[];
+      if (presentationPrep && cachedItems.some(item => item.rotation !== ctx.rotation || item.week !== ctx.weekFilter
+        || !(item.type === 'question' ? ctx.presentationPrepReoffer!.questionIds.includes(item.id)
+          : item.type === 'card' && ctx.presentationPrepReoffer!.cardIds?.includes(item.id)))) return null;
       if (!simulationCacheMatches(cachedItems, ctx.simulationFocus)) return null;
+      // A prepared queue must carry the current staged allocation. Rebuild in
+      // the background; an unavailable personal plan leaves ordinary delivery.
+      if (cachedItems.some(item => item.sessionPrepBlendFingerprint !== ctx.sessionPrepBlend?.fingerprint)) {
+        after(async () => {
+          await runSessionCacheRefresh(ctx, { recordOutcome: true, source: 'cache-stale', leaseTtlMs: ctx.refreshLeaseTtlMs });
+        });
+        return null;
+      }
       const gap = ctx.reviewChallenge?.level === 2 ? await getReviewLearningGap(ctx) : null;
       if (gap && !gap.available) return null;
       cachedItems = cachedItems.filter(item => itemMatchesReviewLearning(item, ctx.reviewChallenge?.level ?? 0, gap?.questionIds));
       // The receipt above already refuses a queue built under another choice;
       // this keeps a request-level `hide=` (a toggle not yet saved) honest too.
+      // It is also where review by voice takes effect: the same prepared queue,
+      // less what cannot be asked and answered aloud.
       if (ctx.mediaPreferences) {
         cachedItems = cachedItems.filter(item => !itemExcludedByMediaPreferences(item, ctx.mediaPreferences));
       }
@@ -702,7 +741,7 @@ export async function tryCachedSession(ctx: SessionContext): Promise<NextRespons
         cacheMs: +(tCacheEnd - tCacheStart).toFixed(1),
       });
 
-      if (!isFresh) {
+      if (!isFresh && !presentationPrep) {
         // Recorded like every other source: this is the main refresh path now
         // that the warm cron only builds missing queues.
         after(async () => {
@@ -782,7 +821,10 @@ export async function tryCachedSession(ctx: SessionContext): Promise<NextRespons
         initialSourceValidation.fingerprints,
       );
       const cachedItemsForFinalChecks = finalSourceValidation.items;
-      const [reinforcementSafeCachedItems, cachedCardDue] = await Promise.all([
+      // The learner-item delivery prediction is collected beside the parent
+      // load below; its facility came with the source revalidation above.
+      const learnerItem = learnerItemPredictionFor(ctx);
+      const [reinforcementSafeCachedItems, cachedCardDue, deliveryConceptStates] = await Promise.all([
         filterRawPublicUsmleCachedReinforcementCards(
           ctx,
           cachedItemsForFinalChecks,
@@ -793,15 +835,31 @@ export async function tryCachedSession(ctx: SessionContext): Promise<NextRespons
           path: 'cache',
           isGuest: ctx.isGuest,
         }),
+        // Current concept state for a prediction computed for THIS delivery.
+        // The queue's build-time prediction was stripped above and is recorded
+        // separately, with its age, by applyCacheDelivery.
+        loadDeliveryConceptStates(ctx.userId, cachedItemsForFinalChecks, { isGuest: ctx.isGuest }),
       ]);
       const imageResolvedCachedItems = await resolveCachedItemImages(
         ctx,
         reinforcementSafeCachedItems,
         finalSourceValidation.sources,
       );
-      const egressSafeCachedItems = imageResolvedCachedItems.filter(
+      let egressSafeCachedItems = imageResolvedCachedItems.filter(
         (item) => item.type !== 'card' || cachedCardDue.eligibleCardIds.has(item.id),
       );
+      egressSafeCachedItems = orderSessionPrepCandidates(egressSafeCachedItems, ctx.sessionPrepBlend, {
+        size: ctx.batchSize,
+        key: item => `${item.type}:${item.id}`,
+        protected: item => (item.type === 'card' && item.firstSightAtSelection !== true)
+          || item.interventionReason === 'failure_escalation'
+          || item.interventionReason === 'needs_retest'
+          || item.interventionReason === 'simulation_preparation'
+          || item.interventionReason === 'preemptive_scaffold'
+          || item.interventionReason === 'mcq_bridge_card',
+      });
+      // A concurrent actual answer must win over this explicit unanswered request.
+      if (presentationPrep) egressSafeCachedItems = await filterRecentlySeenCachedItems(ctx, egressSafeCachedItems);
       // Invalidate on every card rejected by the due read, including one that
       // a concurrent reinforcement/media boundary also removed. Computing the
       // delta only after those filters let a parked row linger in the stored
@@ -857,7 +915,7 @@ export async function tryCachedSession(ctx: SessionContext): Promise<NextRespons
       const modalitySafeCachedItems = enrichItemsWithWalkMetadata(applyReviewChallengeWave(modalityOrderedCachedItems, ctx.reviewChallenge.level));
 
       // A stale queue is already being rebuilt above, with the same progress.
-      if (isFresh && cachedQueueOwesNoveltyRebuild(ctx, modalitySafeCachedItems)) {
+      if (isFresh && !presentationPrep && cachedQueueOwesNoveltyRebuild(ctx, modalitySafeCachedItems)) {
         logger.info('unified-session cache owes first sights; rebuilding in background', {
           userId: ctx.userId,
           rotation: ctx.rotation,
@@ -879,17 +937,20 @@ export async function tryCachedSession(ctx: SessionContext): Promise<NextRespons
       // predated the stamp) get the shadow from the due-egress grade and the
       // proximity file. Either way the delivered write must receive it:
       // applyCacheDelivery rebuilds the payload and would otherwise drop it.
-      const deliveredCachedItems = shadowDeliveredCards(modalitySafeCachedItems, {
+      const deliveredCachedItems = stampDeliveryPredictions(shadowDeliveredCards(modalitySafeCachedItems, {
         rotation: ctx.rotation,
         grades: cachedCardDue.gradeByCardId,
         cardMeta: shadowCardMetaFromSources(finalSourceValidation.sources.values()),
-      });
-      const [deliveredInSession, parents] = await Promise.all([
+      }), deliveryConceptStates, new Date());
+      if (presentationPrep && !isAutomaticPresentationPrep(ctx)) return null;
+      const [deliveredInSession, parents, learnerItemPredictions] = await Promise.all([
         loadSessionDeliveries(ctx.userId, ctx.sessionId),
         loadDeliveryParents(
           deliveredCachedItems.map((item) => item.serveDecisionId).filter(Boolean) as string[],
         ),
+        learnerItem.predict(deliveredCachedItems, new Date()).catch(() => null),
       ]);
+      if (presentationPrep && !isAutomaticPresentationPrep(ctx)) return null;
       const taggedCachedItemsWithDecisions = await Promise.all(
         deliveredCachedItems.map(async (item, index) => {
           if (!item.serveDecisionId) return item;
@@ -901,6 +962,9 @@ export async function tryCachedSession(ctx: SessionContext): Promise<NextRespons
             deliveredInSession,
             parents: parents ?? undefined,
             repetitionSlot: item.repetitionSlot ?? null,
+            deliveryPrediction: item,
+            extraPredictions: [learnerItemPredictions?.get(learnerItemKey(item))]
+              .filter((prediction) => prediction != null),
           });
           if (!serveDecisionId) {
             const rest = { ...item };
@@ -910,6 +974,7 @@ export async function tryCachedSession(ctx: SessionContext): Promise<NextRespons
           return { ...item, serveDecisionId } as UnifiedItem;
         }),
       );
+      if (presentationPrep && !isAutomaticPresentationPrep(ctx)) return null;
       logExposures(taggedCachedItemsWithDecisions, {
         userId: ctx.userId,
         rotation: ctx.rotation,

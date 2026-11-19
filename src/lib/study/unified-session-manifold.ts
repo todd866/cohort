@@ -56,6 +56,7 @@ import {
   writeLiveServeDecisions,
   type AtomicServeDecisionWriterClient,
 } from './serve-decision-write';
+import { learnerItemPredictionFor } from './learner-item-prediction-load';
 import { fetchDueBacklogCards } from './due-backlog';
 import { shadowForDueId } from './repetition-slot-shadow';
 import {
@@ -64,7 +65,6 @@ import {
   selectRelearnReserve,
 } from './relearn';
 import { isScopedStudySession, relearnProfileFor } from './relearn-profile';
-import { getStudyDayStart } from '@/lib/study-day';
 import { computeNoveltyBudget } from './novelty-budget';
 import {
   countCards,
@@ -384,7 +384,6 @@ export async function buildManifoldSession(ctx: SessionContext): Promise<NextRes
           exclusionState.recentCardDeliveries,
           {
             now: protectedLaneNow,
-            studyDayStart: getStudyDayStart(protectedLaneNow),
             profile: relearnProfile,
           },
         );
@@ -536,6 +535,7 @@ export async function buildManifoldSession(ctx: SessionContext): Promise<NextRes
       currentTeachingWeek: ctx.currentTeachingWeek,
       topicTeachingWeeks: ctx.topicTeachingWeeks,
       topicRecencyDays: ctx.topicRecencyDays,
+      sessionPrepBlend: ctx.sessionPrepBlend ?? undefined,
       simulationFocus: ctx.simulationFocus,
       recentFigureExposures: ctx.recentFigureExposures,
       crossSourceRotations: ctx.crossSourceRotations,
@@ -742,6 +742,7 @@ export async function buildManifoldSession(ctx: SessionContext): Promise<NextRes
       });
       return NextResponse.json({
         items: [],
+        emptyStage: `manifold-selection-empty;week=${ctx.weekFilter ?? 'all'}`,
         sessionId: ctx.sessionId,
         batchId: ctx.batchId,
         ...(newRemaining ? { newRemaining } : {}),
@@ -984,6 +985,7 @@ export async function buildManifoldSession(ctx: SessionContext): Promise<NextRes
       rotation: ctx.rotation,
       decisionPath: 'manifold-walk',
       queueReason: 'manifold-walk',
+      learnerItem: learnerItemPredictionFor(ctx),
     } as const;
 
     let finalSessionResult = sessionResult;
@@ -1355,6 +1357,9 @@ export async function buildManifoldSession(ctx: SessionContext): Promise<NextRes
     return NextResponse.json(
       {
         items: itemsWithDecisions,
+        ...(itemsWithDecisions.length === 0 ? {
+          emptyStage: `manifold-delivery-empty;week=${ctx.weekFilter ?? 'all'};selected=${sessionResult.items.length};hydrated=${baseItems.length};filtered=${chosenPrepared.filtered.length};dueDropped=${manifoldCardDue.droppedCardCount}`,
+        } : {}),
         stats: {
           totalItems: itemsWithDecisions.length,
           version: 'manifold',
@@ -1490,6 +1495,7 @@ export async function buildManifoldSession(ctx: SessionContext): Promise<NextRes
             rotation: ctx.rotation,
             decisionPath: 'manifold-walk',
             queueReason: 'fallback-error',
+            learnerItem: learnerItemPredictionFor(ctx),
           },
         );
         logExposures(taggedFallbackItemsWithDecisions, {

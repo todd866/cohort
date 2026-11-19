@@ -1,6 +1,9 @@
 'use client';
 
+import { CHAT_SHORTCUT, TALK_SHORTCUT } from '@/lib/review/ai-shortcuts';
 import { useEffect, useRef, type KeyboardEvent, type RefObject } from 'react';
+import { PadGlyph, PadGlyphRow } from '@/components/shared/PadGlyph';
+import { padGlyphsForShortcutKeys } from '@/components/shared/review-gamepad';
 
 export type ReviewShortcutContext =
   | 'card-reveal'
@@ -37,7 +40,7 @@ export function reviewShortcutsFor(context: ReviewShortcutContext): readonly Rev
     ];
     case 'mcq-select': return [
       { keys: "1–5 · J K L ; '", label: 'Choose an answer' },
-      { keys: 'Space / Enter', label: 'Skip this question' },
+      { keys: 'Space / Enter', label: 'Show the answer' },
       { keys: 'F', label: 'Flag this item' },
       { keys: '?', label: 'Open shortcuts' },
     ];
@@ -73,9 +76,14 @@ export function ReviewKeyboardHelp({
   returnFocusRef,
   canBrowse = false,
   canGoBack = false,
+  rewound = false,
+  ai,
 }: {
+  /** The AI controls on this screen: their keys are listed in every mode. */
+  ai?: { talk: boolean; chat: boolean };
   canBrowse?: boolean;
   canGoBack?: boolean;
+  rewound?: boolean;
   open: boolean;
   onClose: () => void;
   context: ReviewShortcutContext;
@@ -84,7 +92,17 @@ export function ReviewKeyboardHelp({
   const dialogRef = useRef<HTMLDivElement>(null);
   const closeRef = useRef<HTMLButtonElement>(null);
   const previousFocusRef = useRef<HTMLElement | null>(null);
-  const shortcuts = [...reviewShortcutsFor(context), ...(canGoBack ? [{ keys: 'Z', label: 'Revisit previous questions' }] : []), ...(canBrowse ? [{ keys: 'B', label: 'Browse content' }] : [])];
+  const shortcuts = [
+    ...reviewShortcutsFor(context),
+    ...(canGoBack ? [{ keys: 'Z / Left', label: 'Previous item' }] : []),
+    ...(rewound ? [
+      { keys: 'Shift+Z / Right', label: 'Next item' },
+      { keys: 'Esc', label: 'Current item' },
+    ] : []),
+    ...(canBrowse ? [{ keys: 'B', label: 'Browse content' }] : []),
+    ...(ai?.talk ? [{ keys: TALK_SHORTCUT, label: 'Talk on/off' }] : []),
+    ...(ai?.chat ? [{ keys: CHAT_SHORTCUT, label: 'AI chat' }] : []),
+  ];
 
   useEffect(() => {
     if (open) {
@@ -121,7 +139,22 @@ export function ReviewKeyboardHelp({
           <button ref={closeRef} type="button" onClick={onClose} className="min-h-11 min-w-11 rounded-md px-2 text-sm underline underline-offset-2">Close</button>
         </div>
         <dl className="divide-y divide-[var(--md-outline-variant)] text-sm">
-          {shortcuts.map(({ keys, label }) => <div key={`${keys}-${label}`} className="flex items-center justify-between gap-4 py-2"><dt>{label}</dt><dd><kbd className="rounded border border-[var(--md-outline-variant)] px-1.5 py-0.5 font-mono text-xs">{keys}</kbd></dd></div>)}
+          {shortcuts.map(({ keys, label }) => {
+            const padGlyphs = padGlyphsForShortcutKeys(keys);
+            return (
+              <div key={`${keys}-${label}`} className="flex items-center justify-between gap-4 py-2">
+                <dt>{label}</dt>
+                <dd className="flex items-center justify-end gap-1">
+                  <kbd className="review-shortcut-kbd rounded border border-[var(--md-outline-variant)] px-1.5 py-0.5 font-mono text-xs">{keys}</kbd>
+                  {padGlyphs ? (
+                    <span className="review-shortcut-pad inline-flex items-center gap-0.5">
+                      {Array.isArray(padGlyphs) ? <PadGlyphRow marks={padGlyphs} /> : <PadGlyph mark={padGlyphs} />}
+                    </span>
+                  ) : null}
+                </dd>
+              </div>
+            );
+          })}
         </dl>
       </div>
     </div>

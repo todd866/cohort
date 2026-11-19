@@ -5,21 +5,6 @@
   "attribution": "MD3 contributors",
   "cards": [
     {
-      "id": "cohort:icu:c-80467f50bdd1:v1",
-      "origin": "mdx:23cf3a09015466a970d8a9aeb41bb478:blank-1",
-      "discipline": "icu",
-      "cardType": "cloze",
-      "sourceComponent": "KeyPoint",
-      "front": "Massive PE with persistent hypotension: systemic 100 mg alteplase IV over [___] hours.",
-      "back": "2",
-      "context": "Massive PE = obstruction killing the patient haemodynamically (sustained hypotension or vasopressor need despite fluid).\n\nAlteplase 100 mg over 2 h is standard; in cardiac arrest from suspected PE, 50 mg bolus + continue CPR 60-90 min.",
-      "complexity": 2,
-      "importance": 2,
-      "variantGroup": "cohort:icu:g-eee3723a026e",
-      "variantIndex": 1,
-      "reference": null
-    },
-    {
       "id": "cohort:icu:c-81f39a06d225:v1",
       "origin": "mdx:3e1e44bd17157a129ca6432210b6fd39:blank-2",
       "discipline": "icu",
@@ -50,21 +35,6 @@
       "reference": null
     },
     {
-      "id": "cohort:icu:c-82f55163661a:v1",
-      "origin": "mdx:e133979629abd49e0e63e4427b395e57:blank-1",
-      "discipline": "icu",
-      "cardType": "cloze",
-      "sourceComponent": "KeyPoint",
-      "front": "The default maintenance IV fluid for a euvolaemic patient with normal electrolytes is 0.18% NaCl + [___]% glucose.",
-      "back": "4",
-      "context": "The default maintenance fluid for a euvolaemic patient with normal electrolytes is 0.18% NaCl + 4% glucose. It provides 31 mmol/L Na+ (appropriate for maintenance needs) plus glucose to prevent ketosis.\n\n0.9% NaCl and Hartmann's are resuscitation fluids with too much Na+ for maintenance.",
-      "complexity": 2,
-      "importance": 2,
-      "variantGroup": "cohort:icu:g-64ae00684aa6",
-      "variantIndex": 1,
-      "reference": null
-    },
-    {
       "id": "cohort:icu:c-830f37f5787c:v1",
       "origin": "mdx:daacc2972faff474f7432a760ff799e2",
       "discipline": "icu",
@@ -77,21 +47,6 @@
       "importance": 3,
       "variantGroup": null,
       "variantIndex": null,
-      "reference": null
-    },
-    {
-      "id": "cohort:icu:c-834ac15df80d:v1",
-      "origin": "mdx:f208fb8d9843d188988c2fe841dd8b21:blank-1",
-      "discipline": "icu",
-      "cardType": "cloze",
-      "sourceComponent": "KeyPoint",
-      "front": "After treating anaphylaxis, observe for a minimum of 4 hours for a [___] reaction.",
-      "back": "biphasic",
-      "context": "Biphasic reactions occur in up to 20% of anaphylaxis cases. The second phase can be as severe as the first and typically occurs within 4-8 hours, which is why observation is mandatory.",
-      "complexity": 2,
-      "importance": 2,
-      "variantGroup": "cohort:icu:g-33f378fe84eb",
-      "variantIndex": 1,
       "reference": null
     },
     {
@@ -166,6 +121,21 @@
       "complexity": 2,
       "importance": 2,
       "variantGroup": "cohort:icu:g-b6d71881d0d4",
+      "variantIndex": 0,
+      "reference": null
+    },
+    {
+      "id": "cohort:icu:c-869bf72b2261:v1",
+      "origin": "mdx:eb48e7bda5ff196b762d0ed057172b7e:blank-0",
+      "discipline": "icu",
+      "cardType": "cloze",
+      "sourceComponent": "KeyPoint",
+      "front": "Sepsis antibiotics within [___]. Each hour delay increases mortality by ~7%.",
+      "back": "1 hour",
+      "context": "Every hour delay in antibiotics increases mortality by ~7% in septic shock. Start empiric broad-spectrum immediately, then narrow when cultures return — don't wait for the 'perfect' antibiotic choice.",
+      "complexity": 2,
+      "importance": 2,
+      "variantGroup": "cohort:icu:g-8cf485b73361",
       "variantIndex": 0,
       "reference": null
     },
@@ -287,6 +257,21 @@
       "importance": 2,
       "variantGroup": null,
       "variantIndex": null,
+      "reference": null
+    },
+    {
+      "id": "cohort:icu:c-8d1a92a4a2db:v1",
+      "origin": "mdx:5653c98dec6b4510a453ed3b681672e1:blank-1",
+      "discipline": "icu",
+      "cardType": "cloze",
+      "sourceComponent": "KeyPoint",
+      "front": "Lactate above 4 mmol/L with suspected infection defines [___] and triggers the Hour-1 bundle.",
+      "back": "septic shock",
+      "context": "A lactate >4 mmol/L plus suspected infection meets the Surviving Sepsis Campaign definition of septic shock and activates the Hour-1 bundle: lactate measurement, blood cultures before antibiotics.\n\nLactate is the integrated marker of tissue hypoperfusion — even with 'normal' BP, a high lactate means cellular oxygen debt. Aggressive intervention before haemodynamic collapse is the central premise.",
+      "complexity": 1,
+      "importance": 2,
+      "variantGroup": "cohort:icu:g-8f3d1e50a734",
+      "variantIndex": 1,
       "reference": null
     },
     {

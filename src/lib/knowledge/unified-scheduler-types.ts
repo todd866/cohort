@@ -184,7 +184,25 @@ export type SessionMode = 'normal' | 'crunch' | 'rereview';
 
 export type UnifiedSessionSelectionDeterminism = QuestionVariantSelectionDeterminism;
 
+/**
+ * Owner-scoped preparation signal produced by the background readiness plan.
+ * The scheduler only consumes already-authorized candidate ids; it never reads
+ * preparation history on the request path.
+ */
+export interface SessionPrepBlendPlan {
+  cardClusters?: Readonly<Record<string, string>>;
+  sessions?: readonly { share: number; itemIds: readonly string[] }[];
+  /** Type-qualified keys (`card:id` / `question:id`), never bare ids. */
+  itemIds: readonly string[];
+  /** Fraction of discretionary seats reserved after protected lanes. */
+  share: number;
+  weakItemIds?: readonly string[];
+  unseenItemIds?: readonly string[];
+}
+
 export interface UnifiedSessionOptions {
+  /** Optional owner-only staged class-preparation blend. */
+  sessionPrepBlend?: SessionPrepBlendPlan;
   simulationFocus?: import('@/lib/study/simulation-focus').SimulationFocus | null;
   /** Media eligibility narrowing applied in every candidate database query. */
   media?: ReviewMedia;

@@ -1,3 +1,4 @@
+import { refreshOwnerSessionPrepBlend } from './session-prep-blend.server';
 import { createId } from '@paralleldrive/cuid2';
 import { constructUnifiedSession } from '@/lib/knowledge/unified-scheduler';
 import {
@@ -114,6 +115,7 @@ export async function computeAndHydrateSession(
     recentFigureExposures,
     recentQuestionFailures,
     noveltyProgress,
+    prepPlan,
   ] = await Promise.all([
     loadTeachingPaceForUser(userId, rotation),
     // ~550ms, so it lives here rather than on the request path.
@@ -127,7 +129,9 @@ export async function computeAndHydrateSession(
     options.novelty
       ? resolveNoveltyProgress(userId, rotation, options.novelty)
       : Promise.resolve(null),
+    weekFilter === null ? refreshOwnerSessionPrepBlend(userId, rotation, new Date()).catch(() => null) : Promise.resolve(null),
   ]);
+  const sessionPrepBlend = prepPlan?.share ? prepPlan : null;
   // The live build reserves first sights from today's progress. Without the
   // same reservation here, the queue most learners are served spends the day
   // on repeats while the rotation still has unseen cards.
@@ -148,6 +152,7 @@ export async function computeAndHydrateSession(
     currentTeachingWeek,
     topicTeachingWeeks,
     topicRecencyDays,
+    sessionPrepBlend: sessionPrepBlend ?? undefined,
     simulationFocus,
     recentFigureExposures,
     ...(recentQuestionFailures ? { recentQuestionFailures } : {}),
@@ -226,6 +231,7 @@ export async function computeAndHydrateSession(
   const itemsForCache: UnifiedItem[] = hydratedItems.map((item) => ({
     ...item,
     ...noveltyStamp,
+    ...(sessionPrepBlend ? { sessionPrepBlendFingerprint: sessionPrepBlend.fingerprint } : {}),
     ...(simulationFocus ? { simulationFocusFingerprint: simulationFocus.fingerprint } : {}),
     ...(teachingPaceFingerprint ? { teachingPaceFingerprint } : {}),
     ...(options.reviewChallenge ? { reviewChallenge: options.reviewChallenge } : {}),

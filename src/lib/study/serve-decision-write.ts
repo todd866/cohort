@@ -4,6 +4,14 @@ import { prisma } from '@/lib/prisma';
 import { logger } from '@/lib/logger';
 import type { UnifiedItem } from './unified-session-types';
 import { formatServeDecisionSummary } from './serve-decision-summary';
+import {
+  cacheBuildPredictionFromParent,
+  deliveryPredictionFromItem,
+  mergeServePredictions,
+  type ServePrediction,
+} from './serve-prediction';
+import { unknownSelection, type ServeSelectionRecord } from './serve-selection';
+import { learnerItemKey, type LearnerItemPredictor } from './learner-item-prediction-load';
 import type { ExamTargetDecisionPersistenceReceipt } from '@/lib/exam-target/decision-set-persistence.server';
 import {
   tierFromComplexity,
@@ -17,6 +25,55 @@ export interface LiveWriteCtx {
   rotation?: string;
   decisionPath: string;
   queueReason?: string;
+  /**
+   * The request's learner-item predictor. Its reads were started earlier, in
+   * parallel with the lane; the writer only collects them (bounded wait) and
+   * lists the result in `payload.predictions`. Absent or failed: no record.
+   */
+  learnerItem?: Pick<LearnerItemPredictor, 'predict'> | null;
+  /**
+   * How each item was picked (serve-selection.ts). A lane that knows its pool
+   * and draw supplies this; otherwise the row records the lane with an
+   * unversioned policy and an unknown probability.
+   */
+  selection?: (item: UnifiedItem) => ServeSelectionRecord | null;
+}
+
+/** Extra telemetry for one delivered row. */
+interface DeliveredTelemetry {
+  predictions?: readonly ServePrediction[] | null;
+  selection?: ServeSelectionRecord | null;
+}
+
+/**
+ * Learner-item predictions and selection records for a live batch. Never
+ * throws: a row is written without them rather than not written.
+ */
+async function liveDeliveredTelemetry(
+  items: readonly UnifiedItem[],
+  ctx: LiveWriteCtx,
+): Promise<(item: UnifiedItem) => DeliveredTelemetry> {
+  let predictions: Map<string, ServePrediction> | null = null;
+  if (ctx.learnerItem) {
+    try {
+      predictions = await ctx.learnerItem.predict(items, new Date());
+    } catch {
+      predictions = null;
+    }
+  }
+  return (item) => {
+    let selection: ServeSelectionRecord | null = null;
+    try {
+      selection = ctx.selection?.(item) ?? null;
+    } catch {
+      selection = null;
+    }
+    const prediction = predictions?.get(learnerItemKey(item));
+    return {
+      predictions: prediction ? [prediction] : null,
+      selection: selection ?? unknownSelection({ lane: ctx.decisionPath }),
+    };
+  };
 }
 
 export interface CacheBuildWriteCtx {
@@ -53,6 +110,56 @@ export interface DeliveryCtx {
    * The caller passes the record for the item actually handed to the learner.
    */
   repetitionSlot?: UnifiedItem['repetitionSlot'];
+  /**
+   * The prediction computed for this delivery (delivery-prediction.ts). The
+   * cache-build row's own prediction is stale by now: it is recorded beside
+   * this one with its build time, and never stands in for it.
+   */
+  deliveryPrediction?: Pick<
+    UnifiedItem,
+    'predictedRecall' | 'predictedRecallModel' | 'predictedRecallSource' | 'predictedRecallStatus'
+  > | null;
+  /**
+   * Further delivery-time predictions for this item (learner-item-v1). They
+   * are listed in `payload.predictions` and never reach the column.
+   */
+  extraPredictions?: readonly ServePrediction[] | null;
+}
+
+/**
+ * Column value and payload fields for one cached delivery's predictions. The
+ * column holds the delivery-time number or nothing; the cache-build number
+ * appears only in `payload.predictions`, labelled with its age.
+ */
+function cachedDeliveryPredictions(
+  parent: ServeDecision,
+  delivery: DeliveryCtx['deliveryPrediction'],
+  now: Date,
+  extra?: DeliveryCtx['extraPredictions'],
+): { predictedRecall: number | null; payload: Prisma.InputJsonObject } {
+  const fresh = delivery ? deliveryPredictionFromItem(delivery, now) : null;
+  const built = cacheBuildPredictionFromParent(parent, now);
+  const predictions = mergeServePredictions([fresh, built], extra);
+  return {
+    predictedRecall: fresh?.p ?? null,
+    payload: {
+      ...(fresh ? {
+        predictedRecallModel: fresh.predictor,
+        ...(fresh.source ? { predictedRecallSource: fresh.source } : {}),
+        ...(fresh.status ? { predictedRecallStatus: fresh.status } : {}),
+        predictedRecallBasis: 'delivery',
+      } : {}),
+      ...(predictions.length > 0
+        ? { predictions: predictions as unknown as Prisma.InputJsonArray }
+        : {}),
+      // The pick was made when the queue was built; nothing at delivery knows
+      // the pool it was drawn from.
+      selection: unknownSelection({
+        lane: parent.decisionPath ?? 'unknown',
+        basis: 'cache-build',
+      }) as unknown as Prisma.InputJsonObject,
+    },
+  };
 }
 
 /**
@@ -249,6 +356,7 @@ function buildRow(
   decisionPath: string,
   deliveryPath: 'live' | 'cached' | null,
   queueReason?: string,
+  delivered?: DeliveredTelemetry,
 ) {
   const rankInPool =
     typeof (item as { rankInPool?: number }).rankInPool === 'number'
@@ -273,7 +381,16 @@ function buildRow(
     predictedRecall: item.predictedRecall ?? undefined,
     conceptLabel: (item as { conceptName?: string }).conceptName,
   });
-  const telemetryPayload = item.predictedRecallModel
+  // A live row is written while the batch is being delivered, so whatever
+  // prediction the item carries is a delivery-time one.
+  const livePrediction = deliveryPath === 'live'
+    ? deliveryPredictionFromItem(item, new Date())
+    : null;
+  const listedPredictions = mergeServePredictions([livePrediction], delivered?.predictions);
+  const telemetryPayload = livePrediction
+    || listedPredictions.length > 0
+    || delivered?.selection
+    || item.predictedRecallModel
     || item.predictedRecallSource
     || item.predictedRecallStatus
     || item.challengePolicyVersion
@@ -294,6 +411,13 @@ function buildRow(
       ...(item.predictedRecallModel ? { predictedRecallModel: item.predictedRecallModel } : {}),
       ...(item.predictedRecallSource ? { predictedRecallSource: item.predictedRecallSource } : {}),
       ...(item.predictedRecallStatus ? { predictedRecallStatus: item.predictedRecallStatus } : {}),
+      ...(livePrediction ? { predictedRecallBasis: 'delivery' } : {}),
+      ...(listedPredictions.length > 0
+        ? { predictions: listedPredictions as unknown as Prisma.InputJsonArray }
+        : {}),
+      ...(delivered?.selection
+        ? { selection: delivered.selection as unknown as Prisma.InputJsonObject }
+        : {}),
       ...(item.challengePolicyVersion ? {
         challengePolicyVersion: item.challengePolicyVersion,
         challengeTargetTier: item.challengeTargetTier ?? null,
@@ -375,8 +499,9 @@ export async function writeLiveServeDecisionsWithReceipt(
     ...item,
     serveDecisionId: item.serveDecisionId ?? createId(),
   }));
+  const delivered = await liveDeliveredTelemetry(itemsWithIds, ctx);
   const rows = itemsWithIds.map((item, index) =>
-    buildRow(item, index, ctx, ctx.decisionPath, 'live', ctx.queueReason),
+    buildRow(item, index, ctx, ctx.decisionPath, 'live', ctx.queueReason, delivered(item)),
   );
   try {
     const written = await prisma.serveDecision.createMany({ data: rows });
@@ -446,6 +571,7 @@ export async function writeLiveExamTargetServeDecisions(
     ...item,
     serveDecisionId: item.serveDecisionId ?? createId(),
   }));
+  const delivered = await liveDeliveredTelemetry(itemsWithIds, ctx);
   const rows = itemsWithIds.map((item, index) => {
     const itemKey = `${item.type}:${item.id}`;
     const fields = receipt.serveDecisionFieldsByItemKey.get(itemKey);
@@ -453,7 +579,7 @@ export async function writeLiveExamTargetServeDecisions(
       throw new Error('exam-target receipt is missing a served item');
     }
     return {
-      ...buildRow(item, index, ctx, ctx.decisionPath, 'live', ctx.queueReason),
+      ...buildRow(item, index, ctx, ctx.decisionPath, 'live', ctx.queueReason, delivered(item)),
       ...fields,
       targetTrace: fields.targetTrace ?? Prisma.DbNull,
     };
@@ -521,17 +647,22 @@ export async function applyCacheDelivery(
     const targetCacheAgeMs = parent.decidedAt instanceof Date
       ? Math.max(0, Date.now() - parent.decidedAt.getTime())
       : null;
+    const predictions = cachedDeliveryPredictions(
+      parent, ctx.deliveryPrediction, new Date(), ctx.extraPredictions,
+    );
     await prisma.serveDecision.update({
       where: { id: parent.id },
       data: {
         deliveryPath: 'cached',
         position: ctx.currentPosition,
-        // A cache-build prediction is not a delivery-time prediction. Clear it
-        // so a later grade cannot enter calibration under stale conditions.
-        predictedRecall: null,
+        // A cache-build prediction is not a delivery-time prediction. The
+        // column takes the one computed for this delivery, or nothing, so a
+        // later grade cannot enter calibration under stale conditions.
+        predictedRecall: predictions.predictedRecall,
         targetCacheAgeMs,
         payload: deliveredPayload(parent.payload, ctx.repetitionSlot, {
           cachePredictionDiscarded: true,
+          ...predictions.payload,
         }),
       },
     });
@@ -557,13 +688,16 @@ export async function applyCacheDelivery(
     if (existingChild) return { serveDecisionId: existingChild.id };
   }
 
+  const predictions = cachedDeliveryPredictions(
+      parent, ctx.deliveryPrediction, new Date(), ctx.extraPredictions,
+    );
   const childSummary = formatServeDecisionSummary({
     decisionPath: parent.decisionPath ?? 'unknown',
     deliveryPath: 'cached',
     queueReason: parent.queueReason ?? undefined,
     rankInPool: parent.rankInPool ?? undefined,
     poolSize: parent.poolSize ?? undefined,
-    predictedRecall: undefined,
+    predictedRecall: predictions.predictedRecall ?? undefined,
   });
   const targetCacheAgeMs = parent.decidedAt instanceof Date
     ? Math.max(0, Date.now() - parent.decidedAt.getTime())
@@ -583,7 +717,7 @@ export async function applyCacheDelivery(
       rankInPool: parent.rankInPool,
       poolSize: parent.poolSize,
       priority: parent.priority,
-      predictedRecall: null,
+      predictedRecall: predictions.predictedRecall,
       difficultyTier: parent.difficultyTier,
       conceptId: parent.conceptId,
       clusterId: parent.clusterId,
@@ -603,6 +737,7 @@ export async function applyCacheDelivery(
       payload: deliveredPayload(parent.payload, ctx.repetitionSlot, {
         inheritedFrom: parent.id,
         cachePredictionDiscarded: true,
+        ...predictions.payload,
       }),
     },
   });

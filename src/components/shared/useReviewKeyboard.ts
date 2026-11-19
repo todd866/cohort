@@ -2,6 +2,17 @@ import { useEffect } from 'react';
 type KeyboardReviewItem = { type: string; options?: { label: string }[] };
 import { isEditableShortcutTarget, isInteractiveActivationTarget, shortcutNumber } from './keyboardTarget';
 
+/**
+ * Left/Right already mean something here, so they must not also rewind.
+ * Image zoom stops the key itself (capture-phase listener on its dialog).
+ * A focused video scrubs. Sliders, listboxes and radio/option widgets move
+ * their own selection. Z and Shift+Z stay available on every item type.
+ */
+export function rewindArrowBlocked(target: EventTarget | null): boolean {
+  if (!(target instanceof Element)) return false;
+  return Boolean(target.closest('video, audio, [role="slider"], [role="listbox"], [role="option"], [role="radio"]'));
+}
+
 interface UseReviewKeyboardOptions {
   currentItem: KeyboardReviewItem | undefined;
   disabled?: boolean;
@@ -19,6 +30,14 @@ interface UseReviewKeyboardOptions {
   handleVideoRate: (quality: number) => void;
   handleVideoContinue: () => void;
   handleGoBack: () => void;
+  /** Shift+Z and Right. No-op at the live item when omitted. */
+  handleGoForward?: () => void;
+  /** Escape while a rewind is showing. Returns to the live item. */
+  handleRewindEscape?: () => void;
+  /** Left moves back only when an earlier item is still held. */
+  canGoBack?: boolean;
+  /** Right moves forward only while rewound. */
+  canGoForward?: boolean;
   /** Public opaque items: option is chosen, confidence has not submitted yet. */
   awaitingConfidence?: boolean;
   /** Delivery-scoped good/bad quality rating for the item on screen. */
@@ -62,6 +81,10 @@ export function useReviewKeyboard({
   handleVideoRate,
   handleVideoContinue,
   handleGoBack,
+  handleGoForward,
+  handleRewindEscape,
+  canGoBack = false,
+  canGoForward = false,
   awaitingConfidence = false,
   handleContentRating,
   handleRevealAll,
@@ -70,12 +93,15 @@ export function useReviewKeyboard({
   cardGradeBlocked = false,
 }: UseReviewKeyboardOptions) {
   useEffect(() => {
-    type ShortcutEvent = Pick<KeyboardEvent, 'key' | 'target' | 'repeat' | 'preventDefault'>;
+    type ShortcutEvent = Pick<KeyboardEvent, 'key' | 'target' | 'repeat' | 'shiftKey' | 'preventDefault'>;
     const act = (e: ShortcutEvent) => {
       // A held key auto-repeats: that is not a decision. Left unguarded, one held
       // key grades hundreds of items in minutes and records each as real evidence.
       if (disabled || e.repeat || document.querySelector('[aria-modal="true"]')) return;
       if (isEditableShortcutTarget(e.target)) return;
+      // The tutor chat keeps its own keys, including while a message is focused.
+      if (e.target instanceof Element && e.target.closest('[data-ai-chat]')) return;
+      if (rewindArrowBlocked(e.target) && (e.key === 'ArrowLeft' || e.key === 'ArrowRight')) return;
 
       // Let focused controls keep their native Enter/Space activation. Without
       // this, the window-level shortcut can skip/reveal/advance before the
@@ -112,10 +138,33 @@ export function useReviewKeyboard({
         return;
       }
 
-      // Z revisits history without changing the live turn.
+      // Z rewinds one item. Shift+Z steps forward, back to the live item.
       if (e.key === 'z' || e.key === 'Z') {
         e.preventDefault();
+        if (e.shiftKey) handleGoForward?.();
+        else handleGoBack();
+        return;
+      }
+      if (e.key === 'Escape' && canGoForward) {
+        // An open options or content dialog closes first. Escape then returns
+        // to the live item on the next press, once that dialog is gone.
+        if (document.querySelector('dialog[open], [role="dialog"]')) return;
+        e.preventDefault();
+        handleRewindEscape?.();
+        return;
+      }
+      // Left and Right rewind only when they are not already spoken for.
+      // Video controls, the zoom dialog (it stops the key before it arrives),
+      // sliders and option widgets keep their arrows. A video that is not
+      // focused still rewinds on Left/Right; Z and Shift+Z always do.
+      if (e.key === 'ArrowLeft' && canGoBack) {
+        e.preventDefault();
         handleGoBack();
+        return;
+      }
+      if (e.key === 'ArrowRight' && canGoForward) {
+        e.preventDefault();
+        handleGoForward?.();
         return;
       }
 
@@ -244,7 +293,7 @@ export function useReviewKeyboard({
       if (!armed || e.key.toLowerCase() !== armed.key) return;
       const { target } = armed;
       disarm();
-      act({ key: e.key, target, repeat: false, preventDefault: () => e.preventDefault() });
+      act({ key: e.key, target, repeat: false, shiftKey: e.shiftKey, preventDefault: () => e.preventDefault() });
     };
 
     window.addEventListener('keydown', handleKeyDown);
@@ -260,6 +309,7 @@ export function useReviewKeyboard({
     currentItem, disabled, cardFullyRevealed, mcqResult, flagMode,
     handleCardContinue, handleReveal, handleCardGrade,
     handleSelectOption, handleMcqSkip, handleNext, handleMcqGrade, handleVideoRate, handleVideoContinue, handleGoBack,
+    handleGoForward, handleRewindEscape, canGoBack, canGoForward,
     setFlagMode, awaitingConfidence, cardGradeBlocked, handleContentRating, handleRevealAll,
     handleOpenShortcuts, handleOpenBrowser,
   ]);

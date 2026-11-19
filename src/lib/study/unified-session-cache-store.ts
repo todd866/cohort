@@ -413,7 +413,9 @@ export function cacheItemsMatchMediaPreferences(
   items: ReadonlyArray<{ mediaPreferenceFingerprint?: unknown }>,
   mediaPreferences: ReviewMediaPreferences | null | undefined,
 ): boolean {
-  const expected = reviewMediaFingerprint(mediaPreferences);
+  // Review by voice is not a saved choice and no queue is built for it: it narrows the learner's
+  // own prepared queue at delivery, so the queue is matched on the saved choices alone.
+  const expected = reviewMediaFingerprint(mediaPreferences ? { ...mediaPreferences, voice: false } : mediaPreferences);
   return items.every((item) => (typeof item.mediaPreferenceFingerprint === 'string'
     ? item.mediaPreferenceFingerprint : '') === expected);
 }

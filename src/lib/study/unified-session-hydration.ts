@@ -95,10 +95,12 @@ export async function loadScheduledItemHydrationData(options: {
   rotationContent?: SessionContext['rotationContent'];
   scheduledItems: ScheduledSessionItem[];
   deliveryContext: CurrentContentContext;
+  strict?: boolean;
 }): Promise<ScheduledItemHydrationData> {
   const sources = await loadCurrentSessionContent(
     { ...options.deliveryContext, userId: options.userId },
     options.scheduledItems,
+    { strict: options.strict },
   );
   const questions = [...sources.values()].flatMap(source => {
     if (source.type !== 'question') return [];
@@ -168,6 +170,8 @@ export async function hydrateScheduledItems(
     mediaPreferences?: ReviewMediaPreferences;
     rotation: string;
     includeVideos?: boolean;
+    /** Emergency callers distinguish preparation errors from genuine exhaustion. */
+    onPreparationError?: () => void;
   },
   session: Session | null = null,
   /** Explicit tier for server paths with a userId but no Session — see resolveImage. */
@@ -192,6 +196,7 @@ export async function hydrateScheduledItems(
     // A clip lookup failure must degrade to "no clips", never to a failed
     // session. The prompt-card arms then drop clip cards, which is the same
     // outcome as a standard-tier user and costs nobody their review.
+    options.onPreparationError?.();
     logger.warn('[hydration] clip resolution failed; serving without clips', { error });
     return new Map<string, import('@/components/review/clip-role').ClipPromptData>();
   });
@@ -394,6 +399,7 @@ export async function hydrateScheduledItems(
      } catch (err) {
        // One malformed item (bad image key, unparseable options) must not sink
        // the whole session — skip+log it. Hardens the live feed and the sandbox.
+       options.onPreparationError?.();
        logger.error('hydrateScheduledItems: skipped item', { itemId: item.id, type: item.type, error: String(err) });
        return null;
      }

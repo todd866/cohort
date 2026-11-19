@@ -120,6 +120,22 @@ export async function getCurrentRotationWithDetails(_userId: string): Promise<{
 }
 
 /**
+ * The exam that bounds a learner's card stability for a rotation: their own
+ * stored date while it is still ahead. The open distribution ships no stream
+ * calendar, so there is nothing else to fall back to.
+ */
+export function examDateForStabilityCap(
+  _rotationId: string,
+  _track: number | null | undefined,
+  stored: Date | null | undefined,
+  now: Date,
+): Date | null {
+  void _rotationId;
+  void _track;
+  return stored && stored.getTime() > now.getTime() ? stored : null;
+}
+
+/**
  * The private app re-dates a stored exam date that belongs to another stream's
  * calendar; the open distribution ships no stream calendar, so a stored date is
  * taken as the learner's own.

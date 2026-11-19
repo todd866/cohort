@@ -232,4 +232,90 @@ describe('useFlagging', () => {
     expect(result.current.flagged).toBe(false);
     expect(result.current.flagMode).toBe(false);
   });
+
+  it('tracks submission generation on draft edits and distinguishes queued from delivered', async () => {
+    const { result } = renderHook(() => useFlagging({ item, registerResetCallback: noopRegister }));
+    act(() => { result.current.setFlagMode(true); result.current.setFlagMessage('first'); });
+    const generationAfterDraft = result.current.submissionGeneration;
+    expect(generationAfterDraft).toBeGreaterThan(0);
+    let resolveFn: (v: string) => void = () => {};
+    submitFlag.mockReturnValue(new Promise<string>((r) => { resolveFn = r; }));
+    await act(async () => { await result.current.handleFlagSubmit(); });
+    expect(result.current.submissionStatus).toBe('queued');
+    await act(async () => { resolveFn('delivered'); });
+    await waitFor(() => expect(result.current.submissionStatus).toBe('delivered'));
+  });
+
+  it('leaves submitting promptly when queueFlag resolves in the same turn (generation ref is synchronous)', async () => {
+    submitFlag.mockReturnValue(new Promise(() => {}));
+    const { result } = renderHook(() => useFlagging({ item, registerResetCallback: noopRegister }));
+    act(() => {
+      result.current.setFlagMode(true);
+      result.current.setFlagMessage('note');
+    });
+    await act(async () => { await result.current.handleFlagSubmit(); });
+    expect(result.current.submissionStatus).not.toBe('submitting');
+    expect(result.current.submissionStatus).toBe('queued');
+  });
+
+  it('does not clear a new item submission when an old delivery rejects', async () => {
+    let rejectFirst!: (error: Error) => void;
+    submitFlag.mockReturnValueOnce(new Promise<string>((_, reject) => { rejectFirst = reject; }));
+    submitFlag.mockReturnValueOnce(new Promise<string>(() => {}));
+    let reset = () => {};
+    const register = (cb: () => void) => { reset = cb; return () => {}; };
+    const { result } = renderHook(() => useFlagging({ item, registerResetCallback: register }));
+    act(() => { result.current.setFlagMode(true); result.current.setFlagMessage('first'); });
+    await act(async () => { await result.current.handleFlagSubmit(); });
+    act(() => { reset(); result.current.setFlagMessage('second draft'); });
+    await act(async () => { await result.current.handleFlagSubmit(); });
+    await act(async () => { rejectFirst(new Error('old delivery failed')); });
+    expect(result.current.flagPending).toBe(true);
+    expect(result.current.submissionStatus).toBe('queued');
+    await act(async () => { await result.current.handleFlagSubmit(); });
+    expect(submitFlag).toHaveBeenCalledTimes(2);
+  });
+
+  it('preserves queued status and the duplicate lock through reopen, edit and close', async () => {
+    let delivered!: (value: string) => void;
+    submitFlag.mockReturnValue(new Promise<string>(resolve => { delivered = resolve; }));
+    const { result } = renderHook(() => useFlagging({ item, registerResetCallback: noopRegister }));
+    act(() => { result.current.setFlagMessage('first'); });
+    await act(async () => { await result.current.handleFlagSubmit(); });
+    act(() => { result.current.setFlagMode(true); result.current.setFlagMessage('duplicate'); });
+    expect(result.current.flagMessage).toBe('');
+    expect(result.current.submissionStatus).toBe('queued');
+    act(() => { result.current.closeFlag(); });
+    await act(async () => { await result.current.handleFlagSubmit(); });
+    expect(submitFlag).toHaveBeenCalledTimes(1);
+    expect(result.current.flagPending).toBe(true);
+    await act(async () => { delivered('delivered'); });
+    expect(result.current.flagPending).toBe(false);
+    expect(result.current.submissionStatus).toBe('delivered');
+  });
+
+  it('keeps submission generation monotonic when the form closes while delivery is still settling', async () => {
+    let resolveFn: (v: string) => void = () => {};
+    submitFlag.mockReturnValue(new Promise<string>((r) => { resolveFn = r; }));
+    const { result } = renderHook(() => useFlagging({ item, registerResetCallback: noopRegister }));
+    act(() => { result.current.setFlagMode(true); result.current.setFlagMessage('a'); });
+    await act(async () => { void result.current.handleFlagSubmit(); });
+    const genAtQueue = result.current.submissionGeneration;
+    act(() => { result.current.closeFlag(); });
+    expect(result.current.submissionGeneration).toBe(genAtQueue);
+    await act(async () => { resolveFn('delivered'); });
+    expect(result.current.submissionGeneration).toBe(genAtQueue);
+  });
+
+  it('allows a second legitimate report after the first delivery completes', async () => {
+    const { result } = renderHook(() => useFlagging({ item, registerResetCallback: noopRegister }));
+    act(() => { result.current.setFlagMessage('first report'); });
+    await act(async () => { await result.current.handleFlagSubmit(); });
+    await waitFor(() => expect(result.current.flagged).toBe(true));
+    const genAfterFirst = result.current.submissionGeneration;
+    act(() => { result.current.setFlagMode(true); result.current.setFlagMessage('second report'); });
+    await act(async () => { await result.current.handleFlagSubmit(); });
+    expect(submitFlag).toHaveBeenCalledTimes(2);
+    expect(result.current.submissionGeneration).toBeGreaterThan(genAfterFirst);
+  });
 });

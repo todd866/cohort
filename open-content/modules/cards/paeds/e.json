@@ -39,6 +39,21 @@
       }
     },
     {
+      "id": "cohort:paeds:c-e05fae336748:v1",
+      "origin": "mdx:2d2fb4330fc17244d8e10f5c204e9993:blank-1",
+      "discipline": "paeds",
+      "cardType": "cloze",
+      "sourceComponent": "KeyPoint",
+      "front": "Primary haemostasis, associated with mucocutaneous bleeding when impaired, is mediated by platelets and vWF; secondary haemostasis, associated with deep bleeding when impaired, is mediated by [___].",
+      "back": "coagulation factors",
+      "context": "Primary haemostasis: platelets + vWF form the initial platelet plug at sites of vascular injury.\n\nSecondary haemostasis: coagulation factor cascade generates fibrin thrombus stabilising the clot.\n\nDefects cause deep bleeding (joints, muscles, post-surgical) — haemophilia A/B, factor deficiencies, anticoagulation.",
+      "complexity": 1,
+      "importance": 2,
+      "variantGroup": "cohort:paeds:g-91ea4746c115",
+      "variantIndex": 1,
+      "reference": null
+    },
+    {
       "id": "cohort:paeds:c-e0735f7932b7:v1",
       "origin": "mdx:0a19f3bd5f9bf87b0efd6096b33a0dec:blank-0",
       "discipline": "paeds",
@@ -63,6 +78,21 @@
       "back": "unconjugated",
       "context": "The picture: a thriving, entirely well breastfed baby who is still visibly yellow beyond the first fortnight, feeding and gaining weight normally, with pigmented stools and pale urine.\n\nThe bilirubin is unconjugated and the baby is otherwise normal. It can persist for weeks to a couple of months and then settles without treatment.",
       "complexity": 1,
+      "importance": 2,
+      "variantGroup": null,
+      "variantIndex": null,
+      "reference": null
+    },
+    {
+      "id": "cohort:paeds:c-e1698f08defe:v1",
+      "origin": "mdx:0e4ab1a023d0bec06f53ff19d297efdd",
+      "discipline": "paeds",
+      "cardType": "cloze",
+      "sourceComponent": "KeyPoint",
+      "front": "Speckled white spots ringing the iris periphery in Down syndrome are [___] spots.",
+      "back": "Brushfield",
+      "context": "Brushfield spots are iris stromal hyperplasia, among the most specific Down signs. Diagnosis is a CONSTELLATION confirmed by karyotype: upslanting fissures, epicanthic folds, palmar crease, sandal gap, hypotonia.\n\nECHO for every infant regardless of murmur: half have a heart lesion, and complete AVSD can be silent. Then red reflex, thyroid function at birth and yearly, FBC for transient myelopoiesis, hearing.\n\nAbout 95% are non-disjunction trisomy 21, with low, maternal-age-related recurrence. A ROBERTSONIAN TRANSLOCATION in about 4% carries much higher recurrence and means testing the parents.",
+      "complexity": 3,
       "importance": 2,
       "variantGroup": null,
       "variantIndex": null,
@@ -111,6 +141,21 @@
       "importance": 2,
       "variantGroup": null,
       "variantIndex": null,
+      "reference": null
+    },
+    {
+      "id": "cohort:paeds:c-e30bd620c9f2:v1",
+      "origin": "mdx:e67798e8f98da268a320560ca2d20360:blank-0",
+      "discipline": "paeds",
+      "cardType": "cloze",
+      "sourceComponent": "KeyPoint",
+      "front": "Suspect immunodeficiency with infections that are severe, persistent, unusual (such as [___] organisms or disseminated disease) or recurrent; also FTT, chronic diarrhoea, persistent oral Candida.",
+      "back": "opportunistic",
+      "context": "The mnemonic is SPUR: Severe, Persistent, Unusual, Recurrent infections. A competent immune system clears ordinary bugs quickly.\n\nSo infections that are deep-seated, drag on, are caused by opportunists, or keep coming back point to a host defect rather than just bad luck.\n\nFTT, chronic diarrhoea, and persistent oral Candida add weight: they reflect a system failing across multiple barriers, not one isolated infection.",
+      "complexity": 1,
+      "importance": 2,
+      "variantGroup": "cohort:paeds:g-6f2f36e05d11",
+      "variantIndex": 0,
       "reference": null
     },
     {
@@ -200,7 +245,7 @@
       "sourceComponent": "KeyPoint",
       "front": "After a witnessed choking episode, persistent unilateral wheeze in a toddler is [___] until proven otherwise.",
       "back": "foreign body",
-      "context": "The anatomy (wider, more vertical right main bronchus) only matters once the history has already made aspiration likely.\n\nA witnessed choke followed by persistent unilateral wheeze or reduced air entry is foreign body until bronchoscopy proves otherwise.",
+      "context": "Most inhaled objects in toddlers are food, especially nuts, and are radiolucent, so a normal chest X-ray does not exclude one.\n\nThe right main bronchus is wider and more vertical, so it is the commoner site. Rigid bronchoscopy both confirms and removes the object.",
       "complexity": 1,
       "importance": 2,
       "variantGroup": "cohort:paeds:g-a9808505152a",
@@ -313,6 +358,21 @@
       "reference": null
     },
     {
+      "id": "cohort:paeds:c-e6b6e88e260c:v1",
+      "origin": "mdx:1b0d1a6861dd77700cfdfb8c93cae2f8",
+      "discipline": "paeds",
+      "cardType": "cloze",
+      "sourceComponent": "KeyPoint",
+      "front": "Green vomiting in the first days of life is [___] with volvulus until an upper GI contrast says otherwise.",
+      "back": "malrotation",
+      "context": "Vomiting in the early weeks is common and almost always reflux; the job is to spot the few that are not.\n\nReflux is effortless posseting in a thriving baby, and it needs reassurance rather than investigation or acid suppression.\n\nProjectile NON-bilious vomiting at 2 to 8 weeks in a hungry baby losing weight is pyloric stenosis. Bilious vomiting at any age is malrotation with volvulus until contrast says otherwise.",
+      "complexity": 3,
+      "importance": 2,
+      "variantGroup": null,
+      "variantIndex": null,
+      "reference": null
+    },
+    {
       "id": "cohort:paeds:c-e720861c66f0:v1",
       "origin": "mdx:9e090741415e69a8d855074f5eb76f94",
       "discipline": "paeds",
@@ -377,6 +437,21 @@
       "reference": null
     },
     {
+      "id": "cohort:paeds:c-e79d16fe8810:v1",
+      "origin": "mdx:5c47ff96c79dbf0f72825dcfd064a1ce",
+      "discipline": "paeds",
+      "cardType": "cloze",
+      "sourceComponent": "KeyPoint",
+      "front": "Beyond renal disease, a serious GI complication of HSP causing severe colicky abdominal pain is [___].",
+      "back": "intussusception",
+      "context": "HSP intussusception is typically ileo-ileal (small-bowel), unlike the classic ileocolic intussusception of infancy, so it can be missed on the usual ultrasound windows.\n\nSuspect it when a child with HSP develops severe colicky abdominal pain.",
+      "complexity": 1,
+      "importance": 2,
+      "variantGroup": null,
+      "variantIndex": null,
+      "reference": null
+    },
+    {
       "id": "cohort:paeds:c-e7c7d6e57562:v1",
       "origin": "mdx:acac2af954b95668aa635fcc73ca0c7d",
       "discipline": "paeds",
@@ -422,21 +497,6 @@
       "reference": null
     },
     {
-      "id": "cohort:paeds:c-e87bab014595:v1",
-      "origin": "mdx:915b37a0e3adb5acf0c06268ad9a0b4f:blank-1",
-      "discipline": "paeds",
-      "cardType": "cloze",
-      "sourceComponent": "KeyPoint",
-      "front": "Breath-holding spells begin in infancy (peak 12-18 months) and typically resolve by age 6 years; trigger → crying → expiratory breath-hold → loss of awareness; benign but check ECG and treat any [___].",
-      "back": "iron deficiency",
-      "context": "Breath-holding spells affect 6 months-6 years (peak 12-18 months, usually resolved by age 6).\n\nTrigger (fear, pain, frustration) → crying → expiratory breath-hold → cyanosis or pallor → stiffening, loss of awareness, sometimes clonic jerks.\n\nTwo types: cyanotic (commonest, after crying) and pallid (after pain/fright, vasovagal) — benign, no long-term effects. Iron deficiency association — correction may help; always check ECG to rule out arrhythmia.",
-      "complexity": 1,
-      "importance": 2,
-      "variantGroup": "cohort:paeds:g-e481281badd2",
-      "variantIndex": 1,
-      "reference": null
-    },
-    {
       "id": "cohort:paeds:c-e8c72af1b573:v1",
       "origin": "mdx:0075f993a0e3cfed143bdfd10fe536b3",
       "discipline": "paeds",
@@ -448,6 +508,36 @@
       "complexity": 3,
       "importance": 2,
       "variantGroup": "cohort:paeds:g-9a503135ed8f",
+      "variantIndex": null,
+      "reference": null
+    },
+    {
+      "id": "cohort:paeds:c-e8e5334f4d7b:v1",
+      "origin": "mdx:d9ccc909fcf3732527f4389eeb50f663",
+      "discipline": "paeds",
+      "cardType": "cloze",
+      "sourceComponent": "KeyPoint",
+      "front": "When assessing acute rheumatic fever, the Jones criteria must be [___] by population risk.",
+      "back": "stratified",
+      "context": "Acute rheumatic fever is assessed using the risk-appropriate Jones criteria, not excluded by population risk alone.\n\nAbsent evidence of preceding streptococcal infection and absent major features lower suspicion. Chorea and indolent carditis are exceptions to the usual requirement for streptococcal evidence.\n\nAustralia uses separate high-risk and low-risk Jones criteria. Aboriginal and Torres Strait Islander, Māori and Pacific Islander children, and those from high-prevalence settings, are assessed with the high-risk set.",
+      "complexity": 4,
+      "importance": 2,
+      "variantGroup": "cohort:paeds:g-e314c4944f39",
+      "variantIndex": null,
+      "reference": null
+    },
+    {
+      "id": "cohort:paeds:c-e9079a8e8948:v1",
+      "origin": "mdx:a95a55e08c99518e44f23fecead0dfb0",
+      "discipline": "paeds",
+      "cardType": "cloze",
+      "sourceComponent": "KeyPoint",
+      "front": "The manoeuvre that RELOCATES an already-dislocated infant hip, producing a clunk as the head enters the acetabulum, is the [___].",
+      "back": "Ortolani test",
+      "context": "Ortolani RELOCATES a hip that is already dislocated: abduct and lift, and a dislocated femoral head clunks back into the acetabulum.\n\nBarlow does the opposite — adduct and gently push back, and a dislocatable hip slips out. One finds the hip that is out; the other finds the hip that can be pushed out.",
+      "complexity": 1,
+      "importance": 2,
+      "variantGroup": null,
       "variantIndex": null,
       "reference": null
     },
@@ -467,6 +557,21 @@
       "reference": null
     },
     {
+      "id": "cohort:paeds:c-e91eb05951b8:v1",
+      "origin": "mdx:fbb0778ac1c43494eb797caf3f3263b6:blank-1",
+      "discipline": "paeds",
+      "cardType": "cloze",
+      "sourceComponent": "KeyPoint",
+      "front": "Atopic dermatitis affects 10-20% of children, and about 85% of childhood cases begin before age [___].",
+      "back": "5 years",
+      "context": "Eczema affects 10-20% of children; about 85% of childhood cases begin before age 5. It reflects skin-barrier dysfunction and a Th2-skewed immune response.\n\nEarly or severe eczema is associated with later food allergy, asthma and allergic rhinitis. The 'atopic march' is a population association, not a fixed sequence; most children do not develop every condition.",
+      "complexity": 2,
+      "importance": 2,
+      "variantGroup": "cohort:paeds:g-f2dc99306d54",
+      "variantIndex": 1,
+      "reference": null
+    },
+    {
       "id": "cohort:paeds:c-e92412e4b24d:v1",
       "origin": "mdx:830b8c0ca6a12bb5799a3c764e7adac6",
       "discipline": "paeds",
@@ -479,6 +584,21 @@
       "importance": 3,
       "variantGroup": "cohort:paeds:g-e79d16fe8810",
       "variantIndex": null,
+      "reference": null
+    },
+    {
+      "id": "cohort:paeds:c-e97e8208f970:v1",
+      "origin": "mdx:e5338acedde76176d9b23817aa9ecff8:blank-1",
+      "discipline": "paeds",
+      "cardType": "cloze",
+      "sourceComponent": "KeyPoint",
+      "front": "A 10-day-old has bilateral mucopurulent eye discharge and lid swelling with no skin vesicles. Onset in the 5-14-day window makes [___] the likely organism — treatment must be systemic, not topical drops, and include both parents.",
+      "back": "chlamydia",
+      "context": "Timing plus discharge character narrow the organism. Profuse pus in the first days is gonococcus; vesicles with watery discharge suggest herpes.\n\nMucopurulent discharge from late in the first week fits the third vertical agent.\n\nDrops cannot clear the nasopharynx, which the same organism colonises. Hence systemic therapy, plus treatment of the parents' genital infection.",
+      "complexity": 3,
+      "importance": 2,
+      "variantGroup": "cohort:paeds:g-9544a9e74d3c",
+      "variantIndex": 1,
       "reference": null
     },
     {
@@ -617,21 +737,6 @@
       "reference": null
     },
     {
-      "id": "cohort:paeds:c-eaebe12ca336:v1",
-      "origin": "mdx:3dc794ed28f67c3698b61a3ac8ddac17:blank-1",
-      "discipline": "paeds",
-      "cardType": "cloze",
-      "sourceComponent": "KeyPoint",
-      "front": "Viral-induced wheeze is common in first 2 years; [___] is the dominant trigger in school-aged children.",
-      "back": "rhinovirus",
-      "context": "Respiratory viruses commonly trigger wheeze in young children, who may be well between episodes.\n\nEpisodic viral and multi-trigger labels are unreliable preschool subtypes; assess symptoms, episode burden and treatment response over time. Rhinovirus also triggers asthma exacerbations in school-aged children.\n\nAtopy and recurrent wheeze increase concern for persistent asthma, but an infection-only pattern does not exclude it.",
-      "complexity": 2,
-      "importance": 2,
-      "variantGroup": "cohort:paeds:g-b7509ae6b9a2",
-      "variantIndex": 1,
-      "reference": null
-    },
-    {
       "id": "cohort:paeds:c-eb8fa0247402:v1",
       "origin": "mdx:3881124f6d327a438776cb43b3784726:blank-0",
       "discipline": "paeds",
@@ -711,6 +816,36 @@
       "reference": null
     },
     {
+      "id": "cohort:paeds:c-ecc494a78399:v1",
+      "origin": "mdx:bc03bde9c4537afc500dec73c8a688fe",
+      "discipline": "paeds",
+      "cardType": "cloze",
+      "sourceComponent": "KeyPoint",
+      "front": "A greyish calcium band across the interpalpebral cornea from long-standing uveitis is band [___].",
+      "back": "keratopathy",
+      "context": "Band keratopathy is calcium in Bowman's layer across the interpalpebral cornea, where tear evaporation raises the pH. In a child it marks long-standing chronic uveitis, usually from JIA.\n\nIt is EVIDENCE OF DELAY: months to years of untreated or undertreated uveitis. Ask whether screening failed, whether the family attends, and whether systemic immunosuppression needs escalating.\n\nEDTA chelation after epithelial removal restores vision but recurs if inflammation persists. Adult causes: hypercalcaemia from hyperparathyroidism, vitamin D excess or sarcoidosis, and chronic renal failure.",
+      "complexity": 4,
+      "importance": 2,
+      "variantGroup": null,
+      "variantIndex": null,
+      "reference": null
+    },
+    {
+      "id": "cohort:paeds:c-ecc718b5e109:v1",
+      "origin": "mdx:8968b8acacb4fb762f988f04f9e5bddd:blank-1",
+      "discipline": "paeds",
+      "cardType": "cloze",
+      "sourceComponent": "KeyPoint",
+      "front": "Typical puberty duration is 2-5 years; delayed and precocious puberty are defined by the timing of [___], not adrenarche.",
+      "back": "gonadarche",
+      "context": "Puberty typically lasts 2-5 years from start to completion. The defining event is gonadarche — gonadal activation by FSH/LH (HPG axis).\n\nAdrenarche (adrenal androgen production) precedes gonadarche and produces pubic hair, axillary hair, acne — but isn't true puberty. Delayed/precocious puberty are defined by gonadarche timing, not adrenarche.",
+      "complexity": 2,
+      "importance": 2,
+      "variantGroup": "cohort:paeds:g-d1fcfb6c4201",
+      "variantIndex": 1,
+      "reference": null
+    },
+    {
       "id": "cohort:paeds:c-ecc9af8a7901:v1",
       "origin": "mdx:ae7057cc01d48e146b084e37a2369033:blank-0",
       "discipline": "paeds",
@@ -760,6 +895,21 @@
       "reference": null
     },
     {
+      "id": "cohort:paeds:c-edd35ca3c7d8:v1",
+      "origin": "mdx:5d3b156f4361cc5dcda629f038c49f97",
+      "discipline": "paeds",
+      "cardType": "cloze",
+      "sourceComponent": "KeyPoint",
+      "front": "A baby born at 39 weeks is apnoeic and floppy after drying and stimulation, with a heart rate of 80/min at 1 minute. Mask ventilation is started. The initial inspired gas should be [___].",
+      "back": "air",
+      "context": "ANZCOR recommends starting ventilation of babies born at 35 weeks or later in air (21% oxygen). Air is as effective as 100% oxygen and avoids hyperoxia.\n\nIncrease the oxygen, guided by oximetry, if saturations or heart rate do not improve with effective ventilation.",
+      "complexity": 3,
+      "importance": 2,
+      "variantGroup": null,
+      "variantIndex": null,
+      "reference": null
+    },
+    {
       "id": "cohort:paeds:c-edeadbceef97:v1",
       "origin": "mdx:03e30a10e69382d1bcab422863e72fe9",
       "discipline": "paeds",
@@ -790,36 +940,6 @@
       "reference": null
     },
     {
-      "id": "cohort:paeds:c-ee10706dab1d:v1",
-      "origin": "mdx:c9792e3dea1004f5e4ad5dbdc673c8c7",
-      "discipline": "paeds",
-      "cardType": "cloze",
-      "sourceComponent": "KeyPoint",
-      "front": "A brisk LH rise after a GnRH challenge classifies precocious puberty as [___] (HPG-axis driven).",
-      "back": "central",
-      "context": "Central precocious puberty is HPG-axis activation — the hypothalamus has woken up early and is pulsing GnRH, so the pituitary responds briskly to a GnRH challenge with an LH rise.\n\nPeripheral (gonadotrophin-independent) causes do not, because the axis isn't driving it. Central precocity is then treated with a GnRH analogue that desensitises the pituitary.\n\nA peripheral source must instead be hunted down: CAH, McCune-Albright, or a gonadal or adrenal tumour.",
-      "complexity": 2,
-      "importance": 2,
-      "variantGroup": null,
-      "variantIndex": null,
-      "reference": null
-    },
-    {
-      "id": "cohort:paeds:c-ee3eb815596a:v1",
-      "origin": "mdx:11e0121491a8e11d47a054815db284cb",
-      "discipline": "paeds",
-      "cardType": "cloze",
-      "sourceComponent": "KeyPoint",
-      "front": "A 3-year-old five days into bloody diarrhoea is pale and oliguric with platelets of 60. Giving [___] for the diarrhoea is contraindicated because it increases toxin release.",
-      "back": "antibiotics",
-      "context": "Bloody diarrhoea followed by pallor and falling urine output is haemolytic uraemic syndrome until proven otherwise — the triad is microangiopathic anaemia, thrombocytopenia and acute kidney injury.\n\nThe management trap is the instinct to treat the dysentery: antibiotics increase Shiga-toxin release and are associated with a higher risk of progressing to HUS.\n\nCare is supportive, with careful fluid and electrolyte management and early nephrology involvement.",
-      "complexity": 3,
-      "importance": 2,
-      "variantGroup": null,
-      "variantIndex": null,
-      "reference": null
-    },
-    {
       "id": "cohort:paeds:c-ee8aea159c0b:v1",
       "origin": "mdx:c0d0d3605d34b891a03725dd745f3e03",
       "discipline": "paeds",
@@ -846,21 +966,6 @@
       "complexity": 1,
       "importance": 2,
       "variantGroup": "cohort:paeds:g-4e73f87c8c15",
-      "variantIndex": 1,
-      "reference": null
-    },
-    {
-      "id": "cohort:paeds:c-ef2fa779f434:v1",
-      "origin": "mdx:6da7419cf01b14881a7a570e56427eb1:blank-1",
-      "discipline": "paeds",
-      "cardType": "cloze",
-      "sourceComponent": "KeyPoint",
-      "front": "Untreated Kawasaki disease causes coronary artery aneurysms in ~[___]% of children; IVIG within 10 days of fever onset reduces this to <5%.",
-      "back": "25",
-      "context": "Kawasaki disease is a medium-vessel vasculitis mainly of children <5 years. RCH diagnosis needs fever ≥4 days (US teaching says 5) plus ≥4 of 5 principal features.\n\nBilateral non-purulent conjunctival injection; polymorphous rash; cervical lymphadenopathy >1.5 cm; strawberry tongue or cracked lips; palmar/plantar erythema or oedema, later periungual desquamation.\n\nThe catastrophic complication is coronary artery aneurysm, in ~25% of untreated children, risking MI, sudden death and chronic coronary disease in adulthood.",
-      "complexity": 2,
-      "importance": 2,
-      "variantGroup": "cohort:paeds:g-cdaf267c62c9",
       "variantIndex": 1,
       "reference": null
     },

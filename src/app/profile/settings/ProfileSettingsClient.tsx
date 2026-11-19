@@ -4,6 +4,7 @@ import Link from 'next/link';
 import { Accordion } from '@/components/ui/Accordion';
 import { ExamDatesEditor } from '../profile-exam-dates';
 import { PersonalDocumentsDestination } from './PersonalDocumentsDestination';
+import { McpTokenRow } from './McpTokenRow';
 import {
   AppearanceSection,
   EmailAliasesSection,
@@ -42,6 +43,8 @@ export default function ProfileSettingsClient({
       <Accordion title="Email addresses" subtitle="Sign-in aliases">
         <EmailAliasesSection primaryEmail={primaryEmail} />
       </Accordion>
+
+      <McpTokenRow />
 
       <div className="mt-6 grid gap-3 sm:grid-cols-2">
         <PersonalDocumentsDestination />

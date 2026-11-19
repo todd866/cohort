@@ -1,0 +1,56 @@
+// Anki link AI queue (design: docs/designs/2026-11-11-anki-companion.md, section 10.3).
+//
+// md3 never runs the model. A connected add-on's request is stored here; a
+// worker on the owner's Mac pulls it, looks the notes up in the guideline
+// library, runs a tool-less subscription engine and writes the result back;
+// the add-on polls. A queue table, not a card vertical.
+//
+// Learner note text lives in `payload` only until the job finishes (it is
+// set to NULL on completion), and the whole row is purged after `expiresAt`.
+
+model AnkiLinkJob {
+  id          String       @id @default(cuid())
+  ownerUserId String
+  // The add-on device that asked; null for an extraction queued from the website.
+  peerId      String?
+  peer        AnkiSyncPeer? @relation(fields: [peerId], references: [id], onDelete: Cascade, onUpdate: Restrict, map: "AnkiLinkJob_peer_fkey")
+
+  kind     String // check | write | extract
+  state    String @default("queued") // queued | running | done | failed
+  items    Int    @default(0) // notes to check, or cards asked for
+  payload  Json?  @db.JsonB
+  result   Json?  @db.JsonB
+  error    String?
+  attempts Int    @default(0)
+
+  leaseToken String?
+  leaseUntil DateTime? @db.Timestamptz(3)
+  worker     String?
+  engine     String?
+
+  createdAt   DateTime  @default(now()) @db.Timestamptz(3)
+  startedAt   DateTime? @db.Timestamptz(3)
+  completedAt DateTime? @db.Timestamptz(3)
+  expiresAt   DateTime  @db.Timestamptz(3)
+
+  @@index([state, createdAt], map: "AnkiLinkJob_state_created_idx")
+  @@index([peerId, createdAt], map: "AnkiLinkJob_peer_created_idx")
+  @@index([expiresAt], map: "AnkiLinkJob_expiry_idx")
+}
+
+// Text passages extracted from a learner's course material (a UserDocument with purpose "course-material") by
+// the worker; md3's servers never parse the uploaded file. Private to the learner: used only to ground that
+// learner's own checks and drafts, and deleted with the document and with the account. No relation fields on
+// purpose: the document is removed through its own tombstone path, which deletes these rows first.
+model CourseMaterialPassage {
+  id         String   @id @default(cuid())
+  userId     String
+  documentId String
+  ordinal    Int
+  page       Int?
+  text       String
+  createdAt  DateTime @default(now()) @db.Timestamptz(3)
+
+  @@unique([documentId, ordinal], map: "CourseMaterialPassage_document_ordinal_key")
+  @@index([userId], map: "CourseMaterialPassage_user_idx")
+}

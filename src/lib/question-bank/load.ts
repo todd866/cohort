@@ -143,6 +143,13 @@ export const ROTATION_DIRS = new Set([
   // The first-year KAT4 + MMCA deck's own MCQs (original writing, owner-gated
   // to its named learners). 2026-10-21.
   'md1-foundations',
+  // A linked learner profile's general-knowledge deck (opaque id; served only
+  // to that profile). 2026-11-18.
+  'lp1',
+  // The Trauma (RPH WA State Trauma Guidelines) and GP (Australian preventive
+  // care) decks' own MCQs, migrated from their inline MDX. 2026-11-18.
+  'trauma',
+  'gp',
 ]);
 
 /**
@@ -154,6 +161,26 @@ export const ROTATION_DIRS = new Set([
 export const EXCLUDED_ROTATION_DIRS = new Set([
   'year2', // legacy: arrays, no rotation field — incompatible with the curated schema
 ]);
+
+/**
+ * Bank files written by `migrate-mdx-mcqs-to-bank.ts` for the Year 2 KAT decks
+ * stamp the bank DIRECTORY name ('kat5', 'kat7') as the question's rotation,
+ * while the cards they came with live under 'year2-kat5' / 'year2-kat7'. The
+ * questions therefore seeded under rotations no one is scheduled for (the
+ * decks showed 0 questions beside 173 and 81 cards). Normalise at load so the
+ * data files need no edit and ids stay stable. Only the Year 2 decks: 'kat1'
+ * is deliberately left alone (it is a separate, already-seeded set).
+ */
+const LEGACY_BANK_ROTATIONS: Readonly<Record<string, string>> = Object.freeze({
+  kat5: 'year2-kat5',
+  kat6: 'year2-kat6',
+  kat7: 'year2-kat7',
+  kat8: 'year2-kat8',
+});
+
+export function canonicalBankRotation(rotation: string): string {
+  return LEGACY_BANK_ROTATIONS[rotation] ?? rotation;
+}
 
 function listJsonFiles(
   dir: string,
@@ -284,6 +311,7 @@ export function loadQuestionBankFromDisk(options: {
 
       const q = {
         ...parseResult.data,
+        rotation: canonicalBankRotation(parseResult.data.rotation),
         sourceFile: path.relative(process.cwd(), filePath).replace(/\\/g, '/'),
       } as CuratedQuestion;
       const qErrors = validateCuratedQuestion(q);

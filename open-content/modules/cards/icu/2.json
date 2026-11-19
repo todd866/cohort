@@ -5,36 +5,6 @@
   "attribution": "MD3 contributors",
   "cards": [
     {
-      "id": "cohort:icu:c-207c30b1ba17:v1",
-      "origin": "mdx:033a602f45433b2898922599517eeb79:blank-1",
-      "discipline": "icu",
-      "cardType": "cloze",
-      "sourceComponent": "KeyPoint",
-      "front": "In non-shockable rhythms (PEA/asystole), adrenaline 1 mg IV is given immediately and then every [___] minutes.",
-      "back": "4",
-      "context": "In non-shockable arrest, adrenaline goes *immediately* because there's no defibrillation to prioritise — α-1 vasoconstriction raises diastolic aortic pressure, which is what perfuses the coronaries during CPR.\n\nContrast with shockable rhythms: there, defibrillation comes first, adrenaline is *delayed* until after the 2nd shock so the early shocks aren't competing with the catecholamine surge. Same dose either way (1 mg IV/IO).",
-      "complexity": 2,
-      "importance": 2,
-      "variantGroup": "cohort:icu:g-97f99ecfb7e6",
-      "variantIndex": 1,
-      "reference": null
-    },
-    {
-      "id": "cohort:icu:c-21294104fb34:v1",
-      "origin": "mdx:3b0cb47ff938c1bddc5a1d31cd521246",
-      "discipline": "icu",
-      "cardType": "cloze",
-      "sourceComponent": "KeyPoint",
-      "front": "Severely elevated lactate threshold: above [___] (triggers aggressive resuscitation in sepsis).",
-      "back": "4 mmol/L",
-      "context": "Surviving Sepsis defines a hard lactate threshold above which mortality rises sharply and the Hour-1 bundle (cultures, broad-spectrum antibiotics, 30 mL/kg crystalloid.\n\nThat threshold is set high enough to identify severe tissue hypoperfusion — at this level, cellular oxygen debt is established even if BP looks reassuring.",
-      "complexity": 1,
-      "importance": 2,
-      "variantGroup": null,
-      "variantIndex": null,
-      "reference": null
-    },
-    {
       "id": "cohort:icu:c-212b7928d4f6:v1",
       "origin": "mdx:699994aa3225ff1046f50f296cfb636f:blank-2",
       "discipline": "icu",
@@ -215,21 +185,6 @@
       "reference": null
     },
     {
-      "id": "cohort:icu:c-272e5287e632:v1",
-      "origin": "mdx:abf1c4a2fc859a0216901f8a14789220:blank-1",
-      "discipline": "icu",
-      "cardType": "cloze",
-      "sourceComponent": "KeyPoint",
-      "front": "Maximum lignocaine dose: 3 mg/kg plain, [___] mg/kg with adrenaline.",
-      "back": "7",
-      "context": "Plain lignocaine: 3 mg/kg max. Adrenaline (1:200,000) lifts this to 7 mg/kg by causing local vasoconstriction that slows systemic absorption.\n\nFor a 70 kg adult: 210 mg plain, 490 mg with adrenaline. Useful conversion: 1% lignocaine = 10 mg/mL, so 21 mL plain or 49 mL with adrenaline.",
-      "complexity": 2,
-      "importance": 2,
-      "variantGroup": "cohort:icu:g-408151846b4b",
-      "variantIndex": 1,
-      "reference": null
-    },
-    {
       "id": "cohort:icu:c-27c06f1611c8:v1",
       "origin": "mdx:931be55417e4dd8586e946f02ddfb3e1",
       "discipline": "icu",
@@ -275,6 +230,21 @@
       "reference": null
     },
     {
+      "id": "cohort:icu:c-291d4a6e0686:v1",
+      "origin": "mdx:da42650c766d20ae8d1814f3347f1da8:blank-0",
+      "discipline": "icu",
+      "cardType": "cloze",
+      "sourceComponent": "KeyPoint",
+      "front": "In septic shock, target MAP is ≥[___] mmHg with lactate >2 mmol/L despite adequate fluids.",
+      "back": "65",
+      "context": "Septic shock is a subset of sepsis with particularly high mortality.",
+      "complexity": 2,
+      "importance": 2,
+      "variantGroup": "cohort:icu:g-8fc490684114",
+      "variantIndex": 0,
+      "reference": null
+    },
+    {
       "id": "cohort:icu:c-29211c0a07f6:v1",
       "origin": "mdx:4ece22e4edf89339e796763250b619d9:blank-0",
       "discipline": "icu",
@@ -317,21 +287,6 @@
       "importance": 2,
       "variantGroup": null,
       "variantIndex": null,
-      "reference": null
-    },
-    {
-      "id": "cohort:icu:c-2a630b616981:v1",
-      "origin": "mdx:861b78cce3c77f5288c4008801fc9478:blank-0",
-      "discipline": "icu",
-      "cardType": "cloze",
-      "sourceComponent": "KeyPoint",
-      "front": "Adult CPR compression depth should be at least [___] cm at a rate of 100-120 per minute.",
-      "back": "5",
-      "context": "ANZCOR adult CPR: compress to at least 5 cm depth (but not >6 cm — going too deep risks rib fracture, sternal injury, and lung contusion) at 100-120/min.\n\nThe 100-120/min rate is the trade-off between adequate cerebral and coronary perfusion (lower rates inadequate) and rescuer fatigue / inadequate diastolic filling (higher rates worse).",
-      "complexity": 2,
-      "importance": 2,
-      "variantGroup": "cohort:icu:g-100c81e99f0d",
-      "variantIndex": 0,
       "reference": null
     },
     {
@@ -395,18 +350,18 @@
       "reference": null
     },
     {
-      "id": "cohort:icu:c-2e56af8dd51a:v1",
-      "origin": "mdx:dd3336991b625de705206ea8048055ac:blank-3",
+      "id": "cohort:icu:c-2d63e3f3b8ab:v1",
+      "origin": "mdx:0f755afe30d98648559eb513d7baa6be:blank-1",
       "discipline": "icu",
       "cardType": "cloze",
       "sourceComponent": "KeyPoint",
-      "front": "Key damage control resuscitation targets: pH greater than 7.2, lactate less than 4 mmol/L, ionised calcium greater than 1.1 mmol/L, and temperature greater than [___]°C.",
-      "back": "35",
-      "context": "Resuscitation targets during damage control provide specific endpoints to guide product replacement. These numbers should be checked every 30-60 minutes during active MTP.\n\nTBI patients have higher targets because the injured brain tolerates coagulopathy and anaemia poorly.",
+      "front": "The default maintenance fluid is 4% glucose with [___]% NaCl — provides ~31 mmol/L Na, matching ~3 mmol per 100 mL water.",
+      "back": "0.18",
+      "context": "4% glucose + 0.18% NaCl ('1/5 normal saline') is the historic adult maintenance fluid because it delivers ~31 mmol/L Na (matching Holliday-Segar requirements) plus glucose to spare protein catabolism.\n\nIts use has narrowed: in paediatrics and post-surgical adults (high ADH), hypotonic fluids cause hyponatraemic encephalopathy.",
       "complexity": 2,
       "importance": 2,
-      "variantGroup": "cohort:icu:g-c3eccec4b4cc",
-      "variantIndex": 3,
+      "variantGroup": "cohort:icu:g-49e0935ef24f",
+      "variantIndex": 1,
       "reference": null
     },
     {

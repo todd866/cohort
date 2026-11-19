@@ -20,6 +20,21 @@
       "reference": null
     },
     {
+      "id": "cohort:icu:c-d098e43b7557:v1",
+      "origin": "mdx:4651a6d6078e9799dd72ef2d449c1875:blank-0",
+      "discipline": "icu",
+      "cardType": "cloze",
+      "sourceComponent": "KeyPoint",
+      "front": "Parkland formula timing is calculated from time of [___], not presentation. The first half is given over 8 hours.",
+      "back": "injury",
+      "context": "Parkland formula: 4 mL x body weight (kg) x %TBSA burned. Give the first half over the first 8 hours from the TIME OF INJURY (not time of presentation).\n\nGive the second half over the next 16 hours. This is a common exam mistake — always calculate from time of burn, not arrival to hospital.",
+      "complexity": 2,
+      "importance": 2,
+      "variantGroup": "cohort:icu:g-331dd2618368",
+      "variantIndex": 0,
+      "reference": null
+    },
+    {
       "id": "cohort:icu:c-d133238355f8:v1",
       "origin": "mdx:ec9cca3c9966efd4169408be1f793536:blank-1",
       "discipline": "icu",
@@ -121,36 +136,6 @@
       "complexity": 1,
       "importance": 2,
       "variantGroup": "cohort:icu:g-cf310a9ee6f8",
-      "variantIndex": 1,
-      "reference": null
-    },
-    {
-      "id": "cohort:icu:c-d46fea05190c:v1",
-      "origin": "mdx:23cf3a09015466a970d8a9aeb41bb478:blank-0",
-      "discipline": "icu",
-      "cardType": "cloze",
-      "sourceComponent": "KeyPoint",
-      "front": "Massive PE with persistent hypotension: systemic [___] mg alteplase IV over 2 hours.",
-      "back": "100",
-      "context": "Massive PE = obstruction killing the patient haemodynamically (sustained hypotension or vasopressor need despite fluid).\n\nAlteplase 100 mg over 2 h is standard; in cardiac arrest from suspected PE, 50 mg bolus + continue CPR 60-90 min.",
-      "complexity": 2,
-      "importance": 2,
-      "variantGroup": "cohort:icu:g-eee3723a026e",
-      "variantIndex": 0,
-      "reference": null
-    },
-    {
-      "id": "cohort:icu:c-d4bafebc8c13:v1",
-      "origin": "mdx:bd6bcc4f1832dad088ffbfa376dd1a64:blank-1",
-      "discipline": "icu",
-      "cardType": "cloze",
-      "sourceComponent": "KeyPoint",
-      "front": "Parkland timing is calculated from time of injury (not presentation). The first half is given over [___] hours, the second half over 16 hours.",
-      "back": "8",
-      "context": "Capillary leak is maximal in the first 8 hours post-burn, so fluid requirements are frontloaded. Timing from injury (not presentation) matters — delayed patients need catch-up fluids to compensate for initial deficit.",
-      "complexity": 2,
-      "importance": 2,
-      "variantGroup": "cohort:icu:g-5c234701d41d",
       "variantIndex": 1,
       "reference": null
     },
@@ -275,6 +260,21 @@
       "reference": null
     },
     {
+      "id": "cohort:icu:c-daff236a9c7d:v1",
+      "origin": "mdx:8faa7ae11d8bfc564b4a91364be2c18c:blank-0",
+      "discipline": "icu",
+      "cardType": "cloze",
+      "sourceComponent": "KeyPoint",
+      "front": "Lignocaine max dose alone is [___] mg/kg; with adrenaline it increases to 7 mg/kg.",
+      "back": "3-5",
+      "context": "Local anaesthetics are used daily in ED for wound repair. Understanding mechanism, dosing limits, and toxicity management is essential.",
+      "complexity": 2,
+      "importance": 2,
+      "variantGroup": "cohort:icu:g-3d2d05773bba",
+      "variantIndex": 0,
+      "reference": null
+    },
+    {
       "id": "cohort:icu:c-db208a7070d6:v1",
       "origin": "mdx:d5c031a8e337a16649dd9307baf871ee",
       "discipline": "icu",
@@ -305,21 +305,6 @@
       "reference": null
     },
     {
-      "id": "cohort:icu:c-dbef8371d43f:v1",
-      "origin": "mdx:7c7a0e82b811d1c5cbe7fc948c31b961:blank-0",
-      "discipline": "icu",
-      "cardType": "cloze",
-      "sourceComponent": "KeyPoint",
-      "front": "CRASH-2 showed TXA benefit only within [___] hours of injury; after this window there is possible harm.",
-      "back": "3",
-      "context": "CRASH-2 (2010, 20,000 trauma patients) found tranexamic acid (1 g over 10 min, then 1 g over 8 hours) reduces all-cause mortality and bleeding deaths if given within 3 hours of injury.\n\nAfter 3 hours, TXA may HARM — possibly through paradoxical bleeding from secondary fibrinolysis activation. Document time of injury, not time of presentation. Don't give TXA late.",
-      "complexity": 2,
-      "importance": 2,
-      "variantGroup": "cohort:icu:g-3e85c186696e",
-      "variantIndex": 0,
-      "reference": null
-    },
-    {
       "id": "cohort:icu:c-dc79b4808081:v1",
       "origin": "mdx:b2c2159440d174f707fef1559eba28bc",
       "discipline": "icu",
@@ -332,6 +317,21 @@
       "importance": 2,
       "variantGroup": null,
       "variantIndex": null,
+      "reference": null
+    },
+    {
+      "id": "cohort:icu:c-dd12d177e9d4:v1",
+      "origin": "mdx:a30e6501b521e2a08ff5200293fc5de2:blank-0",
+      "discipline": "icu",
+      "cardType": "cloze",
+      "sourceComponent": "Danger",
+      "front": "Modified-release (MR) paracetamol has [___] absorption. A single level can miss peaks — take 2 levels 4 hours apart.",
+      "back": "delayed/prolonged",
+      "context": "MR formulations like Panadol Osteo have delayed and prolonged absorption. A single nomogram plot can miss ongoing absorption — two levels 4h apart detect the characteristic double peak.",
+      "complexity": 2,
+      "importance": 2,
+      "variantGroup": "cohort:icu:g-120d823c450a",
+      "variantIndex": 0,
       "reference": null
     }
   ]

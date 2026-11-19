@@ -35,21 +35,6 @@
       "reference": null
     },
     {
-      "id": "cohort:obs:c-e1f50558afbe:v1",
-      "origin": "mdx:9f7c425dc9ad595842107eb35a11a489:blank-1",
-      "discipline": "obs",
-      "cardType": "cloze",
-      "sourceComponent": "KeyPoint",
-      "front": "Neonatal resuscitation: chest compressions if HR remains <60 after 30 seconds of effective positive pressure ventilation; ratio is [___]:1 (compressions to breaths).",
-      "back": "3",
-      "context": "Chest compressions added when HR <60 despite 30 sec of effective PPV. 3:1 ratio (3 compressions to 1 ventilation, ~120 events/min) maximises ventilation in the respiratory-arrest p.\n\nTechnique: two-thumb encircling hands (thumbs over lower sternum, fingers around the back), depth ⅓ of AP chest diameter, smooth rhythm. Reassess HR q30 sec.",
-      "complexity": 2,
-      "importance": 2,
-      "variantGroup": "cohort:obs:g-ff8e00cfe2ad",
-      "variantIndex": 1,
-      "reference": null
-    },
-    {
       "id": "cohort:obs:c-e299a0df47ac:v1",
       "origin": "mdx:1737747b35e6370e3fe61ad548d57e08",
       "discipline": "obs",
@@ -80,6 +65,36 @@
       "reference": null
     },
     {
+      "id": "cohort:obs:c-e35366130cd4:v1",
+      "origin": "mdx:6bf1e7aacdc1cc66d0fd42d06a8e842c:blank-0",
+      "discipline": "obs",
+      "cardType": "cloze",
+      "sourceComponent": "KeyPoint",
+      "front": "PCOS is diagnosed in an adult by [___] of three features: ovulatory dysfunction, hyperandrogenism (clinical or biochemical), and polycystic ovarian morphology on ultrasound or a raised AMH.",
+      "back": "two",
+      "context": "Polycystic morphology is 20 or more follicles per ovary and/or an ovarian volume of 10 mL or more. AMH may replace ultrasound in adults; neither is used within 8 years of menarche.\n\nDownstream risks: endometrial hyperplasia + cancer from unopposed estrogen (cyclic progestogen if anovulatory), insulin resistance + T2DM, CV disease, and subfertility (letrozole first-line).\n\nScreen glycaemia at diagnosis and every 1-3 years; a 75 g OGTT is the most accurate test.",
+      "complexity": 1,
+      "importance": 2,
+      "variantGroup": "cohort:obs:g-646996646b38",
+      "variantIndex": 0,
+      "reference": null
+    },
+    {
+      "id": "cohort:obs:c-e4641a7877c4:v1",
+      "origin": "mdx:bd5fcd85722ca06e68541d7265433c55",
+      "discipline": "obs",
+      "cardType": "cloze",
+      "sourceComponent": "KeyPoint",
+      "front": "Chorionicity in twins should be determined by [___] weeks.",
+      "back": "14",
+      "context": "Chorionicity is most reliably assigned in the first trimester, when the membrane and placental insertion can be seen clearly.",
+      "complexity": 1,
+      "importance": 2,
+      "variantGroup": null,
+      "variantIndex": null,
+      "reference": null
+    },
+    {
       "id": "cohort:obs:c-e48b3dc1f2bd:v1",
       "origin": "mdx:0e1ca056cde56fc2c6190c27084d2509",
       "discipline": "obs",
@@ -89,6 +104,36 @@
       "back": "Erb palsy",
       "context": "Erb palsy classically affects C5–C6: the shoulder is adducted and internally rotated, with an extended elbow and preserved grasp. Associated phrenic nerve injury can impair diaphragmatic movement.\n\nKlumpke palsy affects C8–T1, causing hand weakness, clawing and absent grasp. Associated sympathetic injury may produce Horner syndrome.",
       "complexity": 1,
+      "importance": 2,
+      "variantGroup": null,
+      "variantIndex": null,
+      "reference": null
+    },
+    {
+      "id": "cohort:obs:c-e59bde6b09ff:v1",
+      "origin": "mdx:1858c354fa33ec1338b5ab1d12faae76:blank-0",
+      "discipline": "obs",
+      "cardType": "cloze",
+      "sourceComponent": "KeyPoint",
+      "front": "If clinically suitable and acceptable to the woman, the most effective medical treatment for heavy menstrual bleeding is the [___], reducing blood loss by approximately 90% at 12 months.",
+      "back": "levonorgestrel IUD",
+      "context": "A 52 mg levonorgestrel IUD is the most effective medical option for heavy menstrual bleeding when clinically suitable. Offer it after assessment, taking the woman's preferences and fertility plans into account.\n\nIt suppresses the endometrium locally. Blood-loss reductions vary between studies; approximately 90% at 12 months is a useful estimate, not a guaranteed individual response.\n\nTranexamic acid or NSAIDs can begin at first presentation, including while investigations or IUD insertion are arranged. Surgery may be appropriate if medical options are unsuitable or unsuccessful.",
+      "complexity": 1,
+      "importance": 2,
+      "variantGroup": "cohort:obs:g-921eaa034bce",
+      "variantIndex": 0,
+      "reference": null
+    },
+    {
+      "id": "cohort:obs:c-e67336d4301e:v1",
+      "origin": "mdx:121f9d6bcef62a9478c4264e80706c8f",
+      "discipline": "obs",
+      "cardType": "cloze",
+      "sourceComponent": "KeyPoint",
+      "front": "Ulipristal emergency contraception can be taken up to [___] hours after unprotected intercourse, longer than levonorgestrel's 72 hours.",
+      "back": "120",
+      "context": "Ulipristal 30 mg orally works up to 120 hours after unprotected intercourse and beats levonorgestrel 1.5 mg, which is used to 72 hours and works less well if BMI is over 26.\n\nA copper intrauterine device is the most effective option, up to 5 days after unprotected intercourse.\n\nChoice depends on time elapsed, BMI, breastfeeding and preference; consider an advance levonorgestrel prescription for women at high risk.",
+      "complexity": 2,
       "importance": 2,
       "variantGroup": null,
       "variantIndex": null,
@@ -125,6 +170,51 @@
       "reference": null
     },
     {
+      "id": "cohort:obs:c-e77581195645:v1",
+      "origin": "mdx:8d2bd0ec9fce8b2cb56e8aac85c6f5e7:blank-0",
+      "discipline": "obs",
+      "cardType": "cloze",
+      "sourceComponent": "KeyPoint",
+      "front": "Prior spontaneous preterm birth <34 weeks PLUS current cervical length ≤[___] mm: offer vaginal progesterone and/or cervical cerclage.",
+      "back": "25",
+      "context": "Prior spontaneous preterm birth + current short cervix is the highest-risk group; both interventions can be offered. Vaginal progesterone (200 mg pessary nightly, 16-24 wk until 34-36 wk) cuts preterm birth ~40%.\n\nHistory-indicated cerclage (3 or more prior preterm births or losses) goes in at 12-14 weeks. Ultrasound-indicated cerclage follows a short cervix, before 24 weeks.\n\nThe Arabin pessary is a non-surgical alternative — evidence mixed.",
+      "complexity": 2,
+      "importance": 2,
+      "variantGroup": "cohort:obs:g-4706ebd915da",
+      "variantIndex": 0,
+      "reference": null
+    },
+    {
+      "id": "cohort:obs:c-e82c17dd8fc0:v1",
+      "origin": "mdx:4d6b93aa5bbeb69dccf706f583afeb14",
+      "discipline": "obs",
+      "cardType": "cloze",
+      "sourceComponent": "KeyPoint",
+      "front": "For a woman at low PPH risk having active third-stage management, WNHS specifies oxytocin [___] IM.",
+      "back": "10 units",
+      "context": "This is prophylaxis following birth, not an induction infusion or a substitute for treating established haemorrhage.",
+      "complexity": 2,
+      "importance": 2,
+      "variantGroup": null,
+      "variantIndex": null,
+      "reference": null
+    },
+    {
+      "id": "cohort:obs:c-e852b2149735:v1",
+      "origin": "mdx:8ad6f48138055d7a8708668c93f1b3ab",
+      "discipline": "obs",
+      "cardType": "cloze",
+      "sourceComponent": "KeyPoint",
+      "front": "For total hysterectomy, bladder dissection is carried below the level of the [___].",
+      "back": "external cervical os",
+      "context": "Freeing the bladder below this landmark exposes the cervicovaginal junction for cervical removal. The required dissection differs from leaving the cervix in place.",
+      "complexity": 1,
+      "importance": 2,
+      "variantGroup": null,
+      "variantIndex": null,
+      "reference": null
+    },
+    {
       "id": "cohort:obs:c-e9a048f15cb3:v1",
       "origin": "mdx:9b0f5fb2e3a48165bf1aa71714383300",
       "discipline": "obs",
@@ -155,6 +245,21 @@
       "reference": null
     },
     {
+      "id": "cohort:obs:c-ea468019bc68:v1",
+      "origin": "mdx:8ef21c318f71699dfcfa3608fd6d2715",
+      "discipline": "obs",
+      "cardType": "cloze",
+      "sourceComponent": "KeyPoint",
+      "front": "Progesterone drives mild maternal hyperventilation, so normal PaCO2 in pregnancy falls to about [___] mmHg.",
+      "back": "30",
+      "context": "Progesterone acts on the respiratory centre and raises tidal volume, not respiratory rate. The result is a compensated respiratory alkalosis.\n\nA PaCO2 of 40 mmHg, normal outside pregnancy, means CO2 retention in a pregnant woman.",
+      "complexity": 1,
+      "importance": 2,
+      "variantGroup": null,
+      "variantIndex": null,
+      "reference": null
+    },
+    {
       "id": "cohort:obs:c-ea59b9a4668b:v1",
       "origin": "mdx:b93d0f60fcdf0b9e28e885b6603a5320:blank-2",
       "discipline": "obs",
@@ -167,21 +272,6 @@
       "importance": 2,
       "variantGroup": "cohort:obs:g-177fe264652b",
       "variantIndex": 2,
-      "reference": null
-    },
-    {
-      "id": "cohort:obs:c-eadc67415a80:v1",
-      "origin": "mdx:42486b35203bd95023a68c867657cdcb:blank-0",
-      "discipline": "obs",
-      "cardType": "cloze",
-      "sourceComponent": "KeyPoint",
-      "front": "Neonatal resuscitation: start positive pressure ventilation (PPV) if HR <[___] or no spontaneous breathing; ventilation is the priority because most neonatal arrests are respiratory in origin.",
-      "back": "100",
-      "context": "Neonatal resus algorithm: first 30 sec — dry, stimulate, keep warm, position airway. 30-sec reassessment: if breathing inadequately OR HR <100.\n\nAfter 30 sec PPV: HR rising + breathing improving → continue support and wean; HR remains <100 → optimise ventilation (MR SOPA); HR <60 despite effective ventilation → add chest compressions 3:1 with breaths.",
-      "complexity": 1,
-      "importance": 2,
-      "variantGroup": "cohort:obs:g-1d44fa6431cd",
-      "variantIndex": 0,
       "reference": null
     },
     {
@@ -230,6 +320,21 @@
       "reference": null
     },
     {
+      "id": "cohort:obs:c-ee875500732d:v1",
+      "origin": "mdx:5a45f22e512d660ed10b3dbd7d766a26",
+      "discipline": "obs",
+      "cardType": "cloze",
+      "sourceComponent": "KeyPoint",
+      "front": "In pregnancy, hypertension is diagnosed at a systolic pressure of at least 140 mmHg or a diastolic pressure of at least [___].",
+      "back": "90 mmHg",
+      "context": "Either threshold is enough: a systolic of 140 mmHg or more also counts.\n\nThe reading is confirmed by repeat measurement, at least 4 hours apart.",
+      "complexity": 1,
+      "importance": 2,
+      "variantGroup": "cohort:obs:g-3c6d99bb65d8",
+      "variantIndex": null,
+      "reference": null
+    },
+    {
       "id": "cohort:obs:c-ef1734103db7:v1",
       "origin": "mdx:6a84b73e9e851d218633135113c25f83:blank-0",
       "discipline": "obs",
@@ -247,6 +352,21 @@
         "publisher": "RANZCOG",
         "url": "https://ranzcog.edu.au/wp-content/uploads/Miscarriage-Ectopic-Pregnancy.pdf"
       }
+    },
+    {
+      "id": "cohort:obs:c-efb54c047da0:v1",
+      "origin": "mdx:284a819119d30bd1af43f957534ba6c0:blank-0",
+      "discipline": "obs",
+      "cardType": "cloze",
+      "sourceComponent": "KeyPoint",
+      "front": "USS signs of placenta accreta spectrum include loss of [___] clear zone, placental lacunae (Swiss cheese), bladder wall interruption, and myometrial thinning.",
+      "back": "retroplacental",
+      "context": "Antenatal USS signs of PAS are specific rather than sensitive. Loss of the retroplacental clear zone is about 66% sensitive and 96% specific; placental lacunae ('Swiss cheese') about 77% and 95%.\n\nMRI is added for inconclusive USS or to map percreta extent (especially bladder/bowel invasion); USS sensitivity for PAS is ~80-90% in expert hands.",
+      "complexity": 2,
+      "importance": 2,
+      "variantGroup": "cohort:obs:g-e192d8dc7969",
+      "variantIndex": 0,
+      "reference": null
     }
   ]
 }

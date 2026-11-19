@@ -1,3 +1,6 @@
+import { loadRetiredPackKeys, parsePackIdentities } from './offline-pack-retirement.server';
+import { peekSessionPrepBlend } from './session-prep-blend-memo';
+import { scheduleSessionPrepRefresh } from './session-prep-background';
 import { withUniversalRecall } from './universal-recall-delivery';
 import { withSimulationResponseReceipt } from './simulation-response';
 import { reviewChallengePreference } from './review-challenge-preference';
@@ -11,7 +14,6 @@ import { requireAuthOrGuest } from '@/lib/api-utils';
 import { auth as authFn } from '@/lib/auth';
 import { prisma } from '@/lib/prisma';
 import {
-  getActiveRotations,
   getBlockExamDate,
   getBlockStartDate,
   type TrackNumber,
@@ -36,14 +38,18 @@ import { tryRereviewSession } from './unified-session-rereview';
 import { tryReviewFilterSession } from './unified-session-review-filter';
 import { tryPendingQuestionSession } from './unified-session-pending-questions';
 import { tryPracticeFollowUpSession } from './unified-session-practice-follow-up';
+import { practiceFollowUpsOffFromExperience } from './practice-follow-up-preference';
 import { tryCachedSession } from './unified-session-cache';
 import { tryInstantSession } from './unified-session-instant';
 import { buildManifoldSession } from './unified-session-manifold';
+import { unifiedSessionNeverEmpty } from './unified-session-never-empty';
 import { withPrivateVideoDelivery } from './private-video-delivery';
 import { withPracticeReviewResponseProvenance } from './practice-review-response';
 import { resolvePracticeLocale } from './practice-locale';
 import { PERSONAL_ROTATION_IDS } from '@/lib/rotations';
-import { viewerCanAccessRequestedRotations } from '@/lib/personal-rotation-access';
+import { linkedProfileRotations, viewerCanAccessRequestedRotations } from '@/lib/personal-rotation-access';
+import { viewerIsLinkedProfile } from '@/lib/profiles/linked-profile-identity';
+import { linkedProfileTopicsFilterForLearner } from '@/lib/profiles/linked-profile-topic';
 import {
   REVIEW_FILTERS,
   type ReviewFilter,
@@ -75,6 +81,7 @@ import {
   type ExamTargetAttemptLedgerClient,
 } from '@/lib/exam-target/attempt-ledger.server';
 import { getStudyDayStart } from '@/lib/study-day';
+import { learnerItemPredictionFor } from './learner-item-prediction-load';
 import { evaluateObjectiveCoreGate } from './objective-core-gate';
 import { effectiveExamDailyTarget } from './effective-daily-target';
 import { type RotationDailyTarget } from './rotation-daily-target';
@@ -97,6 +104,7 @@ import {
   dessertOvershootRatio,
   dessertUnmappedSlots,
 } from './dessert-mix';
+import { currentActiveRotations } from '@/lib/review/active-rotations';
 
 async function withStatementScaffolds(response: NextResponse, ctx: SessionContext): Promise<NextResponse> {
   return withUniversalRecall(await withReviewLearningPolicy(await addStatementScaffolds(response, ctx), ctx), ctx);
@@ -227,6 +235,11 @@ export function currentObjectiveForViewer(args: {
   track: number | null;
   institution: string | null;
 }): string {
+  // A linked profile studies only its own deck, whatever else is saved.
+  if (viewerIsLinkedProfile(args.emails)) {
+    const own = linkedProfileRotations();
+    return args.activeModules.find((module) => own.includes(module)) ?? own[0] ?? '';
+  }
   const enrolledModules = args.activeModules.filter((module) =>
     viewerCanAccessRequestedRotations([module], {
       emails: args.emails,
@@ -236,10 +249,7 @@ export function currentObjectiveForViewer(args: {
   const scheduledRotations = SCHEDULED_ROTATIONS[
     args.institution as keyof typeof SCHEDULED_ROTATIONS
   ] ?? SCHEDULED_ROTATIONS.usyd;
-  const activeRotations = Number.isInteger(args.track)
-    && args.track! >= 1 && args.track! <= 4
-    ? getActiveRotations(args.track as TrackNumber)
-    : [];
+  const activeRotations = currentActiveRotations({ track: args.track, institution: args.institution });
   const primaries = resolvePrimaries({
     activeModules: enrolledModules,
     activeRotations,
@@ -338,15 +348,15 @@ export async function withContractCheck(
 }
 
 export interface UnifiedSessionOptions {
+  resolvePresentationPrepReoffer?: (userId: string, rotation: string, now: Date) => Promise<import('./presentation-prep-reoffer').PresentationPrepReoffer | null>;
   /**
    * The calling function's ceiling, as the lease for background refreshes the
    * request starts in its after(). Omitted: SESSION_REFRESH_LEASE_TTL_MS.
    */
   refreshLeaseTtlMs?: number;
   /**
-   * Week of the deck an upcoming mandatory session prepares, for a plain feed.
-   * Supplied by the private route (it reads the course brief); absent in public
-   * builds, where the plain feed is unchanged.
+   * Deprecated compatibility callback. Plain feeds never invoke it; only an
+   * explicit week parameter narrows a deck.
    */
   resolvePrepWeek?: (userId: string, rotation: string, now: Date) => Promise<number | null>;
 }
@@ -359,8 +369,28 @@ export async function getUnifiedSession(
   // "No videos" / "No images" are resolved inside, once identity is known.
   // Every lane's response then passes this one boundary.
   const mediaEgress: ReviewMediaEgress = { preferences: { ...DEFAULT_REVIEW_MEDIA_PREFERENCES }, stored: null };
-  const response = await buildUnifiedSessionResponse(request, authOverride, options, mediaEgress);
-  return withReviewMediaPreferences(response, mediaEgress);
+  const retirement: { keys?: string[] } = {};
+  const rescue: { ctx?: SessionContext; rotations: string[] } = { rotations: [] };
+  let response = await withReviewMediaPreferences(
+    await buildUnifiedSessionResponse(request, authOverride, options, mediaEgress, retirement, rescue), mediaEgress,
+  );
+  const ctx = rescue.ctx;
+  if (ctx && !ctx.isGuest && ctx.rotation !== USMLE_STEP1_OPEN_ROTATION && response.status === 200) {
+    const payload = await (typeof response.clone === 'function' ? response.clone() : response).json().catch(() => null);
+    if (payload && Array.isArray(payload.items) && payload.items.length === 0) {
+      const reason = typeof payload.emptyStage === 'string'
+        ? payload.emptyStage : 'ordinary-lanes-empty-after-delivery';
+      const fallback = await withContractCheck('fallback-never-empty',
+        await unifiedSessionNeverEmpty(ctx, reason, rescue.rotations));
+      response = await withReviewMediaPreferences(await withPrivateVideoDelivery(fallback, ctx.commitmentLevel), mediaEgress);
+    }
+  }
+  // Retirement metadata must decorate the final response, including a rescue.
+  if (response.status !== 200 || retirement.keys === undefined) return response;
+  const body = await response.json();
+  return NextResponse.json({ ...body, retiredPackKeys: retirement.keys }, {
+    status: response.status, headers: response.headers,
+  });
 }
 
 async function buildUnifiedSessionResponse(
@@ -368,6 +398,8 @@ async function buildUnifiedSessionResponse(
   authOverride: UnifiedSessionAuthOverride | undefined,
   options: UnifiedSessionOptions,
   mediaEgress: ReviewMediaEgress,
+  retirement: { keys?: string[] },
+  rescue: { ctx?: SessionContext; rotations: string[] },
 ) {
   const t0 = performance.now();
   const { searchParams } = new URL(request.url);
@@ -392,7 +424,7 @@ async function buildUnifiedSessionResponse(
     ? mediaParam : undefined;
   const typeFilter = sessionTypeFilter(rotation, media ? null : searchParams.get('type'));
   const difficultyFilter = searchParams.get('difficulty') as 'easy' | 'medium' | 'hard' | null;
-  const topicsFilter = searchParams.get('topics'); // comma-separated
+  let topicsFilter = searchParams.get('topics'); // comma-separated
   // One manifold cluster, from a square on the profile knowledge heatmap.
   // Shape-validated here as well as in parseReviewIntent: this value reaches a
   // database filter, and the client is not the only caller of this route.
@@ -441,7 +473,7 @@ async function buildUnifiedSessionResponse(
   }
   const batchSize = parseBatchSize(sizeParam);
   const week = weekParam ? parseInt(weekParam, 10) : null;
-  let weekFilter = Number.isFinite(week) ? week : null;
+  const weekFilter = Number.isFinite(week) ? week : null;
 
   let authResult: { userId: string; isGuest: boolean };
   // Timed on its own (see SessionContext.tIdentityMs): this is the request's
@@ -483,9 +515,9 @@ async function buildUnifiedSessionResponse(
         // visitors, not transient auth failures. Best-effort; guarded on the
         // guest signature so a real user row can never be collateral damage.
         const orphanGuestId = authResult.userId;
-        await prisma.user
-          .deleteMany({ where: { id: orphanGuestId, email: null, name: 'Guest' } })
-          .catch(() => {});
+        const { purgeGuestUsers } = await import('@/lib/tutor/voice-recording.server');
+        const { deleteR2Objects } = await import('@/lib/r2');
+        await purgeGuestUsers(prisma as never, [orphanGuestId], deleteR2Objects).catch(() => {});
         authResult = { userId: retrySession.user.id, isGuest: false };
         logger.warn('auth-retry-recovered', {
           userId: retrySession.user.id,
@@ -512,9 +544,12 @@ async function buildUnifiedSessionResponse(
   // One persisted authorization snapshot drives direct access, cross-source
   // eligibility, image tier, and teaching pace. Query parameters never grant
   // access to a content source.
-  const userScope = authResult.isGuest
+  const packIdentities = authResult.isGuest ? [] : parsePackIdentities(searchParams);
+  const [retired, userScope] = await Promise.all([
+    loadRetiredPackKeys(authResult.userId, packIdentities).catch(() => null),
+    authResult.isGuest
     ? null
-    : await prisma.user.findUnique({
+    : prisma.user.findUnique({
         where: { id: authResult.userId },
         select: {
           email: true,
@@ -539,7 +574,11 @@ async function buildUnifiedSessionResponse(
             take: 1,
           },
         },
-      }).catch(() => null);
+      }).catch(() => null),
+  ]);
+  // Missing status evidence leaves the pack untouched; offline availability
+  // cannot depend on a successful check. The live head is still reconciled.
+  if (packIdentities.length && retired !== null) retirement.keys = retired;
 
   if (!authResult.isGuest && !userScope && !PERSONAL_ROTATIONS.has(rotation)) {
     return NextResponse.json({ error: 'Could not load your review preferences. Please retry.' }, { status: 503 });
@@ -616,6 +655,18 @@ async function buildUnifiedSessionResponse(
           .map((alias) => alias.email),
       ]
     : [];
+  // A linked learner profile is held to its own deck on every rotation, not
+  // only personal ones, and its chosen topic narrows the deck when the request
+  // names none.
+  if (viewerIsLinkedProfile(identityEmails)) {
+    if (!linkedProfileRotations().includes(rotation)) {
+      return protectPersonalRotationResponse(
+        NextResponse.json({ error: 'Rotation not found' }, { status: 404 }),
+        [rotation],
+      );
+    }
+    topicsFilter = topicsFilter || await linkedProfileTopicsFilterForLearner(authResult.userId);
+  }
   // Bind canonical private topics at the API boundary, but only after the
   // viewer has proved entitlement to the owning rotation. Otherwise a guessed
   // slug would become a pre-auth registry oracle. Unentitled callers receive
@@ -809,8 +860,8 @@ async function buildUnifiedSessionResponse(
 
   // A week scope counts: the rotation's cached queue is unscoped, so a week deck
   // that read or rebuilt it served the next plain feed that week's cards
-  // (2026-11-04). Computed after the session-prep focus has set weekFilter.
-  let hasFilters = !!(
+  // (2026-11-04). Only the learner can select that week scope.
+  const hasFilters = !!(
     weekFilter !== null
     || typeFilter
     || media
@@ -916,24 +967,25 @@ async function buildUnifiedSessionResponse(
     requestRotation: rotation,
   });
 
-  // Session prep: a plain feed (no week, topic, cluster, module, media, type,
-  // filter or mode) becomes the deck for the owner's next
-  // mandatory session until it starts. Owner, 2026-11-04: "It should just go
-  // into my feed without me needing to do anything." Brief lookup only, no
-  // database; `prep=off` or any narrowing choice keeps the ordinary feed. A
-  // rotation focus (`focus=1`, sent whenever a rotation is chosen) is not one:
-  // excluding it kept the prep off every real request (seen live, 4 Nov).
-  if (
-    options.resolvePrepWeek && !authResult.isGuest && weekFilter === null && !topicsFilter && !clusterFilter
-    && !modulesFilter && !media && !typeFilter && !reviewFilter && !mode
-    && !difficultyFilter && searchParams.get('prep') !== 'off'
-  ) {
-    weekFilter = await options.resolvePrepWeek?.(authResult.userId, rotation, new Date()).catch(() => null) ?? null;
-    if (weekFilter !== null) hasFilters = true;
+  // Mandatory-session preparation blends into ordinary discretionary seats.
+  // Never turn a plain request into a deck (including presentation reoffers).
+  // Explicit week/topic/cluster links retain their existing HAMMER_RELEARN mode.
+  const presentationPrepReoffer = null;
+  const automaticPrepWeek = false;
+  const mayBlendPrep = !authResult.isGuest && weekFilter === null && !hasFilters
+    && !mode && !reviewFilter && !feedMode;
+  const prepSnapshot = mayBlendPrep ? peekSessionPrepBlend(authResult.userId, rotation) : null;
+  const sessionPrepBlend = prepSnapshot?.plan.share ? prepSnapshot.plan : null;
+  if (mayBlendPrep && (!prepSnapshot || prepSnapshot.stale)) {
+    scheduleSessionPrepRefresh(authResult.userId, rotation);
   }
 
   const ctx: SessionContext = {
+    sessionPrepBlend,
+    presentationPrepReoffer,
+    automaticPrepWeek,
     reviewChallenge,
+    practiceFollowUpsOff: practiceFollowUpsOffFromExperience(userScope?.experience),
     practiceReviewFocus: await practiceReviewFocusPromise,
     rotation,
     publicSurface: isCohortHostname(requestHost) ? 'cohort' : 'usmle-step1',
@@ -1000,6 +1052,14 @@ async function buildUnifiedSessionResponse(
     crossSourceMappingMode,
     refreshLeaseTtlMs: options.refreshLeaseTtlMs,
   };
+  rescue.ctx = ctx;
+  rescue.rotations = inPlayStudyRotations(userScope?.activeModules ?? []).filter(candidate =>
+    candidate !== rotation && viewerCanAccessRequestedRotations([candidate], {
+      emails: identityEmails, imageTier: userScope?.imageTier,
+    }));
+  // Start the learner-rate read for the delivery prediction now, beside the
+  // lanes. Nothing awaits it here; the ServeDecision writer collects it.
+  learnerItemPredictionFor(ctx);
 
   if (ctx.rotation === USMLE_STEP1_OPEN_ROTATION) {
     const publicResponse = await withContractCheck(

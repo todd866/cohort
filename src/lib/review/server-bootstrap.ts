@@ -5,12 +5,12 @@ import { prisma } from '@/lib/prisma';
 import type { Institution } from '@/lib/institution';
 import { SCHEDULED_ROTATIONS } from '@/lib/institution-rotations';
 import {
-  getActiveRotations,
   type TrackNumber,
 } from '@/lib/rotation-context';
 import { viewerCanAccessPersonalRotation } from '@/lib/personal-rotation-access';
 import { inPlayStudyRotations } from '@/lib/study/in-play-rotations';
-import { getUnifiedSession, type UnifiedSessionOptions } from '@/lib/study/unified-session-service';
+import { type UnifiedSessionOptions } from '@/lib/study/unified-session-service';
+import { getUnifiedSessionNeverEmptyForPrep } from '@/lib/study/prep-feed-fallback';
 import { computeFetchSlots } from './compute-fetch-slots';
 import { defaultPrimaryForViewer, resolvePrimaries } from './resolve-primaries';
 import { parseReviewIntent, type ReviewFilter } from './review-intent';
@@ -28,6 +28,7 @@ import type {
 import type { ReviewItem } from '@/components/review/hooks/types';
 import type { ReviewServerBootstrap } from './bootstrap-types';
 import { authorizedReviewTopicRotations } from './review-topic-registry.server';
+import { currentActiveRotations } from '@/lib/review/active-rotations';
 
 const INSTITUTIONS = new Set<Institution>([
   'usyd',
@@ -49,6 +50,7 @@ function interleave<T>(arrays: T[][]): T[] {
 }
 
 interface SessionPayload {
+  emptyReason?: string | null;
   items?: ReviewItem[];
   sessionId?: string | null;
   batchId?: string | null;
@@ -84,6 +86,7 @@ export async function buildReviewServerBootstrap(args: {
    * so the first, server-rendered batch follows the same focus as the API.
    */
   resolvePrepWeek?: UnifiedSessionOptions['resolvePrepWeek'];
+  resolvePresentationPrepReoffer?: UnifiedSessionOptions['resolvePresentationPrepReoffer'];
 }): Promise<ReviewServerBootstrap | null> {
   // Cohort uses only the idempotent browser-journey POST turn path. Keep this
   // defense even though the page bootstrap already short-circuits Cohort: a
@@ -122,7 +125,7 @@ export async function buildReviewServerBootstrap(args: {
       imageTier: user.imageTier ?? null,
     })
   );
-  const activeRotations = track ? getActiveRotations(track) : [];
+  const activeRotations = currentActiveRotations({ track, institution });
   const scheduledRotations = SCHEDULED_ROTATIONS[institution];
   const studyable = inPlayStudyRotations(activeModules);
   // Cohort returned before any data read above, so only md3's private server
@@ -242,16 +245,21 @@ export async function buildReviewServerBootstrap(args: {
       media: intent.media,
       focusRotation,
       topics: intent.topics,
+      cluster: intent.cluster,
+      prepDisabled: args.searchParams.get('prep') === 'off',
       timezone: args.studyTimezone ?? undefined,
     });
     // No refreshLeaseTtlMs: the review pages declare no maxDuration and run
     // under the platform default, so the refreshes this render starts take the
     // default lease, the shortest configured ceiling. That errs short, which
     // risks a duplicate build rather than a lease outliving a stopped one.
-    const response = await getUnifiedSession(
+    const response = await getUnifiedSessionNeverEmptyForPrep(
       new NextRequest(`${args.requestOrigin ?? 'https://md3.info'}/api/study/unified-session?${params}`),
       { userId: args.userId, isGuest: false },
-      ...(args.resolvePrepWeek ? [{ resolvePrepWeek: args.resolvePrepWeek }] : []),
+      ...((args.resolvePrepWeek || args.resolvePresentationPrepReoffer) ? [{
+        ...(args.resolvePrepWeek ? { resolvePrepWeek: args.resolvePrepWeek } : {}),
+        ...(args.resolvePresentationPrepReoffer ? { resolvePresentationPrepReoffer: args.resolvePresentationPrepReoffer } : {}),
+      }] : []),
     );
     if (!response.ok) {
       throw new Error(`server review slot failed (${response.status})`);
@@ -296,8 +304,12 @@ export async function buildReviewServerBootstrap(args: {
       media: intent.media,
       focusRotation,
       topics: intent.topics,
+      cluster: intent.cluster,
+      prepDisabled: args.searchParams.get('prep') === 'off',
     }),
     items: interleave(perSlotItems),
+    emptyReason: perSlotItems.every(items => items.length === 0)
+      ? delivered.map(({ payload }) => payload.emptyReason).find(Boolean) ?? null : null,
     newRemaining,
   };
 

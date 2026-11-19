@@ -87,6 +87,13 @@ describe('POST /api/user/email-aliases', () => {
     expect(json.error).toBe('Authentication required');
   });
 
+  it('refuses an alias on the reserved linked-profile domain before sending anything', async () => {
+    vi.mocked(requireAuth).mockResolvedValue({ userId: 'user-1' });
+    const res = await POST(makeRequest({ email: 'profile-abc@linked-profile.md3.invalid' }));
+    expect(res.status).toBe(400);
+    expect(mocks.send).not.toHaveBeenCalled();
+  });
+
   it('returns 400 for invalid JSON body', async () => {
     vi.mocked(requireAuth).mockResolvedValue({ userId: 'user-1' });
 

@@ -5,21 +5,6 @@
   "attribution": "MD3 contributors",
   "cards": [
     {
-      "id": "cohort:paeds:c-c05f54a6a2a4:v1",
-      "origin": "mdx:1467f82a2f40afa94ce98a137e7539c0",
-      "discipline": "paeds",
-      "cardType": "cloze",
-      "sourceComponent": "KeyPoint",
-      "front": "A prolonged aPTT in haemophilia [___] on mixing with normal plasma, unlike an inhibitor.",
-      "back": "corrects",
-      "context": "Both haemophilias sit in the INTRINSIC pathway, which aPTT measures. PT/INR tests the extrinsic pathway and is untouched.\n\nSo the coagulation screen shows an isolated prolonged aPTT — and because the defect is a factor rather than an inhibitor, it CORRECTS on mixing with normal plasma.\n\nA prolonged aPTT that fails to correct points at an inhibitor, such as antiphospholipid antibody, instead.",
-      "complexity": 3,
-      "importance": 2,
-      "variantGroup": "cohort:paeds:g-64b1e3601842",
-      "variantIndex": null,
-      "reference": null
-    },
-    {
       "id": "cohort:paeds:c-c097b3c6190f:v1",
       "origin": "mdx:76da786e8939d6668104956f78df9bd7",
       "discipline": "paeds",
@@ -48,25 +33,6 @@
       "variantGroup": "cohort:paeds:g-fea0830f309e",
       "variantIndex": null,
       "reference": null
-    },
-    {
-      "id": "cohort:paeds:c-c0ba15d72eec:v1",
-      "origin": "mdx:773d853d21edf8d68f269baf7892637b",
-      "discipline": "paeds",
-      "cardType": "cloze",
-      "sourceComponent": "KeyPoint",
-      "front": "In febrile neutropaenia, broad-spectrum IV antibiotics must be given within [___] minutes.",
-      "back": "60",
-      "context": "A neutropaenic child cannot mount a normal inflammatory response — Gram-negative bacteraemia can progress from fever spike to septic shock in hours.\n\nOn arrival take blood cultures (peripheral + central line), urine, swabs, and CXR if respiratory symptoms — do NOT let investigations delay the first dose of empiric piperacillin-tazobactam (or local equivalent).",
-      "complexity": 1,
-      "importance": 2,
-      "variantGroup": null,
-      "variantIndex": null,
-      "reference": {
-        "title": "Fever and suspected or confirmed neutropenia",
-        "publisher": "The Royal Children's Hospital Melbourne",
-        "url": "https://www.rch.org.au/clinicalguide/guideline_index/Fever_and_suspected_or_confirmed_neutropenia/"
-      }
     },
     {
       "id": "cohort:paeds:c-c0d15211677d:v1",
@@ -186,21 +152,6 @@
       }
     },
     {
-      "id": "cohort:paeds:c-c2f247683b19:v1",
-      "origin": "mdx:93771c25ed328e7d52e39f5781cd26d6:blank-1",
-      "discipline": "paeds",
-      "cardType": "cloze",
-      "sourceComponent": "KeyPoint",
-      "front": "Greasy, yellow, adherent scale on the scalp of an otherwise well infant is cradle [___] (infantile seborrhoeic dermatitis).",
-      "back": "cap",
-      "context": "Cradle cap is infantile seborrhoeic dermatitis — non-itchy and self-limiting. Soften the scale with emollient then brush gently; ketoconazole shampoo or mild hydrocortisone if persistent.",
-      "complexity": 2,
-      "importance": 2,
-      "variantGroup": "cohort:paeds:g-ac24ef6c3550",
-      "variantIndex": 1,
-      "reference": null
-    },
-    {
       "id": "cohort:paeds:c-c341883b6eb2:v1",
       "origin": "mdx:44738baebe4474f5a7a710d8b1525b52",
       "discipline": "paeds",
@@ -261,6 +212,21 @@
       "reference": null
     },
     {
+      "id": "cohort:paeds:c-c40ffba3f289:v1",
+      "origin": "mdx:b7806fac3e1d52f112833f1b8895abf0",
+      "discipline": "paeds",
+      "cardType": "cloze",
+      "sourceComponent": "KeyPoint",
+      "front": "A 3-day-old is shocked as the duct closes, with weak femoral pulses. Start [___] to reopen the duct.",
+      "back": "prostaglandin",
+      "context": "Shock on day three of life, as the duct closes, with weak femoral pulses, is a duct-dependent lesion until a cardiologist says otherwise.\n\nA duct-reopening infusion buys time. Oxygen and a fluid bolus do not replace it.",
+      "complexity": 4,
+      "importance": 2,
+      "variantGroup": null,
+      "variantIndex": null,
+      "reference": null
+    },
+    {
       "id": "cohort:paeds:c-c44dc881a0c9:v1",
       "origin": "mdx:89b69bd890896d147b089b2b0a21d3fa",
       "discipline": "paeds",
@@ -270,6 +236,21 @@
       "back": "6 weeks",
       "context": "PREDICT stratifies the oxygen threshold by age and risk rather than one flat number — the very young, and infants under 12 months with an underlying condition, earn the higher cut-off.\n\nAbove the threshold, chasing mid-to-high 90s saturations only lengthens admissions (the BIDS trial); below it, persistent readings — not a single dip — justify starting low-flow oxygen.",
       "complexity": 3,
+      "importance": 2,
+      "variantGroup": null,
+      "variantIndex": null,
+      "reference": null
+    },
+    {
+      "id": "cohort:paeds:c-c46718132ba8:v1",
+      "origin": "mdx:b787c713a31ec15ed61d755b138ee5ef",
+      "discipline": "paeds",
+      "cardType": "cloze",
+      "sourceComponent": "KeyPoint",
+      "front": "IV fluids in severe bronchiolitis run at two-thirds maintenance because respiratory distress drives non-osmotic release of [___], so full-rate fluid would be retained and dilute the sodium.",
+      "back": "ADH",
+      "context": "Hypoxia, hyperinflation and the intrathoracic pressure swings of a struggling infant all drive non-osmotic release of antidiuretic hormone, and ADH makes the kidney hold free water.\n\nGive full maintenance and that water is retained: the sodium is diluted, and you add hyponatraemia, which can seize, and pulmonary oedema to the bronchiolitis.\n\nTwo-thirds maintenance of an isotonic fluid stays below what the ADH-primed kidney will retain. Feeding route comes first — nasogastric is first-line once feeds fall below about half.",
+      "complexity": 1,
       "importance": 2,
       "variantGroup": null,
       "variantIndex": null,
@@ -306,21 +287,6 @@
       "reference": null
     },
     {
-      "id": "cohort:paeds:c-c47d0d88a5fd:v1",
-      "origin": "mdx:bfbc2b54d8bbfb35005b2c07c24975f1:blank-2",
-      "discipline": "paeds",
-      "cardType": "cloze",
-      "sourceComponent": "KeyPoint",
-      "front": "Atopic dermatitis affects 10-20% of children, with 85% of childhood cases beginning before age 5. It can precede food allergy, allergic rhinitis and [___], but this is an increased-risk association rather than a fixed progression.",
-      "back": "asthma",
-      "context": "Eczema affects 10-20% of children; about 85% of childhood cases begin before age 5. It reflects skin-barrier dysfunction and a Th2-skewed immune response.\n\nEarly or severe eczema is associated with later food allergy, asthma and allergic rhinitis. The 'atopic march' is a population association, not a fixed sequence; most children do not develop every condition.",
-      "complexity": 2,
-      "importance": 2,
-      "variantGroup": "cohort:paeds:g-5b63644b3bf2",
-      "variantIndex": 2,
-      "reference": null
-    },
-    {
       "id": "cohort:paeds:c-c4ace483ae49:v1",
       "origin": "mdx:65167e6426cc32e4adcfb60d20ae42f9:blank-0",
       "discipline": "paeds",
@@ -351,6 +317,36 @@
       "reference": null
     },
     {
+      "id": "cohort:paeds:c-c4c92818b451:v1",
+      "origin": "mdx:9a43c52f558a06652d2e86802b4e822a",
+      "discipline": "paeds",
+      "cardType": "cloze",
+      "sourceComponent": "KeyPoint",
+      "front": "Weakness that is predominantly proximal (hips, shoulders, trunk) localises to the muscle or the anterior horn cell, whereas predominantly distal weakness localises to a [___].",
+      "back": "neuropathy",
+      "context": "Where the weakness sits on the body points to where the lesion sits in the motor unit.\n\n Muscle disease and anterior horn cell disease weaken the PROXIMAL muscles first (shoulders, hips, trunk): the child cannot hold the head, sits late, and later shows Gowers' sign climbing up the legs to stand.\n\nNerve disease (neuropathy) weakens DISTALLY first: hands and feet, foot drop, wasting below the knee. Tongue fasciculations in a weak, alert infant are the anterior horn cell talking, and are the classic SMA sign.",
+      "complexity": 1,
+      "importance": 2,
+      "variantGroup": null,
+      "variantIndex": null,
+      "reference": null
+    },
+    {
+      "id": "cohort:paeds:c-c50721f3bf42:v1",
+      "origin": "mdx:675831e8a2977d9d08c085cd85f25d97",
+      "discipline": "paeds",
+      "cardType": "cloze",
+      "sourceComponent": "KeyPoint",
+      "front": "Painless nail shedding one to two months after hand, foot and mouth disease is called [___] and needs no treatment.",
+      "back": "onychomadesis",
+      "context": "Onychomadesis, separation and shedding of the nail from the proximal end, typically occurs one to two months after hand, foot and mouth. It is expected, and it alarms everyone.\n\nThe link is not obvious at that distance, so the child returns with 'their nails are falling off' and is investigated for deficiency or fungal infection. It is neither.\n\nThe nail matrix was transiently interrupted during the illness; the nails regrow normally and need no treatment. The reassurance depends on asking what happened six weeks ago.",
+      "complexity": 4,
+      "importance": 2,
+      "variantGroup": null,
+      "variantIndex": null,
+      "reference": null
+    },
+    {
       "id": "cohort:paeds:c-c538b3fc5e0f:v1",
       "origin": "mdx:33ba12f8f3b4162f4336ed29b0566c54",
       "discipline": "paeds",
@@ -374,22 +370,7 @@
       "front": "Joint inflammation in a child under 16 with no other cause must last at least [___] to define juvenile idiopathic arthritis.",
       "back": "6 weeks",
       "context": "The 6-week threshold is the whole point — it separates chronic JIA from the far commoner transient/post-infectious arthritis that resolves on its own. Onset must be before the 16th birthday.",
-      "complexity": 1,
-      "importance": 2,
-      "variantGroup": null,
-      "variantIndex": null,
-      "reference": null
-    },
-    {
-      "id": "cohort:paeds:c-c5781085a60d:v1",
-      "origin": "mdx:403c9b94179c34a38cfbb21c9abe8948",
-      "discipline": "paeds",
-      "cardType": "cloze",
-      "sourceComponent": "KeyPoint",
-      "front": "In ALL, reduced red-cell production causes [___], producing pallor and fatigue.",
-      "back": "anaemia",
-      "context": "Every presenting feature traces back to blast cells crowding out normal marrow: loss of red-cell production causes anaemia (pallor, fatigue).\n\nLoss of platelets causes thrombocytopaenia (bruising, petechiae), and marrow expansion causes bone pain.\n\nHepatosplenomegaly and lymphadenopathy reflect leukaemic infiltration of those organs. Peak age 2-5 years; ~85-90% cured with 2-year multi-phase chemo.",
-      "complexity": 1,
+      "complexity": 3,
       "importance": 2,
       "variantGroup": null,
       "variantIndex": null,
@@ -456,21 +437,6 @@
       "reference": null
     },
     {
-      "id": "cohort:paeds:c-c6d99b5fbafa:v1",
-      "origin": "mdx:e9f998fe7ec6789ac34c3345733475ff:blank-1",
-      "discipline": "paeds",
-      "cardType": "cloze",
-      "sourceComponent": "KeyPoint",
-      "front": "Two serious complications of osteomyelitis are spread to the adjacent joint causing septic arthritis, and unequal limb lengths from growth-plate damage, termed [___].",
-      "back": "limb-length discrepancy",
-      "context": "Untreated or chronic osteomyelitis spreads to the neighbouring joint and damages the adjacent growth plate, so a delayed presentation risks both an infected joint and a future limb-length problem.",
-      "complexity": 1,
-      "importance": 2,
-      "variantGroup": "cohort:paeds:g-fd8005ab697a",
-      "variantIndex": 1,
-      "reference": null
-    },
-    {
       "id": "cohort:paeds:c-c712f9c92b3d:v1",
       "origin": "mdx:0417fcbf4328bba0a9dc2163b63c41e8:blank-1",
       "discipline": "paeds",
@@ -516,6 +482,44 @@
       "reference": null
     },
     {
+      "id": "cohort:paeds:c-c762969b47d3:v1",
+      "origin": "mdx:046dc3939dc1121ec244f061e8f3f248",
+      "discipline": "paeds",
+      "cardType": "cloze",
+      "sourceComponent": "KeyPoint",
+      "front": "The first half of a child's burn resuscitation fluid is due within [___] of the injury, not of arrival.",
+      "back": "8 hours",
+      "context": "Paediatric burn resuscitation uses 3 mL of Hartmann's per kilogram per percent burned, over 24 hours, plus maintenance on a separate line.\n\nHalf of that resuscitation volume is due by eight hours after the burn itself. Arrival time does not reset the clock.",
+      "complexity": 1,
+      "importance": 2,
+      "variantGroup": null,
+      "variantIndex": null,
+      "reference": {
+        "title": "Burns - acute management",
+        "publisher": "The Royal Children's Hospital Melbourne",
+        "url": "https://www.rch.org.au/clinicalguide/guideline_index/Burns/"
+      }
+    },
+    {
+      "id": "cohort:paeds:c-c776b20cdfc8:v1",
+      "origin": "mdx:1cce1f206882f6aa3202c4cc2d08072a:blank-0",
+      "discipline": "paeds",
+      "cardType": "cloze",
+      "sourceComponent": "KeyPoint",
+      "front": "An avulsed permanent tooth should be replanted within [___] minutes; if that cannot happen at once, carry it to the dentist in milk to keep the periodontal ligament alive.",
+      "back": "60",
+      "context": "Replantation rule splits by tooth type. PERMANENT: replant within 60 min (ideally <15 min); handle by crown only, rinse gently (preserves periodontal ligament), store in milk or saline if can't replant immediately.\n\nPRIMARY (baby): do NOT replant — risks damaging the developing permanent tooth bud (ankylosis, infection, developmental disturbance).\n\nPractical: adult/older child permanent tooth → milk, dentist within 30-60 min; toddler baby tooth → don't replant, dentist to assess remaining teeth and soft tissue (permanent teeth erupt age 6+).",
+      "complexity": 2,
+      "importance": 2,
+      "variantGroup": "cohort:paeds:g-91b7bfd003ec",
+      "variantIndex": 0,
+      "reference": {
+        "title": "Dental trauma",
+        "publisher": "The Royal Children's Hospital Melbourne",
+        "url": "https://www.rch.org.au/clinicalguide/guideline_index/Dental_trauma/"
+      }
+    },
+    {
       "id": "cohort:paeds:c-c7f8b6a1130a:v1",
       "origin": "mdx:e93da2ab50c439a40035b19dc542e077:blank-0",
       "discipline": "paeds",
@@ -558,6 +562,21 @@
       "importance": 2,
       "variantGroup": "cohort:paeds:g-a52cd6ba5b62",
       "variantIndex": 2,
+      "reference": null
+    },
+    {
+      "id": "cohort:paeds:c-c913d2a75918:v1",
+      "origin": "mdx:271ead30901a2878db3d219a3269877b",
+      "discipline": "paeds",
+      "cardType": "cloze",
+      "sourceComponent": "KeyPoint",
+      "front": "An alert 3-month-old with head lag, absent reflexes, a bell-shaped chest with paradoxical breathing and tongue fasciculations needs urgent [___] gene testing, because treatment is time-critical.",
+      "back": "SMN1",
+      "context": "Two floppy 3-month-olds, opposite lesions. One is not alert, has had seizures and has brisk reflexes: central hypotonia, so investigate the brain (MRI, metabolic screen, genetics).\n\nThe other is alert and tracks well, with a bell-shaped chest, paradoxical breathing, tongue fasciculations and no reflexes: the anterior horn cell. Test SMN1 deletion, not muscle biopsy or EEG.\n\nSMA now has disease-modifying treatment (nusinersen, risdiplam, onasemnogene gene therapy), and outcome depends on starting early. So an alert weak infant with absent reflexes gets a same-week genetic test.",
+      "complexity": 3,
+      "importance": 2,
+      "variantGroup": null,
+      "variantIndex": null,
       "reference": null
     },
     {
@@ -764,6 +783,21 @@
       }
     },
     {
+      "id": "cohort:paeds:c-ccaed1a1ab69:v1",
+      "origin": "mdx:938fcc1f44438812374bad2c66dacc8b",
+      "discipline": "paeds",
+      "cardType": "cloze",
+      "sourceComponent": "KeyPoint",
+      "front": "A newborn with midline clefting, microphthalmia, scalp cutis aplasia and polydactyly has trisomy [___].",
+      "back": "13",
+      "context": "Trisomy 13 is MIDLINE failure, often holoprosencephaly: sloping forehead, midline clefting, microphthalmia. Look deliberately for CUTIS APLASIA at the scalp vertex, nearly specific, and postaxial polydactyly.\n\nTrisomy 18 instead has the clenched overlapping fist, rocker-bottom feet and small chin. Both have severe growth restriction, usually found antenatally. Trisomy 13 median survival is days; a few survive a year.\n\nGoals of care from the first hour. Anticipate central apnoea, severe hypoglycaemia, seizures and cleft feeding failure, and examine the eyes for microphthalmia, coloboma and retinal dysplasia.",
+      "complexity": 4,
+      "importance": 2,
+      "variantGroup": null,
+      "variantIndex": null,
+      "reference": null
+    },
+    {
       "id": "cohort:paeds:c-ccb2b27d6f02:v1",
       "origin": "mdx:3c249273c1c03a3f608d272a7624d1e7:blank-1",
       "discipline": "paeds",
@@ -794,6 +828,21 @@
       "reference": null
     },
     {
+      "id": "cohort:paeds:c-cd1564a8dfae:v1",
+      "origin": "mdx:55c6526fbdea6a30334eedd8c9738524:blank-0",
+      "discipline": "paeds",
+      "cardType": "cloze",
+      "sourceComponent": "KeyPoint",
+      "front": "An undescended testis rarely descends after [___] of age — refer then, aiming for orchidopexy at 6-12 months.",
+      "back": "3 months",
+      "context": "Most testes that will descend do so in the first few months of life; beyond that, waiting adds nothing, so refer rather than watch.\n\nEarly surgery protects heat-sensitive germ cells — the longer a testis sits inguinal, the worse the fertility outcome. Prepubertal orchidopexy also lowers (never removes) malignancy risk and keeps the testis examinable.",
+      "complexity": 1,
+      "importance": 2,
+      "variantGroup": "cohort:paeds:g-cd78394db114",
+      "variantIndex": 0,
+      "reference": null
+    },
+    {
       "id": "cohort:paeds:c-cd3845a96d52:v1",
       "origin": "mdx:19eb2ad32bcbfdb1f682285fb8d23c09:blank-0",
       "discipline": "paeds",
@@ -807,6 +856,40 @@
       "variantGroup": "cohort:paeds:g-555c754ee5f0",
       "variantIndex": 0,
       "reference": null
+    },
+    {
+      "id": "cohort:paeds:c-cd7762f05230:v1",
+      "origin": "mdx:812cb6c0be748fca35159184127e113f",
+      "discipline": "paeds",
+      "cardType": "cloze",
+      "sourceComponent": "KeyPoint",
+      "front": "A febrile 2-year-old with no focus grows E. coli in the urine. Treat this as [___], not a short cystitis course.",
+      "back": "pyelonephritis",
+      "context": "Fever with a positive urine in a toddler is a kidney infection, not a three-day bladder course.\n\nThe antibiotic has to reach the renal parenchyma. A short cystitis script under-treats it.",
+      "complexity": 4,
+      "importance": 2,
+      "variantGroup": null,
+      "variantIndex": null,
+      "reference": null
+    },
+    {
+      "id": "cohort:paeds:c-cda01df940cc:v1",
+      "origin": "mdx:87b4e83a7e741b86e2a8a1ef149508ac",
+      "discipline": "paeds",
+      "cardType": "cloze",
+      "sourceComponent": "KeyPoint",
+      "front": "A 2-month-old has persistent thrush, Pneumocystis pneumonia, diarrhoea, failure to thrive, severe lymphopenia and no thymic shadow. Definitive treatment is [___].",
+      "back": "haematopoietic stem cell transplantation",
+      "context": "Severe combined immunodeficiency causes profound T-cell dysfunction, opportunistic infection and failure to thrive in early infancy.\n\nProtect the infant from infection and proceed urgently to haematopoietic stem cell transplantation; earlier transplant improves survival.",
+      "complexity": 3,
+      "importance": 2,
+      "variantGroup": "cohort:paeds:g-b5fbc49bbe91",
+      "variantIndex": null,
+      "reference": {
+        "title": "ASCIA-TAPID Consensus Guideline: Diagnosis, Management and Transplantation of SCID in Australia and New Zealand",
+        "publisher": "ASCIA",
+        "url": "https://www.allergy.org.au/hp/papers/ascia-guidelines-scid-tapid"
+      }
     },
     {
       "id": "cohort:paeds:c-ce415824b6ee:v1",
@@ -871,21 +954,6 @@
         "publisher": "The Royal Children's Hospital Melbourne",
         "url": "https://www.rch.org.au/clinicalguide/guideline_index/HenochSchonlein_Purpura/"
       }
-    },
-    {
-      "id": "cohort:paeds:c-cfb57e2dd9bd:v1",
-      "origin": "mdx:d367ea7449c0b5d7d2330db9bb80e393:blank-1",
-      "discipline": "paeds",
-      "cardType": "cloze",
-      "sourceComponent": "KeyPoint",
-      "front": "First-line paediatric anaphylaxis: IM adrenaline 1:1000 at 0.01 mg/kg (capped at the adult dose) into the anterolateral thigh; repeat every [___] minutes if needed.",
-      "back": "5",
-      "context": "First-line for paediatric anaphylaxis is IM adrenaline 1:1000 at 0.01 mg/kg (max 0.5 mg) into lateral thigh. 1:1000 (1 mg/mL) is for IM — do NOT confuse with 1:10,000 (IV cardiac arrest dose).\n\nEpiPen Jr (0.15 mg) for 7.5-20 kg, EpiPen (0.3 mg) for >20 kg. Repeat every 5 min if needed. IM-not-IV prevents catastrophic tachyarrhythmias.",
-      "complexity": 2,
-      "importance": 2,
-      "variantGroup": "cohort:paeds:g-ad56c4b9025a",
-      "variantIndex": 1,
-      "reference": null
     }
   ]
 }

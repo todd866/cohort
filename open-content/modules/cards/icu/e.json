@@ -20,36 +20,6 @@
       "reference": null
     },
     {
-      "id": "cohort:icu:c-e0ae98953755:v1",
-      "origin": "mdx:e9aa25e87429f76f58505257810f4bc0:blank-0",
-      "discipline": "icu",
-      "cardType": "cloze",
-      "sourceComponent": "KeyPoint",
-      "front": "Tourniquets are safe for up to [___] hours; always document time of application.",
-      "back": "2",
-      "context": "The 2-hour tourniquet window comes from military trauma data: ischaemic nerve injury and reperfusion complications are rare under 2 hours, increase between 2-6 hours, and become common beyond 6.\n\nThe time-of-application written on the tourniquet (or limb) is critical for downstream decisions: short interval = release once volume-resuscitated and bleeding controlled by other.\n\nThe bigger error is hesitating to apply one when needed — uncontrolled extremity haemorrhage is rapidly fatal.",
-      "complexity": 2,
-      "importance": 2,
-      "variantGroup": "cohort:icu:g-7da90d0c8108",
-      "variantIndex": 0,
-      "reference": null
-    },
-    {
-      "id": "cohort:icu:c-e0fdc2d9a503:v1",
-      "origin": "mdx:f85da32137cd89952a3497449c798d3c:blank-0",
-      "discipline": "icu",
-      "cardType": "cloze",
-      "sourceComponent": "KeyPoint",
-      "front": "NAC can cease when paracetamol is <10 mg/L, ALT is falling, INR is <[___], and the patient is asymptomatic; pH belongs to King's College transplant criteria.",
-      "back": "2",
-      "context": "NAC cessation criteria are conservative because hepatotoxicity peaks at 72-96 hours and can still progress after NAC is stopped.\n\nKing's College Hospital criteria for paracetamol-induced acute liver failure (the threshold for transplant referral) include: arterial pH <7.3 after fluid resuscitation, OR all three of (creatinine >300 µmol/L.",
-      "complexity": 1,
-      "importance": 2,
-      "variantGroup": "cohort:icu:g-4532837c837c",
-      "variantIndex": 0,
-      "reference": null
-    },
-    {
       "id": "cohort:icu:c-e1255eefbf7a:v1",
       "origin": "mdx:087b268c29a2fed1a4355d8c71d3d190",
       "discipline": "icu",
@@ -92,6 +62,21 @@
       "importance": 2,
       "variantGroup": null,
       "variantIndex": null,
+      "reference": null
+    },
+    {
+      "id": "cohort:icu:c-e1af54a49187:v1",
+      "origin": "mdx:8981598b9e19e9dde1e1913c4c585ca9:blank-1",
+      "discipline": "icu",
+      "cardType": "cloze",
+      "sourceComponent": "KeyPoint",
+      "front": "After treating anaphylaxis, observe for a minimum of 4 hours for a [___] reaction.",
+      "back": "biphasic",
+      "context": "Biphasic reactions occur in up to 20% of anaphylaxis cases. The second phase can be as severe as the first and typically occurs within 4-8 hours, which is why observation is mandatory.",
+      "complexity": 2,
+      "importance": 2,
+      "variantGroup": "cohort:icu:g-6c2f6f11a75c",
+      "variantIndex": 1,
       "reference": null
     },
     {
@@ -185,21 +170,6 @@
       "reference": null
     },
     {
-      "id": "cohort:icu:c-e3443177851a:v1",
-      "origin": "mdx:7c7a0e82b811d1c5cbe7fc948c31b961:blank-1",
-      "discipline": "icu",
-      "cardType": "cloze",
-      "sourceComponent": "KeyPoint",
-      "front": "CRASH-2 showed TXA benefit only within 3 hours of injury; after this window there is possible [___].",
-      "back": "harm",
-      "context": "CRASH-2 (2010, 20,000 trauma patients) found tranexamic acid (1 g over 10 min, then 1 g over 8 hours) reduces all-cause mortality and bleeding deaths if given within 3 hours of injury.\n\nAfter 3 hours, TXA may HARM — possibly through paradoxical bleeding from secondary fibrinolysis activation. Document time of injury, not time of presentation. Don't give TXA late.",
-      "complexity": 2,
-      "importance": 2,
-      "variantGroup": "cohort:icu:g-3e85c186696e",
-      "variantIndex": 1,
-      "reference": null
-    },
-    {
       "id": "cohort:icu:c-e37192015d97:v1",
       "origin": "mdx:08aae2234c6723b970de16074b243cbc:blank-0",
       "discipline": "icu",
@@ -242,6 +212,21 @@
       "importance": 2,
       "variantGroup": "cohort:icu:g-7732cf960a5d",
       "variantIndex": 1,
+      "reference": null
+    },
+    {
+      "id": "cohort:icu:c-e5af3829533b:v1",
+      "origin": "mdx:d6a562cc94fa660385cb1ede780fe2f9:blank-0",
+      "discipline": "icu",
+      "cardType": "cloze",
+      "sourceComponent": "KeyPoint",
+      "front": "In non-shockable rhythms (PEA/asystole), adrenaline 1 mg IV is given [___] and then every 4 minutes.",
+      "back": "immediately",
+      "context": "In non-shockable arrest, adrenaline goes *immediately* because there's no defibrillation to prioritise — α-1 vasoconstriction raises diastolic aortic pressure, which is what perfuses the coronaries during CPR.\n\nContrast with shockable rhythms: there, defibrillation comes first, adrenaline is *delayed* until after the 2nd shock so the early shocks aren't competing with the catecholamine surge. Same dose either way (1 mg IV/IO).",
+      "complexity": 2,
+      "importance": 2,
+      "variantGroup": "cohort:icu:g-bfb1a999556c",
+      "variantIndex": 0,
       "reference": null
     },
     {
@@ -422,6 +407,21 @@
       "importance": 2,
       "variantGroup": null,
       "variantIndex": null,
+      "reference": null
+    },
+    {
+      "id": "cohort:icu:c-ed9644416f1d:v1",
+      "origin": "mdx:186b347630125ae98e10f12a836973a9:blank-0",
+      "discipline": "icu",
+      "cardType": "cloze",
+      "sourceComponent": "KeyPoint",
+      "front": "Key damage control resuscitation targets: pH greater than [___], lactate less than 4 mmol/L, ionised calcium greater than 1.1 mmol/L, and temperature greater than 35°C.",
+      "back": "7.2",
+      "context": "Resuscitation targets during damage control provide specific endpoints to guide product replacement. These numbers should be checked every 30-60 minutes during active MTP.\n\nTBI patients have higher targets because the injured brain tolerates coagulopathy and anaemia poorly.",
+      "complexity": 2,
+      "importance": 2,
+      "variantGroup": "cohort:icu:g-15d721c77449",
+      "variantIndex": 0,
       "reference": null
     },
     {

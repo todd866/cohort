@@ -174,6 +174,21 @@
       }
     },
     {
+      "id": "cohort:paeds:c-51f796d79127:v1",
+      "origin": "mdx:35e8e0019393afcf71db70d3d366d2d5",
+      "discipline": "paeds",
+      "cardType": "cloze",
+      "sourceComponent": "KeyPoint",
+      "front": "Neonatal herpes presents as skin-eye-mouth disease, central nervous system disease, or [___] disease.",
+      "back": "disseminated",
+      "context": "Usually acquired PERINATALLY from the birth canal, so the baby is normally formed at birth and sickens over days to weeks. True in-utero infection is rare: skin scarring, eye and brain injury at birth.\n\nThree patterns: skin, eye and mouth disease; central nervous system disease with seizures, lethargy and poor feeding; and disseminated disease with shock, hepatitis and coagulopathy.\n\nMost mothers have NO history of genital herpes, as infection is often unrecognised. A negative maternal history carries essentially no weight.",
+      "complexity": 3,
+      "importance": 2,
+      "variantGroup": null,
+      "variantIndex": null,
+      "reference": null
+    },
+    {
       "id": "cohort:paeds:c-521d57e1e113:v1",
       "origin": "mdx:b362e2662c6be249c584df7da9a6f0b0",
       "discipline": "paeds",
@@ -217,6 +232,25 @@
       "variantGroup": null,
       "variantIndex": null,
       "reference": null
+    },
+    {
+      "id": "cohort:paeds:c-531dfd971547:v1",
+      "origin": "mdx:fc58517b245efe5ba52d420968db86ce",
+      "discipline": "paeds",
+      "cardType": "cloze",
+      "sourceComponent": "KeyPoint",
+      "front": "A 4-year-old with gastroenteritis is floppy, tachycardic, with capillary refill of 4 seconds. The first bolus is 10 mL/kg of [___] saline.",
+      "back": "isotonic",
+      "context": "Floppy, tachycardic, and a capillary refill of 4 seconds is shock, not a maintenance-fluid problem.\n\nThe first bolus is 10 mL/kg of isotonic saline, then reassess. Hypotonic maintenance fluid is not a resuscitation bolus.",
+      "complexity": 4,
+      "importance": 2,
+      "variantGroup": null,
+      "variantIndex": null,
+      "reference": {
+        "title": "Intravenous fluids",
+        "publisher": "The Royal Children's Hospital Melbourne",
+        "url": "https://www.rch.org.au/clinicalguide/guideline_index/Intravenous_fluids/"
+      }
     },
     {
       "id": "cohort:paeds:c-53234df090e0:v1",
@@ -339,14 +373,14 @@
       "reference": null
     },
     {
-      "id": "cohort:paeds:c-551c7717f0a7:v1",
-      "origin": "mdx:68e7d4790184e5f61eb5541f673144f3",
+      "id": "cohort:paeds:c-54f9b86fee49:v1",
+      "origin": "mdx:79b7acc184f48143727980740be57c00",
       "discipline": "paeds",
       "cardType": "cloze",
       "sourceComponent": "KeyPoint",
-      "front": "The resuscitation fluid bolus for a shocked child is 10–20 mL/kg of isotonic [___] (e.g. 0.9% saline).",
-      "back": "crystalloid",
-      "context": "Separate resuscitation from maintenance. A shocked child gets a rapid bolus of isotonic crystalloid (10–20 mL/kg), reassessed after each — distinct from the slower Holliday-Segar maintenance calculation.",
+      "front": "A burn that is blotchy, blanches poorly, and feels dull, but is not white or leathery, is a [___] burn.",
+      "back": "deep dermal",
+      "context": "A burn that blanches and is very painful still has live capillaries and nerves. That is superficial or superficial dermal.\n\nDeep dermal skin is blotchy, blanches poorly, and feels dull. Full thickness is white or leathery and painless.",
       "complexity": 1,
       "importance": 2,
       "variantGroup": null,
@@ -381,21 +415,6 @@
       "importance": 2,
       "variantGroup": null,
       "variantIndex": null,
-      "reference": null
-    },
-    {
-      "id": "cohort:paeds:c-563f310b6c75:v1",
-      "origin": "mdx:6da7419cf01b14881a7a570e56427eb1:blank-0",
-      "discipline": "paeds",
-      "cardType": "cloze",
-      "sourceComponent": "KeyPoint",
-      "front": "Untreated Kawasaki disease causes [___] artery aneurysms in ~25% of children; IVIG within 10 days of fever onset reduces this to <5%.",
-      "back": "coronary",
-      "context": "Kawasaki disease is a medium-vessel vasculitis mainly of children <5 years. RCH diagnosis needs fever ≥4 days (US teaching says 5) plus ≥4 of 5 principal features.\n\nBilateral non-purulent conjunctival injection; polymorphous rash; cervical lymphadenopathy >1.5 cm; strawberry tongue or cracked lips; palmar/plantar erythema or oedema, later periungual desquamation.\n\nThe catastrophic complication is coronary artery aneurysm, in ~25% of untreated children, risking MI, sudden death and chronic coronary disease in adulthood.",
-      "complexity": 2,
-      "importance": 2,
-      "variantGroup": "cohort:paeds:g-cdaf267c62c9",
-      "variantIndex": 0,
       "reference": null
     },
     {
@@ -474,6 +493,21 @@
       "reference": null
     },
     {
+      "id": "cohort:paeds:c-573de7e2e44d:v1",
+      "origin": "mdx:18fb3fda58655d1d0e09205f4458d7a2",
+      "discipline": "paeds",
+      "cardType": "cloze",
+      "sourceComponent": "KeyPoint",
+      "front": "Of two infants with a VSD — one with a loud harsh pansystolic murmur and normal growth, one sweating on feeds with a 3 cm liver edge — the [___] murmur indicates the LARGER defect.",
+      "back": "soft",
+      "context": "A loud murmur means turbulent flow through a RESTRICTIVE hole — a small VSD with a big pressure gradient across it.\n\nA large VSD equalises ventricular pressures, so there is little gradient and the murmur is soft or absent. The heart failure comes from the volume shunted, not the noise.\n\nSo the quiet baby with tachypnoea, poor feeding, sweating and hepatomegaly is the sicker one.",
+      "complexity": 3,
+      "importance": 2,
+      "variantGroup": null,
+      "variantIndex": null,
+      "reference": null
+    },
+    {
       "id": "cohort:paeds:c-57ad6b5c4274:v1",
       "origin": "mdx:d8552afcd2accc1c2b4ae52732ed4315:blank-1",
       "discipline": "paeds",
@@ -485,6 +519,21 @@
       "complexity": 2,
       "importance": 2,
       "variantGroup": "cohort:paeds:g-330c28ce5885",
+      "variantIndex": 1,
+      "reference": null
+    },
+    {
+      "id": "cohort:paeds:c-57e231c56bf3:v1",
+      "origin": "mdx:3921467fd43a18e1eab4fa3fc0d21fa2:blank-1",
+      "discipline": "paeds",
+      "cardType": "cloze",
+      "sourceComponent": "KeyPoint",
+      "front": "Von Willebrand disease — most common inherited bleeding disorder (~1% prevalence); vWF has two roles: platelet adhesion + carrier protein for Factor [___].",
+      "back": "VIII",
+      "context": "Von Willebrand disease is the commonest inherited bleeding disorder (~1% prevalence). vWF has two roles: bridges platelets to damaged endothelium (primary haemostasis) and carries Factor VIII.\n\nvWF deficiency thus causes mucocutaneous bleeding (epistaxis, menorrhagia, easy bruising) AND mild factor VIII deficiency-like deep bleeding in severe types.",
+      "complexity": 1,
+      "importance": 2,
+      "variantGroup": "cohort:paeds:g-b8b279094f83",
       "variantIndex": 1,
       "reference": null
     },
@@ -673,21 +722,6 @@
       "reference": null
     },
     {
-      "id": "cohort:paeds:c-5bb443f0684b:v1",
-      "origin": "mdx:93771c25ed328e7d52e39f5781cd26d6:blank-0",
-      "discipline": "paeds",
-      "cardType": "cloze",
-      "sourceComponent": "KeyPoint",
-      "front": "Greasy, yellow, adherent scale on the scalp of an otherwise well infant is [___] cap (infantile seborrhoeic dermatitis).",
-      "back": "cradle",
-      "context": "Cradle cap is infantile seborrhoeic dermatitis — non-itchy and self-limiting. Soften the scale with emollient then brush gently; ketoconazole shampoo or mild hydrocortisone if persistent.",
-      "complexity": 2,
-      "importance": 2,
-      "variantGroup": "cohort:paeds:g-ac24ef6c3550",
-      "variantIndex": 0,
-      "reference": null
-    },
-    {
       "id": "cohort:paeds:c-5bcbbef7cd88:v1",
       "origin": "mdx:aa3f4910b3c623005abbf5a9bdcfd3b0",
       "discipline": "paeds",
@@ -808,6 +842,21 @@
       "reference": null
     },
     {
+      "id": "cohort:paeds:c-5ddd3054ff4b:v1",
+      "origin": "mdx:346306ccab244f0208ab4587283709eb",
+      "discipline": "paeds",
+      "cardType": "cloze",
+      "sourceComponent": "KeyPoint",
+      "front": "The most common vascular birthmark, a pink stain on the nape or glabella that fades, is the [___] patch.",
+      "back": "salmon",
+      "context": "The salmon patch (naevus simplex, 'stork bite', 'angel kiss') is the most common vascular birthmark.\n\nIt is a dull pink capillary stain present at birth, classically on the nape of the neck (22%), the glabella (20%) or the eyelids (5%), and it fades with time.\n\nIt matters because of what it is not: a port-wine stain persists and may need laser, and a haemangioma is not there at birth but grows, then involutes.",
+      "complexity": 1,
+      "importance": 2,
+      "variantGroup": null,
+      "variantIndex": null,
+      "reference": null
+    },
+    {
       "id": "cohort:paeds:c-5de8c2954aa8:v1",
       "origin": "mdx:519d16ffd4fa6ed61396f971b420da6a",
       "discipline": "paeds",
@@ -865,21 +914,6 @@
       "importance": 2,
       "variantGroup": "cohort:paeds:g-219bef2be567",
       "variantIndex": 1,
-      "reference": null
-    },
-    {
-      "id": "cohort:paeds:c-5e6e4a9029cd:v1",
-      "origin": "mdx:fe1a477561716914ff4cfe49ebd0fc7a:blank-0",
-      "discipline": "paeds",
-      "cardType": "cloze",
-      "sourceComponent": "KeyPoint",
-      "front": "Fetal pulmonary vascular resistance is [___] (lungs are fluid-filled, not gas-exchanging). The pulmonary artery → aorta shunt is the ductus arteriosus; the right atrium → left atrium shunt is the foramen ovale.",
-      "back": "high",
-      "context": "Fetal lungs are fluid-filled, so pulmonary vascular resistance is HIGH — higher than systemic, because the placenta is a huge low-resistance bed. Blood shunts right-to-left, away from the lungs.\n\nTwo lung bypasses: the foramen ovale, right atrium to left, taking the best-oxygenated blood to brain and coronaries; and the ductus arteriosus, pulmonary artery to aorta.\n\nAt birth the lungs inflate, resistance falls and the placenta goes, so both shut. Trap: a duct-dependent baby looks well at birth and collapses over days as the duct closes.",
-      "complexity": 2,
-      "importance": 2,
-      "variantGroup": "cohort:paeds:g-d365fc9c151e",
-      "variantIndex": 0,
       "reference": null
     },
     {
@@ -947,6 +981,21 @@
       "reference": null
     },
     {
+      "id": "cohort:paeds:c-5f69cbb40f33:v1",
+      "origin": "mdx:62e08337cbbb9b81374f34702749d5b3:blank-0",
+      "discipline": "paeds",
+      "cardType": "cloze",
+      "sourceComponent": "KeyPoint",
+      "front": "First-line paediatric anaphylaxis: IM adrenaline 1:1000 at [___] mg/kg (capped at the adult dose) into the anterolateral thigh; repeat every 5 minutes if needed.",
+      "back": "0.01",
+      "context": "First-line for paediatric anaphylaxis is IM adrenaline 1:1000 at 0.01 mg/kg (max 0.5 mg) into lateral thigh. 1:1000 (1 mg/mL) is for IM — do NOT confuse with 1:10,000 (IV cardiac arrest dose).\n\nEpiPen Jr (0.15 mg) for 7.5-20 kg, EpiPen (0.3 mg) for >20 kg. Repeat every 5 min if needed. IM-not-IV prevents catastrophic tachyarrhythmias.",
+      "complexity": 2,
+      "importance": 2,
+      "variantGroup": "cohort:paeds:g-55cb8cefbb8a",
+      "variantIndex": 0,
+      "reference": null
+    },
+    {
       "id": "cohort:paeds:c-5f912afb3956:v1",
       "origin": "mdx:b3acd8a84a30236baac98aa0b5e0c87f",
       "discipline": "paeds",
@@ -985,21 +1034,6 @@
       "front": "A sandpaper-textured rash with a strawberry tongue following a group A strep throat is [___] fever.",
       "back": "scarlet",
       "context": "Scarlet fever follows a group A strep throat: a fine, rough 'sandpaper' rash, flushed cheeks with circumoral pallor, and a strawberry tongue. It responds to penicillin.",
-      "complexity": 1,
-      "importance": 2,
-      "variantGroup": null,
-      "variantIndex": null,
-      "reference": null
-    },
-    {
-      "id": "cohort:paeds:c-5fe16f71b481:v1",
-      "origin": "mdx:2079f27604596200d781e1b010c0d795",
-      "discipline": "paeds",
-      "cardType": "cloze",
-      "sourceComponent": "KeyPoint",
-      "front": "The commonest cause of congenital adrenal hyperplasia is [___]-hydroxylase deficiency.",
-      "back": "21",
-      "context": "One enzyme block explains ~95% of cases: cortisol/aldosterone can't be made, so precursors shunt to androgens (virilising a female infant) and salt-wasting can cause neonatal adrenal crisis.",
       "complexity": 1,
       "importance": 2,
       "variantGroup": null,

@@ -26,6 +26,9 @@ export const FOCUS_OPTION_ORDER: readonly string[] = [
   'year1-kat1',
   'year1-kat2',
   'year1-kat3',
+  // Second-year (MD2) block rotations, in block order.
+  'year2-kat5',
+  'year2-kat7',
   // The first-year KAT4 + MMCA deck, 2026-10-21: with the Year 1 blocks.
   'md1-foundations',
   'usmle-step1-open',
@@ -62,6 +65,9 @@ export const FOCUS_OPTION_ORDER: readonly string[] = [
   // O&G, added 2026-10-28 for an elective attachment: with the other
   // attachment views, read alongside a rotation rather than sat.
   'obgyn',
+  // Trauma and GP, added 2026-11-18 for the first two 2027 attachments.
+  'trauma',
+  'gp',
   'mnd',
 ];
 

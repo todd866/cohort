@@ -1,3 +1,5 @@
+import { orderPrepKeys } from '@/lib/study/session-prep-allocation';
+import { shuffleWithSeed } from '@/lib/utils/shuffle';
 import { preferReviewedSimulationCards, simulationItemEvidence } from '@/lib/study/simulation-item-relevance';
 import { orderUnrecalledSimulationPreparation } from '@/lib/study/simulation-preparation';
 /**
@@ -274,6 +276,97 @@ export function reserveScheduledCore(
     ? (targetWorkload?.coreTargetSeats ?? size)
     : 0;
   build.coreTargetQuotaSatisfied = build.selectedCoreTargetSeats >= coreTargetSeatRequirement;
+}
+
+/**
+ * Reserve the staged class-preparation share after protected lanes and before
+ * ordinary concept rotation.  The plan is deliberately an id list: all rows
+ * still come from the already-authorized bulk pool, so shelved, rights, repeat,
+ * novelty and new-card gates remain enforced by the existing candidate picker,
+ * question reentry cap and SessionBuildState.addItem.
+ */
+export function reserveSessionPrepBlend(
+  inputs: SchedulerInputs,
+  build: SessionBuildState,
+): void {
+  const plan = inputs.options.sessionPrepBlend;
+  if (!plan || !Number.isFinite(plan.share) || plan.share <= 0 || plan.itemIds.length === 0) return;
+
+  const share = Math.min(0.5, Math.max(0.15, plan.share));
+  const discretionarySeats = Math.max(0, inputs.size - build.selectedItems.length);
+  const seats = Math.min(discretionarySeats, Math.floor(discretionarySeats * share));
+  if (seats === 0) return;
+
+  const wanted = new Set(plan.itemIds);
+  const cards = [...inputs.bulk.unseenCards, ...inputs.bulk.seenCards]
+    .filter(card => wanted.has(`card:${card.id}`));
+  const questions = inputs.bulk.rotationQuestions.filter(question => wanted.has(`question:${question.id}`));
+  const cardByKey = new Map(cards.map((card) => [`card:${card.id}`, card]));
+  const questionByKey = new Map(questions.map((question) => [`question:${question.id}`, question]));
+  const shuffledKeys = shuffleWithSeed(plan.itemIds.filter(key => cardByKey.has(key) || questionByKey.has(key)), `${inputs.servingRotationSeed}:class-prep`);
+  const orderedIds = orderPrepKeys(shuffledKeys, plan);
+
+  const stopAt = Math.min(inputs.size, build.selectedItems.length + seats);
+  for (const id of orderedIds) {
+    if (build.selectedItems.length >= stopAt) break;
+    const card = cardByKey.get(id);
+    const question = questionByKey.get(id);
+    if (!card && !question) continue;
+    if (card && !build.pickCardCandidate([card], {
+      similarityThreshold: inputs.interferenceThreshold, maxPerCluster: 3,
+    })) continue;
+    const reentry = { ...build.masteredReentryCounter };
+    if (question) {
+      if (build.selectedQuestionIds.has(question.id)) continue;
+      const sibling = questionSuppressionKey(question);
+      if (sibling && build.selectedQuestionVariantGroups.has(sibling)) continue;
+      if (!takeWithReentryCap(question.id, inputs.bulk.questionFamiliarity, resolveRetirementPolicy(), reentry)) continue;
+    }
+    const conceptId = card
+      ? resolvePrepConceptId(card.topics, inputs)
+      : resolveQuestionPrepConceptId(question!.id, inputs);
+    const concept = inputs.conceptMap.get(conceptId);
+    const topics = card?.topics ?? question?.topics ?? [];
+    const added = build.addItem({
+      type: card ? 'card' : 'question',
+      id: card?.id ?? question!.id,
+      conceptId,
+      conceptName: concept?.name ?? 'Class preparation',
+      priority: 1,
+      interventionReason: 'pre_teach',
+      topics,
+      ...(card ? {
+        clusterId: card.clusterId,
+        variantGroupId: card.variantGroupId,
+        variantIndex: card.variantIndex,
+        variantType: card.variantType,
+        complexity: card.complexity,
+        rotation: card.rotation,
+        challengePolicyApplied: false,
+      } : {
+        variantGroupId: question?.variantGroupId,
+        variantType: question?.variantType,
+        rotation: question?.rotation,
+        challengePolicyApplied: false,
+      }),
+    });
+    if (added && card) {
+      build.recordCluster(card.clusterId);
+      build.recordCardNeighborhood(card);
+    }
+    if (added && question) build.masteredReentryCounter.masteredServed = reentry.masteredServed;
+  }
+}
+
+function resolvePrepConceptId(topics: readonly string[], inputs: SchedulerInputs): string {
+  const match = inputs.concepts.find((concept) => concept.topics.some((topic) => topics.includes(topic)));
+  return match?.id ?? '_unattached';
+}
+
+function resolveQuestionPrepConceptId(questionId: string, inputs: SchedulerInputs): string {
+  const link = inputs.bulk.questionConceptLinks.find((candidate) => candidate.questionId === questionId && candidate.isPrimary)
+    ?? inputs.bulk.questionConceptLinks.find((candidate) => candidate.questionId === questionId);
+  return link?.conceptId ?? '_unattached';
 }
 
 /**
@@ -970,6 +1063,7 @@ export function fillCoverageLane(
       let count = 0;
       for (const card of bulk.unseenCards) {
         if (selectedCardIds.has(card.id)) continue;
+        if (bulk.passSetDeferredCardIds?.has(card.id)) continue;
         if (card.topics.some((t) => conceptTopics.has(t))) count++;
       }
       if (count > 0) conceptPristineCount.set(c.id, count);

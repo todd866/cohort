@@ -15,21 +15,26 @@ const STALE_AFTER_MS = 60_000;
 export function RefreshOnReturn() {
   const router = useRouter();
   useEffect(() => {
-    let hiddenAt: number | null = null;
-    const onVisibility = () => {
-      if (document.visibilityState === 'hidden') {
-        hiddenAt = Date.now();
-        return;
-      }
-      if (hiddenAt !== null && Date.now() - hiddenAt >= STALE_AFTER_MS) router.refresh();
-      hiddenAt = null;
+    let lastRefreshAt = Date.now();
+    const refresh = () => {
+      lastRefreshAt = Date.now();
+      router.refresh();
     };
+    const refreshIfStale = () => {
+      if (document.visibilityState === 'visible' && Date.now() - lastRefreshAt >= STALE_AFTER_MS) refresh();
+    };
+    // Client navigation can restore cached server props without a pageshow or
+    // visibility event. Refresh once on mount. Live panels own their polling.
+    refresh();
+    const onVisibility = () => refreshIfStale();
     const onPageShow = (event: PageTransitionEvent) => {
-      if (event.persisted) router.refresh();
+      if (event.persisted) refresh();
     };
+    window.addEventListener('focus', refreshIfStale);
     document.addEventListener('visibilitychange', onVisibility);
     window.addEventListener('pageshow', onPageShow);
     return () => {
+      window.removeEventListener('focus', refreshIfStale);
       document.removeEventListener('visibilitychange', onVisibility);
       window.removeEventListener('pageshow', onPageShow);
     };

@@ -26,7 +26,7 @@ export const CURRENT_CARD_CONTENT_SELECT = {
 } as const;
 
 export type CurrentContentContext = Pick<SessionContext, 'userId' | 'rotation' | 'practiceLocale' | 'weekFilter'> & Partial<Pick<
-  SessionContext, 'crossSourceRotations' | 'crossSourceMappingMode' | 'media' | 'imageTier'
+  SessionContext, 'crossSourceRotations' | 'crossSourceMappingMode' | 'media' | 'imageTier' | 'learnerItemPrediction'
 >>;
 export type CurrentQuestionRow = {
   stem: string;
@@ -113,6 +113,9 @@ export function normalizeAbbreviations(value: unknown): Record<string, string> |
 }
 
 
+type WithQuestionFacility = { facilityIndex?: number | null; totalAttempts?: number | null };
+type WithCardFacility = { facilityIndex?: number | null; sampleSize?: number | null };
+
 export type CurrentSessionSource =
   | ({ type: 'question' } & CurrentQuestionRow)
   | ({ type: 'card' } & CurrentCardRow);
@@ -156,7 +159,7 @@ export function withCurrentSessionBody(item: UnifiedItem, source: CurrentSession
 export async function loadCurrentSessionContent(
   ctx: CurrentContentContext,
   items: ReadonlyArray<Pick<UnifiedItem, 'type' | 'id'>>,
-  options: { includeQuestionConcepts?: boolean } = {},
+  options: { includeQuestionConcepts?: boolean; strict?: boolean } = {},
 ): Promise<Map<string, CurrentSessionSource>> {
   const questionIds = [...new Set(items
     .filter((item) => item.type === 'question')
@@ -194,6 +197,10 @@ export async function loadCurrentSessionContent(
             sourceFile: true,
             contentState: true,
             excluded: true,
+            // Two scalar columns on rows this read already fetches: the
+            // delivery prediction's item facility, at no extra query.
+            facilityIndex: true,
+            totalAttempts: true,
             ...CURRENT_QUESTION_CONTENT_SELECT,
             ...(options.includeQuestionConcepts ? { concepts: { where: { isPrimary: true }, select: { conceptId: true }, take: 2, orderBy: { conceptId: 'asc' as const } } } : {}),
             topics: true,
@@ -224,6 +231,8 @@ export async function loadCurrentSessionContent(
             week: true,
             moduleNodes: true,
             sourceFile: true,
+            facilityIndex: true,
+            sampleSize: true,
             ...CURRENT_CARD_CONTENT_SELECT,
             ownerUserId: true,
             studyDeckId: true,
@@ -243,6 +252,10 @@ export async function loadCurrentSessionContent(
       : Promise.resolve([] as CurrentCardRow[]),
   ]);
 
+  if (options.strict && (questionResult.status === 'rejected' || cardResult.status === 'rejected')) {
+    throw new Error('Current session content lookup failed');
+  }
+
   if (questionResult.status === 'rejected') {
     logger.error('Current question lookup failed; dropping selected questions', {
       userId: ctx.userId,
@@ -258,20 +271,35 @@ export async function loadCurrentSessionContent(
     });
   }
 
+  // Facility is split off the row here and handed to the request's
+  // delivery predictor. It must not stay on the source: callers fingerprint a
+  // source to detect content drift, and an attempt count moves on every answer.
+  const facility: Array<readonly [string, { facilityIndex: number | null; sampleSize: number | null }]> = [];
   const sources = new Map<string, CurrentSessionSource>();
   if (questionResult.status === 'fulfilled') {
-    for (const row of questionResult.value as CurrentQuestionRow[]) {
-      sources.set(sessionSourceKey('question', row.id), {
+    for (const fetched of questionResult.value as Array<CurrentQuestionRow & WithQuestionFacility>) {
+      const { facilityIndex, totalAttempts, ...row } = fetched;
+      const key = sessionSourceKey('question', row.id);
+      facility.push([key, { facilityIndex: facilityIndex ?? null, sampleSize: totalAttempts ?? null }]);
+      sources.set(key, {
         type: 'question', ...row, abbreviations: normalizeAbbreviations(row.abbreviations),
       });
     }
   }
   if (cardResult.status === 'fulfilled') {
-    for (const row of cardResult.value as CurrentCardRow[]) {
-      sources.set(sessionSourceKey('card', row.id), {
+    for (const fetched of cardResult.value as Array<CurrentCardRow & WithCardFacility>) {
+      const { facilityIndex, sampleSize, ...row } = fetched;
+      const key = sessionSourceKey('card', row.id);
+      facility.push([key, { facilityIndex: facilityIndex ?? null, sampleSize: sampleSize ?? null }]);
+      sources.set(key, {
         type: 'card', ...row, abbreviations: normalizeAbbreviations(row.abbreviations),
       });
     }
+  }
+  try {
+    ctx.learnerItemPrediction?.provideFacility(facility);
+  } catch {
+    // Telemetry only: a failed hand-off records a fallback prior, nothing more.
   }
 
   const candidateSources = [...sources.values()].filter((source) =>

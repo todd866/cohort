@@ -254,3 +254,9 @@ export function describeTopicHeat(heat: { band: TopicBand; level: TopicLevel }):
       return 'Ready';
   }
 }
+
+/** Pure shared recall decay; safe for scripts and tests without Prisma. */
+export function calculateDecayedStrength(strength: number, daysSinceReview: number, stabilityDays = 3): number {
+  if (daysSinceReview <= 0) return strength;
+  return strength * Math.pow(1 + daysSinceReview / stabilityDays, -0.5);
+}

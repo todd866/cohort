@@ -25,8 +25,15 @@ import { getFlowAxis } from '@/lib/manifold/flow-axis';
 import { computeGapDirection } from '@/lib/manifold/gap-analysis';
 import { computeKnowledgeVectorFromData } from '@/lib/manifold/knowledge-vector';
 import { prisma } from '@/lib/prisma';
-import { getStudyDayStart } from '@/lib/study-day';
-import { applyReviewLearningPoolPolicy, bulkFetchCandidates } from './bulk-candidates';
+import { getCourseDayStart } from '@/lib/study-day';
+import {
+  applyPassSetIntakePolicy,
+  applyReviewLearningPoolPolicy,
+  bulkFetchCandidates,
+  isExplicitIntakeScope,
+  passSetIntakeEnabled,
+} from './bulk-candidates';
+import { expandTopicSet } from '@/lib/topics';
 import { simulationPreparationStableIds } from '@/lib/study/simulation-preparation';
 import { hasDemonstratedLearningGap } from '@/lib/study/review-learning-policy';
 import { loadRecentClinicalThreadAnchors } from './concept-thread-history';
@@ -423,6 +430,21 @@ export async function loadSchedulerInputs(setup: SchedulerSetup): Promise<Schedu
     options.reviewChallenge,
     reviewLearningGapConceptIds,
   );
+  // New-material intake prefers the pass set (pass-set.ts). A scope the
+  // learner chose (a topic square, a week or session-prep deck, a simulation
+  // focus, an image or video picker) ignores it, and a liked concept's topics
+  // ("more like this") stay open. Reuses what this phase already loaded.
+  const likedTopics = new Set<string>();
+  for (const concept of concepts) {
+    if (cardSignalConcepts.liked.has(concept.id)) {
+      for (const topic of expandTopicSet(concept.topics)) likedTopics.add(topic);
+    }
+  }
+  bulk = applyPassSetIntakePolicy(bulk, {
+    enabled: passSetIntakeEnabled(),
+    explicitScope: isExplicitIntakeScope(options),
+    requestedTopics: likedTopics,
+  });
   let masteryEvidence: LoadedExamTargetMasteryEvidence | null = null;
   if (targetComputeRequested && runtimeTargetSnapshot) {
     try {
@@ -441,7 +463,7 @@ export async function loadSchedulerInputs(setup: SchedulerSetup): Promise<Schedu
           candidateConceptIds: conceptIds,
           examDate,
           todayRequiredCoreComplete: false,
-          todayStart: getStudyDayStart(new Date(selectionNowMs())),
+          todayStart: getCourseDayStart(new Date(selectionNowMs())),
           ...(selectionDeterminism
             ? { now: new Date(selectionDeterminism.nowMs) }
             : {}),

@@ -8,6 +8,7 @@
  * Allows users to log in with multiple email addresses.
  */
 
+import { isLinkedProfileEmail } from '@/lib/profiles/linked-profile-identity';
 import { NextRequest, NextResponse } from 'next/server';
 import { requireAuth } from '@/lib/api-utils';
 import { prisma } from '@/lib/prisma';
@@ -28,7 +29,7 @@ const emailAliasPostSchema = z.object({
 });
 
 export async function GET() {
-  const auth = await requireAuth();
+  const auth = await requireAuth({ accountOnly: true });
   if (auth.response) return auth.response;
   const userId = auth.userId;
 
@@ -66,7 +67,7 @@ export async function GET() {
 }
 
 export async function POST(request: NextRequest) {
-  const auth = await requireAuth();
+  const auth = await requireAuth({ accountOnly: true });
   if (auth.response) return auth.response;
   const userId = auth.userId;
 
@@ -96,6 +97,10 @@ export async function POST(request: NextRequest) {
     }
     const { email, label } = parseResult.data;
     const normalizedEmail = email.toLowerCase().trim();
+    // The reserved linked-profile domain is an access signal, never a real inbox.
+    if (isLinkedProfileEmail(normalizedEmail)) {
+      return NextResponse.json({ error: 'That address cannot be added' }, { status: 400 });
+    }
     const outboundEmail = getOutboundEmailConfig();
     if (!outboundEmail) {
       return NextResponse.json(
@@ -280,7 +285,7 @@ export async function POST(request: NextRequest) {
 }
 
 export async function DELETE(request: NextRequest) {
-  const auth = await requireAuth();
+  const auth = await requireAuth({ accountOnly: true });
   if (auth.response) return auth.response;
   const userId = auth.userId;
 

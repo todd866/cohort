@@ -113,6 +113,43 @@ describe('buildIndex', () => {
     );
   });
 
+  // generate-starter-sessions.ts reads the serving projection this script
+  // writes (lookupServingSidecar throws when the file is missing). A clean
+  // checkout — Vercel, a fresh worktree — has no generated index, so the
+  // 2026-11-08 release needed a build-command override until the order was
+  // fixed at the source. Every pipeline that runs both must index first.
+  it('builds the image index before the starter-session generator everywhere', () => {
+    const packageJson = JSON.parse(readFileSync('package.json', 'utf8')) as {
+      scripts: Record<string, string>;
+    };
+    const pipelines: Record<string, string | undefined> = {
+      build: packageJson.scripts.build,
+      'build:release': packageJson.scripts['build:release'],
+      dev: packageJson.scripts.dev,
+      'prefoss:test': packageJson.scripts['prefoss:test'],
+    };
+    // Repo-only pipelines: the FOSS export (which runs this test too) ships none of these.
+    const repoOnly: Array<[string, string, (text: string) => string]> = [
+      ['build-isolated.sh', 'scripts/ops/build-isolated.sh', (text) => text],
+      ['local-ci-full.yml typecheck-and-lint', '.github/workflows/local-ci-full.yml', (text) => text.split(/^  quality:$/m)[0]!],
+      ['release-green-commit.mjs', 'scripts/ops/release-green-commit.mjs', (text) => text],
+    ];
+    const inRepo = existsSync('.github/workflows/local-ci-full.yml');
+    for (const [name, file, section] of repoOnly) {
+      if (inRepo) expect(existsSync(file), `${file} exists in the repository`).toBe(true);
+      if (existsSync(file)) pipelines[name] = section(readFileSync(file, 'utf8'));
+    }
+    if (inRepo) for (const name of Object.keys(pipelines)) expect(pipelines[name], `${name} is defined`).toBeDefined();
+    for (const [name, text] of Object.entries(pipelines)) {
+      if (text === undefined) continue;
+      const index = text.search(/scripts\/images\/build-index\.ts|images:index\b/);
+      const starters = text.indexOf('scripts/content/generate-starter-sessions.ts');
+      expect(starters, `${name} runs the starter-session generator`).toBeGreaterThan(-1);
+      expect(index, `${name} builds the image index`).toBeGreaterThan(-1);
+      expect(index, `${name} must build the image index before starter sessions`).toBeLessThan(starters);
+    }
+  });
+
   it('emits a generated module with one entry per sidecar', () => {
     const root = setupFixture();
     const out = join(root, 'out.ts');

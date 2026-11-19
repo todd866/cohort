@@ -7,6 +7,7 @@ import type { ReviewQuestionContentProps } from './review-content-types';
 import { ReviewExplanation } from './ReviewCardContent';
 import { GlossaryText } from '@/components/content/GlossaryText';
 import { CheckIcon, ChevronIcon, XIcon } from '@/components/content/mcq-icons';
+import { PadGlyph } from './PadGlyph';
 
 // Explanations carry the item's own abbreviation decodes, like the stem and options.
 const glossaryLeaf = (text: string) => <GlossaryText text={text} />;
@@ -36,6 +37,7 @@ export interface ReviewQuestionOptionsProps {
   onToggleExplanation?: (label: string) => void;
   onReveal?: () => void;
   revealLabel?: ReactNode;
+  padHighlightIndex?: number | null;
 }
 
 export interface ReviewQuestionResultBodyProps {
@@ -57,18 +59,20 @@ export function ReviewQuestionResultBody({ result, verdict, explanation }: Revie
 export function ReviewQuestionOptions({
   options, selectedOption, result = null, responseFormat = 'standard', showIndex = true, disabled = false, revealDisabled = disabled,
   selectedPending = false, onSelect, expandedExplanations = new Set(), onToggleExplanation,
-  onReveal, revealLabel,
+  onReveal, revealLabel, padHighlightIndex = null,
 }: ReviewQuestionOptionsProps) {
   // Options that name other options by letter show letters, not numbers.
   const lettered = optionsCrossReference(options.map((option) => option.text));
   if (!result) return <div className="space-y-2">
     {options.map((option, idx) => {
       const selected = selectedOption === option.label;
+      const padHighlight = padHighlightIndex === idx;
       return <button key={option.label} type="button" aria-label={`${option.label}. ${option.text}`} aria-pressed={selected} disabled={disabled} onClick={() => onSelect(option.label)}
         data-shortcut={disabled || selectedPending ? undefined : option.label.charCodeAt(0) - 64}
-        className={`review-choice review-option group flex w-full items-start gap-3 text-left p-3.5 rounded-lg border transition-colors disabled:cursor-wait disabled:opacity-60 ${disabled ? 'cursor-wait' : 'cursor-pointer'} ${selected ? 'border-[var(--md-primary)] bg-[var(--md-primary-container)]/30' : 'border-[var(--md-outline-variant)] bg-transparent hover:border-[var(--md-primary)] hover:bg-[var(--md-primary-container)]/25'}`}>
+        className={`review-choice review-option group flex w-full items-start gap-3 text-left p-3.5 rounded-lg border transition-colors disabled:cursor-wait disabled:opacity-60 ${disabled ? 'cursor-wait' : 'cursor-pointer'} ${padHighlight ? 'review-pad-highlight border-[var(--md-primary)]' : ''} ${selected ? 'border-[var(--md-primary)] bg-[var(--md-primary-container)]/30' : 'border-[var(--md-outline-variant)] bg-transparent hover:border-[var(--md-primary)] hover:bg-[var(--md-primary-container)]/25'}`}>
         <span className="review-option-index mt-0.5 flex h-7 w-7 shrink-0 items-center justify-center bg-[var(--md-surface-container-high)] font-mono text-xs text-[var(--md-on-surface-variant)] group-hover:bg-[var(--md-primary-container)] group-hover:text-[var(--md-on-primary-container)] transition-colors">{showIndex && responseFormat !== 'kType' && !lettered ? idx + 1 : option.label}</span>
-        <span className="pt-0.5"><GlossaryText text={option.text} /></span>
+        <span className="min-w-0 flex-1 pt-0.5"><GlossaryText text={option.text} /></span>
+        {padHighlight ? <PadGlyph mark="bottom" /> : null}
       </button>;
     })}
     <div className="text-sm text-[var(--md-on-surface-variant)] text-center mt-2">

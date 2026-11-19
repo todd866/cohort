@@ -20,21 +20,6 @@
       "reference": null
     },
     {
-      "id": "cohort:icu:c-618ca526e35d:v1",
-      "origin": "mdx:a7f3400e9b1defcc0245cc9eb2ee03f8:blank-0",
-      "discipline": "icu",
-      "cardType": "cloze",
-      "sourceComponent": "KeyPoint",
-      "front": "In septic shock, target MAP is ≥[___] mmHg with lactate >2 mmol/L despite adequate fluids.",
-      "back": "65",
-      "context": "Septic shock is a subset of sepsis with particularly high mortality.",
-      "complexity": 2,
-      "importance": 2,
-      "variantGroup": "cohort:icu:g-e78acc51c5ef",
-      "variantIndex": 0,
-      "reference": null
-    },
-    {
       "id": "cohort:icu:c-61ee495d4233:v1",
       "origin": "mdx:11394d650ea6e33e7e96a927ca0a4b1f",
       "discipline": "icu",
@@ -260,36 +245,6 @@
       "reference": null
     },
     {
-      "id": "cohort:icu:c-65e7b57df0ab:v1",
-      "origin": "mdx:34969604f8f99e6231a56b94802b4f24:blank-1",
-      "discipline": "icu",
-      "cardType": "cloze",
-      "sourceComponent": "KeyPoint",
-      "front": "Parkland formula: 4 mL x weight (kg) x %TBSA; timing is calculated from time of [___], not presentation.",
-      "back": "injury",
-      "context": "Parkland is calculated from time of INJURY, not time of presentation — late presenters need a faster initial fluid rate to deliver the first half within 8 hours of the burn (when capillary leak is greatest).\n\nA patient who presents 4 hours post-burn still needs half the 24-hour total in the next 4 hours. Conversely, fluid started in the field counts toward the total — communicate with retrieval/ambulance about volumes given.",
-      "complexity": 2,
-      "importance": 2,
-      "variantGroup": "cohort:icu:g-061f672d5dbf",
-      "variantIndex": 1,
-      "reference": null
-    },
-    {
-      "id": "cohort:icu:c-661dab692b0e:v1",
-      "origin": "mdx:6a21fc93cdafe2c3dd8f394f497b755e:blank-0",
-      "discipline": "icu",
-      "cardType": "cloze",
-      "sourceComponent": "KeyPoint",
-      "front": "Delta ratio 0.8-2.0 indicates [___] HAGMA; <0.8 = mixed HAGMA + NAGMA; >2.0 = HAGMA + metabolic alkalosis.",
-      "back": "pure",
-      "context": "In a clean HAGMA, every unmeasured anion consumes a bicarbonate — rise in AG and fall in HCO₃ should be ~1:1. Delta ratio formalises that; value 0.8-2.0 says nothing else is going on.\n\nOutside that window a second process is hiding. <0.8 = HCO₃ fell further than AG rose, so a normal-AG acidosis is co-existing (DKA + diarrhoea.",
-      "complexity": 2,
-      "importance": 2,
-      "variantGroup": "cohort:icu:g-ba96d1a78eed",
-      "variantIndex": 0,
-      "reference": null
-    },
-    {
       "id": "cohort:icu:c-6643b52bb366:v1",
       "origin": "mdx:115a9bdf8c6340d13af04328919901fa",
       "discipline": "icu",
@@ -302,6 +257,21 @@
       "importance": 2,
       "variantGroup": null,
       "variantIndex": null,
+      "reference": null
+    },
+    {
+      "id": "cohort:icu:c-66a961f54589:v1",
+      "origin": "mdx:00930b7795b646bbce8f02c22e4af241:blank-0",
+      "discipline": "icu",
+      "cardType": "cloze",
+      "sourceComponent": "KeyPoint",
+      "front": "Open fractures require IV antibiotics within [___] and theatre within 6 hours.",
+      "back": "1 hour",
+      "context": "Open (compound) fracture = bone fragments communicating with skin surface; infection risk is the dominant concern.\n\nFirst-line antibiotics: cefazolin 2 g IV (or vancomycin if MRSA risk); add gentamicin for grossly contaminated wounds; add metronidazole for farm/freshwater contamination (anaerobes).",
+      "complexity": 2,
+      "importance": 2,
+      "variantGroup": "cohort:icu:g-efd973d5322a",
+      "variantIndex": 0,
       "reference": null
     },
     {
@@ -320,36 +290,6 @@
       "reference": null
     },
     {
-      "id": "cohort:icu:c-68a47f68baba:v1",
-      "origin": "mdx:b9c15755c64ae3b11d183eb6154ed78e:blank-0",
-      "discipline": "icu",
-      "cardType": "cloze",
-      "sourceComponent": "KeyPoint",
-      "front": "VBG-to-ABG conversion: arterial pH is approximately [___] higher than venous, and arterial pCO₂ is 3–8 mmHg lower.",
-      "back": "0.03",
-      "context": "The VBG-to-ABG difference comes from venous CO₂ accumulation in tissues. pH is consistently ~0.03 higher arterially; pCO₂ is 3-8 mmHg lower arterially.\n\nVBG is reliable for pH, pCO₂, HCO₃⁻, and lactate trending in most ICU contexts; ABG remains needed when accurate PaO₂ is required (oxygenation assessment.",
-      "complexity": 2,
-      "importance": 2,
-      "variantGroup": "cohort:icu:g-e0175193cf7e",
-      "variantIndex": 0,
-      "reference": null
-    },
-    {
-      "id": "cohort:icu:c-695f48bae513:v1",
-      "origin": "mdx:de3332716cfe4c7117a4ef37b5c34ef1:blank-1",
-      "discipline": "icu",
-      "cardType": "cloze",
-      "sourceComponent": "KeyPoint",
-      "front": "Parkland formula timing is calculated from time of injury, not presentation. The first half is given over [___] hours.",
-      "back": "8",
-      "context": "Parkland formula: 4 mL x body weight (kg) x %TBSA burned. Give the first half over the first 8 hours from the TIME OF INJURY (not time of presentation).\n\nGive the second half over the next 16 hours. This is a common exam mistake — always calculate from time of burn, not arrival to hospital.",
-      "complexity": 2,
-      "importance": 2,
-      "variantGroup": "cohort:icu:g-ba82ce49b643",
-      "variantIndex": 1,
-      "reference": null
-    },
-    {
       "id": "cohort:icu:c-697665be5db2:v1",
       "origin": "mdx:7d5a0825eeed38c0e9eab5fa7725949d:blank-0",
       "discipline": "icu",
@@ -361,21 +301,6 @@
       "complexity": 2,
       "importance": 2,
       "variantGroup": "cohort:icu:g-930f49e33584",
-      "variantIndex": 0,
-      "reference": null
-    },
-    {
-      "id": "cohort:icu:c-69e1c598acab:v1",
-      "origin": "mdx:d49e4208d393c3e3d10be005ecc741fa:blank-0",
-      "discipline": "icu",
-      "cardType": "cloze",
-      "sourceComponent": "KeyPoint",
-      "front": "Per CRASH-2, trauma TXA dosing is [___] IV bolus over 10 min, then the same dose given as an infusion over 8 hours. Beyond 3 hours from injury, the mortality benefit is lost — and may even be harmful.",
-      "back": "1 g",
-      "context": "CRASH-2 (Lancet 2010, n=20,211): TXA cuts all-cause mortality by 1.5% absolute (NNT ~67) when given within 3 hours of injury.\n\nMechanism: blocks plasminogen activation, preventing fibrinolysis without promoting new clot formation.\n\nProtocol: same dose for bolus (over 10 min) and 8-hour infusion — the symmetry makes it easy to recall under stress.",
-      "complexity": 2,
-      "importance": 2,
-      "variantGroup": "cohort:icu:g-e9d41c45c8a8",
       "variantIndex": 0,
       "reference": null
     },
@@ -392,6 +317,21 @@
       "importance": 2,
       "variantGroup": null,
       "variantIndex": null,
+      "reference": null
+    },
+    {
+      "id": "cohort:icu:c-6be35dfb4ede:v1",
+      "origin": "mdx:6866d8d06482c6969c2eddc8981bf6e5:blank-0",
+      "discipline": "icu",
+      "cardType": "cloze",
+      "sourceComponent": "KeyPoint",
+      "front": "Ipratropium dose in severe paediatric asthma is [___] puffs via spacer; prednisolone dose is 1 mg/kg PO.",
+      "back": "8",
+      "context": "Burst therapy with salbutamol via spacer is first-line. Nebuliser is only used if the child cannot use a spacer.\n\nIpratropium is added for severe or non-responsive cases.",
+      "complexity": 2,
+      "importance": 2,
+      "variantGroup": "cohort:icu:g-948667c5ec48",
+      "variantIndex": 0,
       "reference": null
     },
     {
@@ -467,6 +407,21 @@
       "importance": 2,
       "variantGroup": null,
       "variantIndex": null,
+      "reference": null
+    },
+    {
+      "id": "cohort:icu:c-6f45999158ff:v1",
+      "origin": "mdx:e7ee76c991bd4f198ca7a418e847486d:blank-1",
+      "discipline": "icu",
+      "cardType": "cloze",
+      "sourceComponent": "KeyPoint",
+      "front": "Default post-operative maintenance fluid is 4% dextrose + [___]% NaCl (matches Holliday-Segar Na requirements).",
+      "back": "0.18",
+      "context": "Holliday-Segar daily Na target ~1 mmol/kg (~75 mmol for 75 kg) — 2.5 L of 4% dextrose / 0.18% saline over 24 h delivers almost exactly that. Same volume of normal saline = ~400 mmol Na, five days' worth in one day.\n\nMaintenance is not resuscitation. Once euvolaemic, switch from saline to low-Na maintenance to prevent iatrogenic hypernatraemia, oedema, and ileus.",
+      "complexity": 2,
+      "importance": 2,
+      "variantGroup": "cohort:icu:g-d5ada1404548",
+      "variantIndex": 1,
       "reference": null
     },
     {

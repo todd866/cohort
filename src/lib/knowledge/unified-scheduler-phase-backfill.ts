@@ -517,11 +517,22 @@ export function rescueOrphans(
   // zero (for example crunch mode).
   if (selectedItems.length < size && effectiveMaxNewCards !== 0) {
 
-    // Pass 1: pristine cards. Sort by importance (high first) so foundational
-    // cards rescue ahead of stretch cards.
+    // Pass 1: pristine cards. Pass-set facts first in pass-set rank (the
+    // exam mass each stands for), then importance (high first) so foundational
+    // cards rescue ahead of stretch cards. New facts outside the pass set wait
+    // while its supply lasts (applyPassSetIntakePolicy).
+    const passSetOrders = bulk.passSetIntakeDecision === 'pass-set-first'
+      || bulk.passSetIntakeDecision === 'supply-exhausted'
+      || bulk.passSetIntakeDecision === 'unlocked';
+    const passSet = passSetOrders ? bulk.passSet?.passSet : undefined;
+    const passRank = (card: { id: string; variantGroupId: string | null }): number => {
+      if (!passSet) return 0;
+      const key = passSet.factKeyByCardId.get(card.id) ?? card.variantGroupId ?? card.id;
+      return passSet.factKeys.has(key) ? passSet.rankByFactKey.get(key) ?? 0 : Number.MAX_SAFE_INTEGER;
+    };
     const orphanCardControl = bulk.unseenCards
-      .filter((c) => !selectedCardIds.has(c.id))
-      .sort((a, b) => (b.importance ?? 1) - (a.importance ?? 1));
+      .filter((c) => !selectedCardIds.has(c.id) && !bulk.passSetDeferredCardIds?.has(c.id))
+      .sort((a, b) => passRank(a) - passRank(b) || (b.importance ?? 1) - (a.importance ?? 1));
     const orphanCards = applyExamTarget
       ? applyBoundedExamTargetNudge(
           orphanCardControl,

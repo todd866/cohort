@@ -4,12 +4,12 @@ import { prisma } from '@/lib/prisma';
 import type { Institution } from '@/lib/institution';
 import { isSupportedInstitution } from '@/lib/institution';
 import {
-  getActiveRotations,
   type TrackNumber,
 } from '@/lib/rotation-context';
 import { viewerCanAccessPersonalRotation } from '@/lib/personal-rotation-access';
 import type { ReviewUserContext } from './bootstrap-types';
 import { authorizedReviewTopicRotations } from './review-topic-registry.server';
+import { currentActiveRotations } from '@/lib/review/active-rotations';
 
 export type { ReviewUserContext };
 
@@ -50,7 +50,7 @@ export async function loadReviewUserContext(args: {
       imageTier: user.imageTier ?? null,
     })
   );
-  const activeRotations = track ? getActiveRotations(track) : [];
+  const activeRotations = currentActiveRotations({ track, institution });
 
   return {
     ownerKey: args.userId,

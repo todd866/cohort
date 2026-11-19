@@ -1,4 +1,5 @@
-import { useState, useEffect, useCallback, useMemo } from 'react';
+import { useState, useEffect, useCallback, useMemo, useRef, useSyncExternalStore } from 'react';
+import { queuedReviewRequestIds, subscribeOutbox } from '@/lib/outbox';
 
 /**
  * The last `todayReviewed` the server gave for this rotation set, today.
@@ -12,32 +13,124 @@ import { useState, useEffect, useCallback, useMemo } from 'react';
  *
  * Keyed by the local calendar date because this is a display fallback, not
  * the study-day accounting (which is the server's, in the learner's tz). It
- * is per-tab sessionStorage: it never reaches another device or another
- * learner, and every access is guarded because storage can be absent or throw
- * (private windows, blocked site data, SSR).
+ * lives in localStorage, the same store the offline shell already uses, so a
+ * cold reload still has the last server total. Every access is guarded:
+ * storage can be absent or throw (private windows, blocked site data, SSR),
+ * and a failure degrades to the plain count with no target.
  */
 const TODAY_CACHE_PREFIX = 'md3:daily-target:today:';
+const subscribeClientProgress = () => () => {};
+const clientProgressReady = () => true;
+const serverProgressReady = () => false;
+const NO_QUEUED_IDS: readonly string[] = [];
 function todayCacheKey(rotationsKey: string): string {
   return `${TODAY_CACHE_PREFIX}${new Date().toDateString()}:${rotationsKey}`;
 }
-function readCachedToday(rotationsKey: string): number | null {
+
+interface CachedDailyProgress {
+  /** Last `todayReviewed` a server response reported. Null when none has arrived. */
+  todayReviewed: number | null;
+  dailyTarget: number | null;
+  todayFirstSight: number;
+  firstSightTarget: number | null;
+  /**
+   * Last total the pill showed. A later server snapshot replaces it once the
+   * server has caught up; the grade is not added a second time.
+   */
+  optimisticReviewed: number;
+  optimisticFirstSight: number;
+  /** Queued grades already included in `optimisticReviewed`. */
+  countedRequestIds: string[];
+}
+
+function nonNegative(value: unknown): number | null {
+  return typeof value === 'number' && Number.isFinite(value) && value >= 0 ? value : null;
+}
+function finiteOrNull(value: unknown): number | null {
+  return typeof value === 'number' && Number.isFinite(value) ? value : null;
+}
+
+function requestIds(value: unknown): string[] {
+  return Array.isArray(value) ? value.filter((id): id is string => typeof id === 'string' && id.length > 0) : [];
+}
+
+function parseCachedProgress(raw: string): CachedDailyProgress | null {
+  if (!raw.startsWith('{')) {
+    const todayReviewed = nonNegative(Number(raw));
+    if (todayReviewed == null) return null;
+    return {
+      todayReviewed,
+      dailyTarget: null,
+      todayFirstSight: 0,
+      firstSightTarget: null,
+      optimisticReviewed: todayReviewed,
+      optimisticFirstSight: 0,
+      countedRequestIds: [],
+    };
+  }
+  const parsed = JSON.parse(raw) as Partial<CachedDailyProgress>;
+  const todayReviewed = parsed.todayReviewed == null ? null : nonNegative(parsed.todayReviewed);
+  const optimisticReviewed = nonNegative(parsed.optimisticReviewed) ?? todayReviewed;
+  if (todayReviewed == null && optimisticReviewed == null) return null;
+  const todayFirstSight = nonNegative(parsed.todayFirstSight) ?? 0;
+  return {
+    todayReviewed,
+    dailyTarget: finiteOrNull(parsed.dailyTarget),
+    todayFirstSight,
+    firstSightTarget: finiteOrNull(parsed.firstSightTarget),
+    optimisticReviewed: optimisticReviewed ?? 0,
+    optimisticFirstSight: nonNegative(parsed.optimisticFirstSight) ?? todayFirstSight,
+    countedRequestIds: requestIds(parsed.countedRequestIds),
+  };
+}
+
+function readStore(store: Storage | undefined, rotationsKey: string): CachedDailyProgress | null {
   try {
-    if (typeof sessionStorage === 'undefined') return null;
-    const raw = sessionStorage.getItem(todayCacheKey(rotationsKey));
-    if (raw == null) return null;
-    const n = Number(raw);
-    return Number.isFinite(n) && n >= 0 ? n : null;
+    if (!store) return null;
+    const raw = store.getItem(todayCacheKey(rotationsKey));
+    return raw == null ? null : parseCachedProgress(raw);
   } catch {
     return null;
   }
 }
-function writeCachedToday(rotationsKey: string, todayReviewed: number): void {
+
+function readCachedProgress(rotationsKey: string): CachedDailyProgress | null {
+  const local = readStore(typeof localStorage === 'undefined' ? undefined : localStorage, rotationsKey);
+  if (local) return local;
+  // A tab that stored the figure before this moved to the offline shell's store.
+  return readStore(typeof sessionStorage === 'undefined' ? undefined : sessionStorage, rotationsKey);
+}
+
+function writeCachedProgress(rotationsKey: string, progress: CachedDailyProgress): void {
   try {
-    if (typeof sessionStorage === 'undefined') return;
-    sessionStorage.setItem(todayCacheKey(rotationsKey), String(todayReviewed));
+    if (typeof localStorage === 'undefined') return;
+    localStorage.setItem(todayCacheKey(rotationsKey), JSON.stringify(progress));
   } catch {
-    // Losing the fallback is a degraded pill, not an error.
+    // Losing the fallback is a degraded pill, not an error. The caller then
+    // shows the plain count with no target.
   }
+}
+
+/** Grades the remembered total does not already include. */
+export function pendingGradeDelta(
+  sessionDelta: number,
+  queuedIds: readonly string[],
+  countedIds: readonly string[],
+): number {
+  const counted = new Set(countedIds);
+  const unseen = queuedIds.filter((id) => !counted.has(id)).length;
+  return Math.max(sessionDelta, unseen);
+}
+
+/**
+ * Server snapshot, plus grades the snapshot does not already contain.
+ * `carried` is the total shown on a previous mount. Once `server` catches
+ * up with it, the grade is not added again.
+ */
+export function shownDailyCount(server: number | null, carried: number | null, delta: number): number {
+  const base = server ?? carried ?? 0;
+  const local = (carried ?? base) + delta;
+  return Math.max(base, local);
 }
 import type { TrackProjection } from '@/lib/study/track-projection';
 import {
@@ -183,6 +276,9 @@ export function useSessionProgress(
   rotation: string | string[],
   { disabled = false }: UseSessionProgressOptions = {},
 ): SessionProgress {
+  // The first hydration render must match SSR, which has no browser cache or
+  // outbox. Ordinary client remounts can still use cached progress immediately.
+  const clientReady = useSyncExternalStore(subscribeClientProgress, clientProgressReady, serverProgressReady);
   const rotationsKey = (Array.isArray(rotation) ? rotation : [rotation]).join(',');
   const rotations = useMemo(
     () => rotationsKey.split(',').filter(Boolean),
@@ -192,6 +288,21 @@ export function useSessionProgress(
   const [data, setData] = useState<DailyTargetResponse | null>(null);
   const [sessionDelta, setSessionDelta] = useState(0);
   const [firstSightDelta, setFirstSightDelta] = useState(0);
+  const sessionDeltaRef = useRef(0);
+  const firstSightDeltaRef = useRef(0);
+  // Totals captured once per rotation key. Later writes of the optimistic
+  // count must not feed back into this mount or a grade is counted twice.
+  const carriedKeyRef = useRef<string | null>(null);
+  const carriedReviewedRef = useRef<number | null>(null);
+  const carriedFirstRef = useRef<number | null>(null);
+  const serverTodayRef = useRef<number | null>(null);
+  const serverFirstRef = useRef<number | null>(null);
+  if (clientReady && carriedKeyRef.current !== rotationsKey) {
+    carriedKeyRef.current = rotationsKey;
+    const cached = readCachedProgress(rotationsKey);
+    carriedReviewedRef.current = cached?.optimisticReviewed ?? null;
+    carriedFirstRef.current = cached?.optimisticFirstSight ?? null;
+  }
   // Session grades attributed to the rotation they were graded in.
   //
   // `todayReviewed` in each per-rotation row is a SERVER value fetched once at
@@ -208,6 +319,14 @@ export function useSessionProgress(
   const [deltaByRotation, setDeltaByRotation] = useState<Record<string, number>>({});
   const [firstSightDeltaByRotation, setFirstSightDeltaByRotation] = useState<Record<string, number>>({});
   const [loading, setLoading] = useState(true);
+  const [, setQueueVersion] = useState(0);
+  const queueGenerationRef = useRef(0);
+  useEffect(() => subscribeOutbox(() => {
+    // Capture changes synchronously, including enqueue→ack inside one render.
+    queueGenerationRef.current += 1;
+    setQueueVersion((version) => version + 1);
+  }), []);
+  const queuedIds = clientReady ? queuedReviewRequestIds() : NO_QUEUED_IDS;
 
   useEffect(() => {
     let cancelled = false;
@@ -233,6 +352,8 @@ export function useSessionProgress(
     // tapping it did nothing. Nothing re-ran the effect except a rotation
     // change, so it stayed broken until reload.
     const run = () => {
+      const queuedAtRequestStart = queuedReviewRequestIds();
+      const queueGenerationAtRequestStart = queueGenerationRef.current;
       fetchWithDeadline(url, {}, sessionProgressRetryDeadlineMs(attempt))
         .then((res) => {
           if (!res.ok) throw new Error(`Failed to fetch (${res.status})`);
@@ -240,7 +361,34 @@ export function useSessionProgress(
         })
         .then((resp: DailyTargetResponse) => {
           if (cancelled) return;
-          if (typeof resp?.todayReviewed === 'number') writeCachedToday(rotationsKey, resp.todayReviewed);
+          if (typeof resp?.todayReviewed === 'number') {
+            const previous = readCachedProgress(rotationsKey);
+            const todayReviewed = resp.todayReviewed;
+            const todayFirstSight = nonNegative(resp.todayFirstSight) ?? 0;
+            // A quiet request can heal an inflated saved total. An empty queue
+            // only at response time is insufficient: this snapshot may have
+            // been computed before a queued grade was acknowledged in flight.
+            const settled = queuedAtRequestStart.length === 0
+              && queueGenerationAtRequestStart === queueGenerationRef.current
+              && queuedReviewRequestIds().length === 0
+              && sessionDeltaRef.current === 0 && firstSightDeltaRef.current === 0;
+            if (settled) {
+              carriedReviewedRef.current = todayReviewed;
+              carriedFirstRef.current = todayFirstSight;
+            }
+            writeCachedProgress(rotationsKey, {
+              todayReviewed,
+              dailyTarget: finiteOrNull(resp.dailyTarget),
+              todayFirstSight,
+              firstSightTarget: finiteOrNull(resp.firstSightTarget),
+              // Otherwise keep a higher local total: an answer still in the
+              // outbox is not in the snapshot yet. A snapshot that has caught
+              // up replaces it, so the grade is not added on top.
+              optimisticReviewed: settled ? todayReviewed : Math.max(previous?.optimisticReviewed ?? todayReviewed, todayReviewed),
+              optimisticFirstSight: settled ? todayFirstSight : Math.max(previous?.optimisticFirstSight ?? todayFirstSight, todayFirstSight),
+              countedRequestIds: previous?.countedRequestIds ?? [],
+            });
+          }
           setData(resp);
           setLoading(false);
         })
@@ -263,8 +411,32 @@ export function useSessionProgress(
 
   const incrementReviewed = useCallback((rotation?: string | null, firstSight = false) => {
     if (!rotation || rotation === rotations[0]) {
-      setSessionDelta((d) => d + 1);
-      if (firstSight) setFirstSightDelta((d) => d + 1);
+      sessionDeltaRef.current += 1;
+      setSessionDelta(sessionDeltaRef.current);
+      if (firstSight) {
+        firstSightDeltaRef.current += 1;
+        setFirstSightDelta(firstSightDeltaRef.current);
+      }
+      const cached = readCachedProgress(rotationsKey);
+      const serverToday = serverTodayRef.current ?? cached?.todayReviewed ?? null;
+      const serverFirst = serverFirstRef.current ?? cached?.todayFirstSight ?? null;
+      const queuedIds = queuedReviewRequestIds();
+      // Persist even when no server snapshot exists yet, so a cold reload
+      // still shows the grades. Ids already in the outbox are marked counted
+      // so the next mount does not add them on top of this total.
+      writeCachedProgress(rotationsKey, {
+        todayReviewed: serverToday,
+        dailyTarget: cached?.dailyTarget ?? null,
+        todayFirstSight: serverFirst ?? cached?.todayFirstSight ?? 0,
+        firstSightTarget: cached?.firstSightTarget ?? null,
+        optimisticReviewed: shownDailyCount(serverToday, carriedReviewedRef.current, sessionDeltaRef.current),
+        optimisticFirstSight: shownDailyCount(
+          serverFirst,
+          carriedFirstRef.current,
+          firstSightDeltaRef.current,
+        ),
+        countedRequestIds: [...new Set([...(cached?.countedRequestIds ?? []), ...queuedIds])],
+      });
     }
     if (rotation) {
       setDeltaByRotation((m) => ({ ...m, [rotation]: (m[rotation] ?? 0) + 1 }));
@@ -275,7 +447,7 @@ export function useSessionProgress(
         }));
       }
     }
-  }, [rotations]);
+  }, [rotations, rotationsKey]);
 
   /** Server rows with this session's grades folded in, so every number the
    *  drawer shows moves on the same keystroke the pill does. */
@@ -295,21 +467,63 @@ export function useSessionProgress(
     [deltaByRotation, firstSightDeltaByRotation],
   );
 
-  // Loading or fetch failed: still show a usable pill — the last figure the
-  // server gave today plus this session's grades, never a bare session delta.
-  const cachedToday = useMemo(
-    () => (disabled ? null : readCachedToday(rotationsKey)),
-    [disabled, rotationsKey],
+  // Last server snapshot for this rotation set. Read on mount; later optimistic
+  // writes stay in the carried refs so they are not added twice. Counted
+  // queue ids are read on each render so a grade recorded after mount is not
+  // added on top of the total that already includes it.
+  const cachedProgress = useMemo(
+    () => clientReady ? readCachedProgress(rotationsKey) : null,
+    [rotationsKey, clientReady],
   );
+  const countedRequestIds = clientReady ? readCachedProgress(rotationsKey)?.countedRequestIds ?? [] : [];
+  serverTodayRef.current = data?.todayReviewed ?? cachedProgress?.todayReviewed ?? null;
+  serverFirstRef.current = data?.todayFirstSight ?? cachedProgress?.todayFirstSight ?? null;
+  const reviewed = shownDailyCount(
+    serverTodayRef.current,
+    carriedReviewedRef.current,
+    pendingGradeDelta(sessionDelta, queuedIds, countedRequestIds),
+  );
+  const todayFirstSight = shownDailyCount(
+    data ? (data.todayFirstSight ?? 0) : (cachedProgress?.todayFirstSight ?? null),
+    carriedFirstRef.current,
+    firstSightDelta,
+  );
+  const target = data ? (data.dailyTarget ?? null) : (cachedProgress?.dailyTarget ?? null);
+  const firstSightTarget = data ? (data.firstSightTarget ?? null) : (cachedProgress?.firstSightTarget ?? null);
+
+  useEffect(() => {
+    if (queuedIds.length === 0) return;
+    const cached = readCachedProgress(rotationsKey);
+    const counted = new Set(cached?.countedRequestIds ?? []);
+    if (queuedIds.every((id) => counted.has(id))) return;
+    const serverToday = serverTodayRef.current ?? cached?.todayReviewed ?? null;
+    writeCachedProgress(rotationsKey, {
+      todayReviewed: serverToday,
+      dailyTarget: cached?.dailyTarget ?? null,
+      todayFirstSight: serverFirstRef.current ?? cached?.todayFirstSight ?? 0,
+      firstSightTarget: cached?.firstSightTarget ?? null,
+      // The same figure the pill renders: the total carried in at mount plus
+      // this mount's grades. The saved total already includes those grades
+      // (incrementReviewed writes it), so building on it counted them twice
+      // whenever an entry that is not a grade, such as a question's confidence
+      // rating, reached the outbox (pill 204 against a server 141, 17 Nov 2026).
+      optimisticReviewed: shownDailyCount(
+        serverToday,
+        carriedReviewedRef.current,
+        pendingGradeDelta(sessionDeltaRef.current, queuedIds, cached?.countedRequestIds ?? []),
+      ),
+      optimisticFirstSight: cached?.optimisticFirstSight ?? carriedFirstRef.current ?? 0,
+      countedRequestIds: [...new Set([...counted, ...queuedIds])],
+    });
+  }, [queuedIds, rotationsKey]);
+
   if (disabled || loading || !data) {
-    const base = !disabled && data ? data.todayReviewed : (!disabled ? (cachedToday ?? 0) : 0);
-    const reviewed = base + sessionDelta;
     return {
       reviewed,
-      target: data?.dailyTarget ?? null,
+      target,
       newPerDay: data?.newPerDay ?? null,
-      firstSightTarget: data?.firstSightTarget ?? null,
-      todayFirstSight: (data?.todayFirstSight ?? 0) + firstSightDelta,
+      firstSightTarget,
+      todayFirstSight,
       reviewsPerDay: null,
       progressPool: data?.progressPool,
       progressPoolHorizonDays: data?.progressPoolHorizonDays,
@@ -331,8 +545,6 @@ export function useSessionProgress(
     };
   }
 
-  const reviewed = data.todayReviewed + sessionDelta;
-  const target = data.dailyTarget;
 
   const progress = target != null && target > 0
     ? Math.min(100, Math.round((reviewed / target) * 100))
@@ -345,8 +557,8 @@ export function useSessionProgress(
     reviewed,
     target,
     newPerDay: data.newPerDay,
-    firstSightTarget: data.firstSightTarget ?? null,
-    todayFirstSight: (data.todayFirstSight ?? 0) + firstSightDelta,
+    firstSightTarget,
+    todayFirstSight,
     reviewsPerDay: data.reviewsPerDay,
     progressPool: data.progressPool,
     progressPoolHorizonDays: data.progressPoolHorizonDays,

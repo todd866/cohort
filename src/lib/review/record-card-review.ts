@@ -26,6 +26,12 @@ import {
   type PreparedLearningEvent,
 } from '@/lib/learning';
 import { getCoreSkillCap } from '@/lib/core-skills';
+import { examDateForStabilityCap } from '@/lib/rotations';
+import {
+  courseDayOffsetMinutes,
+  getCourseDayStart,
+  getNextCourseDayStart,
+} from '@/lib/study-day';
 import { searchSimilar } from '@/lib/manifold';
 import { invalidateClusterState } from '@/lib/manifold/clustering';
 import { logger } from '@/lib/logger';
@@ -49,6 +55,7 @@ import {
   findFirstCardLearningEvent,
   findManyCards,
   findUniqueCard,
+  keepCardIdsVisibleTo,
   ownerPrivateOrSharedCardScope,
 } from '@/lib/cards/read-repository.server';
 import {
@@ -163,25 +170,43 @@ export async function recordCardReview(
     return { ok: false, status: 404, error: 'Card not found' };
   }
 
-  const card = await findUniqueCard(cardScope, {
-    where: { id: cardId, rotation: cardAccess.rotation },
-    select: {
-      id: true,
-      complexity: true,
-      rotation: true,
-      clusterId: true,
-      topics: true,
-      week: true,
-      variantGroupId: true,
-      variantIndex: true,
-    },
-  });
+  // The learner's stream and their date for this rotation ride beside the
+  // card read: one query, no extra serial round trip on the grade path. A
+  // failed lookup grades without an exam cap rather than failing the grade.
+  const [card, learnerExam] = await Promise.all([
+    findUniqueCard(cardScope, {
+      where: { id: cardId, rotation: cardAccess.rotation },
+      select: {
+        id: true,
+        complexity: true,
+        rotation: true,
+        clusterId: true,
+        topics: true,
+        week: true,
+        variantGroupId: true,
+        variantIndex: true,
+      },
+    }),
+    prisma.user.findUnique({
+      where: { id: userId },
+      select: {
+        track: true,
+        rotations: { where: { rotation: cardAccess.rotation }, select: { examDate: true } },
+      },
+    }).catch(() => null),
+  ]);
 
   if (!card) {
     return { ok: false, status: 404, error: 'Card not found' };
   }
 
   const now = input.now ?? new Date();
+  const examDate = examDateForStabilityCap(
+    card.rotation,
+    learnerExam?.track,
+    learnerExam?.rotations?.[0]?.examDate,
+    now,
+  );
   const writeContext: ReviewWriteContext = input.writeContext ?? {
     deviceBucket: 'unknown',
     transport: 'server',
@@ -296,7 +321,7 @@ export async function recordCardReview(
       if (existingProgress?.lastReview && now < existingProgress.lastReview) {
         const maximumStabilityDays = Math.min(
           getCoreSkillCap(card.rotation) ?? 60,
-          getDaysUntilExam(card.rotation, now),
+          getDaysUntilExam(card.rotation, now, examDate),
         );
         const preparedLearningEvent = withMemoryProjectionIdentity(
           withAdditionalLearningEventMetadata(
@@ -313,7 +338,7 @@ export async function recordCardReview(
             maximumStabilityDays,
             maximumReviewIntervalDays: getCoreSkillCap(card.rotation),
             selfAssessmentOnly: Boolean(objective),
-            studyDayBoundaryOffsetMinutes: -now.getTimezoneOffset(),
+            studyDayBoundaryOffsetMinutes: courseDayOffsetMinutes(now),
             liked: existingProgress.liked,
           },
         );
@@ -361,6 +386,7 @@ export async function recordCardReview(
         responseTimeMs,
         confusedWith,
         now,
+        examDate,
       });
       const {
         nextStabilityDays,
@@ -404,7 +430,7 @@ export async function recordCardReview(
           maximumStabilityDays,
           maximumReviewIntervalDays: getCoreSkillCap(card.rotation),
           selfAssessmentOnly: Boolean(objective),
-          studyDayBoundaryOffsetMinutes: -now.getTimezoneOffset(),
+          studyDayBoundaryOffsetMinutes: courseDayOffsetMinutes(now),
           liked: existingProgress?.liked ?? false,
         },
       );
@@ -632,7 +658,7 @@ export async function recordCardReview(
   return { ok: true, progress, masteryUpdate };
 }
 
-type ExistingCardReviewProgress = {
+export type ExistingCardReviewProgress = {
   lastReview: Date | null;
   stabilityDays: number;
   retrievalStrength: number;
@@ -653,7 +679,7 @@ type ExistingCardReviewProgress = {
   projectedThroughEventId: string | null;
 };
 
-type CardReviewTransition = {
+export type CardReviewTransition = {
   currentStrength: number;
   nextStabilityDays: number;
   newRetrievalStrength: number;
@@ -711,7 +737,8 @@ export function spreadDueDate(dueAt: Date, cardId: string, now: Date): Date {
   return new Date(Math.max(dueAt.getTime() + shiftMs, now.getTime() + minimumMs));
 }
 
-function computeCardReviewTransition(input: {
+/** The schedule change one grade makes. Shared with Anki reviews (anki-link/reviews.server.ts) so both sides agree. */
+export function computeCardReviewTransition(input: {
   existingProgress: ExistingCardReviewProgress | null;
   cardId: string;
   card: { complexity: number; rotation: string };
@@ -719,8 +746,10 @@ function computeCardReviewTransition(input: {
   responseTimeMs?: number;
   confusedWith?: string;
   now: Date;
+  /** This learner's upcoming exam for the card's rotation; null when they have none. */
+  examDate: Date | null;
 }): CardReviewTransition {
-  const { existingProgress, cardId, card, quality, responseTimeMs, confusedWith, now } = input;
+  const { existingProgress, cardId, card, quality, responseTimeMs, confusedWith, now, examDate } = input;
   const daysSinceLastReview = existingProgress?.lastReview
     ? (now.getTime() - existingProgress.lastReview.getTime()) / (1000 * 60 * 60 * 24)
     : 0;
@@ -729,7 +758,7 @@ function computeCardReviewTransition(input: {
   const coreSkillCap = getCoreSkillCap(card.rotation);
   const maximumStabilityDays = Math.min(
     coreSkillCap ?? 60,
-    getDaysUntilExam(card.rotation, now),
+    getDaysUntilExam(card.rotation, now, examDate),
   );
   const nextStabilityDays = updateStabilityDays(
     currentStabilityDays,
@@ -737,7 +766,7 @@ function computeCardReviewTransition(input: {
     card.rotation,
     now,
     coreSkillCap,
-    undefined,
+    examDate,
     card.complexity,
   );
 
@@ -789,9 +818,9 @@ function computeCardReviewTransition(input: {
     now,
   );
 
-  const todayStart = new Date(now);
-  todayStart.setHours(0, 0, 0, 0);
-  const tomorrowStart = new Date(todayStart.getTime() + 24 * 60 * 60 * 1000);
+  // The course calendar day, not the server's: see getCourseDayStart.
+  const todayStart = getCourseDayStart(now);
+  const tomorrowStart = getNextCourseDayStart(todayStart);
   const existingViewsToday = existingProgress?.viewsTodayDate
     && existingProgress.viewsTodayDate >= todayStart
     ? existingProgress.viewsToday
@@ -834,7 +863,7 @@ function computeCardReviewTransition(input: {
   if (quality < 3) {
     const failCount = struggleUpdate.recentFailCount;
     const failPushbackDays = failCount >= 3 ? 3 : failCount >= 2 ? 2 : 1;
-    const failFloor = new Date(todayStart.getTime() + failPushbackDays * 24 * 60 * 60 * 1000);
+    const failFloor = new Date(tomorrowStart.getTime() + (failPushbackDays - 1) * 24 * 60 * 60 * 1000);
     if (finalNextDueAt < failFloor) finalNextDueAt = failFloor;
   }
   if (existingProgress?.liked && quality >= 3) {
@@ -1012,13 +1041,14 @@ async function queueScaffoldingCards(
   // from another rotation, 5 siblings or rewordings, 6 genuine scaffolds; a missed catheter-position
   // card queued five more catheter-position cards at the same level. Now: 12 scaffolds, 12 logged gaps.
   const failedComplexity = failed.complexity ?? DEFAULT_CARD_COMPLEXITY;
-  const cardIds = similarCards
+  const candidateIds = similarCards
     .filter((c) => (c.complexity ?? DEFAULT_CARD_COMPLEXITY) < failedComplexity)
     .filter((c) => c.similarity < SCAFFOLD_NEAR_DUPLICATE_SIMILARITY)
     .filter((c) => !(failed.variantGroupId && c.variantGroupId === failed.variantGroupId))
     .filter((c) => c.rotation === undefined || c.rotation === rotation)
-    .slice(0, SCAFFOLD_MAX_QUEUED)
     .map((c) => c.cardId);
+  // The search ranges over every learner's private cards too; only this learner's own count.
+  const cardIds = (await keepCardIdsVisibleTo(userId, candidateIds)).slice(0, SCAFFOLD_MAX_QUEUED);
 
   // Neighbours, but none simpler and different: the scaffold is missing.
   const hasScaffoldCards = cardIds.length > 0;
@@ -1079,8 +1109,7 @@ async function queueScaffoldingCards(
   });
 
   // For existing progress records, just make them due now if not already seen today
-  const todayStart = new Date(now);
-  todayStart.setHours(0, 0, 0, 0);
+  const todayStart = getCourseDayStart(now);
 
   await prisma.cardProgress.updateMany({
     where: {

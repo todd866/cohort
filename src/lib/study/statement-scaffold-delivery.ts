@@ -9,6 +9,7 @@ import { MODALITY_MAX_SAME_TYPE_RUN } from '@/lib/knowledge/modality-guard';
 import { EXCLUDED_POOL_TOPICS } from './servable-pool';
 import { checkServedItemContract } from './served-item-contract';
 import { writeLiveServeDecisions } from './serve-decision-write';
+import { learnerItemPredictionFor } from './learner-item-prediction-load';
 import { logExposures, type CardDueExposureAudit } from './unified-session-helpers';
 import { hydrateScheduledItems, loadScheduledItemHydrationData } from './unified-session-hydration';
 import type { SessionContext, UnifiedItem } from './unified-session-types';
@@ -193,6 +194,7 @@ async function admitStatementScaffolds(ctx: SessionContext, tag: string, now: Da
       weekFilter: null,
       crossSourceRotations: [],
       crossSourceMappingMode: 'adjacent',
+      learnerItemPrediction: learnerItemPredictionFor(ctx),
     },
   });
   const trust = ctx.imageTier === 'copyright'
@@ -242,6 +244,7 @@ async function admitStatementScaffolds(ctx: SessionContext, tag: string, now: Da
     rotation: ctx.rotation,
     decisionPath: 'statement-scaffold',
     queueReason: 'statement_scaffold',
+    learnerItem: learnerItemPredictionFor(ctx),
   });
   // The progress read above is this delivery's due proof, as the exact-card
   // audit expects of every automatic-feed card exposure.

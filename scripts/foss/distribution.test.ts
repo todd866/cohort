@@ -2,6 +2,8 @@ import fs from 'node:fs';
 import { createHash } from 'node:crypto';
 import os from 'node:os';
 import path from 'node:path';
+import { runInNewContext } from 'node:vm';
+import ts from 'typescript';
 import { afterEach, describe, expect, it } from 'vitest';
 import { parse as parseYaml } from 'yaml';
 import {
@@ -580,6 +582,28 @@ describe('FOSS distribution boundary', () => {
     // than a toy fixture, so its cost scales with the reviewed artifact.
   }, 30_000);
 
+  it('pins the neutral public prep provider and excludes private readiness adapters', () => {
+    const root = process.cwd();
+    const policy = loadDistributionPolicy(root);
+    expect(policy.excludeFiles).toEqual(expect.arrayContaining([
+      'src/lib/study/session-prep-blend.server.ts',
+      'src/lib/study/session-prep-events.ts',
+      'src/lib/study/session-prep-readiness.ts',
+      'src/lib/study/session-prep-snapshot.ts',
+    ]));
+    const fallback = policy.generatedTextFiles.find(
+      (entry) => entry.path === 'src/lib/study/session-prep-blend.server.ts',
+    )!;
+    expect(fallback.text).toContain('return null;');
+    fallback.text += '// unexpected private preparation data\n';
+    expect(auditDistributionBoundary(root, policy, {
+      verifyExistingExportManifest: false,
+    }).issues).toContainEqual(expect.objectContaining({
+      code: 'non-foss-source-text',
+      path: fallback.path,
+    }));
+  }, 30_000);
+
   it('requires every exported source to use an accepted FOSS licence record', () => {
     const root = fixture();
     const policy = loadDistributionPolicy(root);
@@ -924,6 +948,88 @@ describe('FOSS distribution boundary', () => {
     expect(fs.existsSync(output)).toBe(false);
   });
 
+  it('keeps private voice, MCP and billing out while shared review fallbacks stay inert', async () => {
+    const root = process.cwd();
+    const policy = loadDistributionPolicy(root);
+    const paths = [
+      ...fs.readFileSync(path.join(root, policy.pathManifest), 'utf8').split('\n').filter(Boolean),
+      ...policy.generatedTextFiles.map(entry => entry.path),
+    ];
+    for (const prefix of ['src/app/api/mcp/', 'src/app/api/user/mcp-token/', 'src/app/api/tutor/', 'src/app/dot-review/', 'src/lib/mcp/']) {
+      expect(paths.filter(file => file.startsWith(prefix))).toEqual([]);
+    }
+    for (const file of [
+      'prisma/schema/browser-voice.prisma', 'prisma/schema/mcp.prisma', 'prisma/schema/openai-budget.prisma', 'prisma/schema/tutor-usage-archive.prisma',
+      'src/lib/local-review-runtime.ts', 'src/components/review/UnifiedReview.voice.test.tsx',
+      'src/components/tutor/liveVoice.ts', 'src/components/tutor/liveVoiceBrowser.ts',
+      'src/lib/tutor/openai-budget.server.ts', 'src/lib/tutor/voice-reasoning.server.ts',
+      'src/lib/tutor/usage-archive.server.ts', 'src/lib/tutor/openai-budget-claim.server.ts',
+      'src/lib/tutor/native-voice-finalization.server.ts',
+      'src/lib/tutor/native-voice-finalization.server.db.test.ts',
+      'src/lib/tutor/openai-promo-grant.ts', 'src/lib/tutor/openai-voice-config.server.ts',
+    ]) expect(paths).not.toContain(file);
+    for (const migration of [
+      '20261116120000_voice_recording_consent', '20261116130000_mcp_review_token',
+      '20261117040000_tutor_voice_reasoning_round', '20261117130000_openai_global_budget',
+      '20261117140000_browser_voice_session', '20261117150000_openai_personal_baseline',
+      '20261117170000_tutor_usage_archive',
+      '20261117192000_openai_budget_opened_index', '20261117192100_openai_budget_reconciled_index',
+      '20261117200000_voice_budget_schema_alignment',
+    ]) expect(paths).not.toContain(`prisma/migrations/${migration}/migration.sql`);
+    expect(paths).toContain('src/components/review/UnifiedReview.test.tsx');
+
+    const fallback = (file: string) => {
+      const entry = policy.generatedTextFiles.find(candidate => candidate.path === file);
+      expect(entry, file).toBeDefined();
+      const compiled = ts.transpileModule(entry!.text, {
+        compilerOptions: { module: ts.ModuleKind.CommonJS, target: ts.ScriptTarget.ES2022 },
+      });
+      const exports: Record<string, unknown> = {};
+      // No browser, network, storage or module loader is available to the stub.
+      runInNewContext(compiled.outputText, { exports });
+      return exports;
+    };
+    const support = fallback('src/components/tutor/useReviewVoiceSupport.ts').useReviewVoiceSupport as (owner: string, enabled: boolean) => unknown;
+    expect(support('public-learner', true)).toBeNull();
+    expect(support('public-learner', false)).toBeNull();
+    const bridge = fallback('src/components/tutor/useNativeReviewBridge.ts').useNativeReviewBridge as (enabled: boolean) => unknown;
+    expect(bridge(true)).toBe(false);
+    expect(bridge(false)).toBe(false);
+    const clear = fallback('src/lib/voice-secret-cache.ts').clearVoiceSecrets as () => unknown;
+    expect(clear()).toBeUndefined();
+    const control = fallback('src/components/tutor/AiReviewControl.tsx').AiReviewControl as (props: object) => unknown;
+    expect(control({ access: 'owner', target: null, label: 'AI', voiceSupport: null })).toBeNull();
+    const cookies = fallback('src/lib/auth-cookie-policy.ts').authCookieConfiguration as (env: NodeJS.ProcessEnv) => unknown;
+    expect(cookies({ NODE_ENV: 'production', MD3_LOCAL_REVIEW_PREVIEW: '1', AUTH_URL: 'http://localhost:3100' })).toEqual({
+      sessionToken: { name: '__Secure-next-auth.session-token' },
+      callbackUrl: { name: '__Secure-next-auth.callback-url' },
+      csrfToken: { name: '__Host-next-auth.csrf-token' },
+    });
+    expect(cookies({ NODE_ENV: 'development' })).toMatchObject({ sessionToken: { name: 'next-auth.session-token' } });
+    const recording = fallback('src/lib/tutor/voice-recording.server.ts');
+    const forbiddenDelete = () => { throw new Error('Public cleanup must not request private object deletion.'); };
+    const clearRecording = recording.deleteVoiceRecordingPrefix as (db: unknown, id: string, remove: unknown) => Promise<number>;
+    expect(await clearRecording({}, 'guest-fixture', forbiddenDelete)).toBe(0);
+    const deletes: unknown[] = [];
+    const purge = recording.purgeGuestUsers as (db: unknown, ids: string[], remove: unknown) => Promise<number>;
+    expect(await purge({ user: { deleteMany: async (args: unknown) => { deletes.push(args); return { count: 1 }; } } }, ['guest-fixture'], forbiddenDelete)).toBe(1);
+    expect(deletes).toEqual([{ where: { id: 'guest-fixture', email: null, name: 'Guest' } }]);
+    const unavailablePrivateDb = new Proxy({}, { get() { throw new Error('Public hooks must not touch private accounting.'); } });
+    const lockClaim = recording.lockGuestUsageClaim as (db: unknown) => Promise<void>;
+    const claimUsage = recording.claimGuestOpenAiUsage as (db: unknown, guest: string, user: string) => Promise<void>;
+    const hasOwner = recording.hasUnresolvedGuestVoiceOwnership as (db: unknown, guest: string) => Promise<boolean>;
+    await expect(lockClaim(unavailablePrivateDb)).resolves.toBeUndefined();
+    await expect(claimUsage(unavailablePrivateDb, 'guest-fixture', 'account-fixture')).resolves.toBeUndefined();
+    await expect(hasOwner(unavailablePrivateDb, 'guest-fixture')).resolves.toBe(false);
+    const deleteObjects = fallback('src/lib/r2.ts').deleteR2Objects as (keys: string[]) => Promise<void>;
+    await expect(deleteObjects([])).resolves.toBeUndefined();
+    await expect(deleteObjects(['private-object'])).rejects.toThrow('Object storage is unavailable');
+    const embed = fallback('src/lib/tutor/openai-metered-request.server.ts').createMeteredContentLakeEmbedding as (input: unknown) => Promise<unknown>;
+    await expect(embed({ input: 'Visible review text' })).resolves.toEqual({ data: [] });
+    const base = policy.generatedTextFiles.find(entry => entry.path === 'prisma/schema/base.prisma')!.text;
+    expect(base).not.toMatch(/McpAccessToken|McpReviewCursor|McpToolCall|OpenAiBudget|BrowserVoiceSession|TutorVoiceReasoningRound|TutorUsageArchive/);
+  });
+
   it('keeps the checked-in repository boundary green and structurally excludes unsafe roots', () => {
     const root = process.cwd();
     const policy = loadDistributionPolicy(root);
@@ -982,6 +1088,7 @@ describe('FOSS distribution boundary', () => {
       'src/app/api/mastery',
       'src/app/api/mobile',
       'src/app/api/modules',
+      'src/app/api/profile/today-usage',
       'src/app/api/question-bank',
       'src/app/api/questions',
       'src/app/api/quiz',
@@ -1003,6 +1110,7 @@ describe('FOSS distribution boundary', () => {
       'src/app/learn',
       'src/app/practice',
       'src/app/profile/documents',
+      'src/app/profile/owner-usage',
       'src/app/questions',
       'src/app/qa-wba4',
       'src/app/qa-wba4-checklist',
@@ -1014,10 +1122,18 @@ describe('FOSS distribution boundary', () => {
       'src/data',
       'src/generated/cah-stream',
       'src/lib/cah-stream',
+      'src/lib/analytics/owner-usage',
       'src/lib/generated',
       'src/lib/integrations',
       'src/app/wba',
     ]));
+    const distributedPaths = [
+      ...fs.readFileSync(path.join(root, policy.pathManifest), 'utf8').split('\n').filter(Boolean),
+      ...policy.generatedTextFiles.map(entry => entry.path),
+    ];
+    for (const prefix of ['src/app/api/profile/today-usage/', 'src/app/profile/owner-usage/', 'src/lib/analytics/owner-usage/']) {
+      expect(distributedPaths.filter(file => file.startsWith(prefix))).toEqual([]);
+    }
     expect(policy.excludeFiles).toEqual(expect.arrayContaining([
       'src/components/content/AlgorithmSteps.tsx',
       'src/components/content/Citation.tsx',
@@ -1314,7 +1430,7 @@ describe('FOSS distribution boundary', () => {
     const publicTestPaths = [...publicPackage.scripts['foss:test'].matchAll(
       /(?:^|\s)["']?([^\s"']+\.test\.tsx?)["']?/g,
     )].map((match) => match[1]);
-    expect(publicTestPaths).toHaveLength(104);
+    expect(publicTestPaths).toHaveLength(105);
     expect(publicTestPaths).toEqual(expect.arrayContaining([
       'src/components/review/ReviewKeyboardHelp.test.tsx',
       'src/components/review/hooks/useCohortCardGrade.test.ts',

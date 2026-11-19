@@ -1,7 +1,12 @@
 'use client';
 import { UniversalRecallCard } from './UniversalRecallCard';
-import { ReviewHistoryDialog } from './ReviewHistoryDialog';
-import { useReviewHistory } from './hooks/useReviewHistory';
+import {
+  captureReviewScroll,
+  restoreReviewScroll,
+  reviewItemIdentity,
+  useReviewRewind,
+  type ReviewScrollMark,
+} from './hooks/useReviewHistory';
 import { ContentBrowserDialog } from '@/components/study/ContentBrowserDialog';
 import { universalRecallObjective } from '@/lib/review/universal-recall';
 
@@ -10,9 +15,11 @@ import { ReviewModulePicker } from '@/components/shared/ReviewModulePicker';
 import { ReviewToolbar } from '@/components/shared/ReviewToolbar';
 import { ReviewActionBar } from '@/components/shared/ReviewActionBar';
 import { AiReviewControl } from '@/components/tutor/AiReviewControl';
+import { useNativeReviewBridge } from '@/components/tutor/useNativeReviewBridge';
+import { useReviewVoiceSupport } from '@/components/tutor/useReviewVoiceSupport';
 import { StationChip } from './StationChip';
 import { PracticeExamFollowUp } from './PracticeExamFollowUp';
-import { useState, useEffect, useCallback, useMemo, useRef } from 'react';
+import { useState, useEffect, useLayoutEffect, useCallback, useMemo, useRef, useSyncExternalStore } from 'react';
 import Link from 'next/link';
 import { useSession } from 'next-auth/react';
 import type { ReviewFeedMode } from './hooks/useReviewFeedMode';
@@ -23,12 +30,20 @@ import {
   type FetchSlot,
   type InitialReviewBatch,
 } from './hooks/useReviewSession';
-import { useCardReview } from './hooks/useCardReview';
+import { useCardReview, type CardRevealResume } from './hooks/useCardReview';
+import { resetScrollToTop } from './hooks/reveal-scroll';
 import { useMcqReview } from './hooks/useMcqReview';
 import { usePreparedPromptFigures } from '@/components/practice-exam/usePreparedPromptFigures';
 import { isPracticeFollowUpTurn, isProtectedPracticeItem } from './hooks/practice-follow-up-turn';
 import { useReviewKeyboard } from './hooks/useReviewKeyboard';
+import { useReviewGamepad } from '@/components/shared/useReviewGamepad';
 import { postContentRating } from '@/lib/review/content-rating';
+import { chatFigureFor } from '@/lib/review/chat-figure';
+import { registerReviewActions, subscribeVoiceReview, voiceReviewActive } from '@/lib/review/review-actions';
+import { itemBackground } from '@/lib/review/item-background';
+import { upcomingVoiceItem } from '@/lib/review/upcoming-voice-item';
+import { optionsCrossReference } from '@/lib/questions/option-references';
+import { responseFormatOfOptions } from '@/lib/question-bank/statement-items';
 import { useSessionProgress } from './hooks/useSessionProgress';
 import { useSessionLifecycle } from './hooks/useSessionLifecycle';
 import { usePrefetchImages } from '@/hooks/usePrefetchImage';
@@ -47,7 +62,9 @@ import type { ReviewFilter, ReviewItemType, ReviewMedia, ReviewTopic } from '@/l
 import type { ReviewLoadTimer } from '@/lib/review/review-load-telemetry';
 import { GuestReviewLoginNudge } from '@/components/ui/LoginNudge';
 import { ImageBlurToggle } from '@/components/media/ImageBlurToggle';
+import { TalkVolumeStepper } from '@/components/tutor/TalkVolumeStepper';
 import { ReviewMediaToggles } from '@/components/media/ReviewMediaToggles';
+import { PracticeFollowUpToggle } from './PracticeFollowUpToggle';
 import { saveReviewMediaPreferencesToAccount, useReviewMediaPreferences } from '@/components/media/useReviewMediaPreferences';
 import { fetchWithDeadline, CLIENT_FETCH_DEADLINE_MS } from '@/lib/fetch-with-deadline';
 import { useCohortHost } from '@/components/CohortHostContext';
@@ -67,6 +84,7 @@ import { ReviewScopeBanner, type ReviewClusterScope } from './ReviewScopeBanner'
 import { LearningCheckIn } from './LearningCheckIn';
 import { FIRST_REVIEW_ROTATIONS } from '@/lib/study/first-review-highlights';
 import { RotationOnboarding } from './RotationOnboarding';
+import { YearPicker, YearPickerSpace } from './YearPicker';
 import { FlagOverlay } from './FlagOverlay';
 import { FlagButton } from '@/components/ui/FlagButton';
 import { ReviewKeyboardHelp, type ReviewShortcutContext } from './ReviewKeyboardHelp';
@@ -88,6 +106,12 @@ import { itemUsesSidePane, reviewPaneKind, reviewShellWidthClass } from './revie
 import { genClientRequestId } from '@/lib/client-request-id';
 import { ChipSelect } from '@/components/shared/Chip';
 import { ConnectionIndicator } from '@/components/offline/ConnectionIndicator';
+
+const voiceReviewOff = () => false;
+/** The public voice stub is null; shared review needs only this capability seam. */
+function voicePreservesCurrentReview(support: { drivesVisibleReview?: () => boolean; native?: () => boolean } | null): boolean {
+  return (support?.drivesVisibleReview?.() ?? support?.native?.()) === true;
+}
 
 /** Known review item types (stable reference to avoid re-creating in render) */
 const EMPTY_COHORT_TOPICS: CohortSearchTopicV1[] = [];
@@ -111,6 +135,7 @@ interface UnifiedReviewProps {
   topics?: readonly ReviewTopic[];
   /** One manifold cluster, from a square on the profile knowledge heatmap. */
   cluster?: string | null;
+  prepDisabled?: boolean;
   /** Display identity of that cluster, so the surface can say what it scoped to. */
   clusterScope?: ReviewClusterScope | null;
   onFeedModeChange?: (next: ReviewFeedMode) => void;
@@ -121,6 +146,10 @@ interface UnifiedReviewProps {
   enrollableRotations?: string[];
   /** No saved rotation: keep the optional chooser beside the live review. */
   exploring?: boolean;
+  /** First run with no year chosen: show the "which year are you in" band. */
+  showYearPicker?: boolean;
+  /** Exploring, but whether a year was already answered is still loading: hold the band's space. */
+  yearPickerPending?: boolean;
   /** The scheduled block whose exam is booked — rendered first in the focus menu. */
   examRotation?: string | null;
   /** Currently focused rotation (null = All / blended feed). */
@@ -395,11 +424,17 @@ export function UnifiedReview(props: UnifiedReviewProps) {
     : <UnifiedReviewBody {...props} />;
 }
 
-function UnifiedReviewBody({ rotations, week, rotationSizes, fetchSlots, feedMode = 'mixed', reviewFilter, itemType, media, topics, cluster = null, clusterScope = null, onFeedModeChange, onReviewModeChange, studyableRotations = [], enrollableRotations = [], exploring = false, examRotation = null, focusRotation = null, onFocusRotationChange, allowUnverifiedPack = false, initialBatch = null, loadTimer = null, cohortSingleTurn = false, boundedQueue = false, replayKey = null, initialCohortSnapshot = null, initialCohortTopicId = null, cohortModuleScoped = false, onCohortTopicNavigate }: UnifiedReviewProps & { initialCohortSnapshot?: CohortProfileSnapshot | null }) {
+function UnifiedReviewBody({ rotations, week, rotationSizes, fetchSlots, feedMode = 'mixed', reviewFilter, itemType, media, topics, cluster = null, prepDisabled = false, clusterScope = null, onFeedModeChange, onReviewModeChange, studyableRotations = [], enrollableRotations = [], exploring = false, showYearPicker = false, yearPickerPending = false, examRotation = null, focusRotation = null, onFocusRotationChange, allowUnverifiedPack = false, initialBatch = null, loadTimer = null, cohortSingleTurn = false, boundedQueue = false, replayKey = null, initialCohortSnapshot = null, initialCohortTopicId = null, cohortModuleScoped = false, onCohortTopicNavigate }: UnifiedReviewProps & { initialCohortSnapshot?: CohortProfileSnapshot | null }) {
   const { data: authSession, status: authStatus } = useSession();
   const isCohortHost = useCohortHost();
   const isGuest = authStatus === 'unauthenticated';
   const isAuthenticated = authStatus === 'authenticated' && Boolean(authSession?.user?.id);
+  const aiAccess = authStatus === 'unauthenticated' ? 'guest' : !isAuthenticated ? null
+    : authSession?.user?.isAdmin === true ? 'owner' : authSession?.user?.aiAccess === true ? 'learner' : null;
+  const reviewVoiceSupport = useReviewVoiceSupport(
+    authStatus === 'loading' ? undefined : aiAccess === 'guest' ? 'guest' : aiAccess ? authSession!.user!.id! : null,
+    !isCohortHost && !allowUnverifiedPack,
+  );
   // MD3 offers reviewed public clips; server predicates retain every asset gate.
   const canAccessVideo = !isCohortHost;
   const searchTopics = initialCohortSnapshot?.searchTopics ?? EMPTY_COHORT_TOPICS;
@@ -459,15 +494,27 @@ function UnifiedReviewBody({ rotations, week, rotationSizes, fetchSlots, feedMod
     onReviewModeChange(mode);
   } : undefined), [onReviewModeChange, textOnly, offerMediaChoice, reviewMedia, isAuthenticated, allowUnverifiedPack]);
 
+  // The legacy transcript controller needs an audio-only queue. Review Talk
+  // operates the existing screen: starting or stopping it must not refilter
+  // the learner's current item or chosen review mode.
+  const voiceReview = useSyncExternalStore(subscribeVoiceReview, voiceReviewActive, voiceReviewOff);
+  const audioOnlyVoice = voiceReview && !voicePreservesCurrentReview(reviewVoiceSupport);
+  const chosenMedia = offerMediaChoice ? reviewMedia.preferences : null;
+  const sessionMediaPreferences = useMemo(() => (audioOnlyVoice
+    ? { hideVideos: chosenMedia?.hideVideos ?? false, hideImages: chosenMedia?.hideImages ?? false, voice: true, rev: Math.max(1, chosenMedia?.rev ?? 0) }
+    : chosenMedia), [audioOnlyVoice, chosenMedia]);
   const session = useReviewSession({
-    rotations, week, rotationSizes, fetchSlots, feedMode, reviewFilter, itemType, media, topics, cluster, focusRotation,
-    mediaPreferences: offerMediaChoice ? reviewMedia.preferences : null,
+    rotations, week, rotationSizes, fetchSlots, feedMode, reviewFilter, itemType, media, topics, cluster, prepDisabled, focusRotation,
+    mediaPreferences: sessionMediaPreferences,
     onServerMediaPreferences: offerMediaChoice ? reviewMedia.adoptServer : undefined,
     reviewChallengeRevision: difficulty.revision,
     onChallengeExhausted: difficulty.easeAfterExhaustion,
     // The credentialless fallback must trust only the device owner record.
     // A stale next-auth value from a suspended tab must not override it.
     userKey: reviewUserKey,
+    // Cohort resolves its own identity before this component mounts.
+    identityPending: authStatus === 'loading' && reviewUserKey === null
+      && !allowUnverifiedPack && !isCohortHost,
     allowUnverifiedPack,
     initialBatch,
     loadTimer,
@@ -481,12 +528,45 @@ function UnifiedReviewBody({ rotations, week, rotationSizes, fetchSlots, feedMod
   const {
     items, currentItem, currentIndex, loading, error, cohortTurnErrorCode, cohortTurnPending,
     stats, setStats,
-    startTime, isExhausted, isFetchingMore, reviewTopRef,
+    isExhausted, isFetchingMore, reviewTopRef,
     fetchItems, advanceToNext, advanceAndRefresh, refreshingNext, markSuppressed, registerResetCallback,
     shouldAutoScroll, scrollBehavior,
     newRemaining,
+    emptyReason,
     servingOffline,
   } = session;
+  // Earlier items stay in this list. The scheduler queue and the live item
+  // are not moved, re-fetched or counted again because the learner rewound.
+  const rewindScope = JSON.stringify([isCohortHost, authSession?.user?.id ?? null, reviewUserKey, authStatus, allowUnverifiedPack, [...rotations].sort(), week, feedMode, reviewFilter, itemType, replayKey, media, topics ? [...topics].sort() : null, cluster, focusRotation, ...(prepDisabled ? ['prep=off'] : [])]);
+  const rewind = useReviewRewind(rewindScope, isCohortHost ? null : (currentItem ?? null));
+  const rewindRef = useRef(rewind);
+  rewindRef.current = rewind;
+  const viewItem = rewind.presented ?? currentItem;
+  const liveKey = `live:${currentItem ? reviewItemIdentity(currentItem) : 'none'}:${currentIndex}`;
+  const presentationKey = rewind.offset > 0
+    ? `rewind:${rewind.offset}:${viewItem ? reviewItemIdentity(viewItem) : 'none'}`
+    : liveKey;
+  const [clockKey, setClockKey] = useState(presentationKey);
+  const [responseStarted, setResponseStarted] = useState(() => Date.now());
+  if (clockKey !== presentationKey) {
+    setClockKey(presentationKey);
+    setResponseStarted(Date.now());
+  }
+  const liveResume = useRef<{
+    key: string;
+    revealedBlanks: number;
+    recallEvidence: CardRevealResume['recallEvidence'];
+    selectedOption: string | null;
+    mcqResult: { isCorrect: boolean; correctOption: string } | null;
+    context: string;
+  } | null>(null);
+  const liveScroll = useRef<ReviewScrollMark | null>(null);
+  const cardResume = rewind.offset === 0 && liveResume.current?.key === presentationKey
+    ? { key: presentationKey, revealedBlanks: liveResume.current.revealedBlanks, recallEvidence: liveResume.current.recallEvidence }
+    : null;
+  const mcqResume = rewind.offset === 0 && liveResume.current?.key === presentationKey
+    ? { key: presentationKey, selectedOption: liveResume.current.selectedOption, mcqResult: liveResume.current.mcqResult, context: liveResume.current.context }
+    : null;
   refreshChallengeRef.current = session.refreshForChallenge;
   const showDifficulty = isAuthenticated
     && !boundedQueue
@@ -549,18 +629,22 @@ function UnifiedReviewBody({ rotations, week, rotationSizes, fetchSlots, feedMod
     perRotation,
     bookedExam,
   } = sessionProgress;
-  // The API-backed daily counter is unavailable in the credentialless shell.
-  // useReviewSession persists this local counter beside the tombstone ledger,
-  // so a cold flight-mode relaunch resumes at N instead of displaying zero.
+  // Whole-day telemetry still records the device session count while the
+  // daily API is not what gets posted (credentialless shell or a pack
+  // fallback). The pill does not follow that switch. Offline already has its
+  // own chip, and a grade still moves the daily count once (owner correction,
+  // 11 Nov 2026). useReviewSession keeps the session total for the drawer
+  // footer; useSessionProgress keeps a later server total from being added
+  // on top of a grade that is still in the outbox.
   const usingDeviceProgress = allowUnverifiedPack || servingOffline;
   const reviewed = usingDeviceProgress ? stats.total : serverReviewed;
   const displayedProgress = reviewProgressPresentation({
     feedMode, reviewFilter, itemType, media,
     scoped: Boolean(cluster || topics?.length || week || boundedQueue
       || (focusRotation && examRotation && focusRotation !== examRotation)),
-    offline: usingDeviceProgress,
     sessionReviewed: stats.total,
-    reviewed, target,
+    reviewed: serverReviewed,
+    target,
     todayFirstSight: sessionProgress.todayFirstSight,
     firstSightTarget: sessionProgress.firstSightTarget,
   });
@@ -572,8 +656,8 @@ function UnifiedReviewBody({ rotations, week, rotationSizes, fetchSlots, feedMod
     </div>
   ) : null;
   const incrementReviewed = useCallback((rotation?: string | null, firstSight = false) => {
-    if (!usingDeviceProgress) incrementServerReviewed(rotation, firstSight);
-  }, [incrementServerReviewed, usingDeviceProgress]);
+    incrementServerReviewed(rotation, firstSight);
+  }, [incrementServerReviewed]);
 
   // Keep the unmount-metadata ref current after each commit. Writing a ref
   // during render trips react-hooks/refs; a no-deps effect runs after every
@@ -623,17 +707,19 @@ function UnifiedReviewBody({ rotations, week, rotationSizes, fetchSlots, feedMod
   const onReviewWithReset = useCallback(() => {
     consecutiveFailures.current = 0;
     setSubmitError(null);
-    if (isCohortHost && cohortSingleTurn && currentItem?.deliveryId) {
+    if (isCohortHost && cohortSingleTurn && viewItem?.deliveryId) {
       setAcknowledgedCohortAnswers((count) => count + 1);
     }
     // Attribute the grade to the rotation it was graded in, so the drawer's row
     // for that rotation moves on this keystroke rather than at the next fetch.
-    incrementReviewed(rotations[0] ?? currentItem?.rotation, currentItem?.firstSightAtSelection);
+    // A rewind sets firstSight false, so the daily total moves and the new-item
+    // count does not.
+    incrementReviewed(rotations[0] ?? viewItem?.rotation, viewItem?.firstSightAtSelection);
   }, [
     cohortSingleTurn,
-    currentItem?.deliveryId,
-    currentItem?.firstSightAtSelection,
-    currentItem?.rotation,
+    viewItem?.deliveryId,
+    viewItem?.firstSightAtSelection,
+    viewItem?.rotation,
     incrementReviewed,
     isCohortHost,
     rotations,
@@ -641,11 +727,14 @@ function UnifiedReviewBody({ rotations, week, rotationSizes, fetchSlots, feedMod
 
   // Card review: reveal, grade
   const card = useCardReview({
-    currentItem, advanceToNext, setStats, registerResetCallback,
+    currentItem: viewItem, advanceToNext, setStats, registerResetCallback,
+    onInteraction: rewind.offset > 0 ? undefined : session.markCurrentItemEngaged,
     onAnswerIntent: (isCorrect) => recordAnswerIntent({ isCorrect }),
+    presentationKey,
+    resume: cardResume,
   });
   const {
-    revealedBlanks, blankCount, cardFullyRevealed, cardAnswerRef,
+    revealedBlanks, blankCount, cardFullyRevealed, cardAnswerRef, recallEvidence,
     handleReveal, handleRevealAll, handleCardGrade, handleCardContinue,
   } = card;
 
@@ -653,18 +742,21 @@ function UnifiedReviewBody({ rotations, week, rotationSizes, fetchSlots, feedMod
   const promptFigures = items.slice(currentIndex, currentIndex + 5)
     .flatMap(reviewItem => reviewItem.promptFigure ? [reviewItem.promptFigure] : []);
   const preparedPrompts = usePreparedPromptFigures(promptFigures);
-  const preparedPrompt = currentItem?.promptFigure
-    ? preparedPrompts.prepared[currentItem.promptFigure.src] : undefined;
-  const promptFigureReady = !currentItem?.promptFigure || preparedPrompt?.status === 'ready';
+  const preparedPrompt = viewItem?.promptFigure
+    ? preparedPrompts.prepared[viewItem.promptFigure.src] : undefined;
+  const promptFigureReady = !viewItem?.promptFigure || preparedPrompt?.status === 'ready';
 
   // MCQ review: select, skip, confidence
   const mcq = useMcqReview({
-    currentItem, currentIndex, startTime, advanceToNext, setStats,
+    currentItem: viewItem, currentIndex, startTime: responseStarted, advanceToNext, setStats,
+    onInteraction: rewind.offset > 0 ? undefined : session.markCurrentItemEngaged,
     registerResetCallback, shouldAutoScroll, scrollBehavior,
     onReview: onReviewWithReset, onSubmitError,
     onAnswerIntent: (isCorrect) => recordAnswerIntent({ isCorrect }),
     opaqueAnswerEndpoint: isCohortHost ? '/api/cohort/answer' : undefined,
     promptFigureReady,
+    presentationKey,
+    resume: mcqResume,
   });
   // Note: startTime, onReview, onSubmitError still used by handleSelectOption/handleMcqSkip in useMcqReview
   const {
@@ -861,6 +953,10 @@ function UnifiedReviewBody({ rotations, week, rotationSizes, fetchSlots, feedMod
   }, [cohortProfile?.hookCompletedAt, isLastHookItem, persistCohortWrite]);
 
   const handleNext = useCallback(() => {
+    if (rewindRef.current.offset > 0) {
+      rewindRef.current.forward();
+      return;
+    }
     if (cohortPromptBlocked || scaffoldWriteStatus !== 'idle') return;
     if (isPracticeFollowUpTurn(currentItem)) {
       if (mcqResult && !refreshingNext) void advanceAndRefresh();
@@ -891,24 +987,40 @@ function UnifiedReviewBody({ rotations, week, rotationSizes, fetchSlots, feedMod
   ]);
 
   // Shared grading hooks — handle API calls, state, offline queueing
-  const getResponseTimeMs = useCallback(() => Date.now() - startTime, [startTime]);
+  const getResponseTimeMs = useCallback(() => Date.now() - responseStarted, [responseStarted]);
 
   const cardGrading = useGrading({
-    itemId: currentItem?.id ?? '',
+    itemId: viewItem?.id ?? '',
     itemType: 'card',
-    answerIdentity: card.recallEvidence ? JSON.stringify(card.recallEvidence) : undefined,
+    answerIdentity: recallEvidence ? JSON.stringify(recallEvidence) : undefined,
     getResponseTimeMs,
-    metadata: { ...currentItem?.decisionContext, ...(card.recallEvidence ? { universalRecall: card.recallEvidence } : {}) },
-    sessionId: currentItem?.sessionId,
-    batchId: currentItem?.batchId,
-    serveDecisionId: currentItem?.serveDecisionId,
+    metadata: { ...viewItem?.decisionContext, ...(recallEvidence ? { universalRecall: recallEvidence } : {}) },
+    sessionId: viewItem?.sessionId,
+    batchId: viewItem?.batchId,
+    serveDecisionId: viewItem?.serveDecisionId,
     onGraded: (confidence) => {
       onReviewWithReset?.();
-      handleCardGrade(confidence >= 3 && (!card.recallEvidence || (!card.recallEvidence.assisted && card.recallEvidence.omittedComponentIds.length === 0)) ? 3 : 0);
+      const passed = confidence >= 3 && (!recallEvidence || (!recallEvidence.assisted && recallEvidence.omittedComponentIds.length === 0));
+      // A rewind is another review. Step toward the live item. Do not advance
+      // the scheduler queue or rewrite the earlier grade.
+      if (rewindRef.current.offset > 0) {
+        recordAnswerIntent({ isCorrect: passed });
+        setStats(prev => ({
+          total: prev.total + 1,
+          correct: passed ? prev.correct + 1 : prev.correct,
+        }));
+        rewindRef.current.forward();
+        return;
+      }
+      handleCardGrade(passed ? 3 : 0);
     },
     // Went back and gave the same grade again: a re-read, so move on without
-    // counting a second review in the stats or the daily total.
-    onRepeat: () => handleCardContinue(),
+    // counting a second review in the stats or the daily total. A rewind does
+    // not hit this: its delivery identity was dropped, so the grade is new.
+    onRepeat: () => {
+      if (rewindRef.current.offset > 0) rewindRef.current.forward();
+      else handleCardContinue();
+    },
     onError: (msg) => onSubmitError?.(msg),
   });
 
@@ -940,7 +1052,7 @@ function UnifiedReviewBody({ rotations, week, rotationSizes, fetchSlots, feedMod
   const activeCardGrading = cohortCardDeliveryId ? cohortCardGrading : cardGrading;
 
   const mcqGrading = useGrading({
-    itemId: currentItem?.id ?? '',
+    itemId: viewItem?.id ?? '',
     itemType: 'question',
     onGraded: () => {
       handleNext();
@@ -948,12 +1060,12 @@ function UnifiedReviewBody({ rotations, week, rotationSizes, fetchSlots, feedMod
   });
 
   const videoGrading = useGrading({
-    itemId: currentItem?.id ?? '',
+    itemId: viewItem?.id ?? '',
     itemType: 'video',
     getResponseTimeMs,
-    sessionId: currentItem?.sessionId,
-    batchId: currentItem?.batchId,
-    serveDecisionId: currentItem?.serveDecisionId,
+    sessionId: viewItem?.sessionId,
+    batchId: viewItem?.batchId,
+    serveDecisionId: viewItem?.serveDecisionId,
     onGraded: (confidence) => {
       // Intentionally no recordAnswerIntent: the durable server event is
       // video_watched (exposure), not one of the canonical answer event types.
@@ -962,9 +1074,13 @@ function UnifiedReviewBody({ rotations, week, rotationSizes, fetchSlots, feedMod
         correct: confidence >= 3 ? prev.correct + 1 : prev.correct,
       }));
       onReviewWithReset?.();
-      advanceToNext();
+      if (rewindRef.current.offset > 0) rewindRef.current.forward();
+      else advanceToNext();
     },
-    onRepeat: () => advanceToNext(),
+    onRepeat: () => {
+      if (rewindRef.current.offset > 0) rewindRef.current.forward();
+      else advanceToNext();
+    },
     onError: (msg) => onSubmitError?.(msg),
   });
 
@@ -972,41 +1088,40 @@ function UnifiedReviewBody({ rotations, week, rotationSizes, fetchSlots, feedMod
   // NOTE: Can't use currentIndex — advanceToNext trims items and keeps
   // currentIndex at UNDO_BUFFER (1), so the effect never re-fires after
   // the first couple of cards. Use item ID instead.
-  const currentItemId = currentItem?.id;
   // What a message to the AI carries: the item on screen. A Cohort delivery's
   // id is not the item's; it is sent as a delivery and the server maps it to
   // the item served to this learner (owner, 2026-10-09: AI on cohort.md too).
   // The item on screen, revealed or not: "tell me about this card" before
   // answering is the commonest question (owner, 2026-10-07). The front desk is
   // told when it is unanswered and keeps the answer back unless asked.
-  const aiTarget = currentItem && (currentItem.type === 'card' || currentItem.type === 'question')
-    && (currentItem.deliveryId || !isCohortHost)
+  // The chat component stays mounted across a rewind, so its draft and thread
+  // are still there when the live item returns.
+  const aiTarget = viewItem && (viewItem.type === 'card' || viewItem.type === 'question')
+    && (viewItem.deliveryId || !isCohortHost)
     ? {
-        kind: currentItem.type,
-        id: currentItem.deliveryId ?? currentItem.id,
-        answered: currentItem.type === 'card' ? cardFullyRevealed : Boolean(mcqResult),
-        ...(currentItem.deliveryId ? { delivery: true } : {}),
+        kind: viewItem.type,
+        id: viewItem.deliveryId ?? viewItem.id,
+        answered: viewItem.type === 'card' ? cardFullyRevealed : Boolean(mcqResult),
+        ...(viewItem.deliveryId ? { delivery: true } : {}),
       }
     : null;
-  const aiLabel = (currentItem?.type === 'card' ? currentItem.front : currentItem?.type === 'question' ? currentItem.stem : '') ?? '';
+  const aiLabel = (viewItem?.type === 'card' ? viewItem.front : viewItem?.type === 'question' ? viewItem.stem : '') ?? '';
   useEffect(() => {
     cardGrading.reset();
     mcqGrading.reset();
     videoGrading.reset();
-    // Keyed on BOTH id and index. Index alone does not work, for the reason
-    // above. ID alone does not either: the undo-buffer item is not added to
-    // reviewedCardIdsRef until it is trimmed, so a refetch can hand back the
-    // item sitting in that buffer and place it adjacent to itself. Stepping
-    // between two same-id neighbours then changes no ID, the effect does not
-    // fire, and a `saved` status survives onto a card the learner is looking at
-    // — which disables the grade bar until a reload.
-  }, [currentItemId, currentIndex]); // eslint-disable-line react-hooks/exhaustive-deps
+    // presentationKey changes when the live item changes and when a rewind
+    // step changes. Index alone stays at the undo buffer, and id alone misses
+    // two neighbours that share an id, which left a saved grade blocking the
+    // bar. A rewind of the same id is a different key, so its grade is new.
+  }, [presentationKey]); // eslint-disable-line react-hooks/exhaustive-deps
 
   // Drawer state (progress details panel)
   const [drawerOpen, setDrawerOpen] = useState(false);
   const [contentBrowserOpen, setContentBrowserOpen] = useState(false);
   const [contentBrowserMounted, setContentBrowserMounted] = useState(false);
   const [showRotationChooser, setShowRotationChooser] = useState(false);
+  const [yearPickerDismissed, setYearPickerDismissed] = useState(false);
   const [mobileOptionsOpen, setMobileOptionsOpen] = useState(false);
   const mobileOptionsRef = useRef<HTMLDivElement>(null);
   const mobileOptionsPanelRef = useRef<HTMLDivElement>(null);
@@ -1039,16 +1154,41 @@ function UnifiedReviewBody({ rotations, week, rotationSizes, fetchSlots, feedMod
     };
   }, [mobileOptionsOpen]);
 
-  // Flag state — F opens text input, Enter submits
-  const flagging = useFlagging({ item: currentItem, registerResetCallback, publicSurface: isCohortHost });
-  const { flagMode, flagged, flagPending, flagMessage, authExpired, setFlagMode, setFlagMessage, handleFlagSubmit, closeFlag } = flagging;
-  const historyScope = JSON.stringify([isCohortHost, authSession?.user?.id ?? null, reviewUserKey, authStatus, allowUnverifiedPack, [...rotations].sort(), week, feedMode, reviewFilter, itemType, replayKey, media, topics ? [...topics].sort() : null, cluster, focusRotation]);
-  const historyEntry = useMemo(() => !isCohortHost && currentItem && !isProtectedPracticeItem(currentItem) && currentItem.type !== 'group' ? {
-    item: currentItem.type === 'question' && displayOptions ? { ...currentItem, options: displayOptions } : currentItem,
-    selectedOption, mcqResult, context,
-  } : null, [isCohortHost, currentItem, displayOptions, selectedOption, mcqResult, context]);
-  const history = useReviewHistory(historyScope, historyEntry);
-  const handleReviewGoBack = history.back;
+  // Flag state — F opens text input, Enter submits. Flags the item on screen,
+  // including one the learner rewound to.
+  const flagging = useFlagging({ item: viewItem, registerResetCallback, publicSurface: isCohortHost });
+  const {
+    flagMode, flagged, flagPending, flagMessage, authExpired, setFlagMode, setFlagMessage, handleFlagSubmit, closeFlag,
+    submissionGeneration, submissionStatus, submissionError, image: flagImage,
+  } = flagging;
+  const captureLive = () => {
+    if (rewindRef.current.offset !== 0) return;
+    liveResume.current = {
+      key: liveKey,
+      revealedBlanks,
+      recallEvidence,
+      selectedOption,
+      mcqResult,
+      context: context ?? '',
+    };
+    liveScroll.current = captureReviewScroll(reviewTopRef.current);
+  };
+  const rewindBack = () => {
+    captureLive();
+    rewindRef.current.back();
+  };
+  const rewindForward = () => rewindRef.current.forward();
+  const rewindEscape = () => rewindRef.current.escape();
+  useLayoutEffect(() => {
+    if (rewind.offset > 0) {
+      resetScrollToTop(reviewTopRef.current);
+      return;
+    }
+    if (liveScroll.current) {
+      restoreReviewScroll(liveScroll.current);
+      liveScroll.current = null;
+    }
+  }, [presentationKey, rewind.offset, reviewTopRef]);
   const openContentBrowser = () => {
     setMobileOptionsOpen(false);
     setContentBrowserMounted(true);
@@ -1056,11 +1196,11 @@ function UnifiedReviewBody({ rotations, week, rotationSizes, fetchSlots, feedMod
   };
 
   const [shortcutsOpen, setShortcutsOpen] = useState(false);
-  const shortcutContext: ReviewShortcutContext = currentItem?.type === 'card'
+  const shortcutContext: ReviewShortcutContext = viewItem?.type === 'card'
     ? cardFullyRevealed ? (cohortCardDeliveryId ? 'card-grade-required' : 'card-grade') : 'card-reveal'
-    : currentItem?.type === 'video' ? 'video-rate'
+    : viewItem?.type === 'video' ? 'video-rate'
     : awaitingConfidence ? 'mcq-confidence'
-    : mcqResult ? (currentItem?.deliveryId ? 'mcq-continue' : 'mcq-grade') : 'mcq-select';
+    : mcqResult ? (viewItem?.deliveryId ? 'mcq-continue' : 'mcq-grade') : 'mcq-select';
 
   const shortcutsReturnRef = useRef<HTMLElement | null>(null);
   const openShortcuts = useCallback(() => {
@@ -1072,18 +1212,21 @@ function UnifiedReviewBody({ rotations, week, rotationSizes, fetchSlots, feedMod
 
   // Keyboard shortcuts
   useReviewKeyboard({
-    disabled: history.index !== null || contentBrowserOpen || cohortPromptBlocked,
+    disabled: contentBrowserOpen || cohortPromptBlocked,
     // The required onboarding dialog owns the keyboard. Passing no item makes
     // Space/Enter/number shortcuts inert while its controls retain native
     // keyboard activation.
-    currentItem: history.index !== null || contentBrowserOpen || cohortPromptBlocked || scaffoldWriteStatus !== 'idle' || opaqueWriteStatus !== 'idle' ? undefined : currentItem,
+    currentItem: contentBrowserOpen || cohortPromptBlocked || scaffoldWriteStatus !== 'idle' || opaqueWriteStatus !== 'idle' ? undefined : viewItem,
     cardFullyRevealed,
     mcqResult,
     flagMode,
     setFlagMode,
     handleReveal,
     handleCardGrade: activeCardGrading.grade,
-    handleCardContinue,
+    handleCardContinue: () => {
+      if (rewindRef.current.offset > 0) rewindRef.current.forward();
+      else handleCardContinue();
+    },
     // `useGrading.grade()` early-returns while a grade is saving/saved/queued
     // and does not advance, so a grade keystroke in those states would do
     // nothing at all. Space is the primary key on this surface and used to
@@ -1103,10 +1246,17 @@ function UnifiedReviewBody({ rotations, week, rotationSizes, fetchSlots, feedMod
     handleNext,
     handleMcqGrade: awaitingConfidence
       ? (confidence: number) => { void handleOpaqueConfidence(confidence); }
-      : (currentItem?.deliveryId && mcqResult ? handleNext : mcqGrading.grade),
+      : (viewItem?.deliveryId && mcqResult ? handleNext : mcqGrading.grade),
     handleVideoRate: videoGrading.grade,
-    handleVideoContinue: advanceToNext,
-    handleGoBack: handleReviewGoBack,
+    handleVideoContinue: () => {
+      if (rewindRef.current.offset > 0) rewindRef.current.forward();
+      else advanceToNext();
+    },
+    handleGoBack: rewindBack,
+    handleGoForward: rewindForward,
+    handleRewindEscape: rewindEscape,
+    canGoBack: rewind.canBack,
+    canGoForward: rewind.canForward,
     handleRevealAll,
     handleOpenShortcuts: contentBrowserOpen ? undefined : openShortcuts,
     handleOpenBrowser: !isCohortHost && isAuthenticated ? openContentBrowser : undefined,
@@ -1114,20 +1264,176 @@ function UnifiedReviewBody({ rotations, week, rotationSizes, fetchSlots, feedMod
     // G rates what is on screen. Uses the same poster as the thumb buttons
     // so the two cannot diverge.
     handleContentRating: (rating) => {
-      if (!currentItem || (!currentItem.serveDecisionId && !(isCohortHost && currentItem.deliveryId))) return;
+      if (!viewItem || (!viewItem.serveDecisionId && !(isCohortHost && viewItem.deliveryId))) return;
       void postContentRating({
-        itemType: currentItem.type === 'question' ? 'question' : 'card',
-        itemId: currentItem.id,
-        serveDecisionId: currentItem.serveDecisionId,
-        publicDeliveryId: isCohortHost ? currentItem.deliveryId : undefined,
+        itemType: viewItem.type === 'question' ? 'question' : 'card',
+        itemId: viewItem.id,
+        serveDecisionId: viewItem.serveDecisionId,
+        publicDeliveryId: isCohortHost ? viewItem.deliveryId : undefined,
         rating,
-        sourceComponent: currentItem.sourceComponent
-          || (currentItem.type === 'question' ? 'MCQ' : 'Card'),
+        sourceComponent: viewItem.sourceComponent
+          || (viewItem.type === 'question' ? 'MCQ' : 'Card'),
       });
     },
   });
 
-  const item = currentItem;
+  // The same handlers, for input that is not a key or a tap (a voice session).
+  // Registered after every render so the closures are the current ones, and
+  // withdrawn whenever the keys above are inert, so nothing can act on an item
+  // the keyboard could not.
+  const actionItem = loading || !promptFigureReady || contentBrowserOpen || cohortPromptBlocked || scaffoldWriteStatus !== 'idle' || opaqueWriteStatus !== 'idle' ? undefined : viewItem;
+  useEffect(() => {
+    const item = actionItem && (actionItem.type === 'card' || actionItem.type === 'question') ? actionItem : null;
+    if (!item) {
+      const completed = !viewItem && !loading && !error && !contentBrowserOpen && !cohortTurnPending && !isFetchingMore && !refreshingNext && (isExhausted || boundedQueue);
+      if (completed) {
+        const inactive = () => {};
+        registerReviewActions({
+          state: () => ({ kind: null, itemId: null, presentationId: presentationKey, revealed: false, remaining: 0, completed: true }),
+          describe: () => ({ prompt: '', answer: null }),
+          reveal: inactive, grade: inactive, chooseOption: inactive, skip: inactive, next: inactive, flag: inactive,
+        });
+      } else registerReviewActions(null);
+      return;
+    }
+    const isCard = item.type === 'card';
+    const revealed = isCard ? cardFullyRevealed : Boolean(mcqResult);
+    // Keep action letters distinct from the badges actually rendered after
+    // shuffling. Ordinary MCQs show numbers; cross-references and kType show letters.
+    const visibleOptions = isCard ? [] : displayOptions ?? item.options ?? [];
+    const responseFormat = responseFormatOfOptions(visibleOptions);
+    const numberedOptions = responseFormat === 'sba' && !optionsCrossReference(visibleOptions.map(option => option.text));
+    const labelledOptions = visibleOptions.map(({ label, text }, index) => ({
+      label, text,
+      ...(responseFormat !== 'typeX' ? { displayLabel: numberedOptions ? String(index + 1) : label } : {}),
+    }));
+    const continueCard = () => {
+      if (rewindRef.current.offset > 0) rewindRef.current.forward();
+      else handleCardContinue();
+    };
+    const cardGradeBlocked = !cohortCardDeliveryId && (cardGrading.status === 'saving' || cardGrading.status === 'saved' || cardGrading.status === 'queued');
+    const feedbackDraft = flagMessage.slice(0, 1000);
+    registerReviewActions({
+      state: () => ({
+        kind: isCard ? 'card' : 'question', itemId: item.id, presentationId: presentationKey, flagOpen: flagMode, revealed,
+        optionCount: visibleOptions.length, remaining: target === null ? undefined : Math.max(0, target - reviewed),
+        feedback: {
+          open: flagMode,
+          draft: feedbackDraft,
+          hasImage: Boolean(flagImage.file),
+          editable: !flagPending && !(isCohortHost && flagImage.error),
+          status: submissionStatus,
+          submissionGeneration,
+          ...(submissionError ? { error: submissionError.slice(0, 500) } : {}),
+        },
+      }),
+      background: () => itemBackground({ ...item, options: visibleOptions }, revealed, mcqResult?.correctOption ?? null),
+      teacherNotes: () => {
+        const relabelled = visibleOptions.map((option, index) => ({ ...option, label: labelledOptions[index].displayLabel ?? option.label }));
+        const keyed = mcqResult ? labelledOptions.find((option) => option.label === mcqResult.correctOption) : undefined;
+        return itemBackground({ ...item, options: relabelled }, true, keyed?.displayLabel ?? keyed?.label ?? null);
+      },
+      figure: () => chatFigureFor(item, revealed, isCard ? item.front : item.stem),
+      describe: () => {
+        if (isCard) {
+          const answer = item.backs?.length ? item.backs.join(', ') : item.back ?? null;
+          return { prompt: item.front ?? '', answer: revealed ? answer : null, expected: item.backs?.length ? item.backs : item.back ? [item.back] : [], ...(revealed ? { explanation: itemBackground(item, true) } : {}) };
+        }
+        const options = labelledOptions.map((option) => `${option.displayLabel ?? option.label}. ${option.text}`).join('\n');
+        const visibleStem = [item.contextText, item.stem].filter(Boolean).join('\n\n');
+        const keyed = mcqResult ? labelledOptions.find((option) => option.label === mcqResult.correctOption) : undefined;
+        return {
+          prompt: [visibleStem, options].filter(Boolean).join('\n'),
+          stem: visibleStem,
+          answer: mcqResult ? `${keyed?.displayLabel ?? mcqResult.correctOption}. ${keyed?.text ?? ''}`.trim() : null,
+          options: visibleOptions.map((option) => option.text),
+          labelledOptions,
+          ...(revealed ? { explanation: itemBackground({ ...item, options: visibleOptions.map((option, index) => ({ ...option, label: labelledOptions[index].displayLabel ?? option.label })) }, true, keyed?.displayLabel ?? mcqResult?.correctOption ?? null) } : {}),
+          ...(mcqResult ? { outcome: mcqResult.isCorrect ? 'correct' as const : 'incorrect' as const } : {}),
+        };
+      },
+      reveal: () => {
+        if (revealed) return;
+        if (isCard) handleRevealAll();
+        else handleMcqSkip();
+      },
+      grade: (confidence) => {
+        if (!revealed) return;
+        if (isCard) {
+          if (cardGradeBlocked) continueCard();
+          else activeCardGrading.grade(confidence);
+        } else if (awaitingConfidence) void handleOpaqueConfidence(confidence);
+        else if (item.deliveryId && mcqResult) handleNext();
+        else mcqGrading.grade(confidence);
+      },
+      chooseOption: (label) => { if (!isCard && !revealed) handleSelectOption(label); },
+      skip: () => {
+        if (isCard) continueCard();
+        else if (revealed) handleNext();
+        else handleMcqSkip();
+      },
+      next: () => {
+        if (isCard) continueCard();
+        else handleNext();
+      },
+      flag: () => setFlagMode(true),
+      draftFeedback: (text: string) => {
+        if (flagPending || (isCohortHost && flagImage.error)) return;
+        if (!flagMode) setFlagMode(true);
+        setFlagMessage(text.slice(0, 1000));
+      },
+      cancelFeedback: () => closeFlag(),
+      submitFeedback: () => { void handleFlagSubmit(); },
+      upcoming: () => upcomingVoiceItem(items, currentIndex),
+    });
+  });
+  useEffect(() => () => registerReviewActions(null), []);
+  const remoteDriven = useNativeReviewBridge(isAuthenticated && !isCohortHost);
+
+  const { mcqHighlightIndex: padMcqHighlightIndex } = useReviewGamepad({
+    shortcutContext,
+    disabled: contentBrowserOpen || cohortPromptBlocked,
+    currentItem: contentBrowserOpen || cohortPromptBlocked || scaffoldWriteStatus !== 'idle' || opaqueWriteStatus !== 'idle' ? undefined : viewItem,
+    cardFullyRevealed,
+    mcqResult,
+    flagMode,
+    setFlagMode,
+    handleReveal,
+    handleCardGrade: activeCardGrading.grade,
+    handleCardContinue: () => {
+      if (rewindRef.current.offset > 0) rewindRef.current.forward();
+      else handleCardContinue();
+    },
+    cardGradeBlocked: !cohortCardDeliveryId && (
+      cardGrading.status === 'saving'
+      || cardGrading.status === 'saved'
+      || cardGrading.status === 'queued'
+    ),
+    handleSelectOption,
+    handleMcqSkip,
+    handleNext,
+    handleMcqGrade: awaitingConfidence
+      ? (confidence: number) => { void handleOpaqueConfidence(confidence); }
+      : (viewItem?.deliveryId && mcqResult ? handleNext : mcqGrading.grade),
+    handleVideoRate: videoGrading.grade,
+    handleVideoContinue: () => {
+      if (rewindRef.current.offset > 0) rewindRef.current.forward();
+      else advanceToNext();
+    },
+    handleGoBack: rewindBack,
+    handleGoForward: rewindForward,
+    canGoBack: rewind.canBack,
+    canGoForward: rewind.canForward,
+    handleRevealAll,
+    handleOpenShortcuts: contentBrowserOpen ? undefined : openShortcuts,
+    awaitingConfidence,
+    scrollRootRef: reviewTopRef,
+  });
+
+  // The session item drives fetching. The item on screen is that item, or an
+  // earlier one shown in place. Fetching still looks at the session item so a
+  // rewind cannot draw a new batch or retire the live item.
+  const item = viewItem;
   const displayItem = item?.type === 'question' && displayOptions
     ? { ...item, options: displayOptions }
     : item;
@@ -1149,7 +1455,6 @@ function UnifiedReviewBody({ rotations, week, rotationSizes, fetchSlots, feedMod
   }, [boundedQueue, item, error, cohortTurnPending, isExhausted, isFetchingMore, loading, fetchItems]);
 
   const reviewDialogs = <>
-      <ReviewHistoryDialog entries={history.entries} index={history.index} onIndexChange={history.setIndex} onClose={history.close} />
       {contentBrowserMounted && !isCohortHost && isAuthenticated && authSession?.user?.id && (
         <ContentBrowserDialog key={`content-browser:${authSession.user.id}`} userId={authSession.user.id} rotation={rotations[0] ?? ''}
           open={contentBrowserOpen} returnFocusRef={mobileOptionsTriggerRef} onClose={() => { setContentBrowserOpen(false); mobileOptionsTriggerRef.current?.focus(); }} />
@@ -1209,10 +1514,7 @@ function UnifiedReviewBody({ rotations, week, rotationSizes, fetchSlots, feedMod
     );
   }
 
-  const historyReader = <>
-    {history.entries.length > 0 && <button type="button" onClick={history.back} className="min-h-11 rounded-md px-3 text-sm">Previous questions (Z)</button>}
-    {reviewDialogs}
-  </>;
+  const historyReader = reviewDialogs;
 
   // Empty — API returned no content. If exhausted, show a real message
   // instead of an infinite spinner.
@@ -1230,6 +1532,7 @@ function UnifiedReviewBody({ rotations, week, rotationSizes, fetchSlots, feedMod
           itemType={itemType}
           media={media}
           newRemaining={newRemaining}
+          emptyReason={emptyReason}
           showRefresh={!boundedQueue}
           replay={boundedQueue}
           onFetch={() => fetchItems()}
@@ -1255,6 +1558,7 @@ function UnifiedReviewBody({ rotations, week, rotationSizes, fetchSlots, feedMod
           itemType={itemType}
           media={media}
           newRemaining={newRemaining}
+          emptyReason={emptyReason}
           stats={stats}
           focusRotation={focusRotation}
           canChooseFocus={!allowUnverifiedPack && studyableRotations.length > 0}
@@ -1327,6 +1631,10 @@ function UnifiedReviewBody({ rotations, week, rotationSizes, fetchSlots, feedMod
 
   return (
     <div ref={reviewTopRef} data-review-scope={clusterScope ? 'topic' : undefined}>
+      {yearPickerPending && !showYearPicker && <YearPickerSpace />}
+      {showYearPicker && !yearPickerDismissed && (
+        <YearPicker onDone={() => window.location.reload()} onDismiss={() => setYearPickerDismissed(true)} />
+      )}
       {showRotationChooser && (
         <RotationChooserDialog
           rotations={enrollableRotations}
@@ -1349,16 +1657,44 @@ function UnifiedReviewBody({ rotations, week, rotationSizes, fetchSlots, feedMod
             reads as "open a menu". Home stays reachable from the nav rail
             (desktop) and the bottom bar (mobile), one of which is always shown. */}
         <div className="flex min-w-0 items-center gap-[6px] @min-[60rem]/review-toolbar:gap-2 text-sm text-[var(--md-on-surface-variant)]">
-          {history.entries.length > 0 && !isCohortHost && (
-            <button
-              onClick={handleReviewGoBack}
-              className="shrink-0 whitespace-nowrap px-2 py-1 rounded-md hover:bg-[var(--md-surface-container-high)] transition-colors text-xs flex items-center gap-1"
-              title="Go back (Z)"
-              aria-label="Go back"
+          {rewind.entries.length > 0 && !isCohortHost && (
+            <div className="flex shrink-0 items-center gap-[2px]">
+              <button
+                type="button"
+                onClick={rewindBack}
+                className="inline-flex h-[44px] w-[44px] shrink-0 items-center justify-center rounded-full border border-[var(--md-outline-variant)] text-[var(--md-on-surface)] hover:bg-[var(--md-surface-container-high)]"
+                title="Previous item (Z)"
+                aria-label="Previous item"
+              >
+                <svg aria-hidden="true" viewBox="0 0 24 24" width="28" height="28" fill="none" stroke="currentColor" strokeWidth="2.25" strokeLinecap="round" strokeLinejoin="round"><path d="M15 6 9 12l6 6" /></svg>
+              </button>
+              {rewind.offset > 0 && (
+                <span className="whitespace-nowrap px-[2px] text-xs font-medium tabular-nums text-[var(--md-on-surface)]" aria-live="polite">{rewind.offset} back</span>
+              )}
+              {rewind.offset > 0 && (
+                <button
+                  type="button"
+                  onClick={rewindForward}
+                  className="inline-flex h-[44px] w-[44px] shrink-0 items-center justify-center rounded-full border border-[var(--md-outline-variant)] text-[var(--md-on-surface)] hover:bg-[var(--md-surface-container-high)]"
+                  title="Next item (Shift+Z)"
+                  aria-label="Next item"
+                >
+                  <svg aria-hidden="true" viewBox="0 0 24 24" width="28" height="28" fill="none" stroke="currentColor" strokeWidth="2.25" strokeLinecap="round" strokeLinejoin="round"><path d="m9 6 6 6-6 6" /></svg>
+                </button>
+              )}
+            </div>
+          )}
+          {remoteDriven && (
+            // One glyph in the existing row: an MCP agent (Dot) is driving this page.
+            <span
+              role="status"
+              data-testid="review-remote-driven"
+              className="inline-flex h-[44px] w-[28px] shrink-0 items-center justify-center text-[var(--md-primary)]"
+              title="Driven by your voice agent: it sees and controls this page"
+              aria-label="Driven by your voice agent"
             >
-              {'\u21A9'}<span className="hidden @min-[60rem]/review-toolbar:inline"> back</span>
-              <kbd className="hidden pointer-fine:inline text-[10px] opacity-40 font-mono">z</kbd>
-            </button>
+              <svg aria-hidden="true" viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M3 17a4 4 0 0 1 4 4M3 13a8 8 0 0 1 8 8M3 9a12 12 0 0 1 12 12" /><path d="M3 5h16a2 2 0 0 1 2 2v10a2 2 0 0 1-2 2h-2" /></svg>
+            </span>
           )}
           {isCohortHost && <ReviewModulePicker
             disabled={cohortTurnPending || refreshingNext || activeCardGrading.status === 'saving' || opaqueWriteStatus === 'saving'}
@@ -1468,6 +1804,8 @@ function UnifiedReviewBody({ rotations, week, rotationSizes, fetchSlots, feedMod
               {offerMediaChoice && (
                 <ReviewMediaToggles preferences={reviewMedia.preferences} onToggle={toggleReviewMedia} />
               )}
+              <PracticeFollowUpToggle enabled={isAuthenticated && !isCohortHost} />
+              {aiAccess && reviewVoiceSupport && <TalkVolumeStepper />}
             </div>
             {isCohortHost && searchTopics.length > 0 && (
               <CohortSearchOverlay
@@ -1488,7 +1826,8 @@ function UnifiedReviewBody({ rotations, week, rotationSizes, fetchSlots, feedMod
           <ConnectionIndicator host="toolbar" placement="below" />
           {/* Shared icon controls stay visible at every width. */}
           <AiReviewControl
-            access={authStatus === 'unauthenticated' ? 'guest' : !isAuthenticated ? null : authSession?.user?.isAdmin === true ? 'owner' : authSession?.user?.aiAccess === true ? 'learner' : null}
+            access={aiAccess}
+            voiceSupport={reviewVoiceSupport}
             target={aiTarget}
             label={aiLabel}
             sessionMisses={stats.total - stats.correct}
@@ -1567,7 +1906,7 @@ function UnifiedReviewBody({ rotations, week, rotationSizes, fetchSlots, feedMod
       {perRotation && perRotation.length > 0 && (
         <ProgressDrawer
           open={drawerOpen}
-          reviewed={reviewed}
+          reviewed={serverReviewed}
           target={target}
           perRotation={perRotation}
           bookedExam={bookedExam}
@@ -1625,8 +1964,8 @@ function UnifiedReviewBody({ rotations, week, rotationSizes, fetchSlots, feedMod
           A previous attempt to my-auto-centre short cards made them read as
           "floating in the middle of the screen", so that's reverted. */}
       <div data-review-content className={`px-4 py-5 sm:px-6 sm:py-7 ${bottomPaddingClass}`}>
-        <div className={`${reviewShellWidthClass(usesSidePane, reviewPaneKind(item))} mx-auto review-card-shell`}>
-      <ReviewKeyboardHelp open={shortcutsOpen} onClose={() => setShortcutsOpen(false)} context={shortcutContext} canBrowse={!isCohortHost && isAuthenticated} canGoBack={history.entries.length > 0} returnFocusRef={shortcutsReturnRef} />
+        <div className={`${reviewShellWidthClass(usesSidePane, reviewPaneKind(item))} mx-auto review-card-shell${usesSidePane ? ' review-card-shell--flush' : ''}`}>
+      <ReviewKeyboardHelp open={shortcutsOpen} onClose={() => setShortcutsOpen(false)} context={shortcutContext} canBrowse={!isCohortHost && isAuthenticated} canGoBack={rewind.entries.length > 0} rewound={rewind.offset > 0} ai={aiAccess ? { talk: true, chat: true } : undefined} returnFocusRef={shortcutsReturnRef} />
       {item.practiceReview && (
         <div className="mb-2">
           <PracticeExamFollowUp provenance={item.practiceReview} />
@@ -1727,6 +2066,7 @@ function UnifiedReviewBody({ rotations, week, rotationSizes, fetchSlots, feedMod
           mcqAnswerRef={mcqAnswerRef}
           handleSelectOption={handleSelectOption}
           handleRevealAnswer={cohortPromptBlocked ? undefined : handleMcqSkip}
+          padHighlightIndex={padMcqHighlightIndex}
           toggleOptionExplanation={toggleOptionExplanation}
           selectedPending={!mcqResult && item.answerSource !== 'practice-exam-follow-up' && (selectedOption != null || awaitingConfidence)}
           interactionDisabled={cohortPromptBlocked || opaqueWriteStatus === 'saving'}
@@ -1797,7 +2137,7 @@ function UnifiedReviewBody({ rotations, week, rotationSizes, fetchSlots, feedMod
           position as the grade ramp so the tap target never moves between
           reveal and grade (one consistent spot, esp. for mobile thumbs). */}
       {showCardReveal && (
-        <ReviewActionBar onClick={handleReveal}>
+        <ReviewActionBar onClick={handleReveal} padMark="bottom">
           <RevealActionLabel item={item} remainingAnswers={blankCount - revealedBlanks} />
           {blankCount > 1 ? ` (${revealedBlanks}/${blankCount})` : ''}
         </ReviewActionBar>
@@ -1837,7 +2177,7 @@ function UnifiedReviewBody({ rotations, week, rotationSizes, fetchSlots, feedMod
       )}
 
       {showMcqContinue && (
-        <ReviewActionBar onClick={handleNext} disabled={refreshingNext}>
+        <ReviewActionBar onClick={handleNext} disabled={refreshingNext} padMark="bottom">
             {refreshingNext ? 'Loading next question…' : (
               <>
                 {mcqResult && (

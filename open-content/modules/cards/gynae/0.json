@@ -5,19 +5,23 @@
   "attribution": "MD3 contributors",
   "cards": [
     {
-      "id": "cohort:gynae:c-06ded9cec22e:v1",
-      "origin": "mdx:7fd944209be48e405ba6c13980d9142d",
+      "id": "cohort:gynae:c-0fe82e893713:v1",
+      "origin": "mdx:b586ae08421f4ca493ac5bdf481ed968",
       "discipline": "gynae",
       "cardType": "cloze",
       "sourceComponent": "KeyPoint",
-      "front": "Three years after menarche, a girl has persistent irregular cycles but no clinical or biochemical hyperandrogenism. Other causes have been excluded. The diagnostic follow-up plan is [___].",
-      "back": "planned reassessment",
-      "context": "Within eight years of menarche, ultrasound and AMH are not diagnostic because normal pubertal physiology overlaps with polycystic morphology.\n\nAdolescent diagnosis requires persistent ovulatory dysfunction and hyperandrogenism. With only one feature, treat symptoms and arrange reassessment.",
+      "front": "A 33-year-old sees her GP after a second consecutive miscarriage, at 9 weeks. The GP wonders whether to wait for a third loss. Investigation for recurrent miscarriage should be offered [___].",
+      "back": "now",
+      "context": "RANZCOG defines recurrent miscarriage as two or more losses of an intrauterine pregnancy; the older threshold was three.\n\nTesting after the second loss includes antiphospholipid antibodies, a treatable association.",
       "complexity": 3,
       "importance": 2,
-      "variantGroup": null,
+      "variantGroup": "cohort:gynae:g-1b8236846b4e",
       "variantIndex": null,
-      "reference": null
+      "reference": {
+        "title": "Miscarriage, Recurrent Miscarriage and Ectopic Pregnancy (C-Gyn 38)",
+        "publisher": "RANZCOG",
+        "url": "https://ranzcog.edu.au/wp-content/uploads/Miscarriage-Ectopic-Pregnancy.pdf"
+      }
     }
   ]
 }

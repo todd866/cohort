@@ -49,8 +49,8 @@ function defaultHandlers() {
   };
 }
 
-function keyEvent(type: 'keydown' | 'keyup', key: string, target?: EventTarget | null, repeat = false) {
-  const event = new KeyboardEvent(type, { key, bubbles: true, repeat });
+function keyEvent(type: 'keydown' | 'keyup', key: string, target?: EventTarget | null, repeat = false, shiftKey = false) {
+  const event = new KeyboardEvent(type, { key, bubbles: true, repeat, shiftKey });
   if (target) {
     Object.defineProperty(event, 'target', { value: target });
   }
@@ -58,9 +58,9 @@ function keyEvent(type: 'keydown' | 'keyup', key: string, target?: EventTarget |
 }
 
 /** A whole key press: down, then up. Number shortcuts act on release. */
-function pressKey(key: string, target?: EventTarget | null) {
-  keyEvent('keydown', key, target);
-  keyEvent('keyup', key, target);
+function pressKey(key: string, target?: EventTarget | null, shiftKey = false) {
+  keyEvent('keydown', key, target, false, shiftKey);
+  keyEvent('keyup', key, target, false, shiftKey);
 }
 
 function renderKeyboard(overrides: Record<string, unknown> = {}) {
@@ -201,13 +201,31 @@ describe('useReviewKeyboard', () => {
 
   describe('input focus detection', () => {
     it('ignores keyboard events when an input element is focused', () => {
-      const { handleReveal } = renderKeyboard({ cardFullyRevealed: false });
+      const handleGoBack = vi.fn();
+      const handleGoForward = vi.fn();
+      const handleRewindEscape = vi.fn();
+      const { handleReveal } = renderKeyboard({
+        cardFullyRevealed: false,
+        canGoBack: true,
+        canGoForward: true,
+        handleGoBack,
+        handleGoForward,
+        handleRewindEscape,
+      });
 
       const input = document.createElement('input');
       document.body.appendChild(input);
       pressKey(' ', input);
+      pressKey('z', input);
+      pressKey('Z', input, true);
+      pressKey('ArrowLeft', input);
+      pressKey('ArrowRight', input);
+      pressKey('Escape', input);
 
       expect(handleReveal).not.toHaveBeenCalled();
+      expect(handleGoBack).not.toHaveBeenCalled();
+      expect(handleGoForward).not.toHaveBeenCalled();
+      expect(handleRewindEscape).not.toHaveBeenCalled();
       document.body.removeChild(input);
     });
 
@@ -696,19 +714,29 @@ describe('useReviewKeyboard', () => {
     });
 
     it('all keys are ignored in flag mode (textarea handles input)', () => {
+      const handleGoBack = vi.fn();
+      const handleGoForward = vi.fn();
       const { handleReveal, handleCardGrade, setFlagMode } = renderKeyboard({
         flagMode: true,
         cardFullyRevealed: true,
+        canGoBack: true,
+        canGoForward: true,
+        handleGoBack,
+        handleGoForward,
       });
 
       pressKey(' ');
       pressKey('f');
       pressKey('1');
+      pressKey('z');
+      pressKey('Z', null, true);
       pressKey('Escape');
 
       expect(handleReveal).not.toHaveBeenCalled();
       expect(handleCardGrade).not.toHaveBeenCalled();
       expect(setFlagMode).not.toHaveBeenCalled();
+      expect(handleGoBack).not.toHaveBeenCalled();
+      expect(handleGoForward).not.toHaveBeenCalled();
     });
   });
 
@@ -727,6 +755,74 @@ describe('useReviewKeyboard', () => {
 
       pressKey('Z');
       expect(handleGoBack).toHaveBeenCalledOnce();
+    });
+
+    it('Shift+Z steps forward and leaves the back handler alone', () => {
+      const handleGoBack = vi.fn();
+      const handleGoForward = vi.fn();
+      renderKeyboard({ handleGoBack, handleGoForward, canGoForward: true });
+
+      pressKey('Z', null, true);
+      expect(handleGoForward).toHaveBeenCalledOnce();
+      expect(handleGoBack).not.toHaveBeenCalled();
+    });
+
+    it('Left goes back only when history exists, and Right goes forward only while rewound', () => {
+      const handleGoBack = vi.fn();
+      const handleGoForward = vi.fn();
+      const idle = renderKeyboard({ handleGoBack, handleGoForward });
+      pressKey('ArrowLeft');
+      pressKey('ArrowRight');
+      expect(handleGoBack).not.toHaveBeenCalled();
+      expect(handleGoForward).not.toHaveBeenCalled();
+      idle.result.unmount();
+
+      renderKeyboard({ handleGoBack, handleGoForward, canGoBack: true, canGoForward: true });
+      pressKey('ArrowLeft');
+      pressKey('ArrowRight');
+      expect(handleGoBack).toHaveBeenCalledOnce();
+      expect(handleGoForward).toHaveBeenCalledOnce();
+    });
+
+    it('leaves arrows to a focused video, slider, listbox or chat, and still rewinds those with Z', () => {
+      const handleGoBack = vi.fn();
+      const handleGoForward = vi.fn();
+      renderKeyboard({ handleGoBack, handleGoForward, canGoBack: true, canGoForward: true });
+
+      const video = document.createElement('video');
+      const slider = document.createElement('div');
+      slider.setAttribute('role', 'slider');
+      const chat = document.createElement('div');
+      chat.setAttribute('data-ai-chat', '');
+      const chatButton = document.createElement('button');
+      chat.appendChild(chatButton);
+      document.body.append(video, slider, chat);
+
+      pressKey('ArrowLeft', video);
+      pressKey('ArrowRight', slider);
+      pressKey('z', chatButton);
+      expect(handleGoBack).not.toHaveBeenCalled();
+      expect(handleGoForward).not.toHaveBeenCalled();
+
+      pressKey('z', video);
+      expect(handleGoBack).toHaveBeenCalledOnce();
+      video.remove();
+      slider.remove();
+      chat.remove();
+    });
+
+    it('Escape returns to the live item, and an open dialog takes that Escape first', () => {
+      const handleRewindEscape = vi.fn();
+      renderKeyboard({ canGoForward: true, handleRewindEscape });
+      pressKey('Escape');
+      expect(handleRewindEscape).toHaveBeenCalledOnce();
+
+      const dialog = document.createElement('dialog');
+      dialog.setAttribute('open', '');
+      document.body.appendChild(dialog);
+      pressKey('Escape');
+      expect(handleRewindEscape).toHaveBeenCalledOnce();
+      dialog.remove();
     });
   });
 

@@ -1,4 +1,5 @@
 import { prisma } from '@/lib/prisma';
+import { keepCardIdsVisibleTo } from '@/lib/cards/read-repository.server';
 import { logger } from '@/lib/logger';
 import { embedContent, formatCardForEmbedding, findCardsForQuestion } from '@/lib/manifold';
 import { prependCardsToQueue } from '@/lib/study-queue';
@@ -714,7 +715,8 @@ export async function queueReinforcementCard(
   rotation: string,
   cardIds: string[]
 ): Promise<void> {
-  const unique = Array.from(new Set(cardIds)).slice(0, REINFORCEMENT_MAX_ITEMS);
+  // Adjacent cards come from a search over every learner's private cards too.
+  const unique = (await keepCardIdsVisibleTo(userId, cardIds)).slice(0, REINFORCEMENT_MAX_ITEMS);
   if (unique.length === 0) return;
 
   const now = new Date();

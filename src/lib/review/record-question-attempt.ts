@@ -1,5 +1,6 @@
 import { Prisma } from '@prisma/client';
 import { prisma } from '@/lib/prisma';
+import { keepCardIdsVisibleTo } from '@/lib/cards/read-repository.server';
 import { findCardsForQuestion } from '@/lib/manifold';
 import { expandTopicSet, normalizeTopic } from '@/lib/topics';
 import { updateUserStreak } from '@/lib/stats';
@@ -900,7 +901,8 @@ async function findAndQueueRemediationCards(
   try {
     // Try vector similarity first
     const similarCards = await findCardsForQuestion(question.id, 5, 0.4);
-    remediationCardIds = similarCards.filter((c) => !!c.front).map((c) => c.cardId);
+    // The search ranges over every learner's private cards too; only this learner's own count.
+    remediationCardIds = await keepCardIdsVisibleTo(userId, similarCards.filter((c) => !!c.front).map((c) => c.cardId));
 
     if (remediationCardIds.length > 0) {
       const metas = await prisma.card.findMany({
@@ -976,7 +978,8 @@ async function findAndQueueRemediationCards(
       }
     }
 
-    // Queue related cards
+    // Queue related cards (the topic fallback above also reads every learner's cards).
+    remediationCardIds = await keepCardIdsVisibleTo(userId, remediationCardIds);
     if (remediationCardIds.length > 0) {
       await prisma.cardProgress.createMany({
         data: remediationCardIds.map((cardId) => ({ userId, cardId, nextDueAt: dueAt })),

@@ -6,6 +6,7 @@
  * their slower Cache API deletion can safely finish in the background.
  */
 
+import { clearVoiceSecrets } from '@/lib/voice-secret-cache';
 import {
   claimDeviceGuestReviewOutbox,
   clearOutbox,
@@ -46,6 +47,7 @@ export function bindOfflineOwner(ownerKey: string): OwnerLease {
   if (switched) {
     clearImageChoiceHistory();
     clearChatStorage();
+    clearVoiceSecrets();
     const deviceGuestSignIn = Boolean(
       previousOwner
       && !previousOwner.verified
@@ -81,6 +83,7 @@ export async function clearOfflineUserData(): Promise<void> {
   // Invalidate leases first so work resolving during cleanup cannot commit.
   clearOfflineOwner();
   clearChatStorage();
+  clearVoiceSecrets();
   clearImageChoiceHistory();
   clearPack();
   clearOfflineReviewProgress();

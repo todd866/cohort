@@ -61,6 +61,14 @@ import {
 } from '@/lib/study/review-challenge';
 import { mediaCandidateWhere, matchesCandidateImage } from '@/lib/study/media-review';
 import type { ReviewMedia } from '@/lib/review/review-intent';
+import { passSetForPool } from './pass-set-inputs';
+import {
+  countSecuredFacts,
+  isProgressSecured,
+  resolvePassSetIntake,
+  type PassSet,
+  type PassSetIntakeDecision,
+} from './pass-set';
 
 /** Minimal Prisma-like client for raw queries — works with PrismaClient and $extends() result. */
 type PrismaRawClient = {
@@ -133,7 +141,7 @@ const CANDIDATE_CARD_SELECT = {
   id: true, stableId: true, rotation: true, clusterId: true, similarCards: true, topics: true,
   sourceFile: true, imageUrl: true, clipId: true, clipRole: true, importance: true, complexity: true, facilityIndex: true,
   sampleSize: true, variantGroupId: true, variantIndex: true, variantType: true,
-  examRelevance: true, examRelevancePct: true,
+  examRelevance: true, examRelevancePct: true, examDomain: true,
 } as const;
 
 const CANDIDATE_QUESTION_SELECT = {
@@ -218,6 +226,8 @@ export interface BulkCardRow {
   examRelevance: number | null;
   /** Discriminating exam-target percentile ∈ [0,1]; null until backfilled (CC only). */
   examRelevancePct: number | null;
+  /** Assigned exam blueprint area; absent on seen rows and older fixtures. */
+  examDomain?: string | null;
 }
 
 export interface BulkQuestionRow {
@@ -344,6 +354,72 @@ export interface BulkCandidates {
    * Questions the user has never answered are absent, which IS the freshest tier.
    */
   questionFamiliarity: Map<string, QuestionFamiliarity>;
+  /**
+   * The session rotation's pass set (pass-set.ts) and this learner's secured
+   * count, computed from the shared cached pool and the progress read the
+   * unseen filter already makes. Absent when the pool was read directly (a
+   * cluster scope, an unreadable change log): intake then degrades to
+   * unfiltered, it never waits for a read.
+   */
+  passSet?: { passSet: PassSet; securedFacts: number | null };
+  /** Unseen cards new-material intake holds back (applyPassSetIntakePolicy). */
+  passSetDeferredCardIds?: ReadonlySet<string>;
+  passSetIntakeDecision?: PassSetIntakeDecision;
+}
+
+export { passSetIntakeEnabled } from './pass-set';
+
+/**
+ * A scope the learner chose: a topic square (cluster), a week page or the
+ * session-prep deck (both arrive as `week`), a simulation focus, or an image or
+ * video picker. Those requests ignore the pass-set filter.
+ */
+export function isExplicitIntakeScope(options: {
+  clusterFilter?: string | null;
+  week?: number | null;
+  simulationFocus?: unknown;
+  media?: ReviewMedia | null;
+}): boolean {
+  return Boolean(options.clusterFilter)
+    || options.week != null
+    || Boolean(options.simulationFocus)
+    || (options.media != null && options.media !== 'any');
+}
+
+/** True when new intake should skip this unseen card for now. */
+export function isIntakeDeferred(bulk: Pick<BulkCandidates, 'passSetDeferredCardIds'>, cardId: string): boolean {
+  return bulk.passSetDeferredCardIds?.has(cardId) ?? false;
+}
+
+/**
+ * Hold back new facts outside the pass set while pass-set supply lasts
+ * (pass-set.ts resolvePassSetIntake). Nothing is removed from the pool:
+ * scaffold, pre-teach and repetition lanes still see every card, and every
+ * metadata map stays whole. Only the new-intake pickers consult the deferral.
+ */
+export function applyPassSetIntakePolicy(
+  bulk: BulkCandidates,
+  context: {
+    enabled: boolean;
+    explicitScope: boolean;
+    requestedTopics?: ReadonlySet<string>;
+  },
+): BulkCandidates {
+  const result = resolvePassSetIntake({
+    enabled: context.enabled,
+    passSet: bulk.passSet?.passSet ?? null,
+    rotation: bulk.rotation,
+    unseenCards: bulk.unseenCards,
+    startedVariantGroups: bulk.cardVariantGroupHistory,
+    explicitScope: context.explicitScope,
+    requestedTopics: context.requestedTopics,
+    securedFacts: bulk.passSet?.securedFacts ?? null,
+  });
+  return {
+    ...bulk,
+    passSetDeferredCardIds: result.deferredCardIds,
+    passSetIntakeDecision: result.decision,
+  };
 }
 
 /** Apply endpoint challenge lanes before quotas and modality selection. */
@@ -567,6 +643,7 @@ export async function bulkFetchCandidates(
     });
   }
 
+  let passSetContext: BulkCandidates['passSet'];
   const [
     unseenCards,
     seenCardProgress,
@@ -618,10 +695,30 @@ export async function bulkFetchCandidates(
         ),
         prisma.cardProgress.findMany({
           where: scopedCardProgressWhere(cardScope, { userId }, { AND: [rotationScope] }),
-          select: { cardId: true },
+          // The secured columns ride on the read this filter already makes, so
+          // the pass-set unlock costs no extra query.
+          select: {
+            cardId: true, lastQuality: true, correctCount: true, stabilityDays: true,
+            lastReview: true, nextDueAt: true, suppressed: true,
+          },
         }),
       ]);
       const progressedIds = new Set(progressed.map((row) => row.cardId));
+      try {
+        const passSet = passSetForPool(pool, rotation);
+        if (passSet) {
+          const securedAt = leechEligibilityNow;
+          passSetContext = {
+            passSet,
+            securedFacts: countSecuredFacts(
+              passSet,
+              progressed.filter((row) => isProgressSecured(row, securedAt)).map((row) => row.cardId),
+            ),
+          };
+        }
+      } catch (error) {
+        logger.warn('pass set unavailable; intake unfiltered', { rotation, error: String(error) });
+      }
       return ownCopy(mediaPoolFilter(pool.filter((card) => !progressedIds.has(card.id) && !excludedCardIds.has(card.id)
         && (isCopyrightTier || card.clipRole !== 'prompt' || Boolean(card.clipId && clearedClipIds?.has(card.clipId))))));
     })(),
@@ -928,6 +1025,7 @@ export async function bulkFetchCandidates(
     examTargetNeutralItemKeys: examTargetRows.neutralItemKeys,
     cardVariantGroupHistory,
     questionFamiliarity: accessibleQuestionFamiliarity,
+    ...(passSetContext ? { passSet: passSetContext } : {}),
   };
 }
 

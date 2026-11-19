@@ -147,6 +147,7 @@ export function parseReviewIntent(
 export function buildReviewHref(
   intent: ReviewIntent,
   reviewTopicRotations: ReviewTopicRotations = {},
+  options: { prepDisabled?: boolean } = {},
 ): string {
   const params = new URLSearchParams();
   if (intent.rotation) params.set('rotation', intent.rotation);
@@ -161,6 +162,8 @@ export function buildReviewHref(
       ))
     : undefined;
   if (topics?.length === 1) params.set('topics', topics[0]);
+  // Navigation carries only this visit’s explicit opt-out, never a saved preference.
+  if (options.prepDisabled) params.set('prep', 'off');
   const query = params.toString();
   return query ? `/?${query}` : '/';
 }

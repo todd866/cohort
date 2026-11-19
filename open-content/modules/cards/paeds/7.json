@@ -65,6 +65,21 @@
       "reference": null
     },
     {
+      "id": "cohort:paeds:c-71410ac0265a:v1",
+      "origin": "mdx:99ea70172112e1d9c4e5986167489a27:blank-1",
+      "discipline": "paeds",
+      "cardType": "cloze",
+      "sourceComponent": "KeyPoint",
+      "front": "Breath-holding spells begin in infancy (peak 12-18 months) and typically resolve by age 6 years; trigger → crying → expiratory breath-hold → loss of awareness; benign but check ECG and treat any [___].",
+      "back": "iron deficiency",
+      "context": "Breath-holding spells affect 6 months-6 years (peak 12-18 months, usually resolved by age 6).\n\nTrigger (fear, pain, frustration) → crying → expiratory breath-hold → cyanosis or pallor → stiffening, loss of awareness, sometimes clonic jerks.\n\nTwo types: cyanotic (commonest, after crying) and pallid (after pain/fright, vasovagal) — benign, no long-term effects. Iron deficiency association — correction may help; always check ECG to rule out arrhythmia.",
+      "complexity": 1,
+      "importance": 2,
+      "variantGroup": "cohort:paeds:g-9cc3f9d6a58c",
+      "variantIndex": 1,
+      "reference": null
+    },
+    {
       "id": "cohort:paeds:c-71a6c788ef7e:v1",
       "origin": "mdx:ce37fedd052b53da0ede8a7250aa2c5d",
       "discipline": "paeds",
@@ -77,6 +92,21 @@
       "importance": 2,
       "variantGroup": "cohort:paeds:g-85758ce16434",
       "variantIndex": null,
+      "reference": null
+    },
+    {
+      "id": "cohort:paeds:c-71bb69bd9744:v1",
+      "origin": "mdx:70d9ec71361bfefc64124f3bdaf2a4f0:blank-0",
+      "discipline": "paeds",
+      "cardType": "cloze",
+      "sourceComponent": "KeyPoint",
+      "front": "Convulsive status epilepticus = seizure ≥[___] or recurrent without return to baseline; bimodal peaks in toddlers and elderly.",
+      "back": "5 minutes",
+      "context": "Five minutes is an operational treatment threshold for ongoing convulsions, not a fixed onset time for neuronal injury. Check blood glucose and support airway and breathing while seeking senior help.\n\nCount benzodiazepines already given by carers or paramedics. Give no more than two appropriate doses in total before moving to second-line treatment under the emergency protocol.\n\nPersistent seizures after second-line treatment need urgent senior, anaesthetic and intensive-care support for airway control and further antiseizure treatment; thiopentone is not a universal next drug.",
+      "complexity": 1,
+      "importance": 2,
+      "variantGroup": "cohort:paeds:g-4cb4e856049c",
+      "variantIndex": 0,
       "reference": null
     },
     {
@@ -108,25 +138,6 @@
       "variantGroup": null,
       "variantIndex": null,
       "reference": null
-    },
-    {
-      "id": "cohort:paeds:c-727cb290be1e:v1",
-      "origin": "mdx:f4a33a3d6dde4a67c2abbab3deec3553:blank-2",
-      "discipline": "paeds",
-      "cardType": "cloze",
-      "sourceComponent": "KeyPoint",
-      "front": "Croup is caused by parainfluenza virus; peak age ~2 years; classic triad of barking cough, hoarse voice, [___].",
-      "back": "stridor",
-      "context": "Parainfluenza causes ~75% of croup; RSV, adenovirus, influenza, and rhinovirus account for the rest.\n\nSymptoms classically worsen overnight from supine position and increased oedema.",
-      "complexity": 2,
-      "importance": 2,
-      "variantGroup": "cohort:paeds:g-017190bcbb4f",
-      "variantIndex": 2,
-      "reference": {
-        "title": "Croup (Laryngotracheobronchitis)",
-        "publisher": "The Royal Children's Hospital Melbourne",
-        "url": "https://www.rch.org.au/clinicalguide/guideline_index/Croup_Laryngotracheobronchitis/"
-      }
     },
     {
       "id": "cohort:paeds:c-72c6b5aea5a8:v1",
@@ -268,6 +279,21 @@
       }
     },
     {
+      "id": "cohort:paeds:c-73ee59dda15f:v1",
+      "origin": "mdx:fe361c5c92487e9a8eed7e0a0f703088",
+      "discipline": "paeds",
+      "cardType": "cloze",
+      "sourceComponent": "KeyPoint",
+      "front": "A newborn has not passed meconium by 48 hours and contrast enema shows a distal transition zone. Definitive confirmation requires [___].",
+      "back": "rectal suction biopsy",
+      "context": "Delayed meconium, abdominal distension and a distal transition zone suggest Hirschsprung disease, but imaging does not establish aganglionosis.\n\nDefinitive diagnosis requires histology from a rectal suction biopsy showing absent enteric ganglion cells before pull-through surgery.",
+      "complexity": 3,
+      "importance": 2,
+      "variantGroup": null,
+      "variantIndex": null,
+      "reference": null
+    },
+    {
       "id": "cohort:paeds:c-7439a2f0d5f3:v1",
       "origin": "mdx:47e68f8a2ae0f6dbc4c515fbddf1382d",
       "discipline": "paeds",
@@ -280,21 +306,6 @@
       "importance": 2,
       "variantGroup": null,
       "variantIndex": null,
-      "reference": null
-    },
-    {
-      "id": "cohort:paeds:c-747301807375:v1",
-      "origin": "mdx:3dc794ed28f67c3698b61a3ac8ddac17:blank-0",
-      "discipline": "paeds",
-      "cardType": "cloze",
-      "sourceComponent": "KeyPoint",
-      "front": "Viral-induced wheeze is common in first [___] years; rhinovirus is the dominant trigger in school-aged children.",
-      "back": "2",
-      "context": "Respiratory viruses commonly trigger wheeze in young children, who may be well between episodes.\n\nEpisodic viral and multi-trigger labels are unreliable preschool subtypes; assess symptoms, episode burden and treatment response over time. Rhinovirus also triggers asthma exacerbations in school-aged children.\n\nAtopy and recurrent wheeze increase concern for persistent asthma, but an infection-only pattern does not exclude it.",
-      "complexity": 2,
-      "importance": 2,
-      "variantGroup": "cohort:paeds:g-b7509ae6b9a2",
-      "variantIndex": 0,
       "reference": null
     },
     {
@@ -452,21 +463,6 @@
       "reference": null
     },
     {
-      "id": "cohort:paeds:c-76a68fafbcfe:v1",
-      "origin": "mdx:915b37a0e3adb5acf0c06268ad9a0b4f:blank-0",
-      "discipline": "paeds",
-      "cardType": "cloze",
-      "sourceComponent": "KeyPoint",
-      "front": "Breath-holding spells begin in infancy (peak 12-18 months) and typically resolve by age [___] years; trigger → crying → expiratory breath-hold → loss of awareness; benign but check ECG and treat any iron deficiency.",
-      "back": "6",
-      "context": "Breath-holding spells affect 6 months-6 years (peak 12-18 months, usually resolved by age 6).\n\nTrigger (fear, pain, frustration) → crying → expiratory breath-hold → cyanosis or pallor → stiffening, loss of awareness, sometimes clonic jerks.\n\nTwo types: cyanotic (commonest, after crying) and pallid (after pain/fright, vasovagal) — benign, no long-term effects. Iron deficiency association — correction may help; always check ECG to rule out arrhythmia.",
-      "complexity": 1,
-      "importance": 2,
-      "variantGroup": "cohort:paeds:g-e481281badd2",
-      "variantIndex": 0,
-      "reference": null
-    },
-    {
       "id": "cohort:paeds:c-76c761518661:v1",
       "origin": "mdx:d78f84ccad979e5b44b981e625cd479c:blank-0",
       "discipline": "paeds",
@@ -509,21 +505,6 @@
       "importance": 2,
       "variantGroup": null,
       "variantIndex": null,
-      "reference": null
-    },
-    {
-      "id": "cohort:paeds:c-776394a2d2f2:v1",
-      "origin": "mdx:58cd0330463041e2f3f9e13bb4a3e139:blank-0",
-      "discipline": "paeds",
-      "cardType": "cloze",
-      "sourceComponent": "KeyPoint",
-      "front": "Bordetella pertussis is a Gram-[___] aerobic coccobacillus; mortality is ~1 in 125 babies under 6 months.",
-      "back": "negative",
-      "context": "Bordetella pertussis is a Gram-negative aerobic coccobacillus — it colonises ciliated respiratory epithelium and acts via secreted toxins (it is not an intracellular pathogen).\n\nAzithromycin is given to eradicate the organism and limit spread, not because the bacterium hides inside cells. Infant mortality reflects apnoea and pulmonary hypertension from severe paroxysmal coughing.\n\nMaternal vaccination in pregnancy + cocoon strategy is the main protection for infants too young for their own vaccine.",
-      "complexity": 2,
-      "importance": 2,
-      "variantGroup": "cohort:paeds:g-76efb7183a5a",
-      "variantIndex": 0,
       "reference": null
     },
     {
@@ -629,21 +610,6 @@
       "importance": 3,
       "variantGroup": "cohort:paeds:g-47ef2c7e6091",
       "variantIndex": 2,
-      "reference": null
-    },
-    {
-      "id": "cohort:paeds:c-79a35ed5a55e:v1",
-      "origin": "mdx:f4a33a3d6dde4a67c2abbab3deec3553:blank-1",
-      "discipline": "paeds",
-      "cardType": "cloze",
-      "sourceComponent": "KeyPoint",
-      "front": "Croup is caused by parainfluenza virus; peak age ~[___] years; classic triad of barking cough, hoarse voice, stridor.",
-      "back": "2",
-      "context": "Parainfluenza causes ~75% of croup; RSV, adenovirus, influenza, and rhinovirus account for the rest.\n\nSymptoms classically worsen overnight from supine position and increased oedema.",
-      "complexity": 2,
-      "importance": 2,
-      "variantGroup": "cohort:paeds:g-017190bcbb4f",
-      "variantIndex": 1,
       "reference": null
     },
     {
@@ -827,6 +793,21 @@
       "reference": null
     },
     {
+      "id": "cohort:paeds:c-7c02fd14ead5:v1",
+      "origin": "mdx:a5a84bd47319f969f765780ead310e71",
+      "discipline": "paeds",
+      "cardType": "cloze",
+      "sourceComponent": "KeyPoint",
+      "front": "A 1-year-old developed urticaria within 10 minutes of peanut; skin prick wheal is 9 mm. A peanut wheal of at least [___] has ~95% positive predictive value, so no oral challenge is needed.",
+      "back": "8 mm",
+      "context": "Skin prick size predicts clinical reactivity, not just sensitisation. For peanut a wheal of 8 mm or more carries about 95% positive predictive value, so a convincing history plus a large wheal needs no challenge.\n\nSmall wheals with an unconvincing history are the group who benefit from a supervised challenge, because many are sensitised without being allergic.",
+      "complexity": 3,
+      "importance": 3,
+      "variantGroup": "cohort:paeds:g-05b5356bc7d9",
+      "variantIndex": null,
+      "reference": null
+    },
+    {
       "id": "cohort:paeds:c-7c51c441bc71:v1",
       "origin": "mdx:5356e1d537e451b7df3a5f39178c02dd:blank-0",
       "discipline": "paeds",
@@ -962,21 +943,6 @@
       "reference": null
     },
     {
-      "id": "cohort:paeds:c-7e7f2f54c2e7:v1",
-      "origin": "mdx:226b459825a46721c3e8bf4ee5584ba7:blank-0",
-      "discipline": "paeds",
-      "cardType": "cloze",
-      "sourceComponent": "KeyPoint",
-      "front": "Epiglottitis is classically caused by Haemophilus [___] type b — rare now due to vaccination; child is toxic, drooling, in tripod posture.",
-      "back": "influenzae",
-      "context": "Hib epiglottitis was once common in 2-7 year olds but has been nearly eliminated by routine Hib vaccination. Now consider it in unvaccinated children, immigrants, and unusual organisms (Group A Strep, S. aureus).\n\nTripod posture (sitting forward with neck extended, mouth open) optimises airway patency in the face of supraglottic obstruction.",
-      "complexity": 1,
-      "importance": 2,
-      "variantGroup": "cohort:paeds:g-4da30156ac54",
-      "variantIndex": 0,
-      "reference": null
-    },
-    {
       "id": "cohort:paeds:c-7ea4bd92e028:v1",
       "origin": "mdx:ce6e057ec3a015263598488d4fc3c11f:blank-0",
       "discipline": "paeds",
@@ -1023,6 +989,21 @@
       "importance": 2,
       "variantGroup": "cohort:paeds:g-a0f03808b658",
       "variantIndex": 1,
+      "reference": null
+    },
+    {
+      "id": "cohort:paeds:c-7f6bd873bcad:v1",
+      "origin": "mdx:f4bb67bb2d86a4ff686d5c963735684f",
+      "discipline": "paeds",
+      "cardType": "cloze",
+      "sourceComponent": "KeyPoint",
+      "front": "11-beta-hydroxylase deficiency leaves [___] to accumulate, which raises blood pressure and androgens.",
+      "back": "deoxycorticosterone",
+      "context": "The blocked step should convert that precursor onward to aldosterone and cortisol. What is left behind lifts the blood pressure, and androgens rise as well.\n\nThe common salt-wasting enzyme failure does the opposite. Sodium falls, potassium rises, and the child is shocked rather than hypertensive.",
+      "complexity": 1,
+      "importance": 2,
+      "variantGroup": null,
+      "variantIndex": null,
       "reference": null
     },
     {

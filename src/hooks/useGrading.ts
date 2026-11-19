@@ -8,6 +8,7 @@ import {
   isOfflineOwnerCurrent,
 } from '@/lib/offline/owner';
 import { captureReviewWriteClientContext } from '@/lib/review/review-write-observability';
+import { reviewInputOrigin } from '@/lib/review/review-actions';
 import { answeredSlotKey, isRepeatAnswer, recordAnswer } from '@/lib/review/answered-slots';
 
 type SaveState = 'idle' | 'saving' | 'saved' | 'queued' | 'error';
@@ -112,7 +113,9 @@ export function useGrading({
       }
       const responseTimeMs = getResponseTimeMs?.();
       if (responseTimeMs != null) body.responseTimeMs = responseTimeMs;
-      if (metadata) body.metadata = metadata;
+      // A grade given by voice says so, beside whatever else describes it.
+      const input = reviewInputOrigin();
+      if (metadata || input) body.metadata = { ...(metadata ?? {}), ...(input ? { input } : {}) };
       if (sessionId != null) body.sessionId = sessionId;
       if (batchId != null) body.batchId = batchId;
       if (serveDecisionId != null) body.serveDecisionId = serveDecisionId;

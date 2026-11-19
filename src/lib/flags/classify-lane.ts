@@ -14,7 +14,7 @@
 
 export type FlagLane =
   | 'factual' // grounded factual audit found a clinical-truth defect → verify vs the guideline, fix at source
-  | 'jurisdiction' // AU card stands; author a locale twin only for a real AU-vs-US difference
+  | 'jurisdiction' // compare requested local guidance; twin only real AU-vs-US differences
   | 'augment' // too-easy / giveaway → KEEP the easy rung, add a harder companion (loop 8c)
   | 'image' // needs image/picture/diagram/figure → image-gaps loop (8f)
   | 'decode' // TLA/acronym hover-decode missing → glossary decode:true (8d)
@@ -27,7 +27,7 @@ export type FlagLane =
 
 export const LANE_ACTION: Record<FlagLane, string> = {
   factual: 'Clinical-truth defect from the grounded audit. VERIFY each against the named Australian guideline (RCH CPG / RANZCOG / eTG) before editing — a grounded verdict is a candidate, not a finding, and adjudication historically rejects over half of them. Then fix at source and re-seed. NOTE: an open issue withholds the item from serving, so leaving it open silently removes content from the queue.',
-  jurisdiction: 'The AU teaching stands. Confirm this is genuinely an AU-vs-US practice difference, then tag the AU card and author the US sibling with the same conceptId. WHO/European, adult-vs-paediatric, or retrieval-only mismatches are not US twins and should be closed as non-applicable. This issue type does not withhold the AU card.',
+  jurisdiction: 'For AU state-pathway requests, compare the held local guideline before changing teaching or citations; never relabel a Queensland chart as NSW. For genuine AU-vs-US differences, retain the AU card and author a US sibling with the same conceptId. Other source or population mismatches are not US twins. This issue type does not withhold the AU card.',
   augment: 'KEEP the easy card; append a harder multi-format companion (harder cloze + MCQ). Never rewrite/delete the easy rung. → augment loop (step 8c).',
   image: 'Fill it: acquire and inspect a real figure, scan, photo or clip, draw a reviewed original, or fix the image the note names (crop, caption, side). Only if none is possible, wont-fix with the reason. The flag ledger requires 10 closed per morning check.',
   decode: 'Review the item and its siblings; save context-specific abbreviations on each item (step 8d), then verify served tooltips. Never resolve collisions through the global glossary.',
@@ -63,7 +63,7 @@ const PREMORTEM_LANES: Record<string, FlagLane> = {
 /**
  * Classify a flag's free-text reason into a lane. Order encodes precedence:
  * premortem (already judged) → decode (a TLA signal is specific) → augment (the
- * keep-but-scaffold directive) → image → teach → hand-fix → judgment.
+ * keep-but-scaffold directive) → image → jurisdiction → teach → hand-fix → judgment.
  *
  * Anything non-blank that matches none of them is `needs-read`, NOT
  * `unclassified` — see the fallthrough comment below.
@@ -99,13 +99,26 @@ export function classifyFlagLane(text: string | null | undefined): FlagLane {
     return 'image';
   }
 
+  // jurisdiction: reporter requests a different AU state pathway (e.g. QLD→NSW).
+  // Distinct from AU↔US practice-locale twins, but the same morning-check queue.
+  if (
+    /\b(?:qld|queensland|nsw|wa|vic|victoria)\b.{0,50}\bcards?\b.{0,40}\bto\s+(?:qld|queensland|nsw|wa|vic|victoria)\b/.test(t)
+    || /\bchange\b.{0,40}\b(?:qld|queensland|nsw|wa|vic|victoria)\b.{0,50}\bcards?\b/.test(t)
+    // "this should be a nsw-first card" / "make this NSW first" (Nov 2026 production note)
+    || /\b(?:qld|queensland|nsw|wa|vic|victoria)[- ]first\b/.test(t)
+    // "use nsw guidelines not qld"
+    || /\b(?:qld|queensland|nsw|wa|vic|victoria)\b.{0,30}\bguidelines?\b.{0,20}\b(?:not|instead of|rather than)\s+(?:the\s+)?(?:qld|queensland|nsw|wa|vic|victoria)\b/.test(t)
+  ) {
+    return 'jurisdiction';
+  }
+
   // teach: requests for an explanation / more scaffolding of the underlying concept
   if (/what \*?is|what is |need to know more|scaffolding content|flesh(ed)? out|could be fleshed|better explain|explain(s|ing)? (what|the concept)|needs? context explain|context needs to remind|remind what|context needs expansion|expansion of what/.test(t)) {
     return 'teach';
   }
 
   // hand-fix: concrete construction defects
-  if (/broken formatting|formatting|broken grammar|grammar|cut.?off|truncat|doesn'?t make sense|don'?t understand|doesn'?t understand|restates|makes no sense|(not|isn'?t) (really )?(sure|clear)|phrased poorly|poorly phrased|badly (worded|phrased)|not a good (question|card)|too.?long context|context is too long|awkward phrasing|\brewrite\b|context needs fixing|needs fixing/.test(t)) {
+  if (/broken formatting|formatting|broken grammar|grammar|cut.?off|truncat|doesn'?t make sense|don'?t understand|doesn'?t understand|restates|makes no sense|(not|isn'?t) (really )?(sure|clear)|phrased poorly|poorly phrased|badly (worded|phrased)|not a good (question|card)|too.?long context|context is too long|awkward phrasing|\brewrite\b|context needs fixing|needs fixing|\bspecify (that )?you mean\b|\bclarify (that )?you mean\b|\bspell out (that )?you mean\b|\bflicker(?:ing)?\s+(?:card|question)s?\b|\b(?:card|question)s?\s+(?:is\s+|are\s+)?flicker(?:ing)?\b|\b(?:broken|glitchy)\s+render(?:ing)?\b|\brender(?:ing)?\s+(?:glitch|bug|broken)\b/.test(t)) {
     return 'hand-fix';
   }
 

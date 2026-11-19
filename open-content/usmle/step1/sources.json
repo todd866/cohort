@@ -1,8 +1,8 @@
 {
   "schemaVersion": 1,
-  "verifiedAt": "2026-08-13",
-  "quoteSetSha256": "17feeddd5c9d33e49434be179abae0a3a8ed61b21ceb073ce2668f5e4a937fee",
-  "registrySha256": "3de490117456da022b3be600c254d2e006a875a488b90e5e558fd4b9ebff0f9e",
+  "verifiedAt": "2026-11-12",
+  "quoteSetSha256": "aa9e711e8c063e47614caef633c6e17051c1516622cb73fa933b7c23e282baf5",
+  "registrySha256": "334408e531017905709cb29639ba7ab2488363a4d091013cc40aa4a4541adb75",
   "sources": [
     {
       "id": "cdc-pink-book-vaccine-principles",
@@ -270,7 +270,7 @@
         {
           "id": "nephrotic-hyperlipidemia",
           "locator": "What is nephrotic syndrome? > symptoms",
-          "quote": "high levels of cholesterol and other lipids (fats) in your blood, called hyperlipidemia"
+          "quote": "high levels of cholesterol and other lipids (fats) in the blood, called hyperlipidemia"
         }
       ]
     },
@@ -771,11 +771,6 @@
           "quote": "The dorsal column system primarily carries information about touch and proprioception and crosses the midline in the medulla. The spinothalamic tract is primarily responsible for pain and temperature sensation and crosses the midline in the spinal cord at the level at which it enters."
         },
         {
-          "id": "neuro-blood-brain-barrier",
-          "locator": "Nervous System Infections > Anatomy of the Nervous System",
-          "quote": "The capillary endothelial cells form tight junctions that control the transfer of blood components to the brain. In addition, cranial capillaries have far fewer fenestra (pore-like structures that are sealed by a membrane) and pinocytotic vesicles than other capillaries. The blood-brain barrier also inhibits the movement of many drugs into the brain, particularly compounds that are not lipid soluble."
-        },
-        {
           "id": "endo-hormone-receptor-classes",
           "locator": "The Endocrine System",
           "quote": "Steroid hormones and thyroid hormone are lipid soluble. All other amino acid–derived hormones are water soluble. Hydrophobic hormones are able to diffuse through the membrane and interact with an intracellular receptor. In contrast, hydrophilic hormones must interact with cell membrane receptors. Hydrophilic, or water-soluble, hormones are unable to diffuse through the lipid bilayer of the cell membrane and must therefore pass on their message to a receptor located at the surface of the cell."
@@ -1187,7 +1182,7 @@
         {
           "id": "he-rh-hdn-igg-placenta",
           "locator": "Diseases of the Immune System > Hypersensitivities",
-          "quote": "IgG antibodies are the only class of antibody that can cross the placenta from mother to fetus if she becomes pregnant with a second Rh+ baby, they can cross the placenta and attach to fetal Rh+ erythrocytes."
+          "quote": "IgG antibodies are the only class of antibody that can cross the placenta to impact the fetus during a pregnancy with a with a second Rh+ baby, they can cross the placenta and attach to fetal Rh+ erythrocytes."
         },
         {
           "id": "he-monocyte-macrophage",
@@ -1238,6 +1233,11 @@
           "id": "adhesins-definition",
           "locator": "15.2 How Pathogens Cause Disease",
           "quote": "Adhesins are present on the fimbriae and flagella of bacteria, the cilia of protozoa, and the capsids or membranes of viruses."
+        },
+        {
+          "id": "neuro-blood-brain-barrier",
+          "locator": "Nervous System Infections > Anatomy of the Nervous System",
+          "quote": "The capillary endothelial cells form tight junctions that control the transfer of blood components to the brain. In addition, cranial capillaries have far fewer fenestra (pore-like structures that are sealed by a membrane) and pinocytotic vesicles than other capillaries. The blood-brain barrier also inhibits the movement of many drugs into the brain, particularly compounds that are not lipid soluble."
         }
       ]
     },
@@ -1499,17 +1499,17 @@
         {
           "id": "sensitivity-definition",
           "locator": "Lesson 5 Quiz Answers > Sensitivity",
-          "quote": "Sensitivity is the ability of surveillance (or laboratory tests or case definitions) to detect a true case (or, for certain systems, a true outbreak)."
+          "quote": "Sensitivity is the ability of surveillance to detect the health problem that it is intended to detect. True positive (A) False positive (B) Total detected by surveillance (A + B) No False negative (C) True negative (D) Total missed by surveillance(C + D) Sensitivity = A ⁄ (A+C)"
         },
         {
           "id": "specificity-definition",
           "locator": "Lesson 5 Quiz Answers > Specificity",
-          "quote": "Specificity is the ability of surveillance (or laboratory tests or case definitions) to rule out disease among persons who do not have it."
+          "quote": "Figure 5.10 Calculation of Predictive Value Positive, Sensitivity, and Specificity for Surveillance True positive (A) False positive (B) Total detected by surveillance (A + B) No False negative (C) True negative (D) Total missed by surveillance(C + D) Specificity = D ⁄ (B+D)"
         },
         {
           "id": "ppv-definition",
           "locator": "Lesson 5 Quiz Answers > Predictive value positive",
-          "quote": "Predictive value positive is the proportion of patients (or outbreaks) detected by surveillance who truly have the disease (or are true outbreaks)."
+          "quote": "Predictive Value Positive is the proportion of reported or identified cases that truly are cases, or the proportion of reported or identified epidemics that were actual epidemics."
         },
         {
           "id": "sens-spec-formulas",
@@ -1664,7 +1664,7 @@
         {
           "id": "metformin-type2",
           "locator": "Metformin",
-          "quote": "Why is this medication prescribed? Metformin is used alone or with other medications, including insulin, to treat type 2 diabetes (condition in which the body does not use insulin normally and, therefore, cannot control the amount of sugar in the blood)."
+          "quote": "Metformin is used to treat type 2 diabetes (condition in which the body does not use insulin normally and, therefore, cannot control the amount of sugar in the blood). Metformin is in a class of drugs called biguanides. Metformin helps to control the amount of glucose (sugar) in your blood."
         },
         {
           "id": "metformin-biguanide-actions",
@@ -1958,7 +1958,21 @@
           "id": "odds-ratio-definition",
           "locator": "Lesson 3 Section 5 > Odds ratio",
           "quote": "Odds ratio An odds ratio (OR) is another measure of association that quantifies the relationship between an exposure with two categories and health outcome."
-        },
+        }
+      ]
+    },
+    {
+      "id": "cdc-epi-public-health-impact",
+      "title": "Principles of Epidemiology (SS1978), Lesson 3 — Measures of public health impact",
+      "publisher": "Centers for Disease Control and Prevention",
+      "canonicalUrl": "https://archive.cdc.gov/www_cdc_gov/csels/dsepd/ss1978/lesson3/section6.html",
+      "attribution": "Source: Centers for Disease Control and Prevention (CDC). This material is also available from CDC at no charge. No CDC or U.S. Government endorsement is implied.",
+      "licence": {
+        "cls": "foss",
+        "id": "us-gov",
+        "url": "https://www.cdc.gov/other/agencymaterials.html"
+      },
+      "passages": [
         {
           "id": "attributable-proportion",
           "locator": "Lesson 3 Section 6 > Attributable proportion",
@@ -2465,7 +2479,7 @@
         {
           "id": "levofloxacin-uses",
           "locator": "Levofloxacin",
-          "quote": "Why is this medication prescribed? Levofloxacin is used to treat certain infections such as pneumonia, and kidney, prostate (a male reproductive gland), and skin infections."
+          "quote": "Levofloxacin is used to treat certain infections caused by bacteria. Levofloxacin is also used to prevent anthrax (a serious infection that may be spread on purpose as part of a bioterror attack) in people who may have been exposed to anthrax germs in the air, and to treat and prevent plague"
         }
       ]
     },
@@ -2671,7 +2685,7 @@
         {
           "id": "cipro-uses",
           "locator": "Ciprofloxacin",
-          "quote": "Why is this medication prescribed? Ciprofloxacin is used to treat or prevent certain infections caused by bacteria such as pneumonia; gonorrhea (a sexually transmitted disease); typhoid fever (a serious infection that is common in developing countries); infectious diarrhea (infections that cause severe diarrhea); and infections of the skin, bone, joint, abdomen (stomach ar"
+          "quote": "Ciprofloxacin is used to treat or prevent certain infections caused by bacteria. Ciprofloxacin is also used to treat or prevent plague (a serious infection that may be spread on purpose as part of a bioterror attack) and inhalation anthrax"
         }
       ]
     },
@@ -2857,7 +2871,7 @@
         {
           "id": "insulin-uses",
           "locator": "Insulin",
-          "quote": "insulin is used to control blood sugar in people who have type 1 diabetes (condition in which the body does not make insulin and therefore cannot control the amount of sugar in the blood) or in people who have type 2 diabetes (condition in which the blood sugar is too high because the body does not"
+          "quote": "Human insulin is used to treat type 1 diabetes (condition in which the body does not make insulin and therefore cannot control the amount of sugar in the blood) and type 2 diabetes (condition in which the blood sugar is too high because the body does not produce or use insulin normally)."
         }
       ]
     },
@@ -2956,7 +2970,7 @@
       "licence": {
         "cls": "foss",
         "id": "us-gov",
-        "url": "https://www.nhlbi.nih.gov/about/nondiscrimination-accessibility-notice"
+        "url": "https://www.nih.gov/about-nih/frequently-asked-questions#copyright"
       },
       "passages": [
         {
@@ -2975,7 +2989,7 @@
       "licence": {
         "cls": "foss",
         "id": "us-gov",
-        "url": "https://www.nhlbi.nih.gov/about/nondiscrimination-accessibility-notice"
+        "url": "https://www.nih.gov/about-nih/frequently-asked-questions#copyright"
       },
       "passages": [
         {
@@ -3000,7 +3014,7 @@
         {
           "id": "metronidazole-uses",
           "locator": "Metronidazole",
-          "quote": "Metronidazole is used to treat infections of the reproductive system, gastrointestinal (GI) tract, skin, heart, bone, joint, lung, blood, nervous system, and other areas of the body. It is also used to treat certain sexually transmitted diseases (STDs)."
+          "quote": "Metronidazole is used to treat certain infections in the body caused by bacteria including sexually transmitted diseases (STDs) and bacterial vaginosis"
         }
       ]
     },
@@ -3422,7 +3436,7 @@
       "licence": {
         "cls": "foss",
         "id": "us-gov",
-        "url": "https://www.nhlbi.nih.gov/about/nondiscrimination-accessibility-notice"
+        "url": "https://www.nih.gov/about-nih/frequently-asked-questions#copyright"
       },
       "passages": [
         {
@@ -3441,7 +3455,7 @@
       "licence": {
         "cls": "foss",
         "id": "us-gov",
-        "url": "https://www.nhlbi.nih.gov/about/nondiscrimination-accessibility-notice"
+        "url": "https://www.nih.gov/about-nih/frequently-asked-questions#copyright"
       },
       "passages": [
         {
@@ -3716,7 +3730,7 @@
         {
           "id": "infant-colonization",
           "locator": "Overview",
-          "quote": "The disease results after spores of the bacterium Clostridium botulinum or related species are swallowed. These spores temporarily colonize an infant's large intestine and produce botulinum neurotoxin."
+          "quote": "The disease occurs after spores of the bacterium Clostridium botulinum or related species are swallowed. These spores temporarily colonize an infant's large intestine and produce botulinum neurotoxin."
         },
         {
           "id": "infant-toxin",
@@ -3726,7 +3740,7 @@
         {
           "id": "infant-symptoms",
           "locator": "Signs and symptoms",
-          "quote": "Constipation\nPoor feeding\nPtosis (drooping eyelid)\nSluggish pupils\nFlattened facial expression\nDiminished suck and gag reflexes\nWeak and altered cry\nRespiratory difficulty and possibly respiratory arrest"
+          "quote": "Ptosis (drooping eyelid) Sluggish pupils Flat facial expression Diminished suck and gag reflexes Respiratory difficulty and possibly respiratory arrest"
         },
         {
           "id": "infant-test",
@@ -4063,7 +4077,7 @@
         {
           "id": "afterload-volume",
           "locator": "19.4 Cardiac Physiology > Figure 19.34 Major Factors Influencing Stroke Volume",
-          "quote": "Afterload may be raised due to increased vascular resistance or semilunar valve damage. These factors increase end systolic volume and decrease stroke volume. Afterload may be lowered due to decreased vascular resistance. This factor decreases end systolic volume and increases stroke volume."
+          "quote": "Afterload refers to the tension that the ventricles must develop to pump blood effectively against the resistance in the vascular system. Any condition that increases resistance requires a greater afterload to force open the semilunar valves and pump the blood. Damage to the valves, such as stenosis, which makes them harder to open will also increase afterload. Any decrease in resistance decreases the afterload. SV is ultimately dependent upon the difference between EDV and ESV."
         },
         {
           "id": "beta-one",

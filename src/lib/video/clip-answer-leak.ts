@@ -58,7 +58,8 @@ function fold(word: string): string {
   return word;
 }
 
-function contentWords(text: string): string[] {
+/** Lower-cased, stopword-free, plural-folded words; shared with the voice-brief leak gate. */
+export function contentWords(text: string): string[] {
   return text
     .toLowerCase()
     .replace(/[^a-z0-9]+/g, ' ')

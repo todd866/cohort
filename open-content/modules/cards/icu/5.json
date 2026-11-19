@@ -5,21 +5,6 @@
   "attribution": "MD3 contributors",
   "cards": [
     {
-      "id": "cohort:icu:c-502fd9bf5e22:v1",
-      "origin": "mdx:abf1c4a2fc859a0216901f8a14789220:blank-0",
-      "discipline": "icu",
-      "cardType": "cloze",
-      "sourceComponent": "KeyPoint",
-      "front": "Maximum lignocaine dose: [___] mg/kg plain, 7 mg/kg with adrenaline.",
-      "back": "3",
-      "context": "Plain lignocaine: 3 mg/kg max. Adrenaline (1:200,000) lifts this to 7 mg/kg by causing local vasoconstriction that slows systemic absorption.\n\nFor a 70 kg adult: 210 mg plain, 490 mg with adrenaline. Useful conversion: 1% lignocaine = 10 mg/mL, so 21 mL plain or 49 mL with adrenaline.",
-      "complexity": 2,
-      "importance": 2,
-      "variantGroup": "cohort:icu:g-408151846b4b",
-      "variantIndex": 0,
-      "reference": null
-    },
-    {
       "id": "cohort:icu:c-51f279623f56:v1",
       "origin": "mdx:6a771d51da460a447d970904c6557086:blank-2",
       "discipline": "icu",
@@ -155,6 +140,21 @@
       "reference": null
     },
     {
+      "id": "cohort:icu:c-56c3f673c582:v1",
+      "origin": "mdx:af9afe7019c543fc53c972c034d1bd62:blank-1",
+      "discipline": "icu",
+      "cardType": "cloze",
+      "sourceComponent": "KeyPoint",
+      "front": "PRIS risk increases above 4 mg/kg/hr propofol for over [___] hours.",
+      "back": "48",
+      "context": "Propofol-related infusion syndrome (PRIS) is mitochondrial failure from propofol's effects on the electron transport chain. Green urine (from quinol metabolites) is pathognomonic.\n\nSuspect PRIS when a patient on high-dose propofol develops metabolic acidosis, rhabdomyolysis, hyperkalaemia, or cardiac failure.",
+      "complexity": 2,
+      "importance": 2,
+      "variantGroup": "cohort:icu:g-f4aa4dec7f39",
+      "variantIndex": 1,
+      "reference": null
+    },
+    {
       "id": "cohort:icu:c-56cc9e08973a:v1",
       "origin": "mdx:0c09892264ffc82c9291c18495192e68:blank-0",
       "discipline": "icu",
@@ -287,21 +287,6 @@
       "importance": 2,
       "variantGroup": "cohort:icu:g-223067f17166",
       "variantIndex": 1,
-      "reference": null
-    },
-    {
-      "id": "cohort:icu:c-5c6eb717b072:v1",
-      "origin": "mdx:dd3336991b625de705206ea8048055ac:blank-2",
-      "discipline": "icu",
-      "cardType": "cloze",
-      "sourceComponent": "KeyPoint",
-      "front": "Key damage control resuscitation targets: pH greater than 7.2, lactate less than 4 mmol/L, ionised calcium greater than [___] mmol/L, and temperature greater than 35°C.",
-      "back": "1.1",
-      "context": "Resuscitation targets during damage control provide specific endpoints to guide product replacement. These numbers should be checked every 30-60 minutes during active MTP.\n\nTBI patients have higher targets because the injured brain tolerates coagulopathy and anaemia poorly.",
-      "complexity": 2,
-      "importance": 2,
-      "variantGroup": "cohort:icu:g-c3eccec4b4cc",
-      "variantIndex": 2,
       "reference": null
     },
     {

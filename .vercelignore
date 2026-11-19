@@ -7,6 +7,8 @@
 /scripts/ecg-database/
 /research/
 /question-bank/
+# Also exclude the tracked external symlink itself, even when its target is absent.
+/question-bank
 /private-content/
 
 # ECG images (hosted on Cloudflare R2)

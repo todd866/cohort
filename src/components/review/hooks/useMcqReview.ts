@@ -219,12 +219,21 @@ interface UseMcqReviewOptions {
   scrollBehavior: () => ScrollBehavior;
   onReview?: () => void;
   /** Interval-local signal that a canonical answer write was attempted. */
+  onInteraction?: () => void;
   onAnswerIntent?: (isCorrect: boolean) => void;
   onSubmitError?: (error: string) => void;
   /** Host-gated facade for opaque answers; private MD3 keeps the canonical route. */
   opaqueAnswerEndpoint?: string;
   /** Required prompt pixels must be verified and decoded before scoring. */
   promptFigureReady?: boolean;
+  /** See useCardReview. Distinguishes a rewind of the same question. */
+  presentationKey?: string;
+  resume?: {
+    key: string;
+    selectedOption: string | null;
+    mcqResult: { isCorrect: boolean; correctOption: string } | null;
+    context: string;
+  } | null;
 }
 
 export function useMcqReview({
@@ -238,9 +247,12 @@ export function useMcqReview({
   scrollBehavior,
   onReview,
   onAnswerIntent,
+  onInteraction,
   onSubmitError,
   opaqueAnswerEndpoint: hostAnswerEndpoint = '/api/usmle/step1/answer',
   promptFigureReady = false,
+  presentationKey,
+  resume,
 }: UseMcqReviewOptions) {
   const opaqueAnswerEndpoint = currentItem?.answerSource === 'practice-exam-follow-up'
     ? '/api/practice-exam/follow-up/answer'
@@ -265,7 +277,11 @@ export function useMcqReview({
   const submittingRef = useRef(false);
   const pendingOpaqueAnswerRef = useRef<PendingOpaqueAnswer | null>(null);
   const autoOpaqueDeliveryRef = useRef<string | null>(null);
-  const currentItemIdentityRef = useRef(`${currentItem?.type ?? ''}:${currentItem?.id ?? ''}:${currentItem?.deliveryId ?? ''}`);
+  const currentItemIdentityRef = useRef(presentationKey
+    ? `present:${presentationKey}`
+    : `${currentItem?.type ?? ''}:${currentItem?.id ?? ''}:${currentItem?.deliveryId ?? ''}`);
+  const resumeRef = useRef(resume);
+  resumeRef.current = resume;
   const itemIdentityChangedRef = useRef(false);
   const activeOpaqueAttemptRef = useRef<symbol | null>(null);
   const pendingScaffoldAnswerRef = useRef<PendingScaffoldAnswer | null>(null);
@@ -283,6 +299,27 @@ export function useMcqReview({
   if (currentQuestionId !== lastQuestionId) {
     setLastQuestionId(currentQuestionId);
     setMcqResult(null);
+  }
+  // A rewind of the same question must start unanswered, and returning to the
+  // live question must put its choice back in the same render. The question
+  // id above still covers every caller that does not pass a presentation key.
+  // The in-flight answer lock belongs to the previous presentation. A rewind
+  // does not run the session reset, so leave it set and the next item cannot
+  // be graded.
+  const [lastPresentation, setLastPresentation] = useState(presentationKey);
+  if (presentationKey !== lastPresentation) {
+    setLastPresentation(presentationKey);
+    submittingRef.current = false;
+    activeOpaqueAttemptRef.current = null;
+    if (resume && presentationKey && resume.key === presentationKey) {
+      setSelectedOption(resume.selectedOption);
+      setMcqResult(resume.mcqResult);
+      setContext(resume.context);
+    } else if (presentationKey) {
+      setSelectedOption(null);
+      setMcqResult(null);
+      setContext('');
+    }
   }
   const currentQuestionOptions = currentItem?.type === 'question' ? currentItem.options : undefined;
   const isOpaqueDelivery = Boolean(currentItem?.type === 'question' && currentItem.deliveryId);
@@ -340,17 +377,31 @@ export function useMcqReview({
   // but keep the hook safe when a caller swaps the item directly. Otherwise a
   // stale selection can be interpreted as an answer to the next exact retest.
   useEffect(() => {
-    const identity = `${currentItem?.type ?? ''}:${currentItem?.id ?? ''}:${currentItem?.deliveryId ?? ''}`;
+    const identity = presentationKey
+      ? `present:${presentationKey}`
+      : `${currentItem?.type ?? ''}:${currentItem?.id ?? ''}:${currentItem?.deliveryId ?? ''}`;
     if (currentItemIdentityRef.current === identity) return;
     currentItemIdentityRef.current = identity;
     itemIdentityChangedRef.current = true;
+    submittingRef.current = false;
+    activeOpaqueAttemptRef.current = null;
+    const saved = resumeRef.current;
+    if (saved && presentationKey && saved.key === presentationKey) {
+      setSelectedOption(saved.selectedOption);
+      setMcqResult(saved.mcqResult);
+      setContext(saved.context);
+      setOpaqueSkipped(false);
+      setOpaqueWriteStatus('idle');
+      autoOpaqueDeliveryRef.current = null;
+      return;
+    }
     setSelectedOption(null);
     setMcqResult(null);
     setContext('');
     setOpaqueSkipped(false);
     setOpaqueWriteStatus('idle');
     autoOpaqueDeliveryRef.current = null;
-  }, [currentItem?.deliveryId, currentItem?.id, currentItem?.type]);
+  }, [currentItem?.deliveryId, currentItem?.id, currentItem?.type, presentationKey]);
 
   useEffect(() => {
     const pending = pendingScaffoldAnswerRef.current;
@@ -470,6 +521,7 @@ export function useMcqReview({
     const grade = localMcqGrade(displayOptions, label);
     if (!grade) return;
     const { isCorrect, correctOption } = grade;
+    onInteraction?.();
 
     // Going back to an answered question and choosing the same option again
     // shows the result but records nothing: it is a re-read, not a second
@@ -563,7 +615,7 @@ export function useMcqReview({
       console.error('Question submission failed:', err);
       onSubmitError?.(String(err));
     });
-  }, [currentItem, displayOptions, mcqResult, startTime, setStats, onReview, onAnswerIntent, onSubmitError, submitScaffoldAnswer, promptFigureReady]);
+  }, [currentItem, displayOptions, mcqResult, startTime, setStats, onReview, onAnswerIntent, onSubmitError, submitScaffoldAnswer, promptFigureReady, onInteraction]);
 
   // MCQ: skip (space/enter) — reveal and defer without an accuracy judgment.
   const handleMcqSkip = useCallback(() => {
@@ -584,6 +636,7 @@ export function useMcqReview({
       ? displayOptions.map(o => (o.isCorrect ? 'T' : 'F')).join('')
       : null;
     const correctOption = typeXKey ?? displayOptions.find(o => o.isCorrect)?.label ?? '';
+    onInteraction?.();
 
     // Revisiting a skipped delivery reveals it without recording another skip.
     const slot = answeredSlotKey({
@@ -659,7 +712,7 @@ export function useMcqReview({
       console.error('Question skip submission failed:', err);
       onSubmitError?.(String(err));
     });
-  }, [currentItem, displayOptions, mcqResult, startTime, onReview, onSubmitError, submitScaffoldAnswer]);
+  }, [currentItem, displayOptions, mcqResult, startTime, onReview, onSubmitError, submitScaffoldAnswer, onInteraction]);
 
   const handleOpaqueConfidence = useCallback(async (confidence: number | null) => {
     if (mcqResult) return;

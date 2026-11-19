@@ -294,18 +294,23 @@ function DetailPanel({ square, mode }: { square: TopicHeatmapSquare | null; mode
   );
 }
 
+const fmtCount = (n: number) => n.toLocaleString('en-AU');
+
 export function TopicHeatmap({
   squares,
   rotationLabel,
   horizonDays,
   examDated = true,
   userId,
+  passSet = null,
 }: {
   squares: TopicHeatmapSquare[];
   rotationLabel: string;
   horizonDays: number;
   examDated?: boolean;
   userId?: string;
+  /** Facts it takes to pass and how many are secured (pass-set.ts); null off exam rotations. */
+  passSet?: { size: number; secured: number; coverage: number } | null;
 }) {
   // `pinned` survives pointer-out so a tapped square stays readable; `hovered`
   // is the transient preview and wins while it is set.
@@ -314,6 +319,8 @@ export function TopicHeatmap({
   const [browse, setBrowse] = useState<{ rotation: string; cluster?: string; label?: string; summary?: string } | null>(null);
   const [browserOpen, setBrowserOpen] = useState(false);
   const [mode, setMode] = useState<'coverage' | 'readiness'>('coverage');
+  // The pass set leads; the rotation's raw card total is one tap away.
+  const [showAllCards, setShowAllCards] = useState(false);
   const active = hovered ?? pinned;
   const columns = useMemo(() => topicGridColumns(squares.length), [squares.length]);
 
@@ -340,9 +347,24 @@ export function TopicHeatmap({
           {userId && <button type="button" aria-haspopup="dialog"
             className="min-h-11 px-2 text-xs font-semibold text-[var(--md-primary)] hover:underline"
             onClick={() => { setBrowse({ rotation: '' }); setBrowserOpen(true); }}>View all</button>}
-          <p className="text-xs font-medium tabular-nums text-[var(--md-on-surface-variant)]">
-            {mode === 'coverage' ? `${reviewed}/${total} cards reviewed` : `${summary.ready} ready · ${summary.needsReview} needs review · ${summary.learning} learning · ${summary.unseen} unseen${examDated ? ` · ${days}d` : ''}`}
-          </p>
+          {mode === 'coverage' && passSet ? (
+            <button
+              type="button"
+              data-testid="pass-set-readout"
+              aria-pressed={showAllCards}
+              title={`Facts covering ${Math.round(passSet.coverage * 100)}% of the exam. Tap for every card.`}
+              onClick={() => setShowAllCards((value) => !value)}
+              className="min-h-11 rounded-lg border border-[var(--md-outline-variant)] px-2 text-xs font-medium tabular-nums text-[var(--md-on-surface-variant)] hover:bg-[var(--md-surface-container-high)]"
+            >
+              {showAllCards
+                ? `${fmtCount(reviewed)}/${fmtCount(total)} cards reviewed`
+                : `Pass set ${fmtCount(passSet.size)} · ${fmtCount(passSet.secured)} secured`}
+            </button>
+          ) : (
+            <p className="text-xs font-medium tabular-nums text-[var(--md-on-surface-variant)]">
+              {mode === 'coverage' ? `${reviewed}/${total} cards reviewed` : `${summary.ready} ready · ${summary.needsReview} needs review · ${summary.learning} learning · ${summary.unseen} unseen${examDated ? ` · ${days}d` : ''}`}
+            </p>
+          )}
         </div>
 
         {/* The container the squares size themselves against (100cqi). */}

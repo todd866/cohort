@@ -9,6 +9,12 @@
  *  - Media that only follows the answer is simply not rendered
  *    (`withoutHiddenMedia`); the card works from its text.
  *
+ * Review by voice is the third setting of the same kind (`voice`): while a
+ * live voice session is driving review, an item that cannot be asked and
+ * answered aloud is excluded in the same places, so the scheduler picks the
+ * next item from what can be done by ear with its usual policy. It is not a
+ * saved choice.
+ *
  * Client-safe leaf. The server applies the exclusion in every pool path and
  * stamps cached queues with `reviewMediaFingerprint`; the client applies the
  * same predicate to anything it already holds (the offline pack, a batch in
@@ -24,6 +30,12 @@ import type { ReviewMedia } from '@/lib/review/review-intent';
 export interface ReviewMediaPreferences {
   hideVideos: boolean;
   hideImages: boolean;
+  /**
+   * Review is being done by voice (a live voice session is driving it): serve
+   * only what can be asked and answered aloud. Never stored: it lasts as long
+   * as the voice session and rides on each request as `hide=voice`.
+   */
+  voice?: boolean;
 }
 
 /** The stored form: `rev` orders writes across devices; 0 means never chosen. */
@@ -37,7 +49,7 @@ export const DEFAULT_REVIEW_MEDIA_PREFERENCES: Readonly<ReviewMediaPreferences> 
 });
 
 export function hasMediaExclusions(preferences: ReviewMediaPreferences | null | undefined): boolean {
-  return Boolean(preferences?.hideVideos || preferences?.hideImages);
+  return Boolean(preferences?.hideVideos || preferences?.hideImages || preferences?.voice);
 }
 
 /**
@@ -47,14 +59,14 @@ export function hasMediaExclusions(preferences: ReviewMediaPreferences | null | 
  */
 export function reviewMediaFingerprint(preferences: ReviewMediaPreferences | null | undefined): string {
   if (!preferences) return '';
-  return [preferences.hideImages ? 'no-image' : null, preferences.hideVideos ? 'no-video' : null]
+  return [preferences.hideImages ? 'no-image' : null, preferences.hideVideos ? 'no-video' : null, preferences.voice ? 'voice' : null]
     .filter(Boolean)
     .join('+');
 }
 
 /** Wire value for `hide=`. `none` is an explicit choice, unlike an absent parameter. */
 export function reviewMediaHideParam(preferences: ReviewMediaPreferences): string {
-  const kinds = [preferences.hideVideos ? 'video' : null, preferences.hideImages ? 'image' : null].filter(Boolean);
+  const kinds = [preferences.hideVideos ? 'video' : null, preferences.hideImages ? 'image' : null, preferences.voice ? 'voice' : null].filter(Boolean);
   return kinds.length ? kinds.join(',') : 'none';
 }
 
@@ -63,8 +75,8 @@ export function parseReviewMediaHideParam(raw: string | null | undefined): Revie
   if (!raw) return null;
   if (raw === 'none') return { ...DEFAULT_REVIEW_MEDIA_PREFERENCES };
   const kinds = raw.split(',');
-  if (kinds.length > 2 || kinds.some((kind) => kind !== 'video' && kind !== 'image')) return null;
-  return { hideVideos: kinds.includes('video'), hideImages: kinds.includes('image') };
+  if (kinds.length > 3 || kinds.some((kind) => kind !== 'video' && kind !== 'image' && kind !== 'voice')) return null;
+  return { hideVideos: kinds.includes('video'), hideImages: kinds.includes('image'), ...(kinds.includes('voice') ? { voice: true } : {}) };
 }
 
 export function normalizeReviewMediaPreferences(value: unknown): StoredReviewMediaPreferences {
@@ -99,6 +111,8 @@ export function effectiveReviewMediaPreferences(
   return {
     hideVideos: preferences.hideVideos && media !== 'video',
     hideImages: preferences.hideImages && media !== 'image',
+    // "Images only" or "Videos only" asked for by hand is the narrower request, and cannot be done by voice.
+    ...(preferences.voice && !media ? { voice: true } : {}),
   };
 }
 
@@ -136,13 +150,24 @@ export function itemNeedsPromptImage(item: MediaBearingItem): boolean {
   return itemImageIsPrompt(item.imageRole, item.imageMeta, item.front ?? item.stem);
 }
 
+/**
+ * Whether an item can be asked and answered aloud: a card or a question whose
+ * prompt is its words. One that is read off a picture or a clip cannot, and
+ * neither can a linked group or a video item, which have no spoken form.
+ */
+export function itemSuitsVoice(item: MediaBearingItem): boolean {
+  if (item.type !== undefined && item.type !== 'card' && item.type !== 'question') return false;
+  return !itemNeedsPromptVideo(item) && !itemNeedsPromptImage(item);
+}
+
 export function itemExcludedByMediaPreferences(
   item: MediaBearingItem,
   preferences: ReviewMediaPreferences | null | undefined,
 ): boolean {
   if (!preferences) return false;
   return (preferences.hideVideos && itemNeedsPromptVideo(item))
-    || (preferences.hideImages && itemNeedsPromptImage(item));
+    || (preferences.hideImages && itemNeedsPromptImage(item))
+    || (preferences.voice === true && !itemSuitsVoice(item));
 }
 
 /**

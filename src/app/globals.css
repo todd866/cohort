@@ -395,6 +395,23 @@ html[data-shortcut-pressed="5"] [data-shortcut="5"] {
   box-shadow: inset 0 0 0 2px currentColor;
 }
 
+/* Gamepad hints show only while the pad is the active input device. */
+:root:not([data-input="pad"]) .pad-glyph,
+:root:not([data-input="pad"]) .review-shortcut-pad {
+  display: none;
+}
+:root:not([data-input="pad"]) .pad-glyph {
+  width: 0;
+  margin: 0;
+  overflow: hidden;
+}
+:root[data-input="pad"] .review-shortcut-kbd {
+  display: none;
+}
+.review-pad-highlight {
+  box-shadow: 0 0 0 2px var(--md-primary);
+}
+
 * {
   transition-property: background-color, border-color, color, fill, stroke;
   transition-duration: var(--md-duration-fast);
@@ -1246,6 +1263,38 @@ html[data-shortcut-pressed="5"] [data-shortcut="5"] {
     flex: none;
     height: var(--md-region-h);
     margin: 0;
+  }
+}
+/* A busy item (figure or results table in the side pane) drops the card frame
+   on desktop: the border, shadow and padding cost width and height the figure
+   needs. Simple text items keep the card. Owner, 6 Nov 2026: "the window in a
+   window looks nice, but when it starts getting busy the extra border becomes
+   counterproductive". The figure budget gets back the card's own padding. */
+@media (min-width: 1024px) {
+  .review-card-shell.review-card-shell--flush {
+    background: transparent;
+    border: 0;
+    border-radius: 0;
+    box-shadow: none;
+    padding: 0;
+  }
+  /* A tall (portrait) figure is bound by height, and its caption below it
+     costs that height while the column has blank space either side. On a
+     flush item the caption sits beside the image instead, and the image takes
+     the height the caption used to cost. */
+  .review-card-shell--flush .review-figure-side-pane[data-figure-tall] {
+    --md-figure-notes-space: 0px !important;
+    width: 100%;
+    display: grid;
+    grid-template-columns: min(calc(var(--md-figure-height) * var(--md-figure-ratio, 1)), calc(100% - 10rem)) minmax(9rem, 1fr);
+    column-gap: 1rem;
+    align-items: end;
+  }
+  .review-card-shell--flush .review-figure-side-pane[data-figure-tall] figcaption {
+    margin-top: 0;
+  }
+  .review-card-shell--flush .review-figure-side-pane {
+    --md-figure-height: max(120px, calc(100svh - 13.5rem - var(--md-figure-notes-space, 0px) - var(--md-review-reminder-space, 0px) + var(--md-review-leading-space-saved, 0px)));
   }
 }
 .review-figure-compact { --md-figure-height: 11rem; }

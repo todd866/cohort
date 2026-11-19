@@ -1,4 +1,5 @@
 import { writeLiveServeDecisions } from './serve-decision-write';
+import { learnerItemPredictionFor } from './learner-item-prediction-load';
 import { NextResponse } from 'next/server';
 import { prisma } from '@/lib/prisma';
 import { logger } from '@/lib/logger';
@@ -58,6 +59,7 @@ export async function withUniversalRecall(response: NextResponse, ctx: SessionCo
     const added = await writeLiveServeDecisions(guarded.items.slice(0, 1), {
       userId: ctx.userId, sessionId: ctx.sessionId, batchId: ctx.batchId, rotation: ctx.rotation,
       decisionPath: 'universal-recall', queueReason: 'universal-recall',
+      learnerItem: learnerItemPredictionFor(ctx),
     });
     if (!added.length) return response;
     logExposures(added, { userId: ctx.userId, rotation: ctx.rotation, queueType: 'universal-recall',

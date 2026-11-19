@@ -155,6 +155,21 @@
       "reference": null
     },
     {
+      "id": "cohort:paeds:c-4280de8a49e5:v1",
+      "origin": "mdx:1b025cb75dc91d320b097511376d2b04",
+      "discipline": "paeds",
+      "cardType": "cloze",
+      "sourceComponent": "KeyPoint",
+      "front": "The adult upper limit for potassium is 5.0 mmol/L. In the first days of life a neonate's potassium is normal up to about [___] mmol/L.",
+      "back": "6.0",
+      "context": "The usual potassium reference range is about 3.5-5.0 mmol/L; use the age-specific interval printed by the laboratory. Neonates can have a higher upper limit.\n\nNeonates run higher in the first days of life, partly from a lower renal excretory capacity and partly from red-cell turnover.\n\nThe trap: heel-prick and squeezed capillary samples haemolyse easily and report a spuriously high potassium. An isolated high value in a well baby is a repeat sample before it is a diagnosis.",
+      "complexity": 1,
+      "importance": 2,
+      "variantGroup": null,
+      "variantIndex": null,
+      "reference": null
+    },
+    {
       "id": "cohort:paeds:c-42878dcd353a:v1",
       "origin": "mdx:832c2f5a43394fb636baee5fbd547343:blank-0",
       "discipline": "paeds",
@@ -200,6 +215,25 @@
       "reference": null
     },
     {
+      "id": "cohort:paeds:c-42cea0d9ad81:v1",
+      "origin": "mdx:e6928e61db44caa445532ddd36481988",
+      "discipline": "paeds",
+      "cardType": "cloze",
+      "sourceComponent": "KeyPoint",
+      "front": "A 12-day-old boy with normal genitalia has vomited for three days and is now shocked. The likely diagnosis is [___].\n\n| Test | Result |\n| --- | --- |\n| Sodium | 124 mmol/L (normal 135-145) |\n| Potassium | 7.0 mmol/L (normal 3.5-6.0) |",
+      "back": "congenital adrenal hyperplasia",
+      "context": "Pyloric stenosis also presents with vomiting in the first weeks of life, and the potassium separates the two.\n\nPyloric stenosis loses gastric acid, giving a hypochloraemic, hypokalaemic alkalosis. Salt-wasting CAH lacks aldosterone, so the kidney wastes sodium and keeps potassium.\n\nA boy's genitalia usually look normal, apart from perhaps a pigmented scrotum, so unless the newborn screen has flagged it, the electrolytes are what reveal it.",
+      "complexity": 3,
+      "importance": 2,
+      "variantGroup": null,
+      "variantIndex": null,
+      "reference": {
+        "title": "Adrenal crisis and acute adrenal insufficiency",
+        "publisher": "The Royal Children's Hospital Melbourne",
+        "url": "https://www.rch.org.au/clinicalguide/guideline_index/Adrenal_crisis_and_acute_adrenal_insufficiency/"
+      }
+    },
+    {
       "id": "cohort:paeds:c-42d5c4848286:v1",
       "origin": "mdx:fe71be015dc7e53af815789f691db456:blank-0",
       "discipline": "paeds",
@@ -212,21 +246,6 @@
       "importance": 2,
       "variantGroup": "cohort:paeds:g-d1d334650cfb",
       "variantIndex": 0,
-      "reference": null
-    },
-    {
-      "id": "cohort:paeds:c-4300d5ea505d:v1",
-      "origin": "mdx:2bd9ae152485f908f79648aae1752a0d:blank-1",
-      "discipline": "paeds",
-      "cardType": "cloze",
-      "sourceComponent": "KeyPoint",
-      "front": "Cystic fibrosis is autosomal recessive mutation in the [___] gene; most common mutation is F508del (~70% of alleles).",
-      "back": "CFTR",
-      "context": "Recessive inheritance means a child needs two faulty CFTR alleles (one from each carrier parent) to be affected — which is why CF is autosomal recessive and unaffected siblings can still be carriers.\n\nF508del is a three-base deletion losing phenylalanine at position 508. The misfolded protein is degraded before reaching the cell surface.\n\nIt dominates the mutation pool and defines which CFTR modulators a patient can use.",
-      "complexity": 2,
-      "importance": 2,
-      "variantGroup": "cohort:paeds:g-bcb8fd6b7939",
-      "variantIndex": 1,
       "reference": null
     },
     {
@@ -366,6 +385,21 @@
       "importance": 2,
       "variantGroup": null,
       "variantIndex": null,
+      "reference": null
+    },
+    {
+      "id": "cohort:paeds:c-451ed1965103:v1",
+      "origin": "mdx:88999c186fb45a156223cada782fe0ab:blank-1",
+      "discipline": "paeds",
+      "cardType": "cloze",
+      "sourceComponent": "KeyPoint",
+      "front": "Epiglottitis is classically caused by Hib — rare now due to vaccination; child is toxic, drooling, in [___] posture.",
+      "back": "tripod",
+      "context": "Hib epiglottitis was once common in 2-7 year olds but has been nearly eliminated by routine Hib vaccination. Now consider it in unvaccinated children, immigrants, and unusual organisms (Group A Strep, S. aureus).\n\nTripod posture (sitting forward with neck extended, mouth open) optimises airway patency in the face of supraglottic obstruction.",
+      "complexity": 1,
+      "importance": 2,
+      "variantGroup": "cohort:paeds:g-85c6bf5a533b",
+      "variantIndex": 1,
       "reference": null
     },
     {
@@ -610,6 +644,21 @@
       }
     },
     {
+      "id": "cohort:paeds:c-473c555feffc:v1",
+      "origin": "mdx:f9fa4c8010dcb828244521636c77d398",
+      "discipline": "paeds",
+      "cardType": "cloze",
+      "sourceComponent": "KeyPoint",
+      "front": "The most dangerous adverse effect of propranolol in an infant is [___], which it also masks.",
+      "back": "hypoglycaemia",
+      "context": "Propranolol is a non-selective beta-blocker, so the harms follow the blockade: hypoglycaemia (it blunts the catecholamine response AND masks its warning signs), bradycardia, hypotension and bronchospasm.\n\nHypoglycaemia is the one that causes real harm in infants, which is why feeds are not to be skipped and the drug is withheld during intercurrent illness.",
+      "complexity": 4,
+      "importance": 2,
+      "variantGroup": "cohort:paeds:g-2d0ba8923ddc",
+      "variantIndex": null,
+      "reference": null
+    },
+    {
       "id": "cohort:paeds:c-4752b3108e0e:v1",
       "origin": "mdx:725467322f8881520aec042ab8420d63:blank-0",
       "discipline": "paeds",
@@ -622,6 +671,21 @@
       "importance": 2,
       "variantGroup": "cohort:paeds:g-e4511ce63bed",
       "variantIndex": 0,
+      "reference": null
+    },
+    {
+      "id": "cohort:paeds:c-47a28421f2f0:v1",
+      "origin": "mdx:8cfb0cbb50631e0c814675fd26a18be5",
+      "discipline": "paeds",
+      "cardType": "cloze",
+      "sourceComponent": "KeyPoint",
+      "front": "A 4-year-old's scald is pink and blotchy, does not blanch, and pinprick feels dull. The depth is [___].",
+      "back": "deep dermal",
+      "context": "Colour and blanching place the burn between the two easy ends. Pink and painful with a brisk blanch is superficial dermal.\n\nWhite, leathery, and painless is full thickness. Pink, blotchy, non-blanching, and dull to pinprick is the depth between them.",
+      "complexity": 4,
+      "importance": 2,
+      "variantGroup": "cohort:paeds:g-54f9b86fee49",
+      "variantIndex": null,
       "reference": null
     },
     {
@@ -649,6 +713,36 @@
       "back": "amoxicillin-clavulanate",
       "context": "A cat bite, a hand bite and a deep puncture each justify prophylaxis on their own, even when the wound looks clean, and this child has all three.\n\nCat teeth inoculate Pasteurella multocida deep into tissue. Cefalexin, the usual skin-infection choice, covers staphylococci and streptococci but not Pasteurella.\n\nRCH gives a 5-day oral course; follow the local protocol.",
       "complexity": 3,
+      "importance": 2,
+      "variantGroup": null,
+      "variantIndex": null,
+      "reference": null
+    },
+    {
+      "id": "cohort:paeds:c-485fe19df7c4:v1",
+      "origin": "mdx:38c225d78e02832f7cdb6f306a217c20",
+      "discipline": "paeds",
+      "cardType": "cloze",
+      "sourceComponent": "KeyPoint",
+      "front": "A 3-year-old five days into bloody diarrhoea is pale and oliguric with platelets of 60 × 10⁹/L (normal 150-400). Giving [___] for the diarrhoea is contraindicated because it increases toxin release.",
+      "back": "antibiotics",
+      "context": "Bloody diarrhoea followed by pallor and falling urine output is haemolytic uraemic syndrome until proven otherwise — the triad is microangiopathic anaemia, thrombocytopenia and acute kidney injury.\n\nThe management trap is the instinct to treat the dysentery: antibiotics increase Shiga-toxin release and are associated with a higher risk of progressing to HUS.\n\nCare is supportive, with careful fluid and electrolyte management and early nephrology involvement.",
+      "complexity": 3,
+      "importance": 2,
+      "variantGroup": null,
+      "variantIndex": null,
+      "reference": null
+    },
+    {
+      "id": "cohort:paeds:c-486d2d294430:v1",
+      "origin": "mdx:bd0107c0870a4383000224dbf1023c03",
+      "discipline": "paeds",
+      "cardType": "cloze",
+      "sourceComponent": "KeyPoint",
+      "front": "In the RCH reference table, the normal cerebrospinal-fluid neutrophil count in a baby under 1 month is [___].",
+      "back": "zero",
+      "context": "RCH notes that small numbers of neutrophils can occur without meningitis. Their presence warrants senior review; normal microscopy also cannot exclude meningitis.",
+      "complexity": 2,
       "importance": 2,
       "variantGroup": null,
       "variantIndex": null,
@@ -754,6 +848,21 @@
       "back": "sarcoma botryoides",
       "context": "Sarcoma botryoides is a botryoid embryonal rhabdomyosarcoma of the vagina, usually presenting before age 5. Painless bleeding or a grape-like mass needs urgent oncological assessment.",
       "complexity": 3,
+      "importance": 2,
+      "variantGroup": null,
+      "variantIndex": null,
+      "reference": null
+    },
+    {
+      "id": "cohort:paeds:c-4aa871d2fdca:v1",
+      "origin": "mdx:d5b9b879404e19d4fc1ed8f0e34850d5",
+      "discipline": "paeds",
+      "cardType": "cloze",
+      "sourceComponent": "KeyPoint",
+      "front": "Dexamphetamine and methylphenidate, the usual first medicines for childhood ADHD, are [___].",
+      "back": "psychostimulants",
+      "context": "A paediatrician usually starts these two drugs when parent training and school strategies have not controlled impairment. They do not differ in effectiveness, so either may be used.\n\nAtomoxetine is second-line. Skipping a dose at school is a reason for modified-release methylphenidate, not a reason to step away from this pair as the first choice.",
+      "complexity": 1,
       "importance": 2,
       "variantGroup": null,
       "variantIndex": null,
@@ -933,21 +1042,6 @@
       "reference": null
     },
     {
-      "id": "cohort:paeds:c-4e51377238e1:v1",
-      "origin": "mdx:e8b25654c5e277a7b26ee633b29723b5:blank-1",
-      "discipline": "paeds",
-      "cardType": "cloze",
-      "sourceComponent": "KeyPoint",
-      "front": "HUS triad: microangiopathic haemolytic anaemia (schistocytes, raised LDH, low haptoglobin), [___] (consumed in microthrombi), and acute kidney injury. Typical (D+) HUS follows bloody diarrhoea from Shiga-toxin-producing *E. coli*.",
-      "back": "thrombocytopenia",
-      "context": "HUS (haemolytic uraemic syndrome) triad: microangiopathic haemolytic anaemia (schistocytes on film, raised LDH, low haptoglobin), thrombocytopenia, acute kidney injury (rising creatinine, oliguria).\n\nTypical (D+ HUS) follows bloody diarrhoea from Shiga toxin-producing E. coli (O157:H7); 5-10 days latency.\n\nTreatment is supportive — antibiotics may worsen disease.",
-      "complexity": 2,
-      "importance": 2,
-      "variantGroup": "cohort:paeds:g-437a558c070d",
-      "variantIndex": 1,
-      "reference": null
-    },
-    {
       "id": "cohort:paeds:c-4e652686ab05:v1",
       "origin": "mdx:489e57ad6604e6ac08d6ecd08f4286c1",
       "discipline": "paeds",
@@ -994,21 +1088,6 @@
       "importance": 2,
       "variantGroup": "cohort:paeds:g-555c754ee5f0",
       "variantIndex": 2,
-      "reference": null
-    },
-    {
-      "id": "cohort:paeds:c-4edb6a269c13:v1",
-      "origin": "mdx:3a2b5de867a48b064330cc7e6b6952df:blank-1",
-      "discipline": "paeds",
-      "cardType": "cloze",
-      "sourceComponent": "KeyPoint",
-      "front": "Strabismus affects ~2% of children; untreated risks [___] (vision suppression in the misaligned eye).",
-      "back": "amblyopia",
-      "context": "Strabismus (eye misalignment) affects ~2% of children. Risk factors: family history, prematurity, refractive error (commonly hyperopia → accommodative esotropia), neurological disorders.\n\nUntreated strabismus causes amblyopia (vision suppression in the misaligned eye) — refer to ophthalmology by age 4-6 months for any persistent misalignment.",
-      "complexity": 2,
-      "importance": 2,
-      "variantGroup": "cohort:paeds:g-2e909d59e91f",
-      "variantIndex": 1,
       "reference": null
     },
     {

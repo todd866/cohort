@@ -332,6 +332,21 @@
       "reference": null
     },
     {
+      "id": "cohort:paeds:c-648b2ef105a9:v1",
+      "origin": "mdx:c803ce6debf17233becadc975d1192f3:blank-0",
+      "discipline": "paeds",
+      "cardType": "cloze",
+      "sourceComponent": "KeyPoint",
+      "front": "Congenital hypothyroidism is the most common preventable cause of [___]; detected by raised TSH on newborn screen; start levothyroxine ideally within 2 weeks.",
+      "back": "intellectual disability",
+      "context": "Congenital hypothyroidism is the most common preventable cause of intellectual disability — affects 1 in 3000-4000 live births. Detected on newborn bloodspot screening (elevated TSH).\n\nMost common cause is thyroid dysgenesis (~85%) — agenesis, hypoplasia, or ectopic tissue.\n\nLevothyroxine should start as soon as the diagnosis is confirmed, ideally within the first 2 weeks of life. Early treatment allows essentially normal cognitive development.",
+      "complexity": 2,
+      "importance": 2,
+      "variantGroup": "cohort:paeds:g-30b711067436",
+      "variantIndex": 0,
+      "reference": null
+    },
+    {
       "id": "cohort:paeds:c-64dbbbc46024:v1",
       "origin": "mdx:22b407432feb9134d322f42a2aec2894",
       "discipline": "paeds",
@@ -407,6 +422,21 @@
       "reference": null
     },
     {
+      "id": "cohort:paeds:c-655ea87d8d4b:v1",
+      "origin": "mdx:04f9c84068b775c002adc191216c528a:blank-2",
+      "discipline": "paeds",
+      "cardType": "cloze",
+      "sourceComponent": "KeyPoint",
+      "front": "Bordetella pertussis is a Gram-negative aerobic coccobacillus; mortality is ~1 in [___] babies under 6 months.",
+      "back": "125",
+      "context": "Bordetella pertussis is a Gram-negative aerobic coccobacillus — it colonises ciliated respiratory epithelium and acts via secreted toxins (it is not an intracellular pathogen).\n\nAzithromycin is given to eradicate the organism and limit spread, not because the bacterium hides inside cells. Infant mortality reflects apnoea and pulmonary hypertension from severe paroxysmal coughing.\n\nMaternal vaccination in pregnancy + cocoon strategy is the main protection for infants too young for their own vaccine.",
+      "complexity": 2,
+      "importance": 2,
+      "variantGroup": "cohort:paeds:g-3ca46d9634a1",
+      "variantIndex": 2,
+      "reference": null
+    },
+    {
       "id": "cohort:paeds:c-65ea50208a1e:v1",
       "origin": "mdx:ea825c48776c909bf35df8051f1ffc0b:blank-1",
       "discipline": "paeds",
@@ -433,6 +463,21 @@
       "complexity": 2,
       "importance": 2,
       "variantGroup": "cohort:paeds:g-bf350555e48e",
+      "variantIndex": 1,
+      "reference": null
+    },
+    {
+      "id": "cohort:paeds:c-66c869b77c4f:v1",
+      "origin": "mdx:52146841d6f1d615590747d6f05a40f9:blank-1",
+      "discipline": "paeds",
+      "cardType": "cloze",
+      "sourceComponent": "KeyPoint",
+      "front": "Cystic fibrosis is an autosomal recessive disease caused by variants in the [___] gene; the most common variant is F508del (about 70% of alleles).",
+      "back": "CFTR",
+      "context": "Recessive inheritance means a child needs two faulty CFTR alleles (one from each carrier parent) to be affected — which is why CF is autosomal recessive and unaffected siblings can still be carriers.\n\nF508del is a three-base deletion losing phenylalanine at position 508. The misfolded protein is degraded before reaching the cell surface.\n\nIt dominates the mutation pool and defines which CFTR modulators a patient can use.",
+      "complexity": 2,
+      "importance": 2,
+      "variantGroup": "cohort:paeds:g-cb58656a5bae",
       "variantIndex": 1,
       "reference": null
     },
@@ -497,21 +542,6 @@
       "reference": null
     },
     {
-      "id": "cohort:paeds:c-68584c81e0fc:v1",
-      "origin": "mdx:1bcbf0470a583f83e4fc00af1eeee9ca",
-      "discipline": "paeds",
-      "cardType": "cloze",
-      "sourceComponent": "KeyPoint",
-      "front": "Cystic fibrosis is caused by a defective [___] chloride channel.",
-      "back": "CFTR",
-      "context": "One faulty channel explains the whole disease. Defective CFTR can't move chloride (and water) onto epithelial surfaces, so secretions everywhere — lungs, pancreas, gut, sweat ducts — become thick and dehydrated.",
-      "complexity": 1,
-      "importance": 2,
-      "variantGroup": null,
-      "variantIndex": null,
-      "reference": null
-    },
-    {
       "id": "cohort:paeds:c-689a42fa81fb:v1",
       "origin": "mdx:2a62332b4a4c6f87ab26808f68fb4d06",
       "discipline": "paeds",
@@ -531,6 +561,21 @@
       }
     },
     {
+      "id": "cohort:paeds:c-68ca12104f38:v1",
+      "origin": "mdx:334c5b5b75cea3a0bdd7dfece3347363",
+      "discipline": "paeds",
+      "cardType": "cloze",
+      "sourceComponent": "KeyPoint",
+      "front": "Chronic arthritis (>6 weeks) in a preschool girl affecting a single large joint is most likely [___] juvenile idiopathic arthritis (JIA).",
+      "back": "oligoarticular",
+      "context": "Oligoarticular JIA — ≤4 joints in the first 6 months — is the commonest JIA subtype in young girls, typically picking off the knee.\n\nThe hidden danger is asymptomatic anterior uveitis, especially in ANA-positive children. It is silent and can scar before vision changes appear.\n\nRegular slit-lamp screening is required. The interval depends on JIA subtype, ANA status, age at onset and disease duration.",
+      "complexity": 2,
+      "importance": 2,
+      "variantGroup": null,
+      "variantIndex": null,
+      "reference": null
+    },
+    {
       "id": "cohort:paeds:c-6908478bacbf:v1",
       "origin": "mdx:6c4627c7776feb8c05fd263db4d64581",
       "discipline": "paeds",
@@ -542,6 +587,36 @@
       "complexity": 3,
       "importance": 2,
       "variantGroup": null,
+      "variantIndex": null,
+      "reference": null
+    },
+    {
+      "id": "cohort:paeds:c-69acaa5accfd:v1",
+      "origin": "mdx:55d0b3b4c8bee886ddb19c4e48cb9f7f",
+      "discipline": "paeds",
+      "cardType": "cloze",
+      "sourceComponent": "KeyPoint",
+      "front": "Post-term hypoglycaemia risk starts after [___].",
+      "back": "42 weeks",
+      "context": "Count it earlier if the placenta is failing. The mechanism is still reduced reserves, not excess insulin.",
+      "complexity": 1,
+      "importance": 2,
+      "variantGroup": null,
+      "variantIndex": null,
+      "reference": null
+    },
+    {
+      "id": "cohort:paeds:c-69e671e267d2:v1",
+      "origin": "mdx:35caa027a25af1e28ce155ccf93d163c",
+      "discipline": "paeds",
+      "cardType": "cloze",
+      "sourceComponent": "KeyPoint",
+      "front": "Pertussis is recognised by coughing paroxysms, post-tussive vomiting and an inspiratory [___].",
+      "back": "whoop",
+      "context": "Bursts of coughing are followed by the whoop and often by vomiting. Young infants may lack the whoop.",
+      "complexity": 1,
+      "importance": 2,
+      "variantGroup": "cohort:paeds:g-0df36c8629df",
       "variantIndex": null,
       "reference": null
     },
@@ -591,6 +666,21 @@
       "reference": null
     },
     {
+      "id": "cohort:paeds:c-6b025ad25a69:v1",
+      "origin": "mdx:dbde163a04db5d3aeaf5337826082003",
+      "discipline": "paeds",
+      "cardType": "cloze",
+      "sourceComponent": "KeyPoint",
+      "front": "An 8-year-old with typical absence seizures and a 3 Hz spike-and-wave EEG is started on first-line [___]; carbamazepine would be wrong because it can worsen absences.",
+      "back": "ethosuximide",
+      "context": "Ethosuximide is first-line for uncomplicated childhood absence epilepsy: the CAE trial found it as effective as valproate with fewer attentional side effects.\n\nSodium valproate is the choice when there are also generalised tonic-clonic seizures.\n\nCarbamazepine, oxcarbazepine and phenytoin can make absences WORSE. The trap: a child mislabelled with focal seizures and started on carbamazepine deteriorates.",
+      "complexity": 3,
+      "importance": 2,
+      "variantGroup": "cohort:paeds:g-ea4e46fd4a6c",
+      "variantIndex": null,
+      "reference": null
+    },
+    {
       "id": "cohort:paeds:c-6b69825f4dcc:v1",
       "origin": "mdx:603a66a2313f2ea482cfdf0c1acdd57e",
       "discipline": "paeds",
@@ -636,36 +726,6 @@
       "reference": null
     },
     {
-      "id": "cohort:paeds:c-6c527550ac30:v1",
-      "origin": "mdx:b92d8e44deb3082765ab263628f47d78:blank-0",
-      "discipline": "paeds",
-      "cardType": "cloze",
-      "sourceComponent": "KeyPoint",
-      "front": "Bronchiolitis management is [___] (oxygen/hydration); bronchodilators are NOT routinely recommended because obstruction is mechanical, not bronchospasm.",
-      "back": "supportive",
-      "context": "Bronchiolitis is viral small-airway inflammation with mucus plugging, not bronchospasm.\n\nTreatment is supportive: oxygen below 90% if ≥6 weeks and low-risk, or below 92% if younger/high-risk; NG/IV fluids if feeding is inadequate.\n\nEscalate respiratory support to HFNC, then NIV or intubation if the infant becomes exhausted.",
-      "complexity": 2,
-      "importance": 2,
-      "variantGroup": "cohort:paeds:g-24b49e583a9e",
-      "variantIndex": 0,
-      "reference": null
-    },
-    {
-      "id": "cohort:paeds:c-6c7b1f52fb7b:v1",
-      "origin": "mdx:6d8b034e9c48a88e52706762c82a8c05:blank-1",
-      "discipline": "paeds",
-      "cardType": "cloze",
-      "sourceComponent": "KeyPoint",
-      "front": "Typical puberty duration is 2-5 years; delayed and precocious puberty are defined by [___] (FSH/LH-driven gonadal activation), not adrenarche.",
-      "back": "gonadarche",
-      "context": "Puberty typically lasts 2-5 years from start to completion. The defining event is gonadarche — gonadal activation by FSH/LH (HPG axis).\n\nAdrenarche (adrenal androgen production) precedes gonadarche and produces pubic hair, axillary hair, acne — but isn't true puberty. Delayed/precocious puberty are defined by gonadarche timing, not adrenarche.",
-      "complexity": 2,
-      "importance": 2,
-      "variantGroup": "cohort:paeds:g-2ffd76b69fb0",
-      "variantIndex": 1,
-      "reference": null
-    },
-    {
       "id": "cohort:paeds:c-6cd148be3e33:v1",
       "origin": "mdx:bf346e28487c35ce591e27816352b299",
       "discipline": "paeds",
@@ -678,21 +738,6 @@
       "importance": 2,
       "variantGroup": null,
       "variantIndex": null,
-      "reference": null
-    },
-    {
-      "id": "cohort:paeds:c-6cda58b335c0:v1",
-      "origin": "mdx:0196ec57956d0d01be4c781663ff341b:blank-1",
-      "discipline": "paeds",
-      "cardType": "cloze",
-      "sourceComponent": "KeyPoint",
-      "front": "Juvenile idiopathic arthritis (JIA): arthritis ≥6 weeks, onset <[___] years, exclusion of other causes; most common chronic rheumatic disease in children.",
-      "back": "16",
-      "context": "JIA is arthritis ≥6 weeks, onset <16y, other causes excluded. The 6-week threshold separates JIA from post-infectious or transient arthritis — it's the commonest chronic rheumatic disease of childhood.\n\nSubtypes: oligoarticular (≤4 joints, ANA+, uveitis risk), polyarticular (≥5 joints), systemic (Still's: quotidian fever, salmon rash, hepatosplenomegaly).",
-      "complexity": 2,
-      "importance": 2,
-      "variantGroup": "cohort:paeds:g-e481fd62e0b1",
-      "variantIndex": 1,
       "reference": null
     },
     {
@@ -844,6 +889,25 @@
       "variantGroup": "cohort:paeds:g-5edf2706aa95",
       "variantIndex": 1,
       "reference": null
+    },
+    {
+      "id": "cohort:paeds:c-6f2f1551c60c:v1",
+      "origin": "mdx:516e629d6a88f89d0d17fb80ce9eae3e:blank-2",
+      "discipline": "paeds",
+      "cardType": "cloze",
+      "sourceComponent": "KeyPoint",
+      "front": "Croup is caused by parainfluenza virus; peak age ~2 years; classic triad of barking cough, hoarse voice, [___].",
+      "back": "stridor",
+      "context": "Parainfluenza causes ~75% of croup; RSV, adenovirus, influenza, and rhinovirus account for the rest.\n\nSymptoms classically worsen overnight from supine position and increased oedema.",
+      "complexity": 2,
+      "importance": 2,
+      "variantGroup": "cohort:paeds:g-c7acfcb10668",
+      "variantIndex": 2,
+      "reference": {
+        "title": "Croup (Laryngotracheobronchitis)",
+        "publisher": "The Royal Children's Hospital Melbourne",
+        "url": "https://www.rch.org.au/clinicalguide/guideline_index/Croup_Laryngotracheobronchitis/"
+      }
     }
   ]
 }

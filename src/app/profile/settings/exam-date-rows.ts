@@ -1,4 +1,5 @@
 import { isMd1Program, MD1_EXAMS } from '@/lib/md1-program';
+import { isMd2Program, MD2_EXAMS } from '@/lib/md2-program';
 import { ROTATIONS, defaultExamDateFor } from '@/lib/rotations';
 
 export interface ExamDateRow {
@@ -10,8 +11,9 @@ export interface ExamDateRow {
 
 /**
  * The exam-date rows Settings offers. A first-year dates KAT4 and the MMCA
- * themselves (no MD1 calendar is on file, so nothing is prefilled); everyone
- * else edits the Year 3 blocks, prefilled from the block calendar.
+ * themselves (no MD1 calendar is on file, so nothing is prefilled); a
+ * second-year edits KAT5-8, prefilled from the MD2 planner; everyone else edits
+ * the Year 3 blocks, prefilled from the block calendar.
  */
 export function examDateRows(
   institution: string | null | undefined,
@@ -24,6 +26,14 @@ export function examDateRows(
     return MD1_EXAMS.map((exam) => {
       const date = personal.get(exam.id);
       return { id: exam.id, shortName: exam.short, examDate: date ? iso(date) : '' };
+    });
+  }
+  if (isMd2Program(institution)) {
+    // A second-year has the planner's KAT5-8 dates on file, so they are
+    // prefilled; a date the learner has set wins.
+    return MD2_EXAMS.map((exam) => {
+      const date = personal.get(exam.id);
+      return { id: exam.id, shortName: exam.short, examDate: date ? iso(date) : exam.examDate };
     });
   }
   return ROTATIONS.map((rotation) => ({

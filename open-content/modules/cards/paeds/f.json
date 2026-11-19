@@ -35,36 +35,6 @@
       "reference": null
     },
     {
-      "id": "cohort:paeds:c-f0a59ea49e09:v1",
-      "origin": "mdx:3b165e97d3d063fdb5dff9bb2a7ef81c:blank-2",
-      "discipline": "paeds",
-      "cardType": "cloze",
-      "sourceComponent": "KeyPoint",
-      "front": "Universal newborn hearing screen target ages: screen by 1 month, diagnose by 3 months, intervene by [___] months — closes the critical window for language development.",
-      "back": "6",
-      "context": "The 1-3-6 rule for newborn hearing screening: screen by 1 month (OAE first-line, ABR for NICU), confirm any failed screen with audiology by 3 months. Start intervention (hearing aids, early-intervention) by 6 months.\n\nThe targets aren't arbitrary — the first 6 months are the critical language-scaffolding window, and delays past it measurably impair lifelong speech outcomes.\n\nIn Australia ~98% are screened by 1 month; compliance falls off at diagnosis and intervention, which is where infants slip through.",
-      "complexity": 2,
-      "importance": 2,
-      "variantGroup": "cohort:paeds:g-2633147da560",
-      "variantIndex": 2,
-      "reference": null
-    },
-    {
-      "id": "cohort:paeds:c-f0aa4df57a97:v1",
-      "origin": "mdx:226b459825a46721c3e8bf4ee5584ba7:blank-1",
-      "discipline": "paeds",
-      "cardType": "cloze",
-      "sourceComponent": "KeyPoint",
-      "front": "Epiglottitis is classically caused by Haemophilus influenzae type b — rare now due to vaccination; child is toxic, drooling, in [___] posture.",
-      "back": "tripod",
-      "context": "Hib epiglottitis was once common in 2-7 year olds but has been nearly eliminated by routine Hib vaccination. Now consider it in unvaccinated children, immigrants, and unusual organisms (Group A Strep, S. aureus).\n\nTripod posture (sitting forward with neck extended, mouth open) optimises airway patency in the face of supraglottic obstruction.",
-      "complexity": 1,
-      "importance": 2,
-      "variantGroup": "cohort:paeds:g-4da30156ac54",
-      "variantIndex": 1,
-      "reference": null
-    },
-    {
       "id": "cohort:paeds:c-f0b22e11f158:v1",
       "origin": "mdx:b7f4c99fba39dcab4d8b15de5bdef220:blank-1",
       "discipline": "paeds",
@@ -89,6 +59,21 @@
       "back": "supportive care",
       "context": "Typical (D+) HUS is driven by Shiga toxin from EHEC, usually O157:H7. Toxin binds glomerular endothelial Gb3 receptors → thrombotic microangiopathy; haemolytic anaemia, thrombocytopenia.\n\nAntibiotics are contraindicated (release more toxin, worsen outcomes); antimotility agents also avoided.\n\nSupportive care: careful fluid management (often volume-depleted at presentation but progress to oliguric failure), red cell transfusion as needed, dialysis in ~half, avoid platelet transfusion unless actively bleeding.",
       "complexity": 2,
+      "importance": 2,
+      "variantGroup": null,
+      "variantIndex": null,
+      "reference": null
+    },
+    {
+      "id": "cohort:paeds:c-f15622792e75:v1",
+      "origin": "mdx:7aec8297ec66303da0e21399e4a3f8d0",
+      "discipline": "paeds",
+      "cardType": "cloze",
+      "sourceComponent": "KeyPoint",
+      "front": "A term newborn's heart rate is 50/min after 30 seconds of mask inflations, but the chest has not moved with any inflation. The immediate priority is [___].",
+      "back": "effective ventilation",
+      "context": "Compressions start at a heart rate under 60/min only after 30 seconds of adequate ventilation, with the chest visibly moving. Inflations that do not move the chest have not been tried yet.\n\nReposition the head, re-seal the mask with two hands, suction if needed and raise the pressure. Consider an airway device if the mask still fails.",
+      "complexity": 4,
       "importance": 2,
       "variantGroup": null,
       "variantIndex": null,
@@ -185,6 +170,25 @@
       "reference": null
     },
     {
+      "id": "cohort:paeds:c-f2cb0ca0518e:v1",
+      "origin": "mdx:e88ac901d3a1ace751dd5fe951d44ff7",
+      "discipline": "paeds",
+      "cardType": "cloze",
+      "sourceComponent": "KeyPoint",
+      "front": "A drowsy, hypotensive 4-year-old with known CAH and two days of vomiting has sodium 124 and potassium 6.4. The first drug, given before any further results, is IV [___].",
+      "back": "hydrocortisone",
+      "context": "Treat what kills first. IV or IM hydrocortisone at stress dose (RCH: 2 mg/kg, or 50 to 100 mg by age) covers glucocorticoid and, at that dose, mineralocorticoid need. Give it on suspicion, before results.\n\nAn hour's delay for bloods can be fatal, and one dose harms nobody. Alongside it, give a 10 to 20 mL/kg 0.9% sodium chloride bolus for shock and glucose for hypoglycaemia.\n\nDo NOT treat potassium first: hyperkalaemia follows mineralocorticoid deficiency and falls once hydrocortisone and volume are in. Do not rush sodium correction; fludrocortisone is for maintenance, not crisis.",
+      "complexity": 3,
+      "importance": 2,
+      "variantGroup": null,
+      "variantIndex": null,
+      "reference": {
+        "title": "Adrenal crisis and acute adrenal insufficiency",
+        "publisher": "The Royal Children's Hospital Melbourne",
+        "url": "https://www.rch.org.au/clinicalguide/guideline_index/Adrenal_crisis_and_acute_adrenal_insufficiency/"
+      }
+    },
+    {
       "id": "cohort:paeds:c-f2feb1c16ac9:v1",
       "origin": "mdx:7a4bdbb98c60fa8f8fa614515305061f:blank-0",
       "discipline": "paeds",
@@ -264,18 +268,18 @@
       "reference": null
     },
     {
-      "id": "cohort:paeds:c-f3934dc44ab5:v1",
-      "origin": "mdx:73f51799bd83be702c71b8b5828428f7",
+      "id": "cohort:paeds:c-f3b18ad1eb84:v1",
+      "origin": "mdx:55665372cbea6719f9eae62201f57520:blank-1",
       "discipline": "paeds",
       "cardType": "cloze",
       "sourceComponent": "KeyPoint",
-      "front": "A 15-year-old with normal growth velocity, delayed bone age, and a parent who was a late bloomer most likely has [___] delay of growth and puberty.",
-      "back": "constitutional",
-      "context": "Constitutional delay is the normal-variant late-bloomer pattern: growth velocity remains normal, bone age lags behind chronological age, and the extra growing time preserves a normal adult-height prediction.",
-      "complexity": 1,
+      "front": "Most common cause of croup is parainfluenza; peak age ~[___].",
+      "back": "2 years",
+      "context": "Parainfluenza accounts for ~75% of croup. The peak age (1-2 years) reflects subglottic narrowness — same oedema in older children causes much less obstruction.",
+      "complexity": 2,
       "importance": 2,
-      "variantGroup": null,
-      "variantIndex": null,
+      "variantGroup": "cohort:paeds:g-6515160751fe",
+      "variantIndex": 1,
       "reference": null
     },
     {
@@ -373,21 +377,6 @@
       "reference": null
     },
     {
-      "id": "cohort:paeds:c-f6c885ee30fd:v1",
-      "origin": "mdx:b92d8e44deb3082765ab263628f47d78:blank-1",
-      "discipline": "paeds",
-      "cardType": "cloze",
-      "sourceComponent": "KeyPoint",
-      "front": "Bronchiolitis management is supportive (oxygen/hydration); [___] are NOT routinely recommended because obstruction is mechanical, not bronchospasm.",
-      "back": "bronchodilators",
-      "context": "Bronchiolitis is viral small-airway inflammation with mucus plugging, not bronchospasm.\n\nTreatment is supportive: oxygen below 90% if ≥6 weeks and low-risk, or below 92% if younger/high-risk; NG/IV fluids if feeding is inadequate.\n\nEscalate respiratory support to HFNC, then NIV or intubation if the infant becomes exhausted.",
-      "complexity": 2,
-      "importance": 2,
-      "variantGroup": "cohort:paeds:g-24b49e583a9e",
-      "variantIndex": 1,
-      "reference": null
-    },
-    {
       "id": "cohort:paeds:c-f6dbe1c7e85f:v1",
       "origin": "mdx:ec989d14871be0b93ad89a555f3d66c4",
       "discipline": "paeds",
@@ -418,18 +407,18 @@
       "reference": null
     },
     {
-      "id": "cohort:paeds:c-f7587d217bc4:v1",
-      "origin": "mdx:5f5828440debf5ac9a859c18203e67a7",
+      "id": "cohort:paeds:c-f70ab35ef30f:v1",
+      "origin": "mdx:397ecb350cb579d28ce03d4e5a49c7e5:blank-1",
       "discipline": "paeds",
       "cardType": "cloze",
       "sourceComponent": "KeyPoint",
-      "front": "An 11-year-old has FEV1 68% predicted and FEV1/FVC 0.52. Fifteen minutes after salbutamol her FEV1 rises to 82% predicted. The rise confirms asthma because it exceeds the [___]% reversibility threshold.",
-      "back": "12",
-      "context": "Obstruction is confirmed by the ratio, but asthma is confirmed by REVERSIBILITY: repeat the spirometry 10 to 15 minutes after inhaled salbutamol.\n\nAn improvement in FEV1 of 12% or more from baseline is significant bronchodilator responsiveness and supports asthma over a fixed narrowing.\n\nAn obstructive ratio with no reversibility needs a different question asked — bronchiectasis, structural airway disease, chronic asthma with remodelling — not a bigger dose of the same reliever.",
-      "complexity": 3,
+      "front": "Juvenile idiopathic arthritis (JIA): arthritis ≥6 weeks, onset <[___] years, exclusion of other causes; most common chronic rheumatic disease in children.",
+      "back": "16",
+      "context": "JIA is arthritis ≥6 weeks, onset <16y, other causes excluded. The 6-week threshold separates JIA from post-infectious or transient arthritis — it's the commonest chronic rheumatic disease of childhood.\n\nSubtypes: oligoarticular (≤4 joints, ANA+, uveitis risk), polyarticular (≥5 joints), systemic (Still's: quotidian fever, salmon rash, hepatosplenomegaly).",
+      "complexity": 2,
       "importance": 2,
-      "variantGroup": null,
-      "variantIndex": null,
+      "variantGroup": "cohort:paeds:g-c2f523a4e5d3",
+      "variantIndex": 1,
       "reference": null
     },
     {
@@ -478,6 +467,21 @@
       "reference": null
     },
     {
+      "id": "cohort:paeds:c-f8491c74b28a:v1",
+      "origin": "mdx:83c6a1a9ad035e5c9fd9ea354c0c82e6",
+      "discipline": "paeds",
+      "cardType": "cloze",
+      "sourceComponent": "KeyPoint",
+      "front": "An 18-month-old boy has a painless scrotal swelling present since birth that transilluminates, with a normal cord and groin. This is a [___] and is observed until age 2 before any repair.",
+      "back": "hydrocele",
+      "context": "Both a hydrocele and an inguinal hernia come from a patent processus vaginalis; the difference is what came down it. Fluid alone gives a painless, transilluminating scrotal swelling with a normal cord above it.\n\nA congenital hydrocele usually closes by itself, so repair waits until age 2. A hernia, by contrast, is repaired promptly because infants incarcerate.",
+      "complexity": 3,
+      "importance": 3,
+      "variantGroup": "cohort:paeds:g-1d776735fa5c",
+      "variantIndex": null,
+      "reference": null
+    },
+    {
       "id": "cohort:paeds:c-f883e6068b5c:v1",
       "origin": "mdx:ceea8340704b36b6ca9f8f2ec7809aa1:blank-0",
       "discipline": "paeds",
@@ -508,6 +512,36 @@
       "reference": null
     },
     {
+      "id": "cohort:paeds:c-f8cf035dff70:v1",
+      "origin": "mdx:6473687852ed2f2774aa81e6d3806b33",
+      "discipline": "paeds",
+      "cardType": "cloze",
+      "sourceComponent": "KeyPoint",
+      "front": "An itchy, relapsing rash in the skin flexures of a child with an atopic history is [___].",
+      "back": "eczema",
+      "context": "The commonest chronic childhood skin condition and part of the atopic march. Itchy, relapsing dermatitis — face/extensors in infants, flexures (elbow/knee creases) in older children.",
+      "complexity": 1,
+      "importance": 2,
+      "variantGroup": null,
+      "variantIndex": null,
+      "reference": null
+    },
+    {
+      "id": "cohort:paeds:c-f96a516b2761:v1",
+      "origin": "mdx:caa94cb0a0b2888e4a98c276ce270a8e",
+      "discipline": "paeds",
+      "cardType": "cloze",
+      "sourceComponent": "KeyPoint",
+      "front": "A 14-year-old boy is on the 3rd height centile with bone age 11.5 years, no pubertal signs and normal growth velocity; his father grew until 19. Mid-parental target is the 40th centile. The diagnosis is [___].",
+      "back": "constitutional delay",
+      "context": "Delayed bone age with a normal growth velocity and a family story of late growth is the pattern. Height tracks a low centile but the predicted adult height, read from bone age, lands near the mid-parental target.\n\nPathological short stature instead shows falling velocity: hypothyroidism, coeliac disease, GH deficiency, Turner syndrome. Bone age is delayed there too, so velocity and family history decide it.",
+      "complexity": 3,
+      "importance": 3,
+      "variantGroup": "cohort:paeds:g-940c9698df59",
+      "variantIndex": null,
+      "reference": null
+    },
+    {
       "id": "cohort:paeds:c-f970a83d2e62:v1",
       "origin": "mdx:33e25593e70ec0b431dd828ab80f18f8",
       "discipline": "paeds",
@@ -517,6 +551,36 @@
       "back": "Perthes disease",
       "context": "Perthes follows interruption of blood supply to the developing femoral head, producing avascular necrosis, fragmentation and later remodelling.\n\nThe age band is the discriminator: think Perthes in a 4–10-year-old boy with an insidious limp or hip pain referred to the knee; an overweight 10–14-year-old instead raises concern for slipped capital femoral epiphysis.",
       "complexity": 1,
+      "importance": 2,
+      "variantGroup": null,
+      "variantIndex": null,
+      "reference": null
+    },
+    {
+      "id": "cohort:paeds:c-f9736ffe198c:v1",
+      "origin": "mdx:83cbdb6383e679676cded57b5a1af404",
+      "discipline": "paeds",
+      "cardType": "cloze",
+      "sourceComponent": "KeyPoint",
+      "front": "In abusive head trauma, torn bridging veins produce the [___]. Retinal haemorrhages and encephalopathy complete the infant triad.",
+      "back": "subdural haematoma",
+      "context": "Subdural haematomas come from torn bridging veins after violent acceleration-deceleration. Retinal haemorrhages and diffuse encephalopathy complete the triad.\n\nIn an infant with no plausible mechanism, this is abuse until excluded.",
+      "complexity": 1,
+      "importance": 2,
+      "variantGroup": "cohort:paeds:g-09022f0b1566",
+      "variantIndex": null,
+      "reference": null
+    },
+    {
+      "id": "cohort:paeds:c-f9d96f1b5ee9:v1",
+      "origin": "mdx:f1b6a57310bf3c48339702dbd1c5d9d5",
+      "discipline": "paeds",
+      "cardType": "cloze",
+      "sourceComponent": "KeyPoint",
+      "front": "Congenital rubella has no specific treatment, so it is controlled entirely through [___].",
+      "back": "vaccination",
+      "context": "Several organisms in this group have treatment that changes outcome, which is the practical reason to make the diagnosis rather than simply label it.\n\nSymptomatic congenital cytomegalovirus gets antiviral therapy, which improves hearing and neurodevelopmental outcomes. Congenital syphilis gets penicillin. Neonatal herpes needs urgent intravenous aciclovir.\n\nCongenital rubella has no specific treatment, only prevention through vaccination. That is why it has largely disappeared where coverage is good.",
+      "complexity": 2,
       "importance": 2,
       "variantGroup": null,
       "variantIndex": null,
@@ -563,7 +627,7 @@
       "context": "The gut can still absorb fluid when a child cannot drink enough voluntarily. Nasogastric delivery provides an enteral route without relying on repeated sips.\n\nShock requires intravenous resuscitation. Reassess hydration and response regularly rather than treating the route choice as the end of the assessment.",
       "complexity": 1,
       "importance": 3,
-      "variantGroup": "cohort:paeds:g-bcaf7102a6f8",
+      "variantGroup": "cohort:paeds:g-984a92f5e9ae",
       "variantIndex": null,
       "reference": null
     },
@@ -599,6 +663,36 @@
       "importance": 3,
       "variantGroup": "cohort:paeds:g-34afa42318db",
       "variantIndex": null,
+      "reference": null
+    },
+    {
+      "id": "cohort:paeds:c-faa2dc402ef6:v1",
+      "origin": "mdx:2a36a05cc5de3fdc89a83aecf5e20e2c",
+      "discipline": "paeds",
+      "cardType": "cloze",
+      "sourceComponent": "KeyPoint",
+      "front": "Pertussis-containing doses at 18 months and 4 years are needed because immunity [___] after the infant doses.",
+      "back": "wanes",
+      "context": "Protection from the infant doses does not last. Children of preschool and school age can be a source of infection for infants.\n\nStopping after those infant doses leaves the gap the later childhood doses are there to fill.",
+      "complexity": 1,
+      "importance": 2,
+      "variantGroup": null,
+      "variantIndex": null,
+      "reference": null
+    },
+    {
+      "id": "cohort:paeds:c-fab19ed43b9d:v1",
+      "origin": "mdx:8cd77523822b96e9c56b6f94056e5b46:blank-0",
+      "discipline": "paeds",
+      "cardType": "cloze",
+      "sourceComponent": "KeyPoint",
+      "front": "Seizures occur in approximately 1 in [___] of children; most are febrile and self-limiting; the threshold to start medicating is at 5 minutes (status epilepticus definition).",
+      "back": "20",
+      "context": "Seizures affect about 1 in 20 (5%) of children at some point. Most are febrile seizures — short, self-limiting (cease within 5 minutes), and benign.\n\nMany never recur. Status epilepticus (seizure ≥5 min OR recurrent without recovery) requires urgent intervention to limit neuronal damage.\n\nAlways check BSL — hypoglycaemia is a rapidly reversible cause that's often missed.",
+      "complexity": 1,
+      "importance": 2,
+      "variantGroup": "cohort:paeds:g-943d097c0a09",
+      "variantIndex": 0,
       "reference": null
     },
     {
@@ -666,21 +760,6 @@
       "reference": null
     },
     {
-      "id": "cohort:paeds:c-fb6372dcbaa6:v1",
-      "origin": "mdx:fc2e334806845a00e822585ef9d53666",
-      "discipline": "paeds",
-      "cardType": "cloze",
-      "sourceComponent": "KeyPoint",
-      "front": "Treat a paediatric seizure as status epilepticus once it has lasted [___] (or recurrent without recovery) — do not wait for a longer traditional cut-off.",
-      "back": "5 minutes",
-      "context": "Same seizure numbers, different probe: status epilepticus is the 5-minute clock that triggers benzodiazepines.",
-      "complexity": 1,
-      "importance": 2,
-      "variantGroup": null,
-      "variantIndex": null,
-      "reference": null
-    },
-    {
       "id": "cohort:paeds:c-fb99f15e056c:v1",
       "origin": "mdx:fb056543e3e19537cec22b167373c96b",
       "discipline": "paeds",
@@ -696,6 +775,25 @@
       "reference": null
     },
     {
+      "id": "cohort:paeds:c-fbb432afa5c9:v1",
+      "origin": "mdx:2e20adc92913e45ae7def015c5fc4fd4",
+      "discipline": "paeds",
+      "cardType": "cloze",
+      "sourceComponent": "KeyPoint",
+      "front": "A shocked toddler with gastroenteritis has had 10 mL/kg of isotonic saline. Before a second bolus, you [___].",
+      "back": "reassess",
+      "context": "The first 10 mL/kg bolus in a shocked child is a test, not a standing order for more of the same.\n\nLook at heart rate, refill and consciousness before the next bolus. Stacking fluid without looking causes overload.",
+      "complexity": 4,
+      "importance": 2,
+      "variantGroup": null,
+      "variantIndex": null,
+      "reference": {
+        "title": "Intravenous fluids",
+        "publisher": "The Royal Children's Hospital Melbourne",
+        "url": "https://www.rch.org.au/clinicalguide/guideline_index/Intravenous_fluids/"
+      }
+    },
+    {
       "id": "cohort:paeds:c-fbbd06b07db0:v1",
       "origin": "mdx:2c182060966abc61719f9c8b180f49e5",
       "discipline": "paeds",
@@ -708,6 +806,36 @@
       "importance": 2,
       "variantGroup": null,
       "variantIndex": null,
+      "reference": null
+    },
+    {
+      "id": "cohort:paeds:c-fc537ed1e9c1:v1",
+      "origin": "mdx:6881d53885cc5ea94cc854c3d1f93e56:blank-0",
+      "discipline": "paeds",
+      "cardType": "cloze",
+      "sourceComponent": "KeyPoint",
+      "front": "Jaundice in the first [___] hours of life is ALWAYS pathological — usually haemolysis, sepsis, or congenital infection (TORCH: Toxoplasma, Other, Rubella, CMV, Herpes); check direct Coombs.",
+      "back": "24",
+      "context": "First-24-hour jaundice is always pathological — physiological jaundice peaks day 3-5. Day 1 jaundice usually means haemolysis (ABO/Rh incompatibility, G6PD deficiency, hereditary spherocytosis), sepsis.",
+      "complexity": 2,
+      "importance": 2,
+      "variantGroup": "cohort:paeds:g-bae764ca5e0c",
+      "variantIndex": 0,
+      "reference": null
+    },
+    {
+      "id": "cohort:paeds:c-fc7a9c24debf:v1",
+      "origin": "mdx:5356e1d537e451b7df3a5f39178c02dd:blank-1",
+      "discipline": "paeds",
+      "cardType": "cloze",
+      "sourceComponent": "KeyPoint",
+      "front": "Paediatric Assessment Triangle (PAT) components: Appearance, Work of Breathing, Circulation to skin; abnormality in [___] = sick child.",
+      "back": "any",
+      "context": "The Paediatric Assessment Triangle is a 60-second visual triage from the doorway, before touching the child: Appearance, Work of Breathing, Circulation to skin.\n\nWork of breathing is audible noises, retractions, flaring and the position chosen. Circulation to skin is pallor, mottling and cyanosis — a perfusion sign, not oxygenation, and the side most often forgotten.\n\nBreathing alone is respiratory distress; add abnormal appearance and it is respiratory failure. Circulation alone is compensated shock; add appearance, decompensated; all three, cardiopulmonary failure.",
+      "complexity": 2,
+      "importance": 2,
+      "variantGroup": "cohort:paeds:g-509c80022e6b",
+      "variantIndex": 1,
       "reference": null
     },
     {
@@ -873,21 +1001,6 @@
       "importance": 2,
       "variantGroup": null,
       "variantIndex": null,
-      "reference": null
-    },
-    {
-      "id": "cohort:paeds:c-ff638911c721:v1",
-      "origin": "mdx:3a2b5de867a48b064330cc7e6b6952df:blank-0",
-      "discipline": "paeds",
-      "cardType": "cloze",
-      "sourceComponent": "KeyPoint",
-      "front": "Strabismus affects ~[___]% of children; untreated risks amblyopia (vision suppression in the misaligned eye).",
-      "back": "2",
-      "context": "Strabismus (eye misalignment) affects ~2% of children. Risk factors: family history, prematurity, refractive error (commonly hyperopia → accommodative esotropia), neurological disorders.\n\nUntreated strabismus causes amblyopia (vision suppression in the misaligned eye) — refer to ophthalmology by age 4-6 months for any persistent misalignment.",
-      "complexity": 2,
-      "importance": 2,
-      "variantGroup": "cohort:paeds:g-2e909d59e91f",
-      "variantIndex": 0,
       "reference": null
     },
     {

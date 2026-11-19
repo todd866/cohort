@@ -90,3 +90,25 @@ function computeTopicTeachingWeekMap(rotation: string): ReadonlyMap<string, numb
 export function buildDatedTeachingPace(rotation: string, courseDay: Date) {
   return resolveTaughtTopics(USYD_MD3_2026.taughtTopics ?? [], rotation, courseDay);
 }
+
+const TAUGHT_SET_CACHE = new Map<string, ReadonlySet<string>>();
+
+/**
+ * Every topic the course teaches in `rotation`, undated: the weekly map's
+ * topics and aliases plus every dated lecture's topics. A static property of
+ * the block, so the pass set it ranks does not drift from day to day.
+ */
+export function buildTaughtTopicSet(rotation: string): ReadonlySet<string> {
+  const cached = TAUGHT_SET_CACHE.get(rotation);
+  if (cached) return cached;
+  const set = new Set<string>(buildTopicTeachingWeekMap(rotation).keys());
+  for (const entry of USYD_MD3_2026.taughtTopics ?? []) {
+    if (entry.rotation !== rotation) continue;
+    for (const topic of entry.topics) {
+      const key = normalizeCurriculumTopic(topic);
+      if (key) set.add(key);
+    }
+  }
+  TAUGHT_SET_CACHE.set(rotation, set);
+  return set;
+}

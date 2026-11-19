@@ -1,12 +1,69 @@
+import { startOfLocalDay } from '@/lib/analytics/local-day';
+import { COURSE_TIME_ZONE, courseCalendarDay } from '@/lib/rotation-context';
+
+const HOUR_MS = 60 * 60 * 1000;
+
+/**
+ * Midnight on the course calendar: the start of the day that review counts,
+ * daily view caps and fail floors are measured in.
+ *
+ * The server process runs in UTC, so `setHours(0, 0, 0, 0)` there is UTC
+ * midnight, which is mid-morning on the course wall clock: "today" rolled over
+ * during the morning's study. No per-learner timezone is stored on the grade
+ * path, so the course timezone stands for every learner; one studying far from
+ * it gets the course's midnight, not their own.
+ *
+ * `startOfLocalDay` steps back by the wall-clock time elapsed, which is an
+ * hour out on the two days daylight saving changes. The correction below
+ * re-reads the wall clock at the answer and closes that hour, so the whole
+ * day shares one boundary.
+ */
+export function getCourseDayStart(
+  now: Date = new Date(),
+  timeZone: string = COURSE_TIME_ZONE,
+): Date {
+  const guess = startOfLocalDay(now, timeZone);
+  const intoDayMs = guess.getTime() - startOfLocalDay(guess, timeZone).getTime();
+  if (intoDayMs === 0) return guess;
+  return new Date(
+    intoDayMs < 12 * HOUR_MS
+      ? guess.getTime() - intoDayMs
+      : guess.getTime() + (24 * HOUR_MS - intoDayMs),
+  );
+}
+
+/** The course-calendar midnight after the one given: 23, 24 or 25 hours on. */
+export function getNextCourseDayStart(
+  dayStart: Date,
+  timeZone: string = COURSE_TIME_ZONE,
+): Date {
+  return getCourseDayStart(new Date(dayStart.getTime() + 36 * HOUR_MS), timeZone);
+}
+
+/** The course day boundary at `now`, as whole minutes east of UTC. */
+export function courseDayOffsetMinutes(
+  now: Date = new Date(),
+  timeZone: string = COURSE_TIME_ZONE,
+): number {
+  const calendarDayUtc = courseCalendarDay(now, timeZone).getTime();
+  return Math.round((calendarDayUtc - getCourseDayStart(now, timeZone).getTime()) / 60_000);
+}
+
 /**
  * Compute the start of the current "study day" — resets at a configurable
  * hour (default 4am) in the user's local timezone.
  *
  * Returns a UTC Date suitable for database queries (e.g., `lastReview >= startOfDay`).
+ *
+ * This is a per-learner "study day". Anything compared with what the grader
+ * stamps (daily view counts, fail floors, review counts) uses
+ * getCourseDayStart instead, which is the grader's boundary.
  */
 export function getStudyDayStart(
-  now: Date = new Date(),
-  tz?: string,
+  now: Date,
+  // Required, so a caller cannot get UTC midnight by leaving it out. Pass
+  // `undefined` only when no timezone is known at all.
+  tz: string | undefined,
   resetHour = 4,
 ): Date {
   if (!tz) {

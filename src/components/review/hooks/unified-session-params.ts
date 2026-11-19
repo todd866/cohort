@@ -14,6 +14,7 @@ export interface UnifiedSessionParamOpts {
   topics?: readonly ReviewTopic[];
   /** One manifold cluster, from a square on the profile knowledge heatmap. */
   cluster?: string | null;
+  prepDisabled?: boolean;
   /** When set, the session is focused on one rotation: drop module filters. */
   focusRotation?: string | null;
   excludeCards?: string;
@@ -57,6 +58,7 @@ export function buildUnifiedSessionParams(slot: FetchSlot, opts: UnifiedSessionP
   }
   if (opts.topics?.length) params.set('topics', opts.topics.join(','));
   if (opts.cluster) params.set('cluster', opts.cluster);
+  if (opts.prepDisabled) params.set('prep', 'off');
   if (opts.timezone) params.set('tz', opts.timezone);
   if (opts.serveRequestId) params.set('sid', opts.serveRequestId);
   if (opts.hide) params.set('hide', opts.hide);

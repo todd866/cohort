@@ -16,14 +16,20 @@ const PANE_GRID: Record<ReviewPaneKind, string> = {
   'prompt-question':
     'contents lg:grid lg:grid-cols-[minmax(0,min(34rem,45%))_minmax(0,1fr)] '
     + 'lg:grid-rows-[auto_1fr] lg:gap-x-7 lg:gap-y-0 lg:items-start',
+  // min(36rem,44%) since 6 Nov 2026 (owner: "sick of squinting at tiny images
+  // when there's tons of whitespace"). Revealed text is a short answer and
+  // context; the figure is what needs the width. At 1180 the figure goes from
+  // ~443 to ~560px; the prose keeps ~460px, a comfortable measure.
   supplementary:
-    'contents lg:grid lg:grid-cols-[minmax(0,min(42rem,55%))_minmax(0,1fr)] '
+    'contents lg:grid lg:grid-cols-[minmax(0,min(36rem,44%))_minmax(0,1fr)] '
     + 'lg:grid-rows-[auto_1fr] lg:gap-x-7 lg:gap-y-0 lg:items-start',
   // Same split as a prompt question: the text keeps a readable measure and a
   // width-bound figure takes the surplus. At 1440 the figure goes from ~580
   // to ~700px; at 1180 from ~425 to ~530.
+  // min(30rem,38%) since 6 Nov 2026, staying narrower than the
+  // supplementary column (min(36rem,44%)) so a wide plate keeps its surplus.
   'supplementary-wide':
-    'contents lg:grid lg:grid-cols-[minmax(0,min(34rem,45%))_minmax(0,1fr)] '
+    'contents lg:grid lg:grid-cols-[minmax(0,min(30rem,38%))_minmax(0,1fr)] '
     + 'lg:grid-rows-[auto_1fr] lg:gap-x-7 lg:gap-y-0 lg:items-start',
 };
 
@@ -79,7 +85,9 @@ export const REVIEW_PANE_MEDIA =
 
 const SHELL_WIDTH_PROMPT = 'max-w-2xl lg:max-w-[80rem] 2xl:max-w-[min(96rem,92vw)]';
 const SHELL_WIDTH_PORTRAIT = 'max-w-2xl lg:max-w-[64rem] 2xl:max-w-[76rem]';
-const SHELL_WIDTH_SUPPLEMENTARY = 'max-w-2xl lg:max-w-[80rem]';
+// Flush (frameless) on desktop since 6 Nov 2026, so the shell can take the
+// viewport the frame used to waste; the text column keeps its own measure.
+const SHELL_WIDTH_SUPPLEMENTARY = 'max-w-2xl lg:max-w-[80rem] 2xl:max-w-[min(96rem,92vw)]';
 
 export function reviewShellWidthClass(
   usesSidePane: boolean,

@@ -26,7 +26,7 @@ export function interpretGuestClaimResponse(args: {
   ok: boolean;
   status?: GuestClaimResponseStatus;
 }): GuestClaimClientOutcome {
-  if (!args.ok || args.status === 'failed') {
+  if (!args.ok || args.status === 'failed' || args.status === 'deferred') {
     return { kind: 'retryable' };
   }
   if (args.status === 'claimed') {

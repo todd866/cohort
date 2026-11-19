@@ -20,12 +20,6 @@ export const MD1_DECK = 'md1-foundations';
 /** Subject decks an MD1 learner's review menu offers before they customise it. */
 export const MD1_REVIEW_MENU_SUBJECTS: readonly string[] = ['physical-exam', 'anatomy'];
 
-/**
- * Top-level routes that hold only Year 3 material (the CAH textbook and the
- * rotation practice papers). The nav hides them for MD1; the routes stay open.
- */
-export const MD1_HIDDEN_NAV_HREFS: readonly string[] = ['/textbook', '/practice-exams'];
-
 export interface Md1Exam {
   /**
    * The UserRotation key a personal date is stored under. KAT4 uses the deck

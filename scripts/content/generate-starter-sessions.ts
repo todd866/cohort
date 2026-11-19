@@ -13,6 +13,8 @@ import fs from 'node:fs/promises';
 import path from 'node:path';
 import { pathToFileURL } from 'node:url';
 import { loadCuratedStarterManifest, resolveCuratedStarterRows } from './curated-starters';
+import { questionImageIsPromptWithLookup, frontRequiresFigure } from '../../src/lib/figures/prompt-policy';
+import { lookupServingSidecar } from '../../src/lib/figures/serving-index';
 import { withDefaultQuestionServingPolicy } from '../../src/lib/questions/source-policy';
 import { withoutRawPublicUsmleQuestions } from '../../src/lib/usmle/raw-question-boundary';
 import { withoutRawPublicUsmleReinforcementCards } from '../../src/lib/usmle/raw-reinforcement-card-boundary';
@@ -204,6 +206,8 @@ async function main() {
               rows: curatedRows,
               deliverableIds: new Set(deliverableRows.map(({ id }) => id)),
               excludedTopics: EXCLUDED_TOPICS,
+              imageIsPrompt: row => frontRequiresFigure(row.front)
+                || questionImageIsPromptWithLookup(row.imageRole, row.imageUrl, lookupServingSidecar),
             });
             const curatedCards: StarterItem[] = resolved.map(({ entry, row }) => ({
               type: 'card',

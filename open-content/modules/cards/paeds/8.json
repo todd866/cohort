@@ -35,21 +35,6 @@
       "reference": null
     },
     {
-      "id": "cohort:paeds:c-80dee2949da0:v1",
-      "origin": "mdx:00c2f6bbe50ae5cbad672a94098d88a4:blank-2",
-      "discipline": "paeds",
-      "cardType": "cloze",
-      "sourceComponent": "KeyPoint",
-      "front": "Pancreatic insufficiency affects ~85% of CF patients, causing steatorrhoea; treat with PERT (Creon) with every [___].",
-      "back": "meal/snack",
-      "context": "Pancreatic exocrine ducts plug with thick secretions → progressive acinar fibrosis → reduced enzyme delivery to gut → fat and protein malabsorption.\n\nPERT (Creon) provides exogenous pancreatic enzymes: lipase, protease and amylase. Adjust dose to symptoms.",
-      "complexity": 2,
-      "importance": 2,
-      "variantGroup": "cohort:paeds:g-5f5f053a7fb0",
-      "variantIndex": 2,
-      "reference": null
-    },
-    {
       "id": "cohort:paeds:c-8176f79f9cb3:v1",
       "origin": "mdx:ef591eedaa0df74a80826a83e30c9e50",
       "discipline": "paeds",
@@ -101,21 +86,6 @@
         "publisher": "ASCIA",
         "url": "https://www.allergy.org.au/hp/papers/ascia-oral-immunotherapy-for-food-allergy"
       }
-    },
-    {
-      "id": "cohort:paeds:c-82bdb2018cc3:v1",
-      "origin": "mdx:69c4d6dcd1ab6c496c676035a8899b53",
-      "discipline": "paeds",
-      "cardType": "cloze",
-      "sourceComponent": "KeyPoint",
-      "front": "Constitutional delay is distinguished from familial short stature because its [___] age is delayed.",
-      "back": "bone",
-      "context": "Constitutional delay and familial short stature look alike on a single measurement and separate on two other data points.\n\nIn CONSTITUTIONAL delay the bone age is DELAYED relative to chronological age, and the predicted adult height is normal — the child is late, not short.\n\nIn FAMILIAL short stature the bone age matches chronological age and the predicted height is genuinely low, matching the parents.",
-      "complexity": 4,
-      "importance": 2,
-      "variantGroup": "cohort:paeds:g-940c9698df59",
-      "variantIndex": null,
-      "reference": null
     },
     {
       "id": "cohort:paeds:c-831afb655d16:v1",
@@ -178,6 +148,21 @@
       "reference": null
     },
     {
+      "id": "cohort:paeds:c-84864092bade:v1",
+      "origin": "mdx:6f3428151340bc26c11d0c943bbb1cb7",
+      "discipline": "paeds",
+      "cardType": "cloze",
+      "sourceComponent": "KeyPoint",
+      "front": "On a child's wrist film, a physeal fracture line that turns towards the epiphysis rather than the metaphysis is Salter-Harris type [___], and needs anatomical reduction because it enters the joint.",
+      "back": "III",
+      "context": "Salter-Harris type is read from where the fracture line exits, and the exit decides management. A line along the physis that turns DISTALLY through the epiphysis reaches the joint: type III, intra-articular.\n\nAny articular step causes post-traumatic arthritis as well as growth disturbance. So the reduction must be anatomical, usually open, with fixation.\n\nA line turning PROXIMALLY through the metaphysis spares the joint surface (type II), and closed reduction in a cast is the norm. Same bone, same mechanism, opposite exit, opposite treatment.",
+      "complexity": 3,
+      "importance": 3,
+      "variantGroup": null,
+      "variantIndex": null,
+      "reference": null
+    },
+    {
       "id": "cohort:paeds:c-84b52403ac61:v1",
       "origin": "mdx:feaef72fe3572475c3a9330861499e5a",
       "discipline": "paeds",
@@ -223,6 +208,36 @@
       "reference": null
     },
     {
+      "id": "cohort:paeds:c-85282b489ebe:v1",
+      "origin": "mdx:6aa0ce0571bab5c6aa02b0ad9187747b",
+      "discipline": "paeds",
+      "cardType": "cloze",
+      "sourceComponent": "KeyPoint",
+      "front": "Sudden choking then wheeze in a toddler with unilateral reduced air entry suggests an inhaled foreign body; a ball-valve effect makes the affected lung [___] on CXR.",
+      "back": "hyperinflated",
+      "context": "A sudden choking episode followed by unilateral signs points to an inhaled foreign body, classically lodging in the right main bronchus (wider, more vertical).\n\nA ball-valve effect causes hyperinflation of the affected side — so the abnormal lung looks bigger, not smaller, on CXR.",
+      "complexity": 3,
+      "importance": 2,
+      "variantGroup": null,
+      "variantIndex": null,
+      "reference": null
+    },
+    {
+      "id": "cohort:paeds:c-85580512aa1e:v1",
+      "origin": "mdx:769c9fa1d3d1fc845285aa1c1a3a61a5",
+      "discipline": "paeds",
+      "cardType": "cloze",
+      "sourceComponent": "KeyPoint",
+      "front": "A 3-year-old's febrile UTI grows Pseudomonas. A non-E. coli organism makes the infection 'atypical', which lowers the threshold for an acute renal tract [___].",
+      "back": "ultrasound",
+      "context": "Knowing E. coli is the usual organism is what makes a non-E. coli result informative.\n\nAn atypical UTI raises the chance of an underlying structural abnormality, obstruction or stone, so the threshold for imaging drops to a renal tract ultrasound during the acute illness.\n\nAtypical means: seriously unwell, septicaemia, poor urine flow, abdominal or bladder mass, raised creatinine, no response in 48 hours, or a non-E. coli organism. A first E. coli UTI that responds needs none.",
+      "complexity": 3,
+      "importance": 2,
+      "variantGroup": "cohort:paeds:g-27673566ae7f",
+      "variantIndex": null,
+      "reference": null
+    },
+    {
       "id": "cohort:paeds:c-85ff2cc25c1c:v1",
       "origin": "mdx:666b44abae65c0a6cea81f64e977492a",
       "discipline": "paeds",
@@ -253,21 +268,6 @@
       "reference": null
     },
     {
-      "id": "cohort:paeds:c-8632dda804b3:v1",
-      "origin": "mdx:3b165e97d3d063fdb5dff9bb2a7ef81c:blank-0",
-      "discipline": "paeds",
-      "cardType": "cloze",
-      "sourceComponent": "KeyPoint",
-      "front": "Universal newborn hearing screen target ages: screen by [___] month, diagnose by 3 months, intervene by 6 months — closes the critical window for language development.",
-      "back": "1",
-      "context": "The 1-3-6 rule for newborn hearing screening: screen by 1 month (OAE first-line, ABR for NICU), confirm any failed screen with audiology by 3 months. Start intervention (hearing aids, early-intervention) by 6 months.\n\nThe targets aren't arbitrary — the first 6 months are the critical language-scaffolding window, and delays past it measurably impair lifelong speech outcomes.\n\nIn Australia ~98% are screened by 1 month; compliance falls off at diagnosis and intervention, which is where infants slip through.",
-      "complexity": 2,
-      "importance": 2,
-      "variantGroup": "cohort:paeds:g-2633147da560",
-      "variantIndex": 0,
-      "reference": null
-    },
-    {
       "id": "cohort:paeds:c-86c7a2401562:v1",
       "origin": "mdx:a24854e431c35a0f3f470d1f9385d2fd",
       "discipline": "paeds",
@@ -285,6 +285,21 @@
         "publisher": "The Royal Children's Hospital Melbourne",
         "url": "https://www.rch.org.au/clinicalguide/guideline_index/Intravenous_fluids/"
       }
+    },
+    {
+      "id": "cohort:paeds:c-877fda39d5d4:v1",
+      "origin": "mdx:76d3c81870d4fb2284bde788df7ff179",
+      "discipline": "paeds",
+      "cardType": "cloze",
+      "sourceComponent": "KeyPoint",
+      "front": "A 3-year-old with HbSS on daily penicillin has a temperature of 39.2 °C and looks well. Correct management is blood cultures plus [___] now, not discharge with review.",
+      "back": "IV ceftriaxone",
+      "context": "Functional asplenia means a fever is potentially pneumococcal sepsis whatever the child looks like. Looking well does not lower the risk enough to discharge.\n\nCultures then parenteral ceftriaxone, without waiting for results. Penicillin prophylaxis reduces but does not remove the risk, and a temperature of 38.5 or more is the trigger.",
+      "complexity": 4,
+      "importance": 3,
+      "variantGroup": "cohort:paeds:g-184395431403",
+      "variantIndex": null,
+      "reference": null
     },
     {
       "id": "cohort:paeds:c-878525492f24:v1",
@@ -392,21 +407,6 @@
       "reference": null
     },
     {
-      "id": "cohort:paeds:c-89917abd2a96:v1",
-      "origin": "mdx:d928e758fabf9cbb0cac5a281a3e2c12",
-      "discipline": "paeds",
-      "cardType": "cloze",
-      "sourceComponent": "KeyPoint",
-      "front": "In the weeks after birth, red cells carrying the high-oxygen-affinity [___] are cleared faster than the marrow replaces them with adult haemoglobin, which is one driver of the physiological anaemia at 6-8 weeks.",
-      "back": "HbF",
-      "context": "Fetal red cells are built for a low-oxygen placenta: their haemoglobin binds oxygen more avidly than the adult form. Once the lungs take over, that high affinity is no longer needed.\n\nThree things then drop the haemoglobin together: better oxygenation switches off erythropoietin, short-lived fetal cells are cleared, and rapid growth dilutes the red cell mass.\n\nThe nadir of about 95-110 g/L at 6-8 weeks is normal and self-resolves; investigate a fall below the age-specific threshold or any other worrying feature. In preterm babies the nadir comes earlier and deeper.",
-      "complexity": 1,
-      "importance": 2,
-      "variantGroup": "cohort:paeds:g-b2cbb551a28d",
-      "variantIndex": null,
-      "reference": null
-    },
-    {
       "id": "cohort:paeds:c-89a000af4608:v1",
       "origin": "mdx:585f34fee81b2e2fe49189931b4c74d3",
       "discipline": "paeds",
@@ -422,18 +422,33 @@
       "reference": null
     },
     {
-      "id": "cohort:paeds:c-8a2103b03e95:v1",
-      "origin": "mdx:1621cd2c844c8ddf528aaef4584c3267",
+      "id": "cohort:paeds:c-89b510b9119a:v1",
+      "origin": "mdx:55665372cbea6719f9eae62201f57520:blank-0",
       "discipline": "paeds",
       "cardType": "cloze",
       "sourceComponent": "KeyPoint",
-      "front": "A well non-Indigenous 6-month-old has already had pneumococcal conjugate at 2 and 4 months. The next routine pneumococcal dose on the NIP is at [___], not today; the extra 6-month dose is for Aboriginal and Torres Strait Islander children and specified medical-risk conditions.",
-      "back": "12 months",
-      "context": "The 6-month pneumococcal conjugate dose is the extra primary dose in the 3+1 schedule used for Aboriginal and Torres Strait Islander children and for children with specified medical-risk conditions.\n\nA healthy non-Indigenous infant is on 2+1 (2, 4 and 12 months only). Offering that extra 6-month dose to every child is the error of reading an at-risk row as if it were universal.",
-      "complexity": 3,
+      "front": "Most common cause of croup is [___]; peak age ~2 years.",
+      "back": "parainfluenza",
+      "context": "Parainfluenza accounts for ~75% of croup. The peak age (1-2 years) reflects subglottic narrowness — same oedema in older children causes much less obstruction.",
+      "complexity": 2,
       "importance": 2,
-      "variantGroup": null,
-      "variantIndex": null,
+      "variantGroup": "cohort:paeds:g-6515160751fe",
+      "variantIndex": 0,
+      "reference": null
+    },
+    {
+      "id": "cohort:paeds:c-89ffb2f62c21:v1",
+      "origin": "mdx:a19ea5d60a8bac0bdcd96c1b2903e3a8:blank-1",
+      "discipline": "paeds",
+      "cardType": "cloze",
+      "sourceComponent": "KeyPoint",
+      "front": "A displaced supracondylar humerus fracture with no cortical contact is Gartland type III; it requires urgent reduction and percutaneous [___].",
+      "back": "pin fixation",
+      "context": "Gartland grades displacement of extension-type supracondylar fractures on the lateral radiograph. Type I is undisplaced; type II is angulated but keeps an intact posterior cortex.\n\nType III is displaced posteriorly with no cortical contact. That is the memory hinge: contact still present means type II, no contact means type III.\n\nType III carries the highest neurovascular-injury risk and needs urgent orthopaedic reduction with percutaneous pin fixation.",
+      "complexity": 3,
+      "importance": 3,
+      "variantGroup": "cohort:paeds:g-b3b5a3a87dc5",
+      "variantIndex": 1,
       "reference": null
     },
     {
@@ -546,6 +561,21 @@
       "reference": null
     },
     {
+      "id": "cohort:paeds:c-8cb785cdf7e8:v1",
+      "origin": "mdx:b86327c374a93ae6c3858d1e8e4c857b",
+      "discipline": "paeds",
+      "cardType": "cloze",
+      "sourceComponent": "KeyPoint",
+      "front": "In a newborn with persistent pulmonary hypertension, the foramen ovale flap reopens when pressure is higher in the [___] atrium.",
+      "back": "right",
+      "context": "The foramen ovale closes functionally at birth when the lungs open: pulmonary resistance falls, pulmonary venous return rises, and left atrial pressure exceeds right, pressing the septum primum flap shut.\n\nAnatomical fusion follows over months.\n\nIt is a flap valve, not a seal: anything raising right atrial pressure above left pushes it open again. Hence paradoxical embolism through a patent foramen, and right-to-left shunting in pulmonary hypertension.",
+      "complexity": 3,
+      "importance": 3,
+      "variantGroup": "cohort:paeds:g-7e9a641163e9",
+      "variantIndex": null,
+      "reference": null
+    },
+    {
       "id": "cohort:paeds:c-8cbf43c27b29:v1",
       "origin": "mdx:1229037ae33ccf156bfe9048ac2d9784",
       "discipline": "paeds",
@@ -595,36 +625,17 @@
       "reference": null
     },
     {
-      "id": "cohort:paeds:c-8cfad151e41b:v1",
-      "origin": "mdx:1f93b50211bf6c01e610529c33bf43a7:blank-1",
+      "id": "cohort:paeds:c-8d0ff7c59de7:v1",
+      "origin": "mdx:e67798e8f98da268a320560ca2d20360:blank-1",
       "discipline": "paeds",
       "cardType": "cloze",
       "sourceComponent": "KeyPoint",
-      "front": "Croup is a clinical diagnosis; alarm features include agitation, drowsiness, persistent stridor at rest. [___] is a late sign — by then the child is in respiratory failure.",
-      "back": "hypoxia",
-      "context": "Croup is a clinical diagnosis — barking cough plus inspiratory stridor in a 1-2 year old. Imaging doesn't change management; reserve for atypical cases or to rule out foreign body.\n\nHypoxia is a LATE sign because croup obstruction is mainly inspiratory; by the time SpO2 drops, the child is in significant respiratory failure.",
-      "complexity": 2,
+      "front": "Suspect immunodeficiency with infections that are severe, persistent, unusual (such as opportunistic organisms or disseminated disease) or [___]; also FTT, chronic diarrhoea, persistent oral Candida.",
+      "back": "recurrent",
+      "context": "The mnemonic is SPUR: Severe, Persistent, Unusual, Recurrent infections. A competent immune system clears ordinary bugs quickly.\n\nSo infections that are deep-seated, drag on, are caused by opportunists, or keep coming back point to a host defect rather than just bad luck.\n\nFTT, chronic diarrhoea, and persistent oral Candida add weight: they reflect a system failing across multiple barriers, not one isolated infection.",
+      "complexity": 1,
       "importance": 2,
-      "variantGroup": "cohort:paeds:g-61d7cf2aec17",
-      "variantIndex": 1,
-      "reference": {
-        "title": "Croup (Laryngotracheobronchitis)",
-        "publisher": "The Royal Children's Hospital Melbourne",
-        "url": "https://www.rch.org.au/clinicalguide/guideline_index/Croup_Laryngotracheobronchitis/"
-      }
-    },
-    {
-      "id": "cohort:paeds:c-8d360f4f8023:v1",
-      "origin": "mdx:00c2f6bbe50ae5cbad672a94098d88a4:blank-1",
-      "discipline": "paeds",
-      "cardType": "cloze",
-      "sourceComponent": "KeyPoint",
-      "front": "Pancreatic insufficiency affects ~85% of CF patients, causing [___]; treat with PERT (Creon) with every meal/snack.",
-      "back": "steatorrhoea",
-      "context": "Pancreatic exocrine ducts plug with thick secretions → progressive acinar fibrosis → reduced enzyme delivery to gut → fat and protein malabsorption.\n\nPERT (Creon) provides exogenous pancreatic enzymes: lipase, protease and amylase. Adjust dose to symptoms.",
-      "complexity": 2,
-      "importance": 2,
-      "variantGroup": "cohort:paeds:g-5f5f053a7fb0",
+      "variantGroup": "cohort:paeds:g-6f2f36e05d11",
       "variantIndex": 1,
       "reference": null
     },
@@ -644,23 +655,19 @@
       "reference": null
     },
     {
-      "id": "cohort:paeds:c-8de98e73f90b:v1",
-      "origin": "mdx:f4a33a3d6dde4a67c2abbab3deec3553:blank-0",
+      "id": "cohort:paeds:c-8dfc186bd0e0:v1",
+      "origin": "mdx:9871e0c52f61db0153cb62cfc057913b",
       "discipline": "paeds",
       "cardType": "cloze",
       "sourceComponent": "KeyPoint",
-      "front": "Croup is caused by [___] virus; peak age ~2 years; classic triad of barking cough, hoarse voice, stridor.",
-      "back": "parainfluenza",
-      "context": "Parainfluenza causes ~75% of croup; RSV, adenovirus, influenza, and rhinovirus account for the rest.\n\nSymptoms classically worsen overnight from supine position and increased oedema.",
-      "complexity": 2,
+      "front": "A 3-week-old is referred because the newborn bloodspot found raised immunoreactive trypsinogen and one CFTR variant. The next diagnostic investigation for cystic fibrosis is a [___].",
+      "back": "sweat test",
+      "context": "The bloodspot screen measures immunoreactive trypsinogen, then tests for common CFTR variants. A screen is not a diagnosis.\n\nA raised sweat chloride confirms cystic fibrosis. A normal result makes it unlikely; intermediate results need repeat testing and specialist review.",
+      "complexity": 3,
       "importance": 2,
-      "variantGroup": "cohort:paeds:g-017190bcbb4f",
-      "variantIndex": 0,
-      "reference": {
-        "title": "Croup (Laryngotracheobronchitis)",
-        "publisher": "The Royal Children's Hospital Melbourne",
-        "url": "https://www.rch.org.au/clinicalguide/guideline_index/Croup_Laryngotracheobronchitis/"
-      }
+      "variantGroup": null,
+      "variantIndex": null,
+      "reference": null
     },
     {
       "id": "cohort:paeds:c-8e14457093be:v1",
@@ -689,6 +696,21 @@
       "complexity": 1,
       "importance": 2,
       "variantGroup": null,
+      "variantIndex": null,
+      "reference": null
+    },
+    {
+      "id": "cohort:paeds:c-8e6b9b7669d4:v1",
+      "origin": "mdx:63098e05ce885af74561738d8fe2e85b",
+      "discipline": "paeds",
+      "cardType": "cloze",
+      "sourceComponent": "KeyPoint",
+      "front": "Post-streptococcal glomerulonephritis is not reliably prevented by the full antibiotic course that reduces acute rheumatic fever after [___] fever.",
+      "back": "scarlet",
+      "context": "A full course for scarlet fever or Group A streptococcal pharyngitis eradicates the organism and reduces acute rheumatic fever.\n\nThe same course does not reliably prevent post-streptococcal glomerulonephritis, an immune-complex complication.",
+      "complexity": 1,
+      "importance": 2,
+      "variantGroup": "cohort:paeds:g-9a503135ed8f",
       "variantIndex": null,
       "reference": null
     },

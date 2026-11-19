@@ -25,6 +25,7 @@ import {
   type UnifiedSessionItem,
   type UnifiedSessionResult,
   type UnifiedSessionSelectionDeterminism,
+  type SessionPrepBlendPlan,
   conceptThreadPolicyReceipt,
 } from './unified-scheduler-types';
 import { enforceConceptTeachingCaps } from './unified-scheduler-scoring';
@@ -40,6 +41,7 @@ import {
   getQuestionsForRotation,
   getUnseenScaffoldsForClusters,
 } from './unified-scheduler-queries';
+import { orderSessionPrepCandidates, prepModalityBudgets } from '@/lib/study/session-prep-allocation';
 
 // =============================================================================
 // Cluster-Driven Fallback (for rotations without Concept rows)
@@ -47,6 +49,15 @@ import {
 
 /** Complexity floor the cluster fallback applies to every card it considers. */
 const CLUSTER_FALLBACK_MIN_COMPLEXITY = 2;
+
+export function clusterQuestionCandidateCount(
+  week: number | undefined,
+  targetQuestionCount: number,
+  requiredFirstSight: number,
+): number {
+  if (week !== undefined) return 0;
+  return Math.max(targetQuestionCount, requiredFirstSight);
+}
 
 /**
  * Keep only the clusters that hold at least one card this session may serve.
@@ -124,6 +135,7 @@ export async function constructClusterSession(
     imageTrust?: AccessTier;
     /** A week-scoped session (`?week=N`): visit and read only that week's cards. */
     week?: number;
+    sessionPrepBlend?: SessionPrepBlendPlan;
   }
 ): Promise<UnifiedSessionResult> {
   const {
@@ -227,30 +239,45 @@ export async function constructClusterSession(
   // A deck that serves two exams (deck-strand-mix.ts) holds seats for each
   // strand while both have supply. A due review is never held back for the
   // mix; only first-sight cards wait for their strand's seats. When a whole
-  // pass adds nothing, the hold is released and any remaining seat goes to
-  // whichever strand still has eligible cards.
+  // pass adds nothing, redistribute the remaining seats proportionally among
+  // strands that still have eligible cards.
   const strandMix = deckStrandMixFor(rotation);
-  const cardStrandSeats = strandMix ? strandSeatTargets(strandMix, targetCardCount) : null;
+  let cardStrandSeats = strandMix ? strandSeatTargets(strandMix, targetCardCount) : null;
   const cardStrandCounts = new Map<string, number>();
-  let holdCardStrandSeats = cardStrandSeats !== null;
   const strandIdentityByKey = new Map<string, StrandIdentity>();
   const cardStrandOpen = (candidate: { rotation: string; sourceFile: string | null; firstSightAtSelection: boolean }) => {
-    if (!holdCardStrandSeats || !strandMix || !cardStrandSeats) return true;
+    if (!strandMix || !cardStrandSeats) return true;
     if (!candidate.firstSightAtSelection) return true;
     const strand = deckStrandOf(strandMix, candidate);
     return (cardStrandCounts.get(strand) ?? 0) < (cardStrandSeats.get(strand) ?? 0);
   };
 
+  const prepIds = new Set(options.sessionPrepBlend?.itemIds ?? []);
+  const prepWeakIds = new Set(options.sessionPrepBlend?.weakItemIds ?? []);
+  // Cluster question-bank ids are not the brief's Question ids. Reserve the
+  // joint modality budget in eligible cards, rounding once like the instant lane.
+  const prepSeats = prepModalityBudgets(options.sessionPrepBlend?.share ?? 0,
+    targetCardCount, targetQuestionCount, [...prepIds].filter(id => id.startsWith('card:')).length, 0).cards;
+  const prepByCluster = new Map<string, string[]>();
+  for (const [id, cluster] of Object.entries(options.sessionPrepBlend?.cardClusters ?? {})) {
+    if (prepIds.has(`card:${id}`)) prepByCluster.set(cluster, [...(prepByCluster.get(cluster) ?? []), id]);
+  }
+
   for (let pass = 0; selectedCardCount < targetCardCount; pass++) {
     const maxPerCluster = 2 + pass;
     let addedThisPass = 0;
+    const availableCardStrands = new Set<string>();
 
-    for (const cluster of clusterStates) {
+    const remainingClusters = [...clusterStates];
+    while (remainingClusters.length) {
+      const prepPicked = selectedItems.filter(item => item.type === 'card' && prepIds.has(`card:${item.id}`)).length;
+      const wantsPrep = Math.floor((selectedCardCount + 1) * prepSeats / Math.max(1, targetCardCount)) > prepPicked;
+      const cluster = takeNextPrepCluster(remainingClusters, wantsPrep, prepByCluster, selectedCardIds)!;
       if (selectedCardCount >= targetCardCount) break;
       const already = cardsPerCluster.get(cluster.clusterId) ?? 0;
       if (already >= maxPerCluster) continue;
 
-      const candidates = await getCardsForCluster(userId, rotation, cluster.clusterId, 12, {
+      const candidateOptions: Parameters<typeof getCardsForCluster>[4] = {
         selectedCardIds,
         ...(options.week !== undefined ? { week: options.week } : {}),
         minComplexity: CLUSTER_FALLBACK_MIN_COMPLEXITY,
@@ -263,10 +290,38 @@ export async function constructClusterSession(
           ? new Date(selectionDeterminism.nowMs)
           : new Date(),
         ...(selectionDeterminism ? { selectionDeterminism } : {}),
-      });
+      };
+      const candidates = await getCardsForCluster(userId, rotation, cluster.clusterId, 12, candidateOptions);
+      // Read a bounded targeted pool as well: the ordinary first 12 rows must
+      // not hide an eligible prep card. The exact same query gates still apply.
+      const prepCardIds = prepByCluster.get(cluster.clusterId);
+      if (wantsPrep && prepCardIds?.length) {
+        const targeted = await getCardsForCluster(userId, rotation, cluster.clusterId, 12, {
+          ...candidateOptions, onlyCardIds: prepCardIds, preferWeak: (options.sessionPrepBlend?.share ?? 0) >= 0.25 && prepPicked % 2 === 0,
+        });
+        const present = new Set(candidates.map(card => card.id));
+        candidates.push(...targeted.filter(card => !present.has(card.id)));
+      }
       if (candidates.length === 0) continue;
 
-      const picked = candidates.find(
+      const orderedCandidates = !options.sessionPrepBlend ? candidates : [...candidates].sort((left, right) => {
+        const rank = (candidate: typeof left) => {
+          // Due work stays ahead of discretionary first sights.
+          if (!candidate.firstSightAtSelection) return 0;
+          const key = `card:${candidate.id}`;
+          if (prepIds.has(key) !== wantsPrep) return 3;
+          return wantsPrep && prepWeakIds.has(key) ? 1 : 2;
+        };
+        return rank(left) - rank(right);
+      });
+      if (strandMix) {
+        for (const candidate of orderedCandidates) {
+          if (!candidate.variantGroupId || !selectedCardVariantGroups.has(candidate.variantGroupId)) {
+            availableCardStrands.add(deckStrandOf(strandMix, candidate));
+          }
+        }
+      }
+      const picked = orderedCandidates.find(
         (candidate) => (!candidate.variantGroupId
           || !selectedCardVariantGroups.has(candidate.variantGroupId))
           && cardStrandOpen(candidate),
@@ -303,8 +358,18 @@ export async function constructClusterSession(
     }
 
     if (addedThisPass === 0) {
-      if (holdCardStrandSeats) {
-        holdCardStrandSeats = false;
+      if (strandMix && availableCardStrands.size > 0) {
+        // Redistribute unavailable strands' seats by the remaining supply's
+        // shares, rather than releasing every seat to the shuffled first card.
+        const strands = strandMix.strands.filter((strand) => availableCardStrands.has(strand.id));
+        const totalShare = strands.reduce((sum, strand) => sum + strand.share, 0);
+        const remainingSeats = strandSeatTargets({
+          strands: strands.map((strand) => ({ ...strand, share: strand.share / totalShare })),
+        }, targetCardCount - selectedCardCount);
+        cardStrandSeats = new Map(strandMix.strands.map((strand) => [
+          strand.id,
+          (cardStrandCounts.get(strand.id) ?? 0) + (remainingSeats.get(strand.id) ?? 0),
+        ]));
         continue;
       }
       break;
@@ -312,7 +377,10 @@ export async function constructClusterSession(
   }
 
   const firstSightQuestionIds = new Set<string>();
-  const questionCandidateCount = Math.max(
+  // Bank questions have no week column. A week-scoped deck must never spend
+  // first-sight seats on unscoped bank questions that hydration will discard.
+  const questionCandidateCount = clusterQuestionCandidateCount(
+    options.week,
     options.media === undefined ? targetQuestionCount : size,
     requiredFirstSight,
   );
@@ -326,6 +394,8 @@ export async function constructClusterSession(
       userId,
     );
     const questions = await getQuestionsForRotation(userId, rotation, questionCandidateCount, {
+      // Novelty may exceed the modality quota, never the hydration scope.
+      ...(options.week !== undefined ? { week: options.week } : {}),
       selectedQuestionIds,
       selectedQuestionVariantGroups,
       questionFamiliarity,
@@ -398,7 +468,7 @@ export async function constructClusterSession(
         rotation,
         [...selectedClusterIds],
         selectedCardIds,
-        { media: options.media, imageTrust: options.imageTrust, isCopyrightTier: options.isCopyrightTier === true },
+        { media: options.media, imageTrust: options.imageTrust, isCopyrightTier: options.isCopyrightTier === true, week: options.week },
       );
   const scaffoldPaired = injectPreemptiveScaffoldsFromPool(
     clusterOrdered,
@@ -498,17 +568,23 @@ export async function constructClusterSession(
       ?? unseenScaffoldIds.has(item.id)
       ?? firstSightQuestionIds.has(item.id),
   }));
+  const prepOrderedItems = orderSessionPrepCandidates(quotaTaggedItems, options.sessionPrepBlend, {
+    size,
+    key: (item) => `${item.type}:${item.id}`,
+    protected: (item) => item.interventionReason === 'failure_escalation'
+      || item.interventionReason === 'needs_retest',
+  });
 
   const avgPriority =
-    quotaTaggedItems.length > 0
-      ? quotaTaggedItems.reduce((sum, i) => sum + i.priority, 0) / quotaTaggedItems.length
+    prepOrderedItems.length > 0
+      ? prepOrderedItems.reduce((sum, i) => sum + i.priority, 0) / prepOrderedItems.length
       : 0;
-  const finalCardCount = quotaTaggedItems.filter((item) => item.type === 'card').length;
-  const finalQuestionCount = quotaTaggedItems.filter((item) => item.type === 'question').length;
-  const selectedFirstSight = quotaTaggedItems.filter((item) => item.firstSightAtSelection).length;
+  const finalCardCount = prepOrderedItems.filter((item) => item.type === 'card').length;
+  const finalQuestionCount = prepOrderedItems.filter((item) => item.type === 'question').length;
+  const selectedFirstSight = prepOrderedItems.filter((item) => item.firstSightAtSelection).length;
 
   return {
-    items: quotaTaggedItems as UnifiedSessionItem[],
+    items: prepOrderedItems as UnifiedSessionItem[],
     noveltyQuota: {
       required: requiredFirstSight,
       selected: selectedFirstSight,
@@ -520,7 +596,15 @@ export async function constructClusterSession(
       cardCount: finalCardCount,
       questionCount: finalQuestionCount,
       averagePriority: Math.round(avgPriority * 1000) / 1000,
-      conceptPairingRate: computeConceptPairingRate(quotaTaggedItems),
+      conceptPairingRate: computeConceptPairingRate(prepOrderedItems),
     },
   };
+}
+
+/** Consume each cluster once per pass, making a prep cluster reachable at a prep seat. */
+export function takeNextPrepCluster<T extends { clusterId: string }>(
+  remaining: T[], wantsPrep: boolean, prepByCluster: ReadonlyMap<string, readonly string[]>, excluded: ReadonlySet<string>,
+): T | undefined {
+  const prepIndex = wantsPrep ? remaining.findIndex(cluster => prepByCluster.get(cluster.clusterId)?.some(id => !excluded.has(id))) : -1;
+  return remaining.splice(prepIndex >= 0 ? prepIndex : 0, 1)[0];
 }

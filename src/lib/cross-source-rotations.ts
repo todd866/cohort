@@ -123,6 +123,22 @@ export const COMPANION_SOURCE_ROTATIONS: Readonly<Record<string, readonly string
   obgyn: Object.freeze([
     'pwh', 'surgical-sciences', 'anatomy', 'physical-exam', 'anking', 'malleus',
   ]),
+  // Trauma, 2026-11-18 (Feb 2027 RPH trauma elective). Its own cards are the
+  // RPH guideline set; the core survey, shock, head, chest, abdominal, pelvic
+  // and burns teaching is already here. Measured by keyword over live cards
+  // that day: anking 981, ortho 848, critical-care 233 (and 753 CC questions),
+  // CAH 182 (paediatric trauma and NAI), PWH 62 (trauma in pregnancy),
+  // surgical-sciences 35. Each contributes only the items that name `trauma`.
+  trauma: Object.freeze([
+    'critical-care', 'anking', 'ortho', 'cah', 'pwh', 'surgical-sciences',
+    'neurosurg', 'anatomy', 'malleus', 'physical-exam', 'paam', 'year3-common',
+  ]),
+  // General practice, 2026-11-18: every Year 3 block plus the background
+  // banks; each contributes only the items that name `gp`.
+  gp: Object.freeze([
+    'paam', 'cah', 'pwh', 'critical-care', 'year3-common', 'anking', 'malleus',
+    'derm', 'ortho', 'toc', 'physical-exam',
+  ]),
   // Physical examination, 2026-09-23. TO'C is the examination text; CAH,
   // GSSE and critical-care hold the examination clips; ortho holds the
   // special tests. Each contributes only cards that name `physical-exam`.

@@ -29,13 +29,24 @@ function requestIp(request: Request): string {
  * Require authentication for an API route.
  * Returns the authenticated userId, or a 401 NextResponse.
  */
-export async function requireAuth(): Promise<
+export async function requireAuth(options: {
+  /**
+   * Account-level actions (sign-in aliases, connector tokens) act on the
+   * signed-in account itself. While that account has switched to a linked
+   * learner profile the session's id is the profile's, so these refuse rather
+   * than attach a credential to a profile that cannot sign in.
+   */
+  accountOnly?: boolean;
+} = {}): Promise<
   { userId: string; isAdmin?: boolean; imageTier?: string | null; response?: never }
   | { response: NextResponse; userId?: never; isAdmin?: never; imageTier?: never }
 > {
   const session = await auth();
   if (!session?.user?.id) {
     return { response: NextResponse.json({ error: 'Authentication required' }, { status: 401 }) };
+  }
+  if (options.accountOnly && session.user.activeProfile) {
+    return { response: NextResponse.json({ error: 'Switch back to your own profile first' }, { status: 403 }) };
   }
   // Derived from ADMIN_EMAILS in the session callback. Callers that gate on
   // reporter identity (the flag trust boundary) need it without a second auth()
@@ -113,12 +124,13 @@ export async function requireAuthOrGuest(request: Request): Promise<AuthOrGuestR
  * a cookie before they can write.
  */
 export async function requireAuthOrExistingGuest(): Promise<
-  | { userId: string; isGuest: boolean; response?: never }
-  | { response: NextResponse; userId?: never; isGuest?: never }
+  | { userId: string; isGuest: boolean; linkedProfile?: boolean; response?: never }
+  | { response: NextResponse; userId?: never; isGuest?: never; linkedProfile?: never }
 > {
   const session = await auth();
   if (session?.user?.id) {
-    return { userId: session.user.id, isGuest: false };
+    // A linked learner profile: callers confine it to its own deck.
+    return { userId: session.user.id, isGuest: false, ...(session.user.activeProfile ? { linkedProfile: true } : {}) };
   }
   const guestId = await getGuestUserId();
   if (guestId) {

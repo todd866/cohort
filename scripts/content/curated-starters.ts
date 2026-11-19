@@ -6,6 +6,8 @@ export interface CuratedStarterEntry {
   sha256: string;
   evidenceUrls: string[];
   topic: string;
+  /** Exact reviewed optional media omitted only from this text-only starter. */
+  omitExplanationImage?: { imageUrl: string; imageRole: null | 'explanation'; imageCaption: string | null };
 }
 
 export interface CuratedStarterManifest {
@@ -64,7 +66,20 @@ function validateEntry(value: unknown, label: string): CuratedStarterEntry {
     })) {
     throw new Error(`[curated-starters] Invalid entry at ${label}`);
   }
+  const omitted = value.omitExplanationImage;
+  if (omitted !== undefined && (!isRecord(omitted)
+    || typeof omitted.imageUrl !== 'string'
+    || !/^\/figures\/restricted\/explanation\/[a-f0-9]{64}\.(png|webp|jpg)$/.test(omitted.imageUrl)
+    || (omitted.imageRole !== null && omitted.imageRole !== 'explanation')
+    || (omitted.imageCaption !== null && typeof omitted.imageCaption !== 'string'))) {
+    throw new Error(`[curated-starters] Invalid omitted explanation image at ${label}`);
+  }
   return {
+    ...(omitted === undefined ? {} : { omitExplanationImage: {
+      imageUrl: (omitted as Record<string, unknown>).imageUrl as string,
+      imageRole: (omitted as Record<string, unknown>).imageRole as null | 'explanation',
+      imageCaption: (omitted as Record<string, unknown>).imageCaption as string | null,
+    } }),
     stableId: value.stableId,
     sha256: value.sha256,
     evidenceUrls: [...value.evidenceUrls] as string[],
@@ -129,6 +144,7 @@ export function resolveCuratedStarterRows<T extends CuratedStarterCardRow>(args:
   rows: readonly T[];
   deliverableIds: ReadonlySet<string>;
   excludedTopics: readonly string[];
+  imageIsPrompt?: (row: T) => boolean;
 }): Array<{ entry: CuratedStarterEntry; row: T }> {
   const byStableId = new Map<string, T>();
   for (const row of args.rows) {
@@ -137,11 +153,24 @@ export function resolveCuratedStarterRows<T extends CuratedStarterCardRow>(args:
 
   const seenGroups = new Set<string>();
   return args.entries.map((entry) => {
-    const row = byStableId.get(entry.stableId);
+    let row = byStableId.get(entry.stableId);
     if (!row) throw new Error(`[curated-starters] Missing or ineligible card: ${entry.stableId}`);
     if (row.rotation !== args.rotation || row.ownerUserId !== null || row.deletedAt !== null
       || row.shelvedAt !== null || row.topics.some((topic) => args.excludedTopics.includes(topic))) {
       throw new Error(`[curated-starters] Ineligible card: ${entry.stableId}`);
+    }
+    if (entry.omitExplanationImage) {
+      const omitted = entry.omitExplanationImage;
+      // Pin all omitted metadata: a future image/prompt change needs review.
+      // Clinical text is still checked against the original reviewed hash below.
+      if (!args.imageIsPrompt || args.imageIsPrompt(row)
+        || row.imageRole === 'prompt'
+        || (row.imageUrl ?? null) !== omitted.imageUrl
+        || (row.imageRole ?? null) !== omitted.imageRole
+        || (row.imageCaption ?? null) !== omitted.imageCaption) {
+        throw new Error(`[curated-starters] Omitted explanation image drift: ${entry.stableId}`);
+      }
+      row = { ...row, imageUrl: null, imageRole: null, imageCaption: null };
     }
     if (curatedStarterSnapshotHash(row) !== entry.sha256) {
       throw new Error(`[curated-starters] Snapshot drift: ${entry.stableId}`);

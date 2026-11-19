@@ -29,7 +29,7 @@ import { isOfflineImageKey } from './image-key';
 
 export const OFFLINE_PACK_KEY = 'md3:offline-pack:v1';
 export const OFFLINE_PACK_CHANGE_EVENT = 'offline-pack:change';
-export type PackChangeReason = 'save' | 'consume' | 'append' | 'clear' | 'rekey' | 'storage';
+export type PackChangeReason = 'save' | 'consume' | 'append' | 'clear' | 'rekey' | 'storage' | 'retire';
 
 /**
  * Aim for a long offline session while retaining the actual storage budget.
@@ -42,7 +42,13 @@ export const PACK_MAX_BYTES = 3_000_000;
 /** Extra space for queued answers after a browser quota forces a smaller pack. */
 export const PACK_QUOTA_HEADROOM_CODE_UNITS = 128 * 1_024;
 
-/** A pack older than this is stale enough that the scheduler would have moved on. */
+/**
+ * An item older than this is stale. A stale reserve is never discarded on
+ * read. It is replaced only when a refill has succeeded. Owner correction:
+ * the review must still serve the stored cards when that refill fails.
+ * Daily use must not slide the clock, and an offline stretch must not wipe
+ * the reserve.
+ */
 export const PACK_TTL_MS = 7 * 24 * 60 * 60 * 1000;
 /**
  * v10 invalidates packs built before MCQ bridges respected mastery and the
@@ -69,6 +75,8 @@ export interface OfflinePack {
   /** Rotations cached only after an explicit focused review. */
   focusRotations: string[];
   items: unknown[];
+  /** Server retirements survive delayed fills and local undo. */
+  retiredKeys?: string[];
   /** The personal course brief, when the signed-in user owns one. */
   brief: unknown | null;
   /** Owner-gated bedside protocols, serialized only after the server gate. */
@@ -111,6 +119,47 @@ export interface SaveInput {
  * Videos, linked groups, and passthrough third-party image URLs require a live
  * request and must not be advertised as part of the durable reserve.
  */
+export function packItemFetchedAt(item: unknown): number {
+  const at = (item as { fetchedAt?: unknown } | null)?.fetchedAt;
+  return typeof at === 'number' && Number.isFinite(at) ? at : 0;
+}
+
+/** True when the stored copy is older than the reserve's seven-day window. */
+export function isPackItemStale(item: unknown, now = Date.now()): boolean {
+  return now - packItemFetchedAt(item) > PACK_TTL_MS;
+}
+
+function withFetchedAt(item: unknown, fetchedAt: number): unknown {
+  if (!item || typeof item !== 'object') return item;
+  if (typeof (item as { fetchedAt?: unknown }).fetchedAt === 'number') return item;
+  return { ...(item as Record<string, unknown>), fetchedAt };
+}
+
+function orderNewestFirst<T>(items: readonly T[]): T[] {
+  return [...items].sort((left, right) => packItemFetchedAt(right) - packItemFetchedAt(left));
+}
+
+/**
+ * Review order for a stored reserve. Newest copies come first, so a stale item
+ * is used last. A fully stale reserve is still served, online or offline: the
+ * read must not go empty before a refill has replaced it.
+ */
+export function packItemsForServe<T>(items: readonly T[]): T[] {
+  return orderNewestFirst(items);
+}
+
+function deviceOnline(): boolean {
+  return typeof navigator === 'undefined' || navigator.onLine !== false;
+}
+
+function reserveExpired(pack: OfflinePack, now = Date.now()): boolean {
+  if (!deviceOnline()) return false;
+  // Item-bearing reserves, including a fully stale one, stay until a refill
+  // replaces them. Only an empty shell past the savedAt window is discardable.
+  if (pack.items.length > 0) return false;
+  return now - pack.savedAt > PACK_TTL_MS;
+}
+
 export function isOfflineCapableStudyItem(item: unknown): boolean {
   const row = item as {
     type?: unknown;
@@ -200,6 +249,26 @@ function readRaw(): OfflinePack | null {
             typeof rotation === 'string' && rotation.length > 0,
         )
       : [];
+    const retiredKeys = Array.isArray(parsed.retiredKeys)
+      ? parsed.retiredKeys.filter((key): key is string => typeof key === 'string') : [];
+    const retired = new Set(retiredKeys);
+    const savedAt = typeof parsed.savedAt === 'number' ? parsed.savedAt : 0;
+    // Packs saved before item ages have no fetchedAt. Stamp the save time once
+    // so later consumes, which refresh savedAt, cannot make the copy young again.
+    let migratedFetchedAt = false;
+    for (const item of parsed.items) {
+      if (!item || typeof item !== 'object') continue;
+      if (typeof (item as { fetchedAt?: unknown }).fetchedAt === 'number') continue;
+      (item as { fetchedAt: number }).fetchedAt = savedAt;
+      migratedFetchedAt = true;
+    }
+    if (migratedFetchedAt) {
+      try {
+        localStorage.setItem(OFFLINE_PACK_KEY, JSON.stringify(parsed));
+      } catch {
+        // This read still carries the stamp. The next load retries the write.
+      }
+    }
     return {
       schemaVersion: Math.max(parsedSchemaVersion, OFFLINE_PACK_SCHEMA_VERSION),
       viewSchemaVersion: parsedViewSchemaVersion,
@@ -208,7 +277,8 @@ function readRaw(): OfflinePack | null {
       savedAt: typeof parsed.savedAt === 'number' ? parsed.savedAt : 0,
       rotations,
       focusRotations,
-      items: parsed.items.filter(isOfflineCapableStudyItem),
+      retiredKeys,
+      items: parsed.items.filter(isOfflineCapableStudyItem).filter(item => !retired.has(itemIdentity(item))),
       // v1 stored the complete personal dossier. v2 stores only the explicit
       // operational projection, so never expose a legacy dossier while offline.
       brief: parsedViewSchemaVersion >= OFFLINE_BRIEF_PROJECTION_SCHEMA_VERSION
@@ -331,11 +401,15 @@ export function savePack(
         : [];
   const allowedRotations = new Set([...rotations, ...focusRotations]);
 
+  const retiredKeys = sameUser ? existing?.retiredKeys ?? [] : [];
+  // One clock read per save: per-item reads let a tick mid-save reorder the pack.
+  const savedAt = Date.now();
+  const retired = new Set(retiredKeys);
   const seen = new Set<string>();
   const items = filterOfflineTombstones(
     userKey,
     input.items.filter((item) => {
-      if (!isOfflineCapableStudyItem(item)) return false;
+      if (!isOfflineCapableStudyItem(item) || retired.has(itemIdentity(item))) return false;
       const rotation = (item as { rotation?: unknown }).rotation;
       return typeof rotation === 'string' && allowedRotations.has(rotation);
     }),
@@ -344,16 +418,17 @@ export function savePack(
     if (seen.has(identity)) return false;
     seen.add(identity);
     return true;
-  }).slice(0, PACK_MAX_ITEMS);
+  }).slice(0, PACK_MAX_ITEMS).map((item) => withFetchedAt(item, savedAt));
   const pack: OfflinePack = {
     schemaVersion: OFFLINE_PACK_SCHEMA_VERSION,
     viewSchemaVersion,
     bulkFilledAt,
     userKey,
-    savedAt: Date.now(),
+    savedAt,
     rotations,
     focusRotations,
     items,
+    retiredKeys,
     brief,
     clinical,
     reviewStats,
@@ -454,12 +529,15 @@ function isStorageQuotaError(error: unknown): boolean {
  */
 export function readPack(
   userKey: string | null,
-  opts: { allowUnverified?: boolean } = {},
+  opts: { allowUnverified?: boolean; preserveExpired?: boolean } = {},
 ): OfflinePack | null {
   const pack = readRaw();
   if (!pack) return null;
 
-  if (Date.now() - pack.savedAt > PACK_TTL_MS) {
+  // An empty shell past the savedAt window can still be cleared on read.
+  // preserveExpired lets a refresh leave that shell in place. A reserve that
+  // still has items is never discarded here, stale or not.
+  if (!opts.preserveExpired && reserveExpired(pack)) {
     clearPack();
     return null;
   }
@@ -501,7 +579,19 @@ export function addToPack(userKey: string, input: SaveInput): void {
 
   const existing = readRaw();
   const sameUser = existing?.userKey === userKey;
-  const kept = sameUser ? (existing?.items ?? []) : [];
+  const storedItems = sameUser ? (existing?.items ?? []) : [];
+
+  // A served copy is newer than a stored one. Keeping the stored copy let a
+  // reworded card show its old wording from the device for as long as it stayed
+  // in the reserve (11 Nov 2026: a 28 Oct rewording still shown offline). Swap a
+  // stored item for its fresh copy in place, but only when the fresh copy can
+  // itself live in the pack, so a live-only copy never evicts a stored one.
+  const servedByIdentity = new Map(
+    input.items
+      .filter(isOfflineCapableStudyItem)
+      .map((item) => [itemIdentity(item), item] as const),
+  );
+  const kept = storedItems.map((item) => servedByIdentity.get(itemIdentity(item)) ?? item);
 
   const seen = new Set(kept.map(itemIdentity));
   const fresh = input.items.filter((item) => !seen.has(itemIdentity(item)));
@@ -539,6 +629,25 @@ export function addToPack(userKey: string, input: SaveInput): void {
     items: mergedItems,
     ...(objectiveChanged ? { bulkFilledAt: 0 } : {}),
   }, 'append');
+}
+
+/** Prune authoritative retirements without renewing the reserve's seven-day TTL. */
+export function purgeRetiredPackItems(userKey: string, keys: readonly string[]): void {
+  if (!hasStorage() || keys.length === 0) return;
+  const existing = readRaw();
+  if (!existing || existing.userKey !== userKey) return;
+  const retired = new Set([...(existing.retiredKeys ?? []), ...keys]);
+  try {
+    localStorage.setItem(OFFLINE_PACK_KEY, JSON.stringify({
+      ...existing,
+      retiredKeys: [...retired],
+      items: existing.items.filter(item => !retired.has(itemIdentity(item))),
+    }));
+    announcePackChange('retire');
+  } catch {
+    // Never leave a known retired item available after a quota failure.
+    clearPack();
+  }
 }
 
 /**

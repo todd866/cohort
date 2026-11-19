@@ -24,16 +24,19 @@
  */
 export function attributedRotation({
   servedRotation,
+  eventRotation,
   owningRotation,
 }: {
   /** The deck this card was served into on the day of this review, if known. */
   servedRotation?: string | null;
+  /** Historical rotation snapshot, retained even when the card leaves the pool. */
+  eventRotation?: string | null;
   /** `Card.rotation` — the deck that owns the card. */
   owningRotation?: string | null;
 }): string | null {
   // The serving deck wins. Falling back to the owner keeps every review made
   // before ServeDecision recorded a rotation counted where it always was,
   // rather than silently dropping history out of the totals.
-  return servedRotation ?? owningRotation ?? null;
+  return servedRotation ?? eventRotation ?? owningRotation ?? null;
 }
 

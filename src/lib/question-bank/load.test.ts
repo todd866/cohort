@@ -2,7 +2,7 @@ import { describe, it, expect, beforeAll, afterAll } from 'vitest';
 import * as fs from 'node:fs';
 import * as path from 'node:path';
 import * as os from 'node:os';
-import { loadQuestionBankFromDisk } from './load';
+import { canonicalBankRotation, loadQuestionBankFromDisk } from './load';
 
 function makeQuestion(id: string, rotation: string) {
   return {
@@ -256,5 +256,25 @@ describe('loadQuestionBankFromDisk — missing-dir safety', () => {
     expect(result.questions).toEqual([]);
     expect(result.errors.length).toBeGreaterThan(0);
     expect(result.errors[0]).toMatch(/not found|refusing/i);
+  });
+});
+
+describe('canonicalBankRotation', () => {
+  it('maps the Year 2 KAT bank directory names onto their rotations, leaving others alone', () => {
+    expect(canonicalBankRotation('kat5')).toBe('year2-kat5');
+    expect(canonicalBankRotation('kat7')).toBe('year2-kat7');
+    expect(canonicalBankRotation('year2-kat5')).toBe('year2-kat5');
+    // Year 1's legacy 'kat1' is a separate, already-seeded set and is not renamed here.
+    expect(canonicalBankRotation('kat1')).toBe('kat1');
+    expect(canonicalBankRotation('cah')).toBe('cah');
+  });
+
+  it('loads a bank file stamped with the directory name under the rotation its cards use', () => {
+    const dir = fs.mkdtempSync(path.join(os.tmpdir(), 'qbank-y2-'));
+    fs.mkdirSync(path.join(dir, 'kat5'), { recursive: true });
+    fs.writeFileSync(path.join(dir, 'kat5', 'q.json'), JSON.stringify([makeQuestion('bank:kat5:legacy:v1', 'kat5')]));
+    const { questions, errors } = loadQuestionBankFromDisk({ bankDir: dir });
+    expect(errors).toEqual([]);
+    expect(questions.map((q) => q.rotation)).toEqual(['year2-kat5']);
   });
 });

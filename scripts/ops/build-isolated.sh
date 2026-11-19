@@ -26,8 +26,10 @@ cd "$TMP_DIR"
 prisma generate
 node scripts/content/generate-deep-dive-manifest.mjs
 node scripts/content/generate-deep-dive-cards-manifest.mjs
+# The image index first: the starter-session generator reads the serving
+# projection it writes (a clean checkout has neither).
+MD3_GENERATED_CONTENT_MODE=${MD3_GENERATED_CONTENT_MODE:-offline} node --import tsx scripts/images/build-index.ts
 MD3_GENERATED_CONTENT_MODE=${MD3_GENERATED_CONTENT_MODE:-offline} node --import tsx scripts/content/generate-content-map.ts
 MD3_GENERATED_CONTENT_MODE=${MD3_GENERATED_CONTENT_MODE:-offline} node --import tsx scripts/content/generate-starter-sessions.ts
-MD3_GENERATED_CONTENT_MODE=${MD3_GENERATED_CONTENT_MODE:-offline} node --import tsx scripts/images/build-index.ts
 sh scripts/ops/stamp-sw.sh
 next build --webpack

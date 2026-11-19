@@ -46,6 +46,7 @@ import {
   preTeachNaiveConcepts,
   preTeachVideos,
   reserveAppliedSurplus,
+  reserveSessionPrepBlend,
   reserveScheduledCore,
 } from './unified-scheduler-phase-select';
 import {
@@ -177,6 +178,7 @@ async function constructUnifiedSessionImpl(
         practiceLocale: options.practiceLocale ?? 'au',
         crossSourceRotations: options.crossSourceRotations ?? [],
         crossSourceMappingMode: options.crossSourceMappingMode ?? 'adjacent',
+        sessionPrepBlend: options.sessionPrepBlend,
         isCopyrightTier: options.imageTier === 'copyright',
         media: options.media, imageTrust: options.imageTrust,
         ...(selectionDeterminism ? { selectionDeterminism } : {}),
@@ -227,8 +229,13 @@ async function constructUnifiedSessionImpl(
   // distinctions before breadth.
   reserveAppliedSurplus(inputs, plan, build);
 
+  // Owner-only staged class preparation receives a bounded share of the
+  // remaining discretionary seats, after protected core/failure lanes.
   // Hold back what the learner has not yet earned the right to see.
   holdBackUnearnedStages(inputs, build);
+
+  // Prep is reserved only after all protected stage gates have been applied.
+  reserveSessionPrepBlend(inputs, build);
 
   // 7a) NEW: Video Pre-teach (Inject videos for very weak concepts)
   preTeachVideos(inputs, plan, build);

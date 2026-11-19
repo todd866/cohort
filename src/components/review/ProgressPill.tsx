@@ -59,9 +59,11 @@ export function ProgressPill({ reviewed, target, onTap, kind = 'daily' }: Progre
       )}
 
       <span className="relative flex items-center justify-center gap-1.5 text-[var(--md-on-surface)] tabular-nums">
-        {kind === 'session' ? <span>Session {reviewed}</span> : goals ? (
+        {goals ? (
           <span>{kind === 'new' ? 'New ' : ''}{toGo ? `${reviewed}/${goals.target}` : reviewed}</span>
         ) : (
+          // Narrower feeds share the no-target wording. "Session 18" read as
+          // a label for the card (owner correction, 11 Nov 2026).
           <span>{kind === 'new' ? `New ${reviewed}` : `${reviewed} reviewed`}</span>
         )}
       </span>

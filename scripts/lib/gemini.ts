@@ -15,5 +15,14 @@ if (!apiKey) {
 
 export const genAI = new GoogleGenerativeAI(apiKey);
 
+/**
+ * Stored vector-space label. Existing feedback_search_embeddings rows,
+ * calibration rows and exam-target snapshots are keyed on this string and
+ * must not change without a migration.
+ */
 export const EMBEDDING_MODEL = 'gemini-embedding-2-preview';
+
+/** API model id sent to Google. Same vector space as EMBEDDING_MODEL. */
+export const EMBEDDING_API_MODEL = 'gemini-embedding-2';
+
 export const EMBEDDING_DIMENSIONS = 3072;

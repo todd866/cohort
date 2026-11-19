@@ -39,6 +39,8 @@ interface SessionEmptyStateProps {
   isGuest?: boolean;
   /** Calendar replay: the supplied batch is the whole session. */
   replay?: boolean;
+  /** Server explanation for an empty batch, when the rotation is not truly exhausted. */
+  emptyReason?: string | null;
   onFetch: () => void;
   onFeedModeChange?: (next: ReviewFeedMode) => void;
   onReviewModeChange?: (next: ReviewMode) => void;
@@ -53,6 +55,7 @@ interface SessionDebriefProps {
   focusRotation: string | null;
   canChooseFocus: boolean;
   isGuest: boolean;
+  emptyReason?: string | null;
   onFetch: () => void;
   onFeedModeChange?: (next: ReviewFeedMode) => void;
   onFocusRotationChange?: (next: string | null) => void;
@@ -66,6 +69,7 @@ function SessionDebrief({
   focusRotation,
   canChooseFocus,
   isGuest,
+  emptyReason,
   onFetch,
   onFeedModeChange,
   onFocusRotationChange,
@@ -97,18 +101,18 @@ function SessionDebrief({
     >
       <div className="rounded-2xl border border-[var(--md-outline-variant)] bg-[var(--md-surface-container-low)] p-5 sm:p-6">
         <div className="text-center">
-          <p className="text-sm font-medium text-[var(--md-primary)]">Block finished</p>
+          {!emptyReason && <p className="text-sm font-medium text-[var(--md-primary)]">Block finished</p>}
           <h2
             id="session-complete-title"
             className="mt-1 text-xl font-semibold text-[var(--md-on-surface)]"
           >
-            Session complete
+            {emptyReason || 'Session complete'}
           </h2>
         </div>
 
         <dl
           aria-label="Session result"
-          className="mt-5 grid grid-cols-3 divide-x divide-[var(--md-outline-variant)] rounded-xl bg-[var(--md-surface)] py-3"
+          className="mt-5 grid grid-cols-[repeat(auto-fit,minmax(min(100%,6rem),1fr))] gap-2 rounded-xl bg-[var(--md-surface)] py-3"
         >
           <div className="flex flex-col px-2 text-center">
             <dt className="order-2 mt-0.5 text-xs text-[var(--md-on-surface-variant)]">Reviewed</dt>
@@ -242,6 +246,7 @@ export function SessionEmptyState({
   canChooseFocus = false,
   isGuest = false,
   replay = false,
+  emptyReason,
   onFetch,
   onFeedModeChange,
   onReviewModeChange,
@@ -254,6 +259,28 @@ export function SessionEmptyState({
       <p className="px-4 py-6 text-sm text-[var(--md-on-surface)]">
         Nothing left to review from that day
       </p>
+    );
+  }
+
+  // Terminal fallback searched beyond this mode's pool. Its explanation wins
+  // over mode-specific guesses such as "all caught up on new content".
+  if (isExhausted && emptyReason) {
+    if (stats && stats.total > 0) {
+      return <SessionDebrief itemType={itemType} canBrowseHistory={canBrowseHistory}
+        stats={stats} feedMode={feedMode} focusRotation={focusRotation}
+        canChooseFocus={canChooseFocus} isGuest={isGuest} emptyReason={emptyReason}
+        onFetch={onFetch} onFeedModeChange={onFeedModeChange}
+        onFocusRotationChange={onFocusRotationChange} />;
+    }
+    return (
+      <section className="mx-auto max-w-xl px-4 py-10 text-center">
+        <h2 className="text-lg font-medium text-[var(--md-on-surface)]">{emptyReason}</h2>
+        <button type="button" onClick={onFetch}
+          className="mt-3 min-h-11 rounded-lg border border-[var(--md-outline-variant)] px-4 text-sm text-[var(--md-primary)]">
+          Retry
+        </button>
+        <EmptyStateEscape focusRotation={focusRotation} onFocusRotationChange={onFocusRotationChange} />
+      </section>
     );
   }
 
@@ -324,6 +351,7 @@ export function SessionEmptyState({
         itemType={itemType}
         canBrowseHistory={canBrowseHistory}
         stats={stats}
+        emptyReason={emptyReason}
         feedMode={feedMode}
         focusRotation={focusRotation}
         canChooseFocus={canChooseFocus}
@@ -406,7 +434,7 @@ export function SessionEmptyState({
     return (
       <div className="text-center py-12">
         <p className="text-lg font-medium text-[var(--md-on-surface)] mb-2">
-          Session complete
+          {emptyReason || 'Session complete'}
         </p>
         {stats && stats.total > 0 && (
           <p className="text-[var(--md-on-surface-variant)] mb-6">

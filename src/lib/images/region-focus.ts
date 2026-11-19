@@ -10,6 +10,13 @@ const WINDOW_WIDTH = 0.32;
 const WINDOW_ASPECT = 1.35;
 /** Room kept around the hidden box, as a share of the image. */
 const MARGIN = 0.06;
+/**
+ * Extra share of image height kept above the centred window. A short blank
+ * often sits under a section heading; centring the window on the blank slices
+ * that heading (owner flag, 9 Nov 2026: the respiratory-distress chart cut off
+ * "Increased respiratory effort").
+ */
+const HEADING_CLEARANCE = 0.04;
 
 /**
  * The zoomed window a hide-one diagram card shows around its hidden box,
@@ -35,7 +42,7 @@ export function regionFocusCrop(
   const clamp = (start: number, size: number) => Math.min(Math.max(start, 0), 1 - size);
   return {
     x: clamp((x0 + x1) / 2 - width / 2, width),
-    y: clamp((y0 + y1) / 2 - height / 2, height),
+    y: clamp((y0 + y1) / 2 - height / 2 - HEADING_CLEARANCE, height),
     width,
     height,
   };

@@ -8,10 +8,12 @@
  */
 
 import { prisma } from '@/lib/prisma';
+import { keepCardIdsVisibleTo } from '@/lib/cards/read-repository.server';
 import { findSimilar } from '@/lib/manifold';
 import { expandTopicSet, normalizeTopic } from '@/lib/topics';
 import { logger } from '@/lib/logger';
 import { LARGE_QUERY_SIZE } from '@/lib/constants';
+import { getCourseDayStart } from '@/lib/study-day';
 
 export interface StepResultForRemediation {
   stepId: string;
@@ -159,7 +161,8 @@ export async function processGroupStepRemediation(
       }
     }
 
-    // Queue the remediation cards
+    // Queue the remediation cards: the searches above range over every learner's private cards.
+    remediationCardIds = await keepCardIdsVisibleTo(userId, remediationCardIds);
     if (remediationCardIds.length > 0) {
       // Create progress records for new cards
       await prisma.cardProgress.createMany({
@@ -172,8 +175,8 @@ export async function processGroupStepRemediation(
       });
 
       // Update existing cards to be due now (if not suppressed/retired)
-      const todayStart = new Date(now);
-      todayStart.setHours(0, 0, 0, 0);
+      // Same boundary the grader stamps viewsTodayDate with.
+      const todayStart = getCourseDayStart(now);
 
       await prisma.cardProgress.updateMany({
         where: {

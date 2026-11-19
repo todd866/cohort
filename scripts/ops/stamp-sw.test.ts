@@ -1,7 +1,7 @@
 import { describe, it, expect } from 'vitest';
 import { execFileSync } from 'node:child_process';
 import { readFileSync, writeFileSync, mkdtempSync } from 'node:fs';
-import { join, resolve } from 'node:path';
+import { dirname, join, resolve } from 'node:path';
 import { tmpdir } from 'node:os';
 
 const REPO_ROOT = process.cwd();
@@ -82,6 +82,28 @@ describe('public/sw.js build stamp (recurrence guard)', () => {
 });
 
 describe('stamp-sw.sh', () => {
+  it('uses validated Vercel commit metadata when an archive has no Git directory', () => {
+    const f = tempSw('// build: __BUILD_STAMP__\n');
+    execFileSync('sh', [STAMP_SCRIPT, f], { cwd: dirname(f), env: { ...process.env, VERCEL_GIT_COMMIT_SHA: 'abcdef0123'.repeat(4) }, stdio: 'pipe' });
+    expect(readFileSync(f, 'utf8')).toBe('// build: abcdef012\n');
+  });
+  it('prefers the real checkout over unrelated metadata and refuses malformed archive metadata', () => {
+    // The public artifact intentionally has no .git. Create an independent
+    // checkout so this precedence assertion works in both distributions.
+    const checkout = mkdtempSync(join(tmpdir(), 'md3-stamp-git-'));
+    execFileSync('git', ['init', '--quiet', checkout], { stdio: 'pipe' });
+    execFileSync('git', ['-c', 'user.name=Stamp fixture', '-c', 'user.email=stamp@demo.invalid',
+      '-c', 'commit.gpgsign=false', 'commit', '--quiet', '--allow-empty', '-m', 'Stamp fixture'], { cwd: checkout, stdio: 'pipe' });
+    const f = tempSw('// build: __BUILD_STAMP__\n');
+    const sha = execFileSync('git', ['rev-parse', '--short', 'HEAD'], { cwd: checkout, encoding: 'utf8' }).trim();
+    execFileSync('sh', [STAMP_SCRIPT, f], { cwd: checkout, env: { ...process.env, VERCEL_GIT_COMMIT_SHA: 'a'.repeat(40) }, stdio: 'pipe' });
+    expect(readFileSync(f, 'utf8')).toBe(`// build: ${sha}\n`);
+    for (const invalid of ['abc1234', 'a'.repeat(39), 'a'.repeat(40) + '\n', '$(not-a-command)', 'a'.repeat(39) + '/']) {
+      const target = tempSw('// build: __BUILD_STAMP__\n');
+      expect(() => execFileSync('sh', [STAMP_SCRIPT, target], { cwd: dirname(target), env: { ...process.env, VERCEL_GIT_COMMIT_SHA: invalid }, stdio: 'pipe' })).toThrow();
+      expect(readFileSync(target, 'utf8')).toContain('__BUILD_STAMP__');
+    }
+  });
   it('replaces the placeholder with a build stamp (on a file passed as $1)', () => {
     const f = tempSw('// build: __BUILD_STAMP__\nconst x = 1;\n');
     execFileSync('sh', [STAMP_SCRIPT, f], { cwd: REPO_ROOT });
@@ -97,6 +119,12 @@ describe('stamp-sw.sh', () => {
       execFileSync('sh', [STAMP_SCRIPT, f], { cwd: REPO_ROOT, stdio: 'pipe' })
     ).toThrow();
   });
+});
+
+it('excludes the external question-bank symlink itself as well as a directory during deployment', () => {
+  const lines = readFileSync(join(REPO_ROOT, '.vercelignore'), 'utf8').split(/\r?\n/);
+  expect(lines).toContain('/question-bank/');
+  expect(lines).toContain('/question-bank');
 });
 
 describe('shell cache is build-stamped', () => {

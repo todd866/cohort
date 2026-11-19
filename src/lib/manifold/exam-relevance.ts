@@ -16,32 +16,17 @@
 import { prisma } from '@/lib/prisma';
 import { getContentLakeDB, isContentLakeAvailable } from '@/lib/content-lake-client';
 import { logger } from '@/lib/logger';
-import OpenAI from 'openai';
+import { createMeteredContentLakeEmbedding } from '@/lib/tutor/openai-metered-request.server';
 import { filterDeliverableReinforcementCardRows } from '@/lib/usmle/reinforcement-card-delivery';
 
-const CONTENT_LAKE_EMBEDDING_MODEL = 'text-embedding-3-small';
-const CONTENT_LAKE_EMBEDDING_DIMENSIONS = 1536;
-
-let openAIClient: OpenAI | null = null;
-
-function getContentLakeEmbeddingClient(): OpenAI | null {
-  if (!process.env.OPENAI_API_KEY) return null;
-  if (!openAIClient) {
-    openAIClient = new OpenAI({ apiKey: process.env.OPENAI_API_KEY });
-  }
-  return openAIClient;
-}
-
 async function embedForContentLakeSearch(text: string): Promise<number[] | null> {
-  const client = getContentLakeEmbeddingClient();
-  if (!client) return null;
-
-  const response = await client.embeddings.create({
-    model: CONTENT_LAKE_EMBEDDING_MODEL,
-    dimensions: CONTENT_LAKE_EMBEDDING_DIMENSIONS,
+  if (!process.env.OPENAI_API_KEY) return null;
+  const response = await createMeteredContentLakeEmbedding({
+    db: prisma,
+    // This background calculation has no learner; charge the operations pool.
+    userId: 'system:exam-relevance',
     input: text.slice(0, 8_000),
   });
-
   return response.data[0]?.embedding ?? null;
 }
 

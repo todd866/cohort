@@ -1,0 +1,38 @@
+{
+  "schemaVersion": 1,
+  "discipline": "gynae",
+  "licence": "CC-BY-4.0",
+  "attribution": "MD3 contributors",
+  "cards": [
+    {
+      "id": "cohort:gynae:c-233bf0bd714c:v1",
+      "origin": "mdx:5a9fa933bf1990b4cdd187d414c68b2a",
+      "discipline": "gynae",
+      "cardType": "cloze",
+      "sourceComponent": "KeyPoint",
+      "front": "A woman has thin grey discharge with a fishy odour and vaginal pH 5.5. Microscopy shows clue cells and very few of the normally dominant [___].",
+      "back": "lactobacilli",
+      "context": "Bacterial vaginosis is an overgrowth of anaerobes after loss of the acid-producing flora. Clue cells, pH above 4.5 and a fishy amine odour support it.\n\nCurrent Australian guidance also treats an ongoing male partner, which reduces recurrence.",
+      "complexity": 2,
+      "importance": 2,
+      "variantGroup": "cohort:gynae:g-f8f3b5a9732f",
+      "variantIndex": null,
+      "reference": null
+    },
+    {
+      "id": "cohort:gynae:c-2dedd6c89582:v1",
+      "origin": "mdx:ccaee28037c2987fe9c4bf52868d1bb1",
+      "discipline": "gynae",
+      "cardType": "cloze",
+      "sourceComponent": "KeyPoint",
+      "front": "A woman is considering menopausal hormone therapy with her GP and has no personal or family history of venous thrombosis. Before starting, routine [___] screening is not indicated.",
+      "back": "thrombophilia",
+      "context": "Without a personal or family history of venous thromboembolism, a thrombophilia screen does not change the MHT decision.\n\nThrombotic risk depends on the route of estrogen administration: oral estrogen increases venous thromboembolism risk more than transdermal estrogen.",
+      "complexity": 4,
+      "importance": 2,
+      "variantGroup": null,
+      "variantIndex": null,
+      "reference": null
+    }
+  ]
+}

@@ -286,7 +286,7 @@ export async function computeRotationDailyTarget(
         sourceType: 'card',
         timestamp: { gte: windowStart },
       },
-      select: { timestamp: true, sourceId: true, metadata: true },
+      select: { timestamp: true, sourceId: true, metadata: true, rotation: true },
     }),
     prisma.questionResponse.findMany({
       where: { userId, question: servableQuestionWhere, createdAt: { gte: windowStart } },
@@ -347,6 +347,7 @@ export async function computeRotationDailyTarget(
       : undefined;
     const attributed = attributedRotation({
       servedRotation: typeof served === 'string' ? served : null,
+      eventRotation: r.rotation,
       owningRotation: nativeCardIdSet.has(r.sourceId) ? rotation : null,
     });
     if (attributed === rotation) recentHistory[i]++;

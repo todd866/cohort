@@ -4,6 +4,15 @@ import { useRef, useState, type ReactNode, type RefObject } from 'react';
 import { rotationLabel } from '@/lib/rotation-labels';
 import { fetchWithDeadline, CLIENT_FETCH_DEADLINE_MS } from '@/lib/fetch-with-deadline';
 import { matchCourseDescription, type CourseMatch } from '@/lib/onboarding/course-match';
+import { YEAR_LABEL, type StudyYear } from '@/lib/onboarding/study-year';
+
+// One-row chooser labels: full names, one line each where they fit.
+const ROW_NAMES: Record<string, string> = {
+  'critical-care': 'Critical Care',
+  paam: 'Psychiatry & Addiction',
+  cah: 'Child & Adolescent Health',
+  pwh: 'Perinatal & Women’s Health',
+};
 
 // Full names for first-contact users — the short codes (CC, PAAM) mean
 // nothing before you know the course.
@@ -25,6 +34,19 @@ interface RotationOnboardingProps {
   current?: string;
   /** Renders optional signed-in help without pulling private tutor code into the FOSS boundary. */
   renderHelp?: (props: RotationOnboardingHelpProps) => ReactNode;
+  /**
+   * One-row layout for the first-run year picker's second step: a back control,
+   * the question, and the rotations as a single row of buttons. The year that
+   * led here is saved together with the rotation.
+   */
+  layout?: 'list' | 'row';
+  year?: StudyYear;
+  /** Row layout: return to the year row. */
+  onBack?: () => void;
+  /** Row layout: the quiet "something else" link. */
+  onSomethingElse?: () => void;
+  /** Open straight on the "describe your course" form, without the rotation list. */
+  describeOnly?: boolean;
 }
 
 export interface RotationOnboardingHelpProps {
@@ -48,13 +70,13 @@ export interface RotationOnboardingHelpProps {
  * changes auto-advance. The guest's answer is carried onto their account by
  * claimGuestProgressRecords, so the question is never asked twice.
  */
-export function RotationOnboarding({ rotations, onDone, onSkip, current, renderHelp }: RotationOnboardingProps) {
+export function RotationOnboarding({ rotations, onDone, onSkip, current, renderHelp, layout = 'list', year, onBack, onSomethingElse, describeOnly = false }: RotationOnboardingProps) {
   // Changing course from the toolbar chip is not first-visit onboarding: it
   // opens over the review, marks where they are, and cancels (2026-10-01).
   const changing = current !== undefined;
   const [saving, setSaving] = useState<string | null>(null);
   const [error, setError] = useState<string | null>(null);
-  const [describing, setDescribing] = useState(false);
+  const [describing, setDescribing] = useState(describeOnly);
   const [description, setDescription] = useState('');
   const [offer, setOffer] = useState<CourseMatch | null>(null);
   const [aiOpened, setAiOpened] = useState(false);
@@ -118,7 +140,7 @@ export function RotationOnboarding({ rotations, onDone, onSkip, current, renderH
       const res = await fetchWithDeadline('/api/user/rotation', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ rotation }),
+        body: JSON.stringify(year ? { rotation, year } : { rotation }),
       }, CLIENT_FETCH_DEADLINE_MS);
       if (!res.ok) throw new Error(`HTTP ${res.status}`);
       onDone();
@@ -128,68 +150,8 @@ export function RotationOnboarding({ rotations, onDone, onSkip, current, renderH
     }
   };
 
-  return (
-    <div className={!changing && aiVisible ? 'md:pr-[min(30rem,42vw)]' : undefined}>
-    <div className={changing ? 'w-full' : 'mx-auto w-full max-w-md px-4 py-10'}>
-      {changing ? (
-        <h2 className="text-lg font-semibold text-[var(--md-on-surface)]">Change rotation</h2>
-      ) : (
-        <>
-          <h1 className="text-xl font-semibold text-[var(--md-on-surface)]">
-            What are you studying right now?
-          </h1>
-          <p className="mt-2 text-sm text-[var(--md-on-surface-variant)]">
-            Pick your current rotation and we&rsquo;ll build your queue from it.
-            You can change this any time.
-          </p>
-        </>
-      )}
-      <div className="mt-6 flex flex-col gap-3">
-        {rotations.map((rotation) => (
-          <button
-            key={rotation}
-            type="button"
-            disabled={saving !== null}
-            aria-current={rotation === current ? 'true' : undefined}
-            onClick={() => (rotation === current && onSkip ? onSkip() : void pick(rotation))}
-            className={`w-full rounded-xl border px-4 py-3.5 text-left text-base font-medium text-[var(--md-on-surface)] transition-colors hover:bg-[var(--md-surface-container-high)] disabled:opacity-60 ${rotation === current ? 'border-[var(--md-primary)] bg-[var(--md-primary-container)]' : 'border-[var(--md-outline-variant)] bg-[var(--md-surface-container)]'}`}
-          >
-            {rotation === current && <span aria-hidden className="mr-2">✓</span>}
-            {FULL_NAMES[rotation] ?? rotationLabel(rotation)}
-            <span className="ml-2 text-sm text-[var(--md-on-surface-variant)]">
-              {rotationLabel(rotation)}
-            </span>
-            {saving === rotation ? '…' : ''}
-          </button>
-        ))}
-      </div>
-      {!changing && renderHelp && (
-        <button ref={aiButton} type="button" disabled={saving !== null}
-          onClick={() => { setAiOpened(true); setAiVisible(true); }}
-          className="mt-2 inline-flex min-h-11 items-center text-sm font-medium text-[var(--md-primary)] hover:underline disabled:opacity-60">
-          Help me choose
-        </button>
-      )}
-      {!changing && renderHelp && aiOpened && renderHelp({
-        visible: aiVisible,
-        initialDraft: aiDraft,
-        focusRequest: aiVisible ? 1 : 0,
-        anchorRef: aiButton,
-        onClose: () => { setAiVisible(false); aiButton.current?.focus(); },
-      })}
-      {!describing && (
-        <button
-          type="button"
-          disabled={saving !== null}
-          onClick={() => setDescribing(true)}
-          className="mt-3 w-full rounded-xl border border-dashed border-[var(--md-outline-variant)] px-4 py-3.5 text-left text-base font-medium text-[var(--md-on-surface-variant)] transition-colors hover:bg-[var(--md-surface-container)] disabled:opacity-60"
-        >
-          Something else
-          <span className="ml-2 text-sm">
-            another university, rotation or job
-          </span>
-        </button>
-      )}
+  const renderDescribeForm = () => (
+    <>
       {offer && (
         <div className="mt-4">
           <div className="flex gap-2">
@@ -258,6 +220,137 @@ export function RotationOnboarding({ rotations, onDone, onSkip, current, renderH
           </p>
         </div>
       )}
+    </>
+  );
+
+  if (layout === 'row') {
+    return (
+      <div>
+        <div className="flex items-center gap-2 text-sm font-medium text-[var(--md-on-surface)]">
+          {onBack && (
+            <button
+              type="button"
+              onClick={onBack}
+              disabled={saving !== null}
+              aria-label={`Back to year${year ? `, ${YEAR_LABEL[year]}` : ''}`}
+              className="inline-flex min-h-11 items-center rounded-lg pr-1 text-[var(--md-primary)] disabled:opacity-60"
+            >
+              ‹ {year ? YEAR_LABEL[year] : 'Back'}
+            </button>
+          )}
+          <span>Which rotation are you on?</span>
+          {onSomethingElse && (
+            <button
+              type="button"
+              onClick={onSomethingElse}
+              disabled={saving !== null}
+              className="ml-auto inline-flex min-h-11 items-center text-sm font-normal text-[var(--md-on-surface-variant)] underline-offset-2 hover:underline disabled:opacity-60"
+            >
+              something else ›
+            </button>
+          )}
+        </div>
+        <div className="grid grid-cols-2 gap-2 md:grid-cols-4">
+          {rotations.map((rotation) => (
+            <button
+              key={rotation}
+              type="button"
+              disabled={saving !== null}
+              aria-label={`${FULL_NAMES[rotation] ?? rotationLabel(rotation)} (${rotationLabel(rotation)})`}
+              onClick={() => void pick(rotation)}
+              className="inline-flex min-h-11 items-center justify-center rounded-xl border border-[var(--md-outline-variant)] bg-[var(--md-surface-container)] px-2 py-1 text-center text-sm font-medium leading-tight text-[var(--md-on-surface)] transition-colors hover:bg-[var(--md-surface-container-high)] disabled:opacity-60"
+            >
+              {ROW_NAMES[rotation] ?? rotationLabel(rotation)}{saving === rotation ? '…' : ''}
+            </button>
+          ))}
+        </div>
+        {error && (
+          <p className="mt-2 text-sm text-[var(--md-error)]" role="alert">{error}</p>
+        )}
+      </div>
+    );
+  }
+
+  if (describeOnly) {
+    return (
+      <div className="w-full">
+        {renderDescribeForm()}
+        {onSkip && (
+          <button
+            type="button"
+            onClick={onSkip}
+            className="mt-2 inline-flex min-h-11 items-center text-sm text-[var(--md-on-surface-variant)] underline-offset-2 hover:underline"
+          >
+            Skip for now
+          </button>
+        )}
+      </div>
+    );
+  }
+
+  return (
+    <div className={!changing && aiVisible ? 'md:pr-[min(30rem,42vw)]' : undefined}>
+    <div className={changing ? 'w-full' : 'mx-auto w-full max-w-md px-4 py-10'}>
+      {changing ? (
+        <h2 className="text-lg font-semibold text-[var(--md-on-surface)]">Change rotation</h2>
+      ) : (
+        <>
+          <h1 className="text-xl font-semibold text-[var(--md-on-surface)]">
+            What are you studying right now?
+          </h1>
+          <p className="mt-2 text-sm text-[var(--md-on-surface-variant)]">
+            Pick your current rotation and we&rsquo;ll build your queue from it.
+            You can change this any time.
+          </p>
+        </>
+      )}
+      <div className="mt-6 flex flex-col gap-3">
+        {rotations.map((rotation) => (
+          <button
+            key={rotation}
+            type="button"
+            disabled={saving !== null}
+            aria-current={rotation === current ? 'true' : undefined}
+            onClick={() => (rotation === current && onSkip ? onSkip() : void pick(rotation))}
+            className={`w-full rounded-xl border px-4 py-3.5 text-left text-base font-medium text-[var(--md-on-surface)] transition-colors hover:bg-[var(--md-surface-container-high)] disabled:opacity-60 ${rotation === current ? 'border-[var(--md-primary)] bg-[var(--md-primary-container)]' : 'border-[var(--md-outline-variant)] bg-[var(--md-surface-container)]'}`}
+          >
+            {rotation === current && <span aria-hidden className="mr-2">✓</span>}
+            {FULL_NAMES[rotation] ?? rotationLabel(rotation)}
+            <span className="ml-2 text-sm text-[var(--md-on-surface-variant)]">
+              {rotationLabel(rotation)}
+            </span>
+            {saving === rotation ? '…' : ''}
+          </button>
+        ))}
+      </div>
+      {!changing && renderHelp && (
+        <button ref={aiButton} type="button" disabled={saving !== null}
+          onClick={() => { setAiOpened(true); setAiVisible(true); }}
+          className="mt-2 inline-flex min-h-11 items-center text-sm font-medium text-[var(--md-primary)] hover:underline disabled:opacity-60">
+          Help me choose
+        </button>
+      )}
+      {!changing && renderHelp && aiOpened && renderHelp({
+        visible: aiVisible,
+        initialDraft: aiDraft,
+        focusRequest: aiVisible ? 1 : 0,
+        anchorRef: aiButton,
+        onClose: () => { setAiVisible(false); aiButton.current?.focus(); },
+      })}
+      {!describing && (
+        <button
+          type="button"
+          disabled={saving !== null}
+          onClick={() => setDescribing(true)}
+          className="mt-3 w-full rounded-xl border border-dashed border-[var(--md-outline-variant)] px-4 py-3.5 text-left text-base font-medium text-[var(--md-on-surface-variant)] transition-colors hover:bg-[var(--md-surface-container)] disabled:opacity-60"
+        >
+          Something else
+          <span className="ml-2 text-sm">
+            another university, rotation or job
+          </span>
+        </button>
+      )}
+      {renderDescribeForm()}
       {error && (
         <p className="mt-4 text-sm text-[var(--md-error)]" role="alert">
           {error}

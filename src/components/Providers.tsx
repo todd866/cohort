@@ -1,13 +1,25 @@
 'use client';
 
-import { SessionProvider } from 'next-auth/react';
+import { SessionProvider, useSession } from 'next-auth/react';
 import { ThemeProvider } from './ThemeProvider';
 import { TrackingProvider } from './TrackingProvider';
 import { TermProvider } from './TermProvider';
-import { type ReactNode } from 'react';
+import { useEffect, useState, type ReactNode } from 'react';
 import { OFFLINE_SHELL_WINDOW_KEY } from '@/lib/review/session-preload';
 import { GuestProgressClaimWarm } from './GuestProgressClaimWarm';
 import { ReviewBootstrapSafetyWarm } from './ReviewBootstrapSafetyWarm';
+
+import { beginClientIdentityResolution, resolveClientIdentity } from '@/lib/client-identity';
+
+function ClientIdentityReady({ hasGuest }: { hasGuest: boolean }) {
+  const { status } = useSession();
+  useEffect(() => {
+    if (status === 'authenticated' || (status === 'unauthenticated' && hasGuest)) {
+      resolveClientIdentity();
+    }
+  }, [status, hasGuest]);
+  return null;
+}
 
 interface ProvidersProps {
   children: ReactNode;
@@ -20,10 +32,17 @@ interface ProvidersProps {
   guestClaimPending?: boolean;
 }
 
-export function Providers({ children, guestClaimPending = true }: ProvidersProps) {
+export function Providers({ children, guestClaimPending }: ProvidersProps) {
   const isCredentiallessOfflineShell =
     typeof window !== 'undefined'
     && (window as unknown as Record<string, unknown>)[OFFLINE_SHELL_WINDOW_KEY] === true;
+  useState(() => {
+    // The credentialless offline shell has its own owner-proof replay path.
+    if (typeof window !== 'undefined' && !isCredentiallessOfflineShell) {
+      beginClientIdentityResolution();
+    }
+    return null;
+  });
 
   const appProviders = isCredentiallessOfflineShell
     ? children
@@ -45,6 +64,7 @@ export function Providers({ children, guestClaimPending = true }: ProvidersProps
       refetchOnWindowFocus={!isCredentiallessOfflineShell}
       refetchWhenOffline={false}
     >
+      <ClientIdentityReady hasGuest={guestClaimPending === true && !isCredentiallessOfflineShell} />
       <ThemeProvider>
         {appProviders}
         {/*
@@ -60,7 +80,7 @@ export function Providers({ children, guestClaimPending = true }: ProvidersProps
           could otherwise never learn that a claim became pending.
         */}
         {!isCredentiallessOfflineShell
-          ? <GuestProgressClaimWarm claimPending={guestClaimPending} />
+          ? <GuestProgressClaimWarm claimPending={guestClaimPending ?? true} />
           : null}
         {!isCredentiallessOfflineShell ? <ReviewBootstrapSafetyWarm /> : null}
       </ThemeProvider>

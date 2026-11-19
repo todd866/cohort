@@ -23,6 +23,7 @@
 
 # next.js
 /.next/
+/.next-local-preview/
 /out/
 
 # production
@@ -160,3 +161,6 @@ content/gamsat/_harvest/index.json
 
 # PDF.js worker copied from the pinned dependency before dev/build.
 /public/pdfjs/
+
+# Per-attempt release stage timings (scripts/ops/release-green-commit.mjs); local evidence
+/audit/release-timing.jsonl

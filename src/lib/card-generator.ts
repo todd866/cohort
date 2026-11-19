@@ -17,6 +17,7 @@ import { logger } from '@/lib/logger';
 import * as path from 'path';
 import { parseFrontmatter } from './frontmatter';
 import { CONTENT_ROTATION_IDS, EXAM_PREP_ROTATION_IDS, resolveModuleRotation } from './rotations';
+import { MD2_STAGED_ROTATION_IDS } from './md2-program';
 import { parseCiteReference } from './cite-utils';
 import { inferSingleSourceSlugFromSourceLines } from './source-registry';
 import {authoredCardSet} from './authored-card-sets';
@@ -292,6 +293,25 @@ function listRotationFiles(contentDir: string, rotation: string): ContentSourceF
 }
 
 /**
+ * Rotations a dry run or a reviewed, scoped publication asks the generator to
+ * read although the canonical seed does not: `MD3_STAGED_ROTATIONS=a,b`. Only
+ * the MD2 staged block rotations may be named; anything else throws, so a typo
+ * (or a live rotation) can never be mistaken for "nothing to read". Unset, the
+ * canonical `db:seed` reads none of them.
+ */
+export function stagedRotationIdsFromEnv(env: Record<string, string | undefined> = process.env): string[] {
+  const requested = (env.MD3_STAGED_ROTATIONS ?? '').split(',').map((r) => r.trim()).filter(Boolean);
+  const unknown = requested.filter((r) => !MD2_STAGED_ROTATION_IDS.includes(r));
+  if (unknown.length > 0) {
+    throw new Error(
+      `MD3_STAGED_ROTATIONS names rotation(s) that are not staged: ${unknown.join(', ')}. ` +
+      `Staged rotations: ${MD2_STAGED_ROTATION_IDS.join(', ')}`,
+    );
+  }
+  return [...new Set(requested)];
+}
+
+/**
  * Every MDX file `parseAllContent` reads, in its order, with the rotation each
  * is parsed under. Exported so a caller that needs a card's SOURCE PATH (the
  * Cohort mirror's rights layer) sees exactly the seed's cards and stableIds.
@@ -336,6 +356,11 @@ export function listContentSourceFiles(baseContentDir: string): ContentSourceFil
     if (fs.existsSync(examDir)) {
       files.push(...listRotationFiles(examDir, rotation));
     }
+  }
+
+  // Staged rotations (unreviewed imports): read only when named explicitly.
+  for (const rotation of stagedRotationIdsFromEnv()) {
+    files.push(...listRotationFiles(path.join(baseContentDir, rotation), rotation));
   }
 
   // Process modules/ directory (cross-institution, cross-year content)

@@ -25,6 +25,11 @@ export function parseExamTargetRegistry(
 ): Readonly<Record<ExamTargetRotation, ExamTargetDefinition>> {
   const expected = [...YEAR3_EXAM_TARGET_ROTATIONS].sort();
   const actual = Object.keys(source).sort();
+  // The public build ships an empty registry by design (registry-data.ts in
+  // the FOSS export): no targets, so every lookup answers null.
+  if (actual.length === 0) {
+    return deepFreeze({}) as Readonly<Record<ExamTargetRotation, ExamTargetDefinition>>;
+  }
   if (actual.length !== expected.length || actual.some((key, index) => key !== expected[index])) {
     throw new Error(
       `exam target registry keys must be exactly ${expected.join(', ')}; received ${actual.join(', ')}`,
@@ -52,6 +57,6 @@ export function getExamTargetDefinition(
   rotation: string,
 ): ExamTargetDefinition | null {
   return YEAR3_EXAM_TARGET_ROTATIONS.includes(rotation as ExamTargetRotation)
-    ? EXAM_TARGET_REGISTRY[rotation as ExamTargetRotation]
+    ? EXAM_TARGET_REGISTRY[rotation as ExamTargetRotation] ?? null
     : null;
 }

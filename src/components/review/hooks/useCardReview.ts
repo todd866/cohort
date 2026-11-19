@@ -2,13 +2,28 @@ import { universalRecallObjective, type UniversalRecallEvidence } from '@/lib/re
 import { useState, useCallback, useMemo, useEffect, useRef } from 'react';
 import type { ReviewItem, ReviewStats } from './types';
 
+export interface CardRevealResume {
+  key: string;
+  revealedBlanks: number;
+  recallEvidence: UniversalRecallEvidence | null;
+}
+
 interface UseCardReviewOptions {
   currentItem: ReviewItem | undefined;
   advanceToNext: () => void;
   setStats: React.Dispatch<React.SetStateAction<ReviewStats>>;
   registerResetCallback: (cb: () => void) => () => void;
   /** Interval-local signal that a canonical answer write was attempted. */
+  onInteraction?: () => void;
   onAnswerIntent?: (isCorrect: boolean) => void;
+  /**
+   * Changes when the same card is shown again as a rewind, so reveal state
+   * starts fresh even if the card id did not change. Absent, the card id is
+   * the identity, which is what every other caller uses.
+   */
+  presentationKey?: string;
+  /** Applied when presentationKey returns to this resume's key. */
+  resume?: CardRevealResume | null;
 }
 
 export function useCardReview({
@@ -17,6 +32,9 @@ export function useCardReview({
   setStats,
   registerResetCallback,
   onAnswerIntent,
+  onInteraction,
+  presentationKey,
+  resume,
 }: UseCardReviewOptions) {
   const [recallEvidence, setRecallEvidence] = useState<UniversalRecallEvidence | null>(null);
   const [revealedBlanks, setRevealedBlanks] = useState(0);
@@ -28,11 +46,19 @@ export function useCardReview({
   // the previous card's reveal still standing. Harmless while that only
   // governed image mounting; once it governs shell width (itemUsesSidePane)
   // it renders the next card at the full 80rem before anything is revealed.
-  const [lastItemId, setLastItemId] = useState(currentItem?.id);
-  if (currentItem?.id !== lastItemId) {
-    setLastItemId(currentItem?.id);
-    setRecallEvidence(null);
-    setRevealedBlanks(0);
+  // A rewind of the same card id still has to start hidden, so the optional
+  // presentation key is the identity when the review surface supplies one.
+  const identity = presentationKey ?? currentItem?.id;
+  const [lastIdentity, setLastIdentity] = useState(identity);
+  if (identity !== lastIdentity) {
+    setLastIdentity(identity);
+    if (resume && resume.key === identity) {
+      setRecallEvidence(resume.recallEvidence);
+      setRevealedBlanks(resume.revealedBlanks);
+    } else {
+      setRecallEvidence(null);
+      setRevealedBlanks(0);
+    }
   }
 
   // Register reset callback
@@ -53,18 +79,20 @@ export function useCardReview({
   // Card: reveal next blank (or show grading if all revealed)
   const handleReveal = useCallback(() => {
     if (universalRecallObjective(currentItem?.id) && !recallEvidence) return;
+    onInteraction?.();
     const totalBlanks = blankCount > 0 ? blankCount : 1;
     setRevealedBlanks((prev) => Math.min(prev + 1, totalBlanks));
-  }, [blankCount, currentItem?.id, recallEvidence]);
+  }, [blankCount, currentItem?.id, recallEvidence, onInteraction]);
 
   // Reveal the whole card at once. Space deliberately steps one blank at a
   // time, but on a multi-blank card that is one press per blank when the
   // learner already knows them all.
   const handleRevealAll = useCallback(() => {
     if (universalRecallObjective(currentItem?.id) && !recallEvidence) return;
+    onInteraction?.();
     const totalBlanks = blankCount > 0 ? blankCount : 1;
     setRevealedBlanks(totalBlanks);
-  }, [blankCount, currentItem?.id, recallEvidence]);
+  }, [blankCount, currentItem?.id, recallEvidence, onInteraction]);
 
   // Check if all blanks are revealed
   const cardFullyRevealed = useMemo(() => {
@@ -96,6 +124,7 @@ export function useCardReview({
   }, [advanceToNext]);
 
   const commitRecallAttempt = (evidence: UniversalRecallEvidence) => {
+    onInteraction?.();
     setRecallEvidence(evidence);
     setRevealedBlanks(1);
   };

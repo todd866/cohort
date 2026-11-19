@@ -93,6 +93,7 @@ export async function ProfileTopicHeatmapSection({ userId }: { userId: string })
         rotationLabel={data.rotationLabel}
         horizonDays={data.horizonDays}
         examDated={data.examDated}
+        passSet={data.passSet ?? null}
       />
     </section>
   );

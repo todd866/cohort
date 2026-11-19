@@ -18,6 +18,7 @@ import { viewerCanAccessPersonalRotation } from '@/lib/personal-rotation-access'
 import { authorizedReviewTopicRotations } from '@/lib/review/review-topic-registry.server';
 import { buildReviewMenu } from '@/lib/study/review-menu.server';
 import { effectiveInstitution } from '@/lib/effective-institution';
+import { readOnboardingYear } from '@/lib/onboarding/study-year';
 
 function isMd3Hostname(hostname: string): boolean {
   const host = hostname.toLowerCase().split(':')[0];
@@ -45,6 +46,7 @@ export async function GET(request: NextRequest) {
       studyableRotations: [],
       reviewTopicRotations: {},
       curriculumRequested: false,
+      onboardingYear: null,
     });
   }
   const userId = auth.userId;
@@ -63,6 +65,7 @@ export async function GET(request: NextRequest) {
         reviewMenuModules: true,
         reviewMenuKnownDecks: true,
         curriculumRequestedAt: true,
+        feedProfile: true,
       },
     });
 
@@ -109,6 +112,8 @@ export async function GET(request: NextRequest) {
       // rotation chooser has already been answered, and when they answered is
       // nobody's business on the wire.
       curriculumRequested: user.curriculumRequestedAt !== null,
+      // The first-run year answer, so the picker is not offered twice.
+      onboardingYear: readOnboardingYear(user.feedProfile),
     });
   } catch (error) {
     logger.error('Minimal user fetch error', { userId, error: String(error) });

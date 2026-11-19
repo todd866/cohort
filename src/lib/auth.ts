@@ -8,8 +8,11 @@ import { Resend as ResendClient } from 'resend';
 import prisma from './prisma';
 import { logger } from './logger';
 import { AUTH_PAGES, SESSION_CONFIG } from './auth-session-config';
+import { authCookieConfiguration } from './auth-cookie-policy';
 import { createAliasAwareAdapter } from './auth-alias';
 import { createSessionLookupRetryAdapter } from './auth-session-retry';
+import { createNewColumnTolerantAdapter } from './auth-new-column-tolerance';
+import { Prisma } from '@prisma/client';
 import { buildSessionPayload } from './auth-session-payload';
 import { viewerCanAccessPersonalRotation } from './personal-rotation-access';
 import { currentRotationAudiences } from './clinical/clinical-audience';
@@ -116,28 +119,16 @@ export const { auth, handlers, signIn, signOut } = NextAuth({
   secret: process.env.AUTH_SECRET || process.env.NEXTAUTH_SECRET,
   trustHost: true,
   adapter: createSessionLookupRetryAdapter(
-    createAliasAwareAdapter(PrismaAdapter(prisma) as Adapter),
+    createAliasAwareAdapter(createNewColumnTolerantAdapter(
+      PrismaAdapter(prisma) as Adapter,
+      prisma as never,
+      Object.keys(Prisma.UserScalarFieldEnum),
+    )),
   ),
   providers,
   session: SESSION_CONFIG,
   // Preserve v4 cookie names so existing sessions survive the migration
-  cookies: {
-    sessionToken: {
-      name: process.env.NODE_ENV === 'production'
-        ? '__Secure-next-auth.session-token'
-        : 'next-auth.session-token',
-    },
-    callbackUrl: {
-      name: process.env.NODE_ENV === 'production'
-        ? '__Secure-next-auth.callback-url'
-        : 'next-auth.callback-url',
-    },
-    csrfToken: {
-      name: process.env.NODE_ENV === 'production'
-        ? '__Host-next-auth.csrf-token'
-        : 'next-auth.csrf-token',
-    },
-  },
+  cookies: authCookieConfiguration(),
   callbacks: {
     async session({ session, user }) {
       // Attribute the pre-sign-in funnel using the HttpOnly guest cookie.
@@ -160,14 +151,37 @@ export const { auth, handlers, signIn, signOut } = NextAuth({
       const { hasVideoAccess } = await import('./video-access');
       const { hasAiAccess } = await import('./ai-access');
       // A whitelisted object, never the mutated row: see auth-session-payload.ts.
-      return buildSessionPayload({
+      const payload = buildSessionPayload({
         session, user, isAdminEmail, hasVideoAccess, hasAiAccess,
         canAccessPersonalRotation: viewerCanAccessPersonalRotation,
         currentRotationAudiences: (viewer) => currentRotationAudiences(viewer),
       });
+      // The effective learner: this device may have chosen one of the account's
+      // linked profiles (a signed per-device cookie). While it has, every failure
+      // refuses the session (fails closed): it never falls back to the account.
+      try {
+        const { applySwitchedProfile } = await import('./profiles/session-profile.server');
+        return await applySwitchedProfile(payload, { id: user.id, email: user.email });
+      } catch (error) {
+        if ((error as { name?: string } | null)?.name === 'LinkedProfileLockedError') throw error;
+        const { headers } = await import('next/headers');
+        const cookieHeader = await headers().then((h) => h.get('cookie') ?? '').catch(() => '');
+        if (cookieHeader.includes('md3-active-profile=')) throw error;
+        logger.warn('active-profile-resolve-failed', { error: String(error) });
+        return payload;
+      }
     },
   },
   events: {
+    async signOut() {
+      // A device switched to a linked profile returns to no profile on sign-out.
+      try {
+        const { clearSwitchedProfile } = await import('./profiles/session-profile.server');
+        await clearSwitchedProfile();
+      } catch (error) {
+        logger.warn('active-profile-clear-failed', { error: String(error) });
+      }
+    },
     async signIn({ user, account, isNewUser, profile }) {
       if (!user.id) {
         logger.warn('auth-success-missing-user-id', { provider: account?.provider ?? null });
@@ -204,6 +218,7 @@ declare module 'next-auth' {
       aiAccess?: boolean;
       imageTier?: 'standard' | 'copyright';
       clinicalAudiences?: string[];
+      activeProfile?: { kind: string; accountId: string; label: string; talkElsewhere?: string };
     };
   }
 }

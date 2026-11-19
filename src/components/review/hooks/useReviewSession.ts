@@ -1,3 +1,4 @@
+import { resolveClientIdentity } from '@/lib/client-identity';
 import { prepareAnatomyFigure } from '@/components/shared/AnatomyReviewFigure';
 import { exhaustedReviewChallenge } from '@/lib/study/review-challenge-exhaustion';
 import type { ReviewChallengePreference } from '@/lib/study/review-challenge-preference';
@@ -18,6 +19,8 @@ import { flushReviewQueue, getQueueSize } from '@/lib/review-queue';
 import {
   addToPack,
   consumePackItem,
+  packItemsForServe,
+  purgeRetiredPackItems,
   readPack,
   restorePackItem,
 } from '@/lib/offline/pack';
@@ -100,6 +103,7 @@ interface UseReviewSessionOptions {
   topics?: readonly ReviewTopic[];
   /** One manifold cluster, from a square on the profile knowledge heatmap. */
   cluster?: string | null;
+  prepDisabled?: boolean;
   /** When set, the session is focused on this single rotation. */
   focusRotation?: string | null;
   /**
@@ -107,6 +111,16 @@ interface UseReviewSessionOptions {
    * session neither writes nor reads a pack — the safe default for a guest.
    */
   userKey?: string | null;
+  /**
+   * The auth session has not resolved yet, so `userKey` is a placeholder and
+   * not an answer. The first load waits for it (up to
+   * IDENTITY_SETTLE_BUDGET_MS). The server identifies the caller by cookie, so
+   * a request sent now is a real delivery for the signed-in learner; when the
+   * session then resolves, the owner key changes, that request is abandoned
+   * and a second one is issued under a new serve-request id. Each such pair is
+   * a wasted session build and a duplicate delivery in scheduler history.
+   */
+  identityPending?: boolean;
   /**
    * Set only by the offline fallback page, which is rendering because the
    * service worker substituted it for a navigation the network could not
@@ -164,6 +178,7 @@ export interface InitialReviewBatch {
   scopeKey: string;
   items: ReviewItem[];
   newRemaining: { cards: number; questions: number } | null;
+  emptyReason?: string | null;
 }
 
 type PendingChallengeExhaustion = {
@@ -223,6 +238,11 @@ const FETCH_TIMEOUT_MS = 35_000;
 export const SLOW_LINK_PAINT_MS = 6_000;
 /** Longest the review feed will wait on the offline-write flush before loading anyway. */
 const FLUSH_BUDGET_MS = 2_000;
+/**
+ * Longest the first load waits for the auth session to resolve. Past this the
+ * feed starts anyway: a slow session check must not hold the review.
+ */
+export const IDENTITY_SETTLE_BUDGET_MS = 2_000;
 const RETRY_DELAY_MS = 2_000;
 
 function resolvedBrowserTimezone(): string | undefined {
@@ -284,7 +304,7 @@ async function fetchWithRetry(
   userSignal: AbortSignal,
   loadTimer?: ReviewLoadTimer | null,
   maxAttempts = 2,
-): Promise<{ items?: ReviewItem[]; sessionId?: string | null; batchId?: string | null; newRemaining?: { cards: number; questions: number } | null; reviewChallengeExhausted?: unknown }> {
+): Promise<{ items?: ReviewItem[]; sessionId?: string | null; batchId?: string | null; newRemaining?: { cards: number; questions: number } | null; emptyReason?: string | null; reviewChallengeExhausted?: unknown }> {
   // One identity mint per fetch sequence; never loop on a persistent 401.
   const identityRetriedRef = { current: false };
   let lastError: Error | undefined;
@@ -319,7 +339,10 @@ async function fetchWithRetry(
             identityRetriedRef.current = true;
             try {
               const boot = await fetch('/api/session/bootstrap', { cache: 'no-store', signal });
-              if (boot.ok) continue;
+              if (boot.ok) {
+                resolveClientIdentity();
+                continue;
+              }
             } catch { /* fall through to the auth failure below */ }
           }
           reportClientError(url, 'session-auth-failure', {
@@ -345,6 +368,7 @@ async function fetchWithRetry(
         sessionId?: string | null;
         batchId?: string | null;
         newRemaining?: { cards: number; questions: number } | null;
+        emptyReason?: string | null;
         stats?: { version?: string };
       };
       if (batch.stats?.version) {
@@ -633,7 +657,7 @@ async function postCohortTurn(
   throw lastError ?? new Error('Failed to load');
 }
 
-export function useReviewSession({ rotations, week, rotationSizes, fetchSlots, feedMode = 'mixed', reviewFilter, itemType, media, topics, cluster = null, focusRotation = null, userKey = null, allowUnverifiedPack = false, initialBatch = null, loadTimer = null, singleTurn = false, boundedQueue = false, replayKey = null, cohortTurn = null, reviewChallengeRevision = null, onChallengeExhausted, mediaPreferences = null, onServerMediaPreferences }: UseReviewSessionOptions) {
+export function useReviewSession({ rotations, week, rotationSizes, fetchSlots, feedMode = 'mixed', reviewFilter, itemType, media, topics, cluster = null, prepDisabled = false, focusRotation = null, userKey = null, identityPending = false, allowUnverifiedPack = false, initialBatch = null, loadTimer = null, singleTurn = false, boundedQueue = false, replayKey = null, cohortTurn = null, reviewChallengeRevision = null, onChallengeExhausted, mediaPreferences = null, onServerMediaPreferences }: UseReviewSessionOptions) {
   const hasCohortTurn = cohortTurn !== null;
   const cohortJourneyId = cohortTurn?.journeyId ?? null;
   const cohortSearchTopicId = cohortTurn?.searchTopicId ?? null;
@@ -647,6 +671,7 @@ export function useReviewSession({ rotations, week, rotationSizes, fetchSlots, f
     focusRotation,
     topics,
     cluster,
+    prepDisabled,
     replay: replayKey,
   });
   const requestScopeKey = cohortJourneyId
@@ -683,13 +708,16 @@ export function useReviewSession({ rotations, week, rotationSizes, fetchSlots, f
   const [newRemaining, setNewRemaining] = useState<{ cards: number; questions: number } | null>(
     initialBatchMatches ? initialBatch.newRemaining : null,
   );
+  const [emptyReason, setEmptyReason] = useState<string | null>(
+    initialBatchMatches ? initialBatch.emptyReason ?? null : null,
+  );
   /** True when the items on screen came from the on-device pack, not the server. */
   const [servingOffline, setServingOffline] = useState(false);
   const linkState = useSyncExternalStore(subscribeLinkState, getLinkState, getServerLinkState);
   /**
    * The items on screen were painted from the pack while a live session was
-   * wanted (slow or failed request). A live batch that lands afterwards is
-   * adopted BEHIND the card being read, never in place of it.
+   * wanted (slow or failed request). Live adoption keeps a revealed/answered
+   * head, but replaces an unanswered head absent from the live batch.
    */
   const fallbackPaintedRef = useRef(false);
   const [ownerRevision, setOwnerRevision] = useState(0);
@@ -753,6 +781,7 @@ export function useReviewSession({ rotations, week, rotationSizes, fetchSlots, f
    * from under the reader. Cleared the moment they advance past it.
    */
   const optimisticHeadRef = useRef<ReviewItem | null>(null);
+  const packPaintedKeysRef = useRef(new Set<string>());
   /**
    * The card on screen when a refetch is triggered by something the READER did
    * not do — currently a same-account lease/generation bump, which re-keys the
@@ -768,6 +797,13 @@ export function useReviewSession({ rotations, week, rotationSizes, fetchSlots, f
    * any other scope or account must never prepend it. */
   const involuntaryHeadContextRef = useRef<{ scopeKey: string; ownerKey: string | null } | null>(null);
   const loadedKeyRef = useRef<string | null>(null);
+  const [identityWaitExpired, setIdentityWaitExpired] = useState(false);
+  useEffect(() => {
+    if (!identityPending) return undefined;
+    const timer = window.setTimeout(() => setIdentityWaitExpired(true), IDENTITY_SETTLE_BUDGET_MS);
+    return () => window.clearTimeout(timer);
+  }, [identityPending]);
+  const holdForIdentity = identityPending && !identityWaitExpired;
   const initialBatchRef = useRef(initialBatchMatches ? initialBatch : null);
   const abortControllerRef = useRef<AbortController | null>(null);
   const cohortJourneyRef = useRef(cohortJourneyId);
@@ -888,6 +924,7 @@ export function useReviewSession({ rotations, week, rotationSizes, fetchSlots, f
     setItems([]);
     setCurrentIndex(0);
     setStatsState({ total: 0, correct: 0 });
+    setEmptyReason(null);
     setServingOffline(false);
     servingOfflineRef.current = false;
     setLoading(true);
@@ -927,6 +964,12 @@ export function useReviewSession({ rotations, week, rotationSizes, fetchSlots, f
 
   // Callbacks registered by other hooks to reset their per-item state
   const resetCallbacksRef = useRef<Array<() => void>>([]);
+  const engagedItemKeyRef = useRef<string | null>(null);
+  const packValidationCursorRef = useRef(0);
+  const markCurrentItemEngaged = useCallback(() => {
+    const current = itemsRef.current[currentIndexRef.current];
+    if (current) engagedItemKeyRef.current = reviewItemKey(current);
+  }, []);
 
   const registerResetCallback = useCallback((cb: () => void) => {
     resetCallbacksRef.current.push(cb);
@@ -936,14 +979,16 @@ export function useReviewSession({ rotations, week, rotationSizes, fetchSlots, f
   }, []);
 
   const resetItemState = useCallback(() => {
+    engagedItemKeyRef.current = null;
     for (const cb of resetCallbacksRef.current) cb();
     setStartTime(Date.now());
   }, []);
 
   /**
-   * React's session counter is also the user-visible offline progress pill.
-   * Persist updates whenever a local write is pending (or the pack is already
-   * the serving source) so a cold relaunch resumes at N rather than zero.
+   * In-session total for the drawer footer and the empty state. The progress
+   * pill no longer reads this while offline. Persist it while a local write
+   * is pending (or the pack is already the serving source) so a cold relaunch
+   * can still resume the session total.
    */
   const setStats = useCallback<React.Dispatch<React.SetStateAction<ReviewStats>>>(
     (nextState) => {
@@ -1060,7 +1105,7 @@ export function useReviewSession({ rotations, week, rotationSizes, fetchSlots, f
     return {
       userKey: resolvedUserKey,
       packUserKey: pack.userKey,
-      items: dedupeReviewItems(packItems),
+      items: dedupeReviewItems(packItemsForServe(packItems)),
     };
   }, [hasCohortTurn, requestedRotationsKey, requestedTopicsKey, reviewFilter, itemType, media, cluster, week]);
 
@@ -1070,6 +1115,7 @@ export function useReviewSession({ rotations, week, rotationSizes, fetchSlots, f
 
     itemsScopeKeyRef.current = requestScopeKey;
     itemsOwnerRef.current = scoped.packUserKey;
+    packPaintedKeysRef.current = new Set(scoped.items.map(reviewItemKey));
     setItems(scoped.items);
     itemsRef.current = scoped.items;
     setCurrentIndex(0);
@@ -1082,6 +1128,7 @@ export function useReviewSession({ rotations, week, rotationSizes, fetchSlots, f
     );
     setIsExhausted(false);
     setError(null);
+    setEmptyReason(null);
     setServingOffline(true);
     servingOfflineRef.current = true;
     fallbackPaintedRef.current = !allowUnverifiedPackRef.current;
@@ -1104,12 +1151,14 @@ export function useReviewSession({ rotations, week, rotationSizes, fetchSlots, f
       && !(item.type === 'card' && reviewedCardIdsRef.current.has(item.id))
       && !(item.type === 'question' && reviewedQuestionIdsRef.current.has(item.id)));
     if (extra.length === 0) return false;
+    for (const item of extra) packPaintedKeysRef.current.add(reviewItemKey(item));
     const updated = [...itemsRef.current, ...extra];
     itemsRef.current = updated;
     setItems(updated);
     if (heldOwner == null) itemsOwnerRef.current = scoped.packUserKey;
     setIsExhausted(false);
     setError(null);
+    setEmptyReason(null);
     setServingOffline(true);
     servingOfflineRef.current = true;
     fallbackPaintedRef.current = true;
@@ -1136,6 +1185,7 @@ export function useReviewSession({ rotations, week, rotationSizes, fetchSlots, f
 
     itemsScopeKeyRef.current = requestScopeKey;
     itemsOwnerRef.current = scoped.packUserKey;
+    packPaintedKeysRef.current = new Set(scoped.items.map(reviewItemKey));
     setItems(scoped.items);
     itemsRef.current = scoped.items;
     setCurrentIndex(0);
@@ -1148,6 +1198,7 @@ export function useReviewSession({ rotations, week, rotationSizes, fetchSlots, f
     );
     setIsExhausted(false);
     setError(null);
+    setEmptyReason(null);
     optimisticHeadRef.current = scoped.items[0] ?? null;
     // Keep servingOffline false so the live batch can replace this paint.
     setServingOffline(false);
@@ -1196,6 +1247,7 @@ export function useReviewSession({ rotations, week, rotationSizes, fetchSlots, f
       involuntaryHeadContextRef.current = null;
       optimisticHeadRef.current = null;
       setItems([]);
+      setEmptyReason(null);
       setCurrentIndex(0);
       setLoading(true);
     }
@@ -1270,6 +1322,7 @@ export function useReviewSession({ rotations, week, rotationSizes, fetchSlots, f
     // Keep an optimistic pack paint visible while the live batch loads.
     if (!append && itemsRef.current.length === 0) setLoading(true);
     setError(null);
+    setEmptyReason(null);
 
     if (!append) loadTimerRef.current?.markFetchStart();
 
@@ -1341,6 +1394,12 @@ export function useReviewSession({ rotations, week, rotationSizes, fetchSlots, f
             )
           : [],
       );
+      const packRows = requestUserKey && !hasCohortTurn ? readPack(requestUserKey)?.items ?? [] : [];
+      const offset = packRows.length ? packValidationCursorRef.current % packRows.length : 0;
+      const packCheck = [...packRows.slice(offset), ...packRows.slice(0, offset)]
+        .slice(0, 100) as Array<{ type: string; id: string }>;
+      packValidationCursorRef.current = offset + packCheck.length;
+      const reportedPackKeys = new Set(packCheck.map(item => `${item.type}:${item.id}`));
       let excludeCardParams = durableExclusions.cards.join(',');
       let excludeQuestionParams = durableExclusions.questions.join(',');
       if (append) {
@@ -1372,7 +1431,7 @@ export function useReviewSession({ rotations, week, rotationSizes, fetchSlots, f
           }));
 
       const fetchOne = (slot: FetchSlot) => {
-        if (slot.size <= 0) return Promise.resolve({ items: [], blendTier: slot.blendTier, sessionId: null as string | null, batchId: null as string | null, newRemaining: null as { cards: number; questions: number } | null, reviewChallengeExhausted: undefined as unknown });
+        if (slot.size <= 0) return Promise.resolve({ items: [], blendTier: slot.blendTier, sessionId: null as string | null, batchId: null as string | null, newRemaining: null as { cards: number; questions: number } | null, emptyReason: null as string | null, reviewChallengeExhausted: undefined as unknown });
         if (cohortJourneyId) {
           let pending = pendingCohortTurnRef.current;
           if (!pending) {
@@ -1446,6 +1505,7 @@ export function useReviewSession({ rotations, week, rotationSizes, fetchSlots, f
                 sessionId: result.sessionId,
                 batchId: result.sessionId,
                 newRemaining: null as { cards: number; questions: number } | null,
+                emptyReason: null as string | null,
                 reviewChallengeExhausted: result.reviewChallengeExhausted,
               };
             });
@@ -1460,6 +1520,7 @@ export function useReviewSession({ rotations, week, rotationSizes, fetchSlots, f
           focusRotation,
           topics,
           cluster,
+          prepDisabled,
           reviewChallengeRevision: challengeRevisionOverride ?? reviewChallengeRevisionRef.current,
           hide: mediaPreferencesRef.current && mediaPreferencesRef.current.rev > 0
             ? reviewMediaHideParam(mediaPreferencesRef.current)
@@ -1472,6 +1533,10 @@ export function useReviewSession({ rotations, week, rotationSizes, fetchSlots, f
           // the first delivery rather than duplicating it.
           serveRequestId: genClientRequestId(),
         });
+        for (const [type, name] of [['card', 'packCards'], ['question', 'packQuestions']] as const) {
+          const ids = packCheck.filter(item => item.type === type).map(item => item.id);
+          if (ids.length) params.set(name, ids.join(','));
+        }
         const url = `/api/study/unified-session?${params}`;
 
         // This is deliberately the only request path. A former <head> preload
@@ -1487,7 +1552,8 @@ export function useReviewSession({ rotations, week, rotationSizes, fetchSlots, f
           singleTurn ? 1 : 2,
         )
           .then((res) => {
-            const batch = res as { items?: ReviewItem[]; sessionId?: string | null; batchId?: string | null; newRemaining?: { cards: number; questions: number } | null; reviewChallengeExhausted?: unknown; mediaPreferences?: unknown };
+            resolveClientIdentity();
+            const batch = res as { items?: ReviewItem[]; sessionId?: string | null; batchId?: string | null; newRemaining?: { cards: number; questions: number } | null; reviewChallengeExhausted?: unknown; mediaPreferences?: unknown; emptyReason?: string | null; retiredPackKeys?: unknown };
             if (batch.mediaPreferences !== undefined && onServerMediaPreferencesRef.current) {
               // The response already applied the account's choice; adopting it
               // here needs no refetch, only a prune of what is held.
@@ -1498,11 +1564,15 @@ export function useReviewSession({ rotations, week, rotationSizes, fetchSlots, f
               }
             }
             return {
+              retiredPackKeys: Array.isArray(batch.retiredPackKeys)
+                ? batch.retiredPackKeys.filter((key): key is string => typeof key === 'string' && reportedPackKeys.has(key))
+                : [],
               items: batch.items,
               blendTier: slot.blendTier,
               sessionId: batch.sessionId ?? null,
               batchId: batch.batchId ?? null,
               newRemaining: batch.newRemaining ?? null,
+              emptyReason: batch.emptyReason ?? null,
               reviewChallengeExhausted: batch.reviewChallengeExhausted,
             };
           });
@@ -1530,6 +1600,9 @@ export function useReviewSession({ rotations, week, rotationSizes, fetchSlots, f
         );
         throw firstFailure?.reason ?? new Error('Failed to load');
       }
+      const retiredPackKeys = new Set(results.flatMap(result =>
+        'retiredPackKeys' in result ? result.retiredPackKeys : []));
+      if (requestUserKey) purgeRetiredPackItems(requestUserKey, [...retiredPackKeys]);
       const exhaustion = exhaustedReviewChallenge(
         results, activeSlots.length,
       );
@@ -1547,6 +1620,9 @@ export function useReviewSession({ rotations, week, rotationSizes, fetchSlots, f
         return { cards: acc.cards + r.newRemaining.cards, questions: acc.questions + r.newRemaining.questions };
       }, null);
       setNewRemaining(aggregatedNewRemaining);
+      const responseEmptyReason = results
+        .map((result) => result.emptyReason)
+        .find((reason): reason is string => typeof reason === 'string' && reason.length > 0) ?? null;
       // Tag each item with its blend tier and walk-audit IDs for analytics
       const perSlotItems = results.map(r => {
         const items = r.items || [];
@@ -1572,10 +1648,12 @@ export function useReviewSession({ rotations, week, rotationSizes, fetchSlots, f
       // when it began.
       const newItems = currentlySafeItems.filter(
         (item) => !requestTombstoneKeys.has(reviewItemKey(item))
+          && !retiredPackKeys.has(reviewItemKey(item))
           // Authoritative on the client too: a batch requested before a
           // "No videos" / "No images" change can land after it.
           && !itemExcludedByMediaPreferences(item, mediaPreferencesRef.current),
       );
+      setEmptyReason(newItems.length === 0 ? responseEmptyReason : null);
 
       const persistLiveBatch = (batch: ReviewItem[]) => {
         if (hasCohortTurn || !requestUserKey || !requestOwnerLease
@@ -1611,6 +1689,21 @@ export function useReviewSession({ rotations, week, rotationSizes, fetchSlots, f
       };
 
       if (append) {
+        // Retirement applies to the held queue too, not only this new page.
+        // Keep an engaged result visible; remove every retired upcoming row.
+        if (retiredPackKeys.size > 0) {
+          const index = currentIndexRef.current;
+          const head = itemsRef.current[index];
+          const keepEngagedHead = head && engagedItemKeyRef.current === reviewItemKey(head);
+          const pruned = itemsRef.current.filter((item, position) => position < index
+            || !retiredPackKeys.has(reviewItemKey(item))
+            || (position === index && keepEngagedHead));
+          if (pruned.length !== itemsRef.current.length) {
+            itemsRef.current = pruned;
+            setItems(pruned);
+            if (head && retiredPackKeys.has(reviewItemKey(head)) && !keepEngagedHead) resetItemState();
+          }
+        }
         if (newItems.length === 0) {
           setIsExhausted(true);
         } else {
@@ -1665,7 +1758,25 @@ export function useReviewSession({ rotations, week, rotationSizes, fetchSlots, f
         // Only a card owned by this request's account may be kept on screen
         // (an account switch mid-recovery kept A's card in front of B's batch).
         const heldOwnedByRequest = itemsOwnerRef.current === requestUserKey;
-        const retainedHead = heldOwnedByRequest ? painted ?? involuntaryHead : null;
+        const currentHead = itemsRef.current[currentIndexRef.current];
+        const fromPack = currentHead && packPaintedKeysRef.current.has(reviewItemKey(currentHead));
+        const absentPackHead = fromPack && currentHead
+          && !newItems.some(item => reviewItemKey(item) === reviewItemKey(currentHead));
+        const currentRetired = currentHead && retiredPackKeys.has(reviewItemKey(currentHead));
+        const engaged = currentHead && engagedItemKeyRef.current === reviewItemKey(currentHead);
+        // Only the server's retirement list removes the card on screen. A batch
+        // that merely omits it is not retirement, and replacing an untouched
+        // head for that reason was the swap the owner kept reporting ("instant
+        // feed gets replaced when another feed finishes loading", 18 Nov 2026):
+        // reading a card is engagement even before a reveal.
+        const dropCurrentHead = Boolean(currentRetired && !engaged);
+        if (absentPackHead && requestUserKey) {
+          // Batch omission is not proof of permanent retirement. Consume this
+          // reserve copy using the existing durable progress ledger instead.
+          consumePackItem(requestUserKey, currentHead);
+        }
+        const retainedHead = heldOwnedByRequest && !dropCurrentHead
+          ? painted ?? involuntaryHead : null;
         // The pack was painted because this (or an earlier) request was slow or
         // failed, and the reader may already be several cards in. Keep every
         // card up to the one on screen; the live batch replaces only what is
@@ -1686,7 +1797,7 @@ export function useReviewSession({ rotations, week, rotationSizes, fetchSlots, f
         );
         const replacingUpcoming = challengeRevisionOverride != null || replaceUpcomingOverride || continueReader;
         const currentPrefix = replacingUpcoming
-          ? itemsRef.current.slice(0, currentIndexRef.current + 1)
+          ? itemsRef.current.slice(0, currentIndexRef.current + (dropCurrentHead ? 0 : 1))
           : [];
         const heldKeys = new Set(currentPrefix.map(reviewItemKey));
         const deduped = replacingUpcoming
@@ -1726,7 +1837,7 @@ export function useReviewSession({ rotations, week, rotationSizes, fetchSlots, f
         const keptCurrentCard = Boolean(retainedHead)
           && replacementItems[0] !== undefined
           && reviewItemKey(replacementItems[0]) === reviewItemKey(retainedHead!);
-        if (!replacingUpcoming && !keptCurrentCard) resetItemState();
+        if (dropCurrentHead || (!replacingUpcoming && !keptCurrentCard)) resetItemState();
         if (!preserveSessionState && !continueReader) {
           setStatsState(
             requestUserKey
@@ -2008,6 +2119,7 @@ export function useReviewSession({ rotations, week, rotationSizes, fetchSlots, f
         }
         setLoading(false);
         if (usableItems.length === 0) {
+          setEmptyReason(serverBatch.emptyReason ?? null);
           setIsExhausted(true);
           loadTimerRef.current?.report('exhausted');
         } else {
@@ -2026,6 +2138,7 @@ export function useReviewSession({ rotations, week, rotationSizes, fetchSlots, f
         }
         setLoading(false);
         if (usableItems.length === 0) {
+          setEmptyReason(serverBatch.emptyReason ?? null);
           setIsExhausted(true);
           loadTimerRef.current?.report('exhausted');
         } else {
@@ -2042,6 +2155,7 @@ export function useReviewSession({ rotations, week, rotationSizes, fetchSlots, f
       // already graded.
       setItems([]);
       itemsRef.current = [];
+      setEmptyReason(null);
       setLoading(true);
     }
 
@@ -2066,6 +2180,15 @@ export function useReviewSession({ rotations, week, rotationSizes, fetchSlots, f
       } else {
         loadTimerRef.current?.report('first_card');
       }
+      return () => {
+        loadedKeyRef.current = null;
+      };
+    }
+
+    if (holdForIdentity) {
+      // Identity is about to resolve. A request sent now would be abandoned
+      // and repeated the moment it does.
+      setLoading(true);
       return () => {
         loadedKeyRef.current = null;
       };
@@ -2136,14 +2259,6 @@ export function useReviewSession({ rotations, week, rotationSizes, fetchSlots, f
         });
     }
 
-    // Warm up the record function in parallel so the first answer doesn't
-    // hit a cold start
-    if (!hasCohortTurn && getLinkState() === 'online') fetch('/api/study/record', {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: '{"type":"warmup"}',
-    }).catch(() => {});
-
     return () => {
       if (flushBudget !== undefined) window.clearTimeout(flushBudget);
       if (!fetched) {
@@ -2154,7 +2269,7 @@ export function useReviewSession({ rotations, week, rotationSizes, fetchSlots, f
       abortControllerRef.current?.abort();
       loadedKeyRef.current = null;
     };
-  }, [allowUnverifiedPack, boundedQueue, ownerLoadKey, paintOptimisticPack, requestScopeKey, rotationsKey, servePackFallback, userKey, week]);
+  }, [allowUnverifiedPack, boundedQueue, holdForIdentity, ownerLoadKey, paintOptimisticPack, requestScopeKey, rotationsKey, servePackFallback, userKey, week]);
 
   // Prefetch more when running low
   useEffect(() => {
@@ -2517,12 +2632,14 @@ export function useReviewSession({ rotations, week, rotationSizes, fetchSlots, f
     handleGoBack,
     markSuppressed,
     registerResetCallback,
+    markCurrentItemEngaged,
     scrollReviewToTop,
     // Scroll helpers exposed for other hooks
     shouldAutoScroll,
     scrollBehavior,
     isOffscreen,
     newRemaining,
+    emptyReason,
     servingOffline,
     challengeRefreshing,
     challengeNeedsRetry,

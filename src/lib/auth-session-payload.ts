@@ -38,6 +38,8 @@ export interface SessionPayloadUser {
   aiAccess: boolean;
   /** Clinical audiences: the current rotation (stream x block) when it offers something, and 'md1'. */
   clinicalAudiences: string[];
+  /** Present only while the account has switched to one of its linked profiles. */
+  activeProfile?: { kind: string; accountId: string; label: string; talkElsewhere?: string };
 }
 
 export interface SessionPayload {

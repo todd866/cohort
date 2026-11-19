@@ -9,6 +9,7 @@ import { buildServableCardWhere, buildServableQuestionWhere, loadServablePoolFil
 import { hydrateScheduledItems, loadScheduledItemHydrationData } from './unified-session-hydration';
 import { filterCardsAtDueEgress, logExposures } from './unified-session-helpers';
 import { writeLiveServeDecisions } from './serve-decision-write';
+import { learnerItemPredictionFor } from './learner-item-prediction-load';
 import type { UnifiedSessionItem } from '@/lib/knowledge/unified-scheduler-types';
 import type { SessionContext, UnifiedItem } from './unified-session-types';
 import { FIRST_REVIEW_CATALOG } from './first-review-catalog';
@@ -87,7 +88,8 @@ export async function tryFirstReviewHighlights(
       }));
       const hydration = await loadScheduledItemHydrationData({
         userId: ctx.userId, scheduledItems: scheduled,
-        deliveryContext: { userId: ctx.userId, rotation, practiceLocale: ctx.practiceLocale, weekFilter: null },
+        deliveryContext: { userId: ctx.userId, rotation, practiceLocale: ctx.practiceLocale, weekFilter: null,
+          learnerItemPrediction: learnerItemPredictionFor(ctx) },
       });
       const hydrated = await hydrateScheduledItems(scheduled, hydration, { rotation }, null, trust);
       return hydrated.flatMap(item => {
@@ -120,6 +122,7 @@ export async function tryFirstReviewHighlights(
       delivered.push(...await writeLiveServeDecisions(items.filter(item => item.rotation === rotation), {
         userId: ctx.userId, sessionId: ctx.sessionId, batchId: ctx.batchId, rotation,
         decisionPath: 'first-review', queueReason: 'first_review_highlight',
+        learnerItem: learnerItemPredictionFor(ctx),
       }));
     }
     const byId = new Map(delivered.map(item => [item.id, item]));

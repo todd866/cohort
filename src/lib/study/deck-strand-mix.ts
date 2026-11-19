@@ -21,6 +21,9 @@
  */
 
 import { hashString } from '@/lib/utils/hash';
+import {
+  AHCT_BASELINE_SHARE, ahctShare, isAhctSyllabusSource,
+} from '@/lib/md1-ahct-syllabus';
 
 /** The fields strand membership may read. Both already ride on every candidate. */
 export interface StrandIdentity {
@@ -71,12 +74,14 @@ function isMd1MmcaItem(item: StrandIdentity): boolean {
 
 /**
  * The deck's third exam is AHCT 4, an anatomy and histology identification
- * test (owner, 2026-10-22). Its material is the Rohen prosection plates whose
- * regions the generator tags for the deck (generate-rohen-cards.py,
- * MD1_AHCT_REGIONS); they keep the `anatomy` rotation.
+ * test (owner, 2026-10-22). The strand is exactly what the syllabus names
+ * (md1-ahct-syllabus.ts): the Rohen prosection plates of the examined regions,
+ * the BlueLink structures of the cranial cavity, orbit and ear, and the 113
+ * histology cards. Anatomy from any other source is not AHCT 4 material and
+ * falls to the exam strand, where the content test refuses it.
  */
 function isMd1AhctItem(item: StrandIdentity): boolean {
-  return item.rotation === 'anatomy';
+  return isAhctSyllabusSource(item);
 }
 
 /**
@@ -95,7 +100,7 @@ export const DECK_STRAND_MIX: Readonly<Record<string, DeckStrandMix>> = Object.f
   [MD1_DECK]: Object.freeze({
     strands: Object.freeze([
       Object.freeze({ id: 'mmca', share: 0.35, matches: isMd1MmcaItem }),
-      Object.freeze({ id: 'ahct', share: 0.15, matches: isMd1AhctItem }),
+      Object.freeze({ id: 'ahct', share: AHCT_BASELINE_SHARE, matches: isMd1AhctItem }),
       Object.freeze({ id: 'exam', share: 0.5, matches: () => true }),
     ]),
   }),
@@ -107,8 +112,36 @@ export const DECK_STRAND_MIX: Readonly<Record<string, DeckStrandMix>> = Object.f
   }),
 });
 
-export function deckStrandMixFor(deck: string | null | undefined): DeckStrandMix | null {
+export interface DeckStrandMixOptions {
+  /** Clock for the date-aware AHCT share. Defaults to now. */
+  now?: Date;
+  /** The learner's own AHCT 4 date (UserRotation 'md1-ahct'); else the provisional date. */
+  ahctExamDate?: string | null;
+}
+
+/**
+ * The first-year mix with the AHCT share for `now`. The AHCT strand takes
+ * `share`; MMCA and exam keep their baseline proportions of what is left.
+ */
+function md1MixAt(share: number): DeckStrandMix {
+  const base = DECK_STRAND_MIX[MD1_DECK];
+  if (share === AHCT_BASELINE_SHARE) return base;
+  const others = base.strands.filter((strand) => strand.id !== 'ahct');
+  const otherTotal = others.reduce((sum, strand) => sum + strand.share, 0);
+  return Object.freeze({
+    strands: Object.freeze(base.strands.map((strand) => Object.freeze({
+      ...strand,
+      share: strand.id === 'ahct' ? share : strand.share * ((1 - share) / otherTotal),
+    }))),
+  });
+}
+
+export function deckStrandMixFor(
+  deck: string | null | undefined,
+  options: DeckStrandMixOptions = {},
+): DeckStrandMix | null {
   if (!deck || !Object.hasOwn(DECK_STRAND_MIX, deck)) return null;
+  if (deck === MD1_DECK) return md1MixAt(ahctShare(options.now ?? new Date(), options.ahctExamDate));
   return DECK_STRAND_MIX[deck];
 }
 
@@ -152,7 +185,7 @@ export function sessionItemStrandIdentity(
   return { rotation: item.rotation ?? sessionRotation, sourceFile: source?.sourceFile ?? null };
 }
 
-export interface OrderByDeckStrandsOptions<T> {
+export interface OrderByDeckStrandsOptions<T> extends DeckStrandMixOptions {
   deck: string | null | undefined;
   /** Per-session seed (the session id). Sets the phase of the interleave. */
   seed: string;
@@ -182,7 +215,7 @@ export interface OrderByDeckStrandsOptions<T> {
  * between sessions instead of always being the same one.
  */
 export function orderByDeckStrands<T>(items: readonly T[], options: OrderByDeckStrandsOptions<T>): T[] {
-  const mix = deckStrandMixFor(options.deck);
+  const mix = deckStrandMixFor(options.deck, options);
   if (!mix || items.length < 2) return items as T[];
 
   // Units: an item plus the items glued behind it.
@@ -250,7 +283,7 @@ export function orderByDeckStrands<T>(items: readonly T[], options: OrderByDeckS
   return out;
 }
 
-export interface SelectByDeckStrandsOptions<T> {
+export interface SelectByDeckStrandsOptions<T> extends DeckStrandMixOptions {
   deck: string | null | undefined;
   identify: (item: T) => StrandIdentity;
   /** Items that are always kept (a due review), whatever their strand. */
@@ -265,7 +298,7 @@ export interface SelectByDeckStrandsOptions<T> {
  */
 export function selectByDeckStrands<T>(items: readonly T[], limit: number, options: SelectByDeckStrandsOptions<T>): T[] {
   const seats = Math.max(0, Math.floor(limit));
-  const mix = deckStrandMixFor(options.deck);
+  const mix = deckStrandMixFor(options.deck, options);
   if (!mix) return items.slice(0, seats);
   if (items.length <= seats) return [...items];
 

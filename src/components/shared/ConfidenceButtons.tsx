@@ -1,5 +1,8 @@
 'use client';
 
+import { PadGlyph } from './PadGlyph';
+import { confidenceToPadFace } from './review-gamepad';
+
 type SaveState = 'idle' | 'saving' | 'saved' | 'queued' | 'error';
 
 // On-system colour ramp via design tokens (light + dark variants flip
@@ -109,6 +112,9 @@ export function ConfidenceButtons({
               >
                 {CONFIDENCE_LABELS[level.confidence]}
                 <Keycap n={level.confidence} />
+                {confidenceToPadFace(level.confidence) && (
+                  <PadGlyph mark={confidenceToPadFace(level.confidence)!} />
+                )}
               </button>
             );
           })}
@@ -134,6 +140,9 @@ export function ConfidenceButtons({
           >
             {CONFIDENCE_LABELS[level.confidence]}
             <Keycap n={level.confidence} />
+            {confidenceToPadFace(level.confidence) && (
+              <PadGlyph mark={confidenceToPadFace(level.confidence)!} />
+            )}
           </button>
         );
       })}

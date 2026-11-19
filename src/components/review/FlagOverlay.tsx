@@ -1,5 +1,6 @@
 'use client';
 import { FlagImageInput, flagImageEvents, type FlagImageController } from '@/components/content/FlagImageInput';
+import { REVIEW_FEEDBACK_DIALOG_MARKER } from '@/lib/review/review-actions';
 
 // Simplified flag system: F → type note (optional) → Enter to submit
 // No categories — 45% of flags were "Other" anyway.
@@ -29,7 +30,7 @@ export function FlagOverlay({
 
   return (
     <div className="fixed inset-0 bg-black/50 flex items-center justify-center z-[60]">
-      <div role="dialog" aria-label="Flag content" aria-modal="true" {...(image ? flagImageEvents(image) : {})} className="bg-[var(--md-surface)] rounded-xl p-4 mx-4 max-w-sm w-full max-h-[90dvh] overflow-y-auto">
+      <div role="dialog" aria-label="Flag content" aria-modal="true" {...{ [REVIEW_FEEDBACK_DIALOG_MARKER]: '' }} {...(image ? flagImageEvents(image) : {})} className="bg-[var(--md-surface)] rounded-xl p-4 mx-4 max-w-sm w-full max-h-[90dvh] overflow-y-auto">
         <textarea
           aria-label="What’s wrong?"
           disabled={submitting || Boolean(error)}

@@ -8,8 +8,8 @@ import {
   type TrackNumber,
   type RotationId,
   getCurrentWeek,
-  getActiveRotations,
 } from '@/lib/rotation-context';
+import { currentActiveRotations } from '@/lib/review/active-rotations';
 
 const STORAGE_KEY = 'md3_track';
 const STORAGE_EVENT = 'md3_track_changed';
@@ -78,6 +78,8 @@ interface UseUserTrackReturn {
    * rotation chooser must not ask again. Undefined while loading.
    */
   curriculumRequested: boolean;
+  /** True once the first-run year has been answered (or, while unknown, false). */
+  yearChosen: boolean;
   /** Whether we're still loading user data */
   loading: boolean;
   /** Whether user is logged in */
@@ -113,7 +115,7 @@ export function useUserTrack(): UseUserTrackReturn {
   const needsTrackPicker = !loading && track === null;
 
   // Derive active rotations from track + date
-  const activeRotations = track ? getActiveRotations(track) : [];
+  const activeRotations = currentActiveRotations({ track, institution: serverData?.institution }) as RotationId[];
   const currentRotation = activeRotations[0] ?? null;
   const currentWeek = getCurrentWeek();
 
@@ -149,6 +151,7 @@ export function useUserTrack(): UseUserTrackReturn {
     track,
     currentRotation,
     curriculumRequested: serverData?.curriculumRequested === true,
+    yearChosen: Boolean(serverData?.onboardingYear),
     activeRotations,
     currentWeek,
     loading,

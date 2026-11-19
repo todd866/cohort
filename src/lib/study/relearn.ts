@@ -21,7 +21,7 @@ import type { UnifiedSessionItem } from '@/lib/knowledge/unified-scheduler';
 import { sessionCandidateItemWhere } from '@/lib/knowledge/session-candidate-scope';
 import { MAX_CROSS_SOURCE_ITEMS_PER_SESSION } from '@/lib/knowledge/cross-source-cap';
 import type { prisma } from '@/lib/prisma';
-import { getStudyDayStart } from '@/lib/study-day';
+import { getCourseDayStart } from '@/lib/study-day';
 import { DAILY_FEED_RELEARN, type RelearnProfile } from './relearn-profile';
 import {
   ownerPrivateOrSharedCardScope,
@@ -69,13 +69,14 @@ export interface RelearnDelivery {
 export function capRelearnCardsByDelivery(
   relearnCardIds: string[],
   deliveries: readonly RelearnDelivery[],
-  options: { now: Date; studyDayStart: Date; profile?: RelearnProfile },
+  options: { now: Date; studyDayStart?: Date; profile?: RelearnProfile },
 ): string[] {
   if (relearnCardIds.length === 0) return relearnCardIds;
 
-  const { now, studyDayStart, profile = DAILY_FEED_RELEARN } = options;
+  const { now, profile = DAILY_FEED_RELEARN } = options;
   const cooldownCutoffMs = now.getTime() - profile.serveCooldownMs;
-  const dayStartMs = studyDayStart.getTime();
+  // The same day the grader's view cap counts in (fetchRelearnCards below).
+  const dayStartMs = (options.studyDayStart ?? getCourseDayStart(now)).getTime();
 
   const deliveredToday = new Map<string, { count: number; lastMs: number }>();
   for (const delivery of deliveries) {
@@ -141,7 +142,8 @@ export async function fetchRelearnCards(
   } = options;
   if (limit <= 0) return [];
 
-  const startOfDay = getStudyDayStart(now);
+  // The grader's day: viewsTodayDate is stamped with this boundary.
+  const startOfDay = getCourseDayStart(now);
   const cooldownCutoff = new Date(now.getTime() - profile.cooldownMs);
   const sourceRotations = [...new Set(
     allowedCrossSourceRotations.filter(

@@ -20,21 +20,6 @@
       "reference": null
     },
     {
-      "id": "cohort:icu:c-00a096927782:v1",
-      "origin": "mdx:6ea1556f5e768d1c7dfddef51aba79c8:blank-1",
-      "discipline": "icu",
-      "cardType": "cloze",
-      "sourceComponent": "KeyPoint",
-      "front": "Skin/soft tissue sepsis first-line: flucloxacillin 2 g IV q6h. If MRSA risk (IVDU, recent hospitalisation, nursing home, known colonisation) → add [___].",
-      "back": "vancomycin",
-      "context": "Empirical cover for skin/soft tissue sepsis targets MSSA and group A strep, and broadens to include MRSA only when specific risk factors are present.\n\nWhen MRSA is plausible — IVDU, recent hospitalisation, nursing home residence, or known colonisation — flucloxacillin no longer covers the likely organism, so vancomycin is added (renally dosed.",
-      "complexity": 1,
-      "importance": 2,
-      "variantGroup": "cohort:icu:g-da35c271bea2",
-      "variantIndex": 1,
-      "reference": null
-    },
-    {
       "id": "cohort:icu:c-00a29aec0371:v1",
       "origin": "mdx:abd6911f8668cd66c99b8a22b5e345f9:blank-0",
       "discipline": "icu",
@@ -77,21 +62,6 @@
       "importance": 2,
       "variantGroup": "cohort:icu:g-9e24a7f5c7ab",
       "variantIndex": 1,
-      "reference": null
-    },
-    {
-      "id": "cohort:icu:c-023a732e31c3:v1",
-      "origin": "mdx:34969604f8f99e6231a56b94802b4f24:blank-0",
-      "discipline": "icu",
-      "cardType": "cloze",
-      "sourceComponent": "KeyPoint",
-      "front": "Parkland formula: [___] mL x weight (kg) x %TBSA; timing is calculated from time of injury, not presentation.",
-      "back": "4",
-      "context": "Parkland is calculated from time of INJURY, not time of presentation — late presenters need a faster initial fluid rate to deliver the first half within 8 hours of the burn (when capillary leak is greatest).\n\nA patient who presents 4 hours post-burn still needs half the 24-hour total in the next 4 hours. Conversely, fluid started in the field counts toward the total — communicate with retrieval/ambulance about volumes given.",
-      "complexity": 2,
-      "importance": 2,
-      "variantGroup": "cohort:icu:g-061f672d5dbf",
-      "variantIndex": 0,
       "reference": null
     },
     {
@@ -230,6 +200,21 @@
       "reference": null
     },
     {
+      "id": "cohort:icu:c-09982a785356:v1",
+      "origin": "mdx:affc94cb0c816e470836382be490d5ac:blank-1",
+      "discipline": "icu",
+      "cardType": "cloze",
+      "sourceComponent": "KeyPoint",
+      "front": "Standard PCA morphine: 1 mg bolus with [___]-minute lockout.",
+      "back": "5",
+      "context": "1 mg bolus / 5-min lockout is the safe-ceiling regimen: max 12 mg/h, below the respiratory-depression threshold for opioid-naive adults.\n\nOnly the patient should press the button — a sedated patient won't, the inherent safety mechanism. No proxy dosing.",
+      "complexity": 2,
+      "importance": 2,
+      "variantGroup": "cohort:icu:g-4bd7dad9f350",
+      "variantIndex": 1,
+      "reference": null
+    },
+    {
       "id": "cohort:icu:c-0998484deb76:v1",
       "origin": "mdx:097459097f7b99998bab77faf54a88e5",
       "discipline": "icu",
@@ -242,6 +227,21 @@
       "importance": 2,
       "variantGroup": null,
       "variantIndex": null,
+      "reference": null
+    },
+    {
+      "id": "cohort:icu:c-09fe05dba7e3:v1",
+      "origin": "mdx:3e49968bbdfc3722d7c43de972aec778:blank-0",
+      "discipline": "icu",
+      "cardType": "cloze",
+      "sourceComponent": "KeyPoint",
+      "front": "Parkland timing is calculated from time of [___] (not presentation). The first half is given over 8 hours, the second half over 16 hours.",
+      "back": "injury",
+      "context": "Capillary leak is maximal in the first 8 hours post-burn, so fluid requirements are frontloaded. Timing from injury (not presentation) matters — delayed patients need catch-up fluids to compensate for initial deficit.",
+      "complexity": 2,
+      "importance": 2,
+      "variantGroup": "cohort:icu:g-1532f98bb2ee",
+      "variantIndex": 0,
       "reference": null
     },
     {
@@ -317,21 +317,6 @@
       "importance": 2,
       "variantGroup": "cohort:icu:g-223067f17166",
       "variantIndex": 0,
-      "reference": null
-    },
-    {
-      "id": "cohort:icu:c-0b494ba0a5ac:v1",
-      "origin": "mdx:bd6bcc4f1832dad088ffbfa376dd1a64:blank-2",
-      "discipline": "icu",
-      "cardType": "cloze",
-      "sourceComponent": "KeyPoint",
-      "front": "Parkland timing is calculated from time of injury (not presentation). The first half is given over 8 hours, the second half over [___] hours.",
-      "back": "16",
-      "context": "Capillary leak is maximal in the first 8 hours post-burn, so fluid requirements are frontloaded. Timing from injury (not presentation) matters — delayed patients need catch-up fluids to compensate for initial deficit.",
-      "complexity": 2,
-      "importance": 2,
-      "variantGroup": "cohort:icu:g-5c234701d41d",
-      "variantIndex": 2,
       "reference": null
     },
     {

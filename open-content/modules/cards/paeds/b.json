@@ -65,6 +65,21 @@
       "reference": null
     },
     {
+      "id": "cohort:paeds:c-b1faa341fc31:v1",
+      "origin": "mdx:aa1261707622094e8748b125fd3cd835",
+      "discipline": "paeds",
+      "cardType": "cloze",
+      "sourceComponent": "KeyPoint",
+      "front": "The ductus arteriosus stays open in fetal life because placental [___] keeps it dilated — which is why an infusion of it holds the duct open in a duct-dependent lesion.",
+      "back": "prostaglandin",
+      "context": "Both fetal shunts bypass the fluid-filled lungs, but they close by different mechanisms and on different timescales, which decides when a lesion presents.\n\nThe foramen ovale closes functionally within minutes: pulmonary blood flow starts, left atrial pressure rises above right, and the flap is pushed shut.\n\nThe duct closes over hours to days as arterial oxygen tension rises and placental prostaglandin falls. So an infusion holds it open in a duct-dependent lesion, and indomethacin closes a preterm PDA.",
+      "complexity": 3,
+      "importance": 2,
+      "variantGroup": null,
+      "variantIndex": null,
+      "reference": null
+    },
+    {
       "id": "cohort:paeds:c-b214ea87ce82:v1",
       "origin": "mdx:68795794749c988e28dd50984638b0c4",
       "discipline": "paeds",
@@ -185,6 +200,21 @@
       "reference": null
     },
     {
+      "id": "cohort:paeds:c-b39ceb4b3e79:v1",
+      "origin": "mdx:be7cbead8f877149ca1737ee6007e6c1",
+      "discipline": "paeds",
+      "cardType": "cloze",
+      "sourceComponent": "KeyPoint",
+      "front": "In haemophilia, a prolonged aPTT [___] on mixing with normal plasma, unlike an inhibitor.",
+      "back": "corrects",
+      "context": "Both haemophilias sit in the INTRINSIC pathway, which aPTT measures. PT/INR tests the extrinsic pathway and is untouched.\n\nSo the coagulation screen shows an isolated prolonged aPTT — and because the defect is a factor rather than an inhibitor, it CORRECTS on mixing with normal plasma.\n\nA prolonged aPTT that fails to correct points at an inhibitor, such as antiphospholipid antibody, instead.",
+      "complexity": 3,
+      "importance": 2,
+      "variantGroup": "cohort:paeds:g-64b1e3601842",
+      "variantIndex": null,
+      "reference": null
+    },
+    {
       "id": "cohort:paeds:c-b3b262f2bf24:v1",
       "origin": "mdx:7bfefa34998923f9a19ae7f2b6c290e7",
       "discipline": "paeds",
@@ -230,6 +260,21 @@
       "reference": null
     },
     {
+      "id": "cohort:paeds:c-b458cb494517:v1",
+      "origin": "mdx:397ecb350cb579d28ce03d4e5a49c7e5:blank-0",
+      "discipline": "paeds",
+      "cardType": "cloze",
+      "sourceComponent": "KeyPoint",
+      "front": "Juvenile idiopathic arthritis (JIA): arthritis ≥[___], onset <16 years, exclusion of other causes; most common chronic rheumatic disease in children.",
+      "back": "6 weeks",
+      "context": "JIA is arthritis ≥6 weeks, onset <16y, other causes excluded. The 6-week threshold separates JIA from post-infectious or transient arthritis — it's the commonest chronic rheumatic disease of childhood.\n\nSubtypes: oligoarticular (≤4 joints, ANA+, uveitis risk), polyarticular (≥5 joints), systemic (Still's: quotidian fever, salmon rash, hepatosplenomegaly).",
+      "complexity": 2,
+      "importance": 2,
+      "variantGroup": "cohort:paeds:g-c2f523a4e5d3",
+      "variantIndex": 0,
+      "reference": null
+    },
+    {
       "id": "cohort:paeds:c-b47badec2ccd:v1",
       "origin": "mdx:2cfc43a53161a34a6800b452c186f32e",
       "discipline": "paeds",
@@ -260,21 +305,6 @@
       "reference": null
     },
     {
-      "id": "cohort:paeds:c-b54b909d91cf:v1",
-      "origin": "mdx:23816cb32dc994f8cae88dd5d5153ec7",
-      "discipline": "paeds",
-      "cardType": "cloze",
-      "sourceComponent": "KeyPoint",
-      "front": "A 13-year-old boy with a BMI of 32 has a week of left knee pain and an out-toeing gait. The knee is normal; the hip is irritable and held in external rotation. Do not send him home as a knee sprain — the diagnosis is [___].",
-      "back": "SCFE",
-      "context": "The file already taught that SCFE is a surgical emergency in the overweight 10–14-year-old and that hip pathology refers to the knee.\n\nA normal knee examination with an externally rotated hip is the hinge — not 'adolescent knee pain' in general.",
-      "complexity": 3,
-      "importance": 2,
-      "variantGroup": null,
-      "variantIndex": null,
-      "reference": null
-    },
-    {
       "id": "cohort:paeds:c-b54f40c77559:v1",
       "origin": "mdx:9502853aed3268a725c6341f02c3cb55",
       "discipline": "paeds",
@@ -287,6 +317,21 @@
       "importance": 2,
       "variantGroup": null,
       "variantIndex": null,
+      "reference": null
+    },
+    {
+      "id": "cohort:paeds:c-b58773061671:v1",
+      "origin": "mdx:758e0cacea59d76ac74be3ec0c41968b:blank-1",
+      "discipline": "paeds",
+      "cardType": "cloze",
+      "sourceComponent": "KeyPoint",
+      "front": "Cystic fibrosis (CF) management pillars: airway clearance, dornase alfa, nebulised [___], antibiotics, and pancreatic enzyme replacement.",
+      "back": "hypertonic saline",
+      "context": "The five pillars of CF maintenance work together: daily airway clearance — positive expiratory pressure (PEP), active cycle of breathing (ACBT), exercise — prevents mucus stagnation.\n\nDornase alfa cleaves neutrophil DNA. Antibiotics: empirical for exacerbations, chronic suppressive (inhaled tobramycin for Pseudomonas); pancreatic enzyme replacement therapy (PERT) for nutrition.",
+      "complexity": 2,
+      "importance": 2,
+      "variantGroup": "cohort:paeds:g-9402c609895a",
+      "variantIndex": 1,
       "reference": null
     },
     {
@@ -392,6 +437,21 @@
       "importance": 2,
       "variantGroup": null,
       "variantIndex": null,
+      "reference": null
+    },
+    {
+      "id": "cohort:paeds:c-b74815808e88:v1",
+      "origin": "mdx:7a3da171531c83f53e0896c3d912df7f:blank-1",
+      "discipline": "paeds",
+      "cardType": "cloze",
+      "sourceComponent": "KeyPoint",
+      "front": "Strabismus affects ~2% of children; untreated risks [___] (vision suppression in the misaligned eye).",
+      "back": "amblyopia",
+      "context": "Strabismus (eye misalignment) affects ~2% of children. Risk factors: family history, prematurity, refractive error (commonly hyperopia → accommodative esotropia), neurological disorders.\n\nUntreated strabismus causes amblyopia (vision suppression in the misaligned eye) — refer to ophthalmology by age 4-6 months for any persistent misalignment.",
+      "complexity": 2,
+      "importance": 2,
+      "variantGroup": "cohort:paeds:g-dc2fe72d55c8",
+      "variantIndex": 1,
       "reference": null
     },
     {
@@ -504,21 +564,6 @@
       "reference": null
     },
     {
-      "id": "cohort:paeds:c-b8ccdb4a9423:v1",
-      "origin": "mdx:51b2a339693184e3f28c71453cf3b518:blank-0",
-      "discipline": "paeds",
-      "cardType": "cloze",
-      "sourceComponent": "KeyPoint",
-      "front": "Von Willebrand disease — most common inherited bleeding disorder (~[___]% prevalence); vWF has two roles: platelet adhesion + carrier protein for Factor VIII.",
-      "back": "1",
-      "context": "Von Willebrand disease is the commonest inherited bleeding disorder (~1% prevalence). vWF has two roles: bridges platelets to damaged endothelium (primary haemostasis) and carries Factor VIII.\n\nvWF deficiency thus causes mucocutaneous bleeding (epistaxis, menorrhagia, easy bruising) AND mild factor VIII deficiency-like deep bleeding in severe types.",
-      "complexity": 1,
-      "importance": 2,
-      "variantGroup": "cohort:paeds:g-7df7b71196b5",
-      "variantIndex": 0,
-      "reference": null
-    },
-    {
       "id": "cohort:paeds:c-b8d7639ce85b:v1",
       "origin": "mdx:76a59b434cd67ed332d85a9d6ba2693e",
       "discipline": "paeds",
@@ -568,6 +613,21 @@
       "reference": null
     },
     {
+      "id": "cohort:paeds:c-b9a016a5e396:v1",
+      "origin": "mdx:8f7d4425d855f56f42565658ed392d8a",
+      "discipline": "paeds",
+      "cardType": "cloze",
+      "sourceComponent": "KeyPoint",
+      "front": "The airflow obstruction in asthma is characteristically [___].",
+      "back": "reversible",
+      "context": "Asthma features variable airflow limitation and symptoms triggered by exercise, allergens or cold air. Bronchodilator responsiveness supports the diagnosis when the clinical history fits.\n\nReversibility may be absent on a single test, especially between symptomatic episodes. Persistent airflow limitation can also occur in longstanding asthma.",
+      "complexity": 1,
+      "importance": 2,
+      "variantGroup": null,
+      "variantIndex": null,
+      "reference": null
+    },
+    {
       "id": "cohort:paeds:c-b9bc47bc5a28:v1",
       "origin": "mdx:cd4bc3abb68f6e695f87db9c29fc2719",
       "discipline": "paeds",
@@ -583,18 +643,18 @@
       "reference": null
     },
     {
-      "id": "cohort:paeds:c-ba2a15ea9d53:v1",
-      "origin": "mdx:cc02f630e12b84b2373a0bb598063cbf:blank-1",
+      "id": "cohort:paeds:c-b9ee19962aa6:v1",
+      "origin": "mdx:2251fdaf0780a2454df671ab45c6c336",
       "discipline": "paeds",
       "cardType": "cloze",
       "sourceComponent": "KeyPoint",
-      "front": "Most common bacterial cause of paediatric pneumonia is Streptococcus pneumoniae; [___] is the typical 'walking pneumonia' organism in older children.",
-      "back": "Mycoplasma",
-      "context": "S. pneumoniae is the dominant bacterial cause of paediatric CAP at all ages (~30-50% when an organism is identified).\n\nEmpirical antibiotic choice reflects this: amoxicillin (typical Strep pneumo) is first-line outpatient; add/switch to azithromycin if atypical (Mycoplasma.",
-      "complexity": 2,
+      "front": "An alert toddler has a day of vomiting and diarrhoea, moist mucous membranes, and a normal heart rate. Start [___] rather than a drip.",
+      "back": "oral rehydration",
+      "context": "An alert child with gastroenteritis and no shock signs can replace losses by mouth.\n\nOral rehydration solution is the drink. A drip is for shock, intractable vomiting, or a child who cannot keep fluid down.",
+      "complexity": 4,
       "importance": 2,
-      "variantGroup": "cohort:paeds:g-c2b29f60bcc5",
-      "variantIndex": 1,
+      "variantGroup": null,
+      "variantIndex": null,
       "reference": null
     },
     {
@@ -730,21 +790,6 @@
       "importance": 2,
       "variantGroup": "cohort:paeds:g-32f1ee4c7dc0",
       "variantIndex": 1,
-      "reference": null
-    },
-    {
-      "id": "cohort:paeds:c-bcaf7102a6f8:v1",
-      "origin": "mdx:0a0bb7ebf1c0fc60e3aefc8dfdc17cc6",
-      "discipline": "paeds",
-      "cardType": "cloze",
-      "sourceComponent": "KeyPoint",
-      "front": "IV rehydration in paediatric gastroenteritis is reserved for shock, severe dehydration, or failure to tolerate [___] fluids.",
-      "back": "nasogastric",
-      "context": "Use enteral rehydration whenever possible. If oral ORS fails, try nasogastric ORS; reserve IV for shock, severe dehydration, or inability to tolerate NG fluids.",
-      "complexity": 1,
-      "importance": 2,
-      "variantGroup": null,
-      "variantIndex": null,
       "reference": null
     },
     {

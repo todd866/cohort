@@ -4,7 +4,7 @@ try { require('server-only'); } catch {}
 
 import { Prisma, type PrismaClient } from '@prisma/client';
 import { prisma } from '@/lib/prisma';
-import { registerRepositoryScopedCardWhere } from './read-scope-registry.server';
+import { ownerPrivateOrSharedPredicate, registerRepositoryScopedCardWhere, SHARED_CATALOG_PREDICATE } from './read-scope-registry.server';
 
 const CARD_READ_SCOPE = Symbol('md3.card-read-scope');
 
@@ -98,27 +98,8 @@ function assertScope(scope: CardReadScope): void {
 function ownershipWhere(scope: CardReadScope): Prisma.CardWhereInput {
   assertScope(scope);
   return scope.audience === 'shared-catalog'
-    ? { ownerUserId: null }
-    : {
-        OR: [
-          { ownerUserId: null },
-          {
-            ownerUserId: scope.ownerUserId,
-            importEpoch: {
-              is: {
-                status: 'active',
-                ownerUserId: scope.ownerUserId,
-                activeForDeck: {
-                  is: {
-                    ownerUserId: scope.ownerUserId,
-                    deletedAt: null,
-                  },
-                },
-              },
-            },
-          },
-        ],
-      };
+    ? { ...SHARED_CATALOG_PREDICATE }
+    : ownerPrivateOrSharedPredicate(scope.ownerUserId);
 }
 
 function appendAnd<T extends { AND?: unknown }>(where: T, required: unknown): T {
@@ -344,6 +325,43 @@ export async function findFirstCardLearningEvent<
   return learningEvent.findFirst(scopedArgs) as unknown as Promise<
     Prisma.LearningEventGetPayload<T> | null
   >;
+}
+
+/**
+ * One owner's own Cards per source file (the Anki link's deck rows: `anki-deck:<id>`). Owner-scoped and narrowed
+ * to `ownerUserId`, so shared catalog Cards and other owners' Cards are never counted.
+ */
+export async function groupOwnerCardsBySourceFile(
+  ownerUserId: string,
+  where: Prisma.CardWhereInput = {},
+): Promise<Array<{ sourceFile: string | null; _count: number }>> {
+  const groupBySourceFile = model.groupBy as unknown as (args: {
+    by: ['sourceFile'];
+    where: Prisma.CardWhereInput;
+    _count: true;
+  }) => Promise<Array<{ sourceFile: string | null; _count: number }>>;
+  return groupBySourceFile({
+    by: ['sourceFile'],
+    where: scopedCardWhere(ownerPrivateOrSharedCardScope(ownerUserId), { ...where, ownerUserId }),
+    _count: true,
+  });
+}
+
+/**
+ * The ids, of those given, that this learner may be served: shared Cards and their own private ones.
+ * A similarity or topic search ranges over every Card, other learners' private Anki cards included,
+ * so anything that queues the result for a learner filters it here first (18 Nov 2026: a scaffold
+ * pick reached another learner's synced card and the database refused the whole batch).
+ */
+export async function keepCardIdsVisibleTo(userId: string, cardIds: string[]): Promise<string[]> {
+  const unique = [...new Set(cardIds)];
+  if (unique.length === 0) return [];
+  const rows = await findManyCards(ownerPrivateOrSharedCardScope(userId), {
+    where: { id: { in: unique } },
+    select: { id: true },
+  });
+  const visible = new Set(rows.map((row) => row.id));
+  return unique.filter((id) => visible.has(id));
 }
 
 /** Narrow groupings used by profile statistics; arbitrary groupBy stays closed. */

@@ -4,7 +4,7 @@ import { NextResponse } from 'next/server';
 import { prisma } from '@/lib/prisma';
 import { filterDeliverableReinforcementCardRows } from '@/lib/usmle/reinforcement-card-delivery';
 import { shuffle } from '@/lib/utils/shuffle';
-import { getStudyDayStart } from '@/lib/study-day';
+import { getCourseDayStart } from '@/lib/study-day';
 import type { SessionContext } from './unified-session-types';
 import { enrichItemsWithWalkMetadata } from '@/lib/audit/walk-metadata';
 import { scoreOrderedPairwiseDistances } from '@/lib/manifold/scoring';
@@ -15,6 +15,7 @@ import type { ClipPromptData } from '@/components/review/clip-role';
 import { resolveImageAlternatives } from '@/lib/figures/resolve-alternatives';
 import { logger } from '@/lib/logger';
 import { writeLiveServeDecisions } from './serve-decision-write';
+import { learnerItemPredictionFor } from './learner-item-prediction-load';
 import { sessionCandidateItemWhere } from '@/lib/knowledge/session-candidate-scope';
 import { capCrossSourceSessionItems } from '@/lib/knowledge/cross-source-cap';
 import {
@@ -48,7 +49,8 @@ export async function tryRereviewSession(ctx: SessionContext): Promise<NextRespo
   if (ctx.isGuest) return NextResponse.json({ items: [], sessionId: ctx.sessionId, batchId: ctx.batchId });
 
   const now = new Date();
-  const startOfDay = getStudyDayStart(now);
+  // The grader's day: viewsTodayDate is stamped with this boundary.
+  const startOfDay = getCourseDayStart(now);
   const cooldownCutoff = new Date(now.getTime() - REREVIEW_COOLDOWN_MS);
 
   // Serve-time recency exclusion. The lastReview / viewsToday gates below are
@@ -256,6 +258,7 @@ export async function tryRereviewSession(ctx: SessionContext): Promise<NextRespo
     rotation: ctx.rotation,
     decisionPath: 'rereview',
     queueReason: 'failed-today',
+    learnerItem: learnerItemPredictionFor(ctx),
   });
 
   // Note: positionInSession in content_exposed events reflects the

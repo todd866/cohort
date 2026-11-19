@@ -476,6 +476,8 @@ describe('public navigation and static assets', () => {
       'src/components/review/McqItemView.tsx -> /questions/${item.id}',
       'src/components/review/RotationOnboarding.tsx -> /api/user/curriculum-request',
       'src/components/review/RotationOnboarding.tsx -> /api/user/rotation',
+      // The first-run year band is not rendered on the Cohort host (review-page-client gates it).
+      'src/components/review/YearPicker.tsx -> /api/user/rotation',
       'src/components/review/StationChip.tsx -> /clinical/station-topics.json',
       'src/components/review/StationDrawer.tsx -> /clinical/${stationId}',
       'src/components/review/StationDrawer.tsx -> /api/clinical/stations/${encodeURIComponent(id)}',
@@ -488,6 +490,8 @@ describe('public navigation and static assets', () => {
       'src/components/review/hooks/useTopicReadiness.ts -> /api/study/topic-readiness',
       // No videos / No images is not offered on Cohort (UnifiedReview's offerMediaChoice).
       'src/components/media/useReviewMediaPreferences.ts -> /api/study/media-preferences',
+      // No exam follow-ups: signed-in md3 learners only; follow-ups never reach Cohort.
+      'src/components/review/usePracticeFollowUpPreference.ts -> /api/study/follow-up-preference',
     ]);
     allowedTargets.add('/api/content/flag/images/${id}');
     allowedTargets.add('/api/content/flag/images/${data.attachmentId}');

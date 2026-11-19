@@ -21,6 +21,7 @@ import {
   type ExamTargetMasteryUnit,
 } from './mastery';
 import type { ExamTargetRotation } from './types';
+import { getCourseDayStart } from '@/lib/study-day';
 
 const DAY_MS = 24 * 60 * 60 * 1000;
 const CURRENT_CANVAS_CURRICULUM_TARGET = parseCanvasCurriculumTarget(
@@ -752,9 +753,14 @@ function defaultNow(value: Date | undefined): Date {
     : new Date();
 }
 
-function defaultTodayStart(value: Date | undefined, now: Date): Date {
+/**
+ * "Today" for completed-today counts and retrieval spans: the caller's
+ * boundary, or course-calendar midnight (the grader's day). The server runs in
+ * UTC, whose midnight falls mid-morning on the course wall clock.
+ */
+export function defaultTodayStart(value: Date | undefined, now: Date): Date {
   if (value instanceof Date && Number.isFinite(value.getTime())) return value;
-  return new Date(Date.UTC(now.getUTCFullYear(), now.getUTCMonth(), now.getUTCDate()));
+  return getCourseDayStart(now);
 }
 
 /**

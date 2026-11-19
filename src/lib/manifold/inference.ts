@@ -14,6 +14,8 @@ import {
   type ExamDateInput,
 } from '@/lib/review/scheduler-config';
 import { filterDeliverableReinforcementCardRows } from '@/lib/usmle/reinforcement-card-delivery';
+import { calculateDecayedStrength } from '../knowledge/topic-heat';
+export { calculateDecayedStrength };
 
 export interface MasteryEstimate {
   cardId: string;
@@ -237,44 +239,36 @@ export async function getManifoldCoverage(
   };
 }
 
-/**
- * Calculate time-decayed retrieval strength (FSRS-style)
- * Memory decays over time following a power law
- *
- * @param strength - Current retrieval strength (0-1)
- * @param daysSinceReview - Days since last review
- * @param stability - Memory stability (higher = slower decay)
- * @returns Predicted current retrieval probability (0-1)
- */
-export function calculateDecayedStrength(
-  strength: number,
-  daysSinceReview: number,
-  stabilityDays: number = 3
-): number {
-  if (daysSinceReview <= 0) return strength;
-
-  // FSRS-style power law decay: R(t) = (1 + t/S)^(-0.5) * R0
-  // Where S is stability (days until 90% retention drops to ~60%)
-  const decayFactor = Math.pow(1 + daysSinceReview / stabilityDays, -0.5);
-  return strength * decayFactor;
-}
+/** Stability ceiling when no upcoming exam bounds it. */
+const NO_EXAM_CAP_DAYS = 60;
 
 /**
  * Get days until exam for a rotation (with buffer for one more review)
  * Exam dates derived from BLOCKS in rotation-context.ts (single source of truth)
+ *
+ * `examDateOverride` has three states. A date is the learner's own exam for
+ * the rotation. `null` says the learner was resolved and has no upcoming exam
+ * for it: no exam cap. `undefined` means the caller has no learner context, and
+ * the configured or default-calendar date stands in.
+ *
+ * A date that has passed is not a deadline, so it caps nothing. Without that,
+ * the exam-week floor of 3 days held for ever, and every success on a card in
+ * a finished rotation was pinned at a 3-day stability.
  */
 export function getDaysUntilExam(
   rotation: string | undefined,
   now: Date = new Date(),
   examDateOverride?: ExamDateInput
 ): number {
+  if (examDateOverride === null) return NO_EXAM_CAP_DAYS;
   const examDate =
     parseExamDate(examDateOverride)
     ?? getConfiguredExamDateForRotation(rotation)
     ?? (rotation ? getBlockExamDate(rotation) : null);
-  if (!examDate) return 60; // Default cap if no exam date
+  if (!examDate) return NO_EXAM_CAP_DAYS; // Default cap if no exam date
 
   const daysUntil = (examDate.getTime() - now.getTime()) / (1000 * 60 * 60 * 24);
+  if (daysUntil <= 0) return NO_EXAM_CAP_DAYS;
 
   // Leave 7 days buffer before exam for final review cycle
   // But never less than 3 days (cards should still cycle during exam week)
@@ -304,7 +298,7 @@ export function updateStabilityDays(
   // Exam-aware cap: either time until exam OR 60 days (whichever is smaller)
   const examCap = (rotation || examDateOverride)
     ? getDaysUntilExam(rotation, now, examDateOverride)
-    : 60;
+    : NO_EXAM_CAP_DAYS;
   const moduleCap = maxIntervalOverride ?? 60;
   const maxDays = Math.min(moduleCap, examCap);
 

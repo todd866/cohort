@@ -1,8 +1,9 @@
 'use client';
 
 import { useFlagImage } from '@/components/content/FlagImageInput';
-import { useState, useCallback, useEffect, useRef } from 'react';
+import { useState, useCallback, useEffect, useRef, type SetStateAction } from 'react';
 import { queueFlag, type QueuedFlag } from '@/lib/flag-submit';
+import type { ReviewFeedbackSubmissionStatus } from '@/lib/review/review-actions';
 import { harvestFlagDiagnostics } from '@/lib/flag-diagnostics';
 import type { PracticeReviewProvenance } from '@/lib/study/practice-review-focus';
 import { genClientRequestId } from '@/lib/client-request-id';
@@ -35,24 +36,48 @@ export function useFlagging({ item, registerResetCallback, publicSurface = false
   const image = useFlagImage(`${item?.type}:${item?.deliveryId ?? item?.id}`);
   const [flagMode, setFlagMode] = useState(false);
   const [flagged, setFlagged] = useState(false);
-  // Durably-queued or in-flight: the flag is safe in the outbox (queued /
-  // auth-required) or mid-submit, but not yet confirmed delivered. Drives the
-  // amber pending cue and — via pendingRef — blocks duplicate submissions.
   const [flagPending, setFlagPending] = useState(false);
   const [flagMessage, setFlagMessage] = useState('');
-  // Session-expired cue. Deliberately NOT reset on item advance — once a write
-  // 401s the cue persists across cards until the user re-signs-in (which reloads
-  // the app and clears this state).
   const [authExpired, setAuthExpired] = useState(false);
-  // Synchronous guard: state updates are async, so a second F-press in the same
-  // tick would otherwise mint a second clientRequestId and create a duplicate
-  // issue on replay. The ref blocks re-entry while a submit is in-flight or
-  // durably queued.
   const pendingRef = useRef(false);
   const publicPendingRef = useRef<{ deliveryId: string; clientRequestId: string; kind: 'flag'; reason: 'Other'; message?: string } | null>(null);
   const publicGenerationRef = useRef(0);
+  const [submissionGeneration, setSubmissionGeneration] = useState(0);
+  const submissionGenerationRef = useRef(0);
+  const flagMessageRef = useRef('');
+  const [submissionStatus, setSubmissionStatus] = useState<ReviewFeedbackSubmissionStatus>('idle');
+  const [submissionError, setSubmissionError] = useState<string | undefined>();
 
-  // Reset per-item flag state when the session advances (authExpired persists).
+  const releasePendingForAttempt = useCallback((attemptGeneration: number) => {
+    if (attemptGeneration !== submissionGenerationRef.current) return;
+    pendingRef.current = false;
+    setFlagPending(false);
+  }, []);
+
+  const bumpSubmissionGeneration = useCallback(() => {
+    const next = submissionGenerationRef.current + 1;
+    submissionGenerationRef.current = next;
+    setSubmissionGeneration(next);
+    setSubmissionStatus('idle');
+    setSubmissionError(undefined);
+    return next;
+  }, []);
+
+  const setFlagMessageTracked = useCallback((value: SetStateAction<string>) => {
+    // The voice adapter obeys the same disabled state as the visible textarea.
+    // Editing a draft must never release a durable submission's duplicate lock.
+    if (pendingRef.current || (publicSurface && image.error)) return;
+    const previous = flagMessageRef.current;
+    const next = typeof value === 'function' ? value(previous) : value;
+    flagMessageRef.current = next;
+    setFlagMessage(next);
+    if (next !== previous) bumpSubmissionGeneration();
+  }, [bumpSubmissionGeneration, publicSurface, image.error]);
+
+  useEffect(() => {
+    flagMessageRef.current = flagMessage;
+  }, [flagMessage]);
+
   useEffect(() => {
     return registerResetCallback(() => {
       setFlagMode(false);
@@ -62,24 +87,29 @@ export function useFlagging({ item, registerResetCallback, publicSurface = false
       publicPendingRef.current = null;
       publicGenerationRef.current += 1;
       setFlagMessage('');
+      flagMessageRef.current = '';
+      submissionGenerationRef.current = 0;
+      setSubmissionGeneration(0);
+      setSubmissionStatus('idle');
+      setSubmissionError(undefined);
     });
   }, [registerResetCallback]);
 
   const handleFlagSubmit = useCallback(async () => {
     if (!item) return;
-    // Block only an in-flight or durably-queued submit (pendingRef) — this stops
-    // accidental double-submit of the SAME flag. A delivered flag must NOT block a
-    // second, distinct flag on the same card: the user often has a follow-up issue
-    // (e.g. flagged "needs image", then notices the cloze is too easy). Each call
-    // mints its own clientRequestId, so the second flag is a real new issue.
     if (pendingRef.current) return;
+    const attemptGeneration = submissionGenerationRef.current + 1;
+    submissionGenerationRef.current = attemptGeneration;
+    setSubmissionGeneration(attemptGeneration);
+    setSubmissionStatus('submitting');
+    setSubmissionError(undefined);
     pendingRef.current = true;
     setFlagPending(true);
     if (publicSurface) {
       const deliveryId = item.deliveryId;
       if (!deliveryId) {
-        pendingRef.current = false;
-        setFlagPending(false);
+        releasePendingForAttempt(attemptGeneration);
+        setSubmissionStatus('idle');
         return;
       }
       const generation = publicGenerationRef.current;
@@ -100,39 +130,31 @@ export function useFlagging({ item, registerResetCallback, publicSurface = false
         }, CLIENT_FETCH_DEADLINE_MS);
         if (!response.ok) throw new Error('Feedback could not be saved');
         if (generation !== publicGenerationRef.current) return;
+        if (attemptGeneration !== submissionGenerationRef.current) return;
         publicPendingRef.current = null;
         image.setError(null);
         setFlagMode(false);
         setFlagMessage('');
+        flagMessageRef.current = '';
         setFlagged(true);
-        setFlagPending(false);
-        pendingRef.current = false;
+        releasePendingForAttempt(attemptGeneration);
+        setSubmissionStatus('delivered');
       } catch {
         if (generation !== publicGenerationRef.current) return;
-        setFlagPending(false);
-        pendingRef.current = false;
-        // The public surface has no image controls, but the shared overlay can
-        // still expose the retry state through the same controller error slot.
+        if (attemptGeneration !== submissionGenerationRef.current) return;
+        releasePendingForAttempt(attemptGeneration);
         image.setError('Feedback was not saved. Your note is kept; try again.');
+        setSubmissionStatus('error');
+        setSubmissionError('Feedback was not saved. Your note is kept; try again.');
       }
       return;
     }
     const generation = publicGenerationRef.current;
     const note = flagMessage.trim();
-    // Harvest the render environment NOW — at the moment of flagging, with the
-    // card revealed and the footer showing — so a rendering complaint ("context
-    // cut off") is diagnosable later from viewport/route/overflow/cover, not guesswork.
     const diagnostics = harvestFlagDiagnostics();
-    const clear = () => { pendingRef.current = false; setFlagPending(false); };
-    // Public questions are addressed exclusively by their opaque delivery
-    // capability. Even if a future caller happens to retain the canonical id
-    // locally, it must never cross this client boundary.
     const practiceSource = item.answerSource === 'practice-exam-follow-up'
       ? item.practiceReview?.source : undefined;
     const opaqueDeliveryId = item.type === 'question' ? item.deliveryId : undefined;
-    // Exact practice retests keep the same opaque question capability as other
-    // public questions; the server resolves that capability to the canonical
-    // published exam component after checking owner and source fingerprints.
     let queued: QueuedFlag;
     try {
       queued = await queueFlag({
@@ -147,37 +169,69 @@ export function useFlagging({ item, registerResetCallback, publicSurface = false
         } } : {}),
       }, { image: image.file });
     } catch {
-      // Only the image store can refuse; nothing was queued. Keep the draft.
       if (generation !== publicGenerationRef.current) return;
+      if (attemptGeneration !== submissionGenerationRef.current) return;
       image.setError('Not saved on this device. Try again.');
-      clear();
+      setSubmissionStatus('error');
+      setSubmissionError('Not saved on this device. Try again.');
+      releasePendingForAttempt(attemptGeneration);
       return;
     }
-    // The item advanced (or the sheet was cancelled) while the image was being
-    // stored: the flag is queued, but this sheet now holds another draft.
     if (generation !== publicGenerationRef.current) return;
-    // Durable on this device: close now; delivery settles the cue later.
+    if (attemptGeneration !== submissionGenerationRef.current) return;
     image.committed();
     setFlagMode(false);
     setFlagMessage('');
+    flagMessageRef.current = '';
+    setSubmissionStatus('queued');
     queued.result.then((result) => {
       if (generation !== publicGenerationRef.current) return;
-      if (result === 'delivered' || result === 'image-unavailable') { setFlagged(true); clear(); }
-      else if (result === 'queued') { /* stays pending — durably queued, awaiting replay */ }
+      if (attemptGeneration !== submissionGenerationRef.current) return;
+      if (result === 'delivered' || result === 'image-unavailable') {
+        setFlagged(true);
+        setSubmissionStatus('delivered');
+        releasePendingForAttempt(attemptGeneration);
+      } else if (result === 'queued') { /* stays pending — durably queued, awaiting replay */ }
       else if (result === 'auth-required') { setAuthExpired(true); /* stays pending */ }
-      else clear(); // 'dropped' — invalid, allow a retry
-    }).catch(clear);
-  }, [item, flagMessage, image, publicSurface]);
+      else {
+        setSubmissionStatus('error');
+        setSubmissionError('The report could not be delivered.');
+        releasePendingForAttempt(attemptGeneration);
+      }
+    }).catch(() => {
+      if (generation !== publicGenerationRef.current) return;
+      if (attemptGeneration !== submissionGenerationRef.current) return;
+      setSubmissionStatus('error');
+      setSubmissionError('The report could not be delivered.');
+      releasePendingForAttempt(attemptGeneration);
+    });
+  }, [item, flagMessage, image, publicSurface, releasePendingForAttempt]);
 
   const closeFlag = useCallback(() => {
+    setFlagMode(false);
+    // Closing the form cannot withdraw an in-flight or durably queued report.
+    // Its eventual delivery still owns the pending lock and status.
+    if (pendingRef.current) return;
     image.remove();
     publicPendingRef.current = null;
     publicGenerationRef.current += 1;
     pendingRef.current = false;
     setFlagPending(false);
-    setFlagMode(false);
     setFlagMessage('');
+    flagMessageRef.current = '';
+    setSubmissionStatus('idle');
+    setSubmissionError(undefined);
   }, [image]);
+
+  const openFlag = useCallback((value: SetStateAction<boolean>) => {
+    const previous = flagMode;
+    const next = typeof value === 'function' ? value(previous) : value;
+    if (next && !previous && !pendingRef.current) {
+      setSubmissionStatus('idle');
+      setSubmissionError(undefined);
+    }
+    setFlagMode(next);
+  }, [flagMode]);
 
   return {
     image,
@@ -186,8 +240,11 @@ export function useFlagging({ item, registerResetCallback, publicSurface = false
     flagPending,
     flagMessage,
     authExpired,
-    setFlagMode,
-    setFlagMessage,
+    submissionGeneration,
+    submissionStatus,
+    submissionError,
+    setFlagMode: openFlag,
+    setFlagMessage: setFlagMessageTracked,
     handleFlagSubmit,
     closeFlag,
   };

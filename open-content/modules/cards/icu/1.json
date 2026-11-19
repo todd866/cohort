@@ -245,6 +245,21 @@
       "reference": null
     },
     {
+      "id": "cohort:icu:c-18990df424d2:v1",
+      "origin": "mdx:1d9a578c12e27d54e9cf22eb79a65323:blank-0",
+      "discipline": "icu",
+      "cardType": "cloze",
+      "sourceComponent": "KeyPoint",
+      "front": "Per CRASH-2, trauma TXA dosing is [___] IV bolus over 10 min, then the same dose given as an infusion over 8 hours. Beyond 3 hours from injury, the mortality benefit is lost — and may even be harmful.",
+      "back": "1 g",
+      "context": "CRASH-2 (Lancet 2010, n=20,211): TXA cuts all-cause mortality by 1.5% absolute (NNT ~67) when given within 3 hours of injury.\n\nMechanism: blocks plasminogen activation, preventing fibrinolysis without promoting new clot formation.\n\nProtocol: same dose for bolus (over 10 min) and 8-hour infusion — the symmetry makes it easy to recall under stress.",
+      "complexity": 2,
+      "importance": 2,
+      "variantGroup": "cohort:icu:g-02ea6b4a48fd",
+      "variantIndex": 0,
+      "reference": null
+    },
+    {
       "id": "cohort:icu:c-18a036835442:v1",
       "origin": "mdx:90423e1442c5a1d4592e4ac5a1cea192:blank-1",
       "discipline": "icu",

@@ -1,5 +1,9 @@
+import { waitForClientIdentity } from './client-identity';
+
 /**
- * A `fetch` that is guaranteed to settle.
+ * A network attempt that is guaranteed to settle. Startup identity-dependent
+ * requests wait at most four seconds before starting their network deadline;
+ * their caller can cancel the identity wait.
  *
  * An `await fetch(...)` with no abort signal can hang forever. On 2026-07-09
  * that wedged `flushOutbox`, and because the review feed was gated behind the
@@ -37,6 +41,14 @@ export async function fetchWithDeadline(
   init: RequestInit,
   ms: number,
 ): Promise<Response> {
+  // Voice availability, prefetch and connect must see the resolved startup identity.
+  // Settlement PATCHes must still leave immediately when the page closes.
+  const voiceStartup = /^\/api\/tutor\/voice(?:\?|$)/.test(url) && (!init.method || ['GET', 'POST'].includes(init.method.toUpperCase()));
+  if (voiceStartup || /^\/api\/(?:study\/(?:record|daily-target|topic-readiness)|user\/first-touch)(?:\?|$)/.test(url)) {
+    const identity = waitForClientIdentity(init.signal);
+    if (identity) await identity;
+    if (init.signal?.aborted) throw init.signal.reason;
+  }
   const controller = new AbortController();
   const callerSignal = init.signal;
   const abortFromCaller = () => controller.abort(callerSignal?.reason);

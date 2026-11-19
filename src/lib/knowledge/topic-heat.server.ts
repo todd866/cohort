@@ -31,6 +31,8 @@ import {
   isSelfPacedExamDate,
 } from '@/lib/rotations';
 import { resolveClusterLabel } from './cluster-subject-label';
+import { countSecuredFacts, isProgressSecured, type PassSet } from './pass-set';
+import { passSetForPool, rotationHasPassSet } from './pass-set-inputs';
 import {
   projectReadiness,
   type ReadinessPoint,
@@ -75,6 +77,77 @@ export interface TopicHeatmap {
    */
   examDated?: boolean;
   squares: TopicSquare[];
+  /** Facts it takes to pass, and how many this learner has secured. Null off exam rotations. */
+  passSet?: PassSetReadout | null;
+}
+
+export interface PassSetReadout {
+  size: number;
+  secured: number;
+  /** Share of the exam's relevance mass the pass set covers (0-1). */
+  coverage: number;
+}
+
+/** The corpus side changes when content is seeded, not per view. */
+const PASS_SET_CORPUS_TTL_MS = 15 * 60_000;
+const passSetCorpus = new Map<string, { at: number; passSet: PassSet | null }>();
+
+async function loadRotationPassSet(rotation: string, now: Date): Promise<PassSet | null> {
+  const hit = passSetCorpus.get(rotation);
+  if (hit && now.getTime() - hit.at < PASS_SET_CORPUS_TTL_MS) return hit.passSet;
+  const cards = await prisma.card.findMany({
+    where: { rotation, deletedAt: null, shelvedAt: null, ownerUserId: null },
+    select: {
+      id: true, rotation: true, variantGroupId: true, importance: true,
+      examRelevancePct: true, examDomain: true, topics: true,
+    },
+  });
+  const passSet = passSetForPool(cards, rotation);
+  passSetCorpus.set(rotation, { at: now.getTime(), passSet });
+  return passSet;
+}
+
+/**
+ * "Pass set 2,555 · 312 secured": the learner-facing count, replacing the
+ * rotation's raw card total. Secured is the CardProgress form of the
+ * must-know test (pass-set.ts isProgressSecured). Losing it costs the readout,
+ * never the map.
+ */
+export async function loadPassSetReadout(
+  userId: string,
+  rotation: string,
+  now: Date = new Date(),
+): Promise<PassSetReadout | null> {
+  if (!rotationHasPassSet(rotation)) return null;
+  try {
+    const [passSet, progress] = await Promise.all([
+      loadRotationPassSet(rotation, now),
+      // Only rows that can pass the test: two correct, a passing last grade, not overdue.
+      prisma.cardProgress.findMany({
+        where: {
+          userId,
+          correctCount: { gte: 2 },
+          lastQuality: { gte: 3 },
+          nextDueAt: { gt: now },
+          suppressed: false,
+          card: { rotation, deletedAt: null, shelvedAt: null },
+        },
+        select: {
+          cardId: true, lastQuality: true, correctCount: true, stabilityDays: true,
+          lastReview: true, nextDueAt: true, suppressed: true,
+        },
+      }),
+    ]);
+    if (!passSet || passSet.size === 0) return null;
+    const secured = countSecuredFacts(
+      passSet,
+      progress.filter((row) => isProgressSecured(row, now)).map((row) => row.cardId),
+    );
+    return { size: passSet.size, secured, coverage: passSet.coverageShare };
+  } catch (error) {
+    logger.warn('Failed to load pass-set readout', { rotation, error: String(error) });
+    return null;
+  }
 }
 
 /** How many example card fronts each square carries, and how much of each. */
@@ -397,6 +470,25 @@ export async function loadTopicReadinessSummary(
 }
 
 /**
+ * Current topic squares and the exam horizon, without the trend replay: the
+ * Talk Coach's summary (src/lib/talk/coach-summary.server.ts). Read when the
+ * learner taps Coach, never on the review serve path. Throws on failure; the
+ * caller degrades to no summary.
+ */
+export async function loadTopicSquares(
+  userId: string,
+  rotation: string,
+  now: Date = new Date(),
+): Promise<{ squares: TopicSquare[]; horizonDays: number; examDated: boolean }> {
+  const horizon = await loadHorizon(userId, rotation, now);
+  const [rows, memberTopics] = await Promise.all([
+    loadClusterRows(userId, rotation, now, horizon.days),
+    loadMemberTopics(rotation),
+  ]);
+  return { squares: clusterRowsToSquares(rows, rotation, now, memberTopics), horizonDays: horizon.days, examDated: horizon.dated };
+}
+
+/**
  * The knowledge heatmap for one learner: every cluster in the rotation they
  * are currently on, plus the pinned never-forget squares.
  *
@@ -413,11 +505,12 @@ export async function loadTopicHeatmap(
 
     const horizon = await loadHorizon(userId, rotation, now);
     const horizonDays = horizon.days;
-    const [rows, trend, memberTopics] = await Promise.all([
+    const [rows, trend, memberTopics, passSet] = await Promise.all([
       loadClusterRows(userId, rotation, now, horizonDays),
       // Best-effort: losing the trend costs a sparkline, never the grid.
       loadTrend(userId, rotation, now, horizonDays).catch((): ReadinessPoint[] => []),
       loadMemberTopics(rotation),
+      loadPassSetReadout(userId, rotation, now),
     ]);
 
     const squares = clusterRowsToSquares(rows, rotation, now, memberTopics);
@@ -433,6 +526,7 @@ export async function loadTopicHeatmap(
       horizonDays,
       examDated: horizon.dated,
       squares,
+      passSet,
     };
   } catch (error) {
     // Losing this costs one profile render's grid, never the page.

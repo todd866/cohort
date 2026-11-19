@@ -55,6 +55,7 @@ model AnkiSyncPeer {
   operations  AnkiBridgeOperation[]
   conflicts   AnkiConflict[]
   eligibility AnkiEligibilityState[]
+  linkJobs    AnkiLinkJob[]
 
   @@unique([id, ownerUserId, collectionId], map: "AnkiSyncPeer_id_owner_collection_key")
   @@index([ownerUserId, revokedAt], map: "AnkiSyncPeer_owner_revoked_idx")

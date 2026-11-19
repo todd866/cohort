@@ -3,7 +3,7 @@ import { fillOfflinePack, type FillResult } from './fill';
 import { readPack, subscribePackChanges, type PackChangeReason } from './pack';
 import { isOfflineOwnerCurrent, subscribeOfflineOwner, type OwnerLease } from './owner';
 
-export const INITIAL_REFILL_DELAY_MS = 0;
+export const INITIAL_REFILL_DELAY_MS = 15_000;
 export const REFILL_DEBOUNCE_MS = 1_000;
 export const REFILL_COOLDOWN_MS = 60_000;
 export const REFILL_RETRY_DELAYS_MS = [60_000, 120_000, 300_000] as const;

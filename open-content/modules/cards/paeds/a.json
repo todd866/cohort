@@ -50,21 +50,6 @@
       "reference": null
     },
     {
-      "id": "cohort:paeds:c-a1927834a68e:v1",
-      "origin": "mdx:74d6a9fa08aed51e1a6e4983e34f5c88",
-      "discipline": "paeds",
-      "cardType": "cloze",
-      "sourceComponent": "KeyPoint",
-      "front": "A 3-year-old boy was born without irises, though neither parent is affected. He has regular abdominal ultrasounds to screen for [___].",
-      "back": "Wilms tumour",
-      "context": "Sporadic aniridia can come from an 11p13 deletion that removes PAX6 and the neighbouring WT1 gene, as in WAGR syndrome. About one child in three with WAGR develops this tumour.\n\nRenal imaging continues until genetic testing shows a PAX6 mutation alone rather than a deletion that includes WT1. Screening in high-risk syndromes runs to age 5 or 7.\n\nThe tumour grows from primitive renal blastema, usually as a well child's smooth flank mass that does not cross the midline.",
-      "complexity": 3,
-      "importance": 2,
-      "variantGroup": null,
-      "variantIndex": null,
-      "reference": null
-    },
-    {
       "id": "cohort:paeds:c-a195e48045a0:v1",
       "origin": "mdx:df5c753f436509b85729494cb776e87b",
       "discipline": "paeds",
@@ -107,6 +92,21 @@
       "importance": 2,
       "variantGroup": null,
       "variantIndex": null,
+      "reference": null
+    },
+    {
+      "id": "cohort:paeds:c-a310c46b53fd:v1",
+      "origin": "mdx:af80d6c5579da91f2396241a2e55ef7d:blank-2",
+      "discipline": "paeds",
+      "cardType": "cloze",
+      "sourceComponent": "KeyPoint",
+      "front": "Scarlet fever (Group A Strep, toxin-mediated rash) needs phenoxymethylpenicillin for 10 days; this prevents rheumatic fever but NOT [___].",
+      "back": "post-streptococcal glomerulonephritis",
+      "context": "Scarlet fever is the toxin-mediated rash variant of GAS pharyngitis — pyrogenic exotoxins drive the sandpaper rash, strawberry tongue, and Pastia's lines.\n\nAntibiotics prevent acute rheumatic fever (cross-reactive autoimmunity vs heart, joints, brain, at 2-4 weeks) but do NOT reliably prevent PSGN.\n\nPSGN is immune-complex nephritis (haematuria + hypertension, at 1-2 weeks); treating the index infection neither averts it nor treats it once established. Complete the full 10-day course to eradicate the organism.",
+      "complexity": 2,
+      "importance": 2,
+      "variantGroup": "cohort:paeds:g-ca2876de7759",
+      "variantIndex": 2,
       "reference": null
     },
     {
@@ -167,6 +167,21 @@
       "importance": 2,
       "variantGroup": "cohort:paeds:g-ed4964169727",
       "variantIndex": 0,
+      "reference": null
+    },
+    {
+      "id": "cohort:paeds:c-a36dab6aa1c9:v1",
+      "origin": "mdx:0c38dfd5f7cca141046f8248ab242e56",
+      "discipline": "paeds",
+      "cardType": "cloze",
+      "sourceComponent": "KeyPoint",
+      "front": "A NICU registrar sees a well 34-week baby, blood glucose 2.2 mmol/L (target at least 2.6), who is sucking. Gel is outside criteria, so she starts [___].",
+      "back": "intravenous glucose",
+      "context": "Gel requires at least 35 weeks, a baby who can feed, and no symptoms. Below that gestation the same number is a neonatal-unit problem.",
+      "complexity": 3,
+      "importance": 2,
+      "variantGroup": null,
+      "variantIndex": null,
       "reference": null
     },
     {
@@ -245,21 +260,6 @@
       "reference": null
     },
     {
-      "id": "cohort:paeds:c-a4b4936baa68:v1",
-      "origin": "mdx:51b2a339693184e3f28c71453cf3b518:blank-1",
-      "discipline": "paeds",
-      "cardType": "cloze",
-      "sourceComponent": "KeyPoint",
-      "front": "Von Willebrand disease — most common inherited bleeding disorder (~1% prevalence); vWF has two roles: platelet adhesion + carrier protein for Factor [___].",
-      "back": "VIII",
-      "context": "Von Willebrand disease is the commonest inherited bleeding disorder (~1% prevalence). vWF has two roles: bridges platelets to damaged endothelium (primary haemostasis) and carries Factor VIII.\n\nvWF deficiency thus causes mucocutaneous bleeding (epistaxis, menorrhagia, easy bruising) AND mild factor VIII deficiency-like deep bleeding in severe types.",
-      "complexity": 1,
-      "importance": 2,
-      "variantGroup": "cohort:paeds:g-7df7b71196b5",
-      "variantIndex": 1,
-      "reference": null
-    },
-    {
       "id": "cohort:paeds:c-a4d18b8229cd:v1",
       "origin": "mdx:864f89059d720d9cde455b05dc93edb2",
       "discipline": "paeds",
@@ -287,21 +287,6 @@
       "importance": 2,
       "variantGroup": "cohort:paeds:g-68b31a1542c8",
       "variantIndex": 1,
-      "reference": null
-    },
-    {
-      "id": "cohort:paeds:c-a56ab21364eb:v1",
-      "origin": "mdx:048315926aa36920e91fdee359baf99b:blank-0",
-      "discipline": "paeds",
-      "cardType": "cloze",
-      "sourceComponent": "KeyPoint",
-      "front": "Encopresis = involuntary [___] in a child over 4 years — almost always overflow incontinence from chronic constipation. Treat the constipation.",
-      "back": "soiling",
-      "context": "Encopresis (faecal soiling in a previously continent child >4 years) is almost always overflow incontinence from chronic constipation — not deliberate behaviour.\n\nTreatment is the constipation, not the soiling.\n\nCounsel parents that the child is not 'doing it on purpose'.",
-      "complexity": 2,
-      "importance": 2,
-      "variantGroup": "cohort:paeds:g-9f3aaa7676ab",
-      "variantIndex": 0,
       "reference": null
     },
     {
@@ -365,18 +350,18 @@
       "reference": null
     },
     {
-      "id": "cohort:paeds:c-a66947472ef7:v1",
-      "origin": "mdx:d367ea7449c0b5d7d2330db9bb80e393:blank-0",
+      "id": "cohort:paeds:c-a65954ae52ae:v1",
+      "origin": "mdx:95ecd171f2e74c6f3a3310d2ecac6dbe",
       "discipline": "paeds",
       "cardType": "cloze",
       "sourceComponent": "KeyPoint",
-      "front": "First-line paediatric anaphylaxis: IM adrenaline 1:1000 at [___] mg/kg (capped at the adult dose) into the anterolateral thigh; repeat every 5 minutes if needed.",
-      "back": "0.01",
-      "context": "First-line for paediatric anaphylaxis is IM adrenaline 1:1000 at 0.01 mg/kg (max 0.5 mg) into lateral thigh. 1:1000 (1 mg/mL) is for IM — do NOT confuse with 1:10,000 (IV cardiac arrest dose).\n\nEpiPen Jr (0.15 mg) for 7.5-20 kg, EpiPen (0.3 mg) for >20 kg. Repeat every 5 min if needed. IM-not-IV prevents catastrophic tachyarrhythmias.",
-      "complexity": 2,
+      "front": "An isolated prolonged aPTT that corrects on adding normal plasma indicates a factor deficiency; failure to correct indicates an [___].",
+      "back": "inhibitor",
+      "context": "Haemophilia prolongs the aPTT with a normal PT because factors VIII and IX sit in the intrinsic pathway, which only the aPTT interrogates. A mixing study tells a deficiency from an inhibitor.\n\nNormal plasma corrects a factor deficiency by supplying the missing factor. If the aPTT stays prolonged, something is inhibiting the reaction: an acquired factor inhibitor or a lupus anticoagulant.\n\nThat distinction changes everything. A deficiency bleeds and is treated with factor; a lupus anticoagulant paradoxically predisposes to thrombosis despite the abnormal test.",
+      "complexity": 3,
       "importance": 2,
-      "variantGroup": "cohort:paeds:g-ad56c4b9025a",
-      "variantIndex": 0,
+      "variantGroup": null,
+      "variantIndex": null,
       "reference": null
     },
     {
@@ -594,6 +579,21 @@
       "reference": null
     },
     {
+      "id": "cohort:paeds:c-a8fe6debbfda:v1",
+      "origin": "mdx:d58b9700585b8dbafa2b93a00bc64369",
+      "discipline": "paeds",
+      "cardType": "cloze",
+      "sourceComponent": "KeyPoint",
+      "front": "Paediatric melanoma breaks the adult rules: it is often amelanotic, uniform in colour, symmetrical and smaller than [___].",
+      "back": "6 mm",
+      "context": "The adult rules fail in children. Childhood melanoma is rare, and it frequently BREAKS ABCDE: often amelanotic rather than dark, uniform rather than variegated, symmetrical, and smaller than 6 millimetres.\n\nApplying adult criteria therefore misses it. A modified paediatric ABCD is used instead: Amelanotic; Bleeding or a Bump; Colour uniformity; De novo appearance or any Diameter.\n\nSeveral of these are the OPPOSITE of the adult letters.",
+      "complexity": 3,
+      "importance": 2,
+      "variantGroup": null,
+      "variantIndex": null,
+      "reference": null
+    },
+    {
       "id": "cohort:paeds:c-a9808505152a:v1",
       "origin": "mdx:89f510999774da1f5c381afea5928729",
       "discipline": "paeds",
@@ -737,6 +737,21 @@
       "reference": null
     },
     {
+      "id": "cohort:paeds:c-ab47b20d3e16:v1",
+      "origin": "mdx:83f8dc884646ae99253ba76c785abc54:blank-2",
+      "discipline": "paeds",
+      "cardType": "cloze",
+      "sourceComponent": "KeyPoint",
+      "front": "Refeeding syndrome risk peaks in the first 2 weeks of nutritional rehabilitation; monitor and replace phosphate, potassium, and magnesium; start at [___] kcal/kg/day.",
+      "back": "10-15",
+      "context": "Refeeding syndrome kills via hypophosphataemia. In starvation, the body uses fat and protein metabolism (low insulin, depleted intracellular phosphate, K, Mg).\n\nRe-introduced carbohydrate triggers an insulin surge that pulls phosphate (plus K and Mg) intracellularly to support glycolysis — depleting already-low intracellular stores and dropping serum levels precipitously.\n\nThe protocol: start at 10-15 kcal/kg/day (much lower than nutritional repletion targets), advance slowly over 7-10 days.",
+      "complexity": 2,
+      "importance": 2,
+      "variantGroup": "cohort:paeds:g-adb1748f018d",
+      "variantIndex": 2,
+      "reference": null
+    },
+    {
       "id": "cohort:paeds:c-ab5d9a3de2f0:v1",
       "origin": "mdx:0ff05c6a06904575a103196e1425f077",
       "discipline": "paeds",
@@ -792,6 +807,21 @@
       "context": "Draw an adequate peripheral blood culture—and cultures from every central-line lumen in late-onset disease—before antibiotics when this can be done promptly.\n\nRCH directs treatment within one hour of the decision to treat. Do not spend that hour completing every investigation in an unstable infant.",
       "complexity": 2,
       "importance": 3,
+      "variantGroup": null,
+      "variantIndex": null,
+      "reference": null
+    },
+    {
+      "id": "cohort:paeds:c-aca745f931e1:v1",
+      "origin": "mdx:3cfd3612cc3d4406e2ea114874214c68",
+      "discipline": "paeds",
+      "cardType": "cloze",
+      "sourceComponent": "KeyPoint",
+      "front": "Most early-onset group B streptococcus disease declares itself inside [___] of birth.",
+      "back": "72 hours",
+      "context": "Most cases present much earlier: NSW reports 90–97% within 24 hours. The first-week definition describes group B streptococcus disease, not a safe observation-free period.",
+      "complexity": 1,
+      "importance": 2,
       "variantGroup": null,
       "variantIndex": null,
       "reference": null
@@ -872,18 +902,18 @@
       "reference": null
     },
     {
-      "id": "cohort:paeds:c-ad6672aebd07:v1",
-      "origin": "mdx:cd943411e3731be5cb54c7641182b0e1:blank-0",
+      "id": "cohort:paeds:c-ad50f27ab76e:v1",
+      "origin": "mdx:11c3dbbe926f537e1b1a0d664ee7bc07",
       "discipline": "paeds",
       "cardType": "cloze",
       "sourceComponent": "KeyPoint",
-      "front": "An undescended testis rarely descends after [___] months of age — refer then, aiming for orchidopexy at 6-12 months.",
-      "back": "3",
-      "context": "Most testes that will descend do so in the first few months of life; beyond that, waiting adds nothing, so refer rather than watch.\n\nEarly surgery protects heat-sensitive germ cells — the longer a testis sits inguinal, the worse the fertility outcome. Prepubertal orchidopexy also lowers (never removes) malignancy risk and keeps the testis examinable.",
+      "front": "The Jones criteria are applied with a [___] threshold in high-incidence populations, reflecting the far higher pre-test probability.",
+      "back": "lower",
+      "context": "High-risk criteria admit additional joint manifestations and lower fever and ESR thresholds; they do not reduce a definite initial episode to two minor findings.\n\nA typical definite first episode still needs two major findings, or one major plus two minor, with evidence of preceding group A streptococcal infection.",
       "complexity": 1,
       "importance": 2,
-      "variantGroup": "cohort:paeds:g-9f8330f7271c",
-      "variantIndex": 0,
+      "variantGroup": null,
+      "variantIndex": null,
       "reference": null
     },
     {

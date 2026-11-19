@@ -14,6 +14,7 @@
 import type { Prisma } from '@prisma/client';
 import { prisma } from './prisma';
 import { logger } from './logger';
+import { getCourseDayStart } from './study-day';
 import { filterDeliverableReinforcementCardRows } from './usmle/reinforcement-card-delivery';
 
 // Full item data stored in queue - no second fetch needed at read time
@@ -82,8 +83,8 @@ export async function prependCardsToQueue(
   const maxItems = options.maxItems ?? REMEDIATION_MAX_ITEMS;
 
   const now = new Date();
-  const todayStart = new Date(now);
-  todayStart.setHours(0, 0, 0, 0);
+  // Same boundary the grader stamps viewsTodayDate with.
+  const todayStart = getCourseDayStart(now);
 
   const progressRows = await prisma.cardProgress.findMany({
     where: {

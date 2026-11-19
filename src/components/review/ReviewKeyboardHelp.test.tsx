@@ -1,7 +1,7 @@
 /** @vitest-environment jsdom */
 import { fireEvent, render, screen } from '@testing-library/react';
 import { afterEach, describe, expect, it, vi } from 'vitest';
-import { ReviewKeyboardHelp } from './ReviewKeyboardHelp';
+import { ReviewKeyboardHelp, reviewShortcutsFor } from './ReviewKeyboardHelp';
 
 afterEach(() => { vi.restoreAllMocks(); });
 
@@ -44,6 +44,17 @@ describe('ReviewKeyboardHelp', () => {
     expect(onClose).not.toHaveBeenCalled();
   });
 
+  it('names rewind keys while an earlier item is on screen', () => {
+    const onClose = vi.fn();
+    const { rerender } = render(<ReviewKeyboardHelp open onClose={onClose} context="card-reveal" canGoBack />);
+    expect(screen.getByText('Previous item')).toBeVisible();
+    expect(screen.queryByText('Next item')).toBeNull();
+    rerender(<ReviewKeyboardHelp open onClose={onClose} context="card-reveal" canGoBack rewound />);
+    expect(screen.getByText('Z / Left')).toBeVisible();
+    expect(screen.getByText('Shift+Z / Right')).toBeVisible();
+    expect(screen.getByText('Current item')).toBeVisible();
+  });
+
   it('keeps required card grading and opaque MCQ continuation distinct', () => {
     const onClose = vi.fn();
     const { rerender } = render(<ReviewKeyboardHelp open onClose={onClose} context="card-grade-required" />);
@@ -51,5 +62,19 @@ describe('ReviewKeyboardHelp', () => {
     rerender(<ReviewKeyboardHelp open onClose={onClose} context="mcq-continue" />);
     expect(screen.getByText('Continue')).toBeVisible();
     expect(screen.queryByText('Set confidence')).toBeNull();
+  });
+});
+
+describe('Space on an unanswered question', () => {
+  it('says it shows the answer: it reveals and records the question as not known, it does not skip it', () => {
+    const space = reviewShortcutsFor('mcq-select').find((s) => s.keys.startsWith('Space'));
+    expect(space?.label).toBe('Show the answer');
+  });
+  it.each(['card-reveal', 'card-grade', 'mcq-select', 'mcq-confidence', 'mcq-continue', 'video-rate', 'video-continue'] as const)('lists T for Talk and C for the AI chat in %s when those controls are on screen', (context) => {
+    const view = render(<ReviewKeyboardHelp open onClose={() => {}} context={context} ai={{ talk: true, chat: true }} />);
+    expect(screen.getByText('Talk on/off')).toBeVisible();
+    expect(screen.getByText('AI chat')).toBeVisible();
+    view.rerender(<ReviewKeyboardHelp open onClose={() => {}} context={context} />);
+    expect(screen.queryByText('Talk on/off')).toBeNull();
   });
 });

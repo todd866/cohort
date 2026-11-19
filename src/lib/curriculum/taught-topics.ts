@@ -7,6 +7,8 @@ export interface TaughtTopicEntry {
   /** YYYY-MM-DD in the course timezone. */
   date: string;
   topics: readonly string[];
+  /** Optional preparation window, calculated by the offline session worklist. */
+  leadDays?: number;
 }
 
 const MS_PER_DAY = 86_400_000;
@@ -29,7 +31,7 @@ export function resolveTaughtTopics(
   const ages = new Map<string, number>();
   for (const entry of log) {
     const age = (courseDay.getTime() - Date.parse(`${entry.date}T00:00:00Z`)) / MS_PER_DAY;
-    if (!Number.isInteger(age) || age < -TAUGHT_TOPIC_LEAD_DAYS || age >= TAUGHT_TOPIC_WINDOW_DAYS) continue;
+    if (!Number.isInteger(age) || age < -Math.max(TAUGHT_TOPIC_LEAD_DAYS, Number.isFinite(entry.leadDays) ? Math.ceil(entry.leadDays!) : TAUGHT_TOPIC_LEAD_DAYS) || age >= TAUGHT_TOPIC_WINDOW_DAYS) continue;
     // Before the session counts as the day itself: full strength.
     const effectiveAge = Math.max(0, age);
     for (const rawTopic of entry.topics) {
@@ -42,7 +44,7 @@ export function resolveTaughtTopics(
   // ages expire/decay prepared queues even while they are otherwise servable stale.
   const teachingPaceFingerprint = log.length === 0 ? undefined : createHash('sha256')
     .update(JSON.stringify(['taught-topics-v1', TAUGHT_TOPIC_WINDOW_DAYS,
-      log.map(entry => [entry.date, [...new Set(entry.topics.map(normalizeCurriculumTopic))].sort()]).sort(),
+      log.map(entry => [entry.date, entry.leadDays ?? TAUGHT_TOPIC_LEAD_DAYS, [...new Set(entry.topics.map(normalizeCurriculumTopic))].sort()]).sort(),
       [...topicRecencyDays],
     ])).digest('hex');
   return { topicRecencyDays, teachingPaceFingerprint };

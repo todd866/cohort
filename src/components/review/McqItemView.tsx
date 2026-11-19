@@ -62,6 +62,7 @@ interface McqItemViewProps {
   selectedPending?: boolean;
   /** A product gate owns interaction while profile/onboarding state resolves. */
   interactionDisabled?: boolean;
+  padHighlightIndex?: number | null;
 }
 
 export function McqItemView({
@@ -84,6 +85,7 @@ export function McqItemView({
   interactionDisabled = false,
   publicSurface = false,
   readOnly = false,
+  padHighlightIndex = null,
 }: McqItemViewProps) {
   const hasFigure = Boolean(item.imageUrl || item.imageKey);
   const figureIsPrompt = Boolean(item.promptFigure) || reviewImageIsPrompt(item.imageRole, item.imageMeta, item.stem);
@@ -189,6 +191,7 @@ export function McqItemView({
       onToggleExplanation={toggleOptionExplanation}
       onReveal={handleRevealAnswer}
       revealLabel={<RevealActionLabel item={item} />}
+      padHighlightIndex={padHighlightIndex}
     />
   );
 

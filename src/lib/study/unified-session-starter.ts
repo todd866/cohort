@@ -23,6 +23,7 @@ import type { SessionContext, UnifiedItem } from './unified-session-types';
 import { EXAM_ONLY_ROTATIONS } from './exam-only-modules';
 import { logSessionDiagnostic } from './unified-session-diagnostics';
 import { writeLiveServeDecisions } from './serve-decision-write';
+import { learnerItemPredictionFor } from './learner-item-prediction-load';
 import { withoutRawPublicUsmleQuestions } from '@/lib/usmle/raw-question-boundary';
 import { filterDeliverableReinforcementCardRows } from '@/lib/usmle/reinforcement-card-delivery';
 import { ownerPrivateOrSharedCardScope } from '@/lib/cards/read-repository.server';
@@ -207,6 +208,7 @@ export async function tryStarterSession(ctx: SessionContext): Promise<NextRespon
     rotation: ctx.rotation,
     decisionPath: 'starter',
     queueReason: 'starter_session',
+    learnerItem: learnerItemPredictionFor(ctx),
   });
 
   // Log exposures in the background (same as normal path)

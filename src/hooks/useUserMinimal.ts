@@ -17,6 +17,8 @@ export interface MinimalUserData {
   reviewTopicRotations?: Record<string, string>;
   /** True once the learner has described a course md3 does not cover. */
   curriculumRequested?: boolean;
+  /** The first-run year answer (md1..md4), null until given. */
+  onboardingYear?: string | null;
 }
 
 const fetcher = async ([url]: readonly [string, string]): Promise<MinimalUserData> => {

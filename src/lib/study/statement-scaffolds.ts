@@ -1,5 +1,6 @@
 import { createHash } from 'node:crypto';
 import { isCardDueForSelection } from '@/lib/knowledge/card-due-eligibility';
+import { getCourseDayStart } from '@/lib/study-day';
 import {
   gradeTypeX,
   missedStatementsForKType,
@@ -181,8 +182,8 @@ export function chooseStatementScaffolds(input: {
 }): string[] {
   const { candidatesByFactKey, progressByCardId, now, seed } = input;
   const cap = input.cap ?? STATEMENT_SCAFFOLDS_PER_MISS;
-  const todayStart = new Date(now);
-  todayStart.setHours(0, 0, 0, 0);
+  // Same boundary the grader stamps viewsTodayDate with.
+  const todayStart = getCourseDayStart(now);
 
   const eligible = (id: string): boolean => {
     const progress = progressByCardId.get(id);

@@ -23,6 +23,8 @@ export const DEFAULT_REVIEW_MENU_SUBJECTS = [
   'radiology',
   'neuroradiology',
   'obgyn',
+  'trauma',
+  'gp',
 ] as const;
 
 /**

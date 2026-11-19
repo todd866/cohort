@@ -1,6 +1,7 @@
 'use client';
 
-import { type CSSProperties, useCallback, useEffect, useRef, useState, useSyncExternalStore } from 'react';
+import { decideSideCaption, type SideCaptionMemo } from './side-caption';
+import { type CSSProperties, useCallback, useEffect, useLayoutEffect, useRef, useState, useSyncExternalStore } from 'react';
 import {
   shouldGateClientImageMeta,
   type ClientImageMeta,
@@ -17,6 +18,7 @@ import {
   fetchWithDeadline,
 } from '@/lib/fetch-with-deadline';
 import { SensitiveMediaGate } from '@/components/media/SensitiveMediaGate';
+import { displayedImageKey } from '@/lib/images/displayed-image-key';
 
 
 interface CardImageProps {
@@ -58,11 +60,14 @@ interface CardImageProps {
    *  the question, 'overview' the whole diagram in the media pane with the
    *  window outlined. Omitted, both render together in one figure. */
   regionPart?: 'window' | 'overview';
+  /** A copy of a figure already counted where it was served (the AI chat): record no view. */
+  untracked?: boolean;
 }
 
 /** Image and caption share a width; only the image frame uses the viewport
  * height budget. Reveal-only credit cannot change its aspect ratio or scale. */
 export const SIDE_PANE_FIGURE = 'review-figure-side-pane';
+// Caption column (9rem) plus its 1rem gap, beside a tall figure.
 
 /** A separate occurrence is keyed to the displayed card/source below. Keeping
  * its state here makes an identity change remove the dialog synchronously,
@@ -306,6 +311,7 @@ export function CardImage({
   inSidePane = false,
   onUnavailable,
   regionPart,
+  untracked = false,
 }: CardImageProps) {
   const imageOwner = useSyncExternalStore(subscribeOfflineOwner, currentImageOwner, () => 'unbound');
   const incomingSource = JSON.stringify([trackingComponentId, imageKey, src, meta?.revealImageKey]);
@@ -334,7 +340,7 @@ export function CardImage({
   const analyticsKey = imageKey ?? safeFallback;
   const sensitive = shouldGateClientImageMeta(meta, analyticsKey);
   // The window part of a split hide-one diagram is the same figure; the overview counts the view.
-  const trackedKey = visible && sourceBelongsToOwner && regionPart !== 'window' ? analyticsKey : null;
+  const trackedKey = !untracked && visible && sourceBelongsToOwner && regionPart !== 'window' ? analyticsKey : null;
   const trackingIdentity = analyticsKey
     ? `${trackingComponentId ?? 'media'}:${analyticsKey}`
     : null;
@@ -542,7 +548,7 @@ export function CardImage({
     };
   }, [imageKey, revealImageKey, resolvedSources, sourceIdentity, src, loadStableSource]);
 
-  const displayImageKey = revealed && revealImageKey ? revealImageKey : imageKey;
+  const displayImageKey = displayedImageKey(imageKey, revealImageKey, Boolean(revealed));
   const handleImageError = useCallback(() => {
     if (!displayImageKey) return;
     const retryId = `${sourceIdentity}:${displayImageKey}`;
@@ -634,14 +640,54 @@ export function CardImage({
   const crop = numberedFocus?.crop ?? regionCrop;
   const ratio = imageWidth > 0 && imageHeight > 0
     ? (imageWidth * (crop?.width ?? 1)) / (imageHeight * (crop?.height ?? 1)) : undefined;
+  const notesSpacePx = (caption ? (caption.length > 160 ? 96 : 72) : 0) + (meta?.attributionText ? 20 : 0) + (regionCrop ? 0 : crop ? 32 : 0);
   const figureStyle = {
     ...(ratio ? { '--md-figure-ratio': ratio } : {}),
     ...(regionCrop && !regionPart ? { '--md-overview-ratio': imageWidth / imageHeight } : {}),
     // Reserve the same space before and after reveal without putting hidden
     // answer-bearing text in the DOM. Opening Credit may scroll; it never
     // changes the image scale.
-    '--md-figure-notes-space': `${(caption ? 72 : 0) + (meta?.attributionText ? 20 : 0) + (regionCrop ? 0 : crop ? 32 : 0)}px`,
+    // A long caption wraps to four lines in a narrow side pane; budget for it so
+    // the page does not scroll (6 Nov 2026).
+    '--md-figure-notes-space': `${notesSpacePx}px`,
   } as CSSProperties;
+
+  // A tall captioned figure in the wide desktop pane puts its caption beside
+  // the image, giving the image the caption's height (6 Nov 2026). Only when the
+  // image keeps its full height-fitted width AND a 9rem caption column is left
+  // over; in a narrower pane that column would shrink the image instead, so the
+  // caption stays below. Decided from the caption's existence, never from
+  // whether it is shown yet, so revealing it cannot rescale the image.
+  const figureRef = useRef<HTMLElement>(null);
+  const tallCandidate = visible && inSidePane && ratio !== undefined && ratio < 0.95 && !crop && !regionPart && Boolean(caption);
+  const [sideCaption, setSideCaption] = useState(false);
+  useLayoutEffect(() => {
+    const figure = figureRef.current;
+    const pane = figure?.parentElement;
+    if (!tallCandidate || !figure || !pane || ratio === undefined || typeof ResizeObserver === 'undefined') {
+      setSideCaption(false);
+      return;
+    }
+    let memo: SideCaptionMemo | null = null;
+    const decide = () => {
+      const frame = figure.querySelector('[data-figure-frame]');
+      if (!frame) return;
+      const decision = decideSideCaption({
+        available: pane.clientWidth,
+        width: frame.getBoundingClientRect().width,
+        beside: figure.hasAttribute('data-figure-tall'),
+        notesSpacePx, ratio,
+        viewportHeight: window.innerHeight,
+        memo,
+      });
+      memo = decision.memo;
+      setSideCaption((previous) => (previous === decision.beside ? previous : decision.beside));
+    };
+    decide();
+    const observer = new ResizeObserver(decide);
+    observer.observe(pane);
+    return () => observer.disconnect();
+  }, [tallCandidate, ratio, notesSpacePx]);
 
   if (!visible) return null;
 
@@ -676,7 +722,7 @@ export function CardImage({
       onSkip={sensitive && !revealed ? onSkipSensitive : undefined}
       captureReviewSpace={sensitive && !revealed}
     >
-        <figure style={figureStyle} data-numbered-focus={crop ? true : undefined} data-region-focus={regionCrop && !regionPart ? true : undefined} data-region-part={focusWindow ? regionPart : undefined} className={`review-figure mb-4${inSidePane ? ` ${SIDE_PANE_FIGURE}` : ''}${expanded ? '' : ' review-figure-compact'}`}>
+        <figure ref={figureRef} style={figureStyle} data-numbered-focus={crop ? true : undefined} data-region-focus={regionCrop && !regionPart ? true : undefined} data-region-part={focusWindow ? regionPart : undefined} data-figure-tall={tallCandidate && sideCaption ? true : undefined} className={`review-figure mb-4${inSidePane ? ` ${SIDE_PANE_FIGURE}` : ''}${expanded ? '' : ' review-figure-compact'}`}>
           <div data-region-row={regionCrop && !regionPart ? true : undefined} className={regionCrop && !regionPart ? 'region-focus-row' : 'contents'}>
           <div data-figure-frame style={ratio ? { aspectRatio: ratio } : undefined}
             className={`relative mx-auto block w-full overflow-hidden rounded-lg border border-[var(--md-outline-variant)] ${expanded ? 'cursor-zoom-out' : 'cursor-zoom-in'}`}>

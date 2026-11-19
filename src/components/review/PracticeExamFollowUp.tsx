@@ -3,6 +3,7 @@
 import { useEffect, useId, useRef, useState } from 'react';
 import { ExamStem } from '@/components/content/ExamStem';
 import type { PracticeReviewMissedQuestion, PracticeReviewProvenance } from '@/lib/study/practice-review-focus';
+import { usePracticeFollowUpPreference } from './usePracticeFollowUpPreference';
 
 function stageLabel(stage: PracticeReviewProvenance['stage'], priority: PracticeReviewProvenance['priority']): string {
   if (stage === 'exact-retest') return 'Try this question again';
@@ -29,6 +30,8 @@ export function PracticeExamFollowUp({ provenance, compact = false }: { provenan
   const buttonRef = useRef<HTMLButtonElement>(null);
   const panelRef = useRef<HTMLDivElement>(null);
   const [open, setOpen] = useState(false);
+  // Read only when the learner opens the panel: no request per follow-up item.
+  const followUps = usePracticeFollowUpPreference(Boolean(provenance) && open);
   useEffect(() => {
     if (!open) return;
     panelRef.current?.focus();
@@ -97,6 +100,19 @@ export function PracticeExamFollowUp({ provenance, compact = false }: { provenan
               );
             })}
           </ol>
+          {followUps.off === false && (
+            <button
+              type="button"
+              disabled={followUps.saving}
+              onClick={() => { void followUps.setOff(true); }}
+              className="mt-3 min-h-11 rounded-md px-2 text-sm underline underline-offset-2 text-[var(--md-on-surface-variant)]"
+            >
+              Stop exam follow-ups
+            </button>
+          )}
+          {followUps.off === true && (
+            <p className="mt-3 text-xs text-[var(--md-on-surface-variant)]">Exam follow-ups off · No exam follow-ups in review options</p>
+          )}
         </div>
       )}
     </aside>

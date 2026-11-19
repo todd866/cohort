@@ -88,21 +88,6 @@
       }
     },
     {
-      "id": "cohort:paeds:c-916c298ab747:v1",
-      "origin": "mdx:64ed3e1138e12d7ec7999e4927e3ce31:blank-0",
-      "discipline": "paeds",
-      "cardType": "cloze",
-      "sourceComponent": "KeyPoint",
-      "front": "Jaundice in the first [___] hours of life is ALWAYS pathological — usually haemolysis (ABO/Rh, G6PD), sepsis, or congenital infection (TORCH: Toxoplasma, Other, Rubella, CMV, Herpes); check direct Coombs.",
-      "back": "24",
-      "context": "First-24-hour jaundice is always pathological — physiological jaundice peaks day 3-5. Day 1 jaundice usually means haemolysis (ABO/Rh incompatibility, G6PD deficiency, hereditary spherocytosis), sepsis.",
-      "complexity": 2,
-      "importance": 2,
-      "variantGroup": "cohort:paeds:g-18b65ecfb92b",
-      "variantIndex": 0,
-      "reference": null
-    },
-    {
       "id": "cohort:paeds:c-91c4cad32945:v1",
       "origin": "mdx:5abefcea2d35ae35340d614b64179115",
       "discipline": "paeds",
@@ -133,19 +118,38 @@
       "reference": null
     },
     {
-      "id": "cohort:paeds:c-92a03bdcc6ed:v1",
-      "origin": "mdx:e8b25654c5e277a7b26ee633b29723b5:blank-0",
+      "id": "cohort:paeds:c-927a2780b56a:v1",
+      "origin": "mdx:206af7105c35e55e659d07cdfa23144c:blank-0",
       "discipline": "paeds",
       "cardType": "cloze",
       "sourceComponent": "KeyPoint",
-      "front": "HUS triad: microangiopathic haemolytic [___] (schistocytes, raised LDH, low haptoglobin), thrombocytopenia (consumed in microthrombi), and acute kidney injury. Typical (D+) HUS follows bloody diarrhoea from Shiga-toxin-producing *E. coli*.",
-      "back": "anaemia",
-      "context": "HUS (haemolytic uraemic syndrome) triad: microangiopathic haemolytic anaemia (schistocytes on film, raised LDH, low haptoglobin), thrombocytopenia, acute kidney injury (rising creatinine, oliguria).\n\nTypical (D+ HUS) follows bloody diarrhoea from Shiga toxin-producing E. coli (O157:H7); 5-10 days latency.\n\nTreatment is supportive — antibiotics may worsen disease.",
+      "front": "An abnormal red reflex in a newborn requires exclusion of the intraocular malignancy [___]; refer to paediatric ophthalmology urgently.",
+      "back": "retinoblastoma",
+      "context": "Absent or asymmetric red reflex (LEUKOCORIA — white pupillary reflex) in an infant is a paediatric emergency.\n\nExam: dim room, ophthalmoscope at arm's length, symmetric red reflex through both pupils — retinoblastoma shows a white reflex in one eye (often noticed on flash photography).",
       "complexity": 2,
       "importance": 2,
-      "variantGroup": "cohort:paeds:g-437a558c070d",
+      "variantGroup": "cohort:paeds:g-1a23ea7dc417",
       "variantIndex": 0,
       "reference": null
+    },
+    {
+      "id": "cohort:paeds:c-929b62857530:v1",
+      "origin": "mdx:0b7ce33a01fcb0795a732e692eacd698",
+      "discipline": "paeds",
+      "cardType": "cloze",
+      "sourceComponent": "KeyPoint",
+      "front": "An alert 8-year-old's knocked-out permanent front tooth is replanted at once, but a knocked-out [___] tooth is not replanted.",
+      "back": "primary",
+      "context": "A permanent tooth that is knocked out can be put back at once if the child is alert and the root is intact.\n\nReplanting a baby tooth can damage the permanent tooth bud beneath it. The permanent tooth should not dry out in a tissue.",
+      "complexity": 4,
+      "importance": 2,
+      "variantGroup": null,
+      "variantIndex": null,
+      "reference": {
+        "title": "Dental trauma",
+        "publisher": "The Royal Children's Hospital Melbourne",
+        "url": "https://www.rch.org.au/clinicalguide/guideline_index/Dental_trauma/"
+      }
     },
     {
       "id": "cohort:paeds:c-92aa2da36755:v1",
@@ -242,25 +246,6 @@
       "reference": null
     },
     {
-      "id": "cohort:paeds:c-93cbd7f673e7:v1",
-      "origin": "mdx:d695ea53d29f21e18904547ce22b209e:blank-1",
-      "discipline": "paeds",
-      "cardType": "cloze",
-      "sourceComponent": "KeyPoint",
-      "front": "Avulsed primary (baby) teeth should NOT be replanted — risks damage to the developing successor tooth bud. Avulsed permanent teeth should be replanted within 60 minutes; if delayed, store in [___] (or saline / buccal sulcus) to preserve the periodontal ligament.",
-      "back": "milk",
-      "context": "Replantation rule splits by tooth type. PERMANENT: replant within 60 min (ideally <15 min); handle by crown only, rinse gently (preserves periodontal ligament), store in milk or saline if can't replant immediately.\n\nPRIMARY (baby): do NOT replant — risks damaging the developing permanent tooth bud (ankylosis, infection, developmental disturbance).\n\nPractical: adult/older child permanent tooth → milk, dentist within 30-60 min; toddler baby tooth → don't replant, dentist to assess remaining teeth and soft tissue (permanent teeth erupt age 6+).",
-      "complexity": 2,
-      "importance": 2,
-      "variantGroup": "cohort:paeds:g-b4371876197c",
-      "variantIndex": 1,
-      "reference": {
-        "title": "Dental trauma",
-        "publisher": "The Royal Children's Hospital Melbourne",
-        "url": "https://www.rch.org.au/clinicalguide/guideline_index/Dental_trauma/"
-      }
-    },
-    {
       "id": "cohort:paeds:c-940acc116598:v1",
       "origin": "mdx:47b81ffb57d51d499a965befab3f0262",
       "discipline": "paeds",
@@ -288,21 +273,6 @@
       "importance": 2,
       "variantGroup": "cohort:paeds:g-7f9060868691",
       "variantIndex": 1,
-      "reference": null
-    },
-    {
-      "id": "cohort:paeds:c-94f855697ab3:v1",
-      "origin": "mdx:1f93b50211bf6c01e610529c33bf43a7:blank-0",
-      "discipline": "paeds",
-      "cardType": "cloze",
-      "sourceComponent": "KeyPoint",
-      "front": "Croup is a [___] diagnosis; alarm features include agitation, drowsiness, persistent stridor at rest. hypoxia is a late sign — by then the child is in respiratory failure.",
-      "back": "clinical",
-      "context": "Croup is a clinical diagnosis — barking cough plus inspiratory stridor in a 1-2 year old. Imaging doesn't change management; reserve for atypical cases or to rule out foreign body.\n\nHypoxia is a LATE sign because croup obstruction is mainly inspiratory; by the time SpO2 drops, the child is in significant respiratory failure.",
-      "complexity": 2,
-      "importance": 2,
-      "variantGroup": "cohort:paeds:g-61d7cf2aec17",
-      "variantIndex": 0,
       "reference": null
     },
     {
@@ -520,6 +490,21 @@
       }
     },
     {
+      "id": "cohort:paeds:c-984a92f5e9ae:v1",
+      "origin": "mdx:67039bbc427a9898d26b3bae3668a31b",
+      "discipline": "paeds",
+      "cardType": "cloze",
+      "sourceComponent": "KeyPoint",
+      "front": "In paediatric gastroenteritis, when a child cannot take enough oral rehydration solution, the next route to try before IV is [___] rehydration.",
+      "back": "nasogastric",
+      "context": "Use enteral rehydration whenever possible. If oral ORS fails, try nasogastric ORS; reserve IV for shock, severe dehydration, or inability to tolerate NG fluids.",
+      "complexity": 1,
+      "importance": 2,
+      "variantGroup": null,
+      "variantIndex": null,
+      "reference": null
+    },
+    {
       "id": "cohort:paeds:c-98ee5c3e0a99:v1",
       "origin": "mdx:057e73e03d4bd5257b8746ce68f94933",
       "discipline": "paeds",
@@ -532,6 +517,21 @@
       "importance": 2,
       "variantGroup": null,
       "variantIndex": null,
+      "reference": null
+    },
+    {
+      "id": "cohort:paeds:c-9915186eaadd:v1",
+      "origin": "mdx:930808c3f0924a5d0d9fece1f9dcedb9:blank-1",
+      "discipline": "paeds",
+      "cardType": "cloze",
+      "sourceComponent": "KeyPoint",
+      "front": "Viral-induced wheeze is common in first 2 years; [___] is the dominant trigger in school-aged children.",
+      "back": "rhinovirus",
+      "context": "Respiratory viruses commonly trigger wheeze in young children, who may be well between episodes.\n\nEpisodic viral and multi-trigger labels are unreliable preschool subtypes; assess symptoms, episode burden and treatment response over time. Rhinovirus also triggers asthma exacerbations in school-aged children.\n\nAtopy and recurrent wheeze increase concern for persistent asthma, but an infection-only pattern does not exclude it.",
+      "complexity": 2,
+      "importance": 2,
+      "variantGroup": "cohort:paeds:g-41b29b903f39",
+      "variantIndex": 1,
       "reference": null
     },
     {
@@ -571,21 +571,6 @@
         "publisher": "The Royal Children's Hospital Melbourne",
         "url": "https://www.rch.org.au/clinicalguide/guideline_index/Febrile_child/"
       }
-    },
-    {
-      "id": "cohort:paeds:c-9a27ee20c4fb:v1",
-      "origin": "mdx:77f2e030854812f9ac6ed86a88f4a94a:blank-1",
-      "discipline": "paeds",
-      "cardType": "cloze",
-      "sourceComponent": "KeyPoint",
-      "front": "Malabsorption diarrhoea types: fatty (steatorrhoea, fat malabsorption); watery (osmotic or secretory); [___] (infection, IBD).",
-      "back": "bloody",
-      "context": "The character of diarrhoea narrows the cause. Fatty (steatorrhoea — pale, greasy, foul, floats) → fat malabsorption (CF, pancreatic insufficiency, biliary disease, coeliac).\n\nWatery → osmotic (lactose intolerance) or secretory (toxin, hormone, bile salt). Bloody → infection, IBD, milk protein intolerance.",
-      "complexity": 2,
-      "importance": 2,
-      "variantGroup": "cohort:paeds:g-e6c7982f6fdd",
-      "variantIndex": 1,
-      "reference": null
     },
     {
       "id": "cohort:paeds:c-9a2d629bf4ec:v1",
@@ -640,26 +625,11 @@
       "sourceComponent": "KeyPoint",
       "front": "ITP: most common paediatric thrombocytopenia, usually [___] weeks post-viral, self-limiting in 80% within 6 months; if other cell lines abnormal — suspect malignancy.",
       "back": "1-4",
-      "context": "Immune thrombocytopaenic purpura (ITP) is the commonest cause of thrombocytopenia in well children. Typical presentation 1-4 weeks after viral infection — autoantibody-mediated platelet destruction.\n\nPetechiae, bruising, mucosal bleeding; everything else (FBC otherwise normal, no organomegaly, no constitutional symptoms) normal. Self-limiting in 80% within 6 months.\n\nIf anything else abnormal — suspect malignancy.",
+      "context": "Immune thrombocytopenic purpura (ITP) is the commonest cause of thrombocytopenia in well children. Typical presentation 1-4 weeks after viral infection — autoantibody-mediated platelet destruction.\n\nPetechiae, bruising, mucosal bleeding; everything else (FBC otherwise normal, no organomegaly, no constitutional symptoms) normal. Self-limiting in 80% within 6 months.\n\nIf anything else abnormal — suspect malignancy.",
       "complexity": 1,
       "importance": 2,
       "variantGroup": "cohort:paeds:g-a3be8c432af8",
       "variantIndex": 0,
-      "reference": null
-    },
-    {
-      "id": "cohort:paeds:c-9ab9f40c3424:v1",
-      "origin": "mdx:3b165e97d3d063fdb5dff9bb2a7ef81c:blank-1",
-      "discipline": "paeds",
-      "cardType": "cloze",
-      "sourceComponent": "KeyPoint",
-      "front": "Universal newborn hearing screen target ages: screen by 1 month, diagnose by [___] months, intervene by 6 months — closes the critical window for language development.",
-      "back": "3",
-      "context": "The 1-3-6 rule for newborn hearing screening: screen by 1 month (OAE first-line, ABR for NICU), confirm any failed screen with audiology by 3 months. Start intervention (hearing aids, early-intervention) by 6 months.\n\nThe targets aren't arbitrary — the first 6 months are the critical language-scaffolding window, and delays past it measurably impair lifelong speech outcomes.\n\nIn Australia ~98% are screened by 1 month; compliance falls off at diagnosis and intervention, which is where infants slip through.",
-      "complexity": 2,
-      "importance": 2,
-      "variantGroup": "cohort:paeds:g-2633147da560",
-      "variantIndex": 1,
       "reference": null
     },
     {
@@ -678,6 +648,21 @@
       "reference": null
     },
     {
+      "id": "cohort:paeds:c-9b1ec7e8aeed:v1",
+      "origin": "mdx:ab4e926ebd35613f10c334cd6a60b2d2",
+      "discipline": "paeds",
+      "cardType": "cloze",
+      "sourceComponent": "KeyPoint",
+      "front": "A 4-year-old has stopped growing. The lungs are clear, and the second heart sound stays widely split and does not vary with breathing. The most likely lesion is [___].",
+      "back": "atrial septal defect",
+      "context": "A split that does not move with breathing means extra volume is crossing at atrial level all through the respiratory cycle.\n\nPoor growth with that sound is an atrial septal defect. A ventricular defect is a loud pansystolic murmur low on the sternum, often in a child who is thriving.",
+      "complexity": 4,
+      "importance": 2,
+      "variantGroup": null,
+      "variantIndex": null,
+      "reference": null
+    },
+    {
       "id": "cohort:paeds:c-9b384fa14037:v1",
       "origin": "mdx:f2f45c38577e3a6563f679b650f068b8:blank-0",
       "discipline": "paeds",
@@ -689,6 +674,21 @@
       "complexity": 3,
       "importance": 2,
       "variantGroup": "cohort:paeds:g-f2cc66367ba2",
+      "variantIndex": 0,
+      "reference": null
+    },
+    {
+      "id": "cohort:paeds:c-9b39f2595ae6:v1",
+      "origin": "mdx:8968b8acacb4fb762f988f04f9e5bddd:blank-0",
+      "discipline": "paeds",
+      "cardType": "cloze",
+      "sourceComponent": "KeyPoint",
+      "front": "Typical puberty duration is [___] years; delayed and precocious puberty are defined by the timing of gonadarche, not adrenarche.",
+      "back": "2-5",
+      "context": "Puberty typically lasts 2-5 years from start to completion. The defining event is gonadarche — gonadal activation by FSH/LH (HPG axis).\n\nAdrenarche (adrenal androgen production) precedes gonadarche and produces pubic hair, axillary hair, acne — but isn't true puberty. Delayed/precocious puberty are defined by gonadarche timing, not adrenarche.",
+      "complexity": 2,
+      "importance": 2,
+      "variantGroup": "cohort:paeds:g-d1fcfb6c4201",
       "variantIndex": 0,
       "reference": null
     },
@@ -723,6 +723,21 @@
       "reference": null
     },
     {
+      "id": "cohort:paeds:c-9bd1a9d0ab81:v1",
+      "origin": "mdx:716141fab3b1887c2dfff37def5ae06e:blank-0",
+      "discipline": "paeds",
+      "cardType": "cloze",
+      "sourceComponent": "KeyPoint",
+      "front": "Gastro-oesophageal reflux (GOR) is physiological in infants — it peaks at about [___] of age and resolves by 12-18 months as the lower oesophageal sphincter (LES) matures. Distinguish from GORD (= GOR with complications).",
+      "back": "4 months",
+      "context": "Physiological GOR (gastro-oesophageal reflux) is the 'happy spitter' — frequent regurgitation but normal weight gain, no distress, no respiratory issues. Common in infants because the LES tone is immature.\n\nPeaks ~4 months, resolves by 12-18 months as the LES matures. Pathological GORD = reflux causing complications (FTT, oesophagitis, aspiration).",
+      "complexity": 2,
+      "importance": 2,
+      "variantGroup": "cohort:paeds:g-ab06850ba15b",
+      "variantIndex": 0,
+      "reference": null
+    },
+    {
       "id": "cohort:paeds:c-9bf1d98c4e54:v1",
       "origin": "mdx:eaddd435db4c6e76db86f7d7570077d0",
       "discipline": "paeds",
@@ -749,21 +764,6 @@
       "complexity": 2,
       "importance": 2,
       "variantGroup": "cohort:paeds:g-e07192911a25",
-      "variantIndex": 1,
-      "reference": null
-    },
-    {
-      "id": "cohort:paeds:c-9cb6e53c3570:v1",
-      "origin": "mdx:9f906afb57fd222bb517e114a0b257d6:blank-1",
-      "discipline": "paeds",
-      "cardType": "cloze",
-      "sourceComponent": "KeyPoint",
-      "front": "A well 3-year-old has a bulging tympanic membrane, an effusion and no discharge. The appropriate first step is analgesia plus watchful waiting for 48 hours; the single feature in the history that would most clearly override this in an infant is age under [___] months.",
-      "back": "6",
-      "context": "Most uncomplicated acute otitis media is analgesia and 48 hours of watchful waiting. The examinable skill is who should NOT wait.\n\nAge under 6 months, systemic illness, discharge, craniofacial anomaly, immunocompromise, a cochlear implant, and high-risk Aboriginal or Torres Strait Islander children all lower the threshold.\n\nBilateral disease under 2 is not by itself an automatic RCH indication — follow the local antimicrobial guideline.",
-      "complexity": 3,
-      "importance": 2,
-      "variantGroup": "cohort:paeds:g-7f409773269e",
       "variantIndex": 1,
       "reference": null
     },
@@ -979,21 +979,6 @@
       "importance": 2,
       "variantGroup": "cohort:paeds:g-2d38ee9657fe",
       "variantIndex": 0,
-      "reference": null
-    },
-    {
-      "id": "cohort:paeds:c-9f596bf11e30:v1",
-      "origin": "mdx:6637f8ed48301fa207c4ae42d30bd7f2:blank-1",
-      "discipline": "paeds",
-      "cardType": "cloze",
-      "sourceComponent": "KeyPoint",
-      "front": "Live vaccines (MMR, varicella, rotavirus, BCG, LAIV, yellow fever) are contraindicated in immunocompromise and [___]; minor illness is NOT a contraindication.",
-      "back": "pregnancy",
-      "context": "Live vaccines (MMR, varicella, rotavirus, BCG, LAIV, yellow fever, Zostavax) contain weakened but replicating organisms — strong immunity, but risk of vaccine-strain disease in immunocompromised hosts.\n\nAbsolute contraindications: pregnancy and severe immunocompromise (HIV with low CD4, active malignancy, high-dose immunosuppressants, post-SCT).",
-      "complexity": 2,
-      "importance": 2,
-      "variantGroup": "cohort:paeds:g-81d0703bf113",
-      "variantIndex": 1,
       "reference": null
     },
     {
